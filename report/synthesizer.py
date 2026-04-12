@@ -62,6 +62,7 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
 
     user_prompt = DAILY_SYNTHESIS_USER.format(
         pdf_count=len(analyses),
+        today=today,
         analyses_json=analyses_json,
     )
 

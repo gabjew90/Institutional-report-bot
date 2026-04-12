@@ -201,8 +201,12 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
         rows = db.get_analyses_since(last_report_time)
         log.info(f"Loading analyses since last report at {last_report_time}")
     else:
-        rows = db.get_todays_analyses()
-        log.info("No prior report found, loading today's analyses")
+        # No prior daily report — use a rolling 24h window based on Dropbox upload time.
+        # NOT pa.created_at (which would grab backfilled analyses regardless of upload age).
+        from datetime import timedelta
+        cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+        rows = db.get_analyses_since(cutoff)
+        log.info(f"No prior report — loading analyses for PDFs uploaded since {cutoff}")
 
     if not rows:
         log.warning("No analyses available for daily pulse")
@@ -352,12 +356,14 @@ async def run_manual_pulse(
     elif since:
         rows = db.get_analyses_since(since)
     else:
-        # Same logic as scheduled: since last report, or today
+        # Same logic as scheduled: since last daily report, or last 24h of uploads
         last_report_time = db.get_last_report_time()
         if last_report_time:
             rows = db.get_analyses_since(last_report_time)
         else:
-            rows = db.get_todays_analyses()
+            from datetime import timedelta
+            cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+            rows = db.get_analyses_since(cutoff)
 
     if not rows:
         return None

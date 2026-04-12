@@ -157,7 +157,11 @@ Rules:
 - Write with conviction. Be direct about what matters and what doesn't.
 - BE SPECIFIC WITH NUMBERS. Always include: exact prices (BTC $72,050, not "Bitcoin is resilient"), percentage moves (+8% WoW, -5.1% MoM), specific dates and times (Wednesday April 9 before market open, not "this week"), and whether earnings are before open (BMO) or after close (AMC). Vague statements like "remains resilient" or "coming up soon" are useless without the actual numbers."""
 
-DAILY_SYNTHESIS_USER = """Here are {pdf_count} institutional research analyses from today. Synthesize them into a Morning Market Pulse.
+DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any event mentioned in the source research with a date BEFORE {today} has already happened. Do not include past events in "WHAT TO WATCH TODAY" or "COMING UP". Only include events dated {today} or later.
+
+Here are {pdf_count} institutional research analyses. Some may have been published days ago and reference events that have since occurred. Treat those as historical context, not forward-looking.
+
+Synthesize into a Morning Market Pulse:
 
 {analyses_json}
 
