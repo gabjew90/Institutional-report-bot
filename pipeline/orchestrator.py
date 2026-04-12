@@ -369,9 +369,11 @@ async def run_manual_pulse(
     report = await synthesize_daily_pulse(analyses)
 
     if persist:
+        # Manual pulses use report_type="manual" so they don't affect the
+        # scheduled pulse's "since last report" cutoff (which filters on "daily").
         report_id = db.insert_daily_report(
             report_date=report.report_date,
-            report_type="daily",
+            report_type="manual",
             report_json=json.dumps(report.raw_json),
             report_markdown=report.markdown_content,
             pdf_count=report.pdf_count,
