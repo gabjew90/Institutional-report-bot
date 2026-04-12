@@ -10,9 +10,7 @@ from google.genai import types
 
 from ai_analysis.models import PdfAnalysis
 from ai_analysis.prompts import (
-    MORNING_SYNTHESIS_SYSTEM, MORNING_SYNTHESIS_USER,
-    AFTERNOON_SYNTHESIS_SYSTEM, AFTERNOON_SYNTHESIS_USER,
-    AFTERNOON_NO_NEW_REPORTS,
+    DAILY_SYNTHESIS_SYSTEM, DAILY_SYNTHESIS_USER,
 )
 from report.models import DailyReport
 from config import settings
@@ -55,14 +53,14 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
     return json.dumps(compact, indent=1)
 
 
-async def synthesize_morning_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
-    """Generate the Morning Market Pulse from all today's analyses."""
+async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
+    """Generate the Daily Market Pulse from all today's analyses."""
     client = _get_client()
     today = date.today().isoformat()
 
     analyses_json = _analyses_to_json(analyses)
 
-    user_prompt = MORNING_SYNTHESIS_USER.format(
+    user_prompt = DAILY_SYNTHESIS_USER.format(
         pdf_count=len(analyses),
         analyses_json=analyses_json,
     )
@@ -71,7 +69,7 @@ async def synthesize_morning_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
         model=settings.gemini_model,
         contents=user_prompt,
         config=types.GenerateContentConfig(
-            system_instruction=MORNING_SYNTHESIS_SYSTEM,
+            system_instruction=DAILY_SYNTHESIS_SYSTEM,
             max_output_tokens=8192,
             temperature=0.3,
         ),
@@ -82,75 +80,16 @@ async def synthesize_morning_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
     output_tokens = response.usage_metadata.candidates_token_count or 0
 
     log.info(
-        f"Morning pulse synthesized: {len(analyses)} PDFs, "
+        f"Daily pulse synthesized: {len(analyses)} PDFs, "
         f"{input_tokens} in / {output_tokens} out"
     )
 
     return DailyReport(
         report_date=today,
-        report_type="morning",
+        report_type="daily",
         pdf_count=len(analyses),
         markdown_content=markdown,
         raw_json={"analyses_count": len(analyses)},
-        input_tokens=input_tokens,
-        output_tokens=output_tokens,
-    )
-
-
-async def synthesize_afternoon_pulse(
-    new_analyses: list[PdfAnalysis],
-    morning_summary: str | None = None,
-) -> DailyReport:
-    """Generate the Afternoon Market Pulse from new analyses since morning."""
-    today = date.today().isoformat()
-
-    if not new_analyses:
-        return DailyReport(
-            report_date=today,
-            report_type="afternoon",
-            pdf_count=0,
-            markdown_content=AFTERNOON_NO_NEW_REPORTS,
-        )
-
-    client = _get_client()
-
-    analyses_json = _analyses_to_json(new_analyses)
-
-    morning_context = ""
-    if morning_summary:
-        morning_context = f"\nMorning pulse summary for reference:\n{morning_summary[:3000]}"
-
-    user_prompt = AFTERNOON_SYNTHESIS_USER.format(
-        pdf_count=len(new_analyses),
-        analyses_json=analyses_json,
-        morning_context=morning_context,
-    )
-
-    response = await client.aio.models.generate_content(
-        model=settings.gemini_model,
-        contents=user_prompt,
-        config=types.GenerateContentConfig(
-            system_instruction=AFTERNOON_SYNTHESIS_SYSTEM,
-            max_output_tokens=4096,
-            temperature=0.3,
-        ),
-    )
-
-    markdown = response.text
-    input_tokens = response.usage_metadata.prompt_token_count or 0
-    output_tokens = response.usage_metadata.candidates_token_count or 0
-
-    log.info(
-        f"Afternoon pulse synthesized: {len(new_analyses)} new PDFs, "
-        f"{input_tokens} in / {output_tokens} out"
-    )
-
-    return DailyReport(
-        report_date=today,
-        report_type="afternoon",
-        pdf_count=len(new_analyses),
-        markdown_content=markdown,
-        raw_json={"new_analyses_count": len(new_analyses)},
         input_tokens=input_tokens,
         output_tokens=output_tokens,
     )

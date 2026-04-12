@@ -1,6 +1,7 @@
 """Poll Dropbox for new PDFs and download them."""
 
 import logging
+from datetime import datetime
 from pathlib import Path
 
 import dropbox
@@ -76,8 +77,20 @@ def download_file(dropbox_path: str, local_dest: Path) -> Path:
     return local_dest
 
 
-def list_folder_files(folder_path: str | None = None) -> list[DropboxFileEntry]:
-    """List all PDF files in a folder (non-cursor, for manual/test use)."""
+def list_folder_files(
+    folder_path: str | None = None,
+    since: datetime | None = None,
+    until: datetime | None = None,
+) -> list[DropboxFileEntry]:
+    """List PDF files in a folder, optionally filtered by upload date.
+
+    Args:
+        folder_path: Dropbox folder to scan (default: settings.dropbox_folder_path)
+        since: Only return files modified after this datetime (UTC)
+        until: Only return files modified before this datetime (UTC)
+
+    Returns files sorted by most recently modified first.
+    """
     dbx = _get_client()
     folder = folder_path or settings.dropbox_folder_path
     entries: list[DropboxFileEntry] = []
@@ -86,6 +99,10 @@ def list_folder_files(folder_path: str | None = None) -> list[DropboxFileEntry]:
     while True:
         for entry in result.entries:
             if isinstance(entry, FileMetadata) and entry.name.lower().endswith(".pdf"):
+                if since and entry.server_modified < since:
+                    continue
+                if until and entry.server_modified > until:
+                    continue
                 entries.append(DropboxFileEntry(
                     path=entry.path_display,
                     name=entry.name,
@@ -97,6 +114,7 @@ def list_folder_files(folder_path: str | None = None) -> list[DropboxFileEntry]:
             break
         result = dbx.files_list_folder_continue(result.cursor)
 
+    entries.sort(key=lambda e: e.server_modified, reverse=True)
     return entries
 
 

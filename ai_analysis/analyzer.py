@@ -54,19 +54,73 @@ def _get_rate_limiter() -> RateLimiter:
 
 
 def _parse_json_response(text: str) -> dict:
-    """Extract JSON from model response, handling markdown code blocks."""
+    """Extract JSON from model response, handling markdown code blocks and extra text."""
     text = text.strip()
+
+    # Strip markdown code fences
     if text.startswith("```"):
         lines = text.split("\n")
         if lines[0].startswith("```"):
             lines = lines[1:]
         if lines and lines[-1].strip() == "```":
             lines = lines[:-1]
-        text = "\n".join(lines)
-    return json.loads(text)
+        text = "\n".join(lines).strip()
+
+    # Try direct parse first
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    # Try to find JSON object in the text
+    start = text.find("{")
+    end = text.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        try:
+            return json.loads(text[start:end + 1])
+        except json.JSONDecodeError:
+            pass
+
+    raise json.JSONDecodeError(f"Could not extract valid JSON from response: {text[:500]}", text, 0)
 
 
-async def triage_pdf(file_name: str, text_preview: str) -> TriageResult:
+def _is_tier1_source(source: str, folder_path: str) -> bool:
+    """Check if PDF is from a tier 1 bank (GS, JPM, BofA, MS)."""
+    tier1_keywords = ["goldman", "gs ", "jpmorgan", "jpm", "bank of america", "bofa",
+                      "morgan stanley"]
+    source_lower = source.lower()
+    folder_lower = folder_path.lower()
+    return any(kw in source_lower or kw in folder_lower for kw in tier1_keywords)
+
+
+def _apply_priority_rules(gemini_priority: str, source: str, report_type: str, folder_path: str) -> str:
+    """Override Gemini's priority based on source and topic rules.
+
+    Tier 1 sources (GS, JPM, BofA, MS): floor is MEDIUM — never dropped.
+    Gemini decides HIGH vs MEDIUM based on content (charts, macro, positioning).
+    High-priority topics boost any source to HIGH.
+    """
+    tier1 = _is_tier1_source(source, folder_path)
+
+    # Tier 1 sources: never LOW, floor is MEDIUM
+    if tier1 and gemini_priority == "low":
+        return "medium"
+
+    # Non-tier-1 LOW: respect Gemini's call, skip it
+    if gemini_priority == "low":
+        return "low"
+
+    # High-priority topics boost to HIGH regardless of source
+    high_topics = {"macro", "crypto", "vol_commentary", "morning_briefing",
+                   "sales_trading", "strategy", "derivatives"}
+    if report_type in high_topics:
+        return "high"
+
+    # Otherwise trust Gemini's judgment
+    return gemini_priority
+
+
+async def triage_pdf(file_name: str, text_preview: str, folder_path: str = "") -> TriageResult:
     """Tier 1: Quick classification using Gemini (text-only).
 
     Returns priority (high/medium/low), report_type, key tickers, and summary.
@@ -78,6 +132,7 @@ async def triage_pdf(file_name: str, text_preview: str) -> TriageResult:
 
     user_prompt = TRIAGE_USER_PROMPT.format(
         file_name=file_name,
+        folder_path=folder_path,
         text_preview=preview,
     )
 
@@ -87,8 +142,9 @@ async def triage_pdf(file_name: str, text_preview: str) -> TriageResult:
             contents=user_prompt,
             config=types.GenerateContentConfig(
                 system_instruction=TRIAGE_SYSTEM_PROMPT,
-                max_output_tokens=500,
+                max_output_tokens=1024,
                 temperature=0.1,
+                response_mime_type="application/json",
             ),
         )
 
@@ -98,9 +154,16 @@ async def triage_pdf(file_name: str, text_preview: str) -> TriageResult:
     input_tokens = response.usage_metadata.prompt_token_count or 0
     output_tokens = response.usage_metadata.candidates_token_count or 0
 
+    gemini_priority = data.get("priority", "medium")
+    report_type = data.get("report_type", "other")
+    source = data.get("source", "")
+
+    # Deterministic priority override based on source and topic
+    final_priority = _apply_priority_rules(gemini_priority, source, report_type, folder_path)
+
     return TriageResult(
-        priority=data.get("priority", "medium"),
-        report_type=data.get("report_type", "other"),
+        priority=final_priority,
+        report_type=report_type,
         key_tickers=data.get("key_tickers", []),
         summary=data.get("summary", ""),
         input_tokens=input_tokens,
@@ -178,6 +241,7 @@ async def analyze_pdf_deep(
                 system_instruction=ANALYSIS_SYSTEM_PROMPT,
                 max_output_tokens=settings.gemini_max_tokens,
                 temperature=0.2,
+                response_mime_type="application/json",
             ),
         )
 
@@ -189,8 +253,13 @@ async def analyze_pdf_deep(
 
     try:
         data = _parse_json_response(result_text)
-    except json.JSONDecodeError:
-        log.error(f"Failed to parse analysis JSON for {file_name}: {result_text[:200]}")
+        # Gemini sometimes returns a list instead of a dict — grab first element
+        if isinstance(data, list):
+            data = data[0] if data else {}
+        if not isinstance(data, dict):
+            data = {}
+    except (json.JSONDecodeError, Exception) as e:
+        log.error(f"Failed to parse analysis JSON for {file_name}: {e} — {result_text[:200]}")
         data = {}
 
     analysis = PdfAnalysis(

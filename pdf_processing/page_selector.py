@@ -18,12 +18,19 @@ MARKET_MOVING_KEYWORDS = {
     "upgrade", "downgrade", "price target", "overweight", "underweight",
     "buy", "sell", "outperform", "underperform", "conviction", "initiat",
     "reiterat", "strong buy", "neutral", "hold", "accumulate",
+    "catalyst watch", "positive catalyst", "negative catalyst",
+    "top call", "must read", "top pick", "key changes",
+    "rating change", "tp change", "price target change",
+    "coverage", "assuming coverage",
 }
 
 EARNINGS_KEYWORDS = {
     "eps", "revenue", "guidance", "beat", "miss", "surprise", "consensus",
     "estimate", "earnings", "quarter", "fiscal", "margin", "ebitda",
     "free cash flow", "fcf", "forward pe", "valuation",
+    "earnings review", "earnings preview", "1q26", "2q26", "3q26", "4q26",
+    "fy26", "fy27", "visible alpha", "adj. ebit", "organic growth",
+    "dcf", "sotp", "results season", "reporting season",
 }
 
 MACRO_KEYWORDS = {
@@ -31,6 +38,10 @@ MACRO_KEYWORDS = {
     "inflation", "employment", "payroll", "unemployment", "yield curve",
     "treasury", "dollar", "dxy", "monetary policy", "fiscal policy",
     "soft landing", "recession", "quantitative",
+    "ceasefire", "middle east", "iran", "hormuz", "geopolitical",
+    "sanctions", "oil price", "brent", "crude", "natural gas",
+    "ecb", "boj", "pboc", "rba", "rbnz", "central bank",
+    "ppi", "ipca", "cgpi", "mpc", "nbp",
 }
 
 CRYPTO_KEYWORDS = {
@@ -44,6 +55,10 @@ TRADING_KEYWORDS = {
     "skew", "gamma", "delta", "vega", "theta", "positioning",
     "short interest", "flow", "dark pool", "open interest", "vix",
     "risk reversal", "straddle", "strangle", "iron condor",
+    "v2x", "vol reset", "squeeze", "crowding", "crowded",
+    "put spread", "hedging", "tail risk", "payoff",
+    "momentum", "breakout", "200-day", "moving average", "rsi",
+    "support", "resistance", "mean reversion",
 }
 
 STRUCTURAL_HEADERS = {
@@ -51,6 +66,11 @@ STRUCTURAL_HEADERS = {
     "investment thesis", "executive summary", "key findings",
     "overview", "highlights", "outlook", "forecast", "top picks",
     "action items", "key risks", "catalysts",
+    "top call", "must read", "morning meeting", "today's morning meeting",
+    "also published today", "key changes", "quick takes",
+    "session outlook", "closing playbook", "what to watch",
+    "premium research", "company comments", "industry comments",
+    "what's priced in", "our view", "the bottom line",
 }
 
 DISCLAIMER_KEYWORDS = {
@@ -58,6 +78,10 @@ DISCLAIMER_KEYWORDS = {
     "general disclosures", "analyst certification", "regulatory disclosures",
     "important information", "this document is for", "not for distribution",
     "conflict of interest", "required disclosures",
+    "appendix a-1", "see appendix", "analyst affiliations",
+    "rbc capital markets is the business name", "ubs does and seeks to do business",
+    "this report has been prepared by", "investors should be aware",
+    "past performance is not a guide", "not an offer to sell",
 }
 
 ALL_FINANCIAL_KEYWORDS = (

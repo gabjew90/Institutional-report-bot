@@ -232,13 +232,27 @@ def get_todays_analyses(today: str | None = None) -> list[dict]:
 
 
 def get_analyses_since(since_time: str) -> list[dict]:
+    """Get analyses where the PDF was uploaded to Dropbox after since_time."""
     rows = get_connection().execute(
         """SELECT pa.*, pf.file_name, pf.dropbox_path
            FROM pdf_analyses pa
            JOIN pdf_files pf ON pa.pdf_file_id = pf.id
-           WHERE pa.created_at > ?
-           ORDER BY pa.created_at ASC""",
+           WHERE pf.dropbox_modified_at > ?
+           ORDER BY pf.dropbox_modified_at ASC""",
         (since_time,),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_analyses_between(start_time: str, end_time: str) -> list[dict]:
+    """Get analyses where the PDF was uploaded to Dropbox within a specific time window."""
+    rows = get_connection().execute(
+        """SELECT pa.*, pf.file_name, pf.dropbox_path
+           FROM pdf_analyses pa
+           JOIN pdf_files pf ON pa.pdf_file_id = pf.id
+           WHERE pf.dropbox_modified_at >= ? AND pf.dropbox_modified_at <= ?
+           ORDER BY pf.dropbox_modified_at ASC""",
+        (start_time, end_time),
     ).fetchall()
     return [dict(r) for r in rows]
 
@@ -276,13 +290,12 @@ def mark_report_sent(report_id: int) -> None:
     conn.commit()
 
 
-def get_morning_report_time(today: str | None = None) -> str | None:
-    if today is None:
-        today = date.today().isoformat()
+def get_last_report_time() -> str | None:
+    """Get the created_at timestamp of the most recent daily report, any date."""
     row = get_connection().execute(
         """SELECT created_at FROM daily_reports
-           WHERE report_date = ? AND report_type = 'morning'""",
-        (today,),
+           WHERE report_type = 'daily'
+           ORDER BY created_at DESC LIMIT 1"""
     ).fetchone()
     return row["created_at"] if row else None
 

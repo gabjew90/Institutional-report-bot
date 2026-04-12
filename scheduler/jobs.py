@@ -38,31 +38,16 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         misfire_grace_time=300,
     )
 
-    # Job 3: Morning Market Pulse (8:30 AM ET)
+    # Job 3: Daily Market Pulse (9am PST / 12pm ET)
     scheduler.add_job(
-        _morning_pulse_job,
+        _daily_pulse_job,
         trigger=CronTrigger(
-            hour=settings.morning_pulse_hour,
-            minute=settings.morning_pulse_minute,
+            hour=settings.daily_pulse_hour,
+            minute=settings.daily_pulse_minute,
             timezone=tz,
         ),
-        id="morning_pulse",
-        name="Morning Market Pulse",
-        kwargs={"bot": bot},
-        max_instances=1,
-        misfire_grace_time=600,
-    )
-
-    # Job 4: Afternoon Market Pulse (3:00 PM ET)
-    scheduler.add_job(
-        _afternoon_pulse_job,
-        trigger=CronTrigger(
-            hour=settings.afternoon_pulse_hour,
-            minute=settings.afternoon_pulse_minute,
-            timezone=tz,
-        ),
-        id="afternoon_pulse",
-        name="Afternoon Market Pulse",
+        id="daily_pulse",
+        name="Daily Market Pulse",
         kwargs={"bot": bot},
         max_instances=1,
         misfire_grace_time=600,
@@ -72,8 +57,7 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
         f"process every {settings.process_interval_minutes}min, "
-        f"morning pulse at {settings.morning_pulse_hour}:{settings.morning_pulse_minute:02d} ET, "
-        f"afternoon pulse at {settings.afternoon_pulse_hour}:{settings.afternoon_pulse_minute:02d} ET"
+        f"daily pulse at {settings.daily_pulse_hour}:{settings.daily_pulse_minute:02d} ET"
     )
 
     return scheduler
@@ -101,27 +85,14 @@ async def _process_queue_job():
         log.error(f"Queue processing failed: {e}", exc_info=True)
 
 
-async def _morning_pulse_job(bot=None):
-    """Scheduled job: generate and send Morning Market Pulse."""
+async def _daily_pulse_job(bot=None):
+    """Scheduled job: generate and send Daily Market Pulse."""
     try:
-        from pipeline.orchestrator import run_morning_pulse
-        report = await run_morning_pulse(bot)
+        from pipeline.orchestrator import run_daily_pulse
+        report = await run_daily_pulse(bot)
         if report:
-            log.info(f"Morning pulse delivered: {report.pdf_count} reports")
+            log.info(f"Daily pulse delivered: {report.pdf_count} reports")
         else:
-            log.warning("Morning pulse: no reports available")
+            log.warning("Daily pulse: no reports available")
     except Exception as e:
-        log.error(f"Morning pulse failed: {e}", exc_info=True)
-
-
-async def _afternoon_pulse_job(bot=None):
-    """Scheduled job: generate and send Afternoon Market Pulse."""
-    try:
-        from pipeline.orchestrator import run_afternoon_pulse
-        report = await run_afternoon_pulse(bot)
-        if report:
-            log.info(f"Afternoon pulse delivered: {report.pdf_count} new reports")
-        else:
-            log.warning("Afternoon pulse: no new reports")
-    except Exception as e:
-        log.error(f"Afternoon pulse failed: {e}", exc_info=True)
+        log.error(f"Daily pulse failed: {e}", exc_info=True)

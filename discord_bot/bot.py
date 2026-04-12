@@ -29,27 +29,38 @@ def create_bot() -> commands.Bot:
         except Exception as e:
             log.error(f"Failed to sync commands: {e}")
 
-    @bot.tree.command(name="pulse", description="Manually trigger a Market Pulse report")
+    @bot.tree.command(name="pulse", description="Generate a Market Pulse report")
     @app_commands.describe(
-        pulse_type="Type of pulse to generate (morning or afternoon)"
+        hours="Hours to look back (e.g. 24, 48). Leave empty for since last report.",
     )
-    @app_commands.choices(pulse_type=[
-        app_commands.Choice(name="Morning", value="morning"),
-        app_commands.Choice(name="Afternoon", value="afternoon"),
-    ])
-    async def pulse_command(interaction: discord.Interaction, pulse_type: str = "morning"):
+    async def pulse_command(
+        interaction: discord.Interaction,
+        hours: int | None = None,
+    ):
         await interaction.response.defer(thinking=True)
 
         try:
+            from datetime import datetime, timedelta
             from pipeline.orchestrator import run_manual_pulse
-            report = await run_manual_pulse(pulse_type)
+
+            parsed_since = None
+            if hours:
+                if hours > 48:
+                    await interaction.followup.send("Max lookback is 48 hours.")
+                    return
+                parsed_since = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
+
+            report = await run_manual_pulse(since=parsed_since)
 
             if report:
                 from report.formatter import format_report_embeds
                 embeds = format_report_embeds(report)
-                await send_embeds(interaction.channel, embeds)
+                success = await send_embeds(interaction.channel, embeds)
+                if success and report.report_id:
+                    db.mark_report_sent(report.report_id)
+                label = f"last {hours}h" if hours else "since last report"
                 await interaction.followup.send(
-                    f"Market Pulse ({pulse_type}) generated from {report.pdf_count} reports."
+                    f"Market Pulse generated from {report.pdf_count} reports ({label})."
                 )
             else:
                 await interaction.followup.send("No reports available to generate a pulse.")

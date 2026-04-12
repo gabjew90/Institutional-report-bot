@@ -15,7 +15,7 @@ from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep, analyze_batch
 from ai_analysis.models import PdfAnalysis
 from pdf_processing.extractor import extract_text_per_page, extract_pdf
 from pdf_processing.page_selector import select_pages
-from report.synthesizer import synthesize_morning_pulse, synthesize_afternoon_pulse
+from report.synthesizer import synthesize_daily_pulse
 from report.models import DailyReport
 from config import settings
 import db
@@ -183,24 +183,28 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
     return analyses
 
 
-async def run_morning_pulse(bot=None) -> DailyReport | None:
-    """Generate and optionally send the Morning Market Pulse.
+async def run_daily_pulse(bot=None) -> DailyReport | None:
+    """Generate and optionally send the Daily Market Pulse.
 
-    1. Process any remaining pending PDFs
-    2. Load all today's analyses
-    3. Synthesize morning pulse
-    4. Store in DB
-    5. Send to Discord (if bot provided)
+    Grabs all analyses since the last report was generated.
+    If no prior report exists, falls back to today's analyses.
     """
-    log.info("=== Starting Morning Market Pulse generation ===")
+    log.info("=== Starting Daily Market Pulse generation ===")
 
     # Process remaining pending PDFs
     await process_pending_queue()
 
-    # Load all today's analyses
-    rows = db.get_todays_analyses()
+    # Load analyses since the last report
+    last_report_time = db.get_last_report_time()
+    if last_report_time:
+        rows = db.get_analyses_since(last_report_time)
+        log.info(f"Loading analyses since last report at {last_report_time}")
+    else:
+        rows = db.get_todays_analyses()
+        log.info("No prior report found, loading today's analyses")
+
     if not rows:
-        log.warning("No analyses available for morning pulse")
+        log.warning("No analyses available for daily pulse")
         return None
 
     analyses = _load_analyses_from_db(rows)
@@ -212,17 +216,17 @@ async def run_morning_pulse(bot=None) -> DailyReport | None:
     pending = db.get_pending_pdfs()
     pending_note = ""
     if pending:
-        pending_note = f"\n\n*Note: {len(pending)} additional reports are still being processed and will be included in the afternoon update.*"
+        pending_note = f"\n\n*Note: {len(pending)} additional reports are still being processed.*"
 
     # Synthesize
-    report = await synthesize_morning_pulse(analyses)
+    report = await synthesize_daily_pulse(analyses)
     if pending_note:
         report.markdown_content += pending_note
 
     # Store in database
     report_id = db.insert_daily_report(
         report_date=report.report_date,
-        report_type="morning",
+        report_type="daily",
         report_json=json.dumps(report.raw_json),
         report_markdown=report.markdown_content,
         pdf_count=report.pdf_count,
@@ -241,83 +245,47 @@ async def run_morning_pulse(bot=None) -> DailyReport | None:
                 success = await send_embeds(channel, embeds)
                 if success:
                     db.mark_report_sent(report_id)
-                    log.info("Morning pulse sent to Discord")
+                    log.info("Daily pulse sent to Discord")
             else:
                 log.error(f"Discord channel {settings.discord_channel_id} not found")
         except Exception as e:
-            log.error(f"Failed to send morning pulse to Discord: {e}", exc_info=True)
+            log.error(f"Failed to send daily pulse to Discord: {e}", exc_info=True)
 
-    log.info(f"=== Morning Market Pulse complete: {report.pdf_count} reports ===")
+    log.info(f"=== Daily Market Pulse complete: {report.pdf_count} reports ===")
     return report
 
 
-async def run_afternoon_pulse(bot=None) -> DailyReport | None:
-    """Generate and optionally send the Afternoon Market Pulse."""
-    log.info("=== Starting Afternoon Market Pulse generation ===")
+async def run_manual_pulse(
+    since: str | None = None,
+    until: str | None = None,
+    persist: bool = True,
+) -> DailyReport | None:
+    """Run a pulse generation manually with optional time window.
 
-    # Process any new pending PDFs
-    await process_pending_queue()
+    Args:
+        since: ISO datetime string for start of window (e.g. "2026-04-07T00:00:00")
+        until: ISO datetime string for end of window (e.g. "2026-04-08T00:00:00")
+        persist: If True, save the report to daily_reports. Set False for dry-run tests.
 
-    # Get morning report time to find new analyses
-    morning_time = db.get_morning_report_time()
-
-    if morning_time:
-        rows = db.get_analyses_since(morning_time)
-        # Also get morning report content for context
-        conn = db.get_connection()
-        morning_row = conn.execute(
-            "SELECT report_markdown FROM daily_reports WHERE report_date = ? AND report_type = 'morning'",
-            (date.today().isoformat(),),
-        ).fetchone()
-        morning_summary = morning_row["report_markdown"][:3000] if morning_row else None
-    else:
-        # No morning report — use all of today's analyses
-        rows = db.get_todays_analyses()
-        morning_summary = None
-
-    analyses = _load_analyses_from_db(rows) if rows else []
-
-    # Synthesize
-    report = await synthesize_afternoon_pulse(analyses, morning_summary)
-
-    # Store in database
-    report_id = db.insert_daily_report(
-        report_date=report.report_date,
-        report_type="afternoon",
-        report_json=json.dumps(report.raw_json),
-        report_markdown=report.markdown_content,
-        pdf_count=report.pdf_count,
-        input_tokens=report.input_tokens,
-        output_tokens=report.output_tokens,
-    )
-
-    # Send to Discord
-    if bot:
-        try:
-            channel = bot.get_channel(settings.discord_channel_id)
-            if channel:
-                from report.formatter import format_report_embeds
-                from discord_bot.sender import send_embeds
-                embeds = format_report_embeds(report)
-                success = await send_embeds(channel, embeds)
-                if success:
-                    db.mark_report_sent(report_id)
-                    log.info("Afternoon pulse sent to Discord")
-            else:
-                log.error(f"Discord channel {settings.discord_channel_id} not found")
-        except Exception as e:
-            log.error(f"Failed to send afternoon pulse to Discord: {e}", exc_info=True)
-
-    log.info(f"=== Afternoon Market Pulse complete: {report.pdf_count} new reports ===")
-    return report
-
-
-async def run_manual_pulse(pulse_type: str = "morning") -> DailyReport | None:
-    """Run a pulse generation manually (from Discord /pulse command or test_pulse.py)."""
+    If neither since nor until is provided, behaves like the scheduled pulse (since last report).
+    If only `since` is provided, gets everything from that time to now.
+    If both are provided, gets everything in that window.
+    """
     # Process pending first
     await process_pending_queue()
 
-    rows = db.get_todays_analyses()
+    if since and until:
+        rows = db.get_analyses_between(since, until)
+    elif since:
+        rows = db.get_analyses_since(since)
+    else:
+        # Same logic as scheduled: since last report, or today
+        last_report_time = db.get_last_report_time()
+        if last_report_time:
+            rows = db.get_analyses_since(last_report_time)
+        else:
+            rows = db.get_todays_analyses()
+
     if not rows:
         return None
 
@@ -325,13 +293,18 @@ async def run_manual_pulse(pulse_type: str = "morning") -> DailyReport | None:
     if not analyses:
         return None
 
-    if pulse_type == "morning":
-        return await synthesize_morning_pulse(analyses)
-    else:
-        morning_time = db.get_morning_report_time()
-        if morning_time:
-            new_rows = db.get_analyses_since(morning_time)
-            new_analyses = _load_analyses_from_db(new_rows) if new_rows else []
-        else:
-            new_analyses = analyses
-        return await synthesize_afternoon_pulse(new_analyses)
+    report = await synthesize_daily_pulse(analyses)
+
+    if persist:
+        report_id = db.insert_daily_report(
+            report_date=report.report_date,
+            report_type="daily",
+            report_json=json.dumps(report.raw_json),
+            report_markdown=report.markdown_content,
+            pdf_count=report.pdf_count,
+            input_tokens=report.input_tokens,
+            output_tokens=report.output_tokens,
+        )
+        report.report_id = report_id
+
+    return report

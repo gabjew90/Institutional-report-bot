@@ -16,18 +16,11 @@ log = logging.getLogger(__name__)
 
 # Section color mapping
 SECTION_COLORS = {
-    "SESSION OUTLOOK": 0xFFD700,       # Gold
-    "CLOSING PLAYBOOK": 0xFFD700,      # Gold
-    "KEY MARKET MOVERS": 0xFF8C00,     # Dark Orange
-    "NEW MARKET MOVERS": 0xFF8C00,     # Dark Orange
-    "SECTOR ROTATIONS": 0x3498DB,      # Blue
-    "EARNINGS": 0x2ECC71,              # Green
-    "MACRO": 0x9B59B6,                 # Purple
-    "CRYPTO": 0xF39C12,               # Orange
-    "TRADE IDEAS": 0x2ECC71,           # Green
-    "OVERNIGHT POSITIONING": 0x2ECC71, # Green
-    "RISK RADAR": 0xE74C3C,            # Red
-    "SESSION TAKEAWAYS": 0x3498DB,     # Blue
+    "WHAT HAPPENED": 0xFFD700,          # Gold
+    "WHAT TO WATCH": 0xFF8C00,          # Dark Orange
+    "SMART MONEY": 0x3498DB,            # Blue
+    "CRYPTO": 0xF39C12,                 # Orange
+    "COMING UP": 0x2ECC71,              # Green
 }
 
 # Maximum chars per embed description
@@ -94,20 +87,10 @@ def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
     embeds: list[discord.Embed] = []
     today = report.report_date or date.today().isoformat()
 
-    # Header embed
-    if report.report_type == "morning":
-        title = f"MORNING MARKET PULSE | {today}"
-        description = f"Pre-Market Edition | {report.pdf_count} institutional research reports analyzed"
-        color = 0xFFD700
-    else:
-        title = f"AFTERNOON MARKET PULSE | {today}"
-        description = f"Pre-Close Edition | {report.pdf_count} new reports since morning"
-        color = 0xFF8C00
-
     header_embed = discord.Embed(
-        title=title,
-        description=description,
-        color=color,
+        title=f"MARKET PULSE | {today}",
+        description=f"{report.pdf_count} institutional research reports analyzed",
+        color=0xFFD700,
     )
     embeds.append(header_embed)
 
@@ -133,19 +116,15 @@ def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
     # Footer embed
     footer_embed = discord.Embed(
         description=(
-            "*Based on institutional research synthesis. Not financial advice. "
-            "Do your own due diligence.*"
+            "*Sourced from Goldman Sachs, Citi, and Bank of America research. "
+            "Not financial advice.*"
         ),
         color=0x95A5A6,
     )
-    if report.report_type == "morning":
-        footer_embed.set_footer(text="Afternoon update at 3:00 PM ET")
-    else:
-        footer_embed.set_footer(text="Next morning pulse at 8:30 AM ET")
-
+    footer_embed.set_footer(text="Next pulse tomorrow at 9:00 AM PST")
     embeds.append(footer_embed)
 
-    log.info(f"Formatted {len(embeds)} embeds for {report.report_type} pulse")
+    log.info(f"Formatted {len(embeds)} embeds for daily pulse")
     return embeds
 
 
@@ -156,20 +135,12 @@ def format_report_plain(report: DailyReport) -> list[str]:
     """
     today = report.report_date or date.today().isoformat()
 
-    if report.report_type == "morning":
-        header = (
-            f"{'=' * 50}\n"
-            f"MORNING MARKET PULSE | {today}\n"
-            f"Pre-Market Edition | {report.pdf_count} reports analyzed\n"
-            f"{'=' * 50}\n"
-        )
-    else:
-        header = (
-            f"{'=' * 50}\n"
-            f"AFTERNOON MARKET PULSE | {today}\n"
-            f"Pre-Close Edition | {report.pdf_count} new reports\n"
-            f"{'=' * 50}\n"
-        )
+    header = (
+        f"{'=' * 50}\n"
+        f"MARKET PULSE | {today}\n"
+        f"{report.pdf_count} reports analyzed\n"
+        f"{'=' * 50}\n"
+    )
 
     full_text = header + "\n" + report.markdown_content
 
