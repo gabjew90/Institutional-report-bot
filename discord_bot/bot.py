@@ -91,29 +91,86 @@ def create_bot() -> commands.Bot:
             log.error(f"Seed cursor failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
-    @bot.tree.command(name="status", description="Show pipeline health and stats")
+    @bot.tree.command(name="status", description="Show pipeline health and DB state")
     async def status_command(interaction: discord.Interaction):
-        stats = db.get_today_stats()
+        today = db.get_today_stats()
+        full = db.get_pipeline_stats()
 
         embed = discord.Embed(
             title="Pipeline Status",
+            description="PDFs are processed then deleted from disk. Only analysis JSON is stored in DB.",
             color=0x3498DB,
         )
-        embed.add_field(name="PDFs Today", value=str(stats["total"]), inline=True)
-        embed.add_field(name="Processed", value=str(stats["processed"]), inline=True)
-        embed.add_field(name="Pending", value=str(stats["pending"]), inline=True)
-        embed.add_field(name="Failed", value=str(stats["failed"]), inline=True)
+
+        # Today
         embed.add_field(
-            name="Tokens Used",
-            value=f"In: {stats['input_tokens']:,} | Out: {stats['output_tokens']:,}",
+            name="Today",
+            value=(
+                f"Ingested: **{today['total']}** | "
+                f"Processed: **{today['processed']}** | "
+                f"Pending: **{today['pending']}** | "
+                f"Failed: **{today['failed']}**"
+            ),
             inline=False,
         )
-        if stats["last_report_type"]:
+
+        # All-time DB state
+        status_parts = [f"{s}: {c}" for s, c in full["status_counts"].items()]
+        embed.add_field(
+            name=f"Total in DB ({full['total_pdfs']} PDFs)",
+            value=" | ".join(status_parts) or "empty",
+            inline=False,
+        )
+
+        # Priority breakdown
+        pri_parts = [f"{p}: {c}" for p, c in full["priority_counts"].items()]
+        if pri_parts:
             embed.add_field(
-                name="Last Report",
-                value=f"{stats['last_report_type']} at {stats['last_report_sent'] or 'not sent'}",
+                name="Priority mix",
+                value=" | ".join(pri_parts),
                 inline=False,
             )
+
+        # Upload date range — tells user how far back the analyses reach
+        if full["earliest_upload"] and full["latest_upload"]:
+            earliest = full["earliest_upload"][:16].replace("T", " ")
+            latest = full["latest_upload"][:16].replace("T", " ")
+            embed.add_field(
+                name="Upload range in DB",
+                value=f"Earliest: `{earliest}`\nLatest: `{latest}`",
+                inline=False,
+            )
+
+        # Tokens all-time
+        embed.add_field(
+            name="Tokens (all-time)",
+            value=f"In: {full['input_tokens']:,} | Out: {full['output_tokens']:,}",
+            inline=False,
+        )
+
+        # Pulse history
+        pulse_lines = []
+        if full["last_daily_pulse"]:
+            d = full["last_daily_pulse"]
+            created = d["created_at"][:16].replace("T", " ")
+            sent = "sent" if d["discord_sent_at"] else "NOT sent"
+            pulse_lines.append(f"**Last scheduled:** {created} ({d['pdf_count']} PDFs, {sent})")
+        else:
+            pulse_lines.append("**Last scheduled:** never")
+        if full["last_manual_pulse"]:
+            m = full["last_manual_pulse"]
+            created = m["created_at"][:16].replace("T", " ")
+            pulse_lines.append(f"**Last manual:** {created} ({m['pdf_count']} PDFs)")
+        embed.add_field(name="Pulses", value="\n".join(pulse_lines), inline=False)
+
+        # Dropbox state
+        cursor_state = "✅ seeded" if full["cursor_set"] else "❌ unset (next poll will backfill!)"
+        last_poll = full["last_poll_at"][:16].replace("T", " ") if full["last_poll_at"] else "never"
+        embed.add_field(
+            name="Dropbox watcher",
+            value=f"Cursor: {cursor_state}\nLast poll: `{last_poll}`",
+            inline=False,
+        )
 
         await interaction.response.send_message(embed=embed)
 

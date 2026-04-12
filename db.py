@@ -356,3 +356,67 @@ def get_today_stats(today: str | None = None) -> dict:
         "last_report_type": last_report["report_type"] if last_report else None,
         "last_report_sent": last_report["discord_sent_at"] if last_report else None,
     }
+
+
+def get_pipeline_stats() -> dict:
+    """Full-picture stats across the whole DB, not just today."""
+    conn = get_connection()
+
+    total = conn.execute("SELECT COUNT(*) as c FROM pdf_files").fetchone()["c"]
+
+    # Status breakdown
+    status_rows = conn.execute(
+        "SELECT status, COUNT(*) as c FROM pdf_files GROUP BY status"
+    ).fetchall()
+    status_counts = {r["status"]: r["c"] for r in status_rows}
+
+    # Priority breakdown of analyses
+    priority_rows = conn.execute(
+        "SELECT priority, COUNT(*) as c FROM pdf_analyses GROUP BY priority"
+    ).fetchall()
+    priority_counts = {r["priority"]: r["c"] for r in priority_rows}
+
+    # Upload date range (earliest/latest PDF upload in DB)
+    date_range = conn.execute(
+        """SELECT MIN(dropbox_modified_at) as earliest,
+                  MAX(dropbox_modified_at) as latest
+           FROM pdf_files WHERE dropbox_modified_at IS NOT NULL"""
+    ).fetchone()
+
+    # Token totals (all-time)
+    tokens = conn.execute(
+        """SELECT COALESCE(SUM(input_tokens_used), 0) as input_t,
+                  COALESCE(SUM(output_tokens_used), 0) as output_t
+           FROM pdf_analyses"""
+    ).fetchone()
+
+    # Last scheduled pulse
+    last_daily = conn.execute(
+        """SELECT created_at, discord_sent_at, pdf_count
+           FROM daily_reports WHERE report_type = 'daily'
+           ORDER BY created_at DESC LIMIT 1"""
+    ).fetchone()
+
+    # Last manual pulse
+    last_manual = conn.execute(
+        """SELECT created_at, discord_sent_at, pdf_count
+           FROM daily_reports WHERE report_type = 'manual'
+           ORDER BY created_at DESC LIMIT 1"""
+    ).fetchone()
+
+    # Dropbox cursor state
+    cursor_row = conn.execute("SELECT cursor, last_poll_at FROM dropbox_state WHERE id = 1").fetchone()
+
+    return {
+        "total_pdfs": total,
+        "status_counts": status_counts,
+        "priority_counts": priority_counts,
+        "earliest_upload": date_range["earliest"] if date_range else None,
+        "latest_upload": date_range["latest"] if date_range else None,
+        "input_tokens": tokens["input_t"],
+        "output_tokens": tokens["output_t"],
+        "last_daily_pulse": dict(last_daily) if last_daily else None,
+        "last_manual_pulse": dict(last_manual) if last_manual else None,
+        "cursor_set": bool(cursor_row and cursor_row["cursor"]),
+        "last_poll_at": cursor_row["last_poll_at"] if cursor_row else None,
+    }
