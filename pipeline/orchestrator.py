@@ -13,6 +13,7 @@ from pathlib import Path
 
 from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep, analyze_batch
 from ai_analysis.models import PdfAnalysis
+from dropbox_client.watcher import list_folder_files, download_file, _get_client
 from pdf_processing.extractor import extract_text_per_page, extract_pdf
 from pdf_processing.page_selector import select_pages
 from report.synthesizer import synthesize_daily_pulse
@@ -253,6 +254,78 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
 
     log.info(f"=== Daily Market Pulse complete: {report.pdf_count} reports ===")
     return report
+
+
+async def ingest_recent_pdfs(hours: int) -> dict:
+    """Ingest PDFs from Dropbox uploaded in the last N hours.
+
+    Downloads, triages, and deep-analyzes each new PDF. Skips ones already in DB.
+    Returns a stats dict: {found, new, processed, skipped_low, failed, input_tokens, output_tokens}.
+    """
+    from datetime import timedelta
+    since = datetime.utcnow() - timedelta(hours=hours)
+    log.info(f"Ingest: listing Dropbox files since {since.isoformat()}")
+
+    files = list_folder_files(settings.dropbox_folder_path, since=since)
+    stats = {"found": len(files), "new": 0, "processed": 0, "skipped_low": 0,
+             "failed": 0, "input_tokens": 0, "output_tokens": 0}
+
+    download_dir = Path(settings.pdf_download_dir)
+    download_dir.mkdir(parents=True, exist_ok=True)
+
+    for entry in files:
+        if db.get_pdf_by_path(entry.path):
+            continue
+        stats["new"] += 1
+
+        local_path = download_dir / entry.name.replace("/", "_")
+        if local_path.exists():
+            stem, suffix, counter = local_path.stem, local_path.suffix, 1
+            while local_path.exists():
+                local_path = download_dir / f"{stem}_{counter}{suffix}"
+                counter += 1
+
+        try:
+            download_file(entry.path, local_path)
+            pdf_id = db.insert_pdf_file(
+                dropbox_path=entry.path, file_name=entry.name,
+                local_path=str(local_path), dropbox_rev=entry.rev,
+                file_size_bytes=entry.size, dropbox_modified_at=entry.server_modified,
+            )
+            db.log_event(pdf_id, "download", "completed")
+
+            pdf_data = db.get_pdf_by_path(entry.path)
+            analysis = await process_single_pdf(pdf_data)
+            if analysis:
+                stats["processed"] += 1
+                stats["input_tokens"] += analysis.input_tokens
+                stats["output_tokens"] += analysis.output_tokens
+                if analysis.priority == "low":
+                    stats["skipped_low"] += 1
+            else:
+                stats["failed"] += 1
+        except Exception as e:
+            log.error(f"Ingest failed for {entry.name}: {e}")
+            stats["failed"] += 1
+
+    log.info(f"Ingest complete: {stats}")
+    return stats
+
+
+def seed_dropbox_cursor_to_now() -> str:
+    """Seed Dropbox cursor to current state without enumerating files.
+
+    After this, the next watcher poll will only see NEW uploads.
+    Returns the cursor timestamp.
+    """
+    dbx = _get_client()
+    result = dbx.files_list_folder_get_latest_cursor(
+        settings.dropbox_folder_path, recursive=True
+    )
+    db.update_dropbox_cursor(result.cursor)
+    ts = datetime.utcnow().isoformat()
+    log.info(f"Dropbox cursor seeded to current state at {ts}")
+    return ts
 
 
 async def run_manual_pulse(

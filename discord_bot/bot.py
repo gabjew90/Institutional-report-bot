@@ -29,28 +29,13 @@ def create_bot() -> commands.Bot:
         except Exception as e:
             log.error(f"Failed to sync commands: {e}")
 
-    @bot.tree.command(name="pulse", description="Generate a Market Pulse report")
-    @app_commands.describe(
-        hours="Hours to look back (e.g. 24, 48). Leave empty for since last report.",
-    )
-    async def pulse_command(
-        interaction: discord.Interaction,
-        hours: int | None = None,
-    ):
+    @bot.tree.command(name="pulse", description="Generate a Market Pulse from analyses since the last report")
+    async def pulse_command(interaction: discord.Interaction):
         await interaction.response.defer(thinking=True)
 
         try:
-            from datetime import datetime, timedelta
             from pipeline.orchestrator import run_manual_pulse
-
-            parsed_since = None
-            if hours:
-                if hours > 48:
-                    await interaction.followup.send("Max lookback is 48 hours.")
-                    return
-                parsed_since = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
-
-            report = await run_manual_pulse(since=parsed_since)
+            report = await run_manual_pulse()
 
             if report:
                 from report.formatter import format_report_embeds
@@ -58,15 +43,53 @@ def create_bot() -> commands.Bot:
                 success = await send_embeds(interaction.channel, embeds)
                 if success and report.report_id:
                     db.mark_report_sent(report.report_id)
-                label = f"last {hours}h" if hours else "since last report"
                 await interaction.followup.send(
-                    f"Market Pulse generated from {report.pdf_count} reports ({label})."
+                    f"Market Pulse generated from {report.pdf_count} reports."
                 )
             else:
-                await interaction.followup.send("No reports available to generate a pulse.")
+                await interaction.followup.send(
+                    "No analyses available. Run `/load 24` first to ingest recent PDFs."
+                )
         except Exception as e:
             log.error(f"Manual pulse failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error generating pulse: {str(e)[:200]}")
+
+    @bot.tree.command(name="load", description="Ingest + analyze PDFs uploaded to Dropbox in the last N hours")
+    @app_commands.describe(hours="How many hours of recent PDFs to load (max 48)")
+    async def load_command(interaction: discord.Interaction, hours: int):
+        if hours < 1 or hours > 48:
+            await interaction.response.send_message("Hours must be between 1 and 48.")
+            return
+        await interaction.response.defer(thinking=True)
+
+        try:
+            from pipeline.orchestrator import ingest_recent_pdfs
+            stats = await ingest_recent_pdfs(hours)
+            await interaction.followup.send(
+                f"**Load complete ({hours}h window)**\n"
+                f"Found: {stats['found']} | New: {stats['new']} | "
+                f"Processed: {stats['processed']} | Low (skipped deep): {stats['skipped_low']} | "
+                f"Failed: {stats['failed']}\n"
+                f"Tokens: {stats['input_tokens']:,} in / {stats['output_tokens']:,} out\n"
+                f"Run `/pulse` to synthesize a report."
+            )
+        except Exception as e:
+            log.error(f"Load failed: {e}", exc_info=True)
+            await interaction.followup.send(f"Error loading PDFs: {str(e)[:200]}")
+
+    @bot.tree.command(name="seedcursor", description="Seed Dropbox cursor to current state (skips backfill on next poll)")
+    async def seedcursor_command(interaction: discord.Interaction):
+        await interaction.response.defer(thinking=True)
+        try:
+            from pipeline.orchestrator import seed_dropbox_cursor_to_now
+            ts = seed_dropbox_cursor_to_now()
+            await interaction.followup.send(
+                f"Dropbox cursor seeded at `{ts}`. "
+                "Next 15-min poll will only pick up NEW uploads."
+            )
+        except Exception as e:
+            log.error(f"Seed cursor failed: {e}", exc_info=True)
+            await interaction.followup.send(f"Error: {str(e)[:200]}")
 
     @bot.tree.command(name="status", description="Show pipeline health and stats")
     async def status_command(interaction: discord.Interaction):

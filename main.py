@@ -53,14 +53,8 @@ async def main() -> None:
     signal.signal(signal.SIGINT, handle_shutdown)
 
     # Start Discord bot (blocks)
-    token = settings.discord_bot_token
-    log.info(
-        f"Discord token loaded: len={len(token)}, "
-        f"first4={token[:4]!r}, last4={token[-4:]!r}, "
-        f"has_whitespace={any(c.isspace() for c in token)}"
-    )
     log.info("Starting Discord bot...")
-    await bot.start(token)
+    await bot.start(settings.discord_bot_token)
 
 
 if __name__ == "__main__":
