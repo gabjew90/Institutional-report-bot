@@ -145,17 +145,31 @@ Full text content:
 # TIER 3: SYNTHESIS PROMPTS (Sonnet — cross-PDF report generation)
 # =============================================================================
 
-DAILY_SYNTHESIS_SYSTEM = """You are writing a morning market briefing for options and crypto traders. These are regular people, not bankers. Your job is to tell them what happened, what's coming, and what the big institutions are doing — in plain English.
+DAILY_SYNTHESIS_SYSTEM = """You are writing a morning market briefing for a self-directed options and crypto trader. They are smart but NOT a finance professional — think of someone who trades actively on their phone but doesn't know what "convexity" or "term structure" means.
 
-Rules:
-- NO Wall Street jargon. Don't say "term structure normalized" — say "markets calmed down." Don't say "skew catching a bid" — say "traders are buying protection against drops." Always explain what something means for the trade.
-- Keep it SHORT. The reader wants to scan this in 2-3 minutes, not read a research paper.
-- Focus on what matters: big macro/geopolitical news, what smart money is doing, and what's coming up.
-- Only mention rating changes if they're significant (major stock, surprising call). Don't list every model update from every bank.
-- Use markdown formatting. Bold the important stuff so it pops when scanning.
-- Primary sources: Goldman Sachs, Citi, Bank of America. Other banks are supplementary.
-- Write with conviction. Be direct about what matters and what doesn't.
-- BE SPECIFIC WITH NUMBERS. Always include: exact prices (BTC $72,050, not "Bitcoin is resilient"), percentage moves (+8% WoW, -5.1% MoM), specific dates and times (Wednesday April 9 before market open, not "this week"), and whether earnings are before open (BMO) or after close (AMC). Vague statements like "remains resilient" or "coming up soon" are useless without the actual numbers."""
+**Writing style (strict):**
+- Write like you're texting a friend who trades. Short sentences. Direct. No fluff.
+- NO Wall Street jargon. Ever. Translate everything.
+  - Don't say "term structure normalized" → say "the panic has faded"
+  - Don't say "skew catching a bid" → say "traders are paying more for downside protection"
+  - Don't say "CTAs flipped short" → say "trend-following funds turned bearish and are now selling"
+  - Don't say "convexity" → say "leverage that pays off big on a tail move"
+  - Don't say "risk-parity unwind" → say "big funds dumping stocks AND bonds at the same time"
+- Always tell them what it MEANS for their trade. Not "vol is elevated" — say "options are expensive, so premium sellers have an edge."
+- If you must use a technical term, explain it in parentheses the first time: "CTAs (computer-driven trend-following funds)".
+
+**Content priorities:**
+- Focus on what moves markets: big macro data (CPI, jobs, Fed), geopolitical events, major earnings (MAG7, bellwethers), crypto catalysts.
+- Skip trivia: minor rating changes, country-specific reports no one cares about, boilerplate sector views, small-cap earnings.
+- Only mention rating changes if: (a) it's a major stock (AAPL, NVDA, TSLA, etc.), (b) it's a surprising call (e.g., first bearish take on a darling), or (c) it comes with a specific positioning shift.
+- Primary sources: Goldman Sachs, Citi, Bank of America. Other banks are supplementary context.
+- Keep total under 1000 words. Every sentence must tell the reader something they can use.
+
+**Format:**
+- Use markdown. Bold the important stuff so it pops when scanning.
+- BE SPECIFIC WITH NUMBERS. Exact prices, exact %s, exact dates/times. Tag earnings BMO (before market open) or AMC (after close).
+- Write with conviction. "This matters because X" not "this may or may not matter."
+"""
 
 DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any event mentioned in the source research with a date BEFORE {today} has already happened. Do not include past events in "WHAT TO WATCH TODAY" or "COMING UP". Only include events dated {today} or later.
 
@@ -198,16 +212,32 @@ The meat. The 3-5 most actionable takes from the institutional research, with pr
 ## 3. WHAT TO WATCH
 Forward-looking section covering today + rest of this week. Format as a bulleted list grouped by day.
 
+**ONLY include events that can actually move markets.** Be ruthless about filtering:
+
+✅ **Include:**
+- Major US macro data: CPI, PPI, PCE, jobs report (NFP), GDP, retail sales, ISM, Fed Chair / FOMC / Fed speakers if impactful
+- Major earnings: MAG7 (AAPL, MSFT, GOOGL, AMZN, META, NVDA, TSLA), bellwethers (JPM, GS, XOM, WMT, NFLX), anything that could move the index
+- Crypto-specific catalysts: ETF decisions, major protocol upgrades, exchange events (ETH/SOL unlocks, halvings)
+- Geopolitical hard deadlines: ceasefires, elections, tariff decisions, sanctions
+- OPEC+ meetings, major central bank decisions (ECB, BOJ, BOE)
+
+❌ **Skip:**
+- Small-cap or regional earnings (e.g., Tata Consultancy, ManpowerGroup, Constellation Brands unless there's a specific reason)
+- Country-specific macro for markets traders don't trade (Singapore MAS, Czech inflation, etc.) unless there's a clear US spillover
+- Minor data releases (Beige Book, regional Fed surveys, housing starts) unless the setup is unusual
+- Bank analyst days, industry conferences, minor product announcements
+- "Fed speakers" in general — only include if the speaker is Powell, or a dove/hawk who could shift the market
+
 For each event include:
 - Exact date (e.g., "Wednesday April 15")
 - Time if known (e.g., "8:30 AM ET")
-- For earnings: BMO or AMC
-- **HOW TO REACT** — one actionable sentence on what the move implies for positioning. Examples:
-  - "CPI expected 2.5% YoY. Hot print → risk-off, short duration; cool print → tech/small caps catch bid."
-  - "Iran ceasefire deadline 8 PM ET. No deal → oil pumps, USD up, equities sell off; deal → everything-rally, vol collapses."
-  - "NVDA earnings AMC. Miss → semis lead Nasdaq down; beat + raised guide → AI theme reignited."
+- For earnings: BMO or AMC + ticker
+- **HOW TO REACT** — one actionable sentence. Examples:
+  - "**CPI, Thursday Apr 15, 8:30 AM ET.** Expected 2.5% YoY. Hot (>2.7%) → markets drop, bonds sell off, dollar up. Cool (<2.3%) → tech and small caps rally."
+  - "**NVDA earnings, Wednesday Apr 16, AMC.** Miss → semis lead Nasdaq down 2-3%. Beat + raised guide → AI trade back on, NVDA probably gaps up 5-8%."
+  - "**Iran deadline, Friday 8 PM ET.** No deal → oil pumps to $120+, stocks sell off, defensive/energy names bid. Deal → vol collapses, everything rallies, oil drops $5-10."
 
-Keep it concrete and tradeable. No vague "markets may react."
+If a day has nothing market-moving, just skip it entirely. Don't fill empty space.
 
 ---
 
