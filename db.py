@@ -330,6 +330,17 @@ def get_last_report_time() -> str | None:
     return row["created_at"] if row else None
 
 
+def get_last_daily_pulse() -> dict | None:
+    """Get the full last scheduled pulse row (for cross-day context)."""
+    row = get_connection().execute(
+        """SELECT report_date, created_at, report_markdown, pdf_count
+           FROM daily_reports
+           WHERE report_type = 'daily'
+           ORDER BY created_at DESC LIMIT 1"""
+    ).fetchone()
+    return dict(row) if row else None
+
+
 # --- Processing log ---
 
 def log_event(pdf_file_id: int | None, event_type: str, status: str, details: str | None = None) -> None:

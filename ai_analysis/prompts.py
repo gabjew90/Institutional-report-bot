@@ -163,6 +163,14 @@ DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any even
 
 **CRITICAL RULE ON PRICES**: The market data above is LIVE and current as of right now. When you cite any price (S&P, VIX, oil, gold, BTC, ETH, 10Y), use ONLY the numbers from the market snapshot above — NEVER use prices from the research PDFs (those are stale). The research is useful for commentary and context, but prices come from the live snapshot.
 
+---
+
+{prev_pulse}
+
+---
+
+Use the previous pulse above to ground your "WHAT CHANGED" section. Compare sentiment, positioning, catalyst watchlist, and key levels. Flag what's different: did smart money flip from long to short? Did a catalyst resolve? Did a new risk emerge? If you find no meaningful changes, say so briefly — don't invent differences.
+
 Here are {pdf_count} institutional research analyses. Some may have been published days ago and reference events that have since occurred. Treat those as historical context, not forward-looking.
 
 Synthesize into a Morning Market Pulse:
@@ -170,6 +178,9 @@ Synthesize into a Morning Market Pulse:
 {analyses_json}
 
 Create the report with these exact sections:
+
+## WHAT CHANGED SINCE LAST PULSE
+2-4 bullets comparing to the previous pulse: sentiment shifts, positioning flips, catalysts that resolved (and how), new risks that emerged, level breaks. Skip this section entirely if there's no previous pulse OR if nothing meaningful changed — do NOT pad with generic statements.
 
 ## WHAT HAPPENED
 Brief market recap — key levels (S&P, VIX, oil, Bitcoin), major overnight developments. What's the story right now? Keep it to 1-2 short paragraphs.

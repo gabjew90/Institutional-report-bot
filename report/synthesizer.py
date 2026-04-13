@@ -15,6 +15,7 @@ from ai_analysis.prompts import (
 from report.market_data import fetch_market_snapshot
 from report.models import DailyReport
 from config import settings
+import db
 
 log = logging.getLogger(__name__)
 
@@ -62,10 +63,21 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
     analyses_json = _analyses_to_json(analyses)
     market_snapshot = fetch_market_snapshot()
 
+    # Pull the previous scheduled pulse to give the model cross-day continuity.
+    prev = db.get_last_daily_pulse()
+    if prev:
+        prev_context = (
+            f"PREVIOUS PULSE (from {prev['created_at'][:16].replace('T', ' ')} UTC, "
+            f"{prev['pdf_count']} reports):\n\n{prev['report_markdown']}"
+        )
+    else:
+        prev_context = "PREVIOUS PULSE: (none — this is the first scheduled pulse)"
+
     user_prompt = DAILY_SYNTHESIS_USER.format(
         pdf_count=len(analyses),
         today=today,
         market_snapshot=market_snapshot,
+        prev_pulse=prev_context,
         analyses_json=analyses_json,
     )
 
