@@ -26,7 +26,9 @@ log = logging.getLogger(__name__)
 async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
     """Process a single PDF through the full pipeline.
 
-    triage (Gemini) → page selection → extraction → deep analysis (Gemini)
+    extract text → triage (Gemini text-only) → deep analysis (Gemini text-only,
+    full document). LOW-priority PDFs skip deep analysis and store the triage
+    summary as the analysis result.
     """
     pdf_id = pdf_data["id"]
     file_name = pdf_data["file_name"]

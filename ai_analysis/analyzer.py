@@ -22,8 +22,7 @@ from ai_analysis.models import (
 )
 from ai_analysis.prompts import (
     TRIAGE_SYSTEM_PROMPT, TRIAGE_USER_PROMPT,
-    ANALYSIS_SYSTEM_PROMPT, ANALYSIS_USER_PROMPT_MULTIMODAL,
-    ANALYSIS_USER_PROMPT_TEXT_ONLY,
+    ANALYSIS_SYSTEM_PROMPT, ANALYSIS_USER_PROMPT_TEXT_ONLY,
 )
 from ai_analysis.rate_limiter import RateLimiter
 from pdf_processing.models import PdfExtraction
