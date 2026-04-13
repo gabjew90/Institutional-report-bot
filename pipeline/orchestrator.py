@@ -261,28 +261,43 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
     return report
 
 
-async def ingest_recent_pdfs(hours: int) -> dict:
+async def ingest_recent_pdfs(
+    hours: int,
+    progress_cb=None,
+) -> dict:
     """Ingest PDFs from Dropbox uploaded in the last N hours.
 
-    Downloads, triages, and deep-analyzes each new PDF. Skips ones already in DB.
+    Args:
+        hours: lookback window in hours.
+        progress_cb: optional async callback(stats, phase) for periodic updates.
+                     phase is one of 'listing', 'processing', 'done'.
+
     Returns a stats dict: {found, new, processed, skipped_low, failed, input_tokens, output_tokens}.
     """
     from datetime import timedelta
     since = datetime.utcnow() - timedelta(hours=hours)
     log.info(f"Ingest: listing Dropbox files since {since.isoformat()}")
 
-    files = await asyncio.to_thread(list_folder_files, settings.dropbox_folder_path, since)
-    stats = {"found": len(files), "new": 0, "processed": 0, "skipped_low": 0,
+    stats = {"found": 0, "new": 0, "processed": 0, "skipped_low": 0,
              "failed": 0, "input_tokens": 0, "output_tokens": 0}
+
+    if progress_cb:
+        await progress_cb(stats, "listing")
+
+    files = await asyncio.to_thread(list_folder_files, settings.dropbox_folder_path, since)
+    stats["found"] = len(files)
 
     download_dir = Path(settings.pdf_download_dir)
     download_dir.mkdir(parents=True, exist_ok=True)
 
-    for entry in files:
-        if db.get_pdf_by_path(entry.path):
-            continue
-        stats["new"] += 1
+    # Filter to genuinely new files up front so "new" count is accurate in progress
+    to_process = [f for f in files if not db.get_pdf_by_path(f.path)]
+    stats["new"] = len(to_process)
 
+    if progress_cb:
+        await progress_cb(stats, "processing")
+
+    for i, entry in enumerate(to_process, start=1):
         local_path = download_dir / entry.name.replace("/", "_")
         if local_path.exists():
             stem, suffix, counter = local_path.stem, local_path.suffix, 1
@@ -312,6 +327,13 @@ async def ingest_recent_pdfs(hours: int) -> dict:
         except Exception as e:
             log.error(f"Ingest failed for {entry.name}: {e}")
             stats["failed"] += 1
+
+        # Emit progress every 5 PDFs (or on the last one)
+        if progress_cb and (i % 5 == 0 or i == len(to_process)):
+            await progress_cb(stats, "processing")
+
+    if progress_cb:
+        await progress_cb(stats, "done")
 
     log.info(f"Ingest complete: {stats}")
     return stats

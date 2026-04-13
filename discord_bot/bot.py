@@ -81,15 +81,40 @@ def create_bot() -> commands.Bot:
 
         try:
             from pipeline.orchestrator import ingest_recent_pdfs
-            stats = await ingest_recent_pdfs(hours)
-            await interaction.followup.send(
-                f"**Load complete ({hours}h window)**\n"
-                f"Found: {stats['found']} | New: {stats['new']} | "
-                f"Processed: {stats['processed']} | Low (skipped deep): {stats['skipped_low']} | "
-                f"Failed: {stats['failed']}\n"
-                f"Tokens: {stats['input_tokens']:,} in / {stats['output_tokens']:,} out\n"
-                f"Run `/pulse` to synthesize a report."
-            )
+
+            status_msg = await interaction.followup.send(f"Starting load ({hours}h window)…")
+
+            async def on_progress(stats: dict, phase: str):
+                if phase == "listing":
+                    content = f"Listing Dropbox files for last {hours}h…"
+                elif phase == "processing":
+                    processed_or_failed = stats["processed"] + stats["failed"]
+                    new = stats["new"]
+                    if new == 0:
+                        content = f"Found {stats['found']} files, 0 new to process."
+                    else:
+                        pct = int((processed_or_failed / new) * 100) if new else 0
+                        content = (
+                            f"**Loading ({hours}h window)** — {processed_or_failed}/{new} done ({pct}%)\n"
+                            f"Processed: {stats['processed']} | Failed: {stats['failed']} | "
+                            f"Low skipped: {stats['skipped_low']}\n"
+                            f"Tokens: {stats['input_tokens']:,} in / {stats['output_tokens']:,} out"
+                        )
+                else:  # done
+                    content = (
+                        f"**Load complete ({hours}h window)**\n"
+                        f"Found: {stats['found']} | New: {stats['new']} | "
+                        f"Processed: {stats['processed']} | Low (skipped deep): {stats['skipped_low']} | "
+                        f"Failed: {stats['failed']}\n"
+                        f"Tokens: {stats['input_tokens']:,} in / {stats['output_tokens']:,} out\n"
+                        f"Run `/pulse` to synthesize a report."
+                    )
+                try:
+                    await status_msg.edit(content=content)
+                except Exception:
+                    pass  # don't let display errors break the load
+
+            await ingest_recent_pdfs(hours, progress_cb=on_progress)
         except Exception as e:
             log.error(f"Load failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error loading PDFs: {str(e)[:200]}")
