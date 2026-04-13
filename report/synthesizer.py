@@ -13,6 +13,7 @@ from ai_analysis.prompts import (
     DAILY_SYNTHESIS_SYSTEM, DAILY_SYNTHESIS_USER,
 )
 from report.market_data import fetch_market_snapshot
+from report.news_data import fetch_news_snapshot
 from report.models import DailyReport
 from config import settings
 import db
@@ -33,6 +34,7 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
             "title": a.title,
             "type": a.report_type,
             "priority": a.priority,
+            "published": (a.published_at or "unknown")[:10],  # YYYY-MM-DD only
             "insights": a.key_insights,
         }
         if a.market_movers:
@@ -62,6 +64,7 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
 
     analyses_json = _analyses_to_json(analyses)
     market_snapshot = fetch_market_snapshot()
+    news_snapshot = fetch_news_snapshot(since_hours=48, limit=15)
 
     # Pull the previous scheduled pulse to give the model cross-day continuity.
     prev = db.get_last_daily_pulse()
@@ -77,6 +80,7 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
         pdf_count=len(analyses),
         today=today,
         market_snapshot=market_snapshot,
+        news_snapshot=news_snapshot,
         prev_pulse=prev_context,
         analyses_json=analyses_json,
     )

@@ -185,6 +185,19 @@ DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any even
 
 {market_snapshot}
 
+---
+
+{news_snapshot}
+
+**HOW TO USE LIVE NEWS**: The news headlines above (if present) are current as of right now. Use them to:
+- Identify market-moving developments that happened AFTER the research was written (especially weekends and overnight)
+- Ground "WHAT HAPPENED" in actual recent events, not just what the research anticipated
+- Flag when a research view has been overtaken by news events
+
+If the news section shows "no FINNHUB_API_KEY set", you do not have live news — rely on research + market data only and be explicit that your recap reflects only what the research covered.
+
+---
+
 **CRITICAL RULE ON PRICES**: The market data above is LIVE and current as of right now. When you cite any price (S&P, VIX, oil, gold, BTC, ETH, 10Y), use ONLY the numbers from the market snapshot above — NEVER use prices from the research PDFs (those are stale). The research is useful for commentary and context, but prices come from the live snapshot.
 
 ---
@@ -194,6 +207,13 @@ DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any even
 ---
 
 Use the previous pulse above to ground your RECAP section. Compare current prices/sentiment/positioning to what the last pulse said, and explain what's shifted and why. If something the last pulse flagged as "coming up" has now resolved, say how it played out.
+
+**IMPORTANT — research age awareness:** Each analysis below includes a "published" field (YYYY-MM-DD) showing when the report was uploaded to Dropbox. Today is {today}.
+
+- If most reports are from {today}, treat them as current and weight them heavily.
+- If reports are from 1-3 days ago, treat them as context — they describe market conditions that may have shifted since (especially if a weekend passed).
+- Explicitly flag stale views: "BofA said X on Friday, but since then Y happened per live data / weekend news."
+- If the research window includes a weekend, call out that price action since Friday close may not be reflected in the analyst views.
 
 Here are {pdf_count} institutional research analyses. Some may have been published days ago and reference events that have since occurred. Treat those as historical context, not forward-looking.
 

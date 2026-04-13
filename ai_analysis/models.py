@@ -64,3 +64,4 @@ class PdfAnalysis:
     total_pages: int = 0
     input_tokens: int = 0
     output_tokens: int = 0
+    published_at: str | None = None  # Dropbox upload timestamp — when research landed

@@ -115,12 +115,20 @@ def create_bot() -> commands.Bot:
                         content = f"Found {stats['found']} files, 0 new to process."
                     else:
                         pct = int((processed_or_failed / new) * 100) if new else 0
+                        current = stats.get("current_file", "")
+                        recent = stats.get("recent_files", [])
                         content = (
                             f"**Loading ({hours}h window)** — {processed_or_failed}/{new} done ({pct}%)\n"
                             f"Processed: {stats['processed']} | Failed: {stats['failed']} | "
                             f"Low skipped: {stats['skipped_low']}\n"
                             f"Tokens: {stats['input_tokens']:,} in / {stats['output_tokens']:,} out"
                         )
+                        if current:
+                            content += f"\n\n**Now:** {current[:80]}"
+                        if recent:
+                            content += f"\n**Recent:**\n" + "\n".join(recent[-5:])
+                        # Discord message limit is 2000 chars
+                        content = content[:1900]
                 else:  # done
                     content = (
                         f"**Load complete ({hours}h window)**\n"

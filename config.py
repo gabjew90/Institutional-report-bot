@@ -13,6 +13,9 @@ class Settings(BaseSettings):
 
     # Google Gemini
     google_api_key: str = ""
+
+    # Finnhub (optional — enables live market news + economic calendar)
+    finnhub_api_key: str = ""
     gemini_model: str = "gemini-3.1-lite"
     gemini_triage_model: str = "gemini-3.1-lite"
     gemini_max_tokens: int = 4096

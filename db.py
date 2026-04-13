@@ -251,7 +251,7 @@ def get_todays_analyses(today: str | None = None) -> list[dict]:
     if today is None:
         today = date.today().isoformat()
     rows = get_connection().execute(
-        """SELECT pa.*, pf.file_name, pf.dropbox_path
+        """SELECT pa.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
            FROM pdf_analyses pa
            JOIN pdf_files pf ON pa.pdf_file_id = pf.id
            WHERE date(pa.created_at) = ?
@@ -264,7 +264,7 @@ def get_todays_analyses(today: str | None = None) -> list[dict]:
 def get_analyses_since(since_time: str) -> list[dict]:
     """Get analyses where the PDF was uploaded to Dropbox after since_time."""
     rows = get_connection().execute(
-        """SELECT pa.*, pf.file_name, pf.dropbox_path
+        """SELECT pa.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
            FROM pdf_analyses pa
            JOIN pdf_files pf ON pa.pdf_file_id = pf.id
            WHERE pf.dropbox_modified_at > ?
@@ -277,7 +277,7 @@ def get_analyses_since(since_time: str) -> list[dict]:
 def get_analyses_between(start_time: str, end_time: str) -> list[dict]:
     """Get analyses where the PDF was uploaded to Dropbox within a specific time window."""
     rows = get_connection().execute(
-        """SELECT pa.*, pf.file_name, pf.dropbox_path
+        """SELECT pa.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
            FROM pdf_analyses pa
            JOIN pdf_files pf ON pa.pdf_file_id = pf.id
            WHERE pf.dropbox_modified_at >= ? AND pf.dropbox_modified_at <= ?

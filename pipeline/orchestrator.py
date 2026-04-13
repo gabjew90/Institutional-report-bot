@@ -178,6 +178,7 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
                     total_pages=data.get("total_pages", 0),
                     input_tokens=data.get("input_tokens", 0),
                     output_tokens=data.get("output_tokens", 0),
+                    published_at=row.get("dropbox_modified_at"),
                 )
                 analyses.append(analysis)
         except (json.JSONDecodeError, KeyError) as e:
@@ -297,6 +298,9 @@ async def ingest_recent_pdfs(
     if progress_cb:
         await progress_cb(stats, "processing")
 
+    # Track recently-processed filenames so the progress message can show them
+    recent_files: list[str] = []
+
     for i, entry in enumerate(to_process, start=1):
         local_path = download_dir / entry.name.replace("/", "_")
         if local_path.exists():
@@ -304,6 +308,11 @@ async def ingest_recent_pdfs(
             while local_path.exists():
                 local_path = download_dir / f"{stem}_{counter}{suffix}"
                 counter += 1
+
+        stats["current_file"] = entry.name
+        stats["recent_files"] = recent_files[-5:]  # last 5 processed
+        if progress_cb:
+            await progress_cb(stats, "processing")
 
         try:
             await asyncio.to_thread(download_file, entry.path, local_path)
@@ -322,15 +331,14 @@ async def ingest_recent_pdfs(
                 stats["output_tokens"] += analysis.output_tokens
                 if analysis.priority == "low":
                     stats["skipped_low"] += 1
+                recent_files.append(f"✓ {entry.name[:70]} ({analysis.priority})")
             else:
                 stats["failed"] += 1
+                recent_files.append(f"✗ {entry.name[:70]} (failed)")
         except Exception as e:
             log.error(f"Ingest failed for {entry.name}: {e}")
             stats["failed"] += 1
-
-        # Emit progress every 5 PDFs (or on the last one)
-        if progress_cb and (i % 5 == 0 or i == len(to_process)):
-            await progress_cb(stats, "processing")
+            recent_files.append(f"✗ {entry.name[:70]} (error)")
 
     if progress_cb:
         await progress_cb(stats, "done")
