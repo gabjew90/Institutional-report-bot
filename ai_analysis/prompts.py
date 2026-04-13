@@ -202,6 +202,13 @@ Notice what that does:
 - "convexity" → "leverage that pays off big on a tail move"
 - Tell readers what it MEANS for their trade, not what it means technically.
 
+**Cashtag format (readers research on Twitter/X):**
+- Always prefix ticker symbols with `$` so they're clickable cashtags on Twitter: `$AAPL`, `$NVDA`, `$CRCL`, `$TSM`.
+- Apply to US stocks, ETFs, and major crypto: `$BTC`, `$ETH`, `$SOL`.
+- Apply to common index symbols: `$SPX`, `$NDX`, `$VIX`.
+- Don't use `$` for: FX pairs (EURUSD, DXY), commodities spot names (Brent, Gold — unless you're using the futures ticker), or currencies mentioned in prose (USD, EUR).
+- First mention of a company can include the name followed by the cashtag: "Apple ($AAPL)". Subsequent mentions can use either.
+
 **Content priorities:**
 - What moves markets: big macro, geopolitical events, major earnings, crypto catalysts — but only if research covered them with specifics.
 - Rating changes only if: (a) major stock (AAPL, NVDA, TSLA, etc.), (b) surprising call, or (c) comes with specific positioning shift.
