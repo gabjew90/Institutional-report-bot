@@ -27,6 +27,26 @@ def _get_client() -> genai.Client:
     return genai.Client(api_key=settings.google_api_key)
 
 
+def _compute_stats(analyses: list[PdfAnalysis]) -> dict:
+    """Summary stats for the footer: top sources, priority mix, date range."""
+    from collections import Counter
+
+    source_counts = Counter(a.source or "Unknown" for a in analyses)
+    priority_counts = Counter(a.priority or "unknown" for a in analyses)
+
+    published_dates = [a.published_at[:10] for a in analyses if a.published_at]
+    earliest = min(published_dates) if published_dates else None
+    latest = max(published_dates) if published_dates else None
+
+    return {
+        "pdf_count": len(analyses),
+        "top_sources": source_counts.most_common(5),
+        "priority_mix": dict(priority_counts),
+        "earliest_upload": earliest,
+        "latest_upload": latest,
+    }
+
+
 def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
     """Convert analyses to a compact JSON string for the synthesis prompt."""
     compact = []
@@ -137,4 +157,5 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
         raw_json={"analyses_count": len(analyses)},
         input_tokens=input_tokens,
         output_tokens=output_tokens,
+        stats=_compute_stats(analyses),
     )

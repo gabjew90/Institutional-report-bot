@@ -6,22 +6,44 @@ with color coding by section type.
 
 import logging
 import re
-from datetime import date
+from datetime import date, datetime, timedelta
 
 import discord
+import pytz
 
+from config import settings
 from report.models import DailyReport
 
 log = logging.getLogger(__name__)
 
-# Section color mapping
+# Section color mapping — matches the 3-section structure (RECAP / INSIGHTS / WHAT TO WATCH)
 SECTION_COLORS = {
-    "WHAT HAPPENED": 0xFFD700,          # Gold
+    "RECAP": 0xFFD700,                  # Gold
+    "INSIGHTS": 0x3498DB,               # Blue
+    "ALPHA": 0x3498DB,                  # Blue (for "INSIGHTS & ALPHA")
     "WHAT TO WATCH": 0xFF8C00,          # Dark Orange
-    "SMART MONEY": 0x3498DB,            # Blue
-    "CRYPTO": 0xF39C12,                 # Orange
-    "COMING UP": 0x2ECC71,              # Green
 }
+
+
+def _next_pulse_str() -> str:
+    """Compute next scheduled pulse time in the configured timezone.
+
+    Avoids strftime('%-I') which isn't portable to Windows.
+    """
+    tz = pytz.timezone(settings.timezone)
+    now_local = datetime.now(tz)
+    target = now_local.replace(
+        hour=settings.daily_pulse_hour,
+        minute=settings.daily_pulse_minute,
+        second=0, microsecond=0,
+    )
+    if target <= now_local:
+        target = target + timedelta(days=1)
+    is_tomorrow = target.date() > now_local.date()
+    prefix = "Tomorrow" if is_tomorrow else "Today"
+    hour_12 = target.hour % 12 or 12
+    ampm = "AM" if target.hour < 12 else "PM"
+    return f"{prefix} {hour_12}:{target.minute:02d} {ampm} {target.tzname()}"
 
 # Maximum chars per embed description
 MAX_EMBED_CHARS = 4000
@@ -113,15 +135,36 @@ def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
             )
             embeds.append(embed)
 
-    # Footer embed
+    # Footer embed — dynamic stats + next pulse time
+    footer_lines = []
+    stats = report.stats or {}
+    pdf_count = stats.get("pdf_count") or report.pdf_count
+
+    footer_lines.append(f"**{pdf_count} research reports analyzed**")
+
+    top_sources = stats.get("top_sources") or []
+    if top_sources:
+        src_str = " · ".join(f"{src} ({n})" for src, n in top_sources[:5])
+        footer_lines.append(f"Top sources: {src_str}")
+
+    priority_mix = stats.get("priority_mix") or {}
+    if priority_mix:
+        pri_str = " · ".join(f"{k.lower()}: {v}" for k, v in priority_mix.items())
+        footer_lines.append(f"Priority mix: {pri_str}")
+
+    earliest = stats.get("earliest_upload")
+    latest = stats.get("latest_upload")
+    if earliest and latest:
+        if earliest == latest:
+            footer_lines.append(f"Research dated: {earliest}")
+        else:
+            footer_lines.append(f"Research dated: {earliest} → {latest}")
+
     footer_embed = discord.Embed(
-        description=(
-            "*Sourced from Goldman Sachs, Citi, and Bank of America research. "
-            "Not financial advice.*"
-        ),
+        description="\n".join(footer_lines),
         color=0x95A5A6,
     )
-    footer_embed.set_footer(text="Next pulse tomorrow at 9:00 AM PST")
+    footer_embed.set_footer(text=f"Next pulse: {_next_pulse_str()}")
     embeds.append(footer_embed)
 
     log.info(f"Formatted {len(embeds)} embeds for daily pulse")

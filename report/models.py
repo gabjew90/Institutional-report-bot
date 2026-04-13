@@ -13,3 +13,5 @@ class DailyReport:
     input_tokens: int = 0
     output_tokens: int = 0
     report_id: int | None = None
+    # Stats computed at synthesis time for display in the footer
+    stats: dict = field(default_factory=dict)
