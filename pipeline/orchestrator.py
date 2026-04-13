@@ -241,22 +241,29 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
         output_tokens=report.output_tokens,
     )
 
-    # Send to Discord
+    # Send to every configured Discord channel
     if bot:
-        try:
-            channel = bot.get_channel(settings.discord_channel_id)
-            if channel:
-                from report.formatter import format_report_embeds
-                from discord_bot.sender import send_embeds
-                embeds = format_report_embeds(report)
-                success = await send_embeds(channel, embeds)
-                if success:
-                    db.mark_report_sent(report_id)
-                    log.info("Daily pulse sent to Discord")
-            else:
-                log.error(f"Discord channel {settings.discord_channel_id} not found")
-        except Exception as e:
-            log.error(f"Failed to send daily pulse to Discord: {e}", exc_info=True)
+        channel_ids = settings.discord_channel_ids
+        if not channel_ids:
+            log.error("No DISCORD_CHANNEL_ID configured — skipping Discord delivery")
+        from report.formatter import format_report_embeds
+        from discord_bot.sender import send_embeds
+        embeds = format_report_embeds(report)
+        any_sent = False
+        for cid in channel_ids:
+            try:
+                channel = bot.get_channel(cid)
+                if channel:
+                    success = await send_embeds(channel, embeds)
+                    if success:
+                        any_sent = True
+                        log.info(f"Daily pulse sent to channel {cid} ({channel.name})")
+                else:
+                    log.error(f"Discord channel {cid} not found")
+            except Exception as e:
+                log.error(f"Failed to send daily pulse to channel {cid}: {e}", exc_info=True)
+        if any_sent:
+            db.mark_report_sent(report_id)
 
     log.info(f"=== Daily Market Pulse complete: {report.pdf_count} reports ===")
     return report

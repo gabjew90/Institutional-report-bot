@@ -23,7 +23,9 @@ class Settings(BaseSettings):
 
     # Discord
     discord_bot_token: str = ""
-    discord_channel_id: int = 0
+    # Comma-separated list of channel IDs. Single ID also works (e.g. "123").
+    # The scheduled pulse will be posted to every channel listed here.
+    discord_channel_id: str = ""
 
     # Scheduling
     timezone: str = "America/New_York"
@@ -55,6 +57,20 @@ class Settings(BaseSettings):
     @property
     def priority_source_list(self) -> list[str]:
         return [s.strip().lower() for s in self.high_priority_sources.split(",") if s.strip()]
+
+    @property
+    def discord_channel_ids(self) -> list[int]:
+        """Parse DISCORD_CHANNEL_ID (may be a single ID or comma-separated list)."""
+        out: list[int] = []
+        for raw in self.discord_channel_id.split(","):
+            raw = raw.strip()
+            if not raw:
+                continue
+            try:
+                out.append(int(raw))
+            except ValueError:
+                continue
+        return out
 
 
 settings = Settings()

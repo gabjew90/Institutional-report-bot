@@ -193,15 +193,19 @@ async def run_pulse(args: argparse.Namespace):
 
         @client.event
         async def on_ready():
-            channel = client.get_channel(settings.discord_channel_id)
-            if channel:
-                embeds = format_report_embeds(report)
-                success = await send_embeds(channel, embeds)
-                if success and report.report_id:
-                    db.mark_report_sent(report.report_id)
-                print(f"\nSent to Discord channel: {channel.name}")
-            else:
-                print(f"\nCould not find channel {settings.discord_channel_id}")
+            embeds = format_report_embeds(report)
+            any_sent = False
+            for cid in settings.discord_channel_ids:
+                channel = client.get_channel(cid)
+                if channel:
+                    success = await send_embeds(channel, embeds)
+                    if success:
+                        any_sent = True
+                        print(f"Sent to Discord channel: {channel.name} ({cid})")
+                else:
+                    print(f"Could not find channel {cid}")
+            if any_sent and report.report_id:
+                db.mark_report_sent(report.report_id)
             await client.close()
 
         await client.start(settings.discord_bot_token)
