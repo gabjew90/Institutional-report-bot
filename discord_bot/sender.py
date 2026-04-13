@@ -15,26 +15,22 @@ async def send_embeds(
 ) -> bool:
     """Send a sequence of embeds to a Discord channel.
 
-    Batches up to 10 embeds per message (Discord's limit) so they render
-    tightly on mobile without per-message padding creating visual gaps.
     Returns True if all embeds were sent successfully.
     """
     success = True
-    # Chunk into groups of 10 (Discord's per-message embed limit)
-    batches = [embeds[i:i + 10] for i in range(0, len(embeds), 10)]
-    for i, batch in enumerate(batches):
+    for i, embed in enumerate(embeds):
         try:
-            await channel.send(embeds=batch)
-            if i < len(batches) - 1:
-                await asyncio.sleep(delay)
+            await channel.send(embed=embed)
+            if i < len(embeds) - 1:
+                await asyncio.sleep(delay)  # Respect rate limits
         except discord.HTTPException as e:
-            log.error(f"Failed to send embed batch {i + 1}/{len(batches)}: {e}")
+            log.error(f"Failed to send embed {i + 1}/{len(embeds)}: {e}")
             # Retry once
             try:
                 await asyncio.sleep(2)
-                await channel.send(embeds=batch)
+                await channel.send(embed=embed)
             except discord.HTTPException as e2:
-                log.error(f"Retry failed for batch {i + 1}: {e2}")
+                log.error(f"Retry failed for embed {i + 1}: {e2}")
                 success = False
 
     return success
