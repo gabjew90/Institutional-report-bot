@@ -184,15 +184,16 @@ Notice what that does:
 - **Varies sentence length** — short punchy lines mixed with longer analytical ones
 - **No "it's important to note", "overall", "in conclusion"** — no AI filler
 
-**AI tells to kill:**
-- Em-dashes used structurally (— like this —). Use sparingly, max 2-3 per pulse.
-- Phrases like "it's worth noting", "importantly", "notably", "key takeaway"
-- Bulleted lists with parallel bold headers (**X:** description, **Y:** description)
-- Generic transitions: "Meanwhile,", "Furthermore,", "Additionally,"
+**AI tells to kill (in the writing itself, not the structure):**
+- Em-dashes used structurally inside sentences (— like this —). Use sparingly, max 2-3 per pulse. Commas and periods are almost always better.
+- Filler phrases: "it's worth noting", "importantly", "notably", "key takeaway", "it should be noted"
+- Generic connective tissue: "Meanwhile,", "Furthermore,", "Additionally,", "In addition,"
 - Hedging: "could potentially", "may or may not", "it remains to be seen"
-- Summary paragraphs at the end of sections
-- "In summary" / "Overall" / "Taken together"
-- Over-use of the word "key" — key takeaway, key level, key risk
+- Wrap-up sentences: "In summary", "Overall", "Taken together", "All in all"
+- Over-use of "key" — key takeaway, key level, key risk (pick a better adjective or drop it)
+- Identical bullet structures across sections (every bullet following the same template). Vary the form.
+
+**Headings, bullets, and bolding are fine** — they help scannability. The issue isn't structure, it's when the PROSE inside the structure reads like AI output: formulaic, hedged, and void of POV.
 
 **Plain-English translations (never use jargon without translating):**
 - "term structure normalized" → "the panic has faded"
@@ -291,9 +292,7 @@ Flag breaks of key technical/psychological levels only if the research mentioned
 Keep it tight — 1-2 short paragraphs. If a market was flat and boring, say so in one line.
 
 ## 2. INSIGHTS & ALPHA
-**Entirely driven by the research. Flowing paragraphs, not bulleted lists. One paragraph per theme.**
-
-This is the longest, densest section. Readers want to know where big players are placing bets. Aim for 3-8 paragraphs depending on research volume and quality. If 172 reports produced 8 substantive themes, write all 8. If 40 produced 3, write 3.
+**Entirely driven by the research.** This is the longest, densest section. Readers want to know where big players are placing bets. Aim for 3-8 themes depending on research volume and quality — if 172 reports produced 8 substantive themes, cover all 8; if 40 produced 3, cover 3.
 
 **Angles to cover when the research supports them** (don't force every angle every day):
 
@@ -303,13 +302,16 @@ This is the longest, densest section. Readers want to know where big players are
 - Specific trade structures — concrete positioning moves with tickers, targets, direction. Options structures if research mentions them.
 - Crypto institutional view — BTC/ETH/SOL positioning, ETF flows, regulatory takes.
 
-**Writing format for each paragraph:**
+**Format is flexible** — use whatever best serves each theme:
+- Flowing paragraphs for themes that build an argument or have tension (like the Circle/USDC example in the system prompt).
+- Bulleted lists for themes that are genuinely enumerative (e.g., 4 different banks' views on energy, or 5 trade ideas in a row).
+- **Bold** for tickers, bank names, and numbers worth scanning to.
+
+**Regardless of format, each theme should:**
 
 1. Open with the situation or story (what's happening, who's moving, why).
-2. Give the tension — the optimistic read vs the risk, or the consensus view vs the contrarian one. Be specific about which banks are on which side.
+2. Include the tension — the optimistic read vs the risk, or the consensus view vs the contrarian one. Be specific about which banks are on which side.
 3. End with the trade/positioning implication. What does the reader do with this?
-
-**NO bulleted sub-lists inside this section.** No "**Theme:** description, **Theme:** description" bold-header format. Write flowing paragraphs that read like a sharp analyst thinking out loud.
 
 Quote actual numbers from research even if live market has moved — note "at time of writing" when useful. When banks agree, SAY SO. When they disagree, SAY SO. Never present a single bank's view as consensus.
 
