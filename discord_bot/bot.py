@@ -77,6 +77,19 @@ def create_bot() -> commands.Bot:
             log.error(f"Load failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error loading PDFs: {str(e)[:200]}")
 
+    @bot.tree.command(name="clearqueue", description="Delete all pending (DOWNLOADED) PDFs from the queue — cancels backlog processing")
+    async def clearqueue_command(interaction: discord.Interaction):
+        await interaction.response.defer(thinking=True)
+        try:
+            count = db.clear_pending_queue()
+            await interaction.followup.send(
+                f"Cleared **{count}** pending PDFs from the queue. "
+                f"Process job will idle until new uploads arrive."
+            )
+        except Exception as e:
+            log.error(f"Clear queue failed: {e}", exc_info=True)
+            await interaction.followup.send(f"Error: {str(e)[:200]}")
+
     @bot.tree.command(name="seedcursor", description="Seed Dropbox cursor to current state (skips backfill on next poll)")
     async def seedcursor_command(interaction: discord.Interaction):
         await interaction.response.defer(thinking=True)

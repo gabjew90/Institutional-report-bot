@@ -189,6 +189,36 @@ def update_pdf_priority(pdf_id: int, priority: str) -> None:
     conn.commit()
 
 
+def clear_pending_queue() -> int:
+    """Delete all DOWNLOADED/PROCESSING rows from pdf_files and their local files.
+
+    Returns the number of rows deleted.
+    """
+    conn = get_connection()
+    rows = conn.execute(
+        "SELECT id, local_path FROM pdf_files WHERE status IN ('DOWNLOADED', 'PROCESSING')"
+    ).fetchall()
+    pending_ids = [r["id"] for r in rows]
+
+    if not pending_ids:
+        return 0
+
+    # Remove local PDF files from disk
+    for r in rows:
+        if r["local_path"]:
+            try:
+                Path(r["local_path"]).unlink(missing_ok=True)
+            except Exception:
+                pass
+
+    placeholders = ",".join("?" * len(pending_ids))
+    conn.execute(f"DELETE FROM processing_log WHERE pdf_file_id IN ({placeholders})", pending_ids)
+    conn.execute(f"DELETE FROM pdf_analyses WHERE pdf_file_id IN ({placeholders})", pending_ids)
+    conn.execute(f"DELETE FROM pdf_files WHERE id IN ({placeholders})", pending_ids)
+    conn.commit()
+    return len(pending_ids)
+
+
 # --- Analyses ---
 
 def insert_analysis(
