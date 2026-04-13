@@ -11,7 +11,9 @@ from dataclasses import asdict
 from datetime import date, datetime
 from pathlib import Path
 
-from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep, analyze_batch
+from ai_analysis.analyzer import (
+    triage_pdf, analyze_pdf_deep, analyze_batch, is_multimodal_source,
+)
 from ai_analysis.models import PdfAnalysis
 from dropbox_client.watcher import list_folder_files, download_file, _get_client
 from pdf_processing.extractor import extract_text_per_page, extract_pdf
@@ -32,6 +34,8 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
     pdf_id = pdf_data["id"]
     file_name = pdf_data["file_name"]
     local_path = pdf_data["local_path"]
+    dropbox_path = pdf_data.get("dropbox_path") or ""
+    folder_path = str(Path(dropbox_path).parent) if dropbox_path else ""
 
     if not local_path or not Path(local_path).exists():
         log.error(f"PDF file not found: {local_path}")
@@ -47,8 +51,8 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
         pages = await asyncio.to_thread(extract_text_per_page, local_path)
         full_text = "\n".join(p.text for p in pages)
 
-        # Step 2: Triage with Gemini
-        triage = await triage_pdf(file_name, full_text)
+        # Step 2: Triage with Gemini (folder_path lets it identify source reliably)
+        triage = await triage_pdf(file_name, full_text, folder_path=folder_path)
         db.update_pdf_priority(pdf_id, triage.priority)
         log.info(f"Triaged {file_name}: {triage.priority} ({triage.report_type})")
 
@@ -68,16 +72,27 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 output_tokens=triage.output_tokens,
             )
         else:
-            # Select pages for analysis
-            selected_pages = await asyncio.to_thread(select_pages, pages)
+            # Decide whether to do multimodal — only for chart-heavy sources
+            # (Hartnett Flow Show, GS S&T Chart of the Day, TME) where the text
+            # doesn't adequately summarize the charts. Everything else: text-only.
+            use_multimodal = (
+                triage.priority == "high"
+                and is_multimodal_source(triage.source, folder_path)
+            )
 
-            # For HIGH priority: render images of selected pages
-            # For MEDIUM: text-only
-            render_images = triage.priority == "high"
-            extraction = await asyncio.to_thread(
-                extract_pdf,
-                local_path,
-                selected_pages if render_images else None,
+            if use_multimodal:
+                selected_pages = await asyncio.to_thread(select_pages, pages)
+                extraction = await asyncio.to_thread(
+                    extract_pdf, local_path, selected_pages,
+                )
+            else:
+                # Text-only: no image rendering needed, skip page selection entirely
+                extraction = await asyncio.to_thread(extract_pdf, local_path, None)
+
+            log.info(
+                f"Deep analysis mode for {file_name}: "
+                f"{'multimodal' if use_multimodal else 'text-only'} "
+                f"(source={triage.source or 'unknown'})"
             )
 
             # Deep analysis
@@ -86,6 +101,7 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 file_name=file_name,
                 extraction=extraction,
                 priority=triage.priority,
+                use_multimodal=use_multimodal,
             )
 
         duration = time.time() - start_time

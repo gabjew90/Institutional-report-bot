@@ -52,6 +52,11 @@ class Settings(BaseSettings):
     # HIGH priority topics (applied to all sources)
     high_priority_topics: str = "macro,us_equities,crypto,oil,gold,commodities,derivatives,vol_commentary,morning_briefing,sales_trading,strategy"
 
+    # Multimodal allowlist — sources/keywords where charts carry real signal
+    # the text doesn't summarize. Everything else goes text-only (cheaper, faster,
+    # no attention dilution). Matched against source name AND folder path.
+    multimodal_sources: str = "BofA,Hartnett,Flow Show,The Market Ear,TME,Chart of Day,Chart of the Day,S&T"
+
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
     @property

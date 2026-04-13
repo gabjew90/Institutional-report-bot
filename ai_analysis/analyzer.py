@@ -93,6 +93,19 @@ def _is_tier1_source(source: str, folder_path: str) -> bool:
     return any(kw in source_lower or kw in folder_lower for kw in tier1_keywords)
 
 
+def is_multimodal_source(source: str, folder_path: str) -> bool:
+    """Check if this source is chart-heavy enough to warrant multimodal analysis.
+
+    Most research text summarizes chart takeaways adequately. Multimodal is reserved
+    for specific formats where charts ARE the content: Hartnett Flow Show, GS S&T
+    Chart of the Day, TME vol screenshots, etc.
+    """
+    allow = [s.strip().lower() for s in settings.multimodal_sources.split(",") if s.strip()]
+    source_lower = (source or "").lower()
+    folder_lower = (folder_path or "").lower()
+    return any(kw in source_lower or kw in folder_lower for kw in allow)
+
+
 def _apply_priority_rules(gemini_priority: str, source: str, report_type: str, folder_path: str) -> str:
     """Override Gemini's priority based on source and topic rules.
 
@@ -166,6 +179,7 @@ async def triage_pdf(file_name: str, text_preview: str, folder_path: str = "") -
         report_type=report_type,
         key_tickers=data.get("key_tickers", []),
         summary=data.get("summary", ""),
+        source=source,
         input_tokens=input_tokens,
         output_tokens=output_tokens,
     )
@@ -176,31 +190,30 @@ async def analyze_pdf_deep(
     file_name: str,
     extraction: PdfExtraction,
     priority: str,
+    use_multimodal: bool = False,
 ) -> PdfAnalysis:
     """Tier 2: Deep analysis using Gemini.
 
-    HIGH priority: multimodal (text + page images)
-    MEDIUM priority: text-only
+    Multimodal analysis is ONLY used when use_multimodal is True AND page images
+    were rendered. Text-only otherwise — sends the full document, no truncation.
     """
     client = _get_client()
     limiter = _get_rate_limiter()
 
-    use_images = priority == "high" and extraction.selected_page_images
+    use_images = use_multimodal and bool(extraction.selected_page_images)
 
     # Build text content
     if use_images:
-        image_page_nums = {img.page_number for img in extraction.selected_page_images}
+        # Even in multimodal mode, include FULL text of every page so nothing is lost.
+        # Images are attached for the selected chart-heavy pages on top of full text.
         text_parts = []
         for page in extraction.pages:
-            if page.page_number in image_page_nums:
-                text_parts.append(f"[Page {page.page_number + 1}]\n{page.text}")
-            else:
-                preview = page.text[:300].strip()
-                if preview:
-                    text_parts.append(f"[Page {page.page_number + 1} preview]\n{preview}...")
+            text_parts.append(f"[Page {page.page_number + 1}]\n{page.text}")
         text_content = "\n\n".join(text_parts)
     else:
-        text_content = extraction.full_text[:30000]
+        # Text-only: send the full document, no truncation. Gemini 1M-token context
+        # handles even the longest UBS Contextual Diary easily.
+        text_content = extraction.full_text
 
     # Build content parts for Gemini
     content_parts: list = []

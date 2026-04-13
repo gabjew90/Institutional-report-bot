@@ -9,6 +9,7 @@ class TriageResult:
     report_type: str  # e.g. "equity_research", "macro", "crypto"
     key_tickers: list[str]
     summary: str
+    source: str = ""  # Bank/publisher name as identified during triage
     input_tokens: int = 0
     output_tokens: int = 0
 
