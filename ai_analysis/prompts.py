@@ -169,7 +169,7 @@ DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any even
 
 ---
 
-Use the previous pulse above to ground your "WHAT CHANGED" section. Compare sentiment, positioning, catalyst watchlist, and key levels. Flag what's different: did smart money flip from long to short? Did a catalyst resolve? Did a new risk emerge? If you find no meaningful changes, say so briefly — don't invent differences.
+Use the previous pulse above to ground your RECAP section. Compare current prices/sentiment/positioning to what the last pulse said, and explain what's shifted and why. If something the last pulse flagged as "coming up" has now resolved, say how it played out.
 
 Here are {pdf_count} institutional research analyses. Some may have been published days ago and reference events that have since occurred. Treat those as historical context, not forward-looking.
 
@@ -177,29 +177,43 @@ Synthesize into a Morning Market Pulse:
 
 {analyses_json}
 
-Create the report with these exact sections:
+Create the report with these THREE sections:
 
-## WHAT CHANGED SINCE LAST PULSE
-2-4 bullets comparing to the previous pulse: sentiment shifts, positioning flips, catalysts that resolved (and how), new risks that emerged, level breaks. Skip this section entirely if there's no previous pulse OR if nothing meaningful changed — do NOT pad with generic statements.
+## 1. RECAP
+How US stocks (S&P, Nasdaq, VIX) and crypto (BTC, ETH) performed SINCE THE LAST PULSE — use the live market snapshot for current prices and compare to the numbers in the previous pulse above. For each significant move, give the "why" in one sentence (e.g., "Nasdaq +2.1% since Friday's pulse — driven by semis rebounding after China chip export news").
 
-## WHAT HAPPENED
-Brief market recap — key levels (S&P, VIX, oil, Bitcoin), major overnight developments. What's the story right now? Keep it to 1-2 short paragraphs.
+Flag any breaks of key technical or psychological levels (BTC above/below $70K, VIX above/below 20, S&P above/below round numbers).
 
-## WHAT TO WATCH TODAY
-The 1-3 things that will move markets today: economic data releases, earnings, geopolitical events, Fed speakers. Be specific about times and what the expectations are. Explain why each matters in plain English.
+Keep it tight — 1-2 short paragraphs. If a market was flat and boring, say so in one line; don't pad.
 
-## WHAT SMART MONEY IS DOING
-This is the most important section. What are institutions actually doing — buying, selling, hedging? Include positioning data (are hedge funds long or short? are algorithmic traders buying or selling?), fund flow data, and any notable sentiment shifts. Translate Wall Street desk commentary into plain language. If BofA Hartnett or GS S&T have a strong view, lead with it.
+## 2. INSIGHTS & ALPHA
+The meat. The 3-5 most actionable takes from the institutional research, with priority:
 
-## CRYPTO
-BTC and ETH prices and weekly moves. Any significant institutional crypto news (new ETFs, exchange launches, regulatory moves). Skip this section if there's nothing meaningful — don't pad it.
+**Smart money positioning** — what are hedge funds, CTAs, prime brokerage desks doing? Long/short? Net buying/selling? Hedging? Flows data? Which way did positioning flip this week? Lead with whoever has the strongest directional view (BofA Hartnett, GS S&T, JPM positioning). Translate desk jargon into plain English.
 
-## COMING UP
-Bullet list of key events for the next few days. For EACH item include: the exact date (e.g. Wednesday April 9), the time if known (e.g. 8:30 AM ET), and for earnings whether it's before market open (BMO) or after market close (AMC). No vague "this week" — give the actual day and date.
+**Top institutional takes** — the most directional calls: upgrade/downgrade trades with conviction, sector rotations, thematic plays (e.g., "GS moving overweight energy on Iran risk + OPEC discipline"). Not every model update — just the ones that change your thinking.
 
-Keep the total report under 1000 words. Every sentence should tell the reader something they can act on or need to know. Cut everything else.
+**Crypto institutional flow** — if there's meaningful crypto news (ETF flows, regulatory, major custody moves), include it here. Skip if thin.
 
-End with: "Sourced from Goldman Sachs, Citi, and Bank of America research. Not financial advice."
+## 3. WHAT TO WATCH
+Forward-looking section covering today + rest of this week. Format as a bulleted list grouped by day.
+
+For each event include:
+- Exact date (e.g., "Wednesday April 15")
+- Time if known (e.g., "8:30 AM ET")
+- For earnings: BMO or AMC
+- **HOW TO REACT** — one actionable sentence on what the move implies for positioning. Examples:
+  - "CPI expected 2.5% YoY. Hot print → risk-off, short duration; cool print → tech/small caps catch bid."
+  - "Iran ceasefire deadline 8 PM ET. No deal → oil pumps, USD up, equities sell off; deal → everything-rally, vol collapses."
+  - "NVDA earnings AMC. Miss → semis lead Nasdaq down; beat + raised guide → AI theme reignited."
+
+Keep it concrete and tradeable. No vague "markets may react."
+
+---
+
+Keep the total report under 1000 words. Every sentence should tell the reader something they can act on. Cut fluff.
+
+End with: "Sourced from {pdf_count} institutional research reports. Not financial advice."
 """
 
 # Afternoon pulse removed — single daily pulse at 9am PST / 12pm ET.
