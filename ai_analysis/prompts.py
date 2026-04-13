@@ -18,11 +18,21 @@ Respond with a JSON object only, no other text:
 }
 
 Priority guidelines:
-- HIGH: Reports with meaningful charts, tables, or visual data that need image analysis to fully understand. Morning briefings with multiple calls. Macro/strategy pieces with positioning charts. S&T notes with flow data. Vol/positioning commentary. Crypto institutional research. Oil/commodity supply analysis with maps or charts. Geopolitical risk assessments.
-- MEDIUM: Single-stock equity research (even from top banks). Sector overviews. Earnings previews/reviews. Regional macro. FX commentary. Model updates. Anything useful but where the text tells the full story without needing chart images.
-- LOW: Disclaimer-heavy wrappers. Valuation tables with no commentary. Duplicate reports. Pure fixed income/rates with no equity implications. Country-specific reports for small markets with no global read-through. ESG/sustainability reports. Administrative content.
+- HIGH: Morning briefings with multiple calls. Macro/strategy pieces with positioning data. S&T notes with flow data. Vol/positioning commentary. Crypto institutional research. Major US/global equity calls with conviction. Oil/commodity supply analysis with geopolitical read-through. Fed/ECB/BoJ policy analysis with rate-path implications.
+- MEDIUM: Single-stock equity research on major US/European names (even from top banks). Sector overviews for sectors that trade in US options markets. Earnings previews/reviews on MAG7 + bellwethers. US macro commentary. Major FX (EUR, JPY, GBP). Model updates on major indices. Anything with actionable implications for US/crypto traders.
+- LOW: Use this liberally for reports with limited read-through for US options and crypto traders:
+  - Disclaimer-heavy wrappers, valuation tables with no commentary, duplicate reports, admin content
+  - Pure fixed income/rates research with no equity or macro implications
+  - ESG/sustainability reports
+  - Regional macro for smaller markets a US trader doesn't trade: Hungary, Czech Republic, Poland, Turkey, Argentina, South Africa, Indonesia, Philippines, Vietnam, Egypt, Israel, Chile, Colombia
+  - Minor FX pair deep-dives: SGD, THB, INR, ZAR, TRY, BRL, MXN, IDR (exceptions: when they signal something bigger, like EM FX stress spilling into risk assets)
+  - Single-commodity deep dives with no US/crypto spillover: sugar, cocoa, wheat, cotton, livestock, minor base metals
+  - Credit research without spread calls (e.g., discussions of issuance trends, credit ratings, individual bond analyses without macro read-through)
+  - Country-specific single-stock research for markets traders don't access: specific Indonesian banks, Polish utilities, Thai consumer names
+  - Technical-analysis-only pieces with no fundamental backing
+  - Historical wrap-ups (quarter/month-in-review) without forward-looking views
 
-Note: Goldman Sachs, JPMorgan, Bank of America, and Morgan Stanley reports should never be LOW — they always have value even if only MEDIUM."""
+Note: Goldman Sachs, JPMorgan, Bank of America, and Morgan Stanley reports should never be LOW — they always have value even if only MEDIUM. The LOW filter is for non-tier-1 banks covering peripheral markets or niche topics."""
 
 TRIAGE_USER_PROMPT = """Classify this institutional research PDF:
 
