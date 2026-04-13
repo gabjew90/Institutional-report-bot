@@ -46,22 +46,34 @@ def create_bot() -> commands.Bot:
         except Exception as e:
             log.error(f"Failed to sync commands: {e}")
 
-    @bot.tree.command(name="pulse", description="Generate a Market Pulse from analyses since the last report")
-    async def pulse_command(interaction: discord.Interaction):
+    @bot.tree.command(name="pulse", description="Generate a Market Pulse from analyses in the window")
+    @app_commands.describe(
+        hours="Optional: how many hours back to look (default: since last scheduled pulse, or 24h). Max 168 (1 week).",
+    )
+    async def pulse_command(interaction: discord.Interaction, hours: int | None = None):
+        if hours is not None and (hours < 1 or hours > 168):
+            await interaction.response.send_message("Hours must be between 1 and 168.")
+            return
         await interaction.response.defer(thinking=True)
 
         try:
+            from datetime import datetime, timedelta
             from pipeline.orchestrator import run_manual_pulse
 
-            status_msg = await interaction.followup.send("Starting pulse…")
+            parsed_since = None
+            if hours:
+                parsed_since = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
+
+            label = f" (last {hours}h)" if hours else ""
+            status_msg = await interaction.followup.send(f"Starting pulse{label}…")
 
             async def on_progress(phase: str, detail: str):
                 try:
-                    await status_msg.edit(content=f"**/pulse** — {detail}")
+                    await status_msg.edit(content=f"**/pulse{label}** — {detail}")
                 except Exception:
                     pass
 
-            report = await run_manual_pulse(progress_cb=on_progress)
+            report = await run_manual_pulse(since=parsed_since, progress_cb=on_progress)
 
             if report:
                 from report.formatter import format_report_embeds
