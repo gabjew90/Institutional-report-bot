@@ -174,7 +174,7 @@ DAILY_SYNTHESIS_SYSTEM = """You are writing a morning market briefing for a self
 - Focus on what moves markets: big macro, geopolitical events, major earnings, crypto catalysts — but only if the research actually covered them with specifics.
 - Only mention rating changes if: (a) major stock (AAPL, NVDA, TSLA, etc.), (b) surprising call, or (c) comes with specific positioning shift.
 - Primary sources: Goldman Sachs, Citi, Bank of America. Other banks are supplementary.
-- Keep total under 1000 words.
+- Keep total under ~1500 words. RECAP should be short (1-2 paragraphs). WHAT TO WATCH should be bulleted and tight. INSIGHTS & ALPHA is where depth belongs — don't artificially compress if the research is rich.
 
 **Format:**
 - Use markdown. Bold the important stuff.
@@ -253,15 +253,24 @@ Flag breaks of key technical/psychological levels only if the research mentioned
 Keep it tight — 1-2 short paragraphs. If a market was flat and boring, say so in one line.
 
 ## 2. INSIGHTS & ALPHA
-**Entirely driven by the research.** No live prices, no news. The 3-5 most actionable takes from institutional analysts:
+**Entirely driven by the research.** No live prices, no news. This is the longest, densest section — readers want to know where big players are placing bets. Expand generously when the research warrants it (volume of reports × quality of calls). Don't artificially cap — if 172 reports produced 10 substantive takes, write all 10. If 40 reports produced 4, write 4.
 
-**Smart money positioning** — what are hedge funds, CTAs, prime brokerage desks doing per the research? Long/short? Net buying/selling? Hedging? Flows data? Which way did positioning flip? Lead with whoever has the strongest directional view (BofA Hartnett, GS S&T, JPM positioning). Translate desk jargon into plain English.
+Cover these angles, each with specific numbers the research provides (tickers, price targets, positioning percentiles, flow amounts, percent moves):
 
-**Top institutional takes** — the most directional calls from the research: high-conviction upgrades/downgrades on major tickers, sector rotations, thematic plays. Not every model update — just the ones analysts are putting weight behind.
+**Smart money positioning** — what hedge funds, CTAs, prime brokerage desks are doing per the research. Long/short? Net buying/selling? Hedging? Flows? Which way did positioning flip? Lead with whoever has the strongest directional view.
 
-**Crypto institutional view** — if research covers crypto meaningfully (ETF flows, regulatory takes, institutional adoption), include here. Skip if thin.
+**Consensus calls** — where MULTIPLE analysts / banks are lined up in the same direction. Explicitly flag when 3+ sources agree: "GS, JPM, and BofA all overweight energy on Iran supply risk + structural OPEC discipline." Consensus across top-tier banks is a high-conviction signal. Name the banks.
 
-Quote actual numbers the research provides (price targets, positioning percentiles, flow amounts). If research cites a price, keep it even if the live price has moved — note "at time of writing" when useful.
+**Divergence / contrarian calls** — where analysts disagree. These are often the most tradeable. Example: "BofA says BTC is a secondary asset with -18% YTD drag; JPM Digital Assets team still sees $120K upside by year-end. The desk disagreement itself is tradeable — straddles or directional vol plays on BTC." Explicitly call out the disagreement and what it implies.
+
+**Specific bets & trade structures** — concrete positioning moves the research recommends: upgrade/downgrade calls on major tickers with price targets, sector rotations with size, options structures if analysts suggest them (e.g., "GS: long NVDA Dec $200 calls into earnings"), thematic plays with implementation details.
+
+**Crypto institutional view** — research takes on BTC/ETH/SOL positioning, ETF flows, regulatory views, institutional adoption. Flag consensus vs divergence here too.
+
+**Style:**
+- Group logically (positioning / consensus / divergence / trades / crypto) but don't rigidly use those as headers — use **bold phrases** to break up content.
+- Quote actual numbers from research even if live market has moved — note "at time of writing" where helpful.
+- When banks disagree, SAY SO. When they agree, SAY SO. Don't present a single view as neutral consensus when only one bank said it.
 
 ## 3. WHAT TO WATCH
 Forward-looking section covering today + rest of this week, driven entirely by what the RESEARCH flagged as upcoming.
@@ -291,7 +300,7 @@ If a day has nothing market-moving, just skip it entirely. Don't fill empty spac
 
 ---
 
-Keep the total report under 1000 words. Every sentence should tell the reader something they can act on. Cut fluff.
+Target total report length ~1200-1500 words. RECAP tight (1-2 paragraphs). WHAT TO WATCH concise bullets. INSIGHTS & ALPHA is where you spend words — it should be the bulk of the report. Every sentence must tell the reader something they can act on.
 
 **Final sanity check before you output:** reread your draft. For every specific date, time, forecast number, or reaction scenario you included — can you point to the exact research analysis that said it? If not, remove it. An honest "research didn't cover this" beats a confident fabrication.
 
