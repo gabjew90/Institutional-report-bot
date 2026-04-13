@@ -342,6 +342,21 @@ def create_bot() -> commands.Bot:
             inline=False,
         )
 
+        # Last 5 PDFs ingested
+        recent = full.get("recent_pdfs") or []
+        if recent:
+            lines = []
+            for r in recent:
+                ts = _fmt_ts(r.get("created_at"))
+                pri = (r.get("priority") or "-").lower()
+                name = (r.get("file_name") or "")[:55]
+                lines.append(f"`{ts}` · **{pri}** · {name}")
+            embed.add_field(
+                name="Last 5 ingested",
+                value="\n".join(lines)[:1024],  # Discord field limit
+                inline=False,
+            )
+
         await interaction.response.send_message(embed=embed)
 
     @bot.tree.command(name="reprocess", description="Retry a failed PDF by filename")

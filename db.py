@@ -562,6 +562,15 @@ def get_pipeline_stats() -> dict:
     # Dropbox cursor state
     cursor_row = conn.execute("SELECT cursor, last_poll_at FROM dropbox_state WHERE id = 1").fetchone()
 
+    # Last 5 PDFs ingested (by created_at desc)
+    recent_rows = conn.execute(
+        """SELECT file_name, priority, status, created_at
+           FROM pdf_files
+           ORDER BY created_at DESC
+           LIMIT 5"""
+    ).fetchall()
+    recent_pdfs = [dict(r) for r in recent_rows]
+
     return {
         "total_pdfs": total,
         "status_counts": status_counts,
@@ -574,4 +583,5 @@ def get_pipeline_stats() -> dict:
         "last_manual_pulse": dict(last_manual) if last_manual else None,
         "cursor_set": bool(cursor_row and cursor_row["cursor"]),
         "last_poll_at": cursor_row["last_poll_at"] if cursor_row else None,
+        "recent_pdfs": recent_pdfs,
     }
