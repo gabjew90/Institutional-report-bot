@@ -275,6 +275,100 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
     return report
 
 
+async def reanalyze_recent_pdfs(
+    hours: int,
+    progress_cb=None,
+) -> dict:
+    """Re-run analysis on PDFs already in the DB within the window.
+
+    Use case: refresh historical analyses against an improved prompt/schema
+    without having to wait for new uploads. Each PDF is re-downloaded from
+    Dropbox, re-analyzed (text-only, full document) with the current prompt,
+    and a NEW row is appended to pdf_analyses. Old rows are preserved as
+    history — the latest analysis wins in SELECT queries.
+
+    Args:
+        hours: lookback window by Dropbox upload date (1-48).
+        progress_cb: optional async callback(stats, phase) for updates.
+    """
+    from datetime import timedelta
+    cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
+
+    conn = db.get_connection()
+    rows = conn.execute(
+        """SELECT id, dropbox_path, file_name, local_path, dropbox_rev,
+                  file_size_bytes, dropbox_modified_at, status, priority
+           FROM pdf_files
+           WHERE dropbox_modified_at > ?
+           ORDER BY dropbox_modified_at ASC""",
+        (cutoff,),
+    ).fetchall()
+    to_process = [dict(r) for r in rows]
+
+    stats = {
+        "target": len(to_process), "processed": 0, "failed": 0,
+        "input_tokens": 0, "output_tokens": 0,
+        "current_file": "", "recent_files": [],
+    }
+
+    if progress_cb:
+        await progress_cb(stats, "starting")
+
+    download_dir = Path(settings.pdf_download_dir)
+    download_dir.mkdir(parents=True, exist_ok=True)
+    recent_files: list[str] = []
+
+    for i, pdf_data in enumerate(to_process, start=1):
+        stats["current_file"] = pdf_data["file_name"]
+        stats["recent_files"] = recent_files[-5:]
+        if progress_cb:
+            await progress_cb(stats, "processing")
+
+        try:
+            dropbox_path = pdf_data["dropbox_path"]
+            local_path = Path(pdf_data["local_path"] or "")
+            # Local file is usually deleted after initial processing — re-download
+            if not local_path or not local_path.exists():
+                safe_name = pdf_data["file_name"].replace("/", "_")
+                local_path = download_dir / safe_name
+                # Avoid collisions if another PDF has the same filename
+                if local_path.exists():
+                    stem, suffix, counter = local_path.stem, local_path.suffix, 1
+                    while local_path.exists():
+                        local_path = download_dir / f"{stem}_{counter}{suffix}"
+                        counter += 1
+                await asyncio.to_thread(download_file, dropbox_path, local_path)
+                pdf_data["local_path"] = str(local_path)
+
+            analysis = await process_single_pdf(pdf_data)
+            if analysis:
+                stats["processed"] += 1
+                stats["input_tokens"] += analysis.input_tokens
+                stats["output_tokens"] += analysis.output_tokens
+                recent_files.append(f"✓ {pdf_data['file_name'][:70]} ({analysis.priority})")
+            else:
+                stats["failed"] += 1
+                recent_files.append(f"✗ {pdf_data['file_name'][:70]} (failed)")
+        except Exception as e:
+            log.error(f"Reanalyze failed for {pdf_data['file_name']}: {e}")
+            stats["failed"] += 1
+            recent_files.append(f"✗ {pdf_data['file_name'][:70]} (error)")
+
+        # Push progress every 3 PDFs (or on the last)
+        if progress_cb and (i % 3 == 0 or i == len(to_process)):
+            stats["current_file"] = pdf_data["file_name"]
+            stats["recent_files"] = recent_files[-5:]
+            await progress_cb(stats, "processing")
+
+    if progress_cb:
+        stats["current_file"] = ""
+        stats["recent_files"] = recent_files[-5:]
+        await progress_cb(stats, "done")
+
+    log.info(f"Reanalyze complete: {stats}")
+    return stats
+
+
 async def ingest_recent_pdfs(
     hours: int,
     progress_cb=None,

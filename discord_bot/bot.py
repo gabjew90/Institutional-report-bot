@@ -148,6 +148,63 @@ def create_bot() -> commands.Bot:
             log.error(f"Load failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error loading PDFs: {str(e)[:200]}")
 
+    @bot.tree.command(name="reanalyze", description="Re-run analysis on PDFs already in DB using the current prompt")
+    @app_commands.describe(hours="Re-analyze PDFs uploaded in the last N hours (max 48)")
+    async def reanalyze_command(interaction: discord.Interaction, hours: int):
+        if hours < 1 or hours > 48:
+            await interaction.response.send_message("Hours must be between 1 and 48.")
+            return
+        await interaction.response.defer(thinking=True)
+
+        try:
+            from pipeline.orchestrator import reanalyze_recent_pdfs
+
+            status_msg = await interaction.followup.send(
+                f"Starting reanalyze ({hours}h window)…"
+            )
+
+            async def on_progress(stats: dict, phase: str):
+                if phase == "starting":
+                    content = (
+                        f"**Reanalyze ({hours}h window)** — targeting {stats['target']} PDFs "
+                        f"from the DB. Re-downloading from Dropbox and re-running analysis "
+                        f"with the current prompt."
+                    )
+                elif phase == "processing":
+                    done = stats["processed"] + stats["failed"]
+                    target = stats["target"]
+                    pct = int((done / target) * 100) if target else 0
+                    current = stats.get("current_file", "")
+                    recent = stats.get("recent_files", [])
+                    content = (
+                        f"**Reanalyze ({hours}h window)** — {done}/{target} done ({pct}%)\n"
+                        f"Processed: {stats['processed']} | Failed: {stats['failed']}\n"
+                        f"Tokens: {stats['input_tokens']:,} in / {stats['output_tokens']:,} out"
+                    )
+                    if current:
+                        content += f"\n\n**Now:** {current[:80]}"
+                    if recent:
+                        content += f"\n**Recent:**\n" + "\n".join(recent[-5:])
+                    content = content[:1900]
+                else:  # done
+                    content = (
+                        f"**Reanalyze complete ({hours}h window)**\n"
+                        f"Target: {stats['target']} | Processed: {stats['processed']} | "
+                        f"Failed: {stats['failed']}\n"
+                        f"Tokens: {stats['input_tokens']:,} in / {stats['output_tokens']:,} out\n"
+                        f"New analysis rows appended alongside old ones. "
+                        f"Run `/pulse` to see synthesis with refreshed data."
+                    )
+                try:
+                    await status_msg.edit(content=content)
+                except Exception:
+                    pass
+
+            await reanalyze_recent_pdfs(hours, progress_cb=on_progress)
+        except Exception as e:
+            log.error(f"Reanalyze failed: {e}", exc_info=True)
+            await interaction.followup.send(f"Error: {str(e)[:200]}")
+
     @bot.tree.command(name="clearqueue", description="Delete pending (DOWNLOADED) PDFs from the queue — destructive, cancels backlog")
     @app_commands.describe(confirm="Set true to skip the >500 safety check for large purges")
     async def clearqueue_command(interaction: discord.Interaction, confirm: bool = False):
