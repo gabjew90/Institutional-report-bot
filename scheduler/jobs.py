@@ -64,10 +64,11 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
 
 
 async def _poll_dropbox_job():
-    """Scheduled job: poll Dropbox for new PDFs."""
+    """Scheduled job: poll Dropbox for new PDFs (blocking I/O in thread)."""
+    import asyncio
     try:
         from dropbox_client.watcher import poll_and_download
-        downloaded = poll_and_download()
+        downloaded = await asyncio.to_thread(poll_and_download)
         if downloaded:
             log.info(f"Dropbox poll: {len(downloaded)} new PDFs downloaded")
     except Exception as e:

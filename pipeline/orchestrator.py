@@ -43,8 +43,8 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
         db.log_event(pdf_id, "process", "started")
         start_time = time.time()
 
-        # Step 1: Extract text from all pages
-        pages = extract_text_per_page(local_path)
+        # Step 1: Extract text from all pages (blocking I/O — run in thread)
+        pages = await asyncio.to_thread(extract_text_per_page, local_path)
         full_text = "\n".join(p.text for p in pages)
 
         # Step 2: Triage with Gemini
@@ -69,12 +69,13 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
             )
         else:
             # Select pages for analysis
-            selected_pages = select_pages(pages)
+            selected_pages = await asyncio.to_thread(select_pages, pages)
 
             # For HIGH priority: render images of selected pages
             # For MEDIUM: text-only
             render_images = triage.priority == "high"
-            extraction = extract_pdf(
+            extraction = await asyncio.to_thread(
+                extract_pdf,
                 local_path,
                 selected_pages if render_images else None,
             )
@@ -270,7 +271,7 @@ async def ingest_recent_pdfs(hours: int) -> dict:
     since = datetime.utcnow() - timedelta(hours=hours)
     log.info(f"Ingest: listing Dropbox files since {since.isoformat()}")
 
-    files = list_folder_files(settings.dropbox_folder_path, since=since)
+    files = await asyncio.to_thread(list_folder_files, settings.dropbox_folder_path, since)
     stats = {"found": len(files), "new": 0, "processed": 0, "skipped_low": 0,
              "failed": 0, "input_tokens": 0, "output_tokens": 0}
 
@@ -290,7 +291,7 @@ async def ingest_recent_pdfs(hours: int) -> dict:
                 counter += 1
 
         try:
-            download_file(entry.path, local_path)
+            await asyncio.to_thread(download_file, entry.path, local_path)
             pdf_id = db.insert_pdf_file(
                 dropbox_path=entry.path, file_name=entry.name,
                 local_path=str(local_path), dropbox_rev=entry.rev,
