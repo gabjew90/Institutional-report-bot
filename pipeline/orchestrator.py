@@ -149,7 +149,7 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
             data = json.loads(row["analysis_json"])
             # Handle both dict-based and dataclass-based serialization
             if isinstance(data, dict) and "pdf_file_id" in data:
-                from ai_analysis.models import MarketMover, SectorView, MacroIndicator, TradeIdea
+                from ai_analysis.models import MarketMover, SectorView, MacroIndicator, TradeIdea, EntityMention
                 from ai_analysis.analyzer import _safe_dataclass
 
                 def _build_list(cls, raw):
@@ -180,6 +180,7 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
                     vol_and_positioning=data.get("vol_and_positioning", []),
                     geopolitical=data.get("geopolitical", []),
                     cross_bank_references=data.get("cross_bank_references", []),
+                    entities_mentioned=_build_list(EntityMention, data.get("entities_mentioned")),
                     pages_analyzed=data.get("pages_analyzed", 0),
                     total_pages=data.get("total_pages", 0),
                     input_tokens=data.get("input_tokens", 0),

@@ -48,6 +48,17 @@ class TradeIdea:
 
 
 @dataclass
+class EntityMention:
+    """An entity (company, crypto, index) referenced in the research.
+
+    Used to build a reliable ticker lookup for cashtag formatting in synthesis.
+    """
+    name: str           # Full name (e.g., "Arista Networks", "Bitcoin")
+    ticker: str         # Symbol (e.g., "ANET", "BTC"). Empty if no known ticker.
+    asset_class: str    # stock/etf/crypto/index/fx/commodity/other
+
+
+@dataclass
 class PdfAnalysis:
     pdf_file_id: int
     file_name: str
@@ -67,6 +78,7 @@ class PdfAnalysis:
     vol_and_positioning: list[str] = field(default_factory=list)
     geopolitical: list[str] = field(default_factory=list)
     cross_bank_references: list[str] = field(default_factory=list)
+    entities_mentioned: list[EntityMention] = field(default_factory=list)
     pages_analyzed: int = 0
     total_pages: int = 0
     input_tokens: int = 0

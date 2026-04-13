@@ -111,6 +111,13 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
   "cross_bank_references": [
     "Explicit references to other banks' views — e.g., 'contrary to BofA Hartnett', 'in line with JPM consensus', 'vs GS overweight call'. Verbatim where possible, short. This is gold for downstream consensus/divergence analysis."
   ],
+  "entities_mentioned": [
+    {
+      "name": "Full name as it appears (e.g., 'Arista Networks', 'Bitcoin', 'Goldman Sachs', 'S&P 500')",
+      "ticker": "Symbol only — e.g., 'ANET', 'BTC', 'GS', 'SPX'. Leave empty if no exchange-listed ticker exists.",
+      "asset_class": "stock | etf | crypto | index | fx | commodity | other"
+    }
+  ],
   "charts_described": [
     "Description of key visual data: what the chart shows, key levels, trends, patterns you observe in the images"
   ]
@@ -125,6 +132,15 @@ Rules:
 - Pay special attention to: implied volatility commentary, positioning data, flow analysis, derivatives-specific content, crypto institutional adoption signals.
 - For charts: describe what you see — trends, support/resistance levels, breakouts, divergences, volume patterns.
 - Be precise with numbers: prices, percentages, dates, targets.
+
+**For entities_mentioned** (used downstream to render cashtags on Twitter/X):
+- List every company, crypto asset, and named index the report discusses meaningfully. Skip passing mentions.
+- Use the primary US listing where applicable (ASML → ASML, TSMC → TSM, Nestle → NSRGY).
+- Leave ticker empty if you're uncertain — DON'T guess. An empty ticker is better than a wrong one.
+- Crypto: BTC, ETH, SOL, etc. No $ prefix in the `ticker` field — just the symbol.
+- Indices: use standard root (S&P 500 → SPX, Nasdaq 100 → NDX, VIX → VIX).
+- Do NOT list commodities by spot name (Brent, Gold, Oil) — use asset_class=commodity and either leave ticker empty or use a futures ticker if quoted.
+
 - Return ONLY valid JSON, no markdown or extra text."""
 
 ANALYSIS_USER_PROMPT_MULTIMODAL = """Analyze this institutional research report:
@@ -236,6 +252,16 @@ DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any even
 ---
 
 {economic_calendar}
+
+---
+
+{ticker_block}
+
+**HOW TO USE THE TICKER LOOKUP**:
+- When you reference any entity from the list above, use the exact ticker with a `$` prefix (cashtag) the FIRST time it appears in a section. Subsequent mentions in the same section can use either the ticker or the name.
+- Example: "Arista Networks (**$ANET**) had one of the more intriguing closes today..."
+- For entities in the "Do NOT prefix $" list, reference by name (Brent, DXY, etc.).
+- Do NOT invent tickers for entities not in the list. If you want to mention a company and it's not in the lookup, use its name without a cashtag.
 
 ---
 

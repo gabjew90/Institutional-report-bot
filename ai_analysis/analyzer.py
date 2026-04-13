@@ -18,7 +18,7 @@ from google.genai import types
 
 from ai_analysis.models import (
     TriageResult, PdfAnalysis, MarketMover, SectorView,
-    MacroIndicator, TradeIdea,
+    MacroIndicator, TradeIdea, EntityMention,
 )
 from ai_analysis.prompts import (
     TRIAGE_SYSTEM_PROMPT, TRIAGE_USER_PROMPT,
@@ -278,6 +278,12 @@ async def analyze_pdf_deep(
         vol_and_positioning=data.get("vol_and_positioning", []),
         geopolitical=data.get("geopolitical", []),
         cross_bank_references=data.get("cross_bank_references", []),
+        entities_mentioned=[
+            em for em in (
+                _safe_dataclass(EntityMention, e) for e in data.get("entities_mentioned", [])
+                if isinstance(e, dict)
+            ) if em is not None
+        ],
         pages_analyzed=0,  # text-only; no image rendering
         total_pages=extraction.total_pages,
         input_tokens=input_tokens,

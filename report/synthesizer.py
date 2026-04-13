@@ -27,6 +27,35 @@ def _get_client() -> genai.Client:
     return genai.Client(api_key=settings.google_api_key)
 
 
+def _build_ticker_map(analyses: list[PdfAnalysis]) -> dict[str, dict]:
+    """Aggregate entities_mentioned across all PDFs into a dedup ticker map.
+
+    Returns {TICKER: {"name": str, "asset_class": str, "mentions": int}}.
+    Only entities with a non-empty ticker are included.
+    Cashtags are only valid for stock/etf/crypto/index — other asset classes
+    are kept in the map for synthesis context but flagged as no_cashtag=True.
+    """
+    CASHTAG_CLASSES = {"stock", "etf", "crypto", "index"}
+    out: dict[str, dict] = {}
+    for a in analyses:
+        for e in a.entities_mentioned:
+            if not e.ticker:
+                continue
+            ticker = e.ticker.strip().upper()
+            if not ticker:
+                continue
+            if ticker not in out:
+                out[ticker] = {
+                    "name": e.name,
+                    "asset_class": (e.asset_class or "").lower().strip(),
+                    "mentions": 1,
+                    "no_cashtag": (e.asset_class or "").lower().strip() not in CASHTAG_CLASSES,
+                }
+            else:
+                out[ticker]["mentions"] += 1
+    return out
+
+
 def _compute_stats(analyses: list[PdfAnalysis]) -> dict:
     """Summary stats for the footer: top sources, priority mix, date range."""
     from collections import Counter
@@ -81,6 +110,11 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
             entry["geopolitical"] = a.geopolitical
         if a.cross_bank_references:
             entry["cross_bank_refs"] = a.cross_bank_references
+        if a.entities_mentioned:
+            entry["entities"] = [
+                {"name": e.name, "ticker": e.ticker, "class": e.asset_class}
+                for e in a.entities_mentioned
+            ]
         compact.append(entry)
     return json.dumps(compact, indent=1)
 
@@ -95,6 +129,29 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
     news_snapshot = fetch_news_snapshot(since_hours=48, limit=15)
     earnings_calendar = fetch_earnings_calendar(days_ahead=7)
     economic_calendar = fetch_economic_calendar(days_ahead=7)
+
+    # Build the ticker lookup and render as a prompt section
+    ticker_map = _build_ticker_map(analyses)
+    if ticker_map:
+        # Sort by mentions desc so the most-referenced names are at the top
+        sorted_tickers = sorted(ticker_map.items(), key=lambda kv: -kv[1]["mentions"])
+        cashtag_lines = []
+        no_cashtag_lines = []
+        for ticker, info in sorted_tickers:
+            line = f"  {ticker} — {info['name']} ({info['asset_class']}, {info['mentions']} mentions)"
+            if info["no_cashtag"]:
+                no_cashtag_lines.append(line)
+            else:
+                cashtag_lines.append(line)
+        ticker_block_parts = ["TICKER LOOKUP — use $TICKER (cashtag format) when referring to these:"]
+        if cashtag_lines:
+            ticker_block_parts.append("\n".join(cashtag_lines))
+        if no_cashtag_lines:
+            ticker_block_parts.append("\nDo NOT prefix $ for these (FX / commodity / other — reference by name):")
+            ticker_block_parts.append("\n".join(no_cashtag_lines))
+        ticker_block = "\n".join(ticker_block_parts)
+    else:
+        ticker_block = "TICKER LOOKUP: (none extracted — use only tickers that clearly appear in the research text)"
 
     # Pull the previous scheduled pulse for cross-day continuity — but only if fresh
     # (<48h). An older pulse is stale context and can mislead comparisons.
@@ -126,6 +183,7 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
         news_snapshot=news_snapshot,
         earnings_calendar=earnings_calendar,
         economic_calendar=economic_calendar,
+        ticker_block=ticker_block,
         prev_pulse=prev_context,
         analyses_json=analyses_json,
     )
