@@ -58,6 +58,16 @@ def _get_section_color(header: str) -> int:
     return 0x95A5A6  # Default grey
 
 
+def _normalize_whitespace(text: str) -> str:
+    """Collapse excessive blank lines so Discord doesn't render tall empty gaps.
+
+    Runs of 3+ newlines → 2 (single blank line paragraph break).
+    Trailing whitespace stripped.
+    """
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
 def _split_markdown_sections(markdown: str) -> list[tuple[str, str]]:
     """Split markdown into (header, content) tuples by ## headers."""
     sections: list[tuple[str, str]] = []
@@ -67,14 +77,14 @@ def _split_markdown_sections(markdown: str) -> list[tuple[str, str]]:
     for line in markdown.split("\n"):
         if line.startswith("## "):
             if current_header or current_content:
-                sections.append((current_header, "\n".join(current_content).strip()))
+                sections.append((current_header, _normalize_whitespace("\n".join(current_content))))
             current_header = line.lstrip("# ").strip()
             current_content = []
         else:
             current_content.append(line)
 
     if current_header or current_content:
-        sections.append((current_header, "\n".join(current_content).strip()))
+        sections.append((current_header, _normalize_whitespace("\n".join(current_content))))
 
     return sections
 
