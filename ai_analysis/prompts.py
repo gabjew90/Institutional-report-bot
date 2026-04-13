@@ -295,9 +295,7 @@ Keep the total report under 1000 words. Every sentence should tell the reader so
 
 **Final sanity check before you output:** reread your draft. For every specific date, time, forecast number, or reaction scenario you included — can you point to the exact research analysis that said it? If not, remove it. An honest "research didn't cover this" beats a confident fabrication.
 
-End with a single line footer: "Not financial advice."
-
-Do NOT add a "Sourced from N reports" tag — it reads as marketing and can be misleading when quality varies. The reader knows the system draws from research.
+Do not add any footer tag, disclaimer, or "Sourced from N reports" line. End with the last bullet of WHAT TO WATCH.
 """
 
 # Afternoon pulse removed — single daily pulse at 9am PST / 12pm ET.
