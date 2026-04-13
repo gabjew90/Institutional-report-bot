@@ -58,7 +58,7 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
   "title": "Report title",
   "report_type": "morning_briefing|equity_research|macro|strategy|derivatives|crypto|sector|economics|credit|fx|commodities|vol_commentary|earnings_preview|sales_trading",
   "key_insights": [
-    "3-5 most important takeaways, each 1-2 sentences. Focus on what matters for trading decisions. For morning briefings, extract the TOP CALLS and most directional views."
+    "ALL important takeaways — no artificial cap. If the report has 10 rating changes, extract all 10. If it has 3, extract 3. Each 1-2 sentences. Focus on what matters for trading decisions. For morning briefings, extract the TOP CALLS and most directional views."
   ],
   "market_movers": [
     {
@@ -66,6 +66,7 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
       "action": "upgrade/downgrade/initiate/reiterate/price_target_change/positive_catalyst_watch/negative_catalyst_watch",
       "rating": "Buy/Overweight/Sell/Underweight/Neutral/Outperform/Underperform",
       "price_target": "$XXX or N/A",
+      "conviction": "high|medium|low — high for contrarian or out-of-consensus calls, or explicit 'high conviction' language; low for routine reiterations",
       "rationale": "Brief explanation in 1-2 sentences"
     }
   ],
@@ -99,11 +100,16 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
     {
       "description": "Long NVDA May $180 Calls",
       "rationale": "Riding upgrade cycle + AI capex momentum",
-      "risk": "Broad market selloff, AI spending deceleration"
+      "risk": "Broad market selloff, AI spending deceleration",
+      "conviction": "high|medium|low",
+      "time_horizon": "intraday|swing|1-3mo|3-12mo|longer_term — what window the trade is sized for"
     }
   ],
   "risk_factors": [
     "Key risks identified: geopolitical, positioning, liquidity, regulatory, oil price, etc."
+  ],
+  "cross_bank_references": [
+    "Explicit references to other banks' views — e.g., 'contrary to BofA Hartnett', 'in line with JPM consensus', 'vs GS overweight call'. Verbatim where possible, short. This is gold for downstream consensus/divergence analysis."
   ],
   "charts_described": [
     "Description of key visual data: what the chart shows, key levels, trends, patterns you observe in the images"
@@ -236,6 +242,12 @@ Use the previous pulse above to ground your RECAP section. Compare current price
 - If the research window includes a weekend, call out that price action since Friday close may not be reflected in the analyst views.
 
 Here are {pdf_count} institutional research analyses. Some may have been published days ago and reference events that have since occurred. Treat those as historical context, not forward-looking.
+
+**STRUCTURED FIELDS IN THE ANALYSES (use them):**
+- Each analysis has per-item `conviction` (high/medium/low) on market_movers and trade_ideas — weight HIGH-conviction calls more heavily.
+- Each analysis has `time_horizon` on trade_ideas — surface whether a trade is intraday, swing, or 3-12mo so the reader knows the horizon.
+- Each analysis has `cross_bank_refs` — explicit mentions of other banks (e.g., "contrary to BofA Hartnett"). Use these to find consensus AND divergence across the set. If BofA says X and cross_bank_refs from JPM mention "we disagree with BofA's X view", CALL OUT THE DIVERGENCE.
+- `vol_positioning` captures per-PDF positioning data (CTA leverage, fund flows, crowding, hedging). Aggregate across reports to get the full positioning picture.
 
 Synthesize into a Morning Market Pulse:
 

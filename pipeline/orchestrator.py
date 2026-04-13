@@ -11,13 +11,10 @@ from dataclasses import asdict
 from datetime import date, datetime
 from pathlib import Path
 
-from ai_analysis.analyzer import (
-    triage_pdf, analyze_pdf_deep, analyze_batch, is_multimodal_source,
-)
+from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep, analyze_batch
 from ai_analysis.models import PdfAnalysis
 from dropbox_client.watcher import list_folder_files, download_file, _get_client
 from pdf_processing.extractor import extract_text_per_page, extract_pdf
-from pdf_processing.page_selector import select_pages
 from report.synthesizer import synthesize_daily_pulse
 from report.models import DailyReport
 from config import settings
@@ -72,36 +69,13 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 output_tokens=triage.output_tokens,
             )
         else:
-            # Decide whether to do multimodal — only for chart-heavy sources
-            # (Hartnett Flow Show, GS S&T Chart of the Day, TME) where the text
-            # doesn't adequately summarize the charts. Everything else: text-only.
-            use_multimodal = (
-                triage.priority == "high"
-                and is_multimodal_source(triage.source, folder_path)
-            )
-
-            if use_multimodal:
-                selected_pages = await asyncio.to_thread(select_pages, pages)
-                extraction = await asyncio.to_thread(
-                    extract_pdf, local_path, selected_pages,
-                )
-            else:
-                # Text-only: no image rendering needed, skip page selection entirely
-                extraction = await asyncio.to_thread(extract_pdf, local_path, None)
-
-            log.info(
-                f"Deep analysis mode for {file_name}: "
-                f"{'multimodal' if use_multimodal else 'text-only'} "
-                f"(source={triage.source or 'unknown'})"
-            )
-
-            # Deep analysis
+            # Text-only deep analysis — full document, no image rendering
+            extraction = await asyncio.to_thread(extract_pdf, local_path, None)
             analysis = await analyze_pdf_deep(
                 pdf_file_id=pdf_id,
                 file_name=file_name,
                 extraction=extraction,
                 priority=triage.priority,
-                use_multimodal=use_multimodal,
             )
 
         duration = time.time() - start_time
@@ -174,6 +148,17 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
             # Handle both dict-based and dataclass-based serialization
             if isinstance(data, dict) and "pdf_file_id" in data:
                 from ai_analysis.models import MarketMover, SectorView, MacroIndicator, TradeIdea
+                from ai_analysis.analyzer import _safe_dataclass
+
+                def _build_list(cls, raw):
+                    out = []
+                    for item in raw or []:
+                        if isinstance(item, dict):
+                            obj = _safe_dataclass(cls, item)
+                            if obj is not None:
+                                out.append(obj)
+                    return out
+
                 analysis = PdfAnalysis(
                     pdf_file_id=data["pdf_file_id"],
                     file_name=data.get("file_name", row.get("file_name", "")),
@@ -182,16 +167,17 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
                     report_type=data.get("report_type", "other"),
                     priority=data.get("priority", row.get("priority", "medium")),
                     key_insights=data.get("key_insights", []),
-                    market_movers=[MarketMover(**mm) for mm in data.get("market_movers", []) if isinstance(mm, dict)],
-                    sector_views=[SectorView(**sv) for sv in data.get("sector_views", []) if isinstance(sv, dict)],
+                    market_movers=_build_list(MarketMover, data.get("market_movers")),
+                    sector_views=_build_list(SectorView, data.get("sector_views")),
                     earnings_insights=data.get("earnings_insights", []),
-                    macro_indicators=[MacroIndicator(**mi) for mi in data.get("macro_indicators", []) if isinstance(mi, dict)],
+                    macro_indicators=_build_list(MacroIndicator, data.get("macro_indicators")),
                     crypto_views=data.get("crypto_views", []),
-                    trade_ideas=[TradeIdea(**ti) for ti in data.get("trade_ideas", []) if isinstance(ti, dict)],
+                    trade_ideas=_build_list(TradeIdea, data.get("trade_ideas")),
                     risk_factors=data.get("risk_factors", []),
                     charts_described=data.get("charts_described", []),
                     vol_and_positioning=data.get("vol_and_positioning", []),
                     geopolitical=data.get("geopolitical", []),
+                    cross_bank_references=data.get("cross_bank_references", []),
                     pages_analyzed=data.get("pages_analyzed", 0),
                     total_pages=data.get("total_pages", 0),
                     input_tokens=data.get("input_tokens", 0),

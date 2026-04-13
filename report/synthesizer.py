@@ -59,6 +59,8 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
             entry["vol_positioning"] = a.vol_and_positioning
         if a.geopolitical:
             entry["geopolitical"] = a.geopolitical
+        if a.cross_bank_references:
+            entry["cross_bank_refs"] = a.cross_bank_references
         compact.append(entry)
     return json.dumps(compact, indent=1)
 

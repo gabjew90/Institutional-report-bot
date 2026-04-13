@@ -21,6 +21,7 @@ class MarketMover:
     rating: str
     price_target: str
     rationale: str
+    conviction: str = ""  # high/medium/low — contrarian + explicit "high conviction" = high
 
 
 @dataclass
@@ -42,6 +43,8 @@ class TradeIdea:
     description: str
     rationale: str
     risk: str
+    conviction: str = ""  # high/medium/low
+    time_horizon: str = ""  # intraday/swing/1-3mo/3-12mo/longer_term
 
 
 @dataclass
@@ -63,6 +66,7 @@ class PdfAnalysis:
     charts_described: list[str] = field(default_factory=list)
     vol_and_positioning: list[str] = field(default_factory=list)
     geopolitical: list[str] = field(default_factory=list)
+    cross_bank_references: list[str] = field(default_factory=list)
     pages_analyzed: int = 0
     total_pages: int = 0
     input_tokens: int = 0

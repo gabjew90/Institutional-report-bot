@@ -48,7 +48,6 @@ async def run_ingest(since_str: str | None = None, until_str: str | None = None,
     from config import settings
     from dropbox_client.watcher import list_folder_files, download_file
     from pdf_processing.extractor import extract_text_per_page, extract_pdf
-    from pdf_processing.page_selector import select_pages
     from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep
     from pathlib import Path
     import db
@@ -104,17 +103,7 @@ async def run_ingest(since_str: str | None = None, until_str: str | None = None,
             db.update_pdf_priority(pdf_id, "low")
             continue
 
-        # Decide multimodal — only for chart-heavy sources
-        from ai_analysis.analyzer import is_multimodal_source
-        use_multimodal = (
-            triage.priority == "high" and is_multimodal_source(triage.source, folder_path)
-        )
-        if use_multimodal:
-            selected = select_pages(pages)
-            extraction = extract_pdf(str(local_path), selected)
-        else:
-            selected = []
-            extraction = extract_pdf(str(local_path), None)
+        extraction = extract_pdf(str(local_path), None)
 
         pdf_id = db.insert_pdf_file(
             dropbox_path=entry.path, file_name=entry.name,
@@ -125,7 +114,6 @@ async def run_ingest(since_str: str | None = None, until_str: str | None = None,
         analysis = await analyze_pdf_deep(
             pdf_file_id=pdf_id, file_name=entry.name,
             extraction=extraction, priority=triage.priority,
-            use_multimodal=use_multimodal,
         )
 
         # Store in DB

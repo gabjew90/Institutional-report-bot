@@ -1,15 +1,14 @@
-"""Gemini API multimodal analysis orchestrator.
+"""Gemini API analysis orchestrator.
 
 Implements the tiered analysis strategy:
-  Tier 1: Triage (text-only, cheap classification)
-  Tier 2: Deep analysis (multimodal for HIGH, text-only for MEDIUM)
+  Tier 1: Triage (cheap text-only classification)
+  Tier 2: Deep analysis (text-only; sends full document to Gemini)
   Tier 3: Synthesis (cross-PDF report generation, handled by report/synthesizer.py)
 
-Uses Google Gemini 3.1 Lite for all tiers.
+Uses Google Gemini for all tiers.
 """
 
 import asyncio
-import base64
 import json
 import logging
 import time
@@ -84,6 +83,21 @@ def _parse_json_response(text: str) -> dict:
     raise json.JSONDecodeError(f"Could not extract valid JSON from response: {text[:500]}", text, 0)
 
 
+def _safe_dataclass(cls, data: dict):
+    """Build a dataclass from dict, tolerating extra/missing keys.
+
+    Gemini occasionally returns unexpected keys (e.g., extra 'confidence' field)
+    or omits optional ones. Spread-style `cls(**data)` blows up on either; this
+    helper filters to known fields and lets defaults cover missing ones.
+    """
+    try:
+        allowed = {f.name for f in cls.__dataclass_fields__.values()}
+        filtered = {k: v for k, v in data.items() if k in allowed}
+        return cls(**filtered)
+    except Exception:
+        return None
+
+
 def _is_tier1_source(source: str, folder_path: str) -> bool:
     """Check if PDF is from a tier 1 bank (GS, JPM, BofA, MS)."""
     tier1_keywords = ["goldman", "gs ", "jpmorgan", "jpm", "bank of america", "bofa",
@@ -91,19 +105,6 @@ def _is_tier1_source(source: str, folder_path: str) -> bool:
     source_lower = source.lower()
     folder_lower = folder_path.lower()
     return any(kw in source_lower or kw in folder_lower for kw in tier1_keywords)
-
-
-def is_multimodal_source(source: str, folder_path: str) -> bool:
-    """Check if this source is chart-heavy enough to warrant multimodal analysis.
-
-    Most research text summarizes chart takeaways adequately. Multimodal is reserved
-    for specific formats where charts ARE the content: Hartnett Flow Show, GS S&T
-    Chart of the Day, TME vol screenshots, etc.
-    """
-    allow = [s.strip().lower() for s in settings.multimodal_sources.split(",") if s.strip()]
-    source_lower = (source or "").lower()
-    folder_lower = (folder_path or "").lower()
-    return any(kw in source_lower or kw in folder_lower for kw in allow)
 
 
 def _apply_priority_rules(gemini_priority: str, source: str, report_type: str, folder_path: str) -> str:
@@ -190,59 +191,23 @@ async def analyze_pdf_deep(
     file_name: str,
     extraction: PdfExtraction,
     priority: str,
-    use_multimodal: bool = False,
 ) -> PdfAnalysis:
-    """Tier 2: Deep analysis using Gemini.
+    """Tier 2: Deep analysis using Gemini — text-only.
 
-    Multimodal analysis is ONLY used when use_multimodal is True AND page images
-    were rendered. Text-only otherwise — sends the full document, no truncation.
+    Sends the full document to Gemini. No truncation, no image rendering.
+    Gemini's 1M-token context handles even 90-page UBS Contextual Diaries.
     """
     client = _get_client()
     limiter = _get_rate_limiter()
 
-    use_images = use_multimodal and bool(extraction.selected_page_images)
+    text_content = extraction.full_text
 
-    # Build text content
-    if use_images:
-        # Even in multimodal mode, include FULL text of every page so nothing is lost.
-        # Images are attached for the selected chart-heavy pages on top of full text.
-        text_parts = []
-        for page in extraction.pages:
-            text_parts.append(f"[Page {page.page_number + 1}]\n{page.text}")
-        text_content = "\n\n".join(text_parts)
-    else:
-        # Text-only: send the full document, no truncation. Gemini 1M-token context
-        # handles even the longest UBS Contextual Diary easily.
-        text_content = extraction.full_text
-
-    # Build content parts for Gemini
-    content_parts: list = []
-
-    if use_images:
-        user_text = ANALYSIS_USER_PROMPT_MULTIMODAL.format(
-            file_name=file_name,
-            total_pages=extraction.total_pages,
-            image_pages=", ".join(
-                str(img.page_number + 1) for img in extraction.selected_page_images
-            ),
-            text_content=text_content,
-        )
-        content_parts.append(types.Part.from_text(text=user_text))
-
-        # Add page images as inline data
-        for img in extraction.selected_page_images:
-            image_bytes = base64.standard_b64decode(img.image_base64)
-            content_parts.append(types.Part.from_bytes(
-                data=image_bytes,
-                mime_type=img.media_type,
-            ))
-    else:
-        user_text = ANALYSIS_USER_PROMPT_TEXT_ONLY.format(
-            file_name=file_name,
-            total_pages=extraction.total_pages,
-            text_content=text_content,
-        )
-        content_parts.append(types.Part.from_text(text=user_text))
+    user_text = ANALYSIS_USER_PROMPT_TEXT_ONLY.format(
+        file_name=file_name,
+        total_pages=extraction.total_pages,
+        text_content=text_content,
+    )
+    content_parts = [types.Part.from_text(text=user_text)]
 
     start_time = time.time()
 
@@ -284,28 +249,37 @@ async def analyze_pdf_deep(
         priority=priority,
         key_insights=data.get("key_insights", []),
         market_movers=[
-            MarketMover(**mm) for mm in data.get("market_movers", [])
-            if isinstance(mm, dict)
+            mover for mover in (
+                _safe_dataclass(MarketMover, mm) for mm in data.get("market_movers", [])
+                if isinstance(mm, dict)
+            ) if mover is not None
         ],
         sector_views=[
-            SectorView(**sv) for sv in data.get("sector_views", [])
-            if isinstance(sv, dict)
+            sv for sv in (
+                _safe_dataclass(SectorView, sv) for sv in data.get("sector_views", [])
+                if isinstance(sv, dict)
+            ) if sv is not None
         ],
         earnings_insights=data.get("earnings_insights", []),
         macro_indicators=[
-            MacroIndicator(**mi) for mi in data.get("macro_indicators", [])
-            if isinstance(mi, dict)
+            mi for mi in (
+                _safe_dataclass(MacroIndicator, mi) for mi in data.get("macro_indicators", [])
+                if isinstance(mi, dict)
+            ) if mi is not None
         ],
         crypto_views=data.get("crypto_views", []),
         trade_ideas=[
-            TradeIdea(**ti) for ti in data.get("trade_ideas", [])
-            if isinstance(ti, dict)
+            ti for ti in (
+                _safe_dataclass(TradeIdea, ti) for ti in data.get("trade_ideas", [])
+                if isinstance(ti, dict)
+            ) if ti is not None
         ],
         risk_factors=data.get("risk_factors", []),
         charts_described=data.get("charts_described", []),
         vol_and_positioning=data.get("vol_and_positioning", []),
         geopolitical=data.get("geopolitical", []),
-        pages_analyzed=len(extraction.selected_page_images) if use_images else 0,
+        cross_bank_references=data.get("cross_bank_references", []),
+        pages_analyzed=0,  # text-only; no image rendering
         total_pages=extraction.total_pages,
         input_tokens=input_tokens,
         output_tokens=output_tokens,
@@ -313,7 +287,7 @@ async def analyze_pdf_deep(
 
     log.info(
         f"Analyzed {file_name}: priority={priority}, "
-        f"{'multimodal' if use_images else 'text-only'}, "
+        f"text-only, "
         f"{input_tokens} in / {output_tokens} out, "
         f"{duration:.1f}s"
     )
