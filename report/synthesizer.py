@@ -12,6 +12,7 @@ from ai_analysis.models import PdfAnalysis
 from ai_analysis.prompts import (
     DAILY_SYNTHESIS_SYSTEM, DAILY_SYNTHESIS_USER,
 )
+from report.market_data import fetch_market_snapshot
 from report.models import DailyReport
 from config import settings
 
@@ -59,10 +60,12 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
     today = date.today().isoformat()
 
     analyses_json = _analyses_to_json(analyses)
+    market_snapshot = fetch_market_snapshot()
 
     user_prompt = DAILY_SYNTHESIS_USER.format(
         pdf_count=len(analyses),
         today=today,
+        market_snapshot=market_snapshot,
         analyses_json=analyses_json,
     )
 

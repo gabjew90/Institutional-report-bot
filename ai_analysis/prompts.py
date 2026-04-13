@@ -159,6 +159,10 @@ Rules:
 
 DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any event mentioned in the source research with a date BEFORE {today} has already happened. Do not include past events in "WHAT TO WATCH TODAY" or "COMING UP". Only include events dated {today} or later.
 
+{market_snapshot}
+
+**CRITICAL RULE ON PRICES**: The market data above is LIVE and current as of right now. When you cite any price (S&P, VIX, oil, gold, BTC, ETH, 10Y), use ONLY the numbers from the market snapshot above — NEVER use prices from the research PDFs (those are stale). The research is useful for commentary and context, but prices come from the live snapshot.
+
 Here are {pdf_count} institutional research analyses. Some may have been published days ago and reference events that have since occurred. Treat those as historical context, not forward-looking.
 
 Synthesize into a Morning Market Pulse:
