@@ -314,7 +314,15 @@ This is the longest, densest section. Readers want to know where big players are
 Quote actual numbers from research even if live market has moved — note "at time of writing" when useful. When banks agree, SAY SO. When they disagree, SAY SO. Never present a single bank's view as consensus.
 
 ## 3. WHAT TO WATCH
-Forward-looking section covering today + rest of this week, driven entirely by what the RESEARCH flagged as upcoming.
+Forward-looking section, driven entirely by what the RESEARCH flagged as upcoming.
+
+Divide into TWO subsections, formatted EXACTLY like this:
+
+### Today
+Bullets for events happening TODAY ({today}) only. If nothing market-moving is on today's docket, write a single line: "No major catalysts today." and move on — don't force content.
+
+### This Week
+Bullets for events happening AFTER today through end of this week (typically next 4-5 days). Grouped chronologically.
 
 **SOURCING RULES (strict):**
 - Every event MUST be explicitly discussed in at least one research analysis. No event = no mention, regardless of what the calendar shows.
@@ -335,9 +343,6 @@ For each event include:
 - **HOW TO REACT** — one actionable sentence. Examples:
   - "**CPI, Thursday Apr 15, 8:30 AM ET.** Expected 2.5% YoY. Hot (>2.7%) → markets drop, bonds sell off, dollar up. Cool (<2.3%) → tech and small caps rally."
   - "**NVDA earnings, Wednesday Apr 16, AMC.** Miss → semis lead Nasdaq down 2-3%. Beat + raised guide → AI trade back on, NVDA probably gaps up 5-8%."
-  - "**Iran deadline, Friday 8 PM ET.** No deal → oil pumps to $120+, stocks sell off, defensive/energy names bid. Deal → vol collapses, everything rallies, oil drops $5-10."
-
-If a day has nothing market-moving, just skip it entirely. Don't fill empty space.
 
 ---
 
