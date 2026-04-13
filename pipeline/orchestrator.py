@@ -359,6 +359,7 @@ async def run_manual_pulse(
     since: str | None = None,
     until: str | None = None,
     persist: bool = True,
+    progress_cb=None,
 ) -> DailyReport | None:
     """Run a pulse generation manually with optional time window.
 
@@ -366,6 +367,7 @@ async def run_manual_pulse(
         since: ISO datetime string for start of window (e.g. "2026-04-07T00:00:00")
         until: ISO datetime string for end of window (e.g. "2026-04-08T00:00:00")
         persist: If True, save the report to daily_reports. Set False for dry-run tests.
+        progress_cb: optional async callback(phase, detail) for periodic updates.
 
     If neither since nor until is provided, behaves like the scheduled pulse (since last report).
     If only `since` is provided, gets everything from that time to now.
@@ -374,6 +376,15 @@ async def run_manual_pulse(
     Note: unlike the scheduled pulse, this does NOT process the pending queue first.
     /pulse is a fast preview of what's already analyzed in the DB.
     """
+    async def _emit(phase: str, detail: str = ""):
+        if progress_cb:
+            try:
+                await progress_cb(phase, detail)
+            except Exception:
+                pass
+
+    await _emit("loading", "Loading analyses from DB…")
+
     if since and until:
         rows = db.get_analyses_between(since, until)
     elif since:
@@ -395,7 +406,11 @@ async def run_manual_pulse(
     if not analyses:
         return None
 
+    await _emit("synthesizing", f"Synthesizing {len(analyses)} reports (fetching live market data + calling Gemini)…")
+
     report = await synthesize_daily_pulse(analyses)
+
+    await _emit("persisting", "Saving report + preparing Discord embeds…")
 
     if persist:
         # Manual pulses use report_type="manual" so they don't affect the

@@ -52,21 +52,42 @@ def create_bot() -> commands.Bot:
 
         try:
             from pipeline.orchestrator import run_manual_pulse
-            report = await run_manual_pulse()
+
+            status_msg = await interaction.followup.send("Starting pulse…")
+
+            async def on_progress(phase: str, detail: str):
+                try:
+                    await status_msg.edit(content=f"**/pulse** — {detail}")
+                except Exception:
+                    pass
+
+            report = await run_manual_pulse(progress_cb=on_progress)
 
             if report:
                 from report.formatter import format_report_embeds
+                try:
+                    await status_msg.edit(content=f"**/pulse** — Posting {report.pdf_count}-report pulse to channel…")
+                except Exception:
+                    pass
                 embeds = format_report_embeds(report)
                 success = await send_embeds(interaction.channel, embeds)
                 if success and report.report_id:
                     db.mark_report_sent(report.report_id)
-                await interaction.followup.send(
-                    f"Market Pulse generated from {report.pdf_count} reports."
-                )
+                try:
+                    await status_msg.edit(
+                        content=f"Market Pulse generated from {report.pdf_count} reports."
+                    )
+                except Exception:
+                    pass
             else:
-                await interaction.followup.send(
-                    "No analyses available. Run `/load 24` first to ingest recent PDFs."
-                )
+                try:
+                    await status_msg.edit(
+                        content="No analyses available. Run `/load 24` first to ingest recent PDFs."
+                    )
+                except Exception:
+                    await interaction.followup.send(
+                        "No analyses available. Run `/load 24` first to ingest recent PDFs."
+                    )
         except Exception as e:
             log.error(f"Manual pulse failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error generating pulse: {str(e)[:200]}")
