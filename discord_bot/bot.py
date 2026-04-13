@@ -309,6 +309,19 @@ def create_bot() -> commands.Bot:
             inline=False,
         )
 
+        # Upload volume windows — what would feed a pulse right now
+        lines = [f"Last 24h: **{full.get('uploads_last_24h', 0)}** uploaded"]
+        since_last = full.get("uploads_since_last_scheduled")
+        if since_last is not None:
+            lines.append(f"Since last scheduled pulse: **{since_last}** uploaded")
+        else:
+            lines.append("Since last scheduled pulse: n/a (no scheduled pulse yet)")
+        embed.add_field(
+            name="Upload volume (by Dropbox upload time)",
+            value="\n".join(lines),
+            inline=False,
+        )
+
         # Priority breakdown — always show all three so zeros are visible
         priority_counts = full.get("priority_counts") or {}
         pri_parts = [f"{p}: {priority_counts.get(p, 0)}" for p in ("high", "medium", "low")]

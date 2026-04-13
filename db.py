@@ -2,7 +2,7 @@
 
 import json
 import sqlite3
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from pathlib import Path
 
 from config import settings
@@ -571,6 +571,23 @@ def get_pipeline_stats() -> dict:
     ).fetchall()
     recent_pdfs = [dict(r) for r in recent_rows]
 
+    # Count uploads by Dropbox upload time (server_modified) — what actually
+    # would go into a pulse, regardless of when we ingested them.
+    cutoff_24h = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+    uploads_last_24h = conn.execute(
+        "SELECT COUNT(*) as c FROM pdf_files WHERE dropbox_modified_at > ?",
+        (cutoff_24h,),
+    ).fetchone()["c"]
+
+    uploads_since_last_scheduled = None
+    if last_daily and last_daily["created_at"]:
+        # Convert the created_at (already UTC ISO) into the cutoff
+        row = conn.execute(
+            "SELECT COUNT(*) as c FROM pdf_files WHERE dropbox_modified_at > ?",
+            (last_daily["created_at"],),
+        ).fetchone()
+        uploads_since_last_scheduled = row["c"] if row else 0
+
     return {
         "total_pdfs": total,
         "status_counts": status_counts,
@@ -584,4 +601,6 @@ def get_pipeline_stats() -> dict:
         "cursor_set": bool(cursor_row and cursor_row["cursor"]),
         "last_poll_at": cursor_row["last_poll_at"] if cursor_row else None,
         "recent_pdfs": recent_pdfs,
+        "uploads_last_24h": uploads_last_24h,
+        "uploads_since_last_scheduled": uploads_since_last_scheduled,
     }
