@@ -93,8 +93,14 @@ def create_bot() -> commands.Bot:
             await interaction.followup.send(f"Error generating pulse: {str(e)[:200]}")
 
     @bot.tree.command(name="load", description="Ingest + analyze PDFs uploaded to Dropbox in the last N hours")
-    @app_commands.describe(hours="How many hours of recent PDFs to load (max 48)")
-    async def load_command(interaction: discord.Interaction, hours: int):
+    @app_commands.describe(
+        hours="How many hours of recent PDFs to load (max 48)",
+        password="Admin password",
+    )
+    async def load_command(interaction: discord.Interaction, hours: int, password: str):
+        if settings.command_password and password != settings.command_password:
+            await interaction.response.send_message("Invalid password.", ephemeral=True)
+            return
         if hours < 1 or hours > 48:
             await interaction.response.send_message("Hours must be between 1 and 48.")
             return
@@ -149,8 +155,14 @@ def create_bot() -> commands.Bot:
             await interaction.followup.send(f"Error loading PDFs: {str(e)[:200]}")
 
     @bot.tree.command(name="reanalyze", description="Re-run analysis on PDFs already in DB using the current prompt")
-    @app_commands.describe(hours="Re-analyze PDFs uploaded in the last N hours (max 48)")
-    async def reanalyze_command(interaction: discord.Interaction, hours: int):
+    @app_commands.describe(
+        hours="Re-analyze PDFs uploaded in the last N hours (max 48)",
+        password="Admin password",
+    )
+    async def reanalyze_command(interaction: discord.Interaction, hours: int, password: str):
+        if settings.command_password and password != settings.command_password:
+            await interaction.response.send_message("Invalid password.", ephemeral=True)
+            return
         if hours < 1 or hours > 48:
             await interaction.response.send_message("Hours must be between 1 and 48.")
             return

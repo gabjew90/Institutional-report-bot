@@ -26,6 +26,9 @@ class Settings(BaseSettings):
     # Comma-separated list of channel IDs. Single ID also works (e.g. "123").
     # The scheduled pulse will be posted to every channel listed here.
     discord_channel_id: str = ""
+    # Password guard for destructive / token-heavy commands (/load, /reanalyze).
+    # Empty = no gate; any string = required to match the `password` slash arg.
+    command_password: str = ""
 
     # Scheduling
     timezone: str = "America/New_York"
