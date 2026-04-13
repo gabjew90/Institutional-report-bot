@@ -326,20 +326,31 @@ async def reanalyze_recent_pdfs(
 
         try:
             dropbox_path = pdf_data["dropbox_path"]
-            local_path = Path(pdf_data["local_path"] or "")
-            # Local file is usually deleted after initial processing — re-download
-            if not local_path or not local_path.exists():
-                safe_name = pdf_data["file_name"].replace("/", "_")
-                local_path = download_dir / safe_name
-                # Avoid collisions if another PDF has the same filename
-                if local_path.exists():
-                    stem, suffix, counter = local_path.stem, local_path.suffix, 1
-                    while local_path.exists():
-                        local_path = download_dir / f"{stem}_{counter}{suffix}"
-                        counter += 1
-                await asyncio.to_thread(download_file, dropbox_path, local_path)
-                pdf_data["local_path"] = str(local_path)
+            if not dropbox_path:
+                log.warning(f"Reanalyze: {pdf_data['file_name']} missing dropbox_path — skipping")
+                stats["failed"] += 1
+                recent_files.append(f"✗ {pdf_data['file_name'][:70]} (no dropbox path)")
+                continue
 
+            # Always re-download: the local file from the original processing is
+            # long gone. Use a fresh path, deterministic per file_name.
+            safe_name = pdf_data["file_name"].replace("/", "_")
+            local_path = download_dir / safe_name
+            if local_path.exists():
+                stem, suffix, counter = local_path.stem, local_path.suffix, 1
+                while local_path.exists():
+                    local_path = download_dir / f"{stem}_{counter}{suffix}"
+                    counter += 1
+
+            log.info(f"Reanalyze: downloading {dropbox_path} -> {local_path}")
+            await asyncio.to_thread(download_file, dropbox_path, local_path)
+            if not local_path.exists():
+                log.error(f"Reanalyze: download reported success but file missing: {local_path}")
+                stats["failed"] += 1
+                recent_files.append(f"✗ {pdf_data['file_name'][:70]} (download missing)")
+                continue
+
+            pdf_data["local_path"] = str(local_path)
             analysis = await process_single_pdf(pdf_data)
             if analysis:
                 stats["processed"] += 1
@@ -350,7 +361,7 @@ async def reanalyze_recent_pdfs(
                 stats["failed"] += 1
                 recent_files.append(f"✗ {pdf_data['file_name'][:70]} (failed)")
         except Exception as e:
-            log.error(f"Reanalyze failed for {pdf_data['file_name']}: {e}")
+            log.error(f"Reanalyze failed for {pdf_data['file_name']}: {e}", exc_info=True)
             stats["failed"] += 1
             recent_files.append(f"✗ {pdf_data['file_name'][:70]} (error)")
 
