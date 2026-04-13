@@ -13,7 +13,9 @@ from ai_analysis.prompts import (
     DAILY_SYNTHESIS_SYSTEM, DAILY_SYNTHESIS_USER,
 )
 from report.market_data import fetch_market_snapshot
-from report.news_data import fetch_news_snapshot
+from report.news_data import (
+    fetch_news_snapshot, fetch_earnings_calendar, fetch_economic_calendar,
+)
 from report.models import DailyReport
 from config import settings
 import db
@@ -65,6 +67,8 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
     analyses_json = _analyses_to_json(analyses)
     market_snapshot = fetch_market_snapshot()
     news_snapshot = fetch_news_snapshot(since_hours=48, limit=15)
+    earnings_calendar = fetch_earnings_calendar(days_ahead=7)
+    economic_calendar = fetch_economic_calendar(days_ahead=7)
 
     # Pull the previous scheduled pulse to give the model cross-day continuity.
     prev = db.get_last_daily_pulse()
@@ -81,6 +85,8 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
         today=today,
         market_snapshot=market_snapshot,
         news_snapshot=news_snapshot,
+        earnings_calendar=earnings_calendar,
+        economic_calendar=economic_calendar,
         prev_pulse=prev_context,
         analyses_json=analyses_json,
     )

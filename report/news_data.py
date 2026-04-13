@@ -1,10 +1,9 @@
-"""Fetch live market news to fill gaps between research publication and pulse time.
+"""Fetch live market news, earnings calendar, and economic calendar from Finnhub.
 
-Uses Finnhub's free general market news endpoint. If FINNHUB_API_KEY is not set,
-returns an empty snapshot and the synthesizer falls back to research-only context.
+Uses Finnhub's free endpoints. If FINNHUB_API_KEY is not set, all fetchers
+return placeholder strings and the synthesizer falls back to research-only context.
 
-Finnhub free tier: 60 calls/min, generous for our once-a-day pulse use.
-Sign up at https://finnhub.io/register for a free key.
+Sign up free at https://finnhub.io/register.
 """
 
 import json
@@ -17,6 +16,22 @@ from config import settings
 
 log = logging.getLogger(__name__)
 
+# Stocks we care about for earnings calendar filtering — extendable
+_MAJOR_TICKERS = {
+    # MAG7
+    "AAPL", "MSFT", "GOOGL", "GOOG", "AMZN", "META", "NVDA", "TSLA",
+    # Banks
+    "JPM", "GS", "MS", "BAC", "C", "WFC",
+    # Bellwethers
+    "XOM", "CVX", "WMT", "TGT", "COST", "HD", "LOW", "MCD",
+    # Semis / chips
+    "TSM", "ASML", "AMD", "INTC", "AVGO", "QCOM", "MU", "LRCX", "AMAT",
+    # Streaming / media
+    "NFLX", "DIS", "SPOT",
+    # Other notables
+    "BA", "CAT", "DE", "JNJ", "UNH", "V", "MA", "PYPL",
+}
+
 
 def _fetch_json(url: str, timeout: float = 8.0) -> list | dict | None:
     req = urllib.request.Request(url, headers={"User-Agent": "MarketPulseBot/1.0"})
@@ -24,7 +39,7 @@ def _fetch_json(url: str, timeout: float = 8.0) -> list | dict | None:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.loads(resp.read())
     except Exception as e:
-        log.warning(f"News fetch failed: {e}")
+        log.warning(f"Finnhub fetch failed: {e}")
         return None
 
 
@@ -61,4 +76,104 @@ def fetch_news_snapshot(since_hours: int = 48, limit: int = 15) -> str:
         lines.append(f"  [{ts}] {source}: {headline}")
         if summary:
             lines.append(f"    {summary}")
+    return "\n".join(lines)
+
+
+def fetch_earnings_calendar(days_ahead: int = 7) -> str:
+    """Return a snapshot of major upcoming earnings (next N days) with BMO/AMC flags."""
+    key = settings.finnhub_api_key
+    if not key:
+        return "EARNINGS CALENDAR: (no FINNHUB_API_KEY — dates/BMO-AMC not verified)"
+
+    today = datetime.utcnow().date()
+    end = today + timedelta(days=days_ahead)
+    url = (
+        f"https://finnhub.io/api/v1/calendar/earnings"
+        f"?from={today.isoformat()}&to={end.isoformat()}"
+        f"&token={urllib.parse.quote(key)}"
+    )
+    data = _fetch_json(url)
+    if not data or not isinstance(data, dict):
+        return "EARNINGS CALENDAR: (fetch failed)"
+
+    items = data.get("earningsCalendar", []) or []
+    # Filter to tickers we care about
+    filtered = [
+        e for e in items
+        if e.get("symbol", "").upper() in _MAJOR_TICKERS
+    ]
+    # Sort by date
+    filtered.sort(key=lambda e: (e.get("date", ""), e.get("symbol", "")))
+
+    if not filtered:
+        return f"EARNINGS CALENDAR (next {days_ahead}d): no major tickers reporting."
+
+    lines = [
+        f"EARNINGS CALENDAR (next {days_ahead}d, major tickers only — USE THESE DATES + BMO/AMC VERBATIM):"
+    ]
+    # Finnhub `hour` field: "bmo" = before market open, "amc" = after market close, "dmh" = during, "" = unknown
+    for e in filtered:
+        sym = e.get("symbol", "?")
+        date = e.get("date", "?")
+        hour = (e.get("hour") or "").lower()
+        timing = {"bmo": "BMO", "amc": "AMC", "dmh": "intraday"}.get(hour, "timing TBD")
+        eps_est = e.get("epsEstimate")
+        rev_est = e.get("revenueEstimate")
+        extra = []
+        if eps_est is not None:
+            extra.append(f"EPS est ${eps_est}")
+        if rev_est is not None:
+            extra.append(f"Rev est ${rev_est/1e9:.2f}B")
+        extra_str = f" ({', '.join(extra)})" if extra else ""
+        lines.append(f"  {date} {sym} — {timing}{extra_str}")
+    return "\n".join(lines)
+
+
+def fetch_economic_calendar(days_ahead: int = 7) -> str:
+    """Return upcoming US + major economic releases with actual dates/times/estimates."""
+    key = settings.finnhub_api_key
+    if not key:
+        return "ECONOMIC CALENDAR: (no FINNHUB_API_KEY — release dates/forecasts not verified)"
+
+    today = datetime.utcnow().date()
+    end = today + timedelta(days=days_ahead)
+    url = (
+        f"https://finnhub.io/api/v1/calendar/economic"
+        f"?from={today.isoformat()}&to={end.isoformat()}"
+        f"&token={urllib.parse.quote(key)}"
+    )
+    data = _fetch_json(url)
+    if not data or not isinstance(data, dict):
+        return "ECONOMIC CALENDAR: (fetch failed)"
+
+    items = data.get("economicCalendar", []) or []
+    # Focus on high-impact items from major economies
+    major_countries = {"US", "EU", "CN", "JP", "GB", "DE"}
+    filtered = [
+        e for e in items
+        if e.get("country", "") in major_countries
+        and (e.get("impact") or "").lower() in {"high", "medium"}
+    ]
+    filtered.sort(key=lambda e: e.get("time", ""))
+
+    if not filtered:
+        return f"ECONOMIC CALENDAR (next {days_ahead}d): no high-impact releases."
+
+    lines = [
+        f"ECONOMIC CALENDAR (next {days_ahead}d, high/medium impact from US/EU/CN/JP/GB/DE — USE THESE DATES + FORECASTS VERBATIM):"
+    ]
+    for e in filtered[:30]:  # cap to avoid prompt bloat
+        country = e.get("country", "")
+        event = e.get("event", "").strip()
+        time = e.get("time", "")[:16].replace("T", " ")
+        impact = (e.get("impact") or "").lower()
+        estimate = e.get("estimate")
+        prev = e.get("prev")
+        unit = e.get("unit", "")
+        bits = [f"{time} UTC", f"[{country}]", event, f"impact={impact}"]
+        if estimate is not None:
+            bits.append(f"est={estimate}{unit}")
+        if prev is not None:
+            bits.append(f"prev={prev}{unit}")
+        lines.append("  " + " | ".join(bits))
     return "\n".join(lines)

@@ -189,12 +189,26 @@ DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any even
 
 {news_snapshot}
 
-**HOW TO USE LIVE NEWS**: The news headlines above (if present) are current as of right now. Use them to:
-- Identify market-moving developments that happened AFTER the research was written (especially weekends and overnight)
-- Ground "WHAT HAPPENED" in actual recent events, not just what the research anticipated
-- Flag when a research view has been overtaken by news events
+---
 
-If the news section shows "no FINNHUB_API_KEY set", you do not have live news — rely on research + market data only and be explicit that your recap reflects only what the research covered.
+{earnings_calendar}
+
+---
+
+{economic_calendar}
+
+---
+
+**HOW TO USE THE CALENDARS AND NEWS**:
+
+- **Earnings calendar + Economic calendar are GROUND TRUTH.** For any event in "WHAT TO WATCH", the date, time, BMO/AMC, and forecast numbers MUST come from these calendars — not from the research and not from your training data. If a calendar contradicts the research (e.g., research says "ASML AMC" but calendar says BMO), the CALENDAR WINS. Say BMO.
+- **Do not include events not in these calendars.** If you want to mention CPI, PPI, Fed meetings, MAG7 earnings, etc., find it in the calendar above. If it's not there within the next 7 days, don't list it.
+- **News snapshot** fills the gap between research publication and now. Use it to catch weekend/overnight developments and flag stale research views.
+
+**KNOWN HALLUCINATION TRAPS — DO NOT MAKE THESE ERRORS:**
+- **MAS (Monetary Authority of Singapore)** does NOT set interest rates. It manages the Singapore Dollar NEER band — it adjusts slope, width, or center. Never say "MAS 50bp hike" or "MAS rate decision." If MAS appears, say "MAS monetary policy meeting — may adjust SGD NEER band slope/width/center." Verify the date against the economic calendar.
+- **Fed speakers** — only include Powell or unusually impactful speakers. Not every Fed governor appearance matters.
+- **Earnings BMO vs AMC** — always check the earnings calendar. Common mistakes: ASML, TSMC, and other non-US companies are usually BMO in US timezone. Do not guess.
 
 ---
 
@@ -281,7 +295,9 @@ Keep the total report under 1000 words. Every sentence should tell the reader so
 
 **Final sanity check before you output:** reread your draft. For every specific date, time, forecast number, or reaction scenario you included — can you point to the exact research analysis that said it? If not, remove it. An honest "research didn't cover this" beats a confident fabrication.
 
-End with: "Synthesized from {pdf_count} research reports + live market data. Dates/events not explicitly covered in research may need verification against an economic calendar. Not financial advice."
+End with a single line footer: "Not financial advice."
+
+Do NOT add a "Sourced from N reports" tag — it reads as marketing and can be misleading when quality varies. The reader knows the system draws from research.
 """
 
 # Afternoon pulse removed — single daily pulse at 9am PST / 12pm ET.
