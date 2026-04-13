@@ -148,13 +148,25 @@ def create_bot() -> commands.Bot:
             log.error(f"Load failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error loading PDFs: {str(e)[:200]}")
 
-    @bot.tree.command(name="clearqueue", description="Delete all pending (DOWNLOADED) PDFs from the queue — cancels backlog processing")
-    async def clearqueue_command(interaction: discord.Interaction):
+    @bot.tree.command(name="clearqueue", description="Delete pending (DOWNLOADED) PDFs from the queue — destructive, cancels backlog")
+    @app_commands.describe(confirm="Set true to skip the >500 safety check for large purges")
+    async def clearqueue_command(interaction: discord.Interaction, confirm: bool = False):
         await interaction.response.defer(thinking=True)
         try:
+            pending = db.count_pending_queue()
+            if pending == 0:
+                await interaction.followup.send("Queue is already empty — nothing to clear.")
+                return
+            if pending > 500 and not confirm:
+                await interaction.followup.send(
+                    f"⚠️ {pending:,} pending PDFs — this is a large purge. "
+                    f"Re-run with `confirm:True` to proceed."
+                )
+                return
+
             count = db.clear_pending_queue()
             await interaction.followup.send(
-                f"Cleared **{count}** pending PDFs from the queue. "
+                f"Cleared **{count:,}** pending PDFs from the queue. "
                 f"Process job will idle until new uploads arrive."
             )
         except Exception as e:

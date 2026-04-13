@@ -20,6 +20,7 @@ def get_connection() -> sqlite3.Connection:
         _conn.execute("PRAGMA journal_mode=WAL")
         _conn.execute("PRAGMA foreign_keys=ON")
         _init_schema(_conn)
+        _migrate_drop_unique_constraints(_conn)
     return _conn
 
 
@@ -53,6 +54,8 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_pdf_files_status ON pdf_files(status);
         CREATE INDEX IF NOT EXISTS idx_pdf_files_downloaded_at ON pdf_files(downloaded_at);
 
+        -- NOTE: no UNIQUE on pdf_file_id — we keep every analysis run as history.
+        -- Use ORDER BY id DESC LIMIT 1 to get the latest for a pdf_file_id.
         CREATE TABLE IF NOT EXISTS pdf_analyses (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             pdf_file_id INTEGER NOT NULL REFERENCES pdf_files(id),
@@ -65,10 +68,12 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             output_tokens_used INTEGER,
             model_used TEXT,
             analysis_duration_seconds REAL,
-            created_at TEXT NOT NULL DEFAULT (datetime('now')),
-            UNIQUE(pdf_file_id)
+            created_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
 
+        CREATE INDEX IF NOT EXISTS idx_pdf_analyses_file_id ON pdf_analyses(pdf_file_id);
+
+        -- NOTE: no UNIQUE on (report_date, report_type) — every pulse run kept as history.
         CREATE TABLE IF NOT EXISTS daily_reports (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             report_date TEXT NOT NULL,
@@ -79,9 +84,10 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             input_tokens_used INTEGER,
             output_tokens_used INTEGER,
             discord_sent_at TEXT,
-            created_at TEXT NOT NULL DEFAULT (datetime('now')),
-            UNIQUE(report_date, report_type)
+            created_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
+
+        CREATE INDEX IF NOT EXISTS idx_daily_reports_type_created ON daily_reports(report_type, created_at);
 
         CREATE TABLE IF NOT EXISTS processing_log (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -93,6 +99,83 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         );
     """)
     conn.commit()
+
+
+def _migrate_drop_unique_constraints(conn: sqlite3.Connection) -> None:
+    """One-time migration: drop UNIQUE(pdf_file_id) and UNIQUE(report_date, report_type).
+
+    SQLite can't DROP an implicit unique index defined in CREATE TABLE. The only way
+    is to rebuild the table. Safe because data is preserved, structure is relaxed.
+    """
+    import logging
+    log = logging.getLogger(__name__)
+
+    def has_unique(table: str, col_tuple: tuple[str, ...]) -> bool:
+        """Check if a table has a UNIQUE index covering exactly these columns."""
+        rows = conn.execute(f"PRAGMA index_list('{table}')").fetchall()
+        for r in rows:
+            if r["unique"] and r["origin"] == "u":  # 'u' means explicit or auto UNIQUE
+                idx_name = r["name"]
+                cols = [c["name"] for c in conn.execute(f"PRAGMA index_info('{idx_name}')").fetchall()]
+                if tuple(cols) == col_tuple:
+                    return True
+        return False
+
+    # pdf_analyses: drop UNIQUE(pdf_file_id)
+    if has_unique("pdf_analyses", ("pdf_file_id",)):
+        log.info("Migrating pdf_analyses: dropping UNIQUE(pdf_file_id) to preserve analysis history")
+        conn.executescript("""
+            CREATE TABLE pdf_analyses_new (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                pdf_file_id INTEGER NOT NULL REFERENCES pdf_files(id),
+                triage_json TEXT,
+                analysis_json TEXT,
+                priority TEXT,
+                pages_analyzed INTEGER,
+                total_pages INTEGER,
+                input_tokens_used INTEGER,
+                output_tokens_used INTEGER,
+                model_used TEXT,
+                analysis_duration_seconds REAL,
+                created_at TEXT NOT NULL DEFAULT (datetime('now'))
+            );
+            INSERT INTO pdf_analyses_new
+                SELECT id, pdf_file_id, triage_json, analysis_json, priority,
+                       pages_analyzed, total_pages, input_tokens_used, output_tokens_used,
+                       model_used, analysis_duration_seconds, created_at
+                FROM pdf_analyses;
+            DROP TABLE pdf_analyses;
+            ALTER TABLE pdf_analyses_new RENAME TO pdf_analyses;
+            CREATE INDEX IF NOT EXISTS idx_pdf_analyses_file_id ON pdf_analyses(pdf_file_id);
+        """)
+        conn.commit()
+
+    # daily_reports: drop UNIQUE(report_date, report_type)
+    if has_unique("daily_reports", ("report_date", "report_type")):
+        log.info("Migrating daily_reports: dropping UNIQUE(report_date, report_type) to preserve pulse history")
+        conn.executescript("""
+            CREATE TABLE daily_reports_new (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                report_date TEXT NOT NULL,
+                report_type TEXT NOT NULL,
+                report_json TEXT NOT NULL,
+                report_markdown TEXT NOT NULL,
+                pdf_count INTEGER,
+                input_tokens_used INTEGER,
+                output_tokens_used INTEGER,
+                discord_sent_at TEXT,
+                created_at TEXT NOT NULL DEFAULT (datetime('now'))
+            );
+            INSERT INTO daily_reports_new
+                SELECT id, report_date, report_type, report_json, report_markdown,
+                       pdf_count, input_tokens_used, output_tokens_used,
+                       discord_sent_at, created_at
+                FROM daily_reports;
+            DROP TABLE daily_reports;
+            ALTER TABLE daily_reports_new RENAME TO daily_reports;
+            CREATE INDEX IF NOT EXISTS idx_daily_reports_type_created ON daily_reports(report_type, created_at);
+        """)
+        conn.commit()
 
 
 # --- Dropbox state ---
@@ -189,10 +272,18 @@ def update_pdf_priority(pdf_id: int, priority: str) -> None:
     conn.commit()
 
 
+def count_pending_queue() -> int:
+    """Return how many PDFs are currently in the pending queue."""
+    row = get_connection().execute(
+        "SELECT COUNT(*) as c FROM pdf_files WHERE status IN ('DOWNLOADED', 'PROCESSING')"
+    ).fetchone()
+    return row["c"] if row else 0
+
+
 def clear_pending_queue() -> int:
     """Delete all DOWNLOADED/PROCESSING rows from pdf_files and their local files.
 
-    Returns the number of rows deleted.
+    Returns the number of rows deleted. Caller is responsible for any safety checks.
     """
     conn = get_connection()
     rows = conn.execute(
@@ -235,7 +326,7 @@ def insert_analysis(
 ) -> int:
     conn = get_connection()
     cur = conn.execute(
-        """INSERT OR REPLACE INTO pdf_analyses
+        """INSERT INTO pdf_analyses
            (pdf_file_id, triage_json, analysis_json, priority, pages_analyzed,
             total_pages, input_tokens_used, output_tokens_used, model_used,
             analysis_duration_seconds)
@@ -247,41 +338,59 @@ def insert_analysis(
     return cur.lastrowid
 
 
+# Shared subquery: pick the latest analysis row per pdf_file_id.
+# Since a single PDF can have multiple analyses (e.g., reprocessed), we always
+# want the most recent one by id.
+_LATEST_ANALYSIS_CTE = """
+    WITH latest_analyses AS (
+        SELECT pa.*
+        FROM pdf_analyses pa
+        WHERE pa.id = (
+            SELECT MAX(id) FROM pdf_analyses
+            WHERE pdf_file_id = pa.pdf_file_id
+        )
+    )
+"""
+
+
 def get_todays_analyses(today: str | None = None) -> list[dict]:
     if today is None:
         today = date.today().isoformat()
     rows = get_connection().execute(
-        """SELECT pa.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
-           FROM pdf_analyses pa
-           JOIN pdf_files pf ON pa.pdf_file_id = pf.id
-           WHERE date(pa.created_at) = ?
-           ORDER BY pa.created_at ASC""",
+        _LATEST_ANALYSIS_CTE + """
+        SELECT la.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
+        FROM latest_analyses la
+        JOIN pdf_files pf ON la.pdf_file_id = pf.id
+        WHERE date(la.created_at) = ?
+        ORDER BY la.created_at ASC""",
         (today,),
     ).fetchall()
     return [dict(r) for r in rows]
 
 
 def get_analyses_since(since_time: str) -> list[dict]:
-    """Get analyses where the PDF was uploaded to Dropbox after since_time."""
+    """Get latest analysis per PDF where the PDF was uploaded to Dropbox after since_time."""
     rows = get_connection().execute(
-        """SELECT pa.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
-           FROM pdf_analyses pa
-           JOIN pdf_files pf ON pa.pdf_file_id = pf.id
-           WHERE pf.dropbox_modified_at > ?
-           ORDER BY pf.dropbox_modified_at ASC""",
+        _LATEST_ANALYSIS_CTE + """
+        SELECT la.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
+        FROM latest_analyses la
+        JOIN pdf_files pf ON la.pdf_file_id = pf.id
+        WHERE pf.dropbox_modified_at > ?
+        ORDER BY pf.dropbox_modified_at ASC""",
         (since_time,),
     ).fetchall()
     return [dict(r) for r in rows]
 
 
 def get_analyses_between(start_time: str, end_time: str) -> list[dict]:
-    """Get analyses where the PDF was uploaded to Dropbox within a specific time window."""
+    """Get latest analysis per PDF where the PDF was uploaded to Dropbox within a window."""
     rows = get_connection().execute(
-        """SELECT pa.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
-           FROM pdf_analyses pa
-           JOIN pdf_files pf ON pa.pdf_file_id = pf.id
-           WHERE pf.dropbox_modified_at >= ? AND pf.dropbox_modified_at <= ?
-           ORDER BY pf.dropbox_modified_at ASC""",
+        _LATEST_ANALYSIS_CTE + """
+        SELECT la.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
+        FROM latest_analyses la
+        JOIN pdf_files pf ON la.pdf_file_id = pf.id
+        WHERE pf.dropbox_modified_at >= ? AND pf.dropbox_modified_at <= ?
+        ORDER BY pf.dropbox_modified_at ASC""",
         (start_time, end_time),
     ).fetchall()
     return [dict(r) for r in rows]
@@ -300,7 +409,7 @@ def insert_daily_report(
 ) -> int:
     conn = get_connection()
     cur = conn.execute(
-        """INSERT OR REPLACE INTO daily_reports
+        """INSERT INTO daily_reports
            (report_date, report_type, report_json, report_markdown, pdf_count,
             input_tokens_used, output_tokens_used)
            VALUES (?, ?, ?, ?, ?, ?, ?)""",
@@ -375,6 +484,8 @@ def get_today_stats(today: str | None = None) -> dict:
         "SELECT COUNT(*) as c FROM pdf_files WHERE date(created_at) = ? AND status = 'FAILED'", (today,)
     ).fetchone()["c"]
 
+    # Sum tokens across ALL analysis attempts today (re-runs cost real tokens,
+    # so counting them is correct for observability).
     tokens = conn.execute(
         """SELECT COALESCE(SUM(input_tokens_used), 0) as input_t,
                   COALESCE(SUM(output_tokens_used), 0) as output_t
@@ -411,9 +522,12 @@ def get_pipeline_stats() -> dict:
     ).fetchall()
     status_counts = {r["status"]: r["c"] for r in status_rows}
 
-    # Priority breakdown of analyses
+    # Priority breakdown: count each PDF once (latest analysis wins if multiple exist)
     priority_rows = conn.execute(
-        "SELECT priority, COUNT(*) as c FROM pdf_analyses GROUP BY priority"
+        """SELECT priority, COUNT(*) as c FROM (
+             SELECT priority FROM pdf_analyses pa
+             WHERE pa.id = (SELECT MAX(id) FROM pdf_analyses WHERE pdf_file_id = pa.pdf_file_id)
+           ) GROUP BY priority"""
     ).fetchall()
     priority_counts = {r["priority"]: r["c"] for r in priority_rows}
 

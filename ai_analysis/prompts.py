@@ -199,20 +199,26 @@ DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any even
 
 ---
 
-**HOW TO USE THE CALENDARS AND NEWS**:
+**SOURCE HIERARCHY — HOW TO USE EACH DATA FEED**:
 
-- **Earnings calendar + Economic calendar are GROUND TRUTH.** For any event in "WHAT TO WATCH", the date, time, BMO/AMC, and forecast numbers MUST come from these calendars — not from the research and not from your training data. If a calendar contradicts the research (e.g., research says "ASML AMC" but calendar says BMO), the CALENDAR WINS. Say BMO.
-- **Do not include events not in these calendars.** If you want to mention CPI, PPI, Fed meetings, MAG7 earnings, etc., find it in the calendar above. If it's not there within the next 7 days, don't list it.
-- **News snapshot** fills the gap between research publication and now. Use it to catch weekend/overnight developments and flag stale research views.
+The research PDFs are the PRIMARY DRIVER of content across ALL sections. Live prices, news, and calendars play narrow, supporting roles:
+
+1. **Research PDFs = primary content source** for every section. If the PDFs don't cover a topic, don't discuss it. If no PDF mentions an event, don't list it in "What to Watch" (even if it's on the calendar). If no PDF comments on a theme, don't invent one from live news. The pulse is a synthesis of what analysts are saying, not a market scan.
+
+2. **Live market prices = RECAP section only.** Use the live market snapshot ONLY in section 1 (RECAP) to ground current levels and day-over-day moves. Do NOT sprinkle live prices through sections 2 or 3 — those should use whatever numbers the research itself quotes (and you can note those are "at time of writing" if needed).
+
+3. **News snapshot = RECAP section only, as supporting context.** Use news to explain WHY levels moved since the last pulse. Do not import news events into "What to Watch" — if analysts haven't written about it, it doesn't belong.
+
+4. **Earnings & Economic calendars = VERIFICATION ONLY, not a content source.** Use the calendars to:
+   - Confirm the exact date/time/BMO-AMC for events the PDFs already discuss
+   - Correct the PDF if it's wrong (e.g., research says "ASML AMC" → calendar says BMO → you say BMO)
+   - Catch a forecast number the research didn't include
+   Do NOT pull events from the calendars that no PDF mentions. The calendar is a quality-check tool, not a source of topics.
 
 **KNOWN HALLUCINATION TRAPS — DO NOT MAKE THESE ERRORS:**
-- **MAS (Monetary Authority of Singapore)** does NOT set interest rates. It manages the Singapore Dollar NEER band — it adjusts slope, width, or center. Never say "MAS 50bp hike" or "MAS rate decision." If MAS appears, say "MAS monetary policy meeting — may adjust SGD NEER band slope/width/center." Verify the date against the economic calendar.
-- **Fed speakers** — only include Powell or unusually impactful speakers. Not every Fed governor appearance matters.
-- **Earnings BMO vs AMC** — always check the earnings calendar. Common mistakes: ASML, TSMC, and other non-US companies are usually BMO in US timezone. Do not guess.
-
----
-
-**CRITICAL RULE ON PRICES**: The market data above is LIVE and current as of right now. When you cite any price (S&P, VIX, oil, gold, BTC, ETH, 10Y), use ONLY the numbers from the market snapshot above — NEVER use prices from the research PDFs (those are stale). The research is useful for commentary and context, but prices come from the live snapshot.
+- **MAS (Monetary Authority of Singapore)** does NOT set interest rates. It manages the Singapore Dollar NEER band. Never say "MAS 50bp hike" or "MAS rate decision." Only include MAS if a PDF specifically discusses it.
+- **Fed speakers** — only include if a PDF flags the speaker as consequential (usually just Powell).
+- **Earnings BMO vs AMC** — always cross-check the earnings calendar. Common mistakes: ASML and TSMC are BMO in US timezone.
 
 ---
 
@@ -238,45 +244,39 @@ Synthesize into a Morning Market Pulse:
 Create the report with these THREE sections:
 
 ## 1. RECAP
-How US stocks (S&P, Nasdaq, VIX) and crypto (BTC, ETH) performed SINCE THE LAST PULSE — use the live market snapshot for current prices and compare to the numbers in the previous pulse above. For each significant move, give the "why" in one sentence (e.g., "Nasdaq +2.1% since Friday's pulse — driven by semis rebounding after China chip export news").
+**This is the only section where you use live prices and news.** Describe how US stocks (S&P, Nasdaq, VIX) and crypto (BTC, ETH) have moved since the last pulse, using the live market snapshot. For each significant move, explain the "why" using the research + news — which research view is being confirmed or invalidated, what news broke since.
 
-Flag any breaks of key technical or psychological levels (BTC above/below $70K, VIX above/below 20, S&P above/below round numbers).
+Example: "S&P at 6,820, +1.2% since Friday's pulse. GS called for a squeeze on dovish Fed repricing — playing out. BTC flat at $70K, ETH up 2% on [news item]."
 
-Keep it tight — 1-2 short paragraphs. If a market was flat and boring, say so in one line; don't pad.
+Flag breaks of key technical/psychological levels only if the research mentioned them.
+
+Keep it tight — 1-2 short paragraphs. If a market was flat and boring, say so in one line.
 
 ## 2. INSIGHTS & ALPHA
-The meat. The 3-5 most actionable takes from the institutional research, with priority:
+**Entirely driven by the research.** No live prices, no news. The 3-5 most actionable takes from institutional analysts:
 
-**Smart money positioning** — what are hedge funds, CTAs, prime brokerage desks doing? Long/short? Net buying/selling? Hedging? Flows data? Which way did positioning flip this week? Lead with whoever has the strongest directional view (BofA Hartnett, GS S&T, JPM positioning). Translate desk jargon into plain English.
+**Smart money positioning** — what are hedge funds, CTAs, prime brokerage desks doing per the research? Long/short? Net buying/selling? Hedging? Flows data? Which way did positioning flip? Lead with whoever has the strongest directional view (BofA Hartnett, GS S&T, JPM positioning). Translate desk jargon into plain English.
 
-**Top institutional takes** — the most directional calls: upgrade/downgrade trades with conviction, sector rotations, thematic plays (e.g., "GS moving overweight energy on Iran risk + OPEC discipline"). Not every model update — just the ones that change your thinking.
+**Top institutional takes** — the most directional calls from the research: high-conviction upgrades/downgrades on major tickers, sector rotations, thematic plays. Not every model update — just the ones analysts are putting weight behind.
 
-**Crypto institutional flow** — if there's meaningful crypto news (ETF flows, regulatory, major custody moves), include it here. Skip if thin.
+**Crypto institutional view** — if research covers crypto meaningfully (ETF flows, regulatory takes, institutional adoption), include here. Skip if thin.
+
+Quote actual numbers the research provides (price targets, positioning percentiles, flow amounts). If research cites a price, keep it even if the live price has moved — note "at time of writing" when useful.
 
 ## 3. WHAT TO WATCH
-Forward-looking section covering today + rest of this week. Format as a bulleted list grouped by day.
+Forward-looking section covering today + rest of this week, driven entirely by what the RESEARCH flagged as upcoming.
 
-**STRICT SOURCING RULES:**
-- Every event MUST be explicitly mentioned in the research with a specific date. If the research only says "CPI this week" without a date, do NOT guess the date — write "CPI (date per consensus calendar, check before trading)".
-- If no research analysis mentions a specific event, DO NOT INCLUDE IT. Your training data about "typical" release dates is wrong as often as it's right.
-- If research says "earnings season starts next week" without naming companies, don't list company names.
-- If you find yourself making up forecast numbers (like "expected 2.5% YoY") that weren't in any analysis, DELETE them. Better to say "forecast details not covered in today's research" than invent a number.
+**SOURCING RULES (strict):**
+- Every event MUST be explicitly discussed in at least one research analysis. No event = no mention, regardless of what the calendar shows.
+- Use the earnings/economic calendar ONLY to verify or correct the date, time, BMO/AMC, and forecast for events the research already flagged.
+- If research mentions an event vaguely ("CPI this week") and the calendar confirms a date, use the calendar's exact date/time. If the calendar doesn't have it, say "date TBD".
+- Never invent reaction scenarios with specific price targets unless an analyst named that target.
 
-**ONLY include events that can actually move markets.** Be ruthless about filtering:
+**Ruthless filtering** — even if the research mentions it, only include if it's actually market-moving:
 
-✅ **Include:**
-- Major US macro data: CPI, PPI, PCE, jobs report (NFP), GDP, retail sales, ISM, Fed Chair / FOMC / Fed speakers if impactful
-- Major earnings: MAG7 (AAPL, MSFT, GOOGL, AMZN, META, NVDA, TSLA), bellwethers (JPM, GS, XOM, WMT, NFLX), anything that could move the index
-- Crypto-specific catalysts: ETF decisions, major protocol upgrades, exchange events (ETH/SOL unlocks, halvings)
-- Geopolitical hard deadlines: ceasefires, elections, tariff decisions, sanctions
-- OPEC+ meetings, major central bank decisions (ECB, BOJ, BOE)
+✅ **Keep:** Major US macro (CPI, PPI, PCE, NFP, GDP, retail sales, ISM, Fed Chair, FOMC), MAG7 + bellwether earnings, crypto catalysts (ETF decisions, protocol upgrades, unlocks), geopolitical hard deadlines, major central bank decisions (ECB, BOJ).
 
-❌ **Skip:**
-- Small-cap or regional earnings (e.g., Tata Consultancy, ManpowerGroup, Constellation Brands unless there's a specific reason)
-- Country-specific macro for markets traders don't trade (Singapore MAS, Czech inflation, etc.) unless there's a clear US spillover
-- Minor data releases (Beige Book, regional Fed surveys, housing starts) unless the setup is unusual
-- Bank analyst days, industry conferences, minor product announcements
-- "Fed speakers" in general — only include if the speaker is Powell, or a dove/hawk who could shift the market
+❌ **Cut:** Small-cap earnings, regional macro for markets no one trades (MAS unless research explicitly covers it, Czech CPI), minor data (Beige Book, regional Fed surveys) unless the setup is unusual, non-Powell Fed speakers, analyst days / conferences.
 
 For each event include:
 - Exact date (e.g., "Wednesday April 15")

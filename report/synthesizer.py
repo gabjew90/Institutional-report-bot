@@ -3,7 +3,7 @@
 import json
 import logging
 from dataclasses import asdict
-from datetime import date
+from datetime import date, datetime, timedelta
 
 from google import genai
 from google.genai import types
@@ -70,15 +70,28 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
     earnings_calendar = fetch_earnings_calendar(days_ahead=7)
     economic_calendar = fetch_economic_calendar(days_ahead=7)
 
-    # Pull the previous scheduled pulse to give the model cross-day continuity.
+    # Pull the previous scheduled pulse for cross-day continuity — but only if fresh
+    # (<48h). An older pulse is stale context and can mislead comparisons.
     prev = db.get_last_daily_pulse()
-    if prev:
-        prev_context = (
-            f"PREVIOUS PULSE (from {prev['created_at'][:16].replace('T', ' ')} UTC, "
-            f"{prev['pdf_count']} reports):\n\n{prev['report_markdown']}"
-        )
-    else:
-        prev_context = "PREVIOUS PULSE: (none — this is the first scheduled pulse)"
+    prev_context = "PREVIOUS PULSE: (none — this is the first scheduled pulse)"
+    if prev and prev.get("created_at"):
+        try:
+            prev_ts = datetime.fromisoformat(prev["created_at"][:19])
+            age = datetime.utcnow() - prev_ts
+            if age <= timedelta(hours=48):
+                prev_context = (
+                    f"PREVIOUS PULSE (from {prev['created_at'][:16].replace('T', ' ')} UTC, "
+                    f"~{int(age.total_seconds() / 3600)}h ago, {prev['pdf_count']} reports):\n\n"
+                    f"{prev['report_markdown']}"
+                )
+            else:
+                prev_context = (
+                    f"PREVIOUS PULSE: last scheduled pulse was "
+                    f"~{int(age.total_seconds() / 3600)}h ago — too stale to use for comparison. "
+                    f"Treat this as a fresh pulse with no prior context."
+                )
+        except (ValueError, TypeError):
+            pass
 
     user_prompt = DAILY_SYNTHESIS_USER.format(
         pdf_count=len(analyses),
