@@ -32,7 +32,8 @@ class Settings(BaseSettings):
 
     # Scheduling
     timezone: str = "America/New_York"
-    daily_pulse_hour: int = 12
+    # Scheduled pulse fires at this time in the configured timezone
+    daily_pulse_hour: int = 9  # 9 AM ET
     daily_pulse_minute: int = 0
     dropbox_poll_interval_minutes: int = 15
     process_interval_minutes: int = 5

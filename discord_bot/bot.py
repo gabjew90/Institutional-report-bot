@@ -218,8 +218,14 @@ def create_bot() -> commands.Bot:
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
     @bot.tree.command(name="clearqueue", description="Delete pending (DOWNLOADED) PDFs from the queue — destructive, cancels backlog")
-    @app_commands.describe(confirm="Set true to skip the >500 safety check for large purges")
-    async def clearqueue_command(interaction: discord.Interaction, confirm: bool = False):
+    @app_commands.describe(
+        password="Admin password",
+        confirm="Set true to skip the >500 safety check for large purges",
+    )
+    async def clearqueue_command(interaction: discord.Interaction, password: str, confirm: bool = False):
+        if settings.command_password and password != settings.command_password:
+            await interaction.response.send_message("Invalid password.", ephemeral=True)
+            return
         await interaction.response.defer(thinking=True)
         try:
             pending = db.count_pending_queue()
@@ -243,7 +249,11 @@ def create_bot() -> commands.Bot:
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
     @bot.tree.command(name="seedcursor", description="Seed Dropbox cursor to current state (skips backfill on next poll)")
-    async def seedcursor_command(interaction: discord.Interaction):
+    @app_commands.describe(password="Admin password")
+    async def seedcursor_command(interaction: discord.Interaction, password: str):
+        if settings.command_password and password != settings.command_password:
+            await interaction.response.send_message("Invalid password.", ephemeral=True)
+            return
         await interaction.response.defer(thinking=True)
         try:
             from pipeline.orchestrator import seed_dropbox_cursor_to_now
