@@ -1,8 +1,10 @@
 """Discord bot client with slash commands."""
 
 import logging
+from datetime import datetime
 
 import discord
+import pytz
 from discord import app_commands
 from discord.ext import commands
 
@@ -11,6 +13,21 @@ from discord_bot.sender import send_embeds
 import db
 
 log = logging.getLogger(__name__)
+
+_display_tz = pytz.timezone(settings.timezone)
+
+
+def _fmt_ts(iso_str: str | None) -> str:
+    """Format a UTC ISO timestamp in the configured display timezone."""
+    if not iso_str:
+        return "never"
+    try:
+        ts = iso_str[:19]  # strip microseconds/timezone suffix
+        dt = datetime.fromisoformat(ts).replace(tzinfo=pytz.UTC)
+        local = dt.astimezone(_display_tz)
+        return local.strftime("%Y-%m-%d %H:%M %Z")
+    except (ValueError, TypeError):
+        return iso_str[:16].replace("T", " ")
 
 
 def create_bot() -> commands.Bot:
@@ -97,7 +114,7 @@ def create_bot() -> commands.Bot:
             from pipeline.orchestrator import seed_dropbox_cursor_to_now
             ts = seed_dropbox_cursor_to_now()
             await interaction.followup.send(
-                f"Dropbox cursor seeded at `{ts}`. "
+                f"Dropbox cursor seeded at `{_fmt_ts(ts)}`. "
                 "Next 15-min poll will only pick up NEW uploads."
             )
         except Exception as e:
@@ -146,11 +163,9 @@ def create_bot() -> commands.Bot:
 
         # Upload date range — tells user how far back the analyses reach
         if full["earliest_upload"] and full["latest_upload"]:
-            earliest = full["earliest_upload"][:16].replace("T", " ")
-            latest = full["latest_upload"][:16].replace("T", " ")
             embed.add_field(
                 name="Upload range in DB",
-                value=f"Earliest: `{earliest}`\nLatest: `{latest}`",
+                value=f"Earliest: `{_fmt_ts(full['earliest_upload'])}`\nLatest: `{_fmt_ts(full['latest_upload'])}`",
                 inline=False,
             )
 
@@ -165,23 +180,20 @@ def create_bot() -> commands.Bot:
         pulse_lines = []
         if full["last_daily_pulse"]:
             d = full["last_daily_pulse"]
-            created = d["created_at"][:16].replace("T", " ")
             sent = "sent" if d["discord_sent_at"] else "NOT sent"
-            pulse_lines.append(f"**Last scheduled:** {created} ({d['pdf_count']} PDFs, {sent})")
+            pulse_lines.append(f"**Last scheduled:** {_fmt_ts(d['created_at'])} ({d['pdf_count']} PDFs, {sent})")
         else:
             pulse_lines.append("**Last scheduled:** never")
         if full["last_manual_pulse"]:
             m = full["last_manual_pulse"]
-            created = m["created_at"][:16].replace("T", " ")
-            pulse_lines.append(f"**Last manual:** {created} ({m['pdf_count']} PDFs)")
+            pulse_lines.append(f"**Last manual:** {_fmt_ts(m['created_at'])} ({m['pdf_count']} PDFs)")
         embed.add_field(name="Pulses", value="\n".join(pulse_lines), inline=False)
 
         # Dropbox state
         cursor_state = "✅ seeded" if full["cursor_set"] else "❌ unset (next poll will backfill!)"
-        last_poll = full["last_poll_at"][:16].replace("T", " ") if full["last_poll_at"] else "never"
         embed.add_field(
             name="Dropbox watcher",
-            value=f"Cursor: {cursor_state}\nLast poll: `{last_poll}`",
+            value=f"Cursor: {cursor_state}\nLast poll: `{_fmt_ts(full['last_poll_at'])}`",
             inline=False,
         )
 
