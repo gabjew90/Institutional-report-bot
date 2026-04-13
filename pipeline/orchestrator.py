@@ -347,10 +347,10 @@ async def run_manual_pulse(
     If neither since nor until is provided, behaves like the scheduled pulse (since last report).
     If only `since` is provided, gets everything from that time to now.
     If both are provided, gets everything in that window.
-    """
-    # Process pending first
-    await process_pending_queue()
 
+    Note: unlike the scheduled pulse, this does NOT process the pending queue first.
+    /pulse is a fast preview of what's already analyzed in the DB.
+    """
     if since and until:
         rows = db.get_analyses_between(since, until)
     elif since:
