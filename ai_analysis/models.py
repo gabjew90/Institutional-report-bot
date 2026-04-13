@@ -60,6 +60,8 @@ class PdfAnalysis:
     trade_ideas: list[TradeIdea] = field(default_factory=list)
     risk_factors: list[str] = field(default_factory=list)
     charts_described: list[str] = field(default_factory=list)
+    vol_and_positioning: list[str] = field(default_factory=list)
+    geopolitical: list[str] = field(default_factory=list)
     pages_analyzed: int = 0
     total_pages: int = 0
     input_tokens: int = 0

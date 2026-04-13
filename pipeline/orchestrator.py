@@ -174,6 +174,8 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
                     trade_ideas=[TradeIdea(**ti) for ti in data.get("trade_ideas", []) if isinstance(ti, dict)],
                     risk_factors=data.get("risk_factors", []),
                     charts_described=data.get("charts_described", []),
+                    vol_and_positioning=data.get("vol_and_positioning", []),
+                    geopolitical=data.get("geopolitical", []),
                     pages_analyzed=data.get("pages_analyzed", 0),
                     total_pages=data.get("total_pages", 0),
                     input_tokens=data.get("input_tokens", 0),

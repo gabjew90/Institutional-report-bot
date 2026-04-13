@@ -290,6 +290,8 @@ async def analyze_pdf_deep(
         ],
         risk_factors=data.get("risk_factors", []),
         charts_described=data.get("charts_described", []),
+        vol_and_positioning=data.get("vol_and_positioning", []),
+        geopolitical=data.get("geopolitical", []),
         pages_analyzed=len(extraction.selected_page_images) if use_images else 0,
         total_pages=extraction.total_pages,
         input_tokens=input_tokens,
