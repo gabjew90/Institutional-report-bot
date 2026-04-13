@@ -297,14 +297,14 @@ def create_bot() -> commands.Bot:
             inline=False,
         )
 
-        # Priority breakdown
-        pri_parts = [f"{p}: {c}" for p, c in full["priority_counts"].items()]
-        if pri_parts:
-            embed.add_field(
-                name="Priority mix",
-                value=" | ".join(pri_parts),
-                inline=False,
-            )
+        # Priority breakdown — always show all three so zeros are visible
+        priority_counts = full.get("priority_counts") or {}
+        pri_parts = [f"{p}: {priority_counts.get(p, 0)}" for p in ("high", "medium", "low")]
+        embed.add_field(
+            name="Priority mix",
+            value=" | ".join(pri_parts),
+            inline=False,
+        )
 
         # Upload date range — tells user how far back the analyses reach
         if full["earliest_upload"] and full["latest_upload"]:
