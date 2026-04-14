@@ -108,24 +108,55 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
     if not filtered:
         return f"EARNINGS CALENDAR (next {days_ahead}d): no major tickers reporting."
 
+    today_date = datetime.utcnow().date()
+    now_utc = datetime.utcnow()
     lines = [
-        f"EARNINGS CALENDAR (next {days_ahead}d, major tickers only — USE THESE DATES + BMO/AMC VERBATIM):"
+        f"EARNINGS CALENDAR (next {days_ahead}d, major tickers only — USE THESE DATES + BMO/AMC VERBATIM):",
+        "Each row tagged [REPORTED] if actuals present (use in RECAP), [TODAY-BMO/AMC] if scheduled for today, [UPCOMING] otherwise.",
     ]
     # Finnhub `hour` field: "bmo" = before market open, "amc" = after market close, "dmh" = during, "" = unknown
     for e in filtered:
         sym = e.get("symbol", "?")
-        date = e.get("date", "?")
+        date_str = e.get("date", "?")
         hour = (e.get("hour") or "").lower()
         timing = {"bmo": "BMO", "amc": "AMC", "dmh": "intraday"}.get(hour, "timing TBD")
         eps_est = e.get("epsEstimate")
         rev_est = e.get("revenueEstimate")
+        eps_actual = e.get("epsActual")
+        rev_actual = e.get("revenueActual")
+
+        # Determine release status
+        try:
+            ev_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        except (ValueError, TypeError):
+            ev_date = None
+
+        if eps_actual is not None or rev_actual is not None:
+            status = "[REPORTED]"
+        elif ev_date == today_date:
+            # BMO on today = before ~9:30 AM ET = ~13:30 UTC. If past that, likely reported.
+            if hour == "bmo" and now_utc.hour >= 14:
+                status = "[REPORTED-BMO-today]"
+            elif hour == "amc" and now_utc.hour >= 21:
+                status = "[REPORTED-AMC-today]"
+            else:
+                status = f"[TODAY-{hour.upper()}]" if hour else "[TODAY]"
+        elif ev_date and ev_date < today_date:
+            status = "[PAST]"
+        else:
+            status = "[UPCOMING]"
+
         extra = []
-        if eps_est is not None:
+        if eps_actual is not None:
+            extra.append(f"EPS ACTUAL ${eps_actual}")
+        if rev_actual is not None:
+            extra.append(f"Rev ACTUAL ${rev_actual/1e9:.2f}B")
+        if eps_est is not None and eps_actual is None:
             extra.append(f"EPS est ${eps_est}")
-        if rev_est is not None:
+        if rev_est is not None and rev_actual is None:
             extra.append(f"Rev est ${rev_est/1e9:.2f}B")
         extra_str = f" ({', '.join(extra)})" if extra else ""
-        lines.append(f"  {date} {sym} — {timing}{extra_str}")
+        lines.append(f"  {status} {date_str} {sym} — {timing}{extra_str}")
     return "\n".join(lines)
 
 
@@ -159,8 +190,10 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
     if not filtered:
         return f"ECONOMIC CALENDAR (next {days_ahead}d): no high-impact releases."
 
+    now_utc = datetime.utcnow()
     lines = [
-        f"ECONOMIC CALENDAR (next {days_ahead}d, high/medium impact from US/EU/CN/JP/GB/DE — USE THESE DATES + FORECASTS VERBATIM):"
+        f"ECONOMIC CALENDAR (next {days_ahead}d, high/medium impact from US/EU/CN/JP/GB/DE — USE THESE DATES + FORECASTS VERBATIM):",
+        "Each row tagged [RELEASED] if `actual` is set (event already happened, use actual value in RECAP), or [UPCOMING] if estimate-only.",
     ]
     for e in filtered[:30]:  # cap to avoid prompt bloat
         country = e.get("country", "")
@@ -169,8 +202,24 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
         impact = (e.get("impact") or "").lower()
         estimate = e.get("estimate")
         prev = e.get("prev")
+        actual = e.get("actual")
         unit = e.get("unit", "")
-        bits = [f"{time} UTC", f"[{country}]", event, f"impact={impact}"]
+
+        # Determine status — actual present OR scheduled time in the past = released
+        status = "[UPCOMING]"
+        if actual is not None:
+            status = "[RELEASED]"
+        else:
+            try:
+                sched = datetime.fromisoformat(e.get("time", "")[:19])
+                if sched < now_utc:
+                    status = "[PAST — no actual reported]"
+            except (ValueError, TypeError):
+                pass
+
+        bits = [status, f"{time} UTC", f"[{country}]", event, f"impact={impact}"]
+        if actual is not None:
+            bits.append(f"ACTUAL={actual}{unit}")
         if estimate is not None:
             bits.append(f"est={estimate}{unit}")
         if prev is not None:

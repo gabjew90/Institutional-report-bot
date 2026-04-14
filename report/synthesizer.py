@@ -121,8 +121,22 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
 
 async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
     """Generate the Daily Market Pulse from all today's analyses."""
+    import pytz
+    from config import settings as _settings
+
     client = _get_client()
     today = date.today().isoformat()
+    # Build day-of-week + current time context so Gemini can distinguish
+    # "Tuesday BMO" = today vs "Tuesday BMO" = future this week, and can move
+    # already-released events from WHAT TO WATCH to RECAP.
+    try:
+        tz = pytz.timezone(_settings.timezone)
+        now_local = datetime.now(tz)
+        today_label = f"{today} ({now_local.strftime('%A')})"
+        now_label = now_local.strftime("%H:%M %Z")
+    except Exception:
+        today_label = today
+        now_label = datetime.utcnow().strftime("%H:%M UTC")
 
     analyses_json = _analyses_to_json(analyses)
     market_snapshot = fetch_market_snapshot()
@@ -178,7 +192,8 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
 
     user_prompt = DAILY_SYNTHESIS_USER.format(
         pdf_count=len(analyses),
-        today=today,
+        today=today_label,
+        now=now_label,
         market_snapshot=market_snapshot,
         news_snapshot=news_snapshot,
         earnings_calendar=earnings_calendar,

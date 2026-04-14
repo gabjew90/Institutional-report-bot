@@ -247,7 +247,13 @@ Notice what that does:
 - End each Insights paragraph with the trade/positioning implication.
 """
 
-DAILY_SYNTHESIS_USER = """TODAY'S DATE IS {today}. This is critical — any event mentioned in the source research with a date BEFORE {today} has already happened. Do not include past events in "WHAT TO WATCH TODAY" or "COMING UP". Only include events dated {today} or later.
+DAILY_SYNTHESIS_USER = """TODAY IS {today}. CURRENT TIME IS {now}.
+
+**Use the day-of-week ({today}) actively:** if research refers to "Tuesday BMO earnings" and today is Tuesday, those earnings are TODAY, not "this week." The `[TODAY-BMO]` / `[TODAY-AMC]` tags in the earnings calendar also indicate this.
+
+**Already-released events go in RECAP, not WHAT TO WATCH.** If the economic calendar shows `[RELEASED]` with an ACTUAL value, or the earnings calendar shows `[REPORTED]` / `[REPORTED-BMO-today]`, the event has happened — put the result in RECAP section and do NOT list it as "upcoming today." Same for any event whose scheduled time is before current time ({now}).
+
+Any event mentioned in source research with a date BEFORE {today} has already happened. Do not include past events in "WHAT TO WATCH." Only include events dated {today} or later that haven't been released yet.
 
 {market_snapshot}
 
@@ -326,9 +332,14 @@ Synthesize into a Morning Market Pulse:
 Create the report with these THREE sections:
 
 ## 1. RECAP
-**This is the only section where you use live prices and news.** Describe how US stocks (S&P, Nasdaq, VIX) and crypto (BTC, ETH) have moved since the last pulse, using the live market snapshot. For each significant move, explain the "why" using the research + news — which research view is being confirmed or invalidated, what news broke since.
+**This is the only section where you use live prices and news. Also include any economic releases or earnings that have ALREADY HAPPENED today** (flagged `[RELEASED]` in the economic calendar or `[REPORTED]`/`[REPORTED-BMO-today]` in the earnings calendar, or with a scheduled time earlier than {now}). Report the actual numbers + market reaction.
 
-Example: "S&P at 6,820, +1.2% since Friday's pulse. GS called for a squeeze on dovish Fed repricing — playing out. BTC flat at $70K, ETH up 2% on [news item]."
+Describe how US stocks (S&P, Nasdaq, VIX) and crypto (BTC, ETH) have moved since the last pulse, using the live market snapshot. For each significant move, explain the "why" using the research + news — which research view is being confirmed or invalidated, what news broke since, whether this morning's data/earnings drove the move.
+
+Examples:
+- "S&P at 6,820, +1.2% since Friday's pulse. GS called for a squeeze on dovish Fed repricing — playing out."
+- "PPI printed hot at 1.3% vs 1.1% expected at 8:30 AM — bonds sold off, 10Y to 4.45%. Tech gave back early gains, $QQQ -0.4%."
+- "$GS reported BMO beating EPS by 8% on strong trading revenue — stock up 2.1% pre-market."
 
 Flag breaks of key technical/psychological levels only if the research mentioned them.
 
@@ -364,10 +375,10 @@ Forward-looking section, driven entirely by what the RESEARCH flagged as upcomin
 Divide into TWO subsections, formatted EXACTLY like this:
 
 ### Today
-Bullets for events happening TODAY ({today}) only. If nothing market-moving is on today's docket, write a single line: "No major catalysts today." and move on — don't force content.
+Events happening LATER today that haven't released yet — i.e., scheduled time is AFTER {now}, and the calendar does NOT show `[RELEASED]` or `[REPORTED]`. If an event is tagged `[TODAY-AMC]` and it's still morning, that's Today. Already-happened events (`[RELEASED]`, `[REPORTED]`, `[REPORTED-BMO-today]`) belong in RECAP, not here. If nothing market-moving is still ahead today, write a single line: "No major catalysts still to come today." and move on.
 
 ### This Week
-Bullets for events happening AFTER today through end of this week (typically next 4-5 days). Grouped chronologically.
+Events happening AFTER today through end of this week. If today is {today}, "this week" means calendar days after today. Group chronologically.
 
 **SOURCING RULES (strict):**
 - Every event MUST be explicitly discussed in at least one research analysis. No event = no mention, regardless of what the calendar shows.
