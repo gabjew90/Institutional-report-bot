@@ -253,6 +253,21 @@ DAILY_SYNTHESIS_USER = """TODAY IS {today}. CURRENT TIME IS {now}.
 
 **Already-released events go in RECAP, not WHAT TO WATCH.** If the economic calendar shows `[RELEASED]` with an ACTUAL value, or the earnings calendar shows `[REPORTED]` / `[REPORTED-BMO-today]`, the event has happened — put the result in RECAP section and do NOT list it as "upcoming today." Same for any event whose scheduled time is before current time ({now}).
 
+**CRITICAL — ALWAYS COMPARE ACTUAL vs ESTIMATE BEFORE DESCRIBING AN EVENT**:
+
+Every RELEASED event has both an actual and an estimate (Finnhub provides both). You MUST compare them to determine the direction. Never describe an event as a beat or miss without checking the numbers.
+
+Direction rules:
+- **Inflation data (PPI, CPI, PCE, etc.):** actual BELOW estimate = **cool / dovish / downside surprise** (risk-on for stocks, bullish bonds). Actual ABOVE estimate = **hot / hawkish / upside surprise** (risk-off).
+- **Growth data (GDP, payrolls, retail sales):** actual ABOVE estimate = hot/positive (mixed for stocks depending on Fed context). Actual BELOW estimate = soft/negative.
+- **Earnings (EPS, revenue):** actual ABOVE estimate = **beat**. Actual BELOW estimate = **miss**. Actual equals estimate (within ~1%) = **in-line**.
+  - If a stock has EPS beat but revenue miss, call it that: "$TICKER reported EPS beat ($X vs $Y est) but revenue missed ($Z vs $W est)".
+  - If all three bank earnings reports mix beats and misses, say "two of three beat; $WFC missed both lines" — do NOT say "all three beat" without verifying.
+
+**Do not use "despite" to contrast items that actually agree.** If Core PPI was cool and Headline PPI was also cool, they BOTH soothe inflation fears. "Core PPI was cool, reinforced by the headline also printing below estimate" is correct. "Core was cool despite the headline at 0.5%" implies the headline was hot — which would be wrong if the estimate was 1.1%.
+
+Before writing about an event, explicitly verify in your head: (1) what was the actual? (2) what was the estimate? (3) which direction does actual-minus-estimate go? (4) what does that direction mean (hot/cool, beat/miss)? Then write.
+
 Any event mentioned in source research with a date BEFORE {today} has already happened. Do not include past events in "WHAT TO WATCH." Only include events dated {today} or later that haven't been released yet.
 
 {market_snapshot}
