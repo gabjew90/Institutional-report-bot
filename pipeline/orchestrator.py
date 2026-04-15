@@ -517,14 +517,12 @@ async def run_manual_pulse(
     elif since:
         rows = db.get_analyses_since(since)
     else:
-        # Same logic as scheduled: since last daily report, or last 24h of uploads
-        last_report_time = db.get_last_report_time()
-        if last_report_time:
-            rows = db.get_analyses_since(last_report_time)
-        else:
-            from datetime import timedelta
-            cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
-            rows = db.get_analyses_since(cutoff)
+        # Default for manual /pulse: always last 24h of uploads.
+        # This is independent of the scheduled pulse cadence — manual pulses
+        # are on-demand snapshots, not continuity-tracking.
+        from datetime import timedelta
+        cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+        rows = db.get_analyses_since(cutoff)
 
     if not rows:
         return None
