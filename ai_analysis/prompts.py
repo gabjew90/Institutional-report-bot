@@ -323,7 +323,16 @@ The research PDFs are the PRIMARY DRIVER of content across ALL sections. Live pr
 
 ---
 
-Use the previous pulse above to ground your RECAP section. Compare current prices/sentiment/positioning to what the last pulse said, and explain what's shifted and why. If something the last pulse flagged as "coming up" has now resolved, say how it played out.
+Use the previous pulse above as a BASELINE for contrast, not as a template.
+
+**Critical rule for INSIGHTS & ALPHA: avoid re-running yesterday's themes verbatim.** For each theme candidate, ask yourself:
+- Did yesterday's pulse already cover this? If yes, is there MATERIALLY new information today (new data, new positioning, new bank take, resolved catalyst)?
+- If there's no new information, SKIP this theme. Don't re-state yesterday's analysis with slightly different wording.
+- If there is new information, LEAD with what's new: "Unchanged from yesterday: CTAs still buying. New: BofA flipped from caution to constructive, citing X." The reader already saw yesterday's view — they want the delta.
+
+Actively hunt for themes that were NOT in yesterday's pulse. A fresh theme covered moderately well beats an old theme covered in exhaustive detail.
+
+Use the previous pulse's "WHAT TO WATCH" section to close the loop in RECAP: if something flagged as "upcoming" yesterday has now happened, explicitly report how it played out (actual vs estimate, market reaction). This is high-value content because it shows the pulse learning over time.
 
 **IMPORTANT — research age awareness:** Each analysis below includes a "published" field (YYYY-MM-DD) showing when the report was uploaded to Dropbox. Today is {today}.
 
@@ -362,6 +371,8 @@ Keep it tight — 1-2 short paragraphs. If a market was flat and boring, say so 
 
 ## 2. INSIGHTS & ALPHA
 **Entirely driven by the research.** This is the longest, densest section. Readers want to know where big players are placing bets. Aim for 3-8 themes depending on research volume and quality — if 172 reports produced 8 substantive themes, cover all 8; if 40 produced 3, cover 3.
+
+**Diff-first vs yesterday:** Before writing each theme, check the previous pulse. If the theme is unchanged from yesterday (same positioning, same view, same levels), SKIP IT or lead with "Unchanged: X. New: Y." Don't rewrite yesterday's analysis with synonym swaps. The reader already read yesterday — they want to know what shifted. A pulse that's 80% identical to yesterday's fails the reader.
 
 **Angles to cover when the research supports them** (don't force every angle every day):
 
