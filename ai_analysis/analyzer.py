@@ -107,30 +107,13 @@ def _is_tier1_source(source: str, folder_path: str) -> bool:
 
 
 def _apply_priority_rules(gemini_priority: str, source: str, report_type: str, folder_path: str) -> str:
-    """Override Gemini's priority based on source and topic rules.
+    """Return Gemini's priority as-is. No source- or topic-based overrides.
 
-    Tier 1 sources (GS, JPM, BofA, MS): floor is MEDIUM — never dropped.
-    Gemini decides HIGH vs MEDIUM based on content (charts, macro, positioning).
-    High-priority topics boost any source to HIGH.
+    Previously we floored tier-1 banks (GS/JPM/BofA/MS) at MEDIUM and boosted
+    HIGH topics to HIGH regardless of source. Removed — Gemini is the sole
+    priority decider based on content.
     """
-    tier1 = _is_tier1_source(source, folder_path)
-
-    # Tier 1 sources: never LOW, floor is MEDIUM
-    if tier1 and gemini_priority == "low":
-        return "medium"
-
-    # Non-tier-1 LOW: respect Gemini's call, skip it
-    if gemini_priority == "low":
-        return "low"
-
-    # High-priority topics boost to HIGH regardless of source
-    high_topics = {"macro", "crypto", "vol_commentary", "morning_briefing",
-                   "sales_trading", "strategy", "derivatives"}
-    if report_type in high_topics:
-        return "high"
-
-    # Otherwise trust Gemini's judgment
-    return gemini_priority
+    return gemini_priority if gemini_priority in ("high", "medium", "low") else "medium"
 
 
 async def triage_pdf(file_name: str, text_preview: str, folder_path: str = "") -> TriageResult:

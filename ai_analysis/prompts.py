@@ -32,7 +32,7 @@ Priority guidelines:
   - Technical-analysis-only pieces with no fundamental backing
   - Historical wrap-ups (quarter/month-in-review) without forward-looking views
 
-Note: Goldman Sachs, JPMorgan, Bank of America, and Morgan Stanley reports should never be LOW — they always have value even if only MEDIUM. The LOW filter is for non-tier-1 banks covering peripheral markets or niche topics."""
+Classify every report on its content alone. Do not soften the LOW call because a report comes from a big-name bank — if a Goldman Sachs piece is a disclaimer-heavy wrapper, a duplicate, or pure fixed-income with no equity read-through, call it LOW. Source pedigree is not a reason to avoid LOW."""
 
 TRIAGE_USER_PROMPT = """Classify this institutional research PDF:
 
