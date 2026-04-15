@@ -533,7 +533,8 @@ async def run_manual_pulse(
 
     await _emit("synthesizing", f"Synthesizing {len(analyses)} reports (fetching live market data + calling Gemini)…")
 
-    report = await synthesize_daily_pulse(analyses)
+    # Manual /pulse is fully standalone — no diff framing vs prior pulses.
+    report = await synthesize_daily_pulse(analyses, use_prev_context=False)
 
     await _emit("persisting", "Saving report + preparing Discord embeds…")
 

@@ -119,8 +119,19 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
     return json.dumps(compact, indent=1)
 
 
-async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
-    """Generate the Daily Market Pulse from all today's analyses."""
+async def synthesize_daily_pulse(
+    analyses: list[PdfAnalysis],
+    use_prev_context: bool = True,
+) -> DailyReport:
+    """Generate the Daily Market Pulse from all today's analyses.
+
+    Args:
+        analyses: per-PDF analyses to synthesize.
+        use_prev_context: if True (default), include the last scheduled pulse's
+            markdown as context for diff-vs-yesterday framing. Set False for
+            standalone manual pulses that should not be biased by prior pulse
+            structure.
+    """
     import pytz
     from config import settings as _settings
 
@@ -167,28 +178,36 @@ async def synthesize_daily_pulse(analyses: list[PdfAnalysis]) -> DailyReport:
     else:
         ticker_block = "TICKER LOOKUP: (none extracted — use only tickers that clearly appear in the research text)"
 
-    # Pull the previous scheduled pulse for cross-day continuity — but only if fresh
-    # (<48h). An older pulse is stale context and can mislead comparisons.
-    prev = db.get_last_daily_pulse()
-    prev_context = "PREVIOUS PULSE: (none — this is the first scheduled pulse)"
-    if prev and prev.get("created_at"):
-        try:
-            prev_ts = datetime.fromisoformat(prev["created_at"][:19])
-            age = datetime.utcnow() - prev_ts
-            if age <= timedelta(hours=48):
-                prev_context = (
-                    f"PREVIOUS PULSE (from {prev['created_at'][:16].replace('T', ' ')} UTC, "
-                    f"~{int(age.total_seconds() / 3600)}h ago, {prev['pdf_count']} reports):\n\n"
-                    f"{prev['report_markdown']}"
-                )
-            else:
-                prev_context = (
-                    f"PREVIOUS PULSE: last scheduled pulse was "
-                    f"~{int(age.total_seconds() / 3600)}h ago — too stale to use for comparison. "
-                    f"Treat this as a fresh pulse with no prior context."
-                )
-        except (ValueError, TypeError):
-            pass
+    # Previous scheduled pulse for cross-day continuity — only when the caller
+    # wants it. Scheduled pulses use this to diff vs yesterday; manual /pulse
+    # skips it so each ad-hoc run is fully standalone.
+    if not use_prev_context:
+        prev_context = (
+            "PREVIOUS PULSE: (this is a standalone manual pulse — no prior-pulse "
+            "comparison requested. Treat this as a fresh snapshot of the current "
+            "research window. Do NOT anchor on any specific previous structure.)"
+        )
+    else:
+        prev = db.get_last_daily_pulse()
+        prev_context = "PREVIOUS PULSE: (none — this is the first scheduled pulse)"
+        if prev and prev.get("created_at"):
+            try:
+                prev_ts = datetime.fromisoformat(prev["created_at"][:19])
+                age = datetime.utcnow() - prev_ts
+                if age <= timedelta(hours=48):
+                    prev_context = (
+                        f"PREVIOUS PULSE (from {prev['created_at'][:16].replace('T', ' ')} UTC, "
+                        f"~{int(age.total_seconds() / 3600)}h ago, {prev['pdf_count']} reports):\n\n"
+                        f"{prev['report_markdown']}"
+                    )
+                else:
+                    prev_context = (
+                        f"PREVIOUS PULSE: last scheduled pulse was "
+                        f"~{int(age.total_seconds() / 3600)}h ago — too stale to use for comparison. "
+                        f"Treat this as a fresh pulse with no prior context."
+                    )
+            except (ValueError, TypeError):
+                pass
 
     user_prompt = DAILY_SYNTHESIS_USER.format(
         pdf_count=len(analyses),
