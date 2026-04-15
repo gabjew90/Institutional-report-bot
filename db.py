@@ -353,6 +353,25 @@ _LATEST_ANALYSIS_CTE = """
 """
 
 
+def _normalize_ts(ts: str | None) -> str | None:
+    """Normalize a timestamp string to ISO 'T' format for cross-format comparison.
+
+    SQLite's datetime('now') produces 'YYYY-MM-DD HH:MM:SS' (space separator).
+    Python's datetime.isoformat() produces 'YYYY-MM-DDTHH:MM:SS' (T separator).
+    Lexicographic TEXT comparison treats these differently (T > space), which
+    breaks any cutoff query that mixes the two formats.
+
+    Parse with fromisoformat (handles both) and re-emit as T-format so comparisons
+    line up with dropbox_modified_at (which is always T-format).
+    """
+    if not ts:
+        return ts
+    try:
+        return datetime.fromisoformat(ts.replace(" ", "T", 1)).isoformat()
+    except (ValueError, TypeError):
+        return ts
+
+
 def get_todays_analyses(today: str | None = None) -> list[dict]:
     if today is None:
         today = date.today().isoformat()
@@ -370,6 +389,7 @@ def get_todays_analyses(today: str | None = None) -> list[dict]:
 
 def get_analyses_since(since_time: str) -> list[dict]:
     """Get latest analysis per PDF where the PDF was uploaded to Dropbox after since_time."""
+    since_time = _normalize_ts(since_time)
     rows = get_connection().execute(
         _LATEST_ANALYSIS_CTE + """
         SELECT la.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
@@ -384,6 +404,8 @@ def get_analyses_since(since_time: str) -> list[dict]:
 
 def get_analyses_between(start_time: str, end_time: str) -> list[dict]:
     """Get latest analysis per PDF where the PDF was uploaded to Dropbox within a window."""
+    start_time = _normalize_ts(start_time)
+    end_time = _normalize_ts(end_time)
     rows = get_connection().execute(
         _LATEST_ANALYSIS_CTE + """
         SELECT la.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
@@ -408,13 +430,16 @@ def insert_daily_report(
     output_tokens: int,
 ) -> int:
     conn = get_connection()
+    # Explicit ISO 'T'-format created_at so it matches dropbox_modified_at
+    # format for lexicographic comparison in later queries.
+    created_at = datetime.utcnow().isoformat()
     cur = conn.execute(
         """INSERT INTO daily_reports
            (report_date, report_type, report_json, report_markdown, pdf_count,
-            input_tokens_used, output_tokens_used)
-           VALUES (?, ?, ?, ?, ?, ?, ?)""",
+            input_tokens_used, output_tokens_used, created_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
         (report_date, report_type, report_json, report_markdown, pdf_count,
-         input_tokens, output_tokens),
+         input_tokens, output_tokens, created_at),
     )
     conn.commit()
     return cur.lastrowid
@@ -581,10 +606,13 @@ def get_pipeline_stats() -> dict:
 
     uploads_since_last_scheduled = None
     if last_daily and last_daily["created_at"]:
-        # Convert the created_at (already UTC ISO) into the cutoff
+        # Normalize the cutoff to match dropbox_modified_at's ISO 'T' format.
+        # SQLite's datetime('now') uses space separator which lexically compares
+        # less than 'T'-format strings, inflating counts without normalization.
+        cutoff_pulse = _normalize_ts(last_daily["created_at"])
         row = conn.execute(
             "SELECT COUNT(*) as c FROM pdf_files WHERE dropbox_modified_at > ?",
-            (last_daily["created_at"],),
+            (cutoff_pulse,),
         ).fetchone()
         uploads_since_last_scheduled = row["c"] if row else 0
 
