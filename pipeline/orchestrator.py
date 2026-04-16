@@ -57,11 +57,13 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
 
         # Step 3: Based on priority, do deep analysis or skip
         if triage.priority == "low":
-            # Store triage result directly as the analysis
+            # Store triage result directly as the analysis.
+            # Use triage.source (Gemini-extracted) so LOW items show up under
+            # their bank in /status and pulse footer stats, not "Unknown".
             analysis = PdfAnalysis(
                 pdf_file_id=pdf_id,
                 file_name=file_name,
-                source="Unknown",
+                source=triage.source or "Unknown",
                 title=file_name,
                 report_type=triage.report_type,
                 priority="low",
