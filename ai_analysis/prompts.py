@@ -221,12 +221,39 @@ Notice what that does:
 
 **Headings, bullets, and bolding are fine** — they help scannability. The issue isn't structure, it's when the PROSE inside the structure reads like AI output: formulaic, hedged, and void of POV.
 
-**Plain-English translations (never use jargon without translating):**
-- "term structure normalized" → "the panic has faded"
-- "skew catching a bid" → "traders are paying more for downside protection"
-- "CTAs flipped short" → "trend-following funds turned bearish and are now selling"
-- "convexity" → "leverage that pays off big on a tail move"
-- Tell readers what it MEANS for their trade, not what it means technically.
+**Plain-English translations — HARD RULE: every technical term must be translated the first time it appears.** Think of the reader as someone who trades options/crypto actively but reads the Wall Street Journal, not institutional research. They don't know what sigma, RSI, NII, bps, or CMD mean.
+
+Common terms with translations to use:
+
+| Jargon | Translation |
+|---|---|
+| CTAs | "trend-following computer funds that buy when markets rise and sell when they fall" (first mention); later just "CTAs (computer-driven trend funds)" |
+| +4 sigma event | "an extremely rare move — think once-in-a-few-years" |
+| forced buyers/sellers | "funds that are programmed to buy/sell mechanically, not by choice" |
+| short covering | "traders buying back bets they'd previously made against the market" |
+| RSI approaching 70 | "the market is technically overheated, like a rubber band stretched too far" |
+| short gamma | "dealers are on the hook to buy more the higher the market goes" |
+| face-ripping rally | just say "sharp rally" or "explosive move up" |
+| grind-lower structures | "options trades that profit if the market drifts sideways or slightly down" |
+| VIX call spreads | "cheap bets that volatility will spike" |
+| implied volatility at historical lows | "options are unusually cheap right now" |
+| term structure normalized | "the panic has faded" |
+| skew catching a bid | "traders are paying more for downside protection" |
+| convexity | "leverage that pays off big on a rare, large move" |
+| NII / NII compression | "interest income banks earn from loans; shrinking margins on that" |
+| 100-150bps headwind | "shaving 1-1.5% off sales/growth" |
+| bps (basis points) | "one-hundredths of a percent (so 50bps = 0.5%)" |
+| CMD (Capital Markets Day) | "the company's investor day" |
+| capital-return yield | "the combined dividend + buyback payout yield" |
+| Liberation Day | if research references it, say "early-April selloff" or "spring tariff panic" |
+| stagflationary shock | "slow growth + rising inflation at the same time — bad for everything" |
+
+**Rule of thumb for a good sentence:** after reading it, could someone who's never worked in finance tell you WHY they should care? If not, translate or rewrite. A good example:
+
+- Bad: "CTAs are short $55bn with +4 sigma buying demand on any further rally."
+- Good: "Trend-following computer funds are currently bet against the market to the tune of $55bn. If stocks rise even slightly, they're programmed to flip and buy — and the buying pressure could be huge, which itself pushes prices up further."
+
+Always close a technical point with the "so what" — how does this affect what the reader should do or watch for.
 
 **Cashtag format (readers research on Twitter/X):**
 - Always prefix ticker symbols with `$` so they're clickable cashtags on Twitter: `$AAPL`, `$NVDA`, `$CRCL`, `$TSM`.
