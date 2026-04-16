@@ -408,6 +408,8 @@ Signals that a topic deserves its own theme:
 
 **Diff-first vs yesterday:** Before writing each theme, check the previous pulse. If the theme is unchanged from yesterday (same positioning, same view, same levels), SKIP IT or lead with "Unchanged: X. New: Y." Don't rewrite yesterday's analysis with synonym swaps. The reader already read yesterday — they want to know what shifted. A pulse that's 80% identical to yesterday's fails the reader.
 
+**EXCEPTION — imminent events are always material:** if an event was flagged as "coming up" in yesterday's pulse and is now TODAY (or within the next few hours), that's a material change. Always surface it in Today's WHAT TO WATCH with reaction framing, even if it was already in yesterday's pulse. Example: NFLX earnings flagged Thursday AMC in yesterday's pulse. Today IS Thursday → NFLX goes in ### Today with clear "today AMC" label, not cut as unchanged. Same for earnings that were in yesterday's "This Week" and are now today's BMO (those belong in RECAP with actuals when released).
+
 **Angles to cover when the research supports them** (don't force every angle every day):
 
 - Smart money positioning — hedge fund net/gross leverage, CTA direction, prime brokerage flows, crowding. Which way did positioning flip?
@@ -449,20 +451,24 @@ Events happening AFTER today through end of this week. If today is {today}, "thi
 **Ruthless filtering** — default is CUT. Only include events that BOTH (a) appear in at least one research analysis with specific commentary AND (b) match this short Tier 1 list:
 
 ✅ **Tier 1 (keep only if research discusses them):**
-- **US macro (headline only):** FOMC meeting, Fed Chair Powell speech, CPI, PCE, NFP, GDP, Retail Sales, ISM. That's it.
+- **US macro (headline only):** FOMC meeting, Fed Chair Powell speech, CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI. That's it.
 - **Major earnings:** MAG7 ($AAPL, $MSFT, $GOOGL, $AMZN, $META, $NVDA, $TSLA), major banks only if earnings season ($JPM, $GS, $MS, $BAC, $C, $WFC), and other names ONLY if research explicitly flags them as market-moving (e.g., $NFLX during earnings season is OK, $NVDA is always OK).
 - **Crypto:** ETF decisions, protocol upgrades, major unlocks — only if research names them specifically.
 - **Geopolitical hard deadlines:** ceasefire expirations, tariff deadlines, sanctions effective dates.
+- **Central bank RATE DECISIONS only:** FOMC, ECB, BOJ, BOE rate votes. NOT speeches by central bank heads (Lagarde, Bailey, Ueda).
 
-❌ **Always cut (even if on the calendar):**
-- Non-Powell Fed speakers (Williams, Miran, Waller, Barkin, Bostic, Daly, etc.) — only Powell moves markets consistently
+❌ **ALWAYS CUT — even if research mentions them:**
+- **Non-Powell Fed speakers** (Williams, Miran, Waller, Barkin, Bostic, Daly, Bowman, Goolsbee, Kashkari, etc.) — research often previews these but markets rarely move on them. Powell only.
+- **Foreign central bank heads' general speeches** (Lagarde, Bailey, Ueda) — only their rate DECISIONS matter.
 - Regional Fed surveys (Philly Fed, Empire State, Richmond, Dallas, KC)
 - Minor data: Jobless Claims (weekly — include only if research flagged a specific setup), Industrial Production, Building Permits, Housing Starts, Beige Book, capacity utilization
-- Foreign macro: EU/UK/JP/CN data unless research explicitly argues US read-through
+- Foreign macro: EU/UK/JP/CN data unless research explicitly argues US read-through. **China GDP and UK GDP alone don't qualify — they'd need to be framed by research as a decisive US risk.**
 - Small-cap or non-MAG7 earnings unless research called the name out
 - Analyst days, product launches, industry conferences
 
-**If you find yourself writing events from the calendar that no PDF discussed — DELETE THEM.** Five solid research-backed events beat fifteen calendar filler items. If today has only two Tier 1 events with research coverage, list just those two.
+**If you find yourself writing events from the calendar that no PDF discussed with specific market-moving rationale — DELETE THEM.** Research merely *mentioning* a Fed speaker's name isn't enough. The research has to argue why THIS speaker, THIS time, matters.
+
+Five solid research-backed events beat fifteen calendar filler items. If today has only two Tier 1 events with research coverage, list just those two.
 
 For each event include:
 - Exact date (e.g., "Wednesday April 15")
