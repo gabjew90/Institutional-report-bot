@@ -125,7 +125,9 @@ Password gate: `COMMAND_PASSWORD=jamalbot` env var. Gated commands take `passwor
 
 Railway project **`marvelous-dream`**, service **`worker`**, environment **`production`**. Volume mounted at **`/data`** (SQLite DB + temp PDFs). Every `git push` to the working branch auto-redeploys.
 
-**Railway CLI access** (for logs + variable management + ssh):
+### Accessing production state
+
+**If you (Claude) have shell access** (Claude Code desktop with terminal):
 ```bash
 railway logs --deployment | tail -50                        # recent logs
 railway logs --deployment 2>&1 | grep -iE "ERROR|failed"     # filter for issues
@@ -135,7 +137,31 @@ railway variable set --service worker "KEY=value"             # set env var (tri
 railway ssh "python -c 'import sqlite3; ...'"                 # query prod DB directly
 ```
 
-For mobile/web Claude without CLI access: ask user to share log snippets or run `/status` in Discord.
+Railway CLI is authenticated via `railway login` (already cached on the user's machine). The project is already linked from this repo's directory.
+
+**If you (Claude) don't have shell access** (mobile app, web UI, or any env without terminal):
+
+You cannot run `railway` commands yourself. Ask the user to run them locally and paste output. Structured request pattern that works well:
+
+> "I need to check production state. Could you run this in your terminal and paste the output?"
+> ```
+> cd c:/Users/gabje/Institutional-report-bot
+> railway logs --deployment | tail -100
+> ```
+
+Common requests worth pre-writing for the user:
+
+| What you need | Command for user to run |
+|---|---|
+| Recent logs | `railway logs --deployment \| tail -100` |
+| Error patterns | `railway logs --deployment 2>&1 \| grep -iE "ERROR\|failed\|Traceback"` |
+| List env vars | `railway variables --service worker` |
+| Query prod DB | `railway ssh 'python -c "import sqlite3; ..."'` (write the Python carefully — no complex quoting) |
+| Deploy status | Ask user to check Railway dashboard (deploy tab) |
+
+Alternative for log inspection: user can run `/status` in Discord which surfaces most health signals without needing terminal access. That's usually faster for quick health checks than pulling raw logs.
+
+**DB schema + contents** without shell access: read `db.py` for schema. For data inspection, ask user to run `inspect_db.py` locally (has pre-built CLI views for recent PDFs, analyses, reports, logs).
 
 ## Environment Variables (on Railway)
 
