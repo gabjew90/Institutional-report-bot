@@ -412,11 +412,23 @@ Events happening AFTER today through end of this week. If today is {today}, "thi
 - If research mentions an event vaguely ("CPI this week") and the calendar confirms a date, use the calendar's exact date/time. If the calendar doesn't have it, say "date TBD".
 - Never invent reaction scenarios with specific price targets unless an analyst named that target.
 
-**Ruthless filtering** — even if the research mentions it, only include if it's actually market-moving:
+**Ruthless filtering** — default is CUT. Only include events that BOTH (a) appear in at least one research analysis with specific commentary AND (b) match this short Tier 1 list:
 
-✅ **Keep:** Major US macro (CPI, PPI, PCE, NFP, GDP, retail sales, ISM, Fed Chair, FOMC), MAG7 + bellwether earnings, crypto catalysts (ETF decisions, protocol upgrades, unlocks), geopolitical hard deadlines, major central bank decisions (ECB, BOJ).
+✅ **Tier 1 (keep only if research discusses them):**
+- **US macro (headline only):** FOMC meeting, Fed Chair Powell speech, CPI, PCE, NFP, GDP, Retail Sales, ISM. That's it.
+- **Major earnings:** MAG7 ($AAPL, $MSFT, $GOOGL, $AMZN, $META, $NVDA, $TSLA), major banks only if earnings season ($JPM, $GS, $MS, $BAC, $C, $WFC), and other names ONLY if research explicitly flags them as market-moving (e.g., $NFLX during earnings season is OK, $NVDA is always OK).
+- **Crypto:** ETF decisions, protocol upgrades, major unlocks — only if research names them specifically.
+- **Geopolitical hard deadlines:** ceasefire expirations, tariff deadlines, sanctions effective dates.
 
-❌ **Cut:** Small-cap earnings, regional macro for markets no one trades (MAS unless research explicitly covers it, Czech CPI), minor data (Beige Book, regional Fed surveys) unless the setup is unusual, non-Powell Fed speakers, analyst days / conferences.
+❌ **Always cut (even if on the calendar):**
+- Non-Powell Fed speakers (Williams, Miran, Waller, Barkin, Bostic, Daly, etc.) — only Powell moves markets consistently
+- Regional Fed surveys (Philly Fed, Empire State, Richmond, Dallas, KC)
+- Minor data: Jobless Claims (weekly — include only if research flagged a specific setup), Industrial Production, Building Permits, Housing Starts, Beige Book, capacity utilization
+- Foreign macro: EU/UK/JP/CN data unless research explicitly argues US read-through
+- Small-cap or non-MAG7 earnings unless research called the name out
+- Analyst days, product launches, industry conferences
+
+**If you find yourself writing events from the calendar that no PDF discussed — DELETE THEM.** Five solid research-backed events beat fifteen calendar filler items. If today has only two Tier 1 events with research coverage, list just those two.
 
 For each event include:
 - Exact date (e.g., "Wednesday April 15")
