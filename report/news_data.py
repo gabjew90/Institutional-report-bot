@@ -16,20 +16,17 @@ from config import settings
 
 log = logging.getLogger(__name__)
 
-# Stocks we care about for earnings calendar filtering — extendable
+# Earnings calendar ticker whitelist — only names that reliably move markets.
+# Kept small so the calendar block doesn't tempt Gemini to list filler earnings.
+# If research explicitly covers a ticker not in this list, the synthesis prompt
+# allows including it from research context.
 _MAJOR_TICKERS = {
     # MAG7
     "AAPL", "MSFT", "GOOGL", "GOOG", "AMZN", "META", "NVDA", "TSLA",
-    # Banks
+    # Top banks (earnings season)
     "JPM", "GS", "MS", "BAC", "C", "WFC",
-    # Bellwethers
-    "XOM", "CVX", "WMT", "TGT", "COST", "HD", "LOW", "MCD",
-    # Semis / chips
-    "TSM", "ASML", "AMD", "INTC", "AVGO", "QCOM", "MU", "LRCX", "AMAT",
-    # Streaming / media
-    "NFLX", "DIS", "SPOT",
-    # Other notables
-    "BA", "CAT", "DE", "JNJ", "UNH", "V", "MA", "PYPL",
+    # Select bellwethers (known to move the index or represent a sector)
+    "NFLX", "TSM", "ASML", "BRK.B", "XOM", "WMT",
 }
 
 
@@ -178,13 +175,37 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
         return "ECONOMIC CALENDAR: (fetch failed)"
 
     items = data.get("economicCalendar", []) or []
-    # Focus on high-impact items from major economies
-    major_countries = {"US", "EU", "CN", "JP", "GB", "DE"}
-    filtered = [
-        e for e in items
-        if e.get("country", "") in major_countries
-        and (e.get("impact") or "").lower() in {"high", "medium"}
+    # Whitelist of event name substrings that actually move markets for a US
+    # options/crypto trader. Anything else (regional Fed surveys, Fed governor
+    # speeches that aren't Powell, minor US data, foreign macro without US
+    # read-through) is filtered out so Gemini can't include filler in the pulse.
+    TIER1_KEYWORDS = [
+        # US macro — headline only
+        "fomc", "fed chair", "powell",
+        "cpi", "core cpi",
+        "pce", "core pce",
+        "nonfarm payroll", "employment situation", "unemployment rate",
+        "gdp ",
+        "retail sales",
+        "ism manufacturing", "ism services", "ism non-manufacturing",
+        "ppi ",  # PPI headline (user flagged it matters)
+        # Major central bank policy meetings only
+        "ecb rate decision", "ecb interest rate",
+        "boj rate decision", "boj interest rate",
+        "boe rate decision", "boe interest rate",
     ]
+
+    def _is_tier1(evt: dict) -> bool:
+        name = (evt.get("event") or "").lower()
+        # Only US for most; ECB/BOJ/BOE rate decisions pass through from other countries
+        country = evt.get("country", "")
+        if country == "US":
+            return any(kw in name for kw in TIER1_KEYWORDS)
+        # Foreign only for top central bank rate decisions
+        return any(kw in name for kw in ("ecb rate", "boj rate", "boe rate",
+                                         "ecb interest", "boj interest", "boe interest"))
+
+    filtered = [e for e in items if _is_tier1(e)]
     filtered.sort(key=lambda e: e.get("time", ""))
 
     if not filtered:
