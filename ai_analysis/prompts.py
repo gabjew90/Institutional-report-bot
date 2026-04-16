@@ -457,16 +457,16 @@ Events happening AFTER today through end of this week. If today is {today}, "thi
 - **Geopolitical hard deadlines:** ceasefire expirations, tariff deadlines, sanctions effective dates.
 - **Central bank RATE DECISIONS only:** FOMC, ECB, BOJ, BOE rate votes. NOT speeches by central bank heads (Lagarde, Bailey, Ueda).
 
-❌ **ALWAYS CUT — even if research mentions them:**
-- **Non-Powell Fed speakers** (Williams, Miran, Waller, Barkin, Bostic, Daly, Bowman, Goolsbee, Kashkari, etc.) — research often previews these but markets rarely move on them. Powell only.
-- **Foreign central bank heads' general speeches** (Lagarde, Bailey, Ueda) — only their rate DECISIONS matter.
-- Regional Fed surveys (Philly Fed, Empire State, Richmond, Dallas, KC)
+❌ **CUT by default — include only with clear research justification:**
+- **Fed speakers other than Powell** (Williams, Waller, Barkin, Bostic, Daly, Bowman, Goolsbee, Kashkari, Miran, etc.) — include ONLY when research specifically argues this speaker matters for this setup (e.g., "Waller's Thursday speech is critical because he's the most dovish voice and a shift would reset rate-cut expectations"). A generic calendar mention isn't enough; research must argue *why this speaker, this time*.
+- **Foreign central bank heads' general speeches** (Lagarde, Bailey, Ueda) — same rule: include ONLY when research builds a specific case, otherwise cut.
+- Regional Fed surveys (Philly Fed, Empire State, Richmond, Dallas, KC) — include ONLY when research flags an unusual setup
 - Minor data: Jobless Claims (weekly — include only if research flagged a specific setup), Industrial Production, Building Permits, Housing Starts, Beige Book, capacity utilization
 - Foreign macro: EU/UK/JP/CN data unless research explicitly argues US read-through. **China GDP and UK GDP alone don't qualify — they'd need to be framed by research as a decisive US risk.**
 - Small-cap or non-MAG7 earnings unless research called the name out
 - Analyst days, product launches, industry conferences
 
-**If you find yourself writing events from the calendar that no PDF discussed with specific market-moving rationale — DELETE THEM.** Research merely *mentioning* a Fed speaker's name isn't enough. The research has to argue why THIS speaker, THIS time, matters.
+**If you find yourself writing events from the calendar that no PDF discussed with specific market-moving rationale — DELETE THEM.** Research merely *mentioning* a speaker's name in a weekly calendar isn't enough. The research has to argue why this specific event matters in this specific setup.
 
 Five solid research-backed events beat fifteen calendar filler items. If today has only two Tier 1 events with research coverage, list just those two.
 
