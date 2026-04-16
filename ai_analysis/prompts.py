@@ -399,6 +399,13 @@ Keep it tight — 1-2 short paragraphs. If a market was flat and boring, say so 
 ## 2. INSIGHTS & ALPHA
 **Entirely driven by the research.** This is the longest, densest section. Readers want to know where big players are placing bets. Aim for 3-8 themes depending on research volume and quality — if 172 reports produced 8 substantive themes, cover all 8; if 40 produced 3, cover 3.
 
+**Prioritize single-topic dedicated notes, not just themes repeated across many reports.** When a bank publishes a dedicated note on a specific catalyst (e.g., "SEC approves proposal from FINRA to remove pattern day trader rules," "Amazon Globalstar acquisition analysis," "Fed speaker preview"), that note represents a high-conviction call that desk thought worth its own publication. These often deserve their own theme in Insights EVEN IF only one bank covered it. Don't let them get drowned out by broad macro themes that dozens of reports mention in passing.
+
+Signals that a topic deserves its own theme:
+- There's a dedicated single-topic research PDF on it (filename tells you — e.g., "Americas Brokers & Crypto: PDT rule removal")
+- It's a clear catalyst with specific tickers/dates (regulatory approvals, M&A, earnings reactions, unlocks)
+- It's a theme the reader could trade directly (vs a macro narrative that's already priced in)
+
 **Diff-first vs yesterday:** Before writing each theme, check the previous pulse. If the theme is unchanged from yesterday (same positioning, same view, same levels), SKIP IT or lead with "Unchanged: X. New: Y." Don't rewrite yesterday's analysis with synonym swaps. The reader already read yesterday — they want to know what shifted. A pulse that's 80% identical to yesterday's fails the reader.
 
 **Angles to cover when the research supports them** (don't force every angle every day):
