@@ -195,10 +195,26 @@ async def synthesize_daily_pulse(
                 prev_ts = datetime.fromisoformat(prev["created_at"][:19])
                 age = datetime.utcnow() - prev_ts
                 if age <= timedelta(hours=48):
+                    # Extract the Insights theme headers from yesterday's pulse
+                    # so the model knows what to AVOID repeating. Passing the full
+                    # markdown caused Gemini to copy it verbatim.
+                    import re
+                    md = prev["report_markdown"] or ""
+                    # Match bolded theme headers (e.g. "**The Systematic Squeeze**")
+                    theme_headers = re.findall(r"\*\*([^*\n]{5,80})\*\*", md)
+                    # Also grab section headers
+                    section_heads = re.findall(r"^##+\s*([^\n]+)", md, re.MULTILINE)
+                    themes_list = [t.strip() for t in theme_headers if t.strip()][:12]
                     prev_context = (
-                        f"PREVIOUS PULSE (from {prev['created_at'][:16].replace('T', ' ')} UTC, "
+                        f"PREVIOUS PULSE SUMMARY (from {prev['created_at'][:16].replace('T', ' ')} UTC, "
                         f"~{int(age.total_seconds() / 3600)}h ago, {prev['pdf_count']} reports):\n\n"
-                        f"{prev['report_markdown']}"
+                        f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM — these are the exact headlines the reader saw yesterday):\n"
+                        + "\n".join(f"  - {t}" for t in themes_list)
+                        + "\n\nYour job today:\n"
+                        + "1. For each theme above, ask: has the research today materially advanced it? If no → SKIP. If yes → lead with 'Since yesterday: [what's new/changed]'.\n"
+                        + "2. Actively hunt for themes that are NOT in the list above — new catalysts, fresh desk calls, new positioning data.\n"
+                        + "3. Your pulse should be notably different from yesterday's. If today's pulse would look 80%+ the same as yesterday's, you've failed.\n"
+                        + "4. Do NOT rewrite yesterday's themes with synonyms and new numbers. That's the same pulse in a trench coat."
                     )
                 else:
                     prev_context = (

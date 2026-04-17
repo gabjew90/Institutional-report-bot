@@ -385,12 +385,18 @@ Create the report with these THREE sections:
 ## 1. RECAP
 **This is the only section where you use live prices and news. Also include any economic releases or earnings that have ALREADY HAPPENED today** (flagged `[RELEASED]` in the economic calendar or `[REPORTED]`/`[REPORTED-BMO-today]` in the earnings calendar, or with a scheduled time earlier than {now}). Report the actual numbers + market reaction.
 
-Describe how US stocks (S&P, Nasdaq, VIX) and crypto (BTC, ETH) have moved since the last pulse, using the live market snapshot. For each significant move, explain the "why" using the research + news — which research view is being confirmed or invalidated, what news broke since, whether this morning's data/earnings drove the move.
+**CRITICAL RULE — DO NOT RECYCLE PAST EVENTS AS TODAY'S NEWS:**
+- An economic release or earnings report only belongs in today's RECAP if the LIVE CALENDAR shows `[RELEASED]` with an actual value today, OR the earnings calendar shows `[REPORTED-BMO-today]` / `[REPORTED-AMC-today]`.
+- Research PDFs published today OFTEN reference events from earlier this week (Tuesday PPI, Tuesday bank earnings) as CONTEXT. Do NOT treat those as "this morning's" events. They're HISTORY, not news.
+- Example trap: it's Friday, PPI came out Tuesday. Research today discusses PPI implications. You must NOT write "this morning's PPI data printed at 0.5%" — PPI is not in today's calendar as released. It was released Tuesday. Reference it as "Tuesday's PPI print" if relevant at all.
+- If the calendar shows no `[RELEASED]` events today, simply don't claim anything was released today. Keep RECAP to live price moves + geopolitical news from the news snapshot.
+
+Describe how US stocks (S&P, Nasdaq, VIX) and crypto (BTC, ETH) have moved since the last pulse, using the live market snapshot. For each significant move, explain the "why" using the research + news — which research view is being confirmed or invalidated, what news broke since.
 
 Examples:
 - "S&P at 6,820, +1.2% since Friday's pulse. GS called for a squeeze on dovish Fed repricing — playing out."
-- "PPI printed hot at 1.3% vs 1.1% expected at 8:30 AM — bonds sold off, 10Y to 4.45%. Tech gave back early gains, $QQQ -0.4%."
-- "$GS reported BMO beating EPS by 8% on strong trading revenue — stock up 2.1% pre-market."
+- "PPI printed hot at 1.3% vs 1.1% expected at 8:30 AM — bonds sold off, 10Y to 4.45%." (ONLY if PPI is in today's calendar as [RELEASED])
+- "$GS reported BMO beating EPS by 8% on strong trading revenue — stock up 2.1% pre-market." (ONLY if $GS shows [REPORTED-BMO-today])
 
 Flag breaks of key technical/psychological levels only if the research mentioned them.
 
