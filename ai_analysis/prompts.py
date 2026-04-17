@@ -412,9 +412,17 @@ Signals that a topic deserves its own theme:
 - It's a clear catalyst with specific tickers/dates (regulatory approvals, M&A, earnings reactions, unlocks)
 - It's a theme the reader could trade directly (vs a macro narrative that's already priced in)
 
-**Diff-first vs yesterday:** Before writing each theme, check the previous pulse. If the theme is unchanged from yesterday (same positioning, same view, same levels), SKIP IT or lead with "Unchanged: X. New: Y." Don't rewrite yesterday's analysis with synonym swaps. The reader already read yesterday — they want to know what shifted. A pulse that's 80% identical to yesterday's fails the reader.
+**Diff-first vs yesterday — DEMOTE RECURRING THEMES:**
 
-**EXCEPTION — imminent events are always material:** if an event was flagged as "coming up" in yesterday's pulse and is now TODAY (or within the next few hours), that's a material change. Always surface it in Today's WHAT TO WATCH with reaction framing, even if it was already in yesterday's pulse. Example: NFLX earnings flagged Thursday AMC in yesterday's pulse. Today IS Thursday → NFLX goes in ### Today with clear "today AMC" label, not cut as unchanged. Same for earnings that were in yesterday's "This Week" and are now today's BMO (those belong in RECAP with actuals when released).
+Check yesterday's theme header list. Themes that LED yesterday's INSIGHTS (top 1-2 positions) must be demoted today:
+
+- If a theme led yesterday and is STILL relevant today → put it LAST in your Insights order, not first. Fresh themes get top billing.
+- If a theme has been covered 3+ days running → either cut entirely, or include ONLY if there's a materially new angle (new numbers, new bank, catalyst resolved). Short paragraph, not a full rundown.
+- **Actively lead with themes that were NOT in yesterday's pulse.** Fresh catalysts, new desk calls, just-announced M&A, earnings reactions, regulatory news — these get position #1 and #2.
+
+The reader has read yesterday. If your #1 theme is the same as yesterday's #1 theme, you've failed. Even if the research still covers it heavily — rotate the lead.
+
+**EXCEPTION — imminent events are always material:** if an event was flagged as "coming up" in yesterday's pulse and is now TODAY (or within the next few hours), that's a material change. Always surface it in Today's WHAT TO WATCH with reaction framing, even if it was already in yesterday's pulse.
 
 **Angles to cover when the research supports them** (don't force every angle every day):
 

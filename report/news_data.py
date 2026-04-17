@@ -83,10 +83,13 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
         return "EARNINGS CALENDAR: (no FINNHUB_API_KEY — dates/BMO-AMC not verified)"
 
     today = datetime.utcnow().date()
+    # Fetch from yesterday so we can catch AMC earnings that released last
+    # night (e.g. NFLX Thu AMC checked on Fri → still relevant context).
+    start = today - timedelta(days=1)
     end = today + timedelta(days=days_ahead)
     url = (
         f"https://finnhub.io/api/v1/calendar/earnings"
-        f"?from={today.isoformat()}&to={end.isoformat()}"
+        f"?from={start.isoformat()}&to={end.isoformat()}"
         f"&token={urllib.parse.quote(key)}"
     )
     data = _fetch_json(url)
@@ -107,10 +110,8 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
 
     today_date = datetime.utcnow().date()
     now_utc = datetime.utcnow()
-    lines = [
-        f"EARNINGS CALENDAR (next {days_ahead}d, major tickers only — USE THESE DATES + BMO/AMC VERBATIM):",
-        "Each row tagged [REPORTED] if actuals present (use in RECAP), [TODAY-BMO/AMC] if scheduled for today, [UPCOMING] otherwise.",
-    ]
+    reported_lines = []
+    upcoming_lines = []
     # Finnhub `hour` field: "bmo" = before market open, "amc" = after market close, "dmh" = during, "" = unknown
     for e in filtered:
         sym = e.get("symbol", "?")
@@ -128,20 +129,13 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
         except (ValueError, TypeError):
             ev_date = None
 
-        if eps_actual is not None or rev_actual is not None:
-            status = "[REPORTED]"
-        elif ev_date == today_date:
-            # BMO on today = before ~9:30 AM ET = ~13:30 UTC. If past that, likely reported.
-            if hour == "bmo" and now_utc.hour >= 14:
-                status = "[REPORTED-BMO-today]"
-            elif hour == "amc" and now_utc.hour >= 21:
-                status = "[REPORTED-AMC-today]"
-            else:
-                status = f"[TODAY-{hour.upper()}]" if hour else "[TODAY]"
-        elif ev_date and ev_date < today_date:
-            status = "[PAST]"
-        else:
-            status = "[UPCOMING]"
+        already_reported = (
+            eps_actual is not None
+            or rev_actual is not None
+            or (ev_date and ev_date < today_date)
+            or (ev_date == today_date and hour == "bmo" and now_utc.hour >= 14)
+            or (ev_date == today_date and hour == "amc" and now_utc.hour >= 21)
+        )
 
         extra = []
         if eps_actual is not None:
@@ -153,8 +147,25 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
         if rev_est is not None and rev_actual is None:
             extra.append(f"Rev est ${rev_est/1e9:.2f}B")
         extra_str = f" ({', '.join(extra)})" if extra else ""
-        lines.append(f"  {status} {date_str} {sym} — {timing}{extra_str}")
-    return "\n".join(lines)
+        row = f"  {date_str} {sym} — {timing}{extra_str}"
+
+        if already_reported:
+            reported_lines.append(row)
+        else:
+            upcoming_lines.append(row)
+
+    out = []
+    if reported_lines:
+        out.append("EARNINGS ALREADY REPORTED (belongs in RECAP, NEVER in WHAT TO WATCH):")
+        out.extend(reported_lines)
+    if upcoming_lines:
+        if out:
+            out.append("")
+        out.append("EARNINGS STILL UPCOMING (belongs in WHAT TO WATCH):")
+        out.extend(upcoming_lines)
+    if not out:
+        return f"EARNINGS CALENDAR: no major tickers in window."
+    return "\n".join(out)
 
 
 def fetch_economic_calendar(days_ahead: int = 7) -> str:
@@ -164,10 +175,12 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
         return "ECONOMIC CALENDAR: (no FINNHUB_API_KEY — release dates/forecasts not verified)"
 
     today = datetime.utcnow().date()
+    # Fetch from yesterday to capture data released overnight that's still context
+    start = today - timedelta(days=1)
     end = today + timedelta(days=days_ahead)
     url = (
         f"https://finnhub.io/api/v1/calendar/economic"
-        f"?from={today.isoformat()}&to={end.isoformat()}"
+        f"?from={start.isoformat()}&to={end.isoformat()}"
         f"&token={urllib.parse.quote(key)}"
     )
     data = _fetch_json(url)
@@ -212,11 +225,9 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
         return f"ECONOMIC CALENDAR (next {days_ahead}d): no high-impact releases."
 
     now_utc = datetime.utcnow()
-    lines = [
-        f"ECONOMIC CALENDAR (next {days_ahead}d, high/medium impact from US/EU/CN/JP/GB/DE — USE THESE DATES + FORECASTS VERBATIM):",
-        "Each row tagged [RELEASED] if `actual` is set (event already happened, use actual value in RECAP), or [UPCOMING] if estimate-only.",
-    ]
-    for e in filtered[:30]:  # cap to avoid prompt bloat
+    released_lines = []
+    upcoming_lines = []
+    for e in filtered[:40]:
         country = e.get("country", "")
         event = e.get("event", "").strip()
         time = e.get("time", "")[:16].replace("T", " ")
@@ -226,24 +237,38 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
         actual = e.get("actual")
         unit = e.get("unit", "")
 
-        # Determine status — actual present OR scheduled time in the past = released
-        status = "[UPCOMING]"
-        if actual is not None:
-            status = "[RELEASED]"
-        else:
+        is_released = actual is not None
+        if not is_released:
             try:
                 sched = datetime.fromisoformat(e.get("time", "")[:19])
                 if sched < now_utc:
-                    status = "[PAST — no actual reported]"
+                    is_released = True  # past scheduled time without actual — treat as released (even if no data yet)
             except (ValueError, TypeError):
                 pass
 
-        bits = [status, f"{time} UTC", f"[{country}]", event, f"impact={impact}"]
+        bits = [f"{time} UTC", f"[{country}]", event, f"impact={impact}"]
         if actual is not None:
             bits.append(f"ACTUAL={actual}{unit}")
         if estimate is not None:
             bits.append(f"est={estimate}{unit}")
         if prev is not None:
             bits.append(f"prev={prev}{unit}")
-        lines.append("  " + " | ".join(bits))
-    return "\n".join(lines)
+        row = "  " + " | ".join(bits)
+
+        if is_released:
+            released_lines.append(row)
+        else:
+            upcoming_lines.append(row)
+
+    out = []
+    if released_lines:
+        out.append("ECONOMIC EVENTS ALREADY RELEASED (belongs in RECAP, NEVER in WHAT TO WATCH):")
+        out.extend(released_lines)
+    if upcoming_lines:
+        if out:
+            out.append("")
+        out.append("ECONOMIC EVENTS STILL UPCOMING (belongs in WHAT TO WATCH):")
+        out.extend(upcoming_lines)
+    if not out:
+        return "ECONOMIC CALENDAR: no high-impact releases in window."
+    return "\n".join(out)
