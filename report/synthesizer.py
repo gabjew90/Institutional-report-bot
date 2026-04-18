@@ -143,11 +143,29 @@ async def synthesize_daily_pulse(
     try:
         tz = pytz.timezone(_settings.timezone)
         now_local = datetime.now(tz)
-        today_label = f"{today} ({now_local.strftime('%A')})"
+        day_of_week = now_local.strftime("%A")
+        today_label = f"{today} ({day_of_week})"
         now_label = now_local.strftime("%H:%M %Z")
+        # Weekend flag: US equity, bond, and futures markets are closed Sat + Sun.
+        # Crypto trades 24/7 but also quiet on weekends.
+        is_weekend = day_of_week in ("Saturday", "Sunday")
     except Exception:
         today_label = today
         now_label = datetime.utcnow().strftime("%H:%M UTC")
+        is_weekend = False
+
+    market_status_note = ""
+    if is_weekend:
+        market_status_note = (
+            "\n\n**MARKET STATUS: US markets are CLOSED TODAY (weekend).** "
+            "The live price snapshot below shows LAST CLOSE — Friday's closing levels, "
+            "not 'today's move.' Do NOT write sentences like 'SPX is up 2% today' — "
+            "it's a weekend, nothing has traded. Phrase price references as "
+            "'as of Friday's close' or 'heading into Monday.' RECAP should focus on "
+            "what weekend news has done to sentiment and what's set up for Monday's open, "
+            "not intraday action. Crypto trades 24/7 so BTC/ETH price commentary is fine, "
+            "but weekend crypto volumes are thin — don't over-read short-term moves."
+        )
 
     analyses_json = _analyses_to_json(analyses)
     market_snapshot = fetch_market_snapshot()
@@ -224,6 +242,10 @@ async def synthesize_daily_pulse(
                     )
             except (ValueError, TypeError):
                 pass
+
+    # Append weekend notice to market_snapshot so it's co-located with the prices
+    if market_status_note:
+        market_snapshot = market_snapshot + market_status_note
 
     user_prompt = DAILY_SYNTHESIS_USER.format(
         pdf_count=len(analyses),
