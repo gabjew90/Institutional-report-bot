@@ -23,17 +23,20 @@ _COINGECKO_URL = (
     "&include_7d_change=true"
 )
 
-# Yahoo Finance tickers for the indicators we reference in pulses
-_YAHOO_TICKERS = {
-    "S&P 500": "^GSPC",
-    "Nasdaq 100": "^NDX",
-    "VIX": "^VIX",
-    "Brent Crude": "BZ=F",
-    "WTI Crude": "CL=F",
-    "Gold": "GC=F",
-    "10Y Treasury": "^TNX",
-    "DXY": "DX-Y.NYB",
-}
+# Finnhub uses liquid US-listed ETF proxies for the indexes/futures we want.
+# Free tier fully supports these; they track their underlying % moves ~1:1.
+# Labels shown to Gemini keep the underlying name so the pulse reads naturally.
+_FINNHUB_PROXIES = [
+    # (display_name, finnhub_ticker, note)
+    ("S&P 500", "SPY", "SPDR S&P 500 ETF; tracks $SPX"),
+    ("Nasdaq 100", "QQQ", "Invesco QQQ; tracks $NDX"),
+    ("VIX", "VIXY", "ProShares VIX Short-Term Futures ETF; tracks VIX"),
+    ("Brent Crude", "BNO", "United States Brent Oil ETF"),
+    ("WTI Crude", "USO", "United States Oil Fund ETF"),
+    ("Gold", "GLD", "SPDR Gold Shares"),
+    ("10Y Treasury (inverse)", "TLT", "iShares 20+ Year Treasury Bond ETF — yields INVERSELY; if TLT up, 10Y yield down"),
+    ("DXY", "UUP", "Invesco DB US Dollar Bullish ETF"),
+]
 
 
 def _fetch_json(url: str, timeout: float = 5.0) -> dict | None:
@@ -101,33 +104,41 @@ def _fetch_crypto() -> dict:
     return out
 
 
-def _fetch_yahoo_single(symbol: str) -> dict | None:
-    """Fetch last close + previous close for a single symbol via v8 chart endpoint."""
-    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=5d"
+def _fetch_finnhub_quote(symbol: str) -> dict | None:
+    """Fetch price + pct change for a symbol via Finnhub /quote.
+
+    Returns dict with 'price', 'prev_close', 'change_pct' or None on failure.
+    Finnhub response fields: c=current, pc=prev close, dp=pct change.
+    """
+    from config import settings
+    import time
+    key = settings.finnhub_api_key
+    if not key:
+        return None
+    url = f"https://finnhub.io/api/v1/quote?symbol={urllib.parse.quote(symbol)}&token={urllib.parse.quote(key)}"
     data = _fetch_json(url)
-    if not data:
+    if not data or not isinstance(data, dict):
         return None
-    try:
-        result = data["chart"]["result"][0]
-        meta = result.get("meta", {})
-        price = meta.get("regularMarketPrice")
-        prev_close = meta.get("chartPreviousClose") or meta.get("previousClose")
-        if price is None:
-            return None
-        change_pct = None
-        if prev_close:
-            change_pct = ((price - prev_close) / prev_close) * 100
-        return {"price": price, "prev_close": prev_close, "change_pct": change_pct}
-    except (KeyError, IndexError, TypeError):
+    price = data.get("c")
+    prev_close = data.get("pc")
+    pct = data.get("dp")  # already in percent form
+    if price is None or price == 0:
         return None
+    return {"price": price, "prev_close": prev_close, "change_pct": pct}
 
 
-def _fetch_yahoo() -> dict:
+def _fetch_traditional_markets() -> dict:
+    """Fetch all traditional market proxies via Finnhub, spaced to avoid bursts."""
+    import time
     out = {}
-    for name, symbol in _YAHOO_TICKERS.items():
-        data = _fetch_yahoo_single(symbol)
+    for label, ticker, _note in _FINNHUB_PROXIES:
+        data = _fetch_finnhub_quote(ticker)
         if data:
-            out[name] = data
+            # Keep the underlying label but include the proxy ticker in the output
+            # so Gemini has context (e.g., can write "$SPY +2.39%" if it prefers).
+            data["proxy_ticker"] = ticker
+            out[label] = data
+        time.sleep(0.15)  # Finnhub free tier = 60 calls/min; 0.15s is conservative
     return out
 
 
@@ -176,7 +187,7 @@ def fetch_market_snapshot() -> str:
     """Return a human-readable snapshot of current market levels for the prompt."""
     import pytz
     crypto = _fetch_crypto()
-    traditional = _fetch_yahoo()
+    traditional = _fetch_traditional_markets()
 
     et = pytz.timezone("America/New_York")
     now_et = datetime.utcnow().replace(tzinfo=pytz.UTC).astimezone(et)
@@ -193,14 +204,21 @@ def fetch_market_snapshot() -> str:
     }.get(session_code, "last session")
 
     if traditional:
-        lines.append(f"Traditional markets (% shown = {pct_label}):")
+        lines.append(
+            f"Traditional markets (% shown = {pct_label}; "
+            "quotes via liquid US-listed ETF proxies on Finnhub — "
+            "$SPY for S&P, $QQQ for Nasdaq 100, $VIXY for VIX, $GLD for Gold, "
+            "$BNO for Brent, $USO for WTI, $TLT for 10Y (inverse), $UUP for DXY):"
+        )
         for name, data in traditional.items():
             price = data.get("price")
             pct = data.get("change_pct")
+            proxy = data.get("proxy_ticker", "")
             if price is None:
                 continue
             pct_str = f"{pct:+.2f}%" if pct is not None else "n/a"
-            lines.append(f"  {name}: {price:,.2f} ({pct_str} {pct_label})")
+            proxy_str = f" [{proxy}]" if proxy else ""
+            lines.append(f"  {name}{proxy_str}: ${price:,.2f} ({pct_str} {pct_label})")
         lines.append("")
 
     if crypto:
