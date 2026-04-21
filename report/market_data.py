@@ -78,27 +78,46 @@ def _fetch_crypto_midnight_utc(coin_id: str) -> float | None:
     return best
 
 
+def _fetch_binance_midnight(symbol: str) -> float | None:
+    """Get today's 00:00 UTC open price via Binance klines (no auth, generous limits).
+
+    Uses Binance.US (api.binance.us) since the main Binance endpoint is geo-blocked
+    with HTTP 451 for US IPs including Railway. symbol: Binance pair like 'BTCUSDT'.
+    Returns the open of today's current 1d candle = exactly midnight UTC price.
+    """
+    url = f"https://api.binance.us/api/v3/klines?symbol={symbol}&interval=1d&limit=1"
+    data = _fetch_json(url)
+    if not data or not isinstance(data, list) or not data:
+        return None
+    try:
+        # Kline format: [open_time, open, high, low, close, volume, ...]
+        return float(data[0][1])
+    except (ValueError, IndexError, TypeError):
+        return None
+
+
 def _fetch_crypto() -> dict:
-    import time
     data = _fetch_json(_COINGECKO_URL)
     if not data:
         return {}
+    binance_map = {"bitcoin": "BTCUSDT", "ethereum": "ETHUSDT", "solana": "SOLUSDT"}
     out = {}
     for key, name in [("bitcoin", "BTC"), ("ethereum", "ETH"), ("solana", "SOL")]:
-        if key in data:
-            current = data[key].get("usd")
-            # Small delay between market_chart calls to stay under CoinGecko free-tier RPM
-            time.sleep(0.7)
-            midnight_utc_price = _fetch_crypto_midnight_utc(key) if current is not None else None
-            # Day-to-date change anchored at 00:00 UTC today (= 8pm ET yesterday during EDT)
-            change_utc_day = None
-            if current is not None and midnight_utc_price:
-                change_utc_day = ((current - midnight_utc_price) / midnight_utc_price) * 100
-            out[name] = {
-                "price": current,
-                "change_utc_day": change_utc_day,
-                "change_7d": data[key].get("usd_7d_change"),
-            }
+        if key not in data:
+            continue
+        current = data[key].get("usd")
+        rolling_24h = data[key].get("usd_24h_change")
+        # Midnight-UTC anchor via Binance (no rate limit issues like CoinGecko had)
+        midnight_utc_price = _fetch_binance_midnight(binance_map[key]) if current is not None else None
+        change_utc_day = None
+        if current is not None and midnight_utc_price:
+            change_utc_day = ((current - midnight_utc_price) / midnight_utc_price) * 100
+        out[name] = {
+            "price": current,
+            "change_utc_day": change_utc_day,
+            "change_24h_rolling": rolling_24h,
+            "change_7d": data[key].get("usd_7d_change"),
+        }
     return out
 
 
@@ -215,13 +234,18 @@ def fetch_market_snapshot() -> str:
         lines.append("Crypto (% shown = since 00:00 UTC today, which is 8pm ET yesterday during EDT):")
         for name, data in crypto.items():
             price = data.get("price")
-            utc_day = data.get("change_utc_day")
-            c7d = data.get("change_7d")
             if price is None:
                 continue
-            day_str = f"{utc_day:+.2f}%" if utc_day is not None else "n/a"
-            c7d_str = f"{c7d:+.2f}%" if c7d is not None else "n/a"
-            lines.append(f"  {name}: ${price:,.0f} ({day_str} UTC-day, {c7d_str} 7d)")
+            utc_day = data.get("change_utc_day")
+            rolling_24h = data.get("change_24h_rolling")
+            # Prefer UTC-day anchor; fall back to 24h rolling only if midnight fetch failed
+            if utc_day is not None:
+                pct_str = f"{utc_day:+.2f}% UTC-day"
+            elif rolling_24h is not None:
+                pct_str = f"{rolling_24h:+.2f}% (rolling 24h — UTC-day unavailable)"
+            else:
+                pct_str = "% unavailable"
+            lines.append(f"  ${name}: ${price:,.0f} ({pct_str})")
         lines.append("")
 
     if not crypto and not traditional:

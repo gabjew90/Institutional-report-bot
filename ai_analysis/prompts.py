@@ -334,6 +334,10 @@ The research PDFs are the PRIMARY DRIVER of content across ALL sections. Live pr
 
 2. **Live market prices = RECAP section only.** Use the live market snapshot ONLY in section 1 (RECAP) to ground current levels and day-over-day moves. Do NOT sprinkle live prices through sections 2 or 3 — those should use whatever numbers the research itself quotes (and you can note those are "at time of writing" if needed).
 
+**TICKER RULE (strict):** Use the EXACT cashtag shown in the market snapshot. The snapshot uses ETF tickers: `$SPY` (not $SPX), `$QQQ` (not $NDX), `$VIXY` (not $VIX), `$BNO` (not Brent futures), `$USO` (not WTI futures), `$GLD`, `$TLT`, `$UUP`. Research PDFs commonly reference $SPX / $NDX / $VIX / Brent — ignore that; when referencing live prices in RECAP, use the snapshot's tickers. This overrides any training-data instinct to call it $SPX.
+
+**CRYPTO IS REQUIRED in RECAP:** Always include $BTC and $ETH (plus $SOL if it moved meaningfully) with prices + % from the market snapshot. This is a crypto-focused readership — don't drop the crypto paragraph even on a quiet day. If prices are flat, say so in one line.
+
 3. **News snapshot = RECAP section only, as supporting context.** Use news to explain WHY levels moved since the last pulse. Do not import news events into "What to Watch" — if analysts haven't written about it, it doesn't belong.
 
 4. **Earnings & Economic calendars = VERIFICATION ONLY, not a content source.** Use the calendars to:
