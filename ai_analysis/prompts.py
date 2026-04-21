@@ -620,20 +620,32 @@ AUDIT_SYSTEM = """You are auditing a draft Market Pulse against live market data
 
 **Your job focuses on four things:**
 
-1. **RECAP:** replace the `[LIVE PRICE RECAP]` placeholder (or any specific prices in RECAP) with the live market snapshot values. Include the actual prices, %s, and session labels. Always include $BTC + $ETH (and $SOL if moved meaningfully). Describe the session state correctly (e.g., "after Friday's close" on weekend, "heading into today's open" pre-market).
+1. **RECAP is PROSE, not a bullet list.** Rewrite it as 2-3 short paragraphs (target ~200 words total). Do NOT include a "Market Snapshot" bullet list or tickers-with-prices dump at the top. Weave the live data into the narrative.
 
-2. **Released events → RECAP:** the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block list events that happened today with actual values. Every one MUST be reflected in RECAP — actual vs estimate, beat/miss framing, market reaction. Never skip a released event.
+**Paragraph 1 — market action:** naturally integrate the key ticker moves into sentences. Minimum tickers to mention: **$SPY** (broad market), **$QQQ** (tech), **$VIXY** (vol), **$BTC** (crypto bellwether), **$GLD** (gold), and whichever of $USO/$BNO is relevant if oil moved. Only add other tickers ($ETH, $SOL, $TLT, $UUP) if they stand out or the research specifically calls them out. Example prose: *"$SPY closed at $704 (-0.65%), shrugging off a hot Retail Sales print as Iran tensions reasserted themselves. Oil led the reaction — $USO +5.7%, $BNO +5.5% — on reports Hormuz traffic is still halted. $VIXY climbed 1.8% as hedge demand returned. $BTC held $75,510 (-0.4% on the UTC day) in relative calm."*
 
-3. **Major news → RECAP:** any news headline from the last 6 hours that describes a market-moving event (ceasefire news, confirmation hearing outcome, major policy announcement, geopolitical deadline) MUST appear in RECAP, attributed ("per Reuters," "per CNBC").
+**Paragraph 2 — high-impact drivers:** what SPECIFICALLY happened today that moved markets. For each released event or major news item, give three things:
+- **What:** the specific data point / event / quote
+- **Takeaway:** hot vs cool, hawkish vs dovish, beat vs miss
+- **Impact:** how markets reacted or what it implies
 
-4. **Tickers:** verify all tickers match reality. The market snapshot uses ETF tickers ($SPY, $QQQ, $VIXY, $BNO, $USO, $GLD, $TLT, $UUP). If the draft wrote $SPX or $NDX when the price cited is from $SPY/$QQQ, fix it. If a price in INSIGHTS is specific and matches the snapshot — leave it. If it's from research with no live counterpart — leave it, optionally noting "at time of writing."
+Bad (vague): *"Investors digested Warsh's hearing where his balance sheet stance sparked debate."*
+Good (specific): *"Warsh's confirmation hearing (10:00 AM ET) centered on whether he'd support a larger Fed balance sheet as a tool — per CNBC, his signal that QE is back on the table if needed sent $TLT higher and weighed on the dollar. Markets read his testimony as net dovish."*
+
+2. **Released events MUST appear in RECAP:** every event in the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block MUST be reflected with actual vs estimate framing. Never skip a released event.
+
+3. **Major news MUST appear in RECAP:** any news headline from the last 6 hours that describes a market-moving event (ceasefire news, confirmation hearing outcome, major policy announcement, geopolitical deadline) MUST be cited in RECAP, attributed ("per Reuters," "per CNBC").
+
+4. **Tickers match reality:** the market snapshot uses ETF tickers ($SPY, $QQQ, $VIXY, $BNO, $USO, $GLD, $TLT, $UUP). If the draft wrote $SPX or $NDX when the price cited is from $SPY/$QQQ, fix it. If a price in INSIGHTS is from research with no live counterpart — leave it, optionally noting "at time of writing."
 
 **Things to fix if present:**
+- Bullet-list "Market Snapshot" at the top of RECAP → delete it and integrate prices into prose.
 - Specific prices in RECAP that don't match the snapshot → replace with snapshot values.
 - "Today's move" language when markets are closed (weekend/holiday) → rephrase as "Friday's close" / "heading into Monday".
 - Events in "WHAT TO WATCH → Today" that were actually already released (move to RECAP).
 - Events scheduled AFTER today placed in "Today" → move to "This Week".
-- Missing crypto in RECAP → add from snapshot.
+- Missing crypto in RECAP → add from snapshot ($BTC always, $ETH/$SOL if moving).
+- Vague references to released events → replace with What / Takeaway / Impact structure.
 
 **Things NOT to fix:**
 - INSIGHTS & ALPHA themes: leave them. Even if research is stale, the draft is the analyst's view.
