@@ -91,6 +91,39 @@ def _fetch_yahoo() -> dict:
     return out
 
 
+def _session_label(now_et: datetime) -> tuple[str, str]:
+    """Classify the current NYSE session.
+
+    Returns (short_code, explanatory_line) pair. short_code one of:
+    - 'PRE-MARKET', 'OPEN', 'AFTER-HOURS', 'WEEKEND-CLOSED'
+    """
+    # Weekend
+    if now_et.weekday() >= 5:  # Sat=5, Sun=6
+        return (
+            "WEEKEND-CLOSED",
+            "Markets CLOSED (weekend). % changes below reflect Friday's full session move (Fri close vs Thu close). "
+            "Do NOT describe these as 'today's' moves — nothing has traded since Friday 4pm ET."
+        )
+    # Weekday
+    hm = (now_et.hour, now_et.minute)
+    if hm < (9, 30):
+        return (
+            "PRE-MARKET",
+            "Markets PRE-OPEN (before 9:30 AM ET). % changes below reflect YESTERDAY'S full session "
+            "(yesterday's close vs day-before's close). Do NOT describe these as 'today's moves' — today's "
+            "regular session hasn't started. Phrase as 'heading into today's open' or 'yesterday's close left SPX up X%'."
+        )
+    if hm < (16, 0):
+        return (
+            "OPEN",
+            "Markets currently OPEN (regular session). % changes reflect today's session-to-date move from yesterday's close."
+        )
+    return (
+        "AFTER-HOURS",
+        "Markets CLOSED — after-hours (post 4 PM ET). % changes reflect today's full regular session (final)."
+    )
+
+
 def fetch_market_snapshot() -> str:
     """Return a human-readable snapshot of current market levels for the prompt."""
     import pytz
@@ -100,17 +133,26 @@ def fetch_market_snapshot() -> str:
     et = pytz.timezone("America/New_York")
     now_et = datetime.utcnow().replace(tzinfo=pytz.UTC).astimezone(et)
     ts = now_et.strftime("%Y-%m-%d %H:%M %Z")
-    lines = [f"CURRENT MARKET DATA (as of {ts}):", ""]
+    session_code, session_note = _session_label(now_et)
+    lines = [f"CURRENT MARKET DATA (as of {ts}, session: {session_code}):", session_note, ""]
+
+    # Label the % column based on session so Gemini doesn't call it "today's" when it isn't
+    pct_label = {
+        "OPEN": "session-to-date",
+        "AFTER-HOURS": "today's session",
+        "PRE-MARKET": "yesterday's session",
+        "WEEKEND-CLOSED": "Friday's session",
+    }.get(session_code, "last session")
 
     if traditional:
-        lines.append("Traditional markets:")
+        lines.append(f"Traditional markets (% shown = {pct_label}):")
         for name, data in traditional.items():
             price = data.get("price")
             pct = data.get("change_pct")
             if price is None:
                 continue
             pct_str = f"{pct:+.2f}%" if pct is not None else "n/a"
-            lines.append(f"  {name}: {price:,.2f} ({pct_str} today)")
+            lines.append(f"  {name}: {price:,.2f} ({pct_str} {pct_label})")
         lines.append("")
 
     if crypto:
