@@ -145,7 +145,9 @@ Rules:
 
 **For entities_mentioned** (used downstream to render cashtags on Twitter/X):
 - List every company, crypto asset, and named index the report discusses meaningfully. Skip passing mentions.
-- Use the primary US listing where applicable (ASML → ASML, TSMC → TSM, Nestle → NSRGY).
+- **US-listed only for the `ticker` field.** Use the primary US listing or a US-listed ADR where one exists (ASML → ASML, TSMC → TSM, Nestle → NSRGY, Shell → SHEL, BP → BP, Novartis → NVS, SAP → SAP).
+- **If a company has no liquid US listing or ADR, leave `ticker` empty** — do NOT use the foreign exchange symbol. Example: Centrica (LSE: CNA) has no US listing, so `ticker` must be empty — otherwise downstream will cashtag it `$CNA` which on Twitter/X resolves to CNA Financial Corp (an unrelated US insurance company).
+- Other common collisions to keep blank if they're the foreign name: BA (British Airways/IAG parent vs Boeing), BT (BT Group vs unrelated), CCL (Carnival UK vs US), RR (Rolls-Royce UK vs unrelated), TSCO (Tesco UK vs Tractor Supply US), III (3i Group UK vs Information Services Group), IMB (Imperial Brands UK vs Intermap). If in doubt, leave blank.
 - Leave ticker empty if you're uncertain — DON'T guess. An empty ticker is better than a wrong one.
 - Crypto: BTC, ETH, SOL, etc. No $ prefix in the `ticker` field — just the symbol.
 - Indices: use standard root (S&P 500 → SPX, Nasdaq 100 → NDX, VIX → VIX).
@@ -656,6 +658,8 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 3. **Major news MUST appear in RECAP:** any news headline from the last 6 hours that describes a market-moving event (ceasefire news, confirmation hearing outcome, major policy announcement, geopolitical deadline) MUST be cited in RECAP, attributed ("per Reuters," "per CNBC").
 
 4. **Tickers match reality:** the market snapshot uses ETF tickers ($SPY, $QQQ, $VIXY, $BNO, $USO, $GLD, $TLT, $UUP). If the draft wrote $SPX or $NDX when the price cited is from $SPY/$QQQ, fix it. If a price in INSIGHTS is from research with no live counterpart — leave it, optionally noting "at time of writing."
+
+**Foreign-listed cashtag safety check:** cashtags on Twitter/X resolve to US-listed tickers. Scan every `$XYZ` in the draft. If the draft cashtags a non-US company using its foreign exchange symbol, STRIP the cashtag and use the company name. Common collisions: **$CNA** (UK Centrica vs US CNA Financial insurance), **$BA** (UK BAE/IAG vs US Boeing), **$BT** (UK BT Group), **$TSCO** (UK Tesco vs US Tractor Supply), **$RR** (UK Rolls-Royce), **$III** (UK 3i Group), **$IMB** (UK Imperial Brands), **$CCL** (UK Carnival vs US Carnival share class collision). When unsure whether a cashtag resolves to the intended company on US exchanges, drop the `$` and use the name. Example fix: "Long Buy-rated European utilities (e.g., $CNA)" → "Long Buy-rated European utilities (e.g., Centrica)".
 
 5. **INSIGHTS quality + short-term trade framing.** Before finalizing, do two passes on INSIGHTS & ALPHA:
 
