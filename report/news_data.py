@@ -12,9 +12,26 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
 
+import pytz
+
 from config import settings
 
 log = logging.getLogger(__name__)
+
+_ET = pytz.timezone("America/New_York")
+
+
+def _utc_to_et(utc_iso: str) -> str:
+    """Convert a UTC ISO string 'YYYY-MM-DD HH:MM' (space or T) to ET display."""
+    if not utc_iso:
+        return ""
+    try:
+        # Accept either space or T separator, strip tz suffix if present
+        clean = utc_iso.replace("T", " ")[:16]
+        dt = datetime.strptime(clean, "%Y-%m-%d %H:%M").replace(tzinfo=pytz.UTC)
+        return dt.astimezone(_ET).strftime("%Y-%m-%d %H:%M %Z")
+    except (ValueError, TypeError):
+        return utc_iso
 
 # Earnings calendar ticker whitelist — only names that reliably move markets.
 # Kept small so the calendar block doesn't tempt Gemini to list filler earnings.
@@ -66,7 +83,8 @@ def fetch_news_snapshot(since_hours: int = 48, limit: int = 15) -> str:
 
     lines = [f"LIVE MARKET NEWS (last {since_hours}h from Finnhub, newest first):"]
     for n in fresh:
-        ts = datetime.utcfromtimestamp(n.get("datetime", 0)).strftime("%Y-%m-%d %H:%M UTC")
+        ts_utc = datetime.utcfromtimestamp(n.get("datetime", 0))
+        ts = ts_utc.replace(tzinfo=pytz.UTC).astimezone(_ET).strftime("%Y-%m-%d %H:%M %Z")
         headline = n.get("headline", "").strip()
         source = n.get("source", "").strip()
         summary = (n.get("summary") or "").strip()[:200]
@@ -230,7 +248,7 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
     for e in filtered[:40]:
         country = e.get("country", "")
         event = e.get("event", "").strip()
-        time = e.get("time", "")[:16].replace("T", " ")
+        time = _utc_to_et(e.get("time", ""))
         impact = (e.get("impact") or "").lower()
         estimate = e.get("estimate")
         prev = e.get("prev")
@@ -246,7 +264,7 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
             except (ValueError, TypeError):
                 pass
 
-        bits = [f"{time} UTC", f"[{country}]", event, f"impact={impact}"]
+        bits = [time, f"[{country}]", event, f"impact={impact}"]
         if actual is not None:
             bits.append(f"ACTUAL={actual}{unit}")
         if estimate is not None:

@@ -27,6 +27,19 @@ def _get_client() -> genai.Client:
     return genai.Client(api_key=settings.google_api_key)
 
 
+def _fmt_et(utc_iso: str) -> str:
+    """Convert a UTC ISO timestamp to ET display like '2026-04-18 09:00 EDT'."""
+    if not utc_iso:
+        return ""
+    try:
+        import pytz
+        clean = utc_iso.replace("T", " ")[:19]
+        dt = datetime.fromisoformat(clean).replace(tzinfo=pytz.UTC)
+        return dt.astimezone(pytz.timezone("America/New_York")).strftime("%Y-%m-%d %H:%M %Z")
+    except (ValueError, TypeError):
+        return utc_iso[:16].replace("T", " ")
+
+
 def _build_ticker_map(analyses: list[PdfAnalysis]) -> dict[str, dict]:
     """Aggregate entities_mentioned across all PDFs into a dedup ticker map.
 
@@ -224,7 +237,7 @@ async def synthesize_daily_pulse(
                     section_heads = re.findall(r"^##+\s*([^\n]+)", md, re.MULTILINE)
                     themes_list = [t.strip() for t in theme_headers if t.strip()][:12]
                     prev_context = (
-                        f"PREVIOUS PULSE SUMMARY (from {prev['created_at'][:16].replace('T', ' ')} UTC, "
+                        f"PREVIOUS PULSE SUMMARY (from {_fmt_et(prev['created_at'])} UTC, "
                         f"~{int(age.total_seconds() / 3600)}h ago, {prev['pdf_count']} reports):\n\n"
                         f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM — these are the exact headlines the reader saw yesterday):\n"
                         + "\n".join(f"  - {t}" for t in themes_list)

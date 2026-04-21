@@ -276,6 +276,9 @@ Always close a technical point with the "so what" — how does this affect what 
 
 DAILY_SYNTHESIS_USER = """TODAY IS {today}. CURRENT TIME IS {now}.
 
+**ALL TIMES IN YOUR OUTPUT MUST BE US EASTERN (ET).** Never write UTC, GMT, or any other zone in the final pulse. All times in the data blocks below (market snapshot, news, calendars, previous pulse) are already in ET — use them as-is. If you encounter a time without a zone label, assume ET. Example formats: "8:30 AM ET", "AMC", "BMO", "Monday April 21 at 2:00 PM ET".
+
+
 **Use the day-of-week ({today}) actively:** if research refers to "Tuesday BMO earnings" and today is Tuesday, those earnings are TODAY, not "this week." The `[TODAY-BMO]` / `[TODAY-AMC]` tags in the earnings calendar also indicate this.
 
 **Already-released events go in RECAP, not WHAT TO WATCH.** If the economic calendar shows `[RELEASED]` with an ACTUAL value, or the earnings calendar shows `[REPORTED]` / `[REPORTED-BMO-today]`, the event has happened — put the result in RECAP section and do NOT list it as "upcoming today." Same for any event whose scheduled time is before current time ({now}).

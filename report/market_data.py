@@ -93,10 +93,13 @@ def _fetch_yahoo() -> dict:
 
 def fetch_market_snapshot() -> str:
     """Return a human-readable snapshot of current market levels for the prompt."""
+    import pytz
     crypto = _fetch_crypto()
     traditional = _fetch_yahoo()
 
-    ts = datetime.utcnow().isoformat(timespec="minutes") + "Z"
+    et = pytz.timezone("America/New_York")
+    now_et = datetime.utcnow().replace(tzinfo=pytz.UTC).astimezone(et)
+    ts = now_et.strftime("%Y-%m-%d %H:%M %Z")
     lines = [f"CURRENT MARKET DATA (as of {ts}):", ""]
 
     if traditional:
