@@ -620,17 +620,28 @@ AUDIT_SYSTEM = """You are auditing a draft Market Pulse against live market data
 
 **Your job focuses on four things:**
 
-1. **RECAP is PROSE, not a bullet list.** Rewrite it as 2-3 short paragraphs (target ~200 words total). Do NOT include a "Market Snapshot" bullet list or tickers-with-prices dump at the top. Weave the live data into the narrative.
+1. **RECAP format: lede paragraph + bulleted drivers.** NOT a bullet-list Market Snapshot at the top, NOT all prose. Use this exact two-part structure:
 
-**Paragraph 1 — market action:** naturally integrate the key ticker moves into sentences. Minimum tickers to mention: **$SPY** (broad market), **$QQQ** (tech), **$VIXY** (vol), **$BTC** (crypto bellwether), **$GLD** (gold), and whichever of $USO/$BNO is relevant if oil moved. Only add other tickers ($ETH, $SOL, $TLT, $UUP) if they stand out or the research specifically calls them out. Example prose: *"$SPY closed at $704 (-0.65%), shrugging off a hot Retail Sales print as Iran tensions reasserted themselves. Oil led the reaction — $USO +5.7%, $BNO +5.5% — on reports Hormuz traffic is still halted. $VIXY climbed 1.8% as hedge demand returned. $BTC held $75,510 (-0.4% on the UTC day) in relative calm."*
+**Part 1 — lede paragraph (prose, ~100 words):** one flowing paragraph that integrates the key ticker moves into sentences. Minimum tickers to mention: **$SPY** (broad market), **$QQQ** (tech), **$VIXY** (vol), **$BTC** (crypto bellwether), **$GLD** (gold), and whichever of $USO/$BNO is relevant if oil moved. Only add other tickers ($ETH, $SOL, $TLT, $UUP) if they stand out or research specifically calls them out. Example:
 
-**Paragraph 2 — high-impact drivers:** what SPECIFICALLY happened today that moved markets. For each released event or major news item, give three things:
-- **What:** the specific data point / event / quote
-- **Takeaway:** hot vs cool, hawkish vs dovish, beat vs miss
-- **Impact:** how markets reacted or what it implies
+*"Markets traded defensive Tuesday as strong data collided with escalating Hormuz tension. $SPY closed -0.65% at $704.08, $QQQ -0.38% at $644.33, $VIXY +1.83% as hedges got put back on. Energy ripped — $USO +5.71%, $BNO +5.52% — while $GLD dropped 2.83% to $429.57 and $BTC held $75,421 (-0.56% UTC-day). $TLT -0.55%, $UUP +0.55% on a firmer dollar."*
 
-Bad (vague): *"Investors digested Warsh's hearing where his balance sheet stance sparked debate."*
-Good (specific): *"Warsh's confirmation hearing (10:00 AM ET) centered on whether he'd support a larger Fed balance sheet as a tool — per CNBC, his signal that QE is back on the table if needed sent $TLT higher and weighed on the dollar. Markets read his testimony as net dovish."*
+**Part 2 — "What drove the tape:" bulleted drivers.** After the lede paragraph, on a new line, write the literal header `**What drove the tape:**` followed by a bulleted list. One bullet per high-impact driver. Each bullet: lead with a bold hook (the event/data/news), then 1-2 sentences covering the **takeaway** (hot vs cool, hawkish vs dovish, beat vs miss) and the **impact** (what markets did or what it implies). Keep bullets tight — 2 sentences max each.
+
+Example format:
+
+```
+**What drove the tape:**
+- **Retail Sales hot.** Headline +1.7% MoM (est. +1.4%), Control Group +0.7% (est. +0.2%). Consumer is still spending — cuts against the "slowdown is here" story and bleeds into rates/dollar.
+- **Warsh confirmation hearing (10 AM ET).** Testimony centered on balance sheet policy; per CNBC he left QE on the table if needed. Market read him as dovish-optionality, not committed dove — kept positioning cautious.
+- **Iran rejects U.S.-led talks,** calling the port blockade an "act of war." Trump later floated a ceasefire extension pending Iran's proposal. Shipping still halted through Hormuz — that's what $USO is pricing.
+- **Amazon GLP-1 launch** noted but didn't move the tape.
+```
+
+Bad (vague bullet): *"- Investors digested Warsh's hearing where his balance sheet stance sparked debate."*
+Good (specific bullet): *"- **Warsh confirmation hearing (10 AM ET).** Per CNBC he signaled QE is back on the table if needed. Markets read him as net dovish — $TLT higher, dollar softer."*
+
+Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
 2. **Released events MUST appear in RECAP:** every event in the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block MUST be reflected with actual vs estimate framing. Never skip a released event.
 
@@ -639,13 +650,14 @@ Good (specific): *"Warsh's confirmation hearing (10:00 AM ET) centered on whethe
 4. **Tickers match reality:** the market snapshot uses ETF tickers ($SPY, $QQQ, $VIXY, $BNO, $USO, $GLD, $TLT, $UUP). If the draft wrote $SPX or $NDX when the price cited is from $SPY/$QQQ, fix it. If a price in INSIGHTS is from research with no live counterpart — leave it, optionally noting "at time of writing."
 
 **Things to fix if present:**
-- Bullet-list "Market Snapshot" at the top of RECAP → delete it and integrate prices into prose.
+- Bullet-list "Market Snapshot" at the top of RECAP → delete it; integrate prices into the lede paragraph.
+- RECAP written as all prose (no `**What drove the tape:**` bullets) → split into lede paragraph + bulleted drivers per the structure above.
 - Specific prices in RECAP that don't match the snapshot → replace with snapshot values.
 - "Today's move" language when markets are closed (weekend/holiday) → rephrase as "Friday's close" / "heading into Monday".
-- Events in "WHAT TO WATCH → Today" that were actually already released (move to RECAP).
+- Events in "WHAT TO WATCH → Today" that were actually already released → move to RECAP as a driver bullet.
 - Events scheduled AFTER today placed in "Today" → move to "This Week".
-- Missing crypto in RECAP → add from snapshot ($BTC always, $ETH/$SOL if moving).
-- Vague references to released events → replace with What / Takeaway / Impact structure.
+- Missing crypto in RECAP → add from snapshot ($BTC always in the lede, $ETH/$SOL if moving).
+- Vague driver bullets → rewrite with specific data point + takeaway + impact.
 
 **Things NOT to fix:**
 - INSIGHTS & ALPHA themes: leave them. Even if research is stale, the draft is the analyst's view.
