@@ -78,6 +78,21 @@ def _fetch_crypto_midnight_utc(coin_id: str) -> float | None:
     return best
 
 
+def _fetch_binance_24h(symbol: str) -> dict | None:
+    """Fallback when CoinGecko is rate-limited — get current + 24h change from Binance.US."""
+    url = f"https://api.binance.us/api/v3/ticker/24hr?symbol={symbol}"
+    data = _fetch_json(url)
+    if not data or not isinstance(data, dict):
+        return None
+    try:
+        return {
+            "price": float(data.get("lastPrice")),
+            "change_24h_rolling": float(data.get("priceChangePercent")),
+        }
+    except (ValueError, TypeError):
+        return None
+
+
 def _fetch_binance_midnight(symbol: str) -> float | None:
     """Get today's 00:00 UTC open price via Binance klines (no auth, generous limits).
 
@@ -97,26 +112,37 @@ def _fetch_binance_midnight(symbol: str) -> float | None:
 
 
 def _fetch_crypto() -> dict:
-    data = _fetch_json(_COINGECKO_URL)
-    if not data:
-        return {}
+    """Fetch crypto prices with CoinGecko primary + Binance.US fallback."""
+    cg_data = _fetch_json(_COINGECKO_URL)
     binance_map = {"bitcoin": "BTCUSDT", "ethereum": "ETHUSDT", "solana": "SOLUSDT"}
     out = {}
     for key, name in [("bitcoin", "BTC"), ("ethereum", "ETH"), ("solana", "SOL")]:
-        if key not in data:
+        current = None
+        rolling_24h = None
+        change_7d = None
+        # Primary: CoinGecko
+        if cg_data and key in cg_data:
+            current = cg_data[key].get("usd")
+            rolling_24h = cg_data[key].get("usd_24h_change")
+            change_7d = cg_data[key].get("usd_7d_change")
+        # Fallback: Binance.US if CoinGecko didn't return this coin (rate limit, etc.)
+        if current is None:
+            b = _fetch_binance_24h(binance_map[key])
+            if b:
+                current = b["price"]
+                rolling_24h = b["change_24h_rolling"]
+        if current is None:
             continue
-        current = data[key].get("usd")
-        rolling_24h = data[key].get("usd_24h_change")
-        # Midnight-UTC anchor via Binance (no rate limit issues like CoinGecko had)
-        midnight_utc_price = _fetch_binance_midnight(binance_map[key]) if current is not None else None
+        # Midnight-UTC anchor via Binance (always works from Railway)
+        midnight_utc_price = _fetch_binance_midnight(binance_map[key])
         change_utc_day = None
-        if current is not None and midnight_utc_price:
+        if midnight_utc_price:
             change_utc_day = ((current - midnight_utc_price) / midnight_utc_price) * 100
         out[name] = {
             "price": current,
             "change_utc_day": change_utc_day,
             "change_24h_rolling": rolling_24h,
-            "change_7d": data[key].get("usd_7d_change"),
+            "change_7d": change_7d,
         }
     return out
 

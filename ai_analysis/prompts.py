@@ -338,6 +338,17 @@ The research PDFs are the PRIMARY DRIVER of content across ALL sections. Live pr
 
 **CRYPTO IS REQUIRED in RECAP:** Always include $BTC and $ETH (plus $SOL if it moved meaningfully) with prices + % from the market snapshot. This is a crypto-focused readership — don't drop the crypto paragraph even on a quiet day. If prices are flat, say so in one line.
 
+**RELEASED EVENTS + MAJOR NEWS ARE REQUIRED in RECAP:**
+- Every event in the economic calendar's "ALREADY RELEASED" block MUST be reflected in RECAP with its ACTUAL value and beat/miss framing. You cannot skip Retail Sales or a Fed hearing that already happened today.
+- Every earnings event in "ALREADY REPORTED" block (if it's MAG7 or a major bank) MUST appear in RECAP with actuals + market reaction.
+- Any news headline from the last 6 hours that describes a market-moving event (central bank hearing outcome, geopolitical deadline crossed, major policy announcement, ceasefire extension/rejection) MUST appear in RECAP, attributed to the news source.
+- If the data block shows 3 released events but you mention only 1, you've failed.
+
+**PRICE SOURCE — ABSOLUTE RULE:**
+- Every price you cite in RECAP must match the market snapshot block verbatim. If the snapshot says $BTC $75,508, you MUST write $75,508, not $76,433 from a research PDF.
+- Before writing any price, scan the market snapshot above to confirm it's the value shown there.
+- If the market snapshot is unavailable for a ticker ("rate limit") — DO NOT invent or borrow from research. Describe the asset qualitatively ("$BTC trading near recent levels") without a specific number.
+
 3. **News snapshot = RECAP section only, as supporting context.** Use news to explain WHY levels moved since the last pulse. Do not import news events into "What to Watch" — if analysts haven't written about it, it doesn't belong.
 
 4. **Earnings & Economic calendars = VERIFICATION ONLY, not a content source.** Use the calendars to:
