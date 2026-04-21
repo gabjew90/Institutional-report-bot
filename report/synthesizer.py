@@ -11,6 +11,8 @@ from google.genai import types
 from ai_analysis.models import PdfAnalysis
 from ai_analysis.prompts import (
     DAILY_SYNTHESIS_SYSTEM, DAILY_SYNTHESIS_USER,
+    DRAFT_SYSTEM, DRAFT_USER,
+    AUDIT_SYSTEM, AUDIT_USER,
 )
 from report.market_data import fetch_market_snapshot
 from report.news_data import (
@@ -136,14 +138,23 @@ async def synthesize_daily_pulse(
     analyses: list[PdfAnalysis],
     use_prev_context: bool = True,
 ) -> DailyReport:
-    """Generate the Daily Market Pulse from all today's analyses.
+    """Generate the Daily Market Pulse via a two-stage pipeline.
+
+    Stage 1 (DRAFT): synthesize narrative from research PDFs only — no live
+    data. Focuses on INSIGHTS & ALPHA depth and WHAT TO WATCH research-backed
+    events. RECAP left as `[LIVE PRICE RECAP]` placeholder.
+
+    Stage 2 (AUDIT): review the draft against live market snapshot, news,
+    economic calendar (RELEASED events), earnings calendar, and current time.
+    Rewrite RECAP with live prices + released data + news. Fix tickers, timing,
+    session framing. Preserve INSIGHTS & ALPHA and WHAT TO WATCH analytical
+    content.
 
     Args:
         analyses: per-PDF analyses to synthesize.
-        use_prev_context: if True (default), include the last scheduled pulse's
-            markdown as context for diff-vs-yesterday framing. Set False for
-            standalone manual pulses that should not be biased by prior pulse
-            structure.
+        use_prev_context: if True, include the last scheduled pulse's theme
+            headers as a "don't repeat" directive in Stage 1. Currently False
+            for both scheduled and manual pulses (independence preferred).
     """
     import pytz
     from config import settings as _settings
@@ -260,36 +271,69 @@ async def synthesize_daily_pulse(
     if market_status_note:
         market_snapshot = market_snapshot + market_status_note
 
-    user_prompt = DAILY_SYNTHESIS_USER.format(
+    # ==========================================================
+    # STAGE 1: DRAFT from research only (no live data)
+    # ==========================================================
+    draft_prompt = DRAFT_USER.format(
         pdf_count=len(analyses),
         today=today_label,
         now=now_label,
-        market_snapshot=market_snapshot,
-        news_snapshot=news_snapshot,
-        earnings_calendar=earnings_calendar,
-        economic_calendar=economic_calendar,
         ticker_block=ticker_block,
         prev_pulse=prev_context,
         analyses_json=analyses_json,
     )
-
-    response = await client.aio.models.generate_content(
+    draft_response = await client.aio.models.generate_content(
         model=settings.gemini_model,
-        contents=user_prompt,
+        contents=draft_prompt,
         config=types.GenerateContentConfig(
-            system_instruction=DAILY_SYNTHESIS_SYSTEM,
+            system_instruction=DRAFT_SYSTEM,
             max_output_tokens=8192,
-            temperature=0.3,
+            temperature=0.4,  # slightly higher for creative narrative
         ),
     )
+    draft_markdown = draft_response.text
+    stage1_in = draft_response.usage_metadata.prompt_token_count or 0
+    stage1_out = draft_response.usage_metadata.candidates_token_count or 0
+    log.info(f"Stage 1 (draft): {stage1_in} in / {stage1_out} out")
 
-    markdown = response.text
-    input_tokens = response.usage_metadata.prompt_token_count or 0
-    output_tokens = response.usage_metadata.candidates_token_count or 0
+    # ==========================================================
+    # STAGE 2: AUDIT against live data — rewrite RECAP + verify facts
+    # ==========================================================
+    # Derive a short session_status label for the audit prompt
+    session_status = "closed (weekend)" if is_weekend else (
+        "market hours — intraday" if "9:30" <= now_label[:5] < "16:00"
+        else "pre-market or after-hours"
+    )
+    audit_prompt = AUDIT_USER.format(
+        today=today_label,
+        now=now_label,
+        session_status=session_status,
+        market_snapshot=market_snapshot,
+        news_snapshot=news_snapshot,
+        earnings_calendar=earnings_calendar,
+        economic_calendar=economic_calendar,
+        draft_markdown=draft_markdown,
+    )
+    audit_response = await client.aio.models.generate_content(
+        model=settings.gemini_model,
+        contents=audit_prompt,
+        config=types.GenerateContentConfig(
+            system_instruction=AUDIT_SYSTEM,
+            max_output_tokens=8192,
+            temperature=0.2,  # lower temp for factual correction
+        ),
+    )
+    markdown = audit_response.text
+    stage2_in = audit_response.usage_metadata.prompt_token_count or 0
+    stage2_out = audit_response.usage_metadata.candidates_token_count or 0
+    log.info(f"Stage 2 (audit): {stage2_in} in / {stage2_out} out")
+
+    input_tokens = stage1_in + stage2_in
+    output_tokens = stage1_out + stage2_out
 
     log.info(
-        f"Daily pulse synthesized: {len(analyses)} PDFs, "
-        f"{input_tokens} in / {output_tokens} out"
+        f"Daily pulse synthesized (two-stage): {len(analyses)} PDFs, "
+        f"{input_tokens} in / {output_tokens} out total"
     )
 
     return DailyReport(
