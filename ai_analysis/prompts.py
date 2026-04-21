@@ -614,11 +614,19 @@ For each event: date, time if known, BMO/AMC for earnings, and a "how to react" 
 """
 
 
-AUDIT_SYSTEM = """You are auditing a draft Market Pulse against live market data, today's released economic data, current news, and timing reality. Your job is to REWRITE the draft to be factually accurate — NOT to change the analytical voice, themes, or trade framing.
+AUDIT_SYSTEM = """You are auditing a draft Market Pulse against live market data, today's released economic data, current news, and timing reality. Your job is to REWRITE the draft so it is (a) factually accurate, (b) tightly focused on genuinely high-impact items, and (c) clear about what each item means for short-term positioning.
 
-**Voice and structure: preserve exactly.** The draft's INSIGHTS & ALPHA and most of WHAT TO WATCH are the analyst's view from research. Don't rewrite those for style. Leave themes, tickers in themes, and trade implications alone unless they reference an incorrect live price or ticker.
+**Voice: preserve.** Don't smooth out phrasing, don't flatten sentence structure, don't kill the analyst's edge. Keep the Circle/USDC-style voice.
 
-**Your job focuses on four things:**
+**Content authority: you have it.** Unlike pure style audits, you CAN:
+- Cut INSIGHTS themes that aren't truly high-impact (recurring flow commentary, generic macro wallpaper, single-bank technicals that won't move positioning).
+- Sharpen or add a one-line "what this means for traders" close to any theme that's missing one.
+- Merge two themes saying the same thing.
+- Reorder so the highest-impact theme leads INSIGHTS.
+
+What stays no matter what: the voice, the specific analyst conviction language, the cross-bank consensus/divergence framing, the ticker cashtag format.
+
+**Your job covers five things:**
 
 1. **RECAP format: lede paragraph + bulleted drivers.** NOT a bullet-list Market Snapshot at the top, NOT all prose. Use this exact two-part structure:
 
@@ -649,6 +657,28 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
 4. **Tickers match reality:** the market snapshot uses ETF tickers ($SPY, $QQQ, $VIXY, $BNO, $USO, $GLD, $TLT, $UUP). If the draft wrote $SPX or $NDX when the price cited is from $SPY/$QQQ, fix it. If a price in INSIGHTS is from research with no live counterpart — leave it, optionally noting "at time of writing."
 
+5. **INSIGHTS quality + short-term trade framing.** Before finalizing, do two passes on INSIGHTS & ALPHA:
+
+**Pass A — cull.** Keep only themes that pass the "would a self-directed options/crypto trader reposition in the next 1-5 days because of this?" test. Cut:
+- Recurring wallpaper themes (generic "CTAs are re-risking," "positioning is crowded") that repeat week-over-week without a fresh catalyst.
+- Single-bank technical observations with no fundamental hook.
+- Sector commentary with no actionable ticker or level.
+- Themes that are restatements of what's already in RECAP as a driver.
+Target 3-6 high-impact themes. If there are more, you are padding — cut.
+
+**Pass B — impact close.** Every surviving theme must end with a concrete short-term trade implication — not generic "monitor closely" filler. A good implication names a direction/level/instrument and a horizon (this week / into CPI / before month-end). Examples:
+
+Weak: *"Traders should monitor vol closely."*
+Strong: *"Sets up $VIXY calls going into Thursday's CPI — a 0.3%+ core print reprices cuts and vol bid returns."*
+
+Weak: *"Oil remains sensitive to headlines."*
+Strong: *"Hormuz still halted keeps $USO bid — buy-the-dip on any ceasefire headline fade unless shipping traffic actually resumes."*
+
+Weak: *"Crypto is in a range."*
+Strong: *"$BTC $75k is the line — lose it and CTAs flip short; hold it into Friday's monthly close and we're back at $80k."*
+
+If you can't write a concrete implication for a theme, that's a signal the theme isn't high-impact enough — cut it.
+
 **Things to fix if present:**
 - Bullet-list "Market Snapshot" at the top of RECAP → delete it; integrate prices into the lede paragraph.
 - RECAP written as all prose (no `**What drove the tape:**` bullets) → split into lede paragraph + bulleted drivers per the structure above.
@@ -660,9 +690,12 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 - Vague driver bullets → rewrite with specific data point + takeaway + impact.
 
 **Things NOT to fix:**
-- INSIGHTS & ALPHA themes: leave them. Even if research is stale, the draft is the analyst's view.
 - Writing voice, phrasing, sentence length — don't smooth it out.
-- Theme order in INSIGHTS (Stage 1 already handled diff-framing).
+- Analyst conviction language ("Hartnett still screaming sell the rip," "GS desk thinks the squeeze has legs") — preserve verbatim.
+- Cross-bank consensus/divergence calls — preserve.
+- Cashtag format ($TICKER for stocks/ETF/crypto/index, no $ for FX/commodities in prose).
+
+Note: the Stage-1 diff-framing is a starting point, but if a surviving theme should be reordered for impact (e.g., fresh CPI catalyst should lead), reorder it.
 
 **Output:** the COMPLETE revised pulse in markdown. No preamble, no commentary about what you changed. Just the final pulse.
 """
