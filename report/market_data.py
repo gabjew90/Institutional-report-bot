@@ -46,16 +46,56 @@ def _fetch_json(url: str, timeout: float = 5.0) -> dict | None:
         return None
 
 
+def _fetch_crypto_midnight_utc(coin_id: str) -> float | None:
+    """Get the coin price at most-recent 00:00 UTC via CoinGecko market_chart.
+
+    Returns the single price point closest to (but <=) today's 00:00 UTC in USD.
+    """
+    # Pull last 2 days of hourly data; find the point nearest 00:00 UTC today.
+    url = (
+        f"https://api.coingecko.com/api/v3/coins/{coin_id}/market_chart"
+        f"?vs_currency=usd&days=2"
+    )
+    data = _fetch_json(url)
+    if not data:
+        return None
+    prices = data.get("prices") or []  # list of [timestamp_ms, price_usd]
+    if not prices:
+        return None
+    from datetime import datetime, timezone
+    today_midnight_utc_ms = int(
+        datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).timestamp() * 1000
+    )
+    # Find the closest-to-but-not-after-midnight-UTC price
+    best = None
+    best_diff = float("inf")
+    for ts_ms, price in prices:
+        diff = today_midnight_utc_ms - ts_ms
+        if 0 <= diff < best_diff:
+            best_diff = diff
+            best = price
+    return best
+
+
 def _fetch_crypto() -> dict:
+    import time
     data = _fetch_json(_COINGECKO_URL)
     if not data:
         return {}
     out = {}
     for key, name in [("bitcoin", "BTC"), ("ethereum", "ETH"), ("solana", "SOL")]:
         if key in data:
+            current = data[key].get("usd")
+            # Small delay between market_chart calls to stay under CoinGecko free-tier RPM
+            time.sleep(0.7)
+            midnight_utc_price = _fetch_crypto_midnight_utc(key) if current is not None else None
+            # Day-to-date change anchored at 00:00 UTC today (= 8pm ET yesterday during EDT)
+            change_utc_day = None
+            if current is not None and midnight_utc_price:
+                change_utc_day = ((current - midnight_utc_price) / midnight_utc_price) * 100
             out[name] = {
-                "price": data[key].get("usd"),
-                "change_24h": data[key].get("usd_24h_change"),
+                "price": current,
+                "change_utc_day": change_utc_day,
                 "change_7d": data[key].get("usd_7d_change"),
             }
     return out
@@ -97,31 +137,39 @@ def _session_label(now_et: datetime) -> tuple[str, str]:
     Returns (short_code, explanatory_line) pair. short_code one of:
     - 'PRE-MARKET', 'OPEN', 'AFTER-HOURS', 'WEEKEND-CLOSED'
     """
+    # NOTE: the session label applies to US equities/bonds/futures. Crypto trades
+    # 24/7/365, so crypto % is ALWAYS a live current-day move regardless of session.
+    WEEKEND_NOTE = (
+        "Markets CLOSED (weekend). Traditional markets (stocks/bonds/oil/gold/DXY) "
+        "haven't traded since Friday 4pm ET — the % changes below reflect Friday's full session. "
+        "Do NOT describe traditional-market % as 'today's' moves. "
+        "Crypto trades 24/7 and its % IS a live current-day move — describe crypto as 'today's' normally."
+    )
+    PRE_MARKET_NOTE = (
+        "Markets PRE-OPEN (before 9:30 AM ET). Traditional markets haven't traded today yet — "
+        "the % changes reflect YESTERDAY'S full session. Do NOT describe traditional-market % as 'today's moves'. "
+        "Phrase as 'heading into today's open' or 'yesterday's close left SPX up X%'. "
+        "Crypto trades 24/7 and its % IS a live current-day move — describe crypto as 'today's' normally."
+    )
+    OPEN_NOTE = (
+        "Markets currently OPEN (regular session). Traditional-market % reflects today's session-to-date move "
+        "from yesterday's close. Crypto % reflects today's move since 00:00 UTC."
+    )
+    AFTER_HOURS_NOTE = (
+        "Markets CLOSED — after-hours (post 4 PM ET). Traditional-market % reflects today's full regular session (final). "
+        "Crypto trades 24/7 — its % reflects today's move since 00:00 UTC."
+    )
+
     # Weekend
     if now_et.weekday() >= 5:  # Sat=5, Sun=6
-        return (
-            "WEEKEND-CLOSED",
-            "Markets CLOSED (weekend). % changes below reflect Friday's full session move (Fri close vs Thu close). "
-            "Do NOT describe these as 'today's' moves — nothing has traded since Friday 4pm ET."
-        )
+        return ("WEEKEND-CLOSED", WEEKEND_NOTE)
     # Weekday
     hm = (now_et.hour, now_et.minute)
     if hm < (9, 30):
-        return (
-            "PRE-MARKET",
-            "Markets PRE-OPEN (before 9:30 AM ET). % changes below reflect YESTERDAY'S full session "
-            "(yesterday's close vs day-before's close). Do NOT describe these as 'today's moves' — today's "
-            "regular session hasn't started. Phrase as 'heading into today's open' or 'yesterday's close left SPX up X%'."
-        )
+        return ("PRE-MARKET", PRE_MARKET_NOTE)
     if hm < (16, 0):
-        return (
-            "OPEN",
-            "Markets currently OPEN (regular session). % changes reflect today's session-to-date move from yesterday's close."
-        )
-    return (
-        "AFTER-HOURS",
-        "Markets CLOSED — after-hours (post 4 PM ET). % changes reflect today's full regular session (final)."
-    )
+        return ("OPEN", OPEN_NOTE)
+    return ("AFTER-HOURS", AFTER_HOURS_NOTE)
 
 
 def fetch_market_snapshot() -> str:
@@ -156,16 +204,18 @@ def fetch_market_snapshot() -> str:
         lines.append("")
 
     if crypto:
-        lines.append("Crypto:")
+        # Crypto daily % is anchored at 00:00 UTC = 8pm ET prior day (during EDT).
+        # Matches the way crypto desks / Coinglass / daily candles compute "day change."
+        lines.append("Crypto (% shown = since 00:00 UTC today, which is 8pm ET yesterday during EDT):")
         for name, data in crypto.items():
             price = data.get("price")
-            c24 = data.get("change_24h")
+            utc_day = data.get("change_utc_day")
             c7d = data.get("change_7d")
             if price is None:
                 continue
-            c24_str = f"{c24:+.2f}%" if c24 is not None else "n/a"
+            day_str = f"{utc_day:+.2f}%" if utc_day is not None else "n/a"
             c7d_str = f"{c7d:+.2f}%" if c7d is not None else "n/a"
-            lines.append(f"  {name}: ${price:,.0f} ({c24_str} 24h, {c7d_str} 7d)")
+            lines.append(f"  {name}: ${price:,.0f} ({day_str} UTC-day, {c7d_str} 7d)")
         lines.append("")
 
     if not crypto and not traditional:
