@@ -234,8 +234,10 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
     if pending:
         pending_note = f"\n\n*Note: {len(pending)} additional reports are still being processed.*"
 
-    # Synthesize
-    report = await synthesize_daily_pulse(analyses)
+    # Synthesize — every pulse is fully independent; no prev-pulse context leaks.
+    # Ingestion isolation (cutoff on dropbox_modified_at > last pulse time) still
+    # gives each scheduled pulse a fresh PDF window.
+    report = await synthesize_daily_pulse(analyses, use_prev_context=False)
     if pending_note:
         report.markdown_content += pending_note
 
