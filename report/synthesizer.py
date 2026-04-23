@@ -220,52 +220,60 @@ async def synthesize_daily_pulse(
     else:
         ticker_block = "TICKER LOOKUP: (none extracted — use only tickers that clearly appear in the research text)"
 
-    # Previous scheduled pulse for cross-day continuity — only when the caller
-    # wants it. Scheduled pulses use this to diff vs yesterday; manual /pulse
-    # skips it so each ad-hoc run is fully standalone.
+    # Always compute the previous scheduled pulse's theme list — used as a
+    # dedup reference even when DRAFT stage is standalone. Scheduled pulses
+    # additionally get the full diff-framing directive in DRAFT.
+    prev_themes_list: list[str] = []
+    prev_age_hours: int | None = None
+    prev = db.get_last_daily_pulse()
+    if prev and prev.get("created_at"):
+        try:
+            prev_ts = datetime.fromisoformat(prev["created_at"][:19])
+            age = datetime.utcnow() - prev_ts
+            if age <= timedelta(hours=48):
+                import re
+                md = prev["report_markdown"] or ""
+                theme_headers = re.findall(r"\*\*([^*\n]{5,80})\*\*", md)
+                prev_themes_list = [t.strip() for t in theme_headers if t.strip()][:12]
+                prev_age_hours = int(age.total_seconds() / 3600)
+        except (ValueError, TypeError):
+            pass
+
+    # DRAFT-stage prev-pulse directive — only when caller opts in (scheduled).
+    # Manual /pulse gets the "standalone" message so it doesn't anchor on
+    # yesterday's structure.
     if not use_prev_context:
         prev_context = (
             "PREVIOUS PULSE: (this is a standalone manual pulse — no prior-pulse "
             "comparison requested. Treat this as a fresh snapshot of the current "
             "research window. Do NOT anchor on any specific previous structure.)"
         )
+    elif not prev_themes_list:
+        prev_context = (
+            "PREVIOUS PULSE: (none available — this is the first scheduled pulse "
+            "or the last one is too stale to compare against.)"
+        )
     else:
-        prev = db.get_last_daily_pulse()
-        prev_context = "PREVIOUS PULSE: (none — this is the first scheduled pulse)"
-        if prev and prev.get("created_at"):
-            try:
-                prev_ts = datetime.fromisoformat(prev["created_at"][:19])
-                age = datetime.utcnow() - prev_ts
-                if age <= timedelta(hours=48):
-                    # Extract the Insights theme headers from yesterday's pulse
-                    # so the model knows what to AVOID repeating. Passing the full
-                    # markdown caused Gemini to copy it verbatim.
-                    import re
-                    md = prev["report_markdown"] or ""
-                    # Match bolded theme headers (e.g. "**The Systematic Squeeze**")
-                    theme_headers = re.findall(r"\*\*([^*\n]{5,80})\*\*", md)
-                    # Also grab section headers
-                    section_heads = re.findall(r"^##+\s*([^\n]+)", md, re.MULTILINE)
-                    themes_list = [t.strip() for t in theme_headers if t.strip()][:12]
-                    prev_context = (
-                        f"PREVIOUS PULSE SUMMARY (from {_fmt_et(prev['created_at'])} UTC, "
-                        f"~{int(age.total_seconds() / 3600)}h ago, {prev['pdf_count']} reports):\n\n"
-                        f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM — these are the exact headlines the reader saw yesterday):\n"
-                        + "\n".join(f"  - {t}" for t in themes_list)
-                        + "\n\nYour job today:\n"
-                        + "1. For each theme above, ask: has the research today materially advanced it? If no → SKIP. If yes → lead with 'Since yesterday: [what's new/changed]'.\n"
-                        + "2. Actively hunt for themes that are NOT in the list above — new catalysts, fresh desk calls, new positioning data.\n"
-                        + "3. Your pulse should be notably different from yesterday's. If today's pulse would look 80%+ the same as yesterday's, you've failed.\n"
-                        + "4. Do NOT rewrite yesterday's themes with synonyms and new numbers. That's the same pulse in a trench coat."
-                    )
-                else:
-                    prev_context = (
-                        f"PREVIOUS PULSE: last scheduled pulse was "
-                        f"~{int(age.total_seconds() / 3600)}h ago — too stale to use for comparison. "
-                        f"Treat this as a fresh pulse with no prior context."
-                    )
-            except (ValueError, TypeError):
-                pass
+        prev_context = (
+            f"PREVIOUS PULSE SUMMARY (~{prev_age_hours}h ago, {prev['pdf_count']} reports):\n\n"
+            f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM — these are the exact headlines the reader saw yesterday):\n"
+            + "\n".join(f"  - {t}" for t in prev_themes_list)
+            + "\n\nYour job today:\n"
+            + "1. For each theme above, ask: has the research today materially advanced it? If no → SKIP. If yes → lead with 'Since yesterday: [what's new/changed]'.\n"
+            + "2. Actively hunt for themes that are NOT in the list above — new catalysts, fresh desk calls, new positioning data.\n"
+            + "3. Your pulse should be notably different from yesterday's. If today's pulse would look 80%+ the same as yesterday's, you've failed.\n"
+            + "4. Do NOT rewrite yesterday's themes with synonyms and new numbers. That's the same pulse in a trench coat."
+        )
+
+    # AUDIT-stage dedup reference — just the theme list, no directive. Passed
+    # regardless of use_prev_context so manual pulses also get safety-net dedup.
+    if prev_themes_list:
+        audit_prev_block = (
+            f"PREVIOUS PULSE THEMES (~{prev_age_hours}h ago) — use this list to CUT any theme in the draft that merely restates one of these without a materially new catalyst today:\n"
+            + "\n".join(f"  - {t}" for t in prev_themes_list)
+        )
+    else:
+        audit_prev_block = "PREVIOUS PULSE THEMES: (none — no recent prior pulse to dedupe against.)"
 
     # Append weekend notice to market_snapshot so it's co-located with the prices
     if market_status_note:
@@ -312,6 +320,7 @@ async def synthesize_daily_pulse(
         news_snapshot=news_snapshot,
         earnings_calendar=earnings_calendar,
         economic_calendar=economic_calendar,
+        prev_pulse_themes=audit_prev_block,
         draft_markdown=draft_markdown,
     )
     audit_response = await client.aio.models.generate_content(

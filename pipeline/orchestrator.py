@@ -234,10 +234,11 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
     if pending:
         pending_note = f"\n\n*Note: {len(pending)} additional reports are still being processed.*"
 
-    # Synthesize — every pulse is fully independent; no prev-pulse context leaks.
-    # Ingestion isolation (cutoff on dropbox_modified_at > last pulse time) still
-    # gives each scheduled pulse a fresh PDF window.
-    report = await synthesize_daily_pulse(analyses, use_prev_context=False)
+    # Scheduled pulses pass yesterday's theme list as a "don't restate verbatim"
+    # directive. DRAFT still writes its own narrative (not anchored on yesterday's
+    # structure); the theme list is used to cull repeat chart observations and
+    # recycled headlines. Manual /pulse remains standalone.
+    report = await synthesize_daily_pulse(analyses, use_prev_context=True)
     if pending_note:
         report.markdown_content += pending_note
 
