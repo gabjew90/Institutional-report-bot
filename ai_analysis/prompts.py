@@ -665,10 +665,14 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
 **Pass A — cull.** Keep only themes that pass the "would a self-directed US options/crypto trader reposition in the next 1-5 days because of this?" test. Audience is a retail US trader whose universe is US equities, US ETFs, US index options, and crypto. Cut:
 - **Non-US-trader themes.** ECB/BOJ/BOE/PBOC policy speculation, European/UK political calendar (UK local elections, French budget votes, etc.), G10-ex-USD FX trade ideas (long EURGBP, short NOK, etc.), European equity puts, European credit hedges, regional EM macro. These do NOT pass the test — cut them even if research has a strong view. Exception: if research argues a direct, specific US equity/crypto read-through (e.g., "ECB hike would bid $UUP and cap $SPY"), keep only the US read-through and drop the foreign leg of the trade.
-- **Recurring wallpaper themes** that repeated in the previous pulse without a fresh catalyst. This includes recurring technical setups (golden crosses, RSI readings, moving-average crossovers) if the same chart observation was made yesterday. If the previous pulse already covered "$BTC golden cross" or "software short squeeze" or "CTA re-risking," only keep it today if today's research adds a NEW specific data point (not a restated chart).
 - Single-bank technical observations with no fundamental hook.
 - Sector commentary with no actionable ticker or level.
 - Themes that are restatements of what's already in RECAP as a driver.
+
+**On repeating yesterday's themes:** a theme appearing in the PREVIOUS PULSE THEMES list is NOT automatically a cut. Scheduled pulses pull disjoint PDF windows (research uploaded since yesterday's 9 AM), so a theme recurring today means independent banks are raising it again — which is itself a signal. Rules:
+- If today's research has the theme from 2+ independent banks → KEEP (note convergence: "GS, JPM, and TME all flag…").
+- If today's research has the theme from only 1 bank AND no new data point vs yesterday → CUT as single-source recycled.
+- If today's research advances the theme with a new catalyst/level/data point → KEEP and lead the theme with "Since yesterday:".
 
 Target 3-6 high-impact themes. Better to ship 3 sharp themes than 6 with filler. If after culling you only have 2 strong themes, ship 2.
 
@@ -737,5 +741,5 @@ DRAFT PULSE (from Stage 1 — research only, no live data):
 
 ---
 
-Produce the final pulse. Rewrite RECAP with live data + released events + news. Run Pass A (cull) and Pass B (impact close) on INSIGHTS — use the PREVIOUS PULSE THEMES list to cut any theme in the draft that merely restates yesterday's chart observation or headline without a materially new catalyst today. Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
+Produce the final pulse. Rewrite RECAP with live data + released events + news. Run Pass A (cull) and Pass B (impact close) on INSIGHTS — a theme matching the PREVIOUS PULSE THEMES list is only cut if it's a single-source restatement with no new catalyst; if multiple independent banks raise it today, that's cross-bank convergence and the theme stays (note the convergence). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
 """
