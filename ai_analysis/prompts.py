@@ -18,8 +18,8 @@ Respond with a JSON object only, no other text:
 }
 
 Priority guidelines:
-- HIGH: Morning briefings with multiple calls. Macro/strategy pieces with positioning data. S&T notes with flow data. Vol/positioning commentary. Crypto institutional research. Major US/global equity calls with conviction. Oil/commodity supply analysis with geopolitical read-through. Fed/ECB/BoJ policy analysis with rate-path implications.
-- MEDIUM: Single-stock equity research on major US/European names (even from top banks). Sector overviews for sectors that trade in US options markets. Earnings previews/reviews on MAG7 + bellwethers. US macro commentary. Major FX (EUR, JPY, GBP). Model updates on major indices. Anything with actionable implications for US/crypto traders.
+- HIGH: Morning briefings with multiple calls. Macro/strategy pieces with positioning data. S&T notes with flow data. Vol/positioning commentary. Crypto institutional research. Major US/global equity calls with conviction. Oil/commodity supply analysis with geopolitical read-through. Fed/ECB/BoJ policy analysis with rate-path implications. **MAG7 hyperscaler earnings previews and reviews ($AAPL, $MSFT, $GOOGL, $AMZN, $META, $NVDA, $TSLA) — always HIGH on or near print day**, even single-stock notes; these names move the index. Other tape-moving bellwethers on or near earnings ($NFLX, $TSM, $AVGO, $ORCL, $CRM, $JPM, $GS, $MS, $BAC, $WMT, $XOM, $BRK.B) are also HIGH.
+- MEDIUM: Single-stock equity research on other major US/European names (even from top banks). Sector overviews for sectors that trade in US options markets. Earnings previews/reviews on names outside the HIGH list. US macro commentary. Major FX (EUR, JPY, GBP). Model updates on major indices. Anything with actionable implications for US/crypto traders.
 - LOW: Use this liberally for reports with limited read-through for US options and crypto traders:
   - Disclaimer-heavy wrappers, valuation tables with no commentary, duplicate reports, admin content
   - Pure fixed income/rates research with no equity or macro implications
