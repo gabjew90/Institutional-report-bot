@@ -43,11 +43,22 @@ async def main() -> None:
     scheduler.start()
     log.info("Scheduler started")
 
+    # Optional HTTP API for the Opus pulse routine. Only starts if a token is set.
+    api_runner = None
+    if settings.pulse_api_token:
+        from api.server import start_server
+        api_runner = await start_server(bot, settings.http_port)
+    else:
+        log.info("PULSE_API_TOKEN not set — HTTP API disabled")
+
     # Handle shutdown
     def handle_shutdown(sig, frame):
         log.info(f"Received signal {sig}, shutting down...")
         scheduler.shutdown(wait=False)
-        asyncio.get_event_loop().create_task(bot.close())
+        loop = asyncio.get_event_loop()
+        if api_runner is not None:
+            loop.create_task(api_runner.cleanup())
+        loop.create_task(bot.close())
 
     signal.signal(signal.SIGTERM, handle_shutdown)
     signal.signal(signal.SIGINT, handle_shutdown)

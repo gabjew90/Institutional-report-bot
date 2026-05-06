@@ -297,6 +297,148 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
     return json.dumps(compact, indent=1)
 
 
+def build_pulse_context(
+    analyses: list[PdfAnalysis],
+    use_prev_context: bool = True,
+) -> dict:
+    """Assemble all the inputs the synthesis prompts need, without calling any LLM.
+
+    Returned dict has every key DRAFT_USER and AUDIT_USER expect plus the
+    structured prompt bodies themselves so the routine agent can apply them
+    directly. Used by the HTTP API endpoint that feeds the Opus routine.
+
+    The keys map 1:1 to the fields used inside synthesize_daily_pulse below —
+    when that function evolves, mirror changes here.
+    """
+    import pytz
+    from config import settings as _settings
+
+    today = date.today().isoformat()
+    try:
+        tz = pytz.timezone(_settings.timezone)
+        now_local = datetime.now(tz)
+        day_of_week = now_local.strftime("%A")
+        today_label = f"{today} ({day_of_week})"
+        now_label = now_local.strftime("%H:%M %Z")
+        is_weekend = day_of_week in ("Saturday", "Sunday")
+    except Exception:
+        today_label = today
+        now_label = datetime.utcnow().strftime("%H:%M UTC")
+        is_weekend = False
+
+    market_status_note = ""
+    if is_weekend:
+        market_status_note = (
+            "\n\n**MARKET STATUS: US markets are CLOSED TODAY (weekend).** "
+            "The live price snapshot below shows LAST CLOSE — Friday's closing levels, "
+            "not 'today's move.' Phrase price references as 'as of Friday's close' "
+            "or 'heading into Monday.' Crypto trades 24/7 so BTC/ETH commentary is fine, "
+            "but weekend volumes are thin."
+        )
+
+    analyses_json = _analyses_to_json(analyses)
+    market_snapshot = fetch_market_snapshot()
+    news_snapshot = fetch_news_snapshot(since_hours=48, limit=15)
+    earnings_calendar = fetch_earnings_calendar(days_ahead=7)
+    economic_calendar = fetch_economic_calendar(days_ahead=7)
+
+    ticker_map = _build_ticker_map(analyses)
+    if ticker_map:
+        sorted_tickers = sorted(ticker_map.items(), key=lambda kv: -kv[1]["mentions"])
+        cashtag_lines = []
+        no_cashtag_lines = []
+        for ticker, info in sorted_tickers:
+            line = f"  {ticker} — {info['name']} ({info['asset_class']}, {info['mentions']} mentions)"
+            if info["no_cashtag"]:
+                no_cashtag_lines.append(line)
+            else:
+                cashtag_lines.append(line)
+        ticker_block_parts = ["TICKER LOOKUP — use $TICKER (cashtag format) when referring to these:"]
+        if cashtag_lines:
+            ticker_block_parts.append("\n".join(cashtag_lines))
+        if no_cashtag_lines:
+            ticker_block_parts.append("\nDo NOT prefix $ for these (FX / commodity / other — reference by name):")
+            ticker_block_parts.append("\n".join(no_cashtag_lines))
+        ticker_block = "\n".join(ticker_block_parts)
+    else:
+        ticker_block = "TICKER LOOKUP: (none extracted — use only tickers that clearly appear in the research text)"
+
+    theme_map = _classify_themes(analyses)
+    theme_coverage_block = _format_theme_coverage(theme_map)
+
+    prev_themes_list: list[str] = []
+    prev_age_hours: int | None = None
+    prev = db.get_last_daily_pulse()
+    if prev and prev.get("created_at"):
+        try:
+            prev_ts = datetime.fromisoformat(prev["created_at"][:19])
+            age = datetime.utcnow() - prev_ts
+            if age <= timedelta(hours=48):
+                import re
+                md = prev["report_markdown"] or ""
+                theme_headers = re.findall(r"\*\*([^*\n]{5,80})\*\*", md)
+                prev_themes_list = [t.strip() for t in theme_headers if t.strip()][:12]
+                prev_age_hours = int(age.total_seconds() / 3600)
+        except (ValueError, TypeError):
+            pass
+
+    if not use_prev_context:
+        prev_pulse_block = (
+            "PREVIOUS PULSE: (this is a standalone manual pulse — no prior-pulse "
+            "comparison requested. Treat this as a fresh snapshot of the current "
+            "research window. Do NOT anchor on any specific previous structure.)"
+        )
+    elif not prev_themes_list:
+        prev_pulse_block = (
+            "PREVIOUS PULSE: (none available — this is the first scheduled pulse "
+            "or the last one is too stale to compare against.)"
+        )
+    else:
+        prev_pulse_block = (
+            f"PREVIOUS PULSE SUMMARY (~{prev_age_hours}h ago, {prev['pdf_count']} reports):\n\n"
+            f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM):\n"
+            + "\n".join(f"  - {t}" for t in prev_themes_list)
+            + "\n\n1. For each theme above, ask: has the research today materially advanced it? If no → SKIP. If yes → lead with 'Since yesterday:'.\n"
+            + "2. Actively hunt for themes NOT in the list above — fresh catalysts, new desk calls, new positioning data.\n"
+            + "3. If today's pulse would look 80%+ the same as yesterday's, you've failed.\n"
+            + "4. Don't rewrite yesterday's themes with synonyms and new numbers — that's the same pulse in a trench coat."
+        )
+
+    if prev_themes_list:
+        audit_prev_block = (
+            f"PREVIOUS PULSE THEMES (~{prev_age_hours}h ago) — cut any theme in the draft that merely restates one of these without a materially new catalyst today:\n"
+            + "\n".join(f"  - {t}" for t in prev_themes_list)
+        )
+    else:
+        audit_prev_block = "PREVIOUS PULSE THEMES: (none — no recent prior pulse to dedupe against.)"
+
+    if market_status_note:
+        market_snapshot = market_snapshot + market_status_note
+
+    session_status = "closed (weekend)" if is_weekend else (
+        "market hours — intraday" if "9:30" <= now_label[:5] < "16:00"
+        else "pre-market or after-hours"
+    )
+
+    return {
+        "today": today,
+        "today_label": today_label,
+        "now_label": now_label,
+        "is_weekend": is_weekend,
+        "session_status": session_status,
+        "pdf_count": len(analyses),
+        "analyses_json": analyses_json,
+        "market_snapshot": market_snapshot,
+        "news_snapshot": news_snapshot,
+        "earnings_calendar": earnings_calendar,
+        "economic_calendar": economic_calendar,
+        "ticker_block": ticker_block,
+        "theme_coverage": theme_coverage_block,
+        "prev_pulse_block": prev_pulse_block,
+        "audit_prev_block": audit_prev_block,
+    }
+
+
 async def synthesize_daily_pulse(
     analyses: list[PdfAnalysis],
     use_prev_context: bool = True,

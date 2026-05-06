@@ -48,6 +48,12 @@ class Settings(BaseSettings):
     # Logging
     log_level: str = "INFO"
 
+    # HTTP API (used by the Opus routine to fetch pulse context + post results)
+    # Railway sets $PORT automatically; this is the fallback for local dev.
+    http_port: int = Field(default=8080, alias="PORT")
+    # Random shared secret embedded in routine prompts. Empty = HTTP API disabled.
+    pulse_api_token: str = ""
+
     # Source priority list (comma-separated, highest priority first)
     # Tier 1 sources — always HIGH priority regardless of content
     tier1_sources: str = "Goldman Sachs,JPMorgan,Bank of America,Morgan Stanley"
