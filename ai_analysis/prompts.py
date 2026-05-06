@@ -680,12 +680,28 @@ Examples:
 - *AI capex is no longer a forecast — earnings are confirming the build.*
 - *Apple's foundry pivot is the single-stock story this market is mispricing.*
 
-**Movement 2 — THE EVIDENCE (3-4 sentences).** Methodically present the supporting data. This is the analyst saying *"Here's why we're making this call."* Pattern:
-- Sentence 1: the specific shift (a number with attribution).
-- Sentences 2-3: the mechanism — WHY this is happening, what's feeding it. Named-bank data points woven in. 3+ specific data points across the paragraph.
-- Sentence 4: the transmission chain — how this shows up in other assets / positioning.
+**Movement 2 — THE EVIDENCE.** Two parts: a bulleted data block, then a short mechanism paragraph that argues from those bullets. Visual break + analyst rigor.
 
-The PM listening should be able to follow each step of the logic. Don't just assert; show the work.
+**Part A — Bulleted data block (3-5 bullets, optional bolded label):**
+- Each bullet is one specific number with attribution and brief context.
+- Bullets are facts, not arguments. Keep them tight (one line each).
+- 3-5 bullets max. Less than 3 → not enough evidence to bullet, just write prose. More than 5 → trim or split the theme.
+
+Example:
+```
+**What we're seeing:**
+- 10Y broke 4.44% Monday — a 9-month high
+- Crédit Agricole expects $125B of new long-dated Treasury supply this week ($25B in 30-year)
+- Fed funds futures now price 17 bps of hikes by April (Deutsche Bank) — full reversal from cuts a month ago
+- Brent at $110 keeps gasoline +40% YTD, feeding core CPI on a 3-month lag (ANZ)
+```
+
+**Part B — Mechanism paragraph (2-3 sentences) that argues from the bullets.** This is *"Here's why these data points matter."* Don't repeat the numbers; instead, explain the mechanism. WHY is this happening? HOW does it transmit? What's the chain into positioning? The PM should be able to follow each step of the logic.
+
+Example following the bullets above:
+> *"Three forces are pulling yields higher at once: oil-driven inflation feeding into core, fresh Treasury supply hitting the long end, and a Fed that suddenly can't credibly cut. The transmission shows up in the dollar — $UUP can't catch a sustained bid because European hike pricing is moving the other way (ECB hike for June at 99% probability), so the rate-differential lift the dollar usually gets is absent."*
+
+The bullets show the facts; the prose explains why they matter together. Don't merge them — the visual break between bullets and argument is the structural rhythm the reader needs.
 
 **Movement 3 — THE ANTICIPATED PUSHBACK (1-2 sentences).** This is the analyst saying *"Here's the smart counter-argument we'd expect from the room."* Open with a clean transition — *"The bull case..." / "The pushback we'd anticipate..." / "Skeptics would point to..."* Then state the strongest counter-argument honestly, with specific data or a named risk factor. Don't strawman it; steelman it.
 
