@@ -361,7 +361,7 @@ The research PDFs are the PRIMARY DRIVER of content across ALL sections. Live pr
 
 **KNOWN HALLUCINATION TRAPS — DO NOT MAKE THESE ERRORS:**
 - **MAS (Monetary Authority of Singapore)** does NOT set interest rates. It manages the Singapore Dollar NEER band. Never say "MAS 50bp hike" or "MAS rate decision." Only include MAS if a PDF specifically discusses it.
-- **Fed speakers** — only include if a PDF flags the speaker as consequential (usually just Powell).
+- **Fed speakers** — only include if a PDF flags the speaker as consequential. The Fed chair is **Kevin Warsh** (took over from Powell in mid-2026); his testimony / FOMC pressers move markets the most. Powell remains on the Board of Governors so his comments still matter but no longer carry chair-level weight.
 - **Earnings BMO vs AMC** — always cross-check the earnings calendar. Common mistakes: ASML and TSMC are BMO in US timezone.
 
 ---
@@ -485,14 +485,14 @@ Events happening AFTER today through end of this week. If today is {today}, "thi
 **Ruthless filtering** — default is CUT. Only include events that BOTH (a) appear in at least one research analysis with specific commentary AND (b) match this short Tier 1 list:
 
 ✅ **Tier 1 (keep only if research discusses them):**
-- **US macro (headline only):** FOMC meeting, Fed Chair Powell speech, CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI. That's it.
+- **US macro (headline only):** FOMC meeting, Fed Chair Warsh speech/testimony (Powell is now a governor — his comments still pass), CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI. That's it.
 - **Major earnings:** MAG7 ($AAPL, $MSFT, $GOOGL, $AMZN, $META, $NVDA, $TSLA), major banks only if earnings season ($JPM, $GS, $MS, $BAC, $C, $WFC), and other names ONLY if research explicitly flags them as market-moving (e.g., $NFLX during earnings season is OK, $NVDA is always OK).
 - **Crypto:** ETF decisions, protocol upgrades, major unlocks — only if research names them specifically.
 - **Geopolitical hard deadlines:** ceasefire expirations, tariff deadlines, sanctions effective dates.
 - **Central bank RATE DECISIONS only:** FOMC, ECB, BOJ, BOE rate votes. NOT speeches by central bank heads (Lagarde, Bailey, Ueda).
 
 ❌ **CUT by default — include only with clear research justification:**
-- **Fed speakers other than Powell** (Williams, Waller, Barkin, Bostic, Daly, Bowman, Goolsbee, Kashkari, Miran, etc.) — include ONLY when research specifically argues this speaker matters for this setup (e.g., "Waller's Thursday speech is critical because he's the most dovish voice and a shift would reset rate-cut expectations"). A generic calendar mention isn't enough; research must argue *why this speaker, this time*.
+- **Fed speakers other than the chair** (Powell now sits as a governor — his comments still pass; also Williams, Waller, Barkin, Bostic, Daly, Bowman, Goolsbee, Kashkari, Miran, Hammack, Logan, etc.) — include ONLY when research specifically argues this speaker matters for this setup (e.g., "Waller's Thursday speech is critical because he's the most dovish voice and a shift would reset rate-cut expectations"). A generic calendar mention isn't enough; research must argue *why this speaker, this time*.
 - **Foreign central bank heads' general speeches** (Lagarde, Bailey, Ueda) — same rule: include ONLY when research builds a specific case, otherwise cut.
 - Regional Fed surveys (Philly Fed, Empire State, Richmond, Dallas, KC) — include ONLY when research flags an unusual setup
 - Minor data: Jobless Claims (weekly — include only if research flagged a specific setup), Industrial Production, Building Permits, Housing Starts, Beige Book, capacity utilization

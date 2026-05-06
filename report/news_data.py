@@ -208,11 +208,13 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
     items = data.get("economicCalendar", []) or []
     # Whitelist of event name substrings that actually move markets for a US
     # options/crypto trader. Anything else (regional Fed surveys, Fed governor
-    # speeches that aren't Powell, minor US data, foreign macro without US
+    # speeches that aren't the chair, minor US data, foreign macro without US
     # read-through) is filtered out so Gemini can't include filler in the pulse.
+    # Warsh is the current Fed chair (post-2026 transition); Powell remains on
+    # the board as a governor so his comments still pass.
     TIER1_KEYWORDS = [
         # US macro — headline only
-        "fomc", "fed chair", "powell",
+        "fomc", "fed chair", "warsh", "powell",
         "cpi", "core cpi",
         "pce", "core pce",
         "nonfarm payroll", "employment situation", "unemployment rate",
