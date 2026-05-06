@@ -648,6 +648,25 @@ The main section. 3-8 themes from research — whichever have substance today.
 - Crypto institutional view (ETF flows, regulatory, positioning)
 - Single-topic dedicated notes (M&A, regulatory catalysts, earnings reactions)
 
+**Theme coherence (binding — most-failed pattern in QC):** every sentence in a theme body must directly serve that theme's central thesis. If the theme is "Apple's foundry pivot," every sentence should advance the Apple foundry story — not pivot to unrelated $AMD upgrades, $PLTR price targets, or $SMCI ratings, even if they're "all AI." A trader reading the section should be able to summarize the theme in one sentence.
+
+**Hard test: write the theme's central claim in one sentence first** (mentally or out loud). Then for every sentence in the body, ask: "does this sentence support that claim?" If no → cut it. If a fact is interesting but doesn't fit the theme, save it for a different theme or drop it entirely.
+
+**Trade Implication coherence:** the trade ticker, the catalyst, the rationale, and the invalidation must ALL connect to the same central thesis. If the theme is Apple foundry → trade should be on $INTC or memory makers benefiting from Apple-content-per-device, with a catalyst tied to Apple/Intel/foundry news (not on UBER's earnings night). Wrong trade-catalyst pairings ("Long $MU into UBER earnings to play Apple-foundry") are a coherence failure.
+
+**Bull/bear coherence:** both sides must be about the SAME thesis. If the bull case is "Apple's foundry split lifts $INTC for years," the bear case is "the Apple deal slips or comes in smaller than leaked" — NOT "Goldman has a Sell on $SMCI" (different stock, different story). Don't pad the bear case with unrelated negative calls.
+
+**Examples of theme-coherence failure (DO NOT DO THIS):**
+- ❌ Theme is "AI capex super-cycle." Body mentions Apple foundry, semicaps, $PLTR price target hike, hyperscaler earnings. — Too many threads. Pick one and make it the theme.
+- ❌ Theme is "Apple's foundry pivot." Trade is "Long $MU into UBER earnings." — UBER has nothing to do with Apple foundry. Catalyst mismatch.
+- ❌ Theme bull case names $INTC; trade is on $MU; bear case mentions $SMCI. — Three different tickers across one theme; the reader is whiplashed.
+
+**Examples of theme-coherence success:**
+- ✅ Theme is "Apple's foundry pivot." Body is entirely about Apple/TSMC/Intel/Samsung dynamics, the multi-year revenue stream landing on $INTC, the memory-content-per-device read-through. Trade: "Long $INTC into Apple's June capacity announcement. Why: ... Risk: Apple deal walked back or framed as 'exploratory' with no firm volume commitment."
+- ✅ Theme is "Memory squeeze on AI demand." Body is about $MU/$SNDK/SK Hynix supply tightness, hyperscaler DRAM/NAND content. Trade is on $MU with a memory-specific catalyst.
+
+If you find yourself writing "but a separate angle is..." or "on a different note..." mid-theme, you've broken coherence. Either commit to one theme or split into two themes.
+
 **Each INSIGHT is 200-300 words of flowing prose, not a headline + bullet.** Default to two short paragraphs, then a Trade Implication line. Required structure:
 
 **Paragraph 1 — what's happening + the mechanism.** Open with a hook sentence that names the specific shift with a number. Then explain the actual mechanism: WHY this is happening, HOW it transmits to markets, what the chain of cause-and-effect is. This is the "critical thinking" layer. Don't just assert "capex is rising" — explain that 1/3 of MAG7 earnings came from PE investment gains (so the capex is leveraged on financial engineering, not pure AI demand). Don't just say "yields are breaking out" — explain that energy + labor are firming core inflation projections, so duration is repricing without a Fed signal needed. Weave in 3+ specific data points (named banks with specific numbers, levels, percentiles, dissent counts) — not as a list, as part of the argument.
