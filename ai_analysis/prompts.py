@@ -716,9 +716,28 @@ What you should STRIP if present: meta-narration phrases like "cross-bank consen
 
 1. **RECAP format: lede paragraph + bulleted drivers.** NOT a bullet-list Market Snapshot at the top, NOT all prose. Use this exact two-part structure:
 
-**Part 1 — lede paragraph (prose, ~100 words):** one flowing paragraph that integrates the key ticker moves into sentences. Minimum tickers to mention: **$SPY** (broad market), **$QQQ** (tech), **$VIXY** (vol), **$BTC** (crypto bellwether), **$GLD** (gold), and whichever of $USO/$BNO is relevant if oil moved. Only add other tickers ($ETH, $SOL, $TLT, $UUP) if they stand out or research specifically calls them out. Example:
+**Part 1 — lede paragraph (NARRATIVE prose, 80-120 words).** This is a story about today's tape, not a market snapshot. Open with what happened (the macro story / the dominant move / the surprise). Weave in only the tickers that EXPLAIN the story.
 
-*"Markets traded defensive Tuesday as strong data collided with escalating Hormuz tension. $SPY closed -0.65% at $704.08, $QQQ -0.38% at $644.33, $VIXY +1.83% as hedges got put back on. Energy ripped — $USO +5.71%, $BNO +5.52% — while $GLD dropped 2.83% to $429.57 and $BTC held $75,421 (-0.56% UTC-day). $TLT -0.55%, $UUP +0.55% on a firmer dollar."*
+**Ticker selection rules — be ruthless:**
+- $SPY and $QQQ: always include (broad market direction is the spine of the story).
+- Other tickers: ONLY include if (a) they moved meaningfully (|%| ≥ 1% intraday OR ≥ 0.5% if it confirms the day's narrative) AND (b) the move tells the reader something. A ticker that drifted 0.07% gets DROPPED. The reader doesn't care that $UUP barely moved.
+- If energy moved: include the more-moving of $USO/$BNO, not both.
+- If crypto is part of the story: include $BTC. Add $ETH/$SOL ONLY if they diverged from BTC in a way that matters. If they all moved 0.7-1.1% in the same direction, $BTC alone is the placeholder.
+- Skip $TLT, $UUP, $VIXY, $GLD entirely unless they moved >1% OR the day's narrative is about them.
+- Hard cap: 5-6 tickers in the lede MAX. If you have 8+, you're listing the snapshot, not telling a story.
+
+**Vary the syntax — don't write a "$X +Y% to $Z, $A +B% to $C" tape.** Mix forms:
+- *"$SPY closed +0.80%"* (movement only, no terminal price)
+- *"$VIXY drifted lower"* (qualitative — saves space when the % is small)
+- *"with $QQQ leading at +1.30%"* (subordinate clause embedding)
+- *"$BTC held the $81k area"* (level reference, not a percent)
+Reserve the full *"$TICKER +X% to $Z"* form for the 1-2 most-narratively-important tickers.
+
+**Bad example (current pulse failure mode — comma-separated tape):**
+*"$SPY closed +0.80% at $723.77, $QQQ +1.30% at $681.61, and $VIXY drifted -0.07% to $27.70. Energy faced selling pressure as peace deal hopes emerged — $USO -2.33% to $144.17, $BNO -3.24% to $58.18 — while $GLD gained 0.86% to $418.27. $TLT rose 0.55% to $85.43 and $UUP ticked +0.07% to $27.50. Crypto remains in a steady uptrend today: $BTC +0.84% to $81,549, $ETH +0.69% to $2,376, and $SOL +1.11% to $87."*
+
+**Good example (narrative — fewer tickers, varied syntax, story-first):**
+*"Markets traded with a risk-on bias Tuesday as Hormuz de-escalation headlines collided with a resilient AI-driven earnings cycle. $SPY closed +0.80% and $QQQ led at +1.30% — chip names did the heavy lifting after Tuesday night's prints. Energy rolled over hard on the peace-deal pivot, with $USO -2.33% and Brent down a similar amount. $BTC held the $81k area in sympathy with risk, but $VIXY, $TLT, and $GLD barely moved — the tape isn't pricing follow-through risk yet."*
 
 **Part 2 — "What drove the tape:" bulleted drivers.** After the lede paragraph, on a new line, write the literal header `**What drove the tape:**` followed by a bulleted list. One bullet per high-impact driver. Each bullet: lead with a bold hook (the event/data/news), then 1-2 sentences covering the **takeaway** (hot vs cool, hawkish vs dovish, beat vs miss) and the **impact** (what markets did or what it implies). Keep bullets tight — 2 sentences max each.
 
