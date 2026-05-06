@@ -59,6 +59,35 @@ class EntityMention:
 
 
 @dataclass
+class KeyDataPoint:
+    """A specific numeric data point extracted as a standalone unit.
+
+    Synthesis weaves these in directly without re-mining prose for figures.
+    Goal: every specific number a trader would care about — capex levels,
+    yield breakouts, dissent counts, positioning percentiles — gets surfaced
+    as a citeable unit, not buried in a key_insights paragraph.
+    """
+    figure: str         # The numeric value (e.g., "$751B", "+1.7% MoM", "8-4")
+    metric: str         # What it measures (e.g., "2026 hyperscaler capex", "Retail Sales", "FOMC dissent count")
+    source_bank: str    # Which bank cited this figure (e.g., "Goldman Sachs", "UBS")
+    context: str = ""   # Brief context — change vs prior, vs estimate, percentile, etc.
+
+
+@dataclass
+class TensionPoint:
+    """A bull-vs-bear framing pulled from the research.
+
+    Used by synthesis to construct the bull/bear paragraph in each INSIGHT
+    without having to reconstruct the framing from risk_factors + cross_bank.
+    Populate when the research explicitly frames both sides.
+    """
+    theme: str               # Short theme label (e.g., "AI capex", "Rate repricing")
+    bull_case: str           # The optimistic read with specifics
+    bear_case: str           # The risk / counter-thesis with specifics
+    what_invalidates: str = ""  # Specific level/event that breaks the bull thesis
+
+
+@dataclass
 class PdfAnalysis:
     pdf_file_id: int
     file_name: str
@@ -79,6 +108,8 @@ class PdfAnalysis:
     geopolitical: list[str] = field(default_factory=list)
     cross_bank_references: list[str] = field(default_factory=list)
     entities_mentioned: list[EntityMention] = field(default_factory=list)
+    key_data_points: list[KeyDataPoint] = field(default_factory=list)
+    tension_points: list[TensionPoint] = field(default_factory=list)
     pages_analyzed: int = 0
     total_pages: int = 0
     input_tokens: int = 0

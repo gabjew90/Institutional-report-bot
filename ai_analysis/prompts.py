@@ -128,6 +128,22 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
       "asset_class": "stock | etf | crypto | index | fx | commodity | other"
     }
   ],
+  "key_data_points": [
+    {
+      "figure": "The specific numeric value as cited (e.g., '$751B', '+1.7% MoM', '8-4', '4.4%', '15% below 12-month highs')",
+      "metric": "What this figure measures — be specific (e.g., '2026 hyperscaler capex estimate', 'Retail Sales headline MoM', 'FOMC dissent vote', '10Y Treasury yield breakout level', 'hedge fund net leverage gap')",
+      "source_bank": "Which institution cited this figure — typically the issuing bank, but if the report quotes another bank's data point, use that bank's name (e.g., 'Goldman Sachs', 'UBS', 'JPMorgan', 'TS Lombard'). Use the actual report's source if the figure is original to it.",
+      "context": "Brief context — change vs prior period, vs estimate, vs historical, percentile rank, etc. (e.g., 'up $80B in two weeks; 83% above 2025', 'highest since 1992', 'collapsed from 46% one week ago', 'first contraction since January'). Empty string if no useful context."
+    }
+  ],
+  "tension_points": [
+    {
+      "theme": "Short label for the underlying theme this tension applies to (e.g., 'AI capex super-cycle', 'Rate-cut repricing', 'Hormuz oil shock', 'Software short squeeze')",
+      "bull_case": "The optimistic read — what the bull side believes, with specific data or named bank backing where present (e.g., 'Goldman raised 2026 capex to $751B; MAG7 reported 20% revenue growth, 61% earnings growth — strongest pace since 4Q21')",
+      "bear_case": "The risk / counter-thesis — what could break the bull case, with specific data or named bank backing (e.g., 'Goldman desk flags that 1/3 of MAG7 profits came from PE investment gains, not AI revenue — earnings are more cyclically vulnerable than the headline suggests')",
+      "what_invalidates": "Specific level, event, or signal that would invalidate the bull thesis (e.g., 'A META or GOOGL capex guide-down at next earnings', 'Brent breaking below $90 sustained for 2 weeks', 'Core CPI print at 0.3% MoM or higher for July'). Empty string if no specific invalidation level identified."
+    }
+  ],
   "charts_described": [
     "Description of key visual data: what the chart shows, key levels, trends, patterns you observe in the images"
   ]
@@ -152,6 +168,18 @@ Rules:
 - Crypto: BTC, ETH, SOL, etc. No $ prefix in the `ticker` field — just the symbol.
 - Indices: use standard root (S&P 500 → SPX, Nasdaq 100 → NDX, VIX → VIX).
 - Do NOT list commodities by spot name (Brent, Gold, Oil) — use asset_class=commodity and either leave ticker empty or use a futures ticker if quoted.
+
+**For key_data_points** — extract every specific numeric figure that downstream synthesis would want to cite:
+- Capex levels and revisions (e.g., "$751B 2026 hyperscaler capex"); macro prints with vs-estimate context (e.g., "ISM Services 53.6 vs est 53.7"); positioning percentiles (e.g., "L/S net leverage at 5-year low"); yield levels (e.g., "10Y broke 4.4%"); dissent counts (e.g., "8-4 FOMC vote"); flow data (e.g., "$1.8B BTC ETF inflows in April"); price targets, ratings, and conviction figures.
+- One entry per discrete figure. Don't bundle multiple unrelated numbers into one entry.
+- Skip generic numbers used as descriptive context with no trading relevance ("the 30 banks surveyed," "page 4 of the report").
+- For HIGH and MEDIUM priority reports, target 5-15+ entries when the report is data-rich. For LOW reports, this field is typically empty.
+
+**For tension_points** — extract the bull-vs-bear framing only when the research explicitly presents both sides:
+- Don't manufacture tension that isn't in the report. If the note is purely bullish or purely bearish, leave this field empty rather than inventing a counter-thesis.
+- Multi-topic morning briefings may have multiple tension entries — one per major theme covered.
+- The `bear_case` should be specific and citeable, not a generic "risks include geopolitical tensions" — use the report's own counter-data or caveats.
+- Typically 0-3 entries per report. Empty list is fine and common.
 
 - Return ONLY valid JSON, no markdown or extra text."""
 
@@ -622,6 +650,15 @@ The main section. 3-8 themes from research — whichever have substance today.
 - If the research only flags a SECTOR or BUCKET as weak (e.g., "CPUs face selling pressure"), express the trade as a SECTOR/PAIR call (long memory vs short SOXX, or long $ORCL vs short $AMD as a pair-trade), not a list of individual tickers to short.
 - Better default: when in doubt, frame as long the strong side without naming individual shorts. E.g., "Long $MU and $ORCL" rather than "Avoid $AMD, $INTC, $QCOM" — that way a stale ticker-level read doesn't generate a wrong-direction call on a name the research never specifically targeted.
 - This applies to "avoid" framing too — "avoid $X" reads as a bearish call to a trader. Don't list individual tickers to avoid unless the research has named-and-specific bearish conviction on each.
+
+**Where to pull data points from (ranked by quality):**
+1. `data_points` field on each analysis — these are pre-extracted structured figures with `figure`, `metric`, `source_bank`, `context`. Use these first; they're the cleanest source. A pulse theme body should pull 3-5 entries from this field across the relevant analyses, woven into prose with attribution.
+2. `tensions` field — pre-extracted `bull_case` / `bear_case` / `what_invalidates` triples. The bull/bear paragraph should be built directly from one of these when present, with light editing for voice. The `what_invalidates` line plugs into the Trade Implication invalidation.
+3. `market_movers` — for ticker-level conviction calls with rating + price target.
+4. `macro` — for macro indicators with reading + interpretation.
+5. `trades` — for explicit research-flagged trade ideas with conviction + horizon.
+6. `risks` — for additional bear-case material if `tensions` is empty.
+7. `key_insights` — fall back to mining prose only when the structured fields above are sparse.
 
 **Data density (binding):** every theme body must include AT LEAST 5 concrete data points (raised from 3 — pulse was hitting the floor and stopping). Examples of what counts:
 - Specific number with attribution: *"Goldman raised 2026 hyperscaler capex to $751B, up $80B in two weeks (83% above 2025)"*

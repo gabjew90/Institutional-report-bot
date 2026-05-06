@@ -137,6 +137,12 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
         parts.extend((cv or "").lower() for cv in a.crypto_views or [])
         parts.extend((vp or "").lower() for vp in a.vol_and_positioning or [])
         parts.extend((g or "").lower() for g in a.geopolitical or [])
+        for kdp in a.key_data_points or []:
+            d = asdict(kdp)
+            parts.append(" ".join(str(v).lower() for v in d.values() if v))
+        for tp in a.tension_points or []:
+            d = asdict(tp)
+            parts.append(" ".join(str(v).lower() for v in d.values() if v))
         blob = " ".join(parts)
         if not blob.strip():
             continue
@@ -272,6 +278,10 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
                 {"name": e.name, "ticker": e.ticker, "class": e.asset_class}
                 for e in a.entities_mentioned
             ]
+        if a.key_data_points:
+            entry["data_points"] = [asdict(kdp) for kdp in a.key_data_points]
+        if a.tension_points:
+            entry["tensions"] = [asdict(tp) for tp in a.tension_points]
         compact.append(entry)
     return json.dumps(compact, indent=1)
 
