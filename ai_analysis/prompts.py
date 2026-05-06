@@ -598,6 +598,13 @@ The reader is a self-directed trader, smart but NOT a finance professional. They
 - Only mention rating changes if: (a) major stock, (b) surprising call, or (c) specific positioning shift.
 - **Lead with the theme that has the most independent bank coverage (3+ banks aligned) — that's the highest-conviction signal in the corpus.** Single-topic dedicated notes (M&A, dedicated catalyst notes, earnings reactions) come second. A theme appearing in 8+ HIGH-priority notes from different banks IS the story, even if it sounds "broad."
 - **No meta-narration about the corpus.** Do NOT write phrases like "cross-bank consensus is firming," "8+ high-priority notes flag," "research suggests," "the corpus shows," "multiple banks converge." These are template-tells. Just state the view directly. You can name specific banks when citing their specific data ("Goldman raised 2026 capex to $751B; UBS sees $900B by 2027") — but don't wrap the analysis in narration about how many sources agree.
+- **No source-prefix story-connectors.** Bank names are OK when paired with a specific number or call. They are NOT OK as connectors that prefix every claim. The pattern that's tiring to read: *"Mizuho keeps hammering... The Market Ear adds the kicker... ING's Fed-watcher piece says... Goldman's mid-day color..."* — strip these and state the view directly.
+  - Bad: *"The Market Ear noted that realized vol on up days is 16.9% — higher than down days at 14.6%."*
+  - Good: *"Realized vol on up days is 16.9%, versus 14.6% on down days — the inverse of a healthy rally."*
+  - Bad: *"Mizuho keeps hammering that Treasury issuance plus oil-driven inflation forces a 30-year breakdown."*
+  - Good: *"Treasury issuance landing on top of oil-driven inflation is the combination that forces a 30-year breakdown — UK 30-year yields at fresh post-1998 highs are the canary."*
+  - The bank's name only earns ink when it's a specific call: *"Mizuho EMEA: no more Fed cuts in 2026, 4.50% 10-year target if Hormuz stays compromised."* — that's a specific desk call with numbers. Worth attributing.
+  - Heuristic: if removing "X bank said" leaves the sentence intact and stronger, remove it.
 """
 
 
