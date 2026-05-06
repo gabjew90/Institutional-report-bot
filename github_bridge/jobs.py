@@ -249,7 +249,7 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         # Recompute the rich footer stats (top sources, priority mix, date
         # range) from the same 24h window the routine just synthesized over,
         # so the Discord embed footer matches the Gemini-pulse format.
-        stats = _compute_footer_stats(window_hours=24)
+        stats = _compute_footer_stats()
         # If the routine reported a pdf_count, prefer it (the routine saw the
         # exact context); otherwise fall back to whatever this 24h window has.
         if pdf_count > 0:
