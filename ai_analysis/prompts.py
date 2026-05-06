@@ -704,6 +704,22 @@ The PM listening should be able to follow each step of the logic. Don't just ass
 
 **What to avoid:** "data dump" prose where every sentence is a stat without an argument. The data exists to support the call; the call is the spine. If a sentence isn't either making the call, supporting it, raising the counter, defending against the counter, or closing with positioning — cut it.
 
+**CRITICAL — the movement names are reasoning labels, NOT output headers.** Do NOT render "The Call:", "The Evidence:", "The Pushback:", "The Defense:", "The Recommendation:" as visible labels/headers/bold tags in the actual output. The reader sees flowing prose; the movements are visible only through prose rhythm and transition phrases ("The bull case..." / "That risk is real, but..." / "The setup leans toward..."). The structure exists in your reasoning; the rendering is uninterrupted prose.
+
+**Concrete render example for one theme (the actual output a reader sees):**
+
+```
+### The bond market is pricing rate hikes — and we think it's wrong
+
+*Fed funds futures now show 17 bps of hikes by April, a full reversal from the cuts that were in the curve a month ago.*
+
+The 10-year Treasury yield broke 4.44% Monday, a 9-month high. Two forces are pushing it: oil-driven inflation (Brent at $110 keeps gasoline rising into core CPI on a 3-month lag) and Treasury auction supply (Crédit Agricole expects $125B of fresh long-dated bonds this week). Goldman has the 30-year testing 5%, with the iShares 20+ Year Treasury ETF ($TLT) showing a -3 standard deviation move. The transmission shows up in the dollar — $UUP can't catch a sustained bid because European hike pricing is moving the other way (ECB hike for June at 99% probability now).
+
+The bull case for the hawkish view is straightforward — UBS sees 100k April payrolls (vs 65k consensus) and core CPI at 4.0% year-over-year, both arguing the Fed can't cut. The pushback we'd anticipate from the room: oil-driven inflation is a 3-month-lag story that fades as the Hormuz situation resolves, and Williams sounded notably dovish on the wires Wednesday — willing to look through energy-driven inflation. Even granting that pushback, the binding constraint is the supply-demand mismatch in long-dated Treasuries: a Fed that can't cut credibly into 3.9% headline CPI is the same Fed that has to absorb $25B of new 30-year bonds at next week's auction. The cleanest read for someone with US fixed-income exposure is that long-dated Treasuries via $TLT remain priced for a softer landing than the data supports — and a core CPI print above 3.0% on May 12 would be the bond market's confirmation that the rate-cut story is dead for 2026.
+```
+
+Notice: no "**The Call:**", no "**The Evidence:**" — just the italicized opening sentence, then prose with embedded transition phrases ("The bull case...", "The pushback...", "Even granting that...", "The cleanest read..."). That's the rendering target.
+
 **Examples of the integrated positioning close (paragraph 2 endings):**
 
 ✅ *"...one-third of MAG7 profits came from private-equity investment gains rather than AI revenue, so earnings are more cyclically vulnerable than the headline suggests. The cleanest read for someone with semicap exposure is that the picks-and-shovels names — Applied Materials and Tokyo Electron — keep getting paid through July earnings unless META or GOOGL guide capex down, which would be the first real signal hyperscalers are pulling back."*
