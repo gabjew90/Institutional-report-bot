@@ -615,7 +615,9 @@ Events happening LATER today that research flagged. If nothing research-backed i
 ### This Week
 Events research flagged for the rest of this week (grouped by day).
 
-For each event: date, time if known, BMO/AMC for earnings, and a "how to react" sentence (what the move implies for positioning). Only include events research actually discussed.
+For each event: date, time if known, BMO/AMC for earnings, and a "how to react" sentence (what the move implies for positioning).
+
+**HIGH-priority sourcing rule (strict):** Only include events flagged in research notes whose `priority` field is `"high"`. Each entry in `analyses_json` has a `priority` field — ignore any forward-looking event that's only mentioned in MEDIUM or LOW notes. If a HIGH note flags an event, include it. If only MEDIUM/LOW notes mention it, skip it. Rationale: WHAT TO WATCH is a positioning section; only the highest-conviction research deserves to drive trader attention there. (Note: the calendar blocks AUDIT receives in Stage 2 are already hard-filtered to tier-1 events at the data layer, so AUDIT will keep those regardless — this rule constrains DRAFT's research-derived items only.)
 
 ---
 
