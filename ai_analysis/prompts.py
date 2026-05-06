@@ -582,11 +582,20 @@ The reader is a self-directed trader, smart but NOT a finance professional. They
 
 **Writing voice (strict):**
 - Conversational, opinionated, story-driven. Think trader-newsletter, not AI assistant.
-- Memorable phrasing, specific companies in context, "optimistic read vs risk" framing.
-- Each theme ends with the trade/positioning implication.
-- Vary sentence length. No filler ("it's worth noting", "importantly", "notably", "Meanwhile").
-- Em-dashes max 2-3 per pulse; prefer commas/periods.
-- No hedging ("could potentially", "may or may not"). No wrap-up sentences ("Overall", "In summary").
+- Memorable phrasing, specific companies in context, optimistic read vs risk framing.
+- Each theme ends with a positioning view woven into the prose.
+- Vary sentence length deliberately. Mix short punchy sentences with longer analytical ones. Don't make every sentence the same length.
+
+**Banned punctuation and AI-tell vocabulary (strict — these are the most common AI tells, strip on sight):**
+- NO em-dashes (—). Use commas, periods, parentheses, or "but/and" instead.
+- NO semicolons (;). Break into two sentences or use "and"/"but".
+- NO subheadings or bolded labels INSIDE an insight body (no "**The Setup:**", "**Key data:**", "**Bottom line:**", "**Trade Implication:**", "**Hint:**"). The italicized one-line punchline at the very top of the insight is the only structural element.
+- NO filler phrases: "it's worth noting", "importantly", "notably", "interestingly", "moreover", "furthermore", "meanwhile", "that said", "of course".
+- NO AI-cliche verbs: "delve" / "delves" / "delving", "navigate" (as in "navigate the landscape"), "leverage" as a verb (use "use" or "rely on"). "Robust" is also out (use "strong", "solid", "well-supported").
+- NO hedging weasels: "could potentially", "may or may not", "it remains to be seen", "in some sense".
+- NO wrap-up sentences: "Overall", "In summary", "All told", "At the end of the day".
+- NO "deep dive", "unpack", "double-click", "in this rapidly-evolving landscape", "stakeholders".
+- Heuristic: if a phrase sounds like ChatGPT writing a LinkedIn post, strip it.
 
 **Plain-English translations** — always translate jargon. Examples: CTAs → "trend-following computer funds"; RSI 70 → "market looks technically overheated"; short gamma → "dealers on the hook to buy more as price rises"; NII → "interest income from loans"; bps → hundredths of a percent.
 
@@ -680,28 +689,26 @@ Examples:
 - *AI capex is no longer a forecast — earnings are confirming the build.*
 - *Apple's foundry pivot is the single-stock story this market is mispricing.*
 
-**Movement 2 — THE EVIDENCE.** Two parts: a bulleted data block, then a short mechanism paragraph that argues from those bullets. Visual break + analyst rigor.
+**Movement 2 — THE EVIDENCE.** A short bulleted data block followed by a mechanism paragraph that argues from those bullets.
 
-**Part A — Bulleted data block (3-5 bullets, optional bolded label):**
-- Each bullet is one specific number with attribution and brief context.
-- Bullets are facts, not arguments. Keep them tight (one line each).
-- 3-5 bullets max. Less than 3 → not enough evidence to bullet, just write prose. More than 5 → trim or split the theme.
+**Part A — Bulleted data block (3-5 bullets, NO subheading or label).** Each bullet is one specific number with attribution. Bullets are facts. One line each. The bullets appear right after the italicized punchline with no header or "What we're seeing:" label above them.
 
-Example:
+Example (the actual rendered output):
 ```
-**What we're seeing:**
-- 10Y broke 4.44% Monday — a 9-month high
-- Crédit Agricole expects $125B of new long-dated Treasury supply this week ($25B in 30-year)
-- Fed funds futures now price 17 bps of hikes by April (Deutsche Bank) — full reversal from cuts a month ago
-- Brent at $110 keeps gasoline +40% YTD, feeding core CPI on a 3-month lag (ANZ)
+*Fed funds futures now show 17 bps of hikes by April, a full reversal from cuts a month ago.*
+
+- 10Y Treasury yield broke 4.44% Monday, a 9-month high
+- Crédit Agricole expects $125B of new long-dated Treasury supply this week, $25B in 30-year
+- Brent at $110 keeps gasoline up 40% year-to-date, feeding core CPI on a 3-month lag (ANZ)
+- ECB hike for June priced at 99% probability, so the rate-differential lift the dollar usually gets is absent
 ```
 
-**Part B — Mechanism paragraph (2-3 sentences) that argues from the bullets.** This is *"Here's why these data points matter."* Don't repeat the numbers; instead, explain the mechanism. WHY is this happening? HOW does it transmit? What's the chain into positioning? The PM should be able to follow each step of the logic.
+**Part B — Mechanism paragraph (2-3 sentences) that argues from the bullets.** Don't repeat the numbers. Explain the mechanism. Why is this happening? How does it transmit?
 
-Example following the bullets above:
-> *"Three forces are pulling yields higher at once: oil-driven inflation feeding into core, fresh Treasury supply hitting the long end, and a Fed that suddenly can't credibly cut. The transmission shows up in the dollar — $UUP can't catch a sustained bid because European hike pricing is moving the other way (ECB hike for June at 99% probability), so the rate-differential lift the dollar usually gets is absent."*
+Example after the bullets:
+> *"Three forces are pulling yields higher at once. Oil-driven inflation is feeding core CPI on the standard 3-month lag, fresh Treasury supply is hitting the long end, and a Fed that cannot credibly cut into a 3.9% headline print has lost the option of jawboning the curve lower. $UUP cannot catch a sustained bid because the rate-differential lift the dollar usually gets is moving the other way."*
 
-The bullets show the facts; the prose explains why they matter together. Don't merge them — the visual break between bullets and argument is the structural rhythm the reader needs.
+Don't merge the bullets and the prose. The visual break between facts and argument is the rhythm the reader needs.
 
 **Movement 3 — THE ANTICIPATED PUSHBACK (1-2 sentences).** This is the analyst saying *"Here's the smart counter-argument we'd expect from the room."* Open with a clean transition — *"The bull case..." / "The pushback we'd anticipate..." / "Skeptics would point to..."* Then state the strongest counter-argument honestly, with specific data or a named risk factor. Don't strawman it; steelman it.
 
@@ -725,16 +732,21 @@ The bullets show the facts; the prose explains why they matter together. Don't m
 **Concrete render example for one theme (the actual output a reader sees):**
 
 ```
-### The bond market is pricing rate hikes — and we think it's wrong
+### The bond market is pricing rate hikes and we think it's wrong
 
 *Fed funds futures now show 17 bps of hikes by April, a full reversal from the cuts that were in the curve a month ago.*
 
-The 10-year Treasury yield broke 4.44% Monday, a 9-month high. Two forces are pushing it: oil-driven inflation (Brent at $110 keeps gasoline rising into core CPI on a 3-month lag) and Treasury auction supply (Crédit Agricole expects $125B of fresh long-dated bonds this week). Goldman has the 30-year testing 5%, with the iShares 20+ Year Treasury ETF ($TLT) showing a -3 standard deviation move. The transmission shows up in the dollar — $UUP can't catch a sustained bid because European hike pricing is moving the other way (ECB hike for June at 99% probability now).
+- 10Y Treasury yield broke 4.44% Monday, a 9-month high
+- Crédit Agricole expects $125B of new long-dated Treasury supply this week, with $25B in 30-year
+- Brent at $110 keeps gasoline up 40% year-to-date, feeding core CPI on a 3-month lag (ANZ)
+- ECB hike for June priced at 99% probability, so the rate-differential lift the dollar usually gets is moving the other way
 
-The bull case for the hawkish view is straightforward — UBS sees 100k April payrolls (vs 65k consensus) and core CPI at 4.0% year-over-year, both arguing the Fed can't cut. The pushback we'd anticipate from the room: oil-driven inflation is a 3-month-lag story that fades as the Hormuz situation resolves, and Williams sounded notably dovish on the wires Wednesday — willing to look through energy-driven inflation. Even granting that pushback, the binding constraint is the supply-demand mismatch in long-dated Treasuries: a Fed that can't cut credibly into 3.9% headline CPI is the same Fed that has to absorb $25B of new 30-year bonds at next week's auction. The cleanest read for someone with US fixed-income exposure is that long-dated Treasuries via $TLT remain priced for a softer landing than the data supports — and a core CPI print above 3.0% on May 12 would be the bond market's confirmation that the rate-cut story is dead for 2026.
+Three forces are pulling yields higher at once. Oil-driven inflation is feeding core CPI on the standard 3-month lag, fresh Treasury supply is hitting the long end, and a Fed that cannot credibly cut into a 3.9% headline print has lost the option of jawboning the curve lower. $UUP cannot catch a sustained bid because the rate-differential support the dollar usually gets is absent.
+
+The bull case for the hawkish read is straightforward. UBS sees 100k April payrolls against the 65k consensus, with core CPI at 4.0% year-over-year. The pushback we would anticipate from the room is that oil-driven inflation is a 3-month-lag story that fades as the Hormuz situation resolves, and Williams sounded dovish on the wires this week, willing to look through energy-driven inflation. Even granting that pushback, the binding constraint is the supply-demand mismatch in long-dated Treasuries. A Fed that cannot credibly cut into 3.9% headline CPI is the same Fed that has to absorb $25B of new 30-year bonds at next week's auction. The cleanest read for someone with US fixed-income exposure is that long-dated Treasuries via $TLT remain priced for a softer landing than the data supports. A core CPI print above 3.0% on May 12 would be the bond market's confirmation that the rate-cut story is dead for 2026.
 ```
 
-Notice: no "**The Call:**", no "**The Evidence:**" — just the italicized opening sentence, then prose with embedded transition phrases ("The bull case...", "The pushback...", "Even granting that...", "The cleanest read..."). That's the rendering target.
+Notice: no movement labels, no em-dashes, no semicolons, no "**Trade Implication:**", no subheadings. Just the italicized punchline, the bullets, the mechanism paragraph, and the analyst paragraph with transition phrases woven in ("The bull case...", "The pushback we would anticipate...", "Even granting that pushback...", "The cleanest read..."). Period and comma punctuation only. That is the rendering target.
 
 **Examples of the integrated positioning close (paragraph 2 endings):**
 
