@@ -295,7 +295,7 @@ async def synthesize_daily_pulse(
         contents=draft_prompt,
         config=types.GenerateContentConfig(
             system_instruction=DRAFT_SYSTEM,
-            max_output_tokens=8192,
+            max_output_tokens=12288,  # room for 1800-2200 word target with 3-6 substantial themes
             temperature=0.4,  # slightly higher for creative narrative
         ),
     )
@@ -328,7 +328,7 @@ async def synthesize_daily_pulse(
         contents=audit_prompt,
         config=types.GenerateContentConfig(
             system_instruction=AUDIT_SYSTEM,
-            max_output_tokens=8192,
+            max_output_tokens=12288,  # AUDIT may rewrite + add themes; needs same headroom as DRAFT
             temperature=0.2,  # lower temp for factual correction
         ),
     )

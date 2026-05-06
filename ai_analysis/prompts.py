@@ -604,20 +604,25 @@ After counting, INSIGHTS leads with whichever theme has the most banks behind it
 - Crypto institutional view (ETF flows, regulatory, positioning)
 - Single-topic dedicated notes (M&A, regulatory catalysts, earnings reactions)
 
-Format flexible — paragraphs for tension-building themes, bullets for enumerative ones.
-Each theme: situation → tension (optimistic vs risk) → trade implication.
+**Each INSIGHT is 200-300 words of flowing prose, not a headline + bullet.** Default to two short paragraphs, then a Trade Implication line. Required structure:
 
-**Tension framing:** weave the optimistic read vs risk INTO the body paragraph. Don't render it as a separate `*The Tension:*` bullet — that reads like a template. Use prose like: *"The bull case is X. The risk is Y."* or *"Bulls argue X; the pushback from Z desk is that Y."*
+**Paragraph 1 — what's happening + the mechanism.** Open with a hook sentence that names the specific shift with a number. Then explain the actual mechanism: WHY this is happening, HOW it transmits to markets, what the chain of cause-and-effect is. This is the "critical thinking" layer. Don't just assert "capex is rising" — explain that 1/3 of MAG7 earnings came from PE investment gains (so the capex is leveraged on financial engineering, not pure AI demand). Don't just say "yields are breaking out" — explain that energy + labor are firming core inflation projections, so duration is repricing without a Fed signal needed. Weave in 3+ specific data points (named banks with specific numbers, levels, percentiles, dissent counts) — not as a list, as part of the argument.
 
-**Data density requirement (critical — the body must be specific, not summary):** every theme body must include AT LEAST 3 concrete data points pulled from the analyses_json. Examples of what counts as a data point:
-- Specific number with attribution: *"Goldman raised 2026 hyperscaler capex to $751B, up $80B in two weeks"* — not *"capex estimates have been revised upward"*.
-- Specific level / percentile: *"10Y broke 4.4% to a 9-month high; 30Y above 5%"* — not *"yields are rising"*.
-- Specific positioning data: *"hedge fund net leverage rebounded from -25% drop in March to 15% below 12-month highs"* — not *"positioning is improving"*.
-- Specific dissent count or vote: *"8-4 FOMC vote, highest dissent count since 1992 — Hammack, Kashkari, Logan opposed easing"* — not *"FOMC was hawkish"*.
-- Specific ticker with conviction and direction: *"GS desk recommends GSXEOCAP basket (14.7x fwd PE, +12pp earnings revision breadth YTD), L/S positioning at 5-year low"* — not *"long oil names"*.
-- Specific bank attribution to a specific call: *"Goldman raised hyperscaler capex to $751B; UBS sees $900B by 2027"* — not *"multiple banks see..."* (too vague) and ALSO not *"8+ high-priority notes flag..."* / *"cross-bank consensus is firming..."* (meta-narration). Name a bank only when you're citing its specific data point or call, not as a count of how many sources agree.
+**Paragraph 2 — the bull case vs the bear case, in prose.** Both reads must appear, in flowing sentences (not bullets). Name the bank or desk behind each side when there's a specific call. Be concrete about what each side requires to be true. Examples of voice: *"Bulls argue the AI capex super-cycle is structural; the bear case Goldman desk is flagging is that one-third of MAG7 profits came from PE investment gains, not AI revenue — earnings are more cyclically vulnerable than the headline suggests."* / *"UBS thinks the market is too hawkish on the Fed and sees two cuts in 2H; the pushback from JPM is that core CPI is locked in 3-month-lag from oil and you can't cut into a re-acceleration."*
 
-If a theme's body has fewer than 3 such data points, you're summarizing — go back to the analyses_json and pull more. The reader paid for institutional research; surface the specifics.
+**Trade Implication.** ONE line, not a bullet. Specific instrument + direction + horizon + invalidation. Examples: *"Long $AMAT or $SOXX into July semicap earnings — Goldman raised 2026 WFE estimates to $141B. Stop on a META or GOOGL capex guide-down — that breaks the picks-and-shovels thesis."* The invalidation is what makes it a trade not a story.
+
+**Data density (binding):** every theme body must include AT LEAST 3 concrete data points. Examples of what counts:
+- Specific number with attribution: *"Goldman raised 2026 hyperscaler capex to $751B, up $80B in two weeks (83% above 2025)"*
+- Specific level / percentile: *"10Y broke 4.4% to a 9-month high; 30Y above 5%"*
+- Specific positioning data: *"hedge fund net leverage rebounded from -25% drop in March to 15% below 12-month highs"*
+- Specific dissent count or vote: *"8-4 FOMC vote, highest since 1992 — Hammack, Kashkari, Logan opposed easing"*
+- Specific ticker with conviction: *"Long $AMAT — fwd PE 18x, earnings revision breadth +12pp YTD, L/S positioning at 5-year low"*
+- Specific bank citing specific data: *"Goldman raised hyperscaler capex to $751B; UBS sees $900B by 2027"*
+
+If a theme's body has fewer than 3 data points OR the prose is just headline-level summary ("a structural shift," "tangible revenue realization," "supply shocks are forcing rethinks"), go back to the analyses_json and pull the specifics. The reader paid for institutional research; surface it.
+
+**Banker-jargon translation (still required):** keep voice plain-English. Translate "convexity" → "the option pays off bigger as price moves further in your favor," "term structure" → "what the market expects rates to do over time," "bear-flattening" → "short-term yields rising faster than long-term," "delta one" → "a position that moves dollar-for-dollar with the underlying."
 
 ## 3. WHAT TO WATCH
 Forward-looking, research-only. Divide into:
@@ -634,7 +639,7 @@ For each event: date, time if known, BMO/AMC for earnings, and a "how to react" 
 
 ---
 
-**Target length ~1200-1500 words.** RECAP tight (placeholder + 1 paragraph). INSIGHTS carries the depth. WHAT TO WATCH concise bullets.
+**Target length ~1800-2200 words.** RECAP tight (placeholder + 1 paragraph). INSIGHTS carries the depth — each theme is a real 200-300 word analytical unit, not a headline. WHAT TO WATCH stays concise bullets.
 
 **Critical:** output ONLY the markdown pulse. No preamble, no disclaimers, no "Sourced from N reports" tags. Stage 2 will handle those.
 """
