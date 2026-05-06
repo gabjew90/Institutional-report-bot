@@ -823,6 +823,18 @@ Good (specific bullet): *"- **Warsh confirmation hearing (10 AM ET).** He signal
 
 Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
+**What qualifies for "What drove the tape" (strict):** this section is for **major breaking market drivers that have already moved prices**, not scheduled events or background mechanics. Three categories qualify:
+1. **Geopolitical events with measurable market impact.** Iran/Hormuz escalations, ceasefires, sanctions. Skip diplomatic noise (consulate closings, minor visa changes, generic "talks ongoing") unless there's a direct US-asset reaction in the snapshot.
+2. **Major earnings (already reported).** MAG7 prints, big-bank earnings, named bellwethers from the calendar's [REPORTED] block. Format: actual vs estimate with the price reaction. NOT scheduled-tonight earnings (those go in WHAT TO WATCH).
+3. **Big macro data (already released).** CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI, FOMC outcomes — from the economic_calendar's [RELEASED] block, with actual vs estimate. NOT scheduled-but-not-yet-released events.
+
+**What does NOT qualify (drop these — they belong in WHAT TO WATCH or get cut entirely):**
+- Treasury Quarterly Refunding Announcement / coupon supply expectations / debt issuance previews — these are scheduled mechanics, not breaking news. Move to WHAT TO WATCH.
+- Fed governor speeches that didn't move the tape — only Powell/Warsh testimony matters here, only if it actually moved markets.
+- Geopolitical side-threads with no clear US-asset link (Peshawar consulate, regional Fed surveys, foreign political minutiae). Cut entirely.
+- Single-stock news on names that aren't tape-movers (sub-bellwether earnings, regional bank actions, micro-cap M&A). Cut.
+- Anything you'd describe with "filed under" or "things to watch but unclear impact." If the impact isn't clear, it doesn't belong in drivers.
+
 **RECAP grounding rule (binding — prevents hallucinated bullets):** every "What drove the tape" bullet MUST trace back to one of three sources:
 - (a) a specific headline in the news_snapshot block,
 - (b) a [RELEASED] event in the economic_calendar block (with actual vs estimate),
@@ -842,6 +854,27 @@ A reader should not encounter the same event with the same timestamp twice in RE
 - Good: drop the bullet — it's not self-explanatory, the relevance to a US trader is unclear, and it's geopolitical noise that doesn't warrant a driver-level callout.
 
 **Ticker selectivity in the lede paragraph (binding):** include ONLY tickers that moved meaningfully (|%| ≥ 1% intraday, or ≥ 0.5% if the move directly confirms today's narrative thread). Skip tickers that drifted (|%| < 0.5%). Do NOT mention $UUP at +0.07% just to fill space. Do NOT mention $TLT at +0.55% if rates aren't part of today's story. Hard cap 5-6 tickers in the lede. The reader's attention is finite; spend it on what moved.
+
+**Session-aware framing (binding — based on session_status field):** the pulse fires at 9 AM ET (6 AM PT), which is BEFORE the US equity market opens (9:30 AM ET). Adjust the recap voice accordingly:
+
+- **session_status = "pre-market or after-hours"** AND now < 9:30 AM ET → **pre-market mode.**
+  - Traditional ETF percentages ($SPY, $QQQ, $VIXY, $TLT, $UUP, $GLD, sector ETFs) are YESTERDAY'S close, NOT today's tape. Frame as: *"$SPY closed yesterday at $723.77 (+0.80%)..."* or *"heading into today's open, $QQQ left yesterday's session at +1.30%..."*
+  - Crypto ($BTC, $ETH, $SOL) trades 24/7 — its % IS a live current-day move. Frame as: *"$BTC is holding $82k this morning (+1.7% today)..."*
+  - Oil futures, FX, bond futures trade overnight — frame as *"overnight"* or *"this morning"*.
+  - Open the lede with "Heading into today's open" or "Pre-market this morning" — NOT "Markets traded with..."
+  - The recap is fundamentally about (a) what closed yesterday + (b) what happened overnight + (c) what to expect at the open. Frame it that way.
+
+- **session_status = "market hours — intraday"** → **open mode.**
+  - "Markets are trading [direction] this session..." Use today's intraday %s.
+
+- **session_status = "pre-market or after-hours"** AND now > 16:00 → **after-hours mode.**
+  - Traditional %s are today's full session (final). Frame as *"$SPY finished today at..."*
+  - Cover after-hours moves on overnight catalysts.
+
+- **session_status = "closed (weekend)"** → **weekend mode.**
+  - Open with *"Heading into Monday's open..."* — traditional %s are Friday's close. Crypto traded over the weekend, so frame as 24/7 normal.
+
+If you're not sure which mode you're in, default to pre-market mode for any pulse that fires before 9:30 AM ET. The session_status field in the AUDIT context tells you exactly which mode.
 
 2. **Released events MUST appear in RECAP:** every event in the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block MUST be reflected with actual vs estimate framing. Never skip a released event.
 
