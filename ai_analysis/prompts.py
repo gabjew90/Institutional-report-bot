@@ -830,6 +830,19 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
 If a bullet makes ticker-specific or company-specific factual claims (e.g., "Intel hit a milestone," "Pfizer beat earnings," "$NVDA partnered with X"), the source headline MUST exist verbatim or near-verbatim in news_snapshot or as a calendar [REPORTED] entry. If you cannot point to which of (a)/(b)/(c) a bullet came from, DROP THE BULLET. Don't invent specifics that "feel right" given the broader narrative — that's hallucination. Better to ship 3 grounded bullets than 4 with one fabricated.
 
+**No duplication between lede paragraph and bullets.** If an event is mentioned in the lede paragraph (e.g., "a CMA CGM container ship was hit in the Strait of Hormuz at 4:25 AM ET"), it does NOT also get its own "What drove the tape" bullet. Pick the right home for each event:
+- Lede = high-level color and the dominant narrative thread (the one shaping today's tape)
+- Bullets = discrete drivers with their own data + context (released economic data, specific corporate news, individual policy actions)
+A reader should not encounter the same event with the same timestamp twice in RECAP. Walk the lede + bullets after writing — if any event appears twice, delete it from one of the two.
+
+**Every bullet must be self-explanatory to a non-finance reader.** If you mention something a smart options/crypto trader wouldn't immediately recognize (e.g., "Treasury Quarterly Refunding Announcement", "Peshawar consulate closing", "5y5y forward inflation expectations"), either include a one-sentence plain-English explanation of WHAT IT IS and WHY IT MATTERS in the bullet, or DROP THE BULLET. Examples:
+- Bad: *"Treasury Quarterly Refunding Announcement (8:30 AM today). Crédit Agricole expects $125bn coupon supply..."*
+- Good: *"Treasury Refunding Announcement at 8:30 AM today — this is when the U.S. Treasury says how much new debt it'll auction next quarter. Crédit Agricole expects ~$125B of new bonds across 3-year, 10-year, and 30-year maturities. Bigger 30-year auction sizes than expected push long-term yields higher and would hammer $TLT."*
+- Bad: *"US to close Peshawar consulate. Filed under 'things that don't square with imminent peace deal.'"*
+- Good: drop the bullet — it's not self-explanatory, the relevance to a US trader is unclear, and it's geopolitical noise that doesn't warrant a driver-level callout.
+
+**Ticker selectivity in the lede paragraph (binding):** include ONLY tickers that moved meaningfully (|%| ≥ 1% intraday, or ≥ 0.5% if the move directly confirms today's narrative thread). Skip tickers that drifted (|%| < 0.5%). Do NOT mention $UUP at +0.07% just to fill space. Do NOT mention $TLT at +0.55% if rates aren't part of today's story. Hard cap 5-6 tickers in the lede. The reader's attention is finite; spend it on what moved.
+
 2. **Released events MUST appear in RECAP:** every event in the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block MUST be reflected with actual vs estimate framing. Never skip a released event.
 
 3. **Major news MUST appear in RECAP:** any news headline from the last 6 hours that describes a market-moving event (ceasefire news, confirmation hearing outcome, major policy announcement, geopolitical deadline) MUST be cited in RECAP. State it directly — do NOT use source-prefix attribution like "per Reuters," "per CNBC," "according to." Just report what happened. The reader doesn't need to know which wire reported it.

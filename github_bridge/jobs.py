@@ -53,11 +53,15 @@ def bridge_enabled() -> bool:
 
 
 def dump_context_job() -> None:
-    """Build the pulse context (24h window) and commit JSON to the bridge.
+    """Build the pulse context and commit JSON to the bridge branch.
 
-    Runs in the APScheduler thread. Synchronous because build_pulse_context is
-    sync and gh.put_file is sync. Wrapped in try/except so a transient GitHub
-    blip doesn't crash the scheduler.
+    Window logic mirrors the original Gemini scheduled pulse:
+      cutoff = max(last 'daily' report's created_at, now - 96h ceiling)
+    so Monday's pulse correctly spans Friday's close through the weekend
+    to Monday morning. Falls back to 24h on the very first run when no
+    prior scheduled pulse exists.
+
+    Runs in the APScheduler thread. Synchronous (no async tools used).
     """
     if not bridge_enabled():
         return
@@ -65,10 +69,19 @@ def dump_context_job() -> None:
         gh.ensure_branch_exists()
 
         from datetime import timedelta
-        cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+        last_report_time = db.get_last_report_time()
+        max_lookback = (datetime.utcnow() - timedelta(hours=96)).isoformat()
+        if last_report_time:
+            cutoff = last_report_time if last_report_time > max_lookback else max_lookback
+            window_label = f"since-last-daily ({cutoff[:16]})"
+        else:
+            # No prior daily pulse exists — fall back to a 24h window.
+            cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+            window_label = "first-run-24h"
+
         rows = db.get_analyses_since(cutoff)
         if not rows:
-            log.info("Bridge: no analyses in 24h window — skipping context dump")
+            log.info(f"Bridge: no analyses since {cutoff[:16]} — skipping context dump")
             return
 
         analyses = _load_analyses_from_db(rows)
@@ -78,14 +91,16 @@ def dump_context_job() -> None:
 
         ctx = build_pulse_context(analyses, use_prev_context=True)
         ctx["dumped_at_utc"] = datetime.utcnow().isoformat() + "Z"
-        ctx["window_hours"] = 24
+        ctx["window_cutoff"] = cutoff
+        ctx["window_label"] = window_label
 
         body = json.dumps(ctx, indent=1)
-        msg = f"bridge: dump pulse-context ({ctx['pdf_count']} PDFs, {ctx['today_label']})"
+        msg = f"bridge: dump pulse-context ({ctx['pdf_count']} PDFs, {window_label})"
         result = gh.put_file(CONTEXT_PATH, body, msg)
         sha = (result.get("commit") or {}).get("sha", "")[:8]
         log.info(
-            f"Bridge: dumped pulse-context — {ctx['pdf_count']} PDFs, {len(body) // 1024}KB, commit {sha}"
+            f"Bridge: dumped pulse-context — {ctx['pdf_count']} PDFs, {len(body) // 1024}KB, "
+            f"window={window_label}, commit {sha}"
         )
     except Exception as e:
         log.error(f"Bridge: dump_context_job failed: {e}", exc_info=True)
