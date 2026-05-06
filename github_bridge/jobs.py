@@ -128,6 +128,30 @@ async def post_pending_pulses_job(bot=None) -> None:
         await _process_one_pulse(bot, item)
 
 
+def _compute_footer_stats(window_hours: int = 24) -> dict:
+    """Recompute the same rich footer stats the Gemini synthesizer uses.
+
+    Loads analyses for the given window from the local DB and runs them
+    through the existing _compute_stats helper in synthesizer.py. Returns
+    {pdf_count, top_sources, priority_mix, earliest_upload, latest_upload}.
+    Empty dict on any failure.
+    """
+    from datetime import timedelta
+    try:
+        cutoff = (datetime.utcnow() - timedelta(hours=window_hours)).isoformat()
+        rows = db.get_analyses_since(cutoff)
+        if not rows:
+            return {}
+        analyses = _load_analyses_from_db(rows)
+        if not analyses:
+            return {}
+        from report.synthesizer import _compute_stats
+        return _compute_stats(analyses)
+    except Exception as e:
+        log.warning(f"Bridge: failed to compute footer stats: {e}")
+        return {}
+
+
 def _parse_frontmatter(markdown: str) -> tuple[dict, str]:
     """Strip an optional YAML-style frontmatter block from the top of markdown.
 
@@ -182,6 +206,17 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         pdf_count = int(meta.get("pdf_count", 0))
         input_tokens = int(meta.get("input_tokens", 0))
         output_tokens = int(meta.get("output_tokens", 0))
+
+        # Recompute the rich footer stats (top sources, priority mix, date
+        # range) from the same 24h window the routine just synthesized over,
+        # so the Discord embed footer matches the Gemini-pulse format.
+        stats = _compute_footer_stats(window_hours=24)
+        # If the routine reported a pdf_count, prefer it (the routine saw the
+        # exact context); otherwise fall back to whatever this 24h window has.
+        if pdf_count > 0:
+            stats["pdf_count"] = pdf_count
+        else:
+            pdf_count = stats.get("pdf_count", 0)
         report = DailyReport(
             report_date=today,
             report_type="daily",  # routine pulses replace the scheduled Gemini one
@@ -190,7 +225,7 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             raw_json={"source": "github_bridge", "pending_file": name, **meta},
             input_tokens=input_tokens,
             output_tokens=output_tokens,
-            stats={},
+            stats=stats,
         )
 
         # Persist before posting so we don't lose track if Discord errors
