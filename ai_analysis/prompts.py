@@ -606,6 +606,18 @@ After counting, INSIGHTS leads with whichever theme has the most banks behind it
 Format flexible — paragraphs for tension-building themes, bullets for enumerative ones.
 Each theme: situation → tension (optimistic vs risk) → trade implication.
 
+**Tension framing:** weave the optimistic read vs risk INTO the body paragraph. Don't render it as a separate `*The Tension:*` bullet — that reads like a template. Use prose like: *"The bull case is X. The risk is Y."* or *"Bulls argue X; the pushback from Z desk is that Y."*
+
+**Data density requirement (critical — the body must be specific, not summary):** every theme body must include AT LEAST 3 concrete data points pulled from the analyses_json. Examples of what counts as a data point:
+- Specific number with attribution: *"Goldman raised 2026 hyperscaler capex to $751B, up $80B in two weeks"* — not *"capex estimates have been revised upward"*.
+- Specific level / percentile: *"10Y broke 4.4% to a 9-month high; 30Y above 5%"* — not *"yields are rising"*.
+- Specific positioning data: *"hedge fund net leverage rebounded from -25% drop in March to 15% below 12-month highs"* — not *"positioning is improving"*.
+- Specific dissent count or vote: *"8-4 FOMC vote, highest dissent count since 1992 — Hammack, Kashkari, Logan opposed easing"* — not *"FOMC was hawkish"*.
+- Specific ticker with conviction and direction: *"GS desk recommends GSXEOCAP basket (14.7x fwd PE, +12pp earnings revision breadth YTD), L/S positioning at 5-year low"* — not *"long oil names"*.
+- Specific bank attribution (3+ banks for cross-bank themes): *"UBS, Mizuho, Piper Sandler, and TME all flag…"* — not *"multiple banks see…"*.
+
+If a theme's body has fewer than 3 such data points, you're summarizing — go back to the analyses_json and pull more. The reader paid for institutional research; surface the specifics.
+
 ## 3. WHAT TO WATCH
 Forward-looking, research-only. Divide into:
 
@@ -711,6 +723,12 @@ Default: if you can't confirm a US listing/ADR for the ticker, drop the `$` and 
 If you spot a missing cross-bank theme, write a new INSIGHT yourself using the data points from the news block + draft references. Same format: situation → tension (optimistic vs risk) → trade implication. Better to add an obvious theme than ship a pulse that omits the dominant story.
 
 Target 3-6 high-impact themes. Better to ship 3 sharp themes than 6 with filler. If after culling you only have 2 strong themes, ship 2.
+
+**Pass A.5 — data density check.** Each surviving theme body must have at least 3 concrete data points (specific number with attribution, specific level/percentile, specific positioning data, specific dissent count, specific ticker with conviction, named bank attribution). If a theme body reads like a generic summary ("revenue growth is strong," "yields are rising," "positioning is improving"), go back to the news block + earnings calendar + the draft's own references and pull the specific numbers. Examples:
+- Weak: *"Hyperscaler capex is being revised upward."*
+- Strong: *"Goldman raised 2026 hyperscaler capex to $751B (up $80B in two weeks, 83% higher than 2025); MAG7 reported 20% revenue growth, 61% earnings growth — though 1/3 of profits came from PE investment gains."*
+
+Tension framing also: weave the optimistic-vs-risk read INTO the body prose, NOT as a separate `*The Tension:*` bullet. The bullet structure reads like an AI template. Use prose: *"Bulls argue the AI capex super-cycle is structural; the risk Goldman desk flags is that one-third of MAG7 profits came from PE investment gains, not AI revenue, leaving earnings vulnerable to credit cycle reversal."*
 
 **Pass B — impact close.** Every surviving theme must end with a concrete short-term trade implication — not generic "monitor closely" filler. A good implication names a direction/level/instrument and a horizon (this week / into CPI / before month-end). Examples:
 
