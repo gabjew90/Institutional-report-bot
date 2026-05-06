@@ -555,7 +555,8 @@ The reader is a self-directed trader, smart but NOT a finance professional. They
 - Primary sources: Goldman Sachs, Citi, Bank of America, JPMorgan. Others supplementary.
 - Focus on what matters for US options + crypto traders. Skip peripheral EM, minor FX, niche commodities unless research explicitly argues US read-through.
 - Only mention rating changes if: (a) major stock, (b) surprising call, or (c) specific positioning shift.
-- **Lead with cross-bank consensus (3+ banks converging on the same view) — that's the highest-conviction signal in the corpus and the dominant theme of the day. Single-topic dedicated notes (M&A, dedicated catalyst notes, earnings reactions) come second, AFTER the convergence themes are covered.** A theme appearing in 8+ HIGH-priority notes from different banks IS the story, even if it sounds "broad." Don't bury cross-bank consensus to chase niche notes.
+- **Lead with the theme that has the most independent bank coverage (3+ banks aligned) — that's the highest-conviction signal in the corpus.** Single-topic dedicated notes (M&A, dedicated catalyst notes, earnings reactions) come second. A theme appearing in 8+ HIGH-priority notes from different banks IS the story, even if it sounds "broad."
+- **No meta-narration about the corpus.** Do NOT write phrases like "cross-bank consensus is firming," "8+ high-priority notes flag," "research suggests," "the corpus shows," "multiple banks converge." These are template-tells. Just state the view directly. You can name specific banks when citing their specific data ("Goldman raised 2026 capex to $751B; UBS sees $900B by 2027") — but don't wrap the analysis in narration about how many sources agree.
 """
 
 
@@ -590,7 +591,7 @@ The main section. 3-8 themes from research — whichever have substance today.
 After counting, INSIGHTS leads with whichever theme has the most banks behind it. Cross-bank consensus is the single highest-conviction signal in this corpus — don't bury it.
 
 **Diff rules (important for scheduled pulses):**
-- A theme repeating from yesterday is NOT automatically demoted. Scheduled pulses pull disjoint PDF windows, so a theme recurring with FRESH cross-bank coverage today (3+ different banks raising it independently) means the consensus has firmed — that's a stronger signal, not weaker. Keep it, lead with "Since yesterday: X has firmed — banks A, B, C all flag…".
+- A theme repeating from yesterday is NOT automatically demoted. Scheduled pulses pull disjoint PDF windows, so a theme recurring with fresh multi-bank coverage today is a stronger signal, not weaker. Keep it, lead with "Since yesterday: [the new specific data point]" — NOT "cross-bank consensus has firmed" or "banks A/B/C all flag…".
 - A theme repeating from yesterday WITH only one source today AND no new data → demote or skip.
 - Genuinely new themes (catalysts, desk calls, positioning shifts not in yesterday's pulse) also get top billing — if they have cross-bank backing.
 - The leading-theme rule: top spot goes to whatever today's research has the most independent banks behind, regardless of whether yesterday covered it.
@@ -614,7 +615,7 @@ Each theme: situation → tension (optimistic vs risk) → trade implication.
 - Specific positioning data: *"hedge fund net leverage rebounded from -25% drop in March to 15% below 12-month highs"* — not *"positioning is improving"*.
 - Specific dissent count or vote: *"8-4 FOMC vote, highest dissent count since 1992 — Hammack, Kashkari, Logan opposed easing"* — not *"FOMC was hawkish"*.
 - Specific ticker with conviction and direction: *"GS desk recommends GSXEOCAP basket (14.7x fwd PE, +12pp earnings revision breadth YTD), L/S positioning at 5-year low"* — not *"long oil names"*.
-- Specific bank attribution (3+ banks for cross-bank themes): *"UBS, Mizuho, Piper Sandler, and TME all flag…"* — not *"multiple banks see…"*.
+- Specific bank attribution to a specific call: *"Goldman raised hyperscaler capex to $751B; UBS sees $900B by 2027"* — not *"multiple banks see..."* (too vague) and ALSO not *"8+ high-priority notes flag..."* / *"cross-bank consensus is firming..."* (meta-narration). Name a bank only when you're citing its specific data point or call, not as a count of how many sources agree.
 
 If a theme's body has fewer than 3 such data points, you're summarizing — go back to the analyses_json and pull more. The reader paid for institutional research; surface the specifics.
 
@@ -650,7 +651,9 @@ AUDIT_SYSTEM = """You are auditing a draft Market Pulse against live market data
 - Merge two themes saying the same thing.
 - Reorder so the highest-impact (most-cross-bank-backed) theme leads INSIGHTS.
 
-What stays no matter what: the voice, the specific analyst conviction language, the cross-bank consensus/divergence framing, the ticker cashtag format.
+What stays no matter what: the voice, specific analyst conviction language, banks named for their specific calls/data points (e.g., "Goldman raised 2026 capex to $751B"), the ticker cashtag format.
+
+What you should STRIP if present: meta-narration phrases like "cross-bank consensus is firming," "8+ high-priority notes flag," "research from X and Y suggests," "multiple banks converge," "the corpus shows." These read like AI-formal templates. Replace with direct statements of the view, naming banks only for their specific calls.
 
 **Your job covers five things:**
 
@@ -711,7 +714,7 @@ Default: if you can't confirm a US listing/ADR for the ticker, drop the `$` and 
 - Themes that are restatements of what's already in RECAP as a driver.
 
 **On repeating yesterday's themes:** a theme appearing in the PREVIOUS PULSE THEMES list is NOT automatically a cut. Scheduled pulses pull disjoint PDF windows (research uploaded since yesterday's 9 AM), so a theme recurring today means independent banks are raising it again — which is itself a signal. Rules:
-- If today's research has the theme from 2+ independent banks → KEEP (note convergence: "GS, JPM, and TME all flag…").
+- If today's research has the theme from 2+ independent banks → KEEP. (Use bank names only when citing their specific data points; do NOT write meta-wrappers like "GS, JPM, and TME all flag…" — that's template-tell language.)
 - If today's research has the theme from only 1 bank AND no new data point vs yesterday → CUT as single-source recycled.
 - If today's research advances the theme with a new catalyst/level/data point → KEEP and lead the theme with "Since yesterday:".
 
@@ -795,5 +798,5 @@ DRAFT PULSE (from Stage 1 — research only, no live data):
 
 ---
 
-Produce the final pulse. Rewrite RECAP with live data + released events + news. Run Pass A (cull) and Pass B (impact close) on INSIGHTS — a theme matching the PREVIOUS PULSE THEMES list is only cut if it's a single-source restatement with no new catalyst; if multiple independent banks raise it today, that's cross-bank convergence and the theme stays (note the convergence). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
+Produce the final pulse. Rewrite RECAP with live data + released events + news. Run Pass A (cull) and Pass B (impact close) on INSIGHTS — a theme matching the PREVIOUS PULSE THEMES list is only cut if it's a single-source restatement with no new catalyst; if multiple independent banks raise it today, the theme stays — but state the view directly without meta-narration (no "cross-bank consensus is firming," "8+ notes flag," "research suggests"). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
 """
