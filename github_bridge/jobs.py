@@ -239,10 +239,30 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             output_tokens=output_tokens,
         )
 
-        # Post to every configured Discord channel
+        # Post to Discord channels. By default, all channels in
+        # DISCORD_CHANNEL_ID. If the routine sets a `target_channels`
+        # frontmatter value (comma-separated IDs or name substrings), filter
+        # to those — used for test-runs that should only hit a test channel.
+        target_filter = (meta.get("target_channels") or "").strip()
+        configured_ids = settings.discord_channel_ids
+        target_ids: list[int] = []
+        if target_filter:
+            tokens = [t.strip() for t in str(target_filter).split(",") if t.strip()]
+            for cid in configured_ids:
+                channel = bot.get_channel(cid)
+                cname = channel.name if channel else ""
+                for tok in tokens:
+                    if tok.isdigit() and int(tok) == cid:
+                        target_ids.append(cid); break
+                    if tok and not tok.isdigit() and tok.lower() in cname.lower():
+                        target_ids.append(cid); break
+            log.info(f"Bridge: target_channels filter '{target_filter}' matched {len(target_ids)} of {len(configured_ids)} channels")
+        else:
+            target_ids = list(configured_ids)
+
         embeds = format_report_embeds(report)
         channels_sent = 0
-        for cid in settings.discord_channel_ids:
+        for cid in target_ids:
             try:
                 channel = bot.get_channel(cid)
                 if channel is None:
