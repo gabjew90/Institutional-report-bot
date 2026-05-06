@@ -688,7 +688,39 @@ To find tension points, pull from each relevant analysis's `risk_factors` field,
 
 If a theme's body has fewer than 5 data points + a tension point, OR the prose is just headline-level summary ("a structural shift," "tangible revenue realization," "supply shocks are forcing rethinks"), go back to the analyses_json and pull the specifics. The reader paid for institutional research; surface it.
 
-**Banker-jargon translation (still required):** keep voice plain-English. Translate "convexity" → "the option pays off bigger as price moves further in your favor," "term structure" → "what the market expects rates to do over time," "bear-flattening" → "short-term yields rising faster than long-term," "delta one" → "a position that moves dollar-for-dollar with the underlying."
+**Banker-jargon translation (binding — most-cut feedback from readers).** The audience is a smart options/crypto trader who is NOT a finance professional. They don't know what "duration," "breakevens," "term curve," "rate differential," "fixed-rate receiver," or "bear-flatten" mean. Every technical term must be translated on first use, in parentheses or via a clause. Don't assume.
+
+**Banned-without-translation list** (if you write any of these, you MUST add a plain-English translation in the same sentence or in parens):
+- "duration" → "long-dated bonds — the longer the maturity, the bigger the price move when yields shift"
+- "term curve" / "term structure" → "what the market expects rates to do over time"
+- "breakevens" → "the inflation rate priced into the bond market"
+- "convexity" → "the trade pays off bigger as the price moves further in your favor"
+- "delta one" → "a position that moves dollar-for-dollar with the underlying"
+- "bear-flatten" → "short-term yields rising faster than long-term"
+- "bear-steepen" → "long-term yields rising faster than short-term"
+- "fixed-rate receiver" → "a bet that rates fall (you receive a fixed rate vs paying floating)"
+- "carry" → "what you earn just holding the position when nothing changes"
+- "rate differential" → "the gap between two countries' interest rates — drives the currency"
+- "front-end issuance" → "more short-term Treasury supply"
+- "long-end" → "30-year Treasuries"
+- "short-end" → "2-year Treasuries"
+- "vol surface" → "the option market's pricing of risk across strikes and expiries"
+- "skew" → "puts costing more than calls (or vice versa) — a sentiment signal"
+- "gamma" → "how fast the option's delta changes — short gamma means dealers buy strength and sell weakness"
+- "basis" → "the gap between cash and futures prices"
+- "inversion" → "short-term yields higher than long-term — historically a recession signal"
+- "products draw" / "products tightness" → "refined fuel inventories falling fast"
+- "selective single-name" → "specific stock picks vs the broad sector"
+- "tactically short / long" → "betting against / for in the near term"
+- "prime brokerage flows" → "what hedge funds are doing"
+- "impulse" → "fast move"
+- "post-2022 high" / "post-X high" → "highest since [year]" (read more naturally)
+- "coupon supply" → "new Treasury bonds being auctioned"
+- "issuance" → "new supply of (bonds / stock)"
+
+When in doubt, ASK YOURSELF: would a smart 28-year-old crypto trader understand this sentence on first read? If no, simplify or translate. The data is what makes the analysis good — the jargon just blocks it.
+
+**Voice standard test:** read every paragraph once. If a technical term is used without its translation having appeared in the same paragraph (or earlier in the theme), rewrite. The user has flagged this as the #1 cut to readability.
 
 ## 3. WHAT TO WATCH
 Forward-looking, research-only. Divide into:

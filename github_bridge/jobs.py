@@ -128,30 +128,68 @@ async def post_pending_pulses_job(bot=None) -> None:
         await _process_one_pulse(bot, item)
 
 
+def _parse_frontmatter(markdown: str) -> tuple[dict, str]:
+    """Strip an optional YAML-style frontmatter block from the top of markdown.
+
+    Routine writes:
+        ---
+        pdf_count: 220
+        input_tokens: 12345
+        output_tokens: 4567
+        ---
+
+        <actual pulse markdown>
+
+    Returns (metadata_dict, markdown_without_frontmatter). If no frontmatter
+    is present, returns ({}, markdown_unchanged).
+    """
+    if not markdown.startswith("---"):
+        return {}, markdown
+    end = markdown.find("\n---", 4)
+    if end == -1:
+        return {}, markdown
+    block = markdown[3:end].strip()
+    body = markdown[end + 4:].lstrip("\n")
+    meta: dict = {}
+    for line in block.splitlines():
+        if ":" not in line:
+            continue
+        k, _, v = line.partition(":")
+        k = k.strip()
+        v = v.strip()
+        if v.isdigit() or (v.startswith("-") and v[1:].isdigit()):
+            meta[k] = int(v)
+        else:
+            meta[k] = v
+    return meta, body
+
+
 async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
     name = item.get("name", "")
     pending_path = f"{PENDING_DIR}/{name}"
     archive_path = f"{ARCHIVE_DIR}/{name}"
 
     try:
-        markdown = gh.get_file_text(pending_path)
-        if not markdown:
+        raw_markdown = gh.get_file_text(pending_path)
+        if not raw_markdown:
             log.warning(f"Bridge: empty pending file {pending_path} — skipping")
             return
 
-        # Build a DailyReport for the existing formatter chain. We don't have
-        # a reliable pdf_count from the routine output, so derive from filename
-        # prefix if it includes one, else 0.
+        # Parse optional frontmatter for accurate pdf_count + token usage
+        meta, markdown = _parse_frontmatter(raw_markdown)
+
         today = date.today().isoformat()
-        pdf_count = 0  # not authoritative; routine may include it in markdown header
+        pdf_count = int(meta.get("pdf_count", 0))
+        input_tokens = int(meta.get("input_tokens", 0))
+        output_tokens = int(meta.get("output_tokens", 0))
         report = DailyReport(
             report_date=today,
             report_type="daily",  # routine pulses replace the scheduled Gemini one
             pdf_count=pdf_count,
             markdown_content=markdown,
-            raw_json={"source": "github_bridge", "pending_file": name},
-            input_tokens=0,
-            output_tokens=0,
+            raw_json={"source": "github_bridge", "pending_file": name, **meta},
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
             stats={},
         )
 
@@ -162,8 +200,8 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             report_json=json.dumps(report.raw_json),
             report_markdown=markdown,
             pdf_count=pdf_count,
-            input_tokens=0,
-            output_tokens=0,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
         )
 
         # Post to every configured Discord channel
@@ -187,10 +225,11 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
 
         # Archive the pending file regardless of channel success — the pulse is
         # in daily_reports table; we don't want to repost it on next poll.
+        # Archive the raw form (with frontmatter) so we keep the metadata.
         await asyncio.to_thread(
             gh.put_file,
             archive_path,
-            markdown,
+            raw_markdown,
             f"bridge: archive posted pulse {name} ({channels_sent} ch)",
         )
         await asyncio.to_thread(
