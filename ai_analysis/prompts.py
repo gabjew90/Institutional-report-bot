@@ -570,6 +570,14 @@ DRAFT_USER = """TODAY IS {today}. CURRENT TIME IS {now} ET.
 - Use exact tickers from the list above when referencing companies the research covers.
 - Don't invent tickers for names not in the list.
 
+{theme_coverage}
+
+**HOW TO USE THE THEME COVERAGE BLOCK (binding):**
+- The bank counts above are computed by keyword scan over the corpus, not your judgment. Treat them as ground truth.
+- INSIGHTS MUST lead with whichever theme has the highest bank count. The next two highest also belong in INSIGHTS unless conviction-disqualified (no specific data, no actionable ticker, sector with no US read-through).
+- A theme with 5+ banks behind it that you skip is a synthesis failure unless you can explicitly justify the cut (and the justification has to be in the conviction-disqualifier list above, not "I picked something else first").
+- A theme with 1-2 banks behind it can ONLY make INSIGHTS if it's a single-topic dedicated catalyst (M&A on an S&P 100 name, MAG7 earnings reaction, regulatory event with specific tickers). Otherwise it's a niche call and gets cut.
+
 Here are {pdf_count} research analyses to synthesize:
 
 {analyses_json}
@@ -582,13 +590,7 @@ A 1-2 paragraph narrative summary of what the research says the market is doing 
 ## 2. INSIGHTS & ALPHA
 The main section. 3-8 themes from research — whichever have substance today.
 
-**STEP 1 — Cross-bank consensus scan (do this BEFORE writing).** Mentally scan the {pdf_count} analyses above and list the top 5 themes by how many DIFFERENT bank/source names cover them. A theme covered by 8 banks is the dominant story; a theme covered by 1 bank with strong language is a niche call, not a consensus. Specific themes to check for in today's corpus before deciding what leads:
-- AI / hyperscaler earnings + capex super-cycle (count distinct banks)
-- Rate cut repricing / yields breakout / Fed dissents (count distinct banks)
-- Geopolitical oil shock (Hormuz / Iran / OPEC) (count distinct banks)
-- Big tech dispersion / specific sub-sector rotation (count distinct banks)
-- Major M&A / strategic stakes / deal flow (count distinct banks)
-After counting, INSIGHTS leads with whichever theme has the most banks behind it. Cross-bank consensus is the single highest-conviction signal in this corpus — don't bury it.
+**STEP 1 — Anchor on the THEME COVERAGE block above.** That block already counts banks per theme. Top 3 by bank count belong in INSIGHTS. Themes with 5+ banks belong in INSIGHTS unless they fail the conviction filter (no actionable specifics).
 
 **Diff rules (important for scheduled pulses):**
 - A theme repeating from yesterday is NOT automatically demoted. Scheduled pulses pull disjoint PDF windows, so a theme recurring with fresh multi-bank coverage today is a stronger signal, not weaker. Keep it, lead with "Since yesterday: [the new specific data point]" — NOT "cross-bank consensus has firmed" or "banks A/B/C all flag…".
@@ -612,6 +614,8 @@ After counting, INSIGHTS leads with whichever theme has the most banks behind it
 
 **Trade Implication.** ONE line, not a bullet. Specific instrument + direction + horizon + invalidation. Examples: *"Long $AMAT or $SOXX into July semicap earnings — Goldman raised 2026 WFE estimates to $141B. Stop on a META or GOOGL capex guide-down — that breaks the picks-and-shovels thesis."* The invalidation is what makes it a trade not a story.
 
+**Trade variety across themes (binding):** the primary instrument in each theme's Trade Implication must be DIFFERENT from every other theme. If theme 1 recommends `$AMAT`, theme 3 cannot also recommend `$AMAT` as its primary trade — find a different cleaner expression (e.g., theme 1 = `$SOXX`, theme 3 = pair trade `$ORCL` long vs `$AMD` short). Mentally track tickers used as you draft: if you find yourself reaching for a ticker already used as the primary in an earlier theme, that's a sign the new theme overlaps too much with the old one — either differentiate the instrument or merge the themes.
+
 **Single-name short / avoid calls — strict rules to prevent stale calls:**
 - Do NOT recommend shorting or "avoiding" a specific ticker based on a single intraday dispersion observation (e.g., one S&T note's "CPU weakness today: AMD, INTC, ARM, QCOM"). Intraday tape color is not a multi-week trade thesis.
 - A single-name short/avoid call requires (a) explicit research conviction on THAT specific ticker (a desk call, downgrade, named risk factor), AND (b) at least 2 different research notes converging on the bearish view on that name.
@@ -619,7 +623,7 @@ After counting, INSIGHTS leads with whichever theme has the most banks behind it
 - Better default: when in doubt, frame as long the strong side without naming individual shorts. E.g., "Long $MU and $ORCL" rather than "Avoid $AMD, $INTC, $QCOM" — that way a stale ticker-level read doesn't generate a wrong-direction call on a name the research never specifically targeted.
 - This applies to "avoid" framing too — "avoid $X" reads as a bearish call to a trader. Don't list individual tickers to avoid unless the research has named-and-specific bearish conviction on each.
 
-**Data density (binding):** every theme body must include AT LEAST 3 concrete data points. Examples of what counts:
+**Data density (binding):** every theme body must include AT LEAST 5 concrete data points (raised from 3 — pulse was hitting the floor and stopping). Examples of what counts:
 - Specific number with attribution: *"Goldman raised 2026 hyperscaler capex to $751B, up $80B in two weeks (83% above 2025)"*
 - Specific level / percentile: *"10Y broke 4.4% to a 9-month high; 30Y above 5%"*
 - Specific positioning data: *"hedge fund net leverage rebounded from -25% drop in March to 15% below 12-month highs"*
@@ -627,7 +631,11 @@ After counting, INSIGHTS leads with whichever theme has the most banks behind it
 - Specific ticker with conviction: *"Long $AMAT — fwd PE 18x, earnings revision breadth +12pp YTD, L/S positioning at 5-year low"*
 - Specific bank citing specific data: *"Goldman raised hyperscaler capex to $751B; UBS sees $900B by 2027"*
 
-If a theme's body has fewer than 3 data points OR the prose is just headline-level summary ("a structural shift," "tangible revenue realization," "supply shocks are forcing rethinks"), go back to the analyses_json and pull the specifics. The reader paid for institutional research; surface it.
+**Tension point (binding — every theme body must include one):** beyond the 5 data points, every theme must include at least one specific *caveat, counter-data point, or what-could-break-the-trade* drawn from the corpus. Examples: *"Goldman desk flags that 1/3 of MAG7 profits came from PE investment gains, not AI revenue — earnings are more cyclically vulnerable than the headline suggests."* / *"UBS sees two cuts in 2H but JPM pushes back: core CPI is locked in 3-month-lag from oil, you can't cut into a re-acceleration."* / *"L/S positioning at 5-year low is bullish — but if we get a single MAG7 capex guide-down, the picks-and-shovels thesis cracks."*
+
+To find tension points, pull from each relevant analysis's `risk_factors` field, `cross_bank_references` field (often shows divergence), and any `market_movers` entries with low conviction. Don't invent — cite specifics from the corpus.
+
+If a theme's body has fewer than 5 data points + a tension point, OR the prose is just headline-level summary ("a structural shift," "tangible revenue realization," "supply shocks are forcing rethinks"), go back to the analyses_json and pull the specifics. The reader paid for institutional research; surface it.
 
 **Banker-jargon translation (still required):** keep voice plain-English. Translate "convexity" → "the option pays off bigger as price moves further in your favor," "term structure" → "what the market expects rates to do over time," "bear-flattening" → "short-term yields rising faster than long-term," "delta one" → "a position that moves dollar-for-dollar with the underlying."
 
@@ -691,6 +699,13 @@ Bad (vague bullet): *"- Investors digested Warsh's hearing where his balance she
 Good (specific bullet): *"- **Warsh confirmation hearing (10 AM ET).** He signaled QE is back on the table if needed. Markets read him as net dovish — $TLT higher, dollar softer."*
 
 Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
+
+**RECAP grounding rule (binding — prevents hallucinated bullets):** every "What drove the tape" bullet MUST trace back to one of three sources:
+- (a) a specific headline in the news_snapshot block,
+- (b) a [RELEASED] event in the economic_calendar block (with actual vs estimate),
+- (c) the session price move itself in the market_snapshot block (e.g., a 5% Brent spike, $VIXY +8%, sector ETFs).
+
+If a bullet makes ticker-specific or company-specific factual claims (e.g., "Intel hit a milestone," "Pfizer beat earnings," "$NVDA partnered with X"), the source headline MUST exist verbatim or near-verbatim in news_snapshot or as a calendar [REPORTED] entry. If you cannot point to which of (a)/(b)/(c) a bullet came from, DROP THE BULLET. Don't invent specifics that "feel right" given the broader narrative — that's hallucination. Better to ship 3 grounded bullets than 4 with one fabricated.
 
 2. **Released events MUST appear in RECAP:** every event in the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block MUST be reflected with actual vs estimate framing. Never skip a released event.
 
@@ -768,6 +783,7 @@ If you can't write a concrete implication for a theme, that's a signal the theme
 - Missing crypto in RECAP → add from snapshot ($BTC always in the lede, $ETH/$SOL if moving).
 - Vague driver bullets → rewrite with specific data point + takeaway + impact.
 - **Aggregated single-name short/avoid calls** sourced from intraday tape color (e.g., "Avoid CPU-exposed names $AMD, $INTC, $QCOM" derived from one S&T note's dispersion observation) → reframe as a sector/pair trade (long memory vs short $SOXX, or long $ORCL vs $AMD pair) OR drop the bearish leg and just frame as long the strong side. Single-name short calls require explicit and repeated research conviction on that specific ticker — intraday dispersion lists do not qualify.
+- **Duplicate primary trade instruments across INSIGHTS** → if two themes recommend the same ticker as the primary trade (e.g., both theme 1 and theme 3 say "Long $AMAT"), rewrite the second theme's trade with a different cleaner instrument expression. Repeating the same ticker signals the themes overlap and dilutes the alpha — pick a differentiated expression (e.g., theme 1 = $SOXX, theme 3 = $MU; or theme 1 = direct long, theme 3 = pair trade).
 
 **Things NOT to fix:**
 - Writing voice, phrasing, sentence length — don't smooth it out.

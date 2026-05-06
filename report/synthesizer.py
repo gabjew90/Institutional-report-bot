@@ -42,6 +42,148 @@ def _fmt_et(utc_iso: str) -> str:
         return utc_iso[:16].replace("T", " ")
 
 
+# Theme buckets — keyword patterns scanned across each PDF's title +
+# key_insights + structured fields. Counts are by DISTINCT bank source so
+# a single bank uploading 12 notes on AI capex still counts as 1.
+# Patterns are lowercase substring matches; tune over time.
+_THEME_PATTERNS: dict[str, list[str]] = {
+    "AI capex / hyperscaler earnings": [
+        "ai capex", "ai infra", "hyperscaler", "data center capex",
+        "wafer fab", "wfe ", "$751b", "$750", "$751", "ai chip",
+        "ai monetiz", "ai super-cycle", "ai super cycle",
+        "mag7", "magnificent 7", "magnificent seven", "mag 7",
+        "ai infrastructure", "gpu demand", "neocloud",
+    ],
+    "Rate-cut repricing / yields breakout": [
+        "rate cut", "rate hike", "no cuts", "no rate cut", "fomc dissent",
+        "10y broke", "10-year yield", "10-yr yield", "10y above",
+        "30y above 5", "30-year yield", "30-yr above",
+        "bear-flatten", "bear flatten", "bear-steepen", "yields breaking",
+        "fed transition", "warsh", "hawkish hold", "hawkish pivot",
+        "dot plot", "cut probability", "priced out", "priced-out",
+        "dissent", "easing bias", "move index",
+    ],
+    "Hormuz / Iran / oil shock": [
+        "hormuz", "strait of hormuz", "iran", "uae attack", "fujairah",
+        "brent", "wti ", "$usd_oil", "blockade", "shipping disruption",
+        "oil shock", "energy shock", "oil capex", "$150/bbl", "$150 oil",
+        "opec+", "opecxit", "energy security",
+    ],
+    "Crypto institutional view": [
+        "btc ", "$btc", "bitcoin", "ethereum", "eth ", "solana", "sol ",
+        "crypto etf", "spot etf", "on-chain", "stablecoin", "spot bitcoin",
+        "crypto inflows", "btc etf", "eth etf",
+    ],
+    "Fed transition / dovish-hawkish surprise": [
+        "warsh confirmation", "fed transition", "fed chair transition",
+        "powell legacy", "powell exit", "warsh dovish", "warsh hawkish",
+        "warsh balance sheet",
+    ],
+    "Tech dispersion / K-shaped": [
+        "dispersion", "neocloud", "cpu-levered", "memory-levered",
+        "k-shaped", "intra-tech rotation", "ai winners", "software lagg",
+        "semis vs software", "semis-vs-software",
+    ],
+    "Positioning / late-stage / squeeze": [
+        "cta ", "ctas ", "systematic", "hedge fund net", "leverage",
+        "market concentration", "short squeeze", "melt-up", "melt up",
+        "shooting star", "exhaustion", "crowded positioning",
+        "prime brokerage", "retail inflows", "401(k)",
+    ],
+    "Major M&A / deal flow": [
+        "acquisition", "all-stock deal", "unsolicited proposal",
+        "buyout", "merger", "strategic stake", "spin-off", "spinoff",
+        "going private", "13d filing", "acq.", "to acquire",
+    ],
+    "Earnings reactions (single-name catalysts)": [
+        "1q26 beat", "1q26 miss", "q1 beat", "q1 miss", "q1'26",
+        "first take", "results released", "earnings reaction",
+        "guide-down", "guide down", "guide-up", "raise full year",
+        "ramp 2h", "second half guide",
+    ],
+}
+
+
+def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
+    """Scan analyses for theme keyword hits, count distinct banks per theme.
+
+    Returns {theme_name: {"banks": int, "pdfs": int, "sources": list[str]}}.
+    DRAFT prompt uses this to ground theme ordering — Gemini is told actual
+    bank counts so it can't accidentally bury cross-bank consensus.
+    """
+    from dataclasses import asdict
+
+    theme_sources: dict[str, set[str]] = {t: set() for t in _THEME_PATTERNS}
+    theme_pdf_counts: dict[str, int] = {t: 0 for t in _THEME_PATTERNS}
+
+    for a in analyses:
+        # Build a single lowercase blob from the structured analysis fields
+        parts: list[str] = []
+        parts.append((a.title or "").lower())
+        parts.extend((ins or "").lower() for ins in a.key_insights or [])
+        for mm in a.market_movers or []:
+            d = asdict(mm)
+            parts.append(" ".join(str(v).lower() for v in d.values() if v))
+        for sv in a.sector_views or []:
+            d = asdict(sv)
+            parts.append(" ".join(str(v).lower() for v in d.values() if v))
+        for mi in a.macro_indicators or []:
+            d = asdict(mi)
+            parts.append(" ".join(str(v).lower() for v in d.values() if v))
+        for ti in a.trade_ideas or []:
+            d = asdict(ti)
+            parts.append(" ".join(str(v).lower() for v in d.values() if v))
+        parts.extend((rf or "").lower() for rf in a.risk_factors or [])
+        parts.extend((cv or "").lower() for cv in a.crypto_views or [])
+        parts.extend((vp or "").lower() for vp in a.vol_and_positioning or [])
+        parts.extend((g or "").lower() for g in a.geopolitical or [])
+        blob = " ".join(parts)
+        if not blob.strip():
+            continue
+
+        source = (a.source or "Unknown").strip()
+        for theme, patterns in _THEME_PATTERNS.items():
+            if any(p in blob for p in patterns):
+                theme_sources[theme].add(source)
+                theme_pdf_counts[theme] += 1
+
+    return {
+        theme: {
+            "banks": len(theme_sources[theme]),
+            "pdfs": theme_pdf_counts[theme],
+            "sources": sorted(theme_sources[theme]),
+        }
+        for theme in _THEME_PATTERNS
+    }
+
+
+def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
+    """Render theme counts as a forcing-function block for the DRAFT prompt."""
+    lines = [
+        "THEME COVERAGE — distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):",
+    ]
+    # Sort by bank count desc, then pdf count desc, drop themes with 0 banks
+    ranked = sorted(
+        theme_map.items(),
+        key=lambda kv: (-kv[1]["banks"], -kv[1]["pdfs"], kv[0]),
+    )
+    for theme, info in ranked:
+        if info["banks"] == 0:
+            continue
+        srcs = info["sources"][:6]
+        more = info["banks"] - len(srcs)
+        srcs_str = ", ".join(srcs)
+        if more > 0:
+            srcs_str += f", +{more} more"
+        lines.append(
+            f"  - {theme}: {info['banks']} banks / {info['pdfs']} PDFs "
+            f"({srcs_str})"
+        )
+    if len(lines) == 1:
+        lines.append("  (no themes matched any pattern — corpus may be unusually narrow today)")
+    return "\n".join(lines)
+
+
 def _build_ticker_map(analyses: list[PdfAnalysis]) -> dict[str, dict]:
     """Aggregate entities_mentioned across all PDFs into a dedup ticker map.
 
@@ -282,12 +424,19 @@ async def synthesize_daily_pulse(
     # ==========================================================
     # STAGE 1: DRAFT from research only (no live data)
     # ==========================================================
+    # Programmatic theme classifier — count distinct banks per theme bucket
+    # so DRAFT prompt can anchor INSIGHTS ordering on actual coverage,
+    # not Gemini's gestalt of "what feels dominant."
+    theme_map = _classify_themes(analyses)
+    theme_coverage_block = _format_theme_coverage(theme_map)
+
     draft_prompt = DRAFT_USER.format(
         pdf_count=len(analyses),
         today=today_label,
         now=now_label,
         ticker_block=ticker_block,
         prev_pulse=prev_context,
+        theme_coverage=theme_coverage_block,
         analyses_json=analyses_json,
     )
     draft_response = await client.aio.models.generate_content(
