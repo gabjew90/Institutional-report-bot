@@ -654,7 +654,22 @@ The main section. 3-8 themes from research — whichever have substance today.
 
 **Paragraph 2 — the bull case vs the bear case, in prose.** Both reads must appear, in flowing sentences (not bullets). Name the bank or desk behind each side when there's a specific call. Be concrete about what each side requires to be true. Examples of voice: *"Bulls argue the AI capex super-cycle is structural; the bear case Goldman desk is flagging is that one-third of MAG7 profits came from PE investment gains, not AI revenue — earnings are more cyclically vulnerable than the headline suggests."* / *"UBS thinks the market is too hawkish on the Fed and sees two cuts in 2H; the pushback from JPM is that core CPI is locked in 3-month-lag from oil and you can't cut into a re-acceleration."*
 
-**Trade Implication.** ONE line, not a bullet. Specific instrument + direction + horizon + invalidation. Examples: *"Long $AMAT or $SOXX into July semicap earnings — Goldman raised 2026 WFE estimates to $141B. Stop on a META or GOOGL capex guide-down — that breaks the picks-and-shovels thesis."* The invalidation is what makes it a trade not a story.
+**Trade Implication.** ONE line (or two short sentences), not a bullet. Required pieces: instrument + direction + horizon + **WHY (the rationale in plain English)** + invalidation. The rationale is what turns "long $X" from a tip into something a trader can actually evaluate.
+
+Format: *"[Action]. Why: [the plain-English thesis driving the trade — what has to be true for this to work]. Risk: [the specific level/event that proves the thesis is wrong]."*
+
+Examples:
+- Weak (no rationale): *"Long $AMAT into July earnings."*
+- Weak (rationale is jargon): *"Long $AMAT — WFE upcycle on TAM expansion."*
+- Strong: *"Long $AMAT into July semicap earnings. Why: hyperscaler capex is a multi-year build (Goldman now sees $751B in 2026, up $80B in two weeks), and the equipment makers like Applied Materials get paid before the chip cycle peaks. Risk: a META or GOOGL capex guide-down at next earnings — that's the signal hyperscalers are pulling back."*
+
+- Weak: *"Long $BNO into next week — products tightness story."*
+- Strong: *"Long $BNO (the Brent oil ETF) into next week's Iran headlines. Why: even if Hormuz reopens tomorrow, refined-fuel inventories are 8-year lows and Europe's jet fuel runs out by June — oil prices stay elevated for months regardless of the ceasefire. Risk: shipping traffic actually resuming + Brent breaking $85 sustained — that's the market saying the supply scare is over."*
+
+- Weak: *"Long $TLT — duration trade."*
+- Strong: *"Long $TLT (long-dated Treasury ETF). Why: the bond market is now pricing rate hikes through April — that's wrong if oil stops feeding inflation, and Williams sounded dovish on the wires. Risk: 10-year yield breaking 4.55% sustained — that's the bond market saying it's serious about hikes."*
+
+Notice the pattern: the WHY is in plain English a non-banker can evaluate, and the RISK names a specific level or event, not "unfavorable market conditions."
 
 **Trade variety across themes (binding):** the primary instrument in each theme's Trade Implication must be DIFFERENT from every other theme. If theme 1 recommends `$AMAT`, theme 3 cannot also recommend `$AMAT` as its primary trade — find a different cleaner expression (e.g., theme 1 = `$SOXX`, theme 3 = pair trade `$ORCL` long vs `$AMD` short). Mentally track tickers used as you draft: if you find yourself reaching for a ticker already used as the primary in an earlier theme, that's a sign the new theme overlaps too much with the old one — either differentiate the instrument or merge the themes.
 
@@ -688,7 +703,13 @@ To find tension points, pull from each relevant analysis's `risk_factors` field,
 
 If a theme's body has fewer than 5 data points + a tension point, OR the prose is just headline-level summary ("a structural shift," "tangible revenue realization," "supply shocks are forcing rethinks"), go back to the analyses_json and pull the specifics. The reader paid for institutional research; surface it.
 
-**Banker-jargon translation (binding — most-cut feedback from readers).** The audience is a smart options/crypto trader who is NOT a finance professional. They don't know what "duration," "breakevens," "term curve," "rate differential," "fixed-rate receiver," or "bear-flatten" mean. Every technical term must be translated on first use, in parentheses or via a clause. Don't assume.
+**Plain English by default (binding — most-cut feedback from readers).** The audience is a smart options/crypto trader who is NOT a finance professional. They don't know what "duration," "breakevens," "term curve," "rate differential," "fixed-rate receiver," "bear-flatten," "products draw," or "single-name" mean. The default voice is **plain English**. Treat every technical term like a foreign word: only use it if (a) there's no plain equivalent AND (b) you immediately translate it in the same sentence.
+
+**Reframing test:** instead of "translate jargon," try "rewrite in trader-friendly language." Example contrast:
+- Banker phrasing: *"The 10y broke 4.4% on supply concerns ahead of Treasury refunding; long-end auction tail risk skews bear-steepener."*
+- Trader phrasing: *"The 10-year Treasury yield broke 4.4% — the bond market is nervous about a flood of new long-term debt at this week's Treasury auction. If the 30-year auction goes badly (weak demand at the price), long-term yields could spike further while short-term yields hold, which would hammer $TLT and any rate-sensitive equities."*
+
+The trader version is longer but the meaning is unambiguous. Don't optimize for word count over comprehension. **A 28-year-old options trader should be able to read every theme and immediately know (a) what's happening, (b) why it matters, and (c) what to do.** If any sentence fails one of those three tests, rewrite.
 
 **Banned-without-translation list** (if you write any of these, you MUST add a plain-English translation in the same sentence or in parens):
 - "duration" → "long-dated bonds — the longer the maturity, the bigger the price move when yields shift"
