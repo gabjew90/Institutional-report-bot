@@ -659,56 +659,51 @@ The main section. 3-8 themes from research — whichever have substance today.
 
 **Hard test: write the theme's central claim in one sentence first** (mentally or out loud). Then for every sentence in the body, ask: "does this sentence support that claim?" If no → cut it. If a fact is interesting but doesn't fit the theme, save it for a different theme or drop it entirely.
 
-**Trade Implication coherence:** the trade ticker, the catalyst, the rationale, and the invalidation must ALL connect to the same central thesis. If the theme is Apple foundry → trade should be on $INTC or memory makers benefiting from Apple-content-per-device, with a catalyst tied to Apple/Intel/foundry news (not on UBER's earnings night). Wrong trade-catalyst pairings ("Long $MU into UBER earnings to play Apple-foundry") are a coherence failure.
-
 **Bull/bear coherence:** both sides must be about the SAME thesis. If the bull case is "Apple's foundry split lifts $INTC for years," the bear case is "the Apple deal slips or comes in smaller than leaked" — NOT "Goldman has a Sell on $SMCI" (different stock, different story). Don't pad the bear case with unrelated negative calls.
 
 **Examples of theme-coherence failure (DO NOT DO THIS):**
 - ❌ Theme is "AI capex super-cycle." Body mentions Apple foundry, semicaps, $PLTR price target hike, hyperscaler earnings. — Too many threads. Pick one and make it the theme.
-- ❌ Theme is "Apple's foundry pivot." Trade is "Long $MU into UBER earnings." — UBER has nothing to do with Apple foundry. Catalyst mismatch.
-- ❌ Theme bull case names $INTC; trade is on $MU; bear case mentions $SMCI. — Three different tickers across one theme; the reader is whiplashed.
+- ❌ Theme bull case names $INTC; positioning read pivots to $MU; bear case mentions $SMCI. — Three different tickers across one theme; the reader is whiplashed.
 
 **Examples of theme-coherence success:**
-- ✅ Theme is "Apple's foundry pivot." Body is entirely about Apple/TSMC/Intel/Samsung dynamics, the multi-year revenue stream landing on $INTC, the memory-content-per-device read-through. Trade: "Long $INTC into Apple's June capacity announcement. Why: ... Risk: Apple deal walked back or framed as 'exploratory' with no firm volume commitment."
-- ✅ Theme is "Memory squeeze on AI demand." Body is about $MU/$SNDK/SK Hynix supply tightness, hyperscaler DRAM/NAND content. Trade is on $MU with a memory-specific catalyst.
+- ✅ Theme is "Apple's foundry pivot." Body is entirely about Apple/TSMC/Intel/Samsung dynamics, the multi-year revenue stream landing on $INTC, the memory-content-per-device read-through.
+- ✅ Theme is "Memory squeeze on AI demand." Body is about $MU/$SNDK/SK Hynix supply tightness, hyperscaler DRAM/NAND content.
 
 If you find yourself writing "but a separate angle is..." or "on a different note..." mid-theme, you've broken coherence. Either commit to one theme or split into two themes.
 
-**Each INSIGHT is 200-300 words of flowing prose, not a headline + bullet.** Default to two short paragraphs, then a Trade Implication line. Required structure:
+**Each INSIGHT is 200-300 words of flowing prose, NOT a headline + bullets and NOT a labeled "Trade Implication" line at the end.** Default to two short paragraphs. Required structure:
 
-**Paragraph 1 — what's happening + the mechanism.** Open with a hook sentence that names the specific shift with a number. Then explain the actual mechanism: WHY this is happening, HOW it transmits to markets, what the chain of cause-and-effect is. This is the "critical thinking" layer. Don't just assert "capex is rising" — explain that 1/3 of MAG7 earnings came from PE investment gains (so the capex is leveraged on financial engineering, not pure AI demand). Don't just say "yields are breaking out" — explain that energy + labor are firming core inflation projections, so duration is repricing without a Fed signal needed. Weave in 3+ specific data points (named banks with specific numbers, levels, percentiles, dissent counts) — not as a list, as part of the argument.
+**Paragraph 1 — what's happening + the mechanism.** Open with a hook sentence that names the specific shift with a number. Then explain the actual mechanism: WHY this is happening, HOW it transmits to markets, what the chain of cause-and-effect is. This is the "critical thinking" layer. Don't just assert "capex is rising" — explain that 1/3 of MAG7 earnings came from PE investment gains (so the capex is leveraged on financial engineering, not pure AI demand). Don't just say "yields are breaking out" — explain that energy + labor are firming core inflation projections, so long-dated bonds are repricing without a Fed signal needed. Weave in 3+ specific data points (named banks with specific numbers, levels, percentiles, dissent counts) — not as a list, as part of the argument.
 
-**Paragraph 2 — the bull case vs the bear case, in prose.** Both reads must appear, in flowing sentences (not bullets). Name the bank or desk behind each side when there's a specific call. Be concrete about what each side requires to be true. Examples of voice: *"Bulls argue the AI capex super-cycle is structural; the bear case Goldman desk is flagging is that one-third of MAG7 profits came from PE investment gains, not AI revenue — earnings are more cyclically vulnerable than the headline suggests."* / *"UBS thinks the market is too hawkish on the Fed and sees two cuts in 2H; the pushback from JPM is that core CPI is locked in 3-month-lag from oil and you can't cut into a re-acceleration."*
+**Paragraph 2 — bull case vs bear case, ENDING with a positioning read woven into the prose.** Both reads of the thesis must appear in flowing sentences (not bullets). Be concrete about what each side requires to be true. Then close the paragraph with a SHORT positioning view — what this leans toward and what would invalidate it — integrated into prose. **Do NOT use a `Trade Implication:` header, a `**Trade:**` label, a separate bolded line, or a "Hint:" prefix.** The positioning read is woven naturally into the closing sentences of the same paragraph.
 
-**Trade Implication.** ONE line (or two short sentences), not a bullet. Required pieces: instrument + direction + horizon + **WHY (the rationale in plain English)** + invalidation. The rationale is what turns "long $X" from a tip into something a trader can actually evaluate.
+**Tone of the positioning read:** state which way the setup leans for someone with US options/crypto exposure, name the cleanest instrument expression in passing, give a specific invalidation level/event. Plain English. Reads as analysis, not advice.
 
-Format: *"[Action]. Why: [the plain-English thesis driving the trade — what has to be true for this to work]. Risk: [the specific level/event that proves the thesis is wrong]."*
+**Examples of the integrated positioning close (paragraph 2 endings):**
 
-Examples:
-- Weak (no rationale): *"Long $AMAT into July earnings."*
-- Weak (rationale is jargon): *"Long $AMAT — WFE upcycle on TAM expansion."*
-- Strong: *"Long $AMAT into July semicap earnings. Why: hyperscaler capex is a multi-year build (Goldman now sees $751B in 2026, up $80B in two weeks), and the equipment makers like Applied Materials get paid before the chip cycle peaks. Risk: a META or GOOGL capex guide-down at next earnings — that's the signal hyperscalers are pulling back."*
+✅ *"...one-third of MAG7 profits came from private-equity investment gains rather than AI revenue, so earnings are more cyclically vulnerable than the headline suggests. The cleanest read for someone with semicap exposure is that the picks-and-shovels names — Applied Materials and Tokyo Electron — keep getting paid through July earnings unless META or GOOGL guide capex down, which would be the first real signal hyperscalers are pulling back."*
 
-- Weak: *"Long $BNO into next week — products tightness story."*
-- Strong: *"Long $BNO (the Brent oil ETF) into next week's Iran headlines. Why: even if Hormuz reopens tomorrow, refined-fuel inventories are 8-year lows and Europe's jet fuel runs out by June — oil prices stay elevated for months regardless of the ceasefire. Risk: shipping traffic actually resuming + Brent breaking $85 sustained — that's the market saying the supply scare is over."*
+✅ *"...UBS sees two cuts in 2H, but the pushback from JPM is that core CPI is locked in a three-month lag from oil — you can't cut into a re-acceleration. The setup leans bullish for long-dated Treasuries IF the May 12 CPI print comes in around the 2.6% core ANZ projects; a 3.0%+ core would be the bond market's confirmation that the energy shock has bled into underlying inflation, and the rate-cut thesis dies."*
 
-- Weak: *"Long $TLT — duration trade."*
-- Strong: *"Long $TLT (long-dated Treasury ETF). Why: the bond market is now pricing rate hikes through April — that's wrong if oil stops feeding inflation, and Williams sounded dovish on the wires. Risk: 10-year yield breaking 4.55% sustained — that's the bond market saying it's serious about hikes."*
+✅ *"...refined-fuel inventories are at 8-year lows and Europe's jet fuel inventory runs out by June — oil prices stay elevated for months regardless of the ceasefire. Brent's six-month curve at $92 is the market saying the same thing in pricing. The asymmetric setup here is that any fresh Hormuz incident sends the front-month back vertical while the back-month barely moves — a Brent-tracking ETF (e.g., $BNO) captures it cleanly. Loss of $85 sustained on Brent would be the market saying the supply scare is finally over."*
 
-Notice the pattern: the WHY is in plain English a non-banker can evaluate, and the RISK names a specific level or event, not "unfavorable market conditions."
+**Examples of WHAT NOT TO DO (templated trade lines — strip these):**
+- ❌ *"**Trade Implication.** Long $AMAT into July earnings. Why: ... Risk: ..."* — labeled trade line is gone.
+- ❌ *"**Hint:** Long $TLT into CPI."* — no "Hint:" labels either.
+- ❌ Bullet list of trade ideas at the end of the theme. Prose only.
 
-**Trade variety across themes (binding):** the primary instrument in each theme's Trade Implication must be DIFFERENT from every other theme. If theme 1 recommends `$AMAT`, theme 3 cannot also recommend `$AMAT` as its primary trade — find a different cleaner expression (e.g., theme 1 = `$SOXX`, theme 3 = pair trade `$ORCL` long vs `$AMD` short). Mentally track tickers used as you draft: if you find yourself reaching for a ticker already used as the primary in an earlier theme, that's a sign the new theme overlaps too much with the old one — either differentiate the instrument or merge the themes.
+The formal portfolio-style trade calls (with explicit risk/sizing/conviction labels) will live in a dedicated TRADE PLAYBOOK section that runs separately. Theme bodies should NOT pre-empt that — they offer analysis with a positioning read, not trade tickets.
 
 **Single-name short / avoid calls — strict rules to prevent stale calls:**
 - Do NOT recommend shorting or "avoiding" a specific ticker based on a single intraday dispersion observation (e.g., one S&T note's "CPU weakness today: AMD, INTC, ARM, QCOM"). Intraday tape color is not a multi-week trade thesis.
-- A single-name short/avoid call requires (a) explicit research conviction on THAT specific ticker (a desk call, downgrade, named risk factor), AND (b) at least 2 different research notes converging on the bearish view on that name.
-- If the research only flags a SECTOR or BUCKET as weak (e.g., "CPUs face selling pressure"), express the trade as a SECTOR/PAIR call (long memory vs short SOXX, or long $ORCL vs short $AMD as a pair-trade), not a list of individual tickers to short.
-- Better default: when in doubt, frame as long the strong side without naming individual shorts. E.g., "Long $MU and $ORCL" rather than "Avoid $AMD, $INTC, $QCOM" — that way a stale ticker-level read doesn't generate a wrong-direction call on a name the research never specifically targeted.
-- This applies to "avoid" framing too — "avoid $X" reads as a bearish call to a trader. Don't list individual tickers to avoid unless the research has named-and-specific bearish conviction on each.
+- A single-name short/avoid framing requires (a) explicit research conviction on THAT specific ticker (a desk call, downgrade, named risk factor), AND (b) at least 2 different research notes converging on the bearish view on that name.
+- If the research only flags a SECTOR or BUCKET as weak (e.g., "CPUs face selling pressure"), express the positioning read as a SECTOR/PAIR view (long memory vs short $SOXX, or long $ORCL vs short $AMD as a pair), not a list of individual tickers to short.
+- Better default: when in doubt, frame as long the strong side without naming individual shorts. The positioning read should usually focus on what to be long; shorts only enter the prose when the bearish conviction is named and multi-source.
+- This applies to "avoid" framing too — "avoid $X" reads as a bearish call. Don't list individual tickers to avoid unless the research has named-and-specific bearish conviction on each.
 
 **Where to pull data points from (ranked by quality):**
 1. `data_points` field on each analysis — these are pre-extracted structured figures with `figure`, `metric`, `source_bank`, `context`. Use these first; they're the cleanest source. A pulse theme body should pull 3-5 entries from this field across the relevant analyses, woven into prose with attribution.
-2. `tensions` field — pre-extracted `bull_case` / `bear_case` / `what_invalidates` triples. The bull/bear paragraph should be built directly from one of these when present, with light editing for voice. The `what_invalidates` line plugs into the Trade Implication invalidation.
+2. `tensions` field — pre-extracted `bull_case` / `bear_case` / `what_invalidates` triples. The bull/bear paragraph should be built directly from one of these when present, with light editing for voice. The `what_invalidates` value becomes the invalidation level/event woven into the closing positioning sentences.
 3. `market_movers` — for ticker-level conviction calls with rating + price target.
 4. `macro` — for macro indicators with reading + interpretation.
 5. `trades` — for explicit research-flagged trade ideas with conviction + horizon.
@@ -955,18 +950,17 @@ Target 3-6 high-impact themes. Better to ship 3 sharp themes than 6 with filler.
 
 Tension framing also: weave the optimistic-vs-risk read INTO the body prose, NOT as a separate `*The Tension:*` bullet. The bullet structure reads like an AI template. Use prose: *"Bulls argue the AI capex super-cycle is structural; the risk Goldman desk flags is that one-third of MAG7 profits came from PE investment gains, not AI revenue, leaving earnings vulnerable to credit cycle reversal."*
 
-**Pass B — impact close.** Every surviving theme must end with a concrete short-term trade implication — not generic "monitor closely" filler. A good implication names a direction/level/instrument and a horizon (this week / into CPI / before month-end). Examples:
+**Pass B — positioning read close (integrated, no labels).** Every theme's bull/bear paragraph must END with a positioning view woven into prose — what the setup leans toward, the cleanest instrument expression, and the specific level/event that invalidates the lean. NOT a separate `**Trade Implication.**` line, NOT a `Hint:` label, NOT a bullet list. Pure prose at the end of paragraph 2. Examples of integrated closes (the right model — short, specific, woven in):
 
 Weak: *"Traders should monitor vol closely."*
-Strong: *"Sets up $VIXY calls going into Thursday's CPI — a 0.3%+ core print reprices cuts and vol bid returns."*
+Strong (integrated): *"...realized vol on up days running higher than down days is the textbook signature of an unstable rally. Setup leans long index downside protection — SPX 3-month puts trading at deep discounts to single-stock vol look ownable, and a sustained VIX break below 16 with another quiet week would be the market saying the squeeze has further to run before any unwind."*
 
 Weak: *"Oil remains sensitive to headlines."*
-Strong: *"Hormuz still halted keeps $USO bid — buy-the-dip on any ceasefire headline fade unless shipping traffic actually resumes."*
+Strong (integrated): *"...refined-fuel inventories sit at 8-year lows and Europe's jet fuel runs out by June — the supply hole takes months to refill regardless of any ceasefire. The asymmetric setup is long the Brent oil ETF ($BNO) into the next Hormuz headline; loss of $85 sustained on Brent would be the curve admitting the supply scare is over."*
 
-Weak: *"Crypto is in a range."*
-Strong: *"$BTC $75k is the line — lose it and CTAs flip short; hold it into Friday's monthly close and we're back at $80k."*
+If a theme's analysis can't credibly support ANY positioning read, the theme isn't high-impact enough — cut it. But the format is integrated prose; never a labeled "Trade Implication" line. Formal trade calls (with explicit conviction labels and risk/sizing) live in the dedicated TRADE PLAYBOOK section that runs separately, NOT in INSIGHTS.
 
-If you can't write a concrete implication for a theme, that's a signal the theme isn't high-impact enough — cut it.
+**STRIP if present in the draft (legacy formatting):** any `**Trade Implication.**` headers, `**Trade:**` labels, `Hint:` prefixes, or bullet-list trade ideas at the end of theme bodies. Rewrite as integrated prose at the end of paragraph 2.
 
 **Things to fix if present:**
 - Bullet-list "Market Snapshot" at the top of RECAP → delete it; integrate prices into the lede paragraph.

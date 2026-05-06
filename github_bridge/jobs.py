@@ -52,14 +52,45 @@ def bridge_enabled() -> bool:
 # -----------------------------------------------------------------------------
 
 
+def _compute_window_cutoff() -> tuple[str, str]:
+    """Return (cutoff_iso, window_label) used for both dump + stats.
+
+    Rule: take the WIDER of `since-last-daily-pulse` or `last 24h`, clipped
+    to a 96h ceiling. Wider = earlier cutoff = lexicographically smaller ISO.
+
+    Behavior:
+    - Tuesday 9 AM ET pulse: last daily was Monday 9 AM (24h). min(24h, 24h) = 24h ✓
+    - Monday 9 AM ET pulse: last daily was Friday 9 AM (72h). min(72h, 24h) = 72h ✓
+      (Friday→Monday spans the weekend correctly.)
+    - Mid-day test re-run, 3 hours after the morning pulse: min(3h, 24h) = 24h ✓
+      (Test pulse gets a full 24h of context, not just 3h.)
+    """
+    from datetime import timedelta
+    twenty_four_h = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+    ninety_six_h = (datetime.utcnow() - timedelta(hours=96)).isoformat()
+    last_daily = db.get_last_report_time()
+    if last_daily:
+        # min() on ISO strings = lexicographically smaller = earlier = wider window
+        cutoff = min(last_daily, twenty_four_h)
+        if cutoff < ninety_six_h:
+            cutoff = ninety_six_h
+            label = "96h ceiling"
+        elif cutoff == twenty_four_h:
+            label = "last-24h"
+        else:
+            label = f"since-last-daily ({cutoff[:16]})"
+    else:
+        cutoff = twenty_four_h
+        label = "first-run-24h"
+    return cutoff, label
+
+
 def dump_context_job() -> None:
     """Build the pulse context and commit JSON to the bridge branch.
 
-    Window logic mirrors the original Gemini scheduled pulse:
-      cutoff = max(last 'daily' report's created_at, now - 96h ceiling)
-    so Monday's pulse correctly spans Friday's close through the weekend
-    to Monday morning. Falls back to 24h on the very first run when no
-    prior scheduled pulse exists.
+    Cutoff logic via _compute_window_cutoff(): wider of since-last-daily
+    or last-24h, with a 96h ceiling. Ensures Monday spans the weekend
+    AND mid-day test runs still get 24h of context.
 
     Runs in the APScheduler thread. Synchronous (no async tools used).
     """
@@ -68,16 +99,7 @@ def dump_context_job() -> None:
     try:
         gh.ensure_branch_exists()
 
-        from datetime import timedelta
-        last_report_time = db.get_last_report_time()
-        max_lookback = (datetime.utcnow() - timedelta(hours=96)).isoformat()
-        if last_report_time:
-            cutoff = last_report_time if last_report_time > max_lookback else max_lookback
-            window_label = f"since-last-daily ({cutoff[:16]})"
-        else:
-            # No prior daily pulse exists — fall back to a 24h window.
-            cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
-            window_label = "first-run-24h"
+        cutoff, window_label = _compute_window_cutoff()
 
         rows = db.get_analyses_since(cutoff)
         if not rows:
@@ -143,17 +165,19 @@ async def post_pending_pulses_job(bot=None) -> None:
         await _process_one_pulse(bot, item)
 
 
-def _compute_footer_stats(window_hours: int = 24) -> dict:
-    """Recompute the same rich footer stats the Gemini synthesizer uses.
+def _compute_footer_stats() -> dict:
+    """Recompute the rich footer stats over the SAME window the dump used.
 
-    Loads analyses for the given window from the local DB and runs them
-    through the existing _compute_stats helper in synthesizer.py. Returns
-    {pdf_count, top_sources, priority_mix, earliest_upload, latest_upload}.
-    Empty dict on any failure.
+    Uses _compute_window_cutoff() so the headline pdf_count and the footer
+    breakdown (top sources, priority mix, date range) always reflect the
+    same set of analyses. Prevents the bug where headline showed 3 PDFs
+    (since-last-daily) but breakdown showed 178 (24h) — different windows.
+
+    Returns {pdf_count, top_sources, priority_mix, earliest_upload,
+    latest_upload}. Empty dict on failure.
     """
-    from datetime import timedelta
     try:
-        cutoff = (datetime.utcnow() - timedelta(hours=window_hours)).isoformat()
+        cutoff, _ = _compute_window_cutoff()
         rows = db.get_analyses_since(cutoff)
         if not rows:
             return {}
