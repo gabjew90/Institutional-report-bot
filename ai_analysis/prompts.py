@@ -581,6 +581,14 @@ A 1-2 paragraph narrative summary of what the research says the market is doing 
 ## 2. INSIGHTS & ALPHA
 The main section. 3-8 themes from research — whichever have substance today.
 
+**STEP 1 — Cross-bank consensus scan (do this BEFORE writing).** Mentally scan the {pdf_count} analyses above and list the top 5 themes by how many DIFFERENT bank/source names cover them. A theme covered by 8 banks is the dominant story; a theme covered by 1 bank with strong language is a niche call, not a consensus. Specific themes to check for in today's corpus before deciding what leads:
+- AI / hyperscaler earnings + capex super-cycle (count distinct banks)
+- Rate cut repricing / yields breakout / Fed dissents (count distinct banks)
+- Geopolitical oil shock (Hormuz / Iran / OPEC) (count distinct banks)
+- Big tech dispersion / specific sub-sector rotation (count distinct banks)
+- Major M&A / strategic stakes / deal flow (count distinct banks)
+After counting, INSIGHTS leads with whichever theme has the most banks behind it. Cross-bank consensus is the single highest-conviction signal in this corpus — don't bury it.
+
 **Diff rules (important for scheduled pulses):**
 - A theme repeating from yesterday is NOT automatically demoted. Scheduled pulses pull disjoint PDF windows, so a theme recurring with FRESH cross-bank coverage today (3+ different banks raising it independently) means the consensus has firmed — that's a stronger signal, not weaker. Keep it, lead with "Since yesterday: X has firmed — banks A, B, C all flag…".
 - A theme repeating from yesterday WITH only one source today AND no new data → demote or skip.
@@ -661,7 +669,24 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
 4. **Tickers match reality:** the market snapshot uses ETF tickers ($SPY, $QQQ, $VIXY, $BNO, $USO, $GLD, $TLT, $UUP). If the draft wrote $SPX or $NDX when the price cited is from $SPY/$QQQ, fix it. If a price in INSIGHTS is from research with no live counterpart — leave it, optionally noting "at time of writing."
 
-**Foreign-listed cashtag safety check:** cashtags on Twitter/X resolve to US-listed tickers. Scan every `$XYZ` in the draft. If the draft cashtags a non-US company using its foreign exchange symbol, STRIP the cashtag and use the company name. Common collisions: **$CNA** (UK Centrica vs US CNA Financial insurance), **$BA** (UK BAE/IAG vs US Boeing), **$BT** (UK BT Group), **$TSCO** (UK Tesco vs US Tractor Supply), **$RR** (UK Rolls-Royce), **$III** (UK 3i Group), **$IMB** (UK Imperial Brands), **$CCL** (UK Carnival vs US Carnival share class collision). When unsure whether a cashtag resolves to the intended company on US exchanges, drop the `$` and use the name. Example fix: "Long Buy-rated European utilities (e.g., $CNA)" → "Long Buy-rated European utilities (e.g., Centrica)".
+**Foreign-listed cashtag safety check (MANDATORY scan — do not skip):** cashtags on Twitter/X resolve to US-listed tickers ONLY. Before finalizing, walk through every `$XYZ` in the draft. For any cashtag where the underlying company is non-US-listed (UK, EU, JP, etc.), STRIP the `$` and use the company name. This rule has no exceptions.
+
+Hit list of common collisions (strip `$` if you see these for non-US contexts):
+- **$TSCO** → "Tesco" (UK grocery; on US exchanges $TSCO = Tractor Supply, totally different company)
+- **$AD** → "Ahold Delhaize" (Dutch grocery; $AD does not resolve to a US listing)
+- **$CNA** → "Centrica" (UK utility; $CNA US = CNA Financial insurance)
+- **$BA** → "BAE Systems" or "IAG" (UK; $BA US = Boeing)
+- **$BT** → "BT Group" (UK; $BT US = AT&T legacy / unrelated)
+- **$RR** → "Rolls-Royce" (UK; $RR US ticker doesn't match)
+- **$III** → "3i Group" (UK)
+- **$IMB** → "Imperial Brands" (UK)
+- **$CCL** → "Carnival UK" share class
+- **$ORANGE** / **$ORA** → "Orange" (French telecom; not a US cashtag)
+- **$VOD** → "Vodafone" (UK; ADR exists as $VOD but research often references LSE)
+- **$REP** → "Repsol" (Spain; not US-listed under $REP)
+- **$EQNR** / **$BP** / **$SHEL** → these DO have US ADRs and are OK to cashtag
+
+Default: if you can't confirm a US listing/ADR for the ticker, drop the `$` and use the name. Better to miss a cashtag than mislead a US trader to a wrong stock. Example fix: "Long $TSCO and $AD as defensive hedges" → "Long Tesco (UK) and Ahold Delhaize (Dutch) as defensive hedges" — and ALSO consider whether this theme should be cut entirely under the non-US-trader rule below.
 
 5. **INSIGHTS quality + short-term trade framing.** Before finalizing, do two passes on INSIGHTS & ALPHA:
 
@@ -676,7 +701,7 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 - If today's research has the theme from only 1 bank AND no new data point vs yesterday → CUT as single-source recycled.
 - If today's research advances the theme with a new catalyst/level/data point → KEEP and lead the theme with "Since yesterday:".
 
-**Missing-theme audit (CRITICAL — most common failure mode):** Before finalizing, scan the live news block, earnings calendar, and the references inside the draft itself for clearly dominant cross-bank stories the draft missed. The draft tends to over-weight niche single-source notes and under-weight broad cross-bank consensus. Specific misses to check for:
+**Missing-theme audit (CRITICAL — most common failure mode):** Before finalizing, scan THREE places for clearly dominant cross-bank stories the draft missed: (a) the live news block, (b) the earnings + economic calendars, (c) the bank attributions and references INSIDE the draft itself. If the draft mentions multiple banks ("UBS, Mizuho, and Piper Sandler all flag…") in one sentence as background, that's a signal a major theme is being treated as wallpaper instead of being its own INSIGHT. The draft tends to over-weight niche single-source notes and under-weight broad cross-bank consensus. Specific misses to check for:
 - **Big tech / hyperscaler earnings season.** If the earnings calendar shows MAG7 reported AND the news block confirms strong/weak prints, INSIGHTS MUST cover the AI capex / earnings narrative — regardless of whether yesterday did. This is THE story your audience is positioned in. Don't bury it.
 - **Rate cut repricing / yields breakout.** If news / calendar shows yields breaking key levels (10Y above 4.4%, 30Y above 5%) or futures pricing shifting (cuts → no cuts → potential hike), and 3+ banks reference it, INSIGHTS must have it.
 - **Fed transition / hawkish-dovish surprise.** If a confirmation hearing, FOMC dissent, or major Fed governor signal appears in news, and the draft skipped it, add it.
