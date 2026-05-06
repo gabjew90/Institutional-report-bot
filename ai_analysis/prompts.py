@@ -607,13 +607,35 @@ The reader is a self-directed trader, smart but NOT a finance professional. They
 - Only mention rating changes if: (a) major stock, (b) surprising call, or (c) specific positioning shift.
 - **Lead with the theme that has the most independent bank coverage (3+ banks aligned) — that's the highest-conviction signal in the corpus.** Single-topic dedicated notes (M&A, dedicated catalyst notes, earnings reactions) come second. A theme appearing in 8+ HIGH-priority notes from different banks IS the story, even if it sounds "broad."
 - **No meta-narration about the corpus.** Do NOT write phrases like "cross-bank consensus is firming," "8+ high-priority notes flag," "research suggests," "the corpus shows," "multiple banks converge." These are template-tells. Just state the view directly. You can name specific banks when citing their specific data ("Goldman raised 2026 capex to $751B; UBS sees $900B by 2027") — but don't wrap the analysis in narration about how many sources agree.
-- **No source-prefix story-connectors.** Bank names are OK when paired with a specific number or call. They are NOT OK as connectors that prefix every claim. The pattern that's tiring to read: *"Mizuho keeps hammering... The Market Ear adds the kicker... ING's Fed-watcher piece says... Goldman's mid-day color..."* — strip these and state the view directly.
-  - Bad: *"The Market Ear noted that realized vol on up days is 16.9% — higher than down days at 14.6%."*
-  - Good: *"Realized vol on up days is 16.9%, versus 14.6% on down days — the inverse of a healthy rally."*
+- **No source-prefix story-connectors (binding — keeps slipping through, must be hard-enforced).** State the view directly. Bank names appear ONLY when paired with a specific number or call.
+
+  **EXPLICITLY banned sentence patterns (strip on sight):**
+  - "The Market Ear says/noted/flagged/adds/argues/observes that..."
+  - "Mizuho says/notes/keeps hammering/flat-out says..."
+  - "Goldman's mid-day color..." / "Goldman's S&T desk..." / "Goldman desk thinks..."
+  - "JPM's morning desk..." / "JPM's flow-and-positioning desk notes..."
+  - "ING's Fed-watcher piece says..." / "ING's commodities desk..."
+  - "Bank of America put a name on it..." / "BofA's labor preview..."
+  - "Crédit Agricole's preview..." / "ANZ pencils..." / "Citi notes..."
+  - "Morgan Stanley's chart pack..." / "Morgan Stanley's hedge-fund prime brokerage data..."
+  - Any "[Bank name] [verb]s that..." opener used as a story connector.
+  - "X bank is leaning on..." / "X bank keeps coming back to..." / "X bank is pushing..."
+
+  **The test: does the bank name ATTRIBUTE A SPECIFIC NUMBER, OR is it a story preamble?**
+  - ATTRIBUTE A NUMBER (KEEP): *"Goldman raised 2026 hyperscaler capex to $751B, up $80B in two weeks."* The bank name + the number are both essential.
+  - STORY PREAMBLE (STRIP): *"Goldman's TMT desk notes that hyperscaler capex is rising."* The "Goldman's TMT desk notes that" is decoration.
+
+  **Rewrites:**
+  - Bad: *"The Market Ear noted that realized vol on up days is 16.9%, higher than down days at 14.6%."*
+  - Good: *"Realized vol on up days is 16.9%, versus 14.6% on down days. That is the inverse of a healthy rally."*
   - Bad: *"Mizuho keeps hammering that Treasury issuance plus oil-driven inflation forces a 30-year breakdown."*
-  - Good: *"Treasury issuance landing on top of oil-driven inflation is the combination that forces a 30-year breakdown — UK 30-year yields at fresh post-1998 highs are the canary."*
-  - The bank's name only earns ink when it's a specific call: *"Mizuho EMEA: no more Fed cuts in 2026, 4.50% 10-year target if Hormuz stays compromised."* — that's a specific desk call with numbers. Worth attributing.
-  - Heuristic: if removing "X bank said" leaves the sentence intact and stronger, remove it.
+  - Good: *"Treasury issuance landing on top of oil-driven inflation is the combination that forces a 30-year breakdown. UK 30-year yields at fresh post-1998 highs are the canary."*
+  - Bad: *"Goldman's mid-day color flagged that 40% of S&P earnings growth is now AI-tied."*
+  - Good: *"40% of S&P 500 earnings growth is now tied to the AI infrastructure trade (Goldman)."* The attribution moves to a parenthetical and stops being the sentence's spine.
+
+  **Heuristic that works:** if removing "X bank said" leaves the sentence intact and stronger, remove it. If the sentence falls apart without the attribution, the attribution belongs in a parenthetical at the end, not as an opener.
+
+  **AUDIT-side enforcement:** before finalizing, walk every sentence in INSIGHTS bodies. For any sentence opening with a bank name followed by a generic verb (says, notes, flags, adds, observes, leans on, keeps hammering, pushes, points to, argues, thinks, sees), rewrite. Move the attribution to a parenthetical or strip it entirely.
 """
 
 
