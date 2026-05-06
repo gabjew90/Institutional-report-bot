@@ -25,8 +25,9 @@ Priority guidelines — calibrate to "how much value does this give a US options
   - Disclaimer-heavy wrappers, valuation tables with no commentary, duplicate reports, admin content
   - Pure fixed income/rates research with no equity or macro implications
   - ESG/sustainability reports
-  - **Regional daily briefings whose primary audience is the local market.** Default LOW for: Australian Morning Focus, Asia Morning briefings, NZ daily wraps, Canadian morning notes, Latin America dailies, Asian session strategy notes — UNLESS the report makes an explicit US read-through case (e.g., RBA decision tied to global central bank divergence, Asia tech earnings impacting US semis, yen-carry unwind signaling global de-risking).
+  - **Regional daily briefings whose primary audience is the local market.** Default LOW for: Australian Morning Focus, Asia Morning briefings, NZ daily wraps, Canadian morning notes, Latin America dailies, Asian session strategy notes, **European Macro Weekly / European Daily Wrap / Europe First to Market / European Strategy / Euro Area daily commentary** — UNLESS the report makes an explicit US read-through case (e.g., RBA decision tied to global central bank divergence, Asia tech earnings impacting US semis, yen-carry unwind signaling global de-risking, European stagflation framed as a global recession leading indicator).
   - **Asia FX daily talk** (USDJPY/USDCNY/USDKRW/USDIDR daily commentary) — default LOW unless the report explicitly argues US risk-asset spillover. Routine "USDJPY tested 155 overnight" technical color is LOW.
+  - **European macro / sector commentary without US linkage.** Default LOW for: ECB Consumer Expectations Survey, German IFO, Eurozone PMIs, Euro area bank lending, UK retail sales, French manufacturing, European utilities/banks/luxury sector wraps, Eurozone GDP/CPI prints unless the report explicitly argues a US asset implication. The bar: the report must name a specific US ticker, sector, or macro variable that moves on the European data.
   - Regional macro for smaller markets a US trader doesn't trade: Hungary, Czech Republic, Poland, Turkey, Argentina, South Africa, Indonesia, Philippines, Vietnam, Egypt, Israel, Chile, Colombia. Also Australia, NZ, Singapore daily commentary unless explicit US/global read-through.
   - Minor FX pair deep-dives: SGD, THB, INR, ZAR, TRY, BRL, MXN, IDR, AUD, NZD, NOK, SEK (exceptions: when they signal something bigger, like EM FX stress spilling into risk assets, or G10 currency stress signaling broader USD strength).
   - Single-commodity deep dives with no US/crypto spillover: sugar, cocoa, wheat, cotton, livestock, minor base metals
@@ -37,7 +38,14 @@ Priority guidelines — calibrate to "how much value does this give a US options
 
 Classify every report on its content alone. Do not soften the LOW call because a report comes from a big-name bank — if a Goldman Sachs piece is a disclaimer-heavy wrapper, a duplicate, or pure fixed-income with no equity read-through, call it LOW. Source pedigree is not a reason to avoid LOW.
 
-**Test before tagging HIGH:** would a US options/crypto trader change positioning in the next 1-5 days because of THIS specific report? If you can't articulate a specific US-asset implication, it's not HIGH. "Australian Morning Focus" with a routine RBA hold + ASX sector summary is LOW. "Asia FX Talk" rolling through 8 Asian pairs without US linkage is LOW. They become MEDIUM only if they make an explicit US read-through case. They become HIGH only if the report itself argues a global catalyst (e.g., a coordinated central bank pivot, a yen-carry unwind in progress)."""
+**Test before tagging HIGH:** would a US options/crypto trader change positioning in the next 1-5 days because of THIS specific report? If you can't articulate a specific US-asset implication, it's not HIGH. Examples that should be LOW under this test:
+- "Australian Morning Focus" with routine RBA hold + ASX sector summary
+- "Asia FX Talk" rolling through 8 Asian pairs without US linkage
+- "European Macro Weekly" walking through Eurozone PMIs / German factory orders / French CPI without naming a specific US asset implication
+- "Europe First to Market" covering Vonovia / Deutsche Börse / Kuehne+Nagel earnings without US read-through
+- "Daily Asia" / "Daily Europe" general market wraps without specific US-relevant calls
+
+They become MEDIUM only if they explicitly link the foreign data to a US asset, sector, or macro variable. They become HIGH only if the report argues a global catalyst (a coordinated central bank pivot, a yen-carry unwind in progress, European stagflation framed as a US recession leading indicator with named US tickers to fade)."""
 
 TRIAGE_USER_PROMPT = """Classify this institutional research PDF:
 
