@@ -555,7 +555,7 @@ The reader is a self-directed trader, smart but NOT a finance professional. They
 - Primary sources: Goldman Sachs, Citi, Bank of America, JPMorgan. Others supplementary.
 - Focus on what matters for US options + crypto traders. Skip peripheral EM, minor FX, niche commodities unless research explicitly argues US read-through.
 - Only mention rating changes if: (a) major stock, (b) surprising call, or (c) specific positioning shift.
-- Prioritize single-topic dedicated notes over broad macro themes in INSIGHTS.
+- **Lead with cross-bank consensus (3+ banks converging on the same view) — that's the highest-conviction signal in the corpus and the dominant theme of the day. Single-topic dedicated notes (M&A, dedicated catalyst notes, earnings reactions) come second, AFTER the convergence themes are covered.** A theme appearing in 8+ HIGH-priority notes from different banks IS the story, even if it sounds "broad." Don't bury cross-bank consensus to chase niche notes.
 """
 
 
@@ -582,9 +582,10 @@ A 1-2 paragraph narrative summary of what the research says the market is doing 
 The main section. 3-8 themes from research — whichever have substance today.
 
 **Diff rules (important for scheduled pulses):**
-- If yesterday's pulse (shown above) covered a theme and research hasn't materially advanced it → demote it to the end or skip.
-- Lead with themes NOT in yesterday's pulse. Fresh catalysts, new desk calls, new positioning data get top billing.
-- If yesterday's #1 theme is still dominant today, put it LAST, not first.
+- A theme repeating from yesterday is NOT automatically demoted. Scheduled pulses pull disjoint PDF windows, so a theme recurring with FRESH cross-bank coverage today (3+ different banks raising it independently) means the consensus has firmed — that's a stronger signal, not weaker. Keep it, lead with "Since yesterday: X has firmed — banks A, B, C all flag…".
+- A theme repeating from yesterday WITH only one source today AND no new data → demote or skip.
+- Genuinely new themes (catalysts, desk calls, positioning shifts not in yesterday's pulse) also get top billing — if they have cross-bank backing.
+- The leading-theme rule: top spot goes to whatever today's research has the most independent banks behind, regardless of whether yesterday covered it.
 
 **Angles to cover (when research supports them):**
 - Smart money positioning (CTA direction, hedge fund net/gross, prime brokerage flows)
@@ -622,9 +623,10 @@ AUDIT_SYSTEM = """You are auditing a draft Market Pulse against live market data
 
 **Content authority: you have it.** Unlike pure style audits, you CAN:
 - Cut INSIGHTS themes that aren't truly high-impact (recurring flow commentary, generic macro wallpaper, single-bank technicals that won't move positioning).
+- **ADD a missing theme** when the draft skipped a clearly dominant cross-bank story. If 3+ banks in the live news / earnings calendar / draft references converge on a theme (e.g., hyperscaler earnings + AI capex super-cycle, rate cuts being priced out of the curve, a specific Fed policy shift) and the draft doesn't have it, write a new INSIGHTS section yourself. Pull the specific data points from the draft's references and the news block. Same format as other themes: situation → tension → trade implication.
 - Sharpen or add a one-line "what this means for traders" close to any theme that's missing one.
 - Merge two themes saying the same thing.
-- Reorder so the highest-impact theme leads INSIGHTS.
+- Reorder so the highest-impact (most-cross-bank-backed) theme leads INSIGHTS.
 
 What stays no matter what: the voice, the specific analyst conviction language, the cross-bank consensus/divergence framing, the ticker cashtag format.
 
@@ -673,6 +675,13 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 - If today's research has the theme from 2+ independent banks → KEEP (note convergence: "GS, JPM, and TME all flag…").
 - If today's research has the theme from only 1 bank AND no new data point vs yesterday → CUT as single-source recycled.
 - If today's research advances the theme with a new catalyst/level/data point → KEEP and lead the theme with "Since yesterday:".
+
+**Missing-theme audit (CRITICAL — most common failure mode):** Before finalizing, scan the live news block, earnings calendar, and the references inside the draft itself for clearly dominant cross-bank stories the draft missed. The draft tends to over-weight niche single-source notes and under-weight broad cross-bank consensus. Specific misses to check for:
+- **Big tech / hyperscaler earnings season.** If the earnings calendar shows MAG7 reported AND the news block confirms strong/weak prints, INSIGHTS MUST cover the AI capex / earnings narrative — regardless of whether yesterday did. This is THE story your audience is positioned in. Don't bury it.
+- **Rate cut repricing / yields breakout.** If news / calendar shows yields breaking key levels (10Y above 4.4%, 30Y above 5%) or futures pricing shifting (cuts → no cuts → potential hike), and 3+ banks reference it, INSIGHTS must have it.
+- **Fed transition / hawkish-dovish surprise.** If a confirmation hearing, FOMC dissent, or major Fed governor signal appears in news, and the draft skipped it, add it.
+- **Major M&A / strategic stake involving an S&P 100 or MAG7 name** — must appear in RECAP as a driver bullet AND in INSIGHTS if banks comment.
+If you spot a missing cross-bank theme, write a new INSIGHT yourself using the data points from the news block + draft references. Same format: situation → tension (optimistic vs risk) → trade implication. Better to add an obvious theme than ship a pulse that omits the dominant story.
 
 Target 3-6 high-impact themes. Better to ship 3 sharp themes than 6 with filler. If after culling you only have 2 strong themes, ship 2.
 
