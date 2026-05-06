@@ -343,7 +343,7 @@ The research PDFs are the PRIMARY DRIVER of content across ALL sections. Live pr
 **RELEASED EVENTS + MAJOR NEWS ARE REQUIRED in RECAP:**
 - Every event in the economic calendar's "ALREADY RELEASED" block MUST be reflected in RECAP with its ACTUAL value and beat/miss framing. You cannot skip Retail Sales or a Fed hearing that already happened today.
 - Every earnings event in "ALREADY REPORTED" block (if it's MAG7 or a major bank) MUST appear in RECAP with actuals + market reaction.
-- Any news headline from the last 6 hours that describes a market-moving event (central bank hearing outcome, geopolitical deadline crossed, major policy announcement, ceasefire extension/rejection) MUST appear in RECAP, attributed to the news source.
+- Any news headline from the last 6 hours that describes a market-moving event (central bank hearing outcome, geopolitical deadline crossed, major policy announcement, ceasefire extension/rejection) MUST appear in RECAP. State the event directly — do NOT add "per Reuters" / "per CNBC" / "according to..." source-prefix attributions; just report what happened.
 - If the data block shows 3 released events but you mention only 1, you've failed.
 
 **PRICE SOURCE — ABSOLUTE RULE:**
@@ -667,19 +667,19 @@ Example format:
 ```
 **What drove the tape:**
 - **Retail Sales hot.** Headline +1.7% MoM (est. +1.4%), Control Group +0.7% (est. +0.2%). Consumer is still spending — cuts against the "slowdown is here" story and bleeds into rates/dollar.
-- **Warsh confirmation hearing (10 AM ET).** Testimony centered on balance sheet policy; per CNBC he left QE on the table if needed. Market read him as dovish-optionality, not committed dove — kept positioning cautious.
+- **Warsh confirmation hearing (10 AM ET).** Testimony centered on balance sheet policy; he left QE on the table if needed. Market read him as dovish-optionality, not committed dove — kept positioning cautious.
 - **Iran rejects U.S.-led talks,** calling the port blockade an "act of war." Trump later floated a ceasefire extension pending Iran's proposal. Shipping still halted through Hormuz — that's what $USO is pricing.
 - **Amazon GLP-1 launch** noted but didn't move the tape.
 ```
 
 Bad (vague bullet): *"- Investors digested Warsh's hearing where his balance sheet stance sparked debate."*
-Good (specific bullet): *"- **Warsh confirmation hearing (10 AM ET).** Per CNBC he signaled QE is back on the table if needed. Markets read him as net dovish — $TLT higher, dollar softer."*
+Good (specific bullet): *"- **Warsh confirmation hearing (10 AM ET).** He signaled QE is back on the table if needed. Markets read him as net dovish — $TLT higher, dollar softer."*
 
 Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
 2. **Released events MUST appear in RECAP:** every event in the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block MUST be reflected with actual vs estimate framing. Never skip a released event.
 
-3. **Major news MUST appear in RECAP:** any news headline from the last 6 hours that describes a market-moving event (ceasefire news, confirmation hearing outcome, major policy announcement, geopolitical deadline) MUST be cited in RECAP, attributed ("per Reuters," "per CNBC").
+3. **Major news MUST appear in RECAP:** any news headline from the last 6 hours that describes a market-moving event (ceasefire news, confirmation hearing outcome, major policy announcement, geopolitical deadline) MUST be cited in RECAP. State it directly — do NOT use source-prefix attribution like "per Reuters," "per CNBC," "according to." Just report what happened. The reader doesn't need to know which wire reported it.
 
 4. **Tickers match reality:** the market snapshot uses ETF tickers ($SPY, $QQQ, $VIXY, $BNO, $USO, $GLD, $TLT, $UUP). If the draft wrote $SPX or $NDX when the price cited is from $SPY/$QQQ, fix it. If a price in INSIGHTS is from research with no live counterpart — leave it, optionally noting "at time of writing."
 
