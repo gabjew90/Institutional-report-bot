@@ -70,9 +70,20 @@ _THEME_PATTERNS: dict[str, list[str]] = {
         "opec+", "opecxit", "energy security",
     ],
     "Crypto institutional view": [
-        "btc ", "$btc", "bitcoin", "ethereum", "eth ", "solana", "sol ",
-        "crypto etf", "spot etf", "on-chain", "stablecoin", "spot bitcoin",
-        "crypto inflows", "btc etf", "eth etf",
+        # Tightened patterns — bare 'btc' / 'ethereum' mentions in passing macro
+        # notes were inflating the count to 40+ banks when actual thematic
+        # coverage is closer to 5-10. These patterns require institutional
+        # crypto framing, not just ticker mentions.
+        "crypto etf", "spot bitcoin etf", "spot ether etf", "spot eth etf",
+        "btc etf", "eth etf", "sol etf", "ibit ", "fbtc ", "ethe ",
+        "on-chain", "on chain metric", "active addresses",
+        "btc dominance", "altseason",
+        "stablecoin", "usdt ", "usdc ", "tether",
+        "digital asset", "digital assets", "crypto institutional",
+        "crypto inflows", "crypto outflows", "crypto flows",
+        "spot bitcoin", "spot ether",
+        "btc treasury", "bitcoin treasury",
+        "$btc target", "btc target", "eth target",
     ],
     "Fed transition / dovish-hawkish surprise": [
         "warsh confirmation", "fed transition", "fed chair transition",

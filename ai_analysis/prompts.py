@@ -613,11 +613,12 @@ DRAFT_USER = """TODAY IS {today}. CURRENT TIME IS {now} ET.
 
 {theme_coverage}
 
-**HOW TO USE THE THEME COVERAGE BLOCK (binding):**
+**HOW TO USE THE THEME COVERAGE BLOCK (binding — no exceptions):**
 - The bank counts above are computed by keyword scan over the corpus, not your judgment. Treat them as ground truth.
-- INSIGHTS MUST lead with whichever theme has the highest bank count. The next two highest also belong in INSIGHTS unless conviction-disqualified (no specific data, no actionable ticker, sector with no US read-through).
-- A theme with 5+ banks behind it that you skip is a synthesis failure unless you can explicitly justify the cut (and the justification has to be in the conviction-disqualifier list above, not "I picked something else first").
-- A theme with 1-2 banks behind it can ONLY make INSIGHTS if it's a single-topic dedicated catalyst (M&A on an S&P 100 name, MAG7 earnings reaction, regulatory event with specific tickers). Otherwise it's a niche call and gets cut.
+- **MANDATORY:** the TOP 3 themes by bank count MUST appear as INSIGHTS, in order, leading with the highest. There is NO conviction-disqualification escape for themes with 10+ banks behind them — those are dominant cross-bank consensus and they ship regardless. The "Live 5 basket call from one bank" pattern is exactly what NOT to do — a 1-bank theme cannot displace a 30-bank theme.
+- The 4th and 5th INSIGHTS (you should produce 4-6 themes total) come from: (a) themes with 5+ banks below the top 3, OR (b) single-topic dedicated catalysts where there's a hard event hook (M&A on an S&P 100 name, MAG7 earnings reaction, FDA decision on a specific ticker, regulatory deadline). These are the ONLY two paths into INSIGHTS for sub-5-bank themes.
+- A theme with 1-2 banks AND no hard event hook (e.g., a single bank's basket idea, a single desk's positioning view) gets CUT — does not appear in INSIGHTS no matter how analytically interesting it is. That's a single-source niche call.
+- If you find yourself omitting one of the top 3 themes, stop and reconsider — you are wrong unless that theme genuinely has zero actionable specifics. "Hormuz isn't actionable for US traders" is wrong (oil ETFs, energy sector, yield differentials all flow from it). "Rate repricing isn't actionable" is wrong ($TLT, $UUP, $SPY duration sensitivity all flow from it).
 
 Here are {pdf_count} research analyses to synthesize:
 
