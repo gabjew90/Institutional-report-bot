@@ -54,6 +54,15 @@ class Settings(BaseSettings):
     # Random shared secret embedded in routine prompts. Empty = HTTP API disabled.
     pulse_api_token: str = ""
 
+    # GitHub-as-bridge config — used because the cloud Claude Code sandbox's
+    # egress allowlist blocks Railway and Discord but allows github.com.
+    # Empty token = bridge disabled (jobs skip themselves).
+    github_token: str = ""
+    github_repo: str = "gabjew90/Institutional-report-bot"
+    github_bridge_branch: str = "pulse-data"
+    bridge_dump_interval_minutes: int = 15
+    bridge_post_poll_interval_seconds: int = 60
+
     # Source priority list (comma-separated, highest priority first)
     # Tier 1 sources — always HIGH priority regardless of content
     tier1_sources: str = "Goldman Sachs,JPMorgan,Bank of America,Morgan Stanley"

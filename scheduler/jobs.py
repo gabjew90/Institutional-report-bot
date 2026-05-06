@@ -39,25 +39,54 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     )
 
     # Job 3: Daily Market Pulse (9am PST / 12pm ET)
-    scheduler.add_job(
-        _daily_pulse_job,
-        trigger=CronTrigger(
-            hour=settings.daily_pulse_hour,
-            minute=settings.daily_pulse_minute,
-            timezone=tz,
-        ),
-        id="daily_pulse",
-        name="Daily Market Pulse",
-        kwargs={"bot": bot},
-        max_instances=1,
-        misfire_grace_time=600,
-    )
+    # NOTE: when GitHub-bridge is enabled, the Opus routine produces the
+    # scheduled pulse instead. Skip registering this internal Gemini job to
+    # avoid duplicate posts. Manual /pulse from Discord still works as before.
+    from github_bridge.jobs import bridge_enabled
+    bridge_active = bridge_enabled()
+    if not bridge_active:
+        scheduler.add_job(
+            _daily_pulse_job,
+            trigger=CronTrigger(
+                hour=settings.daily_pulse_hour,
+                minute=settings.daily_pulse_minute,
+                timezone=tz,
+            ),
+            id="daily_pulse",
+            name="Daily Market Pulse (Gemini)",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=600,
+        )
+    else:
+        log.info("GitHub-bridge active — skipping internal Gemini scheduled pulse")
+
+    # Bridge jobs (only register if GITHUB_TOKEN is set)
+    if bridge_active:
+        from github_bridge.jobs import dump_context_job
+        scheduler.add_job(
+            dump_context_job,
+            trigger=IntervalTrigger(minutes=settings.bridge_dump_interval_minutes),
+            id="bridge_dump_context",
+            name="GitHub bridge: dump pulse context",
+            max_instances=1,
+            misfire_grace_time=300,
+        )
+        scheduler.add_job(
+            _bridge_post_pending_job,
+            trigger=IntervalTrigger(seconds=settings.bridge_post_poll_interval_seconds),
+            id="bridge_post_pending",
+            name="GitHub bridge: post pending pulses",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=120,
+        )
 
     log.info(
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
         f"process every {settings.process_interval_minutes}min, "
-        f"daily pulse at {settings.daily_pulse_hour}:{settings.daily_pulse_minute:02d} ET"
+        f"{'bridge active (Opus routine produces pulses)' if bridge_active else f'daily pulse at {settings.daily_pulse_hour}:{settings.daily_pulse_minute:02d} ET (Gemini)'}"
     )
 
     return scheduler
@@ -97,3 +126,12 @@ async def _daily_pulse_job(bot=None):
             log.warning("Daily pulse: no reports available")
     except Exception as e:
         log.error(f"Daily pulse failed: {e}", exc_info=True)
+
+
+async def _bridge_post_pending_job(bot=None):
+    """Scheduled job: poll GitHub bridge pending/, post any new pulses to Discord."""
+    try:
+        from github_bridge.jobs import post_pending_pulses_job
+        await post_pending_pulses_job(bot=bot)
+    except Exception as e:
+        log.error(f"GitHub bridge post-pending failed: {e}", exc_info=True)
