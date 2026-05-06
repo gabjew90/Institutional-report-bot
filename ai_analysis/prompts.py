@@ -671,13 +671,38 @@ The main section. 3-8 themes from research — whichever have substance today.
 
 If you find yourself writing "but a separate angle is..." or "on a different note..." mid-theme, you've broken coherence. Either commit to one theme or split into two themes.
 
-**Each INSIGHT is 200-300 words of flowing prose, NOT a headline + bullets and NOT a labeled "Trade Implication" line at the end.** Default to two short paragraphs. Required structure:
+**Each INSIGHT is 200-300 words of flowing prose, structured like a financial analyst defending a research call to portfolio managers.** Five visible movements that mirror how a real analyst presents to skeptical PMs: the call, the evidence, the anticipated pushback, the defense, the recommendation. NOT a headline + bullets, NOT a labeled "Trade Implication" line. The reader should feel a rigorous arc, not a data dump.
 
-**Paragraph 1 — what's happening + the mechanism.** Open with a hook sentence that names the specific shift with a number. Then explain the actual mechanism: WHY this is happening, HOW it transmits to markets, what the chain of cause-and-effect is. This is the "critical thinking" layer. Don't just assert "capex is rising" — explain that 1/3 of MAG7 earnings came from PE investment gains (so the capex is leveraged on financial engineering, not pure AI demand). Don't just say "yields are breaking out" — explain that energy + labor are firming core inflation projections, so long-dated bonds are repricing without a Fed signal needed. Weave in 3+ specific data points (named banks with specific numbers, levels, percentiles, dissent counts) — not as a list, as part of the argument.
+**Movement 1 — THE CALL (1 sentence, bolded or italicized).** State the thesis plainly, with conviction. This is the analyst opening: *"We see X happening / We think the market is mispricing Y."* No jargon, no number cram. Plain words.
+Examples:
+- *The bond market is pricing rate hikes through April, and we think it's wrong.*
+- *Hormuz peace memo on the wires, but the supply scar lasts months.*
+- *AI capex is no longer a forecast — earnings are confirming the build.*
+- *Apple's foundry pivot is the single-stock story this market is mispricing.*
 
-**Paragraph 2 — bull case vs bear case, ENDING with a positioning read woven into the prose.** Both reads of the thesis must appear in flowing sentences (not bullets). Be concrete about what each side requires to be true. Then close the paragraph with a SHORT positioning view — what this leans toward and what would invalidate it — integrated into prose. **Do NOT use a `Trade Implication:` header, a `**Trade:**` label, a separate bolded line, or a "Hint:" prefix.** The positioning read is woven naturally into the closing sentences of the same paragraph.
+**Movement 2 — THE EVIDENCE (3-4 sentences).** Methodically present the supporting data. This is the analyst saying *"Here's why we're making this call."* Pattern:
+- Sentence 1: the specific shift (a number with attribution).
+- Sentences 2-3: the mechanism — WHY this is happening, what's feeding it. Named-bank data points woven in. 3+ specific data points across the paragraph.
+- Sentence 4: the transmission chain — how this shows up in other assets / positioning.
 
-**Tone of the positioning read:** state which way the setup leans for someone with US options/crypto exposure, name the cleanest instrument expression in passing, give a specific invalidation level/event. Plain English. Reads as analysis, not advice.
+The PM listening should be able to follow each step of the logic. Don't just assert; show the work.
+
+**Movement 3 — THE ANTICIPATED PUSHBACK (1-2 sentences).** This is the analyst saying *"Here's the smart counter-argument we'd expect from the room."* Open with a clean transition — *"The bull case..." / "The pushback we'd anticipate..." / "Skeptics would point to..."* Then state the strongest counter-argument honestly, with specific data or a named risk factor. Don't strawman it; steelman it.
+
+**Movement 4 — THE DEFENSE (2-3 sentences).** This is where the analyst shows they've thought through the counter. Acknowledge the strength of the pushback, then defend: *"That risk is real, but...,"* / *"Even granting that...,"* / *"Where we disagree...."* Bring named data or a specific level/event that addresses the counter. This is the rigor that distinguishes analysis from a tip.
+
+**Movement 5 — THE RECOMMENDATION (1-2 sentences, integrated into the same paragraph as Movements 3-4).** Close with the positioning view — what this leans toward for someone with US options/crypto exposure, the cleanest instrument expression named in passing, and the specific level/event that would invalidate the call. Plain English. NO `**Trade Implication:**` header, NO `Hint:` label, NO bullet — woven naturally into the paragraph's closing sentences.
+
+**Why this structure:** the analyst-to-PM framing forces rigor. You can't get away with vague claims or unsupported hand-waves because the "anticipated pushback" movement requires you to name the strongest counter-argument and address it. The reader gets a complete view: the call, the evidence, the smart objection, the defense, the action.
+
+**Visible signposts the reader should see (without bullets):**
+- *Movement 1:* opens with the call (italicized/bolded).
+- *Movement 2:* methodical evidence prose, 3+ specific data points.
+- *Movement 3:* clean transition phrase ("The bull case..." / "The pushback..." / "Skeptics would argue...").
+- *Movement 4:* defense transition phrase ("That risk is real, but..." / "Even granting that...").
+- *Movement 5:* positioning close integrated, named instrument, specific invalidation.
+
+**What to avoid:** "data dump" prose where every sentence is a stat without an argument. The data exists to support the call; the call is the spine. If a sentence isn't either making the call, supporting it, raising the counter, defending against the counter, or closing with positioning — cut it.
 
 **Examples of the integrated positioning close (paragraph 2 endings):**
 
