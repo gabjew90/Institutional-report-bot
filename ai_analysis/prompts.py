@@ -17,22 +17,27 @@ Respond with a JSON object only, no other text:
   "summary": "2-3 sentence summary of the report's main findings"
 }
 
-Priority guidelines:
-- HIGH: Morning briefings with multiple calls. Macro/strategy pieces with positioning data. S&T notes with flow data. Vol/positioning commentary. Crypto institutional research. Major US/global equity calls with conviction. Oil/commodity supply analysis with geopolitical read-through. Fed/ECB/BoJ policy analysis with rate-path implications. **MAG7 hyperscaler earnings previews and reviews ($AAPL, $MSFT, $GOOGL, $AMZN, $META, $NVDA, $TSLA) — always HIGH on or near print day**, even single-stock notes; these names move the index. Other tape-moving bellwethers on or near earnings ($NFLX, $TSM, $AVGO, $ORCL, $CRM, $JPM, $GS, $MS, $BAC, $WMT, $XOM, $BRK.B) are also HIGH.
-- MEDIUM: Single-stock equity research on other major US/European names (even from top banks). Sector overviews for sectors that trade in US options markets. Earnings previews/reviews on names outside the HIGH list. US macro commentary. Major FX (EUR, JPY, GBP). Model updates on major indices. Anything with actionable implications for US/crypto traders.
+Priority guidelines — calibrate to "how much value does this give a US options + crypto trader?" That's the only audience that matters. A US trader cannot trade Australian equities, AUDUSD, or Tokyo-listed names directly. Reports that don't have explicit US/global read-through should be LOW or MEDIUM regardless of bank pedigree.
+
+- HIGH: Morning briefings with multiple US-relevant calls. US macro/strategy pieces with positioning data (CTA flows, hedge fund net leverage, prime brokerage). S&T notes with US flow data. Vol/positioning commentary on US assets. Crypto institutional research. Major US equity calls with conviction. Oil/commodity supply analysis with geopolitical read-through. Fed policy analysis with rate-path implications. **MAG7 hyperscaler earnings previews and reviews ($AAPL, $MSFT, $GOOGL, $AMZN, $META, $NVDA, $TSLA) — always HIGH on or near print day**, even single-stock notes; these names move the index. Other tape-moving bellwethers on or near earnings ($NFLX, $TSM, $AVGO, $ORCL, $CRM, $JPM, $GS, $MS, $BAC, $WMT, $XOM, $BRK.B) are also HIGH. ECB/BOJ/BOE policy analysis ONLY if it explicitly argues US asset spillover (rate differential, dollar path, S&P read-through) — generic ECB commentary without US linkage is MEDIUM at best, LOW often.
+- MEDIUM: Single-stock equity research on other major US/European names (even from top banks). Sector overviews for sectors that trade in US options markets. Earnings previews/reviews on names outside the HIGH list. US macro commentary that's lighter on positioning data. Major FX commentary (EUR, JPY, GBP) that has US/global asset linkage. Model updates on major indices. Asia FX daily talk ONLY if it argues yen carry / China outflow / risk-asset spillover; otherwise LOW. Anything with actionable implications for US/crypto traders.
 - LOW: Use this liberally for reports with limited read-through for US options and crypto traders:
   - Disclaimer-heavy wrappers, valuation tables with no commentary, duplicate reports, admin content
   - Pure fixed income/rates research with no equity or macro implications
   - ESG/sustainability reports
-  - Regional macro for smaller markets a US trader doesn't trade: Hungary, Czech Republic, Poland, Turkey, Argentina, South Africa, Indonesia, Philippines, Vietnam, Egypt, Israel, Chile, Colombia
-  - Minor FX pair deep-dives: SGD, THB, INR, ZAR, TRY, BRL, MXN, IDR (exceptions: when they signal something bigger, like EM FX stress spilling into risk assets)
+  - **Regional daily briefings whose primary audience is the local market.** Default LOW for: Australian Morning Focus, Asia Morning briefings, NZ daily wraps, Canadian morning notes, Latin America dailies, Asian session strategy notes — UNLESS the report makes an explicit US read-through case (e.g., RBA decision tied to global central bank divergence, Asia tech earnings impacting US semis, yen-carry unwind signaling global de-risking).
+  - **Asia FX daily talk** (USDJPY/USDCNY/USDKRW/USDIDR daily commentary) — default LOW unless the report explicitly argues US risk-asset spillover. Routine "USDJPY tested 155 overnight" technical color is LOW.
+  - Regional macro for smaller markets a US trader doesn't trade: Hungary, Czech Republic, Poland, Turkey, Argentina, South Africa, Indonesia, Philippines, Vietnam, Egypt, Israel, Chile, Colombia. Also Australia, NZ, Singapore daily commentary unless explicit US/global read-through.
+  - Minor FX pair deep-dives: SGD, THB, INR, ZAR, TRY, BRL, MXN, IDR, AUD, NZD, NOK, SEK (exceptions: when they signal something bigger, like EM FX stress spilling into risk assets, or G10 currency stress signaling broader USD strength).
   - Single-commodity deep dives with no US/crypto spillover: sugar, cocoa, wheat, cotton, livestock, minor base metals
   - Credit research without spread calls (e.g., discussions of issuance trends, credit ratings, individual bond analyses without macro read-through)
-  - Country-specific single-stock research for markets traders don't access: specific Indonesian banks, Polish utilities, Thai consumer names
+  - Country-specific single-stock research for markets traders don't access: specific Indonesian banks, Polish utilities, Thai consumer names, Australian banks, NZ utilities, Japanese auto parts
   - Technical-analysis-only pieces with no fundamental backing
   - Historical wrap-ups (quarter/month-in-review) without forward-looking views
 
-Classify every report on its content alone. Do not soften the LOW call because a report comes from a big-name bank — if a Goldman Sachs piece is a disclaimer-heavy wrapper, a duplicate, or pure fixed-income with no equity read-through, call it LOW. Source pedigree is not a reason to avoid LOW."""
+Classify every report on its content alone. Do not soften the LOW call because a report comes from a big-name bank — if a Goldman Sachs piece is a disclaimer-heavy wrapper, a duplicate, or pure fixed-income with no equity read-through, call it LOW. Source pedigree is not a reason to avoid LOW.
+
+**Test before tagging HIGH:** would a US options/crypto trader change positioning in the next 1-5 days because of THIS specific report? If you can't articulate a specific US-asset implication, it's not HIGH. "Australian Morning Focus" with a routine RBA hold + ASX sector summary is LOW. "Asia FX Talk" rolling through 8 Asian pairs without US linkage is LOW. They become MEDIUM only if they make an explicit US read-through case. They become HIGH only if the report itself argues a global catalyst (e.g., a coordinated central bank pivot, a yen-carry unwind in progress)."""
 
 TRIAGE_USER_PROMPT = """Classify this institutional research PDF:
 
