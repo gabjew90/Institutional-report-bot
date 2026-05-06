@@ -612,6 +612,13 @@ After counting, INSIGHTS leads with whichever theme has the most banks behind it
 
 **Trade Implication.** ONE line, not a bullet. Specific instrument + direction + horizon + invalidation. Examples: *"Long $AMAT or $SOXX into July semicap earnings — Goldman raised 2026 WFE estimates to $141B. Stop on a META or GOOGL capex guide-down — that breaks the picks-and-shovels thesis."* The invalidation is what makes it a trade not a story.
 
+**Single-name short / avoid calls — strict rules to prevent stale calls:**
+- Do NOT recommend shorting or "avoiding" a specific ticker based on a single intraday dispersion observation (e.g., one S&T note's "CPU weakness today: AMD, INTC, ARM, QCOM"). Intraday tape color is not a multi-week trade thesis.
+- A single-name short/avoid call requires (a) explicit research conviction on THAT specific ticker (a desk call, downgrade, named risk factor), AND (b) at least 2 different research notes converging on the bearish view on that name.
+- If the research only flags a SECTOR or BUCKET as weak (e.g., "CPUs face selling pressure"), express the trade as a SECTOR/PAIR call (long memory vs short SOXX, or long $ORCL vs short $AMD as a pair-trade), not a list of individual tickers to short.
+- Better default: when in doubt, frame as long the strong side without naming individual shorts. E.g., "Long $MU and $ORCL" rather than "Avoid $AMD, $INTC, $QCOM" — that way a stale ticker-level read doesn't generate a wrong-direction call on a name the research never specifically targeted.
+- This applies to "avoid" framing too — "avoid $X" reads as a bearish call to a trader. Don't list individual tickers to avoid unless the research has named-and-specific bearish conviction on each.
+
 **Data density (binding):** every theme body must include AT LEAST 3 concrete data points. Examples of what counts:
 - Specific number with attribution: *"Goldman raised 2026 hyperscaler capex to $751B, up $80B in two weeks (83% above 2025)"*
 - Specific level / percentile: *"10Y broke 4.4% to a 9-month high; 30Y above 5%"*
@@ -760,6 +767,7 @@ If you can't write a concrete implication for a theme, that's a signal the theme
 - Events scheduled AFTER today placed in "Today" → move to "This Week".
 - Missing crypto in RECAP → add from snapshot ($BTC always in the lede, $ETH/$SOL if moving).
 - Vague driver bullets → rewrite with specific data point + takeaway + impact.
+- **Aggregated single-name short/avoid calls** sourced from intraday tape color (e.g., "Avoid CPU-exposed names $AMD, $INTC, $QCOM" derived from one S&T note's dispersion observation) → reframe as a sector/pair trade (long memory vs short $SOXX, or long $ORCL vs $AMD pair) OR drop the bearish leg and just frame as long the strong side. Single-name short calls require explicit and repeated research conviction on that specific ticker — intraday dispersion lists do not qualify.
 
 **Things NOT to fix:**
 - Writing voice, phrasing, sentence length — don't smooth it out.
