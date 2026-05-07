@@ -257,8 +257,12 @@ async def analyze_pdf_deep(
 
     if use_multimodal:
         try:
-            # Cap multimodal pages — keep token cost predictable
-            mm_max_pages = min(settings.max_pages_per_pdf, 5)
+            # Cap at 30 pages. Gemini Flash Lite image tokens are cheap
+            # (~$0.001/page) and many top-bank reports have 10-20+ exhibits
+            # that would be cut by a tighter cap. The page_selector already
+            # filters disclaimers and sub-threshold pages, so 30 is a soft
+            # upper bound — typical reports render fewer.
+            mm_max_pages = 30
             selected = await asyncio.to_thread(
                 select_pages, extraction.pages, mm_max_pages
             )
