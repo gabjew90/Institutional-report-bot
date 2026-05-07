@@ -82,6 +82,19 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=120,
         )
 
+    # Real-time ingestion feed (only registers if DISCORD_INGEST_FEED_CHANNEL_ID set)
+    from discord_bot.ingestion_feed import feed_enabled
+    if feed_enabled():
+        scheduler.add_job(
+            _ingest_feed_tick_job,
+            trigger=IntervalTrigger(seconds=settings.ingest_feed_interval_seconds),
+            id="ingest_feed_tick",
+            name="Ingestion feed: announce next pending",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=120,
+        )
+
     log.info(
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
@@ -135,3 +148,12 @@ async def _bridge_post_pending_job(bot=None):
         await post_pending_pulses_job(bot=bot)
     except Exception as e:
         log.error(f"GitHub bridge post-pending failed: {e}", exc_info=True)
+
+
+async def _ingest_feed_tick_job(bot=None):
+    """Scheduled job: announce next pending HIGH/MEDIUM ingestion to the feed channel."""
+    try:
+        from discord_bot.ingestion_feed import announce_next_pending
+        await announce_next_pending(bot=bot)
+    except Exception as e:
+        log.error(f"Ingestion feed tick failed: {e}", exc_info=True)

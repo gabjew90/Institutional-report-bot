@@ -23,6 +23,24 @@ def _get_client() -> dropbox.Dropbox:
     )
 
 
+def get_temporary_link(dropbox_path: str) -> str:
+    """Generate a 4-hour public download URL for a Dropbox file.
+
+    Used by the ingestion feed to attach a downloadable link to each posted
+    embed. Auto-expires so no public-link sprawl. Returns empty string on
+    failure (e.g., file moved/deleted in Dropbox since processing).
+    """
+    if not dropbox_path:
+        return ""
+    try:
+        dbx = _get_client()
+        result = dbx.files_get_temporary_link(dropbox_path)
+        return result.link or ""
+    except Exception as e:
+        log.warning(f"Dropbox temp link failed for {dropbox_path}: {e}")
+        return ""
+
+
 @retry(
     stop=stop_after_attempt(4),
     wait=wait_exponential(multiplier=2, min=2, max=16),

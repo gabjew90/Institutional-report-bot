@@ -45,6 +45,13 @@ def create_bot() -> commands.Bot:
             log.info(f"Synced {len(synced)} slash commands")
         except Exception as e:
             log.error(f"Failed to sync commands: {e}")
+        # One-shot ingestion-feed backfill check after bot is connected
+        try:
+            from discord_bot.ingestion_feed import announce_startup_backfill, feed_enabled
+            if feed_enabled():
+                await announce_startup_backfill(bot)
+        except Exception as e:
+            log.error(f"Ingestion feed startup backfill failed: {e}", exc_info=True)
 
     @bot.tree.command(name="pulse", description="Generate a Market Pulse from analyses in the window")
     @app_commands.describe(

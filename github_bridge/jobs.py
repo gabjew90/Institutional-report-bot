@@ -106,6 +106,15 @@ def dump_context_job() -> None:
             log.info(f"Bridge: no analyses since {cutoff[:16]} — skipping context dump")
             return
 
+        # Filter LOW priority out of synthesis input. LOW is admin/wrappers/
+        # regional single-stocks per triage rules; including them inflates
+        # analyses_json by ~30-40% and dilutes signal in INSIGHTS selection.
+        total_rows = len(rows)
+        rows = [r for r in rows if (r.get("priority") or "").lower() != "low"]
+        dropped = total_rows - len(rows)
+        if dropped:
+            log.info(f"Bridge: dropped {dropped} LOW-priority analyses from synthesis input")
+
         analyses = _load_analyses_from_db(rows)
         if not analyses:
             log.info("Bridge: no parseable analyses — skipping context dump")

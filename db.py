@@ -97,6 +97,16 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             details TEXT,
             created_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
+
+        -- Single-row state for the real-time ingestion-feed Discord poster.
+        -- Tracks the highest pdf_file_id we've already announced so we don't
+        -- repost. id = 1 always (the row is upserted in place).
+        CREATE TABLE IF NOT EXISTS ingest_feed_state (
+            id INTEGER PRIMARY KEY CHECK (id = 1),
+            last_announced_pdf_file_id INTEGER NOT NULL DEFAULT 0,
+            updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+        INSERT OR IGNORE INTO ingest_feed_state (id, last_announced_pdf_file_id) VALUES (1, 0);
     """)
     conn.commit()
 
@@ -462,6 +472,84 @@ def get_last_report_time() -> str | None:
            ORDER BY created_at DESC LIMIT 1"""
     ).fetchone()
     return row["created_at"] if row else None
+
+
+def get_ingest_feed_last_announced() -> int:
+    """Highest pdf_file_id we've already posted to the ingestion feed."""
+    row = get_connection().execute(
+        "SELECT last_announced_pdf_file_id FROM ingest_feed_state WHERE id = 1"
+    ).fetchone()
+    return int(row["last_announced_pdf_file_id"]) if row else 0
+
+
+def set_ingest_feed_last_announced(pdf_file_id: int) -> None:
+    conn = get_connection()
+    conn.execute(
+        """UPDATE ingest_feed_state
+           SET last_announced_pdf_file_id = ?, updated_at = datetime('now')
+           WHERE id = 1""",
+        (int(pdf_file_id),),
+    )
+    conn.commit()
+
+
+def get_next_pdf_to_announce(after_pdf_file_id: int) -> dict | None:
+    """Next analyzed HIGH/MEDIUM PDF whose pdf_file_id > after_pdf_file_id.
+
+    Joins pdf_files with the LATEST pdf_analyses row per file (so reanalyses
+    are deduped). Skips LOW priority. Returns dict or None if none pending.
+    """
+    row = get_connection().execute(
+        _LATEST_ANALYSIS_CTE + """
+        SELECT la.*, pf.id AS pf_id, pf.file_name, pf.dropbox_path,
+               pf.dropbox_modified_at, pf.file_size_bytes
+        FROM latest_analyses la
+        JOIN pdf_files pf ON la.pdf_file_id = pf.id
+        WHERE la.priority IN ('high', 'medium')
+          AND pf.id > ?
+        ORDER BY pf.id ASC
+        LIMIT 1""",
+        (int(after_pdf_file_id),),
+    ).fetchone()
+    return dict(row) if row else None
+
+
+def count_pending_announcements(after_pdf_file_id: int) -> dict:
+    """Count HIGH/MEDIUM PDFs queued for announcement after the given id.
+
+    Used at startup to decide whether to trickle or post a backfill summary.
+    Returns {'high': N, 'medium': M, 'total': N+M}.
+    """
+    rows = get_connection().execute(
+        _LATEST_ANALYSIS_CTE + """
+        SELECT la.priority, COUNT(*) as n
+        FROM latest_analyses la
+        JOIN pdf_files pf ON la.pdf_file_id = pf.id
+        WHERE la.priority IN ('high', 'medium')
+          AND pf.id > ?
+        GROUP BY la.priority""",
+        (int(after_pdf_file_id),),
+    ).fetchall()
+    out = {"high": 0, "medium": 0, "total": 0}
+    for r in rows:
+        out[r["priority"]] = int(r["n"])
+        out["total"] += int(r["n"])
+    return out
+
+
+def max_announceable_pdf_file_id() -> int:
+    """Current MAX(pdf_file_id) among HIGH/MEDIUM analyzed PDFs.
+
+    Used at startup to fast-forward last_announced past a backfilled batch.
+    """
+    row = get_connection().execute(
+        _LATEST_ANALYSIS_CTE + """
+        SELECT COALESCE(MAX(pf.id), 0) AS m
+        FROM latest_analyses la
+        JOIN pdf_files pf ON la.pdf_file_id = pf.id
+        WHERE la.priority IN ('high', 'medium')"""
+    ).fetchone()
+    return int(row["m"]) if row else 0
 
 
 def get_last_daily_pulse() -> dict | None:

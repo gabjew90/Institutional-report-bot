@@ -63,6 +63,15 @@ class Settings(BaseSettings):
     bridge_dump_interval_minutes: int = 15
     bridge_post_poll_interval_seconds: int = 60
 
+    # Real-time ingestion feed — posts a Discord embed for each newly-analyzed
+    # HIGH/MEDIUM PDF, trickled 1-per-interval. Empty = feed disabled.
+    discord_ingest_feed_channel_id: str = ""
+    ingest_feed_interval_seconds: int = 60
+    # Startup backlog threshold: if more than N HIGH/MEDIUM PDFs are queued
+    # for announcement at boot, post a single summary card instead of trickling
+    # them all. Treats reboots after extended downtime as "backfill" not "live".
+    ingest_feed_backlog_threshold: int = 20
+
     # Source priority list (comma-separated, highest priority first)
     # Tier 1 sources — always HIGH priority regardless of content
     tier1_sources: str = "Goldman Sachs,JPMorgan,Bank of America,Morgan Stanley"
