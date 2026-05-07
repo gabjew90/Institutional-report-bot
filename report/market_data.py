@@ -1,11 +1,17 @@
 """Fetch live market data to ground the Market Pulse in current reality.
 
 Sources:
-- CoinGecko public API (no key) for BTC/ETH with 24h and 7d changes
-- Yahoo Finance v7 quote endpoint (no key) for indices/commodities/FX
+- Binance.US for BTC/ETH/SOL (price + 24h change + midnight UTC anchor)
+- Finnhub /quote for traditional markets (SPY/QQQ/VIXY/oil/gold/TLT/UUP)
+
+CoinGecko was previously the primary crypto source but its free public API
+became unreliable from Railway IPs (consistent HTTP 429). Binance.US public
+endpoints are unauthenticated, generous-limit, and provide both current
+price and the 24h ticker we need.
 
 This runs synchronously at pulse time, inserted into the synthesis prompt so
-Gemini uses current prices instead of whatever stale numbers the research quoted.
+the synthesis layer uses current prices instead of whatever stale numbers
+the research quoted.
 """
 
 import json
@@ -14,14 +20,6 @@ import urllib.request
 from datetime import datetime
 
 log = logging.getLogger(__name__)
-
-_COINGECKO_URL = (
-    "https://api.coingecko.com/api/v3/simple/price"
-    "?ids=bitcoin,ethereum,solana"
-    "&vs_currencies=usd"
-    "&include_24hr_change=true"
-    "&include_7d_change=true"
-)
 
 # Traditional market tickers fetched from Finnhub. Using ETF tickers directly
 # in the pulse (no $SPX/$NDX/etc. translation) per user preference.
@@ -47,39 +45,8 @@ def _fetch_json(url: str, timeout: float = 5.0) -> dict | None:
         return None
 
 
-def _fetch_crypto_midnight_utc(coin_id: str) -> float | None:
-    """Get the coin price at most-recent 00:00 UTC via CoinGecko market_chart.
-
-    Returns the single price point closest to (but <=) today's 00:00 UTC in USD.
-    """
-    # Pull last 2 days of hourly data; find the point nearest 00:00 UTC today.
-    url = (
-        f"https://api.coingecko.com/api/v3/coins/{coin_id}/market_chart"
-        f"?vs_currency=usd&days=2"
-    )
-    data = _fetch_json(url)
-    if not data:
-        return None
-    prices = data.get("prices") or []  # list of [timestamp_ms, price_usd]
-    if not prices:
-        return None
-    from datetime import datetime, timezone
-    today_midnight_utc_ms = int(
-        datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0).timestamp() * 1000
-    )
-    # Find the closest-to-but-not-after-midnight-UTC price
-    best = None
-    best_diff = float("inf")
-    for ts_ms, price in prices:
-        diff = today_midnight_utc_ms - ts_ms
-        if 0 <= diff < best_diff:
-            best_diff = diff
-            best = price
-    return best
-
-
 def _fetch_binance_24h(symbol: str) -> dict | None:
-    """Fallback when CoinGecko is rate-limited — get current + 24h change from Binance.US."""
+    """Get current price + rolling 24h change from Binance.US."""
     url = f"https://api.binance.us/api/v3/ticker/24hr?symbol={symbol}"
     data = _fetch_json(url)
     if not data or not isinstance(data, dict):
@@ -112,29 +79,16 @@ def _fetch_binance_midnight(symbol: str) -> float | None:
 
 
 def _fetch_crypto() -> dict:
-    """Fetch crypto prices with CoinGecko primary + Binance.US fallback."""
-    cg_data = _fetch_json(_COINGECKO_URL)
-    binance_map = {"bitcoin": "BTCUSDT", "ethereum": "ETHUSDT", "solana": "SOLUSDT"}
+    """Fetch crypto prices via Binance.US (current + 24h rolling + midnight UTC anchor)."""
+    binance_map = {"BTC": "BTCUSDT", "ETH": "ETHUSDT", "SOL": "SOLUSDT"}
     out = {}
-    for key, name in [("bitcoin", "BTC"), ("ethereum", "ETH"), ("solana", "SOL")]:
-        current = None
-        rolling_24h = None
-        change_7d = None
-        # Primary: CoinGecko
-        if cg_data and key in cg_data:
-            current = cg_data[key].get("usd")
-            rolling_24h = cg_data[key].get("usd_24h_change")
-            change_7d = cg_data[key].get("usd_7d_change")
-        # Fallback: Binance.US if CoinGecko didn't return this coin (rate limit, etc.)
-        if current is None:
-            b = _fetch_binance_24h(binance_map[key])
-            if b:
-                current = b["price"]
-                rolling_24h = b["change_24h_rolling"]
-        if current is None:
+    for name, symbol in binance_map.items():
+        b = _fetch_binance_24h(symbol)
+        if not b:
             continue
-        # Midnight-UTC anchor via Binance (always works from Railway)
-        midnight_utc_price = _fetch_binance_midnight(binance_map[key])
+        current = b["price"]
+        rolling_24h = b["change_24h_rolling"]
+        midnight_utc_price = _fetch_binance_midnight(symbol)
         change_utc_day = None
         if midnight_utc_price:
             change_utc_day = ((current - midnight_utc_price) / midnight_utc_price) * 100
@@ -142,7 +96,7 @@ def _fetch_crypto() -> dict:
             "price": current,
             "change_utc_day": change_utc_day,
             "change_24h_rolling": rolling_24h,
-            "change_7d": change_7d,
+            "change_7d": None,  # Binance ticker doesn't expose 7d; previously CoinGecko-only
         }
     return out
 

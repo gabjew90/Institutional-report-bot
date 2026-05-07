@@ -178,7 +178,11 @@ async def triage_pdf(file_name: str, text_preview: str, folder_path: str = "") -
     client = _get_client()
     limiter = _get_rate_limiter()
 
-    preview = text_preview[:8000]
+    # Cap triage input at ~8K tokens (32K chars). Older 8K-char cap was
+    # missing the body of longer docs (calendars, multi-section morning
+    # briefings) — the first 8K chars often = cover + 1 page of exec
+    # summary, hiding the actual content from the priority decision.
+    preview = text_preview[:32000]
 
     user_prompt = TRIAGE_USER_PROMPT.format(
         file_name=file_name,
