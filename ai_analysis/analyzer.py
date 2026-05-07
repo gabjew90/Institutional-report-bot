@@ -9,6 +9,7 @@ Uses Google Gemini for all tiers.
 """
 
 import asyncio
+import base64
 import json
 import logging
 import time
@@ -24,10 +25,62 @@ from ai_analysis.models import (
 from ai_analysis.prompts import (
     TRIAGE_SYSTEM_PROMPT, TRIAGE_USER_PROMPT,
     ANALYSIS_SYSTEM_PROMPT, ANALYSIS_USER_PROMPT_TEXT_ONLY,
+    ANALYSIS_USER_PROMPT_MULTIMODAL,
 )
 from ai_analysis.rate_limiter import RateLimiter
 from pdf_processing.models import PdfExtraction
+from pdf_processing.page_selector import select_pages
+from pdf_processing.extractor import render_pages_to_images
 from config import settings
+
+
+# Multimodal trigger — selectively render the densest pages of equity-research
+# / vol / derivatives pieces from top investment banks. The vast majority of
+# HIGH-priority research is well-summarized in text; multimodal pays off
+# only on dense exhibit tables (Goldman/MS earnings models) and cross-asset
+# visualizations (DB dislocations, BofA Hartnett heatmaps). See assessment
+# in conversation history for the empirical 20% lift figure.
+_MULTIMODAL_SOURCES = {
+    "Goldman Sachs", "Morgan Stanley", "JPMorgan", "JP Morgan",
+    "Citi", "Citigroup", "Deutsche Bank", "Bank of America", "BofA",
+}
+_MULTIMODAL_REPORT_TYPES = {
+    "equity_research", "derivatives", "vol_commentary",
+}
+_MULTIMODAL_TITLE_HINTS = (
+    "preview", "model", "dispersion", "dislocation",
+    "exhibit", "deep dive", "deep-dive",
+)
+
+
+def _should_run_multimodal(
+    priority: str,
+    source: str | None,
+    report_type: str | None,
+    file_name: str,
+    total_pages: int,
+) -> bool:
+    """Selective multimodal trigger.
+
+    HIGH-priority pieces from top banks where the report type or filename
+    suggests dense exhibits / cross-asset visualizations. Skip very short
+    notes (≤4 pages) — those are typically TME-style chart-and-paragraph
+    pieces where text already captures the takeaway.
+    """
+    if (priority or "").lower() != "high":
+        return False
+    if total_pages < 5:
+        return False
+    src = (source or "").strip()
+    if src not in _MULTIMODAL_SOURCES:
+        return False
+    rt = (report_type or "").strip().lower()
+    fname_lower = (file_name or "").lower()
+    if rt in _MULTIMODAL_REPORT_TYPES:
+        return True
+    if any(hint in fname_lower for hint in _MULTIMODAL_TITLE_HINTS):
+        return True
+    return False
 
 log = logging.getLogger(__name__)
 
@@ -174,23 +227,79 @@ async def analyze_pdf_deep(
     file_name: str,
     extraction: PdfExtraction,
     priority: str,
+    source: str | None = None,
+    report_type: str | None = None,
 ) -> PdfAnalysis:
-    """Tier 2: Deep analysis using Gemini — text-only.
+    """Tier 2: Deep analysis using Gemini.
 
-    Sends the full document to Gemini. No truncation, no image rendering.
-    Gemini's 1M-token context handles even 90-page UBS Contextual Diaries.
+    Default path: text-only — sends the full document to Gemini. Gemini's
+    1M-token context handles even 90-page UBS Contextual Diaries.
+
+    Selective multimodal path: when source/report_type/filename suggest
+    dense exhibit tables or cross-asset visualizations (top-bank equity
+    research / vol / derivatives), the densest 3-5 pages are rendered to
+    images and attached. Triggered by _should_run_multimodal().
     """
     client = _get_client()
     limiter = _get_rate_limiter()
 
     text_content = extraction.full_text
+    image_parts: list[types.Part] = []
+    pages_analyzed_count = 0
 
-    user_text = ANALYSIS_USER_PROMPT_TEXT_ONLY.format(
+    use_multimodal = _should_run_multimodal(
+        priority=priority,
+        source=source,
+        report_type=report_type,
         file_name=file_name,
         total_pages=extraction.total_pages,
-        text_content=text_content,
     )
-    content_parts = [types.Part.from_text(text=user_text)]
+
+    if use_multimodal:
+        try:
+            # Cap multimodal pages — keep token cost predictable
+            mm_max_pages = min(settings.max_pages_per_pdf, 5)
+            selected = await asyncio.to_thread(
+                select_pages, extraction.pages, mm_max_pages
+            )
+            if selected:
+                images = await asyncio.to_thread(
+                    render_pages_to_images, extraction.file_path, selected
+                )
+                for img in images:
+                    img_bytes = base64.b64decode(img.image_base64)
+                    image_parts.append(
+                        types.Part.from_bytes(data=img_bytes, mime_type=img.media_type)
+                    )
+                pages_analyzed_count = len(images)
+                log.info(
+                    f"Multimodal pass ENABLED for {file_name}: "
+                    f"{pages_analyzed_count} pages rendered (source={source}, type={report_type})"
+                )
+            else:
+                log.info(f"Multimodal eligible but page_selector returned 0 pages for {file_name}")
+                use_multimodal = False
+        except Exception as e:
+            log.warning(f"Multimodal rendering failed for {file_name}: {e} — falling back to text-only")
+            use_multimodal = False
+            image_parts = []
+            pages_analyzed_count = 0
+
+    if use_multimodal and image_parts:
+        user_text = ANALYSIS_USER_PROMPT_MULTIMODAL.format(
+            file_name=file_name,
+            total_pages=extraction.total_pages,
+            image_pages=pages_analyzed_count,
+            text_content=text_content,
+        )
+    else:
+        user_text = ANALYSIS_USER_PROMPT_TEXT_ONLY.format(
+            file_name=file_name,
+            total_pages=extraction.total_pages,
+            text_content=text_content,
+        )
+    content_parts: list[types.Part] = [types.Part.from_text(text=user_text)]
+    content_parts.extend(image_parts)
 
     start_time = time.time()
 
@@ -286,7 +395,7 @@ async def analyze_pdf_deep(
                 if isinstance(ts, dict)
             ) if ts is not None
         ],
-        pages_analyzed=0,  # text-only; no image rendering
+        pages_analyzed=pages_analyzed_count,  # >0 when multimodal pass ran
         total_pages=extraction.total_pages,
         input_tokens=input_tokens,
         output_tokens=output_tokens,
@@ -294,7 +403,8 @@ async def analyze_pdf_deep(
 
     log.info(
         f"Analyzed {file_name}: priority={priority}, "
-        f"text-only, "
+        f"{'multimodal' if pages_analyzed_count else 'text-only'}"
+        f"{f' ({pages_analyzed_count}p)' if pages_analyzed_count else ''}, "
         f"{input_tokens} in / {output_tokens} out, "
         f"{duration:.1f}s"
     )

@@ -114,6 +114,7 @@ async def run_ingest(since_str: str | None = None, until_str: str | None = None,
         analysis = await analyze_pdf_deep(
             pdf_file_id=pdf_id, file_name=entry.name,
             extraction=extraction, priority=triage.priority,
+            source=triage.source, report_type=triage.report_type,
         )
 
         # Store in DB

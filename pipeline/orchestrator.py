@@ -73,13 +73,17 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 output_tokens=triage.output_tokens,
             )
         else:
-            # Text-only deep analysis — full document, no image rendering
+            # Deep analysis — text-only by default; multimodal triggers
+            # selectively for top-bank equity research / vol / derivatives
+            # via _should_run_multimodal() in analyzer.py
             extraction = await asyncio.to_thread(extract_pdf, local_path, None)
             analysis = await analyze_pdf_deep(
                 pdf_file_id=pdf_id,
                 file_name=file_name,
                 extraction=extraction,
                 priority=triage.priority,
+                source=triage.source,
+                report_type=triage.report_type,
             )
 
         duration = time.time() - start_time
