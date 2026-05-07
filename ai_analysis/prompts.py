@@ -159,6 +159,9 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
   ],
   "charts_described": [
     "Description of key visual data: what the chart shows, key levels, trends, patterns you observe in the images"
+  ],
+  "theme_tags": [
+    "Short canonical theme labels — 1 to 3 strings — that describe what cross-bank theme(s) this report belongs to. Examples: 'AI hyperscaler capex super-cycle', 'Hormuz oil shock', 'Rate-cut repricing', 'Fed dovish surprise', 'Apple foundry pivot', 'NVDA-Oklo strategic stake', 'KOSPI melt-up', 'cocoa supply shock', 'late-stage rally / positioning squeeze'. These will be aggregated across all PDFs to discover the dominant cross-bank themes of the day. RULES: (1) lowercase preferred, (2) 2-5 words per tag, (3) name the SPECIFIC theme — not generic 'macro' or 'equities', (4) tag what the report is ABOUT, not just what it mentions in passing. If a report touches multiple themes, list 1-3 in order of centrality. If the report is admin/wrapper/disclaimer-only, return []."
   ]
 }
 

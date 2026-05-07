@@ -42,135 +42,117 @@ def _fmt_et(utc_iso: str) -> str:
         return utc_iso[:16].replace("T", " ")
 
 
-# Theme buckets — keyword patterns scanned across each PDF's title +
-# key_insights + structured fields. Counts are by DISTINCT bank source so
-# a single bank uploading 12 notes on AI capex still counts as 1.
-# Patterns are lowercase substring matches; tune over time.
-_THEME_PATTERNS: dict[str, list[str]] = {
-    "AI capex / hyperscaler earnings": [
-        "ai capex", "ai infra", "hyperscaler", "data center capex",
-        "wafer fab", "wfe ", "$751b", "$750", "$751", "ai chip",
-        "ai monetiz", "ai super-cycle", "ai super cycle",
-        "mag7", "magnificent 7", "magnificent seven", "mag 7",
-        "ai infrastructure", "gpu demand", "neocloud",
-    ],
-    "Rate-cut repricing / yields breakout": [
-        "rate cut", "rate hike", "no cuts", "no rate cut", "fomc dissent",
-        "10y broke", "10-year yield", "10-yr yield", "10y above",
-        "30y above 5", "30-year yield", "30-yr above",
-        "bear-flatten", "bear flatten", "bear-steepen", "yields breaking",
-        "fed transition", "warsh", "hawkish hold", "hawkish pivot",
-        "dot plot", "cut probability", "priced out", "priced-out",
-        "dissent", "easing bias", "move index",
-    ],
-    "Hormuz / Iran / oil shock": [
-        "hormuz", "strait of hormuz", "iran", "uae attack", "fujairah",
-        "brent", "wti ", "$usd_oil", "blockade", "shipping disruption",
-        "oil shock", "energy shock", "oil capex", "$150/bbl", "$150 oil",
-        "opec+", "opecxit", "energy security",
-    ],
-    "Crypto institutional view": [
-        # Tightened patterns — bare 'btc' / 'ethereum' mentions in passing macro
-        # notes were inflating the count to 40+ banks when actual thematic
-        # coverage is closer to 5-10. These patterns require institutional
-        # crypto framing, not just ticker mentions.
-        "crypto etf", "spot bitcoin etf", "spot ether etf", "spot eth etf",
-        "btc etf", "eth etf", "sol etf", "ibit ", "fbtc ", "ethe ",
-        "on-chain", "on chain metric", "active addresses",
-        "btc dominance", "altseason",
-        "stablecoin", "usdt ", "usdc ", "tether",
-        "digital asset", "digital assets", "crypto institutional",
-        "crypto inflows", "crypto outflows", "crypto flows",
-        "spot bitcoin", "spot ether",
-        "btc treasury", "bitcoin treasury",
-        "$btc target", "btc target", "eth target",
-    ],
-    "Fed transition / dovish-hawkish surprise": [
-        "warsh confirmation", "fed transition", "fed chair transition",
-        "powell legacy", "powell exit", "warsh dovish", "warsh hawkish",
-        "warsh balance sheet",
-    ],
-    "Tech dispersion / K-shaped": [
-        "dispersion", "neocloud", "cpu-levered", "memory-levered",
-        "k-shaped", "intra-tech rotation", "ai winners", "software lagg",
-        "semis vs software", "semis-vs-software",
-    ],
-    "Positioning / late-stage / squeeze": [
-        "cta ", "ctas ", "systematic", "hedge fund net", "leverage",
-        "market concentration", "short squeeze", "melt-up", "melt up",
-        "shooting star", "exhaustion", "crowded positioning",
-        "prime brokerage", "retail inflows", "401(k)",
-    ],
-    "Major M&A / deal flow": [
-        "acquisition", "all-stock deal", "unsolicited proposal",
-        "buyout", "merger", "strategic stake", "spin-off", "spinoff",
-        "going private", "13d filing", "acq.", "to acquire",
-    ],
-    "Earnings reactions (single-name catalysts)": [
-        "1q26 beat", "1q26 miss", "q1 beat", "q1 miss", "q1'26",
-        "first take", "results released", "earnings reaction",
-        "guide-down", "guide down", "guide-up", "raise full year",
-        "ramp 2h", "second half guide",
-    ],
-}
+def _normalize_theme_tag(tag: str) -> str:
+    """Canonicalize a theme tag for cross-PDF aggregation.
+
+    Lowercase, strip punctuation/articles, collapse whitespace. So
+    'AI hyperscaler capex super-cycle' and 'ai hyperscaler capex super cycle'
+    cluster as the same theme. Pure-substring fuzzy matching at this layer;
+    near-duplicates further merged in _merge_similar_tags() below.
+    """
+    import re
+    if not tag:
+        return ""
+    t = tag.lower().strip()
+    # Drop leading articles
+    for art in ("the ", "a ", "an "):
+        if t.startswith(art):
+            t = t[len(art):]
+    # Replace dashes/slashes with spaces, collapse whitespace
+    t = re.sub(r"[/\-_]", " ", t)
+    t = re.sub(r"[^\w\s]", "", t)
+    t = re.sub(r"\s+", " ", t).strip()
+    return t
+
+
+def _merge_similar_tags(tag_to_sources: dict[str, set[str]]) -> dict[str, set[str]]:
+    """Merge tag clusters whose normalized forms are substrings/supersets of each other.
+
+    Example: 'hormuz oil shock' and 'hormuz energy shock' both normalize cleanly
+    but stay separate. We merge if one contains all words of the other.
+    Picks the more frequently-attested form as the canonical label.
+    """
+    items = sorted(tag_to_sources.items(), key=lambda kv: (-len(kv[1]), -len(kv[0])))
+    merged: dict[str, set[str]] = {}
+    seen_words: list[tuple[set[str], str]] = []
+    for tag, srcs in items:
+        words = set(tag.split())
+        # Look for an existing cluster whose words are a subset or superset
+        merged_into = False
+        for existing_words, existing_tag in seen_words:
+            # Merge if one is subset of the other AND >= 2 words shared
+            shared = words & existing_words
+            if len(shared) >= 2 and (
+                words.issubset(existing_words) or existing_words.issubset(words)
+            ):
+                merged[existing_tag] |= srcs
+                merged_into = True
+                break
+        if not merged_into:
+            merged[tag] = set(srcs)
+            seen_words.append((words, tag))
+    return merged
 
 
 def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
-    """Scan analyses for theme keyword hits, count distinct banks per theme.
+    """Aggregate organic theme tags extracted at deep-analysis time.
+
+    Replaces the prior fixed-keyword classifier. Each analysis carries 1-3
+    short canonical `theme_tags` (e.g., 'AI hyperscaler capex super-cycle',
+    'Hormuz oil shock', 'Apple foundry pivot') extracted by the Gemini deep-
+    analysis stage from the document's actual content. We aggregate across
+    all PDFs in the window, normalize for case/punctuation, fuzzy-merge
+    near-duplicates, and count distinct banks per resulting theme.
 
     Returns {theme_name: {"banks": int, "pdfs": int, "sources": list[str]}}.
-    DRAFT prompt uses this to ground theme ordering — Gemini is told actual
-    bank counts so it can't accidentally bury cross-bank consensus.
-    """
-    from dataclasses import asdict
 
-    theme_sources: dict[str, set[str]] = {t: set() for t in _THEME_PATTERNS}
-    theme_pdf_counts: dict[str, int] = {t: 0 for t in _THEME_PATTERNS}
+    Backward-compat: PDFs whose deep analysis predates the theme_tags field
+    will have an empty list; they contribute nothing to theme counts but
+    still appear in analyses_json (so DRAFT/AUDIT can reason over them).
+    """
+    tag_sources: dict[str, set[str]] = {}
+    tag_pdf_counts: dict[str, int] = {}
 
     for a in analyses:
-        # Build a single lowercase blob from the structured analysis fields
-        parts: list[str] = []
-        parts.append((a.title or "").lower())
-        parts.extend((ins or "").lower() for ins in a.key_insights or [])
-        for mm in a.market_movers or []:
-            d = asdict(mm)
-            parts.append(" ".join(str(v).lower() for v in d.values() if v))
-        for sv in a.sector_views or []:
-            d = asdict(sv)
-            parts.append(" ".join(str(v).lower() for v in d.values() if v))
-        for mi in a.macro_indicators or []:
-            d = asdict(mi)
-            parts.append(" ".join(str(v).lower() for v in d.values() if v))
-        for ti in a.trade_ideas or []:
-            d = asdict(ti)
-            parts.append(" ".join(str(v).lower() for v in d.values() if v))
-        parts.extend((rf or "").lower() for rf in a.risk_factors or [])
-        parts.extend((cv or "").lower() for cv in a.crypto_views or [])
-        parts.extend((vp or "").lower() for vp in a.vol_and_positioning or [])
-        parts.extend((g or "").lower() for g in a.geopolitical or [])
-        for kdp in a.key_data_points or []:
-            d = asdict(kdp)
-            parts.append(" ".join(str(v).lower() for v in d.values() if v))
-        for tp in a.tension_points or []:
-            d = asdict(tp)
-            parts.append(" ".join(str(v).lower() for v in d.values() if v))
-        blob = " ".join(parts)
-        if not blob.strip():
-            continue
-
         source = (a.source or "Unknown").strip()
-        for theme, patterns in _THEME_PATTERNS.items():
-            if any(p in blob for p in patterns):
-                theme_sources[theme].add(source)
-                theme_pdf_counts[theme] += 1
+        seen_for_this_pdf: set[str] = set()
+        for raw_tag in a.theme_tags or []:
+            norm = _normalize_theme_tag(raw_tag)
+            if not norm or len(norm) < 4:  # filter junk like "ai" or "us"
+                continue
+            if norm in seen_for_this_pdf:
+                continue  # don't double-count within one PDF
+            seen_for_this_pdf.add(norm)
+            tag_sources.setdefault(norm, set()).add(source)
+            tag_pdf_counts[norm] = tag_pdf_counts.get(norm, 0) + 1
+
+    # Merge near-duplicates (e.g., 'hormuz oil shock' vs 'hormuz energy shock')
+    merged = _merge_similar_tags(tag_sources)
+    # Recompute pdf counts from the original counts, summing for any tag merged
+    # into a canonical bucket.
+    canonical_pdf_counts: dict[str, int] = {}
+    for canonical_tag in merged:
+        # Find which original tags collapsed into this canonical
+        cwords = set(canonical_tag.split())
+        n = 0
+        for orig_tag, orig_srcs in tag_sources.items():
+            owords = set(orig_tag.split())
+            shared = cwords & owords
+            if (orig_tag == canonical_tag) or (
+                len(shared) >= 2 and (
+                    owords.issubset(cwords) or cwords.issubset(owords)
+                )
+            ):
+                n += tag_pdf_counts.get(orig_tag, 0)
+        canonical_pdf_counts[canonical_tag] = n
 
     return {
-        theme: {
-            "banks": len(theme_sources[theme]),
-            "pdfs": theme_pdf_counts[theme],
-            "sources": sorted(theme_sources[theme]),
+        tag: {
+            "banks": len(srcs),
+            "pdfs": canonical_pdf_counts.get(tag, 0),
+            "sources": sorted(srcs),
         }
-        for theme in _THEME_PATTERNS
+        for tag, srcs in merged.items()
     }
 
 
@@ -293,6 +275,8 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
             entry["data_points"] = [asdict(kdp) for kdp in a.key_data_points]
         if a.tension_points:
             entry["tensions"] = [asdict(tp) for tp in a.tension_points]
+        if a.theme_tags:
+            entry["theme_tags"] = list(a.theme_tags)
         compact.append(entry)
     return json.dumps(compact, indent=1)
 

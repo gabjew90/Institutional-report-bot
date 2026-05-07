@@ -110,6 +110,11 @@ class PdfAnalysis:
     entities_mentioned: list[EntityMention] = field(default_factory=list)
     key_data_points: list[KeyDataPoint] = field(default_factory=list)
     tension_points: list[TensionPoint] = field(default_factory=list)
+    # Short canonical theme labels (1-3 per PDF) extracted at deep-analysis time.
+    # Used for organic cross-bank theme aggregation in synthesis (replaces the
+    # fixed keyword theme classifier). Examples: "AI hyperscaler capex super-cycle",
+    # "Hormuz energy shock", "Fed dovish surprise", "Apple foundry pivot".
+    theme_tags: list[str] = field(default_factory=list)
     pages_analyzed: int = 0
     total_pages: int = 0
     input_tokens: int = 0

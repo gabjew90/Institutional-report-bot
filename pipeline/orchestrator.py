@@ -188,6 +188,7 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
                     entities_mentioned=_build_list(EntityMention, data.get("entities_mentioned")),
                     key_data_points=_build_list(KeyDataPoint, data.get("key_data_points")),
                     tension_points=_build_list(TensionPoint, data.get("tension_points")),
+                    theme_tags=data.get("theme_tags", []),
                     pages_analyzed=data.get("pages_analyzed", 0),
                     total_pages=data.get("total_pages", 0),
                     input_tokens=data.get("input_tokens", 0),
@@ -289,6 +290,7 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
 async def reanalyze_recent_pdfs(
     hours: int,
     progress_cb=None,
+    priority_filter: list[str] | None = None,
 ) -> dict:
     """Re-run analysis on PDFs already in the DB within the window.
 
@@ -299,21 +301,37 @@ async def reanalyze_recent_pdfs(
     history — the latest analysis wins in SELECT queries.
 
     Args:
-        hours: lookback window by Dropbox upload date (1-48).
+        hours: lookback window by Dropbox upload date (1-168).
         progress_cb: optional async callback(stats, phase) for updates.
+        priority_filter: optional list of priorities to include
+            (e.g., ['high', 'medium']). None = include all (default).
+            Useful for backfilling new prompt fields on HIGH+MED only,
+            saving ~30-40% time + cost by skipping LOW.
     """
     from datetime import timedelta
     cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
 
     conn = db.get_connection()
-    rows = conn.execute(
-        """SELECT id, dropbox_path, file_name, local_path, dropbox_rev,
-                  file_size_bytes, dropbox_modified_at, status, priority
-           FROM pdf_files
-           WHERE dropbox_modified_at > ?
-           ORDER BY dropbox_modified_at ASC""",
-        (cutoff,),
-    ).fetchall()
+    if priority_filter:
+        placeholders = ",".join("?" * len(priority_filter))
+        rows = conn.execute(
+            f"""SELECT id, dropbox_path, file_name, local_path, dropbox_rev,
+                       file_size_bytes, dropbox_modified_at, status, priority
+                FROM pdf_files
+                WHERE dropbox_modified_at > ?
+                  AND LOWER(priority) IN ({placeholders})
+                ORDER BY dropbox_modified_at ASC""",
+            (cutoff, *[p.lower() for p in priority_filter]),
+        ).fetchall()
+    else:
+        rows = conn.execute(
+            """SELECT id, dropbox_path, file_name, local_path, dropbox_rev,
+                      file_size_bytes, dropbox_modified_at, status, priority
+               FROM pdf_files
+               WHERE dropbox_modified_at > ?
+               ORDER BY dropbox_modified_at ASC""",
+            (cutoff,),
+        ).fetchall()
     to_process = [dict(r) for r in rows]
 
     stats = {

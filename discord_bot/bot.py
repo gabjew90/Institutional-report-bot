@@ -175,23 +175,55 @@ def create_bot() -> commands.Bot:
 
     @bot.tree.command(name="reanalyze", description="Re-run analysis on PDFs already in DB using the current prompt")
     @app_commands.describe(
-        hours="Re-analyze PDFs uploaded in the last N hours (max 48)",
+        hours="Re-analyze PDFs uploaded in the last N hours (max 168)",
         password="Admin password",
+        priority="Filter by priority (default: high+medium, skips LOW). Options: high, medium, low, all",
     )
-    async def reanalyze_command(interaction: discord.Interaction, hours: int, password: str):
+    async def reanalyze_command(
+        interaction: discord.Interaction,
+        hours: int,
+        password: str,
+        priority: str = "high+medium",
+    ):
         if settings.command_password and password != settings.command_password:
             await interaction.response.send_message("Invalid password.", ephemeral=True)
             return
-        if hours < 1 or hours > 48:
-            await interaction.response.send_message("Hours must be between 1 and 48.")
+        if hours < 1 or hours > 168:
+            await interaction.response.send_message("Hours must be between 1 and 168.")
             return
+
+        # Resolve priority filter
+        priority_filter: list[str] | None
+        priority_lc = (priority or "").strip().lower()
+        if priority_lc in ("", "all"):
+            priority_filter = None
+            filter_label = "all priorities"
+        elif priority_lc in ("high+medium", "high,medium", "high+med", "hm"):
+            priority_filter = ["high", "medium"]
+            filter_label = "HIGH+MEDIUM only (LOW skipped)"
+        elif priority_lc in ("high", "h"):
+            priority_filter = ["high"]
+            filter_label = "HIGH only"
+        elif priority_lc in ("medium", "med", "m"):
+            priority_filter = ["medium"]
+            filter_label = "MEDIUM only"
+        elif priority_lc in ("low", "l"):
+            priority_filter = ["low"]
+            filter_label = "LOW only"
+        else:
+            await interaction.response.send_message(
+                f"Invalid priority '{priority}'. Use one of: high+medium (default), high, medium, low, all.",
+                ephemeral=True,
+            )
+            return
+
         await interaction.response.defer(thinking=True)
 
         try:
             from pipeline.orchestrator import reanalyze_recent_pdfs
 
             status_msg = await interaction.followup.send(
-                f"Starting reanalyze ({hours}h window)…"
+                f"Starting reanalyze ({hours}h window, {filter_label})…"
             )
 
             async def on_progress(stats: dict, phase: str):
@@ -231,7 +263,7 @@ def create_bot() -> commands.Bot:
                 except Exception:
                     pass
 
-            await reanalyze_recent_pdfs(hours, progress_cb=on_progress)
+            await reanalyze_recent_pdfs(hours, progress_cb=on_progress, priority_filter=priority_filter)
         except Exception as e:
             log.error(f"Reanalyze failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
