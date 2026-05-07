@@ -19,6 +19,7 @@ from google.genai import types
 from ai_analysis.models import (
     TriageResult, PdfAnalysis, MarketMover, SectorView,
     MacroIndicator, TradeIdea, EntityMention,
+    KeyDataPoint, TensionPoint, ThemeStance,
 )
 from ai_analysis.prompts import (
     TRIAGE_SYSTEM_PROMPT, TRIAGE_USER_PROMPT,
@@ -266,6 +267,24 @@ async def analyze_pdf_deep(
                 _safe_dataclass(EntityMention, e) for e in data.get("entities_mentioned", [])
                 if isinstance(e, dict)
             ) if em is not None
+        ],
+        key_data_points=[
+            kdp for kdp in (
+                _safe_dataclass(KeyDataPoint, kdp) for kdp in data.get("key_data_points", [])
+                if isinstance(kdp, dict)
+            ) if kdp is not None
+        ],
+        tension_points=[
+            tp for tp in (
+                _safe_dataclass(TensionPoint, tp) for tp in data.get("tension_points", [])
+                if isinstance(tp, dict)
+            ) if tp is not None
+        ],
+        theme_stances=[
+            ts for ts in (
+                _safe_dataclass(ThemeStance, ts) for ts in data.get("theme_stances", [])
+                if isinstance(ts, dict)
+            ) if ts is not None
         ],
         pages_analyzed=0,  # text-only; no image rendering
         total_pages=extraction.total_pages,

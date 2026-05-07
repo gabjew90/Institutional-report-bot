@@ -153,7 +153,7 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
             if isinstance(data, dict) and "pdf_file_id" in data:
                 from ai_analysis.models import (
                     MarketMover, SectorView, MacroIndicator, TradeIdea,
-                    EntityMention, KeyDataPoint, TensionPoint,
+                    EntityMention, KeyDataPoint, TensionPoint, ThemeStance,
                 )
                 from ai_analysis.analyzer import _safe_dataclass
 
@@ -165,6 +165,19 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
                             if obj is not None:
                                 out.append(obj)
                     return out
+
+                # theme_stances: prefer the new structured field. Fall back to
+                # legacy theme_tags (list[str]) for analyses produced before
+                # the schema upgrade — convert each tag to a bare-stance entry.
+                ts_raw = data.get("theme_stances")
+                if ts_raw:
+                    theme_stances = _build_list(ThemeStance, ts_raw)
+                else:
+                    theme_stances = [
+                        ThemeStance(theme=t)
+                        for t in (data.get("theme_tags") or [])
+                        if isinstance(t, str) and t.strip()
+                    ]
 
                 analysis = PdfAnalysis(
                     pdf_file_id=data["pdf_file_id"],
@@ -188,7 +201,7 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
                     entities_mentioned=_build_list(EntityMention, data.get("entities_mentioned")),
                     key_data_points=_build_list(KeyDataPoint, data.get("key_data_points")),
                     tension_points=_build_list(TensionPoint, data.get("tension_points")),
-                    theme_tags=data.get("theme_tags", []),
+                    theme_stances=theme_stances,
                     pages_analyzed=data.get("pages_analyzed", 0),
                     total_pages=data.get("total_pages", 0),
                     input_tokens=data.get("input_tokens", 0),

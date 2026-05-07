@@ -95,28 +95,33 @@ def _merge_similar_tags(tag_to_sources: dict[str, set[str]]) -> dict[str, set[st
 
 
 def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
-    """Aggregate organic theme tags extracted at deep-analysis time.
+    """Aggregate organic theme stances extracted at deep-analysis time.
 
-    Replaces the prior fixed-keyword classifier. Each analysis carries 1-3
-    short canonical `theme_tags` (e.g., 'AI hyperscaler capex super-cycle',
-    'Hormuz oil shock', 'Apple foundry pivot') extracted by the Gemini deep-
-    analysis stage from the document's actual content. We aggregate across
-    all PDFs in the window, normalize for case/punctuation, fuzzy-merge
-    near-duplicates, and count distinct banks per resulting theme.
+    Each analysis carries 1-3 `theme_stances` (theme + stance + conviction +
+    key_argument) extracted by Gemini from the document's actual content. We
+    aggregate across all PDFs in the window, normalize the theme labels for
+    case/punctuation, fuzzy-merge near-duplicates, and count distinct banks
+    per resulting theme — also capturing per-theme stance breakdowns
+    (supportive vs skeptical vs neutral) for downstream adjudication.
 
-    Returns {theme_name: {"banks": int, "pdfs": int, "sources": list[str]}}.
+    Returns {theme_name: {
+        "banks": int, "pdfs": int, "sources": list[str],
+        "supportive": int, "skeptical": int, "neutral": int,
+    }}.
 
-    Backward-compat: PDFs whose deep analysis predates the theme_tags field
-    will have an empty list; they contribute nothing to theme counts but
-    still appear in analyses_json (so DRAFT/AUDIT can reason over them).
+    Backward-compat: PDFs whose deep analysis predates this schema will have
+    theme_stances populated from legacy theme_tags during deserialization
+    (stance defaults to neutral for those).
     """
     tag_sources: dict[str, set[str]] = {}
     tag_pdf_counts: dict[str, int] = {}
+    tag_stance_counts: dict[str, dict[str, int]] = {}
 
     for a in analyses:
         source = (a.source or "Unknown").strip()
         seen_for_this_pdf: set[str] = set()
-        for raw_tag in a.theme_tags or []:
+        for ts in a.theme_stances or []:
+            raw_tag = (ts.theme or "").strip()
             norm = _normalize_theme_tag(raw_tag)
             if not norm or len(norm) < 4:  # filter junk like "ai" or "us"
                 continue
@@ -125,17 +130,35 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
             seen_for_this_pdf.add(norm)
             tag_sources.setdefault(norm, set()).add(source)
             tag_pdf_counts[norm] = tag_pdf_counts.get(norm, 0) + 1
+            stance = (ts.stance or "neutral").lower().strip()
+            if stance not in ("supportive", "skeptical", "neutral"):
+                stance = "neutral"
+            # Anti-hallucination: directional stances (supportive/skeptical)
+            # only count toward the consensus tally if grounded by evidence
+            # OR a non-empty key_argument. Ungrounded directional calls fall
+            # back to "neutral" — Gemini doesn't get to swing the consensus
+            # without text-anchored support.
+            if stance in ("supportive", "skeptical"):
+                evidence = (ts.evidence or "").strip()
+                key_arg = (ts.key_argument or "").strip()
+                if not evidence and not key_arg:
+                    stance = "neutral"
+            buckets = tag_stance_counts.setdefault(
+                norm, {"supportive": 0, "skeptical": 0, "neutral": 0}
+            )
+            buckets[stance] += 1
 
     # Merge near-duplicates (e.g., 'hormuz oil shock' vs 'hormuz energy shock')
     merged = _merge_similar_tags(tag_sources)
-    # Recompute pdf counts from the original counts, summing for any tag merged
-    # into a canonical bucket.
+    # Recompute pdf counts and stance breakdown from the original counts,
+    # summing for any tag merged into a canonical bucket.
     canonical_pdf_counts: dict[str, int] = {}
+    canonical_stance_counts: dict[str, dict[str, int]] = {}
     for canonical_tag in merged:
-        # Find which original tags collapsed into this canonical
         cwords = set(canonical_tag.split())
         n = 0
-        for orig_tag, orig_srcs in tag_sources.items():
+        stance_agg = {"supportive": 0, "skeptical": 0, "neutral": 0}
+        for orig_tag in tag_sources.keys():
             owords = set(orig_tag.split())
             shared = cwords & owords
             if (orig_tag == canonical_tag) or (
@@ -144,13 +167,19 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
                 )
             ):
                 n += tag_pdf_counts.get(orig_tag, 0)
+                for k, v in tag_stance_counts.get(orig_tag, {}).items():
+                    stance_agg[k] = stance_agg.get(k, 0) + v
         canonical_pdf_counts[canonical_tag] = n
+        canonical_stance_counts[canonical_tag] = stance_agg
 
     return {
         tag: {
             "banks": len(srcs),
             "pdfs": canonical_pdf_counts.get(tag, 0),
             "sources": sorted(srcs),
+            "supportive": canonical_stance_counts.get(tag, {}).get("supportive", 0),
+            "skeptical": canonical_stance_counts.get(tag, {}).get("skeptical", 0),
+            "neutral": canonical_stance_counts.get(tag, {}).get("neutral", 0),
         }
         for tag, srcs in merged.items()
     }
@@ -174,9 +203,17 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
         srcs_str = ", ".join(srcs)
         if more > 0:
             srcs_str += f", +{more} more"
+        sup = info.get("supportive", 0)
+        skp = info.get("skeptical", 0)
+        neu = info.get("neutral", 0)
+        # Only show stance breakdown when at least one directional vote exists
+        if sup or skp:
+            stance_str = f" — stance: {sup} support / {skp} skeptical / {neu} neutral"
+        else:
+            stance_str = ""
         lines.append(
             f"  - {theme}: {info['banks']} banks / {info['pdfs']} PDFs "
-            f"({srcs_str})"
+            f"({srcs_str}){stance_str}"
         )
     if len(lines) == 1:
         lines.append("  (no themes matched any pattern — corpus may be unusually narrow today)")
@@ -275,8 +312,8 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
             entry["data_points"] = [asdict(kdp) for kdp in a.key_data_points]
         if a.tension_points:
             entry["tensions"] = [asdict(tp) for tp in a.tension_points]
-        if a.theme_tags:
-            entry["theme_tags"] = list(a.theme_tags)
+        if a.theme_stances:
+            entry["theme_stances"] = [asdict(ts) for ts in a.theme_stances]
         compact.append(entry)
     return json.dumps(compact, indent=1)
 

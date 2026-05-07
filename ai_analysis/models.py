@@ -88,6 +88,28 @@ class TensionPoint:
 
 
 @dataclass
+class ThemeStance:
+    """The bank's directional view on a specific cross-bank theme.
+
+    Replaces the prior `theme_tags: list[str]` with a structured per-theme
+    stance + conviction + key argument. This is the input for downstream
+    cross-bank theme adjudication (cluster by theme, count stances, weight
+    by conviction, surface dissent).
+
+    Empty list is acceptable — admin/wrapper PDFs and pure earnings recaps
+    often have no directional theme view.
+    """
+    theme: str                          # Short canonical label (e.g., "Hormuz peace deal", "AI hyperscaler capex")
+    stance: str = "neutral"             # supportive | skeptical | neutral
+    conviction: str = "medium"          # high | medium | low
+    key_argument: str = ""              # The bank's one-sentence reasoning for this stance
+    primary_instruments: list[str] = field(default_factory=list)  # Tickers/instruments most affected
+    vs_consensus: str = ""              # contrarian | with_consensus | out_of_consensus | "" (unspecified)
+    evidence: str = ""                  # Verbatim ≤15-word phrase from the report that grounds the stance.
+                                        # Anti-hallucination anchor — empty if no clear quote exists.
+
+
+@dataclass
 class PdfAnalysis:
     pdf_file_id: int
     file_name: str
@@ -110,11 +132,12 @@ class PdfAnalysis:
     entities_mentioned: list[EntityMention] = field(default_factory=list)
     key_data_points: list[KeyDataPoint] = field(default_factory=list)
     tension_points: list[TensionPoint] = field(default_factory=list)
-    # Short canonical theme labels (1-3 per PDF) extracted at deep-analysis time.
-    # Used for organic cross-bank theme aggregation in synthesis (replaces the
-    # fixed keyword theme classifier). Examples: "AI hyperscaler capex super-cycle",
-    # "Hormuz energy shock", "Fed dovish surprise", "Apple foundry pivot".
-    theme_tags: list[str] = field(default_factory=list)
+    # Bank's directional view on 1-3 cross-bank themes (replaces prior theme_tags).
+    # Each entry: theme + stance (supportive/skeptical/neutral) + conviction + key_argument.
+    # Powers organic cross-bank theme aggregation AND future adjudication
+    # (consensus/dissent/conviction-weighted). Empty list when the report is
+    # admin/wrapper or has no directional theme view.
+    theme_stances: list[ThemeStance] = field(default_factory=list)
     pages_analyzed: int = 0
     total_pages: int = 0
     input_tokens: int = 0

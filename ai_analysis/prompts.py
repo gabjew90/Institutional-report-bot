@@ -160,8 +160,16 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
   "charts_described": [
     "Description of key visual data: what the chart shows, key levels, trends, patterns you observe in the images"
   ],
-  "theme_tags": [
-    "Short canonical theme labels — 1 to 3 strings — that describe what cross-bank theme(s) this report belongs to. Examples: 'AI hyperscaler capex super-cycle', 'Hormuz oil shock', 'Rate-cut repricing', 'Fed dovish surprise', 'Apple foundry pivot', 'NVDA-Oklo strategic stake', 'KOSPI melt-up', 'cocoa supply shock', 'late-stage rally / positioning squeeze'. These will be aggregated across all PDFs to discover the dominant cross-bank themes of the day. RULES: (1) lowercase preferred, (2) 2-5 words per tag, (3) name the SPECIFIC theme — not generic 'macro' or 'equities', (4) tag what the report is ABOUT, not just what it mentions in passing. If a report touches multiple themes, list 1-3 in order of centrality. If the report is admin/wrapper/disclaimer-only, return []."
+  "theme_stances": [
+    {
+      "theme": "Short canonical theme label — 2-5 words, lowercase preferred, name the SPECIFIC theme not generic 'macro' or 'equities' (e.g., 'hormuz peace deal', 'ai hyperscaler capex super-cycle', 'rate-cut repricing', 'fed dovish surprise', 'apple foundry pivot', 'kospi melt-up', 'cocoa supply shock', 'late-stage rally squeeze')",
+      "stance": "supportive | skeptical | neutral — supportive = bank rides/agrees with the theme; skeptical = bank fades/disputes; neutral = bank covers the theme as data-only without committing direction",
+      "conviction": "high | medium | low — high ONLY if the report uses explicit high-conviction language ('high conviction', 'strongly disagree', 'top call', 'best idea') or is structured as a dedicated thesis note; medium for stated views without those markers; low for passing mentions or hedged framing",
+      "key_argument": "One short sentence — the bank's actual reasoning (paraphrased tightly). MUST reflect a sentence that appears in the report. Empty string if the report doesn't argue, only describes.",
+      "primary_instruments": ["Tickers/symbols the report explicitly ties to this theme — e.g., 'GLD', 'BRENT', 'USTs', 'EUR/USD', 'NVDA'. Empty list if cross-asset/no specific instrument named."],
+      "vs_consensus": "contrarian | with_consensus | out_of_consensus | empty — fill ONLY if the report uses explicit consensus language ('against consensus', 'consensus expects', 'we differ from the Street', 'in line with'). DO NOT infer from tone. Empty string is the default.",
+      "evidence": "Verbatim ≤15-word phrase from the report that grounds this stance — a sentence fragment a reader could ctrl-F and find. Empty string if no clean quote exists. DO NOT paraphrase or invent."
+    }
   ]
 }
 
@@ -196,6 +204,15 @@ Rules:
 - Multi-topic morning briefings may have multiple tension entries — one per major theme covered.
 - The `bear_case` should be specific and citeable, not a generic "risks include geopolitical tensions" — use the report's own counter-data or caveats.
 - Typically 0-3 entries per report. Empty list is fine and common.
+
+**For theme_stances** — strict anti-hallucination rules. Schema pressure makes this the highest-fabrication-risk field:
+- **Empty list is correct and common.** Pure data dumps (chart packs, daily price tables, calendar wrappers, trading desk volume sheets) have NO directional theme view. Return [] rather than inventing one.
+- **Default to empty over guessing.** If the report doesn't argue a stance, do NOT default `stance` to "neutral" just to populate the entry — omit the entry entirely.
+- **`vs_consensus` is the most fabrication-prone field.** Leave it empty unless the report uses explicit consensus language ("against consensus", "we differ from the Street", "consensus expects", "in line with"). Tone alone is NOT enough.
+- **`evidence` must be VERBATIM.** Pull a ≤15-word fragment that actually appears in the document. Do not paraphrase. If no clean quote exists, return "" — better to leave it empty than invent.
+- **`key_argument` must reflect text, not vibes.** Tightly paraphrase a sentence the report actually contains. Empty string if the report only describes without arguing.
+- **`conviction=high` only with explicit markers.** Words like "high conviction", "top call", "best idea", "strongly disagree", or a structured dedicated-thesis note. Default is medium; default to low for passing mentions.
+- Typical range: 0-3 entries. Multi-topic morning briefings can hit 3; single-topic notes typically 1; admin/data wrappers typically 0.
 
 - Return ONLY valid JSON, no markdown or extra text."""
 
