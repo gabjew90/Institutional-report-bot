@@ -732,7 +732,18 @@ Example after the bullets:
 
 Don't merge the bullets and the prose. The visual break between facts and argument is the rhythm the reader needs.
 
-**Movement 3 — THE ANTICIPATED PUSHBACK (1-2 sentences).** This is the analyst saying *"Here's the smart counter-argument we'd expect from the room."* Open with a clean transition — *"The bull case..." / "The pushback we'd anticipate..." / "Skeptics would point to..."* Then state the strongest counter-argument honestly, with specific data or a named risk factor. Don't strawman it; steelman it.
+**Movement 3 — THE ANTICIPATED PUSHBACK / OPPOSING VIEW (1-2 sentences).** This is the analyst saying *"Here's the smart counter-argument we'd expect from the room."* IMPORTANT: this is the COUNTER-CASE to whatever your main call is, not always "the bull case." If your call is bullish, the pushback is the bear case. If your call is bearish, the pushback is the bull case. Pick the right framing.
+
+Open with a direction-neutral transition phrase:
+- *"The pushback we would anticipate is..."*
+- *"Skeptics would point to..."*
+- *"The counter-argument is..."*
+- *"The opposing read..."*
+- *"The case against this..."*
+
+AVOID *"The bull case for X..."* unless your main call is explicitly bearish. AVOID *"The bear case for X..."* unless your main call is explicitly bullish. Mismatching the framing creates confusion (the reader can't tell which side the analyst is on).
+
+State the strongest counter-argument honestly, with specific data or a named risk factor. Don't strawman it. Steelman it.
 
 **Movement 4 — THE DEFENSE (2-3 sentences).** This is where the analyst shows they've thought through the counter. Acknowledge the strength of the pushback, then defend: *"That risk is real, but...,"* / *"Even granting that...,"* / *"Where we disagree...."* Bring named data or a specific level/event that addresses the counter. This is the rigor that distinguishes analysis from a tip.
 
@@ -765,10 +776,10 @@ Don't merge the bullets and the prose. The visual break between facts and argume
 
 Three forces are pulling yields higher at once. Oil-driven inflation is feeding core CPI on the standard 3-month lag, fresh Treasury supply is hitting the long end, and a Fed that cannot credibly cut into a 3.9% headline print has lost the option of jawboning the curve lower. $UUP cannot catch a sustained bid because the rate-differential support the dollar usually gets is absent.
 
-The bull case for the hawkish read is straightforward. UBS sees 100k April payrolls against the 65k consensus, with core CPI at 4.0% year-over-year. The pushback we would anticipate from the room is that oil-driven inflation is a 3-month-lag story that fades as the Hormuz situation resolves, and Williams sounded dovish on the wires this week, willing to look through energy-driven inflation. Even granting that pushback, the binding constraint is the supply-demand mismatch in long-dated Treasuries. A Fed that cannot credibly cut into 3.9% headline CPI is the same Fed that has to absorb $25B of new 30-year bonds at next week's auction. The cleanest read for someone with US fixed-income exposure is that long-dated Treasuries via $TLT remain priced for a softer landing than the data supports.
+The pushback we would anticipate is that oil-driven inflation is a 3-month-lag story that fades as the Hormuz situation resolves, and Williams sounded dovish on the wires this week, willing to look through energy-driven inflation. UBS itself sees 100k April payrolls against the 65k consensus with core CPI at 4.0%, which would argue the Fed cannot cut at all. Even granting all of that, the binding constraint is the supply-demand mismatch in long-dated Treasuries. A Fed that cannot credibly cut into 3.9% headline CPI is the same Fed that has to absorb $25B of new 30-year bonds at next week's auction. The cleanest read for someone with US fixed-income exposure is that long-dated Treasuries via $TLT remain priced for a softer landing than the data supports.
 ```
 
-Notice: no movement labels, no em-dashes, no semicolons, no "**Trade Implication:**", no subheadings, no "Risk:" or invalidation line. Just the italicized punchline, the bullets, the mechanism paragraph, and the analyst paragraph closing with one short positioning sentence. The positioning hint is brief (direction + instrument). Period and comma punctuation only. That is the rendering target.
+Notice: the theme's main call is *"the bond market is pricing rate hikes and we think it's wrong"* (bullish for $TLT). So the pushback is the BEAR case for $TLT (Fed cannot cut, hawkish surprise) — opened with *"The pushback we would anticipate..."*, NOT *"The bull case for..."* (which would be confusing because the bull case for $TLT IS the analyst's call). No movement labels, no em-dashes, no semicolons, no "**Trade Implication:**", no subheadings, no "Risk:" or invalidation line. Just the italicized punchline, the bullets, the mechanism paragraph, and the analyst paragraph closing with one short positioning sentence. Period and comma punctuation only. That is the rendering target.
 
 **Examples of the integrated positioning close (paragraph 2 endings):**
 
