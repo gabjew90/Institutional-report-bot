@@ -997,28 +997,41 @@ frontmatter_lines = [
     f'output_tokens: {output_tokens_est}',
     f'dumped_at_utc: {ctx.get("dumped_at_utc", "")}',
 ]
-# === TEST/PROD via TARGET_CHANNELS env var ===
-# Default (env var unset): no target_channels line emitted -> all configured
-# channels (production behavior). For test fires, the routine body itself
-# (the wrapper prompt on Claude.ai, NOT this markdown) sets
-# `export TARGET_CHANNELS='test-channel'` before invoking us, and the bridge
-# worker filters Discord delivery to channels matching that substring.
-# Switching test/prod is therefore a RemoteTrigger update on the routine
-# body, not an edit to this file -- no git push, no recomment-before-cron
-# trap. This file always stays in prod-safe state.
-if os.environ.get('TARGET_CHANNELS'):
-    frontmatter_lines.append(f"target_channels: {os.environ['TARGET_CHANNELS']}")
+# === TEST/PROD via TARGET_CHANNELS ===
+# Default (file empty / absent): no target_channels line emitted -> all
+# configured channels (production behavior). For test fires, the routine
+# body writes the test-channel substring to /tmp/target_channels.txt; the
+# bridge worker filters Discord delivery to channels matching that
+# substring. Env vars do NOT persist across separate Bash tool calls, so
+# we read from the file as the canonical source. Switching test/prod is a
+# RemoteTrigger update on the routine body, not an edit to this file --
+# no git push, no recomment-before-cron trap.
+def _read_target_channels() -> str:
+    v = (os.environ.get('TARGET_CHANNELS') or '').strip()
+    if v:
+        return v
+    try:
+        return open('/tmp/target_channels.txt').read().strip()
+    except FileNotFoundError:
+        return ''
+
+target_channels = _read_target_channels()
+if target_channels:
+    frontmatter_lines.append(f"target_channels: {target_channels}")
 frontmatter_lines.append('---')
 frontmatter = '\n'.join(frontmatter_lines) + '\n\n'
 
 file_content = frontmatter + final_md
-ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
-# Persist `ts` for later steps (QC review). Without this, STEP 7 would
-# compute a fresh timestamp ~tens-of-seconds later and the QC review
-# filename would no longer pair with the pulse markdown filename for
-# forensic cross-reference.
-with open('/tmp/pulse_ts.txt', 'w') as f:
-    f.write(ts)
+# Reuse the pulse timestamp pinned by STEP 2 — STEP 7 (QC review) needs
+# the SAME ts for filename pairing, and STEP 2 wrote it to /tmp/pulse_ts.txt
+# at fire start. Fall back to a fresh ts if the file is missing (older
+# routine.md without STEP 2's pin).
+try:
+    ts = open('/tmp/pulse_ts.txt').read().strip()
+except FileNotFoundError:
+    ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
+    with open('/tmp/pulse_ts.txt', 'w') as f:
+        f.write(ts)
 pulse_path = f'pulse-output/pending/{ts}.md'
 adj_path = f'pulse-output/pending-adjudications/{ts}.json'
 
