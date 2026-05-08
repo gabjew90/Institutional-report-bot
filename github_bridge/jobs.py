@@ -238,6 +238,38 @@ def _parse_frontmatter(markdown: str) -> tuple[dict, str]:
     return meta, body
 
 
+def _fetch_matching_adjudication(pulse_md_name: str) -> tuple[dict | None, str | None]:
+    """For pulse markdown filename '<base>.md', look for the matching adjudication
+    JSON at PENDING_ADJUDICATIONS_DIR/<base>.json.
+
+    Returns (parsed_dict, raw_text):
+      - (None, None)         file is absent (404 from the bridge)
+      - (dict, raw_text)     file present and parses as JSON
+      - (None, raw_text)     file present but JSON malformed — caller can still
+                             archive the raw form for inspection; pulse posting
+                             continues without an adjudication payload.
+
+    Never raises. The bridge worker must not lose a pulse over an adjudication
+    fetch issue.
+    """
+    if not pulse_md_name.endswith(".md"):
+        return None, None
+    base = pulse_md_name[:-3]
+    adj_path = f"{PENDING_ADJUDICATIONS_DIR}/{base}.json"
+    try:
+        raw = gh.get_file_text(adj_path)
+    except Exception as e:
+        log.warning(f"Bridge: error fetching adjudication {adj_path}: {e}")
+        return None, None
+    if not raw:
+        return None, None
+    try:
+        return json.loads(raw), raw
+    except json.JSONDecodeError as e:
+        log.warning(f"Bridge: adjudication file {adj_path} present but malformed JSON: {e}")
+        return None, raw
+
+
 async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
     name = item.get("name", "")
     pending_path = f"{PENDING_DIR}/{name}"
