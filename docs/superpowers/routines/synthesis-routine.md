@@ -820,6 +820,13 @@ EDIT runs in a fresh `general-purpose` Agent session — NOT in the orchestrator
 
 Build the sub-agent prompt by combining `AUDIT_SYSTEM` + `AUDIT_USER` (with substitutions) from `ai_analysis/prompts.py`. Substitute `{draft_markdown}` with the contents of `/tmp/stitched.md` (post-STITCH, NOT the raw `/tmp/draft.md`). All other substitutions (`{today}`, `{now}`, `{session_status}`, `{market_snapshot}`, `{news_snapshot}`, `{earnings_calendar}`, `{economic_calendar}`) come from `/tmp/ctx.json`.
 
+Save the assembled prompt (SYSTEM + USER concatenated) to `/tmp/agent_io/edit-prompt.txt` BEFORE dispatching, so the QC review can verify substitutions resolved correctly:
+
+```bash
+mkdir -p /tmp/agent_io
+# (write the assembled prompt to /tmp/agent_io/edit-prompt.txt via Python)
+```
+
 Dispatch ONE Agent call with the assembled prompt. The sub-agent applies the full AUDIT pipeline (RECAP rebuild, Pass A cull, Pass A.5 density, Pass B close, voice scrub) and returns the revised markdown. Save the response to `/tmp/final.md`.
 
 Do not pass any tools to the sub-agent — it doesn't need file access; the prompt is fully self-contained.
@@ -860,11 +867,25 @@ If hard issues == 0, SKIP STEP 5.7 entirely (proceed to STEP 6). If hard issues 
 
 ### Step 5.7.2 — Dispatch SCRUB sub-agent
 
+**BEFORE invoking the SCRUB sub-agent**, save the current `/tmp/final.md` (which is the EDIT output, the artifact SCRUB is about to receive) to `/tmp/pre_scrub_final.md`. This preserves the pre-SCRUB state so the QC review at STEP 7 can diff "what SCRUB received" vs "what SCRUB returned" — without that copy, the EDIT output is lost the moment SCRUB overwrites `/tmp/final.md`.
+
+```bash
+cp /tmp/final.md /tmp/pre_scrub_final.md
+```
+
+Also save the SCRUB sub-agent's full prompt to `/tmp/agent_io/scrub-prompt.txt` (mkdir -p the dir first) so the QC review can verify the prompt was constructed correctly. Pre-SCRUB final.md and the SCRUB prompt together give QC complete handoff visibility.
+
+```bash
+mkdir -p /tmp/agent_io
+```
+
 Build the SCRUB prompt by combining `SCRUB_SYSTEM` + `SCRUB_USER` (with substitutions) from `ai_analysis/prompts.py`. Substitutions into `SCRUB_USER`:
 
 - `{issue_count}` ← number of hard issues (computed in 5.7.1)
 - `{lint_report_json}` ← contents of `/tmp/lint_report.json` (the full report — SCRUB filters to hard issues itself)
 - `{pulse_markdown}` ← contents of `/tmp/final.md`
+
+Save the assembled prompt (SYSTEM + USER concatenated) to `/tmp/agent_io/scrub-prompt.txt` BEFORE dispatching.
 
 Dispatch ONE `general-purpose` Agent with the assembled prompt. The sub-agent runs in fresh context (no DRAFT/EDIT history), sees only the pulse markdown + the structured lint report, and returns the rewritten markdown.
 
@@ -1092,6 +1113,34 @@ if os.path.exists('/tmp/scrubbed.md'):
 else:
     print('no /tmp/scrubbed.md — SCRUB pass was skipped (zero hard lint issues)')
 
+# Commit /tmp/pre_scrub_final.md if SCRUB ran (preserves the EDIT output
+# before SCRUB rewrote sentences — needed for forensic diff EDIT vs SCRUB).
+# Absent when SCRUB was skipped (EDIT output equals final committed pulse).
+if os.path.exists('/tmp/pre_scrub_final.md'):
+    pre_scrub_path = f'pulse-output/pre-scrub/{ts}.md'
+    pre_scrub_content = open('/tmp/pre_scrub_final.md').read().encode()
+    result = commit(pre_scrub_path, pre_scrub_content, f'routine: pre-scrub edit-output {ts}')
+    print('committed pre-scrub:', pre_scrub_path)
+    print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+
+# Commit /tmp/agent_io/* sub-agent prompts (EDIT, SCRUB) so the human
+# reviewer can inspect what each sub-agent actually received. The QC
+# review summarizes sizes/deltas from these; full prompts here let a
+# reviewer dig in when QC flags a handoff issue.
+import glob
+for prompt_path in sorted(glob.glob('/tmp/agent_io/*.txt')):
+    name = os.path.basename(prompt_path)  # e.g., 'edit-prompt.txt'
+    target = f'pulse-output/agent-io/{ts}/{name}'
+    try:
+        prompt_content = open(prompt_path, 'rb').read()
+        # Cap at 200 KB to avoid pathological prompt sizes blowing up the branch
+        if len(prompt_content) > 200_000:
+            prompt_content = prompt_content[:200_000] + b'\n\n[... truncated for size ...]'
+        result = commit(target, prompt_content, f'routine: agent prompt {name} ({ts})')
+        print(f'committed agent-io {name}:', target)
+    except Exception as e:
+        print(f'WARNING: agent-io commit failed for {name}: {e}')
+
 print(f'pdf_count: {ctx["pdf_count"]}, output_tokens_est: {output_tokens_est}, target: ALL configured channels (production)')
 PYEOF
 ```
@@ -1141,6 +1190,11 @@ def _read_or(path: str, default: str) -> str:
 draft_md = _read_or('/tmp/draft.md', '(draft not produced)')
 stitched_md = _read_or('/tmp/stitched.md', '(stitched not produced)')
 final_md = _read_or('/tmp/final.md', '(final not produced)')
+# Pre-SCRUB final.md = EDIT output before SCRUB rewrote sentences. Saved
+# by STEP 5.7.2 before SCRUB overwrote /tmp/final.md. If SCRUB didn't run
+# (zero hard lint issues), this file is absent and the EDIT output equals
+# the final committed output — handoffs_summary marks SCRUB as skipped.
+pre_scrub_md = _read_or('/tmp/pre_scrub_final.md', '(SCRUB did not run; EDIT output == final)')
 
 # Phase-B discovery audit: what the discovery layer promoted vs near-miss.
 # Empty if the synthesizer's discovery_audit was not surfaced in the
@@ -1154,6 +1208,57 @@ discard_reasons = '; '.join(
     f"{(d.get('theme') or '?')}: {(d.get('reason') or '?')}"
     for d in discarded
 ) or '(none)'
+
+# Sub-agent handoff summary — what each dispatched sub-agent received and
+# returned. QC uses this to assess whether prompts were constructed
+# correctly, whether sub-agents engaged with their inputs, and whether
+# transformation magnitude (line/char delta) suggests a working pass.
+def _sz(s: str) -> str:
+    """Format size as '<chars> chars / <lines> lines'."""
+    if not isinstance(s, str):
+        return '?'
+    return f"{len(s)} chars / {s.count(chr(10)) + 1} lines"
+
+# Adjudication: count dispatched and outcome
+n_dispatched = len(adj_file.get('themes', []) or []) + len(discarded)
+adj_themes_list = ', '.join(
+    (t.get('theme') or '?') for t in (adj_file.get('themes', []) or [])
+) or '(none validated)'
+
+# Pre-SCRUB exists iff SCRUB ran (STEP 5.7.2 made the copy before
+# overwriting /tmp/final.md).
+scrub_ran = os.path.exists('/tmp/pre_scrub_final.md')
+
+# Pre-EDIT artifact (what EDIT received) is the post-STITCH stitched.md.
+# Post-EDIT artifact is /tmp/pre_scrub_final.md (if SCRUB ran) OR
+# /tmp/final.md (if SCRUB skipped).
+post_edit_md = pre_scrub_md if scrub_ran else final_md
+
+# Sub-agent prompt files (saved by their respective steps before dispatch)
+edit_prompt = _read_or('/tmp/agent_io/edit-prompt.txt', '(prompt not saved)')
+scrub_prompt = _read_or('/tmp/agent_io/scrub-prompt.txt', '(prompt not saved)')
+
+handoffs_summary = f"""ADJUDICATION sub-agents:
+  - Dispatched: {n_dispatched} (one per selected theme)
+  - Validated: {len(adj_file.get('themes', []) or [])}
+  - Discarded: {len(discarded)}
+  - Validated themes: {adj_themes_list}
+  - Discard reasons: {discard_reasons}
+
+EDIT sub-agent (single dispatch):
+  - Prompt size: {len(edit_prompt)} chars (saved to /tmp/agent_io/edit-prompt.txt)
+  - Input  (stitched.md):     {_sz(stitched_md)}
+  - Output (post-EDIT md):    {_sz(post_edit_md)}
+
+SCRUB sub-agent:
+  - Status: {'RAN' if scrub_ran else 'SKIPPED (zero hard lint issues from EDIT output)'}"""
+
+if scrub_ran:
+    handoffs_summary += f"""
+  - Prompt size: {len(scrub_prompt)} chars (saved to /tmp/agent_io/scrub-prompt.txt)
+  - Input  (pre-SCRUB / EDIT output): {_sz(post_edit_md)}
+  - Output (post-SCRUB / final):      {_sz(final_md)}
+  - Lint issues input:  {len(lint_report)} total (capped at {len(lint_summary)} in this view)"""
 
 # Use the SAME timestamp the pulse was committed under so the QC review
 # filename pairs cleanly with the pulse markdown filename.
@@ -1171,6 +1276,8 @@ qc_inputs = {
     'draft_md': draft_md,
     'stitched_md': stitched_md,
     'final_md': final_md,
+    'pre_scrub_md': pre_scrub_md,
+    'handoffs_summary': handoffs_summary,
 }
 with open('/tmp/qc_inputs.json', 'w') as f:
     json.dump(qc_inputs, f, indent=1)
@@ -1180,6 +1287,9 @@ print(f"  promoted discoveries: {len(discovery_audit.get('promoted', []) or [])}
 print(f"  near-miss clusters:   {len(discovery_audit.get('near_miss', []) or [])}")
 print(f"  lint issues in scope: {len(lint_summary)} (of {len(lint_report)} total)")
 print(f"  adjudication: {qc_inputs['n_validated']} validated, {qc_inputs['n_discarded']} discarded")
+print(f"  SCRUB ran: {scrub_ran}")
+print(f"  EDIT prompt saved: {os.path.exists('/tmp/agent_io/edit-prompt.txt')}")
+print(f"  SCRUB prompt saved: {os.path.exists('/tmp/agent_io/scrub-prompt.txt')}")
 PYEOF
 ```
 
@@ -1192,7 +1302,8 @@ Build the QC prompt by combining `QC_SYSTEM` + `QC_USER` (with substitutions fro
 - `{discovery_audit_json}`
 - `{n_validated}`, `{n_discarded}`, `{discard_reasons}`
 - `{lint_summary_json}`
-- `{draft_md}`, `{stitched_md}`, `{final_md}`
+- `{handoffs_summary}` — sub-agent dispatch + I/O sizes (NEW)
+- `{draft_md}`, `{stitched_md}`, `{pre_scrub_md}`, `{final_md}` — pre_scrub_md is NEW; equals final if SCRUB skipped
 
 Dispatch ONE `general-purpose` Agent with the assembled prompt. The sub-agent runs in fresh context — no DRAFT/EDIT/SCRUB history, just the artifacts the prompt provides. It returns the QC review markdown (no preamble, no JSON wrapper).
 

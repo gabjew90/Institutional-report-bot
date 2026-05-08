@@ -827,17 +827,26 @@ LINT REPORT (final, after SCRUB):
 {lint_summary_json}
 ```
 
-PRE-STITCH DRAFT:
+SUB-AGENT HANDOFFS — what each dispatched sub-agent received and returned:
+
+{handoffs_summary}
+
+PRE-STITCH DRAFT (what STITCH received):
 ```markdown
 {draft_md}
 ```
 
-POST-STITCH PRE-EDIT:
+POST-STITCH PRE-EDIT (what EDIT received):
 ```markdown
 {stitched_md}
 ```
 
-FINAL POSTED MARKDOWN:
+POST-EDIT PRE-SCRUB (what SCRUB received — equals final if SCRUB skipped):
+```markdown
+{pre_scrub_md}
+```
+
+FINAL POSTED MARKDOWN (post-SCRUB if SCRUB ran):
 ```markdown
 {final_md}
 ```
@@ -858,6 +867,8 @@ For NEAR-MISS clusters (discovery_audit.near_miss): are any of these worth surfa
 
 ## Workflow stage critique
 Per-stage assessment, but ONLY for stages that did something noteworthy. Skip stages that just executed cleanly. Aim for fewer, sharper points over generic per-stage commentary.
+
+For sub-agent stages (Adjudication, EDIT, SCRUB), use the SUB-AGENT HANDOFFS block above to assess: did the sub-agent get the right inputs? Did it actually engage with them (meaningful output delta) or rubber-stamp (~0 delta)? Did the prompt size suggest substitutions resolved correctly? Use the pre-stage / post-stage diff to spot regressions — if EDIT shrank the markdown by 50%, did it cut filler or did it drop a theme? If SCRUB rewrote 10 lines, were those the lint-flagged sentences or unrelated?
 
 - Phase A clustering:
 - Phase B discovery:
