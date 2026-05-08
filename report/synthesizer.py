@@ -460,7 +460,8 @@ def build_pulse_context(
     else:
         ticker_block = "TICKER LOOKUP: (none extracted — use only tickers that clearly appear in the research text)"
 
-    theme_map = _classify_themes(analyses)
+    discovery_audit: dict = {}
+    theme_map = _classify_themes(analyses, discovery_audit=discovery_audit)
     theme_coverage_block = _format_theme_coverage(theme_map)
 
     # Each pulse is fully standalone now. We no longer compute prev-pulse
@@ -498,6 +499,11 @@ def build_pulse_context(
         # field (which must match these pre-aggregated counts exactly per
         # the adjudication lint rules).
         "theme_map": theme_map,
+        # Phase-B (discovery) audit: clusters that were promoted as
+        # discovered themes + clusters that almost surfaced ("near-miss"
+        # with reason="covered" or "thin"). Routine's QC step uses this
+        # to assess whether discovery thresholds are tuned correctly.
+        "discovery_audit": discovery_audit,
     }
 
 

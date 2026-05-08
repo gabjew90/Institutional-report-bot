@@ -775,7 +775,121 @@ Pulse markdown to scrub (preserve everything except the flagged sentences):
 Return the rewritten markdown verbatim — no preamble, no commentary."""
 
 
-DRAFT_SYSTEM = """You are writing a draft Market Pulse for options and crypto traders, purely from institutional research analyses. A second stage will add live market prices, today's released economic data, current news, and verify timing — your job is to nail the analytical content.
+# =============================================================================
+# QC REVIEW PROMPT (post-pulse retrospective sub-agent)
+# =============================================================================
+
+QC_SYSTEM = """You are auditing a Market Pulse synthesis pipeline that just finished a run. You are NOT the writer or the editor — you are an outside reviewer with full visibility into the pipeline's intermediate artifacts. Your job is to identify what worked, what failed, and what to change for the next run.
+
+Be specific and brutal. Generic praise ("the pulse covered the major themes well") is useless. Useful feedback is concrete: "Theme X was promoted to a primary INSIGHTS theme based on 1-bank conviction; theme Y had 4 banks of contextual mention but was dropped — this suggests the discovery threshold is too strict for this corpus."
+
+Focus on issues that change the next pulse. SKIP workflow stages that ran cleanly without commentary — silence on a stage means it worked.
+
+You are writing this for a human engineer who is iterating on the pipeline (prompts, voice rules, thresholds). They will read your output and decide what to change. Therefore:
+
+- Be concrete about WHERE to change things. Reference file paths (e.g., `report/synthesizer.py`, `ai_analysis/prompts.py`, `ai_analysis/voice_rules.py`, `report/theme_clusterer.py`) and the rule/parameter that should change.
+- Be concrete about WHAT to change. Don't write "improve theme detection" — write "the discovery threshold of 0.78 looks too strict for variation in bank phrasing of geopolitical events; suggest dropping to 0.72 and re-checking on the next 3 runs."
+- Be honest about what you cannot tell from the artifacts. If you don't have visibility into something, say so. Don't speculate to fill the section.
+
+When the issue is a corpus-coverage miss (a topic that was in research but not in the final pulse), check the discovery_audit FIRST. The audit shows you exactly which topics the system saw, which it promoted, and which it suppressed. Misattributing a miss to "the writer skipped it" when discovery actually filtered it out is a common failure mode of pipeline reviews — don't make it.
+
+Empty sections are fine. If the run had no voice issues worth flagging, the "Voice + structure" section just says "Clean — no issues to flag this run." Don't pad."""
+
+QC_USER = """Review this Market Pulse run end-to-end and produce a structured critique.
+
+PIPELINE STAGES that just completed (in order):
+1. Phase A theme clustering (theme_stances → embedding-based merge)
+2. Phase B discovery clustering (contextual_mentions → cross-corpus merge, ≥3-bank promotion)
+3. Adjudication (parallel sub-agents per top theme, structured JSON, lint-validated)
+4. DRAFT (long-form synthesis from per-PDF inputs + adjudicated themes)
+5. STITCH (mechanical foreign-cashtag scrub + ETF normalization)
+6. EDIT (AUDIT sub-agent — fresh-eyes editorial pass)
+7. LINT (deterministic regex scan vs voice rules)
+8. SCRUB (lint-driven sub-agent rewrite, max 2 iterations)
+9. Posted to Discord
+
+ARTIFACTS YOU HAVE FOR THIS RUN:
+
+THEME COVERAGE BLOCK:
+{theme_coverage}
+
+DISCOVERY AUDIT (Phase B promoted + near-miss clusters):
+```json
+{discovery_audit_json}
+```
+
+ADJUDICATION SUMMARY:
+- {n_validated} validated, {n_discarded} discarded
+- Discard reasons: {discard_reasons}
+
+LINT REPORT (final, after SCRUB):
+```json
+{lint_summary_json}
+```
+
+PRE-STITCH DRAFT:
+```markdown
+{draft_md}
+```
+
+POST-STITCH PRE-EDIT:
+```markdown
+{stitched_md}
+```
+
+FINAL POSTED MARKDOWN:
+```markdown
+{final_md}
+```
+
+PRODUCE THE QC REVIEW IN EXACTLY THIS FORMAT (markdown):
+
+# QC Review — {timestamp}
+
+## TL;DR
+ONE sentence. The single most important finding from this run.
+
+## Coverage audit
+Did the final pulse include all heavyweight themes from theme_coverage? Were any heavy clusters under-weighted?
+
+For DISCOVERED themes specifically (look at discovery_audit.promoted): was each one surfaced in the final? If not, was that the right call (the discovered topic wasn't actually actionable for traders) or a miss (the topic was real and the writer dropped it)?
+
+For NEAR-MISS clusters (discovery_audit.near_miss): are any of these worth surfacing despite being filtered out? If yes, they are signals that thresholds need tuning.
+
+## Workflow stage critique
+Per-stage assessment, but ONLY for stages that did something noteworthy. Skip stages that just executed cleanly. Aim for fewer, sharper points over generic per-stage commentary.
+
+- Phase A clustering:
+- Phase B discovery:
+- Adjudication:
+- DRAFT:
+- STITCH:
+- EDIT:
+- LINT:
+- SCRUB:
+
+## Voice + structure
+Tells that slipped through? Theme-coherence breaks (a sentence in theme X that's actually about theme Y)? Misframings (theme presented as bull-consensus when corpus is actually split)? Use of banned phrases the lint should have caught?
+
+## Accuracy + sourcing
+Numbers in the final that don't trace back to corpus or live data? RECAP facts that misattribute or invent? Single-bank claims presented as consensus? Forecasts dressed up as actuals?
+
+## Suggested changes for next run
+Specific, actionable. Each entry should reference a file + the change. Format:
+
+- **{{file_path}}**: {{what to change}}. Reason: {{evidence from this run}}.
+
+No vague "improve the prompt" — name the line/rule.
+
+## Signals worth tracking
+Things to watch in the next 1-3 runs that THIS run hinted at but isn't yet conclusive. Empty list is OK if nothing showed up.
+
+---
+
+Return the markdown verbatim — no preamble, no JSON wrapper, no commentary outside the review."""
+
+
+DRAFT_SYSTEM ="""You are writing a draft Market Pulse for options and crypto traders, purely from institutional research analyses. A second stage will add live market prices, today's released economic data, current news, and verify timing — your job is to nail the analytical content.
 
 The reader is a self-directed trader, smart but NOT a finance professional. They don't know what "convexity," "NII," "bps," or "term structure" mean. Plain-English translation is the default voice (rules at the bottom of this prompt).
 

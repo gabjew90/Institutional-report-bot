@@ -14,15 +14,21 @@
 
 Daily Market Pulse synthesis using GitHub as the message bus. **PRODUCTION RUN** — commits without `target_channels` filter so the pulse goes to all configured Discord channels.
 
-Three-stage pipeline in this fire:
+Pipeline stages in this fire:
 
 1. **Adjudicate** the top themes via parallel sub-agents. Each sub-agent sees only one theme's evidence and emits structured JSON. Lint rejects any sub-agent output that fabricates evidence quotes, bank attributions, or stance counts.
 2. **DRAFT** the analytical pulse from research analyses + the adjudicated themes block.
-3. **AUDIT** the draft against live market data, news, and the calendar. Final readability pass.
+3. **STITCH + EDIT** the draft (mechanical normalization + AUDIT sub-agent fresh-eyes editorial pass).
+4. **LINT + SCRUB** voice rules (deterministic regex scan + lint-driven sub-agent rewrite, max 2 iterations).
+5. **Commit** the pulse + adjudication + intermediate artifacts.
+6. **QC self-review** — sub-agent reviews this run end-to-end and writes a structured critique. Non-blocking; pulse is already posted by then.
 
-Two files commit at the end:
+Files committed during the run:
 - `pulse-output/pending/<ts>.md` — the pulse markdown (consumed by the bridge worker, posted to Discord)
 - `pulse-output/pending-adjudications/<ts>.json` — the adjudication audit/diff artifact (matched to the pulse by base name, archived alongside the pulse markdown by the worker)
+- `pulse-output/drafts/<ts>.md`, `pulse-output/stitched/<ts>.md`, `pulse-output/scrubbed/<ts>.md` — intermediate forensics artifacts (see STEP 6)
+- `pulse-output/lint/<ts>.json` — lint report (issue count + breakdown)
+- `pulse-output/qc-reviews/<ts>.md` — post-run QC self-review (see STEP 7)
 
 **Constants**
 ```
@@ -33,7 +39,7 @@ GH_TOKEN: ${GH_TOKEN}
 
 ## STEP 1 — Read prompts
 
-`cat ai_analysis/prompts.py` and locate `ADJUDICATION_SYSTEM`, `ADJUDICATION_USER`, `DRAFT_SYSTEM`, `DRAFT_USER`, `AUDIT_SYSTEM`, `AUDIT_USER` (full triple-quoted strings).
+`cat ai_analysis/prompts.py` and locate `ADJUDICATION_SYSTEM`, `ADJUDICATION_USER`, `DRAFT_SYSTEM`, `DRAFT_USER`, `AUDIT_SYSTEM`, `AUDIT_USER`, `SCRUB_SYSTEM`, `SCRUB_USER`, `QC_SYSTEM`, `QC_USER` (full triple-quoted strings).
 
 Follow the prompts verbatim. Particularly important rules to triple-check before commit:
 
@@ -598,6 +604,12 @@ frontmatter = '\n'.join(frontmatter_lines) + '\n\n'
 
 file_content = frontmatter + final_md
 ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
+# Persist `ts` for later steps (QC review). Without this, STEP 7 would
+# compute a fresh timestamp ~tens-of-seconds later and the QC review
+# filename would no longer pair with the pulse markdown filename for
+# forensic cross-reference.
+with open('/tmp/pulse_ts.txt', 'w') as f:
+    f.write(ts)
 pulse_path = f'pulse-output/pending/{ts}.md'
 adj_path = f'pulse-output/pending-adjudications/{ts}.json'
 
@@ -696,7 +708,157 @@ print(f'pdf_count: {ctx["pdf_count"]}, output_tokens_est: {output_tokens_est}, t
 PYEOF
 ```
 
-## STEP 7 — Confirm
+## STEP 7 — QC self-review (sub-agent dispatch)
+
+After the pulse + adjudication + intermediate artifacts are committed in STEP 6, dispatch a QC sub-agent to review this run end-to-end and produce a structured critique. The critique is committed to `pulse-output/qc-reviews/<ts>.md` so a human reviewer can read it later and decide what to change for the next run.
+
+This step is **non-blocking and must not be skipped on errors**. The pulse has already been committed and the bridge worker will post it to Discord regardless. If QC fails, log the failure and proceed to STEP 8 — never block delivery on a failed QC.
+
+### Step 7.1 — Build QC inputs
+
+```bash
+python3 << 'PYEOF'
+import json, os, datetime
+
+ctx = json.load(open('/tmp/ctx.json'))
+
+# Adjudication file (may be empty if STEP 3.5 produced no validated themes)
+adj_file = {}
+if os.path.exists('/tmp/adjudication.json'):
+    try:
+        adj_file = json.load(open('/tmp/adjudication.json'))
+    except Exception:
+        adj_file = {}
+
+# Lint report (final, post-SCRUB if SCRUB ran). Cap at 50 entries to keep
+# the QC prompt under control on lint-heavy runs.
+lint_report = []
+if os.path.exists('/tmp/lint_report.json'):
+    try:
+        lint_report = json.load(open('/tmp/lint_report.json'))
+    except Exception:
+        lint_report = []
+lint_summary = lint_report[:50]
+
+# Intermediate artifacts. Each missing artifact gets a placeholder so the
+# QC prompt always has the same shape.
+def _read_or(path: str, default: str) -> str:
+    if os.path.exists(path):
+        try:
+            return open(path).read()
+        except Exception:
+            return default
+    return default
+
+draft_md = _read_or('/tmp/draft.md', '(draft not produced)')
+stitched_md = _read_or('/tmp/stitched.md', '(stitched not produced)')
+final_md = _read_or('/tmp/final.md', '(final not produced)')
+
+# Phase-B discovery audit: what the discovery layer promoted vs near-miss.
+# Empty if the synthesizer's discovery_audit was not surfaced in the
+# context payload (older context dumps), in which case QC reviews
+# coverage qualitatively without the structured data.
+discovery_audit = ctx.get('discovery_audit') or {}
+
+# Adjudication discard reasons in compact form
+discarded = adj_file.get('discarded_themes', []) or []
+discard_reasons = '; '.join(
+    f"{(d.get('theme') or '?')}: {(d.get('reason') or '?')}"
+    for d in discarded
+) or '(none)'
+
+# Use the SAME timestamp the pulse was committed under so the QC review
+# filename pairs cleanly with the pulse markdown filename.
+ts = open('/tmp/pulse_ts.txt').read().strip() if os.path.exists('/tmp/pulse_ts.txt') \
+     else datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
+
+qc_inputs = {
+    'timestamp': ts,
+    'theme_coverage': ctx.get('theme_coverage', '(missing)'),
+    'discovery_audit_json': json.dumps(discovery_audit, indent=1),
+    'n_validated': len(adj_file.get('themes', []) or []),
+    'n_discarded': len(discarded),
+    'discard_reasons': discard_reasons,
+    'lint_summary_json': json.dumps(lint_summary, indent=1),
+    'draft_md': draft_md,
+    'stitched_md': stitched_md,
+    'final_md': final_md,
+}
+with open('/tmp/qc_inputs.json', 'w') as f:
+    json.dump(qc_inputs, f, indent=1)
+
+print(f"QC inputs prepared:")
+print(f"  promoted discoveries: {len(discovery_audit.get('promoted', []) or [])}")
+print(f"  near-miss clusters:   {len(discovery_audit.get('near_miss', []) or [])}")
+print(f"  lint issues in scope: {len(lint_summary)} (of {len(lint_report)} total)")
+print(f"  adjudication: {qc_inputs['n_validated']} validated, {qc_inputs['n_discarded']} discarded")
+PYEOF
+```
+
+### Step 7.2 — Dispatch QC sub-agent
+
+Build the QC prompt by combining `QC_SYSTEM` + `QC_USER` (with substitutions from `/tmp/qc_inputs.json`) from `ai_analysis/prompts.py`. Substitute every placeholder in `QC_USER`:
+
+- `{timestamp}`
+- `{theme_coverage}`
+- `{discovery_audit_json}`
+- `{n_validated}`, `{n_discarded}`, `{discard_reasons}`
+- `{lint_summary_json}`
+- `{draft_md}`, `{stitched_md}`, `{final_md}`
+
+Dispatch ONE `general-purpose` Agent with the assembled prompt. The sub-agent runs in fresh context — no DRAFT/EDIT/SCRUB history, just the artifacts the prompt provides. It returns the QC review markdown (no preamble, no JSON wrapper).
+
+Save the sub-agent's response to `/tmp/qc_review.md`.
+
+If the sub-agent errors out OR returns empty content, log a warning and proceed to STEP 7.3 (which will skip the commit cleanly). Do NOT retry — the pulse is already posted and a missing QC review is recoverable; a stuck QC retry blocking STEP 8 confirmation is not.
+
+### Step 7.3 — Commit QC review
+
+```bash
+python3 << 'PYEOF'
+import os, base64, urllib.request, json
+
+GH_TOKEN = os.environ.get('GH_TOKEN', '')
+REPO = 'gabjew90/Institutional-report-bot'
+BRANCH = 'pulse-data'
+
+if not os.path.exists('/tmp/qc_review.md'):
+    print('no /tmp/qc_review.md — QC sub-agent produced no output, skipping commit')
+    raise SystemExit(0)
+
+content_str = open('/tmp/qc_review.md').read().strip()
+if not content_str:
+    print('QC review file is empty — skipping commit')
+    raise SystemExit(0)
+
+ts = open('/tmp/pulse_ts.txt').read().strip() if os.path.exists('/tmp/pulse_ts.txt') \
+     else json.load(open('/tmp/qc_inputs.json'))['timestamp']
+qc_path = f'pulse-output/qc-reviews/{ts}.md'
+
+body = {
+    'message': f'routine: QC review {ts}',
+    'content': base64.b64encode(content_str.encode()).decode(),
+    'branch': BRANCH,
+}
+req = urllib.request.Request(
+    f'https://api.github.com/repos/{REPO}/contents/{qc_path}',
+    data=json.dumps(body).encode(),
+    headers={
+        'Authorization': f'token {GH_TOKEN}',
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json',
+        'X-GitHub-Api-Version': '2022-11-28',
+    },
+    method='PUT',
+)
+with urllib.request.urlopen(req, timeout=30) as resp:
+    result = json.loads(resp.read())
+print('committed QC review:', qc_path)
+print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+PYEOF
+```
+
+## STEP 8 — Confirm
 
 Report:
 - Pulse filename + commit sha
@@ -704,6 +866,7 @@ Report:
 - pdf_count and final word count
 - Top 3 INSIGHT theme headers
 - Adjudication summary: `<N> validated, <N> discarded` (and the discard reasons if any — those are signals worth surfacing)
+- QC review filename + commit sha (or "QC review skipped" if STEP 7 didn't commit)
 
 ## Critical rules
 
