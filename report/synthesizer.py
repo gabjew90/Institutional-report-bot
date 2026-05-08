@@ -387,51 +387,12 @@ def build_pulse_context(
     theme_map = _classify_themes(analyses)
     theme_coverage_block = _format_theme_coverage(theme_map)
 
-    prev_themes_list: list[str] = []
-    prev_age_hours: int | None = None
-    prev = db.get_last_daily_pulse()
-    if prev and prev.get("created_at"):
-        try:
-            prev_ts = datetime.fromisoformat(prev["created_at"][:19])
-            age = datetime.utcnow() - prev_ts
-            if age <= timedelta(hours=48):
-                import re
-                md = prev["report_markdown"] or ""
-                theme_headers = re.findall(r"\*\*([^*\n]{5,80})\*\*", md)
-                prev_themes_list = [t.strip() for t in theme_headers if t.strip()][:12]
-                prev_age_hours = int(age.total_seconds() / 3600)
-        except (ValueError, TypeError):
-            pass
-
-    if not use_prev_context:
-        prev_pulse_block = (
-            "PREVIOUS PULSE: (this is a standalone manual pulse — no prior-pulse "
-            "comparison requested. Treat this as a fresh snapshot of the current "
-            "research window. Do NOT anchor on any specific previous structure.)"
-        )
-    elif not prev_themes_list:
-        prev_pulse_block = (
-            "PREVIOUS PULSE: (none available — this is the first scheduled pulse "
-            "or the last one is too stale to compare against.)"
-        )
-    else:
-        prev_pulse_block = (
-            f"PREVIOUS PULSE SUMMARY (~{prev_age_hours}h ago, {prev['pdf_count']} reports):\n\n"
-            f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM):\n"
-            + "\n".join(f"  - {t}" for t in prev_themes_list)
-            + "\n\n1. For each theme above, ask: has the research today materially advanced it? If no → SKIP. If yes → lead with 'Since yesterday:'.\n"
-            + "2. Actively hunt for themes NOT in the list above — fresh catalysts, new desk calls, new positioning data.\n"
-            + "3. If today's pulse would look 80%+ the same as yesterday's, you've failed.\n"
-            + "4. Don't rewrite yesterday's themes with synonyms and new numbers — that's the same pulse in a trench coat."
-        )
-
-    if prev_themes_list:
-        audit_prev_block = (
-            f"PREVIOUS PULSE THEMES (~{prev_age_hours}h ago) — cut any theme in the draft that merely restates one of these without a materially new catalyst today:\n"
-            + "\n".join(f"  - {t}" for t in prev_themes_list)
-        )
-    else:
-        audit_prev_block = "PREVIOUS PULSE THEMES: (none — no recent prior pulse to dedupe against.)"
+    # Each pulse is fully standalone now. We no longer compute prev-pulse
+    # diff context — the corresponding ctx fields (prev_pulse_block,
+    # audit_prev_block) and prompt placeholders ({prev_pulse},
+    # {prev_pulse_themes}) have been removed from DRAFT_USER and AUDIT_USER.
+    # The use_prev_context parameter is retained for API compatibility but
+    # has no effect on output.
 
     if market_status_note:
         market_snapshot = market_snapshot + market_status_note
@@ -461,8 +422,6 @@ def build_pulse_context(
         # field (which must match these pre-aggregated counts exactly per
         # the adjudication lint rules).
         "theme_map": theme_map,
-        "prev_pulse_block": prev_pulse_block,
-        "audit_prev_block": audit_prev_block,
     }
 
 
