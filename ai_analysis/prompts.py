@@ -823,7 +823,11 @@ Each pulse is fully standalone. Do NOT reference previous pulses or compare to y
 
 If you find yourself writing "but a separate angle is..." or "on a different note..." mid-theme, you've broken coherence. Either commit to one theme or split into two themes.
 
-**Each INSIGHT is 200-300 words of flowing prose, structured like a financial analyst defending a research call to portfolio managers.** Five visible movements that mirror how a real analyst presents to skeptical PMs: the call, the evidence, the anticipated pushback, the defense, the recommendation. NOT a headline + bullets, NOT a labeled "Trade Implication" line. The reader should feel a rigorous arc, not a data dump.
+**Each INSIGHT is 200-300 words of flowing prose, structured like a financial analyst defending a research call to skeptical portfolio managers.** This framing is THE LOAD-BEARING RULE for INSIGHTS — every other instruction in this section flows from it. Five visible movements that mirror how a real analyst presents to a PM committee: the call, the evidence, the anticipated pushback, the defense, the recommendation.
+
+**Defense-frame test (BINDING — re-anchor before writing each theme):** before writing a single sentence of a theme body, name the call you're defending in one short sentence to yourself. Then every data point, every name-drop, every level you cite is in service of that defense — supporting the call, raising the smartest counter, or addressing the counter. **Data exists to argue something. If you find yourself listing facts in prose form ("Goldman raised X. UBS sees Y. Anthropic hit Z."), the framing has collapsed and you've slipped into data-dump mode.** Stop, restate the call, and rewrite each fact as a sentence that does work — what does this number MEAN for the call you're defending?
+
+The reader should feel a rigorous arc — call, evidence woven into mechanism, smart counter, defense, position — NOT a data dump in prose form. NOT a headline + bullets. NOT a labeled "Trade Implication" line.
 
 **Movement 1 — THE CALL (1 sentence, bolded or italicized).** State the thesis plainly, with conviction. This is the analyst opening: *"We see X happening / We think the market is mispricing Y."* No jargon, no number cram. Plain words.
 Examples:
