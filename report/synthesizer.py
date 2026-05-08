@@ -455,6 +455,12 @@ def build_pulse_context(
         "economic_calendar": economic_calendar,
         "ticker_block": ticker_block,
         "theme_coverage": theme_coverage_block,
+        # Structured form of the same theme aggregation rendered in
+        # `theme_coverage`. Routine adjudication step needs this to rank
+        # themes, filter per-theme evidence, and emit the stance_counts
+        # field (which must match these pre-aggregated counts exactly per
+        # the adjudication lint rules).
+        "theme_map": theme_map,
         "prev_pulse_block": prev_pulse_block,
         "audit_prev_block": audit_prev_block,
     }

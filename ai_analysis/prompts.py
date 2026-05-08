@@ -598,14 +598,90 @@ Do not add any footer tag, disclaimer, or "Sourced from N reports" line. End wit
 
 
 # =============================================================================
-# TWO-STAGE PULSE PIPELINE
+# THREE-STAGE PULSE PIPELINE
 # =============================================================================
-# Stage 1 (DRAFT) synthesizes the pulse from research PDFs only — no live
-# prices, no news, no calendars. Focuses on narrative quality.
+# Stage 0.5 (ADJUDICATE) runs once per selected theme as a parallel sub-agent.
+# Each sub-agent sees ONLY one theme's evidence and emits structured JSON
+# (consensus_view, facts_agreed, facts_contested, falsifiable_predictions).
+# Lint discipline (verbatim evidence-quote match, banks-must-be-input-sources,
+# stance counts match pre-aggregated counts) catches fabrications mechanically.
+# Output: pulse-output/pending-adjudications/<ts>.json on the bridge branch.
+# Stage 1 (DRAFT) synthesizes the pulse from research PDFs + the adjudicated
+# themes block — no live prices, no news, no calendars. Focuses on narrative
+# quality grounded in the committed adjudication.
 # Stage 2 (AUDIT) reviews the draft against live data and rewrites for factual
 # accuracy — prices, released events, news, tickers, session awareness.
 # This prevents Gemini from ignoring live-data rules when it has to juggle
 # too many constraints in one call.
+
+
+# =============================================================================
+# STAGE 0.5: PER-THEME ADJUDICATION (parallel sub-agents in the routine)
+# =============================================================================
+
+ADJUDICATION_SYSTEM = """You are adjudicating ONE specific cross-bank theme from institutional research. You receive only that theme's pre-extracted evidence — per-PDF stance entries, tension framings, and atomic data points — and you return a single structured JSON object describing what the corpus actually concludes about this theme.
+
+You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields outside the schema below. Your output is read by a downstream prose step; your job is to commit the corpus's adjudicated view to a structured form so the prose step does not have to invent it.
+
+**ABSOLUTE RULES — violations cause the entire theme adjudication to be rejected by an automated lint check:**
+
+1. **Every evidence quote you emit MUST be a verbatim character-for-character copy of one of the `theme_stances.evidence` strings in your input.** Do not paraphrase. Do not shorten. Do not "clean up" the text. Copy the string. If no usable verbatim quote exists for a claim, leave the evidence_quotes list empty rather than invent one.
+2. **Every bank in `banks_for` / `banks_against` MUST appear as the `source` field of one of the input PDFs for this theme.** Do not invent attributions. Do not promote a bank that only appears in cross-bank references — only the issuing banks of the input PDFs count.
+3. **Every `falsifiable_predictions[*].claim` MUST appear as a substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** If a "prediction" can't be traced to either source, omit it.
+4. **`stance_counts` MUST exactly match the pre-aggregated counts provided in your input.** Do not recount, do not adjust. Copy the numbers given.
+5. **If any field's inputs are too thin to fill honestly, return an empty list `[]` for that field.** Empty over invented. A short, accurate adjudication beats a long, padded one.
+6. **`consensus_view` is one sentence, plain English, no jargon.** Translate technical terms (bps, NII, duration, gamma) inline if used. Reader is a self-directed options/crypto trader, not a bank analyst.
+
+**Output schema — return EXACTLY this JSON object, no markdown fences, no commentary:**
+
+```
+{
+  "theme": "<repeat the theme label exactly as it appears in the input>",
+  "selected": true,
+  "stance_counts": {"supportive": <copy>, "skeptical": <copy>, "neutral": <copy>},
+  "consensus_view": "<one sentence summarizing what the corpus concludes about this theme. Plain English. Names a direction or a clear unresolved tension.>",
+  "facts_agreed": [
+    {
+      "claim": "<one sentence stating something the banks agree on>",
+      "banks_for": ["<bank name>", ...],
+      "evidence_quotes": ["<verbatim string from theme_stances.evidence>", ...]
+    }
+  ],
+  "facts_contested": [
+    {
+      "claim": "<the specific contested claim — e.g., 'year-end Brent target' or 'cut timing'>",
+      "banks_for": ["<bank>", ...],
+      "for_evidence": "<verbatim string from theme_stances.evidence of a banks_for bank>",
+      "banks_against": ["<bank>", ...],
+      "against_evidence": "<verbatim string from theme_stances.evidence of a banks_against bank>"
+    }
+  ],
+  "falsifiable_predictions": [
+    {
+      "bank": "<bank name from inputs>",
+      "claim": "<prediction text — substring must appear in input tension_points.what_invalidates OR key_data_points fields>",
+      "deadline": "<ISO date OR a non-date conditional substring of an input field, e.g. 'post-ceasefire'>"
+    }
+  ]
+}
+```
+
+**Empty fields are normal and acceptable.** Many themes have agreed facts but no contested ones, or contested ones but no falsifiable predictions. Do not pad. Return [] and move on.
+
+**Do not number, do not bullet, do not bold.** This is structured data, not prose.
+
+Return ONLY the JSON object."""
+
+
+ADJUDICATION_USER = """Theme: {theme_label}
+
+Pre-aggregated stance counts (copy these exactly into the output):
+{stance_counts_json}
+
+Per-PDF evidence assigned to this theme:
+{theme_inputs_json}
+
+Adjudicate this theme per the rules in your system prompt. Return the JSON object only."""
 
 
 DRAFT_SYSTEM = """You are writing a draft Market Pulse for options and crypto traders, purely from institutional research analyses. A second stage will add live market prices, today's released economic data, current news, and verify timing — your job is to nail the analytical content.
