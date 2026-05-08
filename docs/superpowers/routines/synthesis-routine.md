@@ -186,7 +186,7 @@ def _env_summary() -> str:
     return '\n'.join(rows)
 
 def commit_failure(stage: str, reason: str, detail: str = '') -> None:
-    """Write a rich failure marker to pulse-output/failures/<ts>.md.
+    """Write a rich failure marker to pulse-output/qc-reviews/<ts>.md.
 
     The marker captures everything a human or automated watcher needs to
     diagnose WHY the routine aborted without spelunking the Claude.ai
@@ -206,7 +206,9 @@ def commit_failure(stage: str, reason: str, detail: str = '') -> None:
     tmp_listing = _tmp_listing()
     progress_events = _progress_events()
     env_summary = _env_summary()
-    body = f"""# Routine failure: {stage}
+    body = f"""# QC Review — {ts}
+
+## Status: FAILED at {stage}
 
 - **Time (UTC):** {ts}
 - **Stage:** {stage}
@@ -244,7 +246,7 @@ def commit_failure(stage: str, reason: str, detail: str = '') -> None:
 """
     try:
         req = urllib.request.Request(
-            f'https://api.github.com/repos/{REPO}/contents/pulse-output/failures/{ts}.md',
+            f'https://api.github.com/repos/{REPO}/contents/pulse-output/qc-reviews/{ts}.md',
             data=json.dumps({
                 'message': f'routine: FAILURE at {stage} ({ts})',
                 'content': base64.b64encode(body.encode()).decode(),
@@ -258,7 +260,7 @@ def commit_failure(stage: str, reason: str, detail: str = '') -> None:
             method='PUT',
         )
         with urllib.request.urlopen(req, timeout=15) as resp:
-            print(f'committed failure marker: pulse-output/failures/{ts}.md')
+            print(f'committed failure marker: pulse-output/qc-reviews/{ts}.md')
     except Exception as e:
         print(f'WARNING: could not commit failure marker: {e}')
 
@@ -390,7 +392,7 @@ except Exception as e:
 PYEOF
 ```
 
-If the fetch fails after all retries, the routine commits a failure marker to `pulse-output/failures/<ts>.md` and aborts with `SystemExit(1)`. Subsequent steps (DRAFT, EDIT, etc.) do not run; downstream `pulse-output/pending/` stays empty.
+If the fetch fails after all retries, the routine commits a failure marker to `pulse-output/qc-reviews/<ts>.md` and aborts with `SystemExit(1)`. Subsequent steps (DRAFT, EDIT, etc.) do not run; downstream `pulse-output/pending/` stays empty.
 
 ## STEP 3 — Inspect theme coverage
 
@@ -938,11 +940,13 @@ BRANCH = 'pulse-data'
 def commit_failure(stage: str, reason: str, detail: str = '') -> None:
     """Mirror of the helper from STEP 2 — re-defined here because each
     routine step is a separate heredoc with its own Python namespace.
-    Commits a structured failure marker to pulse-output/failures/ so a
+    Commits a structured failure marker to pulse-output/qc-reviews/ so a
     human reviewer (or the watcher) sees the cause.
     """
     ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
-    body = f"""# Routine failure: {stage}
+    body = f"""# QC Review — {ts}
+
+## Status: FAILED at {stage}
 
 - **Time (UTC):** {ts}
 - **Stage:** {stage}
@@ -956,7 +960,7 @@ def commit_failure(stage: str, reason: str, detail: str = '') -> None:
 """
     try:
         req = urllib.request.Request(
-            f'https://api.github.com/repos/{REPO}/contents/pulse-output/failures/{ts}.md',
+            f'https://api.github.com/repos/{REPO}/contents/pulse-output/qc-reviews/{ts}.md',
             data=json.dumps({
                 'message': f'routine: FAILURE at {stage} ({ts})',
                 'content': base64.b64encode(body.encode()).decode(),
@@ -970,7 +974,7 @@ def commit_failure(stage: str, reason: str, detail: str = '') -> None:
             method='PUT',
         )
         with urllib.request.urlopen(req, timeout=15) as resp:
-            print(f'committed failure marker: pulse-output/failures/{ts}.md')
+            print(f'committed failure marker: pulse-output/qc-reviews/{ts}.md')
     except Exception as e:
         print(f'WARNING: could not commit failure marker: {e}')
 
@@ -1356,7 +1360,9 @@ def _commit_failure(stage: str, reason: str, detail: str = '') -> None:
     invisible: no QC review file, no failure marker, just absence.
     """
     ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
-    body = f"""# Routine failure: {stage}
+    body = f"""# QC Review — {ts}
+
+## Status: FAILED at {stage}
 
 - **Time (UTC):** {ts}
 - **Stage:** {stage}
@@ -1380,7 +1386,7 @@ def _commit_failure(stage: str, reason: str, detail: str = '') -> None:
     body += tail + "\n```\n"
     try:
         req = urllib.request.Request(
-            f'https://api.github.com/repos/{REPO}/contents/pulse-output/failures/{ts}.md',
+            f'https://api.github.com/repos/{REPO}/contents/pulse-output/qc-reviews/{ts}.md',
             data=json.dumps({
                 'message': f'routine: FAILURE at {stage} ({ts})',
                 'content': base64.b64encode(body.encode()).decode(),
@@ -1394,7 +1400,7 @@ def _commit_failure(stage: str, reason: str, detail: str = '') -> None:
             method='PUT',
         )
         with urllib.request.urlopen(req, timeout=15) as resp:
-            print(f'committed failure marker: pulse-output/failures/{ts}.md')
+            print(f'committed failure marker: pulse-output/qc-reviews/{ts}.md')
     except Exception as e:
         print(f'WARNING: could not commit failure marker: {e}')
 

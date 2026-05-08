@@ -1,15 +1,23 @@
 """Routine + bridge observability watcher.
 
-Polls multiple signal sources every 45s and emits one stdout line per new event:
+Unified QC observability. Polls a small set of signal sources every 45s and
+emits one stdout line per new event:
 
-  PROGRESS:  step=<name> (latest event in pulse-output/progress/<ts>.json)
-  ROUTINE_FAILURE:  <filename> (new file in pulse-output/failures/)
-  DELIVERY_FAILED:  <filename> (new file in pulse-output/delivery-failed/)
-  SUCCESS:  <filename> (new file in pulse-output/archive/)
+  PROGRESS:        step=<name> (latest event in pulse-output/progress/<ts>.json)
+  QC_REVIEW:       <filename>  (new file in pulse-output/qc-reviews/ — the unified
+                                quality artifact: routine review on success,
+                                routine-failure marker on routine abort, or
+                                <ts>.delivery.md sidecar on bridge delivery failure)
+  POSTED:          <filename>  (new file in pulse-output/archive/ — pulse
+                                successfully delivered to Discord and archived)
 
-Designed to be invoked under the Monitor tool — each emitted line becomes
-a chat notification. Persistent (does NOT exit on first event); user can
-call TaskStop when done.
+Designed to be invoked under the Monitor tool — each emitted line becomes a
+chat notification. Persistent (does NOT exit on first event); user can call
+TaskStop when done.
+
+The "everything is QC" model: any event that affects the quality assessment of
+a pulse — content, process, or delivery — lands in `pulse-output/qc-reviews/`
+as either `<ts>.md` (routine's view) or `<ts>.delivery.md` (bridge's view).
 
 Authenticates via env GH_TOKEN (passed by the Monitor invocation).
 """
@@ -27,9 +35,14 @@ POLL_INTERVAL_SECONDS = 45
 
 DIRS_TO_WATCH = {
     # name → emit prefix
-    "pulse-output/failures": "ROUTINE_FAILURE",
-    "pulse-output/delivery-failed": "DELIVERY_FAILED",
-    "pulse-output/archive": "SUCCESS_ARCHIVED",
+    # qc-reviews holds:
+    #   <ts>.md          — routine QC review (success) OR routine-failure marker
+    #                      (STEP 2/6/7 failures relabel as QC reviews with
+    #                      Status: FAILED at <stage>)
+    #   <ts>.delivery.md — bridge delivery failure sidecar
+    "pulse-output/qc-reviews": "QC_REVIEW",
+    # archive holds successful pulse markdown after Discord delivery
+    "pulse-output/archive": "POSTED",
 }
 
 

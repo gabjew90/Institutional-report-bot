@@ -39,11 +39,16 @@ PENDING_DIR = "pulse-output/pending"
 ARCHIVE_DIR = "pulse-output/archive"
 PENDING_ADJUDICATIONS_DIR = "pulse-output/pending-adjudications"
 ARCHIVE_ADJUDICATIONS_DIR = "pulse-output/archive-adjudications"
-# Pulses that the bridge tried to post but couldn't deliver to any
-# Discord channel (network/Discord outage, channel-not-found, etc.).
-# Files are moved here only AFTER a retry window expires, so that
-# transient outages get auto-recovered by subsequent bridge polls.
+# Operational location for pulse markdown that exhausted delivery retries.
+# A human can manually move the file back to PENDING_DIR/ to retry once
+# the underlying issue (e.g., Discord outage) resolves. The HUMAN-READABLE
+# explanation lives in pulse-output/qc-reviews/<ts>.delivery.md, NOT here.
 DELIVERY_FAILED_DIR = "pulse-output/delivery-failed"
+# Unified quality artifact location. Both the routine's QC review (success
+# path) and any failure markers (routine failures from STEP 2/6/7, plus
+# bridge delivery failures as <ts>.delivery.md sidecars) land here so a
+# single directory poll catches every quality/error event for any pulse.
+QC_REVIEWS_DIR = "pulse-output/qc-reviews"
 # How long the bridge keeps retrying a failed delivery before giving up
 # and moving the pulse to delivery-failed/. 15 min covers ~15 poll
 # cycles (1/min) — enough to ride out a typical Discord outage but
@@ -306,26 +311,37 @@ async def _commit_delivery_failed_marker(
     configured_count: int,
     per_channel_errors: list[str],
 ) -> None:
-    """Write a structured marker under pulse-output/delivery-failed/<ts>.md
-    so a watcher (or human) can see exactly why delivery failed without
-    spelunking Railway logs. Includes:
-      - which target_channels filter ran
-      - how many channels matched the filter
-      - the actual per-channel errors (Discord 503s, channel-not-found, etc.)
+    """Write a structured marker under pulse-output/qc-reviews/<ts>.delivery.md
+    so a watcher (or human) sees exactly why delivery failed without
+    spelunking Railway logs. Sidecar to the routine's QC review for the
+    same <ts> — together they form the unified quality record:
+      - <ts>.md         → routine review (or routine-failure marker)
+      - <ts>.delivery.md → bridge delivery outcome (this file)
+
+    Includes which target_channels filter ran, how many channels matched
+    the filter, and per-channel error detail (Discord 503s, channel-not-
+    found, etc.).
 
     Best-effort: a failed marker commit must NOT cascade — the pulse is
     already preserved in delivery-failed/ alongside this marker.
     """
     base = name[:-3] if name.endswith(".md") else name
-    marker_path = f"{DELIVERY_FAILED_DIR}/{base}.error.md"
+    marker_path = f"{QC_REVIEWS_DIR}/{base}.delivery.md"
     body_lines = [
-        f"# Bridge delivery failed: {name}",
+        f"# QC Review — {base}",
+        "",
+        "## Status: DELIVERY FAILED (bridge)",
         "",
         f"- **Time (UTC):** {datetime.utcnow().isoformat()}",
-        f"- **Pulse file:** {DELIVERY_FAILED_DIR}/{name}",
+        f"- **Pulse file:** {DELIVERY_FAILED_DIR}/{name} (preserved for manual retry)",
         f"- **target_channels filter:** {target_filter or '(none — all configured)'}",
         f"- **Channels matched filter:** {target_count} of {configured_count}",
         f"- **Channels delivered:** 0",
+        "",
+        "This sidecar accompanies the routine's main QC review at "
+        f"`pulse-output/qc-reviews/{base}.md` (or absent if the routine never reached "
+        "STEP 7). Bridge delivery happens AFTER the routine completes, so this marker "
+        "is appended post-hoc when delivery fails.",
         "",
         "## Per-channel errors",
         "",
@@ -341,18 +357,18 @@ async def _commit_delivery_failed_marker(
     body_lines.append("")
     body_lines.append(
         "Pulse markdown is preserved at the path above. To retry delivery, "
-        "move the file from `delivery-failed/` back to `pulse-output/pending/` — "
+        "move the file from `pulse-output/delivery-failed/` back to `pulse-output/pending/` — "
         "the bridge will re-attempt on the next 60s poll."
     )
     body = "\n".join(body_lines)
     try:
         await asyncio.to_thread(
             gh.put_file, marker_path, body,
-            f"bridge: delivery failed marker for {name}",
+            f"bridge: QC delivery-failed marker for {name}",
         )
-        log.info(f"Bridge: wrote delivery-failed marker {marker_path}")
+        log.info(f"Bridge: wrote QC delivery marker {marker_path}")
     except Exception as e:
-        log.warning(f"Bridge: could not commit delivery-failed marker: {e}")
+        log.warning(f"Bridge: could not commit QC delivery marker: {e}")
 
 
 async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
