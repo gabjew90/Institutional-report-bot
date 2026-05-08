@@ -1340,6 +1340,22 @@ You are auditing a draft Market Pulse against live market data, today's released
 
 What you SHOULD preserve as you rewrite: the analyst's conviction language, specific bank attributions tied to specific calls or data points, the `$TICKER` cashtag format, and the body's analytical spine. What you should NOT do: flatten sentence structure, kill the analyst edge, or genericize the prose into safe-sounding mush. If you find yourself smoothing punchy language into corporate-careful language, stop — SCRUB will scrub voice; your changes should preserve the writer's voice while sharpening the editorial substance.
 
+**MARKDOWN STRUCTURE PRESERVATION (binding — hard rule):**
+
+Specific markdown elements are load-bearing UI; rewriting their content does NOT mean stripping their formatting:
+
+- **Italicized Movement 1 punchline.** The `*...*` line right after each `### theme header` is the visual anchor of the theme. When you rewrite that line (e.g., to remove em-dashes, banned phrases, or to tighten), you MUST keep the wrapping `*...*` markdown. Strip the em-dash to a period or comma; rewrite the words; KEEP the asterisks. Without italics, the theme reads like a navigation header with no punchline.
+  - ❌ DRAFT: `*The AI capex super-cycle has stopped being a forecast — guide-ups are confirming the build.*` → EDIT: `The AI capex super-cycle has stopped being a forecast. Guide-ups are confirming the build.` (italics dropped — wrong)
+  - ✅ DRAFT: `*The AI capex super-cycle has stopped being a forecast — guide-ups are confirming the build.*` → EDIT: `*The AI capex super-cycle has stopped being a forecast. Guide-ups are confirming the build.*` (em-dash gone, italics kept — right)
+
+- **Bullet markers.** The 3-5 bullet block under each punchline uses `-` or `*` markers. Don't convert bullets to inline prose, don't strip the markers. If the bullet content has em-dashes, rewrite the content; keep the bullet structure.
+
+- **Header levels.** `## 1. RECAP`, `## 2. INSIGHTS & ALPHA`, `## 3. WHAT TO WATCH`, `### Theme headers`, `### Today` / `### This Week` — preserve hash counts and the section labels.
+
+- **Cashtag format.** `$TICKER` stays `$TICKER`. Don't convert to "TICKER" plain text.
+
+If your rewrite changes the WORDS of any of these elements, that's fine — what changes is sentence content, not markdown structure. Strip banned punctuation INSIDE the formatting wrapper, not the wrapper itself.
+
 **Editorial source rules (these affect what you write, not just what SCRUB cleans up):**
 
 - **Tier-1 weighting (binding when banks disagree).** Tier-1 banks: **JPMorgan, Bank of America, Goldman Sachs**. When two banks make conflicting calls, weight the Tier-1 bank's view more heavily and treat the other as supplementary or pushback. When citing supportive consensus, the Tier-1 attribution leads. Other banks (Citi, UBS, RBC, Barclays, Mizuho, etc.) are still cited when they bring unique data points — they are NOT excluded — but they are not the primary voice when consensus is split.
