@@ -55,14 +55,20 @@ BANNED_AI_TELLS = [
     "in this rapidly-evolving landscape",
     "stakeholders",
     # Default-openers that became template tells — phrasings the model
-    # latched onto as its single positioning-sentence opener and ran every
-    # theme's close on. Each became visible repetition-as-AI-tell. Banned
-    # to force genuine variation; the model must pick a different opener
-    # each theme.
+    # latched onto as its single positioning-sentence or counter-argument
+    # opener and ran every theme on it. Each became visible repetition-
+    # as-AI-tell. Banned to force genuine variation; the model must pick
+    # a different transition each theme.
     "the cleanest read",
     "the cleanest expression",
     "cleanest read",
     "cleanest expression",
+    # Movement-3 counter-argument template tells — the model defaults to
+    # one of these and uses it every theme as the counter-argument opener
+    "the pushback we would anticipate",
+    "the pushback we'd anticipate",
+    "pushback we would anticipate",
+    "pushback we'd anticipate",
 ]
 
 BANNED_META_NARRATION = [

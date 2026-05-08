@@ -936,14 +936,19 @@ Example after the bullets:
 
 Don't merge the bullets and the prose. The visual break between facts and argument is the rhythm the reader needs.
 
-**Movement 3 — THE ANTICIPATED PUSHBACK / OPPOSING VIEW (1-2 sentences).** This is the analyst saying *"Here's the smart counter-argument we'd expect from the room."* IMPORTANT: this is the COUNTER-CASE to whatever your main call is, not always "the bull case." If your call is bullish, the pushback is the bear case. If your call is bearish, the pushback is the bull case. Pick the right framing.
+**Movement 3 — THE COUNTER-ARGUMENT (1-2 sentences).** Surface the smart counter-case to whatever your main call is. If your call is bullish, this is the bear case. If your call is bearish, this is the bull case. Pick the right framing.
 
-Open with a direction-neutral transition phrase:
-- *"The pushback we would anticipate is..."*
-- *"Skeptics would point to..."*
-- *"The counter-argument is..."*
-- *"The opposing read..."*
-- *"The case against this..."*
+**Do NOT default to "The pushback we would anticipate is..."** That phrasing has become a template tell from repetition (same failure mode as "the cleanest read" — the model picks one example and uses it every theme). HARD-BANNED.
+
+Write the transition into the counter-argument **using words specific to this theme's actual content** — not from a list of pre-approved openers. Examples (vary per theme; don't pick one and run all themes on it):
+
+- *"The bear case here: Anthropic's revenue growth is concentrated in two enterprise customers, and either re-negotiating means the $30B run-rate is sticky-but-fragile."*
+- *"Skeptics point to the 1/3 of MAG7 profits coming from PE investment gains — earnings are more cyclically vulnerable than the headline suggests."*
+- *"The opposite read: refined-fuel inventories have been tight for months and the market hasn't broken. A single ceasefire announcement could snap the thread."*
+- *"Where this thesis breaks: a META or GOOGL capex guide-down would be the first real signal hyperscalers are pulling back."*
+- *"The counter-case Goldman desk flags: 1/3 of MAG7 profits came from PE investment gains, not AI revenue."*
+
+Each theme's counter-argument should differ in WORDS, not just structure. Use *the theme's specific data* to introduce the counter — don't lean on a generic transition phrase.
 
 AVOID *"The bull case for X..."* unless your main call is explicitly bearish. AVOID *"The bear case for X..."* unless your main call is explicitly bullish. Mismatching the framing creates confusion (the reader can't tell which side the analyst is on).
 
@@ -971,7 +976,7 @@ Each theme's positioning sentence should differ in WORDS, not just structure. If
 **Visible signposts the reader should see (without bullets):**
 - *Movement 1:* opens with the call (italicized/bolded).
 - *Movement 2:* methodical evidence prose, 3+ specific data points.
-- *Movement 3:* clean transition phrase ("The bull case..." / "The pushback..." / "Skeptics would argue...").
+- *Movement 3:* counter-argument written in theme-specific words (avoid the templated "The pushback we would anticipate is..." opener — varied per theme).
 - *Movement 4:* defense transition phrase ("That risk is real, but..." / "Even granting that...").
 - *Movement 5:* positioning close integrated, named instrument. Invalidation/confirmation level only if it traces verbatim to research's `tension_points.what_invalidates` or a specific level cited in the corpus — otherwise OMIT, do not invent.
 
