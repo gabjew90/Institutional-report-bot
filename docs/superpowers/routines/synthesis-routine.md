@@ -352,19 +352,27 @@ final_md = open('/tmp/final.md').read()
 input_tokens_est = 120000
 output_tokens_est = max(1, len(final_md) // 4)
 
-frontmatter = (
-    '---\n'
-    f'pdf_count: {ctx["pdf_count"]}\n'
-    f'input_tokens: {input_tokens_est}\n'
-    f'output_tokens: {output_tokens_est}\n'
-    f'dumped_at_utc: {ctx.get("dumped_at_utc", "")}\n'
-    # === TEST/PROD TOGGLE ===
-    # To smoke-test in #test-channel only: uncomment the next line, push, fire.
-    # To return to production (all configured channels): re-comment the next line, push.
-    # The bridge worker reads target_channels and filters delivery; absent line = all channels.
-    # 'target_channels: test-channel\n'
-    '---\n\n'
-)
+import os
+frontmatter_lines = [
+    '---',
+    f'pdf_count: {ctx["pdf_count"]}',
+    f'input_tokens: {input_tokens_est}',
+    f'output_tokens: {output_tokens_est}',
+    f'dumped_at_utc: {ctx.get("dumped_at_utc", "")}',
+]
+# === TEST/PROD via TARGET_CHANNELS env var ===
+# Default (env var unset): no target_channels line emitted -> all configured
+# channels (production behavior). For test fires, the routine body itself
+# (the wrapper prompt on Claude.ai, NOT this markdown) sets
+# `export TARGET_CHANNELS='test-channel'` before invoking us, and the bridge
+# worker filters Discord delivery to channels matching that substring.
+# Switching test/prod is therefore a RemoteTrigger update on the routine
+# body, not an edit to this file -- no git push, no recomment-before-cron
+# trap. This file always stays in prod-safe state.
+if os.environ.get('TARGET_CHANNELS'):
+    frontmatter_lines.append(f"target_channels: {os.environ['TARGET_CHANNELS']}")
+frontmatter_lines.append('---')
+frontmatter = '\n'.join(frontmatter_lines) + '\n\n'
 
 file_content = frontmatter + final_md
 ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
