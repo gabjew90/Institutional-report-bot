@@ -1132,16 +1132,17 @@ What you SHOULD preserve as you rewrite: the analyst's conviction language, spec
 
 - **Never cite "The Market Ear" / "TME" / "FX Daily" by name.** These are non-bank commentary publications. If their content is the primary source for a data point you're keeping, present the data without attribution — it stands on its own. Do not parenthetical-cite them either. SCRUB strips these on contact; don't generate them.
 
-**Content authority: you have it.** Unlike pure style audits, you CAN:
+**Content authority: you have it (within bounds).** Unlike pure style audits, you CAN:
 - Cut INSIGHTS themes that aren't truly high-impact (recurring flow commentary, generic macro wallpaper, single-bank technicals that won't move positioning).
-- **ADD a missing theme** when the draft skipped a clearly dominant cross-bank story. Hard sourcing rule for AUDIT-added themes (binding — prevents fabrication from a single stray headline):
-  - **Research-driven addition:** at least 3+ banks in the draft's references converge on the theme (e.g., hyperscaler earnings + AI capex super-cycle, rate cuts being priced out of the curve, a specific Fed policy shift). Pull the specific data points from the draft's references.
-  - **News-driven addition:** at least 3 independent news sources in the news_snapshot block describe the same event (different outlets — Reuters / Bloomberg / WSJ / FT / CNBC / Fox count as independent; multiple stories from one outlet do NOT). OR the event appears as a `[RELEASED]` entry in the economic_calendar OR a `[REPORTED]` entry in the earnings_calendar.
-  - **One-source / single-headline themes are NOT eligible.** A single stray Reuters headline, a single tweet referenced in news, or a one-bank desk note does NOT justify adding a new INSIGHT. Cut or leave out.
-  Same format as other themes: situation → tension → trade implication.
-- Sharpen or add a one-line "what this means for traders" close to any theme that's missing one.
+- Sharpen or rewrite the trade-idea close on any theme that's missing one or has a weak one.
 - Merge two themes saying the same thing.
 - Reorder so the highest-impact (most-cross-bank-backed) theme leads INSIGHTS.
+
+**You CANNOT add new INSIGHTS themes from news alone.** INSIGHTS is the research-driven analytical section — themes there were selected by the adjudicator from cross-bank coverage and written by DRAFT. News-emergent stories (overnight M&A, breaking events, calendar `[RELEASED]` items) belong in RECAP as driver bullets, NOT as new INSIGHTS. The separation is load-bearing:
+- INSIGHTS = research-driven analytical themes (adjudicator → DRAFT → AUDIT cleans)
+- RECAP = current market state + breaking news drivers (AUDIT builds with live data)
+
+If a news event is genuinely consequential and isn't yet in INSIGHTS, your move is to surface it in RECAP's driver bullets — not to write a new INSIGHT for it.
 
 What stays no matter what: the voice, specific analyst conviction language, banks named for their specific calls/data points (e.g., "Goldman raised 2026 capex to $751B"), the ticker cashtag format.
 
@@ -1330,14 +1331,20 @@ Edge-case carve-outs (these CAN survive Pass A even with limited cross-bank back
 
 **Each pulse is standalone.** Do not reference previous pulses, do not compare to yesterday's themes, do not write "Since yesterday:" framing. Treat the draft + the live data + the calendars as the entire universe. The cull rule is purely "is this theme high-impact for a US options/crypto trader RIGHT NOW?" — not "did yesterday cover it?"
 
-**Missing-theme audit (CRITICAL — most common failure mode):** Before finalizing, scan THREE places for clearly dominant cross-bank stories the draft missed: (a) the live news block, (b) the earnings + economic calendars, (c) the bank attributions and references INSIDE the draft itself. If the draft mentions multiple banks ("UBS, Mizuho, and Piper Sandler all flag…") in one sentence as background, that's a signal a major theme is being treated as wallpaper instead of being its own INSIGHT. The draft tends to over-weight niche single-source notes and under-weight broad cross-bank consensus. Specific misses to check for:
-- **Big tech / hyperscaler earnings season.** If the earnings calendar shows MAG7 reported AND the news block confirms strong/weak prints, INSIGHTS MUST cover the AI capex / earnings narrative. This is THE story your audience is positioned in. Don't bury it.
-- **Rate cut repricing / yields breakout.** If news / calendar shows yields breaking key levels (10Y above 4.4%, 30Y above 5%) or futures pricing shifting (cuts → no cuts → potential hike), and 3+ banks reference it, INSIGHTS must have it.
-- **Fed transition / hawkish-dovish surprise.** If a confirmation hearing, FOMC dissent, or major Fed governor signal appears in news, and the draft skipped it, add it.
-- **Major M&A / strategic stake involving an S&P 100 or MAG7 name** — must appear in RECAP as a driver bullet AND in INSIGHTS if banks comment.
-If you spot a missing cross-bank theme, write a new INSIGHT yourself using the data points from the news block + draft references. Same format: situation → tension (optimistic vs risk) → trade implication. Better to add an obvious theme than ship a pulse that omits the dominant story.
+**News-awareness pass (replaces "missing-theme audit").** Every existing INSIGHT theme should be written with awareness of what's in the live news block + the calendar — not as a research-only piece that ignores what just happened. Adding new INSIGHTS from news is NOT this pass's job (news-emergent stories belong in RECAP as drivers). This pass's job: make sure each existing theme reflects the live context where applicable.
 
-Target 3-6 high-impact themes. Better to ship 3 sharp themes than 6 with filler. If after culling you only have 2 strong themes, ship 2.
+For each surviving theme, scan the news_snapshot + earnings_calendar + economic_calendar for events directly relevant to the theme's argument. Where there's a connection, weave it into the theme's prose:
+
+- **AI capex theme** + news shows a MAG7 earnings beat or capex guide-up overnight → reference the print as confirming/refining the theme's argument: *"Datadog's +31% afterhours print Thursday confirmed the second-wave software-side of the build-out, and capex guide-ups from META and GOOGL last week land in the same direction."*
+- **Rate-cut repricing theme** + economic_calendar shows NFP releasing in a few hours → tie the theme to the catalyst: *"This morning's NFP print is the next test of the dovish lean — UBS has 100k vs the consensus 65k, JPM is at 50k."*
+- **Hormuz / oil theme** + news shows overnight strikes or ceasefire updates → make the theme's argument current: *"Overnight US strikes on Qeshm port reignited the supply-shock thread; oil futures are bid pre-market on it."*
+- **Fed transition theme** + news shows a confirmation hearing today → tie the theme to the upcoming testimony.
+
+If a theme's argument doesn't make contact with anything in today's news / calendars, that's fine — it stands on its research grounding. Don't force a news connection that isn't there.
+
+If you find that news contains a clearly dominant story that none of the existing INSIGHTS covers (e.g., a major M&A announcement on an S&P 100 name overnight, a surprise Fed governor signal), surface it in **RECAP as a driver bullet** — do not write a new INSIGHT for it. INSIGHTS is the research-driven analytical section; RECAP is where breaking news drives.
+
+Target 3-6 INSIGHTS themes (after Pass A culling, the count is what it is — don't pad to hit a number). Better to ship 3 sharp themes than 6 with filler.
 
 **Pass A.5 — data density check.** Each surviving theme body must have at least 3 concrete data points (specific number with attribution, specific level/percentile, specific positioning data, specific dissent count, specific ticker with conviction, named bank attribution). If a theme body reads like a generic summary ("revenue growth is strong," "yields are rising," "positioning is improving"), go back to the news block + earnings calendar + the draft's own references and pull the specific numbers.
 
