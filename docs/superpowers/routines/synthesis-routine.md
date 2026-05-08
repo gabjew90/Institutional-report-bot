@@ -60,35 +60,186 @@ Follow the prompts verbatim. Particularly important rules to triple-check before
 
 The fetch is the highest-risk failure point in the routine because it depends on (a) the bridge worker having recently dumped pulse-context, (b) GitHub raw cache having propagated, and (c) network reachability from the routine sandbox. We retry with exponential backoff and commit a failure marker on terminal failure so the human reviewer sees a structured cause rather than an opaque 404.
 
-```bash
-python3 << 'PYEOF'
-import urllib.request, urllib.error, time, os, json, base64, datetime, traceback
+This step also bootstraps the routine's observability layer:
+- `/tmp/routine.log` — append-only log; tee'd from each step's stdout/stderr. Read by `commit_failure` for context. Truncated at start.
+- `/tmp/pulse_ts.txt` — pulse timestamp. Used by progress + commit + QC steps so all artifacts pair on the same `<ts>`.
+- `/tmp/progress.py` — helper that subsequent steps invoke after major stages to commit progress events to `pulse-output/progress/<ts>.json`.
 
-GH_TOKEN = os.environ.get('GH_TOKEN', '')
+```bash
+# Truncate routine log at fire start. Subsequent step heredocs pipe their
+# stdout+stderr through `tee -a /tmp/routine.log` so commit_failure can
+# include the last N lines as failure context.
+: > /tmp/routine.log
+
+python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
+import urllib.request, urllib.error, time, os, json, base64, datetime, traceback, glob
+
+# Env vars do NOT persist across Bash tool calls — the routine body's
+# `export GH_TOKEN=...` sets it in one ephemeral shell; each subsequent
+# step runs in a fresh shell with empty env. The body therefore writes
+# /tmp/gh_token.txt (and /tmp/target_channels.txt) on startup; every step
+# reads from those files as the canonical source. We still consult the
+# env var first for backward compat with bodies that haven't been updated.
+def _read_token() -> str:
+    v = (os.environ.get('GH_TOKEN') or '').strip()
+    if v:
+        return v
+    try:
+        return open('/tmp/gh_token.txt').read().strip()
+    except FileNotFoundError:
+        return ''
+
+def _read_target_channels() -> str:
+    v = (os.environ.get('TARGET_CHANNELS') or '').strip()
+    if v:
+        return v
+    try:
+        return open('/tmp/target_channels.txt').read().strip()
+    except FileNotFoundError:
+        return ''
+
+GH_TOKEN = _read_token()
+if not GH_TOKEN:
+    print('FATAL: no GH_TOKEN in env or /tmp/gh_token.txt — body did not bootstrap auth correctly')
+    raise SystemExit(2)
+
+# Re-export so any subprocess this Python invokes (and the rest of this
+# heredoc's logic) sees a consistent value. This does NOT propagate to
+# the next Bash tool call — that's why we also keep the file copy.
+os.environ['GH_TOKEN'] = GH_TOKEN
+tc = _read_target_channels()
+if tc:
+    os.environ['TARGET_CHANNELS'] = tc
+
 URL = 'https://raw.githubusercontent.com/gabjew90/Institutional-report-bot/pulse-data/pulse-context/latest.json'
 REPO = 'gabjew90/Institutional-report-bot'
 BRANCH = 'pulse-data'
 
-def commit_failure(stage: str, reason: str, detail: str = '') -> None:
-    """Write a structured failure marker to pulse-output/failures/<ts>.md.
+def _tail(path: str, n: int = 120) -> str:
+    """Return the last N lines of a file, or '(missing)' if absent."""
+    try:
+        with open(path, 'r', errors='replace') as f:
+            lines = f.readlines()
+        return ''.join(lines[-n:])
+    except FileNotFoundError:
+        return '(missing)'
+    except Exception as e:
+        return f'(read error: {e})'
 
-    The marker is a small markdown file with stage + reason + detail so a
-    human (or automated watcher) can see WHY the routine aborted without
-    needing to spelunk through the routine session log. Idempotent: if
-    the commit itself fails, we swallow — the routine's own session log
-    still records the original failure.
+def _tmp_listing() -> str:
+    """List /tmp/ artifacts with sizes + mtimes — shows which steps got
+    far enough to write their outputs before failure.
+    """
+    try:
+        rows = []
+        for p in sorted(glob.glob('/tmp/*')):
+            try:
+                st = os.stat(p)
+                size = st.st_size
+                mt = datetime.datetime.utcfromtimestamp(st.st_mtime).strftime('%H:%M:%SZ')
+                rows.append(f'  {mt}  {size:>9}  {p}')
+            except Exception:
+                rows.append(f'  ???        ?         {p}')
+        return '\n'.join(rows) or '(empty)'
+    except Exception as e:
+        return f'(listing error: {e})'
+
+def _progress_events() -> str:
+    """Return the progress events committed so far for this pulse (if any).
+
+    Reads pulse-output/progress/<ts>.json from GitHub. The file is the
+    routine's own running log of step completions; including it in the
+    failure marker shows exactly which steps ran cleanly before the abort.
+    """
+    try:
+        ts = open('/tmp/pulse_ts.txt').read().strip()
+    except Exception:
+        return '(no /tmp/pulse_ts.txt — fire failed before STEP 2 completed setup)'
+    try:
+        url = f'https://raw.githubusercontent.com/{REPO}/{BRANCH}/pulse-output/progress/{ts}.json'
+        req = urllib.request.Request(url, headers={'Authorization': f'token {GH_TOKEN}'})
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            d = json.load(resp)
+        ev = d.get('events') or []
+        if not ev:
+            return '(no progress events committed yet)'
+        return '\n'.join(f"  {e.get('time','?')}  {e.get('step','?')}  {e.get('detail','')}" for e in ev)
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return '(no progress file — fire failed before any step committed progress)'
+        return f'(progress fetch HTTP {e.code})'
+    except Exception as e:
+        return f'(progress fetch error: {e})'
+
+def _env_summary() -> str:
+    """Selected env vars relevant to routine state. Token presence shown
+    as ('set'|'missing'), never the value.
+    """
+    keys = ['GH_TOKEN', 'TARGET_CHANNELS', '_ROUTINE_REPO', '_ROUTINE_BRANCH', 'PWD', 'HOSTNAME']
+    rows = []
+    for k in keys:
+        v = os.environ.get(k)
+        if k == 'GH_TOKEN':
+            rows.append(f'  {k}={"set" if v else "MISSING"}')
+        else:
+            rows.append(f'  {k}={v if v else "(unset)"}')
+    return '\n'.join(rows)
+
+def commit_failure(stage: str, reason: str, detail: str = '') -> None:
+    """Write a rich failure marker to pulse-output/failures/<ts>.md.
+
+    The marker captures everything a human or automated watcher needs to
+    diagnose WHY the routine aborted without spelunking the Claude.ai
+    routine session log:
+
+      - stage + reason + Python traceback (the immediate exception)
+      - last 120 lines of /tmp/routine.log (tee'd output from prior steps)
+      - /tmp/ file listing (which artifacts existed at failure time)
+      - committed progress events (which steps ran cleanly before abort)
+      - env summary (token presence, target_channels, etc.)
+
+    Idempotent: if the commit itself fails, we swallow — the routine's own
+    session log still records the original failure. Stops bad cascading.
     """
     ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
+    log_tail = _tail('/tmp/routine.log', 120)
+    tmp_listing = _tmp_listing()
+    progress_events = _progress_events()
+    env_summary = _env_summary()
     body = f"""# Routine failure: {stage}
 
 - **Time (UTC):** {ts}
 - **Stage:** {stage}
 - **Reason:** {reason}
 
-## Detail
+## Exception traceback
 
 ```
 {detail}
+```
+
+## Last 120 lines of /tmp/routine.log
+
+```
+{log_tail}
+```
+
+## /tmp artifacts at failure time
+
+```
+{tmp_listing}
+```
+
+## Progress events committed before failure
+
+```
+{progress_events}
+```
+
+## Environment summary
+
+```
+{env_summary}
 ```
 """
     try:
@@ -150,6 +301,67 @@ def fetch_with_retry(url: str, attempts: int = 3) -> bytes:
 # need to re-derive it.
 os.environ['_ROUTINE_REPO'] = REPO
 os.environ['_ROUTINE_BRANCH'] = BRANCH
+
+
+# Generate the pulse timestamp NOW (rather than at STEP 6 commit time) so
+# progress events for this fire all key off the same ts. STEP 6 reads this
+# instead of generating its own. /tmp/pulse_ts.txt is the source of truth.
+pulse_ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
+with open('/tmp/pulse_ts.txt', 'w') as f:
+    f.write(pulse_ts)
+
+
+# Write /tmp/progress.py — a small helper subsequent steps invoke after
+# major stages to commit a progress event to pulse-output/progress/<ts>.json.
+# Read-modify-write with SHA tracking; one accumulating file per pulse.
+# Watcher polls this file and surfaces the latest event for live visibility
+# into a 20-min routine run.
+PROGRESS_HELPER = '''import sys, os, json, base64, urllib.request, urllib.error, datetime
+if len(sys.argv) < 2:
+    sys.exit(0)
+step = sys.argv[1]
+detail = sys.argv[2] if len(sys.argv) > 2 else ""
+try:
+    ts = open("/tmp/pulse_ts.txt").read().strip()
+except Exception:
+    sys.exit(0)
+GH_TOKEN = os.environ.get("GH_TOKEN", "")
+REPO = "gabjew90/Institutional-report-bot"
+BRANCH = "pulse-data"
+path = f"pulse-output/progress/{ts}.json"
+url = f"https://api.github.com/repos/{REPO}/contents/{path}?ref={BRANCH}"
+events = []
+sha = None
+try:
+    req = urllib.request.Request(url, headers={"Authorization": f"token {GH_TOKEN}", "Accept": "application/vnd.github+json"})
+    with urllib.request.urlopen(req, timeout=10) as resp:
+        d = json.load(resp)
+        sha = d.get("sha")
+        try:
+            events = json.loads(base64.b64decode(d["content"]).decode()).get("events", [])
+        except Exception:
+            events = []
+except urllib.error.HTTPError as e:
+    if e.code != 404:
+        pass
+except Exception:
+    pass
+now = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+events.append({"step": step, "time": now, "detail": detail})
+new_content = json.dumps({"ts": ts, "events": events}, indent=1)
+body = {"message": f"routine: progress {step}", "content": base64.b64encode(new_content.encode()).decode(), "branch": BRANCH}
+if sha:
+    body["sha"] = sha
+try:
+    req = urllib.request.Request(f"https://api.github.com/repos/{REPO}/contents/{path}", data=json.dumps(body).encode(), headers={"Authorization": f"token {GH_TOKEN}", "Accept": "application/vnd.github+json", "Content-Type": "application/json"}, method="PUT")
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        print(f"progress: {step}")
+except Exception as e:
+    print(f"WARNING: progress commit failed for {step}: {e}")
+'''
+with open('/tmp/progress.py', 'w') as f:
+    f.write(PROGRESS_HELPER)
+
 
 try:
     body = fetch_with_retry(URL)
@@ -681,9 +893,23 @@ If lint reports issues, the SCRUB pass (above) is supposed to handle them automa
 ## STEP 6 — Compose with frontmatter and commit BOTH files (PRODUCTION — ALL CHANNELS)
 
 ```bash
-python3 << 'PYEOF'
+python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
 import json, base64, urllib.request, datetime, os, traceback
-GH_TOKEN = os.environ.get('GH_TOKEN', '')  # filled by the routine surface
+
+def _read_token() -> str:
+    v = (os.environ.get('GH_TOKEN') or '').strip()
+    if v:
+        return v
+    try:
+        return open('/tmp/gh_token.txt').read().strip()
+    except FileNotFoundError:
+        return ''
+
+GH_TOKEN = _read_token()
+if not GH_TOKEN:
+    print('FATAL: STEP 6 has no GH_TOKEN in env or /tmp/gh_token.txt — cannot commit')
+    raise SystemExit(2)
+os.environ['GH_TOKEN'] = GH_TOKEN
 REPO = 'gabjew90/Institutional-report-bot'
 BRANCH = 'pulse-data'
 
@@ -977,10 +1203,23 @@ If the sub-agent errors out OR returns empty content, log a warning and proceed 
 ### Step 7.3 — Commit QC review
 
 ```bash
-python3 << 'PYEOF'
+python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
 import os, base64, urllib.request, json
 
-GH_TOKEN = os.environ.get('GH_TOKEN', '')
+def _read_token() -> str:
+    v = (os.environ.get('GH_TOKEN') or '').strip()
+    if v:
+        return v
+    try:
+        return open('/tmp/gh_token.txt').read().strip()
+    except FileNotFoundError:
+        return ''
+
+GH_TOKEN = _read_token()
+if not GH_TOKEN:
+    print('FATAL: STEP 7.3 has no GH_TOKEN — cannot commit QC review')
+    raise SystemExit(2)
+os.environ['GH_TOKEN'] = GH_TOKEN
 REPO = 'gabjew90/Institutional-report-bot'
 BRANCH = 'pulse-data'
 
