@@ -234,6 +234,10 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
                     key_data_points=_build_list(KeyDataPoint, data.get("key_data_points")),
                     tension_points=_build_list(TensionPoint, data.get("tension_points")),
                     theme_stances=theme_stances,
+                    contextual_mentions=[
+                        m.strip() for m in (data.get("contextual_mentions") or [])
+                        if isinstance(m, str) and m.strip()
+                    ],
                     pages_analyzed=data.get("pages_analyzed", 0),
                     total_pages=data.get("total_pages", 0),
                     input_tokens=data.get("input_tokens", 0),

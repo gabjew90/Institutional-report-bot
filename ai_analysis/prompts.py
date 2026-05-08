@@ -182,6 +182,9 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
       "vs_consensus": "contrarian | with_consensus | out_of_consensus | empty — fill ONLY if the report uses explicit consensus language ('against consensus', 'consensus expects', 'we differ from the Street', 'in line with'). DO NOT infer from tone. Empty string is the default.",
       "evidence": "Verbatim ≤15-word phrase from the report that grounds this stance — a sentence fragment a reader could ctrl-F and find. Empty string if no clean quote exists. DO NOT paraphrase or invent."
     }
+  ],
+  "contextual_mentions": [
+    "Short topical phrase, 3-12 words, capturing a specific event/topic/actor/regime mentioned in the report (e.g., 'US strikes on Iranian military targets', 'Iran tanker seizures in Hormuz', 'Trump-Xi summit window', 'BoJ October policy minutes dovish shift', 'Argentina FX shortage', 'NVDA H200 supply constraint')"
   ]
 }
 
@@ -225,6 +228,15 @@ Rules:
 - **`key_argument` must reflect text, not vibes.** Tightly paraphrase a sentence the report actually contains. Empty string if the report only describes without arguing.
 - **`conviction=high` only with explicit markers.** Words like "high conviction", "top call", "best idea", "strongly disagree", or a structured dedicated-thesis note. Default is medium; default to low for passing mentions.
 - Typical range: 0-3 entries. Multi-topic morning briefings can hit 3; single-topic notes typically 1; admin/data wrappers typically 0.
+
+**For contextual_mentions** — capture topics mentioned anywhere in the report, including ones not promoted to theme_stances:
+- Pull from the body prose, risk_factors, geopolitical, macro_indicators interpretation, key_insights, vol_and_positioning — anywhere a topic is named, even briefly.
+- One topic per entry. Each must be a 3-12 word phrase **specific enough to be unambiguous when read in isolation**. "Iran" alone is too generic — write "US strikes on Iranian targets" or "Iran tanker seizures in Hormuz" instead. "Fed" alone is too generic — write "Fed October dot-plot dispersion" or "Fed repo facility tightening".
+- INCLUDE topics this report doesn't argue a stance on. The point of this field is the long tail — topics that didn't make it into theme_stances (capped at 0-3 entries) but are still present in the document.
+- It IS okay to overlap with your theme_stances entries if a topic both anchors a primary stance AND gets mentioned again in a risk paragraph. Downstream dedupes.
+- Skip company names that are already in entities_mentioned with a ticker — focus on themes, events, regimes, and phenomena, not on individual stock callouts. Specific stock-thesis angles ("AAPL India production shift", "TSLA robotaxi unit economics") DO belong here even if AAPL/TSLA are in entities_mentioned.
+- Skip generic macro words on their own ("inflation", "growth", "volatility") — only include them when paired with specifics ("services CPI re-acceleration", "growth scare in services PMIs", "vol-of-vol regime shift").
+- Typical range: 5-25 entries for HIGH/MEDIUM reports, 0-5 for LOW. Empty list is fine for pure data-table wrappers.
 
 - Return ONLY valid JSON, no markdown or extra text."""
 

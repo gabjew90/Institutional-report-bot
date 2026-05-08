@@ -138,6 +138,15 @@ class PdfAnalysis:
     # (consensus/dissent/conviction-weighted). Empty list when the report is
     # admin/wrapper or has no directional theme view.
     theme_stances: list[ThemeStance] = field(default_factory=list)
+    # Topical mentions throughout the report — names, events, regimes, and
+    # actors discussed contextually but NOT promoted to theme_stances.
+    # Powers corpus-level theme discovery: topics mentioned in many PDFs as
+    # context (Iran strikes inside risk_factors, Hormuz inside macro
+    # interpretation, etc.) but never surfaced as a primary theme by any
+    # single bank get clustered downstream and promoted to candidate themes.
+    # Each entry is a 3-12 word phrase specific enough to embed without
+    # ambiguity ("US strikes on Iranian targets", not bare "Iran").
+    contextual_mentions: list[str] = field(default_factory=list)
     pages_analyzed: int = 0
     total_pages: int = 0
     input_tokens: int = 0

@@ -403,6 +403,10 @@ async def analyze_pdf_deep(
                 if isinstance(ts, dict)
             ) if ts is not None
         ],
+        contextual_mentions=[
+            m.strip() for m in data.get("contextual_mentions", [])
+            if isinstance(m, str) and m.strip()
+        ],
         pages_analyzed=pages_analyzed_count,  # >0 when multimodal pass ran
         total_pages=extraction.total_pages,
         input_tokens=input_tokens,
