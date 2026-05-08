@@ -394,10 +394,17 @@ PYEOF
 
 If the fetch fails after all retries, the routine commits a failure marker to `pulse-output/qc-reviews/<ts>.md` and aborts with `SystemExit(1)`. Subsequent steps (DRAFT, EDIT, etc.) do not run; downstream `pulse-output/pending/` stays empty.
 
+After STEP 2 succeeds, commit a progress event so the watcher sees the routine is past the highest-risk failure point:
+
+```bash
+python3 /tmp/progress.py "STEP_2_DONE"
+```
+
 ## STEP 3 — Inspect theme coverage
 
 ```bash
 python3 -c 'import json; print(json.load(open("/tmp/ctx.json"))["theme_coverage"])'
+python3 /tmp/progress.py "STEP_3_DONE"
 ```
 
 ## STEP 3.5 — Adjudicate selected themes (parallel sub-agents)
@@ -790,6 +797,10 @@ PYEOF
 
 If `validated` is empty, log a warning and continue — DRAFT will fall back to its existing per-PDF JSON inputs. The pulse still ships.
 
+```bash
+python3 /tmp/progress.py "STEP_3_5_DONE"
+```
+
 ## STEP 4 — Generate DRAFT (Stage 1)
 
 Apply `DRAFT_USER` substitutions and `DRAFT_SYSTEM`. **If `/tmp/adjudication.json` exists and its `themes` array is non-empty**, inject the adjudicated themes block as added structured input that the prose can use to ground its claims. **If it doesn't exist, or its `themes` array is empty** (e.g., adjudication was skipped due to missing `theme_map`, or every theme failed lint), skip the injection entirely and run DRAFT against the existing per-PDF JSON inputs only — the pulse still ships with no degradation in surface output, just without the structured adjudication grounding.
@@ -804,6 +815,10 @@ evidence supports):
 
 Save to `/tmp/draft.md` via Python.
 
+```bash
+python3 /tmp/progress.py "STEP_4_DONE"
+```
+
 ## STEP 5 — Stitch + Edit (Stage 2, two sub-passes)
 
 The post-DRAFT pass is split into a deterministic STITCH (Python, no LLM) followed by a judgment-based EDIT dispatched as a separate sub-agent for fresh-eyes review. Splitting these forces each pass to do one job well: STITCH cannot accidentally drop a theme; EDIT cannot accidentally miss a foreign cashtag.
@@ -812,6 +827,7 @@ The post-DRAFT pass is split into a deterministic STITCH (Python, no LLM) follow
 
 ```bash
 python3 scripts/pulse_stitch.py /tmp/draft.md /tmp/stitched.md
+python3 /tmp/progress.py "STEP_5A_STITCH_DONE"
 ```
 
 Foreign cashtag scrub (`$TSCO` → "Tesco", `$CNA` → "Centrica", etc.) and ETF normalization (`$SPX` → `$SPY`, `$NDX` → `$QQQ`, `$RUT` → `$IWM`). Single source of truth: `scripts/pulse_stitch.py` constants. The script prints what it changed; review the log briefly to confirm nothing surprising got rewritten.
@@ -833,6 +849,10 @@ Dispatch ONE Agent call with the assembled prompt. The sub-agent applies the ful
 
 Do not pass any tools to the sub-agent — it doesn't need file access; the prompt is fully self-contained.
 
+```bash
+python3 /tmp/progress.py "STEP_5B_EDIT_DONE"
+```
+
 ## STEP 5.5 — Lint final markdown (deterministic regex scan)
 
 Mechanical check before commit. Single source of truth: `ai_analysis/voice_rules.py` defines the banned-phrase / banned-punctuation / source-prefix lists; both the AUDIT prompt and this linter import from there. Updating a banned pattern in voice_rules.py propagates to both — no drift.
@@ -841,6 +861,7 @@ The repo is already cloned in the routine sandbox via `session_context.sources`,
 
 ```bash
 python3 scripts/pulse_lint.py /tmp/final.md /tmp/lint_report.json /tmp/ctx.json
+python3 /tmp/progress.py "STEP_5_5_LINT_DONE"
 ```
 
 The script prints a human-readable summary inline (issue count, breakdown by kind, first 20 examples with line + snippet). Full structured issues are written to `/tmp/lint_report.json` for STEP 6 to commit alongside the pulse.
@@ -906,6 +927,12 @@ Check the new hard-issue count:
 - **0 hard issues** → great, proceed to STEP 6.
 - **>0 hard issues, but fewer than before** → SCRUB made progress. Dispatch ONE more SCRUB pass (same prompt, fresh UUID, with the new lint report). Re-lint. Accept whatever lint reports after this second pass — proceed to STEP 6 even if residuals exist. The residual lint report ships with the pulse for inspection.
 - **>0 hard issues, no progress** → log `WARNING: SCRUB did not reduce lint issues` and proceed to STEP 6 anyway. Don't loop forever — the pulse must ship.
+
+After SCRUB completes (or if SCRUB was skipped), commit a progress event:
+
+```bash
+python3 /tmp/progress.py "STEP_5_7_SCRUB_DONE"
+```
 
 **Maximum 2 SCRUB iterations.** If lint still has hard issues after the second pass, commit the pulse with the residual lint report; don't block delivery on perfect voice compliance.
 
@@ -1160,6 +1187,10 @@ for prompt_path in sorted(glob.glob('/tmp/agent_io/*.txt')):
 
 print(f'pdf_count: {ctx["pdf_count"]}, output_tokens_est: {output_tokens_est}, target: ALL configured channels (production)')
 PYEOF
+```
+
+```bash
+python3 /tmp/progress.py "STEP_6_COMMIT_DONE"
 ```
 
 ## STEP 7 — QC self-review (sub-agent dispatch)
@@ -1521,6 +1552,10 @@ except Exception as e:
     )
     raise SystemExit(1)
 PYEOF
+```
+
+```bash
+python3 /tmp/progress.py "STEP_7_QC_DONE"
 ```
 
 ## STEP 8 — Confirm
