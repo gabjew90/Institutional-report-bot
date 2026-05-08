@@ -1122,6 +1122,18 @@ A reader should not encounter the same event with the same timestamp twice in RE
 
 If you're not sure which mode you're in, default to pre-market mode for any pulse that fires before 9:30 AM ET. The session_status field in the AUDIT context tells you exactly which mode.
 
+**Temporal attribution (BINDING — anti-confusion):** every "after the bell" / "this morning" / "overnight" / "today" / "yesterday" reference in the pulse MUST align with the actual timestamp of the source news headline or calendar event. Common failure mode: the model says "AMD beat-and-raise after the bell" implying today's after-close, when AMD actually reported yesterday after-close.
+
+Mechanical rule, walk every dated reference in RECAP and INSIGHTS:
+- For each "after the bell" / "this morning" / "overnight" reference, identify the source: which news_snapshot headline or which earnings_calendar [REPORTED] / economic_calendar [RELEASED] entry is this referring to?
+- Compare that entry's date/time vs TODAY's date in the AUDIT context.
+- If the source event was YESTERDAY's session: rewrite to **name the actual day of the week** ("Tuesday afterhours," "Monday's close") — NOT "after the bell" which implies today.
+- If the source event was TODAY's session: "after the bell" / "this morning" is fine.
+- When in doubt, name the actual day of the week instead of relative time. "Tuesday afterhours" is unambiguous; "after the bell" forces the reader to infer which session.
+- Multi-day catalysts (e.g., a ceasefire negotiation thread spanning Tuesday through today): cite the most recent specific event with its actual date.
+
+The session_status field tells you the current time anchor. If the pulse fires at 23:23 ET Wednesday, "after the bell" defaults to Wednesday's after-close — not Tuesday's. If a draft references AMD's Tuesday earnings as "after the bell" implying today, FIX it to "Tuesday afterhours" (or "yesterday's after-close"). This is a binding rewrite, not optional.
+
 2. **Released events MUST appear in RECAP:** every event in the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block MUST be reflected with actual vs estimate framing. Never skip a released event.
 
 3. **Major news MUST appear in RECAP:** any news headline from the last 6 hours that describes a market-moving event (ceasefire news, confirmation hearing outcome, major policy announcement, geopolitical deadline) MUST be cited in RECAP. State it directly — do NOT use source-prefix attribution like "per Reuters," "per CNBC," "according to." Just report what happened. The reader doesn't need to know which wire reported it.

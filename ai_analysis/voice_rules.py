@@ -79,6 +79,53 @@ SOURCE_PREFIX_VERBS = [
     "thinks", "sees", "writes", "reports", "reported", "considers",
 ]
 
+# Jargon terms that MUST be translated to plain English on first use (or
+# in the same paragraph). The audience is a self-directed US options/crypto
+# trader — smart but NOT a finance professional. They read the WSJ, not
+# institutional research. If the term appears in a pulse without a plain
+# equivalent in the same paragraph, the reader stalls.
+#
+# The mapping is `jargon -> plain_translation`. AUDIT's voice scrub walks
+# every paragraph; if a key appears without translation context nearby,
+# AUDIT rewrites either using the value verbatim or restructures the
+# sentence to drop the jargon entirely.
+JARGON_WITH_TRANSLATIONS: dict[str, str] = {
+    "duration": "long-dated bonds — the longer the maturity, the bigger the price move when yields shift",
+    "term structure": "what the market expects rates to do over time",
+    "term curve": "what the market expects rates to do over time",
+    "breakevens": "the inflation rate priced into the bond market",
+    "convexity": "leverage that pays off bigger as the price moves further in your favor",
+    "delta one": "a position that moves dollar-for-dollar with the underlying",
+    "bear-flatten": "short-term yields rising faster than long-term",
+    "bear-steepen": "long-term yields rising faster than short-term",
+    "fixed-rate receiver": "a bet that rates fall (you receive a fixed rate vs paying floating)",
+    "carry": "what you earn just holding the position when nothing changes",
+    "rate differential": "the gap between two countries' interest rates — drives the currency",
+    "front-end issuance": "more short-term Treasury supply",
+    "long-end": "30-year Treasuries",
+    "short-end": "2-year Treasuries",
+    "vol surface": "the option market's pricing of risk across strikes and expiries",
+    "skew": "puts costing more than calls (or vice versa) — a sentiment signal",
+    "gamma": "how fast the option's delta changes — short gamma means dealers buy strength and sell weakness",
+    "basis": "the gap between cash and futures prices",
+    "inversion": "short-term yields higher than long-term — historically a recession signal",
+    "products draw": "refined fuel inventories falling fast",
+    "products tightness": "refined fuel inventories falling fast",
+    "selective single-name": "specific stock picks vs the broad sector",
+    "tactically short": "betting against in the near term",
+    "tactically long": "betting for in the near term",
+    "prime brokerage flows": "what hedge funds are doing",
+    "coupon supply": "new Treasury bonds being auctioned",
+    "issuance": "new supply of bonds (or stock)",
+    "NII": "interest income banks earn from loans",
+    "bps": "hundredths of a percent",
+    "CTAs": "trend-following computer funds that buy when markets rise and sell when they fall",
+    "RSI 70": "the market is technically overheated, like a rubber band stretched too far",
+    "short gamma": "dealers are on the hook to buy more the higher the market goes",
+    "term structure normalized": "the panic has faded",
+    "skew catching a bid": "traders are paying more for downside protection",
+}
+
 
 # === Helpers for prompt interpolation ===
 
@@ -110,7 +157,18 @@ def compose_audit_voice_block() -> str:
         "",
         "**Source-prefix story-connectors (rewrite on sight):**",
         f"For any sentence opening with a bank name from {{{', '.join(SOURCE_PREFIX_BANKS[:6])}, ...}} followed by a generic verb ({', '.join(SOURCE_PREFIX_VERBS[:6])}, ...), rewrite. Either move the attribution to a parenthetical at sentence end, or strip the attribution entirely if a specific number/level isn't being attributed. The bank name should appear ONLY when paired with a specific data point or call.",
+        "",
+        "**Plain-English jargon scrub (BINDING — most-cut feedback from readers).** The audience is a self-directed US options/crypto trader, smart but NOT a finance professional. Every technical term below MUST be translated in plain English in the SAME paragraph it appears (parenthetical or inline rephrase). If the draft uses one of these without a translation present in the same paragraph, REWRITE the sentence — either embed the translation, replace the term with the plain equivalent, or restructure to drop the term entirely.",
+        "",
+        "Walk every paragraph in INSIGHTS bodies and RECAP. For each jargon term you find, ensure a translation is present nearby. The full term-to-translation map (use the right column verbatim or as a guide for inline rewriting):",
+        "",
     ]
+    for term, translation in JARGON_WITH_TRANSLATIONS.items():
+        parts.append(f'- **{term}** → "{translation}"')
+    parts.extend([
+        "",
+        "Goal: a smart 28-year-old crypto trader reading the pulse on a phone should understand every sentence on first read. If they need to look up a term, you've failed. The jargon scrub is non-negotiable.",
+    ])
     return '\n'.join(parts)
 
 
@@ -157,4 +215,23 @@ def compose_lint_patterns() -> list[tuple[str, str]]:
     verbs_alt = '|'.join(re.escape(v) for v in SOURCE_PREFIX_VERBS)
     patterns.append((rf"\b({banks_alt})('s)?\s+({verbs_alt})\b", 'source-prefix'))
 
+    return patterns
+
+
+def compose_jargon_lint_patterns() -> list[tuple[str, str]]:
+    """Soft-warning patterns for the jargon scan.
+
+    Flags any bare use of a jargon term from JARGON_WITH_TRANSLATIONS.
+    The linter classifies these as 'jargon-bare' (soft) — they don't
+    block commits because the model is supposed to translate the term
+    in the same paragraph, and the linter can't context-check that.
+    Soft warnings let the routine surface jargon hits for review.
+    """
+    patterns: list[tuple[str, str]] = []
+    for term in JARGON_WITH_TRANSLATIONS:
+        # Word-boundary, case-insensitive applied at use site.
+        # Multi-word terms get \b boundaries on both ends; single tokens
+        # like "skew" or "duration" need stricter boundaries to avoid
+        # matching inside other words.
+        patterns.append((r'\b' + re.escape(term) + r'\b', 'jargon-bare'))
     return patterns

@@ -30,13 +30,13 @@ from pathlib import Path
 # root (cwd in the routine sandbox after the repo is cloned), so direct
 # package import works.
 try:
-    from ai_analysis.voice_rules import compose_lint_patterns
+    from ai_analysis.voice_rules import compose_lint_patterns, compose_jargon_lint_patterns
 except ImportError:
     # Fallback: linter run outside the repo context (e.g. routine fetched
     # both files into /tmp). Add cwd's parent dirs to sys.path and retry.
     here = Path(__file__).resolve()
     sys.path.insert(0, str(here.parent.parent))  # repo root
-    from ai_analysis.voice_rules import compose_lint_patterns
+    from ai_analysis.voice_rules import compose_lint_patterns, compose_jargon_lint_patterns
 
 
 def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
@@ -55,8 +55,16 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
     def line_of(match: re.Match, text: str) -> int:
         return text[:match.start()].count('\n') + 1
 
-    # Banned-pattern scan from voice_rules
+    # Banned-pattern scan from voice_rules (high-confidence)
     for pattern, kind in compose_lint_patterns():
+        for m in re.finditer(pattern, scan_text, re.IGNORECASE):
+            add(line_of(m, scan_text), kind, m.group())
+
+    # Jargon scan (soft — model is supposed to translate inline; linter
+    # surfaces hits for review but doesn't block the commit). Each hit
+    # means: the term is present; verify a plain-English translation is
+    # in the same paragraph or rewrite to drop the term.
+    for pattern, kind in compose_jargon_lint_patterns():
         for m in re.finditer(pattern, scan_text, re.IGNORECASE):
             add(line_of(m, scan_text), kind, m.group())
 
