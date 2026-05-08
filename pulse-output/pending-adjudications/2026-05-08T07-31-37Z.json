@@ -1,0 +1,86 @@
+{
+  "pulse_date": "2026-05-08",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex super cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Banks agree the AI infrastructure spending boom is the dominant earnings driver right now, with strong results across chipmakers and cloud platforms validating the buy-the-dip playbook.",
+      "facts_agreed": [
+        {
+          "claim": "AI is a key earnings driver across large tech platforms and the broader semiconductor and infrastructure supply chain.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strong results validate the AI capex theme and push individual stocks higher",
+            "every part of the supply chain gets bought",
+            "The AI theme remains a key driver, with strong results not only among large tech platforms",
+            "The AI theme remains a key driver, with strong results among large tech platforms"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "rate cut repricing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 2,
+        "neutral": 0
+      },
+      "consensus_view": "Banks disagree on whether the Fed will actually ease: UBS sees rate cuts coming as energy-driven tightening fears are overdone, while TS Lombard and The Market Ear argue the Fed is effectively on hold or tightening through other channels.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "whether the Fed will deliver meaningful rate cuts",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "markets have exaggerated the risk that central banks will tighten policy",
+          "banks_against": [
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "against_evidence": "bond market is so spooked that it\u2019s pricing the Federal Reserve to stay on hold"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "UBS",
+          "claim": "Federal funds rate Dec 2026 forecast",
+          "deadline": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "theme": "hormuz peace deal",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 0
+      },
+      "consensus_view": "Only one bank weighs in and it is doubtful, noting that prior diplomatic rounds have repeatedly rallied risk and crude before fading without substance.",
+      "facts_agreed": [],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {
+          "bank": "SEB",
+          "claim": "Polymarket probability of Strait of Hormuz normalization",
+          "deadline": "By end of June"
+        }
+      ]
+    }
+  ],
+  "discarded_themes": []
+}
