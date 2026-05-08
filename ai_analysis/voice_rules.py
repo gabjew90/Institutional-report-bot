@@ -124,6 +124,25 @@ JARGON_WITH_TRANSLATIONS: dict[str, str] = {
     "short gamma": "dealers are on the hook to buy more the higher the market goes",
     "term structure normalized": "the panic has faded",
     "skew catching a bid": "traders are paying more for downside protection",
+    # Trader verb idioms — verbs and phrasal patterns that are technical
+    # SENTENCE STRUCTURE, not just terms. Even with parenthetical
+    # translation of the noun, the sentence still reads as trader-speak.
+    # AUDIT should rewrite the whole sentence in plain English — not gloss.
+    "got hit": "dropped (or sold off)",
+    "caught a bid": "started rising on buying interest",
+    "rolled over": "started falling",
+    "took out": "broke through (or fell below, depending on direction)",
+    "found support": "stopped declining at this level",
+    "is offered": "selling pressure is building",
+    "is bid": "buying pressure is building",
+    "tape": "today's price action",
+    "going bid": "buyers stepping in",
+    "going offered": "sellers stepping in",
+    "the long end": "30-year Treasury bonds",
+    "the front end": "2-year and shorter Treasury bonds",
+    "lifted offers": "buyers cleared out the sell orders at this price",
+    "smoked the offers": "buyers cleared out the sell orders at this price",
+    "got tapped": "sellers hit the bids and pushed price down",
 }
 
 
@@ -158,16 +177,34 @@ def compose_audit_voice_block() -> str:
         "**Source-prefix story-connectors (rewrite on sight):**",
         f"For any sentence opening with a bank name from {{{', '.join(SOURCE_PREFIX_BANKS[:6])}, ...}} followed by a generic verb ({', '.join(SOURCE_PREFIX_VERBS[:6])}, ...), rewrite. Either move the attribution to a parenthetical at sentence end, or strip the attribution entirely if a specific number/level isn't being attributed. The bank name should appear ONLY when paired with a specific data point or call.",
         "",
-        "**Plain-English jargon scrub (BINDING — most-cut feedback from readers).** The audience is a self-directed US options/crypto trader, smart but NOT a finance professional. Every technical term below MUST be translated in plain English in the SAME paragraph it appears (parenthetical or inline rephrase). If the draft uses one of these without a translation present in the same paragraph, REWRITE the sentence — either embed the translation, replace the term with the plain equivalent, or restructure to drop the term entirely.",
+        "**Plain-English jargon scrub (BINDING — the highest-priority readability rule).** The audience is a self-directed US options/crypto trader, smart but NOT a finance professional. They read the WSJ, not institutional research. The default voice is **plain English written for that reader**.",
         "",
-        "Walk every paragraph in INSIGHTS bodies and RECAP. For each jargon term you find, ensure a translation is present nearby. The full term-to-translation map (use the right column verbatim or as a guide for inline rewriting):",
+        "**REWRITE the sentence, do NOT just append a parenthetical translation.** Glossing terms in parens still leaves the sentence structure trader-speak — example failure: *\"long-end Treasuries got hit on coupon supply (new Treasury bonds being auctioned).\"* Even with the gloss, *\"got hit\"* and the bond-trader sentence rhythm are still broken for a non-trader. The correct rewrite: *\"30-year Treasury bonds fell because the government is auctioning a wave of new long-term debt — more supply means buyers demand higher yields.\"*",
+        "",
+        "**Order of preference when you find jargon:**",
+        "1. **Rewrite the sentence** so the meaning is plain-English structure (no idioms, no compressed trader phrasing). This is the default.",
+        "2. **Replace the term** with its plain equivalent inline, restructuring as needed.",
+        "3. **Drop the term** entirely if removing it doesn't lose meaning.",
+        "4. **Parenthetical gloss** ONLY when the term is a proper-noun-style technical concept that genuinely has no plain-English equivalent (rare — usually #1 or #2 work).",
+        "",
+        "Walk every paragraph in INSIGHTS bodies and RECAP. For each jargon term in the map below, prefer a sentence rewrite over a paren gloss. The full term-to-trader-friendly-equivalent map:",
         "",
     ]
     for term, translation in JARGON_WITH_TRANSLATIONS.items():
         parts.append(f'- **{term}** → "{translation}"')
     parts.extend([
         "",
-        "Goal: a smart 28-year-old crypto trader reading the pulse on a phone should understand every sentence on first read. If they need to look up a term, you've failed. The jargon scrub is non-negotiable.",
+        "**Sentence-rewrite test:** read each sentence aloud (mentally). Could a smart 28-year-old crypto trader who reads the WSJ understand it on first read, with no glossary lookup, no re-reading? If no, rewrite. The pulse is for them, not for the bond desk.",
+        "",
+        "**Worked example — the right way to fix trader-speak:**",
+        "- Bad (gloss only): *\"the long-end (30-year Treasury bonds) got hit on coupon supply (new Treasury bonds being auctioned).\"*",
+        "- Good (sentence rewrite): *\"30-year Treasury bonds dropped this morning because the government is about to auction a wave of new long-term debt this week, and more supply means lower prices.\"*",
+        "- Bad (gloss only): *\"$BTC found support at the 50-day moving average and caught a bid.\"*",
+        "- Good (sentence rewrite): *\"$BTC stopped falling at its 50-day average price and buyers stepped in there.\"*",
+        "- Bad (gloss only): *\"hyperscaler capex revisions are pushing curves bear-steeper.\"*",
+        "- Good (sentence rewrite): *\"big tech is spending so much on AI data centers that the Treasury market is starting to price in long-term inflation pressure — the 30-year yield is rising faster than the 2-year, which usually signals more inflation ahead.\"*",
+        "",
+        "If your rewrite is longer than the original, that's fine. Word-count is not the constraint; comprehension on first read is.",
     ])
     return '\n'.join(parts)
 
