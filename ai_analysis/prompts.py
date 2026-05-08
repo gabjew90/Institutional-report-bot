@@ -756,7 +756,21 @@ Here are {pdf_count} research analyses to synthesize:
 
 {analyses_json}
 
-**Produce a draft Market Pulse with three sections:**
+**Produce a draft Market Pulse starting with an H1 title, then three sections:**
+
+**Pulse H1 title (mandatory, very first line):** the markdown begins with a single H1 line: `# {title}` where `{title}` is a brief eye-catching summary of the day's pulse — name the dominant story, tension, or surprise. 5-10 words. No date, no "Market Pulse" boilerplate, no quotation marks, no bold. Examples:
+
+```
+# Hormuz peace deal cracks the oil bid
+# AI capex super-cycle gets the Datadog confirmation
+# Bond market calls the Fed's bluff into NFP
+# Powell's trial balloon and the rate-cut repricing it triggered
+# Risk-on overnight as Iran ceasefire chatter cuts $USO 3%
+```
+
+The title should make a reader scrolling Discord stop and read. Pick the single most important thing about today's pulse — the story everyone's going to be talking about at the open — and put it as the H1.
+
+After the H1 title, leave one blank line, then proceed straight to the three sections below.
 
 ## 1. RECAP
 A 1-2 paragraph narrative summary of what the research says the market is doing and why — dominant themes, positioning, analyst sentiment. **Do NOT include specific prices or percentage moves** — a later stage will inject live prices. Write qualitatively: "markets appear to be grinding higher on CTA re-risking" instead of "SPY up 2.39%". Leave a placeholder `[LIVE PRICE RECAP]` at the start of your RECAP where the live price summary should be inserted by Stage 2.
@@ -1046,16 +1060,17 @@ Reserve the full *"$TICKER +X% to $Z"* form for the 1-2 most-narratively-importa
 **Good example (narrative — fewer tickers, varied syntax, story-first):**
 *"Markets traded with a risk-on bias Tuesday as Hormuz de-escalation headlines collided with a resilient AI-driven earnings cycle. $SPY closed +0.80% and $QQQ led at +1.30% — chip names did the heavy lifting after Tuesday night's prints. Energy rolled over hard on the peace-deal pivot, with $USO -2.33% and Brent down a similar amount. $BTC held the $81k area in sympathy with risk, but $VIXY, $TLT, and $GLD barely moved — the tape isn't pricing follow-through risk yet."*
 
-**Part 2 — "What drove the tape:" bulleted drivers.** After the lede paragraph, on a new line, write the literal header `**What drove the tape:**` followed by a bulleted list. One bullet per high-impact driver. Each bullet: lead with a bold hook (the event/data/news), then 1-2 sentences covering the **takeaway** (hot vs cool, hawkish vs dovish, beat vs miss) and the **impact** (what markets did or what it implies). Keep bullets tight — 2 sentences max each.
+**Part 2 — bulleted drivers.** After the lede paragraph, on a new line, drop straight into a bulleted list. **Do NOT write a section header** like "What drove the tape:" or "Drivers:" — go straight from the lede paragraph into the bullets. The bullets visually distinguish themselves from the prose; no label needed.
+
+One bullet per high-impact driver. Each bullet: lead with a bold hook (the event/data/news), then 1-2 sentences covering the **takeaway** (hot vs cool, hawkish vs dovish, beat vs miss) and the **impact** (what markets did or what it implies). Keep bullets tight — 2 sentences max each.
 
 Example format:
 
 ```
-**What drove the tape:**
-- **Retail Sales hot.** Headline +1.7% MoM (est. +1.4%), Control Group +0.7% (est. +0.2%). Consumer is still spending — cuts against the "slowdown is here" story and bleeds into rates/dollar.
-- **Warsh confirmation hearing (10 AM ET).** Testimony centered on balance sheet policy; he left QE on the table if needed. Market read him as dovish-optionality, not committed dove — kept positioning cautious.
-- **Iran rejects U.S.-led talks,** calling the port blockade an "act of war." Trump later floated a ceasefire extension pending Iran's proposal. Shipping still halted through Hormuz — that's what $USO is pricing.
-- **Amazon GLP-1 launch** noted but didn't move the tape.
+- **Retail Sales hot.** Headline +1.7% MoM (est. +1.4%), Control Group +0.7% (est. +0.2%). Consumer is still spending, which cuts against the "slowdown is here" story and bleeds into rates and the dollar.
+- **Warsh confirmation hearing (10 AM ET).** Testimony centered on balance sheet policy; he left QE on the table if needed. Market read him as dovish-optionality, not committed dove, which kept positioning cautious.
+- **Iran rejects U.S.-led talks,** calling the port blockade an "act of war." Trump later floated a ceasefire extension pending Iran's proposal. Shipping still halted through Hormuz, which is what $USO is pricing.
+- **Amazon GLP-1 launch** noted but did not move prices.
 ```
 
 Bad (vague bullet): *"- Investors digested Warsh's hearing where his balance sheet stance sparked debate."*
@@ -1063,7 +1078,7 @@ Good (specific bullet): *"- **Warsh confirmation hearing (10 AM ET).** He signal
 
 Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
-**What qualifies for "What drove the tape" (strict):** this section is for **major breaking market drivers that have already moved prices**, not scheduled events or background mechanics. Three categories qualify:
+**What qualifies as a driver bullet (strict):** these bullets are for **major breaking market drivers that have already moved prices**, not scheduled events or background mechanics. Three categories qualify:
 1. **Geopolitical events with measurable market impact.** Iran/Hormuz escalations, ceasefires, sanctions. Skip diplomatic noise (consulate closings, minor visa changes, generic "talks ongoing") unless there's a direct US-asset reaction in the snapshot.
 2. **Major earnings (already reported).** MAG7 prints, big-bank earnings, named bellwethers from the calendar's [REPORTED] block. Format: actual vs estimate with the price reaction. NOT scheduled-tonight earnings (those go in WHAT TO WATCH).
 3. **Big macro data (already released).** CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI, FOMC outcomes — from the economic_calendar's [RELEASED] block, with actual vs estimate. NOT scheduled-but-not-yet-released events.
@@ -1075,7 +1090,7 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 - Single-stock news on names that aren't tape-movers (sub-bellwether earnings, regional bank actions, micro-cap M&A). Cut.
 - Anything you'd describe with "filed under" or "things to watch but unclear impact." If the impact isn't clear, it doesn't belong in drivers.
 
-**RECAP grounding rule (binding — prevents hallucinated bullets):** every "What drove the tape" bullet MUST trace back to one of three sources:
+**RECAP grounding rule (binding — prevents hallucinated bullets):** every driver bullet MUST trace back to one of three sources:
 - (a) a specific headline in the news_snapshot block,
 - (b) a [RELEASED] event in the economic_calendar block (with actual vs estimate),
 - (c) the session price move itself in the market_snapshot block (e.g., a 5% Brent spike, $VIXY +8%, sector ETFs).
@@ -1198,7 +1213,8 @@ If a theme's analysis can't credibly support ANY positioning read, the theme isn
 
 **Things to fix if present:**
 - Bullet-list "Market Snapshot" at the top of RECAP → delete it; integrate prices into the lede paragraph.
-- RECAP written as all prose (no `**What drove the tape:**` bullets) → split into lede paragraph + bulleted drivers per the structure above.
+- RECAP written as all prose (no bullets) → split into lede paragraph + bulleted drivers per the structure above.
+- RECAP written with a labeled `**What drove the tape:**` header before the bullets → strip the header, leave bullets directly after the lede.
 - Specific prices in RECAP that don't match the snapshot → replace with snapshot values.
 - "Today's move" language when markets are closed (weekend/holiday) → rephrase as "Friday's close" / "heading into Monday".
 - Events in "WHAT TO WATCH → Today" that were actually already released → move to RECAP as a driver bullet.

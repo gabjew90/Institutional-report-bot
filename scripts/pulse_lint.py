@@ -68,7 +68,15 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
         for m in re.finditer(pattern, scan_text, re.IGNORECASE):
             add(line_of(m, scan_text), kind, m.group())
 
-    # Soft structural check: top-3 themes by bank count must appear in INSIGHTS
+    # Soft structural check: top-3 themes by bank count should appear in
+    # INSIGHTS — but the keyword-overlap heuristic is crude (forces theme
+    # tags into headers that read better without them). We scan the FULL
+    # INSIGHTS section text (not just headers) and only flag if NO
+    # significant theme word shows up anywhere — a much weaker signal that
+    # the theme was actually skipped, vs the previous "header keywords
+    # didn't match" which over-fired on legitimate non-keyword headers
+    # like "The bond market is calling the Fed's bluff" being flagged as
+    # missing 'rate cut repricing'.
     if ctx is not None:
         theme_map = ctx.get('theme_map') or {}
         if theme_map:
@@ -77,16 +85,23 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
                 key=lambda kv: -kv[1].get('banks', 0),
             )
             top3 = [t for t, _ in ranked[:3]]
-            insight_headers = re.findall(r'^###\s+(.+)$', md_text, re.MULTILINE)
-            header_text = ' '.join(insight_headers).lower()
+            # Pull out the entire INSIGHTS section body (everything between
+            # the INSIGHTS header and the next H2 / WHAT TO WATCH)
+            insights_match = re.search(
+                r'##\s+(?:\d+\.\s+)?INSIGHTS.*?(?=^##\s|\Z)',
+                md_text, re.MULTILINE | re.DOTALL | re.IGNORECASE,
+            )
+            insights_text = (insights_match.group(0) if insights_match else md_text).lower()
             for theme_key in top3:
                 sig_words = [w for w in theme_key.split() if len(w) > 3]
                 if not sig_words:
                     continue
-                hits = sum(1 for w in sig_words if w in header_text)
-                if hits < min(2, len(sig_words)):
+                # Soft test: any single significant word from the theme
+                # appears anywhere in the INSIGHTS section. Headers no
+                # longer required to literally contain the theme tag.
+                if not any(w in insights_text for w in sig_words):
                     add(0, 'top-3-theme-missing',
-                        f"top-3 theme '{theme_key}' not in INSIGHTS headers")
+                        f"top-3 theme '{theme_key}' has no significant word in INSIGHTS section")
 
     return issues
 

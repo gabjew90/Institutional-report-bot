@@ -57,10 +57,18 @@ TICKER_NORMALIZE: dict[str, str] = {
 }
 
 
-def stitch(md: str) -> tuple[str, list[str]]:
-    """Apply mechanical fixes to the DRAFT pulse. Returns (new_md, log_lines)."""
+def stitch(md: str) -> tuple[str, list[str], list[str]]:
+    """Apply mechanical fixes to the DRAFT pulse.
+
+    Returns (new_md, fixes, notes):
+      - fixes: list of strings describing actual file modifications
+      - notes: list of strings for informational context that did NOT
+        modify the file (e.g., placeholder presence). Counted separately
+        so the summary line doesn't overstate what stitch actually did.
+    """
     new_md = md
-    log: list[str] = []
+    fixes: list[str] = []
+    notes: list[str] = []
 
     # Foreign cashtag scrub
     for ticker, name in FOREIGN_CASHTAGS.items():
@@ -68,7 +76,7 @@ def stitch(md: str) -> tuple[str, list[str]]:
         count = len(re.findall(pattern, new_md))
         if count:
             new_md = re.sub(pattern, name, new_md)
-            log.append(f'foreign-cashtag: stripped ${ticker} ({count}x) -> {name}')
+            fixes.append(f'foreign-cashtag: stripped ${ticker} ({count}x) -> {name}')
 
     # Index → ETF normalization
     for old_t, new_t in TICKER_NORMALIZE.items():
@@ -76,13 +84,14 @@ def stitch(md: str) -> tuple[str, list[str]]:
         count = len(re.findall(pattern, new_md))
         if count:
             new_md = re.sub(pattern, new_t, new_md)
-            log.append(f'ticker-normalize: {old_t} -> {new_t} ({count}x)')
+            fixes.append(f'ticker-normalize: {old_t} -> {new_t} ({count}x)')
 
-    # Placeholder presence check (informational — EDIT injects live RECAP)
+    # Placeholder presence note — informational only, no file change.
+    # Tracked separately from fixes so the summary line doesn't overstate.
     if '[LIVE PRICE RECAP]' in new_md:
-        log.append('note: [LIVE PRICE RECAP] placeholder present (EDIT will inject live data)')
+        notes.append('[LIVE PRICE RECAP] placeholder present (EDIT will inject live data)')
 
-    return new_md, log
+    return new_md, fixes, notes
 
 
 def main() -> int:
@@ -98,13 +107,18 @@ def main() -> int:
         return 1
 
     md = input_md.read_text(encoding='utf-8')
-    new_md, log = stitch(md)
+    new_md, fixes, notes = stitch(md)
     output_md.parent.mkdir(parents=True, exist_ok=True)
     output_md.write_text(new_md, encoding='utf-8')
 
-    print(f"\nStitch pass: {len(log)} mechanical fix(es)")
-    for line in log:
-        print(f"  {line}")
+    if fixes:
+        print(f"\nStitch pass: {len(fixes)} mechanical fix(es) applied")
+        for line in fixes:
+            print(f"  fix: {line}")
+    else:
+        print("\nStitch pass: no mechanical fixes needed (file unchanged)")
+    for line in notes:
+        print(f"  note: {line}")
     return 0
 
 

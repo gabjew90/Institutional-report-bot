@@ -114,20 +114,64 @@ def _chunk_text(text: str, max_len: int = MAX_EMBED_CHARS) -> list[str]:
     return chunks
 
 
+def _extract_pulse_title(md: str) -> tuple[str | None, str]:
+    """Extract the leading H1 title from pulse markdown.
+
+    Returns (title, remaining_markdown). If no H1 at the top, returns
+    (None, original_md). Strips the H1 line + optional blank line so it
+    isn't duplicated downstream when sections render.
+    """
+    if not md:
+        return None, md or ""
+    m = re.match(r'^\s*#\s+(.+?)\s*\n+', md)
+    if not m:
+        return None, md
+    title = m.group(1).strip()
+    remaining = md[m.end():]
+    return title, remaining
+
+
+def _format_pulse_datetime() -> str:
+    """Day-of-week + date + time in ET as a single header string.
+
+    Example: 'Wednesday, May 7, 2026 — 11:23 PM ET'.
+    """
+    tz = pytz.timezone(settings.timezone)
+    now_local = datetime.now(tz)
+    weekday = now_local.strftime("%A")
+    month = now_local.strftime("%B")
+    day = now_local.day  # no zero-pad
+    year = now_local.year
+    hour_12 = now_local.hour % 12 or 12
+    ampm = "AM" if now_local.hour < 12 else "PM"
+    minute = now_local.minute
+    tzname = now_local.tzname() or "ET"
+    return f"{weekday}, {month} {day}, {year} — {hour_12}:{minute:02d} {ampm} {tzname}"
+
+
 def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
     """Convert a DailyReport into a list of Discord embeds."""
     embeds: list[discord.Embed] = []
-    today = report.report_date or date.today().isoformat()
+
+    # Extract the model-generated H1 title (if present) and use the rest of
+    # the markdown for sections. This avoids the H1 rendering as its own
+    # section and keeps the eye-catching title contained to the header embed.
+    pulse_title, body_md = _extract_pulse_title(report.markdown_content or "")
+    if not pulse_title:
+        # Defensive fallback for pulses produced before the H1-title rule
+        # landed in the prompt — keep the pdf_count line so the header isn't
+        # empty.
+        pulse_title = f"{report.pdf_count} institutional research reports"
 
     header_embed = discord.Embed(
-        title=f"MARKET PULSE | {today}",
-        description=f"{report.pdf_count} institutional research reports analyzed",
+        title=pulse_title,
+        description=_format_pulse_datetime(),
         color=0xFFD700,
     )
     embeds.append(header_embed)
 
     # Parse markdown into sections and create embeds
-    sections = _split_markdown_sections(report.markdown_content)
+    sections = _split_markdown_sections(body_md)
 
     for header, content in sections:
         if not content.strip():
