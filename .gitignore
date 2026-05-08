@@ -38,3 +38,7 @@ explore_dropbox.py
 
 # Claude Code internals
 .claude/
+
+# Paste-ready routine prompts with hardcoded token — never commit
+paste_routine_*.md
+_render_paste_routine.py
