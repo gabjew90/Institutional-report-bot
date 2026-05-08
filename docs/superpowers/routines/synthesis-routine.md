@@ -358,6 +358,11 @@ frontmatter = (
     f'input_tokens: {input_tokens_est}\n'
     f'output_tokens: {output_tokens_est}\n'
     f'dumped_at_utc: {ctx.get("dumped_at_utc", "")}\n'
+    # === TEST/PROD TOGGLE ===
+    # To smoke-test in #test-channel only: uncomment the next line, push, fire.
+    # To return to production (all configured channels): re-comment the next line, push.
+    # The bridge worker reads target_channels and filters delivery; absent line = all channels.
+    # 'target_channels: test-channel\n'
     '---\n\n'
 )
 
