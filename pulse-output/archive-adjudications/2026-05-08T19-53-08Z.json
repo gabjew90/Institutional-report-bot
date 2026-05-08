@@ -1,0 +1,103 @@
+{
+  "pulse_date": "2026-05-08",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex super cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 1,
+        "neutral": 1
+      },
+      "consensus_view": "Banks broadly agree the AI hyperscaler spending boom is real and driving a structural pivot from buybacks to capex, though one shop warns hyperscaler free cash flow could collapse over 70% as that bill comes due.",
+      "facts_agreed": [
+        {
+          "claim": "The AI investment boom is driving a structural shift from buybacks to capex at the largest US tech companies.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "The AI investment boom will drive a continued shift from buybacks to capex",
+            "AI investment boom will drive a continued shift from buybacks to capex"
+          ]
+        },
+        {
+          "claim": "AI is a key earnings growth driver for large tech platforms and the broader supply chain.",
+          "banks_for": [
+            "UBS",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "The AI theme remains a key driver, with strong results not only among large tech platforms",
+            "The AI theme remains a key driver, with strong results among large tech platforms",
+            "continued business investment in AI could help sustain the recent strength"
+          ]
+        },
+        {
+          "claim": "The AI investment cycle is still at an early stage with capacity constraints, supporting further capex growth.",
+          "banks_for": [
+            "UniCredit",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "The AI investment cycle still appears to be at an early stage.",
+            "The AI investment boom will drive a continued shift from buybacks to capex"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Sustainability of hyperscaler free cash flow as capex ramps",
+          "banks_for": [
+            "UniCredit"
+          ],
+          "for_evidence": "The AI investment cycle still appears to be at an early stage.",
+          "banks_against": [
+            "Syz"
+          ],
+          "against_evidence": "Wall Street projects hyperscalers\u2019 free cash flow to fall by over 70%"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "Goldman Sachs",
+          "claim": "2026 hyperscaler capex estimate",
+          "deadline": "2026"
+        },
+        {
+          "bank": "Goldman Sachs",
+          "claim": "Hyperscaler buyback reduction",
+          "deadline": "1Q 2026 YoY decline."
+        }
+      ]
+    },
+    {
+      "theme": "rate cut repricing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 0
+      },
+      "consensus_view": "Banks split on whether markets are right to expect quick rate cuts: UBS thinks central bank tightening fears are overdone, while ING warns rates may fall slower than the optimists expect.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "Pace and likelihood of central bank rate cuts",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "markets have exaggerated the risk that central banks will tighten policy",
+          "banks_against": [
+            "ING"
+          ],
+          "against_evidence": "Rates could fall slower than growing optimism suggests"
+        }
+      ],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
