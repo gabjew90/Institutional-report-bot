@@ -79,6 +79,30 @@ SOURCE_PREFIX_VERBS = [
     "thinks", "sees", "writes", "reports", "reported", "considers",
 ]
 
+# Publication / commentary brands the user explicitly does not want
+# attributed in pulse prose, even as a parenthetical citation.
+# Reason: these are non-bank commentary publications. If their content
+# is the primary source for a data point, present the data without
+# attribution — the data stands on its own. If the model would otherwise
+# write "(per The Market Ear)" or "FX Daily flags...", strip and rewrite.
+#
+# The source-prefix rule (BANKS x VERBS) catches "TME notes that..."
+# style preambles. This list catches the rest: parenthetical "(Market
+# Ear)" attributions, "as flagged in FX Daily" mid-sentence cites, etc.
+BANNED_PUBLICATION_NAMES = [
+    "The Market Ear",
+    "Market Ear",
+    "TME",
+    "FX Daily",
+]
+
+# Tier-1 bank weighting hierarchy. When two sources disagree on a call,
+# the pulse should weight Tier-1 banks more heavily and treat Tier-2 as
+# supplementary. This is content guidance for DRAFT/AUDIT, not a
+# linter pattern — the prose synthesis uses these to decide which
+# call to lead with when consensus is split.
+TIER_1_BANKS = ["JPMorgan", "Bank of America", "Goldman Sachs"]
+
 # Jargon terms that MUST be translated to plain English on first use (or
 # in the same paragraph). The audience is a self-directed US options/crypto
 # trader — smart but NOT a finance professional. They read the WSJ, not
@@ -177,6 +201,12 @@ def compose_audit_voice_block() -> str:
         "**Source-prefix story-connectors (rewrite on sight):**",
         f"For any sentence opening with a bank name from {{{', '.join(SOURCE_PREFIX_BANKS[:6])}, ...}} followed by a generic verb ({', '.join(SOURCE_PREFIX_VERBS[:6])}, ...), rewrite. Either move the attribution to a parenthetical at sentence end, or strip the attribution entirely if a specific number/level isn't being attributed. The bank name should appear ONLY when paired with a specific data point or call.",
         "",
+        "**Banned publication names (strip entirely, do not parenthetical-cite):**",
+        f"Never name {', '.join(repr(p) for p in BANNED_PUBLICATION_NAMES)} in the pulse — not as story-connector preamble, not as parenthetical attribution, not as mid-sentence cite. These are non-bank commentary publications. If their content is the primary source for a data point, present the data without attribution; the data stands on its own. If the model would otherwise write \"(per The Market Ear)\" or \"FX Daily flags...\" or \"as TME points out\", strip and rewrite to a bare statement of the underlying claim.",
+        "",
+        "**Source weighting (binding when banks disagree):**",
+        f"Tier-1 banks: {', '.join(TIER_1_BANKS)}. When two banks make conflicting calls, weight the Tier-1 bank's view more heavily and treat the other as supplementary or pushback. When citing supportive consensus, the Tier-1 attribution leads. Other banks (Citi, UBS, RBC, Barclays, etc.) are still cited when they have unique data points — they are NOT excluded — but they are not the primary voice when consensus is split.",
+        "",
         "**Plain-English jargon scrub (BINDING — the highest-priority readability rule).** The audience is a self-directed US options/crypto trader, smart but NOT a finance professional. They read the WSJ, not institutional research. The default voice is **plain English written for that reader**.",
         "",
         "**REWRITE the sentence, do NOT just append a parenthetical translation.** Glossing terms in parens still leaves the sentence structure trader-speak — example failure: *\"long-end Treasuries got hit on coupon supply (new Treasury bonds being auctioned).\"* Even with the gloss, *\"got hit\"* and the bond-trader sentence rhythm are still broken for a non-trader. The correct rewrite: *\"30-year Treasury bonds fell because the government is auctioning a wave of new long-term debt — more supply means buyers demand higher yields.\"*",
@@ -251,6 +281,12 @@ def compose_lint_patterns() -> list[tuple[str, str]]:
     banks_alt = '|'.join(re.escape(b) for b in SOURCE_PREFIX_BANKS)
     verbs_alt = '|'.join(re.escape(v) for v in SOURCE_PREFIX_VERBS)
     patterns.append((rf"\b({banks_alt})('s)?\s+({verbs_alt})\b", 'source-prefix'))
+
+    # Banned publication names — flag any occurrence, including
+    # parentheticals and mid-sentence cites. These should never appear
+    # in pulse prose.
+    for pub in BANNED_PUBLICATION_NAMES:
+        patterns.append((r'\b' + re.escape(pub) + r'\b', 'banned-publication'))
 
     return patterns
 

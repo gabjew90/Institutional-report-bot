@@ -698,7 +698,8 @@ What this means concretely:
 **Cashtag rule:** use $TICKER format for stocks, ETFs, crypto, indices ($AAPL, $NVDA, $CRCL, $BTC, $ETH, $SOL). Skip $ for FX (DXY, EURUSD), commodity spot names (Brent, Gold — but ETF tickers $BNO, $USO, $GLD are fine), currencies in prose.
 
 **Content focus — research-driven only:**
-- Primary sources: Goldman Sachs, Citi, Bank of America, JPMorgan. Others supplementary.
+- Tier-1 sources (heaviest weighting): JPMorgan, Bank of America, Goldman Sachs. When these three disagree with each other, that's a real corpus tension and lead with it. When a Tier-1 bank disagrees with a Tier-2 bank (Citi, UBS, RBC, Barclays, Mizuho, etc.), Tier-1 leads and Tier-2 is the supplementary or pushback voice. Tier-2 banks are still cited when they bring unique data points; they are NOT excluded.
+- Never cite "The Market Ear" / "TME" / "FX Daily" by name. These are non-bank commentary publications — if their content is the primary source for a data point, present the data without attribution.
 - Focus on what matters for US options + crypto traders. Skip peripheral EM, minor FX, niche commodities unless research explicitly argues US read-through.
 - Only mention rating changes if: (a) major stock, (b) surprising call, or (c) specific positioning shift.
 - **Lead with the theme that has the most independent bank coverage (3+ banks aligned) — that's the highest-conviction signal in the corpus.** Single-topic dedicated notes (M&A, dedicated catalyst notes, earnings reactions) come second. A theme appearing in 8+ HIGH-priority notes from different banks IS the story, even if it sounds "broad."
