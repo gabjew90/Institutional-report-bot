@@ -1,0 +1,37 @@
+{
+  "pulse_date": "2026-05-08",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "rate cut repricing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 0
+      },
+      "consensus_view": "UBS and ING disagree on whether rates will fall as fast as markets expect, with UBS saying tightening fears are overdone and ING warning cuts could come slower than the rally implies.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "pace of rate cuts priced by markets",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "markets have exaggerated the risk that central banks will tighten policy",
+          "banks_against": [
+            "ING"
+          ],
+          "against_evidence": "Rates could fall slower than growing optimism suggests"
+        }
+      ],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "ai hyperscaler capex",
+      "reason": "after Rule 5/6 filtering, theme has no remaining content (single-bank facts dropped, bad deadlines dropped)"
+    }
+  ]
+}
