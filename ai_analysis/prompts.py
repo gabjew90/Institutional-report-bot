@@ -908,12 +908,33 @@ If you find yourself writing "but a separate angle is..." or "on a different not
 
 The reader should feel a rigorous arc — call, evidence woven into mechanism, smart counter, defense, position — NOT a data dump in prose form. NOT a headline + bullets. NOT a labeled "Trade Implication" line.
 
-**Movement 1 — THE CALL (1 sentence, bolded or italicized).** State the thesis plainly, with conviction. This is the analyst opening: *"We see X happening / We think the market is mispricing Y."* No jargon, no number cram. Plain words.
-Examples:
+**Movement 1 — THE CALL (1 sentence, italicized).** This italicized punchline expands on and clarifies the theme's `### header` — it's the analyst's view, stated directly, with conviction. The relationship is: header = compact label of the theme; punchline = the directional claim made explicit.
+
+State YOUR view, not the corpus's state. **Banned in the punchline (BINDING):**
+- *"Banks are debating whether..."*
+- *"The question is whether..."*
+- *"Researchers / analysts are split on..."*
+- *"There's disagreement over..."*
+- *"X is up for debate..."*
+- *"Whether [X] or [Y]..."*
+
+Those are corpus meta-narration — they describe the SOURCES rather than make a claim. The punchline is supposed to ASSERT. Pick a side; that side is your call.
+
+No jargon, no number cram. Plain words. One sentence.
+
+Examples (note these are *patterns to vary from*, not templates to copy):
 - *The bond market is pricing rate hikes through April, and we think it's wrong.*
 - *Hormuz peace memo on the wires, but the supply scar lasts months.*
 - *AI capex is no longer a forecast — earnings are confirming the build.*
 - *Apple's foundry pivot is the single-stock story this market is mispricing.*
+- *Norges Bank cut while the Riksbank held — that gap is the trade.*
+
+❌ Bad (corpus meta-narration, not a call):
+- *"Banks are debating whether the Fed will deliver effective easing."* — describes the corpus state, doesn't take a side
+- *"The question is whether the AI capex super-cycle has further to run."* — same problem; pose the answer, don't pose the question
+- *"Researchers are split on the rate-cut path."* — meta-narration, no claim
+
+If you're tempted to write "banks are debating..." or "the question is whether..." — STOP. Pick a side. The punchline is YOUR call, not a summary of the disagreement.
 
 **Movement 2 — THE EVIDENCE.** A short bulleted data block followed by a mechanism paragraph that argues from those bullets.
 
@@ -1133,9 +1154,23 @@ What you SHOULD preserve as you rewrite: the analyst's conviction language, spec
 
 - **Tier-1 weighting (binding when banks disagree).** Tier-1 banks: **JPMorgan, Bank of America, Goldman Sachs**. When two banks make conflicting calls, weight the Tier-1 bank's view more heavily and treat the other as supplementary or pushback. When citing supportive consensus, the Tier-1 attribution leads. Other banks (Citi, UBS, RBC, Barclays, Mizuho, etc.) are still cited when they bring unique data points — they are NOT excluded — but they are not the primary voice when consensus is split.
 
+- **Bank-citation cap: at most 3 distinct bank names per theme body.** Past three, you're meta-narrating ("X, Y, and Z all flag...") instead of arguing. If a theme genuinely has 5+ banks aligned, that signal is captured by the adjudicator's stance counts — your prose doesn't need to enumerate every name. Pick the 2-3 banks whose specific data or call most directly supports the theme's argument; drop the rest from prose. The reader doesn't need a roll call.
+
 - **Bank-name attribution: only when paired with a specific number or call.** Do not write source-prefix preambles like "[Bank] notes that...", "[Bank] flags that...", "[Bank]'s desk thinks..." as sentence openers. The bank name earns a place in prose ONLY when it's attributing a specific data point ("Goldman raised 2026 capex to $751B"). If you find yourself writing a bank name as a story-connector, restructure the sentence so the data point is the spine and the bank attribution becomes a parenthetical. SCRUB will catch slip-ups, but your editorial restructuring should not introduce them in the first place.
 
 - **Never cite "The Market Ear" / "TME" / "FX Daily" by name.** These are non-bank commentary publications. If their content is the primary source for a data point you're keeping, present the data without attribution — it stands on its own. Do not parenthetical-cite them either. SCRUB strips these on contact; don't generate them.
+
+- **No pedagogical / explanatory asides (BINDING).** Do NOT teach the reader your analytical framework. Banker-newsletter voice asserts; it doesn't lecture. The following patterns are HARD-BANNED:
+  - *"X is a counter-example to Y..."*
+  - *"X illustrates that..."*
+  - *"this is the textbook signature of..."*
+  - *"this is the canonical example of..."*
+  - *"to put this in context..."*
+  - *"as a useful frame..."*
+  - *"the framework here is..."*
+  - *"the analytical lens..."*
+
+  When you find yourself writing one of these, you've slipped into didactic mode. Just state the claim directly. Replace *"Norges Bank is a counter-example to the Riksbank's hike-resumption thesis"* with *"Norges Bank cut while the Riksbank held — that gap is the trade."* Same information, half the words, no lecture.
 
 **Content authority: you have it (within bounds).** Unlike pure style audits, you CAN:
 - Cut INSIGHTS themes that aren't truly high-impact (recurring flow commentary, generic macro wallpaper, single-bank technicals that won't move positioning).
@@ -1353,7 +1388,12 @@ Target 3-6 INSIGHTS themes (after Pass A culling, the count is what it is — do
 
 **Pass A.5 — data density check.** Each surviving theme body must have at least 3 concrete data points (specific number with attribution, specific level/percentile, specific positioning data, specific dissent count, specific ticker with conviction, named bank attribution). If a theme body reads like a generic summary ("revenue growth is strong," "yields are rising," "positioning is improving"), go back to the news block + earnings calendar + the draft's own references and pull the specific numbers.
 
-**Pass A.5b — data-dump test (anti-data-dump, BINDING).** Density is a floor, not a goal. Walk every sentence in each theme body. For each sentence, ask: *"is this sentence making the call, supporting it with mechanism, raising the counter, defending against the counter, or closing with positioning?"* Stats without an argument attached — sentences that just list a number or fact with no reason WHY the reader should care — are filler and must be CUT or merged into a sentence that has an argument.
+**Pass A.5b — data-dump test (anti-data-dump, BINDING).** Density is a floor, not a goal. Hard ceilings to apply:
+
+- **At most ~6 distinct numerical data points per theme body.** Past six, every additional number is more likely to read as data dumping than as supporting argument. If your theme body has 8+ numbers in 200-300 words, you're listing data, not arguing.
+- **At most 3 distinct bank names per theme body** (re-stated from the editorial source rules above — also enforced as part of the data-dump check).
+
+Walk every sentence in each theme body. For each sentence, ask: *"is this sentence making the call, supporting it with mechanism, raising the counter, defending against the counter, or closing with the trade idea?"* Stats without an argument attached — sentences that just list a number or fact with no reason WHY the reader should care — are filler and must be CUT or merged into a sentence that has an argument.
 
 Failure mode this catches: theme bodies that read like a string of bullet-shaped facts in prose form ("Goldman raised X to $751B. UBS sees Y at $900B by 2027. Anthropic hit $30B annualized revenue. SpaceX/Colossus partnership announced. Datadog +31% afterhours."). Each sentence is a fact; none of them argue anything. The reader sees data but learns nothing.
 

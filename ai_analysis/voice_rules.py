@@ -76,6 +76,22 @@ BANNED_META_NARRATION = [
     "research suggests",
     "the corpus shows",
     "multiple banks converge",
+    # Italicized-punchline / Movement 1 corpus-meta-narration tells —
+    # these describe the SOURCES rather than asserting a view. The
+    # punchline is supposed to be the analyst's call, not a summary of
+    # the disagreement among banks.
+    "banks are debating",
+    "researchers are split",
+    "analysts are split",
+    "there's disagreement over",
+    # Pedagogical / explanatory asides — banker-newsletter asserts;
+    # it doesn't lecture the reader on analytical structure.
+    "is a counter-example",
+    "is the textbook signature",
+    "is the canonical example",
+    "to put this in context",
+    "as a useful frame",
+    "the analytical lens",
 ]
 
 # Source-prefix story-connector pattern: "[Bank] [verb]s that..."
