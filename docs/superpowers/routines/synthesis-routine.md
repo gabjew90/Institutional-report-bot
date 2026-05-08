@@ -411,6 +411,110 @@ Save to `/tmp/draft.md` via Python.
 
 Apply `AUDIT_USER` substitutions and `AUDIT_SYSTEM`. Apply ALL rules. Final readability pass: walk every sentence in INSIGHTS bodies. For any opener of '[Bank] [verb]s that...' (Market Ear says, Mizuho keeps hammering, Goldman's mid-day color, etc.), rewrite. Move the attribution to a parenthetical at sentence end or strip it entirely. Save to `/tmp/final.md`.
 
+## STEP 5.5 — Lint final markdown (deterministic regex scan)
+
+Mechanical check before commit. Catches banned punctuation (em-dash, semicolon outside code), banned vocabulary (filler phrases, AI-cliche verbs, hedging weasels, wrap-up sentences), source-prefix story-connectors (`[Bank] said/notes/flags...`), and meta-narration (`cross-bank consensus`, `N notes flag`, `research suggests`).
+
+```bash
+python3 << 'PYEOF'
+import re, json
+
+md = open('/tmp/final.md').read()
+
+# Strip fenced code blocks before scanning so URL/code semicolons / dashes
+# don't false-positive. INSIGHTS prose has no fenced blocks.
+scan_text = re.sub(r'```.*?```', '', md, flags=re.DOTALL)
+
+issues = []
+def add(line_no, kind, snippet):
+    issues.append({'line': line_no, 'kind': kind, 'snippet': snippet[:80]})
+def line_of(match, text):
+    return text[:match.start()].count('\n') + 1
+
+# Banned punctuation
+for m in re.finditer(r'—', scan_text):  # em-dash
+    add(line_of(m, scan_text), 'em-dash', m.group())
+for m in re.finditer(r';', scan_text):
+    add(line_of(m, scan_text), 'semicolon', m.group())
+
+# Banned vocabulary (word-boundary, case-insensitive)
+banned = [
+    (r"\bit's worth noting\b", "filler"),
+    (r"\bimportantly\b", "filler"),
+    (r"\bnotably\b", "filler"),
+    (r"\binterestingly\b", "filler"),
+    (r"\bmoreover\b", "filler"),
+    (r"\bfurthermore\b", "filler"),
+    (r"\bmeanwhile\b", "filler"),
+    (r"\bthat said\b", "filler"),
+    (r"\bof course\b", "filler"),
+    (r"\bdelve(s|d|ing)?\b", "AI-cliche-verb"),
+    (r"\bnavigate\b", "AI-cliche-verb"),
+    (r"\brobust\b", "AI-cliche-adj"),
+    (r"\bcould potentially\b", "hedge"),
+    (r"\bmay or may not\b", "hedge"),
+    (r"\bit remains to be seen\b", "hedge"),
+    (r"\boverall,\b", "wrap-up"),
+    (r"\bin summary\b", "wrap-up"),
+    (r"\ball told\b", "wrap-up"),
+    (r"\bat the end of the day\b", "wrap-up"),
+    (r"\bdeep dive\b", "AI-tell"),
+    (r"\bunpack\b", "AI-tell"),
+    (r"\bdouble-click\b", "AI-tell"),
+    (r"\bstakeholders\b", "AI-tell"),
+    # Source-prefix story-connectors
+    (r"\b(Goldman|JPMorgan|JPM|Citi|BofA|UBS|RBC|Barclays|Mizuho|TME|Market Ear|ANZ|ING|Cr[eé]dit Agricole|Morgan Stanley|Deutsche Bank|Bernstein|Hartnett)('s)?\s+(says|said|notes|noted|flags|flagged|adds|added|argues|argued|observes|observed|leans on|keeps hammering|pushes|points to|thinks|sees|writes|reports|reported|considers)\b", "source-prefix"),
+    # Meta-narration
+    (r"\bcross-bank consensus\b", "meta-narration"),
+    (r"\b\d+\+? (high-priority )?notes flag\b", "meta-narration"),
+    (r"\bresearch suggests\b", "meta-narration"),
+    (r"\bthe corpus shows\b", "meta-narration"),
+    (r"\bmultiple banks converge\b", "meta-narration"),
+]
+for pat, label in banned:
+    for m in re.finditer(pat, scan_text, re.IGNORECASE):
+        add(line_of(m, scan_text), label, m.group())
+
+# Top-3 theme structural check (soft)
+try:
+    ctx = json.load(open('/tmp/ctx.json'))
+    theme_map = ctx.get('theme_map') or {}
+    if theme_map:
+        ranked = sorted(theme_map.items(), key=lambda kv: -kv[1].get('banks', 0))
+        top3 = [t for t, _ in ranked[:3] if _[0] is None]  # placeholder fix below
+        top3 = [t for t, _ in ranked[:3]]
+        insight_headers = re.findall(r'^###\s+(.+)$', md, re.MULTILINE)
+        header_text = ' '.join(insight_headers).lower()
+        for theme_key in top3:
+            sig_words = [w for w in theme_key.split() if len(w) > 3]
+            if sig_words:
+                hits = sum(1 for w in sig_words if w in header_text)
+                if hits < min(2, len(sig_words)):
+                    add(0, 'top-3-theme-missing', f"top-3 theme '{theme_key}' not in INSIGHTS headers")
+except Exception as e:
+    print(f'[lint] structural check skipped: {e}')
+
+with open('/tmp/lint_report.json', 'w') as f:
+    json.dump(issues, f, indent=1)
+
+print(f"\nLint scan: {len(issues)} issue(s) found")
+if issues:
+    by_kind = {}
+    for i in issues:
+        by_kind[i['kind']] = by_kind.get(i['kind'], 0) + 1
+    print("By kind:")
+    for k, c in sorted(by_kind.items(), key=lambda kv: -kv[1]):
+        print(f"  {c:>3}  {k}")
+    print("\nFirst 20:")
+    for i in issues[:20]:
+        print(f"  L{i['line']:>4}  {i['kind']:<22}  {i['snippet']!r}")
+PYEOF
+```
+
+**If lint reports issues, REWRITE `/tmp/final.md` to fix them, then re-run STEP 5.5.** Iterate until the lint report shows zero high-confidence issues (em-dash, semicolon, banned vocabulary, source-prefix, meta-narration). Soft issues (`top-3-theme-missing`) are advisory — investigate but the pulse can ship if the missing theme genuinely lacks actionable specifics.
+
+The lint is mechanical and trusted. If a flagged pattern legitimately needed to stay (e.g., a verbatim research quote contains "robust"), you may rewrite around it — but do not commit a pulse with `>0` punctuation/banned-vocab issues without explicit justification logged in STEP 7.
+
 ## STEP 6 — Compose with frontmatter and commit BOTH files (PRODUCTION — ALL CHANNELS)
 
 ```bash
@@ -503,6 +607,19 @@ if os.path.exists('/tmp/draft.md'):
     print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
 else:
     print('no /tmp/draft.md — skipping draft commit (DRAFT step did not save it)')
+
+# Commit /tmp/lint_report.json so the issue count + pattern breakdown
+# travels with the pulse. Useful for tracking voice/quality drift over
+# time — a sudden spike in one pattern category is a signal the prompts
+# need tightening.
+if os.path.exists('/tmp/lint_report.json'):
+    lint_path = f'pulse-output/lint/{ts}.json'
+    lint_content = open('/tmp/lint_report.json').read().encode()
+    result = commit(lint_path, lint_content, f'routine: lint report {ts}')
+    print('committed lint:', lint_path)
+    print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+else:
+    print('no /tmp/lint_report.json — skipping lint commit')
 
 print(f'pdf_count: {ctx["pdf_count"]}, output_tokens_est: {output_tokens_est}, target: ALL configured channels (production)')
 PYEOF
