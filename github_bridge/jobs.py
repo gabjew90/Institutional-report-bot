@@ -284,6 +284,20 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         # Parse optional frontmatter for accurate pdf_count + token usage
         meta, markdown = _parse_frontmatter(raw_markdown)
 
+        # Fetch the matching adjudication JSON if the routine produced one.
+        # Returns (None, None) cleanly when absent, so this is a no-op for
+        # pulses produced before the adjudication step was wired into the
+        # routine prompt. Captured here so we can both embed it into the
+        # DailyReport and archive it alongside the pulse markdown later.
+        parsed_adj, raw_adj = _fetch_matching_adjudication(name)
+        if parsed_adj is not None:
+            adj_themes = len(parsed_adj.get("themes", []) or [])
+            adj_discarded = len(parsed_adj.get("discarded_themes", []) or [])
+            log.info(
+                f"Bridge: matched adjudication for {name} — "
+                f"{adj_themes} themes, {adj_discarded} discarded"
+            )
+
         today = date.today().isoformat()
         pdf_count = int(meta.get("pdf_count", 0))
         input_tokens = int(meta.get("input_tokens", 0))
@@ -299,12 +313,20 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             stats["pdf_count"] = pdf_count
         else:
             pdf_count = stats.get("pdf_count", 0)
+        raw_json_payload: dict[str, Any] = {
+            "source": "github_bridge",
+            "pending_file": name,
+            **meta,
+        }
+        if parsed_adj is not None:
+            raw_json_payload["adjudication"] = parsed_adj
+
         report = DailyReport(
             report_date=today,
             report_type="daily",  # routine pulses replace the scheduled Gemini one
             pdf_count=pdf_count,
             markdown_content=markdown,
-            raw_json={"source": "github_bridge", "pending_file": name, **meta},
+            raw_json=raw_json_payload,
             input_tokens=input_tokens,
             output_tokens=output_tokens,
             stats=stats,
