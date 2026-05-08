@@ -1,0 +1,103 @@
+{
+  "pulse_date": "2026-05-08",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex super cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 1,
+        "neutral": 1
+      },
+      "consensus_view": "Most banks see big tech's massive AI spending as still ramping and a key earnings driver, while one shop warns hyperscaler free cash flow could collapse as that spending drains cash.",
+      "facts_agreed": [
+        {
+          "claim": "AI remains a primary driver of earnings and capital spending across big tech and its supply chain.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS",
+            "JPMorgan",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "The AI investment boom will drive a continued shift from buybacks to capex",
+            "AI investment boom will drive a continued shift from buybacks to capex",
+            "The AI theme remains a key driver, with strong results not only among large tech platforms",
+            "The AI theme remains a key driver, with strong results among large tech platforms",
+            "continued business investment in AI could help sustain the recent strength",
+            "The AI investment cycle still appears to be at an early stage."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Sustainability of hyperscaler cash generation through the capex cycle",
+          "banks_for": [
+            "Goldman Sachs",
+            "UniCredit"
+          ],
+          "for_evidence": "The AI investment cycle still appears to be at an early stage.",
+          "banks_against": [
+            "Syz"
+          ],
+          "against_evidence": "Wall Street projects hyperscalers\u2019 free cash flow to fall by over 70%"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "Goldman Sachs",
+          "claim": "2026 hyperscaler capex",
+          "deadline": "2026"
+        },
+        {
+          "bank": "UniCredit",
+          "claim": "Combined 2026 hyperscaler capex",
+          "deadline": "2026"
+        },
+        {
+          "bank": "UniCredit",
+          "claim": "Meta 2026 capex guidance",
+          "deadline": "2026"
+        },
+        {
+          "bank": "UniCredit",
+          "claim": "Alphabet 2026 capex guidance",
+          "deadline": "2026"
+        }
+      ]
+    },
+    {
+      "theme": "rate cut repricing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 0
+      },
+      "consensus_view": "Banks disagree on how fast central banks will cut rates: UBS thinks markets overestimate the chance of tightening, while ING thinks markets are too optimistic about quick cuts because oil-driven inflation could keep rates higher for longer.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "pace of central bank rate cuts",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "markets have exaggerated the risk that central banks will tighten policy",
+          "banks_against": [
+            "ING"
+          ],
+          "against_evidence": "Rates could fall slower than growing optimism suggests"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "UBS",
+          "claim": "Implies two rate cuts in 2H26",
+          "deadline": "2026-12-31"
+        }
+      ]
+    }
+  ],
+  "discarded_themes": []
+}
