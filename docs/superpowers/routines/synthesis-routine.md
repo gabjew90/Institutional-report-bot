@@ -362,7 +362,7 @@ frontmatter = (
     # To smoke-test in #test-channel only: uncomment the next line, push, fire.
     # To return to production (all configured channels): re-comment the next line, push.
     # The bridge worker reads target_channels and filters delivery; absent line = all channels.
-    'target_channels: test-channel\n'
+    # 'target_channels: test-channel\n'
     '---\n\n'
 )
 
