@@ -150,23 +150,12 @@ def _format_pulse_datetime() -> str:
 
 
 def format_report_header_message(report: DailyReport) -> str:
-    """Build the leading Discord message that opens a pulse delivery.
-
-    Sent BEFORE the embeds so the H1 pulse title renders at Discord's
-    full markdown-header size (the largest visible text in the channel —
-    much bigger than embed-title text). Marks the start of the report
-    unambiguously when scrolling Discord.
-
-    Returns a string with `# {title}` (Discord's largest header) — just
-    the title. The date ships as a slim gold embed RIGHT AFTER this
-    leading message (built in format_report_embeds), giving both the
-    large markdown title AND the visual gold-stripe embed marker that
-    used to belong to the old header embed.
+    """Returns empty string — title + date both live inside the gold
+    header embed now (built in format_report_embeds via Discord's markdown-
+    header support in embed descriptions). Kept for API compatibility
+    with the sender's leading_content kwarg.
     """
-    pulse_title, _body = _extract_pulse_title(report.markdown_content or "")
-    if not pulse_title:
-        pulse_title = "Market Pulse"
-    return f"# {pulse_title}"
+    return ""
 
 
 def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
@@ -183,20 +172,19 @@ def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
     """
     embeds: list[discord.Embed] = []
 
-    # Slim date-marker embed: pure visual stripe, gold color matching the
-    # RECAP section. Description carries the full date/time so the visual
-    # marker is also informational. Title left blank — the H1 markdown
-    # leading message above this is the title.
-    date_embed = discord.Embed(
-        description=f"**{_format_pulse_datetime()}**",
+    # Header embed: gold-bordered, contains BOTH the eye-catching title and
+    # the date inside its description. Discord renders `#` and `##` markdown
+    # headers in embed descriptions as large/medium text — so the title gets
+    # big-text treatment AND lives inside the embed (no asymmetry where the
+    # date was embedded but the title wasn't).
+    pulse_title, body_md = _extract_pulse_title(report.markdown_content or "")
+    if not pulse_title:
+        pulse_title = "Market Pulse"
+    header_embed = discord.Embed(
+        description=f"# {pulse_title}\n## {_format_pulse_datetime()}",
         color=0xFFD700,
     )
-    embeds.append(date_embed)
-
-    # Strip the H1 title from the markdown so it doesn't double-render.
-    # The leading message (built by format_report_header_message) already
-    # carries the title; the body sections start fresh.
-    _pulse_title, body_md = _extract_pulse_title(report.markdown_content or "")
+    embeds.append(header_embed)
 
     # Parse markdown into sections and create embeds
     sections = _split_markdown_sections(body_md)
