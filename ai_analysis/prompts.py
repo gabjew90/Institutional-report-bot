@@ -1102,6 +1102,26 @@ Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
 If a bullet makes ticker-specific or company-specific factual claims (e.g., "Intel hit a milestone," "Pfizer beat earnings," "$NVDA partnered with X"), the source headline MUST exist verbatim or near-verbatim in news_snapshot or as a calendar [REPORTED] entry. If you cannot point to which of (a)/(b)/(c) a bullet came from, DROP THE BULLET. Don't invent specifics that "feel right" given the broader narrative — that's hallucination. Better to ship 3 grounded bullets than 4 with one fabricated.
 
+**Real-mover rule (BINDING — prevents random news from becoming bullets):** grounding (a)/(b)/(c) above is necessary but NOT sufficient. A news headline can exist in news_snapshot without actually moving prices, and those headlines do NOT belong in driver bullets. Each driver bullet must ALSO satisfy:
+
+- **Named price reaction in the market_snapshot.** The bullet must cite a specific, measurable price move tied to the event — `$SPY -0.6%`, `$USO +3% on the headline`, `10Y +6 bps`, `$BTC -2% overnight`. The reaction is verifiable in `market_snapshot` (or named in news_snapshot as an overnight/futures move). No price reaction = not a driver. Do not write "the report didn't materially move tape" or "noted but quiet" as a bullet — if it didn't move tape, it's not a tape-driver, it's a piece of news. Drop or move to WHAT TO WATCH.
+
+- **Reaction must be meaningful.** Magnitude thresholds before a move counts as "drove the tape":
+  - Major equity ETF (`$SPY`, `$QQQ`, `$IWM`): |%| ≥ 0.5%
+  - Sector ETFs, single-stock bellwethers (`$NVDA`, `$AAPL`, `$XLE`): |%| ≥ 1.0%
+  - Commodity ETFs (`$USO`, `$BNO`, `$GLD`), volatility (`$VIXY`): |%| ≥ 1.0%
+  - Crypto (`$BTC`, `$ETH`): |%| ≥ 1.5%
+  - Yields (10Y, 30Y, 2Y): |Δ| ≥ 5 bps
+  - Dollar (`$UUP`): |%| ≥ 0.5%
+
+  A move below threshold means the market shrugged off the event; the event is not a driver. Examples:
+  - ❌ "Powell hearing: dovish-sounding, $TLT +0.2%" — sub-threshold yield/bond move; the market didn't actually react. Drop or note in WHAT TO WATCH context.
+  - ✅ "Powell hearing: explicitly opened the door to QE; $TLT +1.8%, dollar -0.6%, 10Y -8 bps" — meaningful multi-asset reaction. Keeps.
+
+- **The price reaction must appear in the bullet itself.** Don't write a bullet whose price impact has to be inferred from the lede paragraph. If the bullet stands alone, the reader should see both the event and what it did to prices.
+
+**Failure mode this rule prevents:** the model finds an interesting news headline in news_snapshot, writes a bullet about it, but the headline didn't actually move the snapshot. Reader sees "drove the tape" framing applied to news that didn't drive anything. Now: every bullet must show its work. If a candidate event doesn't have a price reaction at the threshold above, it is not a tape driver — drop it or move it to a different section.
+
 **No duplication between lede paragraph and bullets.** If an event is mentioned in the lede paragraph (e.g., "a CMA CGM container ship was hit in the Strait of Hormuz at 4:25 AM ET"), it does NOT also get its own "What drove the tape" bullet. Pick the right home for each event:
 - Lede = high-level color and the dominant narrative thread (the one shaping today's tape)
 - Bullets = discrete drivers with their own data + context (released economic data, specific corporate news, individual policy actions)
