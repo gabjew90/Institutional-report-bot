@@ -965,7 +965,9 @@ DRAFT_USER = """TODAY IS {today}. CURRENT TIME IS {now} ET.
 **HOW TO USE THE THEME COVERAGE BLOCK (binding — no exceptions):**
 - The bank counts above are computed by keyword scan over the corpus, not your judgment. Treat them as ground truth.
 - **MANDATORY:** the TOP 3 themes by bank count MUST appear as INSIGHTS, in order, leading with the highest. There is NO conviction-disqualification escape for themes with 10+ banks behind them — those are dominant cross-bank consensus and they ship regardless. The "Live 5 basket call from one bank" pattern is exactly what NOT to do — a 1-bank theme cannot displace a 30-bank theme.
-- The 4th and 5th INSIGHTS (you should produce 4-6 themes total) come from: (a) themes with 5+ banks below the top 3, OR (b) single-topic dedicated catalysts where there's a hard event hook (M&A on an S&P 100 name, MAG7 earnings reaction, FDA decision on a specific ticker, regulatory deadline). These are the ONLY two paths into INSIGHTS for sub-5-bank themes.
+- The 4th, 5th, and 6th INSIGHTS (variable count — produce **3 to 6 themes total** based on what the corpus actually supports today) come from: (a) themes with 5+ banks below the top 3, OR (b) single-topic dedicated catalysts where there's a hard event hook (M&A on an S&P 100 name, MAG7 earnings reaction, FDA decision on a specific ticker, regulatory deadline). These are the ONLY two paths into INSIGHTS for sub-5-bank themes.
+
+**SHIP 3 STRONG THEMES OVER 5 PADDED ONES.** If today's corpus has only 3 themes with real conviction (multi-bank consensus or hard catalyst), ship 3. Don't reach for a fourth that's a single-bank stretch just because "the structure says 4-6". A weak theme #4 dilutes the strong themes #1-3 and trains the reader to skim. On heavy-news days the count goes higher (6 if there are genuinely 6 strong threads); on quiet days it stays at 3.
 - A theme with 1-2 banks AND no hard event hook (e.g., a single bank's basket idea, a single desk's positioning view) gets CUT — does not appear in INSIGHTS no matter how analytically interesting it is. That's a single-source niche call.
 - If you find yourself omitting one of the top 3 themes, stop and reconsider — you are wrong unless that theme genuinely has zero actionable specifics. "Hormuz isn't actionable for US traders" is wrong (oil ETFs, energy sector, yield differentials all flow from it). "Rate repricing isn't actionable" is wrong ($TLT, $UUP, $SPY duration sensitivity all flow from it).
 
@@ -1025,6 +1027,25 @@ Each pulse is fully standalone. Do NOT reference previous pulses or compare to y
 
 **Theme coherence (binding — most-failed pattern in QC):** every sentence in a theme body must directly serve that theme's central thesis. If the theme is "Apple's foundry pivot," every sentence should advance the Apple foundry story — not pivot to unrelated $AMD upgrades, $PLTR price targets, or $SMCI ratings, even if they're "all AI." A trader reading the section should be able to summarize the theme in one sentence.
 
+**Anti-editorial-assertion (binding):** state the data, not the verdict. Sentences that pose as analysis but are actually editorial assertions disguised as observation are banned. Examples of the failure mode:
+
+- ❌ *"The market is trading the headline. The inventory data isn't."* (verdict on what the market is doing — restate as the actual observation)
+- ✅ *"API crude draw of 8.1mb vs 2.8mb consensus while front-month Brent fell $10 on the MoU headlines."* (same point, no verdict)
+- ❌ *"Investors are clearly mispricing this risk."* (claim about investor psychology — no data)
+- ✅ *"5-year breakevens at 2.8% versus 10-year at 2.5% — the curve hasn't repriced for a sustained energy shock yet."* (let the data carry the inversion-of-expectations point)
+
+The reader can draw the conclusion from data. Predigested verdicts are the same fabrication risk as invented dates — the writer is asserting what the market means, not what it says.
+
+**Pair-trade and relative-value sizing (binding):** any "long X vs short Y" or "long X over Y" or "X over Y" relative-value call requires either (a) explicit position-sizing relative to typical spread distribution, or (b) a specific invalidation level for the dislocation thesis. Calls without either read sophisticated but aren't actionable — the daily noise in most pair spreads dominates a thesis-driven move on any given day.
+
+- ❌ *"Long $BNO over $USO to capture the physical-vs-paper dislocation."* (the $BNO/$USO spread on any given day is mostly contango/roll noise — a real pairs trade needs sizing or invalidation)
+- ✅ *"Long $BNO outright at $35 ahead of next week's API report; the $BNO/$USO spread isn't the trade because the daily roll noise dominates."* (drops the relative-value framing in favor of an outright)
+- ✅ *"Long $BNO over $USO sized to a 1.5σ widening of the spread, with a 30-day window before the trade is closed."* (kept the relative-value framing but added sizing/horizon)
+- ❌ *"$XLE over $XLP for the energy-sector rotation."* (sector pairs without sizing — daily noise dominates)
+- ✅ *"$XLE outright on the $80 Brent floor — sector pairs are too noisy for a daily-pulse signal."* (drops relative-value framing)
+
+If the corpus doesn't supply sizing or invalidation for a relative-value call, write the outright instead. Don't dress up "long X" as "long X vs Y" just because it sounds more sophisticated.
+
 **Hard test: write the theme's central claim in one sentence first** (mentally or out loud). Then for every sentence in the body, ask: "does this sentence support that claim?" If no → cut it. If a fact is interesting but doesn't fit the theme, save it for a different theme or drop it entirely.
 
 **Bull/bear coherence:** both sides must be about the SAME thesis. If the bull case is "Apple's foundry split lifts $INTC for years," the bear case is "the Apple deal slips or comes in smaller than leaked" — NOT "Goldman has a Sell on $SMCI" (different stock, different story). Don't pad the bear case with unrelated negative calls.
@@ -1039,7 +1060,9 @@ Each pulse is fully standalone. Do NOT reference previous pulses or compare to y
 
 If you find yourself writing "but a separate angle is..." or "on a different note..." mid-theme, you've broken coherence. Either commit to one theme or split into two themes.
 
-**Each INSIGHT is 200-300 words of flowing prose, structured like a financial analyst defending a research call to skeptical portfolio managers.** This framing is THE LOAD-BEARING RULE for INSIGHTS — every other instruction in this section flows from it. Five visible movements that mirror how a real analyst presents to a PM committee: the call, the evidence, the anticipated pushback, the defense, the recommendation.
+**Each INSIGHT is ~140-180 words of flowing prose, structured like a financial analyst defending a research call to skeptical portfolio managers.** This framing is THE LOAD-BEARING RULE for INSIGHTS — every other instruction in this section flows from it. Five visible movements that mirror how a real analyst presents to a PM committee: the call, the evidence, the anticipated pushback, the defense, the recommendation.
+
+The 140-180 word target is the daily-product cap. The structure stays — five movements, mechanism explanation, bull/bear, positioning close — but each movement is tighter. Movement 2 (evidence) is 3-4 bullets + ONE mechanism sentence (not 2-3). Movement 4 (defense) is 1-2 sentences (not 2-3). The reader gets the same arc, fewer words.
 
 **Defense-frame test (BINDING — re-anchor before writing each theme):** before writing a single sentence of a theme body, name the call you're defending in one short sentence to yourself. Then every data point, every name-drop, every level you cite is in service of that defense — supporting the call, raising the smartest counter, or addressing the counter. **Data exists to argue something. If you find yourself listing facts in prose form ("Goldman raised X. UBS sees Y. Anthropic hit Z."), the framing has collapsed and you've slipped into data-dump mode.** Stop, restate the call, and rewrite each fact as a sentence that does work — what does this number MEAN for the call you're defending?
 
@@ -1087,7 +1110,7 @@ Example (the actual rendered output):
 - ECB hike for June priced at 99% probability, so the rate-differential lift the dollar usually gets is absent
 ```
 
-**Part B — Mechanism paragraph (2-3 sentences) that argues from the bullets.** Don't repeat the numbers. Explain the mechanism. Why is this happening? How does it transmit?
+**Part B — Mechanism sentence (1, occasionally 2) that argues from the bullets.** Don't repeat the numbers. Explain the mechanism — why is this happening, how does it transmit. ONE sentence is the target; two only when the mechanism genuinely needs a second clause to land. The bullets ARE the data; the mechanism is the synthesis. If you find yourself writing a 3rd sentence, you're either restating bullets or padding.
 
 Example after the bullets:
 > *"Three forces are pulling yields higher at once. Oil-driven inflation is feeding core CPI on the standard 3-month lag, fresh Treasury supply is hitting the long end, and a Fed that cannot credibly cut into a 3.9% headline print has lost the option of jawboning the curve lower. $UUP cannot catch a sustained bid because the rate-differential lift the dollar usually gets is moving the other way."*
@@ -1112,7 +1135,7 @@ AVOID *"The bull case for X..."* unless your main call is explicitly bearish. AV
 
 State the strongest counter-argument honestly, with specific data or a named risk factor. Don't strawman it. Steelman it.
 
-**Movement 4 — THE DEFENSE (2-3 sentences).** This is where the analyst shows they've thought through the counter and pushes back with specific data. Acknowledge the counter's strength, then defend with named data or a specific level/event that addresses it.
+**Movement 4 — THE DEFENSE (1-2 sentences).** This is where the analyst shows they've thought through the counter and pushes back with specific data. Acknowledge the counter's strength briefly, then defend with named data or a specific level/event that addresses it. One sentence is the target if the counter is sharp; two when the defense genuinely needs a setup-then-rebut structure.
 
 **Do NOT lean on enumerated transition phrases** like *"That risk is real, but..."* / *"Even granting that..."* / *"Where we disagree...."* — these were listed as examples in earlier versions of this prompt and the model latched onto one as the default opener for every theme's defense. Same template-default failure mode as "the cleanest read" / "the pushback we would anticipate." HARD-BANNED as a class.
 
@@ -1278,7 +1301,26 @@ For each event: date, time if known, BMO/AMC for earnings, and a "how to react" 
 
 ---
 
-**Target length ~1800-2200 words.** RECAP tight (placeholder + 1 paragraph). INSIGHTS carries the depth — each theme is a real 200-300 word analytical unit, not a headline. WHAT TO WATCH stays concise bullets.
+**Target length ~800-1100 words. Brevity is the goal but NOT at the cost of teaching.**
+
+Total budget: RECAP placeholder + ~1 short paragraph. INSIGHTS carries the depth — each theme is ~140-180 words. WHAT TO WATCH stays concise bullets.
+
+**The cut list — these reduce word count without losing value:**
+- *Prose connectors that restate the prior sentence* ("This means that..." / "What this tells us is..." / "In other words..." — cut, the reader already got it)
+- *Bullet-then-prose-paragraph-restating-the-bullet* — pick one, not both. If the bullet has the data, the prose argues from a NEW angle. If the prose carries the data, drop the bullet.
+- *Transitional sentences that don't carry information* ("Looking at the bigger picture...", "Stepping back...", "It's also important to note...")
+- *Hedging weasel phrases* ("could potentially," "may or may not," "remains to be seen")
+- *Generic wrap-up sentences* ("Overall...", "All told...", "At the end of the day...")
+- *Restating the theme header in the punchline*
+
+**The keep list — these are load-bearing teaching, do NOT cut to hit word count:**
+- *Mechanism explanations* — when a sentence explains WHY a market is moving (not just THAT it's moving), keep it. The reader is learning, not just being told.
+- *Plain-English translation of jargon* — if you used a technical term, the translation is mandatory inline. Don't drop the translation to save words.
+- *Specific numbers with attribution* — these are the spine of the analysis. Removing them turns the pulse into vibes.
+- *Bull/pushback/defense structure* — single-sided takes are weaker than acknowledged-and-rebutted takes. The counter and defense earn their words.
+- *The "because" reasoning* — when a sentence says X because Y, keep it. Telegram-style "long $TLT" without the because is short, but it's not the product.
+
+If the rewrite is shorter but harder to follow, you've cut the wrong stuff. Comprehension on first read is the constraint, not word count itself.
 
 **Critical:** output ONLY the markdown pulse. No preamble, no disclaimers, no "Sourced from N reports" tags. Stage 2 will handle those.
 """
