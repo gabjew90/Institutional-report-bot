@@ -95,6 +95,20 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=120,
         )
 
+    # Opus-bridge HIGH ingestion (only registers when backend=opus_bridge AND
+    # GITHUB_TOKEN is set). Job is a no-op otherwise — see opus_bridge_enabled().
+    from github_bridge.ingestion import opus_bridge_enabled
+    if opus_bridge_enabled():
+        scheduler.add_job(
+            _bridge_dump_high_ingestion_job,
+            trigger=IntervalTrigger(minutes=5),
+            id="bridge_dump_high_ingestion",
+            name="Opus bridge: dump pending HIGH ingestions",
+            max_instances=1,
+            misfire_grace_time=300,
+        )
+        log.info("Opus-bridge HIGH ingestion: dump job registered (every 5 min)")
+
     log.info(
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
@@ -157,3 +171,17 @@ async def _ingest_feed_tick_job(bot=None):
         await announce_next_pending(bot=bot)
     except Exception as e:
         log.error(f"Ingestion feed tick failed: {e}", exc_info=True)
+
+
+async def _bridge_dump_high_ingestion_job():
+    """Scheduled job: package pending HIGH PDFs to the GitHub bridge.
+
+    Sync function wrapped in asyncio.to_thread because it does blocking
+    I/O (urllib calls to GitHub API + local PDF reads).
+    """
+    import asyncio
+    try:
+        from github_bridge.ingestion import dump_pending_high_ingestions_job
+        await asyncio.to_thread(dump_pending_high_ingestions_job)
+    except Exception as e:
+        log.error(f"Bridge HIGH-ingestion dump failed: {e}", exc_info=True)

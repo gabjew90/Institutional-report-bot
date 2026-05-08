@@ -124,7 +124,7 @@ def list_dir(path: str, ref: str | None = None) -> list[dict]:
 
 
 def put_file(path: str, content: str, message: str, ref: str | None = None) -> dict:
-    """Create or update a file. Encodes content as base64 internally."""
+    """Create or update a TEXT file. Encodes content as utf-8 base64 internally."""
     branch = ref or settings.github_bridge_branch
     body: dict[str, Any] = {
         "message": message,
@@ -132,6 +132,20 @@ def put_file(path: str, content: str, message: str, ref: str | None = None) -> d
         "branch": branch,
     }
     # If the file exists, GitHub requires the current sha for updates.
+    existing = get_file(path, ref=branch)
+    if existing and "sha" in existing:
+        body["sha"] = existing["sha"]
+    return _request("PUT", _repo_path(path), body=body)
+
+
+def put_file_binary(path: str, data: bytes, message: str, ref: str | None = None) -> dict:
+    """Create or update a BINARY file (PDFs, images). Base64-encodes raw bytes."""
+    branch = ref or settings.github_bridge_branch
+    body: dict[str, Any] = {
+        "message": message,
+        "content": base64.b64encode(data).decode("ascii"),
+        "branch": branch,
+    }
     existing = get_file(path, ref=branch)
     if existing and "sha" in existing:
         body["sha"] = existing["sha"]

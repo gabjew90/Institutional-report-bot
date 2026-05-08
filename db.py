@@ -123,6 +123,8 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             committed_at TEXT,
             completed_at TEXT,
             bridge_filename TEXT,
+            bridge_commit_sha TEXT,
+            attempt_count INTEGER NOT NULL DEFAULT 0,
             error_message TEXT,
             fallback_reason TEXT,
             FOREIGN KEY (pdf_file_id) REFERENCES pdf_files(id)
@@ -130,6 +132,18 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_bridge_status ON bridge_ingestion_state(status);
         CREATE INDEX IF NOT EXISTS idx_bridge_queued_at ON bridge_ingestion_state(queued_at);
     """)
+    # Idempotent migrations for already-deployed bridge_ingestion_state schemas
+    # (the table was first created in step 1 without these columns).
+    for col, ddl in [
+        ("bridge_commit_sha", "ALTER TABLE bridge_ingestion_state ADD COLUMN bridge_commit_sha TEXT"),
+        ("attempt_count", "ALTER TABLE bridge_ingestion_state ADD COLUMN attempt_count INTEGER NOT NULL DEFAULT 0"),
+    ]:
+        try:
+            conn.execute(ddl)
+        except sqlite3.OperationalError as e:
+            # "duplicate column name" = already migrated, ignore
+            if "duplicate column" not in str(e).lower():
+                raise
     conn.commit()
 
 
@@ -614,8 +628,10 @@ def update_bridge_status(
     pdf_file_id: int,
     status: str,
     bridge_filename: str | None = None,
+    bridge_commit_sha: str | None = None,
     error_message: str | None = None,
     fallback_reason: str | None = None,
+    increment_attempt: bool = False,
 ) -> None:
     """Update a bridge state row. Auto-stamps committed_at/completed_at by status."""
     conn = get_connection()
@@ -629,12 +645,17 @@ def update_bridge_status(
     if bridge_filename is not None:
         sets.append("bridge_filename = ?")
         params.append(bridge_filename)
+    if bridge_commit_sha is not None:
+        sets.append("bridge_commit_sha = ?")
+        params.append(bridge_commit_sha)
     if error_message is not None:
         sets.append("error_message = ?")
         params.append(error_message[:500])
     if fallback_reason is not None:
         sets.append("fallback_reason = ?")
         params.append(fallback_reason[:200])
+    if increment_attempt:
+        sets.append("attempt_count = attempt_count + 1")
     params.append(int(pdf_file_id))
     conn.execute(
         f"UPDATE bridge_ingestion_state SET {', '.join(sets)} WHERE pdf_file_id = ?",
@@ -658,7 +679,7 @@ def get_pending_bridge_pdfs(limit: int = 50) -> list[dict]:
     return [dict(r) for r in rows]
 
 
-def get_committed_bridge_pdfs() -> list[dict]:
+def get_committed_bridge_pdfs(limit: int = 100) -> list[dict]:
     """Rows committed to the bridge but not yet processed by the Opus routine.
 
     Used by the pull job (to check for completed results) and by the
@@ -669,7 +690,29 @@ def get_committed_bridge_pdfs() -> list[dict]:
            FROM bridge_ingestion_state b
            JOIN pdf_files pf ON pf.id = b.pdf_file_id
            WHERE b.status = 'committed'
-           ORDER BY b.committed_at ASC"""
+           ORDER BY b.committed_at ASC
+           LIMIT ?""",
+        (int(limit),),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_fallback_bridge_pdfs(limit: int = 100) -> list[dict]:
+    """Rows marked fallback_to_gemini but not yet completed via Gemini.
+
+    Used by the fallback sweeper to actually run Gemini deep-analysis on
+    PDFs that hit guardrails or routine failures. After Gemini succeeds,
+    the row is updated to status='completed'.
+    """
+    rows = get_connection().execute(
+        """SELECT b.*, pf.file_name, pf.dropbox_path, pf.local_path,
+                  pf.dropbox_modified_at, pf.file_size_bytes
+           FROM bridge_ingestion_state b
+           JOIN pdf_files pf ON pf.id = b.pdf_file_id
+           WHERE b.status = 'fallback_to_gemini'
+           ORDER BY b.queued_at ASC
+           LIMIT ?""",
+        (int(limit),),
     ).fetchall()
     return [dict(r) for r in rows]
 
@@ -677,18 +720,24 @@ def get_committed_bridge_pdfs() -> list[dict]:
 def count_bridge_outcomes_since(cutoff_iso: str) -> dict:
     """Count bridge-ingestion outcomes since a given ISO timestamp.
 
-    Used by /status to surface bridge health (attempts, completed via Opus,
+    Used by /status to surface bridge health (attempted, completed via Opus,
     fell back to Gemini, hard failures).
+
+    Normalizes the cutoff to T-format so it lexically compares correctly
+    against queued_at (which is written by SQLite's datetime('now') in
+    space-separator format). See _normalize_ts() docstring for the full
+    landmine writeup.
     """
+    cutoff = _normalize_ts(cutoff_iso) or cutoff_iso
     rows = get_connection().execute(
         """SELECT status, COUNT(*) AS n
            FROM bridge_ingestion_state
            WHERE queued_at > ?
            GROUP BY status""",
-        (cutoff_iso,),
+        (cutoff,),
     ).fetchall()
     out = {
-        "attempted": 0,
+        "total": 0,
         "pending": 0,
         "committed": 0,
         "completed": 0,
@@ -700,7 +749,7 @@ def count_bridge_outcomes_since(cutoff_iso: str) -> dict:
         n = int(r["n"])
         if s in out:
             out[s] = n
-        out["attempted"] += n
+        out["total"] += n
     return out
 
 
