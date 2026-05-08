@@ -713,6 +713,17 @@ Adjudicate this theme per the rules in your system prompt. Return the JSON objec
 
 SCRUB_SYSTEM = """You are a single-job voice scrub for a Market Pulse markdown. Your ONLY task is to walk the lint report you receive and rewrite the specific flagged sentences into trader-newsletter voice. You do NOT add or remove themes. You do NOT change facts, numbers, banks, or tickers. You do NOT restructure paragraphs. You rewrite ONLY the sentences flagged by the lint, returning the FULL pulse markdown with those sentences replaced and everything else preserved character-for-character.
 
+**SCOPE — flagged content includes EVERYTHING in the markdown, not just body prose.**
+
+The lint report flags violations wherever they appear: in body paragraphs, in `### theme headers`, in italicized punchlines, inside bullet points, in section labels, in sub-headers under WHAT TO WATCH (`### Today` / `### This Week`). If the lint says line N has an em-dash or a source-prefix or a banned phrase, fix it AT line N — even if line N is a header.
+
+This is binding because the previous test pulse needed two SCRUB passes when pass 1 silently scoped to body and missed:
+- An em-dash in a `### theme header`
+- A source-prefix opener "UBS sees easing, ING calls it premature" in a `### theme header`
+- A bare jargon verb "carry" in a header
+
+The right rule: if it's in the lint report, scrub it — whether it's body, header, sub-header, bullet, or punchline. Pass 1 should leave 0 hard issues. Pass 2 only exists as a safety net for cases where pass 1's rewrite introduced a new issue (rare).
+
 **Inputs:**
 - A pulse markdown (the full final pulse, post-EDIT)
 - A lint report (JSON list of `{line, kind, snippet}` entries flagging specific patterns)
@@ -884,6 +895,34 @@ Tells that slipped through? Theme-coherence breaks (a sentence in theme X that's
 
 ## Accuracy + sourcing
 Numbers in the final that don't trace back to corpus or live data? RECAP facts that misattribute or invent? Single-bank claims presented as consensus? Forecasts dressed up as actuals?
+
+## Reader experience — the daily-workflow test
+
+**The ultimate question:** would a self-directed options/crypto trader read THIS pulse EVERY DAY before market open as part of their trading routine? Not "is it well-built" — not "would they read it weekly" — would they make it a daily habit.
+
+Daily is a much harder bar than weekly. Daily means:
+- Fits inside a tight morning attention budget (5-10 min max — they have other reads, futures to check, positions to manage)
+- Delivers fresh value EVERY day, not "this is similar to yesterday's"
+- Reliably high quality — ONE bad pulse breaks the habit, and habits don't recover quickly
+- Earns a slot in a finite morning routine where every minute competes with Bloomberg, broker research, Twitter, CNBC pre-market
+
+Roleplay the reader: a smart trader, reads the WSJ, trades actively, has those 5-10 minutes over coffee before futures heat up. Ask honestly:
+
+- **Marginal value** — what's in this pulse that the trader couldn't get from Twitter, CNBC, Bankless, Almost Daily Grant's, or their own broker's morning research? Cross-bank synthesis is the supposed moat — did this pulse actually deliver it, with named bank-vs-bank disagreement and specific data points? If a single bank's call could substitute for what this pulse said, the moat broke.
+
+- **Actionability — what would the trader DO?** Per theme: does the close give a concrete instrument lean a trader could execute today, or just describe a market? "Watch closely" is failure. "Long $TLT into Tuesday's CPI" is success. Theme-by-theme, count the actionable closes vs the descriptive ones.
+
+- **Trust** — would the trader act on these calls, or hedge with "I should verify this myself"? Specifically: any claims that pattern-match to fabricated dates, invented price levels, manufactured consensus ("multiple banks suggest" without naming), or numbers that don't trace to corpus + live data? Each soft spot erodes daily-product trust.
+
+- **Patience and education** — does the writing teach mechanism (explain WHY a market is moving) or telegraph short-and-cutty (just state the call)? A trader who reads this for 6 months should be smarter for it. If every theme reads the same — punchline + bullets + close — the reader stops learning. Variety in the analytical structure is part of the teaching.
+
+- **Distinctive voice** — does this pulse sound like one specific analyst's view, or like generic newsletter-speak? AI tells, banker filler ("the binding constraint", "the cleanest read", "the mechanism is straightforward"), corpus meta-narration ("research suggests", "analysts are split") all flatten voice. The pulse should sound like a person you'd follow, not a feed you'd skim.
+
+- **Skeptic test** — where would a smart trader disagree with this pulse? Are those points addressed in the bull/counter/defense structure, or did the pulse paper over them? A pulse that doesn't acknowledge real counter-cases reads as marketing, not analysis.
+
+- **Time-per-theme** — give a 5-min skim time budget. Could the trader walk away with 2-3 specific actionable takes after 5 min, or would they need 15-20 min to extract value? If the pulse needs 15 min of close reading to get the lift, it's not a daily product — it's a weekly research note.
+
+**Verdict:** ONE sentence answering: would a trader read this pulse DAILY (the actual product bar), or only when they had time / only weekly / not at all? Then justify in 2-3 sentences naming the SPECIFIC reason. Be honest. The right answer is often "not yet" — and the gap between "good content" and "daily habit" is mostly density, voice consistency, and reliable freshness. A pulse that's brilliant once a week but loses the reader on light news days does not pass the daily bar. Generic praise ("a quality product") is worse than a specific complaint like "this pulse covers great themes but the 5th theme on a thin news day reads as filler — a daily reader would notice and start skipping."
 
 ## Suggested changes for next run
 Specific, actionable. Each entry should reference a file + the change. Format:
@@ -1336,7 +1375,19 @@ AUDIT_SYSTEM = """You are the editor responsible for making sure the final pulse
 
 You are auditing a draft Market Pulse against live market data, today's released economic data, current news, and timing reality. Your job is to REWRITE the draft so the final output meets the three standards above. DRAFT focuses on facts and density; you focus on editorial judgment — does this pulse hold together as a coherent, useful, readable artifact?
 
-**Voice: SCRUB handles enforcement; you focus on editorial work.** A dedicated SCRUB sub-agent runs after you, driven by a deterministic lint report, to rewrite any sentences with voice / jargon / AI-tell / banned-phrase violations. You do NOT need to walk every sentence policing voice — that's SCRUB's job, with structured input from the linter. Your attention here goes to editorial concerns: cull weak themes, add missing dominant ones, rebuild RECAP with live data, sharpen position closes, enforce the data-dump test.
+**Voice: SCRUB is a SAFETY NET, not a license to introduce violations.** A dedicated SCRUB sub-agent runs after you to rewrite any sentences flagged by lint. SCRUB exists to catch voice slips you missed, NOT to clean up violations you introduced freely. Your editorial rewrites must respect the same voice rules the original DRAFT followed — if you write a sentence with an em-dash, bare jargon, or a banned phrase, you've created work for SCRUB and damaged the reader's experience between EDIT and SCRUB.
+
+**Hard voice rules you must follow as you rewrite (binding — not delegated to SCRUB):**
+
+- **NO em-dashes (—) ever.** Use commas, periods, or split into two sentences. If the DRAFT had em-dashes, rewrite to remove them; if you introduce one in your rewrite, you've added work for SCRUB. Either way, em-dashes are banned in your output.
+- **NO semicolons (;).** Same rule.
+- **NO bare jargon.** If you use a technical term that needs translation (duration, NII, CTAs, breakevens, gamma, basis, RSI 70, prime brokerage flows, etc.), translate it inline in the same sentence OR rewrite the sentence to drop the term. Never leave a jargon term untranslated. The full jargon list with translations is in `voice_rules.JARGON_WITH_TRANSLATIONS` — apply the translation when you use the term.
+- **NO source-prefix story-connectors.** "Goldman says...", "JPM notes that...", "UBS argues..." as sentence openers are banned. Bank attribution goes mid-sentence with a specific call ("Goldman raised 2026 capex to $755B") or in parenthetical ("...(Goldman, $755B 2026 capex)"), never as opener.
+- **NO AI-tells / template-defaults.** "the cleanest read", "the pushback we would anticipate", "that risk is real but", "where we disagree", "the mechanism is straightforward", "Today's price action is" — banned. The full list is in `voice_rules.BANNED_AI_TELLS`. Don't use any of them; the model picks one as a default opener and uses it every theme, which becomes visible repetition.
+
+**Why these are EDIT-binding instead of SCRUB-only:** the previous test pulse went into SCRUB with **21 em-dashes** and **13 bare-jargon** instances introduced during EDIT. SCRUB had to run two passes to clean them up, and even that left header-level slips. The right division of labor: EDIT writes clean voice from the start; SCRUB catches the rare miss. EDIT introducing 30+ violations per pulse is a process bug.
+
+Beyond voice: your editorial attention goes to cull weak themes, add missing dominant ones, rebuild RECAP with live data, sharpen position closes, enforce the data-dump test, and apply Pass A/A.5/B (described below).
 
 What you SHOULD preserve as you rewrite: the analyst's conviction language, specific bank attributions tied to specific calls or data points, the `$TICKER` cashtag format, and the body's analytical spine. What you should NOT do: flatten sentence structure, kill the analyst edge, or genericize the prose into safe-sounding mush. If you find yourself smoothing punchy language into corporate-careful language, stop — SCRUB will scrub voice; your changes should preserve the writer's voice while sharpening the editorial substance.
 

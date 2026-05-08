@@ -482,9 +482,44 @@ def norm(s: str) -> str:
     t = re.sub(r'\s+', ' ', t).strip()
     return t
 
+# Phase A's embedding clustering produces canonical labels (`theme_map`
+# keys) that may merge MULTIPLE raw stance labels into one cluster.
+# Without the normalization map, this loop would only match stances
+# whose normalized tag exactly equals a cluster key — losing every
+# stance whose raw label was a cluster member but not the canonical
+# itself. The 2026-05-08T22-50-50Z run hit this: the 8-bank "AI
+# hyperscaler capex" cluster matched only 1 stance because 7 banks'
+# raw labels (e.g. "AI capex", "hyperscaler buyback collapse",
+# "AI infrastructure spending") all merged into one canonical key.
+#
+# Fix: build a reverse lookup `norm(stance.theme) → canonical_cluster_label`
+# from the theme_normalization map the synthesizer surfaced. Match by
+# resolving stance.theme through this map FIRST, then comparing to the
+# theme_name we're collecting inputs for.
+norm_to_canonical = (ctx.get('theme_normalization') or {}).get('norm_to_canonical') or {}
+
+def stance_belongs_to(stance_theme: str, theme_name: str) -> bool:
+    """Return True if a raw stance label maps to the same canonical
+    cluster as `theme_name`. Falls back to direct normalized equality
+    when the normalization map is empty (older context dumps that
+    pre-date the theme_normalization field — keeps the routine
+    backward-compatible)."""
+    sn = norm(stance_theme)
+    tn = norm(theme_name)
+    if not sn or not tn:
+        return False
+    if sn == tn:
+        return True
+    # Resolve through cluster map: stance might be a cluster member
+    # whose canonical label equals theme_name.
+    canonical_for_stance = norm_to_canonical.get(sn)
+    canonical_for_theme = norm_to_canonical.get(tn, tn)
+    if canonical_for_stance and canonical_for_stance == canonical_for_theme:
+        return True
+    return False
+
 inputs_per_theme = {}
 for theme_name, info in selected:
-    tn = norm(theme_name)
     theme_stances = []
     tension_points = []
     key_data_points = []
@@ -494,7 +529,7 @@ for theme_name, info in selected:
         src = a.get('source') or 'Unknown'
         contributed = False
         for ts in a.get('theme_stances', []) or []:
-            if norm(ts.get('theme')) == tn:
+            if stance_belongs_to(ts.get('theme', ''), theme_name):
                 theme_stances.append({
                     'source': src,
                     'theme': ts.get('theme'),
@@ -507,7 +542,7 @@ for theme_name, info in selected:
                 })
                 contributed = True
         for tp in a.get('tensions', []) or []:
-            if norm(tp.get('theme')) == tn:
+            if stance_belongs_to(tp.get('theme', ''), theme_name):
                 tension_points.append({
                     'source': src,
                     'theme': tp.get('theme'),

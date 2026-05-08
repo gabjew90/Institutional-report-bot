@@ -69,6 +69,7 @@ def _normalize_theme_tag(tag: str) -> str:
 def _classify_themes(
     analyses: list[PdfAnalysis],
     discovery_audit: dict | None = None,
+    theme_normalization: dict | None = None,
 ) -> dict[str, dict]:
     """Aggregate organic theme stances extracted at deep-analysis time.
 
@@ -161,6 +162,18 @@ def _classify_themes(
     #   clusters: list of cluster member lists (audit log)
     clustering_input = {tag: tag_arguments.get(tag, "") for tag in tag_sources}
     orig_to_canonical, _clusters = cluster_themes(clustering_input)
+
+    # Surface the normalization map for downstream consumers (routine
+    # adjudication step). Without this the routine has no way to match
+    # raw `theme_stances.theme` labels to the canonical cluster keys
+    # produced by Phase A — leading to silent stance loss when multiple
+    # raw labels merged into one canonical (e.g., 8-bank "AI hyperscaler
+    # capex" theme dropping to 1 stance because 7 of 8 raw labels were
+    # different strings that all merged to the same canonical key).
+    if theme_normalization is not None:
+        # Map: NORMALIZED_TAG -> CANONICAL_CLUSTER_LABEL
+        # Routine workflow: stance.theme → _normalize_theme_tag → lookup → canonical
+        theme_normalization["norm_to_canonical"] = dict(orig_to_canonical)
 
     # Apply mapping. Tags that didn't make it through the embedding step
     # (degenerate inputs) fall back to identity.
@@ -501,7 +514,12 @@ def build_pulse_context(
         ticker_block = "TICKER LOOKUP: (none extracted — use only tickers that clearly appear in the research text)"
 
     discovery_audit: dict = {}
-    theme_map = _classify_themes(analyses, discovery_audit=discovery_audit)
+    theme_normalization: dict = {}
+    theme_map = _classify_themes(
+        analyses,
+        discovery_audit=discovery_audit,
+        theme_normalization=theme_normalization,
+    )
     theme_coverage_block = _format_theme_coverage(theme_map)
 
     # Each pulse is fully standalone now. We no longer compute prev-pulse
@@ -544,6 +562,14 @@ def build_pulse_context(
         # with reason="covered" or "thin"). Routine's QC step uses this
         # to assess whether discovery thresholds are tuned correctly.
         "discovery_audit": discovery_audit,
+        # Phase-A normalization map: NORMALIZED_TAG -> CANONICAL_CLUSTER_LABEL.
+        # Required by the routine's adjudication step to correctly match
+        # raw `theme_stances.theme` labels to the canonical cluster keys
+        # in `theme_map`. Without this the routine's `norm()` helper would
+        # only match stances whose normalized tag exactly equals a cluster
+        # key — losing 7 of 8 stances on the heaviest theme this run because
+        # raw labels had merged into one canonical via embedding clustering.
+        "theme_normalization": theme_normalization,
     }
 
 
