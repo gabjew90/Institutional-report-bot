@@ -202,13 +202,29 @@ def _classify_themes(
     # theme. Stance is `neutral` for all mentioning banks — contextual
     # mentions don't carry a directional view.
     contextual_triples: list[tuple[str, str, int]] = []
+    pdfs_with_mentions = 0
     for a in analyses:
         bank = (a.source or "Unknown").strip()
         pdf_id = a.pdf_file_id
-        for cm in a.contextual_mentions or []:
-            cm = (cm or "").strip()
-            if cm:
-                contextual_triples.append((cm, bank, pdf_id))
+        cms = [cm.strip() for cm in (a.contextual_mentions or []) if cm and cm.strip()]
+        if cms:
+            pdfs_with_mentions += 1
+        for cm in cms:
+            contextual_triples.append((cm, bank, pdf_id))
+
+    # Always populate the audit with structured state so downstream QC can
+    # distinguish "Phase B ran and found nothing" from "Phase B got skipped".
+    # Empty `promoted`/`near_miss` lists are unambiguous; the supplementary
+    # fields explain WHY they're empty (no contextual_mentions in corpus,
+    # no Phase-A themes to cover-check against, etc.).
+    if discovery_audit is not None:
+        discovery_audit["phase_b_ran"] = False
+        discovery_audit["promoted"] = []
+        discovery_audit["near_miss"] = []
+        discovery_audit["pdfs_in_window"] = len(analyses)
+        discovery_audit["pdfs_with_contextual_mentions"] = pdfs_with_mentions
+        discovery_audit["total_mentions"] = len(contextual_triples)
+        discovery_audit["phase_a_theme_count"] = len(theme_map)
 
     if contextual_triples and theme_map:
         covered_labels = list(theme_map.keys())
@@ -216,6 +232,7 @@ def _classify_themes(
             contextual_triples, covered_labels,
         )
         if discovery_audit is not None:
+            discovery_audit["phase_b_ran"] = True
             discovery_audit["promoted"] = promoted
             discovery_audit["near_miss"] = near_miss
         for d in promoted:

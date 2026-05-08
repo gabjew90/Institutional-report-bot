@@ -75,6 +75,19 @@ BANNED_AI_TELLS = [
     "that risk is real, but",
     "even granting that",
     "where we disagree",
+    # Stock-explanatory transition tells — the writer uses these to
+    # introduce a mechanism explanation, but they're flat banker-newsletter
+    # filler. SCRUB caught these in the 2026-05-08 test run; LINT missed
+    # them.
+    "the mechanism is straightforward",
+    "the mechanism here is",
+    "the dynamic is straightforward",
+    "the dynamic here is",
+    # Generic opener tells that show up at the start of multiple bullets
+    # in the same RECAP. Detected duplicate "Today's price action" usage
+    # in the 2026-05-08 run — banning the bare opener forces variety.
+    "Today's price action",
+    "Today's tape",
 ]
 
 BANNED_META_NARRATION = [
@@ -180,7 +193,16 @@ JARGON_WITH_TRANSLATIONS: dict[str, str] = {
     "issuance": "new supply of bonds (or stock)",
     "NII": "interest income banks earn from loans",
     "bps": "hundredths of a percent",
-    "CTAs": "trend-following computer funds that buy when markets rise and sell when they fall",
+    # Short self-defining translation. The previous 13-word version
+    # ("trend-following computer funds that buy when markets rise and sell
+    # when they fall") was correct but broke prose rhythm when SCRUB
+    # substituted it inline — "any catalyst forces selling on top of
+    # trend-following computer funds that buy when markets rise and sell
+    # when they fall and retail can't absorb both" is unreadable. The
+    # parenthetical "(CTAs)" preserves the acronym so the second mention
+    # in the same theme reads naturally; reader gets the explanation once
+    # without needing the long phrase repeatedly.
+    "CTAs": "systematic trend-followers (CTAs)",
     "RSI 70": "the market is technically overheated, like a rubber band stretched too far",
     "short gamma": "dealers are on the hook to buy more the higher the market goes",
     "term structure normalized": "the panic has faded",

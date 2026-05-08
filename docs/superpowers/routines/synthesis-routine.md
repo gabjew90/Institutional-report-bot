@@ -1236,6 +1236,54 @@ def _sz(s: str) -> str:
         return '?'
     return f"{len(s)} chars / {s.count(chr(10)) + 1} lines"
 
+def _extract_numbers(text: str) -> set[str]:
+    """Extract numeric tokens worth fact-checking. Filters to financial
+    units (dollar amounts, percentages, basis points, year-like 4-digit
+    numbers) since those are the high-leverage hallucination targets.
+    Skips short integers (1, 2, 3) and decimal-only floats which are
+    too generic to track.
+    """
+    import re as _re
+    patterns = [
+        r'\$[\d,]+\.?\d*[BMKbmk]?',          # $755B, $1.8B, $1,234
+        r'[+-]?\d+\.?\d*\s*%',                # +5%, -0.3%, 4.4 %
+        r'\d+\s*bp[s]?\b',                    # 50bps, 25 bp
+        r'\b\d{4,}\b',                        # 4+ digit numbers (years, levels like 5800)
+        r'\d+\.\d+x\b',                       # multiples like 0.3x, 5.4x
+    ]
+    out: set[str] = set()
+    for p in patterns:
+        out.update(m.strip() for m in _re.findall(p, text))
+    return out
+
+def _edit_introduced_numbers() -> tuple[list[str], int]:
+    """Return (new_numbers_in_final, count_explained_by_live_data).
+
+    Compares post-SCRUB final.md against the EDIT input (stitched.md) and
+    the live-data context (market/news/calendars). Any number in final
+    that isn't in EITHER is flagged as "EDIT-introduced, unverified" —
+    candidate hallucination, worth checking against the corpus.
+    """
+    stitched = _read_or('/tmp/stitched.md', '')
+    final = _read_or('/tmp/final.md', '')
+    if not stitched or not final:
+        return [], 0
+    stitched_nums = _extract_numbers(stitched)
+    final_nums = _extract_numbers(final)
+    # Live-data sources EDIT is allowed to pull from
+    live_blob = '\n'.join([
+        ctx.get('market_snapshot') or '',
+        ctx.get('news_snapshot') or '',
+        ctx.get('economic_calendar') or '',
+        ctx.get('earnings_calendar') or '',
+        ctx.get('analyses_json') or '',  # corpus contents — analyst-cited numbers
+    ])
+    live_nums = _extract_numbers(live_blob)
+    new_in_final = final_nums - stitched_nums
+    explained = new_in_final & live_nums
+    unverified = sorted(new_in_final - live_nums)
+    return unverified, len(explained)
+
 # Adjudication: count dispatched and outcome
 n_dispatched = len(adj_file.get('themes', []) or []) + len(discarded)
 adj_themes_list = ', '.join(
@@ -1276,6 +1324,21 @@ if scrub_ran:
   - Input  (pre-SCRUB / EDIT output): {_sz(post_edit_md)}
   - Output (post-SCRUB / final):      {_sz(final_md)}
   - Lint issues input:  {len(lint_report)} total (capped at {len(lint_summary)} in this view)"""
+
+# EDIT-introduced numbers (fact-provenance check). Numbers in final.md that
+# weren't in stitched.md or in the live-data context. Each entry is a
+# candidate hallucination worth verifying.
+unverified_numbers, explained_count = _edit_introduced_numbers()
+handoffs_summary += f"""
+
+EDIT FACT-PROVENANCE CHECK:
+  - Numbers introduced by EDIT/SCRUB after stitched.md: {len(unverified_numbers) + explained_count} total
+  - Explained by live-data context (market/news/calendar/corpus): {explained_count}
+  - UNVERIFIED (not in stitched.md, not in live data — candidate hallucinations): {len(unverified_numbers)}"""
+if unverified_numbers:
+    handoffs_summary += "\n  - Unverified tokens: " + ", ".join(unverified_numbers[:20])
+    if len(unverified_numbers) > 20:
+        handoffs_summary += f", ... +{len(unverified_numbers) - 20} more"
 
 # Use the SAME timestamp the pulse was committed under so the QC review
 # filename pairs cleanly with the pulse markdown filename.
