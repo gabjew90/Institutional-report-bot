@@ -69,6 +69,12 @@ BANNED_AI_TELLS = [
     "the pushback we'd anticipate",
     "pushback we would anticipate",
     "pushback we'd anticipate",
+    # Movement-4 defense template tells — same failure mode. The prompt
+    # used to list these as defense-transition examples; model picks
+    # one as default. Banned to force theme-specific defenses.
+    "that risk is real, but",
+    "even granting that",
+    "where we disagree",
 ]
 
 BANNED_META_NARRATION = [

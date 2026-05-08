@@ -975,7 +975,18 @@ AVOID *"The bull case for X..."* unless your main call is explicitly bearish. AV
 
 State the strongest counter-argument honestly, with specific data or a named risk factor. Don't strawman it. Steelman it.
 
-**Movement 4 — THE DEFENSE (2-3 sentences).** This is where the analyst shows they've thought through the counter. Acknowledge the strength of the pushback, then defend: *"That risk is real, but...,"* / *"Even granting that...,"* / *"Where we disagree...."* Bring named data or a specific level/event that addresses the counter. This is the rigor that distinguishes analysis from a tip.
+**Movement 4 — THE DEFENSE (2-3 sentences).** This is where the analyst shows they've thought through the counter and pushes back with specific data. Acknowledge the counter's strength, then defend with named data or a specific level/event that addresses it.
+
+**Do NOT lean on enumerated transition phrases** like *"That risk is real, but..."* / *"Even granting that..."* / *"Where we disagree...."* — these were listed as examples in earlier versions of this prompt and the model latched onto one as the default opener for every theme's defense. Same template-default failure mode as "the cleanest read" / "the pushback we would anticipate." HARD-BANNED as a class.
+
+Write the defense using **theme-specific words** — start with the actual content of your counter to this theme, not a generic transition. Examples (vary per theme; the pattern is "use this theme's concrete data to push back," not a template):
+
+- *"That's true through next earnings, but the picks-and-shovels names — Applied Materials and Tokyo Electron — are sold out into 2027, so the cycle has further to run before any guide-down lands."*
+- *"The $TLT case here doesn't depend on the Fed cutting; it depends on the Fed not having to defend yields above 5%, and the auction calendar makes that the binding constraint."*
+- *"The Brent thesis survives a 6-week ceasefire but not a sustained one — refined-fuel inventories at 8-year lows say the supply hole takes months to refill regardless of headlines."*
+- *"The bear case requires Anthropic's two enterprise customers to renegotiate, which would have signaled in the last earnings cycle and didn't."*
+
+Each theme's defense leads with the SPECIFIC counter being addressed, not a generic acknowledge-and-rebut transition.
 
 **Movement 5 — THE POSITIONING HINT (ONE sentence, integrated into the same paragraph as Movements 3-4).** Close with a brief positioning view: what the setup leans toward for someone with US options/crypto exposure, with the cleanest instrument expression named in passing. ONE sentence is the target. Do NOT include a specific invalidation level or "risk" line — that lives in the bull/bear analysis above and the formal trade calls (in a future TRADE PLAYBOOK section), not in the insight close. Plain English. NO `**Trade Implication:**` header, NO `Hint:` label, NO bullet, NO "Why:" / "Risk:" structure. Just one sentence woven into the paragraph's close.
 
@@ -998,7 +1009,7 @@ Each theme's positioning sentence should differ in WORDS, not just structure. If
 - *Movement 1:* opens with the call (italicized/bolded).
 - *Movement 2:* methodical evidence prose, 3+ specific data points.
 - *Movement 3:* counter-argument written in theme-specific words (avoid the templated "The pushback we would anticipate is..." opener — varied per theme).
-- *Movement 4:* defense transition phrase ("That risk is real, but..." / "Even granting that...").
+- *Movement 4:* defense written in theme-specific words (avoid enumerated transitions like "That risk is real, but..." — use the actual content of the counter being rebutted).
 - *Movement 5:* positioning close integrated, named instrument. Invalidation/confirmation level only if it traces verbatim to research's `tension_points.what_invalidates` or a specific level cited in the corpus — otherwise OMIT, do not invent.
 
 **What to avoid:** "data dump" prose where every sentence is a stat without an argument. The data exists to support the call; the call is the spine. If a sentence isn't either making the call, supporting it, raising the counter, defending against the counter, or closing with positioning — cut it.
