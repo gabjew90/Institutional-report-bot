@@ -1,0 +1,102 @@
+{
+  "pulse_date": "2026-05-08",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex super-cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 0,
+        "neutral": 1
+      },
+      "consensus_view": "Banks broadly agree the AI infrastructure spending boom is a durable earnings driver, with hyperscalers shifting cash from share buybacks to massive capex on AI compute.",
+      "facts_agreed": [
+        {
+          "claim": "AI is a key driver of earnings growth across large tech and the broader supply chain.",
+          "banks_for": [
+            "UBS",
+            "The Market Ear",
+            "Barclays"
+          ],
+          "evidence_quotes": [
+            "The AI theme remains a key driver, with strong results not only among large tech platforms",
+            "The AI theme remains a key driver, with strong results among large tech platforms",
+            "Strong results validate the AI capex theme and push individual stocks higher"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {
+          "bank": "Goldman Sachs",
+          "claim": "2026 AI hyperscaler capex",
+          "deadline": "2026"
+        },
+        {
+          "bank": "The Market Ear",
+          "claim": "2026 US tech firm capex estimate",
+          "deadline": "2026"
+        },
+        {
+          "bank": "Goldman Sachs",
+          "claim": "Hyperscaler buyback reduction",
+          "deadline": "1Q 2026"
+        }
+      ]
+    },
+    {
+      "theme": "rate cut repricing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 3,
+        "neutral": 0
+      },
+      "consensus_view": "Most banks think markets are too optimistic about how fast the Fed will cut rates, with only UBS arguing the tightening fears are overblown.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "pace of Fed rate cuts",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "markets have exaggerated the risk that central banks will tighten policy",
+          "banks_against": [
+            "ING",
+            "The Market Ear",
+            "TS Lombard"
+          ],
+          "against_evidence": "Rates could fall slower than growing optimism suggests"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "UBS",
+          "claim": "Implies two rate cuts in 2H26",
+          "deadline": "2026-12"
+        }
+      ]
+    },
+    {
+      "theme": "hormuz peace deal",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 0
+      },
+      "consensus_view": "Diplomatic cycles around a Strait of Hormuz peace deal have repeatedly rallied risk and pushed crude lower on announcement before fading as substance fails to appear.",
+      "facts_agreed": [],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {
+          "bank": "SEB",
+          "claim": "Polymarket probability of Strait of Hormuz normalization",
+          "deadline": "By end of June"
+        }
+      ]
+    }
+  ],
+  "discarded_themes": []
+}
