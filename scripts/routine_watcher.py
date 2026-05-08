@@ -80,16 +80,27 @@ def _list_dir(path: str) -> set[str]:
 def _latest_progress_event() -> tuple[str, str] | None:
     """Return (ts_filename, last_event_step) for the newest progress file,
     or None if no progress files exist.
+
+    Uses the GitHub Contents API (not raw.githubusercontent.com) because
+    raw URLs have a 5-min HTTP cache that causes stale reads — the
+    watcher would bounce between progress states ("STEP_5_LINT_DONE"
+    flickering back to "STEP_3_5_DONE" because the raw cache returned an
+    older version of the file). Contents API returns fresh data on every
+    call.
     """
     files = _list_dir("pulse-output/progress")
     if not files:
         return None
     latest = sorted(files)[-1]  # ts-named, lexical sort = chronological
-    url = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/pulse-output/progress/{latest}"
+    url = f"https://api.github.com/repos/{REPO}/contents/pulse-output/progress/{latest}?ref={BRANCH}"
     try:
         req = urllib.request.Request(url, headers=_auth_headers())
         with urllib.request.urlopen(req, timeout=10) as resp:
-            data = json.load(resp)
+            file_meta = json.load(resp)
+        # Contents API returns base64-encoded content; decode it.
+        import base64
+        raw_content = base64.b64decode(file_meta.get("content", "")).decode("utf-8")
+        data = json.loads(raw_content)
         events = data.get("events") or []
         if not events:
             return latest, "(file empty)"
