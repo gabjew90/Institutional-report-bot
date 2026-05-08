@@ -1,0 +1,88 @@
+{
+  "pulse_date": "2026-05-08",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex super cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Banks agree the AI infrastructure spending boom is still driving earnings and stock gains across chipmakers, big tech, and the broader supply chain.",
+      "facts_agreed": [
+        {
+          "claim": "AI is a primary driver of earnings growth across large tech platforms and the wider supply chain.",
+          "banks_for": [
+            "UBS",
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "The AI theme remains a key driver, with strong results not only among large tech platforms",
+            "The AI theme remains a key driver, with strong results among large tech platforms",
+            "Strong results validate the AI capex theme and push individual stocks higher",
+            "every part of the supply chain gets bought"
+          ]
+        },
+        {
+          "claim": "Pullbacks in AI-linked names have historically been buying opportunities rather than trend reversals.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Historically, these aggressive momentum unwinds have served as opportunities to buy the dip",
+            "finance our new AI related Long ideas"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "rate cut repricing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 2,
+        "neutral": 0
+      },
+      "consensus_view": "Banks disagree on whether the Fed will actually deliver rate cuts soon, with the bond market pricing the Fed staying on hold while UBS thinks markets are overpricing the risk of tighter policy.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "near-term Fed rate cut path",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "markets have exaggerated the risk that central banks will tighten policy",
+          "banks_against": [
+            "The Market Ear",
+            "TS Lombard"
+          ],
+          "against_evidence": "bond market is so spooked that it’s pricing the Federal Reserve to stay on hold"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "UBS",
+          "claim": "Federal funds rate Dec 2026 forecast",
+          "deadline": "2026-12-31"
+        },
+        {
+          "bank": "UBS",
+          "claim": "10Y Treasury yield Dec 2026 forecast",
+          "deadline": "2026-12-31"
+        }
+      ]
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "hormuz peace deal",
+      "reason": "after Rule 5/6 filtering, theme has no remaining content (single-bank facts dropped, bad deadlines dropped)"
+    }
+  ]
+}
