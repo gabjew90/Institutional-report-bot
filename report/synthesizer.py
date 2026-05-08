@@ -19,7 +19,7 @@ from report.news_data import (
     fetch_news_snapshot, fetch_earnings_calendar, fetch_economic_calendar,
 )
 from report.models import DailyReport
-from report.theme_clusterer import cluster_themes
+from report.theme_clusterer import cluster_themes, discover_uncovered_clusters
 from config import settings
 import db
 
@@ -66,7 +66,10 @@ def _normalize_theme_tag(tag: str) -> str:
     return t
 
 
-def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
+def _classify_themes(
+    analyses: list[PdfAnalysis],
+    discovery_audit: dict | None = None,
+) -> dict[str, dict]:
     """Aggregate organic theme stances extracted at deep-analysis time.
 
     Each analysis carries 1-3 `theme_stances` (theme + stance + conviction +
@@ -75,9 +78,21 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
     clustering (`report.theme_clusterer`) to merge near-duplicate themes
     across banks — replacing the prior anchor-list + substring-match merge.
 
+    Two-phase classifier:
+        Phase A: cluster theme_stances (per-PDF primary themes) into
+            cross-bank theme groups.
+        Phase B: cluster contextual_mentions (per-PDF secondary mentions
+            in risk_factors, geopolitical, macro_indicators, etc.) and
+            promote any cluster that's NOT semantically covered by a
+            Phase-A theme AND spans ≥3 distinct banks. This catches
+            distributed-mention topics (e.g., "US strikes on Iranian
+            targets" mentioned in many PDFs as context but never tagged
+            as a primary theme by any single bank).
+
     Returns {theme_name: {
         "banks": int, "pdfs": int, "sources": list[str],
         "supportive": int, "skeptical": int, "neutral": int,
+        "discovered": bool,  # True for Phase-B promoted themes
     }}.
 
     Stance counts are BANK-DEDUPLICATED. A bank with N supportive PDFs
@@ -89,7 +104,14 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
 
     Backward-compat: PDFs whose deep analysis predates this schema will have
     theme_stances populated from legacy theme_tags during deserialization
-    (stance defaults to neutral for those).
+    (stance defaults to neutral for those). PDFs without contextual_mentions
+    contribute zero to Phase B (empty list default).
+
+    Args:
+        analyses: window of per-PDF analyses.
+        discovery_audit: optional dict the caller provides; mutated to
+            carry Phase-B audit data (promoted clusters + near-misses)
+            for downstream archiving / QC review. Pass None to skip.
     """
     # Per-tag accumulators
     tag_sources: dict[str, set[str]] = {}                            # tag -> banks discussing it
@@ -160,7 +182,7 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
             + tag_pdf_count.get(orig_tag, 0)
         )
 
-    return {
+    theme_map: dict[str, dict] = {
         tag: {
             "banks": len(srcs),
             "pdfs": canonical_pdf_count.get(tag, 0),
@@ -168,17 +190,68 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
             "supportive": len(canonical_stance_banks.get(tag, {}).get("supportive", set())),
             "skeptical": len(canonical_stance_banks.get(tag, {}).get("skeptical", set())),
             "neutral": len(canonical_stance_banks.get(tag, {}).get("neutral", set())),
+            "discovered": False,
         }
         for tag, srcs in merged_sources.items()
     }
 
+    # Phase B — corpus-level discovery.
+    # Collect contextual_mentions tagged with bank + pdf_id. Cluster against
+    # the canonical labels emitted by Phase A; any cluster not semantically
+    # covered AND spanning ≥3 distinct banks gets promoted to a discovered
+    # theme. Stance is `neutral` for all mentioning banks — contextual
+    # mentions don't carry a directional view.
+    contextual_triples: list[tuple[str, str, int]] = []
+    for a in analyses:
+        bank = (a.source or "Unknown").strip()
+        pdf_id = a.pdf_file_id
+        for cm in a.contextual_mentions or []:
+            cm = (cm or "").strip()
+            if cm:
+                contextual_triples.append((cm, bank, pdf_id))
+
+    if contextual_triples and theme_map:
+        covered_labels = list(theme_map.keys())
+        promoted, near_miss = discover_uncovered_clusters(
+            contextual_triples, covered_labels,
+        )
+        if discovery_audit is not None:
+            discovery_audit["promoted"] = promoted
+            discovery_audit["near_miss"] = near_miss
+        for d in promoted:
+            label = d["canonical"]
+            # Avoid label collision with a Phase-A theme. Suffix on collision
+            # (rare — discovery clusters are by definition not semantically
+            # close to Phase-A themes, so label collision implies the LLM
+            # canonical label happened to match an existing Phase-A label).
+            if label in theme_map:
+                label = f"{label} (discovered)"
+            banks_set = set(d["banks"])
+            theme_map[label] = {
+                "banks": len(banks_set),
+                "pdfs": len(d["pdf_ids"]),
+                "sources": sorted(banks_set),
+                "supportive": 0,
+                "skeptical": 0,
+                "neutral": len(banks_set),
+                "discovered": True,
+            }
+
+    return theme_map
+
 
 def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
-    """Render theme counts as a forcing-function block for the DRAFT prompt."""
-    lines = [
-        "THEME COVERAGE — distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):",
-    ]
-    # Sort by bank count desc, then pdf count desc, drop themes with 0 banks
+    """Render theme counts as a forcing-function block for the DRAFT prompt.
+
+    Two sections — primary themes (Phase-A theme_stance clusters) and
+    discovered themes (Phase-B contextual-mention clusters that no bank
+    promoted to a primary stance but ≥3 banks discussed). The writer
+    should treat discovered themes carefully: heavy contextual presence
+    in the corpus, but no bank made them a thesis.
+    """
+    primary_lines: list[str] = []
+    discovered_lines: list[str] = []
+
     ranked = sorted(
         theme_map.items(),
         key=lambda kv: (-kv[1]["banks"], -kv[1]["pdfs"], kv[0]),
@@ -194,18 +267,33 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
         sup = info.get("supportive", 0)
         skp = info.get("skeptical", 0)
         neu = info.get("neutral", 0)
-        # Only show stance breakdown when at least one directional vote exists
         if sup or skp:
             stance_str = f" — stance: {sup} support / {skp} skeptical / {neu} neutral"
         else:
             stance_str = ""
-        lines.append(
+        row = (
             f"  - {theme}: {info['banks']} banks / {info['pdfs']} PDFs "
             f"({srcs_str}){stance_str}"
         )
-    if len(lines) == 1:
-        lines.append("  (no themes matched any pattern — corpus may be unusually narrow today)")
-    return "\n".join(lines)
+        if info.get("discovered"):
+            discovered_lines.append(row)
+        else:
+            primary_lines.append(row)
+
+    out: list[str] = [
+        "THEME COVERAGE — distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):",
+    ]
+    if primary_lines:
+        out.extend(primary_lines)
+    else:
+        out.append("  (no primary themes — corpus may be unusually narrow today)")
+    if discovered_lines:
+        out.append("")
+        out.append(
+            "DISCOVERED THEMES — heavily mentioned in research as context (risk_factors, geopolitical, macro interpretation) but no single bank promoted them to a primary thesis. Treat as live topics worth surfacing, but do NOT claim consensus stance — the banks discussed these without arguing direction:"
+        )
+        out.extend(discovered_lines)
+    return "\n".join(out)
 
 
 def _build_ticker_map(analyses: list[PdfAnalysis]) -> dict[str, dict]:

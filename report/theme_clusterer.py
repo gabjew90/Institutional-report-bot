@@ -162,6 +162,169 @@ def _pick_canonical_label(
     return max(cluster, key=len)
 
 
+def discover_uncovered_clusters(
+    mentions: list[tuple[str, str, int]],
+    covered_labels: list[str],
+    threshold: float = _DEFAULT_THRESHOLD,
+    min_banks: int = 3,
+) -> tuple[list[dict], list[dict]]:
+    """Cluster contextual mentions and surface ones not covered by existing themes.
+
+    The corpus-level discovery layer. Per-PDF extraction surfaces topics
+    contextually (in risk_factors, geopolitical, macro_indicators, etc.)
+    that no single bank promoted to a primary theme_stance. Across many
+    PDFs, those mentions can cluster into a topic that's heavily discussed
+    but invisible to the theme-stance classifier — the "Iran strikes" miss.
+
+    Args:
+        mentions: list of (mention_string, bank_name, pdf_file_id) tuples.
+            Multiple mentions per PDF are fine; we dedup at the cluster level.
+        covered_labels: canonical theme labels already produced by the
+            theme_stance clustering pass. Used to skip clusters whose topic
+            is already in the theme map.
+        threshold: cosine similarity above which two mentions cluster
+            together AND above which a new cluster is considered "covered"
+            by an existing theme label.
+        min_banks: minimum distinct banks for a cluster to be promoted.
+            Below this, the cluster is held in the audit log but not
+            surfaced to synthesis.
+
+    Returns:
+        (promoted, near_miss):
+            promoted: list of dicts with shape:
+                {
+                    "canonical": str,        # LLM-picked label
+                    "banks": list[str],      # sorted distinct banks
+                    "pdf_ids": list[int],    # distinct pdf ids
+                    "members": list[str],    # the mention strings
+                    "max_covered_sim": float,# closeness to existing themes
+                }
+            near_miss: clusters that didn't promote (audit log).
+                Same shape plus a "reason" field (e.g., "covered", "thin").
+
+        Both lists are stable for archiving in the QC review.
+    """
+    if not mentions:
+        return [], []
+
+    # Dedup mention strings (one entry per unique string), but track all the
+    # banks / pdf_ids that contributed to it. Different PDFs can mention the
+    # same exact phrase and we want one embedding for it.
+    string_to_banks: dict[str, set[str]] = {}
+    string_to_pdf_ids: dict[str, set[int]] = {}
+    for mention, bank, pdf_id in mentions:
+        m = mention.strip()
+        if not m or len(m) < 4:
+            continue
+        string_to_banks.setdefault(m, set()).add(bank)
+        string_to_pdf_ids.setdefault(m, set()).add(int(pdf_id))
+
+    if not string_to_banks:
+        return [], []
+
+    try:
+        client = genai.Client(api_key=settings.google_api_key)
+    except Exception as e:
+        log.error(f"genai client init failed for discovery: {e} — skipping")
+        return [], []
+
+    unique_strings = list(string_to_banks.keys())
+    all_to_embed = unique_strings + list(covered_labels)
+    embeddings_by_input = _embed_strings(client, all_to_embed)
+    if not embeddings_by_input:
+        return [], []
+
+    mention_embeddings = {s: embeddings_by_input[s] for s in unique_strings if s in embeddings_by_input}
+    covered_embeddings = [embeddings_by_input[c] for c in covered_labels if c in embeddings_by_input]
+
+    raw_clusters = _greedy_agglomerative(mention_embeddings, threshold)
+
+    # Compute centroid per cluster (mean of member vectors).
+    cluster_centroids: list[list[float]] = []
+    for c in raw_clusters:
+        vectors = [mention_embeddings[m] for m in c if m in mention_embeddings]
+        if not vectors:
+            cluster_centroids.append([])
+            continue
+        dim = len(vectors[0])
+        centroid = [sum(v[i] for v in vectors) / len(vectors) for i in range(dim)]
+        cluster_centroids.append(centroid)
+
+    # Per-cluster decision: covered? thin? promotable?
+    decisions: list[dict] = []
+    for cluster, centroid in zip(raw_clusters, cluster_centroids):
+        banks: set[str] = set()
+        pdf_ids: set[int] = set()
+        for m in cluster:
+            banks |= string_to_banks.get(m, set())
+            pdf_ids |= string_to_pdf_ids.get(m, set())
+        max_sim = 0.0
+        for cv in covered_embeddings:
+            if not cv or not centroid:
+                continue
+            s = _cosine(centroid, cv)
+            if s > max_sim:
+                max_sim = s
+        decisions.append({
+            "members": cluster,
+            "banks": sorted(banks),
+            "pdf_ids": sorted(pdf_ids),
+            "max_covered_sim": round(max_sim, 4),
+            "n_banks": len(banks),
+        })
+
+    # Filter: covered (close to an existing theme) → near_miss with reason
+    # "covered". Thin (below min_banks) → near_miss with reason "thin".
+    # Otherwise promote.
+    promoted_raw: list[dict] = []
+    near_miss: list[dict] = []
+    for d in decisions:
+        if d["max_covered_sim"] >= threshold:
+            d["reason"] = "covered"
+            near_miss.append(d)
+        elif d["n_banks"] < min_banks:
+            d["reason"] = "thin"
+            near_miss.append(d)
+        else:
+            promoted_raw.append(d)
+
+    if not promoted_raw:
+        return [], near_miss
+
+    # LLM canonical labels for promoted clusters only.
+    contexts = {m: m for m in unique_strings}  # strings are already self-contextualized
+    labels: list[str] = [""] * len(promoted_raw)
+    with ThreadPoolExecutor(max_workers=_LABEL_PARALLELISM) as pool:
+        future_to_idx = {
+            pool.submit(_pick_canonical_label, client, d["members"], contexts): i
+            for i, d in enumerate(promoted_raw)
+        }
+        for future in as_completed(future_to_idx):
+            idx = future_to_idx[future]
+            try:
+                labels[idx] = future.result()
+            except Exception as e:
+                log.warning(f"Discovery label task {idx} failed: {e}")
+                labels[idx] = max(promoted_raw[idx]["members"], key=len)
+
+    promoted = []
+    for d, label in zip(promoted_raw, labels):
+        promoted.append({
+            "canonical": label or max(d["members"], key=len),
+            "banks": d["banks"],
+            "pdf_ids": d["pdf_ids"],
+            "members": d["members"],
+            "max_covered_sim": d["max_covered_sim"],
+        })
+
+    log.info(
+        f"discovery: {len(unique_strings)} mentions → "
+        f"{len(raw_clusters)} clusters → {len(promoted)} promoted, "
+        f"{len(near_miss)} near-miss"
+    )
+    return promoted, near_miss
+
+
 def cluster_themes(
     tags_with_context: dict[str, str],
     threshold: float = _DEFAULT_THRESHOLD,
