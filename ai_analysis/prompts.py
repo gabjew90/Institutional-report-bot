@@ -875,7 +875,7 @@ Avoid "The cleanest read..." unless it's been at least 2-3 themes since you last
 - *Movement 2:* methodical evidence prose, 3+ specific data points.
 - *Movement 3:* clean transition phrase ("The bull case..." / "The pushback..." / "Skeptics would argue...").
 - *Movement 4:* defense transition phrase ("That risk is real, but..." / "Even granting that...").
-- *Movement 5:* positioning close integrated, named instrument, specific invalidation.
+- *Movement 5:* positioning close integrated, named instrument. Invalidation/confirmation level only if it traces verbatim to research's `tension_points.what_invalidates` or a specific level cited in the corpus — otherwise OMIT, do not invent.
 
 **What to avoid:** "data dump" prose where every sentence is a stat without an argument. The data exists to support the call; the call is the spine. If a sentence isn't either making the call, supporting it, raising the counter, defending against the counter, or closing with positioning — cut it.
 
@@ -902,11 +902,15 @@ Notice: the theme's main call is *"the bond market is pricing rate hikes and we 
 
 **Examples of the integrated positioning close (paragraph 2 endings):**
 
-✅ *"...one-third of MAG7 profits came from private-equity investment gains rather than AI revenue, so earnings are more cyclically vulnerable than the headline suggests. The cleanest read for someone with semicap exposure is that the picks-and-shovels names — Applied Materials and Tokyo Electron — keep getting paid through July earnings unless META or GOOGL guide capex down, which would be the first real signal hyperscalers are pulling back."*
+The default close is a positioning lean + named instrument. NO invalidation level, NO confirmation trigger, NO "if X then Y" line UNLESS the trigger is verbatim from research input (`tension_points.what_invalidates` field, a specific level cited in `key_data_points`, or an explicit research quote). Made-up triggers read as fake conviction. Better a short close with no trigger than a long one with an invented number.
 
-✅ *"...UBS sees two cuts in 2H, but the pushback from JPM is that core CPI is locked in a three-month lag from oil — you can't cut into a re-acceleration. The setup leans bullish for long-dated Treasuries IF the May 12 CPI print comes in around the 2.6% core ANZ projects; a 3.0%+ core would be the bond market's confirmation that the energy shock has bled into underlying inflation, and the rate-cut thesis dies."*
+✅ Default (no trigger — research didn't supply one): *"...one-third of MAG7 profits came from private-equity investment gains rather than AI revenue, so earnings are more cyclically vulnerable than the headline suggests. For someone with semicap exposure, the cleanest expression is the picks-and-shovels names — Applied Materials and Tokyo Electron — through July earnings."*
 
-✅ *"...refined-fuel inventories are at 8-year lows and Europe's jet fuel inventory runs out by June — oil prices stay elevated for months regardless of the ceasefire. Brent's six-month curve at $92 is the market saying the same thing in pricing. The asymmetric setup here is that any fresh Hormuz incident sends the front-month back vertical while the back-month barely moves — a Brent-tracking ETF (e.g., $BNO) captures it cleanly. Loss of $85 sustained on Brent would be the market saying the supply scare is finally over."*
+✅ Default (positioning lean only, no fabricated trigger): *"...UBS sees two cuts in 2H, but the pushback from JPM is that core CPI is locked in a three-month lag from oil and the Fed cannot cut into a re-acceleration. The setup leans bullish for long-dated Treasuries via $TLT."*
+
+✅ Acceptable (trigger included BECAUSE it traces to research): *"...refined-fuel inventories are at 8-year lows and Europe's jet fuel inventory runs out by June, so oil prices stay elevated for months regardless of the ceasefire. Brent's six-month curve at $92 is the market saying the same thing in pricing. A Brent-tracking ETF ($BNO) captures it cleanly, and the Goldman desk's $85 Brent break — explicitly cited in their note as the level the supply scare ends — would be the trigger that the trade is over."* (Note: the $85 trigger is attributed to Goldman's note. If `tension_points.what_invalidates` says "Brent breaking below $85 sustained" for this theme, the trigger is fair game; if not, OMIT.)
+
+❌ Bad (invented trigger, no research basis): *"...the rate-cut thesis dies if May 12 CPI prints 3.0%+ core."* (If research didn't supply the specific 3.0% threshold or the May 12 date, this is fabricated precision.)
 
 **Examples of WHAT NOT TO DO (templated trade lines — strip these):**
 - ❌ *"**Trade Implication.** Long $AMAT into July earnings. Why: ... Risk: ..."* — labeled trade line is gone.
@@ -1199,15 +1203,17 @@ Target 3-6 high-impact themes. Better to ship 3 sharp themes than 6 with filler.
 
 Tension framing also: weave the optimistic-vs-risk read INTO the body prose, NOT as a separate `*The Tension:*` bullet. The bullet structure reads like an AI template. Use prose: *"Bulls argue the AI capex super-cycle is structural; the risk Goldman desk flags is that one-third of MAG7 profits came from PE investment gains, not AI revenue, leaving earnings vulnerable to credit cycle reversal."*
 
-**Pass B — positioning read close (integrated, no labels).** Every theme's bull/bear paragraph must END with a positioning view woven into prose — what the setup leans toward, the cleanest instrument expression, and the specific level/event that invalidates the lean. NOT a separate `**Trade Implication.**` line, NOT a `Hint:` label, NOT a bullet list. Pure prose at the end of paragraph 2. Examples of integrated closes (the right model — short, specific, woven in):
+**Pass B — positioning read close (integrated, no labels).** Every theme's bull/bear paragraph must END with a positioning view woven into prose — what the setup leans toward and the cleanest instrument expression. NOT a separate `**Trade Implication.**` line, NOT a `Hint:` label, NOT a bullet list. Pure prose at the end of paragraph 2.
+
+**Invalidation / confirmation triggers (BINDING — anti-hallucination):** include a specific invalidation level, confirmation event, or "if X then Y" trigger ONLY when it traces verbatim to research input — specifically a `tension_points.what_invalidates` value, a `key_data_points` entry with a specific level, or an explicit research quote citing the trigger. **Do NOT invent invalidation/confirmation triggers.** If the research doesn't supply one, the close is just the positioning lean and the instrument — no fabricated "loss of $85 sustained on Brent" or "May 12 CPI at 3.0%+ would invalidate" lines. Made-up precision reads as fake conviction. Better a short positioning sentence with no trigger than a long one with an invented number.
+
+Examples of integrated closes:
 
 Weak: *"Traders should monitor vol closely."*
-Strong (integrated): *"...realized vol on up days running higher than down days is the textbook signature of an unstable rally. Setup leans long index downside protection — SPX 3-month puts trading at deep discounts to single-stock vol look ownable, and a sustained VIX break below 16 with another quiet week would be the market saying the squeeze has further to run before any unwind."*
+Acceptable (positioning lean only, no trigger): *"...realized vol on up days running higher than down days is the textbook signature of an unstable rally. The setup leans long index downside protection, with SPX 3-month puts trading at deep discounts to single-stock vol the cleanest expression."*
+Strong (positioning lean + research-cited trigger — only when traceable): *"...refined-fuel inventories sit at 8-year lows and Europe's jet fuel runs out by June, the supply hole takes months to refill regardless of any ceasefire. Long Brent via $BNO is the cleanest expression, and the Goldman desk's flagged $85 Brent break would be the level the supply scare is finally over."* (Note: include "the Goldman desk's flagged" — the trigger is attributed to research, not the model's invention.)
 
-Weak: *"Oil remains sensitive to headlines."*
-Strong (integrated): *"...refined-fuel inventories sit at 8-year lows and Europe's jet fuel runs out by June — the supply hole takes months to refill regardless of any ceasefire. The asymmetric setup is long the Brent oil ETF ($BNO) into the next Hormuz headline; loss of $85 sustained on Brent would be the curve admitting the supply scare is over."*
-
-If a theme's analysis can't credibly support ANY positioning read, the theme isn't high-impact enough — cut it. But the format is integrated prose; never a labeled "Trade Implication" line. Formal trade calls (with explicit conviction labels and risk/sizing) live in the dedicated TRADE PLAYBOOK section that runs separately, NOT in INSIGHTS.
+If a theme's analysis can't credibly support a positioning read at all, the theme isn't high-impact enough — cut it. But the format is integrated prose; never a labeled "Trade Implication" line. Formal trade calls (with explicit conviction labels and risk/sizing) live in the dedicated TRADE PLAYBOOK section that runs separately, NOT in INSIGHTS.
 
 **STRIP if present in the draft (legacy formatting):** any `**Trade Implication.**` headers, `**Trade:**` labels, `Hint:` prefixes, or bullet-list trade ideas at the end of theme bodies. Rewrite as integrated prose at the end of paragraph 2.
 
