@@ -9,8 +9,8 @@ of per-pulse:
    dump_pending_high_ingestions_job (every 5 min):           |
      reads bridge_ingestion_state WHERE status='pending'      |
      for each:                                                |
-       - guardrail check (pages, file size)                   |
-       - if oversized → mark fallback_to_gemini               |
+       - guardrail check (pages, file size, attempt_count)    |
+       - if violated → mark fallback_to_gemini                |
        - else commit raw PDF to ingest-pending/<id>.pdf       |
               + sidecar JSON to ingest-pending/<id>.json      |
               update state to 'committed'                     |
@@ -21,9 +21,25 @@ of per-pulse:
                                                  commit ingest-complete/<id>.json
                                                               |
    pull_completed_ingestions_job (every 2 min):               |
-     reads ingest-complete/*.json from bridge                 |
+     reads ingest-complete/*.json + ingest-failed/*.json      |
      INSERT pdf_analyses, mark state 'completed'              |
      deletes the bridge files to keep the branch slim         <
+
+CONSUMER CONTRACT (Anthropic-side cron routine):
+- Read directory listing of ingest-pending/. Process every file matching
+  `<pdf_file_id>.json` — that's the completion marker. The .json is committed
+  AFTER the .pdf, so its presence implies both files are present.
+- For each JSON: parse metadata, then Read the matching .pdf via Anthropic's
+  native PDF Read tool. Run the deep-analysis system prompt
+  (ai_analysis/prompts.py:ANALYSIS_SYSTEM_PROMPT) and produce the
+  PdfAnalysis-shaped JSON.
+- Commit the result to ingest-complete/<pdf_file_id>.json.
+- On routine-side failure (oversized, prompt error, etc.), commit a small
+  JSON to ingest-failed/<pdf_file_id>.json with a "reason" field. Railway
+  treats that as a Gemini-fallback signal.
+- The routine does NOT delete files in ingest-pending/. Railway's pull
+  job is the sole pruner: it deletes both the pending pair AND the
+  complete/failed marker after a successful DB write.
 """
 
 import json
@@ -138,8 +154,30 @@ def dump_pending_high_ingestions_job() -> None:
     committed = 0
     fallback = 0
 
+    # Poison-pill threshold: a single PDF that fails N consecutive dump
+    # attempts gets routed to Gemini fallback rather than retried forever.
+    MAX_DUMP_ATTEMPTS = 5
+
     for row in pending:
         pdf_file_id = int(row["pdf_file_id"])
+        prior_attempts = int(row.get("attempt_count") or 0)
+        # Attempt-cap guard: stop retrying poison rows. The fallback sweeper
+        # (step 4) will run Gemini on these.
+        if prior_attempts >= MAX_DUMP_ATTEMPTS:
+            log.warning(
+                f"Bridge dump: pdf_file_id={pdf_file_id} hit MAX_DUMP_ATTEMPTS "
+                f"({prior_attempts}); marking fallback_to_gemini"
+            )
+            db.update_bridge_status(
+                pdf_file_id,
+                status="fallback_to_gemini",
+                fallback_reason=f"exceeded {MAX_DUMP_ATTEMPTS} dump attempts",
+            )
+            fallback += 1
+            continue
+
+        # Track the local path we materialized so we can clean up post-commit
+        materialized_path: str | None = None
         try:
             local_path = _gather_local_path(row)
             if not local_path:
@@ -151,6 +189,10 @@ def dump_pending_high_ingestions_job() -> None:
                 )
                 fallback += 1
                 continue
+            # Track materialized re-downloads for cleanup (only if we created it,
+            # i.e., not the original local_path that was already on disk)
+            if local_path != (row.get("local_path") or ""):
+                materialized_path = local_path
 
             page_count = _pdf_page_count(local_path)
             file_size = int(row.get("file_size_bytes") or 0) or Path(local_path).stat().st_size
@@ -167,7 +209,10 @@ def dump_pending_high_ingestions_job() -> None:
                 fallback += 1
                 continue
 
-            # Read PDF bytes, commit binary + sidecar to the bridge branch
+            # Read PDF bytes, commit binary + sidecar to the bridge branch.
+            # ORDER MATTERS: PDF first, JSON second. The Anthropic routine keys
+            # off the JSON sidecar's presence — that way a half-committed pair
+            # (PDF lands but JSON commit fails) won't be picked up prematurely.
             with open(local_path, "rb") as f:
                 pdf_bytes = f.read()
             sidecar = _build_sidecar(row, page_count)
@@ -181,12 +226,14 @@ def dump_pending_high_ingestions_job() -> None:
                 pdf_bytes,
                 f"Bridge: queue PDF {pdf_file_id} for Opus ingestion",
             )
-            gh.put_file(
+            json_resp = gh.put_file(
                 json_path,
                 json.dumps(sidecar, indent=2),
-                f"Bridge: sidecar metadata for PDF {pdf_file_id}",
+                f"Bridge: sidecar metadata for PDF {pdf_file_id} (completion marker)",
             )
-            commit_sha = (pdf_resp.get("commit") or {}).get("sha") or ""
+            # Use the json commit sha (last commit in the pair = "ready" point)
+            commit_sha = (json_resp.get("commit") or {}).get("sha") or \
+                         (pdf_resp.get("commit") or {}).get("sha") or ""
 
             db.update_bridge_status(
                 pdf_file_id,
@@ -200,21 +247,235 @@ def dump_pending_high_ingestions_job() -> None:
                 f"Bridge dump: committed pdf_file_id={pdf_file_id} "
                 f"({len(pdf_bytes) / 1024:.0f}KB, {page_count or '?'}p) → {pdf_path}"
             )
+            # Successful commit — clean up the re-downloaded local copy if we made one
+            if materialized_path:
+                try:
+                    Path(materialized_path).unlink(missing_ok=True)
+                except Exception:
+                    pass
         except Exception as e:
             log.error(
                 f"Bridge dump: failed for pdf_file_id={pdf_file_id}: {e}",
                 exc_info=True,
             )
-            # Don't mark as 'failed' — leave as 'pending' so next tick retries.
-            # The attempt_count we'd want here happens in update_bridge_status,
-            # which we couldn't reach. Stamp the error message and move on.
+            # Don't mark 'failed' — let next tick retry, but DO increment
+            # attempt_count so the poison-pill guard above can eventually
+            # convert this to a Gemini fallback instead of looping forever.
             try:
                 db.update_bridge_status(
                     pdf_file_id,
                     status="pending",
                     error_message=f"dump failed: {str(e)[:200]}",
+                    increment_attempt=True,
                 )
             except Exception:
                 pass
 
     log.info(f"Bridge dump tick complete: {committed} committed, {fallback} fell back to Gemini")
+
+
+# -----------------------------------------------------------------------------
+# Pull job — reads completed analyses from the bridge into the DB
+# -----------------------------------------------------------------------------
+
+
+def _pdf_id_from_bridge_filename(name: str) -> int | None:
+    """Routine outputs are named '<pdf_file_id>.json'. Parse robustly."""
+    if not name.endswith(".json"):
+        return None
+    stem = name[: -len(".json")]
+    try:
+        return int(stem)
+    except ValueError:
+        return None
+
+
+def _validate_analysis_payload(payload: dict, pdf_file_id: int) -> str | None:
+    """Return error string if the payload is malformed; None if it looks OK.
+
+    The routine is supposed to produce the same JSON schema we extract from
+    Gemini deep analysis (PdfAnalysis-shaped dict). Bare minimum: a source,
+    a title, a list of key_insights, and the pdf_file_id matching the file.
+    """
+    if not isinstance(payload, dict):
+        return f"payload not a dict (got {type(payload).__name__})"
+    if int(payload.get("pdf_file_id") or 0) != pdf_file_id:
+        return f"pdf_file_id mismatch (json={payload.get('pdf_file_id')}, expected={pdf_file_id})"
+    if not (payload.get("source") or "").strip():
+        return "missing source"
+    if not isinstance(payload.get("key_insights"), list):
+        return "key_insights not a list"
+    return None
+
+
+def _delete_bridge_files(pdf_file_id: int, kinds: list[str]) -> None:
+    """Best-effort delete of bridge files for a pdf_file_id. kinds: pdf|json|complete|failed."""
+    paths: list[str] = []
+    if "pdf" in kinds:
+        paths.append(f"{INGEST_PENDING_DIR}/{pdf_file_id}.pdf")
+    if "json" in kinds:
+        paths.append(f"{INGEST_PENDING_DIR}/{pdf_file_id}.json")
+    if "complete" in kinds:
+        paths.append(f"{INGEST_COMPLETE_DIR}/{pdf_file_id}.json")
+    if "failed" in kinds:
+        paths.append(f"{INGEST_FAILED_DIR}/{pdf_file_id}.json")
+    for p in paths:
+        try:
+            gh.delete_file(p, message=f"Bridge: prune {p} after Railway ingestion")
+        except Exception as e:
+            log.warning(f"Bridge: prune of {p} failed (non-fatal): {e}")
+
+
+def _ingest_one_completed(item: dict) -> bool:
+    """Process one ingest-complete/<id>.json file. Returns True on success."""
+    name = item.get("name") or ""
+    pdf_file_id = _pdf_id_from_bridge_filename(name)
+    if pdf_file_id is None:
+        log.warning(f"Bridge pull: skipping unrecognized filename {name}")
+        return False
+
+    state = db.get_bridge_state(pdf_file_id)
+    if not state:
+        # Unknown pdf_file_id — could be a stale artifact from a manual test.
+        # Prune to keep the branch clean, but don't crash.
+        log.warning(f"Bridge pull: ingest-complete/{name} has no bridge_state row — pruning")
+        _delete_bridge_files(pdf_file_id, ["pdf", "json", "complete"])
+        return False
+
+    if state.get("status") in ("completed", "fallback_to_gemini", "failed"):
+        # Idempotency: already processed this PDF. Prune the residual bridge files.
+        log.info(f"Bridge pull: pdf_file_id={pdf_file_id} already terminal — pruning bridge files")
+        _delete_bridge_files(pdf_file_id, ["pdf", "json", "complete"])
+        return False
+
+    # Fetch the full file body (list_dir gives metadata only)
+    raw = gh.get_file_text(f"{INGEST_COMPLETE_DIR}/{name}")
+    if raw is None:
+        log.warning(f"Bridge pull: failed to fetch {name}")
+        return False
+
+    try:
+        payload = json.loads(raw)
+    except json.JSONDecodeError as e:
+        log.error(f"Bridge pull: malformed JSON in {name}: {e}")
+        db.update_bridge_status(
+            pdf_file_id,
+            status="fallback_to_gemini",
+            fallback_reason=f"routine returned malformed JSON: {str(e)[:120]}",
+        )
+        _delete_bridge_files(pdf_file_id, ["pdf", "json", "complete"])
+        return False
+
+    err = _validate_analysis_payload(payload, pdf_file_id)
+    if err:
+        log.error(f"Bridge pull: validation failed for {name}: {err}")
+        db.update_bridge_status(
+            pdf_file_id,
+            status="fallback_to_gemini",
+            fallback_reason=f"routine output failed validation: {err}",
+        )
+        _delete_bridge_files(pdf_file_id, ["pdf", "json", "complete"])
+        return False
+
+    # Successful payload → INSERT into pdf_analyses (same schema as Gemini path)
+    triage_json_str = json.dumps({
+        "priority": payload.get("priority", "high"),
+        "report_type": payload.get("report_type", "other"),
+        "source": payload.get("source", ""),
+        "key_tickers": [],  # not produced by Opus path; downstream tolerates empty
+        "summary": "",
+    })
+    try:
+        db.insert_analysis(
+            pdf_file_id=pdf_file_id,
+            triage_json=triage_json_str,
+            analysis_json=json.dumps(payload),
+            priority=payload.get("priority", "high"),
+            pages_analyzed=int(payload.get("pages_analyzed") or 0),
+            total_pages=int(payload.get("total_pages") or 0),
+            input_tokens=int(payload.get("input_tokens") or 0),
+            output_tokens=int(payload.get("output_tokens") or 0),
+            model="opus-bridge",
+            duration=0.0,
+        )
+        # Mark file as PROCESSED so it stops appearing in pending queues
+        db.update_pdf_status(pdf_file_id, "PROCESSED")
+        db.update_bridge_status(pdf_file_id, status="completed")
+        log.info(f"Bridge pull: pdf_file_id={pdf_file_id} → completed via Opus")
+        # Prune bridge files now that the analysis is safely in the DB
+        _delete_bridge_files(pdf_file_id, ["pdf", "json", "complete"])
+        return True
+    except Exception as e:
+        log.error(f"Bridge pull: DB insert failed for pdf_file_id={pdf_file_id}: {e}", exc_info=True)
+        # Don't prune yet — leave the bridge file for the next tick to retry.
+        return False
+
+
+def _process_failed_one(item: dict) -> None:
+    """Routine reported a hard failure for this PDF — fall back to Gemini."""
+    name = item.get("name") or ""
+    pdf_file_id = _pdf_id_from_bridge_filename(name)
+    if pdf_file_id is None:
+        return
+    state = db.get_bridge_state(pdf_file_id)
+    if not state or state.get("status") in ("completed", "fallback_to_gemini", "failed"):
+        _delete_bridge_files(pdf_file_id, ["pdf", "json", "failed"])
+        return
+    raw = gh.get_file_text(f"{INGEST_FAILED_DIR}/{name}")
+    reason = "routine reported failure"
+    if raw:
+        try:
+            data = json.loads(raw)
+            reason = (data.get("reason") or reason)[:200]
+        except Exception:
+            pass
+    db.update_bridge_status(
+        pdf_file_id,
+        status="fallback_to_gemini",
+        fallback_reason=reason,
+    )
+    _delete_bridge_files(pdf_file_id, ["pdf", "json", "failed"])
+
+
+def pull_completed_ingestions_job() -> None:
+    """Periodic job — pull completed/failed analyses from the bridge into the DB.
+
+    Runs every ~2 min when bridge is enabled. Iterates two directories:
+      - ingest-complete/  → INSERT into pdf_analyses, mark state 'completed'
+      - ingest-failed/    → mark state 'fallback_to_gemini' with reason
+
+    Idempotent: re-running is safe; a successful insert prunes the bridge
+    files, so repeat ticks become no-ops on already-handled PDFs.
+    """
+    if not opus_bridge_enabled():
+        return
+
+    # Completed
+    try:
+        completed_items = gh.list_dir(INGEST_COMPLETE_DIR)
+    except Exception as e:
+        log.warning(f"Bridge pull: list {INGEST_COMPLETE_DIR} failed: {e}")
+        completed_items = []
+
+    completed_files = [it for it in completed_items if it.get("type") == "file" and (it.get("name") or "").endswith(".json")]
+    n_ok = 0
+    for item in completed_files:
+        if _ingest_one_completed(item):
+            n_ok += 1
+
+    # Routine-reported failures
+    try:
+        failed_items = gh.list_dir(INGEST_FAILED_DIR)
+    except Exception as e:
+        log.warning(f"Bridge pull: list {INGEST_FAILED_DIR} failed: {e}")
+        failed_items = []
+
+    failed_files = [it for it in failed_items if it.get("type") == "file" and (it.get("name") or "").endswith(".json")]
+    for item in failed_files:
+        _process_failed_one(item)
+
+    if completed_files or failed_files:
+        log.info(
+            f"Bridge pull tick: {n_ok}/{len(completed_files)} completed ingested, "
+            f"{len(failed_files)} routine-failures handled"
+        )

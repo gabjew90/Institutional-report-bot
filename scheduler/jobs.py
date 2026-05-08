@@ -107,7 +107,18 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             max_instances=1,
             misfire_grace_time=300,
         )
-        log.info("Opus-bridge HIGH ingestion: dump job registered (every 5 min)")
+        scheduler.add_job(
+            _bridge_pull_completed_ingestion_job,
+            trigger=IntervalTrigger(minutes=2),
+            id="bridge_pull_completed_ingestion",
+            name="Opus bridge: pull completed analyses",
+            max_instances=1,
+            misfire_grace_time=120,
+        )
+        log.info(
+            "Opus-bridge HIGH ingestion: dump job registered (every 5 min), "
+            "pull job registered (every 2 min)"
+        )
 
     log.info(
         f"Scheduler configured: "
@@ -185,3 +196,13 @@ async def _bridge_dump_high_ingestion_job():
         await asyncio.to_thread(dump_pending_high_ingestions_job)
     except Exception as e:
         log.error(f"Bridge HIGH-ingestion dump failed: {e}", exc_info=True)
+
+
+async def _bridge_pull_completed_ingestion_job():
+    """Scheduled job: pull completed Opus analyses from the bridge into the DB."""
+    import asyncio
+    try:
+        from github_bridge.ingestion import pull_completed_ingestions_job
+        await asyncio.to_thread(pull_completed_ingestions_job)
+    except Exception as e:
+        log.error(f"Bridge HIGH-ingestion pull failed: {e}", exc_info=True)
