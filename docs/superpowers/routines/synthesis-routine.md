@@ -56,16 +56,129 @@ Follow the prompts verbatim. Particularly important rules to triple-check before
 - **Foreign cashtag scrub.** $TSCO/$AD/$CNA/$BA/$BT/$RR/$III/$IMB/$CCL/$ORANGE/$REP/$ORA → names.
 - **Cross-bank consensus must lead INSIGHTS** (top 3 by bank count must appear).
 
-## STEP 2 — Fetch context
+## STEP 2 — Fetch context (with retry + failure reporting)
+
+The fetch is the highest-risk failure point in the routine because it depends on (a) the bridge worker having recently dumped pulse-context, (b) GitHub raw cache having propagated, and (c) network reachability from the routine sandbox. We retry with exponential backoff and commit a failure marker on terminal failure so the human reviewer sees a structured cause rather than an opaque 404.
 
 ```bash
-curl -sS -H "Authorization: token $GH_TOKEN" \
-  https://raw.githubusercontent.com/gabjew90/Institutional-report-bot/pulse-data/pulse-context/latest.json \
-  -o /tmp/ctx.json
-python3 -c 'import json; d=json.load(open("/tmp/ctx.json")); print("pdfs:", d["pdf_count"], "window:", d.get("window_label"), "session:", d.get("session_status"), "themes:", len(d.get("theme_map", {})))'
+python3 << 'PYEOF'
+import urllib.request, urllib.error, time, os, json, base64, datetime, traceback
+
+GH_TOKEN = os.environ.get('GH_TOKEN', '')
+URL = 'https://raw.githubusercontent.com/gabjew90/Institutional-report-bot/pulse-data/pulse-context/latest.json'
+REPO = 'gabjew90/Institutional-report-bot'
+BRANCH = 'pulse-data'
+
+def commit_failure(stage: str, reason: str, detail: str = '') -> None:
+    """Write a structured failure marker to pulse-output/failures/<ts>.md.
+
+    The marker is a small markdown file with stage + reason + detail so a
+    human (or automated watcher) can see WHY the routine aborted without
+    needing to spelunk through the routine session log. Idempotent: if
+    the commit itself fails, we swallow — the routine's own session log
+    still records the original failure.
+    """
+    ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
+    body = f"""# Routine failure: {stage}
+
+- **Time (UTC):** {ts}
+- **Stage:** {stage}
+- **Reason:** {reason}
+
+## Detail
+
+```
+{detail}
+```
+"""
+    try:
+        req = urllib.request.Request(
+            f'https://api.github.com/repos/{REPO}/contents/pulse-output/failures/{ts}.md',
+            data=json.dumps({
+                'message': f'routine: FAILURE at {stage} ({ts})',
+                'content': base64.b64encode(body.encode()).decode(),
+                'branch': BRANCH,
+            }).encode(),
+            headers={
+                'Authorization': f'token {GH_TOKEN}',
+                'Accept': 'application/vnd.github+json',
+                'Content-Type': 'application/json',
+            },
+            method='PUT',
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            print(f'committed failure marker: pulse-output/failures/{ts}.md')
+    except Exception as e:
+        print(f'WARNING: could not commit failure marker: {e}')
+
+
+def fetch_with_retry(url: str, attempts: int = 3) -> bytes:
+    """Fetch with exponential backoff. 404 may be transient when the bridge
+    just committed pulse-context and GitHub raw cache hasn't propagated.
+    """
+    delays = [5, 15, 30]
+    last_err: Exception | None = None
+    for i in range(attempts):
+        try:
+            req = urllib.request.Request(
+                url,
+                headers={'Authorization': f'token {GH_TOKEN}'},
+            )
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                return resp.read()
+        except urllib.error.HTTPError as e:
+            last_err = e
+            print(f'attempt {i+1}/{attempts}: HTTP {e.code} {e.reason}')
+            if i < attempts - 1 and e.code in (404, 502, 503, 504):
+                time.sleep(delays[i])
+                continue
+            raise
+        except Exception as e:
+            last_err = e
+            print(f'attempt {i+1}/{attempts}: {type(e).__name__}: {e}')
+            if i < attempts - 1:
+                time.sleep(delays[i])
+                continue
+            raise
+    raise RuntimeError(f'fetch_with_retry exhausted: {last_err}')
+
+
+# Persist the failure-commit helper for later steps that may need it. Stored
+# as a JSON-serializable shim — we re-define commit_failure inline whenever
+# a downstream step needs it (see STEP 6, STEP 7), but the LOGIC is here.
+# A copy of GH_TOKEN + REPO + BRANCH lives in env so subsequent steps don't
+# need to re-derive it.
+os.environ['_ROUTINE_REPO'] = REPO
+os.environ['_ROUTINE_BRANCH'] = BRANCH
+
+try:
+    body = fetch_with_retry(URL)
+    with open('/tmp/ctx.json', 'wb') as f:
+        f.write(body)
+    ctx = json.loads(body)
+    print(
+        f"pdfs: {ctx['pdf_count']}  "
+        f"window: {ctx.get('window_label')}  "
+        f"session: {ctx.get('session_status')}  "
+        f"themes: {len(ctx.get('theme_map', {}))}"
+    )
+    discovery = ctx.get('discovery_audit') or {}
+    print(
+        f"discovery: {len(discovery.get('promoted', []) or [])} promoted, "
+        f"{len(discovery.get('near_miss', []) or [])} near-miss"
+    )
+except Exception as e:
+    detail = traceback.format_exc()
+    commit_failure(
+        stage='STEP 2 (fetch context)',
+        reason=f'{type(e).__name__}: {e}',
+        detail=detail,
+    )
+    raise SystemExit(1)
+PYEOF
 ```
 
-Replace `$GH_TOKEN` with the actual token above.
+If the fetch fails after all retries, the routine commits a failure marker to `pulse-output/failures/<ts>.md` and aborts with `SystemExit(1)`. Subsequent steps (DRAFT, EDIT, etc.) do not run; downstream `pulse-output/pending/` stays empty.
 
 ## STEP 3 — Inspect theme coverage
 
@@ -569,13 +682,62 @@ If lint reports issues, the SCRUB pass (above) is supposed to handle them automa
 
 ```bash
 python3 << 'PYEOF'
-import json, base64, urllib.request, datetime, os
+import json, base64, urllib.request, datetime, os, traceback
 GH_TOKEN = os.environ.get('GH_TOKEN', '')  # filled by the routine surface
 REPO = 'gabjew90/Institutional-report-bot'
 BRANCH = 'pulse-data'
 
-ctx = json.load(open('/tmp/ctx.json'))
-final_md = open('/tmp/final.md').read()
+
+def commit_failure(stage: str, reason: str, detail: str = '') -> None:
+    """Mirror of the helper from STEP 2 — re-defined here because each
+    routine step is a separate heredoc with its own Python namespace.
+    Commits a structured failure marker to pulse-output/failures/ so a
+    human reviewer (or the watcher) sees the cause.
+    """
+    ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
+    body = f"""# Routine failure: {stage}
+
+- **Time (UTC):** {ts}
+- **Stage:** {stage}
+- **Reason:** {reason}
+
+## Detail
+
+```
+{detail}
+```
+"""
+    try:
+        req = urllib.request.Request(
+            f'https://api.github.com/repos/{REPO}/contents/pulse-output/failures/{ts}.md',
+            data=json.dumps({
+                'message': f'routine: FAILURE at {stage} ({ts})',
+                'content': base64.b64encode(body.encode()).decode(),
+                'branch': BRANCH,
+            }).encode(),
+            headers={
+                'Authorization': f'token {GH_TOKEN}',
+                'Accept': 'application/vnd.github+json',
+                'Content-Type': 'application/json',
+            },
+            method='PUT',
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            print(f'committed failure marker: pulse-output/failures/{ts}.md')
+    except Exception as e:
+        print(f'WARNING: could not commit failure marker: {e}')
+
+
+try:
+    ctx = json.load(open('/tmp/ctx.json'))
+    final_md = open('/tmp/final.md').read()
+except Exception as e:
+    commit_failure(
+        stage='STEP 6 (read inputs)',
+        reason=f'{type(e).__name__}: {e}',
+        detail=traceback.format_exc(),
+    )
+    raise SystemExit(1)
 
 input_tokens_est = 120000
 output_tokens_est = max(1, len(final_md) // 4)
