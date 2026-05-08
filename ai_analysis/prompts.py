@@ -1110,17 +1110,19 @@ For each event: date, time if known, BMO/AMC for earnings, and a "how to react" 
 """
 
 
-AUDIT_SYSTEM = """You are auditing a draft Market Pulse against live market data, today's released economic data, current news, and timing reality. Your job is to REWRITE the draft so it is (a) factually accurate, (b) tightly focused on genuinely high-impact items, (c) clear about what each item means for short-term positioning, and (d) **written in the final newsletter voice**. DRAFT focuses on facts and density; you own the voice and the final output.
+AUDIT_SYSTEM = """You are auditing a draft Market Pulse against live market data, today's released economic data, current news, and timing reality. Your job is to REWRITE the draft so it is (a) factually accurate, (b) tightly focused on genuinely high-impact items, and (c) clear about what each item means for short-term positioning. DRAFT focuses on facts and density; you focus on editorial judgment.
 
-**Voice: write the final voice — bug-fix the AI-tells, preserve the analyst edge.**
+**Voice: SCRUB handles enforcement; you focus on editorial work.** A dedicated SCRUB sub-agent runs after you, driven by a deterministic lint report, to rewrite any sentences with voice / jargon / AI-tell / banned-phrase violations. You do NOT need to walk every sentence policing voice — that's SCRUB's job, with structured input from the linter. Your attention here goes to editorial concerns: cull weak themes, add missing dominant ones, rebuild RECAP with live data, sharpen position closes, enforce the data-dump test.
 
-Don't flatten sentence structure or kill the analyst conviction language — those are the spine of the voice. DO rewrite sentences containing AI-tell language into trader-newsletter prose. The instruction is bug-fix, not flatten.
+What you SHOULD preserve as you rewrite: the analyst's conviction language, specific bank attributions tied to specific calls or data points, the `$TICKER` cashtag format, and the body's analytical spine. What you should NOT do: flatten sentence structure, kill the analyst edge, or genericize the prose into safe-sounding mush. If you find yourself smoothing punchy language into corporate-careful language, stop — SCRUB will scrub voice; your changes should preserve the writer's voice while sharpening the editorial substance.
 
-<<VOICE_RULES_BLOCK>>
+**Editorial source rules (these affect what you write, not just what SCRUB cleans up):**
 
-**Voice direction (preserve, don't manufacture):** conversational, opinionated, story-driven. Memorable phrasing, optimistic-read-vs-risk framing. Vary sentence length — mix short punchy with longer analytical.
+- **Tier-1 weighting (binding when banks disagree).** Tier-1 banks: **JPMorgan, Bank of America, Goldman Sachs**. When two banks make conflicting calls, weight the Tier-1 bank's view more heavily and treat the other as supplementary or pushback. When citing supportive consensus, the Tier-1 attribution leads. Other banks (Citi, UBS, RBC, Barclays, Mizuho, etc.) are still cited when they bring unique data points — they are NOT excluded — but they are not the primary voice when consensus is split.
 
-**Voice scrub pass:** before final output, walk every paragraph in INSIGHTS bodies and RECAP. For each banned-vocabulary or banned-punctuation hit, rewrite the sentence into the voice. Don't merely strip — rephrase so the meaning lands cleanly. The final pulse should read as if a sharp trader-newsletter writer wrote it from the start.
+- **Bank-name attribution: only when paired with a specific number or call.** Do not write source-prefix preambles like "[Bank] notes that...", "[Bank] flags that...", "[Bank]'s desk thinks..." as sentence openers. The bank name earns a place in prose ONLY when it's attributing a specific data point ("Goldman raised 2026 capex to $751B"). If you find yourself writing a bank name as a story-connector, restructure the sentence so the data point is the spine and the bank attribution becomes a parenthetical. SCRUB will catch slip-ups, but your editorial restructuring should not introduce them in the first place.
+
+- **Never cite "The Market Ear" / "TME" / "FX Daily" by name.** These are non-bank commentary publications. If their content is the primary source for a data point you're keeping, present the data without attribution — it stands on its own. Do not parenthetical-cite them either. SCRUB strips these on contact; don't generate them.
 
 **Content authority: you have it.** Unlike pure style audits, you CAN:
 - Cut INSIGHTS themes that aren't truly high-impact (recurring flow commentary, generic macro wallpaper, single-bank technicals that won't move positioning).
@@ -1410,20 +1412,13 @@ Produce the final pulse. Rewrite RECAP with live data + released events + news. 
 """
 
 
-# === Voice rules interpolation ===
-# AUDIT_SYSTEM has a <<VOICE_RULES_BLOCK>> marker that gets replaced at
-# module load with the composed voice rules from ai_analysis.voice_rules.
-# Single source of truth for banned patterns: voice_rules.py constants.
-# The post-AUDIT linter (scripts/pulse_lint.py) reads from the same module,
-# so the prompt rules and the linter regex stay in lockstep — adding a
-# banned phrase in voice_rules.py automatically lands in both.
-from ai_analysis.voice_rules import compose_audit_voice_block as _compose_voice_block
-AUDIT_SYSTEM = AUDIT_SYSTEM.replace("<<VOICE_RULES_BLOCK>>", _compose_voice_block())
-del _compose_voice_block
-
-# SCRUB_SYSTEM marker substitution — same pattern as VOICE_RULES_BLOCK.
-# Pulls the canonical jargon-to-plain-English map and banned-publications
-# list from voice_rules.py so prompt and linter stay in lockstep.
+# === Marker substitutions at module load ===
+# AUDIT no longer has a voice-rules block — voice enforcement migrated
+# to SCRUB after it was clear that AUDIT's voice scrub paragraph
+# competed for attention with AUDIT's actual editorial concerns and
+# duplicated work SCRUB now handles deterministically via lint input.
+# SCRUB_SYSTEM keeps its <<SCRUB_REFERENCE_BLOCK>> marker substitution.
+# Single source of truth for banned patterns + jargon: voice_rules.py.
 from ai_analysis.voice_rules import compose_scrub_reference_block as _compose_scrub_ref
 SCRUB_SYSTEM = SCRUB_SYSTEM.replace("<<SCRUB_REFERENCE_BLOCK>>", _compose_scrub_ref())
 del _compose_scrub_ref
