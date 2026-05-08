@@ -77,7 +77,14 @@ import json
 
 ctx = json.load(open('/tmp/ctx.json'))
 analyses = json.loads(ctx['analyses_json'])
-theme_map = ctx['theme_map']
+# Defensive: theme_map was added to the context payload alongside this
+# routine. If a fire happens before the next dump-context cycle includes
+# it, fall through with no themes — adjudication writes an empty file
+# and DRAFT runs as before.
+theme_map = ctx.get('theme_map') or {}
+if not theme_map:
+    print('WARNING: theme_map missing from context payload — skipping adjudication this fire')
+    import sys; sys.exit(0)
 
 # Rank themes for selection: bank count first, then PDF count, with a small
 # nudge for net-directional themes (supportive - skeptical). Keep the floor
