@@ -922,7 +922,28 @@ Roleplay the reader: a smart trader, reads the WSJ, trades actively, has those 5
 
 - **Time-per-theme** — give a 5-min skim time budget. Could the trader walk away with 2-3 specific actionable takes after 5 min, or would they need 15-20 min to extract value? If the pulse needs 15 min of close reading to get the lift, it's not a daily product — it's a weekly research note.
 
-**Verdict:** ONE sentence answering: would a trader read this pulse DAILY (the actual product bar), or only when they had time / only weekly / not at all? Then justify in 2-3 sentences naming the SPECIFIC reason. Be honest. The right answer is often "not yet" — and the gap between "good content" and "daily habit" is mostly density, voice consistency, and reliable freshness. A pulse that's brilliant once a week but loses the reader on light news days does not pass the daily bar. Generic praise ("a quality product") is worse than a specific complaint like "this pulse covers great themes but the 5th theme on a thin news day reads as filler — a daily reader would notice and start skipping."
+### The miss-it test (the real bar)
+
+**The actual product test isn't "would they read it" — it's "would a trader notice and wonder where it is if this pulse didn't come out tomorrow?"** Most newsletters fail this. Most AI-generated content fails it by design (it's forgettable, hedged, both-sided, can be skipped without losing anything). The bar is: would the trader ACTIVELY MISS this absence — open Discord asking "where's the pulse?" — or would they not notice for days?
+
+What makes content forgettable AI slop (the failure mode to avoid):
+- **Hedged claims with no call.** "Markets could go either way." "Watch closely." "The setup is constructive." Calls that cannot be wrong because they don't commit.
+- **Both-sided framings without a verdict.** Pulse says "bulls argue X, bears argue Y" and stops. The reader doesn't learn what the analyst thinks — just that there's disagreement they could've inferred from any wire.
+- **Generic newsletter-speak.** "It's worth noting that markets are volatile." "Investors are watching closely." "Multiple signals are flashing." Could be from any of 50 newsletters.
+- **Templates that read the same every day.** Punchline + bullets + close, identical structure every theme, identical verbal tics. Reader stops learning by week 2.
+- **Calls that can't be wrong.** No invalidation triggers, no specific time horizons, no falsifiable predictions. Six months in, no track record possible.
+- **No recurring point of view.** No phrase or framing the reader recognizes as "this product's signature." Compare to Hartnett's Flow Show ("Buy humiliation"), Grant's gold tilt, Bankless's crypto-as-rebellion frame. Voice you can name.
+
+What makes content miss-able when absent:
+- **Stakes.** Specific calls with specific instruments and specific time windows. The reader is tracking outcomes alongside the analyst — when CPI prints Tuesday, they want to know how the pulse's $TLT call held.
+- **Distinctive perspective.** A theme framing the reader couldn't have gotten from a Twitter thread or CNBC pre-market. Specifically: cross-bank synthesis with bank-vs-bank named disagreement is the actual moat. If a single bank's note could substitute for what the pulse said, the moat broke.
+- **Recurring patterns the reader looks forward to.** A signature framing or recurring section the reader anticipates. Could be: a daily "what the cross-bank consensus is wrong about" feature. A "sleeper trade of the day" close. The Tier-1-vs-Tier-2 disagreement as a habitual structure. Not template, signature.
+- **Education that compounds.** Mechanism teaching at consistent depth, building the reader's mental models week over week. By month 6 the reader is materially smarter about how research desks frame trades.
+- **Personality.** A view the reader can disagree with productively. Generic neutral-aggregator content provokes nothing. A pulse that takes positions and explains its reasoning gives the reader something to argue with — and engagement-via-disagreement is also retention.
+
+**Verdict:** ONE sentence answering: would a trader actively miss this pulse if it didn't come out tomorrow — open Discord asking where it is — or would they not notice for days? Then justify in 2-3 sentences naming the SPECIFIC reason. Be honest. The right answer is often "not yet" — most days the gap between "made it past lint" and "would be missed if absent" is conviction in the calls, distinctive framings the reader recognizes, and falsifiable specifics that build a track record over time.
+
+Generic praise here ("a quality product") fails this section. So does "yes, would be missed" without naming what specifically would be missed. The useful version is "yes / no, here's the specific call or framing this pulse made that would be missed (or that's currently missing and would have to be added for the pulse to earn the slot)."
 
 ## Suggested changes for next run
 Specific, actionable. Each entry should reference a file + the change. Format:
@@ -1137,17 +1158,38 @@ If you're tempted to write "banks are debating..." or "the question is whether..
 
 **Movement 2 — THE EVIDENCE.** A short bulleted data block followed by a mechanism paragraph that argues from those bullets.
 
-**Part A — Bulleted data block (3-5 bullets, NO subheading or label).** Each bullet is one specific number with attribution. Bullets are facts. One line each. The bullets appear right after the italicized punchline with no header or "What we're seeing:" label above them.
+**Part A — Bulleted data block (3-5 bullets, NO subheading or label).** Each bullet is one specific number with attribution AND its significance explained — what does this data point MEAN for a trader. The bullets appear right after the italicized punchline with no header or "What we're seeing:" label above them.
 
-Example (the actual rendered output):
+**The "so what" rule (binding):** every bullet must answer "so what" right after stating the data point. The bullet is incomplete if it lists only the figure. The reader is a smart trader, not a finance professional — they shouldn't have to infer why a number matters. A bullet that says "Goldman raised 2026 capex to $755B" is a research-desk shorthand; a bullet that says "Goldman raised 2026 capex to $755B, +83% YoY and now equal to 100% of operating cash flow — cash that used to fund buybacks is now buying GPUs" is analysis. The reader walks away with a mental model, not just a number.
+
+Significance can be:
+- **A comparison** (vs estimate, vs prior, vs historical norm)
+- **A mechanism implication** (this number forces X behavior)
+- **A regime signal** (this level marks a shift in how the market thinks)
+- **A trade-relevant consequence** (this means you should expect Y for $TICKER)
+
+The significance phrase is short — the bullet stays one line or two. Don't pad. The goal is the reader gets WHY each number matters at the moment of reading, not 3 paragraphs later when the mechanism prose ties it all together.
+
+Example (the actual rendered output, with significance baked into each bullet):
 ```
 *Fed funds futures now show 17 bps of hikes by April, a full reversal from cuts a month ago.*
 
-- 10Y Treasury yield broke 4.44% Monday, a 9-month high
-- Crédit Agricole expects $125B of new long-dated Treasury supply this week, $25B in 30-year
-- Brent at $110 keeps gasoline up 40% year-to-date, feeding core CPI on a 3-month lag (ANZ)
-- ECB hike for June priced at 99% probability, so the rate-differential lift the dollar usually gets is absent
+- 10Y Treasury yield broke 4.44% Monday, a 9-month high — buyers stepping back from duration, equity multiple compression starts here
+- Crédit Agricole expects $125B of new long-dated Treasury supply this week, $25B in 30-year — concentrated supply at the long end is what's pushing yields up, not Fed expectations
+- Brent at $110 keeps gasoline up 40% year-to-date, feeding core CPI on a 3-month lag (ANZ) — the inflation pressure isn't going away on a soft NFP print
+- ECB hike for June priced at 99% probability — the rate-differential lift the dollar usually gets is absent, so the dollar is a one-way trade for shorts
 ```
+
+The reader skims the bullets and gets BOTH the facts AND why each fact matters for what they should do. Without the "so what" phrases, the bullets are a Bloomberg headline crawl — the pulse doesn't earn its keep.
+
+Anti-pattern (what NOT to do):
+```
+- 10Y broke 4.44%
+- $125B Treasury supply this week
+- Brent at $110
+- ECB at 99% probability for June
+```
+That's a data feed. The reader has to do the analysis themselves — at which point why are they reading the pulse?
 
 **Part B — Mechanism sentence (1, occasionally 2) that argues from the bullets.** Don't repeat the numbers. Explain the mechanism — why is this happening, how does it transmit. ONE sentence is the target; two only when the mechanism genuinely needs a second clause to land. The bullets ARE the data; the mechanism is the synthesis. If you find yourself writing a 3rd sentence, you're either restating bullets or padding.
 
