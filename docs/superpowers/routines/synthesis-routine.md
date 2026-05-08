@@ -74,6 +74,7 @@ python3 -c 'import json; print(json.load(open("/tmp/ctx.json"))["theme_coverage"
 ```bash
 python3 << 'PYEOF'
 import json
+import re
 
 ctx = json.load(open('/tmp/ctx.json'))
 analyses = json.loads(ctx['analyses_json'])
@@ -118,7 +119,28 @@ for theme, info in selected:
 #     (data points carry no theme label themselves; sourcing PDFs are the
 #     proxy for relevance)
 def norm(s: str) -> str:
-    return (s or '').lower().strip()
+    """Mirror report.synthesizer._normalize_theme_tag exactly so per-theme
+    matching against theme_map keys works.
+
+    theme_map keys are produced by _normalize_theme_tag in synthesizer.py:
+    lowercase, drop leading articles, replace hyphens/slashes/underscores
+    with spaces, strip non-word punctuation, collapse whitespace. The raw
+    theme_stances[*].theme labels in analyses_json keep hyphens and casing
+    ('AI hyperscaler capex super-cycle'). Without mirroring the full
+    normalization, the per-theme filter silently matches zero stances for
+    every multi-word hyphenated theme (e.g. 'super-cycle', 'rate-cut',
+    're-accelerating') and adjudication runs vacuously.
+    """
+    if not s:
+        return ''
+    t = s.lower().strip()
+    for art in ('the ', 'a ', 'an '):
+        if t.startswith(art):
+            t = t[len(art):]
+    t = re.sub(r'[/\-_]', ' ', t)
+    t = re.sub(r'[^\w\s]', '', t)
+    t = re.sub(r'\s+', ' ', t).strip()
+    return t
 
 inputs_per_theme = {}
 for theme_name, info in selected:
@@ -182,6 +204,25 @@ for theme_name, info in selected:
 
 with open('/tmp/adjudication_inputs.json', 'w') as f:
     json.dump(inputs_per_theme, f, indent=1)
+
+# Per-theme match diagnostics — surfaces silent vacuous-match bugs (e.g.,
+# theme_map vs theme_stances normalization mismatches) by reporting the
+# actual evidence counts each theme picked up. A theme showing 0 stances
+# means the per-theme filter found nothing despite the theme being in
+# theme_map — adjudication will run, lint will pass vacuously, and the
+# adjudication file will carry no real grounding signal.
+print(f"\nAdjudication input diagnostics:")
+empty_themes = []
+for theme_name, inputs in inputs_per_theme.items():
+    n_st = len(inputs['theme_stances'])
+    n_tp = len(inputs['tension_points'])
+    n_dp = len(inputs['key_data_points'])
+    print(f"  {theme_name}: {n_st} stances, {n_tp} tensions, {n_dp} data_points")
+    if n_st == 0:
+        empty_themes.append(theme_name)
+if empty_themes:
+    print(f"\nWARNING: {len(empty_themes)} theme(s) matched ZERO stances — likely a normalization mismatch between theme_map keys and theme_stances labels. Themes: {empty_themes}")
+
 print(f"\nWrote adjudication inputs for {len(inputs_per_theme)} themes -> /tmp/adjudication_inputs.json")
 PYEOF
 ```
