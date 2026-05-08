@@ -19,6 +19,7 @@ from report.news_data import (
     fetch_news_snapshot, fetch_earnings_calendar, fetch_economic_calendar,
 )
 from report.models import DailyReport
+from report.theme_clusterer import cluster_themes
 from config import settings
 import db
 
@@ -65,92 +66,14 @@ def _normalize_theme_tag(tag: str) -> str:
     return t
 
 
-# High-signal anchor terms — when two tags share one of these, they
-# cluster the same theme even without a 2-word overlap. Without this,
-# fragmentation is common: 'hormuz oil shock' (1 bank) + 'hormuz peace
-# deal' (1 bank) should merge into a single Hormuz theme (2 banks),
-# but the original 2-word-shared rule kept them separate. Each anchor
-# below is a unique enough token that co-occurrence almost certainly
-# means same-theme. Generic words (oil, rate, market, capex) are NOT
-# anchors — those would over-merge.
-_THEME_ANCHORS = frozenset({
-    # Geo / events
-    "hormuz", "iran", "gaza", "ukraine", "russia",
-    # Central banks / rate-setters
-    "fed", "fomc", "powell", "warsh", "kashkari", "hammack", "logan",
-    "ecb", "boj", "boe", "pboc",
-    # Macro prints
-    "cpi", "pce", "nfp", "gdp", "ism", "ppi",
-    # Mega-caps / coalitions
-    "mag7", "opec", "hyperscaler", "hyperscalers",
-    # Crypto
-    "bitcoin", "ethereum",
-})
-
-
-def _merge_similar_tags(
-    tag_to_sources: dict[str, set[str]],
-) -> tuple[dict[str, set[str]], dict[str, str]]:
-    """Merge tag clusters whose normalized forms are substrings/supersets
-    of each other, OR which share a high-signal anchor term.
-
-    Two-tier merge logic:
-      1. Original rule — >= 2 shared words AND one is subset of the other.
-         Catches 'hormuz oil shock' vs 'hormuz energy shock' (2 shared,
-         both 3-word, subset relationship).
-      2. Anchor rule — >= 1 shared word from `_THEME_ANCHORS`. Catches
-         'hormuz oil shock' vs 'hormuz peace deal' (1 shared, but it's
-         an anchor — clearly same theme cluster).
-
-    Picks the more frequently-attested form as the canonical label
-    (sort order at the top puts higher-source-count tags first, so
-    later tags merge into earlier ones).
-
-    Returns (merged_sources, orig_to_canonical):
-      - merged_sources: dict canonical_tag -> set of all banks in cluster
-      - orig_to_canonical: dict original_tag -> canonical_tag (lets callers
-        consolidate other per-tag data using the same merge decisions —
-        e.g., stance-bank sets and pdf counts in _classify_themes).
-    """
-    items = sorted(tag_to_sources.items(), key=lambda kv: (-len(kv[1]), -len(kv[0])))
-    merged: dict[str, set[str]] = {}
-    orig_to_canonical: dict[str, str] = {}
-    seen_words: list[tuple[set[str], str]] = []
-    for tag, srcs in items:
-        words = set(tag.split())
-        merged_into: str | None = None
-        for existing_words, existing_tag in seen_words:
-            shared = words & existing_words
-            # Tier 1: original 2-word-subset rule
-            if len(shared) >= 2 and (
-                words.issubset(existing_words) or existing_words.issubset(words)
-            ):
-                merged_into = existing_tag
-                break
-            # Tier 2: anchor-term rule — even 1 shared word merges
-            # if that word is a high-signal anchor.
-            if shared & _THEME_ANCHORS:
-                merged_into = existing_tag
-                break
-        if merged_into is not None:
-            merged[merged_into] |= srcs
-            orig_to_canonical[tag] = merged_into
-        else:
-            merged[tag] = set(srcs)
-            orig_to_canonical[tag] = tag
-            seen_words.append((words, tag))
-    return merged, orig_to_canonical
-
-
 def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
     """Aggregate organic theme stances extracted at deep-analysis time.
 
     Each analysis carries 1-3 `theme_stances` (theme + stance + conviction +
     key_argument) extracted by Gemini from the document's actual content. We
-    aggregate across all PDFs in the window, normalize the theme labels for
-    case/punctuation, fuzzy-merge near-duplicates, and count distinct banks
-    per resulting theme — also capturing per-theme stance breakdowns
-    (supportive vs skeptical vs neutral) for downstream adjudication.
+    aggregate across all PDFs in the window and use semantic embedding-based
+    clustering (`report.theme_clusterer`) to merge near-duplicate themes
+    across banks — replacing the prior anchor-list + substring-match merge.
 
     Returns {theme_name: {
         "banks": int, "pdfs": int, "sources": list[str],
@@ -172,6 +95,10 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
     tag_sources: dict[str, set[str]] = {}                            # tag -> banks discussing it
     tag_pdf_count: dict[str, int] = {}                               # tag -> count of PDFs touching it
     tag_stance_banks: dict[str, dict[str, set[str]]] = {}            # tag -> stance -> banks taking that stance
+    # Track the longest key_argument seen for each tag — used as
+    # disambiguating context when we embed for clustering. "iran" alone
+    # is ambiguous; "iran: oil-supply shock from Hormuz" is not.
+    tag_arguments: dict[str, str] = {}
 
     for a in analyses:
         source = (a.source or "Unknown").strip()
@@ -186,6 +113,9 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
             seen_for_this_pdf.add(norm)
             tag_sources.setdefault(norm, set()).add(source)
             tag_pdf_count[norm] = tag_pdf_count.get(norm, 0) + 1
+            arg = (ts.key_argument or "").strip()
+            if arg and len(arg) > len(tag_arguments.get(norm, "")):
+                tag_arguments[norm] = arg
             stance = (ts.stance or "neutral").lower().strip()
             if stance not in ("supportive", "skeptical", "neutral"):
                 stance = "neutral"
@@ -196,27 +126,28 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
             # without text-anchored support.
             if stance in ("supportive", "skeptical"):
                 evidence = (ts.evidence or "").strip()
-                key_arg = (ts.key_argument or "").strip()
-                if not evidence and not key_arg:
+                if not evidence and not arg:
                     stance = "neutral"
             stance_buckets = tag_stance_banks.setdefault(
                 norm, {"supportive": set(), "skeptical": set(), "neutral": set()}
             )
             stance_buckets[stance].add(source)
 
-    # Merge near-duplicates. _merge_similar_tags returns the consolidated
-    # source map AND a mapping orig_tag -> canonical_tag so we can apply
-    # the same merge decisions to the stance-bank sets and pdf counts.
-    merged_sources, orig_to_canonical = _merge_similar_tags(tag_sources)
+    # Embedding-based clustering. Tags without a key_argument get an empty
+    # context (the tag itself is embedded). Returns:
+    #   orig_to_canonical: {tag: cluster_canonical_label}
+    #   clusters: list of cluster member lists (audit log)
+    clustering_input = {tag: tag_arguments.get(tag, "") for tag in tag_sources}
+    orig_to_canonical, _clusters = cluster_themes(clustering_input)
 
-    # Apply the merge mapping to consolidate stance-bank sets and pdf counts.
+    # Apply mapping. Tags that didn't make it through the embedding step
+    # (degenerate inputs) fall back to identity.
+    merged_sources: dict[str, set[str]] = {}
     canonical_stance_banks: dict[str, dict[str, set[str]]] = {}
     canonical_pdf_count: dict[str, int] = {}
-    for orig_tag, canonical_tag in orig_to_canonical.items():
-        # Stance-bank sets union per stance (preserves bank-dedup across
-        # the merge, so "hormuz oil shock" + "hormuz peace deal" both from
-        # Goldman → Goldman counts ONCE in the merged theme's supportive
-        # tally, not twice).
+    for orig_tag, srcs in tag_sources.items():
+        canonical_tag = orig_to_canonical.get(orig_tag, orig_tag)
+        merged_sources.setdefault(canonical_tag, set()).update(srcs)
         canonical_buckets = canonical_stance_banks.setdefault(
             canonical_tag,
             {"supportive": set(), "skeptical": set(), "neutral": set()},
