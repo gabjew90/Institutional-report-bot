@@ -27,7 +27,7 @@ from config import settings
 from github_bridge import client as gh
 from pipeline.orchestrator import _load_analyses_from_db
 from report.synthesizer import build_pulse_context
-from report.formatter import format_report_embeds
+from report.formatter import format_report_embeds, format_report_header_message
 from report.models import DailyReport
 from discord_bot.sender import send_embeds
 import db
@@ -365,6 +365,7 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             target_ids = list(configured_ids)
 
         embeds = format_report_embeds(report)
+        leading_content = format_report_header_message(report)
         channels_sent = 0
         for cid in target_ids:
             try:
@@ -372,7 +373,7 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                 if channel is None:
                     log.warning(f"Bridge: channel {cid} not found")
                     continue
-                ok = await send_embeds(channel, embeds)
+                ok = await send_embeds(channel, embeds, leading_content=leading_content)
                 if ok:
                     channels_sent += 1
                     log.info(f"Bridge: posted {name} to channel {cid} ({channel.name})")

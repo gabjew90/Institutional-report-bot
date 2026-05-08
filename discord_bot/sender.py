@@ -12,12 +12,34 @@ async def send_embeds(
     channel: discord.TextChannel,
     embeds: list[discord.Embed],
     delay: float = 0.5,
+    leading_content: str | None = None,
 ) -> bool:
     """Send a sequence of embeds to a Discord channel.
 
-    Returns True if all embeds were sent successfully.
+    If `leading_content` is set, sends it as a plain message FIRST so
+    Discord renders any markdown headers (`#`/`##`) at full size. Then
+    sends the embeds in sequence. Used by the pulse delivery to put
+    the H1 title + date at the top of the report at large rendered size,
+    rather than constraining them to embed-title text.
+
+    Returns True if all sends were successful.
     """
     success = True
+
+    if leading_content:
+        try:
+            await channel.send(content=leading_content)
+            await asyncio.sleep(delay)
+        except discord.HTTPException as e:
+            log.error(f"Failed to send leading content: {e}")
+            try:
+                await asyncio.sleep(2)
+                await channel.send(content=leading_content)
+                await asyncio.sleep(delay)
+            except discord.HTTPException as e2:
+                log.error(f"Retry failed for leading content: {e2}")
+                success = False
+
     for i, embed in enumerate(embeds):
         try:
             await channel.send(embed=embed)

@@ -149,26 +149,38 @@ def _format_pulse_datetime() -> str:
     return f"{weekday}, {month} {day}, {year} — {hour_12}:{minute:02d} {ampm} {tzname}"
 
 
+def format_report_header_message(report: DailyReport) -> str:
+    """Build the leading Discord message that opens a pulse delivery.
+
+    Sent BEFORE the embeds so the H1 pulse title and date render at
+    Discord's full markdown-header size (the largest visible text in
+    the channel — much bigger than embed-title text). Marks the start
+    of the report unambiguously when scrolling Discord.
+
+    Returns a string with `# {title}` (Discord's largest header),
+    followed by `## {date_string}` (medium-large header). If the pulse
+    markdown didn't include an H1 (legacy fallback), uses a default.
+    """
+    pulse_title, _body = _extract_pulse_title(report.markdown_content or "")
+    if not pulse_title:
+        pulse_title = "Market Pulse"
+    return f"# {pulse_title}\n## {_format_pulse_datetime()}"
+
+
 def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
-    """Convert a DailyReport into a list of Discord embeds."""
+    """Convert a DailyReport's section content into a list of Discord embeds.
+
+    Does NOT include a header embed — the title + date now ship as a
+    leading markdown message via format_report_header_message(), which
+    renders much bigger than embed-title text. Callers are expected to
+    send the header message first, then these embeds.
+    """
     embeds: list[discord.Embed] = []
 
-    # Extract the model-generated H1 title (if present) and use the rest of
-    # the markdown for sections. This avoids the H1 rendering as its own
-    # section and keeps the eye-catching title contained to the header embed.
-    pulse_title, body_md = _extract_pulse_title(report.markdown_content or "")
-    if not pulse_title:
-        # Defensive fallback for pulses produced before the H1-title rule
-        # landed in the prompt — keep the pdf_count line so the header isn't
-        # empty.
-        pulse_title = f"{report.pdf_count} institutional research reports"
-
-    header_embed = discord.Embed(
-        title=pulse_title,
-        description=_format_pulse_datetime(),
-        color=0xFFD700,
-    )
-    embeds.append(header_embed)
+    # Strip the H1 title from the markdown so it doesn't double-render.
+    # The leading message (built by format_report_header_message) already
+    # carries the title; the body sections start fresh.
+    _pulse_title, body_md = _extract_pulse_title(report.markdown_content or "")
 
     # Parse markdown into sections and create embeds
     sections = _split_markdown_sections(body_md)

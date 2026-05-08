@@ -113,7 +113,7 @@ async def _pulse_submit(request: web.Request) -> web.Response:
     bot = request.app.get("bot")
     channels_sent = 0
     if bot is not None and settings.discord_channel_ids:
-        from report.formatter import format_report_embeds
+        from report.formatter import format_report_embeds, format_report_header_message
         from report.models import DailyReport
         from discord_bot.sender import send_embeds
 
@@ -128,11 +128,12 @@ async def _pulse_submit(request: web.Request) -> web.Response:
             stats={},
         )
         embeds = format_report_embeds(report)
+        leading_content = format_report_header_message(report)
         for cid in settings.discord_channel_ids:
             try:
                 channel = bot.get_channel(cid)
                 if channel:
-                    ok = await send_embeds(channel, embeds)
+                    ok = await send_embeds(channel, embeds, leading_content=leading_content)
                     if ok:
                         channels_sent += 1
                         log.info(f"Opus routine pulse posted to channel {cid} ({channel.name})")
