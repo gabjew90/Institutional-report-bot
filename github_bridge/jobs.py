@@ -398,5 +398,33 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         )
         log.info(f"Bridge: archived {name} (posted to {channels_sent} channels)")
 
+        # Archive the matching adjudication file if one was retrieved. Errors
+        # here must NOT cascade — the pulse is already posted and persisted.
+        # Worst case: the adjudication file stays in pending-adjudications/
+        # and gets cleaned up next cycle (the worker only matches by pulse
+        # markdown, so an orphaned adjudication does no harm).
+        if raw_adj is not None and name.endswith(".md"):
+            base = name[:-3]
+            adj_pending = f"{PENDING_ADJUDICATIONS_DIR}/{base}.json"
+            adj_archive = f"{ARCHIVE_ADJUDICATIONS_DIR}/{base}.json"
+            try:
+                await asyncio.to_thread(
+                    gh.put_file,
+                    adj_archive,
+                    raw_adj,
+                    f"bridge: archive adjudication for {name}",
+                )
+                await asyncio.to_thread(
+                    gh.delete_file,
+                    adj_pending,
+                    f"bridge: remove pending adjudication for {name}",
+                )
+                log.info(f"Bridge: archived adjudication {base}.json")
+            except Exception as e:
+                log.warning(
+                    f"Bridge: failed to archive adjudication for {name}: {e} "
+                    f"(pulse already posted; adjudication will retry next cycle)"
+                )
+
     except Exception as e:
         log.error(f"Bridge: error processing pending pulse {name}: {e}", exc_info=True)
