@@ -26,28 +26,44 @@ The reasoning was already done at extraction + aggregation. This step renders th
 
 ## Architecture
 
-Single pulse routine fire (no new routine, stays inside the 15/day cap):
+The existing scheduled-pulse routine is already a multi-call pipeline within a single fire:
 
 ```
-1. Fetch pulse-context/latest.json from bridge (existing)
-2. Pick selected themes from THEME COVERAGE
-   (top N, conviction-weighted threshold — same logic the prose prompt
-    already uses implicitly; surface it as an explicit selection)
-3. PARALLEL sub-agent dispatch — one Agent call per theme:
-   each sub-agent receives ONLY that theme's evidence
-   (theme name + per-PDF theme_stances entries matching this theme
-    + relevant tension_points + relevant key_data_points)
-   and returns structured adjudication JSON
-4. Lint each adjudication (deterministic, in main routine context):
-   reject themes whose adjudication doesn't pass
-5. Write adjudications to bridge:
-   pulse-output/pending-adjudications/<timestamp>.json
-6. Synthesize prose using adjudicated themes as input (Stage 2 will
-   rewrite this prompt; Stage 1 keeps the existing prose prompt and
-   passes the adjudication block in as context)
-7. Write pulse markdown + frontmatter to pulse-output/pending/
-   (worker poll picks it up, posts to Discord, archives — existing flow)
+EXISTING (one routine fire):
+  Fetch pulse-context/latest.json
+  → DRAFT call (writes analytical pulse from research analyses)
+  → AUDIT call (rewrites DRAFT against live market data + news +
+                economic calendar + timing checks)
+  → Submit pulse markdown to pulse-output/pending/<timestamp>.md
 ```
+
+Adjudication slots in *before* DRAFT, extending the existing pattern:
+
+```
+NEW (same routine fire, no new fire — stays inside 15/day cap):
+  Fetch pulse-context/latest.json
+  → Theme selection (rank THEME COVERAGE by bank count + conviction)
+  → PARALLEL sub-agent dispatch — one Agent call per theme:
+       each sub-agent receives ONLY that theme's evidence
+       (theme name + per-PDF theme_stances entries matching this theme
+        + relevant tension_points + relevant key_data_points)
+       and returns structured adjudication JSON
+  → Lint each adjudication (deterministic, main routine context)
+  → Write adjudications to bridge:
+       pulse-output/pending-adjudications/<timestamp>.json
+  → DRAFT call (existing — prompt receives the adjudication block as
+                an additional structured input alongside the per-PDF JSON
+                and THEME COVERAGE; Stage 1 keeps DRAFT prompt mostly
+                unchanged, Stage 2 rewrites it to consume adjudications
+                as primary input)
+  → AUDIT call (unchanged — operates on DRAFT output + live data)
+  → Submit pulse markdown to pulse-output/pending/<timestamp>.md
+       (worker poll picks it up, posts to Discord, archives — existing flow)
+```
+
+### Parallel sub-agent dispatch — and the sequential fallback
+
+The design assumes the Claude.ai scheduled-routine surface supports parallel `Agent` tool dispatch the way Claude Code interactive sessions do. If that turns out not to be the case (parallel breadth capped, or tool surface differs), the fallback is sequential dispatch — 6–8 sequential `Agent` calls instead of one parallel batch. Each phase wall-time goes from ~30-60 s to ~3-5 min, total fire wall time ~7-10 min. Still within typical routine session budgets, so the design holds either way; only the wall-time profile changes. The implementation plan should verify this on the actual routine surface before committing to parallel.
 
 ### Why agentic-sub-agents-in-one-routine beats alternatives
 
@@ -162,11 +178,12 @@ Substantial change. The routine's prompt becomes:
 
 1. Fetch context (existing).
 2. Theme selection step (new, explicit): rank `THEME COVERAGE` by bank count + conviction, pick top N (e.g., 3–8).
-3. Per-theme parallel `Agent` dispatch with the strict-input adjudication prompt (new).
+3. Per-theme parallel `Agent` dispatch with the strict-input adjudication prompt (new). Sequential fallback if parallel isn't supported on the routine surface.
 4. Lint pass via main-context Bash/jq or inline JSON checks (new). Discarded themes go to `discarded_themes`.
 5. Write `pending-adjudications/<timestamp>.json` to bridge (new).
-6. Existing prose synthesis step, with the adjudication block additionally injected as input (Stage 1 keeps prose prompt mostly unchanged; Stage 2 rewrites it).
-7. Write `pending/<timestamp>.md` to bridge (existing).
+6. Existing DRAFT call (the routine pulls `DRAFT_USER` template from this repo). Stage 1: pass adjudication block as added input — minimal DRAFT prompt edit to add an `ADJUDICATED THEMES:` section. Stage 2: rewrite DRAFT to consume adjudications as primary input.
+7. Existing AUDIT call (unchanged — operates on DRAFT output + live data).
+8. Write `pending/<timestamp>.md` to bridge (existing).
 
 The exact prompt text is part of the implementation plan, not this design doc.
 
