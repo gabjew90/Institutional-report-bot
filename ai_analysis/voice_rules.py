@@ -54,6 +54,15 @@ BANNED_AI_TELLS = [
     "double-click",
     "in this rapidly-evolving landscape",
     "stakeholders",
+    # Default-openers that became template tells — phrasings the model
+    # latched onto as its single positioning-sentence opener and ran every
+    # theme's close on. Each became visible repetition-as-AI-tell. Banned
+    # to force genuine variation; the model must pick a different opener
+    # each theme.
+    "the cleanest read",
+    "the cleanest expression",
+    "cleanest read",
+    "cleanest expression",
 ]
 
 BANNED_META_NARRATION = [
@@ -167,6 +176,14 @@ JARGON_WITH_TRANSLATIONS: dict[str, str] = {
     "lifted offers": "buyers cleared out the sell orders at this price",
     "smoked the offers": "buyers cleared out the sell orders at this price",
     "got tapped": "sellers hit the bids and pushed price down",
+    # Trader / desk-speak that slipped through earlier pulses — these are
+    # clipped industry shorthand a non-finance reader cannot parse without
+    # context. Rewrite into plain sentences.
+    "chip leg": "the semiconductor side of the trade",
+    "prime book": "what hedge funds at prime brokers are doing",
+    "UTC day": "the calendar day in UTC time (use plain dates instead)",
+    "bellwether": "a name the market treats as a leading indicator for its sector",
+    "bellweather": "a name the market treats as a leading indicator for its sector",  # common misspelling
 }
 
 

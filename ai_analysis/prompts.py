@@ -759,17 +759,33 @@ Here are {pdf_count} research analyses to synthesize:
 
 **Produce a draft Market Pulse starting with an H1 title, then three sections:**
 
-**Pulse H1 title (mandatory, very first line):** the markdown begins with a single H1 line: `# {title}` where `{title}` is a brief eye-catching summary of the day's pulse — name the dominant story, tension, or surprise. 5-10 words. No date, no "Market Pulse" boilerplate, no quotation marks, no bold. Examples:
+**Pulse H1 title (mandatory, very first line):** the markdown begins with a single H1 line: `# {title}` where `{title}` is a punchy newspaper-style headline — name the dominant story or signal in **3-5 words**. Short, declarative, scroll-stopping. No date, no "Market Pulse" boilerplate, no quotation marks, no bold, no full sentences with "the/a/an" filler.
+
+Examples (this is the length and energy target):
 
 ```
-# Hormuz peace deal cracks the oil bid
-# AI capex super-cycle gets the Datadog confirmation
-# Bond market calls the Fed's bluff into NFP
-# Powell's trial balloon and the rate-cut repricing it triggered
-# Risk-on overnight as Iran ceasefire chatter cuts $USO 3%
+# Wartime reigns
+# Retail chasing begins
+# Ceasefire cracks
+# Hormuz hot, jobs next
+# AI capex confirmed
+# Bond market bluffs Fed
+# Vol regime breaks
+# Crypto leads, equities chop
+# Iran flips the tape
+# Powell opens the QE door
 ```
 
-The title should make a reader scrolling Discord stop and read. Pick the single most important thing about today's pulse — the story everyone's going to be talking about at the open — and put it as the H1.
+NOT acceptable (too long, too explanatory, too sentence-shaped):
+
+```
+# Hormuz peace deal cracks the oil bid                              ← too long
+# Bond market calls the Fed's bluff into NFP                        ← too long
+# Powell's trial balloon and the rate-cut repricing it triggered    ← way too long, sentence-shaped
+# Risk-on overnight as Iran ceasefire chatter cuts $USO 3%          ← too long, ticker-cluttered
+```
+
+Think tabloid headline, not analyst note title. The reader's eye should hit the H1, get the one-thing-they-need-to-know in a single beat, then scroll into the body.
 
 After the H1 title, leave one blank line, then proceed straight to the three sections below.
 
@@ -854,18 +870,16 @@ State the strongest counter-argument honestly, with specific data or a named ris
 
 **Movement 5 — THE POSITIONING HINT (ONE sentence, integrated into the same paragraph as Movements 3-4).** Close with a brief positioning view: what the setup leans toward for someone with US options/crypto exposure, with the cleanest instrument expression named in passing. ONE sentence is the target. Do NOT include a specific invalidation level or "risk" line — that lives in the bull/bear analysis above and the formal trade calls (in a future TRADE PLAYBOOK section), not in the insight close. Plain English. NO `**Trade Implication:**` header, NO `Hint:` label, NO bullet, NO "Why:" / "Risk:" structure. Just one sentence woven into the paragraph's close.
 
-**Vary the opener of the positioning sentence.** Do NOT default to *"The cleanest read..."* every time — it has become a template tell. Rotate naturally between phrasings, picking whichever fits the rhythm of the analyst paragraph it's closing:
-- *"For US options exposure, this leans toward..."*
-- *"The setup favors..."*
-- *"Net of all this, the bias is..."*
-- *"Where the bias sits..."*
-- *"On balance, the setup looks like..."*
-- *"For someone with US risk-asset exposure..."*
-- *"That puts the bias on..."*
-- *"The trade lean here is..."*
-- *"Net positioning view: ..."*
+**Vary the positioning sentence — and BAN the openers that became template tells.** *"The cleanest read..."* and *"the cleanest expression..."* are HARD-BANNED — do not use these phrases anywhere, period. They became visible AI tells from repetition.
 
-Avoid "The cleanest read..." unless it's been at least 2-3 themes since you last used it. The phrase itself is fine, but the repetition is what makes the pulse read AI-formal.
+For positioning closes, write a direct sentence whose specific words come from THIS theme's evidence — not from a list of pre-approved openers. Examples (note these are *patterns to vary from*, not templates to copy):
+- *"The bias here is long $TLT."*
+- *"This favors long $BNO over short $USO."*
+- *"Net positioning view: long memory ($MU), avoid CPU-exposed names."*
+- *"The setup is short $UUP, paired against long $GLD."*
+- *"For US options exposure, the trade is long $SPY puts into the print."*
+
+Each theme's positioning sentence should differ in WORDS, not just structure. If you find yourself starting every positioning close with the same construction, REWRITE — the variation is the whole point.
 
 **Levels and technical thresholds must trace to research (binding — anti-hallucination).** Any specific price level, support/resistance line, or technical threshold you cite (e.g., "$BTC above 84k," "$SPX 5800 resistance," "10Y 4.55% breakdown") MUST come from the research corpus or the live market_snapshot. If the corpus doesn't name a level, do NOT invent one. Round-number technical levels (84k, 78k, 100k, $5000 SPX) are especially risky — they sound right but are usually fabrications. Heuristic: if you can't point to which analysis_json entry the level came from, drop the level reference entirely. The bot's research feed doesn't include live charting; the analyst voice should not pretend it does.
 
@@ -905,13 +919,15 @@ Notice: the theme's main call is *"the bond market is pricing rate hikes and we 
 
 The default close is a positioning lean + named instrument. NO invalidation level, NO confirmation trigger, NO "if X then Y" line UNLESS the trigger is verbatim from research input (`tension_points.what_invalidates` field, a specific level cited in `key_data_points`, or an explicit research quote). Made-up triggers read as fake conviction. Better a short close with no trigger than a long one with an invented number.
 
-✅ Default (no trigger — research didn't supply one): *"...one-third of MAG7 profits came from private-equity investment gains rather than AI revenue, so earnings are more cyclically vulnerable than the headline suggests. For someone with semicap exposure, the cleanest expression is the picks-and-shovels names — Applied Materials and Tokyo Electron — through July earnings."*
+✅ Default (no trigger — research didn't supply one): *"...one-third of MAG7 profits came from private-equity investment gains rather than AI revenue, so earnings are more cyclically vulnerable than the headline suggests. For someone with semicap exposure, the picks-and-shovels names — Applied Materials and Tokyo Electron — keep getting paid through July earnings."*
 
-✅ Default (positioning lean only, no fabricated trigger): *"...UBS sees two cuts in 2H, but the pushback from JPM is that core CPI is locked in a three-month lag from oil and the Fed cannot cut into a re-acceleration. The setup leans bullish for long-dated Treasuries via $TLT."*
+✅ Default (positioning lean only, no fabricated trigger): *"...UBS sees two cuts in 2H, but the pushback from JPM is that core CPI is locked in a three-month lag from oil and the Fed cannot cut into a re-acceleration. The bias here is long $TLT, with index-equity exposure trimmed."*
 
-✅ Acceptable (trigger included BECAUSE it traces to research): *"...refined-fuel inventories are at 8-year lows and Europe's jet fuel inventory runs out by June, so oil prices stay elevated for months regardless of the ceasefire. Brent's six-month curve at $92 is the market saying the same thing in pricing. A Brent-tracking ETF ($BNO) captures it cleanly, and the Goldman desk's $85 Brent break — explicitly cited in their note as the level the supply scare ends — would be the trigger that the trade is over."* (Note: the $85 trigger is attributed to Goldman's note. If `tension_points.what_invalidates` says "Brent breaking below $85 sustained" for this theme, the trigger is fair game; if not, OMIT.)
+✅ Acceptable (trigger included BECAUSE it traces to research, with attribution): *"...refined-fuel inventories are at 8-year lows and Europe's jet fuel inventory runs out by June, so oil prices stay elevated for months regardless of the ceasefire. Long $BNO captures it. The Goldman desk's $85 Brent break — explicitly cited in their note as the level the supply scare ends — would be the trigger that the trade is over."* (The $85 trigger is attributed to Goldman's note. If `tension_points.what_invalidates` says "Brent breaking below $85 sustained" for this theme, the trigger is fair game; if not, OMIT.)
 
 ❌ Bad (invented trigger, no research basis): *"...the rate-cut thesis dies if May 12 CPI prints 3.0%+ core."* (If research didn't supply the specific 3.0% threshold or the May 12 date, this is fabricated precision.)
+
+❌ Bad (default-opener tells — banned phrasings): *"The cleanest read for someone with US options exposure..."*, *"the cleanest expression is..."*. These are template tells. Use specific phrasings: *"The bias is long X."* / *"Long $X is the trade."* / *"This favors long $X over short $Y."* / *"Net positioning view: long X."*
 
 **Examples of WHAT NOT TO DO (templated trade lines — strip these):**
 - ❌ *"**Trade Implication.** Long $AMAT into July earnings. Why: ... Risk: ..."* — labeled trade line is gone.
@@ -1228,7 +1244,15 @@ If you spot a missing cross-bank theme, write a new INSIGHT yourself using the d
 
 Target 3-6 high-impact themes. Better to ship 3 sharp themes than 6 with filler. If after culling you only have 2 strong themes, ship 2.
 
-**Pass A.5 — data density check.** Each surviving theme body must have at least 3 concrete data points (specific number with attribution, specific level/percentile, specific positioning data, specific dissent count, specific ticker with conviction, named bank attribution). If a theme body reads like a generic summary ("revenue growth is strong," "yields are rising," "positioning is improving"), go back to the news block + earnings calendar + the draft's own references and pull the specific numbers. Examples:
+**Pass A.5 — data density check.** Each surviving theme body must have at least 3 concrete data points (specific number with attribution, specific level/percentile, specific positioning data, specific dissent count, specific ticker with conviction, named bank attribution). If a theme body reads like a generic summary ("revenue growth is strong," "yields are rising," "positioning is improving"), go back to the news block + earnings calendar + the draft's own references and pull the specific numbers.
+
+**Pass A.5b — data-dump test (anti-data-dump, BINDING).** Density is a floor, not a goal. Walk every sentence in each theme body. For each sentence, ask: *"is this sentence making the call, supporting it with mechanism, raising the counter, defending against the counter, or closing with positioning?"* Stats without an argument attached — sentences that just list a number or fact with no reason WHY the reader should care — are filler and must be CUT or merged into a sentence that has an argument.
+
+Failure mode this catches: theme bodies that read like a string of bullet-shaped facts in prose form ("Goldman raised X to $751B. UBS sees Y at $900B by 2027. Anthropic hit $30B annualized revenue. SpaceX/Colossus partnership announced. Datadog +31% afterhours."). Each sentence is a fact; none of them argue anything. The reader sees data but learns nothing.
+
+The fix is integration: each fact gets paired with what it MEANS — *"Goldman's raise to $751B (up $80B in two weeks) is the second cycle of capex revisions higher in a month, and the breadth of names participating tells you this isn't a story about one hyperscaler — it's the entire infrastructure stack getting bid."* Same data, but now the sentence does work.
+
+The test: if you remove the numbers from a sentence, can the remaining sentence still tell the reader something true and useful about the world? If yes, the sentence is making an argument (good — keep). If no, the sentence is just a stat with prose padding — cut, or merge the number into a sentence that does make an argument. Examples:
 - Weak: *"Hyperscaler capex is being revised upward."*
 - Strong: *"Goldman raised 2026 hyperscaler capex to $751B (up $80B in two weeks, 83% higher than 2025); MAG7 reported 20% revenue growth, 61% earnings growth — though 1/3 of profits came from PE investment gains."*
 
