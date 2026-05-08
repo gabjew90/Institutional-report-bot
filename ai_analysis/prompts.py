@@ -1017,7 +1017,11 @@ Don't flatten sentence structure or kill the analyst conviction language — tho
 
 **Content authority: you have it.** Unlike pure style audits, you CAN:
 - Cut INSIGHTS themes that aren't truly high-impact (recurring flow commentary, generic macro wallpaper, single-bank technicals that won't move positioning).
-- **ADD a missing theme** when the draft skipped a clearly dominant cross-bank story. If 3+ banks in the live news / earnings calendar / draft references converge on a theme (e.g., hyperscaler earnings + AI capex super-cycle, rate cuts being priced out of the curve, a specific Fed policy shift) and the draft doesn't have it, write a new INSIGHTS section yourself. Pull the specific data points from the draft's references and the news block. Same format as other themes: situation → tension → trade implication.
+- **ADD a missing theme** when the draft skipped a clearly dominant cross-bank story. Hard sourcing rule for AUDIT-added themes (binding — prevents fabrication from a single stray headline):
+  - **Research-driven addition:** at least 3+ banks in the draft's references converge on the theme (e.g., hyperscaler earnings + AI capex super-cycle, rate cuts being priced out of the curve, a specific Fed policy shift). Pull the specific data points from the draft's references.
+  - **News-driven addition:** at least 3 independent news sources in the news_snapshot block describe the same event (different outlets — Reuters / Bloomberg / WSJ / FT / CNBC / Fox count as independent; multiple stories from one outlet do NOT). OR the event appears as a `[RELEASED]` entry in the economic_calendar OR a `[REPORTED]` entry in the earnings_calendar.
+  - **One-source / single-headline themes are NOT eligible.** A single stray Reuters headline, a single tweet referenced in news, or a one-bank desk note does NOT justify adding a new INSIGHT. Cut or leave out.
+  Same format as other themes: situation → tension → trade implication.
 - Sharpen or add a one-line "what this means for traders" close to any theme that's missing one.
 - Merge two themes saying the same thing.
 - Reorder so the highest-impact (most-cross-bank-backed) theme leads INSIGHTS.
@@ -1114,9 +1118,15 @@ A reader should not encounter the same event with the same timestamp twice in RE
 - **session_status = "market hours — intraday"** → **open mode.**
   - "Markets are trading [direction] this session..." Use today's intraday %s.
 
-- **session_status = "pre-market or after-hours"** AND now > 16:00 → **after-hours mode.**
+- **session_status = "pre-market or after-hours"** AND 16:00 ET ≤ now < 24:00 ET (same calendar day) → **after-hours mode.**
   - Traditional %s are today's full session (final). Frame as *"$SPY finished today at..."*
   - Cover after-hours moves on overnight catalysts.
+
+- **session_status = "pre-market or after-hours"** AND 00:00 ET ≤ now < 09:30 ET (after the prior US session closed, before today's open) → **overnight mode.**
+  - This is the awkward window after a fire is run between local midnight and 9:30 AM ET. `today_label` may show TOMORROW's date (because UTC has crossed midnight), but the closed session is YESTERDAY's. Resolve the conflict by anchoring on the SESSION, not the calendar date.
+  - Traditional ETF %s are YESTERDAY's close. Frame as *"$SPY closed Wednesday at..."* (name the actual weekday of the closed session) and *"heading into Thursday's open"* (name today's weekday for the upcoming session).
+  - Crypto trades 24/7 — frame as live, with overnight movement woven in.
+  - Treat any news/events from "overnight" (i.e., between yesterday's close and now) as fresh catalysts going into the open.
 
 - **session_status = "closed (weekend)"** → **weekend mode.**
   - Open with *"Heading into Monday's open..."* — traditional %s are Friday's close. Crypto traded over the weekend, so frame as 24/7 normal.

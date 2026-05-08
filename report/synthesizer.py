@@ -65,26 +65,63 @@ def _normalize_theme_tag(tag: str) -> str:
     return t
 
 
-def _merge_similar_tags(tag_to_sources: dict[str, set[str]]) -> dict[str, set[str]]:
-    """Merge tag clusters whose normalized forms are substrings/supersets of each other.
+# High-signal anchor terms — when two tags share one of these, they
+# cluster the same theme even without a 2-word overlap. Without this,
+# fragmentation is common: 'hormuz oil shock' (1 bank) + 'hormuz peace
+# deal' (1 bank) should merge into a single Hormuz theme (2 banks),
+# but the original 2-word-shared rule kept them separate. Each anchor
+# below is a unique enough token that co-occurrence almost certainly
+# means same-theme. Generic words (oil, rate, market, capex) are NOT
+# anchors — those would over-merge.
+_THEME_ANCHORS = frozenset({
+    # Geo / events
+    "hormuz", "iran", "gaza", "ukraine", "russia",
+    # Central banks / rate-setters
+    "fed", "fomc", "powell", "warsh", "kashkari", "hammack", "logan",
+    "ecb", "boj", "boe", "pboc",
+    # Macro prints
+    "cpi", "pce", "nfp", "gdp", "ism", "ppi",
+    # Mega-caps / coalitions
+    "mag7", "opec", "hyperscaler", "hyperscalers",
+    # Crypto
+    "bitcoin", "ethereum",
+})
 
-    Example: 'hormuz oil shock' and 'hormuz energy shock' both normalize cleanly
-    but stay separate. We merge if one contains all words of the other.
-    Picks the more frequently-attested form as the canonical label.
+
+def _merge_similar_tags(tag_to_sources: dict[str, set[str]]) -> dict[str, set[str]]:
+    """Merge tag clusters whose normalized forms are substrings/supersets
+    of each other, OR which share a high-signal anchor term.
+
+    Two-tier merge logic:
+      1. Original rule — >= 2 shared words AND one is subset of the other.
+         Catches 'hormuz oil shock' vs 'hormuz energy shock' (2 shared,
+         both 3-word, subset relationship).
+      2. Anchor rule — >= 1 shared word from `_THEME_ANCHORS`. Catches
+         'hormuz oil shock' vs 'hormuz peace deal' (1 shared, but it's
+         an anchor — clearly same theme cluster).
+
+    Picks the more frequently-attested form as the canonical label
+    (sort order at the top puts higher-source-count tags first, so
+    later tags merge into earlier ones).
     """
     items = sorted(tag_to_sources.items(), key=lambda kv: (-len(kv[1]), -len(kv[0])))
     merged: dict[str, set[str]] = {}
     seen_words: list[tuple[set[str], str]] = []
     for tag, srcs in items:
         words = set(tag.split())
-        # Look for an existing cluster whose words are a subset or superset
         merged_into = False
         for existing_words, existing_tag in seen_words:
-            # Merge if one is subset of the other AND >= 2 words shared
             shared = words & existing_words
+            # Tier 1: original 2-word-subset rule
             if len(shared) >= 2 and (
                 words.issubset(existing_words) or existing_words.issubset(words)
             ):
+                merged[existing_tag] |= srcs
+                merged_into = True
+                break
+            # Tier 2: anchor-term rule — even 1 shared word merges
+            # if that word is a high-signal anchor.
+            if shared & _THEME_ANCHORS:
                 merged[existing_tag] |= srcs
                 merged_into = True
                 break

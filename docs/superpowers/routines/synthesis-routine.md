@@ -202,15 +202,9 @@ for theme_name, info in selected:
         'key_data_points': key_data_points,
     }
 
-with open('/tmp/adjudication_inputs.json', 'w') as f:
-    json.dump(inputs_per_theme, f, indent=1)
-
 # Per-theme match diagnostics — surfaces silent vacuous-match bugs (e.g.,
 # theme_map vs theme_stances normalization mismatches) by reporting the
-# actual evidence counts each theme picked up. A theme showing 0 stances
-# means the per-theme filter found nothing despite the theme being in
-# theme_map — adjudication will run, lint will pass vacuously, and the
-# adjudication file will carry no real grounding signal.
+# actual evidence counts each theme picked up.
 print(f"\nAdjudication input diagnostics:")
 empty_themes = []
 for theme_name, inputs in inputs_per_theme.items():
@@ -223,6 +217,25 @@ for theme_name, inputs in inputs_per_theme.items():
 if empty_themes:
     print(f"\nWARNING: {len(empty_themes)} theme(s) matched ZERO stances — likely a normalization mismatch between theme_map keys and theme_stances labels. Themes: {empty_themes}")
 
+# Early-exit guard: prune themes with no usable inputs BEFORE dispatching
+# sub-agents. A theme with zero stances/tensions/data_points cannot
+# produce a meaningful adjudication — the sub-agent would emit empty
+# arrays and the lint would pass vacuously (every rule has nothing to
+# validate against). Prune saves ~10s per empty theme of latency and
+# turns silent failures into explicit drops.
+pruned = {
+    t: i for t, i in inputs_per_theme.items()
+    if len(i['theme_stances']) > 0
+       or len(i['tension_points']) > 0
+       or len(i['key_data_points']) > 0
+}
+dropped_for_emptiness = [t for t in inputs_per_theme if t not in pruned]
+if dropped_for_emptiness:
+    print(f"\nDropping {len(dropped_for_emptiness)} theme(s) before dispatch — no usable inputs: {dropped_for_emptiness}")
+inputs_per_theme = pruned
+
+with open('/tmp/adjudication_inputs.json', 'w') as f:
+    json.dump(inputs_per_theme, f, indent=1)
 print(f"\nWrote adjudication inputs for {len(inputs_per_theme)} themes -> /tmp/adjudication_inputs.json")
 PYEOF
 ```
@@ -285,7 +298,27 @@ for theme, inputs in inputs_per_theme.items():
 
     fail_reason = None
 
+    # Rule 0: a theme with empty inputs cannot legitimately produce non-empty
+    # output. Defense in depth — the early-exit guard at the end of 3.5.1
+    # should prevent this from reaching the sub-agent at all, but if a
+    # theme somehow slipped through with empty inputs AND the agent emitted
+    # any facts/predictions, the only honest reading is fabrication.
+    inputs_empty = (
+        not inputs['theme_stances']
+        and not inputs['tension_points']
+        and not inputs['key_data_points']
+    )
+    output_nonempty = (
+        bool(adj.get('facts_agreed'))
+        or bool(adj.get('facts_contested'))
+        or bool(adj.get('falsifiable_predictions'))
+    )
+    if inputs_empty and output_nonempty:
+        fail_reason = 'inputs empty but adjudication has non-empty output arrays — fabrication suspected'
+
     # Rule 1: evidence_quotes must exact-match a theme_stances.evidence
+    if not fail_reason:
+        pass  # fall through to existing checks below
     for fa in adj.get('facts_agreed', []) or []:
         for q in fa.get('evidence_quotes', []) or []:
             if q not in valid_evidence:
@@ -455,6 +488,21 @@ adj_content = open('/tmp/adjudication.json').read().encode()
 result = commit(adj_path, adj_content, f'routine: adjudication {ts}')
 print('committed adjudication:', adj_path)
 print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+
+# Commit /tmp/draft.md as the pre-AUDIT artifact. Diff against the final
+# pulse to measure what AUDIT changed — invaluable for tuning the AUDIT
+# prompt and detecting regressions (e.g., AUDIT silently dropping a theme
+# DRAFT included, or vice versa). The bridge worker doesn't process this
+# directory; it's an audit/forensics record only.
+import os
+if os.path.exists('/tmp/draft.md'):
+    draft_path = f'pulse-output/drafts/{ts}.md'
+    draft_content = open('/tmp/draft.md').read().encode()
+    result = commit(draft_path, draft_content, f'routine: pre-audit draft {ts}')
+    print('committed draft:', draft_path)
+    print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+else:
+    print('no /tmp/draft.md — skipping draft commit (DRAFT step did not save it)')
 
 print(f'pdf_count: {ctx["pdf_count"]}, output_tokens_est: {output_tokens_est}, target: ALL configured channels (production)')
 PYEOF
