@@ -1083,16 +1083,26 @@ Good (specific bullet): *"- **Warsh confirmation hearing (10 AM ET).** He signal
 
 Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
-**What qualifies as a driver bullet (strict):** these bullets are for **major breaking market drivers that have already moved prices**, not scheduled events or background mechanics. Three categories qualify:
-1. **Geopolitical events with measurable market impact.** Iran/Hormuz escalations, ceasefires, sanctions. Skip diplomatic noise (consulate closings, minor visa changes, generic "talks ongoing") unless there's a direct US-asset reaction in the snapshot.
-2. **Major earnings (already reported).** MAG7 prints, big-bank earnings, named bellwethers from the calendar's [REPORTED] block. Format: actual vs estimate with the price reaction. NOT scheduled-tonight earnings (those go in WHAT TO WATCH).
-3. **Big macro data (already released).** CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI, FOMC outcomes — from the economic_calendar's [RELEASED] block, with actual vs estimate. NOT scheduled-but-not-yet-released events.
+**What qualifies as a driver bullet (strict):** these bullets are for **major breaking market drivers that have already moved prices**, not scheduled events or background mechanics. Nine categories qualify (each must ALSO clear the magnitude thresholds in the Real-mover rule below):
+
+1. **Geopolitical / war / supply-disruption shocks.** Hormuz strikes / ceasefires, OPEC production cuts or surprises, refinery outages, port closures (Hormuz, Suez, Panama Canal), major sanctions, surprise diplomatic breaks, terrorist attacks affecting markets. Required: direct US-asset reaction in the snapshot.
+2. **Major earnings already reported.** MAG7 prints, big-bank earnings, named bellwether single-names from the calendar's [REPORTED] block. Format: actual vs estimate + price reaction.
+3. **Big macro data already released.** CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI, FOMC outcomes — from the economic_calendar's [RELEASED] block. Format: actual vs estimate + price reaction.
+4. **Asset-class outperformance / breakouts.** Crypto running while equities chop, gold breaking new highs, oil rolling 5%+ on the day, sector rotation visible in ETF flow extremes — multi-asset divergences when they're extreme enough to be the story.
+5. **Central bank actions and surprises.** FOMC outcomes, surprise rate decisions, Powell/Warsh testimony that *actually moved markets* (not routine speeches), surprise QE/QT announcements. ECB/BOJ/BOE actions only if they spill into US assets.
+6. **Major M&A / regulatory actions on large-cap names.** S&P 100 / MAG7 deal announcements, FTC merger blocks, SEC approvals (spot BTC/ETH ETF type), FDA bellwether decisions, executive orders affecting specific sectors. Required: a named ticker moved at threshold.
+7. **Yield / bond market shocks.** 10Y breaking key technical levels (e.g., above 4.4%, above 4.5%), 30Y auction tails, credit spread blowouts visible in $HYG / $LQD, sovereign yield breakouts spilling into US.
+8. **Currency / FX shocks with US linkage.** Sudden DXY moves ≥ 0.5%, BOJ yen intervention, EM currency stress (peso, lira, won) when it visibly affects US assets, dollar-funding stress signals.
+9. **Volatility regime shifts.** VIX spike ≥ 5 points in a session, term-structure inversion (front-month VIX > back-month), major options expiry imbalances that visibly moved spot.
 
 **What does NOT qualify (drop these — they belong in WHAT TO WATCH or get cut entirely):**
 - Treasury Quarterly Refunding Announcement / coupon supply expectations / debt issuance previews — these are scheduled mechanics, not breaking news. Move to WHAT TO WATCH.
-- Fed governor speeches that didn't move the tape — only Powell/Warsh testimony matters here, only if it actually moved markets.
-- Geopolitical side-threads with no clear US-asset link (Peshawar consulate, regional Fed surveys, foreign political minutiae). Cut entirely.
+- Fed governor speeches that didn't move the tape — only chair-level testimony matters here, and only if it actually moved markets.
+- Geopolitical side-threads with no clear US-asset link (consulate closings, regional Fed surveys, foreign political minutiae). Cut entirely.
 - Single-stock news on names that aren't tape-movers (sub-bellwether earnings, regional bank actions, micro-cap M&A). Cut.
+- Routine econ prints that landed in-line with consensus and didn't move tape (NFP +75k vs est +75k with $SPY flat). Drop or move to WHAT TO WATCH context.
+- Foreign politics with no US ticker linkage (UK local elections, French budget votes, German coalition shuffles). Cut.
+- Generic commentary without a breaking-news anchor ("positioning is cautious", "the tape feels heavy"). That's analysis material for INSIGHTS, not a tape driver.
 - Anything you'd describe with "filed under" or "things to watch but unclear impact." If the impact isn't clear, it doesn't belong in drivers.
 
 **RECAP grounding rule (binding — prevents hallucinated bullets):** every driver bullet MUST trace back to one of three sources:
