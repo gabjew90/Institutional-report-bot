@@ -407,9 +407,27 @@ evidence supports):
 
 Save to `/tmp/draft.md` via Python.
 
-## STEP 5 — Generate AUDIT (Stage 2)
+## STEP 5 — Stitch + Edit (Stage 2, two sub-passes)
 
-Apply `AUDIT_USER` substitutions and `AUDIT_SYSTEM`. Apply ALL rules. Final readability pass: walk every sentence in INSIGHTS bodies. For any opener of '[Bank] [verb]s that...' (Market Ear says, Mizuho keeps hammering, Goldman's mid-day color, etc.), rewrite. Move the attribution to a parenthetical at sentence end or strip it entirely. Save to `/tmp/final.md`.
+The post-DRAFT pass is split into a deterministic STITCH (Python, no LLM) followed by a judgment-based EDIT dispatched as a separate sub-agent for fresh-eyes review. Splitting these forces each pass to do one job well: STITCH cannot accidentally drop a theme; EDIT cannot accidentally miss a foreign cashtag.
+
+### Step 5a — STITCH (mechanical fixes, no LLM)
+
+```bash
+python3 scripts/pulse_stitch.py /tmp/draft.md /tmp/stitched.md
+```
+
+Foreign cashtag scrub (`$TSCO` → "Tesco", `$CNA` → "Centrica", etc.) and ETF normalization (`$SPX` → `$SPY`, `$NDX` → `$QQQ`, `$RUT` → `$IWM`). Single source of truth: `scripts/pulse_stitch.py` constants. The script prints what it changed; review the log briefly to confirm nothing surprising got rewritten.
+
+### Step 5b — EDIT (judgment-based, dispatched as a single sub-agent)
+
+EDIT runs in a fresh `general-purpose` Agent session — NOT in the orchestrator's accumulated context. The sub-agent has no DRAFT history, no adjudication memory, just the stitched pulse + live data. That fresh-eyes property is the entire reason for the dispatch: an in-context AUDIT re-reads its own work; an out-of-context EDIT actually reviews.
+
+Build the sub-agent prompt by combining `AUDIT_SYSTEM` + `AUDIT_USER` (with substitutions) from `ai_analysis/prompts.py`. Substitute `{draft_markdown}` with the contents of `/tmp/stitched.md` (post-STITCH, NOT the raw `/tmp/draft.md`). All other substitutions (`{today}`, `{now}`, `{session_status}`, `{market_snapshot}`, `{news_snapshot}`, `{earnings_calendar}`, `{economic_calendar}`) come from `/tmp/ctx.json`.
+
+Dispatch ONE Agent call with the assembled prompt. The sub-agent applies the full AUDIT pipeline (RECAP rebuild, Pass A cull, Pass A.5 density, Pass B close, voice scrub) and returns the revised markdown. Save the response to `/tmp/final.md`.
+
+Do not pass any tools to the sub-agent — it doesn't need file access; the prompt is fully self-contained.
 
 ## STEP 5.5 — Lint final markdown (deterministic regex scan)
 
@@ -514,11 +532,24 @@ import os
 if os.path.exists('/tmp/draft.md'):
     draft_path = f'pulse-output/drafts/{ts}.md'
     draft_content = open('/tmp/draft.md').read().encode()
-    result = commit(draft_path, draft_content, f'routine: pre-audit draft {ts}')
+    result = commit(draft_path, draft_content, f'routine: pre-stitch draft {ts}')
     print('committed draft:', draft_path)
     print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
 else:
     print('no /tmp/draft.md — skipping draft commit (DRAFT step did not save it)')
+
+# Commit /tmp/stitched.md as the post-STITCH / pre-EDIT artifact. Together
+# with /tmp/draft.md and the final pulse, this gives a three-stage
+# forensics chain: draft -> stitched -> final. Diff stitched vs final
+# isolates the LLM's editorial changes from the mechanical preprocessing.
+if os.path.exists('/tmp/stitched.md'):
+    stitched_path = f'pulse-output/stitched/{ts}.md'
+    stitched_content = open('/tmp/stitched.md').read().encode()
+    result = commit(stitched_path, stitched_content, f'routine: post-stitch pre-edit {ts}')
+    print('committed stitched:', stitched_path)
+    print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+else:
+    print('no /tmp/stitched.md — skipping stitched commit (STITCH step did not run)')
 
 # Commit /tmp/lint_report.json so the issue count + pattern breakdown
 # travels with the pulse. Useful for tracking voice/quality drift over
