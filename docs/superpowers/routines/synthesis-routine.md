@@ -413,103 +413,15 @@ Apply `AUDIT_USER` substitutions and `AUDIT_SYSTEM`. Apply ALL rules. Final read
 
 ## STEP 5.5 — Lint final markdown (deterministic regex scan)
 
-Mechanical check before commit. Catches banned punctuation (em-dash, semicolon outside code), banned vocabulary (filler phrases, AI-cliche verbs, hedging weasels, wrap-up sentences), source-prefix story-connectors (`[Bank] said/notes/flags...`), and meta-narration (`cross-bank consensus`, `N notes flag`, `research suggests`).
+Mechanical check before commit. Single source of truth: `ai_analysis/voice_rules.py` defines the banned-phrase / banned-punctuation / source-prefix lists; both the AUDIT prompt and this linter import from there. Updating a banned pattern in voice_rules.py propagates to both — no drift.
+
+The repo is already cloned in the routine sandbox via `session_context.sources`, so `scripts/pulse_lint.py` runs directly with `python3` and resolves its `from ai_analysis.voice_rules import ...` against the cloned tree.
 
 ```bash
-python3 << 'PYEOF'
-import re, json
-
-md = open('/tmp/final.md').read()
-
-# Strip fenced code blocks before scanning so URL/code semicolons / dashes
-# don't false-positive. INSIGHTS prose has no fenced blocks.
-scan_text = re.sub(r'```.*?```', '', md, flags=re.DOTALL)
-
-issues = []
-def add(line_no, kind, snippet):
-    issues.append({'line': line_no, 'kind': kind, 'snippet': snippet[:80]})
-def line_of(match, text):
-    return text[:match.start()].count('\n') + 1
-
-# Banned punctuation
-for m in re.finditer(r'—', scan_text):  # em-dash
-    add(line_of(m, scan_text), 'em-dash', m.group())
-for m in re.finditer(r';', scan_text):
-    add(line_of(m, scan_text), 'semicolon', m.group())
-
-# Banned vocabulary (word-boundary, case-insensitive)
-banned = [
-    (r"\bit's worth noting\b", "filler"),
-    (r"\bimportantly\b", "filler"),
-    (r"\bnotably\b", "filler"),
-    (r"\binterestingly\b", "filler"),
-    (r"\bmoreover\b", "filler"),
-    (r"\bfurthermore\b", "filler"),
-    (r"\bmeanwhile\b", "filler"),
-    (r"\bthat said\b", "filler"),
-    (r"\bof course\b", "filler"),
-    (r"\bdelve(s|d|ing)?\b", "AI-cliche-verb"),
-    (r"\bnavigate\b", "AI-cliche-verb"),
-    (r"\brobust\b", "AI-cliche-adj"),
-    (r"\bcould potentially\b", "hedge"),
-    (r"\bmay or may not\b", "hedge"),
-    (r"\bit remains to be seen\b", "hedge"),
-    (r"\boverall,\b", "wrap-up"),
-    (r"\bin summary\b", "wrap-up"),
-    (r"\ball told\b", "wrap-up"),
-    (r"\bat the end of the day\b", "wrap-up"),
-    (r"\bdeep dive\b", "AI-tell"),
-    (r"\bunpack\b", "AI-tell"),
-    (r"\bdouble-click\b", "AI-tell"),
-    (r"\bstakeholders\b", "AI-tell"),
-    # Source-prefix story-connectors
-    (r"\b(Goldman|JPMorgan|JPM|Citi|BofA|UBS|RBC|Barclays|Mizuho|TME|Market Ear|ANZ|ING|Cr[eé]dit Agricole|Morgan Stanley|Deutsche Bank|Bernstein|Hartnett)('s)?\s+(says|said|notes|noted|flags|flagged|adds|added|argues|argued|observes|observed|leans on|keeps hammering|pushes|points to|thinks|sees|writes|reports|reported|considers)\b", "source-prefix"),
-    # Meta-narration
-    (r"\bcross-bank consensus\b", "meta-narration"),
-    (r"\b\d+\+? (high-priority )?notes flag\b", "meta-narration"),
-    (r"\bresearch suggests\b", "meta-narration"),
-    (r"\bthe corpus shows\b", "meta-narration"),
-    (r"\bmultiple banks converge\b", "meta-narration"),
-]
-for pat, label in banned:
-    for m in re.finditer(pat, scan_text, re.IGNORECASE):
-        add(line_of(m, scan_text), label, m.group())
-
-# Top-3 theme structural check (soft)
-try:
-    ctx = json.load(open('/tmp/ctx.json'))
-    theme_map = ctx.get('theme_map') or {}
-    if theme_map:
-        ranked = sorted(theme_map.items(), key=lambda kv: -kv[1].get('banks', 0))
-        top3 = [t for t, _ in ranked[:3] if _[0] is None]  # placeholder fix below
-        top3 = [t for t, _ in ranked[:3]]
-        insight_headers = re.findall(r'^###\s+(.+)$', md, re.MULTILINE)
-        header_text = ' '.join(insight_headers).lower()
-        for theme_key in top3:
-            sig_words = [w for w in theme_key.split() if len(w) > 3]
-            if sig_words:
-                hits = sum(1 for w in sig_words if w in header_text)
-                if hits < min(2, len(sig_words)):
-                    add(0, 'top-3-theme-missing', f"top-3 theme '{theme_key}' not in INSIGHTS headers")
-except Exception as e:
-    print(f'[lint] structural check skipped: {e}')
-
-with open('/tmp/lint_report.json', 'w') as f:
-    json.dump(issues, f, indent=1)
-
-print(f"\nLint scan: {len(issues)} issue(s) found")
-if issues:
-    by_kind = {}
-    for i in issues:
-        by_kind[i['kind']] = by_kind.get(i['kind'], 0) + 1
-    print("By kind:")
-    for k, c in sorted(by_kind.items(), key=lambda kv: -kv[1]):
-        print(f"  {c:>3}  {k}")
-    print("\nFirst 20:")
-    for i in issues[:20]:
-        print(f"  L{i['line']:>4}  {i['kind']:<22}  {i['snippet']!r}")
-PYEOF
+python3 scripts/pulse_lint.py /tmp/final.md /tmp/lint_report.json /tmp/ctx.json
 ```
+
+The script prints a human-readable summary inline (issue count, breakdown by kind, first 20 examples with line + snippet). Full structured issues are written to `/tmp/lint_report.json` for STEP 6 to commit alongside the pulse.
 
 **If lint reports issues, REWRITE `/tmp/final.md` to fix them, then re-run STEP 5.5.** Iterate until the lint report shows zero high-confidence issues (em-dash, semicolon, banned vocabulary, source-prefix, meta-narration). Soft issues (`top-3-theme-missing`) are advisory — investigate but the pulse can ship if the missing theme genuinely lacks actionable specifics.
 

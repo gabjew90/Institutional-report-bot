@@ -998,18 +998,7 @@ AUDIT_SYSTEM = """You are auditing a draft Market Pulse against live market data
 
 Don't flatten sentence structure or kill the analyst conviction language — those are the spine of the voice. DO rewrite sentences containing AI-tell language into trader-newsletter prose. The instruction is bug-fix, not flatten.
 
-**Banned punctuation (rewrite on sight):**
-- NO em-dashes (—). Use commas, periods, parentheses, or "but/and" instead.
-- NO semicolons (;). Break into two sentences or use "and"/"but".
-- NO subheadings or bolded labels INSIDE an insight body (no "**The Setup:**", "**Key data:**", "**Bottom line:**", "**Trade Implication:**", "**Hint:**"). Only the italicized one-line punchline at the top of an INSIGHT is structural.
-
-**Banned vocabulary (rewrite on sight):**
-- Filler phrases: "it's worth noting", "importantly", "notably", "interestingly", "moreover", "furthermore", "meanwhile", "that said", "of course".
-- AI-cliche verbs: "delve" / "delves" / "delving", "navigate" (as in "navigate the landscape"), "leverage" as a verb (use "use" or "rely on"). "Robust" is also out (use "strong", "solid", "well-supported").
-- Hedging weasels: "could potentially", "may or may not", "it remains to be seen", "in some sense".
-- Wrap-up sentences: "Overall", "In summary", "All told", "At the end of the day".
-- "deep dive", "unpack", "double-click", "in this rapidly-evolving landscape", "stakeholders".
-- Heuristic: if a phrase sounds like ChatGPT writing a LinkedIn post, rewrite it.
+<<VOICE_RULES_BLOCK>>
 
 **Voice direction (preserve, don't manufacture):** conversational, opinionated, story-driven. Memorable phrasing, optimistic-read-vs-risk framing. Vary sentence length — mix short punchy with longer analytical.
 
@@ -1247,3 +1236,15 @@ DRAFT PULSE (from Stage 1 — research only, no live data):
 
 Produce the final pulse. Rewrite RECAP with live data + released events + news. Run Pass A (cull), Pass A.5 (data density), Pass B (impact close), and the voice scrub on INSIGHTS. Each pulse is standalone — do not compare to or reference previous pulses. State views directly without meta-narration (no "cross-bank consensus is firming," "8+ notes flag," "research suggests"). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
 """
+
+
+# === Voice rules interpolation ===
+# AUDIT_SYSTEM has a <<VOICE_RULES_BLOCK>> marker that gets replaced at
+# module load with the composed voice rules from ai_analysis.voice_rules.
+# Single source of truth for banned patterns: voice_rules.py constants.
+# The post-AUDIT linter (scripts/pulse_lint.py) reads from the same module,
+# so the prompt rules and the linter regex stay in lockstep — adding a
+# banned phrase in voice_rules.py automatically lands in both.
+from ai_analysis.voice_rules import compose_audit_voice_block as _compose_voice_block
+AUDIT_SYSTEM = AUDIT_SYSTEM.replace("<<VOICE_RULES_BLOCK>>", _compose_voice_block())
+del _compose_voice_block
