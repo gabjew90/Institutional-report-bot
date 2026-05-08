@@ -37,6 +37,8 @@ log = logging.getLogger(__name__)
 CONTEXT_PATH = "pulse-context/latest.json"
 PENDING_DIR = "pulse-output/pending"
 ARCHIVE_DIR = "pulse-output/archive"
+PENDING_ADJUDICATIONS_DIR = "pulse-output/pending-adjudications"
+ARCHIVE_ADJUDICATIONS_DIR = "pulse-output/archive-adjudications"
 
 
 def bridge_enabled() -> bool:
