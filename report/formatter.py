@@ -152,30 +152,46 @@ def _format_pulse_datetime() -> str:
 def format_report_header_message(report: DailyReport) -> str:
     """Build the leading Discord message that opens a pulse delivery.
 
-    Sent BEFORE the embeds so the H1 pulse title and date render at
-    Discord's full markdown-header size (the largest visible text in
-    the channel — much bigger than embed-title text). Marks the start
-    of the report unambiguously when scrolling Discord.
+    Sent BEFORE the embeds so the H1 pulse title renders at Discord's
+    full markdown-header size (the largest visible text in the channel —
+    much bigger than embed-title text). Marks the start of the report
+    unambiguously when scrolling Discord.
 
-    Returns a string with `# {title}` (Discord's largest header),
-    followed by `## {date_string}` (medium-large header). If the pulse
-    markdown didn't include an H1 (legacy fallback), uses a default.
+    Returns a string with `# {title}` (Discord's largest header) — just
+    the title. The date ships as a slim gold embed RIGHT AFTER this
+    leading message (built in format_report_embeds), giving both the
+    large markdown title AND the visual gold-stripe embed marker that
+    used to belong to the old header embed.
     """
     pulse_title, _body = _extract_pulse_title(report.markdown_content or "")
     if not pulse_title:
         pulse_title = "Market Pulse"
-    return f"# {pulse_title}\n## {_format_pulse_datetime()}"
+    return f"# {pulse_title}"
 
 
 def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
     """Convert a DailyReport's section content into a list of Discord embeds.
 
-    Does NOT include a header embed — the title + date now ship as a
-    leading markdown message via format_report_header_message(), which
-    renders much bigger than embed-title text. Callers are expected to
-    send the header message first, then these embeds.
+    Layout: a slim gold "date marker" embed (visual stripe under the
+    leading markdown title) + per-section embeds (RECAP / INSIGHTS /
+    WHAT TO WATCH) + footer embed.
+
+    Title itself ships as the leading markdown message via
+    format_report_header_message() — embed titles can't render at
+    markdown-header size, but the gold date embed restores the visual
+    stripe marker the original gold-header-embed used to provide.
     """
     embeds: list[discord.Embed] = []
+
+    # Slim date-marker embed: pure visual stripe, gold color matching the
+    # RECAP section. Description carries the full date/time so the visual
+    # marker is also informational. Title left blank — the H1 markdown
+    # leading message above this is the title.
+    date_embed = discord.Embed(
+        description=f"**{_format_pulse_datetime()}**",
+        color=0xFFD700,
+    )
+    embeds.append(date_embed)
 
     # Strip the H1 title from the markdown so it doesn't double-render.
     # The leading message (built by format_report_header_message) already
