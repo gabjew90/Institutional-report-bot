@@ -107,6 +107,28 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             updated_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
         INSERT OR IGNORE INTO ingest_feed_state (id, last_announced_pdf_file_id) VALUES (1, 0);
+
+        -- Per-PDF state machine for the parallel Opus routine ingestion bridge.
+        -- Only HIGH-priority PDFs land here when settings.high_ingestion_backend
+        -- is set to "opus_bridge". Status values:
+        --   pending             — queued, not yet committed to the bridge branch
+        --   committed           — PDF + sidecar pushed to ingest-pending/ on the bridge
+        --   completed           — Opus routine finished; result pulled into pdf_analyses
+        --   fallback_to_gemini  — bridge stalled / failed / oversized → Gemini ran instead
+        --   failed              — both bridge and Gemini fallback failed
+        CREATE TABLE IF NOT EXISTS bridge_ingestion_state (
+            pdf_file_id INTEGER PRIMARY KEY,
+            status TEXT NOT NULL,
+            queued_at TEXT NOT NULL DEFAULT (datetime('now')),
+            committed_at TEXT,
+            completed_at TEXT,
+            bridge_filename TEXT,
+            error_message TEXT,
+            fallback_reason TEXT,
+            FOREIGN KEY (pdf_file_id) REFERENCES pdf_files(id)
+        );
+        CREATE INDEX IF NOT EXISTS idx_bridge_status ON bridge_ingestion_state(status);
+        CREATE INDEX IF NOT EXISTS idx_bridge_queued_at ON bridge_ingestion_state(queued_at);
     """)
     conn.commit()
 
@@ -550,6 +572,136 @@ def max_announceable_pdf_file_id() -> int:
         WHERE la.priority IN ('high', 'medium')"""
     ).fetchone()
     return int(row["m"]) if row else 0
+
+
+# ---------------------------------------------------------------------------
+# Opus-bridge HIGH ingestion state machine
+# ---------------------------------------------------------------------------
+
+def queue_for_opus_bridge(pdf_file_id: int) -> None:
+    """Insert (or reset) a bridge-state row for a HIGH PDF.
+
+    Idempotent: if a row already exists for this pdf_file_id (e.g. from a
+    prior reanalyze that fell back to Gemini), it's reset to status='pending'
+    with a fresh queued_at.
+    """
+    get_connection().execute(
+        """INSERT INTO bridge_ingestion_state
+             (pdf_file_id, status, queued_at)
+           VALUES (?, 'pending', datetime('now'))
+           ON CONFLICT(pdf_file_id) DO UPDATE SET
+             status = 'pending',
+             queued_at = datetime('now'),
+             committed_at = NULL,
+             completed_at = NULL,
+             bridge_filename = NULL,
+             error_message = NULL,
+             fallback_reason = NULL""",
+        (int(pdf_file_id),),
+    )
+    get_connection().commit()
+
+
+def get_bridge_state(pdf_file_id: int) -> dict | None:
+    row = get_connection().execute(
+        "SELECT * FROM bridge_ingestion_state WHERE pdf_file_id = ?",
+        (int(pdf_file_id),),
+    ).fetchone()
+    return dict(row) if row else None
+
+
+def update_bridge_status(
+    pdf_file_id: int,
+    status: str,
+    bridge_filename: str | None = None,
+    error_message: str | None = None,
+    fallback_reason: str | None = None,
+) -> None:
+    """Update a bridge state row. Auto-stamps committed_at/completed_at by status."""
+    conn = get_connection()
+    now = "datetime('now')"
+    sets = ["status = ?"]
+    params: list = [status]
+    if status == "committed":
+        sets.append(f"committed_at = {now}")
+    if status in ("completed", "fallback_to_gemini", "failed"):
+        sets.append(f"completed_at = {now}")
+    if bridge_filename is not None:
+        sets.append("bridge_filename = ?")
+        params.append(bridge_filename)
+    if error_message is not None:
+        sets.append("error_message = ?")
+        params.append(error_message[:500])
+    if fallback_reason is not None:
+        sets.append("fallback_reason = ?")
+        params.append(fallback_reason[:200])
+    params.append(int(pdf_file_id))
+    conn.execute(
+        f"UPDATE bridge_ingestion_state SET {', '.join(sets)} WHERE pdf_file_id = ?",
+        params,
+    )
+    conn.commit()
+
+
+def get_pending_bridge_pdfs(limit: int = 50) -> list[dict]:
+    """Bridge-state rows in 'pending' status — not yet committed to GitHub."""
+    rows = get_connection().execute(
+        """SELECT b.*, pf.file_name, pf.dropbox_path, pf.local_path,
+                  pf.dropbox_modified_at, pf.file_size_bytes
+           FROM bridge_ingestion_state b
+           JOIN pdf_files pf ON pf.id = b.pdf_file_id
+           WHERE b.status = 'pending'
+           ORDER BY b.queued_at ASC
+           LIMIT ?""",
+        (int(limit),),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_committed_bridge_pdfs() -> list[dict]:
+    """Rows committed to the bridge but not yet processed by the Opus routine.
+
+    Used by the pull job (to check for completed results) and by the
+    timeout watchdog (to fall back to Gemini after opus_bridge_timeout_minutes).
+    """
+    rows = get_connection().execute(
+        """SELECT b.*, pf.file_name, pf.dropbox_path
+           FROM bridge_ingestion_state b
+           JOIN pdf_files pf ON pf.id = b.pdf_file_id
+           WHERE b.status = 'committed'
+           ORDER BY b.committed_at ASC"""
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def count_bridge_outcomes_since(cutoff_iso: str) -> dict:
+    """Count bridge-ingestion outcomes since a given ISO timestamp.
+
+    Used by /status to surface bridge health (attempts, completed via Opus,
+    fell back to Gemini, hard failures).
+    """
+    rows = get_connection().execute(
+        """SELECT status, COUNT(*) AS n
+           FROM bridge_ingestion_state
+           WHERE queued_at > ?
+           GROUP BY status""",
+        (cutoff_iso,),
+    ).fetchall()
+    out = {
+        "attempted": 0,
+        "pending": 0,
+        "committed": 0,
+        "completed": 0,
+        "fallback_to_gemini": 0,
+        "failed": 0,
+    }
+    for r in rows:
+        s = r["status"]
+        n = int(r["n"])
+        if s in out:
+            out[s] = n
+        out["attempted"] += n
+    return out
 
 
 def get_last_daily_pulse() -> dict | None:

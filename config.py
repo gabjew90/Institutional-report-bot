@@ -72,6 +72,19 @@ class Settings(BaseSettings):
     # them all. Treats reboots after extended downtime as "backfill" not "live".
     ingest_feed_backlog_threshold: int = 20
 
+    # HIGH-priority deep analysis backend. Default is the existing Gemini path.
+    # Set to "opus_bridge" to route HIGH PDFs through the parallel Opus routine
+    # bridge (committed to GitHub, processed by an Anthropic-side cron routine,
+    # results pulled back into the same pdf_analyses table). Auto-falls-back to
+    # Gemini per-PDF if the bridge stalls > opus_bridge_timeout_minutes.
+    # Acceptable values: "gemini" | "opus_bridge"
+    high_ingestion_backend: str = "gemini"
+    opus_bridge_timeout_minutes: int = 30
+    # PDFs over these limits skip the bridge and go straight to Gemini fallback.
+    # Anthropic's PDF Read tool caps at ~100 pages / ~32MB.
+    opus_bridge_max_pages: int = 80
+    opus_bridge_max_size_mb: int = 30
+
     # Source priority list (comma-separated, highest priority first)
     # Tier 1 sources — always HIGH priority regardless of content
     tier1_sources: str = "Goldman Sachs,JPMorgan,Bank of America,Morgan Stanley"

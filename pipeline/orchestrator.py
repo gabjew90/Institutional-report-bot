@@ -73,6 +73,21 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 output_tokens=triage.output_tokens,
             )
         else:
+            # HIGH-priority routing fork: when settings.high_ingestion_backend
+            # is set to "opus_bridge", future steps will commit the PDF to a
+            # GitHub branch for processing by an Anthropic-side cron routine
+            # (see github_bridge/ingestion.py). For now (step 1), the bridge
+            # plumbing is not yet deployed, so we just log the intent and
+            # fall through to the existing Gemini path.
+            if (
+                triage.priority == "high"
+                and settings.high_ingestion_backend == "opus_bridge"
+            ):
+                log.info(
+                    f"[bridge:step1] HIGH PDF {file_name} eligible for opus_bridge "
+                    f"but bridge plumbing not yet active — using Gemini deep analysis"
+                )
+
             # Deep analysis — text-only by default; multimodal triggers
             # selectively for top-bank equity research / vol / derivatives
             # via _should_run_multimodal() in analyzer.py

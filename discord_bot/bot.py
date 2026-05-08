@@ -385,6 +385,31 @@ def create_bot() -> commands.Bot:
             inline=False,
         )
 
+        # Opus-bridge ingestion stats (last 24h) — only show if backend
+        # is set to opus_bridge OR there's any historical bridge activity.
+        from datetime import datetime, timedelta
+        bridge_cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+        bridge = db.count_bridge_outcomes_since(bridge_cutoff)
+        if settings.high_ingestion_backend == "opus_bridge" or bridge["attempted"] > 0:
+            backend = settings.high_ingestion_backend
+            n_attempted = bridge["attempted"]
+            n_completed = bridge["completed"]
+            n_fallback = bridge["fallback_to_gemini"]
+            n_pending = bridge["pending"] + bridge["committed"]
+            n_failed = bridge["failed"]
+            success_rate = (
+                f"{100 * n_completed / n_attempted:.0f}%"
+                if n_attempted else "n/a"
+            )
+            embed.add_field(
+                name=f"Opus bridge — last 24h (backend={backend})",
+                value=(
+                    f"Attempted: **{n_attempted}** | Completed via Opus: **{n_completed}** ({success_rate})\n"
+                    f"Fallback to Gemini: **{n_fallback}** | In-flight: **{n_pending}** | Hard failed: **{n_failed}**"
+                ),
+                inline=False,
+            )
+
         # Pulse history
         pulse_lines = []
         if full["last_daily_pulse"]:
