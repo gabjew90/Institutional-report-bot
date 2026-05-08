@@ -717,6 +717,32 @@ def get_fallback_bridge_pdfs(limit: int = 100) -> list[dict]:
     return [dict(r) for r in rows]
 
 
+def find_timed_out_bridge_committed(timeout_iso: str, limit: int = 100) -> list[dict]:
+    """Rows committed to the bridge before `timeout_iso` that haven't
+    progressed to 'completed' or 'fallback_to_gemini' or 'failed'.
+
+    These are PDFs the routine apparently never got to (or whose result
+    wasn't pulled). The watchdog converts them to fallback_to_gemini so
+    the sweeper can run Gemini and produce a pdf_analyses row.
+
+    `timeout_iso` should be normalized to T-format before passing
+    (datetime('now') uses space separator — _normalize_ts handles).
+    """
+    cutoff = _normalize_ts(timeout_iso) or timeout_iso
+    rows = get_connection().execute(
+        """SELECT b.*, pf.file_name, pf.dropbox_path
+           FROM bridge_ingestion_state b
+           JOIN pdf_files pf ON pf.id = b.pdf_file_id
+           WHERE b.status = 'committed'
+             AND b.committed_at IS NOT NULL
+             AND b.committed_at < ?
+           ORDER BY b.committed_at ASC
+           LIMIT ?""",
+        (cutoff, int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
 def count_bridge_outcomes_since(cutoff_iso: str) -> dict:
     """Count bridge-ingestion outcomes since a given ISO timestamp.
 

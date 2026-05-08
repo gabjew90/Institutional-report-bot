@@ -479,3 +479,166 @@ def pull_completed_ingestions_job() -> None:
             f"Bridge pull tick: {n_ok}/{len(completed_files)} completed ingested, "
             f"{len(failed_files)} routine-failures handled"
         )
+
+
+# -----------------------------------------------------------------------------
+# Timeout watchdog — find committed rows the routine never finished
+# -----------------------------------------------------------------------------
+
+
+def watchdog_timeout_committed_job() -> None:
+    """Periodic — convert stale 'committed' rows into 'fallback_to_gemini'.
+
+    A row is stale when committed_at < (now - opus_bridge_timeout_minutes).
+    Causes: routine fire missed, exceeded its token budget, sandbox
+    network failure, etc. We don't try to retry the bridge — the
+    fallback sweeper picks these up and runs Gemini directly.
+
+    Runs every 5 min when bridge is enabled. Idempotent: re-running
+    doesn't double-mark since stale-and-already-flipped rows have
+    status='fallback_to_gemini' (filtered out by the query).
+    """
+    if not opus_bridge_enabled():
+        return
+    from datetime import timedelta
+    timeout_minutes = settings.opus_bridge_timeout_minutes
+    cutoff = (datetime.utcnow() - timedelta(minutes=timeout_minutes)).isoformat()
+    stale = db.find_timed_out_bridge_committed(cutoff, limit=50)
+    if not stale:
+        return
+    log.warning(
+        f"Bridge watchdog: {len(stale)} PDFs committed > {timeout_minutes}min ago "
+        f"with no Opus result → routing to Gemini fallback"
+    )
+    for row in stale:
+        pdf_file_id = int(row["pdf_file_id"])
+        db.update_bridge_status(
+            pdf_file_id,
+            status="fallback_to_gemini",
+            fallback_reason=f"routine timeout (no result {timeout_minutes}min after commit)",
+        )
+        # Best-effort prune the orphan bridge files; the routine apparently
+        # didn't process them, so they're just consuming branch space.
+        _delete_bridge_files(pdf_file_id, ["pdf", "json"])
+
+
+# -----------------------------------------------------------------------------
+# Fallback sweeper — actually run Gemini on rows tagged fallback_to_gemini
+# -----------------------------------------------------------------------------
+
+
+async def fallback_sweeper_job() -> None:
+    """Periodic — run Gemini deep-analysis on rows marked fallback_to_gemini.
+
+    A bridge row reaches fallback_to_gemini for several reasons:
+      - oversized PDF (guardrails)
+      - dump-job poison-pill exceeded MAX_DUMP_ATTEMPTS
+      - routine timeout (watchdog)
+      - routine reported failure (ingest-failed/<id>.json)
+      - routine produced malformed JSON (pull job)
+
+    All of those leave the PDF without a pdf_analyses row. This sweeper
+    fixes that by running the existing Gemini deep-analysis path.
+    On success: INSERT pdf_analyses, mark state 'completed', update
+    pdf_files.status='PROCESSED', clean up the local PDF.
+
+    Runs every 5 min when bridge is enabled. Caps per-tick batch at 5
+    so a flood of fallbacks doesn't monopolize the worker.
+    """
+    if not opus_bridge_enabled():
+        return
+    rows = db.get_fallback_bridge_pdfs(limit=5)
+    if not rows:
+        return
+    log.info(f"Bridge fallback sweeper: running Gemini on {len(rows)} PDFs")
+
+    # Lazy imports to avoid circular dependency at module load time
+    import asyncio
+    import json as _json
+    from dataclasses import asdict
+    from pdf_processing.extractor import extract_pdf
+    from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep
+
+    n_ok = 0
+    n_failed = 0
+
+    for row in rows:
+        pdf_file_id = int(row["pdf_file_id"])
+        try:
+            local_path = await asyncio.to_thread(_gather_local_path, row)
+            if not local_path:
+                log.error(
+                    f"Bridge fallback: pdf_file_id={pdf_file_id} — local file unavailable, "
+                    f"cannot run Gemini fallback"
+                )
+                db.update_bridge_status(
+                    pdf_file_id,
+                    status="failed",
+                    error_message="fallback failed: PDF unrecoverable from Dropbox",
+                )
+                db.update_pdf_status(pdf_file_id, "FAILED", "bridge fallback: PDF gone")
+                n_failed += 1
+                continue
+
+            # Extract pages + full text, triage, then deep-analyze (mirrors
+            # process_single_pdf but without the routing fork — we already
+            # know we're on the fallback path).
+            extraction = await asyncio.to_thread(extract_pdf, local_path, None)
+            full_text = extraction.full_text
+            file_name = row.get("file_name", "")
+            folder_path = (row.get("dropbox_path") or "").rsplit("/", 1)[0]
+
+            triage = await triage_pdf(file_name, full_text, folder_path=folder_path)
+            analysis = await analyze_pdf_deep(
+                pdf_file_id=pdf_file_id,
+                file_name=file_name,
+                extraction=extraction,
+                priority=triage.priority,
+                source=triage.source,
+                report_type=triage.report_type,
+            )
+
+            # INSERT into pdf_analyses (model tagged 'gemini-fallback' for clarity)
+            db.insert_analysis(
+                pdf_file_id=pdf_file_id,
+                triage_json=_json.dumps(asdict(triage)),
+                analysis_json=_json.dumps(asdict(analysis)),
+                priority=triage.priority,
+                pages_analyzed=analysis.pages_analyzed,
+                total_pages=analysis.total_pages,
+                input_tokens=analysis.input_tokens + triage.input_tokens,
+                output_tokens=analysis.output_tokens + triage.output_tokens,
+                model="gemini-fallback",
+                duration=0.0,
+            )
+            db.update_pdf_status(pdf_file_id, "PROCESSED")
+            db.update_bridge_status(pdf_file_id, status="completed")
+            n_ok += 1
+            log.info(
+                f"Bridge fallback: pdf_file_id={pdf_file_id} → completed via Gemini "
+                f"(reason: {row.get('fallback_reason') or 'n/a'})"
+            )
+
+            # Clean up if we re-downloaded
+            if local_path != (row.get("local_path") or ""):
+                try:
+                    Path(local_path).unlink(missing_ok=True)
+                except Exception:
+                    pass
+        except Exception as e:
+            log.error(
+                f"Bridge fallback: Gemini path failed for pdf_file_id={pdf_file_id}: {e}",
+                exc_info=True,
+            )
+            db.update_bridge_status(
+                pdf_file_id,
+                status="failed",
+                error_message=f"fallback Gemini failed: {str(e)[:200]}",
+            )
+            db.update_pdf_status(pdf_file_id, "FAILED", str(e)[:200])
+            n_failed += 1
+
+    log.info(
+        f"Bridge fallback sweeper tick complete: {n_ok} succeeded via Gemini, "
+        f"{n_failed} hard-failed"
+    )

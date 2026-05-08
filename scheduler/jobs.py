@@ -115,9 +115,25 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             max_instances=1,
             misfire_grace_time=120,
         )
+        scheduler.add_job(
+            _bridge_watchdog_timeout_job,
+            trigger=IntervalTrigger(minutes=5),
+            id="bridge_watchdog_timeout",
+            name="Opus bridge: watchdog (timeout stale committed rows)",
+            max_instances=1,
+            misfire_grace_time=300,
+        )
+        scheduler.add_job(
+            _bridge_fallback_sweeper_job,
+            trigger=IntervalTrigger(minutes=5),
+            id="bridge_fallback_sweeper",
+            name="Opus bridge: run Gemini on fallback_to_gemini rows",
+            max_instances=1,
+            misfire_grace_time=300,
+        )
         log.info(
-            "Opus-bridge HIGH ingestion: dump job registered (every 5 min), "
-            "pull job registered (every 2 min)"
+            "Opus-bridge HIGH ingestion: dump (5m), pull (2m), watchdog (5m), "
+            "fallback sweeper (5m) all registered"
         )
 
     log.info(
@@ -206,3 +222,25 @@ async def _bridge_pull_completed_ingestion_job():
         await asyncio.to_thread(pull_completed_ingestions_job)
     except Exception as e:
         log.error(f"Bridge HIGH-ingestion pull failed: {e}", exc_info=True)
+
+
+async def _bridge_watchdog_timeout_job():
+    """Scheduled job: convert stale 'committed' rows into 'fallback_to_gemini'."""
+    import asyncio
+    try:
+        from github_bridge.ingestion import watchdog_timeout_committed_job
+        await asyncio.to_thread(watchdog_timeout_committed_job)
+    except Exception as e:
+        log.error(f"Bridge watchdog failed: {e}", exc_info=True)
+
+
+async def _bridge_fallback_sweeper_job():
+    """Scheduled job: run Gemini deep-analysis on rows tagged fallback_to_gemini.
+
+    The sweeper is itself async (calls async Gemini path) — no asyncio.to_thread.
+    """
+    try:
+        from github_bridge.ingestion import fallback_sweeper_job
+        await fallback_sweeper_job()
+    except Exception as e:
+        log.error(f"Bridge fallback sweeper failed: {e}", exc_info=True)
