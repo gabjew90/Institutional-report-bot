@@ -39,6 +39,16 @@ PENDING_DIR = "pulse-output/pending"
 ARCHIVE_DIR = "pulse-output/archive"
 PENDING_ADJUDICATIONS_DIR = "pulse-output/pending-adjudications"
 ARCHIVE_ADJUDICATIONS_DIR = "pulse-output/archive-adjudications"
+# Pulses that the bridge tried to post but couldn't deliver to any
+# Discord channel (network/Discord outage, channel-not-found, etc.).
+# Files are moved here only AFTER a retry window expires, so that
+# transient outages get auto-recovered by subsequent bridge polls.
+DELIVERY_FAILED_DIR = "pulse-output/delivery-failed"
+# How long the bridge keeps retrying a failed delivery before giving up
+# and moving the pulse to delivery-failed/. 15 min covers ~15 poll
+# cycles (1/min) — enough to ride out a typical Discord outage but
+# not so long that a stuck pulse blocks attention.
+MAX_DELIVERY_RETRY_MINUTES = 15
 
 
 def bridge_enabled() -> bool:
@@ -270,10 +280,86 @@ def _fetch_matching_adjudication(pulse_md_name: str) -> tuple[dict | None, str |
         return None, raw
 
 
+def _pulse_age_minutes(name: str) -> float | None:
+    """Parse the timestamp out of a pulse filename like '2026-05-08T19-53-08Z.md'
+    and return age in minutes vs now (UTC). Returns None if filename can't
+    be parsed — caller should treat that as "give up retry, archive normally"
+    rather than block forever on a malformed name.
+    """
+    try:
+        base = name[:-3] if name.endswith(".md") else name  # strip .md
+        # '2026-05-08T19-53-08Z' → '2026-05-08T19:53:08Z'
+        if len(base) >= 20 and base.endswith("Z"):
+            iso = base[:10] + "T" + base[11:13] + ":" + base[14:16] + ":" + base[17:19]
+            ts = datetime.fromisoformat(iso)
+            return (datetime.utcnow() - ts).total_seconds() / 60.0
+    except Exception:
+        pass
+    return None
+
+
+async def _commit_delivery_failed_marker(
+    name: str,
+    raw_markdown: str,
+    target_filter: str,
+    target_count: int,
+    configured_count: int,
+    per_channel_errors: list[str],
+) -> None:
+    """Write a structured marker under pulse-output/delivery-failed/<ts>.md
+    so a watcher (or human) can see exactly why delivery failed without
+    spelunking Railway logs. Includes:
+      - which target_channels filter ran
+      - how many channels matched the filter
+      - the actual per-channel errors (Discord 503s, channel-not-found, etc.)
+
+    Best-effort: a failed marker commit must NOT cascade — the pulse is
+    already preserved in delivery-failed/ alongside this marker.
+    """
+    base = name[:-3] if name.endswith(".md") else name
+    marker_path = f"{DELIVERY_FAILED_DIR}/{base}.error.md"
+    body_lines = [
+        f"# Bridge delivery failed: {name}",
+        "",
+        f"- **Time (UTC):** {datetime.utcnow().isoformat()}",
+        f"- **Pulse file:** {DELIVERY_FAILED_DIR}/{name}",
+        f"- **target_channels filter:** {target_filter or '(none — all configured)'}",
+        f"- **Channels matched filter:** {target_count} of {configured_count}",
+        f"- **Channels delivered:** 0",
+        "",
+        "## Per-channel errors",
+        "",
+        "```",
+    ]
+    if per_channel_errors:
+        body_lines.extend(per_channel_errors)
+    else:
+        body_lines.append("(no per-channel errors logged — channels matched but send loop produced no signal)")
+    body_lines.append("```")
+    body_lines.append("")
+    body_lines.append("## Recovery")
+    body_lines.append("")
+    body_lines.append(
+        "Pulse markdown is preserved at the path above. To retry delivery, "
+        "move the file from `delivery-failed/` back to `pulse-output/pending/` — "
+        "the bridge will re-attempt on the next 60s poll."
+    )
+    body = "\n".join(body_lines)
+    try:
+        await asyncio.to_thread(
+            gh.put_file, marker_path, body,
+            f"bridge: delivery failed marker for {name}",
+        )
+        log.info(f"Bridge: wrote delivery-failed marker {marker_path}")
+    except Exception as e:
+        log.warning(f"Bridge: could not commit delivery-failed marker: {e}")
+
+
 async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
     name = item.get("name", "")
     pending_path = f"{PENDING_DIR}/{name}"
     archive_path = f"{ARCHIVE_DIR}/{name}"
+    delivery_failed_path = f"{DELIVERY_FAILED_DIR}/{name}"
 
     try:
         raw_markdown = gh.get_file_text(pending_path)
@@ -332,17 +418,6 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             stats=stats,
         )
 
-        # Persist before posting so we don't lose track if Discord errors
-        report_id = db.insert_daily_report(
-            report_date=today,
-            report_type="daily",
-            report_json=json.dumps(report.raw_json),
-            report_markdown=markdown,
-            pdf_count=pdf_count,
-            input_tokens=input_tokens,
-            output_tokens=output_tokens,
-        )
-
         # Post to Discord channels. By default, all channels in
         # DISCORD_CHANNEL_ID. If the routine sets a `target_channels`
         # frontmatter value (comma-separated IDs or name substrings), filter
@@ -364,28 +439,111 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         else:
             target_ids = list(configured_ids)
 
+        # No matched channels at all — this is a config error, not a
+        # transient delivery problem. Move directly to delivery-failed/
+        # rather than retry forever.
+        if not target_ids:
+            log.error(
+                f"Bridge: no Discord channels matched for {name} "
+                f"(filter='{target_filter}', configured={len(configured_ids)}) "
+                f"→ moving to delivery-failed/"
+            )
+            await _commit_delivery_failed_marker(
+                name, raw_markdown, target_filter,
+                target_count=0, configured_count=len(configured_ids),
+                per_channel_errors=[
+                    "(no channels matched the target_channels filter — check filter "
+                    "string against actual Discord channel names/IDs)"
+                ],
+            )
+            await asyncio.to_thread(
+                gh.put_file, delivery_failed_path, raw_markdown,
+                f"bridge: move to delivery-failed (no channels matched) {name}",
+            )
+            await asyncio.to_thread(
+                gh.delete_file, pending_path,
+                f"bridge: remove pending {name} (delivery-failed)",
+            )
+            return
+
         embeds = format_report_embeds(report)
         leading_content = format_report_header_message(report)
         channels_sent = 0
+        per_channel_errors: list[str] = []
         for cid in target_ids:
             try:
                 channel = bot.get_channel(cid)
                 if channel is None:
-                    log.warning(f"Bridge: channel {cid} not found")
+                    msg = f"channel {cid}: not found in bot cache"
+                    log.warning(f"Bridge: {msg}")
+                    per_channel_errors.append(msg)
                     continue
                 ok = await send_embeds(channel, embeds, leading_content=leading_content)
                 if ok:
                     channels_sent += 1
                     log.info(f"Bridge: posted {name} to channel {cid} ({channel.name})")
+                else:
+                    msg = f"channel {cid} ({channel.name}): send_embeds returned False (Discord API error — see Railway logs around this timestamp)"
+                    log.warning(f"Bridge: {msg}")
+                    per_channel_errors.append(msg)
             except Exception as e:
-                log.error(f"Bridge: failed to post {name} to channel {cid}: {e}", exc_info=True)
+                msg = f"channel {cid}: {type(e).__name__}: {e}"
+                log.error(f"Bridge: failed to post {name} to {msg}", exc_info=True)
+                per_channel_errors.append(msg)
 
-        if channels_sent > 0:
-            db.mark_report_sent(report_id)
+        # === DELIVERY OUTCOME ===
+        if channels_sent == 0:
+            # Zero successful posts. Decide between retry and give-up based
+            # on pulse age. Transient outages (Discord 503, brief network
+            # blip) get auto-recovered by subsequent bridge polls. Persistent
+            # failures eventually move to delivery-failed/ for human attention.
+            age_min = _pulse_age_minutes(name)
+            if age_min is not None and age_min <= MAX_DELIVERY_RETRY_MINUTES:
+                log.warning(
+                    f"Bridge: {name} delivery failed (0 of {len(target_ids)} channels succeeded), "
+                    f"age={age_min:.1f}m, will retry on next poll"
+                )
+                # Leave files in pending/ + pending-adjudications/. Skip db
+                # insert — we'll insert when delivery actually succeeds.
+                return
+            # Retry window exhausted (or filename unparseable) → give up.
+            log.error(
+                f"Bridge: {name} delivery exhausted retries "
+                f"(age={age_min}m, max={MAX_DELIVERY_RETRY_MINUTES}m) → moving to delivery-failed/"
+            )
+            await _commit_delivery_failed_marker(
+                name, raw_markdown, target_filter,
+                target_count=len(target_ids),
+                configured_count=len(configured_ids),
+                per_channel_errors=per_channel_errors,
+            )
+            await asyncio.to_thread(
+                gh.put_file, delivery_failed_path, raw_markdown,
+                f"bridge: move to delivery-failed (retries exhausted) {name}",
+            )
+            await asyncio.to_thread(
+                gh.delete_file, pending_path,
+                f"bridge: remove pending {name} (delivery-failed)",
+            )
+            # Adjudication stays in pending-adjudications/ unless a future
+            # pulse with the same base name lands — orphan cleanup is a
+            # separate concern.
+            return
 
-        # Archive the pending file regardless of channel success — the pulse is
-        # in daily_reports table; we don't want to repost it on next poll.
-        # Archive the raw form (with frontmatter) so we keep the metadata.
+        # === SUCCESS PATH ===
+        # At least one channel got the post. Persist to DB now (delayed
+        # from before-post so we don't accumulate stale rows on retries).
+        report_id = db.insert_daily_report(
+            report_date=today,
+            report_type="daily",
+            report_json=json.dumps(report.raw_json),
+            report_markdown=markdown,
+            pdf_count=pdf_count,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+        )
+        db.mark_report_sent(report_id)
+
         await asyncio.to_thread(
             gh.put_file,
             archive_path,
@@ -397,7 +555,11 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             pending_path,
             f"bridge: remove pending {name} after posting",
         )
-        log.info(f"Bridge: archived {name} (posted to {channels_sent} channels)")
+        partial = (
+            f" (PARTIAL: {len(target_ids) - channels_sent} channel(s) failed)"
+            if channels_sent < len(target_ids) else ""
+        )
+        log.info(f"Bridge: archived {name} (posted to {channels_sent}/{len(target_ids)} channels){partial}")
 
         # Archive the matching adjudication file if one was retrieved. Errors
         # here must NOT cascade — the pulse is already posted and persisted.

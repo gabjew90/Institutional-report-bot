@@ -1328,7 +1328,7 @@ If the sub-agent errors out OR returns empty content, log a warning and proceed 
 
 ```bash
 python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
-import os, base64, urllib.request, json
+import os, base64, urllib.request, json, datetime, traceback
 
 def _read_token() -> str:
     v = (os.environ.get('GH_TOKEN') or '').strip()
@@ -1347,39 +1347,110 @@ os.environ['GH_TOKEN'] = GH_TOKEN
 REPO = 'gabjew90/Institutional-report-bot'
 BRANCH = 'pulse-data'
 
+
+def _commit_failure(stage: str, reason: str, detail: str = '') -> None:
+    """Lightweight failure marker — same shape as STEP 2's, redefined here
+    so STEP 7 doesn't depend on prior heredoc namespaces. Captures
+    the absence-of-output case (QC sub-agent produced nothing) AND any
+    exception thrown during commit. Without this, a failed STEP 7 was
+    invisible: no QC review file, no failure marker, just absence.
+    """
+    ts = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
+    body = f"""# Routine failure: {stage}
+
+- **Time (UTC):** {ts}
+- **Stage:** {stage}
+- **Reason:** {reason}
+
+## Detail
+
+```
+{detail}
+```
+
+## Routine log tail (last 80 lines)
+
+```
+"""
+    try:
+        with open('/tmp/routine.log', 'r', errors='replace') as f:
+            tail = ''.join(f.readlines()[-80:])
+    except Exception:
+        tail = '(routine.log missing)'
+    body += tail + "\n```\n"
+    try:
+        req = urllib.request.Request(
+            f'https://api.github.com/repos/{REPO}/contents/pulse-output/failures/{ts}.md',
+            data=json.dumps({
+                'message': f'routine: FAILURE at {stage} ({ts})',
+                'content': base64.b64encode(body.encode()).decode(),
+                'branch': BRANCH,
+            }).encode(),
+            headers={
+                'Authorization': f'token {GH_TOKEN}',
+                'Accept': 'application/vnd.github+json',
+                'Content-Type': 'application/json',
+            },
+            method='PUT',
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            print(f'committed failure marker: pulse-output/failures/{ts}.md')
+    except Exception as e:
+        print(f'WARNING: could not commit failure marker: {e}')
+
+
 if not os.path.exists('/tmp/qc_review.md'):
-    print('no /tmp/qc_review.md — QC sub-agent produced no output, skipping commit')
+    print('no /tmp/qc_review.md — QC sub-agent produced no output')
+    _commit_failure(
+        stage='STEP 7 (QC review)',
+        reason='QC sub-agent produced no output (/tmp/qc_review.md missing)',
+        detail='STEP 7.2 dispatched the QC sub-agent but no review markdown landed at /tmp/qc_review.md. Either the sub-agent errored, returned empty content, or was never dispatched. The pulse markdown is already committed and the bridge will deliver it; the QC review is missing for this run.',
+    )
     raise SystemExit(0)
 
 content_str = open('/tmp/qc_review.md').read().strip()
 if not content_str:
-    print('QC review file is empty — skipping commit')
+    print('QC review file is empty')
+    _commit_failure(
+        stage='STEP 7 (QC review)',
+        reason='QC review markdown is empty (sub-agent returned blank content)',
+        detail='/tmp/qc_review.md exists but contains no content after strip(). Sub-agent likely produced empty output or whitespace-only response.',
+    )
     raise SystemExit(0)
 
 ts = open('/tmp/pulse_ts.txt').read().strip() if os.path.exists('/tmp/pulse_ts.txt') \
      else json.load(open('/tmp/qc_inputs.json'))['timestamp']
 qc_path = f'pulse-output/qc-reviews/{ts}.md'
 
-body = {
-    'message': f'routine: QC review {ts}',
-    'content': base64.b64encode(content_str.encode()).decode(),
-    'branch': BRANCH,
-}
-req = urllib.request.Request(
-    f'https://api.github.com/repos/{REPO}/contents/{qc_path}',
-    data=json.dumps(body).encode(),
-    headers={
-        'Authorization': f'token {GH_TOKEN}',
-        'Accept': 'application/vnd.github+json',
-        'Content-Type': 'application/json',
-        'X-GitHub-Api-Version': '2022-11-28',
-    },
-    method='PUT',
-)
-with urllib.request.urlopen(req, timeout=30) as resp:
-    result = json.loads(resp.read())
-print('committed QC review:', qc_path)
-print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+try:
+    body = {
+        'message': f'routine: QC review {ts}',
+        'content': base64.b64encode(content_str.encode()).decode(),
+        'branch': BRANCH,
+    }
+    req = urllib.request.Request(
+        f'https://api.github.com/repos/{REPO}/contents/{qc_path}',
+        data=json.dumps(body).encode(),
+        headers={
+            'Authorization': f'token {GH_TOKEN}',
+            'Accept': 'application/vnd.github+json',
+            'Content-Type': 'application/json',
+            'X-GitHub-Api-Version': '2022-11-28',
+        },
+        method='PUT',
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        result = json.loads(resp.read())
+    print('committed QC review:', qc_path)
+    print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+except Exception as e:
+    print(f'ERROR committing QC review: {e}')
+    _commit_failure(
+        stage='STEP 7 (QC review commit)',
+        reason=f'{type(e).__name__}: {e}',
+        detail=f'Got QC review markdown from sub-agent ({len(content_str)} chars) but the GitHub PUT to {qc_path} failed.\n\n{traceback.format_exc()}',
+    )
+    raise SystemExit(1)
 PYEOF
 ```
 
