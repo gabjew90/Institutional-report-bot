@@ -684,6 +684,85 @@ Per-PDF evidence assigned to this theme:
 Adjudicate this theme per the rules in your system prompt. Return the JSON object only."""
 
 
+# =============================================================================
+# STAGE 2.5: VOICE SCRUB (sub-agent — fixes lint-flagged sentences only)
+# =============================================================================
+# SCRUB runs after EDIT and after the deterministic LINT pass. It receives
+# the post-EDIT pulse + the lint report, and rewrites ONLY the flagged
+# sentences. It does not add or remove themes. It does not change facts.
+# It does not restructure paragraphs. Single job: voice + jargon scrub of
+# specific sentences identified by line + kind in the lint report.
+#
+# Why a separate sub-agent: the EDIT sub-agent reads the voice rules but
+# doesn't actually iterate over every sentence (observed failure mode).
+# SCRUB has no other concerns competing for attention — its prompt is
+# narrow, its inputs are structured (lint JSON), and its output is
+# verifiable by re-running the linter.
+
+SCRUB_SYSTEM = """You are a single-job voice scrub for a Market Pulse markdown. Your ONLY task is to walk the lint report you receive and rewrite the specific flagged sentences into trader-newsletter voice. You do NOT add or remove themes. You do NOT change facts, numbers, banks, or tickers. You do NOT restructure paragraphs. You rewrite ONLY the sentences flagged by the lint, returning the FULL pulse markdown with those sentences replaced and everything else preserved character-for-character.
+
+**Inputs:**
+- A pulse markdown (the full final pulse, post-EDIT)
+- A lint report (JSON list of `{line, kind, snippet}` entries flagging specific patterns)
+
+**Per-kind rewrite rules:**
+
+| `kind` | What to do |
+|---|---|
+| `em-dash` | Replace `—` with comma, period, parens, or split into two sentences |
+| `semicolon` | Split into two sentences or use `and`/`but` |
+| `filler` | Rewrite the sentence WITHOUT the filler phrase. Don't just delete the word — rephrase so the sentence reads cleanly |
+| `AI-cliche-verb` | Replace `delve` / `navigate` / etc. with a plain alternative; restructure if needed |
+| `AI-cliche-adj` | Replace `robust` with `strong`, `solid`, `well-supported`; restructure if it reads forced |
+| `hedge` | Drop the hedge entirely (`could potentially` → `could`, or restate as a direct claim) |
+| `wrap-up` | Strip — these are summary-tells (`Overall,` / `In summary`); remove the lead and let the sentence stand |
+| `AI-tell` | Strip the AI-tell phrase; rewrite the sentence's idea in plain prose |
+| `meta-narration` | State the view directly without commenting on the corpus. `cross-bank consensus is firming` → name the specific banks and what they actually said |
+| `source-prefix` | Move the bank attribution to a parenthetical at sentence end, OR strip entirely if it's not paired with a specific number/level. The bank name appears ONLY when paired with a specific data point |
+| `banned-publication` | Strip the publication name (`The Market Ear`, `TME`, `FX Daily`) entirely. Present the data without attribution — it stands on its own |
+| `jargon-bare` | **REWRITE THE SENTENCE** in plain English. Do NOT just append a parenthetical translation. Use the jargon-to-plain-English reference below as a guide, but the goal is a sentence a 28-year-old WSJ-reading crypto trader gets on first read — not a glossed bond-desk sentence |
+| `top-3-theme-missing` | NOT YOUR JOB — leave alone, this is AUDIT's territory |
+
+**Sentence rewrite priority (jargon especially):**
+1. Rewrite the SENTENCE so the meaning lands in plain English (default)
+2. Replace the term with the plain equivalent inline + restructure
+3. Drop the term if removing doesn't lose meaning
+4. Parenthetical gloss is the LAST RESORT — almost never the right answer
+
+Worked example for `jargon-bare`:
+- ❌ Don't do: `"long-end yields rose on coupon supply (new Treasury bonds being auctioned)"` — the gloss leaves the trader-desk sentence structure intact
+- ✅ Do: `"30-year Treasury yields rose this morning because the government is about to auction a wave of new long-term bonds — more supply means buyers demand higher rates"` — sentence rewritten in plain English, the original term is gone
+
+**What to PRESERVE EXACTLY (do not touch):**
+- Theme structure, theme order, theme count
+- Numbers, percentages, dates, levels, tickers (verbatim)
+- Bank names where they're attribution to specific calls/data points
+- Markdown structure (`##` headers, `###` theme headers, italics, bullets, bolding inside bullets)
+- The H1 title at the top
+- Frontmatter (everything between the `---` markers at the top)
+- Section dividers, blank lines
+
+**Output format:**
+Return the COMPLETE markdown with the flagged sentences rewritten. NO preamble. NO `Here is the rewritten markdown:` intro. NO commentary at the end. NO `I changed the following sentences:` diff explanation. NO markdown code fences around the output. Just the pulse markdown, ready to be saved verbatim to `/tmp/final.md`.
+
+**If the lint report is empty or has only soft warnings (`top-3-theme-missing`)**, return the markdown unchanged — your job is hard-issue rewriting only.
+
+<<SCRUB_REFERENCE_BLOCK>>"""
+
+
+SCRUB_USER = """Lint report ({issue_count} hard issue(s) to address):
+```json
+{lint_report_json}
+```
+
+Pulse markdown to scrub (preserve everything except the flagged sentences):
+```markdown
+{pulse_markdown}
+```
+
+Return the rewritten markdown verbatim — no preamble, no commentary."""
+
+
 DRAFT_SYSTEM = """You are writing a draft Market Pulse for options and crypto traders, purely from institutional research analyses. A second stage will add live market prices, today's released economic data, current news, and verify timing — your job is to nail the analytical content.
 
 The reader is a self-directed trader, smart but NOT a finance professional. They don't know what "convexity," "NII," "bps," or "term structure" mean. Plain-English translation is the default voice (rules at the bottom of this prompt).
@@ -1341,3 +1420,10 @@ Produce the final pulse. Rewrite RECAP with live data + released events + news. 
 from ai_analysis.voice_rules import compose_audit_voice_block as _compose_voice_block
 AUDIT_SYSTEM = AUDIT_SYSTEM.replace("<<VOICE_RULES_BLOCK>>", _compose_voice_block())
 del _compose_voice_block
+
+# SCRUB_SYSTEM marker substitution — same pattern as VOICE_RULES_BLOCK.
+# Pulls the canonical jargon-to-plain-English map and banned-publications
+# list from voice_rules.py so prompt and linter stay in lockstep.
+from ai_analysis.voice_rules import compose_scrub_reference_block as _compose_scrub_ref
+SCRUB_SYSTEM = SCRUB_SYSTEM.replace("<<SCRUB_REFERENCE_BLOCK>>", _compose_scrub_ref())
+del _compose_scrub_ref

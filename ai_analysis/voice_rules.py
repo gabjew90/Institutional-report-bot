@@ -308,6 +308,30 @@ def compose_lint_patterns() -> list[tuple[str, str]]:
     return patterns
 
 
+def compose_scrub_reference_block() -> str:
+    """Build the jargon-to-plain-English reference + banned-publications
+    block that SCRUB_SYSTEM interpolates.
+
+    The SCRUB sub-agent uses this as the canonical map when rewriting
+    flagged sentences. Pulled from the same JARGON_WITH_TRANSLATIONS
+    dict the linter uses, so single source of truth.
+    """
+    lines = [
+        "**Jargon-to-plain-English reference (canonical — use these or rewrite the sentence to drop the term):**",
+        "",
+    ]
+    for term, translation in JARGON_WITH_TRANSLATIONS.items():
+        lines.append(f'- **{term}** → "{translation}"')
+    lines.extend([
+        "",
+        "**Banned publication names (strip entirely, never attribute):**",
+        f"  {', '.join(repr(p) for p in BANNED_PUBLICATION_NAMES)}",
+        "",
+        "If the publication is the primary source for a data point, present the data without attribution; the data stands on its own.",
+    ])
+    return '\n'.join(lines)
+
+
 def compose_jargon_lint_patterns() -> list[tuple[str, str]]:
     """Soft-warning patterns for the jargon scan.
 

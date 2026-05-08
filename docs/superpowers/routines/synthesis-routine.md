@@ -505,9 +505,59 @@ python3 scripts/pulse_lint.py /tmp/final.md /tmp/lint_report.json /tmp/ctx.json
 
 The script prints a human-readable summary inline (issue count, breakdown by kind, first 20 examples with line + snippet). Full structured issues are written to `/tmp/lint_report.json` for STEP 6 to commit alongside the pulse.
 
-**If lint reports issues, REWRITE `/tmp/final.md` to fix them, then re-run STEP 5.5.** Iterate until the lint report shows zero high-confidence issues (em-dash, semicolon, banned vocabulary, source-prefix, meta-narration). Soft issues (`top-3-theme-missing`) are advisory — investigate but the pulse can ship if the missing theme genuinely lacks actionable specifics.
+## STEP 5.7 — Voice scrub (sub-agent dispatch, lint-driven)
 
-The lint is mechanical and trusted. If a flagged pattern legitimately needed to stay (e.g., a verbatim research quote contains "robust"), you may rewrite around it — but do not commit a pulse with `>0` punctuation/banned-vocab issues without explicit justification logged in STEP 7.
+If STEP 5.5's lint report has any HARD issues (any `kind` other than `top-3-theme-missing`), dispatch a SCRUB sub-agent whose ONLY job is to rewrite the flagged sentences. SCRUB does not add or remove themes, change facts, or restructure paragraphs — it walks the lint report and rewrites the specific flagged sentences in place.
+
+This is the layer that closes the voice-enforcement gap: the EDIT sub-agent handles editorial judgment but doesn't reliably iterate over every sentence to enforce voice rules; SCRUB has no other concerns competing for attention and is driven by structured lint output rather than self-supervision.
+
+### Step 5.7.1 — Decide whether to dispatch
+
+Read `/tmp/lint_report.json`. Count the issues whose `kind` is NOT `top-3-theme-missing`:
+
+```bash
+python3 -c "
+import json
+issues = json.load(open('/tmp/lint_report.json'))
+hard = [i for i in issues if i.get('kind') != 'top-3-theme-missing']
+print(f'hard issues: {len(hard)}')
+print(f'soft issues: {len(issues) - len(hard)}')
+"
+```
+
+If hard issues == 0, SKIP STEP 5.7 entirely (proceed to STEP 6). If hard issues > 0, continue to 5.7.2.
+
+### Step 5.7.2 — Dispatch SCRUB sub-agent
+
+Build the SCRUB prompt by combining `SCRUB_SYSTEM` + `SCRUB_USER` (with substitutions) from `ai_analysis/prompts.py`. Substitutions into `SCRUB_USER`:
+
+- `{issue_count}` ← number of hard issues (computed in 5.7.1)
+- `{lint_report_json}` ← contents of `/tmp/lint_report.json` (the full report — SCRUB filters to hard issues itself)
+- `{pulse_markdown}` ← contents of `/tmp/final.md`
+
+Dispatch ONE `general-purpose` Agent with the assembled prompt. The sub-agent runs in fresh context (no DRAFT/EDIT history), sees only the pulse markdown + the structured lint report, and returns the rewritten markdown.
+
+Save the sub-agent's response to `/tmp/scrubbed.md` first (so we keep a copy of the SCRUB output for forensics), then overwrite `/tmp/final.md` with the same content (so STEP 6's commit picks up the scrubbed version).
+
+### Step 5.7.3 — Re-lint and decide on retry
+
+Re-run the lint scan against the scrubbed markdown:
+
+```bash
+python3 scripts/pulse_lint.py /tmp/final.md /tmp/lint_report.json /tmp/ctx.json
+```
+
+Check the new hard-issue count:
+
+- **0 hard issues** → great, proceed to STEP 6.
+- **>0 hard issues, but fewer than before** → SCRUB made progress. Dispatch ONE more SCRUB pass (same prompt, fresh UUID, with the new lint report). Re-lint. Accept whatever lint reports after this second pass — proceed to STEP 6 even if residuals exist. The residual lint report ships with the pulse for inspection.
+- **>0 hard issues, no progress** → log `WARNING: SCRUB did not reduce lint issues` and proceed to STEP 6 anyway. Don't loop forever — the pulse must ship.
+
+**Maximum 2 SCRUB iterations.** If lint still has hard issues after the second pass, commit the pulse with the residual lint report; don't block delivery on perfect voice compliance.
+
+If validated SCRUB output is materially different from the EDIT output, that's good — the system is doing its job. If SCRUB returns nearly the same markdown, that's a sign the sub-agent didn't engage with the lint report; flag it in STEP 7's report so we can debug.
+
+If lint reports issues, the SCRUB pass (above) is supposed to handle them automatically — manual rewriting of `/tmp/final.md` is no longer the workflow. The lint report is mechanical and trusted; SCRUB is the agent that acts on it.
 
 ## STEP 6 — Compose with frontmatter and commit BOTH files (PRODUCTION — ALL CHANNELS)
 
@@ -627,6 +677,20 @@ if os.path.exists('/tmp/lint_report.json'):
     print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
 else:
     print('no /tmp/lint_report.json — skipping lint commit')
+
+# Commit /tmp/scrubbed.md if STEP 5.7 dispatched a SCRUB pass. This is
+# the post-EDIT pre-final artifact (intermediate between EDIT output and
+# the final pulse). Diff scrubbed.md vs the final pulse markdown to see
+# what SCRUB rewrote — if they're nearly identical, SCRUB didn't engage
+# with the lint findings and that's a quality signal worth investigating.
+if os.path.exists('/tmp/scrubbed.md'):
+    scrubbed_path = f'pulse-output/scrubbed/{ts}.md'
+    scrubbed_content = open('/tmp/scrubbed.md').read().encode()
+    result = commit(scrubbed_path, scrubbed_content, f'routine: post-edit scrubbed {ts}')
+    print('committed scrubbed:', scrubbed_path)
+    print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+else:
+    print('no /tmp/scrubbed.md — SCRUB pass was skipped (zero hard lint issues)')
 
 print(f'pdf_count: {ctx["pdf_count"]}, output_tokens_est: {output_tokens_est}, target: ALL configured channels (production)')
 PYEOF
