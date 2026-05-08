@@ -321,7 +321,7 @@ If `validated` is empty, log a warning and continue — DRAFT will fall back to 
 
 ## STEP 4 — Generate DRAFT (Stage 1)
 
-Apply `DRAFT_USER` substitutions and `DRAFT_SYSTEM`. **In addition** to the existing inputs, inject the adjudicated themes block as added structured input that the prose can use to ground its claims:
+Apply `DRAFT_USER` substitutions and `DRAFT_SYSTEM`. **If `/tmp/adjudication.json` exists and its `themes` array is non-empty**, inject the adjudicated themes block as added structured input that the prose can use to ground its claims. **If it doesn't exist, or its `themes` array is empty** (e.g., adjudication was skipped due to missing `theme_map`, or every theme failed lint), skip the injection entirely and run DRAFT against the existing per-PDF JSON inputs only — the pulse still ships with no degradation in surface output, just without the structured adjudication grounding.
 
 ```
 ADJUDICATED THEMES (use these consensus_view, facts_agreed, and falsifiable_predictions
