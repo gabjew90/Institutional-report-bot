@@ -74,19 +74,32 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
             )
         else:
             # HIGH-priority routing fork: when settings.high_ingestion_backend
-            # is set to "opus_bridge", future steps will commit the PDF to a
-            # GitHub branch for processing by an Anthropic-side cron routine
-            # (see github_bridge/ingestion.py). For now (step 1), the bridge
-            # plumbing is not yet deployed, so we just log the intent and
-            # fall through to the existing Gemini path.
+            # is set to "opus_bridge", route to the parallel Opus routine via
+            # the GitHub bridge instead of running Gemini deep analysis here.
+            # The dump job (github_bridge/ingestion.py) commits the PDF to
+            # the bridge on its 5-min tick; the pull job ingests the result
+            # back. The fallback sweeper handles cases where Opus times out
+            # or the routine reports failure. See bridge_ingestion_state
+            # state machine for the full flow.
             if (
                 triage.priority == "high"
                 and settings.high_ingestion_backend == "opus_bridge"
             ):
-                log.info(
-                    f"[bridge:step1] HIGH PDF {file_name} eligible for opus_bridge "
-                    f"but bridge plumbing not yet active — using Gemini deep analysis"
+                db.queue_for_opus_bridge(pdf_id)
+                db.log_event(
+                    pdf_id, "bridge", "queued",
+                    f"HIGH → opus_bridge ({triage.source} / {triage.report_type})",
                 )
+                log.info(
+                    f"Bridge: queued pdf_file_id={pdf_id} for Opus deep-analysis "
+                    f"({file_name}, source={triage.source}, type={triage.report_type})"
+                )
+                # Status stays PROCESSING — will flip to PROCESSED when the
+                # pull job ingests the Opus result OR the fallback sweeper
+                # produces a Gemini analysis.
+                # Local file stays on disk — dump job needs it; cleanup
+                # happens after successful bridge commit.
+                return None
 
             # Deep analysis — text-only by default; multimodal triggers
             # selectively for top-bank equity research / vol / derivatives
@@ -419,8 +432,16 @@ async def reanalyze_recent_pdfs(
                 stats["output_tokens"] += analysis.output_tokens
                 recent_files.append(f"✓ {pdf_data['file_name'][:70]} ({analysis.priority})")
             else:
-                stats["failed"] += 1
-                recent_files.append(f"✗ {pdf_data['file_name'][:70]} (failed)")
+                # None could mean (a) genuinely failed, or (b) routed to opus_bridge
+                # and waiting for the routine. Differentiate so /reanalyze stats
+                # don't count bridge-queued PDFs as failures.
+                bridge = db.get_bridge_state(int(pdf_data["id"]))
+                if bridge and bridge.get("status") in ("pending", "committed"):
+                    stats["bridge_queued"] = stats.get("bridge_queued", 0) + 1
+                    recent_files.append(f"⏳ {pdf_data['file_name'][:70]} (bridge queued)")
+                else:
+                    stats["failed"] += 1
+                    recent_files.append(f"✗ {pdf_data['file_name'][:70]} (failed)")
         except Exception as e:
             log.error(f"Reanalyze failed for {pdf_data['file_name']}: {e}", exc_info=True)
             stats["failed"] += 1
@@ -512,8 +533,14 @@ async def ingest_recent_pdfs(
                     stats["skipped_low"] += 1
                 recent_files.append(f"✓ {entry.name[:70]} ({analysis.priority})")
             else:
-                stats["failed"] += 1
-                recent_files.append(f"✗ {entry.name[:70]} (failed)")
+                # Differentiate bridge-queued from genuine failure (see /reanalyze)
+                bridge = db.get_bridge_state(int(pdf_data["id"]))
+                if bridge and bridge.get("status") in ("pending", "committed"):
+                    stats["bridge_queued"] = stats.get("bridge_queued", 0) + 1
+                    recent_files.append(f"⏳ {entry.name[:70]} (bridge queued)")
+                else:
+                    stats["failed"] += 1
+                    recent_files.append(f"✗ {entry.name[:70]} (failed)")
         except Exception as e:
             log.error(f"Ingest failed for {entry.name}: {e}")
             stats["failed"] += 1

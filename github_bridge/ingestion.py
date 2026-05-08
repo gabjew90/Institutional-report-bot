@@ -247,12 +247,16 @@ def dump_pending_high_ingestions_job() -> None:
                 f"Bridge dump: committed pdf_file_id={pdf_file_id} "
                 f"({len(pdf_bytes) / 1024:.0f}KB, {page_count or '?'}p) → {pdf_path}"
             )
-            # Successful commit — clean up the re-downloaded local copy if we made one
-            if materialized_path:
-                try:
-                    Path(materialized_path).unlink(missing_ok=True)
-                except Exception:
-                    pass
+            # Successful commit — the PDF is now safely on the bridge branch.
+            # Clean up the local copy regardless of whether we re-downloaded
+            # (orchestrator.process_single_pdf no longer deletes when routed
+            # to bridge — that's our responsibility now).
+            for path_to_remove in {materialized_path, row.get("local_path") or ""}:
+                if path_to_remove:
+                    try:
+                        Path(path_to_remove).unlink(missing_ok=True)
+                    except Exception:
+                        pass
         except Exception as e:
             log.error(
                 f"Bridge dump: failed for pdf_file_id={pdf_file_id}: {e}",
