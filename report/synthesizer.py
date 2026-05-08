@@ -182,6 +182,10 @@ def _classify_themes(
             + tag_pdf_count.get(orig_tag, 0)
         )
 
+    # Import here to avoid a circular import risk if voice_rules ever
+    # grows synthesizer-side dependencies.
+    from ai_analysis.voice_rules import NON_BANK_SOURCES
+
     theme_map: dict[str, dict] = {
         tag: {
             "banks": len(srcs),
@@ -191,6 +195,13 @@ def _classify_themes(
             "skeptical": len(canonical_stance_banks.get(tag, {}).get("skeptical", set())),
             "neutral": len(canonical_stance_banks.get(tag, {}).get("neutral", set())),
             "discovered": False,
+            # True if every source for this theme is a non-bank publication
+            # (TME, Bloomberg news wire, Reuters, etc.). Such themes are
+            # color/positioning observations, not underwritten analytical
+            # views — the writer should NOT lead INSIGHTS with them without
+            # multi-bank corroboration. Surfaced in _format_theme_coverage
+            # so the prompt's editorial decision is informed.
+            "non_bank_only": bool(srcs) and srcs.issubset(NON_BANK_SOURCES),
         }
         for tag, srcs in merged_sources.items()
     }
@@ -268,6 +279,7 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
     """
     primary_lines: list[str] = []
     discovered_lines: list[str] = []
+    non_bank_lines: list[str] = []
 
     ranked = sorted(
         theme_map.items(),
@@ -292,8 +304,13 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
             f"  - {theme}: {info['banks']} banks / {info['pdfs']} PDFs "
             f"({srcs_str}){stance_str}"
         )
+        # Three-bucket categorization: discovered (Phase B), non-bank-only
+        # (no analytical bank support — color/positioning observations
+        # only), or primary (multi-bank or single-bank-bank theme).
         if info.get("discovered"):
             discovered_lines.append(row)
+        elif info.get("non_bank_only"):
+            non_bank_lines.append(row)
         else:
             primary_lines.append(row)
 
@@ -310,6 +327,12 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
             "DISCOVERED THEMES — heavily mentioned in research as context (risk_factors, geopolitical, macro interpretation) but no single bank promoted them to a primary thesis. Treat as live topics worth surfacing, but do NOT claim consensus stance — the banks discussed these without arguing direction:"
         )
         out.extend(discovered_lines)
+    if non_bank_lines:
+        out.append("")
+        out.append(
+            "NON-BANK-ONLY THEMES — every source for these themes is a commentary publication (The Market Ear, Bloomberg, Reuters) or unattributed, NOT a bank with an analytical research desk. Useful for vol/positioning/market-color reference only. DO NOT promote these to primary INSIGHTS themes without multi-bank corroboration — they're color, not underwritten analysis:"
+        )
+        out.extend(non_bank_lines)
     return "\n".join(out)
 
 

@@ -153,6 +153,27 @@ BANNED_PUBLICATION_NAMES = [
 # call to lead with when consensus is split.
 TIER_1_BANKS = ["JPMorgan", "Bank of America", "Goldman Sachs"]
 
+# Non-bank publications whose theme_stances should NOT drive INSIGHTS
+# themes on their own. These are commentary/color sources (no underwriting
+# desk, no proprietary research division) — useful for vol/positioning
+# observations and short-term color, but not a substitute for a Tier-1
+# bank's analytical view. A theme whose ONLY source is in this set should
+# be flagged as `non_bank_only=True` in the theme_map so the writer doesn't
+# promote it to INSIGHTS without multi-bank corroboration.
+#
+# Today's QC review flagged this: 3 of 5 INSIGHTS themes in the test pulse
+# were drawn from single-source TME stances. Adding the flag lets the
+# theme_coverage block surface it explicitly.
+NON_BANK_SOURCES = {
+    "The Market Ear",
+    "Market Ear",
+    "TME",
+    "FX Daily",
+    "Bloomberg",  # data feed, not analytical research
+    "Reuters",    # news wire, not analytical research
+    "Unknown",    # unattributed sources
+}
+
 # Jargon terms that MUST be translated to plain English on first use (or
 # in the same paragraph). The audience is a self-directed US options/crypto
 # trader — smart but NOT a finance professional. They read the WSJ, not
