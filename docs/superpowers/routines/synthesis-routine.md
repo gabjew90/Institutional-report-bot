@@ -371,6 +371,70 @@ for theme, inputs in inputs_per_theme.items():
             fail_reason = (f"stance_counts mismatch: "
                            f"{adj.get('stance_counts')} vs {inputs['stance_counts']}")
 
+    # Rule 5: facts_agreed entries must have >= 2 banks_for. A "fact agreed"
+    # by a single bank is just "what one bank said" — not consensus, and
+    # already covered by per-PDF inputs. Drop single-bank entries in place
+    # rather than failing the whole theme; if every entry was single-bank,
+    # facts_agreed becomes [] and the rest of the adjudication still ships.
+    if not fail_reason and adj.get('facts_agreed'):
+        before = len(adj['facts_agreed'])
+        adj['facts_agreed'] = [
+            fa for fa in adj['facts_agreed']
+            if len(fa.get('banks_for') or []) >= 2
+        ]
+        dropped = before - len(adj['facts_agreed'])
+        if dropped:
+            print(f"  facts_agreed: dropped {dropped} single-bank entr{'y' if dropped == 1 else 'ies'} from {theme!r}")
+
+    # Rule 6: falsifiable_predictions[*].deadline must be either an ISO
+    # date prefix OR a short conditional substring. Catches the failure
+    # mode where the sub-agent puts a description ("Anthropic backlog
+    # account for GOOGL") in the deadline field. Filter bad entries in
+    # place rather than failing the theme.
+    if not fail_reason and adj.get('falsifiable_predictions'):
+        before = len(adj['falsifiable_predictions'])
+        def _deadline_ok(pred):
+            dl = (pred.get('deadline') or '').strip()
+            if not dl:
+                return False
+            # ISO date at the start (with optional rest like time)
+            if re.match(r'^\d{4}-\d{2}-\d{2}', dl):
+                return True
+            # Short conditional/relative — must be <= 30 chars and look
+            # like a deadline cue, not a noun phrase description. The
+            # description-shape heuristic: contains an article + verb-ish
+            # word combination ("the X of Y", "for Y", "account for Y").
+            if len(dl) > 40:
+                return False
+            description_smell = (
+                ' for ' in dl.lower()
+                or 'account' in dl.lower()
+                or 'estimate' in dl.lower()
+                or dl.lower().startswith('the ')
+            )
+            if description_smell:
+                return False
+            return True
+        adj['falsifiable_predictions'] = [
+            p for p in adj['falsifiable_predictions'] if _deadline_ok(p)
+        ]
+        dropped = before - len(adj['falsifiable_predictions'])
+        if dropped:
+            print(f"  falsifiable_predictions: dropped {dropped} entr{'y' if dropped == 1 else 'ies'} with bad deadline format from {theme!r}")
+
+    # Final emptiness check after Rule 5 / 6 filtering — if the entire
+    # adjudication block is now empty (no agreed, no contested, no
+    # predictions), the theme adjudication has no remaining signal value.
+    # Discard it so DRAFT doesn't waste prompt budget on an empty block.
+    if not fail_reason:
+        post_filter_empty = (
+            not adj.get('facts_agreed')
+            and not adj.get('facts_contested')
+            and not adj.get('falsifiable_predictions')
+        )
+        if post_filter_empty:
+            fail_reason = 'after Rule 5/6 filtering, theme has no remaining content (single-bank facts dropped, bad deadlines dropped)'
+
     if fail_reason:
         discarded.append({'theme': theme, 'reason': fail_reason})
     else:

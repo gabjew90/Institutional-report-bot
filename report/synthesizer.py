@@ -88,7 +88,9 @@ _THEME_ANCHORS = frozenset({
 })
 
 
-def _merge_similar_tags(tag_to_sources: dict[str, set[str]]) -> dict[str, set[str]]:
+def _merge_similar_tags(
+    tag_to_sources: dict[str, set[str]],
+) -> tuple[dict[str, set[str]], dict[str, str]]:
     """Merge tag clusters whose normalized forms are substrings/supersets
     of each other, OR which share a high-signal anchor term.
 
@@ -103,32 +105,41 @@ def _merge_similar_tags(tag_to_sources: dict[str, set[str]]) -> dict[str, set[st
     Picks the more frequently-attested form as the canonical label
     (sort order at the top puts higher-source-count tags first, so
     later tags merge into earlier ones).
+
+    Returns (merged_sources, orig_to_canonical):
+      - merged_sources: dict canonical_tag -> set of all banks in cluster
+      - orig_to_canonical: dict original_tag -> canonical_tag (lets callers
+        consolidate other per-tag data using the same merge decisions —
+        e.g., stance-bank sets and pdf counts in _classify_themes).
     """
     items = sorted(tag_to_sources.items(), key=lambda kv: (-len(kv[1]), -len(kv[0])))
     merged: dict[str, set[str]] = {}
+    orig_to_canonical: dict[str, str] = {}
     seen_words: list[tuple[set[str], str]] = []
     for tag, srcs in items:
         words = set(tag.split())
-        merged_into = False
+        merged_into: str | None = None
         for existing_words, existing_tag in seen_words:
             shared = words & existing_words
             # Tier 1: original 2-word-subset rule
             if len(shared) >= 2 and (
                 words.issubset(existing_words) or existing_words.issubset(words)
             ):
-                merged[existing_tag] |= srcs
-                merged_into = True
+                merged_into = existing_tag
                 break
             # Tier 2: anchor-term rule — even 1 shared word merges
             # if that word is a high-signal anchor.
             if shared & _THEME_ANCHORS:
-                merged[existing_tag] |= srcs
-                merged_into = True
+                merged_into = existing_tag
                 break
-        if not merged_into:
+        if merged_into is not None:
+            merged[merged_into] |= srcs
+            orig_to_canonical[tag] = merged_into
+        else:
             merged[tag] = set(srcs)
+            orig_to_canonical[tag] = tag
             seen_words.append((words, tag))
-    return merged
+    return merged, orig_to_canonical
 
 
 def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
@@ -146,13 +157,21 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
         "supportive": int, "skeptical": int, "neutral": int,
     }}.
 
+    Stance counts are BANK-DEDUPLICATED. A bank with N supportive PDFs
+    on the same theme contributes 1 to `supportive`, not N. This prevents
+    one bank's house view (often re-articulated across multiple desk
+    notes) from inflating the cross-bank consensus signal. A bank that
+    has both supportive and skeptical PDFs on the same theme counts in
+    BOTH buckets — internal division is itself a signal worth surfacing.
+
     Backward-compat: PDFs whose deep analysis predates this schema will have
     theme_stances populated from legacy theme_tags during deserialization
     (stance defaults to neutral for those).
     """
-    tag_sources: dict[str, set[str]] = {}
-    tag_pdf_counts: dict[str, int] = {}
-    tag_stance_counts: dict[str, dict[str, int]] = {}
+    # Per-tag accumulators
+    tag_sources: dict[str, set[str]] = {}                            # tag -> banks discussing it
+    tag_pdf_count: dict[str, int] = {}                               # tag -> count of PDFs touching it
+    tag_stance_banks: dict[str, dict[str, set[str]]] = {}            # tag -> stance -> banks taking that stance
 
     for a in analyses:
         source = (a.source or "Unknown").strip()
@@ -166,7 +185,7 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
                 continue  # don't double-count within one PDF
             seen_for_this_pdf.add(norm)
             tag_sources.setdefault(norm, set()).add(source)
-            tag_pdf_counts[norm] = tag_pdf_counts.get(norm, 0) + 1
+            tag_pdf_count[norm] = tag_pdf_count.get(norm, 0) + 1
             stance = (ts.stance or "neutral").lower().strip()
             if stance not in ("supportive", "skeptical", "neutral"):
                 stance = "neutral"
@@ -180,45 +199,46 @@ def _classify_themes(analyses: list[PdfAnalysis]) -> dict[str, dict]:
                 key_arg = (ts.key_argument or "").strip()
                 if not evidence and not key_arg:
                     stance = "neutral"
-            buckets = tag_stance_counts.setdefault(
-                norm, {"supportive": 0, "skeptical": 0, "neutral": 0}
+            stance_buckets = tag_stance_banks.setdefault(
+                norm, {"supportive": set(), "skeptical": set(), "neutral": set()}
             )
-            buckets[stance] += 1
+            stance_buckets[stance].add(source)
 
-    # Merge near-duplicates (e.g., 'hormuz oil shock' vs 'hormuz energy shock')
-    merged = _merge_similar_tags(tag_sources)
-    # Recompute pdf counts and stance breakdown from the original counts,
-    # summing for any tag merged into a canonical bucket.
-    canonical_pdf_counts: dict[str, int] = {}
-    canonical_stance_counts: dict[str, dict[str, int]] = {}
-    for canonical_tag in merged:
-        cwords = set(canonical_tag.split())
-        n = 0
-        stance_agg = {"supportive": 0, "skeptical": 0, "neutral": 0}
-        for orig_tag in tag_sources.keys():
-            owords = set(orig_tag.split())
-            shared = cwords & owords
-            if (orig_tag == canonical_tag) or (
-                len(shared) >= 2 and (
-                    owords.issubset(cwords) or cwords.issubset(owords)
-                )
-            ):
-                n += tag_pdf_counts.get(orig_tag, 0)
-                for k, v in tag_stance_counts.get(orig_tag, {}).items():
-                    stance_agg[k] = stance_agg.get(k, 0) + v
-        canonical_pdf_counts[canonical_tag] = n
-        canonical_stance_counts[canonical_tag] = stance_agg
+    # Merge near-duplicates. _merge_similar_tags returns the consolidated
+    # source map AND a mapping orig_tag -> canonical_tag so we can apply
+    # the same merge decisions to the stance-bank sets and pdf counts.
+    merged_sources, orig_to_canonical = _merge_similar_tags(tag_sources)
+
+    # Apply the merge mapping to consolidate stance-bank sets and pdf counts.
+    canonical_stance_banks: dict[str, dict[str, set[str]]] = {}
+    canonical_pdf_count: dict[str, int] = {}
+    for orig_tag, canonical_tag in orig_to_canonical.items():
+        # Stance-bank sets union per stance (preserves bank-dedup across
+        # the merge, so "hormuz oil shock" + "hormuz peace deal" both from
+        # Goldman → Goldman counts ONCE in the merged theme's supportive
+        # tally, not twice).
+        canonical_buckets = canonical_stance_banks.setdefault(
+            canonical_tag,
+            {"supportive": set(), "skeptical": set(), "neutral": set()},
+        )
+        for stance, banks in tag_stance_banks.get(orig_tag, {}).items():
+            canonical_buckets[stance] |= banks
+        # PDF counts: simple sum (no dedup — PDFs are unique).
+        canonical_pdf_count[canonical_tag] = (
+            canonical_pdf_count.get(canonical_tag, 0)
+            + tag_pdf_count.get(orig_tag, 0)
+        )
 
     return {
         tag: {
             "banks": len(srcs),
-            "pdfs": canonical_pdf_counts.get(tag, 0),
+            "pdfs": canonical_pdf_count.get(tag, 0),
             "sources": sorted(srcs),
-            "supportive": canonical_stance_counts.get(tag, {}).get("supportive", 0),
-            "skeptical": canonical_stance_counts.get(tag, {}).get("skeptical", 0),
-            "neutral": canonical_stance_counts.get(tag, {}).get("neutral", 0),
+            "supportive": len(canonical_stance_banks.get(tag, {}).get("supportive", set())),
+            "skeptical": len(canonical_stance_banks.get(tag, {}).get("skeptical", set())),
+            "neutral": len(canonical_stance_banks.get(tag, {}).get("neutral", set())),
         }
-        for tag, srcs in merged.items()
+        for tag, srcs in merged_sources.items()
     }
 
 
