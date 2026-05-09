@@ -1,19 +1,32 @@
 {
  "today": "2026-05-09",
  "today_label": "2026-05-09 (Saturday)",
- "now_label": "16:45 EDT",
+ "now_label": "17:00 EDT",
  "is_weekend": true,
  "session_status": "closed (weekend)",
- "pdf_count": 1,
- "analyses_json": "[\n {\n  \"source\": \"The Market Ear\",\n  \"title\": \"Upside Panic\",\n  \"type\": \"vol_commentary\",\n  \"priority\": \"high\",\n  \"published\": \"2026-05-08\",\n  \"insights\": [\n   \"NDX is overshooting its long-term trend channel, signaling a reflexive momentum event driven by upside panic and call chasing.\",\n   \"Market behavior is characterized by 'spot up, vol up,' indicating investors are scrambling to chase exposure in a late-stage melt-up.\",\n   \"BofA notes US equities are ignoring macro risks like Brent at $100 and 30Y yields near 5%, with upside volatility outweighing downside.\",\n   \"GS raised its KOSPI target to 9,000, citing retail mania (70% of turnover), AI/semiconductor earnings, and governance reforms.\",\n   \"Silver is breaking above $80 resistance, potentially opening the door for a larger upside squeeze.\",\n   \"European defense stocks have stagnated despite geopolitical tensions, showing a clear divergence from the AI/semiconductor momentum trade.\"\n  ],\n  \"market_movers\": [\n   {\n    \"ticker\": \"EWY\",\n    \"action\": \"positive_catalyst_watch\",\n    \"rating\": \"N/A\",\n    \"price_target\": \"N/A\",\n    \"rationale\": \"GS raised KOSPI target to 9,000; rally driven by retail mania, ETF inflows, and AI/semiconductor earnings.\",\n    \"conviction\": \"high\"\n   }\n  ],\n  \"sector_views\": [\n   {\n    \"sector\": \"Technology\",\n    \"stance\": \"overweight\",\n    \"rationale\": \"Market continues to reward AI and semiconductors over other sectors like defense.\"\n   },\n   {\n    \"sector\": \"Defense\",\n    \"stance\": \"neutral\",\n    \"rationale\": \"Sector has gone nowhere since last summer despite geopolitical war obsession.\"\n   }\n  ],\n  \"earnings\": [\n   \"AI/semiconductor earnings boom led by Samsung and SK Hynix is a primary driver of the KOSPI rally.\"\n  ],\n  \"macro\": [\n   {\n    \"indicator\": \"Brent Crude\",\n    \"reading\": \"$100+\",\n    \"interpretation\": \"Market is ignoring this macro risk while pushing to all-time highs.\"\n   },\n   {\n    \"indicator\": \"30Y Treasury Yield\",\n    \"reading\": \"near 5%\",\n    \"interpretation\": \"High yield environment being ignored by equity melt-up.\"\n   },\n   {\n    \"indicator\": \"Citi Europe Economic Surprise Index\",\n    \"reading\": \"crashed\",\n    \"interpretation\": \"Signals lack of bullish case for European equities.\"\n   }\n  ],\n  \"trades\": [\n   {\n    \"description\": \"Long Silver\",\n    \"rationale\": \"Breaking above $80 resistance; technical double bottom formation.\",\n    \"risk\": \"Failure to hold $80 breakout.\",\n    \"conviction\": \"medium\",\n    \"time_horizon\": \"swing\"\n   }\n  ],\n  \"risks\": [\n   \"Peak concentration levels exceeding 40% (bubble warning).\",\n   \"Macro risks (Brent >$100, 30Y yields near 5%) being ignored.\",\n   \"Late-stage reflexive momentum behavior.\"\n  ],\n  \"charts\": [\n   \"NDX overshooting long-term trend channel.\",\n   \"Silver carving out a larger double bottom formation.\",\n   \"SXPARO (European defense) divergence from SOX (semiconductors).\"\n  ],\n  \"vol_positioning\": [\n   \"Spot up, vol up behavior indicates upside panic. NDX volatility (VXN) rising alongside the rally. Short-dated SPX implied vol underpricing realized upside moves.\"\n  ],\n  \"geopolitical\": [\n   \"Europe's constant war obsession has not translated into performance for the defense sector.\"\n  ],\n  \"cross_bank_refs\": [\n   \"Deutsche Bank (DB) 'low print' chart cited for market overshoot.\",\n   \"BofA derivatives team notes asymmetric rally and Roaring Twenties/late-90s parallels.\",\n   \"Goldman Sachs (GS) raised KOSPI target to 9,000.\"\n  ],\n  \"entities\": [\n   {\n    \"name\": \"Nasdaq 100\",\n    \"ticker\": \"NDX\",\n    \"class\": \"index\"\n   },\n   {\n    \"name\": \"iShares MSCI South Korea ETF\",\n    \"ticker\": \"EWY\",\n    \"class\": \"etf\"\n   },\n   {\n    \"name\": \"PHLX Semiconductor Sector\",\n    \"ticker\": \"SOX\",\n    \"class\": \"index\"\n   },\n   {\n    \"name\": \"S&P 500\",\n    \"ticker\": \"SPX\",\n    \"class\": \"index\"\n   },\n   {\n    \"name\": \"CBOE Volatility Index\",\n    \"ticker\": \"VIX\",\n    \"class\": \"index\"\n   },\n   {\n    \"name\": \"Samsung\",\n    \"ticker\": \"\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"SK Hynix\",\n    \"ticker\": \"\",\n    \"class\": \"stock\"\n   }\n  ],\n  \"data_points\": [\n   {\n    \"figure\": \"9,000\",\n    \"metric\": \"KOSPI 12-month target\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"5th target increase in 7 months.\"\n   },\n   {\n    \"figure\": \"70%\",\n    \"metric\": \"Retail share of daily turnover\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"Primary driver of KOSPI rally.\"\n   },\n   {\n    \"figure\": \"80%\",\n    \"metric\": \"EWY distance above 200-day MA\",\n    \"source_bank\": \"The Market Ear\",\n    \"context\": \"Extreme overbought level.\"\n   },\n   {\n    \"figure\": \"$80\",\n    \"metric\": \"Silver resistance level\",\n    \"source_bank\": \"The Market Ear\",\n    \"context\": \"Breaking above this level.\"\n   },\n   {\n    \"figure\": \">40%\",\n    \"metric\": \"Peak concentration levels\",\n    \"source_bank\": \"BofA\",\n    \"context\": \"Historical bubble warning level.\"\n   }\n  ],\n  \"tensions\": [\n   {\n    \"theme\": \"KOSPI Melt-up\",\n    \"bull_case\": \"GS raised target to 9,000; driven by retail mania, AI earnings, and governance reforms.\",\n    \"bear_case\": \"EWY trading 80% above 200-day MA; RSI overbought.\",\n    \"what_invalidates\": \"\"\n   }\n  ],\n  \"theme_stances\": [\n   {\n    \"theme\": \"ai hyperscaler capex super-cycle\",\n    \"stance\": \"supportive\",\n    \"conviction\": \"medium\",\n    \"key_argument\": \"Market continues to reward AI and semiconductors over other sectors.\",\n    \"primary_instruments\": [\n     \"SOX\"\n    ],\n    \"vs_consensus\": \"\",\n    \"evidence\": \"The market keeps rewarding AI, semis, and innovation.\"\n   },\n   {\n    \"theme\": \"late-stage rally squeeze\",\n    \"stance\": \"skeptical\",\n    \"conviction\": \"medium\",\n    \"key_argument\": \"Current market behavior resembles reflexive momentum events like the late-90s dot-com melt-up.\",\n    \"primary_instruments\": [\n     \"NDX\",\n     \"SPX\"\n    ],\n    \"vs_consensus\": \"\",\n    \"evidence\": \"This no longer feels like a normal bull market.\"\n   }\n  ]\n }\n]",
- "market_snapshot": "CURRENT MARKET DATA (as of 2026-05-09 16:45 EDT, session: WEEKEND-CLOSED):\nMarkets CLOSED (weekend). Traditional markets (stocks/bonds/oil/gold/DXY) haven't traded since Friday 4pm ET \u2014 the % changes below reflect Friday's full session. Do NOT describe traditional-market % as 'today's' moves. Crypto trades 24/7 and its % IS a live current-day move \u2014 describe crypto as 'today's' normally.\n\nTraditional markets (% shown = Friday's session):\n  $SPY: $737.62 (+0.83% Friday's session)\n  $QQQ: $711.23 (+2.34% Friday's session)\n  $VIXY: $27.05 (+0.74% Friday's session)\n  $BNO: $53.11 (-1.04% Friday's session)\n  $USO: $133.59 (-1.02% Friday's session)\n  $GLD: $433.77 (+0.48% Friday's session)\n  $TLT: $86.08 (+0.50% Friday's session)\n  $UUP: $27.34 (-0.26% Friday's session)\n\nCrypto (% shown = since 00:00 UTC today, which is 8pm ET yesterday during EDT):\n  $BTC: $80,792 (+0.76% UTC-day)\n  $ETH: $2,330 (+0.96% UTC-day)\n  $SOL: $93 (+1.48% UTC-day)\n\n\n**MARKET STATUS: US markets are CLOSED TODAY (weekend).** The live price snapshot below shows LAST CLOSE \u2014 Friday's closing levels, not 'today's move.' Phrase price references as 'as of Friday's close' or 'heading into Monday.' Crypto trades 24/7 so BTC/ETH commentary is fine, but weekend volumes are thin.",
+ "pdf_count": 7,
+ "analyses_json": "[\n {\n  \"source\": \"Bloomberg\",\n  \"title\": \"Self-Feeding AI Rally Risks Becoming Its Own Enemy\",\n  \"type\": \"macro\",\n  \"priority\": \"high\",\n  \"published\": \"2026-05-09\",\n  \"insights\": [\n   \"The current AI-driven market rally exhibits self-reinforcing circularity where AI capex lifts stock prices, which in turn boosts consumer spending via the wealth effect, further supporting earnings.\",\n   \"This feedback loop creates a 'K-shaped' economy where equity wealth supports spending for the affluent, masking underlying fragility in lower-income households.\",\n   \"The market is increasingly dependent on a single technology investment cycle; any deceleration in AI capex or a labor-market shock could cause the rally to buckle rapidly.\"\n  ],\n  \"earnings\": [\n   \"AI-driven productivity promises are fueling expectations for earnings upside and multiple expansion beyond the direct AI-beneficiary cohort.\"\n  ],\n  \"macro\": [\n   {\n    \"indicator\": \"Real PCE vs Real Disposable Income\",\n    \"reading\": \"Real PCE grew at >2x the pace of real disposable income\",\n    \"interpretation\": \"Indicates a reliance on equity wealth for consumption, a divergence historically associated with late-stage booms (1990s tech, 2000s housing).\"\n   }\n  ],\n  \"risks\": [\n   \"Deceleration in AI capex pulse\",\n   \"AI-induced labor market shock\",\n   \"Over-dependence of US growth on a single technology investment cycle\",\n   \"Wealth effect reversal impacting consumer spending\"\n  ],\n  \"vol_positioning\": [\n   \"The report warns of a 'self-feeding' rally where market dynamics are becoming overly dependent on a single investment cycle, increasing the risk of a sharp reversal if the feedback loop breaks.\"\n  ],\n  \"cross_bank_refs\": [\n   \"Cites Renaissance Macro's Neil Dutta regarding the divergence between real PCE and real disposable income.\"\n  ],\n  \"entities\": [\n   {\n    \"name\": \"S&P 500\",\n    \"ticker\": \"SPX\",\n    \"class\": \"index\"\n   }\n  ],\n  \"data_points\": [\n   {\n    \"figure\": \"2x\",\n    \"metric\": \"Real PCE growth vs real disposable income growth\",\n    \"source_bank\": \"Renaissance Macro\",\n    \"context\": \"Four quarters ending Q1; divergence rarely seen outside late-90s tech boom and mid-2000s housing boom.\"\n   },\n   {\n    \"figure\": \"2x\",\n    \"metric\": \"Equity wealth contribution to real PCE growth\",\n    \"source_bank\": \"Renaissance Macro\",\n    \"context\": \"Contribution level relative to 2010-2019 average.\"\n   }\n  ],\n  \"tensions\": [\n   {\n    \"theme\": \"AI capex feedback loop\",\n    \"bull_case\": \"AI capex lifts stocks, supports consumer spending, and strengthens the broader earnings outlook through productivity gains.\",\n    \"bear_case\": \"US growth is becoming dangerously dependent on one technology cycle; if capex wavers or labor markets shock, the loop buckles.\",\n    \"what_invalidates\": \"A sustained decline in AI-related fixed investment or a significant labor-market contraction.\"\n   }\n  ],\n  \"theme_stances\": [\n   {\n    \"theme\": \"ai hyperscaler capex super-cycle\",\n    \"stance\": \"skeptical\",\n    \"conviction\": \"medium\",\n    \"key_argument\": \"The rally is becoming a self-reinforcing loop that risks destroying itself if the capex pulse wavers.\",\n    \"primary_instruments\": [],\n    \"vs_consensus\": \"\",\n    \"evidence\": \"the longer the rally feeds on itself, the greater the risk that markets get too far ahead\"\n   }\n  ]\n },\n {\n  \"source\": \"The Market Ear\",\n  \"title\": \"Green Shoots For Gold As China Adds Most Bullion Since 2024\",\n  \"type\": \"commodities\",\n  \"priority\": \"medium\",\n  \"published\": \"2026-05-09\",\n  \"insights\": [\n   \"China's central bank increased gold holdings by 260,000 troy ounces (8.1 tons) in April, marking the 18th consecutive month of additions.\",\n   \"Global gold ETFs saw a significant reversal in April with $6.6 billion in inflows, shifting from March outflows, led by European demand.\",\n   \"Central bank demand remains robust globally, with Q1 purchases at the fastest pace in over a year.\",\n   \"The Polish Central Bank is targeting 700 tons of gold holdings and currently reports PLN 160 billion ($44.5 billion) in unrealized profits.\",\n   \"Gold is showing signs of base building after a 10% decline since late February, supported by renewed ETF interest and persistent official-sector buying.\"\n  ],\n  \"macro\": [\n   {\n    \"indicator\": \"Real Yields\",\n    \"reading\": \"Elevated\",\n    \"interpretation\": \"Acting as a primary headwind for gold prices alongside a firm dollar.\"\n   },\n   {\n    \"indicator\": \"US Dollar\",\n    \"reading\": \"Firm\",\n    \"interpretation\": \"Continues to exert downward pressure on gold prices.\"\n   }\n  ],\n  \"risks\": [\n   \"Higher-for-longer interest rate expectations.\",\n   \"Elevated real yields.\",\n   \"Firm US dollar strength.\",\n   \"Sensitivity to global yield fluctuations.\"\n  ],\n  \"vol_positioning\": [\n   \"Investor positioning in gold is described as relatively light, suggesting potential for a catch-up trade if yields ease.\",\n   \"Flow dynamics have turned more constructive beneath the surface with Western investor demand beginning to return.\"\n  ],\n  \"geopolitical\": [\n   \"Middle East developments providing intermittent support for gold prices.\",\n   \"Heightened geopolitical risks and energy security concerns driving European gold ETF inflows.\"\n  ],\n  \"cross_bank_refs\": [\n   \"References Bloomberg macro strategist Brendan Fagan regarding gold stabilization and Middle East support.\"\n  ],\n  \"entities\": [\n   {\n    \"name\": \"People\\u2019s Bank of China\",\n    \"ticker\": \"\",\n    \"class\": \"other\"\n   },\n   {\n    \"name\": \"World Gold Council\",\n    \"ticker\": \"\",\n    \"class\": \"other\"\n   },\n   {\n    \"name\": \"Polish Central Bank\",\n    \"ticker\": \"\",\n    \"class\": \"other\"\n   }\n  ],\n  \"data_points\": [\n   {\n    \"figure\": \"260,000 troy ounces\",\n    \"metric\": \"PBOC gold addition in April\",\n    \"source_bank\": \"The Market Ear\",\n    \"context\": \"Most since December 2024; 18th straight month of additions.\"\n   },\n   {\n    \"figure\": \"$6.6 billion\",\n    \"metric\": \"Global gold ETF inflows in April\",\n    \"source_bank\": \"World Gold Council\",\n    \"context\": \"Reversal from March outflows.\"\n   },\n   {\n    \"figure\": \"10%\",\n    \"metric\": \"Gold price decline\",\n    \"source_bank\": \"The Market Ear\",\n    \"context\": \"Since late February.\"\n   },\n   {\n    \"figure\": \"PLN 160 billion ($44.5 billion)\",\n    \"metric\": \"Polish Central Bank unrealized gold profits\",\n    \"source_bank\": \"The Market Ear\",\n    \"context\": \"\"\n   }\n  ],\n  \"tensions\": [\n   {\n    \"theme\": \"Gold price trajectory\",\n    \"bull_case\": \"Renewed central bank accumulation and a return of Western ETF demand provide a supportive floor.\",\n    \"bear_case\": \"Elevated real yields and a firm dollar continue to act as headwinds for the metal.\",\n    \"what_invalidates\": \"A sustained breakout in real yields or a significant strengthening of the dollar.\"\n   }\n  ],\n  \"theme_stances\": [\n   {\n    \"theme\": \"gold demand recovery\",\n    \"stance\": \"supportive\",\n    \"conviction\": \"medium\",\n    \"key_argument\": \"The convergence of renewed ETF inflows and persistent official-sector demand suggests a more supportive demand backdrop is forming.\",\n    \"primary_instruments\": [],\n    \"vs_consensus\": \"\",\n    \"evidence\": \"The convergence of renewed ETF inflows and persistent official-sector demand suggests a more supportive demand backdrop\"\n   }\n  ]\n },\n {\n  \"source\": \"Goldman Sachs\",\n  \"title\": \"ETF Chaos Continues: Global Equities Just Saw Their Best 6-Month Inflows... Ever\",\n  \"type\": \"strategy\",\n  \"priority\": \"medium\",\n  \"published\": \"2026-05-09\",\n  \"insights\": [\n   \"US-listed ETF inflows are annualizing $1.9 trillion in 2026, a 30% increase over the previous record set in 2025.\",\n   \"April 2026 saw $170 billion in inflows, marking the second-largest month in the industry's history.\",\n   \"Global equity ETFs experienced their best six-month stretch of inflows, gathering over $200 billion.\",\n   \"Active ETFs represent $1.8 trillion in AUM and are capturing 38% of new industry assets despite only accounting for 12% of total AUM.\",\n   \"Derivatives-based ETFs (levered/inverse/options-based) have surpassed $500 billion in AUM, doubling in size over the past two years.\",\n   \"ETF product launches are tracking 30% higher year-over-year, with over 50% of new products utilizing derivatives.\"\n  ],\n  \"sector_views\": [\n   {\n    \"sector\": \"Semiconductors\",\n    \"stance\": \"overweight\",\n    \"rationale\": \"Significant accumulation of inflows in SMH and SOXX, with April 2026 being the largest aggregate month of inflows on record.\"\n   },\n   {\n    \"sector\": \"Metals & Mining\",\n    \"stance\": \"neutral\",\n    \"rationale\": \"Early year demand for gold/silver ETFs has reversed and tapered to more balanced client flows following high volatility in January.\"\n   }\n  ],\n  \"risks\": [\n   \"Financial engineering in bullion markets (SLV) and potential liquidity risks in highly active, derivative-heavy ETF wrappers.\"\n  ],\n  \"charts\": [\n   \"Charts show accelerating ETF inflows, record-breaking volume growth, and the shift toward active and derivative-based ETF wrappers.\",\n   \"Visuals highlight the dominance of SMH/SOXX inflows and the rapid AUM growth of the new DRAM ETF.\"\n  ],\n  \"vol_positioning\": [\n   \"ETF volumes are highly elastic to volatility; as volatility accelerates, ETFs serve as primary access vehicles for quick exposure. As volatility compresses, flows rotate into core positions.\",\n   \"ETF notional volumes are up 50% year-over-year, averaging $330 billion per session.\"\n  ],\n  \"geopolitical\": [\n   \"Geopolitical uncertainty in early 2026 drove significant ETF trading volume, particularly in oil (USO) during March amid Middle East conflict.\"\n  ],\n  \"entities\": [\n   {\n    \"name\": \"iShares MSCI South Korea ETF\",\n    \"ticker\": \"EWY\",\n    \"class\": \"etf\"\n   },\n   {\n    \"name\": \"VanEck Semiconductor ETF\",\n    \"ticker\": \"SMH\",\n    \"class\": \"etf\"\n   },\n   {\n    \"name\": \"iShares Semiconductor ETF\",\n    \"ticker\": \"SOXX\",\n    \"class\": \"etf\"\n   },\n   {\n    \"name\": \"iShares Silver Trust\",\n    \"ticker\": \"SLV\",\n    \"class\": \"etf\"\n   },\n   {\n    \"name\": \"United States Oil Fund\",\n    \"ticker\": \"USO\",\n    \"class\": \"etf\"\n   },\n   {\n    \"name\": \"Jane Street\",\n    \"ticker\": \"\",\n    \"class\": \"other\"\n   }\n  ],\n  \"data_points\": [\n   {\n    \"figure\": \"$1.9 trillion\",\n    \"metric\": \"Annualized 2026 US-listed ETF inflows\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"+30% vs 2025 record\"\n   },\n   {\n    \"figure\": \"$170 billion\",\n    \"metric\": \"April 2026 ETF inflows\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"Second-largest month ever\"\n   },\n   {\n    \"figure\": \"$330 billion\",\n    \"metric\": \"Average daily ETF notional volume\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"+50% vs 2025\"\n   },\n   {\n    \"figure\": \"$15 trillion\",\n    \"metric\": \"Total ETF industry AUM\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"Doubled in less than 3 years\"\n   },\n   {\n    \"figure\": \"$200 billion\",\n    \"metric\": \"6-month global equity ETF inflows\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"~10% of current AUM\"\n   },\n   {\n    \"figure\": \"$5 billion\",\n    \"metric\": \"DRAM ETF AUM\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"Reached $1B in 10 days\"\n   },\n   {\n    \"figure\": \"$500 billion\",\n    \"metric\": \"Derivatives-based ETF AUM\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"Doubled over past 2 years\"\n   }\n  ]\n },\n {\n  \"source\": \"Bloomberg\",\n  \"title\": \"Surging Buybacks Are A False Dawn For Stock Market\",\n  \"type\": \"macro\",\n  \"priority\": \"high\",\n  \"published\": \"2026-05-09\",\n  \"insights\": [\n   \"Buyback announcements are surging in 2026, potentially reaching $2 trillion, but actual repurchases consistently lag commitments by 20-30%.\",\n   \"Markets react to the intent of buybacks rather than the execution, creating a 'false dawn' effect where companies underdeliver on promises.\",\n   \"Apple's recent $100 billion buyback announcement may be scaled back under incoming CEO John Ternus.\",\n   \"Over 50% of the increase in S&P 500 earnings expectations this year is driven by a single firm, Micron.\",\n   \"The Advanced Global Financial Tightness Indicator has turned lower, signaling a likely tightening in bank lending standards and a subsequent drop in buyback activity over the next 3-6 months.\"\n  ],\n  \"market_movers\": [\n   {\n    \"ticker\": \"AAPL\",\n    \"action\": \"negative_catalyst_watch\",\n    \"rating\": \"N/A\",\n    \"price_target\": \"N/A\",\n    \"rationale\": \"Incoming CEO John Ternus may be more conservative on share repurchases than the recently announced $100 billion plan suggests.\",\n    \"conviction\": \"medium\"\n   },\n   {\n    \"ticker\": \"MU\",\n    \"action\": \"negative_catalyst_watch\",\n    \"rating\": \"N/A\",\n    \"price_target\": \"N/A\",\n    \"rationale\": \"Over 50% of the S&P 500's earnings expectation growth this year is attributed to Micron, creating significant concentration risk.\",\n    \"conviction\": \"medium\"\n   }\n  ],\n  \"earnings\": [\n   \"Forward earnings have surged, which historically leads buybacks by six months, but this trend is heavily skewed by Micron's performance.\"\n  ],\n  \"macro\": [\n   {\n    \"indicator\": \"Global Financial Tightness Indicator (GFTI)\",\n    \"reading\": \"Stable/High\",\n    \"interpretation\": \"Reflects wait-and-see mode from central banks; has not yet signaled significant tightening.\"\n   },\n   {\n    \"indicator\": \"Advanced Global Financial Tightness Indicator\",\n    \"reading\": \"Turning lower\",\n    \"interpretation\": \"Leading indicator for tighter bank lending standards; suggests a drop in buyback pace in 3-6 months.\"\n   }\n  ],\n  \"risks\": [\n   \"Concentration risk in S&P 500 earnings (Micron)\",\n   \"Tightening global financial conditions\",\n   \"Overvaluation of the market (valuations near all-time highs)\",\n   \"Weakening market breadth\"\n  ],\n  \"charts\": [\n   \"Chart showing the gap between announced and executed buybacks, indicating that announcements consistently exceed actual repurchases.\",\n   \"Chart showing the relationship between tightening bank lending standards and the subsequent decline in buyback activity.\"\n  ],\n  \"vol_positioning\": [\n   \"Buybacks are identified as the largest negative influence on net equity supply in the US, acting as a structural support for the market.\"\n  ],\n  \"geopolitical\": [\n   \"Market is rallying on news of a potential proposal between the US and Iran to end hostilities, despite broader geo-economic uncertainty.\"\n  ],\n  \"cross_bank_refs\": [\n   \"Goldman Sachs cited regarding the percentage of firms in open windows for share repurchases.\"\n  ],\n  \"entities\": [\n   {\n    \"name\": \"Apple\",\n    \"ticker\": \"AAPL\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Micron\",\n    \"ticker\": \"MU\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"S&P 500\",\n    \"ticker\": \"SPX\",\n    \"class\": \"index\"\n   },\n   {\n    \"name\": \"Goldman Sachs\",\n    \"ticker\": \"GS\",\n    \"class\": \"stock\"\n   }\n  ],\n  \"data_points\": [\n   {\n    \"figure\": \"~69%\",\n    \"metric\": \"Firms in open window for repurchases\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"As of May 7, 2026.\"\n   },\n   {\n    \"figure\": \"~88%\",\n    \"metric\": \"Firms in open window for repurchases\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"Expected by end of week.\"\n   },\n   {\n    \"figure\": \"$700 billion\",\n    \"metric\": \"Buyback announcements YTD\",\n    \"source_bank\": \"Bloomberg\",\n    \"context\": \"Pace suggests $2 trillion total for 2026.\"\n   },\n   {\n    \"figure\": \"20%-30%\",\n    \"metric\": \"Gap between announced and executed buybacks\",\n    \"source_bank\": \"Bloomberg\",\n    \"context\": \"Annual average shortfall.\"\n   },\n   {\n    \"figure\": \"$100 billion\",\n    \"metric\": \"Apple buyback announcement\",\n    \"source_bank\": \"Bloomberg\",\n    \"context\": \"Largest announced so far in 2026.\"\n   },\n   {\n    \"figure\": \"50%\",\n    \"metric\": \"Contribution to S&P 500 earnings growth\",\n    \"source_bank\": \"Bloomberg\",\n    \"context\": \"Attributed to Micron alone.\"\n   }\n  ],\n  \"tensions\": [\n   {\n    \"theme\": \"Buyback efficacy\",\n    \"bull_case\": \"Buybacks are a powerful structural support for the market, reducing net equity supply and boosting EPS.\",\n    \"bear_case\": \"Actual repurchases consistently lag announcements by 20-30%, and tightening financial conditions will likely reduce the pace of buybacks in 3-6 months.\",\n    \"what_invalidates\": \"\"\n   }\n  ],\n  \"theme_stances\": [\n   {\n    \"theme\": \"buyback false dawn\",\n    \"stance\": \"skeptical\",\n    \"conviction\": \"high\",\n    \"key_argument\": \"Companies consistently overpromise on buybacks, and tightening financial conditions will likely force a reduction in actual execution.\",\n    \"primary_instruments\": [],\n    \"vs_consensus\": \"\",\n    \"evidence\": \"buyback plans will overpromise\"\n   }\n  ]\n },\n {\n  \"source\": \"ZeroHedge\",\n  \"title\": \"Banks Are Choking: The AI Debt Bubble Has Started To Burst\",\n  \"type\": \"macro\",\n  \"priority\": \"high\",\n  \"published\": \"2026-05-09\",\n  \"insights\": [\n   \"Hyperscaler capex is soaring, with Morgan Stanley forecasting $800B in 2026 and $1.1T in 2027 for the Big 5 (AMZN, GOOGL, META, MSFT, ORCL).\",\n   \"Hyperscalers are increasingly cash flow negative, forcing reliance on record debt issuance to fund AI infrastructure, which is creating a massive 'AI debt bubble'.\",\n   \"Credit markets are showing signs of fatigue; investors are demanding higher yields and more protection, and banks are struggling to distribute large data-center-related loans.\",\n   \"Goldman Sachs notes that the IG market is becoming dangerously concentrated in AI-related names, mirroring equity market concentration but with negative convexity.\",\n   \"Banks are actively seeking to offload risk via Significant Risk Transfers (SRTs) and private credit deals as they hit internal concentration limits for data center exposure.\",\n   \"Morgan Stanley warns that if credit markets lock out, the AI supercycle ends; they identify four indicators of overheating: debt growth outpacing earnings, leveraged finance growth, M&A spikes, and sponsor-backed activity.\"\n  ],\n  \"sector_views\": [\n   {\n    \"sector\": \"Technology\",\n    \"stance\": \"underweight\",\n    \"rationale\": \"Morgan Stanley expects performance to be weighed down by the sharp uptick in debt issuance and off-balance-sheet lease commitments.\"\n   }\n  ],\n  \"earnings\": [\n   \"Hyperscalers reported mixed Q1 results but reiterated intentions to increase capex spending on data centers and chips.\"\n  ],\n  \"macro\": [\n   {\n    \"indicator\": \"US IG Supply\",\n    \"reading\": \"+20% YoY\",\n    \"interpretation\": \"Record issuance levels driven by AI capex are putting upward pressure on spreads.\"\n   }\n  ],\n  \"risks\": [\n   \"Overheating credit markets, rising corporate spreads, data center execution/construction delays, regulatory/public opposition to data centers, and bank balance sheet saturation.\"\n  ],\n  \"charts\": [\n   \"Charts showing hyperscaler capex projections rising to $1.1T by 2027, IG issuance trends, and issuer concentration in the Bloomberg USD IG Corporate Index.\"\n  ],\n  \"vol_positioning\": [\n   \"Credit Default Swaps (CDS) for META are hitting all-time wides despite equity market ATHs, signaling divergence between credit and equity sentiment.\",\n   \"IG market concentration is at record levels; 11 issuers account for ~25% of duration-adjusted issuance, with AI names accounting for 20%.\"\n  ],\n  \"geopolitical\": [\n   \"Growing public opposition to data centers due to electricity consumption and unemployment concerns is leading to legislative bans (e.g., Maine) and increasing execution risk.\"\n  ],\n  \"cross_bank_refs\": [\n   \"Morgan Stanley and Goldman Sachs data are cited throughout; ZeroHedge explicitly disagrees with Goldman's view that issuer concentration limits will prevent market saturation.\",\n   \"Goldman Sachs echoes ZeroHedge's October thesis regarding the AI debt bubble.\"\n  ],\n  \"entities\": [\n   {\n    \"name\": \"Amazon\",\n    \"ticker\": \"AMZN\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Alphabet\",\n    \"ticker\": \"GOOGL\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Meta Platforms\",\n    \"ticker\": \"META\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Microsoft\",\n    \"ticker\": \"MSFT\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Oracle\",\n    \"ticker\": \"ORCL\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"CoreWeave\",\n    \"ticker\": \"\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"SoftBank Group\",\n    \"ticker\": \"SFTBY\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Blackstone\",\n    \"ticker\": \"BX\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Blue Owl Capital\",\n    \"ticker\": \"OWL\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"JPMorgan Chase\",\n    \"ticker\": \"JPM\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Morgan Stanley\",\n    \"ticker\": \"MS\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Goldman Sachs\",\n    \"ticker\": \"GS\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Boeing\",\n    \"ticker\": \"BA\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Ford\",\n    \"ticker\": \"F\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"General Motors\",\n    \"ticker\": \"GM\",\n    \"class\": \"stock\"\n   }\n  ],\n  \"data_points\": [\n   {\n    \"figure\": \"$800B\",\n    \"metric\": \"2026 Big 5 hyperscaler capex forecast\",\n    \"source_bank\": \"Morgan Stanley\",\n    \"context\": \"Revised up from previous estimates; nearly double 2025 levels.\"\n   },\n   {\n    \"figure\": \"$1.1T\",\n    \"metric\": \"2027 Big 5 hyperscaler capex forecast\",\n    \"source_bank\": \"Morgan Stanley\",\n    \"context\": \"Represents a massive acceleration in spending.\"\n   },\n   {\n    \"figure\": \"$205B\",\n    \"metric\": \"April IG supply\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"Nearly double the street estimate of $110B.\"\n   },\n   {\n    \"figure\": \"20%\",\n    \"metric\": \"AI CAPEX names share of Dv01 weighted issuance\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"Highlights extreme concentration in the IG market.\"\n   },\n   {\n    \"figure\": \"$2T\",\n    \"metric\": \"Past 12-month IG supply\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"New highs, on par with peak Covid levels.\"\n   }\n  ],\n  \"tensions\": [\n   {\n    \"theme\": \"AI Debt Sustainability\",\n    \"bull_case\": \"Hyperscalers have strong balance sheets, high credit ratings, and are essential to the AI supercycle, justifying massive debt-funded expansion.\",\n    \"bear_case\": \"Hyperscalers are cash flow negative, debt issuance is reaching record concentration levels, and banks are hitting risk limits, creating a 'negatively convex' credit environment.\",\n    \"what_invalidates\": \"Credit markets locking out or a sustained widening of corporate spreads.\"\n   }\n  ],\n  \"theme_stances\": [\n   {\n    \"theme\": \"ai debt bubble\",\n    \"stance\": \"skeptical\",\n    \"conviction\": \"high\",\n    \"key_argument\": \"The AI buildout is increasingly reliant on debt that is saturating credit markets and creating dangerous concentration risks.\",\n    \"primary_instruments\": [\n     \"META\",\n     \"AMZN\",\n     \"GOOGL\",\n     \"MSFT\",\n     \"ORCL\"\n    ],\n    \"vs_consensus\": \"contrarian\",\n    \"evidence\": \"the AI bubble is almost as big on the debt side as it is in stocks\"\n   }\n  ]\n },\n {\n  \"source\": \"UBS\",\n  \"title\": \"High Yield Recovery Rates Plunge To 35%, Down 16% From A Year Ago And Lowest Since COVID\",\n  \"type\": \"credit\",\n  \"priority\": \"medium\",\n  \"published\": \"2026-05-09\",\n  \"insights\": [\n   \"US high-yield bond recovery rates have plummeted to 35%, a 16% decline year-on-year and the lowest level since the COVID-19 pandemic, signaling rapidly eroding collateral quality.\",\n   \"US high-yield LTM issuer default rates rose to 2.3%, up 1.1% from a year ago, while leveraged loan default rates remain a key watchpoint for 2027.\",\n   \"UBS forecasts US and EU leveraged loan default rates to reach 3.75% and 3% respectively through early 2027.\",\n   \"Distressed ratios in US leveraged loans have hit cycle highs of 9.5%, indicating persistent stress despite recent spread tightening.\",\n   \"Private credit portfolios show a material rise in leverage through Q1, with high-profile restructurings like Medallia and Affordable Care highlighting ongoing liquidity pressures.\"\n  ],\n  \"sector_views\": [\n   {\n    \"sector\": \"Technology\",\n    \"stance\": \"underweight\",\n    \"rationale\": \"UBS highlights specific tech sector vulnerabilities and AI disruption risks as key drivers for potential future defaults.\"\n   }\n  ],\n  \"macro\": [\n   {\n    \"indicator\": \"US High-Yield LTM Default Rate\",\n    \"reading\": \"2.3%\",\n    \"interpretation\": \"Up 1.1% YoY; indicates rising credit stress in the junk bond market.\"\n   },\n   {\n    \"indicator\": \"US Leveraged Loan Distressed Ratio\",\n    \"reading\": \"9.5%\",\n    \"interpretation\": \"At cycle highs; signals significant underlying stress in the leveraged loan market.\"\n   },\n   {\n    \"indicator\": \"US Leveraged Loan Issuance YTD\",\n    \"reading\": \"-17%\",\n    \"interpretation\": \"Significant decline in issuance volume suggests tightening credit conditions.\"\n   }\n  ],\n  \"risks\": [\n   \"Erosion of loan collateral quality\",\n   \"Rising leverage in private credit portfolios\",\n   \"AI disruption risks to credit quality\",\n   \"Tightening credit conditions\"\n  ],\n  \"charts\": [\n   \"Figure 9: Shows sharp increase in distressed ratios across US leveraged loans, currently at 9.5% (cycle highs).\",\n   \"Recovery rate chart: Shows junk bond recovery rates on par with the peak of the COVID crash.\"\n  ],\n  \"vol_positioning\": [\n   \"Market spreads tightened materially in April despite persistent underlying credit stresses. High-frequency default rates pulled back, but distressed ratios are at cycle highs.\"\n  ],\n  \"entities\": [\n   {\n    \"name\": \"Centene\",\n    \"ticker\": \"CNC\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Medallia\",\n    \"ticker\": \"\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Affordable Care\",\n    \"ticker\": \"\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"UBS\",\n    \"ticker\": \"UBS\",\n    \"class\": \"stock\"\n   }\n  ],\n  \"data_points\": [\n   {\n    \"figure\": \"35%\",\n    \"metric\": \"US High-Yield Recovery Rate\",\n    \"source_bank\": \"UBS\",\n    \"context\": \"Down 16% from 51% a year ago; lowest since COVID.\"\n   },\n   {\n    \"figure\": \"2.3%\",\n    \"metric\": \"US High-Yield LTM Issuer Default Rate\",\n    \"source_bank\": \"UBS\",\n    \"context\": \"Up 1.1% year-on-year.\"\n   },\n   {\n    \"figure\": \"9.5%\",\n    \"metric\": \"US Leveraged Loan Distressed Ratio\",\n    \"source_bank\": \"UBS\",\n    \"context\": \"At cycle highs.\"\n   },\n   {\n    \"figure\": \"3.75%\",\n    \"metric\": \"Forecast US Leveraged Loan Default Rate\",\n    \"source_bank\": \"UBS\",\n    \"context\": \"Through early 2027.\"\n   },\n   {\n    \"figure\": \"45%\",\n    \"metric\": \"Leveraged Loan Recovery Rate\",\n    \"source_bank\": \"UBS\",\n    \"context\": \"Down 5 pp year-on-year.\"\n   }\n  ],\n  \"tensions\": [\n   {\n    \"theme\": \"Private Credit Default Outlook\",\n    \"bull_case\": \"UBS Evidence Lab bankruptcy filings data shows no large, high-profile 'hard defaults' through April; S&P CLO default rates eased in Q1.\",\n    \"bear_case\": \"Credit metrics show material rise in leverage in private credit portfolios; high-profile restructurings like Medallia and Affordable Care occurred in April.\",\n    \"what_invalidates\": \"\"\n   }\n  ],\n  \"theme_stances\": [\n   {\n    \"theme\": \"credit collateral erosion\",\n    \"stance\": \"supportive\",\n    \"conviction\": \"high\",\n    \"key_argument\": \"The sharp decline in recovery rates to 35% indicates that the quality of loan collateral is rapidly eroding.\",\n    \"primary_instruments\": [],\n    \"vs_consensus\": \"\",\n    \"evidence\": \"recovery rates, however, declined sharply, down 16% to 35%\"\n   }\n  ]\n },\n {\n  \"source\": \"The Market Ear\",\n  \"title\": \"Gold Jumps, Dollar Dumps As AMD & Imminent Iran Deal Lift Stocks & Bonds, Sink Oil\",\n  \"type\": \"vol_commentary\",\n  \"priority\": \"high\",\n  \"published\": \"2026-05-09\",\n  \"insights\": [\n   \"Markets are rallying on hopes of a US-Iran deal, which would reopen the Strait of Hormuz and ease energy supply concerns.\",\n   \"AMD and SMCI earnings confirm strong data center demand, while consumer-facing stocks like DIS, LYV, SPHR, and UBER show resilient spending on experiences.\",\n   \"Equities are decoupling from oil and rates, with Nasdaq hitting new record highs despite energy volatility.\",\n   \"Goldman's desk notes healthy market breadth and improving liquidity, though hedge funds are selling Tech while long-only funds are buying.\",\n   \"AI compute scarcity is currently driving extraordinary economics, but there is a long-term risk of commoditization if open-source models narrow the gap with frontier models.\",\n   \"0-DTE traders are driving intraday volatility with no clear directional bias, while dealer positive gamma is supporting the 'buy the dip' regime.\"\n  ],\n  \"sector_views\": [\n   {\n    \"sector\": \"Energy\",\n    \"stance\": \"underweight\",\n    \"rationale\": \"Worst performing sector in the S&P 500 as markets price in potential rapprochement with Iran.\"\n   },\n   {\n    \"sector\": \"Technology\",\n    \"stance\": \"overweight\",\n    \"rationale\": \"Mega-cap tech and semiconductors continue to lead market gains, supported by strong earnings and AI capex.\"\n   }\n  ],\n  \"earnings\": [\n   \"AMD and SMCI reported strong results, confirming robust demand for data center chips and servers.\",\n   \"DIS, LYV, SPHR, and UBER reported strong results, indicating resilient consumer spending on experiences.\"\n  ],\n  \"macro\": [\n   {\n    \"indicator\": \"ADP Employment\",\n    \"reading\": \"Biggest job addition in 14 months\",\n    \"interpretation\": \"Strong growth data complicates the inflation outlook and potential Fed rate cut path.\"\n   },\n   {\n    \"indicator\": \"Brent Crude\",\n    \"reading\": \"Tumbled near one-month lows\",\n    \"interpretation\": \"Reflects market optimism regarding a potential Iran deal and Strait of Hormuz reopening.\"\n   },\n   {\n    \"indicator\": \"30Y Treasury Yield\",\n    \"reading\": \"Sliding back to one-week lows\",\n    \"interpretation\": \"5.00% level acting as a support floor for buyers.\"\n   }\n  ],\n  \"crypto\": [\n   \"Bitcoin rallied to nearly $83k overnight before sliding back during the US session, ending the day unchanged.\",\n   \"BTC strength is supported by over $1.6BN in inflows to BTC ETFs.\",\n   \"BTC reversed near its 200-day moving average.\"\n  ],\n  \"risks\": [\n   \"AI commoditization risk: if open-source models narrow the gap with frontier models, compute scarcity could turn into overcapacity.\",\n   \"Market disconnection: Equities are rallying while rates and oil signals suggest caution; 'something has to give' according to Barclays.\",\n   \"Energy inventory buffer is shrinking, increasing the risk of demand destruction.\"\n  ],\n  \"charts\": [\n   \"Charts show oil price volatility around Iran deal headlines, Nasdaq decoupling from broader indices, and Bitcoin's reversal at its 200-day moving average.\"\n  ],\n  \"vol_positioning\": [\n   \"VIX is well below pre-war levels, but oil volatility remains elevated due to geopolitical risk.\",\n   \"Dealer positive gamma in index and equities is expected to support 'buy the dip' behavior through May OPEX.\",\n   \"0-DTE traders are active with no major bias toward puts or calls.\",\n   \"Nasdaq 100 call:put ratio is elevated.\"\n  ],\n  \"geopolitical\": [\n   \"Markets are highly sensitive to reports of a potential US-Iran deal; previous 'peace' headlines have led to temporary yield and oil price drops before reversing.\"\n  ],\n  \"cross_bank_refs\": [\n   \"Goldman's Chris Hussey notes energy equities are the worst performing sector, suggesting market hope for Iran rapprochement.\",\n   \"Goldman's Pete Callahan notes NDX is experiencing a 'calm' move higher with balanced flows.\",\n   \"Barclays strategists warn that the equity rally is reliant on narrow tech leadership and is hard to justify unless energy risks ease.\",\n   \"Natixis SA rates strategist Benoit Gerard warns investors are too eager to reprice yield curves on unsourced peace reports.\"\n  ],\n  \"entities\": [\n   {\n    \"name\": \"Advanced Micro Devices\",\n    \"ticker\": \"AMD\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Super Micro Computer\",\n    \"ticker\": \"SMCI\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Disney\",\n    \"ticker\": \"DIS\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Live Nation\",\n    \"ticker\": \"LYV\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Sphere Entertainment\",\n    \"ticker\": \"SPHR\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Uber\",\n    \"ticker\": \"UBER\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Nvidia\",\n    \"ticker\": \"NVDA\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Alphabet\",\n    \"ticker\": \"GOOGL\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"S&P 500\",\n    \"ticker\": \"SPX\",\n    \"class\": \"index\"\n   },\n   {\n    \"name\": \"Nasdaq 100\",\n    \"ticker\": \"NDX\",\n    \"class\": \"index\"\n   },\n   {\n    \"name\": \"Bitcoin\",\n    \"ticker\": \"BTC\",\n    \"class\": \"crypto\"\n   },\n   {\n    \"name\": \"Goldman Sachs\",\n    \"ticker\": \"GS\",\n    \"class\": \"stock\"\n   },\n   {\n    \"name\": \"Barclays\",\n    \"ticker\": \"BCS\",\n    \"class\": \"stock\"\n   }\n  ],\n  \"data_points\": [\n   {\n    \"figure\": \"50,000\",\n    \"metric\": \"Dow Jones Industrial Average level\",\n    \"source_bank\": \"The Market Ear\",\n    \"context\": \"Failed to close above this level for the first time since Feb 11th.\"\n   },\n   {\n    \"figure\": \"195 bps\",\n    \"metric\": \"NDX daily move\",\n    \"source_bank\": \"Goldman Sachs\",\n    \"context\": \"Described as a 'calm' move.\"\n   },\n   {\n    \"figure\": \"19th\",\n    \"metric\": \"AMD RSI streak\",\n    \"source_bank\": \"The Market Ear\",\n    \"context\": \"Consecutive days with RSI above 80, indicating extreme overbought status.\"\n   },\n   {\n    \"figure\": \"$5 trillion\",\n    \"metric\": \"NVDA market cap\",\n    \"source_bank\": \"The Market Ear\",\n    \"context\": \"Back above this threshold.\"\n   },\n   {\n    \"figure\": \"$1.6BN\",\n    \"metric\": \"BTC ETF inflows\",\n    \"source_bank\": \"The Market Ear\",\n    \"context\": \"Supporting recent Bitcoin strength.\"\n   },\n   {\n    \"figure\": \"7,350\",\n    \"metric\": \"NDX overhead resistance\",\n    \"source_bank\": \"SpotGamma\",\n    \"context\": \"Clear resistance level based on positive gamma cluster.\"\n   }\n  ],\n  \"tensions\": [\n   {\n    \"theme\": \"AI compute scarcity vs commoditization\",\n    \"bull_case\": \"Bottlenecks in GPUs, HBM, and power are capturing extraordinary economics and capital is flooding in.\",\n    \"bear_case\": \"If frontier model gains turn incremental while open source models narrow the gap, compute economics will commoditize.\",\n    \"what_invalidates\": \"GPU rental pricing and inference costs showing erosion of the scarcity premium.\"\n   }\n  ],\n  \"theme_stances\": [\n   {\n    \"theme\": \"ai hyperscaler capex super-cycle\",\n    \"stance\": \"supportive\",\n    \"conviction\": \"medium\",\n    \"key_argument\": \"Compute scarcity is currently real and driving extraordinary economics for hardware providers.\",\n    \"primary_instruments\": [\n     \"NVDA\",\n     \"AMD\",\n     \"SMCI\"\n    ],\n    \"vs_consensus\": \"\",\n    \"evidence\": \"The bottlenecks are capturing extraordinary economics and capital is flooding in accordingly.\"\n   }\n  ]\n }\n]",
+ "market_snapshot": "CURRENT MARKET DATA (as of 2026-05-09 17:00 EDT, session: WEEKEND-CLOSED):\nMarkets CLOSED (weekend). Traditional markets (stocks/bonds/oil/gold/DXY) haven't traded since Friday 4pm ET \u2014 the % changes below reflect Friday's full session. Do NOT describe traditional-market % as 'today's' moves. Crypto trades 24/7 and its % IS a live current-day move \u2014 describe crypto as 'today's' normally.\n\nTraditional markets (% shown = Friday's session):\n  $SPY: $737.62 (+0.83% Friday's session)\n  $QQQ: $711.23 (+2.34% Friday's session)\n  $VIXY: $27.05 (+0.74% Friday's session)\n  $BNO: $53.11 (-1.04% Friday's session)\n  $USO: $133.59 (-1.02% Friday's session)\n  $GLD: $433.77 (+0.48% Friday's session)\n  $TLT: $86.08 (+0.50% Friday's session)\n  $UUP: $27.34 (-0.26% Friday's session)\n\nCrypto (% shown = since 00:00 UTC today, which is 8pm ET yesterday during EDT):\n  $BTC: $80,790 (+0.76% UTC-day)\n  $ETH: $2,330 (+0.96% UTC-day)\n  $SOL: $93 (+1.48% UTC-day)\n\n\n**MARKET STATUS: US markets are CLOSED TODAY (weekend).** The live price snapshot below shows LAST CLOSE \u2014 Friday's closing levels, not 'today's move.' Phrase price references as 'as of Friday's close' or 'heading into Monday.' Crypto trades 24/7 so BTC/ETH commentary is fine, but weekend volumes are thin.",
  "news_snapshot": "LIVE MARKET NEWS (last 48h from Finnhub, newest first):\n  [2026-05-09 16:18 EDT] CNBC: S&P 500 extends winning streak to 6 weeks. What drove the stock market gains\n    Investors cheered positive earnings, economic data, and a high-profile AI partnership.\n  [2026-05-09 13:39 EDT] Reuters: Qatari LNG tanker sailing towards Hormuz Strait, shipping data shows - Reuters\n    Qatari LNG tanker sailing towards Hormuz Strait, shipping data shows\u00a0\u00a0Reuters\n  [2026-05-09 09:00 EDT] CNBC: AI-powered scam calls are getting more convincing\u2014and more common: 'It was her voice, I know her scared cry'\n    AI can now mimic a familiar voice in seconds, making scam calls harder to spot.\n  [2026-05-09 07:39 EDT] Reuters: Merz says Europe wants a strong NATO and shares US goal of ending Iran war - Reuters\n    Merz says Europe wants a strong NATO and shares US goal of ending Iran war\u00a0\u00a0Reuters\n  [2026-05-09 06:10 EDT] CNBC: U.S. sanctions companies and individuals in the Middle East and China for helping Iran\n    The moves target 11 entities and three individuals based in Iran, China, Belarus and the United Arab Emirates.\n  [2026-05-09 05:38 EDT] Reuters: Bahrain says it has arrested 41 people 'linked to Iran's IRGC' - Reuters\n    Bahrain says it has arrested 41 people 'linked to Iran's IRGC'\u00a0\u00a0Reuters\n  [2026-05-09 02:58 EDT] Reuters: US, Iran no closer to ending war as Qatari tanker sails toward Strait of Hormuz - Reuters\n    US, Iran no closer to ending war as Qatari tanker sails toward Strait of Hormuz\u00a0\u00a0Reuters\n  [2026-05-09 02:58 EDT] Reuters: China energy imports drop in April amid Iran war as fuel exports hit decade low - Reuters\n    China energy imports drop in April amid Iran war as fuel exports hit decade low\u00a0\u00a0Reuters\n  [2026-05-09 01:06 EDT] Reuters: Trump's feuds, tensions with allies likely to outlast Iran war - Reuters\n    Trump's feuds, tensions with allies likely to outlast Iran war\u00a0\u00a0Reuters\n  [2026-05-08 19:00 EDT] Reuters: US imposes sanctions on companies it accuses of aiding Iran's weapons sector - Reuters\n    US imposes sanctions on companies it accuses of aiding Iran's weapons sector\u00a0\u00a0Reuters\n  [2026-05-08 18:50 EDT] CNBC: Burger King's president says the chain improved its Whopper \u2014 and calls from customers helped\n    Burger King President Tom Curtis said customer feedback has been central to the chain\u2019s turnaround.\n  [2026-05-08 18:11 EDT] Reuters: Rubio questions allies' support on Iran following Italy talks - Reuters\n    Rubio questions allies' support on Iran following Italy talks\u00a0\u00a0Reuters\n  [2026-05-08 18:09 EDT] Reuters: Suspected oil spill seen on satellite images near Iran's Kharg Island export hub - Reuters\n    Suspected oil spill seen on satellite images near Iran's Kharg Island export hub\u00a0\u00a0Reuters\n  [2026-05-08 17:28 EDT] Reuters: Citi says oil could rise further if US-Iran talks remain thorny - Reuters\n    Citi says oil could rise further if US-Iran talks remain thorny\u00a0\u00a0Reuters\n  [2026-05-08 17:12 EDT] Reuters: Russia's Lavrov tells UAE counterpart of need to support US-Iran talks - Reuters\n    Russia's Lavrov tells UAE counterpart of need to support US-Iran talks\u00a0\u00a0Reuters",
  "earnings_calendar": "EARNINGS CALENDAR (next 7d): no major tickers reporting.",
  "economic_calendar": "ECONOMIC EVENTS ALREADY RELEASED (belongs in RECAP, NEVER in WHAT TO WATCH):\n  2026-05-08 08:30 EDT | [US] | Nonfarm Payrolls Private | impact=low | ACTUAL=123 | est=75 | prev=190\n  2026-05-08 08:30 EDT | [US] | U-6 Unemployment Rate | impact=low | ACTUAL=8.2% | prev=8%\n  2026-05-08 08:30 EDT | [US] | Unemployment Rate | impact=high | ACTUAL=4.3% | est=4.3% | prev=4.3%\n\nECONOMIC EVENTS STILL UPCOMING (belongs in WHAT TO WATCH):\n  2026-05-12 08:30 EDT | [US] | CPI | impact=medium | prev=330.21\n  2026-05-12 08:30 EDT | [US] | CPI s.a | impact=medium | prev=330.293\n  2026-05-13 08:30 EDT | [US] | Core PPI MoM | impact=medium | prev=0.1%\n  2026-05-13 08:30 EDT | [US] | Core PPI YoY | impact=low | prev=3.8%\n  2026-05-13 08:30 EDT | [US] | PPI Ex Food, Energy and Trade MoM | impact=low | prev=0.2%\n  2026-05-13 08:30 EDT | [US] | PPI Ex Food, Energy and Trade YoY | impact=low | prev=3.6%\n  2026-05-13 08:30 EDT | [US] | PPI MoM | impact=high | est=0.4% | prev=0.5%\n  2026-05-13 08:30 EDT | [US] | PPI YoY | impact=low | prev=4%\n  2026-05-14 08:30 EDT | [US] | Retail Sales Control Group MoM | impact=medium | prev=0.7%\n  2026-05-14 08:30 EDT | [US] | Retail Sales Ex Autos MoM | impact=medium | est=0.6% | prev=1.9%\n  2026-05-14 08:30 EDT | [US] | Retail Sales Ex Gas/Autos MoM | impact=low | prev=0.6%\n  2026-05-14 08:30 EDT | [US] | Retail Sales MoM | impact=high | prev=1.7%\n  2026-05-14 08:30 EDT | [US] | Retail Sales YoY | impact=low | prev=4%",
- "ticker_block": "TICKER LOOKUP \u2014 use $TICKER (cashtag format) when referring to these:\n  NDX \u2014 Nasdaq 100 (index, 1 mentions)\n  EWY \u2014 iShares MSCI South Korea ETF (etf, 1 mentions)\n  SOX \u2014 PHLX Semiconductor Sector (index, 1 mentions)\n  SPX \u2014 S&P 500 (index, 1 mentions)\n  VIX \u2014 CBOE Volatility Index (index, 1 mentions)",
- "theme_coverage": "THEME COVERAGE \u2014 distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):\n  (no primary themes \u2014 corpus may be unusually narrow today)\n\nNON-BANK-ONLY THEMES \u2014 every source for these themes is a commentary publication (The Market Ear, Bloomberg, Reuters) or unattributed, NOT a bank with an analytical research desk. Useful for vol/positioning/market-color reference only. DO NOT promote these to primary INSIGHTS themes without multi-bank corroboration \u2014 they're color, not underwritten analysis:\n  - ai hyperscaler capex super cycle: 1 banks / 1 PDFs (The Market Ear) \u2014 stance: 1 support / 0 skeptical / 0 neutral\n  - late stage rally squeeze: 1 banks / 1 PDFs (The Market Ear) \u2014 stance: 0 support / 1 skeptical / 0 neutral",
+ "ticker_block": "TICKER LOOKUP \u2014 use $TICKER (cashtag format) when referring to these:\n  SPX \u2014 S&P 500 (index, 3 mentions)\n  GS \u2014 Goldman Sachs (stock, 3 mentions)\n  GOOGL \u2014 Alphabet (stock, 2 mentions)\n  EWY \u2014 iShares MSCI South Korea ETF (etf, 1 mentions)\n  SMH \u2014 VanEck Semiconductor ETF (etf, 1 mentions)\n  SOXX \u2014 iShares Semiconductor ETF (etf, 1 mentions)\n  SLV \u2014 iShares Silver Trust (etf, 1 mentions)\n  USO \u2014 United States Oil Fund (etf, 1 mentions)\n  AAPL \u2014 Apple (stock, 1 mentions)\n  MU \u2014 Micron (stock, 1 mentions)\n  AMZN \u2014 Amazon (stock, 1 mentions)\n  META \u2014 Meta Platforms (stock, 1 mentions)\n  MSFT \u2014 Microsoft (stock, 1 mentions)\n  ORCL \u2014 Oracle (stock, 1 mentions)\n  SFTBY \u2014 SoftBank Group (stock, 1 mentions)\n  BX \u2014 Blackstone (stock, 1 mentions)\n  OWL \u2014 Blue Owl Capital (stock, 1 mentions)\n  JPM \u2014 JPMorgan Chase (stock, 1 mentions)\n  MS \u2014 Morgan Stanley (stock, 1 mentions)\n  BA \u2014 Boeing (stock, 1 mentions)\n  F \u2014 Ford (stock, 1 mentions)\n  GM \u2014 General Motors (stock, 1 mentions)\n  CNC \u2014 Centene (stock, 1 mentions)\n  UBS \u2014 UBS (stock, 1 mentions)\n  AMD \u2014 Advanced Micro Devices (stock, 1 mentions)\n  SMCI \u2014 Super Micro Computer (stock, 1 mentions)\n  DIS \u2014 Disney (stock, 1 mentions)\n  LYV \u2014 Live Nation (stock, 1 mentions)\n  SPHR \u2014 Sphere Entertainment (stock, 1 mentions)\n  UBER \u2014 Uber (stock, 1 mentions)\n  NVDA \u2014 Nvidia (stock, 1 mentions)\n  NDX \u2014 Nasdaq 100 (index, 1 mentions)\n  BTC \u2014 Bitcoin (crypto, 1 mentions)\n  BCS \u2014 Barclays (stock, 1 mentions)",
+ "theme_coverage": "THEME COVERAGE \u2014 distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):\n  - ai debt bubble: 1 banks / 1 PDFs (ZeroHedge) \u2014 stance: 0 support / 1 skeptical / 0 neutral\n  - credit collateral erosion: 1 banks / 1 PDFs (UBS) \u2014 stance: 1 support / 0 skeptical / 0 neutral\n\nNON-BANK-ONLY THEMES \u2014 every source for these themes is a commentary publication (The Market Ear, Bloomberg, Reuters) or unattributed, NOT a bank with an analytical research desk. Useful for vol/positioning/market-color reference only. DO NOT promote these to primary INSIGHTS themes without multi-bank corroboration \u2014 they're color, not underwritten analysis:\n  - ai hyperscaler capex super cycle: 2 banks / 2 PDFs (Bloomberg, The Market Ear) \u2014 stance: 1 support / 1 skeptical / 0 neutral\n  - buyback false dawn: 1 banks / 1 PDFs (Bloomberg) \u2014 stance: 0 support / 1 skeptical / 0 neutral\n  - gold demand recovery: 1 banks / 1 PDFs (The Market Ear) \u2014 stance: 1 support / 0 skeptical / 0 neutral",
  "theme_map": {
   "ai hyperscaler capex super cycle": {
+   "banks": 2,
+   "pdfs": 2,
+   "sources": [
+    "Bloomberg",
+    "The Market Ear"
+   ],
+   "supportive": 1,
+   "skeptical": 1,
+   "neutral": 0,
+   "discovered": false,
+   "non_bank_only": true
+  },
+  "gold demand recovery": {
    "banks": 1,
    "pdfs": 1,
    "sources": [
@@ -25,17 +38,41 @@
    "discovered": false,
    "non_bank_only": true
   },
-  "late stage rally squeeze": {
+  "buyback false dawn": {
    "banks": 1,
    "pdfs": 1,
    "sources": [
-    "The Market Ear"
+    "Bloomberg"
    ],
    "supportive": 0,
    "skeptical": 1,
    "neutral": 0,
    "discovered": false,
    "non_bank_only": true
+  },
+  "ai debt bubble": {
+   "banks": 1,
+   "pdfs": 1,
+   "sources": [
+    "ZeroHedge"
+   ],
+   "supportive": 0,
+   "skeptical": 1,
+   "neutral": 0,
+   "discovered": false,
+   "non_bank_only": false
+  },
+  "credit collateral erosion": {
+   "banks": 1,
+   "pdfs": 1,
+   "sources": [
+    "UBS"
+   ],
+   "supportive": 1,
+   "skeptical": 0,
+   "neutral": 0,
+   "discovered": false,
+   "non_bank_only": false
   }
  },
  "discovery_audit": {
@@ -44,87 +81,542 @@
   "near_miss": [
    {
     "members": [
-     "Roaring Twenties and late-1990s dot-com melt-up"
+     "AI-driven productivity promise"
     ],
     "banks": [
-     "The Market Ear"
+     "Bloomberg"
     ],
     "pdf_ids": [
-     4396
+     4397
     ],
-    "max_covered_sim": 0.5704,
+    "max_covered_sim": 0.6489,
     "n_banks": 1,
     "reason": "thin"
    },
    {
     "members": [
-     "European defense sector stagnation"
+     "K-shaped economy dynamics"
     ],
     "banks": [
-     "The Market Ear"
+     "Bloomberg"
     ],
     "pdf_ids": [
-     4396
+     4397
     ],
-    "max_covered_sim": 0.5552,
+    "max_covered_sim": 0.6058,
     "n_banks": 1,
     "reason": "thin"
    },
    {
     "members": [
-     "Silver double bottom formation"
+     "Equity wealth effect on consumer spending"
     ],
     "banks": [
-     "The Market Ear"
+     "Bloomberg"
     ],
     "pdf_ids": [
-     4396
+     4397
     ],
-    "max_covered_sim": 0.5573,
+    "max_covered_sim": 0.5996,
     "n_banks": 1,
     "reason": "thin"
    },
    {
     "members": [
-     "Retail mania in KOSPI"
+     "Late-1990s tech boom comparison",
+     "Mid-2000s housing boom comparison",
+     "DotCom bubble comparison"
+    ],
+    "banks": [
+     "Bloomberg",
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4397,
+     4402
+    ],
+    "max_covered_sim": 0.6639,
+    "n_banks": 2,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "China central bank bullion buying"
     ],
     "banks": [
      "The Market Ear"
     ],
     "pdf_ids": [
-     4396
+     4400
     ],
-    "max_covered_sim": 0.5967,
+    "max_covered_sim": 0.644,
     "n_banks": 1,
     "reason": "thin"
    },
    {
     "members": [
-     "Upside volatility underpricing"
+     "Western investor gold ETF re-engagement"
     ],
     "banks": [
      "The Market Ear"
     ],
     "pdf_ids": [
-     4396
+     4400
     ],
-    "max_covered_sim": 0.6306,
+    "max_covered_sim": 0.6772,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Polish Central Bank gold reserve targets"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4400
+    ],
+    "max_covered_sim": 0.6458,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Middle East geopolitical support for gold"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4400
+    ],
+    "max_covered_sim": 0.6824,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Higher-for-longer interest rate expectations"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4400
+    ],
+    "max_covered_sim": 0.5701,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Diversification away from US bonds"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4400
+    ],
+    "max_covered_sim": 0.5935,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Middle East conflict oil risk management"
+    ],
+    "banks": [
+     "Goldman Sachs"
+    ],
+    "pdf_ids": [
+     4399
+    ],
+    "max_covered_sim": 0.5635,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Jane Street bullion market involvement"
+    ],
+    "banks": [
+     "Goldman Sachs"
+    ],
+    "pdf_ids": [
+     4399
+    ],
+    "max_covered_sim": 0.605,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Active ETF wrapper innovation"
+    ],
+    "banks": [
+     "Goldman Sachs"
+    ],
+    "pdf_ids": [
+     4399
+    ],
+    "max_covered_sim": 0.5487,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Derivatives-based ETF product proliferation"
+    ],
+    "banks": [
+     "Goldman Sachs"
+    ],
+    "pdf_ids": [
+     4399
+    ],
+    "max_covered_sim": 0.5703,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Global equity ETF inflow records"
+    ],
+    "banks": [
+     "Goldman Sachs"
+    ],
+    "pdf_ids": [
+     4399
+    ],
+    "max_covered_sim": 0.5713,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "US-Iran hostilities de-escalation"
+    ],
+    "banks": [
+     "Bloomberg"
+    ],
+    "pdf_ids": [
+     4401
+    ],
+    "max_covered_sim": 0.5379,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "AI epoch-redefining narrative"
+    ],
+    "banks": [
+     "Bloomberg"
+    ],
+    "pdf_ids": [
+     4401
+    ],
+    "max_covered_sim": 0.6392,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Global financial conditions tightening"
+    ],
+    "banks": [
+     "Bloomberg"
+    ],
+    "pdf_ids": [
+     4401
+    ],
+    "max_covered_sim": 0.6072,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Micron earnings concentration"
+    ],
+    "banks": [
+     "Bloomberg"
+    ],
+    "pdf_ids": [
+     4401
+    ],
+    "max_covered_sim": 0.5892,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Apple leadership transition"
+    ],
+    "banks": [
+     "Bloomberg"
+    ],
+    "pdf_ids": [
+     4401
+    ],
+    "max_covered_sim": 0.5461,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "AI hyperscaler capex super-cycle"
+    ],
+    "banks": [
+     "ZeroHedge"
+    ],
+    "pdf_ids": [
+     4398
+    ],
+    "max_covered_sim": 0.9952,
+    "n_banks": 1,
+    "reason": "covered"
+   },
+   {
+    "members": [
+     "US IG credit market saturation"
+    ],
+    "banks": [
+     "ZeroHedge"
+    ],
+    "pdf_ids": [
+     4398
+    ],
+    "max_covered_sim": 0.6531,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Significant Risk Transfers (SRT) usage"
+    ],
+    "banks": [
+     "ZeroHedge"
+    ],
+    "pdf_ids": [
+     4398
+    ],
+    "max_covered_sim": 0.5943,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Data center electricity consumption opposition"
+    ],
+    "banks": [
+     "ZeroHedge"
+    ],
+    "pdf_ids": [
+     4398
+    ],
+    "max_covered_sim": 0.6063,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Private credit market financing surge"
+    ],
+    "banks": [
+     "ZeroHedge"
+    ],
+    "pdf_ids": [
+     4398
+    ],
+    "max_covered_sim": 0.6269,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "META credit default swap blowout"
+    ],
+    "banks": [
+     "ZeroHedge"
+    ],
+    "pdf_ids": [
+     4398
+    ],
+    "max_covered_sim": 0.6089,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "US high-yield bond market stress"
+    ],
+    "banks": [
+     "UBS"
+    ],
+    "pdf_ids": [
+     4403
+    ],
+    "max_covered_sim": 0.604,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Private credit portfolio leverage"
+    ],
+    "banks": [
+     "UBS"
+    ],
+    "pdf_ids": [
+     4403
+    ],
+    "max_covered_sim": 0.6401,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "AI disruption risks to credit"
+    ],
+    "banks": [
+     "UBS"
+    ],
+    "pdf_ids": [
+     4403
+    ],
+    "max_covered_sim": 0.7227,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "US leveraged loan issuance decline"
+    ],
+    "banks": [
+     "UBS"
+    ],
+    "pdf_ids": [
+     4403
+    ],
+    "max_covered_sim": 0.604,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Fallen angel activity in credit markets"
+    ],
+    "banks": [
+     "UBS"
+    ],
+    "pdf_ids": [
+     4403
+    ],
+    "max_covered_sim": 0.6628,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "US-Iran deal negotiations"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4402
+    ],
+    "max_covered_sim": 0.5304,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Strait of Hormuz reopening"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4402
+    ],
+    "max_covered_sim": 0.5626,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "BoJ intervention"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4402
+    ],
+    "max_covered_sim": 0.5153,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "0-DTE options trading"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4402
+    ],
+    "max_covered_sim": 0.5505,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "AI compute commoditization"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4402
+    ],
+    "max_covered_sim": 0.7324,
+    "n_banks": 1,
+    "reason": "thin"
+   },
+   {
+    "members": [
+     "Dealer positive gamma"
+    ],
+    "banks": [
+     "The Market Ear"
+    ],
+    "pdf_ids": [
+     4402
+    ],
+    "max_covered_sim": 0.5785,
     "n_banks": 1,
     "reason": "thin"
    }
   ],
-  "pdfs_in_window": 1,
-  "pdfs_with_contextual_mentions": 1,
-  "total_mentions": 5,
-  "phase_a_theme_count": 2
+  "pdfs_in_window": 7,
+  "pdfs_with_contextual_mentions": 7,
+  "total_mentions": 39,
+  "phase_a_theme_count": 5
  },
  "theme_normalization": {
   "norm_to_canonical": {
    "ai hyperscaler capex super cycle": "ai hyperscaler capex super cycle",
-   "late stage rally squeeze": "late stage rally squeeze"
+   "gold demand recovery": "gold demand recovery",
+   "buyback false dawn": "buyback false dawn",
+   "ai debt bubble": "ai debt bubble",
+   "credit collateral erosion": "credit collateral erosion"
   }
  },
- "dumped_at_utc": "2026-05-09T20:45:29.094685Z",
- "window_cutoff": "2026-05-08T20:45:25.208196",
+ "dumped_at_utc": "2026-05-09T21:00:29.583519Z",
+ "window_cutoff": "2026-05-08T21:00:25.198325",
  "window_label": "last-24h"
 }
