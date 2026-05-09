@@ -1110,10 +1110,20 @@ def get_pipeline_stats() -> dict:
            FROM pdf_analyses"""
     ).fetchone()
 
-    # Last scheduled pulse
+    # Last scheduled pulse — explicitly EXCLUDE test fires.
+    # Test fires are inserted with report_type='daily' (so the bridge
+    # worker's flow stays uniform) but they carry a `target_channels`
+    # frontmatter value that lands in report_json. Filter those out so
+    # /status's "since last scheduled pulse" counter only resets at the
+    # actual 13:08 UTC weekday cron firing, not at every test pulse.
     last_daily = conn.execute(
         """SELECT created_at, discord_sent_at, pdf_count
-           FROM daily_reports WHERE report_type = 'daily'
+           FROM daily_reports
+           WHERE report_type = 'daily'
+             AND (
+               report_json IS NULL
+               OR json_extract(report_json, '$.target_channels') IS NULL
+             )
            ORDER BY created_at DESC LIMIT 1"""
     ).fetchone()
 
