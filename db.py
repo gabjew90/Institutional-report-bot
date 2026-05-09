@@ -131,6 +131,37 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         );
         CREATE INDEX IF NOT EXISTS idx_bridge_status ON bridge_ingestion_state(status);
         CREATE INDEX IF NOT EXISTS idx_bridge_queued_at ON bridge_ingestion_state(queued_at);
+
+        -- Persistent /reanalyze job state. The Discord interaction handler
+        -- previously ran reanalyze synchronously, which capped at Discord's
+        -- 15-min interaction limit and lost all state on Railway redeploy.
+        -- This table moves the job to a scheduler-driven background path
+        -- with DB-persisted progress, so a worker restart resumes where
+        -- it left off and large reanalyzes run to completion regardless
+        -- of Discord interaction expiry.
+        CREATE TABLE IF NOT EXISTS reanalyze_jobs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            status TEXT NOT NULL,  -- pending | processing | complete | failed | cancelled
+            hours INTEGER NOT NULL,
+            priority_filter TEXT,  -- JSON array of priority strings, or NULL for all
+            target_pdf_ids TEXT NOT NULL,  -- JSON array of pdf_files.id
+            target_count INTEGER NOT NULL,
+            processed_pdf_ids TEXT NOT NULL DEFAULT '[]',  -- JSON
+            failed_pdf_ids TEXT NOT NULL DEFAULT '[]',  -- JSON
+            bridge_queued_pdf_ids TEXT NOT NULL DEFAULT '[]',  -- JSON
+            input_tokens INTEGER NOT NULL DEFAULT 0,
+            output_tokens INTEGER NOT NULL DEFAULT 0,
+            requested_by TEXT,           -- Discord user id who triggered
+            discord_channel_id INTEGER,  -- Channel where /reanalyze was issued
+            discord_status_message_id INTEGER,  -- Message to update with progress
+            created_at TEXT NOT NULL DEFAULT (datetime('now')),
+            started_at TEXT,
+            completed_at TEXT,
+            last_progress_at TEXT,
+            error_message TEXT
+        );
+        CREATE INDEX IF NOT EXISTS idx_reanalyze_status ON reanalyze_jobs(status);
+        CREATE INDEX IF NOT EXISTS idx_reanalyze_created ON reanalyze_jobs(created_at);
     """)
     # Idempotent migrations for already-deployed bridge_ingestion_state schemas
     # (the table was first created in step 1 without these columns).
@@ -777,6 +808,155 @@ def count_bridge_outcomes_since(cutoff_iso: str) -> dict:
             out[s] = n
         out["total"] += n
     return out
+
+
+# =============================================================================
+# Reanalyze job state (persistent background-processing for /reanalyze).
+# =============================================================================
+
+
+def create_reanalyze_job(
+    hours: int,
+    target_pdf_ids: list[int],
+    priority_filter: list[str] | None,
+    requested_by: str | None = None,
+    discord_channel_id: int | None = None,
+    discord_status_message_id: int | None = None,
+) -> int:
+    """Insert a new reanalyze job in `pending` state. Returns the job id."""
+    import json as _json
+    cur = get_connection().execute(
+        """INSERT INTO reanalyze_jobs
+           (status, hours, priority_filter, target_pdf_ids, target_count,
+            requested_by, discord_channel_id, discord_status_message_id)
+           VALUES ('pending', ?, ?, ?, ?, ?, ?, ?)""",
+        (
+            hours,
+            _json.dumps(priority_filter) if priority_filter else None,
+            _json.dumps(target_pdf_ids),
+            len(target_pdf_ids),
+            requested_by,
+            discord_channel_id,
+            discord_status_message_id,
+        ),
+    )
+    get_connection().commit()
+    return cur.lastrowid
+
+
+def get_active_reanalyze_job() -> dict | None:
+    """Return the next reanalyze job to work on, or None if nothing active.
+
+    Order: 'processing' first (resume in-flight after a worker restart),
+    then 'pending' by oldest. One job at a time — the scheduler processes
+    them serially.
+    """
+    row = get_connection().execute(
+        """SELECT * FROM reanalyze_jobs
+           WHERE status IN ('processing', 'pending')
+           ORDER BY (status = 'processing') DESC, created_at ASC
+           LIMIT 1"""
+    ).fetchone()
+    return dict(row) if row else None
+
+
+def get_reanalyze_job(job_id: int) -> dict | None:
+    row = get_connection().execute(
+        "SELECT * FROM reanalyze_jobs WHERE id = ?", (job_id,)
+    ).fetchone()
+    return dict(row) if row else None
+
+
+def get_recent_reanalyze_jobs(limit: int = 5) -> list[dict]:
+    """Return the most recent reanalyze jobs (any status), newest first.
+
+    Used by /status to show the active or recently-completed jobs.
+    """
+    rows = get_connection().execute(
+        """SELECT * FROM reanalyze_jobs
+           ORDER BY created_at DESC
+           LIMIT ?""",
+        (limit,),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def start_reanalyze_job(job_id: int) -> None:
+    """Mark a pending job as processing and record started_at."""
+    get_connection().execute(
+        """UPDATE reanalyze_jobs
+           SET status = 'processing', started_at = datetime('now')
+           WHERE id = ?""",
+        (job_id,),
+    )
+    get_connection().commit()
+
+
+def update_reanalyze_job_progress(
+    job_id: int,
+    *,
+    processed_pdf_ids: list[int] | None = None,
+    failed_pdf_ids: list[int] | None = None,
+    bridge_queued_pdf_ids: list[int] | None = None,
+    input_tokens_delta: int = 0,
+    output_tokens_delta: int = 0,
+) -> None:
+    """Update job progress lists + token totals. Each list parameter, if
+    given, REPLACES the column value (the caller passes the full list).
+    Token deltas are added incrementally.
+    """
+    import json as _json
+    sets: list[str] = ["last_progress_at = datetime('now')"]
+    args: list = []
+    if processed_pdf_ids is not None:
+        sets.append("processed_pdf_ids = ?")
+        args.append(_json.dumps(processed_pdf_ids))
+    if failed_pdf_ids is not None:
+        sets.append("failed_pdf_ids = ?")
+        args.append(_json.dumps(failed_pdf_ids))
+    if bridge_queued_pdf_ids is not None:
+        sets.append("bridge_queued_pdf_ids = ?")
+        args.append(_json.dumps(bridge_queued_pdf_ids))
+    if input_tokens_delta:
+        sets.append("input_tokens = input_tokens + ?")
+        args.append(input_tokens_delta)
+    if output_tokens_delta:
+        sets.append("output_tokens = output_tokens + ?")
+        args.append(output_tokens_delta)
+    args.append(job_id)
+    get_connection().execute(
+        f"UPDATE reanalyze_jobs SET {', '.join(sets)} WHERE id = ?",
+        tuple(args),
+    )
+    get_connection().commit()
+
+
+def complete_reanalyze_job(job_id: int) -> None:
+    """Mark a job as complete and record completed_at."""
+    get_connection().execute(
+        """UPDATE reanalyze_jobs
+           SET status = 'complete', completed_at = datetime('now')
+           WHERE id = ?""",
+        (job_id,),
+    )
+    get_connection().commit()
+
+
+def fail_reanalyze_job(job_id: int, error_message: str) -> None:
+    """Mark a job as failed with an error message."""
+    get_connection().execute(
+        """UPDATE reanalyze_jobs
+           SET status = 'failed', completed_at = datetime('now'),
+               error_message = ?
+           WHERE id = ?""",
+        (error_message[:500], job_id),
+    )
+    get_connection().commit()
+
+
+# =============================================================================
+# Daily pulse / synthesis history.
+# =============================================================================
 
 
 def get_last_daily_pulse() -> dict | None:

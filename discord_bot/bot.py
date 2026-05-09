@@ -30,6 +30,20 @@ def _fmt_ts(iso_str: str | None) -> str:
         return iso_str[:16].replace("T", " ")
 
 
+def _safe_json(s: str | None) -> list:
+    """Parse a JSON list field defensively. Returns [] on any failure
+    (None, malformed JSON, non-list payload). Used for reanalyze_jobs
+    JSON columns where empty/null is normal."""
+    import json as _json
+    if not s:
+        return []
+    try:
+        v = _json.loads(s)
+        return v if isinstance(v, list) else []
+    except Exception:
+        return []
+
+
 def create_bot() -> commands.Bot:
     """Create and configure the Discord bot."""
     intents = discord.Intents.default()
@@ -220,52 +234,87 @@ def create_bot() -> commands.Bot:
         await interaction.response.defer(thinking=True)
 
         try:
-            from pipeline.orchestrator import reanalyze_recent_pdfs
+            # Build target-PDF list now so the job row has an immutable
+            # snapshot (subsequent Dropbox uploads won't drift the target).
+            from datetime import datetime, timedelta
+            cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
+            conn = db.get_connection()
+            if priority_filter:
+                placeholders = ",".join("?" * len(priority_filter))
+                rows = conn.execute(
+                    f"""SELECT id FROM pdf_files
+                        WHERE dropbox_modified_at > ?
+                          AND LOWER(priority) IN ({placeholders})
+                        ORDER BY dropbox_modified_at ASC""",
+                    (cutoff, *[p.lower() for p in priority_filter]),
+                ).fetchall()
+            else:
+                rows = conn.execute(
+                    """SELECT id FROM pdf_files
+                       WHERE dropbox_modified_at > ?
+                       ORDER BY dropbox_modified_at ASC""",
+                    (cutoff,),
+                ).fetchall()
+            target_ids = [int(r["id"]) for r in rows]
 
+            if not target_ids:
+                await interaction.followup.send(
+                    f"No PDFs in the {hours}h window matching `{filter_label}` — nothing to reanalyze."
+                )
+                return
+
+            # Refuse to enqueue if another job is already active. One
+            # reanalyze at a time — the scheduler processes serially and
+            # multiple queued jobs would just queue behind the active one
+            # without obvious feedback.
+            active = db.get_active_reanalyze_job()
+            if active is not None:
+                await interaction.followup.send(
+                    f"⚠️ Reanalyze job #{active['id']} is already "
+                    f"`{active['status']}` ({active['target_count']} target PDFs). "
+                    f"Wait for it to complete, then run /reanalyze again. "
+                    f"Check `/status` for progress."
+                )
+                return
+
+            # Post the initial status message so we can edit it later.
             status_msg = await interaction.followup.send(
-                f"Starting reanalyze ({hours}h window, {filter_label})…"
+                f"**Reanalyze queued** ({hours}h window, {filter_label})\n"
+                f"Target: {len(target_ids)} PDFs — will start within ~60s on the "
+                f"background scheduler.\n"
+                f"This job is **persistent**: progress saved to DB after each PDF, "
+                f"so a worker restart won't lose your place. The Discord 15-min "
+                f"interaction limit no longer matters — completion message will "
+                f"be posted to this channel when done."
             )
 
-            async def on_progress(stats: dict, phase: str):
-                if phase == "starting":
-                    content = (
-                        f"**Reanalyze ({hours}h window)** — targeting {stats['target']} PDFs "
-                        f"from the DB. Re-downloading from Dropbox and re-running analysis "
-                        f"with the current prompt."
-                    )
-                elif phase == "processing":
-                    done = stats["processed"] + stats["failed"]
-                    target = stats["target"]
-                    pct = int((done / target) * 100) if target else 0
-                    current = stats.get("current_file", "")
-                    recent = stats.get("recent_files", [])
-                    content = (
-                        f"**Reanalyze ({hours}h window)** — {done}/{target} done ({pct}%)\n"
-                        f"Processed: {stats['processed']} | Failed: {stats['failed']}\n"
-                        f"Tokens: {stats['input_tokens']:,} in / {stats['output_tokens']:,} out"
-                    )
-                    if current:
-                        content += f"\n\n**Now:** {current[:80]}"
-                    if recent:
-                        content += f"\n**Recent:**\n" + "\n".join(recent[-5:])
-                    content = content[:1900]
-                else:  # done
-                    content = (
-                        f"**Reanalyze complete ({hours}h window)**\n"
-                        f"Target: {stats['target']} | Processed: {stats['processed']} | "
-                        f"Failed: {stats['failed']}\n"
-                        f"Tokens: {stats['input_tokens']:,} in / {stats['output_tokens']:,} out\n"
-                        f"New analysis rows appended alongside old ones. "
-                        f"Run `/pulse` to see synthesis with refreshed data."
-                    )
-                try:
-                    await status_msg.edit(content=content)
-                except Exception:
-                    pass
-
-            await reanalyze_recent_pdfs(hours, progress_cb=on_progress, priority_filter=priority_filter)
+            # Create the job row. The scheduler's reanalyze_processor will
+            # pick it up on its next 60s tick.
+            requested_by = str(interaction.user.id) if interaction.user else None
+            channel_id = interaction.channel_id
+            job_id = db.create_reanalyze_job(
+                hours=hours,
+                target_pdf_ids=target_ids,
+                priority_filter=priority_filter,
+                requested_by=requested_by,
+                discord_channel_id=channel_id,
+                discord_status_message_id=status_msg.id if status_msg else None,
+            )
+            log.info(
+                f"Reanalyze job {job_id} queued: {len(target_ids)} PDFs, "
+                f"hours={hours}, filter={priority_filter}, channel={channel_id}"
+            )
+            try:
+                await status_msg.edit(content=(
+                    f"**Reanalyze job #{job_id} queued** ({hours}h window, {filter_label})\n"
+                    f"Target: {len(target_ids)} PDFs — scheduler will start it within ~60s.\n"
+                    f"Progress persisted to DB; check `/status` any time. "
+                    f"Final completion message will replace this when done."
+                ))
+            except Exception:
+                pass
         except Exception as e:
-            log.error(f"Reanalyze failed: {e}", exc_info=True)
+            log.error(f"Reanalyze enqueue failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
     @bot.tree.command(name="clearqueue", description="Delete pending (DOWNLOADED) PDFs from the queue — destructive, cancels backlog")
@@ -443,6 +492,31 @@ def create_bot() -> commands.Bot:
             embed.add_field(
                 name="Last 5 ingested",
                 value="\n".join(lines)[:1024],  # Discord field limit
+                inline=False,
+            )
+
+        # Reanalyze jobs — surface active/recent so the user can see if a
+        # /reanalyze is in flight, queued, or recently completed without
+        # spelunking the DB.
+        recent_jobs = db.get_recent_reanalyze_jobs(limit=3)
+        if recent_jobs:
+            lines = []
+            for j in recent_jobs:
+                done = (
+                    len(_safe_json(j.get("processed_pdf_ids")))
+                    + len(_safe_json(j.get("failed_pdf_ids")))
+                    + len(_safe_json(j.get("bridge_queued_pdf_ids")))
+                )
+                tot = j.get("target_count") or 0
+                pct = int(100 * done / tot) if tot else 0
+                created = _fmt_ts(j.get("created_at"))
+                lines.append(
+                    f"`#{j['id']}` `{created}` · **{j['status']}** · "
+                    f"{done}/{tot} ({pct}%) · {j['hours']}h"
+                )
+            embed.add_field(
+                name="Reanalyze jobs (recent 3)",
+                value="\n".join(lines)[:1024],
                 inline=False,
             )
 

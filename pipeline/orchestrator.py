@@ -340,6 +340,7 @@ async def reanalyze_recent_pdfs(
     hours: int,
     progress_cb=None,
     priority_filter: list[str] | None = None,
+    job_id: int | None = None,
 ) -> dict:
     """Re-run analysis on PDFs already in the DB within the window.
 
@@ -350,43 +351,107 @@ async def reanalyze_recent_pdfs(
     history — the latest analysis wins in SELECT queries.
 
     Args:
-        hours: lookback window by Dropbox upload date (1-168).
+        hours: lookback window by Dropbox upload date (1-168). Ignored when
+            `job_id` is given (target list comes from the job row).
         progress_cb: optional async callback(stats, phase) for updates.
         priority_filter: optional list of priorities to include
             (e.g., ['high', 'medium']). None = include all (default).
             Useful for backfilling new prompt fields on HIGH+MED only,
-            saving ~30-40% time + cost by skipping LOW.
+            saving ~30-40% time + cost by skipping LOW. Ignored when
+            `job_id` is given.
+        job_id: optional persistent job row to resume. When given:
+            - target_pdf_ids comes from the job row (not re-queried)
+            - already-processed and already-failed PDFs are skipped (resume)
+            - progress is persisted to DB after each PDF
+            Use this for the scheduler-driven background path so a worker
+            restart resumes where it left off. Pass None for the legacy
+            in-process path.
     """
     from datetime import timedelta
-    cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
+    import json as _json
 
-    conn = db.get_connection()
-    if priority_filter:
-        placeholders = ",".join("?" * len(priority_filter))
-        rows = conn.execute(
+    if job_id is not None:
+        job = db.get_reanalyze_job(job_id)
+        if not job:
+            raise ValueError(f"reanalyze job {job_id} not found")
+        target_ids = _json.loads(job["target_pdf_ids"])
+        already_processed = set(_json.loads(job["processed_pdf_ids"] or "[]"))
+        already_failed = set(_json.loads(job["failed_pdf_ids"] or "[]"))
+        already_bridge_queued = set(_json.loads(job.get("bridge_queued_pdf_ids") or "[]"))
+        # Resume: skip PDFs that already finished one way or another.
+        remaining_ids = [
+            pid for pid in target_ids
+            if pid not in already_processed
+            and pid not in already_failed
+            and pid not in already_bridge_queued
+        ]
+        if not remaining_ids:
+            log.info(f"Reanalyze job {job_id} has no remaining PDFs — marking complete")
+            db.complete_reanalyze_job(job_id)
+            return {
+                "target": len(target_ids), "processed": len(already_processed),
+                "failed": len(already_failed), "bridge_queued": len(already_bridge_queued),
+                "input_tokens": job["input_tokens"], "output_tokens": job["output_tokens"],
+            }
+        # Re-fetch the PDF rows for the remaining ids.
+        placeholders = ",".join("?" * len(remaining_ids))
+        rows = db.get_connection().execute(
             f"""SELECT id, dropbox_path, file_name, local_path, dropbox_rev,
                        file_size_bytes, dropbox_modified_at, status, priority
-                FROM pdf_files
-                WHERE dropbox_modified_at > ?
-                  AND LOWER(priority) IN ({placeholders})
+                FROM pdf_files WHERE id IN ({placeholders})
                 ORDER BY dropbox_modified_at ASC""",
-            (cutoff, *[p.lower() for p in priority_filter]),
+            tuple(remaining_ids),
         ).fetchall()
+        to_process = [dict(r) for r in rows]
+        # Seed the running state from the job's prior progress.
+        processed_set = set(already_processed)
+        failed_set = set(already_failed)
+        bridge_set = set(already_bridge_queued)
+        running_input_tokens = int(job["input_tokens"])
+        running_output_tokens = int(job["output_tokens"])
     else:
-        rows = conn.execute(
-            """SELECT id, dropbox_path, file_name, local_path, dropbox_rev,
-                      file_size_bytes, dropbox_modified_at, status, priority
-               FROM pdf_files
-               WHERE dropbox_modified_at > ?
-               ORDER BY dropbox_modified_at ASC""",
-            (cutoff,),
-        ).fetchall()
-    to_process = [dict(r) for r in rows]
+        cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
+        conn = db.get_connection()
+        if priority_filter:
+            placeholders = ",".join("?" * len(priority_filter))
+            rows = conn.execute(
+                f"""SELECT id, dropbox_path, file_name, local_path, dropbox_rev,
+                           file_size_bytes, dropbox_modified_at, status, priority
+                    FROM pdf_files
+                    WHERE dropbox_modified_at > ?
+                      AND LOWER(priority) IN ({placeholders})
+                    ORDER BY dropbox_modified_at ASC""",
+                (cutoff, *[p.lower() for p in priority_filter]),
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                """SELECT id, dropbox_path, file_name, local_path, dropbox_rev,
+                          file_size_bytes, dropbox_modified_at, status, priority
+                   FROM pdf_files
+                   WHERE dropbox_modified_at > ?
+                   ORDER BY dropbox_modified_at ASC""",
+                (cutoff,),
+            ).fetchall()
+        to_process = [dict(r) for r in rows]
+        processed_set = set()
+        failed_set = set()
+        bridge_set = set()
+        running_input_tokens = 0
+        running_output_tokens = 0
 
     stats = {
-        "target": len(to_process), "processed": 0, "failed": 0,
-        "input_tokens": 0, "output_tokens": 0,
-        "current_file": "", "recent_files": [],
+        "target": (
+            db.get_reanalyze_job(job_id)["target_count"]
+            if job_id is not None
+            else len(to_process)
+        ),
+        "processed": len(processed_set),
+        "failed": len(failed_set),
+        "bridge_queued": len(bridge_set),
+        "input_tokens": running_input_tokens,
+        "output_tokens": running_output_tokens,
+        "current_file": "",
+        "recent_files": [],
     }
 
     if progress_cb:
@@ -397,59 +462,84 @@ async def reanalyze_recent_pdfs(
     recent_files: list[str] = []
 
     for i, pdf_data in enumerate(to_process, start=1):
+        pdf_id = int(pdf_data["id"])
         stats["current_file"] = pdf_data["file_name"]
         stats["recent_files"] = recent_files[-5:]
         if progress_cb:
             await progress_cb(stats, "processing")
 
+        outcome: str | None = None  # 'processed' | 'failed' | 'bridge_queued'
         try:
             dropbox_path = pdf_data["dropbox_path"]
             if not dropbox_path:
                 log.warning(f"Reanalyze: {pdf_data['file_name']} missing dropbox_path — skipping")
-                stats["failed"] += 1
+                outcome = "failed"
                 recent_files.append(f"✗ {pdf_data['file_name'][:70]} (no dropbox path)")
-                continue
-
-            # Always re-download: the local file from the original processing is
-            # long gone. Use a fresh path, deterministic per file_name.
-            safe_name = pdf_data["file_name"].replace("/", "_")
-            local_path = download_dir / safe_name
-            if local_path.exists():
-                stem, suffix, counter = local_path.stem, local_path.suffix, 1
-                while local_path.exists():
-                    local_path = download_dir / f"{stem}_{counter}{suffix}"
-                    counter += 1
-
-            log.info(f"Reanalyze: downloading {dropbox_path} -> {local_path}")
-            await asyncio.to_thread(download_file, dropbox_path, local_path)
-            if not local_path.exists():
-                log.error(f"Reanalyze: download reported success but file missing: {local_path}")
-                stats["failed"] += 1
-                recent_files.append(f"✗ {pdf_data['file_name'][:70]} (download missing)")
-                continue
-
-            pdf_data["local_path"] = str(local_path)
-            analysis = await process_single_pdf(pdf_data)
-            if analysis:
-                stats["processed"] += 1
-                stats["input_tokens"] += analysis.input_tokens
-                stats["output_tokens"] += analysis.output_tokens
-                recent_files.append(f"✓ {pdf_data['file_name'][:70]} ({analysis.priority})")
             else:
-                # None could mean (a) genuinely failed, or (b) routed to opus_bridge
-                # and waiting for the routine. Differentiate so /reanalyze stats
-                # don't count bridge-queued PDFs as failures.
-                bridge = db.get_bridge_state(int(pdf_data["id"]))
-                if bridge and bridge.get("status") in ("pending", "committed"):
-                    stats["bridge_queued"] = stats.get("bridge_queued", 0) + 1
-                    recent_files.append(f"⏳ {pdf_data['file_name'][:70]} (bridge queued)")
+                # Always re-download: the local file from the original processing is
+                # long gone. Use a fresh path, deterministic per file_name.
+                safe_name = pdf_data["file_name"].replace("/", "_")
+                local_path = download_dir / safe_name
+                if local_path.exists():
+                    stem, suffix, counter = local_path.stem, local_path.suffix, 1
+                    while local_path.exists():
+                        local_path = download_dir / f"{stem}_{counter}{suffix}"
+                        counter += 1
+
+                log.info(f"Reanalyze: downloading {dropbox_path} -> {local_path}")
+                await asyncio.to_thread(download_file, dropbox_path, local_path)
+                if not local_path.exists():
+                    log.error(f"Reanalyze: download reported success but file missing: {local_path}")
+                    outcome = "failed"
+                    recent_files.append(f"✗ {pdf_data['file_name'][:70]} (download missing)")
                 else:
-                    stats["failed"] += 1
-                    recent_files.append(f"✗ {pdf_data['file_name'][:70]} (failed)")
+                    pdf_data["local_path"] = str(local_path)
+                    analysis = await process_single_pdf(pdf_data)
+                    if analysis:
+                        outcome = "processed"
+                        stats["input_tokens"] += analysis.input_tokens
+                        stats["output_tokens"] += analysis.output_tokens
+                        recent_files.append(f"✓ {pdf_data['file_name'][:70]} ({analysis.priority})")
+                    else:
+                        # None could mean (a) genuinely failed, or (b) routed to opus_bridge
+                        # and waiting for the routine. Differentiate so /reanalyze stats
+                        # don't count bridge-queued PDFs as failures.
+                        bridge = db.get_bridge_state(pdf_id)
+                        if bridge and bridge.get("status") in ("pending", "committed"):
+                            outcome = "bridge_queued"
+                            recent_files.append(f"⏳ {pdf_data['file_name'][:70]} (bridge queued)")
+                        else:
+                            outcome = "failed"
+                            recent_files.append(f"✗ {pdf_data['file_name'][:70]} (failed)")
         except Exception as e:
             log.error(f"Reanalyze failed for {pdf_data['file_name']}: {e}", exc_info=True)
-            stats["failed"] += 1
+            outcome = "failed"
             recent_files.append(f"✗ {pdf_data['file_name'][:70]} (error)")
+
+        # Reflect outcome in the running state and (when job-backed) persist.
+        if outcome == "processed":
+            processed_set.add(pdf_id)
+            stats["processed"] = len(processed_set)
+        elif outcome == "bridge_queued":
+            bridge_set.add(pdf_id)
+            stats["bridge_queued"] = len(bridge_set)
+        else:
+            failed_set.add(pdf_id)
+            stats["failed"] = len(failed_set)
+
+        if job_id is not None:
+            # Persist progress AFTER each PDF so a worker restart resumes
+            # cleanly. Pass full lists (the helper rewrites the column).
+            input_delta = analysis.input_tokens if outcome == "processed" else 0
+            output_delta = analysis.output_tokens if outcome == "processed" else 0
+            db.update_reanalyze_job_progress(
+                job_id,
+                processed_pdf_ids=sorted(processed_set),
+                failed_pdf_ids=sorted(failed_set),
+                bridge_queued_pdf_ids=sorted(bridge_set),
+                input_tokens_delta=input_delta,
+                output_tokens_delta=output_delta,
+            )
 
         # Push progress every 3 PDFs (or on the last)
         if progress_cb and (i % 3 == 0 or i == len(to_process)):
@@ -461,6 +551,9 @@ async def reanalyze_recent_pdfs(
         stats["current_file"] = ""
         stats["recent_files"] = recent_files[-5:]
         await progress_cb(stats, "done")
+
+    if job_id is not None:
+        db.complete_reanalyze_job(job_id)
 
     log.info(f"Reanalyze complete: {stats}")
     return stats

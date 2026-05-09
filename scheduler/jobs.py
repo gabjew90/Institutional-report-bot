@@ -82,6 +82,23 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=120,
         )
 
+    # Reanalyze background processor — picks up persistent reanalyze jobs
+    # and runs them to completion. Survives worker restarts: a job in
+    # 'processing' state gets re-attached on next tick, resuming from the
+    # processed/failed/bridge_queued lists already persisted to DB. Runs
+    # every 60s so a freshly-queued job starts within a minute, but with
+    # max_instances=1 a long-running job blocks subsequent ticks until done
+    # (which is what we want — one reanalyze at a time).
+    scheduler.add_job(
+        _reanalyze_processor_job,
+        trigger=IntervalTrigger(seconds=60),
+        id="reanalyze_processor",
+        name="Process pending reanalyze job",
+        kwargs={"bot": bot},
+        max_instances=1,
+        misfire_grace_time=300,
+    )
+
     # Real-time ingestion feed (only registers if DISCORD_INGEST_FEED_CHANNEL_ID set)
     from discord_bot.ingestion_feed import feed_enabled
     if feed_enabled():
@@ -180,6 +197,130 @@ async def _daily_pulse_job(bot=None):
             log.warning("Daily pulse: no reports available")
     except Exception as e:
         log.error(f"Daily pulse failed: {e}", exc_info=True)
+
+
+async def _reanalyze_processor_job(bot=None):
+    """Scheduled job: pick up the next pending/in-progress reanalyze job and
+    run it to completion via the orchestrator's job-aware path.
+
+    The orchestrator's `reanalyze_recent_pdfs(job_id=N)` reads the job row
+    from DB, skips already-processed PDFs (resume after worker restart),
+    and persists progress after each PDF. When the job completes, it posts
+    a final status message to the originating Discord channel.
+
+    `max_instances=1` on the scheduler entry means only one of these runs
+    at a time — long jobs naturally block subsequent ticks until done,
+    which is what we want (one reanalyze at a time, no overlap).
+    """
+    try:
+        import db
+        job = db.get_active_reanalyze_job()
+        if not job:
+            return  # nothing to do
+        if job["status"] == "pending":
+            db.start_reanalyze_job(job["id"])
+            log.info(
+                f"Reanalyze job {job['id']}: starting "
+                f"(target {job['target_count']} PDFs, hours={job['hours']})"
+            )
+        else:
+            log.info(
+                f"Reanalyze job {job['id']}: resuming from prior state "
+                f"(target {job['target_count']} PDFs)"
+            )
+
+        from pipeline.orchestrator import reanalyze_recent_pdfs
+        try:
+            stats = await reanalyze_recent_pdfs(
+                hours=job["hours"], job_id=job["id"]
+            )
+        except Exception as e:
+            log.error(
+                f"Reanalyze job {job['id']} crashed: {e}", exc_info=True
+            )
+            db.fail_reanalyze_job(job["id"], f"{type(e).__name__}: {e}")
+            await _post_reanalyze_completion_message(
+                bot, job["id"], status="failed",
+                error=f"{type(e).__name__}: {e}",
+            )
+            return
+
+        # Job-aware orchestrator marked it complete itself — post the final
+        # message back to Discord.
+        await _post_reanalyze_completion_message(
+            bot, job["id"], status="complete", stats=stats,
+        )
+
+    except Exception as e:
+        log.error(f"Reanalyze processor job failed: {e}", exc_info=True)
+
+
+async def _post_reanalyze_completion_message(
+    bot,
+    job_id: int,
+    status: str,
+    stats: dict | None = None,
+    error: str | None = None,
+) -> None:
+    """Post a final completion (or failure) message to the Discord channel
+    that originated the /reanalyze. Best-effort — a missing bot, channel,
+    or message ID is logged and ignored. The job state is already
+    persisted in DB regardless.
+    """
+    if bot is None:
+        return
+    import db
+    job = db.get_reanalyze_job(job_id)
+    if not job:
+        return
+    cid = job.get("discord_channel_id")
+    if not cid:
+        return
+    try:
+        channel = bot.get_channel(int(cid))
+        if channel is None:
+            log.warning(
+                f"Reanalyze job {job_id}: completion channel {cid} not found in cache"
+            )
+            return
+        if status == "complete":
+            s = stats or {}
+            content = (
+                f"**Reanalyze job #{job_id} complete** ({job['hours']}h window)\n"
+                f"Target: {job['target_count']} | "
+                f"Processed: {s.get('processed', 0)} | "
+                f"Failed: {s.get('failed', 0)}"
+            )
+            if s.get("bridge_queued"):
+                content += f" | Bridge queued: {s['bridge_queued']}"
+            content += (
+                f"\nTokens: {s.get('input_tokens', 0):,} in / "
+                f"{s.get('output_tokens', 0):,} out\n"
+                f"New analysis rows appended alongside old ones. "
+                f"Run `/pulse` to see synthesis with refreshed data."
+            )
+        else:
+            content = (
+                f"**Reanalyze job #{job_id} FAILED** ({job['hours']}h window)\n"
+                f"Error: {(error or 'unknown')[:300]}\n"
+                f"Progress preserved in DB. The job marked itself failed; "
+                f"running `/reanalyze` again will start a fresh job."
+            )
+        # Try to edit the original status message if we have one; fall back
+        # to a new post in the same channel.
+        msg_id = job.get("discord_status_message_id")
+        if msg_id:
+            try:
+                msg = await channel.fetch_message(int(msg_id))
+                await msg.edit(content=content[:1900])
+                return
+            except Exception:
+                pass  # fall through to new post
+        await channel.send(content[:1900])
+    except Exception as e:
+        log.warning(
+            f"Reanalyze job {job_id}: failed to post completion message: {e}"
+        )
 
 
 async def _bridge_post_pending_job(bot=None):
