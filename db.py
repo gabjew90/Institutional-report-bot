@@ -983,25 +983,67 @@ def log_event(pdf_file_id: int | None, event_type: str, status: str, details: st
 
 # --- Stats ---
 
+def _today_utc_range() -> tuple[str, str, str]:
+    """Compute the UTC range corresponding to "today" in the configured
+    display timezone (settings.timezone, default America/New_York).
+
+    The bug we're fixing: previously this used `date.today()` which is
+    SERVER-LOCAL. On Railway (UTC), `date.today()` advances at UTC
+    midnight. Stats labeled "Today" would suddenly drop to 0 when UTC
+    flipped over even though it's still mid-evening for the actual user.
+    Fix: compute today's date in the user's configured timezone, then
+    convert that local-day's [00:00, 24:00) window to UTC for the
+    pdf_files.created_at comparison (which is stored as UTC).
+
+    Returns (utc_start_str, utc_end_str, local_date_iso) — the first two
+    in space-separator format that matches SQLite's `datetime('now')`,
+    the third for the daily_reports.report_date lookup which is stored
+    as a calendar date string in the user's local sense.
+    """
+    import pytz
+    from config import settings
+    try:
+        tz = pytz.timezone(settings.timezone)
+    except Exception:
+        tz = pytz.UTC
+    now_local = datetime.now(tz)
+    local_midnight = now_local.replace(hour=0, minute=0, second=0, microsecond=0)
+    local_tomorrow = local_midnight + timedelta(days=1)
+    utc_start = local_midnight.astimezone(pytz.UTC).strftime("%Y-%m-%d %H:%M:%S")
+    utc_end = local_tomorrow.astimezone(pytz.UTC).strftime("%Y-%m-%d %H:%M:%S")
+    return utc_start, utc_end, now_local.date().isoformat()
+
+
 def get_today_stats(today: str | None = None) -> dict:
-    if today is None:
-        today = date.today().isoformat()
+    """Stats for "today" in the configured display timezone.
+
+    `today` parameter is now ignored when the timezone-aware path is
+    available (it's kept for caller-API compatibility but the actual
+    comparison uses a UTC range computed from the configured TZ).
+    Pass-through of a literal date string is no longer meaningful since
+    the comparison is now range-based.
+    """
+    utc_start, utc_end, local_date = _today_utc_range()
     conn = get_connection()
 
     total = conn.execute(
-        "SELECT COUNT(*) as c FROM pdf_files WHERE date(created_at) = ?", (today,)
+        "SELECT COUNT(*) as c FROM pdf_files WHERE created_at >= ? AND created_at < ?",
+        (utc_start, utc_end),
     ).fetchone()["c"]
 
     processed = conn.execute(
-        "SELECT COUNT(*) as c FROM pdf_files WHERE date(created_at) = ? AND status = 'PROCESSED'", (today,)
+        "SELECT COUNT(*) as c FROM pdf_files WHERE created_at >= ? AND created_at < ? AND status = 'PROCESSED'",
+        (utc_start, utc_end),
     ).fetchone()["c"]
 
     pending = conn.execute(
-        "SELECT COUNT(*) as c FROM pdf_files WHERE date(created_at) = ? AND status IN ('DOWNLOADED', 'PROCESSING')", (today,)
+        "SELECT COUNT(*) as c FROM pdf_files WHERE created_at >= ? AND created_at < ? AND status IN ('DOWNLOADED', 'PROCESSING')",
+        (utc_start, utc_end),
     ).fetchone()["c"]
 
     failed = conn.execute(
-        "SELECT COUNT(*) as c FROM pdf_files WHERE date(created_at) = ? AND status = 'FAILED'", (today,)
+        "SELECT COUNT(*) as c FROM pdf_files WHERE created_at >= ? AND created_at < ? AND status = 'FAILED'",
+        (utc_start, utc_end),
     ).fetchone()["c"]
 
     # Sum tokens across ALL analysis attempts today (re-runs cost real tokens,
@@ -1009,13 +1051,16 @@ def get_today_stats(today: str | None = None) -> dict:
     tokens = conn.execute(
         """SELECT COALESCE(SUM(input_tokens_used), 0) as input_t,
                   COALESCE(SUM(output_tokens_used), 0) as output_t
-           FROM pdf_analyses WHERE date(created_at) = ?""",
-        (today,),
+           FROM pdf_analyses WHERE created_at >= ? AND created_at < ?""",
+        (utc_start, utc_end),
     ).fetchone()
 
+    # Daily reports use `report_date` (calendar date string) — match the
+    # local calendar date. Both routine-pulse and Gemini-pulse paths
+    # store report_date in the same local-day sense.
     last_report = conn.execute(
         "SELECT report_type, discord_sent_at FROM daily_reports WHERE report_date = ? ORDER BY created_at DESC LIMIT 1",
-        (today,),
+        (local_date,),
     ).fetchone()
 
     return {
