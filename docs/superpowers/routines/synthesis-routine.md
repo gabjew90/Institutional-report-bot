@@ -746,20 +746,33 @@ for theme, inputs in inputs_per_theme.items():
             fail_reason = (f"stance_counts mismatch: "
                            f"{adj.get('stance_counts')} vs {inputs['stance_counts']}")
 
-    # Rule 5: facts_agreed entries must have >= 2 banks_for. A "fact agreed"
-    # by a single bank is just "what one bank said" — not consensus, and
-    # already covered by per-PDF inputs. Drop single-bank entries in place
-    # rather than failing the whole theme; if every entry was single-bank,
-    # facts_agreed becomes [] and the rest of the adjudication still ships.
+    # Rule 5 (LOOSENED): facts_agreed entries are kept if EITHER (a) the
+    # fact itself has ≥2 banks_for, OR (b) the THEME has ≥2 banks of
+    # supportive stance (so the fact is corroborated by directional
+    # consensus even if the specific number/quote came from one bank).
+    #
+    # Why loosened: the original rule (drop facts cited by only one bank)
+    # silently nuked the most-covered theme on the 2026-05-08T23-33-34Z
+    # run. The 8-bank `ai hyperscaler capex` theme had Goldman's $755B
+    # number, UniCredit's $710-725B number, BofA's AI Big 10 stat — each
+    # cited by only one bank but ALL backing a theme with 6 supportive
+    # stances. Original Rule 5 dropped them all → theme had no remaining
+    # content → discarded. Loosened rule keeps them because the THEME's
+    # stance count provides the consensus signal even when each specific
+    # data point is single-bank-cited.
+    theme_supportive_count = (inputs.get('stance_counts') or {}).get('supportive', 0)
     if not fail_reason and adj.get('facts_agreed'):
         before = len(adj['facts_agreed'])
         adj['facts_agreed'] = [
             fa for fa in adj['facts_agreed']
-            if len(fa.get('banks_for') or []) >= 2
+            if (
+                len(fa.get('banks_for') or []) >= 2
+                or theme_supportive_count >= 2
+            )
         ]
         dropped = before - len(adj['facts_agreed'])
         if dropped:
-            print(f"  facts_agreed: dropped {dropped} single-bank entr{'y' if dropped == 1 else 'ies'} from {theme!r}")
+            print(f"  facts_agreed: dropped {dropped} single-bank entr{'y' if dropped == 1 else 'ies'} from {theme!r} (theme supportive count: {theme_supportive_count})")
 
     # Rule 6: falsifiable_predictions[*].deadline must be either an ISO
     # date prefix OR a short conditional substring. Catches the failure

@@ -86,8 +86,34 @@ BANNED_AI_TELLS = [
     # Generic opener tells that show up at the start of multiple bullets
     # in the same RECAP. Detected duplicate "Today's price action" usage
     # in the 2026-05-08 run — banning the bare opener forces variety.
+    # The 2026-05-08T23-33-34Z run also had "this week's price action"
+    # slip through because LINT only matched exact strings. Expanded
+    # below to a regex pattern via BANNED_AI_TELL_REGEXES.
     "Today's price action",
     "Today's tape",
+]
+
+# Regex-based AI-tell patterns — for cases where the failure mode is a
+# CATEGORY (e.g., any "<period>'s price action" opener) rather than a
+# specific phrase. Each entry is (regex_pattern, kind_label) — applied
+# alongside the literal-string BANNED_AI_TELLS in compose_lint_patterns.
+#
+# Use these when a single phrase can take many surface forms but is
+# fundamentally the same generic-newsletter opener.
+BANNED_AI_TELL_REGEXES: list[tuple[str, str]] = [
+    # "today's / this week's / friday's / monday's / this morning's" + price action
+    # Catches: "Today's price action is...", "This week's price action on Intel...",
+    # "Friday's price action shows...", "the price action made it explicit..."
+    (r"\b(?:today's|todays|this\s+week's|this\s+morning's|friday's|monday's|tuesday's|wednesday's|thursday's|the)\s+price\s+action\b", 'AI-tell'),
+    # "today's / this week's / etc." + tape
+    (r"\b(?:today's|todays|this\s+week's|this\s+morning's|friday's|monday's|tuesday's|wednesday's|thursday's|the)\s+tape\b", 'AI-tell'),
+    # Template counter-case openers — repeated across themes in the same
+    # pulse becomes obvious AI scaffolding. The 2026-05-08T23-33-34Z run
+    # used "the pushback", "the defense", "the opposite read", and
+    # "the bear case here" — one each across 4 themes. Each becomes a
+    # tell when the reader pattern-matches it as scaffolding.
+    (r"\bThe\s+(?:bear\s+case|bull\s+case|opposite\s+read|pushback|defense)\s+here\s*[:.]", 'AI-tell-template'),
+    (r"\bThe\s+(?:bear\s+case|bull\s+case|opposite\s+read|pushback|defense)\s*:", 'AI-tell-template'),
 ]
 
 BANNED_META_NARRATION = [
@@ -362,6 +388,10 @@ def compose_lint_patterns() -> list[tuple[str, str]]:
         patterns.append((r'\b' + re.escape(w), 'wrap-up'))
     for tell in BANNED_AI_TELLS:
         patterns.append((word_pat(tell), 'AI-tell'))
+    # Regex-based AI-tells (category matches, not literal strings).
+    # These catch families of openers that take many surface forms.
+    for regex, kind in BANNED_AI_TELL_REGEXES:
+        patterns.append((regex, kind))
     for m in BANNED_META_NARRATION:
         patterns.append((word_pat(m), 'meta-narration'))
 

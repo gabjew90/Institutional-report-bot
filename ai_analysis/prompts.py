@@ -783,6 +783,10 @@ Pulse markdown to scrub (preserve everything except the flagged sentences):
 {pulse_markdown}
 ```
 
+**CRITICAL — rewrite at the FLAGGED LINE.** Each lint entry has a `line` field. The sentence at that line is what you rewrite. Do not modify unrelated paragraphs at other line numbers. Do not "improve" prose elsewhere. The 2026-05-08T23-33-34Z run had SCRUB rewrite themes #2 and #4 while LEAVING the line-10-flagged "price action" issue intact — that's the opposite of the job. Your output diff vs input should show changes ONLY at flagged line numbers (or, when a category match like AI-tell-template fires multiple times, at every flagged occurrence).
+
+If you find yourself editing prose at a line number not in the lint report, STOP — you're rubber-stamping with cosmetic edits while leaving the actual flag intact.
+
 Return the rewritten markdown verbatim — no preamble, no commentary."""
 
 
@@ -1432,6 +1436,27 @@ You are auditing a draft Market Pulse against live market data, today's released
 Beyond voice: your editorial attention goes to cull weak themes, add missing dominant ones, rebuild RECAP with live data, sharpen position closes, enforce the data-dump test, and apply Pass A/A.5/B (described below).
 
 What you SHOULD preserve as you rewrite: the analyst's conviction language, specific bank attributions tied to specific calls or data points, the `$TICKER` cashtag format, and the body's analytical spine. What you should NOT do: flatten sentence structure, kill the analyst edge, or genericize the prose into safe-sounding mush. If you find yourself smoothing punchy language into corporate-careful language, stop — SCRUB will scrub voice; your changes should preserve the writer's voice while sharpening the editorial substance.
+
+**FACT INJECTION (binding — anti-hallucination):**
+
+You may introduce specific numeric facts, vessel/event names, or quoted figures ONLY if they appear in one of these inputs:
+- The DRAFT/STITCH markdown you received as `{draft_markdown}`
+- The live data context (`{market_snapshot}`, `{news_snapshot}`, `{earnings_calendar}`, `{economic_calendar}`)
+
+If a specific (named vessels, ETF flows like "$1B in a single day", named-source data points) is NOT in either, do NOT introduce it. Plausible-sounding specifics are exactly what LLMs fabricate. The 2026-05-08T23-33-34Z pulse had EDIT introduce "Ocean Koi tanker" and "Roundhill Memory ETF added $1B in a single day" — both might have been from Finnhub news, but artifacts couldn't verify them, and either way an undocumented EDIT fact-injection is a credibility risk. Trader sees one fabricated specific, stops trusting the product.
+
+If you want to ADD context and the fact isn't in your inputs, REPHRASE around what you DO have. "Iran seized an oil tanker in the Strait of Hormuz" (general) is fine if the corpus said that; "Iran seized the Ocean Koi tanker" (specific) requires the corpus or live news to have named the vessel.
+
+**FINANCIAL RATIO PRECISION (binding — anti-regression):**
+
+When applying plain-English glosses to jargon, do NOT change the ratio's definition. The 2026-05-08T23-33-34Z pulse had EDIT rewrite "net debt to EBITDA at 0.3x" → "net debt to one-year cash earnings, 0.3x" — a well-meaning gloss but EBITDA ≠ one-year cash earnings (EBITDA includes non-cash D&A, excludes capex / interest / tax; "cash earnings" is closer to free cash flow). This is a precision regression a sophisticated reader will catch.
+
+The right pattern: PARENTHETICAL gloss, not substitution.
+- ❌ DRAFT: `net debt to EBITDA at 0.3x` → EDIT: `net debt to one-year cash earnings, 0.3x` (definition changed — wrong)
+- ✅ DRAFT: `net debt to EBITDA at 0.3x` → EDIT: `net debt to EBITDA at 0.3x (operating profit before non-cash items — basically how much profit covers the debt)` (definition preserved, gloss added — right)
+- ✅ Even better when context allows: drop the ratio entirely and state the implication: `the AI build is debt-fundable — the cohort has 3x more profit than debt to absorb leverage if needed.`
+
+Other ratios that LLMs commonly mis-paraphrase: P/E, EV/EBITDA, ROIC, FCF yield, leverage ratio, coverage ratio. If you're tempted to rewrite a ratio in plainer terms, check whether your rewrite changes WHICH numerator or denominator is being used. If yes, gloss parenthetically instead.
 
 **MARKDOWN STRUCTURE PRESERVATION (binding — hard rule):**
 
