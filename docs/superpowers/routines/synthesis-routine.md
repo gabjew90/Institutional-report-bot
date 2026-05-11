@@ -1315,16 +1315,39 @@ def _sz(s: str) -> str:
         return '?'
     return f"{len(s)} chars / {s.count(chr(10)) + 1} lines"
 
+def _canon_number(tok: str) -> float | None:
+    """Normalize a numeric token to a canonical float magnitude so that
+    differently-formatted-but-equal values match: "$222 million" → 222e6,
+    "$222M" → 222e6, "$3 billion" → 3e9, "$3B" → 3e9, "$81,086" → 81086,
+    "4.4%" → 4.4, "50bps" → 50, "0.3x" → 0.3. Returns None if the token
+    doesn't parse (the caller falls back to exact-string matching).
+    """
+    import re as _re
+    t = tok.strip().lower().replace(',', '').replace('$', '').replace('+', '')
+    m = _re.match(r'^(-?\d+(?:\.\d+)?)\s*(million|billion|thousand|trillion|m|b|k|t|bps?|x|%)?\b', t)
+    if not m:
+        return None
+    val = float(m.group(1))
+    unit = m.group(2) or ''
+    mult = {
+        'thousand': 1e3, 'k': 1e3,
+        'million': 1e6, 'm': 1e6,
+        'billion': 1e9, 'b': 1e9,
+        'trillion': 1e12, 't': 1e12,
+    }.get(unit, 1.0)
+    return val * mult
+
 def _extract_numbers(text: str) -> set[str]:
     """Extract numeric tokens worth fact-checking. Filters to financial
-    units (dollar amounts, percentages, basis points, year-like 4-digit
-    numbers) since those are the high-leverage hallucination targets.
-    Skips short integers (1, 2, 3) and decimal-only floats which are
-    too generic to track.
+    units (dollar amounts incl. spelled-out "million/billion", percentages,
+    basis points, year-like 4-digit numbers, multiples) since those are the
+    high-leverage hallucination targets. Skips short integers (1, 2, 3) and
+    decimal-only floats which are too generic to track.
     """
     import re as _re
     patterns = [
-        r'\$[\d,]+\.?\d*[BMKbmk]?',          # $755B, $1.8B, $1,234
+        r'\$\s?[\d,]+\.?\d*\s*(?:million|billion|trillion|thousand)?\b',  # $222 million, $755B-style handled below too
+        r'\$[\d,]+\.?\d*[BMKTbmkt]?',        # $755B, $1.8B, $1,234
         r'[+-]?\d+\.?\d*\s*%',                # +5%, -0.3%, 4.4 %
         r'\d+\s*bp[s]?\b',                    # 50bps, 25 bp
         r'\b\d{4,}\b',                        # 4+ digit numbers (years, levels like 5800)
@@ -1336,12 +1359,18 @@ def _extract_numbers(text: str) -> set[str]:
     return out
 
 def _edit_introduced_numbers() -> tuple[list[str], int]:
-    """Return (new_numbers_in_final, count_explained_by_live_data).
+    """Return (truly_unverified_numbers, count_explained_by_live_data).
 
     Compares post-SCRUB final.md against the EDIT input (stitched.md) and
-    the live-data context (market/news/calendars). Any number in final
-    that isn't in EITHER is flagged as "EDIT-introduced, unverified" —
-    candidate hallucination, worth checking against the corpus.
+    the live-data context (market/news/calendars/corpus). A number in
+    final that isn't in either set is a candidate hallucination — BUT
+    before flagging it, we also check whether its CANONICAL MAGNITUDE
+    matches any allowed value within a rounding tolerance. This kills the
+    false positives the prior version produced: "$222 million" in the
+    news_snapshot vs "$222M" in the final, or "$81,086" in the
+    market_snapshot vs "$81,100" rounded in the RECAP. Only numbers that
+    don't match by EXACT STRING and don't match by CANONICAL MAGNITUDE
+    (within ±1%) get flagged.
     """
     stitched = _read_or('/tmp/stitched.md', '')
     final = _read_or('/tmp/final.md', '')
@@ -1349,7 +1378,6 @@ def _edit_introduced_numbers() -> tuple[list[str], int]:
         return [], 0
     stitched_nums = _extract_numbers(stitched)
     final_nums = _extract_numbers(final)
-    # Live-data sources EDIT is allowed to pull from
     live_blob = '\n'.join([
         ctx.get('market_snapshot') or '',
         ctx.get('news_snapshot') or '',
@@ -1358,10 +1386,30 @@ def _edit_introduced_numbers() -> tuple[list[str], int]:
         ctx.get('analyses_json') or '',  # corpus contents — analyst-cited numbers
     ])
     live_nums = _extract_numbers(live_blob)
+    allowed_strings = stitched_nums | live_nums
+    # Canonical magnitudes of every allowed value, for rounding-tolerant match.
+    allowed_canon = []
+    for s in allowed_strings:
+        c = _canon_number(s)
+        if c is not None:
+            allowed_canon.append(c)
+
     new_in_final = final_nums - stitched_nums
-    explained = new_in_final & live_nums
-    unverified = sorted(new_in_final - live_nums)
-    return unverified, len(explained)
+    explained = 0
+    truly_unverified: list[str] = []
+    for tok in sorted(new_in_final):
+        if tok in live_nums:
+            explained += 1
+            continue
+        c = _canon_number(tok)
+        if c is not None and any(
+            abs(c - a) <= max(abs(a), abs(c)) * 0.01  # ±1% tolerance
+            for a in allowed_canon
+        ):
+            explained += 1
+            continue
+        truly_unverified.append(tok)
+    return truly_unverified, explained
 
 # Adjudication: count dispatched and outcome
 n_dispatched = len(adj_file.get('themes', []) or []) + len(discarded)

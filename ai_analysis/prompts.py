@@ -1032,6 +1032,17 @@ DRAFT_USER = """TODAY IS {today}. CURRENT TIME IS {now} ET.
 - The 4th, 5th, and 6th INSIGHTS (variable count — produce **3 to 6 themes total** based on what the corpus actually supports today) come from: (a) themes with 5+ banks below the top 3, OR (b) single-topic dedicated catalysts where there's a hard event hook (M&A on an S&P 100 name, MAG7 earnings reaction, FDA decision on a specific ticker, regulatory deadline). These are the ONLY two paths into INSIGHTS for sub-5-bank themes.
 
 **SHIP 3 STRONG THEMES OVER 5 PADDED ONES.** If today's corpus has only 3 themes with real conviction (multi-bank consensus or hard catalyst), ship 3. Don't reach for a fourth that's a single-bank stretch just because "the structure says 4-6". A weak theme #4 dilutes the strong themes #1-3 and trains the reader to skim. On heavy-news days the count goes higher (6 if there are genuinely 6 strong threads); on quiet days it stays at 3.
+
+**RECORD DROPPED ADJUDICATED THEMES (binding).** The adjudication block you receive lists themes that passed cross-bank validation. If you ship fewer INSIGHTS themes than that block contains — because a validated theme was too thin (e.g., 2-bank skeptical-only) to anchor a standalone section, or you folded it into another theme's counter-case — you MUST account for it. Append, as the very last thing in your output (after `## 3. WHAT TO WATCH`, after everything), a section:
+
+```
+## _DRAFT NOTES (internal — strip before publish)
+
+- Folded adjudicated theme "stretched momentum unwind" (2 banks, both skeptical) into the AI-capex counter-case rather than a standalone section — 2-bank skeptical conviction too thin to lead a theme, but the narrow-rally idea is real and belongs in the bull/bear paragraph.
+- (one line per adjudicated theme you did NOT render as its own INSIGHTS section)
+```
+
+If you rendered every adjudicated theme as its own section, omit this section entirely. The routine strips `## _DRAFT NOTES` before the pulse ships — it exists so the QC reviewer can see your editorial decisions instead of a silent theme disappearing between adjudication and DRAFT. A theme that just evaporates with no note is a process bug; a theme you consciously folded with a recorded reason is editorial judgment.
 - A theme with 1-2 banks AND no hard event hook (e.g., a single bank's basket idea, a single desk's positioning view) gets CUT — does not appear in INSIGHTS no matter how analytically interesting it is. That's a single-source niche call.
 - If you find yourself omitting one of the top 3 themes, stop and reconsider — you are wrong unless that theme genuinely has zero actionable specifics. "Hormuz isn't actionable for US traders" is wrong (oil ETFs, energy sector, yield differentials all flow from it). "Rate repricing isn't actionable" is wrong ($TLT, $UUP, $SPY duration sensitivity all flow from it).
 
@@ -1556,6 +1567,12 @@ Bad (vague bullet): *"- Investors digested Warsh's hearing where his balance she
 Good (specific bullet): *"- **Warsh confirmation hearing (10 AM ET).** He signaled QE is back on the table if needed. Markets read him as net dovish — $TLT higher, dollar softer."*
 
 Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
+
+**PRESERVE THE DRAFT'S POSITIONING COLOR (binding).** The DRAFT's RECAP intro often carries the single best cross-bank positioning detail in the whole document — retail-flow extremes, dealer-gamma sign flips, hedge-fund net exposure rebuilding off a multi-month low, CTA / systematic positioning, vol-of-vol regime. When you rewrite RECAP with live data, you MUST weave that positioning color into the new lede or a driver bullet, NOT discard it. Replacing it wholesale with a price recap is net information loss on the one section meant to carry cross-bank color. If the draft intro said "HF net exposure is rebuilding off a one-year low and dealer hedging just flipped to dampen swings," that sentence (lightly edited for voice) belongs in your RECAP — it's exactly the kind of thing a trader can't get from a price feed.
+
+The 2026-05-11 pulse failed this: the draft RECAP intro had retail-flow extremes + dealer-gamma flip + HF-exposure-off-1-year-low, and EDIT rewrote it into a live-price recap that dropped all of it. Don't do that.
+
+**NEWS-BULLET CAP (binding).** Of the 3-5 driver bullets, at most **2-3** may be pure-news items (overnight M&A, regulatory/confirmation outcomes, geopolitical headlines, single-name fundings). The rest should be macro/data drivers (released economic prints, big positioning shifts, the dominant cross-asset move). Low-salience news that didn't move spot — a mid-size private funding round, a minor regulatory filing, a single-stock headline that didn't budge the index — does NOT earn a slot at the top of a tight morning read. If you have 4 news bullets and 1 macro bullet, you've inverted the priority: the macro story is the spine, news is the texture. Cut the weakest news bullet.
 
 **What qualifies as a driver bullet (strict):** these bullets are for **major breaking market drivers that have already moved prices**, not scheduled events or background mechanics. Nine categories qualify (each must ALSO clear the magnitude thresholds in the Real-mover rule below):
 

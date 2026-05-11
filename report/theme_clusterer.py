@@ -43,6 +43,14 @@ _EMBED_MODEL = "gemini-embedding-001"
 _LABEL_MODEL = "gemini-2.5-flash-lite"
 _DEFAULT_THRESHOLD = 0.78
 _LABEL_PARALLELISM = 8
+# Gemini's embed_content rejects oversized batches. Phase A (theme_stances
+# clustering) embeds only ~30-90 strings so it never hit this — but Phase B
+# (contextual_mentions discovery) can embed 700-900 strings, which silently
+# failed: the API rejected the batch, _embed_strings caught the exception,
+# returned {}, and Phase B produced empty promoted/near_miss with no signal.
+# Chunk into batches of this size and concatenate. 100 is conservative and
+# well under any plausible per-request cap.
+_EMBED_BATCH_SIZE = 100
 
 
 def _cosine(a: list[float], b: list[float]) -> float:
@@ -57,24 +65,43 @@ def _cosine(a: list[float], b: list[float]) -> float:
 
 
 def _embed_strings(client: genai.Client, strings: list[str]) -> dict[str, list[float]]:
-    """Batch-embed a list of unique strings. Returns {string: vector}.
+    """Batch-embed a list of unique strings, chunked to stay under the
+    embed_content per-request size cap. Returns {string: vector}.
 
-    On API failure returns empty dict. Caller falls back to identity
-    mapping (no merging) — preserves data at the cost of fragmentation.
+    A chunk that fails is skipped (logged) rather than failing the whole
+    call — partial coverage degrades clustering quality but doesn't kill
+    the stage. Returns {} only if EVERY chunk failed or input is empty.
     """
     if not strings:
         return {}
-    try:
-        result = client.models.embed_content(
-            model=_EMBED_MODEL,
-            contents=strings,
-        )
-        # SDK returns a list of ContentEmbedding objects with .values.
-        embeddings = [getattr(e, "values", None) or list(e) for e in result.embeddings]
-        return dict(zip(strings, embeddings))
-    except Exception as e:
-        log.warning(f"Embedding API failed: {e} — identity-clustering fallback")
+    out: dict[str, list[float]] = {}
+    n_chunks = (len(strings) + _EMBED_BATCH_SIZE - 1) // _EMBED_BATCH_SIZE
+    failed_chunks = 0
+    for i in range(0, len(strings), _EMBED_BATCH_SIZE):
+        chunk = strings[i : i + _EMBED_BATCH_SIZE]
+        try:
+            result = client.models.embed_content(
+                model=_EMBED_MODEL,
+                contents=chunk,
+            )
+            # SDK returns a list of ContentEmbedding objects with .values.
+            vectors = [getattr(e, "values", None) or list(e) for e in result.embeddings]
+            out.update(dict(zip(chunk, vectors)))
+        except Exception as e:
+            failed_chunks += 1
+            log.warning(
+                f"Embedding chunk {i // _EMBED_BATCH_SIZE + 1}/{n_chunks} "
+                f"({len(chunk)} strings) failed: {e}"
+            )
+    if failed_chunks == n_chunks:
+        log.warning(f"All {n_chunks} embedding chunks failed — identity-clustering fallback")
         return {}
+    if failed_chunks:
+        log.warning(
+            f"{failed_chunks}/{n_chunks} embedding chunks failed; "
+            f"clustering with partial coverage ({len(out)}/{len(strings)} embedded)"
+        )
+    return out
 
 
 def _greedy_agglomerative(
@@ -273,20 +300,37 @@ def discover_uncovered_clusters(
             "n_banks": len(banks),
         })
 
-    # Filter: covered (close to an existing theme) → near_miss with reason
-    # "covered". Thin (below min_banks) → near_miss with reason "thin".
-    # Otherwise promote.
+    # Filter clusters into:
+    #   promoted_raw — not covered AND ≥ min_banks distinct banks
+    #   near_miss    — the AUDIT-WORTHY rejects (NOT every singleton):
+    #     * "covered"     — semantically close to an existing Phase-A theme
+    #                       (shows what Phase B WOULD surface if it weren't
+    #                        redundant — a tuning signal for the threshold)
+    #     * "thin-Nbank"  — N distinct banks where 2 ≤ N < min_banks (genuinely
+    #                       close to the promotion bar; the kind of cluster
+    #                       that should make us consider lowering min_banks)
+    #   dropped silently — 1-bank singletons (too noisy to be a signal)
+    # near_miss is capped + sorted (bank count desc, pdf count desc) so the
+    # QC review gets the most-interesting rejects, not a 600-entry dump.
+    NEAR_MISS_CAP = 25
     promoted_raw: list[dict] = []
-    near_miss: list[dict] = []
+    near_miss_pool: list[dict] = []
     for d in decisions:
         if d["max_covered_sim"] >= threshold:
             d["reason"] = "covered"
-            near_miss.append(d)
+            near_miss_pool.append(d)
         elif d["n_banks"] < min_banks:
-            d["reason"] = "thin"
-            near_miss.append(d)
+            if d["n_banks"] >= 2:
+                d["reason"] = f"thin-{d['n_banks']}bank"
+                near_miss_pool.append(d)
+            # else: 1-bank singleton — dropped, not a signal
         else:
             promoted_raw.append(d)
+
+    near_miss_pool.sort(
+        key=lambda d: (-d["n_banks"], -len(d["pdf_ids"]), -d["max_covered_sim"])
+    )
+    near_miss = near_miss_pool[:NEAR_MISS_CAP]
 
     if not promoted_raw:
         return [], near_miss

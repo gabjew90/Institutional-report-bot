@@ -86,6 +86,20 @@ def stitch(md: str) -> tuple[str, list[str], list[str]]:
             new_md = re.sub(pattern, new_t, new_md)
             fixes.append(f'ticker-normalize: {old_t} -> {new_t} ({count}x)')
 
+    # Strip the internal "## _DRAFT NOTES" section if DRAFT appended one.
+    # DRAFT writes this section (after WHAT TO WATCH) to record which
+    # adjudicated themes it folded/dropped and why — it's for the QC
+    # reviewer (who reads the pre-stitch /tmp/draft.md) and must NOT
+    # ship in the published pulse. Matches the header through to EOF or
+    # the next `## ` header (there shouldn't be one after it, but be safe).
+    notes_match = re.search(
+        r'\n+##\s+_DRAFT NOTES\b.*?(?=\n##\s|\Z)',
+        new_md, re.DOTALL | re.IGNORECASE,
+    )
+    if notes_match:
+        new_md = new_md[: notes_match.start()].rstrip() + '\n'
+        fixes.append('stripped ## _DRAFT NOTES section (internal — kept in /tmp/draft.md for QC)')
+
     # Placeholder presence note — informational only, no file change.
     # Tracked separately from fixes so the summary line doesn't overstate.
     if '[LIVE PRICE RECAP]' in new_md:
