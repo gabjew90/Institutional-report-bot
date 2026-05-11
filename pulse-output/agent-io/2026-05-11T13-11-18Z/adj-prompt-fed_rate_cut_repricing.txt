@@ -1,0 +1,308 @@
+You are adjudicating ONE specific cross-bank theme from institutional research. You receive only that theme's pre-extracted evidence — per-PDF stance entries, tension framings, and atomic data points — and you return a single structured JSON object describing what the corpus actually concludes about this theme.
+
+You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields outside the schema below. Your output is read by a downstream prose step; your job is to commit the corpus's adjudicated view to a structured form so the prose step does not have to invent it.
+
+**ABSOLUTE RULES — violations cause the entire theme adjudication to be rejected by an automated lint check:**
+
+1. **Every evidence quote you emit MUST be a verbatim character-for-character copy of one of the `theme_stances.evidence` strings in your input.** Do not paraphrase. Do not shorten. Do not "clean up" the text. Copy the string. If no usable verbatim quote exists for a claim, leave the evidence_quotes list empty rather than invent one.
+2. **Every bank in `banks_for` / `banks_against` MUST appear as the `source` field of one of the input PDFs for this theme.** Do not invent attributions. Do not promote a bank that only appears in cross-bank references — only the issuing banks of the input PDFs count.
+3. **Every `falsifiable_predictions[*].claim` MUST appear as a substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** If a "prediction" can't be traced to either source, omit it.
+4. **`stance_counts` MUST exactly match the pre-aggregated counts provided in your input.** Do not recount, do not adjust. Copy the numbers given.
+5. **If any field's inputs are too thin to fill honestly, return an empty list `[]` for that field.** Empty over invented. A short, accurate adjudication beats a long, padded one.
+6. **`consensus_view` is one sentence, plain English, no jargon.** Translate technical terms (bps, NII, duration, gamma) inline if used. Reader is a self-directed options/crypto trader, not a bank analyst.
+
+**Output schema — return EXACTLY this JSON object, no markdown fences, no commentary:**
+
+```
+{
+  "theme": "<repeat the theme label exactly as it appears in the input>",
+  "selected": true,
+  "stance_counts": {"supportive": <copy>, "skeptical": <copy>, "neutral": <copy>},
+  "consensus_view": "<one sentence summarizing what the corpus concludes about this theme. Plain English. Names a direction or a clear unresolved tension.>",
+  "facts_agreed": [
+    {
+      "claim": "<one sentence stating something the banks agree on>",
+      "banks_for": ["<bank name>", ...],
+      "evidence_quotes": ["<verbatim string from theme_stances.evidence>", ...]
+    }
+  ],
+  "facts_contested": [
+    {
+      "claim": "<the specific contested claim — e.g., 'year-end Brent target' or 'cut timing'>",
+      "banks_for": ["<bank>", ...],
+      "for_evidence": "<verbatim string from theme_stances.evidence of a banks_for bank>",
+      "banks_against": ["<bank>", ...],
+      "against_evidence": "<verbatim string from theme_stances.evidence of a banks_against bank>"
+    }
+  ],
+  "falsifiable_predictions": [
+    {
+      "bank": "<bank name from inputs>",
+      "claim": "<prediction text — substring must appear in input tension_points.what_invalidates OR key_data_points fields>",
+      "deadline": "<ISO date OR a non-date conditional substring of an input field, e.g. 'post-ceasefire'>"
+    }
+  ]
+}
+```
+
+**Empty fields are normal and acceptable.** Many themes have agreed facts but no contested ones, or contested ones but no falsifiable predictions. Do not pad. Return [] and move on.
+
+**Do not number, do not bullet, do not bold.** This is structured data, not prose.
+
+Return ONLY the JSON object.
+
+Theme: fed rate cut repricing
+
+Pre-aggregated stance counts (copy these exactly into the output):
+{"supportive": 2, "skeptical": 1, "neutral": 0}
+
+Per-PDF evidence assigned to this theme:
+{
+ "theme_stances": [
+  {
+   "source": "Invesco",
+   "theme": "fed rate-cut repricing",
+   "stance": "supportive",
+   "conviction": "high",
+   "key_argument": "Sticky core inflation and energy shocks necessitate a 'wait and see' policy stance.",
+   "primary_instruments": [],
+   "vs_consensus": "with_consensus",
+   "evidence": "We expect no Fed cuts in 2026."
+  },
+  {
+   "source": "Natixis",
+   "theme": "fed rate-cut repricing",
+   "stance": "supportive",
+   "conviction": "medium",
+   "key_argument": "Labor market data shows no urgency to cut rates, suggesting the FOMC should remove its easing bias.",
+   "primary_instruments": [],
+   "vs_consensus": "",
+   "evidence": "there is still no urgency to reduce rates to come to the aid"
+  },
+  {
+   "source": "SEB",
+   "theme": "fed rate-cut repricing",
+   "stance": "skeptical",
+   "conviction": "medium",
+   "key_argument": "Incoming data makes it difficult for the Fed to justify easing policy in line with political wishes.",
+   "primary_instruments": [],
+   "vs_consensus": "",
+   "evidence": "incoming Chair Kevin Warsh will have a hard time convincing his colleagues to ease policy"
+  }
+ ],
+ "tension_points": [],
+ "key_data_points": [
+  {
+   "source_bank": "Invesco",
+   "figure": "3%",
+   "metric": "Core PCE inflation forecast",
+   "context": "Expected to remain sticky for much of 2026."
+  },
+  {
+   "source_bank": "Windward",
+   "figure": "5",
+   "metric": "Daily tanker transits through Strait of Hormuz",
+   "context": "Down from 120-140 normal levels."
+  },
+  {
+   "source_bank": "Reuters",
+   "figure": "3.0 million bpd",
+   "metric": "Refinery capacity offline",
+   "context": "Significant portion of critical export infrastructure."
+  },
+  {
+   "source_bank": "Bloomberg",
+   "figure": "78%",
+   "metric": "India PVC price increase",
+   "context": "March 2026 surge due to feedstock disruptions."
+  },
+  {
+   "source_bank": "Bloomberg",
+   "figure": "800,000 tons",
+   "metric": "Chinese ethane imports from US",
+   "context": "Record high in April 2026."
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "$11 billion",
+   "metric": "US arms sale package to Taiwan",
+   "context": "Announced December 2025; implementation currently delayed/uncertain."
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "90%",
+   "metric": "Global advanced semiconductor manufacturing share",
+   "context": "Concentrated in Taiwan; critical for AI and defense."
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "115k",
+   "metric": "April Nonfarm Payrolls",
+   "context": "Beat estimates of 65k; first back-to-back positive readings of the year."
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "48k",
+   "metric": "3-month moving average of payrolls",
+   "context": "Down from 63k previously."
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "4.34%",
+   "metric": "Unemployment rate",
+   "context": "Up from 4.26%."
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "2.9%",
+   "metric": "Q1 Nonfarm labor productivity growth",
+   "context": "Remains strong."
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "115k",
+   "metric": "April US payroll gains",
+   "context": "vs 65k consensus; first back-to-back monthly gain this year"
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "4.34%",
+   "metric": "April US unemployment rate",
+   "context": "up from 4.26% in March"
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "53.6",
+   "metric": "April ISM Services headline",
+   "context": "vs 54.0 in March; 0.1 below consensus"
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "6.50%",
+   "metric": "Banxico terminal policy rate",
+   "context": "Cut by 25bps; signaling end of cutting cycle"
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "1.7%",
+   "metric": "2026 Chile GDP growth forecast",
+   "context": "Revised down from 2.5% in March"
+  },
+  {
+   "source_bank": "Natixis",
+   "figure": "4.5%",
+   "metric": "2026 Chile inflation forecast",
+   "context": "Up from 4.0% target band"
+  },
+  {
+   "source_bank": "IEA",
+   "figure": "14 million barrels per day",
+   "metric": "Global oil supply disruption",
+   "context": "Quantified disruption estimate for the Strait of Hormuz conflict."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "$100/bl",
+   "metric": "Brent front-month price",
+   "context": "Current price level following volatility between $96 and $104."
+  },
+  {
+   "source_bank": "Baker Hughes",
+   "figure": "408",
+   "metric": "US oil rig count",
+   "context": "Low point from which rigs edged up last week."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "65k",
+   "metric": "US April payrolls expectation",
+   "context": "Market expectation for April jobs report."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "4.3%",
+   "metric": "US unemployment rate expectation",
+   "context": "Expected to remain stable."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "4.25%",
+   "metric": "Norges Bank policy rate",
+   "context": "25bps hike delivered."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "$102",
+   "metric": "Brent oil price",
+   "context": "Trading level as of May 8, 2026."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "115k",
+   "metric": "April employment growth",
+   "context": "Above consensus 65k; previous 185k."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "-16k",
+   "metric": "Net two-month payroll revisions",
+   "context": "Small compared to previous year."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "4.3%",
+   "metric": "Unemployment rate",
+   "context": "Stable; within FOMC median estimate range of 3.8-4.5%."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "34.3",
+   "metric": "Average work week",
+   "context": "Increased by 0.1."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "61.8%",
+   "metric": "Participation rate",
+   "context": "Declined from 61.9% in March."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "83.8%",
+   "metric": "Prime-age participation rate",
+   "context": "Unchanged; historically high."
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "3.2%",
+   "metric": "Norges Bank CPI-ATE estimate",
+   "context": "Forecast for April CPI-ATE"
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "NOK 584bn",
+   "metric": "2026 petroleum revenue spending",
+   "context": "Increased by NOK 4.6bn from original budget"
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "NOK 768bn",
+   "metric": "GPFG excess size",
+   "context": "Amount larger than estimated at end-2025"
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "0.1pp",
+   "metric": "CPI impact",
+   "context": "Expected impact from lagged normalization of rents in April"
+  },
+  {
+   "source_bank": "SEB",
+   "figure": "15%",
+   "metric": "Fuel price tax reduction",
+   "context": "Temporary reduction expected between April and August"
+  }
+ ]
+}
+
+Adjudicate this theme per the rules in your system prompt. Return the JSON object only.
