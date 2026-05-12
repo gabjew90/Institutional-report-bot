@@ -68,40 +68,54 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
         for m in re.finditer(pattern, scan_text, re.IGNORECASE):
             add(line_of(m, scan_text), kind, m.group())
 
-    # Soft structural check: top-3 themes by bank count should appear in
-    # INSIGHTS — but the keyword-overlap heuristic is crude (forces theme
-    # tags into headers that read better without them). We scan the FULL
-    # INSIGHTS section text (not just headers) and only flag if NO
-    # significant theme word shows up anywhere — a much weaker signal that
-    # the theme was actually skipped, vs the previous "header keywords
-    # didn't match" which over-fired on legitimate non-keyword headers
-    # like "The bond market is calling the Fed's bluff" being flagged as
-    # missing 'rate cut repricing'.
+    # Coverage checks against the theme_map (passed in ctx).
     if ctx is not None:
         theme_map = ctx.get('theme_map') or {}
         if theme_map:
-            ranked = sorted(
-                theme_map.items(),
-                key=lambda kv: -kv[1].get('banks', 0),
-            )
-            top3 = [t for t, _ in ranked[:3]]
-            # Pull out the entire INSIGHTS section body (everything between
-            # the INSIGHTS header and the next H2 / WHAT TO WATCH)
+            # Split into primary (non-discovered) and discovered themes —
+            # they get different coverage tests because discovered topics
+            # belong in WHAT TO WATCH, not INSIGHTS.
+            primary = {t: i for t, i in theme_map.items() if not i.get('discovered')}
+            discovered = {t: i for t, i in theme_map.items() if i.get('discovered')}
+
+            md_lower = md_text.lower()
+            # Whole-pulse text for the discovered-theme check (it can live
+            # in INSIGHTS body OR WHAT TO WATCH).
             insights_match = re.search(
                 r'##\s+(?:\d+\.\s+)?INSIGHTS.*?(?=^##\s|\Z)',
                 md_text, re.MULTILINE | re.DOTALL | re.IGNORECASE,
             )
             insights_text = (insights_match.group(0) if insights_match else md_text).lower()
-            for theme_key in top3:
+
+            def _has_signal(theme_key: str, haystack: str) -> bool:
                 sig_words = [w for w in theme_key.split() if len(w) > 3]
                 if not sig_words:
-                    continue
-                # Soft test: any single significant word from the theme
-                # appears anywhere in the INSIGHTS section. Headers no
-                # longer required to literally contain the theme tag.
-                if not any(w in insights_text for w in sig_words):
+                    return True  # too-generic key — don't flag
+                return any(w in haystack for w in sig_words)
+
+            # (1) Top-3 PRIMARY themes by bank count should appear in INSIGHTS.
+            primary_ranked = sorted(
+                primary.items(), key=lambda kv: -kv[1].get('banks', 0)
+            )
+            for theme_key, _ in primary_ranked[:3]:
+                if not _has_signal(theme_key, insights_text):
                     add(0, 'top-3-theme-missing',
-                        f"top-3 theme '{theme_key}' has no significant word in INSIGHTS section")
+                        f"top-3 primary theme '{theme_key}' has no significant word in INSIGHTS section")
+
+            # (2) Heavily-discussed DISCOVERED topics (>=6 banks) must appear
+            # SOMEWHERE in the pulse — INSIGHTS body OR WHAT TO WATCH. A
+            # discovered topic with broad bank mention that's nowhere in the
+            # final is a coverage failure (the 2026-05-12 Trump-Xi miss:
+            # 12 banks, promoted by Phase B, dropped entirely). SCRUB is
+            # authorized to resolve this kind by adding a WHAT TO WATCH
+            # bullet — so it's a HARD issue, not a soft warning, but the
+            # `kind` tells SCRUB it's a WHAT-TO-WATCH fix, not an INSIGHTS one.
+            for theme_key, info in discovered.items():
+                if info.get('banks', 0) >= 6 and not _has_signal(theme_key, md_lower):
+                    add(0, 'discovered-theme-missing',
+                        f"discovered topic '{theme_key}' ({info.get('banks', 0)} banks) "
+                        f"appears nowhere in the pulse — add a WHAT TO WATCH bullet "
+                        f"(no consensus stance — banks discussed without arguing direction)")
 
     return issues
 

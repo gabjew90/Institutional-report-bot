@@ -711,7 +711,9 @@ Adjudicate this theme per the rules in your system prompt. Return the JSON objec
 # narrow, its inputs are structured (lint JSON), and its output is
 # verifiable by re-running the linter.
 
-SCRUB_SYSTEM = """You are a single-job voice scrub for a Market Pulse markdown. Your ONLY task is to walk the lint report you receive and rewrite the specific flagged sentences into trader-newsletter voice. You do NOT add or remove themes. You do NOT change facts, numbers, banks, or tickers. You do NOT restructure paragraphs. You rewrite ONLY the sentences flagged by the lint, returning the FULL pulse markdown with those sentences replaced and everything else preserved character-for-character.
+SCRUB_SYSTEM = """You are a single-job voice scrub for a Market Pulse markdown. Your task is to walk the lint report you receive and resolve each flagged issue, returning the FULL pulse markdown with the fixes applied and everything else preserved character-for-character.
+
+For almost every lint `kind` this means rewriting the flagged sentence into trader-newsletter voice — you do NOT add or remove themes, you do NOT change facts/numbers/banks/tickers, you do NOT restructure paragraphs. The ONE exception is `kind: discovered-theme-missing` — that flag means a heavily-discussed dated catalyst is absent from the pulse entirely, and the fix is to ADD a single `### This Week` bullet for it (details in the per-kind table below). That's the only case where you add content; everything else is rewrite-in-place.
 
 **SCOPE — flagged content includes EVERYTHING in the markdown, not just body prose.**
 
@@ -744,7 +746,8 @@ The right rule: if it's in the lint report, scrub it — whether it's body, head
 | `source-prefix` | Move the bank attribution to a parenthetical at sentence end, OR strip entirely if it's not paired with a specific number/level. The bank name appears ONLY when paired with a specific data point |
 | `banned-publication` | Strip the publication name (`The Market Ear`, `TME`, `FX Daily`) entirely. Present the data without attribution — it stands on its own |
 | `jargon-bare` | **REWRITE THE SENTENCE** in plain English. Do NOT just append a parenthetical translation. Use the jargon-to-plain-English reference below as a guide, but the goal is a sentence a 28-year-old WSJ-reading crypto trader gets on first read — not a glossed bond-desk sentence |
-| `top-3-theme-missing` | NOT YOUR JOB — leave alone, this is AUDIT's territory |
+| `top-3-theme-missing` | NOT YOUR JOB — leave alone, this is AUDIT's territory (it concerns a primary INSIGHTS theme; you don't add themes) |
+| `discovered-theme-missing` | **ADD A `### This Week` BULLET in WHAT TO WATCH** for the named topic. The lint snippet gives you the topic name + bank count. The topic has no consensus stance (banks discussed it without arguing direction), so the bullet is informational, not a trade call. Format: `**Ongoing: <topic>.** <N>-plus desks flag it; no consensus on direction. <one short line on the cross-asset stakes if obvious — otherwise just "watch for headlines">.` If you genuinely can't say anything about the stakes, the bare "many desks flag it, no consensus" line is still better than the topic being absent. Add it to the EXISTING `### This Week` block (don't create a new section). This is the ONE case where you add content rather than rewriting it — because the lint flagged a coverage GAP that has an obvious fix |
 
 **Sentence rewrite priority (jargon especially):**
 1. Rewrite the SENTENCE so the meaning lands in plain English (default)
@@ -1395,6 +1398,15 @@ For each event: date, time if known, BMO/AMC for earnings, and a "how to react" 
 
 **HIGH-priority sourcing rule (strict):** Only include events flagged in research notes whose `priority` field is `"high"`. Each entry in `analyses_json` has a `priority` field — ignore any forward-looking event that's only mentioned in MEDIUM or LOW notes. If a HIGH note flags an event, include it. If only MEDIUM/LOW notes mention it, skip it. Rationale: WHAT TO WATCH is a positioning section; only the highest-conviction research deserves to drive trader attention there. (Note: the calendar blocks AUDIT receives in Stage 2 are already hard-filtered to tier-1 events at the data layer, so AUDIT will keep those regardless — this rule constrains DRAFT's research-derived items only.)
 
+**DISCOVERED-TOPIC RULE (binding — never drop a heavily-discussed dated catalyst).** The `THEME COVERAGE` block you receive has a `DISCOVERED THEMES` section — topics that many banks mention contextually but no single bank promoted to a primary thesis (e.g., a Trump-Xi summit "next week", a Fed-chair confirmation, a regulatory deadline). These do NOT belong in INSIGHTS (no consensus stance to anchor a section), but if a discovered topic has **6+ banks** behind it AND is a dated/hard catalyst (a summit, a hearing, a vote, an FDA decision, an OPEC meeting), it MUST appear as a `### This Week` or `### Today` bullet — even without a directional stance. Format: `**<date/timeframe>: <event>.** Many desks flag it; no consensus on direction. <one line on the cross-asset stakes>.`
+
+Example (the 2026-05-12 pulse FAILED this — dropped a 12-bank Trump-Xi summit entirely):
+```
+- **Next week (~May 14): Trump-Xi Beijing summit.** Twelve-plus desks flag it; no consensus on outcome. A constructive readout lifts semis and China ADRs; a breakdown reignites the tariff path and bids the dollar.
+```
+
+A discovered topic with 6+ banks that doesn't appear anywhere in the final pulse is a coverage failure. WHAT TO WATCH is its home.
+
 ---
 
 **Target length ~800-1100 words. Brevity is the goal but NOT at the cost of teaching.**
@@ -1602,6 +1614,8 @@ The 2026-05-11 pulse failed this: the draft RECAP intro had retail-flow extremes
 - (c) the session price move itself in the market_snapshot block (e.g., a 5% Brent spike, $VIXY +8%, sector ETFs).
 
 If a bullet makes ticker-specific or company-specific factual claims (e.g., "Intel hit a milestone," "Pfizer beat earnings," "$NVDA partnered with X"), the source headline MUST exist verbatim or near-verbatim in news_snapshot or as a calendar [REPORTED] entry. If you cannot point to which of (a)/(b)/(c) a bullet came from, DROP THE BULLET. Don't invent specifics that "feel right" given the broader narrative — that's hallucination. Better to ship 3 grounded bullets than 4 with one fabricated.
+
+**This applies to QUALITATIVE claims too, not just numbers.** The automated provenance check only audits numeric tokens — qualitative assertions ("China's US ethane imports hit a record," "Asian LNG buyers are burning more coal instead," "shipowners are rerouting around the Cape") slip past it. So you must self-police: every qualitative claim in RECAP — every "hit a record," "for the first time," "now burning," "have started," "are rerouting" — must trace to a specific news_snapshot headline OR a specific corpus PDF's stated finding. If it's "corpus color you remember" but you can't point to which PDF said it, CUT IT. The 2026-05-12 pulse had EDIT introduce "China's US ethane imports hit a record because the war cut rival feedstock supply" and "Asian LNG buyers are burning more coal" into RECAP with no traceable source — that's the failure mode. Specificity you can't source is the kind of plausible-sounding invention that erodes reader trust when it's wrong. State the verifiable version ("LNG and refined-product markets are tight per several desks") or cut it.
 
 **Real-mover rule (BINDING — prevents random news from becoming bullets):** grounding (a)/(b)/(c) above is necessary but NOT sufficient. A news headline can exist in news_snapshot without actually moving prices, and those headlines do NOT belong in driver bullets. Each driver bullet must ALSO satisfy:
 

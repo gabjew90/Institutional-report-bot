@@ -41,7 +41,22 @@ log = logging.getLogger(__name__)
 
 _EMBED_MODEL = "gemini-embedding-001"
 _LABEL_MODEL = "gemini-2.5-flash-lite"
-_DEFAULT_THRESHOLD = 0.78
+# Cosine similarity above which two theme strings merge into one cluster.
+# Lowered 0.78 → 0.75 after the 2026-05-12 pulse: Phase A fragmented a
+# 17-bank "Strait of Hormuz" topic into ~8 one-bank micro-themes
+# ("hormuz oil supply risk", "refined product crunch", "middle east
+# supply shock", "us iran conflict", ...) because each PDF's theme_stance
+# label + key_argument embedded just below 0.78 from the others — even
+# though they're the same trade. Phase B re-merged it correctly
+# (near-miss cluster, n_banks=17, sim 0.89) but the synthesizer anchors
+# on the fragmented Phase-A counts, so the theme-coverage bank-ranking
+# was noisy for any topic with phrasing diversity. 0.75 is one notch
+# down; re-check the next 3 runs' QC to confirm Iran/oil/Trump-Xi-class
+# topics consolidate to a single high-count theme without over-merging
+# genuinely-distinct themes. If it over-merges, bump back toward 0.78;
+# if it still fragments, the real fix is broadening the per-PDF
+# theme_stance labels upstream in the analyzer prompt.
+_DEFAULT_THRESHOLD = 0.75
 _LABEL_PARALLELISM = 8
 # Gemini's embed_content rejects oversized batches. Phase A (theme_stances
 # clustering) embeds only ~30-90 strings so it never hit this — but Phase B
