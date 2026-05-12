@@ -870,6 +870,16 @@ FINAL POSTED MARKDOWN (post-SCRUB if SCRUB ran):
 {final_md}
 ```
 
+PREVIOUS SCHEDULED PULSE — final markdown ({prev_pulse_ts}):
+```markdown
+{prev_pulse_md}
+```
+
+PREVIOUS SCHEDULED PULSE — its QC review:
+```markdown
+{prev_qc_review}
+```
+
 PRODUCE THE QC REVIEW IN EXACTLY THIS FORMAT (markdown):
 
 # QC Review — {timestamp}
@@ -952,6 +962,18 @@ What makes content miss-able when absent:
 **Verdict:** ONE sentence answering: would a trader actively miss this pulse if it didn't come out tomorrow — open Discord asking where it is — or would they not notice for days? Then justify in 2-3 sentences naming the SPECIFIC reason. Be honest. The right answer is often "not yet" — most days the gap between "made it past lint" and "would be missed if absent" is conviction in the calls, distinctive framings the reader recognizes, and falsifiable specifics that build a track record over time.
 
 Generic praise here ("a quality product") fails this section. So does "yes, would be missed" without naming what specifically would be missed. The useful version is "yes / no, here's the specific call or framing this pulse made that would be missed (or that's currently missing and would have to be added for the pulse to earn the slot)."
+
+## Day-over-day comparison
+
+You have the PREVIOUS scheduled pulse's final markdown AND its QC review above. Compare this pulse against that one and assess **whether it improved**. This is the loop-closing section — it's how we know the prompt changes are actually landing, not just being made.
+
+- **Did yesterday's flagged issues get fixed?** Walk the previous QC review's "Suggested changes for next run" and "Signals worth tracking" lists. For each one: did this pulse fix it, partially fix it, or repeat it? Be specific — "yesterday's QC flagged that EDIT dropped the RECAP positioning color; this pulse's RECAP DOES carry retail-flow + dealer-gamma color → fixed" or "yesterday flagged the identical-template-across-themes problem; this pulse still has all three themes in the same shape → not fixed, recurring."
+- **Did any issue regress?** Something that was fine yesterday and broke today.
+- **Theme continuity.** Which themes carried over from yesterday? For the carried-over ones (AI capex is the obvious recurring one), did today's version ADVANCE the story — new data point, new bank's angle, new sub-thread — or just restate yesterday's framing? A theme that leads two days running and reads the same both days is a freshness problem; a theme that leads two days running but with a genuinely new angle each day is fine.
+- **Writing trend.** Same density? Tighter? Looser? More distinctive voice or more generic? More actionable closes or fewer? Did the verdict on the miss-it test move toward "yes" or away from it vs yesterday?
+- **Net call.** ONE sentence: is this pulse BETTER than yesterday's, ABOUT THE SAME, or WORSE — and the single biggest reason. If "about the same," that's a signal too — it means the changes between runs didn't move the needle on what matters.
+
+If there's no previous scheduled pulse (first run, or only test fires preceded this one), say so in one line and skip the rest of this section.
 
 ## Suggested changes for next run
 Specific, actionable. Each entry should reference a file + the change. Format:

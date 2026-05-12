@@ -1472,6 +1472,69 @@ if unverified_numbers:
 ts = open('/tmp/pulse_ts.txt').read().strip() if os.path.exists('/tmp/pulse_ts.txt') \
      else datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%SZ')
 
+# --- Day-over-day comparison inputs ---------------------------------------
+# Fetch the PREVIOUS scheduled pulse's final markdown + its QC review so the
+# QC sub-agent can assess whether the recurring issues got fixed and whether
+# the writing is trending better. "Previous scheduled pulse" = the most
+# recent pulse-output/archive/<ts>.md that (a) isn't today's pulse, (b) isn't
+# a test fire (no `target_channels:` in its frontmatter). Best-effort: if
+# anything fails, prev_pulse_md / prev_qc_review default to a "(none)"
+# placeholder and the QC review just skips the comparison section.
+GH_TOKEN = _read_token()
+REPO = 'gabjew90/Institutional-report-bot'
+BRANCH = 'pulse-data'
+
+def _gh_get_json(path: str):
+    url = f'https://api.github.com/repos/{REPO}/contents/{path}?ref={BRANCH}'
+    req = urllib.request.Request(url, headers={'Authorization': f'token {GH_TOKEN}', 'Accept': 'application/vnd.github+json'})
+    with urllib.request.urlopen(req, timeout=12) as resp:
+        return json.load(resp)
+
+def _gh_get_text(path: str) -> str:
+    import base64 as _b64
+    d = _gh_get_json(path)
+    return _b64.b64decode(d.get('content', '')).decode('utf-8', errors='replace')
+
+prev_pulse_md = '(none — no prior scheduled pulse found)'
+prev_qc_review = '(none — no prior QC review found)'
+prev_ts = None
+try:
+    listing = _gh_get_json('pulse-output/archive')
+    archive_files = sorted(
+        (f['name'] for f in listing if isinstance(f, dict) and f.get('name', '').endswith('.md')),
+        reverse=True,
+    )
+    for fname in archive_files:
+        base = fname[:-3]
+        if base == ts:
+            continue  # that's today's pulse (if the bridge already archived it)
+        # Fetch + check frontmatter for target_channels (test-fire marker).
+        try:
+            content = _gh_get_text(f'pulse-output/archive/{fname}')
+        except Exception:
+            continue
+        # crude frontmatter scan: target_channels line means it's a test fire
+        head = content[:600]
+        if 'target_channels:' in head:
+            continue  # skip test fires
+        prev_pulse_md = content
+        prev_ts = base
+        break
+    if prev_ts:
+        try:
+            prev_qc_review = _gh_get_text(f'pulse-output/qc-reviews/{prev_ts}.md')
+        except Exception:
+            prev_qc_review = '(prior pulse found but its QC review is missing)'
+except Exception as e:
+    print(f'WARNING: day-over-day fetch failed: {e}')
+
+# Cap the prior-pulse inputs so the QC prompt stays manageable.
+if len(prev_pulse_md) > 12000:
+    prev_pulse_md = prev_pulse_md[:12000] + '\n\n[... truncated for prompt size ...]'
+if len(prev_qc_review) > 9000:
+    prev_qc_review = prev_qc_review[:9000] + '\n\n[... truncated for prompt size ...]'
+# -------------------------------------------------------------------------
+
 qc_inputs = {
     'timestamp': ts,
     'theme_coverage': ctx.get('theme_coverage', '(missing)'),
@@ -1485,6 +1548,9 @@ qc_inputs = {
     'final_md': final_md,
     'pre_scrub_md': pre_scrub_md,
     'handoffs_summary': handoffs_summary,
+    'prev_pulse_ts': prev_ts or '(none)',
+    'prev_pulse_md': prev_pulse_md,
+    'prev_qc_review': prev_qc_review,
 }
 with open('/tmp/qc_inputs.json', 'w') as f:
     json.dump(qc_inputs, f, indent=1)
@@ -1497,6 +1563,7 @@ print(f"  adjudication: {qc_inputs['n_validated']} validated, {qc_inputs['n_disc
 print(f"  SCRUB ran: {scrub_ran}")
 print(f"  EDIT prompt saved: {os.path.exists('/tmp/agent_io/edit-prompt.txt')}")
 print(f"  SCRUB prompt saved: {os.path.exists('/tmp/agent_io/scrub-prompt.txt')}")
+print(f"  prev scheduled pulse for comparison: {prev_ts or '(none found)'}")
 PYEOF
 ```
 
@@ -1509,8 +1576,9 @@ Build the QC prompt by combining `QC_SYSTEM` + `QC_USER` (with substitutions fro
 - `{discovery_audit_json}`
 - `{n_validated}`, `{n_discarded}`, `{discard_reasons}`
 - `{lint_summary_json}`
-- `{handoffs_summary}` — sub-agent dispatch + I/O sizes (NEW)
-- `{draft_md}`, `{stitched_md}`, `{pre_scrub_md}`, `{final_md}` — pre_scrub_md is NEW; equals final if SCRUB skipped
+- `{handoffs_summary}` — sub-agent dispatch + I/O sizes
+- `{draft_md}`, `{stitched_md}`, `{pre_scrub_md}`, `{final_md}` — pre_scrub_md equals final if SCRUB skipped
+- `{prev_pulse_ts}`, `{prev_pulse_md}`, `{prev_qc_review}` — the previous scheduled pulse's final markdown + its QC review, for the day-over-day comparison section. Both default to a "(none)" placeholder string when there's no prior scheduled pulse (first run, or only test fires preceding) — the QC review then just notes the comparison is N/A.
 
 Dispatch ONE `general-purpose` Agent with the assembled prompt. The sub-agent runs in fresh context — no DRAFT/EDIT/SCRUB history, just the artifacts the prompt provides. It returns the QC review markdown (no preamble, no JSON wrapper).
 
