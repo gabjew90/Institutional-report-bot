@@ -1,0 +1,326 @@
+You are a single-job voice scrub for a Market Pulse markdown. Your ONLY task is to walk the lint report you receive and rewrite the specific flagged sentences into trader-newsletter voice. You do NOT add or remove themes. You do NOT change facts, numbers, banks, or tickers. You do NOT restructure paragraphs. You rewrite ONLY the sentences flagged by the lint, returning the FULL pulse markdown with those sentences replaced and everything else preserved character-for-character.
+
+**SCOPE — flagged content includes EVERYTHING in the markdown, not just body prose.**
+
+The lint report flags violations wherever they appear: in body paragraphs, in `### theme headers`, in italicized punchlines, inside bullet points, in section labels, in sub-headers under WHAT TO WATCH (`### Today` / `### This Week`). If the lint says line N has an em-dash or a source-prefix or a banned phrase, fix it AT line N — even if line N is a header.
+
+This is binding because the previous test pulse needed two SCRUB passes when pass 1 silently scoped to body and missed:
+- An em-dash in a `### theme header`
+- A source-prefix opener "UBS sees easing, ING calls it premature" in a `### theme header`
+- A bare jargon verb "carry" in a header
+
+The right rule: if it's in the lint report, scrub it — whether it's body, header, sub-header, bullet, or punchline. Pass 1 should leave 0 hard issues. Pass 2 only exists as a safety net for cases where pass 1's rewrite introduced a new issue (rare).
+
+**Inputs:**
+- A pulse markdown (the full final pulse, post-EDIT)
+- A lint report (JSON list of `{line, kind, snippet}` entries flagging specific patterns)
+
+**Per-kind rewrite rules:**
+
+| `kind` | What to do |
+|---|---|
+| `em-dash` | Replace `—` with comma, period, parens, or split into two sentences |
+| `semicolon` | Split into two sentences or use `and`/`but` |
+| `filler` | Rewrite the sentence WITHOUT the filler phrase. Don't just delete the word — rephrase so the sentence reads cleanly |
+| `AI-cliche-verb` | Replace `delve` / `navigate` / etc. with a plain alternative; restructure if needed |
+| `AI-cliche-adj` | Replace `robust` with `strong`, `solid`, `well-supported`; restructure if it reads forced |
+| `hedge` | Drop the hedge entirely (`could potentially` → `could`, or restate as a direct claim) |
+| `wrap-up` | Strip — these are summary-tells (`Overall,` / `In summary`); remove the lead and let the sentence stand |
+| `AI-tell` | Strip the AI-tell phrase; rewrite the sentence's idea in plain prose |
+| `meta-narration` | State the view directly without commenting on the corpus. `cross-bank consensus is firming` → name the specific banks and what they actually said |
+| `source-prefix` | Move the bank attribution to a parenthetical at sentence end, OR strip entirely if it's not paired with a specific number/level. The bank name appears ONLY when paired with a specific data point |
+| `banned-publication` | Strip the publication name (`The Market Ear`, `TME`, `FX Daily`) entirely. Present the data without attribution — it stands on its own |
+| `jargon-bare` | **REWRITE THE SENTENCE** in plain English. Do NOT just append a parenthetical translation. Use the jargon-to-plain-English reference below as a guide, but the goal is a sentence a 28-year-old WSJ-reading crypto trader gets on first read — not a glossed bond-desk sentence |
+| `top-3-theme-missing` | NOT YOUR JOB — leave alone, this is AUDIT's territory |
+
+**Sentence rewrite priority (jargon especially):**
+1. Rewrite the SENTENCE so the meaning lands in plain English (default)
+2. Replace the term with the plain equivalent inline + restructure
+3. Drop the term if removing doesn't lose meaning
+4. Parenthetical gloss is the LAST RESORT — almost never the right answer
+
+Worked example for `jargon-bare`:
+- ❌ Don't do: `"long-end yields rose on coupon supply (new Treasury bonds being auctioned)"` — the gloss leaves the trader-desk sentence structure intact
+- ✅ Do: `"30-year Treasury yields rose this morning because the government is about to auction a wave of new long-term bonds — more supply means buyers demand higher rates"` — sentence rewritten in plain English, the original term is gone
+
+**What to PRESERVE EXACTLY (do not touch):**
+- Theme structure, theme order, theme count
+- Numbers, percentages, dates, levels, tickers (verbatim)
+- Bank names where they're attribution to specific calls/data points
+- Markdown structure (`##` headers, `###` theme headers, italics, bullets, bolding inside bullets)
+- The H1 title at the top
+- Frontmatter (everything between the `---` markers at the top)
+- Section dividers, blank lines
+
+**Output format:**
+Return the COMPLETE markdown with the flagged sentences rewritten. NO preamble. NO `Here is the rewritten markdown:` intro. NO commentary at the end. NO `I changed the following sentences:` diff explanation. NO markdown code fences around the output. Just the pulse markdown, ready to be saved verbatim to `/tmp/final.md`.
+
+**If the lint report is empty or has only soft warnings (`top-3-theme-missing`)**, return the markdown unchanged — your job is hard-issue rewriting only.
+
+**Jargon-to-plain-English reference (canonical — use these or rewrite the sentence to drop the term):**
+
+- **duration** → "long-dated bonds — the longer the maturity, the bigger the price move when yields shift"
+- **term structure** → "what the market expects rates to do over time"
+- **term curve** → "what the market expects rates to do over time"
+- **breakevens** → "the inflation rate priced into the bond market"
+- **convexity** → "leverage that pays off bigger as the price moves further in your favor"
+- **delta one** → "a position that moves dollar-for-dollar with the underlying"
+- **bear-flatten** → "short-term yields rising faster than long-term"
+- **bear-steepen** → "long-term yields rising faster than short-term"
+- **fixed-rate receiver** → "a bet that rates fall (you receive a fixed rate vs paying floating)"
+- **carry** → "what you earn just holding the position when nothing changes"
+- **rate differential** → "the gap between two countries' interest rates — drives the currency"
+- **front-end issuance** → "more short-term Treasury supply"
+- **long-end** → "30-year Treasuries"
+- **short-end** → "2-year Treasuries"
+- **vol surface** → "the option market's pricing of risk across strikes and expiries"
+- **skew** → "puts costing more than calls (or vice versa) — a sentiment signal"
+- **gamma** → "how fast the option's delta changes — short gamma means dealers buy strength and sell weakness"
+- **basis** → "the gap between cash and futures prices"
+- **inversion** → "short-term yields higher than long-term — historically a recession signal"
+- **products draw** → "refined fuel inventories falling fast"
+- **products tightness** → "refined fuel inventories falling fast"
+- **selective single-name** → "specific stock picks vs the broad sector"
+- **tactically short** → "betting against in the near term"
+- **tactically long** → "betting for in the near term"
+- **prime brokerage flows** → "what hedge funds are doing"
+- **coupon supply** → "new Treasury bonds being auctioned"
+- **issuance** → "new supply of bonds (or stock)"
+- **NII** → "interest income banks earn from loans"
+- **bps** → "hundredths of a percent"
+- **CTAs** → "systematic trend-followers (CTAs)"
+- **RSI 70** → "the market is technically overheated, like a rubber band stretched too far"
+- **short gamma** → "dealers are on the hook to buy more the higher the market goes"
+- **term structure normalized** → "the panic has faded"
+- **skew catching a bid** → "traders are paying more for downside protection"
+- **got hit** → "dropped (or sold off)"
+- **caught a bid** → "started rising on buying interest"
+- **rolled over** → "started falling"
+- **took out** → "broke through (or fell below, depending on direction)"
+- **found support** → "stopped declining at this level"
+- **is offered** → "selling pressure is building"
+- **is bid** → "buying pressure is building"
+- **tape** → "today's price action"
+- **going bid** → "buyers stepping in"
+- **going offered** → "sellers stepping in"
+- **the long end** → "30-year Treasury bonds"
+- **the front end** → "2-year and shorter Treasury bonds"
+- **lifted offers** → "buyers cleared out the sell orders at this price"
+- **smoked the offers** → "buyers cleared out the sell orders at this price"
+- **got tapped** → "sellers hit the bids and pushed price down"
+- **chip leg** → "the semiconductor side of the trade"
+- **prime book** → "what hedge funds at prime brokers are doing"
+- **UTC day** → "the calendar day in UTC time (use plain dates instead)"
+- **bellwether** → "a name the market treats as a leading indicator for its sector"
+- **bellweather** → "a name the market treats as a leading indicator for its sector"
+
+**Banned publication names (strip entirely, never attribute):**
+  'The Market Ear', 'Market Ear', 'TME', 'FX Daily'
+
+If the publication is the primary source for a data point, present the data without attribution; the data stands on its own.
+
+Lint report (25 hard issue(s) to address):
+```json
+[
+ {
+  "line": 25,
+  "kind": "em-dash",
+  "snippet": "\u2014"
+ },
+ {
+  "line": 45,
+  "kind": "em-dash",
+  "snippet": "\u2014"
+ },
+ {
+  "line": 19,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 21,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 31,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 33,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 34,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 36,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 38,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 44,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 44,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 46,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 47,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 57,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 58,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 5,
+  "kind": "AI-tell",
+  "snippet": "the tape"
+ },
+ {
+  "line": 10,
+  "kind": "AI-tell",
+  "snippet": "the tape"
+ },
+ {
+  "line": 38,
+  "kind": "AI-tell",
+  "snippet": "the tape"
+ },
+ {
+  "line": 38,
+  "kind": "source-prefix",
+  "snippet": "Citi's flagged"
+ },
+ {
+  "line": 46,
+  "kind": "source-prefix",
+  "snippet": "Citi flags"
+ },
+ {
+  "line": 25,
+  "kind": "jargon-bare",
+  "snippet": "carry"
+ },
+ {
+  "line": 25,
+  "kind": "jargon-bare",
+  "snippet": "issuance"
+ },
+ {
+  "line": 5,
+  "kind": "jargon-bare",
+  "snippet": "tape"
+ },
+ {
+  "line": 10,
+  "kind": "jargon-bare",
+  "snippet": "tape"
+ },
+ {
+  "line": 38,
+  "kind": "jargon-bare",
+  "snippet": "tape"
+ },
+ {
+  "line": 0,
+  "kind": "top-3-theme-missing",
+  "snippet": "top-3 theme 'trump xi china summit' has no significant word in INSIGHTS section"
+ }
+]
+```
+
+Pulse markdown to scrub (preserve everything except the flagged sentences):
+```markdown
+# Capex over buybacks
+
+## 1. RECAP
+
+Heading into today's open, the tape is caught between an AI-earnings story that keeps confirming itself and an oil shock that won't quit. Equities left yesterday's session barely changed, with $SPY +0.23% and $QQQ +0.29%, but the energy complex did the heavy lifting again: $USO finished +3.80% and $BNO +3.60% as Hormuz stayed effectively shut and the ceasefire headlines kept collapsing. That feeds straight into this morning's CPI, which just printed at 8:30 ET. Crypto is the one thing actually trading right now, and it's leaking lower: $BTC -1.0% on the day near $81k, with $ETH and $SOL down a bit more. Under the surface, hedge-fund leverage and momentum exposure are near one-year highs while several desks call the rally chasing-driven, not fundamental, and hyperscalers keep marking 2026 capex estimates higher rather than walking them back.
+
+- **April CPI came in hot.** The CPI index rose to 333.02 from 330.21 the prior month, roughly +0.85% on the month, faster than the recent run rate. That keeps the energy-into-inflation story alive and the Fed pinned, which is exactly what the rate-cut skeptics have been pricing.
+- **Oil ripped again on Hormuz.** $USO +3.80% and $BNO +3.60% yesterday as the Strait stayed barely flowing and Iran said it now treats Hormuz as a far larger zone. China's US ethane imports hit a record because the war cut rival feedstock supply, and Asian LNG buyers are burning more coal. Brent's premium is now a structural feature, not a headline pop.
+- **Ceasefire on life support.** Reuters' morning read framed the truce as barely alive: Iran warned it could enrich uranium to weapons grade if attacked, the US is working Hormuz with the UK and Australia, and there's no durable framework on the table. Oil isn't pricing resolution.
+- **Vol crept up.** $VIXY +1.33% yesterday, a small bid for protection ahead of CPI and with crypto sliding overnight. Not a regime shift, but the tape isn't fully relaxed either.
+
+## 2. INSIGHTS & ALPHA
+
+### Capex is no longer a forecast, it is a line item
+
+*The hyperscaler build has stopped being a projection and started showing up in reported numbers, and the cash funding it is coming straight out of buybacks.*
+
+- 2026 hyperscaler capex now pegged at $755B, up 83% year-on-year and equal to 100% of the group's operating cash flow (Goldman). The cash that used to repurchase shares is buying GPUs, the chips that run AI workloads.
+- Hyperscaler buybacks fell about 64% year-on-year in the first quarter (Goldman); Meta lifted 2026 capex guidance to $125-145B and Alphabet to $180-190B (UniCredit).
+- First-quarter S&P 500 earnings per share grew roughly 26%, the fastest since late 2021, but the Magnificent Seven did about 61% versus 16% for everyone else (Goldman Sachs Asset Management).
+- Around $200B of AI-related debt has been issued already this year, against a data-center power shortfall pegged at 55 gigawatts (Morgan Stanley); weekly AI usage is up roughly 350% since January.
+
+A company buying back stock is handing cash back to shareholders. A company spending all of its operating cash flow on infrastructure is making a multi-year bet that reshapes the earnings base, the share count, and the cyclicality of the whole index, and that is a different market to trade. The reason banks keep marking estimates higher is mechanical: every earnings call confirms the build rather than walking it back, so the revisions chase the prints.
+
+The bear case is concentration. The AI "Big 10" are now about 40% of S&P 500 market cap (Bank of America), a level last seen around the Nifty Fifty and the late-1990s internet peak, and those tops historically break on a sharp jump in government bond yields. Hedge funds are quietly cutting Magnificent Seven exposure toward multi-year lows while retail buys, which is the wrong ownership mix this late in a run. The defense is the balance sheet: the hyperscalers carry net debt at roughly 0.3x cash earnings (operating cash earnings — so far more cash flow than debt to absorb the leverage), so even with record issuance they can fund this without breaking, and a 61% earnings-growth rate is not the kind of cash story you tell about a bubble. The trade is to own the build through the equipment layer, where suppliers get paid whichever hyperscaler wins, and treat a Meta or Alphabet capex guide-down as the first real sign the spending is rolling over. Long $SOXX, the chip-equipment basket.
+
+### Hormuz is still shut, and the supply hole is in refined fuels
+
+*The market keeps pricing a ceasefire, but the damage is in the refining system, and that takes months to fix regardless of the headlines.*
+
+- The Strait of Hormuz is running at roughly 4% of normal oil-export flow on a four-day average (Goldman); Saudi Aramco's CEO put the loss at about 100 million barrels a week (MUFG).
+- Refinery run cuts in Asia and Europe rose from about 2.1 million barrels a day in March to 3.8 million in April, with around 4.7 million barrels a day of Middle East refined-product exports lost (JPMorgan).
+- Asian refined-product prices are up 60% to 120% since January against a crude move of about 40%, and the jet-fuel premium over crude has blown out to $80-100 a barrel (JPMorgan); jet fuel is up roughly 70% since the war started (Goldman).
+- 2026 average oil forecast raised to about $97 a barrel on structural tightness (JPMorgan); a prediction market puts the odds of the Strait reopening by June 30 at about 50%.
+
+Refining is close to a zero-sum system. When the Middle East's export refineries go dark, the barrels do not vanish, refiners elsewhere just shift output toward the most valuable product, which is why jet fuel is screaming while diesel and gasoline tighten in the background. Rerouting crude around the Strait does not fix that; you need the refining capacity back online and the inventories rebuilt before refined-fuel prices come back to earth, and that is a quarters-long process, not a headline.
+
+The pushback writes itself. Every few days a wire says a US-Iran framework is close, the oil curve sells off hard on it, and Brent has already done a round trip from roughly $100 up to a four-year high near $126. If a durable resolution lands by June, Goldman's own desk warns the risk flips toward OPEC fragmentation and oversupply. But a six-week ceasefire does not refill the system, the refined-product hole is the part that lasts, and as of this week the truce is on life support with the Strait still closed and yesterday's $USO +3.80% telling you which way the tape is leaning. The premium lives in Brent, the seaborne crude, so $BNO is the cleaner instrument; Citi's flagged level, Brent sustained below $90 for two weeks, would be the sign the trade is done. Buy $BNO on the next ceasefire-driven dip.
+
+### The rate-cut path the curve priced is too generous
+
+*Sticky inflation plus an energy shock keeps the Fed pinned, and this morning's CPI is the next data point that settles it.*
+
+- Terminal fed funds rate now seen at 3.0-3.25% with no cuts in 2026, last moves pushed into the second half of 2027 (Bank of America); the final two cuts pushed to December 2026 and March 2027 (Goldman); one cut left on the board (Barclays).
+- The April jobs report came in at about 115k versus a 65k consensus, with unemployment ticking up to 4.3% — strong enough to take the pressure off the Fed to ease (Deutsche Bank, UBS).
+- Core PCE inflation seen holding near 3% through year-end (Goldman), well above the 2% target, with energy feeding the headline on a lag; Citi flags core CPI above 0.4% month-on-month as the level that pushes the cut timeline out further.
+- The 10-year Treasury yield sits around 4.35% to 4.40%; a move toward 4% is what would be needed before a quarter-point cut is even justified.
+
+Two forces work against the cut. Energy is pushing the headline inflation rate back up just as the labor market refuses to crack, so the Fed has neither the cover of a soft jobs print nor the read of falling inflation it would need to move, and the incoming chair, Kevin Warsh, is the variable the desks cannot model yet. UBS and Citi take the other side, arguing the market is overpricing the no-cut risk and cuts return later this year. The split is real, but the weight of the work is on the skeptics, and this morning's CPI printing hot at an index level of 333.02 versus 330.21 prior lands squarely on their side of the argument. The bias is to fade $TLT rallies rather than chase them, with long $GLD alongside as the hedge that pays whether the story is sticky inflation or the next Hormuz headline. Fade $TLT strength, hold $GLD as the all-weather leg.
+
+## 3. WHAT TO WATCH
+
+### Today
+April CPI already landed at 8:30 ET and is covered in RECAP. Nothing else research-flagged is still ahead today. The Iran-US ceasefire thread is the live wildcard: any credible sign the Strait of Hormuz is reopening would be the single biggest mover across oil, inflation, and the rate path at once.
+
+### This Week
+- **Wednesday, April PPI (8:30 ET).** Producer prices are the pipeline read on the same energy-driven inflation story; consensus is around +0.5% month-on-month. A hot headline reinforces the higher-for-longer case and pressures $TLT.
+- **Thursday, April Retail Sales (8:30 ET).** The consumer check after a string of firm prints; consensus around +0.5% month-on-month. A strong reading cuts against the slowdown narrative and bleeds into rates and the dollar.
+- **Ongoing, Iran and Hormuz.** Any ceasefire framework, a Strait reopening, or fresh escalation moves oil, the inflation read, and the rate path together. Goldman's desk flags a durable resolution by June as the scenario that flips oil bearish.
+
+```
+
+**CRITICAL — rewrite at the FLAGGED LINE.** Each lint entry has a `line` field. The sentence at that line is what you rewrite. Do not modify unrelated paragraphs at other line numbers. Do not "improve" prose elsewhere. The 2026-05-08T23-33-34Z run had SCRUB rewrite themes #2 and #4 while LEAVING the line-10-flagged "price action" issue intact — that's the opposite of the job. Your output diff vs input should show changes ONLY at flagged line numbers (or, when a category match like AI-tell-template fires multiple times, at every flagged occurrence).
+
+If you find yourself editing prose at a line number not in the lint report, STOP — you're rubber-stamping with cosmetic edits while leaving the actual flag intact.
+
+Return the rewritten markdown verbatim — no preamble, no commentary.
