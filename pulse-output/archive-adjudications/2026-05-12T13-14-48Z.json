@@ -1,0 +1,170 @@
+{
+  "pulse_date": "2026-05-12",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex supercycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 16,
+        "skeptical": 4,
+        "neutral": 0
+      },
+      "consensus_view": "Banks overwhelmingly agree that the roughly $750 billion hyperscalers will spend on AI in 2026 is the main engine behind current earnings and stock-market gains, while a vocal minority warns the rally now looks bubble-like and increasingly reliant on debt financing.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler AI capex is surging to roughly $750 billion in 2026, up about 80% year over year.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI-related capex is surging, with the five hyperscalers forecast to invest about USD 750bn",
+            "consensus of analysts is now for the mega-cap US hyperscalers to spend $755 billion"
+          ]
+        },
+        {
+          "claim": "AI-driven investment is a primary driver of US growth, corporate earnings, and equity-market momentum.",
+          "banks_for": [
+            "Goldman Sachs",
+            "BlackRock Investment Institute",
+            "Franklin Templeton Institute",
+            "Wells Fargo Investment Institute",
+            "JPMorgan",
+            "WisdomTree"
+          ],
+          "evidence_quotes": [
+            "These include: supportive fiscal policy, AI-driven investment, and easier financial conditions.",
+            "The AI buildout has so far outweighed the typical effect of a macro shock",
+            "main drivers of our GDP forecast are the continued capital expenditures",
+            "reflects a combination of recovering advertising demand, AI-driven investment",
+            "continued business investment in AI could help sustain the recent strength",
+            "AI capital spending is not highly sensitive to gasoline or diesel prices."
+          ]
+        },
+        {
+          "claim": "Demand for AI chips and compute remains robust and supply-constrained.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs Asset Management",
+            "ING",
+            "The Market Ear",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "We see robust demand for advanced chips and high-performance computing",
+            "AI-driven demand remains strong and supply-constrained",
+            "As long as the demand for top-end AI chips remains robust, Taiwan's trade prospects remain bright.",
+            "The bottlenecks are capturing extraordinary economics and capital is flooding in accordingly.",
+            "The AI memory trade continues to dominate the tape"
+          ]
+        },
+        {
+          "claim": "The AI investment boom is driving a structural shift in S&P 500 spending away from buybacks toward capex.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "The AI investment boom will drive a continued shift from buybacks to capex"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI spending boom and rally are sustainable or a bubble",
+          "banks_for": [
+            "UniCredit",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "The AI investment cycle still appears to be at an early stage.",
+          "banks_against": [
+            "Bank of America",
+            "The Market Ear",
+            "Bloomberg",
+            "Nomura / Barclays / AXA IM / BNP Paribas"
+          ],
+          "against_evidence": "AI-led momentum shows increasingly bubble-like characteristics"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "UBS",
+          "claim": "2027 hyperscaler capex forecast",
+          "deadline": "2027-12-31"
+        },
+        {
+          "bank": "Morgan Stanley",
+          "claim": "2027 hyperscaler capex estimate",
+          "deadline": "2027-12-31"
+        },
+        {
+          "bank": "Goldman Sachs",
+          "claim": "2026 hyperscaler capex estimate",
+          "deadline": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "theme": "rate cut repricing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 4,
+        "neutral": 0
+      },
+      "consensus_view": "Most banks think the market has the rate-cut path wrong, but they split on which way: Citi and UBS say traders are underpricing cuts that are still coming, while Deutsche Bank, ING, TS Lombard and Barclays say sticky 3%-ish inflation means cuts come slower or not at all (and the Bank of England may even hike).",
+      "facts_agreed": [
+        {
+          "claim": "The skeptical camp agrees inflation is sticky enough that central banks have less room to ease than markets assume.",
+          "banks_for": [
+            "ING",
+            "TS Lombard",
+            "Barclays"
+          ],
+          "evidence_quotes": [
+            "Rates could fall slower than growing optimism suggests",
+            "Bank of England potentially having less room to ease over the coming years.",
+            "Longer run \u2013 better growth, inflation > 3%, and Fed hikes in 2027",
+            "Fed cut expectations have been pared back, with Barclays economists now expecting only one cut"
+          ]
+        },
+        {
+          "claim": "Bond markets are pricing in more Bank of England rate hikes than the BoE actually intends to deliver.",
+          "banks_for": [
+            "Barclays",
+            "ING"
+          ],
+          "evidence_quotes": [
+            "markets are getting ahead of themselves by pricing in rate hikes",
+            "Bank of England potentially having less room to ease over the coming years."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the Fed actually cuts (markets overpricing the no-cut risk vs. cuts being repriced away)",
+          "banks_for": [
+            "UBS",
+            "Citi"
+          ],
+          "for_evidence": "markets continue to overprice the risk that the Fed will not cut interest rates",
+          "banks_against": [
+            "Deutsche Bank",
+            "TS Lombard",
+            "ING",
+            "Barclays"
+          ],
+          "against_evidence": "Fed cut expectations have been pared back, with Barclays economists now expecting only one cut"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "Deutsche Bank",
+          "claim": "Fed staying on hold",
+          "deadline": "March 2027"
+        }
+      ]
+    }
+  ],
+  "discarded_themes": []
+}
