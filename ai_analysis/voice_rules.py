@@ -114,6 +114,15 @@ BANNED_AI_TELL_REGEXES: list[tuple[str, str]] = [
     # tell when the reader pattern-matches it as scaffolding.
     (r"\bThe\s+(?:bear\s+case|bull\s+case|opposite\s+read|pushback|defense)\s+here\s*[:.]", 'AI-tell-template'),
     (r"\bThe\s+(?:bear\s+case|bull\s+case|opposite\s+read|pushback|defense)\s*:", 'AI-tell-template'),
+    # Pre-market RECAP mis-framing: at 9 AM ET, equity-index futures /
+    # Treasury futures / oil futures / FX are ALL trading — only US cash
+    # equities are closed. "Crypto is the only thing trading" is factually
+    # wrong AND it showed up two days running (2026-05-11, 2026-05-12) as
+    # the same opener. Catch the family: "crypto is the {only|one}
+    # {thing|place|market|asset} {actually}? {trading|moving|open|live}".
+    (r"\bcrypto\s+is\s+(?:the\s+)?(?:only|one)\s+(?:thing|place|market|asset)\s+(?:actually\s+|really\s+)?(?:trading|moving|open|live|active)\b", 'RECAP-misframe'),
+    # Also catch the inverted "the only thing trading (right now) is crypto"
+    (r"\bthe\s+only\s+(?:thing|market)\s+(?:actually\s+)?(?:trading|moving|open)\s+(?:right\s+now\s+)?is\s+crypto\b", 'RECAP-misframe'),
 ]
 
 BANNED_META_NARRATION = [

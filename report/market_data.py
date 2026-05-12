@@ -151,10 +151,15 @@ def _session_label(now_et: datetime) -> tuple[str, str]:
         "Crypto trades 24/7 and its % IS a live current-day move — describe crypto as 'today's' normally."
     )
     PRE_MARKET_NOTE = (
-        "Markets PRE-OPEN (before 9:30 AM ET). Traditional markets haven't traded today yet — "
-        "the % changes reflect YESTERDAY'S full session. Do NOT describe traditional-market % as 'today's moves'. "
-        "Phrase as 'heading into today's open' or 'yesterday's close left SPX up X%'. "
-        "Crypto trades 24/7 and its % IS a live current-day move — describe crypto as 'today's' normally."
+        "Markets PRE-OPEN (before 9:30 AM ET). US CASH EQUITIES haven't opened yet — "
+        "the stock %s below reflect YESTERDAY'S full session, not today. Phrase stock levels "
+        "as 'heading into today's open' or 'yesterday's close left $SPY up X%'. "
+        "IMPORTANT: do NOT write 'crypto is the only thing trading' / 'the one thing actually "
+        "moving' / 'the only market open' — that's WRONG. Equity-index futures, Treasury futures, "
+        "oil futures, and FX all trade pre-market; only the US cash stock market is closed. "
+        "Crypto trades 24/7 so its % IS a live today's-move (describe it as 'today's' normally), "
+        "but it is NOT 'the only thing trading'. If crypto moved overnight, note it as a live "
+        "data point alongside the yesterday's-close stock levels — not as 'the only live market'."
     )
     OPEN_NOTE = (
         "Markets currently OPEN (regular session). Traditional-market % reflects today's session-to-date move "
