@@ -112,9 +112,28 @@ def _latest_progress_event() -> tuple[str, str] | None:
         return None
 
 
+def _list_dir_retry(path: str, attempts: int = 4) -> set[str]:
+    """_list_dir with retry. A transient GitHub API hiccup that returns
+    an empty set for a directory that actually has files is the cause of
+    the watcher's recurring "re-emit all existing files as new" noise:
+    if the BASELINE snapshot comes back empty, the next successful poll
+    sees every file as new. Retry with backoff so the baseline is built
+    on a real listing, not a hiccup.
+    """
+    for i in range(attempts):
+        s = _list_dir(path)
+        if s:
+            return s
+        if i < attempts - 1:
+            time.sleep(2 * (i + 1))
+    return set()  # genuinely empty (or persistently failing — accept it)
+
+
 def main() -> None:
     # Snapshot baseline so we only emit on NEW files, not pre-existing ones.
-    baseline: dict[str, set[str]] = {p: _list_dir(p) for p in DIRS_TO_WATCH}
+    # Use the retrying variant — a transient empty listing here is what
+    # causes the "re-emit everything" noise on the next poll.
+    baseline: dict[str, set[str]] = {p: _list_dir_retry(p) for p in DIRS_TO_WATCH}
     last_progress: tuple[str, str] | None = None
 
     sys.stdout.write("watcher: armed; baseline file counts:\n")
@@ -125,11 +144,21 @@ def main() -> None:
     while True:
         for path, prefix in DIRS_TO_WATCH.items():
             current = _list_dir(path)
+            # Guard against transient empty/short listings: if `current`
+            # is empty but the baseline had files, that's almost certainly
+            # an API hiccup, not 24 files getting deleted. Skip this cycle
+            # for this dir rather than treating the next poll's files as
+            # all-new. Real new files are additive — they'll show up next
+            # cycle once the listing recovers.
+            if not current and baseline[path]:
+                continue
             new_files = sorted(current - baseline[path])
             for fname in new_files:
                 sys.stdout.write(f"{prefix}: {fname}\n")
                 sys.stdout.flush()
-            baseline[path] = current
+            # Merge rather than replace, so a brief partial listing doesn't
+            # "forget" files and re-emit them when the full listing returns.
+            baseline[path] |= current
 
         progress = _latest_progress_event()
         if progress is not None and progress != last_progress:
