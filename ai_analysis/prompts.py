@@ -920,6 +920,19 @@ For sub-agent stages (Adjudication, EDIT, SCRUB), use the SUB-AGENT HANDOFFS blo
 ## Voice + structure
 Tells that slipped through? Theme-coherence breaks (a sentence in theme X that's actually about theme Y)? Misframings (theme presented as bull-consensus when corpus is actually split)? Use of banned phrases the lint should have caught?
 
+**Voice authenticity score (1-5) — soft flag, non-blocking.** The reference voice the pulse must match is at the bottom of this prompt under "VOICE REFERENCE SAMPLES." Read 8-10 sentences from the final pulse (sample across RECAP, INSIGHTS, WHAT TO WATCH — don't just grade the strongest theme). For each, ask: *"could this sentence plausibly appear in one of the reference samples?"*
+
+Score:
+- **5 — indistinguishable.** First-person house voice, declarative sentences, specific numbers/instruments, conversational interjections present, sharp paragraph endings, no AI-tell phrases. Reads as if the same hand wrote both the references and this pulse.
+- **4 — strong with minor tells.** ≥75% of sampled sentences pass the test. A few sentences slip into generic analyst voice but the dominant texture matches.
+- **3 — recognizably influenced but visibly different.** ≥50% match. Has the structural moves (specific numbers, named banks) but cadence reads as polished-analyst prose, not personality-driven house voice. Conversational interjections absent or forced.
+- **2 — generic professional voice.** ≥25% match. Reads as a competent sell-side note. Could be from any of 50 newsletters. No distinctive cadence, no first-person posture, no conversational human texture.
+- **1 — obvious AI/template prose.** <25% match. Hedged claims, both-sided framings, wrap-up sentences, no specific calls.
+
+Write the score with one specific sentence-level example for whatever score below 5 you give. Example: *"Score: 3/5 — the AI capex theme reads close to the reference voice (specific banks, declarative claims), but RECAP opens with 'Markets are digesting hot inflation prints' which is generic newsletter cadence, not the punchier 'Real GDP is running at 2 percent, nominal at 6' opening the references use."*
+
+Don't aggregate to a generic 'voice is fine' — name what specifically slipped if anything did. This score is the feedback signal for the voice work; vague output here means no signal for next-run tuning.
+
 ## Accuracy + sourcing
 Numbers in the final that don't trace back to corpus or live data? RECAP facts that misattribute or invent? Single-bank claims presented as consensus? Forecasts dressed up as actuals?
 
@@ -996,6 +1009,10 @@ Things to watch in the next 1-3 runs that THIS run hinted at but isn't yet concl
 
 ---
 
+<<VOICE_REFERENCE_SAMPLES>>
+
+---
+
 Return the markdown verbatim — no preamble, no JSON wrapper, no commentary outside the review."""
 
 
@@ -1048,6 +1065,10 @@ What this means concretely:
   **Heuristic that works:** if removing "X bank said" leaves the sentence intact and stronger, remove it. If the sentence falls apart without the attribution, the attribution belongs in a parenthetical at the end, not as an opener.
 
   **AUDIT-side enforcement:** before finalizing, walk every sentence in INSIGHTS bodies. For any sentence opening with a bank name followed by a generic verb (says, notes, flags, adds, observes, leans on, keeps hammering, pushes, points to, argues, thinks, sees), rewrite. Move the attribution to a parenthetical or strip it entirely.
+
+<<VOICE_REFERENCE_SAMPLES>>
+
+**Voice is BOTH your responsibility AND AUDIT's** — AUDIT will catch slips but cannot manufacture voice from flat prose. Write paragraphs that could appear in the reference samples above. If your draft reads like a generic analyst memo, AUDIT can't rescue it; if it reads like the samples and just has a few rough edges, AUDIT polishes it cleanly. Pour at least as much effort into voice match as into fact density — the bar is "indistinguishable from the references."
 """
 
 
@@ -1895,3 +1916,30 @@ Produce the final pulse. Rewrite RECAP with live data + released events + news. 
 from ai_analysis.voice_rules import compose_scrub_reference_block as _compose_scrub_ref
 SCRUB_SYSTEM = SCRUB_SYSTEM.replace("<<SCRUB_REFERENCE_BLOCK>>", _compose_scrub_ref())
 del _compose_scrub_ref
+
+# Capital Flows + Citrini Research voice exemplars. Few-shot block teaches
+# DRAFT the target voice on the way in and gives QC a comparison standard
+# for the voice-authenticity score. Same single-source-of-truth pattern as
+# SCRUB above: edit samples in voice_rules.VOICE_REFERENCE_SAMPLES and
+# both prompts pick up the change at next module load.
+from ai_analysis.voice_rules import compose_voice_samples_block as _compose_voice_samples
+_VOICE_BLOCK_DRAFT = _compose_voice_samples(
+    header=(
+        "**VOICE REFERENCE SAMPLES (binding — write to match this voice):**\n\n"
+        "These are excerpts from Capital Flows Research and Citrini Research, "
+        "the two newsletter voices the pulse must read as. Your draft must be "
+        "indistinguishable from these references — same cadence, same posture, "
+        "same texture."
+    )
+)
+_VOICE_BLOCK_QC = _compose_voice_samples(
+    header=(
+        "**VOICE REFERENCE SAMPLES (comparison standard for the voice-authenticity score):**\n\n"
+        "These are the canonical voice exemplars the pulse must match. When "
+        "scoring voice authenticity in the \"Voice + structure\" section above, "
+        "compare the pulse's sentences directly against these passages."
+    )
+)
+DRAFT_SYSTEM = DRAFT_SYSTEM.replace("<<VOICE_REFERENCE_SAMPLES>>", _VOICE_BLOCK_DRAFT)
+QC_USER = QC_USER.replace("<<VOICE_REFERENCE_SAMPLES>>", _VOICE_BLOCK_QC)
+del _compose_voice_samples, _VOICE_BLOCK_DRAFT, _VOICE_BLOCK_QC

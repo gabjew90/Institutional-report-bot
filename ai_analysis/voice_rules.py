@@ -459,3 +459,223 @@ def compose_jargon_lint_patterns() -> list[tuple[str, str]]:
         # matching inside other words.
         patterns.append((r'\b' + re.escape(term) + r'\b', 'jargon-bare'))
     return patterns
+
+
+# === Reference voice samples (Capital Flows + Citrini Research) ===
+#
+# Few-shot exemplars for the trader-newsletter voice. Pulled from public
+# Substack posts the user pointed at as the gold standard. The samples
+# span three modes the pulse must produce:
+#   - open:    macro/thesis setup — "here's what's happening + why it matters"
+#   - tension: bull-vs-bear handling — counter-argument framing
+#   - close:   trade idea / actionable lean — how a paragraph LANDS
+#
+# Voice traits the model should imitate from these:
+#   - First-person plural ("we") or singular ("I") house voice
+#   - Declarative, almost aphoristic sentences ("Growth and inflation
+#     control the long end.")
+#   - Specific numbers, named instruments, named tickers
+#   - Conversational interjections that puncture analytical prose
+#     ("Feel free to roll your eyes", "If you can believe it",
+#     "Well…they're not laughing anymore.")
+#   - Sentence-length variation — long analytical sentences interleaved
+#     with short punchy ones
+#   - Confident posture toward consensus; willingness to dissent
+#   - Sharp paragraph endings; no wrap-up sentences
+#
+# Used by:
+#   - DRAFT_SYSTEM (voice exemplar block; teaches cadence on the way in)
+#   - QC_USER (comparison standard; QC scores voice-authenticity 1-5
+#     against these samples and writes the verdict to the QC review)
+VOICE_REFERENCE_SAMPLES: list[dict[str, str]] = [
+    {
+        "source": "Citrini Research — Macro Memo: Running Hot",
+        "mode": "open",
+        "text": (
+            "We find few reasons to be bearish on the US economy. The two "
+            "biggest concerns of 2025 (tariffs and job creation) haven't led "
+            "to a broader slowdown. Rather, consumption and overall GDP data "
+            "is accelerating, and while the labor market is stagnant, the "
+            "floor remains intact. Productivity gains, in part driven by AI, "
+            "are likely to increase.\n\n"
+            "With 16 months passing since the first rate cut of this cycle "
+            "in August 2024, perhaps we are beginning to see the "
+            "\"long-and-lagging\" effects of bullish monetary policy "
+            "beginning to materialize. Credit spreads remain tight, overall "
+            "borrowing costs have decreased, and cyclical sectors like "
+            "housing are beginning to show signs of life."
+        ),
+    },
+    {
+        "source": "Citrini Research — Power Struggle: Natural Gas",
+        "mode": "open",
+        "text": (
+            "Natural gas might not be as sexy as solving energy storage, or "
+            "making GPUs more efficient, but it is the way we're powering "
+            "AI. AI eats electrons, electrons eat gas.\n\n"
+            "We've focused quite a bit on power and electricity, but not so "
+            "much on its source. There's no way around it, if we want to "
+            "power these data centers, we're doing it with gas — at least "
+            "for the foreseeable future.\n\n"
+            "This incremental demand comes at a time when gas supply and "
+            "demand balances were already becoming tighter with the "
+            "consistent ramp of new LNG export facilities. This confluence "
+            "of factors will ultimately result in natural gas prices moving "
+            "structurally higher."
+        ),
+    },
+    {
+        "source": "Citrini Research — Power Struggle: Natural Gas",
+        "mode": "tension",
+        "text": (
+            "Feel free to roll your eyes. A natural gas bull market starting "
+            "next year isn't a novel idea. The gas market has chewed up and "
+            "spit out so many speculators over the last decade that some "
+            "would find it impossible to see gas as anything but a "
+            "completely unpredictable commodity removed from any "
+            "fundamentals.\n\n"
+            "We agree. For the past decade, as price-insensitive growth "
+            "dominated, the market lacked any fundamental regulator. E&Ps "
+            "trying to fill infrastructure, hold acreage, or grow oil "
+            "volumes had no care in the world as to what price they "
+            "realized for their gas.\n\n"
+            "Today, however, both the Permian Basin and the dry gas basins "
+            "have matured, and on a go-forward basis, very much do care "
+            "about pricing."
+        ),
+    },
+    {
+        "source": "Citrini Research — Let There Be Light",
+        "mode": "tension",
+        "text": (
+            "This was not a popular take. At the time, optics sat inside a "
+            "telecom supply chain most investors wanted nothing to do with. "
+            "Consensus saw cyclical depression and inventory indigestion "
+            "that was years from normalizing. We saw AI-driven connectivity "
+            "demand colliding with years of underinvestment, setting up "
+            "\"a resulting optics shortage\" precisely where the market was "
+            "least interested in looking.\n\n"
+            "If you can believe it, given the way our optics names have "
+            "traded since, many laughed at us for it. We were branded "
+            "contrarians at best and tourists at worst, wading into a "
+            "meat-grinder of a cycle that would end our streak of good "
+            "calls. Well…they're not laughing anymore."
+        ),
+    },
+    {
+        "source": "Capital Flows — Yield Curve, Inflation Risk",
+        "mode": "open",
+        "text": (
+            "Every macro story collapses into the curve. Growth, inflation, "
+            "policy stance, dollar direction, credit appetite, equity "
+            "rotation. All of it shows up in where the front end and back "
+            "end sit. The yield curve in itself is not a directional rate "
+            "signal. The four regimes are bull steepening, bear steepening, "
+            "bull flattening, and bear flattening, and each represents a "
+            "specific combination of where the Fed is making a policy error "
+            "against where growth and inflation are heading. Read the "
+            "regime, and the macro stops being disconnected data points and "
+            "becomes a single coherent signal."
+        ),
+    },
+    {
+        "source": "Capital Flows — Yield Curve, Inflation Risk",
+        "mode": "tension",
+        "text": (
+            "5s30s sitting above 2s10s right now is the cleanest growth "
+            "resilience signal in the market. When the longer duration "
+            "curve is steeper than the shorter duration curve, you are "
+            "seeing more sensitivity to long-term nominal growth than to "
+            "Fed policy. If growth were actually breaking, 5s30s would "
+            "compress against 2s10s as the long end signaled real economy "
+            "weakness. We are not seeing that. The curve shape is "
+            "consistent with the credit cycle melt-up extending, not "
+            "breaking."
+        ),
+    },
+    {
+        "source": "Capital Flows — Yield Curve, Inflation Risk",
+        "mode": "close",
+        "text": (
+            "Z7 has limited downside but limited upside from here. That "
+            "makes it a fade trade, not a directional trade. Going much "
+            "lower requires the Fed to actually hike, which the data does "
+            "not support. Going much higher requires aggressive cuts, which "
+            "Warsh's framework does not justify in the immediate term. The "
+            "trade is not Z7 itself. The trade is the second and third "
+            "order effects in EURUSD, gold, silver, and equity multiples "
+            "that move when the cluster reprices around Z7."
+        ),
+    },
+    {
+        "source": "Capital Flows — Full Economic Picture",
+        "mode": "open",
+        "text": (
+            "Real GDP is running at 2 percent, nominal at 6, and the "
+            "Atlanta Fed Nowcast is at 3.7 with fixed investment adding "
+            "100bps. Personal interest payments are at highs but "
+            "delinquencies are not rising, which tells you the consumer is "
+            "more resilient than the bears want to admit. The idea that "
+            "there is a \"hidden recession\" not showing up in the data is "
+            "a tell that someone has not built their own models."
+        ),
+    },
+]
+
+
+def compose_voice_samples_block(
+    header: str = "VOICE REFERENCE — write to match this voice. The pulse must read as if it could have been written by the same hand:",
+) -> str:
+    """Render the voice exemplars as a prompt block.
+
+    Samples are grouped by mode (open / tension / close) so the model can
+    pattern-match the structural slot the example fills. Each sample is
+    introduced with its source + mode label so the model treats them as
+    discrete exemplars, not run-together prose.
+
+    Called at module load time by prompts.py to inject the block into
+    DRAFT_SYSTEM and QC_USER via the <<VOICE_REFERENCE_SAMPLES>> marker.
+    Same propagation pattern as compose_scrub_reference_block — update a
+    sample here and the next routine fire picks it up.
+    """
+    from collections import defaultdict
+
+    by_mode: dict[str, list[dict]] = defaultdict(list)
+    for s in VOICE_REFERENCE_SAMPLES:
+        by_mode[s["mode"]].append(s)
+
+    mode_labels = {
+        "open": "OPEN — thesis setup / 'here's what's happening + why it matters'",
+        "tension": "TENSION — bull-vs-bear / counter-argument handling",
+        "close": "CLOSE — trade idea / actionable lean — how a paragraph LANDS",
+    }
+
+    parts = [header, ""]
+    for mode in ("open", "tension", "close"):
+        if not by_mode.get(mode):
+            continue
+        parts.append(f"### {mode_labels[mode]}")
+        parts.append("")
+        for s in by_mode[mode]:
+            parts.append(f"*From: {s['source']}*")
+            parts.append("")
+            parts.append(s["text"])
+            parts.append("")
+
+    parts.extend([
+        "",
+        "**Voice traits to imitate from these samples:**",
+        "- First-person house voice (\"we\" or \"I\"). The pulse is a desk view, not anonymous reportage.",
+        "- Declarative, almost aphoristic sentences. *\"Growth and inflation control the long end.\"* *\"AI eats electrons, electrons eat gas.\"* Short, claim-shaped, no qualifiers.",
+        "- Specific numbers, named instruments, named tickers in-line. Vague macro generalities get cut.",
+        "- Sentence-length variation. Long analytical sentence, then a short punchy one. Never four medium sentences in a row.",
+        "- Conversational interjections that puncture analytical prose. *\"Feel free to roll your eyes.\"* *\"If you can believe it, given the way our optics names have traded since, many laughed at us for it.\"* *\"Well…they're not laughing anymore.\"* These are the texture that makes the voice human, not a template.",
+        "- Confident posture toward consensus. The writer disagrees with the bears (or bulls) directly, names the disagreement, and argues against it. No \"some argue X, others argue Y\" balanced both-sidesing.",
+        "- Sharp paragraph endings. The last sentence of a paragraph LANDS the claim. No wrap-up summary sentences, no \"in conclusion,\" no hedging exit.",
+        "",
+        "**What these samples are NOT:**",
+        "- Not generic professional analyst prose (banker-newsletter or sell-side reasearch-note voice). The pulse is for a self-directed trader, not a fund LP.",
+        "- Not AI-template prose. None of these samples open with \"In the current market environment,\" or use \"it's worth noting,\" or close with \"all told.\"",
+        "- Not lecture mode. The writer doesn't teach the reader frameworks; they USE the framework to make a call.",
+    ])
+    return "\n".join(parts)
