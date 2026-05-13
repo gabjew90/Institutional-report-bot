@@ -1,9 +1,11 @@
 # Daily Market Pulse Synthesis Routine (with Adjudication)
 
-> **Version-controlled source for the Claude.ai scheduled-routine prompt.**
-> When you edit this file, copy the body (everything after the `---` divider) into the live routine config on Claude.ai. Diff against this file before pushing changes; it is the canonical record.
+> **Live source for the Claude.ai scheduled-routine prompt — auto-fetched.**
+> The production routine prompt on Claude.ai is the small bootstrap in `routine-bootstrap.md`. Every fire, it `curl`s THIS file from the working branch and executes it verbatim. **You do not need to paste anything into Claude.ai when you edit this file** — push to the working branch and the next fire picks it up. The bootstrap was set up once; after that, this file is the canonical, auto-deployed source.
 >
-> **Secrets:** the `${GH_TOKEN}` placeholder below is filled in by the live routine config on Claude.ai — do NOT paste the actual token into this file. The token is a fine-grained PAT with write access to `gabjew90/Institutional-report-bot`; rotate it whenever it leaves a controlled environment.
+> **If you need to change the branch the bootstrap fetches from, OR rotate the GitHub PAT**, edit `routine-bootstrap.md` and paste its body into the live routine config. That's the only time you touch the live prompt.
+>
+> **Secrets:** the `${GH_TOKEN}` reference in the Constants block below is documentation — the live value is the env var that the bootstrap exports at fire start. Do NOT paste the actual token into this file. The token is a fine-grained PAT with write access to `gabjew90/Institutional-report-bot`; rotate it whenever it leaves a controlled environment.
 
 **Routine surface assumptions (verified before this prompt was written):**
 - Bash + Python 3 available.
