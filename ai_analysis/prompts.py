@@ -682,6 +682,15 @@ You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields
 
 **Do not number, do not bullet, do not bold.** This is structured data, not prose.
 
+**DISCOVERED-THEME BRANCH (when every input stance is `neutral`).** If your `theme_stances` input contains only stance=`neutral` entries with `evidence` strings that are short contextual mentions (not multi-sentence stance arguments), this is a discovery-promoted theme: a subject several banks mentioned in context without staking a primary directional view. The standard adjudication shape still applies, but adjust how you fill the schema:
+
+- `consensus_view` describes the topic as a live subject + the absence of directional consensus. Example: "Banks across N desks reference the Trump-Xi summit as a near-term macro catalyst; nobody has staked a directional view yet."
+- `facts_agreed` should contain at least one entry summarizing what the banks consistently SAY about the topic at the mention level. Use the cluster of bank names in `banks_for` (multiple banks; the topic is broadly discussed) and copy 2-5 mention strings from `theme_stances.evidence` into `evidence_quotes`. The claim is descriptive, not prescriptive — e.g., "N banks flag X as an upcoming catalyst this window."
+- `facts_contested` is usually `[]` for these themes — no bank argued the contrary.
+- `falsifiable_predictions` is usually `[]` unless a specific tension_point with a `what_invalidates` field was provided.
+
+This branch keeps discovered themes in the pulse with honest framing instead of returning empty arrays that would cause the theme to be dropped at the post-filter emptiness check.
+
 Return ONLY the JSON object."""
 
 
@@ -1711,6 +1720,20 @@ Mechanical rule, walk every dated reference in RECAP and INSIGHTS:
 - Multi-day catalysts (e.g., a ceasefire negotiation thread spanning Tuesday through today): cite the most recent specific event with its actual date.
 
 The session_status field tells you the current time anchor. If the pulse fires at 23:23 ET Wednesday, "after the bell" defaults to Wednesday's after-close — not Tuesday's. If a draft references AMD's Tuesday earnings as "after the bell" implying today, FIX it to "Tuesday afterhours" (or "yesterday's after-close"). This is a binding rewrite, not optional.
+
+**Date-sanity check for "since [date]" / "as of [date]" references (BINDING — anti-stale-anchor):** the draft sometimes carries forward dated references like *"since April 14"*, *"as of last Friday"*, *"since the May 6 cut"*, or *"since Wednesday's print"* that were correct when the source research was written but are stale when the pulse is delivered. A trader reading *"since April 14"* on May 13 sees a meaningless 4-week-ago anchor and tunes out.
+
+Walk every `since [DATE]` / `as of [DATE]` / `since [WEEKDAY]` reference in the draft. For each:
+
+1. **Resolve the date.** Parse the date or weekday against the TODAY value in the user message. Compute the gap in days.
+2. **Apply the gap rule.**
+   - **Gap ≤ 5 days AND date ≤ today:** OK. Keep it. (*"since Monday"* when today is Friday → fine.)
+   - **Gap > 5 days:** STALE. Either (a) drop the date and rewrite around the live data, or (b) recompute against a fresh anchor. *"since April 14"* on May 13 → rewrite to *"since the start of May"* or *"month-to-date"* or drop the date entirely. Never carry a 4-week-old anchor as if it were "recent."
+   - **Date > today (future):** WRONG. *"since June 1"* on May 13 is a parse / draft bug. Fix by recomputing from research or dropping.
+   - **Weekday with no anchor year (e.g., "since Wednesday"):** OK if the implied Wednesday is within 7 days of today. If the draft says *"since Wednesday's Fed minutes"* and the Fed minutes were actually 3 Wednesdays ago, name the actual date (*"since the April 23 minutes"*) or drop the reference.
+3. **One-day-old anchors should usually become weekday names.** *"since May 12"* on May 13 → *"since yesterday"* or *"since Monday's session"* reads more natural. Pure numeric dates inside the body imply formal lookback windows; weekday names feel current.
+
+The session_status field and the TODAY value in the AUDIT user message give you the anchor. When in doubt, drop the date and just describe the move with live data. A vague *"into Friday's open"* is better than a wrong *"since April 14"*.
 
 2. **Released events MUST appear in RECAP:** every event in the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block MUST be reflected with actual vs estimate framing. Never skip a released event.
 

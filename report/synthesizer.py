@@ -79,9 +79,9 @@ def _classify_themes(
     clustering (`report.theme_clusterer`) to merge near-duplicate themes
     across banks — replacing the prior anchor-list + substring-match merge.
 
-    Two-phase classifier:
+    Three-stage classifier:
         Phase A: cluster theme_stances (per-PDF primary themes) into
-            cross-bank theme groups.
+            cross-bank theme groups via embedding similarity.
         Phase B: cluster contextual_mentions (per-PDF secondary mentions
             in risk_factors, geopolitical, macro_indicators, etc.) and
             promote any cluster that's NOT semantically covered by a
@@ -89,6 +89,17 @@ def _classify_themes(
             distributed-mention topics (e.g., "US strikes on Iranian
             targets" mentioned in many PDFs as context but never tagged
             as a primary theme by any single bank).
+        Two-tier merge: Phase B topic clusters that are semantically
+            covered by ≥2 Phase A labels (their centroid sits above the
+            merge threshold with each) collapse those Phase A labels into
+            one canonical theme. Phase A often fragments a single subject
+            into N stance-labeled themes when banks phrase their views
+            differently ("hormuz peace deal" vs "iran risk premium" vs
+            "middle east supply shock"); Phase B's broader topic clustering
+            bridges them. The Phase B cluster's mentioning banks also flow
+            into the merged theme's neutral bucket — banks that engaged
+            with the subject without taking a primary stance still count
+            toward its bank coverage.
 
     Returns {theme_name: {
         "banks": int, "pdfs": int, "sources": list[str],
@@ -163,18 +174,6 @@ def _classify_themes(
     clustering_input = {tag: tag_arguments.get(tag, "") for tag in tag_sources}
     orig_to_canonical, _clusters = cluster_themes(clustering_input)
 
-    # Surface the normalization map for downstream consumers (routine
-    # adjudication step). Without this the routine has no way to match
-    # raw `theme_stances.theme` labels to the canonical cluster keys
-    # produced by Phase A — leading to silent stance loss when multiple
-    # raw labels merged into one canonical (e.g., 8-bank "AI hyperscaler
-    # capex" theme dropping to 1 stance because 7 of 8 raw labels were
-    # different strings that all merged to the same canonical key).
-    if theme_normalization is not None:
-        # Map: NORMALIZED_TAG -> CANONICAL_CLUSTER_LABEL
-        # Routine workflow: stance.theme → _normalize_theme_tag → lookup → canonical
-        theme_normalization["norm_to_canonical"] = dict(orig_to_canonical)
-
     # Apply mapping. Tags that didn't make it through the embedding step
     # (degenerate inputs) fall back to identity.
     merged_sources: dict[str, set[str]] = {}
@@ -194,30 +193,6 @@ def _classify_themes(
             canonical_pdf_count.get(canonical_tag, 0)
             + tag_pdf_count.get(orig_tag, 0)
         )
-
-    # Import here to avoid a circular import risk if voice_rules ever
-    # grows synthesizer-side dependencies.
-    from ai_analysis.voice_rules import NON_BANK_SOURCES
-
-    theme_map: dict[str, dict] = {
-        tag: {
-            "banks": len(srcs),
-            "pdfs": canonical_pdf_count.get(tag, 0),
-            "sources": sorted(srcs),
-            "supportive": len(canonical_stance_banks.get(tag, {}).get("supportive", set())),
-            "skeptical": len(canonical_stance_banks.get(tag, {}).get("skeptical", set())),
-            "neutral": len(canonical_stance_banks.get(tag, {}).get("neutral", set())),
-            "discovered": False,
-            # True if every source for this theme is a non-bank publication
-            # (TME, Bloomberg news wire, Reuters, etc.). Such themes are
-            # color/positioning observations, not underwritten analytical
-            # views — the writer should NOT lead INSIGHTS with them without
-            # multi-bank corroboration. Surfaced in _format_theme_coverage
-            # so the prompt's editorial decision is informed.
-            "non_bank_only": bool(srcs) and srcs.issubset(NON_BANK_SOURCES),
-        }
-        for tag, srcs in merged_sources.items()
-    }
 
     # Phase B — corpus-level discovery.
     # Collect contextual_mentions tagged with bank + pdf_id. Cluster against
@@ -248,10 +223,14 @@ def _classify_themes(
         discovery_audit["pdfs_in_window"] = len(analyses)
         discovery_audit["pdfs_with_contextual_mentions"] = pdfs_with_mentions
         discovery_audit["total_mentions"] = len(contextual_triples)
-        discovery_audit["phase_a_theme_count"] = len(theme_map)
+        discovery_audit["phase_a_theme_count"] = len(merged_sources)
+        discovery_audit["two_tier_merges"] = []
+        discovery_audit["two_tier_augment_count"] = 0
 
-    if contextual_triples and theme_map:
-        covered_labels = list(theme_map.keys())
+    promoted: list[dict] = []
+    near_miss: list[dict] = []
+    if contextual_triples and merged_sources:
+        covered_labels = list(merged_sources.keys())
         promoted, near_miss = discover_uncovered_clusters(
             contextual_triples, covered_labels,
         )
@@ -259,24 +238,189 @@ def _classify_themes(
             discovery_audit["phase_b_ran"] = True
             discovery_audit["promoted"] = promoted
             discovery_audit["near_miss"] = near_miss
-        for d in promoted:
-            label = d["canonical"]
-            # Avoid label collision with a Phase-A theme. Suffix on collision
-            # (rare — discovery clusters are by definition not semantically
-            # close to Phase-A themes, so label collision implies the LLM
-            # canonical label happened to match an existing Phase-A label).
-            if label in theme_map:
-                label = f"{label} (discovered)"
-            banks_set = set(d["banks"])
-            theme_map[label] = {
-                "banks": len(banks_set),
-                "pdfs": len(d["pdf_ids"]),
-                "sources": sorted(banks_set),
-                "supportive": 0,
-                "skeptical": 0,
-                "neutral": len(banks_set),
-                "discovered": True,
-            }
+
+    # =====================================================================
+    # TWO-TIER MERGE
+    # =====================================================================
+    # Phase A clusters per-PDF theme_stance LABELS — banks' phrasings of
+    # their primary views. The same trade idea ("Strait of Hormuz") gets 5
+    # different stance labels across 15 banks ("hormuz peace deal", "iran
+    # risk premium", "middle east supply shock", ...). Phase A's pairwise
+    # similarity sees them as slightly-below-threshold and keeps them as
+    # five 1-bank themes. The synthesizer's downstream "highest bank count
+    # MUST appear" ranking then under-prioritizes a 15-bank topic because
+    # it looks like five thin ones.
+    #
+    # Phase B clusters contextual MENTIONS (separate string corpus). Across
+    # 200 PDFs, the same topic surfaces in many mention strings and
+    # Phase B sees them as one tight cluster. Phase B's centroid sits within
+    # threshold of several Phase A labels.
+    #
+    # This pass uses Phase B as the linking signal: when one Phase B cluster
+    # is "covered" by ≥2 Phase A labels (its centroid is above threshold
+    # with each), those Phase A labels are sub-aspects of the same subject
+    # and merge into one canonical theme. The Phase B cluster's mentioning
+    # banks also flow in (they engaged with the topic without taking a
+    # primary stance — counted as neutral). When only 1 Phase A label is
+    # nearby, just augment its banks; no Phase A merge happens.
+    union_parent: dict[str, str] = {label: label for label in merged_sources}
+
+    def _find(label: str) -> str:
+        # Iterative union-find with path compression.
+        while union_parent[label] != label:
+            union_parent[label] = union_parent[union_parent[label]]
+            label = union_parent[label]
+        return label
+
+    def _union(a: str, b: str) -> None:
+        ra, rb = _find(a), _find(b)
+        if ra == rb:
+            return
+        # Keep the higher-bank-count Phase A canonical as the root — its
+        # phrasing is the most-representative label for the merged theme.
+        ra_banks = len(merged_sources.get(ra, set()))
+        rb_banks = len(merged_sources.get(rb, set()))
+        if ra_banks >= rb_banks:
+            union_parent[rb] = ra
+        else:
+            union_parent[ra] = rb
+
+    # Walk covered Phase B clusters; record (banks_to_add, anchor_label) for
+    # the augmentation pass after union-find converges.
+    topic_augments: list[dict] = []
+    for d in near_miss:
+        if d.get("reason") != "covered":
+            continue
+        nearby = d.get("nearby_phase_a") or []
+        if not nearby:
+            continue
+        # Only count Phase B clusters with ≥2 banks as a real topic — a
+        # 1-bank Phase B cluster is too thin to anchor a merge decision.
+        if d.get("n_banks", 0) < 2:
+            continue
+        nearby_labels = [lbl for lbl, _sim in nearby if lbl in union_parent]
+        if not nearby_labels:
+            continue
+        # ≥2 nearby Phase A labels → merge them. They're sub-aspects of one
+        # subject under the Phase B topic's centroid.
+        if len(nearby_labels) >= 2:
+            anchor = nearby_labels[0]
+            for other in nearby_labels[1:]:
+                _union(anchor, other)
+        topic_augments.append({
+            "nearby_labels": nearby_labels,
+            "banks": set(d.get("banks", [])),
+            "members": d.get("members", []),
+            "phase_b_n_banks": d.get("n_banks", 0),
+        })
+
+    # Detect actual merges (Phase A labels whose root != themselves).
+    two_tier_merges: list[dict] = []
+    pre_merge_labels = list(merged_sources.keys())
+    label_to_root: dict[str, str] = {}
+    for label in pre_merge_labels:
+        root = _find(label)
+        label_to_root[label] = root
+    # Group originals by their root for audit output
+    root_to_members: dict[str, list[str]] = {}
+    for orig, root in label_to_root.items():
+        root_to_members.setdefault(root, []).append(orig)
+    for root, members in root_to_members.items():
+        if len(members) > 1:
+            two_tier_merges.append({
+                "canonical": root,
+                "merged_from": sorted(members),
+            })
+
+    # Rebuild source/stance/pdf maps under the merged roots.
+    if two_tier_merges:
+        new_sources: dict[str, set[str]] = {}
+        new_stance_banks: dict[str, dict[str, set[str]]] = {}
+        new_pdf_count: dict[str, int] = {}
+        for label, srcs in merged_sources.items():
+            root = label_to_root[label]
+            new_sources.setdefault(root, set()).update(srcs)
+            stance_buckets = new_stance_banks.setdefault(
+                root, {"supportive": set(), "skeptical": set(), "neutral": set()}
+            )
+            for stance, banks in canonical_stance_banks.get(label, {}).items():
+                stance_buckets[stance] |= banks
+            new_pdf_count[root] = (
+                new_pdf_count.get(root, 0) + canonical_pdf_count.get(label, 0)
+            )
+        merged_sources = new_sources
+        canonical_stance_banks = new_stance_banks
+        canonical_pdf_count = new_pdf_count
+
+    # Augment Phase A theme banks with Phase B mention banks. These are
+    # banks that mentioned the topic but didn't take a primary stance — they
+    # belong in the neutral bucket. After union-find converges, all nearby
+    # Phase A labels for a given Phase B cluster share a single root.
+    for aug in topic_augments:
+        roots = {label_to_root.get(lbl, lbl) for lbl in aug["nearby_labels"]}
+        # After union, expect exactly 1 root. Defensive: pick first if not.
+        root = next(iter(roots)) if roots else None
+        if not root or root not in merged_sources:
+            continue
+        merged_sources[root].update(aug["banks"])
+        stance_buckets = canonical_stance_banks.setdefault(
+            root, {"supportive": set(), "skeptical": set(), "neutral": set()}
+        )
+        stance_buckets["neutral"].update(aug["banks"])
+
+    # Surface the normalization map for downstream consumers (routine
+    # adjudication step). The map carries each raw normalized tag through to
+    # its FINAL canonical label (post-Phase-A + two-tier merge).
+    if theme_normalization is not None:
+        norm_to_final: dict[str, str] = {}
+        for orig_tag, phase_a_canonical in orig_to_canonical.items():
+            final = label_to_root.get(phase_a_canonical, phase_a_canonical)
+            norm_to_final[orig_tag] = final
+        theme_normalization["norm_to_canonical"] = norm_to_final
+
+    if discovery_audit is not None:
+        discovery_audit["two_tier_merges"] = two_tier_merges
+        discovery_audit["two_tier_augment_count"] = len(topic_augments)
+
+    # Import here to avoid a circular import risk if voice_rules ever
+    # grows synthesizer-side dependencies.
+    from ai_analysis.voice_rules import NON_BANK_SOURCES
+
+    theme_map: dict[str, dict] = {
+        tag: {
+            "banks": len(srcs),
+            "pdfs": canonical_pdf_count.get(tag, 0),
+            "sources": sorted(srcs),
+            "supportive": len(canonical_stance_banks.get(tag, {}).get("supportive", set())),
+            "skeptical": len(canonical_stance_banks.get(tag, {}).get("skeptical", set())),
+            "neutral": len(canonical_stance_banks.get(tag, {}).get("neutral", set())),
+            "discovered": False,
+            # True if every source for this theme is a non-bank publication
+            # (TME, Bloomberg news wire, Reuters, etc.). Such themes are
+            # color/positioning observations, not underwritten analytical
+            # views — the writer should NOT lead INSIGHTS with them without
+            # multi-bank corroboration. Surfaced in _format_theme_coverage
+            # so the prompt's editorial decision is informed.
+            "non_bank_only": bool(srcs) and srcs.issubset(NON_BANK_SOURCES),
+        }
+        for tag, srcs in merged_sources.items()
+    }
+
+    # Add Phase B clusters that DIDN'T match any Phase A theme as discovered.
+    for d in promoted:
+        label = d["canonical"]
+        if label in theme_map:
+            label = f"{label} (discovered)"
+        banks_set = set(d["banks"])
+        theme_map[label] = {
+            "banks": len(banks_set),
+            "pdfs": len(d["pdf_ids"]),
+            "sources": sorted(banks_set),
+            "supportive": 0,
+            "skeptical": 0,
+            "neutral": len(banks_set),
+            "discovered": True,
+        }
 
     return theme_map
 

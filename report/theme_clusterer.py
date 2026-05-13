@@ -277,7 +277,14 @@ def discover_uncovered_clusters(
         return [], []
 
     mention_embeddings = {s: embeddings_by_input[s] for s in unique_strings if s in embeddings_by_input}
-    covered_embeddings = [embeddings_by_input[c] for c in covered_labels if c in embeddings_by_input]
+    # Keep (label, vector) pairs aligned so we can record WHICH Phase A
+    # label(s) a Phase B cluster is close to, not just max similarity.
+    # That's the two-tier signal: a Phase B topic cluster covering ≥2
+    # Phase A labels means those labels are sub-aspects of the same
+    # subject and should be merged in the synthesizer's reconciliation pass.
+    covered_pairs: list[tuple[str, list[float]]] = [
+        (c, embeddings_by_input[c]) for c in covered_labels if c in embeddings_by_input
+    ]
 
     raw_clusters = _greedy_agglomerative(mention_embeddings, threshold)
 
@@ -301,17 +308,26 @@ def discover_uncovered_clusters(
             banks |= string_to_banks.get(m, set())
             pdf_ids |= string_to_pdf_ids.get(m, set())
         max_sim = 0.0
-        for cv in covered_embeddings:
+        nearby_phase_a: list[tuple[str, float]] = []
+        for label, cv in covered_pairs:
             if not cv or not centroid:
                 continue
             s = _cosine(centroid, cv)
             if s > max_sim:
                 max_sim = s
+            if s >= threshold:
+                nearby_phase_a.append((label, round(s, 4)))
+        nearby_phase_a.sort(key=lambda x: -x[1])
         decisions.append({
             "members": cluster,
             "banks": sorted(banks),
             "pdf_ids": sorted(pdf_ids),
             "max_covered_sim": round(max_sim, 4),
+            # Phase A labels this cluster sits above the merge threshold with,
+            # sorted by similarity desc. Empty if no Phase A label is close.
+            # Consumed by synthesizer's two-tier merge pass: when ≥2 Phase A
+            # labels are nearby, they collapse into one canonical theme.
+            "nearby_phase_a": nearby_phase_a,
             "n_banks": len(banks),
         })
 

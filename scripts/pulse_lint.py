@@ -72,15 +72,28 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
     if ctx is not None:
         theme_map = ctx.get('theme_map') or {}
         if theme_map:
-            # Split into primary (non-discovered) and discovered themes —
-            # they get different coverage tests because discovered topics
-            # belong in WHAT TO WATCH, not INSIGHTS.
-            primary = {t: i for t, i in theme_map.items() if not i.get('discovered')}
-            discovered = {t: i for t, i in theme_map.items() if i.get('discovered')}
+            # Two cohorts for coverage tests:
+            #   primary: Phase A theme_stances; banks took a directional view.
+            #     Must appear in INSIGHTS body when top-ranked.
+            #   discovered: Phase B promoted; banks engaged contextually
+            #     without a primary stance. Must appear SOMEWHERE in the
+            #     pulse (INSIGHTS body OR WHAT TO WATCH) when top-ranked.
+            # non_bank_only themes are excluded from BOTH cohorts' top-3
+            # check — they're commentary publications (TME, Bloomberg,
+            # Reuters) without underwritten analytical desks, so promoting
+            # them to lead-insight slots is a category error. The synthesizer
+            # already routes them to a separate "NON-BANK-ONLY" bucket in
+            # the theme_coverage prompt block; this lint mirrors that.
+            primary = {
+                t: i for t, i in theme_map.items()
+                if not i.get('discovered') and not i.get('non_bank_only')
+            }
+            discovered = {
+                t: i for t, i in theme_map.items()
+                if i.get('discovered') and not i.get('non_bank_only')
+            }
 
             md_lower = md_text.lower()
-            # Whole-pulse text for the discovered-theme check (it can live
-            # in INSIGHTS body OR WHAT TO WATCH).
             insights_match = re.search(
                 r'##\s+(?:\d+\.\s+)?INSIGHTS.*?(?=^##\s|\Z)',
                 md_text, re.MULTILINE | re.DOTALL | re.IGNORECASE,
@@ -93,23 +106,36 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
                     return True  # too-generic key — don't flag
                 return any(w in haystack for w in sig_words)
 
-            # (1) Top-3 PRIMARY themes by bank count should appear in INSIGHTS.
-            primary_ranked = sorted(
-                primary.items(), key=lambda kv: -kv[1].get('banks', 0)
+            # Combined top-3 ranking across primary + discovered, sorted by
+            # bank count desc. A 12-bank discovered theme (Trump-Xi class)
+            # outranks a 4-bank primary one; ranking by bank count alone
+            # captures "what is most engaged with in this corpus" regardless
+            # of whether banks staked a stance. Without this, the lint
+            # silently missed the 2026-05-12 Trump-Xi miss: 12 banks of
+            # contextual engagement, ranked nowhere in the top-3 primary
+            # because primary-only ranking excluded discovery-promoted.
+            combined = list(primary.items()) + list(discovered.items())
+            combined_ranked = sorted(
+                combined, key=lambda kv: -kv[1].get('banks', 0)
             )
-            for theme_key, _ in primary_ranked[:3]:
-                if not _has_signal(theme_key, insights_text):
-                    add(0, 'top-3-theme-missing',
-                        f"top-3 primary theme '{theme_key}' has no significant word in INSIGHTS section")
+            for theme_key, info in combined_ranked[:3]:
+                if info.get('discovered'):
+                    # Discovered themes belong in WHAT TO WATCH; accept
+                    # appearance anywhere in the pulse.
+                    if not _has_signal(theme_key, md_lower):
+                        add(0, 'top-3-theme-missing',
+                            f"top-3 theme '{theme_key}' ({info.get('banks', 0)} banks, discovered) "
+                            f"appears nowhere in the pulse — add a WHAT TO WATCH bullet")
+                else:
+                    if not _has_signal(theme_key, insights_text):
+                        add(0, 'top-3-theme-missing',
+                            f"top-3 primary theme '{theme_key}' ({info.get('banks', 0)} banks) "
+                            f"has no significant word in INSIGHTS section")
 
-            # (2) Heavily-discussed DISCOVERED topics (>=6 banks) must appear
-            # SOMEWHERE in the pulse — INSIGHTS body OR WHAT TO WATCH. A
-            # discovered topic with broad bank mention that's nowhere in the
-            # final is a coverage failure (the 2026-05-12 Trump-Xi miss:
-            # 12 banks, promoted by Phase B, dropped entirely). SCRUB is
-            # authorized to resolve this kind by adding a WHAT TO WATCH
-            # bullet — so it's a HARD issue, not a soft warning, but the
-            # `kind` tells SCRUB it's a WHAT-TO-WATCH fix, not an INSIGHTS one.
+            # Heavily-discussed DISCOVERED topics (>=6 banks) must appear
+            # SOMEWHERE in the pulse, even when outside the top-3. Distinct
+            # `kind` so SCRUB knows the fix is to ADD a WHAT TO WATCH bullet
+            # rather than to rewrite an existing INSIGHTS sentence.
             for theme_key, info in discovered.items():
                 if info.get('banks', 0) >= 6 and not _has_signal(theme_key, md_lower):
                     add(0, 'discovered-theme-missing',

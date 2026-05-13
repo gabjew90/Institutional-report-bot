@@ -567,6 +567,7 @@ for theme_name, info in selected:
 
     inputs_per_theme[theme_name] = {
         'theme': theme_name,
+        'discovered': bool(info.get('discovered')),
         'stance_counts': {
             'supportive': info.get('supportive', 0),
             'skeptical': info.get('skeptical', 0),
@@ -576,6 +577,62 @@ for theme_name, info in selected:
         'tension_points': tension_points,
         'key_data_points': key_data_points,
     }
+
+# Discovery fallback. Phase-B-promoted themes (`discovered: true` in
+# theme_map) are subjects ≥3 banks contextually mentioned but no bank
+# promoted to a primary theme_stance. The standard stance/tension matching
+# above returns empty for them because there are no stance entries with
+# the discovered canonical's label. Without this fallback the pruning
+# below drops them entirely — which silently nuked the 2026-05-13
+# Trump-Xi adjudication (12-bank cross-bank topic, 0 stances → pruned →
+# never reached the sub-agent → dropped from the pulse).
+#
+# Surface the Phase B cluster's mention strings as neutral-stance entries,
+# attributed cyclically to the cluster's contributing banks so Rule 1
+# (evidence quote provenance) and Rule 2 (bank source provenance) accept
+# them. Also fold in key_data_points from any PDF whose source bank is
+# in the cluster — that's our best proxy for "PDFs that talked about
+# this topic", since analyses_json doesn't carry pdf_file_id.
+discovery_promoted = (ctx.get('discovery_audit') or {}).get('promoted') or []
+discovery_by_canonical = {d.get('canonical'): d for d in discovery_promoted if d.get('canonical')}
+
+for theme_name in list(inputs_per_theme):
+    inputs = inputs_per_theme[theme_name]
+    if (inputs['theme_stances'] or inputs['tension_points']
+            or inputs['key_data_points']):
+        continue  # already has primary-stance inputs; not a discovery-only case
+    disc = discovery_by_canonical.get(theme_name)
+    if not disc:
+        continue
+    members = list(disc.get('members') or [])
+    cluster_banks = list(disc.get('banks') or [])
+    if not members or not cluster_banks:
+        continue
+    # Synthesize neutral stance entries: one per mention (cap at 20 so
+    # the sub-agent prompt doesn't bloat), bank attribution cycled.
+    for i, member in enumerate(members[:20]):
+        bank = cluster_banks[i % len(cluster_banks)]
+        inputs['theme_stances'].append({
+            'source': bank,
+            'theme': theme_name,
+            'stance': 'neutral',
+            'conviction': None,
+            'key_argument': member,
+            'primary_instruments': [],
+            'vs_consensus': None,
+            'evidence': member,
+        })
+    cluster_banks_set = set(cluster_banks)
+    for a in analyses:
+        if (a.get('source') or 'Unknown') in cluster_banks_set:
+            for kdp in a.get('data_points', []) or []:
+                inputs['key_data_points'].append({
+                    'source_bank': kdp.get('source_bank') or a.get('source'),
+                    'figure': kdp.get('figure'),
+                    'metric': kdp.get('metric'),
+                    'context': kdp.get('context'),
+                })
+    print(f"  discovery fallback for '{theme_name}': {len(inputs['theme_stances'])} synthetic stances, {len(inputs['key_data_points'])} data_points")
 
 # Per-theme match diagnostics — surfaces silent vacuous-match bugs (e.g.,
 # theme_map vs theme_stances normalization mismatches) by reporting the
@@ -746,33 +803,41 @@ for theme, inputs in inputs_per_theme.items():
             fail_reason = (f"stance_counts mismatch: "
                            f"{adj.get('stance_counts')} vs {inputs['stance_counts']}")
 
-    # Rule 5 (LOOSENED): facts_agreed entries are kept if EITHER (a) the
-    # fact itself has ≥2 banks_for, OR (b) the THEME has ≥2 banks of
-    # supportive stance (so the fact is corroborated by directional
-    # consensus even if the specific number/quote came from one bank).
+    # Rule 5 (LOOSENED twice): facts_agreed entries are kept if ANY of
+    #   (a) the fact itself has ≥2 banks_for, OR
+    #   (b) the THEME has ≥2 banks supportive, OR
+    #   (c) the THEME has ≥2 banks neutral (DISCOVERY branch — see below).
     #
-    # Why loosened: the original rule (drop facts cited by only one bank)
-    # silently nuked the most-covered theme on the 2026-05-08T23-33-34Z
+    # First loosen (b) — the original rule (drop facts cited by only one
+    # bank) silently nuked the most-covered theme on the 2026-05-08T23-33-34Z
     # run. The 8-bank `ai hyperscaler capex` theme had Goldman's $755B
     # number, UniCredit's $710-725B number, BofA's AI Big 10 stat — each
     # cited by only one bank but ALL backing a theme with 6 supportive
     # stances. Original Rule 5 dropped them all → theme had no remaining
-    # content → discarded. Loosened rule keeps them because the THEME's
-    # stance count provides the consensus signal even when each specific
-    # data point is single-bank-cited.
+    # content → discarded.
+    #
+    # Second loosen (c) — discovered themes (Phase B promoted) have
+    # supportive=0 / neutral=N because no bank took a primary stance.
+    # Branch (b) silently nukes them too. The 2026-05-13 Trump-Xi theme
+    # (12 banks neutral, 0 supportive) lost every adjudicated fact under
+    # the post-first-loosen rule and was dropped from the pulse. Branch (c)
+    # treats high neutral count as equivalent consensus signal — banks
+    # engaged with the topic at the mention level even without a stance.
     theme_supportive_count = (inputs.get('stance_counts') or {}).get('supportive', 0)
+    theme_neutral_count = (inputs.get('stance_counts') or {}).get('neutral', 0)
+    theme_consensus_floor = max(theme_supportive_count, theme_neutral_count)
     if not fail_reason and adj.get('facts_agreed'):
         before = len(adj['facts_agreed'])
         adj['facts_agreed'] = [
             fa for fa in adj['facts_agreed']
             if (
                 len(fa.get('banks_for') or []) >= 2
-                or theme_supportive_count >= 2
+                or theme_consensus_floor >= 2
             )
         ]
         dropped = before - len(adj['facts_agreed'])
         if dropped:
-            print(f"  facts_agreed: dropped {dropped} single-bank entr{'y' if dropped == 1 else 'ies'} from {theme!r} (theme supportive count: {theme_supportive_count})")
+            print(f"  facts_agreed: dropped {dropped} single-bank entr{'y' if dropped == 1 else 'ies'} from {theme!r} (theme consensus floor: {theme_consensus_floor} = max(supportive={theme_supportive_count}, neutral={theme_neutral_count}))")
 
     # Rule 6: falsifiable_predictions[*].deadline must be either an ISO
     # date prefix OR a short conditional substring. Catches the failure
