@@ -834,78 +834,117 @@ def publish_web_fragment_job() -> None:
         if it.get("type") == "file"
     }
 
+    # POLICY: only the SINGLE most recent pulse gets full processing
+    # (markdown fetch + metadata extract + fragment render). Older pulses
+    # get either a cached entry (if we extracted them on a previous job
+    # run) or a MINIMAL stub (ts + filename + archive_url only). This
+    # keeps the first-deploy cost bounded to one fetch + one fragment
+    # commit instead of N=WEB_ARCHIVE_LIMIT fetches + commits.
+    #
+    # Effect on host-site pages:
+    #   - The weekly-view dashboard filters by date_utc and only renders
+    #     entries that have a fragment_url. Older stubs are silently
+    #     skipped — visible only as raw-markdown links via archive_url.
+    #   - As new pulses fire each weekday, the worker fills in the
+    #     fragment for the new latest. Past pulses stay as stubs unless
+    #     a separate backfill is run manually.
     archive_entries: list[dict[str, Any]] = []
     new_fragments = 0
     latest_md: str | None = None
     latest_ts: str | None = None
     latest_filename: str | None = None
 
-    for item in candidates:
+    for idx, item in enumerate(candidates):
         name = item["name"]
         ts = name[:-3]  # strip .md
         fragment_name = f"{ts}.html"
+        is_newest = (idx == 0)
 
         cached = cached_entries.get(ts)
         fragment_present = fragment_name in existing_fragments
 
-        # If we have both a cached entry AND its fragment file already exists,
-        # reuse without refetching. Only the first candidate gets its markdown
-        # fetched (to update latest-fragment.html) — the rest are skipped.
-        if cached and fragment_present:
+        if is_newest:
+            # Full processing: fetch markdown (if needed), extract metadata,
+            # render fragment (if missing), commit, build a full entry.
+            if cached and fragment_present:
+                # Already up-to-date. Refresh URLs in the entry but skip
+                # the markdown fetch.
+                entry = dict(cached)
+                entry["archive_url"] = (
+                    f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
+                )
+                entry["fragment_url"] = (
+                    f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
+                )
+            else:
+                pulse_md = gh.get_file_text(f"{ARCHIVE_DIR}/{name}")
+                if not pulse_md:
+                    log.warning(
+                        f"Bridge: web publish — newest pulse {name} markdown unreadable, "
+                        f"falling back to stub entry"
+                    )
+                    entry = {
+                        "ts": ts,
+                        "filename": name,
+                        "archive_url": (
+                            f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
+                        ),
+                    }
+                else:
+                    meta = extract_pulse_metadata(
+                        pulse_md, ts=ts, source_filename=name,
+                        repo=repo, branch=branch,
+                    )
+                    if not fragment_present:
+                        fragment_html = render_pulse_fragment(pulse_md)
+                        gh.put_file(
+                            f"{WEB_FRAGMENTS_DIR}/{fragment_name}",
+                            fragment_html,
+                            f"bridge: web fragment for {ts}",
+                        )
+                        new_fragments += 1
+                    entry = {
+                        "ts": ts,
+                        "filename": name,
+                        "title": meta["title"],
+                        "date_utc": meta["date_utc"],
+                        "pdf_count": meta["pdf_count"],
+                        "archive_url": meta["archive_url"],
+                        "fragment_url": (
+                            f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
+                        ),
+                    }
+                    latest_md = pulse_md
+                    latest_ts = ts
+                    latest_filename = name
+        elif cached:
+            # Older pulse we processed in a previous run — reuse the cached
+            # entry (preserves any title/date_utc that was extracted then).
             entry = dict(cached)
-            # Always overwrite the URL fields in case the URL format changed.
             entry["archive_url"] = (
                 f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
             )
-            entry["fragment_url"] = (
-                f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
-            )
-            if latest_md is None and item is candidates[0]:
-                # First (newest) pulse — fetch its markdown so we can
-                # also refresh latest-fragment.html / latest.json. Without
-                # this the pointers go stale until a fully-new pulse lands.
-                latest_md = gh.get_file_text(f"{ARCHIVE_DIR}/{name}")
-                latest_ts = ts
-                latest_filename = name
-            archive_entries.append(entry)
-            continue
+            # Only expose fragment_url if the file actually exists on disk.
+            if fragment_present:
+                entry["fragment_url"] = (
+                    f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
+                )
+            else:
+                entry.pop("fragment_url", None)
+        else:
+            # Older pulse, no cached metadata, no fragment — minimal stub.
+            # Host pages skip entries without a fragment_url; the raw
+            # markdown is still reachable via archive_url for anyone who
+            # wants to read it directly.
+            entry = {
+                "ts": ts,
+                "filename": name,
+                "archive_url": (
+                    f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
+                ),
+            }
 
-        # New (or fragment missing) — fetch the markdown, extract metadata,
-        # render the fragment, commit it.
-        pulse_md = gh.get_file_text(f"{ARCHIVE_DIR}/{name}")
-        if not pulse_md:
-            log.warning(f"Bridge: web publish skipping {name} — markdown not readable")
-            continue
-        meta = extract_pulse_metadata(
-            pulse_md, ts=ts, source_filename=name, repo=repo, branch=branch,
-        )
-
-        if not fragment_present:
-            fragment_html = render_pulse_fragment(pulse_md)
-            gh.put_file(
-                f"{WEB_FRAGMENTS_DIR}/{fragment_name}",
-                fragment_html,
-                f"bridge: web fragment for {ts}",
-            )
-            new_fragments += 1
-
-        entry = {
-            "ts": ts,
-            "filename": name,
-            "title": meta["title"],
-            "date_utc": meta["date_utc"],
-            "pdf_count": meta["pdf_count"],
-            "archive_url": meta["archive_url"],
-            "fragment_url": (
-                f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
-            ),
-        }
         archive_entries.append(entry)
-
-        if latest_md is None and item is candidates[0]:
-            latest_md = pulse_md
-            latest_ts = ts
-            latest_filename = name
 
     # Update the latest-* pointers ONLY if a new fragment was rendered or
     # the latest entry differs from what's currently in latest.json. Avoids
