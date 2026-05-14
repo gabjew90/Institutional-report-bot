@@ -1,6 +1,7 @@
 """Discord bot client with slash commands."""
 
 import logging
+import re
 from datetime import datetime
 
 import discord
@@ -15,6 +16,121 @@ import db
 log = logging.getLogger(__name__)
 
 _display_tz = pytz.timezone(settings.timezone)
+
+
+# --- Perplexity /ask integration --------------------------------------------
+# Lazy-initialized OpenAI-compatible client pointed at Perplexity Sonar.
+# Empty PERPLEXITY_API_KEY => `_get_perplexity_client()` returns None and the
+# /ask + @mention surfaces return a polite "not configured" message instead of
+# erroring out.
+_perplexity_client = None
+
+
+def _get_perplexity_client():
+    global _perplexity_client
+    if _perplexity_client is not None:
+        return _perplexity_client
+    if not settings.perplexity_api_key:
+        return None
+    try:
+        from openai import OpenAI
+        _perplexity_client = OpenAI(
+            api_key=settings.perplexity_api_key,
+            base_url="https://api.perplexity.ai",
+        )
+        return _perplexity_client
+    except Exception as e:
+        log.error(f"Failed to init Perplexity client: {e}")
+        return None
+
+
+def _format_citations(answer_text: str, search_results: list) -> str:
+    """Replace inline [N] markers in the answer with [[N]](url) markdown links.
+
+    Perplexity returns a `search_results` array where each item has a `url`
+    (and usually `title`). Inline references in the answer look like `[1]`.
+    We turn those into clickable markdown so Discord renders them as links.
+    """
+    if not search_results:
+        return answer_text
+
+    def repl(match: re.Match) -> str:
+        try:
+            n = int(match.group(1))
+        except ValueError:
+            return match.group(0)
+        idx = n - 1
+        if 0 <= idx < len(search_results):
+            url = (search_results[idx] or {}).get("url")
+            if url:
+                return f"[[{n}]](<{url}>)"
+        return match.group(0)
+
+    return re.sub(r"\[(\d+)\]", repl, answer_text)
+
+
+async def _answer_with_perplexity(question: str, user_id: int) -> discord.Embed:
+    """Run a Perplexity Sonar query and return a Discord embed.
+
+    Enforces the per-user daily cap. Returns a single embed with the formatted
+    answer + NFA footer, or an error embed on failure.
+    """
+    # Quota check
+    cap = settings.ask_daily_quota_per_user
+    if cap > 0:
+        used = db.count_ask_queries_today_for_user(user_id)
+        if used >= cap:
+            return discord.Embed(
+                description=(
+                    f"You've hit today's /ask cap ({cap} queries). "
+                    f"Resets at UTC midnight."
+                ),
+                color=0xE67E22,
+            )
+
+    client = _get_perplexity_client()
+    if client is None:
+        return discord.Embed(
+            description=(
+                "/ask is not configured on this bot. Set the "
+                "`PERPLEXITY_API_KEY` env var to enable web-search Q&A."
+            ),
+            color=0xE74C3C,
+        )
+
+    try:
+        response = client.chat.completions.create(
+            model="sonar-pro",
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a financial markets assistant for active "
+                        "traders. Format responses with arrow points using "
+                        "→ followed by a blank line between each point. "
+                        "Bold key terms and numbers with **bold**. Keep it "
+                        "to 3-5 points max. Cite sources. Be extremely "
+                        "concise and readable."
+                    ),
+                },
+                {"role": "user", "content": question},
+            ],
+            max_tokens=200,
+            temperature=0.2,
+        )
+        answer = response.choices[0].message.content or ""
+        search_results = getattr(response, "search_results", None) or []
+        formatted = _format_citations(answer, search_results)
+        db.record_ask_query(user_id)
+        embed = discord.Embed(description=formatted[:4000], color=0x228B22)
+        embed.set_footer(text="Hi, I'm AI-powered - NFA")
+        return embed
+    except Exception as e:
+        log.error(f"Perplexity /ask call failed: {e}", exc_info=True)
+        return discord.Embed(
+            description=f"Web search failed: {str(e)[:200]}",
+            color=0xE74C3C,
+        )
 
 
 def _fmt_ts(iso_str: str | None) -> str:
@@ -554,5 +670,53 @@ def create_bot() -> commands.Bot:
         except Exception as e:
             log.error(f"Reprocess failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
+
+    @bot.tree.command(name="ask", description="Web-search Q&A via Perplexity Sonar (not our research corpus)")
+    @app_commands.describe(question="What do you want to know? (current events, prices, news, etc.)")
+    async def ask_command(interaction: discord.Interaction, question: str):
+        question = (question or "").strip()
+        if not question:
+            await interaction.response.send_message("Ask a question first.", ephemeral=True)
+            return
+        await interaction.response.defer(thinking=True)
+        try:
+            user_id = interaction.user.id if interaction.user else 0
+            embed = await _answer_with_perplexity(question, user_id)
+            await interaction.followup.send(embed=embed)
+        except Exception as e:
+            log.error(f"/ask failed: {e}", exc_info=True)
+            await interaction.followup.send(f"Error: {str(e)[:200]}")
+
+    @bot.event
+    async def on_message(message: discord.Message):
+        # Ignore the bot's own messages + other bots.
+        if message.author.bot:
+            return
+        # Only respond when the bot is explicitly @-mentioned.
+        if bot.user is None or bot.user not in message.mentions:
+            await bot.process_commands(message)
+            return
+        # Strip the mention(s) from the content to get the actual question.
+        content = message.content or ""
+        for mention in (f"<@{bot.user.id}>", f"<@!{bot.user.id}>"):
+            content = content.replace(mention, "")
+        question = content.strip()
+        if not question:
+            await message.reply(
+                "Mention me with a question and I'll search the web for you.",
+                mention_author=False,
+            )
+            return
+        try:
+            async with message.channel.typing():
+                embed = await _answer_with_perplexity(question, message.author.id)
+                await message.reply(embed=embed, mention_author=False)
+        except Exception as e:
+            log.error(f"@mention /ask failed: {e}", exc_info=True)
+            try:
+                await message.reply(f"Error: {str(e)[:200]}", mention_author=False)
+            except Exception:
+                pass
+        await bot.process_commands(message)
 
     return bot

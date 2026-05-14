@@ -162,6 +162,16 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         );
         CREATE INDEX IF NOT EXISTS idx_reanalyze_status ON reanalyze_jobs(status);
         CREATE INDEX IF NOT EXISTS idx_reanalyze_created ON reanalyze_jobs(created_at);
+
+        -- Per-user audit log for /ask + @mention Perplexity queries. Used to
+        -- enforce a daily-per-user cap. Reset is "since UTC midnight" — see
+        -- count_ask_queries_today_for_user.
+        CREATE TABLE IF NOT EXISTS ask_queries (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            asked_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+        CREATE INDEX IF NOT EXISTS idx_ask_queries_user_time ON ask_queries(user_id, asked_at);
     """)
     # Idempotent migrations for already-deployed bridge_ingestion_state schemas
     # (the table was first created in step 1 without these columns).
@@ -1182,3 +1192,24 @@ def get_pipeline_stats() -> dict:
         "uploads_last_24h": uploads_last_24h,
         "uploads_since_last_scheduled": uploads_since_last_scheduled,
     }
+
+
+# =============================================================================
+# /ask Perplexity rate-limit log.
+# =============================================================================
+
+
+def count_ask_queries_today_for_user(user_id: int) -> int:
+    """Count this user's /ask queries since UTC midnight."""
+    today_utc_midnight = datetime.utcnow().strftime("%Y-%m-%d 00:00:00")
+    row = get_connection().execute(
+        "SELECT COUNT(*) AS c FROM ask_queries WHERE user_id = ? AND asked_at >= ?",
+        (int(user_id), today_utc_midnight),
+    ).fetchone()
+    return int(row["c"]) if row else 0
+
+
+def record_ask_query(user_id: int) -> None:
+    conn = get_connection()
+    conn.execute("INSERT INTO ask_queries (user_id) VALUES (?)", (int(user_id),))
+    conn.commit()

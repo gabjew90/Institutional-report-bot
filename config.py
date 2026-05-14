@@ -16,6 +16,15 @@ class Settings(BaseSettings):
 
     # Finnhub (optional — enables live market news + economic calendar)
     finnhub_api_key: str = ""
+
+    # Perplexity (optional — enables /ask slash command + @mention web search).
+    # Set PERPLEXITY_API_KEY on Railway. Empty = /ask is disabled (returns a
+    # graceful "not configured" message). Uses the OpenAI-compatible client
+    # against https://api.perplexity.ai.
+    perplexity_api_key: str = ""
+    # Daily query cap per Discord user for /ask + @mention. Resets at UTC
+    # midnight. Set to 0 to disable the cap (not recommended).
+    ask_daily_quota_per_user: int = 20
     gemini_model: str = "gemini-3.1-lite"
     gemini_triage_model: str = "gemini-3.1-lite"
     gemini_max_tokens: int = 4096
