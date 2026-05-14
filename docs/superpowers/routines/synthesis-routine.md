@@ -580,62 +580,123 @@ for theme_name, info in selected:
         'key_data_points': key_data_points,
     }
 
-# Discovery fallback. Phase-B-promoted themes (`discovered: true` in
-# theme_map) are subjects ≥3 banks contextually mentioned but no bank
-# promoted to a primary theme_stance. The standard stance/tension matching
-# above returns empty for them because there are no stance entries with
-# the discovered canonical's label. Without this fallback the pruning
-# below drops them entirely — which silently nuked the 2026-05-13
-# Trump-Xi adjudication (12-bank cross-bank topic, 0 stances → pruned →
-# never reached the sub-agent → dropped from the pulse).
+# UNIFIED ADJUDICATION INPUT CONTRACT
 #
-# Surface the Phase B cluster's mention strings as neutral-stance entries,
-# attributed cyclically to the cluster's contributing banks so Rule 1
-# (evidence quote provenance) and Rule 2 (bank source provenance) accept
-# them. Also fold in key_data_points from any PDF whose source bank is
-# in the cluster — that's our best proxy for "PDFs that talked about
-# this topic", since analyses_json doesn't carry pdf_file_id.
+# For EVERY theme, regardless of whether it's primary-Phase-A or
+# discovery-Phase-B, regardless of stance count, the sub-agent's input
+# is the union of:
+#
+#   1. Real Phase A stance entries — collected above via the
+#      stance_belongs_to() loop. PDFs that stance-labeled this theme.
+#
+#   2. Phase B mention evidence — from EVERY Phase B cluster that maps
+#      to this theme. Two sources:
+#        - The cluster whose canonical IS this theme (discovery-promoted
+#          themes; this is how Trump-Xi-class topics get evidence).
+#        - Every "covered" near-miss cluster whose nearby_phase_a list
+#          contains this theme (this is how heavyweight primary themes
+#          with thin Phase A seeds get their 16-bank engagement reflected
+#          in adjudication input, not just in theme_map bank counts).
+#
+# This replaces three earlier code paths (real-stance-only, discovery-
+# fallback for empty themes, thin-primary augment for ≤2-stance themes)
+# with one always-on rule. The bug it fixes:
+#
+#   Adjudication kept discarding heavyweight themes (16 banks Hormuz,
+#   14 banks Trump-Xi) because their per-theme inputs looked like 1-bank
+#   themes — only 1 PDF gave a stance, the other 15 banks just mentioned.
+#   Rule 5 correctly applied the thin-theme filter to what was correctly
+#   detected as thin INPUT. The bug was never Rule 5; it was the input
+#   contract dropping 15 of 16 banks' content before adjudication saw it.
+#
+#   The fix is upstream: feed adjudication evidence proportional to the
+#   actual bank engagement, not just what Phase A's stance-labeled PDFs
+#   happened to carry. Once the input is correct, Rule 5 stops being
+#   a forcing function for special cases and just works.
+#
+# Bank attribution: synthetic stance entries cycle across the union of
+# all contributing banks (deduplicated across clusters). Members
+# deduplicated by string identity so the same mention isn't surfaced
+# twice from two different clusters covering the same topic.
 discovery_promoted = (ctx.get('discovery_audit') or {}).get('promoted') or []
 discovery_near_miss = (ctx.get('discovery_audit') or {}).get('near_miss') or []
-discovery_by_canonical = {d.get('canonical'): d for d in discovery_promoted if d.get('canonical')}
 
-# For THIN-PRIMARY augmentation: build a phase_a_label -> best matching
-# Phase B "covered" near-miss cluster. The 2026-05-14 QC flagged that
-# primary themes like `oil price super spike risk` (16 banks via Phase B
-# augment, but only 1 PDF gave a stance) were getting adjudication-
-# discarded because the sub-agent couldn't construct enough facts from
-# thin per-theme inputs. Surfacing the matching Phase B cluster's
-# mention strings as additional theme_stances fixes that — same trick
-# the discovery fallback below uses for promoted clusters.
-covered_clusters_by_phase_a: dict[str, dict] = {}
-for nm in discovery_near_miss:
-    if nm.get('reason') != 'covered':
+# Build the lookup: theme_name -> list of Phase B clusters that map to it.
+# Promoted clusters: their canonical IS the theme name.
+# Covered near-miss clusters: their nearby_phase_a list contains the
+# Phase A theme(s) they cover (one cluster can map to multiple themes
+# when it bridges fragmented Phase A labels).
+phase_b_clusters_by_theme: dict[str, list[dict]] = {}
+
+def _add_phase_b_cluster(theme: str, cluster: dict) -> None:
+    phase_b_clusters_by_theme.setdefault(theme, []).append(cluster)
+
+for cluster in discovery_promoted:
+    canonical = cluster.get('canonical')
+    if canonical:
+        _add_phase_b_cluster(canonical, cluster)
+
+for cluster in discovery_near_miss:
+    if cluster.get('reason') != 'covered':
         continue
-    if nm.get('n_banks', 0) < 4:
-        continue  # not enough banks to be worth augmenting from
-    nearby = nm.get('nearby_phase_a') or []
+    # Phase B's own promotion bar is 3 banks; below that the cluster is
+    # too thin to be considered a real cross-bank signal. Reusing that
+    # bar here for consistency — single- and two-bank "coverage" isn't
+    # evidence worth augmenting from.
+    if cluster.get('n_banks', 0) < 3:
+        continue
+    nearby = cluster.get('nearby_phase_a') or []
     for entry in nearby:
-        # nearby_phase_a items are [label, sim] pairs
+        # nearby_phase_a items are [label, sim] pairs in the audit JSON.
         label = entry[0] if isinstance(entry, (list, tuple)) else entry
-        existing = covered_clusters_by_phase_a.get(label)
-        if not existing or nm.get('n_banks', 0) > existing.get('n_banks', 0):
-            covered_clusters_by_phase_a[label] = nm
+        if label:
+            _add_phase_b_cluster(label, cluster)
 
-# Threshold: theme with <=2 theme_stances is considered "thin" and
-# eligible for augmentation if a covered Phase B near-miss is available.
-THIN_PRIMARY_STANCE_THRESHOLD = 2
+# Total real+synthetic cap per theme. Keeps the sub-agent prompt
+# bounded; if real stances already fill the cap, synthetic augment
+# is a no-op (no dilution). Headroom = MAX_TOTAL_STANCE_ENTRIES -
+# real_count, computed per theme at augment time.
+MAX_TOTAL_STANCE_ENTRIES = 25
 
-def _synthesize_stances_from_cluster(target_inputs: dict, cluster: dict, theme_name: str, cap: int) -> int:
-    """Append synthetic neutral-stance entries to target_inputs.theme_stances
-    based on a Phase-B cluster's mention strings. Bank attribution cycled
-    across the cluster's contributing banks. Returns the number appended."""
-    members = list(cluster.get('members') or [])[:cap]
-    cluster_banks = list(cluster.get('banks') or [])
-    if not members or not cluster_banks:
+
+def _synthesize_stances_from_clusters(
+    target_inputs: dict,
+    clusters: list[dict],
+    theme_name: str,
+    cap: int,
+) -> int:
+    """Append synthetic neutral-stance entries to theme_stances from one
+    or more Phase B clusters that map to this theme. Members are
+    deduplicated by string identity across clusters. Bank attribution
+    cycles across the union of all contributing banks. Also folds in
+    key_data_points from any PDF whose source bank is in the union.
+    Returns the number of synthetic stance entries appended.
+    """
+    if cap <= 0 or not clusters:
         return 0
-    appended = 0
-    for i, member in enumerate(members):
-        bank = cluster_banks[i % len(cluster_banks)]
+    seen_members: set[str] = set()
+    pooled_members: list[str] = []
+    all_banks: set[str] = set()
+    for cluster in clusters:
+        for b in (cluster.get('banks') or []):
+            if b:
+                all_banks.add(b)
+        for m in (cluster.get('members') or []):
+            if not m or m in seen_members:
+                continue
+            seen_members.add(m)
+            pooled_members.append(m)
+            if len(pooled_members) >= cap:
+                break
+        if len(pooled_members) >= cap:
+            break
+
+    if not pooled_members or not all_banks:
+        return 0
+
+    bank_list = sorted(all_banks)
+    for i, member in enumerate(pooled_members):
+        bank = bank_list[i % len(bank_list)]
         target_inputs['theme_stances'].append({
             'source': bank,
             'theme': theme_name,
@@ -646,10 +707,12 @@ def _synthesize_stances_from_cluster(target_inputs: dict, cluster: dict, theme_n
             'vs_consensus': None,
             'evidence': member,
         })
-        appended += 1
-    cluster_banks_set = set(cluster_banks)
+
+    # Fold in key_data_points from any PDF whose source bank is in the
+    # union of contributing banks (same proxy as before — analyses_json
+    # doesn't carry pdf_file_id, so bank-match is our best PDF filter).
     for a in analyses:
-        if (a.get('source') or 'Unknown') in cluster_banks_set:
+        if (a.get('source') or 'Unknown') in all_banks:
             for kdp in a.get('data_points', []) or []:
                 target_inputs['key_data_points'].append({
                     'source_bank': kdp.get('source_bank') or a.get('source'),
@@ -657,38 +720,35 @@ def _synthesize_stances_from_cluster(target_inputs: dict, cluster: dict, theme_n
                     'metric': kdp.get('metric'),
                     'context': kdp.get('context'),
                 })
-    return appended
+    return len(pooled_members)
 
+
+# Apply uniformly. No source-flag branching, no thin-stance threshold,
+# no fully-empty special case.
+#   - 5 real stances + no Phase B coverage  -> no-op, real stances stand alone.
+#   - 5 real stances + 16-bank Phase B cover -> up to 20 synthetic added.
+#   - 1 real stance  + 16-bank Phase B cover -> up to 24 synthetic added.
+#   - 0 real stances + promoted Phase B     -> up to 25 synthetic added.
+# Pruning below still drops themes with zero inputs after this loop.
 for theme_name in list(inputs_per_theme):
     inputs = inputs_per_theme[theme_name]
-    n_stances = len(inputs['theme_stances'])
-    n_tensions = len(inputs['tension_points'])
-    n_dps = len(inputs['key_data_points'])
-    fully_empty = (n_stances == 0 and n_tensions == 0 and n_dps == 0)
-    is_thin_primary = (
-        not fully_empty
-        and n_stances <= THIN_PRIMARY_STANCE_THRESHOLD
-        and theme_name in covered_clusters_by_phase_a
+    clusters = phase_b_clusters_by_theme.get(theme_name) or []
+    if not clusters:
+        continue
+    n_real = len(inputs['theme_stances'])
+    headroom = MAX_TOTAL_STANCE_ENTRIES - n_real
+    if headroom <= 0:
+        continue  # real stances already fill the cap
+    appended = _synthesize_stances_from_clusters(
+        inputs, clusters, theme_name, cap=headroom,
     )
-
-    if fully_empty:
-        # Original discovery fallback path: Phase-B-promoted theme that
-        # had no primary stances at all. Synthesize from the promoted cluster.
-        disc = discovery_by_canonical.get(theme_name)
-        if not disc:
-            continue
-        appended = _synthesize_stances_from_cluster(inputs, disc, theme_name, cap=20)
-        if appended:
-            print(f"  discovery fallback for '{theme_name}': +{appended} synthetic stances, {len(inputs['key_data_points'])} data_points")
-    elif is_thin_primary:
-        # NEW: thin-primary augmentation. Theme has 1-2 real stances but
-        # a Phase B near-miss cluster with N>=4 banks covers the topic.
-        # Surface mentions so the sub-agent has enough cross-bank texture
-        # to construct facts_agreed without getting nuked by Rule 5.
-        nm = covered_clusters_by_phase_a[theme_name]
-        appended = _synthesize_stances_from_cluster(inputs, nm, theme_name, cap=15)
-        if appended:
-            print(f"  thin-primary augment for '{theme_name}': +{appended} synthetic stances (from {nm.get('n_banks', '?')}-bank covered cluster)")
+    if appended:
+        total_phase_b_banks = sum(c.get('n_banks', 0) for c in clusters)
+        print(
+            f"  unified augment for '{theme_name}': "
+            f"{n_real} real stances + {appended} mention-derived "
+            f"(from {len(clusters)} Phase B cluster(s), {total_phase_b_banks} pooled bank-entries)"
+        )
 
 # Per-theme match diagnostics — surfaces silent vacuous-match bugs (e.g.,
 # theme_map vs theme_stances normalization mismatches) by reporting the
