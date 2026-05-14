@@ -1,7 +1,7 @@
 """Discord bot client with slash commands."""
 
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 import discord
 import pytz
@@ -23,6 +23,67 @@ _display_tz = pytz.timezone(settings.timezone)
 # on Gemini 3.x grants 5,000 grounded prompts/month, shared across the account.
 # Once exhausted, paid overage is $14 per 1000 prompts.
 _gemini_ask_client = None
+
+# Channel-context fetch parameters. Recent chat is prepended to every /ask
+# call so Gemini can reference what users were discussing — critical for
+# bro-mode roasts that quote real positions/takes.
+_ASK_CONTEXT_MAX_MESSAGES = 30
+_ASK_CONTEXT_MAX_AGE_MIN = 60
+_ASK_CONTEXT_PER_MSG_CHARS = 300
+
+
+async def _fetch_chat_context(
+    channel,
+    *,
+    exclude_message_id: int | None = None,
+) -> str:
+    """Fetch recent channel messages and format them as an LLM context block.
+
+    Returns a chronologically-ordered "username: text" block of up to
+    _ASK_CONTEXT_MAX_MESSAGES messages, capped at _ASK_CONTEXT_MAX_AGE_MIN
+    minutes old. Each message is truncated to _ASK_CONTEXT_PER_MSG_CHARS
+    chars so a single long rant can't blow the token budget.
+
+    Returns "" on any failure or when there's nothing usable (e.g. a brand
+    new channel with no prior chatter, or a DM where we can't read history).
+    Empty-string fall-through is intentional — the caller treats it as
+    "no context, proceed normally."
+
+    `exclude_message_id` is the @mention message itself when invoked from
+    on_message — we don't want to feed the bot its own prompt as context.
+    """
+    if channel is None:
+        return ""
+    cutoff = datetime.now(timezone.utc) - timedelta(minutes=_ASK_CONTEXT_MAX_AGE_MIN)
+    collected: list[tuple[datetime, str]] = []
+    try:
+        async for msg in channel.history(limit=_ASK_CONTEXT_MAX_MESSAGES):
+            # discord.py timestamps are tz-aware UTC; cutoff is too.
+            if msg.created_at < cutoff:
+                continue
+            if exclude_message_id is not None and msg.id == exclude_message_id:
+                continue
+            text = (msg.content or "").strip()
+            if not text:
+                continue  # skip empty / embed-only messages
+            text = text[:_ASK_CONTEXT_PER_MSG_CHARS]
+            author = getattr(msg.author, "display_name", None) or msg.author.name
+            collected.append((msg.created_at, f"{author}: {text}"))
+    except discord.Forbidden:
+        log.info("Chat-context fetch: missing Read Message History permission")
+        return ""
+    except Exception as e:
+        log.warning(f"Chat-context fetch failed (non-fatal): {e}")
+        return ""
+    if not collected:
+        return ""
+    collected.sort(key=lambda t: t[0])  # oldest → newest
+    body = "\n".join(line for _, line in collected)
+    return (
+        "Recent channel chat (oldest → newest, for context only — "
+        "the actual question follows after):\n"
+        f"{body}"
+    )
 
 
 def _get_gemini_ask_client():
@@ -78,11 +139,20 @@ def _build_sources_footer(grounding_metadata) -> str:
     return "\n\nSources:\n" + "\n".join(lines)
 
 
-async def _answer_with_gemini(question: str, user_id: int) -> discord.Embed:
+async def _answer_with_gemini(
+    question: str,
+    user_id: int,
+    chat_context: str = "",
+) -> discord.Embed:
     """Run a Gemini grounded-search query and return a Discord embed.
 
     Enforces the per-user daily cap. Returns a single embed with the answer
     + sources footer + NFA footer, or an error embed on failure.
+
+    `chat_context` (optional) is a pre-formatted recent-channel-history block
+    from `_fetch_chat_context`. When non-empty, it's prepended to the user's
+    question so Gemini can reference what users were just discussing — useful
+    for bro-mode roasts and follow-up research questions.
     """
     cap = settings.ask_daily_quota_per_user
     if cap > 0:
@@ -132,6 +202,14 @@ async def _answer_with_gemini(question: str, user_id: int) -> discord.Embed:
                 "etc. Stay sharp and clever; keep jokes about the TRADE "
                 "or the TAKE, never personal attacks beyond trading. "
                 "Don't punch down on anyone outside the group.\n\n"
+                "CHANNEL CONTEXT: A block of recent channel messages may be "
+                "provided BEFORE the user's question. Use it to understand "
+                "what users were discussing — especially for bro-mode "
+                "roasts that should quote real positions or takes ("
+                "\"Mike, panic-buying NVDA at 240 then asking if it's a "
+                "good entry — bold strategy\"). For research questions, use "
+                "the context to follow up on prior discussion when relevant, "
+                "but don't force-reference it if the question is standalone.\n\n"
                 "Do not include inline citation markers like [1] in either "
                 "mode — sources are listed separately by the bot wrapper."
             ),
@@ -139,9 +217,18 @@ async def _answer_with_gemini(question: str, user_id: int) -> discord.Embed:
             max_output_tokens=200,
             temperature=0.2,
         )
+        # Compose the final user message — chat context (if any) on top,
+        # then a clear separator, then the actual question.
+        if chat_context:
+            user_content = (
+                f"{chat_context}\n\n"
+                f"--- The user is now asking: ---\n{question}"
+            )
+        else:
+            user_content = question
         response = await client.aio.models.generate_content(
             model=settings.gemini_model,
-            contents=question,
+            contents=user_content,
             config=config,
         )
         answer = (response.text or "").strip()
@@ -775,7 +862,8 @@ def create_bot() -> commands.Bot:
         await interaction.response.defer(thinking=True)
         try:
             user_id = interaction.user.id if interaction.user else 0
-            embed = await _answer_with_gemini(question, user_id)
+            chat_context = await _fetch_chat_context(interaction.channel)
+            embed = await _answer_with_gemini(question, user_id, chat_context=chat_context)
             await interaction.followup.send(embed=embed)
         except Exception as e:
             log.error(f"/ask failed: {e}", exc_info=True)
@@ -803,7 +891,15 @@ def create_bot() -> commands.Bot:
             return
         try:
             async with message.channel.typing():
-                embed = await _answer_with_gemini(question, message.author.id)
+                chat_context = await _fetch_chat_context(
+                    message.channel,
+                    exclude_message_id=message.id,
+                )
+                embed = await _answer_with_gemini(
+                    question,
+                    message.author.id,
+                    chat_context=chat_context,
+                )
                 await message.reply(embed=embed, mention_author=False)
         except Exception as e:
             log.error(f"@mention /ask failed: {e}", exc_info=True)
