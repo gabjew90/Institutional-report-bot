@@ -99,6 +99,21 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=120,
         )
 
+        # Web fragment publisher — regenerates pulse-output/web/{latest-
+        # fragment.html, latest.json, archive.json} when a new pulse archives.
+        # Host sites (GitHub Pages, embeds elsewhere) fetch these three files
+        # to render the pulse into their own layout. Idempotent: skips when
+        # latest.json's ts already matches the most recent archive.
+        from github_bridge.jobs import publish_web_fragment_job
+        scheduler.add_job(
+            publish_web_fragment_job,
+            trigger=IntervalTrigger(seconds=settings.bridge_post_poll_interval_seconds),
+            id="bridge_publish_web_fragment",
+            name="GitHub bridge: publish headless fragment + JSON for embeds",
+            max_instances=1,
+            misfire_grace_time=120,
+        )
+
     # Reanalyze background processor — picks up persistent reanalyze jobs
     # and runs them to completion. Survives worker restarts: a job in
     # 'processing' state gets re-attached on next tick, resuming from the

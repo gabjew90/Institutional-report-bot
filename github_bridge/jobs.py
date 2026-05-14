@@ -37,6 +37,13 @@ log = logging.getLogger(__name__)
 CONTEXT_PATH = "pulse-context/latest.json"
 PENDING_DIR = "pulse-output/pending"
 ARCHIVE_DIR = "pulse-output/archive"
+# Headless-fragment web publishing directory. Host sites (GitHub Pages,
+# Substack-via-API, etc.) fetch latest-fragment.html + latest.json from
+# here and inject into their own layout. Updates on every new pulse archive.
+WEB_DIR = "pulse-output/web"
+# How many past pulses to expose in the archive index. Bounded so the
+# JSON stays small; older pulses still readable via the raw GitHub URLs.
+WEB_ARCHIVE_LIMIT = 30
 # Hidden HTML comment we write into a QC review after appending its
 # dashboard link section. Idempotency marker: presence => already
 # published, skip on subsequent polls.
@@ -726,3 +733,122 @@ def _publish_one_qc_dashboard(item: dict[str, Any]) -> None:
     new_content = qc_content.rstrip("\n") + addendum
     gh.put_file(qc_path, new_content, f"bridge: append dashboard link to QC {name}")
     log.info(f"Bridge: appended dashboard link to QC {name}: {url}")
+
+
+# -----------------------------------------------------------------------------
+# JOB 4 — publish headless HTML fragment + JSON for host-site embeds
+# -----------------------------------------------------------------------------
+#
+# After each pulse archives, regenerate three files in pulse-output/web/:
+#   latest-fragment.html   — <article class="pulse">...</article>, no inline
+#                            styles. Host sites embed this and style via
+#                            their own CSS.
+#   latest.json            — metadata (title, date, pdf_count, theme list,
+#                            URLs). Host sites can render their own byline /
+#                            masthead from this instead of using the
+#                            fragment's built-in one.
+#   archive.json           — index of the last N pulses (ts + filename + raw
+#                            URL). Lets the host site render an archive list.
+#
+# Idempotent: latest.json carries the source pulse ts; if it already matches
+# the most recent archive, the job is a no-op.
+
+
+def publish_web_fragment_job() -> None:
+    """Regenerate the web fragment + JSON sidecars from the latest archive.
+
+    Runs in the APScheduler thread on the same cadence as the other bridge
+    polls. The work is bounded: list archive (one GitHub call), compare
+    against latest.json (one call), if up-to-date return. Otherwise three
+    commits (fragment, metadata, archive index).
+    """
+    if not bridge_enabled():
+        return
+    try:
+        items = gh.list_dir(ARCHIVE_DIR)
+    except Exception as e:
+        log.warning(f"Bridge: failed to list {ARCHIVE_DIR} for web publish: {e}")
+        return
+
+    md_files = [
+        it for it in items
+        if it.get("type") == "file" and it.get("name", "").endswith(".md")
+    ]
+    if not md_files:
+        return
+
+    # Filenames are timestamps; lexical sort desc = most recent first.
+    md_files.sort(key=lambda it: it.get("name", ""), reverse=True)
+    latest = md_files[0]
+    latest_name = latest["name"]
+    latest_ts = latest_name[:-3]  # strip .md
+
+    # Idempotency check — if web/latest.json already references this ts,
+    # nothing to do.
+    try:
+        current_latest_text = gh.get_file_text(f"{WEB_DIR}/latest.json")
+        if current_latest_text:
+            data = json.loads(current_latest_text)
+            if data.get("ts") == latest_ts:
+                return
+    except (json.JSONDecodeError, Exception):
+        pass
+
+    pulse_md = gh.get_file_text(f"{ARCHIVE_DIR}/{latest_name}")
+    if not pulse_md:
+        return
+
+    # Lazy imports — same reason as the QC dashboard publisher.
+    from scripts.pulse_dashboard import (
+        render_pulse_fragment,
+        extract_pulse_metadata,
+    )
+
+    repo = settings.github_repo.strip().strip("/")
+    branch = settings.github_bridge_branch
+
+    fragment_html = render_pulse_fragment(pulse_md)
+    metadata = extract_pulse_metadata(
+        pulse_md, ts=latest_ts, source_filename=latest_name,
+        repo=repo, branch=branch,
+    )
+
+    # Build archive index from up to the last N pulses. Each entry carries
+    # enough for a host site to render a "past pulses" list without an
+    # extra round trip per item.
+    archive_entries = []
+    for it in md_files[:WEB_ARCHIVE_LIMIT]:
+        name = it.get("name", "")
+        if not name.endswith(".md"):
+            continue
+        ts = name[:-3]
+        archive_entries.append({
+            "ts": ts,
+            "filename": name,
+            "archive_url": f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}",
+        })
+    archive_payload = {
+        "updated_at": datetime.utcnow().isoformat() + "Z",
+        "count": len(archive_entries),
+        "pulses": archive_entries,
+    }
+
+    gh.put_file(
+        f"{WEB_DIR}/latest-fragment.html",
+        fragment_html,
+        f"bridge: web fragment for {latest_ts}",
+    )
+    gh.put_file(
+        f"{WEB_DIR}/latest.json",
+        json.dumps(metadata, indent=2),
+        f"bridge: web metadata for {latest_ts}",
+    )
+    gh.put_file(
+        f"{WEB_DIR}/archive.json",
+        json.dumps(archive_payload, indent=2),
+        f"bridge: web archive index ({len(archive_entries)} pulses)",
+    )
+    log.info(
+        f"Bridge: published web fragment + JSON for {latest_ts} "
+        f"({len(fragment_html):,}B fragment, {len(archive_entries)} archive entries)"
+    )

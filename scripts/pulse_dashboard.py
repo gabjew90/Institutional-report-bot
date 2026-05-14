@@ -318,6 +318,120 @@ def _wrap_sections(body_html: str) -> str:
     return "".join(out)
 
 
+# === Public renderers ===
+
+def render_pulse_fragment(md: str) -> str:
+    """Render the pulse as a headless HTML fragment for embedding into a host
+    site. Output is just `<article class="pulse">...</article>` with semantic
+    class hooks and id anchors; NO `<html>`, NO `<head>`, NO inline styles.
+    All visual identity lives in the host site's CSS targeting the class
+    structure below.
+
+    Class structure (stable contract — the host site's CSS depends on it):
+        .pulse                       # outer wrapper
+        .pulse-masthead              # header block (brand + title + dateline)
+          .pulse-brand               # small caps "Daily Market Pulse" label
+          h1                         # pulse title (e.g. "Hot prices, Fed cornered")
+          .pulse-dateline            # date + pdf count
+        h2.recap         #pulse-recap
+        .recap-body                  # children = <p>, <ul>, etc.
+        h2.insights      #pulse-insights
+        .insights-body
+          h3                         # theme headers
+          em                         # italicized punchlines
+          ul / li                    # bullet rows
+        h2.watch         #pulse-watch
+        .watch-body
+        .cashtag                     # `$TICKER` spans
+    """
+    meta, body_md = _strip_frontmatter(md)
+    title, body_md = _extract_title_and_body(body_md)
+
+    body_html = markdown.markdown(
+        body_md,
+        extensions=["extra", "sane_lists", "smarty"],
+    )
+    body_html = _cashtag_to_span(body_html)
+    body_html = _wrap_sections(body_html)
+
+    # Add id anchors to section h2s so the host site can deep-link.
+    body_html = body_html.replace(
+        '<h2 class="recap">', '<h2 class="recap" id="pulse-recap">'
+    )
+    body_html = body_html.replace(
+        '<h2 class="insights">', '<h2 class="insights" id="pulse-insights">'
+    )
+    body_html = body_html.replace(
+        '<h2 class="watch">', '<h2 class="watch" id="pulse-watch">'
+    )
+
+    pdf_count = meta.get("pdf_count")
+    date_iso = (meta.get("dumped_at_utc") or "").rstrip("Z")[:10]
+    dateline_parts: list[str] = []
+    if date_iso:
+        try:
+            dateline_parts.append(
+                datetime.fromisoformat(date_iso).strftime("%A, %B %d, %Y")
+            )
+        except ValueError:
+            dateline_parts.append(date_iso)
+    if pdf_count:
+        dateline_parts.append(f"{pdf_count} research analyses")
+    dateline = " &middot; ".join(dateline_parts)
+
+    return (
+        '<article class="pulse">\n'
+        '  <header class="pulse-masthead">\n'
+        '    <p class="pulse-brand">Daily Market Pulse</p>\n'
+        f'    <h1>{title}</h1>\n'
+        f'    <p class="pulse-dateline">{dateline}</p>\n'
+        '  </header>\n'
+        f'  {body_html}\n'
+        '</article>\n'
+    )
+
+
+def extract_pulse_metadata(
+    md: str,
+    ts: str,
+    source_filename: str | None = None,
+    repo: str = "gabjew90/Institutional-report-bot",
+    branch: str = "pulse-data",
+) -> dict:
+    """Extract metadata for the JSON sidecar that ships alongside the
+    fragment. Host sites use this to render their own masthead / byline /
+    archive list outside the fragment, so they're not coupled to the
+    fragment's internal layout.
+    """
+    meta, body_md = _strip_frontmatter(md)
+    title, body_md = _extract_title_and_body(body_md)
+
+    # Pull INSIGHTS theme headers (### lines inside ## 2. INSIGHTS section).
+    themes: list[str] = []
+    in_insights = False
+    for line in body_md.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("## "):
+            in_insights = "INSIGHTS" in stripped.upper() or "ALPHA" in stripped.upper()
+            continue
+        if in_insights and stripped.startswith("### "):
+            themes.append(stripped[4:].strip())
+
+    fname = source_filename or f"{ts}.md"
+    return {
+        "ts": ts,
+        "title": title,
+        "date_utc": (meta.get("dumped_at_utc") or "").rstrip("Z")[:10],
+        "pdf_count": meta.get("pdf_count", 0),
+        "input_tokens": meta.get("input_tokens", 0),
+        "output_tokens": meta.get("output_tokens", 0),
+        "themes": themes,
+        "source_filename": fname,
+        "archive_url": f"https://raw.githubusercontent.com/{repo}/{branch}/pulse-output/archive/{fname}",
+        "fragment_url": f"https://raw.githubusercontent.com/{repo}/{branch}/pulse-output/web/latest-fragment.html",
+    }
+
+
 def _gh_get(path: str, token: str | None) -> dict | list:
     """Call the GitHub Contents API. Returns parsed JSON."""
     url = f"https://api.github.com/repos/{REPO}/contents/{path}?ref={BRANCH}"
