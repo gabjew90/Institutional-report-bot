@@ -46,15 +46,6 @@ WEB_FRAGMENTS_DIR = "pulse-output/web/fragments"
 # for. ~60 = roughly 12 weeks of weekdays; older pulses still readable as
 # raw markdown via their archive_url but no rendered fragment.
 WEB_ARCHIVE_LIMIT = 60
-# Hidden HTML comment we write into a QC review after appending its
-# dashboard link section. Idempotency marker: presence => already
-# published, skip on subsequent polls.
-QC_DASHBOARD_PUBLISHED_MARKER = "<!-- dashboard-published -->"
-# Retention for litterbox uploads. 24h is enough for "read it this
-# morning, or read it later today before close" without keeping every
-# pulse's HTML hosted on a third-party service forever. The pulse
-# markdown stays archived on GitHub regardless.
-QC_DASHBOARD_RETENTION = "24h"
 PENDING_ADJUDICATIONS_DIR = "pulse-output/pending-adjudications"
 ARCHIVE_ADJUDICATIONS_DIR = "pulse-output/archive-adjudications"
 # Operational location for pulse markdown that exhausted delivery retries.
@@ -628,117 +619,7 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
 
 
 # -----------------------------------------------------------------------------
-# JOB 3 — publish a phone-accessible dashboard link into each QC review
-# -----------------------------------------------------------------------------
-#
-# After each pulse is delivered + QC reviewed, the routine commits the QC
-# markdown to pulse-output/qc-reviews/<ts>.md. This job watches that
-# directory, renders the matching archived pulse as styled HTML, uploads
-# the HTML to litterbox.catbox.moe (24h retention), and rewrites the QC
-# review file to append a "Phone-accessible dashboard" section with the
-# URL. Marker comment makes the rewrite idempotent.
-#
-# Skipped cases (no pulse to render):
-#   - Routine failure markers ("Status: FAILED" anywhere in the file)
-#   - Bridge delivery sidecars (*.delivery.md filename suffix)
-
-
-def publish_qc_dashboards_job() -> None:
-    """Poll QC reviews; append a litterbox dashboard URL into each new one.
-
-    Runs in the APScheduler thread. Synchronous — litterbox upload is HTTP
-    via the `requests` library, and GitHub API I/O is via the bridge client.
-    Each iteration handles one full QC review end-to-end; failures on one
-    review don't block others.
-    """
-    if not bridge_enabled():
-        return
-    try:
-        items = gh.list_dir(QC_REVIEWS_DIR)
-    except Exception as e:
-        log.warning(f"Bridge: failed to list {QC_REVIEWS_DIR} for dashboard publish: {e}")
-        return
-
-    candidates = [
-        it for it in items
-        if it.get("type") == "file"
-        and it.get("name", "").endswith(".md")
-        and not it.get("name", "").endswith(".delivery.md")
-    ]
-    if not candidates:
-        return
-
-    candidates.sort(key=lambda it: it.get("name", ""))
-    for item in candidates:
-        try:
-            _publish_one_qc_dashboard(item)
-        except Exception as e:
-            log.error(
-                f"Bridge: dashboard publish failed for {item.get('name','?')}: {e}",
-                exc_info=True,
-            )
-
-
-def _publish_one_qc_dashboard(item: dict[str, Any]) -> None:
-    name = item.get("name", "")
-    qc_path = f"{QC_REVIEWS_DIR}/{name}"
-    qc_content = gh.get_file_text(qc_path)
-    if not qc_content:
-        return
-    if QC_DASHBOARD_PUBLISHED_MARKER in qc_content:
-        return  # already published
-    if "Status: FAILED" in qc_content:
-        return  # routine-failure marker — no pulse to render
-
-    pulse_path = f"{ARCHIVE_DIR}/{name}"
-    pulse_md = gh.get_file_text(pulse_path)
-    if not pulse_md:
-        # Pulse might still be in pending/ (delivery hasn't completed yet, or
-        # delivery-failed). Either way we can't render a dashboard from a
-        # missing pulse; try again on the next poll once the pulse archives.
-        log.debug(f"Bridge: QC {name} has no archived pulse yet — deferring dashboard")
-        return
-
-    # Lazy imports — keep these out of the module top-level so the bridge
-    # module doesn't fail to import when `requests` or `markdown` aren't
-    # installed on a dev environment that only runs the discord bot.
-    import tempfile
-    from pathlib import Path as _Path
-    from scripts.pulse_dashboard import render_dashboard_html
-    from scripts.litterbox_upload import upload_to_litterbox
-
-    html = render_dashboard_html(pulse_md, source_filename=name)
-    # litterbox_upload takes a file path; write the HTML to a tempfile.
-    with tempfile.NamedTemporaryFile(
-        suffix=".html", delete=False, mode="w", encoding="utf-8"
-    ) as tmp:
-        tmp.write(html)
-        tmp_path = _Path(tmp.name)
-    try:
-        url = upload_to_litterbox(tmp_path, retention=QC_DASHBOARD_RETENTION)
-    finally:
-        try:
-            tmp_path.unlink()
-        except OSError:
-            pass
-
-    addendum = (
-        "\n\n---\n\n"
-        "## Phone-accessible dashboard\n\n"
-        f"[Tap to view this pulse on phone (24h)]({url})\n\n"
-        "_Rendered styled HTML hosted at litter.catbox.moe — expires "
-        f"{QC_DASHBOARD_RETENTION} after upload. The pulse markdown itself "
-        "stays archived on GitHub at "
-        f"`{pulse_path}`._\n\n"
-        f"{QC_DASHBOARD_PUBLISHED_MARKER}\n"
-    )
-    new_content = qc_content.rstrip("\n") + addendum
-    gh.put_file(qc_path, new_content, f"bridge: append dashboard link to QC {name}")
-    log.info(f"Bridge: appended dashboard link to QC {name}: {url}")
-
-
-# -----------------------------------------------------------------------------
-# JOB 4 — publish headless HTML fragment + JSON for host-site embeds
+# JOB 3 — publish headless HTML fragment + JSON for host-site embeds
 # -----------------------------------------------------------------------------
 #
 # After each pulse archives, regenerate three files in pulse-output/web/:
