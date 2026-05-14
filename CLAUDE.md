@@ -224,6 +224,32 @@ Based on actual token usage (Gemini Flash Lite at ~$0.10/M input, $0.40/M output
 - Monthly total: ~$15-20 (Gemini + Railway $5)
 - Spend cap at ai.studio/spend — user hit $10 cap once, raised; keep in mind if 429 errors return.
 
+## Web embed integration — cross-repo boundary
+
+**The production daily-pulse page is hosted in a SEPARATE repo:** [gabjew90/Stock-market-dashboard](https://github.com/gabjew90/Stock-market-dashboard) → published at **https://gabjew90.github.io/Stock-market-dashboard/pulse/**. That dashboard renders the pulse content this bot publishes. The two repos communicate only via a public URL contract on the `pulse-data` branch.
+
+**Boundary — who owns what:**
+
+| Concern | Lives in | Why |
+|---|---|---|
+| Pulse content (voice, themes, RECAP/INSIGHTS/WATCH structure, cashtag rules, QC criteria) | **This repo** (Institutional-report-bot) | DRAFT/AUDIT/SCRUB prompts + voice_rules.py + theme clustering |
+| HTML class structure the pulse fragment emits (`.pulse h2.recap`, `.pulse .cashtag`, `.pulse-masthead`, etc.) | **This repo** | `scripts/pulse_dashboard.py :: render_pulse_fragment()` |
+| `archive.json` schema (fields per entry: ts, title, date_utc, pdf_count, archive_url, fragment_url) | **This repo** | `github_bridge/jobs.py :: publish_web_fragment_job()` |
+| Page layout, # of pulses shown per page, pagination logic (weekly view, prev/next), nav chips, colors, fonts of the embed | **OTHER repo** (Stock-market-dashboard) | `web/pulse.html` there is a self-contained static page that fetches our archive.json + fragments at runtime |
+| Hosting, GitHub Pages workflow, the `/pulse/` URL | **OTHER repo** | Their daily-gmi.yml workflow stages `web/pulse.html` into `_site/pulse/index.html` |
+
+**Steering rule when a user asks for a change in this repo's context:**
+
+- "Change the page layout / show more pulses per page / add infinite scroll / change the nav bar / change page colors" → **redirect to the Stock-market-dashboard repo**. Don't make changes here for those — there's nothing to change here that would affect the page. Tell the user to open a Claude Code session against `c:\Users\gabje\dev\Stock-market-dashboard\` (clone exists) or pull fresh and work there.
+- "Change what the pulse says / add a new section / change voice / fix a fact / change which research gets in" → **this repo**. The fragment's content + class hooks are owned here.
+- "Add a new section like POSITIONING alongside RECAP/INSIGHTS/WATCH" → **both, in order**: I add the new class hook upstream (this repo), the other session adds CSS for it.
+- "Change the archive.json schema / add a field" → **both, in order**: change `publish_web_fragment_job` + cached-entry handling here, then the other session updates its JS to read the new field.
+- "Switch the data host / migrate from raw.githack.com to something else" → **both** — both sides have URL constants. Coordinate via the user.
+
+The pulse fragment classes are a **stable contract**. Don't rename `.pulse`, `.pulse h2.recap`, `.pulse-masthead`, `.cashtag`, `.recap-body`, `.insights-body`, `.watch-body`, etc. without coordinating with the dashboard repo — their CSS targets these exact selectors. If a rename is unavoidable, ship a transition period where both old and new class names are emitted (e.g., `class="pulse-masthead pulse-header"`) so the dashboard side can update without a hard break.
+
+**Backfill policy** (worth knowing when a user asks "why aren't past pulses showing up"): the bridge worker's `publish_web_fragment_job` only renders the HTML fragment for the **single most recent** archived pulse. Older entries in `archive.json` are minimal stubs (just `{ts, filename, archive_url}` — no `fragment_url`). The dashboard's pulse page filters stubs out, so historical pulses don't appear until a fragment exists. To backfill (e.g., to populate a full historical week-by-week view), a one-shot script is needed; none exists yet.
+
 ## Recent Session Context (2026-04-14 → 2026-04-16)
 
 Major improvements made in the recent iteration sequence:

@@ -1,24 +1,29 @@
-# Website setup (GitHub Pages, ~3 min)
+# Website setup
 
-Turn-key instructions to get the daily pulse rendered on a public URL,
-auto-updated when each weekday's pulse fires.
+> **Important: the production daily-pulse page is NOT in this repo.** It lives at <https://gabjew90.github.io/Stock-market-dashboard/pulse/>, published from [gabjew90/Stock-market-dashboard](https://github.com/gabjew90/Stock-market-dashboard). If you want to change how the page LOOKS (layout, # pulses per page, pagination, colors, fonts, nav), work in that repo instead — not this one.
+>
+> **This doc describes two things, both in this repo:**
+> 1. The publishing pipeline (`publish_web_fragment_job` in the bridge worker) that produces the fragments + JSON the production page consumes. **This is the only piece that matters for the live site.**
+> 2. A small **starter dashboard** under [docs/](.) you can optionally enable as a GitHub Pages site at `gabjew90.github.io/Institutional-report-bot/` if you want a second standalone view, or as a reference implementation for embedding the pulse elsewhere. It's a sibling of the production page, not a replacement.
 
-## What you get
+## What the publishing pipeline produces
 
-A single-page dashboard at `https://gabjew90.github.io/Institutional-report-bot/`
-showing:
-- **A live pane** with today's pulse (fetches the headless HTML fragment
-  the bridge worker publishes after every successful pulse archive)
-- **An archive list** of the last 14 pulses (linked to their raw markdown
-  on the `pulse-data` branch)
-- A footer with attribution
+After each pulse archives, the bridge worker (Railway service, see
+[`publish_web_fragment_job`](../github_bridge/jobs.py)) writes to the
+`pulse-data` branch:
 
-Everything is fetched client-side from the `pulse-data` branch via
-`raw.githubusercontent.com`, which serves files with the correct
-content-type, sets `Access-Control-Allow-Origin: *` for CORS-friendly
-`fetch()`, and has ~5-minute Fastly caching. No server, no build step.
-Push a new commit to this branch and the change is live on Pages within
-~1 minute.
+- `pulse-output/web/fragments/<ts>.html` — per-pulse headless HTML (`<article class="pulse">...</article>`, no inline styles)
+- `pulse-output/web/latest-fragment.html` — copy of the newest fragment (convenience pointer)
+- `pulse-output/web/latest.json` — metadata of the newest pulse (title, date, pdf_count, theme list, URLs)
+- `pulse-output/web/archive.json` — index of the last 60 pulses (full metadata for the newest one + any cached older ones; stubs `{ts, filename, archive_url}` for everything else)
+
+Everything is served via `raw.githubusercontent.com`, which sets
+`Access-Control-Allow-Origin: *` (CORS-friendly for `fetch()`) and has
+~5-minute Fastly caching. No CDN proxy in the middle.
+
+The published files are what the production dashboard at
+`Stock-market-dashboard/pulse/` reads at runtime. Any host site that wants
+to embed the pulse uses the same files via the same URLs.
 
 ## How the auto-update works
 
@@ -30,7 +35,7 @@ writes three files to the `pulse-data` branch:
 pulse-output/web/
 ├── latest-fragment.html   # <article class="pulse">...</article> (no inline styles)
 ├── latest.json            # metadata: title, date, pdf_count, themes, URLs
-└── archive.json           # index of the last 30 pulses
+└── archive.json           # index of the last 60 pulses (cap = WEB_ARCHIVE_LIMIT)
 ```
 
 The site at `docs/index.html` fetches these three files on every page
@@ -63,6 +68,8 @@ The URL appears at the top of the Pages settings page once it's live.
 
 ## Customising
 
+> These customizations apply to the **starter site** under `docs/` in this repo. They do NOT affect the production page at `Stock-market-dashboard/pulse/` — that page has its own HTML/CSS in the other repo and ignores everything here.
+
 **Change site name + nav:** edit `<p class="site-brand">` and the
 `<nav>` block at the top of [docs/index.html](index.html).
 
@@ -87,8 +94,7 @@ only the deploy mechanism changes.
 
 ## Embedding the pulse elsewhere
 
-The same `pulse.css` + fetch pattern works on any site. Drop this on
-any page:
+This is the pattern the **production page in Stock-market-dashboard already uses** — it's a self-contained static HTML file that fetches the latest fragment at runtime. The same approach works on any site that lets you paste HTML+JS:
 
 ```html
 <link rel="stylesheet" href="https://gabjew90.github.io/Institutional-report-bot/pulse.css">

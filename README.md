@@ -182,6 +182,29 @@ Password gate on state-changing commands: `COMMAND_PASSWORD=jamalbot` (env var).
 
 ---
 
+## Web embed (cross-repo)
+
+The pulse is also rendered as a daily page on a **separate site**:
+
+**Production:** https://gabjew90.github.io/Stock-market-dashboard/pulse/
+
+That dashboard lives in [gabjew90/Stock-market-dashboard](https://github.com/gabjew90/Stock-market-dashboard). It's a static HTML page (`web/pulse.html` there) that fetches per-pulse HTML fragments + an `archive.json` index from this repo's `pulse-data` branch at runtime. No build-time coupling — the two repos communicate purely via the public URL contract under `pulse-output/web/` (see [`github_bridge/jobs.py :: publish_web_fragment_job`](github_bridge/jobs.py)).
+
+**Boundary:**
+
+| Concern | Owned by |
+|---|---|
+| What goes INTO each pulse (voice, themes, sections, cashtags) | This repo |
+| HTML class structure the fragment emits, `archive.json` schema | This repo |
+| Page layout, pagination, # of pulses shown, nav, colors | **Stock-market-dashboard** |
+| GitHub Pages hosting + workflow | **Stock-market-dashboard** |
+
+If you want to change how the embed LOOKS (more pulses on a page, different colors, archive list, etc.), work in the Stock-market-dashboard repo. If you want to change what each pulse SAYS, work here. See [CLAUDE.md](CLAUDE.md) (Web embed integration section) for the full coordination rules.
+
+**Backfill policy:** only the most recently archived pulse gets an HTML fragment. Older `archive.json` entries are stubs (no `fragment_url`) and don't render on the page. Going forward, every weekday's new pulse adds a fragment so the current-week view fills in over time.
+
+---
+
 ## Deployment
 
 **Railway project `marvelous-dream`, service `worker`, env `production`.** Volume mounted at `/data` for the SQLite database and temporary PDFs. Every push to the working branch auto-redeploys.
