@@ -596,25 +596,47 @@ for theme_name, info in selected:
 # in the cluster — that's our best proxy for "PDFs that talked about
 # this topic", since analyses_json doesn't carry pdf_file_id.
 discovery_promoted = (ctx.get('discovery_audit') or {}).get('promoted') or []
+discovery_near_miss = (ctx.get('discovery_audit') or {}).get('near_miss') or []
 discovery_by_canonical = {d.get('canonical'): d for d in discovery_promoted if d.get('canonical')}
 
-for theme_name in list(inputs_per_theme):
-    inputs = inputs_per_theme[theme_name]
-    if (inputs['theme_stances'] or inputs['tension_points']
-            or inputs['key_data_points']):
-        continue  # already has primary-stance inputs; not a discovery-only case
-    disc = discovery_by_canonical.get(theme_name)
-    if not disc:
+# For THIN-PRIMARY augmentation: build a phase_a_label -> best matching
+# Phase B "covered" near-miss cluster. The 2026-05-14 QC flagged that
+# primary themes like `oil price super spike risk` (16 banks via Phase B
+# augment, but only 1 PDF gave a stance) were getting adjudication-
+# discarded because the sub-agent couldn't construct enough facts from
+# thin per-theme inputs. Surfacing the matching Phase B cluster's
+# mention strings as additional theme_stances fixes that — same trick
+# the discovery fallback below uses for promoted clusters.
+covered_clusters_by_phase_a: dict[str, dict] = {}
+for nm in discovery_near_miss:
+    if nm.get('reason') != 'covered':
         continue
-    members = list(disc.get('members') or [])
-    cluster_banks = list(disc.get('banks') or [])
+    if nm.get('n_banks', 0) < 4:
+        continue  # not enough banks to be worth augmenting from
+    nearby = nm.get('nearby_phase_a') or []
+    for entry in nearby:
+        # nearby_phase_a items are [label, sim] pairs
+        label = entry[0] if isinstance(entry, (list, tuple)) else entry
+        existing = covered_clusters_by_phase_a.get(label)
+        if not existing or nm.get('n_banks', 0) > existing.get('n_banks', 0):
+            covered_clusters_by_phase_a[label] = nm
+
+# Threshold: theme with <=2 theme_stances is considered "thin" and
+# eligible for augmentation if a covered Phase B near-miss is available.
+THIN_PRIMARY_STANCE_THRESHOLD = 2
+
+def _synthesize_stances_from_cluster(target_inputs: dict, cluster: dict, theme_name: str, cap: int) -> int:
+    """Append synthetic neutral-stance entries to target_inputs.theme_stances
+    based on a Phase-B cluster's mention strings. Bank attribution cycled
+    across the cluster's contributing banks. Returns the number appended."""
+    members = list(cluster.get('members') or [])[:cap]
+    cluster_banks = list(cluster.get('banks') or [])
     if not members or not cluster_banks:
-        continue
-    # Synthesize neutral stance entries: one per mention (cap at 20 so
-    # the sub-agent prompt doesn't bloat), bank attribution cycled.
-    for i, member in enumerate(members[:20]):
+        return 0
+    appended = 0
+    for i, member in enumerate(members):
         bank = cluster_banks[i % len(cluster_banks)]
-        inputs['theme_stances'].append({
+        target_inputs['theme_stances'].append({
             'source': bank,
             'theme': theme_name,
             'stance': 'neutral',
@@ -624,17 +646,49 @@ for theme_name in list(inputs_per_theme):
             'vs_consensus': None,
             'evidence': member,
         })
+        appended += 1
     cluster_banks_set = set(cluster_banks)
     for a in analyses:
         if (a.get('source') or 'Unknown') in cluster_banks_set:
             for kdp in a.get('data_points', []) or []:
-                inputs['key_data_points'].append({
+                target_inputs['key_data_points'].append({
                     'source_bank': kdp.get('source_bank') or a.get('source'),
                     'figure': kdp.get('figure'),
                     'metric': kdp.get('metric'),
                     'context': kdp.get('context'),
                 })
-    print(f"  discovery fallback for '{theme_name}': {len(inputs['theme_stances'])} synthetic stances, {len(inputs['key_data_points'])} data_points")
+    return appended
+
+for theme_name in list(inputs_per_theme):
+    inputs = inputs_per_theme[theme_name]
+    n_stances = len(inputs['theme_stances'])
+    n_tensions = len(inputs['tension_points'])
+    n_dps = len(inputs['key_data_points'])
+    fully_empty = (n_stances == 0 and n_tensions == 0 and n_dps == 0)
+    is_thin_primary = (
+        not fully_empty
+        and n_stances <= THIN_PRIMARY_STANCE_THRESHOLD
+        and theme_name in covered_clusters_by_phase_a
+    )
+
+    if fully_empty:
+        # Original discovery fallback path: Phase-B-promoted theme that
+        # had no primary stances at all. Synthesize from the promoted cluster.
+        disc = discovery_by_canonical.get(theme_name)
+        if not disc:
+            continue
+        appended = _synthesize_stances_from_cluster(inputs, disc, theme_name, cap=20)
+        if appended:
+            print(f"  discovery fallback for '{theme_name}': +{appended} synthetic stances, {len(inputs['key_data_points'])} data_points")
+    elif is_thin_primary:
+        # NEW: thin-primary augmentation. Theme has 1-2 real stances but
+        # a Phase B near-miss cluster with N>=4 banks covers the topic.
+        # Surface mentions so the sub-agent has enough cross-bank texture
+        # to construct facts_agreed without getting nuked by Rule 5.
+        nm = covered_clusters_by_phase_a[theme_name]
+        appended = _synthesize_stances_from_cluster(inputs, nm, theme_name, cap=15)
+        if appended:
+            print(f"  thin-primary augment for '{theme_name}': +{appended} synthetic stances (from {nm.get('n_banks', '?')}-bank covered cluster)")
 
 # Per-theme match diagnostics — surfaces silent vacuous-match bugs (e.g.,
 # theme_map vs theme_stances normalization mismatches) by reporting the

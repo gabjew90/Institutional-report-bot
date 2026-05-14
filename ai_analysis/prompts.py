@@ -1439,6 +1439,18 @@ Example (the 2026-05-12 pulse FAILED this — dropped a 12-bank Trump-Xi summit 
 
 A discovered topic with 6+ banks that doesn't appear anywhere in the final pulse is a coverage failure. WHAT TO WATCH is its home.
 
+**AI SUB-THEME PRESERVATION RULE (binding — don't flatten distinct AI threads).** When the corpus has BOTH a primary AI theme (e.g., `ai capex supercycle`, `ai infrastructure`, `hyperscaler capex`) AND one or more *discovered* AI sub-themes with 5+ banks each (e.g., `agentic ai`, `ai inference economics`, `mag7 ai earnings bifurcation`, `ai software pricing`, `data center power`), do NOT roll the discovered sub-theme into the generic AI capex theme. Forward-looking AI sub-threads are the part of the AI story that distinguishes this pulse from a generic capex aggregator — agentic AI as a monetization wedge, inference economics as the next bottleneck, power as the gating constraint. Each is a different mental model and a different set of beneficiaries.
+
+Two ways to handle this:
+
+1. **Split into two INSIGHTS themes**: one on the primary AI capex story (the spending wave, beneficiaries, dispersion/correlation risks) AND a separate theme on the sub-thread (the agentic-AI monetization angle, the inference-economics cliff, the power constraint). This is the right move when the discovered sub-theme has ≥7 banks and a distinct trade implication.
+
+2. **Render as a clearly-flagged sub-section inside the AI capex theme**: a paragraph break + bold lead-in like *"The agentic-AI sub-thread.* N banks (X, Y, Z) flag a distinct monetization wedge..." — with its own data points and its own trade implication. This works when the sub-theme has 5-6 banks but isn't ready to stand alone.
+
+What does NOT work: a single 200-word "AI capex is dominant" paragraph that mentions every AI angle in one breath. The reader can't tell whether they should be long $SMH (broad capex), long $MSFT/$GOOGL (agentic enterprise spend), long $NBIS/$ANET (power + networking), or paired against $NVDA (inference economics squeeze). Distinct trades need distinct framing.
+
+The 2026-05-14 pulse FAILED this — rolled a 5-bank `agentic ai` discovered cluster (Barclays/Citi/Goldman/RBC/UBS) into the generic AI capex theme, flattening a forward-looking sub-thread into capex-cycle commentary.
+
 ---
 
 **Target length ~800-1100 words. Brevity is the goal but NOT at the cost of teaching.**
