@@ -30,7 +30,7 @@ _gemini_ask_client = None
 _ASK_CONTEXT_MAX_MESSAGES = 30
 _ASK_CONTEXT_MAX_AGE_MIN = 1440  # 24h — quiet channels (ingestion feed)
                                  # can take a while to fill 30 messages
-_ASK_CONTEXT_PER_MSG_CHARS = 300
+_ASK_CONTEXT_PER_MSG_CHARS = 600
 
 
 # System prompt sent to Gemini as `system_instruction` on every /ask + @mention
