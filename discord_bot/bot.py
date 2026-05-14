@@ -88,6 +88,39 @@ listed separately by the bot wrapper.\
 """
 
 
+def _extract_embed_text(embed: discord.Embed) -> str:
+    """Flatten a Discord embed into a single line for LLM context.
+
+    Pulls author / title / description / non-noise fields and joins them
+    with " | ". Skips obvious noise fields like "Download" links and the
+    footer (which is usually metadata, not content). Returns "" if the
+    embed has nothing useful (e.g. just an image).
+
+    This is what lets /ask see the ingestion-feed posts — those are
+    embed-only messages with `msg.content == ""`, so the original
+    helper skipped them and the bot saw an empty channel.
+    """
+    parts: list[str] = []
+    author_name = getattr(getattr(embed, "author", None), "name", None)
+    if author_name:
+        parts.append(author_name)
+    if embed.title:
+        parts.append(embed.title)
+    if embed.description:
+        parts.append(embed.description)
+    for field in (embed.fields or []):
+        name = (field.name or "").strip()
+        value = (field.value or "").strip()
+        if not name or not value:
+            continue
+        lname = name.lower()
+        # Drop pure-URL fields and metadata noise that don't help the LLM.
+        if "download" in lname or "open pdf" in lname or "link" in lname:
+            continue
+        parts.append(f"{name}: {value}")
+    return " | ".join(p for p in parts if p).strip()
+
+
 async def _fetch_chat_context(
     channel,
     *,
@@ -99,6 +132,11 @@ async def _fetch_chat_context(
     _ASK_CONTEXT_MAX_MESSAGES messages, capped at _ASK_CONTEXT_MAX_AGE_MIN
     minutes old. Each message is truncated to _ASK_CONTEXT_PER_MSG_CHARS
     chars so a single long rant can't blow the token budget.
+
+    For embed-only messages (e.g. the ingestion feed's bot-posted research
+    cards), text is flattened from the embed's author/title/description/
+    fields via _extract_embed_text. Without this, the helper would skip
+    them entirely and the bot would think the channel was empty.
 
     Returns "" on any failure or when there's nothing usable (e.g. a brand
     new channel with no prior chatter, or a DM where we can't read history).
@@ -120,8 +158,13 @@ async def _fetch_chat_context(
             if exclude_message_id is not None and msg.id == exclude_message_id:
                 continue
             text = (msg.content or "").strip()
+            if not text and msg.embeds:
+                # Embed-only message (e.g. ingestion feed cards). Flatten
+                # the embeds into a single line so the LLM can still read it.
+                embed_lines = [_extract_embed_text(e) for e in msg.embeds]
+                text = " | ".join(t for t in embed_lines if t).strip()
             if not text:
-                continue  # skip empty / embed-only messages
+                continue  # nothing usable — pure image / sticker / etc.
             text = text[:_ASK_CONTEXT_PER_MSG_CHARS]
             author = getattr(msg.author, "display_name", None) or msg.author.name
             collected.append((msg.created_at, f"{author}: {text}"))
