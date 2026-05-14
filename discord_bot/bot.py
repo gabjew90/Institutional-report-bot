@@ -1,7 +1,6 @@
 """Discord bot client with slash commands."""
 
 import logging
-import re
 from datetime import datetime
 
 import discord
@@ -18,64 +17,73 @@ log = logging.getLogger(__name__)
 _display_tz = pytz.timezone(settings.timezone)
 
 
-# --- Perplexity /ask integration --------------------------------------------
-# Lazy-initialized OpenAI-compatible client pointed at Perplexity Sonar.
-# Empty PERPLEXITY_API_KEY => `_get_perplexity_client()` returns None and the
-# /ask + @mention surfaces return a polite "not configured" message instead of
-# erroring out.
-_perplexity_client = None
+# --- Gemini /ask integration ------------------------------------------------
+# Uses google-genai with the Google Search grounding tool. Reuses the same
+# GOOGLE_API_KEY already wired up for the PDF analysis pipeline. The free tier
+# on Gemini 3.x grants 5,000 grounded prompts/month, shared across the account.
+# Once exhausted, paid overage is $14 per 1000 prompts.
+_gemini_ask_client = None
 
 
-def _get_perplexity_client():
-    global _perplexity_client
-    if _perplexity_client is not None:
-        return _perplexity_client
-    if not settings.perplexity_api_key:
+def _get_gemini_ask_client():
+    """Lazy-init a google-genai client for /ask. Returns None if no API key
+    is configured so the surface degrades gracefully."""
+    global _gemini_ask_client
+    if _gemini_ask_client is not None:
+        return _gemini_ask_client
+    if not settings.google_api_key:
         return None
     try:
-        from openai import OpenAI
-        _perplexity_client = OpenAI(
-            api_key=settings.perplexity_api_key,
-            base_url="https://api.perplexity.ai",
-        )
-        return _perplexity_client
+        from google import genai
+        _gemini_ask_client = genai.Client(api_key=settings.google_api_key)
+        return _gemini_ask_client
     except Exception as e:
-        log.error(f"Failed to init Perplexity client: {e}")
+        log.error(f"Failed to init Gemini /ask client: {e}")
         return None
 
 
-def _format_citations(answer_text: str, search_results: list) -> str:
-    """Replace inline [N] markers in the answer with [[N]](url) markdown links.
+def _build_sources_footer(grounding_metadata) -> str:
+    """Render Gemini's grounding_chunks as a Discord-friendly Sources list.
 
-    Perplexity returns a `search_results` array where each item has a `url`
-    (and usually `title`). Inline references in the answer look like `[1]`.
-    We turn those into clickable markdown so Discord renders them as links.
+    Returns an empty string when there are no chunks. Format:
+
+        Sources:
+        [1] [Title](url)
+        [2] [Title](url)
+        ...
+
+    Discord renders the inline-link markdown but suppresses the embed preview
+    via the angle-bracket wrapper. We dedupe by URL because Gemini sometimes
+    returns the same source twice when multiple supports cite it.
     """
-    if not search_results:
-        return answer_text
+    if grounding_metadata is None:
+        return ""
+    chunks = getattr(grounding_metadata, "grounding_chunks", None) or []
+    seen: set[str] = set()
+    lines: list[str] = []
+    for chunk in chunks:
+        web = getattr(chunk, "web", None)
+        if web is None:
+            continue
+        url = getattr(web, "uri", None)
+        if not url or url in seen:
+            continue
+        seen.add(url)
+        title = (getattr(web, "title", None) or url)[:80]
+        lines.append(f"[{len(lines) + 1}] [{title}](<{url}>)")
+        if len(lines) >= 6:
+            break  # cap to keep the embed compact
+    if not lines:
+        return ""
+    return "\n\nSources:\n" + "\n".join(lines)
 
-    def repl(match: re.Match) -> str:
-        try:
-            n = int(match.group(1))
-        except ValueError:
-            return match.group(0)
-        idx = n - 1
-        if 0 <= idx < len(search_results):
-            url = (search_results[idx] or {}).get("url")
-            if url:
-                return f"[[{n}]](<{url}>)"
-        return match.group(0)
 
-    return re.sub(r"\[(\d+)\]", repl, answer_text)
+async def _answer_with_gemini(question: str, user_id: int) -> discord.Embed:
+    """Run a Gemini grounded-search query and return a Discord embed.
 
-
-async def _answer_with_perplexity(question: str, user_id: int) -> discord.Embed:
-    """Run a Perplexity Sonar query and return a Discord embed.
-
-    Enforces the per-user daily cap. Returns a single embed with the formatted
-    answer + NFA footer, or an error embed on failure.
+    Enforces the per-user daily cap. Returns a single embed with the answer
+    + sources footer + NFA footer, or an error embed on failure.
     """
-    # Quota check
     cap = settings.ask_daily_quota_per_user
     if cap > 0:
         used = db.count_ask_queries_today_for_user(user_id)
@@ -88,45 +96,50 @@ async def _answer_with_perplexity(question: str, user_id: int) -> discord.Embed:
                 color=0xE67E22,
             )
 
-    client = _get_perplexity_client()
+    client = _get_gemini_ask_client()
     if client is None:
         return discord.Embed(
             description=(
                 "/ask is not configured on this bot. Set the "
-                "`PERPLEXITY_API_KEY` env var to enable web-search Q&A."
+                "`GOOGLE_API_KEY` env var to enable web-search Q&A."
             ),
             color=0xE74C3C,
         )
 
     try:
-        response = client.chat.completions.create(
-            model="sonar-pro",
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "You are a financial markets assistant for active "
-                        "traders. Format responses with arrow points using "
-                        "→ followed by a blank line between each point. "
-                        "Bold key terms and numbers with **bold**. Keep it "
-                        "to 3-5 points max. Cite sources. Be extremely "
-                        "concise and readable."
-                    ),
-                },
-                {"role": "user", "content": question},
-            ],
-            max_tokens=200,
+        from google.genai import types
+        config = types.GenerateContentConfig(
+            system_instruction=(
+                "You are a financial markets assistant for active traders. "
+                "Format responses with arrow points using → followed by a "
+                "blank line between each point. Bold key terms and numbers "
+                "with **bold**. Keep it to 3-5 points max. Be extremely "
+                "concise and readable. Do not include inline citation "
+                "markers like [1] — sources are listed separately."
+            ),
+            tools=[types.Tool(google_search=types.GoogleSearch())],
+            max_output_tokens=400,
             temperature=0.2,
         )
-        answer = response.choices[0].message.content or ""
-        search_results = getattr(response, "search_results", None) or []
-        formatted = _format_citations(answer, search_results)
+        response = await client.aio.models.generate_content(
+            model=settings.gemini_model,
+            contents=question,
+            config=config,
+        )
+        answer = (response.text or "").strip()
+        grounding_metadata = None
+        try:
+            grounding_metadata = response.candidates[0].grounding_metadata
+        except (AttributeError, IndexError, TypeError):
+            pass
+        sources_footer = _build_sources_footer(grounding_metadata)
+        full = (answer + sources_footer)[:4000]
         db.record_ask_query(user_id)
-        embed = discord.Embed(description=formatted[:4000], color=0x228B22)
+        embed = discord.Embed(description=full, color=0x228B22)
         embed.set_footer(text="Hi, I'm AI-powered - NFA")
         return embed
     except Exception as e:
-        log.error(f"Perplexity /ask call failed: {e}", exc_info=True)
+        log.error(f"Gemini /ask call failed: {e}", exc_info=True)
         return discord.Embed(
             description=f"Web search failed: {str(e)[:200]}",
             color=0xE74C3C,
@@ -744,7 +757,7 @@ def create_bot() -> commands.Bot:
         await interaction.response.defer(thinking=True)
         try:
             user_id = interaction.user.id if interaction.user else 0
-            embed = await _answer_with_perplexity(question, user_id)
+            embed = await _answer_with_gemini(question, user_id)
             await interaction.followup.send(embed=embed)
         except Exception as e:
             log.error(f"/ask failed: {e}", exc_info=True)
@@ -772,7 +785,7 @@ def create_bot() -> commands.Bot:
             return
         try:
             async with message.channel.typing():
-                embed = await _answer_with_perplexity(question, message.author.id)
+                embed = await _answer_with_gemini(question, message.author.id)
                 await message.reply(embed=embed, mention_author=False)
         except Exception as e:
             log.error(f"@mention /ask failed: {e}", exc_info=True)

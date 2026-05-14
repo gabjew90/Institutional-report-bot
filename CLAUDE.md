@@ -113,7 +113,7 @@ Password gate: `COMMAND_PASSWORD=jamalbot` env var. Gated commands take `passwor
 Channel allowlist: pulse/admin commands (everything except `/ask`) only execute in channels listed in `PULSE_COMMAND_CHANNELS` (env var, comma-separated channel names, default `"test,tldr"`). Empty value disables the restriction. Discord still lists the commands in the global picker — the bouncer fires on execution, replying with an ephemeral "command not available here" message.
 
 **Visible in slash menu (currently registered):**
-- `/ask question:X` — Perplexity Sonar web-search Q&A. Works in **every** channel (not gated by `PULSE_COMMAND_CHANNELS`). 20 queries/user/day cap; resets at UTC midnight. Requires `PERPLEXITY_API_KEY` env var on Railway. Also responds to `@bot question` mentions in any channel.
+- `/ask question:X` — Gemini-grounded web-search Q&A (Google Search tool). Works in **every** channel (not gated by `PULSE_COMMAND_CHANNELS`). 20 queries/user/day cap; resets at UTC midnight. Reuses the existing `GOOGLE_API_KEY` env var. Also responds to `@bot question` mentions in any channel. Free tier on Gemini 3.x = **5,000 grounded prompts/month** (shared across the Google AI Studio account); paid overage is ~$14 per 1000 queries.
 - `/status` — dashboard: today's ingestion + total DB state + priority mix (always shows high/medium/low even if 0) + upload range + all-time tokens + last pulse times + Dropbox cursor state + upload volume (24h + since last scheduled) + last 5 ingested filenames (in configured timezone). Channel-allowlisted.
 - `/reanalyze hours:N password:jamalbot` — re-analyze PDFs already in DB with current prompt (appends new pdf_analyses rows; old preserved). Channel-allowlisted + password-gated.
 
