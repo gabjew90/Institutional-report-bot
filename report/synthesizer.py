@@ -263,7 +263,31 @@ def _classify_themes(
     # banks also flow in (they engaged with the topic without taking a
     # primary stance — counted as neutral). When only 1 Phase A label is
     # nearby, just augment its banks; no Phase A merge happens.
+    # Cap on two-tier merge group size. Allows up to 4 absorbed Phase A
+    # labels per canonical (group size 5 = root + 4 absorbed). Beyond
+    # this, additional merges are blocked and the would-be-absorbed
+    # themes stay as separate canonicals reaching DRAFT.
+    #
+    # Why the cap exists: the 2026-05-14T20-01-08Z test fire showed a
+    # Phase B centroid bridging 10 distinct Phase A themes into one
+    # canonical (`ai driven capex supercycle` absorbed `fed rate cut
+    # expectations`, `usd rally`, `inflationary boom`, `agriculture
+    # commodity inflation`, etc.) because the 0.72 threshold gave the
+    # bridge license to merge things that aren't the same trade. With
+    # threshold restored to 0.75 AND this cap as defense in depth, a
+    # legitimate merge family (the Hormuz family usually has 3-4 sub-
+    # aspects) still merges cleanly; runaway absorption gets blocked
+    # and the surviving fragments stay visible as candidates for DRAFT.
+    MAX_ABSORBED_PER_CANONICAL = 4
+
     union_parent: dict[str, str] = {label: label for label in merged_sources}
+    # Group size per current root. Updated on every successful union.
+    # Used by _union to enforce the cap.
+    merge_count: dict[str, int] = {label: 1 for label in merged_sources}
+    # Audit: every merge the cap blocked. Surfaces in discovery_audit
+    # so the QC can verify the cap is firing on real over-merge attempts
+    # vs sitting idle.
+    cap_blocked_merges: list[dict] = []
 
     def _find(label: str) -> str:
         # Iterative union-find with path compression.
@@ -272,18 +296,40 @@ def _classify_themes(
             label = union_parent[label]
         return label
 
-    def _union(a: str, b: str) -> None:
+    def _union(a: str, b: str) -> bool:
+        """Merge two Phase A labels under one root if the resulting group
+        size <= MAX_ABSORBED_PER_CANONICAL + 1 (root + up to N absorbed).
+        Returns True if merged or already in same group; False if the
+        merge was blocked by the cap (and the two stay as separate
+        canonicals).
+        """
         ra, rb = _find(a), _find(b)
         if ra == rb:
-            return
+            return True
+        combined = merge_count[ra] + merge_count[rb]
+        if combined > MAX_ABSORBED_PER_CANONICAL + 1:
+            cap_blocked_merges.append({
+                "would_merge_a": a,
+                "would_merge_b": b,
+                "ra_root": ra,
+                "rb_root": rb,
+                "ra_group_size": merge_count[ra],
+                "rb_group_size": merge_count[rb],
+                "would_have_been": combined,
+                "cap": MAX_ABSORBED_PER_CANONICAL + 1,
+            })
+            return False
         # Keep the higher-bank-count Phase A canonical as the root — its
         # phrasing is the most-representative label for the merged theme.
         ra_banks = len(merged_sources.get(ra, set()))
         rb_banks = len(merged_sources.get(rb, set()))
         if ra_banks >= rb_banks:
             union_parent[rb] = ra
+            merge_count[ra] = combined
         else:
             union_parent[ra] = rb
+            merge_count[rb] = combined
+        return True
 
     # Walk covered Phase B clusters; record (banks_to_add, anchor_label) for
     # the augmentation pass after union-find converges.
@@ -381,6 +427,12 @@ def _classify_themes(
     if discovery_audit is not None:
         discovery_audit["two_tier_merges"] = two_tier_merges
         discovery_audit["two_tier_augment_count"] = len(topic_augments)
+        # Cap-blocked merges: each entry is a would-be merge the
+        # MAX_ABSORBED_PER_CANONICAL cap prevented. Surfacing so the QC
+        # can verify the cap is firing on real over-merge attempts and
+        # not sitting idle. Empty list = no merges hit the cap this run.
+        discovery_audit["two_tier_cap_blocked"] = cap_blocked_merges
+        discovery_audit["two_tier_max_absorbed_per_canonical"] = MAX_ABSORBED_PER_CANONICAL
 
     # Import here to avoid a circular import risk if voice_rules ever
     # grows synthesizer-side dependencies.

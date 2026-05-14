@@ -1067,6 +1067,30 @@ EDIT runs in a fresh `general-purpose` Agent session — NOT in the orchestrator
 
 Build the sub-agent prompt by combining `AUDIT_SYSTEM` + `AUDIT_USER` (with substitutions) from `ai_analysis/prompts.py`. Substitute `{draft_markdown}` with the contents of `/tmp/stitched.md` (post-STITCH, NOT the raw `/tmp/draft.md`). All other substitutions (`{today}`, `{now}`, `{session_status}`, `{market_snapshot}`, `{news_snapshot}`, `{earnings_calendar}`, `{economic_calendar}`) come from `/tmp/ctx.json`.
 
+Also substitute `{adjudicated_themes_list}` with a human-readable list of every validated theme from `/tmp/adjudication.json`. Format: one bullet per theme, including the canonical name and bank count. This is what powers the AUDIT prompt's DROPPED-THEME AUDIT (anti-DRAFT-compression) section — without this substitution, EDIT can't audit dropped themes.
+
+```python
+# Build the adjudicated_themes_list substitution from /tmp/adjudication.json.
+# Format: one bullet per validated theme with name + bank count, so EDIT can
+# walk the list and check each present in the draft.
+adj_themes_list_text = ""
+try:
+    adj_file = json.load(open('/tmp/adjudication.json'))
+    validated = adj_file.get('themes', []) or []
+    if validated:
+        lines = []
+        for t in validated:
+            theme_name = t.get('theme', '(unnamed)')
+            sc = t.get('stance_counts', {}) or {}
+            total_banks = (sc.get('supportive', 0) + sc.get('skeptical', 0) + sc.get('neutral', 0))
+            lines.append(f"- **{theme_name}** ({total_banks} banks: {sc.get('supportive',0)} supportive, {sc.get('skeptical',0)} skeptical, {sc.get('neutral',0)} neutral)")
+        adj_themes_list_text = "\n".join(lines)
+    else:
+        adj_themes_list_text = "(none — adjudication produced no validated themes this run)"
+except (FileNotFoundError, json.JSONDecodeError):
+    adj_themes_list_text = "(adjudication file unavailable — DROPPED-THEME AUDIT can't run this fire)"
+```
+
 Save the assembled prompt (SYSTEM + USER concatenated) to `/tmp/agent_io/edit-prompt.txt` BEFORE dispatching, so the QC review can verify substitutions resolved correctly:
 
 ```bash
@@ -1101,21 +1125,33 @@ If STEP 5.5's lint report has any HARD issues (any `kind` other than `top-3-them
 
 This is the layer that closes the voice-enforcement gap: the EDIT sub-agent handles editorial judgment but doesn't reliably iterate over every sentence to enforce voice rules; SCRUB has no other concerns competing for attention and is driven by structured lint output rather than self-supervision.
 
-### Step 5.7.1 — Decide whether to dispatch
+### Step 5.7.1 — Decide whether to dispatch (BINDING GATE)
 
-Read `/tmp/lint_report.json`. Count the issues whose `kind` is NOT `top-3-theme-missing`:
+Read `/tmp/lint_report.json`. Count the issues whose `kind` is NOT `top-3-theme-missing`, and emit an explicit `SCRUB_DECISION` token that the next sub-step keys off:
 
 ```bash
-python3 -c "
-import json
+python3 << 'PYEOF'
+import json, sys
 issues = json.load(open('/tmp/lint_report.json'))
 hard = [i for i in issues if i.get('kind') != 'top-3-theme-missing']
-print(f'hard issues: {len(hard)}')
-print(f'soft issues: {len(issues) - len(hard)}')
-"
+print(f'hard_lint_issues: {len(hard)}')
+print(f'soft_lint_issues: {len(issues) - len(hard)}')
+# Single source of truth for the gate. Write to /tmp so subsequent
+# steps can read instead of re-deriving.
+decision = 'dispatch' if hard else 'skip'
+with open('/tmp/scrub_decision.txt', 'w') as f:
+    f.write(decision)
+print(f'SCRUB_DECISION: {decision}')
+PYEOF
 ```
 
-If hard issues == 0, SKIP STEP 5.7 entirely (proceed to STEP 6). If hard issues > 0, continue to 5.7.2.
+**HARD GATE — read the output literally:**
+
+- If the output ends with `SCRUB_DECISION: skip`, you MUST skip STEP 5.7 entirely. Do NOT dispatch the SCRUB sub-agent. Do NOT run STEP 5.7.2 or 5.7.3. Proceed directly to the end-of-STEP-5.7 progress event and then STEP 6. Dispatching SCRUB when there are zero hard lint issues wastes a sub-agent call and produces net-zero quality delta — the 2026-05-14T20-01-08Z test fire did exactly this (SCRUB ran on 0 issues, returned ~70 chars of cosmetic edits). Don't repeat.
+
+- If the output ends with `SCRUB_DECISION: dispatch`, continue to 5.7.2.
+
+This gate is intentionally redundant with the bash output AND a `/tmp/scrub_decision.txt` file because earlier runs interpreted the prose "If hard issues == 0, SKIP" as advisory rather than mandatory. Read the literal token; do not infer.
 
 ### Step 5.7.2 — Dispatch SCRUB sub-agent
 

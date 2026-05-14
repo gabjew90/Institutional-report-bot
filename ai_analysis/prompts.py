@@ -985,14 +985,53 @@ You have the PREVIOUS scheduled pulse's final markdown AND its QC review above. 
 If there's no previous scheduled pulse (first run, or only test fires preceded this one), say so in one line and skip the rest of this section.
 
 ## Suggested changes for next run
-Specific, actionable. Each entry should reference a file + the change. Format:
 
-- **{{file_path}}**: {{what to change}}. Reason: {{evidence from this run}}.
+Specific, actionable. Each entry must include **four required fields** so a reader can judge feasibility and information cost before committing — vague answers are rejected. Format:
 
-No vague "improve the prompt" — name the line/rule.
+```
+- **{{file_path}}**: {{what to change}}.
+  - Reason: {{evidence from this run, [observed] or [inferred] tagged}}.
+  - Scope: {{specific count — "~30 lines in one function" / "~80 lines across 2 files" / "200+ lines spanning a refactor". "small/medium/large" alone is rejected}}.
+  - Information or capability lost: {{what current behavior the change would remove. If none, write "none — purely additive". If "none" is unjustified, the change is over-scoped}}.
+  - When this would be the wrong call: {{what would have to be true for this fix to be incorrect or premature. If you can't think of anything, the recommendation isn't load-bearing enough to ship}}.
+```
+
+Example of right-shaped entry:
+
+```
+- **github_bridge/jobs.py:850**: gate SCRUB dispatch on `lint_issues_count > 0`.
+  - Reason: [observed] today's run dispatched SCRUB with 0 hard lint issues and produced a +1.6% character delta (cosmetic). Routine prose said "if hard == 0, skip" but the Claude session ran it anyway.
+  - Scope: ~10 lines in publish_qc_dashboards_job sibling area, no API surface changes.
+  - Information or capability lost: none — purely an early-exit on the no-op case.
+  - When this would be the wrong call: if SCRUB ever needed to run for reasons orthogonal to lint (currently it doesn't, but adding any such reason later would require this gate to relax).
+```
+
+The four fields together are an anti-over-scope guard: they force the QC reviewer to commit to feasibility and acknowledge tradeoffs. Recommendations that can't fill in "information lost" or "when this would be wrong" are probably patches on symptoms or refactors-for-tidiness rather than fixes.
+
+## Calibration tagging (binding for all diagnostic claims in this review)
+
+Every diagnostic claim — anywhere in this review, not just the recommendations — must be explicitly tagged as one of:
+
+- **[observed]** — directly visible in the artifacts: lint report, diff stats, audit JSON, sub-agent prompt sizes, character counts, archive listings. The claim says what's in the data.
+- **[inferred]** — reasoning from observed facts to a likely cause. Says what the data probably means, given the architecture.
+- **[speculative]** — plausible explanation that can't be confirmed from the artifacts available. Says what might be true if the architecture worked a certain way.
+
+The tag goes inline with the claim. Example: *"[observed] adjudication validated 8 themes but DRAFT shipped 3 INSIGHTS. [inferred] the synthesizer prompt rewards density-within-a-theme over theme-breadth. [speculative] DRAFT may be ignoring the theme-count floor instruction; verify in next run's adjudicated_themes_list substitution."*
+
+This prevents the failure mode where a per-run QC says *"the recommendation was not implemented or it was implemented and didn't catch this case"* — a [speculative] claim that reads as a finding. With the tag, the reader sees the uncertainty and acts accordingly.
+
+**Self-consistency check (binding):** before finalizing, walk every [inferred] claim. If any [inferred] claim contradicts an [observed] fact in another section of this review, resolve the contradiction in the [inferred] section itself — don't leave the contradiction for the reader to discover three sections later. The 2026-05-14T20-01-08Z QC failed this: Phase B section said "eaten at the cluster layer" (which was [inferred]), but Adjudication section said "trump-xi, Warsh, agentic AI WERE in the adjudicated set" (which was [observed]). The [inferred] should have been corrected in place.
 
 ## Signals worth tracking
 Things to watch in the next 1-3 runs that THIS run hinted at but isn't yet conclusive. Empty list is OK if nothing showed up.
+
+For the next run specifically (post-Phase-2-ship, 2026-05-15 onward), explicitly report on **these two metrics** separately — do not collapse them:
+
+1. **Two-tier merge cap firing.** Check `discovery_audit.two_tier_cap_blocked` (now committed at `pulse-output/qc-inputs/<ts>.adjudication-inputs.json` adjacent artifacts). Report: total cap-blocked merges, the canonical(s) that hit the cap, and which Phase A themes stayed separate as a result. A cap that never fires across multiple runs means it's not load-bearing; a cap that fires repeatedly on the same canonical means the two-tier merge is over-reaching there specifically.
+
+2. **DRAFT validated-to-drafted ratio.** Adjudication validated N themes; DRAFT shipped M INSIGHTS sections. Report N/M explicitly with both numbers. The THEME-COUNT FLOOR rule in DRAFT_USER says when N≥6, M≥4 mandatory; when N≥8, M≥5. Track compliance. A ratio of 8:3 (today's test fire) is the failure mode this fix prevents; track whether it persists.
+
+These two metrics fix DIFFERENT bugs; don't conflate. Friday's QC could show 4+ INSIGHTS themes because the merge cap preserved more candidates AND/OR because the DRAFT floor forced it. Reporting them separately is what makes it possible to attribute Friday's results to specific fixes.
 
 ---
 
@@ -1067,6 +1106,12 @@ DRAFT_USER = """TODAY IS {today}. CURRENT TIME IS {now} ET.
 - The 4th, 5th, and 6th INSIGHTS (variable count — produce **3 to 6 themes total** based on what the corpus actually supports today) come from: (a) themes with 5+ banks below the top 3, OR (b) single-topic dedicated catalysts where there's a hard event hook (M&A on an S&P 100 name, MAG7 earnings reaction, FDA decision on a specific ticker, regulatory deadline). These are the ONLY two paths into INSIGHTS for sub-5-bank themes.
 
 **SHIP 3 STRONG THEMES OVER 5 PADDED ONES.** If today's corpus has only 3 themes with real conviction (multi-bank consensus or hard catalyst), ship 3. Don't reach for a fourth that's a single-bank stretch just because "the structure says 4-6". A weak theme #4 dilutes the strong themes #1-3 and trains the reader to skim. On heavy-news days the count goes higher (6 if there are genuinely 6 strong threads); on quiet days it stays at 3.
+
+**THEME-COUNT FLOOR WHEN ADJUDICATION VALIDATED MANY (binding — anti-over-compression).** When the adjudicated themes block you received contains **6 or more validated themes**, you MUST ship at least **4 INSIGHTS sections**. When it contains **8 or more validated**, ship at least **5 INSIGHTS sections**. These floors exist because adjudication has already done the bank-deduplicated cross-bank validation work; if 6+ themes survived adjudication's evidence-grounding lint, the corpus genuinely supports that breadth and over-compressing to 3 themes is throwing away cross-bank synthesis surface area.
+
+The "SHIP 3 STRONG" rule above applies when adjudication produces a SHORT list (3-5 validated). It does NOT override this floor when adjudication validated 6+. A long validated list IS the evidence that the corpus supports breadth.
+
+The 2026-05-14T20-01-08Z test fire failed this: adjudication validated 8 themes (including `trump xi summit`, `kevin warsh fed chair`, `agentic ai`), DRAFT shipped 3 INSIGHTS sections and dropped Trump-Xi to a single WATCH bullet. That cost the pulse its strongest cross-bank synthesis surface area. Don't repeat that pattern. If 8 themes survived adjudication and you can only justify 3, the adjudicator was wrong about 5 themes — and that's a much bigger problem than you ship a fourth theme. Default action is to ship the 4th/5th/6th theme as a real INSIGHTS block; the DRAFT NOTES escape hatch (below) is for genuinely-thin validated themes that fold into another theme's counter-case, not for "I'd rather ship 3 dense themes than 5 medium ones."
 
 **RECORD DROPPED ADJUDICATED THEMES (binding).** The adjudication block you receive lists themes that passed cross-bank validation. If you ship fewer INSIGHTS themes than that block contains — because a validated theme was too thin (e.g., 2-bank skeptical-only) to anchor a standalone section, or you folded it into another theme's counter-case — you MUST account for it. Append, as the very last thing in your output (after `## 3. WHAT TO WATCH`, after everything), a section:
 
@@ -1893,7 +1938,23 @@ DRAFT PULSE (from Stage 1 — research only, no live data):
 
 ---
 
-Produce the final pulse. Rewrite RECAP with live data + released events + news. Run Pass A (cull), Pass A.5 (data density), Pass B (impact close), and the voice scrub on INSIGHTS. Each pulse is standalone — do not compare to or reference previous pulses. State views directly without meta-narration (no "cross-bank consensus is firming," "8+ notes flag," "research suggests"). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
+ADJUDICATED THEMES (validated by the adjudication stage upstream of DRAFT):
+
+{adjudicated_themes_list}
+
+---
+
+Produce the final pulse. Rewrite RECAP with live data + released events + news. Run Pass A (cull), Pass A.5 (data density), Pass B (impact close), and the voice scrub on INSIGHTS.
+
+**DROPPED-THEME AUDIT (binding — anti-DRAFT-compression).** Before producing the final, walk the ADJUDICATED THEMES list above. For each entry, check whether it appears in the DRAFT as an INSIGHTS theme, a sub-section inside an INSIGHTS theme, or a WATCH bullet. If a validated theme is absent from the draft entirely, you have two choices:
+
+1. **Restore it** as either an INSIGHTS theme (preferred for 5+ bank validated themes with directional signal) or a WATCH bullet (for discovery-promoted topics with no consensus stance). The validated adjudication entry has the bank list and trade implication structure you need to reconstruct the theme.
+
+2. **Defend the drop** in a `## _EDIT NOTES (internal — strip before publish)` section appended after the WATCH block, with one line per dropped theme: `Dropped <theme> (N banks): <reason — too thin to anchor, folded into <other theme>, no US-trader-actionable instrument, etc.>`. The routine strips this section before the pulse ships; it exists so the QC reviewer can see your editorial decisions.
+
+The 2026-05-14T20-01-08Z test fire failed this: 8 themes validated, DRAFT shipped 3 INSIGHTS, demoted Trump-Xi (14-bank validated theme) to a single WATCH bullet without notes, dropped Warsh and agentic AI entirely without notes. EDIT didn't catch any of them. That's the pattern this audit prevents. If you can't restore AND can't justify the drop, restore.
+
+Each pulse is standalone — do not compare to or reference previous pulses. State views directly without meta-narration (no "cross-bank consensus is firming," "8+ notes flag," "research suggests"). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
 """
 
 

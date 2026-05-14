@@ -42,25 +42,32 @@ log = logging.getLogger(__name__)
 _EMBED_MODEL = "gemini-embedding-001"
 _LABEL_MODEL = "gemini-2.5-flash-lite"
 # Cosine similarity above which two theme strings merge into one cluster.
-# Walked down 0.78 -> 0.75 -> 0.72 across QCs that flagged Phase A
-# fragmenting high-bank-count topics into 1-PDF micro-themes:
-#   - 2026-05-12 pulse: 17-bank "Strait of Hormuz" split into ~8 one-bank
-#     micro-themes. Dropped 0.78 -> 0.75.
-#   - 2026-05-13 + 2026-05-14 pulses: same fragmentation pattern
-#     recurred — `oil price super spike risk: 16 banks / 1 PDFs`,
-#     `semiconductor leverage risk: 8 banks / 2 PDFs`. Phase B's two-tier
-#     merge bridges these AT the augment layer (banks aggregate
-#     correctly) but the canonical seed remains the 1-PDF label, which
-#     leaves the adjudication input thin and the theme-coverage bank-
-#     ranking misleading.
-# Dropped 0.75 -> 0.72 to merge more aggressively at Phase A so the
-# canonical seed for high-bank topics is itself multi-PDF. Re-check the
-# next 3 runs' QC: if over-merging starts (e.g., distinct trade
-# subjects collapse into one theme), bump back to 0.74 or fix upstream
-# in the analyzer's theme_stance labeling. If fragmentation still
-# recurs, the real lever is broadening the analyzer's per-PDF
-# theme_stance label vocabulary.
-_DEFAULT_THRESHOLD = 0.72
+# History:
+#   - 0.78 (initial): some QCs flagged Phase A fragmenting high-bank
+#     topics into 1-PDF micro-themes ("hormuz peace deal", "iran risk
+#     premium" etc. each as separate clusters).
+#   - 0.75 (2026-05-13): dropped one notch to merge more aggressively at
+#     Phase A.
+#   - 0.72 (2026-05-14): dropped another notch trying to fix the
+#     X-banks-1-PDF canonical-seed pathology. Made fragmentation worse
+#     downstream — the 2026-05-14T20-01-08Z test fire's QC showed the
+#     two-tier merge then over-absorbed 10 distinct Phase A themes
+#     (`fed rate cut expectations`, `usd rally`, `inflationary boom`,
+#     etc.) into `ai driven capex supercycle`. The looser threshold
+#     gave the two-tier centroid bridge license to merge things that
+#     aren't actually the same trade.
+#   - 0.75 (now, reverted): back to the pre-0.72 level. The over-merge
+#     surfaced because Phase 1's adjudication input-contract fix
+#     removed the upstream filter that was hiding it. With the merge
+#     cap (synthesizer.py, ≤4 absorbed per canonical) defending against
+#     unbounded centroid bridging, 0.75 is the right level.
+#
+# If the X-banks-1-PDF canonical-seed pathology recurs after this revert
+# (which it will, since this revert doesn't address it), the right fix
+# is Phase A canonical-seed selection (prefer multi-PDF members) — held
+# for a separate ship after the cross-run reviewer has data to validate
+# against.
+_DEFAULT_THRESHOLD = 0.75
 _LABEL_PARALLELISM = 8
 # Gemini's embed_content rejects oversized batches. Phase A (theme_stances
 # clustering) embeds only ~30-90 strings so it never hit this — but Phase B
