@@ -211,10 +211,16 @@ def create_bot() -> commands.Bot:
         except Exception as e:
             log.error(f"Ingestion feed startup backfill failed: {e}", exc_info=True)
 
-    @bot.tree.command(name="pulse", description="Generate a Market Pulse from analyses in the window")
-    @app_commands.describe(
-        hours="Optional: how many hours back to look (default: since last scheduled pulse, or 24h). Max 168 (1 week).",
-    )
+    # --- DISABLED in slash menu (2026-05-14) ----------------------------------
+    # /pulse is no longer registered with Discord's command tree. Manual pulses
+    # were rarely used by non-admin users and cluttered the picker. The function
+    # body is preserved verbatim — to re-expose it, simply uncomment the two
+    # decorator lines below. The internal pipeline (`run_manual_pulse`) is still
+    # callable from /reanalyze, the scheduled job, and the bridge worker.
+    # @bot.tree.command(name="pulse", description="Generate a Market Pulse from analyses in the window")
+    # @app_commands.describe(
+    #     hours="Optional: how many hours back to look (default: since last scheduled pulse, or 24h). Max 168 (1 week).",
+    # )
     async def pulse_command(interaction: discord.Interaction, hours: int | None = None):
         if not await _check_pulse_channel(interaction):
             return
@@ -271,11 +277,15 @@ def create_bot() -> commands.Bot:
             log.error(f"Manual pulse failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error generating pulse: {str(e)[:200]}")
 
-    @bot.tree.command(name="load", description="Ingest + analyze PDFs uploaded to Dropbox in the last N hours")
-    @app_commands.describe(
-        hours="How many hours of recent PDFs to load (max 48)",
-        password="Admin password",
-    )
+    # --- DISABLED in slash menu (2026-05-14) ----------------------------------
+    # /load is unregistered. Dropbox is polled every 15 minutes automatically
+    # by `scheduler.jobs.dropbox_poll_job`, so manual ingestion is rarely
+    # needed. To re-expose, uncomment the two decorator lines below.
+    # @bot.tree.command(name="load", description="Ingest + analyze PDFs uploaded to Dropbox in the last N hours")
+    # @app_commands.describe(
+    #     hours="How many hours of recent PDFs to load (max 48)",
+    #     password="Admin password",
+    # )
     async def load_command(interaction: discord.Interaction, hours: int, password: str):
         if not await _check_pulse_channel(interaction):
             return
@@ -467,11 +477,16 @@ def create_bot() -> commands.Bot:
             log.error(f"Reanalyze enqueue failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
-    @bot.tree.command(name="clearqueue", description="Delete pending (DOWNLOADED) PDFs from the queue — destructive, cancels backlog")
-    @app_commands.describe(
-        password="Admin password",
-        confirm="Set true to skip the >500 safety check for large purges",
-    )
+    # --- DISABLED in slash menu (2026-05-14) ----------------------------------
+    # /clearqueue is a destructive admin tool that should not be in everyone's
+    # picker. Function preserved — uncomment the decorators below if you need
+    # to purge a stuck queue. (Alternatively, run db.clear_pending_queue()
+    # directly via `railway ssh`.)
+    # @bot.tree.command(name="clearqueue", description="Delete pending (DOWNLOADED) PDFs from the queue — destructive, cancels backlog")
+    # @app_commands.describe(
+    #     password="Admin password",
+    #     confirm="Set true to skip the >500 safety check for large purges",
+    # )
     async def clearqueue_command(interaction: discord.Interaction, password: str, confirm: bool = False):
         if not await _check_pulse_channel(interaction):
             return
@@ -500,8 +515,11 @@ def create_bot() -> commands.Bot:
             log.error(f"Clear queue failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
-    @bot.tree.command(name="seedcursor", description="Seed Dropbox cursor to current state (skips backfill on next poll)")
-    @app_commands.describe(password="Admin password")
+    # --- DISABLED in slash menu (2026-05-14) ----------------------------------
+    # /seedcursor is a one-shot recovery tool used after Dropbox-cursor
+    # mishaps. Not needed in normal operation. Uncomment to re-expose.
+    # @bot.tree.command(name="seedcursor", description="Seed Dropbox cursor to current state (skips backfill on next poll)")
+    # @app_commands.describe(password="Admin password")
     async def seedcursor_command(interaction: discord.Interaction, password: str):
         if not await _check_pulse_channel(interaction):
             return
@@ -678,8 +696,12 @@ def create_bot() -> commands.Bot:
 
         await interaction.response.send_message(embed=embed)
 
-    @bot.tree.command(name="reprocess", description="Retry a failed PDF by filename")
-    @app_commands.describe(filename="The PDF filename to reprocess")
+    # --- DISABLED in slash menu (2026-05-14) ----------------------------------
+    # /reprocess retries a single failed PDF by filename. Built-in scheduler
+    # auto-retries failed PDFs up to MAX_RETRY_COUNT, so manual reprocess is
+    # rarely needed. Uncomment to re-expose.
+    # @bot.tree.command(name="reprocess", description="Retry a failed PDF by filename")
+    # @app_commands.describe(filename="The PDF filename to reprocess")
     async def reprocess_command(interaction: discord.Interaction, filename: str):
         if not await _check_pulse_channel(interaction):
             return

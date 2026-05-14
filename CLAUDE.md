@@ -110,16 +110,19 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 
 Password gate: `COMMAND_PASSWORD=jamalbot` env var. Gated commands take `password` arg.
 
-**Gated:**
-- `/load hours:N password:jamalbot` — ingest Dropbox PDFs from last N hours (max 48). Shows live progress with current filename + last 5 completed.
-- `/reanalyze hours:N password:jamalbot` — re-analyze PDFs already in DB with current prompt (appends new pdf_analyses rows; old preserved).
-- `/clearqueue password:jamalbot [confirm:true]` — delete pending (DOWNLOADED/PROCESSING) rows + local files. Refuses >500 without `confirm:true`.
-- `/seedcursor password:jamalbot` — set Dropbox cursor to "now" so next poll skips backfill.
+Channel allowlist: pulse/admin commands (everything except `/ask`) only execute in channels listed in `PULSE_COMMAND_CHANNELS` (env var, comma-separated channel names, default `"test,tldr"`). Empty value disables the restriction. Discord still lists the commands in the global picker — the bouncer fires on execution, replying with an ephemeral "command not available here" message.
 
-**Open:**
-- `/pulse [hours:N]` — manual pulse synthesis. Default 24h, max 168h. Fully standalone (no prev-pulse diff).
-- `/status` — dashboard: today's ingestion + total DB state + priority mix (always shows high/medium/low even if 0) + upload range + all-time tokens + last pulse times + Dropbox cursor state + upload volume (24h + since last scheduled) + last 5 ingested filenames (in configured timezone).
-- `/reprocess filename:X` — retry a failed PDF.
+**Visible in slash menu (currently registered):**
+- `/ask question:X` — Perplexity Sonar web-search Q&A. Works in **every** channel (not gated by `PULSE_COMMAND_CHANNELS`). 20 queries/user/day cap; resets at UTC midnight. Requires `PERPLEXITY_API_KEY` env var on Railway. Also responds to `@bot question` mentions in any channel.
+- `/status` — dashboard: today's ingestion + total DB state + priority mix (always shows high/medium/low even if 0) + upload range + all-time tokens + last pulse times + Dropbox cursor state + upload volume (24h + since last scheduled) + last 5 ingested filenames (in configured timezone). Channel-allowlisted.
+- `/reanalyze hours:N password:jamalbot` — re-analyze PDFs already in DB with current prompt (appends new pdf_analyses rows; old preserved). Channel-allowlisted + password-gated.
+
+**Disabled in slash menu, code preserved in `discord_bot/bot.py`** — function bodies are intact; only the `@bot.tree.command` and `@app_commands.describe` decorators are commented out (search file for `DISABLED in slash menu`). Uncomment the decorator lines above the function to re-expose it. Disabled 2026-05-14:
+- `/pulse [hours:N]` — manual pulse synthesis. Scheduled pulse runs daily; `/reanalyze` also drives the synthesis pipeline internally, so this is rarely needed.
+- `/load hours:N password:jamalbot` — manual Dropbox ingest. Auto-polling every 15 min already covers this.
+- `/clearqueue password:jamalbot [confirm:true]` — destructive queue purge. Run `db.clear_pending_queue()` via `railway ssh` if needed.
+- `/seedcursor password:jamalbot` — one-shot Dropbox-cursor recovery tool.
+- `/reprocess filename:X` — manual retry of a single failed PDF (auto-retry covers this via `MAX_RETRY_COUNT`).
 
 ## Deployment
 
