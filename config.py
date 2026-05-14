@@ -38,6 +38,11 @@ class Settings(BaseSettings):
     # Password guard for destructive / token-heavy commands (/load, /reanalyze).
     # Empty = no gate; any string = required to match the `password` slash arg.
     command_password: str = ""
+    # Comma-separated channel NAMES (not IDs) where pulse/admin slash commands
+    # are allowed. Applies to /pulse, /load, /reanalyze, /clearqueue,
+    # /seedcursor, /status, /reprocess. /ask is intentionally NOT gated.
+    # Empty = no restriction (commands work in every channel).
+    pulse_command_channels: str = "test,tldr"
 
     # Scheduling
     timezone: str = "America/New_York"
@@ -107,6 +112,13 @@ class Settings(BaseSettings):
     @property
     def priority_source_list(self) -> list[str]:
         return [s.strip().lower() for s in self.high_priority_sources.split(",") if s.strip()]
+
+    @property
+    def pulse_command_channel_names(self) -> list[str]:
+        """Lowercase channel-name allowlist for pulse/admin commands.
+        Empty list = no restriction.
+        """
+        return [s.strip().lower() for s in self.pulse_command_channels.split(",") if s.strip()]
 
     @property
     def discord_channel_ids(self) -> list[int]:

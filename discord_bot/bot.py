@@ -146,6 +146,34 @@ def _fmt_ts(iso_str: str | None) -> str:
         return iso_str[:16].replace("T", " ")
 
 
+async def _check_pulse_channel(interaction: discord.Interaction) -> bool:
+    """Reject pulse/admin commands invoked outside the allowed channels.
+
+    Returns True if the interaction may proceed, False if it was rejected
+    (and the rejection message was already sent ephemerally).
+
+    Allowlist comes from settings.pulse_command_channel_names (channel
+    names, lowercase). Empty allowlist = unrestricted (return True).
+    /ask intentionally does NOT call this — it's open in every channel.
+    """
+    allowed = settings.pulse_command_channel_names
+    if not allowed:
+        return True
+    chan = interaction.channel
+    chan_name = getattr(chan, "name", None) or ""
+    if chan_name.lower() in allowed:
+        return True
+    pretty = ", ".join(f"#{c}" for c in allowed)
+    try:
+        await interaction.response.send_message(
+            f"This command is only available in {pretty}. /ask works in any channel.",
+            ephemeral=True,
+        )
+    except Exception:
+        pass
+    return False
+
+
 def _safe_json(s: str | None) -> list:
     """Parse a JSON list field defensively. Returns [] on any failure
     (None, malformed JSON, non-list payload). Used for reanalyze_jobs
@@ -188,6 +216,8 @@ def create_bot() -> commands.Bot:
         hours="Optional: how many hours back to look (default: since last scheduled pulse, or 24h). Max 168 (1 week).",
     )
     async def pulse_command(interaction: discord.Interaction, hours: int | None = None):
+        if not await _check_pulse_channel(interaction):
+            return
         if hours is not None and (hours < 1 or hours > 168):
             await interaction.response.send_message("Hours must be between 1 and 168.")
             return
@@ -247,6 +277,8 @@ def create_bot() -> commands.Bot:
         password="Admin password",
     )
     async def load_command(interaction: discord.Interaction, hours: int, password: str):
+        if not await _check_pulse_channel(interaction):
+            return
         if settings.command_password and password != settings.command_password:
             await interaction.response.send_message("Invalid password.", ephemeral=True)
             return
@@ -315,6 +347,8 @@ def create_bot() -> commands.Bot:
         password: str,
         priority: str = "high+medium",
     ):
+        if not await _check_pulse_channel(interaction):
+            return
         if settings.command_password and password != settings.command_password:
             await interaction.response.send_message("Invalid password.", ephemeral=True)
             return
@@ -439,6 +473,8 @@ def create_bot() -> commands.Bot:
         confirm="Set true to skip the >500 safety check for large purges",
     )
     async def clearqueue_command(interaction: discord.Interaction, password: str, confirm: bool = False):
+        if not await _check_pulse_channel(interaction):
+            return
         if settings.command_password and password != settings.command_password:
             await interaction.response.send_message("Invalid password.", ephemeral=True)
             return
@@ -467,6 +503,8 @@ def create_bot() -> commands.Bot:
     @bot.tree.command(name="seedcursor", description="Seed Dropbox cursor to current state (skips backfill on next poll)")
     @app_commands.describe(password="Admin password")
     async def seedcursor_command(interaction: discord.Interaction, password: str):
+        if not await _check_pulse_channel(interaction):
+            return
         if settings.command_password and password != settings.command_password:
             await interaction.response.send_message("Invalid password.", ephemeral=True)
             return
@@ -484,6 +522,8 @@ def create_bot() -> commands.Bot:
 
     @bot.tree.command(name="status", description="Show pipeline health and DB state")
     async def status_command(interaction: discord.Interaction):
+        if not await _check_pulse_channel(interaction):
+            return
         today = db.get_today_stats()
         full = db.get_pipeline_stats()
 
@@ -641,6 +681,8 @@ def create_bot() -> commands.Bot:
     @bot.tree.command(name="reprocess", description="Retry a failed PDF by filename")
     @app_commands.describe(filename="The PDF filename to reprocess")
     async def reprocess_command(interaction: discord.Interaction, filename: str):
+        if not await _check_pulse_channel(interaction):
+            return
         await interaction.response.defer(thinking=True)
 
         try:
