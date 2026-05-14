@@ -82,6 +82,23 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=120,
         )
 
+        # QC dashboard publisher — after each QC review lands in the bridge
+        # branch, render the matching pulse as styled HTML, upload to
+        # litterbox.catbox.moe (24h), and append the URL to the QC review
+        # markdown. Idempotent via a marker comment in the file. Runs at
+        # the same cadence as the pending-pulse poller; the work per cycle
+        # is bounded by the number of QC reviews that don't yet have the
+        # marker (typically 0 between pulses, 1 right after a fire).
+        from github_bridge.jobs import publish_qc_dashboards_job
+        scheduler.add_job(
+            publish_qc_dashboards_job,
+            trigger=IntervalTrigger(seconds=settings.bridge_post_poll_interval_seconds),
+            id="bridge_publish_qc_dashboards",
+            name="GitHub bridge: publish dashboard links to QC reviews",
+            max_instances=1,
+            misfire_grace_time=120,
+        )
+
     # Reanalyze background processor — picks up persistent reanalyze jobs
     # and runs them to completion. Survives worker restarts: a job in
     # 'processing' state gets re-attached on next tick, resuming from the
