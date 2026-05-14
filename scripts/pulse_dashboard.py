@@ -418,6 +418,11 @@ def extract_pulse_metadata(
             themes.append(stripped[4:].strip())
 
     fname = source_filename or f"{ts}.md"
+    # target_channels is set in the frontmatter ONLY for test fires (the
+    # routine appends it when TARGET_CHANNELS env / file is non-empty).
+    # Production scheduled fires have no target_channels line. The web
+    # publisher uses this to filter test pulses out of the public archive.
+    target_channels = str(meta.get("target_channels") or "").strip()
     return {
         "ts": ts,
         "title": title,
@@ -429,6 +434,7 @@ def extract_pulse_metadata(
         "source_filename": fname,
         "archive_url": f"https://raw.githubusercontent.com/{repo}/{branch}/pulse-output/archive/{fname}",
         "fragment_url": f"https://raw.githubusercontent.com/{repo}/{branch}/pulse-output/web/latest-fragment.html",
+        "target_channels": target_channels,
     }
 
 

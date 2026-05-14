@@ -715,12 +715,74 @@ def publish_web_fragment_job() -> None:
         if it.get("type") == "file"
     }
 
-    # POLICY: only the SINGLE most recent pulse gets full processing
-    # (markdown fetch + metadata extract + fragment render). Older pulses
-    # get either a cached entry (if we extracted them on a previous job
-    # run) or a MINIMAL stub (ts + filename + archive_url only). This
-    # keeps the first-deploy cost bounded to one fetch + one fragment
-    # commit instead of N=WEB_ARCHIVE_LIMIT fetches + commits.
+    # === TEST-PULSE FILTER ===
+    # Pulses fired with a non-empty `target_channels` frontmatter field are
+    # test fires (Discord delivery is filtered to a test channel). They must
+    # NOT appear on the public web dashboard — only scheduled production
+    # pulses do.
+    #
+    # Classification source: the `target_channels` field that
+    # extract_pulse_metadata pulls from the pulse markdown's frontmatter.
+    # When a cached archive.json entry already carries that field (entries
+    # processed after this filter shipped), we reuse it. When the field is
+    # absent (entries cached before the filter shipped), we fetch the
+    # markdown once to classify and the result then gets cached on this
+    # cycle's archive.json write. So this pre-pass is at worst a one-shot
+    # backfill cost on the first run after deploy, then cheap forever.
+    #
+    # Test pulses dropped here: removed from archive.json (not visible to
+    # the dashboard), skipped for fragment rendering, ignored when picking
+    # the "newest" pointer for latest-fragment.html / latest.json. Their
+    # existing fragment files (if any) stay on disk as harmless artifacts
+    # — nothing references them once archive.json drops the entry.
+    filtered_candidates: list[dict[str, Any]] = []
+    prefetched_md: dict[str, str] = {}
+    test_pulses_skipped: list[str] = []
+    for item in candidates:
+        name = item.get("name", "")
+        ts = name[:-3]
+        cached = cached_entries.get(ts)
+        if cached and "target_channels" in cached:
+            # Cached classification — use directly.
+            if (cached.get("target_channels") or "").strip():
+                test_pulses_skipped.append(ts)
+                continue
+            filtered_candidates.append(item)
+        else:
+            # Cached entry lacks the target_channels field (or this entry
+            # isn't cached at all). Fetch the markdown once to classify.
+            pulse_md = gh.get_file_text(f"{ARCHIVE_DIR}/{name}")
+            if not pulse_md:
+                log.debug(f"Bridge: web publish — {name} unreadable during classify, skipping")
+                continue
+            peek_meta = extract_pulse_metadata(
+                pulse_md, ts=ts, source_filename=name, repo=repo, branch=branch,
+            )
+            if (peek_meta.get("target_channels") or "").strip():
+                test_pulses_skipped.append(ts)
+                continue
+            filtered_candidates.append(item)
+            # Cache the fetched markdown so the main loop doesn't refetch
+            # it when this entry becomes the "newest" or needs metadata.
+            prefetched_md[ts] = pulse_md
+
+    if test_pulses_skipped:
+        log.info(
+            f"Bridge: web publish skipped {len(test_pulses_skipped)} test pulse(s) — "
+            f"{test_pulses_skipped[:5]}{'...' if len(test_pulses_skipped) > 5 else ''}"
+        )
+
+    if not filtered_candidates:
+        log.debug("Bridge: web publish — no production pulses to process")
+        return
+
+    # POLICY: only the SINGLE most recent PRODUCTION pulse gets full
+    # processing (markdown fetch + metadata extract + fragment render).
+    # Older production pulses get either a cached entry (if we extracted
+    # them on a previous job run) or a MINIMAL stub (ts + filename +
+    # archive_url only). This keeps the first-deploy cost bounded to one
+    # fetch + one fragment commit instead of N=WEB_ARCHIVE_LIMIT fetches
+    # + commits.
     #
     # Effect on host-site pages:
     #   - The weekly-view dashboard filters by date_utc and only renders
@@ -735,7 +797,7 @@ def publish_web_fragment_job() -> None:
     latest_ts: str | None = None
     latest_filename: str | None = None
 
-    for idx, item in enumerate(candidates):
+    for idx, item in enumerate(filtered_candidates):
         name = item["name"]
         ts = name[:-3]  # strip .md
         fragment_name = f"{ts}.html"
@@ -747,9 +809,9 @@ def publish_web_fragment_job() -> None:
         if is_newest:
             # Full processing: fetch markdown (if needed), extract metadata,
             # render fragment (if missing), commit, build a full entry.
-            if cached and fragment_present:
-                # Already up-to-date. Refresh URLs in the entry but skip
-                # the markdown fetch.
+            if cached and fragment_present and "target_channels" in cached:
+                # Already up-to-date AND already classified as production.
+                # Refresh URLs in the entry but skip the markdown fetch.
                 entry = dict(cached)
                 entry["archive_url"] = (
                     f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
@@ -758,7 +820,9 @@ def publish_web_fragment_job() -> None:
                     f"https://raw.githubusercontent.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
                 )
             else:
-                pulse_md = gh.get_file_text(f"{ARCHIVE_DIR}/{name}")
+                # Use the markdown the classifier already fetched if we
+                # have it; otherwise fetch fresh.
+                pulse_md = prefetched_md.get(ts) or gh.get_file_text(f"{ARCHIVE_DIR}/{name}")
                 if not pulse_md:
                     log.warning(
                         f"Bridge: web publish — newest pulse {name} markdown unreadable, "
@@ -770,6 +834,7 @@ def publish_web_fragment_job() -> None:
                         "archive_url": (
                             f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
                         ),
+                        "target_channels": "",
                     }
                 else:
                     meta = extract_pulse_metadata(
@@ -794,6 +859,7 @@ def publish_web_fragment_job() -> None:
                         "fragment_url": (
                             f"https://raw.githubusercontent.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
                         ),
+                        "target_channels": meta.get("target_channels", ""),
                     }
                     latest_md = pulse_md
                     latest_ts = ts
@@ -812,17 +878,24 @@ def publish_web_fragment_job() -> None:
                 )
             else:
                 entry.pop("fragment_url", None)
+            # Ensure target_channels is set so the next cycle's pre-pass
+            # can use cached classification without refetching markdown.
+            # All entries reaching this branch are production (the test-
+            # pulse filter dropped them in the pre-pass), so empty string.
+            entry.setdefault("target_channels", "")
         else:
             # Older pulse, no cached metadata, no fragment — minimal stub.
             # Host pages skip entries without a fragment_url; the raw
             # markdown is still reachable via archive_url for anyone who
-            # wants to read it directly.
+            # wants to read it directly. Stamp target_channels="" so the
+            # next cycle's pre-pass can skip the classification fetch.
             entry = {
                 "ts": ts,
                 "filename": name,
                 "archive_url": (
                     f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
                 ),
+                "target_channels": "",
             }
 
         archive_entries.append(entry)
