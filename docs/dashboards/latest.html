@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hot prices, Fed cornered &middot; Daily Market Pulse</title>
+<style>
+:root {
+  --color-recap:    #c9a227;
+  --color-insights: #2956a3;
+  --color-watch:    #d97706;
+  --color-text:     #1a1a1a;
+  --color-muted:    #666;
+  --color-soft:     #f7f5f0;
+  --color-card:     #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-soft);
+  color: var(--color-text);
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 36px 48px 80px;
+  background: var(--color-card);
+  min-height: 100vh;
+  box-shadow: 0 0 24px rgba(0,0,0,0.04);
+}
+
+@media (max-width: 720px) {
+  .page { padding: 24px 18px 60px; }
+  html, body { font-size: 15px; }
+}
+
+/* === MASTHEAD === */
+.masthead {
+  border-bottom: 3px solid var(--color-text);
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+}
+.masthead .brand {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 6px;
+}
+.masthead h1 {
+  font-size: 32px;
+  line-height: 1.1;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.masthead .dateline {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+.masthead .meta {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* === SECTION BANNERS === */
+h2 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 28px 0 12px 0;
+  padding: 10px 14px;
+  border-radius: 4px;
+  color: #ffffff;
+}
+h2.recap    { background: var(--color-recap); }
+h2.insights { background: var(--color-insights); }
+h2.watch    { background: var(--color-watch); }
+
+/* === THEME HEADERS === */
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 22px 0 6px 0;
+  color: var(--color-text);
+}
+.insights-body h3 {
+  border-left: 4px solid var(--color-insights);
+  padding-left: 10px;
+  margin-left: -4px;
+}
+.watch-body h3 {
+  border-left: 4px solid var(--color-watch);
+  padding-left: 10px;
+  margin-left: -4px;
+}
+
+/* === BODY === */
+p { margin: 10px 0; }
+em {
+  color: var(--color-insights);
+  font-style: italic;
+  font-weight: 500;
+}
+strong { color: var(--color-text); font-weight: 700; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 5px 0; }
+
+/* === CASHTAGS === */
+.cashtag {
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 14px;
+  background: #f1efeb;
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: #1a3a6b;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* === FOOTER === */
+.footer {
+  margin-top: 36px;
+  padding-top: 14px;
+  border-top: 1px solid #e0ddd6;
+  font-size: 12px;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+.footer .label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: #555;
+}
+
+/* === STICKY SECTION NAV (wide viewports only) === */
+.section-nav {
+  display: none;
+}
+@media (min-width: 1100px) {
+  .section-nav {
+    display: block;
+    position: fixed;
+    top: 36px;
+    left: calc(50% + 440px);
+    width: 180px;
+    font-size: 12px;
+  }
+  .section-nav .label {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .section-nav a {
+    display: block;
+    padding: 6px 0;
+    color: var(--color-text);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    padding-left: 10px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .section-nav a:hover {
+    color: var(--color-insights);
+    border-left-color: var(--color-insights);
+  }
+}
+
+hr { border: 0; border-top: 1px dashed #ccc; margin: 18px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="brand">Daily Market Pulse</div>
+    <h1>Hot prices, Fed cornered</h1>
+    <div class="dateline">Wednesday, May 13, 2026 &middot; pulse synthesized 2026-05-13 13:06:28 UTC</div>
+  </header>
+  <h2 class="recap" id="recap">1. RECAP</h2><div class="recap-body">
+<p>Heading into today&rsquo;s open, the market is digesting back-to-back hot inflation prints layered on an oil market the IEA just declared structurally short into year-end. Yesterday&rsquo;s session closed soft with <span class="cashtag">$SPY</span> -0.15% and <span class="cashtag">$QQQ</span> -0.85% on the April CPI reaction, while <span class="cashtag">$USO</span> ripped +4.07% and <span class="cashtag">$BNO</span> +3.40% on the Iran supply scare. <span class="cashtag">$VIXY</span> drifted -2.33% even as equities slipped, which tells you positioning is the worry, not hedging demand. Crypto is mixed pre-market with <span class="cashtag">$BTC</span> at $80,273 (-0.27%) and <span class="cashtag">$ETH</span> +0.53%. Underneath the AI rally, hedge-fund prime-book Info Tech gross exposure sits at the 100th percentile (a five-year high) and retail call buying in the ten mega-cap tech names is at meme-era levels, which is what makes today&rsquo;s PPI a more dangerous catalyst than the number alone suggests.</p>
+<ul>
+<li><strong>April PPI triple-miss (8:30 AM ET).</strong> Headline PPI MoM +1.4% vs +0.5% estimate, Core PPI YoY 5.2% vs 4.3% estimate, Core PPI MoM +1.0% vs +0.3% estimate. Eighth straight hot print on the supply side, and the spread into core services and food rules out the &ldquo;just oil&rdquo; excuse. Equity futures softened on the release, <span class="cashtag">$USO</span> held its bid, and the rate curve is poised to keep re-pricing higher-for-longer at the open.</li>
+<li><strong>IEA flags 2026 supply deficit.</strong> The IEA said overnight that global oil supply will plunge below demand this year because of the Iran war. That is the official seal on what the futures complex has been front-running. <span class="cashtag">$USO</span> +4.07% yesterday, <span class="cashtag">$BNO</span> +3.40% yesterday, with Vietnam and India announcing emergency fuel-import measures overnight.</li>
+<li><strong>Trump heads to Beijing.</strong> Trump publicly said no need for China&rsquo;s help on Iran and is now en route to the long-rumoured Xi summit. A constructive readout could snap the energy bid lower and lift semis, a breakdown reignites the tariff path. Oil was little-changed overnight on the headline, with the market unwilling to fade the supply story until the meeting actually lands.</li>
+<li><strong>April CPI (yesterday&rsquo;s release).</strong> Headline ran 3.8% YoY, a three-year high, with core CPI +0.38% MoM above the 0.3% consensus. That print is what dragged <span class="cashtag">$SPY</span> and <span class="cashtag">$QQQ</span> lower into the close and set today&rsquo;s PPI up as a confirmation event.</li>
+</ul>
+</div><h2 class="insights" id="insights">2. INSIGHTS &amp; ALPHA</h2><div class="insights-body">
+<h3>Inflation just reaccelerated, and the curve is re-pricing rate cuts into rate hikes</h3>
+<p><em>April CPI confirmed it, today&rsquo;s PPI sealed it. The inflation re-acceleration is broad enough to put hikes back on the table.</em></p>
+<ul>
+<li>April headline CPI 3.8% YoY, the highest in three years, with core CPI +0.38% MoM above the 0.3% consensus.</li>
+<li>Today&rsquo;s PPI MoM dropped at +1.4% vs +0.5% estimate (a triple miss), with Core PPI YoY at 5.2% vs 4.3% expected. Supply-side prices are accelerating, not cooling.</li>
+<li>Scotiabank flags core services CPI ex-energy and ex-shelter at +0.45% MoM (their word: &ldquo;explosive&rdquo;), and beef prices +8.8% YoY leading the food index higher.</li>
+<li>BofA forecasts core PCE (the Fed&rsquo;s preferred inflation gauge, which strips food and energy) in the 2.5-3% range, a level that explicitly precludes Fed rate cuts.</li>
+<li>Fed funds futures now show roughly 0.15-0.20 percentage points of HIKES priced by next April, a full reversal from the cuts in the curve a month ago (Deutsche Bank).</li>
+</ul>
+<p>Today&rsquo;s PPI is the eighth straight hot supply-side print. Energy is the spark with gasoline +28.4% YoY, the steepest since July 2022, but the bleed into core services and food is the part that cannot be hand-waved as oil noise. The 8-4 FOMC vote at the last meeting was the most dissents since 1992. The Committee was fractured before this PPI landed, and the path of least resistance is for the curve to keep re-pricing.</p>
+<p>The counter is that the consumer is wobbling. PNC&rsquo;s May sentiment survey ticked lower, revolving credit growth has slowed, and small caps are catching a bid on slowdown hopes. That tension matters because the Fed has cover to look through energy if growth genuinely rolls. But a 4.6% core CPI annualized pace with shelter still in BLS catch-up mode is not energy noise. 30-year Treasuries cannot rally meaningfully into the 30-year refunding next week, particularly with the UK gilt curve breaking out to 5.10% (the highest since 2008) and dragging global term premium higher. Short <span class="cashtag">$TLT</span> into next week&rsquo;s FOMC minutes.</p>
+<h3>AI capex is reshaping more than just earnings</h3>
+<p><em>The capex super-cycle is no longer a forecast. It is showing up in import data, labor cost projections, and the inflation prints themselves.</em></p>
+<ul>
+<li>Goldman puts AI investment at 1.1% of US GDP, with $150B per year in labor costs tied to the AI transition and $800-900B in workforce reorganization cost over the cycle. This is a real-economy story, not just a Nasdaq story.</li>
+<li>Bank of America: spend on AI infrastructure has shown little fatigue, and demand for AI inputs could keep this wedge persistent in inflation data. Capex is now durable enough to bleed into core CPI.</li>
+<li>Core intermediate goods producer prices are running at 5.1%, the fastest pace since 2022 (Goldman). The AI build is bidding up the components that feed the inflation index.</li>
+<li>Danske notes US imports of AI-related computer equipment are a rapidly growing share of total US import value, big enough to reshape the trade balance.</li>
+<li>TSMC&rsquo;s 14.2% weighting in MSCI Emerging Markets has surpassed India&rsquo;s 11.94%. The entire EM index has tilted into the AI complex.</li>
+</ul>
+<p>Three forces reinforce each other. Capex is widening from chips into power, cooling, software, and second-derivative goods imports. The earnings cycle keeps confirming the spend. Macro spillover into inflation prints means the cycle has structural durability that survives a single hyperscaler guide-down.</p>
+<p>The bear case is positioning, not fundamentals. What hedge funds are holding in Info Tech sits at a five-year high, the Nasdaq is 15% above its 100-day moving average, the 14-day RSI hit 83 (a measure of overbought conditions, where 70 already signals stretched and 83 is among the most extreme readings on record), and JPMorgan clients are flagging a possible 3-4% pullback on systematic-fund unwinds. A correction can happen on positioning alone without breaking the structural story. That distinction matters because picks-and-shovels names like Applied Materials and the cooling-and-power supply chain are sold out into 2027, so even a 3-4% Nasdaq pullback does not change the multi-year demand book. <span class="cashtag">$NVDA</span> reports next Wednesday after the bell and is the next confirmation test. Long <span class="cashtag">$SOXX</span> into the print.</p>
+<h3>Iran is a multi-quarter supply story, not a one-week headline trade</h3>
+<p><em>The IEA said overnight that global oil supply will plunge below demand this year because of the Iran war. That does not unwind on a single ceasefire memo.</em></p>
+<ul>
+<li>JPMorgan&rsquo;s 3Q26 Brent forecast sits at $104 per barrel, premised on continued Strait of Hormuz disruption and refined-fuel inventory rebuilds.</li>
+<li>The national gasoline average breached $4.50 per gallon on Monday, the level at which higher pump prices start offsetting fiscal tailwinds to consumption (JPMorgan).</li>
+<li>Vietnam is importing more fuel to offset its oil shortfall, and India is rolling out emergency measures to shield its economy from the oil shock (overnight Reuters). The supply scarcity is now showing up in country-level demand responses.</li>
+<li>Copper has run +14.4% since May 31, outpacing the S&amp;P by 0.84 percentage points, and Goldman has broadened its commodity exposure. The war-premium trade is spreading across the commodity complex, not just oil.</li>
+<li>Refined-fuel inventories are at 8-year lows, which is the variable that determines how fast the curve normalizes if a ceasefire actually lands.</li>
+</ul>
+<p>Hormuz disruption shrinks deliverable supply, the war footing forces rerouting and inventory drawdowns, and the IEA&rsquo;s overnight call confirms the supply hole has months to refill regardless of headlines. The longer the disruption persists, the more the curve back-fills with scarcity premium rather than mean-reverting on resolution chatter.</p>
+<p>The pushback is that Trump just said publicly no need for China&rsquo;s help on Iran, and he is heading to Beijing for the long-rumoured Xi meeting. If a deal lands, the futures complex snaps back fast and risk-on assets that are already partially priced for a constructive readout get a second leg. The Trump-China visit is a real two-way risk this week. But a 6-week ceasefire does not refill refined-fuel inventories at 8-year lows, and Western Asset&rsquo;s framing holds: the Iran risk premium is not gone. Long <span class="cashtag">$BNO</span> outright.</p>
+</div><h2 class="watch" id="watch">3. WHAT TO WATCH</h2><div class="watch-body">
+<h3>Today</h3>
+<p>No major US data still to come. Today&rsquo;s PPI was the high-impact event and is already priced in.</p>
+<h3>This Week</h3>
+<ul>
+<li><strong>Thursday May 14, 8:30 ET: April US Retail Sales (high impact).</strong> Headline estimate +0.5% MoM vs prior +1.7%. Control Group estimate +0.4%. A hot print confirms the consumer is still spending into the inflation re-acceleration and keeps the Fed boxed in. A soft print gives the dovish minority on the Committee something to point to.</li>
+<li><strong>Trump-Xi Beijing summit (this week).</strong> Trump is en route. A constructive readout lifts semis and China ADRs while pressuring the dollar. A breakdown reignites the tariff path, bids <span class="cashtag">$UUP</span>, and accelerates the Iran risk premium.</li>
+<li><strong>Wednesday May 20, AMC: <span class="cashtag">$NVDA</span> earnings (high impact).</strong> EPS estimate $1.79, revenue estimate $80.06B. The clean test of whether hyperscaler capex demand has any softening on the margin. A guide cut from <span class="cashtag">$NVDA</span> would be the first real crack in the AI build-out thesis.</li>
+<li><strong>Wednesday May 20, 14:00 ET: FOMC Minutes (high impact).</strong> Detail on the 8-4 dissent vote, the most fractured Committee since 1992. The market will be hunting for any signal on how serious the hike camp is.</li>
+</ul></div>
+  <div class="footer"><span class="label">Coverage:</span> 60 research analyses &middot; <span class="label">Tokens:</span> 120,000 in / 2,418 out &middot; <span class="label">Dashboard rendered:</span> 2026-05-13 17:16<br/><span class="label">For:</span> self-directed US options &amp; crypto traders &middot; Not investment advice. Internal note.</div>
+</div>
+<nav class="section-nav"><div class="label">Sections</div><a href="#recap">Recap</a><a href="#insights">Insights &amp; alpha</a><a href="#watch">What to watch</a></nav>
+</body>
+</html>
