@@ -1,0 +1,390 @@
+{
+  "pulse_date": "2026-05-14",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai driven capex supercycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 11,
+        "skeptical": 6,
+        "neutral": 22
+      },
+      "consensus_view": "Banks broadly agree AI infrastructure spending by the biggest cloud companies is driving the market higher, but a minority warn the story is now priced for perfection and vulnerable to disappointment.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler AI capex has reached roughly $700 billion and is the dominant driver of tech-led equity gains.",
+          "banks_for": [
+            "UBS",
+            "DWS",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "major cloud service providers... are now at USD ~700bn\u2014driving storage demand",
+            "U.S. market is benefiting extraordinarily from the AI capital expenditure (capex) boom.",
+            "AI-linked themes across tech and semiconductors drove strong returns"
+          ]
+        },
+        {
+          "claim": "Demand for AI hardware (semis, memory, servers, storage) is accelerating, with order books and cloud growth still building.",
+          "banks_for": [
+            "JPMorgan",
+            "Citi",
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "The appetite for semis/memory/AI-adjacent hardware continues to roar in our space",
+            "server demand (AI & Traditional) benefiting from AI-infrastructure buildouts",
+            "AI spending meanwhile still looks extremely strong.",
+            "recent developments in the tech field have reinforced our conviction in the long-term potential"
+          ]
+        },
+        {
+          "claim": "AI investment is now a structural support for the broader US economy, not just the tech sector.",
+          "banks_for": [
+            "Wells Fargo Economics",
+            "JPMorgan",
+            "ING"
+          ],
+          "evidence_quotes": [
+            "firms continue to priorize high-tech investment, which we still anticipate to be the main driver",
+            "This does seem to be driving a capex upcycle in the US.",
+            "The main driver remains global equity resilience, which is offsetting both higher oil prices"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI capex narrative is durable or priced for perfection and vulnerable to a sharp unwind",
+          "banks_for": [
+            "UBS",
+            "DWS"
+          ],
+          "for_evidence": "recent developments in the tech field have reinforced our conviction in the long-term potential",
+          "banks_against": [
+            "The Market Ear",
+            "Bloomberg / Nomura"
+          ],
+          "against_evidence": "two narratives that are priced for perfection"
+        },
+        {
+          "claim": "Whether infrastructure capex alone is enough, or whether the rally needs visible application-layer monetization to sustain",
+          "banks_for": [
+            "Bank of America",
+            "DWS"
+          ],
+          "for_evidence": "AI-linked themes across tech and semiconductors drove strong returns",
+          "banks_against": [
+            "UBS"
+          ],
+          "against_evidence": "incremental AI capex alone may not be sufficient; investors will likely focus more on monetization."
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "DWS",
+          "claim": "2026 expected capex for six largest U.S. hyperscalers",
+          "deadline": "2026"
+        },
+        {
+          "bank": "Bank of America",
+          "claim": "2030 AI data-center systems market estimate",
+          "deadline": "2030"
+        },
+        {
+          "bank": "UBS",
+          "claim": "Aggregate cloud provider order backlog",
+          "deadline": "2Q26"
+        }
+      ]
+    },
+    {
+      "theme": "oil price super spike risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 20
+      },
+      "consensus_view": "Many desks flag Middle East and Iran conflict plus the Strait of Hormuz disruption as a live oil-supply risk, but only SEB stakes a directional super-spike call while JPMorgan's forecasts hinge on a June reopening of the strait.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks consistently flag the Middle East / Iran conflict and Strait of Hormuz disruption as the central catalyst behind oil-spike risk.",
+          "banks_for": [
+            "ANZ Research",
+            "Bank of America",
+            "BlackRock",
+            "Bloomberg / Nomura",
+            "Citi",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "Mizuho International Plc",
+            "Natixis",
+            "Newsquawk / Rabobank / Various",
+            "PNC Economics Research",
+            "Syz Private Banking",
+            "The Market Ear",
+            "UBS",
+            "Wells Fargo Economics"
+          ],
+          "evidence_quotes": [
+            "Middle East conflict escalation risk",
+            "Middle East conflict escalation",
+            "US-Iran conflict escalation",
+            "US-Iran conflict impact on oil",
+            "Iran war front",
+            "Middle East conflict intensity",
+            "US-Israel military attack on Iran",
+            "Middle East conflict energy supply uncertainty",
+            "US military conflict with Iran",
+            "Iran conflict energy price impact",
+            "Middle East conflict energy price impact",
+            "Iran conflict impact on energy prices",
+            "Middle East tensions",
+            "Iran war impact on oil supply",
+            "Middle East energy shock",
+            "Middle East conflict oil price implications"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {
+          "bank": "JPMorgan",
+          "claim": "Year-end 2027 Brent target",
+          "deadline": "~20% below forward curve."
+        }
+      ]
+    },
+    {
+      "theme": "trump xi summit",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 14
+      },
+      "consensus_view": "Banks across more than a dozen desks reference the Trump-Xi Beijing summit as a near-term macro catalyst tied to trade, tariffs and rare-earth dynamics, but no desk has staked a directional view.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the Trump-Xi Beijing summit as an upcoming bilateral catalyst, with trade, tariffs and rare-earth supply as the recurring subjects of attention.",
+          "banks_for": [
+            "ANZ Research",
+            "Citi",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "LSEG",
+            "Mizuho International Plc",
+            "Natixis",
+            "Newsquawk / Rabobank / Various",
+            "Raymond James",
+            "Scotiabank",
+            "The Market Ear",
+            "UBS",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "Trump-Xi summit in Beijing",
+            "Trump-Xi meeting in Beijing",
+            "Trump/Xi meeting",
+            "US-China summit",
+            "US-China trade truce",
+            "US-China rare earth truce",
+            "US-China tariff reduction",
+            "Trump-Xi bilateral trade and Iran negotiations",
+            "US-China trade war truce extension",
+            "Trump-Xi summit energy trade"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh fed chair",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 8
+      },
+      "consensus_view": "Banks across eight desks flag Kevin Warsh's move into the Fed chair seat as a near-term policy catalyst, but nobody has staked a directional view on what his leadership means for rates yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference Kevin Warsh's confirmation and incoming Fed chairmanship as an upcoming policy catalyst.",
+          "banks_for": [
+            "ANZ Research",
+            "DWS",
+            "ING",
+            "JPMorgan",
+            "SEB",
+            "Syz Private Banking",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh incoming Fed chair",
+            "Kevin Warsh confirmed as Fed Chair",
+            "Kevin Warsh Fed Chair confirmation",
+            "Jerome Powell Fed chairmanship transition to Kevin Warsh",
+            "Kevin Warsh Fed Chairman confirmation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran conflict resolution",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six banks reference the US-Iran conflict resolution track as a live macro catalyst, with mentions split between ceasefire/negotiation progress and breakdown risk, but no desk has staked a directional view.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the US-Iran conflict resolution process as an active near-term macro variable spanning both negotiation progress and breakdown risk.",
+          "banks_for": [
+            "BCA Research",
+            "Bank of America",
+            "Invesco",
+            "JPMorgan",
+            "SEB",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "US-Iran peace proposal rejection",
+            "US-Iran ceasefire status",
+            "US-Iran negotiations",
+            "US-Iran ceasefire announcement",
+            "US-Iran ceasefire",
+            "Collapse of US-Iran peace talks",
+            "US-Iran military tensions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "consumer spending resilience",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "PNC sees the US consumer still spending thanks to tax refunds and a firm job market, while Citi, Goldman, UBS and The Market Ear keep flagging softer labor and grocery data underneath \u2014 the resilience is real but the support window is narrow.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks are flagging softening signals underneath the headline consumer print, especially in labor and grocery volumes.",
+          "banks_for": [
+            "Citi",
+            "Goldman Sachs",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "US labor market softening",
+            "US consumer labor market health",
+            "US grocery volume softening",
+            "China Labor Day consumption moderation",
+            "Labor market weakening signals",
+            "retail sector weakness"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether US consumer spending is still resilient right now",
+          "banks_for": [
+            "PNC Economics Research"
+          ],
+          "for_evidence": "consumer sector continues to show surprising resilience",
+          "banks_against": [
+            "Citi",
+            "Goldman Sachs"
+          ],
+          "against_evidence": "US labor market softening"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "PNC Economics Research",
+          "claim": "Estimated window before tax-related tailwinds fade",
+          "deadline": "3 months"
+        }
+      ]
+    },
+    {
+      "theme": "agentic ai",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Banks across five desks flag agentic AI (AI systems that act, not just chat) as a live growth subject spanning consumer apps, infrastructure, and monetization, but none stakes a directional view yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference agentic AI as an active commercial subject spanning consumer adoption, infrastructure buildout, workloads, and monetization.",
+          "banks_for": [
+            "Barclays",
+            "Citi",
+            "Goldman Sachs",
+            "RBC Capital Markets",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Consumer agentic AI growth",
+            "Consumer agentic AI",
+            "Google agentic AI rollout",
+            "Agentic AI",
+            "Agentic AI infrastructure stack",
+            "Agentic AI workloads",
+            "Agentic AI monetization"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "uk leadership challenge",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five banks flag a leadership challenge to UK Prime Minister Keir Starmer as a live political risk, but none have staked a directional market view on the outcome.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag a leadership challenge against UK Prime Minister Keir Starmer as a live political risk.",
+          "banks_for": [
+            "Citi",
+            "ING",
+            "JPMorgan",
+            "Mizuho International Plc",
+            "SEB"
+          ],
+          "evidence_quotes": [
+            "UK leadership challenge against Starmer",
+            "UK leadership challenge",
+            "UK Prime Minister post uncertainty",
+            "Keir Starmer leadership challenge",
+            "Labour party leadership challenge"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
