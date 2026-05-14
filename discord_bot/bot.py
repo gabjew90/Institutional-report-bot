@@ -736,7 +736,6 @@ def create_bot() -> commands.Bot:
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
     @bot.tree.command(name="ask", description="Perplexity Sonar powered")
-    @app_commands.describe(question="Ask anything")
     async def ask_command(interaction: discord.Interaction, question: str):
         question = (question or "").strip()
         if not question:
