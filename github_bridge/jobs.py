@@ -41,9 +41,11 @@ ARCHIVE_DIR = "pulse-output/archive"
 # Substack-via-API, etc.) fetch latest-fragment.html + latest.json from
 # here and inject into their own layout. Updates on every new pulse archive.
 WEB_DIR = "pulse-output/web"
-# How many past pulses to expose in the archive index. Bounded so the
-# JSON stays small; older pulses still readable via the raw GitHub URLs.
-WEB_ARCHIVE_LIMIT = 30
+WEB_FRAGMENTS_DIR = "pulse-output/web/fragments"
+# How many past pulses to expose in the archive index and render fragments
+# for. ~60 = roughly 12 weeks of weekdays; older pulses still readable as
+# raw markdown via their archive_url but no rendered fragment.
+WEB_ARCHIVE_LIMIT = 60
 # Hidden HTML comment we write into a QC review after appending its
 # dashboard link section. Idempotency marker: presence => already
 # published, skip on subsequent polls.
@@ -755,12 +757,26 @@ def _publish_one_qc_dashboard(item: dict[str, Any]) -> None:
 
 
 def publish_web_fragment_job() -> None:
-    """Regenerate the web fragment + JSON sidecars from the latest archive.
+    """Publish per-pulse HTML fragments + enriched archive index for the web.
 
-    Runs in the APScheduler thread on the same cadence as the other bridge
-    polls. The work is bounded: list archive (one GitHub call), compare
-    against latest.json (one call), if up-to-date return. Otherwise three
-    commits (fragment, metadata, archive index).
+    Architecture:
+      - For each archived pulse (capped at WEB_ARCHIVE_LIMIT most recent),
+        render a headless HTML fragment and commit to web/fragments/<ts>.html
+        if it doesn't already exist there.
+      - Maintain web/archive.json as the index: every entry carries ts +
+        title + date_utc + pdf_count + fragment_url + archive_url. Host
+        sites use this to filter by week, render a list, deep-link, etc.
+      - Keep web/latest-fragment.html + web/latest.json as pointers to the
+        most recent pulse for backward-compat with simple embeds that just
+        want "today's pulse" without paginating.
+
+    Idempotency:
+      - Per-pulse fragment files are written once and never rewritten.
+      - archive.json reuses cached title/date_utc for already-known pulses,
+        so only NEW pulses pay the cost of fetching the full markdown to
+        extract metadata.
+      - latest-* pointers are rewritten only when a new pulse appears
+        (detected via a delta in the archive listing).
     """
     if not bridge_enabled():
         return
@@ -777,28 +793,13 @@ def publish_web_fragment_job() -> None:
     if not md_files:
         return
 
-    # Filenames are timestamps; lexical sort desc = most recent first.
+    # Newest first.
     md_files.sort(key=lambda it: it.get("name", ""), reverse=True)
-    latest = md_files[0]
-    latest_name = latest["name"]
-    latest_ts = latest_name[:-3]  # strip .md
+    candidates = md_files[:WEB_ARCHIVE_LIMIT]
 
-    # Idempotency check — if web/latest.json already references this ts,
-    # nothing to do.
-    try:
-        current_latest_text = gh.get_file_text(f"{WEB_DIR}/latest.json")
-        if current_latest_text:
-            data = json.loads(current_latest_text)
-            if data.get("ts") == latest_ts:
-                return
-    except (json.JSONDecodeError, Exception):
-        pass
-
-    pulse_md = gh.get_file_text(f"{ARCHIVE_DIR}/{latest_name}")
-    if not pulse_md:
-        return
-
-    # Lazy imports — same reason as the QC dashboard publisher.
+    # Lazy imports — keep heavy markdown/HTML rendering off the bridge
+    # module's top-level so the dev environment that only runs the discord
+    # bot doesn't have to install `markdown`.
     from scripts.pulse_dashboard import (
         render_pulse_fragment,
         extract_pulse_metadata,
@@ -807,48 +808,156 @@ def publish_web_fragment_job() -> None:
     repo = settings.github_repo.strip().strip("/")
     branch = settings.github_bridge_branch
 
-    fragment_html = render_pulse_fragment(pulse_md)
-    metadata = extract_pulse_metadata(
-        pulse_md, ts=latest_ts, source_filename=latest_name,
-        repo=repo, branch=branch,
-    )
+    # Reuse cached entries from existing archive.json so we don't refetch
+    # each pulse's markdown just to extract title/date that we already
+    # extracted in a previous job run.
+    cached_entries: dict[str, dict[str, Any]] = {}
+    try:
+        existing_archive = gh.get_file_text(f"{WEB_DIR}/archive.json")
+        if existing_archive:
+            data = json.loads(existing_archive)
+            for entry in (data.get("pulses") or []):
+                ts = entry.get("ts")
+                if ts:
+                    cached_entries[ts] = entry
+    except (json.JSONDecodeError, Exception):
+        pass
 
-    # Build archive index from up to the last N pulses. Each entry carries
-    # enough for a host site to render a "past pulses" list without an
-    # extra round trip per item.
-    archive_entries = []
-    for it in md_files[:WEB_ARCHIVE_LIMIT]:
-        name = it.get("name", "")
-        if not name.endswith(".md"):
-            continue
-        ts = name[:-3]
-        archive_entries.append({
-            "ts": ts,
-            "filename": name,
-            "archive_url": f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}",
-        })
-    archive_payload = {
-        "updated_at": datetime.utcnow().isoformat() + "Z",
-        "count": len(archive_entries),
-        "pulses": archive_entries,
+    # Per-pulse fragments already on disk — don't re-render these.
+    try:
+        existing_fragments_listing = gh.list_dir(WEB_FRAGMENTS_DIR)
+    except Exception:
+        existing_fragments_listing = []
+    existing_fragments: set[str] = {
+        it.get("name", "")
+        for it in existing_fragments_listing
+        if it.get("type") == "file"
     }
 
-    gh.put_file(
-        f"{WEB_DIR}/latest-fragment.html",
-        fragment_html,
-        f"bridge: web fragment for {latest_ts}",
-    )
-    gh.put_file(
-        f"{WEB_DIR}/latest.json",
-        json.dumps(metadata, indent=2),
-        f"bridge: web metadata for {latest_ts}",
-    )
-    gh.put_file(
-        f"{WEB_DIR}/archive.json",
-        json.dumps(archive_payload, indent=2),
-        f"bridge: web archive index ({len(archive_entries)} pulses)",
-    )
-    log.info(
-        f"Bridge: published web fragment + JSON for {latest_ts} "
-        f"({len(fragment_html):,}B fragment, {len(archive_entries)} archive entries)"
-    )
+    archive_entries: list[dict[str, Any]] = []
+    new_fragments = 0
+    latest_md: str | None = None
+    latest_ts: str | None = None
+    latest_filename: str | None = None
+
+    for item in candidates:
+        name = item["name"]
+        ts = name[:-3]  # strip .md
+        fragment_name = f"{ts}.html"
+
+        cached = cached_entries.get(ts)
+        fragment_present = fragment_name in existing_fragments
+
+        # If we have both a cached entry AND its fragment file already exists,
+        # reuse without refetching. Only the first candidate gets its markdown
+        # fetched (to update latest-fragment.html) — the rest are skipped.
+        if cached and fragment_present:
+            entry = dict(cached)
+            # Always overwrite the URL fields in case the URL format changed.
+            entry["archive_url"] = (
+                f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
+            )
+            entry["fragment_url"] = (
+                f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
+            )
+            if latest_md is None and item is candidates[0]:
+                # First (newest) pulse — fetch its markdown so we can
+                # also refresh latest-fragment.html / latest.json. Without
+                # this the pointers go stale until a fully-new pulse lands.
+                latest_md = gh.get_file_text(f"{ARCHIVE_DIR}/{name}")
+                latest_ts = ts
+                latest_filename = name
+            archive_entries.append(entry)
+            continue
+
+        # New (or fragment missing) — fetch the markdown, extract metadata,
+        # render the fragment, commit it.
+        pulse_md = gh.get_file_text(f"{ARCHIVE_DIR}/{name}")
+        if not pulse_md:
+            log.warning(f"Bridge: web publish skipping {name} — markdown not readable")
+            continue
+        meta = extract_pulse_metadata(
+            pulse_md, ts=ts, source_filename=name, repo=repo, branch=branch,
+        )
+
+        if not fragment_present:
+            fragment_html = render_pulse_fragment(pulse_md)
+            gh.put_file(
+                f"{WEB_FRAGMENTS_DIR}/{fragment_name}",
+                fragment_html,
+                f"bridge: web fragment for {ts}",
+            )
+            new_fragments += 1
+
+        entry = {
+            "ts": ts,
+            "filename": name,
+            "title": meta["title"],
+            "date_utc": meta["date_utc"],
+            "pdf_count": meta["pdf_count"],
+            "archive_url": meta["archive_url"],
+            "fragment_url": (
+                f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
+            ),
+        }
+        archive_entries.append(entry)
+
+        if latest_md is None and item is candidates[0]:
+            latest_md = pulse_md
+            latest_ts = ts
+            latest_filename = name
+
+    # Update the latest-* pointers ONLY if a new fragment was rendered or
+    # the latest entry differs from what's currently in latest.json. Avoids
+    # spamming the branch with no-op commits on every poll cycle.
+    should_refresh_pointers = new_fragments > 0
+    if not should_refresh_pointers and latest_ts:
+        try:
+            existing_latest = gh.get_file_text(f"{WEB_DIR}/latest.json")
+            if existing_latest:
+                existing_data = json.loads(existing_latest)
+                if existing_data.get("ts") != latest_ts:
+                    should_refresh_pointers = True
+            else:
+                should_refresh_pointers = True
+        except (json.JSONDecodeError, Exception):
+            should_refresh_pointers = True
+
+    if should_refresh_pointers and latest_md and latest_ts and latest_filename:
+        latest_fragment = render_pulse_fragment(latest_md)
+        latest_meta = extract_pulse_metadata(
+            latest_md, ts=latest_ts, source_filename=latest_filename,
+            repo=repo, branch=branch,
+        )
+        gh.put_file(
+            f"{WEB_DIR}/latest-fragment.html",
+            latest_fragment,
+            f"bridge: latest fragment pointer -> {latest_ts}",
+        )
+        gh.put_file(
+            f"{WEB_DIR}/latest.json",
+            json.dumps(latest_meta, indent=2),
+            f"bridge: latest metadata pointer -> {latest_ts}",
+        )
+
+    # Write archive.json if new fragments were rendered OR the structure
+    # changed (new ts in the list).
+    cached_ts_set = set(cached_entries.keys())
+    current_ts_set = {e["ts"] for e in archive_entries}
+    archive_changed = new_fragments > 0 or cached_ts_set != current_ts_set
+
+    if archive_changed:
+        archive_payload = {
+            "updated_at": datetime.utcnow().isoformat() + "Z",
+            "count": len(archive_entries),
+            "pulses": archive_entries,
+        }
+        gh.put_file(
+            f"{WEB_DIR}/archive.json",
+            json.dumps(archive_payload, indent=2),
+            f"bridge: archive index ({len(archive_entries)} pulses, {new_fragments} new)",
+        )
+        log.info(
+            f"Bridge: web publish — {new_fragments} new fragments, "
+            f"{len(archive_entries)} archive entries"
+        )
