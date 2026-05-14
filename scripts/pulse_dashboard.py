@@ -26,6 +26,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import urllib.request
 import urllib.error
@@ -33,17 +34,7 @@ import webbrowser
 from datetime import datetime
 from pathlib import Path
 
-# Share the markdown -> HTML conversion logic with the PDF renderer so the
-# dashboard and the WhatsApp PDF always render the same content the same way.
-# Only the CSS differs (print vs screen).
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from pulse_pdf import (  # noqa: E402
-    _strip_frontmatter,
-    _extract_title_and_body,
-    _cashtag_to_span,
-    _wrap_sections,
-)
-import markdown  # noqa: E402
+import markdown
 
 
 REPO = "gabjew90/Institutional-report-bot"
@@ -231,6 +222,100 @@ li { margin: 5px 0; }
 
 hr { border: 0; border-top: 1px dashed #ccc; margin: 18px 0; }
 """
+
+
+# === Markdown -> HTML helpers ===
+# Inlined here (not imported from elsewhere) because pulse_dashboard.py is
+# now the sole consumer. Earlier these lived in scripts/pulse_pdf.py and
+# were shared with a PDF renderer; the PDF path was retired in favor of
+# litterbox-hosted HTML so pulse_pdf.py was deleted along with its sample
+# artifact.
+
+def _strip_frontmatter(md: str) -> tuple[dict, str]:
+    """Strip YAML-ish frontmatter block. Return (meta, body).
+
+    Tolerant of a leading UTF-8 BOM (PowerShell's `Out-File -Encoding utf8`
+    adds one) — without this the `---` sniff fails and the frontmatter
+    silently falls through as body content, leaving meta empty.
+    """
+    if md.startswith("﻿"):
+        md = md[1:]
+    if not md.startswith("---"):
+        return {}, md
+    end = md.find("\n---", 4)
+    if end == -1:
+        return {}, md
+    block = md[3:end].strip()
+    body = md[end + 4:].lstrip("\n")
+    meta: dict = {}
+    for line in block.splitlines():
+        if ":" not in line:
+            continue
+        k, _, v = line.partition(":")
+        k = k.strip()
+        v = v.strip()
+        if v.isdigit() or (v.startswith("-") and v[1:].isdigit()):
+            meta[k] = int(v)
+        else:
+            meta[k] = v
+    return meta, body
+
+
+def _extract_title_and_body(md: str) -> tuple[str, str]:
+    """Pull off a leading H1 if present. Returns (title, remaining_md)."""
+    lines = md.lstrip().splitlines()
+    if lines and lines[0].startswith("# "):
+        title = lines[0][2:].strip()
+        rest = "\n".join(lines[1:]).lstrip()
+        return title, rest
+    return "Daily Market Pulse", md
+
+
+def _cashtag_to_span(text: str) -> str:
+    """Wrap `$TICKER` cashtags in a styled span. Operates on rendered HTML."""
+    return re.sub(
+        r"(?<![A-Za-z0-9_>])(\$[A-Z]{1,6})\b",
+        r'<span class="cashtag">\1</span>',
+        text,
+    )
+
+
+def _wrap_sections(body_html: str) -> str:
+    """Tag each H2 with a section class and wrap subsequent siblings in a
+    matching div, so theme headers inside INSIGHTS/WATCH can pick up the
+    colored left-border accent without selectors needing :has().
+    """
+    def _classify(m: re.Match) -> str:
+        heading_text = re.sub(r"<.*?>", "", m.group(1)).lower()
+        if "recap" in heading_text:
+            cls = "recap"
+        elif "insights" in heading_text or "alpha" in heading_text:
+            cls = "insights"
+        elif "watch" in heading_text:
+            cls = "watch"
+        else:
+            cls = ""
+        return f'<h2 class="{cls}">{m.group(1)}</h2>'
+
+    body_html = re.sub(r"<h2>(.*?)</h2>", _classify, body_html, flags=re.DOTALL)
+
+    parts = re.split(r'(<h2 class="[^"]*">.*?</h2>)', body_html, flags=re.DOTALL)
+    out: list[str] = []
+    open_section: str | None = None
+    for part in parts:
+        m = re.match(r'<h2 class="(\w*)">', part)
+        if m:
+            if open_section is not None:
+                out.append("</div>")
+            cls = m.group(1)
+            out.append(part)
+            open_section = cls
+            out.append(f'<div class="{cls}-body">')
+        else:
+            out.append(part)
+    if open_section is not None:
+        out.append("</div>")
+    return "".join(out)
 
 
 def _gh_get(path: str, token: str | None) -> dict | list:

@@ -693,12 +693,8 @@ def _publish_one_qc_dashboard(item: dict[str, Any]) -> None:
     # Lazy imports — keep these out of the module top-level so the bridge
     # module doesn't fail to import when `requests` or `markdown` aren't
     # installed on a dev environment that only runs the discord bot.
-    import sys
     import tempfile
     from pathlib import Path as _Path
-    _scripts_dir = _Path(__file__).resolve().parent.parent / "scripts"
-    if str(_scripts_dir) not in sys.path:
-        sys.path.insert(0, str(_scripts_dir))
     from scripts.pulse_dashboard import render_dashboard_html
     from scripts.litterbox_upload import upload_to_litterbox
 
