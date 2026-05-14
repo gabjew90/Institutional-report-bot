@@ -136,7 +136,7 @@ async def _answer_with_gemini(question: str, user_id: int) -> discord.Embed:
                 "mode — sources are listed separately by the bot wrapper."
             ),
             tools=[types.Tool(google_search=types.GoogleSearch())],
-            max_output_tokens=400,
+            max_output_tokens=200,
             temperature=0.2,
         )
         response = await client.aio.models.generate_content(
