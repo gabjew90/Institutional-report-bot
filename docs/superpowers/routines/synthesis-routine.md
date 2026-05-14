@@ -1312,6 +1312,26 @@ if os.path.exists('/tmp/lint_report.json'):
 else:
     print('no /tmp/lint_report.json — skipping lint commit')
 
+# Commit /tmp/adjudication_inputs.json — the per-theme evidence bundles
+# fed to each adjudication sub-agent. WITHOUT this artifact, a QC review
+# (per-run or cross-run) can only see what adjudication EMITTED, never
+# what it RECEIVED — which means it blames the stage that emitted the
+# bad result and misses the upstream input-contract bug.
+#
+# Concretely: today's heavyweight-theme-discard pattern (16-bank theme
+# getting nuked by Rule 5/6) is invisible from outputs alone; it
+# diagnoses correctly only by reading the per-theme inputs and seeing
+# that adjudication got 1 evidence entry for a 16-bank theme. This
+# commit makes that diagnosis possible retrospectively.
+if os.path.exists('/tmp/adjudication_inputs.json'):
+    adj_inputs_path = f'pulse-output/qc-inputs/{ts}.adjudication-inputs.json'
+    adj_inputs_content = open('/tmp/adjudication_inputs.json').read().encode()
+    result = commit(adj_inputs_path, adj_inputs_content, f'routine: adjudication per-theme inputs {ts}')
+    print('committed adjudication inputs:', adj_inputs_path)
+    print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
+else:
+    print('no /tmp/adjudication_inputs.json — skipping (adjudication step may have been skipped this run)')
+
 # Commit /tmp/scrubbed.md if STEP 5.7 dispatched a SCRUB pass. This is
 # the post-EDIT pre-final artifact (intermediate between EDIT output and
 # the final pulse). Diff scrubbed.md vs the final pulse markdown to see
