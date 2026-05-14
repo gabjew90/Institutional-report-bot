@@ -14,9 +14,10 @@ showing:
 - A footer with attribution
 
 Everything is fetched client-side from the `pulse-data` branch via
-[raw.githack.com](https://raw.githack.com/) — same CDN-proxy approach
-as the existing dashboard snapshot. No server, no build step. Push a
-new commit to this branch and the change is live on Pages within
+`raw.githubusercontent.com`, which serves files with the correct
+content-type, sets `Access-Control-Allow-Origin: *` for CORS-friendly
+`fetch()`, and has ~5-minute Fastly caching. No server, no build step.
+Push a new commit to this branch and the change is live on Pages within
 ~1 minute.
 
 ## How the auto-update works
@@ -93,7 +94,7 @@ any page:
 <link rel="stylesheet" href="https://gabjew90.github.io/Institutional-report-bot/pulse.css">
 <div id="pulse-pane"><p>Loading&hellip;</p></div>
 <script>
-  fetch('https://raw.githack.com/gabjew90/Institutional-report-bot/pulse-data/pulse-output/web/latest-fragment.html')
+  fetch('https://raw.githubusercontent.com/gabjew90/Institutional-report-bot/pulse-data/pulse-output/web/latest-fragment.html')
     .then(r => r.text())
     .then(html => document.getElementById('pulse-pane').innerHTML = html);
 </script>

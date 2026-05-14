@@ -874,7 +874,7 @@ def publish_web_fragment_job() -> None:
                     f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
                 )
                 entry["fragment_url"] = (
-                    f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
+                    f"https://raw.githubusercontent.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
                 )
             else:
                 pulse_md = gh.get_file_text(f"{ARCHIVE_DIR}/{name}")
@@ -911,7 +911,7 @@ def publish_web_fragment_job() -> None:
                         "pdf_count": meta["pdf_count"],
                         "archive_url": meta["archive_url"],
                         "fragment_url": (
-                            f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
+                            f"https://raw.githubusercontent.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
                         ),
                     }
                     latest_md = pulse_md
@@ -927,7 +927,7 @@ def publish_web_fragment_job() -> None:
             # Only expose fragment_url if the file actually exists on disk.
             if fragment_present:
                 entry["fragment_url"] = (
-                    f"https://raw.githack.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
+                    f"https://raw.githubusercontent.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
                 )
             else:
                 entry.pop("fragment_url", None)

@@ -64,16 +64,18 @@
 
 <script>
   // =================================================================
-  // CONFIG — point these at the bridge branch where the pipeline
-  // commits its web/ artifacts. raw.githack.com proxies GitHub raw
-  // with the correct content-type and CDN caching; use it instead of
-  // raw.githubusercontent.com for production embeds.
+  // CONFIG — point these at the bridge branch where the pipeline commits
+  // its web/ artifacts. raw.githubusercontent.com serves files with the
+  // correct text/html content-type, sets `Access-Control-Allow-Origin: *`
+  // (CORS-friendly for fetch), and has ~5-min Fastly caching. Earlier
+  // versions used raw.githack.com as a CDN-proxy, but that host started
+  // returning 403 on this branch in May 2026, so we switched.
   // =================================================================
   const REPO = 'gabjew90/Institutional-report-bot';
   const BRANCH = 'pulse-data';
-  const FRAGMENT_URL = `https://raw.githack.com/${REPO}/${BRANCH}/pulse-output/web/latest-fragment.html`;
-  const METADATA_URL = `https://raw.githack.com/${REPO}/${BRANCH}/pulse-output/web/latest.json`;
-  const ARCHIVE_URL  = `https://raw.githack.com/${REPO}/${BRANCH}/pulse-output/web/archive.json`;
+  const FRAGMENT_URL = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/pulse-output/web/latest-fragment.html`;
+  const METADATA_URL = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/pulse-output/web/latest.json`;
+  const ARCHIVE_URL  = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/pulse-output/web/archive.json`;
 
   // =================================================================
   // RENDER THE PULSE PANE
