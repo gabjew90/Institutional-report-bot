@@ -748,7 +748,7 @@ def create_bot() -> commands.Bot:
             log.error(f"Reprocess failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
-    @bot.tree.command(name="ask", description="Perplexity Sonar powered")
+    @bot.tree.command(name="ask", description="Gemini powered")
     async def ask_command(interaction: discord.Interaction, question: str):
         question = (question or "").strip()
         if not question:
