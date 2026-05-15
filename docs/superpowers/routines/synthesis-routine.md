@@ -1205,6 +1205,28 @@ If validated SCRUB output is materially different from the EDIT output, that's g
 
 If lint reports issues, the SCRUB pass (above) is supposed to handle them automatically — manual rewriting of `/tmp/final.md` is no longer the workflow. The lint report is mechanical and trusted; SCRUB is the agent that acts on it.
 
+## STEP 5.8 — Strip internal-notes sections (mechanical, mandatory)
+
+EDIT and DRAFT prompts emit `## _DRAFT NOTES` and `## _EDIT NOTES` sections containing editorial-decision metadata. These are useful for the QC reviewer in STEP 7 to see editorial intent — but they MUST be removed before the pulse ships. They were leaking through to publish because no routine step actually stripped them.
+
+This step is mechanical: a regex-based scan that removes any H2 header beginning with `## _` and its body up to the next non-internal H2 (or EOF). Idempotent — safe to run multiple times.
+
+```bash
+python3 scripts/pulse_strip_internal_notes.py /tmp/final.md 2>&1 | tee -a /tmp/routine.log
+```
+
+The script prints either `stripped N chars from /tmp/final.md` or `no internal-notes sections found in /tmp/final.md`. The latter is fine — the EDIT/DRAFT prompts may not have emitted notes on a clean run.
+
+**Do not skip this step.** Even if your eyeball pass of `/tmp/final.md` shows no obvious internal blocks, run it. It's deterministic and cheap, and the consequence of skipping is the same failure mode that happened on 2026-05-15T13-11-32Z (published pulse shipped with a verbatim `## _EDIT NOTES (internal, strip before publish)` block at the bottom).
+
+After the strip, the QC review can still see the editorial intent because EDIT/DRAFT NOTES are emitted to `/tmp/pre_scrub_final.md` and `/tmp/draft.md` respectively, which are committed to `pulse-output/pre-scrub/` and `pulse-output/drafts/` in STEP 6 — only the **archive** copy (the published pulse) gets the strip. QC artifacts retain the editorial trail.
+
+Commit a progress event:
+
+```bash
+python3 /tmp/progress.py "STEP_5_8_STRIP_DONE"
+```
+
 ## STEP 6 — Compose with frontmatter and commit BOTH files (PRODUCTION — ALL CHANNELS)
 
 ```bash
