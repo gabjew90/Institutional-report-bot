@@ -517,7 +517,10 @@ async def _answer_with_gemini(
         config = types.GenerateContentConfig(
             system_instruction=_ASK_SYSTEM_INSTRUCTION,
             tools=[types.Tool(google_search=types.GoogleSearch())],
-            max_output_tokens=300,
+            # 100-token buffer over the prompt's "~300 token" budget — gives
+            # Gemini room to finish a sentence cleanly if it drifts past 300.
+            # Without the buffer, sentences were cliff-truncating mid-word.
+            max_output_tokens=400,
             temperature=0.2,
         )
         # Compose the final user message:
