@@ -497,18 +497,25 @@ async def _answer_with_gemini(
         config = types.GenerateContentConfig(
             system_instruction=_ASK_SYSTEM_INSTRUCTION,
             tools=[types.Tool(google_search=types.GoogleSearch())],
-            # 100-token buffer over the prompt's "~300 token" budget — gives
-            # Gemini room to finish a sentence cleanly if it drifts past 300.
-            # Without the buffer, sentences were cliff-truncating mid-word.
-            max_output_tokens=400,
+            # max_output_tokens budgets the TOTAL Gemini output — thinking
+            # tokens + visible response tokens combined. Split:
+            #   - thinking_budget = 1024 (upper limit on internal reasoning)
+            #   - visible response ≈ 500 tokens (covers the prompt's ~300-word
+            #     cap with markdown/formatting overhead — 300 words × 1.3
+            #     tokens/word × 1.25 markdown overhead ≈ 500 tokens)
+            #   - 2000 total leaves headroom so a complex grounded query can
+            #     spend up to ~1500 tokens thinking + ~500 responding without
+            #     truncation. Model uses less when it doesn't need the budget.
+            max_output_tokens=2000,
             temperature=0.2,
-            # Disable Gemini 2.5 Flash "thinking" mode. By default 2.5-flash
-            # spends output tokens on internal reasoning BEFORE the visible
-            # response, which at our 400-token cap was eating the entire
-            # budget and returning blank/extremely short answers. /ask is a
-            # quick Q&A — it doesn't need a reasoning pass. Setting
-            # thinking_budget=0 returns the full 400 tokens to actual output.
-            thinking_config=types.ThinkingConfig(thinking_budget=0),
+            # Enable Gemini 2.5 Flash thinking mode capped at 1024 tokens.
+            # Thinking helps on research/verification queries where the model
+            # needs to plan search calls and reconcile multiple grounded
+            # results. 1024 is enough for typical /ask use; complex
+            # verifications can use up to 1500 tokens because max_output_tokens
+            # is 2000 total (Gemini will scale thinking down toward 1024 if
+            # response is short, up toward 1500 if response is tight).
+            thinking_config=types.ThinkingConfig(thinking_budget=1024),
         )
         # Compose the final user message:
         #   1. Fetched URL contents (highest priority — direct user-shared
