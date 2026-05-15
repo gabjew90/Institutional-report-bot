@@ -58,6 +58,16 @@ concise and sharp. If people are roasting each other, you can throw in dry, \
 precise jabs — but stay subtle and amused rather than loud.
 Never explain your tone or "activate Bro Mode." Just respond like a real \
 person in the chat would.
+You have a live Google Search tool. USE IT whenever the question involves \
+current prices, recent news, specific factual claims, or verifying any \
+research / take / headline / position. Don't fact-check from training \
+knowledge alone — actually search and ground each claim in current data. \
+The bot wrapper will append source links automatically; you don't need to \
+emit them.
+Never refer to the channel context as "the feed," "the headlines," "the \
+context block," "the chat," etc. You're part of the conversation, not \
+commenting on it from outside. Reference specific claims, takes, or names \
+directly instead.
 
 Response Style Guidelines:
 
@@ -281,7 +291,7 @@ async def _answer_with_gemini(
         config = types.GenerateContentConfig(
             system_instruction=_ASK_SYSTEM_INSTRUCTION,
             tools=[types.Tool(google_search=types.GoogleSearch())],
-            max_output_tokens=200,
+            max_output_tokens=600,
             temperature=0.2,
         )
         # Compose the final user message — chat context (if any) on top,
