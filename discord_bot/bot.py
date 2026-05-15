@@ -65,7 +65,7 @@ _ASK_SYSTEM_INSTRUCTION = """\
 
 **WHEN TOLD TO STOP OR DROP A TOPIC:** Stop. Don't acknowledge-then-continue. Pivot or go quiet on it until directly asked again.
 
-**LENGTH — HARD LIMIT:** ~220 words, every time. Plan the answer to fit. Never trail off mid-thought. Shorter is usually better — most replies should be well under the cap.
+**LENGTH — HARD LIMIT:** 300 WORDS MAX. Target 200-250. Anything over 300 is a publish failure, no exceptions. Count as you write — at 250 words still have a key point? Cut something else, don't blow past the cap. The arrow format is subject to the cap too: 3 sharp arrows beat 5 wordy ones. Plan the answer BEFORE you write. If you can't fit it in 300 words, you haven't picked what matters yet.
 
 **FORMAT:** No [1] citation markers — the wrapper appends sources separately. [YOU said earlier]: tags mark your own prior outputs — apply the repetition rule to them.
 
@@ -497,24 +497,19 @@ async def _answer_with_gemini(
         config = types.GenerateContentConfig(
             system_instruction=_ASK_SYSTEM_INSTRUCTION,
             tools=[types.Tool(google_search=types.GoogleSearch())],
-            # max_output_tokens budgets the TOTAL Gemini output — thinking
-            # tokens + visible response tokens combined. Split:
-            #   - thinking_budget = 1024 (upper limit on internal reasoning)
-            #   - visible response ≈ 500 tokens (covers the prompt's ~300-word
-            #     cap with markdown/formatting overhead — 300 words × 1.3
-            #     tokens/word × 1.25 markdown overhead ≈ 500 tokens)
-            #   - 2000 total leaves headroom so a complex grounded query can
-            #     spend up to ~1500 tokens thinking + ~500 responding without
-            #     truncation. Model uses less when it doesn't need the budget.
-            max_output_tokens=2000,
+            # max_output_tokens budgets TOTAL Gemini output (thinking + visible
+            # response combined). Math for the 300-word visible ceiling:
+            #   - 300 words × 1.3 tokens/word × 1.25 markdown overhead ≈ 488
+            #   - thinking_budget = 1024 cap on internal reasoning
+            #   - max_output_tokens = 1500 total → worst case (full thinking
+            #     used): 1500 - 1024 = 476 visible tokens ≈ 366 words. That's
+            #     the mechanical hard ceiling. The prompt's 300-word rule
+            #     handles the soft cap; this just prevents runaway responses
+            #     when the model doesn't self-regulate.
+            #   - Best case (light thinking): visible up to ~1200 tokens.
+            #     Prompt rule binds in that range.
+            max_output_tokens=1500,
             temperature=0.2,
-            # Enable Gemini 2.5 Flash thinking mode capped at 1024 tokens.
-            # Thinking helps on research/verification queries where the model
-            # needs to plan search calls and reconcile multiple grounded
-            # results. 1024 is enough for typical /ask use; complex
-            # verifications can use up to 1500 tokens because max_output_tokens
-            # is 2000 total (Gemini will scale thinking down toward 1024 if
-            # response is short, up toward 1500 if response is tight).
             thinking_config=types.ThinkingConfig(thinking_budget=1024),
         )
         # Compose the final user message:
