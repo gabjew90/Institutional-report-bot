@@ -502,6 +502,13 @@ async def _answer_with_gemini(
             # Without the buffer, sentences were cliff-truncating mid-word.
             max_output_tokens=400,
             temperature=0.2,
+            # Disable Gemini 2.5 Flash "thinking" mode. By default 2.5-flash
+            # spends output tokens on internal reasoning BEFORE the visible
+            # response, which at our 400-token cap was eating the entire
+            # budget and returning blank/extremely short answers. /ask is a
+            # quick Q&A — it doesn't need a reasoning pass. Setting
+            # thinking_budget=0 returns the full 400 tokens to actual output.
+            thinking_config=types.ThinkingConfig(thinking_budget=0),
         )
         # Compose the final user message:
         #   1. Fetched URL contents (highest priority — direct user-shared
