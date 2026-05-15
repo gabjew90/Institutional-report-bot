@@ -1,7 +1,12 @@
 """Discord bot client with slash commands."""
 
+import html
 import logging
+import re
 from datetime import datetime, timedelta, timezone
+from urllib.parse import urlparse
+
+import aiohttp
 
 import discord
 import pytz
@@ -146,6 +151,106 @@ question directly from the first word.
 Do not include inline citation markers like [1] in responses — sources are \
 listed separately by the bot wrapper.\
 """
+
+
+# --- URL fetching for /ask --------------------------------------------------
+# When a user shares a URL in their question (e.g. "@bot https://reuters.com/
+# article-on-fed-pivot did they actually cut?"), Gemini's grounding tool
+# does NOT fetch that URL — grounding works by running Google searches
+# based on the question text, never by browsing to a specific page. We have
+# to fetch user-shared URLs server-side and pass the page text as context.
+#
+# Skip Twitter/X — they serve login walls to non-authenticated scrapers, so
+# the fetched body is useless boilerplate. Tell users to paste the tweet
+# text alongside the link for those.
+
+_USER_URL_RE = re.compile(r'https?://[^\s<>"\'`]+')
+_USER_URL_BLOCKED_DOMAINS = {"x.com", "twitter.com", "t.co"}
+_USER_URL_FETCH_TIMEOUT_S = 5.0
+_USER_URL_MAX_FETCH = 2
+_USER_URL_MAX_CHARS = 1500
+
+
+def _strip_html_to_text(raw: str) -> str:
+    """Reduce raw HTML to plain text. Drops <script>/<style> blocks first
+    (otherwise their contents leak into the text), then all remaining tags,
+    decodes HTML entities, and collapses whitespace."""
+    text = re.sub(
+        r"<(script|style|nav|footer|header)[^>]*>.*?</\1>",
+        " ",
+        raw,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = html.unescape(text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _host_is_blocked(url: str) -> bool:
+    try:
+        host = urlparse(url).netloc.lower()
+        if host.startswith("www."):
+            host = host[4:]
+    except Exception:
+        return False
+    return any(host == d or host.endswith("." + d) for d in _USER_URL_BLOCKED_DOMAINS)
+
+
+async def _maybe_fetch_user_urls(question: str) -> str:
+    """Extract URLs from the user's question, fetch up to _USER_URL_MAX_FETCH,
+    strip HTML to text, and return a context block to prepend.
+
+    Returns "" when the question has no URLs, all are blocked, or every
+    fetch fails. Each fetched body is truncated to _USER_URL_MAX_CHARS.
+    """
+    urls = _USER_URL_RE.findall(question or "")
+    if not urls:
+        return ""
+
+    fetched: list[tuple[str, str]] = []
+    timeout = aiohttp.ClientTimeout(total=_USER_URL_FETCH_TIMEOUT_S)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (compatible; market-pulse-bot/1.0)",
+        "Accept": "text/html,application/xhtml+xml,*/*;q=0.8",
+    }
+    try:
+        async with aiohttp.ClientSession(timeout=timeout, headers=headers) as session:
+            for url in urls:
+                if len(fetched) >= _USER_URL_MAX_FETCH:
+                    break
+                if _host_is_blocked(url):
+                    log.info(f"URL fetch: skipping login-walled domain — {url}")
+                    continue
+                try:
+                    async with session.get(url) as resp:
+                        if resp.status != 200:
+                            continue
+                        ctype = (resp.headers.get("content-type") or "").lower()
+                        if "html" not in ctype and "text" not in ctype:
+                            continue  # skip PDFs, images, etc.
+                        body = await resp.text(errors="ignore")
+                        text = _strip_html_to_text(body)[:_USER_URL_MAX_CHARS]
+                        if text:
+                            fetched.append((url, text))
+                except Exception as e:
+                    log.info(f"URL fetch failed for {url}: {e}")
+                    continue
+    except Exception as e:
+        log.warning(f"URL fetcher session failed: {e}")
+        return ""
+
+    if not fetched:
+        return ""
+
+    blocks = [
+        f"--- Content from {url} ---\n{text}"
+        for url, text in fetched
+    ]
+    return (
+        "The user shared one or more URLs. Their fetched content is "
+        "below — use it to answer their actual question:\n\n"
+        + "\n\n".join(blocks)
+    )
 
 
 def _extract_embed_text(embed: discord.Embed) -> str:
@@ -317,6 +422,7 @@ async def _answer_with_gemini(
     question: str,
     user_id: int,
     chat_context: str = "",
+    fetched_urls: str = "",
 ) -> discord.Embed:
     """Run a Gemini grounded-search query and return a Discord embed.
 
@@ -358,15 +464,19 @@ async def _answer_with_gemini(
             max_output_tokens=300,
             temperature=0.2,
         )
-        # Compose the final user message — chat context (if any) on top,
-        # then a clear separator, then the actual question.
+        # Compose the final user message:
+        #   1. Fetched URL contents (highest priority — direct user-shared
+        #      sources)
+        #   2. Recent channel chat context
+        #   3. Separator + actual question
+        # Skip any section that's empty.
+        sections: list[str] = []
+        if fetched_urls:
+            sections.append(fetched_urls)
         if chat_context:
-            user_content = (
-                f"{chat_context}\n\n"
-                f"--- The user is now asking: ---\n{question}"
-            )
-        else:
-            user_content = question
+            sections.append(chat_context)
+        sections.append(f"--- The user is now asking: ---\n{question}")
+        user_content = "\n\n".join(sections)
         ask_model = settings.ask_gemini_model or settings.gemini_model
         response = await client.aio.models.generate_content(
             model=ask_model,
@@ -1008,7 +1118,13 @@ def create_bot() -> commands.Bot:
                 interaction.channel,
                 bot_user_id=bot.user.id if bot.user else None,
             )
-            embed = await _answer_with_gemini(question, user_id, chat_context=chat_context)
+            fetched_urls = await _maybe_fetch_user_urls(question)
+            embed = await _answer_with_gemini(
+                question,
+                user_id,
+                chat_context=chat_context,
+                fetched_urls=fetched_urls,
+            )
             await interaction.followup.send(embed=embed)
         except Exception as e:
             log.error(f"/ask failed: {e}", exc_info=True)
@@ -1041,10 +1157,12 @@ def create_bot() -> commands.Bot:
                     exclude_message_id=message.id,
                     bot_user_id=bot.user.id if bot.user else None,
                 )
+                fetched_urls = await _maybe_fetch_user_urls(question)
                 embed = await _answer_with_gemini(
                     question,
                     message.author.id,
                     chat_context=chat_context,
+                    fetched_urls=fetched_urls,
                 )
                 await message.reply(embed=embed, mention_author=False)
         except Exception as e:
