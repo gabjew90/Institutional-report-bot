@@ -109,6 +109,37 @@ trying not to get fired. The ONLY acceptable non-answer is "we genuinely \
 don't know until catalyst X resolves" — and even then, name catalyst X \
 and which side you'd lean before it fires.
 
+RECOGNIZE YOUR OWN PRIOR REPLIES:
+Lines in the channel context tagged with "[YOU said earlier]:" are your \
+own previous responses in this channel. Treat them as your prior takes. \
+NEVER repeat content you've already said. If you covered something in a \
+recent reply, either build on it with new information, pivot to what's \
+changed, or — if the user asked again or asked you to stop — acknowledge \
+briefly and move on. Repeating the same NVDA-earnings-IV-crush template \
+across three replies makes you sound like a broken record. Don't do it.
+
+WHEN A USER ASKS YOU TO STOP OR CHANGE TOPIC:
+If someone says "chill out about X," "stop talking about Y," "drop it," \
+"different topic," etc. — STOP. Don't acknowledge and then keep going \
+("Alright, let's dial back…" followed by the same content is the worst \
+possible failure). Pivot immediately, or just stay quiet about that topic \
+until directly asked again.
+
+BANNED OPENERS — never start a reply with:
+"Just observing…" / "Not much worth chiming in on…" / "The market's been \
+a bit choppy…" / "Watching from the sidelines…" / "Interesting question…" \
+/ any deflection filler that delays getting to the point. Engage with the \
+question directly from the first word.
+
+BANNED PHRASING — these are sell-side analyst tells, not desk-trader voice:
+"typically ill-advised" / "may present clearer opportunities" / "be aware \
+the premium decay will be swift" / "the inevitable IV crush" / "consider \
+a straddle or strangle" / "fool's errand" / "the real opportunities might \
+emerge" / "guidance will likely be the primary market driver" / any \
+generic options-101 textbook language. If someone asks about a trade, \
+give YOUR call on it: which side, why, what invalidates it, what size. \
+Not boilerplate from an investing-101 textbook.
+
 Do not include inline citation markers like [1] in responses — sources are \
 listed separately by the bot wrapper.\
 """
@@ -151,6 +182,7 @@ async def _fetch_chat_context(
     channel,
     *,
     exclude_message_id: int | None = None,
+    bot_user_id: int | None = None,
 ) -> str:
     """Fetch recent channel messages and format them as an LLM context block.
 
@@ -192,8 +224,18 @@ async def _fetch_chat_context(
             if not text:
                 continue  # nothing usable — pure image / sticker / etc.
             text = text[:_ASK_CONTEXT_PER_MSG_CHARS]
-            author = getattr(msg.author, "display_name", None) or msg.author.name
-            collected.append((msg.created_at, f"{author}: {text}"))
+            # Tag the bot's own past replies distinctly so Gemini can recognize
+            # which lines are its prior output. Without this, the bot sees its
+            # own embed-stripped replies as "BotName: <text>" and treats them
+            # like any other user — leading to loops where it repeats the same
+            # canned take across multiple calls without realizing it.
+            if bot_user_id is not None and msg.author.id == bot_user_id:
+                line = f"[YOU said earlier]: {text}"
+            else:
+                author = (getattr(msg.author, "display_name", None)
+                          or msg.author.name)
+                line = f"{author}: {text}"
+            collected.append((msg.created_at, line))
     except discord.Forbidden:
         log.info("Chat-context fetch: missing Read Message History permission")
         return ""
@@ -959,7 +1001,10 @@ def create_bot() -> commands.Bot:
         await interaction.response.defer(thinking=True)
         try:
             user_id = interaction.user.id if interaction.user else 0
-            chat_context = await _fetch_chat_context(interaction.channel)
+            chat_context = await _fetch_chat_context(
+                interaction.channel,
+                bot_user_id=bot.user.id if bot.user else None,
+            )
             embed = await _answer_with_gemini(question, user_id, chat_context=chat_context)
             await interaction.followup.send(embed=embed)
         except Exception as e:
@@ -991,6 +1036,7 @@ def create_bot() -> commands.Bot:
                 chat_context = await _fetch_chat_context(
                     message.channel,
                     exclude_message_id=message.id,
+                    bot_user_id=bot.user.id if bot.user else None,
                 )
                 embed = await _answer_with_gemini(
                     question,
