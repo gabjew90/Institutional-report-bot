@@ -306,7 +306,7 @@ def _build_sources_footer(grounding_metadata) -> str:
         seen.add(url)
         title = (getattr(web, "title", None) or url)[:80]
         lines.append(f"[{len(lines) + 1}] [{title}](<{url}>)")
-        if len(lines) >= 6:
+        if len(lines) >= 2:
             break  # cap to keep the embed compact
     if not lines:
         return ""
