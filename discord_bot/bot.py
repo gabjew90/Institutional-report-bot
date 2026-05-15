@@ -27,9 +27,9 @@ _gemini_ask_client = None
 # Channel-context fetch parameters. Recent chat is prepended to every /ask
 # call so Gemini can reference what users were discussing — critical for
 # bro-mode roasts that quote real positions/takes.
-_ASK_CONTEXT_MAX_MESSAGES = 30
+_ASK_CONTEXT_MAX_MESSAGES = 10
 _ASK_CONTEXT_MAX_AGE_MIN = 1440  # 24h — quiet channels (ingestion feed)
-                                 # can take a while to fill 30 messages
+                                 # can take a while to fill the buffer
 _ASK_CONTEXT_PER_MSG_CHARS = 600
 
 
