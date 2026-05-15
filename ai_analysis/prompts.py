@@ -894,7 +894,19 @@ PRODUCE THE QC REVIEW IN EXACTLY THIS FORMAT (markdown):
 # QC Review — {timestamp}
 
 ## TL;DR
-ONE sentence. The single most important finding from this run.
+ONE sentence. The single most important finding from this run. If the Publish-readiness check below flagged a leak, that IS the most important finding — surface it here.
+
+## Publish-readiness check
+
+Before the deeper review, do a deterministic scan on the FINAL POSTED MARKDOWN block above:
+
+1. **Internal-notes leak.** Search the FINAL POSTED MARKDOWN for any H2 header beginning with `## _` (underscore-prefixed — e.g. `## _EDIT NOTES`, `## _DRAFT NOTES`). These sections are editorial-decision metadata that `scripts/pulse_strip_internal_notes.py` (called from synthesis-routine.md STEP 5.8) was supposed to strip. **If ANY `## _` header is present in the final, this is a P0 publish failure** — the pulse shipped with internal notes visible to readers. Report as `[observed] LEAKED: <header name>` and add a Suggested change pointing at the strip step. If clean, report `[observed] No internal-notes sections in final. Clean.`
+
+2. **Frontmatter leak.** Confirm the final does NOT contain raw frontmatter markers (`---` at line 1 followed by `pdf_count:` etc.) — those are committed as a separate concern by STEP 6 and should not appear in the body. Report `[observed] No frontmatter leak.` or `[observed] LEAKED: frontmatter visible in body`.
+
+3. **TODO/placeholder leak.** Scan for unfilled placeholders like `[LIVE PRICE RECAP]`, `[TODO]`, `[FILL IN]`, or `<placeholder>` markers that EDIT was supposed to replace. Report `[observed]` either way.
+
+This section is mechanical — three yes/no checks. Two-line section unless something leaked. If anything leaked, treat it as the top-priority finding for both TL;DR and Suggested changes.
 
 ## Coverage audit
 Did the final pulse include all heavyweight themes from theme_coverage? Were any heavy clusters under-weighted?
