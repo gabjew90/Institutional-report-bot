@@ -105,6 +105,12 @@ LENGTH — HARD LIMIT: ~220 words, every time. Plan the answer to fit. \
 Never trail off mid-thought. Shorter is usually better — most replies \
 should be well under the cap.
 
+IMAGES: If the asker attached an image or @mentioned you in reply to \
+one (chart, P&L screenshot, trade ticket, news headline, etc.), read \
+it and engage with what it actually shows — specific levels, the \
+setup, the obvious cope in the P&L, what the headline really says. \
+Don't describe the image generically; respond to the content.
+
 FORMAT: No [1] citation markers — the wrapper appends sources \
 separately. [YOU said earlier]: tags mark your own prior outputs — \
 apply the repetition rule to them.\
@@ -209,6 +215,77 @@ async def _maybe_fetch_user_urls(question: str) -> str:
         "below — use it to answer their actual question:\n\n"
         + "\n\n".join(blocks)
     )
+
+
+# --- Image extraction for /ask (scoped: only when @mentioned with images) ---
+# Gemini 2.5 Flash is natively multimodal. Rather than scanning all 20
+# context messages for images (token-heavy and often noise), we only pull
+# images that are DIRECTLY tied to the asker's request:
+#   1. Image attached to the @mention message itself
+#   2. Image in the message being replied-to (when the @mention is a reply)
+# Capped at 2 images total per call.
+
+_IMAGE_MAX_BYTES = 5 * 1024 * 1024  # 5MB per image
+_IMAGE_FETCH_TIMEOUT_S = 5.0
+_IMAGE_MAX_PER_CALL = 2
+
+
+async def _extract_images_from_message(
+    msg: discord.Message,
+    *,
+    remaining_slots: int,
+) -> list[tuple[bytes, str]]:
+    """Pull (bytes, mime_type) tuples from a message's attachments and
+    embed images. Caps to `remaining_slots`; skips files >5MB and any
+    non-image content types. Failures are logged and swallowed —
+    image enrichment is best-effort, never blocks the reply.
+    """
+    if remaining_slots <= 0 or msg is None:
+        return []
+    out: list[tuple[bytes, str]] = []
+
+    # Direct attachments (uploads) — preferred path, read() returns bytes.
+    for att in msg.attachments:
+        if len(out) >= remaining_slots:
+            break
+        ct = (att.content_type or "").lower()
+        if not ct.startswith("image/"):
+            continue
+        if att.size and att.size > _IMAGE_MAX_BYTES:
+            log.info(f"/ask image skipped — attachment too big ({att.size} bytes)")
+            continue
+        try:
+            data = await att.read()
+            out.append((data, ct))
+        except Exception as e:
+            log.info(f"/ask image attachment read failed: {e}")
+
+    # Embed images — when someone pastes a direct image URL Discord
+    # auto-embeds, the image lives at embed.image.url not as an attachment.
+    if len(out) < remaining_slots:
+        timeout = aiohttp.ClientTimeout(total=_IMAGE_FETCH_TIMEOUT_S)
+        async with aiohttp.ClientSession(timeout=timeout) as session:
+            for embed in msg.embeds:
+                if len(out) >= remaining_slots:
+                    break
+                img = getattr(embed, "image", None)
+                url = getattr(img, "url", None) if img else None
+                if not url:
+                    continue
+                try:
+                    async with session.get(url) as resp:
+                        if resp.status != 200:
+                            continue
+                        ct = (resp.headers.get("content-type") or "").lower()
+                        if not ct.startswith("image/"):
+                            continue
+                        data = await resp.read()
+                        if len(data) > _IMAGE_MAX_BYTES:
+                            continue
+                        out.append((data, ct))
+                except Exception as e:
+                    log.info(f"/ask embed image fetch failed: {e}")
+    return out
 
 
 def _extract_embed_text(embed: discord.Embed) -> str:
@@ -381,6 +458,7 @@ async def _answer_with_gemini(
     user_id: int,
     chat_context: str = "",
     fetched_urls: str = "",
+    images: list[tuple[bytes, str]] | None = None,
 ) -> discord.Embed:
     """Run a Gemini grounded-search query and return a Discord embed.
 
@@ -438,10 +516,23 @@ async def _answer_with_gemini(
             sections.append(chat_context)
         sections.append(f"--- The user is now asking: ---\n{question}")
         user_content = "\n\n".join(sections)
+
+        # If images are present, build a multipart contents list: images
+        # first (so the model sees them before reading the text question),
+        # then the text. Without images, send plain text contents.
+        if images:
+            parts: list = []
+            for img_bytes, mime in images:
+                parts.append(types.Part.from_bytes(data=img_bytes, mime_type=mime))
+            parts.append(types.Part.from_text(text=user_content))
+            generate_contents = parts
+        else:
+            generate_contents = user_content
+
         ask_model = settings.ask_gemini_model or settings.gemini_model
         response = await client.aio.models.generate_content(
             model=ask_model,
-            contents=user_content,
+            contents=generate_contents,
             config=config,
         )
         answer = (response.text or "").strip()
@@ -1119,11 +1210,32 @@ def create_bot() -> commands.Bot:
                     bot_user_id=bot.user.id if bot.user else None,
                 )
                 fetched_urls = await _maybe_fetch_user_urls(question)
+
+                # Scoped image collection: only the @mention message and
+                # the message it's replying to (if any). Cap at 2 total.
+                images = await _extract_images_from_message(
+                    message,
+                    remaining_slots=_IMAGE_MAX_PER_CALL,
+                )
+                if message.reference and message.reference.message_id and len(images) < _IMAGE_MAX_PER_CALL:
+                    try:
+                        ref_msg = await message.channel.fetch_message(
+                            message.reference.message_id
+                        )
+                        more_imgs = await _extract_images_from_message(
+                            ref_msg,
+                            remaining_slots=_IMAGE_MAX_PER_CALL - len(images),
+                        )
+                        images.extend(more_imgs)
+                    except Exception as e:
+                        log.info(f"/ask: couldn't fetch replied-to message: {e}")
+
                 embed = await _answer_with_gemini(
                     question,
                     message.author.id,
                     chat_context=chat_context,
                     fetched_urls=fetched_urls,
+                    images=images,
                 )
                 await message.reply(embed=embed, mention_author=False)
         except Exception as e:
