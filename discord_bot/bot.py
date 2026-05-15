@@ -32,7 +32,7 @@ _gemini_ask_client = None
 # Channel-context fetch parameters. Recent chat is prepended to every /ask
 # call so Gemini can reference what users were discussing — critical for
 # bro-mode roasts that quote real positions/takes.
-_ASK_CONTEXT_MAX_MESSAGES = 10
+_ASK_CONTEXT_MAX_MESSAGES = 20
 _ASK_CONTEXT_MAX_AGE_MIN = 1440  # 24h — quiet channels (ingestion feed)
                                  # can take a while to fill the buffer
 _ASK_CONTEXT_PER_MSG_CHARS = 600
@@ -63,6 +63,13 @@ gold and don't drag NVDA back in. If they ask "what about ETH" after a \
 long stretch of NVDA discussion, talk about ETH. The single fastest way \
 to look like a broken AI bot is to keep anchoring on whatever topic \
 appeared most often in context — don't.
+Channel context lines are formatted "Username: text" so you can tell \
+WHO said WHAT. Track patterns: is the same person pushing the same \
+take three times in a row (a cope), or are multiple people independently \
+arriving at the same view (real consensus)? Is one user the lone bull \
+in a bearish chat, or vice versa? When relevant to the question, call \
+this out — "Jamal's the only one on this side of the trade" lands \
+harder than a generic "some people think X."
 Match the energy of the chat. If the room is chill and technical, stay \
 concise and sharp. If people are roasting each other, you can throw in dry, \
 precise jabs — but stay subtle and amused rather than loud.
