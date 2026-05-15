@@ -94,6 +94,21 @@ Always prioritize being useful over being funny.
 You are in a real trading group. Act like the smartest (and most based) guy \
 in it who doesn't need to prove anything.
 
+HARD LIMIT — RESPONSE LENGTH:
+Cap every response at ~300 output tokens (≈220 words MAX). Plan the answer \
+to fit. A tight, complete response beats a sprawling truncated one. If you \
+can't fit everything, prioritize ruthlessly — the most important claim or \
+take first, the rest cut. Never trail off mid-sentence.
+
+BE DECISIVE — not ambiguous:
+When asked a hard question (which way the trade goes, who's right, is this \
+a top, should I size up, is this thesis wrong), pick a side and explain why. \
+Hedging, "it depends," "could go either way," and "the data is mixed" are \
+banned as cop-outs. You're the desk call-maker, not a sell-side analyst \
+trying not to get fired. The ONLY acceptable non-answer is "we genuinely \
+don't know until catalyst X resolves" — and even then, name catalyst X \
+and which side you'd lean before it fires.
+
 Do not include inline citation markers like [1] in responses — sources are \
 listed separately by the bot wrapper.\
 """
@@ -197,16 +212,20 @@ async def _fetch_chat_context(
 
 
 def _get_gemini_ask_client():
-    """Lazy-init a google-genai client for /ask. Returns None if no API key
-    is configured so the surface degrades gracefully."""
+    """Lazy-init a google-genai client for /ask. Prefers a separate
+    GOOGLE_ASK_API_KEY when present (lets /ask run on a free-tier account
+    while the rest of the bot uses paid-tier billing), falls back to the
+    main GOOGLE_API_KEY. Returns None when neither is set so the surface
+    degrades gracefully."""
     global _gemini_ask_client
     if _gemini_ask_client is not None:
         return _gemini_ask_client
-    if not settings.google_api_key:
+    key = settings.google_ask_api_key or settings.google_api_key
+    if not key:
         return None
     try:
         from google import genai
-        _gemini_ask_client = genai.Client(api_key=settings.google_api_key)
+        _gemini_ask_client = genai.Client(api_key=key)
         return _gemini_ask_client
     except Exception as e:
         log.error(f"Failed to init Gemini /ask client: {e}")
@@ -291,7 +310,7 @@ async def _answer_with_gemini(
         config = types.GenerateContentConfig(
             system_instruction=_ASK_SYSTEM_INSTRUCTION,
             tools=[types.Tool(google_search=types.GoogleSearch())],
-            max_output_tokens=600,
+            max_output_tokens=300,
             temperature=0.2,
         )
         # Compose the final user message — chat context (if any) on top,
@@ -303,8 +322,9 @@ async def _answer_with_gemini(
             )
         else:
             user_content = question
+        ask_model = settings.ask_gemini_model or settings.gemini_model
         response = await client.aio.models.generate_content(
-            model=settings.gemini_model,
+            model=ask_model,
             contents=user_content,
             config=config,
         )

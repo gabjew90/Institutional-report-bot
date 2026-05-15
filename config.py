@@ -13,6 +13,16 @@ class Settings(BaseSettings):
 
     # Google Gemini
     google_api_key: str = ""
+    # Optional separate API key used ONLY for /ask + @mention Gemini calls.
+    # Falls back to google_api_key when empty. Useful when /ask should run on
+    # a free-tier Google AI Studio account while the PDF pipeline keeps using
+    # a paid-tier key on a different account. Same access shape; just a
+    # different billing/quota bucket.
+    google_ask_api_key: str = ""
+    # Optional model override for /ask only. Empty = use settings.gemini_model.
+    # Set to e.g. "gemini-2.5-flash" if the primary model is preview-only and
+    # not available on the free-tier ask key.
+    ask_gemini_model: str = ""
 
     # Finnhub (optional — enables live market news + economic calendar)
     finnhub_api_key: str = ""
