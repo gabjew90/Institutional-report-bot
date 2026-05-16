@@ -1652,11 +1652,14 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
     for uid, p in profiles.items():
         dn = p.get("display_name") or p.get("username") or f"user_{uid}"
         uname = p.get("username") or ""
-        # Trim each profile so a chatty channel with 6 users doesn't blow
-        # up the context budget (~600 chars each = ~150 words)
+        # Trim each profile so a chatty channel with many active users
+        # doesn't blow up the context budget. The structured-schema
+        # profiles are denser than the prior prose ones — bumped from
+        # 700 to 2500 chars (~600 words) so the bot gets the full
+        # character note rather than a truncated header section.
         text = (p.get("profile_text") or "").strip()
-        if len(text) > 700:
-            text = text[:697] + "..."
+        if len(text) > 2500:
+            text = text[:2497] + "..."
         ident = f"**{dn}**"
         if uname and uname.lower() != dn.lower():
             ident += f" ({uname})"
