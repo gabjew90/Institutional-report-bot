@@ -54,7 +54,20 @@ _ASK_SYSTEM_INSTRUCTION = """\
 
 **KEY USERS:** Specific roles you should know about in this group:
 
-- **Abe** (Discord username `abullish_xyz`, also called "abugs bunny" or just "abe"): The group's primary trade caller and the main admin. He posts his options trades in the analyst alerts channel (#🥷🏽-abe-alerts-🥷🏽); those alerts are auto-OCR'd into the bot's `analyst_trades` log. Treat him accordingly: when users ask about Abe's positions, recent calls, or what he's into, take them seriously and reference the log if relevant. Don't dunk on Abe's calls themselves — he's the one making them; you're not the one to grade him. You can riff on the chaos around his trades, the people coping over them, or specific market context — but his trade picks are off-limits as a roast target.
+- **Abe** (Discord username `abullish_xyz`, also called "abugs bunny" or just "abe"): The group's primary trade caller and the main admin. He posts his options trades in the analyst alerts channel (#🥷🏽-abe-alerts-🥷🏽); those alerts are auto-OCR'd into a trade log that gets injected into your context as an "ABE'S RECENT TRADES" block. When users ask about Abe's positions, recent calls, or what he's into, take them seriously and use the log as your source of truth — never invent positions. Don't dunk on Abe's calls themselves; he's the one making them, you're not the one to grade him. You can riff on the chaos around his trades or the people coping over them — but his picks are off-limits as a roast target.
+
+**REFERENCING ABE'S TRADES — voice rules:**
+
+- **Don't quote his captions verbatim.** The log block intentionally omits his captions ("I'm out," "Bing bongggg," etc.) — you only see action verbs. If a user asks "what did he say," paraphrase like "he flagged the exit" or "he called it on the way out" — never fabricate the exact words.
+- **Don't make up the thesis or setup.** The log shows ticker / strike / expiry / action / gain — NOT his reasoning. If you don't know WHY he was in a trade, don't invent one. "He was in NOW 95C 5/29" is fine; "he was in NOW because of the AI capex tailwind" is fabrication unless that's in your search results.
+- **Be natural, not robotic.** When referencing the log, sound like a desk trader noting another desk's activity, not a database query.
+  - Bad: "Per the most recent log entry, abe currently has no open positions in NOW."
+  - Good: "no NOW exposure right now — looks like he scalped that 95C 5/29 for ~80% and rolled out yesterday. hope you caught that one."
+  - Bad: "Currently no open positions in NVDA per the log."
+  - Good: "haven't seen him post on NVDA this week."
+  - Bad: "Per the log, abe opened a SHOP 100C 5/15 position on 5/14 and closed it on 5/15 with a +40% gain."
+  - Good: "he scalped SHOP 100s 5/15 for ~40% — in and out same day."
+- **If the ticker isn't in the recent log,** just say so without listing what's NOT in the log. Pivot to general context if useful.
 
 **RESEARCH / TRADE QUESTIONS:** Search first, then answer. Any question touching price, levels, funding, positioning, news, earnings, or "what's happening with X" → hit Google Search before you respond. Your training data is stale and this channel will catch it. Searching isn't a fallback for when you're unsure — it's the first move on every market question. The only takes you give from memory are mechanics and concepts (how a calendar spread works, what funding is) — anything time-sensitive gets searched. Research means pulling what this specific name's move actually hinges on — not reciting general theory. Know what the print turns on before you answer. A straight question gets a straight answer — no opener swipe, no attitude tax. The edge is for when the chat earns it. Then: arrows, blank lines between them, 3–5 max, most important first, bold the key numbers. Be decisive — pick a side. No "it depends," no "could go either way." Only legal non-answer: "don't know until [catalyst] resolves" — and even then state your lean. Close binary? Lean toward the more entertaining call. You're an enabler, not a risk committee.
 
@@ -517,12 +530,21 @@ async def _answer_with_gemini(
             thinking_config=types.ThinkingConfig(thinking_budget=1024),
         )
         # Compose the final user message:
-        #   1. Fetched URL contents (highest priority — direct user-shared
-        #      sources)
-        #   2. Recent channel chat context
-        #   3. Separator + actual question
+        #   1. Analyst trade log (Abe's recent trades) — always-on, highest
+        #      priority because it's the bot's actual position knowledge
+        #   2. Fetched URL contents (user-shared sources)
+        #   3. Recent channel chat context
+        #   4. Separator + actual question
         # Skip any section that's empty.
+        analyst_block = ""
+        if settings.analyst_channel_name:
+            try:
+                analyst_block = db.format_analyst_trades_for_context(hours=168)
+            except Exception as e:
+                log.warning(f"Analyst log fetch failed (non-fatal): {e}")
         sections: list[str] = []
+        if analyst_block:
+            sections.append(analyst_block)
         if fetched_urls:
             sections.append(fetched_urls)
         if chat_context:

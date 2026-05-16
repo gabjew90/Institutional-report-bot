@@ -1352,6 +1352,73 @@ def get_current_analyst_positions() -> list[dict]:
     return [dict(r) for r in rows]
 
 
+def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
+    """Render the last N hours of trade-tagged rows as a context block for /ask.
+
+    Intentionally OMITS captions and notes — we don't want the bot to quote
+    Abe verbatim. The bot gets ticker/strike/expiry/action/gain only, and
+    must paraphrase if the user asks "what did he say."
+
+    Returns "" when there are no trade rows in the window — caller can omit
+    the block entirely.
+    """
+    rows = get_recent_analyst_trades(hours=hours, limit=limit)
+    if not rows:
+        return ""
+
+    out_lines: list[str] = [
+        f"ABE'S RECENT TRADES (last {hours // 24} days, auto-logged from his "
+        f"alerts channel — for context only, don't quote captions; he didn't "
+        f"share them with you):"
+    ]
+    # Newest first per get_recent_analyst_trades; reverse so the trader
+    # reads them chronologically.
+    for r in reversed(rows):
+        ticker = r.get("ticker") or "?"
+        ct = (r.get("contract_type") or "").lower()
+        ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
+        strike = r.get("strike")
+        strike_str = (
+            f"{int(strike) if strike == int(strike) else strike}"
+            if strike is not None else "?"
+        )
+        expiry = r.get("expiry") or ""
+        exp_short = expiry[5:] if len(expiry) >= 10 else expiry  # MM-DD
+        action = (r.get("action") or "?").lower()
+        gain = r.get("gain_pct")
+        gain_str = f" ({gain:+.1f}%)" if gain is not None else ""
+        posted_at = (r.get("posted_at") or "")[:16].replace("T", " ")
+        out_lines.append(
+            f"- {posted_at} — {action} {ticker} "
+            f"{strike_str}{ct_suffix} {exp_short}{gain_str}"
+        )
+
+    # Also surface currently-open positions explicitly so the bot doesn't
+    # have to compute the net itself.
+    positions = get_current_analyst_positions()
+    if positions:
+        out_lines.append("")
+        out_lines.append("ABE'S CURRENTLY OPEN POSITIONS (computed from the above log):")
+        for p in positions[:10]:
+            ticker = p.get("ticker") or "?"
+            ct = (p.get("contract_type") or "").lower()
+            ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
+            strike = p.get("strike")
+            strike_str = (
+                f"{int(strike) if strike == int(strike) else strike}"
+                if strike is not None else "?"
+            )
+            expiry = p.get("expiry") or ""
+            exp_short = expiry[5:] if len(expiry) >= 10 else expiry
+            last_gain = p.get("last_gain_pct")
+            gain_str = f" — last update {last_gain:+.1f}%" if last_gain is not None else ""
+            out_lines.append(
+                f"- {ticker} {strike_str}{ct_suffix} {exp_short}{gain_str}"
+            )
+
+    return "\n".join(out_lines)
+
+
 def mark_expired_analyst_positions() -> list[dict]:
     """Daily cron entrypoint. Mark any trade rows whose expiry has passed
     AND have no inferred_status yet as 'expired_unknown'. Returns the rows
