@@ -1548,6 +1548,44 @@ def get_profiles_for_users(user_ids: list[int]) -> dict[int, dict]:
     return {r["user_id"]: dict(r) for r in rows}
 
 
+def find_users_mentioned_in_text(text: str) -> list[int]:
+    """Return user_ids of profiled users mentioned in `text`. Catches:
+      - Discord @-mentions: `<@123>`, `<@!123>`
+      - Substring/word-boundary matches against username + display_name
+        for any user with a profile in the table.
+
+    Names shorter than 3 chars are ignored to avoid spurious matches
+    (someone named "Al" shouldn't get pulled in by every mention of
+    "all" or "also"). Returns deduplicated list.
+    """
+    import re
+    if not text:
+        return []
+    matches: set[int] = set()
+    # Discord-encoded @-mentions
+    for m in re.finditer(r"<@!?(\d+)>", text):
+        try:
+            matches.add(int(m.group(1)))
+        except ValueError:
+            continue
+    # Name-based fuzzy match (word boundaries)
+    rows = get_connection().execute(
+        "SELECT user_id, username, display_name FROM user_profiles"
+    ).fetchall()
+    text_lower = text.lower()
+    for r in rows:
+        for needle in [
+            (r["username"] or "").lower(),
+            (r["display_name"] or "").lower(),
+        ]:
+            if not needle or len(needle) < 3:
+                continue
+            if re.search(rf"\b{re.escape(needle)}\b", text_lower):
+                matches.add(r["user_id"])
+                break
+    return list(matches)
+
+
 def format_user_profiles_for_context(user_ids: list[int]) -> str:
     """Render a "WHO'S TALKING" block for the given user_ids. Skips users
     with no profile (lurkers, new joiners). Returns "" when nobody on the

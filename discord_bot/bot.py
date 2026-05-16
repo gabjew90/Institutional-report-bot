@@ -1227,44 +1227,6 @@ def create_bot() -> commands.Bot:
             log.error(f"Reprocess failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
-    @bot.tree.command(name="whois", description="See what the bot thinks of a user")
-    @app_commands.describe(user="The user to look up")
-    async def whois_command(
-        interaction: discord.Interaction,
-        user: discord.User,
-    ):
-        await interaction.response.defer(thinking=False)
-        try:
-            profile = db.get_user_profile(user.id)
-            if profile is None:
-                # Fall back to username lookup in case user_id mismatch
-                profile = db.get_user_profile_by_username(user.name)
-            if profile is None:
-                msg = (
-                    f"No profile for **{user.display_name or user.name}** yet "
-                    f"— either they don't post much in the yapping channels or "
-                    f"the profile sweep hasn't picked them up. Profiles "
-                    f"refresh weekly."
-                )
-                await interaction.followup.send(msg)
-                return
-            embed = discord.Embed(
-                title=f"whois — {profile.get('display_name') or profile.get('username')}",
-                description=profile.get("profile_text") or "(empty)",
-                color=0x95A5A6,
-            )
-            footer_bits = []
-            if profile.get("message_count_at_update"):
-                footer_bits.append(f"based on {profile['message_count_at_update']} msgs")
-            if profile.get("updated_at"):
-                footer_bits.append(f"updated {profile['updated_at'][:10]}")
-            if footer_bits:
-                embed.set_footer(text=" · ".join(footer_bits))
-            await interaction.followup.send(embed=embed)
-        except Exception as e:
-            log.error(f"/whois failed: {e}", exc_info=True)
-            await interaction.followup.send(f"Error: {str(e)[:200]}")
-
     @bot.tree.command(name="ask", description="Gemini powered")
     async def ask_command(interaction: discord.Interaction, question: str):
         question = (question or "").strip()
@@ -1279,10 +1241,19 @@ def create_bot() -> commands.Bot:
                 bot_user_id=bot.user.id if bot.user else None,
             )
             fetched_urls = await _maybe_fetch_user_urls(question)
-            # Always include the asker themself in the profile-lookup list,
-            # even if they haven't posted in the last 30 messages (they're
-            # the one asking, so their profile is relevant).
-            profile_ids = list(set(chat_author_ids + ([user_id] if user_id else [])))
+            # Profile lookup: asker + recent chat speakers + anyone the
+            # question text mentions by name or @-mention. The last one
+            # is critical — users will ask "who is zhawk" or "is mike
+            # still in NVDA" about people who haven't posted in the
+            # current channel recently, and we need their profile.
+            mentioned_ids = []
+            try:
+                mentioned_ids = db.find_users_mentioned_in_text(question)
+            except Exception as e:
+                log.warning(f"Name-mention lookup failed: {e}")
+            profile_ids = list(set(
+                chat_author_ids + ([user_id] if user_id else []) + mentioned_ids
+            ))
             embed = await _answer_with_gemini(
                 question,
                 user_id,
@@ -1336,8 +1307,19 @@ def create_bot() -> commands.Bot:
                     bot_user_id=bot.user.id if bot.user else None,
                 )
                 fetched_urls = await _maybe_fetch_user_urls(question)
+                # Add anyone the @mention message references in text
+                # (discord @-mentions or known display_names) so the bot
+                # has their profile even if they're not in recent chat.
+                mentioned_ids = []
+                try:
+                    mentioned_ids = db.find_users_mentioned_in_text(question)
+                    for u in (message.mentions or []):
+                        if not u.bot and u.id != message.author.id:
+                            mentioned_ids.append(u.id)
+                except Exception as e:
+                    log.warning(f"Name-mention lookup failed: {e}")
                 profile_ids = list(set(
-                    chat_author_ids + [message.author.id]
+                    chat_author_ids + [message.author.id] + mentioned_ids
                 ))
 
                 # Scoped image collection: only the @mention message and
