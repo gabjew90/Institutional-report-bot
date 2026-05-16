@@ -412,7 +412,7 @@ async def run(days: int, channels: list[str]) -> None:
                 f"- **Cutoff:** {cutoff.isoformat()}\n"
             )
             summary_lines.append(
-                f"- **Threshold:** {MIN_MESSAGES_FOR_PROFILE} messages\n"
+                f"- **Threshold:** {min_msgs} messages\n"
             )
             summary_lines.append(f"- **Model:** {settings.gemini_model}\n\n")
 
