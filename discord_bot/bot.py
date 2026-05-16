@@ -532,17 +532,13 @@ async def _answer_with_gemini(
             system_instruction=_ASK_SYSTEM_INSTRUCTION,
             tools=[types.Tool(google_search=types.GoogleSearch())],
             # max_output_tokens budgets TOTAL Gemini output (thinking + visible
-            # response combined). Math for the 300-word visible ceiling:
-            #   - 300 words × 1.3 tokens/word × 1.25 markdown overhead ≈ 488
-            #   - thinking_budget = 1024 is a SOFT cap — Gemini sometimes uses
-            #     1200-1500 on complex grounded queries, which at the old
-            #     1500 total cap squeezed visible output to <300 tokens and
-            #     cliff-truncated mid-sentence around 150 words
-            #   - 2500 total gives ~1500 to thinking worst case + ~1000 visible
-            #     (≈ 770 words). The prompt's 300-word rule still binds soft;
-            #     this just makes sure the model has enough headroom to
-            #     actually finish a 300-word answer when thinking ran long.
-            max_output_tokens=2500,
+            # response combined). 4000 gives generous headroom — thinking
+            # can use up to ~2500-3000 on complex grounded queries and the
+            # visible response still has ~1000+ tokens to finish cleanly.
+            # The prompt's 300-word rule still binds the visible answer
+            # soft; the high token cap exists to prevent cliff-truncation
+            # when thinking overshoots, not to encourage long responses.
+            max_output_tokens=4000,
             temperature=0.2,
             thinking_config=types.ThinkingConfig(thinking_budget=1024),
         )

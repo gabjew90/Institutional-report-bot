@@ -99,10 +99,21 @@ toward viewing, not open). Don't assume an open from excitement alone:
   STRONG OPEN list above).
 
 NO CAPTION:
-- On a notification_card with Buy-pill + gain% → "viewing" (Abe is reviewing \
-  the position; not actively opening or closing in this post)
-- On a stats_screen → "viewing"
-- Never default to "open" from a captionless image.
+- On a notification_card with Buy-pill → action="open". Abe doesn't post \
+  Robinhood notification cards casually — if he's posting one without \
+  saying anything, that itself IS the alert; assume he just entered (or \
+  is signaling he's in). This OVERRIDES the conservative-bias rule for \
+  notification cards specifically.
+- On a stats_screen with no caption → "viewing" (pure option chain or \
+  Bid/Ask quote — no execution evidence; he was browsing). Conservative \
+  bias still applies here.
+- On an order_ticket / order-confirmation screen → "open". The screen \
+  itself confirms execution.
+- Special case: if a notification_card shows a high gain (>40%) AND the \
+  caption is empty, classify "open" per the rule above but add a note \
+  "high gain pill — possibly a hold or silent close, no caption to \
+  confirm." The downstream consumer (the /ask bot) reads notes and can \
+  qualify language accordingly.
 
 EXPIRY YEAR INFERENCE: Robinhood notification cards show only "M/D" not the \
 year. Use today's date ({today_iso}) to infer the year with this priority:
