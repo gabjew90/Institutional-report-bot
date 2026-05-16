@@ -182,10 +182,26 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             max_instances=1,
             misfire_grace_time=3600,
         )
+        # Weekly purge — hard-deletes trade rows that have been marked
+        # expired_unknown AND are past their retention window
+        # (settings.analyst_trade_retention_days, default 14). Runs Sunday
+        # 04:30 local — 30 min after the daily mark sweep so Sunday's
+        # newly-expired rows DON'T get purged that same morning.
+        if settings.analyst_trade_retention_days > 0:
+            scheduler.add_job(
+                _analyst_purge_job,
+                trigger=CronTrigger(day_of_week="sun", hour=4, minute=30, timezone=tz),
+                id="analyst_purge",
+                name="Analyst log: purge old expired rows",
+                kwargs={"bot": bot},
+                max_instances=1,
+                misfire_grace_time=3600,
+            )
         log.info(
             f"Analyst trade-log watcher active — channel "
             f"'{settings.analyst_channel_name}', daily expire sweep at 04:00 "
-            f"{settings.timezone}"
+            f"{settings.timezone}, weekly purge Sunday 04:30 "
+            f"(retention {settings.analyst_trade_retention_days}d)"
         )
 
     log.info(
@@ -420,6 +436,58 @@ async def _bridge_fallback_sweeper_job():
         await fallback_sweeper_job()
     except Exception as e:
         log.error(f"Bridge fallback sweeper failed: {e}", exc_info=True)
+
+
+async def _analyst_purge_job(bot=None):
+    """Weekly cron (Sunday 04:30 local). Hard-deletes analyst_trades rows
+    that are marked expired_unknown AND have been past expiry for more
+    than settings.analyst_trade_retention_days. Announces the count to
+    the configured channel if anything was purged.
+    """
+    try:
+        import db
+        retention = settings.analyst_trade_retention_days
+        if retention <= 0:
+            return
+        purged = db.purge_old_expired_analyst_trades(days_after_expiry=retention)
+        if not purged:
+            log.info("Analyst purge: nothing to delete")
+            return
+        log.info(f"Analyst purge: deleted {len(purged)} rows")
+        if bot is None:
+            return
+        chan_name = (settings.analyst_test_announce_channel or "").strip()
+        if not chan_name:
+            return
+        target = None
+        for guild in bot.guilds:
+            for ch in guild.text_channels:
+                if ch.name.lower() == chan_name.lower():
+                    target = ch
+                    break
+            if target:
+                break
+        if target is None:
+            log.warning(f"Analyst purge: announce channel '{chan_name}' not found")
+            return
+        # Group by ticker for a compact summary
+        by_ticker: dict[str, int] = {}
+        for r in purged:
+            tk = r.get("ticker") or "?"
+            by_ticker[tk] = by_ticker.get(tk, 0) + 1
+        ticker_summary = ", ".join(
+            f"{tk}×{n}" for tk, n in sorted(by_ticker.items(), key=lambda x: -x[1])[:10]
+        )
+        body = (
+            f"🧹 **Analyst log purge** — deleted {len(purged)} expired rows "
+            f"older than {retention}d. By ticker: {ticker_summary}"
+        )
+        try:
+            await target.send(body[:1900])
+        except Exception as e:
+            log.error(f"Analyst purge: announce failed: {e}")
+    except Exception as e:
+        log.error(f"Analyst purge failed: {e}", exc_info=True)
 
 
 async def _analyst_expire_sweep_job(bot=None):

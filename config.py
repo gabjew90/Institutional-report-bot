@@ -63,6 +63,11 @@ class Settings(BaseSettings):
     # the analyst's channel occasionally has posts from co-admins that
     # aren't his trade calls.
     analyst_primary_author: str = ""
+    # How many days past expiry to keep trade rows before hard-deleting.
+    # The daily auto-expire job marks rows as expired_unknown; the weekly
+    # purge job (Sundays 04:30 local) deletes rows whose expiry was more
+    # than this many days ago. Set to 0 to disable purging entirely.
+    analyst_trade_retention_days: int = 14
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements

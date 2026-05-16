@@ -1429,6 +1429,41 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
     return "\n".join(out_lines)
 
 
+def purge_old_expired_analyst_trades(days_after_expiry: int = 14) -> list[dict]:
+    """Hard-delete trade rows whose expiry was more than `days_after_expiry`
+    days ago AND have been marked expired_unknown. Called by the weekly
+    cron. Returns the rows that were deleted so the cron can announce them.
+
+    Two-stage cleanup keeps the DB bounded:
+    1. Daily auto-expire marks past-expiry rows as 'expired_unknown'.
+    2. This weekly purge deletes rows that have been expired AND past their
+       retention window.
+
+    Set days_after_expiry=0 to disable (returns immediately).
+    """
+    if days_after_expiry <= 0:
+        return []
+    conn = get_connection()
+    targets = conn.execute(
+        f"""SELECT id, ticker, contract_type, strike, expiry, action,
+                   gain_pct, posted_at
+            FROM analyst_trades
+            WHERE expiry IS NOT NULL
+              AND inferred_status = 'expired_unknown'
+              AND date(expiry, '+{int(days_after_expiry)} days') < date('now')"""
+    ).fetchall()
+    if not targets:
+        return []
+    ids = [r["id"] for r in targets]
+    placeholders = ",".join("?" * len(ids))
+    conn.execute(
+        f"DELETE FROM analyst_trades WHERE id IN ({placeholders})",
+        ids,
+    )
+    conn.commit()
+    return [dict(r) for r in targets]
+
+
 def mark_expired_analyst_positions() -> list[dict]:
     """Daily cron entrypoint. Mark any trade rows whose expiry has passed
     AND have no inferred_status yet as 'expired_unknown'. Returns the rows
