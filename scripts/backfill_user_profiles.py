@@ -57,9 +57,9 @@ DEFAULT_PROFILE_CHANNELS = [
     "₿-crypto-yapping-₿",
 ]
 
-# Default fallback — actual value pulled from settings.profile_min_messages
+# Default fallbacks — actual values pulled from settings
 MIN_MESSAGES_FOR_PROFILE_FALLBACK = 100
-MESSAGES_PER_PROFILE_SAMPLE = 100  # most-recent N used per user
+MESSAGES_PER_PROFILE_SAMPLE_FALLBACK = 500
 GEMINI_CONCURRENCY = 5  # parallel calls per batch
 
 
@@ -146,7 +146,11 @@ async def _generate_profile(
         return None
     # Sample most-recent N (Discord returns history oldest-first when we
     # ask via after=cutoff, oldest_first=True; we kept all of it in order).
-    sample = messages[-MESSAGES_PER_PROFILE_SAMPLE:]
+    sample_size = (
+        getattr(settings, "profile_sample_size", None)
+        or MESSAGES_PER_PROFILE_SAMPLE_FALLBACK
+    )
+    sample = messages[-sample_size:]
     msgs_block = _format_messages_block(sample)
     prompt = PROFILE_PROMPT.format(messages_block=msgs_block)
     try:

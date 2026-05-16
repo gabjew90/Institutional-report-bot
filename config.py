@@ -88,6 +88,12 @@ class Settings(BaseSettings):
     # cutoff for "established regular vs casual passer-by." Adjust based
     # on how many profiles you want to maintain.
     profile_min_messages: int = 100
+    # How many of each user's most-recent messages to feed into Gemini
+    # for profile generation. Higher = richer profile but more tokens.
+    # At 500 even a 4000+ msg/week heavy yapper gets ~3 days of context
+    # captured (vs ~6-12 hours at the prior 100). Token cost is still
+    # trivial (~$0.01 per user).
+    profile_sample_size: int = 500
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements
