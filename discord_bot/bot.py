@@ -562,10 +562,7 @@ async def _answer_with_gemini(
         # Map common error classes to in-voice replies. Full exception is
         # logged above for debugging; users see only the short message.
         if "429" in err_str or "resource_exhausted" in err_str or "quota" in err_str:
-            msg = (
-                "Tapped out for the day — hit my Google search quota. "
-                "Resets at UTC midnight. Catch me then."
-            )
+            msg = "Easy — going too fast. Give it a minute and try again."
         elif "401" in err_str or "403" in err_str or "unauthorized" in err_str or "permission" in err_str:
             msg = "Config issue on the API key — admin needs to check it."
         elif "500" in err_str or "503" in err_str or "timeout" in err_str or "unavailable" in err_str:
