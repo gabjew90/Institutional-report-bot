@@ -243,10 +243,20 @@ async def run(days: int, channels: list[str]) -> None:
                 if len(msgs) >= MIN_MESSAGES_FOR_PROFILE
             ]
             eligible.sort(key=lambda t: -len(t[1]))  # most active first
-            skipped = len(by_user) - len(eligible)
+            skipped_lurkers = len(by_user) - len(eligible)
+            # Cap to settings.max_user_profiles. The top N by message count
+            # are the names the bot will actually need profile data for —
+            # quiet regulars who post 21 messages a month don't move the
+            # needle in /ask context.
+            max_n = settings.max_user_profiles
+            if max_n > 0 and len(eligible) > max_n:
+                trimmed = len(eligible) - max_n
+                eligible = eligible[:max_n]
+                print(f"\nCapped to top {max_n} users by message count "
+                      f"(trimmed {trimmed} below the cap)", flush=True)
             print(f"\n{len(eligible)} users eligible (>= "
-                  f"{MIN_MESSAGES_FOR_PROFILE} msgs), {skipped} skipped as "
-                  f"lurkers", flush=True)
+                  f"{MIN_MESSAGES_FOR_PROFILE} msgs), {skipped_lurkers} "
+                  f"skipped as lurkers", flush=True)
 
             summary_lines.append(
                 f"# User profile backfill — last {days} days\n\n"

@@ -1558,6 +1558,48 @@ def get_profiles_for_users(user_ids: list[int]) -> dict[int, dict]:
     return {r["user_id"]: dict(r) for r in rows}
 
 
+def prune_user_profiles_to_top_n(n: int) -> list[dict]:
+    """Delete user_profiles rows that aren't in the top N by
+    message_count_at_update. Returns the rows that were deleted so
+    callers can announce / log them.
+
+    Used by the weekly refresh after backfill upserts the newly-active
+    users — anyone who dropped below the activity cutoff gets removed
+    so the table stays bounded at the configured cap.
+
+    Pass n=0 to disable (returns []).
+    """
+    if n <= 0:
+        return []
+    conn = get_connection()
+    survivors = conn.execute(
+        "SELECT user_id FROM user_profiles "
+        "ORDER BY message_count_at_update DESC LIMIT ?",
+        (int(n),),
+    ).fetchall()
+    survivor_ids = [r["user_id"] for r in survivors]
+    if not survivor_ids:
+        return []
+    placeholders = ",".join("?" * len(survivor_ids))
+    targets = conn.execute(
+        f"""SELECT user_id, username, display_name,
+                   message_count_at_update
+            FROM user_profiles
+            WHERE user_id NOT IN ({placeholders})""",
+        survivor_ids,
+    ).fetchall()
+    if not targets:
+        return []
+    target_ids = [r["user_id"] for r in targets]
+    target_placeholders = ",".join("?" * len(target_ids))
+    conn.execute(
+        f"DELETE FROM user_profiles WHERE user_id IN ({target_placeholders})",
+        target_ids,
+    )
+    conn.commit()
+    return [dict(r) for r in targets]
+
+
 def find_users_mentioned_in_text(text: str) -> list[int]:
     """Return user_ids of profiled users mentioned in `text`. Catches:
       - Discord @-mentions: `<@123>`, `<@!123>`

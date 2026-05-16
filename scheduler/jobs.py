@@ -458,15 +458,16 @@ async def _bridge_fallback_sweeper_job():
 
 async def _user_profile_refresh_job(bot=None):
     """Weekly cron (Sunday 05:00 local). Re-runs the profile backfill for
-    active users — only re-profiles users with >= 20 NEW messages since
-    their last update (or no profile yet).
+    active users, then prunes anyone outside the top-N cutoff.
 
-    Implemented as an in-process re-use of the backfill module so we don't
-    duplicate the OCR/Gemini logic. Channels and window come from
-    settings.profile_channels / profile_window_days.
+    The backfill upserts new + existing profiles for users above the
+    20-message threshold AND in the top settings.max_user_profiles. After
+    upsert, prune_user_profiles_to_top_n drops any older profiles whose
+    activity has fallen below the cutoff so the table stays bounded.
     """
     try:
         from scripts.backfill_user_profiles import run as backfill_run
+        import db
         channels = [
             c.strip() for c in (settings.profile_channels or "").split(",")
             if c.strip()
@@ -476,7 +477,14 @@ async def _user_profile_refresh_job(bot=None):
         log.info(f"User-profile refresh: scanning {channels} for "
                  f"{settings.profile_window_days}d")
         await backfill_run(settings.profile_window_days, channels)
-        # The backfill upserts; we don't need to do anything else here.
+        # Prune to top N by message_count_at_update
+        pruned = db.prune_user_profiles_to_top_n(settings.max_user_profiles)
+        if pruned:
+            log.info(
+                f"User-profile refresh: pruned {len(pruned)} below-cutoff "
+                f"profiles: "
+                f"{[p.get('display_name') or p.get('username') for p in pruned[:10]]}"
+            )
     except Exception as e:
         log.error(f"User-profile refresh failed: {e}", exc_info=True)
 

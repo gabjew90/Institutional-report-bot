@@ -76,6 +76,11 @@ class Settings(BaseSettings):
     profile_channels: str = "💬-stonks-yapping-💬,₿-crypto-yapping-₿"
     # How many days of history to use for each refresh pass.
     profile_window_days: int = 30
+    # Max number of user profiles to keep. Caps the table at the most-
+    # active N users by message count in the refresh window. Backfill
+    # generates only top N; weekly refresh prunes lower-activity users
+    # who fall below the cutoff. Set to 0 to disable the cap entirely.
+    max_user_profiles: int = 20
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements
