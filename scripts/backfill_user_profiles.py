@@ -57,7 +57,8 @@ DEFAULT_PROFILE_CHANNELS = [
     "₿-crypto-yapping-₿",
 ]
 
-MIN_MESSAGES_FOR_PROFILE = 20  # below this, profile is generic guesswork
+# Default fallback — actual value pulled from settings.profile_min_messages
+MIN_MESSAGES_FOR_PROFILE_FALLBACK = 100
 MESSAGES_PER_PROFILE_SAMPLE = 100  # most-recent N used per user
 GEMINI_CONCURRENCY = 5  # parallel calls per batch
 
@@ -140,7 +141,8 @@ async def _generate_profile(
     messages: list[dict],
 ) -> str | None:
     """Run Gemini to produce one user's profile. Returns None on failure."""
-    if len(messages) < MIN_MESSAGES_FOR_PROFILE:
+    min_msgs = getattr(settings, "profile_min_messages", None) or MIN_MESSAGES_FOR_PROFILE_FALLBACK
+    if len(messages) < min_msgs:
         return None
     # Sample most-recent N (Discord returns history oldest-first when we
     # ask via after=cutoff, oldest_first=True; we kept all of it in order).
@@ -238,25 +240,25 @@ async def run(days: int, channels: list[str]) -> None:
                       flush=True)
 
             # Filter to users meeting threshold
+            min_msgs = (
+                getattr(settings, "profile_min_messages", None)
+                or MIN_MESSAGES_FOR_PROFILE_FALLBACK
+            )
             eligible = [
                 (uid, msgs) for uid, msgs in by_user.items()
-                if len(msgs) >= MIN_MESSAGES_FOR_PROFILE
+                if len(msgs) >= min_msgs
             ]
             eligible.sort(key=lambda t: -len(t[1]))  # most active first
             skipped_lurkers = len(by_user) - len(eligible)
-            # Cap to settings.max_user_profiles. The top N by message count
-            # are the names the bot will actually need profile data for —
-            # quiet regulars who post 21 messages a month don't move the
-            # needle in /ask context.
+            # Optional hard cap (default 0 = no cap; rely on threshold)
             max_n = settings.max_user_profiles
             if max_n > 0 and len(eligible) > max_n:
                 trimmed = len(eligible) - max_n
                 eligible = eligible[:max_n]
                 print(f"\nCapped to top {max_n} users by message count "
                       f"(trimmed {trimmed} below the cap)", flush=True)
-            print(f"\n{len(eligible)} users eligible (>= "
-                  f"{MIN_MESSAGES_FOR_PROFILE} msgs), {skipped_lurkers} "
-                  f"skipped as lurkers", flush=True)
+            print(f"\n{len(eligible)} users eligible (>= {min_msgs} msgs), "
+                  f"{skipped_lurkers} skipped as lurkers", flush=True)
 
             summary_lines.append(
                 f"# User profile backfill — last {days} days\n\n"
