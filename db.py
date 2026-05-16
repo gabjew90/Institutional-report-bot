@@ -1294,15 +1294,25 @@ def record_analyst_trade(
     expiry: str | None = None,
     action: str | None = None,
     gain_pct: float | None = None,
+    replace: bool = False,
 ) -> None:
-    """Insert (or ignore on dedup) an analyst-trade row. Non-trade images
-    are stored with is_trade=0 so we don't re-OCR them on bot restart but
-    they don't pollute trade queries.
+    """Insert an analyst-trade row.
+
+    Default: INSERT OR IGNORE on the (message_id, attachment_id) unique
+    constraint — used by the live watcher and standard backfill, so
+    re-processing the same image is a no-op.
+
+    `replace=True`: INSERT OR REPLACE — used by the --force backfill
+    when we want to update existing rows with re-extracted data (e.g.
+    after changing the OCR prompt). The replace path drops the existing
+    row and re-inserts, but is_trade rows that existed before stay
+    in place if their message/attachment IDs match (UNIQUE constraint).
     """
     import json as _json
     conn = get_connection()
+    verb = "INSERT OR REPLACE" if replace else "INSERT OR IGNORE"
     conn.execute(
-        """INSERT OR IGNORE INTO analyst_trades
+        f"""{verb} INTO analyst_trades
            (discord_message_id, discord_attachment_id, author, posted_at,
             image_url, caption, is_trade, ticker, contract_type, strike,
             expiry, action, gain_pct, gemini_json)

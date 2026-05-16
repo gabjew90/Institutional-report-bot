@@ -40,7 +40,7 @@ from analyst_log.ocr import extract_trade_from_image  # noqa: E402
 from config import settings  # noqa: E402
 
 
-async def run(days: int) -> None:
+async def run(days: int, force: bool = False) -> None:
     if not settings.discord_bot_token:
         print("ERROR: DISCORD_BOT_TOKEN not set", file=sys.stderr)
         sys.exit(1)
@@ -120,7 +120,7 @@ async def run(days: int) -> None:
                         continue
                     stats["images"] += 1
 
-                    if db.analyst_trade_exists(msg.id, att.id):
+                    if not force and db.analyst_trade_exists(msg.id, att.id):
                         stats["skipped_dedup"] += 1
                         continue
 
@@ -159,6 +159,7 @@ async def run(days: int) -> None:
                         expiry=extracted.get("expiry") if is_trade else None,
                         action=extracted.get("action") if is_trade else None,
                         gain_pct=extracted.get("gain_pct") if is_trade else None,
+                        replace=force,
                     )
 
                     if is_trade:
@@ -219,8 +220,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--days", type=int, default=5,
                         help="How many days back to backfill (default 5)")
+    parser.add_argument("--force", action="store_true",
+                        help="Re-OCR every image and UPDATE existing rows. "
+                             "Use when the OCR prompt has changed and we "
+                             "want existing rows re-classified.")
     args = parser.parse_args()
-    asyncio.run(run(args.days))
+    asyncio.run(run(args.days, force=args.force))
 
 
 if __name__ == "__main__":
