@@ -197,6 +197,24 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
                 max_instances=1,
                 misfire_grace_time=3600,
             )
+
+    # Weekly user-profile refresh — only registers if profile channels are
+    # configured. Refreshes profiles for active users in the yapping
+    # channels. Runs Sunday 05:00 local, 30 min after analyst purge.
+    if settings.profile_channels:
+        scheduler.add_job(
+            _user_profile_refresh_job,
+            trigger=CronTrigger(day_of_week="sun", hour=5, minute=0, timezone=tz),
+            id="user_profile_refresh",
+            name="User profiles: refresh active members",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=3600,
+        )
+        log.info(
+            f"User-profile system active — channels '{settings.profile_channels}', "
+            f"weekly refresh Sunday 05:00 {settings.timezone}"
+        )
         log.info(
             f"Analyst trade-log watcher active — channel "
             f"'{settings.analyst_channel_name}', daily expire sweep at 04:00 "
@@ -436,6 +454,31 @@ async def _bridge_fallback_sweeper_job():
         await fallback_sweeper_job()
     except Exception as e:
         log.error(f"Bridge fallback sweeper failed: {e}", exc_info=True)
+
+
+async def _user_profile_refresh_job(bot=None):
+    """Weekly cron (Sunday 05:00 local). Re-runs the profile backfill for
+    active users — only re-profiles users with >= 20 NEW messages since
+    their last update (or no profile yet).
+
+    Implemented as an in-process re-use of the backfill module so we don't
+    duplicate the OCR/Gemini logic. Channels and window come from
+    settings.profile_channels / profile_window_days.
+    """
+    try:
+        from scripts.backfill_user_profiles import run as backfill_run
+        channels = [
+            c.strip() for c in (settings.profile_channels or "").split(",")
+            if c.strip()
+        ]
+        if not channels:
+            return
+        log.info(f"User-profile refresh: scanning {channels} for "
+                 f"{settings.profile_window_days}d")
+        await backfill_run(settings.profile_window_days, channels)
+        # The backfill upserts; we don't need to do anything else here.
+    except Exception as e:
+        log.error(f"User-profile refresh failed: {e}", exc_info=True)
 
 
 async def _analyst_purge_job(bot=None):

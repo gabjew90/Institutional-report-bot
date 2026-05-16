@@ -201,6 +201,25 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_posted ON analyst_trades(posted_at);
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_expiry ON analyst_trades(expiry);
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_ticker ON analyst_trades(ticker);
+
+        -- LLM-generated personality profiles for active group members.
+        -- Populated by scripts/backfill_user_profiles.py (initial) and a
+        -- weekly refresh job (rolling). Used by /ask to inject a
+        -- "WHO'S TALKING" block when responding in any channel where
+        -- profiled users have posted recently.
+        --
+        -- message_count_at_update is the baseline; refresh logic uses
+        -- (current_count - baseline > 20) to decide whether to re-profile.
+        CREATE TABLE IF NOT EXISTS user_profiles (
+            user_id INTEGER PRIMARY KEY,
+            username TEXT,
+            display_name TEXT,
+            profile_text TEXT NOT NULL,
+            message_count_at_update INTEGER NOT NULL DEFAULT 0,
+            last_seen_message_at TEXT,
+            updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+        CREATE INDEX IF NOT EXISTS idx_user_profiles_username ON user_profiles(username);
     """)
     # Idempotent migrations for already-deployed bridge_ingestion_state schemas
     # (the table was first created in step 1 without these columns).
@@ -1462,6 +1481,97 @@ def purge_old_expired_analyst_trades(days_after_expiry: int = 14) -> list[dict]:
     )
     conn.commit()
     return [dict(r) for r in targets]
+
+
+# =============================================================================
+# User profiles (LLM-generated personality summaries).
+# =============================================================================
+
+
+def upsert_user_profile(
+    *,
+    user_id: int,
+    username: str | None,
+    display_name: str | None,
+    profile_text: str,
+    message_count_at_update: int,
+    last_seen_message_at: str | None,
+) -> None:
+    """Insert or replace a user profile. updated_at is auto-stamped."""
+    conn = get_connection()
+    conn.execute(
+        """INSERT INTO user_profiles
+             (user_id, username, display_name, profile_text,
+              message_count_at_update, last_seen_message_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+           ON CONFLICT(user_id) DO UPDATE SET
+             username = excluded.username,
+             display_name = excluded.display_name,
+             profile_text = excluded.profile_text,
+             message_count_at_update = excluded.message_count_at_update,
+             last_seen_message_at = excluded.last_seen_message_at,
+             updated_at = datetime('now')""",
+        (
+            int(user_id), username, display_name, profile_text,
+            int(message_count_at_update), last_seen_message_at,
+        ),
+    )
+    conn.commit()
+
+
+def get_user_profile(user_id: int) -> dict | None:
+    row = get_connection().execute(
+        "SELECT * FROM user_profiles WHERE user_id = ?", (int(user_id),)
+    ).fetchone()
+    return dict(row) if row else None
+
+
+def get_user_profile_by_username(username: str) -> dict | None:
+    """Look up by case-insensitive username (Discord global username)."""
+    row = get_connection().execute(
+        "SELECT * FROM user_profiles WHERE LOWER(username) = LOWER(?)",
+        (username,),
+    ).fetchone()
+    return dict(row) if row else None
+
+
+def get_profiles_for_users(user_ids: list[int]) -> dict[int, dict]:
+    """Bulk fetch profiles for a set of user_ids. Returns id-keyed dict
+    so the caller can look up matching profiles without a second query."""
+    if not user_ids:
+        return {}
+    placeholders = ",".join("?" * len(user_ids))
+    rows = get_connection().execute(
+        f"SELECT * FROM user_profiles WHERE user_id IN ({placeholders})",
+        [int(u) for u in user_ids],
+    ).fetchall()
+    return {r["user_id"]: dict(r) for r in rows}
+
+
+def format_user_profiles_for_context(user_ids: list[int]) -> str:
+    """Render a "WHO'S TALKING" block for the given user_ids. Skips users
+    with no profile (lurkers, new joiners). Returns "" when nobody on the
+    list has been profiled.
+    """
+    profiles = get_profiles_for_users(user_ids)
+    if not profiles:
+        return ""
+    lines = [
+        "WHO'S TALKING (background on people active in this conversation):",
+    ]
+    for uid, p in profiles.items():
+        dn = p.get("display_name") or p.get("username") or f"user_{uid}"
+        uname = p.get("username") or ""
+        # Trim each profile so a chatty channel with 6 users doesn't blow
+        # up the context budget (~600 chars each = ~150 words)
+        text = (p.get("profile_text") or "").strip()
+        if len(text) > 700:
+            text = text[:697] + "..."
+        ident = f"**{dn}**"
+        if uname and uname.lower() != dn.lower():
+            ident += f" ({uname})"
+        lines.append(f"- {ident}: {text}")
+    return "\n".join(lines)
 
 
 def mark_expired_analyst_positions() -> list[dict]:

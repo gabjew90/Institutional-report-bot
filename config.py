@@ -68,6 +68,14 @@ class Settings(BaseSettings):
     # purge job (Sundays 04:30 local) deletes rows whose expiry was more
     # than this many days ago. Set to 0 to disable purging entirely.
     analyst_trade_retention_days: int = 14
+
+    # User-profile system: comma-separated channel names where the bot
+    # scans for personality signal during weekly profile refresh. Default
+    # is the two "yapping" channels — high message volume, lots of
+    # personality. Empty = profile system disabled (no scheduled refresh).
+    profile_channels: str = "💬-stonks-yapping-💬,₿-crypto-yapping-₿"
+    # How many days of history to use for each refresh pass.
+    profile_window_days: int = 30
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements

@@ -52,9 +52,13 @@ _ASK_SYSTEM_INSTRUCTION = """\
 
 **READING THE ROOM:** Context = memory, not subject. Reference prior lines only when relevant to the current question. Track speakers by "Username: text" — know who's coping, who's consensus, who's the lone holdout. The person who /ask'd or @mentioned you is THE focus; everyone else is background. Never explain or name your own tone.
 
+**"WHO'S TALKING" BLOCK** (when present): Background profiles of the group regulars active in this conversation. Treat these like a Rolodex — character notes on each person's trading style, recurring takes, running jokes the room has about them. USE this background to make replies feel like you know the room. Reference specific traits naturally when relevant ("jamal calling tops again," "phil's still in cash"). Don't repeat the profile verbatim, don't explain that you have it — just let it color your reads.
+
 **KEY USERS:** Specific roles you should know about in this group:
 
-- **Abe** (Discord username `abullish_xyz`, also called "abugs bunny" or just "abe"): The group's primary trade caller and the main admin. He posts his options trades in the analyst alerts channel (#🥷🏽-abe-alerts-🥷🏽); those alerts are auto-OCR'd into a trade log that gets injected into your context as an "ABE'S RECENT TRADES" block. When users ask about Abe's positions, recent calls, or what he's into, take them seriously and use the log as your source of truth — never invent positions. Don't dunk on Abe's calls themselves; he's the one making them, you're not the one to grade him. You can riff on the chaos around his trades or the people coping over them — but his picks are off-limits as a roast target.
+- **Abe** (Discord username `abullish_xyz`, also called "abugs bunny" or just "abe"): The group's owner, main trader, and primary trade caller. He posts his options trades in the analyst alerts channel (#🥷🏽-abe-alerts-🥷🏽); those alerts are auto-OCR'd into a trade log that gets injected into your context as an "ABE'S RECENT TRADES" block. When users ask about Abe's positions, recent calls, or what he's into, take them seriously and use the log as your source of truth — never invent positions. Don't dunk on Abe's calls themselves; he's the owner and the one making them, you're not the one to grade him. You can riff on the chaos around his trades or the people coping over them — but his picks are off-limits as a roast target.
+
+- **Other trader/analysts in the group**: `bankerkyle` (also "Kyle"), `zhawk`, `kloh`. These are co-analysts who also call trades — each with their own alerts channel. They're trader peers of Abe, not regular members. Same rule applies: don't dunk on their actual trade picks (they're the ones making the calls, not you). You CAN reference them, riff on the chaos around their trades, repeat running jokes the group has about them, and use their visible takes — just don't grade their picks. If you've got profile data on them in the "WHO'S TALKING" block, use it; otherwise treat them with neutral-to-respectful tone, same way you would Abe.
 
 **REFERENCING ABE'S TRADES — voice rules:**
 
@@ -73,6 +77,8 @@ _ASK_SYSTEM_INSTRUCTION = """\
 **RESEARCH / TRADE QUESTIONS:** Search first, then answer. Any question touching price, levels, funding, positioning, news, earnings, or "what's happening with X" → hit Google Search before you respond. Your training data is stale and this channel will catch it. Searching isn't a fallback for when you're unsure — it's the first move on every market question. The only takes you give from memory are mechanics and concepts (how a calendar spread works, what funding is) — anything time-sensitive gets searched. Research means pulling what this specific name's move actually hinges on — not reciting general theory. Know what the print turns on before you answer. A straight question gets a straight answer — no opener swipe, no attitude tax. The edge is for when the chat earns it. Then: arrows, blank lines between them, 3–5 max, most important first, bold the key numbers. Be decisive — pick a side. No "it depends," no "could go either way." Only legal non-answer: "don't know until [catalyst] resolves" — and even then state your lean. Close binary? Lean toward the more entertaining call. You're an enabler, not a risk committee.
 
 **ROASTING / JOKING / GETTING COME AT:** Drop the arrows and the format. 1–2 sentences, dry, specific to what just happened. Not generic insults — the burn has to be earned by something in the chat. If someone's roasting you for a bad call, own it cold and fire back — no "fair," no "my bad," no "let me try again." The clapback IS the acknowledgment. If they actually need a real answer underneath the roast, give the tight decisive take and skip the format.
+
+**Clapback can use search too.** If a current-events reference (politics, sports, pop culture, news, fresh meme moment) would sharpen the joke, use Google Search to pull that context — don't make it up from training data. Don't search for every clapback (most are about what just happened in the chat); search when timeliness sharpens it. "Tariff" jokes hit harder if you know what tariff just dropped. "Election" digs land better with the latest poll. Skip search for purely chat-internal jabs ("nice fill, jamal").
 
 **NEVER APOLOGIZE:** No "sorry," "my bad," "fair point," "let me try again," "you're right." If you were wrong, the next answer being better is the apology. Apology language breaks the persona instantly.
 
@@ -357,18 +363,22 @@ async def _fetch_chat_context(
     fields via _extract_embed_text. Without this, the helper would skip
     them entirely and the bot would think the channel was empty.
 
-    Returns "" on any failure or when there's nothing usable (e.g. a brand
-    new channel with no prior chatter, or a DM where we can't read history).
-    Empty-string fall-through is intentional — the caller treats it as
-    "no context, proceed normally."
+    Returns (block_text, author_ids) — empty string + empty list on any
+    failure or when there's nothing usable. Empty-string fall-through is
+    intentional — the caller treats it as "no context, proceed normally."
+
+    `author_ids` is the set of distinct user IDs seen in the context window,
+    excluding the bot itself. Used by /ask to fetch personality profiles
+    for the people active in this conversation.
 
     `exclude_message_id` is the @mention message itself when invoked from
     on_message — we don't want to feed the bot its own prompt as context.
     """
     if channel is None:
-        return ""
+        return "", []
     cutoff = datetime.now(timezone.utc) - timedelta(minutes=_ASK_CONTEXT_MAX_AGE_MIN)
     collected: list[tuple[datetime, str]] = []
+    author_ids: set[int] = set()
     try:
         async for msg in channel.history(limit=_ASK_CONTEXT_MAX_MESSAGES):
             # discord.py timestamps are tz-aware UTC; cutoff is too.
@@ -396,22 +406,26 @@ async def _fetch_chat_context(
                 author = (getattr(msg.author, "display_name", None)
                           or msg.author.name)
                 line = f"{author}: {text}"
+                # Track distinct non-bot authors for the profile lookup
+                if not msg.author.bot:
+                    author_ids.add(msg.author.id)
             collected.append((msg.created_at, line))
     except discord.Forbidden:
         log.info("Chat-context fetch: missing Read Message History permission")
-        return ""
+        return "", []
     except Exception as e:
         log.warning(f"Chat-context fetch failed (non-fatal): {e}")
-        return ""
+        return "", []
     if not collected:
-        return ""
+        return "", []
     collected.sort(key=lambda t: t[0])  # oldest → newest
     body = "\n".join(line for _, line in collected)
-    return (
+    block = (
         "Recent channel chat (oldest → newest, for context only — "
         "the actual question follows after):\n"
         f"{body}"
     )
+    return block, sorted(author_ids)
 
 
 def _get_gemini_ask_client():
@@ -477,6 +491,7 @@ async def _answer_with_gemini(
     chat_context: str = "",
     fetched_urls: str = "",
     images: list[tuple[bytes, str]] | None = None,
+    profile_user_ids: list[int] | None = None,
 ) -> discord.Embed:
     """Run a Gemini grounded-search query and return a Discord embed.
 
@@ -531,12 +546,19 @@ async def _answer_with_gemini(
             thinking_config=types.ThinkingConfig(thinking_budget=1024),
         )
         # Compose the final user message:
-        #   1. Analyst trade log (Abe's recent trades) — always-on, highest
-        #      priority because it's the bot's actual position knowledge
-        #   2. Fetched URL contents (user-shared sources)
-        #   3. Recent channel chat context
-        #   4. Separator + actual question
+        #   1. WHO'S TALKING — profiles for users active in this chat
+        #   2. Analyst trade log (Abe's recent trades)
+        #   3. Fetched URL contents (user-shared sources)
+        #   4. Recent channel chat context
+        #   5. Separator + actual question
         # Skip any section that's empty.
+        profiles_block = ""
+        try:
+            if profile_user_ids:
+                profiles_block = db.format_user_profiles_for_context(profile_user_ids)
+        except Exception as e:
+            log.warning(f"User-profile fetch failed (non-fatal): {e}")
+
         analyst_block = ""
         if settings.analyst_channel_name:
             try:
@@ -544,6 +566,8 @@ async def _answer_with_gemini(
             except Exception as e:
                 log.warning(f"Analyst log fetch failed (non-fatal): {e}")
         sections: list[str] = []
+        if profiles_block:
+            sections.append(profiles_block)
         if analyst_block:
             sections.append(analyst_block)
         if fetched_urls:
@@ -1203,6 +1227,44 @@ def create_bot() -> commands.Bot:
             log.error(f"Reprocess failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
+    @bot.tree.command(name="whois", description="See what the bot thinks of a user")
+    @app_commands.describe(user="The user to look up")
+    async def whois_command(
+        interaction: discord.Interaction,
+        user: discord.User,
+    ):
+        await interaction.response.defer(thinking=False)
+        try:
+            profile = db.get_user_profile(user.id)
+            if profile is None:
+                # Fall back to username lookup in case user_id mismatch
+                profile = db.get_user_profile_by_username(user.name)
+            if profile is None:
+                msg = (
+                    f"No profile for **{user.display_name or user.name}** yet "
+                    f"— either they don't post much in the yapping channels or "
+                    f"the profile sweep hasn't picked them up. Profiles "
+                    f"refresh weekly."
+                )
+                await interaction.followup.send(msg)
+                return
+            embed = discord.Embed(
+                title=f"whois — {profile.get('display_name') or profile.get('username')}",
+                description=profile.get("profile_text") or "(empty)",
+                color=0x95A5A6,
+            )
+            footer_bits = []
+            if profile.get("message_count_at_update"):
+                footer_bits.append(f"based on {profile['message_count_at_update']} msgs")
+            if profile.get("updated_at"):
+                footer_bits.append(f"updated {profile['updated_at'][:10]}")
+            if footer_bits:
+                embed.set_footer(text=" · ".join(footer_bits))
+            await interaction.followup.send(embed=embed)
+        except Exception as e:
+            log.error(f"/whois failed: {e}", exc_info=True)
+            await interaction.followup.send(f"Error: {str(e)[:200]}")
+
     @bot.tree.command(name="ask", description="Gemini powered")
     async def ask_command(interaction: discord.Interaction, question: str):
         question = (question or "").strip()
@@ -1212,16 +1274,21 @@ def create_bot() -> commands.Bot:
         await interaction.response.defer(thinking=True)
         try:
             user_id = interaction.user.id if interaction.user else 0
-            chat_context = await _fetch_chat_context(
+            chat_context, chat_author_ids = await _fetch_chat_context(
                 interaction.channel,
                 bot_user_id=bot.user.id if bot.user else None,
             )
             fetched_urls = await _maybe_fetch_user_urls(question)
+            # Always include the asker themself in the profile-lookup list,
+            # even if they haven't posted in the last 30 messages (they're
+            # the one asking, so their profile is relevant).
+            profile_ids = list(set(chat_author_ids + ([user_id] if user_id else [])))
             embed = await _answer_with_gemini(
                 question,
                 user_id,
                 chat_context=chat_context,
                 fetched_urls=fetched_urls,
+                profile_user_ids=profile_ids,
             )
             await interaction.followup.send(embed=embed)
         except Exception as e:
@@ -1263,12 +1330,15 @@ def create_bot() -> commands.Bot:
             return
         try:
             async with message.channel.typing():
-                chat_context = await _fetch_chat_context(
+                chat_context, chat_author_ids = await _fetch_chat_context(
                     message.channel,
                     exclude_message_id=message.id,
                     bot_user_id=bot.user.id if bot.user else None,
                 )
                 fetched_urls = await _maybe_fetch_user_urls(question)
+                profile_ids = list(set(
+                    chat_author_ids + [message.author.id]
+                ))
 
                 # Scoped image collection: only the @mention message and
                 # the message it's replying to (if any). Cap at 2 total.
@@ -1295,6 +1365,7 @@ def create_bot() -> commands.Bot:
                     chat_context=chat_context,
                     fetched_urls=fetched_urls,
                     images=images,
+                    profile_user_ids=profile_ids,
                 )
                 await message.reply(embed=embed, mention_author=False)
         except Exception as e:
