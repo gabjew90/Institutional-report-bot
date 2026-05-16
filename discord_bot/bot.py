@@ -73,6 +73,7 @@ _ASK_SYSTEM_INSTRUCTION = """\
   - Good: "he scalped SHOP 100s 5/15 for ~40% — in and out same day."
 - **If the ticker isn't in the recent log,** just say so without listing what's NOT in the log. Pivot to general context if useful.
 - **`[expired]` and `[expired — no close alert]` tags** on log entries mean the contract is past its expiry date. `[expired]` after a `close` is just confirming the trade is settled — fine to reference past-tense. `[expired — no close alert]` on an `open` or `add` means he opened the position but never posted a close — could have been a silent close, expired worthless, or auto-exercised. Never claim he's currently holding an expired contract. If a user asks about one, say something like "he opened that one but never flagged the exit — either he scalped it silently or it expired on him."
+- **`viewing` action entries** are screenshots Abe posted while looking at an option chain or quote screen — he was CONSIDERING the trade but didn't confirm entry. They're not opens, but they're not nothing either. **Recent viewing entries (last 24-48 hours, contracts not yet expired) are real signal — Abe was watching that name.** Mention them naturally: "he's been eyeing $NET 207.5 calls and $GLW 185 puts," "watching $LMT 535C 5/22," etc. Don't treat "viewing" as "flat" or "not in the game" — he had something on his radar. Older viewing entries (no follow-through after several days) can be skipped; the recency matters.
 
 **RESEARCH / TRADE QUESTIONS:** Search first, then answer. Any question touching price, levels, funding, positioning, news, earnings, or "what's happening with X" → hit Google Search before you respond. Your training data is stale and this channel will catch it. Searching isn't a fallback for when you're unsure — it's the first move on every market question. The only takes you give from memory are mechanics and concepts (how a calendar spread works, what funding is) — anything time-sensitive gets searched. Research means pulling what this specific name's move actually hinges on — not reciting general theory. Know what the print turns on before you answer. A straight question gets a straight answer — no opener swipe, no attitude tax. The edge is for when the chat earns it. Then: arrows, blank lines between them, 3–5 max, most important first, bold the key numbers. Be decisive — pick a side. No "it depends," no "could go either way." Only legal non-answer: "don't know until [catalyst] resolves" — and even then state your lean. Close binary? Lean toward the more entertaining call. You're an enabler, not a risk committee.
 
@@ -533,15 +534,15 @@ async def _answer_with_gemini(
             # max_output_tokens budgets TOTAL Gemini output (thinking + visible
             # response combined). Math for the 300-word visible ceiling:
             #   - 300 words × 1.3 tokens/word × 1.25 markdown overhead ≈ 488
-            #   - thinking_budget = 1024 cap on internal reasoning
-            #   - max_output_tokens = 1500 total → worst case (full thinking
-            #     used): 1500 - 1024 = 476 visible tokens ≈ 366 words. That's
-            #     the mechanical hard ceiling. The prompt's 300-word rule
-            #     handles the soft cap; this just prevents runaway responses
-            #     when the model doesn't self-regulate.
-            #   - Best case (light thinking): visible up to ~1200 tokens.
-            #     Prompt rule binds in that range.
-            max_output_tokens=1500,
+            #   - thinking_budget = 1024 is a SOFT cap — Gemini sometimes uses
+            #     1200-1500 on complex grounded queries, which at the old
+            #     1500 total cap squeezed visible output to <300 tokens and
+            #     cliff-truncated mid-sentence around 150 words
+            #   - 2500 total gives ~1500 to thinking worst case + ~1000 visible
+            #     (≈ 770 words). The prompt's 300-word rule still binds soft;
+            #     this just makes sure the model has enough headroom to
+            #     actually finish a 300-word answer when thinking ran long.
+            max_output_tokens=2500,
             temperature=0.2,
             thinking_config=types.ThinkingConfig(thinking_budget=1024),
         )
