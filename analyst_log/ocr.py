@@ -98,22 +98,30 @@ toward viewing, not open). Don't assume an open from excitement alone:
 - ONLY classify as open if the caption is genuinely unambiguous (per the \
   STRONG OPEN list above).
 
-NO CAPTION:
-- On a notification_card with Buy-pill → action="open". Abe doesn't post \
-  Robinhood notification cards casually — if he's posting one without \
-  saying anything, that itself IS the alert; assume he just entered (or \
-  is signaling he's in). This OVERRIDES the conservative-bias rule for \
-  notification cards specifically.
-- On a stats_screen with no caption → "viewing" (pure option chain or \
-  Bid/Ask quote — no execution evidence; he was browsing). Conservative \
-  bias still applies here.
-- On an order_ticket / order-confirmation screen → "open". The screen \
-  itself confirms execution.
-- Special case: if a notification_card shows a high gain (>40%) AND the \
-  caption is empty, classify "open" per the rule above but add a note \
-  "high gain pill — possibly a hold or silent close, no caption to \
-  confirm." The downstream consumer (the /ask bot) reads notes and can \
-  qualify language accordingly.
+NO CAPTION (decision tree depends on screenshot_type AND gain_pct):
+
+A. **Notification card with visible POSITIVE gain (>+5%)**: action="close". \
+   Abe doesn't silently post profit screens unless he just took the win — \
+   the card itself is the flex/announcement. Treat as a took-profit close. \
+   Add a note "no close caption — inferred from gain pill" so /ask can \
+   qualify language slightly.
+
+B. **Notification card with near-zero gain (-5% to +5%)** or no gain visible: \
+   action="open". A fresh notification card without much gain has just been \
+   entered — Abe isn't flexing yet, this is the entry alert. He doesn't post \
+   notification cards casually.
+
+C. **Notification card with visible NEGATIVE gain (<-5%)**: action="unclear" \
+   (lean toward "open" if you must pick). Posting a losing position silently \
+   is unusual — could be a fresh open the trade went red on, could be a \
+   stop-out without caption. Without more signal, don't claim a close.
+
+D. **Stats screen** (Bid/Ask/Mark/IV option chain) with no caption: \
+   action="viewing". Pure browsing — no execution evidence visible. \
+   Conservative bias still applies here regardless of any displayed numbers.
+
+E. **Order ticket / order-confirmation screen**: action="open". The screen \
+   itself confirms execution.
 
 EXPIRY YEAR INFERENCE: Robinhood notification cards show only "M/D" not the \
 year. Use today's date ({today_iso}) to infer the year with this priority:
