@@ -172,6 +172,35 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             asked_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
         CREATE INDEX IF NOT EXISTS idx_ask_queries_user_time ON ask_queries(user_id, asked_at);
+
+        -- Analyst trade log. One row per image attachment posted in the
+        -- analyst alerts channel. Populated by analyst_log.watcher via
+        -- Gemini vision. is_trade=0 rows are non-trade images (memes,
+        -- tweets) — recorded for dedup so we don't re-OCR them.
+        -- See analyst_log/ocr.py for the field semantics.
+        CREATE TABLE IF NOT EXISTS analyst_trades (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            discord_message_id INTEGER NOT NULL,
+            discord_attachment_id INTEGER NOT NULL,
+            author TEXT NOT NULL,
+            posted_at TEXT NOT NULL,
+            image_url TEXT,
+            caption TEXT,
+            is_trade INTEGER NOT NULL DEFAULT 0,
+            ticker TEXT,
+            contract_type TEXT,
+            strike REAL,
+            expiry TEXT,           -- YYYY-MM-DD
+            action TEXT,           -- open | add | trim | close | viewing | unclear
+            gain_pct REAL,
+            inferred_status TEXT,  -- e.g. 'expired_unknown' (set by daily cron)
+            gemini_json TEXT,      -- raw OCR JSON for forensics
+            created_at TEXT NOT NULL DEFAULT (datetime('now')),
+            UNIQUE(discord_message_id, discord_attachment_id)
+        );
+        CREATE INDEX IF NOT EXISTS idx_analyst_trades_posted ON analyst_trades(posted_at);
+        CREATE INDEX IF NOT EXISTS idx_analyst_trades_expiry ON analyst_trades(expiry);
+        CREATE INDEX IF NOT EXISTS idx_analyst_trades_ticker ON analyst_trades(ticker);
     """)
     # Idempotent migrations for already-deployed bridge_ingestion_state schemas
     # (the table was first created in step 1 without these columns).
@@ -1213,3 +1242,140 @@ def record_ask_query(user_id: int) -> None:
     conn = get_connection()
     conn.execute("INSERT INTO ask_queries (user_id) VALUES (?)", (int(user_id),))
     conn.commit()
+
+
+# =============================================================================
+# Analyst trade log (populated by analyst_log.watcher).
+# =============================================================================
+
+
+def analyst_trade_exists(discord_message_id: int, discord_attachment_id: int) -> bool:
+    """Dedup check before OCR'ing an image we've already processed."""
+    row = get_connection().execute(
+        "SELECT 1 FROM analyst_trades WHERE discord_message_id = ? "
+        "AND discord_attachment_id = ?",
+        (int(discord_message_id), int(discord_attachment_id)),
+    ).fetchone()
+    return row is not None
+
+
+def record_analyst_trade(
+    *,
+    discord_message_id: int,
+    discord_attachment_id: int,
+    author: str,
+    posted_at: str,
+    image_url: str | None,
+    caption: str | None,
+    is_trade: bool,
+    gemini_json: dict | None,
+    ticker: str | None = None,
+    contract_type: str | None = None,
+    strike: float | None = None,
+    expiry: str | None = None,
+    action: str | None = None,
+    gain_pct: float | None = None,
+) -> None:
+    """Insert (or ignore on dedup) an analyst-trade row. Non-trade images
+    are stored with is_trade=0 so we don't re-OCR them on bot restart but
+    they don't pollute trade queries.
+    """
+    import json as _json
+    conn = get_connection()
+    conn.execute(
+        """INSERT OR IGNORE INTO analyst_trades
+           (discord_message_id, discord_attachment_id, author, posted_at,
+            image_url, caption, is_trade, ticker, contract_type, strike,
+            expiry, action, gain_pct, gemini_json)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+        (
+            int(discord_message_id),
+            int(discord_attachment_id),
+            author,
+            posted_at,
+            image_url,
+            caption,
+            1 if is_trade else 0,
+            ticker,
+            contract_type,
+            strike,
+            expiry,
+            action,
+            gain_pct,
+            _json.dumps(gemini_json) if gemini_json is not None else None,
+        ),
+    )
+    conn.commit()
+
+
+def get_recent_analyst_trades(hours: int = 24, limit: int = 50) -> list[dict]:
+    """Recent trade-tagged rows (is_trade=1) ordered newest first."""
+    cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
+    rows = get_connection().execute(
+        """SELECT * FROM analyst_trades
+           WHERE is_trade = 1 AND posted_at > ?
+           ORDER BY posted_at DESC
+           LIMIT ?""",
+        (cutoff, limit),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_current_analyst_positions() -> list[dict]:
+    """Currently-open positions: opens minus closes minus trims > 0, expiry
+    in the future, and inferred_status not set to expired_unknown.
+    """
+    rows = get_connection().execute(
+        """WITH net AS (
+            SELECT ticker, contract_type, strike, expiry,
+                   SUM(CASE action
+                       WHEN 'open' THEN 1
+                       WHEN 'add'  THEN 1
+                       WHEN 'close' THEN -1
+                       WHEN 'trim'  THEN -1
+                       ELSE 0 END) AS net_qty,
+                   MAX(posted_at) AS last_activity,
+                   MAX(gain_pct) AS last_gain_pct,
+                   MIN(posted_at) AS first_alert
+            FROM analyst_trades
+            WHERE is_trade = 1
+              AND action IN ('open', 'add', 'close', 'trim')
+              AND (inferred_status IS NULL OR inferred_status != 'expired_unknown')
+              AND ticker IS NOT NULL
+              AND expiry IS NOT NULL
+              AND date(expiry) >= date('now')
+            GROUP BY ticker, contract_type, strike, expiry
+        )
+        SELECT * FROM net WHERE net_qty > 0
+        ORDER BY last_activity DESC"""
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def mark_expired_analyst_positions() -> list[dict]:
+    """Daily cron entrypoint. Mark any trade rows whose expiry has passed
+    AND have no inferred_status yet as 'expired_unknown'. Returns the rows
+    that were newly marked, so the cron can announce them.
+    """
+    conn = get_connection()
+    # Collect what's about to change so we can return it for the announce
+    targets = conn.execute(
+        """SELECT id, ticker, contract_type, strike, expiry, action,
+                  gain_pct, posted_at
+           FROM analyst_trades
+           WHERE expiry IS NOT NULL
+             AND date(expiry) < date('now')
+             AND inferred_status IS NULL
+             AND is_trade = 1"""
+    ).fetchall()
+    if not targets:
+        return []
+    ids = [r["id"] for r in targets]
+    placeholders = ",".join("?" * len(ids))
+    conn.execute(
+        f"UPDATE analyst_trades SET inferred_status = 'expired_unknown' "
+        f"WHERE id IN ({placeholders})",
+        ids,
+    )
+    conn.commit()
+    return [dict(r) for r in targets]

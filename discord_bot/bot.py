@@ -1206,6 +1206,19 @@ def create_bot() -> commands.Bot:
         # Ignore the bot's own messages + other bots.
         if message.author.bot:
             return
+
+        # Dispatch to the analyst-log watcher if this message is in the
+        # configured analyst alerts channel. Runs side-by-side with the
+        # @mention handling below — a message in the analyst channel that
+        # also @mentions the bot would trigger both flows independently.
+        try:
+            if (settings.analyst_channel_name
+                    and getattr(message.channel, "name", None) == settings.analyst_channel_name):
+                from analyst_log.watcher import watch_message
+                await watch_message(bot, message)
+        except Exception as e:
+            log.error(f"Analyst watcher dispatch failed: {e}", exc_info=True)
+
         # Only respond when the bot is explicitly @-mentioned.
         if bot.user is None or bot.user not in message.mentions:
             await bot.process_commands(message)

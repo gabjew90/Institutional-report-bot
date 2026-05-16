@@ -168,6 +168,26 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             "fallback sweeper (5m) all registered"
         )
 
+    # Daily analyst-trade expire sweep — marks positions whose expiry has
+    # passed as 'expired_unknown' so they drop out of the "currently open"
+    # view. Posts a summary to the announce channel if anything was marked.
+    # Only registers if the watcher is enabled (analyst_channel_name set).
+    if settings.analyst_channel_name:
+        scheduler.add_job(
+            _analyst_expire_sweep_job,
+            trigger=CronTrigger(hour=4, minute=0, timezone=tz),
+            id="analyst_expire_sweep",
+            name="Analyst log: mark expired positions",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=3600,
+        )
+        log.info(
+            f"Analyst trade-log watcher active — channel "
+            f"'{settings.analyst_channel_name}', daily expire sweep at 04:00 "
+            f"{settings.timezone}"
+        )
+
     log.info(
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
@@ -400,3 +420,69 @@ async def _bridge_fallback_sweeper_job():
         await fallback_sweeper_job()
     except Exception as e:
         log.error(f"Bridge fallback sweeper failed: {e}", exc_info=True)
+
+
+async def _analyst_expire_sweep_job(bot=None):
+    """Daily cron: mark any analyst-trade row whose expiry has passed as
+    'expired_unknown'. Posts a summary to the announce channel if anything
+    was marked. Handles the case-C failure mode where the analyst forgets to
+    post a close — once the contract expires we drop it from the
+    "currently open" view by setting inferred_status.
+    """
+    try:
+        import db
+        expired_rows = db.mark_expired_analyst_positions()
+        if not expired_rows:
+            log.info("Analyst expire sweep: nothing to mark")
+            return
+        log.info(f"Analyst expire sweep: marked {len(expired_rows)} rows as expired_unknown")
+        if bot is None:
+            return
+        # Format announce — one-line per ticker/contract, no duplicates
+        seen: set[tuple] = set()
+        lines = []
+        for r in expired_rows:
+            key = (r.get("ticker"), r.get("contract_type"),
+                   r.get("strike"), r.get("expiry"))
+            if key in seen:
+                continue
+            seen.add(key)
+            tk = r.get("ticker") or "?"
+            ct = (r.get("contract_type") or "").lower()
+            ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
+            strike = r.get("strike")
+            strike_s = (
+                f"{int(strike) if strike == int(strike) else strike}"
+                if strike is not None else "?"
+            )
+            exp = r.get("expiry") or "?"
+            lines.append(f"   • {tk} {strike_s}{ct_suffix} {exp}")
+        if not lines:
+            return
+        body = (
+            f"🗓️ **Analyst log auto-expire** — {len(seen)} contracts past "
+            f"expiry, marked as `expired_unknown`:\n" + "\n".join(lines[:20])
+        )
+        if len(lines) > 20:
+            body += f"\n   • ... and {len(lines) - 20} more"
+
+        chan_name = (settings.analyst_test_announce_channel or "").strip()
+        if not chan_name:
+            return
+        target = None
+        for guild in bot.guilds:
+            for ch in guild.text_channels:
+                if ch.name.lower() == chan_name.lower():
+                    target = ch
+                    break
+            if target:
+                break
+        if target is None:
+            log.warning(f"Analyst expire sweep: announce channel '{chan_name}' not found")
+            return
+        try:
+            await target.send(body[:1900])
+        except Exception as e:
+            log.error(f"Analyst expire sweep: announce failed: {e}")
+    except Exception as e:
+        log.error(f"Analyst expire sweep failed: {e}", exc_info=True)

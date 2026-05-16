@@ -52,6 +52,17 @@ class Settings(BaseSettings):
     # Empty = no restriction (commands work in every channel).
     pulse_command_channels: str = "test,tldr"
 
+    # Analyst alert-log watcher. When a message is posted in
+    # analyst_channel_name with image attachments, the watcher OCRs each
+    # image via Gemini and writes a structured row to analyst_trades.
+    # See analyst_log/ for the implementation. Empty = watcher disabled.
+    analyst_channel_name: str = ""
+    # Channel name where the watcher posts log-change announcements
+    # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
+    # are also used by the daily auto-expire cron. Empty = no announcements
+    # (DB writes still happen).
+    analyst_test_announce_channel: str = "test"
+
     # Scheduling
     timezone: str = "America/New_York"
     # Scheduled pulse fires at this time in the configured timezone
