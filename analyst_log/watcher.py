@@ -32,6 +32,18 @@ async def watch_message(bot: discord.Client, message: discord.Message) -> None:
     if not message.attachments:
         return
 
+    # Optional author filter: only OCR messages from the configured
+    # primary author (typically the trade caller). If unset, log all.
+    primary = (settings.analyst_primary_author or "").strip().lower()
+    if primary:
+        author_username = (message.author.name or "").lower()
+        if author_username != primary:
+            log.debug(
+                f"Analyst log: skipping non-primary author '{author_username}' "
+                f"in {message.channel.name} (primary='{primary}')"
+            )
+            return
+
     caption = (message.content or "").strip()
     posted_at = message.created_at.isoformat()
     author_name = (

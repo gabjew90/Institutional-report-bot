@@ -57,6 +57,12 @@ class Settings(BaseSettings):
     # image via Gemini and writes a structured row to analyst_trades.
     # See analyst_log/ for the implementation. Empty = watcher disabled.
     analyst_channel_name: str = ""
+    # Optional username filter. If set, only messages from this Discord
+    # username (matched case-insensitively against author.name) get
+    # OCR'd. Empty = log every image posted in the channel. Useful when
+    # the analyst's channel occasionally has posts from co-admins that
+    # aren't his trade calls.
+    analyst_primary_author: str = ""
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements
