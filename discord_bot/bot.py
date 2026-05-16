@@ -558,10 +558,23 @@ async def _answer_with_gemini(
         return embed
     except Exception as e:
         log.error(f"Gemini /ask call failed: {e}", exc_info=True)
-        return discord.Embed(
-            description=f"Web search failed: {str(e)[:200]}",
-            color=0xE74C3C,
-        )
+        err_str = str(e).lower()
+        # Map common error classes to in-voice replies. Full exception is
+        # logged above for debugging; users see only the short message.
+        if "429" in err_str or "resource_exhausted" in err_str or "quota" in err_str:
+            msg = (
+                "Tapped out for the day — hit my Google search quota. "
+                "Resets at UTC midnight. Catch me then."
+            )
+        elif "401" in err_str or "403" in err_str or "unauthorized" in err_str or "permission" in err_str:
+            msg = "Config issue on the API key — admin needs to check it."
+        elif "500" in err_str or "503" in err_str or "timeout" in err_str or "unavailable" in err_str:
+            msg = "Google's hiccuping. Try again in a sec."
+        elif "400" in err_str or "invalid" in err_str:
+            msg = "Something about that question broke the model. Try rephrasing."
+        else:
+            msg = "Something broke on my end. Try again in a sec."
+        return discord.Embed(description=msg, color=0xE74C3C)
 
 
 def _fmt_ts(iso_str: str | None) -> str:
