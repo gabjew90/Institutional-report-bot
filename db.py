@@ -1388,9 +1388,19 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
         gain = r.get("gain_pct")
         gain_str = f" ({gain:+.1f}%)" if gain is not None else ""
         posted_at = (r.get("posted_at") or "")[:16].replace("T", " ")
+
+        # Surface expiry status so the bot doesn't claim phantom holdings
+        # on contracts past their expiry without a close alert.
+        expired_tag = ""
+        if r.get("inferred_status") == "expired_unknown":
+            if action in ("open", "add"):
+                expired_tag = " [expired — no close alert]"
+            else:
+                expired_tag = " [expired]"
+
         out_lines.append(
             f"- {posted_at} — {action} {ticker} "
-            f"{strike_str}{ct_suffix} {exp_short}{gain_str}"
+            f"{strike_str}{ct_suffix} {exp_short}{gain_str}{expired_tag}"
         )
 
     # Also surface currently-open positions explicitly so the bot doesn't
