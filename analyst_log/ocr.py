@@ -116,11 +116,24 @@ C. **Notification card with visible NEGATIVE gain (<-5%)**: action="unclear" \
    is unusual — could be a fresh open the trade went red on, could be a \
    stop-out without caption. Without more signal, don't claim a close.
 
-D. **Stats screen** (Bid/Ask/Mark/IV option chain) with no caption: \
-   action="viewing". Pure browsing — no execution evidence visible. \
-   Conservative bias still applies here regardless of any displayed numbers.
+D. **Stats screen for a SPECIFIC CONTRACT** (ticker + strike + expiry all \
+   visible, "Buy [TICKER]" or "Sell [TICKER]" header, Bid/Ask/Mark/IV for \
+   that ONE contract): action="open". Abe narrowing in on a specific \
+   contract IS an entry signal — he doesn't post these for fun. The prior \
+   conservative bias was wrong here: single-contract stats screens are \
+   confirmed-or-imminent entries, not idle browsing.
 
-E. **Order ticket / order-confirmation screen**: action="open". The screen \
+   - Exception 1: if there's an explicit AMBIGUOUS-hype caption on a \
+     stats screen ("SLAM", "🚀"), that captioned-stats case still goes \
+     to "viewing" — the asymmetric error preference still applies when \
+     the user gave you some signal. Captionless single-contract stats \
+     screens default to "open".
+
+E. **Pure option chain listing** (multiple strikes visible, no specific \
+   contract selected) with no caption: action="viewing". This is true \
+   browsing — he's surveying the chain.
+
+F. **Order ticket / order-confirmation screen**: action="open". The screen \
    itself confirms execution.
 
 EXPIRY YEAR INFERENCE: Robinhood notification cards show only "M/D" not the \
