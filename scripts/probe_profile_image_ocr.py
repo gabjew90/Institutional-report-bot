@@ -31,10 +31,9 @@ import aiohttp
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(_REPO_ROOT))
 
-if hasattr(sys.stdout, "buffer"):
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
-if hasattr(sys.stderr, "buffer"):
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
+# Note: avoid wrapping sys.stdout in TextIOWrapper — when this script runs
+# under `railway run` (subprocess piping) the wrapper closes during teardown
+# and silently swallows on_ready output. Keep the default stdout encoding.
 
 import discord  # noqa: E402
 from google import genai  # noqa: E402
@@ -55,7 +54,9 @@ MAX_IMAGE_BYTES = 4_000_000
 
 # Hard cap on TOTAL images per user — even with vision, 200 images at
 # ~1000 tokens each = 200K tokens. Cap keeps the per-user cost predictable.
-MAX_IMAGES_PER_USER = 40
+# 20 picks the most-recent 20 images per user (sampled below), which is
+# plenty of signal without ballooning request size.
+MAX_IMAGES_PER_USER = 20
 
 
 async def _download_image(session: aiohttp.ClientSession, url: str) -> bytes | None:
@@ -117,17 +118,18 @@ async def _generate_profile_with_vision(
         messages_block=msgs_block,
     )
 
-    # Cap + download images
-    attachments = image_attachments[:MAX_IMAGES_PER_USER]
+    # Cap + download images. Caller has already sampled most-recent N.
+    attachments = image_attachments
     downloads = await asyncio.gather(
         *[_download_image(http, a["url"]) for a in attachments],
-        return_exceptions=False,
+        return_exceptions=True,
     )
 
     parts: list = []
     img_count = 0
     for att, blob in zip(attachments, downloads):
-        if not blob:
+        # Filter out exceptions and Nones from gather(return_exceptions=True)
+        if not isinstance(blob, (bytes, bytearray)) or not blob:
             continue
         mime = (att.get("content_type") or "image/png").split(";")[0]
         parts.append(types.Part.from_bytes(data=blob, mime_type=mime))
@@ -287,27 +289,33 @@ async def run(days: int, channels: list[str], top_n: int) -> None:
                     )
                     print('=' * 78, flush=True)
 
-                    # Run both in parallel
-                    text_only, vision = await asyncio.gather(
-                        _generate_profile_text_only(
+                    # Sample most-recent N images (avoid sending 200+ to vision)
+                    images_sample = images[-MAX_IMAGES_PER_USER:]
+
+                    # Run sequentially (not parallel) so an error in one
+                    # call doesn't cancel the other — keep partial results.
+                    text_profile, text_meta = None, {}
+                    vision_profile, vision_meta = None, {}
+                    try:
+                        text_profile, text_meta = await _generate_profile_text_only(
                             gemini_client,
                             meta["display_name"],
                             meta["username"],
                             sample,
-                        ),
-                        _generate_profile_with_vision(
+                        )
+                    except Exception as e:
+                        print(f"  ✗ text-only profile failed: {e}", flush=True)
+                    try:
+                        vision_profile, vision_meta = await _generate_profile_with_vision(
                             gemini_client,
                             http,
                             meta["display_name"],
                             meta["username"],
                             sample,
-                            images,
-                        ),
-                        return_exceptions=False,
-                    )
-
-                    text_profile, text_meta = text_only
-                    vision_profile, vision_meta = vision
+                            images_sample,
+                        )
+                    except Exception as e:
+                        print(f"  ✗ vision profile failed: {e}", flush=True)
                     text_cost = _est_cost(
                         text_meta.get("input_tokens"),
                         text_meta.get("output_tokens"),
@@ -380,18 +388,22 @@ async def run(days: int, channels: list[str], top_n: int) -> None:
                     flush=True,
                 )
 
+                # Write summary BEFORE close so it lands even if stdout
+                # teardown crashes during client shutdown.
+                out_name = (
+                    f"probe_profile_image_ocr_"
+                    f"{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.md"
+                )
+                out_path = _REPO_ROOT / out_name
+                out_path.write_text(
+                    "".join(summary_lines), encoding="utf-8"
+                )
+                print(f"\nSide-by-side summary written to {out_path}",
+                      flush=True)
             finally:
                 await discord_client.close()
 
     await discord_client.start(settings.discord_bot_token)
-
-    out_name = (
-        f"probe_profile_image_ocr_"
-        f"{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.md"
-    )
-    out_path = _REPO_ROOT / out_name
-    out_path.write_text("".join(summary_lines), encoding="utf-8")
-    print(f"\nSide-by-side summary written to {out_path}", flush=True)
 
 
 def main() -> None:

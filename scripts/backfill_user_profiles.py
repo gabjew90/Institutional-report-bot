@@ -42,12 +42,17 @@ if hasattr(sys.stdout, "buffer"):
 if hasattr(sys.stderr, "buffer"):
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
 
+import aiohttp  # noqa: E402
 import discord  # noqa: E402
 from google import genai  # noqa: E402
 from google.genai import types  # noqa: E402
 
 import db  # noqa: E402
 from config import settings  # noqa: E402
+
+# Hard cap on image bytes per download. Anything over this is dropped
+# (likely a screen recording or huge composite). Keeps token cost predictable.
+_MAX_IMAGE_BYTES = 4_000_000
 
 # Default channels for personality profiling. The yapping channels are
 # where personality shows; alerts channels are alerts-only and won't
@@ -265,13 +270,39 @@ def _extract_embed_texts(message: discord.Message) -> list[str]:
     return out
 
 
+async def _download_image(
+    session: aiohttp.ClientSession, url: str
+) -> bytes | None:
+    """Fetch one image. Returns None on failure / oversize so callers can
+    drop it cleanly without losing the whole batch."""
+    try:
+        async with session.get(
+            url, timeout=aiohttp.ClientTimeout(total=15)
+        ) as r:
+            if r.status != 200:
+                return None
+            data = await r.content.read(_MAX_IMAGE_BYTES + 1)
+            return data if len(data) <= _MAX_IMAGE_BYTES else None
+    except Exception:
+        return None
+
+
 async def _generate_profile(
     gemini_client: genai.Client,
     display_name: str,
     messages: list[dict],
     username: str = "",
+    http_session: aiohttp.ClientSession | None = None,
+    images: list[dict] | None = None,
 ) -> str | None:
-    """Run Gemini to produce one user's profile. Returns None on failure."""
+    """Run Gemini to produce one user's profile. Returns None on failure.
+
+    When `images` is non-empty and `http_session` is provided, attaches the
+    most-recent up-to-profile_image_cap images as multipart input alongside
+    the text — Gemini Vision then extracts ticker / position / PnL signal
+    from screenshots that the text-only path can only see as `[image]`.
+    Falls back to text-only on any download/encoding failure.
+    """
     min_msgs = getattr(settings, "profile_min_messages", None) or MIN_MESSAGES_FOR_PROFILE_FALLBACK
     if len(messages) < min_msgs:
         return None
@@ -289,19 +320,66 @@ async def _generate_profile(
         msg_count=len(messages),
         messages_block=msgs_block,
     )
+
+    # Decide vision vs text-only. Vision needs: config flag on + http
+    # session passed in + at least one image collected for this user.
+    vision_enabled = (
+        getattr(settings, "profile_image_ocr_enabled", False)
+        and http_session is not None
+        and images
+    )
+
     try:
-        response = await gemini_client.aio.models.generate_content(
-            model=settings.gemini_model,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                temperature=0.3,
-                # New schema has ~10 fields × 1-3 sentences = 300-600 words.
-                # At ~1.3 tokens/word with markdown overhead, profiles can
-                # land at 600-900 tokens. 1500 leaves headroom; cap exists
-                # only to prevent runaway.
-                max_output_tokens=1500,
-            ),
-        )
+        if vision_enabled:
+            image_cap = getattr(settings, "profile_image_cap", 20)
+            # Most-recent N images (image list is oldest-first like messages)
+            img_sample = images[-image_cap:]
+            blobs = await asyncio.gather(
+                *[_download_image(http_session, a["url"]) for a in img_sample],
+                return_exceptions=True,
+            )
+            parts: list = []
+            attached = 0
+            for att, blob in zip(img_sample, blobs):
+                if not isinstance(blob, (bytes, bytearray)) or not blob:
+                    continue
+                mime = (att.get("content_type") or "image/png").split(";")[0]
+                parts.append(
+                    types.Part.from_bytes(data=blob, mime_type=mime)
+                )
+                attached += 1
+            parts.append(types.Part.from_text(text=prompt))
+            if attached == 0:
+                # Every download failed — fall back to text-only rather
+                # than send a vision request with zero images.
+                response = await gemini_client.aio.models.generate_content(
+                    model=settings.gemini_model,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        temperature=0.3, max_output_tokens=1500
+                    ),
+                )
+            else:
+                response = await gemini_client.aio.models.generate_content(
+                    model=settings.gemini_model,
+                    contents=parts,
+                    config=types.GenerateContentConfig(
+                        temperature=0.3, max_output_tokens=1500
+                    ),
+                )
+        else:
+            response = await gemini_client.aio.models.generate_content(
+                model=settings.gemini_model,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.3,
+                    # New schema has ~10 fields × 1-3 sentences = 300-600 words.
+                    # At ~1.3 tokens/word with markdown overhead, profiles can
+                    # land at 600-900 tokens. 1500 leaves headroom; cap exists
+                    # only to prevent runaway.
+                    max_output_tokens=1500,
+                ),
+            )
         text = (response.text or "").strip()
         return text if text else None
     except Exception as e:
@@ -348,6 +426,9 @@ async def run(days: int, channels: list[str]) -> None:
             # Per-user accumulator: user_id -> list of message dicts
             by_user: dict[int, list[dict]] = defaultdict(list)
             user_meta: dict[int, dict] = {}  # user_id -> {username, display_name}
+            # Image attachments per user (oldest-first), used for vision
+            # when profile_image_ocr_enabled. Each entry: {url, content_type, ts}
+            images_by_user: dict[int, list[dict]] = defaultdict(list)
 
             for ch in targets:
                 print(f"\nScanning #{ch.name}...", flush=True)
@@ -368,10 +449,16 @@ async def run(days: int, channels: list[str]) -> None:
                                 or msg.author.name
                             ),
                         }
-                    image_count = sum(
-                        1 for a in msg.attachments
-                        if (a.content_type or "").lower().startswith("image/")
-                    )
+                    image_count = 0
+                    for a in msg.attachments:
+                        ct = (a.content_type or "").lower()
+                        if ct.startswith("image/"):
+                            image_count += 1
+                            images_by_user[uid].append({
+                                "url": a.url,
+                                "content_type": a.content_type,
+                                "ts": msg.created_at.isoformat(),
+                            })
                     embed_texts = _extract_embed_texts(msg)
                     by_user[uid].append({
                         "timestamp": msg.created_at.isoformat(),
@@ -454,49 +541,71 @@ async def run(days: int, channels: list[str]) -> None:
                 f"- **Skipped:** {skipped_lurkers} lurkers, "
                 f"{skipped_stable} stable (fresh profiles)\n"
             )
-            summary_lines.append(f"- **Model:** {settings.gemini_model}\n\n")
+            summary_lines.append(f"- **Model:** {settings.gemini_model}\n")
+            summary_lines.append(
+                f"- **Vision (image OCR):** "
+                f"{'enabled' if settings.profile_image_ocr_enabled else 'disabled'}"
+                + (f" (cap {settings.profile_image_cap} imgs/user)\n\n"
+                   if settings.profile_image_ocr_enabled else "\n\n")
+            )
 
-            # Parallel batches of GEMINI_CONCURRENCY
-            for i in range(0, len(eligible), GEMINI_CONCURRENCY):
-                batch = eligible[i:i + GEMINI_CONCURRENCY]
-                tasks = []
-                for uid, msgs in batch:
-                    meta = user_meta[uid]
-                    tasks.append(_generate_profile(
-                        gemini_client,
-                        meta["display_name"],
-                        msgs,
-                        username=meta.get("username", ""),
-                    ))
-                results = await asyncio.gather(*tasks, return_exceptions=True)
-                for (uid, msgs), profile in zip(batch, results):
-                    meta = user_meta[uid]
-                    if isinstance(profile, Exception):
-                        print(f"  ✗ {meta['display_name']}: {profile}",
-                              flush=True)
-                        continue
-                    if not profile:
-                        print(f"  ✗ {meta['display_name']}: empty response",
-                              flush=True)
-                        continue
-                    last_seen = msgs[-1]["timestamp"]
-                    db.upsert_user_profile(
-                        user_id=uid,
-                        username=meta["username"],
-                        display_name=meta["display_name"],
-                        profile_text=profile,
-                        message_count_at_update=len(msgs),
-                        last_seen_message_at=last_seen,
-                    )
-                    summary_lines.append(
-                        f"## {meta['display_name']} ({meta['username']}) — "
-                        f"{len(msgs)} msgs\n\n{profile}\n\n---\n\n"
-                    )
-                    print(
-                        f"  ✓ {meta['display_name']:<25} {len(msgs):>4} msgs "
-                        f"→ {len(profile)} chars",
-                        flush=True,
-                    )
+            # One shared aiohttp session for all image downloads across
+            # the batch. Lives for the duration of the Gemini loop.
+            async with aiohttp.ClientSession() as http_session:
+                # Parallel batches of GEMINI_CONCURRENCY
+                for i in range(0, len(eligible), GEMINI_CONCURRENCY):
+                    batch = eligible[i:i + GEMINI_CONCURRENCY]
+                    tasks = []
+                    for uid, msgs in batch:
+                        meta = user_meta[uid]
+                        tasks.append(_generate_profile(
+                            gemini_client,
+                            meta["display_name"],
+                            msgs,
+                            username=meta.get("username", ""),
+                            http_session=http_session,
+                            images=images_by_user.get(uid, []),
+                        ))
+                    results = await asyncio.gather(*tasks, return_exceptions=True)
+                    for (uid, msgs), profile in zip(batch, results):
+                        meta = user_meta[uid]
+                        if isinstance(profile, Exception):
+                            print(f"  ✗ {meta['display_name']}: {profile}",
+                                  flush=True)
+                            continue
+                        if not profile:
+                            print(f"  ✗ {meta['display_name']}: empty response",
+                                  flush=True)
+                            continue
+                        last_seen = msgs[-1]["timestamp"]
+                        db.upsert_user_profile(
+                            user_id=uid,
+                            username=meta["username"],
+                            display_name=meta["display_name"],
+                            profile_text=profile,
+                            message_count_at_update=len(msgs),
+                            last_seen_message_at=last_seen,
+                        )
+                        n_imgs = len(images_by_user.get(uid, []))
+                        summary_lines.append(
+                            f"## {meta['display_name']} ({meta['username']}) — "
+                            f"{len(msgs)} msgs"
+                            + (f", {n_imgs} imgs"
+                               if n_imgs and settings.profile_image_ocr_enabled
+                               else "")
+                            + f"\n\n{profile}\n\n---\n\n"
+                        )
+                        img_tag = (
+                            f" + {min(n_imgs, settings.profile_image_cap)} imgs"
+                            if n_imgs and settings.profile_image_ocr_enabled
+                            else ""
+                        )
+                        print(
+                            f"  ✓ {meta['display_name']:<25} "
+                            f"{len(msgs):>4} msgs{img_tag} "
+                            f"→ {len(profile)} chars",
+                            flush=True,
+                        )
 
             print(f"\nProfiled {len(eligible)} users.", flush=True)
         finally:

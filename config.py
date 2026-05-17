@@ -104,6 +104,16 @@ class Settings(BaseSettings):
     # token spend; higher = less drift-tracking but cheaper. 50 ≈ ~1.5
     # days of new material for a moderately active yapper.
     profile_delta_threshold: int = 50
+    # Image OCR for user profiles. When True, the backfill downloads up
+    # to profile_image_cap most-recent images per user and sends them
+    # alongside the text to Gemini (multipart). Vision extracts specific
+    # tickers, dollar PnLs, and positions from screenshots that the
+    # text-only path leaves as generic "[image]" markers. Costs ~2x more
+    # per profile than text-only (~$4-5/month total at 37 profiled users
+    # vs ~$2/month text-only); validated against a live BK probe that
+    # surfaced MSTR-specific quotes and a $4,500 PnL from screenshots.
+    profile_image_ocr_enabled: bool = True
+    profile_image_cap: int = 20
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements
