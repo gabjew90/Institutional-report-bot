@@ -1351,21 +1351,34 @@ def get_recent_analyst_trades(hours: int = 24, limit: int = 50) -> list[dict]:
 
 
 def get_current_analyst_positions() -> list[dict]:
-    """Currently-open positions: opens minus closes minus trims > 0, expiry
-    in the future, and inferred_status not set to expired_unknown.
+    """Currently-open positions, computed as a state machine over the event
+    chain: the LATEST action per (ticker, contract_type, strike, expiry)
+    determines whether the position is still alive.
+
+    - latest action in {open, add, trim} → position is live
+    - latest action == 'close' → position is fully exited
+
+    This replaces an earlier SUM-CASE +/-1 arithmetic model that incorrectly
+    treated `trim` the same as `close` (so `open -> trim` netted to 0 and
+    dropped the position from "currently open" even though Abe was still
+    holding the remaining half). A trim reduces size but does NOT end the
+    position; only an explicit `close` action does.
+
+    `last_gain_pct` reflects the LATEST event's gain pill (not MAX across
+    all events) so the bot reports the current state rather than a stale
+    peak. Expired positions are excluded via the `expired_unknown`
+    inferred_status set by the daily expire sweep.
     """
     rows = get_connection().execute(
-        """WITH net AS (
+        """WITH ranked AS (
             SELECT ticker, contract_type, strike, expiry,
-                   SUM(CASE action
-                       WHEN 'open' THEN 1
-                       WHEN 'add'  THEN 1
-                       WHEN 'close' THEN -1
-                       WHEN 'trim'  THEN -1
-                       ELSE 0 END) AS net_qty,
-                   MAX(posted_at) AS last_activity,
-                   MAX(gain_pct) AS last_gain_pct,
-                   MIN(posted_at) AS first_alert
+                   action AS latest_action,
+                   posted_at AS last_activity,
+                   gain_pct AS last_gain_pct,
+                   ROW_NUMBER() OVER (
+                       PARTITION BY ticker, contract_type, strike, expiry
+                       ORDER BY posted_at DESC
+                   ) AS rn
             FROM analyst_trades
             WHERE is_trade = 1
               AND action IN ('open', 'add', 'close', 'trim')
@@ -1373,9 +1386,12 @@ def get_current_analyst_positions() -> list[dict]:
               AND ticker IS NOT NULL
               AND expiry IS NOT NULL
               AND date(expiry) >= date('now')
-            GROUP BY ticker, contract_type, strike, expiry
         )
-        SELECT * FROM net WHERE net_qty > 0
+        SELECT ticker, contract_type, strike, expiry,
+               latest_action, last_activity, last_gain_pct
+        FROM ranked
+        WHERE rn = 1
+          AND latest_action IN ('open', 'add', 'trim')
         ORDER BY last_activity DESC"""
     ).fetchall()
     return [dict(r) for r in rows]

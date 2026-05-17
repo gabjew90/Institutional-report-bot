@@ -83,12 +83,18 @@ so be more confident classifying closes.
 STRONG CLOSE signals → action="close" (these are unambiguous; trust them):
 - "I'm out", "OUT", "out!", "exiting", "exit", "sold", "bing bong", "done", \
   "took it", "took profit", "thx for the bag"
+- **NOTE on "take/took half" specifically: this is a TRIM, not a CLOSE.** \
+  "Took half", "take half", "took some off", "shaved", "scaled out", \
+  "lightened up" = partial sell, position still alive. Don't classify \
+  these as "close" just because the word "took" appears in the caption.
 
 STRONG OPEN signals → action="open" (clear re-entry or fresh buy language):
 - "re-entering", "reload", "back in", "rinse repeat", "opened", "loading", \
   "got some", "in at"
 - "add", "adding", "doubled up" → action="add"
-- "trim", "trimming", "took some off" → action="trim"
+- "trim", "trimming", "took some off", "take half", "took half", \
+  "half off", "scaled out", "lightened up", "peeled some off", \
+  "shaved" → action="trim"
 
 AMBIGUOUS / HYPE captions on a stats_screen → action="viewing" (bias \
 toward viewing, not open). Don't assume an open from excitement alone:
