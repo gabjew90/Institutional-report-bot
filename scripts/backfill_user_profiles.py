@@ -388,12 +388,34 @@ async def run(days: int, channels: list[str]) -> None:
                 getattr(settings, "profile_min_messages", None)
                 or MIN_MESSAGES_FOR_PROFILE_FALLBACK
             )
-            eligible = [
-                (uid, msgs) for uid, msgs in by_user.items()
-                if len(msgs) >= min_msgs
-            ]
+            delta_threshold = getattr(settings, "profile_delta_threshold", 50)
+
+            # Bulk-fetch existing profiles so we can apply the delta skip:
+            # a user with an existing profile is only re-profiled if they
+            # have enough NEW messages (timestamp > stored last_seen_*)
+            # since the last run. Brand-new users (no row) skip this check
+            # and use min_msgs as the cold-start gate.
+            existing_profiles = db.get_profiles_for_users(list(by_user.keys()))
+
+            eligible: list[tuple[int, list[dict]]] = []
+            skipped_lurkers = 0
+            skipped_stable = 0  # existing profile, not enough new material
+            for uid, msgs in by_user.items():
+                if len(msgs) < min_msgs:
+                    skipped_lurkers += 1
+                    continue
+                existing = existing_profiles.get(uid)
+                last_seen = (existing or {}).get("last_seen_message_at")
+                if existing and last_seen:
+                    new_msgs_count = sum(
+                        1 for m in msgs if m["timestamp"] > last_seen
+                    )
+                    if new_msgs_count < delta_threshold:
+                        skipped_stable += 1
+                        continue
+                eligible.append((uid, msgs))
             eligible.sort(key=lambda t: -len(t[1]))  # most active first
-            skipped_lurkers = len(by_user) - len(eligible)
+
             # Optional hard cap (default 0 = no cap; rely on threshold)
             max_n = settings.max_user_profiles
             if max_n > 0 and len(eligible) > max_n:
@@ -401,8 +423,16 @@ async def run(days: int, channels: list[str]) -> None:
                 eligible = eligible[:max_n]
                 print(f"\nCapped to top {max_n} users by message count "
                       f"(trimmed {trimmed} below the cap)", flush=True)
-            print(f"\n{len(eligible)} users eligible (>= {min_msgs} msgs), "
-                  f"{skipped_lurkers} skipped as lurkers", flush=True)
+            print(
+                f"\n{len(eligible)} users eligible "
+                f"(>= {min_msgs} msgs, >= {delta_threshold} new since last profile)",
+                flush=True,
+            )
+            print(
+                f"  skipped: {skipped_lurkers} lurkers, "
+                f"{skipped_stable} stable (already-fresh profiles)",
+                flush=True,
+            )
 
             summary_lines.append(
                 f"# User profile backfill — last {days} days\n\n"
@@ -414,7 +444,15 @@ async def run(days: int, channels: list[str]) -> None:
                 f"- **Cutoff:** {cutoff.isoformat()}\n"
             )
             summary_lines.append(
-                f"- **Threshold:** {min_msgs} messages\n"
+                f"- **Cold-start threshold:** {min_msgs} messages\n"
+            )
+            summary_lines.append(
+                f"- **Delta threshold (existing profiles):** "
+                f"{delta_threshold} new messages since last profile\n"
+            )
+            summary_lines.append(
+                f"- **Skipped:** {skipped_lurkers} lurkers, "
+                f"{skipped_stable} stable (fresh profiles)\n"
             )
             summary_lines.append(f"- **Model:** {settings.gemini_model}\n\n")
 

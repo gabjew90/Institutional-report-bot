@@ -198,13 +198,16 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
                 misfire_grace_time=3600,
             )
 
-    # Weekly user-profile refresh — only registers if profile channels are
+    # Daily user-profile refresh — only registers if profile channels are
     # configured. Refreshes profiles for active users in the yapping
-    # channels. Runs Sunday 05:00 local, 30 min after analyst purge.
+    # channels. Runs 05:00 local every day. The backfill script applies
+    # a per-user delta filter (profile_delta_threshold) so users whose
+    # message count since last profile hasn't moved enough are skipped —
+    # the daily run only re-profiles the people who actually changed.
     if settings.profile_channels:
         scheduler.add_job(
             _user_profile_refresh_job,
-            trigger=CronTrigger(day_of_week="sun", hour=5, minute=0, timezone=tz),
+            trigger=CronTrigger(hour=5, minute=0, timezone=tz),
             id="user_profile_refresh",
             name="User profiles: refresh active members",
             kwargs={"bot": bot},
@@ -213,7 +216,8 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         )
         log.info(
             f"User-profile system active — channels '{settings.profile_channels}', "
-            f"weekly refresh Sunday 05:00 {settings.timezone}"
+            f"daily refresh 05:00 {settings.timezone} "
+            f"(delta threshold: {settings.profile_delta_threshold} new msgs)"
         )
         log.info(
             f"Analyst trade-log watcher active — channel "

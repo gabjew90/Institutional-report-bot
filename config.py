@@ -94,6 +94,16 @@ class Settings(BaseSettings):
     # captured (vs ~6-12 hours at the prior 100). Token cost is still
     # trivial (~$0.01 per user).
     profile_sample_size: int = 500
+    # Delta-based skip threshold for the daily refresh: a user with an
+    # existing profile is only re-profiled if they have at least this
+    # many NEW messages (timestamp > stored last_seen_message_at) since
+    # their last profile. Below the threshold, the existing profile is
+    # treated as still-fresh and the user is skipped. Brand-new users
+    # (no profile yet) bypass this check and use profile_min_messages
+    # as their cold-start gate. Lower = more frequent refreshes but more
+    # token spend; higher = less drift-tracking but cheaper. 50 ≈ ~1.5
+    # days of new material for a moderately active yapper.
+    profile_delta_threshold: int = 50
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements
