@@ -182,6 +182,22 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             max_instances=1,
             misfire_grace_time=3600,
         )
+        # Startup catch-up: redeploys cycle the in-memory scheduler, so if
+        # a deploy happens between cron fires (or right after the 04:00 ET
+        # slot), the daily sweep can be missed. Schedule a one-shot run
+        # ~2 minutes after boot — `next_run_time=now+2min` triggers once
+        # then drops the job. Cheap, defensive, prevents drift.
+        from datetime import datetime as _dt, timedelta as _td
+        scheduler.add_job(
+            _analyst_expire_sweep_job,
+            trigger="date",
+            run_date=_dt.now(tz) + _td(minutes=2),
+            id="analyst_expire_sweep_startup",
+            name="Analyst log: startup catch-up expire sweep",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=600,
+        )
         # Weekly purge — hard-deletes trade rows that have been marked
         # expired_unknown AND are past their retention window
         # (settings.analyst_trade_retention_days, default 14). Runs Sunday
