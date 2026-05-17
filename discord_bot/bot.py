@@ -144,6 +144,7 @@ The user-profile context is injected into your prompt with the literal header `W
 - **What goes in your reply, what doesn't.** The tells, the contradictions, the recurring losses they joke about, the things the room already gives them shit about — that's fair game and load-bearing. Vulnerability moments, family / health / real-world stuff outside the room's running texture — leave alone.
 - **No profile available?** (Lurker, new joiner, unprofiled regular.) Don't fabricate traits. Use what's in the recent chat or treat them as a stranger.
 - **Asker > everyone else.** The person who asked is THE focus. Everyone else in the chat is background you reference when relevant, not subjects of the response.
+- **How to know who the asker is.** The separator line just before the question reads `--- {DisplayName} ({username}) is asking: ---`. That line is the ONLY authoritative source for who you're answering. Do NOT infer the asker from chat scrollback (the most-recent speaker in chat is not necessarily the asker), do NOT address the asker by some other regular's nickname, do NOT confuse two different users who happen to be in the WHO'S TALKING block together. If the separator names "BK (bankerkyle)" as the asker, that's who you're talking to — not 2pale, not phil, not jamal, even if those names appear in chat right above.
 
 ---
 
@@ -537,6 +538,8 @@ async def _answer_with_gemini(
     fetched_urls: str = "",
     images: list[tuple[bytes, str]] | None = None,
     profile_user_ids: list[int] | None = None,
+    asker_display_name: str = "",
+    asker_username: str = "",
 ) -> discord.Embed:
     """Run a Gemini grounded-search query and return a Discord embed.
 
@@ -615,7 +618,19 @@ async def _answer_with_gemini(
             sections.append(fetched_urls)
         if chat_context:
             sections.append(chat_context)
-        sections.append(f"--- The user is now asking: ---\n{question}")
+        # Explicit asker identification. The bot pulled WHO'S TALKING
+        # profiles for everyone active in chat — without naming the
+        # asker on the separator, the model has to guess from scrollback
+        # who's asking, and sometimes addresses the wrong person.
+        if asker_display_name or asker_username:
+            who = asker_display_name or asker_username
+            if asker_username and asker_display_name and \
+                    asker_display_name.lower() != asker_username.lower():
+                who = f"{asker_display_name} ({asker_username})"
+            separator = f"--- {who} is asking: ---"
+        else:
+            separator = "--- The user is now asking: ---"
+        sections.append(f"{separator}\n{question}")
         user_content = "\n\n".join(sections)
 
         # If images are present, build a multipart contents list: images
@@ -1295,12 +1310,19 @@ def create_bot() -> commands.Bot:
             profile_ids = list(set(
                 chat_author_ids + ([user_id] if user_id else []) + mentioned_ids
             ))
+            asker = interaction.user
             embed = await _answer_with_gemini(
                 question,
                 user_id,
                 chat_context=chat_context,
                 fetched_urls=fetched_urls,
                 profile_user_ids=profile_ids,
+                asker_display_name=(
+                    getattr(asker, "display_name", None)
+                    or getattr(asker, "name", "")
+                    or ""
+                ),
+                asker_username=getattr(asker, "name", "") or "",
             )
             await interaction.followup.send(embed=embed)
         except Exception as e:
@@ -1389,6 +1411,11 @@ def create_bot() -> commands.Bot:
                     fetched_urls=fetched_urls,
                     images=images,
                     profile_user_ids=profile_ids,
+                    asker_display_name=(
+                        getattr(message.author, "display_name", None)
+                        or message.author.name
+                    ),
+                    asker_username=message.author.name,
                 )
                 await message.reply(embed=embed, mention_author=False)
         except Exception as e:
