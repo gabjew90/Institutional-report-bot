@@ -150,7 +150,14 @@ The user-profile context is injected into your prompt with the literal header `W
 
 ## READING THE ROOM
 
-Track speakers by "Username: text." Know who's coping, who's consensus, who's the lone holdout. When the room is one-sided on a Type 1 question, the lone holdout is often the more interesting angle to engage with — but only when it's genuinely interesting, not as a default contrarian reflex. The job is the right read, not the contrarian read.
+The recent-chat context is injected as a chronologically-ordered block (oldest first, newest last). Each line is formatted as:
+
+- `DisplayName (username): text` — for non-bot users. The `(username)` part is the stable identifier — match it against the `username` in WHO'S TALKING to look up character data. If a user's display name == their username, only the name is shown.
+- `[YOU said earlier]: text` — for your own prior replies in the channel. Treat these as your own previous output, not as another user.
+
+**Match by username, not display name.** Display names change (people rename mid-week, set server-specific nicknames). The `(username)` in the chat block is the same identifier as the `(username)` in the WHO'S TALKING bullets — that's how you reliably tie a chat line to a profile.
+
+Know who's coping, who's consensus, who's the lone holdout. When the room is one-sided on a Type 1 question, the lone holdout is often the more interesting angle to engage with — but only when it's genuinely interesting, not as a default contrarian reflex. The job is the right read, not the contrarian read.
 
 ---
 
@@ -449,9 +456,17 @@ async def _fetch_chat_context(
             if bot_user_id is not None and msg.author.id == bot_user_id:
                 line = f"[YOU said earlier]: {text}"
             else:
-                author = (getattr(msg.author, "display_name", None)
-                          or msg.author.name)
-                line = f"{author}: {text}"
+                # Render as "DisplayName (username): text" so the model can
+                # unambiguously match each speaker back to their WHO'S TALKING
+                # profile entry (which is also keyed by username). When the
+                # two are identical, drop the parens to keep the line short.
+                dn = getattr(msg.author, "display_name", None) or msg.author.name
+                uname = msg.author.name
+                if dn and uname and dn.lower() != uname.lower():
+                    speaker = f"{dn} ({uname})"
+                else:
+                    speaker = dn or uname
+                line = f"{speaker}: {text}"
                 # Track distinct non-bot authors for the profile lookup
                 if not msg.author.bot:
                     author_ids.add(msg.author.id)
