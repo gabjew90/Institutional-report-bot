@@ -70,10 +70,13 @@ class Settings(BaseSettings):
     analyst_trade_retention_days: int = 14
 
     # User-profile system: comma-separated channel names where the bot
-    # scans for personality signal during weekly profile refresh. Default
-    # is the two "yapping" channels — high message volume, lots of
-    # personality. Empty = profile system disabled (no scheduled refresh).
-    profile_channels: str = "💬-stonks-yapping-💬,₿-crypto-yapping-₿"
+    # scans for personality signal during the daily profile refresh.
+    # Default is the three "yapping" channels (stonks, crypto, fitness)
+    # — high message volume, lots of personality. Empty = profile system
+    # disabled (no scheduled refresh).
+    profile_channels: str = (
+        "💬-stonks-yapping-💬,₿-crypto-yapping-₿,🏃-fitness-yapping-🏋"
+    )
     # How many days of history to use for each refresh pass.
     profile_window_days: int = 30
     # Hard cap on total profiles (top N by message count). 0 = no cap;
