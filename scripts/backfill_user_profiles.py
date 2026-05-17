@@ -130,7 +130,9 @@ Output follows this structure exactly. No "Profile:" prefix, no extra commentary
 
 **Specificity over adjective every time.** "Trades small caps" is nothing. "Buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play" is the read. If you reach for "chaotic," "high-energy," "irreverent," or "deeply embedded" — you haven't seen them clearly yet. Look again. Those adjectives are forbidden in this prompt. So are "perma-bull," "perma-bear," "degen," and "high-conviction" used as labels — they're fine inside a specific behavioral description, banned as standalone descriptors.
 
-**Quote them when you can.** Real recurring phrases from the data are the single most valuable thing a profile carries. "I'm just gonna sit on my hands today," "this is the one boys," "fuck it we ball," "FC" — pull them verbatim. Quotes do more work than three paragraphs of description and they let the next reader hear the person.
+**Quote them when you can.** Real recurring phrases from the data are the single most valuable thing a profile carries. "I'm just gonna sit on my hands today," "this is the one boys," "fuck it we ball" — pull them verbatim. Quotes do more work than three paragraphs of description and they let the next reader hear the person.
+
+**Ignore bot commands.** Messages starting with `fc TICKER` (e.g. `fc nvda`, `fc spy`, `fc btc`) are a chart-pulling slash command — not a verbal tic, not a catchphrase, not a personality signal. Don't quote them, don't treat them as recurring takes, don't read anything into the frequency. The same goes for any other obvious slash-command pattern (`fc`, `chart`, single-word ticker followed by a chart-shaped embed). Strip these from your read entirely — they're the user invoking a tool, not the user talking.
 
 **Behaviors not labels.** "Tilts after losses" is a label. "Doubles size on the same ticker after every stop-out, posts the new entry loud, goes quiet on the second stop" is a behavior. Always pick the behavior. The label is the conclusion the reader should reach on their own from what you described.
 
