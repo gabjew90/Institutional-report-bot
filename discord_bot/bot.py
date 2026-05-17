@@ -600,7 +600,10 @@ async def _answer_with_gemini(
             # soft; the high token cap exists to prevent cliff-truncation
             # when thinking overshoots, not to encourage long responses.
             max_output_tokens=4000,
-            temperature=0.2,
+            # 0.4 is a middle ground: enough variance to give clapbacks /
+            # banter some bite without the wider swings that risk fabricated
+            # tickers or hallucinated PnL numbers on Type 1 trade answers.
+            temperature=0.4,
             thinking_config=types.ThinkingConfig(thinking_budget=1024),
         )
         # Compose the final user message:
