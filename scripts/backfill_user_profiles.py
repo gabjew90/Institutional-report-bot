@@ -329,6 +329,28 @@ async def _generate_profile(
         and images
     )
 
+    # Supported MIME types per Gemini Vision docs. Anything else (GIF,
+    # webp animations, application/octet-stream, etc.) gets dropped from
+    # the multipart batch — a single unsupported image rejects the whole
+    # call with "Unable to process input image", so we filter pre-flight.
+    _SUPPORTED_IMAGE_MIMES = {
+        "image/png", "image/jpeg", "image/webp", "image/heic", "image/heif"
+    }
+
+    async def _try_text_only() -> str | None:
+        """Text-only profile call. Used as primary path when vision is off,
+        and as fallback path when vision returns an error."""
+        resp = await gemini_client.aio.models.generate_content(
+            model=settings.gemini_model,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.3,
+                max_output_tokens=1500,
+            ),
+        )
+        out = (resp.text or "").strip()
+        return out if out else None
+
     try:
         if vision_enabled:
             image_cap = getattr(settings, "profile_image_cap", 20)
@@ -343,23 +365,21 @@ async def _generate_profile(
             for att, blob in zip(img_sample, blobs):
                 if not isinstance(blob, (bytes, bytearray)) or not blob:
                     continue
-                mime = (att.get("content_type") or "image/png").split(";")[0]
+                mime = (att.get("content_type") or "image/png").split(";")[0].lower()
+                # Skip animated / unsupported formats up front. A single
+                # bad image taints the whole multipart request.
+                if mime not in _SUPPORTED_IMAGE_MIMES:
+                    continue
                 parts.append(
                     types.Part.from_bytes(data=blob, mime_type=mime)
                 )
                 attached += 1
-            parts.append(types.Part.from_text(text=prompt))
             if attached == 0:
-                # Every download failed — fall back to text-only rather
-                # than send a vision request with zero images.
-                response = await gemini_client.aio.models.generate_content(
-                    model=settings.gemini_model,
-                    contents=prompt,
-                    config=types.GenerateContentConfig(
-                        temperature=0.3, max_output_tokens=1500
-                    ),
-                )
-            else:
+                # No usable images — go text-only.
+                text = await _try_text_only()
+                return text
+            parts.append(types.Part.from_text(text=prompt))
+            try:
                 response = await gemini_client.aio.models.generate_content(
                     model=settings.gemini_model,
                     contents=parts,
@@ -367,21 +387,22 @@ async def _generate_profile(
                         temperature=0.3, max_output_tokens=1500
                     ),
                 )
+            except Exception as vision_err:
+                # Vision call rejected (corrupt image bytes that passed
+                # the MIME filter, unexpected format, etc.). Fall back to
+                # text-only so the user still gets a profile.
+                print(
+                    f"  vision failed for {display_name} "
+                    f"({attached} imgs), falling back to text-only: {vision_err}",
+                    flush=True,
+                )
+                text = await _try_text_only()
+                return text
+            text = (response.text or "").strip()
+            return text if text else None
         else:
-            response = await gemini_client.aio.models.generate_content(
-                model=settings.gemini_model,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    temperature=0.3,
-                    # New schema has ~10 fields × 1-3 sentences = 300-600 words.
-                    # At ~1.3 tokens/word with markdown overhead, profiles can
-                    # land at 600-900 tokens. 1500 leaves headroom; cap exists
-                    # only to prevent runaway.
-                    max_output_tokens=1500,
-                ),
-            )
-        text = (response.text or "").strip()
-        return text if text else None
+            text = await _try_text_only()
+            return text
     except Exception as e:
         print(f"  ERROR profiling {display_name}: {e}", flush=True)
         return None
