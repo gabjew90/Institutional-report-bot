@@ -1311,13 +1311,40 @@ def record_analyst_trade(
     import json as _json
     conn = get_connection()
 
+    # Expiry-fill from prior open: when a close screenshot doesn't show
+    # the expiry (Robinhood close-confirmation cards sometimes show only
+    # ticker + gain%, with Gemini noting "expiry not visible"), look for
+    # the most-recent open/add with same (ticker, contract_type, strike)
+    # in the last 14 days and copy its expiry into this close row.
+    # Without this, the 4-tuple match against the open fails — the close
+    # looks orphan and the open stays "live" forever even though Abe
+    # explicitly closed it.
+    if is_trade and action == "close" and expiry is None and ticker:
+        inferred_expiry = conn.execute(
+            """SELECT expiry FROM analyst_trades
+               WHERE is_trade = 1
+                 AND ticker = ?
+                 AND COALESCE(contract_type, '') = COALESCE(?, '')
+                 AND COALESCE(strike, -1) = COALESCE(?, -1)
+                 AND expiry IS NOT NULL
+                 AND action IN ('open', 'add')
+                 AND posted_at < ?
+                 AND posted_at > datetime(?, '-14 days')
+               ORDER BY posted_at DESC
+               LIMIT 1""",
+            (ticker, contract_type, strike, posted_at, posted_at),
+        ).fetchone()
+        if inferred_expiry:
+            expiry = inferred_expiry[0]
+
     # Close-without-open detection: when logging a `close` row with no
     # prior `open` or `add` for the same contract in the last 30 days,
     # tag the row so the bot knows the entry isn't in the log. Catches
     # OCR-missed opens, opens older than the context window, and trades
     # that pre-date the watcher's deployment. Bot's voice rule uses the
     # tag to phrase carefully ("he flagged the exit — entry isn't in the
-    # log") instead of fabricating an entry.
+    # log") instead of fabricating an entry. Runs AFTER expiry-fill so
+    # an inferred expiry can rescue the 4-tuple match.
     inferred_status: str | None = None
     if is_trade and action == "close" and ticker and expiry:
         prior_open = conn.execute(
