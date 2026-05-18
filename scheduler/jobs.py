@@ -241,7 +241,6 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     # Local append happens per-call inside _answer_with_gemini; this job
     # batches the commits so we don't hammer the GitHub API per question.
     if settings.github_token:
-        from apscheduler.triggers.interval import IntervalTrigger
         scheduler.add_job(
             _ask_log_publish_job,
             trigger=IntervalTrigger(minutes=30),
