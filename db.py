@@ -1310,13 +1310,37 @@ def record_analyst_trade(
     """
     import json as _json
     conn = get_connection()
+
+    # Close-without-open detection: when logging a `close` row with no
+    # prior `open` or `add` for the same contract in the last 30 days,
+    # tag the row so the bot knows the entry isn't in the log. Catches
+    # OCR-missed opens, opens older than the context window, and trades
+    # that pre-date the watcher's deployment. Bot's voice rule uses the
+    # tag to phrase carefully ("he flagged the exit — entry isn't in the
+    # log") instead of fabricating an entry.
+    inferred_status: str | None = None
+    if is_trade and action == "close" and ticker and expiry:
+        prior_open = conn.execute(
+            """SELECT COUNT(*) FROM analyst_trades
+               WHERE is_trade = 1
+                 AND ticker = ?
+                 AND COALESCE(contract_type, '') = COALESCE(?, '')
+                 AND COALESCE(strike, -1) = COALESCE(?, -1)
+                 AND expiry = ?
+                 AND action IN ('open', 'add')
+                 AND posted_at > datetime(?, '-30 days')""",
+            (ticker, contract_type, strike, expiry, posted_at),
+        ).fetchone()
+        if prior_open[0] == 0:
+            inferred_status = "close_without_open"
+
     verb = "INSERT OR REPLACE" if replace else "INSERT OR IGNORE"
     conn.execute(
         f"""{verb} INTO analyst_trades
            (discord_message_id, discord_attachment_id, author, posted_at,
             image_url, caption, is_trade, ticker, contract_type, strike,
-            expiry, action, gain_pct, gemini_json)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            expiry, action, gain_pct, gemini_json, inferred_status)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (
             int(discord_message_id),
             int(discord_attachment_id),
@@ -1332,6 +1356,7 @@ def record_analyst_trade(
             action,
             gain_pct,
             _json.dumps(gemini_json) if gemini_json is not None else None,
+            inferred_status,
         ),
     )
     conn.commit()
@@ -1434,18 +1459,21 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
         gain_str = f" ({gain:+.1f}%)" if gain is not None else ""
         posted_at = (r.get("posted_at") or "")[:16].replace("T", " ")
 
-        # Surface expiry status so the bot doesn't claim phantom holdings
-        # on contracts past their expiry without a close alert.
-        expired_tag = ""
-        if r.get("inferred_status") == "expired_unknown":
+        # Surface inferred-status tags so the bot doesn't claim phantom
+        # holdings or fabricate entries that aren't in the log.
+        status_tag = ""
+        status = r.get("inferred_status")
+        if status == "expired_unknown":
             if action in ("open", "add"):
-                expired_tag = " [expired — no close alert]"
+                status_tag = " [expired — no close alert]"
             else:
-                expired_tag = " [expired]"
+                status_tag = " [expired]"
+        elif status == "close_without_open":
+            status_tag = " [exit only — no logged entry]"
 
         out_lines.append(
             f"- {posted_at} — {action} {ticker} "
-            f"{strike_str}{ct_suffix} {exp_short}{gain_str}{expired_tag}"
+            f"{strike_str}{ct_suffix} {exp_short}{gain_str}{status_tag}"
         )
 
     # Also surface currently-open positions explicitly so the bot doesn't
