@@ -505,6 +505,33 @@ async def _user_profile_refresh_job(bot=None):
                 f"profiles: "
                 f"{[p.get('display_name') or p.get('username') for p in pruned[:10]]}"
             )
+
+        # Publish a markdown snapshot to GitHub (pulse-data branch) so
+        # users can read the current dossier set without shell access.
+        # pulse-data is intentionally NOT the working branch — committing
+        # here doesn't trigger a Railway redeploy. Failure is non-fatal:
+        # if the bridge is misconfigured, the in-DB profiles are still
+        # the source of truth for /ask.
+        if settings.github_token:
+            try:
+                from github_bridge import client as gh_client
+                from datetime import datetime, timezone
+                md = db.export_user_profiles_markdown()
+                stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+                gh_client.put_file(
+                    path="profile-snapshots/user-profiles-snapshot.md",
+                    content=md,
+                    message=f"profiles: daily snapshot {stamp}",
+                )
+                log.info(
+                    "User-profile refresh: published snapshot to "
+                    "pulse-data:profile-snapshots/user-profiles-snapshot.md"
+                )
+            except Exception as e:
+                log.warning(
+                    f"User-profile refresh: snapshot publish failed "
+                    f"(non-fatal, DB profiles still current): {e}"
+                )
     except Exception as e:
         log.error(f"User-profile refresh failed: {e}", exc_info=True)
 
