@@ -1671,6 +1671,85 @@ def prune_user_profiles_to_top_n(n: int) -> list[dict]:
     return [dict(r) for r in targets]
 
 
+def append_ask_interaction(
+    *,
+    asker_display_name: str,
+    asker_username: str,
+    channel_name: str,
+    question: str,
+    answer: str,
+) -> str | None:
+    """Append one /ask interaction to today's local log file. Returns the
+    log file path (so a caller can later commit it to GitHub), or None on
+    any write failure (logged via standard logging — non-fatal).
+
+    Layout: one markdown file per UTC date under settings.pdf_download_dir's
+    sibling `/data/ask-logs/` directory. Newest entries are appended at
+    the bottom; chronological order preserved. Each entry has:
+
+      ## <UTC timestamp>
+      **Asker:** display_name (`username`) in #channel
+      **Q:** <question>
+      **A:**
+      <answer text>
+      ---
+
+    Used by the scheduler's `_ask_log_publish_job` to push the daily files
+    to GitHub (pulse-data branch) for browseable QC. Doesn't write to the
+    DB — pure file append. The lightweight ask_queries table still gets a
+    row separately for quota tracking.
+    """
+    import logging as _logging
+    from pathlib import Path as _Path
+    from datetime import datetime, timezone
+    _log = _logging.getLogger(__name__)
+    try:
+        now = datetime.now(timezone.utc)
+        date_str = now.strftime("%Y-%m-%d")
+        ts_str = now.strftime("%Y-%m-%d %H:%M:%S UTC")
+
+        # /data/ask-logs/ — sibling of /data/pdfs, on the same Railway volume
+        from config import settings as _settings
+        base_dir = _Path(_settings.pdf_download_dir).resolve().parent
+        log_dir = base_dir / "ask-logs"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_path = log_dir / f"{date_str}.md"
+
+        # Header on first write of the day
+        is_new = not log_path.exists()
+        asker_label = asker_display_name or asker_username or "?"
+        if (
+            asker_username
+            and asker_display_name
+            and asker_display_name.lower() != asker_username.lower()
+        ):
+            asker_label = f"{asker_display_name} (`{asker_username}`)"
+
+        # Truncate stupendously long Q/A to keep the daily file scannable.
+        # 6 KB per side is generous (the bot caps responses at 400 words /
+        # ~3 KB anyway; questions are usually < 500 chars). Beyond that we
+        # tail-mark and move on.
+        def _clip(s: str, limit: int = 6000) -> str:
+            s = (s or "").strip()
+            return s if len(s) <= limit else s[:limit] + "\n\n_…(truncated)_"
+
+        entry = (
+            (f"# /ask interactions — {date_str}\n\n" if is_new else "")
+            + f"## {ts_str}\n\n"
+            f"**Asker:** {asker_label} in #{channel_name or '(unknown)'}\n\n"
+            f"**Q:** {_clip(question, 1500)}\n\n"
+            "**A:**\n\n"
+            f"{_clip(answer)}\n\n"
+            "---\n\n"
+        )
+        with log_path.open("a", encoding="utf-8") as fh:
+            fh.write(entry)
+        return str(log_path)
+    except Exception as e:
+        _log.warning(f"append_ask_interaction failed (non-fatal): {e}")
+        return None
+
+
 def export_user_profiles_markdown() -> str:
     """Render every row in user_profiles as a single markdown document.
 

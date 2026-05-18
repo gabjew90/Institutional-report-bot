@@ -235,6 +235,21 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             f"daily refresh 05:00 {settings.timezone} "
             f"(delta threshold: {settings.profile_delta_threshold} new msgs)"
         )
+
+    # /ask interaction log publisher — every 30 min, push any local
+    # ask-logs/YYYY-MM-DD.md files to pulse-data branch for browseable QC.
+    # Local append happens per-call inside _answer_with_gemini; this job
+    # batches the commits so we don't hammer the GitHub API per question.
+    if settings.github_token:
+        from apscheduler.triggers.interval import IntervalTrigger
+        scheduler.add_job(
+            _ask_log_publish_job,
+            trigger=IntervalTrigger(minutes=30),
+            id="ask_log_publish",
+            name="/ask interaction log: publish to pulse-data",
+            max_instances=1,
+            misfire_grace_time=600,
+        )
         log.info(
             f"Analyst trade-log watcher active — channel "
             f"'{settings.analyst_channel_name}', daily expire sweep at 04:00 "
@@ -474,6 +489,64 @@ async def _bridge_fallback_sweeper_job():
         await fallback_sweeper_job()
     except Exception as e:
         log.error(f"Bridge fallback sweeper failed: {e}", exc_info=True)
+
+
+async def _ask_log_publish_job():
+    """Push today's (and yesterday's, near the boundary) /ask interaction
+    log files from /data/ask-logs/ to pulse-data:ask-logs/ on GitHub for
+    browseable QC. Runs every 30 min.
+
+    Idempotent: rewrites whatever's at the path with the current local
+    content. No-ops cheaply if the file is unchanged (GitHub's put_file
+    still commits but the content blob sha stays the same).
+    """
+    try:
+        from pathlib import Path
+        from datetime import datetime, timezone, timedelta
+        from config import settings as _settings
+        from github_bridge import client as gh_client
+
+        base_dir = Path(_settings.pdf_download_dir).resolve().parent
+        log_dir = base_dir / "ask-logs"
+        if not log_dir.exists():
+            log.debug("ask-log publish: no local log dir, nothing to push")
+            return
+
+        # Push today's + yesterday's files — covers any late writes near
+        # the UTC date boundary. Older days were already pushed (or never
+        # written if the bot was down then) and don't need re-pushing.
+        now = datetime.now(timezone.utc)
+        today = now.strftime("%Y-%m-%d")
+        yesterday = (now - timedelta(days=1)).strftime("%Y-%m-%d")
+        targets = [today, yesterday]
+
+        pushed = 0
+        for date_str in targets:
+            local_path = log_dir / f"{date_str}.md"
+            if not local_path.exists():
+                continue
+            try:
+                content = local_path.read_text(encoding="utf-8")
+            except Exception as e:
+                log.warning(f"ask-log publish: couldn't read {local_path}: {e}")
+                continue
+            if not content.strip():
+                continue
+            try:
+                gh_client.put_file(
+                    path=f"ask-logs/{date_str}.md",
+                    content=content,
+                    message=f"ask-log: snapshot {date_str}",
+                )
+                pushed += 1
+            except Exception as e:
+                log.warning(
+                    f"ask-log publish: GitHub commit failed for {date_str}: {e}"
+                )
+        if pushed:
+            log.info(f"ask-log publish: pushed {pushed} day file(s) to pulse-data")
+    except Exception as e:
+        log.error(f"ask-log publish job failed: {e}", exc_info=True)
 
 
 async def _user_profile_refresh_job(bot=None):
