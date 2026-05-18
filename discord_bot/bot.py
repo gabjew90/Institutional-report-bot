@@ -134,7 +134,7 @@ A real question gets a real answer, even if the asker is degenerate, even if the
 **When in doubt: default to Type 1 or Type 2.** The cost of a slightly drier response on a sharp question is low. The cost of going Type 3 on a paying customer who was just asking bluntly is high — they don't deserve a clapback for wanting clarity.
 
 **How to handle when Type 3 ACTUALLY fires:**
-- **HARD LENGTH CAP: 80 words, one paragraph max.** Type 3 clapbacks are tight. Not three paragraphs of armchair psychology. Not multi-stage accusations. One paragraph, deliver the point, stop. The attacker is one person you're correcting — not a thesis you're refuting.
+- **HARD LENGTH CAP: 40 words, one short paragraph max.** Type 3 clapbacks are tight. Not three paragraphs of armchair psychology. Not multi-stage accusations. 2-3 sentences. The attacker is one person you're correcting — not a thesis you're refuting. If you can't make the point in 40 words, don't make it.
 - **Push back proportional to the attack, not nuclear.** A passive-aggressive jab gets a one-line correction. A direct insult gets one paragraph. There's no "gloves off / merciless" register — even legitimate Type 3 is calibrated, not flattening.
 - **Banned Type 3 anti-patterns (observed live):**
   - ❌ Armchair psychology: "You're not really asking X, you're really wanting Y" / "you're here to find a reason to justify Z"
@@ -263,7 +263,7 @@ Know who's coping, who's consensus, who's the lone holdout. When the room is one
 
 ## LENGTH
 
-**Hard cap: 400 words. Target 200–300.** Both modes, every response. Plan to fit before writing. Never trail off mid-sentence.
+**Hard cap: 200 words. Target 100–150.** Every response, every type. Plan to fit before writing. Never trail off mid-sentence. Short and sharp beats long and complete every time.
 
 ---
 
@@ -324,6 +324,61 @@ def _host_is_blocked(url: str) -> bool:
     except Exception:
         return False
     return any(host == d or host.endswith("." + d) for d in _USER_URL_BLOCKED_DOMAINS)
+
+
+async def _resolve_mentions_in_text(bot, guild, text: str) -> str:
+    """Replace raw `<@USER_ID>` / `<@!USER_ID>` Discord mentions in `text`
+    with readable `@DisplayName (username)` form so Gemini can match them
+    against the WHO'S TALKING block (also keyed by username) and the
+    chat-context speaker labels.
+
+    Without this, the bot sees an opaque numeric ID in the question and
+    can't tell which profile in WHO'S TALKING corresponds to it — leading
+    to drift like "asker tagged @BK → bot answered about Abe."
+
+    Tries the guild member cache first (has nicknames), falls back to the
+    user cache, then an API fetch. Any unresolvable ID is left as-is.
+    """
+    import re
+    if not text or "<@" not in text:
+        return text
+
+    pattern = re.compile(r"<@!?(\d+)>")
+    user_ids: list[int] = []
+    for m in pattern.finditer(text):
+        try:
+            user_ids.append(int(m.group(1)))
+        except ValueError:
+            continue
+    if not user_ids:
+        return text
+
+    id_to_name: dict[int, str] = {}
+    for uid in set(user_ids):
+        member = guild.get_member(uid) if guild else None
+        user = member or (bot.get_user(uid) if bot else None)
+        if user is None and bot is not None:
+            try:
+                user = await bot.fetch_user(uid)
+            except Exception:
+                user = None
+        if user is None:
+            continue
+        dn = getattr(user, "display_name", None) or getattr(user, "name", "") or ""
+        uname = getattr(user, "name", "") or ""
+        if dn and uname and dn.lower() != uname.lower():
+            id_to_name[uid] = f"@{dn} ({uname})"
+        else:
+            id_to_name[uid] = f"@{dn or uname}"
+
+    def _sub(match):
+        try:
+            uid = int(match.group(1))
+        except ValueError:
+            return match.group(0)
+        return id_to_name.get(uid, match.group(0))
+
+    return pattern.sub(_sub, text)
 
 
 async def _maybe_fetch_user_urls(question: str) -> str:
@@ -1436,6 +1491,12 @@ def create_bot() -> commands.Bot:
                 chat_author_ids + ([user_id] if user_id else []) + mentioned_ids
             ))
             asker = interaction.user
+            # Resolve raw <@USER_ID> mentions in the question to readable
+            # @DisplayName (username) so Gemini can connect them to the
+            # WHO'S TALKING profiles (also keyed by username).
+            question = await _resolve_mentions_in_text(
+                bot, interaction.guild, question
+            )
             embed = await _answer_with_gemini(
                 question,
                 user_id,
@@ -1530,6 +1591,11 @@ def create_bot() -> commands.Bot:
                     except Exception as e:
                         log.info(f"/ask: couldn't fetch replied-to message: {e}")
 
+                # Resolve raw <@USER_ID> mentions in the question text
+                # so Gemini can connect tagged users to WHO'S TALKING.
+                question = await _resolve_mentions_in_text(
+                    bot, message.guild, question
+                )
                 embed = await _answer_with_gemini(
                     question,
                     message.author.id,
