@@ -1,0 +1,315 @@
+{
+  "pulse_date": "2026-05-18",
+  "window_label": "since-last-daily (2026-05-15T13:27)",
+  "themes": [
+    {
+      "theme": "oil supply disruption",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 11
+      },
+      "consensus_view": "Banks across desks flag Persian Gulf and Strait of Hormuz oil supply disruption as a live macro catalyst, but only ING stakes a directional view that the market is underpricing it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference Strait of Hormuz / Persian Gulf supply disruption as an active oil-market driver.",
+          "banks_for": [
+            "ING",
+            "ANZ Research",
+            "Academy Securities",
+            "Bank of America",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Mizuho",
+            "Morgan Stanley",
+            "One River Asset Management",
+            "Rabobank",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "The oil market continues to reprice ongoing supply disruptions",
+            "Strait of Hormuz oil supply",
+            "Strait of Hormuz blockade",
+            "Strait of Hormuz transit",
+            "Strait of Hormuz disruption",
+            "Strait of Hormuz supply risks"
+          ]
+        },
+        {
+          "claim": "Banks frame the disruption as a broader energy / supply shock with inflationary and stagflationary implications.",
+          "banks_for": [
+            "JPMorgan",
+            "Mizuho",
+            "Morgan Stanley",
+            "One River Asset Management",
+            "Rabobank",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Energy supply shock",
+            "Middle East conflict energy shock",
+            "Stagflationary supply shock",
+            "Energy shock inflation",
+            "Iran war oil price shock",
+            "Energy price stress"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai hyperscaler capex cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 2,
+        "neutral": 5
+      },
+      "consensus_view": "Most banks see the AI hyperscaler spending boom as a real, structural earnings driver, but a minority warn that hedge funds are crowded into the same trade and capex is eating nearly all of big tech's cash flow.",
+      "facts_agreed": [
+        {
+          "claim": "AI capex spending is large, accelerating, and a primary driver of S&P 500 earnings and index performance.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley",
+            "JPMorgan",
+            "RBC Capital Markets",
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "AI spending meanwhile still looks extremely strong.",
+            "The upward revision to capex expectations has been dramatic.",
+            "AI is very real and the revenues are staggering",
+            "AI component of S&P 500 earnings is sizable, strong, and generally insulated against Middle East impacts.",
+            "AI infrastructure buildout theme is currently superseding traditional cyclical considerations.",
+            "AI investment boom continues to drive a powerful capex cycle"
+          ]
+        },
+        {
+          "claim": "AI-linked spending is structural rather than cyclical and supports US growth.",
+          "banks_for": [
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "AI-related spending is more structural than cyclical and provides resiliency amid geopolitical uncertainty.",
+            "AI capex has exhibited limited cyclicality and has accounted for the bulk of recent growth",
+            "The AI capex boom is driving US growth along with wealth-fueled consumption spending."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI rally is fundamentally justified or a fragile, crowded melt-up",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley",
+            "RBC Capital Markets"
+          ],
+          "for_evidence": "the recent market rally has been driven primarily by surging near-term earnings estimates",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "The AI melt-up is becoming increasingly fragile."
+        },
+        {
+          "claim": "whether hyperscaler capex intensity is sustainable or a balance-sheet risk",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "fundamentals remain quite strong",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "Cloud capex is expected to consume nearly 95\u2013100% of operating cash flow"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "Goldman Sachs",
+          "claim": "2026 hyperscaler capex",
+          "deadline": "2026"
+        },
+        {
+          "bank": "Morgan Stanley",
+          "claim": "2027 hyperscaler capex estimate",
+          "deadline": "2027"
+        }
+      ]
+    },
+    {
+      "theme": "rate cut repricing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 3,
+        "neutral": 3
+      },
+      "consensus_view": "Most banks see the Fed staying on hold or even leaning hawkish as inflation and oil risks push rate-cut hopes further out, though a couple of desks think the market has already overshot to the hawkish side.",
+      "facts_agreed": [
+        {
+          "claim": "Hot inflation and resilient US data are pushing rate-cut expectations out and lifting yields.",
+          "banks_for": [
+            "Cr\u00e9dit Agricole CIB",
+            "The Market Ear",
+            "Mizuho",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Recent labour market and inflation data does not change the near-term policy rate trajectory",
+            "Fed rate-hike expectations soared this week amid rising inflation fears",
+            "US data acceleration, with the risk of oil prices staying stubbornly higher",
+            "higher for longer rates is a problem for equities"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the market has gone too far in pricing a hawkish Fed",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "markets are pricing a more hawkish Fed than our JPM forecasts",
+          "banks_against": [
+            "The Market Ear",
+            "Mizuho"
+          ],
+          "against_evidence": "Fed rate-hike expectations soared this week amid rising inflation fears"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us china xi trump summit",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Banks across seven desks flag the Trump-Xi summit and US-China trade dynamics as a live near-term macro catalyst, but none has staked a directional view on the outcome.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the Trump-Xi summit and US-China trade negotiations as an upcoming catalyst worth tracking.",
+          "banks_for": [
+            "Barclays",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "Morgan Stanley",
+            "Rabobank",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Xi-Trump summit",
+            "Xi-Trump trade agreements",
+            "Trump/Xi summit",
+            "Trump-Xi summit lack of progress",
+            "Trump-Xi talks",
+            "Trump-Xi summit",
+            "US-China trade tariff reduction",
+            "Trump-Xi summit in Beijing",
+            "US-China agricultural trade deal"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "US strikes on Iranian military targets",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Six banks reference US strikes on Iranian military targets as a live geopolitical risk backdrop, but no desk has staked a directional view on how it resolves or what to trade off it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the US-Iran conflict and US strikes on Iranian military targets as an active geopolitical overhang.",
+          "banks_for": [
+            "Bank of America",
+            "Goldman Sachs",
+            "ING",
+            "Mizuho",
+            "Mizuho International",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "US-Iran geopolitical deadlock",
+            "US-Iran conflict",
+            "Iran conflict and US strikes",
+            "US strikes on Iranian military targets",
+            "Iran conflict",
+            "Iran conflict escalation risks"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh fed chair",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Multiple banks reference Kevin Warsh's nomination and incoming role as Fed Chair as a live macro subject, but none have staked a directional market view on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Several banks flag Kevin Warsh's transition to Fed Chair as a notable ongoing macro development.",
+          "banks_for": [
+            "ANZ Research",
+            "Bank of America",
+            "Bloomberg",
+            "Morgan Stanley",
+            "One River Asset Management"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh's leadership at the Fed",
+            "Kevin Warsh Fed Chair confirmation",
+            "Kevin Warsh Fed Chair transition",
+            "Kevin Warsh incoming Fed Chair",
+            "Kevin Warsh Fed Chair nomination"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "structurally higher bond yields",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "One desk pushes back on the popular view that bond yields will stay structurally higher, while the rest of the corpus only mentions the topic in passing without taking a side.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "structurally higher bond yields is the right regime call",
+          "banks_for": [],
+          "for_evidence": "",
+          "banks_against": [
+            "TS Lombard"
+          ],
+          "against_evidence": "all this talk about a new regime of structurally higher bond yields is probably wrong"
+        }
+      ],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "equity market breadth",
+      "reason": "facts_contested for_evidence not in inputs: \"it likely won't be plain sailing holding on to stocks in the coming months\""
+    }
+  ]
+}
