@@ -1479,14 +1479,30 @@ def compute_abe_win_loss_summary(days: int = 30) -> dict:
         1 for r in closed_rows if (r["gain_pct"] is None or r["gain_pct"] == 0)
     )
 
-    silent_loss_count = conn.execute(
-        """SELECT COUNT(*) AS c FROM analyst_trades
+    silent_loss_rows = conn.execute(
+        """SELECT ticker, contract_type, strike, expiry, posted_at
+           FROM analyst_trades
            WHERE is_trade = 1
              AND action IN ('open', 'add')
              AND inferred_status = 'expired_unknown'
-             AND posted_at > ?""",
+             AND posted_at > ?
+           ORDER BY expiry DESC""",
         (cutoff,),
-    ).fetchone()["c"]
+    ).fetchall()
+    silent_loss_count = len(silent_loss_rows)
+
+    # Specific winning closes — so the bot doesn't have to recompute from
+    # the trades list when asked for a breakdown.
+    win_rows = conn.execute(
+        """SELECT ticker, contract_type, strike, expiry, gain_pct, posted_at
+           FROM analyst_trades
+           WHERE is_trade = 1
+             AND action = 'close'
+             AND gain_pct > 0
+             AND posted_at > ?
+           ORDER BY posted_at DESC""",
+        (cutoff,),
+    ).fetchall()
 
     total_wins = len(win_gains)
     total_losses = len(doc_loss_gains) + silent_loss_count
@@ -1507,6 +1523,8 @@ def compute_abe_win_loss_summary(days: int = 30) -> dict:
             round(sum(doc_loss_gains) / len(doc_loss_gains), 1)
             if doc_loss_gains else None
         ),
+        "win_trades": [dict(r) for r in win_rows],
+        "silent_expiry_trades": [dict(r) for r in silent_loss_rows],
     }
 
 
@@ -1610,6 +1628,35 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
             out_lines.append(f"- Avg win: {wl['avg_win_pct']:+.1f}%")
         if wl["avg_loss_pct"] is not None:
             out_lines.append(f"- Avg documented loss: {wl['avg_loss_pct']:+.1f}%")
+
+        # Specific trade lists — so the bot doesn't fabricate which
+        # tickers were wins vs silent-expiry losses when asked for the
+        # breakdown. Each contract rendered as TICKER STRIKE(C/P) MM-DD.
+        def _fmt_contract(r: dict) -> str:
+            tk = r.get("ticker") or "?"
+            ct = (r.get("contract_type") or "").lower()
+            ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
+            strike = r.get("strike")
+            strike_str = (
+                f"{int(strike) if strike == int(strike) else strike}"
+                if strike is not None else "?"
+            )
+            expiry = r.get("expiry") or ""
+            exp_short = expiry[5:] if len(expiry) >= 10 else expiry
+            return f"{tk} {strike_str}{ct_suffix} {exp_short}"
+
+        if wl.get("win_trades"):
+            out_lines.append("- Winning closes (specific contracts):")
+            for w in wl["win_trades"][:25]:
+                gain = w.get("gain_pct")
+                gain_str = f" ({gain:+.1f}%)" if gain is not None else ""
+                out_lines.append(f"  · {_fmt_contract(w)}{gain_str}")
+        if wl.get("silent_expiry_trades"):
+            out_lines.append(
+                "- Silent-expiry losses (opens with no close, expired):"
+            )
+            for s in wl["silent_expiry_trades"][:25]:
+                out_lines.append(f"  · {_fmt_contract(s)}")
 
     return "\n".join(out_lines)
 
