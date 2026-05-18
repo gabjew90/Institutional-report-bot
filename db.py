@@ -1449,6 +1449,67 @@ def get_current_analyst_positions() -> list[dict]:
     return [dict(r) for r in rows]
 
 
+def compute_abe_win_loss_summary(days: int = 30) -> dict:
+    """Compute Abe's W/L tally over the last N days under the rule:
+    expirations-without-close count as losses.
+
+    - Win  = action='close' AND gain_pct > 0
+    - Loss = action='close' AND gain_pct < 0
+             OR open/add row with inferred_status='expired_unknown'
+             (he opened but never posted a close — silent expiry, treat as L)
+    - Flat = action='close' AND gain_pct == 0 (rare)
+
+    Returns a dict with counts, win rate, avg win, avg loss. Used by the
+    /ask context block so the bot has authoritative numbers without
+    recomputing from scratch on every question.
+    """
+    cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
+    conn = get_connection()
+
+    closed_rows = conn.execute(
+        """SELECT gain_pct FROM analyst_trades
+           WHERE is_trade = 1
+             AND action = 'close'
+             AND posted_at > ?""",
+        (cutoff,),
+    ).fetchall()
+    win_gains = [r["gain_pct"] for r in closed_rows if (r["gain_pct"] or 0) > 0]
+    doc_loss_gains = [r["gain_pct"] for r in closed_rows if (r["gain_pct"] or 0) < 0]
+    flat_count = sum(
+        1 for r in closed_rows if (r["gain_pct"] is None or r["gain_pct"] == 0)
+    )
+
+    silent_loss_count = conn.execute(
+        """SELECT COUNT(*) AS c FROM analyst_trades
+           WHERE is_trade = 1
+             AND action IN ('open', 'add')
+             AND inferred_status = 'expired_unknown'
+             AND posted_at > ?""",
+        (cutoff,),
+    ).fetchone()["c"]
+
+    total_wins = len(win_gains)
+    total_losses = len(doc_loss_gains) + silent_loss_count
+    decided = total_wins + total_losses
+    win_rate = (total_wins / decided * 100) if decided > 0 else 0.0
+
+    return {
+        "days": days,
+        "wins": total_wins,
+        "losses_documented": len(doc_loss_gains),
+        "losses_silent_expiry": silent_loss_count,
+        "total_losses": total_losses,
+        "flat": flat_count,
+        "decided": decided,
+        "win_rate_pct": round(win_rate, 1),
+        "avg_win_pct": round(sum(win_gains) / total_wins, 1) if total_wins else None,
+        "avg_loss_pct": (
+            round(sum(doc_loss_gains) / len(doc_loss_gains), 1)
+            if doc_loss_gains else None
+        ),
+    }
+
+
 def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
     """Render the last N hours of trade-tagged rows as a context block for /ask.
 
@@ -1525,6 +1586,30 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
             out_lines.append(
                 f"- {ticker} {strike_str}{ct_suffix} {exp_short}{gain_str}"
             )
+
+    # W/L tally — surface authoritative numbers so the bot doesn't have
+    # to recompute on every "what's his win rate?" question. Convention:
+    # expirations-without-close count as losses (Abe rarely screenshots
+    # losers; they leak out as expired open/add rows tagged
+    # `expired_unknown`).
+    wl = compute_abe_win_loss_summary(days=30)
+    if wl["decided"] > 0:
+        out_lines.append("")
+        out_lines.append(
+            f"ABE'S W/L TALLY (last {wl['days']}d — expirations-without-close counted as L):"
+        )
+        out_lines.append(
+            f"- **{wl['wins']}W / {wl['total_losses']}L** "
+            f"(documented: {wl['losses_documented']}L, "
+            f"silent expiry: {wl['losses_silent_expiry']}L)"
+        )
+        out_lines.append(
+            f"- Win rate: {wl['win_rate_pct']}% on {wl['decided']} decided trades"
+        )
+        if wl["avg_win_pct"] is not None:
+            out_lines.append(f"- Avg win: {wl['avg_win_pct']:+.1f}%")
+        if wl["avg_loss_pct"] is not None:
+            out_lines.append(f"- Avg documented loss: {wl['avg_loss_pct']:+.1f}%")
 
     return "\n".join(out_lines)
 
