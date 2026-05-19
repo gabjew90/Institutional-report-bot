@@ -430,13 +430,14 @@ async def _generate_profile(
             )
             return None, None, None, None
 
-    # 8000 tokens of output headroom. Thinking models burn most of the
-    # budget on internal reasoning that we can't directly observe.
-    # gemini-2.5-flash was hitting MAX_TOKENS at 900-1100 chars with
-    # a 4000-token budget — meaning ~3000 tokens went to thinking and
-    # ~250 to visible output. 8000 gives the visible output room to
-    # complete even if the model's thinking allocation is fixed.
-    _MAX_OUTPUT_TOKENS = 8000
+    # 16000 tokens of output headroom. Thinking models burn most of the
+    # budget on internal reasoning we can't directly observe. At 8000
+    # tokens, the new "WHO YOU'RE PROFILING" prompt section pushed some
+    # profiles back into MAX_TOKENS truncation (250-580 chars). 16000
+    # gives the visible output enough room to complete even if the
+    # model's thinking allocation is fixed at several thousand tokens.
+    # Most models cap at 16384 — 16000 stays safely under that.
+    _MAX_OUTPUT_TOKENS = 16000
 
     # Gemini 2.5/3.x Flash models use "thinking" tokens before emitting
     # visible output — those count against max_output_tokens. The API
