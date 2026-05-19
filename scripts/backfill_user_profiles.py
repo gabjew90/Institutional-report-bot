@@ -418,18 +418,25 @@ async def _generate_profile(
             )
             return None, None, None, None
 
-    # 4000 tokens of output headroom — JSON includes a ~2500-char
-    # profile_text + trader_score + trader_rationale + racial_humor_score.
-    # Model max is typically 8192.
-    _MAX_OUTPUT_TOKENS = 4000
+    # 8000 tokens of output headroom. Thinking models burn most of the
+    # budget on internal reasoning that we can't directly observe.
+    # gemini-2.5-flash was hitting MAX_TOKENS at 900-1100 chars with
+    # a 4000-token budget — meaning ~3000 tokens went to thinking and
+    # ~250 to visible output. 8000 gives the visible output room to
+    # complete even if the model's thinking allocation is fixed.
+    _MAX_OUTPUT_TOKENS = 8000
 
-    # gemini-2.5-flash uses "thinking" tokens BEFORE emitting visible
-    # output — those count against max_output_tokens. Without disabling,
-    # the model burned 3500+ tokens on chain-of-thought and emitted only
-    # 500-700 chars of truncated JSON. Profile generation is a structured
-    # extraction task; no reasoning chain needed — disable thinking so
-    # the entire budget goes to actual output.
-    _THINKING_CONFIG = types.ThinkingConfig(thinking_budget=0)
+    # gemini-2.5-flash / 3.1-flash use "thinking" tokens BEFORE emitting
+    # visible output — those count against max_output_tokens. Earlier
+    # runs proved that `thinkingBudget=0` is silently ignored by the
+    # API (still MAX_TOKENS at 900-1100 chars). Setting both budget=0
+    # AND thinkingLevel=MINIMAL — different paths in the API may honor
+    # one or the other. Profile generation is structured extraction;
+    # no reasoning chain is needed.
+    _THINKING_CONFIG = types.ThinkingConfig(
+        thinkingBudget=0,
+        thinkingLevel=types.ThinkingLevel.MINIMAL,
+    )
 
     # Internal calibration tool — bot characterizes how users talk, it
     # doesn't moderate or publish raw content. Default Gemini safety
