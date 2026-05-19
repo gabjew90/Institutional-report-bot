@@ -97,7 +97,7 @@ class Settings(BaseSettings):
     # 100 over the 30-day window ≈ 3 messages/day, which is the rough
     # cutoff for "established regular vs casual passer-by." Adjust based
     # on how many profiles you want to maintain.
-    profile_min_messages: int = 100
+    profile_min_messages: int = 30
     # How many of each user's most-recent messages to feed into Gemini
     # for profile generation. Higher = richer profile but more tokens.
     # At 500 even a 4000+ msg/week heavy yapper gets ~3 days of context
