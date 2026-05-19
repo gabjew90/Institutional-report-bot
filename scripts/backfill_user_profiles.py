@@ -520,13 +520,15 @@ async def _generate_profile(
     ) -> tuple[
         tuple[str | None, int | None, str | None, int | None], str | None
     ]:
-        # Text-only path uses settings.gemini_model directly — the
-        # primary model env var (gemini-3.1-flash-lite-preview in prod)
-        # is what produces full 2400-char profiles. The GA variant
-        # (gemini_vision_model) produced 200-1000 char truncated outputs
-        # in diagnostic A/B testing. Vision path stays on the GA model
-        # when re-enabled; text-only path stays on the preview.
-        text_model = settings.gemini_model
+        # Text-only path hardcodes "gemini-3.1-flash-lite-preview" —
+        # the only model verified to produce full 2400-char structured
+        # profile outputs. The GA "gemini-3.1-flash-lite" returns 4-char
+        # garbage (literal "null" placeholder values) for the backfill's
+        # full-context prompts despite working fine with simple prompts.
+        # We deliberately bypass settings.gemini_model here so the
+        # backfill stays on the proven model even if the env var is
+        # later flipped for /ask or pulse synthesis.
+        text_model = "gemini-3.1-flash-lite-preview"
         resp = await gemini_client.aio.models.generate_content(
             model=text_model,
             contents=prompt,
