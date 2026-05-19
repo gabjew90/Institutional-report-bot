@@ -193,6 +193,7 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             expiry TEXT,           -- YYYY-MM-DD
             action TEXT,           -- open | add | trim | close | viewing | unclear
             gain_pct REAL,
+            price REAL,            -- entry/exit price (midpoint of bid/ask when stats screen)
             inferred_status TEXT,  -- e.g. 'expired_unknown' (set by daily cron)
             gemini_json TEXT,      -- raw OCR JSON for forensics
             created_at TEXT NOT NULL DEFAULT (datetime('now')),
@@ -257,6 +258,8 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         ("trader_rationale", "ALTER TABLE user_profiles ADD COLUMN trader_rationale TEXT"),
         ("slur_examples", "ALTER TABLE user_profiles ADD COLUMN slur_examples TEXT"),
         ("trader_examples", "ALTER TABLE user_profiles ADD COLUMN trader_examples TEXT"),
+        # analyst_trades migration: add price column on existing deploys.
+        ("price", "ALTER TABLE analyst_trades ADD COLUMN price REAL"),
     ]:
         try:
             conn.execute(ddl)
@@ -1339,6 +1342,7 @@ def record_analyst_trade(
     expiry: str | None = None,
     action: str | None = None,
     gain_pct: float | None = None,
+    price: float | None = None,
     replace: bool = False,
 ) -> None:
     """Insert an analyst-trade row.
@@ -1411,8 +1415,8 @@ def record_analyst_trade(
         f"""{verb} INTO analyst_trades
            (discord_message_id, discord_attachment_id, author, posted_at,
             image_url, caption, is_trade, ticker, contract_type, strike,
-            expiry, action, gain_pct, gemini_json, inferred_status)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            expiry, action, gain_pct, price, gemini_json, inferred_status)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (
             int(discord_message_id),
             int(discord_attachment_id),
@@ -1427,6 +1431,7 @@ def record_analyst_trade(
             expiry,
             action,
             gain_pct,
+            price,
             _json.dumps(gemini_json) if gemini_json is not None else None,
             inferred_status,
         ),

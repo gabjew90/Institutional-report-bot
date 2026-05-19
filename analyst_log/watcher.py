@@ -96,6 +96,7 @@ async def watch_message(bot: discord.Client, message: discord.Message) -> None:
                 expiry=extracted.get("expiry") if is_trade else None,
                 action=extracted.get("action") if is_trade else None,
                 gain_pct=extracted.get("gain_pct") if is_trade else None,
+                price=extracted.get("price") if is_trade else None,
             )
         except Exception as e:
             log.error(f"Analyst log: DB insert failed: {e}", exc_info=True)
@@ -164,6 +165,7 @@ def _format_announce_line(
     expiry = extracted.get("expiry") or ""
     action = (extracted.get("action") or "?").upper()
     gain_pct = extracted.get("gain_pct")
+    price = extracted.get("price")
     screenshot_type = extracted.get("screenshot_type") or ""
     caption = (source_msg.content or "").strip()
 
@@ -184,6 +186,11 @@ def _format_announce_line(
         channel_link = f"**#{channel_name}**"
 
     line = f"📝 Logged: {channel_link} {action} **{contract_str}**"
+    if price is not None:
+        try:
+            line += f" @{float(price):.2f}"
+        except (TypeError, ValueError):
+            pass
     if gain_pct is not None:
         line += f" ({gain_pct:+.1f}%)"
     if screenshot_type == "stats_screen" and action == "VIEWING":

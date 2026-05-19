@@ -63,7 +63,16 @@ ABE'S TYPICAL POSTING FORMAT — a Robinhood notification card showing:
 
 These are NOTIFICATION cards (current P&L of an existing position), NOT order \
 execution tickets. He DOES NOT post quantity, entry price, exit price, or \
-spot price. The "Buy" pill is the ORIGINAL order type, not the current action.
+spot price on the cards themselves. The "Buy" pill is the ORIGINAL order type, \
+not the current action.
+
+When Abe DOES post a stats screen for a specific contract (Bid / Ask / Mark / \
+IV visible), extract a `price` value: compute the **midpoint of bid and ask** \
+((bid + ask) / 2, rounded to 2 decimals) as a fair proxy for the fill price he \
+likely paid or expected. Use Mark if Bid/Ask aren't both visible. Skip if \
+neither bid/ask nor mark is legible. For notification cards (no bid/ask shown), \
+leave price=null — the entry price isn't derivable from the gain-pill alone. \
+For order tickets with an explicit price, use that price directly.
 
 He sometimes also posts:
 - A stats/quote screen (Bid/Ask/Mark/IV) when viewing an option to buy
@@ -175,6 +184,7 @@ For trade screenshots:
   "action": "open | add | trim | close | viewing | unclear",
   "action_source": "caption | image | both",
   "gain_pct": number or null (the +/-N% pill, if shown),
+  "price": number or null (midpoint of bid/ask on stats screens, or explicit price on order tickets — null on notification cards),
   "caption_summary": "one-line plain English combining what's shown + the caption",
   "confidence": "high | medium | low",
   "notes": "anything notable — Robinhood UI ambiguity, partial info, etc"
