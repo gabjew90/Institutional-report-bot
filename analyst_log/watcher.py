@@ -24,6 +24,36 @@ from config import settings
 log = logging.getLogger(__name__)
 
 
+async def _fetch_reply_parent_caption(
+    message: discord.Message,
+) -> str | None:
+    """If `message` is a Discord reply, fetch the parent message and
+    return its content (caption). Returns None if not a reply, if
+    fetch fails, or the parent has no content.
+
+    Used to enrich caption-only and image extractions with chain
+    context — e.g. a reply 'closed' on an earlier 'BTO MSFT 430C 5/20
+    @3.65' post resolves to a close of that same contract.
+    """
+    ref = getattr(message, "reference", None)
+    if not ref:
+        return None
+    parent_id = getattr(ref, "message_id", None)
+    if not parent_id:
+        return None
+    # Prefer the cached resolved message if discord.py already has it
+    resolved = getattr(ref, "resolved", None)
+    if isinstance(resolved, discord.Message):
+        return (resolved.content or "").strip() or None
+    # Otherwise fetch from the channel
+    try:
+        parent = await message.channel.fetch_message(parent_id)
+    except Exception as e:
+        log.debug(f"Analyst log: reply-parent fetch failed for {parent_id}: {e}")
+        return None
+    return (parent.content or "").strip() or None
+
+
 async def watch_message(
     bot: discord.Client,
     message: discord.Message,
@@ -68,10 +98,17 @@ async def watch_message(
         getattr(message.author, "display_name", None) or message.author.name
     )
 
+    # Reply-chain context: if this message is a Discord reply, fetch
+    # the parent's caption so terse follow-ups like "closed" or "sold
+    # @19" can be resolved against the position the parent established.
+    parent_caption = await _fetch_reply_parent_caption(message)
+
     # Caption-only path: a message with NO image attachments but a
     # non-empty caption goes through text-only extraction. The caption
-    # must contain ticker + strike + expiry — otherwise the extraction
-    # path tags is_trade=false and we skip recording.
+    # must contain ticker + strike (expiry defaults to today/0DTE) —
+    # otherwise the extraction path tags is_trade=false and we skip
+    # recording. Reply-chain context (parent_caption) is passed through
+    # so 'closed' style follow-ups resolve correctly.
     if not message.attachments:
         if not caption:
             return
@@ -80,7 +117,9 @@ async def watch_message(
         synthetic_att_id = 0
         if db.analyst_trade_exists(message.id, synthetic_att_id):
             return
-        extracted = await extract_trade_from_caption(caption)
+        extracted = await extract_trade_from_caption(
+            caption, parent_caption=parent_caption
+        )
         if extracted is None:
             log.warning(
                 f"Analyst log: caption extraction returned None — "
@@ -132,7 +171,9 @@ async def watch_message(
             log.error(f"Analyst log: failed to read attachment {att.url}: {e}")
             continue
 
-        extracted = await extract_trade_from_image(img_bytes, ct, caption)
+        extracted = await extract_trade_from_image(
+            img_bytes, ct, caption, parent_caption=parent_caption
+        )
         if extracted is None:
             # OCR failed entirely — don't insert a row, so we'll retry on
             # the next bot restart. (Rare; usually means Gemini call errored.)

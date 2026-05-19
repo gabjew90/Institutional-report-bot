@@ -205,13 +205,26 @@ async def extract_trade_from_image(
     image_bytes: bytes,
     mime_type: str,
     caption: str,
+    parent_caption: str | None = None,
 ) -> dict | None:
     """Run Gemini on an analyst trade screenshot. Returns parsed JSON dict
     on success, None on any failure (logged). Failures are non-fatal —
     the watcher should continue processing other images.
+
+    If `parent_caption` is set, it's prepended to the caption as reply-
+    chain context. Lets a reply like 'out' on an earlier 'BTO MSFT 430C'
+    post resolve to a close of that contract when the image alone is
+    ambiguous.
     """
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    prompt = build_prompt(today_iso, caption)
+    if parent_caption and parent_caption.strip():
+        composed_caption = (
+            f"[REPLY-PARENT (caller's earlier post):] {parent_caption.strip()[:500]}\n"
+            f"[CURRENT CAPTION:] {caption}"
+        )
+    else:
+        composed_caption = caption
+    prompt = build_prompt(today_iso, composed_caption)
     try:
         client = _get_client()
         response = await client.aio.models.generate_content(
@@ -335,10 +348,17 @@ Output the JSON object only.
 """
 
 
-async def extract_trade_from_caption(caption: str) -> dict | None:
+async def extract_trade_from_caption(
+    caption: str,
+    parent_caption: str | None = None,
+) -> dict | None:
     """Caption-only extraction path for callers who post pure text
-    alerts without a screenshot. Requires ticker + strike + expiry
-    to be extractable; otherwise returns is_trade=false.
+    alerts without a screenshot. Requires ticker + strike;
+    expiry defaults to today (0DTE) if not present.
+
+    If `parent_caption` is set, it's prepended as reply-chain context —
+    e.g. caption='closed' + parent_caption='BTO MSFT 430C 5/20 @3.65'
+    resolves to a CLOSE of that exact contract.
 
     Returns parsed JSON dict on success, None on any failure (logged).
     Failures are non-fatal — the watcher should continue.
@@ -346,8 +366,21 @@ async def extract_trade_from_caption(caption: str) -> dict | None:
     if not caption or not caption.strip():
         return None
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # Compose the caption block — when this is a reply, the parent
+    # message provides the position the reply is acting on.
+    if parent_caption and parent_caption.strip():
+        composed = (
+            f"[REPLY-PARENT (caller's earlier post — use for ticker/strike/expiry "
+            f"if the new message is sparse like 'closed' / 'sold @X'):]\n"
+            f"{parent_caption.strip()[:500]}\n\n"
+            f"[CURRENT MESSAGE (the action — apply action verb here to the "
+            f"contract from the parent):]\n"
+            f"{caption.strip()[:1000]}"
+        )
+    else:
+        composed = caption.strip()[:1000]
     prompt = _CAPTION_ONLY_PROMPT.format(
-        today_iso=today_iso, caption=caption.strip()[:1000]
+        today_iso=today_iso, caption=composed
     )
     try:
         client = _get_client()
