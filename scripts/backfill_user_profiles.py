@@ -70,157 +70,109 @@ GEMINI_CONCURRENCY = 5  # parallel calls per batch
 
 
 PROFILE_PROMPT = """\
-You're Jordan Belfort as Leonardo DiCaprio played him — but you're not talking to anyone right now. You're at your desk going through one user's message history from a private options/crypto trading discord, building the dossier you'd want before getting on a call with this person. Or before they walked onto your trading floor and you had to decide in 30 seconds how to handle them.
+You're building a balanced character profile for one member of a private options-trading discord. The output goes into context for a /ask bot that uses it to answer questions about the user, joke with them, and (occasionally) clap back when they actually attack.
 
-You're not writing a bio. You're not roasting them. You're cataloging them so you (or another partner) can read this in 30 seconds and know exactly who you're dealing with. Trading behavior is a symptom — the person is the disease, and the disease is what you're after.
+Goal: a FAIR scouting report. Strengths, style, what the room ALREADY teases them about, and what they've been up to this week — all in one document. Not a roast file. Not a hagiography. A reader who'd never met them should come away with a real picture of who they are at the terminal AND why people in the room like having them around.
 
-The judgment is in what you choose to notice — never moralized, never softened. Belfort doesn't disapprove of degeneracy, he clocks it and remembers it. He doesn't pathologize, he describes. "He's a gambling addict" is projection. "The size goes up after every loss, without fail" is the read. Always pick the behavior.
+**The customers pay to be here.** Treat them like paying customers, not subjects to dissect. Honest about behavior; not cruel about character.
+
+Today is **{today_utc}** (UTC). Use this to interpret "last 7 days" in the *Recent activity* field — anchor against this date when reading the message timestamps.
 
 ---
 
 ## WHAT YOU'RE LOOKING FOR
 
-The surface read — what tickers, what timeframe, what asset class — is the easy part. Go deeper. Every field below is something the next reader actually needs to know:
+Six things, ordered from most-positive-leaning to most-edgy:
 
-**Who they are.** The big read. What's the human picture? Find the angle no one else in the chat has bothered to name. If your read could be swapped onto any other competent trader and still hold, you haven't found the person yet.
+**Personality.** The big-picture neutral read in 2-3 sentences. Who they are at the terminal. Specific to this person, not a type. Avoid moralizing language — describe, don't grade.
 
-**What they actually believe.** Not their stated take on individual tickers — the underlying worldview. Do they think systems are rigged or that the smart guys always win? Do they trust institutions or resent them? Do they think conviction is real or that it's all performance? This is the frame everything else runs through.
+**Strengths.** What they bring to the room. 3-5 specific things they do well. Trades they nailed, expertise they share, charts they read better than most, humor that defuses, the way they support newer members. Real items, not flattery. If you genuinely can't find strengths (rare — almost everyone in this room contributes something), say "Mostly lurks; rare contribution when X."
 
-**Their relationship to money.** Rent money, fun money, ego money, escape money, FU money. How do they talk about losses? What's the language around wins? Do they treat the account like a scoreboard, a lifeline, a toy, or a wound? Read the texture, not the size.
+**Style & Patterns.** How they trade and talk — neutral descriptions. "Trades weeklies on tech, leads with chart screenshots, fast to size up on conviction names, uses humor to defuse tilt." Just what they do. Not whether it's smart or dumb.
 
-**The contradiction.** Every interesting person is one. The crypto maxi who actually plays it safe. The "I don't follow charts" guy who quietly does. The "FU money" guy who clearly cares about every dollar. The contrarian who runs with the herd. Find the central contradiction and the rest of the profile is just how it expresses itself. Only one per profile — if you find three, you haven't found the through-line yet, keep looking.
+**Running jokes.** The stuff the room ALREADY gives them shit about — recurring bits, light teases, running drama THEY laugh at too. "Always asks about $WEN," "Calls the top on every green day," "Forever the goth-girl convo derail." Threshold: would a normal Tuesday in chat hit this same note as a joke? If yes, fair game. If the tease would cut deeper than the room's normal banter, leave it out. **Not psychological diagnostics. Not cutting takedowns. Not real-world vulnerability.** Just the warm shots the room already gets.
 
-**What they hate.** Hate is more revealing than enthusiasm. The guy who mocks "permabulls," the guy who can't stand technical analysis, the guy who hates institutional moralizing about leverage — these are character disclosures. Catalog them. They're also the third-rail topics for anyone trying to talk to this person.
+**Recent activity (last 7 days).** What they've been up to THIS week — tickers traded, themes pushed, conversations led, recent wins or losses worth noting, who they've tagged or argued with. This refreshes daily so it's current — don't reach for 6-month-old jokes when this week's material is fresher.
 
-**What they're secretly proud of.** Everyone signals one thing they want credit for. The job. The comp. The 200x trade from 2021. The fact that they read economics. The fact that they don't. Look for the flex they slip in twice. That's the soft spot AND the lever.
+**Voice.** One specific descriptor of how they talk. NOT "funny" — "dry, observational, leans on stock-specific memes" or "warm, emoji-heavy, defuses conflict with self-deprecation" or "crude and fast, casually cruel with affection underneath."
 
-**Their tell.** The signature pattern right before a predictable outcome. Tilt tell, capitulation tell, chase tell, flex-before-the-pain tell. What do they say or do right before they get stopped out, before they double down, before they go quiet? If you genuinely don't see one, say so — don't fabricate.
-
-**Their humor.** Be specific. Dry, crude, warm-mean, cutting, deadpan, troll-y, absurdist, self-deprecating, observational. "Funny" is not an answer. The /ask bot uses this to calibrate clapbacks — get it right.
-
-**Their position in the room.** Social hierarchy, who they orbit, who they tail, who they push back on, what function they serve (signal / chaos / contrarianism / banter / texture / dead weight). Where they sit when the room is on a rip vs when the room is bleeding.
-
-**Their status.** Current arc in one short sentence. Up big and won't shut up. Quiet since the last blowup. Just rage-quit and came back. Steady. If unclear, "steady" or "active."
+**Role in the room.** Function in one short phrase — signal / banter / chaos / mentor / hype-man / contrarian / lurker / texture. Neutral.
 
 ---
 
 ## SCHEMA
 
-Output follows this structure exactly. No "Profile:" prefix, no extra commentary, no closing line. Fields can be omitted if you genuinely don't have the data — but don't pad with adjectives to fill them.
+Output follows this structure exactly. No "Profile:" prefix, no extra commentary, no closing line. Fields can be omitted if you genuinely don't have the data — but don't pad with adjectives.
 
-**{display_name} ({username}) — {msg_count} msgs**
+**{display_name} (`{username}`, <@{user_id}>) — {msg_count} msgs**
 
-*Who he is:* 2-4 sentences. The big read. Specific to this person, not a type.
+*Personality:* 2-3 sentences. Neutral big-picture read of who they are at the terminal.
 
-*What he actually believes:* 1-3 sentences. The unstated frame.
+*Strengths:* 3-5 specific things they bring. Edge, expertise, humor, support, trades they nailed.
 
-*Relationship to money:* 1-2 sentences. The texture, not the size.
+*Style & Patterns:* 2-4 sentences. How they trade and talk. Neutral descriptions.
 
-*The contradiction:* 1-2 sentences. One per profile, max. Omit if you can't find it cleanly.
+*Running jokes:* 2-4 bits the room ALREADY teases them about. Real material from chat, not invented. Light, not cutting.
 
-*What he hates:* 1-2 sentences. The third-rails, the moralizing he won't tolerate.
+*Recent activity (last 7d):* 2-4 sentences. What they've been up to this week — specific tickers, themes, conversations.
 
-*Tell:* 1-2 sentences. The signature pattern. "No clear tell yet" is valid for low-data users.
+*Voice:* One specific descriptor. Not "funny."
 
-*Recurring takes / quotes:* 2-4 real phrases or repeated positions. Verbatim quotes if you have them — those are gold. If no quotes available, paraphrase recurring stances.
-
-*In the room:* 1-2 sentences. Social position and function.
-
-*Humor:* One specific descriptor. Not "funny," not "high-energy."
-
-*Status:* One short sentence. Current arc.
+*Role in the room:* One short phrase. Function, not judgment.
 
 ---
 
 ## VOICE RULES
 
-**Specificity over adjective every time.** "Trades small caps" is nothing. "Buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play" is the read. If you reach for "chaotic," "high-energy," "irreverent," or "deeply embedded" — you haven't seen them clearly yet. Look again. Those adjectives are forbidden in this prompt. So are "perma-bull," "perma-bear," "degen," and "high-conviction" used as labels — they're fine inside a specific behavioral description, banned as standalone descriptors.
+**Specificity over adjective every time.** "Trades small caps" is nothing. "Buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play" is the read. Forbidden as standalone descriptors: "chaotic," "high-energy," "irreverent," "deeply embedded," "perma-bull," "perma-bear," "degen," "high-conviction" — these are fine inside a specific behavioral description, banned as labels.
 
-**Quote them when you can.** Real recurring phrases from the data are the single most valuable thing a profile carries. "I'm just gonna sit on my hands today," "this is the one boys," "fuck it we ball" — pull them verbatim. Quotes do more work than three paragraphs of description and they let the next reader hear the person.
+**Quote them when you can.** Real recurring phrases from the data are gold. "I'm just gonna sit on my hands today," "this is the one boys," "fuck it we ball" — pull them verbatim. Quotes do more work than three paragraphs of description and let the reader hear the person.
 
-**Ignore bot commands.** Messages starting with `fc TICKER` (e.g. `fc nvda`, `fc spy`, `fc btc`) are a chart-pulling slash command — not a verbal tic, not a catchphrase, not a personality signal. Don't quote them, don't treat them as recurring takes, don't read anything into the frequency. The same goes for any other obvious slash-command pattern (`fc`, `chart`, single-word ticker followed by a chart-shaped embed). Strip these from your read entirely — they're the user invoking a tool, not the user talking.
+**Ignore bot commands.** Messages starting with `fc TICKER` (e.g. `fc nvda`, `fc spy`, `fc btc`) are a chart-pulling slash command — not a verbal tic, not a catchphrase, not a personality signal. Don't quote them, don't treat them as recurring takes, don't read anything into the frequency. Same for any obvious slash-command pattern. Strip from your read.
 
-**Behaviors not labels.** "Tilts after losses" is a label. "Doubles size on the same ticker after every stop-out, posts the new entry loud, goes quiet on the second stop" is a behavior. Always pick the behavior. The label is the conclusion the reader should reach on their own from what you described.
+**Behaviors not labels.** "Tilts after losses" is a label. "Doubles size on the same ticker after every stop-out, posts the new entry loud, goes quiet on the second stop" is a behavior. Always pick the behavior.
 
-**Read the gap between self-image and reality.** This is the most useful single thing in any profile. The contrarian who follows consensus. The "I don't care" guy who clearly cares. The "long-term investor" who scalps. The "no edge" tail trader who's more self-aware than the regulars he's tailing. The gap is where the person actually lives.
+**Don't soften, but don't sharpen unnecessarily.** If someone cries in chat after losses, say so factually. If someone tails Abe and pretends not to, say so. But don't reach for the cruelest possible framing of neutral behavior. "Trims winners early" is fine; "Can't hold a winner because his ego needs the receipt" is editorializing.
 
-**Hatred is structural data.** What a person mocks tells you the values they won't articulate. Mocking "permabulls" = a read on conviction. Mocking technical analysts = a read on expertise. Mocking IRL networking = a read on the trading-cosplay scene. Read these and write them down.
+**Don't pathologize.** "Signs of gambling addiction" is projection. "Size scales with frustration, every time" is the read. Stay in behavior; let the reader draw the line.
 
-**Don't soften.** If someone cries in chat after losses, say so. If someone tails Abe and pretends not to, say so. The room itself doesn't soften these things; a softened profile produces an /ask bot that sounds off when it references them.
+**Calibrate confidence to data.** Inferring something? Soften the verb ("reads as," "appears to," "seems to"). Don't have the data? Leave the field short or skip it. Never fabricate to fill the schema.
 
-**Don't pathologize.** Belfort describes, he doesn't diagnose. "Signs of gambling addiction" is projection. "Size scales with frustration, every time" is the read. Stay in behavior — the reader will reach the conclusion themselves.
-
-**Calibrate confidence to data.** The deeper the read, the more careful with confidence. Surface profiles can be lightly wrong without damage; deep profiles state things about psychology, and confident wrongness is the failure mode. If you're inferring, soften the verb ("reads as," "appears to," "seems to"). If you don't have the data, leave the field short or skip it. Never fabricate to fill the schema — a fabricated tell or contradiction is worse than a missing one.
-
-**Don't profile what you don't see.** Low message count = short profile. "Mostly drive-by reactions, no clear directional bias from what's visible" is a valid entry for several fields. A 41-message user gets a shorter profile than a 4000-message user, and that's correct.
+**Don't profile what you don't see.** Low message count = short profile. A 100-message user gets less than a 4000-message user — that's correct.
 
 ---
 
 ## CARVE-OUTS
 
-**Abe (abullish_xyz) and the co-analysts (bankerkyle, .zhawk, kloh.):** Profile their personality, patterns, worldview, and contradictions — same as anyone else. But don't grade their actual trade picks. You're cataloging the human, not auditing the call sheet.
+**Abe (abullish_xyz) and the co-analysts (bankerkyle, .zhawk, kloh.):** Profile their personality, patterns, role, and running jokes — same as anyone else. But don't grade their actual trade picks. You're cataloging the human, not auditing the call sheet.
 
-**Sensitive material — real name, employer, family, mental health, financial distress, relationships:** reference only if it's part of the room's public running texture (they bring it up regularly, the room riffs on it). Don't surface something a user shared once in a vulnerable moment as a permanent dossier trait. The deep read is psychological, not invasive.
+**Sensitive material — real name, employer, family, mental health, financial distress, relationships:** reference only if it's part of the room's public running texture (they bring it up regularly, the room riffs on it). Don't surface something a user shared once in a vulnerable moment as a permanent dossier trait. **Running jokes** must come from material the room ALREADY treats as joke material — if you have to wonder whether something is too sensitive, leave it out.
 
 ---
 
-## EXAMPLES OF THE TARGET
+## EXAMPLE OF THE TARGET
 
-These are what good profiles look like. Match the depth and specificity, not the wording.
-
-**Example 1 — high data, the deep read pays off:**
-
-> **BK (bankerkyle) — 4183 msgs**
+> **BK (`bankerkyle`, <@423994649317736448>) — 4183 msgs**
 >
-> *Who he is:* M&A guy who made it, and the "made it" matters more than he lets on. The new senior analyst comp has come up more than once for a reason — he wants the room to know without quite telling them. Trades crypto the way a guy plays poker after work: the day job is real, this is the place where the rules don't apply. 200x BTC isn't a strategy, it's a release valve. The chat is where Kyle gets to be the version of himself the bank doesn't pay him to be.
+> *Personality:* M&A guy at a real firm who treats the discord as the place where the day-job rules don't apply. Smart, fast, doesn't hide that he's making real money in the day job but also doesn't lord it.
 >
-> *What he actually believes:* Markets reward boldness; nuance is for people without conviction. Half-admires the institutional machine he works inside, half-resents it — which is why he runs leverage no risk committee would approve. The lament posts ("should've held," "should've sized up") are the only place he admits doubt; everywhere else, bravado is the load-bearing wall.
+> *Strengths:* Sharp on macro narratives — knows how rate-sensitive sectors actually price. Good chart reads when he commits to one. Crude humor that defuses heavy conversations. Willing to call other regulars on weak takes without making it personal. Posts his wins AND his lament-mode losses, which keeps the room honest.
 >
-> *Relationship to money:* Not life-or-death — the job covers that. The trading account is the toy account. But "toy" doesn't mean uncaring — losses register as ego damage, not financial damage. Language around drawdowns is never "I'm hurt," always "I'm an idiot."
+> *Style & Patterns:* Trades crypto perps with leverage no risk committee would approve. Day-job analysis, off-the-clock chaos. Fast to size up on conviction names (often MSTR, SOL). Lament-mode posts after missed Solana entries are a regular feature. Sticks to large-cap names; dismissive of altcoin punts.
 >
-> *The contradiction:* Structures real deals for a living. Knows down to the basis point what hedging and risk-adjusted return mean. Then opens 200x perps on a vibe. He knows better. He doesn't trade better because the point isn't to trade better — the point is to be the guy who could.
+> *Running jokes:* "Compliance is watching him" — the recurring bit about his desk monitoring his accounts. "$WEN bag holder" — the eternal Wendy's hope. "Should've sized up" — the post-missed-trade lament that everyone parrots back at him. "Office hostage situation" (Abe's line that stuck).
 >
-> *What he hates:* Tail traders who won't admit it. Anyone moralizing about leverage. The implicit suggestion that he should be more careful — that one ends the conversation cold.
+> *Recent activity (last 7d):* Closed his 5x SOL perps "because compliance was watching" (Monday). Posted a chart asking about $MSTR breakout (Wednesday) — got mixed responses. Multiple lament-mode posts about not sizing up the META 615C trade. Has been pushing the AI-capex thesis in long-form replies.
 >
-> *Tell:* The retroactive "what if." When you see him three messages deep into a trade he didn't take, he's down on the one he did and the chat's about to hear about it sideways.
+> *Voice:* Crude, fast, casually cruel with affection underneath. Doesn't perform humor; it's a side effect.
 >
-> *Recurring takes / quotes:* "should've sized up," lament-mode on missed Solana entries, occasional macro flier on oil, dismissive of altcoins as a serious play.
->
-> *In the room:* Senior energy. Not the loudest — the one whose opinion the room registers when he weighs in. Trades insults freely with the regulars, goes harder when challenged by people he respects.
->
-> *Humor:* Crude, fast, casually cruel with affection underneath. Doesn't perform humor — it's a side effect of how he talks.
->
-> *Status:* Comfortable. Job locked, presumably up on the year. High posting volume = stable Kyle.
-
-**Example 2 — low data, profile scales down:**
-
-> **succi (succi_mane) — 41 msgs**
->
-> *Who he is:* The tail trader who's smart enough to know he's the tail trader, and turned the self-awareness into the bit. The "vibecoder indicator" joke about tracking the room's sentiment isn't just a joke — it's him telling you the lens he actually uses. He's not pretending to have his own edge.
->
-> *What he actually believes:* Conviction is mostly performance. The people calling shots in the chat are doing what he's doing but with more swagger. He's probably more right about this than the room would admit.
->
-> *Relationship to money:* Casual but watchful. Trims winners now in a way he didn't before — somebody (or some loss) taught him that recently. Won't full-port. The sizing is the one place he keeps his own counsel.
->
-> *The contradiction:* Squad vernacular, emoji-heavy, plays the goofy retail role — but underneath, more self-aware than most of the regulars he tails. Reads as low-conviction; is actually low-ego. Different thing.
->
-> *What he hates:* IRL networking, the broader trading-cosplay scene. Doesn't moralize about it, just won't show up.
->
-> *Tell:* The Abe-citation. When the position thesis is "Abe is in this," he's reaching. Real conviction posts don't carry the validation footnote.
->
-> *Recurring takes / quotes:* PENG / HIMS / QS LEAPS, "squad" framing, the vibecoder joke, room-sentiment references.
->
-> *In the room:* Light footprint, well-liked by low offense surface. Plays with everyone, contributes texture more than signal.
->
-> *Humor:* Squad-coded, emoji-forward, warm. Wouldn't roast unprovoked.
->
-> *Status:* Steady. Lighter posting volume, consistent voice when he does post.
+> *Role in the room:* Senior energy. Not the loudest — the one whose opinion the room registers when he weighs in.
 
 ---
 
 ## ONE LAST THING
 
-Belfort wouldn't editorialize about whether someone's a good or bad trader. He'd describe what they do, what they want, what they hate, what they're hiding, and let the next reader draw the line. The whole job is making the reader feel like they've met this person — because once you've met them, you know how to handle them. That's the dossier. Everything else is filler.
+Make the reader feel like they've met this person — and that meeting them was fine. Not a roast file, not a fluff piece. Real human, real strengths, real warts the room already laughs about, real current activity. That's the dossier.
 
 ---
 
@@ -295,6 +247,7 @@ async def _generate_profile(
     username: str = "",
     http_session: aiohttp.ClientSession | None = None,
     images: list[dict] | None = None,
+    user_id: int = 0,
 ) -> str | None:
     """Run Gemini to produce one user's profile. Returns None on failure.
 
@@ -315,11 +268,14 @@ async def _generate_profile(
     )
     sample = messages[-sample_size:]
     msgs_block = _format_messages_block(sample)
+    today_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     prompt = PROFILE_PROMPT.format(
         display_name=display_name,
         username=username or display_name,
+        user_id=user_id,
         msg_count=len(messages),
         messages_block=msgs_block,
+        today_utc=today_utc,
     )
 
     # Decide vision vs text-only. Vision needs: config flag on + http
@@ -587,6 +543,7 @@ async def run(days: int, channels: list[str]) -> None:
                             username=meta.get("username", ""),
                             http_session=http_session,
                             images=images_by_user.get(uid, []),
+                            user_id=uid,
                         ))
                     results = await asyncio.gather(*tasks, return_exceptions=True)
                     for (uid, msgs), profile in zip(batch, results):

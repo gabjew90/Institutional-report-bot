@@ -1986,6 +1986,11 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
     """Render a "WHO'S TALKING" block for the given user_ids. Skips users
     with no profile (lurkers, new joiners). Returns "" when nobody on the
     list has been profiled.
+
+    Header format: `- **DisplayName** (username, <@user_id>): <text>`.
+    Including the `<@user_id>` form lets the bot tag the user back when
+    relevant ("@kloh been calling this for a week") without having to
+    guess at the mention syntax.
     """
     profiles = get_profiles_for_users(user_ids)
     if not profiles:
@@ -2004,9 +2009,13 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
         text = (p.get("profile_text") or "").strip()
         if len(text) > 2500:
             text = text[:2497] + "..."
-        ident = f"**{dn}**"
+        # Header includes <@user_id> so the bot can tag this user back
+        # by Discord ID when needed.
+        mention = f"<@{uid}>"
         if uname and uname.lower() != dn.lower():
-            ident += f" ({uname})"
+            ident = f"**{dn}** ({uname}, {mention})"
+        else:
+            ident = f"**{dn}** ({mention})"
         lines.append(f"- {ident}: {text}")
     return "\n".join(lines)
 
