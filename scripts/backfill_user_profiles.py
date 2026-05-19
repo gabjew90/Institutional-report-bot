@@ -398,8 +398,24 @@ async def _generate_profile(
                 flush=True,
             )
             return None, None, None, None
+        # DIAGNOSTIC: log every response under 50 chars so we can see what
+        # the model is actually returning when it goes degenerate (the
+        # "4-char" outputs that have been hard to identify).
+        if len(text) < 50:
+            print(
+                f"  raw-short-response for {display_name} "
+                f"({len(text)} chars): {text!r}",
+                flush=True,
+            )
         try:
             data = json.loads(text)
+            if not isinstance(data, dict):
+                print(
+                    f"  parse non-dict for {display_name}: "
+                    f"type={type(data).__name__} text={text!r}",
+                    flush=True,
+                )
+                return None, None, None, None
             pt = (data.get("profile_text") or "").strip() or None
             ts = data.get("trader_score")
             tr = (data.get("trader_rationale") or "").strip() or None
