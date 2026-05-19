@@ -1,0 +1,377 @@
+{
+  "pulse_date": "2026-05-19",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex super cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 12,
+        "skeptical": 2,
+        "neutral": 6
+      },
+      "consensus_view": "Banks overwhelmingly see hyperscaler AI infrastructure spending as a durable, structural growth engine with capex projected at $650-755 billion in 2026, though a minority warns the AI-driven rally has stretched semis and concentrated the market.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler AI capex is set to reach roughly $650-755 billion in 2026, a step-change versus prior years.",
+          "banks_for": [
+            "Syz Private Banking",
+            "Syz Group",
+            "Raymond James",
+            "Wells Fargo Investment Institute"
+          ],
+          "evidence_quotes": [
+            "hyperscaler capex projected at $650\u2013725 billion in 2026",
+            "consensus of analysts is now for the mega-cap US hyperscalers to spend $755 billion",
+            "projected spending levels for 2026 are nearly 75% higher than last year",
+            "forward estimates for 2027 remain conservative and do not fully capture the durability"
+          ]
+        },
+        {
+          "claim": "AI monetization is showing up in accelerating cloud provider revenue growth, validating the capex cycle.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "growth across the four major cloud providers accelerating to an estimated 40% y/y",
+            "growth across the four major cloud providers accelerating to an estimated 40% y/y in 1Q26",
+            "demand for AI infrastructure remains very strong, with deepening customer commitments"
+          ]
+        },
+        {
+          "claim": "AI-driven capex and earnings momentum is broadening across sectors and supporting US growth and equity returns.",
+          "banks_for": [
+            "Morgan Stanley",
+            "BlackRock Investment Institute",
+            "Goldman Sachs",
+            "UBS",
+            "Franklin Equity"
+          ],
+          "evidence_quotes": [
+            "AI capex boom is driving US growth along with wealth-fueled consumption spending.",
+            "Upgrades to MSCI U.S. 2026 and 2027 earnings expectations rank in the top five since 1988.",
+            "AI and Momentum moving hand in hand and driving the direction of the S&P 500",
+            "Companies continue to capitalize on data center expansion, electrification, and infrastructure modernization",
+            "AI is the engine driving their growth, not a threat to it."
+          ]
+        },
+        {
+          "claim": "Hyperscalers are funding the buildout aggressively, including unprecedented bond issuance and supply-chain front-loading.",
+          "banks_for": [
+            "Raymond James",
+            "Goldman Sachs",
+            "JPMorgan",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "issuance is now running at a faster pace, with $159b on a YTD basis",
+            "This is another sign of memory suppliers front-loading their facility investments",
+            "Demand now driven by hyperscalers, not telcos so less cyclical and cycle expected to last",
+            "The demand for compute is already withstanding very high electricity prices."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI-driven rally is sustainable or stretched to the point of correction risk",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS",
+            "BlackRock Investment Institute"
+          ],
+          "for_evidence": "We remain bullish AI and note the strong run in this space is completely in-line",
+          "banks_against": [
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "against_evidence": "SOX is finally showing signs of real stress after one of the most aggressive AI melt-ups"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "Syz Group",
+          "claim": "2026 hyperscaler capex estimate",
+          "deadline": "2026"
+        },
+        {
+          "bank": "Wells Fargo Investment Institute",
+          "claim": "2026 projected hyperscaler capex",
+          "deadline": "2026"
+        },
+        {
+          "bank": "Raymond James",
+          "claim": "Projected 2026 hyperscaler spending increase",
+          "deadline": "Year-over-year increase"
+        }
+      ]
+    },
+    {
+      "theme": "trump xi summit",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 11
+      },
+      "consensus_view": "Banks across 11 desks flag the Trump-Xi Beijing summit as a live near-term macro catalyst, but none has staked a directional market view on the outcome yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the Trump-Xi Beijing summit as an upcoming US-China catalyst in this window, with framings ranging from a trade truce to a constructive bilateral meeting.",
+          "banks_for": [
+            "Bloomberg Markets Live",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "MUFG",
+            "Natixis",
+            "Raymond James",
+            "SEB",
+            "Syz Equity Research",
+            "UBS",
+            "World Gold Council"
+          ],
+          "evidence_quotes": [
+            "Trump-Xi summit",
+            "Trump visit to Beijing",
+            "US-China summit in Beijing",
+            "US-China summit constructive rhetoric",
+            "Trump-Xi trade truce",
+            "Beijing Summit between Presidents Xi and Trump"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran conflict",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 11
+      },
+      "consensus_view": "Banks across 11 desks reference the US-Iran conflict as a live geopolitical risk factor, but none have staked a clear directional view on how it resolves or where it leads markets.",
+      "facts_agreed": [
+        {
+          "claim": "Eleven banks flag the US-Iran conflict as an active geopolitical context shaping markets in this window.",
+          "banks_for": [
+            "Cboe",
+            "Cr\u00e9dit Agricole CIB",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "SEB",
+            "State Street Investment Management",
+            "Syz Group",
+            "UBS",
+            "World Gold Council"
+          ],
+          "evidence_quotes": [
+            "US-Iran War",
+            "US-Iran conflict",
+            "US-Iran conflict stalemate",
+            "US-Iran conflict escalation",
+            "US-Iran geopolitical tensions"
+          ]
+        },
+        {
+          "claim": "Several banks frame the situation specifically as a Middle East kinetic/escalation risk rather than a contained diplomatic standoff.",
+          "banks_for": [
+            "Cr\u00e9dit Agricole CIB",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "SEB",
+            "State Street Investment Management",
+            "Syz Group"
+          ],
+          "evidence_quotes": [
+            "Middle East kinetic activity",
+            "Middle East kinetic conflict risk",
+            "Iran conflict escalation",
+            "Middle East conflict escalation",
+            "Trump administration intervention in Iran strikes",
+            "Iran war headline volatility"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz reopening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 9
+      },
+      "consensus_view": "Banks across nine desks reference the Strait of Hormuz situation as a live oil-supply catalyst, but only RBC has staked a directional view, doubting a clean June reopening of maritime traffic.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the Strait of Hormuz as an active oil supply and shipping risk this window.",
+          "banks_for": [
+            "Cr\u00e9dit Agricole CIB",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "RBC",
+            "Raymond James",
+            "Syz Equity Research",
+            "Syz Group",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz blockade",
+            "Strait of Hormuz closure risk",
+            "Strait of Hormuz oil supply disruptions",
+            "Strait of Hormuz oil flow",
+            "Strait of Hormuz reopening uncertainty"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east supply disruptions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Banks across seven desks flag Middle East oil supply disruptions tied to the Iran conflict and Strait of Hormuz as a live market driver, but none have staked a clear directional view on where prices or risk go from here.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference Middle East supply disruptions and the Iran conflict as an active risk to global energy and supply chains.",
+          "banks_for": [
+            "BlackRock Investment Institute",
+            "Bloomberg Markets Live",
+            "Goldman Sachs",
+            "MUFG",
+            "Syz Equity Research",
+            "Syz Private Banking",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Middle East supply chain disruption",
+            "Iran war impact on global supply chains",
+            "Middle East oil supply disruptions",
+            "Middle East project disruptions",
+            "Middle East supply shock",
+            "Middle East supply concerns",
+            "US-Iran conflict energy shock",
+            "Persian Gulf energy supply scarcity"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai impact on labor and industry",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six banks flag AI as a live force reshaping productivity, corporate workflows, and labor demand, but none has staked a clear directional view on whether the net effect for markets is bullish productivity or disruptive job loss.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference AI as a simultaneous driver of productivity gains, tech demand, and labor-market disruption without resolving the net direction.",
+          "banks_for": [
+            "BlackRock Investment Institute",
+            "Cr\u00e9dit Agricole CIB",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Raymond James",
+            "Syz Group"
+          ],
+          "evidence_quotes": [
+            "AI adoption labor market risks",
+            "AI disruption risks",
+            "AI-driven industry disruption",
+            "AI-driven productivity boom",
+            "AI-driven efficiency layoffs",
+            "AI efficiency gains in corporate workflows",
+            "AI-driven tech demand",
+            "AI token commoditization"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "data center demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Banks across Goldman Sachs, JPMorgan, Raymond James, UBS, and Wells Fargo Investment Institute reference data center demand as a live macro and earnings driver but none stake an explicit directional view on the theme itself.",
+      "facts_agreed": [
+        {
+          "claim": "Five banks flag data center demand as a recurring subject across power, AI infrastructure, and hyperscaler capex coverage.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Raymond James",
+            "UBS",
+            "Wells Fargo Investment Institute"
+          ],
+          "evidence_quotes": [
+            "Data center demand",
+            "Data center electricity demand",
+            "data center infrastructure demand",
+            "Hyperscaler AI infrastructure demand",
+            "Energy transition infrastructure demand",
+            "Data center power demand",
+            "Data center development",
+            "Data center building blocks",
+            "Data Centers"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "Kevin Warsh Fed balance sheet reduction",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five banks flag Kevin Warsh's confirmation as Fed Chair and his expected push to shrink the Fed's bond holdings as a live policy backdrop, but none have staked a directional view on how it plays out.",
+      "facts_agreed": [
+        {
+          "claim": "Five banks reference Kevin Warsh's Fed Chair confirmation and his balance sheet agenda as a current policy backdrop.",
+          "banks_for": [
+            "FinChartOutlook GmbH",
+            "Raymond James",
+            "Syz Equity Research",
+            "UBS",
+            "Wells Fargo Investment Institute"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh Fed Chair confirmation",
+            "Kevin Warsh Fed chair appointment",
+            "Kevin Warsh confirmed as Fed Chair",
+            "Kewin Warsh Fed Chair policy",
+            "Kevin Warsh Fed balance sheet reduction"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
