@@ -382,8 +382,13 @@ async def _generate_profile(
         text: str,
     ) -> tuple[str | None, int | None, str | None, int | None]:
         """Parse the JSON response. Returns the four fields or all-None
-        on parse failure."""
+        on parse failure. Logs first 300 chars of the response on
+        decode error so we can see what came back."""
         if not text:
+            print(
+                f"  parse-failure for {display_name}: EMPTY response body",
+                flush=True,
+            )
             return None, None, None, None
         try:
             data = json.loads(text)
@@ -402,8 +407,23 @@ async def _generate_profile(
                 except (TypeError, ValueError):
                     rh = None
             return pt, ts, tr, rh
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as e:
+            preview = text[:300].replace("\n", " ")
+            tail = text[-200:].replace("\n", " ") if len(text) > 500 else ""
+            print(
+                f"  parse-failure for {display_name} "
+                f"({len(text)} chars, JSONDecodeError {e}): "
+                f"HEAD={preview!r}" + (f" ...TAIL={tail!r}" if tail else ""),
+                flush=True,
+            )
             return None, None, None, None
+
+    # Bumped to 4000 (was 2500) — JSON output that includes a 2500-char
+    # profile_text + trader_score + trader_rationale + racial_humor_score
+    # was getting cut off mid-stream for high-message users with vision
+    # input. 4000 gives the model headroom without breaking the model's
+    # max-output-tokens cap (8192 typical).
+    _MAX_OUTPUT_TOKENS = 4000
 
     async def _try_text_only() -> tuple[str | None, int | None, str | None, int | None]:
         resp = await gemini_client.aio.models.generate_content(
@@ -411,7 +431,7 @@ async def _generate_profile(
             contents=prompt,
             config=types.GenerateContentConfig(
                 temperature=0.3,
-                max_output_tokens=2500,
+                max_output_tokens=_MAX_OUTPUT_TOKENS,
                 response_mime_type="application/json",
             ),
         )
@@ -452,7 +472,7 @@ async def _generate_profile(
                     contents=parts,
                     config=types.GenerateContentConfig(
                         temperature=0.3,
-                        max_output_tokens=2500,
+                        max_output_tokens=_MAX_OUTPUT_TOKENS,
                         response_mime_type="application/json",
                     ),
                 )
@@ -770,10 +790,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--days", type=int, default=30,
                         help="Days of history to scan (default 30)")
+    # Default to settings.profile_channels (all configured channels —
+    # yapping + alerts) so manual invocation matches the scheduled
+    # daily refresh. Fallback to the hardcoded yapping list only if
+    # settings has nothing configured.
+    settings_channels = (settings.profile_channels or "").strip()
+    default_channels = settings_channels or ",".join(DEFAULT_PROFILE_CHANNELS)
     parser.add_argument(
-        "--channels", type=str, default=",".join(DEFAULT_PROFILE_CHANNELS),
-        help=f"Comma-separated channel names (default: "
-             f"{','.join(DEFAULT_PROFILE_CHANNELS)})"
+        "--channels", type=str, default=default_channels,
+        help="Comma-separated channel names (default: settings.profile_channels)"
     )
     args = parser.parse_args()
     channels = [c.strip() for c in args.channels.split(",") if c.strip()]
