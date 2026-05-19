@@ -523,22 +523,23 @@ async def _generate_profile(
         # Text-only path hardcodes "gemini-3.1-flash-lite-preview" —
         # the only model verified to produce full 2400-char structured
         # profile outputs. The GA "gemini-3.1-flash-lite" returns 4-char
-        # garbage (literal "null" placeholder values) for the backfill's
-        # full-context prompts despite working fine with simple prompts.
-        # We deliberately bypass settings.gemini_model here so the
-        # backfill stays on the proven model even if the env var is
-        # later flipped for /ask or pulse synthesis.
+        # garbage for the backfill's full-context prompts despite working
+        # fine with simple prompts.
+        #
+        # Config kept to the MINIMAL set that worked in the early runs
+        # (bhp99ej9k @ 03:01 UTC produced full 2400-char profiles):
+        # temperature + max_output_tokens + response_mime_type. NO
+        # response_schema, NO thinking_config, NO safety_settings.
+        # Each of those was added to fix narrower bugs and one (or some
+        # combination) was suppressing all visible output.
         text_model = "gemini-3.1-flash-lite-preview"
         resp = await gemini_client.aio.models.generate_content(
             model=text_model,
             contents=prompt,
             config=types.GenerateContentConfig(
                 temperature=temperature,
-                max_output_tokens=_MAX_OUTPUT_TOKENS,
+                max_output_tokens=2500,
                 response_mime_type="application/json",
-                response_schema=_RESPONSE_SCHEMA,
-                safety_settings=_SAFETY_SETTINGS,
-                thinking_config=_THINKING_CONFIG,
             ),
         )
         _log_finish(resp, f"text-only/{text_model}@t{temperature}")
