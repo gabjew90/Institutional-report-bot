@@ -125,15 +125,10 @@ class Settings(BaseSettings):
     profile_image_ocr_enabled: bool = True
     profile_image_cap: int = 20
     # Vision-capable model used ONLY by the profile backfill when images
-    # are present. The primary `gemini_model` is a lite/preview tier that's
-    # text-only — vision calls against it return 400 INVALID_ARGUMENT for
-    # almost every image. Falls back to `gemini_model` if vision call
-    # still fails. Override via env var GEMINI_VISION_MODEL.
-    #
-    # NOTE: "gemini-3.1-flash" (non-lite) does NOT exist as a model name;
-    # only -lite and -lite-preview exist in the 3.1 family. The closest
-    # 3.x non-lite Flash is gemini-3-flash-preview.
-    gemini_vision_model: str = "gemini-3-flash-preview"
+    # are present. Per user direction (2026-05-18) — use gemini-3.1-flash-lite
+    # (the GA version, not -preview) for both text and image paths.
+    # Override via env var GEMINI_VISION_MODEL.
+    gemini_vision_model: str = "gemini-3.1-flash-lite"
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements

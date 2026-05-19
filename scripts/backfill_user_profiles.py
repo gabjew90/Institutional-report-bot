@@ -500,8 +500,17 @@ async def _generate_profile(
             pass
 
     async def _try_text_only() -> tuple[str | None, int | None, str | None, int | None]:
+        # Use the profile model (gemini_vision_model) for the text-only
+        # path too — gives a consistent text+image model for profile
+        # generation, independent of the primary gemini_model used by
+        # /ask and pulse synthesis. Falls back to gemini_model only if
+        # vision model isn't configured.
+        text_model = (
+            getattr(settings, "gemini_vision_model", "")
+            or settings.gemini_model
+        )
         resp = await gemini_client.aio.models.generate_content(
-            model=settings.gemini_model,
+            model=text_model,
             contents=prompt,
             config=types.GenerateContentConfig(
                 temperature=0.3,
@@ -512,7 +521,7 @@ async def _generate_profile(
                 thinking_config=_THINKING_CONFIG,
             ),
         )
-        _log_finish(resp, "text-only")
+        _log_finish(resp, f"text-only/{text_model}")
         return _parse_response((resp.text or "").strip())
 
     try:
