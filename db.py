@@ -1975,7 +1975,9 @@ def export_user_profiles_markdown() -> str:
     rows = get_connection().execute(
         """SELECT display_name, username, message_count_at_update,
                   last_seen_message_at, datetime(updated_at) AS updated_at,
-                  profile_text
+                  profile_text,
+                  slur_count, racial_humor_score,
+                  trader_score, trader_rank, trader_rationale
            FROM user_profiles
            ORDER BY message_count_at_update DESC"""
     ).fetchall()
@@ -2004,6 +2006,11 @@ def export_user_profiles_markdown() -> str:
         last_seen = (r["last_seen_message_at"] or "")[:19].replace("T", " ")
         updated = r["updated_at"] or ""
         body = (r["profile_text"] or "").strip()
+        slur_n = r["slur_count"] or 0
+        rh = r["racial_humor_score"]
+        ts = r["trader_score"]
+        tr_rank = r["trader_rank"]
+        tr_rationale = (r["trader_rationale"] or "").strip()
 
         header = f"## {dn}"
         if uname and uname.lower() != dn.lower():
@@ -2014,6 +2021,25 @@ def export_user_profiles_markdown() -> str:
             f"_{msg_count:,} msgs · last activity {last_seen} · refreshed {updated} UTC_"
         )
         lines.append("")
+
+        # Scores block — surfaces the hidden hierarchy metrics that the
+        # /ask bot uses internally for clapback context. Reading this
+        # publicly is fine; the bot just doesn't quote raw numbers in
+        # answers (it uses ordinal ranks).
+        racism_bits = [f"**slurs:** {slur_n}"]
+        if rh is not None:
+            racism_bits.append(f"**racial-humor:** {rh}/100")
+        trader_bits = []
+        if ts is not None:
+            trader_bits.append(f"**trader-score:** {ts}/100")
+        if tr_rank is not None:
+            trader_bits.append(f"**trader-rank:** #{tr_rank}")
+        scores_line = " · ".join(racism_bits + trader_bits)
+        lines.append(f"> {scores_line}")
+        if tr_rationale:
+            lines.append(f"> _{tr_rationale}_")
+        lines.append("")
+
         lines.append(body)
         lines.append("")
         lines.append("---")
