@@ -186,12 +186,18 @@ def _format_announce_line(
         channel_link = f"**#{channel_name}**"
 
     line = f"📝 Logged: {channel_link} {action} **{contract_str}**"
-    if price is not None:
+    # Display rule: entry price only shows on opens (OPEN/ADD); gain%
+    # only shows on exits (CLOSE/TRIM). These are mutually exclusive at
+    # display time — opens are valued by their fill price, closes by
+    # their realized %. Both fields are stored regardless if extracted.
+    is_open_event = action in ("OPEN", "ADD")
+    is_exit_event = action in ("CLOSE", "TRIM")
+    if is_open_event and price is not None:
         try:
             line += f" @{float(price):.2f}"
         except (TypeError, ValueError):
             pass
-    if gain_pct is not None:
+    if is_exit_event and gain_pct is not None:
         line += f" ({gain_pct:+.1f}%)"
     if screenshot_type == "stats_screen" and action == "VIEWING":
         line += " _(stats screen)_"
