@@ -540,6 +540,11 @@ async def _generate_profile(
                 temperature=temperature,
                 max_output_tokens=2500,
                 response_mime_type="application/json",
+                # response_schema is required — without it the model
+                # emits unescaped inner quotes ("...the room's "edge"...")
+                # that break json.loads. Schema forces the SDK to handle
+                # escaping for string fields.
+                response_schema=_RESPONSE_SCHEMA,
             ),
         )
         _log_finish(resp, f"text-only/{text_model}@t{temperature}")
