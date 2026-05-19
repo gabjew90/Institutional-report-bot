@@ -407,28 +407,7 @@ async def _generate_profile(
                     flush=True,
                 )
                 return None, None, None, None
-            raw_pt = data.get("profile_text")
-            # DIAGNOSTIC: log EVERY parse to see what's going on.
-            raw_pt_len = len(raw_pt) if isinstance(raw_pt, str) else "n/a"
-            print(
-                f"  PARSE for {display_name}: "
-                f"raw_pt_type={type(raw_pt).__name__} "
-                f"raw_pt_len={raw_pt_len} "
-                f"raw_text_total_len={len(text)} "
-                f"raw_pt_END={repr(raw_pt)[-150:] if raw_pt is not None else 'None'}",
-                flush=True,
-            )
-            pt = (raw_pt or "").strip() or None
-            print(
-                f"  PARSE-pt for {display_name}: pt_len={len(pt) if pt else 0}",
-                flush=True,
-            )
-            if pt is not None and len(pt) < 50:
-                print(
-                    f"  short-pt for {display_name}: "
-                    f"raw={text[:600]!r}",
-                    flush=True,
-                )
+            pt = (data.get("profile_text") or "").strip() or None
             ts = data.get("trader_score")
             tr = (data.get("trader_rationale") or "").strip() or None
             rh = data.get("racial_humor_score")
@@ -644,26 +623,25 @@ async def _generate_profile(
                     f"falling back to text-only: {vision_err}",
                     flush=True,
                 )
-                return await _try_text_only(), None
+                # _try_text_only already returns (parse_tuple, finish_reason)
+                return await _try_text_only(temperature=temperature)
             _log_finish(response, f"vision/{vision_model}")
             return (
                 _parse_response((response.text or "").strip()),
                 _get_finish_reason(response),
             )
         else:
-            return await _try_text_only(), None
+            # _try_text_only already returns (parse_tuple, finish_reason).
+            # The bug from earlier — `return await _try_text_only(), None`
+            # double-wrapped the tuple, causing the dispatch loop to see
+            # result[0] as a 4-tuple (the parse_tuple itself) with len 4
+            # instead of the actual profile_text string. That's what
+            # caused weeks of debugging chasing nonexistent 4-char model
+            # outputs.
+            return await _try_text_only(temperature=temperature)
 
     try:
         result, finish_reason = await _attempt(temperature=0.3)
-        # DIAGNOSTIC: show shape of result tuple
-        print(
-            f"  RESULT for {display_name}: "
-            f"type={type(result).__name__} "
-            f"len={len(result) if hasattr(result, '__len__') else 'n/a'} "
-            f"result[0]_type={type(result[0]).__name__ if isinstance(result, tuple) and len(result) > 0 else 'n/a'} "
-            f"result[0]_len={len(result[0]) if isinstance(result, tuple) and len(result) > 0 and hasattr(result[0], '__len__') else 'n/a'}",
-            flush=True,
-        )
         # Retry-on-short with INCREASING temperature: the model deterministically
         # produces short outputs for some users at low temperature (mid-sentence
         # cuts that look like STOP but are real truncations of the inner JSON
