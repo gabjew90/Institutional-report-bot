@@ -1477,6 +1477,7 @@ def get_current_analyst_positions() -> list[dict]:
                    action AS latest_action,
                    posted_at AS last_activity,
                    gain_pct AS last_gain_pct,
+                   price AS last_price,
                    ROW_NUMBER() OVER (
                        PARTITION BY ticker, contract_type, strike, expiry
                        ORDER BY posted_at DESC
@@ -1488,13 +1489,37 @@ def get_current_analyst_positions() -> list[dict]:
               AND ticker IS NOT NULL
               AND expiry IS NOT NULL
               AND date(expiry) >= date('now')
+        ),
+        entries AS (
+            -- The original open's price = entry price for the position.
+            -- Picks the earliest open/add per contract so trims don't
+            -- overwrite the entry valuation.
+            SELECT ticker, contract_type, strike, expiry,
+                   price AS entry_price,
+                   ROW_NUMBER() OVER (
+                       PARTITION BY ticker, contract_type, strike, expiry
+                       ORDER BY posted_at ASC
+                   ) AS rn
+            FROM analyst_trades
+            WHERE is_trade = 1
+              AND action IN ('open', 'add')
+              AND price IS NOT NULL
+              AND ticker IS NOT NULL
+              AND expiry IS NOT NULL
         )
-        SELECT ticker, contract_type, strike, expiry,
-               latest_action, last_activity, last_gain_pct
-        FROM ranked
-        WHERE rn = 1
-          AND latest_action IN ('open', 'add', 'trim')
-        ORDER BY last_activity DESC"""
+        SELECT r.ticker, r.contract_type, r.strike, r.expiry,
+               r.latest_action, r.last_activity, r.last_gain_pct,
+               r.last_price, e.entry_price
+        FROM ranked r
+        LEFT JOIN entries e
+          ON e.ticker = r.ticker
+         AND COALESCE(e.contract_type,'') = COALESCE(r.contract_type,'')
+         AND COALESCE(e.strike,-1) = COALESCE(r.strike,-1)
+         AND e.expiry = r.expiry
+         AND e.rn = 1
+        WHERE r.rn = 1
+          AND r.latest_action IN ('open', 'add', 'trim')
+        ORDER BY r.last_activity DESC"""
     ).fetchall()
     return [dict(r) for r in rows]
 
@@ -1611,8 +1636,18 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
         expiry = r.get("expiry") or ""
         exp_short = expiry[5:] if len(expiry) >= 10 else expiry  # MM-DD
         action = (r.get("action") or "?").lower()
+        # Display rule (mirrors the live announce-line rule):
+        # opens/adds carry @price; closes/trims carry (±gain%).
         gain = r.get("gain_pct")
-        gain_str = f" ({gain:+.1f}%)" if gain is not None else ""
+        price = r.get("price")
+        suffix_str = ""
+        if action in ("open", "add") and price is not None:
+            try:
+                suffix_str = f" @{float(price):.2f}"
+            except (TypeError, ValueError):
+                pass
+        elif action in ("close", "trim") and gain is not None:
+            suffix_str = f" ({gain:+.1f}%)"
         posted_at = (r.get("posted_at") or "")[:16].replace("T", " ")
 
         # Surface inferred-status tags so the bot doesn't claim phantom
@@ -1629,7 +1664,7 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
 
         out_lines.append(
             f"- {posted_at} — {action} {ticker} "
-            f"{strike_str}{ct_suffix} {exp_short}{gain_str}{status_tag}"
+            f"{strike_str}{ct_suffix} {exp_short}{suffix_str}{status_tag}"
         )
 
     # Also surface currently-open positions explicitly so the bot doesn't
@@ -1649,10 +1684,18 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
             )
             expiry = p.get("expiry") or ""
             exp_short = expiry[5:] if len(expiry) >= 10 else expiry
-            last_gain = p.get("last_gain_pct")
-            gain_str = f" — last update {last_gain:+.1f}%" if last_gain is not None else ""
+            # Display rule: open positions show @entry_price (the original
+            # open's price), NOT the last gain pill. Gain% is a closure
+            # signal — meaningless mid-flight on an open position.
+            entry_price = p.get("entry_price")
+            price_str = ""
+            if entry_price is not None:
+                try:
+                    price_str = f" @{float(entry_price):.2f}"
+                except (TypeError, ValueError):
+                    pass
             out_lines.append(
-                f"- {ticker} {strike_str}{ct_suffix} {exp_short}{gain_str}"
+                f"- {ticker} {strike_str}{ct_suffix} {exp_short}{price_str}"
             )
 
     # W/L tally — surface authoritative numbers so the bot doesn't have
