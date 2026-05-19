@@ -147,8 +147,12 @@ def _format_announce_line(
 ) -> str:
     """Render the announce line. Format:
 
-    📝 Logged: **abe** CLOSE **NOW 95C 5/29** (+79.6%) — "I'm out!"
-    📝 Logged: **abe** VIEWING **NET 207.5C 5/29** (stats screen)
+    📝 Logged: **abe** CLOSE **NOW 95C 5/29** (+79.6%) — "I'm out!" → <jump_url>
+    📝 Logged: **abe** VIEWING **NET 207.5C 5/29** (stats screen) → <jump_url>
+
+    Trailing <jump_url> is the source screenshot's discord.com/channels/...
+    permalink, wrapped in <> so Discord clients don't expand the URL into
+    a preview-card embed. Clicking it jumps to the original alert.
     """
     ticker = extracted.get("ticker") or "?"
     strike = extracted.get("strike")
@@ -175,4 +179,9 @@ def _format_announce_line(
         # Trim long captions, escape Discord markdown noise
         cap_safe = caption.replace("`", "'").replace("\n", " ")[:80]
         line += f' — "{cap_safe}"'
+    # Append jump link to the source alert message. <> suppresses the
+    # preview-card expansion so the trade log stays one line per entry.
+    jump_url = getattr(source_msg, "jump_url", None)
+    if jump_url:
+        line += f" → <{jump_url}>"
     return line[:1900]  # Discord 2000-char hard limit, leave buffer
