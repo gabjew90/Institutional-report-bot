@@ -129,7 +129,11 @@ class Settings(BaseSettings):
     # text-only — vision calls against it return 400 INVALID_ARGUMENT for
     # almost every image. Falls back to `gemini_model` if vision call
     # still fails. Override via env var GEMINI_VISION_MODEL.
-    gemini_vision_model: str = "gemini-3.1-flash"
+    #
+    # NOTE: "gemini-3.1-flash" (non-lite) does NOT exist as a model name;
+    # only -lite and -lite-preview exist in the 3.1 family. The closest
+    # 3.x non-lite Flash is gemini-3-flash-preview.
+    gemini_vision_model: str = "gemini-3-flash-preview"
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements

@@ -426,15 +426,14 @@ async def _generate_profile(
     # complete even if the model's thinking allocation is fixed.
     _MAX_OUTPUT_TOKENS = 8000
 
-    # gemini-2.5-flash / 3.1-flash use "thinking" tokens BEFORE emitting
-    # visible output — those count against max_output_tokens. Earlier
-    # runs proved that `thinkingBudget=0` is silently ignored by the
-    # API (still MAX_TOKENS at 900-1100 chars). Setting both budget=0
-    # AND thinkingLevel=MINIMAL — different paths in the API may honor
-    # one or the other. Profile generation is structured extraction;
-    # no reasoning chain is needed.
+    # Gemini 2.5/3.x Flash models use "thinking" tokens before emitting
+    # visible output — those count against max_output_tokens. The API
+    # rejects setting BOTH thinkingBudget AND thinkingLevel ("you can
+    # only set one"). thinkingLevel=MINIMAL appears to be the more
+    # reliable way to request minimal reasoning (thinkingBudget=0 was
+    # silently ignored in an earlier run). Profile generation is
+    # structured extraction — no reasoning chain needed.
     _THINKING_CONFIG = types.ThinkingConfig(
-        thinkingBudget=0,
         thinkingLevel=types.ThinkingLevel.MINIMAL,
     )
 
