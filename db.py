@@ -239,6 +239,8 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             trader_score INTEGER,
             trader_rank INTEGER,
             trader_rationale TEXT,
+            slur_examples TEXT,
+            trader_examples TEXT,
             updated_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
         CREATE INDEX IF NOT EXISTS idx_user_profiles_username ON user_profiles(username);
@@ -253,6 +255,8 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         ("trader_score", "ALTER TABLE user_profiles ADD COLUMN trader_score INTEGER"),
         ("trader_rank", "ALTER TABLE user_profiles ADD COLUMN trader_rank INTEGER"),
         ("trader_rationale", "ALTER TABLE user_profiles ADD COLUMN trader_rationale TEXT"),
+        ("slur_examples", "ALTER TABLE user_profiles ADD COLUMN slur_examples TEXT"),
+        ("trader_examples", "ALTER TABLE user_profiles ADD COLUMN trader_examples TEXT"),
     ]:
         try:
             conn.execute(ddl)
@@ -1754,13 +1758,18 @@ def upsert_user_profile(
     racial_humor_score: int | None = None,
     trader_score: int | None = None,
     trader_rationale: str | None = None,
+    slur_examples: str | None = None,
+    trader_examples: str | None = None,
 ) -> None:
     """Insert or replace a user profile. updated_at is auto-stamped.
 
-    Metrics (slur_count, racial_humor_score, trader_score, trader_rationale)
-    are part of the profile row. trader_rank is NOT set here —
-    recompute_trader_ranks() handles ordinal positions in one pass after
-    all upserts complete.
+    Metrics (slur_count, racial_humor_score, trader_score, trader_rationale,
+    slur_examples, trader_examples) are part of the profile row.
+    trader_rank is NOT set here — recompute_trader_ranks() handles ordinal
+    positions in one pass after all upserts complete.
+
+    slur_examples and trader_examples are JSON-encoded list[str] payloads
+    (use json.dumps in the caller). Stored as TEXT to keep schema simple.
     """
     conn = get_connection()
     conn.execute(
@@ -1768,8 +1777,9 @@ def upsert_user_profile(
              (user_id, username, display_name, profile_text,
               message_count_at_update, last_seen_message_at,
               slur_count, racial_humor_score,
-              trader_score, trader_rationale, updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+              trader_score, trader_rationale,
+              slur_examples, trader_examples, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
            ON CONFLICT(user_id) DO UPDATE SET
              username = excluded.username,
              display_name = excluded.display_name,
@@ -1780,12 +1790,15 @@ def upsert_user_profile(
              racial_humor_score = COALESCE(excluded.racial_humor_score, user_profiles.racial_humor_score),
              trader_score = COALESCE(excluded.trader_score, user_profiles.trader_score),
              trader_rationale = COALESCE(excluded.trader_rationale, user_profiles.trader_rationale),
+             slur_examples = COALESCE(excluded.slur_examples, user_profiles.slur_examples),
+             trader_examples = COALESCE(excluded.trader_examples, user_profiles.trader_examples),
              updated_at = datetime('now')""",
         (
             int(user_id), username, display_name, profile_text,
             int(message_count_at_update), last_seen_message_at,
             int(slur_count), racial_humor_score,
             trader_score, trader_rationale,
+            slur_examples, trader_examples,
         ),
     )
     conn.commit()
@@ -1972,12 +1985,14 @@ def export_user_profiles_markdown() -> str:
     without shell access to /data/reports.db.
     """
     from datetime import datetime, timezone
+    import json as _json
     rows = get_connection().execute(
         """SELECT display_name, username, message_count_at_update,
                   last_seen_message_at, datetime(updated_at) AS updated_at,
                   profile_text,
                   slur_count, racial_humor_score,
-                  trader_score, trader_rank, trader_rationale
+                  trader_score, trader_rank, trader_rationale,
+                  slur_examples, trader_examples
            FROM user_profiles
            ORDER BY message_count_at_update DESC"""
     ).fetchall()
@@ -2011,6 +2026,14 @@ def export_user_profiles_markdown() -> str:
         ts = r["trader_score"]
         tr_rank = r["trader_rank"]
         tr_rationale = (r["trader_rationale"] or "").strip()
+        try:
+            slur_examples_list = _json.loads(r["slur_examples"] or "[]")
+        except Exception:
+            slur_examples_list = []
+        try:
+            trader_examples_list = _json.loads(r["trader_examples"] or "[]")
+        except Exception:
+            trader_examples_list = []
 
         header = f"## {dn}"
         if uname and uname.lower() != dn.lower():
@@ -2038,6 +2061,25 @@ def export_user_profiles_markdown() -> str:
         lines.append(f"> {scores_line}")
         if tr_rationale:
             lines.append(f"> _{tr_rationale}_")
+        # Slur examples — surfaced so a reader can see actual usage
+        # rather than just the bare count. Limited to 3, each truncated
+        # to ~140 chars.
+        if slur_examples_list:
+            lines.append(">")
+            lines.append("> **Recent slur usage:**")
+            for ex in slur_examples_list[:3]:
+                snippet = (ex or "")[:140].replace("\n", " ").strip()
+                if snippet:
+                    lines.append(f"> - {snippet}")
+        # Trader examples — LLM-extracted recent moments that drove the
+        # trader_score (wins, losses, calls). Limited to 3.
+        if trader_examples_list:
+            lines.append(">")
+            lines.append("> **Recent trader moments:**")
+            for ex in trader_examples_list[:3]:
+                snippet = (ex or "")[:200].replace("\n", " ").strip()
+                if snippet:
+                    lines.append(f"> - {snippet}")
         lines.append("")
 
         lines.append(body)

@@ -84,3 +84,33 @@ def count_slurs_by_category(text: str) -> dict[str, int]:
         if n:
             out[label] = out.get(label, 0) + n
     return out
+
+
+def find_slur_contexts(text: str, window: int = 50) -> list[str]:
+    """Return a list of short contextual snippets around each slur match.
+
+    Each snippet is the message content trimmed to ~`window` chars on
+    each side of the matched span (or just the full message if it's
+    shorter than 2*window). Multiple matches in one message produce
+    multiple snippets.
+
+    Used by the backfill to capture recent slur examples for the snapshot
+    so readers can see actual usage rather than just a bare count.
+    """
+    if not text:
+        return []
+    out: list[str] = []
+    n = len(text)
+    for _label, pat in _COMPILED:
+        for m in pat.finditer(text):
+            start = max(0, m.start() - window)
+            end = min(n, m.end() + window)
+            snippet = text[start:end]
+            if start > 0:
+                snippet = "…" + snippet.lstrip()
+            if end < n:
+                snippet = snippet.rstrip() + "…"
+            # Collapse any newlines in the snippet so it stays one line
+            snippet = " ".join(snippet.split())
+            out.append(snippet)
+    return out

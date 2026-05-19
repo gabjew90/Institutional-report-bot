@@ -52,7 +52,7 @@ from PIL import Image as PILImage  # noqa: E402
 
 import db  # noqa: E402
 from config import settings  # noqa: E402
-from scripts.slur_patterns import count_slurs_in_text  # noqa: E402
+from scripts.slur_patterns import count_slurs_in_text, find_slur_contexts  # noqa: E402
 
 
 def _normalize_image_bytes(raw: bytes) -> bytes | None:
@@ -222,16 +222,19 @@ Make the reader feel like they've met this person — and that meeting them was 
 
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
-Output a single JSON object with FOUR fields:
+Output a single JSON object with FIVE fields:
 
 ```
 {{
   "profile_text": "<full markdown profile per the schema above>",
   "trader_score": <integer 0-100>,
   "trader_rationale": "<one direct sentence on what's driving the score>",
-  "racial_humor_score": <integer 0-100>
+  "racial_humor_score": <integer 0-100>,
+  "trader_examples": ["<2-3 specific recent moments that drove the trader_score>"]
 }}
 ```
+
+**trader_examples** — 2-3 short, specific evidence items (each ~120-180 chars) from the user's recent message history that justify the trader_score. Mix wins, losses, and signature calls. Each one should be a concrete thing, not a generic statement. Good: "Caught the $NVDA earnings move into 145C calls Tuesday, 220% printed — flagged it 2 hours before the run." Bad: "Sometimes does well on tech names." If genuinely no signal, return an empty array, not made-up examples.
 
 The trader_score uses these brackets:
 - **90-100 — Real edge.** Documented wins others tail. Posts wins AND losses cleanly. Process visible. Room trusts their reads.
@@ -344,11 +347,13 @@ async def _generate_profile(
     http_session: aiohttp.ClientSession | None = None,
     images: list[dict] | None = None,
     user_id: int = 0,
-) -> tuple[str | None, int | None, str | None, int | None]:
+) -> tuple[
+    str | None, int | None, str | None, int | None, list[str] | None
+]:
     """Run Gemini to produce one user's profile + scores in ONE call.
 
     Returns (profile_text, trader_score, trader_rationale,
-    racial_humor_score) or (None, None, None, None) on hard failure.
+    racial_humor_score, trader_examples) or all-None on hard failure.
 
     When `images` is non-empty and `http_session` is provided, attaches the
     most-recent up-to-profile_image_cap images as multipart input. Every
@@ -388,8 +393,10 @@ async def _generate_profile(
 
     def _parse_response(
         text: str,
-    ) -> tuple[str | None, int | None, str | None, int | None]:
-        """Parse the JSON response. Returns the four fields or all-None
+    ) -> tuple[
+        str | None, int | None, str | None, int | None, list[str] | None
+    ]:
+        """Parse the JSON response. Returns the five fields or all-None
         on parse failure. Logs first 300 chars of the response on
         decode error so we can see what came back."""
         if not text:
@@ -397,7 +404,7 @@ async def _generate_profile(
                 f"  parse-failure for {display_name}: EMPTY response body",
                 flush=True,
             )
-            return None, None, None, None
+            return None, None, None, None, None
         try:
             data = json.loads(text)
             if not isinstance(data, dict):
@@ -406,11 +413,22 @@ async def _generate_profile(
                     f"type={type(data).__name__} text={text!r}",
                     flush=True,
                 )
-                return None, None, None, None
+                return None, None, None, None, None
             pt = (data.get("profile_text") or "").strip() or None
             ts = data.get("trader_score")
             tr = (data.get("trader_rationale") or "").strip() or None
             rh = data.get("racial_humor_score")
+            te_raw = data.get("trader_examples")
+            te = None
+            if isinstance(te_raw, list):
+                # Filter to non-empty strings, trim each to 250 chars
+                te = [
+                    str(x).strip()[:250]
+                    for x in te_raw
+                    if isinstance(x, str) and str(x).strip()
+                ]
+                if not te:
+                    te = None
             if ts is not None:
                 try:
                     ts = max(0, min(100, int(ts)))
@@ -421,7 +439,7 @@ async def _generate_profile(
                     rh = max(0, min(100, int(rh)))
                 except (TypeError, ValueError):
                     rh = None
-            return pt, ts, tr, rh
+            return pt, ts, tr, rh, te
         except json.JSONDecodeError as e:
             preview = text[:300].replace("\n", " ")
             tail = text[-200:].replace("\n", " ") if len(text) > 500 else ""
@@ -431,7 +449,7 @@ async def _generate_profile(
                 f"HEAD={preview!r}" + (f" ...TAIL={tail!r}" if tail else ""),
                 flush=True,
             )
-            return None, None, None, None
+            return None, None, None, None, None
 
     # 16000 tokens of output headroom. Thinking models burn most of the
     # budget on internal reasoning we can't directly observe. At 8000
@@ -490,12 +508,17 @@ async def _generate_profile(
             "trader_score": types.Schema(type=types.Type.INTEGER),
             "trader_rationale": types.Schema(type=types.Type.STRING),
             "racial_humor_score": types.Schema(type=types.Type.INTEGER),
+            "trader_examples": types.Schema(
+                type=types.Type.ARRAY,
+                items=types.Schema(type=types.Type.STRING),
+            ),
         },
         required=[
             "profile_text",
             "trader_score",
             "trader_rationale",
             "racial_humor_score",
+            "trader_examples",
         ],
     )
 
@@ -679,7 +702,7 @@ async def _generate_profile(
         return result
     except Exception as e:
         print(f"  ERROR profiling {display_name}: {e}", flush=True)
-        return None, None, None, None
+        return None, None, None, None, None
 
 
 async def run(days: int, channels: list[str]) -> None:
@@ -733,6 +756,11 @@ async def run(days: int, channels: list[str]) -> None:
             # Slur counts per user (regex-matched in their own messages
             # over the scan window). Folded into the profile row at upsert.
             slur_counts: dict[int, int] = defaultdict(int)
+            # Slur example snippets per user — newest-first, capped per
+            # user. Surfaced in the published snapshot so readers can see
+            # actual usage rather than just the bare count.
+            slur_examples: dict[int, list[str]] = defaultdict(list)
+            _SLUR_EXAMPLES_PER_USER = 5
 
             for ch in targets:
                 print(f"\nScanning #{ch.name}...", flush=True)
@@ -786,9 +814,21 @@ async def run(days: int, channels: list[str]) -> None:
                         "image_count": image_count,
                         "embed_texts": embed_texts,
                     })
-                    # Tally slurs from this user's own message text
+                    # Tally slurs from this user's own message text +
+                    # capture contextual snippets for the snapshot. We
+                    # only keep the most recent N per user (overwriting
+                    # older snippets when over cap) — since the scan is
+                    # oldest-first, the LATEST hits end up retained.
                     if content:
                         slur_counts[uid] += count_slurs_in_text(content)
+                        ctxs = find_slur_contexts(content, window=45)
+                        if ctxs:
+                            slur_examples[uid].extend(ctxs)
+                            # Trim from the front so we keep the newest
+                            if len(slur_examples[uid]) > _SLUR_EXAMPLES_PER_USER:
+                                slur_examples[uid] = (
+                                    slur_examples[uid][-_SLUR_EXAMPLES_PER_USER:]
+                                )
                     count += 1
                 print(f"  {count} messages, {len(by_user)} unique authors so far",
                       flush=True)
@@ -900,13 +940,20 @@ async def run(days: int, channels: list[str]) -> None:
                             print(f"  ✗ {meta['display_name']}: {result}",
                                   flush=True)
                             continue
-                        profile, trader_score, trader_rationale, racial_humor_score = result
+                        profile, trader_score, trader_rationale, racial_humor_score, trader_examples = result
                         if not profile:
                             print(f"  ✗ {meta['display_name']}: empty / unparseable response",
                                   flush=True)
                             continue
                         last_seen = msgs[-1]["timestamp"]
                         slur_n = slur_counts.get(uid, 0)
+                        # JSON-encode example lists (TEXT column).
+                        slur_ex = slur_examples.get(uid, [])
+                        slur_ex_json = json.dumps(slur_ex) if slur_ex else None
+                        trader_ex_json = (
+                            json.dumps(trader_examples)
+                            if trader_examples else None
+                        )
 
                         db.upsert_user_profile(
                             user_id=uid,
@@ -919,6 +966,8 @@ async def run(days: int, channels: list[str]) -> None:
                             racial_humor_score=racial_humor_score,
                             trader_score=trader_score,
                             trader_rationale=trader_rationale,
+                            slur_examples=slur_ex_json,
+                            trader_examples=trader_ex_json,
                         )
                         n_imgs = len(images_by_user.get(uid, []))
                         rh_display = (
