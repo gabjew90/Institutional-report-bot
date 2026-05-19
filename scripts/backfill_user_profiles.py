@@ -102,6 +102,18 @@ GEMINI_CONCURRENCY = 5  # parallel calls per batch
 PROFILE_PROMPT = """\
 You're building a balanced character profile for one member of a private options-trading discord. The output goes into context for a /ask bot that uses it to answer questions about the user, joke with them, and (occasionally) clap back when they actually attack.
 
+## CRITICAL: WHO YOU'RE PROFILING
+
+You are profiling **{display_name}** (username `{username}`, Discord ID <@{user_id}>) — and ONLY this user.
+
+The MESSAGES block at the bottom contains ONLY messages WRITTEN BY {display_name}. When {display_name}'s messages mention OTHER users by name (e.g. "terlin", "BK", "abe", "@kloh"), those mentions are people {display_name} is TALKING TO or ABOUT — they are NOT {display_name}.
+
+**Hard rule:** every reference to "the user", "they", "he", or "she" in your output refers to **{display_name}** and nobody else. Your profile_text MUST begin with the literal header `**{display_name} ({username}, <@{user_id}>) — {msg_count} msgs**` (use {display_name} exactly as given, not any other name). The body must describe {display_name}'s behavior, voice, and patterns — not the patterns of anyone {display_name} happens to mention.
+
+If {display_name}'s messages frequently reference another user's trades or behavior, that goes in *Running jokes* or *Trash talk ammo* as "what {display_name} pokes at others about," NOT as {display_name}'s own pattern.
+
+---
+
 Goal: a FAIR scouting report. Strengths, style, what the room ALREADY teases them about, and what they've been up to this week — all in one document. Not a roast file. Not a hagiography. A reader who'd never met them should come away with a real picture of who they are at the terminal AND why people in the room like having them around.
 
 **The customers pay to be here.** Treat them like paying customers, not subjects to dissect. Honest about behavior; not cruel about character.
