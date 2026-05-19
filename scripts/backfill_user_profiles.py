@@ -398,8 +398,14 @@ async def run(days: int, channels: list[str]) -> None:
 
             cutoff = datetime.now(timezone.utc) - timedelta(days=days)
 
-            # Skip the analyst — handled separately via KEY USERS in prompt.
-            skip_username = (settings.analyst_primary_author or "").lower().strip()
+            # Note: previously this skipped settings.analyst_primary_author
+            # (Abe) from profile generation under the assumption that the
+            # KEY USERS block in the /ask system prompt was authoritative
+            # for him. User now wants Abe profiled like anyone else — the
+            # KEY USERS rules still apply for his trade voice / pick-roast
+            # ban, the profile is additional context. The analyst_primary_
+            # author setting still scopes the OCR watcher; it just no
+            # longer excludes from profiling.
 
             # Per-user accumulator: user_id -> list of message dicts
             by_user: dict[int, list[dict]] = defaultdict(list)
@@ -414,9 +420,6 @@ async def run(days: int, channels: list[str]) -> None:
                 async for msg in ch.history(limit=None, after=cutoff,
                                             oldest_first=True):
                     if msg.author.bot:
-                        continue
-                    uname = (msg.author.name or "").lower()
-                    if skip_username and uname == skip_username:
                         continue
                     uid = msg.author.id
                     if uid not in user_meta:
