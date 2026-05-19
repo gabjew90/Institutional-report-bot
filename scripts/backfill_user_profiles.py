@@ -520,15 +520,13 @@ async def _generate_profile(
     ) -> tuple[
         tuple[str | None, int | None, str | None, int | None], str | None
     ]:
-        # Use the profile model (gemini_vision_model) for the text-only
-        # path too — gives a consistent text+image model for profile
-        # generation, independent of the primary gemini_model used by
-        # /ask and pulse synthesis. Falls back to gemini_model only if
-        # vision model isn't configured.
-        text_model = (
-            getattr(settings, "gemini_vision_model", "")
-            or settings.gemini_model
-        )
+        # Text-only path uses settings.gemini_model directly — the
+        # primary model env var (gemini-3.1-flash-lite-preview in prod)
+        # is what produces full 2400-char profiles. The GA variant
+        # (gemini_vision_model) produced 200-1000 char truncated outputs
+        # in diagnostic A/B testing. Vision path stays on the GA model
+        # when re-enabled; text-only path stays on the preview.
+        text_model = settings.gemini_model
         resp = await gemini_client.aio.models.generate_content(
             model=text_model,
             contents=prompt,

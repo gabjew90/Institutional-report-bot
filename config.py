@@ -118,16 +118,21 @@ class Settings(BaseSettings):
     # to profile_image_cap most-recent images per user and sends them
     # alongside the text to Gemini (multipart). Vision extracts specific
     # tickers, dollar PnLs, and positions from screenshots that the
-    # text-only path leaves as generic "[image]" markers. Costs ~2x more
-    # per profile than text-only (~$4-5/month total at 37 profiled users
-    # vs ~$2/month text-only); validated against a live BK probe that
-    # surfaced MSTR-specific quotes and a $4,500 PnL from screenshots.
-    profile_image_ocr_enabled: bool = True
+    # text-only path leaves as generic "[image]" markers.
+    #
+    # DISABLED 2026-05-18 — diagnostic A/B showed that the GA model
+    # gemini-3.1-flash-lite is strictly worse at producing long
+    # structured output than gemini-3.1-flash-lite-preview. With vision
+    # ON (GA model) we got 200-1000 char truncated profiles. With vision
+    # OFF (preview model) we get full 2400-char profiles. Keeping vision
+    # off until a vision-capable model that ALSO produces full output
+    # is identified. The image-OCR code path stays intact in case it's
+    # re-enabled later.
+    profile_image_ocr_enabled: bool = False
     profile_image_cap: int = 20
-    # Vision-capable model used ONLY by the profile backfill when images
-    # are present. Per user direction (2026-05-18) — use gemini-3.1-flash-lite
-    # (the GA version, not -preview) for both text and image paths.
-    # Override via env var GEMINI_VISION_MODEL.
+    # Vision-capable model — currently UNUSED (profile_image_ocr_enabled
+    # is False). Kept as configuration so re-enabling vision is a
+    # one-line setting flip rather than a code change.
     gemini_vision_model: str = "gemini-3.1-flash-lite"
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
