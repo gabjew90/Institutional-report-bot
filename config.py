@@ -71,11 +71,17 @@ class Settings(BaseSettings):
 
     # User-profile system: comma-separated channel names where the bot
     # scans for personality signal during the daily profile refresh.
-    # Default is the three "yapping" channels (stonks, crypto, fitness)
-    # — high message volume, lots of personality. Empty = profile system
-    # disabled (no scheduled refresh).
+    # Three "yapping" channels (high-volume personality) + four alert
+    # channels (low-volume but signal-rich trade calls). Empty =
+    # profile system disabled (no scheduled refresh).
     profile_channels: str = (
-        "💬-stonks-yapping-💬,₿-crypto-yapping-₿,🏃-fitness-yapping-🏋"
+        "💬-stonks-yapping-💬,"
+        "₿-crypto-yapping-₿,"
+        "🏃-fitness-yapping-🏋,"
+        "🕰️-member-alerts-🕰️,"
+        "🐄-spot-bag-alerts-🐄,"
+        "🚨-0dte-lotto-alerts-🚨,"
+        "🪙-crypto-alerts-🪙"
     )
     # How many days of history to use for each refresh pass.
     profile_window_days: int = 30
