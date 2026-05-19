@@ -418,12 +418,52 @@ async def _generate_profile(
             )
             return None, None, None, None
 
-    # Bumped to 4000 (was 2500) — JSON output that includes a 2500-char
-    # profile_text + trader_score + trader_rationale + racial_humor_score
-    # was getting cut off mid-stream for high-message users with vision
-    # input. 4000 gives the model headroom without breaking the model's
-    # max-output-tokens cap (8192 typical).
+    # 4000 tokens of output headroom — JSON includes a ~2500-char
+    # profile_text + trader_score + trader_rationale + racial_humor_score.
+    # Model max is typically 8192.
     _MAX_OUTPUT_TOKENS = 4000
+
+    # Internal calibration tool — bot characterizes how users talk, it
+    # doesn't moderate or publish raw content. Default Gemini safety
+    # filters truncate mid-stream when reading chat with slurs / racial
+    # humor (the exact signal we're trying to score). BLOCK_NONE across
+    # the board so the model can finish a structured JSON response on
+    # any user's raw history. Output is consumed internally by another
+    # LLM call (the /ask context), never returned raw to end users.
+    _SAFETY_SETTINGS = [
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE,
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE,
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE,
+        ),
+        types.SafetySetting(
+            category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE,
+        ),
+    ]
+
+    def _log_finish(resp, label: str) -> None:
+        """Log finish_reason from the response candidate. Useful when a
+        response truncates mid-stream — finish_reason=SAFETY means a
+        safety filter fired despite the BLOCK_NONE settings; MAX_TOKENS
+        means we need a bigger budget; STOP is normal completion."""
+        try:
+            cand = resp.candidates[0] if resp.candidates else None
+            fr = getattr(cand, "finish_reason", None) if cand else None
+            if fr is not None and str(fr) not in ("FinishReason.STOP", "STOP", "1"):
+                print(
+                    f"  finish_reason for {display_name} ({label}): {fr}",
+                    flush=True,
+                )
+        except Exception:
+            pass
 
     async def _try_text_only() -> tuple[str | None, int | None, str | None, int | None]:
         resp = await gemini_client.aio.models.generate_content(
@@ -433,8 +473,10 @@ async def _generate_profile(
                 temperature=0.3,
                 max_output_tokens=_MAX_OUTPUT_TOKENS,
                 response_mime_type="application/json",
+                safety_settings=_SAFETY_SETTINGS,
             ),
         )
+        _log_finish(resp, "text-only")
         return _parse_response((resp.text or "").strip())
 
     try:
@@ -474,6 +516,7 @@ async def _generate_profile(
                         temperature=0.3,
                         max_output_tokens=_MAX_OUTPUT_TOKENS,
                         response_mime_type="application/json",
+                        safety_settings=_SAFETY_SETTINGS,
                     ),
                 )
             except Exception as vision_err:
@@ -484,6 +527,7 @@ async def _generate_profile(
                     flush=True,
                 )
                 return await _try_text_only()
+            _log_finish(response, f"vision/{vision_model}")
             return _parse_response((response.text or "").strip())
         else:
             return await _try_text_only()
