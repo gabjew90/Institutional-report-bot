@@ -218,6 +218,12 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         -- the user's own messages over the most-recent backfill window.
         -- Patterns live in scripts/slur_patterns.py. Noisy by design.
         --
+        -- racial_humor_score: 0-100 LLM-assessed score for broader racial
+        -- humor / ethnic jokes / stereotyping (the soft stuff regex
+        -- misses). Designed to INCLUDE literal slur usage too, so it's
+        -- a complete picture — slur_count is a regex-based floor signal,
+        -- racial_humor_score is the composite.
+        --
         -- trader_score: 0-100 LLM-assessed skill score. trader_rank is
         -- the derived ordinal across all profiled users (1 = best).
         -- trader_rationale: one-line LLM justification for the score.
@@ -229,6 +235,7 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             message_count_at_update INTEGER NOT NULL DEFAULT 0,
             last_seen_message_at TEXT,
             slur_count INTEGER NOT NULL DEFAULT 0,
+            racial_humor_score INTEGER,
             trader_score INTEGER,
             trader_rank INTEGER,
             trader_rationale TEXT,
@@ -238,10 +245,11 @@ def _init_schema(conn: sqlite3.Connection) -> None:
     """)
     # Migration: add the metrics columns to user_profiles if a previous
     # deploy used the old schema. Must run BEFORE the slur_count /
-    # trader_rank indexes are created, since the indexes reference these
-    # new columns.
+    # trader_rank / racial_humor indexes are created, since the indexes
+    # reference these new columns.
     for col, ddl in [
         ("slur_count", "ALTER TABLE user_profiles ADD COLUMN slur_count INTEGER NOT NULL DEFAULT 0"),
+        ("racial_humor_score", "ALTER TABLE user_profiles ADD COLUMN racial_humor_score INTEGER"),
         ("trader_score", "ALTER TABLE user_profiles ADD COLUMN trader_score INTEGER"),
         ("trader_rank", "ALTER TABLE user_profiles ADD COLUMN trader_rank INTEGER"),
         ("trader_rationale", "ALTER TABLE user_profiles ADD COLUMN trader_rationale TEXT"),
@@ -252,6 +260,7 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             pass  # duplicate column — already migrated
     # Now-safe indexes that depend on the migrated columns.
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_slur ON user_profiles(slur_count DESC)")
+    conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_racial_humor ON user_profiles(racial_humor_score DESC)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_rank ON user_profiles(trader_rank)")
     # Idempotent migrations for already-deployed bridge_ingestion_state schemas
     # (the table was first created in step 1 without these columns).
@@ -1742,22 +1751,25 @@ def upsert_user_profile(
     message_count_at_update: int,
     last_seen_message_at: str | None,
     slur_count: int = 0,
+    racial_humor_score: int | None = None,
     trader_score: int | None = None,
     trader_rationale: str | None = None,
 ) -> None:
     """Insert or replace a user profile. updated_at is auto-stamped.
 
-    Metrics (slur_count, trader_score, trader_rationale) are now part of
-    the profile row. trader_rank is NOT set here — recompute_trader_ranks()
-    handles ordinal positions in one pass after all upserts complete.
+    Metrics (slur_count, racial_humor_score, trader_score, trader_rationale)
+    are part of the profile row. trader_rank is NOT set here —
+    recompute_trader_ranks() handles ordinal positions in one pass after
+    all upserts complete.
     """
     conn = get_connection()
     conn.execute(
         """INSERT INTO user_profiles
              (user_id, username, display_name, profile_text,
               message_count_at_update, last_seen_message_at,
-              slur_count, trader_score, trader_rationale, updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+              slur_count, racial_humor_score,
+              trader_score, trader_rationale, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
            ON CONFLICT(user_id) DO UPDATE SET
              username = excluded.username,
              display_name = excluded.display_name,
@@ -1765,13 +1777,15 @@ def upsert_user_profile(
              message_count_at_update = excluded.message_count_at_update,
              last_seen_message_at = excluded.last_seen_message_at,
              slur_count = excluded.slur_count,
+             racial_humor_score = COALESCE(excluded.racial_humor_score, user_profiles.racial_humor_score),
              trader_score = COALESCE(excluded.trader_score, user_profiles.trader_score),
              trader_rationale = COALESCE(excluded.trader_rationale, user_profiles.trader_rationale),
              updated_at = datetime('now')""",
         (
             int(user_id), username, display_name, profile_text,
             int(message_count_at_update), last_seen_message_at,
-            int(slur_count), trader_score, trader_rationale,
+            int(slur_count), racial_humor_score,
+            trader_score, trader_rationale,
         ),
     )
     conn.commit()
@@ -2052,24 +2066,29 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
     list has been profiled.
 
     Header: `- **DisplayName** (username, <@user_id>): <metrics>: <text>`.
-    Metrics inline (private hierarchies): slur rank among this conv +
-    global trader rank with one-line rationale. Bot uses these ONLY for
-    comparative answers — never enumerated or quoted as raw numbers.
+    Metrics inline (private hierarchies): racism-rank (combined slur +
+    racial-humor signal) among this conv + global trader rank with
+    one-line rationale. Bot uses these ONLY for comparative answers —
+    never enumerated or quoted as raw numbers.
     """
     profiles = get_profiles_for_users(user_ids)
     if not profiles:
         return ""
 
-    # Compute slur ranks ordinally among THIS subset (not global). Only
-    # users with slur_count > 0 get ranked; everyone else is "not in
-    # this conv's top."
-    by_slur = sorted(
-        [(uid, p.get("slur_count") or 0) for uid, p in profiles.items()
-         if (p.get("slur_count") or 0) > 0],
+    # Racism rank combines BOTH literal slur usage (regex count) AND
+    # LLM-derived broader racial-humor score (0-100). The two are
+    # roughly comparable in magnitude for active users; summing gives
+    # a usable composite. Only users with non-zero combined signal
+    # get ranked.
+    def _combined(p: dict) -> int:
+        return int(p.get("slur_count") or 0) + int(p.get("racial_humor_score") or 0)
+
+    by_racism = sorted(
+        [(uid, _combined(p)) for uid, p in profiles.items() if _combined(p) > 0],
         key=lambda t: (-t[1], t[0]),
     )
-    slur_rank_by_uid: dict[int, int] = {uid: i + 1 for i, (uid, _) in enumerate(by_slur)}
-    slur_total_in_conv = len(by_slur)
+    racism_rank_by_uid: dict[int, int] = {uid: i + 1 for i, (uid, _) in enumerate(by_racism)}
+    racism_total_in_conv = len(by_racism)
 
     lines = [
         "WHO'S TALKING (background on people active in this conversation):",
@@ -2086,15 +2105,25 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
         else:
             ident = f"**{dn}** ({mention})"
 
-        # Private metrics inline — surfaced as ordinal ranks only
+        # Private metrics inline — surfaced as ordinal ranks only.
+        # racism-rank exposes both signals (humor + literal) so the bot
+        # can answer "who's worst" vs "who actually uses slurs" if asked.
         metric_bits: list[str] = []
-        slur_rank = slur_rank_by_uid.get(uid)
-        if slur_rank:
+        rr = racism_rank_by_uid.get(uid)
+        humor = p.get("racial_humor_score")
+        slurs = int(p.get("slur_count") or 0)
+        sub_signal = []
+        if humor is not None:
+            sub_signal.append(f"humor:{humor}/100")
+        if slurs > 0:
+            sub_signal.append(f"slurs:{slurs}")
+        sub = f" ({', '.join(sub_signal)})" if sub_signal else ""
+        if rr:
             metric_bits.append(
-                f"slur-rank #{slur_rank}/{slur_total_in_conv} in this conv"
+                f"racism-rank #{rr}/{racism_total_in_conv} in this conv{sub}"
             )
         else:
-            metric_bits.append("slur-rank: not in this conv's top")
+            metric_bits.append(f"racism-rank: not in this conv's top{sub}")
         tr = p.get("trader_rank")
         ts_rationale = p.get("trader_rationale")
         if tr:

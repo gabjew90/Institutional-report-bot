@@ -214,13 +214,14 @@ Make the reader feel like they've met this person — and that meeting them was 
 
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
-Output a single JSON object with THREE fields:
+Output a single JSON object with FOUR fields:
 
 ```
 {{
   "profile_text": "<full markdown profile per the schema above>",
   "trader_score": <integer 0-100>,
-  "trader_rationale": "<one direct sentence on what's driving the score>"
+  "trader_rationale": "<one direct sentence on what's driving the score>",
+  "racial_humor_score": <integer 0-100>
 }}
 ```
 
@@ -232,7 +233,33 @@ The trader_score uses these brackets:
 - **20-39 — Bag holder.** More documented losses than wins. Sizes up to recover. Chases the loudest voice.
 - **0-19 — Tail traffic / exit liquidity.** Should not be trading at this size.
 
-Be direct in the rationale — call out the actual pattern in one sentence. No "shows promise" or mealy-mouthed framings. Honest, not personally cruel.
+Be direct in the trader rationale — call out the actual pattern in one sentence. No "shows promise" or mealy-mouthed framings. Honest, not personally cruel.
+
+---
+
+**racial_humor_score** — 0-100 scoring how frequently this user engages with race-edged content. This is a PRIVATE internal calibration number for clapback context; it will never be quoted as a raw value to anyone. Be honest, not euphemistic.
+
+Score the FULL picture, not just slurs. Counts toward the score:
+- Literal racial slurs (any group, censored or not — "n***a", "ch**k", coded variants)
+- Ethnic / racial stereotyping ("typical [group] move", "of course the [group] guy", "[group] energy")
+- Racial / cultural jokes ("aliens vs. [group]" punchlines, accent mimicry, country-specific mockery)
+- Race-based mockery of other users in the room
+- Coded racism / dog whistles / "joking" appropriation
+- Frequent unprompted racial references even when not punching down
+
+Does NOT count toward the score:
+- Mentioning races/ethnicities in factual context (geopolitics, demographics, a news headline)
+- Self-deprecating jokes about the user's OWN race
+- Defending or pushing back on racial humor
+
+Calibration:
+- **0-15 — Clean.** No race-edged content, or zero usage in the window. Lurkers default here unless they actually post.
+- **16-35 — Occasional.** Joins in on common room jokes when prompted, doesn't lead, no slurs.
+- **36-55 — Regular.** Race-edged humor is part of their normal voice. Some stereotyping. Maybe one or two censored slurs.
+- **56-75 — Heavy.** Racial humor is a defining feature. Stereotyping flows freely. Multiple slurs (including uncensored). Often pokes at specific groups.
+- **76-100 — Dominant.** Race-edged content saturates the messages. Slurs uncensored and frequent. Specific ethnic groups targeted in a sustained way.
+
+Anchor against THIS user's messages. If you see zero examples, score is in the 0-15 range — don't pad it.
 
 ---
 
@@ -309,11 +336,11 @@ async def _generate_profile(
     http_session: aiohttp.ClientSession | None = None,
     images: list[dict] | None = None,
     user_id: int = 0,
-) -> tuple[str | None, int | None, str | None]:
-    """Run Gemini to produce one user's profile + trader score in ONE call.
+) -> tuple[str | None, int | None, str | None, int | None]:
+    """Run Gemini to produce one user's profile + scores in ONE call.
 
-    Returns (profile_text, trader_score, trader_rationale) or (None, None,
-    None) on hard failure.
+    Returns (profile_text, trader_score, trader_rationale,
+    racial_humor_score) or (None, None, None, None) on hard failure.
 
     When `images` is non-empty and `http_session` is provided, attaches the
     most-recent up-to-profile_image_cap images as multipart input. Every
@@ -351,26 +378,34 @@ async def _generate_profile(
         and images
     )
 
-    def _parse_response(text: str) -> tuple[str | None, int | None, str | None]:
-        """Parse the JSON response. Returns the three fields or (None,
-        None, None) on parse failure."""
+    def _parse_response(
+        text: str,
+    ) -> tuple[str | None, int | None, str | None, int | None]:
+        """Parse the JSON response. Returns the four fields or all-None
+        on parse failure."""
         if not text:
-            return None, None, None
+            return None, None, None, None
         try:
             data = json.loads(text)
             pt = (data.get("profile_text") or "").strip() or None
             ts = data.get("trader_score")
             tr = (data.get("trader_rationale") or "").strip() or None
+            rh = data.get("racial_humor_score")
             if ts is not None:
                 try:
                     ts = max(0, min(100, int(ts)))
                 except (TypeError, ValueError):
                     ts = None
-            return pt, ts, tr
+            if rh is not None:
+                try:
+                    rh = max(0, min(100, int(rh)))
+                except (TypeError, ValueError):
+                    rh = None
+            return pt, ts, tr, rh
         except json.JSONDecodeError:
-            return None, None, None
+            return None, None, None, None
 
-    async def _try_text_only() -> tuple[str | None, int | None, str | None]:
+    async def _try_text_only() -> tuple[str | None, int | None, str | None, int | None]:
         resp = await gemini_client.aio.models.generate_content(
             model=settings.gemini_model,
             contents=prompt,
@@ -434,7 +469,7 @@ async def _generate_profile(
             return await _try_text_only()
     except Exception as e:
         print(f"  ERROR profiling {display_name}: {e}", flush=True)
-        return None, None, None
+        return None, None, None, None
 
 
 async def run(days: int, channels: list[str]) -> None:
@@ -646,17 +681,16 @@ async def run(days: int, channels: list[str]) -> None:
                             user_id=uid,
                         ))
                     results = await asyncio.gather(*tasks, return_exceptions=True)
-                    # Single Gemini call per user now returns
-                    # (profile_text, trader_score, trader_rationale) as
-                    # one structured JSON response. Half the API calls,
-                    # half the latency vs the previous two-call split.
+                    # Single Gemini call per user returns
+                    # (profile_text, trader_score, trader_rationale,
+                    #  racial_humor_score) as one JSON response.
                     for (uid, msgs), result in zip(batch, results):
                         meta = user_meta[uid]
                         if isinstance(result, Exception):
                             print(f"  ✗ {meta['display_name']}: {result}",
                                   flush=True)
                             continue
-                        profile, trader_score, trader_rationale = result
+                        profile, trader_score, trader_rationale, racial_humor_score = result
                         if not profile:
                             print(f"  ✗ {meta['display_name']}: empty / unparseable response",
                                   flush=True)
@@ -672,17 +706,23 @@ async def run(days: int, channels: list[str]) -> None:
                             message_count_at_update=len(msgs),
                             last_seen_message_at=last_seen,
                             slur_count=slur_n,
+                            racial_humor_score=racial_humor_score,
                             trader_score=trader_score,
                             trader_rationale=trader_rationale,
                         )
                         n_imgs = len(images_by_user.get(uid, []))
+                        rh_display = (
+                            racial_humor_score
+                            if racial_humor_score is not None else 'n/a'
+                        )
                         summary_lines.append(
                             f"## {meta['display_name']} ({meta['username']}) — "
                             f"{len(msgs)} msgs"
                             + (f", {n_imgs} imgs"
                                if n_imgs and settings.profile_image_ocr_enabled
                                else "")
-                            + f"\n\n_slur-count: {slur_n} · "
+                            + f"\n\n_slurs: {slur_n} · "
+                            f"racial-humor: {rh_display}/100 · "
                             f"trader-score: {trader_score if trader_score is not None else 'n/a'}_"
                             + (f"\n_rationale: {trader_rationale}_"
                                if trader_rationale else "")
@@ -693,10 +733,12 @@ async def run(days: int, channels: list[str]) -> None:
                             if n_imgs and settings.profile_image_ocr_enabled
                             else ""
                         )
-                        score_tag = (
-                            f" | slur={slur_n} trader={trader_score}"
-                            if trader_score is not None else f" | slur={slur_n}"
-                        )
+                        score_bits = [f"slur={slur_n}"]
+                        if racial_humor_score is not None:
+                            score_bits.append(f"rh={racial_humor_score}")
+                        if trader_score is not None:
+                            score_bits.append(f"trader={trader_score}")
+                        score_tag = " | " + " ".join(score_bits)
                         print(
                             f"  ✓ {meta['display_name']:<25} "
                             f"{len(msgs):>4} msgs{img_tag}"
