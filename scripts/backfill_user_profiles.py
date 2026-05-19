@@ -515,7 +515,11 @@ async def _generate_profile(
     # finish_reason regardless of STOP and retry once with a fresh call.
     _SHORT_PROFILE_THRESHOLD = 1500
 
-    async def _try_text_only() -> tuple[str | None, int | None, str | None, int | None]:
+    async def _try_text_only(
+        temperature: float = 0.3,
+    ) -> tuple[
+        tuple[str | None, int | None, str | None, int | None], str | None
+    ]:
         # Use the profile model (gemini_vision_model) for the text-only
         # path too — gives a consistent text+image model for profile
         # generation, independent of the primary gemini_model used by
@@ -529,7 +533,7 @@ async def _generate_profile(
             model=text_model,
             contents=prompt,
             config=types.GenerateContentConfig(
-                temperature=0.3,
+                temperature=temperature,
                 max_output_tokens=_MAX_OUTPUT_TOKENS,
                 response_mime_type="application/json",
                 response_schema=_RESPONSE_SCHEMA,
@@ -537,14 +541,20 @@ async def _generate_profile(
                 thinking_config=_THINKING_CONFIG,
             ),
         )
-        _log_finish(resp, f"text-only/{text_model}")
-        return _parse_response((resp.text or "").strip())
+        _log_finish(resp, f"text-only/{text_model}@t{temperature}")
+        return (
+            _parse_response((resp.text or "").strip()),
+            _get_finish_reason(resp),
+        )
 
-    async def _attempt() -> tuple[
+    async def _attempt(temperature: float = 0.3) -> tuple[
         tuple[str | None, int | None, str | None, int | None], str | None
     ]:
         """One full generation attempt. Returns (parsed_tuple,
-        finish_reason). finish_reason is None if not retrievable."""
+        finish_reason). finish_reason is None if not retrievable.
+        temperature controls sampling — higher values produce more
+        variance and tend to break out of deterministic short-output
+        patterns when retrying."""
         if vision_enabled:
             image_cap = getattr(settings, "profile_image_cap", 20)
             img_sample = images[-image_cap:]
@@ -569,27 +579,7 @@ async def _generate_profile(
                 attached += 1
             if attached == 0:
                 # No usable images — fall through to text-only.
-                text_model = (
-                    getattr(settings, "gemini_vision_model", "")
-                    or settings.gemini_model
-                )
-                resp = await gemini_client.aio.models.generate_content(
-                    model=text_model,
-                    contents=prompt,
-                    config=types.GenerateContentConfig(
-                        temperature=0.3,
-                        max_output_tokens=_MAX_OUTPUT_TOKENS,
-                        response_mime_type="application/json",
-                        response_schema=_RESPONSE_SCHEMA,
-                        safety_settings=_SAFETY_SETTINGS,
-                        thinking_config=_THINKING_CONFIG,
-                    ),
-                )
-                _log_finish(resp, f"text-only/{text_model}")
-                return (
-                    _parse_response((resp.text or "").strip()),
-                    _get_finish_reason(resp),
-                )
+                return await _try_text_only(temperature=temperature)
             parts.append(types.Part.from_text(text=prompt))
             vision_model = getattr(
                 settings, "gemini_vision_model", ""
@@ -599,7 +589,7 @@ async def _generate_profile(
                     model=vision_model,
                     contents=parts,
                     config=types.GenerateContentConfig(
-                        temperature=0.3,
+                        temperature=temperature,
                         max_output_tokens=_MAX_OUTPUT_TOKENS,
                         response_mime_type="application/json",
                         response_schema=_RESPONSE_SCHEMA,
@@ -624,36 +614,39 @@ async def _generate_profile(
             return await _try_text_only(), None
 
     try:
-        result, finish_reason = await _attempt()
-        profile_text = result[0]
-        # Retry-on-short: if profile_text is suspiciously short, log the
-        # finish_reason (which we'd normally skip for STOP) and try one
-        # more time. Some short outputs are MAX_TOKENS, some are voluntary
-        # STOPs (model decided early) — a single retry resolves both
-        # since temperature=0.3 still gives variance.
-        if profile_text and len(profile_text) < _SHORT_PROFILE_THRESHOLD:
+        result, finish_reason = await _attempt(temperature=0.3)
+        # Retry-on-short with INCREASING temperature: the model deterministically
+        # produces short outputs for some users at low temperature (mid-sentence
+        # cuts that look like STOP but are real truncations of the inner JSON
+        # string). Same-temp retry rarely helps. Bumping temperature breaks the
+        # deterministic short-output path and usually completes the full profile.
+        for retry_temp in (0.7, 1.0):
+            profile_text = result[0]
+            if not profile_text or len(profile_text) >= _SHORT_PROFILE_THRESHOLD:
+                break
             print(
                 f"  short profile for {display_name} "
                 f"({len(profile_text)} chars, finish={finish_reason}) "
-                f"— retrying once",
+                f"— retrying at temp={retry_temp}",
                 flush=True,
             )
-            retry_result, retry_finish = await _attempt()
+            retry_result, retry_finish = await _attempt(temperature=retry_temp)
             retry_text = retry_result[0]
-            # Keep whichever attempt produced more content
+            # Keep whichever attempt produced more content so far
             if retry_text and len(retry_text) > len(profile_text):
                 print(
-                    f"  retry succeeded for {display_name} "
+                    f"  retry@t={retry_temp} better for {display_name} "
                     f"({len(retry_text)} chars, finish={retry_finish})",
                     flush=True,
                 )
                 result = retry_result
+                finish_reason = retry_finish
             else:
                 print(
-                    f"  retry no better for {display_name} "
+                    f"  retry@t={retry_temp} no better for {display_name} "
                     f"(orig={len(profile_text)}, "
                     f"retry={len(retry_text) if retry_text else 'None'}, "
-                    f"finish={retry_finish}) — keeping original",
+                    f"finish={retry_finish})",
                     flush=True,
                 )
         return result
