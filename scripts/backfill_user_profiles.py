@@ -501,6 +501,7 @@ async def run(days: int, channels: list[str]) -> None:
                             ),
                         }
                     image_count = 0
+                    # Direct image attachments (uploaded files)
                     for a in msg.attachments:
                         ct = (a.content_type or "").lower()
                         if ct.startswith("image/"):
@@ -510,6 +511,23 @@ async def run(days: int, channels: list[str]) -> None:
                                 "content_type": a.content_type,
                                 "ts": msg.created_at.isoformat(),
                             })
+                    # Embed images (tweets / articles / linked previews).
+                    # Discord renders X/Twitter posts + article links as
+                    # embeds with .image and .thumbnail proxies. Worth
+                    # capturing — a shared tweet w/ a chart screenshot
+                    # carries real signal. PIL re-encode handles whatever
+                    # format the CDN returns.
+                    for e in msg.embeds:
+                        for attr in ("image", "thumbnail"):
+                            ref = getattr(e, attr, None)
+                            url = getattr(ref, "url", None) if ref else None
+                            if url and isinstance(url, str):
+                                image_count += 1
+                                images_by_user[uid].append({
+                                    "url": url,
+                                    "content_type": None,  # CDN response will dictate
+                                    "ts": msg.created_at.isoformat(),
+                                })
                     embed_texts = _extract_embed_texts(msg)
                     content = (msg.content or "").strip()
                     by_user[uid].append({
