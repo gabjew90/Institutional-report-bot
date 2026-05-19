@@ -49,6 +49,7 @@ from google.genai import types  # noqa: E402
 
 import db  # noqa: E402
 from config import settings  # noqa: E402
+from scripts.slur_patterns import count_slurs_in_text  # noqa: E402
 
 # Hard cap on image bytes per download. Anything over this is dropped
 # (likely a screen recording or huge composite). Keeps token cost predictable.
@@ -90,11 +91,13 @@ Six things, ordered from most-positive-leaning to most-edgy:
 
 **Style & Patterns.** How they trade and talk — neutral descriptions. "Trades weeklies on tech, leads with chart screenshots, fast to size up on conviction names, uses humor to defuse tilt." Just what they do. Not whether it's smart or dumb.
 
-**Running jokes.** The stuff the room ALREADY gives them shit about — recurring bits, light teases, running drama THEY laugh at too. "Always asks about $WEN," "Calls the top on every green day," "Forever the goth-girl convo derail." Threshold: would a normal Tuesday in chat hit this same note as a joke? If yes, fair game. If the tease would cut deeper than the room's normal banter, leave it out. **Not psychological diagnostics. Not cutting takedowns. Not real-world vulnerability.** Just the warm shots the room already gets.
+**Running jokes.** The stuff the room ALREADY gives them shit about — long-running bits, recurring drama THEY laugh at too. "Always asks about $WEN," "Calls the top on every green day," "Forever the goth-girl convo derail." Persistent room culture, not one-off moments. Threshold: would a normal Tuesday in chat hit this same note as a joke? If yes, fair game. If the tease would cut deeper than the room's normal banter, leave it out. **Not psychological diagnostics. Not cutting takedowns. Not real-world vulnerability.** Just the warm shots the room already gets.
+
+**Trash talk ammo.** 3-5 specific recent moments / quotes / behaviors from THIS user that are funny enough to weaponize in a clapback. Distinct from Running jokes: these are recent, specific, exploitable. "Said he'd retire by 25, then asked phil for a $500 spot the next week." "Posted a 'this is the floor' chart at every bottom for two weeks straight, every one rolled lower." "Has the conviction of a soggy noodle — held PLTR for 90 seconds before flipping short." These should land as a laugh (funny because true, not because cruel). Same threshold as Running jokes: would it land in chat as banter? If yes, use it. If it would cut too deep, leave it out. Specific incidents > general character claims.
 
 **Recent activity (last 7 days).** What they've been up to THIS week — tickers traded, themes pushed, conversations led, recent wins or losses worth noting, who they've tagged or argued with. This refreshes daily so it's current — don't reach for 6-month-old jokes when this week's material is fresher.
 
-**Voice.** One specific descriptor of how they talk. NOT "funny" — "dry, observational, leans on stock-specific memes" or "warm, emoji-heavy, defuses conflict with self-deprecation" or "crude and fast, casually cruel with affection underneath."
+**Voice.** Specific descriptor of how they talk + 2-4 recurring takes/quotes/phrases they actually use. Descriptor first ("dry, observational, leans on stock-specific memes" or "warm, emoji-heavy, defuses with self-deprecation" or "crude and fast, casually cruel with affection underneath" — NOT "funny"). Then verbatim quotes or paraphrased recurring stances from the message data — "I'm just gonna sit on my hands today," "should've sized up," "fuck it we ball," "this is the one boys." Quotes do more work than three lines of description and let the next reader hear the person.
 
 **Role in the room.** Function in one short phrase — signal / banter / chaos / mentor / hype-man / contrarian / lurker / texture. Neutral.
 
@@ -112,11 +115,13 @@ Output follows this structure exactly. No "Profile:" prefix, no extra commentary
 
 *Style & Patterns:* 2-4 sentences. How they trade and talk. Neutral descriptions.
 
-*Running jokes:* 2-4 bits the room ALREADY teases them about. Real material from chat, not invented. Light, not cutting.
+*Running jokes:* 2-4 bits the room ALREADY teases them about — persistent room culture. Real material from chat, not invented. Light, not cutting.
+
+*Trash talk ammo:* 3-5 specific recent moments / quotes / behaviors from chat the bot can weaponize for laughs in a clapback. Funny-because-true, not cutting. Specific incidents, not general character claims.
 
 *Recent activity (last 7d):* 2-4 sentences. What they've been up to this week — specific tickers, themes, conversations.
 
-*Voice:* One specific descriptor. Not "funny."
+*Voice:* Specific descriptor + 2-4 recurring quotes/phrases verbatim from chat. Not "funny." Quotes are gold — let the next reader hear the person.
 
 *Role in the room:* One short phrase. Function, not judgment.
 
@@ -162,9 +167,11 @@ Output follows this structure exactly. No "Profile:" prefix, no extra commentary
 >
 > *Running jokes:* "Compliance is watching him" — the recurring bit about his desk monitoring his accounts. "$WEN bag holder" — the eternal Wendy's hope. "Should've sized up" — the post-missed-trade lament that everyone parrots back at him. "Office hostage situation" (Abe's line that stuck).
 >
+> *Trash talk ammo:* Sold his $WEN bags for a 30% loss the same day they bounced 40% — the chart screenshots still get posted at him. Once announced he'd "never touch alts again" and bought DOGE 48 hours later. Threatened to go full cash, then opened 10x SOL perps within 90 minutes. Told the room he was "done with options" twice this month — currently has three open calls. Claims to be a "macro guy" while trading 0DTE lottos.
+>
 > *Recent activity (last 7d):* Closed his 5x SOL perps "because compliance was watching" (Monday). Posted a chart asking about $MSTR breakout (Wednesday) — got mixed responses. Multiple lament-mode posts about not sizing up the META 615C trade. Has been pushing the AI-capex thesis in long-form replies.
 >
-> *Voice:* Crude, fast, casually cruel with affection underneath. Doesn't perform humor; it's a side effect.
+> *Voice:* Crude, fast, casually cruel with affection underneath. Recurring takes: "should've sized up," "we're getting fiddled," "fuck it we ball," lament-mode posts after missed entries.
 >
 > *Role in the room:* Senior energy. Not the loudest — the one whose opinion the room registers when he weighs in.
 
@@ -186,17 +193,18 @@ def _format_messages_block(messages: list[dict]) -> str:
 
     Each entry: timestamp + content + embed text + image markers.
     No filtering per user direction ("no filters") — short reactions
-    and tickers go through too. Cap individual message length at 400
-    chars to bound prompt size on the rare long rant.
+    and tickers go through too. No truncation either — long rants
+    carry signal too (worldview / texture / specific reads), and
+    Gemini's context window handles it.
     """
     out = []
     for m in messages:
         ts = m["timestamp"][:16].replace("T", " ")
         parts = []
         if m["content"]:
-            parts.append(m["content"][:400])
+            parts.append(m["content"])
         for embed_text in m.get("embed_texts", []):
-            parts.append(f"[embed: {embed_text[:300]}]")
+            parts.append(f"[embed: {embed_text}]")
         for n in range(m.get("image_count", 0)):
             parts.append("[image]")
         if parts:
@@ -221,6 +229,77 @@ def _extract_embed_texts(message: discord.Message) -> list[str]:
         if bits:
             out.append(" — ".join(bits))
     return out
+
+
+TRADER_SCORE_PROMPT = """\
+You're scoring trading skill for one user in a private options-trading discord.
+
+Below: their just-generated profile dossier + a chronological sample of their recent chat messages.
+
+Output a single integer score 0-100 reflecting their actual trading skill as best you can assess. Be honest — the room pays to be here and the scores are private, so calibrate for real signal, not politeness:
+
+- **90-100 — Real edge.** Documented wins others tail. Posts both wins and losses cleanly — no spiraling, no spin. Process is visible and repeatable. The room trusts their reads.
+- **75-89 — Solid.** Mostly green over time. Style is clear and works. Owns misses without making them a crisis. Trusted on a specific style or sector.
+- **60-74 — Hits and misses, but the hits are real.** Has a setup or sector that works in some conditions. Mixed execution. Wins documented, losses also documented.
+- **40-59 — Net negative or barely flat.** Knows what they're doing in theory but leaks edge in execution. Style is visible (chase, tail, scalp) but isn't working consistently. Often self-aware about it.
+- **20-39 — Bag holder.** More documented losses than wins. Sizes up to recover. Chases the loudest voice. Style hasn't worked in months. Honest characterization: the room reads them as a cautionary tale.
+- **0-19 — Tail traffic / exit liquidity.** The room references them as the guy who buys the top. Style is "all in on the next thing." Should not be trading at this size.
+
+Be direct in the rationale — call out the actual pattern in one sentence. No "shows promise" or other mealy-mouthed framings. Honest, not personally cruel. If they're a bag holder, say so. If they're solid, say so.
+
+Output STRICT JSON only, no prose, no markdown wrapper:
+
+{{
+  "score": <integer 0-100>,
+  "rationale": "<one direct sentence on what's driving the score>"
+}}
+
+USER: {display_name} (`{username}`)
+
+PROFILE:
+{profile_text}
+
+RECENT MESSAGES (chronological, no truncation):
+{chat_sample}
+"""
+
+
+async def _score_trader(
+    client: genai.Client,
+    display_name: str,
+    username: str,
+    profile_text: str,
+    chat_sample: str,
+) -> tuple[int | None, str | None]:
+    """Run Gemini to score trading skill 0-100 + one-sentence rationale.
+    Returns (score, rationale) or (None, None) on failure."""
+    prompt = TRADER_SCORE_PROMPT.format(
+        display_name=display_name,
+        username=username,
+        profile_text=profile_text or "(no profile generated)",
+        chat_sample=chat_sample or "(no recent chat)",
+    )
+    try:
+        response = await client.aio.models.generate_content(
+            model=settings.gemini_model,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.0,
+                max_output_tokens=300,
+                response_mime_type="application/json",
+            ),
+        )
+        text = (response.text or "").strip()
+        if not text:
+            return None, None
+        data = json.loads(text)
+        score = int(data.get("score"))
+        rationale = data.get("rationale") or None
+        score = max(0, min(100, score))
+        return score, rationale
+    except Exception as e:
+        print(f"  ✗ trader score failed for {display_name}: {e}", flush=True)
+        return None, None
 
 
 async def _download_image(
@@ -413,6 +492,9 @@ async def run(days: int, channels: list[str]) -> None:
             # Image attachments per user (oldest-first), used for vision
             # when profile_image_ocr_enabled. Each entry: {url, content_type, ts}
             images_by_user: dict[int, list[dict]] = defaultdict(list)
+            # Slur counts per user (regex-matched in their own messages
+            # over the scan window). Folded into the profile row at upsert.
+            slur_counts: dict[int, int] = defaultdict(int)
 
             for ch in targets:
                 print(f"\nScanning #{ch.name}...", flush=True)
@@ -441,12 +523,16 @@ async def run(days: int, channels: list[str]) -> None:
                                 "ts": msg.created_at.isoformat(),
                             })
                     embed_texts = _extract_embed_texts(msg)
+                    content = (msg.content or "").strip()
                     by_user[uid].append({
                         "timestamp": msg.created_at.isoformat(),
-                        "content": (msg.content or "").strip(),
+                        "content": content,
                         "image_count": image_count,
                         "embed_texts": embed_texts,
                     })
+                    # Tally slurs from this user's own message text
+                    if content:
+                        slur_counts[uid] += count_slurs_in_text(content)
                     count += 1
                 print(f"  {count} messages, {len(by_user)} unique authors so far",
                       flush=True)
@@ -549,6 +635,10 @@ async def run(days: int, channels: list[str]) -> None:
                             user_id=uid,
                         ))
                     results = await asyncio.gather(*tasks, return_exceptions=True)
+                    # Now score traders sequentially per result (parallel
+                    # Gemini calls fan out, but trader-scoring is a quick
+                    # follow-up per profile). Total budget per user: 1
+                    # profile gen + 1 trader score = 2 Gemini calls.
                     for (uid, msgs), profile in zip(batch, results):
                         meta = user_meta[uid]
                         if isinstance(profile, Exception):
@@ -560,6 +650,21 @@ async def run(days: int, channels: list[str]) -> None:
                                   flush=True)
                             continue
                         last_seen = msgs[-1]["timestamp"]
+                        slur_n = slur_counts.get(uid, 0)
+
+                        # Trader score from the just-generated profile +
+                        # full chat sample. Failure is non-fatal — profile
+                        # still gets upserted, trader_score stays NULL.
+                        sample_msgs = msgs[-200:]
+                        chat_sample = _format_messages_block(sample_msgs)
+                        trader_score, trader_rationale = await _score_trader(
+                            gemini_client,
+                            meta["display_name"],
+                            meta.get("username", ""),
+                            profile,
+                            chat_sample,
+                        )
+
                         db.upsert_user_profile(
                             user_id=uid,
                             username=meta["username"],
@@ -567,6 +672,9 @@ async def run(days: int, channels: list[str]) -> None:
                             profile_text=profile,
                             message_count_at_update=len(msgs),
                             last_seen_message_at=last_seen,
+                            slur_count=slur_n,
+                            trader_score=trader_score,
+                            trader_rationale=trader_rationale,
                         )
                         n_imgs = len(images_by_user.get(uid, []))
                         summary_lines.append(
@@ -575,6 +683,10 @@ async def run(days: int, channels: list[str]) -> None:
                             + (f", {n_imgs} imgs"
                                if n_imgs and settings.profile_image_ocr_enabled
                                else "")
+                            + f"\n\n_slur-count: {slur_n} · "
+                            f"trader-score: {trader_score if trader_score is not None else 'n/a'}_"
+                            + (f"\n_rationale: {trader_rationale}_"
+                               if trader_rationale else "")
                             + f"\n\n{profile}\n\n---\n\n"
                         )
                         img_tag = (
@@ -582,12 +694,21 @@ async def run(days: int, channels: list[str]) -> None:
                             if n_imgs and settings.profile_image_ocr_enabled
                             else ""
                         )
+                        score_tag = (
+                            f" | slur={slur_n} trader={trader_score}"
+                            if trader_score is not None else f" | slur={slur_n}"
+                        )
                         print(
                             f"  ✓ {meta['display_name']:<25} "
-                            f"{len(msgs):>4} msgs{img_tag} "
+                            f"{len(msgs):>4} msgs{img_tag}"
+                            f"{score_tag} "
                             f"→ {len(profile)} chars",
                             flush=True,
                         )
+
+            # After all upserts: recompute ordinal trader_rank across all
+            # profiled users (1 = highest score). Cheap, single pass.
+            db.recompute_trader_ranks_on_profiles()
 
             print(f"\nProfiled {len(eligible)} users.", flush=True)
         finally:

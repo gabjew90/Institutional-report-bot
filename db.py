@@ -210,6 +210,17 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         --
         -- message_count_at_update is the baseline; refresh logic uses
         -- (current_count - baseline > 20) to decide whether to re-profile.
+        -- user_profiles now carries BOTH the prose dossier AND the two
+        -- hidden hierarchy metrics. Single backfill pass refreshes
+        -- everything; single context block surfaces it together.
+        --
+        -- slur_count: raw count of regex-matched slur occurrences in
+        -- the user's own messages over the most-recent backfill window.
+        -- Patterns live in scripts/slur_patterns.py. Noisy by design.
+        --
+        -- trader_score: 0-100 LLM-assessed skill score. trader_rank is
+        -- the derived ordinal across all profiled users (1 = best).
+        -- trader_rationale: one-line LLM justification for the score.
         CREATE TABLE IF NOT EXISTS user_profiles (
             user_id INTEGER PRIMARY KEY,
             username TEXT,
@@ -217,36 +228,28 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             profile_text TEXT NOT NULL,
             message_count_at_update INTEGER NOT NULL DEFAULT 0,
             last_seen_message_at TEXT,
-            updated_at TEXT NOT NULL DEFAULT (datetime('now'))
-        );
-        CREATE INDEX IF NOT EXISTS idx_user_profiles_username ON user_profiles(username);
-
-        -- Hidden hierarchies — backend-only metrics surfaced to the bot
-        -- for comparative answers ("who's the worst trader," "who uses
-        -- the most slurs") but NEVER enumerated unsolicited. Computed
-        -- weekly by scripts/compute_user_metrics.py.
-        --
-        -- slur_count_30d: raw count of regex-matched slur occurrences
-        -- in the user's OWN messages across the profile channels over
-        -- the last 30 days. Patterns live in scripts/slur_patterns.py.
-        -- Noisy (catches ironic / reclaimed / quoted use too) — bot
-        -- uses for ordinal comparisons, not absolute claims.
-        --
-        -- trader_score: 0-100 LLM-assessed trading skill score, based
-        -- on profile + chat-context signal. trader_rank is the
-        -- derived ordinal position (1 = best).
-        CREATE TABLE IF NOT EXISTS user_metrics (
-            user_id INTEGER PRIMARY KEY,
-            slur_count_30d INTEGER NOT NULL DEFAULT 0,
-            total_messages_30d INTEGER NOT NULL DEFAULT 0,
+            slur_count INTEGER NOT NULL DEFAULT 0,
             trader_score INTEGER,
             trader_rank INTEGER,
             trader_rationale TEXT,
             updated_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
-        CREATE INDEX IF NOT EXISTS idx_user_metrics_slur ON user_metrics(slur_count_30d DESC);
-        CREATE INDEX IF NOT EXISTS idx_user_metrics_rank ON user_metrics(trader_rank);
+        CREATE INDEX IF NOT EXISTS idx_user_profiles_username ON user_profiles(username);
+        CREATE INDEX IF NOT EXISTS idx_user_profiles_slur ON user_profiles(slur_count DESC);
+        CREATE INDEX IF NOT EXISTS idx_user_profiles_rank ON user_profiles(trader_rank);
     """)
+    # Migration: add the metrics columns to user_profiles if a previous
+    # deploy used the old schema. Safe to run on every boot.
+    for col, ddl in [
+        ("slur_count", "ALTER TABLE user_profiles ADD COLUMN slur_count INTEGER NOT NULL DEFAULT 0"),
+        ("trader_score", "ALTER TABLE user_profiles ADD COLUMN trader_score INTEGER"),
+        ("trader_rank", "ALTER TABLE user_profiles ADD COLUMN trader_rank INTEGER"),
+        ("trader_rationale", "ALTER TABLE user_profiles ADD COLUMN trader_rationale TEXT"),
+    ]:
+        try:
+            conn.execute(ddl)
+        except sqlite3.OperationalError:
+            pass  # duplicate column — already migrated
     # Idempotent migrations for already-deployed bridge_ingestion_state schemas
     # (the table was first created in step 1 without these columns).
     for col, ddl in [
@@ -1735,26 +1738,58 @@ def upsert_user_profile(
     profile_text: str,
     message_count_at_update: int,
     last_seen_message_at: str | None,
+    slur_count: int = 0,
+    trader_score: int | None = None,
+    trader_rationale: str | None = None,
 ) -> None:
-    """Insert or replace a user profile. updated_at is auto-stamped."""
+    """Insert or replace a user profile. updated_at is auto-stamped.
+
+    Metrics (slur_count, trader_score, trader_rationale) are now part of
+    the profile row. trader_rank is NOT set here — recompute_trader_ranks()
+    handles ordinal positions in one pass after all upserts complete.
+    """
     conn = get_connection()
     conn.execute(
         """INSERT INTO user_profiles
              (user_id, username, display_name, profile_text,
-              message_count_at_update, last_seen_message_at, updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+              message_count_at_update, last_seen_message_at,
+              slur_count, trader_score, trader_rationale, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
            ON CONFLICT(user_id) DO UPDATE SET
              username = excluded.username,
              display_name = excluded.display_name,
              profile_text = excluded.profile_text,
              message_count_at_update = excluded.message_count_at_update,
              last_seen_message_at = excluded.last_seen_message_at,
+             slur_count = excluded.slur_count,
+             trader_score = COALESCE(excluded.trader_score, user_profiles.trader_score),
+             trader_rationale = COALESCE(excluded.trader_rationale, user_profiles.trader_rationale),
              updated_at = datetime('now')""",
         (
             int(user_id), username, display_name, profile_text,
             int(message_count_at_update), last_seen_message_at,
+            int(slur_count), trader_score, trader_rationale,
         ),
     )
+    conn.commit()
+
+
+def recompute_trader_ranks_on_profiles() -> None:
+    """Set trader_rank (ordinal 1=best) on user_profiles based on
+    trader_score DESC. NULL scores get NULL rank. Run after every batch
+    profile upsert so ordinals stay consistent."""
+    conn = get_connection()
+    conn.execute("UPDATE user_profiles SET trader_rank = NULL")
+    rows = conn.execute(
+        """SELECT user_id FROM user_profiles
+           WHERE trader_score IS NOT NULL
+           ORDER BY trader_score DESC, user_id"""
+    ).fetchall()
+    for i, r in enumerate(rows, start=1):
+        conn.execute(
+            "UPDATE user_profiles SET trader_rank = ? WHERE user_id = ?",
+            (i, r["user_id"]),
+        )
     conn.commit()
 
 
@@ -1908,117 +1943,6 @@ def append_ask_interaction(
         return None
 
 
-def upsert_user_metrics(
-    *,
-    user_id: int,
-    slur_count_30d: int,
-    total_messages_30d: int,
-    trader_score: int | None = None,
-    trader_rationale: str | None = None,
-) -> None:
-    """Upsert a row in user_metrics. trader_rank is NOT set here —
-    recompute_trader_ranks() handles ordinal positions in one pass."""
-    conn = get_connection()
-    conn.execute(
-        """INSERT INTO user_metrics
-              (user_id, slur_count_30d, total_messages_30d,
-               trader_score, trader_rationale, updated_at)
-           VALUES (?, ?, ?, ?, ?, datetime('now'))
-           ON CONFLICT(user_id) DO UPDATE SET
-               slur_count_30d = excluded.slur_count_30d,
-               total_messages_30d = excluded.total_messages_30d,
-               trader_score = COALESCE(excluded.trader_score, user_metrics.trader_score),
-               trader_rationale = COALESCE(excluded.trader_rationale, user_metrics.trader_rationale),
-               updated_at = datetime('now')""",
-        (int(user_id), int(slur_count_30d), int(total_messages_30d),
-         trader_score, trader_rationale),
-    )
-    conn.commit()
-
-
-def recompute_trader_ranks() -> None:
-    """Recompute the ordinal trader_rank column based on trader_score.
-    Highest score → rank 1. NULL scores get NULL rank. Run after every
-    batch update to keep ordinals consistent."""
-    conn = get_connection()
-    conn.execute("UPDATE user_metrics SET trader_rank = NULL")
-    rows = conn.execute(
-        """SELECT user_id FROM user_metrics
-           WHERE trader_score IS NOT NULL
-           ORDER BY trader_score DESC, user_id"""
-    ).fetchall()
-    for i, r in enumerate(rows, start=1):
-        conn.execute(
-            "UPDATE user_metrics SET trader_rank = ? WHERE user_id = ?",
-            (i, r["user_id"]),
-        )
-    conn.commit()
-
-
-def format_user_metrics_for_context(user_ids: list[int]) -> str:
-    """Render the hidden-hierarchy block for /ask. Only includes users
-    in user_ids who have a metrics row.
-
-    Two private hierarchies surfaced:
-    - SLUR USAGE: ordinal ranks among the supplied users (1 = most),
-      raw counts NOT shown. Bot uses for "who's the worst" / "is X
-      more than Y" comparisons only.
-    - TRADER RANKING: same shape — ordinal positions among the supplied
-      users (1 = best). One-line rationales for context. Score values
-      NOT exposed.
-    """
-    if not user_ids:
-        return ""
-    conn = get_connection()
-    placeholders = ",".join("?" * len(user_ids))
-    rows = conn.execute(
-        f"""SELECT m.user_id, m.slur_count_30d, m.total_messages_30d,
-                   m.trader_score, m.trader_rank, m.trader_rationale,
-                   p.display_name, p.username
-            FROM user_metrics m
-            LEFT JOIN user_profiles p ON p.user_id = m.user_id
-            WHERE m.user_id IN ({placeholders})""",
-        [int(u) for u in user_ids],
-    ).fetchall()
-    if not rows:
-        return ""
-
-    # Ordinal slur ranks among THIS subset (not global) — only meaningful
-    # within the set of users active in this conversation.
-    by_slur = sorted(
-        [r for r in rows if r["slur_count_30d"] > 0],
-        key=lambda r: (-r["slur_count_30d"], r["user_id"]),
-    )
-    slur_rank_by_uid: dict[int, int] = {r["user_id"]: i + 1 for i, r in enumerate(by_slur)}
-
-    out: list[str] = [
-        "PRIVATE METRICS (hidden hierarchies — use ONLY for comparative answers, "
-        "NEVER enumerate unsolicited, NEVER quote raw counts/scores):",
-        "",
-        "Conventions:",
-        "- Slur rank: 1 = uses the most. Among users in this conversation only.",
-        "- Trader rank: 1 = highest skill score. Global rank across all profiled users.",
-        "- Lower-numbered = higher rank in both cases.",
-        "- Raw slur counts and trader scores are NOT surfaced for a reason: the",
-        "  metrics are noisy. Use ordinal comparisons, not absolute claims.",
-        "",
-    ]
-    for r in rows:
-        uid = r["user_id"]
-        dn = r["display_name"] or r["username"] or f"user_{uid}"
-        slur_rank = slur_rank_by_uid.get(uid)
-        slur_part = (
-            f"slur-rank #{slur_rank} of {len(by_slur)} in this conv"
-            if slur_rank else "slur-rank: not in this conv's top"
-        )
-        if r["trader_rank"]:
-            trader_part = f"trader-rank #{r['trader_rank']} ({r['trader_rationale'] or 'no rationale'})"
-        else:
-            trader_part = "trader-rank: not scored"
-        out.append(f"- **{dn}**: {slur_part} · {trader_part}")
-    return "\n".join(out)
-
-
 def export_user_profiles_markdown() -> str:
     """Render every row in user_profiles as a single markdown document.
 
@@ -2124,36 +2048,62 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
     with no profile (lurkers, new joiners). Returns "" when nobody on the
     list has been profiled.
 
-    Header format: `- **DisplayName** (username, <@user_id>): <text>`.
-    Including the `<@user_id>` form lets the bot tag the user back when
-    relevant ("@kloh been calling this for a week") without having to
-    guess at the mention syntax.
+    Header: `- **DisplayName** (username, <@user_id>): <metrics>: <text>`.
+    Metrics inline (private hierarchies): slur rank among this conv +
+    global trader rank with one-line rationale. Bot uses these ONLY for
+    comparative answers — never enumerated or quoted as raw numbers.
     """
     profiles = get_profiles_for_users(user_ids)
     if not profiles:
         return ""
+
+    # Compute slur ranks ordinally among THIS subset (not global). Only
+    # users with slur_count > 0 get ranked; everyone else is "not in
+    # this conv's top."
+    by_slur = sorted(
+        [(uid, p.get("slur_count") or 0) for uid, p in profiles.items()
+         if (p.get("slur_count") or 0) > 0],
+        key=lambda t: (-t[1], t[0]),
+    )
+    slur_rank_by_uid: dict[int, int] = {uid: i + 1 for i, (uid, _) in enumerate(by_slur)}
+    slur_total_in_conv = len(by_slur)
+
     lines = [
         "WHO'S TALKING (background on people active in this conversation):",
     ]
     for uid, p in profiles.items():
         dn = p.get("display_name") or p.get("username") or f"user_{uid}"
         uname = p.get("username") or ""
-        # Trim each profile so a chatty channel with many active users
-        # doesn't blow up the context budget. The structured-schema
-        # profiles are denser than the prior prose ones — bumped from
-        # 700 to 2500 chars (~600 words) so the bot gets the full
-        # character note rather than a truncated header section.
         text = (p.get("profile_text") or "").strip()
         if len(text) > 2500:
             text = text[:2497] + "..."
-        # Header includes <@user_id> so the bot can tag this user back
-        # by Discord ID when needed.
         mention = f"<@{uid}>"
         if uname and uname.lower() != dn.lower():
             ident = f"**{dn}** ({uname}, {mention})"
         else:
             ident = f"**{dn}** ({mention})"
-        lines.append(f"- {ident}: {text}")
+
+        # Private metrics inline — surfaced as ordinal ranks only
+        metric_bits: list[str] = []
+        slur_rank = slur_rank_by_uid.get(uid)
+        if slur_rank:
+            metric_bits.append(
+                f"slur-rank #{slur_rank}/{slur_total_in_conv} in this conv"
+            )
+        else:
+            metric_bits.append("slur-rank: not in this conv's top")
+        tr = p.get("trader_rank")
+        ts_rationale = p.get("trader_rationale")
+        if tr:
+            if ts_rationale:
+                metric_bits.append(f"trader-rank #{tr} ({ts_rationale})")
+            else:
+                metric_bits.append(f"trader-rank #{tr}")
+        else:
+            metric_bits.append("trader-rank: not scored")
+        metrics_line = " · ".join(metric_bits)
+
+        lines.append(f"- {ident} — _{metrics_line}_:\n{text}\n")
     return "\n".join(lines)
 
 

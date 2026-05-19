@@ -1,0 +1,2291 @@
+{
+  "sha": "610021dd90462b71da0ecc9a4148dc9c1259e1ed",
+  "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/610021dd90462b71da0ecc9a4148dc9c1259e1ed",
+  "tree": [
+    {
+      "path": ".env.example",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ae801abf29e8730c381e5336193da51c4d4e94c",
+      "size": 767,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/7ae801abf29e8730c381e5336193da51c4d4e94c"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9939a607fedd71efcdc434cd0196853babac768a",
+      "size": 337,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9939a607fedd71efcdc434cd0196853babac768a"
+    },
+    {
+      "path": "CLAUDE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6eb2b3d929eb095f033f3612eb6bd3d4f9436a27",
+      "size": 16354,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/6eb2b3d929eb095f033f3612eb6bd3d4f9436a27"
+    },
+    {
+      "path": "Procfile",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25fcdc8f12d96fcdab50d0c398e09c96c152a50a",
+      "size": 23,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/25fcdc8f12d96fcdab50d0c398e09c96c152a50a"
+    },
+    {
+      "path": "USER_GUIDE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e54d4548d5a30ba4b8d7fe61b1a9e093c6d83776",
+      "size": 3013,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e54d4548d5a30ba4b8d7fe61b1a9e093c6d83776"
+    },
+    {
+      "path": "ai_analysis",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4bc240d4f5f05de13f6c7690662ecd1bff9ea5e4",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/4bc240d4f5f05de13f6c7690662ecd1bff9ea5e4"
+    },
+    {
+      "path": "ai_analysis/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "ai_analysis/analyzer.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d417523eb66bafd56863b409fa44d10e8b2ced1",
+      "size": 10292,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/7d417523eb66bafd56863b409fa44d10e8b2ced1"
+    },
+    {
+      "path": "ai_analysis/models.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "db5fa7ae75b988251e76e2d2c6bdcf3ab8354850",
+      "size": 4182,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/db5fa7ae75b988251e76e2d2c6bdcf3ab8354850"
+    },
+    {
+      "path": "ai_analysis/prompts.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc9e78778ccd6d22052493dc80a699750ceacae1",
+      "size": 86148,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/cc9e78778ccd6d22052493dc80a699750ceacae1"
+    },
+    {
+      "path": "ai_analysis/rate_limiter.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0b35b6c321b8105d978c66ecd73bd7d859be11dd",
+      "size": 1738,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0b35b6c321b8105d978c66ecd73bd7d859be11dd"
+    },
+    {
+      "path": "api",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "10bbc1431297e1f3816626394fc84f5350d30390",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/10bbc1431297e1f3816626394fc84f5350d30390"
+    },
+    {
+      "path": "api/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "api/server.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6620d2532780b9c1cffe959e174141cc89c534f",
+      "size": 6056,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/b6620d2532780b9c1cffe959e174141cc89c534f"
+    },
+    {
+      "path": "config.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "538dfd2aff060d449931a12d9b56a60e7d9e6fb7",
+      "size": 3584,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/538dfd2aff060d449931a12d9b56a60e7d9e6fb7"
+    },
+    {
+      "path": "db.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6d1ba3e9585f4f02849f60531c11ea1b8d3dad2",
+      "size": 23370,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e6d1ba3e9585f4f02849f60531c11ea1b8d3dad2"
+    },
+    {
+      "path": "discord_bot",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "82a10a76866a649c3a0aff62b6ebaf3c1ae0dbe4",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/82a10a76866a649c3a0aff62b6ebaf3c1ae0dbe4"
+    },
+    {
+      "path": "discord_bot/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "discord_bot/bot.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "17a1fb67a34a77445badc0cd47a89f31fbf10336",
+      "size": 18684,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/17a1fb67a34a77445badc0cd47a89f31fbf10336"
+    },
+    {
+      "path": "discord_bot/sender.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "78bda7bbdbcd999e70b6e35ec1cba15fb3ed2c8c",
+      "size": 1548,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/78bda7bbdbcd999e70b6e35ec1cba15fb3ed2c8c"
+    },
+    {
+      "path": "dropbox_client",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0c0c75252d8592240d6199e29f800ce31413cdc5",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/0c0c75252d8592240d6199e29f800ce31413cdc5"
+    },
+    {
+      "path": "dropbox_client/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "dropbox_client/models.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d266e3591d1c8e1d384e54f375f0afcb01ca7ef",
+      "size": 197,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/5d266e3591d1c8e1d384e54f375f0afcb01ca7ef"
+    },
+    {
+      "path": "dropbox_client/watcher.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6ae7d0cea3fe8ece2a472af39cb247a59e7995b",
+      "size": 5946,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/c6ae7d0cea3fe8ece2a472af39cb247a59e7995b"
+    },
+    {
+      "path": "github_bridge",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b8e3bd8c10274c9398f432e425c85815c38dda67",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/b8e3bd8c10274c9398f432e425c85815c38dda67"
+    },
+    {
+      "path": "github_bridge/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "github_bridge/client.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a0d1046543ab8368c7a7077e55ef60fcecad1d8",
+      "size": 6441,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/8a0d1046543ab8368c7a7077e55ef60fcecad1d8"
+    },
+    {
+      "path": "github_bridge/jobs.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6d59d1b255ac32cd48fab8251f71434ee65dad9b",
+      "size": 7446,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/6d59d1b255ac32cd48fab8251f71434ee65dad9b"
+    },
+    {
+      "path": "inspect_db.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "18a87211f2da47681eaf9b661d0751a23c52d0dd",
+      "size": 10543,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/18a87211f2da47681eaf9b661d0751a23c52d0dd"
+    },
+    {
+      "path": "main.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f5fb96558b9319f8ba90091a5fac5c52f3960ee5",
+      "size": 2082,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f5fb96558b9319f8ba90091a5fac5c52f3960ee5"
+    },
+    {
+      "path": "nixpacks.toml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "95955953402ce99b4125bada4624ae11a2d465dc",
+      "size": 43,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/95955953402ce99b4125bada4624ae11a2d465dc"
+    },
+    {
+      "path": "pdf_processing",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "317c5e31d8704109afe6c8240ffdf820803f9123",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/317c5e31d8704109afe6c8240ffdf820803f9123"
+    },
+    {
+      "path": "pdf_processing/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "pdf_processing/extractor.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb3c4c27cbba020b9a909ad75afef6968b720290",
+      "size": 3793,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/cb3c4c27cbba020b9a909ad75afef6968b720290"
+    },
+    {
+      "path": "pdf_processing/models.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ecdc65ccf6d06ab4c2b7f8576266cd29a697536e",
+      "size": 569,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/ecdc65ccf6d06ab4c2b7f8576266cd29a697536e"
+    },
+    {
+      "path": "pdf_processing/page_selector.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "36c949c4682aa749bb7a5603456e3897fa21306d",
+      "size": 9298,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/36c949c4682aa749bb7a5603456e3897fa21306d"
+    },
+    {
+      "path": "pipeline",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "446c53f999552c8c3650ed11a5a5e45dee07349d",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/446c53f999552c8c3650ed11a5a5e45dee07349d"
+    },
+    {
+      "path": "pipeline/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "pipeline/orchestrator.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc861cb08bc6cfa5d89b95eb8a1094566ba149dc",
+      "size": 23076,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/bc861cb08bc6cfa5d89b95eb8a1094566ba149dc"
+    },
+    {
+      "path": "pulse-context",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "dda3c218974dfb5e2237ac9372bc3b09edef4d64",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/dda3c218974dfb5e2237ac9372bc3b09edef4d64"
+    },
+    {
+      "path": "pulse-context/latest.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5ed6d8d2409fcd923ac98ed5cd585ef0adbdd6cd",
+      "size": 374191,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/5ed6d8d2409fcd923ac98ed5cd585ef0adbdd6cd"
+    },
+    {
+      "path": "pulse-output",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "349a826c03cfd406d8e5d59fb74af3f0d77b6dec",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/349a826c03cfd406d8e5d59fb74af3f0d77b6dec"
+    },
+    {
+      "path": "pulse-output/agent-io",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ecce63620eef121fd5ea0c1c28d79fcfb80e8096",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/ecce63620eef121fd5ea0c1c28d79fcfb80e8096"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-08T20-42-58Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "220b307d0ccfe6204206ebc2c3bdf27c2176f48a",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/220b307d0ccfe6204206ebc2c3bdf27c2176f48a"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-08T20-42-58Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "60f29baa6ebf19badfdcc634f8e336e41244810f",
+      "size": 60920,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/60f29baa6ebf19badfdcc634f8e336e41244810f"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-08T20-42-58Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8765da4ce7ed04d0c275dcdcd0707f8466908a15",
+      "size": 21755,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/8765da4ce7ed04d0c275dcdcd0707f8466908a15"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-08T22-50-50Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d6ba3a848c60b7d7022ec6dcd91c0cc0d6877127",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/d6ba3a848c60b7d7022ec6dcd91c0cc0d6877127"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-08T22-50-50Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aac78bc21e41cd436ed9452408486f7bab26ba1b",
+      "size": 57746,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/aac78bc21e41cd436ed9452408486f7bab26ba1b"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-08T22-50-50Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf0492375722e93bab060acc6496f8e4c962d1ad",
+      "size": 21020,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/bf0492375722e93bab060acc6496f8e4c962d1ad"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-08T23-33-34Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "576a2e5130b1ecdedd14e948393567a105c41c5a",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/576a2e5130b1ecdedd14e948393567a105c41c5a"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-08T23-33-34Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ea417cb5363327dec62238fb18d4052ea11d4f6",
+      "size": 59299,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9ea417cb5363327dec62238fb18d4052ea11d4f6"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-08T23-33-34Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "54e7900e379c0f7be3b43a76a31c06cc0b935975",
+      "size": 19988,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/54e7900e379c0f7be3b43a76a31c06cc0b935975"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-11T13-11-18Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5fca8eb68eb1b207c8377d47f24f4e36075b99d2",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/5fca8eb68eb1b207c8377d47f24f4e36075b99d2"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-11T13-11-18Z/adj-prompt-ai_capex_supercycle.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35405eb80cac6df57509eb7c0b04985938c655b5",
+      "size": 133606,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/35405eb80cac6df57509eb7c0b04985938c655b5"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-11T13-11-18Z/adj-prompt-fed_rate_cut_repricing.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12f92b491a5fe0d54e42621b1f3c3f8d9b7c1537",
+      "size": 10820,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/12f92b491a5fe0d54e42621b1f3c3f8d9b7c1537"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-11T13-11-18Z/adj-prompt-rate_cut_repricing.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "239d07d65c673d82cf1679c92ee7ef627effb8b3",
+      "size": 86376,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/239d07d65c673d82cf1679c92ee7ef627effb8b3"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-11T13-11-18Z/adj-prompt-stretched_momentum_unwind.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67ff4071a37498a60a2c5a4e29455ec889d4507b",
+      "size": 87891,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/67ff4071a37498a60a2c5a4e29455ec889d4507b"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-11T13-11-18Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc8715a5e4d920d23c8519c5153ba8fc662f413b",
+      "size": 64728,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/cc8715a5e4d920d23c8519c5153ba8fc662f413b"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-11T13-11-18Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad46f82f59ad66f83c42589c7fd1ec7d3d59cd8e",
+      "size": 20402,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/ad46f82f59ad66f83c42589c7fd1ec7d3d59cd8e"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-12T13-14-48Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3a2635b1e4788c6c3a4a29c70aa5d04bd4ff2594",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/3a2635b1e4788c6c3a4a29c70aa5d04bd4ff2594"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-12T13-14-48Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a206cfc6c92fb3ca91ca8f6c17505e45990b036",
+      "size": 63339,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/8a206cfc6c92fb3ca91ca8f6c17505e45990b036"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-12T13-14-48Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c8a76f877d5e0866ef492d975798ffa05165aa4d",
+      "size": 21560,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/c8a76f877d5e0866ef492d975798ffa05165aa4d"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-13T13-09-03Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fb2431d822007bcb4532462d479904d590dc8d07",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/fb2431d822007bcb4532462d479904d590dc8d07"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-13T13-09-03Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d55e4d6e83dc75561d934b1646921e70671cb840",
+      "size": 64562,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d55e4d6e83dc75561d934b1646921e70671cb840"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-13T13-09-03Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0fe2613af80b2d4e6556781b338b344c79e527c9",
+      "size": 22669,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0fe2613af80b2d4e6556781b338b344c79e527c9"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-14T13-15-18Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "46a23889c078fad8d91f7b09ae96f7dbee4dd42b",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/46a23889c078fad8d91f7b09ae96f7dbee4dd42b"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-14T13-15-18Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "854a7f34f0dd62e63f1b470ab677e1734373cdcc",
+      "size": 70367,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/854a7f34f0dd62e63f1b470ab677e1734373cdcc"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-14T13-15-18Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "74344c6c492df0d3f3d70202799fe7551a63fecd",
+      "size": 25441,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/74344c6c492df0d3f3d70202799fe7551a63fecd"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-14T20-01-08Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "df13ec100343cbb54d7c2a7a8fd71663378fc7d2",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/df13ec100343cbb54d7c2a7a8fd71663378fc7d2"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-14T20-01-08Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8f925100cf0b19aa24f0078d38c558facff581c3",
+      "size": 67239,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/8f925100cf0b19aa24f0078d38c558facff581c3"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-14T20-01-08Z/scrub-prompt-2.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f509b4ba39355f776aaea16714dda5c377f315b",
+      "size": 22928,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2f509b4ba39355f776aaea16714dda5c377f315b"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-14T20-01-08Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "336b7e434626530e4bf4a10b53494cc27e8ac1f9",
+      "size": 24501,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/336b7e434626530e4bf4a10b53494cc27e8ac1f9"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-15T13-11-32Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "caeb4705d5eaabfa1850a0d726cf0724acac2644",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/caeb4705d5eaabfa1850a0d726cf0724acac2644"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-15T13-11-32Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "33ddee0f0a0dbe603f4c8daedd944e6f64d3e8cf",
+      "size": 72372,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/33ddee0f0a0dbe603f4c8daedd944e6f64d3e8cf"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-15T13-11-32Z/scrub-prompt-pass2.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0e811cf04e8c9bac9a2cdb8c4fae93386a83fcf",
+      "size": 28195,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/b0e811cf04e8c9bac9a2cdb8c4fae93386a83fcf"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-15T13-11-32Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0da91761fc573ce0a4cf7adf85026ce0eb6b37b0",
+      "size": 29303,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0da91761fc573ce0a4cf7adf85026ce0eb6b37b0"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-18T13-16-15Z",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "30170502d886a5df2a63551d873c13301a912a43",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/30170502d886a5df2a63551d873c13301a912a43"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-18T13-16-15Z/edit-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e333970f54bb846056a39b2a59463b7ca5e0dd1",
+      "size": 71328,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2e333970f54bb846056a39b2a59463b7ca5e0dd1"
+    },
+    {
+      "path": "pulse-output/agent-io/2026-05-18T13-16-15Z/scrub-prompt.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a5c425dd7ae26ffb51b022df7a2d2ed13a9f2ca",
+      "size": 26349,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/1a5c425dd7ae26ffb51b022df7a2d2ed13a9f2ca"
+    },
+    {
+      "path": "pulse-output/archive-adjudications",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "44f0fed81dbbc88f8e1ac8fcdfecadc4b65af3d5",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/44f0fed81dbbc88f8e1ac8fcdfecadc4b65af3d5"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T02-09-10Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "169e1c7a470ca94a0555462a58ae7832cc47c98e",
+      "size": 461,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/169e1c7a470ca94a0555462a58ae7832cc47c98e"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T03-40-15Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f7538b8a7b01665df89f623675683611376dc059",
+      "size": 815,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f7538b8a7b01665df89f623675683611376dc059"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T04-34-19Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4175fa50ad2cb229fe3935624141bd399399a853",
+      "size": 3555,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/4175fa50ad2cb229fe3935624141bd399399a853"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T05-26-49Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7944cc81258d02f1d6e234c358542b442cd6589e",
+      "size": 3697,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/7944cc81258d02f1d6e234c358542b442cd6589e"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T06-12-34Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "583d735b466688eed0fb695880be7d0f19948b2a",
+      "size": 2598,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/583d735b466688eed0fb695880be7d0f19948b2a"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T06-58-10Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "241e75e6bb23ae6a4fba90af5cd8954c61106988",
+      "size": 2465,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/241e75e6bb23ae6a4fba90af5cd8954c61106988"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T07-31-37Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e48e0962e2fb734a7f90120bb8e3a491a8e0be5",
+      "size": 3049,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/5e48e0962e2fb734a7f90120bb8e3a491a8e0be5"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T07-53-10Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "61f3f9e37dbf986e239727bdfa28dc655fa2ceee",
+      "size": 3058,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/61f3f9e37dbf986e239727bdfa28dc655fa2ceee"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T13-25-25Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6ccdbf94c8cb13f420ae64869b17a7a74e13e23",
+      "size": 3225,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e6ccdbf94c8cb13f420ae64869b17a7a74e13e23"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T19-53-08Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0518133742222ea88547cbd4d32934e96ac3e1ea",
+      "size": 3706,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0518133742222ea88547cbd4d32934e96ac3e1ea"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T20-42-58Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a295eeb4251066be55a8583dae94934485aa0479",
+      "size": 3531,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/a295eeb4251066be55a8583dae94934485aa0479"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T22-50-50Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4000b6c0ef45efbaf66f3d7b82f01a762fe937a",
+      "size": 1125,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f4000b6c0ef45efbaf66f3d7b82f01a762fe937a"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-08T23-33-34Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1cac344d1ed7b7e562da3a9d1453a52dac772d19",
+      "size": 1156,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/1cac344d1ed7b7e562da3a9d1453a52dac772d19"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-11T13-11-18Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0559d5d2af4a4a0a5ca06dafdbeb1d8370f3844b",
+      "size": 7311,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0559d5d2af4a4a0a5ca06dafdbeb1d8370f3844b"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-12T13-14-48Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d982c8b65bbd8ade565201d361529b226e60054",
+      "size": 6743,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2d982c8b65bbd8ade565201d361529b226e60054"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-13T13-09-03Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1b1ce23227a431cb43f1548eec2c57cad7bb66f3",
+      "size": 3347,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/1b1ce23227a431cb43f1548eec2c57cad7bb66f3"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-14T13-15-18Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b21808143bf785db55ea90114bd445356809437",
+      "size": 11930,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/8b21808143bf785db55ea90114bd445356809437"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-14T20-01-08Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d94740ae4e428398a488e7d796546df38d9e2c21",
+      "size": 14211,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d94740ae4e428398a488e7d796546df38d9e2c21"
+    },
+    {
+      "path": "pulse-output/archive-adjudications/2026-05-15T13-11-32Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3760f3026087af74ede1cde4c1326ec1614e3d05",
+      "size": 11918,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/3760f3026087af74ede1cde4c1326ec1614e3d05"
+    },
+    {
+      "path": "pulse-output/archive",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "68d236b5a84cbbb8116b4470ef42799deb2376eb",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/68d236b5a84cbbb8116b4470ef42799deb2376eb"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-06T07-41-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "86d574a39522b2eb1882e3560600bf28af9f21f1",
+      "size": 14170,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/86d574a39522b2eb1882e3560600bf28af9f21f1"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-06T08-06-35Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6522ef098d6e65e5582a572208114a00a0340c2d",
+      "size": 15192,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/6522ef098d6e65e5582a572208114a00a0340c2d"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-06T13-16-51Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b7aa1227caf71192e86f32f37264ffb945158f99",
+      "size": 17612,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/b7aa1227caf71192e86f32f37264ffb945158f99"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-06T16-14-48Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a209e9ba6275d1caf4f6db5bcdea71eebc9a700",
+      "size": 6841,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9a209e9ba6275d1caf4f6db5bcdea71eebc9a700"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-06T18-50-11Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ae26047308a052646bd4965e3d762dd1c0c36ee",
+      "size": 14617,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/1ae26047308a052646bd4965e3d762dd1c0c36ee"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-06T19-36-58Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93eae54a827f1ea39620de0eaf2cb5cd8ae2b622",
+      "size": 15519,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/93eae54a827f1ea39620de0eaf2cb5cd8ae2b622"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-06T20-10-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8f8396a7734d859d1a5c8545026c2acd31e396bc",
+      "size": 14754,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/8f8396a7734d859d1a5c8545026c2acd31e396bc"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-06T20-17-55Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "94f8cfeda268fead139efc4773bf20e09d93957c",
+      "size": 14724,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/94f8cfeda268fead139efc4773bf20e09d93957c"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-07T13-40-02Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd1f0148f0a429e7259e99035033bd326d297e33",
+      "size": 20436,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/bd1f0148f0a429e7259e99035033bd326d297e33"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-07T13-40-37Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "838078dc5ab8f0d4358afffe35a9fbfc5b002eea",
+      "size": 15376,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/838078dc5ab8f0d4358afffe35a9fbfc5b002eea"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T02-09-10Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c8e21882f58be8c4a5e85a3fea366b17aa6ecf6d",
+      "size": 1072,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/c8e21882f58be8c4a5e85a3fea366b17aa6ecf6d"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T03-40-15Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "617c8d87a845b2eeff3064a6c35df13fc57fb09c",
+      "size": 14918,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/617c8d87a845b2eeff3064a6c35df13fc57fb09c"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T04-34-19Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c840aa7dc89962822f908f9336cd235f7d7d8a1b",
+      "size": 9923,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/c840aa7dc89962822f908f9336cd235f7d7d8a1b"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T05-26-49Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29729b11c02d0562dadba42f4e9beea7beb62b6a",
+      "size": 13144,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/29729b11c02d0562dadba42f4e9beea7beb62b6a"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T06-12-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c077591f615a48ef5d46e0b1b0797e8dc075e45f",
+      "size": 12489,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/c077591f615a48ef5d46e0b1b0797e8dc075e45f"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T06-58-10Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e37352f7f400806fe880a794d51b72397931f28d",
+      "size": 11475,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e37352f7f400806fe880a794d51b72397931f28d"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T07-31-37Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd5186ab4b494e2d3473d73e88012a1594f77ec7",
+      "size": 11367,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/dd5186ab4b494e2d3473d73e88012a1594f77ec7"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T07-53-10Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9f66aafcd533eccda19ad3db8fc6f7d84a9a676",
+      "size": 11980,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e9f66aafcd533eccda19ad3db8fc6f7d84a9a676"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T13-25-25Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0956df772d211ba2b94e655d9766bf352a3095de",
+      "size": 9783,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0956df772d211ba2b94e655d9766bf352a3095de"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T19-53-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b95d972ca979f3f85d61d33725f9d4a3a336a56d",
+      "size": 10078,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/b95d972ca979f3f85d61d33725f9d4a3a336a56d"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T20-42-58Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a94ddabf4c418226a6404fb4d202e84dc5a0837",
+      "size": 11308,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0a94ddabf4c418226a6404fb4d202e84dc5a0837"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T22-50-50Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f1f44835cc8f23743162fc7e68047f012a19955",
+      "size": 9696,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/4f1f44835cc8f23743162fc7e68047f012a19955"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-08T23-33-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2230fdac4148ff9e0a8bf986f350b67d0e180cbf",
+      "size": 10475,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2230fdac4148ff9e0a8bf986f350b67d0e180cbf"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-11T13-11-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "51b98809033369bb0fd70bdb17e21f1a1b8f4757",
+      "size": 9942,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/51b98809033369bb0fd70bdb17e21f1a1b8f4757"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-12T13-14-48Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0a448e99e1dd23a80ef170efdb61d13fb65a088",
+      "size": 9811,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f0a448e99e1dd23a80ef170efdb61d13fb65a088"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-13T13-09-03Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd0629d15b3eaae3b6d1dcaa6967916b2813835f",
+      "size": 9782,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/dd0629d15b3eaae3b6d1dcaa6967916b2813835f"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-14T13-15-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2250a239259d3c6359f2d99db8539c1787e4be0b",
+      "size": 13137,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2250a239259d3c6359f2d99db8539c1787e4be0b"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-14T20-01-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23e8f81bd996d3a0aa5aef8546b3a9a9149042fa",
+      "size": 10807,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/23e8f81bd996d3a0aa5aef8546b3a9a9149042fa"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-15T13-11-32Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "333c472ee443b19440327743020d6caf4a6b8332",
+      "size": 15433,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/333c472ee443b19440327743020d6caf4a6b8332"
+    },
+    {
+      "path": "pulse-output/archive/2026-05-18T13-16-15Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "632703ae2c24b767027bd3ae0ee302c7bc82f7ad",
+      "size": 13355,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/632703ae2c24b767027bd3ae0ee302c7bc82f7ad"
+    },
+    {
+      "path": "pulse-output/drafts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c185cd373aeac1a8707518c4d9b7d275c10cd10c",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/c185cd373aeac1a8707518c4d9b7d275c10cd10c"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T04-34-19Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8e59d811c1d624e0ee97d69774ee06ec17049d5",
+      "size": 12376,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/a8e59d811c1d624e0ee97d69774ee06ec17049d5"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T05-26-49Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5afee2ae3ea9be494a451cc7d302bcfa20bbb9b9",
+      "size": 15075,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/5afee2ae3ea9be494a451cc7d302bcfa20bbb9b9"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T06-12-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68ab47ab3d2cd38206733baa6dcb9a7e4443ef79",
+      "size": 11741,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/68ab47ab3d2cd38206733baa6dcb9a7e4443ef79"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T06-58-10Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7581c519b3e3232cad1264b320031b563128f36b",
+      "size": 14996,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/7581c519b3e3232cad1264b320031b563128f36b"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T07-31-37Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "926282547ff5042bf02c56ad63986a655df7d2e9",
+      "size": 13093,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/926282547ff5042bf02c56ad63986a655df7d2e9"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T07-53-10Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8f1f362f3c85a75d51e10f341887acef538ee97",
+      "size": 13911,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f8f1f362f3c85a75d51e10f341887acef538ee97"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T13-25-25Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d71632dd7a5a9a46ec4466794a5e7d05b58e2138",
+      "size": 11135,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d71632dd7a5a9a46ec4466794a5e7d05b58e2138"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T19-53-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0c7fe8058aaa9e082adb4202a90da7dd781ae8f",
+      "size": 11698,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e0c7fe8058aaa9e082adb4202a90da7dd781ae8f"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T20-42-58Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc0041be955680636e3abc171288ab6e3fd067f0",
+      "size": 14304,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/fc0041be955680636e3abc171288ab6e3fd067f0"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T22-50-50Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13b450f839c5409addb1e4a4f38e7b8ea0a78cbb",
+      "size": 11119,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/13b450f839c5409addb1e4a4f38e7b8ea0a78cbb"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-08T23-33-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9911c8418c80912604a7bf5f7137866d74293960",
+      "size": 8755,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9911c8418c80912604a7bf5f7137866d74293960"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-11T13-11-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4258840b9873460c3995f13a536bb0e79b63908c",
+      "size": 11875,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/4258840b9873460c3995f13a536bb0e79b63908c"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-12T13-14-48Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "600eacdc5127fc76483d145a18c26071b4b9c5dd",
+      "size": 8936,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/600eacdc5127fc76483d145a18c26071b4b9c5dd"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-13T13-09-03Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dcf95ad1441f87322a5c0c5d9f8f278d7e19daa0",
+      "size": 8322,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/dcf95ad1441f87322a5c0c5d9f8f278d7e19daa0"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-14T13-15-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2431ff9e2d02c23a34a3d3bd57ce9efdf911be72",
+      "size": 11923,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2431ff9e2d02c23a34a3d3bd57ce9efdf911be72"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-14T20-01-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90c07d4c74558943038b480197a7cb0fc65085c4",
+      "size": 9240,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/90c07d4c74558943038b480197a7cb0fc65085c4"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-15T13-11-32Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30744c77af95008428c2ff80c88b4f914d4346eb",
+      "size": 13327,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/30744c77af95008428c2ff80c88b4f914d4346eb"
+    },
+    {
+      "path": "pulse-output/drafts/2026-05-18T13-16-15Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "df53afd8c81cf1023c566cd3dcdd2caf5573def4",
+      "size": 12021,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/df53afd8c81cf1023c566cd3dcdd2caf5573def4"
+    },
+    {
+      "path": "pulse-output/lint",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ee42a4281c2858b967f64d07af1ad1700cb68958",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/ee42a4281c2858b967f64d07af1ad1700cb68958"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T04-34-19Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T05-26-49Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cbbc414e12f381caf3ee56e70b077648d493cee1",
+      "size": 67,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/cbbc414e12f381caf3ee56e70b077648d493cee1"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T06-12-34Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T06-58-10Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T07-31-37Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T07-53-10Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T13-25-25Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T19-53-08Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T20-42-58Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T22-50-50Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-08T23-33-34Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebcf471de90041c0b73c63553b7e1581a9ca7a6a",
+      "size": 80,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/ebcf471de90041c0b73c63553b7e1581a9ca7a6a"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-11T13-11-18Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-12T13-14-48Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70aa53c5c746e93b397c0cd724a33191afcf7a28",
+      "size": 150,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/70aa53c5c746e93b397c0cd724a33191afcf7a28"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-13T13-09-03Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e3648e57934bd4883e11cf9b56bc35e9043552a7",
+      "size": 151,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e3648e57934bd4883e11cf9b56bc35e9043552a7"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-14T13-15-18Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-14T20-01-08Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-15T13-11-32Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/lint/2026-05-18T13-16-15Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc",
+      "size": 2,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "pulse-output/pending-adjudications",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "34c344756a78d27afabe005d98d773570b74c582",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/34c344756a78d27afabe005d98d773570b74c582"
+    },
+    {
+      "path": "pulse-output/pending-adjudications/2026-05-18T13-16-15Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "443b2fc1e19ba5876f6904a08ed202a734df658b",
+      "size": 11509,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/443b2fc1e19ba5876f6904a08ed202a734df658b"
+    },
+    {
+      "path": "pulse-output/pending",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9ec2128397530def72ae73ab52cfbf7970554ade",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/9ec2128397530def72ae73ab52cfbf7970554ade"
+    },
+    {
+      "path": "pulse-output/pending/2026-05-18T13-16-15Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "632703ae2c24b767027bd3ae0ee302c7bc82f7ad",
+      "size": 13355,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/632703ae2c24b767027bd3ae0ee302c7bc82f7ad"
+    },
+    {
+      "path": "pulse-output/pre-scrub",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4222caf95bfcc142af0315e5c55a36602eb47af6",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/4222caf95bfcc142af0315e5c55a36602eb47af6"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-08T20-42-58Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92c3a9ce10eefc32a169d86b477946fe5c43ef11",
+      "size": 11052,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/92c3a9ce10eefc32a169d86b477946fe5c43ef11"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-08T22-50-50Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88c85ba9889ec36bf9be048c80e958b85a785cbe",
+      "size": 9455,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/88c85ba9889ec36bf9be048c80e958b85a785cbe"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-08T23-33-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f7a38858ab6a19e22813fb41b25335ea30e69cd",
+      "size": 10303,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/7f7a38858ab6a19e22813fb41b25335ea30e69cd"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-11T13-11-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f0d6cb0dfdb6be3c8c1e867ad7b7d8f0ee1faf1",
+      "size": 9814,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/4f0d6cb0dfdb6be3c8c1e867ad7b7d8f0ee1faf1"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-12T13-14-48Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d26742740843472b14ca56acd07a4c5f1f0f9ce",
+      "size": 9708,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0d26742740843472b14ca56acd07a4c5f1f0f9ce"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-13T13-09-03Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d7bcb8da8e13e07d074dfb9e1c4f2f86da346afd",
+      "size": 9647,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d7bcb8da8e13e07d074dfb9e1c4f2f86da346afd"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-14T13-15-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ab77d8ec3aa188850794e7e752afa02e7b76f08",
+      "size": 13107,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/1ab77d8ec3aa188850794e7e752afa02e7b76f08"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-14T20-01-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2831403453670b997bf195cf9b134a847907dc1d",
+      "size": 10499,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2831403453670b997bf195cf9b134a847907dc1d"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-15T13-11-32Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d12c85c1ce6b850713ade9c343f6b5b9f729cf1",
+      "size": 15699,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/3d12c85c1ce6b850713ade9c343f6b5b9f729cf1"
+    },
+    {
+      "path": "pulse-output/pre-scrub/2026-05-18T13-16-15Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4c8f23dec9a839144a0e88ec30bdc5c585634f2d",
+      "size": 13022,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/4c8f23dec9a839144a0e88ec30bdc5c585634f2d"
+    },
+    {
+      "path": "pulse-output/progress",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "97d4a52b738cebc3430c152b14653a422f8f10e5",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/97d4a52b738cebc3430c152b14653a422f8f10e5"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-08T20-42-58Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "17ca621a533a586e29f3a6a0f9a78004529c1fe2",
+      "size": 273,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/17ca621a533a586e29f3a6a0f9a78004529c1fe2"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-08T22-50-50Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d54ecf44527784aeb685ae3aaf377cb10fc6fdba",
+      "size": 399,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d54ecf44527784aeb685ae3aaf377cb10fc6fdba"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-08T23-33-34Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f0ce668f565011d58937cbf46a684ecee0c5a11",
+      "size": 950,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/1f0ce668f565011d58937cbf46a684ecee0c5a11"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-11T13-11-18Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9d9e3be56841f765d3a6c29b6e5998734c79f8ac",
+      "size": 950,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9d9e3be56841f765d3a6c29b6e5998734c79f8ac"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-12T13-14-48Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "33f105ff1a3944a069cdb3b08a47e7a6e40b55ea",
+      "size": 950,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/33f105ff1a3944a069cdb3b08a47e7a6e40b55ea"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-13T13-09-03Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "95890de8671f0ce1c046b7b35b0689b816e1cbbc",
+      "size": 950,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/95890de8671f0ce1c046b7b35b0689b816e1cbbc"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-14T13-15-18Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e09f272339bbf3e4b1f1f6cc294fc10bcda8f0c7",
+      "size": 950,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e09f272339bbf3e4b1f1f6cc294fc10bcda8f0c7"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-14T20-01-08Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "901f38cae113915ea2fde4f2a3d7d5e02f91bd28",
+      "size": 950,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/901f38cae113915ea2fde4f2a3d7d5e02f91bd28"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-15T13-11-32Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e05e1dcba336e457a975a62982c0134fb92f1331",
+      "size": 950,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e05e1dcba336e457a975a62982c0134fb92f1331"
+    },
+    {
+      "path": "pulse-output/progress/2026-05-18T13-16-15Z.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c487eaee625633ac2ed3baf694a90bfa1bd7c84",
+      "size": 955,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/8c487eaee625633ac2ed3baf694a90bfa1bd7c84"
+    },
+    {
+      "path": "pulse-output/qc-inputs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3e7951ddea096ad6dd3b5b5f48390bc1e7d2070f",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/3e7951ddea096ad6dd3b5b5f48390bc1e7d2070f"
+    },
+    {
+      "path": "pulse-output/qc-inputs/2026-05-14T20-01-08Z.adjudication-inputs.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9081b3a5c748bca7e9274e46da33b82e33621d0e",
+      "size": 310262,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9081b3a5c748bca7e9274e46da33b82e33621d0e"
+    },
+    {
+      "path": "pulse-output/qc-inputs/2026-05-15T13-11-32Z.adjudication-inputs.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebe34afcc23b5d1cb3852ce3cd491b63c6c3e30a",
+      "size": 474818,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/ebe34afcc23b5d1cb3852ce3cd491b63c6c3e30a"
+    },
+    {
+      "path": "pulse-output/qc-inputs/2026-05-18T13-16-15Z.adjudication-inputs.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d15ef35a0a35768ebddde2b725caa6b640a333af",
+      "size": 219989,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d15ef35a0a35768ebddde2b725caa6b640a333af"
+    },
+    {
+      "path": "pulse-output/qc-reviews",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "12eaa9b076c0258a14763073476da0702875b284",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/12eaa9b076c0258a14763073476da0702875b284"
+    },
+    {
+      "path": "pulse-output/qc-reviews/2026-05-08T20-42-58Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c9d71e77c0afff70ea9e20e14d67cf2530d096e",
+      "size": 16391,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/3c9d71e77c0afff70ea9e20e14d67cf2530d096e"
+    },
+    {
+      "path": "pulse-output/qc-reviews/2026-05-08T22-50-50Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "625de3f7e4225de129bf1359e0c8f25d181aa2c5",
+      "size": 8039,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/625de3f7e4225de129bf1359e0c8f25d181aa2c5"
+    },
+    {
+      "path": "pulse-output/qc-reviews/2026-05-08T23-33-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "039e6e8ce9bc8133a17ec6abd82b5d093d60a7bc",
+      "size": 19562,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/039e6e8ce9bc8133a17ec6abd82b5d093d60a7bc"
+    },
+    {
+      "path": "pulse-output/qc-reviews/2026-05-11T13-11-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2661014034176a192a40160dcb3193da13321c16",
+      "size": 17215,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2661014034176a192a40160dcb3193da13321c16"
+    },
+    {
+      "path": "pulse-output/qc-reviews/2026-05-12T13-14-48Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f9e6cc6d88458e69cc1671e33877c3a92db9418d",
+      "size": 24347,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f9e6cc6d88458e69cc1671e33877c3a92db9418d"
+    },
+    {
+      "path": "pulse-output/qc-reviews/2026-05-13T13-09-03Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ddc95c21164d50c25ce4bf6d65de806256850071",
+      "size": 26490,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/ddc95c21164d50c25ce4bf6d65de806256850071"
+    },
+    {
+      "path": "pulse-output/qc-reviews/2026-05-14T13-15-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab6a01ce736fa6facc45c84f30945fd34e8fbbd8",
+      "size": 28539,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/ab6a01ce736fa6facc45c84f30945fd34e8fbbd8"
+    },
+    {
+      "path": "pulse-output/qc-reviews/2026-05-14T20-01-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88e908e76c6435d3308d5725e38d7917f3d71bd1",
+      "size": 27004,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/88e908e76c6435d3308d5725e38d7917f3d71bd1"
+    },
+    {
+      "path": "pulse-output/qc-reviews/2026-05-15T13-11-32Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b537e8281ebd25f2dd5649dffec11e4dc9adac09",
+      "size": 32385,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/b537e8281ebd25f2dd5649dffec11e4dc9adac09"
+    },
+    {
+      "path": "pulse-output/scrubbed",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "25ec82fbe73c6c8f4d6eb8c6813a252dc5348326",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/25ec82fbe73c6c8f4d6eb8c6813a252dc5348326"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-08T06-58-10Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "366d455c79c3f7e5290a60ab114fab43766a20a3",
+      "size": 11338,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/366d455c79c3f7e5290a60ab114fab43766a20a3"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-08T07-31-37Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "94eb9b7e0c6e30fd3fd97d1f16dcf21c98df854e",
+      "size": 11230,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/94eb9b7e0c6e30fd3fd97d1f16dcf21c98df854e"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-08T07-53-10Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "87809c6b3cf8f4f5ffe79f36d8cc2413362f4f4c",
+      "size": 11843,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/87809c6b3cf8f4f5ffe79f36d8cc2413362f4f4c"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-08T13-25-25Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99f5e93e9588efb11657aa86104428a01ea07545",
+      "size": 9676,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/99f5e93e9588efb11657aa86104428a01ea07545"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-08T19-53-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20850908496359dd4d6666fbc1206483a32e5cbf",
+      "size": 9940,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/20850908496359dd4d6666fbc1206483a32e5cbf"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-08T20-42-58Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "42cbfa2b291f5c5417b89d07223a722a6bad9060",
+      "size": 11170,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/42cbfa2b291f5c5417b89d07223a722a6bad9060"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-08T22-50-50Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04d769003c8596dacc566bc07320d5600577c402",
+      "size": 9558,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/04d769003c8596dacc566bc07320d5600577c402"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-08T23-33-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d8b13a4cc4fc4bc441be02b5112b79ae54d24ed",
+      "size": 10337,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0d8b13a4cc4fc4bc441be02b5112b79ae54d24ed"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-11T13-11-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf81129ad2aedddecb7da17973f624a5a67f4a17",
+      "size": 9834,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/bf81129ad2aedddecb7da17973f624a5a67f4a17"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-12T13-14-48Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8f1d257f27a0748fed48a9827daf7f76a0322408",
+      "size": 9703,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/8f1d257f27a0748fed48a9827daf7f76a0322408"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-13T13-09-03Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6e9b0d34fd23dabf3c0970eb93043a912c4861a7",
+      "size": 9675,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/6e9b0d34fd23dabf3c0970eb93043a912c4861a7"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-14T13-15-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06049ed2609ee51d571ab57cd974a23038da25f8",
+      "size": 13029,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/06049ed2609ee51d571ab57cd974a23038da25f8"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-14T20-01-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0bb164f31c0b419ecbd556150e2173757c21749f",
+      "size": 10670,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0bb164f31c0b419ecbd556150e2173757c21749f"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-15T13-11-32Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "537fc236477d0558ccde13d72bf2e4eb26e4cc40",
+      "size": 15879,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/537fc236477d0558ccde13d72bf2e4eb26e4cc40"
+    },
+    {
+      "path": "pulse-output/scrubbed/2026-05-18T13-16-15Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5fc07a157df429ccb30ee0b93d3d7a99ac573191",
+      "size": 13248,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/5fc07a157df429ccb30ee0b93d3d7a99ac573191"
+    },
+    {
+      "path": "pulse-output/stitched",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2099b986e379c7acbdfd5fea5b5dc7ddc862696b",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/2099b986e379c7acbdfd5fea5b5dc7ddc862696b"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T04-34-19Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8e59d811c1d624e0ee97d69774ee06ec17049d5",
+      "size": 12376,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/a8e59d811c1d624e0ee97d69774ee06ec17049d5"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T05-26-49Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5afee2ae3ea9be494a451cc7d302bcfa20bbb9b9",
+      "size": 15075,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/5afee2ae3ea9be494a451cc7d302bcfa20bbb9b9"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T06-12-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68ab47ab3d2cd38206733baa6dcb9a7e4443ef79",
+      "size": 11741,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/68ab47ab3d2cd38206733baa6dcb9a7e4443ef79"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T06-58-10Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7581c519b3e3232cad1264b320031b563128f36b",
+      "size": 14996,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/7581c519b3e3232cad1264b320031b563128f36b"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T07-31-37Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "926282547ff5042bf02c56ad63986a655df7d2e9",
+      "size": 13093,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/926282547ff5042bf02c56ad63986a655df7d2e9"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T07-53-10Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8f1f362f3c85a75d51e10f341887acef538ee97",
+      "size": 13911,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f8f1f362f3c85a75d51e10f341887acef538ee97"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T13-25-25Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d71632dd7a5a9a46ec4466794a5e7d05b58e2138",
+      "size": 11135,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d71632dd7a5a9a46ec4466794a5e7d05b58e2138"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T19-53-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0c7fe8058aaa9e082adb4202a90da7dd781ae8f",
+      "size": 11698,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e0c7fe8058aaa9e082adb4202a90da7dd781ae8f"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T20-42-58Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc0041be955680636e3abc171288ab6e3fd067f0",
+      "size": 14304,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/fc0041be955680636e3abc171288ab6e3fd067f0"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T22-50-50Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13b450f839c5409addb1e4a4f38e7b8ea0a78cbb",
+      "size": 11119,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/13b450f839c5409addb1e4a4f38e7b8ea0a78cbb"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-08T23-33-34Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9911c8418c80912604a7bf5f7137866d74293960",
+      "size": 8755,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9911c8418c80912604a7bf5f7137866d74293960"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-11T13-11-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4258840b9873460c3995f13a536bb0e79b63908c",
+      "size": 11875,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/4258840b9873460c3995f13a536bb0e79b63908c"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-12T13-14-48Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "600eacdc5127fc76483d145a18c26071b4b9c5dd",
+      "size": 8936,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/600eacdc5127fc76483d145a18c26071b4b9c5dd"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-13T13-09-03Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dcf95ad1441f87322a5c0c5d9f8f278d7e19daa0",
+      "size": 8322,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/dcf95ad1441f87322a5c0c5d9f8f278d7e19daa0"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-14T13-15-18Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2431ff9e2d02c23a34a3d3bd57ce9efdf911be72",
+      "size": 11923,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2431ff9e2d02c23a34a3d3bd57ce9efdf911be72"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-14T20-01-08Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90c07d4c74558943038b480197a7cb0fc65085c4",
+      "size": 9240,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/90c07d4c74558943038b480197a7cb0fc65085c4"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-15T13-11-32Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8dcc259b055d29199ef628291ea771d714132c4",
+      "size": 12411,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d8dcc259b055d29199ef628291ea771d714132c4"
+    },
+    {
+      "path": "pulse-output/stitched/2026-05-18T13-16-15Z.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "832ce76a0f231cbc94309bf811831ddcac183aea",
+      "size": 12021,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/832ce76a0f231cbc94309bf811831ddcac183aea"
+    },
+    {
+      "path": "pulse-output/web",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ce8ab2d0590e2962da8dcc33b6e90e4d98b613b9",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/ce8ab2d0590e2962da8dcc33b6e90e4d98b613b9"
+    },
+    {
+      "path": "pulse-output/web/archive.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3aa5767967737fcefb57de701378add3bda0ee61",
+      "size": 5847,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/3aa5767967737fcefb57de701378add3bda0ee61"
+    },
+    {
+      "path": "pulse-output/web/fragments",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "469a2e4addfdc833fabea546c68bf564dcfce509",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/469a2e4addfdc833fabea546c68bf564dcfce509"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-06T07-41-08Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2e19ab544b1c3768fab1d25592420ca9f1c1762",
+      "size": 16905,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d2e19ab544b1c3768fab1d25592420ca9f1c1762"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-06T08-06-35Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6d6971b4638b3feac10f85b29d8cc4c3407e9fb7",
+      "size": 17670,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/6d6971b4638b3feac10f85b29d8cc4c3407e9fb7"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-06T13-16-51Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16e82692f01c7ddc8c17d9e09e5c85b4dc8a6fd9",
+      "size": 20276,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/16e82692f01c7ddc8c17d9e09e5c85b4dc8a6fd9"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-06T16-14-48Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6234d30f9cbee2c7dacde72f15be67b82e974d8",
+      "size": 8785,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/b6234d30f9cbee2c7dacde72f15be67b82e974d8"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-06T18-50-11Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f899e99891a344263676cce64abbda52391ce872",
+      "size": 17076,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f899e99891a344263676cce64abbda52391ce872"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-06T19-36-58Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "680da8b366fb6e3e74005aa2b06f0a3439c1702f",
+      "size": 18757,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/680da8b366fb6e3e74005aa2b06f0a3439c1702f"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-06T20-10-34Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9195ffb460b4c0b3c07b8e34df57080dc57d1b14",
+      "size": 17054,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9195ffb460b4c0b3c07b8e34df57080dc57d1b14"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-06T20-17-55Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9195ffb460b4c0b3c07b8e34df57080dc57d1b14",
+      "size": 17054,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9195ffb460b4c0b3c07b8e34df57080dc57d1b14"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-07T13-40-02Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "03ab19782c987da86033158c5526c6a6dbf7ffbf",
+      "size": 23262,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/03ab19782c987da86033158c5526c6a6dbf7ffbf"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-07T13-40-37Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0b15eaaf57c3b82f97499955500725767240f1e",
+      "size": 17841,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f0b15eaaf57c3b82f97499955500725767240f1e"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T02-09-10Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b82e169738f0d1e9c2fdad9a78289308f410f73f",
+      "size": 1505,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/b82e169738f0d1e9c2fdad9a78289308f410f73f"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T03-40-15Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ce715641860bd6f91743267f062dd600ab8e5ea",
+      "size": 16747,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/1ce715641860bd6f91743267f062dd600ab8e5ea"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T04-34-19Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e563a6ad4db6caeca2a45f0de13bc20bf90e59c7",
+      "size": 12010,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e563a6ad4db6caeca2a45f0de13bc20bf90e59c7"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T05-26-49Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f105a5f68204a7e721d88c2e2ad462fc43715fc0",
+      "size": 14832,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f105a5f68204a7e721d88c2e2ad462fc43715fc0"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T06-12-34Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "256bd94d31f9d00be268781006a0af5631748a89",
+      "size": 13904,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/256bd94d31f9d00be268781006a0af5631748a89"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T06-58-10Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "66b8b7491fb13162e8c34d67e6831ae8442756d2",
+      "size": 13024,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/66b8b7491fb13162e8c34d67e6831ae8442756d2"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T07-31-37Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fdf00b18aef8b4e203061ed5c3daa36e84d53e1",
+      "size": 12660,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/2fdf00b18aef8b4e203061ed5c3daa36e84d53e1"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T07-53-10Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4658bf1762a5938a64c342006c530802cedbfc70",
+      "size": 13834,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/4658bf1762a5938a64c342006c530802cedbfc70"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T13-25-25Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "330a9449489674cbb035aa7760caa477abd711c2",
+      "size": 10999,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/330a9449489674cbb035aa7760caa477abd711c2"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T19-53-08Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ddae00c2b32de89cb6e4c9e56818ac4e7c0fc47",
+      "size": 11817,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/6ddae00c2b32de89cb6e4c9e56818ac4e7c0fc47"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T20-42-58Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e7388a3edd91c9f57bf16ed2ac455f5d3677eec",
+      "size": 13402,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/7e7388a3edd91c9f57bf16ed2ac455f5d3677eec"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T22-50-50Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c88791bf8ccf369b7449c754909495d05c9886c7",
+      "size": 11245,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/c88791bf8ccf369b7449c754909495d05c9886c7"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-08T23-33-34Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f46ce882ae27c461e5fab75f3c691f0cb06d56d",
+      "size": 12171,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0f46ce882ae27c461e5fab75f3c691f0cb06d56d"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-11T13-11-18Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1ab1a327bb42beb6f34f0027c77af4cdbd7ed54",
+      "size": 11027,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/d1ab1a327bb42beb6f34f0027c77af4cdbd7ed54"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-12T13-14-48Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c77164c9f4ca37867a6d9cd4c54ce5ce737db96",
+      "size": 11207,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/9c77164c9f4ca37867a6d9cd4c54ce5ce737db96"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-13T13-09-03Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3018eb8f95d19480d9da7f639b5d1abf1d4d83a9",
+      "size": 11233,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/3018eb8f95d19480d9da7f639b5d1abf1d4d83a9"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-14T13-15-18Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea33cd5ac6d5b0d2f4df2629eb9c7efd6fd8298f",
+      "size": 15278,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/ea33cd5ac6d5b0d2f4df2629eb9c7efd6fd8298f"
+    },
+    {
+      "path": "pulse-output/web/fragments/2026-05-15T13-11-32Z.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6408a4b5d66086d38fc377aa6b6793d351b5b95d",
+      "size": 17689,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/6408a4b5d66086d38fc377aa6b6793d351b5b95d"
+    },
+    {
+      "path": "pulse-output/web/latest-fragment.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8dbdf1583411c622842f0688e55524ae5deed0b",
+      "size": 18364,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/f8dbdf1583411c622842f0688e55524ae5deed0b"
+    },
+    {
+      "path": "pulse-output/web/latest.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b2f6d963c648e68ef73dd5dba050ab52989e361c",
+      "size": 884,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/b2f6d963c648e68ef73dd5dba050ab52989e361c"
+    },
+    {
+      "path": "pyproject.toml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5134285595f76eabbafb0e5f46309baaa725779",
+      "size": 810,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e5134285595f76eabbafb0e5f46309baaa725779"
+    },
+    {
+      "path": "railway.toml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d056e3db1d27d96989e75dd40b643e3b1c507c8",
+      "size": 153,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/5d056e3db1d27d96989e75dd40b643e3b1c507c8"
+    },
+    {
+      "path": "report",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b88959d8fffa66b810bb6dfcd192e06d6626f650",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/b88959d8fffa66b810bb6dfcd192e06d6626f650"
+    },
+    {
+      "path": "report/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "report/formatter.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a865ed1a3ceeb5f443000e8d6954b7c76f21310a",
+      "size": 6370,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/a865ed1a3ceeb5f443000e8d6954b7c76f21310a"
+    },
+    {
+      "path": "report/market_data.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0293ff152e2906229409a240a3138d9e11ba7ede",
+      "size": 11064,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/0293ff152e2906229409a240a3138d9e11ba7ede"
+    },
+    {
+      "path": "report/models.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71d8e9f47c2098a1c47a11d33585985491f1190c",
+      "size": 455,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/71d8e9f47c2098a1c47a11d33585985491f1190c"
+    },
+    {
+      "path": "report/news_data.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "290e14612a2a2bb80db3bb1bf6d2011d22123911",
+      "size": 11399,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/290e14612a2a2bb80db3bb1bf6d2011d22123911"
+    },
+    {
+      "path": "report/synthesizer.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "54cb5fdf79a3dba4752277ff25d1a453f79470aa",
+      "size": 29805,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/54cb5fdf79a3dba4752277ff25d1a453f79470aa"
+    },
+    {
+      "path": "requirements.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e4292074e876825672c254be0ff21c2f87132e09",
+      "size": 214,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e4292074e876825672c254be0ff21c2f87132e09"
+    },
+    {
+      "path": "scheduler",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9b6dcf27384c7495f83105c00f6568eda0a31d31",
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/trees/9b6dcf27384c7495f83105c00f6568eda0a31d31"
+    },
+    {
+      "path": "scheduler/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "scheduler/jobs.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4a40f5633634f360cffe5580cce07914cb017c7c",
+      "size": 4974,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/4a40f5633634f360cffe5580cce07914cb017c7c"
+    },
+    {
+      "path": "test_pulse.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "96110d976e5ec375c530669535d22409008c2b1e",
+      "size": 9030,
+      "url": "https://api.github.com/repos/gabjew90/Institutional-report-bot/git/blobs/96110d976e5ec375c530669535d22409008c2b1e"
+    }
+  ],
+  "truncated": false
+}

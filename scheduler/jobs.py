@@ -250,19 +250,9 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=600,
         )
 
-    # Weekly user-metrics computation — slur counts + trader skill
-    # rankings. Runs Sunday 06:00 local (after the daily profile refresh
-    # window). Recomputes the hidden hierarchies surfaced as the
-    # PRIVATE METRICS block in /ask context.
-    if settings.profile_channels:
-        scheduler.add_job(
-            _user_metrics_job,
-            trigger=CronTrigger(day_of_week="sun", hour=6, minute=0, timezone=tz),
-            id="user_metrics_compute",
-            name="User metrics: weekly slur + trader-rank compute",
-            max_instances=1,
-            misfire_grace_time=3600,
-        )
+    # Note: slur-count + trader-ranking are now computed as part of the
+    # daily profile refresh (folded into backfill_user_profiles.py).
+    # No separate metrics cron needed — the data lives on user_profiles.
         log.info(
             f"Analyst trade-log watcher active — channel "
             f"'{settings.analyst_channel_name}', daily expire sweep at 04:00 "
@@ -502,25 +492,6 @@ async def _bridge_fallback_sweeper_job():
         await fallback_sweeper_job()
     except Exception as e:
         log.error(f"Bridge fallback sweeper failed: {e}", exc_info=True)
-
-
-async def _user_metrics_job():
-    """Weekly job — recompute the user_metrics hidden hierarchies (slur
-    count + trader rank). Delegates to scripts.compute_user_metrics.run
-    which handles the Discord scan + LLM scoring."""
-    try:
-        from scripts.compute_user_metrics import run as compute_run
-        channels = [
-            c.strip() for c in (settings.profile_channels or "").split(",")
-            if c.strip()
-        ]
-        if not channels:
-            return
-        log.info("User-metrics compute starting (30d slur + trader rank)")
-        await compute_run(days=30, channels=channels)
-        log.info("User-metrics compute complete")
-    except Exception as e:
-        log.error(f"User-metrics job failed: {e}", exc_info=True)
 
 
 async def _ask_log_publish_job():
