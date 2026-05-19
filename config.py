@@ -91,6 +91,13 @@ class Settings(BaseSettings):
             "channel": "🥷🏽-abe-alerts-🥷🏽",
             "enabled": True,
         },
+        {
+            "name": "bankerkyle",
+            "display": "BK",
+            "username": "bankerkyle",
+            "channel": "💅🏾-kyle-alerts-💅🏾",
+            "enabled": True,
+        },
     ]
 
     # User-profile system: comma-separated channel names where the bot
