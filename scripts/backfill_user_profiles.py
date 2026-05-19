@@ -963,7 +963,20 @@ def main() -> None:
         "--channels", type=str, default=default_channels,
         help="Comma-separated channel names (default: settings.profile_channels)"
     )
+    parser.add_argument(
+        "--no-vision", action="store_true",
+        help=(
+            "Force text-only mode — skip image attachment entirely even "
+            "if images are available. Used to A/B-test whether the vision "
+            "path is causing short / truncated profile outputs."
+        ),
+    )
     args = parser.parse_args()
+    if args.no_vision:
+        # Override the setting in-process; doesn't touch the env var
+        settings.profile_image_ocr_enabled = False
+        print("--no-vision: vision pipeline disabled for this run",
+              flush=True)
     channels = [c.strip() for c in args.channels.split(",") if c.strip()]
     asyncio.run(run(args.days, channels))
 
