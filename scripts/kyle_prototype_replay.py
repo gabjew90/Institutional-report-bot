@@ -311,6 +311,23 @@ entries.
 - 0-49: speculative. Better to log with low confidence than skip — surface
   the uncertainty.
 
+**CRITICAL — NEVER use 0 as a sentinel.** If you cannot read a strike from
+the caption OR the image, OMIT the strike field from the JSON (or use null).
+Do NOT emit strike=0. Same for price and gain_pct — null/omit when not
+extractable; reserve 0 for the genuine cases (e.g. a $0.01 fill is a real
+price, but "I couldn't find the strike on this image" is NOT a $0 strike).
+If the image shows multiple contracts and you can't determine which strike
+the caption refers to, emit ONE state_change per visible contract (the model
+should READ the image, not guess).
+
+When the IMAGE contains the answer (portfolio screenshot showing
+ticker+strike+expiry for each contract), USE IT. The caption "Meta calls
+for tomorrow expiry and 5/29" combined with a screenshot of two META
+contracts at, say, 615 strike = TWO state_changes: META 615C 2026-05-20
+and META 615C 2026-05-29, with strikes pulled from the image. Don't drop
+strike just because the caption was vague — the screenshot was sent
+precisely so you could read it.
+
 **Evidence** field MUST cite the source: either a quote from the caption
 ("Sold all 5/22 435c @3.66"), a description of the image ("image shows
 MSFT 430C 5/20 portfolio card, +12.5%"), or a chain reference ("Closes the
