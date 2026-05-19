@@ -264,11 +264,16 @@ NOT trades (return is_trade=false):
 - "Sold @19.00"                                → too sparse alone (no ticker/strike)
 - "Slam"                                       → hype alone
 
-THRESHOLD: a trade row requires at minimum **ticker + strike + expiry**. If
-ANY of those three cannot be confidently extracted from the caption alone,
-treat the message as NOT a trade — set is_trade=false. Do NOT guess. Do NOT
-fall back to a 0 sentinel. The screenshot-based pipeline handles cases
-where the image fills in missing fields; this path is text-only.
+THRESHOLD: a trade row requires at minimum **ticker + strike**. If either
+cannot be confidently extracted from the caption alone, treat the message
+as NOT a trade — set is_trade=false. Do NOT guess on ticker or strike. Do
+NOT fall back to a 0 sentinel.
+
+**Expiry default — 0DTE.** If the caption has NO expiry value (or you can't
+parse one), set `expiry` to today's date ({today_iso}). Terse callers often
+omit expiry on intraday lottos because the contract is same-day; assume
+0DTE rather than dropping the trade. If the caption DOES have an explicit
+M/D, use that with the year-inference rule below.
 
 Caller shorthand to recognize (uppercase canonical):
 - "rut" → RUT, "ndx" → NDX, "spx" → SPX, "spy" → SPY, "qqq" → QQQ
@@ -283,7 +288,8 @@ Strike syntax: a number directly followed by 'c' (call) or 'p' (put), e.g.
 Expiry: "M/D" or "MM/DD" or "MM-DD" formats — use today's date ({today_iso})
 to infer the year. If the M/D is on/after today → current year. If 1-14 days
 ago → current year (just expired or about to). If more than 14 days ago →
-next year.
+next year. **If no expiry value appears in the caption at all, use today's
+date** ({today_iso}) — that's the 0DTE default.
 
 Price: read from "@PRICE" patterns. "@3.65" → price 3.65. If no price
 visible, leave null.
@@ -368,8 +374,10 @@ async def extract_trade_from_caption(caption: str) -> dict | None:
         return None
 
     # Enforce the minimum threshold post-hoc — model might over-claim
-    # is_trade=true on sparse input. If any required field is missing,
-    # downgrade to non-trade so we don't write a junk row.
+    # is_trade=true on sparse input. Ticker + strike are required; expiry
+    # defaults to today (0DTE) if the model didn't provide one. If ticker
+    # or strike is missing, downgrade to non-trade so we don't write a
+    # junk row.
     if data.get("is_trade_screenshot"):
         missing = []
         if not data.get("ticker"):
@@ -377,8 +385,6 @@ async def extract_trade_from_caption(caption: str) -> dict | None:
         strike = data.get("strike")
         if strike is None or strike == 0:
             missing.append("strike")
-        if not data.get("expiry"):
-            missing.append("expiry")
         if missing:
             log.debug(
                 f"Caption extraction downgraded to non-trade — "
@@ -391,4 +397,11 @@ async def extract_trade_from_caption(caption: str) -> dict | None:
                 ),
                 "confidence": "high",
             }
+        # 0DTE default — if model didn't fill expiry, use today
+        if not data.get("expiry"):
+            data["expiry"] = today_iso
+            data["notes"] = (
+                (data.get("notes") or "")
+                + " (expiry defaulted to today — 0DTE)"
+            ).strip()
     return data
