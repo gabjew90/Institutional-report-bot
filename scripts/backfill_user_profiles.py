@@ -42,14 +42,42 @@ if hasattr(sys.stdout, "buffer"):
 if hasattr(sys.stderr, "buffer"):
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
 
+from io import BytesIO  # noqa: E402
+
 import aiohttp  # noqa: E402
 import discord  # noqa: E402
 from google import genai  # noqa: E402
 from google.genai import types  # noqa: E402
+from PIL import Image as PILImage  # noqa: E402
 
 import db  # noqa: E402
 from config import settings  # noqa: E402
 from scripts.slur_patterns import count_slurs_in_text  # noqa: E402
+
+
+def _normalize_image_bytes(raw: bytes) -> bytes | None:
+    """Decode → strip to RGB → cap dimensions → re-encode as clean JPEG.
+
+    Gemini Vision rejects CMYK JPEGs, palette PNGs, RGBA, animated GIFs,
+    and oversized images at the same `400 INVALID_ARGUMENT` rate. PIL
+    re-encoding catches all of these — image comes in any format, goes
+    out as a vanilla RGB JPEG at ≤1600px longest side, qual 85.
+
+    Returns None if PIL can't decode (corrupt bytes, unsupported format
+    PIL doesn't know either) — caller drops the image cleanly.
+    """
+    try:
+        img = PILImage.open(BytesIO(raw))
+        if img.mode != "RGB":
+            img = img.convert("RGB")
+        max_side = 1600
+        if max(img.size) > max_side:
+            img.thumbnail((max_side, max_side), PILImage.Resampling.LANCZOS)
+        buf = BytesIO()
+        img.save(buf, format="JPEG", quality=85, optimize=True)
+        return buf.getvalue()
+    except Exception:
+        return None
 
 # Hard cap on image bytes per download. Anything over this is dropped
 # (likely a screen recording or huge composite). Keeps token cost predictable.
@@ -183,6 +211,30 @@ Make the reader feel like they've met this person — and that meeting them was 
 
 ---
 
+## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
+
+Output a single JSON object with THREE fields:
+
+```
+{{
+  "profile_text": "<full markdown profile per the schema above>",
+  "trader_score": <integer 0-100>,
+  "trader_rationale": "<one direct sentence on what's driving the score>"
+}}
+```
+
+The trader_score uses these brackets:
+- **90-100 — Real edge.** Documented wins others tail. Posts wins AND losses cleanly. Process visible. Room trusts their reads.
+- **75-89 — Solid.** Mostly green over time. Style clear and works. Owns misses without crisis. Trusted on specific style/sector.
+- **60-74 — Hits and misses, but hits are real.** Has a setup that works in some conditions. Mixed execution.
+- **40-59 — Net negative or barely flat.** Knows the theory, leaks edge in execution. Style visible but isn't working consistently. Often self-aware.
+- **20-39 — Bag holder.** More documented losses than wins. Sizes up to recover. Chases the loudest voice.
+- **0-19 — Tail traffic / exit liquidity.** Should not be trading at this size.
+
+Be direct in the rationale — call out the actual pattern in one sentence. No "shows promise" or mealy-mouthed framings. Honest, not personally cruel.
+
+---
+
 MESSAGES (oldest first, most recent last):
 {messages_block}\
 """
@@ -231,77 +283,6 @@ def _extract_embed_texts(message: discord.Message) -> list[str]:
     return out
 
 
-TRADER_SCORE_PROMPT = """\
-You're scoring trading skill for one user in a private options-trading discord.
-
-Below: their just-generated profile dossier + a chronological sample of their recent chat messages.
-
-Output a single integer score 0-100 reflecting their actual trading skill as best you can assess. Be honest — the room pays to be here and the scores are private, so calibrate for real signal, not politeness:
-
-- **90-100 — Real edge.** Documented wins others tail. Posts both wins and losses cleanly — no spiraling, no spin. Process is visible and repeatable. The room trusts their reads.
-- **75-89 — Solid.** Mostly green over time. Style is clear and works. Owns misses without making them a crisis. Trusted on a specific style or sector.
-- **60-74 — Hits and misses, but the hits are real.** Has a setup or sector that works in some conditions. Mixed execution. Wins documented, losses also documented.
-- **40-59 — Net negative or barely flat.** Knows what they're doing in theory but leaks edge in execution. Style is visible (chase, tail, scalp) but isn't working consistently. Often self-aware about it.
-- **20-39 — Bag holder.** More documented losses than wins. Sizes up to recover. Chases the loudest voice. Style hasn't worked in months. Honest characterization: the room reads them as a cautionary tale.
-- **0-19 — Tail traffic / exit liquidity.** The room references them as the guy who buys the top. Style is "all in on the next thing." Should not be trading at this size.
-
-Be direct in the rationale — call out the actual pattern in one sentence. No "shows promise" or other mealy-mouthed framings. Honest, not personally cruel. If they're a bag holder, say so. If they're solid, say so.
-
-Output STRICT JSON only, no prose, no markdown wrapper:
-
-{{
-  "score": <integer 0-100>,
-  "rationale": "<one direct sentence on what's driving the score>"
-}}
-
-USER: {display_name} (`{username}`)
-
-PROFILE:
-{profile_text}
-
-RECENT MESSAGES (chronological, no truncation):
-{chat_sample}
-"""
-
-
-async def _score_trader(
-    client: genai.Client,
-    display_name: str,
-    username: str,
-    profile_text: str,
-    chat_sample: str,
-) -> tuple[int | None, str | None]:
-    """Run Gemini to score trading skill 0-100 + one-sentence rationale.
-    Returns (score, rationale) or (None, None) on failure."""
-    prompt = TRADER_SCORE_PROMPT.format(
-        display_name=display_name,
-        username=username,
-        profile_text=profile_text or "(no profile generated)",
-        chat_sample=chat_sample or "(no recent chat)",
-    )
-    try:
-        response = await client.aio.models.generate_content(
-            model=settings.gemini_model,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                temperature=0.0,
-                max_output_tokens=300,
-                response_mime_type="application/json",
-            ),
-        )
-        text = (response.text or "").strip()
-        if not text:
-            return None, None
-        data = json.loads(text)
-        score = int(data.get("score"))
-        rationale = data.get("rationale") or None
-        score = max(0, min(100, score))
-        return score, rationale
-    except Exception as e:
-        print(f"  ✗ trader score failed for {display_name}: {e}", flush=True)
-        return None, None
-
-
 async def _download_image(
     session: aiohttp.ClientSession, url: str
 ) -> bytes | None:
@@ -327,20 +308,26 @@ async def _generate_profile(
     http_session: aiohttp.ClientSession | None = None,
     images: list[dict] | None = None,
     user_id: int = 0,
-) -> str | None:
-    """Run Gemini to produce one user's profile. Returns None on failure.
+) -> tuple[str | None, int | None, str | None]:
+    """Run Gemini to produce one user's profile + trader score in ONE call.
+
+    Returns (profile_text, trader_score, trader_rationale) or (None, None,
+    None) on hard failure.
 
     When `images` is non-empty and `http_session` is provided, attaches the
-    most-recent up-to-profile_image_cap images as multipart input alongside
-    the text — Gemini Vision then extracts ticker / position / PnL signal
-    from screenshots that the text-only path can only see as `[image]`.
-    Falls back to text-only on any download/encoding failure.
+    most-recent up-to-profile_image_cap images as multipart input. Every
+    image goes through PIL normalize (RGB JPEG, capped 1600px) BEFORE
+    being sent — catches CMYK / palette / RGBA / oversized / corrupt
+    bytes that Gemini Vision was rejecting at the 400-INVALID_ARGUMENT
+    rate previously.
+
+    Response format: STRICT JSON with profile_text + trader_score +
+    trader_rationale fields. response_mime_type=application/json forces
+    Gemini to escape the markdown prose inside the JSON string properly.
     """
     min_msgs = getattr(settings, "profile_min_messages", None) or MIN_MESSAGES_FOR_PROFILE_FALLBACK
     if len(messages) < min_msgs:
-        return None
-    # Sample most-recent N (Discord returns history oldest-first when we
-    # ask via after=cutoff, oldest_first=True; we kept all of it in order).
+        return None, None, None
     sample_size = (
         getattr(settings, "profile_sample_size", None)
         or MESSAGES_PER_PROFILE_SAMPLE_FALLBACK
@@ -357,40 +344,46 @@ async def _generate_profile(
         today_utc=today_utc,
     )
 
-    # Decide vision vs text-only. Vision needs: config flag on + http
-    # session passed in + at least one image collected for this user.
     vision_enabled = (
         getattr(settings, "profile_image_ocr_enabled", False)
         and http_session is not None
         and images
     )
 
-    # Supported MIME types per Gemini Vision docs. Anything else (GIF,
-    # webp animations, application/octet-stream, etc.) gets dropped from
-    # the multipart batch — a single unsupported image rejects the whole
-    # call with "Unable to process input image", so we filter pre-flight.
-    _SUPPORTED_IMAGE_MIMES = {
-        "image/png", "image/jpeg", "image/webp", "image/heic", "image/heif"
-    }
+    def _parse_response(text: str) -> tuple[str | None, int | None, str | None]:
+        """Parse the JSON response. Returns the three fields or (None,
+        None, None) on parse failure."""
+        if not text:
+            return None, None, None
+        try:
+            data = json.loads(text)
+            pt = (data.get("profile_text") or "").strip() or None
+            ts = data.get("trader_score")
+            tr = (data.get("trader_rationale") or "").strip() or None
+            if ts is not None:
+                try:
+                    ts = max(0, min(100, int(ts)))
+                except (TypeError, ValueError):
+                    ts = None
+            return pt, ts, tr
+        except json.JSONDecodeError:
+            return None, None, None
 
-    async def _try_text_only() -> str | None:
-        """Text-only profile call. Used as primary path when vision is off,
-        and as fallback path when vision returns an error."""
+    async def _try_text_only() -> tuple[str | None, int | None, str | None]:
         resp = await gemini_client.aio.models.generate_content(
             model=settings.gemini_model,
             contents=prompt,
             config=types.GenerateContentConfig(
                 temperature=0.3,
-                max_output_tokens=1500,
+                max_output_tokens=2500,
+                response_mime_type="application/json",
             ),
         )
-        out = (resp.text or "").strip()
-        return out if out else None
+        return _parse_response((resp.text or "").strip())
 
     try:
         if vision_enabled:
             image_cap = getattr(settings, "profile_image_cap", 20)
-            # Most-recent N images (image list is oldest-first like messages)
             img_sample = images[-image_cap:]
             blobs = await asyncio.gather(
                 *[_download_image(http_session, a["url"]) for a in img_sample],
@@ -401,47 +394,42 @@ async def _generate_profile(
             for att, blob in zip(img_sample, blobs):
                 if not isinstance(blob, (bytes, bytearray)) or not blob:
                     continue
-                mime = (att.get("content_type") or "image/png").split(";")[0].lower()
-                # Skip animated / unsupported formats up front. A single
-                # bad image taints the whole multipart request.
-                if mime not in _SUPPORTED_IMAGE_MIMES:
+                # PIL normalize → clean RGB JPEG. Handles CMYK, palette,
+                # RGBA, animated GIFs (first frame), oversized. Returns
+                # None if PIL can't decode — drop those.
+                clean = _normalize_image_bytes(bytes(blob))
+                if clean is None:
                     continue
                 parts.append(
-                    types.Part.from_bytes(data=blob, mime_type=mime)
+                    types.Part.from_bytes(data=clean, mime_type="image/jpeg")
                 )
                 attached += 1
             if attached == 0:
-                # No usable images — go text-only.
-                text = await _try_text_only()
-                return text
+                return await _try_text_only()
             parts.append(types.Part.from_text(text=prompt))
             try:
                 response = await gemini_client.aio.models.generate_content(
                     model=settings.gemini_model,
                     contents=parts,
                     config=types.GenerateContentConfig(
-                        temperature=0.3, max_output_tokens=1500
+                        temperature=0.3,
+                        max_output_tokens=2500,
+                        response_mime_type="application/json",
                     ),
                 )
             except Exception as vision_err:
-                # Vision call rejected (corrupt image bytes that passed
-                # the MIME filter, unexpected format, etc.). Fall back to
-                # text-only so the user still gets a profile.
                 print(
                     f"  vision failed for {display_name} "
                     f"({attached} imgs), falling back to text-only: {vision_err}",
                     flush=True,
                 )
-                text = await _try_text_only()
-                return text
-            text = (response.text or "").strip()
-            return text if text else None
+                return await _try_text_only()
+            return _parse_response((response.text or "").strip())
         else:
-            text = await _try_text_only()
-            return text
+            return await _try_text_only()
     except Exception as e:
         print(f"  ERROR profiling {display_name}: {e}", flush=True)
-        return None
+        return None, None, None
 
 
 async def run(days: int, channels: list[str]) -> None:
@@ -635,35 +623,23 @@ async def run(days: int, channels: list[str]) -> None:
                             user_id=uid,
                         ))
                     results = await asyncio.gather(*tasks, return_exceptions=True)
-                    # Now score traders sequentially per result (parallel
-                    # Gemini calls fan out, but trader-scoring is a quick
-                    # follow-up per profile). Total budget per user: 1
-                    # profile gen + 1 trader score = 2 Gemini calls.
-                    for (uid, msgs), profile in zip(batch, results):
+                    # Single Gemini call per user now returns
+                    # (profile_text, trader_score, trader_rationale) as
+                    # one structured JSON response. Half the API calls,
+                    # half the latency vs the previous two-call split.
+                    for (uid, msgs), result in zip(batch, results):
                         meta = user_meta[uid]
-                        if isinstance(profile, Exception):
-                            print(f"  ✗ {meta['display_name']}: {profile}",
+                        if isinstance(result, Exception):
+                            print(f"  ✗ {meta['display_name']}: {result}",
                                   flush=True)
                             continue
+                        profile, trader_score, trader_rationale = result
                         if not profile:
-                            print(f"  ✗ {meta['display_name']}: empty response",
+                            print(f"  ✗ {meta['display_name']}: empty / unparseable response",
                                   flush=True)
                             continue
                         last_seen = msgs[-1]["timestamp"]
                         slur_n = slur_counts.get(uid, 0)
-
-                        # Trader score from the just-generated profile +
-                        # full chat sample. Failure is non-fatal — profile
-                        # still gets upserted, trader_score stays NULL.
-                        sample_msgs = msgs[-200:]
-                        chat_sample = _format_messages_block(sample_msgs)
-                        trader_score, trader_rationale = await _score_trader(
-                            gemini_client,
-                            meta["display_name"],
-                            meta.get("username", ""),
-                            profile,
-                            chat_sample,
-                        )
 
                         db.upsert_user_profile(
                             user_id=uid,
