@@ -18,7 +18,7 @@ from typing import Any
 import discord
 
 import db
-from analyst_log.ocr import extract_trade_from_image
+from analyst_log.ocr import extract_trade_from_caption, extract_trade_from_image
 from config import settings
 
 log = logging.getLogger(__name__)
@@ -43,9 +43,6 @@ async def watch_message(
     `caller` field is None — backwards-compatible with the pre-registry
     deployment but loses hard-separation in /ask context.
     """
-    if not message.attachments:
-        return
-
     # Resolve the username to filter by + the canonical caller name to
     # store. Registry-driven (preferred) or legacy fallback.
     if caller:
@@ -70,6 +67,52 @@ async def watch_message(
     author_name = (
         getattr(message.author, "display_name", None) or message.author.name
     )
+
+    # Caption-only path: a message with NO image attachments but a
+    # non-empty caption goes through text-only extraction. The caption
+    # must contain ticker + strike + expiry — otherwise the extraction
+    # path tags is_trade=false and we skip recording.
+    if not message.attachments:
+        if not caption:
+            return
+        # Dedup: use a synthetic attachment_id=0 so the UNIQUE(message_id,
+        # attachment_id) constraint still works for caption-only rows.
+        synthetic_att_id = 0
+        if db.analyst_trade_exists(message.id, synthetic_att_id):
+            return
+        extracted = await extract_trade_from_caption(caption)
+        if extracted is None:
+            log.warning(
+                f"Analyst log: caption extraction returned None — "
+                f"msg={message.id} caption={caption[:120]!r}"
+            )
+            return
+        is_trade = bool(extracted.get("is_trade_screenshot"))
+        try:
+            db.record_analyst_trade(
+                discord_message_id=message.id,
+                discord_attachment_id=synthetic_att_id,
+                author=author_name,
+                posted_at=posted_at,
+                image_url=None,
+                caption=caption,
+                is_trade=is_trade,
+                gemini_json=extracted,
+                ticker=extracted.get("ticker") if is_trade else None,
+                contract_type=extracted.get("contract_type") if is_trade else None,
+                strike=extracted.get("strike") if is_trade else None,
+                expiry=extracted.get("expiry") if is_trade else None,
+                action=extracted.get("action") if is_trade else None,
+                gain_pct=extracted.get("gain_pct") if is_trade else None,
+                price=extracted.get("price") if is_trade else None,
+                caller=canonical_caller,
+            )
+        except Exception as e:
+            log.error(f"Analyst log: caption-only DB insert failed: {e}", exc_info=True)
+            return
+        if is_trade:
+            await _announce_to_channel(bot, message, extracted, author_name)
+        return
 
     for att in message.attachments:
         ct = (att.content_type or "").lower()

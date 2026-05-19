@@ -240,3 +240,155 @@ async def extract_trade_from_image(
     except json.JSONDecodeError as e:
         log.error(f"Gemini extraction returned non-JSON: {e} | text={text[:200]}")
         return None
+
+
+# ============================================================================
+# Caption-only extraction (no screenshot)
+# ============================================================================
+
+_CAPTION_ONLY_PROMPT = """\
+You are extracting a structured trade record from a TEXT-ONLY message in
+a trade-caller's alerts channel. The caller posts short alerts like:
+
+  "Ndx 29000c @7.00"            → open NDX call, strike 29000, price 7.00
+  "Sold all 5/22 435c @3.66"    → close call, strike 435, expiry 5/22, price 3.66
+  "MSFT 430c 5/20 @3.65 BTO"    → open MSFT call, strike 430, expiry 5/20, price 3.65
+  "Sold 5/20 615c @4.00 meta"   → close META call, strike 615, expiry 5/20, price 4.00
+  "Took half PLTR 137c 5/29"    → trim PLTR call, strike 137, expiry 5/29
+  "Re-entering AMD 145c 5/29"   → open AMD call, strike 145, expiry 5/29
+
+NOT trades (return is_trade=false):
+- "I really think China is a great buy here"   → commentary
+- "Anyone else seeing this?"                   → discussion
+- "These are 8 now!"                           → reaction (no contract specified)
+- "Sold @19.00"                                → too sparse alone (no ticker/strike)
+- "Slam"                                       → hype alone
+
+THRESHOLD: a trade row requires at minimum **ticker + strike + expiry**. If
+ANY of those three cannot be confidently extracted from the caption alone,
+treat the message as NOT a trade — set is_trade=false. Do NOT guess. Do NOT
+fall back to a 0 sentinel. The screenshot-based pipeline handles cases
+where the image fills in missing fields; this path is text-only.
+
+Caller shorthand to recognize (uppercase canonical):
+- "rut" → RUT, "ndx" → NDX, "spx" → SPX, "spy" → SPY, "qqq" → QQQ
+- "msft" → MSFT, "meta" → META, "pltr" → PLTR, "tsla" → TSLA
+- "chyna" / "moar chyna" / "CHYYYNNAAA" → FXI (China large-cap ETF; common shorthand)
+- "coin" → COIN, "mstr" → MSTR, "amd" → AMD, "nvda" → NVDA, "igv" → IGV
+
+Strike syntax: a number directly followed by 'c' (call) or 'p' (put), e.g.
+"94c" → strike 94 call, "29000c" → strike 29000 call. Decimal strikes allowed
+("207.5c" → 207.5 call).
+
+Expiry: "M/D" or "MM/DD" or "MM-DD" formats — use today's date ({today_iso})
+to infer the year. If the M/D is on/after today → current year. If 1-14 days
+ago → current year (just expired or about to). If more than 14 days ago →
+next year.
+
+Price: read from "@PRICE" patterns. "@3.65" → price 3.65. If no price
+visible, leave null.
+
+Action keywords:
+- "sold" / "sold all" / "exit" / "out" → close
+- "took half" / "took some off" / "trimmed" / "scaled" → trim
+- "added" / "more" / "doubled" → add
+- "BTO" / "bought" / "re-entering" / "reload" / "back in" / "in at" → open
+- No action keyword + new contract → open (default)
+- "Slam" / "slammed" → open (this caller's vernacular for aggressive entry)
+
+Return STRICT JSON only:
+
+For trades:
+{{
+  "is_trade_screenshot": true,
+  "screenshot_type": "caption_only",
+  "ticker": "<UPPERCASE TICKER>",
+  "contract_type": "call" | "put" | "stock",
+  "strike": <number — REQUIRED, no sentinel>,
+  "expiry": "YYYY-MM-DD" — REQUIRED,
+  "action": "open" | "add" | "trim" | "close" | "viewing",
+  "action_source": "caption",
+  "gain_pct": null,
+  "price": <number from @PRICE pattern, or null>,
+  "caption_summary": "one-line plain English of what the caller is doing",
+  "confidence": "high" | "medium" | "low",
+  "notes": ""
+}}
+
+For non-trades:
+{{
+  "is_trade_screenshot": false,
+  "what_it_appears_to_be": "<short description>",
+  "confidence": "high" | "medium" | "low"
+}}
+
+CAPTION:
+\"\"\"{caption}\"\"\"
+
+Output the JSON object only.
+"""
+
+
+async def extract_trade_from_caption(caption: str) -> dict | None:
+    """Caption-only extraction path for callers who post pure text
+    alerts without a screenshot. Requires ticker + strike + expiry
+    to be extractable; otherwise returns is_trade=false.
+
+    Returns parsed JSON dict on success, None on any failure (logged).
+    Failures are non-fatal — the watcher should continue.
+    """
+    if not caption or not caption.strip():
+        return None
+    today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    prompt = _CAPTION_ONLY_PROMPT.format(
+        today_iso=today_iso, caption=caption.strip()[:1000]
+    )
+    try:
+        client = _get_client()
+        response = await client.aio.models.generate_content(
+            model=settings.gemini_model,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.0,
+                max_output_tokens=600,
+                response_mime_type="application/json",
+            ),
+        )
+    except Exception as e:
+        log.error(f"Caption extraction call failed: {e}")
+        return None
+
+    text = (response.text or "").strip()
+    if not text:
+        return None
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError as e:
+        log.error(f"Caption extraction non-JSON: {e} | text={text[:200]}")
+        return None
+
+    # Enforce the minimum threshold post-hoc — model might over-claim
+    # is_trade=true on sparse input. If any required field is missing,
+    # downgrade to non-trade so we don't write a junk row.
+    if data.get("is_trade_screenshot"):
+        missing = []
+        if not data.get("ticker"):
+            missing.append("ticker")
+        strike = data.get("strike")
+        if strike is None or strike == 0:
+            missing.append("strike")
+        if not data.get("expiry"):
+            missing.append("expiry")
+        if missing:
+            log.debug(
+                f"Caption extraction downgraded to non-trade — "
+                f"missing required fields: {missing} | caption={caption[:120]!r}"
+            )
+            return {
+                "is_trade_screenshot": False,
+                "what_it_appears_to_be": (
+                    f"caption-only post but missing {', '.join(missing)} for a complete trade record"
+                ),
+                "confidence": "high",
+            }
+    return data
