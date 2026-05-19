@@ -102,15 +102,11 @@ GEMINI_CONCURRENCY = 5  # parallel calls per batch
 PROFILE_PROMPT = """\
 You're building a balanced character profile for one member of a private options-trading discord. The output goes into context for a /ask bot that uses it to answer questions about the user, joke with them, and (occasionally) clap back when they actually attack.
 
-## CRITICAL: WHO YOU'RE PROFILING
+## SUBJECT (READ FIRST)
 
-You are profiling **{display_name}** (username `{username}`, Discord ID <@{user_id}>) — and ONLY this user.
+You are profiling **{display_name}** (username `{username}`, ID <@{user_id}>) — only this user. The MESSAGES below were ALL written by {display_name}. Any other names that appear inside those messages (terlin, abe, BK, etc.) are people {display_name} is talking to or about — not {display_name}. Every "they/he/she/the user" in your output refers to {display_name}.
 
-The MESSAGES block at the bottom contains ONLY messages WRITTEN BY {display_name}. When {display_name}'s messages mention OTHER users by name (e.g. "terlin", "BK", "abe", "@kloh"), those mentions are people {display_name} is TALKING TO or ABOUT — they are NOT {display_name}.
-
-**Hard rule:** every reference to "the user", "they", "he", or "she" in your output refers to **{display_name}** and nobody else. Your profile_text MUST begin with the literal header `**{display_name} ({username}, <@{user_id}>) — {msg_count} msgs**` (use {display_name} exactly as given, not any other name). The body must describe {display_name}'s behavior, voice, and patterns — not the patterns of anyone {display_name} happens to mention.
-
-If {display_name}'s messages frequently reference another user's trades or behavior, that goes in *Running jokes* or *Trash talk ammo* as "what {display_name} pokes at others about," NOT as {display_name}'s own pattern.
+profile_text MUST start with the exact header `**{display_name} ({username}, <@{user_id}>) — {msg_count} msgs**` on its own line.
 
 ---
 
@@ -496,21 +492,28 @@ async def _generate_profile(
         ],
     )
 
-    def _log_finish(resp, label: str) -> None:
-        """Log finish_reason from the response candidate. Useful when a
-        response truncates mid-stream — finish_reason=SAFETY means a
-        safety filter fired despite the BLOCK_NONE settings; MAX_TOKENS
-        means we need a bigger budget; STOP is normal completion."""
+    def _get_finish_reason(resp) -> str | None:
+        """Return the response's finish_reason as a string, or None."""
         try:
             cand = resp.candidates[0] if resp.candidates else None
             fr = getattr(cand, "finish_reason", None) if cand else None
-            if fr is not None and str(fr) not in ("FinishReason.STOP", "STOP", "1"):
-                print(
-                    f"  finish_reason for {display_name} ({label}): {fr}",
-                    flush=True,
-                )
+            return str(fr) if fr is not None else None
         except Exception:
-            pass
+            return None
+
+    def _log_finish(resp, label: str) -> None:
+        """Log finish_reason only when it's not STOP (the diagnostic
+        signal — STOP is normal, anything else means premature ending)."""
+        fr = _get_finish_reason(resp)
+        if fr and fr not in ("FinishReason.STOP", "STOP", "1"):
+            print(
+                f"  finish_reason for {display_name} ({label}): {fr}",
+                flush=True,
+            )
+
+    # Profiles below this char length are treated as suspicious — we log
+    # finish_reason regardless of STOP and retry once with a fresh call.
+    _SHORT_PROFILE_THRESHOLD = 1500
 
     async def _try_text_only() -> tuple[str | None, int | None, str | None, int | None]:
         # Use the profile model (gemini_vision_model) for the text-only
@@ -537,7 +540,11 @@ async def _generate_profile(
         _log_finish(resp, f"text-only/{text_model}")
         return _parse_response((resp.text or "").strip())
 
-    try:
+    async def _attempt() -> tuple[
+        tuple[str | None, int | None, str | None, int | None], str | None
+    ]:
+        """One full generation attempt. Returns (parsed_tuple,
+        finish_reason). finish_reason is None if not retrievable."""
         if vision_enabled:
             image_cap = getattr(settings, "profile_image_cap", 20)
             img_sample = images[-image_cap:]
@@ -561,7 +568,28 @@ async def _generate_profile(
                 )
                 attached += 1
             if attached == 0:
-                return await _try_text_only()
+                # No usable images — fall through to text-only.
+                text_model = (
+                    getattr(settings, "gemini_vision_model", "")
+                    or settings.gemini_model
+                )
+                resp = await gemini_client.aio.models.generate_content(
+                    model=text_model,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        temperature=0.3,
+                        max_output_tokens=_MAX_OUTPUT_TOKENS,
+                        response_mime_type="application/json",
+                        response_schema=_RESPONSE_SCHEMA,
+                        safety_settings=_SAFETY_SETTINGS,
+                        thinking_config=_THINKING_CONFIG,
+                    ),
+                )
+                _log_finish(resp, f"text-only/{text_model}")
+                return (
+                    _parse_response((resp.text or "").strip()),
+                    _get_finish_reason(resp),
+                )
             parts.append(types.Part.from_text(text=prompt))
             vision_model = getattr(
                 settings, "gemini_vision_model", ""
@@ -586,11 +614,49 @@ async def _generate_profile(
                     f"falling back to text-only: {vision_err}",
                     flush=True,
                 )
-                return await _try_text_only()
+                return await _try_text_only(), None
             _log_finish(response, f"vision/{vision_model}")
-            return _parse_response((response.text or "").strip())
+            return (
+                _parse_response((response.text or "").strip()),
+                _get_finish_reason(response),
+            )
         else:
-            return await _try_text_only()
+            return await _try_text_only(), None
+
+    try:
+        result, finish_reason = await _attempt()
+        profile_text = result[0]
+        # Retry-on-short: if profile_text is suspiciously short, log the
+        # finish_reason (which we'd normally skip for STOP) and try one
+        # more time. Some short outputs are MAX_TOKENS, some are voluntary
+        # STOPs (model decided early) — a single retry resolves both
+        # since temperature=0.3 still gives variance.
+        if profile_text and len(profile_text) < _SHORT_PROFILE_THRESHOLD:
+            print(
+                f"  short profile for {display_name} "
+                f"({len(profile_text)} chars, finish={finish_reason}) "
+                f"— retrying once",
+                flush=True,
+            )
+            retry_result, retry_finish = await _attempt()
+            retry_text = retry_result[0]
+            # Keep whichever attempt produced more content
+            if retry_text and len(retry_text) > len(profile_text):
+                print(
+                    f"  retry succeeded for {display_name} "
+                    f"({len(retry_text)} chars, finish={retry_finish})",
+                    flush=True,
+                )
+                result = retry_result
+            else:
+                print(
+                    f"  retry no better for {display_name} "
+                    f"(orig={len(profile_text)}, "
+                    f"retry={len(retry_text) if retry_text else 'None'}, "
+                    f"finish={retry_finish}) — keeping original",
+                    flush=True,
+                )
+        return result
     except Exception as e:
         print(f"  ERROR profiling {display_name}: {e}", flush=True)
         return None, None, None, None
