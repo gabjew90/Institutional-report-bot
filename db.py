@@ -2138,7 +2138,12 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
     racial-humor signal) among this conv + global trader rank with
     one-line rationale. Bot uses these ONLY for comparative answers —
     never enumerated or quoted as raw numbers.
+
+    Also injects up to 3 slur_examples and 3 trader_examples per user
+    so the bot has actual recent quotes/moments to draw on for Type 3
+    clapbacks and trader-rank discussions, not just the prose profile.
     """
+    import json as _json
     profiles = get_profiles_for_users(user_ids)
     if not profiles:
         return ""
@@ -2203,7 +2208,36 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
             metric_bits.append("trader-rank: not scored")
         metrics_line = " · ".join(metric_bits)
 
-        lines.append(f"- {ident} — _{metrics_line}_:\n{text}\n")
+        # Parse examples (TEXT JSON). Defensive: skip on malformed.
+        try:
+            slur_ex_list = _json.loads(p.get("slur_examples") or "[]")
+        except Exception:
+            slur_ex_list = []
+        try:
+            trader_ex_list = _json.loads(p.get("trader_examples") or "[]")
+        except Exception:
+            trader_ex_list = []
+
+        examples_section = ""
+        if slur_ex_list or trader_ex_list:
+            ex_lines = []
+            if slur_ex_list:
+                ex_lines.append("  recent slur usage:")
+                for ex in slur_ex_list[:3]:
+                    snippet = (ex or "")[:140].replace("\n", " ").strip()
+                    if snippet:
+                        ex_lines.append(f"    · {snippet}")
+            if trader_ex_list:
+                ex_lines.append("  recent trader moments:")
+                for ex in trader_ex_list[:3]:
+                    snippet = (ex or "")[:200].replace("\n", " ").strip()
+                    if snippet:
+                        ex_lines.append(f"    · {snippet}")
+            examples_section = "\n" + "\n".join(ex_lines)
+
+        lines.append(
+            f"- {ident} — _{metrics_line}_:{examples_section}\n{text}\n"
+        )
     return "\n".join(lines)
 
 
