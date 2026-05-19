@@ -423,6 +423,14 @@ async def _generate_profile(
     # Model max is typically 8192.
     _MAX_OUTPUT_TOKENS = 4000
 
+    # gemini-2.5-flash uses "thinking" tokens BEFORE emitting visible
+    # output — those count against max_output_tokens. Without disabling,
+    # the model burned 3500+ tokens on chain-of-thought and emitted only
+    # 500-700 chars of truncated JSON. Profile generation is a structured
+    # extraction task; no reasoning chain needed — disable thinking so
+    # the entire budget goes to actual output.
+    _THINKING_CONFIG = types.ThinkingConfig(thinking_budget=0)
+
     # Internal calibration tool — bot characterizes how users talk, it
     # doesn't moderate or publish raw content. Default Gemini safety
     # filters truncate mid-stream when reading chat with slurs / racial
@@ -449,6 +457,26 @@ async def _generate_profile(
         ),
     ]
 
+    # Structured-output schema. Forces Gemini to escape quotes inside
+    # profile_text correctly (without this, free-form JSON mode produces
+    # unescaped inner quotes from user phrase quotes and the parser
+    # chokes mid-stream).
+    _RESPONSE_SCHEMA = types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "profile_text": types.Schema(type=types.Type.STRING),
+            "trader_score": types.Schema(type=types.Type.INTEGER),
+            "trader_rationale": types.Schema(type=types.Type.STRING),
+            "racial_humor_score": types.Schema(type=types.Type.INTEGER),
+        },
+        required=[
+            "profile_text",
+            "trader_score",
+            "trader_rationale",
+            "racial_humor_score",
+        ],
+    )
+
     def _log_finish(resp, label: str) -> None:
         """Log finish_reason from the response candidate. Useful when a
         response truncates mid-stream — finish_reason=SAFETY means a
@@ -473,7 +501,9 @@ async def _generate_profile(
                 temperature=0.3,
                 max_output_tokens=_MAX_OUTPUT_TOKENS,
                 response_mime_type="application/json",
+                response_schema=_RESPONSE_SCHEMA,
                 safety_settings=_SAFETY_SETTINGS,
+                thinking_config=_THINKING_CONFIG,
             ),
         )
         _log_finish(resp, "text-only")
@@ -516,7 +546,9 @@ async def _generate_profile(
                         temperature=0.3,
                         max_output_tokens=_MAX_OUTPUT_TOKENS,
                         response_mime_type="application/json",
+                        response_schema=_RESPONSE_SCHEMA,
                         safety_settings=_SAFETY_SETTINGS,
+                        thinking_config=_THINKING_CONFIG,
                     ),
                 )
             except Exception as vision_err:
