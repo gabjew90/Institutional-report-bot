@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     # The /ask backend is Gemini with Google Search grounding (reuses
     # GOOGLE_API_KEY); free-tier is 5000 grounded prompts/month, shared
     # across the Google AI Studio account.
-    ask_daily_quota_per_user: int = 20
+    ask_daily_quota_per_user: int = 40
     gemini_model: str = "gemini-3.1-lite"
     gemini_triage_model: str = "gemini-3.1-lite"
     gemini_max_tokens: int = 4096
