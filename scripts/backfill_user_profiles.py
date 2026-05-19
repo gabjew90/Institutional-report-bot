@@ -407,9 +407,12 @@ async def _generate_profile(
             if attached == 0:
                 return await _try_text_only()
             parts.append(types.Part.from_text(text=prompt))
+            vision_model = getattr(
+                settings, "gemini_vision_model", ""
+            ) or settings.gemini_model
             try:
                 response = await gemini_client.aio.models.generate_content(
-                    model=settings.gemini_model,
+                    model=vision_model,
                     contents=parts,
                     config=types.GenerateContentConfig(
                         temperature=0.3,
@@ -420,7 +423,8 @@ async def _generate_profile(
             except Exception as vision_err:
                 print(
                     f"  vision failed for {display_name} "
-                    f"({attached} imgs), falling back to text-only: {vision_err}",
+                    f"({attached} imgs, model={vision_model}), "
+                    f"falling back to text-only: {vision_err}",
                     flush=True,
                 )
                 return await _try_text_only()
