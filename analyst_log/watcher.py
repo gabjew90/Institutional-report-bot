@@ -112,7 +112,9 @@ async def _announce_to_channel(
     author_name: str,
 ) -> None:
     """Post a one-line summary of the logged trade to the configured
-    announce channel. Skips silently if the channel can't be found.
+    announce channel as an embed. The source channel name is the
+    clickable link back to the original alert.
+    Skips silently if the channel can't be found.
     """
     chan_name = (settings.analyst_test_announce_channel or "").strip()
     if not chan_name:
@@ -133,9 +135,10 @@ async def _announce_to_channel(
         )
         return
 
-    line = _format_announce_line(extracted, source_msg, author_name)
+    description = _format_announce_line(extracted, source_msg, author_name)
+    embed = discord.Embed(description=description)
     try:
-        await target.send(line)
+        await target.send(embed=embed)
     except Exception as e:
         log.error(f"Analyst log: announce failed in #{chan_name}: {e}")
 
@@ -145,14 +148,15 @@ def _format_announce_line(
     source_msg: discord.Message,
     author_name: str,
 ) -> str:
-    """Render the announce line. Format:
+    """Render the announce line for the embed description. Format:
 
-    📝 Logged: **abe** CLOSE **NOW 95C 5/29** (+79.6%) — "I'm out!" → <jump_url>
-    📝 Logged: **abe** VIEWING **NET 207.5C 5/29** (stats screen) → <jump_url>
+    📝 Logged: [**#🥷🏽-abe-alerts-🥷🏽**](jump_url) CLOSE **NOW 95C 5/29** (+79.6%) — "I'm out!"
 
-    Trailing <jump_url> is the source screenshot's discord.com/channels/...
-    permalink, wrapped in <> so Discord clients don't expand the URL into
-    a preview-card embed. Clicking it jumps to the original alert.
+    The bolded channel name links to the source alert message. Embed
+    rendering means markdown links work and the URL doesn't show as
+    visible text. `author_name` is kept in the signature for backwards
+    compatibility but is no longer displayed in the output (the source
+    channel is the clearer attribution).
     """
     ticker = extracted.get("ticker") or "?"
     strike = extracted.get("strike")
@@ -170,7 +174,16 @@ def _format_announce_line(
     expiry_short = expiry[5:] if len(expiry) >= 10 else expiry  # MM-DD slice
     contract_str = f"{ticker} {strike_str}{type_suffix} {expiry_short}".strip()
 
-    line = f"📝 Logged: **{author_name}** {action} **{contract_str}**"
+    # Channel name with markdown link to the source message. Works inside
+    # an embed description.
+    channel_name = source_msg.channel.name if source_msg.channel else "source"
+    jump_url = getattr(source_msg, "jump_url", "")
+    if jump_url:
+        channel_link = f"[**#{channel_name}**]({jump_url})"
+    else:
+        channel_link = f"**#{channel_name}**"
+
+    line = f"📝 Logged: {channel_link} {action} **{contract_str}**"
     if gain_pct is not None:
         line += f" ({gain_pct:+.1f}%)"
     if screenshot_type == "stats_screen" and action == "VIEWING":
@@ -179,9 +192,6 @@ def _format_announce_line(
         # Trim long captions, escape Discord markdown noise
         cap_safe = caption.replace("`", "'").replace("\n", " ")[:80]
         line += f' — "{cap_safe}"'
-    # Append jump link to the source alert message. <> suppresses the
-    # preview-card expansion so the trade log stays one line per entry.
-    jump_url = getattr(source_msg, "jump_url", None)
-    if jump_url:
-        line += f" → <{jump_url}>"
+    # (Previously appended a trailing <jump_url> here; replaced by the
+    # markdown link on the channel-name segment above.)
     return line[:1900]  # Discord 2000-char hard limit, leave buffer
