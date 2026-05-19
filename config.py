@@ -52,22 +52,46 @@ class Settings(BaseSettings):
     # Empty = no restriction (commands work in every channel).
     pulse_command_channels: str = "test,tldr"
 
-    # Analyst alert-log watcher. When a message is posted in
-    # analyst_channel_name with image attachments, the watcher OCRs each
-    # image via Gemini and writes a structured row to analyst_trades.
-    # See analyst_log/ for the implementation. Empty = watcher disabled.
+    # Analyst alert-log watcher. When a message is posted in any
+    # configured caller's channel with image attachments, the watcher
+    # OCRs each image via Gemini and writes a structured row to
+    # analyst_trades. See analyst_log/ for the implementation.
+    #
+    # LEGACY single-caller config — still honored as a fallback when
+    # analyst_callers (below) is empty. If you set both, the registry
+    # takes precedence and these are ignored.
     analyst_channel_name: str = ""
-    # Optional username filter. If set, only messages from this Discord
-    # username (matched case-insensitively against author.name) get
-    # OCR'd. Empty = log every image posted in the channel. Useful when
-    # the analyst's channel occasionally has posts from co-admins that
-    # aren't his trade calls.
     analyst_primary_author: str = ""
     # How many days past expiry to keep trade rows before hard-deleting.
     # The daily auto-expire job marks rows as expired_unknown; the weekly
     # purge job (Sundays 04:30 local) deletes rows whose expiry was more
     # than this many days ago. Set to 0 to disable purging entirely.
     analyst_trade_retention_days: int = 14
+    # Multi-caller registry. Each caller dict carries:
+    #   name     — canonical lowercase ID stored in analyst_trades.caller
+    #              and used for filtering query functions. NEVER change
+    #              an existing caller's name without migrating the DB.
+    #   display  — human-readable name used in /ask context blocks
+    #              ("ABE'S RECENT TRADES" etc).
+    #   username — Discord username (author.name) to match for incoming
+    #              messages. Case-insensitive.
+    #   channel  — channel name where this caller's alerts appear. Bot
+    #              listens on this exact channel name.
+    #   enabled  — when False, the caller is wired up but messages are
+    #              ignored. Useful for staged rollout — add a caller,
+    #              verify infra, then flip to true.
+    #
+    # Each call to `_resolve_analyst_callers()` returns this list with
+    # the legacy single-caller config synthesized in as a fallback.
+    analyst_callers: list[dict] = [
+        {
+            "name": "abe",
+            "display": "Abe",
+            "username": "abullish_xyz",
+            "channel": "🥷🏽-abe-alerts-🥷🏽",
+            "enabled": True,
+        },
+    ]
 
     # User-profile system: comma-separated channel names where the bot
     # scans for personality signal during the daily profile refresh.
@@ -215,6 +239,56 @@ class Settings(BaseSettings):
         Empty list = no restriction.
         """
         return [s.strip().lower() for s in self.pulse_command_channels.split(",") if s.strip()]
+
+    def resolve_analyst_callers(self) -> list[dict]:
+        """Return the effective list of analyst-caller dicts.
+
+        Behavior:
+        - If `analyst_callers` is non-empty, return entries with `enabled=True`.
+        - Otherwise (legacy single-caller deployment): synthesize a one-entry
+          list from `analyst_channel_name` + `analyst_primary_author`. Both
+          must be set for the legacy fallback to fire; otherwise return [].
+
+        The returned dicts always have the four required keys present:
+        name, display, username, channel. `enabled` is True for all
+        returned entries (already filtered).
+        """
+        if self.analyst_callers:
+            out = []
+            for c in self.analyst_callers:
+                if not c.get("enabled", True):
+                    continue
+                # Defensive: ensure all required keys are populated
+                if not all(c.get(k) for k in ("name", "username", "channel")):
+                    continue
+                out.append({
+                    "name": str(c["name"]).strip().lower(),
+                    "display": str(c.get("display") or c["name"]),
+                    "username": str(c["username"]).strip(),
+                    "channel": str(c["channel"]).strip(),
+                    "enabled": True,
+                })
+            return out
+        # Legacy fallback: synthesize from the two old fields if both set
+        if self.analyst_channel_name and self.analyst_primary_author:
+            return [{
+                "name": self.analyst_primary_author.strip().lower(),
+                "display": self.analyst_primary_author,
+                "username": self.analyst_primary_author.strip(),
+                "channel": self.analyst_channel_name.strip(),
+                "enabled": True,
+            }]
+        return []
+
+    def caller_by_channel(self, channel_name: str) -> dict | None:
+        """Look up which caller owns this channel name (case-insensitive)."""
+        if not channel_name:
+            return None
+        chan_lower = channel_name.strip().lower()
+        for c in self.resolve_analyst_callers():
+            if c["channel"].lower() == chan_lower:
+                return c
+        return None
 
     @property
     def discord_channel_ids(self) -> list[int]:

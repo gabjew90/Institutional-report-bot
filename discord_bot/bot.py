@@ -819,12 +819,29 @@ async def _answer_with_gemini(
         except Exception as e:
             log.warning(f"User-profile fetch failed (non-fatal): {e}")
 
-        analyst_block = ""
-        if settings.analyst_channel_name:
-            try:
-                analyst_block = db.format_analyst_trades_for_context(hours=168)
-            except Exception as e:
-                log.warning(f"Analyst log fetch failed (non-fatal): {e}")
+        # Multi-caller analyst context — emit one separated block per
+        # configured caller so /ask sees hard-separated trade logs (no
+        # bleeding of one caller's positions into questions about
+        # another caller). Empty registry = no analyst context.
+        analyst_blocks: list[str] = []
+        try:
+            for c in settings.resolve_analyst_callers():
+                try:
+                    block = db.format_analyst_trades_for_context(
+                        hours=168,
+                        caller=c["name"],
+                        display=c["display"],
+                    )
+                    if block:
+                        analyst_blocks.append(block)
+                except Exception as e:
+                    log.warning(
+                        f"Analyst log fetch failed for caller={c.get('name')!r} "
+                        f"(non-fatal): {e}"
+                    )
+        except Exception as e:
+            log.warning(f"Analyst caller registry resolve failed (non-fatal): {e}")
+        analyst_block = "\n\n".join(analyst_blocks)
 
         sections: list[str] = []
         if profiles_block:
@@ -1579,10 +1596,14 @@ def create_bot() -> commands.Bot:
         # @mention handling below — a message in the analyst channel that
         # also @mentions the bot would trigger both flows independently.
         try:
-            if (settings.analyst_channel_name
-                    and getattr(message.channel, "name", None) == settings.analyst_channel_name):
+            # Multi-caller dispatch — look up the matched caller by channel
+            # name in the configured registry. If the message channel is
+            # not owned by any configured caller, the watcher isn't invoked.
+            chan_name = getattr(message.channel, "name", None)
+            matched_caller = settings.caller_by_channel(chan_name) if chan_name else None
+            if matched_caller:
                 from analyst_log.watcher import watch_message
-                await watch_message(bot, message)
+                await watch_message(bot, message, caller=matched_caller)
         except Exception as e:
             log.error(f"Analyst watcher dispatch failed: {e}", exc_info=True)
 

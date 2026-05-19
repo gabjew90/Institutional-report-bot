@@ -24,23 +24,44 @@ from config import settings
 log = logging.getLogger(__name__)
 
 
-async def watch_message(bot: discord.Client, message: discord.Message) -> None:
+async def watch_message(
+    bot: discord.Client,
+    message: discord.Message,
+    caller: dict | None = None,
+) -> None:
     """Process an analyst-channel message. Side-effect-only — writes to DB
     and posts to the announce channel. All failures are logged and
     swallowed so a single bad image never blocks subsequent processing.
+
+    `caller` is the matched caller dict from settings.resolve_analyst_callers():
+    {name, display, username, channel, enabled}. When provided, the
+    watcher uses caller['username'] for the author filter and writes
+    caller['name'] as the canonical `caller` field on each row.
+
+    Legacy callers passing only (bot, message) fall back to the global
+    `analyst_primary_author` setting for filtering, and the stored
+    `caller` field is None — backwards-compatible with the pre-registry
+    deployment but loses hard-separation in /ask context.
     """
     if not message.attachments:
         return
 
-    # Optional author filter: only OCR messages from the configured
-    # primary author (typically the trade caller). If unset, log all.
-    primary = (settings.analyst_primary_author or "").strip().lower()
-    if primary:
+    # Resolve the username to filter by + the canonical caller name to
+    # store. Registry-driven (preferred) or legacy fallback.
+    if caller:
+        expected_username = caller.get("username", "").strip().lower()
+        canonical_caller = caller.get("name", "").strip().lower() or None
+    else:
+        expected_username = (settings.analyst_primary_author or "").strip().lower()
+        canonical_caller = None
+
+    if expected_username:
         author_username = (message.author.name or "").lower()
-        if author_username != primary:
+        if author_username != expected_username:
             log.debug(
-                f"Analyst log: skipping non-primary author '{author_username}' "
-                f"in {message.channel.name} (primary='{primary}')"
+                f"Analyst log: skipping non-matching author '{author_username}' "
+                f"in {message.channel.name} (expected='{expected_username}', "
+                f"caller={canonical_caller})"
             )
             return
 
@@ -97,6 +118,7 @@ async def watch_message(bot: discord.Client, message: discord.Message) -> None:
                 action=extracted.get("action") if is_trade else None,
                 gain_pct=extracted.get("gain_pct") if is_trade else None,
                 price=extracted.get("price") if is_trade else None,
+                caller=canonical_caller,
             )
         except Exception as e:
             log.error(f"Analyst log: DB insert failed: {e}", exc_info=True)

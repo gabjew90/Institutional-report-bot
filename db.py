@@ -258,13 +258,27 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         ("trader_rationale", "ALTER TABLE user_profiles ADD COLUMN trader_rationale TEXT"),
         ("slur_examples", "ALTER TABLE user_profiles ADD COLUMN slur_examples TEXT"),
         ("trader_examples", "ALTER TABLE user_profiles ADD COLUMN trader_examples TEXT"),
-        # analyst_trades migration: add price column on existing deploys.
+        # analyst_trades migration: add price + caller columns on existing deploys.
         ("price", "ALTER TABLE analyst_trades ADD COLUMN price REAL"),
+        ("caller", "ALTER TABLE analyst_trades ADD COLUMN caller TEXT"),
     ]:
         try:
             conn.execute(ddl)
         except sqlite3.OperationalError:
             pass  # duplicate column — already migrated
+    # Backfill caller='abe' for all pre-existing rows (single-caller era).
+    # Safe to run repeatedly — only updates rows where caller is currently
+    # NULL. New rows write caller explicitly so this only ever touches
+    # legacy data.
+    try:
+        conn.execute(
+            "UPDATE analyst_trades SET caller = 'abe' WHERE caller IS NULL"
+        )
+    except sqlite3.OperationalError:
+        pass
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_analyst_trades_caller ON analyst_trades(caller)"
+    )
     # Now-safe indexes that depend on the migrated columns.
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_slur ON user_profiles(slur_count DESC)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_racial_humor ON user_profiles(racial_humor_score DESC)")
@@ -1343,6 +1357,7 @@ def record_analyst_trade(
     action: str | None = None,
     gain_pct: float | None = None,
     price: float | None = None,
+    caller: str | None = None,
     replace: bool = False,
 ) -> None:
     """Insert an analyst-trade row.
@@ -1415,8 +1430,9 @@ def record_analyst_trade(
         f"""{verb} INTO analyst_trades
            (discord_message_id, discord_attachment_id, author, posted_at,
             image_url, caption, is_trade, ticker, contract_type, strike,
-            expiry, action, gain_pct, price, gemini_json, inferred_status)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            expiry, action, gain_pct, price, caller, gemini_json,
+            inferred_status)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (
             int(discord_message_id),
             int(discord_attachment_id),
@@ -1432,6 +1448,7 @@ def record_analyst_trade(
             action,
             gain_pct,
             price,
+            (caller or "").strip().lower() or None,
             _json.dumps(gemini_json) if gemini_json is not None else None,
             inferred_status,
         ),
@@ -1439,20 +1456,39 @@ def record_analyst_trade(
     conn.commit()
 
 
-def get_recent_analyst_trades(hours: int = 24, limit: int = 50) -> list[dict]:
-    """Recent trade-tagged rows (is_trade=1) ordered newest first."""
+def get_recent_analyst_trades(
+    hours: int = 24, limit: int = 50, caller: str | None = None
+) -> list[dict]:
+    """Recent trade-tagged rows (is_trade=1) ordered newest first.
+
+    When `caller` is set, restricts results to rows where the canonical
+    caller column matches (case-insensitive). When None, returns rows
+    for all callers — kept for backwards-compat with code that doesn't
+    yet plumb caller through, but the /ask context builder always
+    specifies caller to enforce hard separation.
+    """
     cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
-    rows = get_connection().execute(
-        """SELECT * FROM analyst_trades
-           WHERE is_trade = 1 AND posted_at > ?
-           ORDER BY posted_at DESC
-           LIMIT ?""",
-        (cutoff, limit),
-    ).fetchall()
+    if caller:
+        rows = get_connection().execute(
+            """SELECT * FROM analyst_trades
+               WHERE is_trade = 1 AND posted_at > ?
+                 AND LOWER(caller) = ?
+               ORDER BY posted_at DESC
+               LIMIT ?""",
+            (cutoff, caller.strip().lower(), limit),
+        ).fetchall()
+    else:
+        rows = get_connection().execute(
+            """SELECT * FROM analyst_trades
+               WHERE is_trade = 1 AND posted_at > ?
+               ORDER BY posted_at DESC
+               LIMIT ?""",
+            (cutoff, limit),
+        ).fetchall()
     return [dict(r) for r in rows]
 
 
-def get_current_analyst_positions() -> list[dict]:
+def get_current_analyst_positions(caller: str | None = None) -> list[dict]:
     """Currently-open positions, computed as a state machine over the event
     chain: the LATEST action per (ticker, contract_type, strike, expiry)
     determines whether the position is still alive.
@@ -1471,8 +1507,17 @@ def get_current_analyst_positions() -> list[dict]:
     peak. Expired positions are excluded via the `expired_unknown`
     inferred_status set by the daily expire sweep.
     """
+    # Caller filter is parametrized into both CTEs so positions stay
+    # hard-separated per caller. None = all callers (legacy behavior).
+    caller_clause_ranked = ""
+    caller_clause_entries = ""
+    params: tuple = ()
+    if caller:
+        caller_clause_ranked = " AND LOWER(caller) = ?"
+        caller_clause_entries = " AND LOWER(caller) = ?"
+        params = (caller.strip().lower(), caller.strip().lower())
     rows = get_connection().execute(
-        """WITH ranked AS (
+        f"""WITH ranked AS (
             SELECT ticker, contract_type, strike, expiry,
                    action AS latest_action,
                    posted_at AS last_activity,
@@ -1489,6 +1534,7 @@ def get_current_analyst_positions() -> list[dict]:
               AND ticker IS NOT NULL
               AND expiry IS NOT NULL
               AND date(expiry) >= date('now')
+              {caller_clause_ranked}
         ),
         entries AS (
             -- The original open's price = entry price for the position.
@@ -1506,6 +1552,7 @@ def get_current_analyst_positions() -> list[dict]:
               AND price IS NOT NULL
               AND ticker IS NOT NULL
               AND expiry IS NOT NULL
+              {caller_clause_entries}
         )
         SELECT r.ticker, r.contract_type, r.strike, r.expiry,
                r.latest_action, r.last_activity, r.last_gain_pct,
@@ -1519,13 +1566,16 @@ def get_current_analyst_positions() -> list[dict]:
          AND e.rn = 1
         WHERE r.rn = 1
           AND r.latest_action IN ('open', 'add', 'trim')
-        ORDER BY r.last_activity DESC"""
+        ORDER BY r.last_activity DESC""",
+        params,
     ).fetchall()
     return [dict(r) for r in rows]
 
 
-def compute_abe_win_loss_summary(days: int = 30) -> dict:
-    """Compute Abe's W/L tally over the last N days under the rule:
+def compute_caller_win_loss_summary(
+    days: int = 30, caller: str | None = None
+) -> dict:
+    """Compute a caller's W/L tally over the last N days under the rule:
     expirations-without-close count as losses.
 
     - Win  = action='close' AND gain_pct > 0
@@ -1534,19 +1584,28 @@ def compute_abe_win_loss_summary(days: int = 30) -> dict:
              (he opened but never posted a close — silent expiry, treat as L)
     - Flat = action='close' AND gain_pct == 0 (rare)
 
-    Returns a dict with counts, win rate, avg win, avg loss. Used by the
-    /ask context block so the bot has authoritative numbers without
-    recomputing from scratch on every question.
+    When `caller` is set, restricts to that caller's rows only — used by
+    the per-caller /ask context blocks for hard separation. None = all
+    callers (legacy behavior for single-caller deployments).
+
+    Returns a dict with counts, win rate, avg win, avg loss + the win
+    trades and silent-expiry trades.
     """
     cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
     conn = get_connection()
+    caller_clause = ""
+    extra_params: tuple = ()
+    if caller:
+        caller_clause = " AND LOWER(caller) = ?"
+        extra_params = (caller.strip().lower(),)
 
     closed_rows = conn.execute(
-        """SELECT gain_pct FROM analyst_trades
+        f"""SELECT gain_pct FROM analyst_trades
            WHERE is_trade = 1
              AND action = 'close'
-             AND posted_at > ?""",
-        (cutoff,),
+             AND posted_at > ?
+             {caller_clause}""",
+        (cutoff, *extra_params),
     ).fetchall()
     win_gains = [r["gain_pct"] for r in closed_rows if (r["gain_pct"] or 0) > 0]
     doc_loss_gains = [r["gain_pct"] for r in closed_rows if (r["gain_pct"] or 0) < 0]
@@ -1555,28 +1614,30 @@ def compute_abe_win_loss_summary(days: int = 30) -> dict:
     )
 
     silent_loss_rows = conn.execute(
-        """SELECT ticker, contract_type, strike, expiry, posted_at
+        f"""SELECT ticker, contract_type, strike, expiry, posted_at
            FROM analyst_trades
            WHERE is_trade = 1
              AND action IN ('open', 'add')
              AND inferred_status = 'expired_unknown'
              AND posted_at > ?
+             {caller_clause}
            ORDER BY expiry DESC""",
-        (cutoff,),
+        (cutoff, *extra_params),
     ).fetchall()
     silent_loss_count = len(silent_loss_rows)
 
     # Specific winning closes — so the bot doesn't have to recompute from
     # the trades list when asked for a breakdown.
     win_rows = conn.execute(
-        """SELECT ticker, contract_type, strike, expiry, gain_pct, posted_at
+        f"""SELECT ticker, contract_type, strike, expiry, gain_pct, posted_at
            FROM analyst_trades
            WHERE is_trade = 1
              AND action = 'close'
              AND gain_pct > 0
              AND posted_at > ?
+             {caller_clause}
            ORDER BY posted_at DESC""",
-        (cutoff,),
+        (cutoff, *extra_params),
     ).fetchall()
 
     total_wins = len(win_gains)
@@ -1603,24 +1664,43 @@ def compute_abe_win_loss_summary(days: int = 30) -> dict:
     }
 
 
-def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
+# Backwards-compat alias — existing call sites pass no caller and expect
+# the legacy (Abe-only-era) global tally. Going forward, prefer
+# compute_caller_win_loss_summary(caller='abe') so the intent is explicit.
+def compute_abe_win_loss_summary(days: int = 30) -> dict:
+    return compute_caller_win_loss_summary(days=days, caller="abe")
+
+
+def format_analyst_trades_for_context(
+    hours: int = 168,
+    limit: int = 30,
+    caller: str | None = None,
+    display: str | None = None,
+) -> str:
     """Render the last N hours of trade-tagged rows as a context block for /ask.
 
     Intentionally OMITS captions and notes — we don't want the bot to quote
-    Abe verbatim. The bot gets ticker/strike/expiry/action/gain only, and
-    must paraphrase if the user asks "what did he say."
+    the caller verbatim. The bot gets ticker/strike/expiry/action/gain only,
+    and must paraphrase if the user asks "what did he say."
+
+    When `caller` is set, restricts rows + headers to that caller. `display`
+    is the human-readable name for headers (defaults to caller.title()).
+    None for both = legacy global behavior (kept for backwards compat,
+    but the /ask builder always passes both for hard separation).
 
     Returns "" when there are no trade rows in the window — caller can omit
     the block entirely.
     """
-    rows = get_recent_analyst_trades(hours=hours, limit=limit)
+    rows = get_recent_analyst_trades(hours=hours, limit=limit, caller=caller)
     if not rows:
         return ""
 
+    display_name = display or (caller.title() if caller else "Abe")
+    header_prefix = display_name.upper()
     out_lines: list[str] = [
-        f"ABE'S RECENT TRADES (last {hours // 24} days, auto-logged from his "
-        f"alerts channel — for context only, don't quote captions; he didn't "
-        f"share them with you):"
+        f"{header_prefix}'S RECENT TRADES (last {hours // 24} days, "
+        f"auto-logged from his alerts channel — for context only, "
+        f"don't quote captions; he didn't share them with you):"
     ]
     # Newest first per get_recent_analyst_trades; reverse so the trader
     # reads them chronologically.
@@ -1675,10 +1755,13 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
 
     # Also surface currently-open positions explicitly so the bot doesn't
     # have to compute the net itself.
-    positions = get_current_analyst_positions()
+    positions = get_current_analyst_positions(caller=caller)
     if positions:
         out_lines.append("")
-        out_lines.append("ABE'S CURRENTLY OPEN POSITIONS (computed from the above log):")
+        out_lines.append(
+            f"{header_prefix}'S CURRENTLY OPEN POSITIONS "
+            f"(computed from the above log):"
+        )
         for p in positions[:10]:
             ticker = p.get("ticker") or "?"
             ct = (p.get("contract_type") or "").lower()
@@ -1708,14 +1791,15 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
 
     # W/L tally — surface authoritative numbers so the bot doesn't have
     # to recompute on every "what's his win rate?" question. Convention:
-    # expirations-without-close count as losses (Abe rarely screenshots
+    # expirations-without-close count as losses (callers rarely screenshot
     # losers; they leak out as expired open/add rows tagged
     # `expired_unknown`).
-    wl = compute_abe_win_loss_summary(days=30)
+    wl = compute_caller_win_loss_summary(days=30, caller=caller)
     if wl["decided"] > 0:
         out_lines.append("")
         out_lines.append(
-            f"ABE'S W/L TALLY (last {wl['days']}d — expirations-without-close counted as L):"
+            f"{header_prefix}'S W/L TALLY (last {wl['days']}d — "
+            f"expirations-without-close counted as L):"
         )
         out_lines.append(
             f"- **{wl['wins']}W / {wl['total_losses']}L** "
