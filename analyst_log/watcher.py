@@ -190,15 +190,22 @@ def _format_announce_line(
     # only shows on exits (CLOSE/TRIM). These are mutually exclusive at
     # display time — opens are valued by their fill price, closes by
     # their realized %. Both fields are stored regardless if extracted.
+    # 0-values are treated as missing (model sentinel for "couldn't
+    # extract", not an actual data point).
     is_open_event = action in ("OPEN", "ADD")
     is_exit_event = action in ("CLOSE", "TRIM")
-    if is_open_event and price is not None:
-        try:
-            line += f" @{float(price):.2f}"
-        except (TypeError, ValueError):
-            pass
-    if is_exit_event and gain_pct is not None:
-        line += f" ({gain_pct:+.1f}%)"
+    try:
+        price_f = float(price) if price is not None else None
+    except (TypeError, ValueError):
+        price_f = None
+    try:
+        gain_f = float(gain_pct) if gain_pct is not None else None
+    except (TypeError, ValueError):
+        gain_f = None
+    if is_open_event and price_f and price_f != 0:
+        line += f" @{price_f:.2f}"
+    if is_exit_event and gain_f is not None and gain_f != 0:
+        line += f" ({gain_f:+.1f}%)"
     if screenshot_type == "stats_screen" and action == "VIEWING":
         line += " _(stats screen)_"
     if caption:

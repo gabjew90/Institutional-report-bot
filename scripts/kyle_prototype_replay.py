@@ -102,11 +102,28 @@ def current_open_positions(events: list[TradeEvent]) -> list[TradeEvent]:
     """Compute currently-open positions via the same state machine as
     db.get_current_analyst_positions: latest event per contract key,
     surviving if action is open/add/trim, gone if close.
-    Viewing events don't open a position."""
+    Viewing events don't open a position.
+
+    Filters out:
+    - Expired contracts (expiry date < today UTC)
+    - Sentinel-strike events (strike == 0 from failed extraction)
+    """
+    today = datetime.now(timezone.utc).date()
     latest_by_key: dict[tuple, TradeEvent] = {}
     for e in events:
         if e.action == "viewing":
             continue
+        # Filter sentinel/missing strike
+        if not e.strike or e.strike == 0:
+            continue
+        # Filter expired
+        if e.expiry:
+            try:
+                exp_dt = datetime.fromisoformat(e.expiry).date()
+                if exp_dt < today:
+                    continue
+            except Exception:
+                pass
         latest_by_key[_key(e.ticker, e.contract_type, e.strike, e.expiry)] = e
     return [
         e for e in latest_by_key.values()
@@ -359,7 +376,14 @@ SAFETY = [
 # Prompt builders
 # ============================================================================
 def _fmt_position(e: TradeEvent) -> str:
-    """One-line summary of an event for the prompt's state blocks."""
+    """One-line summary of an event for the prompt's state blocks.
+
+    Display rule (matches the live Abe pipeline):
+    - open / add events show @price (entry valuation)
+    - close / trim events show (±gain%) (realized return)
+    - 0-valued price or gain_pct treated as missing (model sentinel,
+      not a real data point)
+    """
     strike_s = ""
     if e.strike is not None:
         strike_s = (
@@ -369,9 +393,11 @@ def _fmt_position(e: TradeEvent) -> str:
     expiry_short = e.expiry[5:] if e.expiry and len(e.expiry) >= 10 else (e.expiry or "")
     contract = f"{e.ticker} {strike_s}{type_suffix} {expiry_short}".strip()
     bits = [f"{e.action.upper()} {contract}"]
-    if e.price is not None:
+    is_open = e.action in ("open", "add")
+    is_exit = e.action in ("close", "trim")
+    if is_open and e.price is not None and float(e.price) != 0:
         bits.append(f"@{e.price}")
-    if e.gain_pct is not None:
+    elif is_exit and e.gain_pct is not None and float(e.gain_pct) != 0:
         bits.append(f"({e.gain_pct:+.1f}%)")
     bits.append(f"at {e.posted_at[:16]}")
     return " — ".join(bits)
@@ -466,7 +492,9 @@ async def extract_state_diff(
 # Output formatting
 # ============================================================================
 def _format_announce(change: dict, source_jump_url: str) -> str:
-    """One-line summary for posting to test-channel."""
+    """One-line summary for posting to test-channel. Same display
+    rule as the live Abe pipeline: opens show @price, exits show
+    (±gain%); 0-values treated as missing."""
     action = (change.get("action") or "?").upper()
     ticker = (change.get("ticker") or "?").upper()
     strike = change.get("strike")
@@ -488,13 +516,14 @@ def _format_announce(change: dict, source_jump_url: str) -> str:
     contract = f"{ticker} {strike_s}{type_suffix} {expiry_short}".strip()
 
     line = f"📝 [PROTOTYPE] **BK** {action} **{contract}**"
-    extras = []
-    if price is not None:
-        extras.append(f"@{price}")
-    if gain is not None:
-        extras.append(f"{gain:+.1f}%")
-    if extras:
-        line += " (" + " ".join(extras) + ")"
+    is_open = action in ("OPEN", "ADD")
+    is_exit = action in ("CLOSE", "TRIM")
+    suffix = ""
+    if is_open and price is not None and float(price) != 0:
+        suffix = f" @{price}"
+    elif is_exit and gain is not None and float(gain) != 0:
+        suffix = f" ({gain:+.1f}%)"
+    line += suffix
 
     flag = "⚠️ " if conf < 50 else ""
     line += f" — {flag}conf={conf}"
@@ -639,14 +668,27 @@ async def main():
 
                     # Apply each state change to in-memory event log + post
                     for ch in state_changes:
+                        action = str(ch.get("action") or "").lower()
+                        ticker = str(ch.get("ticker") or "").upper()
+                        strike = ch.get("strike")
+                        # Discard junk: strike=0, missing ticker, or
+                        # missing strike on contract types that need one
+                        # (calls/puts must have a strike; stock can skip).
+                        if not ticker:
+                            print(f"  DROPPED change for {m['timestamp'][:16]}: no ticker | {ch}")
+                            continue
+                        ctype = str(ch.get("contract_type") or "").lower()
+                        if ctype in ("call", "put") and (not strike or strike == 0):
+                            print(f"  DROPPED change for {m['timestamp'][:16]}: bad strike | {ch}")
+                            continue
                         ev = TradeEvent(
                             posted_at=m["timestamp"],
                             discord_message_id=m["id"],
                             caller="bankerkyle",
-                            action=str(ch.get("action") or "").lower(),
-                            ticker=str(ch.get("ticker") or "").upper(),
-                            contract_type=str(ch.get("contract_type") or "").lower(),
-                            strike=ch.get("strike"),
+                            action=action,
+                            ticker=ticker,
+                            contract_type=ctype,
+                            strike=strike,
                             expiry=ch.get("expiry"),
                             price=ch.get("price"),
                             gain_pct=ch.get("gain_pct"),

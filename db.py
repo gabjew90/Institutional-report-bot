@@ -1638,16 +1638,22 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
         action = (r.get("action") or "?").lower()
         # Display rule (mirrors the live announce-line rule):
         # opens/adds carry @price; closes/trims carry (±gain%).
+        # 0-values treated as missing (model sentinel, not real data).
         gain = r.get("gain_pct")
         price = r.get("price")
+        try:
+            price_f = float(price) if price is not None else None
+        except (TypeError, ValueError):
+            price_f = None
+        try:
+            gain_f = float(gain) if gain is not None else None
+        except (TypeError, ValueError):
+            gain_f = None
         suffix_str = ""
-        if action in ("open", "add") and price is not None:
-            try:
-                suffix_str = f" @{float(price):.2f}"
-            except (TypeError, ValueError):
-                pass
-        elif action in ("close", "trim") and gain is not None:
-            suffix_str = f" ({gain:+.1f}%)"
+        if action in ("open", "add") and price_f and price_f != 0:
+            suffix_str = f" @{price_f:.2f}"
+        elif action in ("close", "trim") and gain_f is not None and gain_f != 0:
+            suffix_str = f" ({gain_f:+.1f}%)"
         posted_at = (r.get("posted_at") or "")[:16].replace("T", " ")
 
         # Surface inferred-status tags so the bot doesn't claim phantom
@@ -1687,13 +1693,15 @@ def format_analyst_trades_for_context(hours: int = 168, limit: int = 30) -> str:
             # Display rule: open positions show @entry_price (the original
             # open's price), NOT the last gain pill. Gain% is a closure
             # signal — meaningless mid-flight on an open position.
+            # 0-values treated as missing.
             entry_price = p.get("entry_price")
             price_str = ""
-            if entry_price is not None:
-                try:
-                    price_str = f" @{float(entry_price):.2f}"
-                except (TypeError, ValueError):
-                    pass
+            try:
+                ep_f = float(entry_price) if entry_price is not None else None
+            except (TypeError, ValueError):
+                ep_f = None
+            if ep_f and ep_f != 0:
+                price_str = f" @{ep_f:.2f}"
             out_lines.append(
                 f"- {ticker} {strike_str}{ct_suffix} {exp_short}{price_str}"
             )
