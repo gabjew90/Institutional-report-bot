@@ -125,11 +125,11 @@ class Settings(BaseSettings):
     profile_image_ocr_enabled: bool = True
     profile_image_cap: int = 20
     # Vision-capable model used ONLY by the profile backfill when images
-    # are present. The primary `gemini_model` is a lite/preview tier that
+    # are present. The primary `gemini_model` is a lite/preview tier that's
     # text-only — vision calls against it return 400 INVALID_ARGUMENT for
     # almost every image. Falls back to `gemini_model` if vision call
     # still fails. Override via env var GEMINI_VISION_MODEL.
-    gemini_vision_model: str = "gemini-2.5-flash"
+    gemini_vision_model: str = "gemini-3.1-flash"
     # Channel name where the watcher posts log-change announcements
     # ("📝 Logged: abe CLOSE NVDA 150C 5/29 ..."). Same announcements
     # are also used by the daily auto-expire cron. Empty = no announcements
