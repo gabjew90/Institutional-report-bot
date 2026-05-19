@@ -235,11 +235,11 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             updated_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
         CREATE INDEX IF NOT EXISTS idx_user_profiles_username ON user_profiles(username);
-        CREATE INDEX IF NOT EXISTS idx_user_profiles_slur ON user_profiles(slur_count DESC);
-        CREATE INDEX IF NOT EXISTS idx_user_profiles_rank ON user_profiles(trader_rank);
     """)
     # Migration: add the metrics columns to user_profiles if a previous
-    # deploy used the old schema. Safe to run on every boot.
+    # deploy used the old schema. Must run BEFORE the slur_count /
+    # trader_rank indexes are created, since the indexes reference these
+    # new columns.
     for col, ddl in [
         ("slur_count", "ALTER TABLE user_profiles ADD COLUMN slur_count INTEGER NOT NULL DEFAULT 0"),
         ("trader_score", "ALTER TABLE user_profiles ADD COLUMN trader_score INTEGER"),
@@ -250,6 +250,9 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             conn.execute(ddl)
         except sqlite3.OperationalError:
             pass  # duplicate column — already migrated
+    # Now-safe indexes that depend on the migrated columns.
+    conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_slur ON user_profiles(slur_count DESC)")
+    conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_rank ON user_profiles(trader_rank)")
     # Idempotent migrations for already-deployed bridge_ingestion_state schemas
     # (the table was first created in step 1 without these columns).
     for col, ddl in [
