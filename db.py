@@ -1533,7 +1533,16 @@ def get_current_analyst_positions(caller: str | None = None) -> list[dict]:
               AND (inferred_status IS NULL OR inferred_status != 'expired_unknown')
               AND ticker IS NOT NULL
               AND expiry IS NOT NULL
-              AND date(expiry) >= date('now')
+              -- After 21:00 UTC (~5pm ET, post-cash-close), drop today's
+              -- expiries from "currently open" — they're settled. The
+              -- daily expire-sweep cron will mark them expired_unknown
+              -- at 04:00 ET, but for the next ~11h after close they'd
+              -- otherwise still show in the bot's "currently open" list.
+              AND (
+                  date(expiry) > date('now')
+                  OR (date(expiry) = date('now')
+                      AND CAST(strftime('%H', 'now') AS INTEGER) < 21)
+              )
               {caller_clause_ranked}
         ),
         entries AS (

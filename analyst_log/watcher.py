@@ -54,6 +54,37 @@ async def _fetch_reply_parent_caption(
     return (parent.content or "").strip() or None
 
 
+def _is_extraction_actionable(extracted: dict) -> bool:
+    """Return True only if the extracted JSON has the minimum-viable
+    fields for a real trade row. Guards against model-sentinel garbage
+    (strike=0 from 'couldn't extract', missing ticker, etc.) so we
+    don't write junk rows to analyst_trades that later leak into
+    /ask position lookups.
+
+    Rules:
+    - is_trade_screenshot must be True
+    - ticker must be a non-empty string
+    - For call/put contracts: strike must be present AND non-zero
+    - (stock contracts can have null strike — but we don't OCR stock
+      tickets typically; tolerated for future flexibility)
+    """
+    if not extracted.get("is_trade_screenshot"):
+        return False
+    ticker = (extracted.get("ticker") or "").strip()
+    if not ticker:
+        return False
+    ctype = (extracted.get("contract_type") or "").lower()
+    if ctype in ("call", "put"):
+        strike = extracted.get("strike")
+        try:
+            strike_f = float(strike) if strike is not None else None
+        except (TypeError, ValueError):
+            return False
+        if not strike_f or strike_f == 0:
+            return False
+    return True
+
+
 async def watch_message(
     bot: discord.Client,
     message: discord.Message,
@@ -126,6 +157,17 @@ async def watch_message(
                 f"msg={message.id} caption={caption[:120]!r}"
             )
             return
+        # Storage guardrail: downgrade junk extractions to is_trade=false
+        # so we don't write garbage rows that pollute /ask context.
+        if extracted.get("is_trade_screenshot") and not _is_extraction_actionable(extracted):
+            log.info(
+                f"Analyst log: junk caption extraction rejected — "
+                f"msg={message.id} extracted={extracted}"
+            )
+            extracted["is_trade_screenshot"] = False
+            extracted["what_it_appears_to_be"] = (
+                "extraction failed integrity check (missing ticker or strike=0)"
+            )
         is_trade = bool(extracted.get("is_trade_screenshot"))
         try:
             db.record_analyst_trade(
@@ -174,6 +216,16 @@ async def watch_message(
         extracted = await extract_trade_from_image(
             img_bytes, ct, caption, parent_caption=parent_caption
         )
+        # Storage guardrail: same junk-extraction filter as caption-only.
+        if extracted and extracted.get("is_trade_screenshot") and not _is_extraction_actionable(extracted):
+            log.info(
+                f"Analyst log: junk image extraction rejected — "
+                f"msg={message.id} att={att.id} extracted={extracted}"
+            )
+            extracted["is_trade_screenshot"] = False
+            extracted["what_it_appears_to_be"] = (
+                "extraction failed integrity check (missing ticker or strike=0)"
+            )
         if extracted is None:
             # OCR failed entirely — don't insert a row, so we'll retry on
             # the next bot restart. (Rare; usually means Gemini call errored.)
