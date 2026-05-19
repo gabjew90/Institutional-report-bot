@@ -90,6 +90,7 @@ DEFAULT_PROFILE_CHANNELS = [
     "💬-stonks-yapping-💬",
     "₿-crypto-yapping-₿",
     "🏃-fitness-yapping-🏋",
+    "🎲-gambling-yapping-🎲",
 ]
 
 # Default fallbacks — actual values pulled from settings

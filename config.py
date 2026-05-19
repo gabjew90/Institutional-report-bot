@@ -71,13 +71,14 @@ class Settings(BaseSettings):
 
     # User-profile system: comma-separated channel names where the bot
     # scans for personality signal during the daily profile refresh.
-    # Three "yapping" channels (high-volume personality) + four alert
+    # Four "yapping" channels (high-volume personality) + four alert
     # channels (low-volume but signal-rich trade calls). Empty =
     # profile system disabled (no scheduled refresh).
     profile_channels: str = (
         "💬-stonks-yapping-💬,"
         "₿-crypto-yapping-₿,"
         "🏃-fitness-yapping-🏋,"
+        "🎲-gambling-yapping-🎲,"
         "🕰️-member-alerts-🕰️,"
         "🐄-spot-bag-alerts-🐄,"
         "🚨-0dte-lotto-alerts-🚨,"
