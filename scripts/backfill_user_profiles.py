@@ -407,11 +407,16 @@ async def _generate_profile(
                     flush=True,
                 )
                 return None, None, None, None
-            pt = (data.get("profile_text") or "").strip() or None
-            # DIAGNOSTIC: when profile_text is short, dump the full raw
-            # response so we can see exactly what the model returned for
-            # ALL fields. The "4-char" outputs have been opaque without
-            # this.
+            raw_pt = data.get("profile_text")
+            # DIAGNOSTIC: log EVERY parse to see what's going on.
+            print(
+                f"  PARSE for {display_name}: "
+                f"raw_pt_type={type(raw_pt).__name__} "
+                f"raw_pt_repr={repr(raw_pt)[:200] if raw_pt is not None else 'None'} "
+                f"raw_text_first_300={text[:300]!r}",
+                flush=True,
+            )
+            pt = (raw_pt or "").strip() or None
             if pt is not None and len(pt) < 50:
                 print(
                     f"  short-pt for {display_name}: "
