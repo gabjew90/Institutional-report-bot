@@ -562,6 +562,12 @@ async def _generate_profile(
                 # that break json.loads. Schema forces the SDK to handle
                 # escaping for string fields.
                 response_schema=_RESPONSE_SCHEMA,
+                # Safety filters off — real chat content contains slurs
+                # and edgy banter that triggers the default thresholds
+                # and causes the model to write "null" as profile_text
+                # sentinel. Internal calibration tool; output is consumed
+                # by another LLM, not republished raw.
+                safety_settings=_SAFETY_SETTINGS,
             ),
         )
         _log_finish(resp, f"text-only/{text_model}@t{temperature}")
