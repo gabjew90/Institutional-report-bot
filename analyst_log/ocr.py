@@ -91,6 +91,9 @@ STRONG CLOSE signals → action="close" (these are unambiguous; trust them):
 STRONG OPEN signals → action="open" (clear re-entry or fresh buy language):
 - "re-entering", "reload", "back in", "rinse repeat", "opened", "loading", \
   "got some", "in at"
+- "slam", "slammed", "slamming", "slam it", "slam this" — in this room's \
+  vernacular, "slam" = slam the buy button = aggressive open. It is NOT \
+  hype-watching language despite sounding excited; treat it like "loading".
 - "add", "adding", "doubled up" → action="add"
 - "trim", "trimming", "took some off", "take half", "took half", \
   "half off", "scaled out", "lightened up", "peeled some off", \
@@ -98,7 +101,7 @@ STRONG OPEN signals → action="open" (clear re-entry or fresh buy language):
 
 AMBIGUOUS / HYPE captions on a stats_screen → action="viewing" (bias \
 toward viewing, not open). Don't assume an open from excitement alone:
-- "SLAM", "let's go", "fire", "🚀", "this one", "watch this", "👀"
+- "let's go", "fire", "🚀", "this one", "watch this", "👀"
 - These could mean "I just bought" OR "look at this setup" — when on a \
   stats_screen (no execution evidence in the image), default to viewing.
 - ONLY classify as open if the caption is genuinely unambiguous (per the \
@@ -130,10 +133,11 @@ D. **Stats screen for a SPECIFIC CONTRACT** (ticker + strike + expiry all \
    confirmed-or-imminent entries, not idle browsing.
 
    - Exception 1: if there's an explicit AMBIGUOUS-hype caption on a \
-     stats screen ("SLAM", "🚀"), that captioned-stats case still goes \
-     to "viewing" — the asymmetric error preference still applies when \
-     the user gave you some signal. Captionless single-contract stats \
-     screens default to "open".
+     stats screen ("🚀", "let's go", "this one"), that captioned-stats \
+     case still goes to "viewing" — the asymmetric error preference \
+     still applies when the user gave you some signal. NOTE: "slam" \
+     is NOT ambiguous — it means open and overrides this exception. \
+     Captionless single-contract stats screens default to "open".
 
 E. **Pure option chain listing** (multiple strikes visible, no specific \
    contract selected) with no caption: action="viewing". This is true \
