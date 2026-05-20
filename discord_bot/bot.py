@@ -527,6 +527,100 @@ def _extract_embed_text(embed: discord.Embed) -> str:
     return " | ".join(p for p in parts if p).strip()
 
 
+async def _resolve_referenced_message(
+    bot: discord.Client,
+    message: discord.Message,
+) -> tuple[str | None, int | None, str | None, list]:
+    """If `message` is a reply OR a Discord forward, return the referenced
+    message's text content, author user_id, author display_name, and
+    attachment list.
+
+    Forwards (discord.MessageReferenceType.forward, post-2.5): content
+    and attachments live INLINE in `message.message_snapshots[0]` — no
+    fetch needed for the body. The original author is NOT carried in the
+    snapshot (Discord anonymizes for cross-server privacy), so we attempt
+    a best-effort fetch via reference.message_id + reference.channel_id.
+    Cross-server forwards may fail that fetch; the body still gets used.
+
+    Replies (default reference type): both body and author live on the
+    parent message. Prefer the cached `reference.resolved` when present;
+    fall back to channel.fetch_message.
+
+    Never raises — all retrieval failures degrade to None / empty list.
+    Returns (content, author_id, author_display, attachments).
+    """
+    ref = getattr(message, "reference", None)
+    if not ref:
+        return None, None, None, []
+
+    ref_type = getattr(ref, "type", None)
+    is_forward = (
+        hasattr(discord, "MessageReferenceType")
+        and ref_type == discord.MessageReferenceType.forward
+    )
+
+    content: str | None = None
+    attachments: list = []
+    author_id: int | None = None
+    author_display: str | None = None
+
+    if is_forward:
+        snapshots = getattr(message, "message_snapshots", None) or []
+        if snapshots:
+            snap = snapshots[0]
+            snap_content = (getattr(snap, "content", None) or "").strip()
+            content = snap_content or None
+            attachments = list(getattr(snap, "attachments", []) or [])
+        # Try to resolve the original author via cross-channel fetch
+        if ref.message_id:
+            channel_id = getattr(ref, "channel_id", None)
+            target_channel = (
+                bot.get_channel(channel_id) if channel_id else None
+            ) or message.channel
+            try:
+                original = await target_channel.fetch_message(ref.message_id)
+                if original.author:
+                    author_id = original.author.id
+                    author_display = (
+                        getattr(original.author, "display_name", None)
+                        or original.author.name
+                    )
+                # Fall back to original message body/attachments if snapshot was thin
+                if not content:
+                    content = (original.content or "").strip() or None
+                if not attachments and original.attachments:
+                    attachments = list(original.attachments)
+            except Exception as e:
+                log.debug(f"forward author resolution failed: {e}")
+    else:
+        # Reply (default reference type)
+        resolved = getattr(ref, "resolved", None)
+        if isinstance(resolved, discord.Message):
+            content = (resolved.content or "").strip() or None
+            if resolved.author:
+                author_id = resolved.author.id
+                author_display = (
+                    getattr(resolved.author, "display_name", None)
+                    or resolved.author.name
+                )
+            attachments = list(resolved.attachments or [])
+        elif ref.message_id:
+            try:
+                parent = await message.channel.fetch_message(ref.message_id)
+                content = (parent.content or "").strip() or None
+                if parent.author:
+                    author_id = parent.author.id
+                    author_display = (
+                        getattr(parent.author, "display_name", None)
+                        or parent.author.name
+                    )
+                attachments = list(parent.attachments or [])
+            except Exception as e:
+                log.debug(f"reply parent fetch failed: {e}")
+
+    return content, author_id, author_display, attachments
+
+
 async def _fetch_chat_context(
     channel,
     *,
@@ -1618,24 +1712,73 @@ def create_bot() -> commands.Bot:
                     chat_author_ids + [message.author.id] + mentioned_ids
                 ))
 
-                # Scoped image collection: only the @mention message and
-                # the message it's replying to (if any). Cap at 2 total.
+                # Resolve any referenced message (reply parent or
+                # forward snapshot). Discord forwards carry the snapshot
+                # content INLINE — not in message.content — so without
+                # this the bot would only see the asker's caption ("make
+                # him feel better") and miss the actual forwarded post.
+                (
+                    ref_content,
+                    ref_uid,
+                    ref_display,
+                    ref_attachments,
+                ) = await _resolve_referenced_message(bot, message)
+
+                # Add the original author to profile context so the bot
+                # has their personality dossier (e.g. forwarding someone
+                # crying → bot can address them by name + voice).
+                if ref_uid and ref_uid != message.author.id:
+                    profile_ids = list(set(profile_ids + [ref_uid]))
+
+                # Prepend the referenced content to the question so
+                # Gemini sees the explicit framing — what was said by
+                # whom, and what the asker is asking about it.
+                if ref_content:
+                    is_forward = bool(
+                        getattr(message, "message_snapshots", None)
+                    )
+                    label = (
+                        "FORWARDED MESSAGE"
+                        if is_forward
+                        else "MESSAGE BEING REPLIED TO"
+                    )
+                    author_tag = ref_display or "(author not resolved)"
+                    if ref_uid:
+                        author_tag += f" — user_id {ref_uid}"
+                    question = (
+                        f"[{label} — from {author_tag}]\n"
+                        f'"{ref_content}"\n\n'
+                        f"[{(getattr(message.author, 'display_name', None) or message.author.name)}'s message to you]\n"
+                        f"{question}"
+                    )
+
+                # Scoped image collection: the @mention message + the
+                # referenced (reply parent OR forward snapshot) message.
+                # Cap at _IMAGE_MAX_PER_CALL total.
                 images = await _extract_images_from_message(
                     message,
                     remaining_slots=_IMAGE_MAX_PER_CALL,
                 )
-                if message.reference and message.reference.message_id and len(images) < _IMAGE_MAX_PER_CALL:
-                    try:
-                        ref_msg = await message.channel.fetch_message(
-                            message.reference.message_id
-                        )
-                        more_imgs = await _extract_images_from_message(
-                            ref_msg,
-                            remaining_slots=_IMAGE_MAX_PER_CALL - len(images),
-                        )
-                        images.extend(more_imgs)
-                    except Exception as e:
-                        log.info(f"/ask: couldn't fetch replied-to message: {e}")
+                # Pull images from the referenced message's attachments
+                # using the same byte-fetch path. Works for both replies
+                # and forwards (snapshot.attachments are real Attachment
+                # objects with .read()).
+                if ref_attachments and len(images) < _IMAGE_MAX_PER_CALL:
+                    remaining = _IMAGE_MAX_PER_CALL - len(images)
+                    for att in ref_attachments:
+                        if remaining <= 0:
+                            break
+                        ct = (getattr(att, "content_type", None) or "").lower()
+                        if not ct.startswith("image/"):
+                            continue
+                        if getattr(att, "size", 0) and att.size > _IMAGE_MAX_BYTES:
+                            continue
+                        try:
+                            data = await att.read()
+                            images.append((data, ct))
+                            remaining -= 1
+                        except Exception as e:
+                            log.info(f"/ask referenced-msg image read failed: {e}")
 
                 # Resolve raw <@USER_ID> mentions in the question text
                 # so Gemini can connect tagged users to WHO'S TALKING.
