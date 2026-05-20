@@ -568,7 +568,14 @@ async def _generate_profile(
             contents=prompt,
             config=types.GenerateContentConfig(
                 temperature=temperature,
-                max_output_tokens=2500,
+                # Match the vision-path budget. 2500 was leaving the
+                # visible output a few hundred chars after the model's
+                # default thinking burned most of the budget, producing
+                # mid-sentence truncations across heavy-yapper users
+                # (SV at 264 chars, ZHawk at 299, etc.). 16000 gives
+                # the visible structured output enough room to complete
+                # even with minimal thinking.
+                max_output_tokens=_MAX_OUTPUT_TOKENS,
                 response_mime_type="application/json",
                 # response_schema is required — without it the model
                 # emits unescaped inner quotes ("...the room's "edge"...")
@@ -581,6 +588,12 @@ async def _generate_profile(
                 # sentinel. Internal calibration tool; output is consumed
                 # by another LLM, not republished raw.
                 safety_settings=_SAFETY_SETTINGS,
+                # Minimal thinking — profile generation is structured
+                # extraction, no reasoning chain needed. Without this the
+                # model burns most of max_output_tokens on internal
+                # reasoning before emitting any visible JSON, which is
+                # what caused the 250-850 char truncation pattern.
+                thinking_config=_THINKING_CONFIG,
             ),
         )
         _log_finish(resp, f"text-only/{text_model}@t{temperature}")
