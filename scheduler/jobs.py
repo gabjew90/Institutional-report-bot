@@ -216,14 +216,14 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
 
     # Daily user-profile refresh — only registers if profile channels are
     # configured. Refreshes profiles for active users in the yapping
-    # channels. Runs 05:00 local every day. The backfill script applies
+    # channels. Runs 15:00 local every day. The backfill script applies
     # a per-user delta filter (profile_delta_threshold) so users whose
     # message count since last profile hasn't moved enough are skipped —
     # the daily run only re-profiles the people who actually changed.
     if settings.profile_channels:
         scheduler.add_job(
             _user_profile_refresh_job,
-            trigger=CronTrigger(hour=5, minute=0, timezone=tz),
+            trigger=CronTrigger(hour=15, minute=0, timezone=tz),
             id="user_profile_refresh",
             name="User profiles: refresh active members",
             kwargs={"bot": bot},
@@ -232,7 +232,7 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         )
         log.info(
             f"User-profile system active — channels '{settings.profile_channels}', "
-            f"daily refresh 05:00 {settings.timezone} "
+            f"daily refresh 15:00 {settings.timezone} "
             f"(delta threshold: {settings.profile_delta_threshold} new msgs)"
         )
 
@@ -553,7 +553,7 @@ async def _ask_log_publish_job():
 
 
 async def _user_profile_refresh_job(bot=None):
-    """Weekly cron (Sunday 05:00 local). Re-runs the profile backfill for
+    """Daily cron (15:00 local / 3 PM ET). Re-runs the profile backfill for
     active users, then prunes anyone outside the top-N cutoff.
 
     The backfill upserts new + existing profiles for users above the
