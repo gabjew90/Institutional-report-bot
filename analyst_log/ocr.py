@@ -249,10 +249,27 @@ async def extract_trade_from_image(
         return None
 
     try:
-        return json.loads(text)
+        data = json.loads(text)
     except json.JSONDecodeError as e:
         log.error(f"Gemini extraction returned non-JSON: {e} | text={text[:200]}")
         return None
+
+    # Defensive: model sometimes returns a list when a portfolio
+    # screenshot has multiple positions visible. Take the first item
+    # (most-prominent position) — multi-position OCR is a future
+    # enhancement, not a current pipeline feature.
+    if isinstance(data, list):
+        if not data:
+            return None
+        log.info(
+            f"Gemini image extraction returned a list of {len(data)} items; "
+            f"taking the first as the canonical position"
+        )
+        data = data[0]
+    if not isinstance(data, dict):
+        log.warning(f"Gemini image extraction returned non-dict: {type(data).__name__}")
+        return None
+    return data
 
 
 # ============================================================================
@@ -404,6 +421,21 @@ async def extract_trade_from_caption(
         data = json.loads(text)
     except json.JSONDecodeError as e:
         log.error(f"Caption extraction non-JSON: {e} | text={text[:200]}")
+        return None
+
+    # Defensive: model sometimes returns a list when a single caption
+    # mentions multiple positions ("Pltr weeklies and 5/29"). Take the
+    # first item — multi-position-per-message is a future enhancement.
+    if isinstance(data, list):
+        if not data:
+            return None
+        log.info(
+            f"Caption extraction returned a list of {len(data)} items; "
+            f"taking the first"
+        )
+        data = data[0]
+    if not isinstance(data, dict):
+        log.warning(f"Caption extraction returned non-dict: {type(data).__name__}")
         return None
 
     # Enforce the minimum threshold post-hoc — model might over-claim
