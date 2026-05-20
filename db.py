@@ -2394,6 +2394,31 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
     return "\n".join(lines)
 
 
+def get_analyst_trade_by_message_id(message_id: int) -> dict | None:
+    """Return the most-recent analyst_trades row for a discord message_id,
+    or None if no row exists. Used by the watcher to look up a reply
+    parent's extracted contract spec (ticker / strike / expiry) so that
+    sparse follow-ups like 'closed' or 'sold @0.41' can be resolved
+    against the parent's actual contract rather than defaulting to 0DTE.
+
+    Returns the row as a plain dict with keys: id, caller, action,
+    ticker, strike, contract_type, expiry, gain_pct, price, caption,
+    is_trade.
+    """
+    row = get_connection().execute(
+        """SELECT id, caller, action, ticker, strike, contract_type,
+                  expiry, gain_pct, price, caption, is_trade
+           FROM analyst_trades
+           WHERE discord_message_id = ?
+           ORDER BY id DESC
+           LIMIT 1""",
+        (int(message_id),),
+    ).fetchone()
+    if row is None:
+        return None
+    return dict(row)
+
+
 def get_latest_analyst_trade_posted_at(caller: str | None = None) -> str | None:
     """Return the most-recent `posted_at` ISO timestamp for analyst_trades,
     optionally scoped to a single caller. Used by the on_ready /

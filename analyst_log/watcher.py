@@ -181,13 +181,31 @@ async def run_caller_catchup(
 async def _fetch_reply_parent_caption(
     message: discord.Message,
 ) -> str | None:
-    """If `message` is a Discord reply, fetch the parent message and
-    return its content (caption). Returns None if not a reply, if
-    fetch fails, or the parent has no content.
+    """If `message` is a Discord reply, return the best-available context
+    string describing the parent message.
 
-    Used to enrich caption-only and image extractions with chain
-    context — e.g. a reply 'closed' on an earlier 'BTO MSFT 430C 5/20
-    @3.65' post resolves to a close of that same contract.
+    The function PREFERS the parent's stored analyst_trades extraction
+    (ticker / strike / expiry / action / price) when one exists in our
+    DB — that's the structured data the parent's image was OCR'd into,
+    and it's far more useful for resolving a sparse follow-up like
+    "closed" or "sold @0.41" than the raw text caption alone.
+
+    Why this matters: a caller often opens with `OPEN HOOD 80C 5/22` in
+    a screenshot whose TEXT CAPTION says something colorful like "Bought
+    these. Thesis is Bitcoin shall climb." The expiry (5/22) lives in
+    the IMAGE — not the text. When the caller replies "Closed HOOD 80c
+    @0.41" hours later, fetching only the parent's text caption gives
+    us "Bought these. Thesis is..." — useless for inferring the expiry.
+    Fetching the parent's stored trade row gives us "open HOOD 80C
+    2026-05-22 @0.25" — exactly what the OCR needs to anchor the close.
+
+    Fallback chain:
+      1. analyst_trades row for parent.discord_message_id (preferred)
+      2. cached parent via message.reference.resolved
+      3. live fetch_message(parent_id) for the text caption
+
+    Returns None when the message isn't a reply or no context can be
+    retrieved through any route.
     """
     ref = getattr(message, "reference", None)
     if not ref:
@@ -195,11 +213,49 @@ async def _fetch_reply_parent_caption(
     parent_id = getattr(ref, "message_id", None)
     if not parent_id:
         return None
-    # Prefer the cached resolved message if discord.py already has it
+
+    # 1. PREFERRED: structured parent-trade context from our own DB
+    try:
+        parent_trade = db.get_analyst_trade_by_message_id(parent_id)
+    except Exception as e:
+        log.debug(f"Analyst log: parent-trade DB lookup failed for {parent_id}: {e}")
+        parent_trade = None
+    if parent_trade and parent_trade.get("is_trade"):
+        ctype = (parent_trade.get("contract_type") or "").lower()
+        ct_suffix = {"call": "C", "put": "P"}.get(ctype, "")
+        strike = parent_trade.get("strike")
+        try:
+            strike_str = (
+                f"{int(strike) if float(strike) == int(float(strike)) else strike}"
+                if strike is not None else "?"
+            )
+        except (TypeError, ValueError):
+            strike_str = "?"
+        ticker = parent_trade.get("ticker") or "?"
+        expiry = parent_trade.get("expiry") or "?"
+        action = (parent_trade.get("action") or "?").upper()
+        price = parent_trade.get("price")
+        spec_parts = [
+            f"{action} {ticker} {strike_str}{ct_suffix} {expiry}"
+        ]
+        if price:
+            try:
+                spec_parts.append(f"@{float(price):.2f}")
+            except (TypeError, ValueError):
+                pass
+        spec = " ".join(spec_parts)
+        # Append the parent's original caption text if any, for color/voice
+        original_caption = (parent_trade.get("caption") or "").strip()
+        if original_caption:
+            return f"{spec} — caller's words: {original_caption[:200]!r}"
+        return spec
+
+    # 2. Cached resolved message (no DB row, but discord.py has it in cache)
     resolved = getattr(ref, "resolved", None)
     if isinstance(resolved, discord.Message):
         return (resolved.content or "").strip() or None
-    # Otherwise fetch from the channel
+
+    # 3. Last-resort live fetch
     try:
         parent = await message.channel.fetch_message(parent_id)
     except Exception as e:
