@@ -142,7 +142,9 @@ Six things, ordered from most-positive-leaning to most-edgy:
 
 ## SCHEMA
 
-Output follows this structure exactly. No "Profile:" prefix, no extra commentary, no closing line. Fields can be omitted if you genuinely don't have the data — but don't pad with adjectives.
+Output follows this structure exactly. No "Profile:" prefix, no extra commentary, no closing line.
+
+**All eight sections (Personality, Strengths, Style & Patterns, Running jokes, Trash talk ammo, Recent activity, Voice, Role in the room) MUST appear in every profile.** If you have insufficient signal for a section, write the literal text `Insufficient signal — too few messages on this dimension.` rather than omitting the section header. Even sparse users get a complete dossier with placeholders where evidence is thin. This guarantees downstream readers always see the full structure. Don't pad with adjectives to hit a length — but don't truncate the structure either.
 
 **{display_name} (`{username}`, <@{user_id}>) — {msg_count} msgs**
 
@@ -234,7 +236,17 @@ Output a single JSON object with FIVE fields:
 }}
 ```
 
-**trader_examples** — 2-3 short, specific evidence items (each ~120-180 chars) from the user's recent message history that justify the trader_score. Mix wins, losses, and signature calls. Each one should be a concrete thing, not a generic statement. Good: "Caught the $NVDA earnings move into 145C calls Tuesday, 220% printed — flagged it 2 hours before the run." Bad: "Sometimes does well on tech names." If genuinely no signal, return an empty array, not made-up examples.
+**trader_examples** — 2-3 short, specific evidence items (each ~120-180 chars) from the user's recent message history that justify the trader_score. Mix wins, losses, and signature calls. Each one should be a concrete thing, not a generic statement.
+
+**HARD RULE: every example MUST reference a SPECIFIC TRADE** — a ticker (e.g. $NVDA, $SPY, $BTC), a contract (e.g. "150C", "$28 puts"), a position size or dollar amount, a buy/sell/trim decision, or a documented P&L. Non-trade quotes — banter, slurs, personality one-liners, opinions about other users, generic life takes — do NOT belong here. Those characterize the person (which is what `profile_text` is for), not their trading. Trader_examples is the evidence row that justifies the numeric trader_score; it's a different field with a different job.
+
+Good: "Caught the $NVDA earnings move into 145C calls Tuesday, 220% printed — flagged it 2 hours before the run."
+Good: "Full-ported $GPUS at 0.20 calling it '0 or hero', held through a 50% drawdown without trimming."
+Bad: "Sometimes does well on tech names." (not specific)
+Bad: "Calls everyone slurs and posts memes." (not a trade)
+Bad: "Said the room was full of bagholders." (not a trade)
+
+If you cannot find 2-3 examples that mention a specific ticker / contract / position / trade decision, return an EMPTY ARRAY `[]`. Do NOT fall back to non-trade quotes to fill the slot — an empty array is the correct answer when the user's recent history doesn't show enough trading detail.
 
 The trader_score uses these brackets:
 - **90-100 — Real edge.** Documented wins others tail. Posts wins AND losses cleanly. Process visible. Room trusts their reads.
