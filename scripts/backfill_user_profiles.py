@@ -99,9 +99,39 @@ MESSAGES_PER_PROFILE_SAMPLE_FALLBACK = 500
 GEMINI_CONCURRENCY = 5  # parallel calls per batch
 
 
+PRIOR_PROFILE_TEMPLATE = """\
+## UPDATE MODE — DON'T REWRITE FROM SCRATCH
+
+This user has been profiled before. The PRIOR PROFILE below is what the room already has on them. The MESSAGES section that follows contains **ONLY NEW messages** this user has sent since the prior profile was written ({last_seen}) — not their full history.
+
+Your job is to UPDATE the prior profile, not regenerate it. The room's understanding of someone doesn't reset every day. Established voice, role, long-running jokes, and trader_score brackets should largely persist unless the new messages add or contradict material.
+
+What to do per section:
+- **Personality, Strengths, Style & Patterns, Voice, Role in the room:** keep the prior text unless the new messages clearly change the read. Don't rewrite for variety.
+- **Recent activity (last 7d):** REPLACE entirely from the new messages — this section is meant to be current.
+- **Running jokes:** keep all prior bits that still hold. Add new ones only if a clearly persistent new bit emerged this window.
+- **Trash talk ammo:** keep the prior strongest items. Add a new specific quote or moment if something landed in the new messages worth weaponizing. Drop a prior item only if it's been definitively retired (e.g., a "WEN bagholder" bit when they've sold the position).
+- **trader_score / racial_humor_score:** keep the prior numbers as the default. Shift only if the new evidence clearly justifies it. A single bad week doesn't drop a +70 to a +40. A spectacular run can nudge up. When in doubt, hold.
+- **trader_examples:** favor NEW trade moments when they meet the ticker-anchored bar, but keep the strongest prior examples if nothing new is more specific.
+
+The output schema is identical to an initial profile — same 8 sections, same JSON wrapper. The difference is mode: edit, don't author.
+
+### PRIOR PROFILE TEXT
+{prior_profile_text}
+
+### PRIOR SCORES
+- trader_score: {prior_trader_score}
+- trader_rationale: {prior_trader_rationale}
+- racial_humor_score: {prior_racial_humor_score}
+
+---
+
+"""
+
+
 PROFILE_PROMPT = """\
 You're building a balanced character profile for one member of a private options-trading discord. The output goes into context for a /ask bot that uses it to answer questions about the user, joke with them, and (occasionally) clap back when they actually attack.
-
+{prior_profile_block}
 ## SUBJECT (READ FIRST)
 
 You are profiling **{display_name}** (username `{username}`, ID <@{user_id}>) — only this user. The MESSAGES below were ALL written by {display_name}. Any other names that appear inside those messages (terlin, abe, BK, etc.) are people {display_name} is talking to or about — not {display_name}. Every "they/he/she/the user" in your output refers to {display_name}.
@@ -377,6 +407,7 @@ async def _generate_profile(
     http_session: aiohttp.ClientSession | None = None,
     images: list[dict] | None = None,
     user_id: int = 0,
+    existing_profile: dict | None = None,
 ) -> tuple[
     str | None, int | None, str | None, int | None, list[str] | None
 ]:
@@ -395,15 +426,57 @@ async def _generate_profile(
     Response format: STRICT JSON with profile_text + trader_score +
     trader_rationale fields. response_mime_type=application/json forces
     Gemini to escape the markdown prose inside the JSON string properly.
+
+    INCREMENTAL UPDATE MODE: when `existing_profile` is provided (a dict
+    with keys: profile_text, last_seen_message_at, trader_score,
+    trader_rationale, racial_humor_score), the function:
+      - Filters `messages` to ONLY those newer than the prior
+        last_seen_message_at (skipping messages the prior profile already saw)
+      - Inserts the prior profile + UPDATE-MODE instructions into the prompt
+      - Asks the model to modify rather than rewrite
+    This preserves long-term character (running jokes from months ago,
+    established voice) while letting recent events update what's drifted,
+    and drops token spend dramatically vs full-history regenerate.
+
+    COLD-START MODE: when `existing_profile` is None, full original
+    behavior — model authors from scratch using the messages provided.
     """
     min_msgs = getattr(settings, "profile_min_messages", None) or MIN_MESSAGES_FOR_PROFILE_FALLBACK
     if len(messages) < min_msgs:
-        return None, None, None
+        return None, None, None, None, None
     sample_size = (
         getattr(settings, "profile_sample_size", None)
         or MESSAGES_PER_PROFILE_SAMPLE_FALLBACK
     )
-    sample = messages[-sample_size:]
+
+    # Incremental vs cold-start branching
+    prior_profile_block = ""
+    if existing_profile and existing_profile.get("profile_text"):
+        last_seen = existing_profile.get("last_seen_message_at") or ""
+        # Filter to messages strictly newer than what the prior profile saw.
+        # ISO timestamps are lexically comparable, so direct string > works.
+        if last_seen:
+            new_messages = [m for m in messages if m["timestamp"] > last_seen]
+        else:
+            new_messages = messages
+        # If literally nothing new (shouldn't happen given delta-skip but
+        # defensive), don't burn a Gemini call.
+        if not new_messages:
+            return None, None, None, None, None
+        sample = new_messages[-sample_size:]
+        ts = existing_profile.get("trader_score")
+        rh = existing_profile.get("racial_humor_score")
+        prior_profile_block = PRIOR_PROFILE_TEMPLATE.format(
+            last_seen=last_seen or "(unknown)",
+            prior_profile_text=existing_profile.get("profile_text") or "(no prior text)",
+            prior_trader_score=ts if ts is not None else "n/a",
+            prior_trader_rationale=existing_profile.get("trader_rationale") or "(none)",
+            prior_racial_humor_score=rh if rh is not None else "n/a",
+        )
+    else:
+        # Cold-start: full sample window
+        sample = messages[-sample_size:]
+
     msgs_block = _format_messages_block(sample)
     today_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     prompt = PROFILE_PROMPT.format(
@@ -413,6 +486,7 @@ async def _generate_profile(
         msg_count=len(messages),
         messages_block=msgs_block,
         today_utc=today_utc,
+        prior_profile_block=prior_profile_block,
     )
 
     vision_enabled = (
@@ -1026,6 +1100,10 @@ async def run(days: int, channels: list[str]) -> None:
                     tasks = []
                     for uid, msgs in batch:
                         meta = user_meta[uid]
+                        # Existing profile triggers incremental-update mode
+                        # in _generate_profile (sends prior profile + only
+                        # new messages to the model). None for cold-start.
+                        existing = existing_profiles.get(uid)
                         tasks.append(_generate_profile(
                             gemini_client,
                             meta["display_name"],
@@ -1034,6 +1112,7 @@ async def run(days: int, channels: list[str]) -> None:
                             http_session=http_session,
                             images=images_by_user.get(uid, []),
                             user_id=uid,
+                            existing_profile=existing,
                         ))
                     results = await asyncio.gather(*tasks, return_exceptions=True)
                     # Single Gemini call per user returns
