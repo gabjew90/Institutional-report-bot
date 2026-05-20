@@ -280,7 +280,7 @@ async def process_caller(
     return stats
 
 
-async def main():
+async def main(only_caller: str | None = None):
     if not settings.discord_bot_token:
         print("ERROR: DISCORD_BOT_TOKEN missing", file=sys.stderr)
         sys.exit(1)
@@ -314,7 +314,14 @@ async def main():
             )
 
             callers = settings.resolve_analyst_callers()
-            print(f"Replaying {len(callers)} callers: "
+            if only_caller:
+                want = only_caller.strip().lower()
+                callers = [c for c in callers if c["name"] == want]
+                if not callers:
+                    print(f"ERROR: --caller={only_caller!r} did not match any "
+                          f"configured caller")
+                    return
+            print(f"Replaying {len(callers)} caller(s): "
                   f"{[c['name'] for c in callers]}")
 
             async with aiohttp.ClientSession() as http_session:
@@ -339,4 +346,12 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument(
+        "--caller",
+        help="Run smoke test for ONLY this caller (canonical name, e.g. 'abe' "
+        "or 'bankerkyle'). Omit to test all configured callers.",
+    )
+    args = ap.parse_args()
+    asyncio.run(main(only_caller=args.caller))
