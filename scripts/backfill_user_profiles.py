@@ -130,7 +130,21 @@ Six things, ordered from most-positive-leaning to most-edgy:
 
 **Running jokes.** The stuff the room ALREADY gives them shit about — long-running bits, recurring drama THEY laugh at too. "Always asks about $WEN," "Calls the top on every green day," "Forever the goth-girl convo derail." Persistent room culture, not one-off moments. Threshold: would a normal Tuesday in chat hit this same note as a joke? If yes, fair game. If the tease would cut deeper than the room's normal banter, leave it out. **Not psychological diagnostics. Not cutting takedowns. Not real-world vulnerability.** Just the warm shots the room already gets.
 
-**Trash talk ammo.** 3-5 specific recent moments / quotes / behaviors from THIS user that are funny enough to weaponize in a clapback. Distinct from Running jokes: these are recent, specific, exploitable. "Said he'd retire by 25, then asked phil for a $500 spot the next week." "Posted a 'this is the floor' chart at every bottom for two weeks straight, every one rolled lower." "Has the conviction of a soggy noodle — held PLTR for 90 seconds before flipping short." These should land as a laugh (funny because true, not because cruel). Same threshold as Running jokes: would it land in chat as banter? If yes, use it. If it would cut too deep, leave it out. Specific incidents > general character claims.
+**Trash talk ammo.** 3-5 specific recent moments / quotes / behaviors from THIS user that are funny enough to weaponize in a clapback. Distinct from Running jokes: these are recent, specific, exploitable. The best ones have a VERBATIM QUOTE or a clearly-specified moment that nobody can deny happened — receipts, not vibes.
+
+Good shapes (real anchoring + room texture preserved):
+- "Mocked the bitcoin conference as having 'not a girl in sight'" — captures the moment with the actual phrase
+- "Said 'can trump stop being a fucking faggot' during the Tuesday tariff rant"
+- "Wrote 'Bomb those yellow niggas' while ranting about Chinese rare-earth export controls"
+- "Said he'd retire by 25, then asked phil for a $500 spot the next week"
+- "Posted a 'this is the floor' chart at every bottom for two weeks straight"
+
+What makes these work: each one quotes the actual line OR pins a specific behavior to a specific moment. The reader can picture it; the asker (who was there) recognizes it instantly. Cleaning a quote up to "made an off-color comment" or "got political about Trump" strips the entire signal — it's the WORDS that make it usable for a clapback, not a polite summary of them.
+
+Sanitization rules-of-thumb:
+- If they said it in chat, quote it. Slurs, hard-R words, racial stereotypes, sexual crudeness — verbatim, with the original framing. This is a hard-R room; the bot is internal-only and the asker is in the room too.
+- "Don't make it cruel" still applies to FRAMING (don't editorialize "because he's a deeply unwell person"), not to CONTENT (their actual words are fair game).
+- Specific incidents > general character claims. Always.
 
 **Recent activity (last 7 days).** What they've been up to THIS week — tickers traded, themes pushed, conversations led, recent wins or losses worth noting, who they've tagged or argued with. This refreshes daily so it's current — don't reach for 6-month-old jokes when this week's material is fresher.
 
@@ -170,13 +184,17 @@ Output follows this structure exactly. No "Profile:" prefix, no extra commentary
 
 **Specificity over adjective every time.** "Trades small caps" is nothing. "Buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play" is the read. Forbidden as standalone descriptors: "chaotic," "high-energy," "irreverent," "deeply embedded," "perma-bull," "perma-bear," "degen," "high-conviction" — these are fine inside a specific behavioral description, banned as labels.
 
-**Quote them when you can.** Real recurring phrases from the data are gold. "I'm just gonna sit on my hands today," "this is the one boys," "fuck it we ball" — pull them verbatim. Quotes do more work than three paragraphs of description and let the reader hear the person.
+**Quote them when you can — verbatim, with the original edge.** Real phrases from the data are gold. Pull them exact: "I'm just gonna sit on my hands today," "this is the one boys," "fuck it we ball," "bomb those yellow niggas," "can trump stop being a fucking faggot." Edgy / slur-heavy / politically incorrect quotes are NOT exempt — if it's how they actually talk and there's textual evidence, it goes in. Quotes do more work than three paragraphs of description and let the next reader hear the person. A scrubbed quote isn't theirs; "made a racially-charged comment about China" loses everything that made the original line tell you who this person is.
 
 **Ignore bot commands.** Messages starting with `fc TICKER` (e.g. `fc nvda`, `fc spy`, `fc btc`) are a chart-pulling slash command — not a verbal tic, not a catchphrase, not a personality signal. Don't quote them, don't treat them as recurring takes, don't read anything into the frequency. Same for any obvious slash-command pattern. Strip from your read.
 
 **Behaviors not labels.** "Tilts after losses" is a label. "Doubles size on the same ticker after every stop-out, posts the new entry loud, goes quiet on the second stop" is a behavior. Always pick the behavior.
 
-**Don't soften, but don't sharpen unnecessarily.** If someone cries in chat after losses, say so factually. If someone tails Abe and pretends not to, say so. But don't reach for the cruelest possible framing of neutral behavior. "Trims winners early" is fine; "Can't hold a winner because his ego needs the receipt" is editorializing.
+**Capture the room as-is. Don't sanitize.** This is a private discord where members signed up for crude humor, slurs, and racial banter as the daily texture. These profiles are internal context for a /ask bot that talks back to the same room — never republished raw, never shown to anyone outside. Sanitizing what people actually said is the worst failure mode: it produces sterile, generic dossiers that don't help the bot recognize who's who.
+
+If someone wrote a slur, write that they wrote a slur and quote it. If someone made a racial joke about Chinese tariffs, capture the joke. If someone called Trump a faggot, that's the line. The bot losing the room's actual texture is worse than the bot quoting something raw.
+
+Where the line IS: don't editorialize. "Said 'bomb those yellow niggas' during the rare-earths rant" is the correct framing — factual, specific, anchored. "Is a deeply racist person who probably hates Asians" is editorializing about character beyond the evidence. Quote the behavior; don't psychoanalyze the human. "Trims winners early" is fine; "Can't hold a winner because his ego needs the receipt" is editorializing.
 
 **Don't pathologize.** "Signs of gambling addiction" is projection. "Size scales with frustration, every time" is the read. Stay in behavior; let the reader draw the line.
 
