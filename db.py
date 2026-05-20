@@ -1575,7 +1575,7 @@ def get_current_analyst_positions(caller: str | None = None) -> list[dict]:
          AND e.rn = 1
         WHERE r.rn = 1
           AND r.latest_action IN ('open', 'add', 'trim')
-        ORDER BY r.last_activity DESC""",
+        ORDER BY date(r.expiry) ASC, r.last_activity DESC""",
         params,
     ).fetchall()
     return [dict(r) for r in rows]
@@ -1769,9 +1769,9 @@ def format_analyst_trades_for_context(
         out_lines.append("")
         out_lines.append(
             f"{header_prefix}'S CURRENTLY OPEN POSITIONS "
-            f"(computed from the above log):"
+            f"(sorted by closest expiry first):"
         )
-        for p in positions[:10]:
+        for p in positions[:20]:
             ticker = p.get("ticker") or "?"
             ct = (p.get("contract_type") or "").lower()
             ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
