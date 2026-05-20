@@ -89,7 +89,6 @@ async def watch_message(
     bot: discord.Client,
     message: discord.Message,
     caller: dict | None = None,
-    dry_run: bool = False,
 ) -> None:
     """Process an analyst-channel message. Side-effect-only — writes to DB
     and posts to the announce channel. All failures are logged and
@@ -104,16 +103,6 @@ async def watch_message(
     `analyst_primary_author` setting for filtering, and the stored
     `caller` field is None — backwards-compatible with the pre-registry
     deployment but loses hard-separation in /ask context.
-
-    `dry_run=True` runs the full extraction pipeline (image OCR + caption
-    + reply-chain) but skips ALL side effects: no dedup check, no DB
-    write, no announce-channel post. Instead, the inferred log entry is
-    posted back to the source channel as a preview embed prefixed with
-    "[DRY-RUN]". Used by the sandbox channel
-    (settings.analyst_dry_run_channel) so you can test screenshot+caption
-    extraction without polluting the real log. The author filter is also
-    bypassed in dry-run so anyone in the channel can test, not just
-    registered callers.
     """
     # Resolve the username to filter by + the canonical caller name to
     # store. Registry-driven (preferred) or legacy fallback.
@@ -126,7 +115,7 @@ async def watch_message(
         canonical_caller = None
         caller_display = "the caller"
 
-    if expected_username and not dry_run:
+    if expected_username:
         author_username = (message.author.name or "").lower()
         if author_username != expected_username:
             log.debug(
@@ -159,7 +148,7 @@ async def watch_message(
         # Dedup: use a synthetic attachment_id=0 so the UNIQUE(message_id,
         # attachment_id) constraint still works for caption-only rows.
         synthetic_att_id = 0
-        if not dry_run and db.analyst_trade_exists(message.id, synthetic_att_id):
+        if db.analyst_trade_exists(message.id, synthetic_att_id):
             return
         extracted = await extract_trade_from_caption(
             caption, parent_caption=parent_caption,
@@ -183,32 +172,30 @@ async def watch_message(
                 "extraction failed integrity check (missing ticker or strike=0)"
             )
         is_trade = bool(extracted.get("is_trade_screenshot"))
-        if not dry_run:
-            try:
-                db.record_analyst_trade(
-                    discord_message_id=message.id,
-                    discord_attachment_id=synthetic_att_id,
-                    author=author_name,
-                    posted_at=posted_at,
-                    image_url=None,
-                    caption=caption,
-                    is_trade=is_trade,
-                    gemini_json=extracted,
-                    ticker=extracted.get("ticker") if is_trade else None,
-                    contract_type=extracted.get("contract_type") if is_trade else None,
-                    strike=extracted.get("strike") if is_trade else None,
-                    expiry=extracted.get("expiry") if is_trade else None,
-                    action=extracted.get("action") if is_trade else None,
-                    gain_pct=extracted.get("gain_pct") if is_trade else None,
-                    price=extracted.get("price") if is_trade else None,
-                    caller=canonical_caller,
-                )
-            except Exception as e:
-                log.error(f"Analyst log: caption-only DB insert failed: {e}", exc_info=True)
-                return
-        await _announce_to_channel(
-            bot, message, extracted, author_name, dry_run=dry_run
-        )
+        try:
+            db.record_analyst_trade(
+                discord_message_id=message.id,
+                discord_attachment_id=synthetic_att_id,
+                author=author_name,
+                posted_at=posted_at,
+                image_url=None,
+                caption=caption,
+                is_trade=is_trade,
+                gemini_json=extracted,
+                ticker=extracted.get("ticker") if is_trade else None,
+                contract_type=extracted.get("contract_type") if is_trade else None,
+                strike=extracted.get("strike") if is_trade else None,
+                expiry=extracted.get("expiry") if is_trade else None,
+                action=extracted.get("action") if is_trade else None,
+                gain_pct=extracted.get("gain_pct") if is_trade else None,
+                price=extracted.get("price") if is_trade else None,
+                caller=canonical_caller,
+            )
+        except Exception as e:
+            log.error(f"Analyst log: caption-only DB insert failed: {e}", exc_info=True)
+            return
+        if is_trade:
+            await _announce_to_channel(bot, message, extracted, author_name)
         return
 
     for att in message.attachments:
@@ -216,7 +203,7 @@ async def watch_message(
         if not ct.startswith("image/"):
             continue
 
-        if not dry_run and db.analyst_trade_exists(message.id, att.id):
+        if db.analyst_trade_exists(message.id, att.id):
             log.debug(
                 f"Analyst log: skipping already-logged image — "
                 f"msg={message.id} att={att.id}"
@@ -254,33 +241,31 @@ async def watch_message(
 
         is_trade = bool(extracted.get("is_trade_screenshot"))
 
-        if not dry_run:
-            try:
-                db.record_analyst_trade(
-                    discord_message_id=message.id,
-                    discord_attachment_id=att.id,
-                    author=author_name,
-                    posted_at=posted_at,
-                    image_url=att.url,
-                    caption=caption,
-                    is_trade=is_trade,
-                    gemini_json=extracted,
-                    ticker=extracted.get("ticker") if is_trade else None,
-                    contract_type=extracted.get("contract_type") if is_trade else None,
-                    strike=extracted.get("strike") if is_trade else None,
-                    expiry=extracted.get("expiry") if is_trade else None,
-                    action=extracted.get("action") if is_trade else None,
-                    gain_pct=extracted.get("gain_pct") if is_trade else None,
-                    price=extracted.get("price") if is_trade else None,
-                    caller=canonical_caller,
-                )
-            except Exception as e:
-                log.error(f"Analyst log: DB insert failed: {e}", exc_info=True)
-                continue
+        try:
+            db.record_analyst_trade(
+                discord_message_id=message.id,
+                discord_attachment_id=att.id,
+                author=author_name,
+                posted_at=posted_at,
+                image_url=att.url,
+                caption=caption,
+                is_trade=is_trade,
+                gemini_json=extracted,
+                ticker=extracted.get("ticker") if is_trade else None,
+                contract_type=extracted.get("contract_type") if is_trade else None,
+                strike=extracted.get("strike") if is_trade else None,
+                expiry=extracted.get("expiry") if is_trade else None,
+                action=extracted.get("action") if is_trade else None,
+                gain_pct=extracted.get("gain_pct") if is_trade else None,
+                price=extracted.get("price") if is_trade else None,
+                caller=canonical_caller,
+            )
+        except Exception as e:
+            log.error(f"Analyst log: DB insert failed: {e}", exc_info=True)
+            continue
 
-        await _announce_to_channel(
-            bot, message, extracted, author_name, dry_run=dry_run
-        )
+        if is_trade:
+            await _announce_to_channel(bot, message, extracted, author_name)
 
 
 async def _announce_to_channel(
@@ -288,58 +273,43 @@ async def _announce_to_channel(
     source_msg: discord.Message,
     extracted: dict[str, Any],
     author_name: str,
-    dry_run: bool = False,
 ) -> None:
     """Post a one-line summary of the logged trade to the configured
     announce channel as an embed. The source channel name is the
     clickable link back to the original alert.
     Skips silently if the channel can't be found.
-
-    In dry-run mode, post to the source channel (the sandbox) instead
-    of the live announce channel, and include the non-trade case too
-    (with the model's reasoning) so the user can see why something
-    didn't get logged. Live mode preserves the old behavior: only
-    `is_trade=true` extractions get announced.
     """
-    is_trade = bool(extracted.get("is_trade_screenshot"))
+    chan_name = (settings.analyst_test_announce_channel or "").strip()
+    if not chan_name:
+        return
 
-    if dry_run:
-        target = source_msg.channel
-    else:
-        if not is_trade:
-            return  # Live mode: silent on non-trades, same as before
-        chan_name = (settings.analyst_test_announce_channel or "").strip()
-        if not chan_name:
-            return
-        target = None
-        for guild in bot.guilds:
-            for ch in guild.text_channels:
-                if ch.name.lower() == chan_name.lower():
-                    target = ch
-                    break
-            if target:
+    target: discord.TextChannel | None = None
+    for guild in bot.guilds:
+        for ch in guild.text_channels:
+            if ch.name.lower() == chan_name.lower():
+                target = ch
                 break
-        if target is None:
-            log.warning(
-                f"Analyst log: announce channel '{chan_name}' not found in any guild"
-            )
-            return
+        if target:
+            break
 
-    description = _format_announce_line(
-        extracted, source_msg, author_name, dry_run=dry_run
-    )
+    if target is None:
+        log.warning(
+            f"Analyst log: announce channel '{chan_name}' not found in any guild"
+        )
+        return
+
+    description = _format_announce_line(extracted, source_msg, author_name)
     embed = discord.Embed(description=description)
     try:
         await target.send(embed=embed)
     except Exception as e:
-        log.error(f"Analyst log: announce failed in #{getattr(target, 'name', '?')}: {e}")
+        log.error(f"Analyst log: announce failed in #{chan_name}: {e}")
 
 
 def _format_announce_line(
     extracted: dict[str, Any],
     source_msg: discord.Message,
     author_name: str,
-    dry_run: bool = False,
 ) -> str:
     """Render the announce line for the embed description. Format:
 
@@ -351,24 +321,6 @@ def _format_announce_line(
     compatibility but is no longer displayed in the output (the source
     channel is the clearer attribution).
     """
-    is_trade = bool(extracted.get("is_trade_screenshot"))
-    caption = (source_msg.content or "").strip()
-
-    # Dry-run non-trade: surface the model's reasoning so the user can
-    # see WHY something wasn't logged. In live mode this branch is
-    # unreachable because _announce_to_channel returns early on non-trades.
-    if dry_run and not is_trade:
-        reason = (
-            extracted.get("what_it_appears_to_be")
-            or extracted.get("notes")
-            or "not classified as a trade"
-        )
-        cap_safe = caption.replace("`", "'").replace("\n", " ")[:120] if caption else "(no caption)"
-        return (
-            f"⏭️ **[DRY-RUN]** not a trade — {reason}\n"
-            f"  caption: `{cap_safe}`"
-        )[:1900]
-
     ticker = extracted.get("ticker") or "?"
     strike = extracted.get("strike")
     contract_type = (extracted.get("contract_type") or "").lower()
@@ -377,6 +329,7 @@ def _format_announce_line(
     gain_pct = extracted.get("gain_pct")
     price = extracted.get("price")
     screenshot_type = extracted.get("screenshot_type") or ""
+    caption = (source_msg.content or "").strip()
 
     type_suffix = {"call": "C", "put": "P"}.get(contract_type, "")
     strike_str = (
@@ -394,8 +347,7 @@ def _format_announce_line(
     else:
         channel_link = f"**#{channel_name}**"
 
-    prefix = "🧪 **[DRY-RUN]** would log:" if dry_run else "📝 Logged:"
-    line = f"{prefix} {channel_link} {action} **{contract_str}**"
+    line = f"📝 Logged: {channel_link} {action} **{contract_str}**"
     # Display rule: entry price only shows on opens (OPEN/ADD); gain%
     # only shows on exits (CLOSE/TRIM). These are mutually exclusive at
     # display time — opens are valued by their fill price, closes by
