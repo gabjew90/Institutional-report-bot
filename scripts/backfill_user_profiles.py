@@ -100,21 +100,24 @@ GEMINI_CONCURRENCY = 5  # parallel calls per batch
 
 
 PRIOR_PROFILE_TEMPLATE = """\
-## UPDATE MODE — DON'T REWRITE FROM SCRATCH
+## UPDATE MODE — REVISE THE PRIOR PROFILE
 
-This user has been profiled before. The PRIOR PROFILE below is what the room already has on them. The MESSAGES section that follows contains **ONLY NEW messages** this user has sent since the prior profile was written ({last_seen}) — not their full history.
+This user has been profiled before. The PRIOR PROFILE below is the room's current read on them. The MESSAGES section that follows contains ONLY NEW messages since the prior profile was written ({last_seen}) — not their full history.
 
-Your job is to UPDATE the prior profile, not regenerate it. The room's understanding of someone doesn't reset every day. Established voice, role, long-running jokes, and trader_score brackets should largely persist unless the new messages add or contradict material.
+Revise the prior profile based on the new messages. The room's understanding of someone doesn't reset every day — established voice, role, long-running jokes, and trader_score brackets persist unless new evidence shifts them.
 
-What to do per section:
-- **Personality, Strengths, Style & Patterns, Voice, Role in the room:** keep the prior text unless the new messages clearly change the read. Don't rewrite for variety.
-- **Recent activity (last 7d):** REPLACE entirely from the new messages — this section is meant to be current.
-- **Running jokes:** keep all prior bits that still hold. Add new ones only if a clearly persistent new bit emerged this window.
-- **Trash talk ammo:** keep the prior strongest items. Add a new specific quote or moment if something landed in the new messages worth weaponizing. Drop a prior item only if it's been definitively retired (e.g., a "WEN bagholder" bit when they've sold the position).
-- **trader_score / racial_humor_score:** keep the prior numbers as the default. Shift only if the new evidence clearly justifies it. A single bad week doesn't drop a +70 to a +40. A spectacular run can nudge up. When in doubt, hold.
-- **trader_examples:** favor NEW trade moments when they meet the ticker-anchored bar, but keep the strongest prior examples if nothing new is more specific.
+Per-section behavior:
 
-The output schema is identical to an initial profile — same 8 sections, same JSON wrapper. The difference is mode: edit, don't author.
+- **Personality, Strengths, Style & Patterns, Voice, Role in the room:** carry forward unless the new messages clearly add or contradict material. Edit minimally — variety isn't a goal.
+- **Recent activity (last 7d):** rewrite completely from the new messages. This section is meant to be current.
+- **Running jokes:** keep bits the room is still reinforcing in the new messages. Add new persistent bits when they emerge.
+- **Trash talk ammo:** keep the strongest prior items. Add a new specific quote or moment when something landed in the new messages worth weaponizing.
+- **trader_score / racial_humor_score:** hold by default. Shift only when new evidence justifies a meaningful move — a single bad week doesn't drop a +70 to a +40.
+- **trader_examples:** favor NEW trade moments when they meet the ticker-anchored bar. Keep the strongest prior examples if nothing new is more specific.
+
+**Drop bits older than ~60 days that aren't reinforced.** Items in Running jokes and Trash talk ammo that haven't shown up in the room in the last ~60 days are stale — retire them even if the prior profile carried them. The dossier reflects the LIVE room, not a graveyard of past bits. Test: is this still something a reader would recognize from this WEEK or last? If not, drop it.
+
+The output schema is identical to a from-scratch profile — same eight sections, same JSON wrapper. The difference is the work: editing the existing dossier, not authoring a new one.
 
 ### PRIOR PROFILE TEXT
 {prior_profile_text}
@@ -130,149 +133,90 @@ The output schema is identical to an initial profile — same 8 sections, same J
 
 
 PROFILE_PROMPT = """\
-You're building a balanced character profile for one member of a private options-trading discord. The output goes into context for a /ask bot that uses it to answer questions about the user, joke with them, and (occasionally) clap back when they actually attack.
+You write character dossiers on members of a private options-trading discord. Each dossier becomes context for a /ask bot that knows this room — it answers questions about people, jokes with them, and claps back when they're attacking. The room signed up for crude humor, slurs, and racial banter as the daily texture. The bot stays inside the room; dossiers are internal calibration, never republished raw.
 {prior_profile_block}
-## SUBJECT (READ FIRST)
+## WHO YOU'RE WRITING ABOUT
 
-You are profiling **{display_name}** (username `{username}`, ID <@{user_id}>) — only this user. The MESSAGES below were ALL written by {display_name}. Any other names that appear inside those messages (terlin, abe, BK, etc.) are people {display_name} is talking to or about — not {display_name}. Every "they/he/she/the user" in your output refers to {display_name}.
+You are profiling **{display_name}** (username `{username}`, ID <@{user_id}>) — only this user. Every message below was written BY {display_name}. Other names that appear inside those messages are people {display_name} is talking to or about — not {display_name} themselves. Every pronoun in your output refers to {display_name}.
 
-profile_text MUST start with the exact header `**{display_name} ({username}, <@{user_id}>) — {msg_count} msgs**` on its own line.
+profile_text MUST begin with the exact header `**{display_name} ({username}, <@{user_id}>) — {msg_count} msgs**` on its own line.
 
----
+Today is **{today_utc}** (UTC). Anchor "last 7 days" against this date when reading message timestamps.
 
-Goal: a FAIR scouting report. Strengths, style, what the room ALREADY teases them about, and what they've been up to this week — all in one document. Not a roast file. Not a hagiography. A reader who'd never met them should come away with a real picture of who they are at the terminal AND why people in the room like having them around.
+## WHAT A GOOD DOSSIER LOOKS LIKE
 
-**The customers pay to be here.** Treat them like paying customers, not subjects to dissect. Honest about behavior; not cruel about character.
+A reader who hadn't met this person comes away with a vivid picture: how they trade, how they talk, what the room already laughs about with them, what they've been up to this week. Real human, real strengths, real warts the room riffs on, real current activity. The customers pay to be here — they're a tight-knit room, and the bot uses this dossier to recognize each one.
 
-Today is **{today_utc}** (UTC). Use this to interpret "last 7 days" in the *Recent activity* field — anchor against this date when reading the message timestamps.
+Honest, not flattering. Specific behaviors over category labels. Verbatim quotes over polite paraphrase. Anchored receipts over vague vibes.
 
----
+## SECTIONS
 
-## WHAT YOU'RE LOOKING FOR
+Eight sections, all required. If signal is thin for a section, write `Insufficient signal — too few messages on this dimension.` rather than padding. Always keep the structure; never truncate sections.
 
-Six things, ordered from most-positive-leaning to most-edgy:
+**Personality.** Two or three sentences. The big-picture read of who this person is at the terminal — specific to them, not a template. Example shape: "Macro-aware day-trader who treats the discord as his Bloomberg alternative — leads with charts, drops conviction bombs, then disappears for a week after a bad run."
 
-**Personality.** The big-picture neutral read in 2-3 sentences. Who they are at the terminal. Specific to this person, not a type. Avoid moralizing language — describe, don't grade.
+**Strengths.** Three to five concrete things this person brings. Real items only — trades they nailed, expertise they share, charts they read better than most, humor that defuses, the way they support newer members. If they mostly lurk, say so plainly: "Mostly lurks; rare contribution when someone asks about [specific topic]."
 
-**Strengths.** What they bring to the room. 3-5 specific things they do well. Trades they nailed, expertise they share, charts they read better than most, humor that defuses, the way they support newer members. Real items, not flattery. If you genuinely can't find strengths (rare — almost everyone in this room contributes something), say "Mostly lurks; rare contribution when X."
+**Style & Patterns.** Two to four sentences on how they trade and how they talk. Example: "Trades 0DTE QQQ lottos on conviction; sizes up after one green day, holds through 40% drawdowns, posts the chart after every entry. Talks in shorthand — 'slam,' 'send it,' 'chyna.' Goes quiet when red."
 
-**Style & Patterns.** How they trade and talk — neutral descriptions. "Trades weeklies on tech, leads with chart screenshots, fast to size up on conviction names, uses humor to defuse tilt." Just what they do. Not whether it's smart or dumb.
+**Running jokes.** Two to four bits the room ALREADY teases this person about — material the room reinforces in chat, lifted from messages. The test: would a normal Tuesday in chat hit this same note as a joke? "Always asks about $WEN," "calls the top on every green day," "perpetual office hostage" — bits the room repeats.
 
-**Running jokes.** The stuff the room ALREADY gives them shit about — long-running bits, recurring drama THEY laugh at too. "Always asks about $WEN," "Calls the top on every green day," "Forever the goth-girl convo derail." Persistent room culture, not one-off moments. Threshold: would a normal Tuesday in chat hit this same note as a joke? If yes, fair game. If the tease would cut deeper than the room's normal banter, leave it out. **Not psychological diagnostics. Not cutting takedowns. Not real-world vulnerability.** Just the warm shots the room already gets.
+**Trash talk ammo.** Three to five specific recent moments the bot can weaponize for laughs in a clapback. The receipts ARE the point — each item anchors to a verbatim quote OR a clearly-specified incident the asker (who was in the room) would recognize instantly.
 
-**Trash talk ammo.** 3-5 specific recent moments / quotes / behaviors from THIS user that are funny enough to weaponize in a clapback. Distinct from Running jokes: these are recent, specific, exploitable. The best ones have a VERBATIM QUOTE or a clearly-specified moment that nobody can deny happened — receipts, not vibes.
+Quote them verbatim, original framing intact. Slurs, hard-R words, racial stereotypes, sexual crudeness, political crudeness — all go in if it's how they actually talk. The bot lives in this room; sanitizing strips the entire signal.
 
-Good shapes (real anchoring + room texture preserved):
-- "Mocked the bitcoin conference as having 'not a girl in sight'" — captures the moment with the actual phrase
+Good shapes:
 - "Said 'can trump stop being a fucking faggot' during the Tuesday tariff rant"
-- "Wrote 'Bomb those yellow niggas' while ranting about Chinese rare-earth export controls"
-- "Said he'd retire by 25, then asked phil for a $500 spot the next week"
+- "Mocked the bitcoin conference as having 'not a girl in sight'"
+- "Wrote 'bomb those yellow niggas' while ranting about Chinese rare-earth controls"
+- "Sold his $WEN bags for a 30% loss the same day they bounced 40%"
 - "Posted a 'this is the floor' chart at every bottom for two weeks straight"
 
-What makes these work: each one quotes the actual line OR pins a specific behavior to a specific moment. The reader can picture it; the asker (who was there) recognizes it instantly. Cleaning a quote up to "made an off-color comment" or "got political about Trump" strips the entire signal — it's the WORDS that make it usable for a clapback, not a polite summary of them.
+The framing stays factual. "Said 'X' during the Y rant" — anchored, specific. The reader draws the inference from the quote; the writer stays out of editorial judgment.
 
-Sanitization rules-of-thumb:
-- If they said it in chat, quote it. Slurs, hard-R words, racial stereotypes, sexual crudeness — verbatim, with the original framing. This is a hard-R room; the bot is internal-only and the asker is in the room too.
-- "Don't make it cruel" still applies to FRAMING (don't editorialize "because he's a deeply unwell person"), not to CONTENT (their actual words are fair game).
-- Specific incidents > general character claims. Always.
+**Recent activity (last 7d).** What this person did THIS week — tickers traded, themes pushed, conversations led, wins or losses, who they tagged. Refresh daily from this week's messages; older material belongs in the other sections.
 
-**Recent activity (last 7 days).** What they've been up to THIS week — tickers traded, themes pushed, conversations led, recent wins or losses worth noting, who they've tagged or argued with. This refreshes daily so it's current — don't reach for 6-month-old jokes when this week's material is fresher.
+**Voice.** A specific descriptor of how they talk + two to four verbatim phrases they actually use. The descriptor goes first: "dry and observational, leans on stock-specific memes," or "warm, emoji-heavy, defuses with self-deprecation," or "crude and fast, casually cruel with affection underneath." Then the quotes — including the edgy ones: "I'm just gonna sit on my hands today," "this is the one boys," "fuck it we ball," "bomb those yellow niggas." Real lines beat description every time.
 
-**Voice.** Specific descriptor of how they talk + 2-4 recurring takes/quotes/phrases they actually use. Descriptor first ("dry, observational, leans on stock-specific memes" or "warm, emoji-heavy, defuses with self-deprecation" or "crude and fast, casually cruel with affection underneath" — NOT "funny"). Then verbatim quotes or paraphrased recurring stances from the message data — "I'm just gonna sit on my hands today," "should've sized up," "fuck it we ball," "this is the one boys." Quotes do more work than three lines of description and let the next reader hear the person.
+**Role in the room.** One short phrase describing what they FUNCTION as — signal / banter / chaos / mentor / hype-man / contrarian / lurker / texture. Neutral.
 
-**Role in the room.** Function in one short phrase — signal / banter / chaos / mentor / hype-man / contrarian / lurker / texture. Neutral.
+## HOW TO WRITE
 
----
+**Lead with the behavior, follow with the evidence.** Write "buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play." Not "trades small caps." Write "size scales with frustration, every time." Not "tilts after losses." Specific behavior, every line.
 
-## SCHEMA
+**Quote verbatim with the original edge.** Real lines from chat carry more signal than any description. Pull them exact — slurs, slang, swears, broken grammar, all of it. "Should've sized up," "fuck it we ball," "bomb those yellow niggas," "can trump stop being a fucking faggot." If they said it in chat, it's evidence; you write it. A scrubbed quote isn't theirs.
 
-Output follows this structure exactly. No "Profile:" prefix, no extra commentary, no closing line.
+**Strip bot commands.** Messages starting with `fc TICKER` (e.g. `fc nvda`, `fc spy`) are chart-pulling slash commands — not personality signal. Ignore them entirely; same for any obvious slash-command pattern.
 
-**All eight sections (Personality, Strengths, Style & Patterns, Running jokes, Trash talk ammo, Recent activity, Voice, Role in the room) MUST appear in every profile.** If you have insufficient signal for a section, write the literal text `Insufficient signal — too few messages on this dimension.` rather than omitting the section header. Even sparse users get a complete dossier with placeholders where evidence is thin. This guarantees downstream readers always see the full structure. Don't pad with adjectives to hit a length — but don't truncate the structure either.
+**Match confidence to evidence.** When inferring from incomplete signal, soften the verb: "reads as," "appears to," "seems to." When the messages show it directly, state it flat. Anchor every claim to message evidence; invent nothing to fill the schema.
 
-**{display_name} (`{username}`, <@{user_id}>) — {msg_count} msgs**
+**Length follows signal.** A 100-message user gets a shorter profile than a 4,000-message user — that's correct. Tight sections beat padded sections.
 
-*Personality:* 2-3 sentences. Neutral big-picture read of who they are at the terminal.
+**Describe behavior, not psychology.** "Size scales with frustration, every time" is descriptive — sourced behavior, no diagnosis. Stay in behavior; let the reader draw the line.
 
-*Strengths:* 3-5 specific things they bring. Edge, expertise, humor, support, trades they nailed.
-
-*Style & Patterns:* 2-4 sentences. How they trade and talk. Neutral descriptions.
-
-*Running jokes:* 2-4 bits the room ALREADY teases them about — persistent room culture. Real material from chat, not invented. Light, not cutting.
-
-*Trash talk ammo:* 3-5 specific recent moments / quotes / behaviors from chat the bot can weaponize for laughs in a clapback. Funny-because-true, not cutting. Specific incidents, not general character claims.
-
-*Recent activity (last 7d):* 2-4 sentences. What they've been up to this week — specific tickers, themes, conversations.
-
-*Voice:* Specific descriptor + 2-4 recurring quotes/phrases verbatim from chat. Not "funny." Quotes are gold — let the next reader hear the person.
-
-*Role in the room:* One short phrase. Function, not judgment.
-
----
-
-## VOICE RULES
-
-**Specificity over adjective every time.** "Trades small caps" is nothing. "Buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play" is the read. Forbidden as standalone descriptors: "chaotic," "high-energy," "irreverent," "deeply embedded," "perma-bull," "perma-bear," "degen," "high-conviction" — these are fine inside a specific behavioral description, banned as labels.
-
-**Quote them when you can — verbatim, with the original edge.** Real phrases from the data are gold. Pull them exact: "I'm just gonna sit on my hands today," "this is the one boys," "fuck it we ball," "bomb those yellow niggas," "can trump stop being a fucking faggot." Edgy / slur-heavy / politically incorrect quotes are NOT exempt — if it's how they actually talk and there's textual evidence, it goes in. Quotes do more work than three paragraphs of description and let the next reader hear the person. A scrubbed quote isn't theirs; "made a racially-charged comment about China" loses everything that made the original line tell you who this person is.
-
-**Ignore bot commands.** Messages starting with `fc TICKER` (e.g. `fc nvda`, `fc spy`, `fc btc`) are a chart-pulling slash command — not a verbal tic, not a catchphrase, not a personality signal. Don't quote them, don't treat them as recurring takes, don't read anything into the frequency. Same for any obvious slash-command pattern. Strip from your read.
-
-**Behaviors not labels.** "Tilts after losses" is a label. "Doubles size on the same ticker after every stop-out, posts the new entry loud, goes quiet on the second stop" is a behavior. Always pick the behavior.
-
-**Capture the room as-is. Don't sanitize.** This is a private discord where members signed up for crude humor, slurs, and racial banter as the daily texture. These profiles are internal context for a /ask bot that talks back to the same room — never republished raw, never shown to anyone outside. Sanitizing what people actually said is the worst failure mode: it produces sterile, generic dossiers that don't help the bot recognize who's who.
-
-If someone wrote a slur, write that they wrote a slur and quote it. If someone made a racial joke about Chinese tariffs, capture the joke. If someone called Trump a faggot, that's the line. The bot losing the room's actual texture is worse than the bot quoting something raw.
-
-Where the line IS: don't editorialize. "Said 'bomb those yellow niggas' during the rare-earths rant" is the correct framing — factual, specific, anchored. "Is a deeply racist person who probably hates Asians" is editorializing about character beyond the evidence. Quote the behavior; don't psychoanalyze the human. "Trims winners early" is fine; "Can't hold a winner because his ego needs the receipt" is editorializing.
-
-**Don't pathologize.** "Signs of gambling addiction" is projection. "Size scales with frustration, every time" is the read. Stay in behavior; let the reader draw the line.
-
-**Calibrate confidence to data.** Inferring something? Soften the verb ("reads as," "appears to," "seems to"). Don't have the data? Leave the field short or skip it. Never fabricate to fill the schema.
-
-**Don't profile what you don't see.** Low message count = short profile. A 100-message user gets less than a 4000-message user — that's correct.
-
----
-
-## CARVE-OUTS
-
-**Abe (abullish_xyz) and the co-analysts (bankerkyle, .zhawk, kloh.):** Profile their personality, patterns, role, and running jokes — same as anyone else. But don't grade their actual trade picks. You're cataloging the human, not auditing the call sheet.
-
-**Sensitive material — real name, employer, family, mental health, financial distress, relationships:** reference only if it's part of the room's public running texture (they bring it up regularly, the room riffs on it). Don't surface something a user shared once in a vulnerable moment as a permanent dossier trait. **Running jokes** must come from material the room ALREADY treats as joke material — if you have to wonder whether something is too sensitive, leave it out.
-
----
-
-## EXAMPLE OF THE TARGET
+## EXAMPLE TARGET
 
 > **BK (`bankerkyle`, <@423994649317736448>) — 4183 msgs**
 >
-> *Personality:* M&A guy at a real firm who treats the discord as the place where the day-job rules don't apply. Smart, fast, doesn't hide that he's making real money in the day job but also doesn't lord it.
+> *Personality:* M&A guy at a real firm who treats the discord as where the day-job rules don't apply. Smart, fast, doesn't hide that he's making real money in the day-job, doesn't lord it. Lives in lament-mode after missed entries; recovers via crude humor.
 >
-> *Strengths:* Sharp on macro narratives — knows how rate-sensitive sectors actually price. Good chart reads when he commits to one. Crude humor that defuses heavy conversations. Willing to call other regulars on weak takes without making it personal. Posts his wins AND his lament-mode losses, which keeps the room honest.
+> *Strengths:* Sharp on macro — knows how rate-sensitive sectors actually price. Good chart reads when he commits. Calls other regulars on weak takes without making it personal. Posts wins AND losses cleanly, which keeps the room honest.
 >
-> *Style & Patterns:* Trades crypto perps with leverage no risk committee would approve. Day-job analysis, off-the-clock chaos. Fast to size up on conviction names (often MSTR, SOL). Lament-mode posts after missed Solana entries are a regular feature. Sticks to large-cap names; dismissive of altcoin punts.
+> *Style & Patterns:* Trades crypto perps with leverage no risk committee would approve. Fast to size up on MSTR / SOL conviction names. Sticks to large-caps; dismissive of altcoin punts. Lament-mode posts after missed entries are a constant feature.
 >
-> *Running jokes:* "Compliance is watching him" — the recurring bit about his desk monitoring his accounts. "$WEN bag holder" — the eternal Wendy's hope. "Should've sized up" — the post-missed-trade lament that everyone parrots back at him. "Office hostage situation" (Abe's line that stuck).
+> *Running jokes:* "Compliance is watching him" — the recurring bit about his desk monitoring his accounts. "$WEN bagholder" — the eternal Wendy's hope. "Should've sized up" — the post-missed-trade lament the room parrots back at him. "Office hostage situation."
 >
-> *Trash talk ammo:* Sold his $WEN bags for a 30% loss the same day they bounced 40% — the chart screenshots still get posted at him. Once announced he'd "never touch alts again" and bought DOGE 48 hours later. Threatened to go full cash, then opened 10x SOL perps within 90 minutes. Told the room he was "done with options" twice this month — currently has three open calls. Claims to be a "macro guy" while trading 0DTE lottos.
+> *Trash talk ammo:* Sold his $WEN bags for a 30% loss the same day they bounced 40% — the chart screenshots still get posted at him. Once announced he'd "never touch alts again" and bought DOGE 48 hours later. Said "can trump stop being a fucking faggot" mid-tariff rant Tuesday. Mocked the bitcoin conference as having "not a girl in sight." Threatened to go full cash, opened 10x SOL perps within 90 minutes.
 >
-> *Recent activity (last 7d):* Closed his 5x SOL perps "because compliance was watching" (Monday). Posted a chart asking about $MSTR breakout (Wednesday) — got mixed responses. Multiple lament-mode posts about not sizing up the META 615C trade. Has been pushing the AI-capex thesis in long-form replies.
+> *Recent activity (last 7d):* Closed his 5x SOL perps "because compliance was watching" (Monday). Pushed MSTR breakout thesis Wednesday — got mixed responses. Multiple lament-mode posts about not sizing up META 615C. Has been pushing the AI-capex thesis in long-form replies.
 >
-> *Voice:* Crude, fast, casually cruel with affection underneath. Recurring takes: "should've sized up," "we're getting fiddled," "fuck it we ball," lament-mode posts after missed entries.
+> *Voice:* Crude and fast, casually cruel with affection underneath. Recurring takes: "should've sized up," "we're getting fiddled," "fuck it we ball," "compliance is watching." Drops "chyna" for China without irony.
 >
 > *Role in the room:* Senior energy. Not the loudest — the one whose opinion the room registers when he weighs in.
 
----
-
-## ONE LAST THING
-
-Make the reader feel like they've met this person — and that meeting them was fine. Not a roast file, not a fluff piece. Real human, real strengths, real warts the room already laughs about, real current activity. That's the dossier.
-
----
-
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
-Output a single JSON object with FIVE fields:
+Output a single JSON object with five fields:
 
 ```
 {{
@@ -280,57 +224,36 @@ Output a single JSON object with FIVE fields:
   "trader_score": <integer 0-100>,
   "trader_rationale": "<one direct sentence on what's driving the score>",
   "racial_humor_score": <integer 0-100>,
-  "trader_examples": ["<2-3 specific recent moments that drove the trader_score>"]
+  "trader_examples": ["<2-3 trade-anchored moments>"]
 }}
 ```
 
-**trader_examples** — 2-3 short, specific evidence items (each ~120-180 chars) from the user's recent message history that justify the trader_score. Mix wins, losses, and signature calls. Each one should be a concrete thing, not a generic statement.
-
-**HARD RULE: every example MUST reference a SPECIFIC TRADE** — a ticker (e.g. $NVDA, $SPY, $BTC), a contract (e.g. "150C", "$28 puts"), a position size or dollar amount, a buy/sell/trim decision, or a documented P&L. Non-trade quotes — banter, slurs, personality one-liners, opinions about other users, generic life takes — do NOT belong here. Those characterize the person (which is what `profile_text` is for), not their trading. Trader_examples is the evidence row that justifies the numeric trader_score; it's a different field with a different job.
+**trader_examples** — two to three short evidence items (each ~120-180 chars) that justify trader_score. HARD RULE: every example references a SPECIFIC TRADE — a ticker ($NVDA, $SPY, $BTC), a contract ("150C", "$28 puts"), a position size or dollar amount, a buy/sell/trim decision, or a documented P&L. Non-trade quotes (banter, slurs, personality lines, opinions about other users) belong in profile_text, not here. If you can't find two to three trade-anchored examples, return `[]` — empty is the correct answer when the user's recent history doesn't show enough trading detail.
 
 Good: "Caught the $NVDA earnings move into 145C calls Tuesday, 220% printed — flagged it 2 hours before the run."
-Good: "Full-ported $GPUS at 0.20 calling it '0 or hero', held through a 50% drawdown without trimming."
-Bad: "Sometimes does well on tech names." (not specific)
-Bad: "Calls everyone slurs and posts memes." (not a trade)
-Bad: "Said the room was full of bagholders." (not a trade)
+Good: "Full-ported $GPUS at 0.20 calling it '0 or hero,' held through a 50% drawdown without trimming."
+Anti-pattern: "Sometimes does well on tech names." (vague)
+Anti-pattern: "Calls everyone slurs and posts memes." (not a trade)
 
-If you cannot find 2-3 examples that mention a specific ticker / contract / position / trade decision, return an EMPTY ARRAY `[]`. Do NOT fall back to non-trade quotes to fill the slot — an empty array is the correct answer when the user's recent history doesn't show enough trading detail.
+**trader_score brackets (0-100):**
+- **90-100:** Real edge. Documented wins others tail. Posts wins AND losses cleanly. Process visible. Room trusts their reads.
+- **75-89:** Solid. Mostly green over time. Style clear and works. Owns misses without crisis.
+- **60-74:** Hits and misses, but hits are real. Has a setup that works in some conditions. Mixed execution.
+- **40-59:** Net negative or barely flat. Knows the theory, leaks edge in execution. Often self-aware.
+- **20-39:** Bag holder. More losses than wins. Sizes up to recover. Chases the loudest voice.
+- **0-19:** Tail traffic / exit liquidity. Should not be trading at this size.
 
-The trader_score uses these brackets:
-- **90-100 — Real edge.** Documented wins others tail. Posts wins AND losses cleanly. Process visible. Room trusts their reads.
-- **75-89 — Solid.** Mostly green over time. Style clear and works. Owns misses without crisis. Trusted on specific style/sector.
-- **60-74 — Hits and misses, but hits are real.** Has a setup that works in some conditions. Mixed execution.
-- **40-59 — Net negative or barely flat.** Knows the theory, leaks edge in execution. Style visible but isn't working consistently. Often self-aware.
-- **20-39 — Bag holder.** More documented losses than wins. Sizes up to recover. Chases the loudest voice.
-- **0-19 — Tail traffic / exit liquidity.** Should not be trading at this size.
+State the actual pattern directly in trader_rationale — one honest sentence on what drives the score.
 
-Be direct in the trader rationale — call out the actual pattern in one sentence. No "shows promise" or mealy-mouthed framings. Honest, not personally cruel.
+**racial_humor_score brackets (0-100)** — the canonical score for race-edged content from this user. Internal calibration only; the bot never quotes the raw number. Score the FULL picture (slurs + stereotypes + dog whistles + race-based mockery + unprompted racial references), not just literal slurs. Self-deprecating jokes about the user's OWN race and factual mentions of races/ethnicities in geopolitics or news don't count.
 
----
+- **0-15:** Clean. No race-edged content in the window. Lurkers default here.
+- **16-35:** Occasional. Joins common room jokes when prompted, doesn't lead, no slurs.
+- **36-55:** Regular. Race-edged humor is part of their normal voice. Some stereotyping. One or two censored slurs.
+- **56-75:** Heavy. Racial humor is a defining feature. Multiple slurs (including uncensored).
+- **76-100:** Dominant. Race-edged content saturates the messages. Slurs uncensored and frequent. Specific groups targeted in a sustained way.
 
-**racial_humor_score** — 0-100 scoring how frequently this user engages with race-edged content. This is a PRIVATE internal calibration number for clapback context; it will never be quoted as a raw value to anyone. Be honest, not euphemistic.
-
-Score the FULL picture, not just slurs. Counts toward the score:
-- Literal racial slurs (any group, censored or not — "n***a", "ch**k", coded variants)
-- Ethnic / racial stereotyping ("typical [group] move", "of course the [group] guy", "[group] energy")
-- Racial / cultural jokes ("aliens vs. [group]" punchlines, accent mimicry, country-specific mockery)
-- Race-based mockery of other users in the room
-- Coded racism / dog whistles / "joking" appropriation
-- Frequent unprompted racial references even when not punching down
-
-Does NOT count toward the score:
-- Mentioning races/ethnicities in factual context (geopolitics, demographics, a news headline)
-- Self-deprecating jokes about the user's OWN race
-- Defending or pushing back on racial humor
-
-Calibration:
-- **0-15 — Clean.** No race-edged content, or zero usage in the window. Lurkers default here unless they actually post.
-- **16-35 — Occasional.** Joins in on common room jokes when prompted, doesn't lead, no slurs.
-- **36-55 — Regular.** Race-edged humor is part of their normal voice. Some stereotyping. Maybe one or two censored slurs.
-- **56-75 — Heavy.** Racial humor is a defining feature. Stereotyping flows freely. Multiple slurs (including uncensored). Often pokes at specific groups.
-- **76-100 — Dominant.** Race-edged content saturates the messages. Slurs uncensored and frequent. Specific ethnic groups targeted in a sustained way.
-
-Anchor against THIS user's messages. If you see zero examples, score is in the 0-15 range — don't pad it.
+Anchor against THIS user's messages. Zero examples = 0-15.
 
 ---
 
