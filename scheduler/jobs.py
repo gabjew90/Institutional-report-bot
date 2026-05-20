@@ -677,54 +677,15 @@ async def _analyst_expire_sweep_job(bot=None):
         if not expired_rows:
             log.info("Analyst expire sweep: nothing to mark")
             return
-        log.info(f"Analyst expire sweep: marked {len(expired_rows)} rows as expired_unknown")
-        if bot is None:
-            return
-        # Format announce — one-line per ticker/contract, no duplicates
-        seen: set[tuple] = set()
-        lines = []
-        for r in expired_rows:
-            key = (r.get("ticker"), r.get("contract_type"),
-                   r.get("strike"), r.get("expiry"))
-            if key in seen:
-                continue
-            seen.add(key)
-            tk = r.get("ticker") or "?"
-            ct = (r.get("contract_type") or "").lower()
-            ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
-            strike = r.get("strike")
-            strike_s = (
-                f"{int(strike) if strike == int(strike) else strike}"
-                if strike is not None else "?"
-            )
-            exp = r.get("expiry") or "?"
-            lines.append(f"   • {tk} {strike_s}{ct_suffix} {exp}")
-        if not lines:
-            return
-        body = (
-            f"🗓️ **Analyst log auto-expire** — {len(seen)} contracts past "
-            f"expiry, marked as `expired_unknown`:\n" + "\n".join(lines[:20])
+        log.info(
+            f"Analyst expire sweep: marked {len(expired_rows)} rows as "
+            f"expired_unknown (announcement disabled)"
         )
-        if len(lines) > 20:
-            body += f"\n   • ... and {len(lines) - 20} more"
-
-        chan_name = (settings.analyst_test_announce_channel or "").strip()
-        if not chan_name:
-            return
-        target = None
-        for guild in bot.guilds:
-            for ch in guild.text_channels:
-                if ch.name.lower() == chan_name.lower():
-                    target = ch
-                    break
-            if target:
-                break
-        if target is None:
-            log.warning(f"Analyst expire sweep: announce channel '{chan_name}' not found")
-            return
-        try:
-            await target.send(body[:1900])
-        except Exception as e:
-            log.error(f"Analyst expire sweep: announce failed: {e}")
+        # Announcement disabled per user preference — the expire-sweep
+        # logic still runs (positions get dropped from "currently open"
+        # via the inferred_status flag), but no embed gets posted. If
+        # you want to see what was marked, check the log line above or
+        # query analyst_trades WHERE inferred_status='expired_unknown'.
+        return
     except Exception as e:
         log.error(f"Analyst expire sweep failed: {e}", exc_info=True)

@@ -85,6 +85,107 @@ def _is_extraction_actionable(extracted: dict) -> bool:
     return True
 
 
+def _lookup_open_price(
+    caller: str | None,
+    ticker: str,
+    contract_type: str | None,
+    strike: float | None,
+    expiry: str,
+) -> float | None:
+    """Look up the earliest recorded open/add price for the matching
+    contract under this caller. Used to derive close-side price or
+    gain% when one side is missing on a CLOSE/TRIM screenshot.
+    Returns None if no open price is on file (caller has the contract
+    in unknown-cost-basis state — caller may have opened off-channel).
+    """
+    if not ticker or not expiry:
+        return None
+    params: list[Any] = [ticker.upper(), expiry]
+    sql = (
+        "SELECT price FROM analyst_trades "
+        "WHERE is_trade = 1 "
+        "  AND UPPER(ticker) = ? "
+        "  AND expiry = ? "
+        "  AND action IN ('open', 'add') "
+        "  AND price IS NOT NULL "
+        "  AND price != 0"
+    )
+    if contract_type:
+        sql += " AND LOWER(COALESCE(contract_type,'')) = ?"
+        params.append(contract_type.strip().lower())
+    if strike is not None:
+        try:
+            sql += " AND COALESCE(strike,-1) = ?"
+            params.append(float(strike))
+        except (TypeError, ValueError):
+            return None
+    if caller:
+        sql += " AND LOWER(COALESCE(caller,'')) = ?"
+        params.append(caller.strip().lower())
+    sql += " ORDER BY posted_at ASC LIMIT 1"
+    try:
+        row = db.get_connection().execute(sql, tuple(params)).fetchone()
+    except Exception as e:
+        log.debug(f"_lookup_open_price query failed: {e}")
+        return None
+    if row is None or row[0] is None:
+        return None
+    try:
+        return float(row[0])
+    except (TypeError, ValueError):
+        return None
+
+
+def _derive_close_metrics(extracted: dict, caller_name: str | None) -> None:
+    """On a CLOSE/TRIM extraction with exactly one of {price, gain_pct}
+    missing, derive the missing value from the open-side price.
+
+      close_price = open_price * (1 + gain_pct/100)
+      gain_pct    = (close_price - open_price) / open_price * 100
+
+    If both fields are missing OR both are present, no-op. If the open
+    price isn't on file, no-op (no anchor to derive from). Mutates the
+    extracted dict in place; tags `price_source` / `gain_source` on the
+    blob so the forensic JSON shows the value was computed, not OCRed.
+    """
+    action = (extracted.get("action") or "").lower()
+    if action not in ("close", "trim"):
+        return
+
+    try:
+        p = float(extracted.get("price")) if extracted.get("price") is not None else None
+    except (TypeError, ValueError):
+        p = None
+    has_price = bool(p and p != 0)
+
+    try:
+        g = float(extracted.get("gain_pct")) if extracted.get("gain_pct") is not None else None
+    except (TypeError, ValueError):
+        g = None
+    has_gain = g is not None  # 0% is a valid round-trip
+
+    # Both present or both missing → nothing to derive
+    if has_price == has_gain:
+        return
+
+    open_price = _lookup_open_price(
+        caller_name,
+        (extracted.get("ticker") or "").strip(),
+        extracted.get("contract_type"),
+        extracted.get("strike"),
+        (extracted.get("expiry") or "").strip(),
+    )
+    if not open_price:
+        return
+
+    if has_gain and not has_price:
+        extracted["price"] = round(open_price * (1 + g / 100.0), 2)
+        extracted["price_source"] = "derived_from_gain_and_open"
+    elif has_price and not has_gain:
+        extracted["gain_pct"] = round(((p - open_price) / open_price) * 100.0, 2)
+        extracted["gain_source"] = "derived_from_price_and_open"
+
+
 async def watch_message(
     bot: discord.Client,
     message: discord.Message,
@@ -172,6 +273,8 @@ async def watch_message(
                 "extraction failed integrity check (missing ticker or strike=0)"
             )
         is_trade = bool(extracted.get("is_trade_screenshot"))
+        if is_trade:
+            _derive_close_metrics(extracted, canonical_caller)
         try:
             db.record_analyst_trade(
                 discord_message_id=message.id,
@@ -240,6 +343,8 @@ async def watch_message(
             continue
 
         is_trade = bool(extracted.get("is_trade_screenshot"))
+        if is_trade:
+            _derive_close_metrics(extracted, canonical_caller)
 
         try:
             db.record_analyst_trade(
