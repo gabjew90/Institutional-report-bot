@@ -195,7 +195,7 @@ async def watch_message(
             log.error(f"Analyst log: caption-only DB insert failed: {e}", exc_info=True)
             return
         if is_trade:
-            await _announce_to_channel(bot, message, extracted, author_name)
+            await _announce_to_channel(bot, message, extracted, author_name, caller=caller)
         return
 
     for att in message.attachments:
@@ -265,7 +265,7 @@ async def watch_message(
             continue
 
         if is_trade:
-            await _announce_to_channel(bot, message, extracted, author_name)
+            await _announce_to_channel(bot, message, extracted, author_name, caller=caller)
 
 
 async def _announce_to_channel(
@@ -273,13 +273,21 @@ async def _announce_to_channel(
     source_msg: discord.Message,
     extracted: dict[str, Any],
     author_name: str,
+    caller: dict | None = None,
 ) -> None:
     """Post a one-line summary of the logged trade to the configured
     announce channel as an embed. The source channel name is the
     clickable link back to the original alert.
     Skips silently if the channel can't be found.
+
+    Per-caller announce override: if `caller["announce_channel"]` is
+    set, post there instead of the global `analyst_test_announce_channel`.
+    Used by callers like f.jamal who announce back to their own channel.
     """
-    chan_name = (settings.analyst_test_announce_channel or "").strip()
+    per_caller_chan = (caller or {}).get("announce_channel") if caller else None
+    chan_name = (
+        per_caller_chan or settings.analyst_test_announce_channel or ""
+    ).strip()
     if not chan_name:
         return
 

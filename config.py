@@ -83,6 +83,11 @@ class Settings(BaseSettings):
     #
     # Each call to `_resolve_analyst_callers()` returns this list with
     # the legacy single-caller config synthesized in as a fallback.
+    #   announce_channel — optional override for where this caller's
+    #              log embeds get posted. If unset, falls back to the
+    #              global `analyst_test_announce_channel`. Useful when
+    #              a caller should announce to a dedicated channel
+    #              (e.g. f.jamal's own test-channel sandbox).
     analyst_callers: list[dict] = [
         {
             "name": "abe",
@@ -96,6 +101,14 @@ class Settings(BaseSettings):
             "display": "BK",
             "username": "bankerkyle",
             "channel": "💅🏾-kyle-alerts-💅🏾",
+            "enabled": True,
+        },
+        {
+            "name": "f.jamal",
+            "display": "Jamal",
+            "username": "f.jamal",
+            "channel": "test-channel",
+            "announce_channel": "test-channel",
             "enabled": True,
         },
     ]
@@ -268,11 +281,15 @@ class Settings(BaseSettings):
                 # Defensive: ensure all required keys are populated
                 if not all(c.get(k) for k in ("name", "username", "channel")):
                     continue
+                announce = c.get("announce_channel")
                 out.append({
                     "name": str(c["name"]).strip().lower(),
                     "display": str(c.get("display") or c["name"]),
                     "username": str(c["username"]).strip(),
                     "channel": str(c["channel"]).strip(),
+                    "announce_channel": (
+                        str(announce).strip() if announce else None
+                    ),
                     "enabled": True,
                 })
             return out
