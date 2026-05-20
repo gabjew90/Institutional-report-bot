@@ -1208,6 +1208,45 @@ def create_bot() -> commands.Bot:
             log.error(f"Reanalyze enqueue failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
+    @bot.tree.command(
+        name="refresh_profiles",
+        description="Force a user-profile refresh via the live bot (no twin-client races)",
+    )
+    @app_commands.describe(password="Admin password")
+    async def refresh_profiles_command(
+        interaction: discord.Interaction,
+        password: str,
+    ):
+        """Trigger _user_profile_refresh_job inline on the live worker.
+
+        Why this exists: running the backfill script via `railway ssh` spawns
+        a SECOND discord.Client on the same bot token as this worker, which
+        causes gateway-session contention and intermittent WebSocket drops
+        mid-scan. Invoking the refresh through a slash command uses the
+        worker's already-connected client — no second session, no race.
+        Long-running (3-6 min); responds ephemerally on completion.
+        """
+        if not await _check_pulse_channel(interaction):
+            return
+        if settings.command_password and password != settings.command_password:
+            await interaction.response.send_message("Invalid password.", ephemeral=True)
+            return
+        await interaction.response.defer(thinking=True, ephemeral=True)
+        try:
+            from scheduler.jobs import _user_profile_refresh_job
+            log.info("Manual /refresh_profiles triggered by %s", interaction.user)
+            await _user_profile_refresh_job(bot=bot)
+            await interaction.followup.send(
+                "✅ Profile refresh complete. Snapshot pushed to pulse-data branch.",
+                ephemeral=True,
+            )
+        except Exception as e:
+            log.error("Manual /refresh_profiles failed: %s", e, exc_info=True)
+            await interaction.followup.send(
+                f"Refresh failed: {str(e)[:300]}",
+                ephemeral=True,
+            )
+
     # --- DISABLED in slash menu (2026-05-14) ----------------------------------
     # /clearqueue is a destructive admin tool that should not be in everyone's
     # picker. Function preserved — uncomment the decorators below if you need
