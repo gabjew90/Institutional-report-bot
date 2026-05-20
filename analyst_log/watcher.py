@@ -346,6 +346,46 @@ def _lookup_open_price(
         return None
 
 
+def _resolve_close_expiry(extracted: dict, caller_name: str | None) -> None:
+    """For CLOSE/TRIM extractions where expiry is null, look up the
+    caller's currently-open position matching ticker + strike and use
+    that expiry. Mutates extracted in place.
+
+    Why: terse closers like "Closed HOOD 80c @0.41" don't state the
+    expiry — the caller obviously means "close the position I already
+    have open." Defaulting to today (0DTE) creates a phantom close that
+    doesn't match the actual open. Matching against outstanding open
+    positions resolves to the right contract every time.
+
+    Cases:
+    - action != close/trim → no-op
+    - expiry already populated → no-op (trust the OCR)
+    - no matching open position → no-op (leave expiry null;
+      _is_extraction_actionable will then downgrade to non-trade since
+      expiry IS NULL is a junk row)
+    """
+    action = (extracted.get("action") or "").lower()
+    if action not in ("close", "trim"):
+        return
+    if extracted.get("expiry"):
+        return
+
+    matched = db.find_matching_open_expiry(
+        caller=caller_name,
+        ticker=(extracted.get("ticker") or "").strip(),
+        contract_type=extracted.get("contract_type"),
+        strike=extracted.get("strike"),
+    )
+    if matched:
+        extracted["expiry"] = matched
+        extracted["expiry_source"] = "matched_open_position"
+        notes = (extracted.get("notes") or "").strip()
+        extracted["notes"] = (
+            (notes + " " if notes else "")
+            + f"(expiry resolved to {matched} via open-position match)"
+        ).strip()
+
+
 def _derive_close_metrics(extracted: dict, caller_name: str | None) -> None:
     """On a CLOSE/TRIM extraction with exactly one of {price, gain_pct}
     missing, derive the missing value from the open-side price.
@@ -484,6 +524,10 @@ async def watch_message(
             )
         is_trade = bool(extracted.get("is_trade_screenshot"))
         if is_trade:
+            # Resolve close/trim expiry from matching open position BEFORE
+            # deriving close metrics — the derive step needs an expiry to
+            # look up the open price for gain%/price computation.
+            _resolve_close_expiry(extracted, canonical_caller)
             _derive_close_metrics(extracted, canonical_caller)
         try:
             db.record_analyst_trade(
@@ -554,6 +598,10 @@ async def watch_message(
 
         is_trade = bool(extracted.get("is_trade_screenshot"))
         if is_trade:
+            # Resolve close/trim expiry from matching open position BEFORE
+            # deriving close metrics — the derive step needs an expiry to
+            # look up the open price for gain%/price computation.
+            _resolve_close_expiry(extracted, canonical_caller)
             _derive_close_metrics(extracted, canonical_caller)
 
         try:

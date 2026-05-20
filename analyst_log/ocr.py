@@ -317,11 +317,24 @@ cannot be confidently extracted from the caption alone, treat the message
 as NOT a trade — set is_trade=false. Do NOT guess on ticker or strike. Do
 NOT fall back to a 0 sentinel.
 
-**Expiry default — 0DTE.** If the caption has NO expiry value (or you can't
-parse one), set `expiry` to today's date ({today_iso}). Terse callers often
-omit expiry on intraday lottos because the contract is same-day; assume
-0DTE rather than dropping the trade. If the caption DOES have an explicit
-M/D, use that with the year-inference rule below.
+**Expiry default — depends on action:**
+
+- **OPEN / ADD** with no expiry in the caption → set `expiry` to today's
+  date ({today_iso}) (the 0DTE default). Terse callers often omit expiry
+  on intraday lottos because the contract is same-day; better to log the
+  open at today's expiry than to drop it.
+
+- **CLOSE / TRIM** with no expiry in the caption → set `expiry` to
+  **null**. Do NOT default closes to today. The caller usually means
+  "close the position I already have open" — the system will resolve
+  which contract that is by matching the ticker + strike against their
+  outstanding open positions. Defaulting a close to today incorrectly
+  creates a phantom 0DTE close that doesn't match the earlier open.
+
+- **VIEWING / UNCLEAR** with no expiry → null.
+
+If the caption DOES have an explicit M/D, use that with the year-inference
+rule below regardless of action.
 
 Caller shorthand to recognize (uppercase canonical):
 - "rut" → RUT, "ndx" → NDX, "spx" → SPX, "spy" → SPY, "qqq" → QQQ
@@ -333,11 +346,12 @@ Strike syntax: a number directly followed by 'c' (call) or 'p' (put), e.g.
 "94c" → strike 94 call, "29000c" → strike 29000 call. Decimal strikes allowed
 ("207.5c" → 207.5 call).
 
-Expiry: "M/D" or "MM/DD" or "MM-DD" formats — use today's date ({today_iso})
-to infer the year. If the M/D is on/after today → current year. If 1-14 days
-ago → current year (just expired or about to). If more than 14 days ago →
-next year. **If no expiry value appears in the caption at all, use today's
-date** ({today_iso}) — that's the 0DTE default.
+Expiry parsing: "M/D" or "MM/DD" or "MM-DD" formats — use today's date
+({today_iso}) to infer the year. If the M/D is on/after today → current year.
+If 1-14 days ago → current year (just expired or about to). If more than
+14 days ago → next year.
+
+**For missing expiry, see "Expiry default — depends on action" rule above.**
 
 Price: read from "@PRICE" patterns. "@3.65" → price 3.65. If no price
 visible, leave null.
@@ -492,11 +506,25 @@ async def extract_trade_from_caption(
                 ),
                 "confidence": "high",
             }
-        # 0DTE default — if model didn't fill expiry, use today
+        # Action-aware expiry default — opens get 0DTE fallback, closes
+        # stay null so the watcher can resolve them from the caller's
+        # outstanding open positions (matching by ticker + strike).
+        # Defaulting a close to today creates a phantom 0DTE close that
+        # doesn't match the earlier open — this was the HOOD 5/22 bug.
         if not data.get("expiry"):
-            data["expiry"] = today_iso
-            data["notes"] = (
-                (data.get("notes") or "")
-                + " (expiry defaulted to today — 0DTE)"
-            ).strip()
+            action = (data.get("action") or "").lower()
+            if action in ("open", "add"):
+                data["expiry"] = today_iso
+                data["notes"] = (
+                    (data.get("notes") or "")
+                    + " (expiry defaulted to today — 0DTE open)"
+                ).strip()
+            # close / trim / viewing / unclear / other → leave null;
+            # the watcher will resolve close/trim by matching open
+            # positions. Notes for forensic visibility.
+            elif action in ("close", "trim"):
+                data["notes"] = (
+                    (data.get("notes") or "")
+                    + " (expiry left null — watcher will match to open position)"
+                ).strip()
     return data

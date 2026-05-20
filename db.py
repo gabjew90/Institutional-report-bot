@@ -2394,6 +2394,71 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
     return "\n".join(lines)
 
 
+def find_matching_open_expiry(
+    *,
+    caller: str | None,
+    ticker: str,
+    contract_type: str | None,
+    strike: float | None,
+) -> str | None:
+    """Find the expiry of a currently-open position matching this
+    caller + ticker + contract_type + strike. Used by the watcher to
+    resolve close/trim captions where the expiry wasn't stated —
+    matches against the caller's actually-outstanding positions.
+
+    Logic:
+      - Computes the latest action per (ticker, contract_type, strike,
+        expiry) for the caller
+      - Filters to expiries whose latest action is open/add/trim (alive)
+      - Excludes positions marked expired_unknown
+      - Returns the SOONEST live expiry (most likely candidate for a
+        close — short-dated lottos are the usual close target)
+
+    Returns None when no live position matches (caller closed it
+    earlier, or opened it off-channel before the bot saw them).
+    """
+    if not ticker:
+        return None
+    params: list = [ticker.upper()]
+    sql = """WITH ranked AS (
+        SELECT expiry, action,
+               ROW_NUMBER() OVER (
+                   PARTITION BY ticker, contract_type, strike, expiry
+                   ORDER BY posted_at DESC
+               ) AS rn
+        FROM analyst_trades
+        WHERE is_trade = 1
+          AND UPPER(ticker) = ?
+          AND action IN ('open', 'add', 'close', 'trim')
+          AND expiry IS NOT NULL
+          AND (inferred_status IS NULL OR inferred_status != 'expired_unknown')
+    """
+    if contract_type:
+        sql += " AND LOWER(COALESCE(contract_type,'')) = ?"
+        params.append(contract_type.strip().lower())
+    if strike is not None:
+        try:
+            sql += " AND COALESCE(strike,-1) = ?"
+            params.append(float(strike))
+        except (TypeError, ValueError):
+            return None
+    if caller:
+        sql += " AND LOWER(COALESCE(caller,'')) = ?"
+        params.append(caller.strip().lower())
+    sql += """)
+        SELECT expiry FROM ranked
+        WHERE rn = 1
+          AND action IN ('open', 'add', 'trim')
+        ORDER BY date(expiry) ASC
+        LIMIT 1
+    """
+    try:
+        row = get_connection().execute(sql, tuple(params)).fetchone()
+    except Exception:
+        return None
+    return row[0] if row else None
+
+
 def get_analyst_trade_by_message_id(message_id: int) -> dict | None:
     """Return the most-recent analyst_trades row for a discord message_id,
     or None if no row exists. Used by the watcher to look up a reply
