@@ -75,14 +75,16 @@ execution tickets. The poster does NOT post quantity, entry price, exit price, \
 or spot price on the cards themselves. The "Buy" pill is the ORIGINAL order \
 type, not the current action.
 
-When the screenshot is a stats screen for a specific contract (Bid / Ask / \
-Mark / IV visible), extract a `price` value: compute the **midpoint of bid and \
-ask** ((bid + ask) / 2, rounded to 2 decimals) as a fair proxy for the fill \
-price they likely paid or expected. Use Mark if Bid/Ask aren't both visible. \
-Skip if neither bid/ask nor mark is legible. For notification cards (no \
-bid/ask shown), leave price=null — the entry price isn't derivable from the \
-gain-pill alone. For order tickets with an explicit price, use that price \
-directly.
+Extract a `price` value from whichever of these is visible (in this priority):
+1. **Avg cost / "Average cost" / "Avg price"** on a position or portfolio \
+   screen — this is the actual fill price the poster paid; always prefer it.
+2. **Midpoint of bid and ask** ((bid + ask) / 2, rounded to 2 decimals) on a \
+   stats / quote screen — fair proxy for an expected fill.
+3. **Mark price** on a stats / quote screen, if bid/ask aren't both legible.
+4. **Explicit price on an order ticket** — use it directly.
+Skip (price=null) only if none of the above is visible. Notification cards \
+(gain-pill only, no bid/ask/mark/avg) → price=null — the entry price isn't \
+derivable from the gain-pill alone.
 
 The poster sometimes also posts:
 - A stats/quote screen (Bid/Ask/Mark/IV) when viewing an option to buy
@@ -194,7 +196,7 @@ For trade screenshots:
   "action": "open | add | trim | close | viewing | unclear",
   "action_source": "caption | image | both",
   "gain_pct": number or null (the +/-N% pill, if shown),
-  "price": number or null (midpoint of bid/ask on stats screens, or explicit price on order tickets — null on notification cards),
+  "price": number or null (priority: avg cost > bid/ask midpoint > mark > explicit ticket price; null on notification cards),
   "caption_summary": "one-line plain English combining what's shown + the caption",
   "confidence": "high | medium | low",
   "notes": "anything notable — Robinhood UI ambiguity, partial info, etc"
