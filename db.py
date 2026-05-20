@@ -2394,6 +2394,32 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
     return "\n".join(lines)
 
 
+def get_latest_analyst_trade_posted_at(caller: str | None = None) -> str | None:
+    """Return the most-recent `posted_at` ISO timestamp for analyst_trades,
+    optionally scoped to a single caller. Used by the on_ready /
+    on_resumed catch-up loop to know where to resume scanning from
+    when the bot reconnects after a gateway flap.
+
+    Returns None when there are no trades on file for the caller (or
+    no trades at all when caller is None).
+    """
+    if caller:
+        row = get_connection().execute(
+            """SELECT MAX(posted_at) AS latest
+               FROM analyst_trades
+               WHERE LOWER(COALESCE(caller, '')) = ?""",
+            (caller.strip().lower(),),
+        ).fetchone()
+    else:
+        row = get_connection().execute(
+            "SELECT MAX(posted_at) AS latest FROM analyst_trades"
+        ).fetchone()
+    if row is None:
+        return None
+    val = row[0] if isinstance(row, tuple) else row["latest"]
+    return val or None
+
+
 def mark_expired_analyst_positions() -> list[dict]:
     """Daily cron entrypoint. Mark any trade rows whose expiry has passed
     AND have no inferred_status yet as 'expired_unknown'. Returns the rows

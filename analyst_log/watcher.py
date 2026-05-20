@@ -13,6 +13,7 @@ Flow per message:
 """
 
 import logging
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 import discord
@@ -22,6 +23,159 @@ from analyst_log.ocr import extract_trade_from_caption, extract_trade_from_image
 from config import settings
 
 log = logging.getLogger(__name__)
+
+
+# State for catch-up rate-limiting. on_resumed can fire rapidly during
+# gateway flapping; without this we'd run the scan over and over.
+_CATCHUP_MIN_INTERVAL_SEC = 120  # don't re-run within 2 minutes
+_CATCHUP_HARD_CAP_HOURS = 24     # never scan more than 24h back per channel
+_CATCHUP_BUFFER_MIN = 60         # rewind 1h before latest-known-msg as safety margin
+_last_catchup_at: dict[str, datetime] = {}
+
+
+async def run_caller_catchup(
+    bot: discord.Client,
+    *,
+    reason: str = "startup",
+    force: bool = False,
+) -> int:
+    """Scan each configured caller's channel for messages we may have
+    missed during a downtime / gateway-flapping window. Routes each
+    eligible message through watch_message — the existing dedup
+    (UNIQUE(message_id, attachment_id) + analyst_trade_exists check)
+    makes re-processing already-logged messages a silent no-op.
+
+    Triggered from on_ready and on_resumed in bot.py. The on_resumed
+    case is the important one — when the gateway invalidates and
+    re-identifies, message events fired during the disconnect window
+    are LOST (Discord does not replay them). Without this catch-up, any
+    BK/Abe trade screenshot posted during a flap is gone forever from
+    the log.
+
+    Scan window per channel: from
+      max(latest_known_posted_at - 1h buffer, now - 24h hard cap)
+    to now. So a chatty caller with messages 5 min ago triggers a ~1h
+    scan; a quiet caller with no recent activity caps at 24h.
+
+    Rate-limited to one run per 2 minutes globally to avoid hammering
+    Discord when the gateway is flapping rapidly. Pass force=True to
+    skip the rate limit (used by /reanalyze-style manual triggers).
+
+    Returns the count of NEW messages logged across all callers (i.e.
+    messages that weren't already in the DB before this run).
+    """
+    global _last_catchup_at
+    now = datetime.now(timezone.utc)
+    if not force:
+        last = _last_catchup_at.get("global")
+        if last and (now - last).total_seconds() < _CATCHUP_MIN_INTERVAL_SEC:
+            log.debug(
+                f"Analyst catch-up skipped — ran "
+                f"{(now - last).total_seconds():.0f}s ago"
+            )
+            return 0
+    _last_catchup_at["global"] = now
+
+    callers = settings.resolve_analyst_callers()
+    if not callers:
+        return 0
+
+    total_new = 0
+    for caller in callers:
+        chan_name = caller.get("channel")
+        if not chan_name:
+            continue
+        target = None
+        for guild in bot.guilds:
+            for ch in guild.text_channels:
+                if ch.name == chan_name:
+                    target = ch
+                    break
+            if target:
+                break
+        if target is None:
+            log.debug(
+                f"Catch-up: channel '{chan_name}' for {caller['name']} "
+                f"not found in any guild"
+            )
+            continue
+
+        # Determine the start time for this caller's scan
+        latest_iso = db.get_latest_analyst_trade_posted_at(caller["name"])
+        if latest_iso:
+            try:
+                # Normalize ISO timestamp — DB stores both T-separated and
+                # space-separated, with or without UTC offset
+                norm = latest_iso.replace(" ", "T")
+                if norm.endswith("Z"):
+                    norm = norm[:-1] + "+00:00"
+                latest_dt = datetime.fromisoformat(norm)
+                if latest_dt.tzinfo is None:
+                    latest_dt = latest_dt.replace(tzinfo=timezone.utc)
+            except Exception as e:
+                log.warning(f"Catch-up: bad timestamp {latest_iso!r}: {e}")
+                latest_dt = None
+        else:
+            latest_dt = None
+
+        hard_floor = now - timedelta(hours=_CATCHUP_HARD_CAP_HOURS)
+        if latest_dt:
+            scan_from = max(
+                latest_dt - timedelta(minutes=_CATCHUP_BUFFER_MIN),
+                hard_floor,
+            )
+        else:
+            scan_from = hard_floor
+
+        expected_username = (caller.get("username") or "").lower()
+        n_seen = 0
+        n_processed = 0
+        try:
+            async for msg in target.history(
+                limit=None, after=scan_from, oldest_first=True
+            ):
+                n_seen += 1
+                if msg.author.bot:
+                    continue
+                if expected_username and msg.author.name.lower() != expected_username:
+                    continue
+                # Before-watch-message dedup check so we can count "new"
+                # messages accurately (the watcher itself silently skips
+                # via the same check, but we don't get a return signal).
+                synthetic_id = 0 if not msg.attachments else None
+                # Crude: if ANY attachment id is new, count as new. For
+                # caption-only msgs the synthetic_id=0 path is used.
+                is_new = False
+                if msg.attachments:
+                    for att in msg.attachments:
+                        if not db.analyst_trade_exists(msg.id, att.id):
+                            is_new = True
+                            break
+                else:
+                    is_new = not db.analyst_trade_exists(msg.id, 0)
+                if is_new:
+                    n_processed += 1
+                await watch_message(bot, msg, caller=caller)
+            if n_processed:
+                log.info(
+                    f"Analyst catch-up ({reason}): #{chan_name} — "
+                    f"scanned {n_seen}, logged {n_processed} new "
+                    f"messages for {caller['name']} "
+                    f"(from {scan_from.isoformat()})"
+                )
+                total_new += n_processed
+            else:
+                log.debug(
+                    f"Analyst catch-up ({reason}): #{chan_name} — "
+                    f"scanned {n_seen}, nothing new for {caller['name']}"
+                )
+        except Exception as e:
+            log.warning(
+                f"Analyst catch-up ({reason}) failed for {caller['name']} "
+                f"in #{chan_name}: {e}",
+                exc_info=True,
+            )
+    return total_new
 
 
 async def _fetch_reply_parent_caption(

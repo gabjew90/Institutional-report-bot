@@ -1035,6 +1035,30 @@ def create_bot() -> commands.Bot:
                 await announce_startup_backfill(bot)
         except Exception as e:
             log.error(f"Ingestion feed startup backfill failed: {e}", exc_info=True)
+        # Catch up on caller-channel messages we may have missed during
+        # downtime / startup. Discord drops gateway events while
+        # disconnected and doesn't replay them on reconnect, so without
+        # this any trade posted during a flap would be lost forever.
+        try:
+            from analyst_log.watcher import run_caller_catchup
+            await run_caller_catchup(bot, reason="on_ready")
+        except Exception as e:
+            log.error(f"Analyst catch-up on_ready failed: {e}", exc_info=True)
+
+    @bot.event
+    async def on_resumed():
+        """Fires when the gateway successfully resumes a session after a
+        brief WS drop (no full re-identify). Re-run the analyst catch-up
+        because any message events fired during the disconnect window
+        were lost. Rate-limited to one run per 2 min globally so a
+        flap-storm doesn't trigger a scan-storm.
+        """
+        log.info("Discord gateway resumed — running analyst catch-up")
+        try:
+            from analyst_log.watcher import run_caller_catchup
+            await run_caller_catchup(bot, reason="on_resumed")
+        except Exception as e:
+            log.error(f"Analyst catch-up on_resumed failed: {e}", exc_info=True)
 
     # --- DISABLED in slash menu (2026-05-14) ----------------------------------
     # /pulse is no longer registered with Discord's command tree. Manual pulses
