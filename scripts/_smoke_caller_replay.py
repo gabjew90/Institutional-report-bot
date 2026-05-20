@@ -229,11 +229,13 @@ async def process_caller(
                 extracted = await extract_trade_from_image(
                     blob, att.content_type or "image/jpeg",
                     caption, parent_caption=parent_caption,
+                    caller_name=caller["display"],
                 )
             elif caption:
                 stats["caption_only_messages"] += 1
                 extracted = await extract_trade_from_caption(
                     caption, parent_caption=parent_caption,
+                    caller_name=caller["display"],
                 )
             else:
                 # Empty + no attachments — skip

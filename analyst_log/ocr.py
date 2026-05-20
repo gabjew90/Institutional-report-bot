@@ -37,11 +37,15 @@ def _get_client() -> genai.Client:
     return _client
 
 
-def build_prompt(today_iso: str, caption: str) -> str:
+def build_prompt(today_iso: str, caption: str, caller_name: str = "the caller") -> str:
     """Build the Gemini extraction prompt for one analyst screenshot.
 
     `today_iso` is YYYY-MM-DD; used for expiry-year inference.
     `caption` is the user's text posted with the image (may be empty).
+    `caller_name` is the display name of the caller whose channel this
+    screenshot is from (e.g. "Abe", "BK"). Used to scope the model's
+    references — without this, the model defaults to assuming "Abe" no
+    matter which channel the screenshot came from.
     """
     cap_block = (
         f'\n\nThe USER POSTED THIS CAPTION WITH THE IMAGE: "{caption.strip()}"\n'
@@ -52,39 +56,45 @@ def build_prompt(today_iso: str, caption: str) -> str:
         'from the image alone (see fallback rules below).'
     )
     return f"""\
-You are looking at an image from a trading group chat. The user is "Abe," a \
-trader who posts Robinhood screenshots with specific characteristics. Today's \
-date is {today_iso}.
+You are looking at an image from a trading group chat. The poster is **{caller_name}**, \
+a trader who posts trade screenshots — Robinhood notification cards, stats \
+screens, or order tickets. Today's date is {today_iso}.
 
-ABE'S TYPICAL POSTING FORMAT — a Robinhood notification card showing:
+**IMPORTANT:** every reference in your output to "the trader," "the user," "the \
+caller," "they," or "he" must mean {caller_name}. Do not name a different \
+trader. If you write a `caption_summary` or `notes` field, name {caller_name} \
+or use a pronoun — never insert a name from your training data.
+
+TYPICAL POSTING FORMAT — a Robinhood notification card showing:
 - Ticker + strike + Call/Put (e.g. "NVDA $150 Call")
 - Month/day + Buy/Sell pill (e.g. "5/29 · Buy")
 - Green +N% or red -N% gain pill on the right
 
 These are NOTIFICATION cards (current P&L of an existing position), NOT order \
-execution tickets. He DOES NOT post quantity, entry price, exit price, or \
-spot price on the cards themselves. The "Buy" pill is the ORIGINAL order type, \
-not the current action.
+execution tickets. The poster does NOT post quantity, entry price, exit price, \
+or spot price on the cards themselves. The "Buy" pill is the ORIGINAL order \
+type, not the current action.
 
-When Abe DOES post a stats screen for a specific contract (Bid / Ask / Mark / \
-IV visible), extract a `price` value: compute the **midpoint of bid and ask** \
-((bid + ask) / 2, rounded to 2 decimals) as a fair proxy for the fill price he \
-likely paid or expected. Use Mark if Bid/Ask aren't both visible. Skip if \
-neither bid/ask nor mark is legible. For notification cards (no bid/ask shown), \
-leave price=null — the entry price isn't derivable from the gain-pill alone. \
-For order tickets with an explicit price, use that price directly.
+When the screenshot is a stats screen for a specific contract (Bid / Ask / \
+Mark / IV visible), extract a `price` value: compute the **midpoint of bid and \
+ask** ((bid + ask) / 2, rounded to 2 decimals) as a fair proxy for the fill \
+price they likely paid or expected. Use Mark if Bid/Ask aren't both visible. \
+Skip if neither bid/ask nor mark is legible. For notification cards (no \
+bid/ask shown), leave price=null — the entry price isn't derivable from the \
+gain-pill alone. For order tickets with an explicit price, use that price \
+directly.
 
-He sometimes also posts:
+The poster sometimes also posts:
 - A stats/quote screen (Bid/Ask/Mark/IV) when viewing an option to buy
 - A tweet screenshot or chart (not a trade — flag as is_trade_screenshot=false)
 {cap_block}
 
 CAPTION → ACTION MAPPING — IMPORTANT ASYMMETRY:
 
-False-positive opens (saying "open" when Abe was just viewing) are MUCH \
-worse than false-negative opens (saying "viewing" when he actually opened). \
+False-positive opens (saying "open" when the poster was just viewing) are MUCH \
+worse than false-negative opens (saying "viewing" when they actually opened). \
 A wrongly-detected open creates a phantom position in the log that the bot \
-will reference forever; a missed open self-corrects when Abe posts a \
+will reference forever; a missed open self-corrects when they post a \
 notification card later. **When in doubt about an open, default to \
 "viewing".** Closes are easier to verify (gain-pill + caption usually agree), \
 so be more confident classifying closes.
@@ -119,15 +129,15 @@ toward viewing, not open). Don't assume an open from excitement alone:
 NO CAPTION (decision tree depends on screenshot_type AND gain_pct):
 
 A. **Notification card with visible POSITIVE gain (>+5%)**: action="close". \
-   Abe doesn't silently post profit screens unless he just took the win — \
-   the card itself is the flex/announcement. Treat as a took-profit close. \
-   Add a note "no close caption — inferred from gain pill" so /ask can \
-   qualify language slightly.
+   The poster doesn't silently post profit screens unless they just took the \
+   win — the card itself is the flex/announcement. Treat as a took-profit \
+   close. Add a note "no close caption — inferred from gain pill" so /ask \
+   can qualify language slightly.
 
 B. **Notification card with near-zero gain (-5% to +5%)** or no gain visible: \
    action="open". A fresh notification card without much gain has just been \
-   entered — Abe isn't flexing yet, this is the entry alert. He doesn't post \
-   notification cards casually.
+   entered — the entry alert, not a flex. They don't post notification cards \
+   casually.
 
 C. **Notification card with visible NEGATIVE gain (<-5%)**: action="unclear" \
    (lean toward "open" if you must pick). Posting a losing position silently \
@@ -136,8 +146,8 @@ C. **Notification card with visible NEGATIVE gain (<-5%)**: action="unclear" \
 
 D. **Stats screen for a SPECIFIC CONTRACT** (ticker + strike + expiry all \
    visible, "Buy [TICKER]" or "Sell [TICKER]" header, Bid/Ask/Mark/IV for \
-   that ONE contract): action="open". Abe narrowing in on a specific \
-   contract IS an entry signal — he doesn't post these for fun. The prior \
+   that ONE contract): action="open". Narrowing in on a specific contract \
+   IS an entry signal — they don't post these for fun. The prior \
    conservative bias was wrong here: single-contract stats screens are \
    confirmed-or-imminent entries, not idle browsing.
 
@@ -150,7 +160,7 @@ D. **Stats screen for a SPECIFIC CONTRACT** (ticker + strike + expiry all \
 
 E. **Pure option chain listing** (multiple strikes visible, no specific \
    contract selected) with no caption: action="viewing". This is true \
-   browsing — he's surveying the chain.
+   browsing — they're surveying the chain.
 
 F. **Order ticket / order-confirmation screen**: action="open". The screen \
    itself confirms execution.
@@ -160,7 +170,7 @@ year. Use today's date ({today_iso}) to infer the year with this priority:
 
 1. If the M/D expiry is on or after today's M/D → CURRENT YEAR.
 2. If the M/D expiry is BEFORE today, but within the last 14 days → \
-   CURRENT YEAR. Abe is posting about a contract that just expired or \
+   CURRENT YEAR. They're posting about a contract that just expired or \
    is about to expire — those are this-year contracts, not next-year.
 3. Only if the M/D expiry is more than 14 days BEFORE today (so clearly \
    stale) → NEXT YEAR.
@@ -206,6 +216,7 @@ async def extract_trade_from_image(
     mime_type: str,
     caption: str,
     parent_caption: str | None = None,
+    caller_name: str = "the caller",
 ) -> dict | None:
     """Run Gemini on an analyst trade screenshot. Returns parsed JSON dict
     on success, None on any failure (logged). Failures are non-fatal —
@@ -215,6 +226,11 @@ async def extract_trade_from_image(
     chain context. Lets a reply like 'out' on an earlier 'BTO MSFT 430C'
     post resolve to a close of that contract when the image alone is
     ambiguous.
+
+    `caller_name` is the display name of the caller this screenshot came
+    from (e.g. "Abe", "BK"). Passed into the prompt so the model knows
+    whose post it's processing — without this, the model defaults to
+    writing evidence text that says "Abe" regardless of source.
     """
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     if parent_caption and parent_caption.strip():
@@ -224,7 +240,7 @@ async def extract_trade_from_image(
         )
     else:
         composed_caption = caption
-    prompt = build_prompt(today_iso, composed_caption)
+    prompt = build_prompt(today_iso, composed_caption, caller_name=caller_name)
     try:
         client = _get_client()
         response = await client.aio.models.generate_content(
@@ -368,6 +384,7 @@ Output the JSON object only.
 async def extract_trade_from_caption(
     caption: str,
     parent_caption: str | None = None,
+    caller_name: str = "the caller",
 ) -> dict | None:
     """Caption-only extraction path for callers who post pure text
     alerts without a screenshot. Requires ticker + strike;
@@ -377,6 +394,10 @@ async def extract_trade_from_caption(
     e.g. caption='closed' + parent_caption='BTO MSFT 430C 5/20 @3.65'
     resolves to a CLOSE of that exact contract.
 
+    `caller_name` is the display name of the poster (e.g. "BK").
+    Used in the prompt so the model's evidence and notes name the
+    actual caller rather than defaulting to "Abe."
+
     Returns parsed JSON dict on success, None on any failure (logged).
     Failures are non-fatal — the watcher should continue.
     """
@@ -384,18 +405,25 @@ async def extract_trade_from_caption(
         return None
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     # Compose the caption block — when this is a reply, the parent
-    # message provides the position the reply is acting on.
+    # message provides the position the reply is acting on. Prefix
+    # with caller identity so the model attributes correctly.
+    composed_pieces = [
+        f"[POSTER: {caller_name}]"
+    ]
     if parent_caption and parent_caption.strip():
-        composed = (
-            f"[REPLY-PARENT (caller's earlier post — use for ticker/strike/expiry "
+        composed_pieces.append(
+            f"[REPLY-PARENT ({caller_name}'s earlier post — use for ticker/strike/expiry "
             f"if the new message is sparse like 'closed' / 'sold @X'):]\n"
-            f"{parent_caption.strip()[:500]}\n\n"
+            f"{parent_caption.strip()[:500]}"
+        )
+        composed_pieces.append(
             f"[CURRENT MESSAGE (the action — apply action verb here to the "
             f"contract from the parent):]\n"
             f"{caption.strip()[:1000]}"
         )
     else:
-        composed = caption.strip()[:1000]
+        composed_pieces.append(caption.strip()[:1000])
+    composed = "\n\n".join(composed_pieces)
     prompt = _CAPTION_ONLY_PROMPT.format(
         today_iso=today_iso, caption=composed
     )

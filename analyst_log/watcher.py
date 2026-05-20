@@ -109,9 +109,11 @@ async def watch_message(
     if caller:
         expected_username = caller.get("username", "").strip().lower()
         canonical_caller = caller.get("name", "").strip().lower() or None
+        caller_display = caller.get("display") or canonical_caller or "the caller"
     else:
         expected_username = (settings.analyst_primary_author or "").strip().lower()
         canonical_caller = None
+        caller_display = "the caller"
 
     if expected_username:
         author_username = (message.author.name or "").lower()
@@ -149,7 +151,8 @@ async def watch_message(
         if db.analyst_trade_exists(message.id, synthetic_att_id):
             return
         extracted = await extract_trade_from_caption(
-            caption, parent_caption=parent_caption
+            caption, parent_caption=parent_caption,
+            caller_name=caller_display,
         )
         if extracted is None:
             log.warning(
@@ -214,7 +217,8 @@ async def watch_message(
             continue
 
         extracted = await extract_trade_from_image(
-            img_bytes, ct, caption, parent_caption=parent_caption
+            img_bytes, ct, caption, parent_caption=parent_caption,
+            caller_name=caller_display,
         )
         # Storage guardrail: same junk-extraction filter as caption-only.
         if extracted and extracted.get("is_trade_screenshot") and not _is_extraction_actionable(extracted):
