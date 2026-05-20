@@ -1,20 +1,15 @@
 """One-shot backfill of the analyst-trade log.
 
-Pulls the last N days of messages from settings.analyst_channel_name,
-OCR's every image via analyst_log.ocr.extract_trade_from_image, and
-writes rows into the analyst_trades table. Does NOT post announcements
-to the test channel — backfilling a week of trades shouldn't spam #test
-with 50 retroactive log entries.
+Pulls the last N days of messages from each configured caller's
+channel and runs them through the SAME watch_message pipeline the
+live watcher uses (image OCR + caption-only + reply-chain context +
+caller field). Writes rows into analyst_trades just like the live
+path. Announcement posting is suppressed during backfill so we don't
+spam the announce channel with retroactive log entries.
 
 Usage:
-    py scripts/backfill_analyst_log.py --days 5
-
-Reuses the same Gemini prompt the live watcher uses (via the shared
-analyst_log.ocr module), so accuracy on backfilled rows matches the
-production OCR pipeline.
-
-Output: prints a markdown summary to stdout AND saves it to
-backfill_analyst_log_<timestamp>.md in the repo root for human review.
+    railway ssh "/opt/venv/bin/python -m scripts.backfill_analyst_log --days 7 --caller bankerkyle"
+    railway ssh "/opt/venv/bin/python -m scripts.backfill_analyst_log --days 7"  # all configured callers
 """
 
 import argparse
