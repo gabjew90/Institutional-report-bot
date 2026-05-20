@@ -170,6 +170,13 @@ class Settings(BaseSettings):
     # are also used by the daily auto-expire cron. Empty = no announcements
     # (DB writes still happen).
     analyst_test_announce_channel: str = "test"
+    # Sandbox channel for trying the OCR pipeline end-to-end without
+    # touching the live trade log. Posting a screenshot + caption here
+    # runs the same extraction the registered-caller channels use, but
+    # skips dedup, skips the DB write, skips the author filter, and
+    # posts the inferred log entry back to this channel as a preview
+    # embed prefixed with [DRY-RUN]. Set to empty string to disable.
+    analyst_dry_run_channel: str = "test-channel"
 
     # Scheduling
     timezone: str = "America/New_York"

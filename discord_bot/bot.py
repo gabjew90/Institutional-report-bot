@@ -1538,6 +1538,23 @@ def create_bot() -> commands.Bot:
             if matched_caller:
                 from analyst_log.watcher import watch_message
                 await watch_message(bot, message, caller=matched_caller)
+            else:
+                # Dry-run sandbox dispatch: messages in the configured
+                # sandbox channel that carry an image OR a non-empty
+                # caption run through the SAME extraction pipeline but
+                # with dry_run=True (no DB write, preview posted back
+                # to the same channel). Bot @-mentions in this channel
+                # still fall through to the Q&A handler below.
+                sandbox = (settings.analyst_dry_run_channel or "").strip().lower()
+                if (
+                    sandbox
+                    and chan_name
+                    and chan_name.lower() == sandbox
+                    and (message.attachments or (message.content or "").strip())
+                    and (bot.user is None or bot.user not in message.mentions)
+                ):
+                    from analyst_log.watcher import watch_message
+                    await watch_message(bot, message, caller=None, dry_run=True)
         except Exception as e:
             log.error(f"Analyst watcher dispatch failed: {e}", exc_info=True)
 
