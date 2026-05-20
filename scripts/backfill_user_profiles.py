@@ -513,16 +513,33 @@ async def _generate_profile(
     # profile_text correctly (without this, free-form JSON mode produces
     # unescaped inner quotes from user phrase quotes and the parser
     # chokes mid-stream).
+    #
+    # IMPORTANT: profile_text needs an explicit max_length. Without it,
+    # Gemini's structured-output mode self-limits string fields at some
+    # implicit ~700-1100 char natural stopping point — the model emits
+    # finish_reason=STOP mid-sentence even though there are thousands of
+    # tokens of budget left. Setting max_length=8000 tells the schema
+    # validator the string can grow well past that ceiling. (This was
+    # the cause of the 2pale/Oracle/RE4L/succi/G mid-word truncations.)
     _RESPONSE_SCHEMA = types.Schema(
         type=types.Type.OBJECT,
         properties={
-            "profile_text": types.Schema(type=types.Type.STRING),
+            "profile_text": types.Schema(
+                type=types.Type.STRING,
+                max_length=8000,
+            ),
             "trader_score": types.Schema(type=types.Type.INTEGER),
-            "trader_rationale": types.Schema(type=types.Type.STRING),
+            "trader_rationale": types.Schema(
+                type=types.Type.STRING,
+                max_length=500,
+            ),
             "racial_humor_score": types.Schema(type=types.Type.INTEGER),
             "trader_examples": types.Schema(
                 type=types.Type.ARRAY,
-                items=types.Schema(type=types.Type.STRING),
+                items=types.Schema(
+                    type=types.Type.STRING,
+                    max_length=400,
+                ),
             ),
         },
         required=[
