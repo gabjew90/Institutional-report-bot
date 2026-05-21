@@ -123,6 +123,13 @@ class Settings(BaseSettings):
     #   - Future: claim-verification helpers in the bot's responses
     chat_ingestion_channels: str = ""
 
+    # Retention for chat_messages — daily cron deletes rows older than
+    # this many days to keep the table bounded. 0 = no purge (table
+    # grows forever). 180 default = ~6 months of history retained,
+    # plenty for profile-refresh windows + claim verification without
+    # bloating the DB.
+    chat_retention_days: int = 180
+
     # User-profile system: comma-separated channel names where the bot
     # scans for personality signal during the daily profile refresh.
     # Four "yapping" channels (high-volume personality) + four alert

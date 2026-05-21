@@ -262,6 +262,96 @@ MESSAGES (oldest first, most recent last):
 """
 
 
+def _load_user_data_from_store(
+    channels: list[str], days: int
+) -> tuple[dict, dict, dict, dict, dict]:
+    """Replacement for the Discord-history scan loop, reading from
+    chat_messages instead. Returns the same five accumulators the
+    legacy scan produces, so downstream eligibility filter + profile
+    generation is unchanged:
+
+      by_user          : dict[user_id, list[msg]]   — fed to Gemini
+      user_meta        : dict[user_id, {...}]       — display/username
+      images_by_user   : dict[user_id, list[img]]   — vision input (empty;
+                          chat_messages doesn't carry content-type so we
+                          can't distinguish image vs non-image attachments
+                          reliably. Vision is disabled in prod anyway.)
+      slur_counts      : dict[user_id, int]         — regex-counted slurs
+      slur_examples    : dict[user_id, list[str]]   — newest N snippets
+
+    Why this exists: the legacy Discord scan was rate-limited, gateway-
+    flap-prone, and spawned a twin-client on the bot token. The
+    chat_messages store (Phase 1) holds the same data, queryable
+    locally in milliseconds. This is the read-from-store path.
+    """
+    from collections import defaultdict
+    import json as _json
+
+    print(
+        f"Phase 2: loading {days}d of messages from chat_messages store "
+        f"for {len(channels)} channels...",
+        flush=True,
+    )
+    rows = db.load_chat_messages_for_profiles(channels, days=days)
+    print(f"  store returned {len(rows)} rows", flush=True)
+
+    by_user: dict[int, list[dict]] = defaultdict(list)
+    user_meta: dict[int, dict] = {}
+    images_by_user: dict[int, list[dict]] = defaultdict(list)
+    slur_counts: dict[int, int] = defaultdict(int)
+    slur_examples: dict[int, list[str]] = defaultdict(list)
+    _SLUR_EXAMPLES_PER_USER = 5
+
+    for r in rows:
+        uid = r.get("author_id")
+        if not uid:
+            continue
+        if uid not in user_meta:
+            user_meta[uid] = {
+                "username": r.get("author_username") or "",
+                "display_name": (
+                    r.get("author_display")
+                    or r.get("author_username")
+                    or "Unknown"
+                ),
+            }
+        # Count attachment URLs as image_count proxy (vision is disabled;
+        # this number isn't used downstream unless OCR enabled)
+        attachment_urls_raw = r.get("attachment_urls") or ""
+        try:
+            att_list = _json.loads(attachment_urls_raw) if attachment_urls_raw else []
+        except Exception:
+            att_list = []
+        # Embed texts already flattened during ingestion
+        try:
+            embed_list = _json.loads(r.get("embed_texts") or "") if r.get("embed_texts") else []
+        except Exception:
+            embed_list = []
+        content = (r.get("content") or "").strip()
+        by_user[uid].append({
+            "timestamp": r.get("posted_at") or "",
+            "content": content,
+            "image_count": len(att_list),
+            "embed_texts": embed_list,
+        })
+        if content:
+            slur_counts[uid] += count_slurs_in_text(content)
+            ctxs = find_slur_contexts(content, window=45)
+            if ctxs:
+                slur_examples[uid].extend(ctxs)
+                if len(slur_examples[uid]) > _SLUR_EXAMPLES_PER_USER:
+                    slur_examples[uid] = (
+                        slur_examples[uid][-_SLUR_EXAMPLES_PER_USER:]
+                    )
+
+    print(
+        f"  built {len(by_user)} unique authors, "
+        f"{sum(len(v) for v in by_user.values())} total messages",
+        flush=True,
+    )
+    return by_user, user_meta, images_by_user, slur_counts, slur_examples
+
+
 def _format_messages_block(messages: list[dict]) -> str:
     """Render the per-user message list for the Gemini prompt.
 
@@ -819,6 +909,21 @@ async def run(days: int, channels: list[str]) -> None:
             slur_examples: dict[int, list[str]] = defaultdict(list)
             _SLUR_EXAMPLES_PER_USER = 5
 
+            # Phase 2: prefer the local chat_messages store over a fresh
+            # Discord scan. If the store has reasonable coverage for
+            # these channels in this window, use it — much faster, no
+            # gateway contention, no rate limits. The Discord-scan
+            # fallback below stays in place for cold-start / failure
+            # recovery.
+            _STORE_COVERAGE_FLOOR = 100  # min rows to consider the store usable
+            store_rows = db.count_chat_messages_for_channels(channels, days=days)
+            use_store = store_rows >= _STORE_COVERAGE_FLOOR
+            if use_store:
+                (
+                    by_user, user_meta, images_by_user,
+                    slur_counts, slur_examples,
+                ) = _load_user_data_from_store(channels, days)
+
             # Per-channel scan with retry-on-WS-disconnect. The gateway
             # connection can drop mid-iteration on long scans (tungstenite
             # error / discord.ConnectionClosed). Without retry, the script
@@ -831,7 +936,10 @@ async def run(days: int, channels: list[str]) -> None:
             _MAX_SCAN_ATTEMPTS = 3
             _SCAN_RETRY_BACKOFF = [5, 15, 30]
 
-            for ch in targets:
+            # Phase 2: only run the legacy Discord scan when the local
+            # chat_messages store didn't return enough coverage. The
+            # store path above already populated the accumulators.
+            for ch in (targets if not use_store else []):
                 print(f"\nScanning #{ch.name}...", flush=True)
                 seen_msg_ids: set[int] = set()
                 count = 0

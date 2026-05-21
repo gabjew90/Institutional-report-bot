@@ -214,6 +214,21 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
                 misfire_grace_time=3600,
             )
 
+    # Daily chat_messages retention purge. Deletes rows older than
+    # settings.chat_retention_days (default 180) to keep the table
+    # bounded. Runs at 04:00 local — well outside trading hours, also
+    # before any other scheduled work hits the DB. Skips entirely when
+    # retention is 0 (purge disabled).
+    if getattr(settings, "chat_retention_days", 0) > 0:
+        scheduler.add_job(
+            _chat_purge_job,
+            trigger=CronTrigger(hour=4, minute=0, timezone=tz),
+            id="chat_messages_purge",
+            name="chat_messages: daily retention purge",
+            max_instances=1,
+            misfire_grace_time=3600,
+        )
+
     # Daily user-profile refresh — only registers if profile channels are
     # configured. Refreshes profiles for active users in the yapping
     # channels. Runs 15:00 local every day. The backfill script applies
@@ -610,6 +625,37 @@ async def _user_profile_refresh_job(bot=None):
                 )
     except Exception as e:
         log.error(f"User-profile refresh failed: {e}", exc_info=True)
+
+
+async def _chat_purge_job():
+    """Daily cron (04:00 local). Deletes chat_messages rows older than
+    settings.chat_retention_days. Logs the count purged. No-op when
+    retention is 0 (purge disabled).
+
+    The table grows ~8-15k rows/day across the configured channels.
+    180 days = ~2M rows / ~400 MB on the /data volume — fine. Older
+    history isn't useful for the profile-refresh windows (30d) or
+    /ask claim verification (recent quotes), so dropping it keeps
+    queries fast and storage bounded.
+    """
+    try:
+        import db
+        retention = int(getattr(settings, "chat_retention_days", 0) or 0)
+        if retention <= 0:
+            log.debug("chat_messages purge: retention=0, skipping")
+            return
+        deleted = db.purge_old_chat_messages(retention)
+        if deleted > 0:
+            log.info(
+                f"chat_messages purge: deleted {deleted} rows older "
+                f"than {retention} days"
+            )
+        else:
+            log.debug(
+                f"chat_messages purge: nothing older than {retention} days"
+            )
+    except Exception as e:
+        log.error(f"chat_messages purge failed: {e}", exc_info=True)
 
 
 async def _analyst_purge_job(bot=None):

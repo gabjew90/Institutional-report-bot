@@ -2568,6 +2568,84 @@ def store_chat_message(
         return False
 
 
+def count_chat_messages_for_channels(
+    channel_names: list[str],
+    *,
+    days: int = 30,
+) -> int:
+    """Quick coverage check: how many chat_messages rows exist for these
+    channels within the last `days`. Used by the profile-refresh
+    pipeline to decide whether the local store has enough data to
+    skip the Discord scan."""
+    if not channel_names:
+        return 0
+    from datetime import datetime, timedelta, timezone
+    cutoff = (
+        datetime.now(timezone.utc) - timedelta(days=int(days))
+    ).isoformat()
+    placeholders = ",".join("?" for _ in channel_names)
+    row = get_connection().execute(
+        f"""SELECT COUNT(*) FROM chat_messages
+            WHERE channel_name IN ({placeholders})
+              AND posted_at >= ?""",
+        (*channel_names, cutoff),
+    ).fetchone()
+    return int(row[0]) if row else 0
+
+
+def load_chat_messages_for_profiles(
+    channel_names: list[str],
+    *,
+    days: int = 30,
+) -> list[dict]:
+    """Load every non-empty chat_messages row for these channels within
+    the last `days`, ordered oldest-first. Returned dicts carry the
+    keys the profile-refresh pipeline needs:
+
+      author_id, author_username, author_display,
+      content, posted_at, attachment_urls, embed_texts
+
+    This replaces the Discord-history scan in
+    scripts/backfill_user_profiles.py with a single SQL query —
+    cheaper, faster, immune to gateway flaps + twin-client contention.
+    """
+    if not channel_names:
+        return []
+    from datetime import datetime, timedelta, timezone
+    cutoff = (
+        datetime.now(timezone.utc) - timedelta(days=int(days))
+    ).isoformat()
+    placeholders = ",".join("?" for _ in channel_names)
+    rows = get_connection().execute(
+        f"""SELECT author_id, author_username, author_display,
+                   content, posted_at,
+                   attachment_urls, embed_texts
+            FROM chat_messages
+            WHERE channel_name IN ({placeholders})
+              AND posted_at >= ?
+            ORDER BY posted_at ASC""",
+        (*channel_names, cutoff),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def purge_old_chat_messages(days: int) -> int:
+    """Delete chat_messages older than `days`. Returns count of deleted
+    rows. Used by the daily retention cron — table stays bounded.
+    Called with days=0 means "delete nothing"; we guard at the entry
+    to avoid wiping the table by accident.
+    """
+    if days <= 0:
+        return 0
+    conn = get_connection()
+    cur = conn.execute(
+        "DELETE FROM chat_messages WHERE posted_at < datetime('now', ?)",
+        (f"-{int(days)} days",),
+    )
+    conn.commit()
+    return cur.rowcount
+
+
 def get_latest_chat_message_posted_at(channel_id: int | None = None) -> str | None:
     """Most-recent posted_at across stored chat. Optionally scoped to a
     channel — used by the catch-up pass to know how far back to scan.
