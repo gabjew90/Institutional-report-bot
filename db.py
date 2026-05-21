@@ -280,6 +280,20 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_chat_messages_channel_ts ON chat_messages(channel_id, posted_at DESC);
         CREATE INDEX IF NOT EXISTS idx_chat_messages_author_ts  ON chat_messages(author_id, posted_at DESC);
         CREATE INDEX IF NOT EXISTS idx_chat_messages_username_ts ON chat_messages(author_username, posted_at DESC);
+
+        -- Pipeline-event audit trail (fix #7 — observability). Generic
+        -- across pipeline jobs: profile refresh, chat catchup, anything
+        -- else worth tracking historically. Distinct from processing_log
+        -- which is PDF-pipeline-specific (has pdf_file_id FK). Payload
+        -- is free-form JSON; consumers query by event_type + created_at.
+        CREATE TABLE IF NOT EXISTS pipeline_events (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            event_type TEXT NOT NULL,    -- 'profile_refresh', 'chat_catchup', etc.
+            status TEXT NOT NULL,         -- 'completed', 'failed', 'partial'
+            payload TEXT,                 -- JSON dump of run stats
+            created_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+        CREATE INDEX IF NOT EXISTS idx_pipeline_events_type_ts ON pipeline_events(event_type, created_at DESC);
     """)
     # Migration: add the metrics columns to user_profiles if a previous
     # deploy used the old schema. Must run BEFORE the slur_count /
@@ -2607,6 +2621,68 @@ def store_chat_message(
         # Schema problems, encoding edge cases, etc. — never raise to the
         # caller; chat ingestion is best-effort.
         return False
+
+
+def record_pipeline_event(
+    event_type: str,
+    status: str,
+    payload: dict | None = None,
+) -> None:
+    """Append a row to pipeline_events. Best-effort: failures here are
+    swallowed since this is observability, never the critical path.
+
+    Common event types:
+      - 'profile_refresh' — daily user-profile job summary
+      - 'chat_catchup'    — chat_messages scan summary
+    Status: 'completed', 'failed', 'partial'.
+    Payload: any JSON-serializable dict of run stats.
+    """
+    import json as _json
+    try:
+        conn = get_connection()
+        conn.execute(
+            "INSERT INTO pipeline_events (event_type, status, payload) "
+            "VALUES (?, ?, ?)",
+            (
+                str(event_type)[:64],
+                str(status)[:32],
+                _json.dumps(payload or {}, default=str)[:8000],
+            ),
+        )
+        conn.commit()
+    except Exception:
+        # Observability must never break the calling job
+        pass
+
+
+def get_recent_pipeline_events(
+    event_type: str | None = None,
+    *,
+    limit: int = 20,
+) -> list[dict]:
+    """Read recent pipeline events for a /status command or
+    historical trend analysis. Newest-first.
+    """
+    if event_type:
+        rows = get_connection().execute(
+            """SELECT id, event_type, status, payload,
+                      datetime(created_at) AS created_at
+               FROM pipeline_events
+               WHERE event_type = ?
+               ORDER BY created_at DESC
+               LIMIT ?""",
+            (event_type, int(limit)),
+        ).fetchall()
+    else:
+        rows = get_connection().execute(
+            """SELECT id, event_type, status, payload,
+                      datetime(created_at) AS created_at
+               FROM pipeline_events
+               ORDER BY created_at DESC
+               LIMIT ?""",
+            (int(limit),),
+        ).fetchall()
+    return [dict(r) for r in rows]
 
 
 def find_oldest_chat_gap(

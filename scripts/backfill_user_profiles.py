@@ -1245,6 +1245,24 @@ async def run(days: int, channels: list[str]) -> None:
             db.recompute_trader_ranks_on_profiles()
 
             print(f"\nProfiled {len(eligible)} users.", flush=True)
+
+            # Observability (fix #7): record run summary to pipeline_events
+            # for historical trend analysis + /status surfacing.
+            try:
+                db.record_pipeline_event(
+                    "profile_refresh",
+                    "completed",
+                    {
+                        "window_days": days,
+                        "channels": channels,
+                        "eligible": len(eligible),
+                        "skipped_lurkers": skipped_lurkers,
+                        "skipped_stable": skipped_stable,
+                        "store_rows_in_window": store_rows,
+                    },
+                )
+            except Exception as e:
+                print(f"  (could not record pipeline event: {e})", flush=True)
         finally:
             await client.close()
 

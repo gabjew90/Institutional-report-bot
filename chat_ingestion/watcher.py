@@ -299,4 +299,20 @@ async def run_chat_catchup(
                 f"scanned {seen_this_channel}, nothing new"
             )
 
+    # Observability (fix #7): record run summary so we can see catchup
+    # frequency / volume historically without spelunking logs.
+    try:
+        db.record_pipeline_event(
+            "chat_catchup",
+            "completed",
+            {
+                "reason": reason,
+                "force_full_window": bool(force_full_window),
+                "channels_configured": len(target_names),
+                "total_new_rows": total_new,
+            },
+        )
+    except Exception as e:
+        log.debug(f"Chat catchup: could not record pipeline event: {e}")
+
     return total_new
