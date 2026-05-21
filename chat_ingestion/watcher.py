@@ -115,6 +115,7 @@ async def run_chat_catchup(
     *,
     reason: str = "startup",
     force: bool = False,
+    force_full_window: bool = False,
 ) -> int:
     """Scan each configured chat-ingestion channel for messages we may
     have missed during a downtime / gateway flap. Idempotent via the
@@ -122,7 +123,17 @@ async def run_chat_catchup(
     silently skip.
 
     Scan window per channel:
-      max(latest_stored_posted_at - 1h buffer, now - 30d hard cap)
+      `force_full_window=False` (default) →
+        max(latest_stored_posted_at - 1h buffer, now - 30d hard cap)
+      `force_full_window=True` →
+        now - 30d (ignore latest_stored, scan the full window)
+
+    Use force_full_window=True when you suspect there are GAPS in the
+    stored data — the MAX-based resume will hide gaps if any recent
+    messages are present (live ingestion writes today's messages, MAX
+    moves forward, the gap behind it stays unfilled).
+
+    `force=True` bypasses the 2-minute rate-limit guard.
 
     Returns the count of newly-stored rows across all channels.
     """
@@ -159,25 +170,32 @@ async def run_chat_catchup(
             log.debug(f"Chat catchup: channel '{chan_name}' not found")
             continue
 
-        latest_iso = db.get_latest_chat_message_posted_at(target.id)
-        if latest_iso:
-            try:
-                norm = latest_iso.replace(" ", "T")
-                if norm.endswith("Z"):
-                    norm = norm[:-1] + "+00:00"
-                latest_dt = datetime.fromisoformat(norm)
-                if latest_dt.tzinfo is None:
-                    latest_dt = latest_dt.replace(tzinfo=timezone.utc)
-                scan_from = max(
-                    latest_dt - timedelta(minutes=_CATCHUP_BUFFER_MIN),
-                    hard_floor,
-                )
-            except Exception as e:
-                log.warning(f"Chat catchup: bad timestamp {latest_iso!r}: {e}")
-                scan_from = hard_floor
-        else:
-            # Cold-start for this channel — scan the full 30-day window
+        if force_full_window:
+            # Recovery mode — ignore MAX(posted_at), scan the full 30d
+            # window. Dedup handles already-stored rows silently. Used
+            # when we know there are gaps in the stored data that the
+            # MAX-based resume would hide.
             scan_from = hard_floor
+        else:
+            latest_iso = db.get_latest_chat_message_posted_at(target.id)
+            if latest_iso:
+                try:
+                    norm = latest_iso.replace(" ", "T")
+                    if norm.endswith("Z"):
+                        norm = norm[:-1] + "+00:00"
+                    latest_dt = datetime.fromisoformat(norm)
+                    if latest_dt.tzinfo is None:
+                        latest_dt = latest_dt.replace(tzinfo=timezone.utc)
+                    scan_from = max(
+                        latest_dt - timedelta(minutes=_CATCHUP_BUFFER_MIN),
+                        hard_floor,
+                    )
+                except Exception as e:
+                    log.warning(f"Chat catchup: bad timestamp {latest_iso!r}: {e}")
+                    scan_from = hard_floor
+            else:
+                # Cold-start for this channel — scan the full 30-day window
+                scan_from = hard_floor
 
         # Per-channel scan with retry + resume-from-high-water-mark.
         # Heavy channels (stonks-yapping at 10k+ msgs over 30 days) can

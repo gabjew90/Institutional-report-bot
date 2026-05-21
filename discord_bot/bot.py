@@ -1380,6 +1380,64 @@ def create_bot() -> commands.Bot:
                 ephemeral=True,
             )
 
+    @bot.tree.command(
+        name="refresh_chat",
+        description="Force a chat-message catch-up scan over the last 30 days (gap recovery)",
+    )
+    @app_commands.describe(
+        password="Admin password",
+        full_window=(
+            "true = ignore latest-stored timestamp and scan the full "
+            "30d window (use when there are gaps in stored data). "
+            "false = normal resume from latest-stored - 1h buffer."
+        ),
+    )
+    async def refresh_chat_command(
+        interaction: discord.Interaction,
+        password: str,
+        full_window: bool = False,
+    ):
+        """Trigger run_chat_catchup inline on the live worker. Used to
+        force-fill gaps in chat_messages that the normal on_ready /
+        on_resumed catch-up missed (e.g. when an early scan failed and
+        live ingestion has since moved MAX(posted_at) past the gap,
+        hiding it from the resume logic). Channel-allowlisted +
+        password-gated; ephemeral response since the body is admin
+        diagnostics.
+        """
+        if not await _check_pulse_channel(interaction):
+            return
+        if settings.command_password and password != settings.command_password:
+            await interaction.response.send_message("Invalid password.", ephemeral=True)
+            return
+        await interaction.response.defer(thinking=True, ephemeral=True)
+        try:
+            from chat_ingestion.watcher import run_chat_catchup
+            log.info(
+                "Manual /refresh_chat triggered by %s (full_window=%s)",
+                interaction.user, full_window,
+            )
+            n_new = await run_chat_catchup(
+                bot,
+                reason=f"manual/{interaction.user}",
+                force=True,
+                force_full_window=full_window,
+            )
+            await interaction.followup.send(
+                f"✅ Chat catch-up complete. Stored **{n_new}** new "
+                f"rows" + (
+                    " (full 30-day window scan)"
+                    if full_window else " (resume-from-latest scan)"
+                ) + ".",
+                ephemeral=True,
+            )
+        except Exception as e:
+            log.error("Manual /refresh_chat failed: %s", e, exc_info=True)
+            await interaction.followup.send(
+                f"Catch-up failed: {str(e)[:300]}",
+                ephemeral=True,
+            )
+
     # --- DISABLED in slash menu (2026-05-14) ----------------------------------
     # /clearqueue is a destructive admin tool that should not be in everyone's
     # picker. Function preserved — uncomment the decorators below if you need
