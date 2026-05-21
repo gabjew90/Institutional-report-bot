@@ -2316,10 +2316,27 @@ def find_users_mentioned_in_text(text: str) -> list[int]:
     return list(matches)
 
 
-def format_user_profiles_for_context(user_ids: list[int]) -> str:
+_PROFILES_BLOCK_BUDGET_CHARS = 18000  # cap WHO'S TALKING block
+_PROFILES_BLOCK_PER_USER_CHARS = 2500  # cap each individual profile
+_PROFILES_BLOCK_MAX_USERS = 15         # hard ceiling on user count
+
+
+def format_user_profiles_for_context(
+    user_ids: list[int],
+    *,
+    max_chars: int = _PROFILES_BLOCK_BUDGET_CHARS,
+    max_users: int = _PROFILES_BLOCK_MAX_USERS,
+) -> str:
     """Render a "WHO'S TALKING" block for the given user_ids. Skips users
     with no profile (lurkers, new joiners). Returns "" when nobody on the
     list has been profiled.
+
+    Budget-aware (fix #4): caps total block at `max_chars` (~18KB) and
+    user count at `max_users` (15). When the candidate list exceeds
+    either, profiles are prioritized by message_count_at_update DESC
+    (most-active members first) so the heaviest yappers — who are most
+    likely the subjects/askers — never get cut. Low-activity profiles
+    drop from the tail when budget gets tight.
 
     Header: `- **DisplayName** (username, <@user_id>): <metrics>: <text>`.
     Metrics inline (private hierarchies): racism-rank (combined slur +
@@ -2351,10 +2368,20 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
     racism_rank_by_uid: dict[int, int] = {uid: i + 1 for i, (uid, _) in enumerate(by_racism)}
     racism_total_in_conv = len(by_racism)
 
+    # Budget enforcement (fix #4): prioritize most-active members so the
+    # heaviest yappers — most likely subjects/askers — never get cut.
+    # Tail-truncate when total budget exceeded.
+    profile_items = sorted(
+        profiles.items(),
+        key=lambda kv: -(kv[1].get("message_count_at_update") or 0),
+    )[:int(max_users)]
+
     lines = [
         "WHO'S TALKING (background on people active in this conversation):",
     ]
-    for uid, p in profiles.items():
+    running_chars = len(lines[0])
+    truncated = 0
+    for uid, p in profile_items:
         dn = p.get("display_name") or p.get("username") or f"user_{uid}"
         uname = p.get("username") or ""
         text = (p.get("profile_text") or "").strip()
@@ -2423,8 +2450,17 @@ def format_user_profiles_for_context(user_ids: list[int]) -> str:
                         ex_lines.append(f"    · {snippet}")
             examples_section = "\n" + "\n".join(ex_lines)
 
-        lines.append(
+        rendered = (
             f"- {ident} — _{metrics_line}_:{examples_section}\n{text}\n"
+        )
+        if running_chars + len(rendered) > int(max_chars):
+            truncated += 1
+            continue
+        lines.append(rendered)
+        running_chars += len(rendered) + 1  # +1 for newline join
+    if truncated > 0:
+        lines.append(
+            f"_(...{truncated} additional profile(s) omitted to fit context budget)_"
         )
     return "\n".join(lines)
 
