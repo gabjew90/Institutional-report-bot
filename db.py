@@ -2353,16 +2353,21 @@ def format_user_profiles_for_context(
     if not profiles:
         return ""
 
-    # Racism rank combines BOTH literal slur usage (regex count) AND
-    # LLM-derived broader racial-humor score (0-100). The two are
-    # roughly comparable in magnitude for active users; summing gives
-    # a usable composite. Only users with non-zero combined signal
-    # get ranked.
-    def _combined(p: dict) -> int:
-        return int(p.get("slur_count") or 0) + int(p.get("racial_humor_score") or 0)
-
+    # Fix #6: racism rank uses ONLY racial_humor_score (LLM-judged, 0-100
+    # calibrated). The previous formula summed regex slur_count + this
+    # score, but the regex count's magnitude was either dwarfed by the
+    # LLM score (humor 75 + slurs 5 = 80, score dominates) or wildly
+    # outweighed it for heavy literal-slur users (humor 50 + slurs 250 =
+    # 300, count dominates) — the sum was unstable and the units weren't
+    # comparable. racial_humor_score already INCLUDES literal slurs in
+    # its calibration brackets, so the regex count was double-counting
+    # the same signal anyway. Single source of truth now.
     by_racism = sorted(
-        [(uid, _combined(p)) for uid, p in profiles.items() if _combined(p) > 0],
+        [
+            (uid, int(p.get("racial_humor_score") or 0))
+            for uid, p in profiles.items()
+            if (p.get("racial_humor_score") or 0) > 0
+        ],
         key=lambda t: (-t[1], t[0]),
     )
     racism_rank_by_uid: dict[int, int] = {uid: i + 1 for i, (uid, _) in enumerate(by_racism)}
