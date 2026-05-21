@@ -528,6 +528,63 @@ def _extract_embed_text(embed: discord.Embed) -> str:
     return " | ".join(p for p in parts if p).strip()
 
 
+_VERBATIM_CONTEXT_MSG_LIMIT = 50      # how many of the asker's own recent msgs to inject
+_VERBATIM_CONTEXT_PER_MSG_CHARS = 200  # truncate each msg to this many chars
+
+
+def _format_asker_verbatim_block(username: str) -> str:
+    """Build a context block of the asker's last N verbatim messages
+    from chat_messages, formatted for the model to quote when needed.
+
+    Used by the @mention flow to inject the asker's actual recent
+    chat into the prompt. The model uses this for two purposes:
+      1. Quoting verbatim when the asker challenges a prior claim
+         ("show me where I said that" — the rule #2 in the system
+         prompt directs the model here)
+      2. Grounding any claims it makes about the asker's recent
+         behavior in real quoted lines instead of paraphrased
+         summaries
+
+    Returns empty string when nothing's on file for the user (lurker,
+    new joiner, or chat_messages not yet populated for them) — caller
+    can safely concatenate.
+    """
+    if not username:
+        return ""
+    try:
+        rows = db.get_recent_user_messages(
+            username, limit=_VERBATIM_CONTEXT_MSG_LIMIT,
+        )
+    except Exception as e:
+        log.warning(f"Verbatim-context lookup failed for {username}: {e}")
+        return ""
+    if not rows:
+        return ""
+    # Newest-first from the helper; reverse to chronological so the
+    # model reads them in the natural order things were said.
+    rows = list(reversed(rows))
+    lines: list[str] = [
+        "[ASKER'S RECENT VERBATIM MESSAGES — for accurate quoting if",
+        "they challenge a prior claim or you reference their behavior.",
+        "These are the asker's own words, copied directly from chat.",
+        "When asked 'show me where I said that' or similar, you can",
+        "quote these LINE FOR LINE. Don't invent new specifics.]",
+        "",
+    ]
+    for r in rows:
+        content = (r.get("content") or "").strip()
+        if not content:
+            continue
+        # Single-line each so the block stays parseable
+        content = content.replace("\n", " ")
+        if len(content) > _VERBATIM_CONTEXT_PER_MSG_CHARS:
+            content = content[:_VERBATIM_CONTEXT_PER_MSG_CHARS] + "…"
+        ts = (r.get("posted_at") or "")[:16]  # YYYY-MM-DD HH:MM
+        ch = r.get("channel_name") or ""
+        lines.append(f"  {ts} #{ch} — {content}")
+    return "\n".join(lines)
+
+
 async def _resolve_referenced_message(
     bot: discord.Client,
     message: discord.Message,
@@ -1818,6 +1875,31 @@ def create_bot() -> commands.Bot:
                 profile_ids = list(set(
                     chat_author_ids + [message.author.id] + mentioned_ids
                 ))
+
+                # Inject the asker's recent verbatim messages from
+                # chat_messages so the model has the actual receipts
+                # available if the question references them or if the
+                # asker challenges a prior claim with "show me where I
+                # said that." Cheap (~50 msgs × ~80 chars = 4 KB) and
+                # closes the gaslight loop end-to-end — without this
+                # block the model has to rely on the asker's profile
+                # (which summarizes but doesn't quote) and the recent
+                # chat window (which may not include older receipts).
+                try:
+                    asker_username = (
+                        message.author.name if message.author else ""
+                    )
+                    asker_verbatim = _format_asker_verbatim_block(
+                        asker_username
+                    )
+                    if asker_verbatim:
+                        # Prepend as a separate context block ahead of the
+                        # actual question; the system prompt rule #2 tells
+                        # the model how to use it for "show me where I
+                        # said that" rebuttals.
+                        question = f"{asker_verbatim}\n\n{question}"
+                except Exception as e:
+                    log.warning(f"Verbatim-context injection failed: {e}")
 
                 # Resolve any referenced message (reply parent or
                 # forward snapshot). Discord forwards carry the snapshot
