@@ -262,6 +262,97 @@ MESSAGES (oldest first, most recent last):
 """
 
 
+def _verify_profile_claims(
+    profile_text: str,
+    trader_examples: list[str] | None,
+    username: str,
+) -> dict:
+    """Verify quoted phrases in the generated profile against the user's
+    actual chat_messages. Catches hallucinated specifics that the model
+    invented or carried forward from a stale incremental update.
+
+    For each quoted phrase >= 4 words found in profile_text or
+    trader_examples, run a substring search against this user's
+    chat_messages via db.find_user_messages_matching. A quote is
+    "verified" if any of the user's messages contains it as a substring
+    (case-insensitive). Unverified quotes are flagged.
+
+    Returns a dict suitable for storing alongside gemini_json:
+      {
+        "checked_quotes": int,
+        "verified_quotes": list[str],
+        "unverified_quotes": list[str],
+        "unverified_count": int,
+      }
+
+    Doesn't auto-remove unverified quotes (too aggressive — false
+    positives on edited / pre-Phase-1 messages would silently drop
+    real receipts). The data goes into gemini_json for forensics and
+    is logged when count > 0 so operators see the pattern.
+    """
+    import re as _re
+
+    if not profile_text:
+        return {
+            "checked_quotes": 0,
+            "verified_quotes": [],
+            "unverified_quotes": [],
+            "unverified_count": 0,
+        }
+
+    # Pull quoted phrases: ASCII ' " plus Unicode curly quotes.
+    # Single regex matches "...", '...', "...", '...'.
+    quote_pattern = _re.compile(
+        r"""(?:["“”]([^"“”\n]{4,200})["“”])"""
+        r"""|(?:['‘’]([^'‘’\n]{4,200})['‘’])"""
+    )
+
+    candidates: list[str] = []
+    body_blob = profile_text + "\n" + "\n".join(trader_examples or [])
+    for m in quote_pattern.finditer(body_blob):
+        phrase = (m.group(1) or m.group(2) or "").strip()
+        # Filter to phrases worth verifying: 4+ words, not pure punctuation
+        if not phrase:
+            continue
+        word_count = len(phrase.split())
+        if word_count < 4:
+            continue
+        # Strip cashtags / hashtags from the lookup target — chat content
+        # often has $TICKER but quote phrases might omit the dollar.
+        # Keep candidates uppercase-agnostic; the search is case-insensitive.
+        if phrase not in candidates:
+            candidates.append(phrase)
+
+    if not candidates:
+        return {
+            "checked_quotes": 0,
+            "verified_quotes": [],
+            "unverified_quotes": [],
+            "unverified_count": 0,
+        }
+
+    verified: list[str] = []
+    unverified: list[str] = []
+    for phrase in candidates:
+        # find_user_messages_matching is LIKE-based, case-insensitive.
+        # A match means the user actually said something containing this.
+        try:
+            hits = db.find_user_messages_matching(username, phrase, limit=1)
+        except Exception:
+            hits = []
+        if hits:
+            verified.append(phrase)
+        else:
+            unverified.append(phrase)
+
+    return {
+        "checked_quotes": len(candidates),
+        "verified_quotes": verified,
+        "unverified_quotes": unverified,
+        "unverified_count": len(unverified),
+    }
+
+
 def _load_user_data_from_store(
     channels: list[str], days: int
 ) -> tuple[dict, dict, dict, dict, dict]:
@@ -1160,6 +1251,29 @@ async def run(days: int, channels: list[str]) -> None:
                             print(f"  ✗ {meta['display_name']}: empty / unparseable response",
                                   flush=True)
                             continue
+
+                        # Verify the profile's quoted phrases against
+                        # the user's actual chat_messages. Catches
+                        # hallucinated quotes the incremental-update
+                        # path carried forward from a stale prior
+                        # profile. Result stored in gemini_json for
+                        # forensics; logged when unverified > 0 so
+                        # operators see the pattern.
+                        claim_check = _verify_profile_claims(
+                            profile, trader_examples,
+                            meta.get("username", ""),
+                        )
+                        if claim_check["unverified_count"] > 0:
+                            print(
+                                f"  ⚠ {meta['display_name']}: "
+                                f"{claim_check['unverified_count']} of "
+                                f"{claim_check['checked_quotes']} quoted "
+                                f"phrases not found in their chat — "
+                                f"possible hallucinations: "
+                                f"{claim_check['unverified_quotes'][:3]}",
+                                flush=True,
+                            )
+
                         last_seen = msgs[-1]["timestamp"]
                         slur_n = slur_counts.get(uid, 0)
                         # JSON-encode example lists (TEXT column).
