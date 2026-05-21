@@ -172,26 +172,49 @@ async def run_chat_catchup(
 
         if force_full_window:
             # Recovery mode — ignore MAX(posted_at), scan the full 30d
-            # window. Dedup handles already-stored rows silently. Used
-            # when we know there are gaps in the stored data that the
-            # MAX-based resume would hide.
+            # window. Dedup handles already-stored rows silently.
             scan_from = hard_floor
         else:
-            latest_iso = db.get_latest_chat_message_posted_at(target.id)
-            if latest_iso:
+            # GAP-AWARE RESUME (fix #3). Two-tier resume:
+            #   1. If chat_messages has an internal gap (>=60 min between
+            #      consecutive stored messages within the 30d window),
+            #      resume from the START of the oldest gap to fill it.
+            #      This catches the case where live ingestion advanced
+            #      MAX(posted_at) past a historical hole.
+            #   2. Otherwise, resume from MAX(posted_at) - 1h buffer
+            #      (the simple incremental path — coverage is contiguous
+            #      so we just need to pick up where we left off).
+            #   3. Cold-start for a brand-new channel: scan the full 30d.
+            scan_from = None
+            try:
+                gap_iso = db.find_oldest_chat_gap(target.id, days=_CATCHUP_HARD_CAP_DAYS, gap_minutes=60)
+            except Exception as e:
+                log.warning(f"Chat catchup: gap-detect failed: {e}")
+                gap_iso = None
+            resume_basis_iso = gap_iso or db.get_latest_chat_message_posted_at(target.id)
+            if resume_basis_iso:
                 try:
-                    norm = latest_iso.replace(" ", "T")
+                    norm = resume_basis_iso.replace(" ", "T")
                     if norm.endswith("Z"):
                         norm = norm[:-1] + "+00:00"
-                    latest_dt = datetime.fromisoformat(norm)
-                    if latest_dt.tzinfo is None:
-                        latest_dt = latest_dt.replace(tzinfo=timezone.utc)
+                    resume_dt = datetime.fromisoformat(norm)
+                    if resume_dt.tzinfo is None:
+                        resume_dt = resume_dt.replace(tzinfo=timezone.utc)
+                    # Tiny safety buffer — overlap by a minute so a message
+                    # at the exact gap-edge isn't missed by an exclusive
+                    # `after` filter.
                     scan_from = max(
-                        latest_dt - timedelta(minutes=_CATCHUP_BUFFER_MIN),
+                        resume_dt - timedelta(minutes=_CATCHUP_BUFFER_MIN),
                         hard_floor,
                     )
+                    if gap_iso:
+                        log.info(
+                            f"Chat catchup ({reason}): #{chan_name} — "
+                            f"detected gap, resuming from {scan_from.isoformat()} "
+                            f"(gap_start={gap_iso[:19]})"
+                        )
                 except Exception as e:
-                    log.warning(f"Chat catchup: bad timestamp {latest_iso!r}: {e}")
+                    log.warning(f"Chat catchup: bad timestamp {resume_basis_iso!r}: {e}")
                     scan_from = hard_floor
             else:
                 # Cold-start for this channel — scan the full 30-day window

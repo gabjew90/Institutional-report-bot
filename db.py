@@ -2568,6 +2568,46 @@ def store_chat_message(
         return False
 
 
+def find_oldest_chat_gap(
+    channel_id: int,
+    *,
+    days: int = 30,
+    gap_minutes: int = 60,
+) -> str | None:
+    """Find the earliest gap in stored chat_messages for a channel,
+    within the last `days`. A "gap" is any stretch >= `gap_minutes`
+    between consecutive stored messages.
+
+    Returns the timestamp of the LAST message before the oldest such
+    gap (so the catchup can resume scanning from there forward to fill
+    it). Returns None when no gaps are found — in that case the caller
+    should fall back to the MAX-based resume.
+
+    This is the structural fix for the bug we hit: live ingestion
+    advanced MAX(posted_at) to today after a partial catchup, hiding
+    a historical gap from the simple latest-buffer resume. Gap-detect
+    finds the hole regardless of what's been written since.
+    """
+    from datetime import datetime, timedelta, timezone
+    cutoff = (
+        datetime.now(timezone.utc) - timedelta(days=int(days))
+    ).isoformat()
+    row = get_connection().execute(
+        """WITH ordered AS (
+               SELECT posted_at,
+                      LAG(posted_at) OVER (ORDER BY posted_at) AS prev_at
+               FROM chat_messages
+               WHERE channel_id = ? AND posted_at >= ?
+           )
+           SELECT MIN(prev_at) AS gap_start
+           FROM ordered
+           WHERE prev_at IS NOT NULL
+             AND (julianday(posted_at) - julianday(prev_at)) * 24 * 60 >= ?""",
+        (int(channel_id), cutoff, int(gap_minutes)),
+    ).fetchone()
+    return row[0] if row and row[0] else None
+
+
 def count_chat_messages_for_channels(
     channel_names: list[str],
     *,
