@@ -1015,124 +1015,29 @@ async def run(days: int, channels: list[str]) -> None:
                     slur_counts, slur_examples,
                 ) = _load_user_data_from_store(channels, days)
 
-            # Per-channel scan with retry-on-WS-disconnect. The gateway
-            # connection can drop mid-iteration on long scans (tungstenite
-            # error / discord.ConnectionClosed). Without retry, the script
-            # exits with code 1 and the user has to re-launch from scratch.
-            # We track seen msg ids per channel so a retry can resume
-            # without double-counting messages already processed.
+            # Fix #5: Discord scan path removed. chat_ingestion is the
+            # canonical source of historical Discord messages — anything
+            # that scans Discord directly should live there, not be
+            # duplicated in profile-refresh. If the store is empty for
+            # the configured channels, the operator should trigger
+            # /refresh_chat (which uses retry+resume + gap-detect) before
+            # running profile-refresh.
             #
-            # Backoff: 5s, 15s, 30s — gives the discord.py auto-reconnect
-            # time to re-establish the gateway before we try again.
-            _MAX_SCAN_ATTEMPTS = 3
-            _SCAN_RETRY_BACKOFF = [5, 15, 30]
-
-            # Phase 2: only run the legacy Discord scan when the local
-            # chat_messages store didn't return enough coverage. The
-            # store path above already populated the accumulators.
-            for ch in (targets if not use_store else []):
-                print(f"\nScanning #{ch.name}...", flush=True)
-                seen_msg_ids: set[int] = set()
-                count = 0
-                last_err: Exception | None = None
-                for attempt in range(1, _MAX_SCAN_ATTEMPTS + 1):
-                    try:
-                        async for msg in ch.history(limit=None, after=cutoff,
-                                                    oldest_first=True):
-                            if msg.id in seen_msg_ids:
-                                continue
-                            seen_msg_ids.add(msg.id)
-                            if msg.author.bot:
-                                continue
-                            uid = msg.author.id
-                            if uid not in user_meta:
-                                user_meta[uid] = {
-                                    "username": msg.author.name,
-                                    "display_name": (
-                                        getattr(msg.author, "display_name", None)
-                                        or msg.author.name
-                                    ),
-                                }
-                            image_count = 0
-                            # Direct image attachments (uploaded files)
-                            for a in msg.attachments:
-                                ct = (a.content_type or "").lower()
-                                if ct.startswith("image/"):
-                                    image_count += 1
-                                    images_by_user[uid].append({
-                                        "url": a.url,
-                                        "content_type": a.content_type,
-                                        "ts": msg.created_at.isoformat(),
-                                    })
-                            # Embed images (tweets / articles / linked previews).
-                            # Discord renders X/Twitter posts + article links as
-                            # embeds with .image and .thumbnail proxies. Worth
-                            # capturing — a shared tweet w/ a chart screenshot
-                            # carries real signal. PIL re-encode handles whatever
-                            # format the CDN returns.
-                            for e in msg.embeds:
-                                for attr in ("image", "thumbnail"):
-                                    ref = getattr(e, attr, None)
-                                    url = getattr(ref, "url", None) if ref else None
-                                    if url and isinstance(url, str):
-                                        image_count += 1
-                                        images_by_user[uid].append({
-                                            "url": url,
-                                            "content_type": None,  # CDN response will dictate
-                                            "ts": msg.created_at.isoformat(),
-                                        })
-                            embed_texts = _extract_embed_texts(msg)
-                            content = (msg.content or "").strip()
-                            by_user[uid].append({
-                                "timestamp": msg.created_at.isoformat(),
-                                "content": content,
-                                "image_count": image_count,
-                                "embed_texts": embed_texts,
-                            })
-                            # Tally slurs from this user's own message text +
-                            # capture contextual snippets for the snapshot. We
-                            # only keep the most recent N per user (overwriting
-                            # older snippets when over cap) — since the scan is
-                            # oldest-first, the LATEST hits end up retained.
-                            if content:
-                                slur_counts[uid] += count_slurs_in_text(content)
-                                ctxs = find_slur_contexts(content, window=45)
-                                if ctxs:
-                                    slur_examples[uid].extend(ctxs)
-                                    # Trim from the front so we keep the newest
-                                    if len(slur_examples[uid]) > _SLUR_EXAMPLES_PER_USER:
-                                        slur_examples[uid] = (
-                                            slur_examples[uid][-_SLUR_EXAMPLES_PER_USER:]
-                                        )
-                            count += 1
-                        # Channel scan completed without exception — break retry loop
-                        break
-                    except Exception as e:
-                        last_err = e
-                        if attempt < _MAX_SCAN_ATTEMPTS:
-                            wait_s = _SCAN_RETRY_BACKOFF[attempt - 1]
-                            print(
-                                f"  scan of #{ch.name} hit {type(e).__name__}: "
-                                f"{str(e)[:120]}; processed {count} msgs so far, "
-                                f"retry {attempt}/{_MAX_SCAN_ATTEMPTS - 1} "
-                                f"in {wait_s}s (resuming from seen_ids)...",
-                                flush=True,
-                            )
-                            await asyncio.sleep(wait_s)
-                        else:
-                            print(
-                                f"  scan of #{ch.name} FAILED after "
-                                f"{_MAX_SCAN_ATTEMPTS} attempts ({count} msgs "
-                                f"collected before failure): {type(e).__name__}: {e}",
-                                flush=True,
-                            )
-                            print(
-                                "  continuing with remaining channels — "
-                                "partial data preserved",
-                                flush=True,
-                            )
-                print(f"  {count} messages, {len(by_user)} unique authors so far",
-                      flush=True)
+            # Result of this cleanup: ~120 LOC removed. Profile-refresh
+            # is now a pure CONSUMER of chat_messages, not a producer.
+            if not use_store:
+                print(
+                    f"ERROR: chat_messages store has only {store_rows} rows "
+                    f"for these channels in the last {days}d (need >= "
+                    f"{_STORE_COVERAGE_FLOOR}). Trigger /refresh_chat "
+                    f"full_window:true to populate, then re-run profile "
+                    f"refresh. Profile-refresh no longer scans Discord "
+                    f"directly — chat_ingestion is the single source of "
+                    f"truth for chat history.",
+                    file=sys.stderr,
+                    flush=True,
+                )
+                return
 
             # Filter to users meeting threshold
             min_msgs = (
