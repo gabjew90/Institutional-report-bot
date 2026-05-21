@@ -179,35 +179,83 @@ async def run_chat_catchup(
             # Cold-start for this channel — scan the full 30-day window
             scan_from = hard_floor
 
+        # Per-channel scan with retry + resume-from-high-water-mark.
+        # Heavy channels (stonks-yapping at 10k+ msgs over 30 days) can
+        # trip Discord gateway / HTTP errors mid-iteration. Without
+        # retry the iterator raises, the catch-up exits early, and the
+        # gap stays unfilled — that's how Phase 1 deployed with the
+        # Apr 25 → May 20 month of stonks-yapping data missing on first
+        # run.
+        #
+        # `last_msg` tracks the most-recent Discord message object we've
+        # iterated. On retry we pass `after=last_msg` (exclusive) so the
+        # next attempt picks up after the failed point WITHOUT re-paging
+        # everything we already saw. Without this, a 3-attempt retry on
+        # an oldest-first 10k-msg channel would page the same 10k msgs
+        # up to 3 times.
+        import asyncio
+        _MAX_SCAN_ATTEMPTS = 3
+        _RETRY_BACKOFF = [5, 15, 30]
+
         new_this_channel = 0
         seen_this_channel = 0
-        try:
-            async for msg in target.history(
-                limit=None, after=scan_from, oldest_first=True
-            ):
-                seen_this_channel += 1
-                if msg.author.bot:
-                    continue
-                # Reuse the live-ingestion helper for consistent shape
-                if await ingest_message(msg):
-                    new_this_channel += 1
-            if new_this_channel:
-                log.info(
-                    f"Chat catchup ({reason}): #{chan_name} — "
-                    f"scanned {seen_this_channel}, stored "
-                    f"{new_this_channel} new rows "
-                    f"(from {scan_from.isoformat()})"
-                )
-                total_new += new_this_channel
+        last_msg: discord.Message | None = None
+        for attempt in range(1, _MAX_SCAN_ATTEMPTS + 1):
+            kwargs: dict = {"limit": None, "oldest_first": True}
+            if last_msg is not None:
+                # Resume from where the previous attempt left off
+                kwargs["after"] = last_msg
             else:
-                log.debug(
-                    f"Chat catchup ({reason}): #{chan_name} — "
-                    f"scanned {seen_this_channel}, nothing new"
-                )
-        except Exception as e:
-            log.warning(
-                f"Chat catchup ({reason}) failed for #{chan_name}: {e}",
-                exc_info=True,
+                kwargs["after"] = scan_from
+            try:
+                async for msg in target.history(**kwargs):
+                    seen_this_channel += 1
+                    last_msg = msg
+                    if msg.author.bot:
+                        continue
+                    if await ingest_message(msg):
+                        new_this_channel += 1
+                break  # full iteration succeeded
+            except Exception as e:
+                if attempt < _MAX_SCAN_ATTEMPTS:
+                    wait_s = _RETRY_BACKOFF[attempt - 1]
+                    resume_marker = (
+                        last_msg.created_at.isoformat()
+                        if last_msg is not None
+                        else scan_from.isoformat()
+                    )
+                    log.warning(
+                        f"Chat catchup #{chan_name} hit "
+                        f"{type(e).__name__}: {str(e)[:120]} after "
+                        f"{seen_this_channel} msgs / "
+                        f"{new_this_channel} new — retry {attempt}/"
+                        f"{_MAX_SCAN_ATTEMPTS - 1} in {wait_s}s "
+                        f"(resume from {resume_marker[:19]})"
+                    )
+                    await asyncio.sleep(wait_s)
+                else:
+                    log.warning(
+                        f"Chat catchup #{chan_name} FAILED after "
+                        f"{_MAX_SCAN_ATTEMPTS} attempts: "
+                        f"{type(e).__name__}: {e}. Partial data preserved "
+                        f"({seen_this_channel} msgs / {new_this_channel} "
+                        f"new written); will retry on next on_ready / "
+                        f"on_resumed.",
+                        exc_info=True,
+                    )
+
+        if new_this_channel:
+            log.info(
+                f"Chat catchup ({reason}): #{chan_name} — "
+                f"scanned {seen_this_channel}, stored "
+                f"{new_this_channel} new rows "
+                f"(from {scan_from.isoformat()})"
+            )
+            total_new += new_this_channel
+        else:
+            log.debug(
+                f"Chat catchup ({reason}): #{chan_name} — "
+                f"scanned {seen_this_channel}, nothing new"
             )
 
     return total_new
