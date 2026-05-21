@@ -585,6 +585,89 @@ def _format_asker_verbatim_block(username: str) -> str:
     return "\n".join(lines)
 
 
+_SUBJECT_VERBATIM_USERS_PER_CALL = 3   # cap how many subjects we look up
+_SUBJECT_VERBATIM_MSG_LIMIT = 25       # fewer than asker (whose history is more relevant)
+
+
+def _format_subject_verbatim_block(
+    user_ids: list[int],
+    *,
+    exclude_user_id: int | None = None,
+) -> str:
+    """Same shape as _format_asker_verbatim_block but for OTHER users
+    the question references. When someone asks 'what did BK say about
+    CRCL,' we want BK's verbatim chat too — not just the asker's.
+
+    Resolves Discord user_ids to usernames via user_profiles (the bot's
+    canonical lookup), then pulls the last N messages from chat_messages
+    per subject. Skips the asker (already injected by the asker-verbatim
+    block) and caps to top _SUBJECT_VERBATIM_USERS_PER_CALL by chat
+    volume so token budget stays bounded.
+
+    Returns empty string when no subjects to surface — caller can safely
+    concatenate.
+    """
+    if not user_ids:
+        return ""
+    # Resolve user_ids → usernames via the profiles table. Users with no
+    # profile won't have a username we can query chat_messages with;
+    # those get skipped (already aligns with "no profile → treat as
+    # stranger" elsewhere in the prompt).
+    profiles = db.get_profiles_for_users(user_ids)
+    if not profiles:
+        return ""
+
+    subjects: list[tuple[int, str, str]] = []
+    for uid, p in profiles.items():
+        if exclude_user_id and uid == exclude_user_id:
+            continue
+        uname = (p.get("username") or "").strip()
+        dn = (p.get("display_name") or uname or f"user_{uid}").strip()
+        if not uname:
+            continue
+        subjects.append((uid, uname, dn))
+
+    if not subjects:
+        return ""
+    # Cap to top N by message volume (proxy: message_count_at_update)
+    subjects.sort(
+        key=lambda t: -(profiles[t[0]].get("message_count_at_update") or 0)
+    )
+    subjects = subjects[:_SUBJECT_VERBATIM_USERS_PER_CALL]
+
+    out: list[str] = []
+    for uid, uname, dn in subjects:
+        try:
+            rows = db.get_recent_user_messages(
+                uname, limit=_SUBJECT_VERBATIM_MSG_LIMIT,
+            )
+        except Exception as e:
+            log.warning(f"Subject-verbatim lookup failed for {uname}: {e}")
+            continue
+        if not rows:
+            continue
+        rows = list(reversed(rows))  # chronological
+        out.append(
+            f"[VERBATIM RECENT MESSAGES — {dn} ({uname}) — for accurate"
+        )
+        out.append(
+            "quoting when the question references them; quote LINE FOR LINE]"
+        )
+        for r in rows:
+            content = (r.get("content") or "").strip()
+            if not content:
+                continue
+            content = content.replace("\n", " ")
+            if len(content) > _VERBATIM_CONTEXT_PER_MSG_CHARS:
+                content = content[:_VERBATIM_CONTEXT_PER_MSG_CHARS] + "…"
+            ts = (r.get("posted_at") or "")[:16]
+            ch = r.get("channel_name") or ""
+            out.append(f"  {ts} #{ch} — {content}")
+        out.append("")  # blank between subjects
+
+    return "\n".join(out).rstrip()
+
+
 async def _resolve_referenced_message(
     bot: discord.Client,
     message: discord.Message,
@@ -1900,6 +1983,22 @@ def create_bot() -> commands.Bot:
                         question = f"{asker_verbatim}\n\n{question}"
                 except Exception as e:
                     log.warning(f"Verbatim-context injection failed: {e}")
+
+                # Mention-aware verbatim: when the question references
+                # OTHER users (Discord @-mentions or known display-name
+                # mentions), inject their recent chat too. Same shape
+                # as the asker block, narrower window. Skips the asker
+                # since they're already covered.
+                try:
+                    if mentioned_ids:
+                        subject_verbatim = _format_subject_verbatim_block(
+                            mentioned_ids,
+                            exclude_user_id=message.author.id,
+                        )
+                        if subject_verbatim:
+                            question = f"{subject_verbatim}\n\n{question}"
+                except Exception as e:
+                    log.warning(f"Subject-verbatim injection failed: {e}")
 
                 # Resolve any referenced message (reply parent or
                 # forward snapshot). Discord forwards carry the snapshot
