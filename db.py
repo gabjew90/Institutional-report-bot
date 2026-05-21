@@ -245,6 +245,41 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             updated_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
         CREATE INDEX IF NOT EXISTS idx_user_profiles_username ON user_profiles(username);
+
+        -- Persistent chat-message store. Every message in a configured
+        -- ingestion channel gets a row here. Two use cases:
+        --
+        --   1. Verbatim claim-verification — when the bot is challenged
+        --      with "show me where I said that", we can SQL-grep the
+        --      user's actual messages and quote the exact line.
+        --
+        --   2. Source-of-truth for the profile-refresh pipeline. Instead
+        --      of scanning Discord history on every refresh (rate-limited,
+        --      WS-flap-prone), the pipeline reads from this table. Daily
+        --      refresh becomes a local SQL query.
+        --
+        -- discord_message_id is UNIQUE so re-ingestion (catch-up after a
+        -- gateway flap) is idempotent — INSERT OR IGNORE silently skips
+        -- rows we already have.
+        CREATE TABLE IF NOT EXISTS chat_messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            discord_message_id INTEGER NOT NULL UNIQUE,
+            channel_id INTEGER NOT NULL,
+            channel_name TEXT NOT NULL,
+            author_id INTEGER NOT NULL,
+            author_username TEXT,
+            author_display TEXT,
+            content TEXT,
+            posted_at TEXT NOT NULL,
+            has_attachments INTEGER NOT NULL DEFAULT 0,
+            attachment_urls TEXT,    -- JSON list[str]
+            embed_texts TEXT,        -- JSON list[str]
+            reply_parent_id INTEGER,
+            ingested_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+        CREATE INDEX IF NOT EXISTS idx_chat_messages_channel_ts ON chat_messages(channel_id, posted_at DESC);
+        CREATE INDEX IF NOT EXISTS idx_chat_messages_author_ts  ON chat_messages(author_id, posted_at DESC);
+        CREATE INDEX IF NOT EXISTS idx_chat_messages_username_ts ON chat_messages(author_username, posted_at DESC);
     """)
     # Migration: add the metrics columns to user_profiles if a previous
     # deploy used the old schema. Must run BEFORE the slur_count /
@@ -2482,6 +2517,140 @@ def get_analyst_trade_by_message_id(message_id: int) -> dict | None:
     if row is None:
         return None
     return dict(row)
+
+
+def store_chat_message(
+    *,
+    discord_message_id: int,
+    channel_id: int,
+    channel_name: str,
+    author_id: int,
+    author_username: str | None,
+    author_display: str | None,
+    content: str | None,
+    posted_at: str,
+    has_attachments: bool = False,
+    attachment_urls: str | None = None,
+    embed_texts: str | None = None,
+    reply_parent_id: int | None = None,
+) -> bool:
+    """INSERT a row into chat_messages, silently skipping duplicates via
+    the UNIQUE constraint on discord_message_id. Returns True if a new
+    row was written, False if it was a duplicate (caller can use this
+    return value to count new ingestions during catch-up).
+
+    `attachment_urls` and `embed_texts` are pre-JSON-encoded strings (or
+    None) — caller does the encoding so this helper stays thin.
+    """
+    conn = get_connection()
+    try:
+        cur = conn.execute(
+            """INSERT OR IGNORE INTO chat_messages
+                 (discord_message_id, channel_id, channel_name,
+                  author_id, author_username, author_display,
+                  content, posted_at,
+                  has_attachments, attachment_urls, embed_texts,
+                  reply_parent_id)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (
+                int(discord_message_id), int(channel_id), channel_name,
+                int(author_id), author_username, author_display,
+                content, posted_at,
+                1 if has_attachments else 0, attachment_urls, embed_texts,
+                int(reply_parent_id) if reply_parent_id else None,
+            ),
+        )
+        conn.commit()
+        return cur.rowcount > 0
+    except Exception:
+        # Schema problems, encoding edge cases, etc. — never raise to the
+        # caller; chat ingestion is best-effort.
+        return False
+
+
+def get_latest_chat_message_posted_at(channel_id: int | None = None) -> str | None:
+    """Most-recent posted_at across stored chat. Optionally scoped to a
+    channel — used by the catch-up pass to know how far back to scan.
+    Returns ISO timestamp string or None if no rows.
+    """
+    if channel_id is not None:
+        row = get_connection().execute(
+            "SELECT MAX(posted_at) FROM chat_messages WHERE channel_id = ?",
+            (int(channel_id),),
+        ).fetchone()
+    else:
+        row = get_connection().execute(
+            "SELECT MAX(posted_at) FROM chat_messages"
+        ).fetchone()
+    return row[0] if row and row[0] else None
+
+
+def find_user_messages_matching(
+    username: str,
+    needle: str,
+    *,
+    limit: int = 10,
+) -> list[dict]:
+    """Substring-match a user's actual messages (case-insensitive).
+    Returns rows newest-first. Used by the /ask flow to produce
+    verbatim receipts when a user challenges a claim with "show me
+    where I said that."
+
+    `needle` is matched as a LIKE pattern (callers can include
+    SQLite wildcards if they want); helper auto-wraps with % when
+    no wildcard char present.
+    """
+    if not username or not needle:
+        return []
+    needle = needle.strip()
+    pattern = needle if any(c in needle for c in ("%", "_")) else f"%{needle}%"
+    rows = get_connection().execute(
+        """SELECT discord_message_id, channel_name, content, posted_at,
+                  author_display, author_username
+           FROM chat_messages
+           WHERE LOWER(author_username) = LOWER(?)
+             AND content LIKE ? COLLATE NOCASE
+           ORDER BY posted_at DESC
+           LIMIT ?""",
+        (username.strip(), pattern, int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_recent_user_messages(
+    username: str,
+    *,
+    limit: int = 50,
+    channel_name: str | None = None,
+) -> list[dict]:
+    """Return a user's most recent messages, newest-first. Optionally
+    scoped to a channel. Used by the profile-refresh pipeline to read
+    from the local store instead of re-scanning Discord history.
+    """
+    if not username:
+        return []
+    if channel_name:
+        rows = get_connection().execute(
+            """SELECT discord_message_id, channel_name, content, posted_at,
+                      attachment_urls, embed_texts
+               FROM chat_messages
+               WHERE LOWER(author_username) = LOWER(?)
+                 AND channel_name = ?
+               ORDER BY posted_at DESC
+               LIMIT ?""",
+            (username.strip(), channel_name, int(limit)),
+        ).fetchall()
+    else:
+        rows = get_connection().execute(
+            """SELECT discord_message_id, channel_name, content, posted_at,
+                      attachment_urls, embed_texts
+               FROM chat_messages
+               WHERE LOWER(author_username) = LOWER(?)
+               ORDER BY posted_at DESC
+               LIMIT ?""",
+            (username.strip(), int(limit)),
+        ).fetchall()
+    return [dict(r) for r in rows]
 
 
 def get_latest_analyst_trade_posted_at(caller: str | None = None) -> str | None:

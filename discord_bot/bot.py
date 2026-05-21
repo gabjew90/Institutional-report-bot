@@ -255,10 +255,11 @@ Know who's coping, who's consensus, who's the lone holdout. When the room is one
 ## PRIORITY ORDER WHEN RULES CONFLICT
 
 1. Don't fabricate. Trade-caller positions and any specific factual claim (records, percentages, dollar figures, dates, quotes, attributions) must come from injected context, search results, or common knowledge you'd bet money on. If you don't know the exact number, soften the claim ("their record under him has been rough") or drop it — never manufacture a precise figure to anchor a confident-sounding take.
-2. Don't acknowledge being a bot or apologize for misses.
-3. Always pull all four context streams (search, profiles, chat, trade-caller logs) before answering.
-4. Default to Type 1 for anything seeking information — only flip to Type 2 or 3 when the trigger fires.
-5. Type 3 (clapback) never contaminates the next Type 1 (job) response.
+2. **When challenged — "show me where I said that," "that wasn't even me," "prove it," "where did I say that" — hold the existing claim if the receipt exists, drop it if it doesn't. Do NOT add new specifics under pressure.** Real receipts come from the asker's chat / profile / verbatim quotes already in your context — quote them verbatim with the channel name when available ("you wrote 'i had 15k to start the day' in #stonks-yapping this afternoon"). If you don't have the verbatim line, say "the receipt isn't in my immediate context but it's been documented in your profile" and stop — never invent fresh details (a new ticker, a new dollar amount, a new event) to defend the original claim. Inventing under pressure is how the bot looks like a liar when the receipts come out — and how it actually IS lying when the original claim wasn't real either.
+3. Don't acknowledge being a bot or apologize for misses.
+4. Always pull all four context streams (search, profiles, chat, trade-caller logs) before answering.
+5. Default to Type 1 for anything seeking information — only flip to Type 2 or 3 when the trigger fires.
+6. Type 3 (clapback) never contaminates the next Type 1 (job) response.
 
 ---
 
@@ -1044,6 +1045,15 @@ def create_bot() -> commands.Bot:
             await run_caller_catchup(bot, reason="on_ready")
         except Exception as e:
             log.error(f"Analyst catch-up on_ready failed: {e}", exc_info=True)
+        # Chat-message catch-up — same shape, broader scope. Persists
+        # every message from configured channels into chat_messages for
+        # local SQL access. On first deploy this also bootstraps up to
+        # 30 days of history per channel.
+        try:
+            from chat_ingestion.watcher import run_chat_catchup
+            await run_chat_catchup(bot, reason="on_ready")
+        except Exception as e:
+            log.error(f"Chat catch-up on_ready failed: {e}", exc_info=True)
 
     @bot.event
     async def on_resumed():
@@ -1053,12 +1063,17 @@ def create_bot() -> commands.Bot:
         were lost. Rate-limited to one run per 2 min globally so a
         flap-storm doesn't trigger a scan-storm.
         """
-        log.info("Discord gateway resumed — running analyst catch-up")
+        log.info("Discord gateway resumed — running analyst + chat catch-up")
         try:
             from analyst_log.watcher import run_caller_catchup
             await run_caller_catchup(bot, reason="on_resumed")
         except Exception as e:
             log.error(f"Analyst catch-up on_resumed failed: {e}", exc_info=True)
+        try:
+            from chat_ingestion.watcher import run_chat_catchup
+            await run_chat_catchup(bot, reason="on_resumed")
+        except Exception as e:
+            log.error(f"Chat catch-up on_resumed failed: {e}", exc_info=True)
 
     # --- DISABLED in slash menu (2026-05-14) ----------------------------------
     # /pulse is no longer registered with Discord's command tree. Manual pulses
@@ -1681,6 +1696,16 @@ def create_bot() -> commands.Bot:
         # Ignore the bot's own messages + other bots.
         if message.author.bot:
             return
+
+        # Persistent chat ingestion — store EVERY non-bot message in
+        # configured channels so downstream consumers (claim verification,
+        # profile refresh, analytics) can read locally instead of scanning
+        # Discord history. Best-effort, never blocks downstream handlers.
+        try:
+            from chat_ingestion.watcher import ingest_message
+            await ingest_message(message)
+        except Exception as e:
+            log.warning(f"Chat ingestion dispatch failed: {e}")
 
         # Dispatch to the analyst-log watcher if this message is in the
         # configured analyst alerts channel. Runs side-by-side with the

@@ -113,6 +113,16 @@ class Settings(BaseSettings):
         },
     ]
 
+    # Chat-message ingestion: comma-separated channel names whose
+    # messages get persisted to chat_messages. Empty string = derive
+    # from profile_channels + analyst_callers' channels (the union of
+    # every channel the bot already cares about). Used by:
+    #   - /ask verbatim quote lookups (find_user_messages_matching)
+    #   - Future: profile-refresh pipeline (read local DB instead of
+    #     re-scanning Discord history every cron)
+    #   - Future: claim-verification helpers in the bot's responses
+    chat_ingestion_channels: str = ""
+
     # User-profile system: comma-separated channel names where the bot
     # scans for personality signal during the daily profile refresh.
     # Four "yapping" channels (high-volume personality) + four alert
@@ -303,6 +313,33 @@ class Settings(BaseSettings):
                 "enabled": True,
             }]
         return []
+
+    def resolve_chat_ingestion_channels(self) -> set[str]:
+        """Channel names to ingest into chat_messages.
+
+        Behavior:
+          - If chat_ingestion_channels is set (comma-separated), use that
+            verbatim.
+          - Otherwise default to the union of profile_channels and every
+            registered analyst caller's channel — every channel the bot
+            already cares about. New caller channels and profile channels
+            get ingested automatically without a config change.
+        """
+        if self.chat_ingestion_channels.strip():
+            return {
+                s.strip() for s in self.chat_ingestion_channels.split(",")
+                if s.strip()
+            }
+        channels: set[str] = set()
+        for raw in (self.profile_channels or "").split(","):
+            raw = raw.strip()
+            if raw:
+                channels.add(raw)
+        for c in self.resolve_analyst_callers():
+            ch = (c.get("channel") or "").strip()
+            if ch:
+                channels.add(ch)
+        return channels
 
     def caller_by_channel(self, channel_name: str) -> dict | None:
         """Look up which caller owns this channel name (case-insensitive)."""
