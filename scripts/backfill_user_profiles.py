@@ -132,6 +132,35 @@ The output schema is identical to a from-scratch profile — same eight sections
 """
 
 
+# ─────────────────────────────────────────────────────────────────────────
+#  PROFILE_PROMPT — section index (fix #8, navigation aid)
+# ─────────────────────────────────────────────────────────────────────────
+#  Goal: a developer iterating on one section shouldn't have to read 250
+#  lines to find it. Section anchors (search the string for these):
+#
+#    "## WHO YOU'RE WRITING ABOUT"     — identity guardrail (the subject
+#                                         vs. people-they-mention rule)
+#    "## WHAT A GOOD DOSSIER LOOKS LIKE" — high-level voice + framing
+#    "## SECTIONS"                      — the 8 required sections defined
+#    "## HOW TO WRITE"                  — voice rules (positive directives,
+#                                         not "don't X" — see fix from
+#                                         earlier this session)
+#    "## EXAMPLE TARGET"                — BK profile mock the model
+#                                         pattern-matches against
+#    "## OUTPUT FORMAT"                 — JSON schema, trader_examples
+#                                         HARD RULE, scoring brackets
+#    "MESSAGES (oldest first..."        — runtime-injected message block
+#
+#  Composable variant: PRIOR_PROFILE_TEMPLATE (above) is conditionally
+#  spliced in via {prior_profile_block} when the user has an existing
+#  profile. That's the incremental-update mode (Phase 2 territory).
+#
+#  WHY NOT SPLIT INTO ACTUAL PYTHON CONSTANTS? Whitespace between sections
+#  is meaningful to the model and re-tested through every iteration this
+#  session. A naive concat split would risk subtle behavioral drift. If
+#  iteration on individual sections becomes painful, do the split THEN
+#  re-validate end-to-end output against a golden fixture.
+# ─────────────────────────────────────────────────────────────────────────
 PROFILE_PROMPT = """\
 You write character dossiers on members of a private options-trading discord. Each dossier becomes context for a /ask bot that knows this room — it answers questions about people, jokes with them, and claps back when they're attacking. The room signed up for crude humor, slurs, and racial banter as the daily texture. The bot stays inside the room; dossiers are internal calibration, never republished raw.
 {prior_profile_block}
