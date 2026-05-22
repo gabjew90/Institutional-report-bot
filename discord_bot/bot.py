@@ -1968,21 +1968,12 @@ def create_bot() -> commands.Bot:
                 # block the model has to rely on the asker's profile
                 # (which summarizes but doesn't quote) and the recent
                 # chat window (which may not include older receipts).
-                try:
-                    asker_username = (
-                        message.author.name if message.author else ""
-                    )
-                    asker_verbatim = _format_asker_verbatim_block(
-                        asker_username
-                    )
-                    if asker_verbatim:
-                        # Prepend as a separate context block ahead of the
-                        # actual question; the system prompt rule #2 tells
-                        # the model how to use it for "show me where I
-                        # said that" rebuttals.
-                        question = f"{asker_verbatim}\n\n{question}"
-                except Exception as e:
-                    log.warning(f"Verbatim-context injection failed: {e}")
+                # Asker-verbatim block disabled — recent channel chat
+                # (50 msgs, 24h) + the asker's profile in WHO'S TALKING
+                # already give the model plenty of context about the
+                # asker. The verbatim helper (_format_asker_verbatim_block)
+                # is kept in the file as dead code in case we want to
+                # re-enable for specific rebuttal patterns later.
 
                 # Mention-aware verbatim: when the question references
                 # OTHER users (Discord @-mentions or known display-name
