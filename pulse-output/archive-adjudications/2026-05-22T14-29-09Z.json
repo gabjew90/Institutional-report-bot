@@ -1,0 +1,383 @@
+{
+  "pulse_date": "2026-05-22",
+  "window_label": "since-last-daily (2026-05-21T13:25)",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex super cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 10,
+        "skeptical": 3,
+        "neutral": 11
+      },
+      "consensus_view": "Most banks agree the surge in AI data-center spending by big cloud companies is real and driving earnings, but they split on whether it is a productivity boom or just an inflationary spending spree at bubble-like stock concentrations.",
+      "facts_agreed": [
+        {
+          "claim": "Banks agree that AI infrastructure demand and hyperscaler capital spending remain strong and are still accelerating.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs",
+            "Barclays",
+            "Citi",
+            "JPMorgan",
+            "Bloomberg Markets Live"
+          ],
+          "evidence_quotes": [
+            "We now expect close to 70% growth in AI capex this year",
+            "We remain in a period of extreme AI infrastructure constraint",
+            "demand for AI Infrastructure continues to accelerate",
+            "We now expect 47%/24% growth in 2026/2027, above prior views of 37%/19%",
+            "continued momentum in part reflecting the accelerating strength of AI spending",
+            "AI usage has moved into a stage of scaling of immense proportions"
+          ]
+        },
+        {
+          "claim": "Banks agree that AI-related capital investment is a meaningful inflationary force on the economy.",
+          "banks_for": [
+            "Bank of America",
+            "Deutsche Bank",
+            "The Market Ear",
+            "ABN AMRO"
+          ],
+          "evidence_quotes": [
+            "Fast adopters (US/China) are likely to see higher neutral interest rates (r*)",
+            "The evidence overwhelmingly points to a capex/demand driven cycle.",
+            "AI is inflationary; there is a big round of fiscal stimulus in Asia",
+            "AI is increasingly looking like a classic capex boom rather than a productivity miracle."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI cycle is a genuine productivity miracle or just a classic inflationary capex boom",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "fundamentals for the AI growth story remain strong",
+          "banks_against": [
+            "The Market Ear",
+            "ABN AMRO"
+          ],
+          "against_evidence": "AI is increasingly looking like a classic capex boom rather than a productivity miracle."
+        },
+        {
+          "claim": "Whether AI-leader stock concentration has reached unsustainable bubble levels",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "AI demand is inflecting as 'AI factories' are built out",
+          "banks_against": [
+            "BofA Global Research"
+          ],
+          "against_evidence": "market concentration easily surpasses (~48%) bubbles of roaring \u201820s, Nifty 50 \u201870s"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "UBS",
+          "claim": "Followed by 20% in 2027",
+          "deadline": "2027"
+        }
+      ]
+    },
+    {
+      "theme": "hormuz supply disruption",
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 15
+      },
+      "selected": true,
+      "consensus_view": "Banks broadly agree the Strait of Hormuz disruption has badly cut oil flows and keeps crude prices biased upward, but they split on whether the bigger danger is higher inflation or a hit to economic growth.",
+      "facts_agreed": [
+        {
+          "claim": "Restricted flows through the Strait of Hormuz keep the bias for crude oil prices pointed upward.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "path of least resistance for crude prices remains upward as long as flows are restricted",
+            "path of least resistance for crude prices remains upward",
+            "estimated oil exports through the Strait remain at a very low 5% of normal levels"
+          ]
+        },
+        {
+          "claim": "The Strait of Hormuz disruption is a live macro subject referenced across many bank desks, spanning closure, blockade, energy flow restrictions, and resolution scenarios.",
+          "banks_for": [
+            "ANZ Research",
+            "Barclays",
+            "Citi",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "Mizuho International",
+            "Natixis",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz closure",
+            "Strait of Hormuz flow restrictions",
+            "Strait of Hormuz energy flow restrictions",
+            "Strait of Hormuz blockade",
+            "Strait of Hormuz conflict resolution"
+          ]
+        },
+        {
+          "claim": "A lingering Hormuz energy-flow disruption creates upside risk for natural gas benchmark prices.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "upside risks to TTF (and JKM) prices remain, should the Hormuz energy flow disruption linger"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the oil shock is mainly an inflation risk or mainly a growth risk",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "Markets are pricing an inflation shock, not growth risk",
+          "banks_against": [
+            "UBS"
+          ],
+          "against_evidence": "path of least resistance for crude prices remains upward as long as flows are restricted"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran peace deal",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 12
+      },
+      "consensus_view": "Banks across many research desks track US-Iran peace negotiations as a live macro catalyst, but only one bank has staked a directional view that a deal is now likely.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference US-Iran conflict negotiations as an ongoing situation worth watching.",
+          "banks_for": [
+            "ANZ Research",
+            "Berenberg",
+            "Citi",
+            "Danske Bank",
+            "Deutsche Bank",
+            "ING",
+            "JPMorgan",
+            "Natixis",
+            "Reuters",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Iran-US conflict negotiations",
+            "US-Iran diplomatic negotiations",
+            "US-Iran conflict resolution",
+            "US-Iran negotiation progress",
+            "US-Iran peace deal negotiations",
+            "US-Iran nuclear deal negotiations"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {
+          "bank": "JPMorgan",
+          "claim": "Continued closure of the Strait of Hormuz beyond June.",
+          "deadline": "beyond June"
+        }
+      ]
+    },
+    {
+      "theme": "rate cut repricing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 4,
+        "neutral": 3
+      },
+      "consensus_view": "Banks broadly agree the market has swung from expecting Fed rate cuts to pricing higher-for-longer rates or even hikes, but they split on whether that repricing has gone too far.",
+      "facts_agreed": [
+        {
+          "claim": "The market has shifted hawkishly, pricing little chance of Fed rate cuts and rising odds of hikes.",
+          "banks_for": [
+            "Danske Bank",
+            "The Market Ear",
+            "ANZ Research",
+            "Cr\u00e9dit Agricole CIB"
+          ],
+          "evidence_quotes": [
+            "The easing cycle is over, and next policy moves will be 25bp hikes",
+            "odds of a rate-hike in 2026 soared to over 80% today",
+            "we maintain our view that the Fed will remain on hold for the rest of the year"
+          ]
+        },
+        {
+          "claim": "Rising long-term bond yields are the channel pressuring equity valuations as the rate outlook turns less dovish.",
+          "banks_for": [
+            "BofA Global Research",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "surge in bond yields how booms/bubbles end...why bond vigilantes on maneuvers",
+            "The rise in long term interest rates has undermined the valuation of Defensive and \u2018Quality\u2019 parts"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the market has over-priced the extent of future rate hikes",
+          "banks_for": [
+            "UBS",
+            "Berenberg",
+            "ING"
+          ],
+          "for_evidence": "markets continue to overestimate the potential extent of rate hikes",
+          "banks_against": [
+            "Danske Bank"
+          ],
+          "against_evidence": "The easing cycle is over, and next policy moves will be 25bp hikes"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "Berenberg",
+          "claim": "Fed funds rate year-end increase projection",
+          "deadline": "20bp"
+        }
+      ]
+    },
+    {
+      "theme": "kevin warsh at the fed",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Banks across nine research desks reference Kevin Warsh arriving as Fed Chair as a live near-term policy catalyst, but nobody has staked a directional view on what it means for markets yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag Kevin Warsh's arrival at the Fed as a policy event to watch over this window.",
+          "banks_for": [
+            "ABN AMRO",
+            "ANZ Research",
+            "Cr\u00e9dit Agricole CIB",
+            "Danske Bank",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "Scotiabank",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh joining the Fed",
+            "Kevin Warsh Fed Chair policy shift",
+            "Chair Warsh inflation risk",
+            "Kevin Warsh Fed Chair confirmation",
+            "Warsh arrival at the Fed"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "trump xi summit",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Banks across four desks reference the Trump-Xi summit as a near-term US-China macro catalyst, including a farm-purchase agreement, but none has staked a clear directional market view yet.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks flag the Trump-Xi summit as a live US-China macro catalyst worth watching this window.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "China-US presidential summit",
+            "Trump-Xi summit",
+            "Trump-Xi agricultural purchase agreement",
+            "Trump-Xi meeting implications",
+            "US-China relations post Trump-Xi meeting"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "boj monetary policy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Banks across four desks reference the Bank of Japan's policy path and a possible June rate increase as a live macro topic, but none has staked a clear directional view on it.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks flag the Bank of Japan's policy outlook, including a potential June rate hike, as an active topic this window.",
+          "banks_for": [
+            "Citi",
+            "Goldman Sachs",
+            "JPMorgan",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Bank of Japan policy rate",
+            "Bank of Japan policy rate outlook",
+            "Bank of Japan policy tightening",
+            "BoJ central bank meeting",
+            "BOJ June policy hike",
+            "June BoJ rate hike"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east conflict",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four banks reference the Middle East conflict as a live backdrop for oil and macro markets, but none has staked a clear directional view on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks flag the Middle East conflict as a recurring market backdrop this window, framed around oil supply and macro risk.",
+          "banks_for": [
+            "Citi",
+            "Goldman Sachs",
+            "Mizuho International",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Middle East conflict",
+            "Middle East conflict escalation",
+            "Middle East geopolitical narrative",
+            "Middle East war resolution optimism"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
