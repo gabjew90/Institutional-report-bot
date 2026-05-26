@@ -172,9 +172,15 @@ class Settings(BaseSettings):
     # treated as still-fresh and the user is skipped. Brand-new users
     # (no profile yet) bypass this check and use profile_min_messages
     # as their cold-start gate. Lower = more frequent refreshes but more
-    # token spend; higher = less drift-tracking but cheaper. 50 ≈ ~1.5
-    # days of new material for a moderately active yapper.
-    profile_delta_threshold: int = 50
+    # token spend; higher = less drift-tracking but cheaper.
+    #
+    # Lowered 50 → 20 because at 50 active callers who post mostly in
+    # their own caller channels (not in profile_channels) were going 2+
+    # days without a refresh — profile_channels covers yapping channels
+    # but not caller alert channels, so caller activity didn't count
+    # toward delta. 20 = ~half a day of typical yapping for an active
+    # member, catches drift sooner without much extra token spend.
+    profile_delta_threshold: int = 20
     # Image OCR for user profiles. When True, the backfill downloads up
     # to profile_image_cap most-recent images per user and sends them
     # alongside the text to Gemini (multipart). Vision extracts specific
