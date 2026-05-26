@@ -2147,10 +2147,12 @@ def append_ask_interaction(
             asker_label = f"{asker_display_name} (`{asker_username}`)"
 
         # Truncate stupendously long Q/A to keep the daily file scannable.
-        # 6 KB per side is generous (the bot caps responses at 400 words /
-        # ~3 KB anyway; questions are usually < 500 chars). Beyond that we
-        # tail-mark and move on.
-        def _clip(s: str, limit: int = 6000) -> str:
+        # The Q passed in here is the FULL augmented prompt sent to Gemini
+        # (subject-verbatim blocks, forwarded/replied message content,
+        # then the user's actual typed question at the tail). 1500 chars
+        # would routinely chop the user's text off — bump to match the
+        # answer side. Beyond the cap we tail-mark and move on.
+        def _clip(s: str, limit: int = 12000) -> str:
             s = (s or "").strip()
             return s if len(s) <= limit else s[:limit] + "\n\n_…(truncated)_"
 
@@ -2158,7 +2160,7 @@ def append_ask_interaction(
             (f"# /ask interactions — {date_str}\n\n" if is_new else "")
             + f"## {ts_str}\n\n"
             f"**Asker:** {asker_label} in #{channel_name or '(unknown)'}\n\n"
-            f"**Q:** {_clip(question, 1500)}\n\n"
+            f"**Q:** {_clip(question)}\n\n"
             "**A:**\n\n"
             f"{_clip(answer)}\n\n"
             "---\n\n"
