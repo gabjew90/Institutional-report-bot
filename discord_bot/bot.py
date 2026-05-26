@@ -710,7 +710,19 @@ async def _resolve_referenced_message(
         if snapshots:
             snap = snapshots[0]
             snap_content = (getattr(snap, "content", None) or "").strip()
-            content = snap_content or None
+            snap_embed_text = " | ".join(
+                t
+                for t in (
+                    _extract_embed_text(e)
+                    for e in (getattr(snap, "embeds", None) or [])
+                )
+                if t
+            ).strip()
+            content = (
+                f"{snap_content}\n\n{snap_embed_text}".strip()
+                if snap_content and snap_embed_text
+                else (snap_content or snap_embed_text or None)
+            )
             attachments = list(getattr(snap, "attachments", []) or [])
         # Try to resolve the original author via cross-channel fetch
         if ref.message_id:
@@ -726,18 +738,43 @@ async def _resolve_referenced_message(
                         getattr(original.author, "display_name", None)
                         or original.author.name
                     )
-                # Fall back to original message body/attachments if snapshot was thin
+                # Fall back to original body/embeds/attachments if snapshot was thin
                 if not content:
-                    content = (original.content or "").strip() or None
+                    orig_content = (original.content or "").strip()
+                    orig_embed_text = " | ".join(
+                        t
+                        for t in (
+                            _extract_embed_text(e) for e in (original.embeds or [])
+                        )
+                        if t
+                    ).strip()
+                    content = (
+                        f"{orig_content}\n\n{orig_embed_text}".strip()
+                        if orig_content and orig_embed_text
+                        else (orig_content or orig_embed_text or None)
+                    )
                 if not attachments and original.attachments:
                     attachments = list(original.attachments)
             except Exception as e:
                 log.debug(f"forward author resolution failed: {e}")
     else:
         # Reply (default reference type)
+        def _flatten(parent_msg: discord.Message) -> str | None:
+            body = (parent_msg.content or "").strip()
+            embed_text = " | ".join(
+                t
+                for t in (
+                    _extract_embed_text(e) for e in (parent_msg.embeds or [])
+                )
+                if t
+            ).strip()
+            if body and embed_text:
+                return f"{body}\n\n{embed_text}".strip()
+            return body or embed_text or None
+
         resolved = getattr(ref, "resolved", None)
         if isinstance(resolved, discord.Message):
-            content = (resolved.content or "").strip() or None
+            content = _flatten(resolved)
             if resolved.author:
                 author_id = resolved.author.id
                 author_display = (
@@ -748,7 +785,7 @@ async def _resolve_referenced_message(
         elif ref.message_id:
             try:
                 parent = await message.channel.fetch_message(ref.message_id)
-                content = (parent.content or "").strip() or None
+                content = _flatten(parent)
                 if parent.author:
                     author_id = parent.author.id
                     author_display = (
