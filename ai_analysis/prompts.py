@@ -134,7 +134,7 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
   "trade_ideas": [
     {
       "description": "Long NVDA May $180 Calls",
-      "rationale": "Riding upgrade cycle + AI capex momentum",
+      "rationale": "Cyclical earnings tailwind + sector multiple re-rating",
       "risk": "Broad market selloff, AI spending deceleration",
       "conviction": "high|medium|low",
       "time_horizon": "intraday|swing|1-3mo|3-12mo|longer_term — what window the trade is sized for"
@@ -163,7 +163,7 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
   ],
   "tension_points": [
     {
-      "theme": "Short label for the underlying theme this tension applies to (e.g., 'AI capex super-cycle', 'Rate-cut repricing', 'Hormuz oil shock', 'Software short squeeze')",
+      "theme": "Short label for the underlying subject this tension applies to — same shape as theme_stances theme labels: 2-5 words naming what THIS report specifically argues about. Form from the report's own framing, not a memorized list. If both sides of the tension agree on the SUBJECT but disagree on the call, use the subject phrase; if they're arguing about different framings of related dynamics, name the framing both bull and bear engage with.",
       "bull_case": "The optimistic read — what the bull side believes, with specific data or named bank backing where present (e.g., 'Goldman raised 2026 capex to $751B; MAG7 reported 20% revenue growth, 61% earnings growth — strongest pace since 4Q21')",
       "bear_case": "The risk / counter-thesis — what could break the bull case, with specific data or named bank backing (e.g., 'Goldman desk flags that 1/3 of MAG7 profits came from PE investment gains, not AI revenue — earnings are more cyclically vulnerable than the headline suggests')",
       "what_invalidates": "Specific level, event, or signal that would invalidate the bull thesis (e.g., 'A META or GOOGL capex guide-down at next earnings', 'Brent breaking below $90 sustained for 2 weeks', 'Core CPI print at 0.3% MoM or higher for July'). Empty string if no specific invalidation level identified."
@@ -174,7 +174,7 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
   ],
   "theme_stances": [
     {
-      "theme": "Short canonical theme label — 2-5 words, lowercase preferred, name the SPECIFIC theme not generic 'macro' or 'equities' (e.g., 'hormuz peace deal', 'ai hyperscaler capex super-cycle', 'rate-cut repricing', 'fed dovish surprise', 'apple foundry pivot', 'kospi melt-up', 'cocoa supply shock', 'late-stage rally squeeze')",
+      "theme": "Short canonical label naming the SPECIFIC subject THIS report argues about — derived from this report's content, not borrowed from your memory of prior pulses. 2-5 words, lowercase preferred. The label is what other reports' stances on the same subject will cluster against, so form a noun-phrase that's narrow enough to discriminate but general enough that another bank covering the same dynamic would land on the same label. Useful shapes: (asset + dynamic), (catalyst + actor), (positioning + cohort), (region + macro shift), (sector + rotation direction). Avoid generic buckets ('macro', 'equities', 'risk-on', 'positioning'). Avoid echoing labels you may recall from earlier reports — the goal is faithful clustering on THIS report's actual subject, not pattern-matching to recurring narratives.",
       "stance": "supportive | skeptical | neutral — supportive = bank rides/agrees with the theme; skeptical = bank fades/disputes; neutral = bank covers the theme as data-only without committing direction",
       "conviction": "high | medium | low — high ONLY if the report uses explicit high-conviction language ('high conviction', 'strongly disagree', 'top call', 'best idea') or is structured as a dedicated thesis note; medium for stated views without those markers; low for passing mentions or hedged framing",
       "key_argument": "One short sentence — the bank's actual reasoning (paraphrased tightly). MUST reflect a sentence that appears in the report. Empty string if the report doesn't argue, only describes.",
@@ -639,7 +639,7 @@ You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields
 
 1. **Every evidence quote you emit MUST be a verbatim character-for-character copy of one of the `theme_stances.evidence` strings in your input.** Do not paraphrase. Do not shorten. Do not "clean up" the text. Copy the string. If no usable verbatim quote exists for a claim, leave the evidence_quotes list empty rather than invent one.
 2. **Every bank in `banks_for` / `banks_against` MUST appear as the `source` field of one of the input PDFs for this theme.** Do not invent attributions. Do not promote a bank that only appears in cross-bank references — only the issuing banks of the input PDFs count.
-3. **Every `falsifiable_predictions[*].claim` MUST appear as a substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** If a "prediction" can't be traced to either source, omit it.
+3. **Every `falsifiable_predictions[*].source_quote` MUST be a verbatim substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** The other prediction fields (`subject`, `direction_or_level`, `by_when`) are extracted from the same source material but each must be supported by the source quote — if the source names a level but no timeframe, leave `by_when` empty rather than invent one. If a prediction can't be traced to either source at all, omit the entry.
 4. **`stance_counts` MUST exactly match the pre-aggregated counts provided in your input.** Do not recount, do not adjust. Copy the numbers given.
 5. **If any field's inputs are too thin to fill honestly, return an empty list `[]` for that field.** Empty over invented. A short, accurate adjudication beats a long, padded one.
 6. **`consensus_view` is one sentence, plain English, no jargon.** Translate technical terms (bps, NII, duration, gamma) inline if used. Reader is a self-directed options/crypto trader, not a bank analyst.
@@ -670,9 +670,11 @@ You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields
   ],
   "falsifiable_predictions": [
     {
-      "bank": "<bank name from inputs>",
-      "claim": "<prediction text — substring must appear in input tension_points.what_invalidates OR key_data_points fields>",
-      "deadline": "<ISO date OR a non-date conditional substring of an input field, e.g. 'post-ceasefire'>"
+      "bank": "<source bank issuing the prediction — must be a bank name from the inputs>",
+      "subject": "<what is being predicted: the asset / metric / event being forecast. Examples by shape: 'Brent crude price', 'US 2-year yield', 'NFP headline print', 'EU recession onset', 'BTC spot price', 'S&P 500 EPS 2026'. Name the thing, not the call.>",
+      "direction_or_level": "<the forecast itself: the specific target, threshold, or directional outcome the bank is calling. Examples by shape: '$60/bbl', 'above 4.5%', 'positive 200K', 'falls below pre-pandemic trend', 'breaks 145 to the upside', '12% revenue growth'. Just the call.>",
+      "by_when": "<when the prediction resolves: ISO date, calendar quarter, or named event-anchor. Examples by shape: '2026-12-31', 'Q4 2027', 'year-end 2026', 'post-FOMC June', 'within 6 months', 'by next NFP'. Leave empty (\"\") if the bank stated a level but no timeframe — never invent a deadline.>",
+      "source_quote": "<verbatim substring from input tension_points.what_invalidates OR key_data_points fields that grounds this entry. Must appear character-for-character in one of those input strings.>"
     }
   ]
 }
@@ -990,7 +992,7 @@ You have the PREVIOUS scheduled pulse's final markdown AND its QC review above. 
 
 - **Did yesterday's flagged issues get fixed?** Walk the previous QC review's "Suggested changes for next run" and "Signals worth tracking" lists. For each one: did this pulse fix it, partially fix it, or repeat it? Be specific — "yesterday's QC flagged that EDIT dropped the RECAP positioning color; this pulse's RECAP DOES carry retail-flow + dealer-gamma color → fixed" or "yesterday flagged the identical-template-across-themes problem; this pulse still has all three themes in the same shape → not fixed, recurring."
 - **Did any issue regress?** Something that was fine yesterday and broke today.
-- **Theme continuity.** Which themes carried over from yesterday? For the carried-over ones (AI capex is the obvious recurring one), did today's version ADVANCE the story — new data point, new bank's angle, new sub-thread — or just restate yesterday's framing? A theme that leads two days running and reads the same both days is a freshness problem; a theme that leads two days running but with a genuinely new angle each day is fine.
+- **Theme continuity.** Which themes carried over from yesterday's pulse? For ANY carried-over theme, the question is whether today's version ADVANCED the story — a new data point, a new bank's angle, a new sub-thread — or just restated yesterday's framing in different words. A theme that leads two days running and reads the same both days is a freshness problem. A theme that leads two days running but with a genuinely new angle each day is fine. Audit each carry-over on its own evidence in today's corpus — don't single out specific themes as "the recurring one." Every theme has to earn its place each day on the strength of the day's evidence.
 - **Writing trend.** Same density? Tighter? Looser? More distinctive voice or more generic? More actionable closes or fewer? Did the verdict on the miss-it test move toward "yes" or away from it vs yesterday?
 - **Net call.** ONE sentence: is this pulse BETTER than yesterday's, ABOUT THE SAME, or WORSE — and the single biggest reason. If "about the same," that's a signal too — it means the changes between runs didn't move the needle on what matters.
 
