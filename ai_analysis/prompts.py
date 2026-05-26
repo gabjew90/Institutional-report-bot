@@ -1154,22 +1154,24 @@ Examples (this is the length and energy target):
 # Wartime reigns
 # Retail chasing begins
 # Ceasefire cracks
-# Hormuz hot, jobs next
-# AI capex confirmed
-# Bond market bluffs Fed
+# Tariff news flips tape
+# Earnings beat, guides up
+# Yen carry snaps loose
 # Vol regime breaks
 # Crypto leads, equities chop
-# Iran flips the tape
-# Powell opens the QE door
+# Curve flips, no bid
+# Biotech rotation begins
+# (these are SHAPES not subjects — when you write today's headline, derive it from
+# what TODAY's corpus actually argues; do not pattern-match these specific examples)
 ```
 
 NOT acceptable (too long, too explanatory, too sentence-shaped):
 
 ```
-# Hormuz peace deal cracks the oil bid                              ← too long
-# Bond market calls the Fed's bluff into NFP                        ← too long
-# Powell's trial balloon and the rate-cut repricing it triggered    ← way too long, sentence-shaped
-# Risk-on overnight as Iran ceasefire chatter cuts $USO 3%          ← too long, ticker-cluttered
+# Yen breaks 150 and the carry-trade unwind it triggered            ← too long, sentence-shaped
+# Tariff threat rolls back, S&P bid into the open                   ← too long
+# European bank stress test results trigger the credit rotation     ← way too long, sentence-shaped
+# Risk-on overnight as China stimulus chatter cuts $FXI volume 8%   ← too long, ticker-cluttered
 ```
 
 Think tabloid headline, not analyst note title. The reader's eye should hit the H1, get the one-thing-they-need-to-know in a single beat, then scroll into the body.
@@ -1220,7 +1222,7 @@ If the corpus doesn't supply sizing or invalidation for a relative-value call, w
 **Bull/bear coherence:** both sides must be about the SAME thesis. If the bull case is "Apple's foundry split lifts $INTC for years," the bear case is "the Apple deal slips or comes in smaller than leaked" — NOT "Goldman has a Sell on $SMCI" (different stock, different story). Don't pad the bear case with unrelated negative calls.
 
 **Examples of theme-coherence failure (DO NOT DO THIS):**
-- ❌ Theme is "AI capex super-cycle." Body mentions Apple foundry, semicaps, $PLTR price target hike, hyperscaler earnings. — Too many threads. Pick one and make it the theme.
+- ❌ Theme is "European bank rotation." Body mentions Italian credit, Spanish housing, German fiscal expansion, $SAN price target hike. — Too many threads under one banner. Pick the one the corpus actually argues about and make IT the theme.
 - ❌ Theme bull case names $INTC; positioning read pivots to $MU; bear case mentions $SMCI. — Three different tickers across one theme; the reader is whiplashed.
 
 **Examples of theme-coherence success:**
@@ -1251,17 +1253,17 @@ Those are corpus meta-narration — they describe the SOURCES rather than make a
 
 No jargon, no number cram. Plain words. One sentence.
 
-Examples (note these are *patterns to vary from*, not templates to copy):
-- *The bond market is pricing rate hikes through April, and we think it's wrong.*
-- *Hormuz peace memo on the wires, but the supply scar lasts months.*
-- *AI capex is no longer a forecast — earnings are confirming the build.*
+Examples (note these are *patterns to vary from*, not templates to copy — pick whatever theme TODAY's corpus actually argues):
+- *The yen carry trade has been pricing structural stability, and we think it's wrong.*
+- *China's stimulus memo hit the tape, but the credit transmission lag is months.*
+- *European industrial earnings are no longer a forecast — guides are confirming the rebuild.*
 - *Apple's foundry pivot is the single-stock story this market is mispricing.*
 - *Norges Bank cut while the Riksbank held — that gap is the trade.*
 
 ❌ Bad (corpus meta-narration, not a call):
-- *"Banks are debating whether the Fed will deliver effective easing."* — describes the corpus state, doesn't take a side
-- *"The question is whether the AI capex super-cycle has further to run."* — same problem; pose the answer, don't pose the question
-- *"Researchers are split on the rate-cut path."* — meta-narration, no claim
+- *"Banks are debating whether the central bank will deliver effective easing."* — describes the corpus state, doesn't take a side
+- *"The question is whether the European industrial rebound has further to run."* — same problem; pose the answer, don't pose the question
+- *"Researchers are split on the policy path."* — meta-narration, no claim
 
 If you're tempted to write "banks are debating..." or "the question is whether..." — STOP. Pick a side. The punchline is YOUR call, not a summary of the disagreement.
 
@@ -1395,7 +1397,7 @@ The default close is a positioning lean + named instrument. NO invalidation leve
 
 ✅ Acceptable (trigger included BECAUSE it traces to research, with attribution): *"...refined-fuel inventories are at 8-year lows and Europe's jet fuel inventory runs out by June, so oil prices stay elevated for months regardless of the ceasefire. Long $BNO captures it. The Goldman desk's $85 Brent break — explicitly cited in their note as the level the supply scare ends — would be the trigger that the trade is over."* (The $85 trigger is attributed to Goldman's note. If `tension_points.what_invalidates` says "Brent breaking below $85 sustained" for this theme, the trigger is fair game; if not, OMIT.)
 
-❌ Bad (invented trigger, no research basis): *"...the rate-cut thesis dies if May 12 CPI prints 3.0%+ core."* (If research didn't supply the specific 3.0% threshold or the May 12 date, this is fabricated precision.)
+❌ Bad (invented trigger, no research basis): *"...the soft-landing thesis dies if August NFP prints below 100K."* (If research didn't supply the specific 100K threshold or the August date, this is fabricated precision.)
 
 ❌ Bad (default-opener tells — banned phrasings): *"The cleanest read for someone with US options exposure..."*, *"the cleanest expression is..."*. These are template tells. Use specific phrasings: *"The bias is long X."* / *"Long $X is the trade."* / *"This favors long $X over short $Y."* / *"Net positioning view: long X."*
 
@@ -1589,8 +1591,8 @@ Other ratios that LLMs commonly mis-paraphrase: P/E, EV/EBITDA, ROIC, FCF yield,
 Specific markdown elements are load-bearing UI; rewriting their content does NOT mean stripping their formatting:
 
 - **Italicized Movement 1 punchline.** The `*...*` line right after each `### theme header` is the visual anchor of the theme. When you rewrite that line (e.g., to remove em-dashes, banned phrases, or to tighten), you MUST keep the wrapping `*...*` markdown. Strip the em-dash to a period or comma; rewrite the words; KEEP the asterisks. Without italics, the theme reads like a navigation header with no punchline.
-  - ❌ DRAFT: `*The AI capex super-cycle has stopped being a forecast — guide-ups are confirming the build.*` → EDIT: `The AI capex super-cycle has stopped being a forecast. Guide-ups are confirming the build.` (italics dropped — wrong)
-  - ✅ DRAFT: `*The AI capex super-cycle has stopped being a forecast — guide-ups are confirming the build.*` → EDIT: `*The AI capex super-cycle has stopped being a forecast. Guide-ups are confirming the build.*` (em-dash gone, italics kept — right)
+  - ❌ DRAFT: `*The yen carry has stopped being a backdrop — guide-downs are confirming the unwind.*` → EDIT: `The yen carry has stopped being a backdrop. Guide-downs are confirming the unwind.` (italics dropped — wrong)
+  - ✅ DRAFT: `*The yen carry has stopped being a backdrop — guide-downs are confirming the unwind.*` → EDIT: `*The yen carry has stopped being a backdrop. Guide-downs are confirming the unwind.*` (em-dash gone, italics kept — right)
 
 - **Bullet markers.** The 3-5 bullet block under each punchline uses `-` or `*` markers. Don't convert bullets to inline prose, don't strip the markers. If the bullet content has em-dashes, rewrite the content; keep the bullet structure.
 
@@ -1847,10 +1849,12 @@ Edge-case carve-outs (these CAN survive Pass A even with limited cross-bank back
 
 For each surviving theme, scan the news_snapshot + earnings_calendar + economic_calendar for events directly relevant to the theme's argument. Where there's a connection, weave it into the theme's prose:
 
-- **AI capex theme** + news shows a MAG7 earnings beat or capex guide-up overnight → reference the print as confirming/refining the theme's argument: *"Datadog's +31% afterhours print Thursday confirmed the second-wave software-side of the build-out, and capex guide-ups from META and GOOGL last week land in the same direction."*
-- **Rate-cut repricing theme** + economic_calendar shows NFP releasing in a few hours → tie the theme to the catalyst: *"This morning's NFP print is the next test of the dovish lean — UBS has 100k vs the consensus 65k, JPM is at 50k."*
-- **Hormuz / oil theme** + news shows overnight strikes or ceasefire updates → make the theme's argument current: *"Overnight US strikes on Qeshm port reignited the supply-shock thread; oil futures are bid pre-market on it."*
-- **Fed transition theme** + news shows a confirmation hearing today → tie the theme to the upcoming testimony.
+The pattern is theme-agnostic: take whatever theme is on the page, scan the live data for a directly-relevant event, and weave the new fact into the theme's argument. Example shapes (any theme + matching live news → integrate):
+
+- **Earnings-driven theme** + an overnight earnings print directly relevant → reference the print as confirming/refining the argument: *"[Ticker]'s +31% afterhours print Thursday confirmed the [angle], and [related catalysts] last week land in the same direction."*
+- **Policy/macro theme** + economic_calendar shows the relevant catalyst in hours → tie the theme to the catalyst: *"This morning's [data release] is the next test of the [bias] — [Bank A] has [forecast], consensus is [other], [Bank B] is [opposite]."*
+- **Geopolitical/supply theme** + breaking news on the relevant event → make the theme's argument current: *"Overnight [event] reignited the [thread]; [instrument] is bid pre-market on it."*
+- **Personnel-transition theme** + news shows confirmation hearing or appointment movement → tie the theme to the upcoming session.
 
 If a theme's argument doesn't make contact with anything in today's news / calendars, that's fine — it stands on its research grounding. Don't force a news connection that isn't there.
 
@@ -1872,10 +1876,10 @@ Failure mode this catches: theme bodies that read like a string of bullet-shaped
 The fix is integration: each fact gets paired with what it MEANS — *"Goldman's raise to $751B (up $80B in two weeks) is the second cycle of capex revisions higher in a month, and the breadth of names participating tells you this isn't a story about one hyperscaler — it's the entire infrastructure stack getting bid."* Same data, but now the sentence does work.
 
 The test: if you remove the numbers from a sentence, can the remaining sentence still tell the reader something true and useful about the world? If yes, the sentence is making an argument (good — keep). If no, the sentence is just a stat with prose padding — cut, or merge the number into a sentence that does make an argument. Examples:
-- Weak: *"Hyperscaler capex is being revised upward."*
-- Strong: *"Goldman raised 2026 hyperscaler capex to $751B (up $80B in two weeks, 83% higher than 2025); MAG7 reported 20% revenue growth, 61% earnings growth — though 1/3 of profits came from PE investment gains."*
+- Weak: *"[Sector] capital spending is being revised upward."*
+- Strong: *"[Bank] raised 2026 [sector] capex to $751B (up $80B in two weeks, 83% higher than 2025); the underlying companies reported 20% revenue growth, 61% earnings growth — though 1/3 of profits came from non-core investment gains."* (Substitute the actual sector/bank/numbers from today's corpus; this is the shape, not the subject.)
 
-Tension framing also: weave the optimistic-vs-risk read INTO the body prose, NOT as a separate `*The Tension:*` bullet. The bullet structure reads like an AI template. Use prose: *"Bulls argue the AI capex super-cycle is structural; the risk Goldman desk flags is that one-third of MAG7 profits came from PE investment gains, not AI revenue, leaving earnings vulnerable to credit cycle reversal."*
+Tension framing also: weave the optimistic-vs-risk read INTO the body prose, NOT as a separate `*The Tension:*` bullet. The bullet structure reads like an AI template. Use prose: *"Bulls argue the dollar-weakening cycle is structural; the risk one desk flags is that the move is being driven by carry-trade unwinds rather than fundamentals, so a vol spike could reverse it in days."* (Pick whatever bull/bear pair the actual corpus argues — the structure is what matters, not the example subject.)
 
 **Pass B — direct trade idea close (integrated, no labels).** Every theme's bull/bear paragraph must END with a single direct sentence stating the trade idea you believe the theme's analysis supports. NOT "the setup leans toward...", NOT "the cleanest expression is...", NOT "this favors...". Just **state the trade**.
 
