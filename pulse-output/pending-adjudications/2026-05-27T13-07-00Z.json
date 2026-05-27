@@ -1,0 +1,270 @@
+{
+  "pulse_date": "2026-05-27",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "hormuz reopening trade",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 8
+      },
+      "consensus_view": "Multiple banks flag the Strait of Hormuz situation and potential reopening as a live catalyst, with JPMorgan saying reopening trades are still working, but no broad directional consensus has formed across the desks.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across multiple desks are tracking the Strait of Hormuz situation as a near-term macro catalyst tied to US-Iran diplomacy and shipping flows.",
+          "banks_for": [
+            "JPMorgan",
+            "Bloomberg",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "Morgan Stanley",
+            "RBC Capital Markets",
+            "Rabobank"
+          ],
+          "evidence_quotes": [
+            "Hormuz reopening trades continue to work",
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz crisis",
+            "Strait of Hormuz traffic uncertainty",
+            "US-Iran Strait of Hormuz diplomacy"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure capex",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Banks agree AI infrastructure spending by big cloud companies is accelerating sharply into 2026-2027, with hyperscaler capex revisions running well above prior estimates and AI-linked stocks driving most of the S&P 500's earnings growth.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler data center capex estimates for 2026 and 2027 are being revised significantly higher.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "JPM is revising up the DC capex & growth estimates",
+            "this is a monumental theme that has been consistently underestimated in magnitude"
+          ]
+        },
+        {
+          "claim": "AI infrastructure beneficiaries are a dominant driver of US large-cap earnings growth.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "beneficiaries of AI infrastructure investment will account for roughly half of S&P 500 EPS growth"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us strikes iran military targets",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five banks reference US strikes on Iranian military targets as a live geopolitical backdrop, but none stake a directional market view on it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag US military action against Iranian targets as an active backdrop in their notes this window.",
+          "banks_for": [
+            "Barclays",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Rabobank"
+          ],
+          "evidence_quotes": [
+            "US strikes in southern Iran",
+            "US strikes on Iranian military targets",
+            "US/Israeli military firing on Iranian targets",
+            "US military strikes on Iranian positions",
+            "US strikes on Iranian military assets"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hawkish fed shift",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Banks see signs the Fed may be shifting hawkish, with rates sitting well below what standard policy rules imply, though most desks only mention the topic in passing rather than commit to a direction.",
+      "facts_agreed": [
+        {
+          "claim": "The Fed's current policy rate is materially below levels implied by standard policy rules, leaving room for a hawkish repricing.",
+          "banks_for": [
+            "ING",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "we could be moving into a hawkish phase",
+            "the policy stance has shifted materially. The fed funds rate now sits below the levels implied"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the Fed is actually pivoting hawkish now",
+          "banks_for": [
+            "ING"
+          ],
+          "for_evidence": "we could be moving into a hawkish phase",
+          "banks_against": [
+            "Deutsche Bank"
+          ],
+          "against_evidence": "the policy stance has shifted materially. The fed funds rate now sits below the levels implied"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran peace deal negotiations",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four major desks flag US-Iran peace deal negotiations as a live macro catalyst, but no bank has staked a directional view on the outcome.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag US-Iran peace deal negotiations as an active near-term macro catalyst without taking a directional stance.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "US/Iran peace deal optimism",
+            "US-Iran peace deal negotiations",
+            "Iran deal negotiations",
+            "US-Iran deal negotiations",
+            "Iran peace hopes"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai momentum trade",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Banks broadly agree the AI trade is the dominant momentum story driving global equity gains, but they split on whether the positioning is a setup for more upside or an exhaustion squeeze ready to unwind.",
+      "facts_agreed": [
+        {
+          "claim": "The AI trade is the central momentum and positioning theme across global equity desks right now.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear",
+            "Bloomberg",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "hedge funds have doubled down on the AI trade",
+            "global AI trade enthusiasm",
+            "AI bullishness",
+            "AI supply-chain trade",
+            "AI trade momentum",
+            "AI-led market bubble formation"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI-driven momentum rally has more room to run or is showing exhaustion",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "hedge funds have doubled down on the AI trade",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "KOSPI is now flashing several signs that the latest upside panic may be entering increasingly dangerous territory."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "economic slowdown",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three banks flag pockets of slowing activity \u2014 fiscal spending, consumer discretionary, and US growth \u2014 but none stakes a directional call on whether a broader slowdown is taking hold.",
+      "facts_agreed": [
+        {
+          "claim": "Three desks reference distinct pockets of deceleration \u2014 fiscal spending, consumer discretionary, and overall US growth \u2014 as live concerns without endorsing a broader slowdown call.",
+          "banks_for": [
+            "Bloomberg",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Fiscal spending slowdown",
+            "Consumer discretionary spending deceleration",
+            "US economic growth deceleration"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh fed tenure",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag Kevin Warsh's path to Fed Chair as a live topic, but none has staked a directional view on what his leadership means for rates or markets yet.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference Kevin Warsh's pending Fed Chair tenure and confirmation process as a watch item without taking a directional stance.",
+          "banks_for": [
+            "ING",
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Fed Chair Kevin Warsh tenure",
+            "Warsh confirmation hearing",
+            "Kevin Warsh Fed leadership"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
