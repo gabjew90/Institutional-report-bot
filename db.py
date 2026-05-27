@@ -2002,6 +2002,26 @@ def upsert_user_profile(
     conn.commit()
 
 
+def get_top_trader_ranked_user_ids(limit: int = 5) -> list[int]:
+    """Return user_ids of the top N traders by trader_rank (1 = best).
+    Used by the /ask flow to ALWAYS inject top-N trader profiles into
+    WHO'S TALKING, even when those users aren't active in the current
+    chat scrollback. Without this, the bot can compute "the #1 trader
+    isn't in this conv" correctly but can't NAME who #1 actually is —
+    their profile isn't loaded.
+
+    Excludes users with NULL trader_rank (unscored).
+    """
+    rows = get_connection().execute(
+        """SELECT user_id FROM user_profiles
+           WHERE trader_rank IS NOT NULL
+           ORDER BY trader_rank ASC
+           LIMIT ?""",
+        (int(limit),),
+    ).fetchall()
+    return [r["user_id"] for r in rows]
+
+
 def recompute_trader_ranks_on_profiles() -> None:
     """Set trader_rank (ordinal 1=best) on user_profiles based on
     trader_score DESC. NULL scores get NULL rank. Run after every batch

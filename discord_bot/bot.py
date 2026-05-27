@@ -1897,8 +1897,18 @@ def create_bot() -> commands.Bot:
                 mentioned_ids = db.find_users_mentioned_in_text(question)
             except Exception as e:
                 log.warning(f"Name-mention lookup failed: {e}")
+            # FIX C (mirror): inject top trader-ranked users so the bot
+            # can always name #1, #2, #3 even when not in current chat.
+            top_trader_ids: list[int] = []
+            try:
+                top_trader_ids = db.get_top_trader_ranked_user_ids(limit=5)
+            except Exception as e:
+                log.warning(f"Top-trader injection lookup failed: {e}")
             profile_ids = list(set(
-                chat_author_ids + ([user_id] if user_id else []) + mentioned_ids
+                chat_author_ids
+                + ([user_id] if user_id else [])
+                + mentioned_ids
+                + top_trader_ids
             ))
             asker = interaction.user
             # Resolve raw <@USER_ID> mentions in the question to readable
@@ -1992,8 +2002,22 @@ def create_bot() -> commands.Bot:
                             mentioned_ids.append(u.id)
                 except Exception as e:
                     log.warning(f"Name-mention lookup failed: {e}")
+                # FIX C: Always inject top-N trader-ranked users into
+                # profile_ids so the bot can NAME who's #1, #2, #3 when
+                # asked, even if those users aren't in the current
+                # chat scrollback. Without this, the bot correctly
+                # deduces "the #1 trader isn't in this conv" but then
+                # can't name them — their profile wasn't loaded.
+                top_trader_ids: list[int] = []
+                try:
+                    top_trader_ids = db.get_top_trader_ranked_user_ids(limit=5)
+                except Exception as e:
+                    log.warning(f"Top-trader injection lookup failed: {e}")
                 profile_ids = list(set(
-                    chat_author_ids + [message.author.id] + mentioned_ids
+                    chat_author_ids
+                    + [message.author.id]
+                    + mentioned_ids
+                    + top_trader_ids
                 ))
 
                 # Inject the asker's recent verbatim messages from
@@ -2045,6 +2069,34 @@ def create_bot() -> commands.Bot:
                 # crying → bot can address them by name + voice).
                 if ref_uid and ref_uid != message.author.id:
                     profile_ids = list(set(profile_ids + [ref_uid]))
+
+                # FIX A: Subject-detection from reply-parent content.
+                # When the asker replies to a previous message that names
+                # someone (e.g., kloh replies to a bot answer about ZHawk
+                # with "review the fitness channel for his splits"), the
+                # name-mention is in the PARENT'S TEXT, not the asker's
+                # question. Without this, the subject-verbatim block
+                # wouldn't fire for ZHawk because mention-detection only
+                # scanned the asker's literal question. Now we also scan
+                # ref_content and merge any names found there into both
+                # mentioned_ids (for subject-verbatim) and profile_ids
+                # (for WHO'S TALKING).
+                if ref_content:
+                    try:
+                        ref_mentioned = db.find_users_mentioned_in_text(
+                            ref_content
+                        )
+                        for uid in ref_mentioned:
+                            if uid != message.author.id and (
+                                bot.user is None or uid != bot.user.id
+                            ):
+                                if uid not in mentioned_ids:
+                                    mentioned_ids.append(uid)
+                                profile_ids = list(set(profile_ids + [uid]))
+                    except Exception as e:
+                        log.warning(
+                            f"Reply-parent name-mention lookup failed: {e}"
+                        )
 
                 # Prepend the referenced content to the question so
                 # Gemini sees the explicit framing — what was said by
