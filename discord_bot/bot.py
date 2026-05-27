@@ -1898,18 +1898,8 @@ def create_bot() -> commands.Bot:
                 mentioned_ids = db.find_users_mentioned_in_text(question)
             except Exception as e:
                 log.warning(f"Name-mention lookup failed: {e}")
-            # FIX C (mirror): inject top trader-ranked users so the bot
-            # can always name #1, #2, #3 even when not in current chat.
-            top_trader_ids: list[int] = []
-            try:
-                top_trader_ids = db.get_top_trader_ranked_user_ids(limit=5)
-            except Exception as e:
-                log.warning(f"Top-trader injection lookup failed: {e}")
             profile_ids = list(set(
-                chat_author_ids
-                + ([user_id] if user_id else [])
-                + mentioned_ids
-                + top_trader_ids
+                chat_author_ids + ([user_id] if user_id else []) + mentioned_ids
             ))
             asker = interaction.user
             # Resolve raw <@USER_ID> mentions in the question to readable
@@ -2003,22 +1993,8 @@ def create_bot() -> commands.Bot:
                             mentioned_ids.append(u.id)
                 except Exception as e:
                     log.warning(f"Name-mention lookup failed: {e}")
-                # FIX C: Always inject top-N trader-ranked users into
-                # profile_ids so the bot can NAME who's #1, #2, #3 when
-                # asked, even if those users aren't in the current
-                # chat scrollback. Without this, the bot correctly
-                # deduces "the #1 trader isn't in this conv" but then
-                # can't name them — their profile wasn't loaded.
-                top_trader_ids: list[int] = []
-                try:
-                    top_trader_ids = db.get_top_trader_ranked_user_ids(limit=5)
-                except Exception as e:
-                    log.warning(f"Top-trader injection lookup failed: {e}")
                 profile_ids = list(set(
-                    chat_author_ids
-                    + [message.author.id]
-                    + mentioned_ids
-                    + top_trader_ids
+                    chat_author_ids + [message.author.id] + mentioned_ids
                 ))
 
                 # Inject the asker's recent verbatim messages from
