@@ -682,6 +682,39 @@ You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields
 
 **Empty fields are normal and acceptable.** Many themes have agreed facts but no contested ones, or contested ones but no falsifiable predictions. Do not pad. Return [] and move on.
 
+**Worked examples of falsifiable_predictions extraction** (showing how to fill all five fields from a single source quote, including the empty-`by_when` case):
+
+Example A — source field has both level and timeframe:
+```
+input: tension_points[0].what_invalidates = "Brent breaking below $90 sustained for two weeks would invalidate the supply-scare thesis"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "Brent crude price",
+  "direction_or_level": "below $90 sustained",
+  "by_when": "within two weeks",
+  "source_quote": "Brent breaking below $90 sustained for two weeks"
+}
+```
+
+Example B — source field has level but NO timeframe (the `by_when=""` case — emit the entry anyway, do not skip):
+```
+input: key_data_points[3].metric = "Goldman 2026 hyperscaler capex target $751B"
+       key_data_points[3].context = "up $80B in two weeks"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "2026 hyperscaler capex",
+  "direction_or_level": "$751B",
+  "by_when": "",
+  "source_quote": "Goldman 2026 hyperscaler capex target $751B"
+}
+```
+
+The right reflex when in doubt: ship the entry with empty `by_when` rather than omit it. Omit ONLY when there's no verbatim source quote at all — never because one derived field couldn't be cleanly populated.
+
+**Self-discard when evidence is too thin.** If after honest review you have `facts_agreed=[]` AND `facts_contested=[]` AND `falsifiable_predictions=[]` — i.e., NO substantive evidence to commit to the structured form — set `selected: false` in your output. The downstream lint also discards these mechanically, but flagging it yourself keeps the audit trail honest. (The discovered-theme branch below is the exception: those produce at least one `facts_agreed` entry, so they don't trip this.)
+
 **Do not number, do not bullet, do not bold.** This is structured data, not prose.
 
 **DISCOVERED-THEME BRANCH (when every input stance is `neutral`).** If your `theme_stances` input contains only stance=`neutral` entries with `evidence` strings that are short contextual mentions (not multi-sentence stance arguments), this is a discovery-promoted theme: a subject several banks mentioned in context without staking a primary directional view. The standard adjudication shape still applies, but adjust how you fill the schema:

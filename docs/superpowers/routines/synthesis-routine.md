@@ -1004,6 +1004,26 @@ for theme, inputs in inputs_per_theme.items():
         if post_filter_empty:
             fail_reason = 'after Rule 5/6 filtering, theme has no remaining content (single-bank facts dropped, bad deadlines dropped)'
 
+    # Self-discard: the model marked `selected: false` itself (the
+    # ADJUDICATION_SYSTEM prompt now instructs it to do so when evidence
+    # is too thin for honest commitment). Trust that signal.
+    if not fail_reason and adj.get('selected') is False:
+        fail_reason = 'self-discarded by adjudicator (insufficient evidence to commit)'
+
+    # Ungrounded-claims check: facts_agreed has entries but NONE of them
+    # carry a single verbatim evidence quote. That means the adjudicator
+    # composed claims it couldn't ground in the corpus — exactly the
+    # rubber-stamp failure mode we want to catch. Even one quote across
+    # all entries is fine; zero across all entries is the signal.
+    if not fail_reason:
+        fa = adj.get('facts_agreed') or []
+        if fa:
+            total_quotes = sum(
+                len(entry.get('evidence_quotes') or []) for entry in fa
+            )
+            if total_quotes == 0:
+                fail_reason = 'ungrounded: facts_agreed has entries but no evidence_quotes across any of them'
+
     if fail_reason:
         discarded.append({'theme': theme, 'reason': fail_reason})
     else:
