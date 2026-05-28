@@ -210,11 +210,13 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
     # options/crypto trader. Anything else (regional Fed surveys, Fed governor
     # speeches that aren't the chair, minor US data, foreign macro without US
     # read-through) is filtered out so Gemini can't include filler in the pulse.
-    # Warsh is the current Fed chair (post-2026 transition); Powell remains on
-    # the board as a governor so his comments still pass.
+    # Fed-speaker keywords come from world_context.py — single source of truth
+    # for the current chair name; when a new chair is confirmed, edit that
+    # file and the filter updates without touching this one.
+    from world_context import FED_SPEAKER_KEYWORDS
     TIER1_KEYWORDS = [
-        # US macro — headline only
-        "fomc", "fed chair", "warsh", "powell",
+        # US macro — headline only (Fed-speaker subset from world_context)
+        *FED_SPEAKER_KEYWORDS,
         "cpi", "core cpi",
         "pce", "core pce",
         "nonfarm payroll", "employment situation", "unemployment rate",

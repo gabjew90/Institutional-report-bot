@@ -1,4 +1,13 @@
-"""All prompt templates for Claude API calls."""
+"""All prompt templates for Claude API calls.
+
+Temporal world-context (Fed chair name, geopolitical backdrop, MAG7
+earnings windows) is imported from `world_context.py`. When those facts
+change, edit world_context.py — do NOT add new hardcoded references
+here. The Warsh-leak bug (stale Fed chair name baked into multiple
+prompt strings) was the motivating fix.
+"""
+
+import world_context
 
 # =============================================================================
 # TIER 1: TRIAGE PROMPT (Gemini 3.1 Flash Lite — text-only, cheap classification)
@@ -19,7 +28,7 @@ Respond with a JSON object only, no other text:
 
 Priority guidelines — calibrate to "how much value does this give a US options + crypto trader?" That's the only audience that matters. A US trader cannot trade Australian equities, AUDUSD, or Tokyo-listed names directly. Reports that don't have explicit US/global read-through should be LOW or MEDIUM regardless of bank pedigree.
 
-- HIGH: Morning briefings with multiple US-relevant calls. US macro/strategy pieces with positioning data (CTA flows, hedge fund net leverage, prime brokerage). S&T notes with US-asset flow data (US equity prime brokerage, S&P futures positioning, MAG7 dispersion). Vol/positioning commentary on US assets. Crypto institutional research. Major US equity calls with conviction (US-listed tickers only). Oil/commodity supply analysis with geopolitical read-through. Fed policy analysis with rate-path implications. **MAG7 hyperscaler earnings previews and reviews ($AAPL, $MSFT, $GOOGL, $AMZN, $META, $NVDA, $TSLA) — always HIGH on or near print day**, even single-stock notes; these names move the index. Other US-listed single-stock earnings notes are HIGH only if the report itself argues out-of-consensus conviction (a contrarian thesis, a high-conviction "top idea" framing, a specific catalyst with an actionable trade structure) — not by virtue of the company being a "bellwether." A routine EPS-preview reiteration of a Buy rating on a non-MAG7 US single name is MEDIUM, not HIGH. ECB/BOJ/BOE policy analysis ONLY if it explicitly argues US asset spillover (rate differential, dollar path, S&P read-through) — generic ECB commentary without US linkage is MEDIUM at best, LOW often.
+- HIGH: Morning briefings with multiple US-relevant calls. US macro/strategy pieces with positioning data (CTA flows, hedge fund net leverage, prime brokerage). S&T notes with US-asset flow data (US equity prime brokerage, S&P futures positioning, MAG7 dispersion). Vol/positioning commentary on US assets. Crypto institutional research. Major US equity calls with conviction (US-listed tickers only). Oil/commodity supply analysis with geopolitical read-through. Fed policy analysis with rate-path implications. **MAG7 hyperscaler earnings ($AAPL, $MSFT, $GOOGL, $AMZN, $META, $NVDA, $TSLA) — HIGH ONLY when the PDF is dated within ~5 trading days of one of these names' scheduled earnings, OR the PDF makes a directional call on the upcoming print.** A passing MAG7 mention outside the print window is normal sector commentary and should be triaged on its own merits, not floored to HIGH by the mention alone. Other US-listed single-stock earnings notes are HIGH only if the report itself argues out-of-consensus conviction (a contrarian thesis, a high-conviction "top idea" framing, a specific catalyst with an actionable trade structure) — not by virtue of the company being a "bellwether." A routine EPS-preview reiteration of a Buy rating on a non-MAG7 US single name is MEDIUM, not HIGH. ECB/BOJ/BOE policy analysis ONLY if it explicitly argues US asset spillover (rate differential, dollar path, S&P read-through) — generic ECB commentary without US linkage is MEDIUM at best, LOW often.
 - MEDIUM: Single-stock equity research on **US-listed names** (US-primary listing or US-listed ADR with liquid options) outside the HIGH-list. Sector overviews for sectors that trade in US options markets. Earnings previews/reviews on US-listed names outside the HIGH list. US macro commentary that's lighter on positioning data. Model updates on major US indices. Anything with actionable implications for US/crypto traders that is also Robinhood-executable.
 - LOW: Use this liberally for reports with limited read-through for US options and crypto traders:
   - Disclaimer-heavy wrappers, valuation tables with no commentary, duplicate reports, admin content
@@ -365,6 +374,16 @@ Always close a technical point with the "so what" — how does this affect what 
 - End each Insights paragraph with the trade/positioning implication.
 """
 
+# Inject the volatile world-context blocks now that the static template
+# is defined. world_context.py is the single source of truth; updating
+# the Fed chair name / geopolitical regime there propagates to every
+# prompt downstream without grep-and-pray.
+DAILY_SYNTHESIS_SYSTEM = (
+    DAILY_SYNTHESIS_SYSTEM
+    .replace("__FED_CHAIR_BLOCK__", world_context.FED_CHAIR_PROMPT_BLOCK)
+)
+
+
 DAILY_SYNTHESIS_USER = """TODAY IS {today}. CURRENT TIME IS {now}.
 
 **ALL TIMES IN YOUR OUTPUT MUST BE US EASTERN (ET).** Never write UTC, GMT, or any other zone in the final pulse. All times in the data blocks below (market snapshot, news, calendars, previous pulse) are already in ET — use them as-is. If you encounter a time without a zone label, assume ET. Example formats: "8:30 AM ET", "AMC", "BMO", "Monday April 21 at 2:00 PM ET".
@@ -450,7 +469,7 @@ The research PDFs are the PRIMARY DRIVER of content across ALL sections. Live pr
 
 **KNOWN HALLUCINATION TRAPS — DO NOT MAKE THESE ERRORS:**
 - **MAS (Monetary Authority of Singapore)** does NOT set interest rates. It manages the Singapore Dollar NEER band. Never say "MAS 50bp hike" or "MAS rate decision." Only include MAS if a PDF specifically discusses it.
-- **Fed speakers** — only include if a PDF flags the speaker as consequential. The Fed chair is **Kevin Warsh** (took over from Powell in mid-2026); his testimony / FOMC pressers move markets the most. Powell remains on the Board of Governors so his comments still matter but no longer carry chair-level weight.
+- **Fed speakers** — only include if a PDF flags the speaker as consequential. __FED_CHAIR_BLOCK__
 - **Earnings BMO vs AMC** — always cross-check the earnings calendar. Common mistakes: ASML and TSMC are BMO in US timezone.
 
 ---
@@ -574,7 +593,7 @@ Events happening AFTER today through end of this week. If today is {today}, "thi
 **Ruthless filtering** — default is CUT. Only include events that BOTH (a) appear in at least one research analysis with specific commentary AND (b) match this short Tier 1 list:
 
 ✅ **Tier 1 (keep only if research discusses them):**
-- **US macro (headline only):** FOMC meeting, Fed Chair Warsh speech/testimony (Powell is now a governor — his comments still pass), CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI. That's it.
+- **US macro (headline only):** FOMC meeting, current Fed chair speech/testimony, predecessor's comments (still pass at governor weight), CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI. That's it. (Chair / predecessor identity comes from world_context.py at runtime — see the FED SPEAKER block injected above.)
 - **Major earnings:** MAG7 ($AAPL, $MSFT, $GOOGL, $AMZN, $META, $NVDA, $TSLA), major banks only if earnings season ($JPM, $GS, $MS, $BAC, $C, $WFC), and other names ONLY if research explicitly flags them as market-moving (e.g., $NFLX during earnings season is OK, $NVDA is always OK).
 - **Crypto:** ETF decisions, protocol upgrades, major unlocks — only if research names them specifically.
 - **Geopolitical hard deadlines:** ceasefire expirations, tariff deadlines, sanctions effective dates.
@@ -609,6 +628,18 @@ Target total report length ~1200-1500 words. RECAP tight (1-2 paragraphs). WHAT 
 
 Do not add any footer tag, disclaimer, or "Sourced from N reports" line. End with the last bullet of WHAT TO WATCH.
 """
+
+# Inject the volatile world-context block into DAILY_SYNTHESIS_USER as
+# well. The Fed-speaker rule lives in the USER template (it sits inside
+# the KNOWN HALLUCINATION TRAPS section), so the sentinel substitution
+# has to run here too. The .replace() runs once at module load; the
+# downstream .format(today=..., now=..., ...) calls only touch the
+# {curly-brace} placeholders, never the prebuilt prose.
+DAILY_SYNTHESIS_USER = (
+    DAILY_SYNTHESIS_USER
+    .replace("__FED_CHAIR_BLOCK__", world_context.FED_CHAIR_PROMPT_BLOCK)
+)
+
 
 # Afternoon pulse removed — single daily pulse at 9am PST / 12pm ET.
 
