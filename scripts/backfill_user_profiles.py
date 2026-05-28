@@ -109,15 +109,13 @@ Revise the prior profile based on the new messages. The room's understanding of 
 Per-section behavior:
 
 - **Personality & Voice:** carry forward unless the new messages clearly add new style/voice/role material or contradict the prior read. Edit minimally — established voice doesn't reset weekly. Variety isn't a goal.
-- **Trash talk & life ammo:** ACCUMULATE. Keep prior items that haven't aged out (still relevant, still recognized by the room — typically items <60 days old). Add new specific quotes / personal-life details / aged-badly boasts when something landed in the new messages worth weaponizing. The section can grow over time — that's the point.
-- **Recent activity (rolling 30d):** PRESERVE prior entries unless they've aged past 30 days OR new messages show the trade resolved OR new messages directly supersede a prior entry. ADD new entries from the new messages on top. Do NOT wholesale rewrite — this section accumulates detail across refreshes.
+- **Trash talk & life ammo:** ACCUMULATE. Keep prior items that haven't aged out (still relevant, still recognized by the room — typically items <60 days old). Add new specific quotes / personal-life details / aged-badly boasts / trade-anchored room bits when something landed in the new messages worth weaponizing. Recent trade activity that the ROOM has riffed on belongs here as a narrative bullet. The section can grow over time — that's the point.
 - **trader_score / racial_humor_score:** hold by default. Shift only when new evidence justifies a meaningful move — a single bad week doesn't drop a +70 to a +40.
-- **trader_examples:** favor NEW trade moments when they meet the ticker-anchored bar. Keep the strongest prior examples if nothing new is more specific.
-- **personal_ammo:** treat the prior list as a baseline. Add 1-3 NEW snippets from the new messages (dumb takes, aged-badly boasts, embarrassing admissions, math fails, slurs — whatever lands). KEEP the strongest prior snippets unless they've gone stale (test: would the room still recognize this quote?). Cap total at ~8 — drop the weakest if the list grows past that. Net: refreshed ammo each refresh, weighted toward recent.
+- **personal_ammo:** treat the prior list as a baseline. Add 2-4 NEW snippets from the new messages (trade receipts with $/% / tickers, dumb takes, aged-badly boasts, embarrassing admissions, math fails, slurs — whatever lands). KEEP the strongest prior snippets unless they've gone stale (test: would the room still recognize this quote?). Cap total at 10 — drop the weakest if the list grows past that. Net: refreshed ammo each refresh, weighted toward recent. RECENT TRADES go here as 1-line receipts (no separate trader_examples field anymore).
 
-**Drop bits older than ~60 days that aren't reinforced.** Items in any section that haven't shown up in the room in the last ~60 days are stale — retire them even if the prior profile carried them. Exception: established voice traits and personality reads don't have a timestamp; they don't age. But specific bits, jokes, and one-off incidents do. Test: is this still something a reader would recognize from this WEEK or last? If not, drop it.
+**Drop bits older than ~60 days that aren't reinforced.** Items in any section that haven't shown up in the room in the last ~60 days are stale — retire them even if the prior profile carried them. Exception: established voice traits and personality reads don't have a timestamp; they don't age. But specific bits, jokes, trades, and one-off incidents do. Test: is this still something a reader would recognize from this WEEK or last? If not, drop it.
 
-The output schema is identical to a from-scratch profile — same three profile_text sections, same JSON wrapper with six fields. The difference is the work: editing the existing dossier, not authoring a new one.
+The output schema is identical to a from-scratch profile — same two profile_text sections, same JSON wrapper with five fields. The difference is the work: editing the existing dossier, not authoring a new one.
 
 ### PRIOR PROFILE TEXT
 {prior_profile_text}
@@ -180,35 +178,28 @@ Honest, not flattering. Specific behaviors over category labels. Verbatim quotes
 
 ## SECTIONS
 
-Three sections in profile_text, all required. If signal is thin for a section, write `Insufficient signal — too few messages on this dimension.` rather than padding. Always keep the structure; never truncate sections.
+Two sections in profile_text, both required. If signal is thin for a section, write `Insufficient signal — too few messages on this dimension.` rather than padding. Always keep the structure; never truncate sections.
 
 The point of these dossiers: give the /ask bot enough material to (a) trash-talk people about their personal lives + stupid takes, (b) read their racism/slur volume, and (c) call out their bad trades. Everything in the profile should serve one of those three purposes. Cut the parts that don't.
+
+A NOTE ON SAVAGERY: this is a private adult room signed up for the texture. Don't soften, don't hedge, don't "however he's also a sweet guy" away the sharp stuff. If the room mocks them for X, mock them for X. If they're cringe, name the cringe. The dossier exists so the bot can clap back AT THE LEVEL the room operates at — that requires the sharp version of every observation, not a polite rewrite.
 
 **Personality & Voice.** Five to eight sentences. The big-picture read of who this person is + how they trade + how they talk + what role they play in the room — all rolled into one compressed section. Specific to them, not a template. Include: their style at the terminal (what they trade, how they size, when they go silent), their voice (recurring phrases verbatim — slurs and all), their function in the room (signal / banter / chaos / mentor / hype-man / contrarian / lurker), their strengths if any. Example shape:
 
 > "M&A guy at a real firm who treats the discord as where the day-job rules don't apply. Sharp on macro, sticks to large-caps, sizes up after one green day. Trades crypto perps with leverage no risk committee would approve. Crude and fast, casually cruel with affection underneath — drops 'should've sized up,' 'fuck it we ball,' 'chyna' for China without irony. Senior energy in the room — not the loudest, but the one whose opinion the room registers when he weighs in."
 
-**Trash talk & life ammo.** Five to eight items the bot can weaponize for laughs in a clapback. Each item is a specific anchored receipt — a verbatim quote OR a clearly-specified incident the asker (who was in the room) would recognize instantly. This is the SHARP-OBJECTS section of the dossier; pack it.
+**Trash talk & life ammo.** Six to ten items in narrative bullet form. SAVAGE. Each item is a specific anchored receipt with framing — a verbatim quote OR a clearly-specified incident, plus a sentence or two of room-context so the bot understands why it lands. This is the NARRATIVE ammo section; the structured `personal_ammo` field below is the QUOTABLE-LINES version.
 
 Pull from **everything the room would laugh at**, including:
 
-- **Running jokes** the room already reinforces — "compliance is watching him," "$WEN bagholder," "perpetual office hostage," "always asks about X."
-- **Personal life details** they've revealed in chat — their job, where they live, their kids, their wife, their parents, their commute, their bedroom, their car, their gym routine, who they're dating, who they got dumped by, embarrassing health stuff, weird hobbies. If they posted it in chat, the room knows it; the bot can use it. Cite specifics: "Works as an auditor and complains about it daily," "Wife took the dog in the divorce," "Drives a leased BMW he can't afford," "Got cucked by his roommate during COVID."
-- **Bad trades and bad calls** — picks that aged badly, capitulations at the bottom, sells right before the rip. "Sold his $WEN bags for a 30% loss the same day they bounced 40%."
-- **Aged-badly boasts** — declarations that didn't survive contact with reality. Once announced he'd 'never touch alts again' and bought DOGE 48 hours later.
-- **Edgy quotes** — slurs, racial commentary, sexual crudeness, political crudeness. Quoted verbatim, original framing intact. "Said 'can trump stop being a fucking faggot' during the Tuesday tariff rant." The bot lives in this room; sanitizing strips the entire signal.
-- **Patterns the room notices** — "calls the top on every green day," "posts a 'this is the floor' chart at every bottom."
+- **Running jokes** the room already reinforces — "compliance is watching him," "$WEN bagholder," "perpetual office hostage," "always asks about X." Include the why: what specifically did they do that birthed the joke.
+- **Personal life details** they've revealed in chat — their job, where they live, their kids, their wife, their parents, their commute, their car, their gym routine, who they're dating, embarrassing health stuff, weird hobbies. If they posted it in chat, the room knows it; the bot can use it. Cite specifics with savage framing: "Works as an auditor and complains about it daily — the room has heard about model committee Tuesdays so many times he should be billing them," "Wife took the dog in the divorce; brings it up unprompted approximately once a week."
+- **Bad trades and bad calls** — picks that aged badly, capitulations at the bottom, sells right before the rip. "Sold his $WEN bags for a 30% loss the same day they bounced 40% — the chart still gets posted at him on slow days."
+- **Aged-badly boasts** — declarations that didn't survive contact with reality. "Announced he'd 'never touch alts again' on a Friday, bought DOGE Sunday night, was -50% by Tuesday."
+- **Edgy quotes with room context** — slurs, racial commentary, sexual crudeness, political crudeness. Quoted verbatim, original framing intact. "Said 'can trump stop being a fucking faggot' mid-tariff rant Tuesday; the room cackled but Z called him a hypocrite the next day."
+- **Patterns the room notices** — "calls the top on every green day for two weeks running," "posts a 'this is the floor' chart at every bottom — it's never the floor."
 
-The framing stays factual. "Said 'X' during the Y rant" — anchored, specific. The reader draws the inference from the quote; the writer stays out of editorial judgment. Quote them verbatim — slurs, hard-R words, broken grammar, all of it. If they said it in chat, it's evidence; you write it.
-
-**Recent activity (rolling 30d, weighted toward last 7d).** What this person has been doing — tickers traded, themes pushed, conversations led, wins or losses, fights they got into, threads they started, news they brought to the room, drama they were involved in. Cover the last **30 days** broadly with more detail on the last 7. Expand here: capture as much as the messages support — multiple specific trades with tickers/strikes/PnL when available, recurring themes they pushed, who they argued with about what.
-
-**Preservation rule (update mode only).** In UPDATE MODE, the prior Recent activity already captured what happened earlier in the window. Do NOT wholesale rewrite this section. KEEP prior entries unless:
-- The trade resolved (close it out with the outcome)
-- A specific entry is older than 30 days (age it out)
-- New messages directly contradict / supersede a prior entry
-
-ADD new entries from the new messages on top of what's preserved. Net effect: this section accumulates detail across refreshes rather than resetting daily.
+The framing stays factual but the framing is allowed to be MEAN. "Said 'X' during the Y rant — and got dunked on in the next 4 messages" is better than just "said X." Quote them verbatim — slurs, hard-R words, broken grammar, all of it. If they said it in chat, it's evidence; you write it.
 
 ## HOW TO WRITE
 
@@ -231,22 +222,15 @@ ADD new entries from the new messages on top of what's preserved. Net effect: th
 > **Personality & Voice.** M&A guy at a real firm who treats the discord as where the day-job rules don't apply. Sharp on macro — knows how rate-sensitive sectors actually price. Trades crypto perps with leverage no risk committee would approve, sticks to large-caps on the equity side, dismissive of altcoin punts. Sizes up after one green day, holds through 40% drawdowns, posts the chart after every entry. Crude and fast, casually cruel with affection underneath — recurring lines: "should've sized up," "we're getting fiddled," "fuck it we ball," "compliance is watching." Drops "chyna" for China without irony. Senior energy in the room — not the loudest, but the one whose opinion the room registers when he weighs in. Functions as banter + signal: calls weak takes without making it personal, posts wins AND losses cleanly which keeps the room honest.
 >
 > **Trash talk & life ammo.**
-> - "Compliance is watching him" — the recurring bit about his desk monitoring his accounts; he reinforces it weekly.
-> - "$WEN bagholder" — sold his $WEN bags for a 30% loss the same day they bounced 40%; the chart screenshots still get posted at him.
-> - "Should've sized up" — the post-missed-trade lament the room parrots back at him on every printed setup he scaled too small on.
-> - "Office hostage situation" — recurring bit about being trapped in conference rooms when the market rips; complains about it Tuesdays and Thursdays specifically (model committee days).
-> - Wife and the kids are tucked away in Greenwich; he commutes from there and complains about Metro-North constantly. Got a $WEN coozie from his wife for his birthday as a joke — the room never let him forget.
-> - Once announced he'd "never touch alts again" and bought DOGE 48 hours later. Took a 50% loss and pretended it didn't happen for a week.
-> - Said "can trump stop being a fucking faggot" mid-tariff rant Tuesday. Mocked the bitcoin conference as having "not a girl in sight." Tends to call China "chyna" three times per market open.
-> - Threatened to go full cash, opened 10x SOL perps within 90 minutes.
->
-> **Recent activity (last 30d).**
-> - **AI-capex thesis (ongoing, last 21d).** Pushing aggressively in long-form replies; specifically NVDA + AVGO + MSTR coverage. Tracked NVDA earnings outcome correctly, sized into 615C calls before the print.
-> - **META 615C miss (Tue last week).** Lament-mode posts about not sizing up; cited it 4+ times since as the "should've sized up" reference point.
-> - **5x SOL perps closed Monday.** Wrote "because compliance was watching" — meaning the desk flagged his account. Closed flat to +4% before SOL ripped another 12%, so he's lament-modeing this too.
-> - **MSTR breakout thesis (Wed).** Got mixed responses, defended in-thread with rate-sensitive sector chart pulls. Position still open as of last post.
-> - **Bond market argument with @sv77788** about whether the 10Y blowout is "actually mattering" — three replies deep, ended with "we'll see who's right in a month."
-> - **Closed $WEN bags (3 weeks ago) at -30%.** Posted the screenshot with "this room is a graveyard." Bag bounced 40% within a week — the room re-screenshots it at him weekly.
+> - **"Compliance is watching him"** — the bit about his desk monitoring his accounts. Has been complaining about it for at least 3 months; the room is bored of it but still uses it as a clapback whenever he plays a 0DTE.
+> - **$WEN bagholder, for eternity.** Sold his $WEN bags at -30% the same day they bounced 40%. Posted the chart with "this room is a graveyard." The bag's now 200% above his exit and the room re-screenshots it at him on slow days. He pretends the joke is over; it isn't.
+> - **"Should've sized up"** — the post-missed-trade lament that owns his entire personality. The room counts how many setups he scales too small on per week. Last week's count was 4.
+> - **Wife took the kids to her parents during a 'business trip'** — he mentioned this unprompted in chat, then asked the room not to bring it up. The room brought it up the next day. Then the next. Now lives in Greenwich alone Mondays–Wednesdays and won't shut up about Metro-North.
+> - **"Office hostage situation"** — gets stuck in model committee Tuesdays and Thursdays. Once posted a screenshot of an Excel sheet during a meeting and complained that "no one knows I'm trading" — three coworkers DM'd him on signal that they did, in fact, know.
+> - **"Never touching alts again" → bought DOGE 48 hours later → -50% in three days.** Then pretended the trade didn't exist for a week. The room's reaction GIF is now reserved exclusively for his alt-coin pivots.
+> - **Crude voice receipts:** said "can trump stop being a fucking faggot" mid-tariff rant Tuesday. Mocked the bitcoin conference as having "not a girl in sight." Calls China "chyna" approximately 3x per market open. Drops "fiddled" when he's losing.
+> - **The yacht.** Constant, grandiose planning for a future boat he can't afford. The room asked him for the broker; he changed the subject. Has not stopped bringing it up.
+> - **Threatened to go full cash → opened 10x SOL perps within 90 minutes.** This happens roughly monthly. The room sets unders.
 
 ## SCREENSHOT RECEIPTS (image OCR)
 
@@ -267,43 +251,37 @@ Don't invent OCR content. Only cite what's actually in the `[image-OCR: ...]` bl
 
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
-Output a single JSON object with six fields:
+Output a single JSON object with five fields:
 
 ```
 {{
-  "profile_text": "<full markdown profile per the schema above — 3 sections>",
+  "profile_text": "<full markdown profile per the schema above — 2 sections>",
   "trader_score": <integer 0-100>,
   "trader_rationale": "<one direct sentence on what's driving the score>",
   "racial_humor_score": <integer 0-100>,
-  "trader_examples": ["<2-3 trade-anchored moments>"],
-  "personal_ammo": ["<5-8 short weaponizable snippets>"]
+  "personal_ammo": ["<6-10 short quotable snippets>"]
 }}
 ```
 
-**personal_ammo** — five to eight short snippets the bot can fire back at the asker or against the subject. Each is ~120-250 chars. PULL FROM THE WIDER POOL THAN JUST SLURS — slurs go in here, but so do:
+**personal_ammo** — six to ten short quotable snippets the bot can drop directly into a reply. Each is ~120-280 chars, one or two sentences MAX, SAVAGE. This is the QUOTABLE-LINE version of the ammo (the "Trash talk & life ammo" section above is the narrative version with framing); personal_ammo is what the bot fires verbatim.
 
-- Dumb takes that aged badly ("said NVDA was going to $50 in March, it's at $1100 now")
-- Embarrassing claims ("claimed to have 'never lost on TSLA' the same day he posted a -$8K screenshot")
-- Math fails / spelling fails ("wrote 'leverage' as 'leverig' three times in one thread")
-- Boasts that imploded ("called himself 'the only person in this chat who actually trades' the day he ate a 60% drawdown on SPY puts")
-- Race-edged comments, slurs, ethnic jokes — verbatim
-- Embarrassing personal admissions revealed in chat ("admitted he asks his wife for permission to size up")
-- Broken English moments worth quoting
+Include trade activity here as receipts (since trader_examples is gone) ALONG WITH the dumb-shit / personal / slur material. Pull from the wider pool:
 
-Format each as a tight quotable line the bot can drop directly into a reply. NOT just "they sometimes say dumb things" — give the actual specific dumb thing. Examples:
+- **Trade receipts** (1-line form with $/% / ticker / strike): "Closed $PLTR 5/30 75c at +$4,200 / +180% — posted the RH card same day." "Caught the $NVDA earnings move at +220% on 145C." "Full-ported $GPUS at $0.20, held to -50%."
+- **Aged-badly boasts**: "Said 'NVDA going to $50 in March' — it's at $1100 now." "Announced 'never touching alts again' and bought DOGE 48 hours later."
+- **Embarrassing claims**: "Claimed to have 'never lost on TSLA' the same week he posted a -$8K screenshot." "Said he was 'the only person in this chat who actually trades' the day he ate -60% on SPY puts."
+- **Math / spelling fails**: "Wrote 'leverig' three times in one thread arguing about delta." "Asked 'wait isn't 50% gain double your money?' in $-yapping last week."
+- **Personal admissions**: "Admitted he asks his wife for permission to size up." "Said he lives off Soylent because he 'can't be bothered with food.'"
+- **Race / slur quotes verbatim**: "Said 'can trump stop being a fucking faggot' during the Tuesday tariff rant." "Calls China 'chyna' three times per market open."
+- **Broken English / cringe**: "Wrote 'my wife angry I trade durin dinner' — the room hasn't let it go."
 
-Good: "Wrote 'leverig' 3 times in one thread arguing about delta — the room hasn't let it go."
-Good: "Called himself 'the only person in this chat who actually trades' the same Tuesday he ate a -60% SPY put."
-Good: "Asked 'wait isn't 50% gain double your money?' in $-yapping last week."
-Anti-pattern: "Sometimes makes embarrassing statements." (vague)
+Each item should be **mean and specific**. The point is the bot can pick one and drop it cold without further setup. Don't soften with explanation — the receipt is the ammo. Aim for 6-10 of these per user; a user with thin signal gets fewer (3-4 is fine), a heavy yapper with constant material gets 10.
+
+Anti-pattern: "Sometimes makes embarrassing statements." (vague, useless)
 Anti-pattern: "Has been wrong about trades." (no specific receipt)
+Anti-pattern: "Often shares his personal life in chat." (where's the line?)
 
-**trader_examples** — two to three short evidence items (each ~120-180 chars) that justify trader_score. HARD RULE: every example references a SPECIFIC TRADE — a ticker ($NVDA, $SPY, $BTC), a contract ("150C", "$28 puts"), a position size or dollar amount, a buy/sell/trim decision, or a documented P&L. Non-trade quotes (banter, slurs, personality lines, opinions about other users) belong in profile_text, not here. If you can't find two to three trade-anchored examples, return `[]` — empty is the correct answer when the user's recent history doesn't show enough trading detail.
-
-Good: "Caught the $NVDA earnings move into 145C calls Tuesday, 220% printed — flagged it 2 hours before the run."
-Good: "Full-ported $GPUS at 0.20 calling it '0 or hero,' held through a 50% drawdown without trimming."
-Anti-pattern: "Sometimes does well on tech names." (vague)
-Anti-pattern: "Calls everyone slurs and posts memes." (not a trade)
+**(trader_examples removed.)** Trade activity used to be a separate field — now it's folded into personal_ammo (for quotable single-line trade receipts) and the "Trash talk & life ammo" narrative section (for trade-anchored bits the room riffs on). Don't write a `trader_examples` field; the schema doesn't have one.
 
 **trader_score brackets (0-100):**
 - **90-100:** Real edge. Documented wins others tail. Posts wins AND losses cleanly. Process visible. Room trusts their reads.
@@ -676,7 +654,7 @@ async def _generate_profile(
     """
     min_msgs = getattr(settings, "profile_min_messages", None) or MIN_MESSAGES_FOR_PROFILE_FALLBACK
     if len(messages) < min_msgs:
-        return None, None, None, None, None, None
+        return None, None, None, None, None
     sample_size = (
         getattr(settings, "profile_sample_size", None)
         or MESSAGES_PER_PROFILE_SAMPLE_FALLBACK
@@ -706,7 +684,7 @@ async def _generate_profile(
         # If literally nothing new (shouldn't happen given delta-skip but
         # defensive), don't burn a Gemini call.
         if not new_messages:
-            return None, None, None, None, None, None
+            return None, None, None, None, None
         dynamic_cap = max(
             sample_size, min(_DYNAMIC_SAMPLE_HARD_CAP, len(new_messages))
         )
@@ -750,22 +728,26 @@ async def _generate_profile(
         text: str,
     ) -> tuple[
         str | None, int | None, str | None, int | None,
-        list[str] | None, list[str] | None
+        list[str] | None,
     ]:
-        """Parse the JSON response. Returns the six fields or all-None
+        """Parse the JSON response. Returns the five fields or all-None
         on parse failure. Logs first 300 chars of the response on
         decode error so we can see what came back.
 
-        Six fields (in order): profile_text, trader_score,
-        trader_rationale, racial_humor_score, trader_examples,
-        personal_ammo.
+        Five fields (in order): profile_text, trader_score,
+        trader_rationale, racial_humor_score, personal_ammo.
+
+        trader_examples was dropped — its content rolls into
+        personal_ammo (trade receipts as 1-line quotes alongside the
+        other ammo). Old user_profiles rows still have stale
+        trader_examples data; display code ignores it now.
         """
         if not text:
             print(
                 f"  parse-failure for {display_name}: EMPTY response body",
                 flush=True,
             )
-            return None, None, None, None, None, None
+            return None, None, None, None, None
         try:
             data = json.loads(text)
             if not isinstance(data, dict):
@@ -774,22 +756,11 @@ async def _generate_profile(
                     f"type={type(data).__name__} text={text!r}",
                     flush=True,
                 )
-                return None, None, None, None, None, None
+                return None, None, None, None, None
             pt = (data.get("profile_text") or "").strip() or None
             ts = data.get("trader_score")
             tr = (data.get("trader_rationale") or "").strip() or None
             rh = data.get("racial_humor_score")
-            te_raw = data.get("trader_examples")
-            te = None
-            if isinstance(te_raw, list):
-                # Filter to non-empty strings, trim each to 250 chars
-                te = [
-                    str(x).strip()[:250]
-                    for x in te_raw
-                    if isinstance(x, str) and str(x).strip()
-                ]
-                if not te:
-                    te = None
             pa_raw = data.get("personal_ammo")
             pa = None
             if isinstance(pa_raw, list):
@@ -810,7 +781,7 @@ async def _generate_profile(
                     rh = max(0, min(100, int(rh)))
                 except (TypeError, ValueError):
                     rh = None
-            return pt, ts, tr, rh, te, pa
+            return pt, ts, tr, rh, pa
         except json.JSONDecodeError as e:
             preview = text[:300].replace("\n", " ")
             tail = text[-200:].replace("\n", " ") if len(text) > 500 else ""
@@ -820,7 +791,7 @@ async def _generate_profile(
                 f"HEAD={preview!r}" + (f" ...TAIL={tail!r}" if tail else ""),
                 flush=True,
             )
-            return None, None, None, None, None, None
+            return None, None, None, None, None
 
     # 16000 tokens of output headroom. Thinking models burn most of the
     # budget on internal reasoning we can't directly observe. At 8000
@@ -898,17 +869,13 @@ async def _generate_profile(
                 max_length=1000,
             ),
             "racial_humor_score": types.Schema(type=types.Type.INTEGER),
-            "trader_examples": types.Schema(
-                type=types.Type.ARRAY,
-                items=types.Schema(
-                    type=types.Type.STRING,
-                    max_length=400,
-                ),
-            ),
-            # personal_ammo: broader weaponizable ammo — slurs + dumb
-            # takes + embarrassing claims + aged-badly boasts + math
-            # fails + broken-English moments. 5-8 entries, each a
-            # short verbatim or near-verbatim snippet.
+            # personal_ammo: the SOLE structured ammo field now.
+            # Replaces trader_examples (which was redundant with the
+            # Trash talk narrative section and the Recent activity
+            # section). Captures: trade receipts as 1-line quotes,
+            # slurs verbatim, dumb takes, aged-badly boasts, math
+            # fails, embarrassing personal admissions. 6-10 entries
+            # per user, savage one-liners ready to drop verbatim.
             "personal_ammo": types.Schema(
                 type=types.Type.ARRAY,
                 items=types.Schema(
@@ -922,7 +889,6 @@ async def _generate_profile(
             "trader_score",
             "trader_rationale",
             "racial_humor_score",
-            "trader_examples",
             # personal_ammo intentionally NOT required — quiet users
             # genuinely have nothing weaponizable, and forcing the
             # field made Gemini empty-response when it couldn't
@@ -959,7 +925,7 @@ async def _generate_profile(
     ) -> tuple[
         tuple[
             str | None, int | None, str | None, int | None,
-            list[str] | None, list[str] | None,
+            list[str] | None,
         ],
         str | None,
     ]:
@@ -1016,7 +982,7 @@ async def _generate_profile(
     async def _attempt(temperature: float = 0.3) -> tuple[
         tuple[
             str | None, int | None, str | None, int | None,
-            list[str] | None, list[str] | None,
+            list[str] | None,
         ],
         str | None,
     ]:
@@ -1130,7 +1096,7 @@ async def _generate_profile(
         return result
     except Exception as e:
         print(f"  ERROR profiling {display_name}: {e}", flush=True)
-        return None, None, None, None, None, None
+        return None, None, None, None, None
 
 
 async def run(days: int, channels: list[str]) -> None:
@@ -1387,7 +1353,7 @@ async def run(days: int, channels: list[str]) -> None:
                                 print(f"    (failure-event write failed: {log_err})",
                                       flush=True)
                             continue
-                        profile, trader_score, trader_rationale, racial_humor_score, trader_examples, personal_ammo = result
+                        profile, trader_score, trader_rationale, racial_humor_score, personal_ammo = result
                         if not profile:
                             n_failure_empty += 1
                             print(f"  ✗ {meta['display_name']}: empty / unparseable response",
@@ -1404,9 +1370,6 @@ async def run(days: int, channels: list[str]) -> None:
                                         "racial_humor_score_returned": racial_humor_score,
                                         "trader_rationale_len": (
                                             len(trader_rationale) if trader_rationale else 0
-                                        ),
-                                        "trader_examples_count": (
-                                            len(trader_examples) if trader_examples else 0
                                         ),
                                         "personal_ammo_count": (
                                             len(personal_ammo) if personal_ammo else 0
@@ -1445,15 +1408,15 @@ async def run(days: int, channels: list[str]) -> None:
                         # JSON-encode example lists (TEXT column).
                         slur_ex = slur_examples.get(uid, [])
                         slur_ex_json = json.dumps(slur_ex) if slur_ex else None
-                        trader_ex_json = (
-                            json.dumps(trader_examples)
-                            if trader_examples else None
-                        )
                         personal_ammo_json = (
                             json.dumps(personal_ammo)
                             if personal_ammo else None
                         )
 
+                        # trader_examples deliberately not passed —
+                        # the schema no longer produces it. Old rows
+                        # keep stale data via COALESCE. Display code
+                        # ignores it.
                         db.upsert_user_profile(
                             user_id=uid,
                             username=meta["username"],
@@ -1466,7 +1429,6 @@ async def run(days: int, channels: list[str]) -> None:
                             trader_score=trader_score,
                             trader_rationale=trader_rationale,
                             slur_examples=slur_ex_json,
-                            trader_examples=trader_ex_json,
                             personal_ammo=personal_ammo_json,
                         )
                         n_success += 1

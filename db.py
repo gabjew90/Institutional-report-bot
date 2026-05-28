@@ -2283,7 +2283,7 @@ def export_user_profiles_markdown() -> str:
                   profile_text,
                   slur_count, racial_humor_score,
                   trader_score, trader_rationale,
-                  slur_examples, trader_examples, personal_ammo
+                  slur_examples, personal_ammo
            FROM user_profiles
            ORDER BY message_count_at_update DESC"""
     ).fetchall()
@@ -2323,17 +2323,16 @@ def export_user_profiles_markdown() -> str:
         tr_rank = trader_rank_by_uid.get(int(r["user_id"]))
         tr_rationale = (r["trader_rationale"] or "").strip()
         try:
-            slur_examples_list = _json.loads(r["slur_examples"] or "[]")
-        except Exception:
-            slur_examples_list = []
-        try:
-            trader_examples_list = _json.loads(r["trader_examples"] or "[]")
-        except Exception:
-            trader_examples_list = []
-        try:
             personal_ammo_list = _json.loads(r["personal_ammo"] or "[]")
         except Exception:
             personal_ammo_list = []
+        try:
+            slur_examples_list = _json.loads(r["slur_examples"] or "[]")
+        except Exception:
+            slur_examples_list = []
+        # trader_examples no longer displayed — its content rolls into
+        # personal_ammo. Old DB rows keep the stale data; we just don't
+        # render it.
 
         header = f"## {dn}"
         if uname and uname.lower() != dn.lower():
@@ -2365,33 +2364,24 @@ def export_user_profiles_markdown() -> str:
             lines.append(f"> {' · '.join(score_bits)}")
         if tr_rationale:
             lines.append(f"> _{tr_rationale}_")
-        # Personal ammo — LLM-extracted weaponizable snippets (slurs +
-        # dumb takes + embarrassing claims + aged-badly boasts + math
-        # fails + broken-English moments). Replaces the narrow "recent
-        # slur usage" block. Limited to 5, each truncated to 200 chars.
+        # Personal ammo — the SOLE ammo block. Includes trades + dumb
+        # shit + slurs + aged-badly boasts + math fails + personal
+        # admissions. Shows up to 8 entries (was 5 — bumped since
+        # trader_examples no longer has its own block).
         if personal_ammo_list:
             lines.append(">")
-            lines.append("> **Recent ammo (dumb shit / boasts / slurs):**")
-            for ex in personal_ammo_list[:5]:
-                snippet = (ex or "")[:200].replace("\n", " ").strip()
+            lines.append("> **Recent ammo (trades / dumb shit / boasts / slurs):**")
+            for ex in personal_ammo_list[:8]:
+                snippet = (ex or "")[:280].replace("\n", " ").strip()
                 if snippet:
                     lines.append(f"> - {snippet}")
         elif slur_examples_list:
-            # Fallback for profiles that haven't been re-run since the
-            # personal_ammo field landed — show the regex slur block.
+            # Fallback only for profiles that haven't been re-run since
+            # personal_ammo landed.
             lines.append(">")
             lines.append("> **Recent slur usage:**")
             for ex in slur_examples_list[:3]:
                 snippet = (ex or "")[:140].replace("\n", " ").strip()
-                if snippet:
-                    lines.append(f"> - {snippet}")
-        # Trader examples — LLM-extracted recent moments that drove the
-        # trader_score (wins, losses, calls). Limited to 3.
-        if trader_examples_list:
-            lines.append(">")
-            lines.append("> **Recent trader moments:**")
-            for ex in trader_examples_list[:3]:
-                snippet = (ex or "")[:200].replace("\n", " ").strip()
                 if snippet:
                     lines.append(f"> - {snippet}")
         lines.append("")
@@ -2565,48 +2555,34 @@ def format_user_profiles_for_context(
         metrics_line = " · ".join(metric_bits)
 
         # Parse examples (TEXT JSON). Defensive: skip on malformed.
-        try:
-            slur_ex_list = _json.loads(p.get("slur_examples") or "[]")
-        except Exception:
-            slur_ex_list = []
-        try:
-            trader_ex_list = _json.loads(p.get("trader_examples") or "[]")
-        except Exception:
-            trader_ex_list = []
-        # personal_ammo: LLM-extracted broader weaponizable snippets —
-        # slurs + dumb takes + embarrassing claims + aged-badly boasts
-        # + math fails + broken-English moments. Replaces "recent slur
-        # usage" as the primary ammo block (slur_examples regex stays
-        # as a deterministic floor signal).
+        # personal_ammo is the SOLE ammo surface now (trader_examples
+        # was folded into it and is no longer displayed).
         try:
             personal_ammo_list = _json.loads(p.get("personal_ammo") or "[]")
         except Exception:
             personal_ammo_list = []
+        try:
+            slur_ex_list = _json.loads(p.get("slur_examples") or "[]")
+        except Exception:
+            slur_ex_list = []
 
         examples_section = ""
-        if personal_ammo_list or slur_ex_list or trader_ex_list:
-            ex_lines = []
-            if personal_ammo_list:
-                ex_lines.append("  recent ammo (dumb shit / boasts / slurs):")
-                for ex in personal_ammo_list[:5]:
-                    snippet = (ex or "")[:200].replace("\n", " ").strip()
-                    if snippet:
-                        ex_lines.append(f"    · {snippet}")
-            elif slur_ex_list:
-                # Fallback: only show the regex slur examples if Gemini
-                # didn't produce personal_ammo (old profiles still have
-                # slur_examples populated; new profiles overwrite).
-                ex_lines.append("  recent slur usage:")
-                for ex in slur_ex_list[:3]:
-                    snippet = (ex or "")[:140].replace("\n", " ").strip()
-                    if snippet:
-                        ex_lines.append(f"    · {snippet}")
-            if trader_ex_list:
-                ex_lines.append("  recent trader moments:")
-                for ex in trader_ex_list[:3]:
-                    snippet = (ex or "")[:200].replace("\n", " ").strip()
-                    if snippet:
-                        ex_lines.append(f"    · {snippet}")
+        if personal_ammo_list:
+            ex_lines = ["  recent ammo (trades / dumb shit / boasts / slurs):"]
+            for ex in personal_ammo_list[:8]:
+                snippet = (ex or "")[:280].replace("\n", " ").strip()
+                if snippet:
+                    ex_lines.append(f"    · {snippet}")
+            examples_section = "\n" + "\n".join(ex_lines)
+        elif slur_ex_list:
+            # Fallback only for profiles that haven't been re-run since
+            # personal_ammo landed. Once their profile refreshes once
+            # with the new code, personal_ammo overrides this branch.
+            ex_lines = ["  recent slur usage:"]
+            for ex in slur_ex_list[:3]:
+                snippet = (ex or "")[:140].replace("\n", " ").strip()
+                if snippet:
+                    ex_lines.append(f"    · {snippet}")
             examples_section = "\n" + "\n".join(ex_lines)
 
         rendered = (
