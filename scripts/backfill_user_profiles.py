@@ -206,52 +206,49 @@ Roast comedian, not bully. Get to the truth via the joke, not around it.
 
 ---
 
-**Voice.** Bullet list of 4-8 verbatim phrases this user actually drops in chat. The recurring ones + the recent dumb/racist ones. Quote them exactly — no scrubbing, no paraphrase, slurs uncensored. Each bullet is just the quote (or quote + a one-line context). Example shape:
+**Voice.** Bullet list of 4-8 verbatim phrases this user actually drops in chat. The recurring ones + the recent dumb/racist ones. Quote them exactly — no scrubbing, no paraphrase, slurs uncensored. Each bullet is just the quote (or quote + a one-line context).
 
-> - "should've sized up" — his post-missed-trade lament, every week
-> - "fuck it we ball" — the pre-degenerate-trade declaration
-> - "chyna" — what he calls China; ~3x per market open
-> - "compliance is watching" — when he's about to do something dumb
-> - "can trump stop being a fucking faggot" — Tuesday tariff rant
-> - "bing bong" — punctuation, not a word
+Each bullet shape: `"[verbatim phrase from THIS user's messages below]" — [what triggers it / when they say it]`. Don't transfer phrases across users — see the ATTRIBUTION RULE in HOW TO WRITE.
 
----
-
-**Retarded takes.** Bullet list of 4-8 specific dumb or racist takes/claims they actually made. Each item: the take + a beat of framing that names why it's dumb. Pull from chat verbatim where possible — see ATTRIBUTION RULE in HOW TO WRITE, every quoted line MUST be one of THIS user's own messages, not adjacent context. Savage. Example shape:
-
-> - "NVDA going to $50 by March" — said in March; NVDA is at $1100 now
-> - Insisted he'd "never lost on TSLA" the same week he posted a -$8K screenshot
-> - Wrote "leverig" three times in one thread arguing about delta
-> - Asked "wait isn't 50% gain double your money?" in $-yapping last week
-> - Claimed to be "the only person in this chat who actually trades" the day he ate -60% on SPY puts
-> - Burned a 5x SOL perp Sunday "because I had a feeling" — the feeling was a $4k stop-out
+Anti-patterns:
+- A polished paraphrase ("often laments missed opportunities") — kills the signal
+- A quote from someone else who appeared in the user's reply chain — see ATTRIBUTION RULE
+- Inventing a phrase that "sounds like them" — invented quotes get caught immediately
 
 ---
 
-**Recent trades.** Bullet list of 4-6 specific trades from the recent window (last ~30 days). **Savage-but-hilarious on losses; respect on wins.** Mock the bad trade with style, not just with mean adjectives. Acknowledge the good trade as the call it was — no faint praise, no "even a stopped clock." Each item: ticker / strike / PnL + framing. Example shapes:
+**Retarded takes.** Bullet list of 4-8 specific dumb or racist takes/claims they actually made. Each item: the take + a beat of framing that names why it's dumb. Pull from chat verbatim where possible — see ATTRIBUTION RULE in HOW TO WRITE, every quoted line MUST be one of THIS user's own messages, not adjacent context.
 
-> - Sold $ARM 145C at 3.8 — contract ran to 17.8 in 48 hours. Should've eaten more crayons that morning.
-> - Caught $NVDA +220% on 145C — flagged the setup two hours before the run, that's the call of the week.
-> - $WEN bags closed at -30%. Bag bounced 40% the next day. The chart still gets re-posted at him on slow days.
-> - Full-ported $GPUS at $0.20 calling it "0 or hero" — held to -50%, exited at -47%. The hero never came.
-> - $ASTX +234% on the spot side. Posted the win while calling chat dogshit for missing the entry. Carry it.
-> - Closed $SOL perps "because compliance was watching" — flat exit; SOL ripped another 12% the next 24h.
+Each bullet shape: `[the take, with quoted phrase if available]` + `[the framing that names what made it dumb — sourced from chat outcome / contradiction / room reaction]`.
+
+Anti-patterns:
+- "Sometimes makes overconfident calls" (no specifics)
+- A take you can't anchor to a specific message + a specific outcome
+- A specific phrase that's not actually in THIS user's messages
+
+---
+
+**Recent trades.** Bullet list of 4-6 specific trades from the recent window (last ~30 days). **Savage-but-hilarious on losses; respect on wins.** Mock the bad trade with style, not just with mean adjectives. Acknowledge the good trade as the call it was — no faint praise, no "even a stopped clock."
+
+Each bullet shape: `[ticker / strike / outcome]` + `[framing — respectful if win, savage if loss, anchored to a specific thing the user did or said about the trade]`. Pull ticker + outcome from the user's actual alert posts, P&L screenshots, or chat messages — never from this prompt's earlier examples.
 
 Anti-patterns:
 - "Has some good trades and some bad ones" (no specifics)
 - "Made $5k on TSLA, classic stopped-clock energy" (disrespecting the win)
 - "Lost on ARM, idiot." (mean without being funny)
+- A ticker + percentage that you didn't actually find in this user's evidence
 
 ---
 
-**Recent personal life.** Bullet list of 4-6 personal-life details revealed in chat in the recent window. **Savage-but-hilarious.** Anything they posted is fair game — job, family, where they live, commute, kids, wife, dating life, health, hobbies, embarrassing admissions. Frame each one with a comedic angle, not just bare reporting. Example shapes:
+**Recent personal life.** Bullet list of 4-6 personal-life details revealed in chat in the recent window. **Savage-but-hilarious.** Anything they posted is fair game — job, family, where they live, commute, kids, wife, dating life, health, hobbies, embarrassing admissions. Frame each one with a comedic angle, not just bare reporting.
 
-> - Wife took the kids to her parents during a "business trip" three weeks ago. Brings it up unprompted every Friday at 3pm like clockwork.
-> - Works as an auditor and complains about it daily — the room has heard about model committee Tuesdays so many times he should be billing them.
-> - Posted a screenshot of his Excel sheet during a meeting and complained "no one knows I'm trading" — three coworkers DM'd him on Signal that they did, in fact, know.
-> - Got a $WEN coozie from his wife for his birthday as a joke. The room hasn't let it go.
-> - Lives off Soylent because he "can't be bothered with food." Mentioned this while ranting about $RBLX volume.
-> - Drives a leased BMW he can't afford. Tells anyone who'll listen that the lease "ends next year" and he's "gonna do a Cayman."
+Each bullet follows the same shape: [the detail sourced from chat] + [a comedic framing beat that names what's funny about it]. Don't copy these into other profiles — they're SHAPE EXAMPLES, not transferable content. Pull from THIS user's actual chat:
+
+> - [domestic-arrangement detail revealed] + [the comedic-pattern beat the room has noticed]
+> - [job complaint they keep bringing up] + [the framing that names why it's funny]
+> - [embarrassing self-admission they posted] + [how the room reacted]
+> - [physical-comfort-related detail they overshared] + [the bit they don't realize they're doing]
+> - [hobby / lifestyle detail with a status-tell] + [what it reveals]
 
 Anti-patterns:
 - "Married with kids" (no edge, no framing)
@@ -272,7 +269,7 @@ Before you write any quoted line, mentally check: "Is this exact phrase in {disp
 
 When real quotes are thin (lurker, short window, low signal), the profile sections get shorter — that's correct. Padding with invented or borrowed quotes is the failure mode this rule prevents.
 
-**Quote verbatim with the original edge.** When you DO have real lines from this user's messages, pull them exact — slurs, slang, swears, broken grammar, all of it. "Should've sized up" (BK's lament), "fuck it we ball" (anyone pre-degenerate-trade), "chyna" (BK's China), "can trump stop being a fucking faggot" (BK's Tuesday rant). These are illustrative shapes from the EXAMPLE TARGET — DO NOT copy them into other users' profiles. Find the user's OWN equivalents in their MESSAGES below.
+**Quote verbatim with the original edge.** When you DO have real lines from this user's messages, pull them exact — slurs, slang, swears, broken grammar, all of it. The point is to preserve THIS USER's actual voice as they wrote it; scrubbing or smoothing removes the signal the dossier exists to capture. The EXAMPLE TARGET above uses `"[verbatim phrase from this user]"` placeholders deliberately so there's nothing concrete for you to copy across. Find each user's OWN equivalents in their MESSAGES below — the phrases that recur, the ones that landed hardest in the room, the ones that mark their voice.
 
 **Strip bot commands.** Messages starting with `fc TICKER` (e.g. `fc nvda`, `fc spy`) are chart-pulling slash commands — not personality signal. Ignore them entirely; same for any obvious slash-command pattern.
 
@@ -282,43 +279,42 @@ When real quotes are thin (lurker, short window, low signal), the profile sectio
 
 **Describe behavior, not psychology.** "Size scales with frustration, every time" is descriptive — sourced behavior, no diagnosis. Stay in behavior; let the reader draw the line.
 
-## EXAMPLE TARGET
+## EXAMPLE TARGET — illustrative shape, NOT transferable content
 
-> **BK (`bankerkyle`, <@423994649317736448>) — 4183 msgs**
+The dossier below shows the structural shape of a complete profile (5 sections, the prose density, the tone). It uses a fictional composite trader so you can see what a finished dossier looks like.
+
+**HARD RULE: do not copy ANY phrase, ticker, dollar amount, location, family detail, or specific lifestyle anchor from this example into a real user's profile.** Every line here was invented for illustration. If a real user happens to have similar patterns, you still MUST source from their actual MESSAGES below, not from this template. The Abe-cross-attribution bug happened because example phrases became templates — this is the guardrail.
+
+> **EXAMPLE_TRADER (`example_username`, <@000000000000000000>) — N msgs**
 >
-> **Personality and style.** M&A guy at a real firm who treats the discord as where the day-job rules don't apply. Sharp on macro, sticks to large-caps on the equity side, trades crypto perps with leverage no risk committee would approve. Sizes up after one green day, holds through 40% drawdowns, posts the chart after every entry. Senior energy in the room — not the loudest, but the voice the room registers when he weighs in. Posts wins AND losses cleanly, which keeps the room honest; lives in lament-mode after missed entries and recovers via crude humor.
+> **Personality and style.** [4-6 sentence compressed read of who this person is + how they trade + their role in the room. Lead with concrete behavior — what they trade, how they size, when they go silent. Name their function (signal / banter / chaos / mentor / hype-man / contrarian / lurker). Strengths if any. Example density: tight prose, every line specific.]
 >
 > **Voice.**
-> - "should've sized up" — post-missed-trade lament, ~4x per week
-> - "compliance is watching" — pre-dumb-trade declaration
-> - "fuck it we ball" — pre-degenerate-trade declaration
-> - "chyna" — China, ~3x per market open, completely without irony
-> - "we're getting fiddled" — when his book is red
-> - "can trump stop being a fucking faggot" — Tuesday tariff rant
-> - "bing bong" — punctuation, not a word
+> - "[verbatim phrase #1 from this user]" — [the moment / pattern that triggers it]
+> - "[verbatim phrase #2]" — [its context]
+> - "[verbatim phrase #3, including slurs / curses / typos uncensored if that's how they actually said it]" — [when]
+> - "[verbatim phrase #4]" — [when]
+> - "[verbatim phrase #5 — a recurring filler word or punctuation tic]" — [the pattern]
 >
 > **Retarded takes.**
-> - "Never touching alts again" Friday → bought DOGE Sunday night → -50% by Tuesday. Pretended the trade didn't exist for a week.
-> - Said "this room is a graveyard" the day he sold $WEN at -30%. The bag bounced 40% the next morning.
-> - Threatened to go full cash, opened 10x SOL perps within 90 minutes. Room sets unders on how often this happens.
-> - "Bitcoin conference had not a girl in sight" — said this on the public channel, immediately asked who saw it, got owned by 6 people.
-> - Insisted he could "predict every Powell meeting outcome" during one tilt session; got 0/3 the following week.
-> - "Compliance literally cannot tell I'm trading from my work laptop" — Compliance DM'd him within the hour about it.
+> - [stated take they made + the reality that proved it dumb + the comedic beat]
+> - [confident claim they made + the receipt that contradicts it + the room's response]
+> - [boast that aged badly + the resolution + how they reacted]
+> - [overreach or self-own + the immediate consequence + the punchline]
 >
 > **Recent trades.**
-> - $WEN closed at -30% three weeks ago. Bounced 40% the next day. Room re-posts the chart on slow days; he still won't unpin the loss.
-> - $NVDA 615C ahead of earnings — caught the +85% print, posted the close cleanly, tipped the room two hours before the run. Solid call, no notes.
-> - 5x SOL perps opened Sunday, closed Monday "because compliance was watching." Closed flat; SOL ripped +12% the next 24h.
-> - $META 615C miss last Tuesday — talked it up for three days, didn't pull the trigger, has cited it 4 times since as the "should've sized up" reference. The Greek tragedy of his week.
-> - $MSTR breakout thesis Wednesday — defended in-thread with three legit chart pulls, position still open. Take so far holds.
-> - $DOGE bought "ironically" → -50% in 72 hours. Sold at -47% because "the bottom was in." Bottom was not in.
+> - [ticker / strike / outcome] — [respectful framing if win, savage framing if loss, anchored to specifics]
+> - [another trade] — [framing]
+> - [an open position they're defending] — [the thesis + whether it's holding]
+> - [a bag they're sitting on] — [the room's running joke about it]
 >
 > **Recent personal life.**
-> - Wife and kids decamped to her parents for a "business trip" three weeks ago and never quite came back. He brings it up unprompted every Friday at 3pm; the room has stopped asking how things are going.
-> - Lives in Greenwich, commutes on Metro-North, complains about it loud enough that the room can recite the schedule. Once asked the chat if anyone "knows a guy" for express tickets.
-> - Got a $WEN coozie from his wife as a birthday gag. Posted the picture himself. The room never let it go and now neither does she.
-> - "Compliance is monitoring me" is a real thing — desk actually pinged him about a daytrade screenshot he posted, then he posted the compliance email in the chat. The room now has more visibility into his desk policies than HR does.
-> - Spent the week at a "biohacking conference in Austin" — posted from the floor about peptide microbiomes and his "2-year celibacy milestone" three times in one Wednesday. Currently planning to meet Zach IRL while joking about "penis microbiome companies."
+> - [domestic / family detail they revealed] + [the comedic-pattern beat the room has noticed]
+> - [job complaint pattern] + [the framing that names what's funny]
+> - [embarrassing self-admission] + [how the room reacted]
+> - [lifestyle / status tell] + [what it reveals about them]
+
+(End example.) The placeholders in `[brackets]` are intentional — the real profile fills each with content sourced from the actual MESSAGES block below. Density and tone match the bracketed pattern; specifics never copy across.
 
 ## TWO RECEIPT TYPES — alert posts (entry commitments) + closed-P&L screenshots
 
@@ -392,12 +388,14 @@ Both `trader_rationale` and `racism_rationale` are short summary blocks that get
 
 What it covers: (a) the evidence gate — which PATH (alert posts / closed-P&L losses) unlocked the bracket WINDOW, (b) the raw-skill read inside that window, (c) the ±5 tiebreaker if applied and why, (d) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Name the specific receipts (alert content quoted, P&L card ticker + dollar amount) that moved the bracket.
 
-**Good shapes:**
+**Good shapes** (use as structural templates — the bracketed tickers / percentages / receipts are SLOTS to be filled from this user's actual evidence, NEVER copied as-is):
 
-- *Caller with owned alert channel (Path A — structural honesty):* "Owns a dedicated alert channel and runs ~40 entry alerts a month through it; every position is committed before outcome is known, so the channel itself is the receipt log. Path A unlocks 75+ outright. Inside the window, trade quality is real: tracked alert calls hit on $NVDA 145C entry 8.40 → close 35 (+320%), $SOL perp short at 230 → cover 192 (+16%), with a documented bag on $WEN spot −38% that he closed publicly the same week. +3 tiebreaker for the sustained two-sided posting. Sits high-70s because the alerts work but exits are early."*
-- *Mixed-receipt trader (both paths):* "Two-sided P&L receipts AND alert posting both clear the 75+ gate. Posted the $NVDA 145C win (+220%) AND the $WEN bag close (-42%) in gain-loss-porn within the same week, plus a steady stream of entry alerts in member-alerts (`$ARM 145C entry 3.80 stop 2.50` two days before the run). Sharp on macro reads, executes like he's still asking permission, sells winners early. 'Should've sized up' is now permanent personality. Upper-mid of the 75+ bracket because the wins are real even when the exits are early."*
-- *Wins-only ceiling (no alert posts, curated P&L):* "Capped at 74 by evidence: 12 green screenshots in gain-loss-porn over 30 days, zero red ones, zero alert-channel entries, while loudly bagging two penny names elsewhere in chat. Neither path unlocked — no posted losses (Path B) and no sustained alert posting (Path A). Knows the theory, talks the right setups, leaks every winner by sizing too small and every loser by averaging down. Would unlock 75+ instantly the day he either posts a red close or starts running entries through a shared alert channel."*
-- *No receipts at all (cap at 59):* "Caps at 59 — no alert-channel posts, no P&L screenshots in the window at all. Daily conviction posting on broad-index trades, plenty of "called this" energy, but zero documented commitments to anchor any of it. The reads sometimes sound right, sometimes don't; without receipts the score can't separate the two. Position inside the 0-59 window picked at upper-40s because the chat-claimed reads aren't obviously dumb — but the bracket itself is locked until a real entry or close-out lands somewhere documented."*
+- *Caller with owned alert channel (Path A — structural honesty):* "Owns a dedicated alert channel and runs `[N]` entry alerts `[per week/month]` through it; every position is committed before outcome is known, so the channel itself is the receipt log. Path A unlocks 75+ outright. Inside the window, `[2-3 concrete tracked-alert outcomes sourced from THIS user's channel — ticker / strike / entry-to-close / gain%]`. `[±5 tiebreaker if applied, with the specific reason — sustained two-sided posting or within-bracket asymmetry]`. Sits `[bracket-position]` because `[the read on alerts that work, exits that are early or late, sizing pattern]`."
+- *Mixed-receipt trader (both paths):* "Two-sided P&L receipts AND alert posting both clear the 75+ gate. Posted `[the actual P&L screenshot evidence — ticker, win, ticker, loss, sourced]`, plus a stream of entry alerts in `[the shared channel they post in — sourced]`. `[The behavioral read on entries vs exits, sizing, follow-through]`. `[Recurring lament or brag if any, quoted from THIS user]`. `[Bracket-position reasoning]`."
+- *Wins-only ceiling (no alert posts, curated P&L):* "Capped at 74 by evidence: `[N] green screenshots in gain-loss-porn over [period], zero red ones, [alert-channel coverage status]`, while `[the contradiction visible in chat — claimed bag, denied loss, etc., sourced]`. Neither path unlocked — no posted losses (Path B) and no sustained alert posting (Path A). `[The trader-skill read on what the wins-only set actually shows]`. Would unlock 75+ instantly the day they either post a red close or run entries through an alert channel."
+- *No receipts at all (cap at 59):* "Caps at 59 — no alert-channel posts, no P&L screenshots in the window at all. `[Their actual conviction-posting pattern sourced from chat — what they call, how often, the tone]`, but zero documented commitments to anchor any of it. The reads sometimes sound right, sometimes don't; without receipts the score can't separate the two. Position inside the 0-59 window picked at `[upper / mid / lower]` because `[the chat-claimed reads quality]` — but the bracket itself is locked until a real entry or close-out lands somewhere documented."
+
+**Hard rule.** The bracketed slots above are placeholders. Fill each with content sourced from the actual MESSAGES + analyst_trades evidence for THIS user. NEVER copy the example tickers, percentages, or framing across to a different user — same ATTRIBUTION RULE that governs Voice / Retarded takes.
 
 **Anti-patterns:**
 - *"Demonstrates strong macro awareness and active trade management."* (corporate)
@@ -408,9 +406,11 @@ What it covers: (a) the evidence gate — which PATH (alert posts / closed-P&L l
 
 What it covers: the rank-defining racial-humor BEHAVIOR — sourced from real chat moments, specific targets, recurring tics, and the room's response. SAVAGE-BUT-HILARIOUS. Not "high volume of slur usage" generic — give the room a textured picture of WHY they rank where they do.
 
-**Good shapes:**
-- *"Complains about black homeless people every Tuesday like clockwork; the SUNY post-grad arc is doing the heavy lifting here. Drops 'pajeet' across three different conversations about three different people, all from the same Excel-spreadsheet day-job. Stereotypes Asian women in a recurring bit about his ex. When called out, says 'I don't even mean it like that' and keeps going. Tops the rank not from raw slur volume but from the consistency of the targeting."*
-- *"Mostly clean over the window — one quoted slur in a meme repost last month and a handful of 'chyna' drops in geopolitics threads. The regex flagged him once; the LLM didn't see broader patterns. Lurker-tier; the rank reflects 'occasionally joins room jokes' not 'leads with race-edged content.'"*
+**Shape — high-ranking user (heavy racial humor):** 3-5 sentences naming `[the recurring target group(s) and the actual contexts/days they show up]`, `[the specific slurs or stereotyped framings from this user's chat, sourced verbatim]`, `[the room's response or callout history]`, `[what tops them out — raw volume? consistency? creativity? targeting breadth?]`. Anchor every claim to a real message.
+
+**Shape — lower-ranking user (sparse / context-only):** 3-5 sentences naming `[what the regex / LLM actually saw in the window — count, contexts, isolated quotes]`, `[whether it's leading content or occasional room-joke participation]`, `[the qualifier that explains the rank position]`. Don't invent slurs to fill space — sparse evidence makes a SHORTER rationale, not a padded one.
+
+**Hard rule — see the ATTRIBUTION RULE in HOW TO WRITE:** every quoted slur or framing in this field MUST be a verbatim substring of THIS user's own MESSAGES below. Don't write "drops 'pajeet'" or "calls China 'chyna'" unless that exact string is in their actual chat. Inventing a slur attribution is the worst kind of error this prompt can produce.
 
 **Anti-patterns:**
 - *"High volume of racially-edged content."* (generic, dry)

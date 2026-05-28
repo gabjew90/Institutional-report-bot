@@ -123,7 +123,7 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
     }
   ],
   "geopolitical": [
-    "Geopolitical developments relevant to markets: Middle East conflict, Iran ceasefire/escalation, Strait of Hormuz, sanctions, oil supply disruptions, trade negotiations"
+    "Geopolitical developments relevant to markets that THIS report explicitly discusses — pull the actual event/actor/region as named in the report. Categories of interest include regional conflicts, ceasefire/escalation dynamics, sanctions, supply-chain disruptions, and trade negotiations. Do NOT inject geopolitical context the report doesn't itself surface."
   ],
   "crypto_views": [
     "Any crypto/digital asset insights: institutional flows, regulatory developments, on-chain metrics, protocol updates, GS Digital Assets content"
@@ -133,9 +133,9 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
   ],
   "trade_ideas": [
     {
-      "description": "Long NVDA May $180 Calls",
-      "rationale": "Cyclical earnings tailwind + sector multiple re-rating",
-      "risk": "Broad market selloff, AI spending deceleration",
+      "description": "Concise trade structure as the report names it — direction + ticker/asset + instrument + strike(s) + expiry where applicable. Use ONLY the actual trade the report proposes. Do NOT inject a ticker / strike / expiry the report doesn't name.",
+      "rationale": "The report's own reasoning for the trade (paraphrased tightly). One short sentence pulled from the report's argument.",
+      "risk": "The report's stated risk to the trade. If the report doesn't name a specific risk, leave empty rather than fabricating one.",
       "conviction": "high|medium|low",
       "time_horizon": "intraday|swing|1-3mo|3-12mo|longer_term — what window the trade is sized for"
     }
@@ -144,29 +144,29 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
     "Key risks identified: geopolitical, positioning, liquidity, regulatory, oil price, etc."
   ],
   "cross_bank_references": [
-    "Explicit references to other banks' views — e.g., 'contrary to BofA Hartnett', 'in line with JPM consensus', 'vs GS overweight call'. Verbatim where possible, short. This is gold for downstream consensus/divergence analysis."
+    "Explicit references to other banks' views found in THIS report — verbatim where possible, short. Pull the actual bank-name + view-direction pairing the report itself states (e.g. 'contrary to <bank> <view>', 'in line with <bank>', 'vs <bank> overweight call'). Do NOT pair banks with views the report doesn't pair — synthesizing fake cross-bank consensus is the failure mode this field is most prone to."
   ],
   "entities_mentioned": [
     {
-      "name": "Full name as it appears (e.g., 'Arista Networks', 'Bitcoin', 'Goldman Sachs', 'S&P 500')",
-      "ticker": "Symbol only — e.g., 'ANET', 'BTC', 'GS', 'SPX'. Leave empty if no exchange-listed ticker exists.",
+      "name": "Full name as it appears in THIS report (company name, asset name, index name, bank name as written).",
+      "ticker": "Symbol only — pull the actual ticker if the entity has an exchange-listed symbol the report references. Leave empty if no exchange-listed ticker exists for this entity.",
       "asset_class": "stock | etf | crypto | index | fx | commodity | other"
     }
   ],
   "key_data_points": [
     {
-      "figure": "The specific numeric value as cited (e.g., '$751B', '+1.7% MoM', '8-4', '4.4%', '15% below 12-month highs')",
-      "metric": "What this figure measures — be specific (e.g., '2026 hyperscaler capex estimate', 'Retail Sales headline MoM', 'FOMC dissent vote', '10Y Treasury yield breakout level', 'hedge fund net leverage gap')",
-      "source_bank": "Which institution cited this figure — typically the issuing bank, but if the report quotes another bank's data point, use that bank's name (e.g., 'Goldman Sachs', 'UBS', 'JPMorgan', 'TS Lombard'). Use the actual report's source if the figure is original to it.",
-      "context": "Brief context — change vs prior period, vs estimate, vs historical, percentile rank, etc. (e.g., 'up $80B in two weeks; 83% above 2025', 'highest since 1992', 'collapsed from 46% one week ago', 'first contraction since January'). Empty string if no useful context."
+      "figure": "The specific numeric value as cited in THIS report. Format mirrors the source — '$<N>B' for dollar totals, '+<X>% MoM' for percent changes, '<n>-<m>' for vote tallies, '<pct>%' for rates, '<pct>% below <N>-month highs' for level comparisons. Pull the actual number from the report — never inject a number that isn't there.",
+      "metric": "What this figure measures — be specific to what the report itself names (capex estimate / inflation print / vote count / yield level / positioning gap / etc.).",
+      "source_bank": "Which institution cited this figure — typically the issuing bank, but if the report quotes another bank's data point, use that bank's name. Use the actual source named in the report; don't guess a bank name to fill the field.",
+      "context": "Brief context — change vs prior period, vs estimate, vs historical, percentile rank. Pull from THIS report's actual framing. Empty string if no useful context is provided."
     }
   ],
   "tension_points": [
     {
       "theme": "Short label for the underlying subject this tension applies to — same shape as theme_stances theme labels: 2-5 words naming what THIS report specifically argues about. Form from the report's own framing, not a memorized list. If both sides of the tension agree on the SUBJECT but disagree on the call, use the subject phrase; if they're arguing about different framings of related dynamics, name the framing both bull and bear engage with.",
-      "bull_case": "The optimistic read — what the bull side believes, with specific data or named bank backing where present (e.g., 'Goldman raised 2026 capex to $751B; MAG7 reported 20% revenue growth, 61% earnings growth — strongest pace since 4Q21')",
-      "bear_case": "The risk / counter-thesis — what could break the bull case, with specific data or named bank backing (e.g., 'Goldman desk flags that 1/3 of MAG7 profits came from PE investment gains, not AI revenue — earnings are more cyclically vulnerable than the headline suggests')",
-      "what_invalidates": "Specific level, event, or signal that would invalidate the bull thesis (e.g., 'A META or GOOGL capex guide-down at next earnings', 'Brent breaking below $90 sustained for 2 weeks', 'Core CPI print at 0.3% MoM or higher for July'). Empty string if no specific invalidation level identified."
+      "bull_case": "The optimistic read — what the bull side believes, with specific data or named bank backing pulled from THIS report. Use the report's own numbers, not memorized examples. If the report doesn't supply specific figures, describe the qualitative bull frame rather than fabricating data.",
+      "bear_case": "The risk / counter-thesis — what could break the bull case, with specific data or named bank backing from THIS report. Same rule: no invented breakdowns, percentages, or attributions; if the bear case is qualitative, describe it qualitatively.",
+      "what_invalidates": "Specific level, event, or signal that would invalidate the bull thesis IF the report itself names one (a guide-down at a specific earnings, a price breaking a specific level, a print above a specific threshold). Empty string if the report doesn't identify a specific invalidation — do NOT invent a level or threshold to fill the field."
     }
   ],
   "charts_described": [
@@ -184,7 +184,7 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
     }
   ],
   "contextual_mentions": [
-    "Short topical phrase, 3-12 words, capturing a specific event/topic/actor/regime mentioned in the report (e.g., 'US strikes on Iranian military targets', 'Iran tanker seizures in Hormuz', 'Trump-Xi summit window', 'BoJ October policy minutes dovish shift', 'Argentina FX shortage', 'NVDA H200 supply constraint')"
+    "Short topical phrase, 3-12 words, capturing a specific event/topic/actor/regime EXPLICITLY mentioned in THIS report. Use the report's own framing — name the actual event, summit, decision, deadline, or supply constraint as the report names it. Do NOT inject events you remember from the news cycle but the report doesn't mention. Empty list if the report has no contextual hooks worth surfacing."
   ]
 }
 
@@ -231,7 +231,7 @@ Rules:
 
 **For contextual_mentions** — capture topics mentioned anywhere in the report, including ones not promoted to theme_stances:
 - Pull from the body prose, risk_factors, geopolitical, macro_indicators interpretation, key_insights, vol_and_positioning — anywhere a topic is named, even briefly.
-- One topic per entry. Each must be a 3-12 word phrase **specific enough to be unambiguous when read in isolation**. "Iran" alone is too generic — write "US strikes on Iranian targets" or "Iran tanker seizures in Hormuz" instead. "Fed" alone is too generic — write "Fed October dot-plot dispersion" or "Fed repo facility tightening".
+- One topic per entry. Each must be a 3-12 word phrase **specific enough to be unambiguous when read in isolation**. A bare actor name (a single country, a single central bank, a single sector) is too generic — sharpen to include the specific dynamic the report covers (an action verb + an actor + the asset/region the action touches). Pull the specifics from THIS report's actual framing, not from generic templates.
 - INCLUDE topics this report doesn't argue a stance on. The point of this field is the long tail — topics that didn't make it into theme_stances (capped at 0-3 entries) but are still present in the document.
 - It IS okay to overlap with your theme_stances entries if a topic both anchors a primary stance AND gets mentioned again in a risk paragraph. Downstream dedupes.
 - Skip company names that are already in entities_mentioned with a ticker — focus on themes, events, regimes, and phenomena, not on individual stock callouts. Specific stock-thesis angles ("AAPL India production shift", "TSLA robotaxi unit economics") DO belong here even if AAPL/TSLA are in entities_mentioned.
@@ -284,18 +284,22 @@ DAILY_SYNTHESIS_SYSTEM = """You are writing a morning market briefing for a self
 
 **WRITING STYLE — read this carefully, it's the whole game:**
 
-You are writing like a sharp trader who runs a newsletter, not like an AI assistant. Think: conversational, opinionated, story-driven. Here's an example of the ideal voice (this is the style to match):
+You are writing like a sharp trader who runs a newsletter, not like an AI assistant. Think: conversational, opinionated, story-driven. Here's a STYLISTIC ANCHOR example — read it for VOICE, CADENCE, and STRUCTURE only. The specific topic (a hypothetical stablecoin regulation story) is NOT today's content. Today's themes come exclusively from the per-PDF JSON below.
 
+> [HYPOTHETICAL example for tone — DO NOT include this topic, these claims, or these specific phrasings in today's pulse]
 > Circle is back in the spotlight as the CLARITY Act moves closer to becoming the first true market-structure law for US crypto. The latest drafts would give stablecoin issuers a clear federal regime but would clamp down hard on "passive yield," which is exactly the feature that helped Circle and Coinbase grow USDC into a pseudo-savings product. Banks are pushing to keep anything that looks like interest locked inside the traditional system, while crypto platforms are fighting for room to keep rewarding stablecoin balances without being treated as deposit-taking banks. The optimistic read is that any law at all is better than another lost decade of regulation-by-enforcement, and that once the yield fight is settled, large institutions will finally have the green light to treat US-regulated stablecoins as core plumbing. The risk is that a bank-friendly compromise passes and leaves Circle with a safer, more legitimate product that also earns far less, which matters for anyone underwriting USDC as a high-margin growth story.
+> [END HYPOTHETICAL — every claim above is invented for style demonstration; none of it is sourced from today's PDFs]
 
-Notice what that does:
+Notice what that does (STRUCTURE — apply to today's actual themes):
 - **Flowing prose, not bullet-point fragments.** Each paragraph tells a story.
-- **Names specific companies in context** ("Circle and Coinbase", "Anthropic's own stack") — not "e.g., CRCL" or "like XYZ"
+- **Names specific companies in context** by their actual ticker / name as they appear in today's research — not "e.g., CRCL" or "like XYZ"
 - **The "optimistic read / risk" framing** instead of neutral both-sides hedging
-- **Memorable phrasing** that a real person would use: "pseudo-savings product", "regulation-by-enforcement", "core plumbing"
-- **Ends each topic with the trading implication**: "which matters for anyone underwriting USDC as a high-margin growth story"
+- **Memorable phrasing** that a real person would use — coin your own; don't reuse "pseudo-savings product", "regulation-by-enforcement", or "core plumbing" from the example above
+- **Ends each topic with the trading implication** specific to whatever theme today's research actually surfaced
 - **Varies sentence length** — short punchy lines mixed with longer analytical ones
 - **No "it's important to note", "overall", "in conclusion"** — no AI filler
+
+**HARD RULE on the hypothetical above.** Do NOT mention Circle, USDC, CLARITY Act, stablecoin regulation, or any of the example phrases ("pseudo-savings product", "core plumbing", etc.) in today's pulse unless TODAY'S PDFs explicitly cover that topic. The example is a tone reference, not a theme. The Abe-style leak (a sample phrase from a few-shot becoming a template in real output) is exactly what this guardrail prevents.
 
 **AI tells to kill (in the writing itself, not the structure):**
 - Em-dashes used structurally inside sentences (— like this —). Use sparingly, max 2-3 per pulse. Commas and periods are almost always better.
@@ -1286,12 +1290,14 @@ Those are corpus meta-narration — they describe the SOURCES rather than make a
 
 No jargon, no number cram. Plain words. One sentence.
 
-Examples (note these are *patterns to vary from*, not templates to copy — pick whatever theme TODAY's corpus actually argues):
-- *The yen carry trade has been pricing structural stability, and we think it's wrong.*
-- *China's stimulus memo hit the tape, but the credit transmission lag is months.*
-- *European industrial earnings are no longer a forecast — guides are confirming the rebuild.*
-- *Apple's foundry pivot is the single-stock story this market is mispricing.*
-- *Norges Bank cut while the Riksbank held — that gap is the trade.*
+Examples (SHAPE patterns to vary from — these are deliberately wide-ranging across asset classes / regions / themes so no single one becomes a template. Pull whatever theme TODAY's corpus actually argues, not any of the topics below):
+- *[Asset / region / cohort + a structural assumption it's been pricing + your contrarian read on that assumption.]*
+- *[A policy or stimulus event + a mechanism reason its market-pricing impact is delayed or distorted.]*
+- *[A sector signal (earnings / guides / capex / flows) + the regime shift it's confirming.]*
+- *[A single-stock or single-asset story + the framing that says the market is pricing it wrong.]*
+- *[A divergence between two related actors (central banks, sectors, regions) + the trade implied by closing that gap.]*
+
+**HARD RULE.** Do NOT name Apple, China, Norges Bank, yen carry, European industrials, the Riksbank, or any other topic from the shape examples above unless TODAY's PDFs explicitly cover them. The examples are STRUCTURAL — they show you the punchline shape. Today's themes come from today's actual research, not from this list.
 
 ❌ Bad (corpus meta-narration, not a call):
 - *"Banks are debating whether the central bank will deliver effective easing."* — describes the corpus state, doesn't take a side
@@ -1304,7 +1310,7 @@ If you're tempted to write "banks are debating..." or "the question is whether..
 
 **Part A — Bulleted data block (3-5 bullets, NO subheading or label).** Each bullet is one specific number with attribution AND its significance explained — what does this data point MEAN for a trader. The bullets appear right after the italicized punchline with no header or "What we're seeing:" label above them.
 
-**The "so what" rule (binding):** every bullet must answer "so what" right after stating the data point. The bullet is incomplete if it lists only the figure. The reader is a smart trader, not a finance professional — they shouldn't have to infer why a number matters. A bullet that says "Goldman raised 2026 capex to $755B" is a research-desk shorthand; a bullet that says "Goldman raised 2026 capex to $755B, +83% YoY and now equal to 100% of operating cash flow — cash that used to fund buybacks is now buying GPUs" is analysis. The reader walks away with a mental model, not just a number.
+**The "so what" rule (binding):** every bullet must answer "so what" right after stating the data point. The bullet is incomplete if it lists only the figure. The reader is a smart trader, not a finance professional — they shouldn't have to infer why a number matters. A bullet that just states a number (e.g., a bank raised an estimate to some level) is research-desk shorthand; the same bullet WITH its mechanism implication (what the YoY change is, what it crowds out, what it forces — pulled from THIS report's actual framing) is analysis. The reader walks away with a mental model, not just a number. Use TODAY's actual numbers and TODAY's report-supplied mechanisms — don't invent the "so what" if the report doesn't supply one.
 
 Significance can be:
 - **A comparison** (vs estimate, vs prior, vs historical norm)
@@ -1606,7 +1612,7 @@ You may introduce specific numeric facts, vessel/event names, or quoted figures 
 
 If a specific (named vessels, ETF flows like "$1B in a single day", named-source data points) is NOT in either, do NOT introduce it. Plausible-sounding specifics are exactly what LLMs fabricate. The 2026-05-08T23-33-34Z pulse had EDIT introduce "Ocean Koi tanker" and "Roundhill Memory ETF added $1B in a single day" — both might have been from Finnhub news, but artifacts couldn't verify them, and either way an undocumented EDIT fact-injection is a credibility risk. Trader sees one fabricated specific, stops trusting the product.
 
-If you want to ADD context and the fact isn't in your inputs, REPHRASE around what you DO have. "Iran seized an oil tanker in the Strait of Hormuz" (general) is fine if the corpus said that; "Iran seized the Ocean Koi tanker" (specific) requires the corpus or live news to have named the vessel.
+If you want to ADD context and the fact isn't in your inputs, REPHRASE around what you DO have. Stating a general claim that the corpus supports (a geopolitical action, a sector move, a positioning shift) is fine. Adding specific named details on top (a vessel name, a hedge fund name, a precise dollar flow) is only allowed if the corpus or live news has those specifics. Generalize when supporting evidence is general; specify only when specifics are sourced.
 
 **FINANCIAL RATIO PRECISION (binding — anti-regression):**
 
@@ -1704,17 +1710,17 @@ Reserve the full *"$TICKER +X% to $Z"* form for the 1-2 most-narratively-importa
 
 One bullet per high-impact driver. Each bullet: lead with a bold hook (the event/data/news), then 1-2 sentences covering the **takeaway** (hot vs cool, hawkish vs dovish, beat vs miss) and the **impact** (what markets did or what it implies). Keep bullets tight — 2 sentences max each.
 
-Example format:
+Example format (SHAPE only — do NOT carry any of these specific events / numbers / actors into today's pulse; they're illustrative bullets for a hypothetical day):
 
 ```
-- **Retail Sales hot.** Headline +1.7% MoM (est. +1.4%), Control Group +0.7% (est. +0.2%). Consumer is still spending, which cuts against the "slowdown is here" story and bleeds into rates and the dollar.
-- **Warsh confirmation hearing (10 AM ET).** Testimony centered on balance sheet policy; he left QE on the table if needed. Market read him as dovish-optionality, not committed dove, which kept positioning cautious.
-- **Iran rejects U.S.-led talks,** calling the port blockade an "act of war." Trump later floated a ceasefire extension pending Iran's proposal. Shipping still halted through Hormuz, which is what $USO is pricing.
-- **Amazon GLP-1 launch** noted but did not move prices.
+- **[Macro data release].** Headline `<actual>` vs (est. `<estimate>`), with the relevant sub-component vs its estimate. One sentence on what it confirms or breaks, and what asset class bleeds it absorbs first.
+- **[Fed-speaker event or central-bank action] (time-of-day ET).** What the speaker said + how markets read it (dovish / hawkish / mixed-signal). One sentence on the rates / dollar / risk-asset response.
+- **[Geopolitical / news event],** plus one direct quote or claim from the event. One sentence on the cross-asset stake (which ticker / commodity / pair is pricing it).
+- **[Single-stock or sector catalyst]** noted but did not move prices [OR did move it +/-X%].
 ```
 
-Bad (vague bullet): *"- Investors digested Warsh's hearing where his balance sheet stance sparked debate."*
-Good (specific bullet): *"- **Warsh confirmation hearing (10 AM ET).** He signaled QE is back on the table if needed. Markets read him as net dovish — $TLT higher, dollar softer."*
+Bad (vague bullet): *"- Investors digested the Fed-speaker hearing where the balance sheet stance sparked debate."*
+Good (specific bullet, shape only): *"- **[Speaker] confirmation hearing (10 AM ET).** They signaled `<actual position they took on the policy lever>` is back on the table if needed. Markets read them as net `<dovish/hawkish>` — `<asset>` higher, `<asset>` softer."*
 
 Target total RECAP length: ~200-250 words (lede + 3-5 bullets).
 
