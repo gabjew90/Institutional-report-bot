@@ -963,19 +963,17 @@ async def _generate_profile(
         ],
         str | None,
     ]:
-        # Text-only path hardcodes "gemini-3.1-flash-lite-preview" —
-        # the only model verified to produce full 2400-char structured
-        # profile outputs. The GA "gemini-3.1-flash-lite" returns 4-char
-        # garbage for the backfill's full-context prompts despite working
-        # fine with simple prompts.
-        #
-        # Config kept to the MINIMAL set that worked in the early runs
-        # (bhp99ej9k @ 03:01 UTC produced full 2400-char profiles):
-        # temperature + max_output_tokens + response_mime_type. NO
-        # response_schema, NO thinking_config, NO safety_settings.
-        # Each of those was added to fix narrower bugs and one (or some
-        # combination) was suppressing all visible output.
-        text_model = "gemini-3.1-flash-lite-preview"
+        # 2026-05-28: switched from hardcoded
+        # "gemini-3.1-flash-lite-preview" to settings.gemini_model (now
+        # defaults to GA "gemini-3.1-flash-lite"). Earlier history
+        # claimed the GA model returned 4-char garbage for long
+        # prompts — re-tested in prod on 2026-05-28 with the actual
+        # profile config (16K output tokens, response_schema,
+        # safety_settings, thinking MINIMAL) and both GA and preview
+        # produced full output. The -preview suffix is a moving target
+        # that Google can change without notice; the GA model is the
+        # safer default for everyone-the-same.
+        text_model = settings.gemini_model
         resp = await gemini_client.aio.models.generate_content(
             model=text_model,
             contents=prompt,

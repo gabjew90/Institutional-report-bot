@@ -59,8 +59,8 @@ OUTPUT_CHANNEL_NAME = "test-channel"
 LOOKBACK_DAYS = 7
 RECENT_CHAIN_SIZE = 5  # number of prior messages to include for chain context
 CLOSED_LOOKBACK_HOURS = 24  # how far back to include closed positions
-MODEL = "gemini-3.1-flash-lite-preview"  # text-tier; will switch to vision-capable for image posts
-VISION_MODEL = "gemini-3.1-flash-lite"   # GA variant — needed for image attachments
+MODEL = "gemini-3.1-flash-lite"          # GA — unified across all bot paths
+VISION_MODEL = "gemini-3.1-flash-lite"   # same GA model; supports vision too
 THROTTLE_SECONDS = 1.5  # delay between Discord posts to test-channel
 
 

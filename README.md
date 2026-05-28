@@ -211,7 +211,7 @@ If you want to change how the embed LOOKS (more pulses on a page, different colo
 
 Required env vars:
 - `DROPBOX_APP_KEY`, `DROPBOX_APP_SECRET`, `DROPBOX_REFRESH_TOKEN`, `DROPBOX_FOLDER_PATH=/Current`
-- `GOOGLE_API_KEY`, `GEMINI_MODEL=gemini-3.1-flash-lite-preview`, `GEMINI_TRIAGE_MODEL=gemini-3.1-flash-lite-preview`
+- `GOOGLE_API_KEY`, `GEMINI_MODEL=gemini-3.1-flash-lite`, `GEMINI_TRIAGE_MODEL=gemini-3.1-flash-lite`
 - `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` (comma-separated list)
 - `FINNHUB_API_KEY` (with lowercase `i` typo on Railway — pydantic-settings is case-insensitive, don't fix cosmetically)
 - `COMMAND_PASSWORD=jamalbot`

@@ -131,7 +131,7 @@ Multimodal was tried and dropped. Text in research adequately summarizes chart t
 
 ### 4.4 AI model
 
-**Google Gemini 3.1 Flash Lite Preview** (`google-genai` SDK). Same model for triage, deep analysis, and synthesis. Cost: ~$0.10/M input, $0.40/M output. **Not** Anthropic/Claude — that's the routine layer (next stage).
+**Google Gemini 3.1 Flash Lite** (`google-genai` SDK). Same model for triage, deep analysis, and synthesis. Cost: ~$0.10/M input, $0.40/M output. **Not** Anthropic/Claude — that's the routine layer (next stage).
 
 ---
 
@@ -504,7 +504,7 @@ Timestamp format normalization: SQLite's `datetime('now')` uses space separator;
 
 Key env vars:
 - `DROPBOX_APP_KEY`, `DROPBOX_APP_SECRET`, `DROPBOX_REFRESH_TOKEN`, `DROPBOX_FOLDER_PATH=/Current`
-- `GOOGLE_API_KEY`, `GEMINI_MODEL=gemini-3.1-flash-lite-preview`
+- `GOOGLE_API_KEY`, `GEMINI_MODEL=gemini-3.1-flash-lite`
 - `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` (comma-separated channel IDs)
 - `FINNHUB_APi_KEY` (case-insensitive due to pydantic-settings)
 - `COMMAND_PASSWORD=jamalbot`

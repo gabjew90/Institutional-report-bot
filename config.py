@@ -33,8 +33,14 @@ class Settings(BaseSettings):
     # GOOGLE_API_KEY); free-tier is 5000 grounded prompts/month, shared
     # across the Google AI Studio account.
     ask_daily_quota_per_user: int = 40
-    gemini_model: str = "gemini-3.1-lite"
-    gemini_triage_model: str = "gemini-3.1-lite"
+    # gemini-3.1-flash-lite (GA). Previously defaulted to a non-existent
+    # "gemini-3.1-lite" alias — that name 404s on the v1beta API; only
+    # downstream paths that overrode via env var were working. Preview
+    # variants (-preview suffix) are deprecated for our use case and
+    # have historically introduced silent regressions when Google
+    # rolls them forward.
+    gemini_model: str = "gemini-3.1-flash-lite"
+    gemini_triage_model: str = "gemini-3.1-flash-lite"
     gemini_max_tokens: int = 4096
     gemini_max_concurrent: int = 5
 
@@ -216,14 +222,14 @@ class Settings(BaseSettings):
     # tickers, dollar PnLs, and positions from screenshots that the
     # text-only path leaves as generic "[image]" markers.
     #
-    # DISABLED 2026-05-18 — diagnostic A/B showed that the GA model
-    # gemini-3.1-flash-lite is strictly worse at producing long
-    # structured output than gemini-3.1-flash-lite-preview. With vision
-    # ON (GA model) we got 200-1000 char truncated profiles. With vision
-    # OFF (preview model) we get full 2400-char profiles. Keeping vision
-    # off until a vision-capable model that ALSO produces full output
-    # is identified. The image-OCR code path stays intact in case it's
-    # re-enabled later.
+    # DISABLED 2026-05-18 — vision A/B showed truncation issues.
+    # Note: the original comment claimed gemini-3.1-flash-lite (GA) was
+    # strictly worse than -preview for long structured output; that was
+    # corrected on 2026-05-28 after re-testing both models. Both produce
+    # full 8K-char structured output now. The vision-OFF preference
+    # remains for cost / token-output simplicity, NOT because the GA
+    # model is broken. The image-OCR code path stays intact in case
+    # it's re-enabled later.
     profile_image_ocr_enabled: bool = False
     profile_image_cap: int = 20
     # Vision-capable model — currently UNUSED (profile_image_ocr_enabled

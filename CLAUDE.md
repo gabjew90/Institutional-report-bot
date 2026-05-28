@@ -35,7 +35,7 @@ discord_bot/sender.py — posts to every channel in DISCORD_CHANNEL_ID
 
 ## AI Model
 
-**Google Gemini 3.1 Flash Lite Preview** (`google-genai` SDK). Env var `GEMINI_MODEL=gemini-3.1-flash-lite-preview`. Same model for triage, deep analysis, synthesis. NOT Anthropic/Claude.
+**Google Gemini 3.1 Flash Lite** (`google-genai` SDK). Env var `GEMINI_MODEL=gemini-3.1-flash-lite`. Same model for triage, deep analysis, synthesis. NOT Anthropic/Claude.
 
 ## Key Design Decisions
 
@@ -171,7 +171,7 @@ Alternative for log inspection: user can run `/status` in Discord which surfaces
 Key ones set on `worker` service:
 - `DROPBOX_APP_KEY`, `DROPBOX_APP_SECRET`, `DROPBOX_REFRESH_TOKEN` — Dropbox OAuth2
 - `DROPBOX_FOLDER_PATH=/Current`
-- `GOOGLE_API_KEY`, `GEMINI_MODEL=gemini-3.1-flash-lite-preview`, `GEMINI_TRIAGE_MODEL=gemini-3.1-flash-lite-preview`
+- `GOOGLE_API_KEY`, `GEMINI_MODEL=gemini-3.1-flash-lite`, `GEMINI_TRIAGE_MODEL=gemini-3.1-flash-lite`
 - `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` (comma-separated list of channel IDs)
 - `FINNHUB_APi_KEY` (note lowercase 'i' typo — pydantic-settings is case-insensitive so it works; don't fix cosmetically without reason)
 - `COMMAND_PASSWORD=jamalbot`
