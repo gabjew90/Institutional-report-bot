@@ -1329,9 +1329,10 @@ async def run(days: int, channels: list[str]) -> None:
                             flush=True,
                         )
 
-            # After all upserts: recompute ordinal trader_rank across all
-            # profiled users (1 = highest score). Cheap, single pass.
-            db.recompute_trader_ranks_on_profiles()
+            # trader_rank is now computed on-read via
+            # db.get_global_trader_ranks() — no batch recompute needed.
+            # See db.recompute_trader_ranks_on_profiles docstring for
+            # the deprecation note.
 
             print(f"\nProfiled {len(eligible)} users.", flush=True)
 

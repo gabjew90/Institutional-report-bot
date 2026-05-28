@@ -225,8 +225,12 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         -- a complete picture — slur_count is a regex-based floor signal,
         -- racial_humor_score is the composite.
         --
-        -- trader_score: 0-100 LLM-assessed skill score. trader_rank is
-        -- the derived ordinal across all profiled users (1 = best).
+        -- trader_score: 0-100 LLM-assessed skill score.
+        -- trader_rank: DEPRECATED stored column. Now computed on-read
+        -- via get_global_trader_ranks() so it's always fresh. Old
+        -- values may still linger in this column from past deploys;
+        -- ignore them — the upsert path no longer touches this column
+        -- and the live computation is the source of truth.
         -- trader_rationale: one-line LLM justification for the score.
         CREATE TABLE IF NOT EXISTS user_profiles (
             user_id INTEGER PRIMARY KEY,
@@ -1982,8 +1986,8 @@ def upsert_user_profile(
 
     Metrics (slur_count, racial_humor_score, trader_score, trader_rationale,
     slur_examples, trader_examples) are part of the profile row.
-    trader_rank is NOT set here — recompute_trader_ranks() handles ordinal
-    positions in one pass after all upserts complete.
+    trader_rank is NOT set here — it's computed on-read via
+    get_global_trader_ranks() (the stored column is deprecated).
 
     slur_examples and trader_examples are JSON-encoded list[str] payloads
     (use json.dumps in the caller). Stored as TEXT to keep schema simple.
@@ -2021,23 +2025,38 @@ def upsert_user_profile(
     conn.commit()
 
 
-def recompute_trader_ranks_on_profiles() -> None:
-    """Set trader_rank (ordinal 1=best) on user_profiles based on
-    trader_score DESC. NULL scores get NULL rank. Run after every batch
-    profile upsert so ordinals stay consistent."""
-    conn = get_connection()
-    conn.execute("UPDATE user_profiles SET trader_rank = NULL")
-    rows = conn.execute(
-        """SELECT user_id FROM user_profiles
+def get_global_trader_ranks() -> tuple[dict[int, int], int]:
+    """Compute global trader rank ordering live (1 = best). Returns
+    (rank_by_uid, total_ranked).
+
+    Replaces the previously-stored user_profiles.trader_rank column.
+    Now computed on-read so it can never drift from current
+    trader_score values — same pattern as racism_rank in
+    format_user_profiles_for_context. Cost: one SELECT across
+    user_profiles (~50-100 rows) + a Python enumerate. Sub-ms.
+
+    Tied scores break by user_id ASC (deterministic, matches the
+    previous stored ordering).
+    """
+    rows = get_connection().execute(
+        """SELECT user_id
+           FROM user_profiles
            WHERE trader_score IS NOT NULL
-           ORDER BY trader_score DESC, user_id"""
+           ORDER BY trader_score DESC, user_id ASC"""
     ).fetchall()
-    for i, r in enumerate(rows, start=1):
-        conn.execute(
-            "UPDATE user_profiles SET trader_rank = ? WHERE user_id = ?",
-            (i, r["user_id"]),
-        )
-    conn.commit()
+    rank_by_uid: dict[int, int] = {
+        int(r["user_id"]): i + 1 for i, r in enumerate(rows)
+    }
+    return rank_by_uid, len(rows)
+
+
+def recompute_trader_ranks_on_profiles() -> None:
+    """DEPRECATED — no-op kept for backward compat. trader_rank is
+    computed on-read via get_global_trader_ranks() now. The
+    user_profiles.trader_rank column is dead storage; ignore values
+    you see there from older deploys.
+    """
+    return  # no-op
 
 
 def get_user_profile(user_id: int) -> dict | None:
@@ -2206,15 +2225,20 @@ def export_user_profiles_markdown() -> str:
     from datetime import datetime, timezone
     import json as _json
     rows = get_connection().execute(
-        """SELECT display_name, username, message_count_at_update,
+        """SELECT user_id, display_name, username, message_count_at_update,
                   last_seen_message_at, datetime(updated_at) AS updated_at,
                   profile_text,
                   slur_count, racial_humor_score,
-                  trader_score, trader_rank, trader_rationale,
+                  trader_score, trader_rationale,
                   slur_examples, trader_examples
            FROM user_profiles
            ORDER BY message_count_at_update DESC"""
     ).fetchall()
+
+    # Compute trader_rank on-read across all profiled users — replaces
+    # the previously-stored trader_rank column. See
+    # get_global_trader_ranks() docstring for the deprecation note.
+    trader_rank_by_uid, trader_rank_total = get_global_trader_ranks()
 
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     lines: list[str] = [
@@ -2243,7 +2267,7 @@ def export_user_profiles_markdown() -> str:
         slur_n = r["slur_count"] or 0
         rh = r["racial_humor_score"]
         ts = r["trader_score"]
-        tr_rank = r["trader_rank"]
+        tr_rank = trader_rank_by_uid.get(int(r["user_id"]))
         tr_rationale = (r["trader_rationale"] or "").strip()
         try:
             slur_examples_list = _json.loads(r["slur_examples"] or "[]")
@@ -2279,7 +2303,7 @@ def export_user_profiles_markdown() -> str:
         if ts is not None:
             score_bits.append(f"**trader-score:** {ts}/100")
         if tr_rank is not None:
-            score_bits.append(f"**trader-rank:** #{tr_rank}")
+            score_bits.append(f"**trader-rank:** #{tr_rank}/{trader_rank_total}")
         if score_bits:
             lines.append(f"> {' · '.join(score_bits)}")
         if tr_rationale:
@@ -2408,6 +2432,12 @@ def format_user_profiles_for_context(
     racism_rank_by_uid: dict[int, int] = {uid: i + 1 for i, (uid, _) in enumerate(by_racism)}
     racism_total_in_conv = len(by_racism)
 
+    # trader_rank — GLOBAL ordering across ALL profiled users (not
+    # scoped to this conversation). Computed on-read via
+    # get_global_trader_ranks() — see that function's docstring for
+    # the deprecation note on the stored trader_rank column.
+    trader_rank_by_uid, trader_rank_total = get_global_trader_ranks()
+
     # Budget enforcement (fix #4): prioritize most-active members so the
     # heaviest yappers — most likely subjects/askers — never get cut.
     # Tail-truncate when total budget exceeded.
@@ -2452,13 +2482,17 @@ def format_user_profiles_for_context(
             )
         else:
             metric_bits.append(f"racism-rank: not in this conv's top{sub}")
-        tr = p.get("trader_rank")
+        # trader_rank — computed on-read from current trader_score
+        # values, not the (now-deprecated) stored column. Includes
+        # rank/total for the answer like "you're #7 of 32 profiled."
+        tr = trader_rank_by_uid.get(uid)
         ts_rationale = p.get("trader_rationale")
         if tr:
+            base = f"trader-rank #{tr}/{trader_rank_total}"
             if ts_rationale:
-                metric_bits.append(f"trader-rank #{tr} ({ts_rationale})")
+                metric_bits.append(f"{base} ({ts_rationale})")
             else:
-                metric_bits.append(f"trader-rank #{tr}")
+                metric_bits.append(base)
         else:
             metric_bits.append("trader-rank: not scored")
         metrics_line = " · ".join(metric_bits)
