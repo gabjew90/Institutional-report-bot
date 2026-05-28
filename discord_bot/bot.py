@@ -2531,12 +2531,26 @@ def create_bot() -> commands.Bot:
         for mention in (f"<@{bot.user.id}>", f"<@!{bot.user.id}>"):
             content = content.replace(mention, "")
         question = content.strip()
+        # If the user just tagged the bot with NO question text but
+        # the message is a reply or a forward, treat the referenced
+        # content as the implicit subject and ask the bot to weigh in.
+        # Without this, a "@bot" reply with no comment hits the
+        # "Mention me with a question" wall even though there's
+        # clearly something to engage with (the parent message or
+        # forwarded post). The default prompt nudges the bot to
+        # respond ABOUT the referenced content; the reply/forward
+        # resolution later in this handler injects the actual content.
         if not question:
-            await message.reply(
-                "Mention me with a question and I'll search the web for you.",
-                mention_author=False,
-            )
-            return
+            has_reference = bool(getattr(message, "reference", None))
+            has_snapshot = bool(getattr(message, "message_snapshots", None))
+            if has_reference or has_snapshot:
+                question = "Weigh in on this."
+            else:
+                await message.reply(
+                    "Mention me with a question and I'll search the web for you.",
+                    mention_author=False,
+                )
+                return
         try:
             async with message.channel.typing():
                 chat_context, chat_author_ids = await _fetch_chat_context(
