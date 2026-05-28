@@ -470,6 +470,13 @@ Read the user's actual chat and place a fair score for where they sit as a trade
 - **75-89:** Chat reads like an actually-good trader — sharp macro takes, calibrated conviction, owns misses cleanly, sustained quality across the window. The chatter base alone is high.
 - **90-100:** Chat reads like a top-of-room trader — repeatable framework, others openly tail, room books the calls. Rare; chatter alone rarely justifies this.
 
+**The structured WIN RATE in the points ledger above is chatter-base evidence, not just ceiling evidence.** A user can sound confident in 12,000 chat messages and still be a bag-holder if their actual win rate over the documented entries is low. The chat tone alone is not a reliable signal of trader quality when the trade outcomes contradict it.
+
+Specifically:
+- **Win rate < 50% over ≥5 decided entries:** bag-holder signal. The chatter base MUST drop into 40-59 territory regardless of how the chat sounds. A loud bag-holder who posts every entry doesn't get the same chatter base as a quiet trader with a 70% win rate.
+- **Win rate ≥ 65% over ≥5 decided entries:** strong-edge signal. Chatter base should sit in 75-89 territory if the chat supports it. The receipt cadence + win rate certify edge that the chat tone alone could not.
+- **Fewer than 5 decided entries:** sample too small; read chatter base from chat tone + the available trade outcomes without anchoring hard on the ratio.
+
 **Honesty modifier (±10) applies on the chatter layer.** Inflate or deflate the base read based on what the chat shows:
 - **+3 to +5:** Self-aware about losses; owns misses without crisis language; doesn't bury bad trades behind vague hedging.
 - **−5 to −10:** Gloat-loud / complain-vague asymmetry. Loud about wins, evasive about losses. Bag-holding language elsewhere while talking sharp in chat. Visible deception drags the base down.
@@ -478,12 +485,12 @@ Apply this modifier to your initial chatter base BEFORE applying the receipts ca
 
 **Layer 2 — Receipts ceiling (caps how high the base can land).**
 
-The structured 7-DAY POINTS LEDGER above is computed from analyst_trades — every documented entry, close, and standalone screenshot this user posted in alert channels or gain-loss-porn over the last 7 days, point-scored as:
+The structured 7-DAY POINTS LEDGER above is computed from analyst_trades. The point spec (explicit):
 
-- **+5 per entry posted AND closed for a win** (the strongest evidence form — prospective commitment + winning outcome)
-- **+3 per entry posted AND closed for a loss** (still strong — commitment + transparency on the outcome)
-- **+3 per entry posted with no close after 3-day grace** (commitment with the outcome inferred as loss for points purposes)
-- **+1 per standalone close-only screenshot** (a P&L receipt without the prospective entry — wins-only screenshotters live here)
+- **+3 per entry posted (automatic).** Posting an entry is structural commitment — it's published before the outcome is known. The +3 lands the moment the entry is posted, regardless of how it eventually resolves.
+- **+5 if that entry's position closes for a gain in the window** (the +3 upgrades to +5 — net +2 bonus for the actual win).
+- **Loss / still-open / aged-out all stay at +3.** Posting a losing entry doesn't subtract from the commitment +3; the commitment was real. Only a winning close adds the edge bonus.
+- **+1 per standalone close-only screenshot** (P&L card with no matching entry in the window — receipt of outcome without commitment).
 
 The points total maps to a ceiling on `trader_score`:
 
@@ -772,23 +779,56 @@ def _format_points_block(user_id: int) -> str:
     """Render the user's 7-day rolling 1/3/5 points ledger + the receipts
     ceiling it implies. This is the certification layer in the new
     chatter-base-×-receipts-ceiling rubric.
+
+    Also surfaces the WIN RATE prominently — a sub-50% win rate over a
+    meaningful sample is bag-holder signal that the chatter base layer
+    must factor in, regardless of how confident the chat tone sounds.
     """
     ledger = db.compute_member_points(int(user_id), days=7)
     ceiling = db.receipts_ceiling_from_points(ledger["points"])
+    wr = ledger.get("win_rate_pct")
+    decided = ledger.get("decided") or 0
+    if wr is None:
+        wr_str = "n/a (no decided entries in window)"
+        wr_flag = ""
+    else:
+        wr_str = (
+            f"{wr}% ({ledger['entries_won']} wins / {decided} decided — "
+            f"still-open entries excluded)"
+        )
+        # Flag bag-holder pattern: <50% win rate over ≥5 decided entries
+        # is bag-holder signal that should drag chatter base down hard.
+        if decided >= 5 and wr < 50:
+            wr_flag = (
+                " ← BAG-HOLDER FLAG: sub-50% over meaningful sample. "
+                "Chatter base must reflect this regardless of chat tone."
+            )
+        elif decided >= 5 and wr >= 65:
+            wr_flag = (
+                " ← STRONG-EDGE FLAG: high win rate over meaningful "
+                "sample. Chatter base should reflect real edge."
+            )
+        else:
+            wr_flag = ""
     lines = [
         f"7-DAY POINTS LEDGER (rolling — receipts certify edge):",
-        f"  - Entry posted + closed for a win  ({ledger['entries_won']} ×  5 pts)  =  "
+        f"  - Entry posted, position closed for a WIN  "
+        f"({ledger['entries_won']} ×  5 pts)  =  "
         f"{ledger['entries_won'] * 5} pts",
-        f"  - Entry posted + closed for a loss ({ledger['entries_lost']} ×  3 pts)  =  "
-        f"{ledger['entries_lost'] * 3} pts",
-        f"  - Entry posted + aged-out (no close after 3d grace)"
-        f" ({ledger['entries_aged_out']} ×  3 pts)  =  "
-        f"{ledger['entries_aged_out'] * 3} pts",
-        f"  - Standalone close-only / P&L screenshot"
-        f" ({ledger['screenshots']} ×  1 pt)   =  {ledger['screenshots']} pts",
+        f"  - Entry posted, NOT won (loss / still-open / aged-out — all"
+        f" the same +3)  ({ledger['entries_unwon']} ×  3 pts)  =  "
+        f"{ledger['entries_unwon'] * 3} pts",
+        f"  - Standalone close-only / P&L screenshot (no entry)  "
+        f"({ledger['screenshots']} ×  1 pt)   =  {ledger['screenshots']} pts",
         f"",
         f"TOTAL POINTS: {ledger['points']}",
+        f"WIN RATE: {wr_str}{wr_flag}",
         f"IMPLIED RECEIPTS CEILING: {ceiling}",
+        f"",
+        f"(Spec: entry posted = automatic +3. Upgrades to +5 if the same"
+        f" position closes for a gain in the window. Loss / still-open"
+        f" / aged-out all stay at +3 — the +3 is for the commitment;"
+        f" only a winning close adds the +2 edge bonus.)",
         f"",
         f"(Tier table: 0 pts → cap 65; 1-4 → 70; 5-9 → 75; "
         f"10-19 → 85; 20-29 → 92; 30+ → 100.)",

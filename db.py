@@ -3506,28 +3506,38 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
     Both count toward the trader's points; the only distinction in the
     ledger is the source label.
 
-    Point values per trade event:
-        +5 — Entry posted AND close posted in window, gain_pct > 0 (win)
-        +3 — Entry posted AND close posted in window, gain_pct ≤ 0 (loss)
-        +3 — Entry posted, no close in window AND entry is older than the
-             grace window (3 days) — resolved as loss for points purposes
+    Point values per trade event (matches the user's spec exactly —
+    "entry is automatic 3, becomes 5 if the same position closes
+    for a gain"):
+
+        +5 — Entry posted AND the position later closes for a gain
+             (the +3 entry award upgrades to +5 on the winning close)
+        +3 — Entry posted, position did NOT close for a gain in the
+             window. Covers three sub-cases that all score the same:
+               • Entry + close-loss (gain_pct ≤ 0)
+               • Entry + no close yet (still open, any age)
+               • Entry + no close, position aged out past 7d window
+             The +3 lands the moment the entry is posted; the loss
+             or open status doesn't subtract from it. Only a winning
+             close upgrades it to +5.
         +1 — Standalone close-only / P&L screenshot (no matching entry
-             in window) — receipt of an outcome without commitment
+             in the window) — receipt of an outcome without commitment.
 
     Grouping is by (UPPER(ticker), contract_type, strike, expiry). An
     "entry" is action IN ('open', 'add'). A "close" is action='close'.
-    Trims are neither — they reduce position size without ending or
-    starting a tracked event for points purposes.
+    Trims are not closes — they're partial exits and don't upgrade
+    the entry to a win.
 
     Returns:
         {
             "points": int,            # total
             "window_days": int,
             "entries_won": int,       # +5 each
-            "entries_lost": int,      # +3 each
-            "entries_aged_out": int,  # +3 each (no close after grace)
+            "entries_unwon": int,     # +3 each — loss / open / aged-out combined
             "screenshots": int,       # +1 each (close-only)
-            "breakdown": list[dict],  # per-event detail for audit
+            "decided": int,           # won + matched-loss for win rate
+            "win_rate_pct": float|None,
+            "breakdown": list[dict],
         }
     """
     if not author_id:
@@ -3535,13 +3545,13 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
             "points": 0,
             "window_days": days,
             "entries_won": 0,
-            "entries_lost": 0,
-            "entries_aged_out": 0,
+            "entries_unwon": 0,
             "screenshots": 0,
+            "decided": 0,
+            "win_rate_pct": None,
             "breakdown": [],
         }
     cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
-    grace_cutoff = (datetime.utcnow() - timedelta(days=3)).isoformat()
     rows = get_connection().execute(
         """SELECT posted_at, action, ticker, contract_type, strike,
                   expiry, gain_pct, tracking_mode
@@ -3553,7 +3563,7 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
         (int(author_id), cutoff),
     ).fetchall()
 
-    # Group by contract key
+    # Group by contract key — one entry+close pair = one event
     groups: dict[tuple, list[dict]] = {}
     for r in rows:
         key = (
@@ -3565,52 +3575,61 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
         groups.setdefault(key, []).append(dict(r))
 
     entries_won = 0
-    entries_lost = 0
-    entries_aged_out = 0
+    entries_unwon = 0          # loss + open + aged-out — all score +3
+    matched_losses = 0         # subset of entries_unwon — used for win rate
     screenshots = 0
     breakdown: list[dict] = []
 
     for key, events in groups.items():
-        opens = [e for e in events if (e["action"] or "").lower() in ("open", "add")]
-        closes = [e for e in events if (e["action"] or "").lower() == "close"]
+        opens = [
+            e for e in events
+            if (e["action"] or "").lower() in ("open", "add")
+        ]
+        closes = [
+            e for e in events
+            if (e["action"] or "").lower() == "close"
+        ]
 
-        if opens and closes:
-            # Entry + close pair (use earliest open, latest close for outcome)
-            close = sorted(closes, key=lambda x: x["posted_at"])[-1]
-            gain = close.get("gain_pct")
-            if gain is not None and float(gain) > 0:
+        if opens:
+            # User's spec: entry posted = +3 immediately. Upgrades to
+            # +5 if any close on the same position is a win. Loss /
+            # still-open / aged-out are all unwon → stay at +3.
+            winning_close = None
+            losing_close = None
+            for c in closes:
+                g = c.get("gain_pct")
+                try:
+                    gv = float(g) if g is not None else None
+                except (TypeError, ValueError):
+                    gv = None
+                if gv is not None and gv > 0 and winning_close is None:
+                    winning_close = c
+                elif gv is not None and gv <= 0 and losing_close is None:
+                    losing_close = c
+            if winning_close is not None:
                 entries_won += 1
                 breakdown.append({
-                    "kind": "entry+close win",
+                    "kind": "entry → close win (3 upgraded to 5)",
                     "points": 5,
                     "ticker": key[0],
-                    "gain_pct": gain,
+                    "gain_pct": winning_close.get("gain_pct"),
                 })
             else:
-                entries_lost += 1
-                breakdown.append({
-                    "kind": "entry+close loss",
-                    "points": 3,
-                    "ticker": key[0],
-                    "gain_pct": gain,
-                })
-        elif opens and not closes:
-            # Entry only — check if past grace window (=> aged out as loss)
-            earliest_open = sorted(opens, key=lambda x: x["posted_at"])[0]
-            if earliest_open["posted_at"] < grace_cutoff:
-                entries_aged_out += 1
-                breakdown.append({
-                    "kind": "entry aged out (no close after 3d)",
-                    "points": 3,
-                    "ticker": key[0],
-                })
-            else:
-                # Still inside grace window — don't score yet
-                breakdown.append({
-                    "kind": "entry open (in grace window)",
-                    "points": 0,
-                    "ticker": key[0],
-                })
+                entries_unwon += 1
+                if losing_close is not None:
+                    matched_losses += 1
+                    breakdown.append({
+                        "kind": "entry → close loss (stays at 3)",
+                        "points": 3,
+                        "ticker": key[0],
+                        "gain_pct": losing_close.get("gain_pct"),
+                    })
+                else:
+                    breakdown.append({
+                        "kind": "entry posted, no close yet (3)",
+                        "points": 3,
+                        "ticker": key[0],
+                    })
         elif closes and not opens:
             # Close-only / standalone P&L screenshot (no entry in window)
             screenshots += 1
@@ -3623,17 +3642,26 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
 
     total_points = (
         entries_won * 5
-        + entries_lost * 3
-        + entries_aged_out * 3
+        + entries_unwon * 3
         + screenshots * 1
     )
+    # Win rate over DECIDED entries — wins + matched losses only.
+    # Still-open / aged-out entries are NOT decided (the trade might
+    # still close as a win); they don't enter the win-rate calc.
+    # Screenshots are excluded (outcome without commitment). The win
+    # rate informs the chatter-base layer: low win rate over a
+    # meaningful sample is bag-holder signal regardless of chat tone.
+    decided = entries_won + matched_losses
+    win_rate = round(100 * entries_won / decided, 1) if decided > 0 else None
     return {
         "points": total_points,
         "window_days": days,
         "entries_won": entries_won,
-        "entries_lost": entries_lost,
-        "entries_aged_out": entries_aged_out,
+        "entries_unwon": entries_unwon,
+        "matched_losses": matched_losses,
         "screenshots": screenshots,
+        "decided": decided,
+        "win_rate_pct": win_rate,
         "breakdown": breakdown,
     }
 
