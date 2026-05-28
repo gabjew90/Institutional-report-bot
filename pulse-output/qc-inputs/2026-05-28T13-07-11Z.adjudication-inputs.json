@@ -1,0 +1,1614 @@
+{
+ "ai capex super cycle": {
+  "theme": "ai capex super cycle",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 3,
+   "skeptical": 1,
+   "neutral": 6
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai capex super-cycle",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "This is a monumental theme that has been consistently underestimated in magnitude.",
+    "primary_instruments": [
+     "NVDA"
+    ],
+    "vs_consensus": "",
+    "evidence": "this is a monumental theme that has been consistently underestimated in magnitude"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "ai hardware momentum",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The EM Strategy team remains constructive on AI hardware despite narrowing leadership.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The EM Strategy team stays with the momentum in the AI hardware space"
+   },
+   {
+    "source": "Barclays",
+    "theme": "AI infrastructure demand",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Liquid cooling is becoming mission-critical as server power densities rise.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "liquid cooling is becoming missioncritical"
+   },
+   {
+    "source": "Barclays",
+    "theme": "Cloud security capex",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Rising capex guides due to memory costs could pressure margins.",
+    "primary_instruments": [
+     "CRWD"
+    ],
+    "vs_consensus": "",
+    "evidence": "two cloud security companies have raised capex guides"
+   },
+   {
+    "source": "Barclays",
+    "theme": "ai capex super cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US hyperscaler capex acceleration",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US hyperscaler capex acceleration"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "ai capex super cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI capex super-cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI capex super-cycle"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai capex super cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "ByteDance AI capex push",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "ByteDance AI capex push"
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "ai capex super cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "tech capex inflationary dynamics",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "tech capex inflationary dynamics"
+   }
+  ],
+  "tension_points": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "AI infrastructure demand",
+    "bull_case": "AI buildout could fundamentally change the world, similar to the internet.",
+    "bear_case": "Extreme concentration risk and potential for token cost compression to break the logic of demand expansion.",
+    "what_invalidates": ""
+   }
+  ],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.3%",
+    "metric": "Walmart basket price vs group average",
+    "context": "Lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.3%",
+    "metric": "Dollar General basket price vs group average",
+    "context": "Second lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.4%",
+    "metric": "Whole Foods basket price vs group average",
+    "context": "Most expensive in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8.8%",
+    "metric": "Albertsons basket price vs group average",
+    "context": "Higher than average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+26% y/y",
+    "metric": "Q1 earnings growth",
+    "context": "Includes 'other income' primarily reflecting private holdings."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8 weeks",
+    "metric": "S&P 500 consecutive gains",
+    "context": "Signals stretched local market technicals."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1 cent to 25 cents",
+    "metric": "NVDA dividend increase",
+    "context": "Caused a gap higher in 2028 expiry dividend swap futures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6",
+    "metric": "US Vol Panic Index",
+    "context": "Lowest level since early January; collapsed from 9.5-10 peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+5.5pts",
+    "metric": "US L/S Gross leverage",
+    "context": "Largest weekly increase in more than three years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Hedge fund portfolio weight in Semis",
+    "context": "Record level entering Q2."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+853bps",
+    "metric": "Quarterly increase in Info Tech tilts",
+    "context": "Largest quarterly increase ever."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+38%",
+    "metric": "GS AI basket YTD performance",
+    "context": "Vs +4% for SPX ex-AI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75%",
+    "metric": "DeepSeek token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99%",
+    "metric": "Xiaomi MiMo token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8B",
+    "metric": "Qwen model size",
+    "context": "Version run locally on a four-year-old MacBook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5gb",
+    "metric": "Data size",
+    "context": "Size of the model downloaded."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "61%",
+    "metric": "Probability of Strait of Hormuz traffic normalization by end of July",
+    "context": "Based on prediction markets."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "EUR13Bln",
+    "metric": "Spanish syndicated 10y SPGB issuance",
+    "context": "Books closed above 138Bln."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bp",
+    "metric": "Market expectations for ECB policy rate hikes",
+    "context": "Since the onset of the war."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20bp",
+    "metric": "Equivalent impact of tighter financial/lending conditions",
+    "context": "Estimated impact on output equivalent to 20bp of hikes."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "SNOW stock price move",
+    "context": "Post-earnings"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "31%",
+    "metric": "FY27 growth acceleration guidance",
+    "context": "Up from 29% in FY26"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "$6bn",
+    "metric": "Amazon deal value",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "Uber economic interest in Delivery Hero",
+    "context": "Up from 25%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24.99%",
+    "metric": "Uber voting rights in Delivery Hero",
+    "context": "Just below foreign investment review threshold"
+   },
+   {
+    "source_bank": "Marvell",
+    "figure": "$10bn",
+    "metric": "Custom silicon opportunity by 2028",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-281bps",
+    "metric": "Daily trading activity vs 30-day avg",
+    "context": "vs 30-day avg of -135bps"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$52bn",
+    "metric": "Net index expansion",
+    "context": "129 bonds entering vs 79 exiting."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$10.3bn/week",
+    "metric": "HG fund inflows",
+    "context": "Up 4x MoM, highest since August 2025."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "42%",
+    "metric": "Passive inflow share",
+    "context": "vs LTM average of 35%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+0.07 years",
+    "metric": "Duration extension",
+    "context": "Lowest YTD."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7bps",
+    "metric": "GPM contraction",
+    "context": "Y/Y for Consumer Products 1Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "16.3%",
+    "metric": "Soitec FY26 gross margin",
+    "context": "vs 20.2% consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15%cc",
+    "metric": "Soitec Q1'27 revenue growth guidance",
+    "context": "~4% below Bloomberg consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$303bn",
+    "metric": "MSCI rebalance total trade",
+    "context": "largest ever"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.52%",
+    "metric": "US 10Y yield",
+    "context": ""
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.5%",
+    "metric": "South Korea 7-day repo rate",
+    "context": "held steady"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2000/2200/1500",
+    "metric": "MXEF index base/bull/bear case targets",
+    "context": "Raised targets due to AI hardware momentum."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+55%",
+    "metric": "MSCI EM consensus 2026 EPS revision",
+    "context": "Attributed to accelerating growth in Korea and IT sector."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+203% yoy",
+    "metric": "Korea income growth",
+    "context": "Primary driver of EM earnings delivery."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "17%",
+    "metric": "Share of retail investors in US equity trading",
+    "context": "Declined in Q1 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100GW",
+    "metric": "2030 off-shore wind capacity target",
+    "context": "First time released by State Council in March 2026."
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "$40mn",
+    "metric": "COGS benefit from tariff refund receivable",
+    "context": "Contributed to FY4Q26 EPS beat for CPRI"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "$0.22",
+    "metric": "FY4Q26 EPS",
+    "context": "Beat consensus of $0.11"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "1875",
+    "metric": "Total companies under coverage",
+    "context": "Regulatory disclosure of coverage universe"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "15%",
+    "metric": "BMO 2027 ROE target",
+    "context": ""
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "82%",
+    "metric": "National Bank of Canada formations jump",
+    "context": "2Q26 results"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "$70B",
+    "metric": "ByteDance 2026 AI capex estimate",
+    "context": "Reported in China Brief Overnight"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "$9-10B",
+    "metric": "DoD PFAS cleanup spend opportunity",
+    "context": "Post-incineration moratorium"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "15mn",
+    "metric": "Waymo driverless AV miles in CA",
+    "context": "1Q26 data"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$805bn",
+    "metric": "2026 US hyperscaler capex",
+    "context": "Revised up from $433bn estimate a year ago."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.3tr",
+    "metric": "2028 US hyperscaler capex",
+    "context": "Projected long-term trajectory."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "+23%",
+    "metric": "2026 S&P 500 earnings growth",
+    "context": "Revised up from +17%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "+20.7%",
+    "metric": "US airfares Y/Y",
+    "context": "Through April 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.3%",
+    "metric": "Walmart basket price vs group average",
+    "context": "Lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.3%",
+    "metric": "Dollar General basket price vs group average",
+    "context": "Second lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.4%",
+    "metric": "Whole Foods basket price vs group average",
+    "context": "Most expensive in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8.8%",
+    "metric": "Albertsons basket price vs group average",
+    "context": "Higher than average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+26% y/y",
+    "metric": "Q1 earnings growth",
+    "context": "Includes 'other income' primarily reflecting private holdings."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8 weeks",
+    "metric": "S&P 500 consecutive gains",
+    "context": "Signals stretched local market technicals."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1 cent to 25 cents",
+    "metric": "NVDA dividend increase",
+    "context": "Caused a gap higher in 2028 expiry dividend swap futures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6",
+    "metric": "US Vol Panic Index",
+    "context": "Lowest level since early January; collapsed from 9.5-10 peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+5.5pts",
+    "metric": "US L/S Gross leverage",
+    "context": "Largest weekly increase in more than three years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Hedge fund portfolio weight in Semis",
+    "context": "Record level entering Q2."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+853bps",
+    "metric": "Quarterly increase in Info Tech tilts",
+    "context": "Largest quarterly increase ever."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+38%",
+    "metric": "GS AI basket YTD performance",
+    "context": "Vs +4% for SPX ex-AI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75%",
+    "metric": "DeepSeek token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99%",
+    "metric": "Xiaomi MiMo token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8B",
+    "metric": "Qwen model size",
+    "context": "Version run locally on a four-year-old MacBook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5gb",
+    "metric": "Data size",
+    "context": "Size of the model downloaded."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "61%",
+    "metric": "Probability of Strait of Hormuz traffic normalization by end of July",
+    "context": "Based on prediction markets."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "EUR13Bln",
+    "metric": "Spanish syndicated 10y SPGB issuance",
+    "context": "Books closed above 138Bln."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bp",
+    "metric": "Market expectations for ECB policy rate hikes",
+    "context": "Since the onset of the war."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20bp",
+    "metric": "Equivalent impact of tighter financial/lending conditions",
+    "context": "Estimated impact on output equivalent to 20bp of hikes."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "SNOW stock price move",
+    "context": "Post-earnings"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "31%",
+    "metric": "FY27 growth acceleration guidance",
+    "context": "Up from 29% in FY26"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "$6bn",
+    "metric": "Amazon deal value",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "Uber economic interest in Delivery Hero",
+    "context": "Up from 25%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24.99%",
+    "metric": "Uber voting rights in Delivery Hero",
+    "context": "Just below foreign investment review threshold"
+   },
+   {
+    "source_bank": "Marvell",
+    "figure": "$10bn",
+    "metric": "Custom silicon opportunity by 2028",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-281bps",
+    "metric": "Daily trading activity vs 30-day avg",
+    "context": "vs 30-day avg of -135bps"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "$40mn",
+    "metric": "COGS benefit from tariff refund receivable",
+    "context": "Contributed to FY4Q26 EPS beat for CPRI"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "$0.22",
+    "metric": "FY4Q26 EPS",
+    "context": "Beat consensus of $0.11"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "1875",
+    "metric": "Total companies under coverage",
+    "context": "Regulatory disclosure of coverage universe"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "15%",
+    "metric": "BMO 2027 ROE target",
+    "context": ""
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "82%",
+    "metric": "National Bank of Canada formations jump",
+    "context": "2Q26 results"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "$70B",
+    "metric": "ByteDance 2026 AI capex estimate",
+    "context": "Reported in China Brief Overnight"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "$9-10B",
+    "metric": "DoD PFAS cleanup spend opportunity",
+    "context": "Post-incineration moratorium"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "15mn",
+    "metric": "Waymo driverless AV miles in CA",
+    "context": "1Q26 data"
+   }
+  ]
+ },
+ "hormuz strait disruption": {
+  "theme": "hormuz strait disruption",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "hormuz strait disruption",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz disruption",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz disruption"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "hormuz strait disruption",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz energy flow disruption",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz energy flow disruption"
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "hormuz strait disruption",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz traffic normalization",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz traffic normalization"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "hormuz strait disruption",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz shipping constraints",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz shipping constraints"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$805bn",
+    "metric": "2026 US hyperscaler capex",
+    "context": "Revised up from $433bn estimate a year ago."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.3tr",
+    "metric": "2028 US hyperscaler capex",
+    "context": "Projected long-term trajectory."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "+23%",
+    "metric": "2026 S&P 500 earnings growth",
+    "context": "Revised up from +17%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "+20.7%",
+    "metric": "US airfares Y/Y",
+    "context": "Through April 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.3%",
+    "metric": "Walmart basket price vs group average",
+    "context": "Lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.3%",
+    "metric": "Dollar General basket price vs group average",
+    "context": "Second lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.4%",
+    "metric": "Whole Foods basket price vs group average",
+    "context": "Most expensive in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8.8%",
+    "metric": "Albertsons basket price vs group average",
+    "context": "Higher than average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+26% y/y",
+    "metric": "Q1 earnings growth",
+    "context": "Includes 'other income' primarily reflecting private holdings."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8 weeks",
+    "metric": "S&P 500 consecutive gains",
+    "context": "Signals stretched local market technicals."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1 cent to 25 cents",
+    "metric": "NVDA dividend increase",
+    "context": "Caused a gap higher in 2028 expiry dividend swap futures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6",
+    "metric": "US Vol Panic Index",
+    "context": "Lowest level since early January; collapsed from 9.5-10 peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+5.5pts",
+    "metric": "US L/S Gross leverage",
+    "context": "Largest weekly increase in more than three years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Hedge fund portfolio weight in Semis",
+    "context": "Record level entering Q2."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+853bps",
+    "metric": "Quarterly increase in Info Tech tilts",
+    "context": "Largest quarterly increase ever."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+38%",
+    "metric": "GS AI basket YTD performance",
+    "context": "Vs +4% for SPX ex-AI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75%",
+    "metric": "DeepSeek token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99%",
+    "metric": "Xiaomi MiMo token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8B",
+    "metric": "Qwen model size",
+    "context": "Version run locally on a four-year-old MacBook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5gb",
+    "metric": "Data size",
+    "context": "Size of the model downloaded."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "61%",
+    "metric": "Probability of Strait of Hormuz traffic normalization by end of July",
+    "context": "Based on prediction markets."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "EUR13Bln",
+    "metric": "Spanish syndicated 10y SPGB issuance",
+    "context": "Books closed above 138Bln."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bp",
+    "metric": "Market expectations for ECB policy rate hikes",
+    "context": "Since the onset of the war."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20bp",
+    "metric": "Equivalent impact of tighter financial/lending conditions",
+    "context": "Estimated impact on output equivalent to 20bp of hikes."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "SNOW stock price move",
+    "context": "Post-earnings"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "31%",
+    "metric": "FY27 growth acceleration guidance",
+    "context": "Up from 29% in FY26"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "$6bn",
+    "metric": "Amazon deal value",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "Uber economic interest in Delivery Hero",
+    "context": "Up from 25%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24.99%",
+    "metric": "Uber voting rights in Delivery Hero",
+    "context": "Just below foreign investment review threshold"
+   },
+   {
+    "source_bank": "Marvell",
+    "figure": "$10bn",
+    "metric": "Custom silicon opportunity by 2028",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-281bps",
+    "metric": "Daily trading activity vs 30-day avg",
+    "context": "vs 30-day avg of -135bps"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$52bn",
+    "metric": "Net index expansion",
+    "context": "129 bonds entering vs 79 exiting."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$10.3bn/week",
+    "metric": "HG fund inflows",
+    "context": "Up 4x MoM, highest since August 2025."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "42%",
+    "metric": "Passive inflow share",
+    "context": "vs LTM average of 35%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+0.07 years",
+    "metric": "Duration extension",
+    "context": "Lowest YTD."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7bps",
+    "metric": "GPM contraction",
+    "context": "Y/Y for Consumer Products 1Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "16.3%",
+    "metric": "Soitec FY26 gross margin",
+    "context": "vs 20.2% consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15%cc",
+    "metric": "Soitec Q1'27 revenue growth guidance",
+    "context": "~4% below Bloomberg consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$303bn",
+    "metric": "MSCI rebalance total trade",
+    "context": "largest ever"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.52%",
+    "metric": "US 10Y yield",
+    "context": ""
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.5%",
+    "metric": "South Korea 7-day repo rate",
+    "context": "held steady"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2000/2200/1500",
+    "metric": "MXEF index base/bull/bear case targets",
+    "context": "Raised targets due to AI hardware momentum."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+55%",
+    "metric": "MSCI EM consensus 2026 EPS revision",
+    "context": "Attributed to accelerating growth in Korea and IT sector."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+203% yoy",
+    "metric": "Korea income growth",
+    "context": "Primary driver of EM earnings delivery."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "17%",
+    "metric": "Share of retail investors in US equity trading",
+    "context": "Declined in Q1 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100GW",
+    "metric": "2030 off-shore wind capacity target",
+    "context": "First time released by State Council in March 2026."
+   }
+  ]
+ },
+ "us iran deal macro impact": {
+  "theme": "us iran deal macro impact",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 1,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "JPMorgan",
+    "theme": "US-Iran deal macro impact",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "While an ideal outcome, recent macro developments suggest this narrative may be too clean.",
+    "primary_instruments": [],
+    "vs_consensus": "with_consensus",
+    "evidence": "The consensus view is simple: deal closes, oil falls, inflation drops."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "us iran deal macro impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran deal negotiations",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran deal negotiations"
+   },
+   {
+    "source": "ING",
+    "theme": "us iran deal macro impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran peace deal uncertainty",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran peace deal uncertainty"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "us iran deal macro impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran interim deal framework",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran interim deal framework"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$52bn",
+    "metric": "Net index expansion",
+    "context": "129 bonds entering vs 79 exiting."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$10.3bn/week",
+    "metric": "HG fund inflows",
+    "context": "Up 4x MoM, highest since August 2025."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "42%",
+    "metric": "Passive inflow share",
+    "context": "vs LTM average of 35%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+0.07 years",
+    "metric": "Duration extension",
+    "context": "Lowest YTD."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7bps",
+    "metric": "GPM contraction",
+    "context": "Y/Y for Consumer Products 1Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "16.3%",
+    "metric": "Soitec FY26 gross margin",
+    "context": "vs 20.2% consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15%cc",
+    "metric": "Soitec Q1'27 revenue growth guidance",
+    "context": "~4% below Bloomberg consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$303bn",
+    "metric": "MSCI rebalance total trade",
+    "context": "largest ever"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.52%",
+    "metric": "US 10Y yield",
+    "context": ""
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.5%",
+    "metric": "South Korea 7-day repo rate",
+    "context": "held steady"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2000/2200/1500",
+    "metric": "MXEF index base/bull/bear case targets",
+    "context": "Raised targets due to AI hardware momentum."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+55%",
+    "metric": "MSCI EM consensus 2026 EPS revision",
+    "context": "Attributed to accelerating growth in Korea and IT sector."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+203% yoy",
+    "metric": "Korea income growth",
+    "context": "Primary driver of EM earnings delivery."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "17%",
+    "metric": "Share of retail investors in US equity trading",
+    "context": "Declined in Q1 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100GW",
+    "metric": "2030 off-shore wind capacity target",
+    "context": "First time released by State Council in March 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.3%",
+    "metric": "Walmart basket price vs group average",
+    "context": "Lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.3%",
+    "metric": "Dollar General basket price vs group average",
+    "context": "Second lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.4%",
+    "metric": "Whole Foods basket price vs group average",
+    "context": "Most expensive in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8.8%",
+    "metric": "Albertsons basket price vs group average",
+    "context": "Higher than average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+26% y/y",
+    "metric": "Q1 earnings growth",
+    "context": "Includes 'other income' primarily reflecting private holdings."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8 weeks",
+    "metric": "S&P 500 consecutive gains",
+    "context": "Signals stretched local market technicals."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1 cent to 25 cents",
+    "metric": "NVDA dividend increase",
+    "context": "Caused a gap higher in 2028 expiry dividend swap futures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6",
+    "metric": "US Vol Panic Index",
+    "context": "Lowest level since early January; collapsed from 9.5-10 peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+5.5pts",
+    "metric": "US L/S Gross leverage",
+    "context": "Largest weekly increase in more than three years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Hedge fund portfolio weight in Semis",
+    "context": "Record level entering Q2."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+853bps",
+    "metric": "Quarterly increase in Info Tech tilts",
+    "context": "Largest quarterly increase ever."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+38%",
+    "metric": "GS AI basket YTD performance",
+    "context": "Vs +4% for SPX ex-AI."
+   },
+   {
+    "source_bank": "ING",
+    "figure": "93",
+    "metric": "Eurozone economic confidence indicator",
+    "context": "Consensus forecast"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "3.3%",
+    "metric": "Core PCE YoY",
+    "context": "Expected reading"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "2.0%",
+    "metric": "Q1 2026 GDP",
+    "context": "Second reading estimate"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "\u20ac4bn",
+    "metric": "Austria 5y bond syndication size",
+    "context": "Estimated"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "\u20ac2bn",
+    "metric": "Austria 15y bond syndication size",
+    "context": "Estimated"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "\u20ac3bn",
+    "metric": "Portugal 20y bond launch size",
+    "context": "Estimated"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "\u00a31bn",
+    "metric": "UK 4y Gilt auction",
+    "context": ""
+   },
+   {
+    "source_bank": "ING",
+    "figure": "\u00a31bn",
+    "metric": "UK 13y Gilt auction",
+    "context": ""
+   },
+   {
+    "source_bank": "ING",
+    "figure": "\u20ac10.5bn",
+    "metric": "Italy BTP/CCTeu auction total",
+    "context": ""
+   },
+   {
+    "source_bank": "ING",
+    "figure": "$44bn",
+    "metric": "US 7y note auction size",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75%",
+    "metric": "DeepSeek token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99%",
+    "metric": "Xiaomi MiMo token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8B",
+    "metric": "Qwen model size",
+    "context": "Version run locally on a four-year-old MacBook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5gb",
+    "metric": "Data size",
+    "context": "Size of the model downloaded."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "61%",
+    "metric": "Probability of Strait of Hormuz traffic normalization by end of July",
+    "context": "Based on prediction markets."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "EUR13Bln",
+    "metric": "Spanish syndicated 10y SPGB issuance",
+    "context": "Books closed above 138Bln."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bp",
+    "metric": "Market expectations for ECB policy rate hikes",
+    "context": "Since the onset of the war."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20bp",
+    "metric": "Equivalent impact of tighter financial/lending conditions",
+    "context": "Estimated impact on output equivalent to 20bp of hikes."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "SNOW stock price move",
+    "context": "Post-earnings"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "31%",
+    "metric": "FY27 growth acceleration guidance",
+    "context": "Up from 29% in FY26"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "$6bn",
+    "metric": "Amazon deal value",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "Uber economic interest in Delivery Hero",
+    "context": "Up from 25%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24.99%",
+    "metric": "Uber voting rights in Delivery Hero",
+    "context": "Just below foreign investment review threshold"
+   },
+   {
+    "source_bank": "Marvell",
+    "figure": "$10bn",
+    "metric": "Custom silicon opportunity by 2028",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-281bps",
+    "metric": "Daily trading activity vs 30-day avg",
+    "context": "vs 30-day avg of -135bps"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$52bn",
+    "metric": "Net index expansion",
+    "context": "129 bonds entering vs 79 exiting."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$10.3bn/week",
+    "metric": "HG fund inflows",
+    "context": "Up 4x MoM, highest since August 2025."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "42%",
+    "metric": "Passive inflow share",
+    "context": "vs LTM average of 35%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+0.07 years",
+    "metric": "Duration extension",
+    "context": "Lowest YTD."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7bps",
+    "metric": "GPM contraction",
+    "context": "Y/Y for Consumer Products 1Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "16.3%",
+    "metric": "Soitec FY26 gross margin",
+    "context": "vs 20.2% consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15%cc",
+    "metric": "Soitec Q1'27 revenue growth guidance",
+    "context": "~4% below Bloomberg consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$303bn",
+    "metric": "MSCI rebalance total trade",
+    "context": "largest ever"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.52%",
+    "metric": "US 10Y yield",
+    "context": ""
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.5%",
+    "metric": "South Korea 7-day repo rate",
+    "context": "held steady"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2000/2200/1500",
+    "metric": "MXEF index base/bull/bear case targets",
+    "context": "Raised targets due to AI hardware momentum."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+55%",
+    "metric": "MSCI EM consensus 2026 EPS revision",
+    "context": "Attributed to accelerating growth in Korea and IT sector."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+203% yoy",
+    "metric": "Korea income growth",
+    "context": "Primary driver of EM earnings delivery."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "17%",
+    "metric": "Share of retail investors in US equity trading",
+    "context": "Declined in Q1 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100GW",
+    "metric": "2030 off-shore wind capacity target",
+    "context": "First time released by State Council in March 2026."
+   }
+  ]
+ },
+ "ecb policy tightening": {
+  "theme": "ecb policy tightening",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 0,
+   "neutral": 2
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "ECB policy tightening",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The ECB should take a cautious approach to raising rates because tighter financial conditions are already providing a drag on activity.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "consistent with our forecast for 25bp hikes in June and September"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.3%",
+    "metric": "Walmart basket price vs group average",
+    "context": "Lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.3%",
+    "metric": "Dollar General basket price vs group average",
+    "context": "Second lowest in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.4%",
+    "metric": "Whole Foods basket price vs group average",
+    "context": "Most expensive in the survey"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8.8%",
+    "metric": "Albertsons basket price vs group average",
+    "context": "Higher than average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+26% y/y",
+    "metric": "Q1 earnings growth",
+    "context": "Includes 'other income' primarily reflecting private holdings."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8 weeks",
+    "metric": "S&P 500 consecutive gains",
+    "context": "Signals stretched local market technicals."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1 cent to 25 cents",
+    "metric": "NVDA dividend increase",
+    "context": "Caused a gap higher in 2028 expiry dividend swap futures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6",
+    "metric": "US Vol Panic Index",
+    "context": "Lowest level since early January; collapsed from 9.5-10 peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+5.5pts",
+    "metric": "US L/S Gross leverage",
+    "context": "Largest weekly increase in more than three years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Hedge fund portfolio weight in Semis",
+    "context": "Record level entering Q2."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+853bps",
+    "metric": "Quarterly increase in Info Tech tilts",
+    "context": "Largest quarterly increase ever."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+38%",
+    "metric": "GS AI basket YTD performance",
+    "context": "Vs +4% for SPX ex-AI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75%",
+    "metric": "DeepSeek token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99%",
+    "metric": "Xiaomi MiMo token price cut",
+    "context": "Reported reduction in token pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8B",
+    "metric": "Qwen model size",
+    "context": "Version run locally on a four-year-old MacBook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5gb",
+    "metric": "Data size",
+    "context": "Size of the model downloaded."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "61%",
+    "metric": "Probability of Strait of Hormuz traffic normalization by end of July",
+    "context": "Based on prediction markets."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "EUR13Bln",
+    "metric": "Spanish syndicated 10y SPGB issuance",
+    "context": "Books closed above 138Bln."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bp",
+    "metric": "Market expectations for ECB policy rate hikes",
+    "context": "Since the onset of the war."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20bp",
+    "metric": "Equivalent impact of tighter financial/lending conditions",
+    "context": "Estimated impact on output equivalent to 20bp of hikes."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "SNOW stock price move",
+    "context": "Post-earnings"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "31%",
+    "metric": "FY27 growth acceleration guidance",
+    "context": "Up from 29% in FY26"
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "$6bn",
+    "metric": "Amazon deal value",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "37%",
+    "metric": "Uber economic interest in Delivery Hero",
+    "context": "Up from 25%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24.99%",
+    "metric": "Uber voting rights in Delivery Hero",
+    "context": "Just below foreign investment review threshold"
+   },
+   {
+    "source_bank": "Marvell",
+    "figure": "$10bn",
+    "metric": "Custom silicon opportunity by 2028",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-281bps",
+    "metric": "Daily trading activity vs 30-day avg",
+    "context": "vs 30-day avg of -135bps"
+   }
+  ]
+ }
+}
