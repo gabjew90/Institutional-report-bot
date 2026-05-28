@@ -246,6 +246,13 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             trader_rationale TEXT,
             slur_examples TEXT,
             trader_examples TEXT,
+            -- personal_ammo: JSON list[str] of broader weaponizable
+            -- snippets — slurs AND dumb takes AND embarrassing claims
+            -- AND boasts that aged badly AND math fails AND broken-
+            -- English moments. LLM-extracted (not regex), so it
+            -- captures content the deterministic slur_examples regex
+            -- can't. Surfaced in /ask dossier as "recent ammo".
+            personal_ammo TEXT,
             updated_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
         CREATE INDEX IF NOT EXISTS idx_user_profiles_username ON user_profiles(username);
@@ -323,6 +330,7 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         ("trader_rationale", "ALTER TABLE user_profiles ADD COLUMN trader_rationale TEXT"),
         ("slur_examples", "ALTER TABLE user_profiles ADD COLUMN slur_examples TEXT"),
         ("trader_examples", "ALTER TABLE user_profiles ADD COLUMN trader_examples TEXT"),
+        ("personal_ammo", "ALTER TABLE user_profiles ADD COLUMN personal_ammo TEXT"),
         # analyst_trades migration: add price + caller columns on existing deploys.
         ("price", "ALTER TABLE analyst_trades ADD COLUMN price REAL"),
         ("caller", "ALTER TABLE analyst_trades ADD COLUMN caller TEXT"),
@@ -1981,6 +1989,7 @@ def upsert_user_profile(
     trader_rationale: str | None = None,
     slur_examples: str | None = None,
     trader_examples: str | None = None,
+    personal_ammo: str | None = None,
 ) -> None:
     """Insert or replace a user profile. updated_at is auto-stamped.
 
@@ -1999,8 +2008,9 @@ def upsert_user_profile(
               message_count_at_update, last_seen_message_at,
               slur_count, racial_humor_score,
               trader_score, trader_rationale,
-              slur_examples, trader_examples, updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+              slur_examples, trader_examples, personal_ammo,
+              updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
            ON CONFLICT(user_id) DO UPDATE SET
              username = excluded.username,
              display_name = excluded.display_name,
@@ -2013,13 +2023,14 @@ def upsert_user_profile(
              trader_rationale = COALESCE(excluded.trader_rationale, user_profiles.trader_rationale),
              slur_examples = COALESCE(excluded.slur_examples, user_profiles.slur_examples),
              trader_examples = COALESCE(excluded.trader_examples, user_profiles.trader_examples),
+             personal_ammo = COALESCE(excluded.personal_ammo, user_profiles.personal_ammo),
              updated_at = datetime('now')""",
         (
             int(user_id), username, display_name, profile_text,
             int(message_count_at_update), last_seen_message_at,
             int(slur_count), racial_humor_score,
             trader_score, trader_rationale,
-            slur_examples, trader_examples,
+            slur_examples, trader_examples, personal_ammo,
         ),
     )
     conn.commit()
@@ -2272,7 +2283,7 @@ def export_user_profiles_markdown() -> str:
                   profile_text,
                   slur_count, racial_humor_score,
                   trader_score, trader_rationale,
-                  slur_examples, trader_examples
+                  slur_examples, trader_examples, personal_ammo
            FROM user_profiles
            ORDER BY message_count_at_update DESC"""
     ).fetchall()
@@ -2319,6 +2330,10 @@ def export_user_profiles_markdown() -> str:
             trader_examples_list = _json.loads(r["trader_examples"] or "[]")
         except Exception:
             trader_examples_list = []
+        try:
+            personal_ammo_list = _json.loads(r["personal_ammo"] or "[]")
+        except Exception:
+            personal_ammo_list = []
 
         header = f"## {dn}"
         if uname and uname.lower() != dn.lower():
@@ -2350,10 +2365,20 @@ def export_user_profiles_markdown() -> str:
             lines.append(f"> {' · '.join(score_bits)}")
         if tr_rationale:
             lines.append(f"> _{tr_rationale}_")
-        # Slur examples — surfaced so a reader can see actual usage
-        # rather than just the bare count. Limited to 3, each truncated
-        # to ~140 chars.
-        if slur_examples_list:
+        # Personal ammo — LLM-extracted weaponizable snippets (slurs +
+        # dumb takes + embarrassing claims + aged-badly boasts + math
+        # fails + broken-English moments). Replaces the narrow "recent
+        # slur usage" block. Limited to 5, each truncated to 200 chars.
+        if personal_ammo_list:
+            lines.append(">")
+            lines.append("> **Recent ammo (dumb shit / boasts / slurs):**")
+            for ex in personal_ammo_list[:5]:
+                snippet = (ex or "")[:200].replace("\n", " ").strip()
+                if snippet:
+                    lines.append(f"> - {snippet}")
+        elif slur_examples_list:
+            # Fallback for profiles that haven't been re-run since the
+            # personal_ammo field landed — show the regex slur block.
             lines.append(">")
             lines.append("> **Recent slur usage:**")
             for ex in slur_examples_list[:3]:
@@ -2548,11 +2573,29 @@ def format_user_profiles_for_context(
             trader_ex_list = _json.loads(p.get("trader_examples") or "[]")
         except Exception:
             trader_ex_list = []
+        # personal_ammo: LLM-extracted broader weaponizable snippets —
+        # slurs + dumb takes + embarrassing claims + aged-badly boasts
+        # + math fails + broken-English moments. Replaces "recent slur
+        # usage" as the primary ammo block (slur_examples regex stays
+        # as a deterministic floor signal).
+        try:
+            personal_ammo_list = _json.loads(p.get("personal_ammo") or "[]")
+        except Exception:
+            personal_ammo_list = []
 
         examples_section = ""
-        if slur_ex_list or trader_ex_list:
+        if personal_ammo_list or slur_ex_list or trader_ex_list:
             ex_lines = []
-            if slur_ex_list:
+            if personal_ammo_list:
+                ex_lines.append("  recent ammo (dumb shit / boasts / slurs):")
+                for ex in personal_ammo_list[:5]:
+                    snippet = (ex or "")[:200].replace("\n", " ").strip()
+                    if snippet:
+                        ex_lines.append(f"    · {snippet}")
+            elif slur_ex_list:
+                # Fallback: only show the regex slur examples if Gemini
+                # didn't produce personal_ammo (old profiles still have
+                # slur_examples populated; new profiles overwrite).
                 ex_lines.append("  recent slur usage:")
                 for ex in slur_ex_list[:3]:
                     snippet = (ex or "")[:140].replace("\n", " ").strip()
