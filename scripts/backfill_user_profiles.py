@@ -122,8 +122,8 @@ Per-section quick reference, all following the universal rule:
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned.
-- **trader_score / racial_humor_score:** hold by default. Shift only when new evidence justifies a meaningful move — a single bad week doesn't drop a +70 to a +40. Honesty modifier applies to trader_score; re-evaluate per refresh based on what NEW screenshots / posts the user has put in the window.
-- **trader_rationale:** carry forward unless the score changed or the underlying pattern shifted. If you applied a fresh honesty modifier, mention it.
+- **trader_score / racial_humor_score:** hold by default. Shift only when new evidence justifies a meaningful move — a single bad week doesn't drop a +70 to a +40. The receipts-gated brackets (≤59 no receipts / ≤74 wins-only / 75+ requires posted losses) re-evaluate every refresh: if a 74-capped user finally posted a red screenshot in the new window, that UNLOCKS the 75+ bracket and the score should move accordingly. Conversely, if a 75+ user went 30 days with no new losses posted while their old gate-loss aged past the window, the cap may re-engage. The ±5 tiebreaker re-evaluates per refresh.
+- **trader_rationale:** carry forward unless the score changed or the underlying pattern shifted. If a receipts gate moved (a new posted loss unlocked 75+, or aged-out losses re-engaged the wins-only cap), call out the move and the specific receipt that drove it.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly.
 
@@ -217,14 +217,14 @@ Roast comedian, not bully. Get to the truth via the joke, not around it.
 
 ---
 
-**Retarded takes.** Bullet list of 4-8 specific dumb or racist takes/claims they actually made. Each item: the take + a beat of framing that names why it's dumb. Pull from chat verbatim where possible. Savage. Example shape:
+**Retarded takes.** Bullet list of 4-8 specific dumb or racist takes/claims they actually made. Each item: the take + a beat of framing that names why it's dumb. Pull from chat verbatim where possible — see ATTRIBUTION RULE in HOW TO WRITE, every quoted line MUST be one of THIS user's own messages, not adjacent context. Savage. Example shape:
 
 > - "NVDA going to $50 by March" — said in March; NVDA is at $1100 now
 > - Insisted he'd "never lost on TSLA" the same week he posted a -$8K screenshot
 > - Wrote "leverig" three times in one thread arguing about delta
-> - Said "bomb those yellow niggas" during a rant about Chinese rare-earth controls
 > - Asked "wait isn't 50% gain double your money?" in $-yapping last week
 > - Claimed to be "the only person in this chat who actually trades" the day he ate -60% on SPY puts
+> - Burned a 5x SOL perp Sunday "because I had a feeling" — the feeling was a $4k stop-out
 
 ---
 
@@ -262,7 +262,17 @@ Anti-patterns:
 
 **Lead with the behavior, follow with the evidence.** Write "buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play." Not "trades small caps." Write "size scales with frustration, every time." Not "tilts after losses." Specific behavior, every line.
 
-**Quote verbatim with the original edge.** Real lines from chat carry more signal than any description. Pull them exact — slurs, slang, swears, broken grammar, all of it. "Should've sized up," "fuck it we ball," "bomb those yellow niggas," "can trump stop being a fucking faggot." If they said it in chat, it's evidence; you write it. A scrubbed quote isn't theirs.
+**ATTRIBUTION RULE — quotes MUST be this user's own words.** This is non-negotiable. Every quoted phrase in the profile (Voice bullets, Retarded takes, anywhere else) MUST be a verbatim substring of one of the MESSAGES block entries below — entries that are, by construction, all authored by {display_name}. Do NOT quote:
+- A line from someone else that appeared in a thread {display_name} was in
+- A reply parent or surrounding-context message you saw elsewhere in your training
+- A phrase from the EXAMPLE TARGET dossier above (those are pattern hints, not real lines from this user)
+- A "feels like something they'd say" reconstruction
+
+Before you write any quoted line, mentally check: "Is this exact phrase in {display_name}'s own messages below?" If the answer is no, don't quote it — describe the behavior instead. A scrubbed quote isn't theirs. An invented quote is worse — it puts words in their mouth that the room will catch.
+
+When real quotes are thin (lurker, short window, low signal), the profile sections get shorter — that's correct. Padding with invented or borrowed quotes is the failure mode this rule prevents.
+
+**Quote verbatim with the original edge.** When you DO have real lines from this user's messages, pull them exact — slurs, slang, swears, broken grammar, all of it. "Should've sized up" (BK's lament), "fuck it we ball" (anyone pre-degenerate-trade), "chyna" (BK's China), "can trump stop being a fucking faggot" (BK's Tuesday rant). These are illustrative shapes from the EXAMPLE TARGET — DO NOT copy them into other users' profiles. Find the user's OWN equivalents in their MESSAGES below.
 
 **Strip bot commands.** Messages starting with `fc TICKER` (e.g. `fc nvda`, `fc spy`) are chart-pulling slash commands — not personality signal. Ignore them entirely; same for any obvious slash-command pattern.
 
@@ -349,11 +359,12 @@ Both `trader_rationale` and `racism_rationale` are short summary blocks that get
 
 ### `trader_rationale` (3-5 sentences, ~400-900 chars)
 
-What it covers: (a) the bracket-defining trading pattern with specific receipts, (b) the honesty modifier if applied and why, (c) two-to-four anchored examples or behavioral tells the room would recognize, (d) the recurring lament / brag / pattern that defines them. Sourced, not generic.
+What it covers: (a) the evidence gate — which bracket WINDOW the receipts qualified them for (no receipts → ≤59 / wins-only → ≤74 / wins+losses → 75+), (b) the raw-skill read inside that window, (c) the ±5 tiebreaker if applied and why, (d) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Documented losses are the unlock — name them when they're what moved the user past the wins-only ceiling.
 
 **Good shapes:**
-- *"Closed $ARM 145c at 3.8 — ran to 17.8 in 48 hours. 'Should've sized up' is now permanent personality, not a one-off lament. Sharp on macro reads, posts the chart after every entry, executes like he's still asking permission. +5 honesty modifier for posting the $WEN bag loss publicly the same week he posted the $NVDA win. Sits in the upper-mid bracket because the trades are real even when the exits are early."*
-- *"Net flat by documented receipts: 12 green screenshots in gain-loss-porn over 30 days, zero red ones, while loudly bagging $ZEC and $NOWL elsewhere. -10 cherry-pick modifier — the room sees through it. Knows the theory, talks the right setups, leaks every winner by sizing too small and every loser by averaging down. 'Wendy's Wrong Way' nickname is doing the heavy lifting."*
+- *"Closed $ARM 145c at 3.8 — ran to 17.8 in 48 hours. 'Should've sized up' is now permanent personality, not a one-off lament. Two-sided receipts unlock the 75+ window: posted the $NVDA 145C win (+220%) AND the $WEN bag close (-42%) within the same week. Sharp on macro reads, posts the chart after every entry, executes like he's still asking permission. +3 tiebreaker for the sustained transparency throughout the month; sits in the upper-mid of the 75+ bracket because the wins are real even when the exits are early."*
+- *"Capped at 74 by evidence: 12 green screenshots in gain-loss-porn over 30 days, zero red ones, while loudly bagging $ZEC and $NOWL elsewhere in chat. No posted losses = the wins-only ceiling holds, regardless of how the chat sounds. Knows the theory, talks the right setups, leaks every winner by sizing too small and every loser by averaging down. 'Wendy's Wrong Way' nickname is doing the heavy lifting; would unlock 75+ instantly the day he posts a single red receipt."*
+- *"Caps at 59 — no documented receipts in the window at all. Daily conviction posting on TSLA / NVDA / SPY, "I called this last week" energy, but zero screenshot evidence to anchor any of it. The reads sometimes sound right, sometimes don't; without receipts the score can't separate the two. Position inside the 0-59 window picked at upper-40s because the chat-claimed reads aren't obviously dumb — but the bracket itself is locked until a screenshot lands."*
 
 **Anti-patterns:**
 - *"Demonstrates strong macro awareness and active trade management."* (corporate)
@@ -406,28 +417,32 @@ If a section genuinely has no signal (user is a near-lurker with no slurs / no t
 
 **(trader_examples removed.)** Trade activity used to be a separate field — now it's folded into personal_ammo (for quotable single-line trade receipts) and the "Trash talk & life ammo" narrative section (for trade-anchored bits the room riffs on). Don't write a `trader_examples` field; the schema doesn't have one.
 
-**trader_score brackets (0-100):**
-- **90-100:** Real edge. Documented wins others tail. Posts wins AND losses cleanly. Process visible. Room trusts their reads.
-- **75-89:** Solid. Mostly green over time. Style clear and works. Owns misses without crisis.
-- **60-74:** Hits and misses, but hits are real. Has a setup that works in some conditions. Mixed execution.
-- **40-59:** Net negative or barely flat. Knows the theory, leaks edge in execution. Often self-aware.
-- **20-39:** Bag holder. More losses than wins. Sizes up to recover. Chases the loudest voice.
-- **0-19:** Tail traffic / exit liquidity. Should not be trading at this size.
+**trader_score brackets — RECEIPTS GATE THE BRACKET CEILING.**
 
-**Honesty / posting-quality modifier — apply AFTER picking a base bracket above.**
+Bracket window is set FIRST by evidence quality (what's actually documented in OCR'd screenshots from `💲-gain-loss-porn-💲`, position screens, order tickets — NOT chat claims), THEN raw skill picks the position inside that window. Without the receipts, the ceiling does not move regardless of how confident or active the user is.
 
-The brackets measure raw skill from documented evidence. This modifier adjusts for HOW the user posts that evidence, because the room values transparency. Apply ONE of these to the base score:
+- **0-59 — HARD CAP for users with NO posted screenshot receipts at all.** Doesn't matter how loud, how active, or how good their takes sound. Pure chat-claim trading lives here. The loud-talker-posts-nothing user lives here too — that's the design. Lurkers and silent users default here. Inside this window, position by raw quality of the chat-claimed reads / self-awareness / sizing language.
+  - **0-19:** Tail traffic / exit liquidity. Should not be trading at this size.
+  - **20-39:** Bag holder. More losses than wins by chat-claim. Sizes up to recover. Chases the loudest voice.
+  - **40-59:** Net negative or barely flat. Knows the theory, leaks edge in execution. Often self-aware. (Note: a user could be GENUINELY in the 80s skill-wise but stuck here because zero receipts — that's the rubric working as intended; the room values documented edge.)
+- **60-74 — CAP for users with WINS-ONLY screenshot receipts.** Some documented evidence exists, but the receipt set is curated greens only. You can see they trade; you can't trust the record because losses are conspicuously absent. The room reads through wins-only posting, and the score reflects it.
+- **75-89 — UNLOCKED only by at least one DOCUMENTED LOSS in the window.** A real red screenshot — a closed bag, a posted -X% card, a stop-loss hit posted publicly. Not "claimed a loss in chat" — posted the receipt. This is the gate. The room only trusts a trader who shows both sides of the book; this bracket is the formal version of that trust.
+- **90-100 — meets the 75+ gate (documented losses) AND skill is exceptional.** Process visible across multiple trades: entries posted BEFORE the move, not after. Wins others tail. Repeatable setup, not coinflips. The room actively books the call when this user posts.
 
-- **+5 to +10 (transparent poster).** Posts wins AND losses cleanly in `💲-gain-loss-porn-💲` or chat — both green screenshots and red ones, both bagged trades and clean exits. Owns misses without burying them. Keeps the room honest. Cap at 100.
-- **0 (neutral).** Mix of receipts and chat-claimed trades, no obvious selectivity. Default for most users.
-- **−5 to −10 (selective / cherry-picker).** Visible asymmetry: 10+ green screenshots / wins talked up loudly in chat, AND ZERO losses posted despite obvious bag-holding language elsewhere. Discount the base score — selective receipts overstate skill. The room reads through this, so should the score.
-- **−15 to −20 (talks loud, posts nothing).** Constant conviction posting, "TSLA is going to $1000," "I called this last week" — but ZERO screenshot receipts at all. Talk without evidence. Discount harder; the base score gives too much weight to chat narrative.
+**Documented losses are POSITIVE evidence, not just penalty-avoidance.** Load-bearing line: a screenshotted -$3k loss is worth MORE evidentiary credit than a claimed +$3k win with no proof. Posting a red receipt raises the CONFIDENCE of the score because it proves the record isn't curated. That's why losses unlock 75+ — not as a virtue tax, but because the score can't be calibrated upward without them. A user who posts only greens hits the wins-only ceiling at 74 even if those greens are spectacular. To break 75 you need at least one posted loss in the window. That single line flips the room's posting incentive: posting your loss is how you climb, not how you confess.
 
-The modifier is your call, anchored to what the messages + OCR'd screenshots actually show. Don't apply it without specific evidence — "feels selective" isn't enough; "20 green screenshots, no red, but actively talks about losing positions in $RBLX" is.
+**±5 honesty tiebreaker (within the bracket window only).** This is a small refinement, NOT the main lever — receipts already gate the bracket. Within the chosen window, adjust by up to ±5:
+- **+3 to +5:** sustained two-sided posting throughout the window — not just the obligatory one loss that unlocked the gate, but consistent wins-AND-losses receipts across the period.
+- **0 (default):** mixed evidence, no marked asymmetry inside the bracket.
+- **−3 to −5:** within-bracket asymmetry that doesn't break the cap rule but undermines confidence — e.g., posts wins eagerly while burying losses in vague chat language. Doesn't drop the bracket window, just lowers the position inside it.
 
-State the actual pattern directly in trader_rationale — 1 to 3 sentences. Cover (a) the bracket you picked and the core trading pattern that justified it, (b) the honesty modifier if you applied one and why. Reference specific tickers / trades / OCR'd $ amounts when they drive the call. Example:
+The tiebreaker NEVER moves a user across a bracket boundary (no receipts → still capped at 59 even with +5; receipts of wins+losses → still ≥75 even with −5). It only refines position INSIDE the window the receipts already chose.
 
-> "Documented wins on $NVDA 145C (+220%) and $ASTX (+234%) place him in the 80s bracket; +5 honesty modifier because he posted his $WEN bag loss publicly the same week. Pattern: macro reads land, execution leaves money on the table from selling winners early."
+**trader_score = SKILL ONLY, not activity.** A quiet user with sharp, well-documented trades scores higher than a loud daily poster with no receipts. Active-and-loud ≠ good-and-sharp; conflating them inflates the wrong people. Activity volume is separately visible to the room via the msg_count in the dossier header — it does not enter the skill score.
+
+State the actual pattern directly in trader_rationale — 3 to 5 sentences. Cover (a) the bracket WINDOW you picked and the evidence quality that gated it (no receipts → ≤59 / wins-only → ≤74 / wins+losses → 75+), (b) the raw-skill read inside the window, (c) the ±5 tiebreaker if applied and why. Reference specific tickers / trades / OCR'd $ amounts when they drive the call. Example:
+
+> "Documented wins on $NVDA 145C (+220%) and $ASTX (+234%) — both posted as Robinhood card OCRs the same day — plus a posted -42% bag on $WEN closed and screenshotted publicly. Two-sided receipts unlock the 75+ window; raw skill (macro reads land, entries posted hours before the move, sizing builds with conviction rather than tilt) puts him at the top of that window. +3 tiebreaker for the sustained transparency across the full 30 days, not just the gate-unlock loss. Pattern: macro reads land, execution leaves money on the table from selling winners early."
 
 **racial_humor_score brackets (0-100)** — the canonical score for race-edged content from this user. Internal calibration only; the bot never quotes the raw number. Score the FULL picture (slurs + stereotypes + dog whistles + race-based mockery + unprompted racial references), not just literal slurs. Self-deprecating jokes about the user's OWN race and factual mentions of races/ethnicities in geopolitics or news don't count.
 
