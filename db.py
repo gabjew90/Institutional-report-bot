@@ -3001,6 +3001,61 @@ def get_latest_chat_message_posted_at(channel_id: int | None = None) -> str | No
     return row[0] if row and row[0] else None
 
 
+def search_chat_messages_for_ask(
+    keyword: str,
+    *,
+    days: int = 30,
+    username: str | None = None,
+    channel_name: str | None = None,
+    limit: int = 20,
+) -> list[dict]:
+    """Substring search across chat_messages for /ask tool-calling.
+
+    Case-insensitive LIKE on content AND image_ocr_text. Optional
+    filters narrow to a specific user (by username) or channel.
+    Returns newest-first up to `limit` rows.
+
+    Used by Gemini's function-calling tool when the asker references
+    historical chat content not present in the pre-injected
+    subject-verbatim block. Lets the model "look up" what the room
+    said about a topic / user / event without us trying to predict
+    every possible lookup at prompt-build time.
+    """
+    if not keyword or not keyword.strip():
+        return []
+    from datetime import datetime, timedelta, timezone
+    cutoff = (
+        datetime.now(timezone.utc) - timedelta(days=int(days))
+    ).isoformat()
+
+    sql_parts = [
+        """SELECT discord_message_id, author_username, author_display,
+                  channel_name, content, posted_at, image_ocr_text
+             FROM chat_messages
+            WHERE posted_at >= ?
+              AND (
+                  LOWER(COALESCE(content, '')) LIKE ?
+                  OR LOWER(COALESCE(image_ocr_text, '')) LIKE ?
+              )"""
+    ]
+    needle = f"%{keyword.lower().strip()}%"
+    params: list = [cutoff, needle, needle]
+
+    if username and username.strip():
+        sql_parts.append("AND LOWER(author_username) = ?")
+        params.append(username.strip().lower())
+    if channel_name and channel_name.strip():
+        sql_parts.append("AND channel_name = ?")
+        params.append(channel_name.strip())
+
+    sql_parts.append("ORDER BY posted_at DESC LIMIT ?")
+    params.append(int(limit))
+
+    sql = " ".join(sql_parts)
+    rows = get_connection().execute(sql, params).fetchall()
+    return [dict(r) for r in rows]
+
+
 def find_user_messages_matching(
     username: str,
     needle: str,

@@ -59,10 +59,31 @@ Every response — no exceptions, no matter the question type — is built on to
 
 1. **Google Search results** for anything factual, current, or verifiable.
 2. **Relevant user profiles** of whoever's in the conversation (especially the asker).
-3. **Previous 30 chat messages** for tone, running jokes, who's coping, who's tilting, what was just discussed.
+3. **Previous 50 chat messages** for tone, running jokes, who's coping, who's tilting, what was just discussed.
 4. **Trade-caller logs** — one block per configured caller (e.g. `ABE'S RECENT TRADES`, `BK'S RECENT TRADES`), auto-extracted from each caller's dedicated alert channel. Use the appropriate block as source of truth for any reference to that caller's positions.
 
 You don't pick and choose which context to pull from. It's all live, all the time. The weighting changes by question type, but nothing gets ignored.
+
+## TOOLS — search Google AND search this server's history
+
+You have **two** tools available. Pick which to use (or neither) based on the question shape:
+
+- **Google Search (grounding)** — for current/external facts: stock prices, news, sports scores, public records, anything you'd Google. Default for Type 1 factual questions. Auto-cited via the wrapper's sources footer.
+- **`search_chat_messages(keyword, days, username?, channel_name?)`** — for THIS server's chat history. Use ONLY when the asker references something the room discussed in the past that you don't already have in your pre-injected blocks (Recent channel chat covers only the last 50 msgs of THIS channel; subject-verbatim covers up to 25 msgs of users explicitly @-mentioned in the question). Returns up to 20 matching messages from the DB.
+
+**When to call `search_chat_messages`:**
+- "Did we ever talk about CRWV?" / "What did the room think about Powell's speech?" — broad historical lookup
+- "What was that trade @BK posted last Wednesday?" — past trade not in current chat
+- "Has @kloh ever said anything about Tesla?" — historical opinion lookup
+- Anything where the asker is referencing past room knowledge you don't see in pre-injected context
+
+**When NOT to call it:**
+- The answer is in the pre-injected blocks (WHO'S TALKING / caller logs / recent chat / subject-verbatim) — just use those
+- The question is about current/external facts — use Google Search instead
+- Generic words like "the" or "stock" — the keyword needs to be specific to be useful
+- You're guessing — don't call it on a hunch; only when you have a clear keyword
+
+When you do call it, integrate the results naturally — "kloh's been bearish on TSLA for weeks, called it 'cope longs' on May 15" — not "I searched and found...". Treat the search results the same way you treat the recent-chat block: as something you just know.
 
 ---
 
@@ -903,6 +924,156 @@ async def _resolve_ocr_targets(
 _OCR_INLINE_TRUNCATE = 800
 
 
+# ─────────────────────────────────────────────────────────────────────────
+#  /ask Gemini tool-calling: chat_messages history search
+# ─────────────────────────────────────────────────────────────────────────
+#
+# Gemini's function-calling lets the model decide AT INFERENCE TIME to
+# query the chat_messages DB for historical content not pre-injected
+# into the prompt (subject-verbatim block only covers 25 msgs per
+# explicitly-mentioned user; recent-channel-chat block only covers
+# the last 50 msgs / 24h of THIS channel).
+#
+# Flow:
+#   1. We declare the `search_chat_messages` function in the tools list
+#   2. Gemini decides whether to call it based on the question shape
+#      ("did the room discuss CRWV last week", "what did we say about
+#      Powell", etc.)
+#   3. On a function_call response, we execute the search against the
+#      local SQLite chat_messages table
+#   4. Send the results back as a function_response part
+#   5. Gemini composes the final text answer using the results
+#
+# Capped at 3 tool-calling iterations per /ask to prevent runaway loops.
+# Each search returns up to 20 matching rows.
+_CHAT_SEARCH_MAX_ROUNDS = 3
+_CHAT_SEARCH_RESULT_LIMIT = 20
+
+
+def _build_chat_search_tool():
+    """Construct the search_chat_messages FunctionDeclaration for the
+    Gemini tools list. Lazy because google.genai.types import is heavy
+    and we don't want module-load side effects."""
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="search_chat_messages",
+                description=(
+                    "Search this Discord server's chat history for "
+                    "messages containing a keyword. Use this ONLY when "
+                    "the asker references something the room discussed "
+                    "in the past that you don't already have in your "
+                    "pre-injected context (Recent channel chat covers "
+                    "only the last 50 msgs / 24h of THIS channel; "
+                    "subject-verbatim covers up to 25 msgs per user "
+                    "explicitly mentioned in the question). Returns up "
+                    "to 20 matching messages with author, channel, "
+                    "timestamp, and content. Do NOT call this for "
+                    "current events that need Google Search, or for "
+                    "anything already visible in your pre-injected "
+                    "blocks."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "keyword": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Substring to match (case-insensitive) "
+                                "against message content AND OCR'd "
+                                "image text. Be SPECIFIC — 'CRWV' or "
+                                "'powell speech', not generic words "
+                                "like 'the' or 'stock'."
+                            ),
+                        ),
+                        "days": types.Schema(
+                            type=types.Type.INTEGER,
+                            description=(
+                                "How many days back to search. "
+                                "Default 30. Hard cap 180 (the chat "
+                                "retention window)."
+                            ),
+                        ),
+                        "username": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Optional. Scope the search to this "
+                                "user's messages only (use their "
+                                "Discord username, not display name)."
+                            ),
+                        ),
+                        "channel_name": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Optional. Scope to a specific channel "
+                                "name (e.g. '💬-stonks-yapping-💬')."
+                            ),
+                        ),
+                    },
+                    required=["keyword"],
+                ),
+            ),
+        ],
+    )
+
+
+async def _execute_chat_search(args: dict) -> dict:
+    """Run the search_chat_messages tool call against the local DB.
+    Returns a dict shaped for Gemini's function_response part."""
+    keyword = (args.get("keyword") or "").strip()
+    if not keyword:
+        return {"error": "keyword is required", "matches": []}
+    days = args.get("days") or 30
+    try:
+        days = max(1, min(180, int(days)))
+    except (TypeError, ValueError):
+        days = 30
+    username = args.get("username")
+    channel_name = args.get("channel_name")
+    try:
+        rows = db.search_chat_messages_for_ask(
+            keyword=keyword,
+            days=days,
+            username=username,
+            channel_name=channel_name,
+            limit=_CHAT_SEARCH_RESULT_LIMIT,
+        )
+    except Exception as e:
+        log.warning(f"search_chat_messages tool exec failed: {e}")
+        return {"error": str(e)[:200], "matches": []}
+    matches = [
+        {
+            "author": (
+                r.get("author_display") or r.get("author_username") or "?"
+            ),
+            "username": r.get("author_username") or "",
+            "channel": r.get("channel_name") or "",
+            "timestamp": (r.get("posted_at") or "")[:16],
+            "content": ((r.get("content") or "") + (
+                f" [IMAGE-OCR: {r['image_ocr_text'][:200]}]"
+                if r.get("image_ocr_text") else ""
+            ))[:400],
+        }
+        for r in rows
+    ]
+    log.info(
+        f"chat_search tool: keyword={keyword!r} days={days} "
+        f"username={username!r} channel={channel_name!r} → "
+        f"{len(matches)} matches"
+    )
+    return {
+        "matches": matches,
+        "count": len(matches),
+        "filters": {
+            "keyword": keyword,
+            "days": days,
+            "username": username,
+            "channel_name": channel_name,
+        },
+    }
+
+
 async def _fetch_chat_context(
     channel,
     *,
@@ -1129,9 +1300,17 @@ async def _answer_with_gemini(
 
     try:
         from google.genai import types
+        # Two tools available to the model:
+        #   1. Google Search grounding — for current/factual lookups
+        #   2. search_chat_messages — for historical room-chat lookups
+        # Gemini's compositional function-calling lets these coexist.
+        # The model picks which (or neither) based on the question.
         config = types.GenerateContentConfig(
             system_instruction=_ASK_SYSTEM_INSTRUCTION,
-            tools=[types.Tool(google_search=types.GoogleSearch())],
+            tools=[
+                types.Tool(google_search=types.GoogleSearch()),
+                _build_chat_search_tool(),
+            ],
             # max_output_tokens = 5000 (bumped 2026-05-28 from 4000).
             # Thinking budget bumped to 2000 — Type 1 answers with
             # search grounding can use more reasoning when working
@@ -1206,25 +1385,88 @@ async def _answer_with_gemini(
         sections.append(f"{separator}\n{question}")
         user_content = "\n\n".join(sections)
 
-        # If images are present, build a multipart contents list: images
-        # first (so the model sees them before reading the text question),
-        # then the text. Without images, send plain text contents.
+        # Build the initial user turn as a structured Content object so
+        # we can append follow-up turns during the tool-calling loop.
+        # Images go first as Parts so the model sees them before the
+        # text question.
+        initial_parts: list = []
         if images:
-            parts: list = []
             for img_bytes, mime in images:
-                parts.append(types.Part.from_bytes(data=img_bytes, mime_type=mime))
-            parts.append(types.Part.from_text(text=user_content))
-            generate_contents = parts
-        else:
-            generate_contents = user_content
+                initial_parts.append(
+                    types.Part.from_bytes(data=img_bytes, mime_type=mime)
+                )
+        initial_parts.append(types.Part.from_text(text=user_content))
+        contents: list = [types.Content(role="user", parts=initial_parts)]
 
         ask_model = settings.ask_gemini_model or settings.gemini_model
-        response = await client.aio.models.generate_content(
-            model=ask_model,
-            contents=generate_contents,
-            config=config,
-        )
-        answer = (response.text or "").strip()
+
+        # Tool-calling loop. On each round we call Gemini; if the
+        # response has function_call parts, we execute them and feed
+        # the results back. Loop exits when the model returns a
+        # text-only response (the final answer) or we hit the
+        # iteration cap.
+        response = None
+        for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
+            response = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=contents,
+                config=config,
+            )
+            # Pull function_call parts off the response, if any.
+            function_calls = []
+            response_parts = []
+            try:
+                response_parts = list(
+                    response.candidates[0].content.parts or []
+                )
+            except (AttributeError, IndexError, TypeError):
+                response_parts = []
+            for p in response_parts:
+                fc = getattr(p, "function_call", None)
+                if fc and getattr(fc, "name", None):
+                    function_calls.append(fc)
+            if not function_calls:
+                break  # No more tool calls — final answer is in response.text
+            if round_idx >= _CHAT_SEARCH_MAX_ROUNDS:
+                log.warning(
+                    f"/ask: hit tool-calling round cap ({_CHAT_SEARCH_MAX_ROUNDS}) "
+                    f"with function_calls still pending — using best response so far"
+                )
+                break
+
+            # Echo the model's tool-call turn into history so the next
+            # call has full context.
+            contents.append(
+                types.Content(role="model", parts=response_parts)
+            )
+            # Execute each function call and build function_response parts.
+            tool_response_parts = []
+            for fc in function_calls:
+                if fc.name == "search_chat_messages":
+                    try:
+                        args = dict(fc.args) if fc.args else {}
+                    except Exception:
+                        args = {}
+                    result = await _execute_chat_search(args)
+                    tool_response_parts.append(
+                        types.Part.from_function_response(
+                            name=fc.name,
+                            response={"result": result},
+                        )
+                    )
+                else:
+                    log.warning(f"/ask: unknown tool call {fc.name!r}")
+                    tool_response_parts.append(
+                        types.Part.from_function_response(
+                            name=fc.name,
+                            response={"error": f"unknown tool {fc.name}"},
+                        )
+                    )
+            contents.append(
+                types.Content(role="user", parts=tool_response_parts)
+            )
+
+        answer = (response.text or "").strip() if response else ""
         grounding_metadata = None
         try:
             grounding_metadata = response.candidates[0].grounding_metadata
