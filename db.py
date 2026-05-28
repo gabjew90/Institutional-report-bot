@@ -3255,11 +3255,20 @@ def lookup_user_ranks(
     metric: str | None = None,
     rank_position: int | None = None,
     top_n: int = 5,
+    from_bottom: bool = False,
 ) -> dict:
     """Look up rank info. Three modes (use exactly one):
 
       1. `username` set → return that user's trader_rank, racism_rank,
          and both rationales.
+
+    `from_bottom` (rank_position mode only): when True, rank_position=1
+    returns the WORST-ranked user (lowest trader_score / lowest
+    racial_humor_score above 0), =2 returns second-worst, etc. Used to
+    answer "who's the worst trader" without exposing the score ordering
+    to the asker. The returned `rank` field reflects the user's actual
+    position FROM THE TOP (so the bot still says "rank #49/49") — only
+    the lookup direction differs.
       2. `metric` + `rank_position` set → return the ONE user at that
          rank position (no cap on N — supports "who's #50" too).
       3. `username` unset, no rank_position, `metric` in {"trader",
@@ -3330,6 +3339,10 @@ def lookup_user_ranks(
 
     # Single-position mode: "who's #N" — no upper cap on N.
     # Returns the ONE user at that position with their rationale.
+    # When from_bottom=True, OFFSET counts from the worst end (so
+    # rank_position=1 returns the WORST-ranked user); the returned
+    # `rank` field still reflects the user's true top-down position
+    # so /ask can say "rank 49/49" cleanly.
     if rank_position is not None:
         try:
             pos = max(1, int(rank_position))
@@ -3338,6 +3351,35 @@ def lookup_user_ranks(
                 "error": "rank_position must be a positive integer.",
                 "users": [],
             }
+        # Get total ranked count first (drives both bottom-up lookup
+        # and the displayed rank when from_bottom=True).
+        if metric == "trader":
+            total = conn.execute(
+                "SELECT COUNT(*) FROM user_profiles "
+                "WHERE trader_score IS NOT NULL"
+            ).fetchone()[0]
+        else:
+            total = conn.execute(
+                "SELECT COUNT(*) FROM user_profiles "
+                "WHERE racial_humor_score IS NOT NULL "
+                "  AND racial_humor_score > 0"
+            ).fetchone()[0]
+
+        if pos > total:
+            return {
+                "error": f"No user at {metric}-rank #{pos} (fewer "
+                         f"than {pos} users have a score).",
+                "users": [],
+            }
+
+        if from_bottom:
+            # Worst N from the bottom = OFFSET (total - pos) from the top.
+            offset = max(0, total - pos)
+            true_rank = total - pos + 1
+        else:
+            offset = pos - 1
+            true_rank = pos
+
         if metric == "trader":
             r = conn.execute(
                 """SELECT user_id, display_name, username,
@@ -3346,7 +3388,7 @@ def lookup_user_ranks(
                     WHERE trader_score IS NOT NULL
                     ORDER BY trader_score DESC, user_id ASC
                     LIMIT 1 OFFSET ?""",
-                (pos - 1,),
+                (offset,),
             ).fetchone()
         else:  # racism
             r = conn.execute(
@@ -3357,7 +3399,7 @@ def lookup_user_ranks(
                       AND racial_humor_score > 0
                     ORDER BY racial_humor_score DESC, user_id ASC
                     LIMIT 1 OFFSET ?""",
-                (pos - 1,),
+                (offset,),
             ).fetchone()
         if not r:
             return {
@@ -3366,10 +3408,12 @@ def lookup_user_ranks(
                 "users": [],
             }
         user_payload = {
-            "rank": pos,
+            "rank": true_rank,
+            "rank_total": total,
             "metric": metric,
             "username": r["username"],
             "display_name": r["display_name"],
+            "from_bottom": bool(from_bottom),
         }
         if metric == "trader":
             user_payload["trader_rationale"] = r["trader_rationale"]
