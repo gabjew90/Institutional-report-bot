@@ -656,6 +656,22 @@ def _format_subject_verbatim_block(
         )
         for r in rows:
             content = (r.get("content") or "").strip()
+            ocr_text = r.get("image_ocr_text") or ""
+            # Inject cached OCR text as [IMAGE: ...] when available.
+            # Subject-verbatim deliberately does NOT trigger lazy OCR
+            # — that would mean N Gemini calls per /ask per subject,
+            # blowing the latency + cost budget. If the OCR text isn't
+            # cached yet, we just emit the line without the image. The
+            # recent-channel block handles lazy OCR for the active
+            # conversation window.
+            if ocr_text:
+                ocr_snippet = ocr_text.replace("\n", " ").strip()
+                if len(ocr_snippet) > _OCR_INLINE_TRUNCATE:
+                    ocr_snippet = ocr_snippet[:_OCR_INLINE_TRUNCATE] + "…"
+                if content:
+                    content = f"{content} [IMAGE: {ocr_snippet}]"
+                else:
+                    content = f"[IMAGE: {ocr_snippet}]"
             if not content:
                 continue
             content = content.replace("\n", " ")
@@ -800,11 +816,102 @@ async def _resolve_referenced_message(
     return content, author_id, author_display, attachments
 
 
+async def _resolve_ocr_targets(
+    collected: list[tuple[datetime, str, tuple[int, int] | None]],
+    bot_client,
+) -> list[tuple[datetime, str, tuple[int, int] | None]]:
+    """Walk a list of (ts, line_with_placeholder, ocr_target) tuples,
+    run OCR on the targets in parallel (up to the per-/ask cap, cache
+    hits free), and return a new list with placeholders replaced by
+    [IMAGE: ...] markers (or removed when no OCR text is available).
+
+    Cap policy: settings.ask_image_ocr_max_per_call applies to UNCACHED
+    OCRs only. We probe the cache first (cheap SELECT) and only count
+    cache misses against the cap.
+    """
+    from chat_ingestion.ocr import ocr_chat_message_images
+
+    targets = [(idx, t) for idx, (_, _, t) in enumerate(collected) if t]
+    if not targets:
+        return collected
+
+    cap = max(0, int(getattr(settings, "ask_image_ocr_max_per_call", 3)))
+
+    # Probe cache for each target — cheap SELECT, no Gemini call yet.
+    cache_lookup: dict[int, str | None] = {}
+    uncached: list[tuple[int, int, int]] = []  # (idx, msg_id, channel_id)
+    for idx, (msg_id, chan_id) in targets:
+        try:
+            row = db.get_chat_message_row(msg_id)
+        except Exception:
+            row = None
+        if row and row.get("image_ocr_status"):
+            cache_lookup[idx] = row.get("image_ocr_text")
+        else:
+            uncached.append((idx, msg_id, chan_id))
+
+    # Run the uncached OCRs in parallel, capped. Anything past the cap
+    # doesn't OCR this call — the placeholder gets stripped, image
+    # content is silently absent. They'll likely OCR on a subsequent
+    # /ask once cached.
+    fresh_ocrs: dict[int, str | None] = {}
+    if uncached and cap > 0:
+        slice_ = uncached[:cap]
+        ocr_calls = [
+            ocr_chat_message_images(
+                bot_client,
+                discord_message_id=msg_id,
+                channel_id=chan_id,
+            )
+            for _, msg_id, chan_id in slice_
+        ]
+        try:
+            results = await asyncio.gather(*ocr_calls, return_exceptions=True)
+        except Exception as e:
+            log.warning(f"OCR gather failed: {type(e).__name__}: {e}")
+            results = [None] * len(slice_)
+        for (idx, _, _), r in zip(slice_, results):
+            if isinstance(r, Exception):
+                log.debug(f"OCR task raised for idx={idx}: {r}")
+                fresh_ocrs[idx] = None
+            else:
+                fresh_ocrs[idx] = r
+
+    # Splice OCR text into each line. _OCR_INLINE_TRUNCATE caps the
+    # injected text per line so a 5KB OCR doesn't bloat the context.
+    out: list[tuple[datetime, str, tuple[int, int] | None]] = []
+    for idx, (ts, line, t) in enumerate(collected):
+        if t is None:
+            out.append((ts, line, t))
+            continue
+        ocr_text = (
+            cache_lookup.get(idx)
+            if idx in cache_lookup
+            else fresh_ocrs.get(idx)
+        )
+        if ocr_text:
+            snippet = ocr_text.replace("\n", " ").strip()
+            if len(snippet) > _OCR_INLINE_TRUNCATE:
+                snippet = snippet[:_OCR_INLINE_TRUNCATE] + "…"
+            new_line = line.replace(" {IMAGE_BLOCK}", f" [IMAGE: {snippet}]")
+        else:
+            new_line = line.replace(" {IMAGE_BLOCK}", "")
+        out.append((ts, new_line, t))
+    return out
+
+
+# Per-line cap on OCR text injected into the /ask context block.
+# Average gain-loss screenshot OCRs to 200-400 chars; cap at 800 to
+# keep a single image-rich message from dominating the token budget.
+_OCR_INLINE_TRUNCATE = 800
+
+
 async def _fetch_chat_context(
     channel,
     *,
     exclude_message_id: int | None = None,
     bot_user_id: int | None = None,
+    bot_client=None,
 ) -> str:
     """Fetch recent channel messages and format them as an LLM context block.
 
@@ -818,6 +925,11 @@ async def _fetch_chat_context(
     fields via _extract_embed_text. Without this, the helper would skip
     them entirely and the bot would think the channel was empty.
 
+    Image attachments: lazy-OCR'd via chat_ingestion.ocr — capped at
+    settings.ask_image_ocr_max_per_call per /ask call. OCR text is
+    injected into the line as `[IMAGE: ...]` so Gemini knows what's
+    user text vs what's image content.
+
     Returns (block_text, author_ids) — empty string + empty list on any
     failure or when there's nothing usable. Empty-string fall-through is
     intentional — the caller treats it as "no context, proceed normally."
@@ -828,11 +940,18 @@ async def _fetch_chat_context(
 
     `exclude_message_id` is the @mention message itself when invoked from
     on_message — we don't want to feed the bot its own prompt as context.
+
+    `bot_client` (optional discord.Client) enables lazy image OCR. When
+    None, image attachments are skipped (no [IMAGE:...] markers added).
     """
     if channel is None:
         return "", []
     cutoff = datetime.now(timezone.utc) - timedelta(minutes=_ASK_CONTEXT_MAX_AGE_MIN)
-    collected: list[tuple[datetime, str]] = []
+    # Each element: (timestamp, line_template, ocr_target). line_template
+    # contains a "{IMAGE_BLOCK}" placeholder for messages whose images
+    # we plan to OCR; ocr_target is the (msg_id, channel_id) tuple. Lines
+    # without images use line_template directly (no placeholder).
+    collected: list[tuple[datetime, str, tuple[int, int] | None]] = []
     author_ids: set[int] = set()
     try:
         async for msg in channel.history(limit=_ASK_CONTEXT_MAX_MESSAGES):
@@ -847,16 +966,27 @@ async def _fetch_chat_context(
                 # the embeds into a single line so the LLM can still read it.
                 embed_lines = [_extract_embed_text(e) for e in msg.embeds]
                 text = " | ".join(t for t in embed_lines if t).strip()
-            if not text:
-                continue  # nothing usable — pure image / sticker / etc.
-            text = text[:_ASK_CONTEXT_PER_MSG_CHARS]
+            # Detect image attachments — we'll OCR these later (lazy path).
+            has_image = any(
+                (getattr(a, "content_type", "") or "").startswith("image/")
+                for a in (msg.attachments or [])
+            )
+            if not text and not has_image:
+                continue  # nothing usable — pure sticker / video / non-image
+            text = (text or "")[:_ASK_CONTEXT_PER_MSG_CHARS]
+            ocr_target: tuple[int, int] | None = None
+            if has_image and bot_client is not None:
+                ocr_target = (msg.id, msg.channel.id)
+                image_placeholder = " {IMAGE_BLOCK}"
+            else:
+                image_placeholder = ""
             # Tag the bot's own past replies distinctly so Gemini can recognize
             # which lines are its prior output. Without this, the bot sees its
             # own embed-stripped replies as "BotName: <text>" and treats them
             # like any other user — leading to loops where it repeats the same
             # canned take across multiple calls without realizing it.
             if bot_user_id is not None and msg.author.id == bot_user_id:
-                line = f"[YOU said earlier]: {text}"
+                line = f"[YOU said earlier]: {text or '(image)'}{image_placeholder}"
             else:
                 # Render as "DisplayName (username): text" so the model can
                 # unambiguously match each speaker back to their WHO'S TALKING
@@ -868,11 +998,11 @@ async def _fetch_chat_context(
                     speaker = f"{dn} ({uname})"
                 else:
                     speaker = dn or uname
-                line = f"{speaker}: {text}"
+                line = f"{speaker}: {text or '(image)'}{image_placeholder}"
                 # Track distinct non-bot authors for the profile lookup
                 if not msg.author.bot:
                     author_ids.add(msg.author.id)
-            collected.append((msg.created_at, line))
+            collected.append((msg.created_at, line, ocr_target))
     except discord.Forbidden:
         log.info("Chat-context fetch: missing Read Message History permission")
         return "", []
@@ -882,7 +1012,16 @@ async def _fetch_chat_context(
     if not collected:
         return "", []
     collected.sort(key=lambda t: t[0])  # oldest → newest
-    body = "\n".join(line for _, line in collected)
+
+    # Lazy OCR pass (Phase 1). Walk the collected list, find OCR targets,
+    # run up to settings.ask_image_ocr_max_per_call in parallel via
+    # asyncio.gather. Cached OCR text (chat_messages.image_ocr_status
+    # already set) returns immediately without a Gemini call, so eager-
+    # OCR'd messages don't count toward the per-/ask cap.
+    if bot_client is not None:
+        collected = await _resolve_ocr_targets(collected, bot_client)
+
+    body = "\n".join(line for _, line, _ in collected)
     block = (
         "Recent channel chat (oldest → newest, for context only — "
         "the actual question follows after):\n"
@@ -1886,6 +2025,7 @@ def create_bot() -> commands.Bot:
             chat_context, chat_author_ids = await _fetch_chat_context(
                 interaction.channel,
                 bot_user_id=bot.user.id if bot.user else None,
+                bot_client=bot,
             )
             fetched_urls = await _maybe_fetch_user_urls(question)
             # Profile lookup: asker + recent chat speakers + anyone the
@@ -1980,6 +2120,7 @@ def create_bot() -> commands.Bot:
                     message.channel,
                     exclude_message_id=message.id,
                     bot_user_id=bot.user.id if bot.user else None,
+                    bot_client=bot,
                 )
                 fetched_urls = await _maybe_fetch_user_urls(question)
                 # Add anyone the @mention message references in text

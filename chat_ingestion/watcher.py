@@ -19,6 +19,7 @@ rather than raising. Chat ingestion should never block message
 delivery or other bot work.
 """
 
+import asyncio
 import json
 import logging
 from datetime import datetime, timedelta, timezone
@@ -63,13 +64,23 @@ def _extract_embed_texts(embeds) -> list[str]:
     return out
 
 
-async def ingest_message(message: discord.Message) -> bool:
+async def ingest_message(
+    message: discord.Message,
+    *,
+    trigger_eager_ocr: bool = True,
+) -> bool:
     """Store a Discord message in chat_messages if it's in a configured
     ingestion channel. Returns True if a new row was written, False if
     filtered, deduped, or errored.
 
     Bot messages are skipped (bot's own replies + ingestion-feed embeds
     aren't part of the chat we care about preserving).
+
+    `trigger_eager_ocr`: when True (default, live on_message path),
+    image attachments in chat_eager_ocr_channels kick off background
+    OCR via asyncio.create_task. The catchup path passes False to
+    avoid flooding Gemini with hundreds of concurrent OCR tasks during
+    a 30-day backfill — lazy OCR handles those rows on demand via /ask.
     """
     if message.author.bot:
         return False
@@ -94,7 +105,7 @@ async def ingest_message(message: discord.Message) -> bool:
         getattr(message.author, "display_name", None) or message.author.name
     )
 
-    return db.store_chat_message(
+    stored = db.store_chat_message(
         discord_message_id=message.id,
         channel_id=message.channel.id,
         channel_name=chan_name,
@@ -108,6 +119,50 @@ async def ingest_message(message: discord.Message) -> bool:
         embed_texts=json.dumps(embed_texts) if embed_texts else None,
         reply_parent_id=reply_parent_id,
     )
+
+    # Eager OCR (Phase 2). For channels in chat_eager_ocr_channels with
+    # image attachments, fire the OCR pass as a background task so the
+    # ingest call returns immediately. The OCR result lands in
+    # chat_messages.image_ocr_text a few seconds later.
+    #
+    # We use create_task (no await) because:
+    #   - on_message is dispatched concurrently across handlers but a
+    #     slow handler still chains within itself (e.g. mention reply
+    #     after ingest). Synchronous OCR here would add 2-3s before
+    #     any analyst/mention work that follows in the dispatch chain.
+    #   - The task is non-critical: if it fails, we just have no OCR
+    #     text — /ask falls back to the lazy path on next reference.
+    if stored and attachment_urls and trigger_eager_ocr:
+        try:
+            eager_channels = settings.resolve_chat_eager_ocr_channels()
+            if chan_name in eager_channels:
+                from chat_ingestion.ocr import ocr_attachments_inline
+                asyncio.create_task(
+                    _safe_ocr_inline(message, chan_name),
+                    name=f"eager_ocr_{message.id}",
+                )
+        except Exception as e:
+            log.warning(
+                f"Eager OCR dispatch failed for msg={message.id}: "
+                f"{type(e).__name__}: {e}"
+            )
+
+    return stored
+
+
+async def _safe_ocr_inline(message: discord.Message, chan_name: str) -> None:
+    """Wrap ocr_attachments_inline with a top-level exception guard so a
+    crash in the background task doesn't bubble to the event loop as
+    an unhandled exception warning.
+    """
+    try:
+        from chat_ingestion.ocr import ocr_attachments_inline
+        await ocr_attachments_inline(message)
+    except Exception as e:
+        log.warning(
+            f"Eager OCR task failed for msg={message.id} "
+            f"channel='{chan_name}': {type(e).__name__}: {e}"
+        )
 
 
 async def run_chat_catchup(
@@ -254,7 +309,11 @@ async def run_chat_catchup(
                     last_msg = msg
                     if msg.author.bot:
                         continue
-                    if await ingest_message(msg):
+                    # Catchup mode: skip eager OCR. A 30d backfill of
+                    # gain-loss-porn would otherwise spawn hundreds of
+                    # concurrent OCR tasks. Lazy OCR handles those rows
+                    # on /ask demand instead.
+                    if await ingest_message(msg, trigger_eager_ocr=False):
                         new_this_channel += 1
                 break  # full iteration succeeded
             except Exception as e:

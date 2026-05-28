@@ -275,6 +275,18 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             attachment_urls TEXT,    -- JSON list[str]
             embed_texts TEXT,        -- JSON list[str]
             reply_parent_id INTEGER,
+            -- image_ocr_text: lazy-populated text extracted from image
+            -- attachments via Gemini vision. NULL until an OCR pass runs.
+            -- Two write paths:
+            --   - Lazy: /ask context-builder OCRs on demand when an
+            --     attached image is about to be shown to Gemini.
+            --   - Eager: ingest_message OCRs immediately for channels
+            --     in chat_eager_ocr_channels (e.g. gain-loss-porn).
+            -- Once non-NULL, never re-OCR'd (cache). Use `force=True`
+            -- in the OCR helper to bust the cache for a specific row.
+            image_ocr_text TEXT,
+            image_ocr_status TEXT,   -- 'success', 'no_images', 'failed', NULL
+            image_ocr_at TEXT,       -- ISO timestamp when OCR completed
             ingested_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
         CREATE INDEX IF NOT EXISTS idx_chat_messages_channel_ts ON chat_messages(channel_id, posted_at DESC);
@@ -310,6 +322,13 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         # analyst_trades migration: add price + caller columns on existing deploys.
         ("price", "ALTER TABLE analyst_trades ADD COLUMN price REAL"),
         ("caller", "ALTER TABLE analyst_trades ADD COLUMN caller TEXT"),
+        # chat_messages OCR columns — added when image OCR landed. Live
+        # deploys with the older 13-column chat_messages table get these
+        # three columns appended (SQLite ALTER TABLE ADD COLUMN is cheap;
+        # no data rewrite, just a metadata change).
+        ("image_ocr_text", "ALTER TABLE chat_messages ADD COLUMN image_ocr_text TEXT"),
+        ("image_ocr_status", "ALTER TABLE chat_messages ADD COLUMN image_ocr_status TEXT"),
+        ("image_ocr_at", "ALTER TABLE chat_messages ADD COLUMN image_ocr_at TEXT"),
     ]:
         try:
             conn.execute(ddl)
@@ -2805,6 +2824,52 @@ def purge_old_chat_messages(days: int) -> int:
     return cur.rowcount
 
 
+def get_chat_message_row(discord_message_id: int) -> dict | None:
+    """Fetch a single chat_messages row by Discord message ID. Used by
+    the OCR helper to read the URL list + check the cached OCR text
+    before deciding whether to call Gemini.
+    """
+    row = get_connection().execute(
+        """SELECT id, discord_message_id, channel_id, channel_name,
+                  author_id, author_username, author_display, content,
+                  posted_at, has_attachments, attachment_urls,
+                  embed_texts, reply_parent_id,
+                  image_ocr_text, image_ocr_status, image_ocr_at
+             FROM chat_messages
+            WHERE discord_message_id = ?""",
+        (int(discord_message_id),),
+    ).fetchone()
+    if row is None:
+        return None
+    return {k: row[k] for k in row.keys()}
+
+
+def set_chat_image_ocr(
+    discord_message_id: int,
+    *,
+    ocr_text: str | None,
+    status: str,
+) -> bool:
+    """Write OCR result back to chat_messages. `status` is one of:
+      - 'success'    — ocr_text contains the extracted content
+      - 'no_images'  — message has attachments but none were images
+      - 'failed'     — OCR call errored or returned empty (cache the
+                       failure so we don't retry on every /ask)
+    Returns True if a row was updated, False if no matching row.
+    """
+    conn = get_connection()
+    cur = conn.execute(
+        """UPDATE chat_messages
+              SET image_ocr_text = ?,
+                  image_ocr_status = ?,
+                  image_ocr_at = datetime('now')
+            WHERE discord_message_id = ?""",
+        (ocr_text, status, int(discord_message_id)),
+    )
+    conn.commit()
+    return cur.rowcount > 0
+
+
 def get_latest_chat_message_posted_at(channel_id: int | None = None) -> str | None:
     """Most-recent posted_at across stored chat. Optionally scoped to a
     channel — used by the catch-up pass to know how far back to scan.
@@ -2868,8 +2933,9 @@ def get_recent_user_messages(
         return []
     if channel_name:
         rows = get_connection().execute(
-            """SELECT discord_message_id, channel_name, content, posted_at,
-                      attachment_urls, embed_texts
+            """SELECT discord_message_id, channel_id, channel_name, content,
+                      posted_at, has_attachments, attachment_urls, embed_texts,
+                      image_ocr_text, image_ocr_status
                FROM chat_messages
                WHERE LOWER(author_username) = LOWER(?)
                  AND channel_name = ?
@@ -2879,8 +2945,9 @@ def get_recent_user_messages(
         ).fetchall()
     else:
         rows = get_connection().execute(
-            """SELECT discord_message_id, channel_name, content, posted_at,
-                      attachment_urls, embed_texts
+            """SELECT discord_message_id, channel_id, channel_name, content,
+                      posted_at, has_attachments, attachment_urls, embed_texts,
+                      image_ocr_text, image_ocr_status
                FROM chat_messages
                WHERE LOWER(author_username) = LOWER(?)
                ORDER BY posted_at DESC

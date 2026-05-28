@@ -130,6 +130,29 @@ class Settings(BaseSettings):
     # bloating the DB.
     chat_retention_days: int = 180
 
+    # Comma-separated channel names where ingest_message OCRs image
+    # attachments immediately (Phase 2) rather than waiting for /ask
+    # to lazily fetch them. Targeted at channels where image content
+    # carries the primary signal (gain/loss screenshots, charts, etc.)
+    # and is worth surfacing to downstream consumers ASAP.
+    #
+    # Channels in this list are auto-added to the chat ingestion union
+    # (no need to also list them in chat_ingestion_channels). OCR runs
+    # as a background asyncio task so on_message returns immediately.
+    chat_eager_ocr_channels: str = "💲-gain-loss-porn-💲"
+
+    # Per-/ask cap on lazy OCR — how many image-bearing messages will
+    # be OCR'd inline during a single /ask. Each OCR call adds ~1-3s
+    # latency. Cache hits don't count toward this cap (already done).
+    ask_image_ocr_max_per_call: int = 3
+
+    # How long Discord CDN attachment URLs stay fresh after issuance.
+    # The OCR helper uses this to decide whether to attempt the direct
+    # URL first or skip straight to channel.fetch_message() for a
+    # fresh signed URL. Discord's current expiry is 24h; we use a
+    # conservative 20h to leave headroom for clock skew.
+    chat_attachment_url_freshness_hours: int = 20
+
     # User-profile system: comma-separated channel names where the bot
     # scans for personality signal during the daily profile refresh.
     # Four "yapping" channels (high-volume personality) + four alert
@@ -352,7 +375,24 @@ class Settings(BaseSettings):
             ch = (c.get("channel") or "").strip()
             if ch:
                 channels.add(ch)
+        # Eager-OCR channels are also auto-included — they need their
+        # messages stored so the OCR pass has a chat_messages row to
+        # write back to.
+        for raw in (self.chat_eager_ocr_channels or "").split(","):
+            raw = raw.strip()
+            if raw:
+                channels.add(raw)
         return channels
+
+    def resolve_chat_eager_ocr_channels(self) -> set[str]:
+        """Channel names that get image attachments OCR'd at ingest time
+        (Phase 2). Empty by default for everywhere else; lazy OCR
+        handles the rest on demand.
+        """
+        return {
+            s.strip() for s in (self.chat_eager_ocr_channels or "").split(",")
+            if s.strip()
+        }
 
     def caller_by_channel(self, channel_name: str) -> dict | None:
         """Look up which caller owns this channel name (case-insensitive)."""
