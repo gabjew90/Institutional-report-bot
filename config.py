@@ -115,7 +115,16 @@ class Settings(BaseSettings):
             "username": "f.jamal",
             "channel": "test-channel",
             "announce_channel": "test-channel",
-            "enabled": True,
+            # Disabled 2026-05-28 — Jamal was a test caller; /ask
+            # was showing his RECENT TRADES block in every response
+            # alongside Abe and BK. Removing him from /ask context
+            # while keeping the config intact in case he comes back.
+            # Effect: analyst_log watcher no longer scans his
+            # channel; chat_messages ingestion of test-channel
+            # stops too (unless test-channel is added to
+            # chat_ingestion_channels or chat_eager_ocr_channels
+            # explicitly).
+            "enabled": False,
         },
     ]
 
