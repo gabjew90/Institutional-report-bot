@@ -824,12 +824,24 @@ async def _resolve_referenced_message(
     """
     ref = getattr(message, "reference", None)
     if not ref:
+        log.info(
+            f"_resolve_ref: msg={message.id} has no reference — "
+            f"not a reply or forward"
+        )
         return None, None, None, []
 
     ref_type = getattr(ref, "type", None)
     is_forward = (
         hasattr(discord, "MessageReferenceType")
         and ref_type == discord.MessageReferenceType.forward
+    )
+    snapshots_count = len(getattr(message, "message_snapshots", None) or [])
+    log.info(
+        f"_resolve_ref: msg={message.id} ref_type={ref_type!r} "
+        f"is_forward={is_forward} snapshots={snapshots_count} "
+        f"ref.message_id={getattr(ref, 'message_id', None)} "
+        f"ref.channel_id={getattr(ref, 'channel_id', None)} "
+        f"ref.resolved={'yes' if getattr(ref, 'resolved', None) else 'no'}"
     )
 
     content: str | None = None
@@ -891,7 +903,21 @@ async def _resolve_referenced_message(
                 log.debug(f"forward author resolution failed: {e}")
     else:
         # Reply (default reference type)
-        def _flatten(parent_msg: discord.Message) -> str | None:
+        def _flatten(parent_msg: discord.Message) -> tuple[str | None, list]:
+            """Extract readable content + attachments from a reply parent.
+
+            Handles three sources of content on the parent:
+            1. parent.content — the literal text body
+            2. parent.embeds — link previews, etc.
+            3. parent.message_snapshots — for the REPLY-TO-FORWARD case
+               where the parent itself is a Discord forward (snapshot
+               carries the forwarded post's content).
+
+            Without #3, replying-to-a-forward + @-mentioning the bot
+            looks like an empty reply to the bot — the forwarded post
+            it was riffing on never made it into context. Returns
+            (content_string_or_None, attachment_list).
+            """
             body = (parent_msg.content or "").strip()
             embed_text = " | ".join(
                 t
@@ -900,34 +926,68 @@ async def _resolve_referenced_message(
                 )
                 if t
             ).strip()
-            if body and embed_text:
-                return f"{body}\n\n{embed_text}".strip()
-            return body or embed_text or None
+            atts = list(parent_msg.attachments or [])
+
+            # Reply-to-forward: also flatten the parent's snapshot.
+            snap_text = ""
+            parent_snaps = getattr(parent_msg, "message_snapshots", None) or []
+            if parent_snaps:
+                snap = parent_snaps[0]
+                snap_body = (getattr(snap, "content", None) or "").strip()
+                snap_embeds = " | ".join(
+                    t for t in (
+                        _extract_embed_text(e)
+                        for e in (getattr(snap, "embeds", None) or [])
+                    ) if t
+                ).strip()
+                snap_text = (
+                    f"{snap_body}\n\n{snap_embeds}".strip()
+                    if snap_body and snap_embeds
+                    else (snap_body or snap_embeds or "")
+                ).strip()
+                # Also pick up snapshot attachments (often the
+                # original's images)
+                snap_atts = list(getattr(snap, "attachments", []) or [])
+                if snap_atts and not atts:
+                    atts = snap_atts
+
+            # Compose: snap content gets labeled to keep authorship clear
+            pieces = []
+            if body:
+                pieces.append(body)
+            if embed_text:
+                pieces.append(embed_text)
+            if snap_text:
+                pieces.append(f"[forwarded content in this reply parent]\n{snap_text}")
+            return ("\n\n".join(pieces) or None), atts
 
         resolved = getattr(ref, "resolved", None)
         if isinstance(resolved, discord.Message):
-            content = _flatten(resolved)
+            content, attachments = _flatten(resolved)
             if resolved.author:
                 author_id = resolved.author.id
                 author_display = (
                     getattr(resolved.author, "display_name", None)
                     or resolved.author.name
                 )
-            attachments = list(resolved.attachments or [])
         elif ref.message_id:
             try:
                 parent = await message.channel.fetch_message(ref.message_id)
-                content = _flatten(parent)
+                content, attachments = _flatten(parent)
                 if parent.author:
                     author_id = parent.author.id
                     author_display = (
                         getattr(parent.author, "display_name", None)
                         or parent.author.name
                     )
-                attachments = list(parent.attachments or [])
             except Exception as e:
-                log.debug(f"reply parent fetch failed: {e}")
+                log.info(f"_resolve_ref: reply parent fetch failed: {e}")
 
+    log.info(
+        f"_resolve_ref: msg={message.id} resolved → "
+        f"content_len={len(content or '')} author_id={author_id} "
+        f"display={author_display!r} attachments={len(attachments)}"
+    )
     return content, author_id, author_display, attachments
 
 
