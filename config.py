@@ -139,12 +139,7 @@ class Settings(BaseSettings):
     # Channels in this list are auto-added to the chat ingestion union
     # (no need to also list them in chat_ingestion_channels). OCR runs
     # as a background asyncio task so on_message returns immediately.
-    #
-    # Default is "test-channel" only — sandbox the pipeline against
-    # f.jamal's test posts before flipping it on for real users.
-    # Override on Railway to expand: e.g.
-    #   CHAT_EAGER_OCR_CHANNELS="test-channel,💲-gain-loss-porn-💲"
-    chat_eager_ocr_channels: str = "test-channel"
+    chat_eager_ocr_channels: str = "💲-gain-loss-porn-💲"
 
     # Per-/ask cap on lazy OCR — how many image-bearing messages will
     # be OCR'd inline during a single /ask. Each OCR call adds ~1-3s
