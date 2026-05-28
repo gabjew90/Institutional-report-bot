@@ -273,12 +273,20 @@ def _is_extraction_actionable(extracted: dict) -> bool:
 
     Rules:
     - is_trade_screenshot must be True
+    - action must be one of the four real trade actions (open/add/trim/
+      close). "viewing" / "unclear" / anything else is observation noise
+      and gets downgraded — those rows had been polluting /ask's
+      RECENT TRADES block (see 2026-05-28 QC: action='viewing' on a 🍆
+      caption against an MSFT stats screen).
     - ticker must be a non-empty string
     - For call/put contracts: strike must be present AND non-zero
     - (stock contracts can have null strike — but we don't OCR stock
       tickets typically; tolerated for future flexibility)
     """
     if not extracted.get("is_trade_screenshot"):
+        return False
+    action = (extracted.get("action") or "").strip().lower()
+    if action not in ("open", "add", "trim", "close"):
         return False
     ticker = (extracted.get("ticker") or "").strip()
     if not ticker:
@@ -574,7 +582,8 @@ async def watch_message(
             )
             extracted["is_trade_screenshot"] = False
             extracted["what_it_appears_to_be"] = (
-                "extraction failed integrity check (missing ticker or strike=0)"
+                "extraction failed integrity check (missing ticker, "
+                "strike=0, or non-trade action like 'viewing')"
             )
         is_trade = bool(extracted.get("is_trade_screenshot"))
         if is_trade:
@@ -654,7 +663,8 @@ async def watch_message(
             )
             extracted["is_trade_screenshot"] = False
             extracted["what_it_appears_to_be"] = (
-                "extraction failed integrity check (missing ticker or strike=0)"
+                "extraction failed integrity check (missing ticker, "
+                "strike=0, or non-trade action like 'viewing')"
             )
         if extracted is None:
             # OCR failed entirely — don't insert a row, so we'll retry on

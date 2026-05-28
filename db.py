@@ -1654,7 +1654,16 @@ def get_recent_analyst_trades(
     tracking_mode='member' to read only member-posted alerts.
     """
     cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
-    where = ["is_trade = 1", "posted_at > ?"]
+    # action filter: only the four real trade actions surface in /ask.
+    # Excludes legacy 'viewing' / 'unclear' rows (the prompt no longer
+    # emits these, but historical rows from before 2026-05-28 still
+    # exist in production and would otherwise pollute RECENT TRADES
+    # blocks — e.g. "viewing MSFT" from a 🍆 reaction emoji).
+    where = [
+        "is_trade = 1",
+        "posted_at > ?",
+        "LOWER(COALESCE(action,'')) IN ('open','add','trim','close')",
+    ]
     params: list = [cutoff]
     if caller:
         where.append("LOWER(caller) = ?")

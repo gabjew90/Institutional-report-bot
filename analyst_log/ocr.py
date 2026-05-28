@@ -10,10 +10,13 @@ channel — see commit 9112ad4. Final config hit 13/13 action accuracy and
 
 1. Asymmetric error preference. False-positive opens (phantom positions in
    the log) are MUCH worse than false-negative opens (self-correct on the
-   next post). The prompt biases toward "viewing" when ambiguous.
+   next post). The prompt biases toward `is_trade_screenshot=false` when
+   ambiguous (previously biased to `action="viewing"`, but the resulting
+   rows just polluted /ask RECENT TRADES — see 2026-05-28 QC).
 
 2. Caption taxonomy split into STRONG / AMBIGUOUS / NONE buckets — strong
-   close/open signals always win, ambiguous hype defaults to viewing.
+   close/open signals always win, ambiguous hype is downgraded to
+   `is_trade_screenshot=false` (not "viewing").
 """
 
 import json
@@ -94,12 +97,14 @@ The poster sometimes also posts:
 CAPTION → ACTION MAPPING — IMPORTANT ASYMMETRY:
 
 False-positive opens (saying "open" when the poster was just viewing) are MUCH \
-worse than false-negative opens (saying "viewing" when they actually opened). \
-A wrongly-detected open creates a phantom position in the log that the bot \
-will reference forever; a missed open self-corrects when they post a \
-notification card later. **When in doubt about an open, default to \
-"viewing".** Closes are easier to verify (gain-pill + caption usually agree), \
-so be more confident classifying closes.
+worse than false-negative opens (treating an ambiguous post as not-a-trade \
+when they actually opened). A wrongly-detected open creates a phantom \
+position in the log that the bot will reference forever; a missed open \
+self-corrects when they post a notification card later. **When in doubt \
+about an open, set `is_trade_screenshot=false` with a \
+`what_it_appears_to_be` like "stats screen with hype caption — no execution \
+evidence."** Closes are easier to verify (gain-pill + caption usually \
+agree), so be more confident classifying closes.
 
 STRONG CLOSE signals → action="close" (these are unambiguous; trust them):
 - "I'm out", "OUT", "out!", "exiting", "exit", "sold", "bing bong", "done", \
@@ -120,11 +125,17 @@ STRONG OPEN signals → action="open" (clear re-entry or fresh buy language):
   "half off", "scaled out", "lightened up", "peeled some off", \
   "shaved" → action="trim"
 
-AMBIGUOUS / HYPE captions on a stats_screen → action="viewing" (bias \
-toward viewing, not open). Don't assume an open from excitement alone:
-- "let's go", "fire", "🚀", "this one", "watch this", "👀"
+AMBIGUOUS / HYPE captions on a stats_screen → `is_trade_screenshot=false` \
+(bias toward not-a-trade, not open). Don't assume an open from excitement \
+alone:
+- "let's go", "fire", "🚀", "this one", "watch this", "👀", reaction \
+  emojis like "🍆", short observations like "COO just left?"
 - These could mean "I just bought" OR "look at this setup" — when on a \
-  stats_screen (no execution evidence in the image), default to viewing.
+  stats_screen (no execution evidence in the image), return \
+  `is_trade_screenshot=false` with `what_it_appears_to_be="stats screen \
+  with hype/reaction caption — no execution evidence"`. Do NOT use \
+  action="viewing" — that label has been retired (it just produced \
+  observation rows that polluted the trade log).
 - ONLY classify as open if the caption is genuinely unambiguous (per the \
   STRONG OPEN list above).
 
@@ -155,14 +166,16 @@ D. **Stats screen for a SPECIFIC CONTRACT** (ticker + strike + expiry all \
 
    - Exception 1: if there's an explicit AMBIGUOUS-hype caption on a \
      stats screen ("🚀", "let's go", "this one"), that captioned-stats \
-     case still goes to "viewing" — the asymmetric error preference \
-     still applies when the user gave you some signal. NOTE: "slam" \
-     is NOT ambiguous — it means open and overrides this exception. \
-     Captionless single-contract stats screens default to "open".
+     case goes to `is_trade_screenshot=false` (the caption fired the \
+     asymmetric-error rule). NOTE: "slam" is NOT ambiguous — it means \
+     open and overrides this exception. Captionless single-contract \
+     stats screens still default to "open".
 
 E. **Pure option chain listing** (multiple strikes visible, no specific \
-   contract selected) with no caption: action="viewing". This is true \
-   browsing — they're surveying the chain.
+   contract selected) with no caption: `is_trade_screenshot=false`, \
+   `what_it_appears_to_be="option chain browse — no contract selected"`. \
+   Surveying the chain isn't an executed trade and doesn't belong in \
+   the log.
 
 F. **Order ticket / order-confirmation screen**: action="open". The screen \
    itself confirms execution.
@@ -193,7 +206,7 @@ For trade screenshots:
   "contract_type": "call | put | stock | crypto | unclear",
   "strike": number or null,
   "expiry": "YYYY-MM-DD" or null (use the inference rule above),
-  "action": "open | add | trim | close | viewing | unclear",
+  "action": "open | add | trim | close" (no other values; ambiguous → is_trade_screenshot=false),
   "action_source": "caption | image | both",
   "gain_pct": number or null (the +/-N% pill, if shown),
   "price": number or null (priority: avg cost > bid/ask midpoint > mark > explicit ticket price; null on notification cards),
@@ -331,7 +344,7 @@ NOT fall back to a 0 sentinel.
   outstanding open positions. Defaulting a close to today incorrectly
   creates a phantom 0DTE close that doesn't match the earlier open.
 
-- **VIEWING / UNCLEAR** with no expiry → null.
+- (no other actions exist — ambiguous captions → `is_trade_screenshot=false`)
 
 If the caption DOES have an explicit M/D, use that with the year-inference
 rule below regardless of action.
@@ -374,7 +387,7 @@ For trades:
   "contract_type": "call" | "put" | "stock",
   "strike": <number — REQUIRED, no sentinel>,
   "expiry": "YYYY-MM-DD" — REQUIRED,
-  "action": "open" | "add" | "trim" | "close" | "viewing",
+  "action": "open" | "add" | "trim" | "close",
   "action_source": "caption",
   "gain_pct": null,
   "price": <number from @PRICE pattern, or null>,
@@ -519,9 +532,9 @@ async def extract_trade_from_caption(
                     (data.get("notes") or "")
                     + " (expiry defaulted to today — 0DTE open)"
                 ).strip()
-            # close / trim / viewing / unclear / other → leave null;
-            # the watcher will resolve close/trim by matching open
-            # positions. Notes for forensic visibility.
+            # close / trim → leave null; the watcher will resolve them
+            # by matching outstanding open positions on ticker+strike.
+            # Notes for forensic visibility.
             elif action in ("close", "trim"):
                 data["notes"] = (
                     (data.get("notes") or "")
