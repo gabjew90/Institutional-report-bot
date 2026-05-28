@@ -507,6 +507,20 @@ Anchor against THIS user's messages. Zero examples = 0-15.
 
 ---
 
+STRUCTURED TRADE LOG — source of truth for Recent trades section:
+
+{analyst_trades_block}
+
+**BINDING RULE on Recent trades.** The structured trade log above (sourced from `analyst_trades` — OCR-extracted entries and exits posted by THIS user in their alert channel and gain-loss-porn) is the source of truth for any percentage / dollar / outcome you cite in the **Recent trades** section. Specifically:
+- If a trade appears in the log above, quote its `gain_pct` and dates EXACTLY as shown. Don't round, don't restate, don't infer "approximately."
+- If a trade does NOT appear in the log above but the user mentioned a position in chat (MESSAGES block below), describe it WITHOUT a percentage — e.g. "mentioned a TSLA position around 5/22, no documented outcome in log." Do NOT invent a `+X%` figure that isn't in the structured log.
+- The model's previous failure mode: inventing percentages on trades that closed at materially different actual numbers, or marking a documented loss as "Flat" because the chat-text inference missed the structured close. The structured log above prevents this — use it.
+- If the structured log is empty (the user has no analyst_trades rows in the window), the Recent trades section must lean on chat-described positions WITHOUT percentages, OR be brief / skipped if signal is thin.
+
+This rule overrides any contrary inference from the MESSAGES block below for the Recent trades section. Voice / Personality / Retarded takes / Recent personal life still source from MESSAGES; only Recent trades is anchored to the structured log.
+
+---
+
 MESSAGES (oldest first, most recent last):
 {messages_block}\
 """
@@ -730,6 +744,69 @@ def _load_user_data_from_store(
     return by_user, user_meta, images_by_user, slur_counts, slur_examples
 
 
+def _format_analyst_trades_block(user_id: int, days: int = 30) -> str:
+    """Render this user's analyst_trades rows as a structured block for the
+    profile prompt. Both 'caller' rows (official caller-channel posts,
+    e.g. Abe/BK) and 'member' rows (user-mode shared-alert posts) are
+    surfaced. Empty when the user has no trade history in the window.
+
+    Goal: replace the model's chat-text trade inference (which hallucinates
+    percentages — Abe's profile claimed $GLW +430% when log shows +100.73%,
+    and TSLA Flat when log shows -40%) with structured ground truth.
+
+    Format example per row:
+      - 2026-05-18  CLOSE  GLW 185C  exp 5/22  gain +100.73%  (caller log)
+    """
+    rows = db.get_recent_analyst_trades(
+        hours=days * 24,
+        limit=200,
+        caller=None,
+        tracking_mode=None,  # read both caller and member rows
+    )
+    # Filter to this user — either author_id match (member rows + new
+    # caller rows) or caller-name pre-author_id legacy rows (fallback).
+    own: list[dict] = []
+    for r in rows:
+        if r.get("author_id") and int(r["author_id"]) == int(user_id):
+            own.append(r)
+    if not own:
+        return (
+            "(no structured trade log entries for this user in the window — "
+            "Recent trades section must describe positions from chat WITHOUT "
+            "inventing percentages)"
+        )
+    lines: list[str] = []
+    # Render oldest first so the model reads chronologically
+    for r in sorted(own, key=lambda x: x.get("posted_at") or ""):
+        ts = (r.get("posted_at") or "")[:16].replace("T", " ")
+        action = (r.get("action") or "?").upper()
+        ticker = r.get("ticker") or "?"
+        ct = (r.get("contract_type") or "").lower()
+        ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
+        strike = r.get("strike")
+        if strike is not None:
+            strike_str = (
+                f"{int(strike)}" if strike == int(strike) else f"{strike}"
+            )
+        else:
+            strike_str = "?"
+        expiry = r.get("expiry") or ""
+        exp_short = expiry[5:] if len(expiry) >= 10 else (expiry or "?")
+        gain = r.get("gain_pct")
+        price = r.get("price")
+        gain_str = f"gain {gain:+.2f}%" if gain is not None else "gain ?"
+        price_str = f" @{price}" if price not in (None, 0) else ""
+        mode_tag = (
+            "(caller log)" if (r.get("tracking_mode") or "caller") == "caller"
+            else "(member alert)"
+        )
+        lines.append(
+            f"  - {ts}  {action:>5}  {ticker} {strike_str}{ct_suffix}  "
+            f"exp {exp_short}  {gain_str}{price_str}  {mode_tag}"
+        )
+    return "\n".join(lines)
+
+
 def _format_messages_block(messages: list[dict]) -> str:
     """Render the per-user message list for the Gemini prompt.
 
@@ -912,6 +989,7 @@ async def _generate_profile(
         sample = messages[-dynamic_cap:]
 
     msgs_block = _format_messages_block(sample)
+    analyst_trades_block = _format_analyst_trades_block(user_id)
     today_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     prompt = PROFILE_PROMPT.format(
         display_name=display_name,
@@ -919,6 +997,7 @@ async def _generate_profile(
         user_id=user_id,
         msg_count=len(messages),
         messages_block=msgs_block,
+        analyst_trades_block=analyst_trades_block,
         today_utc=today_utc,
         prior_profile_block=prior_profile_block,
     )
