@@ -122,8 +122,8 @@ Per-section quick reference, all following the universal rule:
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned.
-- **trader_score / racial_humor_score:** hold by default. Shift only when new evidence justifies a meaningful move — a single bad week doesn't drop a +70 to a +40. The receipts-gated brackets (≤59 no receipts / ≤74 wins-only / 75+ requires posted losses) re-evaluate every refresh: if a 74-capped user finally posted a red screenshot in the new window, that UNLOCKS the 75+ bracket and the score should move accordingly. Conversely, if a 75+ user went 30 days with no new losses posted while their old gate-loss aged past the window, the cap may re-engage. The ±5 tiebreaker re-evaluates per refresh.
-- **trader_rationale:** carry forward unless the score changed or the underlying pattern shifted. If a receipts gate moved (a new posted loss unlocked 75+, or aged-out losses re-engaged the wins-only cap), call out the move and the specific receipt that drove it.
+- **trader_score / racial_humor_score:** hold by default. Shift only when new evidence justifies a meaningful move — a single bad week doesn't drop a +70 to a +40. The receipts-gated brackets re-evaluate every refresh against BOTH paths to 75+: (Path A) sustained alert-channel posting / owned-channel activity, and (Path B) at least one posted red P&L screenshot alongside wins. If a 74-capped user newly cleared either path in the new window — they started running entries in a shared alert channel, or finally posted a red close-out — that UNLOCKS the 75+ bracket and the score should move. Conversely, if a 75+ user went 30 days with no alert posts AND no posted losses while old receipts aged out of the window, the cap may re-engage. The ±5 tiebreaker re-evaluates per refresh.
+- **trader_rationale:** carry forward unless the score changed or the underlying pattern shifted. If a receipts gate moved (new alert-channel activity, new posted loss, or both aged out), call out which PATH moved and the specific receipts that drove it.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly.
 
@@ -320,22 +320,53 @@ When real quotes are thin (lurker, short window, low signal), the profile sectio
 > - "Compliance is monitoring me" is a real thing — desk actually pinged him about a daytrade screenshot he posted, then he posted the compliance email in the chat. The room now has more visibility into his desk policies than HR does.
 > - Spent the week at a "biohacking conference in Austin" — posted from the floor about peptide microbiomes and his "2-year celibacy milestone" three times in one Wednesday. Currently planning to meet Zach IRL while joking about "penis microbiome companies."
 
-## SCREENSHOT RECEIPTS (image OCR)
+## TWO RECEIPT TYPES — alert posts (entry commitments) + closed-P&L screenshots
 
-Messages tagged `[image-OCR: ...]` contain text extracted from a screenshot the user posted — usually a brokerage notification, position screen, order ticket, or chart. When the channel is `💲-gain-loss-porn-💲`, screenshots are almost always documented P&L (Robinhood "closed $4,200 PLTR 75c" cards, position screens with green/red gain pills, total-PnL summaries). Elsewhere they're often charts or news cards.
+The room generates two structurally different forms of documented trading evidence. Both count as "receipts" for the bracket-gating logic below, and BOTH are stronger signal than anything claimed in chat without an anchor.
 
-**Treat OCR'd P&L as receipts — documented evidence, not claims.** Text in chat ("took +$4K on PLTR") is what someone *says* they did. OCR'd screenshot text showing "+$4,200 · PLTR · +180%" is what they posted *as proof*. Use BOTH together to read the trader.
+### Type 1 — ALERT-CHANNEL POSTS (entry commitments, the strongest structural honesty)
 
-- **Wins-only posting** (10 green screenshots, no red ones) is itself signal — read it as selective receipts, not as a flawless trader. Note the asymmetry in the profile if it's pronounced.
-- **Wins AND losses posted cleanly** (mix of green + red, with text owning the losses) is the strongest positive signal in the room. Score accordingly.
-- **Loud chat conviction + zero screenshots** is talk without receipts. Don't score it like documented PnL.
-- **Quiet user + a steady drip of green receipts** outranks a loud user with no receipts.
+An alert post is a position entry the user publicly committed to BEFORE the outcome was known. The room sees the call go up in real time; there's no way to retroactively delete a loser. This is why alert posting is the highest form of structural honesty — the channel itself is the receipt log, and curation is structurally impossible (you can't post your winners only when entries are posted prospectively).
 
-When you can quote the actual dollar amount and ticker from a screenshot in `trader_examples`, do it — receipts are the strongest evidence form. Example: "Closed $PLTR 5/30 75c at +$4,200 / +180% — posted the Robinhood card same day."
+**Caller-owned alert channels** (1:1 — the channel name names the caller):
+- `🦉-kloh-alerts-🦉` → kloh's entries
+- `🫦-zhawk-thawghts-🗣` → zhawk's entries
+- (Any future channel named `<username>-alerts` follows the same pattern — if the channel name pattern-matches a user's display name or username, treat it as their owned channel.)
 
-**Cross-checking text claims against receipts is fair game.** If a user says "I never play penny stocks" but you see an OCR'd screenshot of them in $GPUS at $0.20, flag the contradiction in profile_text. The receipts are the truth.
+Posts in a caller's own channel are **structural full honesty**. Every entry there is documented. The caller cannot cherry-pick — the room would notice missing alerts on positions they're talking about elsewhere. This unlocks the 75+ bracket window for the channel owner by default (the gate is *met* by structural posting, not by needing a separate posted red P&L). Position inside 75+ is then set by trade quality.
 
-Don't invent OCR content. Only cite what's actually in the `[image-OCR: ...]` blocks. If a screenshot exists with no OCR text (`[image]` marker), you know they posted something but can't speak to what — note it as activity, don't fabricate the contents.
+**Shared alert channels** (multiple posters):
+- `🕰️-member-alerts-🕰️`
+- `🐄-spot-bag-alerts-🐄`
+- `🚨-0dte-lotto-alerts-🚨`
+- `🪙-crypto-alerts-🪙`
+
+Each post here is still an entry commitment from the user who posted it — same prospective-entry property as a caller-owned channel. The room sees the alert before outcome is known. Less structural than caller-owned (the user chooses *whether* to post to a shared room, so some curation is possible at the channel-entry level), but each individual alert is still a real receipt of "I'm in X at Y."
+
+Read alert posts in `trader_examples` / Recent trades by quoting the alert content: "Posted `$NVDA 145C entry 8.40 stop 6.00` in member-alerts on 4/18, closed +320% at 35 a week later." The pre-trade levels make it ctrl-F-verifiable in the channel.
+
+### Type 2 — CLOSED-TRADE P&L SCREENSHOTS (retrospective receipts)
+
+Posts in `💲-gain-loss-porn-💲` are after-the-fact P&L cards: Robinhood "closed $4,200 PLTR 75c" notifications, position screens with green/red gain pills, total-PnL summaries. These prove an OUTCOME (the trade closed at +180% or -42%), not an entry commitment. Curation IS possible here — the user chooses which closes to screenshot. A wins-only gain-loss-porn history is selective evidence.
+
+**Treat OCR'd P&L as receipts — documented evidence, not claims.** Text in chat ("took +$4K on PLTR") is what someone *says* they did. OCR'd screenshot text showing `+$4,200 · PLTR · +180%` is what they posted *as proof*. Use BOTH together to read the trader.
+
+- **Wins-only P&L screenshots** (10 greens, no reds, no alert-channel posts elsewhere) is itself signal — read it as selective receipts, not as a flawless trader.
+- **Mixed wins + losses cleanly posted** (greens + reds with text owning the losses) is strong evidence.
+- **Loud chat conviction + zero screenshots + zero alert posts** is talk without receipts. Don't score it like documented PnL.
+- **Quiet user + a steady drip of alert-channel entries + green close-out cards** outranks a loud user with no commitments.
+
+### Combining the two types
+
+A user who posts entries in alert channels (Type 1) AND closes them in gain-loss-porn (Type 2) is producing the fullest documentation possible — entry + exit, prospective + retrospective. That's a 75+ window with the top of the range available.
+
+A user who only posts entries (Type 1) but rarely closes them in gain-loss-porn still gets 75+ via structural honesty — entries cannot be cherry-picked. The room implicitly tracks outcomes whether or not the user posts them.
+
+A user who only posts closes (Type 2) without alert-channel entries is at the wins-only ceiling unless they also post red P&L cards — because closed-trade screenshots ARE curatable.
+
+**Cross-checking text claims against receipts is fair game.** If a user says "I never play penny stocks" but you see an alert-channel post or OCR'd screenshot of them in $GPUS at $0.20, flag the contradiction in profile_text. The receipts are the truth.
+
+Don't invent OCR content. Only cite what's actually in the `[image-OCR: ...]` blocks or the alert-channel message text. If a screenshot exists with no OCR text (`[image]` marker), you know they posted something but can't speak to what — note it as activity, don't fabricate the contents.
 
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
@@ -359,12 +390,14 @@ Both `trader_rationale` and `racism_rationale` are short summary blocks that get
 
 ### `trader_rationale` (3-5 sentences, ~400-900 chars)
 
-What it covers: (a) the evidence gate — which bracket WINDOW the receipts qualified them for (no receipts → ≤59 / wins-only → ≤74 / wins+losses → 75+), (b) the raw-skill read inside that window, (c) the ±5 tiebreaker if applied and why, (d) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Documented losses are the unlock — name them when they're what moved the user past the wins-only ceiling.
+What it covers: (a) the evidence gate — which PATH (alert posts / closed-P&L losses) unlocked the bracket WINDOW, (b) the raw-skill read inside that window, (c) the ±5 tiebreaker if applied and why, (d) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Name the specific receipts (alert content quoted, P&L card ticker + dollar amount) that moved the bracket.
 
 **Good shapes:**
-- *"Closed $ARM 145c at 3.8 — ran to 17.8 in 48 hours. 'Should've sized up' is now permanent personality, not a one-off lament. Two-sided receipts unlock the 75+ window: posted the $NVDA 145C win (+220%) AND the $WEN bag close (-42%) within the same week. Sharp on macro reads, posts the chart after every entry, executes like he's still asking permission. +3 tiebreaker for the sustained transparency throughout the month; sits in the upper-mid of the 75+ bracket because the wins are real even when the exits are early."*
-- *"Capped at 74 by evidence: 12 green screenshots in gain-loss-porn over 30 days, zero red ones, while loudly bagging $ZEC and $NOWL elsewhere in chat. No posted losses = the wins-only ceiling holds, regardless of how the chat sounds. Knows the theory, talks the right setups, leaks every winner by sizing too small and every loser by averaging down. 'Wendy's Wrong Way' nickname is doing the heavy lifting; would unlock 75+ instantly the day he posts a single red receipt."*
-- *"Caps at 59 — no documented receipts in the window at all. Daily conviction posting on TSLA / NVDA / SPY, "I called this last week" energy, but zero screenshot evidence to anchor any of it. The reads sometimes sound right, sometimes don't; without receipts the score can't separate the two. Position inside the 0-59 window picked at upper-40s because the chat-claimed reads aren't obviously dumb — but the bracket itself is locked until a screenshot lands."*
+
+- *Caller with owned alert channel (Path A — structural honesty):* "Owns a dedicated alert channel and runs ~40 entry alerts a month through it; every position is committed before outcome is known, so the channel itself is the receipt log. Path A unlocks 75+ outright. Inside the window, trade quality is real: tracked alert calls hit on $NVDA 145C entry 8.40 → close 35 (+320%), $SOL perp short at 230 → cover 192 (+16%), with a documented bag on $WEN spot −38% that he closed publicly the same week. +3 tiebreaker for the sustained two-sided posting. Sits high-70s because the alerts work but exits are early."*
+- *Mixed-receipt trader (both paths):* "Two-sided P&L receipts AND alert posting both clear the 75+ gate. Posted the $NVDA 145C win (+220%) AND the $WEN bag close (-42%) in gain-loss-porn within the same week, plus a steady stream of entry alerts in member-alerts (`$ARM 145C entry 3.80 stop 2.50` two days before the run). Sharp on macro reads, executes like he's still asking permission, sells winners early. 'Should've sized up' is now permanent personality. Upper-mid of the 75+ bracket because the wins are real even when the exits are early."*
+- *Wins-only ceiling (no alert posts, curated P&L):* "Capped at 74 by evidence: 12 green screenshots in gain-loss-porn over 30 days, zero red ones, zero alert-channel entries, while loudly bagging two penny names elsewhere in chat. Neither path unlocked — no posted losses (Path B) and no sustained alert posting (Path A). Knows the theory, talks the right setups, leaks every winner by sizing too small and every loser by averaging down. Would unlock 75+ instantly the day he either posts a red close or starts running entries through a shared alert channel."*
+- *No receipts at all (cap at 59):* "Caps at 59 — no alert-channel posts, no P&L screenshots in the window at all. Daily conviction posting on broad-index trades, plenty of "called this" energy, but zero documented commitments to anchor any of it. The reads sometimes sound right, sometimes don't; without receipts the score can't separate the two. Position inside the 0-59 window picked at upper-40s because the chat-claimed reads aren't obviously dumb — but the bracket itself is locked until a real entry or close-out lands somewhere documented."*
 
 **Anti-patterns:**
 - *"Demonstrates strong macro awareness and active trade management."* (corporate)
@@ -419,17 +452,28 @@ If a section genuinely has no signal (user is a near-lurker with no slurs / no t
 
 **trader_score brackets — RECEIPTS GATE THE BRACKET CEILING.**
 
-Bracket window is set FIRST by evidence quality (what's actually documented in OCR'd screenshots from `💲-gain-loss-porn-💲`, position screens, order tickets — NOT chat claims), THEN raw skill picks the position inside that window. Without the receipts, the ceiling does not move regardless of how confident or active the user is.
+Bracket window is set FIRST by evidence quality (what's actually documented in alert-channel posts and OCR'd screenshots — NOT chat claims), THEN raw skill picks the position inside that window. Without the receipts, the ceiling does not move regardless of how confident or active the user is.
 
-- **0-59 — HARD CAP for users with NO posted screenshot receipts at all.** Doesn't matter how loud, how active, or how good their takes sound. Pure chat-claim trading lives here. The loud-talker-posts-nothing user lives here too — that's the design. Lurkers and silent users default here. Inside this window, position by raw quality of the chat-claimed reads / self-awareness / sizing language.
+The 75+ gate can be unlocked by EITHER of two paths (they're equivalent — both prove non-curated honesty):
+
+- **Path A — alert-channel posts as structural commitments.** Posts in an alert channel are prospective entries: the user committed to the position publicly before the outcome was known, so the channel as a whole cannot be cherry-picked. Specifically:
+  - A user who **owns an alert channel** (e.g. `kloh` posting in `🦉-kloh-alerts-🦉`, `zhawk` in `🫦-zhawk-thawghts-🗣`, or any future `<username>-alerts` channel) gets the 75+ window unlocked by default the moment that channel has a meaningful entry history in the window. The channel IS the receipt log.
+  - A user who **posts entries in shared alert channels** (`🕰️-member-alerts-🕰️`, `🐄-spot-bag-alerts-🐄`, `🚨-0dte-lotto-alerts-🚨`, `🪙-crypto-alerts-🪙`) also unlocks 75+ if they've posted a steady stream of entries — each post is still a pre-outcome commitment. Sparse / occasional shared-alert posting (1-2 alerts in the window) is not enough on its own; needs to be a sustained pattern.
+- **Path B — closed-P&L screenshots including documented LOSSES.** At least one real red screenshot in the gain-loss-porn channel — a closed bag, a posted -X% card, a stop-loss hit posted publicly. Not "claimed a loss in chat" — posted the receipt. The presence of a posted loss proves the gain-loss-porn history isn't curated.
+
+Brackets:
+
+- **0-59 — HARD CAP for users with NO alert posts AND NO P&L screenshots at all.** Pure chat-claim trading lives here. Doesn't matter how loud, how active, or how good their takes sound. The loud-talker-posts-nothing user lives here too — that's the design. Lurkers default here. Inside this window, position by raw quality of the chat-claimed reads / self-awareness / sizing language.
   - **0-19:** Tail traffic / exit liquidity. Should not be trading at this size.
   - **20-39:** Bag holder. More losses than wins by chat-claim. Sizes up to recover. Chases the loudest voice.
   - **40-59:** Net negative or barely flat. Knows the theory, leaks edge in execution. Often self-aware. (Note: a user could be GENUINELY in the 80s skill-wise but stuck here because zero receipts — that's the rubric working as intended; the room values documented edge.)
-- **60-74 — CAP for users with WINS-ONLY screenshot receipts.** Some documented evidence exists, but the receipt set is curated greens only. You can see they trade; you can't trust the record because losses are conspicuously absent. The room reads through wins-only posting, and the score reflects it.
-- **75-89 — UNLOCKED only by at least one DOCUMENTED LOSS in the window.** A real red screenshot — a closed bag, a posted -X% card, a stop-loss hit posted publicly. Not "claimed a loss in chat" — posted the receipt. This is the gate. The room only trusts a trader who shows both sides of the book; this bracket is the formal version of that trust.
-- **90-100 — meets the 75+ gate (documented losses) AND skill is exceptional.** Process visible across multiple trades: entries posted BEFORE the move, not after. Wins others tail. Repeatable setup, not coinflips. The room actively books the call when this user posts.
+- **60-74 — CAP for users with WINS-ONLY P&L screenshots and either no alert-channel posts or only sparse / one-off shared-alert mentions.** Some documented evidence exists, but the receipt set is selective greens with no commitment-style entry log to anchor the rest of the record. The room reads through this, and the score reflects it.
+- **75-89 — UNLOCKED via Path A OR Path B above.** Either the user has structural alert-posting honesty (owned channel, or sustained shared-alert entries) OR they've posted a real red P&L screenshot alongside their wins. Equivalent gates, equivalent unlock. The room only trusts a trader whose record can't be curated; this bracket is the formal version of that trust.
+- **90-100 — meets the 75+ gate AND skill is exceptional.** Process visible across multiple trades: entries posted BEFORE the move, not after, with the room actively booking them. Repeatable setup, not coinflips. The room actively tails this user's calls.
 
-**Documented losses are POSITIVE evidence, not just penalty-avoidance.** Load-bearing line: a screenshotted -$3k loss is worth MORE evidentiary credit than a claimed +$3k win with no proof. Posting a red receipt raises the CONFIDENCE of the score because it proves the record isn't curated. That's why losses unlock 75+ — not as a virtue tax, but because the score can't be calibrated upward without them. A user who posts only greens hits the wins-only ceiling at 74 even if those greens are spectacular. To break 75 you need at least one posted loss in the window. That single line flips the room's posting incentive: posting your loss is how you climb, not how you confess.
+**Documented losses (Path B) AND alert-channel entries (Path A) are both POSITIVE evidence, not penalty-avoidance.** Load-bearing principle: a screenshotted -$3k loss is worth MORE evidentiary credit than a claimed +$3k win with no proof. A prospective alert-channel entry posted at 8.40 (that later closed at 6.00 for -28%) is worth MORE than a chat brag about catching the top. Both forms of structural commitment raise the CONFIDENCE of the score because they prove the record isn't curated. That's why either path unlocks 75+ — not as a virtue tax, but because the score can't be calibrated upward without one of them.
+
+A wins-only-P&L user with no alert posts hits the ceiling at 74 even if those greens are spectacular. To break 75 they need either (a) a posted red receipt or (b) sustained alert-channel posting. That single rule flips the room's incentive: real-time entry alerts and posted losses are the ways to climb, not confessions.
 
 **±5 honesty tiebreaker (within the bracket window only).** This is a small refinement, NOT the main lever — receipts already gate the bracket. Within the chosen window, adjust by up to ±5:
 - **+3 to +5:** sustained two-sided posting throughout the window — not just the obligatory one loss that unlocked the gate, but consistent wins-AND-losses receipts across the period.

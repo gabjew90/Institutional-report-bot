@@ -154,7 +154,20 @@ class Settings(BaseSettings):
     # Channels in this list are auto-added to the chat ingestion union
     # (no need to also list them in chat_ingestion_channels). OCR runs
     # as a background asyncio task so on_message returns immediately.
-    chat_eager_ocr_channels: str = "💲-gain-loss-porn-💲"
+    chat_eager_ocr_channels: str = (
+        # Closed-trade P&L screenshots (everyone posts here)
+        "💲-gain-loss-porn-💲,"
+        # Caller-owned alert channels (1:1 user → channel — every post is
+        # an entry commitment from that user, structurally no-cherry-pick)
+        "🦉-kloh-alerts-🦉,"
+        "🫦-zhawk-thawghts-🗣,"
+        # Shared alert channels (multiple posters; each post is still an
+        # entry commitment, just not 1:1 to a single caller)
+        "🕰️-member-alerts-🕰️,"
+        "🐄-spot-bag-alerts-🐄,"
+        "🚨-0dte-lotto-alerts-🚨,"
+        "🪙-crypto-alerts-🪙"
+    )
 
     # Per-/ask cap on lazy OCR — how many image-bearing messages will
     # be OCR'd inline during a single /ask. Each OCR call adds ~1-3s
@@ -184,6 +197,8 @@ class Settings(BaseSettings):
         "₿-crypto-yapping-₿,"
         "🏃-fitness-yapping-🏋,"
         "🎲-gambling-yapping-🎲,"
+        "🦉-kloh-alerts-🦉,"
+        "🫦-zhawk-thawghts-🗣,"
         "🕰️-member-alerts-🕰️,"
         "🐄-spot-bag-alerts-🐄,"
         "🚨-0dte-lotto-alerts-🚨,"
