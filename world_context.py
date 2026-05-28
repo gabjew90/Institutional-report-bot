@@ -87,6 +87,69 @@ GEOPOLITICAL_CONTEXT_BLOCK = (
 # block below sets expectations on how to use that data rather than
 # hardcoding a calendar.
 
+# ─── Owned alert-channel mapping (profile-builder Path A unlock) ────
+# Explicit username → owned-channel mapping so Path A detection in the
+# profile builder is DETERMINISTIC, not pattern-match. Was missing
+# previously: the model correctly matched `abe-alerts` to abullish_xyz
+# but missed `kyle-alerts` → bankerkyle because of the alias gap.
+#
+# When adding a new caller, add the row here + add the channel to
+# config.py's chat_eager_ocr_channels + (optionally) config.py's
+# analyst_callers if you want full caller-mode tracking. This file is
+# the single source of truth for "who owns which channel."
+#
+# Format: list of (channel_name, username, display_name) tuples.
+
+OWNED_ALERT_CHANNELS: list[tuple[str, str, str]] = [
+    # (channel_name,                    username,         display)
+    ("💲-gain-loss-porn-💲",           "*shared",         "(shared P&L receipts — anyone)"),
+    ("💅🏾-kyle-alerts-💅🏾",          "bankerkyle",     "BK"),
+    ("🥷🏽-abe-alerts-🥷🏽",            "abullish_xyz",   "abe"),
+    ("🦉-kloh-alerts-🦉",              "kloh.",           "kloh"),
+    ("🫦-zhawk-thawghts-🗣",           ".zhawk",          "ZHawk"),
+]
+
+def owned_channels_prompt_block() -> str:
+    """Pre-built prose block for the profile prompt. Lists each owned
+    channel + its owner so the model has a deterministic mapping
+    instead of relying on substring pattern-match. The Path A unlock
+    rule references this block by sentinel."""
+    lines = [
+        "KNOWN OWNED ALERT CHANNELS (deterministic Path A mapping — do not",
+        "infer ownership from channel-name pattern; use this table):",
+    ]
+    for ch, user, disp in OWNED_ALERT_CHANNELS:
+        if user == "*shared":
+            lines.append(f"  - `{ch}` — shared P&L screenshots (no single owner)")
+        else:
+            lines.append(f"  - `{ch}` — owned by `{user}` (display: {disp})")
+    lines.append(
+        "If you are profiling one of the named users above AND they have"
+    )
+    lines.append(
+        "a meaningful stream of posts in their owned channel (≥10 posts"
+    )
+    lines.append(
+        "in the window), Path A unlocks unconditionally — they get the"
+    )
+    lines.append(
+        "75+ window. Position inside is set by trade quality alone."
+    )
+    lines.append(
+        "Channels NOT in this table are shared alert channels (e.g."
+    )
+    lines.append(
+        "member-alerts, spot-bag-alerts, 0dte-lotto-alerts, crypto-alerts);"
+    )
+    lines.append(
+        "sustained posting in those CAN unlock Path A but requires a real"
+    )
+    lines.append(
+        "stream (≥15 entry alerts in the window), not occasional mentions."
+    )
+    return "\n".join(lines)
+
+
 MAG7_EARNINGS_AWARENESS_BLOCK = (
     "MAG7 earnings windows (binding rule): the Finnhub earnings "
     "calendar reaches synthesis pre-filtered to MAG7 + top banks + "

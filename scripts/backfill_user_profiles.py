@@ -324,20 +324,19 @@ The room generates two structurally different forms of documented trading eviden
 
 An alert post is a position entry the user publicly committed to BEFORE the outcome was known. The room sees the call go up in real time; there's no way to retroactively delete a loser. This is why alert posting is the highest form of structural honesty — the channel itself is the receipt log, and curation is structurally impossible (you can't post your winners only when entries are posted prospectively).
 
-**Caller-owned alert channels** (1:1 — the channel name names the caller):
-- `🦉-kloh-alerts-🦉` → kloh's entries
-- `🫦-zhawk-thawghts-🗣` → zhawk's entries
-- (Any future channel named `<username>-alerts` follows the same pattern — if the channel name pattern-matches a user's display name or username, treat it as their owned channel.)
+__OWNED_CHANNELS_BLOCK__
 
-Posts in a caller's own channel are **structural full honesty**. Every entry there is documented. The caller cannot cherry-pick — the room would notice missing alerts on positions they're talking about elsewhere. This unlocks the 75+ bracket window for the channel owner by default (the gate is *met* by structural posting, not by needing a separate posted red P&L). Position inside 75+ is then set by trade quality.
+Posts in a caller's own channel (per the table above) are **structural full honesty**. Every entry there is documented. The caller cannot cherry-pick — the room would notice missing alerts on positions they're talking about elsewhere. This unlocks the 75+ bracket window for the channel owner by default when they have ≥10 posts in the window. Position inside 75+ is set by trade quality alone.
 
-**Shared alert channels** (multiple posters):
+**Shared alert channels** (multiple posters, not in the owned table):
 - `🕰️-member-alerts-🕰️`
 - `🐄-spot-bag-alerts-🐄`
 - `🚨-0dte-lotto-alerts-🚨`
 - `🪙-crypto-alerts-🪙`
 
-Each post here is still an entry commitment from the user who posted it — same prospective-entry property as a caller-owned channel. The room sees the alert before outcome is known. Less structural than caller-owned (the user chooses *whether* to post to a shared room, so some curation is possible at the channel-entry level), but each individual alert is still a real receipt of "I'm in X at Y."
+Each post here is still an entry commitment from the user who posted it — same prospective-entry property as a caller-owned channel. The room sees the alert before outcome is known. Less structural than caller-owned (the user chooses *whether* to post to a shared room, so some curation is possible at the channel-entry level), but each individual alert is still a real receipt of "I'm in X at Y." Path A via shared alerts requires ≥15 entry alerts in the window — fewer than that is occasional posting, NOT sustained.
+
+**These are the ONLY two ways to unlock Path A.** Do NOT invent a third path — "thesis-posting in chat," "multi-day analysis in regular channels," "consistent room engagement," etc. are NOT structural commitments and do not unlock 75+. They go in the 0-59 bracket as chat-claim activity. The two paths above are the complete list.
 
 Read alert posts in `trader_examples` / Recent trades by quoting the alert content: "Posted `$NVDA 145C entry 8.40 stop 6.00` in member-alerts on 4/18, closed +320% at 35 a week later." The pre-trade levels make it ctrl-F-verifiable in the channel.
 
@@ -412,6 +411,12 @@ What it covers: the rank-defining racial-humor BEHAVIOR — sourced from real ch
 
 **Hard rule — see the ATTRIBUTION RULE in HOW TO WRITE:** every quoted slur or framing in this field MUST be a verbatim substring of THIS user's own MESSAGES below. Don't write "drops 'pajeet'" or "calls China 'chyna'" unless that exact string is in their actual chat. Inventing a slur attribution is the worst kind of error this prompt can produce.
 
+**Thin-evidence calibration (BINDING — anti-hallucination):** the racism rationale must SCALE to the evidence in the messages provided. Concrete rules:
+
+- If the messages below contain **zero verbatim slurs and zero specific race-edged jokes/stereotypes**, the rationale CANNOT use phrases like "high-volume offender," "uses slurs as casual punctuation," "saturated with race-based mockery," "uncensored racial slurs," or any framing that implies dominant volume. Score caps at the bracket the actual evidence supports — typically 0-35.
+- If the prior profile from a previous refresh contained heavy claims but the NEW messages show no slurs and no race-edged content, the new rationale MUST recalibrate down. Silence is signal in the racism dimension — a user who went 30 days without race-edged content gets a sparser rationale and a lower score, regardless of what their prior profile said. Do NOT carry forward racism claims from prior profiles when the new evidence doesn't support them.
+- The score must be defensible from the messages alone. Ask before emitting: "if a reader saw only this user's messages from the window, would they call them an N/100 racism user?" If the messages can't support the number, lower it.
+
 **Anti-patterns:**
 - *"High volume of racially-edged content."* (generic, dry)
 - *"Frequent slur user with stereotyping patterns."* (corporate)
@@ -456,10 +461,12 @@ Bracket window is set FIRST by evidence quality (what's actually documented in a
 
 The 75+ gate can be unlocked by EITHER of two paths (they're equivalent — both prove non-curated honesty):
 
-- **Path A — alert-channel posts as structural commitments.** Posts in an alert channel are prospective entries: the user committed to the position publicly before the outcome was known, so the channel as a whole cannot be cherry-picked. Specifically:
-  - A user who **owns an alert channel** (e.g. `kloh` posting in `🦉-kloh-alerts-🦉`, `zhawk` in `🫦-zhawk-thawghts-🗣`, or any future `<username>-alerts` channel) gets the 75+ window unlocked by default the moment that channel has a meaningful entry history in the window. The channel IS the receipt log.
-  - A user who **posts entries in shared alert channels** (`🕰️-member-alerts-🕰️`, `🐄-spot-bag-alerts-🐄`, `🚨-0dte-lotto-alerts-🚨`, `🪙-crypto-alerts-🪙`) also unlocks 75+ if they've posted a steady stream of entries — each post is still a pre-outcome commitment. Sparse / occasional shared-alert posting (1-2 alerts in the window) is not enough on its own; needs to be a sustained pattern.
+- **Path A — alert-channel posts as structural commitments.** Posts in an alert channel are prospective entries: the user committed to the position publicly before the outcome was known, so the channel as a whole cannot be cherry-picked. The KNOWN OWNED ALERT CHANNELS table above is the deterministic mapping — use it, don't infer channel ownership from name substring. Specifically:
+  - A user listed in the OWNED ALERT CHANNELS table who has **≥10 posts** in their own channel within the window gets the 75+ window unlocked by default. The channel IS the receipt log.
+  - A user who posts ≥15 entry alerts in shared alert channels (member-alerts / spot-bag-alerts / 0dte-lotto-alerts / crypto-alerts) within the window also unlocks 75+ — each post is still a pre-outcome commitment. Sparse / occasional shared-alert posting (under 15 alerts) is not enough on its own; needs to be a sustained pattern.
 - **Path B — closed-P&L screenshots including documented LOSSES.** At least one real red screenshot in the gain-loss-porn channel — a closed bag, a posted -X% card, a stop-loss hit posted publicly. Not "claimed a loss in chat" — posted the receipt. The presence of a posted loss proves the gain-loss-porn history isn't curated.
+
+**These are the ONLY two paths to 75+.** Do NOT invent a third unlock path (e.g. "detailed thesis posting in regular channels," "multi-day analysis with conviction language," "active room participation," "shared positions in chat with no alert-channel commitment"). Those forms of activity stay in the 0-59 bracket as chat-claim trading regardless of how good the reads sound. The rubric's design is deliberate: documented commitment OR documented loss, nothing else.
 
 Brackets:
 
@@ -503,6 +510,22 @@ Anchor against THIS user's messages. Zero examples = 0-15.
 MESSAGES (oldest first, most recent last):
 {messages_block}\
 """
+
+# Inject the owned-channels block now that the static template is defined.
+# world_context.py is the single source of truth for the channel→owner
+# mapping. Updating that file propagates here without grep-and-pray.
+try:
+    import world_context as _world_ctx
+    PROFILE_PROMPT = PROFILE_PROMPT.replace(
+        "__OWNED_CHANNELS_BLOCK__", _world_ctx.owned_channels_prompt_block()
+    )
+except ImportError:
+    # world_context isn't on PYTHONPATH (running outside the bot env);
+    # fall back to a minimal inline note so the prompt still loads.
+    PROFILE_PROMPT = PROFILE_PROMPT.replace(
+        "__OWNED_CHANNELS_BLOCK__",
+        "KNOWN OWNED ALERT CHANNELS: see world_context.OWNED_ALERT_CHANNELS",
+    )
 
 
 def _verify_profile_claims(
