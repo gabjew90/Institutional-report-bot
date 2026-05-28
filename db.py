@@ -3732,16 +3732,15 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
 
 
 def receipts_ceiling_from_points(points: int) -> int:
-    """Map 7-day rolling points → trader_score ceiling.
+    """DEPRECATED — kept for backwards-compat with any external caller.
 
-    The receipts certify trustworthy edge; the ceiling determines how high
-    the chatter-base read can be realized. Without receipts (0 points),
-    the bot can believe someone is decent from how they talk but can't
-    certify edge, so the ceiling holds at 65.
+    The scoring system switched from min(base, ceiling) to additive
+    (base + receipts, no receipts cap). This helper is no longer
+    consumed by the profile builder. The pre-additive ceiling tier
+    table is preserved below as historical reference only.
 
-    Tiers (designed to reward starting to post AND to reward sustained
-    posting — the jump from 9 → 10 points is deliberate, marking the
-    threshold where the room actually trusts the receipt cadence):
+    Original docstring (kept for context — values are stale):
+    Mapped rolling points → trader_score ceiling.
 
         0      points → 65   ("no receipts — can't certify edge")
         1-4    points → 70   ("starting to post; sliver above no-receipts")
@@ -3765,11 +3764,12 @@ def receipts_ceiling_from_points(points: int) -> int:
 
 
 def get_member_trade_events(
-    author_id: int, days: int = 7, limit: int = 200,
+    author_id: int, days: int = 14, limit: int = 200,
 ) -> list[dict]:
     """All is_trade=1 rows for a single member-mode author over the last N
-    days, newest first. Used by the future trader-points scoring system
-    (rolling 7-day point window: open=3, open+close-win=5, post-only=1).
+    days, newest first. Used by the trader-points scoring system
+    (rolling 14-day window — see compute_member_points for the
+    5/3/2/2/1 spec with the 0-point pending bucket).
 
     Caller-mode rows are excluded — official callers have their own
     surfacing in /ask context blocks (RECENT TRADES, currently open).

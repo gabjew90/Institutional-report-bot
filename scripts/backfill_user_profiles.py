@@ -122,7 +122,7 @@ Per-section quick reference, all following the universal rule:
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned.
-- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 7-day points ledger is decayed automatically — entries / closes from 8+ days ago are gone, only this week's commitments count. The final = `min(100, clip(chatter_base + honesty, 65) + receipt_points)`. If last week the user posted 8 entries that closed for wins, they had 40 receipt points; if this week they posted 2, they have 10. The score drops accordingly. That's the decay mechanism working as designed.
+- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 14-day points ledger is decayed automatically — entries / closes from 15+ days ago stop scoring, only the last two weeks' commitments count. The final = `min(100, clip(chatter_base + honesty, 50) + receipt_points)`. If two weeks ago the user posted 8 entries that closed for wins (40 points), and now those have aged out and this period they posted 2 (10 points), the score drops accordingly. That's the decay mechanism working as designed.
 - **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter bracket / honesty modifier / receipt points / final), but the numbers re-derive every time. Don't carry forward stale point counts from a prior refresh.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly.
@@ -326,7 +326,7 @@ An alert post is a position entry the user publicly committed to BEFORE the outc
 
 __OWNED_CHANNELS_BLOCK__
 
-Posts in a caller's own channel (per the table above) are **structural full honesty**. Every entry there is documented; the caller cannot cherry-pick. These posts accumulate points in the 7-DAY POINTS LEDGER below — entry+close pairs score the +5 / +3, lifting the receipts ceiling.
+Posts in a caller's own channel (per the table above) are **structural full honesty**. Every entry there is documented; the caller cannot cherry-pick. These posts accumulate points in the 14-DAY POINTS LEDGER below — entry+close pairs score the +5 / +3, adding to the chatter base.
 
 **Shared alert channels** (multiple posters, not in the owned table):
 - `🕰️-member-alerts-🕰️`
@@ -389,10 +389,10 @@ What it covers: (a) the evidence gate — which PATH (alert posts / closed-P&L l
 
 **Good shapes** (use as structural templates — the bracketed slots are filled from this user's actual evidence, NEVER copied as-is):
 
-- *Sharp talker, no receipts (50-65 chatter + 0 points):* "Chatter base reads `[X in 50-65]` — `[chat-evidence: sharp macro takes, conviction calibration, owns losses cleanly, no obvious tilt]`. `[+/-N honesty modifier + reason]`. 0 receipt points in the 7-day ledger. Final lands at `[chatter + honesty]`. Talks a strong game but the room can't certify edge without receipts."
-- *Average joe (35-50 chatter + some receipts):* "Chatter base reads `[X in 35-50]` — `[chat-evidence: sells winners early, lukewarm conviction, follows the room when it pivots]`. `[Honesty modifier reasoning if any]`. `[N receipt points: M wins + L unwon + K screenshots]`. Final lands at `[X + N]`. Receipts lift them but the chatter pattern doesn't certify edge."
-- *Bag holder (0-35 chatter, low or high receipts):* "Chatter base reads `[X in 0-35]` — `[chat-evidence: bag-holding language, tilt cycles, copy-trading, complaining about closed bags]`. `[Win rate ratio if BAG-HOLDER FLAG fired — e.g. 4W / 11L in the window]`. `[Honesty modifier if any — usually -5 to -10 for visible deception]`. `[N receipt points]`. Final lands at `[X + N]` — the receipt lift pulls them out of the 0-35 zone without certifying the chat as anything above bag-holder."
-- *Heavy poster, sharp by both layers (50-65 chatter + heavy receipts):* "Chatter base reads `[X in 50-65]` — `[chat-evidence: clean reads, repeatable framework, room tails the calls]`. `[Win rate ≥65% if STRONG-EDGE FLAG fired]`. `[+honesty modifier + reason]`. `[N receipt points]`. Final lands at `[X + N]`, in the upper bracket because both layers stack."
+- *Sharp talker, no receipts (40-50 chatter + 0 points):* "Chatter base reads `[X in 40-50]` — `[chat-evidence: sharp macro takes, conviction calibration, owns losses cleanly, no obvious tilt]`. `[+/-N honesty modifier + reason]`. 0 receipt points in the 14-day ledger. Final lands at `[chatter + honesty]`. Talks a strong game but the room can't certify edge without receipts."
+- *Average joe (25-40 chatter + some receipts):* "Chatter base reads `[X in 25-40]` — `[chat-evidence: sells winners early, lukewarm conviction, follows the room when it pivots]`. `[Honesty modifier reasoning if any]`. `[N receipt points: M wins + L unwon + K screenshots]`. Final lands at `[X + N]`. Receipts lift them but the chatter pattern doesn't certify edge."
+- *Bag holder (0-25 chatter, low or high receipts):* "Chatter base reads `[X in 0-25]` — `[chat-evidence: bag-holding language, tilt cycles, copy-trading, complaining about closed bags]`. `[Honesty modifier if any — usually -5 to -10 for visible deception]`. `[N receipt points]`. Final lands at `[X + N]` — the receipt lift pulls them out of the pure-bag-holder zone without certifying the chat as anything above bag-holder."
+- *Heavy poster, sharp by both layers (40-50 chatter + heavy receipts):* "Chatter base reads `[X in 40-50]` — `[chat-evidence: clean reads, repeatable framework, room tails the calls]`. `[+honesty modifier + reason]`. `[N receipt points]`. Final lands at `[X + N]`, in the upper bracket because both layers stack."
 
 **Hard rule.** The bracketed slots are placeholders. Fill each with content sourced from the actual MESSAGES + analyst_trades + points ledger for THIS user. NEVER copy the example point counts, win-loss ratios, or framing across to a different user — same ATTRIBUTION RULE that governs Voice / Retarded takes.
 
@@ -455,31 +455,31 @@ If a section genuinely has no signal (user is a near-lurker with no slurs / no t
 
 **(trader_examples removed.)** Trade activity used to be a separate field — now it's folded into personal_ammo (for quotable single-line trade receipts) and the "Trash talk & life ammo" narrative section (for trade-anchored bits the room riffs on). Don't write a `trader_examples` field; the schema doesn't have one.
 
-**trader_score — CHATTER BASE (0-65) + RECEIPTS (additive).**
+**trader_score — CHATTER BASE (0-50) + RECEIPTS (additive, unbounded above).**
 
-Two layers, ADDED together. Chatter caps at 65; receipts are the only path past 65.
+Two layers, ADDED together. Chatter caps at 50; receipts add on top with no cap of their own. The final still caps at 100, but the chatter ceiling at 50 leaves at least 50 points of room above for receipts to fill — that's the entire point of certifying through posts.
 
 ```
 final_score = min(100, chatter_base + honesty_modifier + receipt_points)
 ```
 
-**Layer 1 — Chatter base (0-65, calibrated from MESSAGES below).**
+**Layer 1 — Chatter base (0-50, calibrated from MESSAGES below).**
 
-Read the user's actual chat and place them in one of three bands. **Chatter caps at 65 absolutely — no matter how sharp someone sounds, the chat alone cannot push them above 65. Receipts are the certification.**
+Read the user's actual chat and place them in one of three bands. **Chatter caps at 50 absolutely — no matter how sharp someone sounds, the chat alone cannot push them above 50. Receipts are the certification.**
 
-- **0-35 — Bag holders. Never win.** Chat is dominated by losses, panic exits, copy-trading whoever's loudest, bag-holding language, sizing up to recover. Tilt cycles visible. Calls go against them more often than not. The texture is "I'm down again" and "what's bouncing." Use the lower half for active-loud bag-holders, upper half for users where the bag is there but the tone is more resigned than panicked.
-- **35-50 — Average joes.** Sell winners too early, hold losers too long, coin-flip outcomes over time. Follow the crowd more than they lead. Some self-awareness but doesn't translate to execution. The "talks the right setups, fades them" pattern. Lukewarm conviction; pivots when the room pivots.
-- **50-65 — Talks a good game.** Sharp reads, owns losses cleanly, calibrated conviction language, reasonable risk management talk, no obvious tilt cycle. Seems to win. Chat alone is consistent with real edge — but with no receipts, the room can't certify it. The "sounds like an actually-good trader, hasn't proven it" bracket.
+- **0-25 — Bag holders. Never win.** Chat is dominated by losses, panic exits, copy-trading whoever's loudest, bag-holding language, sizing up to recover. Tilt cycles visible. Calls go against them more often than not. The texture is "I'm down again" and "what's bouncing." Use the lower half for active-loud bag-holders, upper half for users where the bag is there but the tone is more resigned than panicked.
+- **25-40 — Average joes.** Sell winners too early, hold losers too long, coin-flip outcomes over time. Follow the crowd more than they lead. Some self-awareness but doesn't translate to execution. The "talks the right setups, fades them" pattern. Lukewarm conviction; pivots when the room pivots.
+- **40-50 — Talks a good game.** Sharp reads, owns losses cleanly, calibrated conviction language, reasonable risk management talk, no obvious tilt cycle. Seems to win. Chat alone is consistent with real edge — but with no receipts, the room can't certify it. The "sounds like an actually-good trader, hasn't proven it" bracket.
 
 **Honesty modifier (±10) on the chatter base.** Adjusts before the receipt add:
 - **+3 to +5:** Self-aware about losses, owns misses without crisis language, doesn't bury bad trades.
 - **−5 to −10:** Gloat-loud / complain-vague asymmetry — loud about wins, evasive about losses. Bag-holding language elsewhere while talking sharp in chat. Visible deception drags the chatter base down.
 
-After the honesty modifier, **clip chatter base + honesty at 65**. The cap is hard.
+After the honesty modifier, **clip chatter base + honesty at 50**. The cap is hard.
 
-**Layer 2 — Receipt points (additive, from the 7-day ledger above).**
+**Layer 2 — Receipt points (additive, from the 14-day ledger above; unbounded above on its own — the only ceiling is the final 100 cap).**
 
-The 7-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the chatter base:
+The 14-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the (clipped) chatter base:
 
 - **+3 per entry posted (automatic on post).** Posting an entry is structural commitment — published before outcome.
 - **+5 if the position later closes for a gain in the window** (the +3 upgrades to +5; net +2 win bonus).
@@ -493,19 +493,19 @@ The 7-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the chat
 
 The receipt points are the user's actual ledger total — no further mapping. A user with 22 points adds 22 to their (clipped) chatter base. The final caps at 100.
 
-**Final score = min(100, clip(chatter_base + honesty, 65) + receipt_points).**
+**Final score = min(100, clip(chatter_base + honesty, 50) + receipt_points).**
 
 Four populations the additive rubric reads correctly:
 
-- **Pure talker, sounds sharp, no receipts.** Chatter 60 + 0 receipts → 60. The 65 cap doesn't matter; they're below it. Talks a strong game; nothing certifies it.
-- **Pure talker, obvious bag-holder.** Chatter 28 + 0 receipts → 28. Bag-holder by chat, no receipts to lift them. Scored honestly from the complaining.
-- **Mid trader who posts.** Chatter 48 (average joe — coin-flip outcomes) + 15 receipt points → 63. Receipts add but the chatter ceiling on its layer didn't anchor them high; they earn lift from posts.
-- **Sharp trader with receipts.** Chatter 62 (sharp + clean) + 28 receipt points → 90. Both layers stacking. The 50-65 chatter band combined with sustained receipts is where edge is certified.
-- **Loud bag-holder with high post volume (BK pattern).** Chatter 30 (bag-holder by win rate) + 35 receipt points → 65. Receipts lift them out of the bag-holder zone but only to the "talks good game" ceiling — they're posting but their actual win rate doesn't certify the chatter as sharp.
+- **Pure talker, sounds sharp, no receipts.** Chatter 45 + 0 receipts → 45. The 50 cap doesn't matter; they're below it. Talks a strong game; nothing certifies it.
+- **Pure talker, obvious bag-holder.** Chatter 20 + 0 receipts → 20. Bag-holder by chat, no receipts to lift them. Scored honestly from the complaining.
+- **Mid trader who posts.** Chatter 35 (average joe — coin-flip outcomes) + 30 receipt points → 65. Receipts add cleanly because the chatter base wasn't already near the cap.
+- **Sharp trader with receipts.** Chatter 48 (clipped from 51 — sharp + clean) + 40 receipt points → 88. Both layers stacking. The 40-50 chatter band combined with sustained receipts is where edge is certified.
+- **Loud bag-holder with high post volume (BK pattern).** Chatter 22 (bag-holder pattern) + 35 receipt points → 57. Receipts lift them out of the bag-holder zone but only modestly — the lift is bounded by the receipt total he actually earned, NOT by an artificial ceiling. If he posts more wins, the score climbs further.
 
-State the reasoning in trader_rationale — 3 to 5 sentences. Cover (a) chatter bracket + what drove it (with the win-rate signal called out if it applied), (b) honesty modifier if any, (c) receipt points from the ledger, (d) final number + the anchored examples that read the call. Example:
+State the reasoning in trader_rationale — 3 to 5 sentences. Cover (a) chatter bracket + what drove it, (b) honesty modifier if any, (c) receipt points from the ledger, (d) final number + the anchored examples that read the call. Example:
 
-> "Chat reads bag-holder by evidence: 12k messages of confident takes but a 4-win / 11-loss week and complaining about closed bags every other day. Chatter base lands at 30 (active-loud bag-holder, not resigned). 18 receipt points from the entries he did post — he commits to entries publicly, that's real. Final 48. The +3 receipt-per-entry credit lifts him out of the 0-35 bracket the win rate would suggest, but not into the 50+ "talks good game" zone — the lift caps at the receipt total he actually earned."
+> "Chat reads bag-holder: 12k messages of confident takes but the actual outcomes visible in chat skew heavy on closed bags and complaining-vague-about-losses tilt cycles. Chatter base lands at 22 (active-loud bag-holder, not resigned). −3 honesty modifier for the gloat-loud / complain-vague asymmetry. Clipped at 50, so 19 stands. 35 receipt points from the entries he did post — commitment is real even when outcomes aren't. Final 54. Receipts lift him out of pure bag-holder territory, but the chatter base anchors him below the sharp-trader range."
 
 **trader_score = SKILL ONLY, not activity.** Volume in chat doesn't raise the score on its own; the brackets above describe behavioral quality. Activity is separately visible via the msg_count in the dossier header.
 
@@ -521,11 +521,11 @@ Anchor against THIS user's messages. Zero examples = 0-15.
 
 ---
 
-7-DAY POINTS LEDGER — used by the trader_score rubric's receipts ceiling.
+14-DAY POINTS LEDGER — used by the trader_score rubric's receipts layer.
 
 {points_block}
 
-The total points + implied ceiling above are computed from analyst_trades (real entries / closes / screenshots posted by THIS user in their alert channel and gain-loss-porn). The trader_score's receipts-ceiling layer reads directly off this. Honor the ceiling as a HARD cap — `min(chatter_base + honesty_modifier, ceiling)`. If your chatter read exceeds the ceiling, the score lands at the ceiling, not at your chatter read. (Pure-talker / no-receipts users hit ceiling 65 here, and that's by design.)
+The total points above are computed from analyst_trades (real entries / closes / screenshots posted by THIS user in their alert channel and gain-loss-porn). The receipts layer is ADDITIVE — points add directly to the (clipped) chatter base. There is NO internal cap on receipts; the only ceiling is the final 100 cap. A user with sustained heavy posting CAN exceed 50 from receipts alone. Pure-talker / no-receipts users land at their chatter base value (clipped at 50) — and that's by design.
 
 ---
 
@@ -781,7 +781,7 @@ def _format_points_block(user_id: int) -> str:
     Older rows stay in the DB but stop scoring. Receipts add directly
     to the chatter base.
 
-    Final = min(100, clip(chatter_base + honesty, 65) + receipt_points)
+    Final = min(100, clip(chatter_base + honesty, 50) + receipt_points)
     """
     ledger = db.compute_member_points(int(user_id), days=14)
     pending_note = (
@@ -821,8 +821,10 @@ def _format_points_block(user_id: int) -> str:
         f" screenshot (no entry) = +2; losing screenshot = +1.)",
         f"",
         f"(Receipt points add ON TOP of the chatter base. Final ="
-        f" min(100, clip(chatter_base + honesty, 65) + receipt_points)."
-        f" Chatter base caps at 65 — receipts are the only path past 65.)",
+        f" min(100, clip(chatter_base + honesty, 50) + receipt_points)."
+        f" Chatter base caps at 50 — receipts are the only path past 50,"
+        f" and receipt points have no internal cap of their own. A heavy"
+        f" poster CAN exceed 50 from receipts alone if they post enough.)",
     ]
     return "\n".join(lines)
 
