@@ -1654,20 +1654,37 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
             eligible: list[tuple[int, list[dict]]] = []
             skipped_lurkers = 0
             skipped_stable = 0  # existing profile, not enough new material
+            # FORCE-mode floor: 30 msgs (matches what we promise in the
+            # message + the docstring). Default-mode floor stays at
+            # min_msgs (100 by default) so cold-start gating still applies
+            # to fresh users with thin history. Users who ALREADY have a
+            # profile bypass both floors in force mode — they're already
+            # in the ranking, so re-rank them regardless of msg count
+            # (otherwise low-activity users locked in old scores forever).
+            FORCE_LIFETIME_FLOOR = 30
             if force:
                 print(
-                    "FORCE mode: bypassing delta_threshold — every user "
-                    "above the 30-msg lifetime floor will be re-profiled.",
+                    f"FORCE mode: bypassing delta_threshold — every user "
+                    f"above the {FORCE_LIFETIME_FLOOR}-msg lifetime floor "
+                    f"(or with an existing profile) will be re-profiled.",
                     flush=True,
                 )
             for uid, msgs in by_user.items():
-                if len(msgs) < min_msgs:
+                has_existing_profile = uid in existing_profiles
+                if force:
+                    # In force mode: existing profile bypasses the floor
+                    # entirely; new users still need >= FORCE_LIFETIME_FLOOR.
+                    floor = 0 if has_existing_profile else FORCE_LIFETIME_FLOOR
+                else:
+                    floor = min_msgs
+                if len(msgs) < floor:
                     skipped_lurkers += 1
                     continue
                 if not force:
-                    existing = existing_profiles.get(uid)
-                    last_seen = (existing or {}).get("last_seen_message_at")
-                    if existing and last_seen:
+                    last_seen = (
+                        existing_profiles.get(uid) or {}
+                    ).get("last_seen_message_at")
+                    if has_existing_profile and last_seen:
                         new_msgs_count = sum(
                             1 for m in msgs if m["timestamp"] > last_seen
                         )
@@ -1684,9 +1701,18 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                 eligible = eligible[:max_n]
                 print(f"\nCapped to top {max_n} users by message count "
                       f"(trimmed {trimmed} below the cap)", flush=True)
+            if force:
+                eligibility_label = (
+                    f"existing profiles re-ranked + new users >= "
+                    f"{FORCE_LIFETIME_FLOOR} msgs"
+                )
+            else:
+                eligibility_label = (
+                    f">= {min_msgs} msgs, >= {delta_threshold} new since "
+                    f"last profile"
+                )
             print(
-                f"\n{len(eligible)} users eligible "
-                f"(>= {min_msgs} msgs, >= {delta_threshold} new since last profile)",
+                f"\n{len(eligible)} users eligible ({eligibility_label})",
                 flush=True,
             )
             print(
