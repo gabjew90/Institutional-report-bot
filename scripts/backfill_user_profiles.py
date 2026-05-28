@@ -923,7 +923,11 @@ async def _generate_profile(
             "trader_rationale",
             "racial_humor_score",
             "trader_examples",
-            "personal_ammo",
+            # personal_ammo intentionally NOT required — quiet users
+            # genuinely have nothing weaponizable, and forcing the
+            # field made Gemini empty-response when it couldn't
+            # produce ammo. parse_response treats absent personal_ammo
+            # as None (treated same as "no new ammo this refresh").
         ],
     )
 
