@@ -313,7 +313,20 @@ Anti-pattern: "Calls everyone slurs and posts memes." (not a trade)
 - **20-39:** Bag holder. More losses than wins. Sizes up to recover. Chases the loudest voice.
 - **0-19:** Tail traffic / exit liquidity. Should not be trading at this size.
 
-State the actual pattern directly in trader_rationale — one honest sentence on what drives the score.
+**Honesty / posting-quality modifier — apply AFTER picking a base bracket above.**
+
+The brackets measure raw skill from documented evidence. This modifier adjusts for HOW the user posts that evidence, because the room values transparency. Apply ONE of these to the base score:
+
+- **+5 to +10 (transparent poster).** Posts wins AND losses cleanly in `💲-gain-loss-porn-💲` or chat — both green screenshots and red ones, both bagged trades and clean exits. Owns misses without burying them. Keeps the room honest. Cap at 100.
+- **0 (neutral).** Mix of receipts and chat-claimed trades, no obvious selectivity. Default for most users.
+- **−5 to −10 (selective / cherry-picker).** Visible asymmetry: 10+ green screenshots / wins talked up loudly in chat, AND ZERO losses posted despite obvious bag-holding language elsewhere. Discount the base score — selective receipts overstate skill. The room reads through this, so should the score.
+- **−15 to −20 (talks loud, posts nothing).** Constant conviction posting, "TSLA is going to $1000," "I called this last week" — but ZERO screenshot receipts at all. Talk without evidence. Discount harder; the base score gives too much weight to chat narrative.
+
+The modifier is your call, anchored to what the messages + OCR'd screenshots actually show. Don't apply it without specific evidence — "feels selective" isn't enough; "20 green screenshots, no red, but actively talks about losing positions in $RBLX" is.
+
+State the actual pattern directly in trader_rationale — 1 to 3 sentences. Cover (a) the bracket you picked and the core trading pattern that justified it, (b) the honesty modifier if you applied one and why. Reference specific tickers / trades / OCR'd $ amounts when they drive the call. Example:
+
+> "Documented wins on $NVDA 145C (+220%) and $ASTX (+234%) place him in the 80s bracket; +5 honesty modifier because he posted his $WEN bag loss publicly the same week. Pattern: macro reads land, execution leaves money on the table from selling winners early."
 
 **racial_humor_score brackets (0-100)** — the canonical score for race-edged content from this user. Internal calibration only; the bot never quotes the raw number. Score the FULL picture (slurs + stereotypes + dog whistles + race-based mockery + unprompted racial references), not just literal slurs. Self-deprecating jokes about the user's OWN race and factual mentions of races/ethnicities in geopolitics or news don't count.
 
@@ -877,7 +890,12 @@ async def _generate_profile(
             "trader_score": types.Schema(type=types.Type.INTEGER),
             "trader_rationale": types.Schema(
                 type=types.Type.STRING,
-                max_length=500,
+                # Bumped 500 → 1000 so the rationale can cover both the
+                # core trading pattern AND the honesty modifier (if
+                # applied) in 1-3 sentences. The /ask dossier surfaces
+                # this directly under trader-rank — readers get the
+                # 'why' inline without opening the full profile.
+                max_length=1000,
             ),
             "racial_humor_score": types.Schema(type=types.Type.INTEGER),
             "trader_examples": types.Schema(
