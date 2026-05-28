@@ -345,47 +345,43 @@ Output a single JSON object with exactly five fields, IN THIS ORDER:
 
 ## RATIONALES — savage-but-hilarious, sourced from real chat
 
-Both `trader_rationale` and `racism_rationale` are short summary lines that get surfaced INLINE next to the user's rank in the /ask dossier. They are NOT internal notes — readers see them. The room is signed up for crude humor; treat these like roast-comedian one-liners, not corporate boilerplate.
+Both `trader_rationale` and `racism_rationale` are short summary blocks that get surfaced INLINE next to the user's rank in the /ask dossier. They are NOT internal notes — readers see them. The room is signed up for crude humor; treat these like roast-comedian bits, not corporate boilerplate.
 
-### `trader_rationale` (1-2 sentences, ~150-280 chars)
+### `trader_rationale` (3-5 sentences, ~400-900 chars)
 
-What it covers: (a) the bracket-defining trading pattern, (b) the honesty modifier if applied, (c) anchored to a specific recent trade or recurring behavior. Quote-anchored, not generic.
+What it covers: (a) the bracket-defining trading pattern with specific receipts, (b) the honesty modifier if applied and why, (c) two-to-four anchored examples or behavioral tells the room would recognize, (d) the recurring lament / brag / pattern that defines them. Sourced, not generic.
 
 **Good shapes:**
-- *"Closed $ARM 145c at 3.8 — ran to 17.8 in 48 hours. 'Should've sized up' is now permanent personality, not a one-off lament."*
-- *"Sharp on macro reads, leaks edge selling winners early. Posted the $NVDA +220% screenshot AND the $WEN -30% screenshot in the same week — +5 honesty modifier for being the only one in the room who shows the losses."*
-- *"Net flat by documented receipts: posts wins loud, never the losses. -10 cherry-pick modifier; the room counts how many setups he scales too small on per week (4 last week)."*
-- *"Full-ported ZEC and NOWL into permanent drawdown; 'crashed out' is his default state. The 'Wendy's Wrong Way' nickname does the work."*
+- *"Closed $ARM 145c at 3.8 — ran to 17.8 in 48 hours. 'Should've sized up' is now permanent personality, not a one-off lament. Sharp on macro reads, posts the chart after every entry, executes like he's still asking permission. +5 honesty modifier for posting the $WEN bag loss publicly the same week he posted the $NVDA win. Sits in the upper-mid bracket because the trades are real even when the exits are early."*
+- *"Net flat by documented receipts: 12 green screenshots in gain-loss-porn over 30 days, zero red ones, while loudly bagging $ZEC and $NOWL elsewhere. -10 cherry-pick modifier — the room sees through it. Knows the theory, talks the right setups, leaks every winner by sizing too small and every loser by averaging down. 'Wendy's Wrong Way' nickname is doing the heavy lifting."*
 
 **Anti-patterns:**
 - *"Demonstrates strong macro awareness and active trade management."* (corporate)
 - *"Mixed execution with some good moments and some bad."* (generic)
-- *"Shows consistent skill in identifying setups."* (no specifics)
+- A single sentence — too thin for the new length.
 
-### `racism_rationale` (1-2 sentences, ~150-280 chars)
+### `racism_rationale` (3-5 sentences, ~400-900 chars)
 
-What it covers: the rank-defining racial-humor BEHAVIOR — sourced from real chat moments, specific targets, recurring tics. SAVAGE-BUT-HILARIOUS. Not "high volume of slur usage" generic — give the room a specific clip.
+What it covers: the rank-defining racial-humor BEHAVIOR — sourced from real chat moments, specific targets, recurring tics, and the room's response. SAVAGE-BUT-HILARIOUS. Not "high volume of slur usage" generic — give the room a textured picture of WHY they rank where they do.
 
 **Good shapes:**
-- *"Complains about black homeless people every Tuesday like clockwork; the SUNY post-grad arc is doing the heavy lifting here."*
-- *"Drops 'chyna' with a banker's drawl approximately 3x per market open. Recently graduated to unprompted commentary on Chinese real estate nobody asked about."*
-- *"Quotes himself going 'bomb those yellow niggas' during a Chinese rare-earth rant last Tuesday and hasn't backed down."*
-- *"Mostly clean — one quoted slur in a meme repost last month. Lurker-tier; the regex caught one and that's the whole story."*
-- *"Said 'pajeet' on three different occasions about three different people, all from the same Excel-spreadsheet job. The accountant-villain era is going strong."*
+- *"Complains about black homeless people every Tuesday like clockwork; the SUNY post-grad arc is doing the heavy lifting here. Drops 'pajeet' across three different conversations about three different people, all from the same Excel-spreadsheet day-job. Stereotypes Asian women in a recurring bit about his ex. When called out, says 'I don't even mean it like that' and keeps going. Tops the rank not from raw slur volume but from the consistency of the targeting."*
+- *"Mostly clean over the window — one quoted slur in a meme repost last month and a handful of 'chyna' drops in geopolitics threads. The regex flagged him once; the LLM didn't see broader patterns. Lurker-tier; the rank reflects 'occasionally joins room jokes' not 'leads with race-edged content.'"*
 
 **Anti-patterns:**
 - *"High volume of racially-edged content."* (generic, dry)
 - *"Frequent slur user with stereotyping patterns."* (corporate)
 - *"Composite score driven by both slurs and broader humor."* (just restates the score)
-- ANY restatement of the 0-100 score itself ("70/100 humor score") — that number stays internal
+- ANY restatement of the 0-100 score itself ("70/100 humor score") — that number stays internal.
+- A single sentence — too thin.
 
 ### Tone shared across both
 
-- Specific over abstract. Name the trade, the ticker, the quote, the target.
-- Sourced. If it's not in the user's chat history / OCR'd screenshots, you don't have it.
+- Specific over abstract. Name the trade, the ticker, the quote, the target, the pattern.
+- Sourced. If it's not in the user's chat history / OCR'd screenshots / profile_text, you don't have it.
 - Mean is fine; corporate is not. Roast comedian, not HR memo.
-- Quoting verbatim is FINE — slurs, broken grammar, all of it. Attribution stays clear ("said 'X'") so it reads as the user's words, not yours.
-- 1-2 dense sentences. NOT a paragraph.
+- Verbatim quoting is allowed but NOT mandatory — use a direct quote when it adds comedic punch ("said 'X' during the Y rant"), paraphrase when prose flows better. Don't shoehorn quotes for their own sake.
+- 3-5 dense sentences. Tight prose, not a paragraph essay.
 
 ## BEFORE EMITTING — completion check (MANDATORY)
 
@@ -979,16 +975,15 @@ async def _generate_profile(
             "racial_humor_score": types.Schema(type=types.Type.INTEGER),
             "trader_rationale": types.Schema(
                 type=types.Type.STRING,
-                # Savage-but-hilarious 1-2 sentences with specific
-                # receipts. 600 chars is plenty (~150-280 chars
-                # typical) without leaving room for paragraphs.
-                max_length=600,
+                # 3-5 dense sentences of savage-but-hilarious with
+                # specific receipts (~400-900 chars typical). 1500
+                # cap leaves headroom without inviting paragraphs.
+                max_length=1500,
             ),
             "racism_rationale": types.Schema(
                 type=types.Type.STRING,
-                # Same shape as trader_rationale but for the
-                # racism axis. 1-2 specific sentences.
-                max_length=600,
+                # Same 3-5 sentence shape as trader_rationale.
+                max_length=1500,
             ),
             "profile_text": types.Schema(
                 type=types.Type.STRING,
