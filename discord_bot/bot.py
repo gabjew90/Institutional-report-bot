@@ -2373,6 +2373,88 @@ def create_bot() -> commands.Bot:
             )
 
     @bot.tree.command(
+        name="backfill_member_trades",
+        description="Extract historical member-mode trades from chat_messages into analyst_trades",
+    )
+    @app_commands.describe(
+        password="Admin password",
+        days="Window (days). Default 14 — matches the points-ledger window.",
+        max_rows=(
+            "Hard cap on candidate rows processed (cost guard). Default 500 "
+            "is safe — each row is one Gemini OCR call ~$0.0003."
+        ),
+        dry_run="When true, prints what WOULD be written but doesn't insert.",
+    )
+    async def backfill_member_trades_command(
+        interaction: discord.Interaction,
+        password: str,
+        days: int = 14,
+        max_rows: int = 500,
+        dry_run: bool = False,
+    ):
+        """One-shot backfill: walks chat_messages for posts in
+        eager-OCR alert channels by non-callers in the last N days,
+        runs extract_trade_from_caption against (content + OCR text),
+        and writes analyst_trades rows with tracking_mode='member'.
+        Idempotent — dedup'd on (discord_message_id, attachment_id=0)
+        so re-running picks up where prior runs left off.
+
+        Why this command exists rather than railway ssh: SSH sessions
+        time out at ~10 min; the extraction loop can run 5-15 min for
+        the full window. Running inline on the live worker uses the
+        already-warm Gemini client and avoids the SSH timeout / key
+        management entirely.
+        """
+        if not await _check_pulse_channel(interaction):
+            return
+        if settings.command_password and password != settings.command_password:
+            await interaction.response.send_message("Invalid password.", ephemeral=True)
+            return
+        await interaction.response.defer(thinking=True, ephemeral=True)
+        try:
+            from scripts.backfill_member_trades import run_backfill
+            log.info(
+                "Manual /backfill_member_trades triggered by %s (days=%d, max=%d, dry=%s)",
+                interaction.user, days, max_rows, dry_run,
+            )
+            result = await run_backfill(
+                days=days, max_rows=max_rows, dry_run=dry_run,
+            )
+            # Compose ephemeral summary
+            counts = result["counts"]
+            lines = [
+                f"✅ Backfill complete ({'DRY RUN' if dry_run else 'LIVE'})",
+                f"Window: last {result['days']}d",
+                f"Candidates scanned: {result['candidate_count']}",
+                "",
+                "**Status breakdown:**",
+            ]
+            for status in sorted(counts.keys()):
+                lines.append(f"  - `{status}`: {counts[status]}")
+            if result["details"]:
+                tag = "Would-write" if dry_run else "Wrote"
+                lines.append("")
+                lines.append(f"**{tag} (first 15):**")
+                for d in result["details"][:15]:
+                    lines.append(
+                        f"  - {d['posted_at'][:16]} `{d.get('action') or '?'} "
+                        f"{d.get('ticker') or '?'} {d.get('strike') or '?'} "
+                        f"exp={d.get('expiry') or '?'} gain={d.get('gain_pct') or '?'}` "
+                        f"(uid={d['author_id']})"
+                    )
+            body = "\n".join(lines)
+            # Discord 2000-char limit on follow-up content
+            if len(body) > 1900:
+                body = body[:1900] + "\n…(truncated)"
+            await interaction.followup.send(body, ephemeral=True)
+        except Exception as e:
+            log.error("Manual /backfill_member_trades failed: %s", e, exc_info=True)
+            await interaction.followup.send(
+                f"Backfill failed: {str(e)[:300]}",
+                ephemeral=True,
+            )
+
+    @bot.tree.command(
         name="refresh_chat",
         description="Force a chat-message catch-up scan over the last 30 days (gap recovery)",
     )

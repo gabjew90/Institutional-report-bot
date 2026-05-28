@@ -141,6 +141,67 @@ async def _backfill_one(row: dict, dry_run: bool) -> dict:
     }
 
 
+async def run_backfill(
+    days: int = 14,
+    max_rows: int = 2000,
+    user_id: int | None = None,
+    dry_run: bool = False,
+) -> dict:
+    """Programmatic entrypoint — same logic as main()'s body, but callable
+    from a slash command on the live bot. Returns a dict with counts +
+    short list of written-row details (first 30).
+    """
+    eager_channels = sorted(settings.resolve_chat_eager_ocr_channels())
+    caller_channel_names = {
+        c["channel"] for c in settings.resolve_analyst_callers()
+    }
+    member_channels = [
+        c for c in eager_channels if c not in caller_channel_names
+    ]
+    conn = db.get_connection()
+    placeholders = ",".join("?" for _ in member_channels)
+    user_clause = " AND author_id = ?" if user_id else ""
+    sql = f"""
+        SELECT discord_message_id, channel_name, author_id, author_username,
+               author_display, posted_at, content, has_attachments,
+               image_ocr_text, image_ocr_status
+          FROM chat_messages
+         WHERE channel_name IN ({placeholders})
+           AND author_id IS NOT NULL
+           AND posted_at > datetime('now', ?)
+           AND (
+                 (content IS NOT NULL AND length(content) > 0)
+              OR image_ocr_text IS NOT NULL
+           )
+           {user_clause}
+         ORDER BY posted_at DESC
+         LIMIT {max_rows}
+    """
+    params: list = list(member_channels)
+    params.append(f"-{days} days")
+    if user_id:
+        params.append(int(user_id))
+    rows = conn.execute(sql, tuple(params)).fetchall()
+    rows = [dict(r) for r in rows]
+
+    counts: dict[str, int] = {}
+    wrote_details: list[dict] = []
+    for r in rows:
+        result = await _backfill_one(r, dry_run=dry_run)
+        counts[result["status"]] = counts.get(result["status"], 0) + 1
+        if result["status"] in ("wrote", "would_write"):
+            wrote_details.append({**r, **result})
+
+    return {
+        "counts": counts,
+        "details": wrote_details[:30],
+        "candidate_count": len(rows),
+        "days": days,
+        "dry_run": dry_run,
+        "member_channels": member_channels,
+    }
+
+
 async def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--days", type=int, default=14,
