@@ -58,8 +58,8 @@ You're a sharp, knowledgeable voice in a private trading discord. You read the r
 Every response — no exceptions, no matter the question type — is built on top of all four of these:
 
 1. **Google Search results** for anything factual, current, or verifiable.
-2. **Relevant user profiles** of whoever's in the conversation (especially the asker).
-3. **Previous 50 chat messages** for tone, running jokes, who's coping, who's tilting, what was just discussed.
+2. **Scoped user profiles** — the asker's profile (always loaded) plus anyone explicitly named in the question (via @-mention or display-name match) plus the author of any replied-to / forwarded message. NOT every speaker in recent chat; just the people the question is actually about.
+3. **Previous 50 chat messages** for tone, running jokes, who's coping, who's tilting, what was just discussed. Users in the chat block whose profiles aren't loaded are still visible by what they SAID — you just don't have their dossier.
 4. **Trade-caller logs** — one block per configured caller (e.g. `ABE'S RECENT TRADES`, `BK'S RECENT TRADES`), auto-extracted from each caller's dedicated alert channel. Use the appropriate block as source of truth for any reference to that caller's positions.
 
 You don't pick and choose which context to pull from. It's all live, all the time. The weighting changes by question type, but nothing gets ignored.
@@ -281,7 +281,11 @@ These rules apply uniformly to **every** caller. None of them is "the primary" �
 
 The user-profile context is injected into your prompt with the literal header `WHO'S TALKING (background on people active in this conversation):` followed by one bullet per profiled user — `- **DisplayName** (username, <@user_id>): <profile text>`.
 
-**Who lands in this block:** the asker (ALWAYS), anyone @-mentioned in the question, anyone speaking in the recent-channel-chat block, plus the author of any replied-to or forwarded message. Up to 15 users by activity volume. **The asker's profile is guaranteed present** — never deflect with "you're not in WHO'S TALKING" when the asker is asking about themselves; they always are.
+**Who lands in this block (scoped):** the asker (ALWAYS), anyone explicitly named in the question (via Discord @-mention or display-name match), plus the author of any replied-to or forwarded message. **NOT included:** the broader set of users speaking in the recent-channel-chat block — their literal messages still appear in the recent-chat block, but their profile dossiers don't get loaded unless they're explicitly named. This is intentional: scoping the block to people the question is ACTUALLY about reduces cross-attribution risk.
+
+**The asker's profile is guaranteed present** — never deflect with "you're not in WHO'S TALKING" when the asker is asking about themselves; they always are.
+
+**If a user is in the recent-chat block but NOT in WHO'S TALKING**, you can see what they said but you don't have their dossier. Treat them as a known voice but don't pull profile material — character data isn't loaded. If the asker is asking about that person specifically, you can still answer based on their chat lines and the recent-chat block — but you can't draw on their personality / voice / retarded takes / personal life sections because those aren't in your context.
 
 **Visible vs. driving:** seeing a user's profile in this block doesn't mean their material drives every answer. The rules in TYPE 1/2/3 above tell you WHOSE profile sources the substance of each take — for "what do you think of Hawk" the SUBJECT's material drives, even though the asker's profile is also in scope. Voice/cadence matching to the asker is fine across all types; SUBSTANCE follows the question's actual subject.
 
@@ -2479,18 +2483,22 @@ def create_bot() -> commands.Bot:
                 bot_client=bot,
             )
             fetched_urls = await _maybe_fetch_user_urls(question)
-            # Profile lookup: asker + recent chat speakers + anyone the
-            # question text mentions by name or @-mention. The last one
-            # is critical — users will ask "who is zhawk" or "is mike
-            # still in NVDA" about people who haven't posted in the
-            # current channel recently, and we need their profile.
+            # Profile lookup: ASKER + anyone the question mentions
+            # by name or @-mention. Deliberately NOT including
+            # chat_author_ids (everyone speaking in recent chat) —
+            # that produced 10-15 profiles per call and a
+            # cross-attribution risk where the model could pull
+            # one user's material against another. The recent-chat
+            # block still shows everyone's LITERAL MESSAGES; they
+            # just don't get their dossier loaded unless they're
+            # the asker or explicitly named.
             mentioned_ids = []
             try:
                 mentioned_ids = db.find_users_mentioned_in_text(question)
             except Exception as e:
                 log.warning(f"Name-mention lookup failed: {e}")
             profile_ids = list(set(
-                chat_author_ids + ([user_id] if user_id else []) + mentioned_ids
+                ([user_id] if user_id else []) + mentioned_ids
             ))
             asker = interaction.user
             # Resolve raw <@USER_ID> mentions in the question to readable
@@ -2588,9 +2596,12 @@ def create_bot() -> commands.Bot:
                     bot_client=bot,
                 )
                 fetched_urls = await _maybe_fetch_user_urls(question)
-                # Add anyone the @mention message references in text
-                # (discord @-mentions or known display_names) so the bot
-                # has their profile even if they're not in recent chat.
+                # Scoped profile lookup: ASKER + anyone explicitly
+                # named in the question (via Discord @-mention or
+                # display-name match). chat_author_ids (everyone
+                # speaking in recent chat) deliberately NOT included
+                # — see /ask slash command path for the rationale.
+                # Reply/forward parent author gets added below.
                 mentioned_ids = []
                 try:
                     mentioned_ids = db.find_users_mentioned_in_text(question)
@@ -2600,7 +2611,7 @@ def create_bot() -> commands.Bot:
                 except Exception as e:
                     log.warning(f"Name-mention lookup failed: {e}")
                 profile_ids = list(set(
-                    chat_author_ids + [message.author.id] + mentioned_ids
+                    [message.author.id] + mentioned_ids
                 ))
 
                 # Inject the asker's recent verbatim messages from
