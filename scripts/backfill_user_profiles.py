@@ -484,9 +484,12 @@ The 7-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the chat
 - **+3 per entry posted (automatic on post).** Posting an entry is structural commitment — published before outcome.
 - **+5 if the position later closes for a gain in the window** (the +3 upgrades to +5; net +2 win bonus).
 - **+3 if the position closes for a loss in the window** (no upgrade; commitment was real, the loss doesn't subtract).
-- **+2 if the position never closes in the window** (ghost penalty: −1 against the +3 entry award). Posting an entry and never resolving it is worse than posting any close — even a losing one — because the room can't tell what happened. The 7-day rolling window decays automatically; an entry from 8 days ago is gone, an entry from 6 days ago that hasn't closed yet scores +2.
+- **+2 (ghost penalty) if the entry has NO close AND has either passed its expiration date OR been open ≥14 days.** Total-loss assumption: −1 against the +3 entry award. An option that expires worthless without a posted close counts as ghost; a stock entry that's been sitting for 14 days without a close also counts.
+- **0 (pending) if the entry has no close yet, is still within the 14d window, and is before its expiry.** Held in suspense — not scored as ghost YET; the entry might still close or might trip the ghost rule on a later refresh.
 - **+2 per standalone winning screenshot** (close-only P&L card with gain > 0 and no matching entry commitment in the window).
 - **+1 per standalone losing screenshot** (close-only P&L card with gain ≤ 0). The weakest receipt — no commitment, negative outcome — but still credited for the honest red post.
+
+**Decay mechanism (rolling 14-day window):** The ledger only sees trades posted within the last 14 days. Older rows stay in the DB (never deleted by scoring) but stop generating points. If last week's 35 points were 28 wins-and-closes that aged out, this week's ledger picks up whatever this week posted instead. The score recomputes from scratch every refresh.
 
 The receipt points are the user's actual ledger total — no further mapping. A user with 22 points adds 22 to their (clipped) chatter base. The final caps at 100.
 
@@ -764,33 +767,42 @@ def _load_user_data_from_store(
 
 
 def _format_points_block(user_id: int) -> str:
-    """Render the user's 7-day rolling points ledger.
+    """Render the user's 14-day rolling points ledger.
 
-    Spec (5/3/2/1):
+    Spec (5/3/2/2/1, with 0 for pending entries):
       +5  entry posted AND closed for a win
       +3  entry posted AND closed for a loss
-      +2  entry posted, no close in window (ghost penalty: 3 − 1)
-      +1  standalone close-only / P&L screenshot
+      +2  entry posted, no close, AND (past expiry OR ≥14d old) — ghost
+      +2  standalone winning screenshot (close-only, no entry)
+      +1  standalone losing screenshot (close-only, no entry)
+       0  entry posted, no close, still pending (within 14d, before expiry)
 
-    The 7-day rolling window provides decay — older trades fall off
-    automatically. Receipts add directly to the chatter base, no
-    ceiling-tier mapping.
+    Decay: the 14-day rolling window controls what enters the ledger.
+    Older rows stay in the DB but stop scoring. Receipts add directly
+    to the chatter base.
 
     Final = min(100, clip(chatter_base + honesty, 65) + receipt_points)
     """
-    ledger = db.compute_member_points(int(user_id), days=7)
+    ledger = db.compute_member_points(int(user_id), days=14)
+    pending_note = (
+        f"  - Entry posted, still PENDING (no close yet, within 14d,"
+        f" before expiry — held in suspense)  "
+        f"({ledger['entries_pending']} × 0 pts) =  0 pts"
+    )
     lines = [
-        f"7-DAY ROLLING POINTS LEDGER (decays automatically — old"
-        f" trades fall off the back):",
+        f"14-DAY ROLLING POINTS LEDGER (decays automatically — older"
+        f" trades stop scoring but stay in the DB):",
         f"  - Entry posted + closed for a WIN  "
         f"({ledger['entries_won']} × 5 pts)  =  "
         f"{ledger['entries_won'] * 5} pts",
         f"  - Entry posted + closed for a LOSS "
         f"({ledger['entries_lost']} × 3 pts)  =  "
         f"{ledger['entries_lost'] * 3} pts",
-        f"  - Entry posted, NO close in window (ghosted: 3 − 1 = 2)  "
+        f"  - Entry posted + GHOSTED (past expiry OR ≥14d open;"
+        f" total-loss assumption, 3 − 1 = 2)  "
         f"({ledger['entries_ghosted']} × 2 pts)  =  "
         f"{ledger['entries_ghosted'] * 2} pts",
+        pending_note,
         f"  - Standalone WINNING screenshot (close-only, no entry)  "
         f"({ledger['screenshot_wins']} × 2 pts)  =  "
         f"{ledger['screenshot_wins'] * 2} pts",
@@ -801,13 +813,14 @@ def _format_points_block(user_id: int) -> str:
         f"TOTAL RECEIPT POINTS: {ledger['points']}",
         f"",
         f"(Spec: entry posted = automatic +3. Upgrades to +5 if the"
-        f" same position closes for a gain. Stays at +3 if it closes"
-        f" for a loss. Drops to +2 if it never closes — the ghost"
-        f" penalty assumes an unclosed entry is a total loss. Posting"
-        f" a winning P&L screenshot without an entry commitment is +2;"
-        f" a losing P&L screenshot without commitment is +1.)",
+        f" position closes for a gain. Stays at +3 if it closes for a"
+        f" loss. Becomes +2 (ghost) when the position passes its"
+        f" expiration date OR has been open for ≥14 days without a"
+        f" close. Until then, an unresolved entry sits at 0 — held"
+        f" in suspense, NOT scored as ghost yet. Winning P&L"
+        f" screenshot (no entry) = +2; losing screenshot = +1.)",
         f"",
-        f"(Receipt points add ON TOP of the chatter base. Final score ="
+        f"(Receipt points add ON TOP of the chatter base. Final ="
         f" min(100, clip(chatter_base + honesty, 65) + receipt_points)."
         f" Chatter base caps at 65 — receipts are the only path past 65.)",
     ]

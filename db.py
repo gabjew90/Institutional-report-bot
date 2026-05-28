@@ -3498,8 +3498,8 @@ def get_latest_analyst_trade_posted_at(
     return val or None
 
 
-def compute_member_points(author_id: int, days: int = 7) -> dict:
-    """Rolling 1/3/5 points ledger over the last N days for a single user.
+def compute_member_points(author_id: int, days: int = 14) -> dict:
+    """Rolling points ledger over the last N days (default 14) for one user.
 
     Reads BOTH caller-mode rows (official-caller-channel posts) AND
     member-mode rows (shared-alert posts by non-callers) for this user.
@@ -3508,25 +3508,29 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
 
     Point values per trade event (matches user spec exactly):
 
-        +5 — Entry posted AND the position later closes for a gain
-             (the +3 entry award upgrades to +5 on the winning close)
-        +3 — Entry posted AND closed for a loss in the window
+        +5 — Entry posted AND the position closes for a gain (the +3
+             entry award upgrades to +5 on the winning close)
+        +3 — Entry posted AND closes for a loss in the window
              (commitment was real; the loss doesn't subtract from it)
-        +2 — Entry posted, no close in the window. Treated as a
-             ghost: the position is assumed a total loss, which
-             applies a −1 penalty against the entry's +3 (net +2).
+        +2 — Entry posted, no close yet, AND the position has either
+             passed its expiration date OR been open ≥14 days.
+             Treated as a ghost: total-loss assumption applies a −1
+             penalty against the entry's +3 (net +2).
         +2 — Standalone close-only P&L screenshot showing a WIN
              (gain_pct > 0). No entry commitment but a documented
              winning outcome.
         +1 — Standalone close-only P&L screenshot showing a LOSS
-             (gain_pct ≤ 0). The weakest receipt form — no commitment,
-             negative outcome — but still worth +1 for being honest
-             enough to post the red card.
+             (gain_pct ≤ 0). Weakest receipt form.
 
-    Note: the 7-day window provides the decay mechanism — old trades
-    fall off the back automatically. An entry from 8 days ago is gone
-    from the ledger; an entry from 6 days ago that hasn't closed yet
-    is scored at +2 (ghosted). The score recomputes every refresh.
+         0 — Entry posted, no close, still within 14d AND before
+             expiry. Pending judgment — no points yet, holds in
+             suspense until either the position closes OR the
+             14d/expiry mark trips and it ghosts.
+
+    Decay: the 14-day rolling window controls which trades enter the
+    ledger. Older rows STAY in the DB (never deleted by scoring),
+    they just don't generate points anymore. The score recomputes
+    every refresh from whatever's currently within the window.
 
     Grouping is by (UPPER(ticker), contract_type, strike, expiry). An
     "entry" is action IN ('open', 'add'). A "close" is action='close'.
@@ -3552,11 +3556,20 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
             "entries_won": 0,
             "entries_lost": 0,
             "entries_ghosted": 0,
+            "entries_pending": 0,
             "screenshot_wins": 0,
             "screenshot_losses": 0,
             "breakdown": [],
         }
-    cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
+    now = datetime.utcnow()
+    today_iso = now.date().isoformat()
+    # SELECT window is slightly larger than the scoring window so the
+    # exact-N-day ghost rule has room to fire. Entries posted at exactly
+    # N days ago need to be visible in the SELECT so the aged-out branch
+    # can ghost them; otherwise they'd fall out of SELECT first and
+    # never get scored. Anything ≥(N+1) days old still falls outside.
+    cutoff = (now - timedelta(days=days + 1)).isoformat()
+    ghost_age_cutoff = (now - timedelta(days=days)).isoformat()
     rows = get_connection().execute(
         """SELECT posted_at, action, ticker, contract_type, strike,
                   expiry, gain_pct, tracking_mode
@@ -3582,6 +3595,7 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
     entries_won = 0
     entries_lost = 0
     entries_ghosted = 0
+    entries_pending = 0  # within window, before expiry, < 14d — not scored yet
     screenshot_wins = 0
     screenshot_losses = 0
     breakdown: list[dict] = []
@@ -3630,13 +3644,44 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
                     "gain_pct": losing_close.get("gain_pct"),
                 })
             else:
-                # No close in window — ghost penalty (3 - 1 = 2)
-                entries_ghosted += 1
-                breakdown.append({
-                    "kind": "entry posted, no close (ghosted: 3 − 1 = 2)",
-                    "points": 2,
-                    "ticker": key[0],
-                })
+                # No close in window. Ghost if EITHER:
+                #   (a) position past its expiration date
+                #   (b) entry posted ≥14d ago (window-edge ghost)
+                # Else: pending — held in suspense, 0 points until
+                # either condition trips or the position closes.
+                earliest_open_at = sorted(
+                    opens, key=lambda x: x["posted_at"]
+                )[0]["posted_at"]
+                expiry_str = key[3]  # 'YYYY-MM-DD' or ''
+                past_expiry = bool(
+                    expiry_str and expiry_str < today_iso
+                )
+                aged_out = earliest_open_at <= ghost_age_cutoff
+                if past_expiry or aged_out:
+                    entries_ghosted += 1
+                    reason = []
+                    if past_expiry:
+                        reason.append(f"past expiry {expiry_str}")
+                    if aged_out:
+                        reason.append(f"open ≥{days}d")
+                    breakdown.append({
+                        "kind": (
+                            f"entry posted, no close (ghost: "
+                            f"{', '.join(reason)}; 3 − 1 = 2)"
+                        ),
+                        "points": 2,
+                        "ticker": key[0],
+                    })
+                else:
+                    entries_pending += 1
+                    breakdown.append({
+                        "kind": (
+                            "entry posted, no close yet (pending — "
+                            "within window, before expiry, < 14d)"
+                        ),
+                        "points": 0,
+                        "ticker": key[0],
+                    })
         elif closes and not opens:
             # Close-only / standalone P&L screenshot (no entry in window)
             # Split on outcome: winning screenshot = +2, losing = +1.
@@ -3671,6 +3716,7 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
         + entries_ghosted * 2
         + screenshot_wins * 2
         + screenshot_losses * 1
+        # entries_pending contributes 0 — held in suspense
     )
     return {
         "points": total_points,
@@ -3678,6 +3724,7 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
         "entries_won": entries_won,
         "entries_lost": entries_lost,
         "entries_ghosted": entries_ghosted,
+        "entries_pending": entries_pending,
         "screenshot_wins": screenshot_wins,
         "screenshot_losses": screenshot_losses,
         "breakdown": breakdown,
