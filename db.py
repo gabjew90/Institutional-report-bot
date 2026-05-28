@@ -394,6 +394,42 @@ def _init_schema(conn: sqlite3.Connection) -> None:
     conn.execute(
         "CREATE INDEX IF NOT EXISTS idx_analyst_trades_author_id ON analyst_trades(author_id)"
     )
+    # Backfill author_id on legacy caller rows. The column was added in the
+    # universal-tracking migration (Commit 4b0a7b1); rows written before
+    # that have caller='bankerkyle' / 'abe' / etc. but NULL author_id.
+    # The new 1/3/5 points-ledger SQL keys on author_id, so without this
+    # backfill the new scoring layer is silently inert for the two most
+    # well-documented users in the room (BK has 44 trade rows, Abe has 51,
+    # all author_id=NULL until this migration runs).
+    #
+    # Lookup: caller name → user_id by joining chat_messages on the caller's
+    # configured username. Idempotent — WHERE author_id IS NULL ensures
+    # the UPDATE never overwrites valid rows.
+    try:
+        from config import settings as _settings  # local import to avoid cycle at module top
+        for c in _settings.resolve_analyst_callers():
+            uname = (c.get("username") or "").strip().lower()
+            caller_name = (c.get("name") or "").strip().lower()
+            if not uname or not caller_name:
+                continue
+            row = conn.execute(
+                "SELECT author_id FROM chat_messages "
+                "WHERE LOWER(author_username) = ? AND author_id IS NOT NULL "
+                "LIMIT 1",
+                (uname,),
+            ).fetchone()
+            if not row or not row[0]:
+                continue
+            uid = int(row[0])
+            conn.execute(
+                "UPDATE analyst_trades SET author_id = ? "
+                "WHERE LOWER(caller) = ? AND author_id IS NULL",
+                (uid, caller_name),
+            )
+    except Exception:
+        # Settings import or chat_messages query failed — don't block boot.
+        # Backfill will re-attempt next boot or can be run manually.
+        pass
     # Now-safe indexes that depend on the migrated columns.
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_slur ON user_profiles(slur_count DESC)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_racial_humor ON user_profiles(racial_humor_score DESC)")
