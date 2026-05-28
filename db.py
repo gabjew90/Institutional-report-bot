@@ -3085,7 +3085,13 @@ def lookup_user_ranks(
                      "a top-N list.",
             "users": [],
         }
-    capped_n = max(1, min(10, int(top_n)))
+    # No upper cap — the existing prompt rules ("don't dump unsolicited
+    # leaderboards," "comparative info surfaces when asked") handle
+    # abuse at the model layer. Caller can ask for the full roster.
+    try:
+        capped_n = max(1, int(top_n))
+    except (TypeError, ValueError):
+        capped_n = 5
     if metric == "trader":
         rows = conn.execute(
             """SELECT user_id, display_name, username, trader_rationale

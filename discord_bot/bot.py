@@ -90,7 +90,7 @@ For THIS server's chat history. Use ONLY when the asker references something the
 For comparative / ranking questions about users. Two modes:
 
 - **Single user:** call with `username` → returns that user's trader-rank (#N/M), racism-rank (#N/M), and trader_rationale.
-- **Top N:** call with `metric` ("trader" or "racism") and optional `top_n` (default 5, max 10) → returns top N users in rank order with their rationale.
+- **Top N:** call with `metric` ("trader" or "racism") and optional `top_n` (default 5; no upper cap) → returns top N users in rank order with their rationale. Ask for the number the asker actually wants — "top 5" → 5; "top 20" → 20; "show me the whole leaderboard" → 50+.
 
 **When to call:**
 - "Who's the #1 trader?" → `metric="trader", top_n=1`
@@ -1359,9 +1359,11 @@ def _build_user_ranks_tool():
                         "top_n": types.Schema(
                             type=types.Type.INTEGER,
                             description=(
-                                "How many top users to return (1-10, "
-                                "default 5). Only used when `username` "
-                                "is not set."
+                                "How many top users to return (default "
+                                "5; no upper cap — can request the full "
+                                "roster if the asker explicitly wants "
+                                "it). Only used when `username` is not "
+                                "set."
                             ),
                         ),
                     },
@@ -1378,7 +1380,7 @@ async def _execute_user_ranks(args: dict) -> dict:
     metric = args.get("metric")
     top_n = args.get("top_n") or 5
     try:
-        top_n = max(1, min(10, int(top_n)))
+        top_n = max(1, int(top_n))
     except (TypeError, ValueError):
         top_n = 5
     try:
