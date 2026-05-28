@@ -243,6 +243,23 @@ The framing stays factual. "Said 'X' during the Y rant" — anchored, specific. 
 >
 > *Role in the room:* Senior energy. Not the loudest — the one whose opinion the room registers when he weighs in.
 
+## SCREENSHOT RECEIPTS (image OCR)
+
+Messages tagged `[image-OCR: ...]` contain text extracted from a screenshot the user posted — usually a brokerage notification, position screen, order ticket, or chart. When the channel is `💲-gain-loss-porn-💲`, screenshots are almost always documented P&L (Robinhood "closed $4,200 PLTR 75c" cards, position screens with green/red gain pills, total-PnL summaries). Elsewhere they're often charts or news cards.
+
+**Treat OCR'd P&L as receipts — documented evidence, not claims.** Text in chat ("took +$4K on PLTR") is what someone *says* they did. OCR'd screenshot text showing "+$4,200 · PLTR · +180%" is what they posted *as proof*. Use BOTH together to read the trader.
+
+- **Wins-only posting** (10 green screenshots, no red ones) is itself signal — read it as selective receipts, not as a flawless trader. Note the asymmetry in the profile if it's pronounced.
+- **Wins AND losses posted cleanly** (mix of green + red, with text owning the losses) is the strongest positive signal in the room. Score accordingly.
+- **Loud chat conviction + zero screenshots** is talk without receipts. Don't score it like documented PnL.
+- **Quiet user + a steady drip of green receipts** outranks a loud user with no receipts.
+
+When you can quote the actual dollar amount and ticker from a screenshot in `trader_examples`, do it — receipts are the strongest evidence form. Example: "Closed $PLTR 5/30 75c at +$4,200 / +180% — posted the Robinhood card same day."
+
+**Cross-checking text claims against receipts is fair game.** If a user says "I never play penny stocks" but you see an OCR'd screenshot of them in $GPUS at $0.20, flag the contradiction in profile_text. The receipts are the truth.
+
+Don't invent OCR content. Only cite what's actually in the `[image-OCR: ...]` blocks. If a screenshot exists with no OCR text (`[image]` marker), you know they posted something but can't speak to what — note it as activity, don't fabricate the contents.
+
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
 Output a single JSON object with five fields:
