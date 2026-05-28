@@ -1889,12 +1889,76 @@ async def _answer_with_gemini(
                 types.Content(role="user", parts=tool_response_parts)
             )
 
-        answer = (response.text or "").strip() if response else ""
+        # Pull response.text defensively — the SDK raises if the response
+        # has no candidates or only function-call parts. Treat all failures
+        # as "no text" and let the empty-answer branch below produce a
+        # human-readable fallback instead of a blank Discord embed.
+        answer = ""
+        try:
+            answer = (response.text or "").strip() if response else ""
+        except Exception as e:
+            log.warning(f"/ask: response.text raised: {e}")
+            answer = ""
         grounding_metadata = None
         try:
             grounding_metadata = response.candidates[0].grounding_metadata
         except (AttributeError, IndexError, TypeError):
             pass
+
+        # Blank-answer recovery. Gemini can return an empty text payload
+        # when (a) max_output_tokens was burned in the thinking phase,
+        # (b) finish_reason is MAX_TOKENS / SAFETY / RECITATION /
+        # MALFORMED_FUNCTION_CALL, or (c) the tool-call loop exited
+        # while the model still wanted to call tools. Without this
+        # branch, the @mention handler renders `discord.Embed(
+        # description="")` — a literal blank message in chat. Log the
+        # diagnostic, then surface a short user-facing fallback that
+        # tells the asker what to do next.
+        if not answer:
+            finish_reason = None
+            safety_blocked = False
+            try:
+                cand = response.candidates[0] if response else None
+                if cand is not None:
+                    fr = getattr(cand, "finish_reason", None)
+                    finish_reason = getattr(fr, "name", None) or str(fr) if fr else None
+                    sr = getattr(cand, "safety_ratings", None) or []
+                    for r in sr:
+                        if getattr(r, "blocked", False):
+                            safety_blocked = True
+                            break
+            except (AttributeError, IndexError, TypeError):
+                pass
+            prompt_block = None
+            try:
+                pf = getattr(response, "prompt_feedback", None)
+                br = getattr(pf, "block_reason", None) if pf else None
+                prompt_block = getattr(br, "name", None) or str(br) if br else None
+            except Exception:
+                pass
+            log.warning(
+                f"/ask: empty response.text "
+                f"(finish_reason={finish_reason!r}, "
+                f"safety_blocked={safety_blocked}, "
+                f"prompt_block={prompt_block!r}, "
+                f"q={question[:140]!r})"
+            )
+            if safety_blocked or prompt_block:
+                answer = (
+                    "→ Can't answer that one — safety filter tripped. "
+                    "Try rephrasing."
+                )
+            elif finish_reason in ("MAX_TOKENS", "OTHER", None):
+                answer = (
+                    "→ Thought myself in circles and ran out of room. "
+                    "Try asking it more directly."
+                )
+            else:
+                answer = (
+                    f"→ No response came back (reason: {finish_reason}). "
+                    f"Try again or rephrase."
+                )
+
         sources_footer = _build_sources_footer(grounding_metadata)
         full = (answer + sources_footer)[:4000]
         db.record_ask_query(user_id)
