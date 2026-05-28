@@ -3007,6 +3007,129 @@ def get_latest_chat_message_posted_at(channel_id: int | None = None) -> str | No
     return row[0] if row and row[0] else None
 
 
+def lookup_user_ranks(
+    *,
+    username: str | None = None,
+    metric: str | None = None,
+    top_n: int = 5,
+) -> dict:
+    """Look up rank info for one user OR top N users by a metric.
+
+    Two modes:
+      1. `username` set → return that user's trader_rank, racism_rank,
+         and trader_rationale (raw 0-100 scores deliberately NOT
+         returned — per the /ask prompt, scores are internal; only
+         ordinal ranks + rationale are surfaceable).
+      2. `username` unset, `metric` in {"trader", "racism"} → return
+         the top `top_n` users by that metric (cap 10).
+
+    Used by the /ask Gemini function-calling tool when the asker
+    asks ranking/comparative questions about users who may not be
+    in the (now scoped) WHO'S TALKING block.
+
+    Returns a dict shaped for tool-response consumption:
+        {"users": [...], "count": int, ...optional metadata}
+    Errors return {"error": "...", "users": []}.
+    """
+    conn = get_connection()
+
+    # Helper: compute global racism-rank ordering. Mirrors
+    # get_global_trader_ranks() shape. NULL or zero scores get no rank.
+    def _global_racism_ranks() -> tuple[dict[int, int], int]:
+        rows = conn.execute(
+            """SELECT user_id FROM user_profiles
+                WHERE racial_humor_score IS NOT NULL
+                  AND racial_humor_score > 0
+                ORDER BY racial_humor_score DESC, user_id ASC"""
+        ).fetchall()
+        return ({int(r["user_id"]): i + 1 for i, r in enumerate(rows)},
+                len(rows))
+
+    if username and username.strip():
+        row = conn.execute(
+            """SELECT user_id, display_name, username,
+                      trader_rationale
+                 FROM user_profiles
+                WHERE LOWER(username) = LOWER(?)""",
+            (username.strip(),),
+        ).fetchone()
+        if not row:
+            return {
+                "error": f"No profile found for username '{username}'.",
+                "users": [],
+            }
+        trader_ranks, trader_total = get_global_trader_ranks()
+        racism_ranks, racism_total = _global_racism_ranks()
+        uid = int(row["user_id"])
+        return {
+            "users": [{
+                "username": row["username"],
+                "display_name": row["display_name"],
+                "user_id": uid,
+                "trader_rank": trader_ranks.get(uid),
+                "trader_rank_total": trader_total,
+                "trader_rationale": row["trader_rationale"],
+                "racism_rank": racism_ranks.get(uid),
+                "racism_rank_total": racism_total,
+            }],
+            "count": 1,
+            "mode": "single_user",
+        }
+
+    # Top-N by metric mode
+    metric = (metric or "").strip().lower()
+    if metric not in ("trader", "racism"):
+        return {
+            "error": "Must specify either `username` for a single-user "
+                     "lookup, or `metric` ('trader' or 'racism') for "
+                     "a top-N list.",
+            "users": [],
+        }
+    capped_n = max(1, min(10, int(top_n)))
+    if metric == "trader":
+        rows = conn.execute(
+            """SELECT user_id, display_name, username, trader_rationale
+                 FROM user_profiles
+                WHERE trader_score IS NOT NULL
+                ORDER BY trader_score DESC, user_id ASC
+                LIMIT ?""",
+            (capped_n,),
+        ).fetchall()
+        users = [
+            {
+                "rank": i + 1,
+                "username": r["username"],
+                "display_name": r["display_name"],
+                "trader_rationale": r["trader_rationale"],
+            }
+            for i, r in enumerate(rows)
+        ]
+    else:  # racism
+        rows = conn.execute(
+            """SELECT user_id, display_name, username
+                 FROM user_profiles
+                WHERE racial_humor_score IS NOT NULL
+                  AND racial_humor_score > 0
+                ORDER BY racial_humor_score DESC, user_id ASC
+                LIMIT ?""",
+            (capped_n,),
+        ).fetchall()
+        users = [
+            {
+                "rank": i + 1,
+                "username": r["username"],
+                "display_name": r["display_name"],
+            }
+            for i, r in enumerate(rows)
+        ]
+    return {
+        "users": users,
+        "count": len(users),
+        "metric": metric,
+        "mode": "top_n",
+    }
+
+
 def search_chat_messages_for_ask(
     keyword: str,
     *,

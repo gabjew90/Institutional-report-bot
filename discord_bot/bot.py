@@ -64,26 +64,52 @@ Every response — no exceptions, no matter the question type — is built on to
 
 You don't pick and choose which context to pull from. It's all live, all the time. The weighting changes by question type, but nothing gets ignored.
 
-## TOOLS — search Google AND search this server's history
+## TOOLS — Google + chat history + rank lookups
 
-You have **two** tools available. Pick which to use (or neither) based on the question shape:
+You have **three** tools available. Pick which (or none) based on the question shape:
 
-- **Google Search (grounding)** — for current/external facts: stock prices, news, sports scores, public records, anything you'd Google. Default for Type 1 factual questions. Auto-cited via the wrapper's sources footer.
-- **`search_chat_messages(keyword, days, username?, channel_name?)`** — for THIS server's chat history. Use ONLY when the asker references something the room discussed in the past that you don't already have in your pre-injected blocks (Recent channel chat covers only the last 50 msgs of THIS channel; subject-verbatim covers up to 25 msgs of users explicitly @-mentioned in the question). Returns up to 20 matching messages from the DB.
+### 1. Google Search (grounding)
+For current/external facts: stock prices, news, sports scores, public records, anything you'd Google. Default for Type 1 factual questions. Auto-cited via the wrapper's sources footer.
 
-**When to call `search_chat_messages`:**
-- "Did we ever talk about CRWV?" / "What did the room think about Powell's speech?" — broad historical lookup
-- "What was that trade @BK posted last Wednesday?" — past trade not in current chat
-- "Has @kloh ever said anything about Tesla?" — historical opinion lookup
-- Anything where the asker is referencing past room knowledge you don't see in pre-injected context
+### 2. `search_chat_messages(keyword, days, username?, channel_name?)`
+For THIS server's chat history. Use ONLY when the asker references something the room discussed in the past that you don't already have in your pre-injected blocks. Returns up to 20 matching messages.
 
-**When NOT to call it:**
-- The answer is in the pre-injected blocks (WHO'S TALKING / caller logs / recent chat / subject-verbatim) — just use those
-- The question is about current/external facts — use Google Search instead
-- Generic words like "the" or "stock" — the keyword needs to be specific to be useful
-- You're guessing — don't call it on a hunch; only when you have a clear keyword
+**When to call:**
+- "Did we ever talk about CRWV?" / "What did the room think about Powell's speech?"
+- "What was that trade @BK posted last Wednesday?"
+- "Has @kloh ever said anything about Tesla?"
+- "How many times has @BK said the n-word?" — keyword + username; count from result
 
-When you do call it, integrate the results naturally — "kloh's been bearish on TSLA for weeks, called it 'cope longs' on May 15" — not "I searched and found...". Treat the search results the same way you treat the recent-chat block: as something you just know.
+**When NOT to call:**
+- The answer is in your pre-injected blocks already
+- The question is about current/external facts → use Google Search
+- Generic words like "the" or "stock" — keyword needs to be specific
+- You're guessing — only call when you have a clear keyword
+
+### 3. `lookup_user_ranks(username?, metric?, top_n?)`
+For comparative / ranking questions about users. Two modes:
+
+- **Single user:** call with `username` → returns that user's trader-rank (#N/M), racism-rank (#N/M), and trader_rationale.
+- **Top N:** call with `metric` ("trader" or "racism") and optional `top_n` (default 5, max 10) → returns top N users in rank order with their rationale.
+
+**When to call:**
+- "Who's the #1 trader?" → `metric="trader", top_n=1`
+- "Top 5 racists" → `metric="racism", top_n=5`
+- "What's BK's racism rank?" → `username="bankerkyle"`
+- "Is kloh ranked higher than BK?" → two single-user calls, compare
+- ANY comparative question about a user NOT already in WHO'S TALKING
+
+**When NOT to call:**
+- The asker is already in WHO'S TALKING and the question is about themselves — that profile already carries their rank
+- The user being asked about IS in WHO'S TALKING — use the rank shown there
+- The question asks for raw scores (those are internal; tool deliberately doesn't return them)
+- General-rank-explanation questions ("how does the rank work") — deflect with "based on chat history and trade activity"
+
+### Integrating tool results
+
+When you use any tool, integrate the results naturally — "kloh's been bearish on TSLA for weeks, called it 'cope longs' on May 15" — not "I searched and found...". Treat tool results the same way you treat your other pre-injected context: as something you just know.
+
+When using `lookup_user_ranks`, follow the rank/score disclosure rules: name the user + ordinal rank, paraphrase the rationale, never quote raw scores.
 
 ---
 
@@ -197,6 +223,8 @@ Google Search handles external/current facts; `search_chat_messages` handles INT
 
 Do NOT use it for current external facts (use Google Search) or for content already in your recent-channel-chat block or subject-verbatim block. One iterative call per missing piece of historical context — don't burn tool budget on speculative searches.
 
+**Type 1 + `lookup_user_ranks`.** Comparative ranking questions ("who's #1 trader," "what's BK's racism rank," "top 5 traders") that target users NOT in WHO'S TALKING — call `lookup_user_ranks` with the right mode. Name the user + ordinal rank in the answer; paraphrase rationale. If the question is purely informational ("who's #1") it's Type 1.
+
 #### Profile use on Type 1
 
 User profiles ARE in your WHO'S TALKING block (every Type 1 too — the asker's is always loaded, plus active speakers). For Type 1 they're mostly background, not source: factual answers come from search + caller logs, not from profile material. Use the asker's profile for:
@@ -239,6 +267,8 @@ SKIP search for pure ambient/social — "what's up," "tell me a joke," "you good
 
 **Using `search_chat_messages` on Type 2.** When the asker's opinion question references something specific the room discussed in the past — *"what did @kloh say about TSLA last month,"* *"how did the room react when Powell cut,"* *"what was @BK's hot take on MSTR last week"* — call `search_chat_messages` with the keyword + optional username/days to surface the historical content, then form your take. Use sparingly: most Type 2 questions are vibe checks or opinions that don't need historical lookup. The tool fires when there's a specific past event/quote/position the asker is referencing.
 
+**Using `lookup_user_ranks` on Type 2.** Opinion / comparative questions about who's better at trading or who's the worst about race in the room — *"is BK actually a good trader,"* *"who's the most racist regular,"* *"how would you rank kloh vs @sv77788"* — call `lookup_user_ranks` to get the ranks, then form the OPINION around that data. Name the user + ordinal rank; paraphrase rationale; don't quote raw scores. The opinion is yours; the ranks are the anchor.
+
 ---
 
 ### TYPE 3 — INSULTS, PRESSURE, ROAST REQUESTS, SHIT-TALK
@@ -252,6 +282,8 @@ SKIP search for pure ambient/social — "what's up," "tell me a joke," "you good
 **Source the heat from real material — the WHOLE dossier, the ATTACKER'S.** The attacker's profile is always in WHO'S TALKING (every asker's profile is loaded). When clapping back, the SUBSTANCE comes specifically from the attacker's profile — not from any other profile that happens to be loaded. Anything in the attacker's profile is fair game: *Personality and style*, *Voice*, *Retarded takes*, *Recent trades*, *Recent personal life*. If it's in the profile, the room already knows it (everything in the profile was originally said in chat). Pull from any section — embarrassing personal admissions, aged-badly boasts, lost trades, dumb takes, slurs they dropped, family stuff they themselves brought into chat — all of it. **Never cross-attribute** — using one user's material against another is fabrication even when both profiles are visible in WHO'S TALKING. The only hard limit: don't fabricate. If the attacker's profile doesn't say it and chat doesn't show it, you don't have it.
 
 **Using `search_chat_messages` on Type 3.** When the attacker references something specific you don't have in context — *"you said X two weeks ago,"* *"remember when you got NVDA wrong"* — call `search_chat_messages` to verify or counter. If they're misquoting you, the search receipt corrects them ("checked the log — what I actually said was Y"). If they're cherry-picking a stale take you've since updated, surface the update ("yeah, said that on May 3 — also said the opposite on May 20"). One verified beat, then done. Don't get drawn into a multi-round receipt-fight; clapbacks are one paragraph and out.
+
+**Using `lookup_user_ranks` on Type 3.** When the attacker invokes their own rank or yours ("I'm the #1 trader here," "you don't know who you're talking to") — call `lookup_user_ranks(username=...)` to check the truth and slot it into the clapback ("you're not #1, you're #14 — and the rationale on file is that you cherry-pick wins"). Only fires when the attacker brings up ranks; don't volunteer rank data unsolicited.
 
 **Roast requests on third parties** fire only when the asker invites it explicitly AND the target is a regular the room already jokes about. Don't manufacture new attack surfaces.
 
@@ -1278,6 +1310,94 @@ async def _execute_chat_search(args: dict) -> dict:
     }
 
 
+def _build_user_ranks_tool():
+    """FunctionDeclaration for `lookup_user_ranks` — gives Gemini a
+    way to answer comparative / ranking questions about users not
+    in the (now scoped) WHO'S TALKING block. Returns ordinal ranks
+    + trader_rationale; never returns raw 0-100 scores."""
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="lookup_user_ranks",
+                description=(
+                    "Look up trader-rank or racism-rank information. "
+                    "Two modes: (a) provide `username` → returns that "
+                    "user's trader-rank, racism-rank, and "
+                    "trader_rationale; (b) provide `metric` ('trader' "
+                    "or 'racism') with optional `top_n` → returns the "
+                    "top N users by that metric (rank-ordered). Use "
+                    "for comparative/ranking questions like 'who's #1 "
+                    "trader,' 'what's BK's racism rank,' 'who are "
+                    "the top 5 traders.' Returns ordinal ranks + "
+                    "rationale; never raw 0-100 scores (those stay "
+                    "internal per the prompt rules). Do NOT use for "
+                    "questions about users already in WHO'S TALKING — "
+                    "those ranks are already in your context."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "username": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Discord username of a specific user to "
+                                "look up. If set, returns just that "
+                                "user's ranks + rationale (ignores "
+                                "metric/top_n)."
+                            ),
+                        ),
+                        "metric": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Either 'trader' or 'racism'. Required "
+                                "when `username` is not provided. "
+                                "Controls which ranking the top-N list "
+                                "is sorted by."
+                            ),
+                        ),
+                        "top_n": types.Schema(
+                            type=types.Type.INTEGER,
+                            description=(
+                                "How many top users to return (1-10, "
+                                "default 5). Only used when `username` "
+                                "is not set."
+                            ),
+                        ),
+                    },
+                ),
+            ),
+        ],
+    )
+
+
+async def _execute_user_ranks(args: dict) -> dict:
+    """Run the lookup_user_ranks tool call. Returns a dict shaped
+    for Gemini's function_response part."""
+    username = args.get("username")
+    metric = args.get("metric")
+    top_n = args.get("top_n") or 5
+    try:
+        top_n = max(1, min(10, int(top_n)))
+    except (TypeError, ValueError):
+        top_n = 5
+    try:
+        result = db.lookup_user_ranks(
+            username=username,
+            metric=metric,
+            top_n=top_n,
+        )
+    except Exception as e:
+        log.warning(f"lookup_user_ranks tool exec failed: {e}")
+        return {"error": str(e)[:200], "users": []}
+    log.info(
+        f"user_ranks tool: username={username!r} metric={metric!r} "
+        f"top_n={top_n} → mode={result.get('mode')} "
+        f"count={result.get('count')}"
+    )
+    return result
+
+
 async def _fetch_chat_context(
     channel,
     *,
@@ -1516,6 +1636,7 @@ async def _answer_with_gemini(
             tools=[
                 types.Tool(google_search=types.GoogleSearch()),
                 _build_chat_search_tool(),
+                _build_user_ranks_tool(),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -1651,12 +1772,20 @@ async def _answer_with_gemini(
             # Execute each function call and build function_response parts.
             tool_response_parts = []
             for fc in function_calls:
+                try:
+                    args = dict(fc.args) if fc.args else {}
+                except Exception:
+                    args = {}
                 if fc.name == "search_chat_messages":
-                    try:
-                        args = dict(fc.args) if fc.args else {}
-                    except Exception:
-                        args = {}
                     result = await _execute_chat_search(args)
+                    tool_response_parts.append(
+                        types.Part.from_function_response(
+                            name=fc.name,
+                            response={"result": result},
+                        )
+                    )
+                elif fc.name == "lookup_user_ranks":
+                    result = await _execute_user_ranks(args)
                     tool_response_parts.append(
                         types.Part.from_function_response(
                             name=fc.name,
