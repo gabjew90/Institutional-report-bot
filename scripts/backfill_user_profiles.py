@@ -383,7 +383,7 @@ def _verify_profile_claims(
 
 
 def _load_user_data_from_store(
-    channels: list[str], days: int
+    channels: list[str] | None, days: int
 ) -> tuple[dict, dict, dict, dict, dict]:
     """Replacement for the Discord-history scan loop, reading from
     chat_messages instead. Returns the same five accumulators the
@@ -399,6 +399,11 @@ def _load_user_data_from_store(
       slur_counts      : dict[user_id, int]         — regex-counted slurs
       slur_examples    : dict[user_id, list[str]]   — newest N snippets
 
+    `channels`: None / empty → no channel filter, profile builder reads
+    every ingested channel. This is the production default since we
+    dropped the narrower profile_channels filter — profiles use all
+    chat_messages content including image_ocr_text.
+
     Why this exists: the legacy Discord scan was rate-limited, gateway-
     flap-prone, and spawned a twin-client on the bot token. The
     chat_messages store (Phase 1) holds the same data, queryable
@@ -407,9 +412,12 @@ def _load_user_data_from_store(
     from collections import defaultdict
     import json as _json
 
+    scope = (
+        f"{len(channels)} channels" if channels else "ALL ingested channels"
+    )
     print(
         f"Phase 2: loading {days}d of messages from chat_messages store "
-        f"for {len(channels)} channels...",
+        f"for {scope}...",
         flush=True,
     )
     rows = db.load_chat_messages_for_profiles(channels, days=days)
@@ -448,15 +456,28 @@ def _load_user_data_from_store(
         except Exception:
             embed_list = []
         content = (r.get("content") or "").strip()
+        ocr_text = (r.get("image_ocr_text") or "").strip()
+        channel_name = r.get("channel_name") or ""
         by_user[uid].append({
             "timestamp": r.get("posted_at") or "",
+            "channel_name": channel_name,
             "content": content,
             "image_count": len(att_list),
             "embed_texts": embed_list,
+            "image_ocr_text": ocr_text,
         })
-        if content:
-            slur_counts[uid] += count_slurs_in_text(content)
-            ctxs = find_slur_contexts(content, window=45)
+        # Slur counting runs against the full searchable surface — text
+        # body + embed snippets + OCR'd screenshot content. A meme with a
+        # slur burned into the image counts the same as one typed in chat.
+        slur_surface = content
+        if embed_list:
+            slur_surface = f"{slur_surface} {' '.join(embed_list)}"
+        if ocr_text:
+            slur_surface = f"{slur_surface} {ocr_text}"
+        slur_surface = slur_surface.strip()
+        if slur_surface:
+            slur_counts[uid] += count_slurs_in_text(slur_surface)
+            ctxs = find_slur_contexts(slur_surface, window=45)
             if ctxs:
                 slur_examples[uid].extend(ctxs)
                 if len(slur_examples[uid]) > _SLUR_EXAMPLES_PER_USER:
@@ -475,7 +496,14 @@ def _load_user_data_from_store(
 def _format_messages_block(messages: list[dict]) -> str:
     """Render the per-user message list for the Gemini prompt.
 
-    Each entry: timestamp + content + embed text + image markers.
+    Each entry: timestamp + channel + content + embed text +
+    image-OCR text (when available) + plain [image] markers for any
+    images that didn't OCR.
+
+    Channel is included so the model can weight context — a trade
+    post in 💲-gain-loss-porn-💲 carries different signal from a
+    rant in 🎲-gambling-yapping-🎲, even from the same user.
+
     No filtering per user direction ("no filters") — short reactions
     and tickers go through too. No truncation either — long rants
     carry signal too (worldview / texture / specific reads), and
@@ -484,17 +512,35 @@ def _format_messages_block(messages: list[dict]) -> str:
     out = []
     for m in messages:
         ts = m["timestamp"][:16].replace("T", " ")
+        ch = m.get("channel_name") or ""
         parts = []
         if m["content"]:
             parts.append(m["content"])
         for embed_text in m.get("embed_texts", []):
             parts.append(f"[embed: {embed_text}]")
-        for n in range(m.get("image_count", 0)):
-            parts.append("[image]")
-        if parts:
-            out.append(f"{ts}: {' | '.join(parts)}")
+        # OCR text replaces generic [image] markers when available. A
+        # screenshot with extracted text is dramatically more useful as
+        # signal than just knowing "they posted an image."
+        ocr_text = m.get("image_ocr_text") or ""
+        n_images = m.get("image_count", 0)
+        if ocr_text:
+            # One OCR block covers all images on the message (OCR helper
+            # extracts from up to 2 images per message into one
+            # response). Truncate so a 5KB screenshot doesn't dominate.
+            snippet = ocr_text.replace("\n", " ").strip()
+            if len(snippet) > 600:
+                snippet = snippet[:600] + "…"
+            parts.append(f"[image-OCR: {snippet}]")
         else:
-            out.append(f"{ts}: [empty / sticker]")
+            for _ in range(n_images):
+                parts.append("[image]")
+        prefix = f"{ts}"
+        if ch:
+            prefix = f"{prefix} #{ch}"
+        if parts:
+            out.append(f"{prefix}: {' | '.join(parts)}")
+        else:
+            out.append(f"{prefix}: [empty / sticker]")
     return "\n".join(out)
 
 
@@ -990,17 +1036,27 @@ async def run(days: int, channels: list[str]) -> None:
     @client.event
     async def on_ready():
         try:
-            # Find channels
+            # Channel resolution. When `channels` is empty we read from
+            # ALL channels in chat_messages — no Discord-side resolution
+            # needed. The legacy --channels "a,b" override path still
+            # validates that those names exist in the connected guilds
+            # (so a typo errors out instead of silently producing zero
+            # results).
             targets: list[discord.TextChannel] = []
-            for guild in client.guilds:
-                for ch in guild.text_channels:
-                    if ch.name in channels:
-                        targets.append(ch)
-            if not targets:
-                print(f"ERROR: none of {channels} found", file=sys.stderr,
+            if channels:
+                for guild in client.guilds:
+                    for ch in guild.text_channels:
+                        if ch.name in channels:
+                            targets.append(ch)
+                if not targets:
+                    print(f"ERROR: none of {channels} found",
+                          file=sys.stderr, flush=True)
+                    return
+                print(f"Channels: {[ch.name for ch in targets]}",
                       flush=True)
-                return
-            print(f"Channels: {[ch.name for ch in targets]}", flush=True)
+            else:
+                print("Channels: ALL (no filter — reading every "
+                      "ingested channel in chat_messages)", flush=True)
             print(f"Backfilling last {days} days...", flush=True)
 
             cutoff = datetime.now(timezone.utc) - timedelta(days=days)
@@ -1122,8 +1178,12 @@ async def run(days: int, channels: list[str]) -> None:
             summary_lines.append(
                 f"# User profile backfill — last {days} days\n\n"
             )
+            channels_label = (
+                ", ".join(ch.name for ch in targets) if targets
+                else "ALL ingested channels"
+            )
             summary_lines.append(
-                f"- **Channels:** {', '.join(ch.name for ch in targets)}\n"
+                f"- **Channels:** {channels_label}\n"
             )
             summary_lines.append(
                 f"- **Cutoff:** {cutoff.isoformat()}\n"
@@ -1310,15 +1370,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--days", type=int, default=30,
                         help="Days of history to scan (default 30)")
-    # Default to settings.profile_channels (all configured channels —
-    # yapping + alerts) so manual invocation matches the scheduled
-    # daily refresh. Fallback to the hardcoded yapping list only if
-    # settings has nothing configured.
-    settings_channels = (settings.profile_channels or "").strip()
-    default_channels = settings_channels or ",".join(DEFAULT_PROFILE_CHANNELS)
+    # Default to empty — profile builder reads ALL ingested channels in
+    # chat_messages within the window. Pass --channels "a,b" to scope
+    # tighter for ad-hoc backfills. The narrower profile_channels filter
+    # was dropped (image OCR + broader ingest provides richer signal).
     parser.add_argument(
-        "--channels", type=str, default=default_channels,
-        help="Comma-separated channel names (default: settings.profile_channels)"
+        "--channels", type=str, default="",
+        help="Comma-separated channel names. Default empty = ALL "
+             "channels in chat_messages."
     )
     parser.add_argument(
         "--no-vision", action="store_true",

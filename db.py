@@ -2747,63 +2747,95 @@ def find_oldest_chat_gap(
 
 
 def count_chat_messages_for_channels(
-    channel_names: list[str],
+    channel_names: list[str] | None,
     *,
     days: int = 30,
 ) -> int:
-    """Quick coverage check: how many chat_messages rows exist for these
-    channels within the last `days`. Used by the profile-refresh
-    pipeline to decide whether the local store has enough data to
-    skip the Discord scan."""
-    if not channel_names:
-        return 0
+    """Quick coverage check: how many chat_messages rows exist within
+    the last `days`, optionally scoped to specific channels.
+
+    `channel_names`:
+      - None or empty list → count across ALL ingested channels
+      - non-empty list → scope to those channels
+
+    Used by the profile-refresh pipeline to decide whether the local
+    store has enough data to skip the Discord scan.
+    """
     from datetime import datetime, timedelta, timezone
     cutoff = (
         datetime.now(timezone.utc) - timedelta(days=int(days))
     ).isoformat()
-    placeholders = ",".join("?" for _ in channel_names)
-    row = get_connection().execute(
-        f"""SELECT COUNT(*) FROM chat_messages
-            WHERE channel_name IN ({placeholders})
-              AND posted_at >= ?""",
-        (*channel_names, cutoff),
-    ).fetchone()
+    if channel_names:
+        placeholders = ",".join("?" for _ in channel_names)
+        row = get_connection().execute(
+            f"""SELECT COUNT(*) FROM chat_messages
+                WHERE channel_name IN ({placeholders})
+                  AND posted_at >= ?""",
+            (*channel_names, cutoff),
+        ).fetchone()
+    else:
+        row = get_connection().execute(
+            """SELECT COUNT(*) FROM chat_messages
+               WHERE posted_at >= ?""",
+            (cutoff,),
+        ).fetchone()
     return int(row[0]) if row else 0
 
 
 def load_chat_messages_for_profiles(
-    channel_names: list[str],
+    channel_names: list[str] | None = None,
     *,
     days: int = 30,
 ) -> list[dict]:
-    """Load every non-empty chat_messages row for these channels within
-    the last `days`, ordered oldest-first. Returned dicts carry the
-    keys the profile-refresh pipeline needs:
+    """Load every non-empty chat_messages row within the last `days`,
+    ordered oldest-first. Returned dicts carry the keys the
+    profile-refresh pipeline needs:
 
-      author_id, author_username, author_display,
-      content, posted_at, attachment_urls, embed_texts
+      author_id, author_username, author_display, channel_name,
+      content, posted_at, attachment_urls, embed_texts,
+      image_ocr_text
+
+    `channel_names`:
+      - None or empty list → no channel filter, load EVERY ingested
+        channel. This is the default since the profile builder switched
+        to "use all chat_messages content."
+      - non-empty list → restrict to those channel names (legacy path,
+        kept for ad-hoc backfill runs that want to scope tighter).
+
+    image_ocr_text is included so screenshot content (especially from
+    eager-OCR channels like gain-loss-porn) contributes to the profile
+    signal alongside text and embeds.
 
     This replaces the Discord-history scan in
     scripts/backfill_user_profiles.py with a single SQL query —
     cheaper, faster, immune to gateway flaps + twin-client contention.
     """
-    if not channel_names:
-        return []
     from datetime import datetime, timedelta, timezone
     cutoff = (
         datetime.now(timezone.utc) - timedelta(days=int(days))
     ).isoformat()
-    placeholders = ",".join("?" for _ in channel_names)
-    rows = get_connection().execute(
-        f"""SELECT author_id, author_username, author_display,
-                   content, posted_at,
-                   attachment_urls, embed_texts
-            FROM chat_messages
-            WHERE channel_name IN ({placeholders})
-              AND posted_at >= ?
-            ORDER BY posted_at ASC""",
-        (*channel_names, cutoff),
-    ).fetchall()
+    if channel_names:
+        placeholders = ",".join("?" for _ in channel_names)
+        rows = get_connection().execute(
+            f"""SELECT author_id, author_username, author_display,
+                       channel_name, content, posted_at,
+                       attachment_urls, embed_texts, image_ocr_text
+                FROM chat_messages
+                WHERE channel_name IN ({placeholders})
+                  AND posted_at >= ?
+                ORDER BY posted_at ASC""",
+            (*channel_names, cutoff),
+        ).fetchall()
+    else:
+        rows = get_connection().execute(
+            """SELECT author_id, author_username, author_display,
+                      channel_name, content, posted_at,
+                      attachment_urls, embed_texts, image_ocr_text
+               FROM chat_messages
+               WHERE posted_at >= ?
+               ORDER BY posted_at ASC""",
+            (cutoff,),
+        ).fetchall()
     return [dict(r) for r in rows]
 
 

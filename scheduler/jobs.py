@@ -229,27 +229,26 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=3600,
         )
 
-    # Daily user-profile refresh — only registers if profile channels are
-    # configured. Refreshes profiles for active users in the yapping
-    # channels. Runs 15:00 local every day. The backfill script applies
+    # Daily user-profile refresh. Always registered now — the profile
+    # builder reads ALL ingested channels in chat_messages (no narrower
+    # filter). Runs 15:00 local every day. The backfill script applies
     # a per-user delta filter (profile_delta_threshold) so users whose
     # message count since last profile hasn't moved enough are skipped —
     # the daily run only re-profiles the people who actually changed.
-    if settings.profile_channels:
-        scheduler.add_job(
-            _user_profile_refresh_job,
-            trigger=CronTrigger(hour=15, minute=0, timezone=tz),
-            id="user_profile_refresh",
-            name="User profiles: refresh active members",
-            kwargs={"bot": bot},
-            max_instances=1,
-            misfire_grace_time=3600,
-        )
-        log.info(
-            f"User-profile system active — channels '{settings.profile_channels}', "
-            f"daily refresh 15:00 {settings.timezone} "
-            f"(delta threshold: {settings.profile_delta_threshold} new msgs)"
-        )
+    scheduler.add_job(
+        _user_profile_refresh_job,
+        trigger=CronTrigger(hour=15, minute=0, timezone=tz),
+        id="user_profile_refresh",
+        name="User profiles: refresh active members",
+        kwargs={"bot": bot},
+        max_instances=1,
+        misfire_grace_time=3600,
+    )
+    log.info(
+        f"User-profile system active — ALL ingested channels, "
+        f"daily refresh 15:00 {settings.timezone} "
+        f"(delta threshold: {settings.profile_delta_threshold} new msgs)"
+    )
 
     # /ask interaction log publisher — every 30 min, push any local
     # ask-logs/YYYY-MM-DD.md files to pulse-data branch for browseable QC.
@@ -579,15 +578,11 @@ async def _user_profile_refresh_job(bot=None):
     try:
         from scripts.backfill_user_profiles import run as backfill_run
         import db
-        channels = [
-            c.strip() for c in (settings.profile_channels or "").split(",")
-            if c.strip()
-        ]
-        if not channels:
-            return
-        log.info(f"User-profile refresh: scanning {channels} for "
-                 f"{settings.profile_window_days}d")
-        await backfill_run(settings.profile_window_days, channels)
+        # Channels=[] → backfill reads ALL chat_messages within the
+        # window. Profile builder no longer scopes to profile_channels.
+        log.info(f"User-profile refresh: scanning ALL ingested channels "
+                 f"for {settings.profile_window_days}d")
+        await backfill_run(settings.profile_window_days, [])
         # Prune to top N by message_count_at_update
         pruned = db.prune_user_profiles_to_top_n(settings.max_user_profiles)
         if pruned:

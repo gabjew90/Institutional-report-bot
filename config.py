@@ -153,11 +153,17 @@ class Settings(BaseSettings):
     # conservative 20h to leave headroom for clock skew.
     chat_attachment_url_freshness_hours: int = 20
 
-    # User-profile system: comma-separated channel names where the bot
-    # scans for personality signal during the daily profile refresh.
-    # Four "yapping" channels (high-volume personality) + four alert
-    # channels (low-volume but signal-rich trade calls). Empty =
-    # profile system disabled (no scheduled refresh).
+    # Default chat-ingestion channels — the bot persists messages from
+    # these into chat_messages by default (when chat_ingestion_channels
+    # is not set as an override). Four "yapping" rooms + four alert
+    # rooms, all the channels the bot already cares about.
+    #
+    # Historically this field also scoped the profile-builder to these
+    # 8 channels. That filter was removed: the profile builder now
+    # reads ALL chat_messages (including image_ocr_text), so this field
+    # only controls ingestion defaults today. Kept the name for
+    # backward-compat with the PROFILE_CHANNELS env var on existing
+    # Railway deploys.
     profile_channels: str = (
         "💬-stonks-yapping-💬,"
         "₿-crypto-yapping-₿,"
