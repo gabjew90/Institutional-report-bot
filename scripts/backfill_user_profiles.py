@@ -329,18 +329,63 @@ Don't invent OCR content. Only cite what's actually in the `[image-OCR: ...]` bl
 
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
-Output a single JSON object with exactly four fields, IN THIS ORDER:
+Output a single JSON object with exactly five fields, IN THIS ORDER:
 
 ```
 {{
   "trader_score": <integer 0-100>,
   "racial_humor_score": <integer 0-100>,
-  "trader_rationale": "<1-3 sentences on what's driving the score + honesty modifier if applied>",
+  "trader_rationale": "<1-2 SAVAGE-BUT-HILARIOUS sentences, see below>",
+  "racism_rationale": "<1-2 SAVAGE-BUT-HILARIOUS sentences, see below>",
   "profile_text": "<full markdown profile per the schema above — ALL 5 named sections>"
 }}
 ```
 
 `profile_text` is LAST and is the largest field by far. All five named sections (Personality and style / Voice / Retarded takes / Recent trades / Recent personal life) live inside this single markdown string.
+
+## RATIONALES — savage-but-hilarious, sourced from real chat
+
+Both `trader_rationale` and `racism_rationale` are short summary lines that get surfaced INLINE next to the user's rank in the /ask dossier. They are NOT internal notes — readers see them. The room is signed up for crude humor; treat these like roast-comedian one-liners, not corporate boilerplate.
+
+### `trader_rationale` (1-2 sentences, ~150-280 chars)
+
+What it covers: (a) the bracket-defining trading pattern, (b) the honesty modifier if applied, (c) anchored to a specific recent trade or recurring behavior. Quote-anchored, not generic.
+
+**Good shapes:**
+- *"Closed $ARM 145c at 3.8 — ran to 17.8 in 48 hours. 'Should've sized up' is now permanent personality, not a one-off lament."*
+- *"Sharp on macro reads, leaks edge selling winners early. Posted the $NVDA +220% screenshot AND the $WEN -30% screenshot in the same week — +5 honesty modifier for being the only one in the room who shows the losses."*
+- *"Net flat by documented receipts: posts wins loud, never the losses. -10 cherry-pick modifier; the room counts how many setups he scales too small on per week (4 last week)."*
+- *"Full-ported ZEC and NOWL into permanent drawdown; 'crashed out' is his default state. The 'Wendy's Wrong Way' nickname does the work."*
+
+**Anti-patterns:**
+- *"Demonstrates strong macro awareness and active trade management."* (corporate)
+- *"Mixed execution with some good moments and some bad."* (generic)
+- *"Shows consistent skill in identifying setups."* (no specifics)
+
+### `racism_rationale` (1-2 sentences, ~150-280 chars)
+
+What it covers: the rank-defining racial-humor BEHAVIOR — sourced from real chat moments, specific targets, recurring tics. SAVAGE-BUT-HILARIOUS. Not "high volume of slur usage" generic — give the room a specific clip.
+
+**Good shapes:**
+- *"Complains about black homeless people every Tuesday like clockwork; the SUNY post-grad arc is doing the heavy lifting here."*
+- *"Drops 'chyna' with a banker's drawl approximately 3x per market open. Recently graduated to unprompted commentary on Chinese real estate nobody asked about."*
+- *"Quotes himself going 'bomb those yellow niggas' during a Chinese rare-earth rant last Tuesday and hasn't backed down."*
+- *"Mostly clean — one quoted slur in a meme repost last month. Lurker-tier; the regex caught one and that's the whole story."*
+- *"Said 'pajeet' on three different occasions about three different people, all from the same Excel-spreadsheet job. The accountant-villain era is going strong."*
+
+**Anti-patterns:**
+- *"High volume of racially-edged content."* (generic, dry)
+- *"Frequent slur user with stereotyping patterns."* (corporate)
+- *"Composite score driven by both slurs and broader humor."* (just restates the score)
+- ANY restatement of the 0-100 score itself ("70/100 humor score") — that number stays internal
+
+### Tone shared across both
+
+- Specific over abstract. Name the trade, the ticker, the quote, the target.
+- Sourced. If it's not in the user's chat history / OCR'd screenshots, you don't have it.
+- Mean is fine; corporate is not. Roast comedian, not HR memo.
+- Quoting verbatim is FINE — slurs, broken grammar, all of it. Attribution stays clear ("said 'X'") so it reads as the user's words, not yours.
+- 1-2 dense sentences. NOT a paragraph.
 
 ## BEFORE EMITTING — completion check (MANDATORY)
 
@@ -702,7 +747,7 @@ async def _generate_profile(
     user_id: int = 0,
     existing_profile: dict | None = None,
 ) -> tuple[
-    str | None, int | None, str | None, int | None, list[str] | None
+    str | None, int | None, str | None, int | None, str | None
 ]:
     """Run Gemini to produce one user's profile + scores in ONE call.
 
@@ -736,7 +781,7 @@ async def _generate_profile(
     """
     min_msgs = getattr(settings, "profile_min_messages", None) or MIN_MESSAGES_FOR_PROFILE_FALLBACK
     if len(messages) < min_msgs:
-        return None, None, None, None
+        return None, None, None, None, None
     sample_size = (
         getattr(settings, "profile_sample_size", None)
         or MESSAGES_PER_PROFILE_SAMPLE_FALLBACK
@@ -766,7 +811,7 @@ async def _generate_profile(
         # If literally nothing new (shouldn't happen given delta-skip but
         # defensive), don't burn a Gemini call.
         if not new_messages:
-            return None, None, None, None
+            return None, None, None, None, None
         dynamic_cap = max(
             sample_size, min(_DYNAMIC_SAMPLE_HARD_CAP, len(new_messages))
         )
@@ -809,27 +854,21 @@ async def _generate_profile(
     def _parse_response(
         text: str,
     ) -> tuple[
-        str | None, int | None, str | None, int | None,
+        str | None, int | None, str | None, int | None, str | None,
     ]:
-        """Parse the JSON response. Returns the four fields or all-None
+        """Parse the JSON response. Returns the five fields or all-None
         on parse failure. Logs first 300 chars of the response on
         decode error so we can see what came back.
 
-        Four fields (in order): profile_text, trader_score,
-        trader_rationale, racial_humor_score.
-
-        Earlier prompt revisions also returned trader_examples and
-        personal_ammo as structured fields; both were dropped when
-        the 5-section profile_text structure took over (Voice /
-        Retarded takes / Recent trades / Recent personal life are
-        now markdown sections inside profile_text).
+        Five fields (in order): profile_text, trader_score,
+        trader_rationale, racial_humor_score, racism_rationale.
         """
         if not text:
             print(
                 f"  parse-failure for {display_name}: EMPTY response body",
                 flush=True,
             )
-            return None, None, None, None
+            return None, None, None, None, None
         try:
             data = json.loads(text)
             if not isinstance(data, dict):
@@ -838,11 +877,12 @@ async def _generate_profile(
                     f"type={type(data).__name__} text={text!r}",
                     flush=True,
                 )
-                return None, None, None, None
+                return None, None, None, None, None
             pt = (data.get("profile_text") or "").strip() or None
             ts = data.get("trader_score")
             tr = (data.get("trader_rationale") or "").strip() or None
             rh = data.get("racial_humor_score")
+            rcr = (data.get("racism_rationale") or "").strip() or None
             if ts is not None:
                 try:
                     ts = max(0, min(100, int(ts)))
@@ -853,7 +893,7 @@ async def _generate_profile(
                     rh = max(0, min(100, int(rh)))
                 except (TypeError, ValueError):
                     rh = None
-            return pt, ts, tr, rh
+            return pt, ts, tr, rh, rcr
         except json.JSONDecodeError as e:
             preview = text[:300].replace("\n", " ")
             tail = text[-200:].replace("\n", " ") if len(text) > 500 else ""
@@ -863,7 +903,7 @@ async def _generate_profile(
                 f"HEAD={preview!r}" + (f" ...TAIL={tail!r}" if tail else ""),
                 flush=True,
             )
-            return None, None, None, None
+            return None, None, None, None, None
 
     # 16000 tokens of output headroom. Thinking models burn most of the
     # budget on internal reasoning we can't directly observe. At 8000
@@ -939,10 +979,16 @@ async def _generate_profile(
             "racial_humor_score": types.Schema(type=types.Type.INTEGER),
             "trader_rationale": types.Schema(
                 type=types.Type.STRING,
-                # 1000-char cap covers 1-3 sentences (bracket reasoning
-                # + honesty modifier if applied). The /ask dossier
-                # surfaces this directly under trader-rank.
-                max_length=1000,
+                # Savage-but-hilarious 1-2 sentences with specific
+                # receipts. 600 chars is plenty (~150-280 chars
+                # typical) without leaving room for paragraphs.
+                max_length=600,
+            ),
+            "racism_rationale": types.Schema(
+                type=types.Type.STRING,
+                # Same shape as trader_rationale but for the
+                # racism axis. 1-2 specific sentences.
+                max_length=600,
             ),
             "profile_text": types.Schema(
                 type=types.Type.STRING,
@@ -959,6 +1005,7 @@ async def _generate_profile(
             "trader_score",
             "racial_humor_score",
             "trader_rationale",
+            "racism_rationale",
             "profile_text",
         ],
     )
@@ -996,7 +1043,7 @@ async def _generate_profile(
     ) -> tuple[
         tuple[
             str | None, int | None, str | None, int | None,
-
+            str | None,
         ],
         str | None,
     ]:
@@ -1053,7 +1100,7 @@ async def _generate_profile(
     async def _attempt(temperature: float = 0.3) -> tuple[
         tuple[
             str | None, int | None, str | None, int | None,
-
+            str | None,
         ],
         str | None,
     ]:
@@ -1167,7 +1214,7 @@ async def _generate_profile(
         return result
     except Exception as e:
         print(f"  ERROR profiling {display_name}: {e}", flush=True)
-        return None, None, None, None
+        return None, None, None, None, None
 
 
 async def run(days: int, channels: list[str], *, force: bool = False) -> None:
@@ -1441,7 +1488,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                 print(f"    (failure-event write failed: {log_err})",
                                       flush=True)
                             continue
-                        profile, trader_score, trader_rationale, racial_humor_score = result
+                        profile, trader_score, trader_rationale, racial_humor_score, racism_rationale = result
                         # Guard: don't overwrite a substantial prior
                         # profile with a much shorter truncated one.
                         # Heavy users sometimes get section-1-only
@@ -1554,6 +1601,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             racial_humor_score=racial_humor_score,
                             trader_score=trader_score,
                             trader_rationale=trader_rationale,
+                            racism_rationale=racism_rationale,
                             slur_examples=slur_ex_json,
                         )
                         n_success += 1

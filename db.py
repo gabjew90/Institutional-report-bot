@@ -244,6 +244,14 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             trader_score INTEGER,
             trader_rank INTEGER,
             trader_rationale TEXT,
+            -- racism_rationale: 1-2 savage-but-hilarious sentences
+            -- distilling WHY the user ranks where they do on racism.
+            -- LLM-generated during profile refresh; sourced from
+            -- specific chat content (the Retarded takes / Voice /
+            -- Recent personal life sections). Surfaced alongside
+            -- racism-rank in /ask answers. Same shape as
+            -- trader_rationale but for the racism axis.
+            racism_rationale TEXT,
             slur_examples TEXT,
             trader_examples TEXT,
             -- personal_ammo: JSON list[str] of broader weaponizable
@@ -328,6 +336,7 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         ("trader_score", "ALTER TABLE user_profiles ADD COLUMN trader_score INTEGER"),
         ("trader_rank", "ALTER TABLE user_profiles ADD COLUMN trader_rank INTEGER"),
         ("trader_rationale", "ALTER TABLE user_profiles ADD COLUMN trader_rationale TEXT"),
+        ("racism_rationale", "ALTER TABLE user_profiles ADD COLUMN racism_rationale TEXT"),
         ("slur_examples", "ALTER TABLE user_profiles ADD COLUMN slur_examples TEXT"),
         ("trader_examples", "ALTER TABLE user_profiles ADD COLUMN trader_examples TEXT"),
         ("personal_ammo", "ALTER TABLE user_profiles ADD COLUMN personal_ammo TEXT"),
@@ -1987,6 +1996,7 @@ def upsert_user_profile(
     racial_humor_score: int | None = None,
     trader_score: int | None = None,
     trader_rationale: str | None = None,
+    racism_rationale: str | None = None,
     slur_examples: str | None = None,
     trader_examples: str | None = None,
     personal_ammo: str | None = None,
@@ -2007,10 +2017,10 @@ def upsert_user_profile(
              (user_id, username, display_name, profile_text,
               message_count_at_update, last_seen_message_at,
               slur_count, racial_humor_score,
-              trader_score, trader_rationale,
+              trader_score, trader_rationale, racism_rationale,
               slur_examples, trader_examples, personal_ammo,
               updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
            ON CONFLICT(user_id) DO UPDATE SET
              username = excluded.username,
              display_name = excluded.display_name,
@@ -2021,6 +2031,7 @@ def upsert_user_profile(
              racial_humor_score = COALESCE(excluded.racial_humor_score, user_profiles.racial_humor_score),
              trader_score = COALESCE(excluded.trader_score, user_profiles.trader_score),
              trader_rationale = COALESCE(excluded.trader_rationale, user_profiles.trader_rationale),
+             racism_rationale = COALESCE(excluded.racism_rationale, user_profiles.racism_rationale),
              slur_examples = COALESCE(excluded.slur_examples, user_profiles.slur_examples),
              trader_examples = COALESCE(excluded.trader_examples, user_profiles.trader_examples),
              personal_ammo = COALESCE(excluded.personal_ammo, user_profiles.personal_ammo),
@@ -2029,7 +2040,7 @@ def upsert_user_profile(
             int(user_id), username, display_name, profile_text,
             int(message_count_at_update), last_seen_message_at,
             int(slur_count), racial_humor_score,
-            trader_score, trader_rationale,
+            trader_score, trader_rationale, racism_rationale,
             slur_examples, trader_examples, personal_ammo,
         ),
     )
@@ -2282,7 +2293,7 @@ def export_user_profiles_markdown() -> str:
                   last_seen_message_at, datetime(updated_at) AS updated_at,
                   profile_text,
                   slur_count, racial_humor_score,
-                  trader_score, trader_rationale,
+                  trader_score, trader_rationale, racism_rationale,
                   slur_examples
            FROM user_profiles
            ORDER BY message_count_at_update DESC"""
@@ -2322,6 +2333,7 @@ def export_user_profiles_markdown() -> str:
         ts = r["trader_score"]
         tr_rank = trader_rank_by_uid.get(int(r["user_id"]))
         tr_rationale = (r["trader_rationale"] or "").strip()
+        racism_rationale_str = (r["racism_rationale"] or "").strip()
         try:
             slur_examples_list = _json.loads(r["slur_examples"] or "[]")
         except Exception:
@@ -2365,7 +2377,9 @@ def export_user_profiles_markdown() -> str:
         if score_bits:
             lines.append(f"> {' · '.join(score_bits)}")
         if tr_rationale:
-            lines.append(f"> _{tr_rationale}_")
+            lines.append(f"> _trader: {tr_rationale}_")
+        if racism_rationale_str:
+            lines.append(f"> _racism: {racism_rationale_str}_")
         # Profile body now carries all the ammo content inline in
         # named sections (Voice / Retarded takes / Recent trades /
         # Recent personal life). For OLD profiles that haven't been
@@ -2527,6 +2541,7 @@ def format_user_profiles_for_context(
         rr = racism_rank_by_uid.get(uid)
         humor = p.get("racial_humor_score")
         slurs = int(p.get("slur_count") or 0)
+        racism_rationale = (p.get("racism_rationale") or "").strip()
         sub_signal = []
         if humor is not None:
             sub_signal.append(f"humor:{humor}/100")
@@ -2534,9 +2549,11 @@ def format_user_profiles_for_context(
             sub_signal.append(f"slurs:{slurs}")
         sub = f" ({', '.join(sub_signal)})" if sub_signal else ""
         if rr:
-            metric_bits.append(
-                f"racism-rank #{rr}/{racism_total_in_conv} in this conv{sub}"
-            )
+            base = f"racism-rank #{rr}/{racism_total_in_conv} in this conv{sub}"
+            if racism_rationale:
+                metric_bits.append(f"{base} — {racism_rationale}")
+            else:
+                metric_bits.append(base)
         else:
             metric_bits.append(f"racism-rank: not in this conv's top{sub}")
         # trader_rank — computed on-read from current trader_score
@@ -3048,7 +3065,7 @@ def lookup_user_ranks(
     if username and username.strip():
         row = conn.execute(
             """SELECT user_id, display_name, username,
-                      trader_rationale
+                      trader_rationale, racism_rationale
                  FROM user_profiles
                 WHERE LOWER(username) = LOWER(?)""",
             (username.strip(),),
@@ -3071,6 +3088,7 @@ def lookup_user_ranks(
                 "trader_rationale": row["trader_rationale"],
                 "racism_rank": racism_ranks.get(uid),
                 "racism_rank_total": racism_total,
+                "racism_rationale": row["racism_rationale"],
             }],
             "count": 1,
             "mode": "single_user",
@@ -3112,7 +3130,7 @@ def lookup_user_ranks(
         ]
     else:  # racism
         rows = conn.execute(
-            """SELECT user_id, display_name, username
+            """SELECT user_id, display_name, username, racism_rationale
                  FROM user_profiles
                 WHERE racial_humor_score IS NOT NULL
                   AND racial_humor_score > 0
@@ -3125,6 +3143,7 @@ def lookup_user_ranks(
                 "rank": i + 1,
                 "username": r["username"],
                 "display_name": r["display_name"],
+                "racism_rationale": r["racism_rationale"],
             }
             for i, r in enumerate(rows)
         ]
