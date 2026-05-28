@@ -122,8 +122,8 @@ Per-section quick reference, all following the universal rule:
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned.
-- **trader_score / racial_humor_score:** hold by default. Shift only when new evidence justifies a meaningful move — a single bad week doesn't drop a +70 to a +40. The receipts-gated brackets re-evaluate every refresh against BOTH paths to 75+: (Path A) sustained alert-channel posting / owned-channel activity, and (Path B) at least one posted red P&L screenshot alongside wins. If a 74-capped user newly cleared either path in the new window — they started running entries in a shared alert channel, or finally posted a red close-out — that UNLOCKS the 75+ bracket and the score should move. Conversely, if a 75+ user went 30 days with no alert posts AND no posted losses while old receipts aged out of the window, the cap may re-engage. The ±5 tiebreaker re-evaluates per refresh.
-- **trader_rationale:** carry forward unless the score changed or the underlying pattern shifted. If a receipts gate moved (new alert-channel activity, new posted loss, or both aged out), call out which PATH moved and the specific receipts that drove it.
+- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh using the chatter-base × receipts-ceiling rubric. The chatter base may carry forward if the chat pattern is unchanged, but the receipts ceiling is computed fresh from the 7-DAY POINTS LEDGER above and may have shifted materially since last refresh (the 7-day window is rolling — last week's points are gone, this week's are new). If the prior trader_score is no longer consistent with `min(chatter_base + honesty, current_ceiling)`, the new score MUST move to match — even if it means dropping a 78 to a 65 because the user stopped posting receipts.
+- **trader_rationale:** REWRITE each refresh from the current ledger + chat, don't carry forward stale point counts or ceiling values. Specifically call out the current 7-day points total and the current ceiling; the rationale's structure is fixed (chatter base / honesty modifier / ceiling / final), but the numbers re-derive every time.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly.
 
@@ -326,7 +326,7 @@ An alert post is a position entry the user publicly committed to BEFORE the outc
 
 __OWNED_CHANNELS_BLOCK__
 
-Posts in a caller's own channel (per the table above) are **structural full honesty**. Every entry there is documented. The caller cannot cherry-pick — the room would notice missing alerts on positions they're talking about elsewhere. This unlocks the 75+ bracket window for the channel owner by default when they have ≥10 posts in the window. Position inside 75+ is set by trade quality alone.
+Posts in a caller's own channel (per the table above) are **structural full honesty**. Every entry there is documented; the caller cannot cherry-pick. These posts accumulate points in the 7-DAY POINTS LEDGER below — entry+close pairs score the +5 / +3, lifting the receipts ceiling.
 
 **Shared alert channels** (multiple posters, not in the owned table):
 - `🕰️-member-alerts-🕰️`
@@ -334,9 +334,9 @@ Posts in a caller's own channel (per the table above) are **structural full hone
 - `🚨-0dte-lotto-alerts-🚨`
 - `🪙-crypto-alerts-🪙`
 
-Each post here is still an entry commitment from the user who posted it — same prospective-entry property as a caller-owned channel. The room sees the alert before outcome is known. Less structural than caller-owned (the user chooses *whether* to post to a shared room, so some curation is possible at the channel-entry level), but each individual alert is still a real receipt of "I'm in X at Y." Path A via shared alerts requires ≥15 entry alerts in the window — fewer than that is occasional posting, NOT sustained.
+Each post here is also a pre-outcome entry commitment from the user who posted it — same prospective-entry property as a caller-owned channel, slightly less structural (the user chooses *whether* to post to a shared room). These posts also accumulate points in the ledger; the ceiling-lift is the same whether the entry was in an owned channel or a shared one.
 
-**These are the ONLY two ways to unlock Path A.** Do NOT invent a third path — "thesis-posting in chat," "multi-day analysis in regular channels," "consistent room engagement," etc. are NOT structural commitments and do not unlock 75+. They go in the 0-59 bracket as chat-claim activity. The two paths above are the complete list.
+**Receipts certify edge; chat-claimed activity does not.** "Thesis-posting in chat," "multi-day analysis in regular channels," "consistent room engagement" do NOT score points and do NOT lift the receipts ceiling. They feed the chatter-base read (Layer 1 in the trader_score rubric) — the ceiling layer comes exclusively from documented entries / closes / screenshots that hit analyst_trades.
 
 Read alert posts in `trader_examples` / Recent trades by quoting the alert content: "Posted `$NVDA 145C entry 8.40 stop 6.00` in member-alerts on 4/18, closed +320% at 35 a week later." The pre-trade levels make it ctrl-F-verifiable in the channel.
 
@@ -387,14 +387,14 @@ Both `trader_rationale` and `racism_rationale` are short summary blocks that get
 
 What it covers: (a) the evidence gate — which PATH (alert posts / closed-P&L losses) unlocked the bracket WINDOW, (b) the raw-skill read inside that window, (c) the ±5 tiebreaker if applied and why, (d) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Name the specific receipts (alert content quoted, P&L card ticker + dollar amount) that moved the bracket.
 
-**Good shapes** (use as structural templates — the bracketed tickers / percentages / receipts are SLOTS to be filled from this user's actual evidence, NEVER copied as-is):
+**Good shapes** (use as structural templates — the bracketed slots are filled from this user's actual evidence, NEVER copied as-is):
 
-- *Caller with owned alert channel (Path A — structural honesty):* "Owns a dedicated alert channel and runs `[N]` entry alerts `[per week/month]` through it; every position is committed before outcome is known, so the channel itself is the receipt log. Path A unlocks 75+ outright. Inside the window, `[2-3 concrete tracked-alert outcomes sourced from THIS user's channel — ticker / strike / entry-to-close / gain%]`. `[±5 tiebreaker if applied, with the specific reason — sustained two-sided posting or within-bracket asymmetry]`. Sits `[bracket-position]` because `[the read on alerts that work, exits that are early or late, sizing pattern]`."
-- *Mixed-receipt trader (both paths):* "Two-sided P&L receipts AND alert posting both clear the 75+ gate. Posted `[the actual P&L screenshot evidence — ticker, win, ticker, loss, sourced]`, plus a stream of entry alerts in `[the shared channel they post in — sourced]`. `[The behavioral read on entries vs exits, sizing, follow-through]`. `[Recurring lament or brag if any, quoted from THIS user]`. `[Bracket-position reasoning]`."
-- *Wins-only ceiling (no alert posts, curated P&L):* "Capped at 74 by evidence: `[N] green screenshots in gain-loss-porn over [period], zero red ones, [alert-channel coverage status]`, while `[the contradiction visible in chat — claimed bag, denied loss, etc., sourced]`. Neither path unlocked — no posted losses (Path B) and no sustained alert posting (Path A). `[The trader-skill read on what the wins-only set actually shows]`. Would unlock 75+ instantly the day they either post a red close or run entries through an alert channel."
-- *No receipts at all (cap at 59):* "Caps at 59 — no alert-channel posts, no P&L screenshots in the window at all. `[Their actual conviction-posting pattern sourced from chat — what they call, how often, the tone]`, but zero documented commitments to anchor any of it. The reads sometimes sound right, sometimes don't; without receipts the score can't separate the two. Position inside the 0-59 window picked at `[upper / mid / lower]` because `[the chat-claimed reads quality]` — but the bracket itself is locked until a real entry or close-out lands somewhere documented."
+- *High chatter base + receipts certify (cap doesn't bind, sits high):* "Chatter base reads `[X]` — `[the chat-evidence: macro reads, conviction calibration, how they handle losses, sizing language]`. `[+/-N honesty modifier if applied + reason — e.g. owns misses cleanly, or gloat-loud / complain-vague asymmetry]`. `[N points in 7-day ledger: M entry-wins + L entry-losses + K screenshots]` → ceiling `[Y]`, which `[binds / does not bind]` on the chatter base. Final lands at `[Z]`."
+- *Mid chatter base + cap binds at 65-75 (talks decent, no receipts):* "Chatter base reads `[X]` — `[the chat-evidence supporting a higher score]`. `[Honesty modifier reasoning]`. 0 points in the 7-day ledger → ceiling 65, which binds the score at 65 regardless of how the chat sounds. The room can't certify edge without receipts; even a sharp-chat read caps here until alerts or screenshots land."
+- *Low chatter base (cap doesn't bind, scored honestly from chat):* "Chatter base reads `[X in 0-59 range]` — `[the chat-evidence: bag-holding language, tilt cycles, copy-trading patterns, complaining about losses without owning them]`. `[Honesty modifier reasoning if applied]`. 0 points in the 7-day ledger → ceiling 65, but the cap doesn't bind because chatter base is already below it. Final lands at `[X]`."
+- *Heavy poster (full receipts, ceiling fully released):* "Chatter base reads `[X high]` — `[chat-evidence: repeatable framework, room tails the calls, clean post-mortems on misses]`. `[+honesty modifier + reason]`. `[N points in 7-day ledger]` → ceiling `[Y]` `(near 100)`. Final lands at `[Z]`, in the upper bracket because both the chatter read and the receipt cadence support it."
 
-**Hard rule.** The bracketed slots above are placeholders. Fill each with content sourced from the actual MESSAGES + analyst_trades evidence for THIS user. NEVER copy the example tickers, percentages, or framing across to a different user — same ATTRIBUTION RULE that governs Voice / Retarded takes.
+**Hard rule.** The bracketed slots above are placeholders. Fill each with content sourced from the actual MESSAGES + analyst_trades + points ledger for THIS user. NEVER copy the example point counts, ceiling values, or framing across to a different user — same ATTRIBUTION RULE that governs Voice / Retarded takes.
 
 **Anti-patterns:**
 - *"Demonstrates strong macro awareness and active trade management."* (corporate)
@@ -455,45 +455,61 @@ If a section genuinely has no signal (user is a near-lurker with no slurs / no t
 
 **(trader_examples removed.)** Trade activity used to be a separate field — now it's folded into personal_ammo (for quotable single-line trade receipts) and the "Trash talk & life ammo" narrative section (for trade-anchored bits the room riffs on). Don't write a `trader_examples` field; the schema doesn't have one.
 
-**trader_score brackets — RECEIPTS GATE THE BRACKET CEILING.**
+**trader_score — CHATTER ESTIMATES, RECEIPTS CERTIFY.**
 
-Bracket window is set FIRST by evidence quality (what's actually documented in alert-channel posts and OCR'd screenshots — NOT chat claims), THEN raw skill picks the position inside that window. Without the receipts, the ceiling does not move regardless of how confident or active the user is.
+The score has two layers that combine. Chatter sets a fair base read; receipts certify how high that base can be realized.
 
-The 75+ gate can be unlocked by EITHER of two paths (they're equivalent — both prove non-curated honesty):
+**Layer 1 — Chatter base estimate (0-100, calibrated from MESSAGES below).**
 
-- **Path A — alert-channel posts as structural commitments.** Posts in an alert channel are prospective entries: the user committed to the position publicly before the outcome was known, so the channel as a whole cannot be cherry-picked. The KNOWN OWNED ALERT CHANNELS table above is the deterministic mapping — use it, don't infer channel ownership from name substring. Specifically:
-  - A user listed in the OWNED ALERT CHANNELS table who has **≥10 posts** in their own channel within the window gets the 75+ window unlocked by default. The channel IS the receipt log.
-  - A user who posts ≥15 entry alerts in shared alert channels (member-alerts / spot-bag-alerts / 0dte-lotto-alerts / crypto-alerts) within the window also unlocks 75+ — each post is still a pre-outcome commitment. Sparse / occasional shared-alert posting (under 15 alerts) is not enough on its own; needs to be a sustained pattern.
-- **Path B — closed-P&L screenshots including documented LOSSES.** At least one real red screenshot in the gain-loss-porn channel — a closed bag, a posted -X% card, a stop-loss hit posted publicly. Not "claimed a loss in chat" — posted the receipt. The presence of a posted loss proves the gain-loss-porn history isn't curated.
+Read the user's actual chat and place a fair score for where they sit as a trader. This is NOT a floor; it's an honest provisional read of the trader you observe in chat. Calibrate against the bracket descriptions below — they describe the chatter-readable behavior the room would recognize:
 
-**These are the ONLY two paths to 75+.** Do NOT invent a third unlock path (e.g. "detailed thesis posting in regular channels," "multi-day analysis with conviction language," "active room participation," "shared positions in chat with no alert-channel commitment"). Those forms of activity stay in the 0-59 bracket as chat-claim trading regardless of how good the reads sound. The rubric's design is deliberate: documented commitment OR documented loss, nothing else.
+- **0-19:** Tail traffic / exit liquidity. Should not be trading at this size. Chat is constant pivots, no edge, copies whoever is loudest.
+- **20-39:** Bag holder. More losses than wins by chat-claim. Sizes up to recover. Visible tilt patterns. Chases the loudest voice in the room.
+- **40-59:** Net negative or barely flat. Knows the theory, leaks edge in execution. Often self-aware about the leaks but doesn't fix them. The "talks the right setups, fades them" pattern.
+- **60-74:** Sounds decent from chatter — reasonable reads, reasonable management language, no obvious tilt cycle. Could be a competent trader; the chat alone is consistent with edge but doesn't certify it.
+- **75-89:** Chat reads like an actually-good trader — sharp macro takes, calibrated conviction, owns misses cleanly, sustained quality across the window. The chatter base alone is high.
+- **90-100:** Chat reads like a top-of-room trader — repeatable framework, others openly tail, room books the calls. Rare; chatter alone rarely justifies this.
 
-Brackets:
+**Honesty modifier (±10) applies on the chatter layer.** Inflate or deflate the base read based on what the chat shows:
+- **+3 to +5:** Self-aware about losses; owns misses without crisis language; doesn't bury bad trades behind vague hedging.
+- **−5 to −10:** Gloat-loud / complain-vague asymmetry. Loud about wins, evasive about losses. Bag-holding language elsewhere while talking sharp in chat. Visible deception drags the base down.
 
-- **0-59 — HARD CAP for users with NO alert posts AND NO P&L screenshots at all.** Pure chat-claim trading lives here. Doesn't matter how loud, how active, or how good their takes sound. The loud-talker-posts-nothing user lives here too — that's the design. Lurkers default here. Inside this window, position by raw quality of the chat-claimed reads / self-awareness / sizing language.
-  - **0-19:** Tail traffic / exit liquidity. Should not be trading at this size.
-  - **20-39:** Bag holder. More losses than wins by chat-claim. Sizes up to recover. Chases the loudest voice.
-  - **40-59:** Net negative or barely flat. Knows the theory, leaks edge in execution. Often self-aware. (Note: a user could be GENUINELY in the 80s skill-wise but stuck here because zero receipts — that's the rubric working as intended; the room values documented edge.)
-- **60-74 — CAP for users with WINS-ONLY P&L screenshots and either no alert-channel posts or only sparse / one-off shared-alert mentions.** Some documented evidence exists, but the receipt set is selective greens with no commitment-style entry log to anchor the rest of the record. The room reads through this, and the score reflects it.
-- **75-89 — UNLOCKED via Path A OR Path B above.** Either the user has structural alert-posting honesty (owned channel, or sustained shared-alert entries) OR they've posted a real red P&L screenshot alongside their wins. Equivalent gates, equivalent unlock. The room only trusts a trader whose record can't be curated; this bracket is the formal version of that trust.
-- **90-100 — meets the 75+ gate AND skill is exceptional.** Process visible across multiple trades: entries posted BEFORE the move, not after, with the room actively booking them. Repeatable setup, not coinflips. The room actively tails this user's calls.
+Apply this modifier to your initial chatter base BEFORE applying the receipts cap below.
 
-**Documented losses (Path B) AND alert-channel entries (Path A) are both POSITIVE evidence, not penalty-avoidance.** Load-bearing principle: a screenshotted -$3k loss is worth MORE evidentiary credit than a claimed +$3k win with no proof. A prospective alert-channel entry posted at 8.40 (that later closed at 6.00 for -28%) is worth MORE than a chat brag about catching the top. Both forms of structural commitment raise the CONFIDENCE of the score because they prove the record isn't curated. That's why either path unlocks 75+ — not as a virtue tax, but because the score can't be calibrated upward without one of them.
+**Layer 2 — Receipts ceiling (caps how high the base can land).**
 
-A wins-only-P&L user with no alert posts hits the ceiling at 74 even if those greens are spectacular. To break 75 they need either (a) a posted red receipt or (b) sustained alert-channel posting. That single rule flips the room's incentive: real-time entry alerts and posted losses are the ways to climb, not confessions.
+The structured 7-DAY POINTS LEDGER above is computed from analyst_trades — every documented entry, close, and standalone screenshot this user posted in alert channels or gain-loss-porn over the last 7 days, point-scored as:
 
-**±5 honesty tiebreaker (within the bracket window only).** This is a small refinement, NOT the main lever — receipts already gate the bracket. Within the chosen window, adjust by up to ±5:
-- **+3 to +5:** sustained two-sided posting throughout the window — not just the obligatory one loss that unlocked the gate, but consistent wins-AND-losses receipts across the period.
-- **0 (default):** mixed evidence, no marked asymmetry inside the bracket.
-- **−3 to −5:** within-bracket asymmetry that doesn't break the cap rule but undermines confidence — e.g., posts wins eagerly while burying losses in vague chat language. Doesn't drop the bracket window, just lowers the position inside it.
+- **+5 per entry posted AND closed for a win** (the strongest evidence form — prospective commitment + winning outcome)
+- **+3 per entry posted AND closed for a loss** (still strong — commitment + transparency on the outcome)
+- **+3 per entry posted with no close after 3-day grace** (commitment with the outcome inferred as loss for points purposes)
+- **+1 per standalone close-only screenshot** (a P&L receipt without the prospective entry — wins-only screenshotters live here)
 
-The tiebreaker NEVER moves a user across a bracket boundary (no receipts → still capped at 59 even with +5; receipts of wins+losses → still ≥75 even with −5). It only refines position INSIDE the window the receipts already chose.
+The points total maps to a ceiling on `trader_score`:
+
+| 7-day points | Ceiling | Read |
+|---|---|---|
+| 0 | 65 | No receipts — can't certify edge. Even a sharp-chat trader caps here. |
+| 1-4 | 70 | Starting to post; sliver above no-receipts. |
+| 5-9 | 75 | Real but sparse receipts; wins-only-screenshotter territory. |
+| 10-19 | 85 | Documented edge; ceiling lifts substantially. |
+| 20-29 | 92 | Sustained two-sided posting; near the top. |
+| 30+ | 100 | Full receipt cadence; ceiling fully released. |
+
+**Final score = min(chatter_base + honesty_modifier, receipts_ceiling).**
+
+The cap binds when the chatter base sounds high but receipts are thin — that's the "talks-sharp-but-can't-certify" pattern, deliberately capped at 65-75. The cap does NOT bind when chatter is already low (a 35-from-chat bag-holder hits no ceiling because their honest chat read is already below 65). Three populations the rubric reads correctly:
+
+- **Pure talker, sounds sharp:** chatter base 78, points 0 → ceiling 65 → final 65. "Talks a strong game, no receipts, taking it on faith."
+- **Pure talker, obvious bag-holder:** chatter base 32, points 0 → ceiling 65 → final 32 (cap doesn't bind). Scored honestly from the complaining.
+- **Mixed / poster:** chatter base 76, points 18 → ceiling 85 → final 76. Receipts let the base land.
+- **Heavy poster, repeatable edge:** chatter base 88, points 35 → ceiling 100 → final 88. Top-of-room.
+
+State the actual reasoning directly in trader_rationale — 3 to 5 sentences. Cover (a) the chatter base you read and what drove it, (b) the honesty modifier if applied and why, (c) the receipts ceiling from the points ledger and whether it binds, (d) the final score and one or two anchored examples. Example:
+
+> "Chat reads sharp on macro — calibrated conviction, owns misses, didn't pivot on the rough Tuesday — chatter base lands around 78. +3 honesty modifier for posting the bad close-out publicly the same week, no gloating-up / complaining-down asymmetry. 14 points in the 7-day ledger (3 entry-wins + 2 entry-losses + 1 screenshot) → ceiling 85, which doesn't bind on the 81 chatter read. Final lands at 81, mid of the 75-89 bracket — receipts certify the chatter is real, but execution still leaves money on the table from selling winners early."
 
 **trader_score = SKILL ONLY, not activity.** A quiet user with sharp, well-documented trades scores higher than a loud daily poster with no receipts. Active-and-loud ≠ good-and-sharp; conflating them inflates the wrong people. Activity volume is separately visible to the room via the msg_count in the dossier header — it does not enter the skill score.
-
-State the actual pattern directly in trader_rationale — 3 to 5 sentences. Cover (a) the bracket WINDOW you picked and the evidence quality that gated it (no receipts → ≤59 / wins-only → ≤74 / wins+losses → 75+), (b) the raw-skill read inside the window, (c) the ±5 tiebreaker if applied and why. Reference specific tickers / trades / OCR'd $ amounts when they drive the call. Example:
-
-> "Documented wins on $NVDA 145C (+220%) and $ASTX (+234%) — both posted as Robinhood card OCRs the same day — plus a posted -42% bag on $WEN closed and screenshotted publicly. Two-sided receipts unlock the 75+ window; raw skill (macro reads land, entries posted hours before the move, sizing builds with conviction rather than tilt) puts him at the top of that window. +3 tiebreaker for the sustained transparency across the full 30 days, not just the gate-unlock loss. Pattern: macro reads land, execution leaves money on the table from selling winners early."
 
 **racial_humor_score brackets (0-100)** — the canonical score for race-edged content from this user. Internal calibration only; the bot never quotes the raw number. Score the FULL picture (slurs + stereotypes + dog whistles + race-based mockery + unprompted racial references), not just literal slurs. Self-deprecating jokes about the user's OWN race and factual mentions of races/ethnicities in geopolitics or news don't count.
 
@@ -504,6 +520,14 @@ State the actual pattern directly in trader_rationale — 3 to 5 sentences. Cove
 - **76-100:** Dominant. Race-edged content saturates the messages. Slurs uncensored and frequent. Specific groups targeted in a sustained way.
 
 Anchor against THIS user's messages. Zero examples = 0-15.
+
+---
+
+7-DAY POINTS LEDGER — used by the trader_score rubric's receipts ceiling.
+
+{points_block}
+
+The total points + implied ceiling above are computed from analyst_trades (real entries / closes / screenshots posted by THIS user in their alert channel and gain-loss-porn). The trader_score's receipts-ceiling layer reads directly off this. Honor the ceiling as a HARD cap — `min(chatter_base + honesty_modifier, ceiling)`. If your chatter read exceeds the ceiling, the score lands at the ceiling, not at your chatter read. (Pure-talker / no-receipts users hit ceiling 65 here, and that's by design.)
 
 ---
 
@@ -742,6 +766,34 @@ def _load_user_data_from_store(
         flush=True,
     )
     return by_user, user_meta, images_by_user, slur_counts, slur_examples
+
+
+def _format_points_block(user_id: int) -> str:
+    """Render the user's 7-day rolling 1/3/5 points ledger + the receipts
+    ceiling it implies. This is the certification layer in the new
+    chatter-base-×-receipts-ceiling rubric.
+    """
+    ledger = db.compute_member_points(int(user_id), days=7)
+    ceiling = db.receipts_ceiling_from_points(ledger["points"])
+    lines = [
+        f"7-DAY POINTS LEDGER (rolling — receipts certify edge):",
+        f"  - Entry posted + closed for a win  ({ledger['entries_won']} ×  5 pts)  =  "
+        f"{ledger['entries_won'] * 5} pts",
+        f"  - Entry posted + closed for a loss ({ledger['entries_lost']} ×  3 pts)  =  "
+        f"{ledger['entries_lost'] * 3} pts",
+        f"  - Entry posted + aged-out (no close after 3d grace)"
+        f" ({ledger['entries_aged_out']} ×  3 pts)  =  "
+        f"{ledger['entries_aged_out'] * 3} pts",
+        f"  - Standalone close-only / P&L screenshot"
+        f" ({ledger['screenshots']} ×  1 pt)   =  {ledger['screenshots']} pts",
+        f"",
+        f"TOTAL POINTS: {ledger['points']}",
+        f"IMPLIED RECEIPTS CEILING: {ceiling}",
+        f"",
+        f"(Tier table: 0 pts → cap 65; 1-4 → 70; 5-9 → 75; "
+        f"10-19 → 85; 20-29 → 92; 30+ → 100.)",
+    ]
+    return "\n".join(lines)
 
 
 def _format_analyst_trades_block(user_id: int, days: int = 30) -> str:
@@ -990,6 +1042,7 @@ async def _generate_profile(
 
     msgs_block = _format_messages_block(sample)
     analyst_trades_block = _format_analyst_trades_block(user_id)
+    points_block = _format_points_block(user_id)
     today_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     prompt = PROFILE_PROMPT.format(
         display_name=display_name,
@@ -998,6 +1051,7 @@ async def _generate_profile(
         msg_count=len(messages),
         messages_block=msgs_block,
         analyst_trades_block=analyst_trades_block,
+        points_block=points_block,
         today_utc=today_utc,
         prior_profile_block=prior_profile_block,
     )

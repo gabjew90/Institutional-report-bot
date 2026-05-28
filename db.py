@@ -3462,6 +3462,179 @@ def get_latest_analyst_trade_posted_at(
     return val or None
 
 
+def compute_member_points(author_id: int, days: int = 7) -> dict:
+    """Rolling 1/3/5 points ledger over the last N days for a single user.
+
+    Reads BOTH caller-mode rows (official-caller-channel posts) AND
+    member-mode rows (shared-alert posts by non-callers) for this user.
+    Both count toward the trader's points; the only distinction in the
+    ledger is the source label.
+
+    Point values per trade event:
+        +5 — Entry posted AND close posted in window, gain_pct > 0 (win)
+        +3 — Entry posted AND close posted in window, gain_pct ≤ 0 (loss)
+        +3 — Entry posted, no close in window AND entry is older than the
+             grace window (3 days) — resolved as loss for points purposes
+        +1 — Standalone close-only / P&L screenshot (no matching entry
+             in window) — receipt of an outcome without commitment
+
+    Grouping is by (UPPER(ticker), contract_type, strike, expiry). An
+    "entry" is action IN ('open', 'add'). A "close" is action='close'.
+    Trims are neither — they reduce position size without ending or
+    starting a tracked event for points purposes.
+
+    Returns:
+        {
+            "points": int,            # total
+            "window_days": int,
+            "entries_won": int,       # +5 each
+            "entries_lost": int,      # +3 each
+            "entries_aged_out": int,  # +3 each (no close after grace)
+            "screenshots": int,       # +1 each (close-only)
+            "breakdown": list[dict],  # per-event detail for audit
+        }
+    """
+    if not author_id:
+        return {
+            "points": 0,
+            "window_days": days,
+            "entries_won": 0,
+            "entries_lost": 0,
+            "entries_aged_out": 0,
+            "screenshots": 0,
+            "breakdown": [],
+        }
+    cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
+    grace_cutoff = (datetime.utcnow() - timedelta(days=3)).isoformat()
+    rows = get_connection().execute(
+        """SELECT posted_at, action, ticker, contract_type, strike,
+                  expiry, gain_pct, tracking_mode
+             FROM analyst_trades
+            WHERE author_id = ?
+              AND is_trade = 1
+              AND posted_at > ?
+            ORDER BY posted_at ASC""",
+        (int(author_id), cutoff),
+    ).fetchall()
+
+    # Group by contract key
+    groups: dict[tuple, list[dict]] = {}
+    for r in rows:
+        key = (
+            (r["ticker"] or "").upper(),
+            (r["contract_type"] or "").lower(),
+            r["strike"],
+            r["expiry"] or "",
+        )
+        groups.setdefault(key, []).append(dict(r))
+
+    entries_won = 0
+    entries_lost = 0
+    entries_aged_out = 0
+    screenshots = 0
+    breakdown: list[dict] = []
+
+    for key, events in groups.items():
+        opens = [e for e in events if (e["action"] or "").lower() in ("open", "add")]
+        closes = [e for e in events if (e["action"] or "").lower() == "close"]
+
+        if opens and closes:
+            # Entry + close pair (use earliest open, latest close for outcome)
+            close = sorted(closes, key=lambda x: x["posted_at"])[-1]
+            gain = close.get("gain_pct")
+            if gain is not None and float(gain) > 0:
+                entries_won += 1
+                breakdown.append({
+                    "kind": "entry+close win",
+                    "points": 5,
+                    "ticker": key[0],
+                    "gain_pct": gain,
+                })
+            else:
+                entries_lost += 1
+                breakdown.append({
+                    "kind": "entry+close loss",
+                    "points": 3,
+                    "ticker": key[0],
+                    "gain_pct": gain,
+                })
+        elif opens and not closes:
+            # Entry only — check if past grace window (=> aged out as loss)
+            earliest_open = sorted(opens, key=lambda x: x["posted_at"])[0]
+            if earliest_open["posted_at"] < grace_cutoff:
+                entries_aged_out += 1
+                breakdown.append({
+                    "kind": "entry aged out (no close after 3d)",
+                    "points": 3,
+                    "ticker": key[0],
+                })
+            else:
+                # Still inside grace window — don't score yet
+                breakdown.append({
+                    "kind": "entry open (in grace window)",
+                    "points": 0,
+                    "ticker": key[0],
+                })
+        elif closes and not opens:
+            # Close-only / standalone P&L screenshot (no entry in window)
+            screenshots += 1
+            breakdown.append({
+                "kind": "close-only / screenshot",
+                "points": 1,
+                "ticker": key[0],
+            })
+        # Else: only trims / viewings — no points
+
+    total_points = (
+        entries_won * 5
+        + entries_lost * 3
+        + entries_aged_out * 3
+        + screenshots * 1
+    )
+    return {
+        "points": total_points,
+        "window_days": days,
+        "entries_won": entries_won,
+        "entries_lost": entries_lost,
+        "entries_aged_out": entries_aged_out,
+        "screenshots": screenshots,
+        "breakdown": breakdown,
+    }
+
+
+def receipts_ceiling_from_points(points: int) -> int:
+    """Map 7-day rolling points → trader_score ceiling.
+
+    The receipts certify trustworthy edge; the ceiling determines how high
+    the chatter-base read can be realized. Without receipts (0 points),
+    the bot can believe someone is decent from how they talk but can't
+    certify edge, so the ceiling holds at 65.
+
+    Tiers (designed to reward starting to post AND to reward sustained
+    posting — the jump from 9 → 10 points is deliberate, marking the
+    threshold where the room actually trusts the receipt cadence):
+
+        0      points → 65   ("no receipts — can't certify edge")
+        1-4    points → 70   ("starting to post; sliver above no-receipts")
+        5-9    points → 75   ("real but sparse receipts; wins-only window")
+        10-19  points → 85   ("documented edge; ceiling lifts substantially")
+        20-29  points → 92   ("sustained two-sided posting; near-top")
+        30+    points → 100  ("full receipt cadence; no ceiling")
+    """
+    p = max(0, int(points))
+    if p == 0:
+        return 65
+    if p <= 4:
+        return 70
+    if p <= 9:
+        return 75
+    if p <= 19:
+        return 85
+    if p <= 29:
+        return 92
+    return 100
+
+
 def get_member_trade_events(
     author_id: int, days: int = 7, limit: int = 200,
 ) -> list[dict]:
