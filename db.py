@@ -2137,6 +2137,7 @@ def append_ask_interaction(
     channel_name: str,
     question: str,
     answer: str,
+    full_prompt: str | None = None,
 ) -> str | None:
     """Append one /ask interaction to today's local log file. Returns the
     log file path (so a caller can later commit it to GitHub), or None on
@@ -2148,10 +2149,22 @@ def append_ask_interaction(
 
       ## <UTC timestamp>
       **Asker:** display_name (`username`) in #channel
-      **Q:** <question>
+      **Q:** <question (post-reply-resolution, what gets appended after
+              the separator in the actual prompt)>
       **A:**
       <answer text>
+      <details><summary>Full prompt sent to Gemini</summary>
+      <full augmented user_content — profiles + analyst + chat-context +
+       separator + question — exactly the string fed to Gemini>
+      </details>
       ---
+
+    `full_prompt` is optional — when None we skip the collapsible block.
+    When provided, it's the literal `user_content` string built by
+    `_answer_with_gemini` (after `"\n\n".join(sections)`). Gives
+    forensic visibility into what the bot ACTUALLY saw — WHO'S TALKING
+    profiles, [YOU said earlier]: echoes in recent chat, analyst trade
+    logs, etc. — beyond just the question text.
 
     Used by the scheduler's `_ask_log_publish_job` to push the daily files
     to GitHub (pulse-data branch) for browseable QC. Doesn't write to the
@@ -2185,14 +2198,42 @@ def append_ask_interaction(
             asker_label = f"{asker_display_name} (`{asker_username}`)"
 
         # Truncate stupendously long Q/A to keep the daily file scannable.
-        # The Q passed in here is the FULL augmented prompt sent to Gemini
-        # (subject-verbatim blocks, forwarded/replied message content,
-        # then the user's actual typed question at the tail). 1500 chars
-        # would routinely chop the user's text off — bump to match the
-        # answer side. Beyond the cap we tail-mark and move on.
+        # The Q passed in here is the question text after reply/forward
+        # resolution — bracketed [MESSAGE BEING REPLIED TO] block + the
+        # user's typed text. 1500 chars would routinely chop the user's
+        # text off — bump to match the answer side.
         def _clip(s: str, limit: int = 12000) -> str:
             s = (s or "").strip()
             return s if len(s) <= limit else s[:limit] + "\n\n_…(truncated)_"
+
+        # full_prompt is the FULL user_content sent to Gemini. Cap higher
+        # (40k) so profiles + recent chat + analyst blocks all survive.
+        # Above that we tail-truncate; the missing tail is almost always
+        # historical recent-chat which is the least valuable forensically.
+        def _clip_prompt(s: str, limit: int = 40000) -> str:
+            s = (s or "").strip()
+            if len(s) <= limit:
+                return s
+            return s[:limit] + "\n\n_…(prompt truncated for log readability)_"
+
+        # Markdown collapsible <details> block — GitHub + most viewers
+        # render the summary and hide the body until clicked. Keeps the
+        # log skimmable while preserving full forensic fidelity. The
+        # fenced code block inside uses ```text to suppress markdown
+        # interpretation of any [tags] / **emphasis** inside the prompt.
+        if full_prompt:
+            prompt_section = (
+                "<details>\n"
+                f"<summary>📋 Full prompt sent to Gemini "
+                f"({len(full_prompt):,} chars — profiles + analyst + "
+                f"recent chat + question)</summary>\n\n"
+                "```text\n"
+                f"{_clip_prompt(full_prompt)}\n"
+                "```\n"
+                "</details>\n\n"
+            )
+        else:
+            prompt_section = ""
 
         entry = (
             (f"# /ask interactions — {date_str}\n\n" if is_new else "")
@@ -2201,6 +2242,7 @@ def append_ask_interaction(
             f"**Q:** {_clip(question)}\n\n"
             "**A:**\n\n"
             f"{_clip(answer)}\n\n"
+            f"{prompt_section}"
             "---\n\n"
         )
         with log_path.open("a", encoding="utf-8") as fh:
