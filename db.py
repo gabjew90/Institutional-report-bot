@@ -2283,7 +2283,7 @@ def export_user_profiles_markdown() -> str:
                   profile_text,
                   slur_count, racial_humor_score,
                   trader_score, trader_rationale,
-                  slur_examples, personal_ammo
+                  slur_examples
            FROM user_profiles
            ORDER BY message_count_at_update DESC"""
     ).fetchall()
@@ -2323,16 +2323,12 @@ def export_user_profiles_markdown() -> str:
         tr_rank = trader_rank_by_uid.get(int(r["user_id"]))
         tr_rationale = (r["trader_rationale"] or "").strip()
         try:
-            personal_ammo_list = _json.loads(r["personal_ammo"] or "[]")
-        except Exception:
-            personal_ammo_list = []
-        try:
             slur_examples_list = _json.loads(r["slur_examples"] or "[]")
         except Exception:
             slur_examples_list = []
-        # trader_examples no longer displayed — its content rolls into
-        # personal_ammo. Old DB rows keep the stale data; we just don't
-        # render it.
+        # personal_ammo + trader_examples columns no longer rendered.
+        # Their content lives inside profile_text now (5 sections).
+        # Stale DB data in those columns is ignored by all consumers.
 
         header = f"## {dn}"
         if uname and uname.lower() != dn.lower():
@@ -2364,22 +2360,14 @@ def export_user_profiles_markdown() -> str:
             lines.append(f"> {' · '.join(score_bits)}")
         if tr_rationale:
             lines.append(f"> _{tr_rationale}_")
-        # Personal ammo — the SOLE ammo block. Includes trades + dumb
-        # shit + slurs + aged-badly boasts + math fails + personal
-        # admissions. Shows up to 8 entries (was 5 — bumped since
-        # trader_examples no longer has its own block).
-        if personal_ammo_list:
+        # Profile body now carries all the ammo content inline in
+        # named sections (Voice / Retarded takes / Recent trades /
+        # Recent personal life). For OLD profiles that haven't been
+        # re-rendered under the 5-section structure yet, surface
+        # the regex slur block as a fallback only.
+        if slur_examples_list and "**Voice" not in (body or ""):
             lines.append(">")
-            lines.append("> **Recent ammo (trades / dumb shit / boasts / slurs):**")
-            for ex in personal_ammo_list[:8]:
-                snippet = (ex or "")[:280].replace("\n", " ").strip()
-                if snippet:
-                    lines.append(f"> - {snippet}")
-        elif slur_examples_list:
-            # Fallback only for profiles that haven't been re-run since
-            # personal_ammo landed.
-            lines.append(">")
-            lines.append("> **Recent slur usage:**")
+            lines.append("> **Recent slur usage (regex fallback):**")
             for ex in slur_examples_list[:3]:
                 snippet = (ex or "")[:140].replace("\n", " ").strip()
                 if snippet:
@@ -2554,31 +2542,24 @@ def format_user_profiles_for_context(
             metric_bits.append("trader-rank: not scored")
         metrics_line = " · ".join(metric_bits)
 
-        # Parse examples (TEXT JSON). Defensive: skip on malformed.
-        # personal_ammo is the SOLE ammo surface now (trader_examples
-        # was folded into it and is no longer displayed).
-        try:
-            personal_ammo_list = _json.loads(p.get("personal_ammo") or "[]")
-        except Exception:
-            personal_ammo_list = []
+        # Examples surface is now profile_text itself — the Voice,
+        # Retarded takes, Recent trades, and Recent personal life
+        # sections inside the markdown body carry all the ammo the
+        # bot needs. Old slur_examples regex extraction stays as a
+        # deterministic fallback for profiles that haven't been
+        # re-run under the 5-section structure yet.
         try:
             slur_ex_list = _json.loads(p.get("slur_examples") or "[]")
         except Exception:
             slur_ex_list = []
 
         examples_section = ""
-        if personal_ammo_list:
-            ex_lines = ["  recent ammo (trades / dumb shit / boasts / slurs):"]
-            for ex in personal_ammo_list[:8]:
-                snippet = (ex or "")[:280].replace("\n", " ").strip()
-                if snippet:
-                    ex_lines.append(f"    · {snippet}")
-            examples_section = "\n" + "\n".join(ex_lines)
-        elif slur_ex_list:
-            # Fallback only for profiles that haven't been re-run since
-            # personal_ammo landed. Once their profile refreshes once
-            # with the new code, personal_ammo overrides this branch.
-            ex_lines = ["  recent slur usage:"]
+        # Only show the regex slur examples as a small inline block
+        # IF the profile_text doesn't already contain a Voice section
+        # (old-format profiles). The body of the profile carries
+        # everything else.
+        if slur_ex_list and "**Voice" not in (text or ""):
+            ex_lines = ["  recent slur usage (regex fallback):"]
             for ex in slur_ex_list[:3]:
                 snippet = (ex or "")[:140].replace("\n", " ").strip()
                 if snippet:
