@@ -122,8 +122,8 @@ Per-section quick reference, all following the universal rule:
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned.
-- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh using the chatter-base × receipts-ceiling rubric. The chatter base may carry forward if the chat pattern is unchanged, but the receipts ceiling is computed fresh from the 7-DAY POINTS LEDGER above and may have shifted materially since last refresh (the 7-day window is rolling — last week's points are gone, this week's are new). If the prior trader_score is no longer consistent with `min(chatter_base + honesty, current_ceiling)`, the new score MUST move to match — even if it means dropping a 78 to a 65 because the user stopped posting receipts.
-- **trader_rationale:** REWRITE each refresh from the current ledger + chat, don't carry forward stale point counts or ceiling values. Specifically call out the current 7-day points total and the current ceiling; the rationale's structure is fixed (chatter base / honesty modifier / ceiling / final), but the numbers re-derive every time.
+- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 7-day points ledger is decayed automatically — entries / closes from 8+ days ago are gone, only this week's commitments count. The final = `min(100, clip(chatter_base + honesty, 65) + receipt_points)`. If last week the user posted 8 entries that closed for wins, they had 40 receipt points; if this week they posted 2, they have 10. The score drops accordingly. That's the decay mechanism working as designed.
+- **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter bracket / honesty modifier / receipt points / final), but the numbers re-derive every time. Don't carry forward stale point counts from a prior refresh.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly.
 
@@ -471,13 +471,6 @@ Read the user's actual chat and place them in one of three bands. **Chatter caps
 - **35-50 — Average joes.** Sell winners too early, hold losers too long, coin-flip outcomes over time. Follow the crowd more than they lead. Some self-awareness but doesn't translate to execution. The "talks the right setups, fades them" pattern. Lukewarm conviction; pivots when the room pivots.
 - **50-65 — Talks a good game.** Sharp reads, owns losses cleanly, calibrated conviction language, reasonable risk management talk, no obvious tilt cycle. Seems to win. Chat alone is consistent with real edge — but with no receipts, the room can't certify it. The "sounds like an actually-good trader, hasn't proven it" bracket.
 
-**The structured WIN RATE in the points ledger above is direct chatter-base evidence.** When the chat sounds confident but the structured win rate over the documented entries is low, trust the receipts not the tone. A user with 12,000 confident-sounding chat messages and a 30% win rate over 15 decided entries is a bag-holder by evidence — drop them into the 0-35 bracket regardless of chat tone.
-
-Specifically:
-- **Win rate < 50% over ≥5 decided entries:** bag-holder. Chatter base must land in 0-35.
-- **Win rate ≥ 65% over ≥5 decided entries:** strong-edge signal. Chatter base can land 50-65 if the chat supports it.
-- **Fewer than 5 decided entries:** sample too small to anchor on the ratio; read chatter base from chat tone + available outcomes.
-
 **Honesty modifier (±10) on the chatter base.** Adjusts before the receipt add:
 - **+3 to +5:** Self-aware about losses, owns misses without crisis language, doesn't bury bad trades.
 - **−5 to −10:** Gloat-loud / complain-vague asymmetry — loud about wins, evasive about losses. Bag-holding language elsewhere while talking sharp in chat. Visible deception drags the chatter base down.
@@ -488,10 +481,11 @@ After the honesty modifier, **clip chatter base + honesty at 65**. The cap is ha
 
 The 7-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the chatter base:
 
-- **+3 per entry posted (automatic).** Posting an entry is structural commitment — published before outcome.
-- **+5 if that entry's position closes for a gain in the window** (the +3 upgrades to +5; net +2 win bonus).
-- **Loss / still-open / aged-out stay at +3.** Posting a losing entry doesn't subtract — the commitment was real.
-- **+1 per standalone close-only screenshot** (P&L without commitment).
+- **+3 per entry posted (automatic on post).** Posting an entry is structural commitment — published before outcome.
+- **+5 if the position later closes for a gain in the window** (the +3 upgrades to +5; net +2 win bonus).
+- **+3 if the position closes for a loss in the window** (no upgrade; commitment was real, the loss doesn't subtract).
+- **+2 if the position never closes in the window** (ghost penalty: −1 against the +3 entry award). Posting an entry and never resolving it is worse than posting any close — even a losing one — because the room can't tell what happened. The 7-day rolling window decays automatically; an entry from 8 days ago is gone, an entry from 6 days ago that hasn't closed yet scores +2.
+- **+1 per standalone close-only screenshot** (P&L card without an entry commitment).
 
 The receipt points are the user's actual ledger total — no further mapping. A user with 22 points adds 22 to their (clipped) chatter base. The final caps at 100.
 
@@ -769,62 +763,47 @@ def _load_user_data_from_store(
 
 
 def _format_points_block(user_id: int) -> str:
-    """Render the user's 7-day rolling 1/3/5 points ledger.
+    """Render the user's 7-day rolling points ledger.
 
-    Under the additive scoring model, the points total adds directly
-    on top of the chatter base (0-65) to produce the final score. No
-    ceiling-tier mapping — the points ARE the receipt contribution.
+    Spec (5/3/2/1):
+      +5  entry posted AND closed for a win
+      +3  entry posted AND closed for a loss
+      +2  entry posted, no close in window (ghost penalty: 3 − 1)
+      +1  standalone close-only / P&L screenshot
 
-    Final = min(100, chatter_base + ledger_points)
+    The 7-day rolling window provides decay — older trades fall off
+    automatically. Receipts add directly to the chatter base, no
+    ceiling-tier mapping.
+
+    Final = min(100, clip(chatter_base + honesty, 65) + receipt_points)
     """
     ledger = db.compute_member_points(int(user_id), days=7)
-    wr = ledger.get("win_rate_pct")
-    decided = ledger.get("decided") or 0
-    if wr is None:
-        wr_str = "n/a (no decided entries in window)"
-        wr_flag = ""
-    else:
-        wr_str = (
-            f"{wr}% ({ledger['entries_won']} wins / {decided} decided — "
-            f"still-open entries excluded)"
-        )
-        # Flag bag-holder pattern: <50% win rate over ≥5 decided entries
-        # is bag-holder signal that should drag chatter base into the
-        # 0-35 bracket regardless of how confident the chat tone sounds.
-        if decided >= 5 and wr < 50:
-            wr_flag = (
-                " ← BAG-HOLDER FLAG: sub-50% over meaningful sample. "
-                "Chatter base must land in 0-35 regardless of chat tone."
-            )
-        elif decided >= 5 and wr >= 65:
-            wr_flag = (
-                " ← STRONG-EDGE FLAG: high win rate over meaningful "
-                "sample. Chatter base should land 50-65 if chat supports it."
-            )
-        else:
-            wr_flag = ""
     lines = [
-        f"7-DAY POINTS LEDGER (rolling — receipts ADD to chatter base):",
-        f"  - Entry posted, position closed for a WIN  "
-        f"({ledger['entries_won']} ×  5 pts)  =  "
+        f"7-DAY ROLLING POINTS LEDGER (decays automatically — old"
+        f" trades fall off the back):",
+        f"  - Entry posted + closed for a WIN  "
+        f"({ledger['entries_won']} × 5 pts)  =  "
         f"{ledger['entries_won'] * 5} pts",
-        f"  - Entry posted, NOT won (loss / still-open / aged-out — all"
-        f" the same +3)  ({ledger['entries_unwon']} ×  3 pts)  =  "
-        f"{ledger['entries_unwon'] * 3} pts",
+        f"  - Entry posted + closed for a LOSS "
+        f"({ledger['entries_lost']} × 3 pts)  =  "
+        f"{ledger['entries_lost'] * 3} pts",
+        f"  - Entry posted, NO close in window (ghosted: 3 − 1 = 2)  "
+        f"({ledger['entries_ghosted']} × 2 pts)  =  "
+        f"{ledger['entries_ghosted'] * 2} pts",
         f"  - Standalone close-only / P&L screenshot (no entry)  "
-        f"({ledger['screenshots']} ×  1 pt)   =  {ledger['screenshots']} pts",
+        f"({ledger['screenshots']} × 1 pt)   =  {ledger['screenshots']} pts",
         f"",
         f"TOTAL RECEIPT POINTS: {ledger['points']}",
-        f"WIN RATE: {wr_str}{wr_flag}",
         f"",
-        f"(Spec: entry posted = automatic +3. Upgrades to +5 if the same"
-        f" position closes for a gain in the window. Loss / still-open"
-        f" / aged-out all stay at +3 — the +3 is for the commitment;"
-        f" only a winning close adds the +2 edge bonus.)",
+        f"(Spec: entry posted = automatic +3. Upgrades to +5 if the"
+        f" same position closes for a gain. Stays at +3 if it closes"
+        f" for a loss. Drops to +2 if it never closes — the ghost"
+        f" penalty assumes an unclosed entry is a total loss. Posting"
+        f" the close — even a losing one — is worth +1 vs ghosting it.)",
         f"",
         f"(Receipt points add ON TOP of the chatter base. Final score ="
-        f" min(100, chatter_base + receipt_points). Chatter base is"
-        f" capped at 65 — receipts are the only path past 65.)",
+        f" min(100, clip(chatter_base + honesty, 65) + receipt_points)."
+        f" Chatter base caps at 65 — receipts are the only path past 65.)",
     ]
     return "\n".join(lines)
 
