@@ -3027,7 +3027,6 @@ def get_latest_chat_message_posted_at(channel_id: int | None = None) -> str | No
 def lookup_user_ranks(
     *,
     username: str | None = None,
-    rank_position: int | None = None,
     metric: str | None = None,
     top_n: int = 5,
 ) -> dict:
@@ -3035,15 +3034,11 @@ def lookup_user_ranks(
 
     Two modes:
       1. `username` set → return that user's trader_rank, racism_rank,
-         and trader_rationale (raw 0-100 scores deliberately NOT
-         returned — per the /ask prompt, scores are internal; only
-         ordinal ranks + rationale are surfaceable).
+         and both rationales.
       2. `username` unset, `metric` in {"trader", "racism"} → return
-         the top `top_n` users by that metric (cap 10).
-
-    Used by the /ask Gemini function-calling tool when the asker
-    asks ranking/comparative questions about users who may not be
-    in the (now scoped) WHO'S TALKING block.
+         the top `top_n` users by that metric (default 5, no cap;
+         the /ask Gemini exposure hardcodes top_n=5 by policy, but
+         this DB function stays unconstrained for internal callers).
 
     Returns a dict shaped for tool-response consumption:
         {"users": [...], "count": int, ...optional metadata}
@@ -3093,73 +3088,6 @@ def lookup_user_ranks(
             }],
             "count": 1,
             "mode": "single_user",
-        }
-
-    # Rank-position mode: "who's #N for metric X" — capped at 10.
-    # Returns the ONE user at that position. Multi-user / leaderboard
-    # queries are not supported (top_n mode is still in this function
-    # for internal callers but not reachable from /ask).
-    if rank_position is not None:
-        metric_lc = (metric or "").strip().lower()
-        if metric_lc not in ("trader", "racism"):
-            return {
-                "error": "rank_position lookup requires `metric` to be "
-                         "'trader' or 'racism'.",
-                "users": [],
-            }
-        try:
-            pos = int(rank_position)
-        except (TypeError, ValueError):
-            return {"error": "rank_position must be an integer 1-10.",
-                    "users": []}
-        if pos < 1 or pos > 10:
-            return {
-                "error": f"rank_position must be 1-10. Got {pos}. The "
-                         f"bot doesn't surface rank positions beyond "
-                         f"the top 10.",
-                "users": [],
-            }
-        if metric_lc == "trader":
-            r = conn.execute(
-                """SELECT user_id, display_name, username,
-                          trader_rationale
-                     FROM user_profiles
-                    WHERE trader_score IS NOT NULL
-                    ORDER BY trader_score DESC, user_id ASC
-                    LIMIT 1 OFFSET ?""",
-                (pos - 1,),
-            ).fetchone()
-        else:  # racism
-            r = conn.execute(
-                """SELECT user_id, display_name, username,
-                          racism_rationale
-                     FROM user_profiles
-                    WHERE racial_humor_score IS NOT NULL
-                      AND racial_humor_score > 0
-                    ORDER BY racial_humor_score DESC, user_id ASC
-                    LIMIT 1 OFFSET ?""",
-                (pos - 1,),
-            ).fetchone()
-        if not r:
-            return {
-                "error": f"No user at {metric_lc}-rank #{pos} (fewer "
-                         f"than {pos} users have a score).",
-                "users": [],
-            }
-        user_payload = {
-            "rank": pos,
-            "metric": metric_lc,
-            "username": r["username"],
-            "display_name": r["display_name"],
-        }
-        if metric_lc == "trader":
-            user_payload["trader_rationale"] = r["trader_rationale"]
-        else:
-            user_payload["racism_rationale"] = r["racism_rationale"]
-        return {
-            "users": [user_payload],
-            "count": 1,
-            "mode": "rank_position",
         }
 
     # Top-N by metric mode
