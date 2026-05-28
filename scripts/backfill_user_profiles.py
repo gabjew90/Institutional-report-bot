@@ -1355,7 +1355,17 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # Existing profile triggers incremental-update mode
                         # in _generate_profile (sends prior profile + only
                         # new messages to the model). None for cold-start.
-                        existing = existing_profiles.get(uid)
+                        # FORCE mode: deliberately pass existing=None so
+                        # _generate_profile takes the cold-start branch —
+                        # uses the FULL 30-day window of messages (not
+                        # just messages > last_seen) and writes a fresh
+                        # profile from scratch under the current prompt
+                        # structure. Without this, force would bypass
+                        # the eligibility gate but still feed only the
+                        # tiny incremental delta to Gemini.
+                        existing = (
+                            None if force else existing_profiles.get(uid)
+                        )
                         tasks.append(_generate_profile(
                             gemini_client,
                             meta["display_name"],
