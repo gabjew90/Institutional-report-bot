@@ -329,18 +329,39 @@ Don't invent OCR content. Only cite what's actually in the `[image-OCR: ...]` bl
 
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
-Output a single JSON object with exactly four fields:
+Output a single JSON object with exactly four fields, IN THIS ORDER:
 
 ```
 {{
-  "profile_text": "<full markdown profile per the schema above — 5 named sections>",
   "trader_score": <integer 0-100>,
+  "racial_humor_score": <integer 0-100>,
   "trader_rationale": "<1-3 sentences on what's driving the score + honesty modifier if applied>",
-  "racial_humor_score": <integer 0-100>
+  "profile_text": "<full markdown profile per the schema above — ALL 5 named sections>"
 }}
 ```
 
-All five profile_text sections (Personality and style / Voice / Retarded takes / Recent trades / Recent personal life) live inside the single `profile_text` markdown string. No separate ammo arrays — the structured `personal_ammo` and `trader_examples` fields from earlier prompt revisions are GONE; their content lives in the Recent trades + Retarded takes + Voice + Recent personal life sections now.
+`profile_text` is LAST and is the largest field by far. All five named sections (Personality and style / Voice / Retarded takes / Recent trades / Recent personal life) live inside this single markdown string.
+
+## BEFORE EMITTING — completion check (MANDATORY)
+
+Before you emit the JSON, look at your `profile_text` and confirm:
+
+1. **Does it contain EXACTLY five section headers**, each on its own line, in this order?
+   - `**Personality and style.**`
+   - `**Voice.**`
+   - `**Retarded takes.**`
+   - `**Recent trades.**`
+   - `**Recent personal life.**`
+
+2. **Does each section have actual content under it**? Not just the header.
+
+3. **Is no sentence cut off mid-word**?
+
+If any of those checks fail, KEEP WRITING. Add the missing sections; complete the cut sentence. Don't emit the JSON until all 5 section headers are present with content under each.
+
+If a section genuinely has no signal (user is a near-lurker with no slurs / no trades / no personal posts), write the header AND the line `Insufficient signal — too few messages on this dimension.` underneath. Header without content is incomplete; line without header is incomplete; both must be present.
+
+**No exceptions to the 5-header rule.** A 400-char profile_text with one section is a malformed output. A 3000-char profile_text with all 5 sections (even if a few are "insufficient signal") is the minimum viable shape.
 
 **(trader_examples removed.)** Trade activity used to be a separate field — now it's folded into personal_ammo (for quotable single-line trade receipts) and the "Trash talk & life ammo" narrative section (for trade-anchored bits the room riffs on). Don't write a `trader_examples` field; the schema doesn't have one.
 
@@ -902,24 +923,31 @@ async def _generate_profile(
     # tokens of budget left. Setting max_length=8000 tells the schema
     # validator the string can grow well past that ceiling. (This was
     # the cause of the 2pale/Oracle/RE4L/succi/G mid-word truncations.)
+    # FIELD ORDER MATTERS for structured output. Gemini emits fields
+    # in schema-property order. profile_text last means the short
+    # int/string fields commit first, leaving the model's full
+    # remaining output budget free for the long markdown string.
+    # When profile_text was first, the model would commit to a short
+    # profile_text (sometimes only section 1), satisfy the schema
+    # with the other small fields, and emit STOP — producing 400-700
+    # char truncations across all retry temperatures because the
+    # ordering anchored the failure.
     _RESPONSE_SCHEMA = types.Schema(
         type=types.Type.OBJECT,
         properties={
+            "trader_score": types.Schema(type=types.Type.INTEGER),
+            "racial_humor_score": types.Schema(type=types.Type.INTEGER),
+            "trader_rationale": types.Schema(
+                type=types.Type.STRING,
+                # 1000-char cap covers 1-3 sentences (bracket reasoning
+                # + honesty modifier if applied). The /ask dossier
+                # surfaces this directly under trader-rank.
+                max_length=1000,
+            ),
             "profile_text": types.Schema(
                 type=types.Type.STRING,
                 max_length=8000,
             ),
-            "trader_score": types.Schema(type=types.Type.INTEGER),
-            "trader_rationale": types.Schema(
-                type=types.Type.STRING,
-                # Bumped 500 → 1000 so the rationale can cover both the
-                # core trading pattern AND the honesty modifier (if
-                # applied) in 1-3 sentences. The /ask dossier surfaces
-                # this directly under trader-rank — readers get the
-                # 'why' inline without opening the full profile.
-                max_length=1000,
-            ),
-            "racial_humor_score": types.Schema(type=types.Type.INTEGER),
             # personal_ammo + trader_examples both removed as of the
             # 5-section restructure. Their content lives inside
             # profile_text in the Voice / Retarded takes / Recent
@@ -928,10 +956,10 @@ async def _generate_profile(
             # data; display code ignores both.
         },
         required=[
-            "profile_text",
             "trader_score",
-            "trader_rationale",
             "racial_humor_score",
+            "trader_rationale",
+            "profile_text",
         ],
     )
 
