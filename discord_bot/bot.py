@@ -2719,19 +2719,32 @@ def create_bot() -> commands.Bot:
         except Exception as e:
             log.warning(f"Chat ingestion dispatch failed: {e}")
 
-        # Dispatch to the analyst-log watcher if this message is in the
-        # configured analyst alerts channel. Runs side-by-side with the
-        # @mention handling below — a message in the analyst channel that
-        # also @mentions the bot would trigger both flows independently.
+        # Dispatch to the analyst-log watcher.
+        # - If the channel is owned by a configured analyst caller: fire
+        #   in caller mode (writes the row, posts the announce embed).
+        # - Else, if the channel is in `chat_eager_ocr_channels` (the
+        #   shared alert rooms + the two new caller channels not yet
+        #   wired through analyst_callers): fire in member mode (writes
+        #   the row, NO announce, never bleeds into caller /ask context).
+        # - Else: skip — the message isn't from a trade-tracking channel.
+        # Runs side-by-side with @mention handling below.
         try:
-            # Multi-caller dispatch — look up the matched caller by channel
-            # name in the configured registry. If the message channel is
-            # not owned by any configured caller, the watcher isn't invoked.
             chan_name = getattr(message.channel, "name", None)
-            matched_caller = settings.caller_by_channel(chan_name) if chan_name else None
+            matched_caller = (
+                settings.caller_by_channel(chan_name) if chan_name else None
+            )
             if matched_caller:
                 from analyst_log.watcher import watch_message
-                await watch_message(bot, message, caller=matched_caller)
+                await watch_message(
+                    bot, message, caller=matched_caller, tracking_mode="caller",
+                )
+            elif chan_name:
+                eager_ocr_channels = settings.resolve_chat_eager_ocr_channels()
+                if chan_name in eager_ocr_channels:
+                    from analyst_log.watcher import watch_message
+                    await watch_message(
+                        bot, message, caller=None, tracking_mode="member",
+                    )
         except Exception as e:
             log.error(f"Analyst watcher dispatch failed: {e}", exc_info=True)
 

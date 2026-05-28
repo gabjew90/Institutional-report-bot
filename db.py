@@ -183,6 +183,7 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             discord_message_id INTEGER NOT NULL,
             discord_attachment_id INTEGER NOT NULL,
             author TEXT NOT NULL,
+            author_id INTEGER,        -- Discord user ID (NULL on legacy rows)
             posted_at TEXT NOT NULL,
             image_url TEXT,
             caption TEXT,
@@ -195,6 +196,12 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             gain_pct REAL,
             price REAL,            -- entry/exit price (midpoint of bid/ask when stats screen)
             inferred_status TEXT,  -- e.g. 'expired_unknown' (set by daily cron)
+            tracking_mode TEXT NOT NULL DEFAULT 'caller',
+                                   -- 'caller' = official analyst_callers entry (gets announce
+                                   --   embed + W/L tracker + RECENT TRADES surface in /ask)
+                                   -- 'member' = any user posting in an eager-OCR alert
+                                   --   channel; row gets persisted for future scoring/data,
+                                   --   no announce, never bleeds into caller /ask context
             gemini_json TEXT,      -- raw OCR JSON for forensics
             created_at TEXT NOT NULL DEFAULT (datetime('now')),
             UNIQUE(discord_message_id, discord_attachment_id)
@@ -202,6 +209,8 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_posted ON analyst_trades(posted_at);
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_expiry ON analyst_trades(expiry);
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_ticker ON analyst_trades(ticker);
+        CREATE INDEX IF NOT EXISTS idx_analyst_trades_tracking ON analyst_trades(tracking_mode);
+        CREATE INDEX IF NOT EXISTS idx_analyst_trades_author_id ON analyst_trades(author_id);
 
         -- LLM-generated personality profiles for active group members.
         -- Populated by scripts/backfill_user_profiles.py (initial) and a
@@ -343,6 +352,12 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         # analyst_trades migration: add price + caller columns on existing deploys.
         ("price", "ALTER TABLE analyst_trades ADD COLUMN price REAL"),
         ("caller", "ALTER TABLE analyst_trades ADD COLUMN caller TEXT"),
+        # Universal trade tracking — tracking_mode separates official-caller
+        # rows from member-posted alerts in shared/eager-OCR channels.
+        # author_id is the Discord user ID (NULL on legacy rows where only
+        # the display name was stored). Both default-safe for old rows.
+        ("tracking_mode", "ALTER TABLE analyst_trades ADD COLUMN tracking_mode TEXT NOT NULL DEFAULT 'caller'"),
+        ("author_id", "ALTER TABLE analyst_trades ADD COLUMN author_id INTEGER"),
         # chat_messages OCR columns — added when image OCR landed. Live
         # deploys with the older 13-column chat_messages table get these
         # three columns appended (SQLite ALTER TABLE ADD COLUMN is cheap;
@@ -367,6 +382,14 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         pass
     conn.execute(
         "CREATE INDEX IF NOT EXISTS idx_analyst_trades_caller ON analyst_trades(caller)"
+    )
+    # Indexes for tracking_mode + author_id (cheap on small table; speeds up
+    # both the caller-only context filters and member-mode score lookups).
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_analyst_trades_tracking ON analyst_trades(tracking_mode)"
+    )
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_analyst_trades_author_id ON analyst_trades(author_id)"
     )
     # Now-safe indexes that depend on the migrated columns.
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_slur ON user_profiles(slur_count DESC)")
@@ -1447,6 +1470,8 @@ def record_analyst_trade(
     gain_pct: float | None = None,
     price: float | None = None,
     caller: str | None = None,
+    author_id: int | None = None,
+    tracking_mode: str = "caller",
     replace: bool = False,
 ) -> None:
     """Insert an analyst-trade row.
@@ -1472,9 +1497,26 @@ def record_analyst_trade(
     # Without this, the 4-tuple match against the open fails — the close
     # looks orphan and the open stays "live" forever even though Abe
     # explicitly closed it.
+    # Tracking scope for expiry-fill / close-without-open lookups: a caller
+    # close should only match against the same caller's opens; a member
+    # close should only match against the same author_id's opens. This
+    # prevents BK's close from accidentally inheriting another user's
+    # expiry, and prevents members from polluting caller match lookups.
+    norm_tm = (tracking_mode or "caller").strip().lower()
+    if norm_tm not in ("caller", "member"):
+        norm_tm = "caller"
+    scope_clause = " AND tracking_mode = ?"
+    scope_params: tuple = (norm_tm,)
+    if norm_tm == "caller" and caller:
+        scope_clause += " AND LOWER(COALESCE(caller, '')) = ?"
+        scope_params = scope_params + ((caller or "").strip().lower(),)
+    elif norm_tm == "member" and author_id is not None:
+        scope_clause += " AND author_id = ?"
+        scope_params = scope_params + (int(author_id),)
+
     if is_trade and action == "close" and expiry is None and ticker:
         inferred_expiry = conn.execute(
-            """SELECT expiry FROM analyst_trades
+            f"""SELECT expiry FROM analyst_trades
                WHERE is_trade = 1
                  AND ticker = ?
                  AND COALESCE(contract_type, '') = COALESCE(?, '')
@@ -1483,9 +1525,10 @@ def record_analyst_trade(
                  AND action IN ('open', 'add')
                  AND posted_at < ?
                  AND posted_at > datetime(?, '-14 days')
+                 {scope_clause}
                ORDER BY posted_at DESC
                LIMIT 1""",
-            (ticker, contract_type, strike, posted_at, posted_at),
+            (ticker, contract_type, strike, posted_at, posted_at) + scope_params,
         ).fetchone()
         if inferred_expiry:
             expiry = inferred_expiry[0]
@@ -1501,31 +1544,39 @@ def record_analyst_trade(
     inferred_status: str | None = None
     if is_trade and action == "close" and ticker and expiry:
         prior_open = conn.execute(
-            """SELECT COUNT(*) FROM analyst_trades
+            f"""SELECT COUNT(*) FROM analyst_trades
                WHERE is_trade = 1
                  AND ticker = ?
                  AND COALESCE(contract_type, '') = COALESCE(?, '')
                  AND COALESCE(strike, -1) = COALESCE(?, -1)
                  AND expiry = ?
                  AND action IN ('open', 'add')
-                 AND posted_at > datetime(?, '-30 days')""",
-            (ticker, contract_type, strike, expiry, posted_at),
+                 AND posted_at > datetime(?, '-30 days')
+                 {scope_clause}""",
+            (ticker, contract_type, strike, expiry, posted_at) + scope_params,
         ).fetchone()
         if prior_open[0] == 0:
             inferred_status = "close_without_open"
 
+    # Normalize tracking_mode — only 'caller' / 'member' accepted, default
+    # to 'caller' on anything else for backwards-compat with the legacy
+    # single-caller call sites.
+    tm = (tracking_mode or "").strip().lower()
+    if tm not in ("caller", "member"):
+        tm = "caller"
     verb = "INSERT OR REPLACE" if replace else "INSERT OR IGNORE"
     conn.execute(
         f"""{verb} INTO analyst_trades
-           (discord_message_id, discord_attachment_id, author, posted_at,
-            image_url, caption, is_trade, ticker, contract_type, strike,
-            expiry, action, gain_pct, price, caller, gemini_json,
-            inferred_status)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+           (discord_message_id, discord_attachment_id, author, author_id,
+            posted_at, image_url, caption, is_trade, ticker, contract_type,
+            strike, expiry, action, gain_pct, price, caller, gemini_json,
+            inferred_status, tracking_mode)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (
             int(discord_message_id),
             int(discord_attachment_id),
             author,
+            int(author_id) if author_id is not None else None,
             posted_at,
             image_url,
             caption,
@@ -1540,44 +1591,52 @@ def record_analyst_trade(
             (caller or "").strip().lower() or None,
             _json.dumps(gemini_json) if gemini_json is not None else None,
             inferred_status,
+            tm,
         ),
     )
     conn.commit()
 
 
 def get_recent_analyst_trades(
-    hours: int = 24, limit: int = 50, caller: str | None = None
+    hours: int = 24,
+    limit: int = 50,
+    caller: str | None = None,
+    tracking_mode: str | None = "caller",
 ) -> list[dict]:
     """Recent trade-tagged rows (is_trade=1) ordered newest first.
 
-    When `caller` is set, restricts results to rows where the canonical
-    caller column matches (case-insensitive). When None, returns rows
-    for all callers — kept for backwards-compat with code that doesn't
-    yet plumb caller through, but the /ask context builder always
-    specifies caller to enforce hard separation.
+    `caller` filters by canonical caller (case-insensitive); None reads
+    across all callers.
+
+    `tracking_mode` defaults to 'caller' so the /ask RECENT TRADES
+    context block stays clean — only official-caller rows surface there.
+    Pass tracking_mode=None to read across both modes (e.g. for the
+    member-points scoring future-helper or admin debugging). Pass
+    tracking_mode='member' to read only member-posted alerts.
     """
     cutoff = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
+    where = ["is_trade = 1", "posted_at > ?"]
+    params: list = [cutoff]
     if caller:
-        rows = get_connection().execute(
-            """SELECT * FROM analyst_trades
-               WHERE is_trade = 1 AND posted_at > ?
-                 AND LOWER(caller) = ?
-               ORDER BY posted_at DESC
-               LIMIT ?""",
-            (cutoff, caller.strip().lower(), limit),
-        ).fetchall()
-    else:
-        rows = get_connection().execute(
-            """SELECT * FROM analyst_trades
-               WHERE is_trade = 1 AND posted_at > ?
-               ORDER BY posted_at DESC
-               LIMIT ?""",
-            (cutoff, limit),
-        ).fetchall()
+        where.append("LOWER(caller) = ?")
+        params.append(caller.strip().lower())
+    if tracking_mode is not None:
+        where.append("tracking_mode = ?")
+        params.append((tracking_mode or "").strip().lower() or "caller")
+    rows = get_connection().execute(
+        f"""SELECT * FROM analyst_trades
+           WHERE {' AND '.join(where)}
+           ORDER BY posted_at DESC
+           LIMIT ?""",
+        (*params, limit),
+    ).fetchall()
     return [dict(r) for r in rows]
 
 
-def get_current_analyst_positions(caller: str | None = None) -> list[dict]:
+def get_current_analyst_positions(
+    caller: str | None = None,
+    tracking_mode: str | None = "caller",
+) -> list[dict]:
     """Currently-open positions, computed as a state machine over the event
     chain: the LATEST action per (ticker, contract_type, strike, expiry)
     determines whether the position is still alive.
@@ -1598,13 +1657,24 @@ def get_current_analyst_positions(caller: str | None = None) -> list[dict]:
     """
     # Caller filter is parametrized into both CTEs so positions stay
     # hard-separated per caller. None = all callers (legacy behavior).
+    # tracking_mode defaults to 'caller' so member rows never bleed into
+    # the /ask "currently open" block; pass None to read across both.
     caller_clause_ranked = ""
     caller_clause_entries = ""
-    params: tuple = ()
+    ranked_params: tuple = ()
+    entries_params: tuple = ()
     if caller:
-        caller_clause_ranked = " AND LOWER(caller) = ?"
-        caller_clause_entries = " AND LOWER(caller) = ?"
-        params = (caller.strip().lower(), caller.strip().lower())
+        caller_clause_ranked += " AND LOWER(caller) = ?"
+        caller_clause_entries += " AND LOWER(caller) = ?"
+        ranked_params = ranked_params + (caller.strip().lower(),)
+        entries_params = entries_params + (caller.strip().lower(),)
+    if tracking_mode is not None:
+        tm = (tracking_mode or "").strip().lower() or "caller"
+        caller_clause_ranked += " AND tracking_mode = ?"
+        caller_clause_entries += " AND tracking_mode = ?"
+        ranked_params = ranked_params + (tm,)
+        entries_params = entries_params + (tm,)
+    params = ranked_params + entries_params
     rows = get_connection().execute(
         f"""WITH ranked AS (
             SELECT ticker, contract_type, strike, expiry,
@@ -1671,7 +1741,9 @@ def get_current_analyst_positions(caller: str | None = None) -> list[dict]:
 
 
 def compute_caller_win_loss_summary(
-    days: int = 30, caller: str | None = None
+    days: int = 30,
+    caller: str | None = None,
+    tracking_mode: str | None = "caller",
 ) -> dict:
     """Compute a caller's W/L tally over the last N days under the rule:
     expirations-without-close count as losses.
@@ -1694,8 +1766,13 @@ def compute_caller_win_loss_summary(
     caller_clause = ""
     extra_params: tuple = ()
     if caller:
-        caller_clause = " AND LOWER(caller) = ?"
-        extra_params = (caller.strip().lower(),)
+        caller_clause += " AND LOWER(caller) = ?"
+        extra_params = extra_params + (caller.strip().lower(),)
+    if tracking_mode is not None:
+        caller_clause += " AND tracking_mode = ?"
+        extra_params = extra_params + (
+            (tracking_mode or "").strip().lower() or "caller",
+        )
 
     closed_rows = conn.execute(
         f"""SELECT gain_pct FROM analyst_trades
@@ -1774,6 +1851,7 @@ def format_analyst_trades_for_context(
     limit: int = 30,
     caller: str | None = None,
     display: str | None = None,
+    tracking_mode: str | None = "caller",
 ) -> str:
     """Render the last N hours of trade-tagged rows as a context block for /ask.
 
@@ -1789,7 +1867,9 @@ def format_analyst_trades_for_context(
     Returns "" when there are no trade rows in the window — caller can omit
     the block entirely.
     """
-    rows = get_recent_analyst_trades(hours=hours, limit=limit, caller=caller)
+    rows = get_recent_analyst_trades(
+        hours=hours, limit=limit, caller=caller, tracking_mode=tracking_mode,
+    )
     if not rows:
         return ""
 
@@ -1853,7 +1933,9 @@ def format_analyst_trades_for_context(
 
     # Also surface currently-open positions explicitly so the bot doesn't
     # have to compute the net itself.
-    positions = get_current_analyst_positions(caller=caller)
+    positions = get_current_analyst_positions(
+        caller=caller, tracking_mode=tracking_mode,
+    )
     if positions:
         out_lines.append("")
         out_lines.append(
@@ -1892,7 +1974,9 @@ def format_analyst_trades_for_context(
     # expirations-without-close count as losses (callers rarely screenshot
     # losers; they leak out as expired open/add rows tagged
     # `expired_unknown`).
-    wl = compute_caller_win_loss_summary(days=30, caller=caller)
+    wl = compute_caller_win_loss_summary(
+        days=30, caller=caller, tracking_mode=tracking_mode,
+    )
     if wl["decided"] > 0:
         out_lines.append("")
         out_lines.append(
@@ -2616,6 +2700,8 @@ def find_matching_open_expiry(
     ticker: str,
     contract_type: str | None,
     strike: float | None,
+    author_id: int | None = None,
+    tracking_mode: str | None = "caller",
 ) -> str | None:
     """Find the expiry of a currently-open position matching this
     caller + ticker + contract_type + strike. Used by the watcher to
@@ -2661,6 +2747,12 @@ def find_matching_open_expiry(
     if caller:
         sql += " AND LOWER(COALESCE(caller,'')) = ?"
         params.append(caller.strip().lower())
+    if author_id is not None:
+        sql += " AND author_id = ?"
+        params.append(int(author_id))
+    if tracking_mode is not None:
+        sql += " AND tracking_mode = ?"
+        params.append((tracking_mode or "").strip().lower() or "caller")
     sql += """)
         SELECT expiry FROM ranked
         WHERE rn = 1
@@ -3332,30 +3424,69 @@ def get_recent_user_messages(
     return [dict(r) for r in rows]
 
 
-def get_latest_analyst_trade_posted_at(caller: str | None = None) -> str | None:
+def get_latest_analyst_trade_posted_at(
+    caller: str | None = None,
+    tracking_mode: str | None = "caller",
+) -> str | None:
     """Return the most-recent `posted_at` ISO timestamp for analyst_trades,
     optionally scoped to a single caller. Used by the on_ready /
     on_resumed catch-up loop to know where to resume scanning from
     when the bot reconnects after a gateway flap.
 
-    Returns None when there are no trades on file for the caller (or
-    no trades at all when caller is None).
+    tracking_mode defaults to 'caller' so the catchup loop only watches
+    its own watermark; member-mode rows have their own catchup driven
+    by chat_ingestion's last-seen pointer. Pass None to look across both.
+
+    Returns None when there are no trades on file matching the filters.
     """
+    where = ["1=1"]
+    params: list = []
     if caller:
-        row = get_connection().execute(
-            """SELECT MAX(posted_at) AS latest
-               FROM analyst_trades
-               WHERE LOWER(COALESCE(caller, '')) = ?""",
-            (caller.strip().lower(),),
-        ).fetchone()
-    else:
-        row = get_connection().execute(
-            "SELECT MAX(posted_at) AS latest FROM analyst_trades"
-        ).fetchone()
+        where.append("LOWER(COALESCE(caller, '')) = ?")
+        params.append(caller.strip().lower())
+    if tracking_mode is not None:
+        where.append("tracking_mode = ?")
+        params.append((tracking_mode or "").strip().lower() or "caller")
+    row = get_connection().execute(
+        f"""SELECT MAX(posted_at) AS latest
+           FROM analyst_trades
+           WHERE {' AND '.join(where)}""",
+        tuple(params),
+    ).fetchone()
     if row is None:
         return None
     val = row[0] if isinstance(row, tuple) else row["latest"]
     return val or None
+
+
+def get_member_trade_events(
+    author_id: int, days: int = 7, limit: int = 200,
+) -> list[dict]:
+    """All is_trade=1 rows for a single member-mode author over the last N
+    days, newest first. Used by the future trader-points scoring system
+    (rolling 7-day point window: open=3, open+close-win=5, post-only=1).
+
+    Caller-mode rows are excluded — official callers have their own
+    surfacing in /ask context blocks (RECENT TRADES, currently open).
+    This helper is exclusively for the member-mode points calculator.
+
+    Returns the raw rows; the point scoring logic is intentionally NOT
+    baked in here so the rubric can iterate without DB churn.
+    """
+    if not author_id:
+        return []
+    cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
+    rows = get_connection().execute(
+        """SELECT * FROM analyst_trades
+           WHERE tracking_mode = 'member'
+             AND is_trade = 1
+             AND author_id = ?
+             AND posted_at > ?
+           ORDER BY posted_at DESC
+           LIMIT ?""",
+        (int(author_id), cutoff, int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]
 
 
 def mark_expired_analyst_positions() -> list[dict]:

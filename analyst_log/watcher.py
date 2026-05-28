@@ -301,12 +301,18 @@ def _lookup_open_price(
     contract_type: str | None,
     strike: float | None,
     expiry: str,
+    *,
+    author_id: int | None = None,
+    tracking_mode: str | None = "caller",
 ) -> float | None:
     """Look up the earliest recorded open/add price for the matching
-    contract under this caller. Used to derive close-side price or
-    gain% when one side is missing on a CLOSE/TRIM screenshot.
-    Returns None if no open price is on file (caller has the contract
-    in unknown-cost-basis state — caller may have opened off-channel).
+    contract under this caller (or author_id in member mode). Used to
+    derive close-side price or gain% when one side is missing on a
+    CLOSE/TRIM screenshot. Returns None if no open price is on file.
+
+    tracking_mode defaults to 'caller' so caller closes never inherit
+    a member's earlier open price by accident; member-mode closes
+    likewise only match against the same author's opens.
     """
     if not ticker or not expiry:
         return None
@@ -332,6 +338,12 @@ def _lookup_open_price(
     if caller:
         sql += " AND LOWER(COALESCE(caller,'')) = ?"
         params.append(caller.strip().lower())
+    if author_id is not None:
+        sql += " AND author_id = ?"
+        params.append(int(author_id))
+    if tracking_mode is not None:
+        sql += " AND tracking_mode = ?"
+        params.append((tracking_mode or "").strip().lower() or "caller")
     sql += " ORDER BY posted_at ASC LIMIT 1"
     try:
         row = db.get_connection().execute(sql, tuple(params)).fetchone()
@@ -346,10 +358,16 @@ def _lookup_open_price(
         return None
 
 
-def _resolve_close_expiry(extracted: dict, caller_name: str | None) -> None:
+def _resolve_close_expiry(
+    extracted: dict,
+    caller_name: str | None,
+    *,
+    author_id: int | None = None,
+    tracking_mode: str | None = "caller",
+) -> None:
     """For CLOSE/TRIM extractions where expiry is null, look up the
-    caller's currently-open position matching ticker + strike and use
-    that expiry. Mutates extracted in place.
+    caller's (or member-mode author's) currently-open position matching
+    ticker + strike and use that expiry. Mutates extracted in place.
 
     Why: terse closers like "Closed HOOD 80c @0.41" don't state the
     expiry — the caller obviously means "close the position I already
@@ -357,12 +375,13 @@ def _resolve_close_expiry(extracted: dict, caller_name: str | None) -> None:
     doesn't match the actual open. Matching against outstanding open
     positions resolves to the right contract every time.
 
+    tracking_mode defaults to 'caller' for backwards-compat; pass
+    tracking_mode='member' + author_id for member-mode close matching.
+
     Cases:
     - action != close/trim → no-op
     - expiry already populated → no-op (trust the OCR)
-    - no matching open position → no-op (leave expiry null;
-      _is_extraction_actionable will then downgrade to non-trade since
-      expiry IS NULL is a junk row)
+    - no matching open position → no-op
     """
     action = (extracted.get("action") or "").lower()
     if action not in ("close", "trim"):
@@ -375,6 +394,8 @@ def _resolve_close_expiry(extracted: dict, caller_name: str | None) -> None:
         ticker=(extracted.get("ticker") or "").strip(),
         contract_type=extracted.get("contract_type"),
         strike=extracted.get("strike"),
+        author_id=author_id,
+        tracking_mode=tracking_mode,
     )
     if matched:
         extracted["expiry"] = matched
@@ -386,7 +407,13 @@ def _resolve_close_expiry(extracted: dict, caller_name: str | None) -> None:
         ).strip()
 
 
-def _derive_close_metrics(extracted: dict, caller_name: str | None) -> None:
+def _derive_close_metrics(
+    extracted: dict,
+    caller_name: str | None,
+    *,
+    author_id: int | None = None,
+    tracking_mode: str | None = "caller",
+) -> None:
     """On a CLOSE/TRIM extraction with exactly one of {price, gain_pct}
     missing, derive the missing value from the open-side price.
 
@@ -424,6 +451,8 @@ def _derive_close_metrics(extracted: dict, caller_name: str | None) -> None:
         extracted.get("contract_type"),
         extracted.get("strike"),
         (extracted.get("expiry") or "").strip(),
+        author_id=author_id,
+        tracking_mode=tracking_mode,
     )
     if not open_price:
         return
@@ -440,24 +469,49 @@ async def watch_message(
     bot: discord.Client,
     message: discord.Message,
     caller: dict | None = None,
+    tracking_mode: str = "caller",
 ) -> None:
     """Process an analyst-channel message. Side-effect-only — writes to DB
-    and posts to the announce channel. All failures are logged and
-    swallowed so a single bad image never blocks subsequent processing.
+    and (in caller mode) posts to the announce channel. All failures
+    are logged and swallowed so a single bad image never blocks
+    subsequent processing.
 
-    `caller` is the matched caller dict from settings.resolve_analyst_callers():
-    {name, display, username, channel, enabled}. When provided, the
-    watcher uses caller['username'] for the author filter and writes
-    caller['name'] as the canonical `caller` field on each row.
+    Two modes:
+
+    `tracking_mode='caller'` — the legacy / official path. Requires a
+    `caller` dict from settings.resolve_analyst_callers(); enforces the
+    caller['username'] author filter; writes caller['name'] as the
+    canonical `caller` field; runs the announce embed back to Discord.
+
+    `tracking_mode='member'` — universal member-alert path. `caller` is
+    None. NO author-username filter (any user posting in an eager-OCR
+    alert channel is a candidate). Row is stored with author_id +
+    tracking_mode='member' so /ask caller context never sees it, but the
+    future points-scoring system has data to read. NO announce embed.
 
     Legacy callers passing only (bot, message) fall back to the global
     `analyst_primary_author` setting for filtering, and the stored
     `caller` field is None — backwards-compatible with the pre-registry
     deployment but loses hard-separation in /ask context.
     """
+    norm_tracking_mode = (tracking_mode or "").strip().lower()
+    if norm_tracking_mode not in ("caller", "member"):
+        norm_tracking_mode = "caller"
+
     # Resolve the username to filter by + the canonical caller name to
-    # store. Registry-driven (preferred) or legacy fallback.
-    if caller:
+    # store. Registry-driven (preferred) or legacy fallback. In
+    # member mode neither applies.
+    if norm_tracking_mode == "member":
+        expected_username = ""  # any author in this channel is a candidate
+        canonical_caller = None
+        # caller_display feeds the OCR extractor's "whose alert is this"
+        # hint — for member mode, use the actual author's display name.
+        caller_display = (
+            getattr(message.author, "display_name", None)
+            or message.author.name
+            or "the trader"
+        )
+    elif caller:
         expected_username = caller.get("username", "").strip().lower()
         canonical_caller = caller.get("name", "").strip().lower() or None
         caller_display = caller.get("display") or canonical_caller or "the caller"
@@ -527,13 +581,24 @@ async def watch_message(
             # Resolve close/trim expiry from matching open position BEFORE
             # deriving close metrics — the derive step needs an expiry to
             # look up the open price for gain%/price computation.
-            _resolve_close_expiry(extracted, canonical_caller)
-            _derive_close_metrics(extracted, canonical_caller)
+            _resolve_close_expiry(
+                extracted,
+                canonical_caller,
+                author_id=getattr(message.author, "id", None),
+                tracking_mode=norm_tracking_mode,
+            )
+            _derive_close_metrics(
+                extracted,
+                canonical_caller,
+                author_id=getattr(message.author, "id", None),
+                tracking_mode=norm_tracking_mode,
+            )
         try:
             db.record_analyst_trade(
                 discord_message_id=message.id,
                 discord_attachment_id=synthetic_att_id,
                 author=author_name,
+                author_id=getattr(message.author, "id", None),
                 posted_at=posted_at,
                 image_url=None,
                 caption=caption,
@@ -547,11 +612,15 @@ async def watch_message(
                 gain_pct=extracted.get("gain_pct") if is_trade else None,
                 price=extracted.get("price") if is_trade else None,
                 caller=canonical_caller,
+                tracking_mode=norm_tracking_mode,
             )
         except Exception as e:
             log.error(f"Analyst log: caption-only DB insert failed: {e}", exc_info=True)
             return
-        if is_trade:
+        # Announce only for official-caller posts. Member-mode rows are
+        # silent — they exist in analyst_trades for the future points
+        # scoring, never produce a public log embed.
+        if is_trade and norm_tracking_mode == "caller":
             await _announce_to_channel(bot, message, extracted, author_name, caller=caller)
         return
 
@@ -601,14 +670,25 @@ async def watch_message(
             # Resolve close/trim expiry from matching open position BEFORE
             # deriving close metrics — the derive step needs an expiry to
             # look up the open price for gain%/price computation.
-            _resolve_close_expiry(extracted, canonical_caller)
-            _derive_close_metrics(extracted, canonical_caller)
+            _resolve_close_expiry(
+                extracted,
+                canonical_caller,
+                author_id=getattr(message.author, "id", None),
+                tracking_mode=norm_tracking_mode,
+            )
+            _derive_close_metrics(
+                extracted,
+                canonical_caller,
+                author_id=getattr(message.author, "id", None),
+                tracking_mode=norm_tracking_mode,
+            )
 
         try:
             db.record_analyst_trade(
                 discord_message_id=message.id,
                 discord_attachment_id=att.id,
                 author=author_name,
+                author_id=getattr(message.author, "id", None),
                 posted_at=posted_at,
                 image_url=att.url,
                 caption=caption,
@@ -622,12 +702,14 @@ async def watch_message(
                 gain_pct=extracted.get("gain_pct") if is_trade else None,
                 price=extracted.get("price") if is_trade else None,
                 caller=canonical_caller,
+                tracking_mode=norm_tracking_mode,
             )
         except Exception as e:
             log.error(f"Analyst log: DB insert failed: {e}", exc_info=True)
             continue
 
-        if is_trade:
+        # Announce only for official-caller posts (see caption-path note above).
+        if is_trade and norm_tracking_mode == "caller":
             await _announce_to_channel(bot, message, extracted, author_name, caller=caller)
 
 
