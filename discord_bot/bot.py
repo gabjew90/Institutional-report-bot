@@ -1716,6 +1716,33 @@ async def _answer_with_gemini(
         # to mix a built-in tool (Google Search) with function declarations.
         # Without that flag the API returns 400 INVALID_ARGUMENT. The model
         # picks which tool (or none) based on the question.
+        # Safety settings — set ALL categories to BLOCK_NONE on input.
+        # The prompt deliberately injects raw verbatim quotes from chat
+        # (subject-verbatim block, slur_examples in user profiles) so
+        # the bot can analyze room dynamics, racism-rank, and answer
+        # questions like "what's Abe's win rate" without the input
+        # being rejected. Production log on 2026-05-28:
+        #   prompt_block='PROHIBITED_CONTENT'
+        # …on a benign "what's Abe's win rate this week" because the
+        # subject-verbatim block contained slurs Abe had posted. With
+        # default safety, Gemini rejects the whole prompt before
+        # generating anything, and the user sees a blank embed (or
+        # the misleading "safety filter tripped" fallback). The bot's
+        # design intent is to READ this content for analysis; output
+        # safety still applies to anything the bot itself emits.
+        safety_settings = [
+            types.SafetySetting(
+                category=cat,
+                threshold=types.HarmBlockThreshold.BLOCK_NONE,
+            )
+            for cat in (
+                types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+                types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+                types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+                types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            )
+        ]
+
         config = types.GenerateContentConfig(
             system_instruction=_ASK_SYSTEM_INSTRUCTION,
             tools=[
@@ -1726,6 +1753,7 @@ async def _answer_with_gemini(
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
             ),
+            safety_settings=safety_settings,
             # max_output_tokens = 5000 (bumped 2026-05-28 from 4000).
             # Thinking budget bumped to 2000 — Type 1 answers with
             # search grounding can use more reasoning when working
@@ -1944,9 +1972,16 @@ async def _answer_with_gemini(
                 f"q={question[:140]!r})"
             )
             if safety_blocked or prompt_block:
+                # With BLOCK_NONE on all configurable categories, this
+                # is Gemini's unconfigurable hard filter (CSAM, severe
+                # policy). Honest framing: it's Gemini's call, not the
+                # asker's fault. Don't say "your question tripped safety"
+                # for benign questions whose context happens to include
+                # the room's verbatim quotes.
                 answer = (
-                    "→ Can't answer that one — safety filter tripped. "
-                    "Try rephrasing."
+                    "→ Gemini bounced this one — its hard filter blocked "
+                    "the prompt. Try asking a different way or about a "
+                    "different subject."
                 )
             elif finish_reason in ("MAX_TOKENS", "OTHER", None):
                 answer = (
