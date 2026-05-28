@@ -1224,6 +1224,16 @@ async def run(days: int, channels: list[str]) -> None:
                    if settings.profile_image_ocr_enabled else "\n\n")
             )
 
+            # Fix A: failure counters across the whole batch. These feed
+            # into the summary pipeline_event so we can spot the broken
+            # pipeline pattern (high eligible, low success) without
+            # querying per-user pipeline_events. Per-user failures are
+            # also written as their own pipeline_events rows for
+            # detailed forensics.
+            n_success = 0
+            n_failure_exception = 0
+            n_failure_empty = 0
+
             # One shared aiohttp session for all image downloads across
             # the batch. Lives for the duration of the Gemini loop.
             async with aiohttp.ClientSession() as http_session:
@@ -1253,14 +1263,60 @@ async def run(days: int, channels: list[str]) -> None:
                     #  racial_humor_score) as one JSON response.
                     for (uid, msgs), result in zip(batch, results):
                         meta = user_meta[uid]
+                        # Fix A: persistent per-user failure logging.
+                        # Previously every failure was stdout-only and died
+                        # with the container. Now they're rows in
+                        # pipeline_events so we can spot patterns (which
+                        # users, which failure mode, repeat skips) without
+                        # access to live worker logs.
                         if isinstance(result, Exception):
+                            n_failure_exception += 1
                             print(f"  ✗ {meta['display_name']}: {result}",
                                   flush=True)
+                            try:
+                                db.record_pipeline_event(
+                                    "profile_user_failure", "exception",
+                                    {
+                                        "user_id": uid,
+                                        "username": meta.get("username"),
+                                        "display_name": meta.get("display_name"),
+                                        "msg_count": len(msgs),
+                                        "exception_type": type(result).__name__,
+                                        "exception_message": str(result)[:500],
+                                    },
+                                )
+                            except Exception as log_err:
+                                print(f"    (failure-event write failed: {log_err})",
+                                      flush=True)
                             continue
                         profile, trader_score, trader_rationale, racial_humor_score, trader_examples = result
                         if not profile:
+                            n_failure_empty += 1
                             print(f"  ✗ {meta['display_name']}: empty / unparseable response",
                                   flush=True)
+                            try:
+                                db.record_pipeline_event(
+                                    "profile_user_failure", "empty_response",
+                                    {
+                                        "user_id": uid,
+                                        "username": meta.get("username"),
+                                        "display_name": meta.get("display_name"),
+                                        "msg_count": len(msgs),
+                                        "trader_score_returned": trader_score,
+                                        "racial_humor_score_returned": racial_humor_score,
+                                        "trader_rationale_len": (
+                                            len(trader_rationale) if trader_rationale else 0
+                                        ),
+                                        "trader_examples_count": (
+                                            len(trader_examples) if trader_examples else 0
+                                        ),
+                                        # If profile is None we can't see what came back
+                                        # but we can record what other fields parsed.
+                                    },
+                                )
+                            except Exception as log_err:
+                                print(f"    (failure-event write failed: {log_err})",
+                                      flush=True)
                             continue
 
                         # Verify the profile's quoted phrases against
@@ -1309,6 +1365,7 @@ async def run(days: int, channels: list[str]) -> None:
                             slur_examples=slur_ex_json,
                             trader_examples=trader_ex_json,
                         )
+                        n_success += 1
                         n_imgs = len(images_by_user.get(uid, []))
                         rh_display = (
                             racial_humor_score
@@ -1353,8 +1410,11 @@ async def run(days: int, channels: list[str]) -> None:
 
             print(f"\nProfiled {len(eligible)} users.", flush=True)
 
-            # Observability (fix #7): record run summary to pipeline_events
-            # for historical trend analysis + /status surfacing.
+            # Observability (fix #7 + Fix A): record run summary with
+            # success/failure tallies. eligible == n_success +
+            # n_failure_exception + n_failure_empty when the loop ran
+            # to completion. If they don't add up, the loop exited
+            # early — that's its own bug signal.
             try:
                 db.record_pipeline_event(
                     "profile_refresh",
@@ -1363,6 +1423,9 @@ async def run(days: int, channels: list[str]) -> None:
                         "window_days": days,
                         "channels": channels,
                         "eligible": len(eligible),
+                        "succeeded": n_success,
+                        "failed_exception": n_failure_exception,
+                        "failed_empty": n_failure_empty,
                         "skipped_lurkers": skipped_lurkers,
                         "skipped_stable": skipped_stable,
                         "store_rows_in_window": store_rows,
