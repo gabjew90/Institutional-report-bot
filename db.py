@@ -2335,8 +2335,14 @@ def export_user_profiles_markdown() -> str:
             header += f" (`{uname}`)"
         lines.append(header)
         lines.append("")
+        # Identity + activity line. user_id is the canonical Discord
+        # snowflake — surfaced here so a reader can disambiguate
+        # display-name collisions (e.g. multiple "kloh" variants) and
+        # so /ask mentions resolve cleanly back to the right profile.
+        uid_str = str(r["user_id"]) if r["user_id"] else "?"
         lines.append(
-            f"_{msg_count:,} msgs · last activity {last_seen} · refreshed {updated} UTC_"
+            f"_user_id: `{uid_str}` · {msg_count:,} msgs · "
+            f"last activity {last_seen} · refreshed {updated} UTC_"
         )
         lines.append("")
 

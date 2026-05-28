@@ -956,7 +956,12 @@ async def _generate_profile(
 
     # Profiles below this char length are treated as suspicious — we log
     # finish_reason regardless of STOP and retry once with a fresh call.
-    _SHORT_PROFILE_THRESHOLD = 1500
+    # 5-section structure averages 3000-3500 chars for a healthy
+    # profile. Anything under 2500 is missing sections — section 1
+    # only is usually ~400-700 chars; sections 1-3 ~2000-2500. So the
+    # retry threshold needs to be high enough to catch partial
+    # outputs that the model claimed STOP on.
+    _SHORT_PROFILE_THRESHOLD = 2500
 
     async def _try_text_only(
         temperature: float = 0.3,
@@ -1409,6 +1414,45 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                       flush=True)
                             continue
                         profile, trader_score, trader_rationale, racial_humor_score = result
+                        # Guard: don't overwrite a substantial prior
+                        # profile with a much shorter truncated one.
+                        # Heavy users sometimes get section-1-only
+                        # responses even after retries; we'd rather
+                        # KEEP the prior long profile than downgrade
+                        # to a partial. Bypass when force=True only if
+                        # the new profile is genuinely viable (>=2000
+                        # chars). Otherwise treat as failure.
+                        prior = existing_profiles.get(uid)
+                        prior_len = len((prior or {}).get("profile_text") or "")
+                        new_len = len(profile or "")
+                        if (
+                            profile
+                            and prior_len >= 2000
+                            and new_len < 2000
+                            and new_len < int(prior_len * 0.5)
+                        ):
+                            n_failure_empty += 1
+                            print(
+                                f"  ⚠ {meta['display_name']}: truncated "
+                                f"({new_len} chars) vs prior {prior_len} — "
+                                f"keeping prior, treating as failure",
+                                flush=True,
+                            )
+                            try:
+                                db.record_pipeline_event(
+                                    "profile_user_failure", "truncated_downgrade",
+                                    {
+                                        "user_id": uid,
+                                        "username": meta.get("username"),
+                                        "display_name": meta.get("display_name"),
+                                        "msg_count": len(msgs),
+                                        "new_len": new_len,
+                                        "prior_len": prior_len,
+                                    },
+                                )
+                            except Exception:
+                                pass
+                            continue
                         if not profile:
                             n_failure_empty += 1
                             print(f"  ✗ {meta['display_name']}: empty / unparseable response",
