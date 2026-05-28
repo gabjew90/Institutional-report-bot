@@ -1137,7 +1137,7 @@ async def _generate_profile(
         return None, None, None, None
 
 
-async def run(days: int, channels: list[str]) -> None:
+async def run(days: int, channels: list[str], *, force: bool = False) -> None:
     if not settings.discord_bot_token:
         print("ERROR: DISCORD_BOT_TOKEN not set", file=sys.stderr)
         sys.exit(1)
@@ -1260,19 +1260,26 @@ async def run(days: int, channels: list[str]) -> None:
             eligible: list[tuple[int, list[dict]]] = []
             skipped_lurkers = 0
             skipped_stable = 0  # existing profile, not enough new material
+            if force:
+                print(
+                    "FORCE mode: bypassing delta_threshold — every user "
+                    "above the 30-msg lifetime floor will be re-profiled.",
+                    flush=True,
+                )
             for uid, msgs in by_user.items():
                 if len(msgs) < min_msgs:
                     skipped_lurkers += 1
                     continue
-                existing = existing_profiles.get(uid)
-                last_seen = (existing or {}).get("last_seen_message_at")
-                if existing and last_seen:
-                    new_msgs_count = sum(
-                        1 for m in msgs if m["timestamp"] > last_seen
-                    )
-                    if new_msgs_count < delta_threshold:
-                        skipped_stable += 1
-                        continue
+                if not force:
+                    existing = existing_profiles.get(uid)
+                    last_seen = (existing or {}).get("last_seen_message_at")
+                    if existing and last_seen:
+                        new_msgs_count = sum(
+                            1 for m in msgs if m["timestamp"] > last_seen
+                        )
+                        if new_msgs_count < delta_threshold:
+                            skipped_stable += 1
+                            continue
                 eligible.append((uid, msgs))
             eligible.sort(key=lambda t: -len(t[1]))  # most active first
 
@@ -1570,6 +1577,15 @@ def main() -> None:
             "path is causing short / truncated profile outputs."
         ),
     )
+    parser.add_argument(
+        "--force", action="store_true",
+        help=(
+            "Bypass the delta-threshold gate. Re-profile every user "
+            "above the lifetime min_messages floor regardless of how "
+            "many new messages they've accumulated. Used after a prompt "
+            "change to refresh all existing dossiers in one shot."
+        ),
+    )
     args = parser.parse_args()
     if args.no_vision:
         # Override the setting in-process; doesn't touch the env var
@@ -1577,7 +1593,7 @@ def main() -> None:
         print("--no-vision: vision pipeline disabled for this run",
               flush=True)
     channels = [c.strip() for c in args.channels.split(",") if c.strip()]
-    asyncio.run(run(args.days, channels))
+    asyncio.run(run(args.days, channels, force=args.force))
 
 
 if __name__ == "__main__":

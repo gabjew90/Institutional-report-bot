@@ -1670,10 +1670,19 @@ def create_bot() -> commands.Bot:
         name="refresh_profiles",
         description="Force a user-profile refresh via the live bot (no twin-client races)",
     )
-    @app_commands.describe(password="Admin password")
+    @app_commands.describe(
+        password="Admin password",
+        force=(
+            "When True, bypass the 20-msg delta gate and re-profile EVERY "
+            "user above the 30-msg lifetime floor over the 30-day window. "
+            "Use after a prompt change to refresh stale dossiers. ~$0.10-0.20 "
+            "in Gemini tokens for ~50 users."
+        ),
+    )
     async def refresh_profiles_command(
         interaction: discord.Interaction,
         password: str,
+        force: bool = False,
     ):
         """Trigger _user_profile_refresh_job inline on the live worker.
 
@@ -1683,6 +1692,12 @@ def create_bot() -> commands.Bot:
         mid-scan. Invoking the refresh through a slash command uses the
         worker's already-connected client — no second session, no race.
         Long-running (3-6 min); responds ephemerally on completion.
+
+        `force=True` bypasses the delta gate — every user above the
+        30-msg lifetime floor gets re-profiled regardless of how many
+        new messages they've accumulated since their last refresh.
+        Use after a prompt rewrite to force the new format across all
+        existing dossiers in one shot.
         """
         if not await _check_pulse_channel(interaction):
             return
@@ -1692,10 +1707,15 @@ def create_bot() -> commands.Bot:
         await interaction.response.defer(thinking=True, ephemeral=True)
         try:
             from scheduler.jobs import _user_profile_refresh_job
-            log.info("Manual /refresh_profiles triggered by %s", interaction.user)
-            await _user_profile_refresh_job(bot=bot)
+            log.info(
+                "Manual /refresh_profiles triggered by %s (force=%s)",
+                interaction.user, force,
+            )
+            await _user_profile_refresh_job(bot=bot, force=force)
+            mode = "FORCED (all users)" if force else "delta-gated"
             await interaction.followup.send(
-                "✅ Profile refresh complete. Snapshot pushed to pulse-data branch.",
+                f"✅ Profile refresh complete ({mode}). "
+                f"Snapshot pushed to pulse-data branch.",
                 ephemeral=True,
             )
         except Exception as e:

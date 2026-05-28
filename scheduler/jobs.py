@@ -566,7 +566,7 @@ async def _ask_log_publish_job():
         log.error(f"ask-log publish job failed: {e}", exc_info=True)
 
 
-async def _user_profile_refresh_job(bot=None):
+async def _user_profile_refresh_job(bot=None, force: bool = False):
     """Daily cron (15:00 local / 3 PM ET). Re-runs the profile backfill for
     active users, then prunes anyone outside the top-N cutoff.
 
@@ -574,15 +574,22 @@ async def _user_profile_refresh_job(bot=None):
     20-message threshold AND in the top settings.max_user_profiles. After
     upsert, prune_user_profiles_to_top_n drops any older profiles whose
     activity has fallen below the cutoff so the table stays bounded.
+
+    `force=True` (from /refresh_profiles force:true) bypasses the
+    20-msg delta gate — every user above the 30-msg lifetime floor
+    gets re-profiled. Used after a prompt change to refresh all
+    existing dossiers in one shot.
     """
     try:
         from scripts.backfill_user_profiles import run as backfill_run
         import db
         # Channels=[] → backfill reads ALL chat_messages within the
         # window. Profile builder no longer scopes to profile_channels.
-        log.info(f"User-profile refresh: scanning ALL ingested channels "
-                 f"for {settings.profile_window_days}d")
-        await backfill_run(settings.profile_window_days, [])
+        log.info(
+            f"User-profile refresh: scanning ALL ingested channels for "
+            f"{settings.profile_window_days}d (force={force})"
+        )
+        await backfill_run(settings.profile_window_days, [], force=force)
         # Prune to top N by message_count_at_update
         pruned = db.prune_user_profiles_to_top_n(settings.max_user_profiles)
         if pruned:
