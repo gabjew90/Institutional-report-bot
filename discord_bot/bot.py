@@ -1312,14 +1312,19 @@ async def _answer_with_gemini(
         # Two tools available to the model:
         #   1. Google Search grounding — for current/factual lookups
         #   2. search_chat_messages — for historical room-chat lookups
-        # Gemini's compositional function-calling lets these coexist.
-        # The model picks which (or neither) based on the question.
+        # Gemini requires tool_config.include_server_side_tool_invocations=True
+        # to mix a built-in tool (Google Search) with function declarations.
+        # Without that flag the API returns 400 INVALID_ARGUMENT. The model
+        # picks which tool (or none) based on the question.
         config = types.GenerateContentConfig(
             system_instruction=_ASK_SYSTEM_INSTRUCTION,
             tools=[
                 types.Tool(google_search=types.GoogleSearch()),
                 _build_chat_search_tool(),
             ],
+            tool_config=types.ToolConfig(
+                include_server_side_tool_invocations=True,
+            ),
             # max_output_tokens = 5000 (bumped 2026-05-28 from 4000).
             # Thinking budget bumped to 2000 — Type 1 answers with
             # search grounding can use more reasoning when working
