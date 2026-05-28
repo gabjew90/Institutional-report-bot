@@ -365,17 +365,22 @@ Don't invent OCR content. Only cite what's actually in the `[image-OCR: ...]` bl
 
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
-Output a single JSON object with exactly five fields, IN THIS ORDER:
+Output a single JSON object with exactly six fields, IN THIS ORDER:
 
 ```
 {{
-  "trader_score": <integer 0-100>,
+  "chatter_base": <integer 0-50, your chatter-bracket placement>,
+  "honesty_modifier": <integer -10 to +10>,
   "racial_humor_score": <integer 0-100>,
-  "trader_rationale": "<1-2 SAVAGE-BUT-HILARIOUS sentences, see below>",
-  "racism_rationale": "<1-2 SAVAGE-BUT-HILARIOUS sentences, see below>",
+  "trader_rationale": "<3-5 SAVAGE-BUT-HILARIOUS sentences, see below>",
+  "racism_rationale": "<3-5 SAVAGE-BUT-HILARIOUS sentences, see below>",
   "profile_text": "<full markdown profile per the schema above — ALL 5 named sections>"
 }}
 ```
+
+**You do NOT output a `trader_score`.** Python computes it deterministically downstream as `min(100, clip(chatter_base + honesty_modifier, 50) + receipt_points)`, where `receipt_points` is the exact `TOTAL RECEIPT POINTS:` value from the 14-DAY POINTS LEDGER block — not anything you judge or infer. Your job is ONLY the chatter read and the honesty modifier. The receipt side is arithmetic, and Python does it.
+
+**Why this matters**: an earlier version of the prompt asked Gemini for the final `trader_score`, which produced a hallucination class — model would read the chat, see chat-claimed trades NOT in the structured ledger ("closed BTC short +50%" etc.), invent 30-40 receipt points for them, and inflate the score by that amount. The new schema makes the failure structurally impossible — Gemini only outputs the chatter judgment; receipts are computed from the deterministic ledger.
 
 `profile_text` is LAST and is the largest field by far. All five named sections (Personality and style / Voice / Retarded takes / Recent trades / Recent personal life) live inside this single markdown string.
 
@@ -385,7 +390,7 @@ Both `trader_rationale` and `racism_rationale` are short summary blocks that get
 
 ### `trader_rationale` (3-5 sentences, ~400-900 chars)
 
-What it covers: (a) the evidence gate — which PATH (alert posts / closed-P&L losses) unlocked the bracket WINDOW, (b) the raw-skill read inside that window, (c) the ±5 tiebreaker if applied and why, (d) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Name the specific receipts (alert content quoted, P&L card ticker + dollar amount) that moved the bracket.
+What it covers: (a) the chatter base bracket you placed them in (0-25 / 25-40 / 40-50) and the chat-evidence that drove it, (b) the honesty modifier if applied and why, (c) the receipt-points contribution from the LEDGER VERBATIM (cite the TOTAL RECEIPT POINTS number from the points block — do not invent a different number), (d) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Name the specific receipts pulled directly from the 14-DAY POINTS LEDGER block above (entries won / lost / ghosted with actual ticker + outcome).
 
 **Good shapes** (use as structural templates — the bracketed slots are filled from this user's actual evidence, NEVER copied as-is):
 
@@ -1109,21 +1114,30 @@ async def _generate_profile(
     def _parse_response(
         text: str,
     ) -> tuple[
-        str | None, int | None, str | None, int | None, str | None,
+        str | None,  # profile_text
+        int | None,  # chatter_base (clipped 0-50)
+        int | None,  # honesty_modifier (clipped -10..+10)
+        str | None,  # trader_rationale
+        int | None,  # racial_humor_score
+        str | None,  # racism_rationale
     ]:
-        """Parse the JSON response. Returns the five fields or all-None
+        """Parse the JSON response. Returns the six fields or all-None
         on parse failure. Logs first 300 chars of the response on
         decode error so we can see what came back.
 
-        Five fields (in order): profile_text, trader_score,
-        trader_rationale, racial_humor_score, racism_rationale.
+        Caller responsibility: compute final trader_score from
+        chatter_base + honesty_modifier + db.compute_member_points()
+        result. This function does NOT compute the final score —
+        that's the whole point of the architectural change. Gemini's
+        only score output is the chatter judgment; the receipt
+        component comes from the deterministic ledger.
         """
         if not text:
             print(
                 f"  parse-failure for {display_name}: EMPTY response body",
                 flush=True,
             )
-            return None, None, None, None, None
+            return None, None, None, None, None, None
         try:
             data = json.loads(text)
             if not isinstance(data, dict):
@@ -1132,23 +1146,43 @@ async def _generate_profile(
                     f"type={type(data).__name__} text={text!r}",
                     flush=True,
                 )
-                return None, None, None, None, None
+                return None, None, None, None, None, None
             pt = (data.get("profile_text") or "").strip() or None
-            ts = data.get("trader_score")
+            cb = data.get("chatter_base")
+            hm = data.get("honesty_modifier")
             tr = (data.get("trader_rationale") or "").strip() or None
             rh = data.get("racial_humor_score")
             rcr = (data.get("racism_rationale") or "").strip() or None
-            if ts is not None:
+            # Backwards-compat: if Gemini emits the legacy trader_score
+            # field (e.g. during the schema-change rollout when the
+            # cached prompt instructs the old format), interpret it as
+            # the chatter_base + honesty_modifier sum and split it
+            # naively (no honesty if not provided).
+            if cb is None and "trader_score" in data:
+                legacy = data.get("trader_score")
                 try:
-                    ts = max(0, min(100, int(ts)))
+                    cb = max(0, min(50, int(legacy))) if legacy is not None else None
+                    hm = 0 if hm is None else hm
                 except (TypeError, ValueError):
-                    ts = None
+                    cb = None
+            if cb is not None:
+                try:
+                    cb = max(0, min(50, int(cb)))
+                except (TypeError, ValueError):
+                    cb = None
+            if hm is not None:
+                try:
+                    hm = max(-10, min(10, int(hm)))
+                except (TypeError, ValueError):
+                    hm = 0
+            else:
+                hm = 0  # default if Gemini omitted
             if rh is not None:
                 try:
                     rh = max(0, min(100, int(rh)))
                 except (TypeError, ValueError):
                     rh = None
-            return pt, ts, tr, rh, rcr
+            return pt, cb, hm, tr, rh, rcr
         except json.JSONDecodeError as e:
             preview = text[:300].replace("\n", " ")
             tail = text[-200:].replace("\n", " ") if len(text) > 500 else ""
@@ -1158,7 +1192,7 @@ async def _generate_profile(
                 f"HEAD={preview!r}" + (f" ...TAIL={tail!r}" if tail else ""),
                 flush=True,
             )
-            return None, None, None, None, None
+            return None, None, None, None, None, None
 
     # 16000 tokens of output headroom. Thinking models burn most of the
     # budget on internal reasoning we can't directly observe. At 8000
@@ -1230,7 +1264,16 @@ async def _generate_profile(
     _RESPONSE_SCHEMA = types.Schema(
         type=types.Type.OBJECT,
         properties={
-            "trader_score": types.Schema(type=types.Type.INTEGER),
+            # chatter_base + honesty_modifier replace the old single
+            # trader_score field. Gemini outputs only its qualitative
+            # judgment of the chat pattern; Python computes the final
+            # trader_score = min(100, clip(cb + honesty, 50) +
+            # receipt_points) downstream. This eliminates the receipt-
+            # point hallucination class — Gemini physically cannot
+            # output the receipt component because it's not in the
+            # schema.
+            "chatter_base": types.Schema(type=types.Type.INTEGER),
+            "honesty_modifier": types.Schema(type=types.Type.INTEGER),
             "racial_humor_score": types.Schema(type=types.Type.INTEGER),
             "trader_rationale": types.Schema(
                 type=types.Type.STRING,
@@ -1256,7 +1299,8 @@ async def _generate_profile(
             # data; display code ignores both.
         },
         required=[
-            "trader_score",
+            "chatter_base",
+            "honesty_modifier",
             "racial_humor_score",
             "trader_rationale",
             "racism_rationale",
@@ -1353,8 +1397,8 @@ async def _generate_profile(
 
     async def _attempt(temperature: float = 0.3) -> tuple[
         tuple[
-            str | None, int | None, str | None, int | None,
-            str | None,
+            str | None, int | None, int | None,
+            str | None, int | None, str | None,
         ],
         str | None,
     ]:
@@ -1742,7 +1786,25 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                 print(f"    (failure-event write failed: {log_err})",
                                       flush=True)
                             continue
-                        profile, trader_score, trader_rationale, racial_humor_score, racism_rationale = result
+                        profile, chatter_base, honesty_modifier, trader_rationale, racial_humor_score, racism_rationale = result
+                        # Python-side deterministic final-score
+                        # computation. Gemini outputs only the chatter
+                        # judgment; the receipt component comes from
+                        # the structured 14-day ledger (verified
+                        # impossible-to-hallucinate). This is the
+                        # whole point of the architectural change.
+                        if chatter_base is not None:
+                            try:
+                                _ledger = db.compute_member_points(uid, days=14)
+                                _receipt_pts = int(_ledger.get("points") or 0)
+                            except Exception:
+                                _receipt_pts = 0
+                            _clipped_chatter = max(0, min(
+                                50, int(chatter_base) + int(honesty_modifier or 0)
+                            ))
+                            trader_score = max(0, min(100, _clipped_chatter + _receipt_pts))
+                        else:
+                            trader_score = None
                         # Guard: don't overwrite a substantial prior
                         # profile with a much shorter truncated one.
                         # Heavy users sometimes get section-1-only
