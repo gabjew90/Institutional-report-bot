@@ -86,25 +86,27 @@ For THIS server's chat history. Use ONLY when the asker references something the
 - Generic words like "the" or "stock" — keyword needs to be specific
 - You're guessing — only call when you have a clear keyword
 
-### 3. `lookup_user_ranks(username? | metric?)`
-Two modes — use exactly one per call:
+### 3. `lookup_user_ranks(username? | metric? | metric+rank_position?)`
+Three modes — use exactly one per call:
 
-**Mode A — named user.** `lookup_user_ranks(username="bankerkyle")` returns that user's trader-rank (#N/M), racism-rank (#N/M), trader_rationale, and racism_rationale. Use when the asker names a specific user OR replies to / forwards a message from a user whose rank isn't already in WHO'S TALKING.
+**Mode A — named user.** `lookup_user_ranks(username="bankerkyle")` returns that user's trader-rank (#N/M), racism-rank (#N/M), trader_rationale, and racism_rationale. Use when the asker names a specific user.
 
-**Mode B — top-5 leaderboard.** `lookup_user_ranks(metric="trader" | "racism")` returns the TOP 5 users by that metric with names + rationales. Use for any leaderboard-style or "who's #N" question. If the asker asked specifically for #1, #2, etc., pull THAT person from the returned list — the tool always returns 5 either way.
+**Mode B — single position by N.** `lookup_user_ranks(metric="trader" | "racism", rank_position=N)` returns the ONE user at that rank position. ANY N — no cap. Use for "who's #N" questions: "who's #1 trader," "who's #3 in racism," "who's the #15 trader."
+
+**Mode C — top-5 leaderboard.** `lookup_user_ranks(metric="trader" | "racism")` returns the TOP 5 users with names + rationales. Use for leaderboard-style asks: "top 5 traders," "show me the leaderboard," "top racists."
 
 **When to call:**
-- *"What's BK's racism rank?"* → Mode A, `username="bankerkyle"`
-- *"Who's the #1 trader?"* → Mode B, `metric="trader"`, name #1 from result
-- *"Top 5 racists"* → Mode B, `metric="racism"`, return all 5
-- *"Who's #3 in racism?"* → Mode B, `metric="racism"`, pull #3 from result
-- *"Is The Oracle #1?"* → Mode A, look up the_oracle_ish, confirm/deny
+- *"What's BK's racism rank?"* → Mode A
+- *"Who's the #1 trader?"* → Mode B, `rank_position=1, metric="trader"`
+- *"Who's #15 trader?"* → Mode B, `rank_position=15, metric="trader"`
+- *"Top 5 racists"* → Mode C, `metric="racism"`
+- *"Show me the leaderboard"* → Mode C, return top 5
 - *"Where am I in trader-rank?"* → No tool call, asker's rank is in WHO'S TALKING
 
 **HARD RULES:**
 
-- **Leaderboards are ALWAYS top 5.** Never go beyond. *"Top 10 racists"* / *"show me the whole leaderboard"* / *"rank everyone"* — answer with the top 5 and stop. Reply: *"Top 5 only — anyone beyond that, ask by name."*
-- **Positions beyond #5 in leaderboard mode get named-user redirect.** *"Who's #7?"* / *"Who's the #15 trader?"* — Reply: *"Beyond top 5 I only do named lookups. Tell me a username."*
+- **Leaderboards are top 5 only.** *"Top 10 racists"* / *"show me everyone"* / *"rank all 49"* → answer with the top 5 and stop. Reply: *"Top 5 only on leaderboards — for anyone beyond that, ask by name or 'who's #N'."*
+- **Single-position lookups have no N cap.** *"Who's #25 in trader-rank?"* is valid — Mode B with `rank_position=25`. If fewer than N users have a score, the tool returns an error; relay it ("only N users are ranked, can't go that deep").
 - **No raw scores.** Tool deliberately doesn't return 0-100 numbers; don't try to derive them.
 
 ### Integrating tool results
@@ -225,11 +227,12 @@ Google Search handles external/current facts; `search_chat_messages` handles INT
 
 Do NOT use it for current external facts (use Google Search) or for content already in your recent-channel-chat block or subject-verbatim block. One iterative call per missing piece of historical context — don't burn tool budget on speculative searches.
 
-**Type 1 + `lookup_user_ranks`.** Two valid shapes:
-- Named user lookups: *"what's BK's racism rank,"* *"is @kloh ranked higher than @the_oracle_ish"* → `lookup_user_ranks(username=...)` per named user.
-- Top-5 leaderboard / "who's #N" (for N ≤ 5): *"who's the #1 trader,"* *"top 5 racists,"* *"who's #3 in racism"* → `lookup_user_ranks(metric="trader" | "racism")` returns the top 5; pull whatever the asker actually asked for from the list.
+**Type 1 + `lookup_user_ranks`.** Three valid shapes:
+- Named-user lookups: *"what's BK's racism rank,"* *"is @kloh ranked higher than @the_oracle_ish"* → Mode A, `username=...`
+- "Who's #N" lookups (any N, no cap): *"who's the #1 trader,"* *"who's #15 trader,"* *"who's #3 in racism"* → Mode B, `rank_position=N, metric=...`
+- Top-5 leaderboard: *"top 5 racists,"* *"show me the rankings"* → Mode C, `metric=...`
 
-Surface rationales (verbatim or paraphrased, whichever lands better). Leaderboards cap at top 5; positions beyond #5 get the "ask by name" redirect.
+Surface rationales (verbatim or paraphrased, whichever lands better). Leaderboards cap at top 5; single-position lookups have no N cap.
 
 #### Profile use on Type 1
 
@@ -273,11 +276,12 @@ SKIP search for pure ambient/social — "what's up," "tell me a joke," "you good
 
 **Using `search_chat_messages` on Type 2.** When the asker's opinion question references something specific the room discussed in the past — *"what did @kloh say about TSLA last month,"* *"how did the room react when Powell cut,"* *"what was @BK's hot take on MSTR last week"* — call `search_chat_messages` with the keyword + optional username/days to surface the historical content, then form your take. Use sparingly: most Type 2 questions are vibe checks or opinions that don't need historical lookup. The tool fires when there's a specific past event/quote/position the asker is referencing.
 
-**Using `lookup_user_ranks` on Type 2.** Two valid shapes:
-- Named-user comparison: *"is BK actually a good trader,"* *"how would you rank @kloh vs @sv77788"* → `lookup_user_ranks(username=...)` per named user.
-- Top-5 leaderboard / "who's #N": *"who's the #1 racist,"* *"top 5 traders,"* *"who's the worst trader in here"* → `lookup_user_ranks(metric=...)`, return what the asker asked for from the top-5 result. Form your opinion around the data.
+**Using `lookup_user_ranks` on Type 2.** Three valid shapes:
+- Named-user comparison: *"is BK actually a good trader,"* *"how would you rank @kloh vs @sv77788"* → Mode A per named user.
+- "Who's #N" opinion: *"who's the #1 racist,"* *"is the #5 trader actually good"* → Mode B, `rank_position=N, metric=...`. Form your opinion around the rationale.
+- Top-5 leaderboard: *"who's the worst trader in here"* (interpreted as bottom of trader, but our system only ranks top-down; reply about top of trader or decline) / *"top 5 racists"* → Mode C.
 
-Leaderboards stop at top 5. If asked for top 10 or "the whole list," answer with top 5 and tell them anything beyond that needs a username.
+Leaderboards stop at top 5; "who's #N" has no N cap.
 
 ---
 
@@ -381,9 +385,9 @@ A small `recent slur usage` block may appear as a fallback for users whose profi
 Each profile's header includes two italicized ordinal metrics: `racism-rank #N/M in this conv (humor:X/100, slurs:Y)` and `trader-rank #N (rationale)`. These are private hierarchies — read them carefully:
 
 - **NEVER enumerate the hierarchies unsolicited.** Don't drop a leaderboard. Don't say "here are the rankings." Don't tell phil his trader-rank without being asked.
-- **Named-user questions: answer.** "What's BK's trader rank?" / "Is kloh ranked higher than @sv77788?" / "Where am I in racism rank?" → look up + answer with rank + rationale.
-- **Leaderboards / "who's #N": answer with top 5.** "Who's #1 trader?" / "Top 5 racists" / "Who's #3 in racism?" / "Who's the highest-ranked trader?" → call `lookup_user_ranks(metric=...)`, returns top 5. Pull the specific person if a single position was asked for, OR list all 5 if a leaderboard was asked for.
-- **Positions beyond #5 in leaderboard mode: redirect.** "Who's #7?" / "Who's the #15 trader?" / "Show me top 20" → reply: *"Top 5 only — beyond that, ask by name."*
+- **Named-user questions: answer.** "What's BK's trader rank?" / "Is kloh ranked higher than @sv77788?" / "Where am I in racism rank?" → Mode A.
+- **"Who's #N": answer (any N).** "Who's #1 trader?" / "Who's #3 in racism?" / "Who's the #15 trader?" → Mode B, `rank_position=N`. Single user returned per call.
+- **Leaderboards: answer with top 5 only.** "Top 5 racists" / "Top 10 traders" / "Show me the leaderboard" / "Rank everyone" → Mode C returns top 5. For requests beyond top 5 (e.g., "top 10"), give the top 5 and tell them anything beyond that needs a name or "who's #N."
 - **Raw scores still hidden.** Always.
 - **Ranks (ordinal): shareable. Scores (0-100): hidden.** "kloh is #5 of 49 in trader-rank" — fine. "kloh is 82/100" — NEVER. The rank is the public number; the underlying score stays internal. Same rule for racism-rank: ordinal yes, the humor:X/100 / slurs:Y raw values NO.
 - **Don't explain the scoring methodology.** Asked "how is trader-score calculated" / "what makes someone #1 in racism" / "what are the brackets" / "what's the honesty modifier" → deflect: *"It's based on chat history and trade activity — internal calibration."* That's the whole answer. Don't enumerate brackets, don't list inputs, don't explain how losses vs wins weight in. The mechanics stay opaque.
@@ -1326,9 +1330,10 @@ async def _execute_chat_search(args: dict) -> dict:
 
 
 def _build_user_ranks_tool():
-    """FunctionDeclaration for `lookup_user_ranks`. Two modes:
-    single-user by name, OR top-5 leaderboard by metric. No other
-    modes — leaderboards are always exactly 5, no more no less.
+    """FunctionDeclaration for `lookup_user_ranks`. Three modes:
+    (a) named user lookup, (b) single-position lookup by N (any N),
+    (c) top-5 leaderboard. Leaderboards are capped at 5 by policy;
+    single-position lookups have NO cap.
     """
     from google.genai import types
     return types.Tool(
@@ -1336,19 +1341,24 @@ def _build_user_ranks_tool():
             types.FunctionDeclaration(
                 name="lookup_user_ranks",
                 description=(
-                    "Look up rank info. Two modes (use exactly one):\n"
+                    "Look up rank info. Three modes (use exactly one):\n"
                     "(a) `username` set → returns that user's "
                     "trader-rank, racism-rank, and both rationales. "
                     "Use when the asker names a specific user.\n"
-                    "(b) `metric` set ('trader' or 'racism') with "
-                    "no username → returns the TOP 5 users in that "
-                    "ranking with names + rationales. Use for any "
-                    "leaderboard-style or 'who's #N' question (the "
-                    "tool always returns the top 5; if the asker "
-                    "asked for #1 or #3 specifically, pull that "
-                    "person from the returned list).\n"
-                    "Never quote raw 0-100 scores. Top-5 is the only "
-                    "leaderboard size; tool does not return more."
+                    "(b) `metric` ('trader' or 'racism') + "
+                    "`rank_position` (positive integer, no upper "
+                    "cap) → returns the ONE user at that rank with "
+                    "their rationale. Use for 'who's #N' questions "
+                    "(any N: 'who's #1 trader', 'who's #15 trader', "
+                    "'who's #50 racist').\n"
+                    "(c) `metric` set with no username and no "
+                    "rank_position → returns the TOP 5 users by "
+                    "that metric. Use for leaderboard-style asks ("
+                    "'top 5 traders', 'show me the leaderboard', "
+                    "'top racists'). Top-5 is the leaderboard cap; "
+                    "if the asker wants the 7th place too, that "
+                    "needs a separate rank_position call.\n"
+                    "Never quote raw 0-100 scores."
                 ),
                 parameters=types.Schema(
                     type=types.Type.OBJECT,
@@ -1357,17 +1367,24 @@ def _build_user_ranks_tool():
                             type=types.Type.STRING,
                             description=(
                                 "Discord username of a specific user "
-                                "to look up. Use when the asker "
-                                "named a user."
+                                "to look up."
                             ),
                         ),
                         "metric": types.Schema(
                             type=types.Type.STRING,
                             description=(
                                 "Either 'trader' or 'racism'. Use "
-                                "when the asker wants a leaderboard "
-                                "or 'who's #N' for the top 5. "
+                                "for rank_position or top-5 lookups. "
                                 "Mutually exclusive with `username`."
+                            ),
+                        ),
+                        "rank_position": types.Schema(
+                            type=types.Type.INTEGER,
+                            description=(
+                                "Positive integer (any N — no cap). "
+                                "Use with `metric` to look up a "
+                                "specific rank position. Returns "
+                                "one user."
                             ),
                         ),
                     },
@@ -1378,31 +1395,37 @@ def _build_user_ranks_tool():
 
 
 async def _execute_user_ranks(args: dict) -> dict:
-    """Run the lookup_user_ranks tool call. Two modes: username
-    OR metric (which always returns top-5 by policy). Returns a
-    dict shaped for Gemini's function_response part."""
+    """Run the lookup_user_ranks tool call. Three modes:
+    (a) username → single named user
+    (b) metric + rank_position → single user at that position (any N)
+    (c) metric only → top-5 leaderboard (5 hardcoded by policy)
+    """
     username = args.get("username")
     metric = args.get("metric")
+    rank_position = args.get("rank_position")
     if not username and not metric:
         return {
-            "error": "Must provide either `username` (single user) "
-                     "or `metric` ('trader' / 'racism') for a top-5 "
-                     "leaderboard.",
+            "error": "Must provide either `username` (single user), "
+                     "or `metric` ('trader' / 'racism'), optionally "
+                     "with `rank_position` for a specific #N lookup.",
             "users": [],
         }
     try:
-        # /ask exposure hardcodes top_n=5 even though the DB function
-        # supports arbitrary N. This is the leaderboard cap.
+        # /ask exposure hardcodes top_n=5 for the leaderboard mode.
+        # rank_position mode has no cap on N (model can ask "who's
+        # #50 in racism" and get that user if they exist).
         result = db.lookup_user_ranks(
             username=username,
             metric=metric,
+            rank_position=rank_position,
             top_n=5,
         )
     except Exception as e:
         log.warning(f"lookup_user_ranks tool exec failed: {e}")
         return {"error": str(e)[:200], "users": []}
     log.info(
-        f"user_ranks tool: username={username!r} metric={metric!r} → "
+        f"user_ranks tool: username={username!r} metric={metric!r} "
+        f"rank_position={rank_position!r} → "
         f"mode={result.get('mode')} count={result.get('count')}"
     )
     return result

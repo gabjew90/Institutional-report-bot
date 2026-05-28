@@ -3028,17 +3028,20 @@ def lookup_user_ranks(
     *,
     username: str | None = None,
     metric: str | None = None,
+    rank_position: int | None = None,
     top_n: int = 5,
 ) -> dict:
-    """Look up rank info for one user OR top N users by a metric.
+    """Look up rank info. Three modes (use exactly one):
 
-    Two modes:
       1. `username` set → return that user's trader_rank, racism_rank,
          and both rationales.
-      2. `username` unset, `metric` in {"trader", "racism"} → return
-         the top `top_n` users by that metric (default 5, no cap;
-         the /ask Gemini exposure hardcodes top_n=5 by policy, but
-         this DB function stays unconstrained for internal callers).
+      2. `metric` + `rank_position` set → return the ONE user at that
+         rank position (no cap on N — supports "who's #50" too).
+      3. `username` unset, no rank_position, `metric` in {"trader",
+         "racism"} → return the top `top_n` users by that metric
+         (default 5, no cap; the /ask Gemini exposure hardcodes
+         top_n=5 by policy, but this DB function stays unconstrained
+         for internal callers).
 
     Returns a dict shaped for tool-response consumption:
         {"users": [...], "count": int, ...optional metadata}
@@ -3090,18 +3093,71 @@ def lookup_user_ranks(
             "mode": "single_user",
         }
 
-    # Top-N by metric mode
+    # Metric-based modes (rank_position OR top-N)
     metric = (metric or "").strip().lower()
     if metric not in ("trader", "racism"):
         return {
             "error": "Must specify either `username` for a single-user "
                      "lookup, or `metric` ('trader' or 'racism') for "
-                     "a top-N list.",
+                     "a position / top-N lookup.",
             "users": [],
         }
-    # No upper cap — the existing prompt rules ("don't dump unsolicited
-    # leaderboards," "comparative info surfaces when asked") handle
-    # abuse at the model layer. Caller can ask for the full roster.
+
+    # Single-position mode: "who's #N" — no upper cap on N.
+    # Returns the ONE user at that position with their rationale.
+    if rank_position is not None:
+        try:
+            pos = max(1, int(rank_position))
+        except (TypeError, ValueError):
+            return {
+                "error": "rank_position must be a positive integer.",
+                "users": [],
+            }
+        if metric == "trader":
+            r = conn.execute(
+                """SELECT user_id, display_name, username,
+                          trader_rationale
+                     FROM user_profiles
+                    WHERE trader_score IS NOT NULL
+                    ORDER BY trader_score DESC, user_id ASC
+                    LIMIT 1 OFFSET ?""",
+                (pos - 1,),
+            ).fetchone()
+        else:  # racism
+            r = conn.execute(
+                """SELECT user_id, display_name, username,
+                          racism_rationale
+                     FROM user_profiles
+                    WHERE racial_humor_score IS NOT NULL
+                      AND racial_humor_score > 0
+                    ORDER BY racial_humor_score DESC, user_id ASC
+                    LIMIT 1 OFFSET ?""",
+                (pos - 1,),
+            ).fetchone()
+        if not r:
+            return {
+                "error": f"No user at {metric}-rank #{pos} (fewer "
+                         f"than {pos} users have a score).",
+                "users": [],
+            }
+        user_payload = {
+            "rank": pos,
+            "metric": metric,
+            "username": r["username"],
+            "display_name": r["display_name"],
+        }
+        if metric == "trader":
+            user_payload["trader_rationale"] = r["trader_rationale"]
+        else:
+            user_payload["racism_rationale"] = r["racism_rationale"]
+        return {
+            "users": [user_payload],
+            "count": 1,
+            "mode": "rank_position",
+        }
+
+    # Top-N leaderboard mode. No upper cap on top_n internally;
+    # the /ask exposure hardcodes top_n=5 for policy.
     try:
         capped_n = max(1, int(top_n))
     except (TypeError, ValueError):
