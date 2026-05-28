@@ -396,6 +396,8 @@ What it covers: (a) the evidence gate — which PATH (alert posts / closed-P&L l
 
 **Hard rule.** The bracketed slots are placeholders. Fill each with content sourced from the actual MESSAGES + analyst_trades + points ledger for THIS user. NEVER copy the example point counts, win-loss ratios, or framing across to a different user — same ATTRIBUTION RULE that governs Voice / Retarded takes.
 
+**Receipt-points hard rule (BINDING — anti-hallucination):** The receipt-point number in the rationale MUST match the `TOTAL RECEIPT POINTS:` value in the 14-DAY POINTS LEDGER block above. Do NOT cite a higher number because the user's chat mentions a great trade that isn't in analyst_trades. A win you remember from chat doesn't count as a documented receipt; only the ledger total counts. If the ledger total is 0, write "0 receipt points" in the rationale and let the chatter base + honesty modifier carry the score. Calling a chat-claimed trade "documented" when there's no analyst_trades row for it is the failure mode this rule blocks.
+
 **Anti-patterns:**
 - *"Demonstrates strong macro awareness and active trade management."* (corporate)
 - *"Mixed execution with some good moments and some bad."* (generic)
@@ -491,7 +493,16 @@ The 14-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the (cl
 
 **Decay mechanism (rolling 14-day window):** The ledger only sees trades posted within the last 14 days. Older rows stay in the DB (never deleted by scoring) but stop generating points. If last week's 35 points were 28 wins-and-closes that aged out, this week's ledger picks up whatever this week posted instead. The score recomputes from scratch every refresh.
 
-The receipt points are the user's actual ledger total — no further mapping. A user with 22 points adds 22 to their (clipped) chatter base. The final caps at 100.
+**RECEIPT POINTS = TOTAL RECEIPT POINTS FROM THE LEDGER BLOCK, VERBATIM. NO INFERENCE.**
+
+This is the single most important rule on the receipts layer. The `TOTAL RECEIPT POINTS:` value in the 14-DAY POINTS LEDGER block above is the ONLY number you may use as the receipt contribution. Specifically:
+
+- If the ledger shows `TOTAL RECEIPT POINTS: 0`, the receipt contribution is **0**. Final score = chatter base + honesty modifier (clipped at 50). Do NOT invent points based on chat-claimed trades, casual P&L brags, alert-channel posts mentioned in chat but not extracted into analyst_trades, "documented" trades you remember from MESSAGES, or any other source. The structured ledger IS the source of truth.
+- If the ledger shows `TOTAL RECEIPT POINTS: 14`, the receipt contribution is **14**. Not 20 because the chat mentions more trades. Not 8 because some of the wins look small. **14**.
+- A trade mentioned in the user's chat but NOT in the structured ledger means OCR didn't extract it or the watcher didn't process it. That's a pipeline gap, NOT a license to credit the trade in the score. Note the trade in Recent trades section (sourced from analyst_trades + chat), but do NOT add fictional points for it.
+- The failure mode this rule blocks: model reads chat, sees "I closed BTC short for +210%," infers that's worth ~40 points, adds it on top of chatter base, produces a final score 30-50 points higher than the user actually earned. That's hallucination — the chat claim is not a receipt; only an analyst_trades row is a receipt.
+
+If you find yourself wanting to inflate receipt points above the ledger total because "the chat clearly shows trades that aren't in the ledger," STOP. The ledger value stands. Lower the chatter base if you must to reflect the trader's true skill — but receipts are the ledger total, full stop.
 
 **Final score = min(100, clip(chatter_base + honesty, 50) + receipt_points).**
 
