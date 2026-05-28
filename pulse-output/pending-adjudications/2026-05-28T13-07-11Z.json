@@ -1,0 +1,141 @@
+{
+  "pulse_date": "2026-05-28",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai capex super cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 6
+      },
+      "consensus_view": "Banks broadly agree the AI capital-spending wave is still accelerating, with hyperscaler budgets revised sharply higher, though one desk flags rising capex as a margin risk for cloud-software names.",
+      "facts_agreed": [
+        {
+          "claim": "The AI capex cycle is a large, still-underestimated theme that banks remain constructive on.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Barclays"
+          ],
+          "evidence_quotes": [
+            "this is a monumental theme that has been consistently underestimated in magnitude",
+            "The EM Strategy team stays with the momentum in the AI hardware space",
+            "liquid cooling is becoming missioncritical"
+          ]
+        },
+        {
+          "claim": "Hyperscaler and Chinese-platform AI capex estimates keep getting revised higher.",
+          "banks_for": [
+            "Barclays",
+            "Goldman Sachs",
+            "Morgan Stanley",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "US hyperscaler capex acceleration",
+            "ByteDance AI capex push",
+            "tech capex inflationary dynamics",
+            "AI capex super-cycle"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether rising AI-related capex is a clean positive or a margin risk for software/cloud names.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Barclays"
+          ],
+          "for_evidence": "this is a monumental theme that has been consistently underestimated in magnitude",
+          "banks_against": [
+            "Barclays"
+          ],
+          "against_evidence": "two cloud security companies have raised capex guides"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait disruption",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three banks flag Strait of Hormuz disruption as a live oil-and-shipping catalyst, with prediction markets pricing 61% odds of traffic returning to normal by end of July, but none have staked a directional view.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, JPMorgan, and Morgan Stanley all flag Strait of Hormuz disruption as a current shipping and energy-flow concern.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz disruption",
+            "Strait of Hormuz energy flow disruption",
+            "Strait of Hormuz traffic normalization",
+            "Strait of Hormuz shipping constraints"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran deal macro impact",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 3
+      },
+      "consensus_view": "Banks reference US-Iran deal negotiations as a live macro catalyst, but only JPMorgan stakes a view, pushing back on the simple deal-equals-lower-oil-and-inflation narrative as too clean.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the US-Iran deal as an active negotiation thread shaping the near-term macro setup.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs",
+            "ING"
+          ],
+          "evidence_quotes": [
+            "US-Iran deal negotiations",
+            "US-Iran peace deal uncertainty",
+            "US-Iran interim deal framework"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb policy tightening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Goldman expects the ECB to keep raising rates cautiously, with two quarter-point hikes pencilled in for June and September because tighter lending conditions are already slowing the economy.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman forecasts 25 basis point ECB hikes in June and September, framing the path as cautious given tighter financial conditions.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "consistent with our forecast for 25bp hikes in June and September"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
