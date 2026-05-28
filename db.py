@@ -3515,9 +3515,13 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
         +2 — Entry posted, no close in the window. Treated as a
              ghost: the position is assumed a total loss, which
              applies a −1 penalty against the entry's +3 (net +2).
-             This penalizes posting entries and never resolving them.
-        +1 — Standalone close-only / P&L screenshot (no matching entry
-             in the window) — receipt of an outcome without commitment.
+        +2 — Standalone close-only P&L screenshot showing a WIN
+             (gain_pct > 0). No entry commitment but a documented
+             winning outcome.
+        +1 — Standalone close-only P&L screenshot showing a LOSS
+             (gain_pct ≤ 0). The weakest receipt form — no commitment,
+             negative outcome — but still worth +1 for being honest
+             enough to post the red card.
 
     Note: the 7-day window provides the decay mechanism — old trades
     fall off the back automatically. An entry from 8 days ago is gone
@@ -3531,12 +3535,13 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
 
     Returns:
         {
-            "points": int,            # total
+            "points": int,                # total
             "window_days": int,
-            "entries_won": int,       # +5 each (entry + winning close)
-            "entries_lost": int,      # +3 each (entry + losing close)
-            "entries_ghosted": int,   # +2 each (entry, no close in window)
-            "screenshots": int,       # +1 each (close-only, no entry)
+            "entries_won": int,           # +5 each (entry + winning close)
+            "entries_lost": int,          # +3 each (entry + losing close)
+            "entries_ghosted": int,       # +2 each (entry, no close in window)
+            "screenshot_wins": int,       # +2 each (close-only, gain > 0)
+            "screenshot_losses": int,     # +1 each (close-only, gain ≤ 0)
             "breakdown": list[dict],
         }
     """
@@ -3547,7 +3552,8 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
             "entries_won": 0,
             "entries_lost": 0,
             "entries_ghosted": 0,
-            "screenshots": 0,
+            "screenshot_wins": 0,
+            "screenshot_losses": 0,
             "breakdown": [],
         }
     cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
@@ -3576,7 +3582,8 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
     entries_won = 0
     entries_lost = 0
     entries_ghosted = 0
-    screenshots = 0
+    screenshot_wins = 0
+    screenshot_losses = 0
     breakdown: list[dict] = []
 
     for key, events in groups.items():
@@ -3632,19 +3639,38 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
                 })
         elif closes and not opens:
             # Close-only / standalone P&L screenshot (no entry in window)
-            screenshots += 1
-            breakdown.append({
-                "kind": "close-only / screenshot",
-                "points": 1,
-                "ticker": key[0],
-            })
+            # Split on outcome: winning screenshot = +2, losing = +1.
+            # Use the LATEST close in the window for the outcome read.
+            latest_close = sorted(closes, key=lambda x: x["posted_at"])[-1]
+            g = latest_close.get("gain_pct")
+            try:
+                gv = float(g) if g is not None else None
+            except (TypeError, ValueError):
+                gv = None
+            if gv is not None and gv > 0:
+                screenshot_wins += 1
+                breakdown.append({
+                    "kind": "screenshot win (close-only, +2)",
+                    "points": 2,
+                    "ticker": key[0],
+                    "gain_pct": gv,
+                })
+            else:
+                screenshot_losses += 1
+                breakdown.append({
+                    "kind": "screenshot loss (close-only, +1)",
+                    "points": 1,
+                    "ticker": key[0],
+                    "gain_pct": gv,
+                })
         # Else: only trims / viewings — no points
 
     total_points = (
         entries_won * 5
         + entries_lost * 3
         + entries_ghosted * 2
-        + screenshots * 1
+        + screenshot_wins * 2
+        + screenshot_losses * 1
     )
     return {
         "points": total_points,
@@ -3652,7 +3678,8 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
         "entries_won": entries_won,
         "entries_lost": entries_lost,
         "entries_ghosted": entries_ghosted,
-        "screenshots": screenshots,
+        "screenshot_wins": screenshot_wins,
+        "screenshot_losses": screenshot_losses,
         "breakdown": breakdown,
     }
 

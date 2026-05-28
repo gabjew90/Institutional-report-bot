@@ -485,7 +485,8 @@ The 7-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the chat
 - **+5 if the position later closes for a gain in the window** (the +3 upgrades to +5; net +2 win bonus).
 - **+3 if the position closes for a loss in the window** (no upgrade; commitment was real, the loss doesn't subtract).
 - **+2 if the position never closes in the window** (ghost penalty: −1 against the +3 entry award). Posting an entry and never resolving it is worse than posting any close — even a losing one — because the room can't tell what happened. The 7-day rolling window decays automatically; an entry from 8 days ago is gone, an entry from 6 days ago that hasn't closed yet scores +2.
-- **+1 per standalone close-only screenshot** (P&L card without an entry commitment).
+- **+2 per standalone winning screenshot** (close-only P&L card with gain > 0 and no matching entry commitment in the window).
+- **+1 per standalone losing screenshot** (close-only P&L card with gain ≤ 0). The weakest receipt — no commitment, negative outcome — but still credited for the honest red post.
 
 The receipt points are the user's actual ledger total — no further mapping. A user with 22 points adds 22 to their (clipped) chatter base. The final caps at 100.
 
@@ -790,8 +791,12 @@ def _format_points_block(user_id: int) -> str:
         f"  - Entry posted, NO close in window (ghosted: 3 − 1 = 2)  "
         f"({ledger['entries_ghosted']} × 2 pts)  =  "
         f"{ledger['entries_ghosted'] * 2} pts",
-        f"  - Standalone close-only / P&L screenshot (no entry)  "
-        f"({ledger['screenshots']} × 1 pt)   =  {ledger['screenshots']} pts",
+        f"  - Standalone WINNING screenshot (close-only, no entry)  "
+        f"({ledger['screenshot_wins']} × 2 pts)  =  "
+        f"{ledger['screenshot_wins'] * 2} pts",
+        f"  - Standalone LOSING screenshot (close-only, no entry)   "
+        f"({ledger['screenshot_losses']} × 1 pt)   =  "
+        f"{ledger['screenshot_losses']} pts",
         f"",
         f"TOTAL RECEIPT POINTS: {ledger['points']}",
         f"",
@@ -799,7 +804,8 @@ def _format_points_block(user_id: int) -> str:
         f" same position closes for a gain. Stays at +3 if it closes"
         f" for a loss. Drops to +2 if it never closes — the ghost"
         f" penalty assumes an unclosed entry is a total loss. Posting"
-        f" the close — even a losing one — is worth +1 vs ghosting it.)",
+        f" a winning P&L screenshot without an entry commitment is +2;"
+        f" a losing P&L screenshot without commitment is +1.)",
         f"",
         f"(Receipt points add ON TOP of the chatter base. Final score ="
         f" min(100, clip(chatter_base + honesty, 65) + receipt_points)."
