@@ -3605,9 +3605,21 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
             e for e in events
             if (e["action"] or "").lower() in ("open", "add")
         ]
+        # Trims with a gain_pct are profit-realization events on the
+        # position — semantically equivalent to a close for points
+        # purposes ("Trimmed 30%, +3k realized" IS a documented
+        # realization). Group them with closes so an entry+trim+win
+        # counts the same as an entry+close+win, and a standalone
+        # winning trim screenshot scores like a winning close
+        # screenshot. Trims without a gain_pct (size-management only,
+        # no realized P&L visible) stay neutral.
         closes = [
             e for e in events
             if (e["action"] or "").lower() == "close"
+            or (
+                (e["action"] or "").lower() == "trim"
+                and e.get("gain_pct") is not None
+            )
         ]
 
         if opens:
