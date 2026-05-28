@@ -123,7 +123,7 @@ Per-section quick reference, all following the universal rule:
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned.
 - **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 14-day points ledger is decayed automatically — entries / closes from 15+ days ago stop scoring, only the last two weeks' commitments count. The final = `min(100, clip(chatter_base + honesty, 50) + receipt_points)`. If two weeks ago the user posted 8 entries that closed for wins (40 points), and now those have aged out and this period they posted 2 (10 points), the score drops accordingly. That's the decay mechanism working as designed.
-- **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter description / honesty modifier prose / receipts described qualitatively), but the prose re-derives every time. Don't carry forward stale framings from a prior refresh. The rationale is QUALITATIVE — no numbers (no point counts, no score values, no win/loss counts). See the trader_rationale spec for the no-numbers rule.
+- **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter description / receipts described qualitatively), but the prose re-derives every time. Don't carry forward stale framings from a prior refresh. The rationale is QUALITATIVE — no numbers (no point counts, no score values, no win/loss counts). See the trader_rationale spec for the no-numbers rule.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly.
 
@@ -365,12 +365,11 @@ Don't invent OCR content. Only cite what's actually in the `[image-OCR: ...]` bl
 
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
-Output a single JSON object with exactly six fields, IN THIS ORDER:
+Output a single JSON object with exactly five fields, IN THIS ORDER:
 
 ```
 {{
   "chatter_base": <integer 0-50, your chatter-bracket placement>,
-  "honesty_modifier": <integer -10 to +10>,
   "racial_humor_score": <integer 0-100>,
   "trader_rationale": "<3-5 SAVAGE-BUT-HILARIOUS sentences, see below>",
   "racism_rationale": "<3-5 SAVAGE-BUT-HILARIOUS sentences, see below>",
@@ -378,7 +377,7 @@ Output a single JSON object with exactly six fields, IN THIS ORDER:
 }}
 ```
 
-**You do NOT output a `trader_score`.** Python computes it deterministically downstream as `min(100, clip(chatter_base + honesty_modifier, 50) + receipt_points)`, where `receipt_points` is the exact `TOTAL RECEIPT POINTS:` value from the 14-DAY POINTS LEDGER block — not anything you judge or infer. Your job is ONLY the chatter read and the honesty modifier. The receipt side is arithmetic, and Python does it.
+**You do NOT output a `trader_score`.** Python computes it deterministically downstream as `min(100, min(50, chatter_base) + receipt_points)`, where `receipt_points` is the exact `TOTAL RECEIPT POINTS:` value from the 14-DAY POINTS LEDGER block — not anything you judge or infer. Your job is ONLY the chatter read. The receipt side is arithmetic, and Python does it.
 
 **Why this matters**: an earlier version of the prompt asked Gemini for the final `trader_score`, which produced a hallucination class — model would read the chat, see chat-claimed trades NOT in the structured ledger ("closed BTC short +50%" etc.), invent 30-40 receipt points for them, and inflate the score by that amount. The new schema makes the failure structurally impossible — Gemini only outputs the chatter judgment; receipts are computed from the deterministic ledger.
 
@@ -390,16 +389,16 @@ Both `trader_rationale` and `racism_rationale` are short summary blocks that get
 
 ### `trader_rationale` (3-5 sentences, ~400-900 chars)
 
-What it covers: (a) the chatter base bracket you placed them in (0-25 / 25-40 / 40-50) and the chat-evidence that drove it, (b) the honesty modifier if applied and why, (c) the receipts contribution described **qualitatively, NOT with numbers** ("a clean stream of entry-and-close pairs lifting him further" / "sparse receipts" / "no documented receipts in the window"), (d) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Reference specific receipts from the ledger by ticker + outcome shape (e.g. "the documented NVDA call that closed +220%"), but never quote the point value, point total, or any numeric score component.
+What it covers: (a) the chatter base bracket you placed them in (0-25 / 25-40 / 40-50) and the chat-evidence that drove it, including how the trader handles losses (self-awareness, gloat-loud / complain-vague asymmetry, tilt patterns — all baked into the bracket directly), (b) the receipts contribution described **qualitatively, NOT with numbers** ("a clean stream of entry-and-close pairs lifting him further" / "sparse receipts" / "no documented receipts in the window"), (c) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Reference specific receipts from the ledger by ticker + outcome shape (e.g. "the documented NVDA call that closed +220%"), but never quote the point value, point total, or any numeric score component.
 
-**No numeric score components in the rationale.** Specifically NEVER write phrases like "35 receipt points," "chatter base of 22," "final 78," "honesty modifier of −5," or any other number that maps to internal scoring. The rationale describes the SHAPE of the read in qualitative prose. Python computes the score deterministically downstream; users see the rank + this rationale prose, never the raw 0-100 final or any sub-component. Numbers in the rationale = raw-score leak.
+**No numeric score components in the rationale.** Specifically NEVER write phrases like "35 receipt points," "chatter base of 22," "final 78," or any other number that maps to internal scoring. The rationale describes the SHAPE of the read in qualitative prose. Python computes the score deterministically downstream; users see the rank + this rationale prose, never the raw 0-100 final or any sub-component. Numbers in the rationale = raw-score leak.
 
 **Good shapes** (use as structural templates — the bracketed slots are filled from this user's actual evidence, NEVER copied as-is):
 
-- *Sharp talker, no receipts:* "Chat reads sharp on the macro side — `[chat-evidence: macro takes that land, conviction calibration, owns losses cleanly, no obvious tilt]`. `[+/-N honesty modifier reasoning in plain prose: 'cleanly owns misses' or 'gloat-loud / complain-vague asymmetry']`. No documented receipts in the window — the room hasn't seen him commit a single entry through the alert channels, so the chatter is taking it on faith. Talks a strong game; nothing certifies it yet."
-- *Average joe with some receipts:* "Chat reads middle-of-pack — `[chat-evidence: sells winners early, lukewarm conviction, follows the room when it pivots]`. `[Honesty modifier reasoning if any]`. A handful of receipts in the window — `[describe shape: 'a couple of clean entry-and-close pairs on the spot side,' 'mostly screenshot-only without commitments,' etc.]` — but the chatter pattern doesn't certify real edge."
-- *Bag holder:* "Chat reads bag-holder: `[chat-evidence: panic exits, sizing up to recover, tilt cycles visible, complaining about closed bags]`. `[Honesty modifier — usually penalty for gloat-loud / complain-vague asymmetry]`. `[Describe receipts qualitatively: 'a stack of entries that mostly ghosted out without resolution,' 'a few losing screenshots,' 'no posts at all,' etc.]`. The receipts can't lift him out of the bag-holder zone when the chatter says he's tilting."
-- *Heavy poster, sharp by both layers:* "Chat reads sharp — `[chat-evidence: clean reads, repeatable framework, room tails the calls, owns misses without crisis]`. `[+honesty modifier + reason]`. A steady stream of receipts in the window — `[describe shape: 'documented wins on $X and $Y plus the bagged $Z closed publicly,' 'consistent entry-and-close cadence in member-alerts,' etc.]`. Both layers stacking is what puts him near the top."
+- *Sharp talker, no receipts:* "Chat reads sharp on the macro side — `[chat-evidence: macro takes that land, conviction calibration, owns losses cleanly, no obvious tilt]`. No documented receipts in the window — the room hasn't seen him commit a single entry through the alert channels, so the chatter is taking it on faith. Talks a strong game; nothing certifies it yet."
+- *Average joe with some receipts:* "Chat reads middle-of-pack — `[chat-evidence: sells winners early, lukewarm conviction, follows the room when it pivots]`. A handful of receipts in the window — `[describe shape: 'a couple of clean entry-and-close pairs on the spot side,' 'mostly screenshot-only without commitments,' etc.]` — but the chatter pattern doesn't certify real edge."
+- *Bag holder:* "Chat reads bag-holder: `[chat-evidence: panic exits, sizing up to recover, tilt cycles visible, complaining about closed bags, gloat-loud / complain-vague asymmetry if visible]`. `[Describe receipts qualitatively: 'a stack of entries that mostly ghosted out without resolution,' 'a few losing screenshots,' 'no posts at all,' etc.]`. The receipts can't lift him out of the bag-holder zone when the chatter says he's tilting."
+- *Heavy poster, sharp by both layers:* "Chat reads sharp — `[chat-evidence: clean reads, repeatable framework, room tails the calls, owns misses without crisis]`. A steady stream of receipts in the window — `[describe shape: 'documented wins on $X and $Y plus the bagged $Z closed publicly,' 'consistent entry-and-close cadence in member-alerts,' etc.]`. Both layers stacking is what puts him near the top."
 
 **Hard rule on the slots.** The bracketed slots are placeholders. Fill each with content sourced from the actual MESSAGES + analyst_trades + points ledger for THIS user. NEVER copy the example framing or trade descriptions across to a different user — same ATTRIBUTION RULE that governs Voice / Retarded takes.
 
@@ -469,7 +468,7 @@ If a section genuinely has no signal (user is a near-lurker with no slurs / no t
 Two layers, ADDED together. Chatter caps at 50; receipts add on top with no cap of their own. The final still caps at 100, but the chatter ceiling at 50 leaves at least 50 points of room above for receipts to fill — that's the entire point of certifying through posts.
 
 ```
-final_score = min(100, chatter_base + honesty_modifier + receipt_points)
+final_score = min(100, min(50, chatter_base) + receipt_points)
 ```
 
 **Layer 1 — Chatter base (0-50, calibrated from MESSAGES below).**
@@ -480,11 +479,9 @@ Read the user's actual chat and place them in one of three bands. **Chatter caps
 - **25-40 — Average joes.** Sell winners too early, hold losers too long, coin-flip outcomes over time. Follow the crowd more than they lead. Some self-awareness but doesn't translate to execution. The "talks the right setups, fades them" pattern. Lukewarm conviction; pivots when the room pivots.
 - **40-50 — Talks a good game.** Sharp reads, owns losses cleanly, calibrated conviction language, reasonable risk management talk, no obvious tilt cycle. Seems to win. Chat alone is consistent with real edge — but with no receipts, the room can't certify it. The "sounds like an actually-good trader, hasn't proven it" bracket.
 
-**Honesty modifier (±10) on the chatter base.** Adjusts before the receipt add:
-- **+3 to +5:** Self-aware about losses, owns misses without crisis language, doesn't bury bad trades.
-- **−5 to −10:** Gloat-loud / complain-vague asymmetry — loud about wins, evasive about losses. Bag-holding language elsewhere while talking sharp in chat. Visible deception drags the chatter base down.
+The chatter base IS the chat signal — it already reflects self-awareness, tilt patterns, gloat-loud / complain-vague asymmetry, and honesty in how the trader handles losses. Bake those into your chatter bracket placement directly: a gloating bag-holder who buries losses lands lower in 0-25; a self-aware mid-trader who owns misses cleanly lands higher in 25-40. No separate modifier — the bracket already does that work.
 
-After the honesty modifier, **clip chatter base + honesty at 50**. The cap is hard.
+Final clip: **chatter base never exceeds 50**, regardless of which bracket signal pulled you. The cap is hard.
 
 **Layer 2 — Receipt points (additive, from the 14-day ledger above; unbounded above on its own — the only ceiling is the final 100 cap).**
 
@@ -504,7 +501,7 @@ The 14-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the (cl
 
 This is the single most important rule on the receipts layer. The `TOTAL RECEIPT POINTS:` value in the 14-DAY POINTS LEDGER block above is the ONLY number you may use as the receipt contribution. Specifically:
 
-- If the ledger shows `TOTAL RECEIPT POINTS: 0`, the receipt contribution is **0**. Final score = chatter base + honesty modifier (clipped at 50). Do NOT invent points based on chat-claimed trades, casual P&L brags, alert-channel posts mentioned in chat but not extracted into analyst_trades, "documented" trades you remember from MESSAGES, or any other source. The structured ledger IS the source of truth.
+- If the ledger shows `TOTAL RECEIPT POINTS: 0`, the receipt contribution is **0**. Final score = chatter base (clipped at 50). Do NOT invent points based on chat-claimed trades, casual P&L brags, alert-channel posts mentioned in chat but not extracted into analyst_trades, "documented" trades you remember from MESSAGES, or any other source. The structured ledger IS the source of truth.
 - If the ledger shows `TOTAL RECEIPT POINTS: 14`, the receipt contribution is **14**. Not 20 because the chat mentions more trades. Not 8 because some of the wins look small. **14**.
 - A trade mentioned in the user's chat but NOT in the structured ledger means OCR didn't extract it or the watcher didn't process it. That's a pipeline gap, NOT a license to credit the trade in the score. Note the trade in Recent trades section (sourced from analyst_trades + chat), but do NOT add fictional points for it.
 - The failure mode this rule blocks: model reads chat, sees "I closed BTC short for +210%," infers that's worth ~40 points, adds it on top of chatter base, produces a final score 30-50 points higher than the user actually earned. That's hallucination — the chat claim is not a receipt; only an analyst_trades row is a receipt.
@@ -521,9 +518,9 @@ Four populations the additive rubric reads correctly:
 - **Sharp trader with receipts.** Chatter 48 (clipped from 51 — sharp + clean) + 40 receipt points → 88. Both layers stacking. The 40-50 chatter band combined with sustained receipts is where edge is certified.
 - **Loud bag-holder with high post volume (BK pattern).** Chatter 22 (bag-holder pattern) + 35 receipt points → 57. Receipts lift them out of the bag-holder zone but only modestly — the lift is bounded by the receipt total he actually earned, NOT by an artificial ceiling. If he posts more wins, the score climbs further.
 
-State the reasoning in trader_rationale — 3 to 5 sentences. Cover (a) chatter bracket + what drove it, (b) honesty modifier if any, (c) receipt points from the ledger, (d) final number + the anchored examples that read the call. Example:
+State the reasoning in trader_rationale — 3 to 5 sentences, qualitative prose (no numbers). Cover (a) chatter bracket placement + what chat-evidence drove it (self-awareness about losses, gloat patterns, tilt cycles all factor into bracket selection directly), (b) receipts described qualitatively, (c) the anchored examples that read the call. Example:
 
-> "Chat reads bag-holder: 12k messages of confident takes but the actual outcomes visible in chat skew heavy on closed bags and complaining-vague-about-losses tilt cycles. Chatter base lands at 22 (active-loud bag-holder, not resigned). −3 honesty modifier for the gloat-loud / complain-vague asymmetry. Clipped at 50, so 19 stands. 35 receipt points from the entries he did post — commitment is real even when outcomes aren't. Final 54. Receipts lift him out of pure bag-holder territory, but the chatter base anchors him below the sharp-trader range."
+> "Chat reads bag-holder. The actual outcomes visible in chat skew heavy on closed bags and complaining-vague-about-losses tilt cycles. The gloat-loud / complain-vague asymmetry is visible — he names every winner with size, every loss gets a one-line shrug. Some documented entries did make it into the alert channels, which credits some receipt weight; but the chatter pattern anchors him well below the sharp-trader range."
 
 **trader_score = SKILL ONLY, not activity.** Volume in chat doesn't raise the score on its own; the brackets above describe behavioral quality. Activity is separately visible via the msg_count in the dossier header.
 
@@ -1118,28 +1115,27 @@ async def _generate_profile(
     ) -> tuple[
         str | None,  # profile_text
         int | None,  # chatter_base (clipped 0-50)
-        int | None,  # honesty_modifier (clipped -10..+10)
         str | None,  # trader_rationale
         int | None,  # racial_humor_score
         str | None,  # racism_rationale
     ]:
-        """Parse the JSON response. Returns the six fields or all-None
+        """Parse the JSON response. Returns the five fields or all-None
         on parse failure. Logs first 300 chars of the response on
         decode error so we can see what came back.
 
-        Caller responsibility: compute final trader_score from
-        chatter_base + honesty_modifier + db.compute_member_points()
-        result. This function does NOT compute the final score —
-        that's the whole point of the architectural change. Gemini's
-        only score output is the chatter judgment; the receipt
-        component comes from the deterministic ledger.
+        Caller responsibility: compute final trader_score as
+        min(100, min(50, chatter_base) + receipt_points) from
+        db.compute_member_points(). The honesty modifier was
+        removed — the chatter brackets bake in self-awareness /
+        gloat-loud-complain-vague-asymmetry / tilt-pattern signals
+        directly, no separate ±10 adjustment.
         """
         if not text:
             print(
                 f"  parse-failure for {display_name}: EMPTY response body",
                 flush=True,
             )
-            return None, None, None, None, None, None
+            return None, None, None, None, None
         try:
             data = json.loads(text)
             if not isinstance(data, dict):
@@ -1148,43 +1144,41 @@ async def _generate_profile(
                     f"type={type(data).__name__} text={text!r}",
                     flush=True,
                 )
-                return None, None, None, None, None, None
+                return None, None, None, None, None
             pt = (data.get("profile_text") or "").strip() or None
             cb = data.get("chatter_base")
-            hm = data.get("honesty_modifier")
             tr = (data.get("trader_rationale") or "").strip() or None
             rh = data.get("racial_humor_score")
             rcr = (data.get("racism_rationale") or "").strip() or None
-            # Backwards-compat: if Gemini emits the legacy trader_score
-            # field (e.g. during the schema-change rollout when the
-            # cached prompt instructs the old format), interpret it as
-            # the chatter_base + honesty_modifier sum and split it
-            # naively (no honesty if not provided).
+            # Backwards-compat for prompt-cache rollout: if Gemini emits
+            # the legacy trader_score field or the legacy honesty_modifier
+            # field (cached prompt instructing the old format), absorb
+            # into chatter_base via simple clamping. trader_score legacy
+            # → clamp to 0-50; honesty_modifier legacy → add to chatter
+            # then clamp.
             if cb is None and "trader_score" in data:
                 legacy = data.get("trader_score")
                 try:
                     cb = max(0, min(50, int(legacy))) if legacy is not None else None
-                    hm = 0 if hm is None else hm
                 except (TypeError, ValueError):
                     cb = None
+            legacy_hm = data.get("honesty_modifier")
+            if cb is not None and legacy_hm is not None:
+                try:
+                    cb = max(0, min(50, int(cb) + int(legacy_hm)))
+                except (TypeError, ValueError):
+                    pass
             if cb is not None:
                 try:
                     cb = max(0, min(50, int(cb)))
                 except (TypeError, ValueError):
                     cb = None
-            if hm is not None:
-                try:
-                    hm = max(-10, min(10, int(hm)))
-                except (TypeError, ValueError):
-                    hm = 0
-            else:
-                hm = 0  # default if Gemini omitted
             if rh is not None:
                 try:
                     rh = max(0, min(100, int(rh)))
                 except (TypeError, ValueError):
                     rh = None
-            return pt, cb, hm, tr, rh, rcr
+            return pt, cb, tr, rh, rcr
         except json.JSONDecodeError as e:
             preview = text[:300].replace("\n", " ")
             tail = text[-200:].replace("\n", " ") if len(text) > 500 else ""
@@ -1194,7 +1188,7 @@ async def _generate_profile(
                 f"HEAD={preview!r}" + (f" ...TAIL={tail!r}" if tail else ""),
                 flush=True,
             )
-            return None, None, None, None, None, None
+            return None, None, None, None, None
 
     # 16000 tokens of output headroom. Thinking models burn most of the
     # budget on internal reasoning we can't directly observe. At 8000
@@ -1266,16 +1260,18 @@ async def _generate_profile(
     _RESPONSE_SCHEMA = types.Schema(
         type=types.Type.OBJECT,
         properties={
-            # chatter_base + honesty_modifier replace the old single
-            # trader_score field. Gemini outputs only its qualitative
-            # judgment of the chat pattern; Python computes the final
-            # trader_score = min(100, clip(cb + honesty, 50) +
-            # receipt_points) downstream. This eliminates the receipt-
-            # point hallucination class — Gemini physically cannot
-            # output the receipt component because it's not in the
-            # schema.
+            # chatter_base replaces the old trader_score field. Gemini
+            # outputs only its qualitative chat-pattern judgment
+            # (0-50); Python computes the final trader_score as
+            # min(100, min(50, chatter_base) + receipt_points)
+            # downstream. The honesty modifier (a separate ±10 field
+            # in a prior schema) was folded into the chatter bracket
+            # placement — bag-holder / average / sharp brackets bake
+            # in self-awareness, gloat patterns, and tilt cycles
+            # directly. This eliminates the receipt hallucination
+            # class — Gemini physically cannot output the receipt
+            # component because it's not in the schema.
             "chatter_base": types.Schema(type=types.Type.INTEGER),
-            "honesty_modifier": types.Schema(type=types.Type.INTEGER),
             "racial_humor_score": types.Schema(type=types.Type.INTEGER),
             "trader_rationale": types.Schema(
                 type=types.Type.STRING,
@@ -1302,7 +1298,6 @@ async def _generate_profile(
         },
         required=[
             "chatter_base",
-            "honesty_modifier",
             "racial_humor_score",
             "trader_rationale",
             "racism_rationale",
@@ -1399,7 +1394,7 @@ async def _generate_profile(
 
     async def _attempt(temperature: float = 0.3) -> tuple[
         tuple[
-            str | None, int | None, int | None,
+            str | None, int | None,
             str | None, int | None, str | None,
         ],
         str | None,
@@ -1788,22 +1783,22 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                 print(f"    (failure-event write failed: {log_err})",
                                       flush=True)
                             continue
-                        profile, chatter_base, honesty_modifier, trader_rationale, racial_humor_score, racism_rationale = result
+                        profile, chatter_base, trader_rationale, racial_humor_score, racism_rationale = result
                         # Python-side deterministic final-score
                         # computation. Gemini outputs only the chatter
-                        # judgment; the receipt component comes from
-                        # the structured 14-day ledger (verified
-                        # impossible-to-hallucinate). This is the
-                        # whole point of the architectural change.
+                        # judgment (0-50); the receipt component comes
+                        # from the structured 14-day ledger (verified
+                        # impossible-to-hallucinate). Honesty modifier
+                        # was removed — the chatter brackets bake in
+                        # self-awareness / gloat patterns / tilt cycles
+                        # directly via bracket placement.
                         if chatter_base is not None:
                             try:
                                 _ledger = db.compute_member_points(uid, days=14)
                                 _receipt_pts = int(_ledger.get("points") or 0)
                             except Exception:
                                 _receipt_pts = 0
-                            _clipped_chatter = max(0, min(
-                                50, int(chatter_base) + int(honesty_modifier or 0)
-                            ))
+                            _clipped_chatter = max(0, min(50, int(chatter_base)))
                             trader_score = max(0, min(100, _clipped_chatter + _receipt_pts))
                         else:
                             trader_score = None
