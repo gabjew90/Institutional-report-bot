@@ -389,12 +389,12 @@ What it covers: (a) the evidence gate — which PATH (alert posts / closed-P&L l
 
 **Good shapes** (use as structural templates — the bracketed slots are filled from this user's actual evidence, NEVER copied as-is):
 
-- *High chatter base + receipts certify (cap doesn't bind, sits high):* "Chatter base reads `[X]` — `[the chat-evidence: macro reads, conviction calibration, how they handle losses, sizing language]`. `[+/-N honesty modifier if applied + reason — e.g. owns misses cleanly, or gloat-loud / complain-vague asymmetry]`. `[N points in 7-day ledger: M entry-wins + L entry-losses + K screenshots]` → ceiling `[Y]`, which `[binds / does not bind]` on the chatter base. Final lands at `[Z]`."
-- *Mid chatter base + cap binds at 65-75 (talks decent, no receipts):* "Chatter base reads `[X]` — `[the chat-evidence supporting a higher score]`. `[Honesty modifier reasoning]`. 0 points in the 7-day ledger → ceiling 65, which binds the score at 65 regardless of how the chat sounds. The room can't certify edge without receipts; even a sharp-chat read caps here until alerts or screenshots land."
-- *Low chatter base (cap doesn't bind, scored honestly from chat):* "Chatter base reads `[X in 0-59 range]` — `[the chat-evidence: bag-holding language, tilt cycles, copy-trading patterns, complaining about losses without owning them]`. `[Honesty modifier reasoning if applied]`. 0 points in the 7-day ledger → ceiling 65, but the cap doesn't bind because chatter base is already below it. Final lands at `[X]`."
-- *Heavy poster (full receipts, ceiling fully released):* "Chatter base reads `[X high]` — `[chat-evidence: repeatable framework, room tails the calls, clean post-mortems on misses]`. `[+honesty modifier + reason]`. `[N points in 7-day ledger]` → ceiling `[Y]` `(near 100)`. Final lands at `[Z]`, in the upper bracket because both the chatter read and the receipt cadence support it."
+- *Sharp talker, no receipts (50-65 chatter + 0 points):* "Chatter base reads `[X in 50-65]` — `[chat-evidence: sharp macro takes, conviction calibration, owns losses cleanly, no obvious tilt]`. `[+/-N honesty modifier + reason]`. 0 receipt points in the 7-day ledger. Final lands at `[chatter + honesty]`. Talks a strong game but the room can't certify edge without receipts."
+- *Average joe (35-50 chatter + some receipts):* "Chatter base reads `[X in 35-50]` — `[chat-evidence: sells winners early, lukewarm conviction, follows the room when it pivots]`. `[Honesty modifier reasoning if any]`. `[N receipt points: M wins + L unwon + K screenshots]`. Final lands at `[X + N]`. Receipts lift them but the chatter pattern doesn't certify edge."
+- *Bag holder (0-35 chatter, low or high receipts):* "Chatter base reads `[X in 0-35]` — `[chat-evidence: bag-holding language, tilt cycles, copy-trading, complaining about closed bags]`. `[Win rate ratio if BAG-HOLDER FLAG fired — e.g. 4W / 11L in the window]`. `[Honesty modifier if any — usually -5 to -10 for visible deception]`. `[N receipt points]`. Final lands at `[X + N]` — the receipt lift pulls them out of the 0-35 zone without certifying the chat as anything above bag-holder."
+- *Heavy poster, sharp by both layers (50-65 chatter + heavy receipts):* "Chatter base reads `[X in 50-65]` — `[chat-evidence: clean reads, repeatable framework, room tails the calls]`. `[Win rate ≥65% if STRONG-EDGE FLAG fired]`. `[+honesty modifier + reason]`. `[N receipt points]`. Final lands at `[X + N]`, in the upper bracket because both layers stack."
 
-**Hard rule.** The bracketed slots above are placeholders. Fill each with content sourced from the actual MESSAGES + analyst_trades + points ledger for THIS user. NEVER copy the example point counts, ceiling values, or framing across to a different user — same ATTRIBUTION RULE that governs Voice / Retarded takes.
+**Hard rule.** The bracketed slots are placeholders. Fill each with content sourced from the actual MESSAGES + analyst_trades + points ledger for THIS user. NEVER copy the example point counts, win-loss ratios, or framing across to a different user — same ATTRIBUTION RULE that governs Voice / Retarded takes.
 
 **Anti-patterns:**
 - *"Demonstrates strong macro awareness and active trade management."* (corporate)
@@ -455,68 +455,61 @@ If a section genuinely has no signal (user is a near-lurker with no slurs / no t
 
 **(trader_examples removed.)** Trade activity used to be a separate field — now it's folded into personal_ammo (for quotable single-line trade receipts) and the "Trash talk & life ammo" narrative section (for trade-anchored bits the room riffs on). Don't write a `trader_examples` field; the schema doesn't have one.
 
-**trader_score — CHATTER ESTIMATES, RECEIPTS CERTIFY.**
+**trader_score — CHATTER BASE (0-65) + RECEIPTS (additive).**
 
-The score has two layers that combine. Chatter sets a fair base read; receipts certify how high that base can be realized.
+Two layers, ADDED together. Chatter caps at 65; receipts are the only path past 65.
 
-**Layer 1 — Chatter base estimate (0-100, calibrated from MESSAGES below).**
+```
+final_score = min(100, chatter_base + honesty_modifier + receipt_points)
+```
 
-Read the user's actual chat and place a fair score for where they sit as a trader. This is NOT a floor; it's an honest provisional read of the trader you observe in chat. Calibrate against the bracket descriptions below — they describe the chatter-readable behavior the room would recognize:
+**Layer 1 — Chatter base (0-65, calibrated from MESSAGES below).**
 
-- **0-19:** Tail traffic / exit liquidity. Should not be trading at this size. Chat is constant pivots, no edge, copies whoever is loudest.
-- **20-39:** Bag holder. More losses than wins by chat-claim. Sizes up to recover. Visible tilt patterns. Chases the loudest voice in the room.
-- **40-59:** Net negative or barely flat. Knows the theory, leaks edge in execution. Often self-aware about the leaks but doesn't fix them. The "talks the right setups, fades them" pattern.
-- **60-74:** Sounds decent from chatter — reasonable reads, reasonable management language, no obvious tilt cycle. Could be a competent trader; the chat alone is consistent with edge but doesn't certify it.
-- **75-89:** Chat reads like an actually-good trader — sharp macro takes, calibrated conviction, owns misses cleanly, sustained quality across the window. The chatter base alone is high.
-- **90-100:** Chat reads like a top-of-room trader — repeatable framework, others openly tail, room books the calls. Rare; chatter alone rarely justifies this.
+Read the user's actual chat and place them in one of three bands. **Chatter caps at 65 absolutely — no matter how sharp someone sounds, the chat alone cannot push them above 65. Receipts are the certification.**
 
-**The structured WIN RATE in the points ledger above is chatter-base evidence, not just ceiling evidence.** A user can sound confident in 12,000 chat messages and still be a bag-holder if their actual win rate over the documented entries is low. The chat tone alone is not a reliable signal of trader quality when the trade outcomes contradict it.
+- **0-35 — Bag holders. Never win.** Chat is dominated by losses, panic exits, copy-trading whoever's loudest, bag-holding language, sizing up to recover. Tilt cycles visible. Calls go against them more often than not. The texture is "I'm down again" and "what's bouncing." Use the lower half for active-loud bag-holders, upper half for users where the bag is there but the tone is more resigned than panicked.
+- **35-50 — Average joes.** Sell winners too early, hold losers too long, coin-flip outcomes over time. Follow the crowd more than they lead. Some self-awareness but doesn't translate to execution. The "talks the right setups, fades them" pattern. Lukewarm conviction; pivots when the room pivots.
+- **50-65 — Talks a good game.** Sharp reads, owns losses cleanly, calibrated conviction language, reasonable risk management talk, no obvious tilt cycle. Seems to win. Chat alone is consistent with real edge — but with no receipts, the room can't certify it. The "sounds like an actually-good trader, hasn't proven it" bracket.
+
+**The structured WIN RATE in the points ledger above is direct chatter-base evidence.** When the chat sounds confident but the structured win rate over the documented entries is low, trust the receipts not the tone. A user with 12,000 confident-sounding chat messages and a 30% win rate over 15 decided entries is a bag-holder by evidence — drop them into the 0-35 bracket regardless of chat tone.
 
 Specifically:
-- **Win rate < 50% over ≥5 decided entries:** bag-holder signal. The chatter base MUST drop into 40-59 territory regardless of how the chat sounds. A loud bag-holder who posts every entry doesn't get the same chatter base as a quiet trader with a 70% win rate.
-- **Win rate ≥ 65% over ≥5 decided entries:** strong-edge signal. Chatter base should sit in 75-89 territory if the chat supports it. The receipt cadence + win rate certify edge that the chat tone alone could not.
-- **Fewer than 5 decided entries:** sample too small; read chatter base from chat tone + the available trade outcomes without anchoring hard on the ratio.
+- **Win rate < 50% over ≥5 decided entries:** bag-holder. Chatter base must land in 0-35.
+- **Win rate ≥ 65% over ≥5 decided entries:** strong-edge signal. Chatter base can land 50-65 if the chat supports it.
+- **Fewer than 5 decided entries:** sample too small to anchor on the ratio; read chatter base from chat tone + available outcomes.
 
-**Honesty modifier (±10) applies on the chatter layer.** Inflate or deflate the base read based on what the chat shows:
-- **+3 to +5:** Self-aware about losses; owns misses without crisis language; doesn't bury bad trades behind vague hedging.
-- **−5 to −10:** Gloat-loud / complain-vague asymmetry. Loud about wins, evasive about losses. Bag-holding language elsewhere while talking sharp in chat. Visible deception drags the base down.
+**Honesty modifier (±10) on the chatter base.** Adjusts before the receipt add:
+- **+3 to +5:** Self-aware about losses, owns misses without crisis language, doesn't bury bad trades.
+- **−5 to −10:** Gloat-loud / complain-vague asymmetry — loud about wins, evasive about losses. Bag-holding language elsewhere while talking sharp in chat. Visible deception drags the chatter base down.
 
-Apply this modifier to your initial chatter base BEFORE applying the receipts cap below.
+After the honesty modifier, **clip chatter base + honesty at 65**. The cap is hard.
 
-**Layer 2 — Receipts ceiling (caps how high the base can land).**
+**Layer 2 — Receipt points (additive, from the 7-day ledger above).**
 
-The structured 7-DAY POINTS LEDGER above is computed from analyst_trades. The point spec (explicit):
+The 7-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the chatter base:
 
-- **+3 per entry posted (automatic).** Posting an entry is structural commitment — it's published before the outcome is known. The +3 lands the moment the entry is posted, regardless of how it eventually resolves.
-- **+5 if that entry's position closes for a gain in the window** (the +3 upgrades to +5 — net +2 bonus for the actual win).
-- **Loss / still-open / aged-out all stay at +3.** Posting a losing entry doesn't subtract from the commitment +3; the commitment was real. Only a winning close adds the edge bonus.
-- **+1 per standalone close-only screenshot** (P&L card with no matching entry in the window — receipt of outcome without commitment).
+- **+3 per entry posted (automatic).** Posting an entry is structural commitment — published before outcome.
+- **+5 if that entry's position closes for a gain in the window** (the +3 upgrades to +5; net +2 win bonus).
+- **Loss / still-open / aged-out stay at +3.** Posting a losing entry doesn't subtract — the commitment was real.
+- **+1 per standalone close-only screenshot** (P&L without commitment).
 
-The points total maps to a ceiling on `trader_score`:
+The receipt points are the user's actual ledger total — no further mapping. A user with 22 points adds 22 to their (clipped) chatter base. The final caps at 100.
 
-| 7-day points | Ceiling | Read |
-|---|---|---|
-| 0 | 65 | No receipts — can't certify edge. Even a sharp-chat trader caps here. |
-| 1-4 | 70 | Starting to post; sliver above no-receipts. |
-| 5-9 | 75 | Real but sparse receipts; wins-only-screenshotter territory. |
-| 10-19 | 85 | Documented edge; ceiling lifts substantially. |
-| 20-29 | 92 | Sustained two-sided posting; near the top. |
-| 30+ | 100 | Full receipt cadence; ceiling fully released. |
+**Final score = min(100, clip(chatter_base + honesty, 65) + receipt_points).**
 
-**Final score = min(chatter_base + honesty_modifier, receipts_ceiling).**
+Four populations the additive rubric reads correctly:
 
-The cap binds when the chatter base sounds high but receipts are thin — that's the "talks-sharp-but-can't-certify" pattern, deliberately capped at 65-75. The cap does NOT bind when chatter is already low (a 35-from-chat bag-holder hits no ceiling because their honest chat read is already below 65). Three populations the rubric reads correctly:
+- **Pure talker, sounds sharp, no receipts.** Chatter 60 + 0 receipts → 60. The 65 cap doesn't matter; they're below it. Talks a strong game; nothing certifies it.
+- **Pure talker, obvious bag-holder.** Chatter 28 + 0 receipts → 28. Bag-holder by chat, no receipts to lift them. Scored honestly from the complaining.
+- **Mid trader who posts.** Chatter 48 (average joe — coin-flip outcomes) + 15 receipt points → 63. Receipts add but the chatter ceiling on its layer didn't anchor them high; they earn lift from posts.
+- **Sharp trader with receipts.** Chatter 62 (sharp + clean) + 28 receipt points → 90. Both layers stacking. The 50-65 chatter band combined with sustained receipts is where edge is certified.
+- **Loud bag-holder with high post volume (BK pattern).** Chatter 30 (bag-holder by win rate) + 35 receipt points → 65. Receipts lift them out of the bag-holder zone but only to the "talks good game" ceiling — they're posting but their actual win rate doesn't certify the chatter as sharp.
 
-- **Pure talker, sounds sharp:** chatter base 78, points 0 → ceiling 65 → final 65. "Talks a strong game, no receipts, taking it on faith."
-- **Pure talker, obvious bag-holder:** chatter base 32, points 0 → ceiling 65 → final 32 (cap doesn't bind). Scored honestly from the complaining.
-- **Mixed / poster:** chatter base 76, points 18 → ceiling 85 → final 76. Receipts let the base land.
-- **Heavy poster, repeatable edge:** chatter base 88, points 35 → ceiling 100 → final 88. Top-of-room.
+State the reasoning in trader_rationale — 3 to 5 sentences. Cover (a) chatter bracket + what drove it (with the win-rate signal called out if it applied), (b) honesty modifier if any, (c) receipt points from the ledger, (d) final number + the anchored examples that read the call. Example:
 
-State the actual reasoning directly in trader_rationale — 3 to 5 sentences. Cover (a) the chatter base you read and what drove it, (b) the honesty modifier if applied and why, (c) the receipts ceiling from the points ledger and whether it binds, (d) the final score and one or two anchored examples. Example:
+> "Chat reads bag-holder by evidence: 12k messages of confident takes but a 4-win / 11-loss week and complaining about closed bags every other day. Chatter base lands at 30 (active-loud bag-holder, not resigned). 18 receipt points from the entries he did post — he commits to entries publicly, that's real. Final 48. The +3 receipt-per-entry credit lifts him out of the 0-35 bracket the win rate would suggest, but not into the 50+ "talks good game" zone — the lift caps at the receipt total he actually earned."
 
-> "Chat reads sharp on macro — calibrated conviction, owns misses, didn't pivot on the rough Tuesday — chatter base lands around 78. +3 honesty modifier for posting the bad close-out publicly the same week, no gloating-up / complaining-down asymmetry. 14 points in the 7-day ledger (3 entry-wins + 2 entry-losses + 1 screenshot) → ceiling 85, which doesn't bind on the 81 chatter read. Final lands at 81, mid of the 75-89 bracket — receipts certify the chatter is real, but execution still leaves money on the table from selling winners early."
-
-**trader_score = SKILL ONLY, not activity.** A quiet user with sharp, well-documented trades scores higher than a loud daily poster with no receipts. Active-and-loud ≠ good-and-sharp; conflating them inflates the wrong people. Activity volume is separately visible to the room via the msg_count in the dossier header — it does not enter the skill score.
+**trader_score = SKILL ONLY, not activity.** Volume in chat doesn't raise the score on its own; the brackets above describe behavioral quality. Activity is separately visible via the msg_count in the dossier header.
 
 **racial_humor_score brackets (0-100)** — the canonical score for race-edged content from this user. Internal calibration only; the bot never quotes the raw number. Score the FULL picture (slurs + stereotypes + dog whistles + race-based mockery + unprompted racial references), not just literal slurs. Self-deprecating jokes about the user's OWN race and factual mentions of races/ethnicities in geopolitics or news don't count.
 
@@ -776,16 +769,15 @@ def _load_user_data_from_store(
 
 
 def _format_points_block(user_id: int) -> str:
-    """Render the user's 7-day rolling 1/3/5 points ledger + the receipts
-    ceiling it implies. This is the certification layer in the new
-    chatter-base-×-receipts-ceiling rubric.
+    """Render the user's 7-day rolling 1/3/5 points ledger.
 
-    Also surfaces the WIN RATE prominently — a sub-50% win rate over a
-    meaningful sample is bag-holder signal that the chatter base layer
-    must factor in, regardless of how confident the chat tone sounds.
+    Under the additive scoring model, the points total adds directly
+    on top of the chatter base (0-65) to produce the final score. No
+    ceiling-tier mapping — the points ARE the receipt contribution.
+
+    Final = min(100, chatter_base + ledger_points)
     """
     ledger = db.compute_member_points(int(user_id), days=7)
-    ceiling = db.receipts_ceiling_from_points(ledger["points"])
     wr = ledger.get("win_rate_pct")
     decided = ledger.get("decided") or 0
     if wr is None:
@@ -797,21 +789,22 @@ def _format_points_block(user_id: int) -> str:
             f"still-open entries excluded)"
         )
         # Flag bag-holder pattern: <50% win rate over ≥5 decided entries
-        # is bag-holder signal that should drag chatter base down hard.
+        # is bag-holder signal that should drag chatter base into the
+        # 0-35 bracket regardless of how confident the chat tone sounds.
         if decided >= 5 and wr < 50:
             wr_flag = (
                 " ← BAG-HOLDER FLAG: sub-50% over meaningful sample. "
-                "Chatter base must reflect this regardless of chat tone."
+                "Chatter base must land in 0-35 regardless of chat tone."
             )
         elif decided >= 5 and wr >= 65:
             wr_flag = (
                 " ← STRONG-EDGE FLAG: high win rate over meaningful "
-                "sample. Chatter base should reflect real edge."
+                "sample. Chatter base should land 50-65 if chat supports it."
             )
         else:
             wr_flag = ""
     lines = [
-        f"7-DAY POINTS LEDGER (rolling — receipts certify edge):",
+        f"7-DAY POINTS LEDGER (rolling — receipts ADD to chatter base):",
         f"  - Entry posted, position closed for a WIN  "
         f"({ledger['entries_won']} ×  5 pts)  =  "
         f"{ledger['entries_won'] * 5} pts",
@@ -821,17 +814,17 @@ def _format_points_block(user_id: int) -> str:
         f"  - Standalone close-only / P&L screenshot (no entry)  "
         f"({ledger['screenshots']} ×  1 pt)   =  {ledger['screenshots']} pts",
         f"",
-        f"TOTAL POINTS: {ledger['points']}",
+        f"TOTAL RECEIPT POINTS: {ledger['points']}",
         f"WIN RATE: {wr_str}{wr_flag}",
-        f"IMPLIED RECEIPTS CEILING: {ceiling}",
         f"",
         f"(Spec: entry posted = automatic +3. Upgrades to +5 if the same"
         f" position closes for a gain in the window. Loss / still-open"
         f" / aged-out all stay at +3 — the +3 is for the commitment;"
         f" only a winning close adds the +2 edge bonus.)",
         f"",
-        f"(Tier table: 0 pts → cap 65; 1-4 → 70; 5-9 → 75; "
-        f"10-19 → 85; 20-29 → 92; 30+ → 100.)",
+        f"(Receipt points add ON TOP of the chatter base. Final score ="
+        f" min(100, chatter_base + receipt_points). Chatter base is"
+        f" capped at 65 — receipts are the only path past 65.)",
     ]
     return "\n".join(lines)
 
