@@ -175,6 +175,11 @@ async def main() -> int:
     conn = db.get_connection()
     placeholders = ",".join("?" for _ in member_channels)
     user_clause = " AND author_id = ?" if args.user_id else ""
+    # Order DESC so the newest candidates (most likely to contain
+    # actual trade activity worth extracting) get processed first.
+    # If SSH times out mid-run, the most valuable rows are already
+    # captured. ASC ordering would chew through old non-trade chat
+    # messages first and never reach the trades.
     sql = f"""
         SELECT discord_message_id, channel_name, author_id, author_username,
                author_display, posted_at, content, has_attachments,
@@ -188,7 +193,7 @@ async def main() -> int:
               OR image_ocr_text IS NOT NULL
            )
            {user_clause}
-         ORDER BY posted_at ASC
+         ORDER BY posted_at DESC
          LIMIT {args.max}
     """
     params: list = list(member_channels)
