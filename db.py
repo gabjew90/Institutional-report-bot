@@ -209,8 +209,11 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_posted ON analyst_trades(posted_at);
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_expiry ON analyst_trades(expiry);
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_ticker ON analyst_trades(ticker);
-        CREATE INDEX IF NOT EXISTS idx_analyst_trades_tracking ON analyst_trades(tracking_mode);
-        CREATE INDEX IF NOT EXISTS idx_analyst_trades_author_id ON analyst_trades(author_id);
+        -- Indexes on tracking_mode / author_id moved OUT of executescript().
+        -- On a live deploy with the legacy schema, those columns don't
+        -- exist yet at this point — they get added by the ALTER TABLE
+        -- migrations a few lines down. Index creation now lives there too
+        -- so the column is guaranteed present before the CREATE INDEX runs.
 
         -- LLM-generated personality profiles for active group members.
         -- Populated by scripts/backfill_user_profiles.py (initial) and a
