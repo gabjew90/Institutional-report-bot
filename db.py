@@ -2550,15 +2550,100 @@ def find_users_mentioned_in_text(text: str) -> list[int]:
         "SELECT user_id, username, display_name FROM user_profiles"
     ).fetchall()
     text_lower = text.lower()
+    # Build the needle set per user: full username, full display_name,
+    # AND individual tokens from each (whitespace-split + punctuation-strip).
+    # The token expansion is what catches first-name-only references like
+    # "Zach" matching a display_name of "Zach M." or "Zachary T." — the
+    # previous full-needle-only match missed those entirely and produced
+    # unloaded-subject answers (hallucination risk per the audit).
+    def _split_tokens(s: str) -> list[str]:
+        """Split into alphanumeric tokens, preserving case (for the
+        short-distinctive uppercase pass). Caller lowercases when needed."""
+        cleaned = re.sub(r"[^a-zA-Z0-9_]+", " ", s)
+        return [t for t in cleaned.split() if t]
+
+    # Tokenize the INPUT TEXT once. Used for two passes:
+    #   1) Prefix matching ("zach" in input vs "zachary" in profile)
+    #   2) Implicit — the standard word-boundary scan still operates on the
+    #      raw text_lower, so input tokens aren't consulted there.
+    input_tokens_lower: set[str] = set()
+    for m in re.finditer(r"[A-Za-z0-9_]+", text):
+        tok = m.group(0).lower()
+        if len(tok) >= 4:
+            input_tokens_lower.add(tok)
+
+    # Drop very-generic tokens that would false-positive in normal prose.
+    # (Adjust if a real username collides with a stop word.)
+    STOP = {
+        "the", "and", "you", "for", "with", "this", "that",
+        "are", "was", "but", "not", "all", "any", "did", "has",
+        "her", "his", "him", "she", "out", "now", "ask",
+        "give", "what", "why", "how", "who", "post", "posts",
+        "feel", "feels", "think", "thought", "thinks", "have",
+        "from", "they", "them", "their", "been", "were", "would",
+        "could", "should", "about", "into", "than", "then", "when",
+        "where", "which", "while", "your", "our", "ours", "mine",
+        "just", "like", "want", "need", "make", "made", "take", "took",
+        "good", "bad", "great", "yeah", "nah", "lol", "lmao",
+    }
+
     for r in rows:
-        for needle in [
-            (r["username"] or "").lower(),
-            (r["display_name"] or "").lower(),
-        ]:
-            if not needle or len(needle) < 3:
+        user_id = r["user_id"]
+        # Build needles in three buckets:
+        #   - lowercase tokens (≥3 chars) for the word-boundary scan
+        #   - lowercase tokens (≥5 chars) eligible as prefix-match TARGETS
+        #     of input tokens (≥4 chars), so "zach" finds "zachary"
+        #   - short distinctive uppercase ALL-CAPS names (2-3 chars) like
+        #     "BK", "RJ" — these get a case-sensitive scan against the
+        #     ORIGINAL text so "bike" doesn't false-match "BK"
+        profile_tokens_lower: set[str] = set()
+        short_distinctive: set[str] = set()
+        for raw in (r["username"], r["display_name"]):
+            if not raw:
                 continue
+            raw_l = raw.lower()
+            if len(raw_l) >= 3:
+                profile_tokens_lower.add(raw_l)
+            if 2 <= len(raw) <= 3 and raw.isalpha() and raw.isupper():
+                short_distinctive.add(raw)
+            for tok in _split_tokens(raw):
+                if len(tok) >= 3:
+                    profile_tokens_lower.add(tok.lower())
+                if 2 <= len(tok) <= 3 and tok.isalpha() and tok.isupper():
+                    short_distinctive.add(tok)
+        profile_tokens_lower -= STOP
+
+        matched = False
+        # Pass 1: standard word-boundary match against text_lower.
+        for needle in profile_tokens_lower:
             if re.search(rf"\b{re.escape(needle)}\b", text_lower):
-                matches.add(r["user_id"])
+                matches.add(user_id)
+                matched = True
+                break
+        if matched:
+            continue
+
+        # Pass 2: prefix match — an input token (≥4 chars, e.g. "zach")
+        # is the prefix of a profile token (≥5 chars, e.g. "zachary").
+        # Constrained to ≥4/≥5 to avoid "any" matching "anything".
+        for inp in input_tokens_lower:
+            if inp in STOP:
+                continue
+            for prof in profile_tokens_lower:
+                if len(prof) >= 5 and prof.startswith(inp) and prof != inp:
+                    matches.add(user_id)
+                    matched = True
+                    break
+            if matched:
+                break
+        if matched:
+            continue
+
+        # Pass 3: short distinctive ALL-CAPS names (case-sensitive against
+        # the original text). Catches "BK" without firing on "bike".
+        for needle in short_distinctive:
+            if re.search(rf"\b{re.escape(needle)}\b", text):
+                matches.add(user_id)
                 break
     return list(matches)
 
