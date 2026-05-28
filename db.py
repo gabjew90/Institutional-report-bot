@@ -2505,9 +2505,15 @@ def format_user_profiles_for_context(
     for uid, p in profile_items:
         dn = p.get("display_name") or p.get("username") or f"user_{uid}"
         uname = p.get("username") or ""
+        # No per-profile truncation. The total-block budget below
+        # (running_chars > max_chars → omit this profile) provides
+        # the only cap. New 5-section profiles average 3000-3500
+        # chars; the previous 2500-char per-profile clip was
+        # silently dropping the Recent personal life section.
+        # With WHO'S TALKING scoped to asker + mentions + reply/
+        # forward authors (typically 1-3 profiles), the 18K budget
+        # comfortably fits full profile_text for all of them.
         text = (p.get("profile_text") or "").strip()
-        if len(text) > 2500:
-            text = text[:2497] + "..."
         mention = f"<@{uid}>"
         if uname and uname.lower() != dn.lower():
             ident = f"**{dn}** ({uname}, {mention})"
