@@ -498,7 +498,9 @@ Final clip: **chatter base never exceeds 50**, regardless of which bracket signa
 
 **Layer 2 — Receipt points (additive, from the 14-day ledger above; unbounded above on its own — the only ceiling is the final 100 cap).**
 
-The 14-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the (clipped) chatter base:
+The 14-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the (clipped) chatter base. **MEMBERS** earn points across all buckets; **OFFICIAL CALLERS** (Abe, BK, f.jamal — anyone configured in the analyst_callers section) only earn points on WINS — losses, ghosts, and losing screenshots all multiply to 0. The ledger block flags caller-mode with `[CALLER — wins-only]` in its header so you can read the totals correctly without any inference.
+
+For members:
 
 - **+3 per entry posted (automatic on post).** Posting an entry is structural commitment — published before outcome.
 - **+5 if the position later closes for a gain in the window** (the +3 upgrades to +5; net +2 win bonus).
@@ -507,6 +509,12 @@ The 14-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the (cl
 - **0 (pending) if the entry has no close yet, is still within the 14d window, and is before its expiry.** Held in suspense — not scored as ghost YET; the entry might still close or might trip the ghost rule on a later refresh.
 - **+2 per standalone winning screenshot** (close-only P&L card with gain > 0 and no matching entry commitment in the window).
 - **+1 per standalone losing screenshot** (close-only P&L card with gain ≤ 0). The weakest receipt — no commitment, negative outcome — but still credited for the honest red post.
+
+For callers (wins-only nerf):
+
+- **+5 if the position closes for a gain in the window** — same as members.
+- **+2 per standalone winning screenshot** — same as members.
+- **0 on entry+loss closes, entry+ghosts, losing screenshots, AND pending entries.** Callers are the product members pay to tail; only documented wins lift their score. A caller with 14 ghosted positions earns 0 from that bucket; a caller posting losing screenshots earns 0 from that bucket. The `TOTAL RECEIPT POINTS:` line in the ledger block already reflects this — read it as-is, no further math.
 
 **Decay mechanism (rolling 14-day window):** The ledger only sees trades posted within the last 14 days. Older rows stay in the DB (never deleted by scoring) but stop generating points. If last week's 35 points were 28 wins-and-closes that aged out, this week's ledger picks up whatever this week posted instead. The score recomputes from scratch every refresh.
 
@@ -529,7 +537,8 @@ Four populations the additive rubric reads correctly:
 - **Pure talker, obvious bag-holder.** Chatter 20 + 0 receipts → 20. Bag-holder by chat, no receipts to lift them. Scored honestly from the complaining.
 - **Mid trader who posts.** Chatter 35 (average joe — coin-flip outcomes) + 30 receipt points → 65. Receipts add cleanly because the chatter base wasn't already near the cap.
 - **Sharp trader with receipts.** Chatter 48 (clipped from 51 — sharp + clean) + 40 receipt points → 88. Both layers stacking. The 40-50 chatter band combined with sustained receipts is where edge is certified.
-- **Loud bag-holder with high post volume (BK pattern).** Chatter 22 (bag-holder pattern) + 35 receipt points → 57. Receipts lift them out of the bag-holder zone but only modestly — the lift is bounded by the receipt total he actually earned, NOT by an artificial ceiling. If he posts more wins, the score climbs further.
+- **Loud bag-holder with high post volume (BK pattern).** Chatter 22 (bag-holder pattern) + 47 receipt points (9 wins × 5 + 1 winning screenshot × 2; caller-nerf zeroes out his 14 ghosts and 1 losing screenshot) → 69. Receipts lift him meaningfully but the wins-only rule keeps ghost-farming from inflating the total.
+- **Caller with consistent wins (abe pattern).** Chatter 0 (he doesn't post chat outside his alert channel) + 120 receipt points (20 wins × 5 + 10 winning screenshots × 2; caller-nerf zeroes the 2 losses and 5 ghosts) → 100, capped. Documented winning closes alone clear the ceiling. The 16 points he'd have earned from losses/ghosts under the member rule weren't needed.
 - **Thin-history lurker (activity penalty fires).** Chatter 45 (chat that's visible reads talks-good-game) but msg_count = 100 → credibility multiplier 0.2 → scaled chatter 9. Plus 0 receipts → 9. The chatter read might be accurate on the small sample, but the system can't verify the pattern over volume; the multiplier reflects that. The same user at 500+ msgs would land at 45 + receipts. The penalty applies ONLY to chatter — receipts (real trade activity logged in alert channels) are objective and never scaled.
 
 State the reasoning in trader_rationale — 3 to 5 sentences, qualitative prose (no numbers). Cover (a) chatter bracket placement + what chat-evidence drove it (self-awareness about losses, gloat patterns, tilt cycles all factor into bracket selection directly), (b) receipts described qualitatively, (c) the anchored examples that read the call. Example:
@@ -813,33 +822,49 @@ def _format_points_block(user_id: int) -> str:
     Final = min(100, clip(chatter_base + honesty, 50) + receipt_points)
     """
     ledger = db.compute_member_points(int(user_id), days=14)
+    is_caller = bool(ledger.get("is_official_caller"))
+    # Caller nerf: only win buckets contribute. Show the full
+    # bucket counts so Gemini can describe the trader qualitatively,
+    # but zero out the points columns for the loss/ghost lines so
+    # the math is transparent ("28 ghosted × 0 = 0 (caller nerf)").
+    loss_pts = 0 if is_caller else ledger['entries_lost'] * 3
+    ghost_pts = 0 if is_caller else ledger['entries_ghosted'] * 2
+    sloss_pts = 0 if is_caller else ledger['screenshot_losses']
     pending_note = (
         f"  - Entry posted, still PENDING (no close yet, within 14d,"
         f" before expiry — held in suspense)  "
         f"({ledger['entries_pending']} × 0 pts) =  0 pts"
     )
+    caller_tag = "  [CALLER — wins-only]" if is_caller else ""
     lines = [
-        f"14-DAY ROLLING POINTS LEDGER (decays automatically — older"
-        f" trades stop scoring but stay in the DB):",
+        f"14-DAY ROLLING POINTS LEDGER{caller_tag} (decays automatically"
+        f" — older trades stop scoring but stay in the DB):",
         f"  - Entry posted + closed for a WIN  "
         f"({ledger['entries_won']} × 5 pts)  =  "
         f"{ledger['entries_won'] * 5} pts",
         f"  - Entry posted + closed for a LOSS "
-        f"({ledger['entries_lost']} × 3 pts)  =  "
-        f"{ledger['entries_lost'] * 3} pts",
-        f"  - Entry posted + GHOSTED (past expiry OR ≥14d open;"
-        f" total-loss assumption, 3 − 1 = 2)  "
-        f"({ledger['entries_ghosted']} × 2 pts)  =  "
-        f"{ledger['entries_ghosted'] * 2} pts",
+        f"({ledger['entries_lost']} × {'0' if is_caller else '3'} pts)  =  "
+        f"{loss_pts} pts"
+        + ("  (caller nerf)" if is_caller and ledger['entries_lost'] else ""),
+        f"  - Entry posted + GHOSTED (past expiry OR ≥14d open)"
+        f"  ({ledger['entries_ghosted']} × {'0' if is_caller else '2'} pts)  =  "
+        f"{ghost_pts} pts"
+        + ("  (caller nerf)" if is_caller and ledger['entries_ghosted'] else ""),
         pending_note,
         f"  - Standalone WINNING screenshot (close-only, no entry)  "
         f"({ledger['screenshot_wins']} × 2 pts)  =  "
         f"{ledger['screenshot_wins'] * 2} pts",
         f"  - Standalone LOSING screenshot (close-only, no entry)   "
-        f"({ledger['screenshot_losses']} × 1 pt)   =  "
-        f"{ledger['screenshot_losses']} pts",
+        f"({ledger['screenshot_losses']} × {'0' if is_caller else '1'} pt"
+        f"{'s' if is_caller else ''})   =  "
+        f"{sloss_pts} pts"
+        + ("  (caller nerf)" if is_caller and ledger['screenshot_losses'] else ""),
         f"",
-        f"TOTAL RECEIPT POINTS: {ledger['points']}",
+        f"TOTAL RECEIPT POINTS: {ledger['points']}"
+        + (
+            f"   (caller-nerf applied: losses, ghosts, losing screenshots all = 0)"
+            if is_caller else ""
+        ),
         f"",
         f"(Spec: entry posted = automatic +3. Upgrades to +5 if the"
         f" position closes for a gain. Stays at +3 if it closes for a"

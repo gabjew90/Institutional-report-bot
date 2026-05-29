@@ -3636,6 +3636,53 @@ def get_latest_analyst_trade_posted_at(
     return val or None
 
 
+def is_official_caller(author_id: int) -> bool:
+    """Return True if this user_id maps to a configured analyst caller.
+
+    Used by the points ledger to apply the caller-only nerf: official
+    callers earn points ONLY on wins (entry+winning-close → +5, winning
+    standalone screenshot → +2). Losses, ghosts, losing screenshots,
+    and pending positions all earn 0 for callers. Members keep the
+    full point table.
+
+    The justification: callers are the product (members pay to tail
+    them); their score should reward DOCUMENTED WINS, not chat presence
+    or ghost-farmed open positions. BK had been accumulating ~30 ghost
+    points per refresh from unposted closes; the nerf removes that
+    while leaving real win documentation intact.
+
+    Caller status is config-driven (config.py analyst_callers section,
+    matched by username) — never derived from row counts, so a caller
+    who took the week off doesn't lose their caller designation.
+    Returns False on any lookup failure (treat as a member).
+    """
+    if not author_id:
+        return False
+    try:
+        from config import settings
+    except Exception:
+        return False
+    try:
+        row = get_connection().execute(
+            "SELECT username FROM user_profiles WHERE user_id = ?",
+            (int(author_id),),
+        ).fetchone()
+    except Exception:
+        return False
+    if not row:
+        return False
+    uname = (row["username"] or "").strip().lower()
+    if not uname:
+        return False
+    try:
+        for c in settings.resolve_analyst_callers():
+            if (c.get("username") or "").strip().lower() == uname:
+                return True
+    except Exception:
+        pass
+    return False
+
+
 def compute_member_points(author_id: int, days: int = 14) -> dict:
     """Rolling points ledger over the last N days (default 14) for one user.
 
@@ -3644,7 +3691,15 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
     Both count toward the trader's points; the only distinction in the
     ledger is the source label.
 
-    Point values per trade event (matches user spec exactly):
+    **Official callers are nerfed: wins-only.** When `is_official_caller`
+    returns True for this author_id, only the win buckets contribute
+    points: `entries_won * 5 + screenshot_wins * 2`. Entries_lost,
+    entries_ghosted, and screenshot_losses all multiply to zero. Members
+    keep the full table (see Point values per trade event below). The
+    returned breakdown still lists every bucket so /ask can show the
+    full picture; only the `points` total reflects the caller nerf.
+
+    Point values per trade event — MEMBERS:
 
         +5 — Entry posted AND the position closes for a gain (the +3
              entry award upgrades to +5 on the winning close)
@@ -3664,6 +3719,18 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
              expiry. Pending judgment — no points yet, holds in
              suspense until either the position closes OR the
              14d/expiry mark trips and it ghosts.
+
+    Point values per trade event — OFFICIAL CALLERS (wins-only nerf):
+
+        +5 — Entry posted AND the position closes for a gain (same
+             as members)
+        +2 — Standalone close-only P&L screenshot showing a WIN
+             (same as members)
+         0 — Everything else: entry+loss, entry+ghost, losing
+             screenshot, and pending positions all earn zero.
+             Callers are the product members pay to tail; only
+             documented wins lift their score, not unposted closes
+             or losses.
 
     Decay: the 14-day rolling window controls which trades enter the
     ledger. Older rows STAY in the DB (never deleted by scoring),
@@ -3691,6 +3758,7 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
         return {
             "points": 0,
             "window_days": days,
+            "is_official_caller": False,
             "entries_won": 0,
             "entries_lost": 0,
             "entries_ghosted": 0,
@@ -3860,17 +3928,29 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
                 })
         # Else: only trims / viewings — no points
 
-    total_points = (
-        entries_won * 5
-        + entries_lost * 3
-        + entries_ghosted * 2
-        + screenshot_wins * 2
-        + screenshot_losses * 1
-        # entries_pending contributes 0 — held in suspense
-    )
+    # Official-caller nerf: wins-only. Configured callers earn points
+    # only for documented winning closes (entry → win = +5) and winning
+    # standalone screenshots (+2). Losses, ghosts, losing screenshots,
+    # and pending positions all multiply to zero. Members keep the full
+    # table — they're being judged on whether they post at all, so
+    # documented commitment (any close) is worth something. Callers
+    # are the product; only documented wins should lift them.
+    caller_mode = is_official_caller(int(author_id))
+    if caller_mode:
+        total_points = entries_won * 5 + screenshot_wins * 2
+    else:
+        total_points = (
+            entries_won * 5
+            + entries_lost * 3
+            + entries_ghosted * 2
+            + screenshot_wins * 2
+            + screenshot_losses * 1
+            # entries_pending contributes 0 — held in suspense
+        )
     return {
         "points": total_points,
         "window_days": days,
+        "is_official_caller": caller_mode,
         "entries_won": entries_won,
         "entries_lost": entries_lost,
         "entries_ghosted": entries_ghosted,
