@@ -1,0 +1,506 @@
+{
+  "pulse_date": "2026-05-29",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "hormuz strait risks and disruptions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 12
+      },
+      "consensus_view": "Banks across more than ten desks reference the Strait of Hormuz as a live geopolitical and energy-supply risk, but none has staked a clear directional view on whether the chokepoint reopens or stays disrupted.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the Strait of Hormuz as a live energy-supply and shipping risk shaping oil, LNG and broader macro markets.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Global X",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "LSEG",
+            "Mizuho International",
+            "RBC Capital Markets",
+            "SEB",
+            "TPL Advisory",
+            "UBS",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz oil flows",
+            "Strait of Hormuz energy flows",
+            "Strait of Hormuz shipping flows",
+            "Middle East tensions and Strait of Hormuz",
+            "Strait of Hormuz geopolitical risk",
+            "Strait of Hormuz energy disruption",
+            "Strait of Hormuz military strikes",
+            "Strait of Hormuz shipping disruptions",
+            "Strait of Hormuz supply chain disruption",
+            "Strait of Hormuz energy supply disruption"
+          ]
+        },
+        {
+          "claim": "Several banks frame the situation as an unresolved standoff, citing a stalemate, sticking points and a possible reopening or US-Iran deal.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Global X",
+            "Goldman Sachs",
+            "ING"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz US-Iran deal potential",
+            "Strait of Hormuz reopening",
+            "Hormuz access and uranium control sticking points",
+            "Strait of Hormuz stalemate",
+            "Closed Strait supply chain impact",
+            "Strait of Hormuz supply disruptions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran conflict and diplomacy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Banks across nine desks flag the US-Iran situation as a live macro backdrop spanning both military escalation and deal-making rhetoric, but none has staked a directional view on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the US-Iran situation as a current macro context, citing both kinetic escalation (US strikes, Strait of Hormuz tension) and parallel diplomatic threads (ceasefire talk, tentative deal rhetoric).",
+          "banks_for": [
+            "Bank of America",
+            "BofA Global Research",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "SEB",
+            "UBS",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "US-Iran conflict",
+            "US strikes on Iran",
+            "US military strikes in southern Iran",
+            "US-Iran conflict in the Strait of Hormuz",
+            "US-Iran peace deal rhetoric",
+            "US-Iran tentative deal",
+            "US-Iran ceasefire extension"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure and capex cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 4,
+        "neutral": 0
+      },
+      "consensus_view": "Most banks see AI infrastructure spending as the dominant driver of earnings growth and a powerful equity tailwind, but a meaningful minority warn the capex arms race looks bubble-like and the real economic payoff is much smaller than the spending implies.",
+      "facts_agreed": [
+        {
+          "claim": "AI-driven capex and infrastructure investment are powering current earnings growth and equity returns.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS",
+            "Citi"
+          ],
+          "evidence_quotes": [
+            "earnings growth is driving the US stock market higher \u2014 not irrational exuberance",
+            "companies benefiting from AI infrastructure investment expected to contribute roughly half of this year\u2019s earnings growth",
+            "AI infrastructure beneficiaries accounting for roughly half of the growth this year.",
+            "AI remains the sharpest thematic investment focus, with broad participation.",
+            "We maintain a pro-risk stance favoring AI-driven growth equities"
+          ]
+        },
+        {
+          "claim": "Demand for AI compute and data center capacity remains robust with visibility extending into 2027.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Near-term demand signals remain positive",
+            "Marvell provided a more constructive outlook for its Datacenter business with improved visibility",
+            "customer appetite for AI compute stretches into next year and beyond",
+            "unprecedented hyperscaler demand for high bandwidth memory (HBM) used in data centers",
+            "ongoing supply bottlenecks to support further upside for Asia\u2019s broader tech sector"
+          ]
+        },
+        {
+          "claim": "AI hardware OEMs like Dell and Lenovo are seeing accelerating monetization of AI server demand.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Both Lenovo and DELL are benefiting from the AI hardware boom",
+            "DELL should trade higher on an earnings beat & better-than-expected FY27 guidance"
+          ]
+        },
+        {
+          "claim": "The current semiconductor cycle is structurally driven by B2B data center infrastructure investment rather than consumer hardware.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI-led Supercycle is being driven by \u201cB2B infrastructure investment\u201d for data center expansion",
+            "We believe as long as the acceleration in core AI Capex areas remains strong, this trend is likely to continue."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether AI capex is producing real returns or is a bubble that will destroy capital",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS",
+            "Citi"
+          ],
+          "for_evidence": "earnings growth is driving the US stock market higher \u2014 not irrational exuberance",
+          "banks_against": [
+            "Jefferies",
+            "BofA Securities",
+            "The Market Ear"
+          ],
+          "against_evidence": "GREED & fear\u2019s base case remains that a lot of capital will be destroyed"
+        },
+        {
+          "claim": "Whether AI investment is meaningfully boosting GDP and user adoption versus being import-leaky and overhyped",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "for_evidence": "AI-related spending will continue boosting equipment and structures investment in 2026",
+          "banks_against": [
+            "Z\u00fcrcher Kantonalbank",
+            "The Market Ear"
+          ],
+          "against_evidence": "direct contribution of AI investment to gross domestic product is significantly lower"
+        },
+        {
+          "claim": "Whether AI-related stock concentration is justified or mirrors past bubble peaks",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "Prefer stocks positioned beyond peak cycle on AI Capex tailwind",
+          "banks_against": [
+            "BofA Securities"
+          ],
+          "against_evidence": "Past historical bubbles had similarly high concentration"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed monetary policy stance",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Banks split on the Fed: SEB and ING see the Fed staying tight because inflation hasn't cooled enough, while BofA argues the FOMC is fundamentally dovish and will cut as soon as the job market gives it cover.",
+      "facts_agreed": [
+        {
+          "claim": "The Fed is an active near-term focus across desks, with rate-cut timing and hike risk being repriced.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Fed policy outlook and rate cuts",
+            "Fed rate cut timeline shift",
+            "Fed rate hike expectations dialing back",
+            "Fed interest rate cuts impact on yield"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Direction of the Fed's next move \u2014 hawkish hold vs. fundamentally dovish bias",
+          "banks_for": [
+            "SEB",
+            "ING"
+          ],
+          "for_evidence": "the Fed is unlikely to cut rates again anytime soon",
+          "banks_against": [
+            "BofA Global Research"
+          ],
+          "against_evidence": "history suggests that this is a fundamentally dovish FOMC"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east supply chain disruption",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Banks across multiple desks flag Middle East conflict and Strait of Hormuz shipping risk as an active supply-chain and inflation overhang, but no one has staked a directional view on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the Middle East conflict and Strait of Hormuz shipping disruption as a live supply-chain risk affecting energy, inflation, and commodity inputs.",
+          "banks_for": [
+            "Citi",
+            "Global X",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping disruption",
+            "Middle East supply chain disruptions",
+            "Iran war supply disruptions",
+            "Middle East conflict impact on distributor markets",
+            "Middle East conflict impact on potassium nitrate",
+            "Middle East conflict impact on energy security"
+          ]
+        },
+        {
+          "claim": "Banks tie the Middle East conflict to inflation and broader market concerns rather than a single isolated commodity.",
+          "banks_for": [
+            "Citi",
+            "Global X",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Middle East conflict duration impact on inflation",
+            "Middle East conflict concerns",
+            "Middle East supply disruption impact"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "consumer spending pressure",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Across eight desks, consumer confidence is hitting record lows and the household saving rate is dropping fast, but banks split on whether that signals real stress or just wealthy households spending down because their portfolios are up.",
+      "facts_agreed": [
+        {
+          "claim": "Consumer confidence and sentiment readings are at or near record lows.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "SEB",
+            "UBS",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "US consumer sentiment record low",
+            "US consumer confidence decline",
+            "French consumer confidence decline",
+            "University of Michigan consumer expectations record low",
+            "Consumer confidence at record low",
+            "US consumer confidence"
+          ]
+        },
+        {
+          "claim": "The US household saving rate is contracting and disposable income is deteriorating.",
+          "banks_for": [
+            "Bank of America",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "US consumer savings rate reduction",
+            "US consumer disposable income deterioration",
+            "US household saving ratio depletion",
+            "Real household disposable income decline",
+            "US consumer saving rate contraction"
+          ]
+        },
+        {
+          "claim": "1Q consumer spending came in weak.",
+          "banks_for": [
+            "SEB"
+          ],
+          "evidence_quotes": [
+            "1Q consumer spending weakness"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "What the falling US saving rate signals \u2014 genuine spending pressure vs benign wealth-driven drawdown",
+          "banks_for": [
+            "ING"
+          ],
+          "for_evidence": "consumer spending power is coming under increasing pressure",
+          "banks_against": [
+            "Bank of America"
+          ],
+          "against_evidence": "The saving rate tends to be lower when the ratio of net worth to disposable income is running above trend"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure pivot",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Banks across eight desks treat the AI infrastructure buildout as a defining capex cycle touching hyperscalers, data centers, custom silicon, packaging, servers and power, with Goldman flagging IREN's pivot to AI cloud as a concrete example, but no desk has staked a clear directional call.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the hyperscaler AI capex cycle as the dominant spending theme to track.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Z\u00fcrcher Kantonalbank",
+            "UniCredit",
+            "Global X",
+            "LSEG"
+          ],
+          "evidence_quotes": [
+            "2027 hyperscaler capex trajectory",
+            "1Q earnings season hyperscaler capex revisions",
+            "AI Capex demand broadening",
+            "Hyperscaler capex cycle",
+            "Hyperscaler capex cycle and cloud growth",
+            "hyperscaler capex funding requirements",
+            "Global AI capex cycle"
+          ]
+        },
+        {
+          "claim": "Banks flag broad AI infrastructure buildout reaching adjacent supply chains including silicon, packaging, servers, solar and silver.",
+          "banks_for": [
+            "UniCredit",
+            "Z\u00fcrcher Kantonalbank",
+            "The Market Ear",
+            "UBS",
+            "LSEG",
+            "Global X",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure scaling",
+            "AI infrastructure build-out",
+            "AI server infrastructure supply chain",
+            "AI infrastructure bottleneck in supply chain",
+            "AI and data-centre infrastructure silver demand",
+            "AI infrastructure beneficiaries",
+            "AI infrastructure investment",
+            "AI infrastructure capital chasing",
+            "AI hyperscaler buildout solar demand",
+            "Advanced AI packaging demand",
+            "custom silicon revenue ramp in CY27"
+          ]
+        },
+        {
+          "claim": "Goldman points to IREN's pivot to AI cloud services as a concrete miner-to-AI infrastructure transition, anchored by an NVIDIA contract.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Z\u00fcrcher Kantonalbank"
+          ],
+          "evidence_quotes": [
+            "IREN entered into a $1.6 bn purchase agreement... as part of its... AI cloud contract",
+            "AI infrastructure pivot by BTC miners"
+          ]
+        },
+        {
+          "claim": "Banks note pockets of caution in the AI capex narrative including China internet conservatism, hyperscaler CFO ROI scrutiny and shifting cloud pricing models.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "China internet companies conservative AI capex approach",
+            "Hyperscaler CFO ROI expectations",
+            "Hyperscaler transition to new pricing models"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "etf and crypto flows",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Banks across five desks flag broadly weaker flows into US equity and spot bitcoin ETFs alongside outflows from China and Korea funds, while bond ETFs still attract money; nobody has staked a directional call on whether the rotation persists.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag deteriorating flows into US equity and spot bitcoin ETFs as a live concern.",
+          "banks_for": [
+            "Bank of America",
+            "BlackRock",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "deteriorating ETF and crypto flows",
+            "slowing flows into US equity ETFs",
+            "U.S. spot BTC ETF outflows",
+            "Active vs index ETP flow divergence"
+          ]
+        },
+        {
+          "claim": "Fixed income ETFs are still attracting inflows even as equity and crypto ETF flows weaken.",
+          "banks_for": [
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "inflows to Treasury and corporate bond ETFs"
+          ]
+        },
+        {
+          "claim": "Regional equity outflows from China and South Korea funds are a notable cross-bank observation this window.",
+          "banks_for": [
+            "Bloomberg",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "China fund outflows",
+            "South Korea equity outflows"
+          ]
+        },
+        {
+          "claim": "Goldman flags style-factor outflows out of Value as part of the broader flow picture.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Value factor outflows"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
