@@ -1892,14 +1892,27 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # Heavy users sometimes get section-1-only
                         # responses even after retries; we'd rather
                         # KEEP the prior long profile than downgrade
-                        # to a partial. Bypass when force=True only if
-                        # the new profile is genuinely viable (>=2000
-                        # chars). Otherwise treat as failure.
+                        # to a partial.
+                        #
+                        # BUT: this guard only makes sense for users
+                        # with enough chat to PRODUCE a long profile.
+                        # Thin-history users (< 500 msgs, the activity
+                        # full-credit threshold) can't write 2000-char
+                        # profiles because there isn't enough chat to
+                        # describe — their correct output IS short.
+                        # The guard was permanently locking them at
+                        # whatever score the OLD (pre-activity-ramp)
+                        # Gemini grading produced, which is exactly
+                        # the Tied / KsFs / Soysoo / Quackers stuck-
+                        # at-#3 bug. Skip the guard for thin users so
+                        # the activity ramp can actually reach them.
                         prior = existing_profiles.get(uid)
                         prior_len = len((prior or {}).get("profile_text") or "")
                         new_len = len(profile or "")
+                        thin_user = len(msgs) < TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS
                         if (
                             profile
+                            and not thin_user
                             and prior_len >= 2000
                             and new_len < 2000
                             and new_len < int(prior_len * 0.5)
