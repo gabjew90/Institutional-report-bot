@@ -557,6 +557,8 @@ State the reasoning in trader_rationale — 3 to 5 sentences, qualitative prose 
 
 Anchor against THIS user's messages. Zero examples = 0-15.
 
+**Activity multiplier applies to racism too.** Same as trader_score: a user with 45 visible messages can't certify a Dominant-bracket pattern (76-100) over volume even if those 45 lines are saturated — there isn't enough sample to confirm the behavior is sustained rather than episodic. Pick the bracket that fits the chat you SEE; Python applies the same `min(1, msg_count / 500)` credibility multiplier downstream. A user with 50 msgs and a 95 bracket call gets stored as ~10; with 500+ msgs the same call stays at 95. Don't pre-discount the bracket call yourself — the math is automatic.
+
 ---
 
 14-DAY POINTS LEDGER — used by the trader_score rubric's receipts layer.
@@ -1887,6 +1889,29 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             trader_score = max(0, min(100, _scaled_chatter + _receipt_pts))
                         else:
                             trader_score = None
+                        # Activity multiplier on racism too (added
+                        # 2026-05-29): same 500-msg credibility floor.
+                        # A user with 45 msgs and a 95 racial_humor
+                        # bracket placement can't certify the pattern
+                        # over volume; scale it down so the racism
+                        # rank reflects sustained behavior, not a
+                        # single sharp sample. The raw bracket call
+                        # from Gemini stays valid as the read on the
+                        # chat that IS visible; Python applies the
+                        # credibility factor downstream. Same as
+                        # trader_score's chatter-base scaling.
+                        if racial_humor_score is not None:
+                            _humor_mult = min(
+                                1.0,
+                                len(msgs) / TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS,
+                            )
+                            racial_humor_score = max(
+                                0,
+                                min(
+                                    100,
+                                    round(int(racial_humor_score) * _humor_mult),
+                                ),
+                            )
                         # Guard: don't overwrite a substantial prior
                         # profile with a much shorter truncated one.
                         # Heavy users sometimes get section-1-only
