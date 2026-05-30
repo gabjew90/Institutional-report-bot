@@ -17,7 +17,32 @@ Args:
     ctx_json:   optional path to ctx.json — enables soft top-3 theme structural check
 
 The script also prints a human-readable summary to stdout for the routine
-to read inline. Exit code is 0 unless the input file is missing.
+to read inline.
+
+SCRUB-DISPATCH CONTRACT
+-----------------------
+Exit code is the structural signal for whether SCRUB is needed:
+    0 → markdown is clean; routine should SKIP SCRUB dispatch
+    1 → input file missing / config error
+    2 → invalid CLI args
+    3 → hard issues found; routine should DISPATCH SCRUB
+    4 → only soft issues (jargon-bare, etc.); SCRUB dispatch is OPTIONAL
+
+The same signal is also embedded in two sidecar artifacts so the
+routine can consume it without parsing exit codes:
+
+    <output_json>             — the issue list (unchanged shape)
+    <output_json>.decision     — JSON: {"scrub_recommended": bool,
+                                        "hard_issue_count": int,
+                                        "soft_issue_count": int,
+                                        "reason": str}
+
+The 'hard' vs 'soft' classification is centralized in HARD_ISSUE_KINDS
+below. The previous QC review (2026-05-29) called out that SCRUB was
+dispatching on 0-lint-issue input and producing cosmetic regressions
+("25-40 basis points" → "25-40 hundredths of a percent"). The decision
+file makes the gate explicit at the linter boundary so the Opus routine
+doesn't have to second-guess.
 """
 from __future__ import annotations
 
@@ -37,6 +62,26 @@ except ImportError:
     here = Path(__file__).resolve()
     sys.path.insert(0, str(here.parent.parent))  # repo root
     from ai_analysis.voice_rules import compose_lint_patterns, compose_jargon_lint_patterns
+
+
+# Hard-issue kinds REQUIRE SCRUB. Soft-issue kinds are advisory: jargon
+# the model should have translated, structural-coverage warnings the
+# routine may surface but doesn't need to send through Gemini to fix.
+# Kinds emitted by lint_markdown that aren't in either set default to
+# 'hard' for safety (SCRUB will look at it).
+SOFT_ISSUE_KINDS = {
+    "jargon-bare",
+    "top-3-theme-missing",
+    "discovered-theme-missing",
+}
+
+
+def classify_issues(issues: list[dict]) -> tuple[int, int]:
+    """Split lint issues into (hard_count, soft_count). Hard issues
+    require SCRUB; soft issues are advisory. See module docstring."""
+    hard = sum(1 for i in issues if i.get("kind") not in SOFT_ISSUE_KINDS)
+    soft = sum(1 for i in issues if i.get("kind") in SOFT_ISSUE_KINDS)
+    return hard, soft
 
 
 def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
@@ -189,8 +234,52 @@ def main() -> int:
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_json.write_text(json.dumps(issues, indent=1), encoding='utf-8')
 
+    # SCRUB-dispatch decision sidecar. Routine reads this single file to
+    # decide whether to fire SCRUB; the issue list (output_json) carries
+    # the per-issue detail SCRUB consumes when dispatched. Splitting the
+    # decision from the issue list lets the decision contract evolve
+    # without breaking SCRUB's input schema.
+    hard, soft = classify_issues(issues)
+    if hard > 0:
+        scrub_recommended = True
+        reason = f"{hard} hard lint issue(s) — SCRUB needed"
+        exit_code = 3
+    elif soft > 0:
+        scrub_recommended = False
+        reason = (
+            f"{soft} soft issue(s) only (jargon/coverage warnings) — "
+            f"routine may surface but SCRUB rewrite optional"
+        )
+        exit_code = 4
+    else:
+        scrub_recommended = False
+        reason = "no lint issues — SCRUB skip (clean input)"
+        exit_code = 0
+
+    decision_path = output_json.with_suffix(output_json.suffix + ".decision")
+    decision_path.write_text(
+        json.dumps(
+            {
+                "scrub_recommended": scrub_recommended,
+                "hard_issue_count": hard,
+                "soft_issue_count": soft,
+                "total_issue_count": len(issues),
+                "reason": reason,
+                "exit_code": exit_code,
+            },
+            indent=1,
+        ),
+        encoding='utf-8',
+    )
+
     summarize(issues)
-    return 0
+    print(
+        f"\nSCRUB decision: "
+        f"{'DISPATCH' if scrub_recommended else 'SKIP'}  "
+        f"({reason})  ->  exit {exit_code}"
+    )
+    print(f"decision sidecar: {decision_path}")
+    return exit_code
 
 
 if __name__ == '__main__':

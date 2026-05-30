@@ -3,7 +3,7 @@
 import json
 import logging
 from dataclasses import asdict
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 from google import genai
 from google.genai import types
@@ -424,6 +424,53 @@ def _classify_themes(
             norm_to_final[orig_tag] = final
         theme_normalization["norm_to_canonical"] = norm_to_final
 
+    # Sibling-canonical detection. When the cap blocks a merge, the two
+    # canonicals (post-find roots) are semantically related — the LLM
+    # merger wanted them in one cluster. We don't physically merge (the
+    # cap exists for a reason) but we DO carry the relationship downstream
+    # so theme_coverage can render the sibling pair as one entry instead
+    # of two. Without this, the cap correctly prevents cluster bloat at
+    # the data layer but DRAFT ships two near-duplicate INSIGHTS sections
+    # (the 2026-05-29 AI capex / AI infrastructure pivot duplicate).
+    #
+    # Union-find again across cap_blocked_merges to identify connected
+    # sibling groups. A canonical's siblings = every OTHER canonical
+    # connected to it via one or more cap-blocked merges.
+    sibling_parent: dict[str, str] = {}
+
+    def _sf(x: str) -> str:
+        sibling_parent.setdefault(x, x)
+        while sibling_parent[x] != x:
+            sibling_parent[x] = sibling_parent[sibling_parent[x]]
+            x = sibling_parent[x]
+        return x
+
+    def _su(a: str, b: str) -> None:
+        ra, rb = _sf(a), _sf(b)
+        if ra != rb:
+            sibling_parent[rb] = ra
+
+    for entry in cap_blocked_merges:
+        ra = entry.get("ra_root")
+        rb = entry.get("rb_root")
+        if ra and rb and ra != rb:
+            # Map blocked-merge roots to their CURRENT post-union roots
+            # in case earlier merges changed them.
+            cur_ra = label_to_root.get(ra, ra)
+            cur_rb = label_to_root.get(rb, rb)
+            if cur_ra != cur_rb:
+                _su(cur_ra, cur_rb)
+    # Build per-canonical sibling sets (excluding self).
+    sibling_groups: dict[str, set[str]] = {}
+    for canon in merged_sources.keys():
+        if canon in sibling_parent:
+            group_root = _sf(canon)
+            for other in merged_sources.keys():
+                if other == canon:
+                    continue
+                if other in sibling_parent and _sf(other) == group_root:
+                    sibling_groups.setdefault(canon, set()).add(other)
+
     if discovery_audit is not None:
         discovery_audit["two_tier_merges"] = two_tier_merges
         discovery_audit["two_tier_augment_count"] = len(topic_augments)
@@ -433,6 +480,14 @@ def _classify_themes(
         # not sitting idle. Empty list = no merges hit the cap this run.
         discovery_audit["two_tier_cap_blocked"] = cap_blocked_merges
         discovery_audit["two_tier_max_absorbed_per_canonical"] = MAX_ABSORBED_PER_CANONICAL
+        # Sibling groups: per-canonical list of related canonicals (cap-
+        # blocked siblings). Sourced from cap_blocked_merges. Used by
+        # _format_theme_coverage to render related themes together; surfaced
+        # here so QC can verify the sibling detection on its own.
+        if sibling_groups:
+            discovery_audit["sibling_groups"] = {
+                k: sorted(v) for k, v in sibling_groups.items()
+            }
 
     # Import here to avoid a circular import risk if voice_rules ever
     # grows synthesizer-side dependencies.
@@ -454,6 +509,12 @@ def _classify_themes(
             # multi-bank corroboration. Surfaced in _format_theme_coverage
             # so the prompt's editorial decision is informed.
             "non_bank_only": bool(srcs) and srcs.issubset(NON_BANK_SOURCES),
+            # Cap-blocked sibling canonicals — themes the merger wanted to
+            # absorb but the cap (MAX_ABSORBED_PER_CANONICAL) blocked. The
+            # downstream rendering groups siblings together so DRAFT sees
+            # one entry per sibling group instead of N near-duplicate
+            # entries. Empty list = standalone theme, no siblings.
+            "sibling_canonicals": sorted(sibling_groups.get(tag, set())),
         }
         for tag, srcs in merged_sources.items()
     }
@@ -474,6 +535,123 @@ def _classify_themes(
             "discovered": True,
         }
 
+    # =====================================================================
+    # CLOSE-STYLE ASSIGNMENT
+    # =====================================================================
+    # Structural fix for the "identical template across themes" QC flag
+    # (recurring across 2026-05-28 + 2026-05-29 reviews). Without
+    # rotation, every INSIGHTS section ends in the same bull / risk /
+    # resolution / trade-idea shape — readers internalize the template
+    # by section #4 and start skimming.
+    #
+    # The shapes are listed in priority order. The DEFAULT shape
+    # (bull_risk_resolution) lands on the highest-bank-count themes
+    # because forcing-counter-cases is most useful where consensus is
+    # strongest. Lower-rank themes rotate through the alternates so
+    # DRAFT writes structurally different closes for at least some
+    # sections per pulse.
+    #
+    # Five shapes:
+    #   bull_risk_resolution — default; engages counter-cases explicitly.
+    #     "Bulls argue X. Skeptics argue Y. The resolution that matters
+    #      is Z, and the trade against it is W."
+    #   falsifiable_window  — closes with a specific time-bound prediction
+    #     that's clearly verifiable. "If <metric> doesn't print <threshold>
+    #     by <date>, the thesis is dead. The trade until then is X."
+    #   ranked_list         — Hartnett-style: closes with a 3-5 item ordered
+    #     list of what to watch next, ranked by signal strength.
+    #     "Watch in this order: (1) ..., (2) ..., (3) ..."
+    #   single_question     — closes with one sharp falsifiable question
+    #     the trader must answer for themselves. "The question for this
+    #     trade: does <X> break <Y> first or vice versa?"
+    #   asymmetry           — closes by naming the payoff asymmetry
+    #     directly without counter-case framing. "Cost of being wrong:
+    #     X. Cost of missing this if right: Y. Carry: Z."
+    #
+    # Assignment: rank themes by bank count; top-2 always get the
+    # default (bull_risk_resolution); next 3 rotate through the alternates
+    # in a deterministic but pulse-specific order driven by the date.
+    # This way the same theme on consecutive days doesn't get the same
+    # alternate close (variety holds day-over-day too).
+    # ---------------------------------------------------------------------
+    if theme_map:
+        # Deterministic rotation across pulses — feed the day of year as
+        # the seed offset so successive pulses rotate the alternates.
+        _today = datetime.now(timezone.utc).timetuple().tm_yday
+        _alternate_close_styles = [
+            "falsifiable_window",
+            "ranked_list",
+            "single_question",
+            "asymmetry",
+        ]
+        _ranked_for_close = sorted(
+            theme_map.items(),
+            key=lambda kv: (-kv[1]["banks"], -kv[1]["pdfs"], kv[0]),
+        )
+        for idx, (theme, info) in enumerate(_ranked_for_close):
+            if info.get("discovered") or info.get("non_bank_only"):
+                # Discovered/non-bank themes go to WHAT-TO-WATCH or are
+                # commentary; no INSIGHTS close to assign.
+                info["close_style"] = None
+                continue
+            if idx < 2:
+                info["close_style"] = "bull_risk_resolution"
+            else:
+                # Rotate alternates; offset by day-of-year so the rotation
+                # phase shifts across pulses.
+                rotation_idx = (idx - 2 + _today) % len(_alternate_close_styles)
+                info["close_style"] = _alternate_close_styles[rotation_idx]
+
+    # =====================================================================
+    # UNDERWEIGHTED-CANDIDATE DETECTION
+    # =====================================================================
+    # Themes with 3+ banks of multi-tier coverage that rank below the
+    # natural top-tier by bank count. Without explicit surfacing these
+    # silently drop — the 2026-05-29 QC flagged `fed chair warsh policy`
+    # (3 banks: BofA + Citi + Deutsche) and `us debt and deficit` (3
+    # banks: BofA Global + BofA Securities + UBS, 6 PDFs) as notable
+    # misses on that pulse. The fix isn't a prompt rule "consider these"
+    # — it's an explicit data category surfaced in theme_coverage so
+    # DRAFT sees them as a distinct bucket from primary/discovered.
+    #
+    # Selection criteria (cumulative):
+    #   1. bank count >= 3
+    #   2. PDF count >= 3 OR (banks >= 4 AND distinct tier-1 sources >= 2)
+    #   3. NOT already top-6 by bank count (top-6 themes are guaranteed
+    #      DRAFT attention; the candidate label flags themes that COULD
+    #      be missed)
+    #   4. NOT discovered (Phase B already has its own surfacing path)
+    #   5. NOT non_bank_only (those are color, not analytical signal)
+    # ---------------------------------------------------------------------
+    if theme_map:
+        ranked_by_banks = sorted(
+            theme_map.items(),
+            key=lambda kv: (-kv[1]["banks"], -kv[1]["pdfs"], kv[0]),
+        )
+        top_6 = {t for t, _ in ranked_by_banks[:6]}
+        from ai_analysis.voice_rules import TIER_1_BANKS as _T1
+        tier_1_norm = {b.lower() for b in _T1}
+        # The Tier-1 check uses substring matches to handle "BofA",
+        # "Bank of America", "BofA Securities", "BofA Global" all
+        # mapping to the same Tier-1 entity. A theme with 2+ DISTINCT
+        # Tier-1-mention strings is "multi-tier" enough to surface.
+        for tag, info in theme_map.items():
+            if tag in top_6:
+                continue
+            if info.get("discovered") or info.get("non_bank_only"):
+                continue
+            if info.get("banks", 0) < 3:
+                continue
+            pdf_count = info.get("pdfs", 0)
+            tier_1_hits = sum(
+                1 for s in info.get("sources", [])
+                if any(t1 in s.lower() for t1 in tier_1_norm)
+            )
+            if pdf_count >= 3 or (info.get("banks", 0) >= 4 and tier_1_hits >= 2):
+                info["underweighted_candidate"] = True
+            else:
+                info["underweighted_candidate"] = False
+
     return theme_map
 
 
@@ -485,18 +663,83 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
     promoted to a primary stance but ≥3 banks discussed). The writer
     should treat discovered themes carefully: heavy contextual presence
     in the corpus, but no bank made them a thesis.
+
+    Sibling-group folding: cap-blocked sibling pairs (themes the merger
+    wanted to combine but the MAX_ABSORBED_PER_CANONICAL cap kept
+    separate) render as a single block-entry with a primary line + sub-
+    bullet for each sibling. Without this, DRAFT sees two near-duplicate
+    theme entries and writes two INSIGHTS sections per pair (the
+    2026-05-29 AI capex / AI infrastructure pivot duplicate). With the
+    fold, DRAFT sees one theme + its tightly-related sub-aspects and
+    writes one section that can thread both.
     """
     primary_lines: list[str] = []
     discovered_lines: list[str] = []
     non_bank_lines: list[str] = []
+    underweighted_lines: list[str] = []
+
+    # Pass 1: identify sibling groups so we can render the highest-bank-count
+    # canonical per group as the primary line and the rest as sub-bullets.
+    # Each theme is rendered at most once across primary/discovered/non-bank.
+    rendered: set[str] = set()
+    # Group representative chosen by max banks (tiebreak: alpha).
+    sibling_reps: dict[str, str] = {}  # rep_theme -> rep_theme (self)
+    sibling_members: dict[str, list[str]] = {}  # rep -> sorted member list
+    seen_in_group: set[str] = set()
+    for theme, info in theme_map.items():
+        sibs = info.get("sibling_canonicals") or []
+        if not sibs:
+            continue
+        if theme in seen_in_group:
+            continue
+        group = {theme, *sibs}
+        # Rep = highest banks, ties broken alphabetically.
+        rep = max(group, key=lambda t: (
+            theme_map.get(t, {}).get("banks", 0),
+            -ord(t[0]) if t else 0,
+        ))
+        sibling_reps[rep] = rep
+        sibling_members[rep] = sorted(group - {rep})
+        seen_in_group |= group
 
     ranked = sorted(
         theme_map.items(),
         key=lambda kv: (-kv[1]["banks"], -kv[1]["pdfs"], kv[0]),
     )
-    for theme, info in ranked:
-        if info["banks"] == 0:
-            continue
+
+    # Close-style guidance shown alongside themes that have one
+    # assigned. Each theme's section in the final pulse should close in
+    # the named shape. Default (bull/risk/resolution) is left implicit
+    # for backward compatibility; alternates are flagged so DRAFT picks
+    # them up. See _CLOSE_STYLE_EXPLAIN below for the prose templates.
+    _CLOSE_STYLE_EXPLAIN = {
+        "bull_risk_resolution": (
+            "default close — explicit bull case / risk case / resolution "
+            "+ trade idea"
+        ),
+        "falsifiable_window": (
+            "close with a time-bound falsifiable prediction "
+            "('if X doesn't print Y by Z, the thesis is dead; the trade "
+            "until then is W')"
+        ),
+        "ranked_list": (
+            "close with a 3-5 item ordered list of what to watch next, "
+            "ranked by signal strength ('Watch in this order: (1) ..., "
+            "(2) ..., (3) ...')"
+        ),
+        "single_question": (
+            "close with one sharp falsifiable question the trader must "
+            "answer for themselves ('Does <X> break <Y> first or "
+            "vice versa?')"
+        ),
+        "asymmetry": (
+            "close by naming the payoff asymmetry directly without "
+            "counter-case framing ('Cost of being wrong: X. Cost of "
+            "missing this if right: Y. Carry: Z.')"
+        ),
+    }
+
+    def _render_row(theme: str, info: dict, indent: str = "  - ") -> str:
         srcs = info["sources"][:6]
         more = info["banks"] - len(srcs)
         srcs_str = ", ".join(srcs)
@@ -509,19 +752,59 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
             stance_str = f" — stance: {sup} support / {skp} skeptical / {neu} neutral"
         else:
             stance_str = ""
-        row = (
-            f"  - {theme}: {info['banks']} banks / {info['pdfs']} PDFs "
-            f"({srcs_str}){stance_str}"
-        )
-        # Three-bucket categorization: discovered (Phase B), non-bank-only
-        # (no analytical bank support — color/positioning observations
-        # only), or primary (multi-bank or single-bank-bank theme).
-        if info.get("discovered"):
-            discovered_lines.append(row)
-        elif info.get("non_bank_only"):
-            non_bank_lines.append(row)
+        # Per-theme close_style guidance. The default shape stays
+        # implicit (no annotation) so DRAFT keeps shipping the existing
+        # template on it; only alternates get an annotation that names
+        # the prescribed close shape.
+        close = info.get("close_style")
+        if close and close != "bull_risk_resolution":
+            close_str = (
+                f" — close in: {close} ({_CLOSE_STYLE_EXPLAIN.get(close, '')})"
+            )
         else:
-            primary_lines.append(row)
+            close_str = ""
+        return (
+            f"{indent}{theme}: {info['banks']} banks / {info['pdfs']} PDFs "
+            f"({srcs_str}){stance_str}{close_str}"
+        )
+
+    for theme, info in ranked:
+        if info["banks"] == 0 or theme in rendered:
+            continue
+        # If this theme is a sibling-group member but NOT the representative,
+        # skip — it'll be rendered as a sub-bullet under its group's rep.
+        if theme in seen_in_group and theme not in sibling_reps:
+            continue
+        rows: list[str] = [_render_row(theme, info)]
+        # Sub-bullet siblings (if this is the group rep).
+        if theme in sibling_reps:
+            for sib in sibling_members.get(theme, []):
+                sib_info = theme_map.get(sib)
+                if not sib_info or sib_info.get("banks", 0) == 0:
+                    continue
+                rows.append(
+                    "      · tightly related (cap-blocked sibling — fold into "
+                    f"the same INSIGHTS section): "
+                    + _render_row(sib, sib_info, indent="").lstrip()
+                )
+                rendered.add(sib)
+        rendered.add(theme)
+        row_block = "\n".join(rows)
+        # Four-bucket categorization based on the PRIMARY theme (the rep).
+        # The underweighted_candidate flag is set at theme_map build time
+        # (see _classify_themes); themes ranked outside top-6 with 3+
+        # banks of multi-tier coverage land here so DRAFT sees them as
+        # a distinct "easy to drop, possibly worth surfacing" category
+        # instead of mixed in with the primary list where they get
+        # ranked away.
+        if info.get("discovered"):
+            discovered_lines.append(row_block)
+        elif info.get("non_bank_only"):
+            non_bank_lines.append(row_block)
+        elif info.get("underweighted_candidate"):
+            underweighted_lines.append(row_block)
+        else:
+            primary_lines.append(row_block)
 
     out: list[str] = [
         "THEME COVERAGE — distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):",
@@ -542,6 +825,12 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
             "NON-BANK-ONLY THEMES — every source for these themes is a commentary publication (The Market Ear, Bloomberg, Reuters) or unattributed, NOT a bank with an analytical research desk. Useful for vol/positioning/market-color reference only. DO NOT promote these to primary INSIGHTS themes without multi-bank corroboration — they're color, not underwritten analysis:"
         )
         out.extend(non_bank_lines)
+    if underweighted_lines:
+        out.append("")
+        out.append(
+            "UNDERWEIGHTED CANDIDATES — Tier-1 or multi-tier 3+ bank coverage outside the natural top-6 by bank count. Easy to miss in DRAFT's top-down selection; surface at least one as a WHAT TO WATCH bullet or thread into the most relevant primary INSIGHTS section when it sharpens the call. Each was a notable miss in the 2026-05-29 QC review when the category didn't exist:"
+        )
+        out.extend(underweighted_lines)
     return "\n".join(out)
 
 

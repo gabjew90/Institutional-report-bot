@@ -146,6 +146,29 @@ BANNED_META_NARRATION = [
     "to put this in context",
     "as a useful frame",
     "the analytical lens",
+    # 2026-05-29 QC additions — pulse shipped "cross-desk positioning
+    # color is..." in RECAP closing. Family of "positioning color" /
+    # "cross-desk color" phrases that describe SELL-SIDE TEXTURE rather
+    # than assert a view. Banker-filler dressed as commentary.
+    "cross-desk positioning color",
+    "cross-desk color",
+    "positioning color is",
+    # Banker-jargon framings that read as authority signals without
+    # adding content. "The binding constraint" and "the cleanest read"
+    # both let the model claim incisive analysis without committing to
+    # a call. Same family as "the textbook signature" above.
+    "the binding constraint",
+    "the cleanest read",
+    "the cleanest signal",
+    "the dominant signal",
+    "the dominant variable",
+    # Pulse-internal scaffolding that leaks: model writes "the setup is
+    # a directional dispersion trade rather than a timing trade" —
+    # "directional dispersion trade" is jargon AND template-scaffolded
+    # phrasing. Catches the bare phrase; the BARE_JARGON list below
+    # picks up "dispersion trade" in isolation.
+    "directional dispersion trade",
+    "directional bias trade",
 ]
 
 # Source-prefix story-connector pattern: "[Bank] [verb]s that..."
@@ -248,7 +271,21 @@ JARGON_WITH_TRANSLATIONS: dict[str, str] = {
     "coupon supply": "new Treasury bonds being auctioned",
     "issuance": "new supply of bonds (or stock)",
     "NII": "interest income banks earn from loans",
-    "bps": "hundredths of a percent",
+    "bps": "basis points (one-hundredth of a percent)",
+    "basis points": "basis points (one-hundredth of a percent)",
+    # 2026-05-29 QC: SCRUB rewrote "25-40 basis points" to "25-40
+    # hundredths of a percent" — a regression. The rule is FIRST-USE
+    # EXPLAIN, not ELIMINATE. The translation now keeps the term in
+    # the output and adds the parenthetical on first use only.
+    # Dispersion trade family — bank-jargon framings the model leans
+    # on as authority signals. Each gets a plain-English equivalent
+    # the writer can substitute on first use.
+    "dispersion trade": "a bet that stocks move in different directions, not that the index moves up or down",
+    "directional dispersion": "a bet on the direction of the spread between stocks (rather than the index direction)",
+    "pair trade": "long one stock or sector, short another — bet on the spread",
+    "relative value": "betting one asset will outperform another",
+    "rich-cheap": "expensive vs cheap relative to history",
+    "regime change": "a structural shift in how markets behave",
     # Short self-defining translation. The previous 13-word version
     # ("trend-following computer funds that buy when markets rise and sell
     # when they fall") was correct but broke prose rhythm when SCRUB
