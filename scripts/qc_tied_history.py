@@ -39,11 +39,15 @@ uid = int(r[0]["user_id"])
 
 hr(f"B. pipeline_events referencing user_id={uid} (last 50, newest first)")
 try:
+    # First check the actual schema:
+    cols = [c["name"] for c in conn.execute("PRAGMA table_info(pipeline_events)").fetchall()]
+    print(f"  pipeline_events columns: {cols}")
+    sub_col = "event_subtype" if "event_subtype" in cols else "sub_type"
     rows = conn.execute(
-        """SELECT created_at, event_type, sub_type,
-                  substr(data, 1, 200) AS data_preview
+        f"""SELECT created_at, event_type, {sub_col} AS sub_type,
+                  substr(payload, 1, 250) AS data_preview
              FROM pipeline_events
-            WHERE data LIKE ?
+            WHERE payload LIKE ?
             ORDER BY created_at DESC
             LIMIT 50""",
         (f"%{uid}%",),
@@ -59,11 +63,11 @@ except Exception as e:
 hr("C. Last 10 profile_user_failure events overall (any user)")
 try:
     rows = conn.execute(
-        """SELECT created_at, sub_type, substr(data, 1, 250) AS d
+        f"""SELECT created_at, {sub_col} AS sub_type, substr(payload, 1, 280) AS d
              FROM pipeline_events
             WHERE event_type = 'profile_user_failure'
             ORDER BY created_at DESC
-            LIMIT 10"""
+            LIMIT 20"""
     ).fetchall()
     for x in rows:
         d = (x["d"] or "").replace("\n", " ")
