@@ -2170,6 +2170,79 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             flush=True,
                         )
 
+            # Dormant-user sweep. Anyone with an existing profile who
+            # didn't show up in by_user (zero messages in the window)
+            # is invisible to the main refresh loop — they never get
+            # iterated, never get the activity-ramp treatment. Their
+            # scores stay frozen at whatever they had when last active.
+            # KsFs lived in this bug for 9 days, sitting at score 45
+            # while not having posted in over a month. Same hide
+            # behavior for dozens of other dormant ex-active users.
+            #
+            # Fix: rescore every dormant profile with msgs=0 in window.
+            # Activity multiplier = 0, so trader_score = receipts only.
+            # No Gemini call needed — just arithmetic on stored fields.
+            # Profile_text stays untouched (upsert COALESCEs Nones).
+            n_dormant = 0
+            seen_uids = set(by_user.keys())
+            for uid, prior in existing_profiles.items():
+                if uid in seen_uids:
+                    continue
+                # Skip users we just couldn't reach (no username = data
+                # corruption / orphan row).
+                username = prior.get("username")
+                display_name = prior.get("display_name")
+                if not username:
+                    continue
+                try:
+                    _ledger_d = db.compute_member_points(uid, days=14)
+                    _receipt_d = int(_ledger_d.get("points") or 0)
+                except Exception:
+                    _receipt_d = 0
+                # msgs=0 → multiplier=0 → chatter contribution = 0.
+                # New score = receipts only. Dormant users with no
+                # receipts drop to 0; dormant users with stale receipts
+                # (caller closes still in 14d window) keep their
+                # receipt component.
+                prior_trader = prior.get("trader_score")
+                prior_humor = prior.get("racial_humor_score")
+                rescored_trader = (
+                    max(0, min(100, _receipt_d))
+                    if prior_trader is not None else None
+                )
+                rescored_humor = (
+                    0 if prior_humor is not None else None
+                )
+                # last_seen stays as the prior value — they haven't
+                # posted, so no new last_seen to record. Use prior
+                # last_seen_message_at to keep the row coherent.
+                last_seen = prior.get("last_seen_message_at")
+                try:
+                    db.upsert_user_profile(
+                        user_id=uid,
+                        username=username,
+                        display_name=display_name,
+                        profile_text=(prior.get("profile_text") or ""),
+                        message_count_at_update=0,
+                        last_seen_message_at=last_seen,
+                        trader_score=rescored_trader,
+                        racial_humor_score=rescored_humor,
+                    )
+                    n_dormant += 1
+                except Exception as d_err:
+                    print(
+                        f"    dormant rescore failed for "
+                        f"{display_name or username}: {d_err}",
+                        flush=True,
+                    )
+            if n_dormant:
+                print(
+                    f"\nDormant sweep: rescored {n_dormant} users with "
+                    f"zero messages in the {days}-day window "
+                    f"(score → receipts-only).",
+                    flush=True,
+                )
+
             # trader_rank is now computed on-read via
             # db.get_global_trader_ranks() — no batch recompute needed.
             # See db.recompute_trader_ranks_on_profiles docstring for
