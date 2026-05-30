@@ -2183,9 +2183,28 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
             # Activity multiplier = 0, so trader_score = receipts only.
             # No Gemini call needed — just arithmetic on stored fields.
             # Profile_text stays untouched (upsert COALESCEs Nones).
+            # Fetch ALL existing profiles, not just the ones in
+            # by_user. The `existing_profiles` dict above was built
+            # via get_profiles_for_users(by_user.keys()) and only
+            # contains profiles for users with messages in the
+            # window — which is exactly the set we need to EXCLUDE
+            # from the dormant sweep. We need the COMPLEMENT.
             n_dormant = 0
             seen_uids = set(by_user.keys())
-            for uid, prior in existing_profiles.items():
+            try:
+                all_profile_rows = db.get_connection().execute(
+                    "SELECT user_id, username, display_name, "
+                    "       profile_text, trader_score, "
+                    "       racial_humor_score, last_seen_message_at "
+                    "  FROM user_profiles"
+                ).fetchall()
+                all_existing_profiles = {
+                    int(r["user_id"]): dict(r) for r in all_profile_rows
+                }
+            except Exception as e:
+                print(f"Dormant sweep: profile fetch failed: {e}", flush=True)
+                all_existing_profiles = {}
+            for uid, prior in all_existing_profiles.items():
                 if uid in seen_uids:
                     continue
                 # Skip users we just couldn't reach (no username = data
