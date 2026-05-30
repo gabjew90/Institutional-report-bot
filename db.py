@@ -3712,8 +3712,15 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
         +2 — Standalone close-only P&L screenshot showing a WIN
              (gain_pct > 0). No entry commitment but a documented
              winning outcome.
+        +2 — Standalone close-only screenshot with gain_pct=None
+             POSTED IN gain-loss-porn. Order tickets (Robinhood
+             "Sell to close — Filled at $X.XX") don't carry a gain
+             pill; the channel itself signals win (members use it
+             to flex P&L). Channel-based default upgrades these
+             from the conservative loss assumption.
         +1 — Standalone close-only P&L screenshot showing a LOSS
-             (gain_pct ≤ 0). Weakest receipt form.
+             (gain_pct ≤ 0, OR gain_pct=None outside gain-loss-porn).
+             Weakest receipt form.
 
          0 — Entry posted, no close, still within 14d AND before
              expiry. Pending judgment — no points yet, holds in
@@ -3776,14 +3783,25 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
     # never get scored. Anything ≥(N+1) days old still falls outside.
     cutoff = (now - timedelta(days=days + 1)).isoformat()
     ghost_age_cutoff = (now - timedelta(days=days)).isoformat()
+    # Join chat_messages to recover the source channel for each row.
+    # The channel name is the disambiguator for close-only screenshots
+    # where the order ticket doesn't carry a gain pill: gain-loss-porn
+    # is structurally a wins channel (members post P&L flexes there),
+    # so a close-only with gain_pct=None in that channel is presumed
+    # a win, not a loss. Without the join we have to assume loss for
+    # every gain-less close — which mis-scored DeeP FRieD as 11 losses
+    # on what were actually his win-of-the-month series posts.
     rows = get_connection().execute(
-        """SELECT posted_at, action, ticker, contract_type, strike,
-                  expiry, gain_pct, tracking_mode
-             FROM analyst_trades
-            WHERE author_id = ?
-              AND is_trade = 1
-              AND posted_at > ?
-            ORDER BY posted_at ASC""",
+        """SELECT at.posted_at, at.action, at.ticker, at.contract_type,
+                  at.strike, at.expiry, at.gain_pct, at.tracking_mode,
+                  cm.channel_name
+             FROM analyst_trades AS at
+        LEFT JOIN chat_messages AS cm
+               ON cm.discord_message_id = at.discord_message_id
+            WHERE at.author_id = ?
+              AND at.is_trade = 1
+              AND at.posted_at > ?
+            ORDER BY at.posted_at ASC""",
         (int(author_id), cutoff),
     ).fetchall()
 
@@ -3910,6 +3928,15 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
                 gv = float(g) if g is not None else None
             except (TypeError, ValueError):
                 gv = None
+            # Channel-based disambiguation for gain-less closes. Order
+            # tickets (Robinhood "Sell to close — Filled at $X.XX") don't
+            # carry a gain pill, so Gemini correctly extracts gain_pct=
+            # None. Members posting these in gain-loss-porn are flexing
+            # wins (the channel is structurally for that); members posting
+            # them elsewhere stay as the conservative loss default.
+            channel = (latest_close.get("channel_name") or "")
+            channel_lower = channel.lower()
+            in_winning_channel = "gain-loss-porn" in channel_lower
             if gv is not None and gv > 0:
                 screenshot_wins += 1
                 breakdown.append({
@@ -3917,6 +3944,18 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
                     "points": 2,
                     "ticker": key[0],
                     "gain_pct": gv,
+                })
+            elif gv is None and in_winning_channel:
+                # No gain pill visible, but channel signals win.
+                screenshot_wins += 1
+                breakdown.append({
+                    "kind": (
+                        "screenshot win — channel signal "
+                        "(gain-loss-porn, no gain pill on ticket, +2)"
+                    ),
+                    "points": 2,
+                    "ticker": key[0],
+                    "gain_pct": None,
                 })
             else:
                 screenshot_losses += 1

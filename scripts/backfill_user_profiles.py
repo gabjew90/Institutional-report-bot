@@ -507,8 +507,8 @@ For members:
 - **+3 if the position closes for a loss in the window** (no upgrade; commitment was real, the loss doesn't subtract).
 - **+2 (ghost penalty) if the entry has NO close AND has either passed its expiration date OR been open ≥14 days.** Total-loss assumption: −1 against the +3 entry award. An option that expires worthless without a posted close counts as ghost; a stock entry that's been sitting for 14 days without a close also counts.
 - **0 (pending) if the entry has no close yet, is still within the 14d window, and is before its expiry.** Held in suspense — not scored as ghost YET; the entry might still close or might trip the ghost rule on a later refresh.
-- **+2 per standalone winning screenshot** (close-only P&L card with gain > 0 and no matching entry commitment in the window).
-- **+1 per standalone losing screenshot** (close-only P&L card with gain ≤ 0). The weakest receipt — no commitment, negative outcome — but still credited for the honest red post.
+- **+2 per standalone winning screenshot** (close-only P&L card with gain > 0 and no matching entry commitment in the window). Order tickets posted in `gain-loss-porn` also score as +2 even without a visible gain pill — the channel is structurally for flexing wins, so a gain-less close-ticket there is presumed positive.
+- **+1 per standalone losing screenshot** (close-only P&L card with gain ≤ 0, OR a gain-less close ticket posted OUTSIDE gain-loss-porn). The weakest receipt — no commitment, negative outcome — but still credited for the honest red post.
 
 For callers (wins-only nerf):
 
