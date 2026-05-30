@@ -1986,6 +1986,98 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             except Exception as log_err:
                                 print(f"    (failure-event write failed: {log_err})",
                                       flush=True)
+                            # Thin-user rescore fallback. When Gemini
+                            # returns empty (often the case for thin-
+                            # history users — the model can't produce
+                            # a meaningful structured profile off 18
+                            # messages and the JSON-schema validator
+                            # gives back nothing), don't just `continue`
+                            # past — that locks the user at whatever
+                            # trader_score they had pre-fix forever
+                            # (Tied at #4 with score 55 lived on this
+                            # branch for 9 days). Instead, partial-
+                            # update just the trader_score and racism
+                            # score using the new activity multiplier
+                            # against their prior chatter estimate.
+                            # profile_text + rationales stay untouched
+                            # (upsert COALESCEs Nones). Tied at 18
+                            # msgs with prior trader_score 55 (mostly
+                            # chatter) gets rescored to 2 cleanly.
+                            prior = existing_profiles.get(uid) or {}
+                            prior_trader = prior.get("trader_score")
+                            prior_humor = prior.get("racial_humor_score")
+                            thin_user = len(msgs) < TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS
+                            if thin_user and (
+                                prior_trader is not None
+                                or prior_humor is not None
+                            ):
+                                try:
+                                    _ledger_fb = db.compute_member_points(uid, days=14)
+                                    _receipt_fb = int(_ledger_fb.get("points") or 0)
+                                except Exception:
+                                    _receipt_fb = 0
+                                _mult_fb = min(
+                                    1.0,
+                                    len(msgs) / TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS,
+                                )
+                                # Estimate prior chatter from prior
+                                # trader_score - prior_receipts. The
+                                # prior_receipts isn't stored, but for
+                                # thin users it's usually small/zero;
+                                # the multiplier is small enough that
+                                # a few-point over-estimate doesn't
+                                # move the result much.
+                                if prior_trader is not None:
+                                    prior_chatter = max(0, min(50, int(prior_trader)))
+                                    rescored_trader = max(
+                                        0,
+                                        min(
+                                            100,
+                                            round(prior_chatter * _mult_fb) + _receipt_fb,
+                                        ),
+                                    )
+                                else:
+                                    rescored_trader = None
+                                if prior_humor is not None:
+                                    rescored_humor = max(
+                                        0,
+                                        min(
+                                            100,
+                                            round(int(prior_humor) * _mult_fb),
+                                        ),
+                                    )
+                                else:
+                                    rescored_humor = None
+                                try:
+                                    # Pass the EXISTING profile_text
+                                    # so the upsert's NOT-NULL on that
+                                    # column stays satisfied. Other
+                                    # fields stay COALESCE'd via Nones
+                                    # → prior values preserved.
+                                    db.upsert_user_profile(
+                                        user_id=uid,
+                                        username=meta.get("username"),
+                                        display_name=meta.get("display_name"),
+                                        profile_text=(prior.get("profile_text") or ""),
+                                        message_count_at_update=len(msgs),
+                                        last_seen_message_at=(
+                                            msgs[-1]["timestamp"] if msgs else None
+                                        ),
+                                        trader_score=rescored_trader,
+                                        racial_humor_score=rescored_humor,
+                                    )
+                                    print(
+                                        f"    rescored {meta['display_name']} via fallback: "
+                                        f"trader {prior_trader}→{rescored_trader}, "
+                                        f"humor {prior_humor}→{rescored_humor}",
+                                        flush=True,
+                                    )
+                                    n_failure_empty -= 1  # rescore counts as recovery
+                                except Exception as fb_err:
+                                    print(
+                                        f"    fallback rescore write failed: {fb_err}",
+                                        flush=True,
+                                    )
                             continue
 
                         # Verify the profile's quoted phrases against
