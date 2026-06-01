@@ -123,6 +123,33 @@ BANNED_AI_TELL_REGEXES: list[tuple[str, str]] = [
     (r"\bcrypto\s+is\s+(?:the\s+)?(?:only|one)\s+(?:thing|place|market|asset)\s+(?:actually\s+|really\s+)?(?:trading|moving|open|live|active)\b", 'RECAP-misframe'),
     # Also catch the inverted "the only thing trading (right now) is crypto"
     (r"\bthe\s+only\s+(?:thing|market)\s+(?:actually\s+)?(?:trading|moving|open)\s+(?:right\s+now\s+)?is\s+crypto\b", 'RECAP-misframe'),
+    # Banker-tic family — "the [binding|dominant|cleanest|deciding|gating]
+    # [variable|constraint|signal|factor|read|driver]". This is the
+    # phrase-family taxonomy refactor the 2026-06-01 QC review called
+    # for. Without it every variant requires a manual add to
+    # BANNED_META_NARRATION:
+    #   2026-05-28: caught "the binding constraint" (added)
+    #   2026-05-29: caught "the cleanest read", "the dominant variable"
+    #               (added)
+    #   2026-06-01: SCRUB caught "binding constraint"/"regime change"
+    #               but missed "binding variable" in the RECAP
+    # One regex covers the whole authority-signal-without-content family
+    # so the next variant ("the gating constraint", "the deciding read",
+    # "the cleanest driver") catches on its own.
+    (
+        r"\bthe\s+(?:binding|dominant|cleanest|deciding|gating|operative)"
+        r"\s+(?:variable|constraint|signal|factor|read|driver|input)\b",
+        'banker-authority-signal',
+    ),
+    # Adjacent family: "[X] is the [binding|dominant|...] [variable|...]"
+    # — same authority-signal beat but in copular form ("the 4.6%
+    # unemployment forecast is the binding variable"). Stems on the
+    # same trigger words.
+    (
+        r"\bis\s+the\s+(?:binding|dominant|cleanest|deciding|gating|operative)"
+        r"\s+(?:variable|constraint|signal|factor|read|driver|input)\b",
+        'banker-authority-signal',
+    ),
 ]
 
 BANNED_META_NARRATION = [
@@ -154,14 +181,12 @@ BANNED_META_NARRATION = [
     "cross-desk color",
     "positioning color is",
     # Banker-jargon framings that read as authority signals without
-    # adding content. "The binding constraint" and "the cleanest read"
-    # both let the model claim incisive analysis without committing to
-    # a call. Same family as "the textbook signature" above.
-    "the binding constraint",
-    "the cleanest read",
-    "the cleanest signal",
-    "the dominant signal",
-    "the dominant variable",
+    # adding content. Specific instances ("the binding constraint",
+    # "the cleanest read", "the dominant variable") are now caught by
+    # the banker-authority-signal regex family in BANNED_AI_TELL_REGEXES
+    # above — no need to enumerate them here. The QC pattern was:
+    # add a new variant to this list every week, never catch the next
+    # one until it ships. The family regex closes the loop.
     # Pulse-internal scaffolding that leaks: model writes "the setup is
     # a directional dispersion trade rather than a timing trade" —
     # "directional dispersion trade" is jargon AND template-scaffolded

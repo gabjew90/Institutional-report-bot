@@ -125,6 +125,85 @@ def _classify_themes(
             carry Phase-B audit data (promoted clusters + near-misses)
             for downstream archiving / QC review. Pass None to skip.
     """
+    # PDF-level dedup. The 2026-06-01 corpus had 4 exact-duplicate
+    # title+source pairs out of 62 PDFs (~6%): The Market Ear's "6 tech
+    # charts" and "Ford flying materials" each appeared twice (Dropbox
+    # folder + email-forwarded copy), and "GS TMT SPEC SALES" /
+    # "DB Early Morning Reid" each had a duplicate row tagged with
+    # source='Unknown'. Each duplicate inflated bank/PDF counts in
+    # downstream clustering — TME contributes its primary themes twice,
+    # padding "ai infrastructure investment" PDF count by 2 and stance
+    # counts for whatever stance TME took.
+    #
+    # Dedup key: lowercased (title, source). Prefer the row with the
+    # non-"Unknown" source when there's a tie; fall back to the
+    # earlier-id row otherwise. Logged so the downstream stages can
+    # surface "had 62 PDFs in window, deduped to 58" cleanly.
+    deduped_analyses: list = []
+    seen_keys: dict[tuple[str, str], int] = {}  # (title_lc, source_lc) -> index
+    duplicate_drops: list[dict] = []
+    for a in analyses:
+        title = (getattr(a, "title", "") or "").strip().lower()
+        source = (getattr(a, "source", "") or "").strip().lower()
+        key = (title, source)
+        # If we've seen this exact key, drop the later row (typically
+        # a re-ingestion of the same file).
+        if key in seen_keys:
+            duplicate_drops.append({
+                "kind": "exact-key",
+                "title": title[:80],
+                "source": source,
+                "pdf_file_id": getattr(a, "pdf_file_id", None),
+            })
+            continue
+        # If we have a same-title row with the OTHER side being
+        # source='unknown', prefer the named-bank attribution. Walk
+        # the small set of titles we've already kept that match this
+        # one and decide.
+        title_only_match = None
+        for (kt, ks), idx in seen_keys.items():
+            if kt == title and ks != source and (ks == "unknown" or source == "unknown"):
+                title_only_match = (kt, ks, idx)
+                break
+        if title_only_match is not None:
+            kt, ks, idx = title_only_match
+            if ks == "unknown" and source != "unknown":
+                # Replace the kept Unknown row with this attributed one.
+                duplicate_drops.append({
+                    "kind": "unknown-source-replaced",
+                    "title": title[:80],
+                    "kept_source": source,
+                    "dropped_source": ks,
+                })
+                deduped_analyses[idx] = a
+                del seen_keys[(kt, ks)]
+                seen_keys[key] = idx
+                continue
+            else:
+                # Current row is unknown, kept row is attributed — drop current.
+                duplicate_drops.append({
+                    "kind": "unknown-source-dropped",
+                    "title": title[:80],
+                    "kept_source": ks,
+                    "dropped_source": source,
+                })
+                continue
+        seen_keys[key] = len(deduped_analyses)
+        deduped_analyses.append(a)
+    if duplicate_drops and discovery_audit is not None:
+        discovery_audit["pdf_dedup"] = {
+            "raw_pdf_count": len(analyses),
+            "deduped_pdf_count": len(deduped_analyses),
+            "drops": duplicate_drops,
+        }
+    if duplicate_drops:
+        import logging
+        logging.getLogger(__name__).info(
+            "PDF dedup: %d -> %d (dropped %d duplicates)",
+            len(analyses), len(deduped_analyses), len(duplicate_drops),
+        )
+    analyses = deduped_analyses
+
     # Per-tag accumulators
     tag_sources: dict[str, set[str]] = {}                            # tag -> banks discussing it
     tag_pdf_count: dict[str, int] = {}                               # tag -> count of PDFs touching it
@@ -536,6 +615,115 @@ def _classify_themes(
         }
 
     # =====================================================================
+    # CONTRARIAN-DIVERGENCE DETECTION
+    # =====================================================================
+    # The 2026-06-01 corpus had five explicitly contrarian / rotation
+    # titles ("Nobody Wants NVDA", "Sell in May", "IPO BOOM = MARKET
+    # TOP?", "What To Buy If Not AI? Top Goldman Trader Finds
+    # 'Scarcity' Elsewhere", "Speculation Nation", "10 charts that make
+    # us go hmmm") but the synthesizer led with "AI infrastructure is
+    # the trade and the market" and folded all five into the AI bear-
+    # case appendix. The structural bias toward bank-count gives multi-
+    # week thematic narratives an automatic moat over fresh single-bank
+    # contrarian calls.
+    #
+    # Detection: scan analyses for titles + insights matching contrarian
+    # signal patterns (negation of the lead theme, "if not X" framings,
+    # explicit "top?" / "speculation" / "bubble" markers, "sell" /
+    # "rotate out" language). When >=3 PDFs match across >=2 distinct
+    # banks, mark the contrarian signal as a first-class theme_map
+    # entry so it gets surfaced in theme_coverage instead of folded
+    # away. DRAFT then sees it as a candidate alongside the consensus
+    # theme.
+    #
+    # Selection criteria:
+    #   1. >=3 PDFs match a contrarian-signal regex
+    #   2. >=2 distinct bank sources contribute
+    #   3. The signal is not already a primary theme (no duplicate
+    #      coverage on top of an existing standalone theme)
+    # ---------------------------------------------------------------------
+    _CONTRARIAN_PATTERNS = [
+        # Explicit market-top / froth / speculation / bubble flags
+        (r"\b(?:market\s+top|speculation\s+nation|bubble\s+risk|froth(?:y)?\s+market|euphoria|melt[- ]up\s+top)\b", "froth/top"),
+        # "Sell in May", "go away", calendar contrarian
+        (r"\b(?:sell\s+in\s+may|go\s+away|rotate\s+out|rotation\s+out|de-?risk(?:ing)?\s+the\s+book)\b", "calendar/rotation"),
+        # "Nobody wants X" — TME-style contrarian flag
+        (r"\bnobody\s+wants\b", "no-bid contrarian"),
+        # Explicit "if not AI" / "what to buy if not" rotation framings
+        (r"\b(?:if\s+not\s+(?:AI|nvda|tech)|what\s+to\s+buy\s+if\s+not|scarcity\s+elsewhere|away\s+from\s+(?:AI|tech))\b", "rotate-out-of-lead"),
+        # "Charts that make us go hmmm" — mixed signals flag
+        (r"\b(?:make\s+us\s+go\s+hmm+|paradoxes?\s+stack(?:ing)?|charts?\s+do\s+not\s+add\s+up)\b", "mixed-signals"),
+        # Explicit "[stock] TOP?" / "[index] is rolling over"
+        (r"(?:\?{1,}|\bTOP\?|\brolling\s+over|peak(?:ed)?\s+(?:already|behind))", "explicit-top-flag"),
+        # Bearish contrarian on the lead AI/tech complex
+        (r"\b(?:nvda\s+(?:is\s+)?topping|ai\s+(?:capex\s+)?(?:bubble|peak|cycle\s+top|saturation))\b", "lead-theme-bearish"),
+    ]
+    _contrarian_compiled = [
+        (re.compile(p, re.IGNORECASE), label)
+        for p, label in _CONTRARIAN_PATTERNS
+    ]
+
+    contrarian_matches: list[dict] = []
+    for a in analyses:
+        title = (getattr(a, "title", "") or "").strip()
+        source = (getattr(a, "source", "Unknown") or "").strip()
+        # Scan title + each insight string for any contrarian pattern.
+        haystack_parts = [title]
+        for ins in (getattr(a, "key_insights", []) or []):
+            haystack_parts.append(ins or "")
+        for tr in (getattr(a, "trade_ideas", []) or []):
+            haystack_parts.append(getattr(tr, "thesis", "") or "")
+            haystack_parts.append(getattr(tr, "instrument", "") or "")
+        haystack = " | ".join(p for p in haystack_parts if p)
+        matched_labels: list[str] = []
+        for pattern, label in _contrarian_compiled:
+            if pattern.search(haystack):
+                matched_labels.append(label)
+        if matched_labels:
+            contrarian_matches.append({
+                "pdf_file_id": getattr(a, "pdf_file_id", None),
+                "title": title[:120],
+                "source": source,
+                "labels": sorted(set(matched_labels)),
+            })
+
+    if contrarian_matches:
+        c_banks = {m["source"] for m in contrarian_matches}
+        c_pdfs = {m["pdf_file_id"] for m in contrarian_matches if m["pdf_file_id"]}
+        n_banks = len(c_banks)
+        n_pdfs = len(c_pdfs) if c_pdfs else len(contrarian_matches)
+        # Promote only when corpus signal is strong enough (>=3 PDFs
+        # across >=2 banks). One-off contrarian opinions don't earn a
+        # slot.
+        if n_pdfs >= 3 and n_banks >= 2:
+            theme_map["consensus-contrarian / rotate-out-of-lead"] = {
+                "banks": n_banks,
+                "pdfs": n_pdfs,
+                "sources": sorted(c_banks),
+                "supportive": 0,
+                "skeptical": n_banks,  # by construction these are skeptical of the lead
+                "neutral": 0,
+                "discovered": False,
+                "non_bank_only": c_banks.issubset(NON_BANK_SOURCES),
+                "sibling_canonicals": [],
+                "contrarian_to_lead": True,
+                "contrarian_signal_labels": sorted({
+                    lab for m in contrarian_matches for lab in m["labels"]
+                }),
+                "contrarian_titles": [m["title"] for m in contrarian_matches[:8]],
+            }
+        if discovery_audit is not None:
+            discovery_audit["contrarian_scan"] = {
+                "matches": len(contrarian_matches),
+                "banks": n_banks,
+                "pdfs": n_pdfs,
+                "promoted": n_pdfs >= 3 and n_banks >= 2,
+                "signal_labels": sorted({
+                    lab for m in contrarian_matches for lab in m["labels"]
+                }),
+            }
+
+    # =====================================================================
     # CLOSE-STYLE ASSIGNMENT
     # =====================================================================
     # Structural fix for the "identical template across themes" QC flag
@@ -677,6 +865,7 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
     discovered_lines: list[str] = []
     non_bank_lines: list[str] = []
     underweighted_lines: list[str] = []
+    contrarian_lines: list[str] = []
 
     # Pass 1: identify sibling groups so we can render the highest-bank-count
     # canonical per group as the primary line and the rest as sub-bullets.
@@ -797,7 +986,21 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
         # a distinct "easy to drop, possibly worth surfacing" category
         # instead of mixed in with the primary list where they get
         # ranked away.
-        if info.get("discovered"):
+        if info.get("contrarian_to_lead"):
+            # Append the signal labels + 1-2 sample titles so DRAFT can
+            # see WHAT the contrarian voices are saying, not just that
+            # they exist. Without this DRAFT might know there's a
+            # contrarian theme but not have the specific rotate-out
+            # framings to write the section.
+            labels = info.get("contrarian_signal_labels") or []
+            titles = info.get("contrarian_titles") or []
+            extra = []
+            if labels:
+                extra.append(f"      signal kinds: {', '.join(labels)}")
+            for t in titles[:3]:
+                extra.append(f"      source title: {t}")
+            contrarian_lines.append("\n".join([row_block, *extra]))
+        elif info.get("discovered"):
             discovered_lines.append(row_block)
         elif info.get("non_bank_only"):
             non_bank_lines.append(row_block)
@@ -831,6 +1034,12 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
             "UNDERWEIGHTED CANDIDATES — Tier-1 or multi-tier 3+ bank coverage outside the natural top-6 by bank count. Easy to miss in DRAFT's top-down selection; surface at least one as a WHAT TO WATCH bullet or thread into the most relevant primary INSIGHTS section when it sharpens the call. Each was a notable miss in the 2026-05-29 QC review when the category didn't exist:"
         )
         out.extend(underweighted_lines)
+    if contrarian_lines:
+        out.append("")
+        out.append(
+            "CONTRARIAN / ROTATE-OUT SIGNAL — multi-PDF, multi-bank corpus voices explicitly contradicting or warning against the dominant lead theme (AI / consensus narrative). The 2026-06-01 QC review found five contrarian titles in the corpus (Nobody Wants NVDA, Sell in May, IPO BOOM = MARKET TOP?, What To Buy If Not AI, Speculation Nation) all folded into the AI bear-case appendix. When this category surfaces, do NOT bury it in an appendix — give it a dedicated INSIGHTS slot named in the form of the contrarian call, OR a top-of-WATCH bullet naming the specific rotate-out instrument lean. The bullet stance is intentionally skeptical (no support count); the trade lean should be the corresponding rotation (out of $NVDA into $SPY value names, $RSP vs $SPY, $IWM, dividend ETFs, etc.):"
+        )
+        out.extend(contrarian_lines)
     return "\n".join(out)
 
 
