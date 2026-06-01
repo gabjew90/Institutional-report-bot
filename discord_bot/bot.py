@@ -1273,6 +1273,45 @@ _OCR_INLINE_TRUNCATE = 800
 # Each search returns up to 20 matching rows.
 _CHAT_SEARCH_MAX_ROUNDS = 3
 _CHAT_SEARCH_RESULT_LIMIT = 20
+# Time-window queries return more rows because the asker wants
+# coverage of an entire span, not just keyword matches. 200 caps
+# the embed size at ~16k chars even on a busy channel hour.
+_CHAT_TIME_WINDOW_RESULT_LIMIT = 200
+
+
+def _build_runtime_system_instruction() -> str:
+    """Return the system instruction with a CURRENT TIME header
+    prepended.
+
+    Why this exists: time-window questions ("what was discussed
+    5-9pm EST") require the model to know "now" so it can compute
+    start_iso/end_iso for the search_chat_messages tool. Without
+    this header the model has to infer the current time from the
+    recent-chat timestamps — fragile and date-blind on quiet days.
+
+    Header format (3 lines):
+      CURRENT TIME (UTC):    YYYY-MM-DD HH:MM:SS UTC, Sunday
+      CURRENT TIME (ET):     YYYY-MM-DD HH:MM ET (Sunday evening)
+      Window-tool hint:      single-line reminder of the conversion
+    """
+    now_utc = datetime.now(pytz.UTC)
+    try:
+        et = pytz.timezone("America/New_York")
+        now_et = now_utc.astimezone(et)
+        et_label = now_et.strftime("%Y-%m-%d %H:%M %Z (%A)")
+    except Exception:
+        et_label = "(timezone lookup failed)"
+    header = (
+        f"CURRENT TIME (UTC):    "
+        f"{now_utc.strftime('%Y-%m-%d %H:%M:%S')} UTC, "
+        f"{now_utc.strftime('%A')}\n"
+        f"CURRENT TIME (ET):     {et_label}\n"
+        f"When the asker says a local time (5pm EST, this morning, "
+        f"last hour), convert to UTC before passing as start_iso/"
+        f"end_iso to search_chat_messages.\n\n"
+        f"---\n\n"
+    )
+    return header + _ASK_SYSTEM_INSTRUCTION
 
 
 def _build_chat_search_tool():
@@ -1285,19 +1324,29 @@ def _build_chat_search_tool():
             types.FunctionDeclaration(
                 name="search_chat_messages",
                 description=(
-                    "Search this Discord server's chat history for "
-                    "messages containing a keyword. Use this ONLY when "
-                    "the asker references something the room discussed "
-                    "in the past that you don't already have in your "
-                    "pre-injected context (Recent channel chat covers "
-                    "only the last 50 msgs / 24h of THIS channel; "
-                    "subject-verbatim covers up to 25 msgs per user "
-                    "explicitly mentioned in the question). Returns up "
-                    "to 20 matching messages with author, channel, "
-                    "timestamp, and content. Do NOT call this for "
-                    "current events that need Google Search, or for "
-                    "anything already visible in your pre-injected "
-                    "blocks."
+                    "Search this Discord server's chat history. Two "
+                    "shapes:\n"
+                    "(A) KEYWORD search — pass `keyword` (and optionally "
+                    "`days`, `username`, `channel_name`). Returns "
+                    "matching messages within the trailing `days`-day "
+                    "window. Use for 'what did kloh say about TSLA' or "
+                    "'has BK ever mentioned QQQ'.\n"
+                    "(B) TIME-WINDOW retrieval — pass `start_iso` AND "
+                    "`end_iso` (and optionally `channel_name`), leave "
+                    "`keyword` empty. Returns up to 200 messages "
+                    "posted between those two UTC timestamps. Use for "
+                    "'what was discussed between 5-9pm EST', 'summarize "
+                    "the last hour of chat', 'recap this afternoon's "
+                    "conversation'. You compute start_iso and end_iso "
+                    "yourself by reading CURRENT TIME from the system "
+                    "header (in UTC), converting any user-stated local "
+                    "times accordingly, and formatting as ISO-8601 "
+                    "(2026-05-31T22:00:00Z).\n"
+                    "Use this ONLY when the asker references something "
+                    "not already visible in your pre-injected context "
+                    "(Recent channel chat covers only ~50 msgs / 24h of "
+                    "THIS channel). Do NOT call for current events that "
+                    "need Google Search."
                 ),
                 parameters=types.Schema(
                     type=types.Type.OBJECT,
@@ -1305,38 +1354,64 @@ def _build_chat_search_tool():
                         "keyword": types.Schema(
                             type=types.Type.STRING,
                             description=(
-                                "Substring to match (case-insensitive) "
-                                "against message content AND OCR'd "
-                                "image text. Be SPECIFIC — 'CRWV' or "
-                                "'powell speech', not generic words "
-                                "like 'the' or 'stock'."
+                                "Shape A. Substring to match "
+                                "(case-insensitive) against message "
+                                "content AND OCR'd image text. Be "
+                                "SPECIFIC — 'CRWV' or 'powell speech', "
+                                "not generic words like 'the' or 'stock'. "
+                                "Leave empty for shape B."
                             ),
                         ),
                         "days": types.Schema(
                             type=types.Type.INTEGER,
                             description=(
-                                "How many days back to search. "
-                                "Default 30. Hard cap 180 (the chat "
-                                "retention window)."
+                                "Shape A. How many days back to search "
+                                "for the keyword. Default 30. Hard cap "
+                                "180 (chat retention window). Ignored "
+                                "when start_iso/end_iso are set."
                             ),
                         ),
                         "username": types.Schema(
                             type=types.Type.STRING,
                             description=(
-                                "Optional. Scope the search to this "
-                                "user's messages only (use their "
-                                "Discord username, not display name)."
+                                "Optional. Scope to this user's "
+                                "messages only (use their Discord "
+                                "username, not display name)."
                             ),
                         ),
                         "channel_name": types.Schema(
                             type=types.Type.STRING,
                             description=(
                                 "Optional. Scope to a specific channel "
-                                "name (e.g. '💬-stonks-yapping-💬')."
+                                "name (e.g. '💬-stonks-yapping-💬'). "
+                                "If unset on a time-window query, "
+                                "returns chat across ALL ingested "
+                                "channels."
+                            ),
+                        ),
+                        "start_iso": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Shape B. UTC ISO-8601 start of the "
+                                "time window (e.g. "
+                                "'2026-05-31T22:00:00Z' for 22:00 UTC "
+                                "= 5pm EST). When set together with "
+                                "end_iso, returns all messages in the "
+                                "window (no keyword filter unless one "
+                                "is also passed). YOU compute the UTC "
+                                "value from CURRENT TIME in the system "
+                                "header + the user's stated local time."
+                            ),
+                        ),
+                        "end_iso": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Shape B. UTC ISO-8601 end of the time "
+                                "window. Must be later than start_iso. "
+                                "See start_iso for the conversion rule."
                             ),
                         ),
                     },
-                    required=["keyword"],
                 ),
             ),
         ],
@@ -1345,10 +1420,30 @@ def _build_chat_search_tool():
 
 async def _execute_chat_search(args: dict) -> dict:
     """Run the search_chat_messages tool call against the local DB.
-    Returns a dict shaped for Gemini's function_response part."""
+    Returns a dict shaped for Gemini's function_response part.
+
+    Two shapes accepted (see tool description in _build_chat_search_tool):
+      (A) keyword search — keyword required, trailing days window
+      (B) time-window retrieval — start_iso AND end_iso required,
+          keyword optional. Returns more rows (200 vs 20) since the
+          asker wants window coverage rather than match density.
+    """
     keyword = (args.get("keyword") or "").strip()
-    if not keyword:
-        return {"error": "keyword is required", "matches": []}
+    start_iso = (args.get("start_iso") or "").strip() or None
+    end_iso = (args.get("end_iso") or "").strip() or None
+    has_window = bool(start_iso) and bool(end_iso)
+
+    if not keyword and not has_window:
+        return {
+            "error": (
+                "Provide either `keyword` (shape A) or BOTH "
+                "`start_iso` AND `end_iso` (shape B). To summarize "
+                "a time window with no specific keyword, pass just "
+                "the two ISO timestamps."
+            ),
+            "matches": [],
+        }
+
     days = args.get("days") or 30
     try:
         days = max(1, min(180, int(days)))
@@ -1356,17 +1451,60 @@ async def _execute_chat_search(args: dict) -> dict:
         days = 30
     username = args.get("username")
     channel_name = args.get("channel_name")
+
+    # Validate ISO timestamps shape so the tool can return a clean
+    # error instead of leaking the SQL/parse error to the model. Accepts
+    # the common Z-suffix form ('2026-05-31T22:00:00Z') and the
+    # numeric-offset form ('2026-05-31T22:00:00+00:00').
+    if has_window:
+        from datetime import datetime as _dt
+        for label, val in (("start_iso", start_iso), ("end_iso", end_iso)):
+            try:
+                # SQLite text-comparison only needs a stable ISO prefix;
+                # explicit parse here is for validation feedback to the
+                # model.
+                _dt.fromisoformat(val.replace("Z", "+00:00"))
+            except (ValueError, AttributeError):
+                return {
+                    "error": (
+                        f"{label}={val!r} is not a valid ISO-8601 "
+                        f"timestamp. Use UTC like "
+                        f"'2026-05-31T22:00:00Z' or "
+                        f"'2026-05-31T22:00:00+00:00'."
+                    ),
+                    "matches": [],
+                }
+        # SQLite chat_messages.posted_at is stored as ISO text. SQLite
+        # text comparison treats Z-suffix and +00:00 differently from
+        # each other and from the space-separator form. Normalize the
+        # window bounds to the same shape as stored rows.
+        from db import _normalize_ts
+        start_iso = _normalize_ts(start_iso)
+        end_iso = _normalize_ts(end_iso)
+        limit = _CHAT_TIME_WINDOW_RESULT_LIMIT
+    else:
+        limit = _CHAT_SEARCH_RESULT_LIMIT
+
     try:
         rows = db.search_chat_messages_for_ask(
-            keyword=keyword,
+            keyword=keyword or None,
             days=days,
             username=username,
             channel_name=channel_name,
-            limit=_CHAT_SEARCH_RESULT_LIMIT,
+            start_iso=start_iso,
+            end_iso=end_iso,
+            limit=limit,
         )
     except Exception as e:
         log.warning(f"search_chat_messages tool exec failed: {e}")
         return {"error": str(e)[:200], "matches": []}
+
+    # Time-window queries return newest-first per SQL; flip to
+    # chronological for the model (easier to summarize a window
+    # in order).
+    if has_window:
+        rows = list(reversed(rows))
+
     matches = [
         {
             "author": (
@@ -1382,19 +1520,28 @@ async def _execute_chat_search(args: dict) -> dict:
         }
         for r in rows
     ]
-    log.info(
-        f"chat_search tool: keyword={keyword!r} days={days} "
-        f"username={username!r} channel={channel_name!r} → "
-        f"{len(matches)} matches"
-    )
+    if has_window:
+        log.info(
+            f"chat_search tool (window): {start_iso} → {end_iso} "
+            f"channel={channel_name!r} username={username!r} "
+            f"keyword={keyword!r} → {len(matches)} rows"
+        )
+    else:
+        log.info(
+            f"chat_search tool (keyword): keyword={keyword!r} days={days} "
+            f"username={username!r} channel={channel_name!r} → "
+            f"{len(matches)} matches"
+        )
     return {
         "matches": matches,
         "count": len(matches),
         "filters": {
-            "keyword": keyword,
-            "days": days,
+            "keyword": keyword or None,
+            "days": days if not has_window else None,
             "username": username,
             "channel_name": channel_name,
+            "start_iso": start_iso,
+            "end_iso": end_iso,
         },
     }
 
@@ -1892,7 +2039,7 @@ async def _answer_with_gemini(
         ]
 
         config = types.GenerateContentConfig(
-            system_instruction=_ASK_SYSTEM_INSTRUCTION,
+            system_instruction=_build_runtime_system_instruction(),
             tools=[
                 types.Tool(google_search=types.GoogleSearch()),
                 _build_chat_search_tool(),
@@ -2090,7 +2237,7 @@ async def _answer_with_gemini(
             )
             try:
                 retry_config = types.GenerateContentConfig(
-                    system_instruction=_ASK_SYSTEM_INSTRUCTION,
+                    system_instruction=_build_runtime_system_instruction(),
                     tools=[
                         types.Tool(google_search=types.GoogleSearch()),
                         _build_chat_search_tool(),

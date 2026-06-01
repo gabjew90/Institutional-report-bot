@@ -3477,52 +3477,84 @@ def lookup_user_ranks(
 
 
 def search_chat_messages_for_ask(
-    keyword: str,
+    keyword: str | None = None,
     *,
     days: int = 30,
     username: str | None = None,
     channel_name: str | None = None,
+    start_iso: str | None = None,
+    end_iso: str | None = None,
     limit: int = 20,
 ) -> list[dict]:
     """Substring search across chat_messages for /ask tool-calling.
 
-    Case-insensitive LIKE on content AND image_ocr_text. Optional
-    filters narrow to a specific user (by username) or channel.
-    Returns newest-first up to `limit` rows.
+    Three lookup modes, depending on which params are set:
+
+      1. KEYWORD search (keyword set):
+         Case-insensitive LIKE on content AND image_ocr_text within
+         the trailing `days`-day window. Original behavior.
+      2. TIME-WINDOW retrieval (start_iso AND end_iso set,
+         keyword empty): returns ALL messages posted between
+         start_iso and end_iso (UTC ISO strings), filtered by
+         optional username/channel. No keyword needed — SV's
+         "what was discussed between 5-9pm EST" lands here.
+      3. KEYWORD + WINDOW (both keyword and start/end set):
+         keyword match within the explicit window. Use when the
+         asker references a topic at a specific time.
+
+    Returns newest-first up to `limit` rows. Caller is responsible
+    for the limit — recommended ~200 for time-window queries (more
+    coverage), ~20-50 for keyword queries (matches are sparse).
 
     Used by Gemini's function-calling tool when the asker references
     historical chat content not present in the pre-injected
     subject-verbatim block. Lets the model "look up" what the room
-    said about a topic / user / event without us trying to predict
-    every possible lookup at prompt-build time.
+    said about a topic / user / event / time-window without us
+    trying to predict every possible lookup at prompt-build time.
     """
-    if not keyword or not keyword.strip():
-        return []
     from datetime import datetime, timedelta, timezone
-    cutoff = (
-        datetime.now(timezone.utc) - timedelta(days=int(days))
-    ).isoformat()
+    keyword = (keyword or "").strip() or None
+    has_window = bool(start_iso) and bool(end_iso)
+    if not keyword and not has_window:
+        return []
 
-    sql_parts = [
+    sql_parts: list[str] = [
         """SELECT discord_message_id, author_username, author_display,
                   channel_name, content, posted_at, image_ocr_text
-             FROM chat_messages
-            WHERE posted_at >= ?
-              AND (
-                  LOWER(COALESCE(content, '')) LIKE ?
-                  OR LOWER(COALESCE(image_ocr_text, '')) LIKE ?
-              )"""
+             FROM chat_messages"""
     ]
-    needle = f"%{keyword.lower().strip()}%"
-    params: list = [cutoff, needle, needle]
+    where: list[str] = []
+    params: list = []
+
+    if has_window:
+        where.append("posted_at >= ?")
+        params.append(start_iso)
+        where.append("posted_at <= ?")
+        params.append(end_iso)
+    else:
+        # Trailing days window (legacy keyword-only behavior).
+        cutoff = (
+            datetime.now(timezone.utc) - timedelta(days=int(days))
+        ).isoformat()
+        where.append("posted_at >= ?")
+        params.append(cutoff)
+
+    if keyword:
+        needle = f"%{keyword.lower()}%"
+        where.append(
+            "(LOWER(COALESCE(content, '')) LIKE ? "
+            "OR LOWER(COALESCE(image_ocr_text, '')) LIKE ?)"
+        )
+        params.extend([needle, needle])
 
     if username and username.strip():
-        sql_parts.append("AND LOWER(author_username) = ?")
+        where.append("LOWER(author_username) = ?")
         params.append(username.strip().lower())
     if channel_name and channel_name.strip():
-        sql_parts.append("AND channel_name = ?")
+        where.append("channel_name = ?")
         params.append(channel_name.strip())
 
+    sql_parts.append("WHERE " + " AND ".join(where))
     sql_parts.append("ORDER BY posted_at DESC LIMIT ?")
     params.append(int(limit))
 
