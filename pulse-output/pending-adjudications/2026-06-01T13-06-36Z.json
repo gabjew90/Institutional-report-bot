@@ -1,0 +1,309 @@
+{
+  "pulse_date": "2026-06-01",
+  "window_label": "since-last-daily (2026-05-29T13:20)",
+  "themes": [
+    {
+      "theme": "ai infrastructure investment",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 2,
+        "neutral": 14
+      },
+      "consensus_view": "Banks broadly agree that AI infrastructure spending is the dominant earnings driver across hardware, semis, and power, though a minority warn the rally is now leaning on positioning (levered ETFs) and unit economics that may not justify the spend.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure spending is driving an outsized share of S&P 500 earnings growth and hardware revenue beats.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Barclays",
+            "BofA Securities",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "The beneficiaries of AI infrastructure investment will account for roughly half of S&P 500 EPS growth",
+            "DELL should trade higher on an earnings beat & better-than-expected FY27 guidance",
+            "The ramp in AI demand thus far in '26 has been astonishing.",
+            "surging demand outpacing the capacity being built resulting in sustainably strong demand",
+            "Semiconductors, Techm Hardware and Industrials... swept up by a more powerful structural influence of Hyperscaler capex."
+          ]
+        },
+        {
+          "claim": "Demand for AI compute is outrunning supply, shifting pricing power to hardware and memory suppliers.",
+          "banks_for": [
+            "JPMorgan",
+            "BofA Securities",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "pricing power has shifted decisively back to suppliers",
+            "surging demand outpacing the capacity being built resulting in sustainably strong demand",
+            "ASML's visibility into 2027 and 2028 only suggests that the semiconductor capex cycle has more upside.",
+            "Dell is being re-priced for extreme monetisation of AI compute infrastructure demand"
+          ]
+        },
+        {
+          "claim": "The AI infrastructure trade is the largest and most-traded theme in the market, with investors positioned accordingly.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "the market has been rational in trading the largest current theme",
+            "investors continue to climb a Tech cycle wall of worry"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI rally is supported by genuine fundamentals or increasingly by market-structure flows and questionable unit economics.",
+          "banks_for": [
+            "Barclays",
+            "BofA Securities",
+            "UBS"
+          ],
+          "for_evidence": "The ramp in AI demand thus far in '26 has been astonishing.",
+          "banks_against": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "against_evidence": "the AI trade is no longer just being driven by fundamentals"
+        },
+        {
+          "claim": "Whether current enterprise AI spending is producing useful output to justify the capex.",
+          "banks_for": [
+            "BofA Securities",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "surging demand outpacing the capacity being built resulting in sustainably strong demand",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "token consumption is increasingly difficult to tie to useful output"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait status",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 12
+      },
+      "consensus_view": "Banks broadly flag the Strait of Hormuz closure as a live oil supply and inflation risk, but split on whether a US-Iran deal is imminent or the closure drags into September.",
+      "facts_agreed": [
+        {
+          "claim": "The Strait of Hormuz status is a key live catalyst for oil supply, inflation, and broader risk markets, widely referenced across desks.",
+          "banks_for": [
+            "ANZ Research",
+            "Citadel Securities",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "Nomura",
+            "RBC",
+            "Rabobank",
+            "TSL Research Group",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz reopening prospects",
+            "Strait of Hormuz energy bottleneck",
+            "Strait of Hormuz energy shipments",
+            "Strait of Hormuz re-opening",
+            "Hormuz Strait energy supply disruption",
+            "US-Iran Strait of Hormuz tensions",
+            "Strait of Hormuz tanker transits",
+            "Hormuz maritime chokepoint closure",
+            "Strait of Hormuz supply disruption",
+            "Strait of Hormuz transit disruption",
+            "Persian Gulf logistical bottlenecks",
+            "Strait of Hormuz closure"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Timing of a US-Iran deal and Strait reopening",
+          "banks_for": [
+            "Citadel Securities"
+          ],
+          "for_evidence": "We are more constructive than consensus on the prospects for a US-Iran deal",
+          "banks_against": [
+            "Rabobank"
+          ],
+          "against_evidence": "Strait is likely to remain mostly closed through to September"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran ceasefire",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Banks broadly treat a US-Iran ceasefire as a live near-term catalyst that has already driven oil lower and equities higher, but most desks have not staked a directional call beyond flagging it as a rotation risk.",
+      "facts_agreed": [
+        {
+          "claim": "Mounting hopes for a US-Iran peace deal have been a key driver of the recent risk-on tone, pushing oil down and equities up.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "a real US-Iran deal would likely turn that risk-on tone into a rotation",
+            "markets put in a strong performance overall, driven by mounting hopes for some kind of peace deal"
+          ]
+        },
+        {
+          "claim": "Major desks are tracking the US-Iran ceasefire as an active negotiation and a primary macro catalyst this window.",
+          "banks_for": [
+            "ANZ Research",
+            "Barclays",
+            "Bloomberg",
+            "Citadel Securities",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "putative peace deal with Iran",
+            "Iran peace deal de-escalation",
+            "US-Iran conflict resolution",
+            "US-Iran truce extension",
+            "US-Iran ceasefire negotiations",
+            "US-Iran ceasefire talks",
+            "US-Iran MoU ceasefire extension",
+            "US/Iran ceasefire negotiations",
+            "US-Iran ceasefire deal"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "tech sector momentum",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 3,
+        "neutral": 3
+      },
+      "consensus_view": "Tech and software stocks have ripped higher with major inflows and a multi-week winning streak, but banks are split on whether the rally can continue given extreme crowding and stretched positioning.",
+      "facts_agreed": [
+        {
+          "claim": "Software has staged a powerful multi-week rally with strong institutional participation.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Software ETF on pace for 7th straight weekly gain up 36% over that span.",
+            "Software was up 20%+ in May, its best month since 2002"
+          ]
+        },
+        {
+          "claim": "Tech positioning and crowding have reached extreme levels across institutional metrics.",
+          "banks_for": [
+            "The Market Ear",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "The move is now visible across virtually every institutional positioning metric.",
+            "Key near-term risk is a reversal in Tech/AI momentum and beta crowding"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the tech/equity rally can continue from here",
+          "banks_for": [
+            "The Market Ear"
+          ],
+          "for_evidence": "Software ETF on pace for 7th straight weekly gain up 36% over that span.",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "the tactical setup is getting full and the yards will likely be harder"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "levered single stock etf growth",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Banks broadly flag the rapid doubling of levered single-stock ETF assets as a live positioning risk, with Goldman and Nomura quantifying the buildup and The Market Ear warning the unwind could be disorderly.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag levered single-stock ETFs and the leverage they introduce as a key market structure dynamic to watch.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Nomura",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Leveraged ETF rebalancing flows",
+            "MSCI rebalance impact on leverage",
+            "Systemic leverage in index swaps and ETFs",
+            "Reflexivity of levered ETF exposure",
+            "there are a number of catalysts for this to suffer a \"messy\" unwind"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "market breadth expansion",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Banks agree the rally is broadening beyond mega-cap tech, with equal-weight indices, small-caps, and wider earnings revisions joining the move.",
+      "facts_agreed": [
+        {
+          "claim": "The rally is widening beyond mega-cap tech as equal-weight indices and broader earnings sentiment improve.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "RBC Capital Markets"
+          ],
+          "evidence_quotes": [
+            "The equal-weight S&P 500 and the Dow made new highs Tuesday.",
+            "earnings sentiment (the rate of upward EPS estimate revisions) is now improving broadly"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "middle east conflict impacts",
+      "reason": "falsifiable_prediction bank not in inputs: 'IEA'"
+    },
+    {
+      "theme": "US Strategic Petroleum Reserve drawdown",
+      "reason": "falsifiable_prediction bank not in inputs: 'IEA'"
+    }
+  ]
+}
