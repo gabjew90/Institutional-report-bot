@@ -2138,18 +2138,57 @@ async def _answer_with_gemini(
 
         ask_model = settings.ask_gemini_model or settings.gemini_model
 
+        # Token-budget reservation BEFORE the call. /ask assembles
+        # a large prompt (WHO'S TALKING + analyst log + recent chat +
+        # question) that can hit 50k chars (~13k tokens). With the
+        # tool-call loop, total per-question spend can hit 50k+ tokens
+        # on a thrashing question. Reserve conservatively for the full
+        # loop budget; record actual after.
+        from ai_analysis.token_budget import get_budget, BudgetExceeded
+        # Heuristic: input ~user_content chars / 4 + per-round 5000
+        # output cap, scaled by max rounds.
+        _ask_est_per_round = (
+            len(user_content) // 4 + 5000 + 500
+        )
+        _ask_est_total = _ask_est_per_round * (_CHAT_SEARCH_MAX_ROUNDS + 1)
+        try:
+            get_budget().reserve_or_raise(
+                estimated_tokens=_ask_est_total,
+                caller=f"ask:{(question or '')[:60]}",
+            )
+        except BudgetExceeded as e:
+            log.warning(f"/ask blocked by token budget: {e}")
+            return discord.Embed(
+                description=(
+                    "→ Daily token budget reached — try again after "
+                    "UTC midnight, or ask a quicker question."
+                ),
+                color=0xE67E22,
+            )
+
         # Tool-calling loop. On each round we call Gemini; if the
         # response has function_call parts, we execute them and feed
         # the results back. Loop exits when the model returns a
         # text-only response (the final answer) or we hit the
         # iteration cap.
         response = None
+        _ask_actual_total = 0
         for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
             response = await client.aio.models.generate_content(
                 model=ask_model,
                 contents=contents,
                 config=config,
             )
+            # Tally actual usage per round so the budget reflects
+            # what we really spent rather than the reservation.
+            try:
+                um = response.usage_metadata
+                _ask_actual_total += (
+                    (um.prompt_token_count or 0)
+                    + (um.candidates_token_count or 0)
+                )
+            except Exception:
+                pass
             # Pull function_call parts off the response, if any.
             function_calls = []
             response_parts = []
@@ -2211,6 +2250,17 @@ async def _answer_with_gemini(
             contents.append(
                 types.Content(role="user", parts=tool_response_parts)
             )
+
+        # Reconcile token budget with what we actually spent in the
+        # tool-call loop (vs the conservative pre-loop reservation).
+        try:
+            get_budget().record_actual(
+                estimated=_ask_est_total,
+                actual=_ask_actual_total,
+                caller=f"ask:{(question or '')[:60]}",
+            )
+        except Exception as e:
+            log.debug(f"/ask token_budget record_actual non-fatal: {e}")
 
         # Pull response.text defensively — the SDK raises if the response
         # has no candidates or only function-call parts. Treat all failures

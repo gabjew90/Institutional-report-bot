@@ -90,43 +90,70 @@ def _cosine(a: list[float], b: list[float]) -> float:
     return dot / (na * nb)
 
 
+_EMBED_CHUNK_MAX_RETRIES = 3
+_EMBED_CHUNK_RETRY_BASE_DELAY_S = 1.5
+
+
 def _embed_strings(client: genai.Client, strings: list[str]) -> dict[str, list[float]]:
     """Batch-embed a list of unique strings, chunked to stay under the
     embed_content per-request size cap. Returns {string: vector}.
 
-    A chunk that fails is skipped (logged) rather than failing the whole
-    call — partial coverage degrades clustering quality but doesn't kill
-    the stage. Returns {} only if EVERY chunk failed or input is empty.
+    Each chunk gets up to _EMBED_CHUNK_MAX_RETRIES attempts with
+    exponential backoff. If a chunk still fails after all retries,
+    the WHOLE embedding stage raises — silent partial fallback
+    historically degraded Phase A clustering on Gemini rate-limit
+    events (theme_clusterer.py:117 comment from earlier:
+    "chunk fails → logged + skipped; partial coverage degrades
+    clustering quality"). The fix is hard-fail: a skipped pulse
+    is recoverable; a silently degraded one ships bad data.
+
+    Returns {} only when `strings` is empty.
     """
     if not strings:
         return {}
     out: dict[str, list[float]] = {}
     n_chunks = (len(strings) + _EMBED_BATCH_SIZE - 1) // _EMBED_BATCH_SIZE
-    failed_chunks = 0
+    import time
     for i in range(0, len(strings), _EMBED_BATCH_SIZE):
         chunk = strings[i : i + _EMBED_BATCH_SIZE]
-        try:
-            result = client.models.embed_content(
-                model=_EMBED_MODEL,
-                contents=chunk,
-            )
-            # SDK returns a list of ContentEmbedding objects with .values.
-            vectors = [getattr(e, "values", None) or list(e) for e in result.embeddings]
-            out.update(dict(zip(chunk, vectors)))
-        except Exception as e:
-            failed_chunks += 1
-            log.warning(
+        last_err: Exception | None = None
+        for attempt in range(1, _EMBED_CHUNK_MAX_RETRIES + 1):
+            try:
+                result = client.models.embed_content(
+                    model=_EMBED_MODEL,
+                    contents=chunk,
+                )
+                # SDK returns a list of ContentEmbedding objects with .values.
+                vectors = [
+                    getattr(e, "values", None) or list(e)
+                    for e in result.embeddings
+                ]
+                out.update(dict(zip(chunk, vectors)))
+                last_err = None
+                break  # chunk succeeded, move on
+            except Exception as e:
+                last_err = e
+                if attempt < _EMBED_CHUNK_MAX_RETRIES:
+                    delay = _EMBED_CHUNK_RETRY_BASE_DELAY_S * (2 ** (attempt - 1))
+                    log.warning(
+                        f"Embedding chunk {i // _EMBED_BATCH_SIZE + 1}/{n_chunks} "
+                        f"({len(chunk)} strings) failed attempt "
+                        f"{attempt}/{_EMBED_CHUNK_MAX_RETRIES}: {e}. "
+                        f"Retrying in {delay:.1f}s."
+                    )
+                    time.sleep(delay)
+        if last_err is not None:
+            # All retries exhausted. Hard-fail the whole stage rather
+            # than silently degrading clustering quality. Caller
+            # (synthesizer) should skip the pulse with a recoverable
+            # error event rather than ship a fragmented theme_map.
+            raise RuntimeError(
                 f"Embedding chunk {i // _EMBED_BATCH_SIZE + 1}/{n_chunks} "
-                f"({len(chunk)} strings) failed: {e}"
+                f"({len(chunk)} strings) failed after "
+                f"{_EMBED_CHUNK_MAX_RETRIES} attempts. "
+                f"Refusing to ship partial-coverage clustering. "
+                f"Last error: {last_err}"
             )
-    if failed_chunks == n_chunks:
-        log.warning(f"All {n_chunks} embedding chunks failed — identity-clustering fallback")
-        return {}
-    if failed_chunks:
-        log.warning(
-            f"{failed_chunks}/{n_chunks} embedding chunks failed; "
-            f"clustering with partial coverage ({len(out)}/{len(strings)} embedded)"
-        )
     return out
 
 

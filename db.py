@@ -3186,6 +3186,112 @@ def purge_old_chat_messages(days: int) -> int:
     return cur.rowcount
 
 
+def run_retention_purge(
+    *,
+    pdf_analyses_keep_per_pdf: int = 2,
+    processing_log_days: int = 30,
+    pipeline_events_days: int = 90,
+    manual_reports_days: int = 30,
+) -> dict[str, int]:
+    """Trim append-only tables. Returns {table_name: rows_deleted}.
+
+    Single transaction per table — failures on one don't roll back
+    the others. Safe to run while the bot is up: each DELETE uses
+    indexed criteria and SQLite's per-statement locking releases
+    quickly.
+
+    pdf_analyses: keep latest `pdf_analyses_keep_per_pdf` per
+        pdf_file_id (default 2 — current + immediate prior). The
+        MAX(id) GROUP BY semantics that synthesis queries rely on
+        stays correct because we keep the highest-id rows.
+    processing_log: drop > `processing_log_days` days old (default 30).
+    pipeline_events: drop > `pipeline_events_days` days old
+        (default 90 — covers two QC cycles of history).
+    manual_reports_days: drop daily_reports with report_type='manual'
+        older than `manual_reports_days` days (default 30). Manual
+        /pulse invocations are tests, not production records;
+        report_type='daily' stays forever (small volume).
+    """
+    conn = get_connection()
+    results: dict[str, int] = {}
+
+    # pdf_analyses — keep latest N per pdf_file_id
+    try:
+        cur = conn.execute(
+            """DELETE FROM pdf_analyses
+                WHERE id NOT IN (
+                    SELECT id FROM (
+                        SELECT id,
+                               ROW_NUMBER() OVER (
+                                   PARTITION BY pdf_file_id
+                                   ORDER BY id DESC
+                               ) AS rn
+                          FROM pdf_analyses
+                    )
+                    WHERE rn <= ?
+                )""",
+            (int(pdf_analyses_keep_per_pdf),),
+        )
+        conn.commit()
+        results["pdf_analyses"] = cur.rowcount
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).warning(
+            f"retention purge pdf_analyses failed: {e}"
+        )
+        results["pdf_analyses"] = -1
+
+    # processing_log — N-day retention
+    try:
+        cur = conn.execute(
+            "DELETE FROM processing_log WHERE created_at < datetime('now', ?)",
+            (f"-{int(processing_log_days)} days",),
+        )
+        conn.commit()
+        results["processing_log"] = cur.rowcount
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).warning(
+            f"retention purge processing_log failed: {e}"
+        )
+        results["processing_log"] = -1
+
+    # pipeline_events — N-day retention
+    try:
+        cur = conn.execute(
+            "DELETE FROM pipeline_events WHERE created_at < datetime('now', ?)",
+            (f"-{int(pipeline_events_days)} days",),
+        )
+        conn.commit()
+        results["pipeline_events"] = cur.rowcount
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).warning(
+            f"retention purge pipeline_events failed: {e}"
+        )
+        results["pipeline_events"] = -1
+
+    # daily_reports — manual-only N-day retention; daily_reports of
+    # report_type='daily' are the production record, kept forever.
+    try:
+        cur = conn.execute(
+            """DELETE FROM daily_reports
+                WHERE report_type = 'manual'
+                  AND created_at < datetime('now', ?)""",
+            (f"-{int(manual_reports_days)} days",),
+        )
+        conn.commit()
+        results["daily_reports_manual"] = cur.rowcount
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).warning(
+            f"retention purge daily_reports_manual failed: {e}"
+        )
+        results["daily_reports_manual"] = -1
+
+    return results
+
+
 def get_chat_message_row(discord_message_id: int) -> dict | None:
     """Fetch a single chat_messages row by Discord message ID. Used by
     the OCR helper to read the URL list + check the cached OCR text

@@ -311,6 +311,35 @@ async def analyze_pdf_deep(
 
     start_time = time.time()
 
+    # Token-budget reservation BEFORE firing the call. Deep analysis on
+    # a 400-page table-heavy PDF can consume 80K+ tokens; without this
+    # guard one bad PDF can blow the daily budget (CLAUDE.md notes the
+    # $10 cap was hit once). The estimate is conservative — we charge
+    # the full text content size plus a buffer for response. The post-
+    # call record_actual corrects with the real usage_metadata so
+    # mid-sized PDFs don't over-debit the budget.
+    from ai_analysis.token_budget import get_budget, BudgetExceeded
+    text_chars = len(text_content or "")
+    # Heuristic: 4 chars/token for English text + 2000-token response
+    # cap (max_output_tokens) + 500-token system instruction + image
+    # parts each ~258 tokens for Flash inputs.
+    estimated_tokens = (
+        text_chars // 4
+        + (settings.gemini_max_tokens or 2000)
+        + 500
+        + 258 * len(image_parts)
+    )
+    try:
+        get_budget().reserve_or_raise(
+            estimated_tokens=estimated_tokens,
+            caller=f"pdf_deep_analysis:{file_name[:40]}",
+        )
+    except BudgetExceeded as e:
+        log.warning(
+            f"Skipping deep analysis for {file_name} — token budget: {e}"
+        )
+        raise
+
     async with limiter:
         response = await client.aio.models.generate_content(
             model=settings.gemini_model,
@@ -328,6 +357,16 @@ async def analyze_pdf_deep(
 
     input_tokens = response.usage_metadata.prompt_token_count or 0
     output_tokens = response.usage_metadata.candidates_token_count or 0
+    # Reconcile actual usage against reservation; frees up budget if
+    # the response came in under the conservative estimate.
+    try:
+        get_budget().record_actual(
+            estimated=estimated_tokens,
+            actual=input_tokens + output_tokens,
+            caller=f"pdf_deep_analysis:{file_name[:40]}",
+        )
+    except Exception as e:
+        log.debug(f"token_budget record_actual non-fatal failure: {e}")
 
     try:
         data = _parse_json_response(result_text)

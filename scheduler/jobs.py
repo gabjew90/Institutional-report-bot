@@ -229,6 +229,23 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=3600,
         )
 
+    # Daily append-only retention purge. Trims pdf_analyses,
+    # processing_log, pipeline_events, daily_reports (manual only).
+    # Runs at 04:15 local, 15 min after the chat purge so the two
+    # don't contend for the SQLite write lock. Without this, the
+    # tables grow unbounded — CLAUDE.md TODO line 282 has flagged
+    # processing_log specifically; pdf_analyses grows via the
+    # /reanalyze append-only design; pipeline_events grows from
+    # every Gemini call's token-budget event.
+    scheduler.add_job(
+        _retention_purge_job,
+        trigger=CronTrigger(hour=4, minute=15, timezone=tz),
+        id="retention_purge",
+        name="append-only tables: daily retention purge",
+        max_instances=1,
+        misfire_grace_time=3600,
+    )
+
     # Daily user-profile refresh. Always registered now — the profile
     # builder reads ALL ingested channels in chat_messages (no narrower
     # filter). Runs 15:00 local every day. The backfill script applies
@@ -658,6 +675,41 @@ async def _chat_purge_job():
             )
     except Exception as e:
         log.error(f"chat_messages purge failed: {e}", exc_info=True)
+
+
+async def _retention_purge_job():
+    """Daily cron (04:15 local) — append-only table retention.
+
+    Trims four tables that grow unbounded by design:
+
+      pdf_analyses     — keeps the latest 2 rows per pdf_file_id.
+                          Re-analyses leave history rows around for
+                          forensics; only the most-recent two are
+                          useful (current + immediate prior for diff).
+      processing_log   — drops rows older than 30 days. Forensic
+                          audit trail; no use case for older.
+      pipeline_events  — drops rows older than 90 days. Same reasoning;
+                          90 covers two QC review-cycles of history.
+      daily_reports    — keeps `report_type='daily'` rows indefinitely
+                          (small volume, ~1 per day), drops
+                          `report_type='manual'` rows older than 30
+                          days. Manual /pulse runs are test artifacts.
+
+    Run sequentially with explicit COMMIT between each so a failure
+    on one table doesn't roll back the others. Counts logged so
+    operators can see retention biting (if a count jumps suddenly,
+    something upstream is generating noise).
+    """
+    try:
+        import db
+        results = db.run_retention_purge()
+        for table, count in (results or {}).items():
+            if count > 0:
+                log.info(f"retention purge: {table} dropped {count} rows")
+            else:
+                log.debug(f"retention purge: {table} clean")
+    except Exception as e:
+        log.error(f"retention purge job failed: {e}", exc_info=True)
 
 
 async def _analyst_purge_job(bot=None):
