@@ -1,0 +1,33 @@
+{
+    "theme_map": {
+        "ai infrastructure investment": {
+            "banks": 14,
+            "pdfs": 15,
+            "sources": ["Goldman", "JPM"],
+            "supportive": 8,
+            "skeptical": 3,
+            "neutral": 3,
+            "discovered": false,
+            "non_bank_only": false,
+            "sibling_canonicals": []
+        },
+        "consensus-contrarian / rotate-out-of-lead": {
+            "banks": 3,
+            "pdfs": 5,
+            "sources": ["The Market Ear", "Natixis", "TS Lombard"],
+            "supportive": 0,
+            "skeptical": 3,
+            "neutral": 0,
+            "discovered": false,
+            "non_bank_only": false,
+            "sibling_canonicals": [],
+            "contrarian_to_lead": true,
+            "contrarian_signal_labels": ["no-bid contrarian", "rotate-out-of-lead", "calendar/rotation"],
+            "contrarian_titles": [
+                "Nobody Wants NVDA",
+                "Sell in May and go away?",
+                "What To Buy If Not AI?"
+            ]
+        }
+    }
+}

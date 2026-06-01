@@ -1,0 +1,12 @@
+{
+    "fixture_id": "synthetic-sibling-dup",
+    "summary": "AI infrastructure investment and AI infrastructure pivot shipped as separate sections — sibling-canonical fold violated. Should produce a hard duplicate-sibling-sections violation.",
+    "expected_hard_violations": [
+        {
+            "kind": "duplicate-sibling-sections",
+            "theme_substring": "ai infrastructure"
+        }
+    ],
+    "expected_soft_violations": [],
+    "should_pass_validator": false
+}

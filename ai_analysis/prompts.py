@@ -856,7 +856,17 @@ Return the COMPLETE markdown with the flagged sentences rewritten. NO preamble. 
 <<SCRUB_REFERENCE_BLOCK>>"""
 
 
-SCRUB_USER = """Lint report ({issue_count} hard issue(s) to address):
+SCRUB_USER = """**HARD GATE — ZERO-ISSUE NO-OP** (this rule fires FIRST, before reading anything else):
+
+If `{issue_count}` below is `0`, return the input markdown UNCHANGED. Copy it character-for-character. Do not paraphrase, do not "improve" prose, do not add cosmetic edits, do not even normalize whitespace. The lint reported zero hard issues; your only valid output is the input markdown verbatim.
+
+This is the SCRUB-on-zero-lint dispatch gate. The routine procedure (synthesis-routine.md STEP 5.7.1) is supposed to skip dispatch when issue_count=0, but past runs have ignored the skip (the 2026-05-29 + 2026-05-30 + 2026-06-01 QC reviews all flagged SCRUB-ran-on-zero-input producing cosmetic regressions like "basis points" → "hundredths of a percent" — a translation-rule misapplication on text that wasn't even flagged). This prompt-level gate is the structural backstop: even if dispatched, you return the input as-is.
+
+You ONLY do work when `{issue_count}` > 0. With zero issues there is nothing to scrub. Return the input markdown. Stop.
+
+---
+
+Lint report ({issue_count} hard issue(s) to address):
 ```json
 {lint_report_json}
 ```
@@ -1185,6 +1195,27 @@ DRAFT_USER = """TODAY IS {today}. CURRENT TIME IS {now} ET.
 **HOW TO USE THE THEME COVERAGE BLOCK (binding — no exceptions):**
 - The bank counts above are computed by keyword scan over the corpus, not your judgment. Treat them as ground truth.
 - **MANDATORY:** the TOP 3 themes by bank count MUST appear as INSIGHTS, in order, leading with the highest. There is NO conviction-disqualification escape for themes with 10+ banks behind them — those are dominant cross-bank consensus and they ship regardless. The "Live 5 basket call from one bank" pattern is exactly what NOT to do — a 1-bank theme cannot displace a 30-bank theme.
+
+**ADVISORY FIELDS YOU MUST HONOR (binding — anti-recurrence rules):**
+
+Each theme entry in the THEME COVERAGE block above may carry one or more of the following annotations. They were added to fix specific QC failure modes from 2026-05-28 → 2026-06-01. Treat them as binding instructions, not advisories.
+
+1. **`tightly related (cap-blocked sibling — fold into the same INSIGHTS section)`** sub-bullets. When a theme has these, the SIBLING canonicals listed below it are NOT separate INSIGHTS slots. Write ONE section covering the primary theme + its sub-aspects from the siblings. The 2026-05-29 pulse shipped two near-duplicate AI capex sections from a cap-blocked sibling pair — exactly the failure mode this rule blocks. If you write two sections that share substantive content from a sibling pair, the post-DRAFT validator will hard-flag `duplicate-sibling-sections` and the pulse will be rejected.
+
+2. **`UNDERWEIGHTED CANDIDATES`** category. These are Tier-1 multi-tier 3+ bank themes ranked outside the top-6. Surface AT LEAST ONE — either as a WATCH bullet OR threaded into the most relevant primary INSIGHTS section. The 2026-05-29 QC flagged `fed chair warsh policy` and `us debt and deficit` as notable misses; today the underweighted category is supposed to catch them. The post-DRAFT validator soft-flags if all underweighted candidates silently dropped.
+
+3. **`CONTRARIAN / ROTATE-OUT SIGNAL`** category. When this bucket is present, the corpus has multi-bank explicit contradiction of the lead theme (today's example: "Nobody Wants NVDA" / "Sell in May" / "What To Buy If Not AI" / "IPO BOOM = MARKET TOP?" all in fresh research). **DO NOT bury this in the lead theme's bear-case appendix.** Give it a dedicated INSIGHTS slot with a section title that names the rotate-out frame (e.g. "What to buy when the consensus is short NVDA"), and close with a named rotation instrument lean ($RSP vs $SPY, $IWM, value ETFs, etc.). The post-DRAFT validator hard-flags `contrarian-buried-in-appendix` and the pulse will be rejected if the contrarian signal lands inside the lead theme's body.
+
+4. **`close in: <style>`** annotation. When present, this is the prescribed close shape for that theme's section. Five shapes:
+   - `bull_risk_resolution` (default — explicit bull/risk/resolution + trade)
+   - `falsifiable_window` (time-bound prediction: "if X doesn't print Y by Z, the thesis is dead")
+   - `ranked_list` (Hartnett-style numbered list of what to watch)
+   - `single_question` (one sharp falsifiable question)
+   - `asymmetry` (name the payoff asymmetry directly without counter-case framing)
+
+   Top-2 themes use the default to force-engage counter-cases. Lower-rank themes rotate alternates to break the identical-template fatigue the QC has flagged 3+ runs. Honor the annotation.
+
+5. **Stance split `support: N / skeptical: M / neutral: K`**. When N ≥ 2 AND M ≥ 2, the corpus has a real bank-vs-bank disagreement. Name at least one supporting bank AND one skeptical bank by name in the section about that theme. "Goldman and JPM argue X; BofA and Deutsche argue Y" — not "the consensus is X with a counter-case." The 2026-05-29 pulse delivered this on the Fed split (Goldman/Deutsche vs SEB/ING vs BofA); the 2026-06-01 pulse missed it entirely (zero named-bank-vs-bank constructions across all 5 INSIGHTS). The post-DRAFT validator soft-flags `stance-split-no-named-debate`.
 - The 4th, 5th, and 6th INSIGHTS (variable count — produce **3 to 6 themes total** based on what the corpus actually supports today) come from: (a) themes with 5+ banks below the top 3, OR (b) single-topic dedicated catalysts where there's a hard event hook (M&A on an S&P 100 name, MAG7 earnings reaction, FDA decision on a specific ticker, regulatory deadline). These are the ONLY two paths into INSIGHTS for sub-5-bank themes.
 
 **SHIP 3 STRONG THEMES OVER 5 PADDED ONES.** If today's corpus has only 3 themes with real conviction (multi-bank consensus or hard catalyst), ship 3. Don't reach for a fourth that's a single-bank stretch just because "the structure says 4-6". A weak theme #4 dilutes the strong themes #1-3 and trains the reader to skim. On heavy-news days the count goes higher (6 if there are genuinely 6 strong threads); on quiet days it stays at 3.

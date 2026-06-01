@@ -1,0 +1,37 @@
+{
+    "theme_map": {
+        "ai infrastructure investment": {
+            "banks": 14,
+            "pdfs": 15,
+            "sources": ["Goldman", "JPM", "Citi", "BofA", "UBS"],
+            "supportive": 8,
+            "skeptical": 3,
+            "neutral": 3,
+            "discovered": false,
+            "non_bank_only": false,
+            "sibling_canonicals": ["ai infrastructure pivot"]
+        },
+        "ai infrastructure pivot": {
+            "banks": 6,
+            "pdfs": 1,
+            "sources": ["BofA", "UBS", "Goldman"],
+            "supportive": 3,
+            "skeptical": 1,
+            "neutral": 2,
+            "discovered": false,
+            "non_bank_only": false,
+            "sibling_canonicals": ["ai infrastructure investment"]
+        },
+        "hormuz strait status": {
+            "banks": 12,
+            "pdfs": 2,
+            "sources": ["Goldman", "JPM", "RBC"],
+            "supportive": 0,
+            "skeptical": 0,
+            "neutral": 12,
+            "discovered": true,
+            "non_bank_only": false,
+            "sibling_canonicals": []
+        }
+    }
+}

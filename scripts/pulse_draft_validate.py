@@ -79,36 +79,85 @@ def _find_insights_sections(md_text: str) -> list[str]:
     return [p.strip() for p in parts[1:] if p.strip()]
 
 
-def _theme_in_section(theme_key: str, section_text: str) -> bool:
-    """Heuristic: a theme is 'in' a section if at least one distinctive
-    long-word (>=5 chars, not stopword) from the theme key appears in
-    the section body.
+_HEURISTIC_STOPWORDS = {
+    "and", "the", "for", "with", "from", "this", "that", "into",
+    "over", "such", "what", "when", "where", "which", "their",
+    "they", "them", "are", "was", "were", "been", "being",
+    "about", "these", "those", "while", "after",
+}
 
-    The 5-char floor filters generic short words ('ai', 'us', 'fed',
-    'gdp') that would false-positive every section. Stopwords filter
-    structural words. What's left ('capex', 'infrastructure',
-    'hormuz', 'sentiment', 'warsh') is distinctive enough that a single
-    occurrence in a section is meaningful. Empirically this matches
-    section headers (which paraphrase but keep the noun) AND body
-    references."""
-    STOP = {
-        "and", "the", "for", "with", "from", "this", "that", "into",
-        "over", "such", "what", "when", "where", "which", "their",
-        "they", "them", "are", "was", "were", "been", "being",
-        "their", "about", "these", "those", "while", "after",
-    }
-    words = [
+
+def _theme_distinctive_words(theme_key: str) -> list[str]:
+    """Extract distinctive words from a theme key for matching. Prefer
+    >=5 char content words; fall back to >=4 char if the theme key
+    is too short to produce any (e.g. 'fed cuts')."""
+    long_words = [
         w for w in re.findall(r"[a-zA-Z0-9]+", theme_key.lower())
-        if len(w) >= 5 and w not in STOP
+        if len(w) >= 5 and w not in _HEURISTIC_STOPWORDS
     ]
+    if long_words:
+        return long_words
+    return [
+        w for w in re.findall(r"[a-zA-Z0-9]+", theme_key.lower())
+        if len(w) >= 4 and w not in _HEURISTIC_STOPWORDS
+    ]
+
+
+def _theme_section_score(theme_key: str, section_text: str) -> int:
+    """Header-weighted score: how strongly does this section 'belong
+    to' this theme?
+
+    Section headers carry the theme's noun phrase; body text mentions
+    every other theme in passing. Scoring rule:
+      - Each distinctive word from theme_key appearing in the H3
+        HEADER counts 3 points
+      - Each distinctive word appearing in the body counts 1 point
+    Section with the highest score for a theme is the theme's
+    primary section. Two themes mapping to DIFFERENT primary sections
+    (when they're cap-blocked siblings supposed to fold) is the
+    duplicate-sibling-sections violation.
+    """
+    words = _theme_distinctive_words(theme_key)
     if not words:
-        # Theme has no distinctive long words — fall back to >=4 char
-        # words. Edge case for short theme labels like "fed cuts" or
-        # "iran risk".
-        words = [
-            w for w in re.findall(r"[a-zA-Z0-9]+", theme_key.lower())
-            if len(w) >= 4 and w not in STOP
-        ]
+        return 0
+    section_lower = section_text.lower()
+    header_match = re.match(r"^###\s+([^\n]+)", section_text, re.MULTILINE)
+    header_lower = (header_match.group(1) if header_match else "").lower()
+    score = 0
+    for w in words:
+        if w in header_lower:
+            score += 3
+        elif w in section_lower:
+            score += 1
+    return score
+
+
+def _theme_primary_section(
+    theme_key: str, sections: list[str]
+) -> int | None:
+    """Return the index of the section where this theme has the
+    highest score, or None if no section scored above 0. Ties broken
+    by earlier index (top-of-pulse wins)."""
+    scores = [
+        (i, _theme_section_score(theme_key, s))
+        for i, s in enumerate(sections)
+    ]
+    scored = [(i, score) for i, score in scores if score > 0]
+    if not scored:
+        return None
+    scored.sort(key=lambda t: (-t[1], t[0]))
+    return scored[0][0]
+
+
+def _theme_in_section(theme_key: str, section_text: str) -> bool:
+    """Returns True iff at least one distinctive word from the theme
+    key appears anywhere in the section. Loose match — use for "is
+    this theme referenced AT ALL in the pulse" checks. For "which
+    section is this theme's PRIMARY section", use _theme_primary_section
+    instead."""
+    words = _theme_distinctive_words(theme_key)
+    if not words:
+        return False
     section_lower = section_text.lower()
     return any(w in section_lower for w in words)
 
@@ -133,31 +182,39 @@ def validate(md_text: str, ctx: dict) -> list[dict]:
         sibs = info.get("sibling_canonicals") or []
         if sibs:
             siblings_to_pair[theme] = sibs[0]
+    # Track which sibling pairs we've already flagged so the same
+    # pair (A,B) and (B,A) only emit one violation, not two.
+    flagged_pairs: set[frozenset[str]] = set()
     for theme, sibling in siblings_to_pair.items():
-        theme_sections = [
-            i for i, s in enumerate(sections) if _theme_in_section(theme, s)
-        ]
-        sibling_sections = [
-            i for i, s in enumerate(sections) if _theme_in_section(sibling, s)
-        ]
-        # If both have sections AND they're different sections, that's
-        # a duplicate (the synthesizer folded them; DRAFT split them).
-        if theme_sections and sibling_sections:
-            overlap = set(theme_sections) & set(sibling_sections)
-            if not overlap:
-                violations.append({
-                    "kind": "duplicate-sibling-sections",
-                    "severity": "hard",
-                    "message": (
-                        f"Theme '{theme}' and its cap-blocked sibling "
-                        f"'{sibling}' shipped as separate INSIGHTS sections "
-                        f"(indices {theme_sections} vs {sibling_sections}). "
-                        f"They should be folded into one section per the "
-                        f"theme_coverage block's sub-bullet structure."
-                    ),
-                    "theme": theme,
-                    "sibling": sibling,
-                })
+        pair_key = frozenset((theme, sibling))
+        if pair_key in flagged_pairs:
+            continue
+        theme_primary = _theme_primary_section(theme, sections)
+        sibling_primary = _theme_primary_section(sibling, sections)
+        # If both themes have a PRIMARY section AND they're different
+        # sections, that's a duplicate: the synthesizer told DRAFT to
+        # fold them via sibling_canonicals, DRAFT shipped them apart.
+        # The primary-section check is header-weighted — a passing
+        # body-mention doesn't count as "the section that's about this
+        # theme", only being named in the H3 header does.
+        if (theme_primary is not None
+                and sibling_primary is not None
+                and theme_primary != sibling_primary):
+            violations.append({
+                "kind": "duplicate-sibling-sections",
+                "severity": "hard",
+                "message": (
+                    f"Theme '{theme}' (primary section #{theme_primary}) "
+                    f"and its cap-blocked sibling '{sibling}' "
+                    f"(primary section #{sibling_primary}) shipped as "
+                    f"separate INSIGHTS sections. They should be folded "
+                    f"into one section per the theme_coverage block's "
+                    f"sub-bullet structure."
+                ),
+                "theme": theme,
+                "sibling": sibling,
+            })
+            flagged_pairs.add(pair_key)
 
     # =====================================================================
     # CHECK 2: contrarian-divergence got promoted, not buried

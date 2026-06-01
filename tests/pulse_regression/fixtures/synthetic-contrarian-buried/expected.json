@@ -1,0 +1,11 @@
+{
+    "fixture_id": "synthetic-contrarian-buried",
+    "summary": "Contrarian theme exists in theme_map but is mentioned only as a passing reference inside the AI section's bear case, not its own slot. Should hard-flag contrarian-buried-in-appendix.",
+    "expected_hard_violations": [
+        {
+            "kind": "contrarian-buried-in-appendix"
+        }
+    ],
+    "expected_soft_violations": [],
+    "should_pass_validator": false
+}

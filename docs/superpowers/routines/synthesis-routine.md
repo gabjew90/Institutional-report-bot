@@ -882,25 +882,56 @@ for theme, inputs in inputs_per_theme.items():
                     break
             if fail_reason: break
 
-    # Rule 2: banks must appear in input sources
+    # Agency / wire-service whitelist. These are non-bank entities that
+    # legitimately produce market-moving data (oil supply, monetary
+    # policy, trade flows) and get cited as the SOURCE of a fact or
+    # falsifiable prediction even when no bank in the input list is the
+    # primary attribution. The 2026-06-01 QC found two 4-bank discovered
+    # themes (`middle east conflict impacts`, `US Strategic Petroleum
+    # Reserve drawdown`) discarded for the identical error
+    # `falsifiable_prediction bank not in inputs: 'IEA'` — the
+    # adjudicator correctly identified IEA as the entity making the oil-
+    # supply prediction, but IEA isn't a bank. Whitelisting these names
+    # lets the adjudicator cite the right source without failing lint.
+    AGENCY_WHITELIST = frozenset({
+        'IEA', 'International Energy Agency',
+        'EIA', 'US EIA', 'Energy Information Administration',
+        'OPEC', 'OPEC+',
+        'Bloomberg', 'Reuters',
+        'BIS', 'Bank for International Settlements',
+        'IMF', 'International Monetary Fund',
+        'World Bank',
+        'BLS', 'Bureau of Labor Statistics',
+        'BEA', 'Bureau of Economic Analysis',
+        'Federal Reserve', 'FOMC', 'Fed',
+        'ECB', 'BOJ', 'BoE', 'PBOC',
+        'OECD', 'WTO',
+    })
+
+    def _is_valid_source(name: str) -> bool:
+        if not name:
+            return True
+        return name in valid_sources or name in AGENCY_WHITELIST
+
+    # Rule 2: banks must appear in input sources (or agency whitelist)
     if not fail_reason:
         for fa in adj.get('facts_agreed', []) or []:
             for bank in fa.get('banks_for', []) or []:
-                if bank not in valid_sources:
-                    fail_reason = f'facts_agreed banks_for not in input sources: {bank!r}'
+                if not _is_valid_source(bank):
+                    fail_reason = f'facts_agreed banks_for not in input sources or agency whitelist: {bank!r}'
                     break
             if fail_reason: break
     if not fail_reason:
         for fc in adj.get('facts_contested', []) or []:
             for k in ('banks_for', 'banks_against'):
                 for bank in fc.get(k, []) or []:
-                    if bank not in valid_sources:
-                        fail_reason = f'facts_contested {k} not in input sources: {bank!r}'
+                    if not _is_valid_source(bank):
+                        fail_reason = f'facts_contested {k} not in input sources or agency whitelist: {bank!r}'
                         break
                 if fail_reason: break
             if fail_reason: break
 
-    # Rule 3: falsifiable_predictions must trace
+    # Rule 3: falsifiable_predictions must trace (banks or agency whitelist)
     if not fail_reason:
         for pred in adj.get('falsifiable_predictions', []) or []:
             claim = pred.get('claim') or ''
@@ -909,8 +940,8 @@ for theme, inputs in inputs_per_theme.items():
                 fail_reason = f'falsifiable_prediction claim not in inputs: {claim!r}'
                 break
             bank = pred.get('bank')
-            if bank and bank not in valid_sources:
-                fail_reason = f'falsifiable_prediction bank not in inputs: {bank!r}'
+            if bank and not _is_valid_source(bank):
+                fail_reason = f'falsifiable_prediction bank not in inputs or agency whitelist: {bank!r}'
                 break
 
     # Rule 4: stance_counts must match
@@ -1066,6 +1097,49 @@ Save to `/tmp/draft.md` via Python.
 
 ```bash
 python3 /tmp/progress.py "STEP_4_DONE"
+```
+
+## STEP 4.5 — Structural validate DRAFT (deterministic check, mandatory)
+
+Run `scripts/pulse_draft_validate.py` against `/tmp/draft.md` + `/tmp/ctx.json`. The validator checks for four classes of structural violation that the DRAFT prompt is supposed to prevent but historically hasn't reliably honored:
+
+- **HARD `duplicate-sibling-sections`**: cap-blocked sibling theme pair shipped as two separate INSIGHTS sections instead of folded into one. The 2026-05-29 pulse shipped this; the 2026-06-01 fix held but the fold instruction is advisory at the prompt level — this is the code-level enforcement.
+- **HARD `contrarian-buried-in-appendix`**: a `contrarian_to_lead` theme exists in theme_map but wasn't given its own INSIGHTS section or WATCH bullet. The 2026-06-01 corpus had 5 contrarian titles all folded into the AI bear-case appendix; the contrarian detector ships them as a distinct category but DRAFT can still bury them.
+- **SOFT `underweighted-all-dropped`**: zero underweighted_candidate themes appear anywhere in the pulse.
+- **SOFT `stance-split-no-named-debate`**: theme with ≥2 support AND ≥2 skeptical didn't name Bank-A-vs-Bank-B in its section.
+
+```bash
+python3 scripts/pulse_draft_validate.py /tmp/draft.md /tmp/ctx.json /tmp/draft_validation.json
+VALIDATOR_EXIT=$?
+echo "DRAFT validator exit code: $VALIDATOR_EXIT"
+```
+
+Decision logic (read literal exit code; do NOT infer from prose):
+
+- **Exit 0** — clean. Proceed to STEP 5.
+- **Exit 3** — HARD violations. Re-dispatch DRAFT with the violations surfaced as fix-this feedback. Read the violation messages from `/tmp/draft_validation.json` and append them to the DRAFT prompt as:
+
+  ```
+  STRUCTURAL-VIOLATIONS — your previous DRAFT failed validation. Each violation
+  describes what you need to change:
+
+  - [duplicate-sibling-sections] Theme 'X' and its cap-blocked sibling 'Y'
+    shipped as separate sections. Fold them into ONE section.
+  - [contrarian-buried-in-appendix] Contrarian theme 'consensus-contrarian'
+    is not given its own section. Promote it to a dedicated INSIGHTS slot.
+    Sample titles: Nobody Wants NVDA / Sell in May / What To Buy If Not AI.
+
+  Re-roll the DRAFT addressing these violations and rerun validation.
+  ```
+
+  Maximum 2 re-rolls. If validation still fails after the second re-roll, log a WARNING and proceed to STEP 5 with the residual violations recorded in the QC artifact. Don't loop forever — the pulse must ship even if DRAFT can't get structural compliance perfect.
+
+- **Exit 4** — SOFT violations only. Log them and proceed to STEP 5. Soft violations land in the QC review as advisory items but don't block the publish.
+
+- **Exit 1 or 2** — validator error (missing file, bad ctx.json). Log and proceed to STEP 5 with no violations recorded.
+
+```bash
+python3 /tmp/progress.py "STEP_4_5_VALIDATE_DONE"
 ```
 
 ## STEP 5 — Stitch + Edit (Stage 2, two sub-passes)
