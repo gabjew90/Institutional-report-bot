@@ -1703,6 +1703,115 @@ def _build_sources_footer(grounding_metadata) -> str:
     return "\n\nSources:\n" + "\n".join(lines)
 
 
+# Repetition-glitch detector. Catches Flash-Lite token-loop artifacts
+# at the END of answers (the dominant pattern in the 2026-05-30 ask log):
+#   "compounding risk and volatility decay risks of volatility decay and
+#    volatility" — "volatility decay" 3x in a 12-token tail
+# Two checks:
+#   (1) Tail-frequency: any content-word (>=4 chars, not stopword)
+#       appearing 3+ times in the last 15 alpha tokens. Catches the
+#       IBM "volatility" 3x pattern cleanly.
+#   (2) Tail-bigram: any content-word bigram appearing 2+ times in the
+#       last 25% of tokens. Catches "volatility decay … volatility decay"
+#       at end-of-sentence without flagging "long $TLT" repeats in the
+#       middle of a normal multi-arrow answer.
+# Both gates require the repetition to be in the TAIL of the response —
+# the loop pattern is end-of-generation. Mid-response repetitions
+# (legitimate "X then Y, X then Z" structures) are not flagged.
+_REP_TOKEN_RE = re.compile(r"[a-zA-Z]+")
+_REP_STOPWORDS = frozenset({
+    "the", "a", "an", "and", "or", "but", "of", "in", "on", "at",
+    "to", "for", "with", "is", "are", "was", "were", "be", "by",
+    "that", "this", "it", "as", "if", "from", "than", "then",
+    "into", "onto", "you", "your", "we", "our", "they", "them",
+    "their", "his", "her", "she", "he", "i", "me", "my", "mine",
+    "not", "no", "yes", "do", "does", "did", "have", "has", "had",
+    "will", "would", "should", "could", "can", "may", "might", "must",
+    "so", "up", "down", "out", "over", "under", "off", "via", "per",
+})
+
+
+def _has_repetition_glitch(text: str) -> bool:
+    """Detect end-of-response repetition loops. See module-level note
+    above for the two heuristics."""
+    if not text:
+        return False
+    tokens = [m.group(0).lower() for m in _REP_TOKEN_RE.finditer(text)]
+    if len(tokens) < 6:
+        return False
+
+    # Gate 1: tail frequency. Any content-word repeating 3+ times in
+    # the last 15 alpha tokens of the answer.
+    tail = tokens[-15:]
+    counts: dict[str, int] = {}
+    for t in tail:
+        if t in _REP_STOPWORDS or len(t) < 4:
+            continue
+        counts[t] = counts.get(t, 0) + 1
+    if counts and max(counts.values()) >= 3:
+        return True
+
+    # Gate 2: tail bigram. Any content-word bigram (both non-stopword,
+    # >=4 chars) appearing 2+ times in the last 25% of the answer.
+    tail_start = max(0, int(len(tokens) * 0.75))
+    tail_tokens = tokens[tail_start:]
+    bigram_counts: dict[tuple[str, str], int] = {}
+    for i in range(len(tail_tokens) - 1):
+        a, b = tail_tokens[i], tail_tokens[i + 1]
+        if a in _REP_STOPWORDS or b in _REP_STOPWORDS:
+            continue
+        if len(a) < 4 or len(b) < 4:
+            continue
+        bg = (a, b)
+        bigram_counts[bg] = bigram_counts.get(bg, 0) + 1
+    return any(c >= 2 for c in bigram_counts.values())
+
+
+# Mechanical em-dash + semicolon strip. Pulse-side lint replaces these
+# via SCRUB; /ask doesn't have a SCRUB pass and they keep shipping.
+# Cheap mechanical replacement preserves the surrounding sentence
+# (comma reads naturally in nearly every position the em-dash sat).
+#
+# Also runs the full compose_lint_patterns regex set and returns
+# the kinds we hit so the caller can log a structured record. Hits
+# for non-punctuation lint kinds (meta-narration, AI-tell, hedging
+# wrap-ups, source-prefix) are NOT auto-rewritten — rewriting natural
+# prose mechanically breaks sentence flow. They're surfaced as log
+# warnings so we can monitor frequency without shipping bad rewrites.
+def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
+    """Return (cleaned_text, list_of_hit_kinds). Em-dashes / semicolons
+    get replaced with commas; other lint hits are detected and named
+    in the returned list but not auto-rewritten."""
+    if not text:
+        return text, []
+    hit_kinds: list[str] = []
+
+    # Phase 1: detect all lint hits BEFORE mutating the text so the
+    # kinds list reflects what was in the original answer.
+    try:
+        from ai_analysis.voice_rules import compose_lint_patterns
+        scan = re.sub(r'```.*?```', '', text, flags=re.DOTALL)
+        for pattern, kind in compose_lint_patterns():
+            try:
+                if re.search(pattern, scan, re.IGNORECASE):
+                    hit_kinds.append(kind)
+            except re.error:
+                continue
+    except Exception as e:
+        log.debug(f"/ask voice-cleanup scan failed (non-fatal): {e}")
+
+    # Phase 2: mechanical replacement for the safe-to-strip kinds.
+    # Em-dash family — replace with comma + space. Handles all common
+    # surface forms: " — ", "—", " —"  and the half-width "‒".
+    cleaned = re.sub(r'\s*[—–‒]\s*', ', ', text)
+    # Semicolon inside a sentence — comma reads cleanly. Don't touch
+    # semicolons inside fenced code (rare in /ask answers, defensive).
+    cleaned = re.sub(r';\s+', ', ', cleaned)
+    # Collapse any ", , " artifact from adjacent replacements.
+    cleaned = re.sub(r',\s*,', ',', cleaned)
+    return cleaned, hit_kinds
+
+
 async def _answer_with_gemini(
     question: str,
     user_id: int,
@@ -1966,6 +2075,72 @@ async def _answer_with_gemini(
         except Exception as e:
             log.warning(f"/ask: response.text raised: {e}")
             answer = ""
+
+        # Repetition-glitch detection + one-shot retry. Gemini Flash Lite
+        # occasionally produces token-loop artifacts at the end of an
+        # answer ("compounding risk and volatility decay risks of
+        # volatility decay and volatility" — 9 hits across 2026-05-30
+        # logs). Single retry with bumped temperature usually breaks the
+        # loop. If retry still glitches, ship the original — the user
+        # gets SOMETHING rather than blank.
+        if answer and _has_repetition_glitch(answer):
+            log.warning(
+                f"/ask: repetition glitch in answer (q={question[:80]!r}); "
+                f"retrying once at higher temp"
+            )
+            try:
+                retry_config = types.GenerateContentConfig(
+                    system_instruction=_ASK_SYSTEM_INSTRUCTION,
+                    tools=[
+                        types.Tool(google_search=types.GoogleSearch()),
+                        _build_chat_search_tool(),
+                        _build_user_ranks_tool(),
+                    ],
+                    tool_config=types.ToolConfig(
+                        include_server_side_tool_invocations=True,
+                    ),
+                    safety_settings=safety_settings,
+                    max_output_tokens=5000,
+                    temperature=0.7,  # bumped from 0.3 to break the loop
+                    thinking_config=types.ThinkingConfig(thinking_budget=2000),
+                )
+                retry_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=contents,
+                    config=retry_config,
+                )
+                try:
+                    retry_answer = (retry_resp.text or "").strip()
+                except Exception:
+                    retry_answer = ""
+                if retry_answer and not _has_repetition_glitch(retry_answer):
+                    answer = retry_answer
+                    response = retry_resp
+                    log.info("/ask: repetition retry succeeded")
+                else:
+                    log.warning(
+                        "/ask: repetition retry didn't fix glitch — "
+                        "shipping original answer"
+                    )
+            except Exception as e:
+                log.warning(f"/ask: repetition retry call failed: {e}")
+
+        # Voice cleanup on the final answer. The pulse-side lint runs
+        # at AUDIT->SCRUB; /ask answers ship straight from Gemini to
+        # Discord with no scrub pass. Run a mechanical strip for the
+        # deterministic violations (em-dash inside sentences, semicolons
+        # mid-sentence) and log any other lint hits so we can track them
+        # without rewriting natural prose. The 2026-05-30->06-01 ask log
+        # had 13+ em-dash hits across the three days; this catches them
+        # all at the bot boundary.
+        if answer:
+            answer, hit_kinds = _clean_voice_violations(answer)
+            if hit_kinds:
+                log.info(
+                    f"/ask: voice-cleanup hits ({len(hit_kinds)}): "
+                    f"{sorted(set(hit_kinds))[:8]}"
+                )
+
         grounding_metadata = None
         try:
             grounding_metadata = response.candidates[0].grounding_metadata

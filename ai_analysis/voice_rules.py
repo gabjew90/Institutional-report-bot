@@ -169,6 +169,25 @@ BANNED_META_NARRATION = [
     # picks up "dispersion trade" in isolation.
     "directional dispersion trade",
     "directional bias trade",
+    # 2026-06-01 /ask QC additions: architecture-leak phrases. SV asked
+    # "what was discussed in chat between 5pm and 9pm est" and the bot
+    # declined with "the chat logs available to me don't cover that
+    # block of time in enough detail." That phrasing exposes the bot's
+    # internal data access. Same family as "in my context" — narrates
+    # the rule rather than just declining. The decline-clause itself
+    # is fine ("can't pull that one cleanly"); just the architecture
+    # narration has to go.
+    "available to me",
+    "in my context",
+    "my context",
+    "my immediate context",
+    "the chat logs i have",
+    "the chat logs available",
+    "the logs i have",
+    "the data i have",
+    "to my context",
+    "from my context",
+    "in enough detail to",
 ]
 
 # Source-prefix story-connector pattern: "[Bank] [verb]s that..."
