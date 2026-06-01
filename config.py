@@ -174,6 +174,15 @@ class Settings(BaseSettings):
     # latency. Cache hits don't count toward this cap (already done).
     ask_image_ocr_max_per_call: int = 3
 
+    # Backpressure cap on EAGER OCR — the live-on_message path spawns
+    # one asyncio.create_task per image attachment. Without a cap, a
+    # burst of 50+ images (common during open / close / earnings) would
+    # fire 50+ concurrent Gemini OCR calls and either trip rate limits
+    # or starve other Gemini work (PDF analysis, /ask). The semaphore
+    # caps in-flight eager OCR at this value — tasks queue rather than
+    # being dropped, so coverage is preserved.
+    eager_ocr_max_concurrent: int = 3
+
     # How long Discord CDN attachment URLs stay fresh after issuance.
     # The OCR helper uses this to decide whether to attempt the direct
     # URL first or skip straight to channel.fetch_message() for a

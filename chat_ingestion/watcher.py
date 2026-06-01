@@ -41,6 +41,29 @@ _CATCHUP_BUFFER_MIN = 60         # 1h overlap before latest-known msg
 _last_catchup_at: dict[str, datetime] = {}
 
 
+# Eager-OCR concurrency cap. Lazily initialized on first use so we have
+# a live asyncio event loop (Semaphore binds to the loop at creation).
+# Cap is sourced from settings.eager_ocr_max_concurrent; without this
+# a burst of image messages spawns N concurrent Gemini OCR calls and
+# either hits rate limits or starves PDF analysis / /ask of capacity.
+_eager_ocr_semaphore: asyncio.Semaphore | None = None
+
+
+def _get_eager_ocr_semaphore() -> asyncio.Semaphore:
+    """Return the module-level eager-OCR semaphore, creating it on demand.
+
+    Built lazily so it binds to whatever event loop is running when
+    on_message first fires (matches discord.py's loop, not whatever
+    loop happened to exist at import time).
+    """
+    global _eager_ocr_semaphore
+    if _eager_ocr_semaphore is None:
+        cap = max(1, int(getattr(settings, "eager_ocr_max_concurrent", 3)))
+        _eager_ocr_semaphore = asyncio.Semaphore(cap)
+        log.info(f"Eager OCR concurrency cap = {cap}")
+    return _eager_ocr_semaphore
+
+
 def _extract_embed_texts(embeds) -> list[str]:
     """Pull readable text from Discord embeds (tweet quotes, link
     previews, etc). Keeps the JSON payload small — just the fields
@@ -154,15 +177,21 @@ async def _safe_ocr_inline(message: discord.Message, chan_name: str) -> None:
     """Wrap ocr_attachments_inline with a top-level exception guard so a
     crash in the background task doesn't bubble to the event loop as
     an unhandled exception warning.
+
+    Acquires the eager-OCR semaphore before doing any Gemini work so
+    bursts of image messages queue rather than triggering N concurrent
+    OCR calls.
     """
-    try:
-        from chat_ingestion.ocr import ocr_attachments_inline
-        await ocr_attachments_inline(message)
-    except Exception as e:
-        log.warning(
-            f"Eager OCR task failed for msg={message.id} "
-            f"channel='{chan_name}': {type(e).__name__}: {e}"
-        )
+    sem = _get_eager_ocr_semaphore()
+    async with sem:
+        try:
+            from chat_ingestion.ocr import ocr_attachments_inline
+            await ocr_attachments_inline(message)
+        except Exception as e:
+            log.warning(
+                f"Eager OCR task failed for msg={message.id} "
+                f"channel='{chan_name}': {type(e).__name__}: {e}"
+            )
 
 
 async def run_chat_catchup(

@@ -59,10 +59,12 @@ DELIVERY_FAILED_DIR = "pulse-output/delivery-failed"
 # single directory poll catches every quality/error event for any pulse.
 QC_REVIEWS_DIR = "pulse-output/qc-reviews"
 # How long the bridge keeps retrying a failed delivery before giving up
-# and moving the pulse to delivery-failed/. 15 min covers ~15 poll
-# cycles (1/min) — enough to ride out a typical Discord outage but
-# not so long that a stuck pulse blocks attention.
-MAX_DELIVERY_RETRY_MINUTES = 15
+# and moving the pulse to delivery-failed/. 90 min covers ~90 poll
+# cycles (1/min) — enough to ride out a sustained Discord 5xx episode
+# or a routine multi-minute global rate-limit, while still surfacing
+# truly stuck pulses for human attention within a reasonable window.
+# (Raised from 15min on 2026-06-01 after a real partial-outage incident.)
+MAX_DELIVERY_RETRY_MINUTES = 90
 
 
 def bridge_enabled() -> bool:
@@ -408,6 +410,35 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                 f"Bridge: matched adjudication for {name} — "
                 f"{adj_themes} themes, {adj_discarded} discarded"
             )
+            # Adjudication 0-themes hard-fail. If the validator rejected
+            # every candidate theme (adj_themes==0 AND adj_discarded>0),
+            # the pulse markdown that follows is by construction empty of
+            # real content — section headers may exist but no theme bodies
+            # passed. Shipping it would publish a hollow pulse. Move to
+            # delivery-failed/ for human inspection instead.
+            if adj_themes == 0 and adj_discarded > 0:
+                log.error(
+                    f"Bridge: {name} adjudication validated 0/{adj_discarded} themes "
+                    f"(everything rejected) → moving to delivery-failed/"
+                )
+                await _commit_delivery_failed_marker(
+                    name, raw_markdown, target_filter="",
+                    target_count=0,
+                    configured_count=len(settings.discord_channel_ids),
+                    per_channel_errors=[
+                        f"(adjudication validated 0 of {adj_discarded} candidate themes — "
+                        f"pulse has no surviving content; refusing to publish)"
+                    ],
+                )
+                await asyncio.to_thread(
+                    gh.put_file, delivery_failed_path, raw_markdown,
+                    f"bridge: move to delivery-failed (adj 0 themes) {name}",
+                )
+                await asyncio.to_thread(
+                    gh.delete_file, pending_path,
+                    f"bridge: remove pending {name} (adj 0 themes)",
+                )
+                return
 
         today = date.today().isoformat()
         pdf_count = int(meta.get("pdf_count", 0))
@@ -493,7 +524,49 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
 
         embeds = format_report_embeds(report)
         leading_content = format_report_header_message(report)
+
+        # Defensive check: if format_report_embeds produced only the gold
+        # header + gray footer (no RECAP/INSIGHTS/WHAT-TO-WATCH sections),
+        # the markdown was structurally empty. Don't ship a hollow pulse
+        # — move to delivery-failed/ for inspection.
+        section_embeds = [
+            e for e in embeds
+            if getattr(e, "title", None)
+            and isinstance(e.title, str)
+            and e.title.strip()
+        ]
+        if len(section_embeds) == 0:
+            log.error(
+                f"Bridge: {name} formatted to 0 section embeds "
+                f"(only header+footer) — markdown appears empty. "
+                f"→ moving to delivery-failed/"
+            )
+            await _commit_delivery_failed_marker(
+                name, raw_markdown, target_filter,
+                target_count=len(target_ids),
+                configured_count=len(configured_ids),
+                per_channel_errors=[
+                    "(pulse markdown parsed to 0 section embeds — RECAP/"
+                    "INSIGHTS/WHAT-TO-WATCH headers missing or empty)"
+                ],
+            )
+            await asyncio.to_thread(
+                gh.put_file, delivery_failed_path, raw_markdown,
+                f"bridge: move to delivery-failed (empty embeds) {name}",
+            )
+            await asyncio.to_thread(
+                gh.delete_file, pending_path,
+                f"bridge: remove pending {name} (delivery-failed)",
+            )
+            return
+
+        # Use send_embeds_detailed so partial-delivery (some embeds shipped
+        # but not all) is captured and treated as a real failure, not silently
+        # archived as "channel succeeded".
+        from discord_bot.sender import send_embeds_detailed
+
         channels_sent = 0
+        channels_partial = 0
         per_channel_errors: list[str] = []
         for cid in target_ids:
             try:
@@ -503,12 +576,34 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                     log.warning(f"Bridge: {msg}")
                     per_channel_errors.append(msg)
                     continue
-                ok = await send_embeds(channel, embeds, leading_content=leading_content)
-                if ok:
+                result = await send_embeds_detailed(
+                    channel, embeds, leading_content=leading_content,
+                )
+                if result["success"]:
                     channels_sent += 1
-                    log.info(f"Bridge: posted {name} to channel {cid} ({channel.name})")
+                    log.info(
+                        f"Bridge: posted {name} to channel {cid} ({channel.name}) "
+                        f"({result['embeds_sent']}/{result['embeds_total']} embeds)"
+                    )
+                elif result["embeds_sent"] > 0:
+                    # Partial delivery — some embeds shipped, then a 429/5xx
+                    # broke mid-stream. Count as a failed channel for the
+                    # retry-window decision (we want the next bridge poll to
+                    # retry the full pulse) but log the partial state so a
+                    # human can see Discord may have a half-broken render.
+                    channels_partial += 1
+                    msg = (
+                        f"channel {cid} ({channel.name}): PARTIAL — "
+                        f"{result['embeds_sent']}/{result['embeds_total']} embeds shipped "
+                        f"before failure ({result['last_error']})"
+                    )
+                    log.warning(f"Bridge: {msg}")
+                    per_channel_errors.append(msg)
                 else:
-                    msg = f"channel {cid} ({channel.name}): send_embeds returned False (Discord API error — see Railway logs around this timestamp)"
+                    msg = (
+                        f"channel {cid} ({channel.name}): 0/{result['embeds_total']} "
+                        f"embeds shipped ({result['last_error']})"
+                    )
                     log.warning(f"Bridge: {msg}")
                     per_channel_errors.append(msg)
             except Exception as e:
@@ -580,10 +675,18 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             pending_path,
             f"bridge: remove pending {name} after posting",
         )
-        partial = (
-            f" (PARTIAL: {len(target_ids) - channels_sent} channel(s) failed)"
-            if channels_sent < len(target_ids) else ""
-        )
+        if channels_sent < len(target_ids):
+            failed_count = len(target_ids) - channels_sent
+            partial = (
+                f" (PARTIAL: {failed_count} channel(s) failed"
+                + (
+                    f", {channels_partial} of those mid-stream after some embeds shipped"
+                    if channels_partial > 0 else ""
+                )
+                + ")"
+            )
+        else:
+            partial = ""
         log.info(f"Bridge: archived {name} (posted to {channels_sent}/{len(target_ids)} channels){partial}")
 
         # Archive the matching adjudication file if one was retrieved. Errors
