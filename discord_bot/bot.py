@@ -2338,6 +2338,82 @@ async def _answer_with_gemini(
                     f"{sorted(set(hit_kinds))[:8]}"
                 )
 
+        # Architecture-leak rewrite. The 2026-06-01 QC caught one shipped:
+        # SV asked "what was discussed in chat between 5pm and 9pm est"
+        # and the bot returned "Can't pull a clean summary for that
+        # specific window — the chat logs available to me don't cover
+        # that block of time in enough detail to give you a reliable
+        # read on it." Voice lint DETECTS "available to me" / "in enough
+        # detail to" / "the chat logs available" but the mechanical pass
+        # only strips em-dashes/semicolons — leaked phrases ship. When
+        # any 'meta-narration' kind fires, do a one-shot Gemini rewrite
+        # with a tiny prompt. No tools, low budget. If the rewrite also
+        # leaks (or fails), ship the original — better SOMETHING than
+        # blank.
+        if answer and "meta-narration" in (hit_kinds or []):
+            log.warning(
+                f"/ask: architecture-leak phrase shipped through lint "
+                f"(q={question[:80]!r}); requesting rewrite"
+            )
+            try:
+                rewrite_prompt = (
+                    "Rewrite the following Discord bot answer so it sounds "
+                    "like a trader talking to another trader. Strip ANY "
+                    "phrase that exposes the bot's internal data access or "
+                    "limitations — phrases like 'available to me', 'in my "
+                    "context', 'the chat logs available', 'in enough detail "
+                    "to', 'I can search', 'my tools'. If the answer is a "
+                    "decline ('can't pull that one'), keep the decline but "
+                    "drop the architecture excuse — just say what you don't "
+                    "have, not why your data layer doesn't have it. Keep "
+                    "the same length, voice, and substance. Output ONLY the "
+                    "rewritten answer, no preamble.\n\n"
+                    "ORIGINAL:\n"
+                    f"{answer}"
+                )
+                rewrite_config = types.GenerateContentConfig(
+                    system_instruction=(
+                        "You are a senior trader rewriting another trader's "
+                        "message. Be direct, plain-English, no AI tells, no "
+                        "self-references to data sources or tools."
+                    ),
+                    safety_settings=safety_settings,
+                    max_output_tokens=1500,
+                    temperature=0.4,
+                    thinking_config=types.ThinkingConfig(thinking_budget=512),
+                )
+                rewrite_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=[
+                        types.Content(
+                            role="user",
+                            parts=[types.Part.from_text(text=rewrite_prompt)],
+                        )
+                    ],
+                    config=rewrite_config,
+                )
+                try:
+                    rewritten = (rewrite_resp.text or "").strip()
+                except Exception:
+                    rewritten = ""
+                if rewritten:
+                    # Re-lint to make sure the rewrite is actually clean.
+                    rewritten, rewrite_hits = _clean_voice_violations(rewritten)
+                    if "meta-narration" not in (rewrite_hits or []):
+                        answer = rewritten
+                        log.info("/ask: architecture-leak rewrite succeeded")
+                    else:
+                        log.warning(
+                            "/ask: rewrite still leaks meta-narration — "
+                            "shipping original"
+                        )
+                else:
+                    log.warning(
+                        "/ask: rewrite returned empty — shipping original"
+                    )
+            except Exception as e:
+                log.warning(f"/ask: architecture-leak rewrite call failed: {e}")
+
         grounding_metadata = None
         try:
             grounding_metadata = response.candidates[0].grounding_metadata
