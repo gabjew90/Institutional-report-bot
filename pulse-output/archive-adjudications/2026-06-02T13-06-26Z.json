@@ -1,0 +1,399 @@
+{
+  "pulse_date": "2026-06-02",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai leadership transition",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 14
+      },
+      "consensus_view": "Banks across more than a dozen desks flag the AI infrastructure buildout as a dominant capital-spending theme, with UBS the only desk explicitly calling new entrants the likely next market leaders while most others note the trend without staking a directional view.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks identify the AI infrastructure buildout as a major ongoing capex and demand cycle.",
+          "banks_for": [
+            "UBS",
+            "BlackRock Investment Institute",
+            "Citi",
+            "Deutsche Bank",
+            "Franklin Templeton",
+            "Goldman Sachs",
+            "JPMorgan",
+            "JPMorgan Asset Management",
+            "Barclays"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure buildout",
+            "AI infrastructure demand surge",
+            "AI infrastructure debt issuance wave",
+            "AI capital expenditure buildout",
+            "AI-related capex investment cycle",
+            "Hyperscaler capital expenditure acceleration",
+            "AI sector infrastructure expansion",
+            "AI value chain investment"
+          ]
+        },
+        {
+          "claim": "Several banks flag AI-driven power and data center demand as a structural growth driver.",
+          "banks_for": [
+            "JPMorgan",
+            "Wells Fargo Investment Institute",
+            "WisdomTree",
+            "Syz Equity Research"
+          ],
+          "evidence_quotes": [
+            "AI-driven data center power demand",
+            "European AI infrastructure expansion",
+            "AI infrastructure investment in France",
+            "AI-driven data center investment cycle"
+          ]
+        },
+        {
+          "claim": "Multiple banks flag bottlenecks and overbuild risks in the AI supply chain and hardware layer.",
+          "banks_for": [
+            "Barclays",
+            "UBS",
+            "Deutsche Bank",
+            "BlackRock Investment Institute"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure bottlenecks",
+            "AI supply chain bottlenecks",
+            "AI hardware overbuild risks",
+            "AI monetization uncertainty"
+          ]
+        },
+        {
+          "claim": "UBS argues new entrants will likely lead the next leg of AI, since incumbents are structurally tied to legacy hardware.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "new entrants will likely be among the next market leaders"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai driven market concentration",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 6,
+        "neutral": 4
+      },
+      "consensus_view": "Banks agree AI spending and a narrow group of tech mega-caps are driving the entire rally, but they split sharply on whether that concentration is a durable growth story or a fragile setup primed for a sharp drawdown.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure spending remains a dominant driver of equity earnings and market performance.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "UBS",
+            "Natixis",
+            "Barclays",
+            "WisdomTree"
+          ],
+          "evidence_quotes": [
+            "strong AI spend on key bottlenecks is likely to continue to support outperformance",
+            "Mag-7 EPS growth is the strongest since Q1 '24",
+            "We expect global investment in AI infrastructure to remain robust",
+            "AI optimism is still a major catalyst",
+            "strong momentum across GPU, ASIC, general servers, and networking signals AI demand is durable",
+            "The market continues to demonstrate remarkable resilience."
+          ]
+        },
+        {
+          "claim": "The market rally is heavily concentrated in AI-related mega-cap tech, creating elevated concentration risk.",
+          "banks_for": [
+            "Syz Private Banking",
+            "State Street Investment Management",
+            "UBS",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Without AI, the market rally would appear far less robust",
+            "environments characterized by extreme concentration can also amplify drawdowns when sentiment shifts",
+            "The outsized gains by top US tech companies have added to concentration risks",
+            "Positioning is extreme, leverage is exploding, investors are chasing low-quality tech"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI-led rally is sustainable or set up for a sharp drawdown",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "for_evidence": "Recent developments have reinforced our conviction in the long-term potential gains on offer in AI.",
+          "banks_against": [
+            "Deutsche Bank",
+            "The Market Ear",
+            "Syz Group"
+          ],
+          "against_evidence": "the only non-recession example since WWII of the S&P 500 rising this fast was a few months before a historic market crash."
+        },
+        {
+          "claim": "Whether AI capex funding via record debt and equity issuance is sustainable",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "Evidence of AI monetization has continued to build",
+          "banks_against": [
+            "Syz Group",
+            "Deutsche Bank"
+          ],
+          "against_evidence": "The AI DEBT BUBBLE is extremely large"
+        },
+        {
+          "claim": "Whether investors should lean into AI tech leadership or rotate to diversify away from it",
+          "banks_for": [
+            "Goldman Sachs",
+            "Natixis"
+          ],
+          "for_evidence": "Re-risking has been unusually fast and narrow, with particular focus on global Tech stocks.",
+          "banks_against": [
+            "UBS"
+          ],
+          "against_evidence": "we advise investors to use the recent strength of equity markets to rebalance portfolios"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "software sector strength",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 2,
+        "neutral": 9
+      },
+      "consensus_view": "Software just delivered a historic two-day rip versus the S&P 500 powered by record call-option buying and washed-out positioning, and most desks say buy it while a couple warn the squeeze has already gone far enough to take profits.",
+      "facts_agreed": [
+        {
+          "claim": "Software has staged a historic squeeze and is now outperforming, with desks pointing to rock-bottom prior positioning as the fuel.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Software has now outperformed the markets (S&P500) by >10% bps over two sessions",
+            "notable uptick in LO demand for Software on our desk",
+            "Software is to buy here on the other side.",
+            "IGV has been absolutely crushed, but is now sitting on major support",
+            "software has delivered almost identical returns"
+          ]
+        },
+        {
+          "claim": "Software fundamentals and the AI-complement thesis support owning the group into 2026.",
+          "banks_for": [
+            "JPMorgan",
+            "Raymond James"
+          ],
+          "evidence_quotes": [
+            "we like Software as a long due to (i) strong fundamentals",
+            "earnings are expected to grow 18% in 2026"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether to keep buying software after the squeeze or take profits at range highs",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "we like Software as a long due to (i) strong fundamentals",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "after a historic squeeze and a test of major range highs, we would rather be taking profits"
+        },
+        {
+          "claim": "Whether the software-over-semis mean-reversion trade still has room to run",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "notable uptick in LO demand for Software on our desk",
+          "banks_against": [
+            "JPMorgan"
+          ],
+          "against_evidence": "investors increasingly questioning the mean reversion trade"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran deal",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Banks broadly flag US-Iran ceasefire and Strait of Hormuz reopening talks as a live oil-market catalyst, but only Deutsche Bank stakes a directional view (deal expected in June); the rest stay neutral.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference ongoing US-Iran ceasefire and Strait of Hormuz reopening negotiations as an active near-term catalyst.",
+          "banks_for": [
+            "Cboe",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Natixis",
+            "Syz Equity Research",
+            "Syz Group",
+            "UBS",
+            "World Gold Council"
+          ],
+          "evidence_quotes": [
+            "US-Iran ceasefire negotiations",
+            "U.S.-Iran peace agreement negotiations",
+            "US-Iran nuclear talks",
+            "US-Iran ceasefire MoU negotiations",
+            "Strait of Hormuz reopening talks"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz closure duration",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 9
+      },
+      "consensus_view": "Nine banks flag the Strait of Hormuz shutdown as an active disruption to oil and shipping with no clear reopening timeline, while Rabobank is alone in calling for closure to persist into September.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks treat the Strait of Hormuz closure as an ongoing energy-supply and shipping disruption rather than a resolved event.",
+          "banks_for": [
+            "BlackRock Investment Institute",
+            "Citi",
+            "Deutsche Bank",
+            "ING",
+            "Natixis",
+            "RBC BlueBay Asset Management",
+            "Rabobank",
+            "SEB",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz supply chain risks",
+            "Strait of Hormuz maritime blockade",
+            "Strait of Hormuz supply chain disruption",
+            "Strait of Hormuz energy flow disruption",
+            "Strait of Hormuz oil supply disruption",
+            "Strait of Hormuz oil transit disruption"
+          ]
+        },
+        {
+          "claim": "Banks are watching for shipping normalization through the Strait without yet seeing a recovery.",
+          "banks_for": [
+            "Natixis",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping normalization",
+            "Strait of Hormuz shipping restoration"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "equity market broadening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Most desks still frame US equities as dominated by a handful of AI-driven megacap tech names, with only Franklin Templeton explicitly calling for the rally to widen out to small caps, value, and emerging markets.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks describe the current US equity tape as concentrated in AI-driven megacap tech rather than broadly participated.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "State Street Investment Management",
+            "Syz Private Banking"
+          ],
+          "evidence_quotes": [
+            "AI-driven equity market concentration",
+            "AI trade dominance",
+            "AI-driven market performance",
+            "AI-driven structural growth theme",
+            "US megacap tech concentration",
+            "US tech concentration risk"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the equity rally broadens out beyond Mag 7 into small caps, value, and EMs",
+          "banks_for": [
+            "Franklin Templeton"
+          ],
+          "for_evidence": "We remain constructive on equities and believe that the market will continue to broaden.",
+          "banks_against": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "Syz Private Banking"
+          ],
+          "against_evidence": "US megacap tech concentration"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east conflict impacts",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six banks flag the Middle East conflict as a live cross-asset variable touching oil, credit, earnings and rates, but none has staked a primary directional view on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across multiple desks reference the Middle East conflict as an active driver impacting energy prices, corporate bonds, earnings, and supply chains.",
+          "banks_for": [
+            "Citi",
+            "Deutsche Bank",
+            "Franklin Templeton",
+            "JPMorgan Asset Management",
+            "UBS",
+            "Wells Fargo Investment Institute"
+          ],
+          "evidence_quotes": [
+            "US-Iran war impact on oil prices",
+            "Iran war conflict impact on corporate bonds",
+            "Middle East conflict impact on earnings",
+            "Middle East conflict energy price pressure",
+            "Middle East oil supply disruptions",
+            "AI-driven optimism vs Middle East conflict",
+            "Middle East energy shock",
+            "Middle East conflict supply chain disruption"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
