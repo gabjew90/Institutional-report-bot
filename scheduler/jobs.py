@@ -173,14 +173,20 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     # view. Posts a summary to the announce channel if anything was marked.
     # Only registers if the watcher is enabled (analyst_channel_name set).
     if settings.analyst_channel_name:
+        # 2026-06-02: bumped from daily 04:00 -> hourly. A 0DTE option
+        # closing at 4 PM ET would otherwise sit marked as "open" for
+        # ~12 hours until the daily sweep ran. Hourly cadence means
+        # silent-expiry detection catches positions within an hour of
+        # their expiry. Pure SQL query, no Gemini calls — cheap to run
+        # 24x/day.
         scheduler.add_job(
             _analyst_expire_sweep_job,
-            trigger=CronTrigger(hour=4, minute=0, timezone=tz),
+            trigger=CronTrigger(minute=0, timezone=tz),
             id="analyst_expire_sweep",
             name="Analyst log: mark expired positions",
             kwargs={"bot": bot},
             max_instances=1,
-            misfire_grace_time=3600,
+            misfire_grace_time=300,
         )
         # Startup catch-up: redeploys cycle the in-memory scheduler, so if
         # a deploy happens between cron fires (or right after the 04:00 ET
@@ -252,9 +258,19 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     # a per-user delta filter (profile_delta_threshold) so users whose
     # message count since last profile hasn't moved enough are skipped —
     # the daily run only re-profiles the people who actually changed.
+    # 2026-06-02: bumped from daily 15:00 -> every 6h (4x per day at
+    # 03:00 / 09:00 / 15:00 / 21:00 local). With the new text-extraction
+    # pipeline writing analyst_trades rows in real-time and the
+    # wins-only +2 / 7d ledger, trader_score is now more responsive to
+    # live trade activity. Daily refresh meant a user could rip 5
+    # winning trades at 4 PM ET and his score wouldn't move until 3 PM
+    # the next day. 6h cadence cuts that staleness to <6h. The
+    # profile_delta_threshold gate still filters out users without
+    # meaningful activity since their last refresh, so most 6h ticks
+    # only re-profile a handful of users.
     scheduler.add_job(
         _user_profile_refresh_job,
-        trigger=CronTrigger(hour=15, minute=0, timezone=tz),
+        trigger=CronTrigger(hour="3,9,15,21", minute=0, timezone=tz),
         id="user_profile_refresh",
         name="User profiles: refresh active members",
         kwargs={"bot": bot},
@@ -263,8 +279,25 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     )
     log.info(
         f"User-profile system active — ALL ingested channels, "
-        f"daily refresh 15:00 {settings.timezone} "
+        f"refresh every 6h (03/09/15/21 {settings.timezone}) "
         f"(delta threshold: {settings.profile_delta_threshold} new msgs)"
+    )
+
+    # 2026-06-02: periodic chat catchup backstop. chat_ingestion's
+    # run_chat_catchup runs on bot.on_ready / on_resumed only — if the
+    # bot stays connected to Discord's gateway with no flap, no catchup
+    # runs. Today's zhawk-thawghts perm-fix surfaced this: backfill
+    # only happened on redeploy. Periodic backstop (every 4h) ensures
+    # gap detection runs at most every 4h even on steady-state bots.
+    # MAX(latest_stored_posted_at) resume keeps the scan cheap.
+    scheduler.add_job(
+        _chat_catchup_periodic_job,
+        trigger=IntervalTrigger(hours=4),
+        id="chat_catchup_periodic",
+        name="chat ingestion: periodic catchup backstop",
+        kwargs={"bot": bot},
+        max_instances=1,
+        misfire_grace_time=1800,
     )
 
     # /ask interaction log publisher — every 30 min, push any local
@@ -644,6 +677,32 @@ async def _user_profile_refresh_job(bot=None, force: bool = False):
                 )
     except Exception as e:
         log.error(f"User-profile refresh failed: {e}", exc_info=True)
+
+
+async def _chat_catchup_periodic_job(bot=None):
+    """Periodic backstop (every 4h) for the chat-ingestion catchup
+    that normally only fires on bot.on_ready / on_resumed events.
+
+    Today's zhawk-thawghts perm-fix surfaced the gap: when the bot
+    stays connected to Discord's gateway with no flap, catchup never
+    runs. A channel that becomes accessible mid-day (perm grant, name
+    change, etc.) won't get backfilled until the bot restarts.
+
+    Cheap: MAX(latest_stored_posted_at) per channel limits scan window.
+    A typical 4h gap is ~50-200 messages per channel × 12 channels.
+    Idempotent via UNIQUE(discord_message_id) — duplicates silently skip.
+    """
+    if bot is None:
+        log.warning("chat_catchup_periodic: bot=None, skipping")
+        return
+    try:
+        from chat_ingestion.watcher import run_chat_catchup
+        # force=True bypasses the 2-min rate limit guard since periodic
+        # invocations are at 4h spacing which the guard doesn't anticipate.
+        n = await run_chat_catchup(bot, reason="periodic", force=True)
+        log.info(f"chat_catchup_periodic: stored {n} new rows across channels")
+    except Exception as e:
+        log.error(f"chat_catchup_periodic failed: {e}", exc_info=True)
 
 
 async def _chat_purge_job():
