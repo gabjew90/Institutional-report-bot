@@ -4,7 +4,7 @@
 
 **Goal:** Credit text-based entry/close calls (not just screenshots) in the trader ledger; collapse the 5-event-type point ladder to wins-only +2; switch from 14d to 7d rolling; drop the `min(100,...)` cap on `trader_score`. Backfill 30d of caller-owned + eager-OCR channels through the new text classifier.
 
-**Architecture:** New Gemini classifier (`analyst_log/ocr.py:extract_trade_from_message`) consumes text + image attachments in one call, returns a fuzzy JSON schema (accept whatever Gemini can pull as long as `is_trade=true`). Hooks into `chat_ingestion/watcher.py:_safe_ocr_inline` so eager-OCR channels (including ZHawk's `🫦-zhawk-thawghts-🗣`) now classify text messages too. Abe + BK ingestion pipelines through `analyst_log/watcher.py` are completely untouched. Points-ledger formula simplifies to `wins × 2` (callers + members same rule). Score formula loses its cap.
+**Architecture:** New Gemini classifier (`analyst_log/ocr.py:extract_trade_from_message`) consumes text + image attachments + cached OCR text in one call, returns a fuzzy JSON schema (accept whatever Gemini can pull as long as `is_trade=true`). Hooks into `chat_ingestion/watcher.py:_safe_ocr_inline` so eager-OCR channels (including ZHawk's `🫦-zhawk-thawghts-🗣`) now classify text-only messages, image+text combos, and image-only messages through ONE unified pipeline. Dedup is keyed on `discord_message_id` (one Discord message → at most one `analyst_trades` row), with same-fields fallback for cross-message dedup. Backfill uses cached `chat_messages.image_ocr_text` instead of re-fetching expired Discord CDN images. Abe + BK ingestion pipelines through `analyst_log/watcher.py` are completely untouched. Points-ledger formula simplifies to `wins × 2` (callers + members same rule). Score formula loses its cap.
 
 **Tech Stack:** Python 3.10+, `google.genai` SDK (Gemini 3.1 Flash Lite text+vision), SQLite via existing `db.py`, plain-script smoke tests.
 
@@ -470,7 +470,15 @@ Rules:
 
 Message author: {author}
 Channel: {channel}
-Text content: {text}
+
+Text content (user's typed message):
+{text}
+
+Image OCR text (prior Gemini extraction from the screenshot, if any —
+may be partial or empty; treat as a hint, not gospel):
+{cached_ocr}
+
+[Plus any image attachments provided directly in this prompt.]
 """
 
 
@@ -480,27 +488,50 @@ async def extract_trade_from_message(
     *,
     author_username: str,
     channel_name: str,
+    cached_ocr_text: str = "",
 ) -> dict | None:
-    """Classify a Discord message as a trade entry/close — text and/or
-    image. Returns None if the model says it's not a trade, confidence
-    is too low, or no ticker was extractable.
+    """Classify a Discord message as a trade entry/close — text,
+    image, AND/OR cached prior OCR. Returns None if the model says it's
+    not a trade, confidence is too low, or no ticker was extractable.
 
     Otherwise returns a dict matching the row-write schema, plus
     extraction_source ∈ {'text', 'image', 'mixed'}.
+
+    `cached_ocr_text` is used by the backfill path: the eager-OCR
+    pipeline has already extracted text from screenshots into
+    chat_messages.image_ocr_text. Discord CDN URLs expire ~24h so we
+    can't re-fetch the original bytes for old messages. Passing the
+    cached OCR text lets the classifier see what the screenshot
+    contained without re-fetching. Live ingestion passes image_bytes_list
+    instead (real-time has the bytes); backfill passes cached_ocr_text.
+
+    extraction_source is tagged based on which signal(s) the classifier
+    used:
+      - text only (no image OR cached_ocr): 'text'
+      - image bytes only (no text caption): 'image'
+      - cached_ocr_text only (backfill, image bytes gone): 'image'
+        (the OCR represents an image, just cached)
+      - text + image bytes OR text + cached_ocr: 'mixed'
     """
     from config import settings
     from google.genai import types as genai_types
 
     text = (text or "").strip()
+    cached_ocr_text = (cached_ocr_text or "").strip()
     has_text = bool(text)
     has_images = bool(image_bytes_list)
-    if not has_text and not has_images:
+    has_cached_ocr = bool(cached_ocr_text)
+    if not has_text and not has_images and not has_cached_ocr:
         return None  # nothing to classify
 
     # Build the prompt parts: text + each image as bytes.
+    # Per-section content blocks so Gemini sees what we used clearly.
+    text_section = text if has_text else "(none)"
+    ocr_section = cached_ocr_text if has_cached_ocr else "(none)"
     prompt_text = _CLASSIFIER_PROMPT.format(
         author=author_username, channel=channel_name,
-        text=text if has_text else "(no text content — image only)",
+        text=text_section,
+        cached_ocr=ocr_section,
     )
     parts = [genai_types.Part.from_text(text=prompt_text)]
     for img_bytes in image_bytes_list:
@@ -542,9 +573,10 @@ async def extract_trade_from_message(
         return None
 
     # Tag extraction_source based on which modalities contributed.
-    if has_text and has_images:
+    image_present = has_images or has_cached_ocr  # cached OCR represents an image
+    if has_text and image_present:
         extraction_source = "mixed"
-    elif has_images:
+    elif image_present:
         extraction_source = "image"
     else:
         extraction_source = "text"
@@ -631,6 +663,41 @@ def _conn():
     with patch("db.get_connection", return_value=c):
         db.init_db()
     return c
+
+
+def test_dedup_tier1_same_message_id():
+    """Tier 1: if a row exists for the same discord_message_id, skip.
+    This catches the live case where image OCR already wrote a row for
+    a message with screenshot + caption, and the new classifier tries
+    to write a second row for the same message."""
+    c = _conn()
+    # Image row written first (by ocr_attachments_inline path)
+    c.execute(
+        "INSERT INTO analyst_trades (discord_message_id, "
+        "discord_attachment_id, author, author_id, posted_at, "
+        "ticker, action, is_trade, tracking_mode, extraction_source) "
+        "VALUES (5000, 1, 'zhawk', 100, '2026-06-01T12:00:00', "
+        "'PURR', 'open', 1, 'member', 'image')"
+    )
+    # Now classifier tries to write a row for the SAME message
+    # (different ticker even — but message_id collision wins).
+    with patch("db.get_connection", return_value=c):
+        skipped = db.insert_text_extracted_trade_if_not_dup(
+            author_id=100, author_username="zhawk",
+            discord_message_id=5000,  # SAME message_id
+            posted_at="2026-06-01T12:00:00",
+            extracted={
+                "is_trade": True, "action": "close", "ticker": "BTC",
+                "extraction_source": "text",
+            },
+            channel_name="🫦-zhawk-thawghts-🗣",
+        )
+    assert skipped is False, "same message_id should always skip"
+    rows = c.execute(
+        "SELECT COUNT(*) FROM analyst_trades WHERE discord_message_id = 5000"
+    ).fetchone()
+    assert rows[0] == 1, f"expected 1 row, got {rows[0]}"
+    _ok("Tier 1 dedup: same discord_message_id skipped (live image+text case)")
 
 
 def test_text_skipped_when_image_already_exists():
@@ -723,6 +790,7 @@ def test_beyond_window_not_deduped():
 
 if __name__ == "__main__":
     print("=== text-extraction dedup smoke ===")
+    test_dedup_tier1_same_message_id()
     test_text_skipped_when_image_already_exists()
     test_text_inserted_when_no_image_in_window()
     test_beyond_window_not_deduped()
@@ -752,16 +820,25 @@ def insert_text_extracted_trade_if_not_dup(
     channel_name: str | None = None,
     dedup_window_minutes: int = 5,
 ) -> bool:
-    """Insert a text-extracted analyst_trades row IF no duplicate
-    image-extracted row exists within ±dedup_window_minutes for the
-    same (author_id, ticker, expiry, strike, contract_type, action).
+    """Insert a classifier-extracted analyst_trades row with two-tier
+    dedup:
 
-    Returns True if inserted, False if skipped due to dedup.
+      Tier 1 (strict): if any analyst_trades row already exists with
+        the SAME discord_message_id, skip. One Discord message → at
+        most one row, regardless of modality (text vs image vs mixed).
 
-    The image extraction path always wins on conflict: images are
-    higher-fidelity (verified screenshot). If a text row exists when
-    an image arrives later, the image-insert path is responsible for
-    superseding the text row (separate helper, not this one).
+      Tier 2 (fuzzy): if a row exists with extraction_source='image'
+        within ±dedup_window_minutes for the same (author_id, ticker,
+        expiry, strike, contract_type, action), skip. Handles the
+        cross-message case (e.g., text post then screenshot of same
+        trade 2 min later).
+
+    Returns True if inserted, False if skipped.
+
+    Image extraction always wins on conflict: images are higher-
+    fidelity verified screenshots. If a text row exists when an image
+    arrives later for the same message, the image-OCR insert path is
+    responsible for superseding (separate helper, not this one).
     """
     from datetime import datetime, timedelta
 
@@ -772,7 +849,19 @@ def insert_text_extracted_trade_if_not_dup(
     expiry = extracted.get("expiry") or None
     action = (extracted.get("action") or "").lower() or None
 
-    # Parse posted_at and compute ±N min window bounds
+    # Tier 1: discord_message_id dedup. One Discord message → at most
+    # one row. Catches the live case where ocr_attachments_inline
+    # already wrote an image row AND our text+vision classifier
+    # tries to write a second row for the same message.
+    existing_by_msg_id = conn.execute(
+        "SELECT id, extraction_source FROM analyst_trades "
+        "WHERE discord_message_id = ? LIMIT 1",
+        (int(discord_message_id),),
+    ).fetchone()
+    if existing_by_msg_id:
+        return False  # one message → one row, regardless of modality
+
+    # Parse posted_at and compute ±N min window bounds for Tier 2.
     try:
         ts = datetime.fromisoformat(posted_at.replace("Z", "+00:00"))
     except ValueError:
@@ -780,8 +869,7 @@ def insert_text_extracted_trade_if_not_dup(
     window_start = (ts - timedelta(minutes=dedup_window_minutes)).isoformat()
     window_end = (ts + timedelta(minutes=dedup_window_minutes)).isoformat()
 
-    # Dedup query: same author, same trade fields, within window,
-    # extraction_source='image'.
+    # Tier 2: same-fields dedup against image rows within window.
     existing = conn.execute(
         """SELECT id FROM analyst_trades
             WHERE author_id = ?
@@ -800,7 +888,7 @@ def insert_text_extracted_trade_if_not_dup(
         ),
     ).fetchone()
     if existing:
-        return False  # image row already exists — text row skipped
+        return False  # cross-message dup of an image row — skip
 
     # No dup. Insert the text row. discord_attachment_id is -1 (the
     # column is NOT NULL but text rows have no attachment — use -1
@@ -1489,16 +1577,22 @@ def _read_checkpoint(channel: str) -> int:
 
 def _iter_messages_to_process(channel: str):
     """Yield rows from chat_messages where discord_message_id is greater
-    than the checkpoint, channel matches, posted_at is within 30 days."""
+    than the checkpoint, channel matches, posted_at is within 30 days,
+    and there's some content to classify (text OR cached OCR).
+
+    Pulls image_ocr_text alongside content so the classifier can see
+    what the screenshot contained even though we can't re-fetch the
+    expired CDN URL."""
     last_seen = _read_checkpoint(channel)
     conn = db.get_connection()
     return conn.execute(
         "SELECT discord_message_id, author_id, author_username, content, "
-        "posted_at, has_attachments, attachment_urls "
+        "posted_at, has_attachments, attachment_urls, image_ocr_text "
         "FROM chat_messages "
         "WHERE channel_name = ? "
         "  AND discord_message_id > ? "
         "  AND posted_at > datetime('now', '-30 days') "
+        "  AND (content != '' OR image_ocr_text IS NOT NULL) "
         "ORDER BY discord_message_id ASC",
         (channel, last_seen),
     ).fetchall()
@@ -1506,18 +1600,36 @@ def _iter_messages_to_process(channel: str):
 
 async def _process_message(row, channel: str) -> bool:
     """Classify one chat_messages row, write analyst_trades row if it's
-    a trade. Returns True if a row was written."""
+    a trade. Returns True if a row was written.
+
+    Uses cached image_ocr_text instead of re-fetching the image bytes
+    (Discord CDN URLs expire ~24h). The eager-OCR pipeline already ran
+    on these images and stored the OCR text in chat_messages.
+    """
     from analyst_log.ocr import extract_trade_from_message
-    # In backfill we don't have raw image bytes — only the attachment
-    # URLs from chat_messages. For now: text-only classification on
-    # backfill. (Live ingestion path captures images via on_message;
-    # image-backfill would require Discord CDN re-fetches which we
-    # defer as a separate task.)
-    text = (row["content"] or "").strip()
-    if not text:
+
+    # Skip messages that already have an analyst_trades row (covers
+    # both the image-OCR rows from the existing pipeline AND any
+    # text rows from a prior backfill run). The Tier 1 dedup in the
+    # write helper would catch this too, but checking here saves a
+    # Gemini call.
+    conn = db.get_connection()
+    existing = conn.execute(
+        "SELECT 1 FROM analyst_trades WHERE discord_message_id = ? LIMIT 1",
+        (int(row["discord_message_id"]),),
+    ).fetchone()
+    if existing:
         return False
+
+    text = (row["content"] or "").strip()
+    cached_ocr = (row["image_ocr_text"] or "").strip()
+    if not text and not cached_ocr:
+        return False
+
     extracted = await extract_trade_from_message(
-        text=text, image_bytes_list=[],
+        text=text,
+        image_bytes_list=[],  # backfill: no live image bytes
+        cached_ocr_text=cached_ocr,
         author_username=row["author_username"] or "unknown",
         channel_name=channel,
     )
@@ -1607,10 +1719,15 @@ git add scripts/backfill_text_extracted_trades.py scripts/smoke_backfill_resumab
 git commit -m "backfill: re-classify last 30d of eager-OCR channel msgs
 
 One-shot script. For each chat_messages row in the last 30 days in
-chat_eager_ocr_channels, runs the text+vision classifier (text-only
-in backfill — re-fetching attachment bytes is a deferred enhancement)
-and writes analyst_trades rows via insert_text_extracted_trade_if_not_dup
-so existing image rows aren't duplicated.
+chat_eager_ocr_channels with content OR cached image_ocr_text:
+  1. Skip if analyst_trades already has a row for the discord_message_id
+     (covers existing image-OCR rows; saves a Gemini call too)
+  2. Build classifier input: message.content (text caption) +
+     image_ocr_text (eager-OCR's prior screenshot extraction). Discord
+     CDN URLs expire ~24h so re-fetching the original images isn't
+     viable for old messages — the cached OCR is the next best signal.
+  3. Run unified classifier; write analyst_trades row via
+     insert_text_extracted_trade_if_not_dup (Tier 1 + Tier 2 dedup).
 
 Resumable: writes per-channel checkpoints to processing_log. On
 re-run, only processes messages with discord_message_id > checkpoint.
