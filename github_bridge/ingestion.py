@@ -504,7 +504,7 @@ def watchdog_timeout_committed_job() -> None:
     """
     if not opus_bridge_enabled():
         return
-    from datetime import timedelta
+    from datetime import datetime, timedelta
     timeout_minutes = settings.opus_bridge_timeout_minutes
     cutoff = (datetime.utcnow() - timedelta(minutes=timeout_minutes)).isoformat()
     stale = db.find_timed_out_bridge_committed(cutoff, limit=50)

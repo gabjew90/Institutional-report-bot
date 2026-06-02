@@ -12,3 +12,9 @@ tenacity>=9.0.0
 python-dotenv>=1.0.0
 pytz>=2024.1
 markdown>=3.6
+# Dev/CI: catches undefined-name + unused-import bugs at smoke time.
+# Pure-Python AST analysis, no runtime impact. Added 2026-06-02 after
+# two latent NameError bugs (synthesizer.py 're', bot.py 'asyncio')
+# silently broke pulse-context dump + lazy /ask OCR until they
+# manifested on a fresh deploy.
+pyflakes>=3.0.0

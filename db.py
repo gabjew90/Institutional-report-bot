@@ -1,11 +1,14 @@
 """SQLite database setup and query helpers."""
 
 import json
+import logging
 import sqlite3
 from datetime import datetime, date, timedelta
 from pathlib import Path
 
 from config import settings
+
+log = logging.getLogger(__name__)
 
 _conn: sqlite3.Connection | None = None
 
