@@ -1546,35 +1546,50 @@ async def _execute_chat_search(args: dict) -> dict:
     }
 
 
-def _build_user_ranks_tool():
-    """FunctionDeclaration for `lookup_user_ranks`. Three modes:
-    (a) named user lookup, (b) single-position lookup by N (any N),
-    (c) top-5 leaderboard. Leaderboards are capped at 5 by policy;
-    single-position lookups have NO cap.
+def _build_user_profile_tool():
+    """FunctionDeclaration for `lookup_user_profile`. Unifies the three
+    modes from the legacy `lookup_user_ranks` tool and adds an
+    `include_profile` flag that returns the full WHO'S TALKING dossier
+    on top of rank + rationales.
+
+    Anchors (exactly one required):
+      - username: specific user
+      - metric: "trader" | "racism" — leaderboard or rank_position lookup
+      - metric + rank_position: the ONE user at that rank position
+
+    include_profile=True: also include the user's full profile_text
+    (Personality + Voice + Retarded Takes + Recent Personal Life +
+    Recent Trades). Rejected in leaderboard mode (5 dossiers too big).
     """
     from google.genai import types
     return types.Tool(
         function_declarations=[
             types.FunctionDeclaration(
-                name="lookup_user_ranks",
+                name="lookup_user_profile",
                 description=(
-                    "Look up rank info. Three modes (use exactly one):\n"
+                    "Look up rank + optional full profile for a "
+                    "Discord room member. Three anchor shapes "
+                    "(use EXACTLY one):\n"
                     "(a) `username` set → returns that user's "
                     "trader-rank, racism-rank, and both rationales. "
-                    "Use when the asker names a specific user.\n"
+                    "Use when asker names a specific user.\n"
                     "(b) `metric` ('trader' or 'racism') + "
                     "`rank_position` (positive integer, no upper "
-                    "cap) → returns the ONE user at that rank with "
-                    "their rationale. Use for 'who's #N' questions "
-                    "(any N: 'who's #1 trader', 'who's #15 trader', "
-                    "'who's #50 racist').\n"
-                    "(c) `metric` set with no username and no "
-                    "rank_position → returns the TOP 5 users by "
-                    "that metric. Use for leaderboard-style asks ("
-                    "'top 5 traders', 'show me the leaderboard', "
-                    "'top racists'). Top-5 is the leaderboard cap; "
-                    "if the asker wants the 7th place too, that "
-                    "needs a separate rank_position call.\n"
+                    "cap) → returns the ONE user at that rank. Use "
+                    "for 'who's #N' questions.\n"
+                    "(c) `metric` set with no rank_position → "
+                    "returns the TOP 5 leaderboard. Use for "
+                    "leaderboard-style asks ('top 5 traders', "
+                    "'who's the most annoying').\n"
+                    "Set `include_profile=true` on (a) or (b) to also "
+                    "return the user's full personality dossier "
+                    "(Personality + Voice + Retarded Takes + Recent "
+                    "Personal Life). Use when the question needs "
+                    "personality / voice / personal context. Rejected "
+                    "in leaderboard mode (5 dossiers too big).\n"
+                    "Add from_bottom=true with rank_position to count "
+                    "from the worst end ('worst trader' → "
+                    "rank_position=1, from_bottom=true).\n"
                     "Never quote raw 0-100 scores."
                 ),
                 parameters=types.Schema(
@@ -1583,42 +1598,37 @@ def _build_user_ranks_tool():
                         "username": types.Schema(
                             type=types.Type.STRING,
                             description=(
-                                "Discord username of a specific user "
-                                "to look up."
+                                "Discord username (lowercase, no @). "
+                                "Mode (a). Mutually exclusive with metric."
                             ),
                         ),
                         "metric": types.Schema(
                             type=types.Type.STRING,
                             description=(
-                                "Either 'trader' or 'racism'. Use "
-                                "for rank_position or top-5 lookups. "
-                                "Mutually exclusive with `username`."
+                                "'trader' or 'racism'. Modes (b) and (c). "
+                                "Mutually exclusive with username."
                             ),
                         ),
                         "rank_position": types.Schema(
                             type=types.Type.INTEGER,
                             description=(
-                                "Positive integer (any N — no cap). "
-                                "Use with `metric` to look up a "
-                                "specific rank position. Returns "
-                                "one user."
+                                "1-based rank position (any N — no cap). "
+                                "Used with metric for mode (b)."
+                            ),
+                        ),
+                        "include_profile": types.Schema(
+                            type=types.Type.BOOLEAN,
+                            description=(
+                                "When true, also return the user's full "
+                                "profile dossier. Rejected in mode (c)."
                             ),
                         ),
                         "from_bottom": types.Schema(
                             type=types.Type.BOOLEAN,
                             description=(
-                                "When true, `rank_position` counts "
-                                "FROM THE WORST end. "
-                                "rank_position=1 from_bottom=true → "
-                                "the worst trader (or least-racist user "
-                                "above zero); rank_position=2 → "
-                                "second-worst. The returned user's "
-                                "rank field still reflects their true "
-                                "top-down position (e.g. 49/49). "
-                                "Use for 'who's the worst trader', "
-                                "'who's the worst', 'second worst', "
-                                "'bottom of the leaderboard' asks. "
-                                "Ignored without rank_position."
+                                "Used with rank_position. When true, "
+                                "rank_position counts from the worst "
+                                "end. Ignored without rank_position."
                             ),
                         ),
                     },
@@ -1628,29 +1638,57 @@ def _build_user_ranks_tool():
     )
 
 
-async def _execute_user_ranks(args: dict) -> dict:
-    """Run the lookup_user_ranks tool call. Three modes:
-    (a) username → single named user
-    (b) metric + rank_position → single user at that position (any N).
-        Add from_bottom=true to count from the worst end ("worst
-        trader" → from_bottom=true, rank_position=1).
-    (c) metric only → top-5 leaderboard (5 hardcoded by policy)
+async def _execute_user_profile(args: dict) -> dict:
+    """Run the lookup_user_profile tool call.
+
+    Validates anchor exclusivity, delegates rank lookup to
+    db.lookup_user_ranks (same query the legacy tool used), then
+    optionally enriches each returned user with their full profile
+    dossier via db.format_user_profiles_for_context.
     """
-    username = args.get("username")
-    metric = args.get("metric")
+    username = (args.get("username") or "").strip() or None
+    metric_raw = args.get("metric")
+    metric = (metric_raw or "").strip() or None if metric_raw is not None else None
     rank_position = args.get("rank_position")
+    include_profile = bool(args.get("include_profile"))
     from_bottom = bool(args.get("from_bottom"))
-    if not username and not metric:
+
+    # Validation: exactly one anchor.
+    if username and metric:
         return {
-            "error": "Must provide either `username` (single user), "
-                     "or `metric` ('trader' / 'racism'), optionally "
-                     "with `rank_position` for a specific #N lookup.",
+            "error": (
+                "Provide exactly one anchor: either `username` "
+                "(specific user), or `metric` ('trader'/'racism') "
+                "with optional `rank_position`."
+            ),
             "users": [],
         }
+    if not username and not metric:
+        return {
+            "error": (
+                "Must provide either `username` (single user), or "
+                "`metric` ('trader' / 'racism'), optionally with "
+                "`rank_position` for a specific #N lookup."
+            ),
+            "users": [],
+        }
+
+    # Leaderboard mode rejects include_profile (5 dossiers too big).
+    if metric and rank_position is None and include_profile:
+        return {
+            "error": (
+                "include_profile is not supported in leaderboard mode "
+                "(5 dossiers is too large). Ask for a specific user "
+                "with `username=<...>, include_profile=true` instead, "
+                "or for a single ranked user via `metric=<...>, "
+                "rank_position=N, include_profile=true`."
+            ),
+            "users": [],
+        }
+
     try:
         # /ask exposure hardcodes top_n=5 for the leaderboard mode.
-        # rank_position mode has no cap on N (model can ask "who's
-        # #50 in racism" and get that user if they exist).
+        # rank_position mode has no cap on N.
         result = db.lookup_user_ranks(
             username=username,
             metric=metric,
@@ -1659,12 +1697,33 @@ async def _execute_user_ranks(args: dict) -> dict:
             from_bottom=from_bottom,
         )
     except Exception as e:
-        log.warning(f"lookup_user_ranks tool exec failed: {e}")
-        return {"error": str(e)[:200], "users": []}
+        log.warning(f"lookup_user_profile rank lookup failed: {e}")
+        return {"error": f"rank lookup failed: {type(e).__name__}: {e}", "users": []}
+
+    if "error" in result:
+        return result
+
+    # If include_profile=True, enrich each returned user with their
+    # full dossier. format_user_profiles_for_context handles missing
+    # profiles gracefully (returns "" for users without a profile row).
+    if include_profile and result.get("users"):
+        for user in result["users"]:
+            uid = user.get("user_id")
+            if not uid:
+                continue
+            try:
+                dossier = db.format_user_profiles_for_context([int(uid)])
+            except Exception as e:
+                log.warning(
+                    f"lookup_user_profile dossier fetch failed for user_id={uid}: {e}"
+                )
+                dossier = ""
+            user["profile_text"] = (dossier or "").strip()
+
     log.info(
-        f"user_ranks tool: username={username!r} metric={metric!r} "
-        f"rank_position={rank_position!r} from_bottom={from_bottom} → "
-        f"mode={result.get('mode')} count={result.get('count')}"
+        f"user_profile tool: username={username!r} metric={metric!r} "
+        f"rank_position={rank_position!r} include_profile={include_profile} "
+        f"→ mode={result.get('mode')} count={result.get('count')}"
     )
     return result
 
@@ -2075,7 +2134,7 @@ async def _answer_with_gemini(
             tools=[
                 types.Tool(google_search=types.GoogleSearch()),
                 _build_chat_search_tool(),
-                _build_user_ranks_tool(),
+                _build_user_profile_tool(),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -2263,8 +2322,8 @@ async def _answer_with_gemini(
                             response={"result": result},
                         )
                     )
-                elif fc.name == "lookup_user_ranks":
-                    result = await _execute_user_ranks(args)
+                elif fc.name == "lookup_user_profile":
+                    result = await _execute_user_profile(args)
                     tool_response_parts.append(
                         types.Part.from_function_response(
                             name=fc.name,
@@ -2323,7 +2382,7 @@ async def _answer_with_gemini(
                     tools=[
                         types.Tool(google_search=types.GoogleSearch()),
                         _build_chat_search_tool(),
-                        _build_user_ranks_tool(),
+                        _build_user_profile_tool(),
                     ],
                     tool_config=types.ToolConfig(
                         include_server_side_tool_invocations=True,
