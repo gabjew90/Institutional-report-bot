@@ -1911,7 +1911,39 @@ def _has_repetition_glitch(text: str) -> bool:
             continue
         bg = (a, b)
         bigram_counts[bg] = bigram_counts.get(bg, 0) + 1
-    return any(c >= 2 for c in bigram_counts.values())
+    if any(c >= 2 for c in bigram_counts.values()):
+        return True
+
+    # Gate 3: loose tail bigram. Catches glitches that Gates 1+2 miss
+    # because the loop is "STOPWORD CONTENT STOPWORD CONTENT" or
+    # "CONTENT STOPWORD CONTENT STOPWORD" patterns. 2026-06-01 shipped
+    # three glitches the original gates missed:
+    #   - AVGO: "will get punished by the hyperscalers will get
+    #     punished instantly kills the momentum will get punished
+    #     hardliners will get punished hard" (("will","get") was
+    #     filtered out by Gate 2's >=4-char filter on both sides)
+    #   - HPE: "...the lumpiness that plagued previous quarters past
+    #     quarters-lumpy delays that plagued recent-history narrative
+    #     dragging delays" (("that","plagued") had a stopword)
+    #   - TMO: "$TMO is the first to the first to see the volume"
+    #     (("the","first") had a stopword)
+    # The fix: bigrams over the last 25 tokens, stopwords allowed,
+    # require at least one bigram token to be a content word (>=4
+    # chars, not in stopword list). This catches the patterns above
+    # while filtering out pure-stopword filler like ("of", "the").
+    loose_tail = tokens[-25:]
+    loose_counts: dict[tuple[str, str], int] = {}
+    for i in range(len(loose_tail) - 1):
+        a, b = loose_tail[i], loose_tail[i + 1]
+        # At least one side must be a "content" token (>=4 chars
+        # AND not in the stopword list). The other side is anything.
+        a_content = len(a) >= 4 and a not in _REP_STOPWORDS
+        b_content = len(b) >= 4 and b not in _REP_STOPWORDS
+        if not (a_content or b_content):
+            continue
+        bg = (a, b)
+        loose_counts[bg] = loose_counts.get(bg, 0) + 1
+    return any(c >= 2 for c in loose_counts.values())
 
 
 # Mechanical em-dash + semicolon strip. Pulse-side lint replaces these
