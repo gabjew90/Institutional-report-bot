@@ -1901,6 +1901,128 @@ async def _execute_trade_log(args: dict) -> dict:
     }
 
 
+# Hardcoded crypto symbol allowlist. Extensible — append symbols here
+# as crypto questions surface them. Anything not in this set routes
+# to Finnhub (stocks/ETFs/indices).
+_CRYPTO_SYMBOLS = frozenset({
+    "BTC", "ETH", "SOL", "DOGE", "ADA", "AVAX", "MATIC", "XRP", "BNB", "LINK",
+})
+
+
+def _build_market_price_tool():
+    """FunctionDeclaration for `lookup_market_price`. Routes symbols
+    to Finnhub (stocks) or Binance.US (crypto) based on a hardcoded
+    allowlist. Returns a session-labeled snapshot."""
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="lookup_market_price",
+                description=(
+                    "Get live prices for stocks / ETFs / indices "
+                    "(via Finnhub) and crypto (via Binance.US). Pass "
+                    "a list of symbols. Response includes per-symbol "
+                    "price, change_pct, source, plus a session label "
+                    "('OPEN' | 'PRE-MARKET' | 'AFTER-HOURS' | "
+                    "'WEEKEND-CLOSED') so you phrase the move "
+                    "correctly. Crypto trades 24/7 — its move is "
+                    "always today's. Cap of 10 symbols per call. "
+                    "Use for 'what's TSLA at', 'how's BTC doing', "
+                    "'is SPY green today'."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "symbols": types.Schema(
+                            type=types.Type.ARRAY,
+                            items=types.Schema(type=types.Type.STRING),
+                            description="Symbol tickers, e.g. ['TSLA', 'BTC'].",
+                        ),
+                    },
+                ),
+            )
+        ]
+    )
+
+
+async def _execute_market_price(args: dict) -> dict:
+    """Run the lookup_market_price tool call.
+
+    Routes each symbol to Finnhub or Binance.US, collects per-symbol
+    responses, prepends a session label so the model can phrase
+    correctly. Per-symbol failures don't sink the batch.
+    """
+    from datetime import datetime
+    import pytz
+    from report import market_data as _md
+
+    symbols_in = args.get("symbols")
+    if not symbols_in or not isinstance(symbols_in, list):
+        return {"error": "symbols list cannot be empty"}
+
+    symbols = [str(s).strip().upper() for s in symbols_in if isinstance(s, str) and str(s).strip()]
+    if not symbols:
+        return {"error": "symbols list cannot be empty"}
+
+    truncated_to = None
+    if len(symbols) > 10:
+        symbols = symbols[:10]
+        truncated_to = 10
+
+    # Session label from existing market_data helper.
+    et = pytz.timezone("America/New_York")
+    now_et = datetime.utcnow().replace(tzinfo=pytz.UTC).astimezone(et)
+    try:
+        session_code, _note = _md._session_label(now_et)
+    except Exception:
+        session_code = "UNKNOWN"
+    timestamp = now_et.strftime("%Y-%m-%d %H:%M %Z")
+
+    quotes: list[dict] = []
+    for sym in symbols:
+        if sym in _CRYPTO_SYMBOLS:
+            try:
+                data = _md._fetch_binance_24h(f"{sym}USDT")
+            except Exception as e:
+                quotes.append({"symbol": sym, "error": f"{type(e).__name__}: {e}"})
+                continue
+            if not data:
+                quotes.append({"symbol": sym, "error": "no quote returned"})
+                continue
+            quotes.append({
+                "symbol": sym,
+                "price": data.get("price"),
+                "change_pct": data.get("change_24h_rolling"),
+                "prev_close": None,
+                "source": "binance",
+            })
+        else:
+            try:
+                data = _md._fetch_finnhub_quote(sym)
+            except Exception as e:
+                quotes.append({"symbol": sym, "error": f"{type(e).__name__}: {e}"})
+                continue
+            if not data:
+                quotes.append({"symbol": sym, "error": "symbol not found"})
+                continue
+            quotes.append({
+                "symbol": sym,
+                "price": data.get("price"),
+                "change_pct": data.get("change_pct"),
+                "prev_close": data.get("prev_close"),
+                "source": "finnhub",
+            })
+
+    result = {
+        "session": session_code,
+        "timestamp": timestamp,
+        "quotes": quotes,
+    }
+    if truncated_to is not None:
+        result["truncated_to"] = truncated_to
+    return result
+
+
 async def _fetch_chat_context(
     channel,
     *,
@@ -2309,6 +2431,7 @@ async def _answer_with_gemini(
                 _build_chat_search_tool(),
                 _build_user_profile_tool(),
                 _build_trade_log_tool(),
+                _build_market_price_tool(),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -2512,6 +2635,14 @@ async def _answer_with_gemini(
                             response={"result": result},
                         )
                     )
+                elif fc.name == "lookup_market_price":
+                    result = await _execute_market_price(args)
+                    tool_response_parts.append(
+                        types.Part.from_function_response(
+                            name=fc.name,
+                            response={"result": result},
+                        )
+                    )
                 else:
                     log.warning(f"/ask: unknown tool call {fc.name!r}")
                     tool_response_parts.append(
@@ -2566,6 +2697,7 @@ async def _answer_with_gemini(
                         _build_chat_search_tool(),
                         _build_user_profile_tool(),
                 _build_trade_log_tool(),
+                _build_market_price_tool(),
                     ],
                     tool_config=types.ToolConfig(
                         include_server_side_tool_invocations=True,
