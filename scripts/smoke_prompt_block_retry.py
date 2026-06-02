@@ -1,0 +1,139 @@
+"""Smoke test for the /ask profiles-stripped retry on prompt_block.
+
+Can't run the full _answer_with_gemini end-to-end (needs Gemini key
++ Discord client mocks), so the test does:
+
+  1. Static: the retry branch is wired in _answer_with_gemini
+  2. Static: the retry rebuilds user_content WITHOUT profiles_block
+     but keeps analyst_block, fetched_urls, chat_context, separator,
+     question
+  3. Static: the retry refreshes grounding_metadata
+  4. Static: the retry runs _clean_voice_violations on the new answer
+  5. Static: the fallback message is still emitted when retry fails
+  6. Static: the retry log line names profiles_block stripped chars
+"""
+
+import inspect
+import sys
+
+
+def _ok(msg):
+    print(f"PASS {msg}")
+
+
+def _fail(msg):
+    print(f"FAIL {msg}")
+    sys.exit(1)
+
+
+def test_retry_branch_wired():
+    from discord_bot import bot as bot_mod
+    src = inspect.getsource(bot_mod._answer_with_gemini)
+    assert "retrying once without profiles" in src, (
+        "expected 'retrying once without profiles' in _answer_with_gemini"
+    )
+    assert "profiles-stripped retry succeeded" in src, (
+        "expected success log line in _answer_with_gemini"
+    )
+    _ok("static: profiles-strip retry branch wired in _answer_with_gemini")
+
+
+def test_stripped_content_excludes_profiles():
+    from discord_bot import bot as bot_mod
+    src = inspect.getsource(bot_mod._answer_with_gemini)
+    # The retry builds stripped_sections from analyst_block, fetched_urls,
+    # chat_context, separator+question — but NOT profiles_block.
+    # Find the retry block and confirm.
+    # The log line "retrying once without profiles" is AFTER the
+    # stripped_sections build, so anchor on the earlier marker.
+    retry_start = src.find("stripped_sections: list[str] = []")
+    assert retry_start > 0, "couldn't find stripped_sections build"
+    # Cover full retry branch (~4500 chars after anchor)
+    window = src[retry_start:retry_start + 4500]
+    assert "stripped_sections.append(analyst_block)" in window, (
+        "retry must include analyst_block"
+    )
+    assert "stripped_sections.append(fetched_urls)" in window, (
+        "retry must include fetched_urls"
+    )
+    assert "stripped_sections.append(chat_context)" in window, (
+        "retry must include chat_context"
+    )
+    assert "{separator}\\n{question}" in window, (
+        "retry must include separator+question"
+    )
+    # And must NOT include profiles_block in stripped_sections
+    assert "stripped_sections.append(profiles_block)" not in window, (
+        "retry must NOT include profiles_block in stripped_sections "
+        "(that's the point of stripping)"
+    )
+    _ok(
+        "static: retry rebuilds user_content with analyst+urls+chat+"
+        "question, NOT profiles_block"
+    )
+
+
+def test_grounding_metadata_refreshed():
+    from discord_bot import bot as bot_mod
+    src = inspect.getsource(bot_mod._answer_with_gemini)
+    retry_start = src.find("stripped_sections: list[str] = []")
+    window = src[retry_start:retry_start + 4500]
+    assert (
+        "grounding_metadata = (" in window
+        and "stripped_resp.candidates[0].grounding_metadata" in window
+    ), "retry must refresh grounding_metadata from stripped_resp"
+    _ok("static: retry refreshes grounding_metadata for sources footer")
+
+
+def test_clean_voice_violations_on_recovery():
+    from discord_bot import bot as bot_mod
+    src = inspect.getsource(bot_mod._answer_with_gemini)
+    retry_start = src.find("stripped_sections: list[str] = []")
+    window = src[retry_start:retry_start + 4500]
+    assert "_clean_voice_violations(" in window, (
+        "retry must run _clean_voice_violations on the recovery answer"
+    )
+    _ok("static: retry runs voice cleanup on the recovered answer")
+
+
+def test_fallback_still_present():
+    from discord_bot import bot as bot_mod
+    src = inspect.getsource(bot_mod._answer_with_gemini)
+    assert (
+        "Gemini bounced this one" in src
+        and "Try asking a different way" in src
+    ), "fallback message must still be present for when retry also fails"
+    # And it must be gated by `if not retry_succeeded`
+    fallback_idx = src.find("Gemini bounced this one")
+    pre = src[max(0, fallback_idx - 300):fallback_idx]
+    assert "if not retry_succeeded" in pre, (
+        "fallback must be gated by `if not retry_succeeded`"
+    )
+    _ok("static: fallback still emits when retry also fails / is skipped")
+
+
+def test_retry_only_when_profiles_present():
+    from discord_bot import bot as bot_mod
+    src = inspect.getsource(bot_mod._answer_with_gemini)
+    # The retry must short-circuit when there's no profiles_block to
+    # strip — otherwise we'd burn a Gemini call to retry with the
+    # IDENTICAL prompt the model just blocked. The guard is the if-stmt
+    # that wraps stripped_sections build, so anchor on the build.
+    retry_start = src.find("stripped_sections: list[str] = []")
+    pre = src[max(0, retry_start - 800):retry_start]
+    assert "if profiles_block and" in pre, (
+        "retry must be gated by `if profiles_block` so we don't burn "
+        "a call when there's no profiles to strip"
+    )
+    _ok("static: retry is gated on profiles_block being non-empty")
+
+
+if __name__ == "__main__":
+    print("=== /ask prompt-block profiles-strip retry smoke ===")
+    test_retry_branch_wired()
+    test_stripped_content_excludes_profiles()
+    test_grounding_metadata_refreshed()
+    test_clean_voice_violations_on_recovery()
+    test_fallback_still_present()
+    test_retry_only_when_profiles_present()
+    print("\nALL PROMPT-BLOCK RETRY SMOKE TESTS PASS")

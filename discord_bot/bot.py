@@ -2493,15 +2493,93 @@ async def _answer_with_gemini(
             if safety_blocked or prompt_block:
                 # With BLOCK_NONE on all configurable categories, this
                 # is Gemini's unconfigurable hard filter (CSAM, severe
-                # policy). Honest framing: it's Gemini's call, not the
-                # asker's fault. Don't say "your question tripped safety"
-                # for benign questions whose context happens to include
-                # the room's verbatim quotes.
-                answer = (
-                    "→ Gemini bounced this one — its hard filter blocked "
-                    "the prompt. Try asking a different way or about a "
-                    "different subject."
-                )
+                # policy).
+                #
+                # Most common cause in production: the WHO'S TALKING
+                # profiles block injects verbatim chat quotes that
+                # include slurs (e.g. "Monigga is probably the more
+                # appropriate nickname" — abe's recurring banter). The
+                # asker's actual question is usually benign ("what are
+                # the top 3 laggard names from Trump folio" — Sam, 2026-
+                # 06-01 22:01:45 UTC). Telling them to "ask a different
+                # way" is misleading: they'd hit the same wall on any
+                # question in that channel because the same profiles
+                # get re-injected.
+                #
+                # Recovery: retry once WITHOUT the profiles block. Other
+                # context (analyst trades, fetched URLs, recent chat,
+                # the question itself) stays. Answer comes back without
+                # personality-aware framing, but the user gets a real
+                # answer instead of a dead-end fallback.
+                retry_succeeded = False
+                if profiles_block and (prompt_block or safety_blocked):
+                    try:
+                        stripped_sections: list[str] = []
+                        if analyst_block:
+                            stripped_sections.append(analyst_block)
+                        if fetched_urls:
+                            stripped_sections.append(fetched_urls)
+                        if chat_context:
+                            stripped_sections.append(chat_context)
+                        stripped_sections.append(f"{separator}\n{question}")
+                        stripped_content = "\n\n".join(stripped_sections)
+                        log.warning(
+                            f"/ask: prompt_block={prompt_block!r}, safety_blocked="
+                            f"{safety_blocked}, retrying once without profiles "
+                            f"({len(profiles_block)} chars stripped)"
+                        )
+                        stripped_resp = await client.aio.models.generate_content(
+                            model=ask_model,
+                            contents=[
+                                types.Content(
+                                    role="user",
+                                    parts=[types.Part.from_text(text=stripped_content)],
+                                )
+                            ],
+                            config=config,
+                        )
+                        try:
+                            stripped_answer = (stripped_resp.text or "").strip()
+                        except Exception:
+                            stripped_answer = ""
+                        if stripped_answer:
+                            # Run the lint pass on the recovery answer so a
+                            # rewrite-without-profiles still gets em-dash /
+                            # semicolon cleanup. Meta-narration and
+                            # repetition retries are NOT chained on the
+                            # recovery path — recovery is an emergency
+                            # fallback, simpler is safer.
+                            stripped_answer, _ = _clean_voice_violations(
+                                stripped_answer
+                            )
+                            answer = stripped_answer
+                            response = stripped_resp
+                            retry_succeeded = True
+                            log.info(
+                                "/ask: profiles-stripped retry succeeded"
+                            )
+                            # Refresh grounding metadata for the new response
+                            try:
+                                grounding_metadata = (
+                                    stripped_resp.candidates[0].grounding_metadata
+                                )
+                            except (AttributeError, IndexError, TypeError):
+                                grounding_metadata = None
+                        else:
+                            log.warning(
+                                "/ask: profiles-stripped retry returned empty — "
+                                "shipping fallback"
+                            )
+                    except Exception as e:
+                        log.warning(
+                            f"/ask: profiles-stripped retry call failed: {e}"
+                        )
+                if not retry_succeeded:
+                    answer = (
+                        "→ Gemini bounced this one — its hard filter blocked "
+                        "the prompt. Try asking a different way or about a "
+                        "different subject."
+                    )
             elif finish_reason in ("MAX_TOKENS", "OTHER", None):
                 answer = (
                     "→ Thought myself in circles and ran out of room. "
