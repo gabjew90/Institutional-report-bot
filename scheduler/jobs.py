@@ -173,20 +173,21 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     # view. Posts a summary to the announce channel if anything was marked.
     # Only registers if the watcher is enabled (analyst_channel_name set).
     if settings.analyst_channel_name:
-        # 2026-06-02: bumped from daily 04:00 -> hourly. A 0DTE option
-        # closing at 4 PM ET would otherwise sit marked as "open" for
-        # ~12 hours until the daily sweep ran. Hourly cadence means
-        # silent-expiry detection catches positions within an hour of
-        # their expiry. Pure SQL query, no Gemini calls — cheap to run
-        # 24x/day.
+        # 2026-06-02: moved from daily 04:00 AM -> daily 16:00 ET (4 PM,
+        # market close). All options expiring "today" expire exactly at
+        # market close, so one sweep right after close catches every
+        # silent-expiry the same day instead of waiting until 4 AM
+        # tomorrow (12h lag with the old schedule). Hourly cadence was
+        # considered but redundant — expirations only happen at one
+        # moment per day, not continuously through the day.
         scheduler.add_job(
             _analyst_expire_sweep_job,
-            trigger=CronTrigger(minute=0, timezone=tz),
+            trigger=CronTrigger(hour=16, minute=0, timezone=tz),
             id="analyst_expire_sweep",
             name="Analyst log: mark expired positions",
             kwargs={"bot": bot},
             max_instances=1,
-            misfire_grace_time=300,
+            misfire_grace_time=3600,
         )
         # Startup catch-up: redeploys cycle the in-memory scheduler, so if
         # a deploy happens between cron fires (or right after the 04:00 ET

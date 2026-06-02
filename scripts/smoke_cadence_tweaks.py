@@ -7,8 +7,9 @@ trader-log overhaul's user experience:
   1. user_profile_refresh — was daily 15:00 ET, now every 6h
      so new analyst_trades rows reflect in trader_score within ~6h
      instead of waiting up to 24h.
-  2. analyst_expire_sweep — was daily 4:00 ET, now hourly so options
-     expiring at 4pm market close get marked within an hour, not 12h.
+  2. analyst_expire_sweep — was daily 4:00 AM ET, now daily 4:00 PM ET
+     (16:00) — runs right after market close so 0DTE options expiring
+     that day get marked the same day instead of 12h later.
   3. chat catchup periodic backstop (new) — chat_ingestion.watcher
      only catches up on gateway events; bot running steady all day
      means no catchup runs. Add an every-4h backstop.
@@ -59,23 +60,25 @@ def test_profile_refresh_runs_every_6_hours():
     _ok("user_profile_refresh runs every 6h (4x per day)")
 
 
-def test_expire_sweep_runs_hourly():
-    """analyst_expire_sweep was CronTrigger(hour=4, minute=0). Should
-    now be IntervalTrigger(hours=1) or CronTrigger(minute=0)."""
+def test_expire_sweep_runs_at_market_close():
+    """analyst_expire_sweep should run once daily at 16:00 ET (market
+    close) — earlier 04:00 AM had options sitting 'open' for 12h before
+    being marked expired. Once-daily at close catches all of today's
+    0DTE expirations the same day."""
     src = _scheduler_source()
     idx = src.find('id="analyst_expire_sweep"')
     assert idx > 0, "couldn't find analyst_expire_sweep add_job block"
     block = src[max(0, idx - 800):idx + 200]
-    has_interval = "IntervalTrigger(hours=1)" in block
-    has_hourly_cron = bool(re.search(
-        r'CronTrigger\(\s*minute\s*=\s*0\s*[,)]', block
+    # CronTrigger(hour=16, minute=0) — 4 PM ET
+    has_4pm_cron = bool(re.search(
+        r'CronTrigger\([^)]*hour\s*=\s*16[^)]*minute\s*=\s*0', block
     ))
-    assert has_interval or has_hourly_cron, (
-        "analyst_expire_sweep trigger should be IntervalTrigger(hours=1) "
-        "OR CronTrigger(minute=0). "
+    assert has_4pm_cron, (
+        "analyst_expire_sweep trigger should be "
+        "CronTrigger(hour=16, minute=0) — daily at 4 PM ET market close. "
         f"Got block: {block[-300:]!r}"
     )
-    _ok("analyst_expire_sweep runs hourly")
+    _ok("analyst_expire_sweep runs daily at 16:00 ET (market close)")
 
 
 def test_chat_catchup_periodic_backstop_exists():
@@ -96,6 +99,6 @@ def test_chat_catchup_periodic_backstop_exists():
 if __name__ == "__main__":
     print("=== cadence tweaks static smoke ===")
     test_profile_refresh_runs_every_6_hours()
-    test_expire_sweep_runs_hourly()
+    test_expire_sweep_runs_at_market_close()
     test_chat_catchup_periodic_backstop_exists()
     print("\nALL CADENCE-TWEAKS SMOKE TESTS PASS")
