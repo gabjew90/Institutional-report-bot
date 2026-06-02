@@ -1728,6 +1728,179 @@ async def _execute_user_profile(args: dict) -> dict:
     return result
 
 
+def _build_trade_log_tool():
+    """FunctionDeclaration for `lookup_trade_log`. Works for two anchors:
+
+    - `caller`: a registered analyst caller (e.g. 'abe', 'bankerkyle').
+      Queries analyst_trades caller-mode rows. High fidelity — daily
+      cron stitches open/close pairs. Returns ONLY the log data.
+
+    - `username`: any Discord username. Resolves to user_id and pulls
+      the 'Recent trades' section from that user's profile. Member-mode
+      data quality — no per-trade stitching.
+
+    Exactly one anchor must be provided. `kind` ∈ {open, recent, tally, all}
+    slices the response on the caller path. `days` overrides defaults
+    (7 for kind=recent, 30 for kind=tally; ignored for kind=open).
+    """
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="lookup_trade_log",
+                description=(
+                    "Look up trade history. Two anchors (use EXACTLY one):\n"
+                    "(a) `caller`: registered analyst caller name "
+                    "('abe', 'bankerkyle', ...). Returns structured "
+                    "trade log with daily-cron-stitched W/L. Use for "
+                    "Abe / BK specifically — their data is high "
+                    "fidelity.\n"
+                    "(b) `username`: any other Discord username. "
+                    "Returns the user's 'Recent trades' snippet from "
+                    "their profile. Member-mode fidelity (no W/L "
+                    "stitching). Use for non-caller users.\n"
+                    "`kind` ∈ {'open','recent','tally','all'} (default "
+                    "'all'). 'open' = current open positions only. "
+                    "'recent' = last N days of trade events. 'tally' = "
+                    "W/L summary. 'all' = everything.\n"
+                    "`days` overrides defaults (7 for kind=recent, 30 "
+                    "for kind=tally; ignored for kind=open / kind=all)."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "caller": types.Schema(
+                            type=types.Type.STRING,
+                            description="Registered caller: 'abe', 'bankerkyle', ...",
+                        ),
+                        "username": types.Schema(
+                            type=types.Type.STRING,
+                            description="Any other Discord username.",
+                        ),
+                        "kind": types.Schema(
+                            type=types.Type.STRING,
+                            description="open | recent | tally | all (default all)",
+                        ),
+                        "days": types.Schema(
+                            type=types.Type.INTEGER,
+                            description="Window override in days (1..180).",
+                        ),
+                    },
+                ),
+            )
+        ]
+    )
+
+
+async def _execute_trade_log(args: dict) -> dict:
+    """Run the lookup_trade_log tool call.
+
+    Caller path: queries db.format_analyst_trades_for_context with the
+    requested kind, returns the rendered block.
+
+    Username path: resolves username → user_id, pulls the Recent trades
+    snippet from the user's profile. (Member-mode rows in analyst_trades
+    are not joined in v1; defer until QC shows it's worth the SQL
+    layer change.)
+    """
+    caller = (args.get("caller") or "").strip() or None
+    username = (args.get("username") or "").strip() or None
+    kind = (args.get("kind") or "all").strip().lower()
+    days_arg = args.get("days")
+
+    # Validation: anchor exclusivity.
+    if caller and username:
+        return {
+            "error": (
+                "Provide exactly one of `caller` or `username` "
+                "(got both)."
+            ),
+        }
+    if not caller and not username:
+        return {
+            "error": (
+                "Provide exactly one of `caller` (registered "
+                "analyst — 'abe', 'bankerkyle', ...) or `username` "
+                "(any other Discord username)."
+            ),
+        }
+    if kind not in ("all", "open", "recent", "tally"):
+        return {
+            "error": f"`kind` must be one of: all, open, recent, tally; got {kind!r}.",
+        }
+
+    # Default windows per kind.
+    if kind == "recent":
+        days = int(days_arg) if days_arg else 7
+    elif kind == "tally":
+        days = int(days_arg) if days_arg else 30
+    else:
+        days = 7  # placeholder for kind=open/all (ignored by the formatter)
+    days = max(1, min(180, days))
+
+    # --- CALLER ANCHOR ---
+    if caller:
+        # Resolve display name from the configured caller registry.
+        display = None
+        try:
+            for c in settings.resolve_analyst_callers():
+                if c.get("name", "").lower() == caller.lower():
+                    display = c.get("display") or caller.title()
+                    break
+        except Exception as e:
+            log.warning(f"lookup_trade_log caller registry lookup failed: {e}")
+        display = display or caller.title()
+        try:
+            text = db.format_analyst_trades_for_context(
+                hours=days * 24,
+                caller=caller.lower(),
+                display=display,
+                tracking_mode="caller",
+                kind=kind,
+            )
+        except ValueError as e:
+            return {"error": str(e)}
+        except Exception as e:
+            log.warning(f"lookup_trade_log caller path failed: {e}")
+            return {"error": f"{type(e).__name__}: {e}"}
+        if not text:
+            return {
+                "anchor": {"type": "caller", "name": caller},
+                "kind": kind,
+                "data_quality": "caller",
+                "status": "no_logged_trades",
+            }
+        return {
+            "anchor": {"type": "caller", "name": caller, "display": display},
+            "kind": kind,
+            "data_quality": "caller",
+            "trades_text": text,
+        }
+
+    # --- USERNAME ANCHOR ---
+    user_id = db.resolve_username_to_user_id(username)
+    if user_id is None:
+        return {"error": f"username {username!r} not found in profiles or chat history."}
+    try:
+        profile_snippet = db.get_user_profile_recent_trades_section(user_id)
+    except Exception as e:
+        log.warning(f"lookup_trade_log profile snippet fetch failed: {e}")
+        profile_snippet = ""
+    if not profile_snippet:
+        return {
+            "anchor": {"type": "username", "name": username, "user_id": user_id},
+            "kind": kind,
+            "data_quality": "member",
+            "status": "no_logged_trades",
+        }
+    return {
+        "anchor": {"type": "username", "name": username, "user_id": user_id},
+        "kind": kind,
+        "data_quality": "member",
+        "profile_recent_trades": profile_snippet,
+    }
+
+
 async def _fetch_chat_context(
     channel,
     *,
@@ -2135,6 +2308,7 @@ async def _answer_with_gemini(
                 types.Tool(google_search=types.GoogleSearch()),
                 _build_chat_search_tool(),
                 _build_user_profile_tool(),
+                _build_trade_log_tool(),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -2330,6 +2504,14 @@ async def _answer_with_gemini(
                             response={"result": result},
                         )
                     )
+                elif fc.name == "lookup_trade_log":
+                    result = await _execute_trade_log(args)
+                    tool_response_parts.append(
+                        types.Part.from_function_response(
+                            name=fc.name,
+                            response={"result": result},
+                        )
+                    )
                 else:
                     log.warning(f"/ask: unknown tool call {fc.name!r}")
                     tool_response_parts.append(
@@ -2383,6 +2565,7 @@ async def _answer_with_gemini(
                         types.Tool(google_search=types.GoogleSearch()),
                         _build_chat_search_tool(),
                         _build_user_profile_tool(),
+                _build_trade_log_tool(),
                     ],
                     tool_config=types.ToolConfig(
                         include_server_side_tool_invocations=True,
