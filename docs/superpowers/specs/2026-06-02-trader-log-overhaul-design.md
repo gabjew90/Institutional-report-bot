@@ -12,6 +12,20 @@ Today's points ladder is also more complex than it needs to be — five differen
 
 And the `trader_score` formula's `min(100, ...)` cap collapses BK (62 receipt pts in 14d) and Abe (137) to both display "100" — invisible to the user that Abe has 2× the receipts. Removing the cap makes the score additive (chatter + ledger) and the receipts dimension visible end-to-end.
 
+## What stays unchanged — Abe + BK ingestion pipeline
+
+**Abe's `🥷🏽-abe-alerts-🥷🏽` and BK's `💅🏾-kyle-alerts-💅🏾` channels are NOT touched by this overhaul's ingestion changes.** These channels are processed by `analyst_log/watcher.py` (registered `analyst_callers`), which runs Gemini vision OCR on image attachments and writes caller-mode rows. That pipeline is preserved verbatim.
+
+Config evidence:
+- `analyst_callers` registry (`config.py:97-111`): Abe + BK channels.
+- `chat_eager_ocr_channels` (`config.py:157-170`): gain-loss-porn, kloh-alerts, zhawk-thawghts, member-alerts, spot-bag-alerts, 0dte-lotto-alerts, crypto-alerts.
+
+These two sets are **disjoint**. The new classifier (Component 2) is wired into `chat_ingestion/watcher.py:_safe_ocr_inline` (Component 3) — that hook only fires for messages in `chat_eager_ocr_channels`. Abe's and BK's channels are not in that set, so the new classifier never runs on their messages. No risk of duplicate rows, no risk of behavior change in their row creation.
+
+**What does change for Abe + BK is scoring** (Components 5 + 6 — wins-only +2 ledger, 7-day window, no `min(100,...)` cap). The user explicitly asked for the new scoring policy to apply to all users including official callers. So Abe's displayed `trader_score` will recompute under the new formula — likely dropping from 100 (capped) to somewhere in the 80-100 range depending on his last-7-day wins. This is the intent of the overhaul: the 100 cap was making BK and Abe look identical even though Abe has 2× the receipts.
+
+If you want Abe's scoring to also stay frozen on the old formula, say so before the plan executes — that's a one-line change to keep the caller-nerf path on the old policy. But default per your direction: new policy applies to everyone.
+
 ## Goal
 
 Three coupled changes:
