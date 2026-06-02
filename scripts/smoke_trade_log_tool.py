@@ -101,8 +101,10 @@ def test_caller_anchor_empty_returns_status():
         result = asyncio.run(bot_mod._execute_trade_log({
             "caller": "abe", "kind": "open",
         }))
-    assert result.get("status") == "no_logged_trades", result
-    _ok("caller anchor with empty data -> status=no_logged_trades")
+    # Status was renamed "no_logged_trades" -> "empty" so the
+    # gap-#5 status taxonomy is uniform across all executors.
+    assert result.get("status") == "empty", result
+    _ok("caller anchor with empty data -> status=empty")
 
 
 def test_username_anchor_returns_profile_snippet():
@@ -126,7 +128,10 @@ def test_username_unresolved_error():
         result = asyncio.run(bot_mod._execute_trade_log({"username": "nobody"}))
     assert "error" in result, f"expected error, got {result}"
     assert "not found" in result["error"].lower(), result["error"]
-    _ok("username not found -> error")
+    # Status taxonomy: unknown username = not_found (clean query, no
+    # match), not "error" (runtime failure). Lets the model distinguish.
+    assert result.get("status") == "not_found", result
+    _ok("username not found -> status=not_found + error message")
 
 
 def test_username_anchor_empty_returns_status():
@@ -135,8 +140,10 @@ def test_username_anchor_empty_returns_status():
         patch("db.get_user_profile_recent_trades_section", return_value=""),
     ):
         result = asyncio.run(bot_mod._execute_trade_log({"username": "newjoiner"}))
-    assert result.get("status") == "no_logged_trades", result
-    _ok("username anchor with empty data -> status=no_logged_trades")
+    # Status was renamed "no_logged_trades" -> "empty" so the
+    # gap-#5 status taxonomy is uniform across all executors.
+    assert result.get("status") == "empty", result
+    _ok("username anchor with empty data -> status=empty")
 
 
 if __name__ == "__main__":

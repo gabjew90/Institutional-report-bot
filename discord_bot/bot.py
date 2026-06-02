@@ -157,6 +157,21 @@ Crypto trades 24/7 — its move is always today's regardless of session label.
 - *"Is $SPY green today?"* → `lookup_market_price(symbols=["SPY"])`
 - *"How's $LMT trading?"* → `lookup_market_price(symbols=["LMT"])`
 
+### Reading the tool response — `status` + freshness
+
+Every `lookup_*` and `search_*` response carries a top-level `status` field. **Read it before composing your answer.**
+
+- `"ok"` — the query ran cleanly and data is in the response. Use it.
+- `"empty"` — the query ran cleanly, no data matched. Say "no data found" / "nothing logged in that window" / "no matches for that keyword." Do NOT fabricate a result.
+- `"not_found"` — the anchor itself wasn't recognized (unknown username, rank position out of range, unregistered caller). Say "I don't see that user" or "the rankings don't go that deep" naturally. Do NOT fabricate.
+- `"error"` — the tool itself failed (DB hiccup, malformed args). Do NOT fabricate. Either retry once with a corrected call, or tell the asker the lookup failed and don't claim you found something you didn't.
+
+Responses also carry freshness fields you should use when phrasing time-sensitive answers:
+- `as_of` — when the tool ran (UTC). For chat/trade questions, use this as "now".
+- `updated_at` (per user, on `lookup_user_profile`) — when that user's profile was last refreshed. If hours-stale, fine; if a profile is days-stale, hedge — "as of <updated_at>, BK was sitting on…".
+- `profile_updated_at` (on `lookup_trade_log` username path) — same logic for the member-mode Recent trades snippet.
+- `window_days` (on `lookup_trade_log`), `window_start` / `window_end` (on `search_chat_messages`) — the actual window queried. Reflect it in your phrasing ("in the last 7 days," "between 5pm and 9pm EST"), don't claim coverage beyond the window.
+
 ### Integrating tool results
 
 When you use any tool, integrate the results naturally — "kloh's been bearish on TSLA for weeks, called it 'cope longs' on May 15" — not "I searched and found...". Treat tool results the same way you treat your other pre-injected context: as something you just know.
@@ -1500,6 +1515,7 @@ async def _execute_chat_search(args: dict) -> dict:
     #      before.
     if not keyword and not has_window and not username and not channel_name:
         return {
+            "status": "error",
             "error": (
                 "Provide at least one of: `keyword` (shape A), BOTH "
                 "`start_iso` AND `end_iso` (shape B), or `username`/"
@@ -1548,6 +1564,21 @@ async def _execute_chat_search(args: dict) -> dict:
     else:
         limit = _CHAT_SEARCH_RESULT_LIMIT
 
+    # Compute the actual window bounds we queried so the response can
+    # report them. Shape B already has start_iso/end_iso; shapes A and C
+    # use a trailing `days` window we synthesize here so the model can
+    # phrase "in the last N days from X to Y".
+    from datetime import datetime as _dt2, timedelta as _td2, timezone as _tz2
+    as_of_dt = _dt2.now(_tz2.utc)
+    if has_window:
+        window_start = start_iso
+        window_end = end_iso
+    else:
+        window_end = as_of_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+        window_start = (as_of_dt - _td2(days=days)).strftime(
+            "%Y-%m-%dT%H:%M:%SZ"
+        )
+
     try:
         rows = db.search_chat_messages_for_ask(
             keyword=keyword or None,
@@ -1560,7 +1591,13 @@ async def _execute_chat_search(args: dict) -> dict:
         )
     except Exception as e:
         log.warning(f"search_chat_messages tool exec failed: {e}")
-        return {"error": str(e)[:200], "matches": []}
+        return {
+            "status": "error",
+            "error": str(e)[:200],
+            "matches": [],
+            "window_start": window_start,
+            "window_end": window_end,
+        }
 
     # Time-window queries return newest-first per SQL; flip to
     # chronological for the model (easier to summarize a window
@@ -1596,8 +1633,11 @@ async def _execute_chat_search(args: dict) -> dict:
             f"{len(matches)} matches"
         )
     return {
+        "status": "ok" if matches else "empty",
         "matches": matches,
         "count": len(matches),
+        "window_start": window_start,
+        "window_end": window_end,
         "filters": {
             "keyword": keyword or None,
             "days": days if not has_window else None,
@@ -1716,9 +1756,17 @@ async def _execute_user_profile(args: dict) -> dict:
     include_profile = bool(args.get("include_profile"))
     from_bottom = bool(args.get("from_bottom"))
 
+    # Top-level freshness stamp — when this tool call ran. Per-user
+    # `updated_at` (when their profile was last refreshed) is filled in
+    # below, after we have user_ids.
+    from datetime import datetime as _dt2, timezone as _tz2
+    as_of = _dt2.now(_tz2.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
     # Validation: exactly one anchor.
     if username and metric:
         return {
+            "status": "error",
+            "as_of": as_of,
             "error": (
                 "Provide exactly one anchor: either `username` "
                 "(specific user), or `metric` ('trader'/'racism') "
@@ -1728,6 +1776,8 @@ async def _execute_user_profile(args: dict) -> dict:
         }
     if not username and not metric:
         return {
+            "status": "error",
+            "as_of": as_of,
             "error": (
                 "Must provide either `username` (single user), or "
                 "`metric` ('trader' / 'racism'), optionally with "
@@ -1739,6 +1789,8 @@ async def _execute_user_profile(args: dict) -> dict:
     # Leaderboard mode rejects include_profile (5 dossiers too big).
     if metric and rank_position is None and include_profile:
         return {
+            "status": "error",
+            "as_of": as_of,
             "error": (
                 "include_profile is not supported in leaderboard mode "
                 "(5 dossiers is too large). Ask for a specific user "
@@ -1761,10 +1813,48 @@ async def _execute_user_profile(args: dict) -> dict:
         )
     except Exception as e:
         log.warning(f"lookup_user_profile rank lookup failed: {e}")
-        return {"error": f"rank lookup failed: {type(e).__name__}: {e}", "users": []}
+        return {
+            "status": "error",
+            "as_of": as_of,
+            "error": f"rank lookup failed: {type(e).__name__}: {e}",
+            "users": [],
+        }
 
     if "error" in result:
+        # Username miss / rank-position OOB / metric-invalid — query
+        # ran cleanly, just no row matched. Tag as not_found so the
+        # model says "no data" rather than fabricating, but
+        # distinguishably from a true runtime error.
+        result["status"] = "not_found"
+        result["as_of"] = as_of
         return result
+
+    # Per-user updated_at: when each profile row was last refreshed.
+    # Lets the model say "as of 2 days ago" when a profile is stale
+    # instead of treating everything as current.
+    if result.get("users"):
+        try:
+            conn = db.get_connection()
+            uids = [
+                int(u["user_id"]) for u in result["users"]
+                if u.get("user_id") is not None
+            ]
+            if uids:
+                placeholders = ",".join("?" * len(uids))
+                rows = conn.execute(
+                    f"SELECT user_id, updated_at FROM user_profiles "
+                    f"WHERE user_id IN ({placeholders})",
+                    uids,
+                ).fetchall()
+                updated_map = {
+                    int(r["user_id"]): r["updated_at"] for r in rows
+                }
+                for u in result["users"]:
+                    uid = u.get("user_id")
+                    if uid is not None:
+                        u["updated_at"] = updated_map.get(int(uid))
+        except Exception as e:
+            log.warning(f"lookup_user_profile updated_at enrich failed: {e}")
 
     # If include_profile=True, enrich each returned user with their
     # full dossier. format_user_profiles_for_context handles missing
@@ -1783,10 +1873,13 @@ async def _execute_user_profile(args: dict) -> dict:
                 dossier = ""
             user["profile_text"] = (dossier or "").strip()
 
+    result["status"] = "ok" if result.get("users") else "empty"
+    result["as_of"] = as_of
     log.info(
         f"user_profile tool: username={username!r} metric={metric!r} "
         f"rank_position={rank_position!r} include_profile={include_profile} "
-        f"→ mode={result.get('mode')} count={result.get('count')}"
+        f"→ mode={result.get('mode')} count={result.get('count')} "
+        f"status={result.get('status')}"
     )
     return result
 
@@ -1871,9 +1964,18 @@ async def _execute_trade_log(args: dict) -> dict:
     kind = (args.get("kind") or "all").strip().lower()
     days_arg = args.get("days")
 
+    # Freshness stamp on every response shape — top-level. Caller path
+    # also gets window_days, username path also gets profile_updated_at
+    # (since member fidelity = whatever was true at profile-refresh
+    # time, not now).
+    from datetime import datetime as _dt2, timezone as _tz2
+    as_of = _dt2.now(_tz2.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
     # Validation: anchor exclusivity.
     if caller and username:
         return {
+            "status": "error",
+            "as_of": as_of,
             "error": (
                 "Provide exactly one of `caller` or `username` "
                 "(got both)."
@@ -1881,6 +1983,8 @@ async def _execute_trade_log(args: dict) -> dict:
         }
     if not caller and not username:
         return {
+            "status": "error",
+            "as_of": as_of,
             "error": (
                 "Provide exactly one of `caller` (registered "
                 "analyst — 'abe', 'bankerkyle', ...) or `username` "
@@ -1889,6 +1993,8 @@ async def _execute_trade_log(args: dict) -> dict:
         }
     if kind not in ("all", "open", "recent", "tally"):
         return {
+            "status": "error",
+            "as_of": as_of,
             "error": f"`kind` must be one of: all, open, recent, tally; got {kind!r}.",
         }
 
@@ -1922,18 +2028,36 @@ async def _execute_trade_log(args: dict) -> dict:
                 kind=kind,
             )
         except ValueError as e:
-            return {"error": str(e)}
+            # ValueError = malformed arg / unknown caller — clean
+            # failure mode, not a runtime crash. Tag not_found so the
+            # model says "couldn't find that caller" cleanly.
+            return {
+                "status": "not_found",
+                "as_of": as_of,
+                "window_days": days,
+                "error": str(e),
+            }
         except Exception as e:
             log.warning(f"lookup_trade_log caller path failed: {e}")
-            return {"error": f"{type(e).__name__}: {e}"}
+            return {
+                "status": "error",
+                "as_of": as_of,
+                "window_days": days,
+                "error": f"{type(e).__name__}: {e}",
+            }
         if not text:
             return {
+                "status": "empty",
+                "as_of": as_of,
+                "window_days": days,
                 "anchor": {"type": "caller", "name": caller},
                 "kind": kind,
                 "data_quality": "caller",
-                "status": "no_logged_trades",
             }
         return {
+            "status": "ok",
+            "as_of": as_of,
+            "window_days": days,
             "anchor": {"type": "caller", "name": caller, "display": display},
             "kind": kind,
             "data_quality": "caller",
@@ -1941,22 +2065,66 @@ async def _execute_trade_log(args: dict) -> dict:
         }
 
     # --- USERNAME ANCHOR ---
-    user_id = db.resolve_username_to_user_id(username)
+    try:
+        user_id = db.resolve_username_to_user_id(username)
+    except Exception as e:
+        log.warning(f"lookup_trade_log resolve_username_to_user_id failed: {e}")
+        return {
+            "status": "error",
+            "as_of": as_of,
+            "window_days": days,
+            "error": f"{type(e).__name__}: {e}",
+        }
     if user_id is None:
-        return {"error": f"username {username!r} not found in profiles or chat history."}
+        return {
+            "status": "not_found",
+            "as_of": as_of,
+            "window_days": days,
+            "error": f"username {username!r} not found in profiles or chat history.",
+        }
+
+    # profile_updated_at: when this user's profile (the source of the
+    # Recent trades section) was last refreshed. Stale-snapshot hint.
+    profile_updated_at = None
+    try:
+        row = db.get_connection().execute(
+            "SELECT updated_at FROM user_profiles WHERE user_id = ?",
+            (int(user_id),),
+        ).fetchone()
+        if row:
+            profile_updated_at = row["updated_at"]
+    except Exception as e:
+        log.warning(f"lookup_trade_log profile_updated_at fetch failed: {e}")
+
     try:
         profile_snippet = db.get_user_profile_recent_trades_section(user_id)
     except Exception as e:
         log.warning(f"lookup_trade_log profile snippet fetch failed: {e}")
-        profile_snippet = ""
-    if not profile_snippet:
         return {
+            "status": "error",
+            "as_of": as_of,
+            "window_days": days,
+            "profile_updated_at": profile_updated_at,
             "anchor": {"type": "username", "name": username, "user_id": user_id},
             "kind": kind,
             "data_quality": "member",
-            "status": "no_logged_trades",
+            "error": f"{type(e).__name__}: {e}",
+        }
+    if not profile_snippet:
+        return {
+            "status": "empty",
+            "as_of": as_of,
+            "window_days": days,
+            "profile_updated_at": profile_updated_at,
+            "anchor": {"type": "username", "name": username, "user_id": user_id},
+            "kind": kind,
+            "data_quality": "member",
         }
     return {
+        "status": "ok",
+        "as_of": as_of,
+        "window_days": days,
+        "profile_updated_at": profile_updated_at,
         "anchor": {"type": "username", "name": username, "user_id": user_id},
         "kind": kind,
         "data_quality": "member",
