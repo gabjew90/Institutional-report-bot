@@ -94,7 +94,13 @@ DEFAULT_PROFILE_CHANNELS = [
 ]
 
 # Default fallbacks — actual values pulled from settings
-MIN_MESSAGES_FOR_PROFILE_FALLBACK = 100
+# Aligned to settings.profile_min_messages (30) on 2026-06-02. Earlier
+# 100 was a stale default from before the floor was lowered — and the
+# code-vs-settings mismatch meant if the settings value got unset
+# (env var reset etc.), the floor would silently jump 30 -> 100 and
+# the 30-49 msg bucket (4 currently-profiled users) would lose their
+# profiles on the next refresh.
+MIN_MESSAGES_FOR_PROFILE_FALLBACK = 30
 MESSAGES_PER_PROFILE_SAMPLE_FALLBACK = 500
 GEMINI_CONCURRENCY = 5  # parallel calls per batch
 
@@ -102,14 +108,23 @@ GEMINI_CONCURRENCY = 5  # parallel calls per batch
 # Gemini's chatter_base read is reliable only when there's enough chat
 # to read. Below this message count, the chatter component scales down
 # linearly so users with very thin chat histories don't surface above
-# active users on a 1-paragraph Gemini sample. Receipts (the 14-day
-# trade ledger points) are NOT scaled — those are objective signal
-# and stay at full weight regardless of chat volume. 500 was picked
-# from the 2026-05-28 distribution: it cleanly demotes the obvious
-# thin-history cases (Tied at 45 msgs, KsFs at 39 msgs, who'd been
-# ranking above kloh at 1467 msgs) without penalizing genuinely
-# active users in the 500-2000 message range.
-TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS = 500
+# active users on a 1-paragraph Gemini sample. Receipts (the trade
+# ledger points) are NOT scaled — those are objective signal and stay
+# at full weight regardless of chat volume.
+#
+# 2026-06-02: lowered 500 -> 300 after distribution analysis showed 18
+# of 62 active users (30%) sit in the 100-499 msgs/30d bucket — real
+# participants whose chatter brackets were getting scaled down to
+# 0.20-0.60. At /300:
+#    100 msgs -> 0.33  (was 0.20)
+#    200 msgs -> 0.67  (was 0.40)
+#    300 msgs -> 1.0   (was 0.60)
+#    500+    -> 1.0   (unchanged)
+# Top 26 most-active users unaffected; the moderately-active 30% get
+# fairer credit for their chatter bracket. Receipts still dominate
+# top-of-leaderboard separation; this just stops volume-handicapping
+# the middle.
+TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS = 300
 
 
 PRIOR_PROFILE_TEMPLATE = """\
@@ -390,7 +405,7 @@ Output a single JSON object with exactly five fields, IN THIS ORDER:
 }}
 ```
 
-**You do NOT output a `trader_score`.** Python computes it deterministically downstream as `min(50, chatter_base) * activity_multiplier + receipt_points` (no upper cap — top traders separate by receipts), where `activity_multiplier = min(1, msg_count / 500)` and `receipt_points` is the exact `TOTAL RECEIPT POINTS:` value from the 7-DAY POINTS LEDGER block — not anything you judge or infer. Your job is ONLY the chatter bracket call. The activity scaling AND receipt addition are arithmetic, and Python does them.
+**You do NOT output a `trader_score`.** Python computes it deterministically downstream as `min(50, chatter_base) * activity_multiplier + receipt_points` (no upper cap — top traders separate by receipts), where `activity_multiplier = min(1, msg_count / 300)` and `receipt_points` is the exact `TOTAL RECEIPT POINTS:` value from the 7-DAY POINTS LEDGER block — not anything you judge or infer. Your job is ONLY the chatter bracket call. The activity scaling AND receipt addition are arithmetic, and Python does them.
 
 **Why this matters**: an earlier version of the prompt asked Gemini for the final `trader_score`, which produced a hallucination class — model would read the chat, see chat-claimed trades NOT in the structured ledger ("closed BTC short +50%" etc.), invent 30-40 receipt points for them, and inflate the score by that amount. The new schema makes the failure structurally impossible — Gemini only outputs the chatter judgment; receipts are computed from the deterministic ledger.
 
@@ -481,7 +496,7 @@ If a section genuinely has no signal (user is a near-lurker with no slurs / no t
 Two layers, ADDED together. Chatter caps at 50 and is THEN multiplied by an activity-credibility factor (a 100-msg user gets 20% of their chatter; 500+ msgs gets full credit) — so a thin-history user can't surface above an active one on a sharp-sounding sample. Receipts are not scaled; they add on top with no cap of their own. The final still caps at 100, leaving plenty of room for receipts to fill above the chatter ceiling — that's the entire point of certifying through posts.
 
 ```
-final_score = min(50, chatter_base) * min(1, msg_count / 500) + receipt_points  # No upper cap — top traders separate by receipts
+final_score = min(50, chatter_base) * min(1, msg_count / 300) + receipt_points  # No upper cap — top traders separate by receipts
 ```
 
 **Layer 1 — Chatter base (0-50, calibrated from MESSAGES below).**
@@ -529,7 +544,7 @@ This is the single most important rule on the receipts layer. The `TOTAL RECEIPT
 
 If you find yourself wanting to inflate receipt points above the ledger total because "the chat clearly shows trades that aren't in the ledger," STOP. The ledger value stands. Lower the chatter base if you must to reflect the trader's true skill — but receipts are the ledger total, full stop.
 
-**Final score = scaled_chatter + receipt_points** (no upper cap — top traders separate by receipts) — where `scaled_chatter` is your `chatter_base` (clipped to 50) MULTIPLIED by an activity factor `min(1, msg_count / 500)`. Python applies the activity factor downstream after you pick the chatter bracket — you don't compute it. Your job stays the bracket call on the chat that's actually visible to you.
+**Final score = scaled_chatter + receipt_points** (no upper cap — top traders separate by receipts) — where `scaled_chatter` is your `chatter_base` (clipped to 50) MULTIPLIED by an activity factor `min(1, msg_count / 300)`. Python applies the activity factor downstream after you pick the chatter bracket — you don't compute it. Your job stays the bracket call on the chat that's actually visible to you.
 
 Four populations the additive rubric reads correctly:
 
@@ -545,7 +560,7 @@ State the reasoning in trader_rationale — 3 to 5 sentences, qualitative prose 
 
 > "Chat reads bag-holder. The actual outcomes visible in chat skew heavy on closed bags and complaining-vague-about-losses tilt cycles. The gloat-loud / complain-vague asymmetry is visible — he names every winner with size, every loss gets a one-line shrug. Some documented entries did make it into the alert channels, which credits some receipt weight; but the chatter pattern anchors him well below the sharp-trader range."
 
-**trader_score = SKILL × ACTIVITY-CREDIBILITY + receipts.** The chatter bracket reflects skill (behavioral quality on the visible chat). Activity then acts as a CREDIBILITY FACTOR on that chatter — a user with very thin chat history can't be confidently bracketed in the 40-50 "talks-good-game" range no matter how sharp the few lines look, because there isn't enough sample to verify the pattern. Python applies the credibility multiplier (`min(1, msg_count / 500)`) downstream; you don't pre-discount the bracket. Just pick the bracket that fits the chat you SEE, and let the system handle the activity scaling. msg_count is also visible in the dossier header for reference.
+**trader_score = SKILL × ACTIVITY-CREDIBILITY + receipts.** The chatter bracket reflects skill (behavioral quality on the visible chat). Activity then acts as a CREDIBILITY FACTOR on that chatter — a user with very thin chat history can't be confidently bracketed in the 40-50 "talks-good-game" range no matter how sharp the few lines look, because there isn't enough sample to verify the pattern. Python applies the credibility multiplier (`min(1, msg_count / 300)`) downstream; you don't pre-discount the bracket. Just pick the bracket that fits the chat you SEE, and let the system handle the activity scaling. msg_count is also visible in the dossier header for reference.
 
 **racial_humor_score brackets (0-100)** — the canonical score for race-edged content from this user. Internal calibration only; the bot never quotes the raw number. Score the FULL picture (slurs + stereotypes + dog whistles + race-based mockery + unprompted racial references), not just literal slurs. Self-deprecating jokes about the user's OWN race and factual mentions of races/ethnicities in geopolitics or news don't count.
 
@@ -557,7 +572,7 @@ State the reasoning in trader_rationale — 3 to 5 sentences, qualitative prose 
 
 Anchor against THIS user's messages. Zero examples = 0-15.
 
-**Activity multiplier applies to racism too.** Same as trader_score: a user with 45 visible messages can't certify a Dominant-bracket pattern (76-100) over volume even if those 45 lines are saturated — there isn't enough sample to confirm the behavior is sustained rather than episodic. Pick the bracket that fits the chat you SEE; Python applies the same `min(1, msg_count / 500)` credibility multiplier downstream. A user with 50 msgs and a 95 bracket call gets stored as ~10; with 500+ msgs the same call stays at 95. Don't pre-discount the bracket call yourself — the math is automatic.
+**Activity multiplier applies to racism too.** Same as trader_score: a user with 45 visible messages can't certify a Dominant-bracket pattern (76-100) over volume even if those 45 lines are saturated — there isn't enough sample to confirm the behavior is sustained rather than episodic. Pick the bracket that fits the chat you SEE; Python applies the same `min(1, msg_count / 300)` credibility multiplier downstream. A user with 50 msgs and a 95 bracket call gets stored as ~16; with 300+ msgs the same call stays at 95. Don't pre-discount the bracket call yourself — the math is automatic.
 
 ---
 
