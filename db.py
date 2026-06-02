@@ -24,6 +24,7 @@ def get_connection() -> sqlite3.Connection:
         _conn.execute("PRAGMA foreign_keys=ON")
         _init_schema(_conn)
         _migrate_drop_unique_constraints(_conn)
+        _migrate_add_extraction_source(_conn)
     return _conn
 
 
@@ -205,6 +206,11 @@ def _init_schema(conn: sqlite3.Connection) -> None:
                                    -- 'member' = any user posting in an eager-OCR alert
                                    --   channel; row gets persisted for future scoring/data,
                                    --   no announce, never bleeds into caller /ask context
+            extraction_source TEXT,
+                                   -- 'image' = image-OCR pipeline (original path)
+                                   -- 'text'  = text classifier (2026-06-02 — no attachments)
+                                   -- 'mixed' = classifier saw both text + image evidence
+                                   -- Legacy rows (pre-2026-06-02) backfilled to 'image'.
             gemini_json TEXT,      -- raw OCR JSON for forensics
             created_at TEXT NOT NULL DEFAULT (datetime('now')),
             UNIQUE(discord_message_id, discord_attachment_id)
@@ -527,6 +533,31 @@ def _migrate_drop_unique_constraints(conn: sqlite3.Connection) -> None:
             CREATE INDEX IF NOT EXISTS idx_daily_reports_type_created ON daily_reports(report_type, created_at);
         """)
         conn.commit()
+
+
+def _migrate_add_extraction_source(conn: sqlite3.Connection) -> None:
+    """Add extraction_source column to analyst_trades (2026-06-02).
+
+    Tracks which modality produced each row:
+      - 'image' : image-OCR pipeline (the original path)
+      - 'text'  : text classifier (no image attachments)
+      - 'mixed' : classifier consumed both text + image evidence
+
+    Idempotent: PRAGMA-checks for the column before ALTER. Backfills
+    any NULL values to 'image' (every legacy row came from the image-OCR
+    pipeline; the column didn't exist before 2026-06-02). Safe to run
+    on every connection boot — already-migrated rows produce no UPDATE
+    activity.
+    """
+    cols = [r[1] for r in conn.execute("PRAGMA table_info(analyst_trades)").fetchall()]
+    if "extraction_source" not in cols:
+        conn.execute("ALTER TABLE analyst_trades ADD COLUMN extraction_source TEXT")
+    # Backfill NULL → 'image'. Idempotent.
+    conn.execute(
+        "UPDATE analyst_trades SET extraction_source = 'image' "
+        "WHERE extraction_source IS NULL"
+    )
+    conn.commit()
 
 
 # --- Dropbox state ---
