@@ -4079,7 +4079,7 @@ def is_official_caller(author_id: int) -> bool:
     return False
 
 
-def compute_member_points(author_id: int, days: int = 14) -> dict:
+def compute_member_points(author_id: int, days: int = 7) -> dict:
     """Rolling points ledger over the last N days (default 14) for one user.
 
     Reads BOTH caller-mode rows (official-caller-channel posts) AND
@@ -4363,25 +4363,20 @@ def compute_member_points(author_id: int, days: int = 14) -> dict:
                 })
         # Else: only trims / viewings — no points
 
-    # Official-caller nerf: wins-only. Configured callers earn points
-    # only for documented winning closes (entry → win = +5) and winning
-    # standalone screenshots (+2). Losses, ghosts, losing screenshots,
-    # and pending positions all multiply to zero. Members keep the full
-    # table — they're being judged on whether they post at all, so
-    # documented commitment (any close) is worth something. Callers
-    # are the product; only documented wins should lift them.
+    # 2026-06-02 policy: wins-only +2 across the board. No caller-vs-
+    # member split — same rule applies to everyone including official
+    # callers. Old policy was +5/+3/+2/+2/+1 with a caller-nerf overlay;
+    # new policy collapses to a single rule (wins × 2) so the score
+    # reflects exactly what gets posted as a win, no implicit
+    # "commitment" credit for losses, ghosts, or pending positions.
+    #
+    # Historical comment preserved below for context — describes the
+    # old caller-nerf logic that no longer applies:
+    # documented commitment (any close) was worth something under the
+    # old rules. (End historical comment.)
     caller_mode = is_official_caller(int(author_id))
-    if caller_mode:
-        total_points = entries_won * 5 + screenshot_wins * 2
-    else:
-        total_points = (
-            entries_won * 5
-            + entries_lost * 3
-            + entries_ghosted * 2
-            + screenshot_wins * 2
-            + screenshot_losses * 1
-            # entries_pending contributes 0 — held in suspense
-        )
+    # New policy: (wins) × 2. Loss/ghost/pending buckets all → 0.
+    total_points = (entries_won + screenshot_wins) * 2
     return {
         "points": total_points,
         "window_days": days,
