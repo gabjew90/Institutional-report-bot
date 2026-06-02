@@ -3651,6 +3651,61 @@ def resolve_username_to_user_id(username: str | None) -> int | None:
     return None
 
 
+def get_user_profile_recent_trades_section(user_id: int) -> str:
+    """Extract the "Recent trades" markdown section from a user's profile.
+
+    The profile builder lays out user profiles with bold section headers:
+      **Personality and style.**
+      **Voice.**
+      **Retarded takes.**
+      **Recent trades.**
+      **Recent personal life.**
+
+    This helper pulls the body of the Recent trades section — the bullet
+    lines beneath the heading — and returns them as a single string. The
+    section ends at the next bold heading of the same shape (`**Word.**`)
+    OR end-of-string.
+
+    Returns "" when:
+      - the user has no profile row
+      - the profile_text is empty
+      - the Recent trades heading is absent
+      - DB access fails
+
+    Tied to the profile prompt template's heading format. If that template
+    changes (e.g. switches to `## Recent Trades` markdown headers), update
+    the regex here too.
+    """
+    if not user_id:
+        return ""
+    conn = get_connection()
+    try:
+        row = conn.execute(
+            "SELECT profile_text FROM user_profiles WHERE user_id = ? LIMIT 1",
+            (int(user_id),),
+        ).fetchone()
+    except Exception as e:
+        log.warning(
+            f"get_user_profile_recent_trades_section query failed for "
+            f"user_id={user_id}: {e}"
+        )
+        return ""
+    if not row:
+        return ""
+    text = row["profile_text"] or ""
+    if not text:
+        return ""
+    import re as _re
+    m = _re.search(
+        r"\*\*Recent\s+trades\.\*\*\s*\n(.*?)(?=\n\*\*[A-Z][^*]*?\.\*\*|\Z)",
+        text,
+        flags=_re.IGNORECASE | _re.DOTALL,
+    )
+    if not m:
+        return ""
+    return m.group(1).strip()
+
+
 def search_chat_messages_for_ask(
     keyword: str | None = None,
     *,
