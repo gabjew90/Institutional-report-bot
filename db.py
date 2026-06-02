@@ -3612,6 +3612,45 @@ def lookup_user_ranks(
     }
 
 
+def resolve_username_to_user_id(username: str | None) -> int | None:
+    """Resolve a Discord username to a user_id, trying two sources in order.
+
+    1. user_profiles.username — LLM-canonical, lowercase. Exact match,
+       case-insensitive.
+    2. chat_messages.author_username — most recent message row's
+       author_id. Case-insensitive. Used when a member has chat
+       activity but no profile yet.
+
+    Returns None when neither source has an exact match, when input is
+    empty / None / whitespace, or when DB access fails.
+    """
+    if not username:
+        return None
+    name = username.strip().lstrip("@")
+    if not name:
+        return None
+    conn = get_connection()
+    try:
+        row = conn.execute(
+            "SELECT user_id FROM user_profiles "
+            "WHERE LOWER(username) = LOWER(?) LIMIT 1",
+            (name,),
+        ).fetchone()
+        if row:
+            return int(row["user_id"])
+        row = conn.execute(
+            "SELECT author_id FROM chat_messages "
+            "WHERE LOWER(author_username) = LOWER(?) "
+            "ORDER BY posted_at DESC LIMIT 1",
+            (name,),
+        ).fetchone()
+        if row:
+            return int(row["author_id"])
+    except Exception as e:
+        log.warning(f"resolve_username_to_user_id failed for {name!r}: {e}")
+    return None
+
+
 def search_chat_messages_for_ask(
     keyword: str | None = None,
     *,
