@@ -1342,6 +1342,15 @@ def _build_chat_search_tool():
                     "header (in UTC), converting any user-stated local "
                     "times accordingly, and formatting as ISO-8601 "
                     "(2026-05-31T22:00:00Z).\n"
+                    "(C) USER / CHANNEL retrieval — pass `username` "
+                    "OR `channel_name` (no `keyword`, no `start_iso`/"
+                    "`end_iso`). Returns recent messages from that "
+                    "user or in that channel within the trailing "
+                    "`days` window (default 30, max 180). Use for "
+                    "'what has Kyle been crying about today' / "
+                    "'recap recent messages in #stonks-yapping' — "
+                    "questions about a person or channel's recent "
+                    "activity that don't have a specific keyword.\n"
                     "Use this ONLY when the asker references something "
                     "not already visible in your pre-injected context "
                     "(Recent channel chat covers only ~50 msgs / 24h of "
@@ -1432,14 +1441,25 @@ async def _execute_chat_search(args: dict) -> dict:
     start_iso = (args.get("start_iso") or "").strip() or None
     end_iso = (args.get("end_iso") or "").strip() or None
     has_window = bool(start_iso) and bool(end_iso)
+    # Extract username + channel_name early so the shape-C validation
+    # below can check them (was extracted later; moved up here).
+    username = (args.get("username") or "").strip() or None
+    channel_name = (args.get("channel_name") or "").strip() or None
 
-    if not keyword and not has_window:
+    # Accept three shapes:
+    #   A: keyword (optionally + username/channel/days) — keyword search
+    #   B: start_iso + end_iso (optionally + keyword/channel) — time window
+    #   C: username OR channel_name (no keyword, no window) — recent
+    #      messages filtered by user or channel. Closes the "what has
+    #      Kyle been crying about today" gap that needed keyword-invention
+    #      before.
+    if not keyword and not has_window and not username and not channel_name:
         return {
             "error": (
-                "Provide either `keyword` (shape A) or BOTH "
-                "`start_iso` AND `end_iso` (shape B). To summarize "
-                "a time window with no specific keyword, pass just "
-                "the two ISO timestamps."
+                "Provide at least one of: `keyword` (shape A), BOTH "
+                "`start_iso` AND `end_iso` (shape B), or `username`/"
+                "`channel_name` (shape C — recent messages by user / "
+                "in channel)."
             ),
             "matches": [],
         }
@@ -1449,8 +1469,6 @@ async def _execute_chat_search(args: dict) -> dict:
         days = max(1, min(180, int(days)))
     except (TypeError, ValueError):
         days = 30
-    username = args.get("username")
-    channel_name = args.get("channel_name")
 
     # Validate ISO timestamps shape so the tool can return a clean
     # error instead of leaking the SQL/parse error to the model. Accepts
