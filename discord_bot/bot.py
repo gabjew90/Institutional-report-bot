@@ -1,5 +1,6 @@
 """Discord bot client with slash commands."""
 
+import asyncio
 import html
 import logging
 import re
