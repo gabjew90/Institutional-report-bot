@@ -704,6 +704,27 @@ async def extract_trade_from_message(
         )
         return None
 
+    # Gemini sometimes returns a list of trades when one message
+    # describes multiple positions (e.g. "opened PURR + ORCL + SOXL"
+    # in one paragraph). Take the highest-confidence trade-positive
+    # entry from the list — multi-trade extraction would need separate
+    # rows per trade which the current single-row insert path doesn't
+    # support. (Trade-shaped single-message-multi-trade is a real but
+    # rare pattern; defer the per-trade-row enhancement.)
+    if isinstance(payload, list):
+        candidates = [
+            p for p in payload
+            if isinstance(p, dict) and p.get("is_trade") and p.get("ticker")
+        ]
+        if not candidates:
+            return None
+        payload = max(
+            candidates,
+            key=lambda p: float(p.get("confidence") or 0),
+        )
+    elif not isinstance(payload, dict):
+        return None
+
     # Validation: only accept if model says it's a trade, confidence is
     # high enough, and there's a ticker (unstitchable without one).
     if not payload.get("is_trade"):

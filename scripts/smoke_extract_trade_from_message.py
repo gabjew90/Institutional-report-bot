@@ -161,6 +161,40 @@ def test_cached_ocr_only_tagged_image():
     _ok("cached_ocr only tagged 'image' (backfill path)")
 
 
+def test_json_array_returns_highest_confidence():
+    """Gemini sometimes returns a list of trades when one message
+    describes multiple positions. Picks the highest-confidence
+    trade-positive entry from the array (defer multi-row writes
+    to a future enhancement)."""
+    payload = [
+        {"is_trade": True, "action": "open", "ticker": "PURR",
+         "contract_type": "spot", "price": 6.65, "confidence": 0.7},
+        {"is_trade": True, "action": "open", "ticker": "ORCL",
+         "contract_type": "spot", "price": 176.78, "confidence": 0.9},
+        {"is_trade": False, "confidence": 0.5},
+    ]
+    with patch.object(ocr_mod, "_call_gemini_classifier",
+                      return_value=_fake_gemini(payload)):
+        result = asyncio.run(_run("Bought ORCL @176.78 and PURR @6.65"))
+    assert result is not None and result["is_trade"] is True, result
+    # ORCL has 0.9 confidence, PURR has 0.7 -> ORCL wins
+    assert result["ticker"] == "ORCL", result
+    _ok("JSON array response -> highest-confidence trade extracted")
+
+
+def test_json_array_all_non_trade_returns_none():
+    """If every entry in the array is is_trade=false, return None."""
+    payload = [
+        {"is_trade": False, "confidence": 0.9},
+        {"is_trade": False, "confidence": 0.7},
+    ]
+    with patch.object(ocr_mod, "_call_gemini_classifier",
+                      return_value=_fake_gemini(payload)):
+        result = asyncio.run(_run("just market commentary"))
+    assert result is None, f"expected None, got {result}"
+    _ok("JSON array with no trades -> None")
+
+
 def test_text_plus_cached_ocr_tagged_mixed():
     """Backfill path with both text caption + cached OCR."""
     payload = {
@@ -191,4 +225,6 @@ if __name__ == "__main__":
     test_fuzzy_partial_fields_accepted()
     test_cached_ocr_only_tagged_image()
     test_text_plus_cached_ocr_tagged_mixed()
+    test_json_array_returns_highest_confidence()
+    test_json_array_all_non_trade_returns_none()
     print("\nALL EXTRACT-TRADE-FROM-MESSAGE SMOKE TESTS PASS")
