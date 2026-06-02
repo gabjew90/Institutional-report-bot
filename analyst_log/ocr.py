@@ -541,3 +541,188 @@ async def extract_trade_from_caption(
                     + " (expiry left null — watcher will match to open position)"
                 ).strip()
     return data
+
+
+# --- Unified text + vision + cached-OCR classifier (2026-06-02) -----------
+#
+# extract_trade_from_message accepts the FULL signal set for an arbitrary
+# Discord message: text content, raw image bytes (live ingestion path), and
+# cached OCR text from a prior eager-OCR run (backfill path — Discord CDN
+# URLs expire ~24h so we can't re-fetch original images for old messages).
+#
+# Unlike extract_trade_from_image (above), this function is NOT bound to
+# the analyst_callers registry. It runs for every message in the eager-OCR
+# channel set (chat_eager_ocr_channels) and credits text-only trade
+# narratives that today's image-only OCR pipeline misses entirely.
+#
+# Returns a fuzzy JSON dict on success — accept whatever fields Gemini
+# could extract, as long as is_trade=true, confidence >= threshold, and
+# a ticker is present. Below threshold or missing ticker → returns None.
+
+# Confidence threshold for accepting a classification. Below this, skip
+# the row. Tunable via env var if QC shows we're missing too many real
+# trades (lower) or hallucinating too many fake ones (raise).
+_MESSAGE_CLASSIFIER_MIN_CONFIDENCE = 0.6
+
+
+_CLASSIFIER_PROMPT = """\
+You read a Discord message from a trader's alert channel. The message
+may be text, image (screenshot), cached OCR text from a prior
+screenshot extraction, or any combination. Your job: decide if the
+message describes an entry, add, close, or trim of an options or
+crypto trade — and extract whatever fields are clearly visible.
+
+Return STRICT JSON matching this schema:
+{{
+  "is_trade": bool,
+  "action": "open" | "add" | "close" | "trim" | null,
+  "ticker": str | null,
+  "contract_type": "call" | "put" | "spot" | "future" | null,
+  "strike": float | null,
+  "expiry": str | null,            // YYYY-MM-DD or null
+  "price": float | null,           // entry price or close price
+  "gain_pct": float | null,        // for closes, % gain or loss
+  "confidence": float              // 0.0–1.0
+}}
+
+Rules:
+- If the message is opinion, news, a meme, a reply, or generic
+  bullish/bearish chatter (e.g. "I'm long tech", "AI is overheated",
+  "this stock looks good"), return {{"is_trade": false, "confidence": <your read>}}.
+- A trade requires explicit evidence: a ticker AND an action verb
+  ("opened", "buying", "closed", "sold", "trimmed", "exit", or
+  visible from a screenshot's order ticket / P&L pane).
+- Accept partial structure. "btc long at 73,906" is a valid trade
+  (ticker BTC, action open, price 73906, contract_type spot/future as
+  context allows) — strike + expiry can be null.
+- "3x from entry" means gain_pct: 200.0. "+50%" means gain_pct: 50.0.
+  "-30%" means gain_pct: -30.0.
+- confidence reflects how clearly the message conveys a trade — not
+  whether you think the trade is good.
+
+Message author: {author}
+Channel: {channel}
+
+Text content (user's typed message):
+{text}
+
+Image OCR text (prior Gemini extraction from the screenshot, if any —
+may be partial or empty; treat as a hint, not gospel):
+{cached_ocr}
+
+[Plus any image attachments provided directly in this prompt.]
+"""
+
+
+async def _call_gemini_classifier(prompt_parts: list, model: str):
+    """Thin wrapper around the Gemini SDK call so tests can stub it
+    without intercepting the whole genai client. Returns the raw
+    response object — caller parses `.text`."""
+    client = _get_client()
+    response = await client.aio.models.generate_content(
+        model=model,
+        contents=[types.Content(role="user", parts=prompt_parts)],
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json",
+            max_output_tokens=400,
+            temperature=0.1,
+        ),
+    )
+    return response
+
+
+async def extract_trade_from_message(
+    text: str,
+    image_bytes_list: list[bytes],
+    *,
+    author_username: str,
+    channel_name: str,
+    cached_ocr_text: str = "",
+) -> dict | None:
+    """Classify a Discord message as a trade entry/close — text,
+    image, AND/OR cached prior OCR. Returns None if the model says it's
+    not a trade, confidence is too low, or no ticker was extractable.
+
+    Otherwise returns a dict matching the row-write schema, plus
+    extraction_source ∈ {'text', 'image', 'mixed'}.
+
+    `cached_ocr_text` is used by the backfill path: the eager-OCR
+    pipeline has already extracted text from screenshots into
+    chat_messages.image_ocr_text. Discord CDN URLs expire ~24h so we
+    can't re-fetch the original bytes for old messages. Passing the
+    cached OCR text lets the classifier see what the screenshot
+    contained without re-fetching. Live ingestion passes
+    image_bytes_list instead (real-time has the bytes); backfill passes
+    cached_ocr_text.
+
+    extraction_source is tagged based on which signals contributed:
+      - text only (no image bytes, no cached_ocr): 'text'
+      - image bytes only OR cached_ocr only: 'image'
+      - text + (image bytes OR cached_ocr): 'mixed'
+    """
+    text = (text or "").strip()
+    cached_ocr_text = (cached_ocr_text or "").strip()
+    has_text = bool(text)
+    has_images = bool(image_bytes_list)
+    has_cached_ocr = bool(cached_ocr_text)
+    if not has_text and not has_images and not has_cached_ocr:
+        return None  # nothing to classify
+
+    # Build the prompt parts: text + each image as bytes.
+    text_section = text if has_text else "(none)"
+    ocr_section = cached_ocr_text if has_cached_ocr else "(none)"
+    prompt_text = _CLASSIFIER_PROMPT.format(
+        author=author_username, channel=channel_name,
+        text=text_section,
+        cached_ocr=ocr_section,
+    )
+    parts = [types.Part.from_text(text=prompt_text)]
+    for img_bytes in image_bytes_list:
+        parts.append(
+            types.Part.from_bytes(
+                data=img_bytes, mime_type="image/png",
+            )
+        )
+
+    model = settings.gemini_model
+    try:
+        response = await _call_gemini_classifier(parts, model)
+    except Exception as e:
+        # Soft fail — don't raise into the caller's task chain
+        log.warning(
+            f"extract_trade_from_message: Gemini call failed for "
+            f"{author_username} in {channel_name}: {type(e).__name__}: {e}"
+        )
+        return None
+
+    try:
+        payload = json.loads((response.text or "").strip() or "{}")
+    except Exception as e:
+        log.warning(
+            f"extract_trade_from_message: malformed JSON "
+            f"({type(e).__name__}: {e}); response.text={response.text!r}"
+        )
+        return None
+
+    # Validation: only accept if model says it's a trade, confidence is
+    # high enough, and there's a ticker (unstitchable without one).
+    if not payload.get("is_trade"):
+        return None
+    confidence = payload.get("confidence") or 0
+    if confidence < _MESSAGE_CLASSIFIER_MIN_CONFIDENCE:
+        return None
+    if not payload.get("ticker"):
+        return None
+
+    # Tag extraction_source based on which modalities contributed.
+    # cached OCR is treated as image evidence (it represents an image,
+    # just one we couldn't re-fetch live bytes for).
+    image_present = has_images or has_cached_ocr
+    if has_text and image_present:
+        extraction_source = "mixed"
+    elif image_present:
+        extraction_source = "image"
+    else:
+        extraction_source = "text"
+    payload["extraction_source"] = extraction_source
+    return payload
