@@ -1670,6 +1670,106 @@ def record_analyst_trade(
     conn.commit()
 
 
+def insert_text_extracted_trade_if_not_dup(
+    *,
+    author_id: int,
+    author_username: str,
+    discord_message_id: int,
+    posted_at: str,
+    extracted: dict,
+    channel_name: str | None = None,
+    dedup_window_minutes: int = 5,
+) -> bool:
+    """Insert a classifier-extracted analyst_trades row with two-tier
+    dedup.
+
+      Tier 1 (strict): if any analyst_trades row already exists with
+        the SAME discord_message_id, skip. One Discord message → at
+        most one row, regardless of modality (text vs image vs mixed).
+        This catches the live case where ocr_attachments_inline already
+        wrote an image row for a message with screenshot + caption AND
+        the new text+vision classifier tries to write a second row for
+        the same message.
+
+      Tier 2 (fuzzy): if a row exists with extraction_source='image'
+        within ±dedup_window_minutes for the same (author_id, ticker,
+        expiry, strike, contract_type, action), skip. Handles the
+        cross-message case (text post then screenshot of the same
+        trade 2 min later in a separate message).
+
+    Returns True if inserted, False if skipped.
+
+    Image extraction always wins on conflict: images are higher-
+    fidelity verified screenshots.
+    """
+    conn = get_connection()
+    ticker = (extracted.get("ticker") or "").upper()
+    contract_type = (extracted.get("contract_type") or "").lower() or None
+    strike = extracted.get("strike")
+    expiry = extracted.get("expiry") or None
+    action = (extracted.get("action") or "").lower() or None
+
+    # Tier 1: discord_message_id dedup. One Discord message → at most
+    # one row regardless of modality.
+    existing_by_msg_id = conn.execute(
+        "SELECT id, extraction_source FROM analyst_trades "
+        "WHERE discord_message_id = ? LIMIT 1",
+        (int(discord_message_id),),
+    ).fetchone()
+    if existing_by_msg_id:
+        return False
+
+    # Parse posted_at for Tier 2 window bounds.
+    try:
+        ts = datetime.fromisoformat(posted_at.replace("Z", "+00:00"))
+    except (ValueError, AttributeError):
+        ts = datetime.utcnow()
+    window_start = (ts - timedelta(minutes=dedup_window_minutes)).isoformat()
+    window_end = (ts + timedelta(minutes=dedup_window_minutes)).isoformat()
+
+    # Tier 2: same-fields against image rows within window.
+    existing = conn.execute(
+        """SELECT id FROM analyst_trades
+            WHERE author_id = ?
+              AND extraction_source = 'image'
+              AND UPPER(ticker) = ?
+              AND COALESCE(LOWER(contract_type), '') = COALESCE(?, '')
+              AND COALESCE(strike, -1) = COALESCE(?, -1)
+              AND COALESCE(expiry, '') = COALESCE(?, '')
+              AND COALESCE(LOWER(action), '') = COALESCE(?, '')
+              AND posted_at >= ?
+              AND posted_at <= ?
+            LIMIT 1""",
+        (
+            int(author_id), ticker, contract_type, strike, expiry, action,
+            window_start, window_end,
+        ),
+    ).fetchone()
+    if existing:
+        return False  # cross-message dup of an image row — skip
+
+    # No dup. Insert. discord_attachment_id is -1 for text rows (column
+    # is NOT NULL; the sentinel is queryable separately if needed).
+    conn.execute(
+        """INSERT INTO analyst_trades
+              (discord_message_id, discord_attachment_id, author,
+               author_id, posted_at, ticker, contract_type, strike,
+               expiry, action, gain_pct, price, is_trade,
+               tracking_mode, extraction_source, gemini_json)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?)""",
+        (
+            int(discord_message_id), -1, author_username, int(author_id),
+            posted_at, ticker, contract_type, strike, expiry, action,
+            extracted.get("gain_pct"), extracted.get("price"),
+            "member",  # text rows are always member-mode by definition
+            extracted.get("extraction_source") or "text",
+            json.dumps(extracted),
+        ),
+    )
+    conn.commit()
+    return True
+
+
 def get_recent_analyst_trades(
     hours: int = 24,
     limit: int = 50,

@@ -174,24 +174,97 @@ async def ingest_message(
 
 
 async def _safe_ocr_inline(message: discord.Message, chan_name: str) -> None:
-    """Wrap ocr_attachments_inline with a top-level exception guard so a
-    crash in the background task doesn't bubble to the event loop as
-    an unhandled exception warning.
+    """Run the existing image-OCR pipeline AND the new text+vision
+    classifier under one semaphore acquisition.
 
-    Acquires the eager-OCR semaphore before doing any Gemini work so
-    bursts of image messages queue rather than triggering N concurrent
-    OCR calls.
+    Step 1: ocr_attachments_inline — the original path. Writes
+    extraction_source='image' rows for messages with image
+    attachments that look trade-shaped to the image-only OCR.
+
+    Step 2: _classify_message_for_trade — new path (2026-06-02).
+    Picks up text-only trade narratives that the image-only pipeline
+    misses entirely (e.g., ZHawk's 'PURR Leaps 12/18 \$14 @4.10'
+    posts that have no screenshot). Two-tier dedup in
+    db.insert_text_extracted_trade_if_not_dup prevents creating a
+    second row for messages where Step 1 already wrote one.
+
+    Both steps share the eager-OCR semaphore so concurrent calls are
+    capped at settings.eager_ocr_max_concurrent (default 3).
     """
     sem = _get_eager_ocr_semaphore()
     async with sem:
+        # Step 1: existing image-OCR pipeline — unchanged
         try:
             from chat_ingestion.ocr import ocr_attachments_inline
             await ocr_attachments_inline(message)
         except Exception as e:
             log.warning(
-                f"Eager OCR task failed for msg={message.id} "
+                f"Eager OCR (image path) failed for msg={message.id} "
                 f"channel='{chan_name}': {type(e).__name__}: {e}"
             )
+
+        # Step 2: NEW text+vision classifier
+        try:
+            await _classify_message_for_trade(message, chan_name)
+        except Exception as e:
+            log.warning(
+                f"Eager text classifier failed for msg={message.id} "
+                f"channel='{chan_name}': {type(e).__name__}: {e}"
+            )
+
+
+async def _classify_message_for_trade(
+    message: discord.Message, chan_name: str,
+) -> None:
+    """Run the unified text+vision classifier on a Discord message.
+    Writes a row to analyst_trades if the classifier identifies a
+    trade. Dedup against existing rows (image + prior text) happens
+    inside db.insert_text_extracted_trade_if_not_dup.
+    """
+    from analyst_log.ocr import extract_trade_from_message
+
+    text = (message.content or "").strip()
+    image_bytes: list[bytes] = []
+    for att in (message.attachments or []):
+        ct = (getattr(att, "content_type", "") or "").lower()
+        if not ct.startswith("image/"):
+            continue
+        try:
+            data = await att.read()
+            image_bytes.append(data)
+        except Exception as e:
+            log.debug(
+                f"text classifier: attachment read failed "
+                f"msg={message.id}: {e}"
+            )
+
+    extracted = await extract_trade_from_message(
+        text=text,
+        image_bytes_list=image_bytes,
+        author_username=message.author.name,
+        channel_name=chan_name,
+    )
+    if not extracted:
+        return
+
+    inserted = db.insert_text_extracted_trade_if_not_dup(
+        author_id=message.author.id,
+        author_username=message.author.name,
+        discord_message_id=message.id,
+        posted_at=message.created_at.isoformat(),
+        extracted=extracted,
+        channel_name=chan_name,
+    )
+    if inserted:
+        log.info(
+            f"text classifier: wrote row for {message.author.name} in "
+            f"{chan_name} — {extracted.get('ticker')} {extracted.get('action')}"
+        )
+    else:
+        log.debug(
+            f"text classifier: deduped against existing row for "
+            f"msg={message.id}"
+        )
 
 
 async def run_chat_catchup(
