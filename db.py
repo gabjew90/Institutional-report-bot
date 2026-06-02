@@ -1900,6 +1900,7 @@ def format_analyst_trades_for_context(
     caller: str | None = None,
     display: str | None = None,
     tracking_mode: str | None = "caller",
+    kind: str = "all",
 ) -> str:
     """Render the last N hours of trade-tagged rows as a context block for /ask.
 
@@ -1912,166 +1913,195 @@ def format_analyst_trades_for_context(
     None for both = legacy global behavior (kept for backwards compat,
     but the /ask builder always passes both for hard separation).
 
-    Returns "" when there are no trade rows in the window — caller can omit
-    the block entirely.
+    `kind` ∈ {"all", "recent", "open", "tally"}:
+      - "all" (default) emits RECENT + OPEN + TALLY. Preserves legacy
+        early-return: if no recent rows, returns "" even if positions
+        or tally would otherwise emit.
+      - "recent" emits only the RECENT TRADES block.
+      - "open" emits only the CURRENTLY OPEN POSITIONS block.
+      - "tally" emits only the W/L TALLY block.
+    Any other value raises ValueError.
+
+    Returns "" when there are no trade rows in the window AND kind="all" —
+    caller can omit the block entirely.
     """
-    rows = get_recent_analyst_trades(
-        hours=hours, limit=limit, caller=caller, tracking_mode=tracking_mode,
-    )
-    if not rows:
-        return ""
+    if kind not in ("all", "recent", "open", "tally"):
+        raise ValueError(
+            f"kind must be one of: all, recent, open, tally; got {kind!r}"
+        )
 
     display_name = display or (caller.title() if caller else "Abe")
     header_prefix = display_name.upper()
-    out_lines: list[str] = [
-        f"{header_prefix}'S RECENT TRADES (last {hours // 24} days, "
-        f"auto-logged from his alerts channel — for context only, "
-        f"don't quote captions; he didn't share them with you):"
-    ]
-    # Newest first per get_recent_analyst_trades; reverse so the trader
-    # reads them chronologically.
-    for r in reversed(rows):
-        ticker = r.get("ticker") or "?"
-        ct = (r.get("contract_type") or "").lower()
-        ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
-        strike = r.get("strike")
-        strike_str = (
-            f"{int(strike) if strike == int(strike) else strike}"
-            if strike is not None else "?"
-        )
-        expiry = r.get("expiry") or ""
-        exp_short = expiry[5:] if len(expiry) >= 10 else expiry  # MM-DD
-        action = (r.get("action") or "?").lower()
-        # Display rule (mirrors the live announce-line rule):
-        # opens/adds carry @price; closes/trims carry (±gain%).
-        # 0-values treated as missing (model sentinel, not real data).
-        gain = r.get("gain_pct")
-        price = r.get("price")
-        try:
-            price_f = float(price) if price is not None else None
-        except (TypeError, ValueError):
-            price_f = None
-        try:
-            gain_f = float(gain) if gain is not None else None
-        except (TypeError, ValueError):
-            gain_f = None
-        suffix_str = ""
-        if action in ("open", "add") and price_f and price_f != 0:
-            suffix_str = f" @{price_f:.2f}"
-        elif action in ("close", "trim") and gain_f is not None and gain_f != 0:
-            suffix_str = f" ({gain_f:+.1f}%)"
-        posted_at = (r.get("posted_at") or "")[:16].replace("T", " ")
+    out_lines: list[str] = []
 
-        # Surface inferred-status tags so the bot doesn't claim phantom
-        # holdings or fabricate entries that aren't in the log.
-        status_tag = ""
-        status = r.get("inferred_status")
-        if status == "expired_unknown":
-            if action in ("open", "add"):
-                status_tag = " [expired — no close alert]"
-            else:
-                status_tag = " [expired]"
-        elif status == "close_without_open":
-            status_tag = " [exit only — no logged entry]"
-
-        out_lines.append(
-            f"- {posted_at} — {action} {ticker} "
-            f"{strike_str}{ct_suffix} {exp_short}{suffix_str}{status_tag}"
+    # RECENT TRADES block
+    if kind in ("all", "recent"):
+        rows = get_recent_analyst_trades(
+            hours=hours, limit=limit, caller=caller, tracking_mode=tracking_mode,
         )
-
-    # Also surface currently-open positions explicitly so the bot doesn't
-    # have to compute the net itself.
-    positions = get_current_analyst_positions(
-        caller=caller, tracking_mode=tracking_mode,
-    )
-    if positions:
-        out_lines.append("")
-        out_lines.append(
-            f"{header_prefix}'S CURRENTLY OPEN POSITIONS "
-            f"(sorted by closest expiry first):"
-        )
-        for p in positions[:20]:
-            ticker = p.get("ticker") or "?"
-            ct = (p.get("contract_type") or "").lower()
-            ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
-            strike = p.get("strike")
-            strike_str = (
-                f"{int(strike) if strike == int(strike) else strike}"
-                if strike is not None else "?"
-            )
-            expiry = p.get("expiry") or ""
-            exp_short = expiry[5:] if len(expiry) >= 10 else expiry
-            # Display rule: open positions show @entry_price (the original
-            # open's price), NOT the last gain pill. Gain% is a closure
-            # signal — meaningless mid-flight on an open position.
-            # 0-values treated as missing.
-            entry_price = p.get("entry_price")
-            price_str = ""
-            try:
-                ep_f = float(entry_price) if entry_price is not None else None
-            except (TypeError, ValueError):
-                ep_f = None
-            if ep_f and ep_f != 0:
-                price_str = f" @{ep_f:.2f}"
+        if not rows:
+            # Legacy quirk: kind='all' early-returns '' when no recent rows,
+            # even if positions/tally would otherwise emit. Preserved so the
+            # existing prompt-assembly call site (which checks
+            # `if analyst_block:` before appending) keeps its behavior.
+            # kind='recent' alone just emits no RECENT block and falls through
+            # — but with no other blocks gated in (kind != all), the final
+            # join is "".
+            if kind == "all":
+                return ""
+        else:
             out_lines.append(
-                f"- {ticker} {strike_str}{ct_suffix} {exp_short}{price_str}"
+                f"{header_prefix}'S RECENT TRADES (last {hours // 24} days, "
+                f"auto-logged from his alerts channel — for context only, "
+                f"don't quote captions; he didn't share them with you):"
             )
+            # Newest first per get_recent_analyst_trades; reverse so the trader
+            # reads them chronologically.
+            for r in reversed(rows):
+                ticker = r.get("ticker") or "?"
+                ct = (r.get("contract_type") or "").lower()
+                ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
+                strike = r.get("strike")
+                strike_str = (
+                    f"{int(strike) if strike == int(strike) else strike}"
+                    if strike is not None else "?"
+                )
+                expiry = r.get("expiry") or ""
+                exp_short = expiry[5:] if len(expiry) >= 10 else expiry  # MM-DD
+                action = (r.get("action") or "?").lower()
+                # Display rule (mirrors the live announce-line rule):
+                # opens/adds carry @price; closes/trims carry (±gain%).
+                # 0-values treated as missing (model sentinel, not real data).
+                gain = r.get("gain_pct")
+                price = r.get("price")
+                try:
+                    price_f = float(price) if price is not None else None
+                except (TypeError, ValueError):
+                    price_f = None
+                try:
+                    gain_f = float(gain) if gain is not None else None
+                except (TypeError, ValueError):
+                    gain_f = None
+                suffix_str = ""
+                if action in ("open", "add") and price_f and price_f != 0:
+                    suffix_str = f" @{price_f:.2f}"
+                elif action in ("close", "trim") and gain_f is not None and gain_f != 0:
+                    suffix_str = f" ({gain_f:+.1f}%)"
+                posted_at = (r.get("posted_at") or "")[:16].replace("T", " ")
 
-    # W/L tally — surface authoritative numbers so the bot doesn't have
-    # to recompute on every "what's his win rate?" question. Convention:
-    # expirations-without-close count as losses (callers rarely screenshot
-    # losers; they leak out as expired open/add rows tagged
-    # `expired_unknown`).
-    wl = compute_caller_win_loss_summary(
-        days=30, caller=caller, tracking_mode=tracking_mode,
-    )
-    if wl["decided"] > 0:
-        out_lines.append("")
-        out_lines.append(
-            f"{header_prefix}'S W/L TALLY (last {wl['days']}d — "
-            f"expirations-without-close counted as L):"
-        )
-        out_lines.append(
-            f"- **{wl['wins']}W / {wl['total_losses']}L** "
-            f"(documented: {wl['losses_documented']}L, "
-            f"silent expiry: {wl['losses_silent_expiry']}L)"
-        )
-        out_lines.append(
-            f"- Win rate: {wl['win_rate_pct']}% on {wl['decided']} decided trades"
-        )
-        if wl["avg_win_pct"] is not None:
-            out_lines.append(f"- Avg win: {wl['avg_win_pct']:+.1f}%")
-        if wl["avg_loss_pct"] is not None:
-            out_lines.append(f"- Avg documented loss: {wl['avg_loss_pct']:+.1f}%")
+                # Surface inferred-status tags so the bot doesn't claim phantom
+                # holdings or fabricate entries that aren't in the log.
+                status_tag = ""
+                status = r.get("inferred_status")
+                if status == "expired_unknown":
+                    if action in ("open", "add"):
+                        status_tag = " [expired — no close alert]"
+                    else:
+                        status_tag = " [expired]"
+                elif status == "close_without_open":
+                    status_tag = " [exit only — no logged entry]"
 
-        # Specific trade lists — so the bot doesn't fabricate which
-        # tickers were wins vs silent-expiry losses when asked for the
-        # breakdown. Each contract rendered as TICKER STRIKE(C/P) MM-DD.
-        def _fmt_contract(r: dict) -> str:
-            tk = r.get("ticker") or "?"
-            ct = (r.get("contract_type") or "").lower()
-            ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
-            strike = r.get("strike")
-            strike_str = (
-                f"{int(strike) if strike == int(strike) else strike}"
-                if strike is not None else "?"
-            )
-            expiry = r.get("expiry") or ""
-            exp_short = expiry[5:] if len(expiry) >= 10 else expiry
-            return f"{tk} {strike_str}{ct_suffix} {exp_short}"
+                out_lines.append(
+                    f"- {posted_at} — {action} {ticker} "
+                    f"{strike_str}{ct_suffix} {exp_short}{suffix_str}{status_tag}"
+                )
 
-        if wl.get("win_trades"):
-            out_lines.append("- Winning closes (specific contracts):")
-            for w in wl["win_trades"][:25]:
-                gain = w.get("gain_pct")
-                gain_str = f" ({gain:+.1f}%)" if gain is not None else ""
-                out_lines.append(f"  · {_fmt_contract(w)}{gain_str}")
-        if wl.get("silent_expiry_trades"):
+    # CURRENTLY OPEN POSITIONS block
+    if kind in ("all", "open"):
+        positions = get_current_analyst_positions(
+            caller=caller, tracking_mode=tracking_mode,
+        )
+        if positions:
+            if out_lines:
+                out_lines.append("")
             out_lines.append(
-                "- Silent-expiry losses (opens with no close, expired):"
+                f"{header_prefix}'S CURRENTLY OPEN POSITIONS "
+                f"(sorted by closest expiry first):"
             )
-            for s in wl["silent_expiry_trades"][:25]:
-                out_lines.append(f"  · {_fmt_contract(s)}")
+            for p in positions[:20]:
+                ticker = p.get("ticker") or "?"
+                ct = (p.get("contract_type") or "").lower()
+                ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
+                strike = p.get("strike")
+                strike_str = (
+                    f"{int(strike) if strike == int(strike) else strike}"
+                    if strike is not None else "?"
+                )
+                expiry = p.get("expiry") or ""
+                exp_short = expiry[5:] if len(expiry) >= 10 else expiry
+                # Display rule: open positions show @entry_price (the original
+                # open's price), NOT the last gain pill. Gain% is a closure
+                # signal — meaningless mid-flight on an open position.
+                # 0-values treated as missing.
+                entry_price = p.get("entry_price")
+                price_str = ""
+                try:
+                    ep_f = float(entry_price) if entry_price is not None else None
+                except (TypeError, ValueError):
+                    ep_f = None
+                if ep_f and ep_f != 0:
+                    price_str = f" @{ep_f:.2f}"
+                out_lines.append(
+                    f"- {ticker} {strike_str}{ct_suffix} {exp_short}{price_str}"
+                )
+
+    # W/L TALLY block
+    # Surface authoritative numbers so the bot doesn't have to recompute on
+    # every "what's his win rate?" question. Convention: expirations-without-
+    # close count as losses (callers rarely screenshot losers; they leak out
+    # as expired open/add rows tagged `expired_unknown`).
+    if kind in ("all", "tally"):
+        wl = compute_caller_win_loss_summary(
+            days=30, caller=caller, tracking_mode=tracking_mode,
+        )
+        if wl["decided"] > 0:
+            if out_lines:
+                out_lines.append("")
+            out_lines.append(
+                f"{header_prefix}'S W/L TALLY (last {wl['days']}d — "
+                f"expirations-without-close counted as L):"
+            )
+            out_lines.append(
+                f"- **{wl['wins']}W / {wl['total_losses']}L** "
+                f"(documented: {wl['losses_documented']}L, "
+                f"silent expiry: {wl['losses_silent_expiry']}L)"
+            )
+            out_lines.append(
+                f"- Win rate: {wl['win_rate_pct']}% on {wl['decided']} decided trades"
+            )
+            if wl["avg_win_pct"] is not None:
+                out_lines.append(f"- Avg win: {wl['avg_win_pct']:+.1f}%")
+            if wl["avg_loss_pct"] is not None:
+                out_lines.append(f"- Avg documented loss: {wl['avg_loss_pct']:+.1f}%")
+
+            # Specific trade lists — so the bot doesn't fabricate which
+            # tickers were wins vs silent-expiry losses when asked for the
+            # breakdown. Each contract rendered as TICKER STRIKE(C/P) MM-DD.
+            def _fmt_contract(r: dict) -> str:
+                tk = r.get("ticker") or "?"
+                ct = (r.get("contract_type") or "").lower()
+                ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
+                strike = r.get("strike")
+                strike_str = (
+                    f"{int(strike) if strike == int(strike) else strike}"
+                    if strike is not None else "?"
+                )
+                expiry = r.get("expiry") or ""
+                exp_short = expiry[5:] if len(expiry) >= 10 else expiry
+                return f"{tk} {strike_str}{ct_suffix} {exp_short}"
+
+            if wl.get("win_trades"):
+                out_lines.append("- Winning closes (specific contracts):")
+                for w in wl["win_trades"][:25]:
+                    gain = w.get("gain_pct")
+                    gain_str = f" ({gain:+.1f}%)" if gain is not None else ""
+                    out_lines.append(f"  · {_fmt_contract(w)}{gain_str}")
+            if wl.get("silent_expiry_trades"):
+                out_lines.append(
+                    "- Silent-expiry losses (opens with no close, expired):"
+                )
+                for s in wl["silent_expiry_trades"][:25]:
+                    out_lines.append(f"  · {_fmt_contract(s)}")
 
     return "\n".join(out_lines)
 
