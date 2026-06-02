@@ -135,7 +135,7 @@ Per-section quick reference, all following the universal rule:
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned.
-- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 14-day points ledger is decayed automatically — entries / closes from 15+ days ago stop scoring, only the last two weeks' commitments count. The final = `min(100, clip(chatter_base + honesty, 50) + receipt_points)`. If two weeks ago the user posted 8 entries that closed for wins (40 points), and now those have aged out and this period they posted 2 (10 points), the score drops accordingly. That's the decay mechanism working as designed.
+- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 7-day points ledger is decayed automatically — entries / closes from 8+ days ago stop scoring, only the last week's commitments count. The final = `clip(chatter_base + honesty, 50) + receipt_points` (no upper cap — top traders separate by receipts). If last week the user posted 8 entries that closed for wins (16 points under the new wins-only +2 policy), and now those have aged out and this period they posted 2 (4 points), the score drops accordingly. That's the decay mechanism working as designed.
 - **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter description / receipts described qualitatively), but the prose re-derives every time. Don't carry forward stale framings from a prior refresh. The rationale is QUALITATIVE — no numbers (no point counts, no score values, no win/loss counts). See the trader_rationale spec for the no-numbers rule.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly.
@@ -390,7 +390,7 @@ Output a single JSON object with exactly five fields, IN THIS ORDER:
 }}
 ```
 
-**You do NOT output a `trader_score`.** Python computes it deterministically downstream as `min(100, min(50, chatter_base) * activity_multiplier + receipt_points)`, where `activity_multiplier = min(1, msg_count / 500)` and `receipt_points` is the exact `TOTAL RECEIPT POINTS:` value from the 14-DAY POINTS LEDGER block — not anything you judge or infer. Your job is ONLY the chatter bracket call. The activity scaling AND receipt addition are arithmetic, and Python does them.
+**You do NOT output a `trader_score`.** Python computes it deterministically downstream as `min(50, chatter_base) * activity_multiplier + receipt_points` (no upper cap — top traders separate by receipts), where `activity_multiplier = min(1, msg_count / 500)` and `receipt_points` is the exact `TOTAL RECEIPT POINTS:` value from the 7-DAY POINTS LEDGER block — not anything you judge or infer. Your job is ONLY the chatter bracket call. The activity scaling AND receipt addition are arithmetic, and Python does them.
 
 **Why this matters**: an earlier version of the prompt asked Gemini for the final `trader_score`, which produced a hallucination class — model would read the chat, see chat-claimed trades NOT in the structured ledger ("closed BTC short +50%" etc.), invent 30-40 receipt points for them, and inflate the score by that amount. The new schema makes the failure structurally impossible — Gemini only outputs the chatter judgment; receipts are computed from the deterministic ledger.
 
@@ -481,7 +481,7 @@ If a section genuinely has no signal (user is a near-lurker with no slurs / no t
 Two layers, ADDED together. Chatter caps at 50 and is THEN multiplied by an activity-credibility factor (a 100-msg user gets 20% of their chatter; 500+ msgs gets full credit) — so a thin-history user can't surface above an active one on a sharp-sounding sample. Receipts are not scaled; they add on top with no cap of their own. The final still caps at 100, leaving plenty of room for receipts to fill above the chatter ceiling — that's the entire point of certifying through posts.
 
 ```
-final_score = min(100, min(50, chatter_base) * min(1, msg_count / 500) + receipt_points)
+final_score = min(50, chatter_base) * min(1, msg_count / 500) + receipt_points  # No upper cap — top traders separate by receipts
 ```
 
 **Layer 1 — Chatter base (0-50, calibrated from MESSAGES below).**
@@ -529,7 +529,7 @@ This is the single most important rule on the receipts layer. The `TOTAL RECEIPT
 
 If you find yourself wanting to inflate receipt points above the ledger total because "the chat clearly shows trades that aren't in the ledger," STOP. The ledger value stands. Lower the chatter base if you must to reflect the trader's true skill — but receipts are the ledger total, full stop.
 
-**Final score = min(100, scaled_chatter + receipt_points)** — where `scaled_chatter` is your `chatter_base` (clipped to 50) MULTIPLIED by an activity factor `min(1, msg_count / 500)`. Python applies the activity factor downstream after you pick the chatter bracket — you don't compute it. Your job stays the bracket call on the chat that's actually visible to you.
+**Final score = scaled_chatter + receipt_points** (no upper cap — top traders separate by receipts) — where `scaled_chatter` is your `chatter_base` (clipped to 50) MULTIPLIED by an activity factor `min(1, msg_count / 500)`. Python applies the activity factor downstream after you pick the chatter bracket — you don't compute it. Your job stays the bracket call on the chat that's actually visible to you.
 
 Four populations the additive rubric reads correctly:
 
@@ -821,7 +821,7 @@ def _format_points_block(user_id: int) -> str:
     Older rows stay in the DB but stop scoring. Receipts add directly
     to the chatter base.
 
-    Final = min(100, clip(chatter_base + honesty, 50) + receipt_points)
+    Final = clip(chatter_base + honesty, 50) + receipt_points  # no upper cap
     """
     ledger = db.compute_member_points(int(user_id), days=14)
     is_caller = bool(ledger.get("is_official_caller"))
@@ -877,7 +877,7 @@ def _format_points_block(user_id: int) -> str:
         f" screenshot (no entry) = +2; losing screenshot = +1.)",
         f"",
         f"(Receipt points add ON TOP of the chatter base. Final ="
-        f" min(100, clip(chatter_base + honesty, 50) + receipt_points)."
+        f" clip(chatter_base + honesty, 50) + receipt_points (no upper cap)."
         f" Chatter base caps at 50 — receipts are the only path past 50,"
         f" and receipt points have no internal cap of their own. A heavy"
         f" poster CAN exceed 50 from receipts alone if they post enough.)",
@@ -1165,7 +1165,7 @@ async def _generate_profile(
         decode error so we can see what came back.
 
         Caller responsibility: compute final trader_score as
-        min(100, scaled_chatter + receipt_points), where
+        scaled_chatter + receipt_points (no upper cap), where
         scaled_chatter = clip(chatter_base, 50) * min(1, msgs/500)
         and receipt_points is from db.compute_member_points(). The
         activity multiplier discounts chatter for thin-history
@@ -1309,7 +1309,7 @@ async def _generate_profile(
             # chatter_base replaces the old trader_score field. Gemini
             # outputs only its qualitative chat-pattern judgment
             # (0-50); Python computes the final trader_score as
-            # min(100, min(50, chatter_base) + receipt_points)
+            # min(50, chatter_base) + receipt_points  # no upper cap
             # downstream. The honesty modifier (a separate ±10 field
             # in a prior schema) was folded into the chatter bracket
             # placement — bag-holder / average / sharp brackets bake
@@ -1871,7 +1871,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # 1467-msg user on a thin Gemini read. Receipts
                         # stay un-scaled — they're objective trade
                         # signal that the activity floor doesn't apply
-                        # to. Final score = min(100, scaled_chatter +
+                        # to. Final score = scaled_chatter +  # no upper cap
                         # receipt_pts) with scaled_chatter =
                         # clip(chatter_base, 50) * min(1, msgs/500).
                         if chatter_base is not None:
@@ -1886,7 +1886,12 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                 len(msgs) / TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS,
                             )
                             _scaled_chatter = round(_clipped_chatter * _activity_mult)
-                            trader_score = max(0, min(100, _scaled_chatter + _receipt_pts))
+                            # 2026-06-02 policy: no upper bound on trader_score.
+                            # Removed min(100, ...) so top traders separate from
+                            # each other rather than all pinning to 100. Scaled
+                            # chatter caps at 50; receipts (wins * 2 per the
+                            # ledger overhaul) are unbounded above.
+                            trader_score = max(0, _scaled_chatter + _receipt_pts)
                         else:
                             trader_score = None
                         # Activity multiplier on racism too (added
@@ -2225,8 +2230,10 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                 # receipt component.
                 prior_trader = prior.get("trader_score")
                 prior_humor = prior.get("racial_humor_score")
+                # 2026-06-02 policy: no upper cap on trader_score. Dormant
+                # rescore preserves whatever receipts remain in window.
                 rescored_trader = (
-                    max(0, min(100, _receipt_d))
+                    max(0, _receipt_d)
                     if prior_trader is not None else None
                 )
                 rescored_humor = (
