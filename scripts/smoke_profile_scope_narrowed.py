@@ -70,9 +70,23 @@ def test_mentioned_ids_still_extracted():
     _ok("find_users_mentioned_in_text(question) still called (for subject-verbatim)")
 
 
+def test_analyst_block_not_assembled():
+    """_answer_with_gemini should no longer build the analyst_block."""
+    src = inspect.getsource(bot_mod._answer_with_gemini)
+    assert "analyst_blocks: list[str] = []" not in src, (
+        "_answer_with_gemini still builds analyst_blocks - should be removed"
+    )
+    # sections.append should not include analyst_block
+    assert "sections.append(analyst_block)" not in src, (
+        "_answer_with_gemini still appends analyst_block to sections"
+    )
+    _ok("_answer_with_gemini no longer assembles analyst_block")
+
+
 if __name__ == "__main__":
     print("=== profile-scope-narrowed static smoke ===")
     test_slash_path_no_name_mention_in_profile_ids()
     test_reply_parent_name_scan_no_longer_mutates_profile_ids()
     test_mentioned_ids_still_extracted()
+    test_analyst_block_not_assembled()
     print("\nALL PROFILE-SCOPE SMOKE TESTS PASS")

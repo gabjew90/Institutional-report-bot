@@ -5,8 +5,9 @@ Can't run the full _answer_with_gemini end-to-end (needs Gemini key
 
   1. Static: the retry branch is wired in _answer_with_gemini
   2. Static: the retry rebuilds user_content WITHOUT profiles_block
-     but keeps analyst_block, fetched_urls, chat_context, separator,
-     question
+     but keeps fetched_urls, chat_context, separator, question
+     (analyst_block was dropped from the prompt entirely in Task 9 —
+     the lookup_trade_log tool replaces it on demand)
   3. Static: the retry refreshes grounding_metadata
   4. Static: the retry runs _clean_voice_violations on the new answer
   5. Static: the fallback message is still emitted when retry fails
@@ -50,8 +51,10 @@ def test_stripped_content_excludes_profiles():
     assert retry_start > 0, "couldn't find stripped_sections build"
     # Cover full retry branch (~4500 chars after anchor)
     window = src[retry_start:retry_start + 4500]
-    assert "stripped_sections.append(analyst_block)" in window, (
-        "retry must include analyst_block"
+    # analyst_block was DROPPED from the prompt in Task 9 — lookup_trade_log
+    # replaces it as a tool call. Assert it's NOT in the retry path either.
+    assert "stripped_sections.append(analyst_block)" not in window, (
+        "retry must NOT include analyst_block — it's been dropped from the prompt"
     )
     assert "stripped_sections.append(fetched_urls)" in window, (
         "retry must include fetched_urls"

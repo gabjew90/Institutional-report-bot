@@ -2481,35 +2481,16 @@ async def _answer_with_gemini(
         except Exception as e:
             log.warning(f"User-profile fetch failed (non-fatal): {e}")
 
-        # Multi-caller analyst context — emit one separated block per
-        # configured caller so /ask sees hard-separated trade logs (no
-        # bleeding of one caller's positions into questions about
-        # another caller). Empty registry = no analyst context.
-        analyst_blocks: list[str] = []
-        try:
-            for c in settings.resolve_analyst_callers():
-                try:
-                    block = db.format_analyst_trades_for_context(
-                        hours=168,
-                        caller=c["name"],
-                        display=c["display"],
-                    )
-                    if block:
-                        analyst_blocks.append(block)
-                except Exception as e:
-                    log.warning(
-                        f"Analyst log fetch failed for caller={c.get('name')!r} "
-                        f"(non-fatal): {e}"
-                    )
-        except Exception as e:
-            log.warning(f"Analyst caller registry resolve failed (non-fatal): {e}")
-        analyst_block = "\n\n".join(analyst_blocks)
+        # Analyst trade context is no longer auto-injected (was: a
+        # multi-caller block from format_analyst_trades_for_context for
+        # each configured caller). The model now fetches it on demand
+        # via the lookup_trade_log tool when a question references
+        # trades. Save ~8-12 KB of prompt per call on questions that
+        # don't touch caller trades (most of them).
 
         sections: list[str] = []
         if profiles_block:
             sections.append(profiles_block)
-        if analyst_block:
-            sections.append(analyst_block)
         if fetched_urls:
             sections.append(fetched_urls)
         if chat_context:
@@ -2907,8 +2888,9 @@ async def _answer_with_gemini(
                 if profiles_block and (prompt_block or safety_blocked):
                     try:
                         stripped_sections: list[str] = []
-                        if analyst_block:
-                            stripped_sections.append(analyst_block)
+                        # analyst_block was dropped from auto-injection
+                        # in Task 9 (lookup_trade_log replaces it); the
+                        # retry path no longer includes it either.
                         if fetched_urls:
                             stripped_sections.append(fetched_urls)
                         if chat_context:
