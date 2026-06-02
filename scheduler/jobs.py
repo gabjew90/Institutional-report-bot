@@ -325,6 +325,20 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             f"(retention {settings.analyst_trade_retention_days}d)"
         )
 
+    # /ask QC sub-agent — daily 03:00 ET grader. Reads yesterday's
+    # /ask log, runs Gemini judge over each interaction, publishes
+    # report to pulse-data:ask-qc/. Independent of github_token — we
+    # still write locally for inspection even without a push target.
+    # See ask_qc/ + docs/superpowers/specs/2026-06-02-ask-qc-subagent-design.md.
+    scheduler.add_job(
+        _ask_qc_job,
+        trigger=CronTrigger(hour=3, minute=0, timezone=tz),
+        id="ask_qc",
+        name="/ask QC: grade yesterday's interactions",
+        max_instances=1,
+        misfire_grace_time=3600,
+    )
+
     log.info(
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
@@ -557,6 +571,114 @@ async def _bridge_fallback_sweeper_job():
         await fallback_sweeper_job()
     except Exception as e:
         log.error(f"Bridge fallback sweeper failed: {e}", exc_info=True)
+
+
+async def _ask_qc_job():
+    """Daily 03:00 ET - grade yesterday's /ask interactions.
+
+    Reads /data/ask-logs/{yesterday-UTC}.md, runs the Gemini judge
+    over every interaction, renders a markdown report, writes it
+    locally to /data/ask-qc/{date}.md, pushes to pulse-data:ask-qc/.
+
+    Graceful degradation:
+      - Missing log file -> log + exit
+      - Empty log file (0 interactions) -> write stub locally,
+        skip GitHub push
+      - Gemini failures per interaction -> UNGRADED in report
+      - GitHub push failure -> log WARNING, don't raise (local
+        file is source of truth)
+
+    Records a pipeline_events row on completion with the daily stats."""
+    from pathlib import Path
+    from datetime import datetime, timezone, timedelta
+    from config import settings as _settings
+    import db as _db
+
+    try:
+        # Yesterday UTC - the day whose log file is now closed
+        now = datetime.now(timezone.utc)
+        date = (now - timedelta(days=1)).strftime("%Y-%m-%d")
+
+        base_dir = Path(_settings.pdf_download_dir).resolve().parent
+        log_dir = base_dir / "ask-logs"
+        qc_dir = base_dir / "ask-qc"
+        qc_dir.mkdir(parents=True, exist_ok=True)
+
+        log_path = log_dir / f"{date}.md"
+        if not log_path.exists():
+            log.info(f"ask-qc: no log for {date}, nothing to grade")
+            return
+
+        from ask_qc.parser import parse_ask_log
+        from ask_qc.grader import grade_day
+        from ask_qc.aggregator import render_report
+
+        text = log_path.read_text(encoding="utf-8")
+        interactions = parse_ask_log(text)
+        log.info(f"ask-qc: grading {date} ({len(interactions)} interactions)")
+
+        if not interactions:
+            report = render_report(date, [])
+            (qc_dir / f"{date}.md").write_text(report, encoding="utf-8")
+            log.info(f"ask-qc: 0 interactions on {date}, wrote stub, skipping push")
+            _db.record_pipeline_event(
+                "ask_qc", "completed",
+                {"date": date, "interactions_total": 0,
+                 "interactions_graded": 0, "interactions_ungraded": 0,
+                 "github_pushed": False},
+            )
+            return
+
+        graded = await grade_day(interactions, sem_size=3)
+        report = render_report(date, graded)
+        (qc_dir / f"{date}.md").write_text(report, encoding="utf-8")
+
+        # Push to pulse-data:ask-qc/. Best-effort; local file is source of truth.
+        pushed = False
+        if _settings.github_token:
+            try:
+                from github_bridge import client as gh_client
+                gh_client.put_file(
+                    path=f"ask-qc/{date}.md",
+                    content=report,
+                    message=f"ask-qc: snapshot {date}",
+                )
+                pushed = True
+            except Exception as e:
+                log.warning(f"ask-qc: GitHub push failed for {date}: {e}")
+
+        # Verdict tallies for the pipeline_event row
+        from collections import Counter
+        counts = Counter(g.overall_verdict for g in graded)
+        ungraded = counts.get("UNGRADED", 0)
+        _db.record_pipeline_event(
+            "ask_qc", "partial" if ungraded > 0 else "completed",
+            {
+                "date": date,
+                "interactions_total": len(interactions),
+                "interactions_graded": len(graded) - ungraded,
+                "interactions_ungraded": ungraded,
+                "clean": counts.get("CLEAN", 0),
+                "concern": counts.get("CONCERN", 0),
+                "fail": counts.get("FAIL", 0),
+                "github_pushed": pushed,
+            },
+        )
+        log.info(
+            f"ask-qc: done {date} - {counts.get('CLEAN', 0)}/"
+            f"{counts.get('CONCERN', 0)}/{counts.get('FAIL', 0)}/"
+            f"{ungraded} (clean/concern/fail/ungraded), "
+            f"pushed={pushed}"
+        )
+    except Exception as e:
+        log.error(f"ask-qc job failed: {e}", exc_info=True)
+        try:
+            _db.record_pipeline_event(
+                "ask_qc", "failed",
+                {"error": f"{type(e).__name__}: {e}"},
+            )
+        except Exception:
+            pass
 
 
 async def _ask_log_publish_job():
