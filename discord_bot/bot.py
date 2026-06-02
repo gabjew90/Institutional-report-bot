@@ -3896,9 +3896,12 @@ def create_bot() -> commands.Bot:
                 mentioned_ids = db.find_users_mentioned_in_text(question)
             except Exception as e:
                 log.warning(f"Name-mention lookup failed: {e}")
-            profile_ids = list(set(
-                ([user_id] if user_id else []) + mentioned_ids
-            ))
+            # Profile auto-load scope: asker only at the slash command
+            # entry. Discord @-mentions and reply/forward authors aren't
+            # available on this code path; literal-name-match users go
+            # through the lookup_user_profile tool call instead.
+            # mentioned_ids is still used below for subject-verbatim.
+            profile_ids = list(set([user_id] if user_id else []))
             asker = interaction.user
             # Resolve raw <@USER_ID> mentions in the question to readable
             # @DisplayName (username) so Gemini can connect them to the
@@ -4022,8 +4025,15 @@ def create_bot() -> commands.Bot:
                             mentioned_ids.append(u.id)
                 except Exception as e:
                     log.warning(f"Name-mention lookup failed: {e}")
+                # Profile auto-load scope: asker + Discord first-class
+                # @-mentions + reply/forward author (the latter is added
+                # below when ref_uid is resolved). Literal name matches
+                # in question text or reply-parent text no longer trigger
+                # profile load — those go through lookup_user_profile.
+                # mentioned_ids is still used for subject-verbatim.
                 profile_ids = list(set(
-                    [message.author.id] + mentioned_ids
+                    [message.author.id]
+                    + [u.id for u in (message.mentions or []) if not u.bot]
                 ))
 
                 # Inject the asker's recent verbatim messages from
@@ -4076,17 +4086,14 @@ def create_bot() -> commands.Bot:
                 if ref_uid and ref_uid != message.author.id:
                     profile_ids = list(set(profile_ids + [ref_uid]))
 
-                # FIX A: Subject-detection from reply-parent content.
+                # Subject-detection from reply-parent content.
                 # When the asker replies to a previous message that names
-                # someone (e.g., kloh replies to a bot answer about ZHawk
-                # with "review the fitness channel for his splits"), the
-                # name-mention is in the PARENT'S TEXT, not the asker's
-                # question. Without this, the subject-verbatim block
-                # wouldn't fire for ZHawk because mention-detection only
-                # scanned the asker's literal question. Now we also scan
-                # ref_content and merge any names found there into both
-                # mentioned_ids (for subject-verbatim) and profile_ids
-                # (for WHO'S TALKING).
+                # someone, name-mentions in the parent's text still inform
+                # mentioned_ids (for subject-verbatim quoting). Under the
+                # narrowed-scope design (2026-06-01), reply-parent name
+                # matches no longer auto-load profiles — that goes through
+                # lookup_user_profile tool calls. The reply-parent's AUTHOR
+                # still triggers profile load below (ref_uid handling).
                 if ref_content:
                     try:
                         ref_mentioned = db.find_users_mentioned_in_text(
@@ -4098,7 +4105,6 @@ def create_bot() -> commands.Bot:
                             ):
                                 if uid not in mentioned_ids:
                                     mentioned_ids.append(uid)
-                                profile_ids = list(set(profile_ids + [uid]))
                     except Exception as e:
                         log.warning(
                             f"Reply-parent name-mention lookup failed: {e}"
