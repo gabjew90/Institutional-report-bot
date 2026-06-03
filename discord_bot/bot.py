@@ -2150,16 +2150,30 @@ def _build_market_price_tool():
             types.FunctionDeclaration(
                 name="lookup_market_price",
                 description=(
-                    "Get live prices for stocks / ETFs / indices "
-                    "(via Finnhub) and crypto (via Binance.US). Pass "
-                    "a list of symbols. Response includes per-symbol "
+                    "Get prices for stocks / ETFs / indices (via "
+                    "Finnhub) and crypto (via Binance.US). Pass a "
+                    "list of symbols. Response includes per-symbol "
                     "price, change_pct, source, plus a session label "
                     "('OPEN' | 'PRE-MARKET' | 'AFTER-HOURS' | "
-                    "'WEEKEND-CLOSED') so you phrase the move "
-                    "correctly. Crypto trades 24/7 — its move is "
-                    "always today's. Cap of 10 symbols per call. "
-                    "Use for 'what's TSLA at', 'how's BTC doing', "
-                    "'is SPY green today'."
+                    "'WEEKEND-CLOSED').\n\n"
+                    "IMPORTANT — read `stock_quote_data_caveat` on the "
+                    "response. Finnhub /quote does NOT return live "
+                    "extended-hours prints. So on AFTER-HOURS / "
+                    "PRE-MARKET / WEEKEND-CLOSED, the STOCK price field "
+                    "is the most recent regular-session close, NOT the "
+                    "live AH/PRE/weekend price. If the asker explicitly "
+                    "wants extended-hours movement (e.g. on an earnings "
+                    "name that reported AMC, like GTLB / NVDA / MSFT / "
+                    "PANW post-print), tell them the AH/PRE print isn't "
+                    "in your data feed and quote the cash close as a "
+                    "reference. Do NOT phrase a stock price as "
+                    "'after-hours at $X' when session=AFTER-HOURS — "
+                    "it's the 4 PM close.\n\n"
+                    "Crypto IS live 24/7 regardless of session - "
+                    "phrase BTC/ETH normally.\n\n"
+                    "Cap of 10 symbols per call. Use for 'what's TSLA "
+                    "at', 'how's BTC doing', 'is SPY green today', "
+                    "'GTLB after earnings'."
                 ),
                 parameters=types.Schema(
                     type=types.Type.OBJECT,
@@ -2200,13 +2214,53 @@ async def _execute_market_price(args: dict) -> dict:
         symbols = symbols[:10]
         truncated_to = 10
 
-    # Session label from existing market_data helper.
+    # Session label from existing market_data helper. The helper returns
+    # BOTH a short code AND an explanatory note — previously we threw the
+    # note away (`_note`) and only kept the code. That meant Gemini saw
+    # session=AFTER-HOURS + a price but no warning that the Finnhub /quote
+    # response on AH/PRE is the regular-session CLOSE, not a live extended-
+    # hours print. Wock asked about TSLA/GTLB after-hours on 2026-06-02
+    # and got the 4 PM close quoted as if it were the live AH print. The
+    # note now flows through to the tool response + an AH/PRE-specific
+    # data-quality warning gets appended so the model phrases correctly.
     et = pytz.timezone("America/New_York")
     now_et = datetime.utcnow().replace(tzinfo=pytz.UTC).astimezone(et)
     try:
-        session_code, _note = _md._session_label(now_et)
+        session_code, session_note = _md._session_label(now_et)
     except Exception:
         session_code = "UNKNOWN"
+        session_note = ""
+
+    # Stock-quote data-quality caveat for sessions where Finnhub /quote
+    # does NOT return live extended-hours data. The price field for a
+    # stock on AFTER-HOURS / PRE-MARKET / WEEKEND-CLOSED is the most
+    # recent REGULAR-session close, not the live extended-hours print.
+    # Crypto via Binance.US is always live so this caveat doesn't apply
+    # to it — the model should still phrase BTC/ETH as 'right now'.
+    quote_data_caveat = ""
+    if session_code == "AFTER-HOURS":
+        quote_data_caveat = (
+            "STOCK PRICES BELOW = today's regular-session CLOSE (4 PM ET). "
+            "Finnhub /quote does NOT return live after-hours prints. If the "
+            "asker explicitly wants after-hours movement (e.g. on an earnings "
+            "name like GTLB / NVDA / MSFT that reported AMC), tell them the "
+            "AH print is not in your data feed and quote the cash close as "
+            "a reference point. Don't phrase the price as 'after-hours at $X' "
+            "— it's the 4 PM close. Crypto prices ARE live."
+        )
+    elif session_code == "PRE-MARKET":
+        quote_data_caveat = (
+            "STOCK PRICES BELOW = YESTERDAY'S regular-session close. Finnhub "
+            "/quote does NOT return live pre-market prints. Phrase as "
+            "'yesterday's close' not 'pre-market price at $X'. Crypto prices "
+            "ARE live."
+        )
+    elif session_code == "WEEKEND-CLOSED":
+        quote_data_caveat = (
+            "STOCK PRICES BELOW = FRIDAY'S regular-session close. Markets "
+            "are closed for the weekend. Crypto prices ARE live."
+        )
+
     timestamp = now_et.strftime("%Y-%m-%d %H:%M %Z")
 
     quotes: list[dict] = []
@@ -2246,6 +2300,8 @@ async def _execute_market_price(args: dict) -> dict:
 
     result = {
         "session": session_code,
+        "session_note": session_note,
+        "stock_quote_data_caveat": quote_data_caveat or None,
         "timestamp": timestamp,
         "quotes": quotes,
     }
