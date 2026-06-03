@@ -1,17 +1,12 @@
-"""Smoke test for the two Type 3 rules added 2026-06-03:
+"""Smoke test for the Type 3 anti-recycling rule added 2026-06-03.
 
-  1. HARD DE-ESCALATION FLOOR for self-harm language — overrides
-     Type 3 entirely. Triggered by BK threatening self-harm in a
-     2026-06-03 00:14 UTC clapback chain and the bot calling it
-     'pathetic escalation' and continuing to roast.
+Fix for the 2026-06-03 00:00-00:15 UTC failure where 9 sequential BK
+clapbacks reused the same '12% refi' / 'speedrunning homelessness' /
+'nasal semax' / 'Cisco CEO's daughter' material across all 9 answers.
 
-  2. Anti-recycling across sustained clapbacks — fix for the
-     2026-06-03 00:00-00:15 UTC failure where 9 sequential BK
-     clapbacks reused the same '12% refi' / 'speedrunning homelessness'
-     / 'nasal semax' / 'Cisco CEO's daughter' material.
-
-Locks both rules in place + the concrete failure references so future
-edits don't strip them.
+(The self-harm de-escalation floor that was shipped in commit f2933f9
+was reverted per user direction. This smoke covers only the
+anti-recycling rule that remains.)
 """
 
 import sys
@@ -24,72 +19,6 @@ def _ok(msg):
 def _fail(msg):
     print(f"FAIL {msg}")
     sys.exit(1)
-
-
-def test_self_harm_floor_is_present_and_above_type3():
-    """The hard floor must appear INSIDE the Type 3 section and
-    be flagged as overriding everything below. Critical placement
-    so the model reads it before processing any Type 3 logic."""
-    import discord_bot.bot as bot_mod
-    ins = bot_mod._ASK_SYSTEM_INSTRUCTION
-    type3_start = ins.find("### TYPE 3")
-    assert type3_start != -1, "TYPE 3 section missing"
-    type3_end = ins.find("---", type3_start)
-    type3_body = ins[type3_start:type3_end]
-    assert "HARD DE-ESCALATION FLOOR" in type3_body, (
-        "self-harm floor missing from Type 3 section header"
-    )
-    assert "OVERRIDES EVERYTHING" in type3_body or "overrides everything" in type3_body, (
-        "self-harm floor not flagged as overriding everything below"
-    )
-    _ok("self-harm HARD DE-ESCALATION FLOOR present + flagged as override")
-
-
-def test_self_harm_triggers_listed_explicitly():
-    """Rule must name the specific language that triggers — model
-    can't guess vague descriptions."""
-    import discord_bot.bot as bot_mod
-    ins = bot_mod._ASK_SYSTEM_INSTRUCTION
-    triggers = ["kill myself", "end it", "want to die", "jump off"]
-    missing = [t for t in triggers if t not in ins.lower()]
-    assert not missing, f"self-harm triggers not enumerated: {missing}"
-    _ok("self-harm rule enumerates specific trigger language")
-
-
-def test_self_harm_carveouts_for_trader_lingo():
-    """Rule must distinguish self-harm from trading hyperbole like
-    'this is killing me' or 'blow up the account'. Without this
-    carve-out the bot will over-trigger on normal market frustration."""
-    import discord_bot.bot as bot_mod
-    ins = bot_mod._ASK_SYSTEM_INSTRUCTION
-    assert "killing me" in ins.lower(), (
-        "trader-hyperbole carveout missing: 'this is killing me'"
-    )
-    assert "blow up" in ins.lower(), (
-        "trader-hyperbole carveout missing: 'blow up [account]'"
-    )
-    assert "trading metaphor" in ins.lower() or "trading hyperbole" in ins.lower(), (
-        "rule should explicitly call out trading metaphor as not a trigger"
-    )
-    _ok("self-harm rule carves out trader hyperbole ('killing me', 'blow up')")
-
-
-def test_self_harm_response_shape_specified():
-    """Rule must specify what the bot SHOULD do — drop roast, brief
-    acknowledgment, gentle suggestion, end engagement. Without this
-    the model improvises and may still roast or moralize."""
-    import discord_bot.bot as bot_mod
-    ins = bot_mod._ASK_SYSTEM_INSTRUCTION
-    text = ins.lower()
-    assert "drop the roast" in text, "rule should say 'drop the roast register'"
-    assert "moralize" in text, "rule should say 'don't moralize'"
-    assert "step away" in text or "talk to someone" in text, (
-        "rule should suggest stepping away / talking to someone trusted"
-    )
-    assert "type 3 is" in text and "dead" in text or "dead for the rest" in text, (
-        "rule should explicitly say Type 3 is dead for the rest of the conversation"
-    )
-    _ok("self-harm response shape: drop roast + brief + gentle + end engagement")
 
 
 def test_anti_recycling_across_clapbacks_present():
@@ -143,31 +72,36 @@ def test_disengage_option_named():
 def test_anti_recycling_points_to_search_chat_messages():
     """When the profile is tapped, the rule must point to
     search_chat_messages — same direction as the per-asker
-    catchphrase rule for non-Type-3 cases.
-
-    Type 3 has TWO --- separators: one after the self-harm floor and
-    one ending the whole section. We want the body BETWEEN those, so
-    skip the first --- when looking for the section end."""
+    catchphrase rule for non-Type-3 cases."""
     import discord_bot.bot as bot_mod
     ins = bot_mod._ASK_SYSTEM_INSTRUCTION
+    # Scope to the Type 3 section
     type3_start = ins.find("### TYPE 3")
-    first_sep = ins.find("---", type3_start + 100)
-    second_sep = ins.find("---", first_sep + 5) if first_sep != -1 else -1
-    body = ins[type3_start:second_sep] if second_sep != -1 else ins[type3_start:]
+    type3_end = ins.find("---", type3_start + 100)
+    body = ins[type3_start:type3_end] if type3_end != -1 else ins[type3_start:]
     assert "search_chat_messages" in body, (
         "anti-recycling rule in Type 3 should also point to search_chat_messages"
     )
     _ok("Type 3 anti-recycling rule points to search_chat_messages for fresh material")
 
 
+def test_self_harm_floor_was_reverted():
+    """Sanity check: the self-harm de-escalation floor that was added
+    in commit f2933f9 was reverted per user direction. Confirm it's
+    NOT in the system instruction."""
+    import discord_bot.bot as bot_mod
+    ins = bot_mod._ASK_SYSTEM_INSTRUCTION
+    assert "HARD DE-ESCALATION FLOOR" not in ins, (
+        "self-harm floor should have been reverted but is still present"
+    )
+    _ok("self-harm floor reverted (per user direction)")
+
+
 if __name__ == "__main__":
-    print("=== Type 3 self-harm + anti-recycling smoke ===")
-    test_self_harm_floor_is_present_and_above_type3()
-    test_self_harm_triggers_listed_explicitly()
-    test_self_harm_carveouts_for_trader_lingo()
-    test_self_harm_response_shape_specified()
+    print("=== Type 3 anti-recycling smoke ===")
     test_anti_recycling_across_clapbacks_present()
     test_clapback_ceiling_specified()
     test_disengage_option_named()
     test_anti_recycling_points_to_search_chat_messages()
-    print("\nALL TYPE 3 SELF-HARM + ANTI-RECYCLING SMOKE TESTS PASS")
+    test_self_harm_floor_was_reverted()
+    print("\nALL TYPE 3 ANTI-RECYCLING SMOKE TESTS PASS")
