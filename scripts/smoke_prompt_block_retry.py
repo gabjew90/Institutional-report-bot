@@ -28,28 +28,36 @@ def _fail(msg):
 
 
 def test_retry_branch_wired():
+    """2026-06-03: the retry path was changed from 'strip ALL profile'
+    to 'strip Voice subsections only' after empirical reproduction of
+    the Ry_bry/Dovahjo AVGO trip showed chat alone trips the filter
+    too. The success-log marker is preserved (renamed slightly)."""
     from discord_bot import bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
-    assert "retrying once without profiles" in src, (
-        "expected 'retrying once without profiles' in _answer_with_gemini"
+    assert "retrying once with Voice sections" in src or "Voice sections stripped" in src, (
+        "expected new 'Voice sections stripped' retry log line in _answer_with_gemini"
     )
-    assert "profiles-stripped retry succeeded" in src, (
+    assert "_strip_voice_sections" in src, (
+        "retry path must call _strip_voice_sections helper"
+    )
+    assert "retry succeeded" in src, (
         "expected success log line in _answer_with_gemini"
     )
-    _ok("static: profiles-strip retry branch wired in _answer_with_gemini")
+    _ok("static: Voice-strip retry branch wired in _answer_with_gemini")
 
 
-def test_stripped_content_excludes_profiles():
+def test_stripped_content_keeps_voice_stripped_profile():
+    """The retry builds stripped_sections from voice_stripped profile +
+    fetched_urls + chat_context + separator+question. Previously this
+    test asserted the full profile was dropped; we now keep it
+    Voice-stripped because chat alone trips the filter."""
     from discord_bot import bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
-    # The retry builds stripped_sections from analyst_block, fetched_urls,
-    # chat_context, separator+question — but NOT profiles_block.
-    # Find the retry block and confirm.
-    # The log line "retrying once without profiles" is AFTER the
-    # stripped_sections build, so anchor on the earlier marker.
-    retry_start = src.find("stripped_sections: list[str] = []")
-    assert retry_start > 0, "couldn't find stripped_sections build"
-    # Cover full retry branch (~4500 chars after anchor)
+    retry_start = src.find("stripped_sections: list[str] = [voice_stripped]")
+    assert retry_start > 0, (
+        "couldn't find new stripped_sections build (expected to be "
+        "initialized with [voice_stripped])"
+    )
     window = src[retry_start:retry_start + 4500]
     # analyst_block was DROPPED from the prompt in Task 9 — lookup_trade_log
     # replaces it as a tool call. Assert it's NOT in the retry path either.
@@ -60,26 +68,26 @@ def test_stripped_content_excludes_profiles():
         "retry must include fetched_urls"
     )
     assert "stripped_sections.append(chat_context)" in window, (
-        "retry must include chat_context"
+        "retry must include chat_context (NOT dropped — the 2026-06-03 "
+        "Ry_bry/Dovahjo trip showed chat is needed for context)"
     )
     assert "{separator}\\n{question}" in window, (
         "retry must include separator+question"
     )
-    # And must NOT include profiles_block in stripped_sections
+    # And the original profiles_block must NOT be re-appended raw
     assert "stripped_sections.append(profiles_block)" not in window, (
-        "retry must NOT include profiles_block in stripped_sections "
-        "(that's the point of stripping)"
+        "retry must NOT include the unstripped profiles_block"
     )
     _ok(
-        "static: retry rebuilds user_content with analyst+urls+chat+"
-        "question, NOT profiles_block"
+        "static: retry rebuilds user_content with voice_stripped profile + "
+        "urls + chat + question (NOT the raw profiles_block)"
     )
 
 
 def test_grounding_metadata_refreshed():
     from discord_bot import bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
-    retry_start = src.find("stripped_sections: list[str] = []")
+    retry_start = src.find("stripped_sections: list[str] = [voice_stripped]")
     window = src[retry_start:retry_start + 4500]
     assert (
         "grounding_metadata = (" in window
@@ -91,7 +99,7 @@ def test_grounding_metadata_refreshed():
 def test_clean_voice_violations_on_recovery():
     from discord_bot import bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
-    retry_start = src.find("stripped_sections: list[str] = []")
+    retry_start = src.find("stripped_sections: list[str] = [voice_stripped]")
     window = src[retry_start:retry_start + 4500]
     assert "_clean_voice_violations(" in window, (
         "retry must run _clean_voice_violations on the recovery answer"
@@ -122,7 +130,7 @@ def test_retry_only_when_profiles_present():
     # strip — otherwise we'd burn a Gemini call to retry with the
     # IDENTICAL prompt the model just blocked. The guard is the if-stmt
     # that wraps stripped_sections build, so anchor on the build.
-    retry_start = src.find("stripped_sections: list[str] = []")
+    retry_start = src.find("stripped_sections: list[str] = [voice_stripped]")
     pre = src[max(0, retry_start - 800):retry_start]
     assert "if profiles_block and" in pre, (
         "retry must be gated by `if profiles_block` so we don't burn "
@@ -134,7 +142,7 @@ def test_retry_only_when_profiles_present():
 if __name__ == "__main__":
     print("=== /ask prompt-block profiles-strip retry smoke ===")
     test_retry_branch_wired()
-    test_stripped_content_excludes_profiles()
+    test_stripped_content_keeps_voice_stripped_profile()
     test_grounding_metadata_refreshed()
     test_clean_voice_violations_on_recovery()
     test_fallback_still_present()

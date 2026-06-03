@@ -2682,6 +2682,43 @@ _REP_STOPWORDS = frozenset({
 })
 
 
+def _strip_voice_sections(profiles_block: str) -> str:
+    """Remove `**Voice.**` bullet sections from every profile in the
+    profiles_block while keeping the rest of each profile intact.
+
+    Used by the filter-blocked retry path. Empirical testing
+    (2026-06-03 19:49 UTC reproduction) showed that the Voice section
+    is the highest-density slur container in any given profile (it
+    quotes the user's chat verbatim, slurs included) and dropping
+    only that one subsection drops the prompt below Gemini's
+    unconfigurable filter threshold while leaving the analytical
+    framing (rationale, Personality and style, Retarded takes, Recent
+    trades, Recent personal life) so the bot can still answer with
+    profile-aware framing.
+
+    Section boundaries follow the schema in WHO'S TALKING (see
+    `_ASK_SYSTEM_INSTRUCTION`):
+
+        **Voice.**
+        - "X" — [context]
+        - "Y" — [context]
+        ...
+        <ends at next **Section.** OR a blank line followed by
+         a non-bullet line OR end of the profile bullet>
+
+    The replacement leaves a `**Voice.**\\n- (omitted)\\n` stub so the
+    section header still appears in the prompt and the schema isn't
+    visibly broken — model still sees this user has a Voice section,
+    just no verbatim samples.
+    """
+    import re as _re
+    return _re.sub(
+        r"\*\*Voice\.\*\*[ \t]*\n(?:[ \t]*- .*\n)+",
+        "**Voice.**\n- (omitted on retry to clear filter)\n",
+        profiles_block,
+    )
+
+
 def _has_repetition_glitch(text: str) -> bool:
     """Detect end-of-response repetition loops. See module-level note
     above for the two heuristics."""
@@ -3300,29 +3337,32 @@ async def _answer_with_gemini(
                 # is Gemini's unconfigurable hard filter (CSAM, severe
                 # policy).
                 #
-                # Most common cause in production: the WHO'S TALKING
-                # profiles block injects verbatim chat quotes that
-                # include slurs (e.g. "Monigga is probably the more
-                # appropriate nickname" — abe's recurring banter). The
-                # asker's actual question is usually benign ("what are
-                # the top 3 laggard names from Trump folio" — Sam, 2026-
-                # 06-01 22:01:45 UTC). Telling them to "ask a different
-                # way" is misleading: they'd hit the same wall on any
-                # question in that channel because the same profiles
-                # get re-injected.
+                # Most common cause in production: verbatim slur tokens
+                # in the prompt — either in profile **Voice.** sections
+                # (which quote each user's chat verbatim, including
+                # slurs they use as filler) or in recent-chat lines
+                # like "BK (bankerkyle): Nigga" (filler interjections).
                 #
-                # Recovery: retry once WITHOUT the profiles block. Other
-                # context (analyst trades, fetched URLs, recent chat,
-                # the question itself) stays. Answer comes back without
-                # personality-aware framing, but the user gets a real
-                # answer instead of a dead-end fallback.
+                # Recovery: retry once with the **Voice.** sections of
+                # each profile stripped out. Empirical testing (2026-
+                # 06-03 19:49 UTC Ry_bry/Dovahjo AVGO trip) showed:
+                #   - Full prompt          -> BLOCKED
+                #   - Strip ALL profile    -> still BLOCKED (chat slurs)
+                #   - Strip Voice only     -> PASSES (3/3 runs)
+                # So the right surgical fix is: keep the rest of the
+                # profile (Personality, Retarded takes, Recent trades,
+                # Recent personal life, rationale, ranks) AND keep the
+                # chat — just drop the **Voice.** subsections. Voice
+                # samples are the highest-density slur container and
+                # dropping them drops the prompt below the filter's
+                # threshold while preserving the analytical context
+                # that lets the bot still address the asker by their
+                # actual profile.
                 retry_succeeded = False
                 if profiles_block and (prompt_block or safety_blocked):
                     try:
-                        stripped_sections: list[str] = []
-                        # analyst_block was dropped from auto-injection
-                        # in Task 9 (lookup_trade_log replaces it); the
-                        # retry path no longer includes it either.
+                        voice_stripped = _strip_voice_sections(profiles_block)
+                        stripped_sections: list[str] = [voice_stripped]
                         if fetched_urls:
                             stripped_sections.append(fetched_urls)
                         if chat_context:
@@ -3331,8 +3371,9 @@ async def _answer_with_gemini(
                         stripped_content = "\n\n".join(stripped_sections)
                         log.warning(
                             f"/ask: prompt_block={prompt_block!r}, safety_blocked="
-                            f"{safety_blocked}, retrying once without profiles "
-                            f"({len(profiles_block)} chars stripped)"
+                            f"{safety_blocked}, retrying once with Voice sections "
+                            f"stripped ({len(profiles_block) - len(voice_stripped)} "
+                            f"chars dropped)"
                         )
                         stripped_resp = await client.aio.models.generate_content(
                             model=ask_model,
