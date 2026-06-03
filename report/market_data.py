@@ -101,6 +101,115 @@ def _fetch_crypto() -> dict:
     return out
 
 
+def _fetch_yahoo_extended_hours(symbol: str) -> dict | None:
+    """Fetch the most recent print + session classification from Yahoo
+    chart endpoint, including extended-hours bars.
+
+    The v8 chart endpoint with `includePrePost=true` returns minute-level
+    bars across pre + regular + post sessions. We walk the close array
+    from the end backwards to find the most recent non-null close, then
+    use `tradingPeriods` to classify which session that bar belongs to.
+
+    Used as a richer alternative to Finnhub /quote when the session is
+    AFTER-HOURS or PRE-MARKET — Finnhub /quote does NOT return
+    extended-hours prints. Falls back to None on any failure (Yahoo
+    rate-limits datacenter IPs intermittently); caller should fall
+    back to Finnhub.
+
+    Returns dict with:
+      - last_price       : most recent print
+      - last_timestamp   : unix seconds for that bar
+      - last_session     : 'pre' | 'regular' | 'post'
+      - regular_close    : regularMarketPrice (today's 4 PM close, or
+                           in-progress if currently OPEN)
+      - prev_close       : previousClose (yesterday's regular close)
+      - source           : 'yahoo'
+
+    Or None on fetch/parse failure.
+    """
+    # Spoofed UA — Yahoo returns 401/403 to obvious bot user agents
+    # but happily serves Mozilla/Chrome strings.
+    url = (
+        f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
+        f"?interval=1m&range=1d&includePrePost=true"
+    )
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36"
+            ),
+            "Accept": "application/json,text/javascript,*/*;q=0.01",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=4.0) as resp:
+            data = json.loads(resp.read())
+    except Exception as e:
+        log.info(f"yahoo AH fetch for {symbol} failed: {e}")
+        return None
+
+    try:
+        result = data["chart"]["result"][0]
+        meta = result["meta"]
+        timestamps = result.get("timestamp") or []
+        closes = (result.get("indicators", {}).get("quote", [{}])[0]
+                  .get("close") or [])
+    except (KeyError, IndexError, TypeError) as e:
+        log.info(f"yahoo AH parse for {symbol} failed: {e}")
+        return None
+
+    if not timestamps or not closes or len(timestamps) != len(closes):
+        return None
+
+    # Walk backwards to find the last non-null bar.
+    last_price = None
+    last_timestamp = None
+    for ts, c in zip(reversed(timestamps), reversed(closes)):
+        if c is not None:
+            last_price = float(c)
+            last_timestamp = int(ts)
+            break
+    if last_price is None or last_timestamp is None:
+        return None
+
+    # Classify which session that bar belongs to using tradingPeriods.
+    # Shape: {"pre": [[{start, end}]], "regular": [[...]], "post": [[...]]}
+    last_session = "regular"
+    try:
+        periods = meta.get("tradingPeriods", {}) or {}
+        for sess_key in ("pre", "regular", "post"):
+            blocks = periods.get(sess_key) or []
+            # Yahoo nests one level (list-of-lists)
+            for block in blocks:
+                if isinstance(block, list):
+                    for p in block:
+                        s = p.get("start")
+                        e = p.get("end")
+                        if s and e and s <= last_timestamp < e:
+                            last_session = sess_key
+                            break
+                elif isinstance(block, dict):
+                    s = block.get("start")
+                    e = block.get("end")
+                    if s and e and s <= last_timestamp < e:
+                        last_session = sess_key
+                        break
+    except Exception:
+        pass  # fall through with default 'regular'
+
+    return {
+        "last_price": last_price,
+        "last_timestamp": last_timestamp,
+        "last_session": last_session,
+        "regular_close": meta.get("regularMarketPrice"),
+        "prev_close": meta.get("previousClose"),
+        "source": "yahoo",
+    }
+
+
 def _fetch_finnhub_quote(symbol: str) -> dict | None:
     """Fetch price + pct change for a symbol via Finnhub /quote.
 

@@ -46,11 +46,14 @@ def test_response_includes_session_note():
 
 
 def test_after_hours_caveat_present():
-    """During AFTER-HOURS, stock_quote_data_caveat must explicitly tell
-    Gemini the price is the 4 PM cash close, NOT a live AH print."""
+    """During AFTER-HOURS, when Yahoo extended-hours data is NOT
+    available (rate-limit, illiquid name, no AH trades), the executor
+    falls back to Finnhub /quote and `stock_quote_data_caveat` must
+    explicitly tell Gemini the price is the 4 PM cash close.
+
+    Patches Yahoo to return None so the executor exercises the Finnhub
+    fallback path (the path Fix A is responsible for)."""
     import discord_bot.bot as bot_mod
-    # Force AFTER-HOURS by patching the session-label helper. 20:00 ET
-    # weekday is comfortably after the 16:00 close.
     fake_now_et = datetime(2026, 6, 2, 20, 0, 0)
 
     def fake_session_label(_now_et):
@@ -61,6 +64,8 @@ def test_after_hours_caveat_present():
     with (
         patch("report.market_data._session_label",
               side_effect=fake_session_label),
+        patch("report.market_data._fetch_yahoo_extended_hours",
+              return_value=None),
         patch("report.market_data._fetch_finnhub_quote",
               return_value=_stock_quote_returns()),
     ):
@@ -77,6 +82,8 @@ def test_after_hours_caveat_present():
 
 
 def test_pre_market_caveat_present():
+    """PRE-MARKET fallback caveat path — Yahoo unavailable, Finnhub returns
+    yesterday's regular close."""
     import discord_bot.bot as bot_mod
     fake_now_et = datetime(2026, 6, 3, 7, 0, 0)  # 7 AM ET
 
@@ -87,6 +94,8 @@ def test_pre_market_caveat_present():
     with (
         patch("report.market_data._session_label",
               side_effect=fake_session_label),
+        patch("report.market_data._fetch_yahoo_extended_hours",
+              return_value=None),
         patch("report.market_data._fetch_finnhub_quote",
               return_value=_stock_quote_returns()),
     ):
@@ -125,7 +134,9 @@ def test_open_session_no_stock_caveat_set():
 
 def test_crypto_still_live_regardless_of_session():
     """Crypto via Binance.US is always live. The caveat targets stocks
-    only — it should not falsely imply crypto is stale."""
+    only — it should not falsely imply crypto is stale. Patches
+    _fetch_yahoo_extended_hours to None so the test doesn't depend on
+    whether there happen to be any stocks in the batch."""
     import discord_bot.bot as bot_mod
     fake_now_et = datetime(2026, 6, 2, 20, 0, 0)  # AH
 
@@ -138,6 +149,8 @@ def test_crypto_still_live_regardless_of_session():
     with (
         patch("report.market_data._session_label",
               side_effect=fake_session_label),
+        patch("report.market_data._fetch_yahoo_extended_hours",
+              return_value=None),
         patch("report.market_data._fetch_binance_24h", side_effect=fake_binance),
     ):
         result = asyncio.run(bot_mod._execute_market_price({"symbols": ["BTC"]}))

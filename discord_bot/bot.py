@@ -2150,30 +2150,38 @@ def _build_market_price_tool():
             types.FunctionDeclaration(
                 name="lookup_market_price",
                 description=(
-                    "Get prices for stocks / ETFs / indices (via "
-                    "Finnhub) and crypto (via Binance.US). Pass a "
-                    "list of symbols. Response includes per-symbol "
-                    "price, change_pct, source, plus a session label "
-                    "('OPEN' | 'PRE-MARKET' | 'AFTER-HOURS' | "
-                    "'WEEKEND-CLOSED').\n\n"
-                    "IMPORTANT — read `stock_quote_data_caveat` on the "
-                    "response. Finnhub /quote does NOT return live "
-                    "extended-hours prints. So on AFTER-HOURS / "
-                    "PRE-MARKET / WEEKEND-CLOSED, the STOCK price field "
-                    "is the most recent regular-session close, NOT the "
-                    "live AH/PRE/weekend price. If the asker explicitly "
-                    "wants extended-hours movement (e.g. on an earnings "
-                    "name that reported AMC, like GTLB / NVDA / MSFT / "
-                    "PANW post-print), tell them the AH/PRE print isn't "
-                    "in your data feed and quote the cash close as a "
-                    "reference. Do NOT phrase a stock price as "
-                    "'after-hours at $X' when session=AFTER-HOURS — "
-                    "it's the 4 PM close.\n\n"
+                    "Get prices for stocks / ETFs / indices and crypto. "
+                    "Pass a list of symbols (cap 10 per call). Response "
+                    "includes per-symbol price, change_pct, source, "
+                    "data_freshness, plus a session label ('OPEN' | "
+                    "'PRE-MARKET' | 'AFTER-HOURS' | 'WEEKEND-CLOSED').\n\n"
+                    "DATA FRESHNESS PER SYMBOL — check `data_freshness` "
+                    "on each quote before phrasing the move:\n"
+                    "  - 'live_regular_session' — OPEN-session live "
+                    "Finnhub price. Describe as 'session-to-date' or "
+                    "'right now'.\n"
+                    "  - 'live_extended_hours' — Yahoo extended-hours "
+                    "print. `price` is the actual last AH/PRE trade; "
+                    "`change_pct` is from PRIOR-day close (full move "
+                    "incl. AH); `extended_hours_change_pct` is the AH "
+                    "move from today's regular close; "
+                    "`regular_session_close` is today's 4 PM close. "
+                    "Describe as 'after-hours at $X (closed $Y, then "
+                    "moved Z% in AH)'.\n"
+                    "  - 'regular_session_close' — Finnhub fallback "
+                    "when Yahoo AH/PRE data was unavailable. `price` "
+                    "is the 4 PM close. Tell the asker the AH/PRE "
+                    "print is not in your feed; quote the cash close "
+                    "as a reference. Do NOT phrase as 'after-hours "
+                    "at $X' — it's the 4 PM close.\n\n"
+                    "`stock_quote_data_caveat` on the top-level "
+                    "response will flag if any stock fell back to the "
+                    "regular close. None when every stock has live "
+                    "extended-hours data or session is OPEN.\n\n"
                     "Crypto IS live 24/7 regardless of session - "
                     "phrase BTC/ETH normally.\n\n"
-                    "Cap of 10 symbols per call. Use for 'what's TSLA "
-                    "at', 'how's BTC doing', 'is SPY green today', "
-                    "'GTLB after earnings'."
+                    "Use for 'what's TSLA at', 'how's BTC doing', "
+                    "'is SPY green today', 'GTLB after earnings'."
                 ),
                 parameters=types.Schema(
                     type=types.Type.OBJECT,
@@ -2280,8 +2288,71 @@ async def _execute_market_price(args: dict) -> dict:
                 "change_pct": data.get("change_24h_rolling"),
                 "prev_close": None,
                 "source": "binance",
+                # Crypto trades 24/7 — Binance.US price is always live
+                # regardless of US-market session classification. Tag it
+                # explicitly so Gemini doesn't false-stale BTC/ETH when
+                # mixing them with after-hours stock quotes in one batch.
+                "data_freshness": "live_24_7",
             })
         else:
+            # During AFTER-HOURS / PRE-MARKET, try Yahoo first — it
+            # surfaces the actual extended-hours print via the v8
+            # chart endpoint. Yahoo can rate-limit datacenter IPs
+            # intermittently; fall back to Finnhub on any failure or
+            # if Yahoo's reported session doesn't match what we expect.
+            yh = None
+            expected_yh_session = (
+                "post" if session_code == "AFTER-HOURS"
+                else "pre" if session_code == "PRE-MARKET"
+                else None
+            )
+            if expected_yh_session:
+                try:
+                    yh = _md._fetch_yahoo_extended_hours(sym)
+                except Exception as e:
+                    log.info(f"yahoo AH lookup for {sym} raised: {e}")
+                    yh = None
+
+            # Use Yahoo's extended-hours print iff it actually returned
+            # a bar from the expected session. Otherwise fall through
+            # to Finnhub (regular-session close).
+            if (
+                yh
+                and yh.get("last_session") == expected_yh_session
+                and yh.get("last_price") is not None
+                and yh.get("regular_close")
+                and yh.get("prev_close")
+            ):
+                last_price = float(yh["last_price"])
+                regular_close = float(yh["regular_close"])
+                prev_close = float(yh["prev_close"])
+                # change_pct vs prior REGULAR close (so the asker
+                # sees the full day-over-day move including the AH
+                # action). Also surface ah_change_pct = AH move from
+                # the regular close so the model can describe both:
+                # "GTLB closed +X% then dropped Y% after-hours."
+                change_pct = (
+                    (last_price - prev_close) / prev_close * 100.0
+                    if prev_close
+                    else None
+                )
+                ah_change_pct = (
+                    (last_price - regular_close) / regular_close * 100.0
+                    if regular_close
+                    else None
+                )
+                quotes.append({
+                    "symbol": sym,
+                    "price": last_price,
+                    "change_pct": change_pct,
+                    "prev_close": prev_close,
+                    "regular_session_close": regular_close,
+                    "extended_hours_change_pct": ah_change_pct,
+                    "source": "yahoo_extended_hours",
+                    "data_freshness": "live_extended_hours",
+                })
+                continue
+
             try:
                 data = _md._fetch_finnhub_quote(sym)
             except Exception as e:
@@ -2296,7 +2367,46 @@ async def _execute_market_price(args: dict) -> dict:
                 "change_pct": data.get("change_pct"),
                 "prev_close": data.get("prev_close"),
                 "source": "finnhub",
+                # During extended-hours sessions, Finnhub /quote is the
+                # regular-session close (not live). Tag it so Gemini
+                # can phrase correctly even when symbols mix sources.
+                "data_freshness": (
+                    "regular_session_close"
+                    if session_code in ("AFTER-HOURS", "PRE-MARKET",
+                                        "WEEKEND-CLOSED")
+                    else "live_regular_session"
+                ),
             })
+
+    # Caveat applicability depends on how Yahoo did:
+    #   all stocks got live AH/PRE data       -> drop the caveat
+    #   all stocks fell back to Finnhub close -> keep the original caveat
+    #   mixed (some live AH, some stale)      -> narrow caveat to stale ones
+    if quote_data_caveat and quotes:
+        stock_quotes = [q for q in quotes if q.get("source") != "binance"
+                        and "error" not in q]
+        if stock_quotes:
+            live_ah_count = sum(
+                1 for q in stock_quotes
+                if q.get("data_freshness") == "live_extended_hours"
+            )
+            stale_symbols = [
+                q["symbol"] for q in stock_quotes
+                if q.get("data_freshness") == "regular_session_close"
+            ]
+            if live_ah_count == len(stock_quotes):
+                # All stocks have live AH/PRE data — caveat doesn't apply.
+                quote_data_caveat = None
+            elif live_ah_count > 0 and stale_symbols:
+                # Mixed — narrow the caveat to the stale ones.
+                quote_data_caveat = (
+                    f"PARTIAL DATA: {','.join(stale_symbols)} fell back to "
+                    f"Finnhub regular-session close (Yahoo AH/PRE data was "
+                    f"unavailable for those tickers). Other tickers have "
+                    f"LIVE extended-hours prints. Per-symbol data_freshness "
+                    f"field tells you which is which."
+                )
+            # else: all stocks stale -> keep original Fix A caveat unchanged
 
     result = {
         "session": session_code,
