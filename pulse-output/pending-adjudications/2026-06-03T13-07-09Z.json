@@ -1,0 +1,307 @@
+{
+  "pulse_date": "2026-06-03",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "hormuz blockade persistence",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 13
+      },
+      "consensus_view": "Banks broadly flag the Strait of Hormuz situation as a live oil-supply risk, but they split on duration: Rabobank expects the blockade to drag through September while SEB and MUFG position for a reopening that would normalize prices and reignite demand.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks treat the Strait of Hormuz situation as an active supply-chain and energy-supply risk shaping their macro outlook.",
+          "banks_for": [
+            "Bank of America",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "LSEG",
+            "MUFG",
+            "Natixis",
+            "PGIM",
+            "Rabobank",
+            "SEB",
+            "DBS Group Research"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz blockade threat",
+            "Strait of Hormuz closure impacting global energy supply",
+            "U.S.-Iran war supply shock",
+            "Strait of Hormuz supply chain disruption",
+            "Strait of Hormuz supply risk",
+            "Strait of Hormuz blockade",
+            "Strait of Hormuz energy supply disruption",
+            "Middle East conflict supply-chain disruptions",
+            "US-Iran Strait of Hormuz tensions"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Duration of the Hormuz blockade / timing of reopening",
+          "banks_for": [
+            "Rabobank"
+          ],
+          "for_evidence": "we now assume that Hormuz is likely to be out of normal action up to September",
+          "banks_against": [
+            "SEB"
+          ],
+          "against_evidence": "Expect to see a resurgence in demand to rebuild stocks and reserves"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure growth",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 1,
+        "neutral": 11
+      },
+      "consensus_view": "Banks broadly agree the AI buildout is still accelerating, with hyperscaler spending, cloud backlogs and supply constraints all pointing higher, while Deutsche Bank flags that this capex boom is helping push inflation up rather than down.",
+      "facts_agreed": [
+        {
+          "claim": "Demand for AI compute and data center capacity is outrunning supply, supporting continued buildout.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "This combination of rising monetization, backlog growth, and constrained supply helps explain why the AI buildout still has room to run.",
+            "Today we are still severely compute constrained and Jevons Paradox remains the axiomatic ruler",
+            "Demand from data centers is outpacing supply across the board."
+          ]
+        },
+        {
+          "claim": "Hyperscalers and big tech are pouring record capital into AI infrastructure.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs",
+            "Natixis",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "AI exuberance remains a key theme, however, with the announcement of an $80 billion fundraising",
+            "signals a strategic pivot from providing compute capacity... to providing the seamless, production-ready infrastructure"
+          ]
+        },
+        {
+          "claim": "AI infrastructure beneficiaries are seeing strong earnings momentum and equity repricing.",
+          "banks_for": [
+            "LSEG",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "stellar quarter that put it on track to hit long-term financial targets",
+            "raise our target multiple to reflect increased confidence in CSCO\u2019s positioning to benefit"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI capex boom is disinflationary or inflationary",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "for_evidence": "Contrary to popular belief, there are no signs that AI is disinflationary",
+          "banks_against": [
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "against_evidence": "This combination of rising monetization, backlog growth, and constrained supply helps explain why the AI buildout still has room to run."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb hawkish pivot",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Banks broadly expect the European Central Bank to raise interest rates at its June meeting, with no desk arguing against the move.",
+      "facts_agreed": [
+        {
+          "claim": "The ECB is poised to deliver a rate hike at its June meeting.",
+          "banks_for": [
+            "DBS Group Research",
+            "KBC"
+          ],
+          "evidence_quotes": [
+            "We expect a pre-emptive (insurance) hike of 25bps in the deposit rate",
+            "Wunsch in an interview with the Financial Times joined Schnabel in clearly signalling a rate hike"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran tensions and negotiations",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Seven banks flag US-Iran tensions and negotiations as a live geopolitical backdrop, but none has staked a directional view on how it resolves or what to trade against it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference US-Iran tensions and negotiations as an ongoing geopolitical backdrop without taking a directional stance.",
+          "banks_for": [
+            "DBS Group Research",
+            "JPMorgan",
+            "Mizuho International Plc",
+            "Natixis",
+            "PGIM",
+            "Raymond James",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Iran-US negotiation tensions",
+            "U.S.-Iran JCPOA negotiations",
+            "US-Iran talks suspension",
+            "US-Iran geopolitical tensions",
+            "US-Iran peace talks",
+            "Middle East geopolitical escalation",
+            "US-Iran clashes in the Middle East",
+            "US-Iran tensions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "labor market cooling",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Banks see the US job market softening but not breaking, with mixed signals between still-elevated job openings and a forecast slowdown in May hiring.",
+      "facts_agreed": [
+        {
+          "claim": "Banks expect May US payrolls to come in softer than April but not alarmingly weak.",
+          "banks_for": [
+            "Natixis",
+            "DBS Group Research"
+          ],
+          "evidence_quotes": [
+            "We expect softer jobs data for May as compared to April, but nothing too concerning.",
+            "US labor market stabilization"
+          ]
+        },
+        {
+          "claim": "Multiple banks describe the US labor market as cooling, stabilizing, resilient, or in a low-hiring/low-firing regime rather than collapsing.",
+          "banks_for": [
+            "DBS Group Research",
+            "Deutsche Bank",
+            "SEB",
+            "KBC"
+          ],
+          "evidence_quotes": [
+            "US labor market stabilization",
+            "US labor market low hiring-low firing regime",
+            "US labor market cooling",
+            "US labour market resilience"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether US labor demand is firming or cooling",
+          "banks_for": [
+            "Bank of America",
+            "UniCredit"
+          ],
+          "for_evidence": "V/U jumped above 1.0 for the first time since Jun \u201925",
+          "banks_against": [
+            "SEB",
+            "Natixis"
+          ],
+          "against_evidence": "US labor market cooling"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "component supply chain constraints",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four banks flag component supply chain constraints across semiconductors, diodes, lasers and data center hardware as a live issue, but none has staked a directional trading view on it.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across multiple desks reference component supply chain constraints spanning semiconductors, diodes, lasers and data center hardware as a live backdrop.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Raymond James",
+            "The Market Ear",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "Supply shortages in semiconductors and electrical components",
+            "Diode shortages",
+            "Semiconductor supply chain constraints",
+            "Data center hardware supply constraints",
+            "Laser supply chain constraints"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai resilience",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Banks see AI resilience as the new key driver of stock performance in info services, with execution mattering more than broad AI fear, though some flag AI-driven security threats as a risk.",
+      "facts_agreed": [
+        {
+          "claim": "AI risk is no longer the dominant driver of returns in info services; execution and structural AI resilience differentiate winners.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI risk is no longer the primary driver of returns and relative performance increasingly reflects execution",
+            "agencies are most resilient to technological change in their data and healthcare businesses"
+          ]
+        },
+        {
+          "claim": "Banks across multiple desks reference AI as a live driver of productivity, optimism, and security risk.",
+          "banks_for": [
+            "Bank of America",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI-driven productivity gains",
+            "AI-driven optimism",
+            "AI-driven security threats"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
