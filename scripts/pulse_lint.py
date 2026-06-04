@@ -73,7 +73,131 @@ SOFT_ISSUE_KINDS = {
     "jargon-bare",
     "top-3-theme-missing",
     "discovered-theme-missing",
+    # Slot-overlap is structural — SCRUB can't fix it (SCRUB rewrites
+    # sentences, doesn't partition stats across slots). Surface as a
+    # soft warning so QC and human review can act; the next iteration
+    # should belong in DRAFT_USER's coverage rules. See 2026-06-04 QC
+    # which flagged INSIGHTS #2 and #3 both citing the $60B levered
+    # ETF stat + the 9-up-days streak.
+    "slot-stat-overlap",
 }
+
+
+# Regex set for extracting "stat tokens" from an INSIGHTS slot.
+# Each pattern captures a distinctive number-bearing claim. Stats
+# appearing in 2+ adjacent INSIGHTS slots get flagged by
+# _check_slot_stat_overlap as load-bearing-citation reuse.
+_STAT_TOKEN_PATTERNS = [
+    # Dollar amounts with magnitude suffix: $60B, $1.5T, $700B, $35B
+    r"\$\d+(?:[,.]\d+)?\s*[BMT]\b",
+    # Percentages with leading numeric: 67%, 4.4%, 60% YoY
+    r"\b\d+(?:\.\d+)?%(?:\s+YoY)?",
+    # Basis points: 25bp, 50 basis points, 25bps
+    r"\b\d+\s*(?:bps?|basis\s+points?)\b",
+    # Streak / consecutive stats: 9 consecutive up days, 10 up weeks,
+    # nine straight up days, nine consecutive down weeks. The middle
+    # block can be a single direction-or-adjective ("up", "consecutive")
+    # OR an adjective + direction ("consecutive up", "straight down").
+    r"\b(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)"
+    r"\s+(?:consecutive|straight|up|down)"
+    r"(?:\s+(?:up|down))?"
+    r"\s+(?:days?|weeks?|months?)\b",
+    # Ratio / multiplier shape: 24x by 2030, 2x leveraged
+    r"\b\d+x(?:\s+by\s+\d{4})?\b",
+    # Named indices at specific levels: 'Bull and Bear Indicator at 8.5'
+    # — match the index name + level for the cross-slot dedup signal
+    r"\b(?:Bull\s+and\s+Bear\s+Indicator|VIX|Goldman\s+Risk\s+Appetite|"
+    r"Goldman\s+Vol\s+Panic\s+Index|Hartnett['']s\s+(?:bull|bear)?\s*"
+    r"indicator)(?:\s+at\s+\d+(?:\.\d+)?)?\b",
+]
+
+
+def _extract_stat_tokens(slot_text: str) -> set[str]:
+    """Pull a normalized set of stat tokens from one INSIGHTS slot's
+    body. Normalization: lowercase, whitespace collapsed. Same logical
+    stat in two slots ('nine consecutive up days' / '9 consecutive up
+    days' / 'nine straight up days') resolves to the same key after
+    word-number coercion."""
+    word_to_digit = {
+        "one": "1", "two": "2", "three": "3", "four": "4", "five": "5",
+        "six": "6", "seven": "7", "eight": "8", "nine": "9", "ten": "10",
+        "eleven": "11", "twelve": "12",
+    }
+    tokens: set[str] = set()
+    for pat in _STAT_TOKEN_PATTERNS:
+        for m in re.finditer(pat, slot_text, re.IGNORECASE):
+            t = m.group(0).lower()
+            t = re.sub(r"\s+", " ", t).strip()
+            # Word-to-digit normalization for streak-style stats so
+            # "nine straight up days" matches "9 consecutive up days"
+            for word, digit in word_to_digit.items():
+                t = re.sub(rf"\b{word}\b", digit, t)
+            # Collapse the streak-verb synonyms (straight/consecutive)
+            # so the comparison sees them as one stat.
+            t = re.sub(
+                r"\b(?:consecutive|straight)\b", "consecutive", t
+            )
+            tokens.add(t)
+    return tokens
+
+
+def _check_slot_stat_overlap(md_text: str) -> list[dict]:
+    """Flag stats that appear in 2+ INSIGHTS slots. 2026-06-04 QC
+    review observed AI capex slot (#2) and Hartnett rotate-out slot
+    (#3) both citing the $60B levered ETF stat AND the 9-consecutive-
+    up-days streak — two themes sharing load-bearing evidence.
+    Returns issue dicts (one per overlap stat) with kind=
+    'slot-stat-overlap'."""
+    insights_match = re.search(
+        r"##\s+(?:\d+\.\s+)?INSIGHTS.*?(?=^##\s|\Z)",
+        md_text, re.MULTILINE | re.DOTALL | re.IGNORECASE,
+    )
+    if not insights_match:
+        return []
+    insights_text = insights_match.group(0)
+    insights_offset = insights_match.start()
+
+    # Split the INSIGHTS section on H3 ('### ') headings — each slot.
+    slot_pattern = re.compile(r"^###\s+(.+?)$", re.MULTILINE)
+    slot_starts = [(m.start(), m.group(1).strip())
+                   for m in slot_pattern.finditer(insights_text)]
+    if len(slot_starts) < 2:
+        return []
+    slot_starts.append((len(insights_text), "__END__"))
+
+    # Build per-slot stat-token sets keyed by 0-based slot index.
+    slot_tokens: list[tuple[str, set[str], int]] = []  # (title, tokens, line)
+    for i in range(len(slot_starts) - 1):
+        start_off, title = slot_starts[i]
+        end_off = slot_starts[i + 1][0]
+        slot_body = insights_text[start_off:end_off]
+        tokens = _extract_stat_tokens(slot_body)
+        # Compute the actual line number in the full pulse markdown.
+        slot_line = md_text[:insights_offset + start_off].count("\n") + 1
+        slot_tokens.append((title, tokens, slot_line))
+
+    # Find stats appearing in 2+ slots.
+    issues: list[dict] = []
+    from collections import defaultdict
+    stat_to_slots: dict[str, list[tuple[str, int]]] = defaultdict(list)
+    for title, tokens, line in slot_tokens:
+        for t in tokens:
+            stat_to_slots[t].append((title, line))
+    for stat, occurrences in stat_to_slots.items():
+        if len(occurrences) >= 2:
+            slot_titles = [
+                f"{title[:40]}" for title, _ in occurrences
+            ]
+            first_line = occurrences[0][1]
+            issues.append({
+                "line": first_line,
+                "kind": "slot-stat-overlap",
+                "snippet": (
+                    f"stat {stat!r} cited in {len(occurrences)} slots: "
+                    f"{slot_titles}"
+                )[:200],
+            })
+    return issues
 
 
 def classify_issues(issues: list[dict]) -> tuple[int, int]:
@@ -112,6 +236,12 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
     for pattern, kind in compose_jargon_lint_patterns():
         for m in re.finditer(pattern, scan_text, re.IGNORECASE):
             add(line_of(m, scan_text), kind, m.group())
+
+    # Slot-stat-overlap scan (soft — structural, SCRUB can't fix).
+    # 2026-06-04 QC flagged adjacent INSIGHTS slots citing the same
+    # load-bearing stats ($60B levered ETF AUM, 9-up-days streak).
+    # Stats appearing in 2+ slots reduce the perceived theme breadth.
+    issues.extend(_check_slot_stat_overlap(scan_text))
 
     # Coverage checks against the theme_map (passed in ctx).
     if ctx is not None:
