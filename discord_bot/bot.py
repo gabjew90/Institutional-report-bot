@@ -2719,6 +2719,45 @@ def _strip_voice_sections(profiles_block: str) -> str:
     )
 
 
+# Slur-token regex used by the third-tier mask retry. Tokens are
+# replaced with `[redacted]` in chat context + question + voice-stripped
+# profile when the Voice-strip retry ALSO returned empty. The mask is
+# lossy — the bot can't quote the slur verbatim — but the answer
+# survives the filter where the previous two attempts didn't.
+#
+# Covers the same token family as the other slur checks in this module
+# (_KNOWN_SLURS + variants caught by the voice-strip regex). Word-
+# boundary anchored so we don't mask "Pajama" or similar near-matches.
+_SLUR_MASK_RE = re.compile(
+    r"\b(?:nigg[ae]r?s?|chink|spic|kike|fag(?:got)?|pajeet)\b",
+    re.IGNORECASE,
+)
+
+
+def _mask_slur_tokens(text: str) -> str:
+    """Replace slur tokens with `[redacted]` placeholders.
+
+    Used by the third-tier filter-blocked retry. The Voice-strip retry
+    (commit 137e310) handles profile-section slurs; this catches the
+    residual cases where chat context + question text combined push
+    the prompt across the unconfigurable filter threshold even with
+    Voice stripped.
+
+    Concrete failure pattern this addresses (observed 2026-06-04 16:57
+    UTC, 4 trips in 90 seconds): asker explicitly asks about slur
+    usage; question text contains the slur literally; chat context
+    carries the room's normal slur register; Voice strip doesn't
+    touch either; Voice-strip retry returns empty same as the first
+    attempt. The Python-side slur-count short-circuit (commit 9864a4a)
+    catches the EXPLICIT count-shaped questions. This mask is the
+    belt-and-suspenders for other prompts where slur density
+    accidentally trips the filter.
+    """
+    if not text:
+        return text
+    return _SLUR_MASK_RE.sub("[redacted]", text)
+
+
 def _has_repetition_glitch(text: str) -> bool:
     """Detect end-of-response repetition loops. See module-level note
     above for the two heuristics."""
@@ -3556,12 +3595,90 @@ async def _answer_with_gemini(
                         else:
                             log.warning(
                                 "/ask: profiles-stripped retry returned empty — "
-                                "shipping fallback"
+                                "attempting third-tier slur-mask retry"
                             )
                     except Exception as e:
                         log.warning(
                             f"/ask: profiles-stripped retry call failed: {e}"
                         )
+
+                # Third-tier retry: when the Voice-strip retry ALSO came
+                # back empty (or the call raised), mask slur tokens in
+                # voice_stripped profile + chat + question and try one
+                # more time. Lossy answer (bot can't quote the slur
+                # verbatim) but answer-not-refusal.
+                #
+                # Concrete failure this catches (observed 2026-06-04
+                # 16:57 UTC): asker asks about chat-slur usage; question
+                # text + chat-context slur density trips the filter on
+                # BOTH the first attempt and the Voice-strip retry. The
+                # mask drops the prompt below the threshold.
+                if not retry_succeeded and profiles_block and (prompt_block or safety_blocked):
+                    try:
+                        voice_stripped = _strip_voice_sections(profiles_block)
+                        masked_sections: list[str] = [
+                            _mask_slur_tokens(voice_stripped)
+                        ]
+                        if fetched_urls:
+                            masked_sections.append(fetched_urls)
+                        if chat_context:
+                            masked_sections.append(
+                                _mask_slur_tokens(chat_context)
+                            )
+                        masked_sections.append(
+                            f"{separator}\n{_mask_slur_tokens(question)}"
+                        )
+                        masked_content = "\n\n".join(masked_sections)
+                        # Count masked tokens for the log line so the
+                        # diff vs the previous retry is visible.
+                        n_masked = (
+                            (len(voice_stripped or "") - len(_mask_slur_tokens(voice_stripped or "")))
+                            // len("[redacted]")
+                        )
+                        log.warning(
+                            f"/ask: third-tier retry with slur tokens masked "
+                            f"(~{n_masked} tokens replaced)"
+                        )
+                        masked_resp = await client.aio.models.generate_content(
+                            model=ask_model,
+                            contents=[
+                                types.Content(
+                                    role="user",
+                                    parts=[types.Part.from_text(text=masked_content)],
+                                )
+                            ],
+                            config=config,
+                        )
+                        try:
+                            masked_answer = (masked_resp.text or "").strip()
+                        except Exception:
+                            masked_answer = ""
+                        if masked_answer:
+                            masked_answer, _ = _clean_voice_violations(
+                                masked_answer
+                            )
+                            answer = masked_answer
+                            response = masked_resp
+                            retry_succeeded = True
+                            log.info(
+                                "/ask: slur-masked retry succeeded"
+                            )
+                            try:
+                                grounding_metadata = (
+                                    masked_resp.candidates[0].grounding_metadata
+                                )
+                            except (AttributeError, IndexError, TypeError):
+                                grounding_metadata = None
+                        else:
+                            log.warning(
+                                "/ask: slur-masked retry also returned empty — "
+                                "shipping fallback wrapper"
+                            )
+                    except Exception as e:
+                        log.warning(
+                            f"/ask: slur-masked retry call failed: {e}"
+                        )
+
                 if not retry_succeeded:
                     answer = (
                         "→ Gemini bounced this one — its hard filter blocked "
