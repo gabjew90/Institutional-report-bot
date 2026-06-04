@@ -1144,7 +1144,34 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
     if contrarian_lines:
         out.append("")
         out.append(
-            "CONTRARIAN / ROTATE-OUT SIGNAL — multi-PDF, multi-bank corpus voices explicitly contradicting or warning against the dominant lead theme (AI / consensus narrative). The 2026-06-01 QC review found five contrarian titles in the corpus (Nobody Wants NVDA, Sell in May, IPO BOOM = MARKET TOP?, What To Buy If Not AI, Speculation Nation) all folded into the AI bear-case appendix. When this category surfaces, do NOT bury it in an appendix — give it a dedicated INSIGHTS slot named in the form of the contrarian call, OR a top-of-WATCH bullet naming the specific rotate-out instrument lean. The bullet stance is intentionally skeptical (no support count); the trade lean should be the corresponding rotation (out of $NVDA into $SPY value names, $RSP vs $SPY, $IWM, dividend ETFs, etc.):"
+            "CONTRARIAN / ROTATE-OUT SIGNAL — multi-PDF, multi-bank corpus voices explicitly contradicting or warning against the dominant lead theme (AI / consensus narrative). The 2026-06-01 QC review found five contrarian titles in the corpus (Nobody Wants NVDA, Sell in May, IPO BOOM = MARKET TOP?, What To Buy If Not AI, Speculation Nation) all folded into the AI bear-case appendix. When this category surfaces, do NOT bury it in an appendix — give it a dedicated INSIGHTS slot named in the form of the contrarian call, OR a top-of-WATCH bullet naming the specific rotate-out instrument lean. The bullet stance is intentionally skeptical (no support count); the trade lean should be the corresponding rotation."
+        )
+        out.append(
+            "  ROTATE-OUT CLOSE — VARIETY REQUIRED. 2026-06-03 + 2026-06-04 + 2026-06-05 QC reviews all flagged that the contrarian slot keeps closing with `$RSP over $SPY` as the rotation instrument. A reader who reads the pulse daily for a week will recognize the template. Pick the close-lean instrument from the angle the corpus is actually signaling rather than defaulting to equal-weight:"
+        )
+        out.append(
+            "    (a) DEFENSIVE rotation (when corpus argues quality/yield over growth): $XLU utilities, $XLV health care, $XLP staples, $SPLV/$USMV low-vol, $SPYD/$VYM high-yield"
+        )
+        out.append(
+            "    (b) SMALL-CAP rotation (when corpus argues breadth recovery / size factor): $IWM Russell 2k, $VBR small-cap value, $IJR core small-cap"
+        )
+        out.append(
+            "    (c) VALUE-style rotation (when corpus argues style mean-reversion): $VTV vanguard value, $IWD large-cap value, $RPV pure value"
+        )
+        out.append(
+            "    (d) EQUAL-WEIGHT rotation (when corpus argues concentration risk on top-10 names): $RSP equal-weight S&P, $EWS equal-weight S&P sectors"
+        )
+        out.append(
+            "    (e) INTERNATIONAL rotation (when corpus argues US-vs-RoW mean reversion): $EFA developed-ex-US, $EEM emerging, $VEA developed"
+        )
+        out.append(
+            "    (f) COMMODITY-style rotation (when corpus argues hard-asset reflation): $GLD gold, $XLE energy, $DBC broad commodity"
+        )
+        out.append(
+            "    (g) TAIL-HEDGE pair (when corpus argues positioning extreme — pair this WITH one of a-f as a secondary lean): $VIXY VIX short-term, $SPY put spreads with explicit strikes"
+        )
+        out.append(
+            "  Pick (a)-(f) by which angle the corpus is most explicitly arguing; (g) is a permitted addition, not a standalone close. If your only honest read is `$RSP over $SPY`, that's a (d) close — you MUST pair it with at least one secondary instrument from a different category (e.g., `$RSP over $SPY + long $XLU as the defensive complement` or `$RSP over $SPY + $VIXY as the tail hedge`). A single-instrument equal-weight close is the recurring template; the secondary-instrument requirement breaks it without losing the equal-weight read when that IS the right call."
         )
         out.extend(contrarian_lines)
 
