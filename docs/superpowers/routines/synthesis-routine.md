@@ -1273,9 +1273,22 @@ Dispatch ONE `general-purpose` Agent with the assembled prompt. The sub-agent ru
 
 Save the sub-agent's response to `/tmp/scrubbed.md` first (so we keep a copy of the SCRUB output for forensics), then overwrite `/tmp/final.md` with the same content (so STEP 6's commit picks up the scrubbed version).
 
-### Step 5.7.3 — Re-lint and decide on retry
+### Step 5.7.3 — Post-hoc skip enforcement + re-lint
 
-Re-run the lint scan against the scrubbed markdown:
+**FIRST: deterministic post-hoc skip enforcement.** The SCRUB_DECISION gate in 5.7.1 has been ignored on at least three runs (2026-06-02 / 2026-06-03 / 2026-06-04 QC reviews all flagged a SCRUB run on 0-lint input producing cosmetic delta). Belt-and-suspenders: if the decision was `skip` but `/tmp/final.md` no longer matches the EDIT output (i.e., SCRUB was dispatched against the gate), revert. This guarantees the skip is enforced regardless of whether the routine-runner honored the instruction.
+
+```bash
+if [[ "$(cat /tmp/scrub_decision.txt 2>/dev/null)" == "skip" ]] && [[ -f /tmp/pre_scrub_final.md ]]; then
+    if ! cmp -s /tmp/final.md /tmp/pre_scrub_final.md; then
+        echo "STEP 5.7.3: SCRUB was dispatched against SCRUB_DECISION=skip; reverting /tmp/final.md to pre-SCRUB state"
+        cp /tmp/pre_scrub_final.md /tmp/final.md
+    fi
+fi
+```
+
+This is intentionally redundant with the 5.7.1 gate AND the 5.7.2 conditional dispatch — three layers of enforcement because each previous layer has been bypassed at least once.
+
+Re-run the lint scan against the (possibly reverted) markdown:
 
 ```bash
 python3 scripts/pulse_lint.py /tmp/final.md /tmp/lint_report.json /tmp/ctx.json
