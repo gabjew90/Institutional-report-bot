@@ -883,6 +883,73 @@ def _classify_themes(
     return theme_map
 
 
+def _detect_ai_capex_power_demand_pairing(
+    theme_map: dict[str, dict],
+) -> dict | None:
+    """Detect when AI capex (primary) and data-center power demand
+    (typically Phase B discovered) co-occur in the corpus. The two are
+    mechanically linked — every $ of hyperscaler buildout creates a
+    corresponding power-demand read-through — and the QC review on
+    2026-06-04 flagged that the synthesizer keeps shipping AI capex as
+    a primary INSIGHTS slot while dropping the power-demand counterpart
+    entirely (ANZ + BofA + RBC + UBS converging on it that day, all
+    dropped from INSIGHTS and WATCH).
+
+    Returns a dict with the matched themes + bank counts when both
+    sides fire, None otherwise. The caller renders this as a
+    'MECHANICAL PAIRINGS DETECTED' steering block in theme_coverage so
+    DRAFT sees it as a forcing function.
+
+    Thresholds:
+      - AI capex side: primary theme (non-discovered) with banks >= 5
+      - Power demand side: ANY entry (primary or discovered) with banks
+        >= 3 — Phase B mostly catches it as discovered
+
+    Theme-name matching is loose substring (case-insensitive) on the
+    canonical labels Phase A uses. Add to the patterns as new variants
+    surface.
+    """
+    AI_CAPEX_PATTERNS = (
+        "ai infrastructure", "ai capex", "ai buildout",
+        "ai infrastructure and capex", "hyperscaler", "ai cycle",
+        "ai chip", "ai semiconductor",
+    )
+    POWER_DEMAND_PATTERNS = (
+        "power demand", "data center power", "electricity demand",
+        "data-center power", "natural gas demand", "ai power",
+        "energy demand for ai", "power grid", "utility demand",
+        "ai energy",
+    )
+
+    def _match(theme_name: str, patterns: tuple[str, ...]) -> bool:
+        low = theme_name.lower()
+        return any(p in low for p in patterns)
+
+    ai_themes: list[tuple[str, dict]] = []
+    power_themes: list[tuple[str, dict]] = []
+    for theme, info in theme_map.items():
+        if info.get("banks", 0) >= 5 and not info.get("discovered") \
+           and _match(theme, AI_CAPEX_PATTERNS):
+            ai_themes.append((theme, info))
+        if info.get("banks", 0) >= 3 and _match(theme, POWER_DEMAND_PATTERNS):
+            power_themes.append((theme, info))
+
+    if not ai_themes or not power_themes:
+        return None
+
+    # Pick the strongest from each side (max banks).
+    ai_theme = max(ai_themes, key=lambda kv: kv[1].get("banks", 0))
+    power_theme = max(power_themes, key=lambda kv: kv[1].get("banks", 0))
+    return {
+        "ai_theme": ai_theme[0],
+        "ai_banks": ai_theme[1].get("banks", 0),
+        "ai_sources": ai_theme[1].get("sources", []),
+        "power_theme": power_theme[0],
+        "power_banks": power_theme[1].get("banks", 0),
+        "power_sources": power_theme[1].get("sources", []),
+    }
+
+
 def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
     """Render theme counts as a forcing-function block for the DRAFT prompt.
 
@@ -1080,6 +1147,46 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
             "CONTRARIAN / ROTATE-OUT SIGNAL — multi-PDF, multi-bank corpus voices explicitly contradicting or warning against the dominant lead theme (AI / consensus narrative). The 2026-06-01 QC review found five contrarian titles in the corpus (Nobody Wants NVDA, Sell in May, IPO BOOM = MARKET TOP?, What To Buy If Not AI, Speculation Nation) all folded into the AI bear-case appendix. When this category surfaces, do NOT bury it in an appendix — give it a dedicated INSIGHTS slot named in the form of the contrarian call, OR a top-of-WATCH bullet naming the specific rotate-out instrument lean. The bullet stance is intentionally skeptical (no support count); the trade lean should be the corresponding rotation (out of $NVDA into $SPY value names, $RSP vs $SPY, $IWM, dividend ETFs, etc.):"
         )
         out.extend(contrarian_lines)
+
+    # MECHANICAL PAIRINGS — forced-pair steering when two themes share
+    # a mechanism the corpus is signaling but DRAFT keeps shipping only
+    # one side. 2026-06-04 QC: AI capex was INSIGHTS #2 but data-center
+    # power demand (ANZ + BofA + RBC + UBS, all promoted by Phase B)
+    # got dropped from INSIGHTS AND WATCH. Power demand is the
+    # mechanically-downstream trade ($XLE / $LNG / $VST / $CEG read-
+    # throughs) — when both sides surface in the corpus, both must
+    # appear in the pulse.
+    pairing = _detect_ai_capex_power_demand_pairing(theme_map)
+    if pairing:
+        ai_srcs = ", ".join((pairing["ai_sources"] or [])[:6])
+        pwr_srcs = ", ".join((pairing["power_sources"] or [])[:6])
+        out.append("")
+        out.append(
+            "MECHANICAL PAIRINGS DETECTED — the corpus is surfacing two "
+            "themes that are mechanically linked (one is the downstream "
+            "trade of the other). When both surface, both MUST appear in "
+            "the pulse — primary as INSIGHTS, downstream as at minimum a "
+            "WATCH bullet that names the read-through instruments. "
+            "Shipping only the upstream side is a recurring coverage miss "
+            "(2026-06-04 QC: AI capex shipped as INSIGHTS #2, power "
+            "demand dropped entirely despite 4-bank promotion):"
+        )
+        out.append(
+            f"  - AI CAPEX (upstream, {pairing['ai_banks']} banks: "
+            f"{ai_srcs}) ↔ DATA-CENTER POWER DEMAND (downstream, "
+            f"{pairing['power_banks']} banks: {pwr_srcs}). The capex "
+            f"side is the AI buildout spend; the power side is the "
+            f"electricity / natural gas / utility / data-center-grid "
+            f"demand that AI buildout creates. Required treatment: "
+            f"AI capex as primary INSIGHTS slot (default); power "
+            f"demand as a top-of-WATCH bullet OR as the second half of "
+            f"the AI capex INSIGHTS section's trade lean, naming the "
+            f"actual instruments ($XLE oil/gas equity, $LNG natural-gas "
+            f"export, $VST/$CEG independent power producers, $XLU "
+            f"utility ETF). If you fold power demand into AI capex "
+            f"INSIGHTS rather than spinning a separate slot, the trade "
+            f"lean MUST include at least one power-side instrument."
+        )
     return "\n".join(out)
 
 
