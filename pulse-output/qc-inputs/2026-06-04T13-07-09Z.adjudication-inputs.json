@@ -1,0 +1,5904 @@
+{
+ "strait of hormuz reopening": {
+  "theme": "strait of hormuz reopening",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 0,
+   "neutral": 11
+  },
+  "theme_stances": [
+   {
+    "source": "Citadel Securities",
+    "theme": "Strait of Hormuz reopening",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Physical restoration of tanker flows is likely to happen quickly due to intact infrastructure and strong incentives for commodity traders.",
+    "primary_instruments": [
+     "USO"
+    ],
+    "vs_consensus": "",
+    "evidence": "I am optimistic that the physical restoration of tanker flows could happen relatively quickly"
+   },
+   {
+    "source": "ANZ Research",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz logistical bottlenecks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz logistical bottlenecks"
+   },
+   {
+    "source": "Citadel Securities",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz reopening prospects",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz reopening prospects"
+   },
+   {
+    "source": "Danske Bank",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz supply chain chokepoint",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz supply chain chokepoint"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz energy flow disruptions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz energy flow disruptions"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz reopening",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz reopening"
+   },
+   {
+    "source": "ING",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz blockade",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz blockade"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz closure risk",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz closure risk"
+   },
+   {
+    "source": "MUFG",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz supply disruptions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz supply disruptions"
+   },
+   {
+    "source": "Natixis",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz supply disruption",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz supply disruption"
+   },
+   {
+    "source": "SEB",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East maritime trade disruption",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East maritime trade disruption"
+   },
+   {
+    "source": "UniCredit",
+    "theme": "strait of hormuz reopening",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz transit disruption",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz transit disruption"
+   }
+  ],
+  "tension_points": [
+   {
+    "source": "JPMorgan",
+    "theme": "Strait of Hormuz reopening",
+    "bull_case": "Reopening would produce a step-function higher in growth, earnings, and stock prices.",
+    "bear_case": "Continued closure or escalation leads to oil price spikes and bond volatility, creating a headwind for equities.",
+    "what_invalidates": "A deal is announced (bull case) or attacks shift from 'defensive' to 'offensive' (bear case)."
+   },
+   {
+    "source": "SEB",
+    "theme": "Strait of Hormuz reopening",
+    "bull_case": "Markets are increasingly pricing in a negotiated deal for reopening by end of June.",
+    "bear_case": "Absent a durable diplomatic deal, energy flows could take months to normalize even if the strait reopens.",
+    "what_invalidates": "Full-blown energy crisis if SoH remains closed through July."
+   }
+  ],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "80",
+    "metric": "Low NA EUV units guidance for 2027",
+    "context": "Previous company guidance"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "90",
+    "metric": "EUV tool capacity",
+    "context": "Previously guided ceiling"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "110",
+    "metric": "Low NA EUV tools capacity potential",
+    "context": "JPM estimate of potential without new buildings"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "38%",
+    "metric": "Irish household financial assets in cash",
+    "context": "Vs EU average of 30%"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "c20%",
+    "metric": "Total household deposit beta",
+    "context": "Lowest in Europe"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "\u20ac5bn",
+    "metric": "Year 1 SIA subscriptions",
+    "context": "Estimate based on UK ISA framework"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1-2%",
+    "metric": "PBT 2028E impact",
+    "context": "Year 1 headwind from SIA"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "c35%",
+    "metric": "German defence stocks decline",
+    "context": "Year-to-date or recent period"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+20%",
+    "metric": "2027 defence budget increase",
+    "context": "Vs prior"
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "-12%",
+    "metric": "Front month oil futures decline",
+    "context": "Since initial news of progress on US-Iran negotiations."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "22%",
+    "metric": "Probability of normal traffic by 1 July",
+    "context": "Based on prediction market pricing."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "50%",
+    "metric": "Probability of normal traffic by 1 Aug",
+    "context": "Based on prediction market pricing."
+   },
+   {
+    "source_bank": "Scott Rubner",
+    "figure": "67%",
+    "metric": "S&P 500 rally contribution",
+    "context": "Percentage of rally since end of March from just 10 companies."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$8B",
+    "metric": "Offer value for DVN Marcellus assets",
+    "context": "Reported by Reuters"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "16.1 million",
+    "metric": "May 2026 U.S. Auto SAAR",
+    "context": "vs 16.0 million consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "47 days",
+    "metric": "Days' supply of vehicles",
+    "context": "Down 4 days sequentially"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1B",
+    "metric": "TransAlta Colorado acquisition value",
+    "context": "Includes $750M debt and $250M equity"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "C$110 million",
+    "metric": "Expected annual EBITDA from new TransAlta assets",
+    "context": "Brings pro-forma EBITDA to C$700M range"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "51%",
+    "metric": "J.P. Morgan Global Equity Research Coverage Overweight rating distribution",
+    "context": "As of April 04, 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "37%",
+    "metric": "J.P. Morgan Global Equity Research Coverage Neutral rating distribution",
+    "context": "As of April 04, 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12%",
+    "metric": "J.P. Morgan Global Equity Research Coverage Underweight rating distribution",
+    "context": "As of April 04, 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Projected increase in net equity issuance for 2026",
+    "context": "Reflects true equity supply."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1.3tr",
+    "metric": "Projected increase in share count in 2027",
+    "context": "Reflects mechanical reclassification by index providers."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "78th %-tile",
+    "metric": "AxJ long/short ratio",
+    "context": "Since 2018."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100th %-tile",
+    "metric": "Broad Japan TPM",
+    "context": "Since 2015."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "6%",
+    "metric": "Underperformance of Refinancing Risk basket vs Well Positioned names",
+    "context": "Year to date."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$21.6bn",
+    "metric": "Dealer long gamma",
+    "context": "Largest number recalled; mutes realized volatility."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.5%",
+    "metric": "26Q2 GDP forecast",
+    "context": "Upgraded from 1.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.3%",
+    "metric": "Unemployment rate (U.3) forecast",
+    "context": "Matches prior print."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "122k",
+    "metric": "ADP Employment Change",
+    "context": "Vs 120k survey; 105k prior."
+   },
+   {
+    "source_bank": "CNN",
+    "figure": "$40-50B",
+    "metric": "Estimated cost of Iranian strikes on US military bases",
+    "context": "Significantly higher than the Pentagon's stated $25B."
+   },
+   {
+    "source_bank": "EIA",
+    "figure": "10.5M b/d",
+    "metric": "Crude oil production shut-in in April",
+    "context": "Collective shut-in across Iraq, Saudi Arabia, Kuwait, UAE, Qatar, and Bahrain."
+   },
+   {
+    "source_bank": "SEB",
+    "figure": "1.82M",
+    "metric": "Rial per USD",
+    "context": "Open market exchange rate."
+   },
+   {
+    "source_bank": "CSIS",
+    "figure": "3+ years",
+    "metric": "Replenishment time for Tomahawk missiles",
+    "context": "Estimated return to prewar inventory levels."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+2pts",
+    "metric": "Gross positioning increase",
+    "context": "Reached 5-year high"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~85%",
+    "metric": "S&P 500 rally since ChatGPT introduction",
+    "context": "Nov 30, 2022 to Jun 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$340",
+    "metric": "2026 S&P EPS forecast",
+    "context": "~52% higher than pre-AI forward expectations"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~323%",
+    "metric": "Hedge fund gross leverage",
+    "context": "Fresh 5-year high, +2.1pts weekly increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">$60bn",
+    "metric": "Global levered/inverse single-stock ETF AUM",
+    "context": "Doubled since early April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~24x",
+    "metric": "Potential increase in token consumption from Agentic AI",
+    "context": "Estimate from GS Technology Research"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "80",
+    "metric": "Low NA EUV units guidance for 2027",
+    "context": "Previous company guidance"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "90",
+    "metric": "EUV tool capacity",
+    "context": "Previously guided ceiling"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "110",
+    "metric": "Low NA EUV tools capacity potential",
+    "context": "JPM estimate of potential without new buildings"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "38%",
+    "metric": "Irish household financial assets in cash",
+    "context": "Vs EU average of 30%"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "c20%",
+    "metric": "Total household deposit beta",
+    "context": "Lowest in Europe"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "\u20ac5bn",
+    "metric": "Year 1 SIA subscriptions",
+    "context": "Estimate based on UK ISA framework"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1-2%",
+    "metric": "PBT 2028E impact",
+    "context": "Year 1 headwind from SIA"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "c35%",
+    "metric": "German defence stocks decline",
+    "context": "Year-to-date or recent period"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+20%",
+    "metric": "2027 defence budget increase",
+    "context": "Vs prior"
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "-12%",
+    "metric": "Front month oil futures decline",
+    "context": "Since initial news of progress on US-Iran negotiations."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "22%",
+    "metric": "Probability of normal traffic by 1 July",
+    "context": "Based on prediction market pricing."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "50%",
+    "metric": "Probability of normal traffic by 1 Aug",
+    "context": "Based on prediction market pricing."
+   },
+   {
+    "source_bank": "Scott Rubner",
+    "figure": "67%",
+    "metric": "S&P 500 rally contribution",
+    "context": "Percentage of rally since end of March from just 10 companies."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Top 10 weights in SPX",
+    "context": "Current index concentration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "700bps",
+    "metric": "S&P names excluding AI lag",
+    "context": "YTD performance gap"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$60B",
+    "metric": "Global levered/inverse single-stock ETF AUM",
+    "context": "Doubled in 2 months"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12.9",
+    "metric": "Vol for SPX Aug 8000 calls",
+    "context": "Desk preference"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "322.9%",
+    "metric": "Hedge Fund Global Book Gross Leverage",
+    "context": "5-year high"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "59.8%",
+    "metric": "Fundamental L/S Net Leverage",
+    "context": "99th percentile 1-year"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$93bn",
+    "metric": "CTA Global Equities Length",
+    "context": "62.3rd percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.13",
+    "metric": "Goldman Risk Appetite Indicator",
+    "context": "Highest level on record"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.38",
+    "metric": "Vol Panic Index",
+    "context": "Approaching lowest on record"
+   },
+   {
+    "source_bank": "CNN",
+    "figure": "59/100",
+    "metric": "CNN Fear and Greed Index",
+    "context": "Greed territory"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-22%",
+    "metric": "Brent futures decline from late March peak",
+    "context": "vs late March peak"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6%",
+    "metric": "Global jet fuel demand nowcast below trend",
+    "context": "May 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-14pp",
+    "metric": "Utilization rates of Asian ethylene plants",
+    "context": "since February"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-0.15mb/d",
+    "metric": "India naphtha and LPG demand",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-20%",
+    "metric": "China gasoline retail sales volumes",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-8%",
+    "metric": "Western Europe retail car fuel sales volumes",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2mb/d",
+    "metric": "Downside risk to April oil demand estimates",
+    "context": "implied by China and Western Europe retail sales"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$10/bbl",
+    "metric": "Downside risk to 2026Q4 Brent forecast",
+    "context": "assuming half of demand downside persists"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "-23%",
+    "metric": "China oil imports",
+    "context": "vs pre-conflict trend"
+   },
+   {
+    "source_bank": "ANZ Research",
+    "figure": "177%",
+    "metric": "Global commodity exchange inventory growth over 12 months",
+    "context": "Headline growth masks a bifurcation between US and non-US stocks."
+   },
+   {
+    "source_bank": "ANZ Research",
+    "figure": "1.25mt",
+    "metric": "Total copper held on global commodity exchanges",
+    "context": "Current level after 12-month surge."
+   },
+   {
+    "source_bank": "ANZ Research",
+    "figure": "3m tonnes",
+    "metric": "Global seaborne acid market supply reduction",
+    "context": "Result of China's export suspension from May to December 2026."
+   },
+   {
+    "source_bank": "ANZ Research",
+    "figure": "USD500/t",
+    "metric": "LME premium over COMEX required for US re-export",
+    "context": "Threshold for US-held metal to become economically viable for global export."
+   },
+   {
+    "source_bank": "ANZ Research",
+    "figure": "1.2% y/y",
+    "metric": "2026 marginal copper supply growth",
+    "context": "Forecasted growth rate."
+   },
+   {
+    "source_bank": "ANZ Research",
+    "figure": "323kt",
+    "metric": "2026 inventory drawdown",
+    "context": "Projected deficit impact."
+   },
+   {
+    "source_bank": "ANZ Research",
+    "figure": "27%",
+    "metric": "Net firms planning to increase prices (April NFIB survey)",
+    "context": "Significantly below the 50-55% range seen during 2021-22."
+   },
+   {
+    "source_bank": "ANZ Research",
+    "figure": "0.84:1",
+    "metric": "S&P PMI output to input prices ratio (May)",
+    "context": "Lowest since late 2021, indicating margin compression."
+   },
+   {
+    "source_bank": "ANZ Research",
+    "figure": "3.9%",
+    "metric": "University of Michigan longer-run inflation expectations (May)",
+    "context": "Up 0.6ppt since January."
+   },
+   {
+    "source_bank": "EIA",
+    "figure": "7.97m barrels",
+    "metric": "Weekly US commercial crude oil inventory draw",
+    "context": "Weekly decline"
+   },
+   {
+    "source_bank": "EIA",
+    "figure": "32m barrels",
+    "metric": "Total inventory draw over the last month and a half",
+    "context": "Cumulative decline"
+   },
+   {
+    "source_bank": "EIA",
+    "figure": "15.97m barrels",
+    "metric": "Total crude inventory decline including SPR releases",
+    "context": "Weekly decline"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "262.2TWh",
+    "metric": "TTF net long positioning",
+    "context": "Current fund positioning"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "$14,000/t",
+    "metric": "LME copper price level",
+    "context": "Retreated below this level"
+   },
+   {
+    "source_bank": "World Gold Council",
+    "figure": "17 tonnes",
+    "metric": "Net central bank gold purchases in April",
+    "context": "Return to net buying vs March"
+   },
+   {
+    "source_bank": "CONAB",
+    "figure": "45.8m bags",
+    "metric": "Brazil arabica production forecast",
+    "context": "+28% year-on-year"
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "16th June",
+    "metric": "BoJ policy meeting date",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "-1.0% to +0.5%",
+    "metric": "Assumed appropriate R* range",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "20bps",
+    "metric": "2-year UST bond yield increase since beginning of May",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "14%",
+    "metric": "Crude oil price drop since beginning of May",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "122k",
+    "metric": "ADP employment gain",
+    "context": "Broadly in line with consensus"
+   },
+   {
+    "source_bank": "Richmond Fed",
+    "figure": "$845",
+    "metric": "Increase in annual cost of driving for average US household",
+    "context": "Pre-conflict vs current cost"
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "1.6%",
+    "metric": "Q1 2026 GDP growth",
+    "context": "Revised lower from initial expectations."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "150% YoY",
+    "metric": "Printed circuit assembly manufacturing prices",
+    "context": "Reflects surge in semiconductor demand."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "12.5bps",
+    "metric": "Forecast shift for 2026 rates",
+    "context": "Shifted up to reflect Fed on hold for longer."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "72 bps",
+    "metric": "IG Credit Spreads",
+    "context": "Last reading as of 6/1/2026."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4%",
+    "metric": "US spec-grade default rate",
+    "context": "Well above 20-year median of 2.9%"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.6%",
+    "metric": "European spec-grade default rate",
+    "context": "Exceeding 20-year median of 2.3%"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "45%",
+    "metric": "B-rated Euro HY issuers becoming FCF negative",
+    "context": "Risk scenario if funding costs rise by 50bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "54.5",
+    "metric": "ISM services index",
+    "context": "vs 53.8 expected"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+122k",
+    "metric": "ADP private payrolls",
+    "context": "16-month high vs +120k expected"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "81%",
+    "metric": "Probability of Fed rate hike by December",
+    "context": "up from 71% previous day"
+   },
+   {
+    "source_bank": "Polymarket",
+    "figure": "34%",
+    "metric": "Probability of normal traffic in Strait of Hormuz by end of July",
+    "context": "down from 39% previous day"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "3.18%",
+    "metric": "US 1yr inflation swap",
+    "context": "+6.8bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u00a3443m",
+    "metric": "DiscoverIE Revenue",
+    "context": "+5% yoy"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "13.8%",
+    "metric": "DiscoverIE EBIT margin",
+    "context": "-50bp"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "E1.6-1.85bn",
+    "metric": "Voestalpine FY26/27 EBITDA guidance",
+    "context": "Includes E0.1bn positive item"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u20ac8,750m",
+    "metric": "Inditex 1Q26 sales",
+    "context": "+5.8% yoy"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "61.2%",
+    "metric": "Inditex Gross margin",
+    "context": "+67 bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "7.7%",
+    "metric": "Zegona annual cash returns",
+    "context": "Expected by 2029"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$163bn",
+    "metric": "May US IG supply",
+    "context": "Part of busy May issuance"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$1 trillion",
+    "metric": "Rolling six-month US IG gross supply",
+    "context": "First time since September 2020"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16B",
+    "metric": "Broadcom 3Q26 AI chip sales projection",
+    "context": "vs street estimate of $17.2B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$56B",
+    "metric": "Broadcom FY AI chip revenue guidance",
+    "context": "vs street estimate of $57.6B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11x",
+    "metric": "European classifieds sector EBITDA multiple",
+    "context": "vs historical 19x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "80.6M",
+    "metric": "Pershing Square UMG stake sold",
+    "context": "8.7% stake at 8% discount"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$35B",
+    "metric": "Alphabet equity capital raise",
+    "context": "Largest US equity capital raise in history"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Prosus discount to NAV",
+    "context": "vs historical average of 40%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "c.7%",
+    "metric": "Alstom mid-term margin forecast",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12-18%",
+    "metric": "Wartsila FY26-29E adj EBIT increase",
+    "context": "reflects capacity increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "9%/11%",
+    "metric": "Barry Callebaut FY27/28 EPS forecast cut",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac0.75",
+    "metric": "Remy dividend",
+    "context": "halved from consensus \u20ac1.3"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "350",
+    "metric": "EUR/HUF target",
+    "context": "Initial move target for short EUR/HUF trade."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "175bps",
+    "metric": "HUF 5y5y Swap vs Euro",
+    "context": "Current valuation vs 20-year average of 290bps."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12,000",
+    "metric": "KOSPI index target",
+    "context": "Implies 37% price return."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8x",
+    "metric": "Forward P/E multiple",
+    "context": "Conservative estimate for Korea."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "320%",
+    "metric": "EPS growth estimate",
+    "context": "Forecast for Korea in 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$8B",
+    "metric": "Offer value for DVN Marcellus assets",
+    "context": "Reported by Reuters"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "16.1 million",
+    "metric": "May 2026 U.S. Auto SAAR",
+    "context": "vs 16.0 million consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "47 days",
+    "metric": "Days' supply of vehicles",
+    "context": "Down 4 days sequentially"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1B",
+    "metric": "TransAlta Colorado acquisition value",
+    "context": "Includes $750M debt and $250M equity"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "C$110 million",
+    "metric": "Expected annual EBITDA from new TransAlta assets",
+    "context": "Brings pro-forma EBITDA to C$700M range"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "51%",
+    "metric": "J.P. Morgan Global Equity Research Coverage Overweight rating distribution",
+    "context": "As of April 04, 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "37%",
+    "metric": "J.P. Morgan Global Equity Research Coverage Neutral rating distribution",
+    "context": "As of April 04, 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12%",
+    "metric": "J.P. Morgan Global Equity Research Coverage Underweight rating distribution",
+    "context": "As of April 04, 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Projected increase in net equity issuance for 2026",
+    "context": "Reflects true equity supply."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1.3tr",
+    "metric": "Projected increase in share count in 2027",
+    "context": "Reflects mechanical reclassification by index providers."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "78th %-tile",
+    "metric": "AxJ long/short ratio",
+    "context": "Since 2018."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100th %-tile",
+    "metric": "Broad Japan TPM",
+    "context": "Since 2015."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "6%",
+    "metric": "Underperformance of Refinancing Risk basket vs Well Positioned names",
+    "context": "Year to date."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$21.6bn",
+    "metric": "Dealer long gamma",
+    "context": "Largest number recalled; mutes realized volatility."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.5%",
+    "metric": "26Q2 GDP forecast",
+    "context": "Upgraded from 1.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.3%",
+    "metric": "Unemployment rate (U.3) forecast",
+    "context": "Matches prior print."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "122k",
+    "metric": "ADP Employment Change",
+    "context": "Vs 120k survey; 105k prior."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "43%",
+    "metric": "1Q26 12M forward EPS estimate revision for MSCI ACWI IT Index",
+    "context": "Upward revision during 1Q26 earnings season."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "49%",
+    "metric": "12-month gain for MSCI USA IT Index",
+    "context": "Supported by 63.4% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "182.7%",
+    "metric": "12-month gain for MSCI EM IT Index",
+    "context": "Driven by 209% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "20%",
+    "metric": "Valuation expansion for MSCI Europe IT Index",
+    "context": "Contrasts with US/EM valuation compression."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "54-45",
+    "metric": "Senate confirmation vote for Kevin Warsh",
+    "context": "Most divisive in the history of the central bank."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.8%",
+    "metric": "Headline PCE inflation in April",
+    "context": "Materially higher than target."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.50-3.75%",
+    "metric": "Target range for federal funds rate",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "40%",
+    "metric": "EU gas storage level",
+    "context": "End of May 2026, well below seasonal norms."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "17%",
+    "metric": "S&P 500 recovery from March lows",
+    "context": "Reflects market resilience."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "50%",
+    "metric": "Crude oil price increase",
+    "context": "Resulting from the closure of the Strait of Hormuz."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "0.7%",
+    "metric": "2026 Euro area real GDP growth",
+    "context": "Downgraded from 1.2%."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "1.4 trillion barrels",
+    "metric": "Chinese oil reserves",
+    "context": "Sufficient to cope with SOH disruption for up to a year."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "10.6%",
+    "metric": "Finland trend unemployment rate",
+    "context": "Highest level since 1999."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "93.3%",
+    "metric": "Finland 2027 public debt-to-GDP ratio",
+    "context": "Rising from 88.5% in 2025."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "$82bn",
+    "metric": "Google capital increase",
+    "context": "To finance massive AI investments."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "3.2%",
+    "metric": "Eurozone CPI YoY",
+    "context": "Accelerated from 3.0% in April."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "7.6 million",
+    "metric": "US Job Openings",
+    "context": "April reading, higher than anticipated."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "34.35%",
+    "metric": "UniCredit stake in Commerzbank",
+    "context": "Increased from initial stake of 26.77%."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "25bp",
+    "metric": "ECB rate hike expectation",
+    "context": "Virtually a certainty for next week."
+   },
+   {
+    "source_bank": "CNN",
+    "figure": "$40-50B",
+    "metric": "Estimated cost of Iranian strikes on US military bases",
+    "context": "Significantly higher than the Pentagon's stated $25B."
+   },
+   {
+    "source_bank": "EIA",
+    "figure": "10.5M b/d",
+    "metric": "Crude oil production shut-in in April",
+    "context": "Collective shut-in across Iraq, Saudi Arabia, Kuwait, UAE, Qatar, and Bahrain."
+   },
+   {
+    "source_bank": "SEB",
+    "figure": "1.82M",
+    "metric": "Rial per USD",
+    "context": "Open market exchange rate."
+   },
+   {
+    "source_bank": "CSIS",
+    "figure": "3+ years",
+    "metric": "Replenishment time for Tomahawk missiles",
+    "context": "Estimated return to prewar inventory levels."
+   }
+  ]
+ },
+ "middle east geopolitical risk": {
+  "theme": "middle east geopolitical risk",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 10
+  },
+  "theme_stances": [
+   {
+    "source": "Bank of America",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Iran war",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Iran war"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Iran war oil price shock",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Iran war oil price shock"
+   },
+   {
+    "source": "BofA Global Research",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Iran war impact on rate expectations",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Iran war impact on rate expectations"
+   },
+   {
+    "source": "Citi",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Iran-US conflict energy market impact",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Iran-US conflict energy market impact"
+   },
+   {
+    "source": "Danske Bank",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East conflict supply chain impact",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East conflict supply chain impact"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East tensions impact on equities",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East tensions impact on equities"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East conflict de-risking",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East conflict de-risking"
+   },
+   {
+    "source": "Mizuho Securities",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East conflict oil supply shock",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East conflict oil supply shock"
+   },
+   {
+    "source": "RBC Capital Markets",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East geopolitical risk premium",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East geopolitical risk premium"
+   },
+   {
+    "source": "UniCredit",
+    "theme": "middle east geopolitical risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Iran war energy price shock",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Iran war energy price shock"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Bank of America",
+    "figure": "8.5",
+    "metric": "BofA Bull and Bear Indicator",
+    "context": "Spiked from 8.0 last week; approaching highest reading on record."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "29x",
+    "metric": "S&P 500 trailing PE",
+    "context": "Described as based on laughable projections."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "4%",
+    "metric": "S&P 500 stocks at new highs",
+    "context": "Comparison to 20 stocks at the Mar 2000 internet bubble top."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "31",
+    "metric": "Global YTD rate cuts",
+    "context": "Outpacing 12 hikes."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "$3 trillion",
+    "metric": "IPOs on deck",
+    "context": "Reason to wait before cutting longs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+2pts",
+    "metric": "Gross positioning increase",
+    "context": "Reached 5-year high"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "60-day",
+    "metric": "ceasefire extension duration",
+    "context": "Proposed framework for US-Iran deal"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "7,500",
+    "metric": "S&P 500 support level",
+    "context": "Key level for mechanical support from dealer hedging flows."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+90",
+    "metric": "Median Skew Rank for top stocks",
+    "context": "Extreme level indicating high demand for calls."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+30",
+    "metric": "Median IV Rank for top stocks",
+    "context": "Elevated due to massive upside realized vol."
+   },
+   {
+    "source_bank": "SpotGamma",
+    "figure": "<8",
+    "metric": "Implied one-month correlation",
+    "context": "Warning sign for index drawdown risk."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~85%",
+    "metric": "S&P 500 rally since ChatGPT introduction",
+    "context": "Nov 30, 2022 to Jun 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$340",
+    "metric": "2026 S&P EPS forecast",
+    "context": "~52% higher than pre-AI forward expectations"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~323%",
+    "metric": "Hedge fund gross leverage",
+    "context": "Fresh 5-year high, +2.1pts weekly increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">$60bn",
+    "metric": "Global levered/inverse single-stock ETF AUM",
+    "context": "Doubled since early April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~24x",
+    "metric": "Potential increase in token consumption from Agentic AI",
+    "context": "Estimate from GS Technology Research"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "80",
+    "metric": "Low NA EUV units guidance for 2027",
+    "context": "Previous company guidance"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "90",
+    "metric": "EUV tool capacity",
+    "context": "Previously guided ceiling"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "110",
+    "metric": "Low NA EUV tools capacity potential",
+    "context": "JPM estimate of potential without new buildings"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "38%",
+    "metric": "Irish household financial assets in cash",
+    "context": "Vs EU average of 30%"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "c20%",
+    "metric": "Total household deposit beta",
+    "context": "Lowest in Europe"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "\u20ac5bn",
+    "metric": "Year 1 SIA subscriptions",
+    "context": "Estimate based on UK ISA framework"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1-2%",
+    "metric": "PBT 2028E impact",
+    "context": "Year 1 headwind from SIA"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "c35%",
+    "metric": "German defence stocks decline",
+    "context": "Year-to-date or recent period"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+20%",
+    "metric": "2027 defence budget increase",
+    "context": "Vs prior"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "3.7ppt",
+    "metric": "Growth 10 screen YTD underperformance vs S&P 500 Growth",
+    "context": "As of 5/31/2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "4.9ppt",
+    "metric": "Value 10 screen YTD outperformance vs S&P 500 Value",
+    "context": "As of 5/31/2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "52.6",
+    "metric": "AppLovin Next 5-Yr EPS Growth",
+    "context": ""
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "4.5",
+    "metric": "Allstate Corp. Trailing 12-Month PE",
+    "context": ""
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "95k",
+    "metric": "May NFP forecast",
+    "context": "vs 85k consensus"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "4.3%",
+    "metric": "Unemployment rate forecast",
+    "context": "unchanged"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "5-6bp",
+    "metric": "Implied 10y yield move",
+    "context": "lower than April's 6-6.5bp"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "35bps",
+    "metric": "Market priced rate hikes over next 1Y",
+    "context": "up from 5-6bps prior to last month's NFP"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "7th percentile",
+    "metric": "DXY 3-month trading range",
+    "context": "since 2000"
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "3.4m b/d",
+    "metric": "2Q26 oil market deficit",
+    "context": "Projected deficit before returning to balanced market in 2027."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "10%",
+    "metric": "1Q26 oil productivity",
+    "context": "Above trailing three-year average in New Mexico and Texas."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "23%",
+    "metric": "Haynesville cycle time improvement",
+    "context": "Wells completed faster since 2022 despite longer laterals."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "12%",
+    "metric": "Per-foot well cost reduction",
+    "context": "Since 2022."
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "5.0%",
+    "metric": "MSCI AC World Index rally in May",
+    "context": "Performance of the aggregate index vs. individual stock performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "25%",
+    "metric": "Proportion of stocks outperforming the aggregate index",
+    "context": "Measure of market breadth"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "39%",
+    "metric": "Proportion of Active funds outperforming benchmarks",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "-0.54%",
+    "metric": "Median relative return of Active funds",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "26%",
+    "metric": "Proportion of Value funds outperforming",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "29%",
+    "metric": "Proportion of High ASR funds outperforming",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$80B",
+    "metric": "Alphabet secondary equity issuance",
+    "context": "Would shift Q4 2025 net equity supply from -$44B to +$40B."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$126B",
+    "metric": "Alphabet cash and marketable securities",
+    "context": "As of March 31st."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20%",
+    "metric": "Return on equity",
+    "context": "Currently near a record high."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Top 10 weights in SPX",
+    "context": "Current index concentration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "700bps",
+    "metric": "S&P names excluding AI lag",
+    "context": "YTD performance gap"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$60B",
+    "metric": "Global levered/inverse single-stock ETF AUM",
+    "context": "Doubled in 2 months"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12.9",
+    "metric": "Vol for SPX Aug 8000 calls",
+    "context": "Desk preference"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "322.9%",
+    "metric": "Hedge Fund Global Book Gross Leverage",
+    "context": "5-year high"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "59.8%",
+    "metric": "Fundamental L/S Net Leverage",
+    "context": "99th percentile 1-year"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$93bn",
+    "metric": "CTA Global Equities Length",
+    "context": "62.3rd percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.13",
+    "metric": "Goldman Risk Appetite Indicator",
+    "context": "Highest level on record"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.38",
+    "metric": "Vol Panic Index",
+    "context": "Approaching lowest on record"
+   },
+   {
+    "source_bank": "CNN",
+    "figure": "59/100",
+    "metric": "CNN Fear and Greed Index",
+    "context": "Greed territory"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-22%",
+    "metric": "Brent futures decline from late March peak",
+    "context": "vs late March peak"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6%",
+    "metric": "Global jet fuel demand nowcast below trend",
+    "context": "May 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-14pp",
+    "metric": "Utilization rates of Asian ethylene plants",
+    "context": "since February"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-0.15mb/d",
+    "metric": "India naphtha and LPG demand",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-20%",
+    "metric": "China gasoline retail sales volumes",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-8%",
+    "metric": "Western Europe retail car fuel sales volumes",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2mb/d",
+    "metric": "Downside risk to April oil demand estimates",
+    "context": "implied by China and Western Europe retail sales"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$10/bbl",
+    "metric": "Downside risk to 2026Q4 Brent forecast",
+    "context": "assuming half of demand downside persists"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "-23%",
+    "metric": "China oil imports",
+    "context": "vs pre-conflict trend"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$25B",
+    "metric": "Microsoft 2026 capex attributed to component pricing",
+    "context": ""
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$700B",
+    "metric": "Total AI buildout spend this year",
+    "context": ""
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~60%",
+    "metric": "Micron DRAM price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~70%",
+    "metric": "Micron NAND price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$80B",
+    "metric": "Microsoft unfilled Azure orders",
+    "context": "As of 2026"
+   },
+   {
+    "source_bank": "Pimco",
+    "figure": "94%",
+    "metric": "Capex as % of operating cash flow",
+    "context": "Next two years"
+   },
+   {
+    "source_bank": "Bain",
+    "figure": "$2T",
+    "metric": "Annual revenue required to justify data-center buildout",
+    "context": "By 2030"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$20B",
+    "metric": "Current AI revenues",
+    "context": "Three years post-ChatGPT launch"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "50-60 bps",
+    "metric": "Rate cuts removed from 2026 expectations",
+    "context": "Since the Iran war began"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20 bps",
+    "metric": "Rate hikes added to 2026 expectations",
+    "context": "Replacement for previous cut expectations"
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "130",
+    "metric": "April US LNG shipments",
+    "context": "Receded from March record levels"
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "113",
+    "metric": "May US LNG shipments",
+    "context": "Identical to May 2025 levels"
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "13%",
+    "metric": "Sylvania Platinum spot FCF yield",
+    "context": ""
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "0.6x",
+    "metric": "Sylvania Platinum NAV valuation",
+    "context": ""
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "6-7 Bcf/d",
+    "metric": "Expected data center natural gas demand by 2030s",
+    "context": ""
+   },
+   {
+    "source_bank": "Mizuho Securities",
+    "figure": "90%",
+    "metric": "OIS-implied probability of June rate hike",
+    "context": "As of June 3, 2026."
+   },
+   {
+    "source_bank": "Jiji Press",
+    "figure": "1%",
+    "metric": "Potential policy rate target",
+    "context": "Reported target for June meeting."
+   },
+   {
+    "source_bank": "Mizuho Securities",
+    "figure": "JPY0.2 trillion",
+    "metric": "Current quarterly decrement for monthly JGB purchases",
+    "context": "Current pace of tapering."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16B",
+    "metric": "Broadcom 3Q26 AI chip sales projection",
+    "context": "vs street estimate of $17.2B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$56B",
+    "metric": "Broadcom FY AI chip revenue guidance",
+    "context": "vs street estimate of $57.6B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11x",
+    "metric": "European classifieds sector EBITDA multiple",
+    "context": "vs historical 19x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "80.6M",
+    "metric": "Pershing Square UMG stake sold",
+    "context": "8.7% stake at 8% discount"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$35B",
+    "metric": "Alphabet equity capital raise",
+    "context": "Largest US equity capital raise in history"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Prosus discount to NAV",
+    "context": "vs historical average of 40%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "c.7%",
+    "metric": "Alstom mid-term margin forecast",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12-18%",
+    "metric": "Wartsila FY26-29E adj EBIT increase",
+    "context": "reflects capacity increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "9%/11%",
+    "metric": "Barry Callebaut FY27/28 EPS forecast cut",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac0.75",
+    "metric": "Remy dividend",
+    "context": "halved from consensus \u20ac1.3"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "350",
+    "metric": "EUR/HUF target",
+    "context": "Initial move target for short EUR/HUF trade."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "175bps",
+    "metric": "HUF 5y5y Swap vs Euro",
+    "context": "Current valuation vs 20-year average of 290bps."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12,000",
+    "metric": "KOSPI index target",
+    "context": "Implies 37% price return."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8x",
+    "metric": "Forward P/E multiple",
+    "context": "Conservative estimate for Korea."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "320%",
+    "metric": "EPS growth estimate",
+    "context": "Forecast for Korea in 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$8B",
+    "metric": "Offer value for DVN Marcellus assets",
+    "context": "Reported by Reuters"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "16.1 million",
+    "metric": "May 2026 U.S. Auto SAAR",
+    "context": "vs 16.0 million consensus"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "47 days",
+    "metric": "Days' supply of vehicles",
+    "context": "Down 4 days sequentially"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1B",
+    "metric": "TransAlta Colorado acquisition value",
+    "context": "Includes $750M debt and $250M equity"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "C$110 million",
+    "metric": "Expected annual EBITDA from new TransAlta assets",
+    "context": "Brings pro-forma EBITDA to C$700M range"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "51%",
+    "metric": "J.P. Morgan Global Equity Research Coverage Overweight rating distribution",
+    "context": "As of April 04, 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "37%",
+    "metric": "J.P. Morgan Global Equity Research Coverage Neutral rating distribution",
+    "context": "As of April 04, 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12%",
+    "metric": "J.P. Morgan Global Equity Research Coverage Underweight rating distribution",
+    "context": "As of April 04, 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Projected increase in net equity issuance for 2026",
+    "context": "Reflects true equity supply."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1.3tr",
+    "metric": "Projected increase in share count in 2027",
+    "context": "Reflects mechanical reclassification by index providers."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "78th %-tile",
+    "metric": "AxJ long/short ratio",
+    "context": "Since 2018."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100th %-tile",
+    "metric": "Broad Japan TPM",
+    "context": "Since 2015."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "6%",
+    "metric": "Underperformance of Refinancing Risk basket vs Well Positioned names",
+    "context": "Year to date."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$21.6bn",
+    "metric": "Dealer long gamma",
+    "context": "Largest number recalled; mutes realized volatility."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.5%",
+    "metric": "26Q2 GDP forecast",
+    "context": "Upgraded from 1.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.3%",
+    "metric": "Unemployment rate (U.3) forecast",
+    "context": "Matches prior print."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "122k",
+    "metric": "ADP Employment Change",
+    "context": "Vs 120k survey; 105k prior."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "+10%",
+    "metric": "Tencent share price reaction",
+    "context": "Post-news of WeChat AI agent launch"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "70,000",
+    "metric": "Nikkei year-end target",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "-4%",
+    "metric": "PZU 2026 EPS estimate revision",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "DKK31,200m",
+    "metric": "DSV 2027E adj. EBIT",
+    "context": "c.4% above BBG consensus"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "8.0x YoY",
+    "metric": "Kioxia FY3/27 OP growth",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "9-10%",
+    "metric": "Normalized annual top-line recurring revenue growth range for EQIX",
+    "context": "High end of range expected this year"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "13%",
+    "metric": "Big OFS revenue growth",
+    "context": "In a $75 WTI/$80 Brent environment"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "31%",
+    "metric": "HAL EBITDA growth",
+    "context": "At $75 WTI"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "+19% / +29%",
+    "metric": "Lilly 3-year revenue / adjusted EPS CAGR",
+    "context": "Vs peers +5% / +9%"
+   },
+   {
+    "source_bank": "IBM",
+    "figure": "$10B",
+    "metric": "IBM quantum investment",
+    "context": "Over 5 years"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": ">50%",
+    "metric": "Livdelzi 2L PBC therapy market share",
+    "context": "Leading position"
+   },
+   {
+    "source_bank": "Treasury",
+    "figure": "$1 trillion",
+    "metric": "TGA balance",
+    "context": "Potential reach by July-end"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "$93/lb",
+    "metric": "Long-term uranium price",
+    "context": "Increased m/m"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "9%",
+    "metric": "FCFY to equity for Fertiglobe",
+    "context": "Resilient returns offering under mid-cycle conditions."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "16%",
+    "metric": "Share price fall for Partners Group",
+    "context": "Following the gating of the Global Value SICAV."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "+240bps/-50bps/+140bps",
+    "metric": "Gross margin expansion forecast for PUMA SE",
+    "context": "FY26/27/28e respectively."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "43%",
+    "metric": "1Q26 12M forward EPS estimate revision for MSCI ACWI IT Index",
+    "context": "Upward revision during 1Q26 earnings season."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "49%",
+    "metric": "12-month gain for MSCI USA IT Index",
+    "context": "Supported by 63.4% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "182.7%",
+    "metric": "12-month gain for MSCI EM IT Index",
+    "context": "Driven by 209% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "20%",
+    "metric": "Valuation expansion for MSCI Europe IT Index",
+    "context": "Contrasts with US/EM valuation compression."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "54-45",
+    "metric": "Senate confirmation vote for Kevin Warsh",
+    "context": "Most divisive in the history of the central bank."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.8%",
+    "metric": "Headline PCE inflation in April",
+    "context": "Materially higher than target."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.50-3.75%",
+    "metric": "Target range for federal funds rate",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "40%",
+    "metric": "EU gas storage level",
+    "context": "End of May 2026, well below seasonal norms."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "17%",
+    "metric": "S&P 500 recovery from March lows",
+    "context": "Reflects market resilience."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "50%",
+    "metric": "Crude oil price increase",
+    "context": "Resulting from the closure of the Strait of Hormuz."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "0.7%",
+    "metric": "2026 Euro area real GDP growth",
+    "context": "Downgraded from 1.2%."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "1.4 trillion barrels",
+    "metric": "Chinese oil reserves",
+    "context": "Sufficient to cope with SOH disruption for up to a year."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "10.6%",
+    "metric": "Finland trend unemployment rate",
+    "context": "Highest level since 1999."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "93.3%",
+    "metric": "Finland 2027 public debt-to-GDP ratio",
+    "context": "Rising from 88.5% in 2025."
+   }
+  ]
+ },
+ "ceasefire impact and negotiations": {
+  "theme": "ceasefire impact and negotiations",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 7
+  },
+  "theme_stances": [
+   {
+    "source": "Citi",
+    "theme": "ceasefire impact and negotiations",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Israel-Lebanon ceasefire impact on regional stability",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Israel-Lebanon ceasefire impact on regional stability"
+   },
+   {
+    "source": "Danske Bank",
+    "theme": "ceasefire impact and negotiations",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East ceasefire impact on crude oil",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East ceasefire impact on crude oil"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "ceasefire impact and negotiations",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-brokered Israel-Lebanon ceasefire",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-brokered Israel-Lebanon ceasefire"
+   },
+   {
+    "source": "ING",
+    "theme": "ceasefire impact and negotiations",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Israel-Lebanon ceasefire agreement",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Israel-Lebanon ceasefire agreement"
+   },
+   {
+    "source": "MUFG",
+    "theme": "ceasefire impact and negotiations",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran talks and ceasefire impact on oil",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran talks and ceasefire impact on oil"
+   },
+   {
+    "source": "Mizuho International Plc",
+    "theme": "ceasefire impact and negotiations",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran ceasefire agreement",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran ceasefire agreement"
+   },
+   {
+    "source": "UniCredit",
+    "theme": "ceasefire impact and negotiations",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran ceasefire negotiations",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran ceasefire negotiations"
+   },
+   {
+    "source": "Citi",
+    "theme": "ceasefire impact and negotiations",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-China trade war ceasefire",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-China trade war ceasefire"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "EIA",
+    "figure": "7.97m barrels",
+    "metric": "Weekly US commercial crude oil inventory draw",
+    "context": "Weekly decline"
+   },
+   {
+    "source_bank": "EIA",
+    "figure": "32m barrels",
+    "metric": "Total inventory draw over the last month and a half",
+    "context": "Cumulative decline"
+   },
+   {
+    "source_bank": "EIA",
+    "figure": "15.97m barrels",
+    "metric": "Total crude inventory decline including SPR releases",
+    "context": "Weekly decline"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "262.2TWh",
+    "metric": "TTF net long positioning",
+    "context": "Current fund positioning"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "$14,000/t",
+    "metric": "LME copper price level",
+    "context": "Retreated below this level"
+   },
+   {
+    "source_bank": "World Gold Council",
+    "figure": "17 tonnes",
+    "metric": "Net central bank gold purchases in April",
+    "context": "Return to net buying vs March"
+   },
+   {
+    "source_bank": "CONAB",
+    "figure": "45.8m bags",
+    "metric": "Brazil arabica production forecast",
+    "context": "+28% year-on-year"
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "16th June",
+    "metric": "BoJ policy meeting date",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "-1.0% to +0.5%",
+    "metric": "Assumed appropriate R* range",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "20bps",
+    "metric": "2-year UST bond yield increase since beginning of May",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "14%",
+    "metric": "Crude oil price drop since beginning of May",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "122k",
+    "metric": "ADP employment gain",
+    "context": "Broadly in line with consensus"
+   },
+   {
+    "source_bank": "Richmond Fed",
+    "figure": "$845",
+    "metric": "Increase in annual cost of driving for average US household",
+    "context": "Pre-conflict vs current cost"
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "1.6%",
+    "metric": "Q1 2026 GDP growth",
+    "context": "Revised lower from initial expectations."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "150% YoY",
+    "metric": "Printed circuit assembly manufacturing prices",
+    "context": "Reflects surge in semiconductor demand."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "12.5bps",
+    "metric": "Forecast shift for 2026 rates",
+    "context": "Shifted up to reflect Fed on hold for longer."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "72 bps",
+    "metric": "IG Credit Spreads",
+    "context": "Last reading as of 6/1/2026."
+   },
+   {
+    "source_bank": "Mizuho International Plc",
+    "figure": "5.00%",
+    "metric": "30Y UST yield level",
+    "context": "Briefly breached this level during yesterday's session."
+   },
+   {
+    "source_bank": "Mizuho International Plc",
+    "figure": "3.00%",
+    "metric": "10Y Bund yield level",
+    "context": "Move above this level suggests persistent inflation/energy shock pricing."
+   },
+   {
+    "source_bank": "Mizuho International Plc",
+    "figure": "4.40-4.50%",
+    "metric": "10Y UST yield consolidation range",
+    "context": "Expected range into NFP."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4%",
+    "metric": "US spec-grade default rate",
+    "context": "Well above 20-year median of 2.9%"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.6%",
+    "metric": "European spec-grade default rate",
+    "context": "Exceeding 20-year median of 2.3%"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "45%",
+    "metric": "B-rated Euro HY issuers becoming FCF negative",
+    "context": "Risk scenario if funding costs rise by 50bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "54.5",
+    "metric": "ISM services index",
+    "context": "vs 53.8 expected"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+122k",
+    "metric": "ADP private payrolls",
+    "context": "16-month high vs +120k expected"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "81%",
+    "metric": "Probability of Fed rate hike by December",
+    "context": "up from 71% previous day"
+   },
+   {
+    "source_bank": "Polymarket",
+    "figure": "34%",
+    "metric": "Probability of normal traffic in Strait of Hormuz by end of July",
+    "context": "down from 39% previous day"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "3.18%",
+    "metric": "US 1yr inflation swap",
+    "context": "+6.8bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u00a3443m",
+    "metric": "DiscoverIE Revenue",
+    "context": "+5% yoy"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "13.8%",
+    "metric": "DiscoverIE EBIT margin",
+    "context": "-50bp"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "E1.6-1.85bn",
+    "metric": "Voestalpine FY26/27 EBITDA guidance",
+    "context": "Includes E0.1bn positive item"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u20ac8,750m",
+    "metric": "Inditex 1Q26 sales",
+    "context": "+5.8% yoy"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "61.2%",
+    "metric": "Inditex Gross margin",
+    "context": "+67 bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "7.7%",
+    "metric": "Zegona annual cash returns",
+    "context": "Expected by 2029"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$163bn",
+    "metric": "May US IG supply",
+    "context": "Part of busy May issuance"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$1 trillion",
+    "metric": "Rolling six-month US IG gross supply",
+    "context": "First time since September 2020"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "+10%",
+    "metric": "Tencent share price reaction",
+    "context": "Post-news of WeChat AI agent launch"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "70,000",
+    "metric": "Nikkei year-end target",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "-4%",
+    "metric": "PZU 2026 EPS estimate revision",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "DKK31,200m",
+    "metric": "DSV 2027E adj. EBIT",
+    "context": "c.4% above BBG consensus"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "8.0x YoY",
+    "metric": "Kioxia FY3/27 OP growth",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "9-10%",
+    "metric": "Normalized annual top-line recurring revenue growth range for EQIX",
+    "context": "High end of range expected this year"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "13%",
+    "metric": "Big OFS revenue growth",
+    "context": "In a $75 WTI/$80 Brent environment"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "31%",
+    "metric": "HAL EBITDA growth",
+    "context": "At $75 WTI"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "+19% / +29%",
+    "metric": "Lilly 3-year revenue / adjusted EPS CAGR",
+    "context": "Vs peers +5% / +9%"
+   },
+   {
+    "source_bank": "IBM",
+    "figure": "$10B",
+    "metric": "IBM quantum investment",
+    "context": "Over 5 years"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": ">50%",
+    "metric": "Livdelzi 2L PBC therapy market share",
+    "context": "Leading position"
+   },
+   {
+    "source_bank": "Treasury",
+    "figure": "$1 trillion",
+    "metric": "TGA balance",
+    "context": "Potential reach by July-end"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "$93/lb",
+    "metric": "Long-term uranium price",
+    "context": "Increased m/m"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "9%",
+    "metric": "FCFY to equity for Fertiglobe",
+    "context": "Resilient returns offering under mid-cycle conditions."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "16%",
+    "metric": "Share price fall for Partners Group",
+    "context": "Following the gating of the Global Value SICAV."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "+240bps/-50bps/+140bps",
+    "metric": "Gross margin expansion forecast for PUMA SE",
+    "context": "FY26/27/28e respectively."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "43%",
+    "metric": "1Q26 12M forward EPS estimate revision for MSCI ACWI IT Index",
+    "context": "Upward revision during 1Q26 earnings season."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "49%",
+    "metric": "12-month gain for MSCI USA IT Index",
+    "context": "Supported by 63.4% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "182.7%",
+    "metric": "12-month gain for MSCI EM IT Index",
+    "context": "Driven by 209% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "20%",
+    "metric": "Valuation expansion for MSCI Europe IT Index",
+    "context": "Contrasts with US/EM valuation compression."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "54-45",
+    "metric": "Senate confirmation vote for Kevin Warsh",
+    "context": "Most divisive in the history of the central bank."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.8%",
+    "metric": "Headline PCE inflation in April",
+    "context": "Materially higher than target."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.50-3.75%",
+    "metric": "Target range for federal funds rate",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "40%",
+    "metric": "EU gas storage level",
+    "context": "End of May 2026, well below seasonal norms."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "17%",
+    "metric": "S&P 500 recovery from March lows",
+    "context": "Reflects market resilience."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "50%",
+    "metric": "Crude oil price increase",
+    "context": "Resulting from the closure of the Strait of Hormuz."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "0.7%",
+    "metric": "2026 Euro area real GDP growth",
+    "context": "Downgraded from 1.2%."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "1.4 trillion barrels",
+    "metric": "Chinese oil reserves",
+    "context": "Sufficient to cope with SOH disruption for up to a year."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "10.6%",
+    "metric": "Finland trend unemployment rate",
+    "context": "Highest level since 1999."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "93.3%",
+    "metric": "Finland 2027 public debt-to-GDP ratio",
+    "context": "Rising from 88.5% in 2025."
+   }
+  ]
+ },
+ "ai driven equity momentum": {
+  "theme": "ai driven equity momentum",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 1,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "Bloomberg",
+    "theme": "ai-driven momentum",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "AI-driven momentum and a solid earnings season are currently strong enough to absorb macro hurdles.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "AI-driven momentum and broader positive index level gamma backdrop are keeping the S&P 500 supported"
+   },
+   {
+    "source": "Citadel Securities",
+    "theme": "AI-driven inflation",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "AI may prove inflationary before it becomes deflationary due to implementation expenses and organizational disruption.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "AI may prove inflationary before it becomes deflationary"
+   },
+   {
+    "source": "UniCredit",
+    "theme": "equities outlook",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Continued earnings growth and AI-driven investment cycle should drive equity-market upside despite macro noise.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "Overall, however, the key point remains that continued earnings growth should drive continued equity-market upside."
+   },
+   {
+    "source": "Danske Bank",
+    "theme": "ai driven equity momentum",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-driven investment boom",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-driven investment boom"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "ai driven equity momentum",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI investment boom driving manufacturing PMI",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI investment boom driving manufacturing PMI"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Bloomberg",
+    "figure": "60-day",
+    "metric": "ceasefire extension duration",
+    "context": "Proposed framework for US-Iran deal"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "7,500",
+    "metric": "S&P 500 support level",
+    "context": "Key level for mechanical support from dealer hedging flows."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+90",
+    "metric": "Median Skew Rank for top stocks",
+    "context": "Extreme level indicating high demand for calls."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+30",
+    "metric": "Median IV Rank for top stocks",
+    "context": "Elevated due to massive upside realized vol."
+   },
+   {
+    "source_bank": "SpotGamma",
+    "figure": "<8",
+    "metric": "Implied one-month correlation",
+    "context": "Warning sign for index drawdown risk."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "-12%",
+    "metric": "Front month oil futures decline",
+    "context": "Since initial news of progress on US-Iran negotiations."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "22%",
+    "metric": "Probability of normal traffic by 1 July",
+    "context": "Based on prediction market pricing."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "50%",
+    "metric": "Probability of normal traffic by 1 Aug",
+    "context": "Based on prediction market pricing."
+   },
+   {
+    "source_bank": "Scott Rubner",
+    "figure": "67%",
+    "metric": "S&P 500 rally contribution",
+    "context": "Percentage of rally since end of March from just 10 companies."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$80B",
+    "metric": "Alphabet secondary equity issuance",
+    "context": "Would shift Q4 2025 net equity supply from -$44B to +$40B."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$126B",
+    "metric": "Alphabet cash and marketable securities",
+    "context": "As of March 31st."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20%",
+    "metric": "Return on equity",
+    "context": "Currently near a record high."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$25B",
+    "metric": "Microsoft 2026 capex attributed to component pricing",
+    "context": ""
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$700B",
+    "metric": "Total AI buildout spend this year",
+    "context": ""
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~60%",
+    "metric": "Micron DRAM price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~70%",
+    "metric": "Micron NAND price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$80B",
+    "metric": "Microsoft unfilled Azure orders",
+    "context": "As of 2026"
+   },
+   {
+    "source_bank": "Pimco",
+    "figure": "94%",
+    "metric": "Capex as % of operating cash flow",
+    "context": "Next two years"
+   },
+   {
+    "source_bank": "Bain",
+    "figure": "$2T",
+    "metric": "Annual revenue required to justify data-center buildout",
+    "context": "By 2030"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$20B",
+    "metric": "Current AI revenues",
+    "context": "Three years post-ChatGPT launch"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "50-60 bps",
+    "metric": "Rate cuts removed from 2026 expectations",
+    "context": "Since the Iran war began"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20 bps",
+    "metric": "Rate hikes added to 2026 expectations",
+    "context": "Replacement for previous cut expectations"
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "43%",
+    "metric": "1Q26 12M forward EPS estimate revision for MSCI ACWI IT Index",
+    "context": "Upward revision during 1Q26 earnings season."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "49%",
+    "metric": "12-month gain for MSCI USA IT Index",
+    "context": "Supported by 63.4% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "182.7%",
+    "metric": "12-month gain for MSCI EM IT Index",
+    "context": "Driven by 209% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "20%",
+    "metric": "Valuation expansion for MSCI Europe IT Index",
+    "context": "Contrasts with US/EM valuation compression."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "54-45",
+    "metric": "Senate confirmation vote for Kevin Warsh",
+    "context": "Most divisive in the history of the central bank."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.8%",
+    "metric": "Headline PCE inflation in April",
+    "context": "Materially higher than target."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.50-3.75%",
+    "metric": "Target range for federal funds rate",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "40%",
+    "metric": "EU gas storage level",
+    "context": "End of May 2026, well below seasonal norms."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "17%",
+    "metric": "S&P 500 recovery from March lows",
+    "context": "Reflects market resilience."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "16th June",
+    "metric": "BoJ policy meeting date",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "-1.0% to +0.5%",
+    "metric": "Assumed appropriate R* range",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "20bps",
+    "metric": "2-year UST bond yield increase since beginning of May",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "14%",
+    "metric": "Crude oil price drop since beginning of May",
+    "context": ""
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "122k",
+    "metric": "ADP employment gain",
+    "context": "Broadly in line with consensus"
+   },
+   {
+    "source_bank": "Richmond Fed",
+    "figure": "$845",
+    "metric": "Increase in annual cost of driving for average US household",
+    "context": "Pre-conflict vs current cost"
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "1.6%",
+    "metric": "Q1 2026 GDP growth",
+    "context": "Revised lower from initial expectations."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "150% YoY",
+    "metric": "Printed circuit assembly manufacturing prices",
+    "context": "Reflects surge in semiconductor demand."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "12.5bps",
+    "metric": "Forecast shift for 2026 rates",
+    "context": "Shifted up to reflect Fed on hold for longer."
+   },
+   {
+    "source_bank": "MUFG",
+    "figure": "72 bps",
+    "metric": "IG Credit Spreads",
+    "context": "Last reading as of 6/1/2026."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4%",
+    "metric": "US spec-grade default rate",
+    "context": "Well above 20-year median of 2.9%"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.6%",
+    "metric": "European spec-grade default rate",
+    "context": "Exceeding 20-year median of 2.3%"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "45%",
+    "metric": "B-rated Euro HY issuers becoming FCF negative",
+    "context": "Risk scenario if funding costs rise by 50bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "54.5",
+    "metric": "ISM services index",
+    "context": "vs 53.8 expected"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+122k",
+    "metric": "ADP private payrolls",
+    "context": "16-month high vs +120k expected"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "81%",
+    "metric": "Probability of Fed rate hike by December",
+    "context": "up from 71% previous day"
+   },
+   {
+    "source_bank": "Polymarket",
+    "figure": "34%",
+    "metric": "Probability of normal traffic in Strait of Hormuz by end of July",
+    "context": "down from 39% previous day"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "3.18%",
+    "metric": "US 1yr inflation swap",
+    "context": "+6.8bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u00a3443m",
+    "metric": "DiscoverIE Revenue",
+    "context": "+5% yoy"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "13.8%",
+    "metric": "DiscoverIE EBIT margin",
+    "context": "-50bp"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "E1.6-1.85bn",
+    "metric": "Voestalpine FY26/27 EBITDA guidance",
+    "context": "Includes E0.1bn positive item"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u20ac8,750m",
+    "metric": "Inditex 1Q26 sales",
+    "context": "+5.8% yoy"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "61.2%",
+    "metric": "Inditex Gross margin",
+    "context": "+67 bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "7.7%",
+    "metric": "Zegona annual cash returns",
+    "context": "Expected by 2029"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$163bn",
+    "metric": "May US IG supply",
+    "context": "Part of busy May issuance"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$1 trillion",
+    "metric": "Rolling six-month US IG gross supply",
+    "context": "First time since September 2020"
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "50%",
+    "metric": "Crude oil price increase",
+    "context": "Resulting from the closure of the Strait of Hormuz."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "0.7%",
+    "metric": "2026 Euro area real GDP growth",
+    "context": "Downgraded from 1.2%."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "1.4 trillion barrels",
+    "metric": "Chinese oil reserves",
+    "context": "Sufficient to cope with SOH disruption for up to a year."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "10.6%",
+    "metric": "Finland trend unemployment rate",
+    "context": "Highest level since 1999."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "93.3%",
+    "metric": "Finland 2027 public debt-to-GDP ratio",
+    "context": "Rising from 88.5% in 2025."
+   }
+  ]
+ },
+ "ai infrastructure and capex": {
+  "theme": "ai infrastructure and capex",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 4,
+   "neutral": 6
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai trade evolution",
+    "stance": "neutral",
+    "conviction": "medium",
+    "key_argument": "The next phase of AI investment is shifting toward distribution and monetization rather than just GPU compute.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "the next phase may be more about distribution, software integration and monetization"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai infrastructure buildout",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "The next phase of AI is shifting from GPU-constrained to power, compute, and architecture constrained, creating demand for broader infrastructure.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The next phase of the AI buildout increasingly looks less GPU-constrained and more power / compute / architecture constrained."
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "enterprise ai consumption",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The shift from flat-rate to consumption-based billing is forcing enterprises to impose discipline, which will likely deflate the unsustainable demand growth baked into AI infrastructure valuations.",
+    "primary_instruments": [
+     "MSFT",
+     "AMZN",
+     "NVDA",
+     "META",
+     "UBER"
+    ],
+    "vs_consensus": "",
+    "evidence": "The 'healthy swing' toward discipline is precisely what the demand curve cannot afford."
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "ai infrastructure bubble",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Rising costs and power constraints are outpacing revenue, making the current AI-driven equity rally precarious.",
+    "primary_instruments": [
+     "MSFT",
+     "META",
+     "MU"
+    ],
+    "vs_consensus": "",
+    "evidence": "a growing share of the more than $700 billion AI buildout is being absorbed"
+   },
+   {
+    "source": "TS Lombard",
+    "theme": "ai capex sustainability",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The AI ecosystem is currently driven by circular financing and capex recycling rather than genuine external demand.",
+    "primary_instruments": [
+     "NVDA",
+     "MSFT",
+     "GOOG",
+     "AMZN",
+     "META"
+    ],
+    "vs_consensus": "",
+    "evidence": "recycled capex accounts for almost 85% of the AI ecosystem\u2019s revenues"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai infrastructure over-earning",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The debate is shifting from excitement around AI adoption to who can monetize it sustainably and at acceptable cost.",
+    "primary_instruments": [
+     "AVGO",
+     "NVDA"
+    ],
+    "vs_consensus": "",
+    "evidence": "the debate is shifting from excitement around AI adoption to who can monetise it sustainably"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai capex boom",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Hyperscaler capex growth is expected to remain elevated at 80% y/y through 2026.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "quarterly capex growth should run around 80% y/y through the rest of this year"
+   },
+   {
+    "source": "Citi",
+    "theme": "ai infrastructure demand",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Aggressive investment in data centers and AI servers continues to drive demand for specialist components and infrastructure.",
+    "primary_instruments": [
+     "NVDA",
+     "HPE",
+     "STX",
+     "WDC",
+     "IBM"
+    ],
+    "vs_consensus": "",
+    "evidence": "Aggressive investment in data centers and AI servers continuing"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "ai infrastructure and capex",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscalers capex surge",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscalers capex surge"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai infrastructure and capex",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "hyperscaler AI infrastructure capex",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "hyperscaler AI infrastructure capex"
+   },
+   {
+    "source": "Natixis",
+    "theme": "ai infrastructure and capex",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "hyperscaler capex profitability challenges",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "hyperscaler capex profitability challenges"
+   },
+   {
+    "source": "TS Lombard",
+    "theme": "ai infrastructure and capex",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler vendor financing practices",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler vendor financing practices"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "ai infrastructure and capex",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure hyperscaler capex",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure hyperscaler capex"
+   },
+   {
+    "source": "UniCredit",
+    "theme": "ai infrastructure and capex",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure capital expenditure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure capital expenditure"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "ai infrastructure and capex",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "hyperscaler investment plans",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "hyperscaler investment plans"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai infrastructure and capex",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure investment surge",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure investment surge"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$225B",
+    "metric": "2026 IPO gross proceeds forecast",
+    "context": "Record total, revised up from $160B."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$675B",
+    "metric": "Total 2026 corporate equity issuance",
+    "context": "Equates to 1% of Russell 3000 market cap."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.3T",
+    "metric": "2026 projected buybacks",
+    "context": "Forecasted to outweigh $1.1T in total equity issuance."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$900B",
+    "metric": "YTD announced M&A transactions",
+    "context": "+48% year/year."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "48%",
+    "metric": "AI market concentration",
+    "context": "Surpasses bubbles of the '20s, '70s, '80s, and '90s."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+2pts",
+    "metric": "Gross positioning increase",
+    "context": "Reached 5-year high"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "60-day",
+    "metric": "ceasefire extension duration",
+    "context": "Proposed framework for US-Iran deal"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "7,500",
+    "metric": "S&P 500 support level",
+    "context": "Key level for mechanical support from dealer hedging flows."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+90",
+    "metric": "Median Skew Rank for top stocks",
+    "context": "Extreme level indicating high demand for calls."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+30",
+    "metric": "Median IV Rank for top stocks",
+    "context": "Elevated due to massive upside realized vol."
+   },
+   {
+    "source_bank": "SpotGamma",
+    "figure": "<8",
+    "metric": "Implied one-month correlation",
+    "context": "Warning sign for index drawdown risk."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~85%",
+    "metric": "S&P 500 rally since ChatGPT introduction",
+    "context": "Nov 30, 2022 to Jun 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$340",
+    "metric": "2026 S&P EPS forecast",
+    "context": "~52% higher than pre-AI forward expectations"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~323%",
+    "metric": "Hedge fund gross leverage",
+    "context": "Fresh 5-year high, +2.1pts weekly increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">$60bn",
+    "metric": "Global levered/inverse single-stock ETF AUM",
+    "context": "Doubled since early April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~24x",
+    "metric": "Potential increase in token consumption from Agentic AI",
+    "context": "Estimate from GS Technology Research"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "2.5%",
+    "metric": "Inflation cycle bottom",
+    "context": "Inflation bottomed at this level in the current cycle."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "0.2%",
+    "metric": "Financial services weight in CPI",
+    "context": "Used to argue that AI's impact on CPI will be less than advertised."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "18.4%",
+    "metric": "Services ex rent, medical and energy services weight in CPI",
+    "context": "Broad services component where AI impact is expected to be limited."
+   },
+   {
+    "source_bank": "BofA Quant",
+    "figure": "100%",
+    "metric": "Hyperscalers' capex as % of operating cash flow (2026 expectation)",
+    "context": "Up from 70% in 2025"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": ">100%",
+    "metric": "Asia AI Hardware basket outperformance vs Mag-7",
+    "context": "Since start of 2025"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "160",
+    "metric": "USDJPY exchange rate",
+    "context": "Level reviving speculation about potential Japanese intervention."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$80B",
+    "metric": "Alphabet secondary equity issuance",
+    "context": "Would shift Q4 2025 net equity supply from -$44B to +$40B."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$126B",
+    "metric": "Alphabet cash and marketable securities",
+    "context": "As of March 31st."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20%",
+    "metric": "Return on equity",
+    "context": "Currently near a record high."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$65B",
+    "metric": "Series H funding round",
+    "context": "Closed by Anthropic, valuing the company at $965B post-money."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$39",
+    "metric": "Monthly Pro+ subscription fee",
+    "context": "Reported as insufficient to cover token usage under new billing."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$500M",
+    "metric": "Monthly spend on Claude",
+    "context": "Reported by an unnamed client without usage caps."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$6M",
+    "metric": "Unplanned spend",
+    "context": "Chewed through by a healthcare enterprise in six months."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.3M",
+    "metric": "Monthly API token spend",
+    "context": "Burned by a three-person team running agents."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.25B",
+    "metric": "Monthly compute commitment",
+    "context": "Anthropic's commitment through May 2029."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "120 quadrillion",
+    "metric": "Projected monthly token demand by 2030",
+    "context": "24-fold increase from current levels."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Top 10 weights in SPX",
+    "context": "Current index concentration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "700bps",
+    "metric": "S&P names excluding AI lag",
+    "context": "YTD performance gap"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$60B",
+    "metric": "Global levered/inverse single-stock ETF AUM",
+    "context": "Doubled in 2 months"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12.9",
+    "metric": "Vol for SPX Aug 8000 calls",
+    "context": "Desk preference"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "322.9%",
+    "metric": "Hedge Fund Global Book Gross Leverage",
+    "context": "5-year high"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "59.8%",
+    "metric": "Fundamental L/S Net Leverage",
+    "context": "99th percentile 1-year"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$93bn",
+    "metric": "CTA Global Equities Length",
+    "context": "62.3rd percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.13",
+    "metric": "Goldman Risk Appetite Indicator",
+    "context": "Highest level on record"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.38",
+    "metric": "Vol Panic Index",
+    "context": "Approaching lowest on record"
+   },
+   {
+    "source_bank": "CNN",
+    "figure": "59/100",
+    "metric": "CNN Fear and Greed Index",
+    "context": "Greed territory"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-22%",
+    "metric": "Brent futures decline from late March peak",
+    "context": "vs late March peak"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6%",
+    "metric": "Global jet fuel demand nowcast below trend",
+    "context": "May 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-14pp",
+    "metric": "Utilization rates of Asian ethylene plants",
+    "context": "since February"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-0.15mb/d",
+    "metric": "India naphtha and LPG demand",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-20%",
+    "metric": "China gasoline retail sales volumes",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-8%",
+    "metric": "Western Europe retail car fuel sales volumes",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2mb/d",
+    "metric": "Downside risk to April oil demand estimates",
+    "context": "implied by China and Western Europe retail sales"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$10/bbl",
+    "metric": "Downside risk to 2026Q4 Brent forecast",
+    "context": "assuming half of demand downside persists"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "-23%",
+    "metric": "China oil imports",
+    "context": "vs pre-conflict trend"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$25B",
+    "metric": "Microsoft 2026 capex attributed to component pricing",
+    "context": ""
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$700B",
+    "metric": "Total AI buildout spend this year",
+    "context": ""
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~60%",
+    "metric": "Micron DRAM price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~70%",
+    "metric": "Micron NAND price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$80B",
+    "metric": "Microsoft unfilled Azure orders",
+    "context": "As of 2026"
+   },
+   {
+    "source_bank": "Pimco",
+    "figure": "94%",
+    "metric": "Capex as % of operating cash flow",
+    "context": "Next two years"
+   },
+   {
+    "source_bank": "Bain",
+    "figure": "$2T",
+    "metric": "Annual revenue required to justify data-center buildout",
+    "context": "By 2030"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$20B",
+    "metric": "Current AI revenues",
+    "context": "Three years post-ChatGPT launch"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "50-60 bps",
+    "metric": "Rate cuts removed from 2026 expectations",
+    "context": "Since the Iran war began"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20 bps",
+    "metric": "Rate hikes added to 2026 expectations",
+    "context": "Replacement for previous cut expectations"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46%",
+    "metric": "Overall activity levels vs trailing two weeks",
+    "context": "Running ahead of broader market volumes."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$16B",
+    "metric": "Investment-grade corporate bond issuance",
+    "context": "12 borrowers tapping the market."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "75%",
+    "metric": "Probability of one Fed rate hike in 2026",
+    "context": "Increased following ISM manufacturing data."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7.45%",
+    "metric": "Software vs Semis basket move",
+    "context": "Largest move higher in more than a year."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "8",
+    "metric": "down candles in NDX over past 45 sessions",
+    "context": "Indicates extreme momentum and lack of meaningful pullbacks."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3.5%",
+    "metric": "distance to 21-day moving average",
+    "context": "Potential support level if the current trend line breaks."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "4.5x",
+    "metric": "potential payout of QQQ put spread",
+    "context": "Risk-reward profile for the suggested hedge."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$315bn",
+    "metric": "North American M&A announcements in May",
+    "context": "Increase from $286bn in April"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$286bn",
+    "metric": "North American M&A announcements in April",
+    "context": "Prior month comparison"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$60k",
+    "metric": "Support zone",
+    "context": "Critical make-or-break level for the current bull market."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "18",
+    "metric": "RSI",
+    "context": "One of the most oversold readings in years."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "10.4%",
+    "metric": "Drawdown for 7-10y USTs",
+    "context": "Since the 2022 hiking cycle."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "20%",
+    "metric": "S&P 500 drawdown",
+    "context": "Post-Liberation Day period."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "3%",
+    "metric": "Bond gain",
+    "context": "At the peak of the 20% S&P 500 drawdown."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "$700B",
+    "metric": "2026 datacenter spending forecast",
+    "context": "Hyperscaler spending spree"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "85%",
+    "metric": "Share of AI revenues derived from capex recycling",
+    "context": "Stable since ChatGPT launch in 2023"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "$1.5T",
+    "metric": "Combined hyperscaler revenue backlogs",
+    "context": "Multi-year contract commitments"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "3,200 trillion",
+    "metric": "Monthly token processing by Google",
+    "context": "Sevenfold increase YoY"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "2%",
+    "metric": "US AI capex as share of GDP",
+    "context": "2026 forecast"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16B",
+    "metric": "Broadcom 3Q26 AI chip sales projection",
+    "context": "vs street estimate of $17.2B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$56B",
+    "metric": "Broadcom FY AI chip revenue guidance",
+    "context": "vs street estimate of $57.6B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11x",
+    "metric": "European classifieds sector EBITDA multiple",
+    "context": "vs historical 19x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "80.6M",
+    "metric": "Pershing Square UMG stake sold",
+    "context": "8.7% stake at 8% discount"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$35B",
+    "metric": "Alphabet equity capital raise",
+    "context": "Largest US equity capital raise in history"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Prosus discount to NAV",
+    "context": "vs historical average of 40%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "c.7%",
+    "metric": "Alstom mid-term margin forecast",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12-18%",
+    "metric": "Wartsila FY26-29E adj EBIT increase",
+    "context": "reflects capacity increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "9%/11%",
+    "metric": "Barry Callebaut FY27/28 EPS forecast cut",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac0.75",
+    "metric": "Remy dividend",
+    "context": "halved from consensus \u20ac1.3"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "350",
+    "metric": "EUR/HUF target",
+    "context": "Initial move target for short EUR/HUF trade."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "175bps",
+    "metric": "HUF 5y5y Swap vs Euro",
+    "context": "Current valuation vs 20-year average of 290bps."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12,000",
+    "metric": "KOSPI index target",
+    "context": "Implies 37% price return."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8x",
+    "metric": "Forward P/E multiple",
+    "context": "Conservative estimate for Korea."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "320%",
+    "metric": "EPS growth estimate",
+    "context": "Forecast for Korea in 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "160",
+    "metric": "USDJPY exchange rate",
+    "context": "Level reviving speculation about potential Japanese intervention."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "32 to 48",
+    "metric": "S&P Tech sector trailing 12-month P/E ratio expansion",
+    "context": "Since 3/30 low"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "35%",
+    "metric": "Concentration of top 5 stocks in EEM",
+    "context": "TSMC, Samsung, SK Hynix, Tencent, Alibaba"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "30%",
+    "metric": "Concentration of TSMC and 2 Korean giants in EEM",
+    "context": "Subset of EEM holdings"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "30% vs 7%",
+    "metric": "YTD performance comparison",
+    "context": "EEM vs Mag 7"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "+10%",
+    "metric": "Tencent share price reaction",
+    "context": "Post-news of WeChat AI agent launch"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "70,000",
+    "metric": "Nikkei year-end target",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "-4%",
+    "metric": "PZU 2026 EPS estimate revision",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "DKK31,200m",
+    "metric": "DSV 2027E adj. EBIT",
+    "context": "c.4% above BBG consensus"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "8.0x YoY",
+    "metric": "Kioxia FY3/27 OP growth",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "9-10%",
+    "metric": "Normalized annual top-line recurring revenue growth range for EQIX",
+    "context": "High end of range expected this year"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "13%",
+    "metric": "Big OFS revenue growth",
+    "context": "In a $75 WTI/$80 Brent environment"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "31%",
+    "metric": "HAL EBITDA growth",
+    "context": "At $75 WTI"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "+19% / +29%",
+    "metric": "Lilly 3-year revenue / adjusted EPS CAGR",
+    "context": "Vs peers +5% / +9%"
+   },
+   {
+    "source_bank": "IBM",
+    "figure": "$10B",
+    "metric": "IBM quantum investment",
+    "context": "Over 5 years"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": ">50%",
+    "metric": "Livdelzi 2L PBC therapy market share",
+    "context": "Leading position"
+   },
+   {
+    "source_bank": "Treasury",
+    "figure": "$1 trillion",
+    "metric": "TGA balance",
+    "context": "Potential reach by July-end"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "$93/lb",
+    "metric": "Long-term uranium price",
+    "context": "Increased m/m"
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "9%",
+    "metric": "FCFY to equity for Fertiglobe",
+    "context": "Resilient returns offering under mid-cycle conditions."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "16%",
+    "metric": "Share price fall for Partners Group",
+    "context": "Following the gating of the Global Value SICAV."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "+240bps/-50bps/+140bps",
+    "metric": "Gross margin expansion forecast for PUMA SE",
+    "context": "FY26/27/28e respectively."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7-year high",
+    "metric": "3-month implied volatility ratio between QQQ and SPY",
+    "context": "Highest level in seven years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8-volatility-point",
+    "metric": "Discount of S&P 500 volatility vs tech",
+    "context": "Basis for preferring S&P 500 exposure."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7-8%",
+    "metric": "Potential pullback depth for SOX",
+    "context": "Would take index to the lower end of the trend channel."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$225B",
+    "metric": "2026 IPO gross proceeds forecast",
+    "context": "Record total, revised up from $160B."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$675B",
+    "metric": "Total 2026 corporate equity issuance",
+    "context": "Equates to 1% of Russell 3000 market cap."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.3T",
+    "metric": "2026 projected buybacks",
+    "context": "Forecasted to outweigh $1.1T in total equity issuance."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$900B",
+    "metric": "YTD announced M&A transactions",
+    "context": "+48% year/year."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "48%",
+    "metric": "AI market concentration",
+    "context": "Surpasses bubbles of the '20s, '70s, '80s, and '90s."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+2pts",
+    "metric": "Gross positioning increase",
+    "context": "Reached 5-year high"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "60-day",
+    "metric": "ceasefire extension duration",
+    "context": "Proposed framework for US-Iran deal"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "7,500",
+    "metric": "S&P 500 support level",
+    "context": "Key level for mechanical support from dealer hedging flows."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+90",
+    "metric": "Median Skew Rank for top stocks",
+    "context": "Extreme level indicating high demand for calls."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+30",
+    "metric": "Median IV Rank for top stocks",
+    "context": "Elevated due to massive upside realized vol."
+   },
+   {
+    "source_bank": "SpotGamma",
+    "figure": "<8",
+    "metric": "Implied one-month correlation",
+    "context": "Warning sign for index drawdown risk."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~85%",
+    "metric": "S&P 500 rally since ChatGPT introduction",
+    "context": "Nov 30, 2022 to Jun 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$340",
+    "metric": "2026 S&P EPS forecast",
+    "context": "~52% higher than pre-AI forward expectations"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~323%",
+    "metric": "Hedge fund gross leverage",
+    "context": "Fresh 5-year high, +2.1pts weekly increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">$60bn",
+    "metric": "Global levered/inverse single-stock ETF AUM",
+    "context": "Doubled since early April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~24x",
+    "metric": "Potential increase in token consumption from Agentic AI",
+    "context": "Estimate from GS Technology Research"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "2.5%",
+    "metric": "Inflation cycle bottom",
+    "context": "Inflation bottomed at this level in the current cycle."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "0.2%",
+    "metric": "Financial services weight in CPI",
+    "context": "Used to argue that AI's impact on CPI will be less than advertised."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "18.4%",
+    "metric": "Services ex rent, medical and energy services weight in CPI",
+    "context": "Broad services component where AI impact is expected to be limited."
+   },
+   {
+    "source_bank": "BofA Quant",
+    "figure": "100%",
+    "metric": "Hyperscalers' capex as % of operating cash flow (2026 expectation)",
+    "context": "Up from 70% in 2025"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": ">100%",
+    "metric": "Asia AI Hardware basket outperformance vs Mag-7",
+    "context": "Since start of 2025"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "160",
+    "metric": "USDJPY exchange rate",
+    "context": "Level reviving speculation about potential Japanese intervention."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$80B",
+    "metric": "Alphabet secondary equity issuance",
+    "context": "Would shift Q4 2025 net equity supply from -$44B to +$40B."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$126B",
+    "metric": "Alphabet cash and marketable securities",
+    "context": "As of March 31st."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20%",
+    "metric": "Return on equity",
+    "context": "Currently near a record high."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$65B",
+    "metric": "Series H funding round",
+    "context": "Closed by Anthropic, valuing the company at $965B post-money."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$39",
+    "metric": "Monthly Pro+ subscription fee",
+    "context": "Reported as insufficient to cover token usage under new billing."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$500M",
+    "metric": "Monthly spend on Claude",
+    "context": "Reported by an unnamed client without usage caps."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$6M",
+    "metric": "Unplanned spend",
+    "context": "Chewed through by a healthcare enterprise in six months."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.3M",
+    "metric": "Monthly API token spend",
+    "context": "Burned by a three-person team running agents."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.25B",
+    "metric": "Monthly compute commitment",
+    "context": "Anthropic's commitment through May 2029."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "120 quadrillion",
+    "metric": "Projected monthly token demand by 2030",
+    "context": "24-fold increase from current levels."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Top 10 weights in SPX",
+    "context": "Current index concentration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "700bps",
+    "metric": "S&P names excluding AI lag",
+    "context": "YTD performance gap"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$60B",
+    "metric": "Global levered/inverse single-stock ETF AUM",
+    "context": "Doubled in 2 months"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12.9",
+    "metric": "Vol for SPX Aug 8000 calls",
+    "context": "Desk preference"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "322.9%",
+    "metric": "Hedge Fund Global Book Gross Leverage",
+    "context": "5-year high"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "59.8%",
+    "metric": "Fundamental L/S Net Leverage",
+    "context": "99th percentile 1-year"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$93bn",
+    "metric": "CTA Global Equities Length",
+    "context": "62.3rd percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.13",
+    "metric": "Goldman Risk Appetite Indicator",
+    "context": "Highest level on record"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.38",
+    "metric": "Vol Panic Index",
+    "context": "Approaching lowest on record"
+   },
+   {
+    "source_bank": "CNN",
+    "figure": "59/100",
+    "metric": "CNN Fear and Greed Index",
+    "context": "Greed territory"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-22%",
+    "metric": "Brent futures decline from late March peak",
+    "context": "vs late March peak"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6%",
+    "metric": "Global jet fuel demand nowcast below trend",
+    "context": "May 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-14pp",
+    "metric": "Utilization rates of Asian ethylene plants",
+    "context": "since February"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-0.15mb/d",
+    "metric": "India naphtha and LPG demand",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-20%",
+    "metric": "China gasoline retail sales volumes",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-8%",
+    "metric": "Western Europe retail car fuel sales volumes",
+    "context": "YoY in April"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2mb/d",
+    "metric": "Downside risk to April oil demand estimates",
+    "context": "implied by China and Western Europe retail sales"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$10/bbl",
+    "metric": "Downside risk to 2026Q4 Brent forecast",
+    "context": "assuming half of demand downside persists"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "-23%",
+    "metric": "China oil imports",
+    "context": "vs pre-conflict trend"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$25B",
+    "metric": "Microsoft 2026 capex attributed to component pricing",
+    "context": ""
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$700B",
+    "metric": "Total AI buildout spend this year",
+    "context": ""
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~60%",
+    "metric": "Micron DRAM price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~70%",
+    "metric": "Micron NAND price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$80B",
+    "metric": "Microsoft unfilled Azure orders",
+    "context": "As of 2026"
+   },
+   {
+    "source_bank": "Pimco",
+    "figure": "94%",
+    "metric": "Capex as % of operating cash flow",
+    "context": "Next two years"
+   },
+   {
+    "source_bank": "Bain",
+    "figure": "$2T",
+    "metric": "Annual revenue required to justify data-center buildout",
+    "context": "By 2030"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$20B",
+    "metric": "Current AI revenues",
+    "context": "Three years post-ChatGPT launch"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "50-60 bps",
+    "metric": "Rate cuts removed from 2026 expectations",
+    "context": "Since the Iran war began"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20 bps",
+    "metric": "Rate hikes added to 2026 expectations",
+    "context": "Replacement for previous cut expectations"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46%",
+    "metric": "Overall activity levels vs trailing two weeks",
+    "context": "Running ahead of broader market volumes."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$16B",
+    "metric": "Investment-grade corporate bond issuance",
+    "context": "12 borrowers tapping the market."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "75%",
+    "metric": "Probability of one Fed rate hike in 2026",
+    "context": "Increased following ISM manufacturing data."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7.45%",
+    "metric": "Software vs Semis basket move",
+    "context": "Largest move higher in more than a year."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "8",
+    "metric": "down candles in NDX over past 45 sessions",
+    "context": "Indicates extreme momentum and lack of meaningful pullbacks."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3.5%",
+    "metric": "distance to 21-day moving average",
+    "context": "Potential support level if the current trend line breaks."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "4.5x",
+    "metric": "potential payout of QQQ put spread",
+    "context": "Risk-reward profile for the suggested hedge."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$315bn",
+    "metric": "North American M&A announcements in May",
+    "context": "Increase from $286bn in April"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$286bn",
+    "metric": "North American M&A announcements in April",
+    "context": "Prior month comparison"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$60k",
+    "metric": "Support zone",
+    "context": "Critical make-or-break level for the current bull market."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "18",
+    "metric": "RSI",
+    "context": "One of the most oversold readings in years."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "10.4%",
+    "metric": "Drawdown for 7-10y USTs",
+    "context": "Since the 2022 hiking cycle."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "20%",
+    "metric": "S&P 500 drawdown",
+    "context": "Post-Liberation Day period."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "3%",
+    "metric": "Bond gain",
+    "context": "At the peak of the 20% S&P 500 drawdown."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "$700B",
+    "metric": "2026 datacenter spending forecast",
+    "context": "Hyperscaler spending spree"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "85%",
+    "metric": "Share of AI revenues derived from capex recycling",
+    "context": "Stable since ChatGPT launch in 2023"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "$1.5T",
+    "metric": "Combined hyperscaler revenue backlogs",
+    "context": "Multi-year contract commitments"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "3,200 trillion",
+    "metric": "Monthly token processing by Google",
+    "context": "Sevenfold increase YoY"
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "2%",
+    "metric": "US AI capex as share of GDP",
+    "context": "2026 forecast"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16B",
+    "metric": "Broadcom 3Q26 AI chip sales projection",
+    "context": "vs street estimate of $17.2B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$56B",
+    "metric": "Broadcom FY AI chip revenue guidance",
+    "context": "vs street estimate of $57.6B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11x",
+    "metric": "European classifieds sector EBITDA multiple",
+    "context": "vs historical 19x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "80.6M",
+    "metric": "Pershing Square UMG stake sold",
+    "context": "8.7% stake at 8% discount"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$35B",
+    "metric": "Alphabet equity capital raise",
+    "context": "Largest US equity capital raise in history"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Prosus discount to NAV",
+    "context": "vs historical average of 40%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "c.7%",
+    "metric": "Alstom mid-term margin forecast",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12-18%",
+    "metric": "Wartsila FY26-29E adj EBIT increase",
+    "context": "reflects capacity increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "9%/11%",
+    "metric": "Barry Callebaut FY27/28 EPS forecast cut",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac0.75",
+    "metric": "Remy dividend",
+    "context": "halved from consensus \u20ac1.3"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "350",
+    "metric": "EUR/HUF target",
+    "context": "Initial move target for short EUR/HUF trade."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "175bps",
+    "metric": "HUF 5y5y Swap vs Euro",
+    "context": "Current valuation vs 20-year average of 290bps."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12,000",
+    "metric": "KOSPI index target",
+    "context": "Implies 37% price return."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8x",
+    "metric": "Forward P/E multiple",
+    "context": "Conservative estimate for Korea."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "320%",
+    "metric": "EPS growth estimate",
+    "context": "Forecast for Korea in 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "160",
+    "metric": "USDJPY exchange rate",
+    "context": "Level reviving speculation about potential Japanese intervention."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "32 to 48",
+    "metric": "S&P Tech sector trailing 12-month P/E ratio expansion",
+    "context": "Since 3/30 low"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "35%",
+    "metric": "Concentration of top 5 stocks in EEM",
+    "context": "TSMC, Samsung, SK Hynix, Tencent, Alibaba"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "30%",
+    "metric": "Concentration of TSMC and 2 Korean giants in EEM",
+    "context": "Subset of EEM holdings"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "30% vs 7%",
+    "metric": "YTD performance comparison",
+    "context": "EEM vs Mag 7"
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "43%",
+    "metric": "1Q26 12M forward EPS estimate revision for MSCI ACWI IT Index",
+    "context": "Upward revision during 1Q26 earnings season."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "49%",
+    "metric": "12-month gain for MSCI USA IT Index",
+    "context": "Supported by 63.4% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "182.7%",
+    "metric": "12-month gain for MSCI EM IT Index",
+    "context": "Driven by 209% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "20%",
+    "metric": "Valuation expansion for MSCI Europe IT Index",
+    "context": "Contrasts with US/EM valuation compression."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "54-45",
+    "metric": "Senate confirmation vote for Kevin Warsh",
+    "context": "Most divisive in the history of the central bank."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.8%",
+    "metric": "Headline PCE inflation in April",
+    "context": "Materially higher than target."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.50-3.75%",
+    "metric": "Target range for federal funds rate",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "40%",
+    "metric": "EU gas storage level",
+    "context": "End of May 2026, well below seasonal norms."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "17%",
+    "metric": "S&P 500 recovery from March lows",
+    "context": "Reflects market resilience."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "$82bn",
+    "metric": "Google capital increase",
+    "context": "To finance massive AI investments."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "3.2%",
+    "metric": "Eurozone CPI YoY",
+    "context": "Accelerated from 3.0% in April."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "7.6 million",
+    "metric": "US Job Openings",
+    "context": "April reading, higher than anticipated."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "34.35%",
+    "metric": "UniCredit stake in Commerzbank",
+    "context": "Increased from initial stake of 26.77%."
+   },
+   {
+    "source_bank": "Natixis",
+    "figure": "25bp",
+    "metric": "ECB rate hike expectation",
+    "context": "Virtually a certainty for next week."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7-year high",
+    "metric": "3-month implied volatility ratio between QQQ and SPY",
+    "context": "Highest level in seven years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8-volatility-point",
+    "metric": "Discount of S&P 500 volatility vs tech",
+    "context": "Basis for preferring S&P 500 exposure."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7-8%",
+    "metric": "Potential pullback depth for SOX",
+    "context": "Would take index to the lower end of the trend channel."
+   }
+  ]
+ },
+ "narrow market breadth": {
+  "theme": "narrow market breadth",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 2,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "BofA Global Research",
+    "theme": "narrow market breadth",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "Narrow breadth is making it difficult for long-only active funds to outperform their benchmarks.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "Narrow breadth is proving difficult for long-only funds"
+   },
+   {
+    "source": "BTIG",
+    "theme": "market breadth divergence",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The extreme decoupling of index performance from constituent breadth is a historic anomaly that typically precedes a market reversion.",
+    "primary_instruments": [
+     "SPX"
+    ],
+    "vs_consensus": "",
+    "evidence": "SPX has never had six straight positive days when every day had more decliners"
+   },
+   {
+    "source": "BTIG",
+    "theme": "narrow market breadth",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "narrow market breadth in S&P 500",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "narrow market breadth in S&P 500"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "narrow market breadth",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "S&P 500 concentration risk",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "S&P 500 concentration risk"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "narrow market breadth",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Narrow S&P 500 breadth expansion",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Narrow S&P 500 breadth expansion"
+   },
+   {
+    "source": "Citadel Securities",
+    "theme": "narrow market breadth",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "S&P 500 breadth paradox",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "S&P 500 breadth paradox"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "narrow market breadth",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "KOSPI index concentration",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "KOSPI index concentration"
+   },
+   {
+    "source": "BTIG",
+    "theme": "narrow market breadth",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "equal-weight S&P 500 leadership rotation",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "equal-weight S&P 500 leadership rotation"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "narrow market breadth",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "S&P 500 forward profit margin expansion",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "S&P 500 forward profit margin expansion"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "narrow market breadth",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "S&P Tech sector P/E expansion",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "S&P Tech sector P/E expansion"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "95k",
+    "metric": "May NFP forecast",
+    "context": "vs 85k consensus"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "4.3%",
+    "metric": "Unemployment rate forecast",
+    "context": "unchanged"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "5-6bp",
+    "metric": "Implied 10y yield move",
+    "context": "lower than April's 6-6.5bp"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "35bps",
+    "metric": "Market priced rate hikes over next 1Y",
+    "context": "up from 5-6bps prior to last month's NFP"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "7th percentile",
+    "metric": "DXY 3-month trading range",
+    "context": "since 2000"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "5.0%",
+    "metric": "MSCI AC World Index rally in May",
+    "context": "Performance of the aggregate index vs. individual stock performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "25%",
+    "metric": "Proportion of stocks outperforming the aggregate index",
+    "context": "Measure of market breadth"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "39%",
+    "metric": "Proportion of Active funds outperforming benchmarks",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "-0.54%",
+    "metric": "Median relative return of Active funds",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "26%",
+    "metric": "Proportion of Value funds outperforming",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "29%",
+    "metric": "Proportion of High ASR funds outperforming",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "9",
+    "metric": "Consecutive up days for S&P 500",
+    "context": "Longest streak since May 2025"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "10",
+    "metric": "Consecutive up weeks for S&P 500",
+    "context": "Longest streak since 1985"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "~40%",
+    "metric": "Weight of top 10 SPX names and Tech sector",
+    "context": ""
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "12.15%",
+    "metric": "KOSPI 6-session return",
+    "context": "Occurred despite negative breadth"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "~50%",
+    "metric": "Weight of largest names in KOSPI",
+    "context": ""
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "~65k",
+    "metric": "Bitcoin support level",
+    "context": "Last bastion before YTD lows"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$225B",
+    "metric": "2026 IPO gross proceeds forecast",
+    "context": "Record total, revised up from $160B."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$675B",
+    "metric": "Total 2026 corporate equity issuance",
+    "context": "Equates to 1% of Russell 3000 market cap."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.3T",
+    "metric": "2026 projected buybacks",
+    "context": "Forecasted to outweigh $1.1T in total equity issuance."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$900B",
+    "metric": "YTD announced M&A transactions",
+    "context": "+48% year/year."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "48%",
+    "metric": "AI market concentration",
+    "context": "Surpasses bubbles of the '20s, '70s, '80s, and '90s."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "8.5",
+    "metric": "BofA Bull and Bear Indicator",
+    "context": "Spiked from 8.0 last week; approaching highest reading on record."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "29x",
+    "metric": "S&P 500 trailing PE",
+    "context": "Described as based on laughable projections."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "4%",
+    "metric": "S&P 500 stocks at new highs",
+    "context": "Comparison to 20 stocks at the Mar 2000 internet bubble top."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "31",
+    "metric": "Global YTD rate cuts",
+    "context": "Outpacing 12 hikes."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "$3 trillion",
+    "metric": "IPOs on deck",
+    "context": "Reason to wait before cutting longs."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "60-day",
+    "metric": "ceasefire extension duration",
+    "context": "Proposed framework for US-Iran deal"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "7,500",
+    "metric": "S&P 500 support level",
+    "context": "Key level for mechanical support from dealer hedging flows."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+90",
+    "metric": "Median Skew Rank for top stocks",
+    "context": "Extreme level indicating high demand for calls."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+30",
+    "metric": "Median IV Rank for top stocks",
+    "context": "Elevated due to massive upside realized vol."
+   },
+   {
+    "source_bank": "SpotGamma",
+    "figure": "<8",
+    "metric": "Implied one-month correlation",
+    "context": "Warning sign for index drawdown risk."
+   },
+   {
+    "source_bank": "BofA Quant",
+    "figure": "100%",
+    "metric": "Hyperscalers' capex as % of operating cash flow (2026 expectation)",
+    "context": "Up from 70% in 2025"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": ">100%",
+    "metric": "Asia AI Hardware basket outperformance vs Mag-7",
+    "context": "Since start of 2025"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "3.7ppt",
+    "metric": "Growth 10 screen YTD underperformance vs S&P 500 Growth",
+    "context": "As of 5/31/2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "4.9ppt",
+    "metric": "Value 10 screen YTD outperformance vs S&P 500 Value",
+    "context": "As of 5/31/2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "52.6",
+    "metric": "AppLovin Next 5-Yr EPS Growth",
+    "context": ""
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "4.5",
+    "metric": "Allstate Corp. Trailing 12-Month PE",
+    "context": ""
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "3.4m b/d",
+    "metric": "2Q26 oil market deficit",
+    "context": "Projected deficit before returning to balanced market in 2027."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "10%",
+    "metric": "1Q26 oil productivity",
+    "context": "Above trailing three-year average in New Mexico and Texas."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "23%",
+    "metric": "Haynesville cycle time improvement",
+    "context": "Wells completed faster since 2022 despite longer laterals."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "12%",
+    "metric": "Per-foot well cost reduction",
+    "context": "Since 2022."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "160",
+    "metric": "USDJPY exchange rate",
+    "context": "Level reviving speculation about potential Japanese intervention."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "-12%",
+    "metric": "Front month oil futures decline",
+    "context": "Since initial news of progress on US-Iran negotiations."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "22%",
+    "metric": "Probability of normal traffic by 1 July",
+    "context": "Based on prediction market pricing."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "50%",
+    "metric": "Probability of normal traffic by 1 Aug",
+    "context": "Based on prediction market pricing."
+   },
+   {
+    "source_bank": "Scott Rubner",
+    "figure": "67%",
+    "metric": "S&P 500 rally contribution",
+    "context": "Percentage of rally since end of March from just 10 companies."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$80B",
+    "metric": "Alphabet secondary equity issuance",
+    "context": "Would shift Q4 2025 net equity supply from -$44B to +$40B."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$126B",
+    "metric": "Alphabet cash and marketable securities",
+    "context": "As of March 31st."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20%",
+    "metric": "Return on equity",
+    "context": "Currently near a record high."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$65B",
+    "metric": "Series H funding round",
+    "context": "Closed by Anthropic, valuing the company at $965B post-money."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$39",
+    "metric": "Monthly Pro+ subscription fee",
+    "context": "Reported as insufficient to cover token usage under new billing."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$500M",
+    "metric": "Monthly spend on Claude",
+    "context": "Reported by an unnamed client without usage caps."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$6M",
+    "metric": "Unplanned spend",
+    "context": "Chewed through by a healthcare enterprise in six months."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.3M",
+    "metric": "Monthly API token spend",
+    "context": "Burned by a three-person team running agents."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.25B",
+    "metric": "Monthly compute commitment",
+    "context": "Anthropic's commitment through May 2029."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "120 quadrillion",
+    "metric": "Projected monthly token demand by 2030",
+    "context": "24-fold increase from current levels."
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "9",
+    "metric": "Consecutive up days for S&P 500",
+    "context": "Longest streak since May 2025"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "10",
+    "metric": "Consecutive up weeks for S&P 500",
+    "context": "Longest streak since 1985"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "~40%",
+    "metric": "Weight of top 10 SPX names and Tech sector",
+    "context": ""
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "12.15%",
+    "metric": "KOSPI 6-session return",
+    "context": "Occurred despite negative breadth"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "~50%",
+    "metric": "Weight of largest names in KOSPI",
+    "context": ""
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "~65k",
+    "metric": "Bitcoin support level",
+    "context": "Last bastion before YTD lows"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$25B",
+    "metric": "Microsoft 2026 capex attributed to component pricing",
+    "context": ""
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$700B",
+    "metric": "Total AI buildout spend this year",
+    "context": ""
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~60%",
+    "metric": "Micron DRAM price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Micron",
+    "figure": "~70%",
+    "metric": "Micron NAND price increase",
+    "context": "Latest quarters"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$80B",
+    "metric": "Microsoft unfilled Azure orders",
+    "context": "As of 2026"
+   },
+   {
+    "source_bank": "Pimco",
+    "figure": "94%",
+    "metric": "Capex as % of operating cash flow",
+    "context": "Next two years"
+   },
+   {
+    "source_bank": "Bain",
+    "figure": "$2T",
+    "metric": "Annual revenue required to justify data-center buildout",
+    "context": "By 2030"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$20B",
+    "metric": "Current AI revenues",
+    "context": "Three years post-ChatGPT launch"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "50-60 bps",
+    "metric": "Rate cuts removed from 2026 expectations",
+    "context": "Since the Iran war began"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "20 bps",
+    "metric": "Rate hikes added to 2026 expectations",
+    "context": "Replacement for previous cut expectations"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46%",
+    "metric": "Overall activity levels vs trailing two weeks",
+    "context": "Running ahead of broader market volumes."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$16B",
+    "metric": "Investment-grade corporate bond issuance",
+    "context": "12 borrowers tapping the market."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "75%",
+    "metric": "Probability of one Fed rate hike in 2026",
+    "context": "Increased following ISM manufacturing data."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7.45%",
+    "metric": "Software vs Semis basket move",
+    "context": "Largest move higher in more than a year."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "8",
+    "metric": "down candles in NDX over past 45 sessions",
+    "context": "Indicates extreme momentum and lack of meaningful pullbacks."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3.5%",
+    "metric": "distance to 21-day moving average",
+    "context": "Potential support level if the current trend line breaks."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "4.5x",
+    "metric": "potential payout of QQQ put spread",
+    "context": "Risk-reward profile for the suggested hedge."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$315bn",
+    "metric": "North American M&A announcements in May",
+    "context": "Increase from $286bn in April"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$286bn",
+    "metric": "North American M&A announcements in April",
+    "context": "Prior month comparison"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$60k",
+    "metric": "Support zone",
+    "context": "Critical make-or-break level for the current bull market."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "18",
+    "metric": "RSI",
+    "context": "One of the most oversold readings in years."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "160",
+    "metric": "USDJPY exchange rate",
+    "context": "Level reviving speculation about potential Japanese intervention."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "32 to 48",
+    "metric": "S&P Tech sector trailing 12-month P/E ratio expansion",
+    "context": "Since 3/30 low"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "35%",
+    "metric": "Concentration of top 5 stocks in EEM",
+    "context": "TSMC, Samsung, SK Hynix, Tencent, Alibaba"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "30%",
+    "metric": "Concentration of TSMC and 2 Korean giants in EEM",
+    "context": "Subset of EEM holdings"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "30% vs 7%",
+    "metric": "YTD performance comparison",
+    "context": "EEM vs Mag 7"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7-year high",
+    "metric": "3-month implied volatility ratio between QQQ and SPY",
+    "context": "Highest level in seven years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8-volatility-point",
+    "metric": "Discount of S&P 500 volatility vs tech",
+    "context": "Basis for preferring S&P 500 exposure."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7-8%",
+    "metric": "Potential pullback depth for SOX",
+    "context": "Would take index to the lower end of the trend channel."
+   }
+  ]
+ },
+ "us labor market strength": {
+  "theme": "us labor market strength",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "BofA Global Research",
+    "theme": "us labor market strength",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Stronger-than-consensus payroll growth and benign claims suggest a labor market solid enough to keep the Fed on hold but with upside risks to rates.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "We look for another upside NFP surprise (95k forecast vs. 85k consensus)"
+   },
+   {
+    "source": "Danske Bank",
+    "theme": "US monetary tightening",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Nominal growth exceeding expectations and demand-driven inflation pressures necessitate Fed hikes.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "We expect the Fed to turn towards a tightening bias over coming months"
+   }
+  ],
+  "tension_points": [
+   {
+    "source": "Scotiabank",
+    "theme": "US Labor Market Strength",
+    "bull_case": "Headline JOLTS job openings rose to 7.618 million in April.",
+    "bear_case": "The rise lacked breadth, with 91% of the increase concentrated in professional/business services.",
+    "what_invalidates": ""
+   }
+  ],
+  "key_data_points": [
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "95k",
+    "metric": "May NFP forecast",
+    "context": "vs 85k consensus"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "4.3%",
+    "metric": "Unemployment rate forecast",
+    "context": "unchanged"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "5-6bp",
+    "metric": "Implied 10y yield move",
+    "context": "lower than April's 6-6.5bp"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "35bps",
+    "metric": "Market priced rate hikes over next 1Y",
+    "context": "up from 5-6bps prior to last month's NFP"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "7th percentile",
+    "metric": "DXY 3-month trading range",
+    "context": "since 2000"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "5.0%",
+    "metric": "MSCI AC World Index rally in May",
+    "context": "Performance of the aggregate index vs. individual stock performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "25%",
+    "metric": "Proportion of stocks outperforming the aggregate index",
+    "context": "Measure of market breadth"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "39%",
+    "metric": "Proportion of Active funds outperforming benchmarks",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "-0.54%",
+    "metric": "Median relative return of Active funds",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "26%",
+    "metric": "Proportion of Value funds outperforming",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "BofA Global Research",
+    "figure": "29%",
+    "metric": "Proportion of High ASR funds outperforming",
+    "context": "May 2026 performance"
+   },
+   {
+    "source_bank": "Scotiabank",
+    "figure": "7.618 million",
+    "metric": "US JOLTS job openings",
+    "context": "Up from revised 6.877 million; 91% of rise in professional/business services."
+   },
+   {
+    "source_bank": "Scotiabank",
+    "figure": "125k",
+    "metric": "Scotiabank May NFP forecast",
+    "context": "Vs 85k consensus."
+   },
+   {
+    "source_bank": "Scotiabank",
+    "figure": "0.3% q/q",
+    "metric": "Australian GDP growth",
+    "context": "Vs 0.4% consensus."
+   },
+   {
+    "source_bank": "Scotiabank",
+    "figure": "16.08 million",
+    "metric": "US vehicle sales (SAAR)",
+    "context": "May reading vs 16.0 consensus."
+   },
+   {
+    "source_bank": "Scotiabank",
+    "figure": "15%",
+    "metric": "Canadian vehicle sales decline",
+    "context": "Total decline from January peak."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "50%",
+    "metric": "Crude oil price increase",
+    "context": "Resulting from the closure of the Strait of Hormuz."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "0.7%",
+    "metric": "2026 Euro area real GDP growth",
+    "context": "Downgraded from 1.2%."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "1.4 trillion barrels",
+    "metric": "Chinese oil reserves",
+    "context": "Sufficient to cope with SOH disruption for up to a year."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "10.6%",
+    "metric": "Finland trend unemployment rate",
+    "context": "Highest level since 1999."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "93.3%",
+    "metric": "Finland 2027 public debt-to-GDP ratio",
+    "context": "Rising from 88.5% in 2025."
+   }
+  ]
+ },
+ "ecb rate policy": {
+  "theme": "ecb rate policy",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "Danske Bank",
+    "theme": "ecb rate policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "ECB terminal rate profile",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "ECB terminal rate profile"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "ecb rate policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "ECB rate hike cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "ECB rate hike cycle"
+   },
+   {
+    "source": "Mizuho International Plc",
+    "theme": "ecb rate policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "ECB June rate hike cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "ECB June rate hike cycle"
+   },
+   {
+    "source": "UBS",
+    "theme": "ecb rate policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "ECB rate hiking cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "ECB rate hiking cycle"
+   },
+   {
+    "source": "UniCredit",
+    "theme": "ecb rate policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "ECB June 11 meeting",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "ECB June 11 meeting"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Mizuho International Plc",
+    "figure": "5.00%",
+    "metric": "30Y UST yield level",
+    "context": "Briefly breached this level during yesterday's session."
+   },
+   {
+    "source_bank": "Mizuho International Plc",
+    "figure": "3.00%",
+    "metric": "10Y Bund yield level",
+    "context": "Move above this level suggests persistent inflation/energy shock pricing."
+   },
+   {
+    "source_bank": "Mizuho International Plc",
+    "figure": "4.40-4.50%",
+    "metric": "10Y UST yield consolidation range",
+    "context": "Expected range into NFP."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4%",
+    "metric": "US spec-grade default rate",
+    "context": "Well above 20-year median of 2.9%"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.6%",
+    "metric": "European spec-grade default rate",
+    "context": "Exceeding 20-year median of 2.3%"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "45%",
+    "metric": "B-rated Euro HY issuers becoming FCF negative",
+    "context": "Risk scenario if funding costs rise by 50bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "54.5",
+    "metric": "ISM services index",
+    "context": "vs 53.8 expected"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+122k",
+    "metric": "ADP private payrolls",
+    "context": "16-month high vs +120k expected"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "81%",
+    "metric": "Probability of Fed rate hike by December",
+    "context": "up from 71% previous day"
+   },
+   {
+    "source_bank": "Polymarket",
+    "figure": "34%",
+    "metric": "Probability of normal traffic in Strait of Hormuz by end of July",
+    "context": "down from 39% previous day"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "3.18%",
+    "metric": "US 1yr inflation swap",
+    "context": "+6.8bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u00a3443m",
+    "metric": "DiscoverIE Revenue",
+    "context": "+5% yoy"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "13.8%",
+    "metric": "DiscoverIE EBIT margin",
+    "context": "-50bp"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "E1.6-1.85bn",
+    "metric": "Voestalpine FY26/27 EBITDA guidance",
+    "context": "Includes E0.1bn positive item"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u20ac8,750m",
+    "metric": "Inditex 1Q26 sales",
+    "context": "+5.8% yoy"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "61.2%",
+    "metric": "Inditex Gross margin",
+    "context": "+67 bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "7.7%",
+    "metric": "Zegona annual cash returns",
+    "context": "Expected by 2029"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$163bn",
+    "metric": "May US IG supply",
+    "context": "Part of busy May issuance"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$1 trillion",
+    "metric": "Rolling six-month US IG gross supply",
+    "context": "First time since September 2020"
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "43%",
+    "metric": "1Q26 12M forward EPS estimate revision for MSCI ACWI IT Index",
+    "context": "Upward revision during 1Q26 earnings season."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "49%",
+    "metric": "12-month gain for MSCI USA IT Index",
+    "context": "Supported by 63.4% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "182.7%",
+    "metric": "12-month gain for MSCI EM IT Index",
+    "context": "Driven by 209% earnings growth."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "20%",
+    "metric": "Valuation expansion for MSCI Europe IT Index",
+    "context": "Contrasts with US/EM valuation compression."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "54-45",
+    "metric": "Senate confirmation vote for Kevin Warsh",
+    "context": "Most divisive in the history of the central bank."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.8%",
+    "metric": "Headline PCE inflation in April",
+    "context": "Materially higher than target."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "3.50-3.75%",
+    "metric": "Target range for federal funds rate",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "40%",
+    "metric": "EU gas storage level",
+    "context": "End of May 2026, well below seasonal norms."
+   },
+   {
+    "source_bank": "UniCredit",
+    "figure": "17%",
+    "metric": "S&P 500 recovery from March lows",
+    "context": "Reflects market resilience."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "50%",
+    "metric": "Crude oil price increase",
+    "context": "Resulting from the closure of the Strait of Hormuz."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "0.7%",
+    "metric": "2026 Euro area real GDP growth",
+    "context": "Downgraded from 1.2%."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "1.4 trillion barrels",
+    "metric": "Chinese oil reserves",
+    "context": "Sufficient to cope with SOH disruption for up to a year."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "10.6%",
+    "metric": "Finland trend unemployment rate",
+    "context": "Highest level since 1999."
+   },
+   {
+    "source_bank": "Danske Bank",
+    "figure": "93.3%",
+    "metric": "Finland 2027 public debt-to-GDP ratio",
+    "context": "Rising from 88.5% in 2025."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "Proposed tariff rate",
+    "context": "Additional tariff on goods from most major economies"
+   },
+   {
+    "source_bank": "European Central Bank",
+    "figure": "27%",
+    "metric": "Gold share of global official reserves",
+    "context": "As of end-2025"
+   },
+   {
+    "source_bank": "European Central Bank",
+    "figure": "22%",
+    "metric": "US Treasuries share of global official reserves",
+    "context": "As of end-2025"
+   },
+   {
+    "source_bank": "European Central Bank",
+    "figure": "57%",
+    "metric": "US dollar share of global FX reserves",
+    "context": "As of 2025"
+   },
+   {
+    "source_bank": "JOLTS",
+    "figure": "7.62 million",
+    "metric": "US April job openings",
+    "context": "Vs 6.88 million consensus"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 5,500/oz",
+    "metric": "Gold price forecast",
+    "context": "Through 1H27"
+   },
+   {
+    "source_bank": "European Central Bank",
+    "figure": "EUR 1tr",
+    "metric": "Euro-denominated international debt issuance",
+    "context": "Rose ~30% in 2025"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "25bps",
+    "metric": "Expected ECB deposit rate hike",
+    "context": "Expected at June 11 meeting"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "2.5%",
+    "metric": "Market expectation for prolonged rate level",
+    "context": "UBS views this as less convincing given slowing growth"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "11%",
+    "metric": "PFS risk reduction for giredestrant arm in Roche persevERA study",
+    "context": "Compared to standard treatment in front-line hormone receptor-positive advanced breast cancer."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "86%",
+    "metric": "Overall response rate (ORR) for IBI363 in front-line lung cancer",
+    "context": "Reported at ASCO 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 650mn",
+    "metric": "Upfront payment for Innovent Bio/Pfizer collaboration",
+    "context": "Part of a deal covering 12 early-stage oncology programs."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "13%",
+    "metric": "AstraZeneca revenue exposure to China",
+    "context": "Cited as a specific risk factor."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "CHF 200mn",
+    "metric": "Targeted savings for Schindler",
+    "context": "Set to offset later-year input cost inflation."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "CHF 3.5bn",
+    "metric": "Net cash for Schindler",
+    "context": "Provides flexibility for buybacks near CHF 500mn per year."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": ">10%",
+    "metric": "Medium-term growth for Lonza",
+    "context": "Supported by customer demand for core contract manufacturing."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "GBP 14.9bn",
+    "metric": "2026 Net interest income guidance for Lloyds",
+    "context": "Lifted from prior guidance."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "47/mo",
+    "metric": "Boeing MAX production rate",
+    "context": "Advancing production schedule."
+   }
+  ]
+ }
+}
