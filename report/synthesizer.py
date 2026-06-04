@@ -1563,13 +1563,17 @@ async def synthesize_daily_pulse(
     else:
         prev_context = (
             f"PREVIOUS PULSE SUMMARY (~{prev_age_hours}h ago, {prev['pdf_count']} reports):\n\n"
+            f"YESTERDAY'S PULSE MARKDOWN (use this to detect day-over-day stance changes — not for verbatim citation):\n\n"
+            + (prev.get('report_markdown') or '')[:4000]
+            + "\n\n---\n\n"
             f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM — these are the exact headlines the reader saw yesterday):\n"
             + "\n".join(f"  - {t}" for t in prev_themes_list)
             + "\n\nYour job today:\n"
             + "1. For each theme above, ask: has the research today materially advanced it? If no → SKIP. If yes → lead with 'Since yesterday: [what's new/changed]'.\n"
             + "2. Actively hunt for themes that are NOT in the list above — new catalysts, fresh desk calls, new positioning data.\n"
             + "3. Your pulse should be notably different from yesterday's. If today's pulse would look 80%+ the same as yesterday's, you've failed.\n"
-            + "4. Do NOT rewrite yesterday's themes with synonyms and new numbers. That's the same pulse in a trench coat."
+            + "4. Do NOT rewrite yesterday's themes with synonyms and new numbers. That's the same pulse in a trench coat.\n"
+            + "5. **STANCE-INVERSION NAMING (binding when today's directional bias on a recurring theme contradicts yesterday's).** When today's theme stance materially flips vs yesterday's — e.g., yesterday's ECB call was 'hike' and today's is 'cut'; yesterday's payrolls bias was 'below consensus' and today's is 'above consensus'; yesterday's $TLT call was 'long duration' and today's is 'short duration' — you MUST name the inversion explicitly in the INSIGHTS prose. One sentence is enough; concrete shapes that work: 'this reverses yesterday's bias on X', 'a day-over-day setup flip — yesterday the corpus skewed Y, today it's Z', 'the read flipped overnight when [specific catalyst from today's corpus] landed'. Without the inversion-name, the daily reader's natural reaction is 'which one is the consensus actually pricing?' and trust suffers — the read isn't that the writer is unreliable, but that the writer didn't acknowledge the swing. Concrete examples of inversions observed across recent pulses: ECB stance (priced hike → priced cut, 2026-06-03 → 2026-06-04); payrolls bias (below-consensus → above-consensus, 2026-06-03 → 2026-06-04). Both inverted in 24 hours and neither acknowledged the swing. This rule prevents that pattern. Walk yesterday's pulse markdown above for each recurring theme; check the directional verb (hike/cut, above/below, long/short, rip/fade) and compare to today's call. If they differ, name it."
         )
 
     # AUDIT-stage dedup reference — just the theme list, no directive. Passed
