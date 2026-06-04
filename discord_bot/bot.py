@@ -2832,6 +2832,132 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     return cleaned, hit_kinds
 
 
+# Slur-count question detection. The "how many times was X used" /
+# "word count of X" question shape consistently trips Gemini's
+# unconfigurable filter because:
+#   1. Question text often contains the slur literally
+#   2. Recent chat context block carries 3-5 slur tokens from the
+#      room's normal register
+#   3. Voice-strip retry (commit 137e310) handles profile-section
+#      slurs but doesn't mask question/chat slurs
+# So route directly via search_chat_messages, format response in
+# Python — no Gemini prose generation, no filter trip risk.
+# Concrete failure observed 2026-06-04 16:57-16:58 UTC: 4 blocks in
+# 90 seconds, all asking about slur usage stats.
+_KNOWN_SLURS = (
+    "nigga", "nigger", "chink", "spic", "kike",
+    "fag", "faggot", "pajeet",
+)
+
+_COUNT_INTENT_RE = re.compile(
+    r"\b(?:how\s+many\s+times|word\s+count|frequency|how\s+often|"
+    r"count\s+(?:the\s+)?(?:word|slurs?|uses?))\b",
+    re.IGNORECASE,
+)
+
+_SLUR_REFERENCE_RE = re.compile(
+    # Literal slurs (any variant) | meta keyword | euphemisms
+    r"\b(?:nigg[ae]r?s?|chink|spic|kike|fag(?:got)?|pajeet|"
+    r"slurs?|"
+    r"n[-\s]?word|"
+    r"word\s+(?:use\s+)?with\s+an?\s+n)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_slur_count_question(question: str) -> bool:
+    """Detect 'how many times was X used' shape where X references slurs.
+
+    Strips reply-chain prefix so the scoring matches the asker's actual
+    typed question, not the embedded prior message.
+    """
+    q = (question or "").strip()
+    if not q:
+        return False
+    # If this is a reply chain, the asker's typed text comes AFTER a
+    # marker like "[asker's message to you]" or "[username's message]".
+    # Find the marker and score only what follows.
+    for marker in ("'s message to you]", "'s message]"):
+        idx = q.lower().rfind(marker)
+        if idx != -1:
+            q = q[idx + len(marker):].strip()
+            break
+    return bool(_COUNT_INTENT_RE.search(q)) and bool(_SLUR_REFERENCE_RE.search(q))
+
+
+def _extract_slur_targets(question: str) -> list[str]:
+    """Extract which slurs to count from the question. Returns:
+      - the specific slur(s) named when explicitly referenced
+      - all known slurs when only meta references ('slur', 'n-word',
+        'word with an N') appear
+    """
+    q = (question or "").lower()
+    explicit = []
+    for slur in _KNOWN_SLURS:
+        if re.search(rf"\b{re.escape(slur)}\b", q):
+            explicit.append(slur)
+    if explicit:
+        return explicit
+    return list(_KNOWN_SLURS)
+
+
+async def _answer_slur_count_directly(
+    question: str,
+    user_id: int,
+    asker_display_name: str = "",
+    channel_name: str = "",
+) -> discord.Embed:
+    """Bypass Gemini for slur-count questions. Calls
+    db.search_chat_messages_for_ask once per target slur and assembles
+    a deterministic count response. Records the /ask query for quota
+    tracking the same way the Gemini path does."""
+    targets = _extract_slur_targets(question)
+    days = 30
+
+    counts: list[tuple[str, int]] = []
+    for slur in targets:
+        try:
+            rows = db.search_chat_messages_for_ask(
+                keyword=slur,
+                days=days,
+                channel_name=channel_name or None,
+                limit=10000,  # large enough we don't truncate the count
+            )
+            counts.append((slur, len(rows)))
+        except Exception as e:
+            log.warning(f"slur-count search failed for {slur!r}: {e}")
+            counts.append((slur, -1))
+
+    valid = [(s, n) for s, n in counts if n >= 0]
+    if not valid:
+        desc = "→ Couldn't pull chat history right now — DB hiccup. Try again."
+    elif len(valid) == 1:
+        slur, n = valid[0]
+        scope = f"in #{channel_name}" if channel_name else "across all chat"
+        desc = (
+            f"→ `{slur}` used **{n}** time{'s' if n != 1 else ''} "
+            f"{scope} in the last {days} days."
+        )
+    else:
+        total = sum(n for _, n in valid)
+        scope = f"in #{channel_name}" if channel_name else "across all chat"
+        lines = [
+            f"→ Slur uses {scope} in the last {days} days — total **{total}**:",
+        ]
+        valid.sort(key=lambda kv: (-kv[1], kv[0]))
+        for slur, n in valid:
+            if n > 0:
+                lines.append(f"  • `{slur}` — **{n}**")
+        desc = "\n".join(lines)
+
+    try:
+        db.record_ask_query(user_id)
+    except Exception as e:
+        log.warning(f"slur-count record_ask_query non-fatal failure: {e}")
+
+    return discord.Embed(description=desc, color=0x1ABC9C)
+
+
 async def _answer_with_gemini(
     question: str,
     user_id: int,
@@ -2864,6 +2990,21 @@ async def _answer_with_gemini(
                 ),
                 color=0xE67E22,
             )
+
+    # Slur-count question shape — bypass Gemini entirely to avoid the
+    # filter trip pattern observed on 2026-06-04 (4 blocks in 90 seconds).
+    # See module-level _is_slur_count_question for the rationale.
+    if _is_slur_count_question(question):
+        log.info(
+            f"/ask: slur-count query short-circuit "
+            f"(asker_id={user_id}, q={question[:80]!r})"
+        )
+        return await _answer_slur_count_directly(
+            question=question,
+            user_id=user_id,
+            asker_display_name=asker_display_name,
+            channel_name=channel_name,
+        )
 
     client = _get_gemini_ask_client()
     if client is None:
