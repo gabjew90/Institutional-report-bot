@@ -1,0 +1,319 @@
+You are a single-job voice scrub for a Market Pulse markdown. Your task is to walk the lint report you receive and resolve each flagged issue, returning the FULL pulse markdown with the fixes applied and everything else preserved character-for-character.
+
+For almost every lint `kind` this means rewriting the flagged sentence into trader-newsletter voice — you do NOT add or remove themes, you do NOT change facts/numbers/banks/tickers, you do NOT restructure paragraphs. The ONE exception is `kind: discovered-theme-missing` — that flag means a heavily-discussed dated catalyst is absent from the pulse entirely, and the fix is to ADD a single `### This Week` bullet for it (details in the per-kind table below). That's the only case where you add content; everything else is rewrite-in-place.
+
+**SCOPE — flagged content includes EVERYTHING in the markdown, not just body prose.**
+
+The lint report flags violations wherever they appear: in body paragraphs, in `### theme headers`, in italicized punchlines, inside bullet points, in section labels, in sub-headers under WHAT TO WATCH (`### Today` / `### This Week`). If the lint says line N has an em-dash or a source-prefix or a banned phrase, fix it AT line N — even if line N is a header.
+
+This is binding because the previous test pulse needed two SCRUB passes when pass 1 silently scoped to body and missed:
+- An em-dash in a `### theme header`
+- A source-prefix opener "UBS sees easing, ING calls it premature" in a `### theme header`
+- A bare jargon verb "carry" in a header
+
+The right rule: if it's in the lint report, scrub it — whether it's body, header, sub-header, bullet, or punchline. Pass 1 should leave 0 hard issues. Pass 2 only exists as a safety net for cases where pass 1's rewrite introduced a new issue (rare).
+
+**Inputs:**
+- A pulse markdown (the full final pulse, post-EDIT)
+- A lint report (JSON list of `{line, kind, snippet}` entries flagging specific patterns)
+
+**Per-kind rewrite rules:**
+
+| `kind` | What to do |
+|---|---|
+| `em-dash` | Replace `—` with comma, period, parens, or split into two sentences |
+| `semicolon` | Split into two sentences or use `and`/`but` |
+| `filler` | Rewrite the sentence WITHOUT the filler phrase. Don't just delete the word — rephrase so the sentence reads cleanly |
+| `AI-cliche-verb` | Replace `delve` / `navigate` / etc. with a plain alternative; restructure if needed |
+| `AI-cliche-adj` | Replace `robust` with `strong`, `solid`, `well-supported`; restructure if it reads forced |
+| `hedge` | Drop the hedge entirely (`could potentially` → `could`, or restate as a direct claim) |
+| `wrap-up` | Strip — these are summary-tells (`Overall,` / `In summary`); remove the lead and let the sentence stand |
+| `AI-tell` | Strip the AI-tell phrase; rewrite the sentence's idea in plain prose |
+| `meta-narration` | State the view directly without commenting on the corpus. `cross-bank consensus is firming` → name the specific banks and what they actually said |
+| `source-prefix` | Move the bank attribution to a parenthetical at sentence end, OR strip entirely if it's not paired with a specific number/level. The bank name appears ONLY when paired with a specific data point |
+| `banned-publication` | Strip the publication name (`The Market Ear`, `TME`, `FX Daily`) entirely. Present the data without attribution — it stands on its own |
+| `jargon-bare` | **REWRITE THE SENTENCE** in plain English. Do NOT just append a parenthetical translation. Use the jargon-to-plain-English reference below as a guide, but the goal is a sentence a 28-year-old WSJ-reading crypto trader gets on first read — not a glossed bond-desk sentence |
+| `top-3-theme-missing` | NOT YOUR JOB — leave alone, this is AUDIT's territory (it concerns a primary INSIGHTS theme; you don't add themes) |
+| `discovered-theme-missing` | **ADD A `### This Week` BULLET in WHAT TO WATCH** for the named topic. The lint snippet gives you the topic name + bank count. The topic has no consensus stance (banks discussed it without arguing direction), so the bullet is informational, not a trade call. Format: `**Ongoing: <topic>.** <N>-plus desks flag it; no consensus on direction. <one short line on the cross-asset stakes if obvious — otherwise just "watch for headlines">.` If you genuinely can't say anything about the stakes, the bare "many desks flag it, no consensus" line is still better than the topic being absent. Add it to the EXISTING `### This Week` block (don't create a new section). This is the ONE case where you add content rather than rewriting it — because the lint flagged a coverage GAP that has an obvious fix |
+| `RECAP-misframe` | Rewrite the flagged sentence. This fires on "crypto is the only thing trading" / "the one thing actually moving" / "the only market open" in a pre-market RECAP — which is factually wrong (equity-index futures, Treasury futures, oil futures, FX all trade pre-market; only US cash equities are closed). Recast so crypto is a LIVE data point ALONGSIDE the yesterday's-close stock levels, not "the only live market." E.g., "Crypto is the one thing actually trading right now, and it's leaking lower: $BTC -1.0%" → "$BTC is down 1.0% overnight near $81k, $ETH and $SOL a touch more — crypto's the live read while cash equities wait for the open." Keep the actual data; drop the false "only thing trading" claim |
+
+**Sentence rewrite priority (jargon especially):**
+1. Rewrite the SENTENCE so the meaning lands in plain English (default)
+2. Replace the term with the plain equivalent inline + restructure
+3. Drop the term if removing doesn't lose meaning
+4. Parenthetical gloss is the LAST RESORT — almost never the right answer
+
+Worked example for `jargon-bare`:
+- ❌ Don't do: `"long-end yields rose on coupon supply (new Treasury bonds being auctioned)"` — the gloss leaves the trader-desk sentence structure intact
+- ✅ Do: `"30-year Treasury yields rose this morning because the government is about to auction a wave of new long-term bonds — more supply means buyers demand higher rates"` — sentence rewritten in plain English, the original term is gone
+
+**What to PRESERVE EXACTLY (do not touch):**
+- Theme structure, theme order, theme count
+- Numbers, percentages, dates, levels, tickers (verbatim)
+- Bank names where they're attribution to specific calls/data points
+- Markdown structure (`##` headers, `###` theme headers, italics, bullets, bolding inside bullets)
+- The H1 title at the top
+- Frontmatter (everything between the `---` markers at the top)
+- Section dividers, blank lines
+
+**Output format:**
+Return the COMPLETE markdown with the flagged sentences rewritten. NO preamble. NO `Here is the rewritten markdown:` intro. NO commentary at the end. NO `I changed the following sentences:` diff explanation. NO markdown code fences around the output. Just the pulse markdown, ready to be saved verbatim to `/tmp/final.md`.
+
+**If the lint report is empty or has only soft warnings (`top-3-theme-missing`)**, return the markdown unchanged — your job is hard-issue rewriting only.
+
+<<SCRUB_REFERENCE_BLOCK>>
+
+----
+
+**HARD GATE — ZERO-ISSUE NO-OP** (this rule fires FIRST, before reading anything else):
+
+If `27` below is `0`, return the input markdown UNCHANGED. Copy it character-for-character. Do not paraphrase, do not "improve" prose, do not add cosmetic edits, do not even normalize whitespace. The lint reported zero hard issues; your only valid output is the input markdown verbatim.
+
+This is the SCRUB-on-zero-lint dispatch gate. The routine procedure (synthesis-routine.md STEP 5.7.1) is supposed to skip dispatch when issue_count=0, but past runs have ignored the skip (the 2026-05-29 + 2026-05-30 + 2026-06-01 QC reviews all flagged SCRUB-ran-on-zero-input producing cosmetic regressions like "basis points" → "hundredths of a percent" — a translation-rule misapplication on text that wasn't even flagged). This prompt-level gate is the structural backstop: even if dispatched, you return the input as-is.
+
+You ONLY do work when `27` > 0. With zero issues there is nothing to scrub. Return the input markdown. Stop.
+
+---
+
+Lint report (27 hard issue(s) to address):
+```json
+[
+ {
+  "line": 9,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 11,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 21,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 23,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 25,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 32,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 35,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 38,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 75,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 81,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 86,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 87,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 89,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 90,
+  "kind": "semicolon",
+  "snippet": ";"
+ },
+ {
+  "line": 5,
+  "kind": "AI-tell",
+  "snippet": "the tape"
+ },
+ {
+  "line": 49,
+  "kind": "AI-tell",
+  "snippet": "the tape"
+ },
+ {
+  "line": 90,
+  "kind": "jargon-bare",
+  "snippet": "duration"
+ },
+ {
+  "line": 67,
+  "kind": "jargon-bare",
+  "snippet": "carry"
+ },
+ {
+  "line": 75,
+  "kind": "jargon-bare",
+  "snippet": "carry"
+ },
+ {
+  "line": 91,
+  "kind": "jargon-bare",
+  "snippet": "carry"
+ },
+ {
+  "line": 5,
+  "kind": "jargon-bare",
+  "snippet": "caught a bid"
+ },
+ {
+  "line": 8,
+  "kind": "jargon-bare",
+  "snippet": "caught a bid"
+ },
+ {
+  "line": 5,
+  "kind": "jargon-bare",
+  "snippet": "tape"
+ },
+ {
+  "line": 38,
+  "kind": "jargon-bare",
+  "snippet": "tape"
+ },
+ {
+  "line": 49,
+  "kind": "jargon-bare",
+  "snippet": "tape"
+ },
+ {
+  "line": 75,
+  "kind": "jargon-bare",
+  "snippet": "the front end"
+ },
+ {
+  "line": 5,
+  "kind": "jargon-bare",
+  "snippet": "UTC day"
+ }
+]
+```
+
+Pulse markdown to scrub (preserve everything except the flagged sentences):
+```markdown
+# Hormuz softens, AI cracks
+
+## 1. RECAP
+
+Heading into Thursday's open, the tape is wrestling with two narratives at once. Equities closed weak yesterday with $SPY -0.70% and $QQQ -0.26%, while oil ripped higher into the close ($USO +2.62%, $BNO +1.99%) on a still-tight physical picture. Overnight the script flipped: a Lebanon-Israel ceasefire and "more oil escaping Hormuz" dragged crude back off highs, the dollar slipped from a two-month high with yen pinned near 160, and gold caught a bid. Crypto leaked through the UTC day with $BTC -0.61% holding the $63.7k area and $ETH -2.04% the underperformer. Underneath it, the AI complex took its first proper guide-down (Broadcom's full-year AI chip number undershot the street) and hedge fund gross leverage sits at a five-year high while the Goldman Vol Panic Index is near a record low. ISM Services beat yesterday and Friday's payrolls is the next pressure test.
+
+- **ISM Services PMI (yesterday, 10:00 ET).** Headline 54.5 vs 53.8 est (prev 53.6), new orders ripped to 57.3 from 53.5, but prices paid stuck at 71.3 and the employment sub-index fell to 47.9 (sub-50 = contraction in services hiring). The mix is stagflation-shaped: activity firm, input costs sticky, hiring soft. $SPY closed -0.70% with the 30Y briefly breaching 5% before settling.
+- **Lebanon-Israel ceasefire + more oil escaping Hormuz (overnight wires).** Oil fell back from yesterday's $USO +2.62% / $BNO +1.99% session as the ceasefire stuck through European hours despite an Israeli strike in Lebanon, and Reuters flagged more crude exiting the Strait. Dollar slipped from a two-month high (yesterday $UUP +0.36%, now leaking), gold caught a bid back toward the $407 area on $GLD.
+- **Broadcom AI guide-down drove the Wednesday equity slide.** Full-year AI chip guide came in below Street and 3Q below the bar, hitting $QQQ -0.26% and dragging the semiconductor complex; Reuters this morning leads with "Stocks struggle after Broadcom dive." First real airpocket in the AI-build narrative after two years of upside revisions.
+- **Cross-asset positioning extreme.** Hedge fund gross leverage at a five-year high, Goldman Risk Appetite at a record, $60B in single-stock levered ETF AUM (doubled since April), and 67% of the S&P's late-March-to-now rally has come from ten names. The book is set up such that a single forced unwind in any one of those ten names drags the index with it.
+- **China cuts retail gasoline and diesel prices from June 5; Iranian oil slips to discount on poor Chinese demand.** The demand side of the oil story is leaking even as physical supply stays contested, which is part of why front-month futures are pricing the optimism faster than physical Brent.
+
+## 2. INSIGHTS & ALPHA
+
+### Hormuz is reopening on the futures curve, not the physical curve
+
+*The headline risk is draining out of oil futures while the physical supply hole still has not filled, and the gap is the trade.*
+
+- Brent futures down 22% from the late-March peak even though Hormuz remains contested (Goldman)
+- Front-month oil futures down 12% since US-Iran progress headlines (Citadel Securities)
+- Citadel pegs the probability of normal Hormuz traffic at 22% by July 1 and 50% by August 1; the curve has priced something closer to 80%
+- BofA puts the 2Q26 oil deficit at 3.4m b/d, returning to balance only in 2027, which does not match a $66 Brent print
+- Saudi-Kuwait-UAE-Qatar-Bahrain-Iraq collectively shut in 10.5M b/d in April per SEB; global airline chiefs meet today on the fuel shock
+
+Two stories are pulling oil in opposite directions. The futures market is trading ceasefire optimism plus a softer China demand pulse, which is why Iranian crude just slipped to a discount and Beijing is cutting retail gasoline from Friday. The physical market is still short, jet fuel inventories sit at eight-year lows, and the Lebanon-Israel ceasefire has already taken one Israeli strike in Lebanon overnight without breaking, which is exactly how the previous three "deals" this year started before they came apart. Bulls argue the futures curve has the read right, that a real ceasefire pulls Brent into the $60s and the trade is over by the end of June; the risk pushed back on the desks is that the physical scarcity wins out and the futures-physical gap closes the other way when refined-fuel stocks fail to rebuild over summer. Long $BNO outright, paired with short $USO to lean on the WTI-Brent spread widening as physical Brent stays tight while WTI prices the optimism.
+
+### AI capex is now funding itself, and that is the problem
+
+*The hyperscaler buildout has reached the point where 85% of AI-ecosystem revenue is the spending itself, which is a recycled-money loop rather than a self-sustaining business.*
+
+- TS Lombard: 85% of AI-ecosystem revenues come from recycled capex, with the buildout at 2% of US GDP in 2026
+- Total AI buildout spend hits $700B this year; Microsoft's 2026 capex includes $25B attributed to higher component pricing, with $80B in unfilled Azure orders
+- Broadcom guided FY AI chip revenue to $56B vs Street $57.6B, and 3Q26 specifically to $16B vs $17.2B (Goldman TMT desk), the first real airpocket in the build-out narrative
+- Alphabet raised $35B in equity, the largest US equity capital raise on record, plus an $80B secondary that flips Q4 net equity supply from -$44B to +$40B
+- Micron DRAM prices up roughly 60% and NAND up roughly 70% in the latest quarters; memory is what is keeping the capex math from collapsing right now
+- Goldman 1-Delta desk flags $60B in single-stock levered ETF AUM, doubled since April
+
+The mechanics are uncomfortable when laid out. Hyperscalers are buying their own demand by paying GPU vendors who pay foundries who pay equipment makers. The picks-and-shovels names keep getting fed, and the end-customer revenue line is the part that has to materialize for the loop to self-fund. Citi and Goldman make the bull case that agentic AI raises token consumption 24x by 2030, which closes the loop in time. The skeptic case from TS Lombard is that capex growth at 80% YoY against a backlog of $1.5T means somebody renegotiates a contract first, and Alphabet's record equity raise is the tell that even the most cash-rich names are running out of organic firepower. The Broadcom guide-down is the first crack visible in the print; semis own that fragility because they are the most levered to the next quarter's hyperscaler order tape, while equipment names price longer. Long $AMAT (semi-cap equipment, longer-cycle visibility) paired with short $AVGO into the back-half order season.
+
+### Hartnett's bubble call and the rotate-out has a date
+
+*A "bubble" label from BofA's Hartnett with the Bull and Bear Indicator at 8.5 approaching record, and four other notes hitting the wire arguing what to buy if not AI, says the lead has gotten too crowded.*
+
+- BofA Bull and Bear Indicator at 8.5, up from 8.0, approaching record (Hartnett: "What To Trade When This Bubble Bursts")
+- 4% of S&P 500 stocks at new highs vs 20 stocks at the March 2000 internet bubble top (Hartnett)
+- 67% of the S&P 500 rally since end-March came from just 10 companies
+- 25% of stocks outperformed the MSCI ACWI in May, and only 39% of active funds outperformed
+- BTIG flags nine consecutive up days and ten up weeks on negative breadth, the longest streak since 1985 and a combination that has not happened before
+- 31 global YTD rate cuts vs 12 hikes, the liquidity prop holding the tape together
+
+The contrarian read is not "short the index tomorrow." It is that the rotate-out trade has a date. Four separate notes ("Nobody Wants NVDA," "Sell in May," "Iran Deal Would Risk AI Rotation," "The Year the Magnificent Seven Stopped Being Magnificent") all argue the same thing, that the dispersion between the top ten and the rest of the index has gotten too large for the index to keep working as a single instrument. Bulls counter that put pricing is too cheap and the dealer book is positioned to mechanically buy dips, which is exactly what produces nine straight up days on bad breadth. The bear case wins when an actual catalyst lands (Friday's payrolls hot enough to push the September cut out, the next MAG7 guide-down, Powell at Jackson Hole), because the same mechanical positioning that is holding the index up flips on a single forced unwind. Long $RSP (equal-weight S&P) over $SPY into Friday's NFP, with $VIXY as the tail hedge while the Vol Panic Index sits near a record low.
+
+### Payrolls walks in Friday with two banks above consensus
+
+*BofA at 95k and Scotiabank at 125k versus an 85k Street says the labor data is firmer than the rate-cut crowd is positioned for.*
+
+- BofA Global Research May NFP forecast 95k vs 85k consensus, unemployment held at 4.3%
+- Scotiabank May NFP forecast 125k vs 85k consensus
+- JOLTS job openings 7.618m, up from a revised 6.877m, with 91% of the rise in professional and business services
+- TS Lombard: profit upturn historically front-runs the hiring cycle by one to two quarters, and the profit cycle has just turned
+- ISM Services PMI 54.5 yesterday (vs 53.8 estimate), prices paid 71.3, employment sub-index still 47.9, so services activity is firm with hiring still soft
+
+The mechanism that matters is the rate path. The market is positioned for two cuts in the second half, and if Friday prints 100k or better with unemployment unchanged and ISM prices paid still in the 70s, the September cut becomes a coin flip and the 10Y has more room to back up. Scotiabank itself flags the labor-data reliability problem (single-month volatility and the professional-services concentration in JOLTS) as a real reason to fade conviction, and the 30Y briefly breached 5% yesterday before settling, so some of this is already in the curve. The defense for the firmer call is that JOLTS does not lie about openings even when payrolls do, and the openings line has reaccelerated. Short $TLT into Friday's print, paired with long $UUP as the secondary if the print runs hot.
+
+### ECB on June 11 is the hike nobody is hedging
+
+*The market has priced a 25bp ECB cut at 99% for next week, UBS is calling for a 25bp hike instead, and the carry trade is set up to break on a single phrase from Lagarde.*
+
+- UBS expects ECB to hike 25bp at the June 11 meeting, sees terminal at 2.5%
+- Eurozone CPI accelerated to 3.2% YoY from 3.0% in April
+- 10Y Bund at 3.00%, a move above suggests the market is pricing persistent inflation and energy shock
+- Danske Bank cut 2026 Euro-area real GDP to 0.7% from 1.2% on the Hormuz shock, so the ECB has the inflation reason without the growth cover
+- Hike chatter is showing up across Deutsche Bank, Danske, Mizuho, UBS, and UniCredit
+
+The setup is asymmetric. Consensus is a cut and UBS is the lone hawk on a print; if Lagarde matches UBS, EURUSD breaks higher and the front end of European rates repositions in one session. The pushback is that the growth picture is too weak for any central bank to surprise hawkishly, with Eurozone PMIs soft and Finland trend unemployment at the highest since 1999, so the carry-trade math works because the macro does not justify a hike. UBS counters that this is about the supply-shock inflation impulse, not demand, and the ECB hiked into stagflation before (2008) when the print got too sticky. With the dollar already slipping from a two-month high overnight on the Iran-talks read, the euro side has cover to run. Long $FXE (the US-tradable euro proxy) into the June 11 meeting.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **Global airline chiefs meet on the Iran war fuel shock (IATA wire).** Refined-fuel inventories at eight-year lows, jet-fuel demand 6% below trend per Goldman; any commentary on jet-fuel pricing assumptions reads through to $DAL, $UAL, $LUV and the broader Brent crack spread.
+- No US earnings of consequence today.
+
+### This Week
+
+- **Friday June 5, 08:30 ET, May Nonfarm Payrolls.** Consensus 85k headline, 4.3% unemployment unchanged. BofA at 95k, Scotiabank at 125k. A print at 110k or higher with unemployment unchanged forces the September cut out of the curve; $TLT lower, $UUP higher, $RSP outperforms $SPY on the rate-sensitive growth-name unwind.
+- **Wednesday June 10, 08:30 ET, US CPI (May).** Mizuho expects the 10Y to consolidate 4.40-4.50% into NFP and CPI; a hotter print on energy passthrough takes the curve to 4.55%+ and tests Goldman's structurally-higher-volatility call.
+- **Wednesday June 11, 08:15 ET, ECB rate decision.** Market priced 99% probability of a 25bp cut. UBS calling for a 25bp hike. Tradable via $FXE options into the meeting.
+- **Wednesday June 11, 08:30 ET, US PPI (May).** Last print at 1.4% MoM; another firm print closes the rate-cut door further.
+- **Iran-US ceasefire framework (no fixed date).** A proposed 60-day extension framework is being discussed across desks. A constructive readout caps the oil rally and bids the AI lead back; a breakdown reignites the Brent-spike trade and re-puts a duration bid into $TLT.
+- **BoJ June 16 meeting (MUFG, Mizuho).** USDJPY at 160 revives intervention speculation, and 2-year US yields are up 20bps since the start of May. A BoJ hike forces the yen-carry unwind that hits global risk assets through the same channel as last August.
+
+```
+
+**CRITICAL — rewrite at the FLAGGED LINE.** Each lint entry has a `line` field. The sentence at that line is what you rewrite. Do not modify unrelated paragraphs at other line numbers. Do not "improve" prose elsewhere. Past regression: a SCRUB pass rewrote themes #2 and #4 while LEAVING the specific issue flagged at line 10 intact — that's the opposite of the job. Your output diff vs input should show changes ONLY at flagged line numbers (or, when a category match like AI-tell-template fires multiple times, at every flagged occurrence).
+
+If you find yourself editing prose at a line number not in the lint report, STOP — you're rubber-stamping with cosmetic edits while leaving the actual flag intact.
+
+Return the rewritten markdown verbatim — no preamble, no commentary.
