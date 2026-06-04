@@ -83,6 +83,16 @@ BANNED_AI_TELLS = [
     "the mechanism here is",
     "the dynamic is straightforward",
     "the dynamic here is",
+    # 2026-06-04 QC review caught "The mechanics are uncomfortable
+    # when laid out" in INSIGHTS #2 prose (AI capex slot). Same family
+    # as "the mechanism is straightforward" — banker-tic that signals
+    # "I'm about to explain something" without committing to the
+    # explanation. Both singular ("mechanic is") and plural ("mechanics
+    # are") forms; both "uncomfortable" and the family-adjective forms
+    # ("stark", "ugly", "obvious", "clear") get caught by the regex
+    # below.
+    "the mechanics are uncomfortable",
+    "the mechanic is uncomfortable",
     # Generic opener tells that show up at the start of multiple bullets
     # in the same RECAP. Detected duplicate "Today's price action" usage
     # in the 2026-05-08 run — banning the bare opener forces variety.
@@ -149,6 +159,33 @@ BANNED_AI_TELL_REGEXES: list[tuple[str, str]] = [
         r"\bis\s+the\s+(?:binding|dominant|cleanest|deciding|gating|operative)"
         r"\s+(?:variable|constraint|signal|factor|read|driver|input)\b",
         'banker-authority-signal',
+    ),
+    # Mechanics/dynamics-are-uncomfortable family — 2026-06-04 QC
+    # surfaced "The mechanics are uncomfortable when laid out" in
+    # INSIGHTS #2. Same banker-tic as "the mechanism is straightforward"
+    # — promises mechanism explanation without committing. Catches:
+    #   "the mechanics are uncomfortable when laid out"
+    #   "the mechanic is uncomfortable to see"
+    #   "the dynamics are stark when you look at them"
+    #   "the math is obvious once laid out"
+    # Adjective list (uncomfortable|stark|ugly|obvious|clear|brutal)
+    # captures the family; the noun list catches mechanic/mechanics/
+    # dynamic/dynamics/math/picture.
+    (
+        r"\bthe\s+(?:mechanics?|dynamics?|math|picture)\s+(?:is|are)"
+        r"\s+(?:uncomfortable|stark|ugly|obvious|clear|brutal|grim)"
+        r"(?:\s+(?:when|once)\s+(?:laid|spelled|written|put)\s+out)?\b",
+        'banker-mechanics-tic',
+    ),
+    # Standalone "when laid out" / "once laid out" closer — the
+    # qualifying-clause filler that follows the mechanics-uncomfortable
+    # tell. Catches even when the main phrase varies ("the picture is
+    # ugly when laid out" — caught by the regex above; "the trajectory
+    # is bleak when laid out" — caught here).
+    (
+        r"\b(?:uncomfortable|stark|ugly|obvious|clear|brutal|grim|bleak)"
+        r"\s+(?:when|once)\s+(?:laid|spelled|written|put)\s+out\b",
+        'banker-mechanics-tic',
     ),
 ]
 
