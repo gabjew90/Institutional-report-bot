@@ -599,21 +599,60 @@ def _classify_themes(
         for tag, srcs in merged_sources.items()
     }
 
-    # Add Phase B clusters that DIDN'T match any Phase A theme as discovered.
+    # Add Phase B clusters. When the canonical label collides with an
+    # existing Phase A theme, MERGE Phase B's contextual-mention banks
+    # into the Phase A entry rather than creating a "(discovered)"
+    # duplicate. Why: adjudication runs on the Phase A entry's
+    # `sources` field, and that field was previously built from banks
+    # with explicit theme_stances only — banks that contributed via
+    # contextual_mentions (Phase B's input) were missing.
+    #
+    # Concrete failure observed 2026-06-04: adjudicator returned
+    # banks_for=["Scotiabank"] for `us_labor_market_strength` (citing
+    # JOLTS + hiring evidence Scotiabank PDFs contained), but Scotiabank
+    # was NOT in the Phase A theme's sources list (no explicit stance,
+    # only contextual mentions promoted via Phase B). The routine's
+    # input-source check then discarded the theme as a hallucinated
+    # attribution. Same shape on the 2026-06-01 IEA case.
+    #
+    # The "(discovered)" suffix is reserved for genuinely-new topics
+    # Phase B surfaced that Phase A missed entirely — not for
+    # reinforcement of an existing canonical.
     for d in promoted:
         label = d["canonical"]
-        if label in theme_map:
-            label = f"{label} (discovered)"
         banks_set = set(d["banks"])
-        theme_map[label] = {
-            "banks": len(banks_set),
-            "pdfs": len(d["pdf_ids"]),
-            "sources": sorted(banks_set),
-            "supportive": 0,
-            "skeptical": 0,
-            "neutral": len(banks_set),
-            "discovered": True,
-        }
+        if label in theme_map:
+            existing = theme_map[label]
+            merged_banks = set(existing["sources"]) | banks_set
+            existing["sources"] = sorted(merged_banks)
+            existing["banks"] = len(merged_banks)
+            # PDF count: take the max rather than sum — Phase A counts
+            # PDFs with stances, Phase B counts PDFs with mentions, and
+            # those sets overlap. Sum would double-count; max is a
+            # conservative lower bound. (The actual pdf_ids set isn't
+            # tracked in Phase A so a precise union isn't available.)
+            existing["pdfs"] = max(
+                existing.get("pdfs", 0), len(d["pdf_ids"])
+            )
+            # Neutral count gets the newly-discovered banks added so
+            # the stance histogram reflects Phase B's contribution
+            # (their mentions are stance=neutral by design).
+            existing["neutral"] = existing.get("neutral", 0) + len(
+                banks_set - set(existing["sources"][:existing["banks"]])
+            )
+            # Flag the reinforcement so downstream (theme_coverage
+            # rendering, QC) can see this entry got Phase B support.
+            existing["reinforced_by_discovery"] = True
+        else:
+            theme_map[label] = {
+                "banks": len(banks_set),
+                "pdfs": len(d["pdf_ids"]),
+                "sources": sorted(banks_set),
+                "supportive": 0,
+                "skeptical": 0,
+                "neutral": len(banks_set),
+                "discovered": True,
+            }
 
     # =====================================================================
     # CONTRARIAN-DIVERGENCE DETECTION
