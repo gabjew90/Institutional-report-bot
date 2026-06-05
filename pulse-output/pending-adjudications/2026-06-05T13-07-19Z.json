@@ -1,0 +1,275 @@
+{
+  "pulse_date": "2026-06-05",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "strait of hormuz closure",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 14
+      },
+      "consensus_view": "Many desks flag the Strait of Hormuz situation as a live energy-supply risk, but no bank is staking a clean directional call; Rabobank is the lone outlier arguing the strait stays functionally closed in the near term while others treat it as a backdrop disruption monitoring oil-flow normalization.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across multiple desks reference the Strait of Hormuz situation as an ongoing energy-supply and Middle East disruption risk without staking a primary directional view.",
+          "banks_for": [
+            "ANZ Research",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "LSEG",
+            "Mizuho Securities",
+            "Nordea",
+            "Rabobank",
+            "Scotiabank",
+            "TS Lombard",
+            "The Market Ear",
+            "UBS",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "Middle East supply disruptions",
+            "Iran war supply disruptions",
+            "Middle East energy flow disruptions",
+            "Middle East geopolitical uncertainty",
+            "Strait of Hormuz oil flow normalization",
+            "Strait of Hormuz oil flow constraints",
+            "Strait of Hormuz reopening expectations",
+            "Strait of Hormuz closure"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai capex spending",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 2,
+        "neutral": 7
+      },
+      "consensus_view": "The big banks see AI capex still ramping hard through 2026 and driving most of S&P earnings growth, while a minority warns the resulting profits look like a bubble that fades once chip shortages ease.",
+      "facts_agreed": [
+        {
+          "claim": "AI capex spending is running at boom levels and is the dominant micro tailwind lifting global tech earnings.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "quarterly CapEx growth should run around 80% y/y through the rest of this year",
+            "Global equities have been boosted by micro tailwinds from the AI capex spending boom",
+            "12m forward EPS for AI infrastructure companies have increased by more than 40% YTD",
+            "the current AI boom is accompanied by very strong capex and earnings growth"
+          ]
+        },
+        {
+          "claim": "Hyperscaler AI capex will stay elevated, with Alphabet's equity raise signalling spend can no longer be funded purely from cash flow.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "This move signals to us that AI capex will remain high for some time.",
+            "Alphabet no longer expects AI infrastructure needs to be funded solely through free cash flow"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether current AI-sector earnings are durable or a temporary bubble",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "for_evidence": "the current AI boom is accompanied by very strong capex and earnings growth",
+          "banks_against": [
+            "BCA Research"
+          ],
+          "against_evidence": "The broad conclusion from today\u2019s report is that the AI sector is almost certainly in the midst of an earnings bubble."
+        },
+        {
+          "claim": "Whether the AI trade is a structural tailwind to stay long or an overcrowded positioning risk to fade",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "stay long the global AI theme",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "signals extreme positioning risk driven by the AI stock chase"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "israel lebanon ceasefire concerns",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six banks flag the Israel-Lebanon ceasefire as a live Middle East risk this window, but none has staked a directional market call on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the Israel-Lebanon ceasefire as a fragile, unresolved Middle East situation worth tracking.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Mizuho International Plc",
+            "Natixis",
+            "Rabobank",
+            "SEB",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Lebanon-Israel ceasefire skepticism",
+            "Middle East ceasefire fragility",
+            "Israel-Lebanon ceasefire dynamics",
+            "Hezbollah rejection of ceasefire terms",
+            "Israel-Lebanon conflict escalation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "labor market momentum",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Most desks see the US labor market losing steam heading into May payrolls, with only MUFG calling for solid hiring momentum to continue.",
+      "facts_agreed": [
+        {
+          "claim": "The US labor market is showing softening or cooling signs heading into the May payrolls print.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "Nonfarm payrolls labor market softening",
+            "US labor market cooling signs",
+            "US labour market softness"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Direction of May jobs momentum",
+          "banks_for": [
+            "MUFG"
+          ],
+          "for_evidence": "Solid jobs growth momentum expected to continue in May",
+          "banks_against": [
+            "UBS"
+          ],
+          "against_evidence": "Uncertainty has frozen US labor market activity."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran conflict",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Several banks flag the US-Iran conflict and Strait of Hormuz situation as a live macro catalyst, but none stake a primary directional view on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the US-Iran conflict and related Middle East escalation as an active macro backdrop without taking a directional stance.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ING",
+            "Rabobank",
+            "SEB",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "US-Iran conflict",
+            "US-Iran geopolitical strife",
+            "Iran war fallout",
+            "US-Iran nuclear enrichment stalemate",
+            "Iran escalation risk reduction",
+            "US-Iran Middle East conflict escalation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed reaction function",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Several banks flag a hawkish shift in the Fed's reaction function (how the Fed responds to data) as a live macro theme, but nobody has staked a clear directional bet on what it means for rates.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks across desks reference a hawkish shift in the Fed's reaction function as a current macro subject.",
+          "banks_for": [
+            "Goldman Sachs",
+            "BofA Global Research",
+            "Cr\u00e9dit Agricole CIB",
+            "ING",
+            "SEB"
+          ],
+          "evidence_quotes": [
+            "the implication is that the market increasingly believes the Fed\u2019s reaction function has changed",
+            "Fed reaction function hawkish shift",
+            "Dallas Fed hawkish stance",
+            "Fed hawkish policy shift",
+            "Warsh FOMC policy shift",
+            "Iran war impact on Fed reaction function"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb monetary tightening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Banks agree the ECB will start raising interest rates in June to fight inflation, with more hikes expected through year-end.",
+      "facts_agreed": [
+        {
+          "claim": "The ECB will begin hiking interest rates in June.",
+          "banks_for": [
+            "Nordea",
+            "ING",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "We still expect four consecutive 25bp rate hikes",
+            "Why an ECB rate rise looks like a done deal in June",
+            "The ECB is very likely to start hiking interest rates next week"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
