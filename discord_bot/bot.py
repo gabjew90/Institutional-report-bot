@@ -2997,6 +2997,263 @@ async def _answer_slur_count_directly(
     return discord.Embed(description=desc, color=0x1ABC9C)
 
 
+# Message-count question detection. The bot's 2026-06-04 22:29 UTC
+# answer of "BK has sent 9 messages today" came from Gemini inferring
+# the count from the visible recent-50-chat-window block — which is
+# artificially small (50 messages span minutes-to-hours, not a day).
+# Per user direction: "for message count look up either 100 or the
+# last 6 hours, whichever has more messages" — pull both windows,
+# take the larger as the sample pool, count target user's messages
+# from that pool, return a deterministic answer with the window scope
+# visible to the asker.
+_MSG_COUNT_INTENT_RE = re.compile(
+    r"\b(?:how\s+many|number\s+of|count\s+(?:of|the))\b"
+    r"[\s\S]{0,40}"
+    r"\b(?:messages?|posts?|texts?)\b",
+    re.IGNORECASE,
+)
+
+# Target-name extraction patterns. Most natural shapes the asker uses:
+#   "did NAME send/post"      → "did kyle send"
+#   "from NAME"               → "messages from kyle"
+#   "by NAME"                 → "messages by kyle"
+#   "@NAME"                   → discord mention shape
+#   "NAME's messages"         → possessive
+_TARGET_EXTRACT_PATTERNS = [
+    re.compile(r"\bdid\s+([A-Za-z][\w._-]*)\b", re.IGNORECASE),
+    re.compile(r"\bfrom\s+([A-Za-z][\w._-]*)\b", re.IGNORECASE),
+    re.compile(r"\bby\s+([A-Za-z][\w._-]*)\b", re.IGNORECASE),
+    re.compile(r"@(\w[\w._-]*)\b"),
+    re.compile(r"\b([A-Za-z][\w._-]+)['’]s\s+messages?\b", re.IGNORECASE),
+    re.compile(r"\bhas\s+([A-Za-z][\w._-]*)\s+(?:sent|posted)\b", re.IGNORECASE),
+]
+
+# Words that look like names but are actually function words / time
+# markers. Filter out so the extractor doesn't return them as targets.
+_TARGET_EXTRACTION_STOPWORDS = {
+    "today", "yesterday", "this", "the", "did", "send", "post",
+    "tomorrow", "anyone", "someone", "everyone",
+}
+
+
+def _is_message_count_question(question: str) -> bool:
+    q = (question or "").strip()
+    if not q:
+        return False
+    # Strip reply-chain prefix so we score the asker's typed text
+    for marker in ("'s message to you]", "'s message]"):
+        idx = q.lower().rfind(marker)
+        if idx != -1:
+            q = q[idx + len(marker):].strip()
+            break
+    return bool(_MSG_COUNT_INTENT_RE.search(q))
+
+
+def _extract_message_count_target(question: str) -> str | None:
+    """Pull the target user/name from the question. Returns the raw
+    matched substring (e.g. 'kyle', 'BK', 'grandnagusyeezy'). The
+    resolver below normalizes to a real user_id."""
+    q = (question or "").strip()
+    for marker in ("'s message to you]", "'s message]"):
+        idx = q.lower().rfind(marker)
+        if idx != -1:
+            q = q[idx + len(marker):].strip()
+            break
+    for pat in _TARGET_EXTRACT_PATTERNS:
+        m = pat.search(q)
+        if m:
+            name = m.group(1).strip()
+            if name.lower() in _TARGET_EXTRACTION_STOPWORDS:
+                continue
+            if len(name) < 2:
+                continue
+            return name
+    return None
+
+
+def _resolve_chat_target(name: str) -> tuple[int | None, str | None, str | None]:
+    """Resolve a name to (user_id, canonical_username, display_name).
+    Tries three paths in order:
+      1. Exact username via db.resolve_username_to_user_id
+      2. Display-name OR username LIKE match in user_profiles
+      3. Most-recent author_display / author_username LIKE match in
+         chat_messages (catches users who chat but have no profile yet)
+    Returns (None, None, None) when nothing matches.
+    """
+    if not name:
+        return None, None, None
+    needle = name.lower().strip().lstrip("@")
+    if not needle:
+        return None, None, None
+
+    uid = db.resolve_username_to_user_id(needle)
+    if uid:
+        try:
+            conn = db.get_connection()
+            row = conn.execute(
+                "SELECT user_id, username, display_name FROM user_profiles "
+                "WHERE user_id = ? LIMIT 1",
+                (uid,),
+            ).fetchone()
+            if row:
+                return (
+                    int(row["user_id"]),
+                    row["username"],
+                    row["display_name"],
+                )
+        except Exception:
+            pass
+        return uid, needle, None
+
+    try:
+        conn = db.get_connection()
+        row = conn.execute(
+            "SELECT user_id, username, display_name FROM user_profiles "
+            "WHERE LOWER(display_name) LIKE ? OR LOWER(username) LIKE ? "
+            "LIMIT 1",
+            (f"%{needle}%", f"%{needle}%"),
+        ).fetchone()
+        if row:
+            return int(row["user_id"]), row["username"], row["display_name"]
+    except Exception:
+        pass
+
+    try:
+        conn = db.get_connection()
+        row = conn.execute(
+            "SELECT author_id, author_username, author_display "
+            "FROM chat_messages "
+            "WHERE LOWER(author_display) LIKE ? "
+            "   OR LOWER(author_username) LIKE ? "
+            "ORDER BY posted_at DESC LIMIT 1",
+            (f"%{needle}%", f"%{needle}%"),
+        ).fetchone()
+        if row:
+            return (
+                int(row["author_id"]),
+                row["author_username"],
+                row["author_display"],
+            )
+    except Exception:
+        pass
+
+    return None, None, None
+
+
+async def _answer_message_count_directly(
+    question: str,
+    user_id: int,
+    asker_username: str = "",
+    channel_name: str = "",
+):
+    """Bypass Gemini for message-count questions. Queries the LARGER
+    of {100 most recent channel messages, last 6h of channel messages}
+    and counts the target user's messages from that pool. Returns a
+    Discord embed, or None when target resolution fails (caller falls
+    back to Gemini in that case).
+    """
+    from datetime import datetime, timedelta, timezone
+
+    target_raw = _extract_message_count_target(question)
+    if not target_raw:
+        return None
+
+    target_uid, target_username, target_display = _resolve_chat_target(target_raw)
+    if not target_uid:
+        log.info(
+            f"/ask: msg-count target {target_raw!r} unresolved — "
+            f"falling back to Gemini"
+        )
+        return None
+
+    now_utc = datetime.now(timezone.utc)
+
+    # Pool A: most recent 100 messages in the channel. Use a 30-day
+    # outer window since search_chat_messages_for_ask needs either a
+    # keyword OR a window; limit=100 + ORDER BY posted_at DESC gives
+    # us the 100 newest within that window regardless of time span.
+    far_back = (now_utc - timedelta(days=30)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    now_iso = now_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+    try:
+        pool_100 = db.search_chat_messages_for_ask(
+            start_iso=far_back, end_iso=now_iso,
+            channel_name=channel_name or None,
+            limit=100,
+        )
+    except Exception as e:
+        log.warning(f"msg-count pool_100 query failed: {e}")
+        pool_100 = []
+
+    # Pool B: last 6 hours of messages in the channel
+    six_h_ago = (now_utc - timedelta(hours=6)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    try:
+        pool_6h = db.search_chat_messages_for_ask(
+            start_iso=six_h_ago, end_iso=now_iso,
+            channel_name=channel_name or None,
+            limit=10000,
+        )
+    except Exception as e:
+        log.warning(f"msg-count pool_6h query failed: {e}")
+        pool_6h = []
+
+    # Take the LARGER pool per the design choice ("whichever has more")
+    if len(pool_6h) >= len(pool_100):
+        pool, pool_label = pool_6h, "last 6 hours"
+    else:
+        pool, pool_label = pool_100, "last 100 channel messages"
+
+    # Filter to the target user. Use author_username (canonical) and
+    # also accept rows where author_username matches the resolved name.
+    target_username_low = (target_username or "").lower()
+    target_msgs = [
+        m for m in pool
+        if (m.get("author_username") or "").lower() == target_username_low
+    ]
+    target_count = len(target_msgs)
+
+    # Compute window span for honesty in the response
+    span_label = ""
+    if pool:
+        try:
+            timestamps = [m.get("posted_at", "") for m in pool if m.get("posted_at")]
+            if timestamps:
+                from datetime import datetime as _dt
+                earliest = min(timestamps)
+                latest = max(timestamps)
+                e_dt = _dt.fromisoformat(earliest.replace(" ", "T")[:19])
+                l_dt = _dt.fromisoformat(latest.replace(" ", "T")[:19])
+                span_h = (l_dt - e_dt).total_seconds() / 3600
+                if span_h < 1:
+                    span_label = f"~{int(span_h * 60)}min span"
+                else:
+                    span_label = f"~{span_h:.1f}h span"
+        except Exception:
+            pass
+
+    display = target_display or target_username or target_raw
+    scope = f"in #{channel_name}" if channel_name else "in this channel"
+    pool_size = len(pool)
+
+    if target_count == 0:
+        desc = (
+            f"→ **{display}** has no logged messages {scope} in the "
+            f"{pool_label} ({pool_size} total messages, {span_label})."
+        )
+    else:
+        desc = (
+            f"→ **{display}** sent **{target_count}** message"
+            f"{'s' if target_count != 1 else ''} {scope} in the "
+            f"{pool_label} ({pool_size} total, {span_label})."
+        )
+
+    try:
+        db.record_ask_query(user_id)
+    except Exception as e:
+        log.warning(f"msg-count record_ask_query non-fatal: {e}")
+
+    return discord.Embed(description=desc, color=0x1ABC9C)
+
+
 async def _answer_with_gemini(
     question: str,
     user_id: int,
@@ -3044,6 +3301,28 @@ async def _answer_with_gemini(
             asker_display_name=asker_display_name,
             channel_name=channel_name,
         )
+
+    # Message-count question shape — bypass Gemini, query larger of
+    # {100 most recent channel messages, last 6h of channel messages}.
+    # Bot's prior failure (2026-06-04 22:29: "BK has sent 9 messages
+    # today") came from Gemini inferring the count from the visible
+    # recent-50-chat-window block — artificially small. The 6h-or-100
+    # logic gives an honest count over a meaningful window. Falls back
+    # to Gemini if target user can't be resolved.
+    if _is_message_count_question(question):
+        log.info(
+            f"/ask: message-count query short-circuit attempt "
+            f"(asker_id={user_id}, q={question[:80]!r})"
+        )
+        embed = await _answer_message_count_directly(
+            question=question,
+            user_id=user_id,
+            asker_username=asker_username,
+            channel_name=channel_name,
+        )
+        if embed is not None:
+            return embed
+        # else: target user couldn't be resolved; fall through to Gemini
 
     client = _get_gemini_ask_client()
     if client is None:
