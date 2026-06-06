@@ -1944,7 +1944,9 @@ Default: if you can't confirm a US listing/ADR for the ticker, drop the `$` and 
 Edge-case carve-outs (these CAN survive Pass A even with limited cross-bank backing):
 - **Single-topic dedicated catalyst notes** with a hard event hook — M&A on an S&P 100 name, MAG7 earnings reaction, FDA decision on a specific ticker, regulatory deadline. The cross-bank floor doesn't apply when a single bank has a clearly actionable US-equity catalyst.
 
-**Each pulse is standalone.** Do not reference previous pulses, do not compare to yesterday's themes, do not write "Since yesterday:" framing. Treat the draft + the live data + the calendars as the entire universe. The cull rule is purely "is this theme high-impact for a US options/crypto trader RIGHT NOW?" — not "did yesterday cover it?"
+**Each pulse is standalone for CULL decisions.** Do not preserve a theme because yesterday covered it; do not drop a theme because yesterday covered it. Do not write "Since yesterday:" structural framing. The cull rule is purely "is this theme high-impact for a US options/crypto trader RIGHT NOW?" — not "did yesterday cover it?"
+
+**Stance-inversion exception — PRESERVE these, do not strip.** When DRAFT has written a one-sentence callout that today's pulse REVERSES yesterday's pulse on the same instrument or catalyst — e.g., *"this reverses yesterday's short-$AVGO call,"* *"the ECB asymmetry has inverted: yesterday a hike was unpriced, today it's fully priced,"* *"the labor-print bias flipped overnight from below-consensus to above"* — keep it inside the theme that owns it. These are the ONE exception to the standalone rule, because the daily reader's trust suffers from a silent 180-degree swing more than from a one-sentence acknowledgment. Do not invent inversions of your own; only preserve callouts DRAFT actually wrote (the synthesizer feeds DRAFT yesterday's markdown + a binding STANCE-INVERSION NAMING rule, so when an inversion exists, DRAFT will have named it). Do not extend the callout into multi-paragraph day-over-day comparison — one sentence inside the theme is the cap.
 
 **News-awareness pass (replaces "missing-theme audit").** Every existing INSIGHT theme should be written with awareness of what's in the live news block + the calendar — not as a research-only piece that ignores what just happened. Adding new INSIGHTS from news is NOT this pass's job (news-emergent stories belong in RECAP as drivers). This pass's job: make sure each existing theme reflects the live context where applicable.
 
@@ -2073,7 +2075,7 @@ Produce the final pulse. Rewrite RECAP with live data + released events + news. 
 
 The 2026-05-14T20-01-08Z test fire failed this: 8 themes validated, DRAFT shipped 3 INSIGHTS, demoted Trump-Xi (14-bank validated theme) to a single WATCH bullet without notes, dropped Warsh and agentic AI entirely without notes. EDIT didn't catch any of them. That's the pattern this audit prevents. If you can't restore AND can't justify the drop, restore.
 
-Each pulse is standalone — do not compare to or reference previous pulses. State views directly without meta-narration (no "cross-bank consensus is firming," "8+ notes flag," "research suggests"). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
+Each pulse is standalone — do not compare to or reference previous pulses, EXCEPT preserve any one-sentence stance-inversion callouts DRAFT inserted (per the stance-inversion exception above — when today's trade or stance reverses yesterday's on the same instrument or catalyst, the named callout stays inside the theme that owns it). State views directly without meta-narration (no "cross-bank consensus is firming," "8+ notes flag," "research suggests"). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
 """
 
 

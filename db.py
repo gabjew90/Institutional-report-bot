@@ -177,6 +177,25 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         );
         CREATE INDEX IF NOT EXISTS idx_ask_queries_user_time ON ask_queries(user_id, asked_at);
 
+        -- Cross-window anti-recycling state. Records every /ask reply the
+        -- bot sends so the next /ask call from the same asker (in the same
+        -- channel) can see what the bot already told them — even when the
+        -- prior reply has scrolled past the 50-msg / 24h chat_context window
+        -- (fast-moving channels like stonks-yapping eat the [YOU said
+        -- earlier]: trace in under 30 min). Without this the anti-recycling
+        -- rule has nothing to act on and the bot reuses the same hook
+        -- (e.g. "LARPing as a quant") across exchanges.
+        CREATE TABLE IF NOT EXISTS ask_bot_answers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            asker_user_id INTEGER NOT NULL,
+            channel_id INTEGER NOT NULL,
+            question TEXT,
+            answer TEXT NOT NULL,
+            answered_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+        CREATE INDEX IF NOT EXISTS idx_ask_bot_answers_asker_channel_ts
+            ON ask_bot_answers(asker_user_id, channel_id, answered_at DESC);
+
         -- Analyst trade log. One row per image attachment posted in the
         -- analyst alerts channel. Populated by analyst_log.watcher via
         -- Gemini vision. is_trade=0 rows are non-trade images (memes,
@@ -1508,6 +1527,52 @@ def record_ask_query(user_id: int) -> None:
     conn = get_connection()
     conn.execute("INSERT INTO ask_queries (user_id) VALUES (?)", (int(user_id),))
     conn.commit()
+
+
+def record_ask_bot_answer(
+    asker_user_id: int,
+    channel_id: int,
+    question: str | None,
+    answer: str,
+) -> None:
+    """Persist the bot's /ask reply so the next /ask from this asker in
+    this channel can see it via [YOU said earlier (to this asker, cross-
+    window)]: lines — the anti-recycling guard's source of truth when the
+    50-msg channel.history window has scrolled past."""
+    if not answer or not str(answer).strip():
+        return
+    conn = get_connection()
+    conn.execute(
+        "INSERT INTO ask_bot_answers "
+        "(asker_user_id, channel_id, question, answer) VALUES (?, ?, ?, ?)",
+        (
+            int(asker_user_id),
+            int(channel_id),
+            (question or "")[:2000] or None,
+            str(answer)[:4000],
+        ),
+    )
+    conn.commit()
+
+
+def get_recent_bot_answers_to_asker(
+    asker_user_id: int,
+    channel_id: int,
+    limit: int = 5,
+) -> list[dict]:
+    """Return the bot's last `limit` /ask answers to this asker in this
+    channel, newest first. Returned dicts have keys: question, answer,
+    answered_at. Bounded by count only — not by recency — so the anti-
+    recycling guard sees the last few hooks regardless of how long ago
+    they were used in an active channel."""
+    rows = get_connection().execute(
+        "SELECT question, answer, answered_at "
+        "FROM ask_bot_answers "
+        "WHERE asker_user_id = ? AND channel_id = ? "
+        "ORDER BY answered_at DESC, id DESC LIMIT ?",
+        (int(asker_user_id), int(channel_id), int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]
 
 
 # =============================================================================

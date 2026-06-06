@@ -193,6 +193,9 @@ Crypto trades 24/7 — its move is always today's regardless of session label.
 - *"How's BTC and ETH today?"* → `lookup_market_price(symbols=["BTC", "ETH"])`
 - *"Is $SPY green today?"* → `lookup_market_price(symbols=["SPY"])`
 - *"How's $LMT trading?"* → `lookup_market_price(symbols=["LMT"])`
+- *"Where's $NDX?"* / *"SPX level?"* / *"how's the Dow?"* → `lookup_market_price(symbols=["NDX"])` / `["SPX"]` / `["DJI"]` — the tool covers major US indices (NDX, SPX, DJI, RUT) the same way it covers single names. Use the index ticker, not the ETF, when the asker named the index.
+
+**ZERO UNFORCED PRICE ASSERTIONS — binding.** If your answer states any absolute price level for a ticker / index / crypto — even as a closing flourish, a "currently around $X" parenthetical, or background flavor on a question that wasn't about the price — you MUST source that number from a `lookup_market_price` call in the same turn. Do NOT pull levels from memory, the WHO'S TALKING block, the chat-context block, or Google snippets. Google's index snippets routinely return wrong-symbol numbers (observed 2026-06-05: question about NDX drawdown history, model volunteered *"the index currently holding near 52-week highs around $30,500"* — that's not NDX, not SPX, not RUT; closest match is Dow, which is a different index). If the level isn't strictly needed to answer the question, OMIT it. The rule is: zero unforced price assertions. Either you called the tool and have the number, or you don't state a number.
 
 ### Reading the tool response — `status` + freshness
 
@@ -3264,6 +3267,7 @@ async def _answer_with_gemini(
     asker_display_name: str = "",
     asker_username: str = "",
     channel_name: str = "",
+    channel_id: int | None = None,
 ) -> discord.Embed:
     """Run a Gemini grounded-search query and return a Discord embed.
 
@@ -3416,11 +3420,61 @@ async def _answer_with_gemini(
         # trades. Save ~8-12 KB of prompt per call on questions that
         # don't touch caller trades (most of them).
 
+        # Cross-window anti-recycling block. The 50-msg / 24h chat_context
+        # window scrolls past the bot's prior /ask answers to this asker in
+        # under 30 min on active channels (stonks-yapping etc.) — so the
+        # anti-recycling rule that scans [YOU said earlier]: lines has
+        # nothing to act on and recurring hooks like "LARPing as a quant"
+        # get reused. This block pulls the last few /ask answers given to
+        # this asker in this channel directly from ask_bot_answers
+        # (count-bounded, no recency cap) and tags them with the same
+        # [YOU said earlier]: prefix so the existing rule covers them.
+        cross_window_block = ""
+        if user_id and channel_id:
+            try:
+                prior_answers = db.get_recent_bot_answers_to_asker(
+                    asker_user_id=user_id,
+                    channel_id=channel_id,
+                    limit=5,
+                )
+                if prior_answers:
+                    lines = [
+                        "[YOUR RECENT /ASK ANSWERS TO THIS ASKER — "
+                        "cross-window anti-recycling guard. These are your "
+                        "OWN prior answers; do not reuse the same hooks, "
+                        "anecdote pulls, voice opener, or framing twice "
+                        "in a row. Pull from a different angle of the "
+                        "asker's profile instead.]"
+                    ]
+                    for row in prior_answers:
+                        q_snip = (row.get("question") or "").strip().replace(
+                            "\n", " "
+                        )[:120]
+                        a_snip = (row.get("answer") or "").strip().replace(
+                            "\n", " "
+                        )[:600]
+                        if q_snip:
+                            lines.append(
+                                f"[YOU said earlier to this asker, "
+                                f"re: {q_snip!r}]: {a_snip}"
+                            )
+                        else:
+                            lines.append(
+                                f"[YOU said earlier to this asker]: {a_snip}"
+                            )
+                    cross_window_block = "\n".join(lines)
+            except Exception as e:
+                log.info(
+                    f"Cross-window bot-answers fetch failed (non-fatal): {e}"
+                )
+
         sections: list[str] = []
         if profiles_block:
             sections.append(profiles_block)
         if fetched_urls:
             sections.append(fetched_urls)
+        if cross_window_block:
+            sections.append(cross_window_block)
         if chat_context:
             sections.append(chat_context)
         # Explicit asker identification. The bot pulled WHO'S TALKING
@@ -3824,6 +3878,8 @@ async def _answer_with_gemini(
                         stripped_sections: list[str] = [voice_stripped]
                         if fetched_urls:
                             stripped_sections.append(fetched_urls)
+                        if cross_window_block:
+                            stripped_sections.append(cross_window_block)
                         if chat_context:
                             stripped_sections.append(chat_context)
                         stripped_sections.append(f"{separator}\n{question}")
@@ -3900,6 +3956,10 @@ async def _answer_with_gemini(
                         ]
                         if fetched_urls:
                             masked_sections.append(fetched_urls)
+                        if cross_window_block:
+                            masked_sections.append(
+                                _mask_slur_tokens(cross_window_block)
+                            )
                         if chat_context:
                             masked_sections.append(
                                 _mask_slur_tokens(chat_context)
@@ -4901,6 +4961,7 @@ def create_bot() -> commands.Bot:
             question = await _resolve_mentions_in_text(
                 bot, interaction.guild, question
             )
+            _ch_id = getattr(interaction.channel, "id", None)
             embed = await _answer_with_gemini(
                 question,
                 user_id,
@@ -4914,8 +4975,24 @@ def create_bot() -> commands.Bot:
                 ),
                 asker_username=getattr(asker, "name", "") or "",
                 channel_name=getattr(interaction.channel, "name", "") or "",
+                channel_id=int(_ch_id) if _ch_id is not None else None,
             )
             await interaction.followup.send(embed=embed)
+            # Cross-window anti-recycling: persist the bot's answer so the
+            # next /ask from this asker in this channel can see what hooks
+            # we already pulled — see ask_bot_answers table in db.py.
+            try:
+                if user_id and _ch_id is not None and embed and embed.description:
+                    db.record_ask_bot_answer(
+                        asker_user_id=int(user_id),
+                        channel_id=int(_ch_id),
+                        question=question,
+                        answer=embed.description or "",
+                    )
+            except Exception as e:
+                log.info(
+                    f"record_ask_bot_answer (/ask slash) failed (non-fatal): {e}"
+                )
         except Exception as e:
             log.error(f"/ask failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
@@ -5157,6 +5234,7 @@ def create_bot() -> commands.Bot:
                 question = await _resolve_mentions_in_text(
                     bot, message.guild, question
                 )
+                _ch_id = getattr(message.channel, "id", None)
                 embed = await _answer_with_gemini(
                     question,
                     message.author.id,
@@ -5170,8 +5248,24 @@ def create_bot() -> commands.Bot:
                     ),
                     asker_username=message.author.name,
                     channel_name=getattr(message.channel, "name", "") or "",
+                    channel_id=int(_ch_id) if _ch_id is not None else None,
                 )
                 await message.reply(embed=embed, mention_author=False)
+                # Cross-window anti-recycling: persist the bot's answer.
+                try:
+                    if (message.author.id and _ch_id is not None
+                            and embed and embed.description):
+                        db.record_ask_bot_answer(
+                            asker_user_id=int(message.author.id),
+                            channel_id=int(_ch_id),
+                            question=question,
+                            answer=embed.description or "",
+                        )
+                except Exception as e:
+                    log.info(
+                        f"record_ask_bot_answer (@mention) failed "
+                        f"(non-fatal): {e}"
+                    )
         except Exception as e:
             log.error(f"@mention /ask failed: {e}", exc_info=True)
             try:
