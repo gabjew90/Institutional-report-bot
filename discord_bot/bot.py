@@ -2286,12 +2286,14 @@ def _build_options_chain_tool():
 async def _execute_options_chain(args: dict) -> dict:
     """Run the lookup_options_chain tool call.
 
-    Fetches via Yahoo, summarizes via market_data.summarize_options_chain.
-    When `expiration` is provided as 'YYYY-MM-DD', resolves to the
-    nearest matching unix-seconds expiration in the chain. Returns
-    an LLM-ready dict with status / summary / available_expirations.
+    Fetches via yfinance (which handles Yahoo's session-crumb gate),
+    summarizes via market_data.summarize_options_chain. When
+    `expiration` is provided as 'YYYY-MM-DD', resolves to the
+    matching available expiration (yfinance returns ISO strings
+    directly, no unix conversion needed). Returns an LLM-ready
+    dict with status / summary / available_expirations.
     """
-    from datetime import datetime, timezone as _tz
+    from datetime import datetime
     from report import market_data as _md
 
     symbol = (args.get("symbol") or "").strip().upper()
@@ -2299,15 +2301,37 @@ async def _execute_options_chain(args: dict) -> dict:
         return {"status": "error", "error": "symbol is required"}
 
     expiration_iso = (args.get("expiration") or "").strip()
-    expiration_unix: int | None = None
 
-    # First fetch (no date) to get the available expirations list.
-    raw = _md._fetch_yahoo_options_chain(symbol)
+    # Validate ISO date shape BEFORE the fetch so we can return a clean
+    # error without spending a Yahoo call. yfinance is generally tolerant
+    # of available_expirations being populated from a separate fetch but
+    # we want fast-fail on bad input.
+    if expiration_iso:
+        try:
+            datetime.strptime(expiration_iso, "%Y-%m-%d")
+        except ValueError:
+            # Get the available list so the model can re-call cleanly.
+            raw0 = _md._fetch_yahoo_options_chain(symbol)
+            return {
+                "status": "error",
+                "error": (
+                    f"expiration {expiration_iso!r} is not ISO date "
+                    f"'YYYY-MM-DD'. Available expirations follow."
+                ),
+                "available_expirations": (
+                    (raw0 or {}).get("expiration_dates", [])[:12]
+                ),
+            }
+
+    raw = _md._fetch_yahoo_options_chain(
+        symbol,
+        expiration_iso=(expiration_iso or None),
+    )
     if raw is None:
         return {
             "status": "error",
             "error": (
-                f"Yahoo options-chain fetch failed for {symbol} "
+                f"yfinance options-chain fetch failed for {symbol} "
                 f"(rate-limit or upstream issue). No live data — tell "
                 f"the asker to check their broker."
             ),
@@ -2319,56 +2343,16 @@ async def _execute_options_chain(args: dict) -> dict:
             "status": "no_chain",
             "symbol": symbol,
             "error": (
-                f"Yahoo returned no options expirations for {symbol}. "
+                f"yfinance returned no options expirations for {symbol}. "
                 f"This symbol may not have listed options chains."
             ),
         }
-
-    # Resolve requested expiration to the nearest available one.
-    if expiration_iso:
-        try:
-            target_dt = datetime.strptime(expiration_iso, "%Y-%m-%d")
-            target_unix = int(target_dt.replace(tzinfo=_tz.utc).timestamp())
-            # Pick the closest expiration to the target — no exact-match
-            # requirement; brokers don't always list every calendar date.
-            expiration_unix = min(expirations, key=lambda x: abs(x - target_unix))
-        except ValueError:
-            return {
-                "status": "error",
-                "error": (
-                    f"expiration {expiration_iso!r} is not ISO date "
-                    f"'YYYY-MM-DD'. Available expirations follow."
-                ),
-                "available_expirations": [
-                    datetime.fromtimestamp(e, tz=_tz.utc).strftime("%Y-%m-%d")
-                    for e in expirations[:12]
-                ],
-            }
-
-        # Second fetch for the resolved expiration if it's NOT the one
-        # the first fetch returned (the no-date call returns the nearest
-        # expiration by default).
-        if expiration_unix != raw.get("chain", {}).get("expiration_unix"):
-            raw2 = _md._fetch_yahoo_options_chain(symbol, expiration_unix)
-            if raw2 is None:
-                return {
-                    "status": "error",
-                    "error": (
-                        f"Yahoo options-chain re-fetch for "
-                        f"{symbol} @ {expiration_iso} failed (rate-"
-                        f"limit or upstream issue)."
-                    ),
-                }
-            raw = raw2
 
     summary = _md.summarize_options_chain(raw)
     return {
         "status": "ok",
         "summary": summary,
-        "available_expirations": [
-            datetime.fromtimestamp(e, tz=_tz.utc).strftime("%Y-%m-%d")
-            for e in expirations[:12]
-        ],
+        "available_expirations": expirations[:12],
         "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
     }
 

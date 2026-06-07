@@ -213,76 +213,122 @@ def _fetch_yahoo_extended_hours(symbol: str) -> dict | None:
 
 def _fetch_yahoo_options_chain(
     symbol: str,
-    expiration_unix: int | None = None,
+    expiration_iso: str | None = None,
 ) -> dict | None:
-    """Fetch the options chain for `symbol` from Yahoo's v7 options endpoint.
+    """Fetch the options chain for `symbol` via yfinance.
 
-    Without `expiration_unix`, returns the chain for the nearest expiration
-    plus the full list of available expirations (so the caller can choose
-    a further-out one and re-call). With `expiration_unix`, returns that
-    specific expiration's chain.
+    Yahoo's v7/v8 endpoints introduced a session-crumb (CSRF) gate
+    around 2024; raw urllib calls hit HTTP 401 from datacenter IPs.
+    yfinance handles the crumb-session dance internally so we don't
+    have to replicate it.
 
-    Yahoo URL shape:
-      https://query1.finance.yahoo.com/v7/finance/options/{symbol}
-      https://query1.finance.yahoo.com/v7/finance/options/{symbol}?date=<unix>
+    Without `expiration_iso`, returns the chain for the nearest
+    expiration plus the full list of available expirations (so the
+    caller can re-call for a further-out one). With `expiration_iso`,
+    returns that specific expiration's chain.
 
     Returns dict with:
       - underlying_symbol     : "SPY"
-      - underlying_spot_price : current spot from the chain's quote.regularMarketPrice
-      - expiration_dates      : list[int] (unix seconds, sorted ascending)
-      - chain                 : {"expiration_unix", "calls": [...], "puts": [...]}
-        where each option is the raw Yahoo dict (keys: strike, openInterest,
-        volume, impliedVolatility, bid, ask, lastPrice, ...)
+      - underlying_spot_price : current spot from yf info
+      - expiration_dates      : list[str] (ISO YYYY-MM-DD, sorted)
+      - chain                 : {"expiration_iso", "calls": [...], "puts": [...]}
+        where each option is a dict (keys: strike, openInterest,
+        volume, impliedVolatility, bid, ask, lastPrice, contractSymbol)
       - source                : "yahoo"
 
-    Or None on fetch/parse failure (caller should fall back gracefully —
-    Yahoo rate-limits datacenter IPs intermittently, same as the
-    extended-hours endpoint above).
+    Or None on fetch/parse failure (yfinance is generally reliable
+    but can still hit Yahoo rate limits intermittently).
     """
-    url = f"https://query1.finance.yahoo.com/v7/finance/options/{urllib.parse.quote(symbol)}"
-    if expiration_unix is not None:
-        url = f"{url}?date={int(expiration_unix)}"
-    req = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/120.0.0.0 Safari/537.36"
-            ),
-            "Accept": "application/json,text/javascript,*/*;q=0.01",
-        },
-    )
     try:
-        with urllib.request.urlopen(req, timeout=6.0) as resp:
-            data = json.loads(resp.read())
-    except Exception as e:
-        log.info(f"yahoo options-chain fetch for {symbol} failed: {e}")
+        import yfinance as yf
+    except ImportError as e:
+        log.warning(f"yfinance not installed: {e}")
         return None
 
     try:
-        result = data["optionChain"]["result"][0]
-        expirations = list(result.get("expirationDates") or [])
-        options_block = (result.get("options") or [None])[0]
-        if not options_block:
-            return None
+        ticker = yf.Ticker(symbol)
+        expirations = list(ticker.options or [])
+        if not expirations:
+            return {
+                "underlying_symbol": symbol.upper(),
+                "underlying_spot_price": None,
+                "expiration_dates": [],
+                "chain": {"expiration_iso": None, "calls": [], "puts": []},
+                "source": "yahoo",
+            }
+
+        target_iso = expiration_iso if expiration_iso in expirations else expirations[0]
+        chain_obj = ticker.option_chain(target_iso)
+
+        # Underlying spot — try yf's fast_info (faster, less rate-limited)
+        # then fall back to .info. Both can fail under heavy yahoo load;
+        # spot may end up None and ATM IV becomes None downstream — but
+        # call/put volume + OI + put-call ratios still work without spot.
+        spot = None
+        try:
+            spot = float(ticker.fast_info["last_price"])
+        except Exception:
+            try:
+                spot = float(ticker.info.get("regularMarketPrice") or 0) or None
+            except Exception:
+                pass
+
+        def _df_to_dicts(df):
+            """Convert yfinance options DataFrame to list[dict] of just
+            the fields we need. yfinance columns: strike, lastPrice, bid,
+            ask, change, percentChange, volume, openInterest,
+            impliedVolatility, inTheMoney, contractSize, currency."""
+            if df is None or df.empty:
+                return []
+            out = []
+            for _, row in df.iterrows():
+                out.append({
+                    "strike": float(row["strike"]),
+                    "openInterest": (
+                        int(row["openInterest"])
+                        if row["openInterest"] == row["openInterest"]  # NaN check
+                        else 0
+                    ),
+                    "volume": (
+                        int(row["volume"])
+                        if row["volume"] == row["volume"]
+                        else 0
+                    ),
+                    "impliedVolatility": (
+                        float(row["impliedVolatility"])
+                        if row["impliedVolatility"] == row["impliedVolatility"]
+                        else None
+                    ),
+                    "bid": (
+                        float(row["bid"])
+                        if row["bid"] == row["bid"] else None
+                    ),
+                    "ask": (
+                        float(row["ask"])
+                        if row["ask"] == row["ask"] else None
+                    ),
+                    "lastPrice": (
+                        float(row["lastPrice"])
+                        if row["lastPrice"] == row["lastPrice"] else None
+                    ),
+                })
+            return out
+
         chain = {
-            "expiration_unix": int(options_block.get("expirationDate") or 0),
-            "calls": list(options_block.get("calls") or []),
-            "puts": list(options_block.get("puts") or []),
+            "expiration_iso": target_iso,
+            "calls": _df_to_dicts(chain_obj.calls),
+            "puts": _df_to_dicts(chain_obj.puts),
         }
-        spot = (result.get("quote") or {}).get("regularMarketPrice")
-    except (KeyError, IndexError, TypeError) as e:
-        log.info(f"yahoo options-chain parse for {symbol} failed: {e}")
+        return {
+            "underlying_symbol": symbol.upper(),
+            "underlying_spot_price": spot,
+            "expiration_dates": expirations,
+            "chain": chain,
+            "source": "yahoo",
+        }
+    except Exception as e:
+        log.info(f"yfinance options-chain fetch for {symbol} failed: {e}")
         return None
-
-    return {
-        "underlying_symbol": symbol.upper(),
-        "underlying_spot_price": spot,
-        "expiration_dates": expirations,
-        "chain": chain,
-        "source": "yahoo",
-    }
 
 
 def summarize_options_chain(raw: dict) -> dict:
@@ -304,7 +350,6 @@ def summarize_options_chain(raw: dict) -> dict:
     Returns ratios rounded to 3 decimals, IV to 4 decimals. ATM IV is
     None if the chain has no strikes or no IV values.
     """
-    from datetime import timezone as _tz
     chain = raw.get("chain") or {}
     calls = chain.get("calls") or []
     puts = chain.get("puts") or []
@@ -334,17 +379,12 @@ def summarize_options_chain(raw: dict) -> dict:
             if atm_ivs:
                 atm_iv = round(sum(atm_ivs) / len(atm_ivs), 4)
 
-    exp_unix = chain.get("expiration_unix") or 0
-    exp_iso = (
-        datetime.fromtimestamp(exp_unix, tz=_tz.utc).strftime("%Y-%m-%d")
-        if exp_unix else None
-    )
+    exp_iso = chain.get("expiration_iso")
 
     return {
         "underlying_symbol": raw.get("underlying_symbol"),
         "underlying_spot_price": spot,
         "expiration_iso": exp_iso,
-        "expiration_unix": exp_unix,
         "call_volume": call_vol,
         "put_volume": put_vol,
         "call_oi": call_oi,

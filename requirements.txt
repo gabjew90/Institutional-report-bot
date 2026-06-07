@@ -18,3 +18,8 @@ markdown>=3.6
 # silently broke pulse-context dump + lazy /ask OCR until they
 # manifested on a fresh deploy.
 pyflakes>=3.0.0
+# Yahoo Finance options chains for the /ask lookup_options_chain tool.
+# Required because Yahoo's v7/v8 endpoints now gate on a session crumb
+# (introduced ~2024); raw urllib hits HTTP 401 from Railway IPs.
+# yfinance handles the crumb-session dance internally.
+yfinance>=0.2.40

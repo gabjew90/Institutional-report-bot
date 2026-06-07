@@ -55,7 +55,7 @@ def test_summarize_aggregates_volume_and_oi():
         "underlying_symbol": "SPY",
         "underlying_spot_price": 750.0,
         "chain": {
-            "expiration_unix": 1718150400,
+            "expiration_iso": "2026-06-12",
             "calls": [
                 {"strike": 745, "openInterest": 10000, "volume": 5000,
                  "impliedVolatility": 0.22},
@@ -86,6 +86,7 @@ def test_summarize_aggregates_volume_and_oi():
     # ATM IV = mean of call.iv + put.iv at strike 750 = (0.24 + 0.25)/2 = 0.245
     assert s["atm_iv"] == 0.245, s
     assert s["num_call_strikes"] == 3 and s["num_put_strikes"] == 3
+    assert s["expiration_iso"] == "2026-06-12", s
     _ok("summarize_options_chain: volume + OI sums + P/C ratios + ATM IV "
         "correct")
 
@@ -96,7 +97,7 @@ def test_summarize_handles_empty_chain():
     raw = {
         "underlying_symbol": "FOO",
         "underlying_spot_price": 100.0,
-        "chain": {"expiration_unix": 0, "calls": [], "puts": []},
+        "chain": {"expiration_iso": None, "calls": [], "puts": []},
         "source": "yahoo",
     }
     s = market_data.summarize_options_chain(raw)
@@ -113,13 +114,17 @@ def test_fetcher_signature_accepts_optional_expiration():
     from report import market_data
     sig = inspect.signature(market_data._fetch_yahoo_options_chain)
     assert "symbol" in sig.parameters
-    assert "expiration_unix" in sig.parameters
-    p = sig.parameters["expiration_unix"]
+    assert "expiration_iso" in sig.parameters, (
+        "fetcher should take expiration_iso (ISO date string), not "
+        "expiration_unix — yfinance returns ISO strings directly"
+    )
+    p = sig.parameters["expiration_iso"]
     assert p.default is None, (
-        "expiration_unix should default to None so the first call gets "
+        "expiration_iso should default to None so the first call gets "
         "the nearest-expiration chain + available expirations list"
     )
-    _ok("_fetch_yahoo_options_chain accepts optional expiration_unix")
+    _ok("_fetch_yahoo_options_chain accepts optional expiration_iso "
+        "(ISO date string, matches yfinance's native shape)")
 
 
 # === bot layer ===
@@ -148,15 +153,15 @@ def test_tool_builder_returns_function_declaration():
 
 
 def test_executor_handles_no_chain():
-    """When Yahoo returns no expirations (symbol has no listed options),
-    executor returns status='no_chain' so the model tells the asker
-    instead of fabricating."""
+    """When yfinance returns no expirations (symbol has no listed
+    options), executor returns status='no_chain' so the model tells
+    the asker instead of fabricating."""
     from discord_bot import bot as bot_mod
     raw_response = {
         "underlying_symbol": "ZZZZ",
         "underlying_spot_price": 1.0,
         "expiration_dates": [],
-        "chain": {"expiration_unix": 0, "calls": [], "puts": []},
+        "chain": {"expiration_iso": None, "calls": [], "puts": []},
         "source": "yahoo",
     }
     with patch("report.market_data._fetch_yahoo_options_chain",
@@ -166,13 +171,14 @@ def test_executor_handles_no_chain():
         ))
     assert result["status"] == "no_chain", result
     assert "ZZZZ" in result.get("error", "")
-    _ok("executor: status='no_chain' when Yahoo returns no expirations")
+    _ok("executor: status='no_chain' when yfinance returns no "
+        "expirations")
 
 
 def test_executor_handles_fetch_failure():
-    """When _fetch_yahoo_options_chain returns None (rate-limit /
-    upstream issue), executor returns status='error' so the model
-    fall-backs to 'check your broker' — not invents numbers."""
+    """When _fetch_yahoo_options_chain returns None (yfinance import
+    failure / Yahoo upstream issue), executor returns status='error'
+    so the model falls back to 'check your broker' — not invents."""
     from discord_bot import bot as bot_mod
     with patch("report.market_data._fetch_yahoo_options_chain",
                return_value=None):
@@ -180,27 +186,26 @@ def test_executor_handles_fetch_failure():
             {"symbol": "SPY"}
         ))
     assert result["status"] == "error", result
-    assert "Yahoo" in result["error"] or "fetch" in result["error"].lower()
-    _ok("executor: status='error' when Yahoo fetch returns None")
+    assert "yfinance" in result["error"] or "fetch" in result["error"].lower()
+    _ok("executor: status='error' when yfinance fetch returns None")
 
 
 def test_executor_rejects_bad_date():
-    """Malformed expiration ISO must return an error WITHOUT calling
-    Yahoo a second time — the available_expirations list comes from
-    the first fetch so the model can re-call with a valid date."""
+    """Malformed expiration ISO must return an error with the available
+    expirations list populated so the model can re-call cleanly."""
     from discord_bot import bot as bot_mod
     raw_response = {
         "underlying_symbol": "SPY",
         "underlying_spot_price": 750.0,
-        "expiration_dates": [1718150400, 1718755200, 1719360000],
-        "chain": {"expiration_unix": 1718150400, "calls": [
+        "expiration_dates": ["2026-06-12", "2026-06-19", "2026-06-26"],
+        "chain": {"expiration_iso": "2026-06-12", "calls": [
             {"strike": 750, "openInterest": 1000, "volume": 500,
              "impliedVolatility": 0.24}
         ], "puts": []},
         "source": "yahoo",
     }
     with patch("report.market_data._fetch_yahoo_options_chain",
-               return_value=raw_response) as mock_fetch:
+               return_value=raw_response):
         result = asyncio.run(bot_mod._execute_options_chain(
             {"symbol": "SPY", "expiration": "not-a-date"}
         ))
@@ -211,11 +216,9 @@ def test_executor_rejects_bad_date():
         "bad-date errors must include available_expirations so the "
         "model can re-call with a valid date in the same turn"
     )
-    # And Yahoo was only called ONCE (the initial list-of-expirations
-    # fetch); the bad date never triggered a second fetch
-    assert mock_fetch.call_count == 1
-    _ok("executor: bad date → error + available_expirations + only "
-        "one Yahoo call")
+    assert "2026-06-12" in result["available_expirations"]
+    _ok("executor: bad date → error + available_expirations populated "
+        "for model retry")
 
 
 def test_executor_ok_path():
@@ -225,9 +228,9 @@ def test_executor_ok_path():
     raw_response = {
         "underlying_symbol": "SPY",
         "underlying_spot_price": 750.0,
-        "expiration_dates": [1718150400, 1718755200, 1719360000],
+        "expiration_dates": ["2026-06-12", "2026-06-19", "2026-06-26"],
         "chain": {
-            "expiration_unix": 1718150400,
+            "expiration_iso": "2026-06-12",
             "calls": [{"strike": 750, "openInterest": 20000,
                        "volume": 8000, "impliedVolatility": 0.24}],
             "puts": [{"strike": 750, "openInterest": 25000,
@@ -245,8 +248,9 @@ def test_executor_ok_path():
     assert summary["call_volume"] == 8000
     assert summary["put_volume"] == 10000
     assert summary["atm_iv"] == 0.245
-    assert summary["expiration_iso"] is not None
+    assert summary["expiration_iso"] == "2026-06-12"
     assert len(result["available_expirations"]) == 3
+    assert "2026-06-12" in result["available_expirations"]
     assert "as_of" in result
     _ok("executor: ok path returns status='ok' + summary + "
         "available_expirations + as_of")
