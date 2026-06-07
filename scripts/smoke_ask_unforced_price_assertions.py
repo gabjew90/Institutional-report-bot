@@ -332,6 +332,129 @@ def test_market_data_extension_acknowledges_future_tool():
     _ok("extension acknowledges future tool shrinks the carve-out")
 
 
+# === Time-series tightening (added 2026-06-07 after the bot returned
+# correct SPY OI snapshot but volunteered "trending higher ~2% over 5
+# days" — a delta the tool never returned).
+
+def test_time_series_rule_present():
+    """The ZERO UNFORCED TIME-SERIES CLAIMS rule must exist as a named
+    binding extension. Without a named rule, the model treats the
+    snapshot-stat rule as scope-limited to levels and slips through
+    on trends."""
+    src = _load_system_instruction()
+    assert "ZERO UNFORCED TIME-SERIES CLAIMS" in src, (
+        "'ZERO UNFORCED TIME-SERIES CLAIMS' rule header must be in "
+        "the prompt with distinctive caps so the model recognizes it "
+        "as a named binding rule"
+    )
+    rule_anchor = src.find("ZERO UNFORCED TIME-SERIES CLAIMS")
+    rule_window = src[rule_anchor:rule_anchor + 200]
+    assert "binding" in rule_window.lower(), (
+        "the time-series rule must be marked 'binding'"
+    )
+    _ok("'ZERO UNFORCED TIME-SERIES CLAIMS' rule present + marked "
+        "binding")
+
+
+def test_time_series_rule_names_snapshot_tool_scope():
+    """The rule must explicitly state that lookup_market_price and
+    lookup_options_chain return SNAPSHOTS — so the model knows the
+    rule applies to BOTH tool families' outputs, not just one."""
+    src = _load_system_instruction()
+    rule_anchor = src.find("ZERO UNFORCED TIME-SERIES CLAIMS")
+    rule_window = src[rule_anchor:rule_anchor + 2500]
+    assert "lookup_market_price" in rule_window
+    assert "lookup_options_chain" in rule_window
+    assert "SNAPSHOT" in rule_window or "snapshot" in rule_window
+    _ok("time-series rule names both tools + 'snapshot' explicitly")
+
+
+def test_time_series_rule_enumerates_forbidden_shapes():
+    """The rule must enumerate the specific TIME-COMPARISON shapes that
+    are forbidden when no historical data is in context — without
+    enumeration the model has too much latitude on what counts as
+    'time-series.'"""
+    src = _load_system_instruction()
+    rule_anchor = src.find("ZERO UNFORCED TIME-SERIES CLAIMS")
+    rule_window = src[rule_anchor:rule_anchor + 2500]
+    forbidden_shapes = [
+        "trending higher",
+        "highest in",
+        "week-over-week",
+        "elevated vs",
+        "monthly high",
+        "over the last 5 days",
+        "up ~2%",
+        "in 3 sessions",
+    ]
+    matched = [s for s in forbidden_shapes if s in rule_window]
+    assert len(matched) >= 4, (
+        f"rule must enumerate >=4 specific time-comparison phrasing "
+        f"shapes so the model recognizes them in its own output, got "
+        f"{matched}"
+    )
+    _ok(f"time-series rule enumerates {len(matched)} forbidden "
+        f"comparison shapes")
+
+
+def test_time_series_rule_references_2026_06_07_failure():
+    """The rule must reference the concrete 2026-06-07 observation
+    (SPY OI '~2% over 5 days' fabrication) so the model has a
+    pattern anchor, not just abstract guidance."""
+    src = _load_system_instruction()
+    rule_anchor = src.find("ZERO UNFORCED TIME-SERIES CLAIMS")
+    rule_window = src[rule_anchor:rule_anchor + 2500]
+    assert "2026-06-07" in rule_window
+    # Specific fragments of the fabrication
+    assert "SPY" in rule_window
+    assert ("~2%" in rule_window or "2%" in rule_window)
+    assert "5 days" in rule_window or "5-day" in rule_window
+    _ok("time-series rule references 2026-06-07 SPY OI '~2% over "
+        "5 days' failure as pattern anchor")
+
+
+def test_time_series_rule_names_valid_history_sources():
+    """The rule must specify the ONLY valid sources for historical
+    claims — chat context, fetched URLs, prior /ask answers — so
+    the model knows the positive bar, not just the negative one."""
+    src = _load_system_instruction()
+    rule_anchor = src.find("ZERO UNFORCED TIME-SERIES CLAIMS")
+    rule_window = src[rule_anchor:rule_anchor + 2500]
+    valid_sources = [
+        "chat-context",
+        "fetched URLs",
+        "prior /ask",
+        "CONTEXT THIS TURN",
+    ]
+    matched = [s for s in valid_sources if s in rule_window]
+    assert len(matched) >= 2, (
+        f"rule must name >=2 valid sources for historical data so "
+        f"the model has the positive bar, got {matched}"
+    )
+    _ok(f"time-series rule names {len(matched)} valid history sources")
+
+
+def test_time_series_rule_gives_fallback():
+    """The rule must give the model the EXPLICIT fallback phrasing
+    for 'asker wants a trend, I don't have one' — without the
+    fallback, the model fills the gap with a fabricated number."""
+    src = _load_system_instruction()
+    rule_anchor = src.find("ZERO UNFORCED TIME-SERIES CLAIMS")
+    rule_window = src[rule_anchor:rule_anchor + 2500]
+    fallback_phrases = [
+        "current snapshot",
+        "no historical log",
+        "full stop",
+        "derive a trend",
+    ]
+    matched = [p for p in fallback_phrases if p in rule_window]
+    assert len(matched) >= 2, (
+        f"rule must give explicit fallback phrasing for the 'no "
+        f"historical data' case, got {matched}"
+    )
+    _ok(f"time-series rule gives no-history fallback ({matched})")
+
+
 if __name__ == "__main__":
     print("=== /ask unforced-price-assertion guard smoke ===")
     test_index_examples_added()
@@ -346,4 +469,10 @@ if __name__ == "__main__":
     test_market_data_extension_references_2026_06_06_failure()
     test_market_data_extension_gives_correct_fallback()
     test_market_data_extension_acknowledges_future_tool()
+    test_time_series_rule_present()
+    test_time_series_rule_names_snapshot_tool_scope()
+    test_time_series_rule_enumerates_forbidden_shapes()
+    test_time_series_rule_references_2026_06_07_failure()
+    test_time_series_rule_names_valid_history_sources()
+    test_time_series_rule_gives_fallback()
     print("\nALL UNFORCED-PRICE-ASSERTION GUARD SMOKE TESTS PASS")
