@@ -16,6 +16,7 @@ the research quoted.
 
 import json
 import logging
+import urllib.parse
 import urllib.request
 from datetime import datetime
 
@@ -207,6 +208,157 @@ def _fetch_yahoo_extended_hours(symbol: str) -> dict | None:
         "regular_close": meta.get("regularMarketPrice"),
         "prev_close": meta.get("previousClose"),
         "source": "yahoo",
+    }
+
+
+def _fetch_yahoo_options_chain(
+    symbol: str,
+    expiration_unix: int | None = None,
+) -> dict | None:
+    """Fetch the options chain for `symbol` from Yahoo's v7 options endpoint.
+
+    Without `expiration_unix`, returns the chain for the nearest expiration
+    plus the full list of available expirations (so the caller can choose
+    a further-out one and re-call). With `expiration_unix`, returns that
+    specific expiration's chain.
+
+    Yahoo URL shape:
+      https://query1.finance.yahoo.com/v7/finance/options/{symbol}
+      https://query1.finance.yahoo.com/v7/finance/options/{symbol}?date=<unix>
+
+    Returns dict with:
+      - underlying_symbol     : "SPY"
+      - underlying_spot_price : current spot from the chain's quote.regularMarketPrice
+      - expiration_dates      : list[int] (unix seconds, sorted ascending)
+      - chain                 : {"expiration_unix", "calls": [...], "puts": [...]}
+        where each option is the raw Yahoo dict (keys: strike, openInterest,
+        volume, impliedVolatility, bid, ask, lastPrice, ...)
+      - source                : "yahoo"
+
+    Or None on fetch/parse failure (caller should fall back gracefully —
+    Yahoo rate-limits datacenter IPs intermittently, same as the
+    extended-hours endpoint above).
+    """
+    url = f"https://query1.finance.yahoo.com/v7/finance/options/{urllib.parse.quote(symbol)}"
+    if expiration_unix is not None:
+        url = f"{url}?date={int(expiration_unix)}"
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36"
+            ),
+            "Accept": "application/json,text/javascript,*/*;q=0.01",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=6.0) as resp:
+            data = json.loads(resp.read())
+    except Exception as e:
+        log.info(f"yahoo options-chain fetch for {symbol} failed: {e}")
+        return None
+
+    try:
+        result = data["optionChain"]["result"][0]
+        expirations = list(result.get("expirationDates") or [])
+        options_block = (result.get("options") or [None])[0]
+        if not options_block:
+            return None
+        chain = {
+            "expiration_unix": int(options_block.get("expirationDate") or 0),
+            "calls": list(options_block.get("calls") or []),
+            "puts": list(options_block.get("puts") or []),
+        }
+        spot = (result.get("quote") or {}).get("regularMarketPrice")
+    except (KeyError, IndexError, TypeError) as e:
+        log.info(f"yahoo options-chain parse for {symbol} failed: {e}")
+        return None
+
+    return {
+        "underlying_symbol": symbol.upper(),
+        "underlying_spot_price": spot,
+        "expiration_dates": expirations,
+        "chain": chain,
+        "source": "yahoo",
+    }
+
+
+def summarize_options_chain(raw: dict) -> dict:
+    """Aggregate a single-expiration chain into LLM-ready summary stats.
+
+    Takes the raw fetch result from `_fetch_yahoo_options_chain` and
+    collapses the per-strike call/put lists into:
+      - call_volume / put_volume   : sum across all strikes
+      - call_oi / put_oi           : sum across all strikes
+      - put_call_volume_ratio      : put_vol / call_vol
+      - put_call_oi_ratio          : put_oi / call_oi
+      - atm_iv                     : IV of the strike NEAREST to spot
+                                     (averaged across the call + put at
+                                     that strike when both exist)
+      - num_call_strikes / num_put_strikes
+      - expiration_iso             : 'YYYY-MM-DD'
+      - underlying_spot_price      : passthrough
+
+    Returns ratios rounded to 3 decimals, IV to 4 decimals. ATM IV is
+    None if the chain has no strikes or no IV values.
+    """
+    from datetime import timezone as _tz
+    chain = raw.get("chain") or {}
+    calls = chain.get("calls") or []
+    puts = chain.get("puts") or []
+    spot = raw.get("underlying_spot_price")
+
+    def _sum(items, key):
+        return sum(int(it.get(key) or 0) for it in items)
+
+    call_vol = _sum(calls, "volume")
+    put_vol = _sum(puts, "volume")
+    call_oi = _sum(calls, "openInterest")
+    put_oi = _sum(puts, "openInterest")
+
+    atm_iv = None
+    if spot and (calls or puts):
+        all_strikes = (
+            [(c.get("strike"), c.get("impliedVolatility"), "call") for c in calls]
+            + [(p.get("strike"), p.get("impliedVolatility"), "put") for p in puts]
+        )
+        all_strikes = [
+            (s, iv) for s, iv, _ in all_strikes if s is not None and iv is not None
+        ]
+        if all_strikes:
+            # Find the strike(s) closest to spot, then average IV of call + put
+            min_dist = min(abs(s - spot) for s, _ in all_strikes)
+            atm_ivs = [iv for s, iv in all_strikes if abs(s - spot) == min_dist]
+            if atm_ivs:
+                atm_iv = round(sum(atm_ivs) / len(atm_ivs), 4)
+
+    exp_unix = chain.get("expiration_unix") or 0
+    exp_iso = (
+        datetime.fromtimestamp(exp_unix, tz=_tz.utc).strftime("%Y-%m-%d")
+        if exp_unix else None
+    )
+
+    return {
+        "underlying_symbol": raw.get("underlying_symbol"),
+        "underlying_spot_price": spot,
+        "expiration_iso": exp_iso,
+        "expiration_unix": exp_unix,
+        "call_volume": call_vol,
+        "put_volume": put_vol,
+        "call_oi": call_oi,
+        "put_oi": put_oi,
+        "put_call_volume_ratio": (
+            round(put_vol / call_vol, 3) if call_vol else None
+        ),
+        "put_call_oi_ratio": (
+            round(put_oi / call_oi, 3) if call_oi else None
+        ),
+        "atm_iv": atm_iv,
+        "num_call_strikes": len(calls),
+        "num_put_strikes": len(puts),
+        "source": raw.get("source", "yahoo"),
     }
 
 

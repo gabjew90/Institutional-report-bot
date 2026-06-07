@@ -202,6 +202,136 @@ def test_existing_routing_rule_untouched():
     _ok("existing HARD ROUTING RULES for live-price questions intact")
 
 
+# === Market-data extension (added 2026-06-06 after Moonsoon/Oracle ===
+# fabricated SPY + NDX options-chain data in three /ask interactions).
+
+def test_market_data_extension_rule_present():
+    """The price-assertion rule extends to options-chain data (OI, IV,
+    volume per expiration, put-call ratios) — the model fabricated
+    these in #2 and #3 of the 2026-06-06 ask log. Without an extension,
+    the original rule's literal scope ('absolute price level') doesn't
+    cover these derived stats and the model slips through."""
+    src = _load_system_instruction()
+    assert "ZERO UNFORCED MARKET-DATA ASSERTIONS" in src, (
+        "'ZERO UNFORCED MARKET-DATA ASSERTIONS' rule header must be in "
+        "the system prompt — distinctive caps so the model treats it "
+        "as a named binding rule"
+    )
+    # Anchor: the rule frames itself as an extension of the price rule
+    assert "extends to" in src or "extension" in src, (
+        "the new rule must explicitly frame itself as an extension of "
+        "the price-assertion rule, not as a separate competing rule"
+    )
+    _ok("'ZERO UNFORCED MARKET-DATA ASSERTIONS' extension rule present")
+
+
+def test_market_data_extension_names_options_stats():
+    """The extension must name the specific options-chain stats so the
+    model recognizes the categories: OI, volume per expiration, IV,
+    put-call ratios. Plus adjacent derived stats (Greeks, gamma exposure,
+    short interest) so the model generalizes the rule shape."""
+    src = _load_system_instruction()
+    rule_anchor = src.find("ZERO UNFORCED MARKET-DATA ASSERTIONS")
+    rule_window = src[rule_anchor:rule_anchor + 2500]
+    # Accept either expanded or abbreviated forms. After the tool
+    # shipped, the rule tightened to abbreviations (OI / IV) since
+    # the tool's own docs spell them out.
+    options_stat_aliases = [
+        ("open interest", "OI"),
+        ("implied volatility", "IV"),
+        ("put-call ratio", "put-call ratio"),
+        ("options volume", "volume per expiration"),
+    ]
+    matched = [
+        (a, b) for a, b in options_stat_aliases
+        if a.lower() in rule_window.lower() or b in rule_window
+    ]
+    assert len(matched) >= 3, (
+        f"the rule must name >=3 specific options-chain stats (expanded "
+        f"or abbreviated form) so the model recognizes them, got "
+        f"{matched}"
+    )
+    # And adjacent market-data stats (any subset) for generalization
+    adjacent = ["gamma", "short interest", "Greeks", "term-structure",
+                "dark-pool", "futures basis"]
+    adj_matched = [s for s in adjacent if s in rule_window]
+    assert len(adj_matched) >= 2, (
+        f"the rule should name >=2 adjacent stat categories so the "
+        f"model generalizes the no-fabricate principle, got {adj_matched}"
+    )
+    _ok(f"extension names {len(matched)} options stats + "
+        f"{len(adj_matched)} adjacent market-data categories")
+
+
+def test_market_data_extension_references_2026_06_06_failure():
+    """The extension must include the concrete 2026-06-06 SPY + NDX
+    fabrication as the pattern anchor — abstract rules don't bind
+    as well as specific 'here's the exact mistake.'"""
+    src = _load_system_instruction()
+    rule_anchor = src.find("ZERO UNFORCED MARKET-DATA ASSERTIONS")
+    rule_window = src[rule_anchor:rule_anchor + 2500]
+    assert "2026-06-06" in rule_window, (
+        "extension must reference the 2026-06-06 date when the "
+        "fabrication was observed (Moonsoon SPY OI + Oracle NDX OI)"
+    )
+    # Concrete numbers from the failure
+    assert ("248,553" in rule_window or "10.3%" in rule_window
+            or "1.28" in rule_window), (
+        "extension must quote at least one of the specific fabricated "
+        "numbers (248,553 contracts / 10.3% IV / 1.28 P/C) as a "
+        "pattern anchor"
+    )
+    assert "SPY" in rule_window and "NDX" in rule_window, (
+        "extension must name SPY + NDX (the symbols that failed)"
+    )
+    _ok("extension references 2026-06-06 SPY + NDX fabrication with "
+        "specific numbers")
+
+
+def test_market_data_extension_gives_correct_fallback():
+    """The extension must tell the model exactly what to say when it
+    has no tool: 'I don't have live options-chain data wired up.' This
+    closes the fabrication gap because without an explicit fallback,
+    the model's default is to invent."""
+    src = _load_system_instruction()
+    rule_anchor = src.find("ZERO UNFORCED MARKET-DATA ASSERTIONS")
+    rule_window = src[rule_anchor:rule_anchor + 2500]
+    fallback_phrases = [
+        "I don't have",
+        "no live",
+        "live options-chain",
+        "broker",
+        "check your broker",
+        "pull the chain",
+    ]
+    matched = [p for p in fallback_phrases if p in rule_window]
+    assert len(matched) >= 3, (
+        f"the extension must give the model an EXPLICIT fallback "
+        f"phrasing for 'no live source' — without it the model's "
+        f"default is to fabricate. Matched fallback hints: {matched}"
+    )
+    _ok(f"extension gives explicit no-live-source fallback "
+        f"({len(matched)} phrasing hints)")
+
+
+def test_market_data_extension_acknowledges_future_tool():
+    """The extension must acknowledge that if a future tool ships
+    (e.g. lookup_options_chain), the carve-out shrinks. Without this
+    forward-pointer, when the tool DOES ship, the rule becomes a
+    blocker rather than a guide."""
+    src = _load_system_instruction()
+    rule_anchor = src.find("ZERO UNFORCED MARKET-DATA ASSERTIONS")
+    rule_window = src[rule_anchor:rule_anchor + 2500]
+    assert ("lookup_options_chain" in rule_window
+            or "future tool" in rule_window
+            or "until then" in rule_window), (
+        "the extension must acknowledge that a future options-chain "
+        "tool would shrink this carve-out — otherwise the rule will "
+        "block legitimate tool usage when the tool ships"
+    )
+    _ok("extension acknowledges future tool shrinks the carve-out")
+
+
 if __name__ == "__main__":
     print("=== /ask unforced-price-assertion guard smoke ===")
     test_index_examples_added()
@@ -211,4 +341,9 @@ if __name__ == "__main__":
     test_rule_disallows_four_wrong_sources()
     test_rule_has_clear_action_when_level_not_needed()
     test_existing_routing_rule_untouched()
+    test_market_data_extension_rule_present()
+    test_market_data_extension_names_options_stats()
+    test_market_data_extension_references_2026_06_06_failure()
+    test_market_data_extension_gives_correct_fallback()
+    test_market_data_extension_acknowledges_future_tool()
     print("\nALL UNFORCED-PRICE-ASSERTION GUARD SMOKE TESTS PASS")

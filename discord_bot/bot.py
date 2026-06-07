@@ -99,7 +99,7 @@ For everything that ISN'T a live price quote — news, fundamentals, earnings be
 
 ## TOOLS
 
-You have FIVE tools. **Tool priority for price/quote questions: ALWAYS try `lookup_market_price` FIRST. Google Search is for everything else.** Pick the tool based on the question shape:
+You have SIX tools. **Tool priority for price/quote questions: ALWAYS try `lookup_market_price` FIRST. For options-chain stats (OI, vol per expiration, IV, put-call ratios): ALWAYS try `lookup_options_chain` FIRST. Google Search is for everything else.** Pick the tool based on the question shape:
 
 ### 1. Google Search (grounding)
 For external facts that AREN'T live price quotes: news, fundamentals, earnings commentary, sports scores, public records, analyst ratings, M&A activity, regulatory actions, anything you'd Google. Default for Type 1 factual questions that don't have a faster dedicated tool. Auto-cited via the wrapper's sources footer.
@@ -195,7 +195,28 @@ Crypto trades 24/7 — its move is always today's regardless of session label.
 - *"How's $LMT trading?"* → `lookup_market_price(symbols=["LMT"])`
 - *"Where's $NDX?"* / *"SPX level?"* / *"how's the Dow?"* → `lookup_market_price(symbols=["NDX"])` / `["SPX"]` / `["DJI"]` — the tool covers major US indices (NDX, SPX, DJI, RUT) the same way it covers single names. Use the index ticker, not the ETF, when the asker named the index.
 
+**Scope note: `lookup_market_price` is PRICE ONLY.** It does NOT return options OI, volume per expiration, IV, put-call ratios, Greeks, or any options-chain data. For those, use `lookup_options_chain` (below). Routing rule: if the asker uses any of these words — *"OI"*, *"open interest"*, *"options volume"*, *"IV"*, *"implied volatility"*, *"put-call ratio"*, *"option chain"*, *"calls volume"*, *"puts volume"* — route to `lookup_options_chain`, NOT `lookup_market_price`.
+
+### 6. `lookup_options_chain(symbol, expiration?)`
+
+Aggregated options-chain stats for ONE expiration via Yahoo's v7 options endpoint. Returns total call+put volume, total call+put open interest, ATM implied volatility, put-call ratios (volume + OI), and the list of available expirations. Use the named EXPIRATION-AGGREGATE shape, not per-strike — for *"what's the IV on $750 SPY calls"* the answer is "I don't have per-strike data wired up; this tool returns expiration aggregates only."
+
+**When to call:**
+- *"What's the OI on SPY next week?"* → `lookup_options_chain(symbol="SPY")` first (returns nearest expiration + the list of available dates); if "next week" doesn't match the nearest, re-call with the right `expiration` ISO date.
+- *"NVDA options volume for June 12?"* → `lookup_options_chain(symbol="NVDA", expiration="2026-06-12")`
+- *"Put-call ratio on QQQ this Friday"* → `lookup_options_chain(symbol="QQQ")` first, find Friday in `available_expirations`, re-call if needed
+- *"IV on SPX this week"* → `lookup_options_chain(symbol="SPX")` (the tool covers indices too)
+
+**Response shape:**
+- `status: "ok"` — `summary` carries `call_volume`, `put_volume`, `call_oi`, `put_oi`, `put_call_volume_ratio`, `put_call_oi_ratio`, `atm_iv` (decimal, e.g. 0.243 = 24.3%), `expiration_iso`, `underlying_spot_price`. Frame ATM IV as a percentage (24.3%) for readers; the tool returns the decimal.
+- `status: "no_chain"` — Yahoo returned no expirations for this symbol (likely no listed options). Tell the asker, do NOT fabricate.
+- `status: "error"` — fetch failed (Yahoo rate-limit or upstream issue). Tell the asker the chain isn't available right now and to check their broker. Do NOT fabricate alternative numbers.
+
+**HARD ROUTING RULE for options-data questions: ALWAYS call `lookup_options_chain` FIRST. Not Google. Not memory.** Google's options snippets are stale, often wrong-symbol, and pattern-match the question shape rather than returning real data. Observed 2026-06-06: BEFORE this tool existed, the model fabricated SPY June 12 OI = 248,553 / IV = 10.3% / put-call = 1.28 from Google snippets. None of those numbers were real. This tool is the source of truth — Google for "why is OI rising on names" / "what's the macro context" is fine after, but the actual numbers come from here.
+
 **ZERO UNFORCED PRICE ASSERTIONS — binding.** If your answer states any absolute price level for a ticker / index / crypto — even as a closing flourish, a "currently around $X" parenthetical, or background flavor on a question that wasn't about the price — you MUST source that number from a `lookup_market_price` call in the same turn. Do NOT pull levels from memory, the WHO'S TALKING block, the chat-context block, or Google snippets. Google's index snippets routinely return wrong-symbol numbers (observed 2026-06-05: question about NDX drawdown history, model volunteered *"the index currently holding near 52-week highs around $30,500"* — that's not NDX, not SPX, not RUT; closest match is Dow, which is a different index). If the level isn't strictly needed to answer the question, OMIT it. The rule is: zero unforced price assertions. Either you called the tool and have the number, or you don't state a number.
+
+**ZERO UNFORCED MARKET-DATA ASSERTIONS — binding extension.** The price-assertion rule above extends to ALL numerically-specific market-data claims. For options-chain stats (OI, volume per expiration, IV, put-call ratios), you HAVE `lookup_options_chain(symbol, expiration?)` — call it before stating any of these numbers, same way `lookup_market_price` works for spot prices. Do NOT pull options stats from Google snippets, memory, or pattern-match against the question shape — Google's options snippets are notoriously stale and wrong-symbol. Observed 2026-06-06 21:21-21:22 UTC (BEFORE the tool shipped): model invented SPY June 12 OI = 248,553 / IV = 10.3% (implausibly low against a VIX 30%+ context) / put-call = 1.28 and NDX June 12 OI = 3,657 / IV = 26.05% — all four sets of numbers had no live data source. Same failure family as the NDX $30,500 price fabrication. For market-data stats you STILL have no tool for (gamma exposure levels, dark-pool prints, short interest, Greeks beyond IV, futures basis, term-structure spreads), the rule remains: do not invent. The correct answer is *"I don't have a live feed for that — pull it from your broker / data vendor."*
 
 ### Reading the tool response — `status` + freshness
 
@@ -2196,6 +2217,162 @@ _CRYPTO_SYMBOLS = frozenset({
 })
 
 
+def _build_options_chain_tool():
+    """FunctionDeclaration for `lookup_options_chain`. Returns aggregated
+    options-chain stats (total call/put volume + OI, ATM IV, put-call
+    ratios) for ONE expiration. Without `expiration`, returns the
+    nearest expiration's summary plus the list of available expirations
+    so the model can re-call for a further-out one.
+
+    Sourced from Yahoo's v7 options endpoint (free, public, no auth).
+    Yahoo rate-limits datacenter IPs intermittently — fetch failures
+    return `{"status": "error", ...}` and the model should tell the
+    asker the chain isn't available rather than inventing numbers.
+    """
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="lookup_options_chain",
+                description=(
+                    "Aggregated options-chain stats for ONE expiration "
+                    "of a stock / ETF / index. Returns total call + put "
+                    "volume, total call + put open interest, ATM "
+                    "implied volatility, put-call ratios (volume + OI), "
+                    "and the list of available expirations.\n\n"
+                    "USE for: 'what's the OI on SPY next week', 'NVDA "
+                    "options volume for the June 12 expiration', 'put-"
+                    "call ratio on QQQ', 'IV on SPY this Friday'. "
+                    "DO NOT use for single-strike questions ('what's "
+                    "the IV on $750 SPY calls') — this tool returns "
+                    "expiration-aggregate stats only, not per-strike.\n\n"
+                    "Args:\n"
+                    "  symbol: ticker (SPY, QQQ, NVDA, NDX, SPX, etc.)\n"
+                    "  expiration: optional ISO date 'YYYY-MM-DD'. When "
+                    "omitted, returns the NEAREST expiration + the "
+                    "list of available expirations so you can re-call "
+                    "for a further-out one if the asker meant 'next "
+                    "week' / 'this Friday' / a specific date.\n\n"
+                    "Response carries `status` field: 'ok' / 'no_chain' "
+                    "(Yahoo returned nothing — chain may not exist for "
+                    "this symbol) / 'error' (fetch failed, rate-limit "
+                    "or upstream issue). On 'no_chain' or 'error', "
+                    "tell the asker the data isn't available — do NOT "
+                    "invent OI / IV / volume numbers."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "symbol": types.Schema(
+                            type=types.Type.STRING,
+                            description="Ticker, e.g. 'SPY' or 'NDX'.",
+                        ),
+                        "expiration": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Optional ISO date 'YYYY-MM-DD'. Omit "
+                                "to get the nearest expiration's "
+                                "summary + list of available dates."
+                            ),
+                        ),
+                    },
+                    required=["symbol"],
+                ),
+            )
+        ]
+    )
+
+
+async def _execute_options_chain(args: dict) -> dict:
+    """Run the lookup_options_chain tool call.
+
+    Fetches via Yahoo, summarizes via market_data.summarize_options_chain.
+    When `expiration` is provided as 'YYYY-MM-DD', resolves to the
+    nearest matching unix-seconds expiration in the chain. Returns
+    an LLM-ready dict with status / summary / available_expirations.
+    """
+    from datetime import datetime, timezone as _tz
+    from report import market_data as _md
+
+    symbol = (args.get("symbol") or "").strip().upper()
+    if not symbol:
+        return {"status": "error", "error": "symbol is required"}
+
+    expiration_iso = (args.get("expiration") or "").strip()
+    expiration_unix: int | None = None
+
+    # First fetch (no date) to get the available expirations list.
+    raw = _md._fetch_yahoo_options_chain(symbol)
+    if raw is None:
+        return {
+            "status": "error",
+            "error": (
+                f"Yahoo options-chain fetch failed for {symbol} "
+                f"(rate-limit or upstream issue). No live data — tell "
+                f"the asker to check their broker."
+            ),
+        }
+
+    expirations = raw.get("expiration_dates") or []
+    if not expirations:
+        return {
+            "status": "no_chain",
+            "symbol": symbol,
+            "error": (
+                f"Yahoo returned no options expirations for {symbol}. "
+                f"This symbol may not have listed options chains."
+            ),
+        }
+
+    # Resolve requested expiration to the nearest available one.
+    if expiration_iso:
+        try:
+            target_dt = datetime.strptime(expiration_iso, "%Y-%m-%d")
+            target_unix = int(target_dt.replace(tzinfo=_tz.utc).timestamp())
+            # Pick the closest expiration to the target — no exact-match
+            # requirement; brokers don't always list every calendar date.
+            expiration_unix = min(expirations, key=lambda x: abs(x - target_unix))
+        except ValueError:
+            return {
+                "status": "error",
+                "error": (
+                    f"expiration {expiration_iso!r} is not ISO date "
+                    f"'YYYY-MM-DD'. Available expirations follow."
+                ),
+                "available_expirations": [
+                    datetime.fromtimestamp(e, tz=_tz.utc).strftime("%Y-%m-%d")
+                    for e in expirations[:12]
+                ],
+            }
+
+        # Second fetch for the resolved expiration if it's NOT the one
+        # the first fetch returned (the no-date call returns the nearest
+        # expiration by default).
+        if expiration_unix != raw.get("chain", {}).get("expiration_unix"):
+            raw2 = _md._fetch_yahoo_options_chain(symbol, expiration_unix)
+            if raw2 is None:
+                return {
+                    "status": "error",
+                    "error": (
+                        f"Yahoo options-chain re-fetch for "
+                        f"{symbol} @ {expiration_iso} failed (rate-"
+                        f"limit or upstream issue)."
+                    ),
+                }
+            raw = raw2
+
+    summary = _md.summarize_options_chain(raw)
+    return {
+        "status": "ok",
+        "summary": summary,
+        "available_expirations": [
+            datetime.fromtimestamp(e, tz=_tz.utc).strftime("%Y-%m-%d")
+            for e in expirations[:12]
+        ],
+        "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+    }
+
+
 def _build_market_price_tool():
     """FunctionDeclaration for `lookup_market_price`. Routes symbols
     to Finnhub (stocks) or Binance.US (crypto) based on a hardcoded
@@ -3382,6 +3559,7 @@ async def _answer_with_gemini(
                 _build_user_profile_tool(),
                 _build_trade_log_tool(),
                 _build_market_price_tool(),
+                _build_options_chain_tool(),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -3624,6 +3802,14 @@ async def _answer_with_gemini(
                             response={"result": result},
                         )
                     )
+                elif fc.name == "lookup_options_chain":
+                    result = await _execute_options_chain(args)
+                    tool_response_parts.append(
+                        types.Part.from_function_response(
+                            name=fc.name,
+                            response={"result": result},
+                        )
+                    )
                 else:
                     log.warning(f"/ask: unknown tool call {fc.name!r}")
                     tool_response_parts.append(
@@ -3679,6 +3865,7 @@ async def _answer_with_gemini(
                         _build_user_profile_tool(),
                 _build_trade_log_tool(),
                 _build_market_price_tool(),
+                _build_options_chain_tool(),
                     ],
                     tool_config=types.ToolConfig(
                         include_server_side_tool_invocations=True,
