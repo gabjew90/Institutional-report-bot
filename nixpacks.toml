@@ -1,2 +1,8 @@
 [phases.setup]
 aptPkgs = ["poppler-utils"]
+# nixLibs add to LD_LIBRARY_PATH at runtime. stdenv.cc.cc.lib provides
+# libstdc++.so.6 — required by numpy's C extensions (numpy is a yfinance
+# transitive dep, used by the /ask lookup_options_chain tool). Without
+# this, `import numpy` raises 'libstdc++.so.6: cannot open shared object
+# file' on Railway's Nix-based image and yfinance fails to import.
+nixLibs = ["stdenv.cc.cc.lib"]
