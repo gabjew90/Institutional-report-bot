@@ -291,16 +291,21 @@ def test_dispatch_branch_present():
         "_execute_options_chain(args)")
 
 
-def test_system_prompt_tool_count_updated():
-    """The system prompt's TOOLS preamble says 'You have SIX tools'
-    (was FIVE). Without this update, the model still thinks there are
-    five and may not consider the new one."""
+def test_system_prompt_tool_count_includes_options_chain():
+    """The TOOLS preamble must declare a tool count that includes
+    lookup_options_chain. Was 'SIX' when options_chain shipped; bumped
+    to 'SEVEN' when lookup_economic_calendar shipped. Test the floor
+    (>=SIX) so this smoke doesn't break every time a new tool ships."""
     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    assert "You have SIX tools" in _ASK_SYSTEM_INSTRUCTION, (
-        "TOOLS preamble must say 'You have SIX tools' (was FIVE) so "
-        "the model recognizes lookup_options_chain in its tool count"
+    # Word-form check (model parses these reliably). Accept any count
+    # >= SIX since that's when options_chain ship raised the floor.
+    valid_counts = ["SIX tools", "SEVEN tools", "EIGHT tools", "NINE tools"]
+    matched = [c for c in valid_counts if c in _ASK_SYSTEM_INSTRUCTION]
+    assert matched, (
+        f"TOOLS preamble must declare tool count >= SIX (when "
+        f"options_chain shipped), none matched: {valid_counts}"
     )
-    _ok("system prompt's TOOLS preamble updated to 'SIX tools'")
+    _ok(f"system prompt TOOLS preamble declares tool count: {matched[0]}")
 
 
 def test_system_prompt_has_tool_6_section():
@@ -369,7 +374,7 @@ if __name__ == "__main__":
     test_executor_ok_path()
     test_tool_registered_in_both_tool_arrays()
     test_dispatch_branch_present()
-    test_system_prompt_tool_count_updated()
+    test_system_prompt_tool_count_includes_options_chain()
     test_system_prompt_has_tool_6_section()
     test_lookup_market_price_scope_clarification_added()
     test_unforced_market_data_rule_acknowledges_tool()

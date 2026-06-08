@@ -186,6 +186,139 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
     return "\n".join(out)
 
 
+def fetch_economic_calendar_structured(
+    query: str | None = None,
+    days_window: int = 14,
+) -> list[dict]:
+    """Return Tier-1 economic events as structured rows for the /ask
+    `lookup_economic_calendar` tool.
+
+    Same Finnhub source + same Tier-1 whitelist as `fetch_economic_calendar`
+    above — pulse and /ask end up reading from the same canonical data,
+    so any answer the bot gives via /ask matches the pulse's numbers.
+    This closes the 2026-06-05 NFP cross-source conflict (pulse said 120k
+    ADP, /ask said 172k BLS via Google grounding) and the recurring
+    macro-print fabrication family.
+
+    Args:
+      query: optional case-insensitive substring to match against the
+             event name (e.g. "CPI", "NFP", "ECB", "May payrolls").
+             When omitted, returns all Tier-1 events in the window.
+      days_window: ±days from today to include (default 14 — covers
+             "what's this week" and "what was last week's print").
+
+    Returns: list[dict], one per event, with keys:
+      - event              : str (Finnhub event name, e.g. "CPI YoY")
+      - country            : str ("US" / "ECB" / "JP" / "GB")
+      - scheduled_iso_utc  : str (ISO datetime, e.g. "2026-06-10T12:30:00")
+      - scheduled_et_human : str (human ET, e.g. "06-10 08:30 ET")
+      - impact             : str ("high" / "medium" / "low")
+      - consensus          : float | None — Finnhub `estimate` field
+      - prev               : float | None — last reading
+      - actual             : float | None — released value, None if
+                             still scheduled
+      - unit               : str (e.g. "%", "K", "")
+      - status             : "released" | "scheduled" | "past_no_data"
+
+    Empty list on fetch failure or no matches. Caller must handle the
+    empty case — do NOT treat it as "no event" since it could be a
+    transient API issue.
+    """
+    key = settings.finnhub_api_key
+    if not key:
+        return []
+
+    today = datetime.utcnow().date()
+    start = today - timedelta(days=days_window)
+    end = today + timedelta(days=days_window)
+    url = (
+        f"https://finnhub.io/api/v1/calendar/economic"
+        f"?from={start.isoformat()}&to={end.isoformat()}"
+        f"&token={urllib.parse.quote(key)}"
+    )
+    data = _fetch_json(url)
+    if not data or not isinstance(data, dict):
+        return []
+
+    items = data.get("economicCalendar", []) or []
+    from world_context import FED_SPEAKER_KEYWORDS
+    TIER1_KEYWORDS = [
+        *FED_SPEAKER_KEYWORDS,
+        "cpi", "core cpi",
+        "pce", "core pce",
+        "nonfarm payroll", "employment situation", "unemployment rate",
+        "gdp ",
+        "retail sales",
+        "ism manufacturing", "ism services", "ism non-manufacturing",
+        "ppi ",
+        "ecb rate decision", "ecb interest rate",
+        "boj rate decision", "boj interest rate",
+        "boe rate decision", "boe interest rate",
+    ]
+
+    def _is_tier1(evt: dict) -> bool:
+        name = (evt.get("event") or "").lower()
+        country = evt.get("country", "")
+        if country == "US":
+            return any(kw in name for kw in TIER1_KEYWORDS)
+        return any(kw in name for kw in ("ecb rate", "boj rate", "boe rate",
+                                          "ecb interest", "boj interest", "boe interest"))
+
+    filtered = [e for e in items if _is_tier1(e)]
+
+    # Apply user query filter on top of Tier-1 if provided.
+    if query:
+        q_lower = query.strip().lower()
+        # Handle multi-word queries: split on space and require ALL tokens
+        # to appear in the event name. "May payrolls" matches "Nonfarm
+        # Payrolls" only if both "may"/"payroll" appear; relaxed to
+        # any-token-match if strict-AND yields empty.
+        q_tokens = [t for t in q_lower.split() if t]
+        if q_tokens:
+            strict = [
+                e for e in filtered
+                if all(tok in (e.get("event") or "").lower() for tok in q_tokens)
+            ]
+            relaxed = [
+                e for e in filtered
+                if any(tok in (e.get("event") or "").lower() for tok in q_tokens)
+            ]
+            filtered = strict if strict else relaxed
+
+    filtered.sort(key=lambda e: e.get("time", ""))
+
+    now_utc = datetime.utcnow()
+    rows: list[dict] = []
+    for e in filtered[:40]:
+        sched_iso = (e.get("time") or "")[:19] or None
+        actual = e.get("actual")
+
+        status = "scheduled"
+        if actual is not None:
+            status = "released"
+        elif sched_iso:
+            try:
+                sched_dt = datetime.fromisoformat(sched_iso)
+                if sched_dt < now_utc:
+                    status = "past_no_data"
+            except (ValueError, TypeError):
+                pass
+
+        rows.append({
+            "event": (e.get("event") or "").strip(),
+            "country": e.get("country", ""),
+            "scheduled_iso_utc": sched_iso,
+            "scheduled_et_human": _utc_to_et(e.get("time", "")),
+            "impact": (e.get("impact") or "").lower(),
+            "consensus": e.get("estimate"),
+            "prev": e.get("prev"),
+            "actual": actual,
+            "unit": e.get("unit", "") or "",
+            "status": status,
+        })
+    return rows
+
+
 def fetch_economic_calendar(days_ahead: int = 7) -> str:
     """Return upcoming US + major economic releases with actual dates/times/estimates."""
     key = settings.finnhub_api_key

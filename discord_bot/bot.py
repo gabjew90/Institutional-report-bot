@@ -112,7 +112,7 @@ For everything that ISN'T a live price quote — news, fundamentals, earnings be
 
 ## TOOLS
 
-You have SIX tools. **Tool priority for price/quote questions: ALWAYS try `lookup_market_price` FIRST. For options-chain stats (OI, vol per expiration, IV, put-call ratios): ALWAYS try `lookup_options_chain` FIRST. Google Search is for everything else.** Pick the tool based on the question shape:
+You have SEVEN tools. **Tool priority for price/quote questions: ALWAYS try `lookup_market_price` FIRST. For options-chain stats (OI, vol per expiration, IV, put-call ratios): ALWAYS try `lookup_options_chain` FIRST. For macro print scheduled-time / consensus / actual / prior (CPI, NFP, PCE, GDP, retail sales, ISM, PPI, FOMC, Powell speech, ECB/BOJ/BOE rate decisions): ALWAYS try `lookup_economic_calendar` FIRST. Google Search is for everything else.** Pick the tool based on the question shape:
 
 ### 1. Google Search (grounding)
 For external facts that AREN'T live price quotes: news, fundamentals, earnings commentary, sports scores, public records, analyst ratings, M&A activity, regulatory actions, anything you'd Google. Default for Type 1 factual questions that don't have a faster dedicated tool. Auto-cited via the wrapper's sources footer.
@@ -227,9 +227,34 @@ Aggregated options-chain stats for ONE expiration via Yahoo's v7 options endpoin
 
 **HARD ROUTING RULE for options-data questions: ALWAYS call `lookup_options_chain` FIRST. Not Google. Not memory.** Google's options snippets are stale, often wrong-symbol, and pattern-match the question shape rather than returning real data. Observed 2026-06-06: BEFORE this tool existed, the model fabricated SPY June 12 OI = 248,553 / IV = 10.3% / put-call = 1.28 from Google snippets. None of those numbers were real. This tool is the source of truth — Google for "why is OI rising on names" / "what's the macro context" is fine after, but the actual numbers come from here.
 
+### 7. `lookup_economic_calendar(query?, days_window?)`
+
+Canonical scheduled-time + consensus + previous + actual values for US Tier-1 macro releases (CPI, PCE, NFP / payrolls, unemployment, GDP, retail sales, ISM, PPI, FOMC, Powell speeches) and major foreign rate decisions (ECB, BOJ, BOE). Sourced from Finnhub's `/calendar/economic` endpoint — **the SAME source the daily pulse uses**, so /ask numbers stay consistent with what the pulse said earlier that day. This closes the 2026-06-05 NFP cross-source conflict (pulse said 120k private NFP from Finnhub, /ask said 172k BLS Establishment from Google grounding — two real prints, two different bot answers, daily-reader trust suffers).
+
+**When to call:**
+- *"When is the next CPI?"* / *"May CPI release date?"* → `lookup_economic_calendar(query="CPI")`
+- *"What's NFP consensus?"* / *"May payrolls expected number?"* → `lookup_economic_calendar(query="NFP")` (or `"payrolls"`)
+- *"What were the last 3 CPI prints?"* → `lookup_economic_calendar(query="CPI", days_window=30)` (wider window for historical)
+- *"When does ECB decide next?"* → `lookup_economic_calendar(query="ECB")`
+- *"What was the May payrolls actual?"* → `lookup_economic_calendar(query="May payrolls")` (or just "payrolls"; the tool returns event rows and the model picks the right one)
+- *"Key earnings + data prints this week"* → `lookup_economic_calendar()` (no query — returns all Tier-1 events in default ±14d window)
+- *"What's Powell saying this week?"* → `lookup_economic_calendar(query="Powell")`
+
+**When NOT to call:**
+- *"What does Goldman expect for CPI?"* — forecaster-specific reads → Google Search. This tool returns aggregate consensus only.
+- *"Why is CPI elevated?"* — context/causation → Google Search.
+- Regional Fed surveys (Empire State, Philly), minor housing data, foreign macro without US linkage — filtered out by the Tier-1 whitelist; tool will return empty.
+
+**Response shape:** `{status, events: [{event, country, scheduled_iso_utc, scheduled_et_human, impact, consensus, prev, actual, unit, status}, ...], as_of}`. Per-event `status` field:
+- `"released"` — `actual` field has the printed value. State it directly with the prior and consensus for context.
+- `"scheduled"` — future event. `consensus` may or may not be populated (depends on whether broker desks have published). State the date/time + consensus if present; if `consensus` is null, say *"no consensus posted yet"* — do NOT pull a forecast from Google.
+- `"past_no_data"` — after the scheduled release time but Finnhub hasn't ingested the actual yet (common in the 30-60 min after a release). Tell the asker the print is out but Finnhub's actual hasn't propagated yet; offer to Google the wire if they need it now.
+
+**HARD ROUTING RULE for macro print questions: ALWAYS call `lookup_economic_calendar` FIRST. Not Google. Not memory.** Google's macro-print snippets are forecaster-shopping (different forecasters publish different consensus and Google surfaces whoever ranked highest), and stale numbers leak from memory into subsequent /ask calls. Observed: 06-05 /ask said NFP 172k vs pulse said 120k. 06-08 /ask recycled the same 172k from memory three days later — same number, no fresh fetch, no source attribution. This tool returns the canonical Finnhub aggregate, same source as the pulse. Google for "what does Goldman desk expect" / "is CPI passthrough showing up in core" — fine. The actual print numbers come from here.
+
 **ZERO UNFORCED PRICE ASSERTIONS — binding.** If your answer states any absolute price level for a ticker / index / crypto — even as a closing flourish, a "currently around $X" parenthetical, or background flavor on a question that wasn't about the price — you MUST source that number from a `lookup_market_price` call in the same turn. Do NOT pull levels from memory, the WHO'S TALKING block, the chat-context block, or Google snippets. Google's index snippets routinely return wrong-symbol numbers (observed 2026-06-05: question about NDX drawdown history, model volunteered *"the index currently holding near 52-week highs around $30,500"* — that's not NDX, not SPX, not RUT; closest match is Dow, which is a different index). If the level isn't strictly needed to answer the question, OMIT it. The rule is: zero unforced price assertions. Either you called the tool and have the number, or you don't state a number.
 
-**ZERO UNFORCED MARKET-DATA ASSERTIONS — binding extension.** The price-assertion rule above extends to ALL numerically-specific market-data claims. For options-chain stats (OI, volume per expiration, IV, put-call ratios), you HAVE `lookup_options_chain(symbol, expiration?)` — call it before stating any of these numbers, same way `lookup_market_price` works for spot prices. Do NOT pull options stats from Google snippets, memory, or pattern-match against the question shape — Google's options snippets are notoriously stale and wrong-symbol. Observed 2026-06-06 21:21-21:22 UTC (BEFORE the tool shipped): model invented SPY June 12 OI = 248,553 / IV = 10.3% (implausibly low against a VIX 30%+ context) / put-call = 1.28 and NDX June 12 OI = 3,657 / IV = 26.05% — all four sets of numbers had no live data source. Same failure family as the NDX $30,500 price fabrication. For market-data stats you STILL have no tool for (gamma exposure levels, dark-pool prints, short interest, Greeks beyond IV, futures basis, term-structure spreads), the rule remains: do not invent. The correct answer is *"I don't have a live feed for that — pull it from your broker / data vendor."*
+**ZERO UNFORCED MARKET-DATA ASSERTIONS — binding extension.** The price-assertion rule above extends to ALL numerically-specific market-data claims. For options-chain stats (OI, volume per expiration, IV, put-call ratios), you HAVE `lookup_options_chain(symbol, expiration?)` — call it before stating any of these numbers, same way `lookup_market_price` works for spot prices. For macro print numbers (CPI / NFP / PCE / GDP / retail sales / ISM / PPI consensus / actual / prior / scheduled time + foreign central bank decisions), you HAVE `lookup_economic_calendar(query?, days_window?)` — call it before stating any of these numbers. The macro tool reads from the SAME Finnhub source the daily pulse uses, so /ask answers match the pulse and don't drift across days. Do NOT pull options-chain or macro-print stats from Google snippets, memory, or pattern-match against the question shape — Google's options snippets are notoriously stale and wrong-symbol; Google's macro-print snippets are forecaster-shopped. Observed 2026-06-06 21:21-21:22 UTC (BEFORE the options tool shipped): model invented SPY June 12 OI = 248,553 / IV = 10.3% (implausibly low against a VIX 30%+ context) / put-call = 1.28 and NDX June 12 OI = 3,657 / IV = 26.05% — all four sets of numbers had no live data source. Observed 2026-06-05 and 2026-06-08 (BEFORE the macro tool shipped): model said May NFP printed 172k vs 85k expected on 06-05 (BLS Establishment Survey via Google) when the SAME day's pulse said 120k vs 85k (ADP Private NFP via Finnhub — same name, different series); on 06-08, model RECYCLED the stale 172k from memory three days later when BK asked for the week's data prints. Same failure family as the NDX $30,500 price fabrication. For market-data stats you STILL have no tool for (gamma exposure levels, dark-pool prints, short interest, Greeks beyond IV, futures basis, term-structure spreads), the rule remains: do not invent. The correct answer is *"I don't have a live feed for that — pull it from your broker / data vendor."*
 
 **ZERO UNFORCED TIME-SERIES CLAIMS ON TOOL-RETURNED STATS — binding extension.** Both `lookup_market_price` and `lookup_options_chain` return SNAPSHOTS — one moment in time. They do NOT return history, deltas, multi-day trends, week-over-week change, or "highest in N days" rankings. If your answer states any of those time-comparison shapes — *"OI is up ~2% over the last 5 days," "IV trending higher this week," "volume highest since March," "P/C ratio elevated vs yesterday," "$AAPL up 8% in 3 sessions," "$NVDA at a new monthly high"* — and you cannot point to the specific historical numbers in YOUR CONTEXT THIS TURN (chat-context block, fetched URLs, your own prior /ask answer in this thread), do NOT make the claim. The tool returned today's snapshot, not yesterday's. You cannot derive "trending up 2% over 5 days" from a single number; that's a fabrication built on pattern-match. Observed 2026-06-07 02:30 UTC: model correctly returned SPY OI snapshot (88,046 calls / 97,078 puts / P/C 1.10) but then volunteered *"aggregate call open interest has been trending slightly higher (up ~2% over the last 5 days)"* — the "~2% over 5 days" had no source. Same fabrication family as the snapshot-stats rule above, just shifted from levels to deltas. If the asker explicitly asked for a trend and you don't have it, the answer is *"I only have the current snapshot — no historical log to derive a trend"* — full stop, no fake number to fill the gap.
 
@@ -2232,6 +2257,144 @@ _CRYPTO_SYMBOLS = frozenset({
 })
 
 
+def _build_economic_calendar_tool():
+    """FunctionDeclaration for `lookup_economic_calendar`. Reads from
+    Finnhub's `/calendar/economic` endpoint — the SAME source the daily
+    pulse uses — so /ask answers stay consistent with the pulse's
+    macro numbers. Closes the 2026-06-05 NFP cross-source conflict
+    (pulse said 120k ADP, /ask said 172k via Google grounding) and
+    the recurring macro-print fabrication family.
+    """
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="lookup_economic_calendar",
+                description=(
+                    "Canonical scheduled-time + consensus + previous + "
+                    "actual values for US Tier-1 macro releases (CPI, "
+                    "PCE, NFP / payrolls, unemployment, GDP, retail "
+                    "sales, ISM, PPI, FOMC, Powell) and major foreign "
+                    "rate decisions (ECB, BOJ, BOE). Same Finnhub "
+                    "source the daily pulse uses, so the numbers you "
+                    "get here MATCH the pulse — no cross-source "
+                    "drift.\n\n"
+                    "USE for: 'when is CPI', 'what's NFP consensus', "
+                    "'May payrolls actual', 'ECB next decision', "
+                    "'last 3 CPI prints', 'what does street expect "
+                    "for retail sales', 'what was last PCE', 'when is "
+                    "next Powell speech'.\n\n"
+                    "DO NOT use for: forecaster-specific reads ('what "
+                    "does Goldman expect for CPI' — that needs Google "
+                    "Search), market reaction commentary, or non-Tier-"
+                    "1 prints (regional Fed surveys, minor housing "
+                    "data, foreign macro without US linkage — those "
+                    "are filtered out of this tool's whitelist and "
+                    "won't return).\n\n"
+                    "Args:\n"
+                    "  query: optional case-insensitive event name "
+                    "filter (e.g. 'CPI' / 'NFP' / 'ECB' / 'May "
+                    "payrolls'). Omit to get all Tier-1 events in "
+                    "the window.\n"
+                    "  days_window: optional ±days from today (default "
+                    "14 — covers 'this week' + 'last week's print'). "
+                    "Range 1-30.\n\n"
+                    "Response shape: {status, events: [...], as_of}.\n"
+                    "Each event row has: event, country, "
+                    "scheduled_iso_utc, scheduled_et_human, impact, "
+                    "consensus, prev, actual, unit, status. "
+                    "`status` = 'released' (actual present) / "
+                    "'scheduled' (future, consensus may or may not be "
+                    "posted) / 'past_no_data' (after schedule, no "
+                    "actual yet — common in the 30-60 min between "
+                    "scheduled time and the BLS/BEA release wire).\n\n"
+                    "If `consensus` is null on a 'scheduled' event, "
+                    "broker desks haven't published consensus yet — "
+                    "tell the asker 'no consensus posted yet', do "
+                    "NOT pull a forecast from Google."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "query": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Optional event-name filter (e.g. "
+                                "'CPI', 'NFP', 'ECB', 'May "
+                                "payrolls'). Omit for full Tier-1 "
+                                "window."
+                            ),
+                        ),
+                        "days_window": types.Schema(
+                            type=types.Type.INTEGER,
+                            description=(
+                                "Optional ±days from today (default "
+                                "14, range 1-30)."
+                            ),
+                        ),
+                    },
+                ),
+            )
+        ]
+    )
+
+
+async def _execute_economic_calendar(args: dict) -> dict:
+    """Run the lookup_economic_calendar tool call.
+
+    Returns LLM-ready dict with status / events list / as_of timestamp.
+    Empty events list returns status='no_match' so the model tells the
+    asker no event found, rather than fabricating one from memory.
+    """
+    from datetime import datetime
+    from report import news_data as _nd
+
+    query = (args.get("query") or "").strip() or None
+    try:
+        days_window = int(args.get("days_window") or 14)
+    except (TypeError, ValueError):
+        days_window = 14
+    days_window = max(1, min(30, days_window))
+
+    try:
+        events = _nd.fetch_economic_calendar_structured(
+            query=query, days_window=days_window,
+        )
+    except Exception as e:
+        log.warning(f"lookup_economic_calendar: fetcher raised: {e}")
+        return {
+            "status": "error",
+            "error": (
+                f"Finnhub economic-calendar fetch failed (rate-limit or "
+                f"upstream issue). No live data — tell the asker the "
+                f"calendar isn't available right now."
+            ),
+        }
+
+    if not events:
+        return {
+            "status": "no_match",
+            "query": query,
+            "days_window": days_window,
+            "error": (
+                "No Tier-1 macro events found for that query / window. "
+                "Tier-1 covers: CPI, PCE, NFP / payrolls, unemployment, "
+                "GDP, retail sales, ISM, PPI, FOMC + Powell speeches, "
+                "ECB/BOJ/BOE rate decisions. Anything outside that set "
+                "(regional Fed surveys, minor housing data, foreign "
+                "macro without US linkage) is filtered out."
+            ),
+        }
+
+    return {
+        "status": "ok",
+        "query": query,
+        "days_window": days_window,
+        "events": events[:30],
+        "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+    }
+
+
 def _build_options_chain_tool():
     """FunctionDeclaration for `lookup_options_chain`. Returns aggregated
     options-chain stats (total call/put volume + OI, ATM IV, put-call
@@ -3559,6 +3722,7 @@ async def _answer_with_gemini(
                 _build_trade_log_tool(),
                 _build_market_price_tool(),
                 _build_options_chain_tool(),
+                _build_economic_calendar_tool(),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -3809,6 +3973,14 @@ async def _answer_with_gemini(
                             response={"result": result},
                         )
                     )
+                elif fc.name == "lookup_economic_calendar":
+                    result = await _execute_economic_calendar(args)
+                    tool_response_parts.append(
+                        types.Part.from_function_response(
+                            name=fc.name,
+                            response={"result": result},
+                        )
+                    )
                 else:
                     log.warning(f"/ask: unknown tool call {fc.name!r}")
                     tool_response_parts.append(
@@ -3865,6 +4037,7 @@ async def _answer_with_gemini(
                 _build_trade_log_tool(),
                 _build_market_price_tool(),
                 _build_options_chain_tool(),
+                _build_economic_calendar_tool(),
                     ],
                     tool_config=types.ToolConfig(
                         include_server_side_tool_invocations=True,
