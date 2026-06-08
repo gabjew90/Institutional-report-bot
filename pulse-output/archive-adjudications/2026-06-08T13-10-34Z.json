@@ -1,0 +1,348 @@
+{
+  "pulse_date": "2026-06-08",
+  "window_label": "since-last-daily (2026-06-05T13:19)",
+  "themes": [
+    {
+      "theme": "ai driven capex and semiconductor demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 7,
+        "skeptical": 4,
+        "neutral": 18
+      },
+      "consensus_view": "Banks broadly agree AI infrastructure spending and memory-chip demand are driving an earnings boom, but a vocal minority warns the AI-linked stocks have run too far and crowded positioning is starting to unwind.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler AI capex and advance orders are driving a structural surge in demand for semiconductors and AI infrastructure.",
+          "banks_for": [
+            "Bank of America",
+            "UBS",
+            "Goldman Sachs",
+            "Raymond James",
+            "Morgan Stanley",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "NVDA\u2019s $124bn purchase commitment suggests robust demand/supply visibility ahead for AI infra.",
+            "hyperscalers\u2019 USD 2tr worth of advance orders in compute resources further illustrates this trend",
+            "earnings growth, boosted by AI capex spend",
+            "A key catalyst for this strength is the capex boom underway",
+            "AI is turning memory into a structural bottleneck.",
+            "If history repeats, payrolls revisions should start improving in line with the jump in earnings expectations."
+          ]
+        },
+        {
+          "claim": "The memory and semiconductor cycle is supply-constrained, supporting prices and earnings for chipmakers.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS",
+            "Morgan Stanley",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "DRAM/NAND/HBM cycles to expand memory valuation multiples",
+            "the whole cycle is supply side constrained by the length of time",
+            "This is not a normal cyclical upswing; it is a structural reset",
+            "sales continue to grow at a much faster pace than inventories"
+          ]
+        },
+        {
+          "claim": "AI capex is a primary driver of US growth and equity-market leadership in the current regime.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "shift from capital light equity market leadership, to the new capex intensive regime",
+            "GIR expect AI to boost true capex growth by 3.3pp in 2026",
+            "If history repeats, payrolls revisions should start improving in line with the jump in earnings expectations."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether AI-linked equity valuations and positioning are sustainable or set up for a violent unwind",
+          "banks_for": [
+            "Bank of America",
+            "Goldman Sachs",
+            "UBS",
+            "Morgan Stanley"
+          ],
+          "for_evidence": "NVDA\u2019s $124bn purchase commitment suggests robust demand/supply visibility ahead for AI infra.",
+          "banks_against": [
+            "The Market Ear",
+            "Academy Securities",
+            "Tyler Durden"
+          ],
+          "against_evidence": "crowded positioning, leverage, and AI momentum worked together. Today they all started moving in reverse."
+        },
+        {
+          "claim": "Whether all incremental AI compute will be absorbed by frontier data centers or partly run on older hardware",
+          "banks_for": [
+            "UBS",
+            "Morgan Stanley"
+          ],
+          "for_evidence": "hyperscalers\u2019 USD 2tr worth of advance orders in compute resources further illustrates this trend",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "The world will always have a place for the frontier, but to think it will consume the majority of tokens feels irrational."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us economic resilience",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 0,
+        "neutral": 16
+      },
+      "consensus_view": "Banks agree the US labor market and broader economy stayed surprisingly strong through May, with the 172k payroll print well above the ~85k consensus reinforcing a resilient backdrop for stocks and consumer spending.",
+      "facts_agreed": [
+        {
+          "claim": "US job growth came in well above expectations in May, signaling continued labor-market resilience.",
+          "banks_for": [
+            "TS Lombard",
+            "SEB",
+            "Raymond James"
+          ],
+          "evidence_quotes": [
+            "job growth has turned positive again, after a (non-recessionary) weak patch",
+            "Employment growth continues to exceed forecasts, supporting the impression of a surprisingly robust US economy.",
+            "All in all, economic resilience remains."
+          ]
+        },
+        {
+          "claim": "A stable labor market is keeping US consumers spending despite real income pressure.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "the \u201cno fire\u201d part of the US \u201cno hire, no fire\u201d labor market is reassuring consumers"
+          ]
+        },
+        {
+          "claim": "AI is a secular growth driver that supports US economic and earnings strength even through cyclical wobbles.",
+          "banks_for": [
+            "Goldman Sachs",
+            "BCA Research"
+          ],
+          "evidence_quotes": [
+            "AI revolution was going to kick off, providing a secular growth driver",
+            "AI will not obsolete the human brain."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran conflict energy price impact",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 13
+      },
+      "consensus_view": "Banks across 12 desks flag the Iran/Middle East conflict as a live driver of energy prices and headline inflation, but none stake a directional call on where oil settles from here.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the Iran/Middle East conflict as a near-term shock to energy prices and inflation without staking a directional view.",
+          "banks_for": [
+            "ANZ Research",
+            "Bank of America",
+            "Cr\u00e9dit Agricole CIB",
+            "Danske Bank",
+            "Lloyds Banking Group",
+            "Mizuho International",
+            "Natixis",
+            "Raymond James",
+            "SEB",
+            "Scotiabank",
+            "UniCredit",
+            "Wells Fargo",
+            "World Gold Council"
+          ],
+          "evidence_quotes": [
+            "Iran war impact on energy prices",
+            "War in Iran energy cost impact",
+            "Middle East conflict as global energy shock",
+            "Middle East tensions driving oil prices",
+            "Brent oil supply disruption risk",
+            "Middle East conflict shipment delays",
+            "Iran war energy-driven inflation spike"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "strait of hormuz normalization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 12
+      },
+      "consensus_view": "Banks across more than a dozen desks reference the Strait of Hormuz situation and potential normalization of shipping as a live macro variable, but only one has staked a directional view that reopening would support markets.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the Strait of Hormuz situation and potential normalization of energy flows and shipping as an active near-term macro topic.",
+          "banks_for": [
+            "EFG",
+            "Bank of America",
+            "Berenberg",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "MUFG Research",
+            "Nordea",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "potential normalisation of maritime trade through the Strait, combined with the positive tone",
+            "Strait of Hormuz traffic normalization",
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz trade flow recovery",
+            "Persian Gulf de-escalation",
+            "Strait of Hormuz shipping normalization"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb policy tightening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Banks expect the European Central Bank to raise its deposit rate by a quarter-point (0.25 percentage points) at the June 11 meeting, with most pointing to energy-driven inflation risk as the reason.",
+      "facts_agreed": [
+        {
+          "claim": "The ECB is expected to deliver a 25 basis point (0.25 percentage point) hike to the deposit rate at its upcoming meeting.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UniCredit",
+            "SEB",
+            "Scotiabank",
+            "Natixis"
+          ],
+          "evidence_quotes": [
+            "We expect the Governing Council to raise the deposit rate by 25bp",
+            "we see a final rate increase in September, bringing the deposit rate to 2.50%",
+            "Inflationary risks from higher energy prices will result in a pre-emptive rate hike by 25 bp.",
+            "The European Central Bank is priced for lift-off with a 25bps hike on Thursday."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "leveraged speculation and reflexivity",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 7
+      },
+      "consensus_view": "Banks broadly agree that leveraged ETFs and options flows are now a dominant force in price formation, with positioning at extremes that makes the market more vulnerable to sharp reversals.",
+      "facts_agreed": [
+        {
+          "claim": "Leveraged and inverse ETFs have grown large enough to drive market momentum and amplify price swings.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear",
+            "Tyler Durden",
+            "BNP Paribas"
+          ],
+          "evidence_quotes": [
+            "The recent growth of levered ETF AUM + trading volumes in the products has been staggering",
+            "leveraged ETF rebalancing",
+            "Short gamma effect in levered ETFs"
+          ]
+        },
+        {
+          "claim": "Options flows and gamma dynamics now play a bigger role in shaping equity price action than they did historically.",
+          "banks_for": [
+            "The Market Ear",
+            "Academy Securities",
+            "BNP Paribas"
+          ],
+          "evidence_quotes": [
+            "Price action is increasingly being shaped by gamma and other options-related flows",
+            "Retail gambling in 0DTE options and leveraged ETFs",
+            "Short gamma effect in levered ETFs"
+          ]
+        },
+        {
+          "claim": "Market positioning has swung to risk-on extremes that look stretched.",
+          "banks_for": [
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "risk has swung from despair to exuberance",
+            "Stocks are bounding ever higher, but this is increasingly being fueled by the destabilising force of leverage."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed blackout period",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Seven banks flag the Fed's pre-FOMC quiet period as a near-term backdrop heading into the June meeting, but none stakes a directional view on what it means for markets.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the Fed communications blackout window ahead of the June FOMC as an upcoming market backdrop.",
+          "banks_for": [
+            "ANZ Research",
+            "BNP Paribas",
+            "Bank of America",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Raymond James"
+          ],
+          "evidence_quotes": [
+            "Fed blackout period starting June 6",
+            "FOMC blackout period",
+            "Fed communication blackout period",
+            "FOMC communications blackout period",
+            "Fed blackout window",
+            "Fed blackout period ahead of June FOMC"
+          ]
+        },
+        {
+          "claim": "At least one bank also references the corporate buyback blackout window alongside the Fed quiet period.",
+          "banks_for": [
+            "Cr\u00e9dit Agricole CIB"
+          ],
+          "evidence_quotes": [
+            "Corporate buyback blackout window"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "fed policy outlook",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Berenberg'"
+    }
+  ]
+}
