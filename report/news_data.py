@@ -246,7 +246,14 @@ def fetch_economic_calendar_structured(
         *FED_SPEAKER_KEYWORDS,
         "cpi", "core cpi",
         "pce", "core pce",
-        "nonfarm payroll", "employment situation", "unemployment rate",
+        # Both spellings: Finnhub uses "Non Farm Payrolls" (spaced) for the
+        # high-impact headline BLS Establishment series; "Nonfarm Payrolls
+        # Private" (compound) for the low-impact BLS Private subseries.
+        # Without the spaced spelling, the headline event was being silently
+        # dropped — caused the 2026-06-05 RECAP to report 120k Private
+        # instead of 172k headline.
+        "nonfarm payroll", "non farm payroll",
+        "employment situation", "unemployment rate",
         "gdp ",
         "retail sales",
         "ism manufacturing", "ism services", "ism non-manufacturing",
@@ -260,6 +267,13 @@ def fetch_economic_calendar_structured(
         name = (evt.get("event") or "").lower()
         country = evt.get("country", "")
         if country == "US":
+            # Impact filter: drop low-impact subreleases (Government Payrolls,
+            # Manufacturing Payrolls, U-6 Unemployment, Nonfarm Payrolls
+            # PRIVATE) that share the 8:30 ET BLS window but aren't what
+            # traders price off. Keeps high + medium impact only.
+            impact = (evt.get("impact") or "").lower()
+            if impact not in ("high", "medium"):
+                return False
             return any(kw in name for kw in TIER1_KEYWORDS)
         return any(kw in name for kw in ("ecb rate", "boj rate", "boe rate",
                                           "ecb interest", "boj interest", "boe interest"))
@@ -269,6 +283,18 @@ def fetch_economic_calendar_structured(
     # Apply user query filter on top of Tier-1 if provided.
     if query:
         q_lower = query.strip().lower()
+        # Expand common trader abbreviations before tokenization — these
+        # don't substring-match the spelled-out Finnhub event names.
+        # Without this, /ask query="NFP" returns empty because "nfp"
+        # doesn't appear in "Non Farm Payrolls".
+        QUERY_ALIASES = {
+            "nfp": "non farm payroll",
+            "ppi": "ppi",
+            "ism": "ism",
+            "fomc": "fomc",
+        }
+        if q_lower in QUERY_ALIASES:
+            q_lower = QUERY_ALIASES[q_lower]
         # Handle multi-word queries: split on space and require ALL tokens
         # to appear in the event name. "May payrolls" matches "Nonfarm
         # Payrolls" only if both "may"/"payroll" appear; relaxed to
@@ -352,7 +378,14 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
         *FED_SPEAKER_KEYWORDS,
         "cpi", "core cpi",
         "pce", "core pce",
-        "nonfarm payroll", "employment situation", "unemployment rate",
+        # Both spellings: Finnhub uses "Non Farm Payrolls" (spaced) for the
+        # high-impact headline BLS Establishment series; "Nonfarm Payrolls
+        # Private" (compound) for the low-impact BLS Private subseries.
+        # Without the spaced spelling, the headline event was silently
+        # dropped — caused the 2026-06-05 RECAP to use 120k Private
+        # instead of 172k headline.
+        "nonfarm payroll", "non farm payroll",
+        "employment situation", "unemployment rate",
         "gdp ",
         "retail sales",
         "ism manufacturing", "ism services", "ism non-manufacturing",
@@ -368,6 +401,13 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
         # Only US for most; ECB/BOJ/BOE rate decisions pass through from other countries
         country = evt.get("country", "")
         if country == "US":
+            # Impact filter: drop low-impact subreleases (Government Payrolls,
+            # Manufacturing Payrolls, U-6 Unemployment, Nonfarm Payrolls
+            # PRIVATE) that share the 8:30 ET BLS window but aren't what
+            # traders price off. Keeps high + medium impact only.
+            impact = (evt.get("impact") or "").lower()
+            if impact not in ("high", "medium"):
+                return False
             return any(kw in name for kw in TIER1_KEYWORDS)
         # Foreign only for top central bank rate decisions
         return any(kw in name for kw in ("ecb rate", "boj rate", "boe rate",
