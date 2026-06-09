@@ -499,8 +499,10 @@ Use the previous pulse's "WHAT TO WATCH" section to close the loop in RECAP: if 
 Here are {pdf_count} institutional research analyses. Some may have been published days ago and reference events that have since occurred. Treat those as historical context, not forward-looking.
 
 **STRUCTURED FIELDS IN THE ANALYSES (use them):**
-- Each analysis has per-item `conviction` (high/medium/low) on market_movers and trade_ideas — weight HIGH-conviction calls more heavily.
-- Each analysis has `time_horizon` on trade_ideas — surface whether a trade is intraday, swing, or 3-12mo so the reader knows the horizon.
+- Analyses with a `HIGH_CONVICTION` field at the top: those items are the bank's explicit high-conviction calls. **Lead with these.** A single HIGH-conviction reversal outranks five MEDIUM-conviction reiterations — give it the prose space, the specific numbers, and the trade lean. A theme backed by 2 high-conviction stances and 3 banks deserves a higher slot than a theme backed by 6 banks of neutral mentions.
+- Each analysis also has per-item `conviction` (high/medium/low) on market_movers and trade_ideas — same weighting applies at item level.
+- Each analysis has `time_horizon` on trade_ideas — surface whether a trade is intraday, swing, or 3-12mo so the reader knows the horizon. **Weight swing/1-3mo trade ideas over intraday flow observations** when choosing what anchors a theme's close: intraday flows expire before most readers act; positioning themes carry.
+- Theme entries in THEME COVERAGE tagged `⚠ SOURCE-CONCENTRATED` have most of their PDFs from ONE bank. That's one house view repeated, not N independent reads — weigh the theme by its distinct-bank support, and prefer themes with diverse sourcing at equal bank counts.
 - Each analysis has `cross_bank_refs` — explicit mentions of other banks (e.g., "contrary to BofA Hartnett"). Use these to find consensus AND divergence across the set. If BofA says X and cross_bank_refs from JPM mention "we disagree with BofA's X view", CALL OUT THE DIVERGENCE.
 - `vol_positioning` captures per-PDF positioning data (CTA leverage, fund flows, crowding, hedging). Aggregate across reports to get the full positioning picture.
 
@@ -1206,14 +1208,18 @@ Each theme entry in the THEME COVERAGE block above may carry one or more of the 
 
 3. **`CONTRARIAN / ROTATE-OUT SIGNAL`** category. When this bucket is present, the corpus has multi-bank explicit contradiction of the lead theme (today's example: "Nobody Wants NVDA" / "Sell in May" / "What To Buy If Not AI" / "IPO BOOM = MARKET TOP?" all in fresh research). **DO NOT bury this in the lead theme's bear-case appendix.** Give it a dedicated INSIGHTS slot with a section title that names the rotate-out frame (e.g. "What to buy when the consensus is short NVDA"), and close with a named rotation instrument lean ($RSP vs $SPY, $IWM, value ETFs, etc.). The post-DRAFT validator hard-flags `contrarian-buried-in-appendix` and the pulse will be rejected if the contrarian signal lands inside the lead theme's body.
 
-4. **`close in: <style>`** annotation. When present, this is the prescribed close shape for that theme's section. Five shapes:
+4. **`close in: <style>`** annotation — **MANDATORY, not advisory.** When present, this is the prescribed close shape for that theme's section. Five shapes:
    - `bull_risk_resolution` (default — explicit bull/risk/resolution + trade)
-   - `falsifiable_window` (time-bound prediction: "if X doesn't print Y by Z, the thesis is dead")
-   - `ranked_list` (Hartnett-style numbered list of what to watch)
-   - `single_question` (one sharp falsifiable question)
-   - `asymmetry` (name the payoff asymmetry directly without counter-case framing)
+   - `falsifiable_window` (time-bound prediction: "if X doesn't print Y by Z, the thesis is dead; until then the trade is W")
+   - `ranked_list` (Hartnett-style numbered list: "Watch in this order: (1) ..., (2) ..., (3) ..." — the trade lean goes inside item (1))
+   - `single_question` (one sharp falsifiable question the trader must answer: "Does X break Y before Z prints? Long $W says no." — the close IS the question + a one-line lean)
+   - `asymmetry` ("Cost of being wrong: X. Cost of missing it if right: Y." — then the lean)
 
-   Top-2 themes use the default to force-engage counter-cases. Lower-rank themes rotate alternates to break the identical-template fatigue the QC has flagged 3+ runs. Honor the annotation.
+   Top-2 themes use the default to force-engage counter-cases. Lower-rank themes rotate alternates to break the identical-template fatigue the QC has flagged 3+ runs.
+
+   **Compliance check before you ship each section:** look at the literal LAST paragraph of the section. If the annotation said `falsifiable_window` and your last paragraph has no time-bound "if X by DATE" construction, you did NOT honor it — rewrite the close. If it said `ranked_list` and there's no numbered list, rewrite. If it said `single_question` and there's no question mark in the close, rewrite. The QC reviews of 2026-06-04, 06-05, 06-08, and 06-09 ALL found 3-4 of 5 slots ignored this annotation and defaulted to "Long $X paired with $Y" — that default is exactly the identical-template problem the annotation exists to break.
+
+   **Escape hatch:** if the prescribed shape genuinely cannot carry the theme's close (e.g., `ranked_list` on a theme with only one watchable catalyst), use the default shape AND record one line in `## _DRAFT NOTES` explaining which steer you overrode and why. An override WITHOUT a note is a compliance failure; an override WITH a note is editorial judgment.
 
 5. **Stance split `support: N / skeptical: M / neutral: K`**. When N ≥ 2 AND M ≥ 2, the corpus has a real bank-vs-bank disagreement. Name at least one supporting bank AND one skeptical bank by name in the section about that theme. "Goldman and JPM argue X; BofA and Deutsche argue Y" — not "the consensus is X with a counter-case." The 2026-05-29 pulse delivered this on the Fed split (Goldman/Deutsche vs SEB/ING vs BofA); the 2026-06-01 pulse missed it entirely (zero named-bank-vs-bank constructions across all 5 INSIGHTS). The post-DRAFT validator soft-flags `stance-split-no-named-debate`.
 - The 4th, 5th, and 6th INSIGHTS (variable count — produce **3 to 6 themes total** based on what the corpus actually supports today) come from: (a) themes with 5+ banks below the top 3, OR (b) single-topic dedicated catalysts where there's a hard event hook (M&A on an S&P 100 name, MAG7 earnings reaction, FDA decision on a specific ticker, regulatory deadline). These are the ONLY two paths into INSIGHTS for sub-5-bank themes.

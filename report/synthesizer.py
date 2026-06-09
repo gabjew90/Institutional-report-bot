@@ -213,6 +213,14 @@ def _classify_themes(
     # disambiguating context when we embed for clustering. "iran" alone
     # is ambiguous; "iran: oil-supply shock from Hormuz" is not.
     tag_arguments: dict[str, str] = {}
+    # Conviction + source-concentration accumulators (added 2026-06-09 —
+    # end-to-end review found theme ranking was pure bank-count, so a
+    # 5-bank NEUTRAL consensus outranked a 1-bank HIGH-conviction call
+    # and Goldman's 36% corpus share dominated narrative weight via
+    # repetition).
+    tag_high_conviction: dict[str, int] = {}     # tag -> count of high-conviction DIRECTIONAL stances
+    tag_source_pdfs: dict[str, dict[str, int]] = {}  # tag -> source -> PDF count (concentration)
+    tag_instruments: dict[str, set[str]] = {}    # tag -> primary instruments (for cross-slot dedup)
 
     for a in analyses:
         source = (a.source or "Unknown").strip()
@@ -246,6 +254,19 @@ def _classify_themes(
                 norm, {"supportive": set(), "skeptical": set(), "neutral": set()}
             )
             stance_buckets[stance].add(source)
+            # High-conviction DIRECTIONAL stances only — a neutral
+            # "high-conviction" tag is a contradiction; don't count it.
+            if stance in ("supportive", "skeptical") and \
+                    (ts.conviction or "").lower().strip() == "high":
+                tag_high_conviction[norm] = tag_high_conviction.get(norm, 0) + 1
+            # Per-source PDF concentration (this PDF touches this tag).
+            src_pdfs = tag_source_pdfs.setdefault(norm, {})
+            src_pdfs[source] = src_pdfs.get(source, 0) + 1
+            # Primary instruments — pooled per tag for cross-slot dedup.
+            for inst in (ts.primary_instruments or []):
+                inst_clean = (inst or "").strip().upper().lstrip("$")
+                if inst_clean and len(inst_clean) <= 6:
+                    tag_instruments.setdefault(norm, set()).add(inst_clean)
 
     # Embedding-based clustering. Tags without a key_argument get an empty
     # context (the tag itself is embedded). Returns:
@@ -259,6 +280,9 @@ def _classify_themes(
     merged_sources: dict[str, set[str]] = {}
     canonical_stance_banks: dict[str, dict[str, set[str]]] = {}
     canonical_pdf_count: dict[str, int] = {}
+    canonical_high_conviction: dict[str, int] = {}
+    canonical_source_pdfs: dict[str, dict[str, int]] = {}
+    canonical_instruments: dict[str, set[str]] = {}
     for orig_tag, srcs in tag_sources.items():
         canonical_tag = orig_to_canonical.get(orig_tag, orig_tag)
         merged_sources.setdefault(canonical_tag, set()).update(srcs)
@@ -272,6 +296,19 @@ def _classify_themes(
         canonical_pdf_count[canonical_tag] = (
             canonical_pdf_count.get(canonical_tag, 0)
             + tag_pdf_count.get(orig_tag, 0)
+        )
+        # Conviction counts: sum across merged tags.
+        canonical_high_conviction[canonical_tag] = (
+            canonical_high_conviction.get(canonical_tag, 0)
+            + tag_high_conviction.get(orig_tag, 0)
+        )
+        # Per-source PDF concentration: sum per source across merged tags.
+        c_src = canonical_source_pdfs.setdefault(canonical_tag, {})
+        for src, n in tag_source_pdfs.get(orig_tag, {}).items():
+            c_src[src] = c_src.get(src, 0) + n
+        # Instruments: union across merged tags.
+        canonical_instruments.setdefault(canonical_tag, set()).update(
+            tag_instruments.get(orig_tag, set())
         )
 
     # Phase B — corpus-level discovery.
@@ -573,6 +610,20 @@ def _classify_themes(
     # grows synthesizer-side dependencies.
     from ai_analysis.voice_rules import NON_BANK_SOURCES
 
+    def _top_source_share(tag: str) -> tuple[float, str]:
+        """Fraction of this theme's PDFs written by its most prolific
+        source + that source's name. 1.0 = single-source theme. Used to
+        penalize concentration in ranking and to warn DRAFT when one
+        bank's repetition is masquerading as corpus weight (Goldman is
+        ~36% of the corpus by volume; without this, its house view
+        repeated across N PDFs reads as N PDFs of 'coverage')."""
+        src_pdfs = canonical_source_pdfs.get(tag, {})
+        total = sum(src_pdfs.values())
+        if not total:
+            return 0.0, ""
+        top_src, top_n = max(src_pdfs.items(), key=lambda kv: kv[1])
+        return round(top_n / total, 3), top_src
+
     theme_map: dict[str, dict] = {
         tag: {
             "banks": len(srcs),
@@ -581,6 +632,17 @@ def _classify_themes(
             "supportive": len(canonical_stance_banks.get(tag, {}).get("supportive", set())),
             "skeptical": len(canonical_stance_banks.get(tag, {}).get("skeptical", set())),
             "neutral": len(canonical_stance_banks.get(tag, {}).get("neutral", set())),
+            # Count of high-conviction DIRECTIONAL stances. Ranking input:
+            # at equal bank counts, themes carrying real conviction beat
+            # neutral-consensus themes.
+            "high_conviction": canonical_high_conviction.get(tag, 0),
+            # (share, source) of the most prolific contributor.
+            "top_source_share": _top_source_share(tag)[0],
+            "top_source": _top_source_share(tag)[1],
+            # Primary instruments pooled across stances — cross-slot
+            # dedup input (two themes sharing an instrument risk closing
+            # on the same trade lean).
+            "instruments": sorted(canonical_instruments.get(tag, set())),
             "discovered": False,
             # True if every source for this theme is a non-bank publication
             # (TME, Bloomberg news wire, Reuters, etc.). Such themes are
@@ -812,9 +874,21 @@ def _classify_themes(
             "single_question",
             "asymmetry",
         ]
+        # Ranking (2026-06-09): banks stays primary (cross-bank consensus
+        # is the moat), but at equal bank counts conviction-rich themes
+        # beat neutral consensus, and source-diverse themes beat single-
+        # source-dominated ones. Fixes the observed failure where AI capex
+        # (many banks, mostly neutral mentions, Goldman-heavy) crowded out
+        # higher-conviction themes with the same bank count.
         _ranked_for_close = sorted(
             theme_map.items(),
-            key=lambda kv: (-kv[1]["banks"], -kv[1]["pdfs"], kv[0]),
+            key=lambda kv: (
+                -kv[1]["banks"],
+                -kv[1].get("high_conviction", 0),
+                kv[1].get("top_source_share", 0.0),
+                -kv[1]["pdfs"],
+                kv[0],
+            ),
         )
         for idx, (theme, info) in enumerate(_ranked_for_close):
             if info.get("discovered") or info.get("non_bank_only"):
@@ -854,7 +928,13 @@ def _classify_themes(
     if theme_map:
         ranked_by_banks = sorted(
             theme_map.items(),
-            key=lambda kv: (-kv[1]["banks"], -kv[1]["pdfs"], kv[0]),
+            key=lambda kv: (
+                -kv[1]["banks"],
+                -kv[1].get("high_conviction", 0),
+                kv[1].get("top_source_share", 0.0),
+                -kv[1]["pdfs"],
+                kv[0],
+            ),
         )
         top_6 = {t for t, _ in ranked_by_banks[:6]}
         from ai_analysis.voice_rules import TIER_1_BANKS as _T1
@@ -1000,7 +1080,13 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
 
     ranked = sorted(
         theme_map.items(),
-        key=lambda kv: (-kv[1]["banks"], -kv[1]["pdfs"], kv[0]),
+        key=lambda kv: (
+            -kv[1]["banks"],
+            -kv[1].get("high_conviction", 0),
+            kv[1].get("top_source_share", 0.0),
+            -kv[1]["pdfs"],
+            kv[0],
+        ),
     )
 
     # Close-style guidance shown alongside themes that have one
@@ -1059,9 +1145,27 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
             )
         else:
             close_str = ""
+        # Conviction marker — themes carrying real directional conviction
+        # get flagged so DRAFT leads with them over neutral consensus.
+        hc = info.get("high_conviction", 0)
+        hc_str = f" — {hc} HIGH-CONVICTION stance{'s' if hc != 1 else ''}" if hc else ""
+        # Source-concentration warning. >=50% of a theme's PDFs from one
+        # source means the apparent corpus weight is partly one bank's
+        # publishing volume; DRAFT should weigh it as such (Goldman is
+        # ~36% of total corpus — its house view repeated across N PDFs
+        # is one view, not N).
+        share = info.get("top_source_share", 0.0)
+        if share >= 0.5 and info.get("pdfs", 0) >= 3:
+            conc_str = (
+                f" — ⚠ SOURCE-CONCENTRATED: {share:.0%} of PDFs from "
+                f"{info.get('top_source', '?')} (weigh as one house view, "
+                f"not {info['pdfs']} independent reads)"
+            )
+        else:
+            conc_str = ""
         return (
             f"{indent}{theme}: {info['banks']} banks / {info['pdfs']} PDFs "
-            f"({srcs_str}){stance_str}{close_str}"
+            f"({srcs_str}){stance_str}{hc_str}{conc_str}{close_str}"
         )
 
     for theme, info in ranked:
@@ -1214,6 +1318,42 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
             f"INSIGHTS rather than spinning a separate slot, the trade "
             f"lean MUST include at least one power-side instrument."
         )
+
+    # CROSS-SLOT INSTRUMENT OVERLAP — DRAFT-time dedup steering (added
+    # 2026-06-09). The 2026-06-09 pulse closed INSIGHTS #1 (AI capex)
+    # AND INSIGHTS #5 (semis positioning) both on `Long $MU`, with the
+    # same $52B stat cited in both — a five-theme pulse with effectively
+    # three distinct trade expressions. Lint catches the stat overlap
+    # post-hoc; this block prevents the LEAN overlap at write time by
+    # showing DRAFT which top themes share instruments.
+    top_for_overlap = [
+        (t, i) for t, i in ranked[:8]
+        if not i.get("non_bank_only") and i.get("banks", 0) >= 2
+    ]
+    overlap_pairs: list[str] = []
+    for a_idx in range(len(top_for_overlap)):
+        for b_idx in range(a_idx + 1, len(top_for_overlap)):
+            t_a, i_a = top_for_overlap[a_idx]
+            t_b, i_b = top_for_overlap[b_idx]
+            shared = set(i_a.get("instruments") or []) & set(i_b.get("instruments") or [])
+            if shared:
+                overlap_pairs.append(
+                    f"  - '{t_a}' and '{t_b}' share: "
+                    f"{', '.join('$' + s for s in sorted(shared)[:5])}"
+                )
+    if overlap_pairs:
+        out.append("")
+        out.append(
+            "CROSS-SLOT INSTRUMENT OVERLAP — these top themes share "
+            "primary instruments. If both become INSIGHTS slots, their "
+            "trade leans MUST NOT close on the same ticker. Either (a) "
+            "give the shared instrument to ONE slot and find the other "
+            "slot's most natural distinct expression, or (b) merge the "
+            "two themes into one section if they're really the same "
+            "trade. Two slots closing on the same lean reads as padding "
+            "(observed 2026-06-09: slots #1 and #5 both closed Long $MU):"
+        )
+        out.extend(overlap_pairs)
     return "\n".join(out)
 
 
@@ -1278,6 +1418,23 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
             "published": (a.published_at or "unknown")[:10],  # YYYY-MM-DD only
             "insights": a.key_insights,
         }
+        # High-conviction summary (added 2026-06-09): conviction is in
+        # each mover/trade asdict already, but flat lists bury it — a
+        # MEDIUM-conviction reiteration sat visually equal to a HIGH-
+        # conviction reversal and DRAFT weighted them the same. A
+        # top-of-entry summary makes the high-conviction items salient
+        # so DRAFT leads with them.
+        hc_items: list[str] = []
+        for mm in (a.market_movers or []):
+            if (mm.conviction or "").lower() == "high":
+                hc_items.append(f"{mm.ticker}: {mm.action} ({mm.rating})".strip())
+        for ti in (a.trade_ideas or []):
+            if (ti.conviction or "").lower() == "high":
+                desc = (ti.description or "")[:90]
+                horizon = f" [{ti.time_horizon}]" if ti.time_horizon else ""
+                hc_items.append(f"{desc}{horizon}")
+        if hc_items:
+            entry["HIGH_CONVICTION"] = hc_items[:8]
         if a.market_movers:
             entry["market_movers"] = [asdict(mm) for mm in a.market_movers]
         if a.sector_views:

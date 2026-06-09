@@ -483,11 +483,58 @@ def _session_label(now_et: datetime) -> tuple[str, str]:
     return ("AFTER-HOURS", AFTER_HOURS_NOTE)
 
 
+# Yahoo yield-index symbols. Yahoo quotes these as yield × 10
+# (e.g., ^TNX = 44.4 means the 10Y yields 4.44%). _fetch_treasury_yields
+# divides by 10 before returning. 2Y has no reliable Yahoo index symbol —
+# omitted rather than proxied.
+_YIELD_SYMBOLS = {
+    "^FVX": "5Y",
+    "^TNX": "10Y",
+    "^TYX": "30Y",
+}
+
+
+def _fetch_treasury_yields() -> dict[str, dict]:
+    """Fetch live US Treasury yields via Yahoo's yield indices.
+
+    Added 2026-06-09 — end-to-end review found the pulse discusses
+    Treasury yields and curve shape constantly (research quotes them in
+    nearly every macro piece) but the live snapshot only carried $TLT,
+    a long-duration ETF whose price is a noisy proxy. Traders reading
+    "the 30Y broke 5%" in INSIGHTS could not verify it against the
+    snapshot. This gives RECAP/AUDIT the actual yield levels.
+
+    Returns {tenor: {"yield_pct": float, "change_bps": float|None}}
+    e.g. {"10Y": {"yield_pct": 4.44, "change_bps": +3.2}}.
+    Empty dict on total failure — caller renders nothing rather than
+    stale numbers.
+    """
+    out: dict[str, dict] = {}
+    for symbol, tenor in _YIELD_SYMBOLS.items():
+        try:
+            yh = _fetch_yahoo_extended_hours(symbol)
+        except Exception as e:
+            log.info(f"treasury yield fetch {symbol} failed: {e}")
+            continue
+        if not yh or yh.get("last_price") is None:
+            continue
+        # Yahoo yield indices quote yield × 10.
+        yield_pct = round(float(yh["last_price"]) / 10.0, 3)
+        change_bps = None
+        prev = yh.get("prev_close")
+        if prev:
+            # (Δ index points) / 10 = Δ percentage points; × 100 = bps
+            change_bps = round((float(yh["last_price"]) - float(prev)) * 10.0, 1)
+        out[tenor] = {"yield_pct": yield_pct, "change_bps": change_bps}
+    return out
+
+
 def fetch_market_snapshot() -> str:
     """Return a human-readable snapshot of current market levels for the prompt."""
     import pytz
     crypto = _fetch_crypto()
     traditional = _fetch_traditional_markets()
+    yields = _fetch_treasury_yields()
 
     et = pytz.timezone("America/New_York")
     now_et = datetime.utcnow().replace(tzinfo=pytz.UTC).astimezone(et)
@@ -512,6 +559,26 @@ def fetch_market_snapshot() -> str:
                 continue
             pct_str = f"{pct:+.2f}%" if pct is not None else "n/a"
             lines.append(f"  ${ticker}: ${price:,.2f} ({pct_str} {pct_label})")
+        lines.append("")
+
+    if yields:
+        # Real yield levels, not the $TLT proxy. Research quotes yields
+        # constantly; this lets RECAP/AUDIT ground them in live numbers.
+        lines.append("US Treasury yields (live via Yahoo yield indices; change = vs prior close):")
+        for tenor in ("5Y", "10Y", "30Y"):
+            data = yields.get(tenor)
+            if not data:
+                continue
+            chg = data.get("change_bps")
+            chg_str = f" ({chg:+.1f} bps)" if chg is not None else ""
+            lines.append(f"  {tenor}: {data['yield_pct']:.2f}%{chg_str}")
+        # Curve spread when both legs present — the steepness read the
+        # research references as "the curve" without a number.
+        if "10Y" in yields and "30Y" in yields:
+            spread = round(
+                (yields["30Y"]["yield_pct"] - yields["10Y"]["yield_pct"]) * 100
+            )
+            lines.append(f"  30Y-10Y spread: {spread:+d} bps")
         lines.append("")
 
     if crypto:

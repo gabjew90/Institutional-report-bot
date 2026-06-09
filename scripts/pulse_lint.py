@@ -80,6 +80,11 @@ SOFT_ISSUE_KINDS = {
     # which flagged INSIGHTS #2 and #3 both citing the $60B levered
     # ETF stat + the 9-up-days streak.
     "slot-stat-overlap",
+    # Same rationale — two slots closing on the same trade lean is a
+    # DRAFT-time composition problem (2026-06-09: slots #1 and #5 both
+    # closed Long $MU). The CROSS-SLOT INSTRUMENT OVERLAP block in
+    # theme_coverage is the write-time prevention; this is the catch.
+    "slot-lean-overlap",
 }
 
 
@@ -200,6 +205,85 @@ def _check_slot_stat_overlap(md_text: str) -> list[dict]:
     return issues
 
 
+# Trade-lean verbs — the action words that open a closing trade
+# expression. Paired with a cashtag, they identify a slot's close lean.
+_LEAN_VERB_RE = re.compile(
+    r"\b(?:long|short|buy|sell|own|add|fade|trim|exit|scale\s+(?:into|back)|"
+    r"take\s+profits?\s+(?:in|on)|pair(?:ed)?\s+(?:with|against))\s+"
+    r"(?:a\s+|the\s+|half-sized\s+|small\s+)?\$([A-Za-z]{1,5})\b",
+    re.IGNORECASE,
+)
+
+
+def _extract_close_leans(slot_text: str) -> set[str]:
+    """Pull the set of tickers in a slot's CLOSING trade lean.
+
+    Only the LAST paragraph of the slot is scanned — that's where the
+    trade lean lives by the pulse's structure. Scanning the whole body
+    would false-positive on tickers discussed as evidence ('$NVDA's
+    $124B purchase commitment') rather than as the lean.
+    """
+    paragraphs = [p.strip() for p in slot_text.split("\n\n") if p.strip()]
+    if not paragraphs:
+        return set()
+    last_para = paragraphs[-1]
+    return {m.group(1).upper() for m in _LEAN_VERB_RE.finditer(last_para)}
+
+
+def _check_slot_lean_overlap(md_text: str) -> list[dict]:
+    """Flag tickers appearing in 2+ INSIGHTS slots' CLOSING trade leans.
+    2026-06-09 QC observed INSIGHTS #1 (AI capex supercycle) and #5
+    (semis positioning regime) both closing on `Long $MU` — a five-
+    theme pulse with three distinct trade expressions. The stat-overlap
+    check catches shared evidence; this catches shared CONCLUSIONS,
+    which is the redundancy a reader actually feels. Returns issue
+    dicts with kind='slot-lean-overlap' (soft — advisory for SCRUB)."""
+    insights_match = re.search(
+        r"##\s+(?:\d+\.\s+)?INSIGHTS.*?(?=^##\s|\Z)",
+        md_text, re.MULTILINE | re.DOTALL | re.IGNORECASE,
+    )
+    if not insights_match:
+        return []
+    insights_text = insights_match.group(0)
+    insights_offset = insights_match.start()
+
+    slot_pattern = re.compile(r"^###\s+(.+?)$", re.MULTILINE)
+    slot_starts = [(m.start(), m.group(1).strip())
+                   for m in slot_pattern.finditer(insights_text)]
+    if len(slot_starts) < 2:
+        return []
+    slot_starts.append((len(insights_text), "__END__"))
+
+    slot_leans: list[tuple[str, set[str], int]] = []
+    for i in range(len(slot_starts) - 1):
+        start_off, title = slot_starts[i]
+        end_off = slot_starts[i + 1][0]
+        slot_body = insights_text[start_off:end_off]
+        leans = _extract_close_leans(slot_body)
+        slot_line = md_text[:insights_offset + start_off].count("\n") + 1
+        slot_leans.append((title, leans, slot_line))
+
+    issues: list[dict] = []
+    from collections import defaultdict
+    lean_to_slots: dict[str, list[tuple[str, int]]] = defaultdict(list)
+    for title, leans, line in slot_leans:
+        for ticker in leans:
+            lean_to_slots[ticker].append((title, line))
+    for ticker, occurrences in lean_to_slots.items():
+        if len(occurrences) >= 2:
+            slot_titles = [f"{title[:40]}" for title, _ in occurrences]
+            issues.append({
+                "line": occurrences[0][1],
+                "kind": "slot-lean-overlap",
+                "snippet": (
+                    f"close lean '${ticker}' used in {len(occurrences)} "
+                    f"slots: {slot_titles} — same trade argued twice; "
+                    f"merge the slots or find a distinct expression for one"
+                )[:200],
+            })
+    return issues
+
+
 def classify_issues(issues: list[dict]) -> tuple[int, int]:
     """Split lint issues into (hard_count, soft_count). Hard issues
     require SCRUB; soft issues are advisory. See module docstring."""
@@ -242,6 +326,7 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
     # load-bearing stats ($60B levered ETF AUM, 9-up-days streak).
     # Stats appearing in 2+ slots reduce the perceived theme breadth.
     issues.extend(_check_slot_stat_overlap(scan_text))
+    issues.extend(_check_slot_lean_overlap(scan_text))
 
     # Coverage checks against the theme_map (passed in ctx).
     if ctx is not None:

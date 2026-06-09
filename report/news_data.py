@@ -44,6 +44,19 @@ _MAJOR_TICKERS = {
     "JPM", "GS", "MS", "BAC", "C", "WFC",
     # Select bellwethers (known to move the index or represent a sector)
     "NFLX", "TSM", "ASML", "BRK.B", "XOM", "WMT",
+    # High-IV options movers (added 2026-06-09 — end-to-end review found
+    # the 20-ticker whitelist too narrow for an options-trader audience.
+    # These names carry 20-30% earnings IV and large options volume; the
+    # room actively trades them. Without them, research mentions of e.g.
+    # CRWD leak into INSIGHTS while the structured earnings calendar
+    # stays silent on the date.)
+    "AMD", "AVGO", "QCOM", "MU", "SMCI", "ARM", "MRVL",     # semis beyond NVDA/TSM
+    "CRWD", "PANW", "PLTR", "SNOW", "NET", "DDOG",          # high-IV software/security
+    "CRM", "ADBE", "ORCL", "NOW", "INTU",                   # enterprise software
+    "COIN", "HOOD", "MSTR", "MARA",                         # crypto-adjacent equities
+    "LLY", "UNH",                                            # healthcare index movers
+    "COST", "HD", "TGT",                                     # consumer bellwethers
+    "DELL", "UBER", "SHOP", "ROKU",                          # other high-IV movers
 }
 
 
