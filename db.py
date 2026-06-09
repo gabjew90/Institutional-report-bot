@@ -1294,6 +1294,37 @@ def get_last_daily_pulse() -> dict | None:
     return dict(row) if row else None
 
 
+def get_recent_daily_pulse_titles(limit: int = 5) -> list[str]:
+    """Return the title (first-line H1) of the last `limit` scheduled
+    pulses, newest first. Used by the synthesizer to inject a "DO NOT
+    REPEAT" title-novelty block — without this, the model tends to
+    recycle catchphrases like 'AI cracks' across multiple consecutive
+    days (observed 06-04 / 06-05 / 06-08 all used 'AI cracks' as the
+    second clause of the title).
+
+    Empty list when no pulses found or extraction fails.
+    """
+    import re as _re
+    rows = get_connection().execute(
+        """SELECT report_markdown FROM daily_reports
+           WHERE report_type = 'daily'
+           ORDER BY created_at DESC LIMIT ?""",
+        (int(limit),),
+    ).fetchall()
+    titles: list[str] = []
+    for r in rows:
+        md = (r["report_markdown"] or "").lstrip()
+        # Strip frontmatter if present
+        if md.startswith("---"):
+            end = md.find("\n---", 3)
+            if end != -1:
+                md = md[end + 4:].lstrip()
+        m = _re.match(r"#\s+(.+)", md)
+        if m:
+            titles.append(m.group(1).strip())
+    return titles
+
+
 # --- Processing log ---
 
 def log_event(pdf_file_id: int | None, event_type: str, status: str, details: str | None = None) -> None:

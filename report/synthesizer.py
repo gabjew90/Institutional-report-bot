@@ -1532,6 +1532,15 @@ async def synthesize_daily_pulse(
     # additionally get the full diff-framing directive in DRAFT.
     prev_themes_list: list[str] = []
     prev_age_hours: int | None = None
+    # Recent pulse titles to AVOID recycling — observed 2026-06-04 /
+    # 06-05 / 06-08 all used "AI cracks" as the second clause. Title
+    # is the first thing a daily reader sees and repeats wear faster
+    # than body copy.
+    recent_titles: list[str] = []
+    try:
+        recent_titles = db.get_recent_daily_pulse_titles(limit=5)
+    except Exception:
+        recent_titles = []
     prev = db.get_last_daily_pulse()
     if prev and prev.get("created_at"):
         try:
@@ -1561,12 +1570,38 @@ async def synthesize_daily_pulse(
             "or the last one is too stale to compare against.)"
         )
     else:
+        # Title-novelty block — show the model what NOT to recycle as
+        # the title's catchphrase. Observed 2026-06-04 / 06-05 / 06-08
+        # all used "AI cracks" as the second title clause. Adding the
+        # last 5 titles to the prompt gives DRAFT the dataset for a
+        # novelty check without needing a separate post-hoc state file.
+        if recent_titles:
+            recent_titles_block = (
+                "\nRECENT PULSE TITLES TO AVOID RECYCLING (last 5, newest first):\n"
+                + "\n".join(f"  - {t!r}" for t in recent_titles)
+                + "\n\n**TITLE-NOVELTY RULE (binding):** today's pulse "
+                "title must NOT reuse any standalone catchphrase that "
+                "appears verbatim in 2 or more of those titles. "
+                "Specifically: walk the list above, identify any "
+                "2-to-4-word phrase (e.g., 'AI cracks', 'Hormuz "
+                "softens', 'Jobs hot') that recurs across 2+ entries, "
+                "and do NOT use that phrase in today's title. Pick a "
+                "fresh framing keyed off today's actual lead theme. "
+                "Observed pattern this rule prevents: 2026-06-04 "
+                "'Hormuz softens, AI cracks' → 2026-06-05 'Oil bid, AI "
+                "cracks' → 2026-06-08 'Jobs hot, AI cracks' — the "
+                "second clause recycled across three pulses, eroding "
+                "title freshness.\n"
+            )
+        else:
+            recent_titles_block = ""
         prev_context = (
             f"PREVIOUS PULSE SUMMARY (~{prev_age_hours}h ago, {prev['pdf_count']} reports):\n\n"
             f"YESTERDAY'S PULSE MARKDOWN (use this to detect day-over-day stance changes — not for verbatim citation):\n\n"
             + (prev.get('report_markdown') or '')[:4000]
             + "\n\n---\n\n"
-            f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM — these are the exact headlines the reader saw yesterday):\n"
+            + recent_titles_block
+            + f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM — these are the exact headlines the reader saw yesterday):\n"
             + "\n".join(f"  - {t}" for t in prev_themes_list)
             + "\n\nYour job today:\n"
             + "1. For each theme above, ask: has the research today materially advanced it? If no → SKIP. If yes → lead with 'Since yesterday: [what's new/changed]'.\n"
