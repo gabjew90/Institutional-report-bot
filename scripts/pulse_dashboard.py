@@ -289,6 +289,10 @@ def _wrap_sections(body_html: str) -> str:
         heading_text = re.sub(r"<.*?>", "", m.group(1)).lower()
         if "recap" in heading_text:
             cls = "recap"
+        elif "changed" in heading_text:
+            cls = "changed"      # WHAT CHANGED (format-overhaul Phase 1)
+        elif "board" in heading_text:
+            cls = "board"        # TRADE BOARD (format-overhaul Phase 1)
         elif "insights" in heading_text or "alpha" in heading_text:
             cls = "insights"
         elif "watch" in heading_text:
@@ -363,6 +367,12 @@ def render_pulse_fragment(md: str) -> str:
     )
     body_html = body_html.replace(
         '<h2 class="watch">', '<h2 class="watch" id="pulse-watch">'
+    )
+    body_html = body_html.replace(
+        '<h2 class="changed">', '<h2 class="changed" id="pulse-changed">'
+    )
+    body_html = body_html.replace(
+        '<h2 class="board">', '<h2 class="board" id="pulse-board">'
     )
 
     pdf_count = meta.get("pdf_count")

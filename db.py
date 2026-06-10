@@ -196,6 +196,39 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_ask_bot_answers_asker_channel_ts
             ON ask_bot_answers(asker_user_id, channel_id, answered_at DESC);
 
+        -- Format-overhaul Phase 1 state (2026-06-10). Two tables:
+        --
+        -- pulse_state: compact per-context-dump snapshot of the theme map
+        -- + high-conviction calls. The dump job inserts a candidate row on
+        -- every context dump; when the bridge posts a real daily pulse it
+        -- stamps the consumed candidate with the pulse date. The WHAT
+        -- CHANGED section is computed by diffing today's stamped state
+        -- against the previous stamped state.
+        CREATE TABLE IF NOT EXISTS pulse_state (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            dumped_at TEXT NOT NULL,
+            pulse_date TEXT,          -- NULL until a daily pulse consumes it
+            state_json TEXT NOT NULL
+        );
+        CREATE INDEX IF NOT EXISTS idx_pulse_state_dumped ON pulse_state(dumped_at DESC);
+        CREATE INDEX IF NOT EXISTS idx_pulse_state_pulse_date ON pulse_state(pulse_date);
+
+        -- pulse_leans: every trade lean the daily pulse ships, tracked
+        -- across days so the TRADE BOARD can show NEW vs LIVE (dN) and
+        -- age stale leans out. Leans are extracted deterministically from
+        -- the final pulse markdown's INSIGHTS closing paragraphs.
+        CREATE TABLE IF NOT EXISTS pulse_leans (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            instrument TEXT NOT NULL,        -- ticker without $
+            direction TEXT NOT NULL,         -- 'long' | 'short'
+            first_seen_date TEXT NOT NULL,   -- YYYY-MM-DD
+            last_seen_date TEXT NOT NULL,    -- YYYY-MM-DD (updated on re-appearance)
+            context_snippet TEXT,            -- the lean sentence, clipped
+            status TEXT NOT NULL DEFAULT 'live',  -- 'live' | 'aged_out'
+            UNIQUE(instrument, direction, first_seen_date)
+        );
+        CREATE INDEX IF NOT EXISTS idx_pulse_leans_status ON pulse_leans(status, last_seen_date DESC);
+
         -- Analyst trade log. One row per image attachment posted in the
         -- analyst alerts channel. Populated by analyst_log.watcher via
         -- Gemini vision. is_trade=0 rows are non-trade images (memes,
@@ -1610,6 +1643,119 @@ def get_recent_bot_answers_to_asker(
         "ORDER BY answered_at DESC, id DESC LIMIT ?",
         (int(asker_user_id), int(channel_id),
          f"-{int(max_age_days)} day", int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+# =============================================================================
+# Format-overhaul Phase 1: pulse_state + pulse_leans (WHAT CHANGED / TRADE BOARD)
+# =============================================================================
+
+
+def save_pulse_state_candidate(state_json: str, dumped_at: str) -> None:
+    """Insert a context-dump state snapshot. Keeps only the last 50
+    candidates (the dump job fires ~hourly; unstamped rows older than
+    the working set are noise)."""
+    conn = get_connection()
+    conn.execute(
+        "INSERT INTO pulse_state (dumped_at, state_json) VALUES (?, ?)",
+        (dumped_at, state_json),
+    )
+    conn.execute(
+        """DELETE FROM pulse_state WHERE pulse_date IS NULL AND id NOT IN (
+               SELECT id FROM pulse_state WHERE pulse_date IS NULL
+               ORDER BY dumped_at DESC LIMIT 50)"""
+    )
+    conn.commit()
+
+
+def stamp_pulse_state_for_date(pulse_date: str) -> dict | None:
+    """Mark the most recent UNSTAMPED candidate as consumed by the daily
+    pulse for `pulse_date`, and return it. Idempotent: if a row is
+    already stamped for this date (bridge retry after partial delivery),
+    return that row without stamping another."""
+    conn = get_connection()
+    existing = conn.execute(
+        "SELECT id, dumped_at, state_json FROM pulse_state "
+        "WHERE pulse_date = ? ORDER BY id DESC LIMIT 1",
+        (pulse_date,),
+    ).fetchone()
+    if existing:
+        return dict(existing)
+    row = conn.execute(
+        "SELECT id, dumped_at, state_json FROM pulse_state "
+        "WHERE pulse_date IS NULL ORDER BY dumped_at DESC LIMIT 1"
+    ).fetchone()
+    if not row:
+        return None
+    conn.execute(
+        "UPDATE pulse_state SET pulse_date = ? WHERE id = ?",
+        (pulse_date, row["id"]),
+    )
+    conn.commit()
+    return dict(row)
+
+
+def get_prev_stamped_pulse_state(before_date: str) -> dict | None:
+    """The previous daily pulse's stamped state — the WHAT CHANGED
+    diff baseline."""
+    row = get_connection().execute(
+        "SELECT id, dumped_at, pulse_date, state_json FROM pulse_state "
+        "WHERE pulse_date IS NOT NULL AND pulse_date < ? "
+        "ORDER BY pulse_date DESC, id DESC LIMIT 1",
+        (before_date,),
+    ).fetchone()
+    return dict(row) if row else None
+
+
+def upsert_pulse_leans(today: str, leans: list[dict]) -> None:
+    """Record today's extracted leans. A lean matching a LIVE row
+    (same instrument+direction) refreshes last_seen_date; otherwise a
+    new row is inserted with first_seen = today. Idempotent for bridge
+    retries on the same day."""
+    conn = get_connection()
+    for lean in leans:
+        inst = (lean.get("instrument") or "").upper().strip()
+        direction = (lean.get("direction") or "").lower().strip()
+        if not inst or direction not in ("long", "short"):
+            continue
+        live = conn.execute(
+            "SELECT id FROM pulse_leans WHERE instrument = ? AND "
+            "direction = ? AND status = 'live' ORDER BY id DESC LIMIT 1",
+            (inst, direction),
+        ).fetchone()
+        if live:
+            conn.execute(
+                "UPDATE pulse_leans SET last_seen_date = ?, "
+                "context_snippet = COALESCE(?, context_snippet) WHERE id = ?",
+                (today, (lean.get("context") or None), live["id"]),
+            )
+        else:
+            conn.execute(
+                "INSERT OR IGNORE INTO pulse_leans "
+                "(instrument, direction, first_seen_date, last_seen_date, "
+                " context_snippet, status) VALUES (?, ?, ?, ?, ?, 'live')",
+                (inst, direction, today, today,
+                 (lean.get("context") or "")[:160]),
+            )
+    conn.commit()
+
+
+def get_board_leans(today: str, max_age_days: int = 5) -> list[dict]:
+    """Live leans for the TRADE BOARD, newest-first. Ages out leans not
+    re-affirmed within max_age_days as a side effect (keeps the board
+    honest without a separate cron)."""
+    conn = get_connection()
+    conn.execute(
+        "UPDATE pulse_leans SET status = 'aged_out' "
+        "WHERE status = 'live' AND last_seen_date < date(?, ?)",
+        (today, f"-{int(max_age_days)} day"),
+    )
+    conn.commit()
+    rows = conn.execute(
+        "SELECT instrument, direction, first_seen_date, last_seen_date, "
+        "context_snippet FROM pulse_leans WHERE status = 'live' "
+        "ORDER BY first_seen_date DESC, instrument",
     ).fetchall()
     return [dict(r) for r in rows]
 

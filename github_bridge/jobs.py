@@ -153,6 +153,19 @@ def dump_context_job() -> None:
         ctx["window_cutoff"] = cutoff
         ctx["window_label"] = window_label
 
+        # Format-overhaul Phase 1: persist a compact state snapshot
+        # (top themes + high-conviction calls) for the WHAT CHANGED
+        # diff. The bridge stamps the consumed candidate at daily-pulse
+        # post time and diffs it against the previous pulse's stamp.
+        try:
+            from report.pulse_sections import extract_state_from_ctx
+            db.save_pulse_state_candidate(
+                json.dumps(extract_state_from_ctx(ctx)),
+                ctx["dumped_at_utc"],
+            )
+        except Exception as e:
+            log.warning(f"Bridge: pulse_state snapshot failed (non-fatal): {e}")
+
         body = json.dumps(ctx, indent=1)
         msg = f"bridge: dump pulse-context ({ctx['pdf_count']} PDFs, {window_label})"
         result = gh.put_file(CONTEXT_PATH, body, msg)
@@ -462,6 +475,63 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         }
         if parsed_adj is not None:
             raw_json_payload["adjudication"] = parsed_adj
+
+        # === Format-overhaul Phase 1: inject WHAT CHANGED + TRADE BOARD ===
+        # Both sections are assembled deterministically here (the LLM never
+        # touches them) and injected into the markdown BEFORE embeds are
+        # formatted and BEFORE the archive write, so Discord, the archive,
+        # and the web fragment all carry identical content. Test fires
+        # (target_channels set) skip both injection and state mutation so
+        # test output stays bit-identical to the routine's.
+        _is_test_fire = bool((meta.get("target_channels") or "").strip())
+        if not _is_test_fire:
+            try:
+                from report.pulse_sections import (
+                    compute_what_changed, render_what_changed,
+                    extract_leans_from_markdown, render_trade_board,
+                    inject_sections, replace_body_after_frontmatter,
+                )
+                # WHAT CHANGED — diff today's consumed state vs the
+                # previous daily pulse's state.
+                today_stamp = db.stamp_pulse_state_for_date(today)
+                prev_stamp = db.get_prev_stamped_pulse_state(today)
+                wc_md = ""
+                if today_stamp and prev_stamp:
+                    bullets = compute_what_changed(
+                        json.loads(prev_stamp["state_json"]),
+                        json.loads(today_stamp["state_json"]),
+                    )
+                    wc_md = render_what_changed(bullets)
+                elif today_stamp:
+                    log.info(
+                        "Bridge: WHAT CHANGED skipped — baseline day "
+                        "(no prior stamped pulse_state)"
+                    )
+                # TRADE BOARD — extract today's leans, merge into the
+                # tracked set, render NEW + LIVE.
+                leans = extract_leans_from_markdown(markdown)
+                db.upsert_pulse_leans(today, leans)
+                board_rows = db.get_board_leans(today)
+                board_md = render_trade_board(board_rows, today)
+
+                injected = inject_sections(markdown, wc_md, board_md)
+                if injected != markdown:
+                    markdown = injected
+                    raw_markdown = replace_body_after_frontmatter(
+                        raw_markdown, markdown
+                    )
+                    log.info(
+                        f"Bridge: injected sections — what_changed="
+                        f"{bool(wc_md)}, board_rows={len(board_rows)}, "
+                        f"leans_today={len(leans)}"
+                    )
+            except Exception as e:
+                # Injection is enhancement, not gating — a failure ships
+                # the un-injected pulse rather than blocking delivery.
+                log.error(
+                    f"Bridge: section injection failed (shipping pulse "
+                    f"without new sections): {e}", exc_info=True,
+                )
 
         report = DailyReport(
             report_date=today,
