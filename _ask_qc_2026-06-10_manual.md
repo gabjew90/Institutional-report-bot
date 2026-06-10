@@ -100,6 +100,78 @@ strikes (themselves ungrounded — no ORCL price lookup). SV had to re-ask
 
 ---
 
+## Deep review addendum — GEO answers, levels provenance, fact-check (added same day)
+
+### GEO fact-check: the "ungrounded" numbers all verify
+
+Independent verification (web search, 2026-06-10) of the 18:31 GEO answer that
+shipped with no sources footer and no tool call:
+
+| claim | verdict | source |
+|---|---|---|
+| Q1 reported early May (May 6) | ✅ | Motley Fool transcript 2026-05-06 |
+| EPS $0.29 vs ~$0.19 expected | ✅ | Investing.com (some sources say $0.20 est) |
+| Adjusted EBITDA **+32% YoY** | ✅ exact ($131.4M) | Investing.com Q1 slides |
+| Raised FY2026 guidance | ✅ | IndexBox / Q1 call |
+| 7-day winning streak | ≈✅ | 5-day streak as of Jun 5 + continued grind → ~7 by Jun 9-10 |
+| holding above $27 | ✅ | 52-wk high $27.21 print; room quoting 27.4-27.5 live |
+| "volume is elevated, suggesting institutional accumulation" | ❌ unverifiable | no volume data in prompt, tools, or any search snippet — invented color |
+
+19:10 answer also verifies: next earnings **Aug 5, 2026** ✓ (MarketBeat),
+Q2 analyst consensus **$0.29** ✓ (company guide $0.28). The 16:25 ORCL answer
+verifies too: OCI **+84% YoY** in Q3 FY26 (quarter ended Feb 28) ✓ exact,
+**$50B** FY26 capex guidance ✓, heavy debt (~$43B raised in FY26, credit risk
+at all-time high) ≈✓.
+
+**Revised diagnosis:** these answers are NOT hallucinated — they're almost
+certainly *silently grounded*. Gemini ran searches but returned no
+`grounding_chunks`, so `_build_sources_footer` rendered nothing and the log
+shows an answer indistinguishable from fabrication. The hallucination risk is
+real but the actual gap is **observability**: QC (human or automated) cannot
+tell searched-but-uncited from never-searched. Log
+`grounding_metadata.web_search_queries` per interaction (e.g. `🔍 2 searches,
+0 citations`) and this ambiguity disappears.
+
+### "How does it know what levels are important?" — it doesn't. It mirrors the room.
+
+There is no levels feed anywhere in the /ask stack (no pulse injection, no
+research context; `lookup_market_price` returns spot only). Traced every
+specific level in today's answers to its source:
+
+- **"If ES holds 7293"** (16:23 VIX answer) — BK in the visible chat window:
+  SV asked "what level", BK replied "**7293**". The bot restated a room
+  member's level as its own analysis. Same answer's "CTA selling pressure"
+  framing: BK again — "CTA are sellers no matter what right now" (plus a GS
+  CTA-flow screenshot circulating in chat).
+- **"$27 support" / "breaking out of a consolidation zone"** (18:31 GEO) —
+  the asker's OWN chat lines: "Daddy's 27.50 is on the money", "I said 27.70
+  then fall to 27.5 for close". The bot fed Yeezy his own level back as
+  independent technical confirmation.
+- **"breaks $115, shorts get squeezed"** ($NOW, 16:26) — no source anywhere;
+  invented round-number level.
+
+This is a distinct failure mode worth naming: **chat-context laundering** —
+the recent-chat block is injected "for context only," but the model recycles
+the room's numbers as authoritative TA, which reads as independent
+confirmation to the very people who said it. An echo chamber with extra
+steps. Mitigation: system-prompt rule — when a level/figure comes from the
+chat window, attribute it ("the 7293 level BK flagged") instead of asserting
+it.
+
+### New pipeline bug: the QC grader reads the wrong forensics block
+
+`ask_qc/parser.py` `_DETAILS_RE.search()` takes the **first** `<details>`
+block. Published log entries that went through voice-lint have TWO blocks —
+`🔧 Raw model output` first, `📋 Full prompt` second — so `prompt_block` ends
+up holding the raw draft answer, not the prompt. **The nightly grader is
+doing fabrication/status_handling forensics without the prompt, tool
+statuses, or chat context for most interactions.** Symptom already visible:
+the 06-09 report is full of "No tool payload was provided" N/A rationales on
+interactions that DID have tool calls. Fix: select the block whose summary
+contains "Full prompt"; expose raw-output, Tools-called table, and Sources
+footer as separate parsed fields (the table and footer currently leak into
+`answer`).
+
 ## Recommended fixes, in priority order
 
 1. **Reply-chain count follow-ups** — extend `_is_slur_count_question` to
@@ -110,8 +182,13 @@ strikes (themselves ungrounded — no ORCL price lookup). SV had to re-ask
    per-user counts into the short-circuit or hard-decline. Today's CLEAN
    decline (#1) shows Gemini *can* do this right, but #2 shows it's a coin
    flip — make it deterministic.
-3. **Scrubber range exemption** — one-line regex fix at `bot.py:3240`.
-4. **Citation consistency** — research-style answers with hard numbers but no
-   tool/source (e.g. #10, #15) should either trigger search grounding or
-   hedge. Worth a system-prompt nudge: "specific %/$ claims require a source
-   or an 'around' hedge."
+3. **QC parser reads wrong details block** — `ask_qc/parser.py` must pick the
+   "Full prompt" block, not the first one; the nightly grader is currently
+   grading without prompt forensics (see addendum).
+4. **Scrubber range exemption** — one-line regex fix at `bot.py:3240`.
+5. **Grounding observability** — log `web_search_queries` count per
+   interaction so silent-search answers (#10, #15 — both verified correct
+   but uncited) are distinguishable from prior-knowledge answers.
+6. **Chat-level attribution rule** — when a level comes from the chat window
+   (ES 7293 ← BK; GEO $27 ← the asker himself), attribute it instead of
+   asserting it as independent analysis (see "chat-context laundering").
