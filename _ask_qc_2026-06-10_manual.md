@@ -113,12 +113,15 @@ shipped with no sources footer and no tool call:
 | EPS $0.29 vs ~$0.19 expected | ✅ | Investing.com (some sources say $0.20 est) |
 | Adjusted EBITDA **+32% YoY** | ✅ exact ($131.4M) | Investing.com Q1 slides |
 | Raised FY2026 guidance | ✅ | IndexBox / Q1 call |
-| 7-day winning streak | ≈✅ | 5-day streak as of Jun 5 + continued grind → ~7 by Jun 9-10 |
-| holding above $27 | ✅ | 52-wk high $27.21 print; room quoting 27.4-27.5 live |
-| "volume is elevated, suggesting institutional accumulation" | ❌ unverifiable | no volume data in prompt, tools, or any search snippet — invented color |
+| 7-day winning streak | ≈✅ | 5-day streak as of Jun 5 + continued grind; +12.9% over 5 sessions, +4.1% on Jun 10 itself |
+| holding above $27 | ✅ | $28.14 at 20:00 UTC Jun 10, fresh 52-wk high $28.50 ([Bigdata.com](https://bigdata.com) tearsheet) |
+| "volume is elevated" | ✅ | Jun 10 volume 2.60M vs 2.09M average — ~25% elevated. "Institutional accumulation" is interpretation, but the volume fact is right |
 
-19:10 answer also verifies: next earnings **Aug 5, 2026** ✓ (MarketBeat),
-Q2 analyst consensus **$0.29** ✓ (company guide $0.28). The 16:25 ORCL answer
+19:10 answer also verifies against structured data ([Bigdata.com](https://bigdata.com)
+tearsheet): Q1 reported **2026-05-06**, EPS actual **$0.29** vs est **$0.19**
+(+52.6% surprise) — to the decimal — and the Q2 earnings call is scheduled
+**2026-08-05** exactly as stated. Q2 analyst consensus **$0.29** ✓
+(company guide $0.28, MarketBeat/Benzinga). The 16:25 ORCL answer
 verifies too: OCI **+84% YoY** in Q3 FY26 (quarter ended Feb 28) ✓ exact,
 **$50B** FY26 capex guidance ✓, heavy debt (~$43B raised in FY26, credit risk
 at all-time high) ≈✓.
