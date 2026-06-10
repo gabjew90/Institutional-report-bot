@@ -1030,6 +1030,69 @@ def _detect_ai_capex_power_demand_pairing(
     }
 
 
+def _format_high_conviction_calls(analyses: list[PdfAnalysis]) -> str:
+    """Render the corpus's HIGH-CONVICTION single-name calls as a
+    dedicated theme-coverage section.
+
+    Why (2026-06-10 fidelity audit): the 06-09 corpus carried Goldman
+    raising its MU price target $400 → $900 (high-conviction, the
+    strongest possible evidence for the pulse's own Long-$MU lean) and
+    a high-conviction BABA Buy at PT $186 — neither surfaced anywhere
+    in the pulse. Single-name high-conviction calls lose the bank-count
+    contest by construction (one bank, one name) so theme ranking can
+    never surface them. This section gives them their own surface, the
+    same pattern that fixed underweighted multi-bank themes.
+
+    Filters to US-tradable tickers (1-5 uppercase letters — drops
+    Japan numerics like 6981 and suffixed Europeans like GIVN.S /
+    TPRO.MI, matching the Robinhood test used everywhere else).
+    """
+    import re as _re
+    us_ticker = _re.compile(r"^[A-Z]{1,5}$")
+    calls: list[str] = []
+    for a in analyses:
+        src = a.source or "?"
+        for mm in (a.market_movers or []):
+            if (mm.conviction or "").lower() != "high":
+                continue
+            ticker = (mm.ticker or "").strip().upper()
+            if not us_ticker.match(ticker):
+                continue
+            pt = (mm.price_target or "").strip()
+            pt_str = f" PT {pt}" if pt and pt.upper() not in ("N/A", "NA", "") else ""
+            rating = (mm.rating or "").strip()
+            rating_str = f" {rating}" if rating and rating.upper() not in ("N/A",) else ""
+            calls.append(
+                f"  - {src}: ${ticker} {mm.action}{rating_str}{pt_str} — "
+                f"{(mm.rationale or '')[:140]}"
+            )
+        for ti in (a.trade_ideas or []):
+            if (ti.conviction or "").lower() != "high":
+                continue
+            horizon = f" [{ti.time_horizon}]" if ti.time_horizon else ""
+            calls.append(
+                f"  - {src}{horizon}: {(ti.description or '')[:140]}"
+            )
+    if not calls:
+        return ""
+    header = (
+        "\nHIGH-CONVICTION SINGLE-NAME CALLS — explicit high-conviction "
+        "calls on US-tradable names extracted from individual reports. "
+        "These lose the bank-count contest by construction (one bank, "
+        "one name) so theme ranking can never surface them — that's why "
+        "they get this dedicated section. Binding treatment: when one of "
+        "these names is ALREADY the trade lean of an INSIGHTS slot, you "
+        "MUST cite the call as evidence in that slot (the 2026-06-09 "
+        "pulse closed two slots on Long $MU while Goldman's same-day "
+        "$400→$900 MU price-target raise sat unused in the corpus — the "
+        "lean was right and the best evidence for it went uncited). For "
+        "the rest, surface at least the strongest one as a WATCH bullet "
+        "or threaded into the most relevant slot. Don't dump the whole "
+        "list — pick what a trader would actually act on:"
+    )
+    return header + "\n" + "\n".join(calls[:12])
+
+
 def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
     """Render theme counts as a forcing-function block for the DRAFT prompt.
 
@@ -1545,7 +1608,10 @@ def build_pulse_context(
         discovery_audit=discovery_audit,
         theme_normalization=theme_normalization,
     )
-    theme_coverage_block = _format_theme_coverage(theme_map)
+    theme_coverage_block = (
+        _format_theme_coverage(theme_map)
+        + _format_high_conviction_calls(analyses)
+    )
 
     # Each pulse is fully standalone now. We no longer compute prev-pulse
     # diff context — the corresponding ctx fields (prev_pulse_block,
@@ -1789,7 +1855,10 @@ async def synthesize_daily_pulse(
     # so DRAFT prompt can anchor INSIGHTS ordering on actual coverage,
     # not Gemini's gestalt of "what feels dominant."
     theme_map = _classify_themes(analyses)
-    theme_coverage_block = _format_theme_coverage(theme_map)
+    theme_coverage_block = (
+        _format_theme_coverage(theme_map)
+        + _format_high_conviction_calls(analyses)
+    )
 
     draft_prompt = DRAFT_USER.format(
         pdf_count=len(analyses),
