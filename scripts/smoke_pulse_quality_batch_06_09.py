@@ -397,14 +397,17 @@ Long $TLT into the print, taking it off if cool.
 # =====================================================================
 
 def test_treasury_yields_fetch_and_scaling():
+    """Yahoo's v8 chart endpoint returns the ACTUAL yield (4.44 = 4.44%)
+    — NOT the old CBOE yield×10 convention. Verified live on prod
+    2026-06-09: an initial /10 scaling produced 10Y = 0.453%. This test
+    pins the no-scaling behavior + the bps math + the sanity bound."""
     from report import market_data
 
     def fake_yahoo(symbol):
-        # Yahoo yield indices quote yield*10: ^TNX 44.4 = 4.44%
         return {
-            "^FVX": {"last_price": 41.2, "prev_close": 41.0},
-            "^TNX": {"last_price": 44.4, "prev_close": 44.1},
-            "^TYX": {"last_price": 49.8, "prev_close": 50.1},
+            "^FVX": {"last_price": 4.12, "prev_close": 4.10},
+            "^TNX": {"last_price": 4.44, "prev_close": 4.41},
+            "^TYX": {"last_price": 4.98, "prev_close": 5.01},
         }.get(symbol)
 
     with patch("report.market_data._fetch_yahoo_extended_hours",
@@ -414,10 +417,37 @@ def test_treasury_yields_fetch_and_scaling():
     assert yields["10Y"]["yield_pct"] == 4.44, yields
     assert yields["5Y"]["yield_pct"] == 4.12, yields
     assert yields["30Y"]["yield_pct"] == 4.98, yields
-    # change_bps: (44.4 - 44.1) * 10 = +3.0 bps
+    # change_bps: (4.44 - 4.41) * 100 = +3.0 bps
     assert abs(yields["10Y"]["change_bps"] - 3.0) < 0.01, yields
     assert abs(yields["30Y"]["change_bps"] - (-3.0)) < 0.01, yields
-    _ok("treasury yields: /10 scaling + bps change computed correctly")
+    _ok("treasury yields: direct yield (no scaling) + bps change correct")
+
+
+def test_treasury_yields_sanity_bound_drops_wrong_scale():
+    """If Yahoo ever reverts ^TNX to the CBOE ×10 convention (44.4
+    instead of 4.44), the sanity bound must DROP the tenor rather than
+    publish a wrong-scale number into the pulse."""
+    from report import market_data
+
+    def fake_yahoo(symbol):
+        return {
+            "^FVX": {"last_price": 4.12, "prev_close": 4.10},
+            "^TNX": {"last_price": 44.4, "prev_close": 44.1},  # ×10 anomaly
+            "^TYX": {"last_price": 4.98, "prev_close": 5.01},
+        }.get(symbol)
+
+    with patch("report.market_data._fetch_yahoo_extended_hours",
+               side_effect=fake_yahoo):
+        yields = market_data._fetch_treasury_yields()
+
+    assert "10Y" not in yields, (
+        f"a 44.4% '10Y yield' must be dropped by the sanity bound, "
+        f"got: {yields}"
+    )
+    assert "5Y" in yields and "30Y" in yields, (
+        "in-range tenors must survive when one tenor is anomalous"
+    )
+    _ok("sanity bound: wrong-scale tenor dropped, in-range tenors kept")
 
 
 def test_market_snapshot_renders_yields_block():
@@ -425,9 +455,9 @@ def test_market_snapshot_renders_yields_block():
 
     def fake_yahoo(symbol):
         return {
-            "^FVX": {"last_price": 41.2, "prev_close": 41.0},
-            "^TNX": {"last_price": 44.4, "prev_close": 44.1},
-            "^TYX": {"last_price": 49.8, "prev_close": 50.1},
+            "^FVX": {"last_price": 4.12, "prev_close": 4.10},
+            "^TNX": {"last_price": 4.44, "prev_close": 4.41},
+            "^TYX": {"last_price": 4.98, "prev_close": 5.01},
         }.get(symbol)
 
     with patch("report.market_data._fetch_yahoo_extended_hours",
@@ -541,6 +571,7 @@ if __name__ == "__main__":
     test_lint_lean_extractor_only_scans_last_paragraph()
     print("\n--- C: treasury yields ---")
     test_treasury_yields_fetch_and_scaling()
+    test_treasury_yields_sanity_bound_drops_wrong_scale()
     test_market_snapshot_renders_yields_block()
     test_yields_failure_degrades_gracefully()
     print("\n--- D: earnings whitelist ---")

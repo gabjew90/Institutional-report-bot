@@ -483,9 +483,13 @@ def _session_label(now_et: datetime) -> tuple[str, str]:
     return ("AFTER-HOURS", AFTER_HOURS_NOTE)
 
 
-# Yahoo yield-index symbols. Yahoo quotes these as yield × 10
-# (e.g., ^TNX = 44.4 means the 10Y yields 4.44%). _fetch_treasury_yields
-# divides by 10 before returning. 2Y has no reliable Yahoo index symbol —
+# Yahoo yield-index symbols. NOTE: although the old CBOE convention
+# quoted these indices at yield × 10, Yahoo's v8 chart endpoint returns
+# the ACTUAL yield directly (^TNX = 4.53 means the 10Y yields 4.53%).
+# Verified live on prod 2026-06-09: raw values 4.25 / 4.53 / 5.01
+# matched the pulse-narrated levels exactly ("30Y briefly breached 5%").
+# An initial /10 scaling based on the CBOE convention produced 0.453%
+# — don't reintroduce it. 2Y has no reliable Yahoo index symbol —
 # omitted rather than proxied.
 _YIELD_SYMBOLS = {
     "^FVX": "5Y",
@@ -518,13 +522,24 @@ def _fetch_treasury_yields() -> dict[str, dict]:
             continue
         if not yh or yh.get("last_price") is None:
             continue
-        # Yahoo yield indices quote yield × 10.
-        yield_pct = round(float(yh["last_price"]) / 10.0, 3)
+        # Yahoo's v8 chart endpoint returns the actual yield (4.53 =
+        # 4.53%) — no scaling. See _YIELD_SYMBOLS comment.
+        yield_pct = round(float(yh["last_price"]), 3)
         change_bps = None
         prev = yh.get("prev_close")
         if prev:
-            # (Δ index points) / 10 = Δ percentage points; × 100 = bps
-            change_bps = round((float(yh["last_price"]) - float(prev)) * 10.0, 1)
+            # Δ percentage points × 100 = bps (4.53 → 4.55 = +2 bps)
+            change_bps = round((float(yh["last_price"]) - float(prev)) * 100.0, 1)
+        # Sanity bound: US Treasury yields live in (0, 20). A value
+        # outside that band means the quoting convention changed (e.g.,
+        # Yahoo reverting to CBOE ×10) — drop rather than publish a
+        # wrong-scale number into the pulse.
+        if not (0.0 < yield_pct < 20.0):
+            log.warning(
+                f"treasury yield {tenor} out of sane range "
+                f"({yield_pct}) — dropping; check quoting convention"
+            )
+            continue
         out[tenor] = {"yield_pct": yield_pct, "change_bps": change_bps}
     return out
 
