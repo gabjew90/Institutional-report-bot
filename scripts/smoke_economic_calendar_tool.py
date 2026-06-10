@@ -303,13 +303,17 @@ def test_dispatch_branch_present():
 
 def test_system_prompt_tool_count_updated():
     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    assert "You have SEVEN tools" in _ASK_SYSTEM_INSTRUCTION, (
-        "TOOLS preamble must say 'SEVEN tools' (was SIX before this "
-        "shipment)"
+    # Count bumped again 2026-06-10 when lookup_earnings_date shipped
+    # (SEVEN → EIGHT). This test guards that the preamble count moved
+    # FORWARD, not that it froze at seven.
+    assert "You have EIGHT tools" in _ASK_SYSTEM_INSTRUCTION, (
+        "TOOLS preamble must say 'EIGHT tools' (SIX → SEVEN when the "
+        "macro tool shipped, SEVEN → EIGHT when lookup_earnings_date "
+        "shipped)"
     )
-    # And ensure we removed the old SIX reference
     assert "You have SIX tools" not in _ASK_SYSTEM_INSTRUCTION
-    _ok("system prompt updated SIX → SEVEN tools")
+    assert "You have SEVEN tools" not in _ASK_SYSTEM_INSTRUCTION
+    _ok("system prompt tool count current (EIGHT)")
 
 
 def test_system_prompt_section_7_present():

@@ -199,6 +199,75 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
     return "\n".join(out)
 
 
+def fetch_earnings_date_for_symbol(symbol: str) -> dict | None:
+    """Earnings dates for ONE symbol via Finnhub's earnings calendar.
+
+    Added 2026-06-10 for the /ask `lookup_earnings_date` tool — the
+    pulse's earnings block is whitelist-filtered (noise control), so
+    /ask had NO source for "when does GEO report next" on non-whitelist
+    tickers and the model dodged the question with adjacent facts.
+    A user naming a specific ticker IS the filter; no whitelist here.
+
+    Queries a -30d…+120d window so both the NEXT upcoming report and
+    the LAST reported one come back. Returns:
+      {"symbol", "next": {date, hour, eps_estimate, revenue_estimate} | None,
+       "last": {date, hour, eps_actual, eps_estimate} | None}
+    or None on fetch failure (caller distinguishes failure from
+    no-data so the model can fall back to Google).
+    """
+    key = settings.finnhub_api_key
+    if not key or not symbol:
+        return None
+    sym = symbol.strip().upper()
+    today = datetime.utcnow().date()
+    start = today - timedelta(days=30)
+    end = today + timedelta(days=120)
+    url = (
+        f"https://finnhub.io/api/v1/calendar/earnings"
+        f"?from={start.isoformat()}&to={end.isoformat()}"
+        f"&symbol={urllib.parse.quote(sym)}"
+        f"&token={urllib.parse.quote(key)}"
+    )
+    data = _fetch_json(url)
+    if not data or not isinstance(data, dict):
+        return None
+    items = [e for e in (data.get("earningsCalendar") or [])
+             if (e.get("symbol") or "").upper() == sym]
+    items.sort(key=lambda e: e.get("date", ""))
+
+    today_iso = today.isoformat()
+    upcoming = [e for e in items
+                if (e.get("date") or "") >= today_iso
+                and e.get("epsActual") is None]
+    reported = [e for e in items
+                if (e.get("date") or "") < today_iso
+                or e.get("epsActual") is not None]
+
+    def _fmt_next(e: dict) -> dict:
+        hour = (e.get("hour") or "").lower()
+        return {
+            "date": e.get("date"),
+            "timing": {"bmo": "before market open",
+                       "amc": "after market close",
+                       "dmh": "during market hours"}.get(hour, "timing TBD"),
+            "eps_estimate": e.get("epsEstimate"),
+            "revenue_estimate": e.get("revenueEstimate"),
+        }
+
+    def _fmt_last(e: dict) -> dict:
+        return {
+            "date": e.get("date"),
+            "eps_actual": e.get("epsActual"),
+            "eps_estimate": e.get("epsEstimate"),
+        }
+
+    return {
+        "symbol": sym,
+        "next": _fmt_next(upcoming[0]) if upcoming else None,
+        "last": _fmt_last(reported[-1]) if reported else None,
+    }
+
+
 def fetch_economic_calendar_structured(
     query: str | None = None,
     days_window: int = 14,

@@ -103,7 +103,11 @@ For everything that ISN'T a live price quote — news, fundamentals, earnings co
 
 ## TOOLS
 
-You have SEVEN tools. **Tool priority for price/quote questions: ALWAYS try `lookup_market_price` FIRST. For options-chain stats (OI, vol per expiration, IV, put-call ratios): ALWAYS try `lookup_options_chain` FIRST. For macro print scheduled-time / consensus / actual / prior (CPI, NFP, PCE, GDP, retail sales, ISM, PPI, FOMC, Powell speech, ECB/BOJ/BOE rate decisions): ALWAYS try `lookup_economic_calendar` FIRST. Google Search is for everything else.** Pick the tool based on the question shape:
+You have EIGHT tools. **Tool priority for price/quote questions: ALWAYS try `lookup_market_price` FIRST. For options-chain stats (OI, vol per expiration, IV, put-call ratios): ALWAYS try `lookup_options_chain` FIRST. For macro print scheduled-time / consensus / actual / prior (CPI, NFP, PCE, GDP, retail sales, ISM, PPI, FOMC, Powell speech, ECB/BOJ/BOE rate decisions): ALWAYS try `lookup_economic_calendar` FIRST. For a specific ticker's earnings date ('when does X report'): ALWAYS try `lookup_earnings_date` FIRST. Google Search is for everything else.**
+
+**GOOGLE IS THE DEFAULT, NOT A LAST RESORT — binding.** If NO dedicated tool covers the question, OR a dedicated tool comes back `no_data` / `error` / `empty`, you go to Google Search and answer the ACTUAL question asked. Never answer a question you weren't asked because the data for the real one was inconvenient — observed 2026-06-10 19:10 UTC: asked when $GEO reports earnings, the model had no tool for it and answered with last quarter's results instead of the date. That's a dodge. The correct flow was: no tool → Google "GEO Group next earnings date" → state the date (flagged confirmed vs estimated). If Google genuinely can't surface it either, say "couldn't find a confirmed date" — a clean miss beats a substitute answer every time.
+
+Pick the tool based on the question shape:
 
 ### 1. Google Search (grounding)
 For external facts that AREN'T live price quotes: news, fundamentals, earnings commentary, sports scores, public records, analyst ratings, M&A activity, regulatory actions, anything you'd Google. Default for Type 1 factual questions that don't have a faster dedicated tool. Auto-cited via the wrapper's sources footer.
@@ -247,6 +251,25 @@ Canonical scheduled-time + consensus + previous + actual values for US Tier-1 ma
 
 **ZERO UNFORCED TIME-SERIES CLAIMS ON TOOL-RETURNED STATS — binding extension.** Both `lookup_market_price` and `lookup_options_chain` return SNAPSHOTS — one moment in time. They do NOT return history, deltas, multi-day trends, week-over-week change, or "highest in N days" rankings. If your answer states any of those time-comparison shapes — *"OI is up ~2% over the last 5 days," "IV trending higher this week," "volume highest since March," "P/C ratio elevated vs yesterday," "$AAPL up 8% in 3 sessions," "$NVDA at a new monthly high"* — and you cannot point to the specific historical numbers in YOUR CONTEXT THIS TURN (chat-context block, fetched URLs, your own prior /ask answer in this thread), do NOT make the claim. The tool returned today's snapshot, not yesterday's. You cannot derive "trending up 2% over 5 days" from a single number; that's a fabrication built on pattern-match. Observed 2026-06-07 02:30 UTC: model correctly returned SPY OI snapshot (88,046 calls / 97,078 puts / P/C 1.10) but then volunteered *"aggregate call open interest has been trending slightly higher (up ~2% over the last 5 days)"* — the "~2% over 5 days" had no source. Same fabrication family as the snapshot-stats rule above, just shifted from levels to deltas. If the asker explicitly asked for a trend and you don't have it, the answer is *"I only have the current snapshot — no historical log to derive a trend"* — full stop, no fake number to fill the gap.
 
+### 8. `lookup_earnings_date(symbol)`
+
+Next upcoming earnings date + last reported quarter for ONE ticker, from Finnhub's earnings calendar. Works for ANY US-listed symbol — unlike the pulse's earnings block (which whitelists MAG7 / big banks / bellwethers for broadcast noise control), this tool has NO whitelist. A user naming a ticker IS the filter.
+
+**When to call:**
+- *"When does GEO report?"* / *"NVDA earnings date?"* / *"when is SMCI's next quarter?"* → `lookup_earnings_date(symbol="GEO")` etc.
+- *"Did PLTR beat last quarter?"* / *"what's expected for AVGO?"* → same call; the response carries last-quarter actual vs estimate and next-quarter estimates.
+
+**When NOT to call:**
+- Earnings CONTENT — guidance commentary, call takeaways, why the stock moved post-print → Google Search.
+- Macro data prints → `lookup_economic_calendar`.
+- Broad *"what reports this week"* sweeps → Google Search (this tool is one symbol per call).
+
+**Response shape:** `{status, symbol, next: {date, timing, eps_estimate, revenue_estimate} | null, last: {date, eps_actual, eps_estimate} | null, as_of}`. `timing` is "before market open" / "after market close" / "during market hours" / "timing TBD".
+
+**Fallback is REQUIRED, not optional:** if `status` is `no_data` or `error`, or `next` is null (no confirmed date posted yet — common >6 weeks out), go straight to Google Search and answer the actual date question — state the date you find and flag whether it's company-confirmed or an estimate. Do NOT respond with last quarter's results when the asker wanted the next date (observed dodge, 2026-06-10 19:10 UTC, $GEO). If neither source has it, say "no confirmed date yet — typically reports early [month] based on past quarters."
+
+**NO SELF-GENERATED TECHNICAL ANALYSIS — binding.** You do NOT have a chart view. No candles, no trendlines, no moving averages, no volume profile — `lookup_market_price` returns a spot quote and `lookup_options_chain` returns one expiration's aggregates, and NOTHING you have access to shows you a chart. Therefore you may NEVER produce your own technical read: no support/resistance levels, no "breakout" / "breakdown" / "consolidation zone" / "flag" / "wedge" calls, no "holds above X" / "loses Y" trigger levels, no Fibonacci, no moving-average claims, no "the chart looks" anything. Observed 2026-06-10: *"$27 breakout of consolidation zone"* on $GEO (18:31), *"as long as ES holds 7293"* (16:23), *"$NOW breaks $115"* (16:26) — none of these levels came from any data source; they were invented to sound like a trader. That's fabrication with extra steps. What you MAY do: **relay a level that is explicitly attributed to a named source in your context this turn** — a chat member's call (*"kloh's watching 7300 on ES"*), a research note, a fetched URL, or a tool-returned number (day high/low, strike, prior close). The attribution must survive into your answer — if you can't name where the level came from, you can't state it. If someone asks for a pure chart read (*"where's support on GEO"*), the honest answer is: you don't have a chart view — offer what you DO have (spot quote, day range, options positioning, what members have called out) and let them pull levels from their own chart.
+
 ### Reading the tool response — `status` + freshness
 
 Every `lookup_*` and `search_*` response carries a top-level `status` field. **Read it before composing your answer.**
@@ -293,9 +316,10 @@ Your training data has a cutoff. The following topics ALWAYS require external da
 **Tool routing — pick the FIRST one that applies, don't fall through to Google when a faster tool exists:**
 
 - **Current PRICE / quote / day's move on a known ticker** (stock, ETF, index, crypto) → `lookup_market_price` FIRST. It's faster than Google, returns real after-hours / pre-market prints when the session is extended-hours, carries per-symbol `data_freshness` so you know whether the number is live or the cash close. Use this for *"what's TSLA at"*, *"how's GTLB doing afterhours"*, *"BTC right now"*, *"is SPY green"*, *"NVDA post-earnings print"*. Do NOT route price-only questions to Google — Google gives you cached/snippeted prices that lag and don't break out extended-hours moves.
-- **Anything ELSE about a ticker** — fundamentals, segment drivers, holders, analyst ratings, recent news, M&A, earnings dates, guidance commentary, product launches, lawsuits → **Google Search**.
+- **A specific ticker's earnings DATE** — "when does X report," "did X beat last quarter," next-quarter estimates → `lookup_earnings_date` FIRST. Falls back to Google per the tool's §8 fallback rule when the calendar has no row.
+- **Anything ELSE about a ticker** — fundamentals, segment drivers, holders, analyst ratings, recent news, M&A, guidance commentary, product launches, lawsuits → **Google Search**.
 - **Any crypto info beyond live price** — on-chain activity, protocol news, treasury holdings, regulatory moves → Google Search.
-- **Any macro question** — data prints (CPI, NFP, retail sales, ISM, PCE), Fed statements, rate path, central bank actions, dot plot → Google Search.
+- **Macro print numbers + schedule** — consensus / actual / prior / release time for CPI, NFP, retail sales, ISM, PCE, GDP, PPI, FOMC, Powell, ECB/BOJ/BOE → `lookup_economic_calendar` FIRST (§7 hard routing rule). Macro CONTEXT — Fed statements, rate path, dot plot, why a print moved markets, forecaster-specific reads → Google Search.
 - **Any news / current event** — sports scores, politics, deaths, releases, court rulings, FDA actions → Google Search.
 - **Any "right now" / "as of" question that ISN'T a price quote** → Google Search.
 - **Any specific number** — records, percentages, base rates, dollar figures, dates, attributed quotes → Google Search.
@@ -325,23 +349,23 @@ The last arrow IS the conclusion. Once typed, stop. **No essay headers, no openi
 **Worked example** (Quick read, "where's NVDA right now"):
 
 ```
-→ **$NVDA $878** as of 14:32 ET — up **+1.4%** on session, holding above **$870** breakout
+→ **$NVDA $878** as of 14:32 ET — up **+1.4%** on session, day range **$861–$881**
 
 → **Catalyst:** earnings **5/28 AMC**, consensus EPS **$0.61** / rev **$32.5B**
 
-→ Bias long while **$870** holds — flush below and the gap fills to **$845**
+→ Options flow leaning long into the print — day call volume running **1.8x** puts on the June expiry
 ```
 
 **Worked example** (Standard read, "thoughts on PLTR setup"):
 
 ```
-→ **$PLTR $24.10**, +**6%** week, broke **$23** flag on volume — consolidation done
+→ **$PLTR $24.10**, +**6%** on the week — move came on the Q1 print, not air
 
 → Q1 govt revenue **+45% YoY** ($335M of $634M total) — DoD AI contracts still expanding faster than commercial side
 
 → Bear watch: commercial growth deceleration to **+27% YoY** from **+40%** last Q — Karp downplayed but it's the real story
 
-→ Setup: long above **$23.40**, **$26** is the next leg if AIP roadshow lands. Stop **$22.50**
+→ Catalyst path: AIP bootcamp conversions showing up in the Q2 commercial guide — that's what decides whether the re-rate holds
 ```
 
 If the question genuinely cannot be expressed as discrete arrow claims (rare — almost everything Type 1 can), state that constraint in ONE arrow and stop. Don't fall back to paragraphs.
@@ -360,9 +384,9 @@ When stating a hard number, cite the source inline: "FY25 guide **$200-210B** (Q
 
 #### Single-name trade questions: lead with the business — at the SEGMENT level
 
-Revenue by segment (name the segment — "DC compute 88%, gaming 9%," not "the company is doing well"). Customer concentration if it's a real factor — name the customer ("3 hyperscalers = 53% of FY24 revenue"). Competitive pressure with the actual competitor named ("AMD MI300 ramping into inference workloads, taking ~5-7% share"). Then margins, market position, catalyst path. Positioning, IV, and chart levels come AFTER — they're frame, not substance.
+Revenue by segment (name the segment — "DC compute 88%, gaming 9%," not "the company is doing well"). Customer concentration if it's a real factor — name the customer ("3 hyperscalers = 53% of FY24 revenue"). Competitive pressure with the actual competitor named ("AMD MI300 ramping into inference workloads, taking ~5-7% share"). Then margins, market position, catalyst path. Positioning and IV come AFTER — they're frame, not substance. (Chart levels: only relayed with attribution, per the NO SELF-GENERATED TECHNICAL ANALYSIS rule — you don't have a chart view.)
 
-(Exception: pure chart questions like "where's SPY support" are TA-led from the start.)
+(Pure chart questions like "where's SPY support" do NOT get a TA answer — see the NO SELF-GENERATED TECHNICAL ANALYSIS rule. Say you don't have a chart view, give what you do have: spot + day range, options positioning, member-called levels with attribution.)
 
 #### Generic risks are not risks — name the mechanism
 
@@ -2414,6 +2438,131 @@ async def _execute_economic_calendar(args: dict) -> dict:
     }
 
 
+def _build_earnings_date_tool():
+    """FunctionDeclaration for `lookup_earnings_date`. Per-symbol
+    earnings dates from Finnhub's `/calendar/earnings` endpoint. The
+    pulse's earnings block is whitelist-filtered (MAG7 / big banks /
+    bellwethers — noise control for a broadcast), so /ask had NO data
+    source for "when does GEO report next" on a non-whitelist ticker
+    and the model dodged the actual question with adjacent facts
+    (observed 2026-06-10 19:10 UTC). A user naming a specific ticker
+    IS the filter — no whitelist on this tool.
+    """
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="lookup_earnings_date",
+                description=(
+                    "Next upcoming earnings date + last reported "
+                    "quarter for ONE stock ticker. Returns the next "
+                    "report date with timing (before open / after "
+                    "close) and EPS/revenue estimates if posted, plus "
+                    "the most recent reported quarter's EPS actual vs "
+                    "estimate. Works for ANY US-listed ticker — no "
+                    "whitelist.\n\n"
+                    "USE for: 'when does GEO report', 'NVDA earnings "
+                    "date', 'when is SMCI's next quarter', 'did PLTR "
+                    "beat last quarter', 'what's expected for AVGO "
+                    "earnings'.\n\n"
+                    "DO NOT use for: earnings CONTENT questions "
+                    "(guidance commentary, call takeaways, why the "
+                    "stock moved post-print — Google Search), macro "
+                    "data prints (lookup_economic_calendar), or "
+                    "broad 'what reports this week' sweeps (Google "
+                    "Search — this tool is one symbol at a time).\n\n"
+                    "Args:\n"
+                    "  symbol: ticker, e.g. 'GEO', 'NVDA', 'BRK.B'.\n\n"
+                    "Response shape: {status, symbol, next: {date, "
+                    "timing, eps_estimate, revenue_estimate} | null, "
+                    "last: {date, eps_actual, eps_estimate} | null, "
+                    "as_of}. `next` null = no confirmed upcoming date "
+                    "on the calendar yet (common >6 weeks out — fall "
+                    "back to Google Search for the company's announced "
+                    "or historically-typical reporting window, and say "
+                    "whether the date is confirmed or estimated)."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "symbol": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Stock ticker (e.g. 'GEO', 'NVDA'). "
+                                "One symbol per call."
+                            ),
+                        ),
+                    },
+                    required=["symbol"],
+                ),
+            )
+        ]
+    )
+
+
+async def _execute_earnings_date(args: dict) -> dict:
+    """Run the lookup_earnings_date tool call.
+
+    Distinguishes no-data (status='no_data' — ticker valid but no
+    calendar rows; model should fall back to Google Search and answer
+    the actual date question) from fetch failure (status='error' —
+    same fallback). Both payloads tell the model explicitly: Google is
+    the correct next step, and the answer must address the DATE the
+    asker asked for — not dodge into adjacent facts about the company.
+    """
+    from datetime import datetime
+    from report import news_data as _nd
+
+    symbol = (args.get("symbol") or "").strip().upper()
+    if not symbol:
+        return {
+            "status": "error",
+            "error": "No symbol provided — re-call with a ticker.",
+        }
+
+    try:
+        # to_thread: synchronous urllib I/O — keep it off the event loop.
+        result = await asyncio.to_thread(
+            _nd.fetch_earnings_date_for_symbol, symbol,
+        )
+    except Exception as e:
+        log.warning(f"lookup_earnings_date: fetcher raised: {e}")
+        result = None
+
+    if result is None:
+        return {
+            "status": "error",
+            "symbol": symbol,
+            "error": (
+                "Finnhub earnings-calendar fetch failed. FALL BACK TO "
+                "GOOGLE SEARCH now and answer the asker's actual "
+                "question (the report date) — do not substitute "
+                "adjacent facts about the company. Say whether the "
+                "date you find is company-confirmed or estimated."
+            ),
+        }
+
+    if not result.get("next") and not result.get("last"):
+        return {
+            "status": "no_data",
+            "symbol": symbol,
+            "error": (
+                f"No earnings-calendar rows for {symbol} in the "
+                f"-30d/+120d window (unconfirmed date, foreign "
+                f"listing, or unrecognized ticker). FALL BACK TO "
+                f"GOOGLE SEARCH now and answer the actual date "
+                f"question — flag whether the date is confirmed or "
+                f"an estimate. Do not dodge into adjacent facts."
+            ),
+        }
+
+    return {
+        "status": "ok",
+        **result,
+        "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+    }
+
+
 def _build_options_chain_tool():
     """FunctionDeclaration for `lookup_options_chain`. Returns aggregated
     options-chain stats (total call/put volume + OI, ATM IV, put-call
@@ -3789,6 +3938,7 @@ async def _answer_with_gemini(
                 _build_market_price_tool(),
                 _build_options_chain_tool(),
                 _build_economic_calendar_tool(),
+                _build_earnings_date_tool(),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -4010,6 +4160,7 @@ async def _answer_with_gemini(
                 "lookup_market_price": _execute_market_price,
                 "lookup_options_chain": _execute_options_chain,
                 "lookup_economic_calendar": _execute_economic_calendar,
+                "lookup_earnings_date": _execute_earnings_date,
             }
             tool_response_parts = []
             for fc in function_calls:
@@ -4125,6 +4276,7 @@ async def _answer_with_gemini(
                 _build_market_price_tool(),
                 _build_options_chain_tool(),
                 _build_economic_calendar_tool(),
+                _build_earnings_date_tool(),
                     ],
                     tool_config=types.ToolConfig(
                         include_server_side_tool_invocations=True,
