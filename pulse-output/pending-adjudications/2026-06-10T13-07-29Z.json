@@ -1,0 +1,307 @@
+{
+  "pulse_date": "2026-06-10",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai market dynamics",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 10,
+        "skeptical": 4,
+        "neutral": 18
+      },
+      "consensus_view": "Most banks still see the AI spending boom as the main engine lifting stocks and likely to keep going, but a vocal minority warns the trade is dangerously crowded and self-referential, leaving it fragile if AI demand stumbles.",
+      "facts_agreed": [
+        {
+          "claim": "AI spending and demand remain the dominant driver of equity markets and are seen as more durable than skeptics assume.",
+          "banks_for": [
+            "TS Lombard",
+            "UBS",
+            "Franklin Templeton",
+            "ANZ Research"
+          ],
+          "evidence_quotes": [
+            "AI capex can support risk appetite, earnings and parts of global trade for longer than sceptics expect.",
+            "underlying measures of AI demand remain firmer than the market reaction suggests",
+            "The AI theme continues to drive our outlook for global equity markets.",
+            "Our base case remains for this global technology cycle to extend through the rest of the year."
+          ]
+        },
+        {
+          "claim": "The next phase of AI spending is broadening beyond GPUs across the wider compute stack, including CPUs and edge hardware.",
+          "banks_for": [
+            "UBS",
+            "Citi"
+          ],
+          "evidence_quotes": [
+            "the next phase of AI spend is likely to be distributed more widely across the stack",
+            "In the age of AI agents the CPU is now the bottleneck to the GPU."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI trade is a durable, broadening cycle or a fragile, crowded one vulnerable to a violent unwind",
+          "banks_for": [
+            "TS Lombard",
+            "UBS"
+          ],
+          "for_evidence": "AI capex can support risk appetite, earnings and parts of global trade for longer than sceptics expect.",
+          "banks_against": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "against_evidence": "Momentum Winners are now more long crowded than at any point on record"
+        },
+        {
+          "claim": "Whether AI-linked tech leadership remains supportive or has structurally turned",
+          "banks_for": [
+            "BofA Global Research"
+          ],
+          "for_evidence": "Triple Momentum is in the top quintile",
+          "banks_against": [
+            "Bloomberg",
+            "The Market Ear"
+          ],
+          "against_evidence": "the positive feedback loop behind AI-linked growth winners can turn"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east geopolitical tensions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 13
+      },
+      "consensus_view": "Banks across roughly a dozen research desks flag Middle East conflict, the Israel-Iran-US escalation, and Strait of Hormuz supply risk as a live market driver mainly through oil and energy prices, but none has staked out a clear directional call on where it goes next.",
+      "facts_agreed": [
+        {
+          "claim": "Banks broadly treat Middle East geopolitical tension as a current macro risk centered on energy and oil supply disruption.",
+          "banks_for": [
+            "BofA Global Research",
+            "Citi",
+            "Goldman Sachs",
+            "HSBC",
+            "ING",
+            "JPMorgan",
+            "MUFG",
+            "Mizuho International Plc",
+            "Natixis",
+            "Nuveen",
+            "RBC",
+            "RBC Capital Markets",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Middle East geopolitical escalation",
+            "Energy price shock from Middle East conflict",
+            "Middle East conflict energy price spillover",
+            "Geopolitical volatility in oil markets",
+            "Middle East supply disruptions"
+          ]
+        },
+        {
+          "claim": "Several banks frame the flashpoint specifically as Israel-Iran and US-Iran military escalation, with some watching for de-escalation.",
+          "banks_for": [
+            "HSBC",
+            "ING",
+            "RBC",
+            "UBS",
+            "BofA Global Research",
+            "Citi"
+          ],
+          "evidence_quotes": [
+            "Israel-Iran military escalation",
+            "Iran-Israel conflict de-escalation",
+            "US-Iran military escalation",
+            "US-Iran geopolitical escalation",
+            "US-Iran-Israel de-escalation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait disruptions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 12
+      },
+      "consensus_view": "Banks across more than a dozen desks flag a Strait of Hormuz blockade and the resulting oil-flow disruption as a live geopolitical risk to energy markets, but none has yet staked a clear directional call on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Many banks reference a Strait of Hormuz blockade and oil-flow disruption as an active energy-supply risk this window.",
+          "banks_for": [
+            "ANZ Research",
+            "Citi",
+            "Franklin Templeton",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "MUFG",
+            "Natixis",
+            "Numera Analytics",
+            "RBC",
+            "SEB",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz energy shock",
+            "Strait of Hormuz blockade rhetoric",
+            "Hormuz blockade energy shock",
+            "Strait of Hormuz oil flow disruption",
+            "Strait of Hormuz supply disruption"
+          ]
+        },
+        {
+          "claim": "Banks also frame the Strait of Hormuz situation around its closure, reopening, and knock-on effects for global supply and monetary policy.",
+          "banks_for": [
+            "JPMorgan",
+            "Citi",
+            "TS Lombard",
+            "ING",
+            "RBC",
+            "Numera Analytics",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz closure",
+            "Strait of Hormuz closure impact on global supply",
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz crisis impact on monetary policy",
+            "Strait of Hormuz energy export security",
+            "Strait of Hormuz military confrontation",
+            "Strait of Hormuz vessel flow"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "boj policy pivot",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Banks expect Japan's central bank to raise interest rates at its June meeting, with Goldman and HSBC both calling a 25 basis point (a quarter of a percent) hike and the rest of the desks treating the move as a live near-term catalyst.",
+      "facts_agreed": [
+        {
+          "claim": "Both banks staking a view expect the Bank of Japan to raise rates in June.",
+          "banks_for": [
+            "Goldman Sachs",
+            "HSBC"
+          ],
+          "evidence_quotes": [
+            "we changed our expectation from a July rate hike to a June rate hike",
+            "We expect the BoJ to hike by 25bp at its 16 June meeting"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "data center trends",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Banks across four desks flag data center buildout as a live theme driving compute, power, and capital spending, but none has staked a directional bet on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the data center buildout as an ongoing growth theme, citing strong demand, an expanding pipeline, and large committed spending.",
+          "banks_for": [
+            "Bank of America",
+            "Barclays",
+            "Global X ETFs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "data center demand exceeding supply",
+            "Data center buildout pace",
+            "Data center pipeline growth in Europe",
+            "Data Centers research theme",
+            "Data center water stress"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "tech sector rotation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four trading desks flag money moving out of large-cap tech this window through selloffs, de-risking and dispersion, but none has staked a clear directional call on where tech goes next.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks flag a rotation out of large-cap tech this window through selling, de-risking, and widening performance gaps within the sector.",
+          "banks_for": [
+            "Citi",
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Tech sector dispersion",
+            "Tech sector de-risking",
+            "large-cap tech selloff",
+            "Tech sector rotational outflows"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran nuclear deal talks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four research desks flag US-Iran nuclear negotiations as a live macro watch item, but none has staked out a directional view on whether a deal happens or what it means for markets.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference US-Iran nuclear deal negotiations as an ongoing topic worth tracking, with one tying a potential deal to precious metals.",
+          "banks_for": [
+            "Franklin Templeton",
+            "JPMorgan",
+            "Nuveen",
+            "Raymond James"
+          ],
+          "evidence_quotes": [
+            "US/Iran deal potential",
+            "US-Iran diplomatic negotiations",
+            "Iran nuclear negotiations",
+            "US-Iran deal necessity for precious metals"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "fed rate hike expectations",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'TD Securities'"
+    }
+  ]
+}
