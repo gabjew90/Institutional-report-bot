@@ -1590,18 +1590,26 @@ def get_recent_bot_answers_to_asker(
     asker_user_id: int,
     channel_id: int,
     limit: int = 5,
+    max_age_days: int = 7,
 ) -> list[dict]:
     """Return the bot's last `limit` /ask answers to this asker in this
-    channel, newest first. Returned dicts have keys: question, answer,
-    answered_at. Bounded by count only — not by recency — so the anti-
-    recycling guard sees the last few hooks regardless of how long ago
-    they were used in an active channel."""
+    channel within `max_age_days`, newest first. Returned dicts have
+    keys: question, answer, answered_at.
+
+    The recency bound (added 2026-06-10) prevents stale-answer
+    injection: count-only bounding meant a quiet channel could surface
+    weeks-old answers, suppressing legitimately fresh re-answers when
+    circumstances had changed (prices moved, news landed). 7 days
+    covers the observed recycling window (the Grand Nagus case was 30
+    minutes apart) with a wide margin."""
     rows = get_connection().execute(
         "SELECT question, answer, answered_at "
         "FROM ask_bot_answers "
         "WHERE asker_user_id = ? AND channel_id = ? "
+        "  AND answered_at >= datetime('now', ?) "
         "ORDER BY answered_at DESC, id DESC LIMIT ?",
-        (int(asker_user_id), int(channel_id), int(limit)),
+        (int(asker_user_id), int(channel_id),
+         f"-{int(max_age_days)} day", int(limit)),
     ).fetchall()
     return [dict(r) for r in rows]
 
@@ -2552,6 +2560,9 @@ def append_ask_interaction(
     question: str,
     answer: str,
     full_prompt: str | None = None,
+    interaction_type: str = "gemini",
+    tool_trace: list[dict] | None = None,
+    raw_answer: str | None = None,
 ) -> str | None:
     """Append one /ask interaction to today's local log file. Returns the
     log file path (so a caller can later commit it to GitHub), or None on
@@ -2579,6 +2590,19 @@ def append_ask_interaction(
     forensic visibility into what the bot ACTUALLY saw — WHO'S TALKING
     profiles, [YOU said earlier]: echoes in recent chat, analyst trade
     logs, etc. — beyond just the question text.
+
+    Completeness extensions (2026-06-10 — the QC grader was producing
+    false FAILs because the log showed neither tool activity nor the
+    raw model output, so tool-grounded answers looked fabricated):
+      - `interaction_type`: "gemini" (full path) | "short_circuit_slur_count"
+        | "short_circuit_message_count" | "quota_capped" | "failed".
+        Rendered as a tag line so QC sees the FULL record, not just the
+        Gemini path.
+      - `tool_trace`: compact list of {tool, args, status, result_chars}
+        for every tool call the model made — rendered as a TOOLS table.
+      - `raw_answer`: the model's output BEFORE voice-lint cleanup /
+        retries rewrote it. Only rendered (collapsed) when it differs
+        from the posted answer.
 
     Used by the scheduler's `_ask_log_publish_job` to push the daily files
     to GitHub (pulse-data branch) for browseable QC. Doesn't write to the
@@ -2649,13 +2673,59 @@ def append_ask_interaction(
         else:
             prompt_section = ""
 
+        # Interaction-type tag — only rendered for non-default types so
+        # existing Gemini-path entries keep their familiar shape.
+        type_line = (
+            f"**Type:** `{interaction_type}`\n\n"
+            if interaction_type and interaction_type != "gemini" else ""
+        )
+
+        # Tool trace table — one row per tool call the model made.
+        tools_section = ""
+        if tool_trace:
+            rows = []
+            for t in tool_trace[:12]:
+                args_s = ", ".join(
+                    f"{k}={v}" for k, v in (t.get("args") or {}).items()
+                )[:120]
+                rows.append(
+                    f"| {t.get('tool', '?')} | {args_s or '—'} | "
+                    f"{t.get('status', '?')} | "
+                    f"{t.get('result_chars', '?')} |"
+                )
+            tools_section = (
+                "**Tools called:**\n\n"
+                "| tool | args | status | result chars |\n"
+                "|---|---|---|---|\n"
+                + "\n".join(rows) + "\n\n"
+            )
+
+        # Raw-answer block — only when cleanup/retries actually changed
+        # the output, so the log shows ground truth without doubling
+        # every entry.
+        raw_section = ""
+        if raw_answer and raw_answer.strip() and \
+                raw_answer.strip() != (answer or "").strip():
+            raw_section = (
+                "<details>\n"
+                "<summary>🔧 Raw model output (before voice-lint / "
+                "retry rewrites)</summary>\n\n"
+                "```text\n"
+                f"{_clip(raw_answer, 8000)}\n"
+                "```\n"
+                "</details>\n\n"
+            )
+
         entry = (
             (f"# /ask interactions — {date_str}\n\n" if is_new else "")
             + f"## {ts_str}\n\n"
             f"**Asker:** {asker_label} in #{channel_name or '(unknown)'}\n\n"
+            f"{type_line}"
             f"**Q:** {_clip(question)}\n\n"
             "**A:**\n\n"
             f"{_clip(answer)}\n\n"
+            f"{tools_section}"
+            f"{raw_section}"
             f"{prompt_section}"
             "---\n\n"
         )
@@ -3106,8 +3176,14 @@ def find_matching_open_expiry(
         expiry) for the caller
       - Filters to expiries whose latest action is open/add/trim (alive)
       - Excludes positions marked expired_unknown
-      - Returns the SOONEST live expiry (most likely candidate for a
-        close — short-dated lottos are the usual close target)
+      - Returns the MOST-RECENTLY-TOUCHED live expiry (changed
+        2026-06-10 from soonest-expiry). When a caller runs two live
+        positions in the same contract (e.g., TSLA 300c 5/29 AND 6/5),
+        an unlabeled "closed it" caption almost always refers to the
+        position they most recently opened/added/trimmed — recency of
+        activity is the discussion thread, not calendar proximity to
+        expiry. Soonest-expiry mismatched closes to the older leg,
+        skewing W/L and leaving phantom opens.
 
     Returns None when no live position matches (caller closed it
     earlier, or opened it off-channel before the bot saw them).
@@ -3116,7 +3192,7 @@ def find_matching_open_expiry(
         return None
     params: list = [ticker.upper()]
     sql = """WITH ranked AS (
-        SELECT expiry, action,
+        SELECT expiry, action, posted_at,
                ROW_NUMBER() OVER (
                    PARTITION BY ticker, contract_type, strike, expiry
                    ORDER BY posted_at DESC
@@ -3150,7 +3226,7 @@ def find_matching_open_expiry(
         SELECT expiry FROM ranked
         WHERE rn = 1
           AND action IN ('open', 'add', 'trim')
-        ORDER BY date(expiry) ASC
+        ORDER BY posted_at DESC
         LIMIT 1
     """
     try:

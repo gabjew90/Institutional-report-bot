@@ -293,12 +293,12 @@ def test_tool_registered_in_both_arrays():
 
 
 def test_dispatch_branch_present():
+    # Dispatch refactored 2026-06-10 to a guarded `_tool_executors` map.
     import discord_bot.bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
-    assert 'fc.name == "lookup_economic_calendar"' in src
-    assert "_execute_economic_calendar(args)" in src
-    _ok("dispatch: fc.name=='lookup_economic_calendar' routes to "
-        "_execute_economic_calendar(args)")
+    assert '"lookup_economic_calendar": _execute_economic_calendar' in src
+    _ok("dispatch executor map routes lookup_economic_calendar to "
+        "_execute_economic_calendar")
 
 
 def test_system_prompt_tool_count_updated():

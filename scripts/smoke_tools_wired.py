@@ -60,15 +60,20 @@ def test_no_lookup_user_ranks_tool_surface():
 
 
 def test_dispatch_loop_has_all_new_tools():
-    """The tool-call dispatch loop should have elif branches for the new tools."""
-    for tool_name in (
-        "lookup_user_profile",
-        "lookup_trade_log",
-        "lookup_market_price",
+    """The tool-call dispatch must route the new tools. Dispatch was
+    refactored 2026-06-10 from an if/elif chain to a guarded
+    `_tool_executors` map — assert each tool has a map entry (the
+    equivalent wiring; a missing entry routes to 'unknown tool')."""
+    for tool_name, executor in (
+        ("lookup_user_profile", "_execute_user_profile"),
+        ("lookup_trade_log", "_execute_trade_log"),
+        ("lookup_market_price", "_execute_market_price"),
     ):
-        pattern = rf'elif fc\.name == "{tool_name}"'
-        assert re.search(pattern, SRC), f"dispatch loop missing case for {tool_name!r}"
-    _ok("dispatch loop has cases for all 3 new tools")
+        pattern = rf'"{tool_name}":\s*{executor}'
+        assert re.search(pattern, SRC), (
+            f"dispatch executor map missing entry for {tool_name!r}"
+        )
+    _ok("dispatch executor map has entries for all 3 new tools")
 
 
 if __name__ == "__main__":

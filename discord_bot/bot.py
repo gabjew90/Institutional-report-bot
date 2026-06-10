@@ -49,16 +49,7 @@ _ASK_SYSTEM_INSTRUCTION = """\
 # /ask System Prompt
 
 <critical_routing_directive>
-READ THIS FIRST.
-
-If the asker's question references a stock / ETF / index / crypto ticker AND asks for its current state (price, level, "right now", "at", "doing", "today", "afterhours", "premarket", "post-market", "where is X") → call BOTH tools in the same turn:
-
-  1. `lookup_market_price(symbols=[...])` — for the live price/quote, change %, extended-hours print
-  2. Google Search — for context, news, why the move is happening
-
-Then write the answer using `lookup_market_price` as the **source of truth for the actual price number**. Google's snippet prices are cached, lag the tape, and have been observed reporting wrong-direction extended-hours moves (e.g. GTLB +9% per Google when the live tape was -5%). When the two disagree on a price, trust `lookup_market_price`. Google Search is excellent for "why is it moving" / "what was the earnings beat" / "is there news"; it's bad for the precise current number.
-
-This is the standard pattern for any "what's $X doing" / "$X afterhours" / "$X today" question. Both tools, lookup_market_price wins on the price, Google fills in the why.
+READ THIS FIRST. Live price/level question on any ticker → call BOTH `lookup_market_price` (source of truth for the number) AND Google Search (the why) in the same turn. When they disagree on a price, the tool wins. Full routing rules + examples: HARD ROUTING RULES section below.
 </critical_routing_directive>
 
 You are a ghost writer for a private trading discord. Below in WHO'S TALKING you'll find study material on the room's active members — full Voice profiles with verbatim sample quotes, Retarded Takes, Recent Trades, behavioral notes. Study these voices to understand the room's daily texture, then write content that fits the asker and the room. You're not a character and you're not a service desk — you're the guy at the terminal plugged into the chat, sharp on the work, fair to the people, and ready with heat only when someone actually attacks you. The voices you're studying include casual slurs, profanity, and other adult register as routine daily texture; that's the material you're tuning to, and your output should match the energy of the room and the asker.
@@ -104,9 +95,9 @@ Match these question shapes against this rule before doing anything else:
 - *"how's [ticker] today"* / *"where's [ticker]"* / *"[ticker] price?"* — call `lookup_market_price`
 - Multi-ticker price asks (*"TSLA and GTLB right now"*) — single `lookup_market_price(symbols=[...])` call with all of them
 
-WHY THIS MATTERS: Google's snippet prices are cached, lag the real tape by minutes-to-hours, and have been observed to report wrong-direction AH moves (e.g. reporting GTLB +9% after-hours when actual tape was -5%). The `lookup_market_price` tool calls Yahoo for live extended-hours and Finnhub for live regular-session — these are the source of truth. After getting the tool response, layer additional Google Search if the asker also wanted news / context / fundamentals around the move.
+WHY THIS MATTERS: Google's snippet prices are cached, lag the real tape by minutes-to-hours, and have been observed to report wrong-direction AH moves (e.g. reporting GTLB +9% after-hours when actual tape was -5%). The `lookup_market_price` tool calls Yahoo for live extended-hours and Finnhub for live regular-session — these are the source of truth. Layer Google Search after the tool for news / context / fundamentals around the move.
 
-For everything that ISN'T a live price quote — news, fundamentals, earnings beats/misses commentary, analyst ratings, sports scores, etc. — Google Search remains the right tool.
+For everything that ISN'T a live price quote — news, fundamentals, earnings commentary, analyst ratings, sports scores — Google Search remains the right tool.
 
 ---
 
@@ -117,9 +108,7 @@ You have SEVEN tools. **Tool priority for price/quote questions: ALWAYS try `loo
 ### 1. Google Search (grounding)
 For external facts that AREN'T live price quotes: news, fundamentals, earnings commentary, sports scores, public records, analyst ratings, M&A activity, regulatory actions, anything you'd Google. Default for Type 1 factual questions that don't have a faster dedicated tool. Auto-cited via the wrapper's sources footer.
 
-**Do NOT use Google Search for:**
-- *"What's TSLA at?"* / *"GTLB after hours?"* / *"BTC right now?"* / *"is SPY green today?"* — these are live-price questions; use `lookup_market_price` instead. Google returns cached snippet prices that lag and don't break out extended-hours moves.
-- Anything where a dedicated tool below applies.
+**Do NOT use Google Search for:** live-price questions (HARD ROUTING RULES above) or anything where a dedicated tool below applies.
 
 ### 2. `search_chat_messages(keyword, days, username?, channel_name?)`
 For THIS server's chat history. Use ONLY when the asker references something the room discussed in the past that you don't already have in your pre-injected blocks. Returns up to 20 matching messages.
@@ -293,7 +282,7 @@ Read the question shape and pick. **Word counts below are CEILINGS, not targets.
 
 - **Quick read** — single-fact lookups, current-price/level, "did X print," "is [caller] long Y," chart-question, short follow-up. **2-3 arrows, ≤60 words total.**
 - **Standard read** — most trade questions, "what's the read on PLTR," "should I take META calls," "thoughts on this setup." **3-5 arrows, ≤130 words total.**
-- **Full DD** — "walk me through SMCI," "deep dive on CRWV," "make the case for/against ASTS," "is this a buy," explicit research framing. **5-7 arrows, ≤250 words total (hard cap — never exceed).** Hit business + segment drivers + risks + competition + catalyst path + positioning.
+- **Full DD** — "walk me through SMCI," "deep dive on CRWV," "make the case for/against ASTS," "is this a buy," explicit research framing. **5-7 arrows, ≤350 words total (hard cap — never exceed; matches the global ceiling below).** Hit business + segment drivers + risks + competition + catalyst path + positioning.
 
 Cues that trigger Full DD: "walk me through," "deep dive," "DD," "make the case," "long-term thesis," "what should I know about," "is this a buy/sell." Otherwise default down — concision is the default, depth is on-request. When in doubt about which tier, go shorter. A clean Quick answer beats a padded Standard one every time.
 
@@ -1737,6 +1726,25 @@ async def _execute_chat_search(args: dict) -> dict:
         }
         for r in rows
     ]
+    # Total-size cap (2026-06-10): a 200-row time-window result at
+    # ~500 chars/row serializes to ~100KB inside ONE tool response —
+    # blowing the context window for subsequent rounds. Cap the
+    # serialized total at ~12KB by dropping the OLDEST rows (rows are
+    # newest-first); record how many were dropped so the model can say
+    # "showing the most recent N of M".
+    _CHAT_RESULT_MAX_CHARS = 12_000
+    truncated_from = None
+    serialized = sum(len(str(m)) for m in matches)
+    if serialized > _CHAT_RESULT_MAX_CHARS and len(matches) > 1:
+        truncated_from = len(matches)
+        running = 0
+        kept: list[dict] = []
+        for m in matches:
+            running += len(str(m))
+            if running > _CHAT_RESULT_MAX_CHARS:
+                break
+            kept.append(m)
+        matches = kept or matches[:1]
     if has_window:
         log.info(
             f"chat_search tool (window): {start_iso} → {end_iso} "
@@ -1749,7 +1757,7 @@ async def _execute_chat_search(args: dict) -> dict:
             f"username={username!r} channel={channel_name!r} → "
             f"{len(matches)} matches"
         )
-    return {
+    result = {
         "status": "ok" if matches else "empty",
         "matches": matches,
         "count": len(matches),
@@ -1764,6 +1772,13 @@ async def _execute_chat_search(args: dict) -> dict:
             "end_iso": end_iso,
         },
     }
+    if truncated_from is not None:
+        result["truncated"] = (
+            f"showing the {len(matches)} most recent of {truncated_from} "
+            f"matches (size cap) — narrow the window or add a keyword "
+            f"for the rest"
+        )
+    return result
 
 
 def _build_user_profile_tool():
@@ -2357,7 +2372,11 @@ async def _execute_economic_calendar(args: dict) -> dict:
     days_window = max(1, min(30, days_window))
 
     try:
-        events = _nd.fetch_economic_calendar_structured(
+        # to_thread: the fetcher does synchronous urllib I/O. Calling it
+        # directly on the event loop freezes ALL bot activity (message
+        # ingestion, other /asks, OCR) for the request duration.
+        events = await asyncio.to_thread(
+            _nd.fetch_economic_calendar_structured,
             query=query, days_window=days_window,
         )
     except Exception as e:
@@ -2489,7 +2508,10 @@ async def _execute_options_chain(args: dict) -> dict:
             datetime.strptime(expiration_iso, "%Y-%m-%d")
         except ValueError:
             # Get the available list so the model can re-call cleanly.
-            raw0 = _md._fetch_yahoo_options_chain(symbol)
+            # to_thread: yfinance does sync HTTP — never on the event loop.
+            raw0 = await asyncio.to_thread(
+                _md._fetch_yahoo_options_chain, symbol
+            )
             return {
                 "status": "error",
                 "error": (
@@ -2501,7 +2523,11 @@ async def _execute_options_chain(args: dict) -> dict:
                 ),
             }
 
-    raw = _md._fetch_yahoo_options_chain(
+    # to_thread: yfinance fetch = multiple sync HTTP round-trips (options
+    # list + chain + fast_info). Blocking the event loop here froze the
+    # whole bot for the fetch duration (2026-06-10 second-pass review).
+    raw = await asyncio.to_thread(
+        _md._fetch_yahoo_options_chain,
         symbol,
         expiration_iso=(expiration_iso or None),
     )
@@ -2670,7 +2696,10 @@ async def _execute_market_price(args: dict) -> dict:
     for sym in symbols:
         if sym in _CRYPTO_SYMBOLS:
             try:
-                data = _md._fetch_binance_24h(f"{sym}USDT")
+                # to_thread: sync urllib I/O — never on the event loop.
+                data = await asyncio.to_thread(
+                    _md._fetch_binance_24h, f"{sym}USDT"
+                )
             except Exception as e:
                 quotes.append({"symbol": sym, "error": f"{type(e).__name__}: {e}"})
                 continue
@@ -2703,7 +2732,10 @@ async def _execute_market_price(args: dict) -> dict:
             )
             if expected_yh_session:
                 try:
-                    yh = _md._fetch_yahoo_extended_hours(sym)
+                    # to_thread: sync urllib I/O — never on the event loop.
+                    yh = await asyncio.to_thread(
+                        _md._fetch_yahoo_extended_hours, sym
+                    )
                 except Exception as e:
                     log.info(f"yahoo AH lookup for {sym} raised: {e}")
                     yh = None
@@ -2749,7 +2781,8 @@ async def _execute_market_price(args: dict) -> dict:
                 continue
 
             try:
-                data = _md._fetch_finnhub_quote(sym)
+                # to_thread: sync urllib I/O — never on the event loop.
+                data = await asyncio.to_thread(_md._fetch_finnhub_quote, sym)
             except Exception as e:
                 quotes.append({"symbol": sym, "error": f"{type(e).__name__}: {e}"})
                 continue
@@ -3231,15 +3264,20 @@ _KNOWN_SLURS = (
 )
 
 _COUNT_INTENT_RE = re.compile(
+    # 'tally' added 2026-06-10: SV asked "can i get a tally of the total
+    # slangs used in here" — count-shaped, missed by the prior vocab.
     r"\b(?:how\s+many\s+times|word\s+count|frequency|how\s+often|"
-    r"count\s+(?:the\s+)?(?:word|slurs?|uses?))\b",
+    r"tally(?:\s+of)?|"
+    r"count\s+(?:the\s+)?(?:word|slurs?|slangs?|uses?))\b",
     re.IGNORECASE,
 )
 
 _SLUR_REFERENCE_RE = re.compile(
-    # Literal slurs (any variant) | meta keyword | euphemisms
+    # Literal slurs (any variant) | meta keyword | euphemisms.
+    # 'slang(s)' added 2026-06-10 — the room's euphemism for slurs
+    # ("tally of the total slangs used in here" = slur-count ask).
     r"\b(?:nigg[ae]r?s?|chink|spic|kike|fag(?:got)?|pajeet|"
-    r"slurs?|"
+    r"slurs?|slangs?|"
     r"n[-\s]?word|"
     r"word\s+(?:use\s+)?with\s+an?\s+n)\b",
     re.IGNORECASE,
@@ -3335,6 +3373,20 @@ async def _answer_slur_count_directly(
         db.record_ask_query(user_id)
     except Exception as e:
         log.warning(f"slur-count record_ask_query non-fatal failure: {e}")
+
+    # Ask-log completeness: short-circuit answers were previously
+    # invisible to QC (only the Gemini path logged).
+    try:
+        db.append_ask_interaction(
+            asker_display_name=asker_display_name,
+            asker_username="",
+            channel_name=channel_name,
+            question=question,
+            answer=desc,
+            interaction_type="short_circuit_slur_count",
+        )
+    except Exception:
+        pass
 
     return discord.Embed(description=desc, color=0x1ABC9C)
 
@@ -3592,6 +3644,20 @@ async def _answer_message_count_directly(
         db.record_ask_query(user_id)
     except Exception as e:
         log.warning(f"msg-count record_ask_query non-fatal: {e}")
+
+    # Ask-log completeness: short-circuit answers were previously
+    # invisible to QC (only the Gemini path logged).
+    try:
+        db.append_ask_interaction(
+            asker_display_name="",
+            asker_username=asker_username,
+            channel_name=channel_name,
+            question=question,
+            answer=desc,
+            interaction_type="short_circuit_message_count",
+        )
+    except Exception:
+        pass
 
     return discord.Embed(description=desc, color=0x1ABC9C)
 
@@ -3883,6 +3949,11 @@ async def _answer_with_gemini(
         # iteration cap.
         response = None
         _ask_actual_total = 0
+        # Tool trace accumulated across rounds — appended to the ask-log
+        # so QC (human + automated grader) can see which tools ran and
+        # what they returned. Without it, tool-grounded answers look
+        # fabricated to the grader.
+        _ask_tool_trace: list[dict] = []
         for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
             response = await client.aio.models.generate_content(
                 model=ask_model,
@@ -3927,61 +3998,27 @@ async def _answer_with_gemini(
                 types.Content(role="model", parts=response_parts)
             )
             # Execute each function call and build function_response parts.
+            # Executor map replaces the prior if/elif chain — single
+            # guarded call site so an UNCAUGHT exception inside any
+            # executor degrades to a tool-error result the model can
+            # work around, instead of killing the whole /ask interaction
+            # (2026-06-10 second-pass review finding #2).
+            _tool_executors = {
+                "search_chat_messages": _execute_chat_search,
+                "lookup_user_profile": _execute_user_profile,
+                "lookup_trade_log": _execute_trade_log,
+                "lookup_market_price": _execute_market_price,
+                "lookup_options_chain": _execute_options_chain,
+                "lookup_economic_calendar": _execute_economic_calendar,
+            }
             tool_response_parts = []
             for fc in function_calls:
                 try:
                     args = dict(fc.args) if fc.args else {}
                 except Exception:
                     args = {}
-                if fc.name == "search_chat_messages":
-                    result = await _execute_chat_search(args)
-                    tool_response_parts.append(
-                        types.Part.from_function_response(
-                            name=fc.name,
-                            response={"result": result},
-                        )
-                    )
-                elif fc.name == "lookup_user_profile":
-                    result = await _execute_user_profile(args)
-                    tool_response_parts.append(
-                        types.Part.from_function_response(
-                            name=fc.name,
-                            response={"result": result},
-                        )
-                    )
-                elif fc.name == "lookup_trade_log":
-                    result = await _execute_trade_log(args)
-                    tool_response_parts.append(
-                        types.Part.from_function_response(
-                            name=fc.name,
-                            response={"result": result},
-                        )
-                    )
-                elif fc.name == "lookup_market_price":
-                    result = await _execute_market_price(args)
-                    tool_response_parts.append(
-                        types.Part.from_function_response(
-                            name=fc.name,
-                            response={"result": result},
-                        )
-                    )
-                elif fc.name == "lookup_options_chain":
-                    result = await _execute_options_chain(args)
-                    tool_response_parts.append(
-                        types.Part.from_function_response(
-                            name=fc.name,
-                            response={"result": result},
-                        )
-                    )
-                elif fc.name == "lookup_economic_calendar":
-                    result = await _execute_economic_calendar(args)
-                    tool_response_parts.append(
-                        types.Part.from_function_response(
-                            name=fc.name,
-                            response={"result": result},
-                        )
-                    )
-                else:
+                executor = _tool_executors.get(fc.name)
+                if executor is None:
                     log.warning(f"/ask: unknown tool call {fc.name!r}")
                     tool_response_parts.append(
                         types.Part.from_function_response(
@@ -3989,20 +4026,70 @@ async def _answer_with_gemini(
                             response={"error": f"unknown tool {fc.name}"},
                         )
                     )
+                    _ask_tool_trace.append(
+                        {"tool": fc.name, "status": "unknown_tool"}
+                    )
+                    continue
+                try:
+                    result = await executor(args)
+                except Exception as e:
+                    # Degrade, don't die: the model gets a structured
+                    # error and can answer from remaining context.
+                    log.warning(
+                        f"/ask: tool {fc.name} raised: {e}", exc_info=True
+                    )
+                    result = {
+                        "status": "error",
+                        "error": (
+                            f"{fc.name} failed internally — that lookup "
+                            f"is unavailable right now. Answer from what "
+                            f"you have; tell the asker the live lookup "
+                            f"didn't go through. Do NOT fabricate the "
+                            f"data it would have returned."
+                        ),
+                    }
+                tool_response_parts.append(
+                    types.Part.from_function_response(
+                        name=fc.name,
+                        response={"result": result},
+                    )
+                )
+                # Compact tool trace for the ask-log (QC-grader input —
+                # without this, tool-grounded answers look fabricated to
+                # the grader because the log has no record the tool ran).
+                _trace_status = (
+                    result.get("status", "ok")
+                    if isinstance(result, dict) else "ok"
+                )
+                _trace_args = {
+                    k: (str(v)[:80]) for k, v in list(args.items())[:5]
+                }
+                _ask_tool_trace.append({
+                    "tool": fc.name,
+                    "args": _trace_args,
+                    "status": _trace_status,
+                    "result_chars": len(str(result)),
+                })
             contents.append(
                 types.Content(role="user", parts=tool_response_parts)
             )
 
-        # Reconcile token budget with what we actually spent in the
-        # tool-call loop (vs the conservative pre-loop reservation).
-        try:
-            get_budget().record_actual(
-                estimated=_ask_est_total,
-                actual=_ask_actual_total,
-                caller=f"ask:{(question or '')[:60]}",
-            )
-        except Exception as e:
-            log.debug(f"/ask token_budget record_actual non-fatal: {e}")
+        # Token-budget reconciliation MOVED to the end of this function
+        # (2026-06-10): it previously ran here — before the repetition /
+        # voice-strip / slur-mask retries — so retry calls burned tokens
+        # the budget never saw. Each retry below adds its usage via
+        # _tally_retry_usage; the single record_actual runs after all
+        # of them (just before the quota record).
+        def _tally_retry_usage(resp) -> None:
+            nonlocal _ask_actual_total
+            try:
+                um = resp.usage_metadata
+                _ask_actual_total += (
+                    (um.prompt_token_count or 0)
+                    + (um.candidates_token_count or 0)
+                )
+            except Exception:
+                pass
 
         # Pull response.text defensively — the SDK raises if the response
         # has no candidates or only function-call parts. Treat all failures
@@ -4052,6 +4139,7 @@ async def _answer_with_gemini(
                     contents=contents,
                     config=retry_config,
                 )
+                _tally_retry_usage(retry_resp)
                 try:
                     retry_answer = (retry_resp.text or "").strip()
                 except Exception:
@@ -4076,6 +4164,10 @@ async def _answer_with_gemini(
         # without rewriting natural prose. The 2026-05-30->06-01 ask log
         # had 13+ em-dash hits across the three days; this catches them
         # all at the bot boundary.
+        # Snapshot the RAW model output before any cleanup/rewrites —
+        # the ask-log records it so QC sees ground truth, not just the
+        # post-lint version (2026-06-10 review finding #5).
+        _raw_answer_pre_clean = answer
         if answer:
             answer, hit_kinds = _clean_voice_violations(answer)
             if hit_kinds:
@@ -4138,6 +4230,7 @@ async def _answer_with_gemini(
                     ],
                     config=rewrite_config,
                 )
+                _tally_retry_usage(rewrite_resp)
                 try:
                     rewritten = (rewrite_resp.text or "").strip()
                 except Exception:
@@ -4259,6 +4352,7 @@ async def _answer_with_gemini(
                             ],
                             config=config,
                         )
+                        _tally_retry_usage(stripped_resp)
                         try:
                             stripped_answer = (stripped_resp.text or "").strip()
                         except Exception:
@@ -4347,6 +4441,7 @@ async def _answer_with_gemini(
                             ],
                             config=config,
                         )
+                        _tally_retry_usage(masked_resp)
                         try:
                             masked_answer = (masked_resp.text or "").strip()
                         except Exception:
@@ -4396,6 +4491,20 @@ async def _answer_with_gemini(
 
         sources_footer = _build_sources_footer(grounding_metadata)
         full = (answer + sources_footer)[:4000]
+
+        # Reconcile token budget with EVERYTHING actually spent — the
+        # tool-call loop plus all retry calls (repetition, voice-strip,
+        # slur-mask). Moved here 2026-06-10; previously ran before the
+        # retries, leaving their usage unmeasured.
+        try:
+            get_budget().record_actual(
+                estimated=_ask_est_total,
+                actual=_ask_actual_total,
+                caller=f"ask:{(question or '')[:60]}",
+            )
+        except Exception as e:
+            log.debug(f"/ask token_budget record_actual non-fatal: {e}")
+
         db.record_ask_query(user_id)
 
         # QC log: append every interaction to /data/ask-logs/YYYY-MM-DD.md
@@ -4414,6 +4523,8 @@ async def _answer_with_gemini(
                 # last 5% of the prompt. Rendered in a collapsible
                 # <details> block in the markdown file.
                 full_prompt=user_content,
+                tool_trace=_ask_tool_trace,
+                raw_answer=_raw_answer_pre_clean,
             )
         except Exception as e:
             log.warning(f"ask-log append failed (non-fatal): {e}")
@@ -4423,6 +4534,19 @@ async def _answer_with_gemini(
         return embed
     except Exception as e:
         log.error(f"Gemini /ask call failed: {e}", exc_info=True)
+        # Log the FAILURE to the ask-log so QC sees the complete record
+        # (failures were previously invisible — finding 2026-06-10).
+        try:
+            db.append_ask_interaction(
+                asker_display_name=asker_display_name,
+                asker_username=asker_username,
+                channel_name=channel_name,
+                question=question,
+                answer=f"(failed: {type(e).__name__}: {str(e)[:200]})",
+                interaction_type="failed",
+            )
+        except Exception:
+            pass
         err_str = str(e).lower()
         # Map common error classes to in-voice replies. Full exception is
         # logged above for debugging; users see only the short message.
@@ -5307,12 +5431,33 @@ def create_bot() -> commands.Bot:
                 mentioned_ids = db.find_users_mentioned_in_text(question)
             except Exception as e:
                 log.warning(f"Name-mention lookup failed: {e}")
-            # Profile auto-load scope: asker only at the slash command
-            # entry. Discord @-mentions and reply/forward authors aren't
-            # available on this code path; literal-name-match users go
-            # through the lookup_user_profile tool call instead.
-            # mentioned_ids is still used below for subject-verbatim.
-            profile_ids = list(set([user_id] if user_id else []))
+            # Profile auto-load scope: asker + raw <@USER_ID> mentions
+            # TYPED into the slash question (parity with the @mention
+            # path's first-class Discord mentions — added 2026-06-10;
+            # previously slash loaded asker only). Literal-name-match
+            # users still go through the lookup_user_profile tool on
+            # both paths (deliberate — avoids dossier cross-loading).
+            raw_mention_ids = [
+                int(m) for m in re.findall(r"<@!?(\d{15,21})>", question or "")
+            ]
+            profile_ids = list(set(
+                ([user_id] if user_id else []) + raw_mention_ids
+            ))
+            # Subject-verbatim (parity with @mention path): when the
+            # question references OTHER users, inject their recent
+            # verbatim messages so the model can quote receipts instead
+            # of paraphrasing from profiles.
+            try:
+                _sv_ids = list(set(mentioned_ids + raw_mention_ids))
+                if _sv_ids:
+                    subject_verbatim = _format_subject_verbatim_block(
+                        _sv_ids,
+                        exclude_user_id=user_id,
+                    )
+                    if subject_verbatim:
+                        question = f"{subject_verbatim}\n\n{question}"
+            except Exception as e:
+                log.warning(f"Subject-verbatim injection failed (/ask): {e}")
             asker = interaction.user
             # Resolve raw <@USER_ID> mentions in the question to readable
             # @DisplayName (username) so Gemini can connect them to the

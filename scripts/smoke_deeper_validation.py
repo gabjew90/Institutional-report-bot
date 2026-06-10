@@ -174,8 +174,9 @@ def test_executor_end_to_end_shapes():
 
 
 def test_dispatch_handles_all_new_tools():
-    """The dispatch loop's elif chain must include a case for each
-    new tool — otherwise calls fall through to 'unknown tool' error."""
+    """The dispatch must wire each tool. Refactored 2026-06-10 from an
+    if/elif chain to a guarded `_tool_executors` map — assert the map
+    entry exists (a missing entry routes to 'unknown tool' error)."""
     import inspect
     from discord_bot import bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
@@ -185,16 +186,14 @@ def test_dispatch_handles_all_new_tools():
         "lookup_trade_log",
         "lookup_market_price",
     ):
-        # Every tool name appearing in the tools list MUST have a
-        # dispatch case OR be the leading `if fc.name == ...` case.
         anchored = (
-            f'fc.name == "{tool_name}"' in src
+            f'"{tool_name}":' in src
         )
         assert anchored, (
-            f"dispatch loop missing case for {tool_name!r} — calls would fall "
-            f"through to 'unknown tool' error"
+            f"dispatch executor map missing entry for {tool_name!r} — "
+            f"calls would fall through to 'unknown tool' error"
         )
-    _ok("dispatch loop has a case for every tool in the tools list")
+    _ok("dispatch executor map has an entry for every tool in the tools list")
 
 
 def test_no_orphan_references():

@@ -274,21 +274,17 @@ def test_tool_registered_in_both_tool_arrays():
 
 
 def test_dispatch_branch_present():
-    """The tool-call dispatch loop must have an elif branch for
-    'lookup_options_chain' — otherwise calls go to the 'unknown tool'
-    fallback and the bot tells the model 'unknown tool' even though
-    the FunctionDeclaration registered fine."""
+    """The tool-call dispatch must wire 'lookup_options_chain' —
+    otherwise calls go to the 'unknown tool' fallback. Dispatch
+    refactored 2026-06-10 to a guarded `_tool_executors` map."""
     import discord_bot.bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
-    assert 'fc.name == "lookup_options_chain"' in src, (
-        "dispatch loop must have an elif branch matching the tool "
-        "name; otherwise model calls route to 'unknown tool'"
+    assert '"lookup_options_chain": _execute_options_chain' in src, (
+        "dispatch executor map must have the lookup_options_chain "
+        "entry; otherwise model calls route to 'unknown tool'"
     )
-    assert "_execute_options_chain(args)" in src, (
-        "dispatch branch must call _execute_options_chain(args)"
-    )
-    _ok("dispatch branch: fc.name=='lookup_options_chain' routes to "
-        "_execute_options_chain(args)")
+    _ok("dispatch executor map routes lookup_options_chain to "
+        "_execute_options_chain")
 
 
 def test_system_prompt_tool_count_includes_options_chain():
