@@ -1,0 +1,221 @@
+{
+  "pulse_date": "2026-06-11",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure earnings",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 6
+      },
+      "consensus_view": "Banks broadly agree AI infrastructure spending is enormous and still growing, driving a big share of corporate profit growth, but they split on whether the spending pays off given how high the bar for returns now is.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure demand and hyperscaler spending are large and still accelerating into 2027.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley",
+            "Citi"
+          ],
+          "evidence_quotes": [
+            "Demand for AI infrastructure continues to outpace supply",
+            "We expect issuance to accelerate in 2H26 as our equity colleagues estimate hyperscaler cash capex to surpass $1tn in 2027.",
+            "MSe forecasts the AI capex cycle will surpass peak capital intensity level"
+          ]
+        },
+        {
+          "claim": "AI infrastructure stocks are a major driver of S&P 500 earnings growth this year.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure stocks will generate roughly half of S&P 500 EPS growth this year",
+            "AI infrastructure stocks will generate roughly half of S&P 500 EPS growth this year."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether current AI capex levels are sustainable",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley"
+          ],
+          "for_evidence": "Demand for AI infrastructure continues to outpace supply",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "the ROI hurdle embedded in current spending is enormous"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait disruptions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six bank desks flag the Strait of Hormuz as a live oil-supply risk this window, but none has staked a clear directional view on whether disruption escalates or resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the Strait of Hormuz as an active oil-market risk this window, ranging from closure threats to reopening scenarios.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "MUFG",
+            "Mizuho International Plc",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz closure risk",
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz naval blockade",
+            "Strait of Hormuz chokepoint",
+            "Strait of Hormuz supply disruptions",
+            "US-Iran strikes and Strait of Hormuz closure"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb tightening bias",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Several banks flag the European Central Bank's return to raising interest rates as a live theme, with a quarter-point hike fully expected, but none stakes out a directional view on how far the tightening goes.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the ECB returning to a rate-hiking cycle, with a 25bp (quarter-point) hike widely expected and the bank seen staying data-dependent on the path beyond.",
+          "banks_for": [
+            "Mizuho International Plc",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "data-dependent, non-committal on the exact timing of further moves",
+            "ECB rate hike cycle",
+            "ECB return to hiking cycle"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "2026 world cup beneficiaries",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Goldman and JPMorgan both expect the 2026 World Cup to give a modest, short-lived lift to US consumer-facing sectors like sporting goods, travel, hotels and ticketing, with JPMorgan turning that into a tactical long bet.",
+      "facts_agreed": [
+        {
+          "claim": "The 2026 World Cup will give a modest boost to consumer-facing sectors and the broader economy, even though the macro effect is small and short-lived.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "economic effects of major sporting events tend to be short-lived",
+            "We therefore recommend going tactically long our 2026 World Cup Beneficiaries Basket"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east conflict impacts",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Cr\u00e9dit Agricole, Goldman Sachs, and JPMorgan all flag the Iran/Middle East conflict as a live macro variable touching oil prices, rates, fertilizer, and import timing, but none has staked a clear directional view on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks treat the Middle East/Iran conflict as an active risk factor running through energy prices, rates, and supply-chain timing without committing to a directional call.",
+          "banks_for": [
+            "Cr\u00e9dit Agricole CIB",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Iran war impact on energy prices",
+            "Iran conflict resolution impact on rates",
+            "Iran conflict macro risk",
+            "Middle-East geopolitical events impacting import timing",
+            "Middle East conflict fertilizer impact"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fomc hawkish pivot",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Only ANZ stakes a view, expecting the Fed to drop its hint that rate cuts are coming in order to look tough on inflation, while the rest of the corpus only mentions inflation data without taking a side.",
+      "facts_agreed": [
+        {
+          "claim": "ANZ expects the Fed to remove its implicit easing bias from the post-meeting statement.",
+          "banks_for": [
+            "ANZ Research"
+          ],
+          "evidence_quotes": [
+            "We expect the FOMC will remove its implicit easing bias from the post-meeting statement"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran conflict escalation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag US-Iran military escalation as a live geopolitical risk to watch, but none has staked out a directional market call on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference US-Iran military escalation as an active geopolitical situation this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "MUFG"
+          ],
+          "evidence_quotes": [
+            "US-Iran conflict escalation",
+            "US-Iran military escalation",
+            "US airstrikes in Iran"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
