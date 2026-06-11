@@ -47,6 +47,14 @@ def _fail(msg):
     sys.exit(1)
 
 
+def _reset_ff_cache():
+    """FF responses are cached 10 min in-module (burst-429 protection).
+    Tests must start cold or they read the previous test's payload."""
+    from report import news_data
+    news_data._FF_CACHE["at"] = None
+    news_data._FF_CACHE["rows"] = None
+
+
 def _ff_payload(now=None):
     """Realistic FF rows mirroring the live 2026-06-11 feed shape."""
     now = now or datetime.utcnow()
@@ -259,6 +267,7 @@ def test_pulse_text_block_banner_and_outage_line():
     assert "THIS CALENDAR WEEK ONLY" in text
     assert "ECB Interest Rate Decision" in text
 
+    _reset_ff_cache()  # warm cache would (correctly) mask total outage
     with patch("config.settings.finnhub_api_key", "test_key"), \
          patch("report.news_data._fetch_json", return_value=None):
         text2 = news_data.fetch_economic_calendar(days_ahead=7)
@@ -326,17 +335,84 @@ def test_executor_no_coverage_note_on_finnhub():
     _ok("executor: no coverage_note when Finnhub is the source")
 
 
+def test_ff_cache_serves_within_ttl_and_stale_on_error():
+    """The cache exists because FF 429s burst requests (observed: the
+    3rd hit within ~2s on 2026-06-11 prod verify). Within TTL no
+    refetch happens; on fetch failure a warm cache is served stale
+    rather than escalating to 'ALL calendar sources failed'."""
+    from report import news_data
+    now = datetime.utcnow()
+    _reset_ff_cache()
+    calls = []
+
+    def fake_fetch(url, timeout=8.0):
+        calls.append(url)
+        return _ff_payload(now)
+
+    with patch("report.news_data._fetch_json", side_effect=fake_fetch):
+        first = news_data._fetch_ff_economic_events()
+        second = news_data._fetch_ff_economic_events()
+    assert len(calls) == 1, f"second call within TTL must not refetch, got {len(calls)}"
+    assert second == first
+
+    # Stale-on-error: cache warm, next fetch 429s (None) -> serve cache
+    with patch("report.news_data._fetch_json", return_value=None):
+        news_data._FF_CACHE["at"] = now - timedelta(minutes=30)  # past TTL
+        stale = news_data._fetch_ff_economic_events()
+    assert stale == first, "warm cache must be served when refetch fails"
+
+    # Cold cache + fetch failure -> [] (dual-failure raise upstream)
+    _reset_ff_cache()
+    with patch("report.news_data._fetch_json", return_value=None):
+        assert news_data._fetch_ff_economic_events() == []
+    _ok("FF cache: no refetch within TTL; stale-on-error; cold+fail -> []")
+
+
+def test_burst_does_not_escalate_to_total_outage():
+    """Reproduces the prod-verify failure: Finnhub 403 on every call,
+    FF answers the first call then 429s. With the cache, the second and
+    third consumers (structured + pulse block) still succeed."""
+    from report import news_data
+    now = datetime.utcnow()
+    _reset_ff_cache()
+    ff_hits = {"n": 0}
+
+    def fake_fetch(url, timeout=8.0):
+        if "finnhub.io" in url:
+            return None  # 403
+        ff_hits["n"] += 1
+        return _ff_payload(now) if ff_hits["n"] == 1 else None  # then 429
+
+    with patch("config.settings.finnhub_api_key", "test_key"), \
+         patch("report.news_data._fetch_json", side_effect=fake_fetch):
+        rows = news_data.fetch_economic_calendar_structured(days_window=7)
+        text = news_data.fetch_economic_calendar(days_ahead=7)
+    assert rows, "structured call must succeed"
+    assert "ALL calendar sources failed" not in text, text[:200]
+    assert "FALLBACK FEED" in text
+    _ok("burst calls: FF 429 after first hit no longer escalates to "
+        "total-outage line")
+
+
+_ALL_TESTS = [
+    test_ff_normalizer_field_mapping,
+    test_ff_value_parser_edge_cases,
+    test_finnhub_first_when_available,
+    test_fallback_on_finnhub_403,
+    test_no_key_goes_straight_to_ff,
+    test_dual_failure_raises,
+    test_structured_fetch_tier1_matches_renamed_ff_events,
+    test_pulse_text_block_banner_and_outage_line,
+    test_executor_coverage_note_on_ff_source,
+    test_executor_feed_down_message,
+    test_executor_no_coverage_note_on_finnhub,
+    test_ff_cache_serves_within_ttl_and_stale_on_error,
+    test_burst_does_not_escalate_to_total_outage,
+]
+
 if __name__ == "__main__":
     print("=== economic-calendar ForexFactory fallback smoke ===")
-    test_ff_normalizer_field_mapping()
-    test_ff_value_parser_edge_cases()
-    test_finnhub_first_when_available()
-    test_fallback_on_finnhub_403()
-    test_no_key_goes_straight_to_ff()
-    test_dual_failure_raises()
-    test_structured_fetch_tier1_matches_renamed_ff_events()
-    test_pulse_text_block_banner_and_outage_line()
-    test_executor_coverage_note_on_ff_source()
-    test_executor_feed_down_message()
-    test_executor_no_coverage_note_on_finnhub()
+    for t in _ALL_TESTS:
+        _reset_ff_cache()  # every test starts with a cold FF cache
+        t()
     print("\nALL CALENDAR-FALLBACK SMOKE TESTS PASS")
