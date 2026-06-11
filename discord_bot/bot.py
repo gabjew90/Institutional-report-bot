@@ -2404,13 +2404,19 @@ async def _execute_economic_calendar(args: dict) -> dict:
             query=query, days_window=days_window,
         )
     except Exception as e:
+        # Includes EconomicCalendarUnavailable (Finnhub + ForexFactory
+        # both down). The distinction matters: this is "the FEED is
+        # down", never "that event doesn't exist".
         log.warning(f"lookup_economic_calendar: fetcher raised: {e}")
         return {
             "status": "error",
             "error": (
-                f"Finnhub economic-calendar fetch failed (rate-limit or "
-                f"upstream issue). No live data — tell the asker the "
-                f"calendar isn't available right now."
+                "Economic-calendar feeds are down (Finnhub blocked and "
+                "fallback unreachable). No live calendar data — tell "
+                "the asker the calendar feed isn't available right "
+                "now, then FALL BACK TO GOOGLE SEARCH for the specific "
+                "date/print they asked about and answer the actual "
+                "question. Do NOT claim the event doesn't exist."
             ),
         }
 
@@ -2425,17 +2431,30 @@ async def _execute_economic_calendar(args: dict) -> dict:
                 "GDP, retail sales, ISM, PPI, FOMC + Powell speeches, "
                 "ECB/BOJ/BOE rate decisions. Anything outside that set "
                 "(regional Fed surveys, minor housing data, foreign "
-                "macro without US linkage) is filtered out."
+                "macro without US linkage) is filtered out. NOTE: if "
+                "the feed is in fallback mode it only covers the "
+                "current calendar week — for events outside that "
+                "window, use Google Search and answer the actual "
+                "question."
             ),
         }
 
-    return {
+    resp = {
         "status": "ok",
         "query": query,
         "days_window": days_window,
         "events": events[:30],
         "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
     }
+    if any(e.get("source") == "forexfactory" for e in events[:30]):
+        resp["coverage_note"] = (
+            "FALLBACK FEED (ForexFactory): covers the CURRENT CALENDAR "
+            "WEEK only and carries NO released actual values — 'released' "
+            "events show schedule + consensus + prior only. For the "
+            "actual printed value or events outside this week, use "
+            "Google Search and answer the asker's actual question."
+        )
+    return resp
 
 
 def _build_earnings_date_tool():

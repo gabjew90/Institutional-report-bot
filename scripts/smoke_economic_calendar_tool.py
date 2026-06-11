@@ -165,14 +165,22 @@ def test_structured_fetch_query_filter_strict_then_relaxed():
         "and matches 'Nonfarm Payrolls'")
 
 
-def test_structured_fetch_empty_on_no_key():
-    """No Finnhub API key → return empty list, not crash. Caller must
-    handle empty gracefully."""
+def test_structured_fetch_raises_when_all_sources_down():
+    """2026-06-11 behavior change: no key (or Finnhub 403) now falls
+    back to ForexFactory; when THAT also fails, the fetcher raises
+    EconomicCalendarUnavailable instead of returning [] — so /ask says
+    'feed down' rather than 'no such event'."""
     from report import news_data
-    with patch("config.settings.finnhub_api_key", ""):
-        rows = news_data.fetch_economic_calendar_structured()
-    assert rows == []
-    _ok("structured fetch returns [] when no FINNHUB_API_KEY set")
+    with patch("config.settings.finnhub_api_key", ""), \
+         patch("report.news_data._fetch_json", return_value=None):
+        try:
+            news_data.fetch_economic_calendar_structured()
+            _fail("expected EconomicCalendarUnavailable when both "
+                  "sources fail")
+        except news_data.EconomicCalendarUnavailable:
+            pass
+    _ok("structured fetch raises EconomicCalendarUnavailable on dual "
+        "source failure (no silent [])")
 
 
 # === Bot tool builder + executor ===
@@ -372,7 +380,7 @@ if __name__ == "__main__":
     test_structured_fetch_signature()
     test_structured_fetch_classifies_status()
     test_structured_fetch_query_filter_strict_then_relaxed()
-    test_structured_fetch_empty_on_no_key()
+    test_structured_fetch_raises_when_all_sources_down()
     test_tool_builder_returns_valid_declaration()
     test_executor_ok_path()
     test_executor_no_match()

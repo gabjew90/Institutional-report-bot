@@ -268,6 +268,142 @@ def fetch_earnings_date_for_symbol(symbol: str) -> dict | None:
     }
 
 
+# ─── Economic calendar source layer ──────────────────────────────────
+# 2026-06-11: Finnhub's /calendar/economic endpoint started returning
+# 403 ("You don't have access to this resource") — the endpoint moved
+# behind a paid entitlement while earnings + news endpoints stayed on
+# the free tier. That morning's pulse shipped with "(fetch failed)" and
+# mis-dated the ECB decision to "next week" when it was THE SAME DAY.
+# Fix: ForexFactory's public weekly calendar JSON as a fallback source.
+# Finnhub is still tried first so access self-heals if the entitlement
+# comes back. FF caveats vs Finnhub:
+#   - this-week coverage only (Sun–Sat; lastweek/nextweek feeds 404)
+#   - NO released ACTUAL values (schedule + forecast + previous only)
+# Both consumers (pulse text block + /ask structured tool) read through
+# this layer, so the cross-product consistency guarantee survives the
+# source switch.
+
+_FF_CALENDAR_URL = "https://nfs.faireconomy.media/ff_calendar_thisweek.json"
+
+# FF titles → Finnhub-style names the existing Tier-1 keyword whitelist
+# already matches. Only renames where FF's name would otherwise slip
+# through the filter; CPI/PPI/GDP/retail-sales/ISM titles match as-is.
+_FF_TITLE_RENAMES = {
+    "non-farm employment change": "Non Farm Payrolls",
+    "main refinancing rate": "ECB Interest Rate Decision",
+    "official bank rate": "BoE Interest Rate Decision",
+    "boj policy rate": "BoJ Interest Rate Decision",
+    "federal funds rate": "FOMC Interest Rate Decision",
+}
+
+_FF_COUNTRY_MAP = {"USD": "US", "EUR": "EU", "GBP": "GB", "JPY": "JP"}
+
+
+class EconomicCalendarUnavailable(RuntimeError):
+    """Both Finnhub and the ForexFactory fallback failed. Callers must
+    surface 'feed down', NOT 'no events found' — during the 2026-06-11
+    outage the empty-list contract made /ask claim no Tier-1 events
+    existed, which reads as a fact about the calendar instead of a fact
+    about the feed."""
+
+
+def _parse_ff_value(raw) -> tuple[float | None, str]:
+    """Parse FF string values like '0.3%', '220K', '46.1', '<0.5%'.
+
+    Returns (number, unit_suffix); (None, '') when empty/unparseable.
+    """
+    import re as _re
+    s = str(raw or "").strip().lstrip("<>").strip()
+    m = _re.match(r"^(-?\d+(?:\.\d+)?)\s*([%KMBT]?)$", s)
+    if not m:
+        return None, ""
+    return float(m.group(1)), m.group(2)
+
+
+def _fetch_ff_economic_events() -> list[dict]:
+    """Fetch ForexFactory's weekly calendar, normalized to the Finnhub
+    economicCalendar event shape so downstream filtering/formatting is
+    source-agnostic. Empty list on fetch failure."""
+    data = _fetch_json(_FF_CALENDAR_URL)
+    if not data or not isinstance(data, list):
+        return []
+    out: list[dict] = []
+    for e in data:
+        if not isinstance(e, dict):
+            continue
+        title = (e.get("title") or "").strip()
+        if not title:
+            continue
+        event = _FF_TITLE_RENAMES.get(title.lower(), title)
+        raw_country = (e.get("country") or "").strip()
+        country = _FF_COUNTRY_MAP.get(raw_country, raw_country)
+        # FF date carries a UTC offset ("2026-06-11T08:30:00-04:00");
+        # Finnhub's `time` is naive UTC ("2026-06-11 12:30:00"-ish).
+        time_utc = ""
+        try:
+            dt = datetime.fromisoformat(e.get("date") or "")
+            time_utc = dt.astimezone(pytz.UTC).strftime("%Y-%m-%dT%H:%M:%S")
+        except (ValueError, TypeError):
+            pass
+        estimate, unit_a = _parse_ff_value(e.get("forecast"))
+        prev, unit_b = _parse_ff_value(e.get("previous"))
+        impact = (e.get("impact") or "").strip().lower()
+        if impact not in ("high", "medium", "low"):
+            impact = "low"  # "Holiday" and other non-ratings
+        out.append({
+            "event": event,
+            "country": country,
+            "time": time_utc,
+            "impact": impact,
+            "estimate": estimate,
+            "prev": prev,
+            "actual": None,  # FF feed carries no released actuals
+            "unit": unit_a or unit_b,
+            "source": "forexfactory",
+        })
+    return out
+
+
+def _fetch_economic_events_raw(start, end) -> tuple[list[dict], str]:
+    """Fetch raw economic events for [start, end] (date objects).
+
+    Finnhub first (full window, has actuals); ForexFactory this-week
+    fallback when Finnhub is inaccessible or no key is set. Returns
+    (events, source_label). Raises EconomicCalendarUnavailable when
+    BOTH sources fail — callers must distinguish feed-down from
+    legitimately-empty.
+    """
+    key = settings.finnhub_api_key
+    if key:
+        url = (
+            f"https://finnhub.io/api/v1/calendar/economic"
+            f"?from={start.isoformat()}&to={end.isoformat()}"
+            f"&token={urllib.parse.quote(key)}"
+        )
+        data = _fetch_json(url)
+        if data and isinstance(data, dict):
+            items = data.get("economicCalendar", []) or []
+            for e in items:
+                e.setdefault("source", "finnhub")
+            return items, "finnhub"
+        log.warning(
+            "Finnhub economic calendar unavailable (403 entitlement or "
+            "outage) — falling back to ForexFactory weekly feed"
+        )
+    ff = _fetch_ff_economic_events()
+    if ff:
+        start_iso, end_iso = start.isoformat(), end.isoformat()
+        kept = [
+            e for e in ff
+            if e.get("time") and start_iso <= e["time"][:10] <= end_iso
+        ]
+        return kept, "forexfactory"
+    raise EconomicCalendarUnavailable(
+        "Finnhub economic calendar inaccessible and ForexFactory "
+        "fallback failed"
+    )
+
+
 def fetch_economic_calendar_structured(
     query: str | None = None,
     days_window: int = 14,
@@ -301,28 +437,18 @@ def fetch_economic_calendar_structured(
                              still scheduled
       - unit               : str (e.g. "%", "K", "")
       - status             : "released" | "scheduled" | "past_no_data"
+      - source             : "finnhub" | "forexfactory" (fallback —
+                             this-week coverage only, no actuals)
 
-    Empty list on fetch failure or no matches. Caller must handle the
-    empty case — do NOT treat it as "no event" since it could be a
-    transient API issue.
+    Empty list = sources reachable, nothing matched. Raises
+    EconomicCalendarUnavailable when BOTH Finnhub and the ForexFactory
+    fallback fail — the /ask executor catches it and tells the model
+    the FEED is down (so it doesn't claim "no such event exists").
     """
-    key = settings.finnhub_api_key
-    if not key:
-        return []
-
     today = datetime.utcnow().date()
     start = today - timedelta(days=days_window)
     end = today + timedelta(days=days_window)
-    url = (
-        f"https://finnhub.io/api/v1/calendar/economic"
-        f"?from={start.isoformat()}&to={end.isoformat()}"
-        f"&token={urllib.parse.quote(key)}"
-    )
-    data = _fetch_json(url)
-    if not data or not isinstance(data, dict):
-        return []
-
-    items = data.get("economicCalendar", []) or []
+    items, _source = _fetch_economic_events_raw(start, end)
     from world_context import FED_SPEAKER_KEYWORDS
     TIER1_KEYWORDS = [
         *FED_SPEAKER_KEYWORDS,
@@ -423,30 +549,31 @@ def fetch_economic_calendar_structured(
             "actual": actual,
             "unit": e.get("unit", "") or "",
             "status": status,
+            "source": e.get("source", "finnhub"),
         })
     return rows
 
 
 def fetch_economic_calendar(days_ahead: int = 7) -> str:
     """Return upcoming US + major economic releases with actual dates/times/estimates."""
-    key = settings.finnhub_api_key
-    if not key:
-        return "ECONOMIC CALENDAR: (no FINNHUB_API_KEY — release dates/forecasts not verified)"
-
     today = datetime.utcnow().date()
     # Fetch from yesterday to capture data released overnight that's still context
     start = today - timedelta(days=1)
     end = today + timedelta(days=days_ahead)
-    url = (
-        f"https://finnhub.io/api/v1/calendar/economic"
-        f"?from={start.isoformat()}&to={end.isoformat()}"
-        f"&token={urllib.parse.quote(key)}"
-    )
-    data = _fetch_json(url)
-    if not data or not isinstance(data, dict):
-        return "ECONOMIC CALENDAR: (fetch failed)"
-
-    items = data.get("economicCalendar", []) or []
+    try:
+        items, source = _fetch_economic_events_raw(start, end)
+    except EconomicCalendarUnavailable:
+        # Honest outage line — synthesis must NOT date events from stale
+        # research notes as if verified (2026-06-11: calendar fetch
+        # failed and the pulse dated the same-day ECB decision to
+        # "next week" off an older PDF).
+        return (
+            "ECONOMIC CALENDAR: (ALL calendar sources failed — Finnhub "
+            "down and fallback unreachable. Do NOT state specific "
+            "release dates/times as verified; if research PDFs "
+            "disagree on an event's date, trust only PDFs published "
+            "TODAY and say the date is per that bank's note.)"
+        )
     # Whitelist of event name substrings that actually move markets for a US
     # options/crypto trader. Anything else (regional Fed surveys, Fed governor
     # speeches that aren't the chair, minor US data, foreign macro without US
@@ -499,6 +626,11 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
     filtered.sort(key=lambda e: e.get("time", ""))
 
     if not filtered:
+        if source == "forexfactory":
+            return (
+                "ECONOMIC CALENDAR (fallback feed, this calendar week "
+                "only): no high-impact releases in the visible window."
+            )
         return f"ECONOMIC CALENDAR (next {days_ahead}d): no high-impact releases."
 
     now_utc = datetime.utcnow()
@@ -538,6 +670,17 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
             upcoming_lines.append(row)
 
     out = []
+    if source == "forexfactory":
+        # Degraded-mode banner: the synthesis prompt leans on ACTUAL
+        # values for [RELEASED] RECAP treatment — FF doesn't carry them,
+        # and FF only covers the current calendar week.
+        out.append(
+            "ECONOMIC CALENDAR — FALLBACK FEED (Finnhub down; "
+            "ForexFactory weekly feed: THIS CALENDAR WEEK ONLY, no "
+            "released ACTUAL values — released events below show "
+            "schedule + consensus only; pull actual printed values "
+            "from research PDFs published after the release):"
+        )
     if released_lines:
         out.append("ECONOMIC EVENTS ALREADY RELEASED (belongs in RECAP, NEVER in WHAT TO WATCH):")
         out.extend(released_lines)
@@ -546,6 +689,6 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
             out.append("")
         out.append("ECONOMIC EVENTS STILL UPCOMING (belongs in WHAT TO WATCH):")
         out.extend(upcoming_lines)
-    if not out:
+    if len(out) <= 1:
         return "ECONOMIC CALENDAR: no high-impact releases in window."
     return "\n".join(out)
