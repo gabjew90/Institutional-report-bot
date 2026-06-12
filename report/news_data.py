@@ -320,34 +320,12 @@ def _parse_ff_value(raw) -> tuple[float | None, str]:
     return float(m.group(1)), m.group(2)
 
 
-# FF rate-limits burst requests (observed 2026-06-11: third hit within
-# ~2s returned 429). It's a weekly file — cache the normalized rows for
-# 10 minutes, and serve stale-on-error for up to 6h so a transient 429
-# never escalates to "ALL calendar sources failed".
-_FF_CACHE: dict = {"at": None, "rows": None}
-_FF_CACHE_TTL_S = 600
-_FF_CACHE_STALE_OK_S = 6 * 3600
-
-
 def _fetch_ff_economic_events() -> list[dict]:
     """Fetch ForexFactory's weekly calendar, normalized to the Finnhub
     economicCalendar event shape so downstream filtering/formatting is
-    source-agnostic. Cached 10 min (stale-tolerated 6h on fetch
-    failure). Empty list when no data and no usable cache."""
-    now = datetime.utcnow()
-    cached_at, cached_rows = _FF_CACHE["at"], _FF_CACHE["rows"]
-    if cached_rows is not None and cached_at is not None:
-        if (now - cached_at).total_seconds() < _FF_CACHE_TTL_S:
-            return cached_rows
+    source-agnostic. Empty list on fetch failure."""
     data = _fetch_json(_FF_CALENDAR_URL)
     if not data or not isinstance(data, list):
-        if cached_rows is not None and cached_at is not None and \
-                (now - cached_at).total_seconds() < _FF_CACHE_STALE_OK_S:
-            log.warning(
-                "ForexFactory fetch failed — serving cached calendar "
-                f"rows from {cached_at:%H:%M} UTC"
-            )
-            return cached_rows
         return []
     out: list[dict] = []
     for e in data:
@@ -383,8 +361,6 @@ def _fetch_ff_economic_events() -> list[dict]:
             "unit": unit_a or unit_b,
             "source": "forexfactory",
         })
-    _FF_CACHE["at"] = now
-    _FF_CACHE["rows"] = out
     return out
 
 
