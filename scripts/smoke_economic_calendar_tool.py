@@ -171,6 +171,8 @@ def test_structured_fetch_raises_when_all_sources_down():
     EconomicCalendarUnavailable instead of returning [] — so /ask says
     'feed down' rather than 'no such event'."""
     from report import news_data
+    news_data._FF_CACHE["at"] = None   # cold FF cache — a warm cache
+    news_data._FF_CACHE["rows"] = None  # would mask the dual failure
     with patch("config.settings.finnhub_api_key", ""), \
          patch("report.news_data._fetch_json", return_value=None):
         try:
