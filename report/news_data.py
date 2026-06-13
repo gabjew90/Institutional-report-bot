@@ -458,14 +458,39 @@ def _fetch_economic_events_raw(start, end) -> tuple[list[dict], str]:
                 "Finnhub economic calendar unavailable (transient) — "
                 "falling back to ForexFactory weekly feed this cycle"
             )
+    start_iso, end_iso = start.isoformat(), end.isoformat()
     ff = _fetch_ff_economic_events()
-    if ff:
-        start_iso, end_iso = start.isoformat(), end.isoformat()
-        kept = [
-            e for e in ff
-            if e.get("time") and start_iso <= e["time"][:10] <= end_iso
-        ]
-        return kept, "forexfactory"
+    kept = [
+        e for e in ff
+        if e.get("time") and start_iso <= e["time"][:10] <= end_iso
+    ]
+
+    # FRED layer (2026-06-13, key-optional): extends the schedule
+    # horizon beyond FF's this-calendar-week window and fills released
+    # actual values that FF never carries. FRED rows are only added for
+    # dates OUTSIDE the FF feed's coverage so the two sources never
+    # produce duplicate rows for the same print — FF wins inside its
+    # window because it has consensus + exact intraday times.
+    fred_added = 0
+    try:
+        from report import fred_data as _fred
+        ff_dates = {e["time"][:10] for e in ff if e.get("time")}
+        ff_max = max(ff_dates) if ff_dates else ""
+        for row in _fred.fetch_fred_release_schedule():
+            d = (row.get("time") or "")[:10]
+            if not d or not (start_iso <= d <= end_iso):
+                continue
+            if ff_max and d <= ff_max:
+                continue  # inside FF's covered horizon — FF is source
+            kept.append(row)
+            fred_added += 1
+        kept = _fred.enrich_rows_with_fred_actuals(kept)
+    except Exception as e:
+        log.warning(f"FRED calendar layer failed (non-fatal): {e}")
+
+    if kept:
+        kept.sort(key=lambda e: e.get("time", ""))
+        return kept, ("forexfactory+fred" if fred_added else "forexfactory")
     raise EconomicCalendarUnavailable(
         "Finnhub economic calendar inaccessible and ForexFactory "
         "fallback failed"
@@ -618,6 +643,8 @@ def fetch_economic_calendar_structured(
             "unit": e.get("unit", "") or "",
             "status": status,
             "source": e.get("source", "finnhub"),
+            **({"actual_period": e["actual_period"]}
+               if e.get("actual_period") else {}),
         })
     return rows
 
@@ -694,10 +721,10 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
     filtered.sort(key=lambda e: e.get("time", ""))
 
     if not filtered:
-        if source == "forexfactory":
+        if source.startswith("forexfactory"):
             return (
-                "ECONOMIC CALENDAR (fallback feed, this calendar week "
-                "only): no high-impact releases in the visible window."
+                "ECONOMIC CALENDAR (fallback feed): no high-impact "
+                "releases in the visible window."
             )
         return f"ECONOMIC CALENDAR (next {days_ahead}d): no high-impact releases."
 
@@ -725,7 +752,12 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
 
         bits = [time, f"[{country}]", event, f"impact={impact}"]
         if actual is not None:
-            bits.append(f"ACTUAL={actual}{unit}")
+            # actual_period (FRED-enriched rows) names the reference
+            # month — "ACTUAL=4.25% (for 2026-05)" — so synthesis can't
+            # attach May's print to a June row.
+            period = e.get("actual_period")
+            suffix = f" (for {period})" if period else ""
+            bits.append(f"ACTUAL={actual}{unit}{suffix}")
         if estimate is not None:
             bits.append(f"est={estimate}{unit}")
         if prev is not None:
@@ -748,6 +780,16 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
             "released ACTUAL values — released events below show "
             "schedule + consensus only; pull actual printed values "
             "from research PDFs published after the release):"
+        )
+    elif source == "forexfactory+fred":
+        out.append(
+            "ECONOMIC CALENDAR — FALLBACK FEED (Finnhub down; blended "
+            "sources): consensus estimates only exist for THIS calendar "
+            "week (ForexFactory); dates beyond this week come from the "
+            "FRED official release calendar (no consensus posted — say "
+            "'no consensus posted yet', do NOT invent one); ACTUAL "
+            "values where shown are official FRED numbers and name "
+            "their reference month:"
         )
     if released_lines:
         out.append("ECONOMIC EVENTS ALREADY RELEASED (belongs in RECAP, NEVER in WHAT TO WATCH):")

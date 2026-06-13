@@ -2446,13 +2446,18 @@ async def _execute_economic_calendar(args: dict) -> dict:
         "events": events[:30],
         "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
     }
-    if any(e.get("source") == "forexfactory" for e in events[:30]):
+    sources = {e.get("source") for e in events[:30]}
+    if sources & {"forexfactory", "fred"}:
         resp["coverage_note"] = (
-            "FALLBACK FEED (ForexFactory): covers the CURRENT CALENDAR "
-            "WEEK only and carries NO released actual values — 'released' "
-            "events show schedule + consensus + prior only. For the "
-            "actual printed value or events outside this week, use "
-            "Google Search and answer the asker's actual question."
+            "FALLBACK MODE (Finnhub calendar down). Consensus estimates "
+            "exist only for the CURRENT CALENDAR WEEK (ForexFactory "
+            "rows); rows sourced 'fred' are official release dates "
+            "beyond this week with NO consensus — say 'no consensus "
+            "posted yet', do NOT invent one. Where `actual` is present "
+            "it is an official FRED number and `actual_period` names "
+            "the reference month — quote it as that month's print. For "
+            "anything still missing, use Google Search and answer the "
+            "asker's actual question."
         )
     return resp
 

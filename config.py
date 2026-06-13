@@ -27,6 +27,14 @@ class Settings(BaseSettings):
     # Finnhub (optional — enables live market news + economic calendar)
     finnhub_api_key: str = ""
 
+    # FRED / St. Louis Fed (optional — free key from
+    # fred.stlouisfed.org → My Account → API Keys). Extends the economic
+    # calendar beyond ForexFactory's this-week window (US release dates
+    # weeks ahead) and fills actual printed values for released US data.
+    # Added 2026-06-13 after Finnhub gated /calendar/economic behind a
+    # paid entitlement. Empty = FRED layer dormant.
+    fred_api_key: str = ""
+
     # Daily query cap per Discord user for /ask + @mention. Resets at UTC
     # midnight. Set to 0 to disable the cap (not recommended).
     # The /ask backend is Gemini with Google Search grounding (reuses
