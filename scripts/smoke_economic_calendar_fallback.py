@@ -48,11 +48,14 @@ def _fail(msg):
 
 
 def _reset_ff_cache():
-    """FF responses are cached 10 min in-module (burst-429 protection).
-    Tests must start cold or they read the previous test's payload."""
+    """FF responses are cached 10 min in-module (burst-429 protection)
+    and Finnhub 403s trip a 12h circuit breaker. Tests must start cold
+    or they read the previous test's state."""
     from report import news_data
     news_data._FF_CACHE["at"] = None
     news_data._FF_CACHE["rows"] = None
+    news_data._FINNHUB_ECON_BLOCK["until"] = None
+    news_data._LAST_HTTP_ERROR_CODE = None
 
 
 def _ff_payload(now=None):
@@ -394,6 +397,119 @@ def test_burst_does_not_escalate_to_total_outage():
         "total-outage line")
 
 
+def test_403_trips_circuit_breaker():
+    """A Finnhub 403 (entitlement block — won't clear next cycle) must
+    trip the 12h breaker: subsequent calls skip Finnhub entirely and go
+    straight to FF, instead of burning a doomed request + warning line
+    every 15-minute dump cycle."""
+    from report import news_data
+    now = datetime.utcnow()
+    calls = []
+
+    def fake_fetch(url, timeout=8.0):
+        calls.append(url)
+        if "finnhub.io" in url:
+            news_data._LAST_HTTP_ERROR_CODE = 403
+            return None
+        news_data._LAST_HTTP_ERROR_CODE = None
+        return _ff_payload(now)
+
+    with patch("config.settings.finnhub_api_key", "test_key"), \
+         patch("report.news_data._fetch_json", side_effect=fake_fetch):
+        _, src1 = news_data._fetch_economic_events_raw(
+            now.date(), now.date() + timedelta(days=7))
+        news_data._FF_CACHE["at"] = None  # force FF refetch visibility
+        news_data._FF_CACHE["rows"] = None
+        _, src2 = news_data._fetch_economic_events_raw(
+            now.date(), now.date() + timedelta(days=7))
+
+    assert src1 == "forexfactory" and src2 == "forexfactory"
+    finnhub_hits = [u for u in calls if "finnhub.io" in u]
+    assert len(finnhub_hits) == 1, (
+        f"breaker must stop the second Finnhub probe, got "
+        f"{len(finnhub_hits)} hits"
+    )
+    assert news_data._FINNHUB_ECON_BLOCK["until"] is not None
+    _ok("403 trips breaker: one Finnhub probe, then straight to FF")
+
+
+def test_transient_failure_does_not_trip_breaker():
+    """429/timeout/5xx are transient — Finnhub must be retried on the
+    next call (no breaker), so a one-off hiccup doesn't bench the
+    richer source for 12h."""
+    from report import news_data
+    now = datetime.utcnow()
+    calls = []
+
+    def fake_fetch(url, timeout=8.0):
+        calls.append(url)
+        if "finnhub.io" in url:
+            news_data._LAST_HTTP_ERROR_CODE = 429
+            return None
+        news_data._LAST_HTTP_ERROR_CODE = None
+        return _ff_payload(now)
+
+    with patch("config.settings.finnhub_api_key", "test_key"), \
+         patch("report.news_data._fetch_json", side_effect=fake_fetch):
+        news_data._fetch_economic_events_raw(
+            now.date(), now.date() + timedelta(days=7))
+        news_data._FF_CACHE["at"] = None
+        news_data._FF_CACHE["rows"] = None
+        news_data._fetch_economic_events_raw(
+            now.date(), now.date() + timedelta(days=7))
+
+    finnhub_hits = [u for u in calls if "finnhub.io" in u]
+    assert len(finnhub_hits) == 2, (
+        f"transient failure must NOT trip breaker, got "
+        f"{len(finnhub_hits)} Finnhub hits"
+    )
+    assert news_data._FINNHUB_ECON_BLOCK["until"] is None
+    _ok("transient failure (429) does not trip breaker — Finnhub "
+        "retried next call")
+
+
+def test_breaker_expiry_reprobes_and_success_clears():
+    """After the 12h window the next call probes Finnhub again; a
+    successful response clears the block — entitlement restoration
+    self-heals with zero code changes."""
+    from report import news_data
+    now = datetime.utcnow()
+    today = now.date()
+    fake_finnhub = {"economicCalendar": [
+        {"event": "CPI YoY", "country": "US",
+         "time": f"{today}T12:30:00", "impact": "high",
+         "estimate": 4.0, "prev": 3.8, "actual": 4.25, "unit": "%"},
+    ]}
+    calls = []
+
+    def fake_fetch(url, timeout=8.0):
+        calls.append(url)
+        news_data._LAST_HTTP_ERROR_CODE = None
+        return fake_finnhub if "finnhub.io" in url else _ff_payload(now)
+
+    # Expired block: re-probe happens and success clears it
+    news_data._FINNHUB_ECON_BLOCK["until"] = now - timedelta(minutes=1)
+    with patch("config.settings.finnhub_api_key", "test_key"), \
+         patch("report.news_data._fetch_json", side_effect=fake_fetch):
+        items, source = news_data._fetch_economic_events_raw(
+            today, today + timedelta(days=7))
+    assert source == "finnhub"
+    assert news_data._FINNHUB_ECON_BLOCK["until"] is None
+    # Active block: Finnhub skipped without probing
+    calls.clear()
+    news_data._FINNHUB_ECON_BLOCK["until"] = now + timedelta(hours=1)
+    news_data._FF_CACHE["at"] = None
+    news_data._FF_CACHE["rows"] = None
+    with patch("config.settings.finnhub_api_key", "test_key"), \
+         patch("report.news_data._fetch_json", side_effect=fake_fetch):
+        _, source2 = news_data._fetch_economic_events_raw(
+            today, today + timedelta(days=7))
+    assert source2 == "forexfactory"
+    assert not any("finnhub.io" in u for u in calls)
+    _ok("breaker: expiry re-probes + success clears; active block "
+        "skips Finnhub without a request")
+
+
 _ALL_TESTS = [
     test_ff_normalizer_field_mapping,
     test_ff_value_parser_edge_cases,
@@ -408,6 +524,9 @@ _ALL_TESTS = [
     test_executor_no_coverage_note_on_finnhub,
     test_ff_cache_serves_within_ttl_and_stale_on_error,
     test_burst_does_not_escalate_to_total_outage,
+    test_403_trips_circuit_breaker,
+    test_transient_failure_does_not_trip_breaker,
+    test_breaker_expiry_reprobes_and_success_clears,
 ]
 
 if __name__ == "__main__":

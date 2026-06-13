@@ -8,6 +8,7 @@ Sign up free at https://finnhub.io/register.
 
 import json
 import logging
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
@@ -60,11 +61,26 @@ _MAJOR_TICKERS = {
 }
 
 
+# HTTP status of the most recent _fetch_json failure (None on success
+# or non-HTTP errors). Lets callers distinguish a 403 entitlement block
+# (back off — it won't fix itself this hour) from transient errors
+# (retry next cycle). Module-global because _fetch_json's None-on-error
+# contract is baked into every fetcher + smoke; widening the return
+# type would churn all of them.
+_LAST_HTTP_ERROR_CODE: int | None = None
+
+
 def _fetch_json(url: str, timeout: float = 8.0) -> list | dict | None:
+    global _LAST_HTTP_ERROR_CODE
+    _LAST_HTTP_ERROR_CODE = None
     req = urllib.request.Request(url, headers={"User-Agent": "MarketPulseBot/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        _LAST_HTTP_ERROR_CODE = e.code
+        log.warning(f"Finnhub fetch failed: {e}")
+        return None
     except Exception as e:
         log.warning(f"Finnhub fetch failed: {e}")
         return None
@@ -388,6 +404,18 @@ def _fetch_ff_economic_events() -> list[dict]:
     return out
 
 
+# Circuit breaker for Finnhub's /calendar/economic 403. A 403 is an
+# entitlement block (endpoint moved behind a paid tier 2026-06-11) —
+# it will not clear in the next 15-minute cycle, so probing every call
+# just burns a doomed request and a warning line per dump. After a 403
+# we skip Finnhub for 12h, then probe again — so if the entitlement
+# ever comes back, the richer source (with actuals) resumes within a
+# day with zero code changes. Transient failures (429/5xx/timeouts) do
+# NOT trip the breaker; they retry on the next call as before.
+_FINNHUB_ECON_BLOCK: dict = {"until": None}
+_FINNHUB_ECON_BLOCK_HOURS = 12
+
+
 def _fetch_economic_events_raw(start, end) -> tuple[list[dict], str]:
     """Fetch raw economic events for [start, end] (date objects).
 
@@ -398,7 +426,11 @@ def _fetch_economic_events_raw(start, end) -> tuple[list[dict], str]:
     legitimately-empty.
     """
     key = settings.finnhub_api_key
-    if key:
+    blocked_until = _FINNHUB_ECON_BLOCK["until"]
+    finnhub_blocked = (
+        blocked_until is not None and datetime.utcnow() < blocked_until
+    )
+    if key and not finnhub_blocked:
         url = (
             f"https://finnhub.io/api/v1/calendar/economic"
             f"?from={start.isoformat()}&to={end.isoformat()}"
@@ -409,11 +441,23 @@ def _fetch_economic_events_raw(start, end) -> tuple[list[dict], str]:
             items = data.get("economicCalendar", []) or []
             for e in items:
                 e.setdefault("source", "finnhub")
+            _FINNHUB_ECON_BLOCK["until"] = None
             return items, "finnhub"
-        log.warning(
-            "Finnhub economic calendar unavailable (403 entitlement or "
-            "outage) — falling back to ForexFactory weekly feed"
-        )
+        if _LAST_HTTP_ERROR_CODE == 403:
+            _FINNHUB_ECON_BLOCK["until"] = (
+                datetime.utcnow() + timedelta(hours=_FINNHUB_ECON_BLOCK_HOURS)
+            )
+            log.warning(
+                f"Finnhub economic calendar 403 (entitlement block) — "
+                f"skipping Finnhub for {_FINNHUB_ECON_BLOCK_HOURS}h, "
+                f"using ForexFactory fallback; will re-probe after "
+                f"{_FINNHUB_ECON_BLOCK['until']:%Y-%m-%d %H:%M} UTC"
+            )
+        else:
+            log.warning(
+                "Finnhub economic calendar unavailable (transient) — "
+                "falling back to ForexFactory weekly feed this cycle"
+            )
     ff = _fetch_ff_economic_events()
     if ff:
         start_iso, end_iso = start.isoformat(), end.isoformat()
