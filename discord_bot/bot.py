@@ -3315,6 +3315,16 @@ def _has_repetition_glitch(text: str) -> bool:
     if len(tokens) < 6:
         return False
 
+    # Gate 0: immediate exact duplicate of any alpha token ("is is",
+    # "the the", "turned turned"). The other gates skip these — Gate 1
+    # needs a content word 3x, Gates 2/3 need a content token in the
+    # bigram, so a doubled stopword slips entirely. Immediate verbatim
+    # token repetition is glitch-characteristic; the mechanical
+    # collapser fixes it, this gate just makes the retry + QC log fire.
+    for i in range(len(tokens) - 1):
+        if tokens[i] == tokens[i + 1] and len(tokens[i]) >= 2:
+            return True
+
     # Gate 1: tail frequency. Any content-word repeating 3+ times in
     # the last 15 alpha tokens of the answer.
     tail = tokens[-15:]
@@ -3385,6 +3395,38 @@ def _has_repetition_glitch(text: str) -> bool:
 # wrap-ups, source-prefix) are NOT auto-rewritten — rewriting natural
 # prose mechanically breaks sentence flow. They're surfaced as log
 # warnings so we can monitor frequency without shipping bad rewrites.
+# Adjacent-duplication collapse. Each unit's FIRST token must start
+# with a letter — this protects legitimate numeric sequences (strike
+# lists "580 585 590", "94, 99") from being collapsed while still
+# catching word/phrase doublings. Longer phrases collapse first so
+# "cautious as cautious as" resolves as a 2-gram before word-level
+# runs. IGNORECASE so "The the" collapses; the captured (first) form's
+# casing is kept.
+_DUP_3GRAM_RE = re.compile(r"\b([A-Za-z]\w*\s+\w+\s+\w+)(\s+\1\b)+", re.IGNORECASE)
+_DUP_2GRAM_RE = re.compile(r"\b([A-Za-z]\w*\s+\w+)(\s+\1\b)+", re.IGNORECASE)
+_DUP_WORD_RE = re.compile(r"\b([A-Za-z]\w*)(\s+\1\b)+", re.IGNORECASE)
+
+
+def _collapse_adjacent_dupes(text: str) -> str:
+    """Collapse immediate verbatim repeats of a word or 2-3 word phrase.
+
+    "continue to continue" -> "continue to", "turned turned" ->
+    "turned", "cautious as cautious as" -> "cautious as". Immediate
+    verbatim repetition is glitch-characteristic in financial prose;
+    legit cases ("very very") are rare and collapsing them is benign.
+    Numeric sequences are protected (units must start with a letter),
+    so strike lists and number ranges are untouched. Does NOT fix
+    one-word-gap echoes ("X Y X") — collapsing those risks legit
+    phrasing ("dollar for dollar"), left to the detector+retry.
+    """
+    if not text:
+        return text
+    out = _DUP_3GRAM_RE.sub(r"\1", text)
+    out = _DUP_2GRAM_RE.sub(r"\1", out)
+    out = _DUP_WORD_RE.sub(r"\1", out)
+    return out
+
+
 def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     """Return (cleaned_text, list_of_hit_kinds). Em-dashes / semicolons
     get replaced with commas; other lint hits are detected and named
@@ -3416,6 +3458,17 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     cleaned = re.sub(r';\s+', ', ', cleaned)
     # Collapse any ", , " artifact from adjacent replacements.
     cleaned = re.sub(r',\s*,', ',', cleaned)
+    # Adjacent-duplication collapse (2026-06-13 QC). The repetition
+    # detector + retry catches token loops, but it FIRES-AND-FAILS on
+    # verbatim adjacent doublings: when the retry re-glitches, the
+    # original garbled text ships anyway. Observed 06-10: "turned
+    # increasingly turned cautious as cautious as the recent price
+    # action suggests". This is a deterministic cleanup that removes
+    # the doubling regardless of whether the LLM retry cooperated.
+    collapsed = _collapse_adjacent_dupes(cleaned)
+    if collapsed != cleaned:
+        hit_kinds.append("adjacent_dupe")
+        cleaned = collapsed
     return cleaned, hit_kinds
 
 
