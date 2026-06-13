@@ -53,24 +53,65 @@ _RELEASE_EVENT_MAP = {
 }
 _RELEASE_TIME_ET = "08:30"
 
-# Actuals: event family → (FRED series id, transform, unit).
-# Transforms produce the number the pulse/desk actually quotes:
+# Actuals transforms — produce the number the pulse/desk actually quotes:
 #   yoy_pct   — % change vs 12 observations ago (monthly series)
 #   mom_pct   — % change vs previous observation
 #   m_change  — level change vs previous observation (PAYEMS is in
 #               thousands, so the change IS the "175K" NFP number)
-#   level     — latest observation as-is
-_ACTUAL_SERIES = [
-    # (substring matched against lowercased event name, series, transform, unit)
-    ("non farm payroll", "PAYEMS", "m_change", "K"),
-    ("employment situation", "PAYEMS", "m_change", "K"),
-    ("unemployment rate", "UNRATE", "level", "%"),
-    ("cpi", "CPIAUCSL", "yoy_pct", "%"),
-    ("ppi", "PPIFIS", "yoy_pct", "%"),
-    ("retail sales", "RSAFS", "mom_pct", "%"),
-    ("gdp", "A191RL1Q225SBEA", "level", "%"),
-    ("pce", "PCEPILFE", "yoy_pct", "%"),
-]
+#   level     — latest observation as-is (already a %, e.g. UNRATE, GDP)
+#
+# Series choice is keyed on BOTH core-vs-headline AND m/m-vs-y/y read
+# from the event NAME — a coarse "any cpi -> headline YoY" match
+# stapled headline CPI YoY (4.27%) onto "Core CPI m/m" rows (consensus
+# 0.3%), an obvious wrong-number mismatch (caught live 2026-06-13).
+# Headline YoY uses the NSA index (the official BLS 12-month figure
+# desks quote); m/m uses the SA index (BLS headline m/m is seasonally
+# adjusted). Quarterly GDP gets a wider staleness window since its
+# print-to-period gap is a full quarter.
+_STALE_DAYS_MONTHLY = 75
+_STALE_DAYS_QUARTERLY = 160
+
+
+def _resolve_actual_series(event_name: str):
+    """(series_id, transform, unit, max_stale_days) for an event, or
+    None when we can't confidently match — honest gap beats wrong fill.
+    """
+    name = (event_name or "").lower()
+    core = "core" in name
+    if "m/m" in name or "mom" in name or "month-over-month" in name:
+        tf = "mom_pct"
+    elif "y/y" in name or "yoy" in name or "year-over-year" in name:
+        tf = "yoy_pct"
+    else:
+        tf = None  # bare name → per-family default below
+
+    if ("non farm payroll" in name or "nonfarm payroll" in name
+            or "employment situation" in name
+            or "employment change" in name):  # raw ForexFactory title
+        return ("PAYEMS", "m_change", "K", _STALE_DAYS_MONTHLY)
+    if "unemployment rate" in name:
+        return ("UNRATE", "level", "%", _STALE_DAYS_MONTHLY)
+    if "cpi" in name or "consumer price" in name:
+        if tf == "mom_pct":
+            series = "CPILFESL" if core else "CPIAUCSL"  # SA for m/m
+        else:
+            series = "CPILFENS" if core else "CPIAUCNS"  # NSA for y/y
+            tf = "yoy_pct"
+        return (series, tf, "%", _STALE_DAYS_MONTHLY)
+    if "pce" in name or "personal income" in name or "personal consumption" in name:
+        series = "PCEPILFE" if core else "PCEPI"
+        return (series, tf or "yoy_pct", "%", _STALE_DAYS_MONTHLY)
+    if "ppi" in name or "producer price" in name:
+        if core:
+            return None  # core-PPI FRED series mapping is ambiguous — skip
+        return ("PPIFIS", tf or "mom_pct", "%", _STALE_DAYS_MONTHLY)
+    if "retail sales" in name:
+        series = "RSFSXMV" if core else "RSAFS"  # ex-autos for "core"
+        return (series, tf or "mom_pct", "%", _STALE_DAYS_MONTHLY)
+    if "gdp" in name or "gross domestic product" in name:
+        # Real GDP, QoQ annualized %, already a level
+        return ("A191RL1Q225SBEA", "level", "%", _STALE_DAYS_QUARTERLY)
+    return None
 
 # Schedule changes rarely; observations update on release mornings.
 # Modest TTLs keep us polite at the 15-minute dump cadence.
@@ -233,23 +274,23 @@ def enrich_rows_with_fred_actuals(rows: list[dict]) -> list[dict]:
         t = row.get("time") or ""
         if not t or t > now_iso:
             continue
-        name = (row.get("event") or "").lower()
-        for needle, series, transform, unit in _ACTUAL_SERIES:
-            if needle in name:
-                value, period = _compute_actual(series, transform)
-                if value is None or not period:
-                    break
-                try:
-                    row_d = datetime.strptime(t[:10], "%Y-%m-%d")
-                    per_d = datetime.strptime(period + "-01", "%Y-%m-%d")
-                    if abs((row_d - per_d).days) > 75:
-                        break  # series stale vs event — don't mislabel
-                except (ValueError, TypeError):
-                    break
-                row["actual"] = value
-                row["actual_period"] = period
-                if not row.get("unit"):
-                    row["unit"] = unit
-                row["actual_source"] = f"fred:{series}"
-                break
+        resolved = _resolve_actual_series(row.get("event") or "")
+        if not resolved:
+            continue
+        series, transform, unit, max_stale = resolved
+        value, period = _compute_actual(series, transform)
+        if value is None or not period:
+            continue
+        try:
+            row_d = datetime.strptime(t[:10], "%Y-%m-%d")
+            per_d = datetime.strptime(period + "-01", "%Y-%m-%d")
+            if abs((row_d - per_d).days) > max_stale:
+                continue  # series stale vs event — don't mislabel
+        except (ValueError, TypeError):
+            continue
+        row["actual"] = value
+        row["actual_period"] = period
+        if not row.get("unit"):
+            row["unit"] = unit
+        row["actual_source"] = f"fred:{series}"
     return rows

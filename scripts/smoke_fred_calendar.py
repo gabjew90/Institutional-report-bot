@@ -170,6 +170,68 @@ def test_actual_transforms():
         "period naming")
 
 
+def test_resolve_series_core_headline_and_transform():
+    """Regression for the 2026-06-13 live bug: a coarse 'any cpi ->
+    headline YoY' match stapled headline CPI YoY (4.27%) onto 'Core CPI
+    m/m' rows (consensus 0.3%). The resolver must key on BOTH
+    core-vs-headline AND m/m-vs-y/y from the event name."""
+    from report.fred_data import _resolve_actual_series as R
+    # CPI matrix
+    assert R("CPI m/m")[:2] == ("CPIAUCSL", "mom_pct")
+    assert R("CPI y/y")[:2] == ("CPIAUCNS", "yoy_pct")
+    assert R("Core CPI m/m")[:2] == ("CPILFESL", "mom_pct")
+    assert R("Core CPI y/y")[:2] == ("CPILFENS", "yoy_pct")
+    # NFP / unemployment
+    assert R("Non-Farm Employment Change")[:2] == ("PAYEMS", "m_change")
+    assert R("Unemployment Rate")[:2] == ("UNRATE", "level")
+    # PCE core vs headline
+    assert R("Core PCE Price Index m/m")[:2] == ("PCEPILFE", "mom_pct")
+    assert R("PCE Price Index y/y")[:2] == ("PCEPI", "yoy_pct")
+    # Retail sales core (ex-autos) vs headline
+    assert R("Retail Sales m/m")[:2] == ("RSAFS", "mom_pct")
+    assert R("Core Retail Sales m/m")[:2] == ("RSFSXMV", "mom_pct")
+    # GDP gets the quarterly staleness window
+    gdp = R("GDP q/q")
+    assert gdp[:2] == ("A191RL1Q225SBEA", "level")
+    assert gdp[3] > 100, "GDP needs a quarterly staleness window"
+    # core PPI is ambiguous -> no match (honest gap)
+    assert R("Core PPI m/m") is None
+    assert R("PPI m/m")[:2] == ("PPIFIS", "mom_pct")
+    # unmapped -> None
+    assert R("UoM Consumer Sentiment") is None
+    _ok("resolver: core/headline x m/m/y/y matrix correct; core-PPI + "
+        "unmapped -> None")
+
+
+def test_enrich_core_mom_not_headline_yoy():
+    """End-to-end version of the live bug: a 'Core CPI m/m' row must NOT
+    receive headline CPI YoY. With distinct core/headline series, the
+    core m/m row gets a small MoM number, not the ~4% headline YoY."""
+    from report import fred_data
+    now = datetime.utcnow()
+    past = (now - timedelta(hours=20)).strftime("%Y-%m-%dT%H:%M:%S")
+    recent = (now - timedelta(days=15)).strftime("%Y-%m-01")
+
+    # Core series (CPILFESL) returns a benign m/m ~0.2%; if the matcher
+    # wrongly used headline YoY it'd be ~4%.
+    core_obs = _obs([(recent, 100.2),
+                     ((now - timedelta(days=45)).strftime("%Y-%m-01"), 100.0)])
+
+    def fake_get(path, params):
+        # Only the core SA series should ever be requested for this row
+        assert params.get("series_id") == "CPILFESL", params.get("series_id")
+        return core_obs
+
+    rows = [{"event": "Core CPI m/m", "country": "US", "time": past,
+             "actual": None, "unit": "%", "source": "forexfactory"}]
+    with patch("config.settings.fred_api_key", "test_key"), \
+         patch("report.fred_data._fred_get", side_effect=fake_get):
+        out = fred_data.enrich_rows_with_fred_actuals(rows)
+    assert out[0]["actual"] == 0.2, out[0]["actual"]  # 100.2/100.0-1
+    assert out[0]["actual_source"] == "fred:CPILFESL"
+    _ok("enrich: Core CPI m/m -> core SA MoM (0.2%), not headline YoY")
+
+
 def test_actuals_skip_missing_values():
     """FRED encodes missing observations as value '.' — they must be
     skipped, not parsed as 0."""
@@ -402,6 +464,8 @@ _ALL = [
     test_schedule_dormant_without_key,
     test_schedule_cache,
     test_actual_transforms,
+    test_resolve_series_core_headline_and_transform,
+    test_enrich_core_mom_not_headline_yoy,
     test_actuals_skip_missing_values,
     test_enrich_rows_and_staleness_guard,
     test_merge_adds_fred_only_beyond_ff_horizon,
