@@ -463,7 +463,7 @@ Designed to be invoked under a Monitor tool or any process that converts stdout 
 
 ## 10. Discord commands
 
-Password gate: `COMMAND_PASSWORD=jamalbot` env var. Gated commands take a `password` arg.
+Password gate: `COMMAND_PASSWORD=<set-in-railway-env>` env var. Gated commands take a `password` arg.
 
 ### Open commands
 
@@ -472,10 +472,10 @@ Password gate: `COMMAND_PASSWORD=jamalbot` env var. Gated commands take a `passw
 
 ### Gated commands
 
-- **`/load hours:N password:jamalbot`** — ingest Dropbox PDFs from last N hours (max 48). Live progress.
-- **`/reanalyze hours:N password:jamalbot`** — re-analyze PDFs already in DB with the current prompt (appends new pdf_analyses rows; old preserved).
-- **`/clearqueue password:jamalbot [confirm:true]`** — delete pending rows + local files. Refuses >500 without `confirm:true`.
-- **`/seedcursor password:jamalbot`** — set Dropbox cursor to "now" so next poll skips backfill.
+- **`/load hours:N password:<your-command-password>`** — ingest Dropbox PDFs from last N hours (max 48). Live progress.
+- **`/reanalyze hours:N password:<your-command-password>`** — re-analyze PDFs already in DB with the current prompt (appends new pdf_analyses rows; old preserved).
+- **`/clearqueue password:<your-command-password> [confirm:true]`** — delete pending rows + local files. Refuses >500 without `confirm:true`.
+- **`/seedcursor password:<your-command-password>`** — set Dropbox cursor to "now" so next poll skips backfill.
 - **`/reprocess filename:X`** — retry a failed PDF.
 
 ---
@@ -507,7 +507,7 @@ Key env vars:
 - `GOOGLE_API_KEY`, `GEMINI_MODEL=gemini-3.1-flash-lite`
 - `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` (comma-separated channel IDs)
 - `FINNHUB_APi_KEY` (case-insensitive due to pydantic-settings)
-- `COMMAND_PASSWORD=jamalbot`
+- `COMMAND_PASSWORD=<set-in-railway-env>`
 - `TIMEZONE=America/New_York`
 - `DAILY_PULSE_HOUR=9`, `DAILY_PULSE_MINUTE=0` (legacy — actual pulse fires via Claude.ai cron, not Railway scheduler)
 - `DB_PATH=/data/reports.db`, `PDF_DOWNLOAD_DIR=/data/pdfs`

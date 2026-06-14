@@ -167,13 +167,13 @@ The "everything is QC" model: any event that affects a pulse's quality (content 
 
 ## Discord commands
 
-Password gate on state-changing commands: `COMMAND_PASSWORD=jamalbot` (env var). Gated commands take `password` arg.
+Password gate on state-changing commands: `COMMAND_PASSWORD=<set-in-railway-env>` (env var). Gated commands take `password` arg.
 
 **Gated:**
-- `/load hours:N password:jamalbot` — ingest Dropbox PDFs from last N hours (max 48). Shows live progress with current filename + last 5 completed.
-- `/reanalyze hours:N password:jamalbot` — re-analyze PDFs already in DB with current prompt. Queues a persistent background job that survives worker restarts; progress shown in `/status`.
-- `/clearqueue password:jamalbot [confirm:true]` — delete pending (DOWNLOADED/PROCESSING) rows + local files. Refuses >500 without `confirm:true`.
-- `/seedcursor password:jamalbot` — set Dropbox cursor to "now" so the next poll skips backfill.
+- `/load hours:N password:<your-command-password>` — ingest Dropbox PDFs from last N hours (max 48). Shows live progress with current filename + last 5 completed.
+- `/reanalyze hours:N password:<your-command-password>` — re-analyze PDFs already in DB with current prompt. Queues a persistent background job that survives worker restarts; progress shown in `/status`.
+- `/clearqueue password:<your-command-password> [confirm:true]` — delete pending (DOWNLOADED/PROCESSING) rows + local files. Refuses >500 without `confirm:true`.
+- `/seedcursor password:<your-command-password>` — set Dropbox cursor to "now" so the next poll skips backfill.
 
 **Open:**
 - `/pulse [hours:N]` — manual pulse synthesis. Default 24h, max 168h. Fully standalone (no prev-pulse diff).
@@ -214,7 +214,7 @@ Required env vars:
 - `GOOGLE_API_KEY`, `GEMINI_MODEL=gemini-3.1-flash-lite`, `GEMINI_TRIAGE_MODEL=gemini-3.1-flash-lite`
 - `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` (comma-separated list)
 - `FINNHUB_API_KEY` (with lowercase `i` typo on Railway — pydantic-settings is case-insensitive, don't fix cosmetically)
-- `COMMAND_PASSWORD=jamalbot`
+- `COMMAND_PASSWORD=<set-in-railway-env>`
 - `TIMEZONE=America/New_York`
 - `DAILY_PULSE_HOUR=9`, `DAILY_PULSE_MINUTE=0`
 - `DB_PATH=/data/reports.db`, `PDF_DOWNLOAD_DIR=/data/pdfs` (leading slashes required — relative paths write to ephemeral container storage and get wiped on redeploy)

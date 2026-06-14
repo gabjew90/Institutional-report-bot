@@ -39,6 +39,12 @@ explore_dropbox.py
 # Claude Code internals
 .claude/
 
+# Local-only scratch / debug dumps — ask logs, pulse context, QC
+# snapshots. These routinely contain Discord chat content + member
+# data; a stray `git add -A` must never stage them into a public repo.
+.tmp*
+*.tmp
+
 # Local-only helpers / paste-ready prompts that may contain hardcoded tokens
 paste_routine_*.md
 _render_*.py

@@ -108,20 +108,20 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 
 ## Discord Commands
 
-Password gate: `COMMAND_PASSWORD=jamalbot` env var. Gated commands take `password` arg.
+Password gate: `COMMAND_PASSWORD=<set-in-railway-env>` env var. Gated commands take `password` arg.
 
 Channel allowlist: pulse/admin commands (everything except `/ask`) only execute in channels listed in `PULSE_COMMAND_CHANNELS` (env var, comma-separated channel names, default `"test,tldr"`). Empty value disables the restriction. Discord still lists the commands in the global picker — the bouncer fires on execution, replying with an ephemeral "command not available here" message.
 
 **Visible in slash menu (currently registered):**
 - `/ask question:X` — Gemini-grounded web-search Q&A (Google Search tool). Works in **every** channel (not gated by `PULSE_COMMAND_CHANNELS`). 20 queries/user/day cap; resets at UTC midnight. Reuses the existing `GOOGLE_API_KEY` env var. Also responds to `@bot question` mentions in any channel. Free tier on Gemini 3.x = **5,000 grounded prompts/month** (shared across the Google AI Studio account); paid overage is ~$14 per 1000 queries.
 - `/status` — dashboard: today's ingestion + total DB state + priority mix (always shows high/medium/low even if 0) + upload range + all-time tokens + last pulse times + Dropbox cursor state + upload volume (24h + since last scheduled) + last 5 ingested filenames (in configured timezone). Channel-allowlisted.
-- `/reanalyze hours:N password:jamalbot` — re-analyze PDFs already in DB with current prompt (appends new pdf_analyses rows; old preserved). Channel-allowlisted + password-gated.
+- `/reanalyze hours:N password:<your-command-password>` — re-analyze PDFs already in DB with current prompt (appends new pdf_analyses rows; old preserved). Channel-allowlisted + password-gated.
 
 **Disabled in slash menu, code preserved in `discord_bot/bot.py`** — function bodies are intact; only the `@bot.tree.command` and `@app_commands.describe` decorators are commented out (search file for `DISABLED in slash menu`). Uncomment the decorator lines above the function to re-expose it. Disabled 2026-05-14:
 - `/pulse [hours:N]` — manual pulse synthesis. Scheduled pulse runs daily; `/reanalyze` also drives the synthesis pipeline internally, so this is rarely needed.
-- `/load hours:N password:jamalbot` — manual Dropbox ingest. Auto-polling every 15 min already covers this.
-- `/clearqueue password:jamalbot [confirm:true]` — destructive queue purge. Run `db.clear_pending_queue()` via `railway ssh` if needed.
-- `/seedcursor password:jamalbot` — one-shot Dropbox-cursor recovery tool.
+- `/load hours:N password:<your-command-password>` — manual Dropbox ingest. Auto-polling every 15 min already covers this.
+- `/clearqueue password:<your-command-password> [confirm:true]` — destructive queue purge. Run `db.clear_pending_queue()` via `railway ssh` if needed.
+- `/seedcursor password:<your-command-password>` — one-shot Dropbox-cursor recovery tool.
 - `/reprocess filename:X` — manual retry of a single failed PDF (auto-retry covers this via `MAX_RETRY_COUNT`).
 
 ## Deployment
@@ -174,7 +174,7 @@ Key ones set on `worker` service:
 - `GOOGLE_API_KEY`, `GEMINI_MODEL=gemini-3.1-flash-lite`, `GEMINI_TRIAGE_MODEL=gemini-3.1-flash-lite`
 - `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` (comma-separated list of channel IDs)
 - `FINNHUB_APi_KEY` (note lowercase 'i' typo — pydantic-settings is case-insensitive so it works; don't fix cosmetically without reason)
-- `COMMAND_PASSWORD=jamalbot`
+- `COMMAND_PASSWORD=<set-in-railway-env>`
 - `TIMEZONE=America/New_York`
 - `DAILY_PULSE_HOUR=9`, `DAILY_PULSE_MINUTE=0`
 - `DB_PATH=/data/reports.db`, `PDF_DOWNLOAD_DIR=/data/pdfs` (MUST use leading slash — relative paths write to ephemeral container storage and get wiped on redeploy)
