@@ -117,14 +117,34 @@ def extract_state_from_ctx(ctx: dict) -> dict:
 # WHAT CHANGED
 # =====================================================================
 
-def compute_what_changed(prev_state: dict | None, today_state: dict) -> list[str]:
+def compute_what_changed(
+    prev_state: dict | None,
+    today_state: dict,
+    *,
+    lean_flips: list[dict] | None = None,
+    body_tickers: set[str] | None = None,
+) -> list[str]:
     """Diff two state snapshots into WHAT CHANGED bullets (max 6).
 
     Categories, in priority order:
-      - stance flips on recurring themes (the trust-killer when silent)
+      - lean stance flips (we held X long, now short — the loudest signal;
+        these come from the lean tracker, not the theme snapshot, so they
+        catch the actual trade-direction reversal the reader most needs)
+      - stance flips on recurring themes
+      - lead-theme change (the dominant story rotated)
       - fresh high-conviction calls (new source+ticker pairs)
       - new multi-bank themes entering
       - themes dropping out of the top tier
+
+    `lean_flips`: [{instrument, from, to}] from db.upsert_pulse_leans —
+    instrument-level direction reversals detected today.
+    `body_tickers`: cashtags actually present in the pulse body. When
+    given, fresh-HC-call bullets are suppressed unless their ticker
+    appears in the body — a WHAT CHANGED line citing a ticker the pulse
+    never discusses (observed 06-15: $GALP, $WULF, $CIFR) is noise, not
+    signal. The pulse's own HIGH-CONVICTION surfacing decides what's
+    body-worthy; WHAT CHANGED should reflect changes to what the pulse
+    actually says.
     """
     if not prev_state:
         return []
@@ -132,6 +152,16 @@ def compute_what_changed(prev_state: dict | None, today_state: dict) -> list[str
     bullets: list[str] = []
     prev_themes = {t["label"]: t for t in (prev_state.get("themes") or [])}
     today_themes = {t["label"]: t for t in (today_state.get("themes") or [])}
+
+    # Lean stance flips — highest priority. A trade we carried long that
+    # is now short (or vice-versa) is the single most important "what
+    # changed" for a reader following the leans day to day.
+    for f in (lean_flips or []):
+        inst = (f.get("instrument") or "").upper()
+        frm = (f.get("from") or "").lower()
+        to = (f.get("to") or "").lower()
+        if inst and frm and to:
+            bullets.append(f"**Flipped:** ${inst} {frm} → {to}")
 
     # Stance flips — net direction reversed on a theme present both days.
     for label, t in today_themes.items():
@@ -150,16 +180,37 @@ def compute_what_changed(prev_state: dict | None, today_state: dict) -> list[str
                 f"yesterday, net {today_dir} today"
             )
 
-    # Fresh high-conviction calls — (source, ticker) pairs new today.
+    # Lead-theme change — the dominant story rotated. Gated on the new
+    # lead carrying >=3 banks so a trivial reshuffle of one-off themes
+    # doesn't fire daily.
+    prev_list = prev_state.get("themes") or []
+    today_list = today_state.get("themes") or []
+    if prev_list and today_list:
+        prev_lead = prev_list[0].get("label")
+        today_lead_t = today_list[0]
+        today_lead = today_lead_t.get("label")
+        if (today_lead and prev_lead and today_lead != prev_lead
+                and today_lead_t.get("banks", 0) >= 3):
+            bullets.append(
+                f"**Lead theme:** {today_lead} now top "
+                f"({today_lead_t.get('banks', 0)} banks), was {prev_lead}"
+            )
+
+    # Fresh high-conviction calls — (source, ticker) pairs new today,
+    # filtered to tickers the pulse body actually mentions.
     prev_calls = {(c.get("source"), c.get("ticker"))
                   for c in (prev_state.get("hc_calls") or [])}
     for c in (today_state.get("hc_calls") or []):
-        if (c.get("source"), c.get("ticker")) not in prev_calls:
-            pt = f" PT {c['pt']}" if c.get("pt") and c["pt"].upper() not in ("N/A", "") else ""
-            bullets.append(
-                f"**Fresh high-conviction:** {c['source']} on "
-                f"${c['ticker']} ({c.get('action', '?')}{pt})"
-            )
+        if (c.get("source"), c.get("ticker")) in prev_calls:
+            continue
+        ticker = (c.get("ticker") or "").upper()
+        if body_tickers is not None and ticker not in body_tickers:
+            continue
+        pt = f" PT {c['pt']}" if c.get("pt") and c["pt"].upper() not in ("N/A", "") else ""
+        bullets.append(
+            f"**Fresh high-conviction:** {c['source']} on "
+            f"${ticker} ({c.get('action', '?')}{pt})"
+        )
 
     # New multi-bank themes (>=3 banks, absent yesterday).
     for label, t in today_themes.items():
@@ -263,12 +314,56 @@ def extract_leans_from_markdown(md: str) -> list[dict]:
     return leans
 
 
-def render_trade_board(board_rows: list[dict], today: str) -> str:
+_BOARD_CTX_LIMIT = 64
+# Leading dangling connectives left after a clause split — dropping
+# these turns "is the bet he doesn't…" into "the bet he doesn't…".
+_LEAD_JUNK_RE = re.compile(r"^(and|but|so|or|is|are|was|were)\b\s*", re.IGNORECASE)
+
+
+def _clean_board_context(ctx: str, instrument: str, direction: str) -> str:
+    """Turn a stored lean sentence into a clean board descriptor.
+
+    The fix for the 06-15 garble ("For US-listed exposure, is the bet
+    the yen firms…", "$MU  The lean is , Morgan Stanley Overweight)"):
+      - strip a lean phrase ONLY when the sentence OPENS with it (so a
+        leading "Short $USO, with…" becomes "with…", but a mid-sentence
+        lean like "Long $TLT is the bet…" is kept whole — stripping it
+        mid-clause is what produced broken grammar)
+      - drop leading dangling punctuation + connectives
+      - collapse whitespace, clip at a WORD boundary with an ellipsis
+        (never mid-word), capitalize the first letter
+    Returns "" when nothing usable remains (board line shows no tail).
+    """
+    ctx = (ctx or "").strip()
+    if not ctx:
+        return ""
+    lead = _LEAN_RE.match(ctx)
+    if lead:
+        ctx = ctx[lead.end():]
+    ctx = ctx.lstrip(" ,;:.—-)")
+    ctx = _LEAD_JUNK_RE.sub("", ctx)
+    ctx = re.sub(r"\s+", " ", ctx).strip(" ,;:—-")
+    if not ctx:
+        return ""
+    if len(ctx) > _BOARD_CTX_LIMIT:
+        cut = ctx[:_BOARD_CTX_LIMIT].rsplit(" ", 1)[0].rstrip(" ,;:—-")
+        ctx = (cut or ctx[:_BOARD_CTX_LIMIT]) + "…"
+    return ctx[0].upper() + ctx[1:]
+
+
+def render_trade_board(
+    board_rows: list[dict], today: str, flips: set[str] | None = None
+) -> str:
     """Render the TRADE BOARD as a monospace block (Discord embeds do
-    not render markdown tables). Empty string when no live leans."""
+    not render markdown tables). Empty string when no live leans.
+
+    `flips`: instruments whose direction reversed today — shown as FLIP
+    instead of NEW so the reversal reads at a glance.
+    """
     if not board_rows:
         return ""
     from datetime import date as _date
+    flips = {f.upper() for f in (flips or set())}
     lines = []
     for r in board_rows:
         first = r.get("first_seen_date") or today
@@ -279,20 +374,24 @@ def render_trade_board(board_rows: list[dict], today: str) -> str:
             days = (d_today - d_first).days + 1
         except ValueError:
             days = 1
-        status = "NEW " if is_new else f"d{min(days, 99):<3}"
+        inst_name = (r.get("instrument") or "?").upper()
+        if is_new and inst_name.split()[0] in flips:
+            status = "FLIP"
+        elif is_new:
+            status = "NEW "
+        else:
+            status = f"d{min(days, 99):<3}"
         direction = (r.get("direction") or "?").upper()
         inst = f"${r.get('instrument', '?')}"
-        ctx = (r.get("context_snippet") or "").strip()
-        # Strip the lean phrase itself from the context so the line
-        # doesn't read "LONG $SOXX  Long $SOXX on the…" — drop the
-        # leading verb + filler + cashtag, keep the rationale tail.
-        ctx = _LEAN_RE.sub("", ctx, count=1).strip(" ,—-")
-        ctx = re.sub(r"\s+", " ", ctx)[:70]
-        lines.append(f"{status} {direction:<5} {inst:<11} {ctx}")
+        ctx = _clean_board_context(
+            r.get("context_snippet") or "", inst_name, direction
+        )
+        lines.append(f"{status} {direction:<5} {inst:<11} {ctx}".rstrip())
     return (
         "## TRADE BOARD\n\n"
-        "Leans the pulse is carrying (NEW = opened today, dN = day N "
-        "live; leans age off after 5 quiet days):\n\n"
+        "Leans the pulse is carrying (NEW = opened today, FLIP = "
+        "reversed today, dN = day N live; leans age off after 5 quiet "
+        "days):\n\n"
         "```\n"
         + "\n".join(lines)
         + "\n```\n"

@@ -124,6 +124,52 @@ def test_what_changed_baseline_day_empty():
     _ok("baseline day: no bullets, no section")
 
 
+def test_what_changed_lean_flips_and_body_filter():
+    """06-15 fixes: lean flips surface as the top bullet, and fresh-HC
+    bullets are suppressed when the ticker isn't in the pulse body
+    (the $GALP/$WULF noise)."""
+    from report.pulse_sections import compute_what_changed
+    prev = {"themes": [{"label": "oil scare", "banks": 6, "sup": 4, "skep": 0, "hc": 0}],
+            "hc_calls": []}
+    today = {"themes": [{"label": "oil scare", "banks": 6, "sup": 4, "skep": 0, "hc": 0}],
+             "hc_calls": [
+                 {"source": "Goldman Sachs", "ticker": "MU",
+                  "action": "reiterate Buy", "pt": "$900"},     # in body
+                 {"source": "Goldman Sachs", "ticker": "GALP",
+                  "action": "reiterate", "pt": "EUR24"},         # NOT in body
+             ]}
+    bullets = compute_what_changed(
+        prev, today,
+        lean_flips=[{"instrument": "USO", "from": "long", "to": "short"}],
+        body_tickers={"MU", "USO", "TLT"},
+    )
+    joined = " | ".join(bullets)
+    # Flip is first + present
+    assert bullets[0].startswith("**Flipped:**") and "$USO" in bullets[0], bullets
+    assert "long → short" in bullets[0]
+    # Body-present HC kept, body-absent HC suppressed
+    assert "$MU" in joined, bullets
+    assert "GALP" not in joined, (
+        f"HC call for a ticker not in the body must be suppressed: {bullets}"
+    )
+    _ok("WHAT CHANGED: lean flip leads + body-ticker filter drops "
+        "off-body HC noise")
+
+
+def test_what_changed_lead_theme_change():
+    from report.pulse_sections import compute_what_changed
+    prev = {"themes": [{"label": "oil scare", "banks": 7, "sup": 1, "skep": 5, "hc": 0},
+                       {"label": "ai capex", "banks": 6, "sup": 4, "skep": 0, "hc": 0}],
+            "hc_calls": []}
+    today = {"themes": [{"label": "ai capex", "banks": 6, "sup": 4, "skep": 0, "hc": 0},
+                        {"label": "oil scare", "banks": 4, "sup": 1, "skep": 2, "hc": 0}],
+             "hc_calls": []}
+    bullets = compute_what_changed(prev, today)
+    joined = " | ".join(bullets)
+    assert "Lead theme" in joined and "ai capex" in joined, bullets
+    _ok("WHAT CHANGED: lead-theme rotation surfaced")
+
+
 # =====================================================================
 # Lean extraction + board rendering
 # =====================================================================
@@ -222,6 +268,59 @@ def test_render_trade_board_new_vs_live():
         "when no rows")
 
 
+def test_clean_board_context_no_garble():
+    """Regression for the 06-15 garble: board context must be a clean
+    descriptor, never a mid-word truncation or a broken-grammar
+    fragment ('For US-listed exposure, is the bet…', '$MU  The lean is
+    , Morgan Stanley Overweight)')."""
+    from report.pulse_sections import _clean_board_context, _BOARD_CTX_LIMIT
+    # Leading lean → stripped to a clean continuation
+    c1 = _clean_board_context(
+        "Short $USO, with an energy-sector underweight into the de-escalation.",
+        "USO", "short")
+    assert c1.startswith("With an energy-sector underweight"), c1
+    assert "$USO" not in c1 and "Short" not in c1
+    # Mid-sentence lean (sentence opens with non-verb) → kept whole,
+    # never the broken "is the bet…" opener
+    c2 = _clean_board_context(
+        "For US-listed exposure, long the currency-hedged $DXJ is the bet "
+        "the yen firms and the hedge pays, against unhedged $EWJ.",
+        "DXJ", "long")
+    assert c2.startswith("For US-listed exposure"), c2
+    # Word-boundary clip + ellipsis, never mid-word, within limit+1
+    assert "…" in c2
+    assert " " not in c2[-3:], f"clipped mid-word: {c2!r}"
+    assert len(c2) <= _BOARD_CTX_LIMIT + 1
+    # Lean-opener that left a dangling copula → 'is/the' junk dropped
+    c3 = _clean_board_context(
+        "Long $TLT is the bet he doesn't and the cuts eventually come back.",
+        "TLT", "long")
+    assert not c3.lower().startswith("is "), c3
+    assert "$TLT" not in c3
+    # Empty / unusable context → empty string (board shows bare line)
+    assert _clean_board_context("", "X", "long") == ""
+    _ok("board context: leading-lean strip, mid-sentence keep, "
+        "word-boundary clip+ellipsis, junk-opener drop")
+
+
+def test_board_flip_marker():
+    from report.pulse_sections import render_trade_board
+    rows = [
+        {"instrument": "USO", "direction": "short",
+         "first_seen_date": "2026-06-15", "last_seen_date": "2026-06-15",
+         "context_snippet": "Short $USO, with an energy underweight."},
+    ]
+    # Without flip info → NEW (check the code block, not the legend
+    # which always names FLIP)
+    plain_block = render_trade_board(rows, "2026-06-15").split("```")[1]
+    assert "NEW " in plain_block and "FLIP" not in plain_block, plain_block
+    # With USO in the flip set → FLIP marker instead of NEW
+    flipped_block = render_trade_board(rows, "2026-06-15", {"USO"}).split("```")[1]
+    assert "FLIP" in flipped_block and "$USO" in flipped_block, flipped_block
+    assert "NEW " not in flipped_block, flipped_block
+    _ok("board: FLIP marker shown for reversed-today instruments")
+
+
 # =====================================================================
 # Injection
 # =====================================================================
@@ -306,6 +405,26 @@ def test_db_state_and_leans_roundtrip():
         assert not any(r["instrument"] == "GLD" for r in board2), (
             "stale lean must age out of the board"
         )
+
+        # Stance flip: a live long, then a short on the same instrument
+        # supersedes the long so the board never shows both (the 06-15
+        # $USO long+short contradiction).
+        db.upsert_pulse_leans("2026-06-09", [
+            {"instrument": "USO", "direction": "long", "context": "long oil"},
+        ])
+        flips = db.upsert_pulse_leans("2026-06-10", [
+            {"instrument": "USO", "direction": "short", "context": "Short $USO, de-escalation."},
+        ])
+        assert flips == [{"instrument": "USO", "from": "long", "to": "short"}], flips
+        board3 = db.get_board_leans("2026-06-10")
+        uso_rows = [r for r in board3 if r["instrument"] == "USO"]
+        assert len(uso_rows) == 1, f"only one USO row may be live: {uso_rows}"
+        assert uso_rows[0]["direction"] == "short", uso_rows
+        # Re-affirm on a retry → no duplicate flip
+        flips_again = db.upsert_pulse_leans("2026-06-10", [
+            {"instrument": "USO", "direction": "short", "context": "Short $USO."},
+        ])
+        assert flips_again == [], f"retry must not re-flip: {flips_again}"
     finally:
         try:
             if db._conn is not None:
@@ -361,9 +480,13 @@ if __name__ == "__main__":
     test_extract_state_from_ctx()
     test_compute_what_changed_categories()
     test_what_changed_baseline_day_empty()
+    test_what_changed_lean_flips_and_body_filter()
+    test_what_changed_lead_theme_change()
     test_extract_leans_closing_paragraph_only()
     test_puts_flip_direction()
     test_render_trade_board_new_vs_live()
+    test_clean_board_context_no_garble()
+    test_board_flip_marker()
     test_inject_sections_placement_and_idempotency()
     test_replace_body_after_frontmatter()
     test_db_state_and_leans_roundtrip()

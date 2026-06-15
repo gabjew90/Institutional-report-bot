@@ -1708,12 +1708,23 @@ def get_prev_stamped_pulse_state(before_date: str) -> dict | None:
     return dict(row) if row else None
 
 
-def upsert_pulse_leans(today: str, leans: list[dict]) -> None:
+def upsert_pulse_leans(today: str, leans: list[dict]) -> list[dict]:
     """Record today's extracted leans. A lean matching a LIVE row
     (same instrument+direction) refreshes last_seen_date; otherwise a
     new row is inserted with first_seen = today. Idempotent for bridge
-    retries on the same day."""
+    retries on the same day.
+
+    Stance-flip handling (2026-06-15): when a NEW lean's instrument has
+    a LIVE row in the OPPOSITE direction, that opposite row is marked
+    'superseded' (leaves the board) so the board can't show a
+    contradictory long+short on the same instrument — the 06-15 pulse
+    carried $USO d5 LONG and NEW SHORT simultaneously. Returns the list
+    of flips performed this call: [{instrument, from, to}] — the bridge
+    feeds these to WHAT CHANGED ('Flipped: $USO long -> short') and the
+    board (FLIP marker). Empty on a bridge retry (the opposite row is
+    already superseded, so no second flip fires)."""
     conn = get_connection()
+    flips: list[dict] = []
     for lean in leans:
         inst = (lean.get("instrument") or "").upper().strip()
         direction = (lean.get("direction") or "").lower().strip()
@@ -1731,6 +1742,18 @@ def upsert_pulse_leans(today: str, leans: list[dict]) -> None:
                 (today, (lean.get("context") or None), live["id"]),
             )
         else:
+            opposite = "short" if direction == "long" else "long"
+            live_opp = conn.execute(
+                "SELECT id FROM pulse_leans WHERE instrument = ? AND "
+                "direction = ? AND status = 'live' ORDER BY id DESC LIMIT 1",
+                (inst, opposite),
+            ).fetchone()
+            if live_opp:
+                conn.execute(
+                    "UPDATE pulse_leans SET status = 'superseded' WHERE id = ?",
+                    (live_opp["id"],),
+                )
+                flips.append({"instrument": inst, "from": opposite, "to": direction})
             conn.execute(
                 "INSERT OR IGNORE INTO pulse_leans "
                 "(instrument, direction, first_seen_date, last_seen_date, "
@@ -1739,6 +1762,7 @@ def upsert_pulse_leans(today: str, leans: list[dict]) -> None:
                  (lean.get("context") or "")[:160]),
             )
     conn.commit()
+    return flips
 
 
 def get_board_leans(today: str, max_age_days: int = 5) -> list[dict]:

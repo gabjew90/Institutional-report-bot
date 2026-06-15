@@ -19,6 +19,7 @@ are configured. Empty token = bridge disabled.
 import asyncio
 import json
 import logging
+import re
 from dataclasses import asdict
 from datetime import date, datetime
 from typing import Any
@@ -491,15 +492,32 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                     extract_leans_from_markdown, render_trade_board,
                     inject_sections, replace_body_after_frontmatter,
                 )
+                # TRADE BOARD — extract today's leans, merge into the
+                # tracked set (which records same-instrument direction
+                # flips), render NEW / FLIP / LIVE. Done BEFORE WHAT
+                # CHANGED so the flips feed the diff.
+                leans = extract_leans_from_markdown(markdown)
+                flips = db.upsert_pulse_leans(today, leans)
+                flip_instruments = {
+                    (f.get("instrument") or "").upper() for f in flips
+                }
+                board_rows = db.get_board_leans(today)
+                board_md = render_trade_board(board_rows, today, flip_instruments)
+
                 # WHAT CHANGED — diff today's consumed state vs the
-                # previous daily pulse's state.
+                # previous daily pulse's state, plus the lean flips and
+                # only HC calls whose ticker is in the body.
                 today_stamp = db.stamp_pulse_state_for_date(today)
                 prev_stamp = db.get_prev_stamped_pulse_state(today)
+                body_tickers = set(re.findall(r"\$([A-Za-z]{1,5})\b", markdown))
+                body_tickers = {t.upper() for t in body_tickers}
                 wc_md = ""
                 if today_stamp and prev_stamp:
                     bullets = compute_what_changed(
                         json.loads(prev_stamp["state_json"]),
                         json.loads(today_stamp["state_json"]),
+                        lean_flips=flips,
+                        body_tickers=body_tickers,
                     )
                     wc_md = render_what_changed(bullets)
                 elif today_stamp:
@@ -507,12 +525,6 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                         "Bridge: WHAT CHANGED skipped — baseline day "
                         "(no prior stamped pulse_state)"
                     )
-                # TRADE BOARD — extract today's leans, merge into the
-                # tracked set, render NEW + LIVE.
-                leans = extract_leans_from_markdown(markdown)
-                db.upsert_pulse_leans(today, leans)
-                board_rows = db.get_board_leans(today)
-                board_md = render_trade_board(board_rows, today)
 
                 injected = inject_sections(markdown, wc_md, board_md)
                 if injected != markdown:
