@@ -1,0 +1,239 @@
+{
+  "pulse_date": "2026-06-15",
+  "window_label": "since-last-daily (2026-06-12T17:16)",
+  "themes": [
+    {
+      "theme": "us iran hormuz deal",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 1,
+        "neutral": 14
+      },
+      "consensus_view": "Most banks read the interim US-Iran deal to reopen the Strait of Hormuz as a risk-off relief that pushes oil prices and bond yields lower, though one bank warns the agreement is a fragile framework that could disappoint.",
+      "facts_agreed": [
+        {
+          "claim": "The interim US-Iran agreement to reopen the Strait of Hormuz is removing the energy-supply scare and pulling oil prices lower.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Mizuho International Plc",
+            "MUFG Research",
+            "ING",
+            "Morgan Stanley",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "news of an impending peace agreement in the Middle East",
+            "The market is effectively moving from pricing an energy shock to pricing the removal",
+            "The deal should help to reduce the risk of a more disruptive outcome",
+            "reports suggest the agreement includes a halt to military activity across all fronts",
+            "This development re-establishes a path back towards our Base Case Targets",
+            "flipped to Tactically Bullish from the previous cautious stance"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the deal is a durable de-escalation or a fragile arrangement at risk of disappointing",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley"
+          ],
+          "for_evidence": "This development re-establishes a path back towards our Base Case Targets",
+          "banks_against": [
+            "Rabobank"
+          ],
+          "against_evidence": "at the risk of being a party pooper, could this be one of those instances"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure and capex",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 5,
+        "neutral": 11
+      },
+      "consensus_view": "Banks agree the AI capex boom is real and accelerating toward $1 trillion-plus a year, but they split sharply on whether that spending earns its keep or just shifts money around inside the same handful of tech companies.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler AI capex is enormous and consensus estimates keep getting revised higher, with Goldman arguing the market is still too conservative.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Hyperscaler capex forecasts are too conservative, and upside to AI capex implies upside",
+            "Consensus forecasts show the largest US hyperscalers spending over $750 billion in capex this year",
+            "markets now see Hyperscalers spending $920bn on Capex in 2027 which our strategist think is conservative.",
+            "consensus 2027 hyperscaler capex estimates are too conservative",
+            "Analyst estimates have been too conservative during each of the past three years"
+          ]
+        },
+        {
+          "claim": "The AI buildout faces hard physical bottlenecks in power, data center capacity, and labor that constrain how fast it can scale.",
+          "banks_for": [
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "these constraints are not peripheral frictions \u2013 they are central to this entire AI infrastructure buildout",
+            "Own the AI Infrastructure bottlenecks: labor, 'time to power' (fuel cells, turbines, energy storage)",
+            "AI demand is turning memory into a structural bottleneck."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether AI capex spending is economically sustainable or self-justifying",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "tech companies' anticipation of infinite demand is creating demand in the real economy right now",
+          "banks_against": [
+            "TS Lombard"
+          ],
+          "against_evidence": "85% of revenues are still coming from capex recycling"
+        },
+        {
+          "claim": "Whether the AI capex boom helps or hurts mega-cap tech returns on equity",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "Hyperscaler capex forecasts are too conservative, and upside to AI capex implies upside",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "The capex boom boosting semiconductor earnings today will weigh on hyperscaler ROE going forward"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "warsh fed chair debut",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six bank desks flag Kevin Warsh's first Fed meeting as chair as a near-term event to watch, but none has staked out a clear call on which way he'll lean on rates.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are treating Kevin Warsh's debut FOMC meeting as Fed chair as an upcoming event worth watching, without committing to a directional view on the outcome.",
+          "banks_for": [
+            "ANZ Research",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "Mizuho International Plc",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh debut Fed appearance",
+            "Chair Warsh FOMC debut",
+            "FOMC meeting under Warsh",
+            "Kevin Warsh FOMC reform agenda",
+            "Kevin Warsh Fed Chair appointment"
+          ]
+        },
+        {
+          "claim": "Banks frame the Warsh transition as a source of policy uncertainty, citing his unknown policy bias and a possible reform agenda.",
+          "banks_for": [
+            "ANZ Research",
+            "JPMorgan",
+            "ING"
+          ],
+          "evidence_quotes": [
+            "Incoming Fed Chair Warsh policy uncertainty",
+            "Kevin Warsh FOMC reform agenda",
+            "Fed Chair Warsh policy bias"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "japan equity broadening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Banks across several desks track Japan mainly through the Bank of Japan's rate-hiking path and a weak yen, while only JPMorgan stakes a directional view that Japan's stock-market gains are spreading beyond AI chip names.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference an imminent Bank of Japan rate hike and tighter policy as the dominant Japan storyline this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "MUFG Research",
+            "Mizuho International Plc"
+          ],
+          "evidence_quotes": [
+            "BoJ hawkish policy shift",
+            "BoJ policy meeting rate hike",
+            "BoJ terminal rate pricing",
+            "BOJ hike communique",
+            "BoJ QT taper plans"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "energy supply shock",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 5
+      },
+      "consensus_view": "Banks treat the Middle East conflict as a live oil-supply risk, but the market is now looking through escalation headlines because the actual barrels lost have been smaller than feared and Gulf flows are recovering.",
+      "facts_agreed": [
+        {
+          "claim": "The Middle East conflict is the central driver banks are watching for an oil supply shock and its knock-on effect on inflation.",
+          "banks_for": [
+            "Bank of America",
+            "Goldman Sachs",
+            "JPMorgan",
+            "TS Lombard",
+            "ANZ Research"
+          ],
+          "evidence_quotes": [
+            "Middle East geopolitical shock",
+            "Middle East war energy shock",
+            "Middle East conflict energy price impact",
+            "Energy price shock inflation transmission",
+            "Middle East conflict oil price sensitivity"
+          ]
+        },
+        {
+          "claim": "Oil's reaction to new escalation headlines is fading as the supply hit proved smaller than feared.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "the beta of oil to any escalatory headlines is reducing"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "fed policy outlook",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'MUFG Research'"
+    },
+    {
+      "theme": "spacex ipo",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Polymarket'"
+    }
+  ]
+}
