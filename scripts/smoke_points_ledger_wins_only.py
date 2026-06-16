@@ -2,9 +2,19 @@
 
 import sqlite3
 import sys
+from datetime import datetime, timedelta
 from unittest.mock import patch
 
 import db
+
+# Anchor test trades to "now" so they stay inside the lookback window as
+# real-world today advances. The prior hardcoded 2026-06-01/02 dates
+# rotted out of the 14-day window on 2026-06-16, decomposing the
+# entry+close pair into a close-only screenshot win and failing the
+# suite — a pure test-staleness bug, unrelated to scoring logic.
+_NOW = datetime.utcnow()
+_T0 = (_NOW - timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%S")  # "open"
+_T1 = (_NOW - timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%S")  # "close"
 
 
 def _ok(msg):
@@ -52,8 +62,8 @@ def test_default_window_is_7_days():
 
 
 def test_entry_plus_winning_close_scores_2():
-    today = "2026-06-01T12:00:00"
-    later = "2026-06-02T12:00:00"
+    today = _T0
+    later = _T1
     c = _conn_with_trade_history([
         (today, "open", "AAPL", None, "💲-gain-loss-porn-💲"),
         (later, "close", "AAPL", 50.0, "💲-gain-loss-porn-💲"),
@@ -66,8 +76,8 @@ def test_entry_plus_winning_close_scores_2():
 
 
 def test_entry_plus_losing_close_scores_0():
-    today = "2026-06-01T12:00:00"
-    later = "2026-06-02T12:00:00"
+    today = _T0
+    later = _T1
     c = _conn_with_trade_history([
         (today, "open", "TSLA", None, "🕰️-member-alerts-🕰️"),
         (later, "close", "TSLA", -30.0, "🕰️-member-alerts-🕰️"),
@@ -82,7 +92,7 @@ def test_entry_plus_losing_close_scores_0():
 
 
 def test_screenshot_win_scores_2():
-    today = "2026-06-01T12:00:00"
+    today = _T0
     c = _conn_with_trade_history([
         (today, "close", "NVDA", 25.0, "💲-gain-loss-porn-💲"),
     ])
@@ -94,7 +104,7 @@ def test_screenshot_win_scores_2():
 
 
 def test_screenshot_loss_scores_0():
-    today = "2026-06-01T12:00:00"
+    today = _T0
     c = _conn_with_trade_history([
         (today, "close", "META", -10.0, "💲-gain-loss-porn-💲"),
     ])
