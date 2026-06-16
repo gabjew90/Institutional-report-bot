@@ -5440,6 +5440,46 @@ def create_bot() -> commands.Bot:
             log.error(f"Seed cursor failed: {e}", exc_info=True)
             await interaction.followup.send(f"Error: {str(e)[:200]}")
 
+    @bot.tree.command(
+        name="reminders",
+        description="Show upcoming scheduled channel reminders",
+    )
+    async def reminders_command(interaction: discord.Interaction):
+        if not await _check_pulse_channel(interaction):
+            return
+        from datetime import datetime as _dt
+        import pytz as _pytz
+        from reminders import calendar as _cal
+        tz = _pytz.timezone(settings.timezone)
+        today = _dt.now(tz).date()
+        try:
+            entries = _cal.load_calendar()
+            up = _cal.upcoming(entries, today)
+        except Exception as e:
+            log.warning(f"/reminders: calendar load failed: {e}")
+            up = []
+        if not up:
+            await interaction.response.send_message(
+                "📅 No upcoming reminders on the calendar.", ephemeral=False
+            )
+            return
+        lines = []
+        for e in up[:25]:
+            leads = ", ".join(
+                "day-of" if l == 0 else f"{l}d"
+                for l in e.get("lead_days", [])
+            )
+            lines.append(
+                f"**{_cal._fmt_date(e['_date'])}** — {e['event']}"
+                + (f"  _(lead: {leads})_" if leads else "")
+            )
+        embed = discord.Embed(
+            title="📅 Upcoming reminders",
+            description="\n".join(lines),
+            color=0xF1C40F,
+        )
+        await interaction.response.send_message(embed=embed, ephemeral=False)
+
     @bot.tree.command(name="status", description="Show pipeline health and DB state")
     async def status_command(interaction: discord.Interaction):
         if not await _check_pulse_channel(interaction):

@@ -229,6 +229,19 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         );
         CREATE INDEX IF NOT EXISTS idx_pulse_leans_status ON pulse_leans(status, last_seen_date DESC);
 
+        -- reminder_sent: dedup guard for the channel reminder system.
+        -- One row per (fire_date, event_id, lead) actually posted, so a
+        -- mid-day redeploy can't double-post a reminder. The event
+        -- calendar itself lives in reminders/calendar.json (Claude-edited,
+        -- version-controlled) — this table only records what already fired.
+        CREATE TABLE IF NOT EXISTS reminder_sent (
+            fire_date TEXT NOT NULL,   -- YYYY-MM-DD the reminder posted
+            event_id  TEXT NOT NULL,   -- calendar entry id
+            lead      INTEGER NOT NULL,
+            sent_at   TEXT NOT NULL,
+            UNIQUE(fire_date, event_id, lead)
+        );
+
         -- Analyst trade log. One row per image attachment posted in the
         -- analyst alerts channel. Populated by analyst_log.watcher via
         -- Gemini vision. is_trade=0 rows are non-trade images (memes,
@@ -1782,6 +1795,34 @@ def get_board_leans(today: str, max_age_days: int = 5) -> list[dict]:
         "ORDER BY first_seen_date DESC, instrument",
     ).fetchall()
     return [dict(r) for r in rows]
+
+
+# =============================================================================
+# Reminder dedup (channel reminder system — reminders/job.py).
+# =============================================================================
+
+
+def reminder_already_sent(fire_date: str, event_id: str, lead: int) -> bool:
+    """True if this (fire_date, event_id, lead) reminder already posted."""
+    row = get_connection().execute(
+        "SELECT 1 FROM reminder_sent WHERE fire_date = ? AND event_id = ? "
+        "AND lead = ?",
+        (fire_date, event_id, int(lead)),
+    ).fetchone()
+    return row is not None
+
+
+def mark_reminder_sent(fire_date: str, event_id: str, lead: int) -> None:
+    """Record that a reminder posted, so a redeploy can't double-post.
+    Only called AFTER a successful Discord send."""
+    from datetime import datetime
+    conn = get_connection()
+    conn.execute(
+        "INSERT OR IGNORE INTO reminder_sent (fire_date, event_id, lead, "
+        "sent_at) VALUES (?, ?, ?, ?)",
+        (fire_date, event_id, int(lead), datetime.utcnow().isoformat()),
+    )
+    conn.commit()
 
 
 # =============================================================================

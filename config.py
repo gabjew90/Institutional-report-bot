@@ -319,6 +319,11 @@ class Settings(BaseSettings):
     # Real-time ingestion feed — posts a Discord embed for each newly-analyzed
     # HIGH/MEDIUM PDF, trickled 1-per-interval. Empty = feed disabled.
     discord_ingest_feed_channel_id: str = ""
+
+    # Channel reminder system — the daily 3:45 PM ET job posts due
+    # calendar reminders (reminders/calendar.json) to this channel.
+    # Empty = reminders disabled. Single channel id (not comma list).
+    reminder_channel_id: str = ""
     ingest_feed_interval_seconds: int = 60
     # Startup backlog threshold: if more than N HIGH/MEDIUM PDFs are queued
     # for announcement at boot, post a single summary card instead of trickling

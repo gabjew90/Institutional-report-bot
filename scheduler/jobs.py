@@ -339,6 +339,26 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         misfire_grace_time=3600,
     )
 
+    # Channel reminder system — daily 3:45 PM ET, posts due calendar
+    # reminders (reminders/calendar.json) to REMINDER_CHANNEL_ID. The
+    # job no-ops when the channel isn't configured, so registering it
+    # unconditionally is safe.
+    if settings.reminder_channel_id:
+        from reminders.job import reminder_check_job
+        scheduler.add_job(
+            reminder_check_job,
+            trigger=CronTrigger(hour=15, minute=45, timezone=tz),
+            id="reminder_check",
+            name="Channel reminders: post due calendar events",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=3600,
+        )
+        log.info(
+            f"Reminder system active — daily 15:45 {settings.timezone} "
+            f"to channel {settings.reminder_channel_id}"
+        )
+
     log.info(
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
