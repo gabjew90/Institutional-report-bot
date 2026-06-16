@@ -1,0 +1,237 @@
+{
+  "pulse_date": "2026-06-16",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "warsh fed chair debut",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Banks across seven research desks flag Kevin Warsh's first meeting as the new Fed chair as a near-term policy event to watch, but none has staked out a directional view on what he will do.",
+      "facts_agreed": [
+        {
+          "claim": "Seven banks reference Kevin Warsh's debut as Fed chair and his first FOMC meeting as an upcoming policy catalyst this window.",
+          "banks_for": [
+            "BofA Global Research",
+            "Cboe",
+            "Citi",
+            "Cr\u00e9dit Agricole CIB",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Mizuho International Plc"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh Fed chair debut",
+            "Warsh Fed policy outlook",
+            "Kevin Warsh FOMC chairmanship",
+            "Kevin Warsh's first FOMC meeting",
+            "FOMC policy and Fed Chair Warsh"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz reopening oil price impact",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 2,
+        "neutral": 7
+      },
+      "consensus_view": "Banks agree the US-Iran deal to reopen the Strait of Hormuz is pushing oil prices lower, with Goldman cutting its forecasts toward normal Gulf exports and Citi treating any summer rally as a chance to sell.",
+      "facts_agreed": [
+        {
+          "claim": "The deal to reopen the Strait of Hormuz is driving oil prices and forecasts lower as Gulf exports head back toward pre-war levels.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ING",
+            "Mizuho International Plc"
+          ],
+          "evidence_quotes": [
+            "we now assume that Persian Gulf exports normalize to pre-war levels by the end of July",
+            "Reducing Our Price Forecast on Deal to Reopen Hormuz",
+            "Oil prices fell for a fourth consecutive session",
+            "The market is effectively moving from pricing an energy shock to pricing the removal"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran peace agreement",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six banks reference a reported US-Iran peace agreement as a live macro catalyst, but none has staked a directional view; the corpus treats it as a backdrop driving lower oil and a relief rally rather than an adjudicated call.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag a reported US-Iran peace agreement as an active near-term market catalyst this window.",
+          "banks_for": [
+            "Barclays",
+            "Cboe",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "Mizuho International Plc"
+          ],
+          "evidence_quotes": [
+            "US-Iranian peace agreement",
+            "US-Iran peace deal",
+            "US/Iran interim peace agreement",
+            "US-Iran MOU",
+            "Iran sanctions relief",
+            "Iran deal volatility compression"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "boj monetary policy normalization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Banks agree Japan's central bank is still in an active rate-hiking cycle and lifted its main interest rate at the June meeting, with the next step seen as a push toward a higher long-run level.",
+      "facts_agreed": [
+        {
+          "claim": "Banks agree the Bank of Japan is continuing its rate-hike cycle toward higher policy rates.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Mitsubishi UFJ Morgan Stanley Securities"
+          ],
+          "evidence_quotes": [
+            "the Bank will continue to raise the policy interest rate",
+            "rate hike cycle remains intact",
+            "We still expect BoJ will raise policy rate to 1.00% at June 15-16 MPM"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai capex sustainability",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "Most banks see the AI infrastructure spending boom as a durable, growth-driving force, though Goldman flags that rising costs from aging data-center equipment could eventually eat into corporate profitability.",
+      "facts_agreed": [
+        {
+          "claim": "The AI infrastructure build-out is a dominant, sustained driver of growth and demand for physical assets.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "The strong fundamental backdrop will keep the AI upstream theme a dominant driver",
+            "signaling sustained demand for AI infrastructure",
+            "a capex supercycle is taking hold as the post-modern cycle reshapes equity returns",
+            "The regime has shifted decisively, with fiscal expansion and geopolitical fragmentation driving a sustained increase."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI capex boom is a net positive for corporate profitability",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "The strong fundamental backdrop will keep the AI upstream theme a dominant driver",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "rising hyperscaler depreciation expenses will reverse some of the S&P 500 ROE benefit"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "tesla delivery momentum",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Both desks covering Tesla think its second-quarter 2026 car deliveries are running ahead of Wall Street's average forecast, helped by strong Europe and China sales, with no one arguing the other side.",
+      "facts_agreed": [
+        {
+          "claim": "Tesla's second-quarter 2026 vehicle deliveries are tracking ahead of consensus expectations.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "We believe that Tesla's 2Q26 vehicle deliveries are likely tracking ahead of consensus",
+            "We believe that Tesla\u2019s 2Q26 vehicle deliveries are likely tracking ahead of consensus"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "tech volatility premium",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Traders keep paying up to hedge tech risk, so the cost of insurance against tech swings stays high even as tech prices hold up.",
+      "facts_agreed": [
+        {
+          "claim": "Investors keep paying a high premium to insure against tech risk, keeping tech volatility elevated despite firm prices.",
+          "banks_for": [
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "investors continue paying a substantial premium for tech risk"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed policy dovishness",
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "selected": true,
+      "consensus_view": "Goldman expects the Federal Reserve to cut interest rates more than the market currently prices in, leaning dovish, while the rest of the corpus only references Fed policy in passing without staking a directional view.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman's Fed forecast is more dovish than what the market is pricing.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Our probability-weighted Fed forecast remains more dovish than market pricing"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
