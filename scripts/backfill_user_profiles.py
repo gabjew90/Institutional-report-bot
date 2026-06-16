@@ -594,6 +594,12 @@ STRUCTURED TRADE LOG — source of truth for Recent trades section:
 - The model's previous failure mode: inventing percentages on trades that closed at materially different actual numbers, or marking a documented loss as "Flat" because the chat-text inference missed the structured close. The structured log above prevents this — use it.
 - If the structured log is empty (the user has no analyst_trades rows in the window), the Recent trades section must lean on chat-described positions WITHOUT percentages, OR be brief / skipped if signal is thin.
 
+**BINDING RULE on trade STATUS and OUTCOME (not just percentages).** The same source-of-truth discipline applies to whether a trade is open, closed, expired, won, or lost — this is where the profile has fabricated and lost member trust (2026-06-16: a TSLA 410C that expired 06-12 was narrated as "Open, waiting for his reversal thesis to materialize" four days after expiry; a no-close BTC position as "still held in limbo"). Read the status tag on each log row and obey it EXACTLY:
+- `[EXPIRED — … OUTCOME UNKNOWN]`: the option's expiry passed and no close was posted. State it expired and that the outcome is unknown — e.g. "his TSLA 410Cs hit 6/12 expiry with no close posted, outcome unrecorded." You may NOT say it "expired worthless," "is dead," "is still open," or "is waiting" — you do not know which, and asserting one is fabrication. (You can still mock the RISK of a naked weekly bet — just not a made-up result.)
+- `[OPEN per log — no exit posted …]`: we only ingest screenshotted trades, so a missing close does NOT mean still-held. Say "opened X on <date>, no exit posted" — never "still holding," "currently defending," "in limbo," or any present-tense status that implies you know they're still in it.
+- `[EXIT only — no logged entry]`: a close with no matching open — describe the exit only, don't invent the entry.
+- Never write present-tense narrative status ("waiting to materialize," "being defended," "still riding it") for any position whose outcome the log does not record. Describe what was POSTED, not what you imagine is happening now.
+
 This rule overrides any contrary inference from the MESSAGES block below for the Recent trades section. Voice / Personality / Retarded takes / Recent personal life still source from MESSAGES; only Recent trades is anchored to the structured log.
 
 ---
@@ -931,6 +937,8 @@ def _format_analyst_trades_block(user_id: int, days: int = 30) -> str:
             "Recent trades section must describe positions from chat WITHOUT "
             "inventing percentages)"
         )
+    from datetime import date as _date
+    today = _date.today()
     lines: list[str] = []
     # Render oldest first so the model reads chronologically
     for r in sorted(own, key=lambda x: x.get("posted_at") or ""):
@@ -956,9 +964,39 @@ def _format_analyst_trades_block(user_id: int, days: int = 30) -> str:
             "(caller log)" if (r.get("tracking_mode") or "caller") == "caller"
             else "(member alert)"
         )
+        # STATUS TAG — the 2026-06-16 fix. Without this the model read a
+        # bare OPEN row with a past expiry as "still open, waiting to
+        # materialize" (ZHawk's TSLA 410C exp 06-12 narrated as Open on
+        # 06-16, 4 days after it expired) and an open-with-no-close as
+        # "still holding in limbo" — fabricated outcomes on real trades.
+        # The tag states what is and isn't KNOWN so the profile can't
+        # invent a status.
+        status = (r.get("inferred_status") or "").lower()
+        expired_by_date = False
+        if len(expiry) >= 10:
+            try:
+                expired_by_date = _date.fromisoformat(expiry[:10]) < today
+            except ValueError:
+                expired_by_date = False
+        status_tag = ""
+        if action in ("OPEN", "ADD"):
+            if status == "expired_unknown" or expired_by_date:
+                status_tag = (
+                    "  [EXPIRED — expiry passed, NO close posted; "
+                    "OUTCOME UNKNOWN (may have sold early, expired ITM, "
+                    "or expired worthless — do NOT assert which)]"
+                )
+            else:
+                status_tag = (
+                    "  [OPEN per log — no exit posted; we only see "
+                    "screenshotted trades, so they MAY have closed it "
+                    "without posting — do NOT assert it's still held]"
+                )
+        elif status == "close_without_open":
+            status_tag = "  [EXIT only — no logged entry]"
         lines.append(
             f"  - {ts}  {action:>5}  {ticker} {strike_str}{ct_suffix}  "
-            f"exp {exp_short}  {gain_str}{price_str}  {mode_tag}"
+            f"exp {exp_short}  {gain_str}{price_str}  {mode_tag}{status_tag}"
         )
     return "\n".join(lines)
 
