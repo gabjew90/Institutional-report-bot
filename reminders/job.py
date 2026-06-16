@@ -61,18 +61,28 @@ async def reminder_check_job(bot) -> None:
         log.warning(f"reminder job: channel {cid} not in bot cache — skipping")
         return
 
-    from discord_bot.sender import send_embeds
+    from discord_bot.sender import _send_with_retry
+
+    # Every reminder pings @everyone (user decision 2026-06-16). The
+    # ping + the embed go in ONE message, with allowed_mentions set
+    # explicitly so the mention actually fires regardless of the
+    # client's default (an @everyone in content without this renders as
+    # inert grey text). Requires the bot role to have "Mention Everyone"
+    # in the server.
+    mentions = discord.AllowedMentions(everyone=True)
 
     posted = 0
     for entry, lead in due:
         eid = entry.get("id") or ""
         if db.reminder_already_sent(today_iso, eid, lead):
             continue
-        try:
-            ok = await send_embeds(channel, [_build_embed(entry, lead)])
-        except Exception as e:
-            log.warning(f"reminder job: send failed for {eid} lead={lead}: {e}")
-            continue
+        embed = _build_embed(entry, lead)
+        ok, err = await _send_with_retry(
+            lambda emb=embed: channel.send(
+                content="@everyone", embed=emb, allowed_mentions=mentions,
+            ),
+            label=f"reminder {eid} lead={lead} channel={cid}",
+        )
         if ok:
             # Only mark sent on a confirmed post, so a failed send retries
             # on the next fire if the lead window hasn't passed.
@@ -80,8 +90,8 @@ async def reminder_check_job(bot) -> None:
             posted += 1
         else:
             log.warning(
-                f"reminder job: send_embeds returned False for {eid} "
-                f"lead={lead} — not marking sent"
+                f"reminder job: send failed for {eid} lead={lead} — "
+                f"not marking sent (err={err})"
             )
 
     if posted:

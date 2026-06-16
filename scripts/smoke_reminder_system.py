@@ -195,6 +195,58 @@ def test_job_embed_build():
 
 # === wiring ===
 
+def test_job_pings_everyone_and_dedups():
+    """The job posts @everyone + the embed in one message with explicit
+    AllowedMentions(everyone=True), and respects the dedup guard."""
+    import asyncio
+    from datetime import date
+    from unittest.mock import patch
+    import reminders.job as job
+    from reminders import calendar as cal
+
+    today_entry = cal._validate_entry({
+        "date": date.today().isoformat(), "event": "$SPCX unlock — Wave 1",
+        "lead_days": [0], "note": "+20% unlock."})
+
+    sent = []
+
+    class _FakeChannel:
+        name = "stonks-yapping"
+        async def send(self, content=None, embed=None, allowed_mentions=None):
+            sent.append({"content": content, "embed": embed,
+                         "allowed_mentions": allowed_mentions})
+            return object()
+
+    class _FakeBot:
+        def get_channel(self, cid):
+            return _FakeChannel()
+
+    marked = []
+    with patch("config.settings.reminder_channel_id", "1317587853282119745"), \
+         patch("reminders.calendar.load_calendar", return_value=[today_entry]), \
+         patch("reminders.job.db.reminder_already_sent", return_value=False), \
+         patch("reminders.job.db.mark_reminder_sent",
+               side_effect=lambda *a: marked.append(a)):
+        asyncio.run(job.reminder_check_job(_FakeBot()))
+
+    assert len(sent) == 1, sent
+    assert sent[0]["content"] == "@everyone", sent[0]
+    assert sent[0]["allowed_mentions"] is not None
+    assert sent[0]["allowed_mentions"].everyone is True, "must permit @everyone"
+    assert sent[0]["embed"].title.startswith("📅 Today"), sent[0]["embed"].title
+    assert len(marked) == 1, "must mark sent on success"
+
+    # Dedup: already-sent → no post
+    sent.clear()
+    with patch("config.settings.reminder_channel_id", "1317587853282119745"), \
+         patch("reminders.calendar.load_calendar", return_value=[today_entry]), \
+         patch("reminders.job.db.reminder_already_sent", return_value=True):
+        asyncio.run(job.reminder_check_job(_FakeBot()))
+    assert sent == [], "already-sent reminder must not re-post"
+    _ok("job: posts @everyone + embed with AllowedMentions(everyone), "
+        "dedup-guarded")
+
+
 def test_scheduler_registers_cron():
     import scheduler.jobs as sj
     src = inspect.getsource(sj)
@@ -221,6 +273,7 @@ if __name__ == "__main__":
     test_wording()
     test_dedup_roundtrip()
     test_job_embed_build()
+    test_job_pings_everyone_and_dedups()
     test_scheduler_registers_cron()
     test_reminders_command_present()
     print("\nALL REMINDER SYSTEM SMOKE TESTS PASS")
