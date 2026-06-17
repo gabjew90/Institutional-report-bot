@@ -139,19 +139,19 @@ def compute_what_changed(
         catch the actual trade-direction reversal the reader most needs)
       - stance flips on recurring themes
       - lead-theme change (the dominant story rotated)
-      - fresh high-conviction calls (new source+ticker pairs)
-      - new multi-bank themes entering
+      - new multi-bank themes entering (minus the lead, to avoid dup)
       - themes dropping out of the top tier
+
+    DELTAS ONLY. High-conviction calls are deliberately NOT listed here —
+    they are owned by the DESK SIGNAL BOARD's HIGH-CONVICTION CALLS
+    table. WHAT CHANGED is the day-over-day change; the calls roster is
+    the board's current-state job. Listing both duplicated every call
+    across two sections (observed 06-17).
 
     `lean_flips`: [{instrument, from, to}] from db.upsert_pulse_leans —
     instrument-level direction reversals detected today.
-    `body_tickers`: cashtags actually present in the pulse body. When
-    given, fresh-HC-call bullets are suppressed unless their ticker
-    appears in the body — a WHAT CHANGED line citing a ticker the pulse
-    never discusses (observed 06-15: $GALP, $WULF, $CIFR) is noise, not
-    signal. The pulse's own HIGH-CONVICTION surfacing decides what's
-    body-worthy; WHAT CHANGED should reflect changes to what the pulse
-    actually says.
+    `body_tickers`: accepted for backward-compatible call sites; no
+    longer used now that fresh-HC bullets moved to the DESK SIGNAL BOARD.
     """
     if not prev_state:
         return []
@@ -189,7 +189,10 @@ def compute_what_changed(
 
     # Lead-theme change — the dominant story rotated. Gated on the new
     # lead carrying >=3 banks so a trivial reshuffle of one-off themes
-    # doesn't fire daily.
+    # doesn't fire daily. Tracked so the New-theme block below doesn't
+    # ALSO emit it (it was being listed twice — once as lead-change,
+    # once as new — observed 06-17).
+    lead_label = None
     prev_list = prev_state.get("themes") or []
     today_list = today_state.get("themes") or []
     if prev_list and today_list:
@@ -198,30 +201,23 @@ def compute_what_changed(
         today_lead = today_lead_t.get("label")
         if (today_lead and prev_lead and today_lead != prev_lead
                 and today_lead_t.get("banks", 0) >= 3):
+            lead_label = today_lead
             bullets.append(
                 f"**Lead theme:** {today_lead} now top "
                 f"({today_lead_t.get('banks', 0)} banks), was {prev_lead}"
             )
 
-    # Fresh high-conviction calls — (source, ticker) pairs new today,
-    # filtered to tickers the pulse body actually mentions.
-    prev_calls = {(c.get("source"), c.get("ticker"))
-                  for c in (prev_state.get("hc_calls") or [])}
-    for c in (today_state.get("hc_calls") or []):
-        if (c.get("source"), c.get("ticker")) in prev_calls:
-            continue
-        ticker = (c.get("ticker") or "").upper()
-        if body_tickers is not None and ticker not in body_tickers:
-            continue
-        pt = f" PT {c['pt']}" if c.get("pt") and c["pt"].upper() not in ("N/A", "") else ""
-        bullets.append(
-            f"**Fresh high-conviction:** {c['source']} on "
-            f"${ticker} ({c.get('action', '?')}{pt})"
-        )
+    # NOTE: high-conviction calls are NOT listed here — they are owned by
+    # the DESK SIGNAL BOARD's HIGH-CONVICTION CALLS table. Listing them
+    # in WHAT CHANGED too duplicated every call across two sections
+    # (observed 06-17: $AVGO in both). WHAT CHANGED is the day-over-day
+    # DELTA; the calls roster is the board's job.
 
-    # New multi-bank themes (>=3 banks, absent yesterday).
+    # New multi-bank themes (>=3 banks, absent yesterday). Skip the lead
+    # theme if it was already reported as the lead-change above.
     for label, t in today_themes.items():
-        if t.get("banks", 0) >= 3 and label not in prev_themes:
+        if (t.get("banks", 0) >= 3 and label not in prev_themes
+                and label != lead_label):
             bullets.append(
                 f"**New theme:** {label} ({t['banks']} banks)"
             )
@@ -254,9 +250,49 @@ def render_what_changed(bullets: list[str]) -> str:
 _HC_CALLS_MAX = 10
 _LEDGER_THEMES_MAX = 7
 
+# Ratings normalized to short, fixed-width tokens so the monospace
+# column never mid-truncates ("Overweight" was clipping to "Overweigh",
+# observed 06-17). Anything unmapped is word-boundary clipped.
+_RATING_NORM = {
+    "overweight": "OW", "underweight": "UW", "equal-weight": "EW",
+    "equalweight": "EW", "market perform": "Hold", "outperform": "OP",
+    "underperform": "UP", "buy": "Buy", "sell": "Sell", "hold": "Hold",
+    "neutral": "Neutral", "add": "Add", "reduce": "Reduce",
+}
+# Non-USD price-target markers — calls with these are foreign-listed
+# names a US options trader can't act on; they were cluttering the board
+# (ZAR280, €21.50 observed 06-17). Drop them from the HC table.
+_FOREIGN_PT_RE = re.compile(r"(€|£|¥|₩|ZAR|R\$|HK\$|A\$|C\$|SEK|CHF|NOK|JPY|GBp|p$)",
+                            re.IGNORECASE)
+
 
 def _clean_inline(s: str) -> str:
     return re.sub(r"\s+", " ", (s or "").strip())
+
+
+def _norm_rating(rating: str, action: str) -> str:
+    """Short, clean rating token (rating preferred, action fallback)."""
+    raw = _clean_inline(rating or action or "")
+    key = raw.lower()
+    if key in _RATING_NORM:
+        return _RATING_NORM[key]
+    # word-boundary clip to 8 so we never ship a mid-word stub
+    if len(raw) > 8:
+        raw = raw[:8].rsplit(" ", 1)[0] or raw[:8]
+    return raw
+
+
+def _clip_rationale(s: str, limit: int = 40) -> str:
+    """Word-boundary clip + ellipsis (never mid-word, observed 06-17)."""
+    s = _clean_inline(s)
+    if len(s) <= limit:
+        return s
+    cut = s[:limit].rsplit(" ", 1)[0].rstrip(" ,;:—-")
+    return (cut or s[:limit]) + "…"
+
+
+def _is_foreign_pt(pt: str) -> bool:
+    return bool(_FOREIGN_PT_RE.search(pt or ""))
 
 
 def render_desk_signal_board(today_state: dict | None) -> str:
@@ -275,7 +311,10 @@ def render_desk_signal_board(today_state: dict | None) -> str:
     """
     if not today_state:
         return ""
-    hc_calls = today_state.get("hc_calls") or []
+    # Drop foreign-listed calls (non-USD price targets) — a US options
+    # trader can't act on them and they cluttered the board (06-17).
+    hc_calls = [c for c in (today_state.get("hc_calls") or [])
+                if not _is_foreign_pt(c.get("pt") or "")]
     themes = [t for t in (today_state.get("themes") or [])
               if t.get("banks", 0) >= 2]
     if not hc_calls and not themes:
@@ -288,15 +327,14 @@ def render_desk_signal_board(today_state: dict | None) -> str:
         for c in hc_calls[:_HC_CALLS_MAX]:
             src = _clean_inline(c.get("source") or "?")[:13]
             tk = f"${(c.get('ticker') or '?').upper()}"[:7]
-            # rating preferred, fall back to action verb
-            rd = _clean_inline(c.get("rating") or c.get("action") or "")[:9]
+            rd = _norm_rating(c.get("rating") or "", c.get("action") or "")[:8]
             pt_raw = _clean_inline(c.get("pt") or "")
             pt = (f"PT {pt_raw}" if pt_raw and pt_raw.upper() not in ("N/A", "")
                   else "")[:11]
-            rat = _clean_inline(c.get("rationale") or "")[:42]
-            lines.append(f"  {src:<13} {tk:<7} {rd:<9} {pt:<11} {rat}".rstrip())
+            rat = _clip_rationale(c.get("rationale") or "")
+            lines.append(f"  {src:<13} {tk:<7} {rd:<8} {pt:<11} {rat}".rstrip())
         if len(hc_calls) > _HC_CALLS_MAX:
-            lines.append(f"  …+{len(hc_calls) - _HC_CALLS_MAX} more")
+            lines.append(f"  ...+{len(hc_calls) - _HC_CALLS_MAX} more")
 
     if themes:
         if lines:
@@ -309,6 +347,14 @@ def render_desk_signal_board(today_state: dict | None) -> str:
             banks = t.get("banks", 0)
             hc = t.get("hc", 0)
             hc_str = f" · {hc} HC" if hc else ""
+            if not sup and not skep:
+                # All-neutral coverage: "0 bull / 0 bear" read as empty
+                # (observed 06-17). Say what it actually is.
+                lines.append(
+                    f"  {label} — {banks} banks tracking · no directional lean"
+                    f"{hc_str}"
+                )
+                continue
             tail = "" if skep else " · no dissent"
             lines.append(
                 f"  {label} — {sup} bull / {skep} bear · {banks} banks"
@@ -317,8 +363,8 @@ def render_desk_signal_board(today_state: dict | None) -> str:
             if skep:
                 names = ", ".join(t.get("skep_sources") or [])
                 lines.append(
-                    f"     └ dissent: {names}" if names
-                    else f"     └ dissent: {skep} desk(s)"
+                    f"     dissent: {names}" if names
+                    else f"     dissent: {skep} desk(s)"
                 )
 
     if not lines:

@@ -95,13 +95,71 @@ def test_render_hc_and_ledger():
     # Consensus ledger
     assert "CONSENSUS LEDGER" in out
     assert "ai positioning — 3 bull / 1 bear · 6 banks · 2 HC" in out, out
-    assert "└ dissent: Goldman Sachs" in out
+    assert "dissent: Goldman Sachs" in out
     # No-dissent theme
     assert "boj june hike — 6 bull / 0 bear · 6 banks · 2 HC · no dissent" in out, out
     # banks<2 theme excluded
     assert "niche single-bank idea" not in out
     _ok("render: HC table + consensus ledger + named dissent + "
         "no-dissent line + banks>=2 filter")
+
+
+def test_hc_formatting_fixes():
+    """06-17 fixes: foreign-currency calls dropped, ratings normalized
+    (no mid-word 'Overweigh'), rationale word-boundary clipped + ellipsis."""
+    from report.pulse_sections import render_desk_signal_board
+    state = {
+        "hc_calls": [
+            {"source": "JPMorgan", "ticker": "AVGO", "action": "reiterate",
+             "rating": "Overweight", "pt": "$580.00",
+             "rationale": "Broadcom maintains a significant 18-month lead in custom AI silicon"},
+            {"source": "HSBC", "ticker": "MTN", "action": "reiterate",
+             "rating": "Buy", "pt": "ZAR280.0", "rationale": "Nigeria recovery"},
+            {"source": "GS", "ticker": "PUIG", "action": "reiterate",
+             "rating": "Buy", "pt": "€21.50", "rationale": "Re-rating potential"},
+        ],
+        "themes": [],
+    }
+    out = render_desk_signal_board(state)
+    # Foreign-currency calls dropped
+    assert "$MTN" not in out and "ZAR" not in out, "ZAR call must drop"
+    assert "$PUIG" not in out and "€" not in out, "EUR call must drop"
+    # US call kept, rating normalized (no mid-word truncation)
+    assert "$AVGO" in out
+    assert "Overweigh " not in out and "Overweight" not in out, out
+    assert "OW" in out, "Overweight should normalize to OW"
+    # Rationale word-boundary clipped with ellipsis
+    avgo_line = next(l for l in out.splitlines() if "$AVGO" in l)
+    assert "…" in avgo_line, avgo_line
+
+    # Word-boundary property tested directly on the helper: the clipped
+    # text (minus the ellipsis) must end exactly at a word boundary in
+    # the original — never a mid-word stub like "combi"/"includi".
+    from report.pulse_sections import _clip_rationale
+    long = "Broadcom maintains a significant 18-month lead in custom AI silicon"
+    clipped = _clip_rationale(long, 40)
+    assert clipped.endswith("…") and len(clipped) <= 41, clipped
+    stem = clipped[:-1]
+    assert long.startswith(stem), (stem, long)
+    # the char in the original right after the kept stem is a space →
+    # we cut on a word boundary, not mid-word
+    assert long[len(stem)] == " ", f"clipped mid-word: {clipped!r}"
+    assert _clip_rationale("short one", 40) == "short one", "no clip when short"
+    _ok("HC formatting: foreign dropped, rating normalized, rationale "
+        "clipped on word boundary + ellipsis")
+
+
+def test_ledger_all_neutral_row():
+    from report.pulse_sections import render_desk_signal_board
+    state = {"hc_calls": [], "themes": [
+        {"label": "warsh debut", "banks": 8, "sup": 0, "skep": 0,
+         "hc": 0, "skep_sources": []},
+    ]}
+    out = render_desk_signal_board(state)
+    assert "0 bull / 0 bear" not in out, "all-neutral must not read as empty"
+    assert "warsh debut — 8 banks tracking · no directional lean" in out, out
+    _ok("ledger: all-neutral theme reads 'N banks tracking · no "
+        "directional lean'")
 
 
 def test_render_empty_when_no_data():
@@ -171,6 +229,8 @@ if __name__ == "__main__":
     print("=== DESK SIGNAL BOARD (Phase 2) smoke ===")
     test_extract_captures_hc_detail_and_dissent()
     test_render_hc_and_ledger()
+    test_hc_formatting_fixes()
+    test_ledger_all_neutral_row()
     test_render_empty_when_no_data()
     test_render_hc_cap()
     test_inject_order_and_idempotency()

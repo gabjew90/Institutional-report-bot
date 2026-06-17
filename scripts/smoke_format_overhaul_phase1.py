@@ -106,13 +106,15 @@ def test_compute_what_changed_categories():
     bullets = compute_what_changed(prev, today)
     joined = " | ".join(bullets)
     assert "Stance flip" in joined and "hormuz oil" in joined, bullets
-    assert "Fresh high-conviction" in joined and "$MU" in joined, bullets
     assert "New theme" in joined and "boj policy pivot" in joined, bullets
     assert "Faded" in joined and "old fading theme" in joined, bullets
-    # The carried NVDA call must NOT appear as fresh
-    assert joined.count("NVDA") == 0, bullets
-    _ok("compute_what_changed: flip + fresh-HC + new + faded all "
-        "detected; carried call suppressed")
+    # HC calls are NOT listed in WHAT CHANGED anymore — they're owned by
+    # the DESK SIGNAL BOARD (2026-06-17 de-dup). Neither the fresh call
+    # ($MU) nor the carried one (NVDA) should appear here.
+    assert "Fresh high-conviction" not in joined, bullets
+    assert "$MU" not in joined and "NVDA" not in joined, bullets
+    _ok("compute_what_changed: flip + new + faded detected; HC calls "
+        "NOT duplicated here (owned by DESK SIGNAL BOARD)")
 
 
 def test_what_changed_baseline_day_empty():
@@ -124,19 +126,19 @@ def test_what_changed_baseline_day_empty():
     _ok("baseline day: no bullets, no section")
 
 
-def test_what_changed_lean_flips_and_body_filter():
-    """06-15 fixes: lean flips surface as the top bullet, and fresh-HC
-    bullets are suppressed when the ticker isn't in the pulse body
-    (the $GALP/$WULF noise)."""
+def test_what_changed_lean_flip_leads_no_hc():
+    """Lean flips surface as the top bullet. HC calls do NOT appear in
+    WHAT CHANGED at all (2026-06-17: they moved to the DESK SIGNAL
+    BOARD; listing them in both duplicated every call)."""
     from report.pulse_sections import compute_what_changed
     prev = {"themes": [{"label": "oil scare", "banks": 6, "sup": 4, "skep": 0, "hc": 0}],
             "hc_calls": []}
     today = {"themes": [{"label": "oil scare", "banks": 6, "sup": 4, "skep": 0, "hc": 0}],
              "hc_calls": [
                  {"source": "Goldman Sachs", "ticker": "MU",
-                  "action": "reiterate Buy", "pt": "$900"},     # in body
+                  "action": "reiterate Buy", "pt": "$900"},
                  {"source": "Goldman Sachs", "ticker": "GALP",
-                  "action": "reiterate", "pt": "EUR24"},         # NOT in body
+                  "action": "reiterate", "pt": "EUR24"},
              ]}
     bullets = compute_what_changed(
         prev, today,
@@ -144,16 +146,13 @@ def test_what_changed_lean_flips_and_body_filter():
         body_tickers={"MU", "USO", "TLT"},
     )
     joined = " | ".join(bullets)
-    # Flip is first + present
     assert bullets[0].startswith("**Flipped:**") and "$USO" in bullets[0], bullets
     assert "long → short" in bullets[0]
-    # Body-present HC kept, body-absent HC suppressed
-    assert "$MU" in joined, bullets
-    assert "GALP" not in joined, (
-        f"HC call for a ticker not in the body must be suppressed: {bullets}"
-    )
-    _ok("WHAT CHANGED: lean flip leads + body-ticker filter drops "
-        "off-body HC noise")
+    # No HC calls leak into WHAT CHANGED — neither body-present ($MU)
+    # nor body-absent ($GALP). The board owns the calls roster.
+    assert "$MU" not in joined and "GALP" not in joined, bullets
+    assert "Fresh high-conviction" not in joined, bullets
+    _ok("WHAT CHANGED: lean flip leads; HC calls not duplicated here")
 
 
 def test_what_changed_lead_theme_change():
@@ -480,7 +479,7 @@ if __name__ == "__main__":
     test_extract_state_from_ctx()
     test_compute_what_changed_categories()
     test_what_changed_baseline_day_empty()
-    test_what_changed_lean_flips_and_body_filter()
+    test_what_changed_lean_flip_leads_no_hc()
     test_what_changed_lead_theme_change()
     test_extract_leans_closing_paragraph_only()
     test_puts_flip_direction()
