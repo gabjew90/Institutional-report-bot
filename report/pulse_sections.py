@@ -213,14 +213,26 @@ def compute_what_changed(
     # (observed 06-17: $AVGO in both). WHAT CHANGED is the day-over-day
     # DELTA; the calls roster is the board's job.
 
-    # New multi-bank themes (>=3 banks, absent yesterday). Skip the lead
-    # theme if it was already reported as the lead-change above.
-    for label, t in today_themes.items():
+    # New multi-bank themes (>=3 banks, absent yesterday). Collapsed
+    # into ONE bullet — every new theme also appears in the DESK SIGNAL
+    # CONSENSUS LEDGER right below, so four separate "New theme:" lines
+    # read as a duplicate of the ledger (observed 06-17). One compact
+    # "New themes: A (9), B (8)" line keeps the delta without mirroring.
+    # Skip the lead theme (already reported as the lead-change above).
+    new_themes = [
+        (label, t.get("banks", 0))
+        for label, t in today_themes.items()
         if (t.get("banks", 0) >= 3 and label not in prev_themes
-                and label != lead_label):
-            bullets.append(
-                f"**New theme:** {label} ({t['banks']} banks)"
-            )
+            and label != lead_label)
+    ]
+    new_themes.sort(key=lambda x: -x[1])
+    if len(new_themes) == 1:
+        bullets.append(
+            f"**New theme:** {new_themes[0][0]} ({new_themes[0][1]} banks)"
+        )
+    elif new_themes:
+        listed = ", ".join(f"{lbl} ({n})" for lbl, n in new_themes[:4])
+        bullets.append(f"**New themes:** {listed}")
 
     # Dropped themes — yesterday's top-6, gone today.
     prev_top6 = [t["label"] for t in (prev_state.get("themes") or [])[:6]]
