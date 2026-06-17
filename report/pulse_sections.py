@@ -80,6 +80,10 @@ def extract_state_from_ctx(ctx: dict) -> dict:
             "sup": info.get("supportive", 0),
             "skep": info.get("skeptical", 0),
             "hc": info.get("high_conviction", 0),
+            # Dissent names for the DESK SIGNAL BOARD consensus ledger.
+            # Capped at 3 to keep the state snapshot small. Absent on
+            # state dumped before the synthesizer started serializing it.
+            "skep_sources": (info.get("skeptical_sources") or [])[:3],
         })
 
     hc_calls = []
@@ -108,6 +112,9 @@ def extract_state_from_ctx(ctx: dict) -> dict:
                 "ticker": ticker,
                 "action": (mm.get("action") or "")[:40],
                 "pt": (mm.get("price_target") or "")[:20],
+                # rating + rationale power the DESK SIGNAL BOARD HC table.
+                "rating": (mm.get("rating") or "")[:12],
+                "rationale": (mm.get("rationale") or "")[:80],
             })
 
     return {"themes": themes, "hc_calls": hc_calls[:20]}
@@ -237,6 +244,90 @@ def render_what_changed(bullets: list[str]) -> str:
         "## WHAT CHANGED\n\n"
         + "\n".join(f"- {b}" for b in bullets)
         + "\n"
+    )
+
+
+# =====================================================================
+# DESK SIGNAL BOARD (format-overhaul Phase 2)
+# =====================================================================
+
+_HC_CALLS_MAX = 10
+_LEDGER_THEMES_MAX = 7
+
+
+def _clean_inline(s: str) -> str:
+    return re.sub(r"\s+", " ", (s or "").strip())
+
+
+def render_desk_signal_board(today_state: dict | None) -> str:
+    """Render the DESK SIGNAL BOARD — two deterministic sub-blocks built
+    from the stamped pulse state (no LLM, no fabrication surface):
+
+      HIGH-CONVICTION CALLS — every high-conviction single-name call
+        extracted from the corpus (source, ticker, rating/action, PT,
+        one-line rationale).
+      CONSENSUS LEDGER — multi-bank themes with their bull/bear split,
+        bank count, high-conviction count, and named dissent.
+
+    Returns "" when the state carries neither (nothing to show — no
+    empty-section noise). Monospace block: Discord embeds don't render
+    markdown tables.
+    """
+    if not today_state:
+        return ""
+    hc_calls = today_state.get("hc_calls") or []
+    themes = [t for t in (today_state.get("themes") or [])
+              if t.get("banks", 0) >= 2]
+    if not hc_calls and not themes:
+        return ""
+
+    lines: list[str] = []
+
+    if hc_calls:
+        lines.append("HIGH-CONVICTION CALLS")
+        for c in hc_calls[:_HC_CALLS_MAX]:
+            src = _clean_inline(c.get("source") or "?")[:13]
+            tk = f"${(c.get('ticker') or '?').upper()}"[:7]
+            # rating preferred, fall back to action verb
+            rd = _clean_inline(c.get("rating") or c.get("action") or "")[:9]
+            pt_raw = _clean_inline(c.get("pt") or "")
+            pt = (f"PT {pt_raw}" if pt_raw and pt_raw.upper() not in ("N/A", "")
+                  else "")[:11]
+            rat = _clean_inline(c.get("rationale") or "")[:42]
+            lines.append(f"  {src:<13} {tk:<7} {rd:<9} {pt:<11} {rat}".rstrip())
+        if len(hc_calls) > _HC_CALLS_MAX:
+            lines.append(f"  …+{len(hc_calls) - _HC_CALLS_MAX} more")
+
+    if themes:
+        if lines:
+            lines.append("")
+        lines.append("CONSENSUS LEDGER")
+        for t in themes[:_LEDGER_THEMES_MAX]:
+            label = _clean_inline(t.get("label") or "?")
+            sup = t.get("sup", 0)
+            skep = t.get("skep", 0)
+            banks = t.get("banks", 0)
+            hc = t.get("hc", 0)
+            hc_str = f" · {hc} HC" if hc else ""
+            tail = "" if skep else " · no dissent"
+            lines.append(
+                f"  {label} — {sup} bull / {skep} bear · {banks} banks"
+                f"{hc_str}{tail}"
+            )
+            if skep:
+                names = ", ".join(t.get("skep_sources") or [])
+                lines.append(
+                    f"     └ dissent: {names}" if names
+                    else f"     └ dissent: {skep} desk(s)"
+                )
+
+    if not lines:
+        return ""
+    return (
+        "## DESK SIGNAL BOARD\n\n"
+        "```\n"
+        + "\n".join(lines)
+        + "\n```\n"
     )
 
 
@@ -402,10 +493,21 @@ def render_trade_board(
 # Injection
 # =====================================================================
 
-def inject_sections(markdown: str, what_changed_md: str, board_md: str) -> str:
-    """Insert WHAT CHANGED after the RECAP section and TRADE BOARD before
-    WHAT TO WATCH. Idempotent: if either header already exists in the
-    markdown (bridge retry), it is not inserted twice."""
+def inject_sections(
+    markdown: str,
+    what_changed_md: str,
+    board_md: str,
+    desk_signal_md: str = "",
+) -> str:
+    """Insert the deterministic sections in their target order:
+    WHAT CHANGED → DESK SIGNAL BOARD before INSIGHTS (end of RECAP),
+    TRADE BOARD before WHAT TO WATCH. Idempotent: a header already
+    present in the markdown (bridge retry) is not inserted twice.
+
+    WHAT CHANGED and DESK SIGNAL BOARD both anchor before the INSIGHTS
+    header; DESK SIGNAL is inserted AFTER WHAT CHANGED so the final
+    order reads RECAP → WHAT CHANGED → DESK SIGNAL BOARD → INSIGHTS.
+    """
     out = markdown
 
     if what_changed_md and "## WHAT CHANGED" not in out:
@@ -415,6 +517,16 @@ def inject_sections(markdown: str, what_changed_md: str, board_md: str) -> str:
             out = out[:m.start()] + what_changed_md + "\n" + out[m.start():]
         else:
             out = out.rstrip() + "\n\n" + what_changed_md
+
+    if desk_signal_md and "## DESK SIGNAL BOARD" not in out:
+        # Anchor before INSIGHTS too; since WHAT CHANGED is already in
+        # place above the INSIGHTS header, inserting here lands DESK
+        # SIGNAL between WHAT CHANGED and INSIGHTS.
+        m = re.search(r"^##\s+(?:\d+\.\s+)?INSIGHTS", out, re.MULTILINE | re.IGNORECASE)
+        if m:
+            out = out[:m.start()] + desk_signal_md + "\n" + out[m.start():]
+        else:
+            out = out.rstrip() + "\n\n" + desk_signal_md
 
     if board_md and "## TRADE BOARD" not in out:
         m = re.search(r"^##\s+(?:\d+\.\s+)?WHAT TO WATCH", out, re.MULTILINE | re.IGNORECASE)

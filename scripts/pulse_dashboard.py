@@ -51,6 +51,9 @@ CSS = """
   --color-recap:    #c9a227;
   --color-insights: #2956a3;
   --color-watch:    #d97706;
+  --color-signal:   #138d75;
+  --color-changed:  #1abc9c;
+  --color-board:    #8e44ad;
   --color-text:     #1a1a1a;
   --color-muted:    #666;
   --color-soft:     #f7f5f0;
@@ -127,6 +130,9 @@ h2 {
 h2.recap    { background: var(--color-recap); }
 h2.insights { background: var(--color-insights); }
 h2.watch    { background: var(--color-watch); }
+h2.changed  { background: var(--color-changed); }
+h2.signal   { background: var(--color-signal); }
+h2.board    { background: var(--color-board); }
 
 /* === THEME HEADERS === */
 h3 {
@@ -291,6 +297,10 @@ def _wrap_sections(body_html: str) -> str:
             cls = "recap"
         elif "changed" in heading_text:
             cls = "changed"      # WHAT CHANGED (format-overhaul Phase 1)
+        elif "signal" in heading_text:
+            cls = "signal"       # DESK SIGNAL BOARD (Phase 2) — MUST
+            # precede the "board" check: "DESK SIGNAL BOARD" contains
+            # "board" and would otherwise collide with TRADE BOARD.
         elif "board" in heading_text:
             cls = "board"        # TRADE BOARD (format-overhaul Phase 1)
         elif "insights" in heading_text or "alpha" in heading_text:
@@ -373,6 +383,9 @@ def render_pulse_fragment(md: str) -> str:
     )
     body_html = body_html.replace(
         '<h2 class="board">', '<h2 class="board" id="pulse-board">'
+    )
+    body_html = body_html.replace(
+        '<h2 class="signal">', '<h2 class="signal" id="pulse-signal">'
     )
 
     pdf_count = meta.get("pdf_count")

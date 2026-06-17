@@ -490,6 +490,7 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                 from report.pulse_sections import (
                     compute_what_changed, render_what_changed,
                     extract_leans_from_markdown, render_trade_board,
+                    render_desk_signal_board,
                     inject_sections, replace_body_after_frontmatter,
                 )
                 # TRADE BOARD — extract today's leans, merge into the
@@ -526,7 +527,15 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                         "(no prior stamped pulse_state)"
                     )
 
-                injected = inject_sections(markdown, wc_md, board_md)
+                # DESK SIGNAL BOARD — today's HC calls + consensus ledger,
+                # rendered deterministically from the same stamped state.
+                desk_md = ""
+                if today_stamp:
+                    desk_md = render_desk_signal_board(
+                        json.loads(today_stamp["state_json"])
+                    )
+
+                injected = inject_sections(markdown, wc_md, board_md, desk_md)
                 if injected != markdown:
                     markdown = injected
                     raw_markdown = replace_body_after_frontmatter(
@@ -534,7 +543,8 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                     )
                     log.info(
                         f"Bridge: injected sections — what_changed="
-                        f"{bool(wc_md)}, board_rows={len(board_rows)}, "
+                        f"{bool(wc_md)}, desk_signal={bool(desk_md)}, "
+                        f"board_rows={len(board_rows)}, "
                         f"leans_today={len(leans)}"
                     )
             except Exception as e:

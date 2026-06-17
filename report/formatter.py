@@ -20,6 +20,7 @@ log = logging.getLogger(__name__)
 SECTION_COLORS = {
     "RECAP": 0xFFD700,                  # Gold
     "WHAT CHANGED": 0x1ABC9C,           # Teal (format-overhaul Phase 1)
+    "DESK SIGNAL": 0x16A085,            # Dark teal (format-overhaul Phase 2)
     "INSIGHTS": 0x3498DB,               # Blue
     "ALPHA": 0x3498DB,                  # Blue (for "INSIGHTS & ALPHA")
     "TRADE BOARD": 0x9B59B6,            # Purple (format-overhaul Phase 1)

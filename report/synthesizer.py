@@ -632,6 +632,13 @@ def _classify_themes(
             "supportive": len(canonical_stance_banks.get(tag, {}).get("supportive", set())),
             "skeptical": len(canonical_stance_banks.get(tag, {}).get("skeptical", set())),
             "neutral": len(canonical_stance_banks.get(tag, {}).get("neutral", set())),
+            # Names of the skeptical banks — powers the DESK SIGNAL BOARD
+            # consensus-ledger dissent line ("dissent: Goldman Sachs").
+            # Only the count was kept before; the names live in
+            # canonical_stance_banks at synthesis time.
+            "skeptical_sources": sorted(
+                canonical_stance_banks.get(tag, {}).get("skeptical", set())
+            ),
             # Count of high-conviction DIRECTIONAL stances. Ranking input:
             # at equal bank counts, themes carrying real conviction beat
             # neutral-consensus themes.
