@@ -3416,6 +3416,63 @@ def _has_repetition_glitch(text: str) -> bool:
     return any(c >= 2 for c in loose_counts.values())
 
 
+# =====================================================================
+# Grounding backstop — structural enforcement that a MARKET-FACT answer
+# actually consulted a source. Gemini's Google-Search grounding is
+# DISCRETIONARY (the model decides per-answer); "Type 1 always searches"
+# is a prompt instruction it can ignore — observed 2026-06-17: the SPCX
+# unlock schedule was confabulated from priors with zero grounding and
+# zero tool calls. This detects the signature (hard market specifics +
+# NO grounding + NO data tool) so the caller can force a grounded retry
+# before posting. Scoped to MARKET-fact shapes (price targets, event
+# dates, unlock/float/tranche numbers, dense specifics) so it never
+# misfires on the room's roast register, which cites the odd personal
+# dollar figure ("$3,500 soccer tickets") but no analyst-fact shapes.
+# =====================================================================
+
+# Strong single-marker shapes — analyst/corporate-event facts a roast
+# essentially never produces.
+_MARKET_FACT_STRONG_RE = re.compile(
+    r"(\bPT\s*\$?\d"
+    r"|\bprice target\b"
+    r"|\b(?:un)?lock(?:up|ed|s)?\b[^.\n]{0,30}?\d"
+    r"|\btranche\b"
+    r"|\bfloat\b[^.\n]{0,20}?\d"
+    r"|\b(?:consensus|estimate[ds]?|forecast)\b[^.\n]{0,25}?\d"
+    r"|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2}\b"
+    r"|\b\d{4}-\d{2}-\d{2}\b)",
+    re.IGNORECASE,
+)
+# Generic specifics — only meaningful in DENSITY (>=3 ≈ a schedule/
+# data-dump answer, not a one-off roast number).
+_GENERIC_SPECIFIC_RE = re.compile(
+    r"(\$\d[\d,]*(?:\.\d+)?|\b\d+(?:\.\d+)?\s?%|\b\d{1,2}/\d{1,2}(?:/\d{2,4})?\b)",
+)
+
+
+def _grounding_has_sources(gm) -> bool:
+    if gm is None:
+        return False
+    return bool(getattr(gm, "grounding_chunks", None) or [])
+
+
+def _is_ungrounded_market_fact(answer: str, grounding_metadata,
+                               tool_trace: list) -> bool:
+    """True when an answer asserts market-fact specifics but consulted NO
+    source (no Google grounding, no data tool). The confabulation
+    signature. Roast-safe: requires a strong analyst-fact marker OR
+    >=3 dense specifics, which a personal-life jab won't have."""
+    if not answer or len(answer) < 25:
+        return False
+    if _grounding_has_sources(grounding_metadata):
+        return False
+    if tool_trace:  # any data tool firing counts as a source attempt
+        return False
+    if _MARKET_FACT_STRONG_RE.search(answer):
+        return True
+    return len(_GENERIC_SPECIFIC_RE.findall(answer)) >= 3
+
+
 # Mechanical em-dash + semicolon strip. Pulse-side lint replaces these
 # via SCRUB; /ask doesn't have a SCRUB pass and they keep shipping.
 # Cheap mechanical replacement preserves the surrounding sentence
@@ -4519,6 +4576,99 @@ async def _answer_with_gemini(
             grounding_metadata = response.candidates[0].grounding_metadata
         except (AttributeError, IndexError, TypeError):
             pass
+
+        # Grounding backstop — structural enforcement of "Type 1 needs a
+        # source." If the answer asserts market-fact specifics yet
+        # nothing grounded it (no Google grounding, no data tool), force
+        # ONE grounded retry; if that still doesn't ground, append a
+        # hedge so the unverified specifics aren't presented as fact.
+        # This is the code-side catch for the SPCX confabulation
+        # (2026-06-17) that the discretionary grounding + prompt rule
+        # let through. The asker only ever sees the final single answer.
+        if answer and _is_ungrounded_market_fact(
+            answer, grounding_metadata, _ask_tool_trace
+        ):
+            log.warning(
+                f"/ask: ungrounded market-fact answer (q={question[:80]!r}) "
+                f"— forcing a grounded retry"
+            )
+            try:
+                forced_contents = list(contents) + [
+                    types.Content(role="user", parts=[types.Part.from_text(
+                        text=(
+                            "[GROUNDING REQUIRED] Your previous draft stated "
+                            "specific market facts (dates, levels, percentages, "
+                            "price targets, an unlock/float schedule) WITHOUT "
+                            "consulting any source. Before answering, you MUST "
+                            "run a Google Search to verify each specific. If a "
+                            "specific cannot be verified, say you couldn't "
+                            "verify it instead of stating a number — never "
+                            "invent dates, tranche %s, tickers, or price levels."
+                        ),
+                    )])
+                ]
+                forced_config = types.GenerateContentConfig(
+                    system_instruction=_build_runtime_system_instruction(),
+                    tools=[
+                        types.Tool(google_search=types.GoogleSearch()),
+                        _build_chat_search_tool(),
+                        _build_user_profile_tool(),
+                        _build_trade_log_tool(),
+                        _build_market_price_tool(),
+                        _build_options_chain_tool(),
+                        _build_economic_calendar_tool(),
+                        _build_earnings_date_tool(),
+                    ],
+                    tool_config=types.ToolConfig(
+                        include_server_side_tool_invocations=True,
+                    ),
+                    safety_settings=safety_settings,
+                    max_output_tokens=5000,
+                    temperature=0.3,
+                    thinking_config=types.ThinkingConfig(thinking_budget=2000),
+                )
+                forced_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=forced_contents,
+                    config=forced_config,
+                )
+                _tally_retry_usage(forced_resp)
+                try:
+                    forced_answer = (forced_resp.text or "").strip()
+                except Exception:
+                    forced_answer = ""
+                forced_gm = None
+                try:
+                    forced_gm = forced_resp.candidates[0].grounding_metadata
+                except (AttributeError, IndexError, TypeError):
+                    pass
+                if forced_answer and _grounding_has_sources(forced_gm):
+                    answer = forced_answer
+                    response = forced_resp
+                    grounding_metadata = forced_gm
+                    log.info("/ask: grounded retry succeeded")
+                elif forced_answer and not _is_ungrounded_market_fact(
+                    forced_answer, forced_gm, []
+                ):
+                    # Retry dropped the unverifiable specifics (e.g. said
+                    # "couldn't verify") — that's the honest outcome, use it.
+                    answer = forced_answer
+                    response = forced_resp
+                    grounding_metadata = forced_gm
+                    log.info("/ask: grounded retry returned a hedged answer")
+                else:
+                    # Still ungrounded specifics — flag rather than ship as fact.
+                    answer = (
+                        answer.rstrip()
+                        + "\n\n→ ⚠️ Couldn't verify these specifics against a "
+                        "live source — treat the exact numbers/dates as "
+                        "unconfirmed."
+                    )
+                    log.warning(
+                        "/ask: grounded retry still ungrounded — appended hedge"
+                    )
+            except Exception as e:
+                log.warning(f"/ask: grounded retry call failed: {e}")
 
         # Blank-answer recovery. Gemini can return an empty text payload
         # when (a) max_output_tokens was burned in the thinking phase,
