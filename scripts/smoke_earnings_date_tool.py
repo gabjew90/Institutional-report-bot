@@ -326,12 +326,40 @@ def test_prompt_no_ta_rule_present():
     assert "7293" in window
     assert "consolidation zone" in window
     assert "$115" in window
+    # 2026-06-17 additions: RSI / overbought / pivot now explicitly banned
+    # + anchored (the words the new violations actually used)
+    assert "RSI" in window
+    assert "overbought" in window
+    assert "pivot" in window
+    assert "30,000 level" in window, "must anchor the 06-17 NDX pivot violation"
     # The permitted path: attributed levels
     assert "attributed" in window
     # The pure-chart-question answer
     assert "chart view" in window
-    _ok("prompt: binding NO-TA rule with 06-10 anchors + "
-        "attribution-only carve-out")
+    _ok("prompt: NO-TA rule bans RSI/overbought/pivot + anchors 06-10 "
+        "and 06-17 violations")
+
+
+def test_prompt_corporate_event_search_and_anticonfab():
+    """2026-06-17 SPCX fix: corporate-event schedules (unlock/lockup/
+    float/ETF tickers) must route to Google, and the bot must say
+    'couldn't verify' rather than confabulate specifics when search is
+    thin."""
+    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
+    # search-required trigger for corporate-event schedules
+    anchor = P.find("Corporate-event schedules for a named security")
+    assert anchor != -1, "missing corporate-event search trigger"
+    window = P[anchor:anchor + 700]
+    assert "lockup" in window.lower() and "unlock" in window.lower()
+    assert "SPCX" in window, "must anchor the SPCX confabulation"
+    # anti-confabulation rule
+    assert "DO NOT CONFABULATE SPECIFICS WHEN SEARCH COMES UP THIN" in P
+    ac = P.find("DO NOT CONFABULATE SPECIFICS WHEN SEARCH COMES UP THIN")
+    acw = P[ac:ac + 900]
+    assert "couldn't" in acw.lower() or "can't find" in acw.lower()
+    assert "never invent" in acw.lower() or "NEVER invent" in acw
+    _ok("prompt: corporate-event search trigger + anti-confabulation "
+        "(SPCX-anchored)")
 
 
 def test_prompt_ta_teaching_examples_scrubbed():
@@ -367,5 +395,6 @@ if __name__ == "__main__":
     test_prompt_google_default_rule()
     test_prompt_routing_list_updated()
     test_prompt_no_ta_rule_present()
+    test_prompt_corporate_event_search_and_anticonfab()
     test_prompt_ta_teaching_examples_scrubbed()
     print("\nALL EARNINGS-DATE / GOOGLE-DEFAULT / NO-TA SMOKE TESTS PASS")
