@@ -1,0 +1,261 @@
+{
+  "pulse_date": "2026-06-18",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "strait of hormuz reopening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 12
+      },
+      "consensus_view": "Many banks flag the US-Iran deal to reopen the Strait of Hormuz as a live market catalyst that pushes oil prices lower and risk assets higher, but most reference it in passing without staking a clear directional view.",
+      "facts_agreed": [
+        {
+          "claim": "A US-Iran interim agreement to reopen the Strait of Hormuz is being widely tracked across desks as a near-term oil and risk-on catalyst.",
+          "banks_for": [
+            "Natixis",
+            "JPMorgan",
+            "Goldman Sachs",
+            "ING",
+            "Mizuho International Plc",
+            "SEB",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "The announcement of an interim agreement between the United States and Iran",
+            "Strait of Hormuz reopening deal",
+            "Reopening of the Strait of Hormuz",
+            "US-Iran Strait of Hormuz agreement",
+            "Strait of Hormuz oil transit"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh fed chair",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 12
+      },
+      "consensus_view": "A dozen banks flag Kevin Warsh's first FOMC meeting as Fed Chair as a key near-term event, but none stakes a clear directional view; the market leans toward a hawkish, rate-hike-tilted Fed under his leadership.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across many research desks reference Kevin Warsh's first FOMC meeting and press conference as Fed Chair as a near-term market catalyst.",
+          "banks_for": [
+            "Bloomberg Markets Live",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "Natixis",
+            "Rabobank",
+            "Scotiabank",
+            "Syz Private Banking",
+            "TS Lombard",
+            "The Market Ear",
+            "UBS",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh's first FOMC meeting as Fed Chair",
+            "Warsh's first FOMC outcome",
+            "Chair Warsh press conference",
+            "FOMC meeting under Chair Kevin Warsh",
+            "Fed Chair Kevin Warsh regime change"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hawkish fed policy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 4,
+        "neutral": 8
+      },
+      "consensus_view": "Banks agree the June Fed meeting was a hawkish surprise, with the dot plot now showing nine of eighteen officials expecting a rate hike in 2026, but they split on whether the Fed actually follows through or just pauses through the rest of the year.",
+      "facts_agreed": [
+        {
+          "claim": "The June FOMC meeting delivered a hawkish surprise, with nine of eighteen participants now projecting a rate hike in 2026.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Natixis",
+            "Mizuho International Plc"
+          ],
+          "evidence_quotes": [
+            "The June FOMC meeting delivered a hawkish surprise",
+            "The June FOMC meeting delivered a hawkish surprise, with nine participants projecting a hike",
+            "half the participants are now expecting a hike by the end of the year",
+            "The median 2026 dot moved up to around 3.8%"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the Fed actually hikes or holds for the rest of 2026",
+          "banks_for": [
+            "Natixis",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "half the participants are now expecting a hike by the end of the year",
+          "banks_against": [
+            "ING",
+            "Rabobank"
+          ],
+          "against_evidence": "we look for an extended pause of perhaps 12 months."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran nuclear deal viability",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 10
+      },
+      "consensus_view": "Many banks reference the US-Iran preliminary deal as a live market catalyst, but only one stakes a directional view, warning the framework defers all the hard nuclear questions to a rushed 60-day window so the deal's durability is unresolved.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the US-Iran MOU/peace framework as an active near-term market catalyst this window without staking a primary directional view.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "Natixis",
+            "Raymond James",
+            "SEB",
+            "Scotiabank",
+            "Syz Private Banking",
+            "UBS",
+            "Westpac Economics"
+          ],
+          "evidence_quotes": [
+            "US-Iran peace agreement",
+            "US-Iran peace deal implementation",
+            "US-Iran MOU negotiations",
+            "US-Iran conflict de-escalation",
+            "US-Iran MoU front-loaded concessions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "g7 summit",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five banks reference the G7 summit as an upcoming geopolitical catalyst this window, but none has staked a clear directional market view on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the G7 summit as a near-term geopolitical event to watch this window.",
+          "banks_for": [
+            "JPMorgan",
+            "SEB",
+            "Scotiabank",
+            "UBS",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "G7 summit in France",
+            "G7 Summit",
+            "G7 meeting",
+            "G7 summit in Evian",
+            "G7 meeting sanctions against Russia"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor market fragility",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 2,
+        "neutral": 2
+      },
+      "consensus_view": "Banks agree semiconductor stocks are extremely crowded and overextended after a massive rally, raising the risk of a sharp, self-feeding selloff, but they disagree on whether to fade the trade now or stay long.",
+      "facts_agreed": [
+        {
+          "claim": "Semiconductor stocks are an extremely crowded, heavily-owned trade with record investor exposure.",
+          "banks_for": [
+            "The Market Ear",
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Long global semis has become the most crowded trade on the planet",
+            "rising trend in semiconductor stock volatility coupled with elevated semiconductor exposures",
+            "Net allocation to the group has more than doubled YTD to the highest level"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the semiconductor trade is fragile/near a shakeout or still a sound long",
+          "banks_for": [
+            "The Market Ear",
+            "BTIG"
+          ],
+          "for_evidence": "Long global semis has become the most crowded trade on the planet",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "Net allocation to the group has more than doubled YTD to the highest level"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "global equities outlook",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Banks are broadly bullish on stocks, expecting that solid economic growth, rising company profits, and AI-driven investment will keep global equities moving higher over the next year.",
+      "facts_agreed": [
+        {
+          "claim": "Banks are constructive on equities, with several favoring U.S. stocks on the back of resilient growth and strong earnings.",
+          "banks_for": [
+            "UBS",
+            "Bank of America",
+            "Raymond James",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "should allow investors to focus more on the backdrop of resilient economic growth",
+            "We maintain an overweight to Equities with a preference for U.S. Equities",
+            "a supportive earnings backdrop is reinforcing a constructive outlook for equities over the next 12 months",
+            "We are bullish on Global Equities"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "ai semiconductor infrastructure",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'BofA Global Research'"
+    }
+  ]
+}
