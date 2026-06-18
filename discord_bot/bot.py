@@ -168,7 +168,13 @@ Look up trade history. Two anchors — use EXACTLY one:
 
 **Caller anchor.** `lookup_trade_log(caller="abe" | "bankerkyle", kind="open" | "recent" | "tally" | "all", days?)` returns the structured trade log for a registered analyst caller. High fidelity — daily cron stitches open/close pairs. Response carries `data_quality: "caller"`.
 
-**Username anchor.** `lookup_trade_log(username="theorb_18574", kind?, days?)` returns the user's "Recent trades" snippet from their profile. Member-mode fidelity — no W/L stitching. Response carries `data_quality: "member"`. When you answer, mention the W/L numbers are approximate (small sample, self-reported screenshots).
+**Username anchor.** `lookup_trade_log(username="theorb_18574", kind?, days?)` returns TWO things for that member: `profile_recent_trades` (the screenshot-ledger snippet — OCR'd from the alert channels) AND `chat_stated_trades` (their recent chat messages that read as trade calls — self-reported, NOT screenshot-verified). Member-mode fidelity — no W/L stitching. Response carries `data_quality: "member"`.
+
+**"How did I do" / "my trades" / "did I trade X" — use BOTH sources, binding.** Most of the room calls trades by TALKING, not screenshotting, so the ledger is often empty even for an active trader. Report what each source shows, labeled:
+- `profile_recent_trades` / ledger → screenshot-VERIFIED; cite its `gain_pct` as a real result.
+- `chat_stated_trades` → the member's OWN words ("you called META puts at open, said +100%"). Real that they SAID it; flag it's self-reported / not screenshot-verified. Quote their stated % as their claim, not a verified result.
+- **If `chat_stated_trades` is non-empty you may NEVER say "you did nothing," "batting .000," "nothing logged," or "zero mentions."** They traded — it just isn't screenshotted. Observed 2026-06-17: terlin said "meta put at open 100%" in chat and the bot replied "zero mentions of META, zero puts, zero shorts." That is the exact failure this rule kills.
+- Only when BOTH are empty do you say "nothing in the ledger and nothing trade-shaped in your chat today." Nudge them to screenshot for verified W/L tracking.
 
 **`kind` modes:**
 - `"open"` — current open positions only
@@ -180,6 +186,7 @@ Look up trade history. Two anchors — use EXACTLY one:
 - A position tagged **expired / past its expiry with no close** → say it "hit expiry with no close posted, outcome unrecorded." You do NOT know if they sold early, it expired in-the-money, or it expired worthless — do not pick one. ("Expired — no close alert" means OUTCOME UNKNOWN, not "worthless.")
 - An **open position with no logged exit** → "opened X, no exit posted." We only see screenshotted trades, so a missing close does NOT mean still-held. Never assert "still holding," "still riding it," or "in limbo" as fact.
 - Only cite a **win/loss/percentage** when the log row actually carries a `gain_pct` (close/trim events). Never infer a P&L the log doesn't contain.
+- **Never state a DOLLAR P&L.** The log carries percentages and self-reported claims, NOT position sizes or contract counts — so a "+$8,839.28" figure is always fabricated (observed 2026-06-17: a real +65.47% from the ledger got dressed up with an invented dollar amount). Cite the % only; if asked for dollars, say you only have the percentage, not their size.
 - You may still mock the RISK or the setup ("naked weekly lotto, no stop") — just never a fabricated RESULT. When in doubt, describe what was POSTED and when, and stop.
 
 **When to call:**
@@ -2272,7 +2279,21 @@ async def _execute_trade_log(args: dict) -> dict:
             "data_quality": "member",
             "error": f"{type(e).__name__}: {e}",
         }
-    if not profile_snippet:
+    # Chat-stated trades — the member's own recent messages that read as
+    # trade calls. Most of the room trades by TALKING, not screenshotting,
+    # so the ledger/profile snippet alone made the bot tell active
+    # traders "you did nothing" (2026-06-17: terlin called META puts
+    # +100% in chat, got "zero mentions of META"). These are
+    # self-reported, NOT screenshot-verified — labeled as such.
+    chat_stated_trades: list[dict] = []
+    try:
+        chat_stated_trades = db.get_recent_user_chat_trades(
+            user_id, days=max(int(days), 2)
+        )
+    except Exception as e:
+        log.warning(f"lookup_trade_log chat-stated fetch failed: {e}")
+
+    if not profile_snippet and not chat_stated_trades:
         return {
             "status": "empty",
             "as_of": as_of,
@@ -2290,7 +2311,9 @@ async def _execute_trade_log(args: dict) -> dict:
         "anchor": {"type": "username", "name": username, "user_id": user_id},
         "kind": kind,
         "data_quality": "member",
-        "profile_recent_trades": profile_snippet,
+        "profile_recent_trades": profile_snippet or None,
+        # Self-reported (NOT screenshot-verified). Their own chat words.
+        "chat_stated_trades": chat_stated_trades,
     }
 
 

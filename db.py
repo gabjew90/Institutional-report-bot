@@ -2,6 +2,7 @@
 
 import json
 import logging
+import re
 import sqlite3
 from datetime import datetime, date, timedelta
 from pathlib import Path
@@ -1776,6 +1777,66 @@ def upsert_pulse_leans(today: str, leans: list[dict]) -> list[dict]:
             )
     conn.commit()
     return flips
+
+
+# Trade-statement signal in free chat — for the "how did I do" lookup.
+# Most of the room calls trades by TALKING ("meta put at open 100%",
+# "buy puts", "fomc shorts"), not by posting screenshots, so the
+# OCR'd analyst_trades ledger is empty for them and the bot was telling
+# active traders "you did nothing / batting .000" (observed 2026-06-17:
+# terlin called META puts +100% in chat, got "zero mentions of META").
+# This surfaces those self-reported chat trades alongside the ledger.
+# Precision-favoring: strong trade verbs, plural contracts, ticker/number
+# + call/put, dollar levels, percentages, dte. Avoids matching bare
+# "call me" / "put it down" (singular call/put without trade context).
+_CHAT_TRADE_RE = re.compile(
+    r"("
+    r"\b((?:re)?bought|(?:re)?sold|short(?:s|ed|ing)?|long(?:s|ed|ing)?|"
+    r"scalp(?:ed|ing)?|runner|trim(?:med)?|hedged?|assigned|rolled|\d?dte)\b"
+    r"|\bputs\b|\bcalls\b"
+    r"|\$[A-Za-z]{1,5}\s+(?:call|put)s?\b"
+    r"|\b\d{2,5}\s?(?:c|p|call|put)s?\b"
+    r"|\$\d"
+    r"|[-+]?\d+(?:\.\d+)?%"
+    r"|\bbuy\s+(?:puts?|calls?)\b"
+    r")",
+    re.IGNORECASE,
+)
+
+
+def get_recent_user_chat_trades(
+    user_id: int, days: int = 2, limit: int = 15
+) -> list[dict]:
+    """A user's recent chat messages that read as trade statements.
+
+    Best-effort signal, NOT a verified ledger — these are the member's
+    own words ("self-reported"). Returns [{posted_at, channel, text}],
+    most recent first. Empty list on error or no matches.
+    """
+    try:
+        cutoff = (datetime.utcnow() - timedelta(days=max(1, int(days)))).isoformat()
+        rows = get_connection().execute(
+            "SELECT posted_at, channel_name, content FROM chat_messages "
+            "WHERE author_id = ? AND posted_at >= ? "
+            "ORDER BY posted_at DESC LIMIT 300",
+            (int(user_id), cutoff),
+        ).fetchall()
+    except Exception as e:
+        log.warning(f"get_recent_user_chat_trades failed: {e}")
+        return []
+    out: list[dict] = []
+    for r in rows:
+        content = (r["content"] or "").strip()
+        if not content or not _CHAT_TRADE_RE.search(content):
+            continue
+        out.append({
+            "posted_at": (r["posted_at"] or "")[:16].replace("T", " "),
+            "channel": r["channel_name"],
+            "text": content[:180],
+        })
+        if len(out) >= limit:
+            break
+    return out
 
 
 def get_board_leans(today: str, max_age_days: int = 5) -> list[dict]:
