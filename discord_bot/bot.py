@@ -4090,6 +4090,78 @@ async def _answer_message_count_directly(
     return discord.Embed(description=desc, color=0x1ABC9C)
 
 
+# =====================================================================
+# Intent router — structural grounding (2026-06-19)
+# =====================================================================
+# Replaces the answer-keyword "trip" with an up-front decision about
+# whether the QUESTION needs the open web. Gemini's search grounding is
+# discretionary, so the only structural way to GUARANTEE a fact question
+# gets grounded is to route it into a search-only pass (function tools
+# stripped → search is the model's only move). Banter / self-data
+# questions take the normal multi-tool path. The decision is the model's
+# semantic read of the question's intent, NOT a regex over the output —
+# so it doesn't misfire on arbitrary words like "June 19" or "unlock".
+_ASK_ROUTER_INSTRUCTION = (
+    "You are the routing classifier for a Discord trading-room bot. "
+    "Decide whether answering the user's question REQUIRES looking up a "
+    "current real-world fact on the open web — something the bot cannot "
+    "get from its own data and would otherwise guess from memory.\n\n"
+    "Answer WEB if the correct answer depends on an external fact such "
+    "as: a stock's IPO / lockup / unlock / float schedule, a company "
+    "filing or corporate-action detail, market holidays / trading hours, "
+    "an economic-data or earnings DATE, a macro or geopolitical event, "
+    "breaking news, or the definition of some current real-world state.\n\n"
+    "Answer LOCAL if the question is: banter, a roast, or an opinion "
+    "about room members; OR answerable from the bot's own data — a "
+    "member's trades or track record, a LIVE stock price or options "
+    "chain, recent room chat history; OR general conversation that needs "
+    "no external fact.\n\n"
+    "The question may be preceded by chat-context lines; classify the "
+    "ACTUAL question (usually the last line, after the final separator). "
+    "When genuinely unsure, answer LOCAL.\n\n"
+    "Output EXACTLY one word: WEB or LOCAL."
+)
+
+
+async def _classify_ask_needs_web(
+    client, ask_model: str, safety_settings, question: str
+) -> bool:
+    """True when the question needs an open-web lookup (route to a
+    search-only grounded pass). Fail-safe: any error / ambiguous output
+    returns False so the call takes the normal multi-tool path (today's
+    default behavior), never a hard failure."""
+    if not question or not question.strip():
+        return False
+    try:
+        from google.genai import types
+        # Only the tail matters — the real ask sits after the context
+        # blocks. Cap to keep the classify call cheap and minimize slur
+        # exposure from any quoted chat above it.
+        tail = question.strip()[-1800:]
+        resp = await client.aio.models.generate_content(
+            model=ask_model,
+            contents=[types.Content(
+                role="user",
+                parts=[types.Part.from_text(text=tail)],
+            )],
+            config=types.GenerateContentConfig(
+                system_instruction=_ASK_ROUTER_INSTRUCTION,
+                safety_settings=safety_settings,
+                max_output_tokens=8,
+                temperature=0.0,
+                thinking_config=types.ThinkingConfig(thinking_budget=0),
+            ),
+        )
+        # Classifier spend is ~8 output tokens — negligible, not tallied
+        # (the per-call budget reservation in _answer_with_gemini already
+        # over-reserves to cover it).
+        verdict = ((resp.text or "").strip().upper())
+        return verdict.startswith("WEB")
+    except Exception as e:
+        log.info(f"/ask: intent-router classify failed (defaulting LOCAL): {e}")
+        return False
+
+
 async def _answer_with_gemini(
     question: str,
     user_id: int,
@@ -4342,6 +4414,36 @@ async def _answer_with_gemini(
         contents: list = [types.Content(role="user", parts=initial_parts)]
 
         ask_model = settings.ask_gemini_model or settings.gemini_model
+
+        # Intent router (structural grounding). Decide up front whether
+        # this question needs the open web. If it does, swap the
+        # multi-tool config for a SEARCH-ONLY one so Google Search is the
+        # model's only move and the answer is grounded BY CONSTRUCTION —
+        # no post-hoc keyword detection, no discretionary skip. Banter /
+        # self-data questions keep the full tool set. The post-hoc
+        # grounding backstop stays only as a thin net for router
+        # misclassification (it should now rarely fire).
+        needs_web = await _classify_ask_needs_web(
+            client, ask_model, safety_settings, question
+        )
+        if needs_web:
+            log.info(
+                f"/ask: intent-router → WEB (search-only pass) "
+                f"q={question[:80]!r}"
+            )
+            config = types.GenerateContentConfig(
+                system_instruction=_build_runtime_system_instruction(),
+                tools=[types.Tool(google_search=types.GoogleSearch())],
+                safety_settings=safety_settings,
+                max_output_tokens=5000,
+                temperature=0.3,
+                thinking_config=types.ThinkingConfig(thinking_budget=2000),
+            )
+        else:
+            log.info(
+                f"/ask: intent-router → LOCAL (multi-tool pass) "
+                f"q={question[:80]!r}"
+            )
 
         # Token-budget reservation BEFORE the call. /ask assembles
         # a large prompt (WHO'S TALKING + analyst log + recent chat +
