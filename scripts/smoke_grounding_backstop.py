@@ -84,7 +84,26 @@ def test_detector_strong_markers():
     ]:
         assert f(s + " " * 0, None, []) is True, f"strong marker should fire: {s!r}"
     _ok("detector: single strong analyst-fact marker fires (PT / lockup / "
-        "float / event date)")
+        "float / consensus)")
+
+
+def test_detector_no_false_positive_on_calendar():
+    """2026-06-19 fix: bare calendar dates were stamping CORRECT
+    common-knowledge answers with the unverified hedge. A market-hours /
+    calendar answer with NO unlock/PT/tranche shape must NOT fire."""
+    from discord_bot.bot import _is_ungrounded_market_fact as f
+    benign = [
+        # id 118 — correct, got falsely hedged before the fix
+        "Yes, the market closes at the normal time of 4:00 PM ET today, "
+        "Thursday, June 18. It is closed Friday, June 19 for Juneteenth, "
+        "reopening Monday, June 22.",
+        # id 117 — a date-bearing answer with no confab shape
+        "Rebalancing is effective after the close tomorrow, Friday, June 19.",
+        "Earnings are scheduled for the week of October 27.",
+    ]
+    for s in benign:
+        assert f(s, None, []) is False, f"calendar answer must NOT fire: {s!r}"
+    _ok("detector: bare calendar dates no longer false-trigger (id-118 fix)")
 
 
 def test_detector_density_threshold():
@@ -113,6 +132,28 @@ def test_backstop_block_wired():
     _ok("backstop wired into _answer_with_gemini: detect → forced retry → hedge")
 
 
+def test_forced_retry_is_search_only():
+    """2026-06-19 fix: the forced retry must strip the function tools so
+    Google Search is the model's ONLY move — otherwise it skips search,
+    re-answers from priors, and falls through to the hedge instead of
+    actually grounding. Guard the SEARCH-ONLY config + the directive
+    that tells the model search is its only tool."""
+    import discord_bot.bot as bot_mod
+    src = inspect.getsource(bot_mod._answer_with_gemini)
+    # The forced-retry block must carry the search-only marker + the
+    # single-tool google_search config, and must NOT re-list the
+    # function-tool builders inside that retry.
+    assert "SEARCH-ONLY tool config" in src, "search-only retry marker missing"
+    assert "Google Search is now your" in src, "search-only directive missing"
+    # The grounding retry directive must precede a single-tool config.
+    after = src.split("[GROUNDING REQUIRED]", 1)[1].split("forced_resp", 1)[0]
+    assert "_build_trade_log_tool" not in after, (
+        "forced retry must NOT re-include function tools (search-only)"
+    )
+    assert "google_search=types.GoogleSearch()" in after, "search tool missing"
+    _ok("forced retry is SEARCH-ONLY (function tools stripped)")
+
+
 if __name__ == "__main__":
     print("=== grounding backstop smoke ===")
     test_detector_fires_on_confab_no_source()
@@ -120,7 +161,9 @@ if __name__ == "__main__":
     test_detector_skips_when_tool_fired()
     test_detector_roast_safe()
     test_detector_strong_markers()
+    test_detector_no_false_positive_on_calendar()
     test_detector_density_threshold()
     test_grounding_has_sources()
     test_backstop_block_wired()
+    test_forced_retry_is_search_only()
     print("\nALL GROUNDING BACKSTOP SMOKE TESTS PASS")

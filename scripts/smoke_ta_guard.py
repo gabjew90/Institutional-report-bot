@@ -151,7 +151,16 @@ def test_guard_block_wired():
     assert "NO CHART DATA" in src, "no-chart-data retry directive missing"
     assert "_strip_sentences(" in src, "indicator strip step missing"
     assert "no chart feed" in src, "level hedge fallback missing"
-    _ok("TA guard wired into _answer_with_gemini: detect -> retry -> strip -> hedge")
+    # The no-chart-data retry must be search-only (same fix as the
+    # grounding backstop) — function tools stripped so the model can't
+    # skip search and re-confabulate the level from priors.
+    after = src.split("[NO CHART DATA]", 1)[1].split("ta_resp", 1)[0]
+    assert "_build_trade_log_tool" not in after, (
+        "no-chart-data retry must be search-only (no function tools)"
+    )
+    assert "google_search=types.GoogleSearch()" in after, "search tool missing"
+    _ok("TA guard wired into _answer_with_gemini: detect -> search-only retry "
+        "-> strip -> hedge")
 
 
 if __name__ == "__main__":

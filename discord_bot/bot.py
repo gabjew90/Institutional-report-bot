@@ -3430,17 +3430,20 @@ def _has_repetition_glitch(text: str) -> bool:
 # dollar figure ("$3,500 soccer tickets") but no analyst-fact shapes.
 # =====================================================================
 
-# Strong single-marker shapes — analyst/corporate-event facts a roast
-# essentially never produces.
+# Strong single-marker shapes — analyst/corporate-action facts a roast
+# essentially never produces. NOTE (2026-06-19): bare calendar dates
+# ("June 19", "2026-06-19") were REMOVED — they fired on benign
+# common-knowledge answers ("market closes 4 PM, closed Friday June 19")
+# and stamped correct answers with the unverified hedge. Dates only
+# matter as a confab signal when they ride alongside an unlock/lockup/
+# tranche/PT shape, which the remaining markers already catch.
 _MARKET_FACT_STRONG_RE = re.compile(
     r"(\bPT\s*\$?\d"
     r"|\bprice target\b"
     r"|\b(?:un)?lock(?:up|ed|s)?\b[^.\n]{0,30}?\d"
     r"|\btranche\b"
     r"|\bfloat\b[^.\n]{0,20}?\d"
-    r"|\b(?:consensus|estimate[ds]?|forecast)\b[^.\n]{0,25}?\d"
-    r"|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2}\b"
-    r"|\b\d{4}-\d{2}-\d{2}\b)",
+    r"|\b(?:consensus|estimate[ds]?|forecast)\b[^.\n]{0,25}?\d)",
     re.IGNORECASE,
 )
 # Generic specifics — only meaningful in DENSITY (>=3 ≈ a schedule/
@@ -4690,17 +4693,28 @@ async def _answer_with_gemini(
         # Grounding backstop — structural enforcement of "Type 1 needs a
         # source." If the answer asserts market-fact specifics yet
         # nothing grounded it (no Google grounding, no data tool), force
-        # ONE grounded retry; if that still doesn't ground, append a
+        # ONE SEARCH-ONLY retry; if that STILL doesn't ground, append a
         # hedge so the unverified specifics aren't presented as fact.
-        # This is the code-side catch for the SPCX confabulation
-        # (2026-06-17) that the discretionary grounding + prompt rule
-        # let through. The asker only ever sees the final single answer.
+        #
+        # SEARCH-ONLY is the load-bearing detail (2026-06-19 fix). Gemini
+        # grounding is discretionary, and when google_search rides in the
+        # same request as the bot's function tools, the model routinely
+        # skips search and answers from priors — which is the
+        # confabulation. The earlier version of this retry re-sent ALL
+        # the function tools, so it did the exact same thing and fell
+        # straight through to the hedge: it confirmed it hadn't searched
+        # rather than actually searching. Stripping the function tools so
+        # Google Search is the ONLY move makes grounding fire for real,
+        # so the retry returns a verified answer and the hedge becomes
+        # rare (only when the web genuinely has nothing). The backstop
+        # only fires on MARKET-FACT shapes where no tool fired on pass 1,
+        # so losing the function tools on retry costs nothing.
         if answer and _is_ungrounded_market_fact(
             answer, grounding_metadata, _ask_tool_trace
         ):
             log.warning(
                 f"/ask: ungrounded market-fact answer (q={question[:80]!r}) "
-                f"— forcing a grounded retry"
+                f"— forcing a search-only retry"
             )
             try:
                 forced_contents = list(contents) + [
@@ -4709,29 +4723,20 @@ async def _answer_with_gemini(
                             "[GROUNDING REQUIRED] Your previous draft stated "
                             "specific market facts (dates, levels, percentages, "
                             "price targets, an unlock/float schedule) WITHOUT "
-                            "consulting any source. Before answering, you MUST "
-                            "run a Google Search to verify each specific. If a "
-                            "specific cannot be verified, say you couldn't "
-                            "verify it instead of stating a number — never "
-                            "invent dates, tranche %s, tickers, or price levels."
+                            "consulting any source. Google Search is now your "
+                            "ONLY tool — use it to verify each specific before "
+                            "answering. If a specific cannot be found in search "
+                            "results, say you couldn't verify it instead of "
+                            "stating a number — never invent dates, tranche %s, "
+                            "tickers, or price levels from memory."
                         ),
                     )])
                 ]
+                # SEARCH-ONLY tool config — no function tools, so the model
+                # has nothing to route to except Google Search.
                 forced_config = types.GenerateContentConfig(
                     system_instruction=_build_runtime_system_instruction(),
-                    tools=[
-                        types.Tool(google_search=types.GoogleSearch()),
-                        _build_chat_search_tool(),
-                        _build_user_profile_tool(),
-                        _build_trade_log_tool(),
-                        _build_market_price_tool(),
-                        _build_options_chain_tool(),
-                        _build_economic_calendar_tool(),
-                        _build_earnings_date_tool(),
-                    ],
-                    tool_config=types.ToolConfig(
-                        include_server_side_tool_invocations=True,
-                    ),
+                    tools=[types.Tool(google_search=types.GoogleSearch())],
                     safety_settings=safety_settings,
                     max_output_tokens=5000,
                     temperature=0.3,
@@ -4815,21 +4820,13 @@ async def _answer_with_gemini(
                         ),
                     )])
                 ]
+                # SEARCH-ONLY (same rationale as the grounding backstop):
+                # if a level can be sourced, search is the only way to do
+                # it — bundling the function tools just lets the model
+                # skip search and re-confabulate the level from priors.
                 ta_config = types.GenerateContentConfig(
                     system_instruction=_build_runtime_system_instruction(),
-                    tools=[
-                        types.Tool(google_search=types.GoogleSearch()),
-                        _build_chat_search_tool(),
-                        _build_user_profile_tool(),
-                        _build_trade_log_tool(),
-                        _build_market_price_tool(),
-                        _build_options_chain_tool(),
-                        _build_economic_calendar_tool(),
-                        _build_earnings_date_tool(),
-                    ],
-                    tool_config=types.ToolConfig(
-                        include_server_side_tool_invocations=True,
-                    ),
+                    tools=[types.Tool(google_search=types.GoogleSearch())],
                     safety_settings=safety_settings,
                     max_output_tokens=5000,
                     temperature=0.3,
