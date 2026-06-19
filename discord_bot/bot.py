@@ -3473,6 +3473,116 @@ def _is_ungrounded_market_fact(answer: str, grounding_metadata,
     return len(_GENERIC_SPECIFIC_RE.findall(answer)) >= 3
 
 
+# =====================================================================
+# TA guard — structural suppression of self-generated technical
+# analysis. The bot has NO indicator data source (no RSI/MACD feed, no
+# chart engine), so any indicator read it emits is invented from priors
+# (observed 2026-06-17: confabulated "GEO/CXW RSI", an "NDX 30,000
+# pivot"). This is the same failure as the grounding backstop — a claim
+# with no source — but TA claims often carry NO number, so the
+# market-fact density test misses them. This catches two shapes:
+#   (a) INDICATOR reads (RSI/MACD/stochastic/Bollinger/moving-average/
+#       overbought/oversold/golden-cross) — the bot can NEVER source
+#       these, so when nothing grounded the answer they are stripped.
+#   (b) CHART-LEVEL claims (support/resistance/breakout/breakdown/
+#       "holds $X"/"$X as support"/pivot/trendline) that are NOT tied to
+#       a named source — these are regenerated, not stripped (lower
+#       precision; a stray "support" in prose shouldn't mangle a
+#       sentence). Both shapes are ignored when the answer is grounded
+#       or a data tool fired — a web source legitimately CAN quote a
+#       level or an indicator read, same trust rule as the market-fact
+#       backstop.
+# =====================================================================
+
+# Indicator reads the bot has no feed for — always invented when
+# unsourced. "MA" alone is too collision-prone (surname/state), so
+# require EMA/SMA/DMA, a spelled-out "moving average", or an N-day form.
+_TA_INDICATOR_RE = re.compile(
+    r"\b(RSI|relative strength index"
+    r"|MACD|stochastics?|Bollinger"
+    r"|overbought|oversold"
+    r"|golden cross|death cross"
+    r"|\b\d{1,3}[- ]?(?:day|week|hour|period)\s+(?:moving average|EMA|SMA|MA)\b"
+    r"|moving average|[ES]MA\b)",
+    re.IGNORECASE,
+)
+# Chart-level / price-structure claims.
+_TA_LEVEL_RE = re.compile(
+    r"\b(support|resistance|breakout|break out|breakdown|break down"
+    r"|consolidat\w+|trend\s?line|head and shoulders"
+    r"|pivot|retest|double top|double bottom"
+    r"|(?:holds?|holding|breaks?|breaking)\s+\$?\d)",
+    re.IGNORECASE,
+)
+# Attribution markers that legitimize a level claim (relayed, not
+# self-generated). A bank/analyst/desk naming the level, a "per/says/
+# sees/notes/flagged" verb, or a quoted source.
+_TA_ATTRIB_RE = re.compile(
+    r"\b(per |according to|says?|said|sees?|notes?|noted|flag(?:s|ged)?"
+    r"|Goldman|GS\b|JPM|JPMorgan|Morgan Stanley|\bMS\b|BofA|Bank of America"
+    r"|Citi|UBS|Barclays|Deutsche|RBC|Wells|analyst|desk|strategist"
+    r"|chart shows|the chart)",
+    re.IGNORECASE,
+)
+
+
+def _split_sentences(text: str) -> list[str]:
+    """Coarse sentence split on terminal punctuation + newlines. Good
+    enough for clause-level strip/inspect; keeps bullet lines distinct."""
+    if not text:
+        return []
+    parts = re.split(r"(?<=[.!?])\s+|\n+", text)
+    return [p for p in (s.strip() for s in parts) if p]
+
+
+def _ta_violations(answer: str) -> tuple[list[str], list[str]]:
+    """Return (indicator_sentences, unattributed_level_sentences).
+
+    Indicator sentences are always returned (the bot has no indicator
+    source). Level sentences are returned only when NOT attributed to a
+    named source in the same sentence."""
+    indicators: list[str] = []
+    levels: list[str] = []
+    for s in _split_sentences(answer):
+        if _TA_INDICATOR_RE.search(s):
+            indicators.append(s)
+            continue
+        if _TA_LEVEL_RE.search(s) and not _TA_ATTRIB_RE.search(s):
+            levels.append(s)
+    return indicators, levels
+
+
+def _has_unsourced_ta(answer: str, grounding_metadata, tool_trace: list) -> bool:
+    """True when an answer makes TA-shaped claims with NO source. Same
+    trust rule as the market-fact backstop: grounding or a data tool
+    firing means a source could legitimately carry the level/indicator,
+    so don't fire."""
+    if not answer or len(answer) < 20:
+        return False
+    if _grounding_has_sources(grounding_metadata):
+        return False
+    if tool_trace:
+        return False
+    indicators, levels = _ta_violations(answer)
+    return bool(indicators or levels)
+
+
+def _strip_sentences(answer: str, to_remove: list[str]) -> str:
+    """Remove exact sentence strings from an answer and tidy whitespace.
+    Used to excise invented indicator sentences (high precision); never
+    used on level sentences (a strip there risks mangling prose)."""
+    if not answer or not to_remove:
+        return answer
+    out = answer
+    for s in to_remove:
+        out = out.replace(s, "")
+    # Collapse the gaps a removal leaves behind.
+    out = re.sub(r"[ \t]{2,}", " ", out)
+    out = re.sub(r"\n{3,}", "\n\n", out)
+    out = re.sub(r"\s+([.,;:!?])", r"\1", out)
+    return out.strip()
+
+
 # Mechanical em-dash + semicolon strip. Pulse-side lint replaces these
 # via SCRUB; /ask doesn't have a SCRUB pass and they keep shipping.
 # Cheap mechanical replacement preserves the surrounding sentence
@@ -4669,6 +4779,114 @@ async def _answer_with_gemini(
                     )
             except Exception as e:
                 log.warning(f"/ask: grounded retry call failed: {e}")
+
+        # TA guard — structural suppression of self-generated technical
+        # analysis. If the answer makes indicator/level claims that
+        # nothing sourced (no grounding, no data tool), regenerate ONCE
+        # with a "[NO CHART DATA]" directive; prefer the cleaner result;
+        # then HARD-STRIP any indicator sentences that survive (the bot
+        # has no indicator feed, so those are always invented). Level
+        # claims are left to the regen — stripping prose mid-sentence
+        # risks mangling it — with a one-line hedge if they persist.
+        if answer and _has_unsourced_ta(
+            answer, grounding_metadata, _ask_tool_trace
+        ):
+            ind0, lvl0 = _ta_violations(answer)
+            log.warning(
+                f"/ask: unsourced TA answer (q={question[:80]!r}, "
+                f"indicators={len(ind0)}, levels={len(lvl0)}) "
+                f"— forcing a no-chart-data retry"
+            )
+            try:
+                ta_contents = list(contents) + [
+                    types.Content(role="user", parts=[types.Part.from_text(
+                        text=(
+                            "[NO CHART DATA] Your previous draft made "
+                            "technical-analysis claims (indicator reads like "
+                            "RSI/MACD/moving averages, or chart levels like "
+                            "support/resistance/breakouts/pivots) that NO "
+                            "source backed. You have NO chart or indicator "
+                            "feed — never state an indicator value or an "
+                            "overbought/oversold read from memory. For a price "
+                            "level, either attribute it to a named source you "
+                            "found via Google Search, or drop it. Re-answer the "
+                            "question on fundamentals/catalysts/positioning and "
+                            "omit any TA you cannot source."
+                        ),
+                    )])
+                ]
+                ta_config = types.GenerateContentConfig(
+                    system_instruction=_build_runtime_system_instruction(),
+                    tools=[
+                        types.Tool(google_search=types.GoogleSearch()),
+                        _build_chat_search_tool(),
+                        _build_user_profile_tool(),
+                        _build_trade_log_tool(),
+                        _build_market_price_tool(),
+                        _build_options_chain_tool(),
+                        _build_economic_calendar_tool(),
+                        _build_earnings_date_tool(),
+                    ],
+                    tool_config=types.ToolConfig(
+                        include_server_side_tool_invocations=True,
+                    ),
+                    safety_settings=safety_settings,
+                    max_output_tokens=5000,
+                    temperature=0.3,
+                    thinking_config=types.ThinkingConfig(thinking_budget=2000),
+                )
+                ta_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=ta_contents,
+                    config=ta_config,
+                )
+                _tally_retry_usage(ta_resp)
+                try:
+                    ta_answer = (ta_resp.text or "").strip()
+                except Exception:
+                    ta_answer = ""
+                ta_gm = None
+                try:
+                    ta_gm = ta_resp.candidates[0].grounding_metadata
+                except (AttributeError, IndexError, TypeError):
+                    pass
+                # Prefer the retry when it's clean (grounded, or no TA
+                # violations left). Otherwise keep whichever draft has
+                # fewer violations as the base for the strip.
+                if ta_answer and not _has_unsourced_ta(ta_answer, ta_gm, []):
+                    answer = ta_answer
+                    response = ta_resp
+                    grounding_metadata = ta_gm
+                    log.info("/ask: no-chart-data retry returned a clean answer")
+                else:
+                    if ta_answer:
+                        ind_new, lvl_new = _ta_violations(ta_answer)
+                        if len(ind_new) + len(lvl_new) < len(ind0) + len(lvl0):
+                            answer = ta_answer
+                            response = ta_resp
+                            grounding_metadata = ta_gm
+                    # Hard-strip surviving invented indicator sentences.
+                    ind_left, lvl_left = _ta_violations(answer)
+                    if ind_left:
+                        answer = _strip_sentences(answer, ind_left)
+                        log.warning(
+                            f"/ask: stripped {len(ind_left)} invented "
+                            f"indicator sentence(s)"
+                        )
+                    # Levels we can't safely strip — hedge once if present.
+                    _, lvl_after = _ta_violations(answer)
+                    if lvl_after and answer:
+                        answer = (
+                            answer.rstrip()
+                            + "\n\n→ ⚠️ Any chart levels above are unsourced — "
+                            "I have no chart feed, so treat them as rough, not "
+                            "precise."
+                        )
+                        log.warning(
+                            "/ask: unsourced levels remain — appended TA hedge"
+                        )
+            except Exception as e:
+                log.warning(f"/ask: no-chart-data retry call failed: {e}")
 
         # Blank-answer recovery. Gemini can return an empty text payload
         # when (a) max_output_tokens was burned in the thinking phase,
