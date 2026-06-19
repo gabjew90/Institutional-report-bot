@@ -94,6 +94,25 @@ def test_router_instruction_buckets():
     _ok("router instruction: WEB triggers + LOCAL exemptions + one-word contract")
 
 
+def test_router_covers_type2_factual_edge():
+    """Alignment with the Type 2 'search when there's a factual edge'
+    clause: pricing/product comparisons, who-won/result, and current
+    discourse must route WEB; pure vibe checks stay LOCAL."""
+    from discord_bot.bot import _ASK_ROUTER_INSTRUCTION as instr
+    low = instr.lower()
+    # WEB now covers the factual-edge opinion shapes.
+    assert "factual edge" in low, "factual-edge clause missing from router"
+    assert "pricing" in low and "product comparison" in low, \
+        "pricing/product comparison not routed WEB"
+    assert ("who-won" in low or "who won" in low), "who-won hook not routed WEB"
+    assert "discourse" in low, "current-discourse hook not routed WEB"
+    assert "would a real lookup change" in low, \
+        "the 'would a lookup change the answer' test should anchor WEB"
+    # Pure vibe checks stay LOCAL.
+    assert "vibe check" in low, "pure vibe-check must stay LOCAL"
+    _ok("router instruction: Type 2 factual-edge -> WEB, pure vibe -> LOCAL")
+
+
 def test_router_wired_search_only():
     import discord_bot.bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
@@ -118,5 +137,6 @@ if __name__ == "__main__":
     test_failsafe_on_error()
     test_failsafe_on_empty_question()
     test_router_instruction_buckets()
+    test_router_covers_type2_factual_edge()
     test_router_wired_search_only()
     print("\nALL /ASK INTENT ROUTER SMOKE TESTS PASS")
