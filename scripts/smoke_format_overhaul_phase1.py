@@ -155,6 +155,35 @@ def test_what_changed_lean_flip_leads_no_hc():
     _ok("WHAT CHANGED: lean flip leads; HC calls not duplicated here")
 
 
+def test_what_changed_suppresses_clusterer_renames():
+    """06-18: the clusterer relabels the same topic day-over-day, firing
+    spurious New+Faded pairs ('us iran geopolitical relief' ->
+    'iran nuclear deal viability', 'Fed Chair Warsh press conference' ->
+    'termination of forward guidance by Fed Chair Kevin Warsh'). Renames
+    must not show as new OR faded."""
+    from report.pulse_sections import compute_what_changed
+    prev = {"themes": [
+        {"label": "Fed Chair Kevin Warsh's first press conference",
+         "banks": 8, "sup": 0, "skep": 0, "hc": 0},
+        {"label": "us iran geopolitical relief", "banks": 9,
+         "sup": 3, "skep": 0, "hc": 0},
+    ], "hc_calls": []}
+    today = {"themes": [
+        {"label": "Termination of forward guidance by Fed Chair Kevin Warsh",
+         "banks": 12, "sup": 0, "skep": 0, "hc": 0},
+        {"label": "iran nuclear deal viability", "banks": 10,
+         "sup": 0, "skep": 1, "hc": 0},
+    ], "hc_calls": []}
+    bullets = compute_what_changed(prev, today)
+    joined = " | ".join(bullets)
+    # Strong rename (3 shared: fed/chair/kevin) suppressed from "new"
+    assert "Termination of forward guidance" not in joined, bullets
+    # No faded churn for either renamed topic
+    assert "Faded" not in joined, bullets
+    _ok("WHAT CHANGED: clusterer renames don't fire New (strong) or "
+        "Faded (any-overlap) churn")
+
+
 def test_what_changed_lead_theme_change():
     from report.pulse_sections import compute_what_changed
     prev = {"themes": [{"label": "oil scare", "banks": 7, "sup": 1, "skep": 5, "hc": 0},
@@ -480,6 +509,7 @@ if __name__ == "__main__":
     test_compute_what_changed_categories()
     test_what_changed_baseline_day_empty()
     test_what_changed_lean_flip_leads_no_hc()
+    test_what_changed_suppresses_clusterer_renames()
     test_what_changed_lead_theme_change()
     test_extract_leans_closing_paragraph_only()
     test_puts_flip_direction()

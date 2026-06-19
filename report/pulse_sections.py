@@ -124,6 +124,38 @@ def extract_state_from_ctx(ctx: dict) -> dict:
 # WHAT CHANGED
 # =====================================================================
 
+# Theme topic-signature — for suppressing day-over-day clusterer
+# RENAMES in WHAT CHANGED (a relabeled topic firing a false New+Faded
+# or false lead-rotation). Light synonym folding collapses concept
+# renames the clusterer produces ("artificial intelligence"~"ai
+# semiconductor", "fomc easing"~"hawkish fed", "us iran relief"~"iran
+# nuclear deal"). Used ONLY for low-stakes rename suppression, never for
+# ranking — mild over-folding here just hides a churn bullet.
+_THEME_STOP = {"first", "next", "into", "with", "from", "this", "that",
+               "over", "more", "less", "than", "your", "their"}
+_THEME_SYN = {
+    "artificial": "ai", "intelligence": "ai", "ai": "ai",
+    "semiconductor": "ai", "semiconductors": "ai", "semis": "ai",
+    "chip": "ai", "chips": "ai", "silicon": "ai",
+    "fed": "fed", "fomc": "fed", "federal": "fed", "warsh": "fed",
+    "powell": "fed", "guidance": "fed", "hawkish": "fed", "dovish": "fed",
+    "easing": "fed", "tightening": "fed",
+    "hormuz": "oil", "crude": "oil", "brent": "oil", "oil": "oil",
+    "opec": "oil", "energy": "oil",
+    "iran": "iran", "tehran": "iran",
+}
+
+
+def _theme_sig(label: str) -> set[str]:
+    toks: set[str] = set()
+    for w in re.findall(r"[a-z]+", (label or "").lower()):
+        if w in _THEME_SYN:
+            toks.add(_THEME_SYN[w])
+        elif len(w) >= 4 and w not in _THEME_STOP:
+            toks.add(w)
+    return toks
+
+
 def compute_what_changed(
     prev_state: dict | None,
     today_state: dict,
@@ -199,8 +231,13 @@ def compute_what_changed(
         prev_lead = prev_list[0].get("label")
         today_lead_t = today_list[0]
         today_lead = today_lead_t.get("label")
+        # Only a GENUINE rotation — not a clusterer rename of the same
+        # topic (06-17: "hormuz reopening oil price impact" -> "strait of
+        # hormuz reopening" fired a false lead change). Shared topic
+        # signature => rename => skip.
         if (today_lead and prev_lead and today_lead != prev_lead
-                and today_lead_t.get("banks", 0) >= 3):
+                and today_lead_t.get("banks", 0) >= 3
+                and not (_theme_sig(today_lead) & _theme_sig(prev_lead))):
             lead_label = today_lead
             bullets.append(
                 f"**Lead theme:** {today_lead} now top "
@@ -219,11 +256,23 @@ def compute_what_changed(
     # read as a duplicate of the ledger (observed 06-17). One compact
     # "New themes: A (9), B (8)" line keeps the delta without mirroring.
     # Skip the lead theme (already reported as the lead-change above).
+    # A today-theme is a RENAME (not new) if it shares >=2 topic tokens
+    # with a prior theme — conservative threshold so a genuinely-new
+    # theme that merely shares one common token ("ai"/"fed"/"oil") still
+    # counts as new, but a strong relabel ("Warsh press conference" ->
+    # "termination of forward guidance by ... Warsh", 3 shared) is
+    # suppressed. Faded uses a looser 1-token rule (low stakes) above.
+    prev_sigs = [_theme_sig(lbl) for lbl in prev_themes]
+
+    def _is_rename(label: str) -> bool:
+        sig = _theme_sig(label)
+        return any(len(sig & ps) >= 2 for ps in prev_sigs)
+
     new_themes = [
         (label, t.get("banks", 0))
         for label, t in today_themes.items()
         if (t.get("banks", 0) >= 3 and label not in prev_themes
-            and label != lead_label)
+            and label != lead_label and not _is_rename(label))
     ]
     new_themes.sort(key=lambda x: -x[1])
     if len(new_themes) == 1:
@@ -234,11 +283,23 @@ def compute_what_changed(
         listed = ", ".join(f"{lbl} ({n})" for lbl, n in new_themes[:4])
         bullets.append(f"**New themes:** {listed}")
 
-    # Dropped themes — yesterday's top-6, gone today.
+    # Dropped themes — yesterday's top-6, gone today. SUPPRESS renames:
+    # the clusterer often relabels the same topic day-over-day
+    # ("us iran geopolitical relief" -> "iran nuclear deal viability",
+    # "ai growth" -> "ai semiconductor infrastructure"), which otherwise
+    # fires a spurious New + Faded pair for one unchanged story
+    # (observed 06-18: 4 new + 4 faded, all renames). A faded theme that
+    # shares a topic signature with any current theme is a rename, not a
+    # real exit — drop it.
+    today_sigs = [_theme_sig(t["label"]) for t in (today_state.get("themes") or [])]
     prev_top6 = [t["label"] for t in (prev_state.get("themes") or [])[:6]]
     for label in prev_top6:
-        if label not in today_themes:
-            bullets.append(f"**Faded:** {label} (no longer in coverage)")
+        if label in today_themes:
+            continue
+        sig = _theme_sig(label)
+        if sig and any(sig & ts for ts in today_sigs):
+            continue  # renamed, not faded
+        bullets.append(f"**Faded:** {label} (no longer in coverage)")
 
     return bullets[:6]
 

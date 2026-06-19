@@ -184,15 +184,51 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
             or (ev_date == today_date and hour == "amc" and now_utc.hour >= 21)
         )
 
+        # Sanity guard: Finnhub's free-tier earnings estimates are
+        # sometimes garbage (2026-06-18: MU came back EPS est $20.69 /
+        # Rev est $35.88B — ~10x/4x too high for Micron, relayed verbatim
+        # into the pulse). No name in our whitelist posts a single-quarter
+        # EPS above ~15 or quarterly revenue above ~$200B, so values past
+        # those bounds are bad data — drop the estimate rather than ship a
+        # wrong number a reader trades off.
+        def _bad_eps(v):
+            try:
+                return v is not None and abs(float(v)) > 15
+            except (TypeError, ValueError):
+                return True
+
+        def _bad_rev(v):
+            try:
+                return v is not None and not (0 < float(v) / 1e9 <= 200)
+            except (TypeError, ValueError):
+                return True
+
+        # If EITHER number on a row is implausible, the whole Finnhub row
+        # is suspect — drop all of its figures rather than ship the
+        # "good-looking" half of a bad row (MU 06-18: EPS $20.69 was
+        # absurd AND rev $35.88B was wrong-for-Micron; dropping only the
+        # EPS would still have shipped the bad revenue).
+        row_suspect = (
+            _bad_eps(eps_actual) or _bad_rev(rev_actual)
+            or _bad_eps(eps_est) or _bad_rev(rev_est)
+        )
+        if row_suspect:
+            log.warning(
+                f"earnings calendar: implausible figures for {sym} "
+                f"(eps_est={eps_est}, rev_est={rev_est}, eps_act={eps_actual}, "
+                f"rev_act={rev_actual}) — dropping estimates (bad Finnhub data)"
+            )
+
         extra = []
-        if eps_actual is not None:
-            extra.append(f"EPS ACTUAL ${eps_actual}")
-        if rev_actual is not None:
-            extra.append(f"Rev ACTUAL ${rev_actual/1e9:.2f}B")
-        if eps_est is not None and eps_actual is None:
-            extra.append(f"EPS est ${eps_est}")
-        if rev_est is not None and rev_actual is None:
-            extra.append(f"Rev est ${rev_est/1e9:.2f}B")
+        if not row_suspect:
+            if eps_actual is not None:
+                extra.append(f"EPS ACTUAL ${eps_actual}")
+            if rev_actual is not None:
+                extra.append(f"Rev ACTUAL ${rev_actual/1e9:.2f}B")
+            if eps_est is not None and eps_actual is None:
+                extra.append(f"EPS est ${eps_est}")
+            if rev_est is not None and rev_actual is None:
+                extra.append(f"Rev est ${rev_est/1e9:.2f}B")
         extra_str = f" ({', '.join(extra)})" if extra else ""
         row = f"  {date_str} {sym} — {timing}{extra_str}"
 
