@@ -488,16 +488,17 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         if not _is_test_fire:
             try:
                 from report.pulse_sections import (
-                    compute_what_changed, render_what_changed,
                     extract_leans_from_markdown, render_trade_board,
-                    render_desk_signal_board,
                     inject_sections, split_main_event_briefs,
                     replace_body_after_frontmatter,
                 )
                 # TRADE BOARD — extract today's leans, merge into the
                 # tracked set (which records same-instrument direction
-                # flips), render NEW / FLIP / LIVE. Done BEFORE WHAT
-                # CHANGED so the flips feed the diff.
+                # flips), render NEW / FLIP / dN as scannable bullets.
+                # WHAT CHANGED + DESK SIGNAL BOARD were removed 2026-06-19
+                # (read as debug telemetry / duplicated the prose, per
+                # QC). The board is the one deterministic section kept,
+                # for cross-day position accountability.
                 leans = extract_leans_from_markdown(markdown)
                 flips = db.upsert_pulse_leans(today, leans)
                 flip_instruments = {
@@ -506,43 +507,11 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                 board_rows = db.get_board_leans(today)
                 board_md = render_trade_board(board_rows, today, flip_instruments)
 
-                # WHAT CHANGED — diff today's consumed state vs the
-                # previous daily pulse's state, plus the lean flips and
-                # only HC calls whose ticker is in the body.
-                today_stamp = db.stamp_pulse_state_for_date(today)
-                prev_stamp = db.get_prev_stamped_pulse_state(today)
-                body_tickers = set(re.findall(r"\$([A-Za-z]{1,5})\b", markdown))
-                body_tickers = {t.upper() for t in body_tickers}
-                wc_md = ""
-                if today_stamp and prev_stamp:
-                    bullets = compute_what_changed(
-                        json.loads(prev_stamp["state_json"]),
-                        json.loads(today_stamp["state_json"]),
-                        lean_flips=flips,
-                        body_tickers=body_tickers,
-                    )
-                    wc_md = render_what_changed(bullets)
-                elif today_stamp:
-                    log.info(
-                        "Bridge: WHAT CHANGED skipped — baseline day "
-                        "(no prior stamped pulse_state)"
-                    )
-
-                # DESK SIGNAL BOARD — today's HC calls + consensus ledger,
-                # rendered deterministically from the same stamped state.
-                desk_md = ""
-                if today_stamp:
-                    desk_md = render_desk_signal_board(
-                        json.loads(today_stamp["state_json"])
-                    )
-
-                injected = inject_sections(markdown, wc_md, board_md, desk_md)
+                injected = inject_sections(markdown, board_md)
                 # Phase 3: split INSIGHTS into THE MAIN EVENT + BRIEFS as
-                # the LAST transform, so inject anchors (which key on the
-                # INSIGHTS / WHAT TO WATCH headers) all resolve first and
-                # the final order reads RECAP → WHAT CHANGED → DESK
-                # SIGNAL → MAIN EVENT → BRIEFS → TRADE BOARD → WHAT TO
-                # WATCH.
+                # the LAST transform, so the inject anchor (WHAT TO WATCH)
+                # resolves first and the final order reads RECAP → MAIN
+                # EVENT → BRIEFS → TRADE BOARD → WHAT TO WATCH.
                 injected = split_main_event_briefs(injected)
                 if injected != markdown:
                     markdown = injected
@@ -550,10 +519,9 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                         raw_markdown, markdown
                     )
                     log.info(
-                        f"Bridge: injected sections — what_changed="
-                        f"{bool(wc_md)}, desk_signal={bool(desk_md)}, "
-                        f"board_rows={len(board_rows)}, "
-                        f"leans_today={len(leans)}, main_event_split=yes"
+                        f"Bridge: injected TRADE BOARD + MAIN EVENT/BRIEFS "
+                        f"split — board_rows={len(board_rows)}, "
+                        f"leans_today={len(leans)}"
                     )
             except Exception as e:
                 # Injection is enhancement, not gating — a failure ships

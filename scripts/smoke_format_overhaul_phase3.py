@@ -102,23 +102,22 @@ def test_split_no_slots_untouched():
 
 def test_full_inject_then_split_order():
     from report.pulse_sections import inject_sections, split_main_event_briefs
-    wc = "## WHAT CHANGED\n\n- AI flipped bullish.\n"
-    desk = "## DESK SIGNAL BOARD\n\n```\ncalls\n```\n"
-    board = "## TRADE BOARD\n\n```\nLong $NVDA\n```\n"
-    injected = inject_sections(_THREE_THEME_INSIGHTS, wc, board, desk)
+    # 2026-06-19: WHAT CHANGED + DESK SIGNAL BOARD cut; board-only inject.
+    board = "## TRADE BOARD\n\n- **NEW** Long $NVDA\n"
+    injected = inject_sections(_THREE_THEME_INSIGHTS, board)
     out = split_main_event_briefs(injected)
     order = [
         out.index("## 1. RECAP"),
-        out.index("## WHAT CHANGED"),
-        out.index("## DESK SIGNAL BOARD"),
         out.index("## 2. THE MAIN EVENT"),
         out.index("## 3. BRIEFS"),
         out.index("## TRADE BOARD"),
         out.index("## 4. WHAT TO WATCH"),
     ]
-    assert order == sorted(order), f"7-section order wrong: {order}"
-    _ok("full pipeline: RECAP->WHAT CHANGED->DESK SIGNAL->MAIN EVENT->"
-        "BRIEFS->TRADE BOARD->WHAT TO WATCH")
+    assert order == sorted(order), f"section order wrong: {order}"
+    # The cut sections must NOT appear.
+    assert "## WHAT CHANGED" not in out and "## DESK SIGNAL" not in out
+    _ok("full pipeline: RECAP->MAIN EVENT->BRIEFS->TRADE BOARD->WHAT TO WATCH "
+        "(WHAT CHANGED + DESK SIGNAL cut)")
 
 
 def test_leans_extracted_pre_split():

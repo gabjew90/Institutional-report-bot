@@ -550,6 +550,22 @@ def _clean_board_context(ctx: str, instrument: str, direction: str) -> str:
     lead = _LEAN_RE.match(ctx)
     if lead:
         ctx = ctx[lead.end():]
+    # Strip SELF-REFERENTIAL lean phrases naming the row's OWN
+    # instrument. A two-instrument lean ("Short $TLT, paired with long
+    # $UUP, into PCE") staples the whole sentence onto BOTH rows, so the
+    # $UUP row would read "paired with long $UUP" — describing itself.
+    # Remove only verb-prefixed mentions (long/short/own $TICKER) so a
+    # bare in-prose mention ("long memory ($MU, Morgan Stanley OW)")
+    # stays intact.
+    ticker = (instrument or "").split()[0].strip("$").upper() if instrument else ""
+    if ticker:
+        self_ref = re.compile(
+            r",?\s*(?:paired with\s+|and\s+|plus\s+)?"
+            r"(?:long|short|own|buy|sell|bought|sold)\s+\$?"
+            + re.escape(ticker) + r"\b(?:\s+(?:calls?|puts?))?",
+            re.IGNORECASE,
+        )
+        ctx = self_ref.sub("", ctx)
     ctx = ctx.lstrip(" ,;:.—-)")
     ctx = _LEAD_JUNK_RE.sub("", ctx)
     ctx = re.sub(r"\s+", " ", ctx).strip(" ,;:—-")
@@ -561,21 +577,26 @@ def _clean_board_context(ctx: str, instrument: str, direction: str) -> str:
     return ctx[0].upper() + ctx[1:]
 
 
+_BOARD_MAX_ROWS = 8
+
+
 def render_trade_board(
     board_rows: list[dict], today: str, flips: set[str] | None = None
 ) -> str:
-    """Render the TRADE BOARD as a monospace block (Discord embeds do
-    not render markdown tables). Empty string when no live leans.
+    """Render the TRADE BOARD as clean markdown bullets (NOT a monospace
+    code block — that rendered as cramped fixed-width font in Discord
+    embeds, 2026-06-19 QC). Empty string when no live leans.
 
-    `flips`: instruments whose direction reversed today — shown as FLIP
-    instead of NEW so the reversal reads at a glance.
+    Capped at the most-recent `_BOARD_MAX_ROWS` so the board stays a
+    scannable summary, not a wall of stale carries. `flips`: instruments
+    whose direction reversed today — shown as FLIP instead of NEW.
     """
     if not board_rows:
         return ""
     from datetime import date as _date
     flips = {f.upper() for f in (flips or set())}
     lines = []
-    for r in board_rows:
+    for r in board_rows[:_BOARD_MAX_ROWS]:
         first = r.get("first_seen_date") or today
         is_new = first == today
         try:
@@ -585,26 +606,34 @@ def render_trade_board(
         except ValueError:
             days = 1
         inst_name = (r.get("instrument") or "?").upper()
-        if is_new and inst_name.split()[0] in flips:
+        ticker0 = inst_name.split()[0]
+        if is_new and ticker0 in flips:
             status = "FLIP"
         elif is_new:
-            status = "NEW "
+            status = "NEW"
         else:
-            status = f"d{min(days, 99):<3}"
-        direction = (r.get("direction") or "?").upper()
-        inst = f"${r.get('instrument', '?')}"
+            status = f"d{min(days, 99)}"
+        raw_inst = r.get("instrument", "?")
+        low = raw_inst.lower()
+        # Options carry direction in the contract type (calls = bullish,
+        # puts = bearish), so don't prefix Long/Short — "Short $SMH puts"
+        # reads as shorting the puts. State the position as-is.
+        if low.endswith(("calls", "call", "puts", "put")):
+            pos = f"${raw_inst}"
+        else:
+            direction = (r.get("direction") or "").strip().capitalize()
+            pos = f"{direction} ${raw_inst}".strip()
         ctx = _clean_board_context(
-            r.get("context_snippet") or "", inst_name, direction
+            r.get("context_snippet") or "", inst_name, (r.get("direction") or "")
         )
-        lines.append(f"{status} {direction:<5} {inst:<11} {ctx}".rstrip())
+        tail = f" — {ctx}" if ctx else ""
+        lines.append(f"- **{status}** {pos}{tail}")
     return (
         "## TRADE BOARD\n\n"
-        "Leans the pulse is carrying (NEW = opened today, FLIP = "
-        "reversed today, dN = day N live; leans age off after 5 quiet "
-        "days):\n\n"
-        "```\n"
+        "Leans the pulse is carrying — NEW opened today, FLIP reversed "
+        "today, dN = day N live (they age off after 5 quiet days):\n\n"
         + "\n".join(lines)
-        + "\n```\n"
+        + "\n"
     )
 
 
@@ -612,48 +641,24 @@ def render_trade_board(
 # Injection
 # =====================================================================
 
-def inject_sections(
-    markdown: str,
-    what_changed_md: str,
-    board_md: str,
-    desk_signal_md: str = "",
-) -> str:
-    """Insert the deterministic sections in their target order:
-    WHAT CHANGED → DESK SIGNAL BOARD before INSIGHTS (end of RECAP),
-    TRADE BOARD before WHAT TO WATCH. Idempotent: a header already
-    present in the markdown (bridge retry) is not inserted twice.
+def inject_sections(markdown: str, board_md: str) -> str:
+    """Insert the TRADE BOARD before WHAT TO WATCH. Idempotent: a board
+    already present (bridge retry) is not inserted twice.
 
-    WHAT CHANGED and DESK SIGNAL BOARD both anchor before the INSIGHTS
-    header; DESK SIGNAL is inserted AFTER WHAT CHANGED so the final
-    order reads RECAP → WHAT CHANGED → DESK SIGNAL BOARD → INSIGHTS.
+    WHAT CHANGED and DESK SIGNAL BOARD were removed 2026-06-19 (read as
+    debug telemetry / duplicated the prose). The TRADE BOARD is the one
+    deterministic section kept — cross-day position accountability — and
+    it anchors before WHAT TO WATCH so the final order (after the MAIN
+    EVENT/BRIEFS split) reads RECAP → MAIN EVENT → BRIEFS → TRADE BOARD
+    → WHAT TO WATCH.
     """
     out = markdown
-
-    if what_changed_md and "## WHAT CHANGED" not in out:
-        # Insert immediately before the INSIGHTS header (end of RECAP).
-        m = re.search(r"^##\s+(?:\d+\.\s+)?INSIGHTS", out, re.MULTILINE | re.IGNORECASE)
-        if m:
-            out = out[:m.start()] + what_changed_md + "\n" + out[m.start():]
-        else:
-            out = out.rstrip() + "\n\n" + what_changed_md
-
-    if desk_signal_md and "## DESK SIGNAL BOARD" not in out:
-        # Anchor before INSIGHTS too; since WHAT CHANGED is already in
-        # place above the INSIGHTS header, inserting here lands DESK
-        # SIGNAL between WHAT CHANGED and INSIGHTS.
-        m = re.search(r"^##\s+(?:\d+\.\s+)?INSIGHTS", out, re.MULTILINE | re.IGNORECASE)
-        if m:
-            out = out[:m.start()] + desk_signal_md + "\n" + out[m.start():]
-        else:
-            out = out.rstrip() + "\n\n" + desk_signal_md
-
     if board_md and "## TRADE BOARD" not in out:
         m = re.search(r"^##\s+(?:\d+\.\s+)?WHAT TO WATCH", out, re.MULTILINE | re.IGNORECASE)
         if m:
             out = out[:m.start()] + board_md + "\n" + out[m.start():]
         else:
             out = out.rstrip() + "\n\n" + board_md
-
     return out
 
 

@@ -183,24 +183,26 @@ def test_render_hc_cap():
     _ok("render: HC calls capped with '+N more' note")
 
 
-def test_inject_order_and_idempotency():
+def test_desk_signal_no_longer_injected():
+    """2026-06-19: DESK SIGNAL BOARD was CUT from the pulse pipeline
+    (read as duplicating the prose). inject_sections is board-only now;
+    the render fn still exists (dormant) but nothing injects it. This
+    guards that the section does NOT come back into the pulse via inject."""
     from report.pulse_sections import inject_sections
     md = (
         "# Pulse\n\n## 1. RECAP\n\nstuff\n\n"
         "## 2. INSIGHTS & ALPHA\n\nthemes\n\n"
         "## 3. WHAT TO WATCH\n\ncalendar\n"
     )
-    wc = "## WHAT CHANGED\n\n- x\n"
-    desk = "## DESK SIGNAL BOARD\n\n```\nHIGH-CONVICTION CALLS\n```\n"
-    board = "## TRADE BOARD\n\n```\nNEW LONG $X\n```\n"
-    out = inject_sections(md, wc, board, desk)
-    # Order: RECAP < WHAT CHANGED < DESK SIGNAL < INSIGHTS < TRADE BOARD < WATCH
-    assert (out.index("## 1. RECAP") < out.index("## WHAT CHANGED")
-            < out.index("## DESK SIGNAL BOARD") < out.index("## 2. INSIGHTS")
-            < out.index("## TRADE BOARD") < out.index("## 3. WHAT TO WATCH")), out
-    again = inject_sections(out, wc, board, desk)
+    board = "## TRADE BOARD\n\n- **NEW** Long $X\n"
+    out = inject_sections(md, board)
+    assert "## DESK SIGNAL BOARD" not in out, "DESK SIGNAL must not be injected"
+    assert "## WHAT CHANGED" not in out, "WHAT CHANGED must not be injected"
+    assert (out.index("## 2. INSIGHTS") < out.index("## TRADE BOARD")
+            < out.index("## 3. WHAT TO WATCH")), out
+    again = inject_sections(out, board)
     assert again == out, "re-injection must not duplicate"
-    _ok("inject: WHAT CHANGED -> DESK SIGNAL -> INSIGHTS order + idempotent")
+    _ok("inject: DESK SIGNAL + WHAT CHANGED no longer injected; board-only")
 
 
 def test_formatter_color():
@@ -233,7 +235,7 @@ if __name__ == "__main__":
     test_ledger_all_neutral_row()
     test_render_empty_when_no_data()
     test_render_hc_cap()
-    test_inject_order_and_idempotency()
+    test_desk_signal_no_longer_injected()
     test_formatter_color()
     test_dashboard_classify_no_board_collision()
     print("\nALL DESK SIGNAL BOARD SMOKE TESTS PASS")

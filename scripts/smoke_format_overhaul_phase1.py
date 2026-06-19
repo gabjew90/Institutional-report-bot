@@ -287,13 +287,13 @@ def test_render_trade_board_new_vs_live():
     ]
     board = render_trade_board(rows, "2026-06-10")
     assert "## TRADE BOARD" in board
-    assert "```" in board, "must render as a monospace block (Discord " \
-        "embeds don't render markdown tables)"
-    assert "NEW " in board and "$SOXX" in board
-    assert "d3" in board and "$BNO" in board, board
+    # De-monospaced 2026-06-19: clean markdown bullets, NOT a ``` block.
+    assert "```" not in board, "board must NOT be a monospace code block"
+    assert "- **NEW**" in board and "$SOXX" in board
+    assert "- **d3**" in board and "$BNO" in board, board
     assert render_trade_board([], "2026-06-10") == ""
-    _ok("trade board: NEW vs dN day counts, monospace block, empty "
-        "when no rows")
+    _ok("trade board: NEW vs dN day counts, clean bullets (no monospace), "
+        "empty when no rows")
 
 
 def test_clean_board_context_no_garble():
@@ -331,6 +331,53 @@ def test_clean_board_context_no_garble():
         "word-boundary clip+ellipsis, junk-opener drop")
 
 
+def test_board_self_ref_and_options():
+    """2026-06-19 fixes: (1) a two-instrument lean stapled the same
+    sentence onto BOTH rows, so the second read 'paired with long $UUP'
+    on the $UUP row (self-referential nonsense); (2) options were
+    prefixed Long/Short, so 'own $SMH puts' rendered 'Short $SMH puts'."""
+    from report.pulse_sections import _clean_board_context, render_trade_board
+    # Self-ref: $UUP's own clause stripped from its descriptor.
+    pair = "Short $TLT, paired with long $UUP, into PCE, sized for liquidity."
+    uup = _clean_board_context(pair, "UUP", "long")
+    assert "$UUP" not in uup, f"self-reference not stripped: {uup!r}"
+    assert uup.lower().startswith("into pce"), uup
+    # The OTHER leg keeps the (legit) cross-reference.
+    tlt = _clean_board_context(pair, "TLT", "short")
+    assert "$UUP" in tlt, "the TLT row should still name its UUP pair leg"
+    # Options carry direction in the contract — no Long/Short prefix.
+    rows = [
+        {"instrument": "SMH puts", "direction": "short",
+         "first_seen_date": "2026-06-19", "last_seen_date": "2026-06-19",
+         "context_snippet": "cheap insurance on a stretched trade"},
+        {"instrument": "BNO calls", "direction": "long",
+         "first_seen_date": "2026-06-19", "last_seen_date": "2026-06-19",
+         "context_snippet": "cheap upside into the next headline"},
+    ]
+    board = render_trade_board(rows, "2026-06-19")
+    assert "Short $SMH puts" not in board, "must not prefix options w/ Short"
+    assert "$SMH puts" in board and "$BNO calls" in board, board
+    assert "Long $BNO calls" not in board, "must not prefix options w/ Long"
+    _ok("board: self-ref context stripped + options shown without "
+        "Long/Short prefix")
+
+
+def test_board_caps_rows():
+    from report.pulse_sections import render_trade_board, _BOARD_MAX_ROWS
+    rows = [
+        {"instrument": f"TIC{i}", "direction": "long",
+         "first_seen_date": "2026-06-01", "last_seen_date": "2026-06-19",
+         "context_snippet": "x"}
+        for i in range(_BOARD_MAX_ROWS + 6)
+    ]
+    board = render_trade_board(rows, "2026-06-19")
+    bullet_count = sum(1 for l in board.splitlines() if l.startswith("- **"))
+    assert bullet_count == _BOARD_MAX_ROWS, (
+        f"board must cap at {_BOARD_MAX_ROWS}, got {bullet_count}"
+    )
+    _ok(f"board: caps at {_BOARD_MAX_ROWS} rows (no wall of stale carries)")
+
+
 def test_board_flip_marker():
     from report.pulse_sections import render_trade_board
     rows = [
@@ -338,14 +385,20 @@ def test_board_flip_marker():
          "first_seen_date": "2026-06-15", "last_seen_date": "2026-06-15",
          "context_snippet": "Short $USO, with an energy underweight."},
     ]
-    # Without flip info → NEW (check the code block, not the legend
-    # which always names FLIP)
-    plain_block = render_trade_board(rows, "2026-06-15").split("```")[1]
-    assert "NEW " in plain_block and "FLIP" not in plain_block, plain_block
+    # Check the bullet rows, not the legend line (which always names
+    # FLIP/NEW). The row marker is bolded — "- **NEW**" / "- **FLIP**".
+    plain = render_trade_board(rows, "2026-06-15")
+    plain_rows = "\n".join(
+        l for l in plain.splitlines() if l.startswith("- **")
+    )
+    assert "**NEW**" in plain_rows and "**FLIP**" not in plain_rows, plain_rows
     # With USO in the flip set → FLIP marker instead of NEW
-    flipped_block = render_trade_board(rows, "2026-06-15", {"USO"}).split("```")[1]
-    assert "FLIP" in flipped_block and "$USO" in flipped_block, flipped_block
-    assert "NEW " not in flipped_block, flipped_block
+    flipped = render_trade_board(rows, "2026-06-15", {"USO"})
+    flipped_rows = "\n".join(
+        l for l in flipped.splitlines() if l.startswith("- **")
+    )
+    assert "**FLIP**" in flipped_rows and "$USO" in flipped_rows, flipped_rows
+    assert "**NEW**" not in flipped_rows, flipped_rows
     _ok("board: FLIP marker shown for reversed-today instruments")
 
 
@@ -355,19 +408,19 @@ def test_board_flip_marker():
 
 def test_inject_sections_placement_and_idempotency():
     from report.pulse_sections import inject_sections
-    wc = "## WHAT CHANGED\n\n- **New theme:** boj policy pivot (6 banks)\n"
-    board = "## TRADE BOARD\n\n```\nNEW  LONG  $SOXX\n```\n"
-    out = inject_sections(_PULSE_MD, wc, board)
-    # Placement: WHAT CHANGED between RECAP and INSIGHTS
-    assert out.index("## 1. RECAP") < out.index("## WHAT CHANGED") < \
-           out.index("## 2. INSIGHTS"), "WHAT CHANGED must sit after RECAP"
+    # 2026-06-19: inject_sections is board-only now (WHAT CHANGED + DESK
+    # SIGNAL BOARD were cut). The board anchors before WHAT TO WATCH.
+    board = "## TRADE BOARD\n\n- **NEW** Long $SOXX\n"
+    out = inject_sections(_PULSE_MD, board)
     # TRADE BOARD between INSIGHTS and WATCH
     assert out.index("## 2. INSIGHTS") < out.index("## TRADE BOARD") < \
            out.index("## 3. WHAT TO WATCH"), "BOARD must sit before WATCH"
+    # No WHAT CHANGED / DESK SIGNAL injected anymore.
+    assert "## WHAT CHANGED" not in out and "## DESK SIGNAL" not in out
     # Idempotency — re-injection is a no-op
-    again = inject_sections(out, wc, board)
-    assert again == out, "re-injection must not duplicate sections"
-    _ok("injection: correct placement + idempotent on retry")
+    again = inject_sections(out, board)
+    assert again == out, "re-injection must not duplicate the board"
+    _ok("injection: board-only placement before WATCH + idempotent")
 
 
 def test_replace_body_after_frontmatter():
@@ -514,6 +567,8 @@ if __name__ == "__main__":
     test_extract_leans_closing_paragraph_only()
     test_puts_flip_direction()
     test_render_trade_board_new_vs_live()
+    test_board_self_ref_and_options()
+    test_board_caps_rows()
     test_clean_board_context_no_garble()
     test_board_flip_marker()
     test_inject_sections_placement_and_idempotency()
