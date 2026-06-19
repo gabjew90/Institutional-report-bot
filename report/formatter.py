@@ -21,7 +21,9 @@ SECTION_COLORS = {
     "RECAP": 0xFFD700,                  # Gold
     "WHAT CHANGED": 0x1ABC9C,           # Teal (format-overhaul Phase 1)
     "DESK SIGNAL": 0x16A085,            # Dark teal (format-overhaul Phase 2)
-    "INSIGHTS": 0x3498DB,               # Blue
+    "MAIN EVENT": 0x2956A3,             # Deep blue — the lead essay (Phase 3)
+    "BRIEFS": 0x5DADE2,                 # Lighter blue — compressed themes (Phase 3)
+    "INSIGHTS": 0x3498DB,               # Blue (legacy single-section name)
     "ALPHA": 0x3498DB,                  # Blue (for "INSIGHTS & ALPHA")
     "TRADE BOARD": 0x9B59B6,            # Purple (format-overhaul Phase 1)
     "WHAT TO WATCH": 0xFF8C00,          # Dark Orange

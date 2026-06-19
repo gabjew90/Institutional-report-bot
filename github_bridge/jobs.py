@@ -491,7 +491,8 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                     compute_what_changed, render_what_changed,
                     extract_leans_from_markdown, render_trade_board,
                     render_desk_signal_board,
-                    inject_sections, replace_body_after_frontmatter,
+                    inject_sections, split_main_event_briefs,
+                    replace_body_after_frontmatter,
                 )
                 # TRADE BOARD — extract today's leans, merge into the
                 # tracked set (which records same-instrument direction
@@ -536,6 +537,13 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                     )
 
                 injected = inject_sections(markdown, wc_md, board_md, desk_md)
+                # Phase 3: split INSIGHTS into THE MAIN EVENT + BRIEFS as
+                # the LAST transform, so inject anchors (which key on the
+                # INSIGHTS / WHAT TO WATCH headers) all resolve first and
+                # the final order reads RECAP → WHAT CHANGED → DESK
+                # SIGNAL → MAIN EVENT → BRIEFS → TRADE BOARD → WHAT TO
+                # WATCH.
+                injected = split_main_event_briefs(injected)
                 if injected != markdown:
                     markdown = injected
                     raw_markdown = replace_body_after_frontmatter(
@@ -545,7 +553,7 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                         f"Bridge: injected sections — what_changed="
                         f"{bool(wc_md)}, desk_signal={bool(desk_md)}, "
                         f"board_rows={len(board_rows)}, "
-                        f"leans_today={len(leans)}"
+                        f"leans_today={len(leans)}, main_event_split=yes"
                     )
             except Exception as e:
                 # Injection is enhancement, not gating — a failure ships

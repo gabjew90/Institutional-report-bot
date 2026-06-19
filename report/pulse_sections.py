@@ -657,6 +657,76 @@ def inject_sections(
     return out
 
 
+# =====================================================================
+# MAIN EVENT + BRIEFS split (format-overhaul Phase 3)
+# =====================================================================
+
+def split_main_event_briefs(markdown: str) -> str:
+    """Deterministically split the INSIGHTS section into THE MAIN EVENT
+    (the lead theme) + BRIEFS (the rest).
+
+    Runs at bridge post-time AFTER inject_sections, so the DRAFT / AUDIT
+    / lint / validator machinery upstream all keep operating on the
+    single `## 2. INSIGHTS & ALPHA` header they were tuned for — only
+    the final rendered markdown carries the new labels. The DRAFT prompt
+    writes the lead theme deep and the rest compressed; this function
+    just relabels: the first `### ` slot becomes THE MAIN EVENT, the
+    remaining slots become BRIEFS, and WHAT TO WATCH is renumbered.
+
+    Idempotent (a retry that already has `## ... THE MAIN EVENT` is a
+    no-op) and defensive (an INSIGHTS section with <2 H3 slots renames
+    to THE MAIN EVENT without spinning an empty BRIEFS section; with 0
+    slots it is left untouched).
+    """
+    if not markdown or re.search(
+        r"^##\s+(?:\d+\.\s+)?THE MAIN EVENT", markdown, re.MULTILINE | re.IGNORECASE
+    ):
+        return markdown
+
+    hdr = re.search(
+        r"^(##[ \t]+)(?:(\d+)\.[ \t]+)?INSIGHTS[^\n]*$",
+        markdown, re.MULTILINE | re.IGNORECASE,
+    )
+    if not hdr:
+        return markdown
+
+    sec_num = hdr.group(2) or "2"
+    body_start = hdr.end()
+    nxt = re.search(r"^##[ \t]", markdown[body_start:], re.MULTILINE)
+    sec_end = body_start + nxt.start() if nxt else len(markdown)
+
+    body = markdown[body_start:sec_end]
+    slot_starts = [m.start() for m in re.finditer(r"^###[ \t]", body, re.MULTILINE)]
+    if not slot_starts:
+        return markdown  # nothing slot-shaped to split; leave as-is
+
+    new_header = f"{hdr.group(1)}{sec_num}. THE MAIN EVENT"
+    briefs_num = str(int(sec_num) + 1)
+
+    if len(slot_starts) >= 2:
+        cut = slot_starts[1]
+        new_body = (
+            body[:cut].rstrip()
+            + f"\n\n##{' '}{briefs_num}. BRIEFS\n\n"
+            + body[cut:].lstrip("\n")
+        )
+    else:
+        new_body = body  # single theme — MAIN EVENT only, no BRIEFS
+
+    out = markdown[:hdr.start()] + new_header + new_body + markdown[sec_end:]
+
+    # Renumber WHAT TO WATCH to follow BRIEFS (was N+1, now N+2 when a
+    # BRIEFS section was spun). Only touch the number, never the label.
+    if len(slot_starts) >= 2:
+        watch_num = str(int(sec_num) + 2)
+        out = re.sub(
+            r"^(##[ \t]+)\d+\.([ \t]+WHAT TO WATCH)",
+            rf"\g<1>{watch_num}.\g<2>",
+            out, count=1, flags=re.MULTILINE | re.IGNORECASE,
+        )
+    return out
+
+
 def replace_body_after_frontmatter(raw: str, new_body: str) -> str:
     """Rebuild a frontmattered document with a new body, preserving the
     original frontmatter block verbatim. If no frontmatter, returns the

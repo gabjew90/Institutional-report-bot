@@ -303,6 +303,13 @@ def _wrap_sections(body_html: str) -> str:
             # "board" and would otherwise collide with TRADE BOARD.
         elif "board" in heading_text:
             cls = "board"        # TRADE BOARD (format-overhaul Phase 1)
+        elif "main event" in heading_text:
+            cls = "insights"     # THE MAIN EVENT (Phase 3) — render under
+            # the stable .insights class so the dashboard repo needs no
+            # change. "event" doesn't collide with any check above.
+        elif "brief" in heading_text:
+            cls = "insights briefs"  # BRIEFS (Phase 3) — styled as
+            # insights, second class avoids the #pulse-insights id clash.
         elif "insights" in heading_text or "alpha" in heading_text:
             cls = "insights"
         elif "watch" in heading_text:
@@ -317,7 +324,10 @@ def _wrap_sections(body_html: str) -> str:
     out: list[str] = []
     open_section: str | None = None
     for part in parts:
-        m = re.match(r'<h2 class="(\w*)">', part)
+        # Capture the FIRST class token only — a heading may carry two
+        # classes (e.g. "insights briefs"); the body div keys off the
+        # first ("insights-body") so multi-class sections still wrap.
+        m = re.match(r'<h2 class="(\w+)', part)
         if m:
             if open_section is not None:
                 out.append("</div>")

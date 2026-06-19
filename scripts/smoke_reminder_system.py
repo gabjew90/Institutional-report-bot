@@ -199,13 +199,19 @@ def test_job_pings_everyone_and_dedups():
     """The job posts @everyone + the embed in one message with explicit
     AllowedMentions(everyone=True), and respects the dedup guard."""
     import asyncio
-    from datetime import date
+    from datetime import datetime
     from unittest.mock import patch
+    import pytz
     import reminders.job as job
     from reminders import calendar as cal
+    from config import settings
 
+    # Build "today" in the SAME timezone the job uses (ET), not the
+    # machine-local date — otherwise the test is flaky on the
+    # Pacific/ET day boundary (job computes today via America/New_York).
+    job_today = datetime.now(pytz.timezone(settings.timezone)).date()
     today_entry = cal._validate_entry({
-        "date": date.today().isoformat(), "event": "$SPCX unlock — Wave 1",
+        "date": job_today.isoformat(), "event": "$SPCX unlock — Wave 1",
         "lead_days": [0], "note": "+20% unlock."})
 
     sent = []

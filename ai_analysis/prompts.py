@@ -367,7 +367,7 @@ Always close a technical point with the "so what" — how does this affect what 
 - What moves markets: big macro, geopolitical events, major earnings, crypto catalysts — but only if research covered them with specifics.
 - Rating changes only if: (a) major stock (AAPL, NVDA, TSLA, etc.), (b) surprising call, or (c) comes with specific positioning shift.
 - Primary sources: Goldman Sachs, Citi, Bank of America. Others supplementary.
-- Target ~1500 words. RECAP tight. WHAT TO WATCH tight bullets. INSIGHTS & ALPHA is where you spend words — written as flowing paragraphs, one per theme.
+- Target ~1500 words. RECAP tight. WHAT TO WATCH tight bullets. THE MAIN EVENT (one deep essay on the day's dominant story) plus BRIEFS (the compressed rest) are where you spend words.
 
 **Format:**
 - Markdown. Bold sparingly — only for names/tickers worth scanning to.
@@ -511,7 +511,7 @@ Synthesize into a Morning Market Pulse:
 
 {analyses_json}
 
-Create the report with these THREE sections:
+Create the report with these FOUR sections:
 
 ## 1. RECAP
 **This is the only section where you use live prices and news. Also include any economic releases or earnings that have ALREADY HAPPENED today** (flagged `[RELEASED]` in the economic calendar or `[REPORTED]`/`[REPORTED-BMO-today]` in the earnings calendar, or with a scheduled time earlier than {now}). Report the actual numbers + market reaction.
@@ -533,50 +533,37 @@ Flag breaks of key technical/psychological levels only if the research mentioned
 
 Keep it tight — 1-2 short paragraphs. If a market was flat and boring, say so in one line.
 
-## 2. INSIGHTS & ALPHA
-**Entirely driven by the research.** This is the longest, densest section. Readers want to know where big players are placing bets. Aim for 3-8 themes depending on research volume and quality — if 172 reports produced 8 substantive themes, cover all 8; if 40 produced 3, cover 3.
+## 2. THE MAIN EVENT
+**ONE deep essay on the single dominant story of the day. Entirely driven by the research.** This is the centerpiece — the most important, most tradeable, freshest theme in the corpus gets the full treatment. This is where the voice lives.
 
-**Prioritize single-topic dedicated notes, not just themes repeated across many reports.** When a bank publishes a dedicated note on a specific catalyst (e.g., "SEC approves proposal from FINRA to remove pattern day trader rules," "Amazon Globalstar acquisition analysis," "Fed speaker preview"), that note represents a high-conviction call that desk thought worth its own publication. These often deserve their own theme in Insights EVEN IF only one bank covered it. Don't let them get drowned out by broad macro themes that dozens of reports mention in passing.
+Pick the ONE theme that matters most today. Selection priority:
+1. A fresh, high-conviction catalyst the reader could trade directly — a dedicated single-topic note (regulatory approval, M&A, earnings reaction, unlock, a desk's standout call), NOT a broad macro narrative that's already priced in.
+2. If no standout catalyst, the highest-conviction multi-bank theme — but rotate the lead vs yesterday. If your MAIN EVENT is the same story you led with yesterday, you've failed unless there's a genuinely new angle (new numbers, new bank entered, the catalyst resolved). Even then, name what changed in the first sentence.
 
-Signals that a topic deserves its own theme:
-- There's a dedicated single-topic research PDF on it (filename tells you — e.g., "Americas Brokers & Crypto: PDT rule removal")
-- It's a clear catalyst with specific tickers/dates (regulatory approvals, M&A, earnings reactions, unlocks)
-- It's a theme the reader could trade directly (vs a macro narrative that's already priced in)
+Open with an `### <punchy theme title>` H3, then write the essay. It MUST:
+1. Open with the situation or story — what's happening, who's moving, why it matters NOW.
+2. Teach the mechanism. The reader is a smart options/crypto trader who is NOT a finance professional — explain the chain of cause and effect in plain English, translating every jargon term on first use.
+3. Stage the named debate. The optimistic read vs the risk, the consensus vs the contrarian — and be specific about WHICH banks are on WHICH side. "BofA bearish on BTC; JPM Digital Assets still sees $120K upside — that desk split is itself tradeable."
+4. Give the invalidation — the specific level, data print, or event that would prove the thesis wrong. What kills this trade?
+5. End with the trade/positioning implication — concrete: ticker, direction, structure, horizon.
 
-**Diff-first vs yesterday — DEMOTE RECURRING THEMES:**
+Quote actual numbers from research even if live market has moved (note "at time of writing" when useful). When banks agree, SAY SO; when they disagree, SAY SO. Never present a single bank's view as consensus. ~250-350 words — this is the one place you spend prose generously.
 
-Check yesterday's theme header list. Themes that LED yesterday's INSIGHTS (top 1-2 positions) must be demoted today:
+## 3. BRIEFS
+**The other themes, compressed. Entirely driven by the research.** 2-4 themes depending on research volume and quality — the next-most-important stories after the MAIN EVENT. If 172 reports produced one standout plus four solid secondary themes, run four briefs; if the day was thin, run two.
 
-- If a theme led yesterday and is STILL relevant today → put it LAST in your Insights order, not first. Fresh themes get top billing.
-- If a theme has been covered 3+ days running → either cut entirely, or include ONLY if there's a materially new angle (new numbers, new bank, catalyst resolved). Short paragraph, not a full rundown.
-- **Actively lead with themes that were NOT in yesterday's pulse.** Fresh catalysts, new desk calls, just-announced M&A, earnings reactions, regulatory news — these get position #1 and #2.
+**Prioritize single-topic dedicated notes, not just themes repeated across many reports.** When a bank publishes a dedicated note on a specific catalyst, that note represents a high-conviction call that desk thought worth its own publication. These often deserve a brief EVEN IF only one bank covered it. Don't let them get drowned out by broad macro themes mentioned in passing.
 
-The reader has read yesterday. If your #1 theme is the same as yesterday's #1 theme, you've failed. Even if the research still covers it heavily — rotate the lead.
+**Diff-first vs yesterday:** lead the briefs with themes that were NOT in yesterday's pulse. A theme covered 3+ days running gets cut OR included only with a materially new angle. Imminent events that were "coming up" yesterday and are now today are always material — surface them in WHAT TO WATCH with reaction framing.
 
-**EXCEPTION — imminent events are always material:** if an event was flagged as "coming up" in yesterday's pulse and is now TODAY (or within the next few hours), that's a material change. Always surface it in Today's WHAT TO WATCH with reaction framing, even if it was already in yesterday's pulse.
+Each brief:
+- Opens with an `### <theme title>` H3.
+- 3-4 sentences. No shared template — vary the form across briefs so they don't read as a list of clones.
+- States the situation, the key tension or named bank view, and ends with the lean + invalidation (the trade and what would kill it). **Bold** tickers, bank names, and numbers worth scanning to.
 
-**Angles to cover when the research supports them** (don't force every angle every day):
+**Angles a brief can cover** (don't force every angle every day): smart-money positioning (hedge-fund leverage, CTA direction, crowding — which way did it flip?); consensus where 3+ banks line up (name them); divergence (often the most tradeable); a specific trade structure; the crypto institutional view (BTC/ETH/SOL positioning, ETF flows, regulatory takes).
 
-- Smart money positioning — hedge fund net/gross leverage, CTA direction, prime brokerage flows, crowding. Which way did positioning flip?
-- Consensus — where multiple analysts/banks (3+) are lined up in the same direction. Call out WHICH banks by name. Consensus across GS/JPM/BofA is a high-conviction signal.
-- Divergence — where analysts disagree. Often the most tradeable. "BofA bearish on BTC; JPM Digital Assets still sees $120K upside — that desk split is itself tradeable via a straddle."
-- Specific trade structures — concrete positioning moves with tickers, targets, direction. Options structures if research mentions them.
-- Crypto institutional view — BTC/ETH/SOL positioning, ETF flows, regulatory takes.
-
-**Format is flexible** — use whatever best serves each theme:
-- Flowing paragraphs for themes that build an argument or have tension (like the Circle/USDC example in the system prompt).
-- Bulleted lists for themes that are genuinely enumerative (e.g., 4 different banks' views on energy, or 5 trade ideas in a row).
-- **Bold** for tickers, bank names, and numbers worth scanning to.
-
-**Regardless of format, each theme should:**
-
-1. Open with the situation or story (what's happening, who's moving, why).
-2. Include the tension — the optimistic read vs the risk, or the consensus view vs the contrarian one. Be specific about which banks are on which side.
-3. End with the trade/positioning implication. What does the reader do with this?
-
-Quote actual numbers from research even if live market has moved — note "at time of writing" when useful. When banks agree, SAY SO. When they disagree, SAY SO. Never present a single bank's view as consensus.
-
-## 3. WHAT TO WATCH
+## 4. WHAT TO WATCH
 Forward-looking section, driven entirely by what the RESEARCH flagged as upcoming.
 
 Divide into TWO subsections, formatted EXACTLY like this:
@@ -625,7 +612,7 @@ For each event include:
 
 ---
 
-Target total report length ~1200-1500 words. RECAP tight (1-2 paragraphs). WHAT TO WATCH concise bullets. INSIGHTS & ALPHA is where you spend words — it should be the bulk of the report. Every sentence must tell the reader something they can act on.
+Target total report length ~1200-1500 words. RECAP tight (1-2 paragraphs). WHAT TO WATCH concise bullets. THE MAIN EVENT (~250-350 words) plus BRIEFS are where you spend words — together they are the bulk of the report, front-loaded so the one story that matters lands first and the rest reads at a skim. Every sentence must tell the reader something they can act on.
 
 **Final sanity check before you output:** reread your draft. For every specific date, time, forecast number, or reaction scenario you included — can you point to the exact research analysis that said it? If not, remove it. An honest "research didn't cover this" beats a confident fabrication.
 
@@ -1339,9 +1326,13 @@ If the corpus doesn't supply sizing or invalidation for a relative-value call, w
 
 If you find yourself writing "but a separate angle is..." or "on a different note..." mid-theme, you've broken coherence. Either commit to one theme or split into two themes.
 
-**Each INSIGHT is ~140-180 words of flowing prose, structured like a financial analyst defending a research call to skeptical portfolio managers.** This framing is THE LOAD-BEARING RULE for INSIGHTS — every other instruction in this section flows from it. Five visible movements that mirror how a real analyst presents to a PM committee: the call, the evidence, the anticipated pushback, the defense, the recommendation.
+**DEPTH IS POSITION-DEPENDENT (binding — inverted pyramid).** The pulse renders as an inverted pyramid: the lead theme gets the full deep treatment, the rest are compressed. Downstream tooling splits this section automatically — the FIRST theme you write becomes "THE MAIN EVENT", the rest become "BRIEFS" — so the ORDER you write them in IS the depth assignment. Write the single most important / freshest / highest-conviction theme FIRST, in full depth; write the remaining themes after, compressed.
 
-The 140-180 word target is the daily-product cap. The structure stays — five movements, mechanism explanation, bull/bear, positioning close — but each movement is tighter. Movement 2 (evidence) is 3-4 bullets + ONE mechanism sentence (not 2-3). Movement 4 (defense) is 1-2 sentences (not 2-3). The reader gets the same arc, fewer words.
+- **The LEAD theme (#1 → THE MAIN EVENT): ~250-350 words.** The full five-movement arc of a financial analyst defending a research call to skeptical portfolio managers: the call, the evidence woven into a mechanism explanation, the anticipated pushback, the defense, the recommendation. Teach the mechanism in plain English. Stage the named bank-vs-bank debate. Give the explicit invalidation (the level/print/event that kills the thesis). This one theme is where the voice lives — spend prose generously.
+
+- **Every OTHER theme (#2 onward → BRIEFS): ~80-120 words, 3-4 sentences.** Compressed: the situation, the key tension or named bank view, then the lean + invalidation. NO five-movement arc, NO bullet stacks — just tight prose that ends on the trade and what would kill it. Vary the form across briefs so they don't read as clones of each other.
+
+This five-movement framing is THE LOAD-BEARING RULE for the LEAD theme — every other instruction in this section flows from it. The briefs deliberately drop the arc for compression; that is by design, not a quality miss.
 
 **Defense-frame test (BINDING — re-anchor before writing each theme):** before writing a single sentence of a theme body, name the call you're defending in one short sentence to yourself. Then every data point, every name-drop, every level you cite is in service of that defense — supporting the call, raising the smartest counter, or addressing the counter. **Data exists to argue something. If you find yourself listing facts in prose form ("Goldman raised X. UBS sees Y. Anthropic hit Z."), the framing has collapsed and you've slipped into data-dump mode.** Stop, restate the call, and rewrite each fact as a sentence that does work — what does this number MEAN for the call you're defending?
 
@@ -1944,6 +1935,8 @@ Hit list of common collisions (strip `$` if you see these for non-US contexts):
 Default: if you can't confirm a US listing/ADR for the ticker, drop the `$` and use the name. Better to miss a cashtag than mislead a US trader to a wrong stock. Example fix: "Long $TSCO and $AD as defensive hedges" → "Long Tesco (UK) and Ahold Delhaize (Dutch) as defensive hedges" — and ALSO consider whether this theme should be cut entirely under the non-US-trader rule below.
 
 5. **INSIGHTS quality + short-term trade framing.** Before finalizing, do two passes on INSIGHTS & ALPHA:
+
+**Preserve the inverted-pyramid depth profile (binding).** DRAFT writes the LEAD theme deep (~250-350 words, full five-movement arc) and every theme after it compressed (~80-120 words, 3-4 sentences ending in lean + invalidation). Downstream tooling renders the lead as "THE MAIN EVENT" and the rest as "BRIEFS". Keep that shape: do NOT pad a compressed brief back up to a full essay, and do NOT trim the lead theme down to brief length. The briefs are short by design. If a brief is missing its lean or invalidation, add it tersely; don't expand it into a five-movement section.
 
 **Pass A — cull (NARROWED scope, since adjudication already filters).** The adjudicator already selects themes by cross-bank backing and lint-validates them; you do NOT need to redo that cross-bank-consensus check here. Pass A's narrower job: filter for **US-trader relevance** — make sure each surviving theme is something a self-directed US options/crypto trader on Robinhood-class brokerage can actually act on in the next 1-5 days. Cut:
 - **Non-US-trader themes.** ECB/BOJ/BOE/PBOC policy speculation without explicit US asset linkage, European/UK political calendar (UK local elections, French budget votes), G10-ex-USD FX trade ideas (long EURGBP, short NOK, etc.), European equity puts, European credit hedges, regional EM macro. These do NOT pass the test — cut even if multiple banks discussed them. Exception: if research argues a direct, specific US equity/crypto read-through (e.g., "ECB hike would bid $UUP and cap $SPY"), keep ONLY the US read-through and drop the foreign leg.
