@@ -1,0 +1,337 @@
+{
+  "pulse_date": "2026-06-19",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "fed hawkish policy shift",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 7,
+        "skeptical": 9,
+        "neutral": 17
+      },
+      "consensus_view": "Banks agree the June Fed meeting came across as hawkish (the Fed dropped its hint that rate cuts were coming and several officials now pencil in hikes), but they split sharply on whether the Fed will actually follow through with a rate increase.",
+      "facts_agreed": [
+        {
+          "claim": "The June FOMC meeting was read as hawkish, with the easing bias removed from the statement and around nine of eighteen policymakers projecting at least one rate hike this year.",
+          "banks_for": [
+            "Bank of America",
+            "Goldman Sachs",
+            "UBS GWM",
+            "Nordea",
+            "Natixis",
+            "Westpac",
+            "Cr\u00e9dit Agricole CIB"
+          ],
+          "evidence_quotes": [
+            "Nine policymakers projected hikes this year.",
+            "Bank of America expects the easing bias to be removed and does not anticipate any dissents.",
+            "The Federal Reserve meeting produced a hawkish impression",
+            "The infamous \"easing bias\" \u2014 which drew dissents last time \u2014 is gone from the statement",
+            "The Fed\u2019s statement was stripped from any elements of \u201cforward guidance\u201d and decidedly hawkish",
+            "Markets moved to reprice expectations of a more dovish Fed under Warsh",
+            "The easing bias was gone as forward guidance was removed entirely."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the hawkish stance will translate into actual rate hikes",
+          "banks_for": [
+            "Natixis"
+          ],
+          "for_evidence": "we are amending our Fed call and now anticipate an extended hold.",
+          "banks_against": [
+            "UBS",
+            "Berenberg",
+            "Scotiabank",
+            "UniCredit",
+            "SEB",
+            "ANZ Research",
+            "MUFG"
+          ],
+          "against_evidence": "we expect the policy rate to ultimately move lower"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "warsh fed communication style",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 17
+      },
+      "consensus_view": "Banks broadly expect new Fed Chair Warsh to communicate less and offer little guidance on future rate moves, a hands-off style that leaves markets to price uncertainty on their own.",
+      "facts_agreed": [
+        {
+          "claim": "Warsh is shrinking the Fed's written communication, with the post-meeting statement cut to roughly 130 words.",
+          "banks_for": [
+            "UBS",
+            "Cr\u00e9dit Agricole CIB",
+            "UBS GWM"
+          ],
+          "evidence_quotes": []
+        },
+        {
+          "claim": "Warsh is pulling back from telling markets where rates are headed, leaving traders without the usual hand-holding.",
+          "banks_for": [
+            "Rabobank",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "Warsh effectively terminated forward guidance. Any question regarding future policy decisions was deflected.",
+            "markets that have been used to the Fed\u2019s hand-holding will have no choice"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "How Warsh's first-meeting tone reads to markets",
+          "banks_for": [
+            "Bank of America"
+          ],
+          "for_evidence": "A data-dependent, centrist Warsh likely reads hawkish to those that expect this more dovish lean.",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "On balance we expect Warsh to attempt an impossible tightrope walk of neutrality this week."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure investment",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 7,
+        "skeptical": 1,
+        "neutral": 14
+      },
+      "consensus_view": "Most banks see a generational, multi-year boom in spending on AI data centers and chips that is still strong and broadening across companies, though one voice warns the trade is in a late, debt-fueled phase.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure demand remains intact and is spreading beyond US tech to enterprises and Asia's hardware supply chain.",
+          "banks_for": [
+            "UBS",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "AI\u2019s rapid expansion is driving strong earnings and investment beyond US tech",
+            "Demand is not only intact but spreading across enterprises",
+            "Asia's supply chain has been one of the biggest beneficiaries of the global AI buildout.",
+            "AI increasingly appears to be one of the few categories still attracting incremental dollars."
+          ]
+        },
+        {
+          "claim": "AI spending will stay extremely strong into 2027, making it a powerful structural investment opportunity.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "it is unequivocally clear that AI capex spend in 2027 will be extremely strong",
+            "We continue to view it as a powerful structural investment opportunity."
+          ]
+        },
+        {
+          "claim": "The most direct way to play AI upside is to buy the AI supply chain.",
+          "banks_for": [
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "the best way to play any AI bullishness is simply to buy the AI supply chain."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI trade is still healthy or in a dangerous late-stage mania",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "Demand is not only intact but spreading across enterprises",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "history suggests the final phase of a mania is often the most profitable and the most dangerous"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "US-Iran peace deal and Strait of Hormuz shipping normalization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 13
+      },
+      "consensus_view": "A dozen banks and newswires are all watching the Strait of Hormuz reopening and US-Iran deal as a live oil-market catalyst, but none has staked a clear directional call yet.",
+      "facts_agreed": [
+        {
+          "claim": "Banks and newswires broadly flag the Strait of Hormuz reopening and US-Iran peace deal as a live driver of oil supply and shipping flows.",
+          "banks_for": [
+            "ANZ Research",
+            "Bank of America",
+            "Bloomberg",
+            "Cr\u00e9dit Agricole CIB",
+            "Edmond de Rothschild Asset Management",
+            "Global X",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Rabobank",
+            "Reuters",
+            "SEB",
+            "UBS",
+            "Western Asset Management Company"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz shipping normalization",
+            "Strait of Hormuz energy flow normalization",
+            "Strait of Hormuz re-opening deal",
+            "US-Iran peace deal and Strait of Hormuz shipping normalization"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran mou",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 2,
+        "neutral": 13
+      },
+      "consensus_view": "Banks treat the US-Iran deal as a fragile pause rather than a lasting peace, with the two desks taking a directional view both doubting it holds and the rest just flagging it as a live geopolitical risk.",
+      "facts_agreed": [
+        {
+          "claim": "The deal is a temporary de-escalation that does not resolve the underlying conflict, so a breakdown remains a live risk.",
+          "banks_for": [
+            "Scotiabank",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "The US may as well have sounded the bugle retreat call and waved the white flag",
+            "We remain at a pause, not peace\u2014with more drama likely still to come."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "energy market tightness",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Banks broadly flag Middle East and Iran conflict as a live energy supply and price risk, with two desks arguing depleted oil inventories will keep the market tight even as the Strait of Hormuz reopens, but no unified directional price call has emerged.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the Middle East and Iran conflict as the central driver of energy supply and price risk in this window.",
+          "banks_for": [
+            "Berenberg",
+            "JPMorgan",
+            "MUFG",
+            "Natixis",
+            "Rabobank",
+            "SEB",
+            "Scotiabank",
+            "UBS",
+            "UniCredit"
+          ],
+          "evidence_quotes": [
+            "Middle East conflict energy supply shocks",
+            "US-Iran conflict energy price transmission",
+            "US-Iran conflict energy flow disruption",
+            "Iran war inflation impulse",
+            "Middle East conflict energy price shocks"
+          ]
+        },
+        {
+          "claim": "Oil inventory buffers are depleted and remain a critical vulnerability for the energy market.",
+          "banks_for": [
+            "Global X",
+            "ANZ Research"
+          ],
+          "evidence_quotes": [
+            "Inventory buffers are becoming more critical",
+            "the market is entering a recovery phase from a position of already depleted buffers"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "labor market conditions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five banks reference US labor market conditions in passing but none stakes a clear directional view, with framings ranging from reaccelerating to stable to overheating-risk.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag US labor market conditions as a live macro subject, framing it variously as stable, reaccelerating, or carrying overheating risk without staking a primary directional call.",
+          "banks_for": [
+            "Bank of America",
+            "Citadel Securities",
+            "Natixis",
+            "UBS",
+            "Westpac"
+          ],
+          "evidence_quotes": [
+            "Reaccelerating labor market",
+            "labor market stability",
+            "Labor market stability",
+            "US labor market balance",
+            "US labor market overheating risks"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "corn supply risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Several banks flag El Nino weather as a live risk to corn and farm crops, but only Bank of America argues the supply danger is real and merely deferred, while everyone else just mentions it without taking a directional bet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference El Nino as an agricultural commodity risk this window without staking a directional view.",
+          "banks_for": [
+            "Bank of America",
+            "Natixis",
+            "Reuters",
+            "Scotiabank",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "El Ni\u00f1o agricultural risks",
+            "El Ni\u00f1o weather risks",
+            "El Ni\u00f1o-related agricultural commodity risks",
+            "El Ni\u00f1o-related agricultural risks",
+            "El Ni\u00f1o agricultural impact"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
