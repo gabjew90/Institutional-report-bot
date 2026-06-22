@@ -1,0 +1,279 @@
+{
+  "pulse_date": "2026-06-22",
+  "window_label": "since-last-daily (2026-06-19T13:19)",
+  "themes": [
+    {
+      "theme": "fed hawkish policy shift",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 2,
+        "neutral": 9
+      },
+      "consensus_view": "Banks agree the Fed has turned hawkish under new Chair Warsh, with the dot plot now signaling possible rate hikes, but they split on whether those hikes actually happen this year or the Fed stays on hold.",
+      "facts_agreed": [
+        {
+          "claim": "The Fed has shifted to a hawkish stance, with the dot plot now signaling possible rate hikes rather than cuts.",
+          "banks_for": [
+            "The Market Ear",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "a mini monetary policy revolution",
+            "9 of the 18 officials in the dot plot signalled there should be a rate hike"
+          ]
+        },
+        {
+          "claim": "Sticky inflation is the force behind the Fed's harder line, requiring the central bank to back its tough language with action.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "We believe the Fed will need to back its strong language with action",
+            "We now expect the Fed to hike 75bp this year in Sep, Oct, and Dec"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the Fed actually delivers rate hikes this year",
+          "banks_for": [
+            "Bank of America"
+          ],
+          "for_evidence": "We now expect the Fed to hike 75bp this year in Sep, Oct, and Dec",
+          "banks_against": [
+            "JPMorgan",
+            "MUFG",
+            "UBS"
+          ],
+          "against_evidence": "we continue to see a 2026 rate hike as unlikely"
+        },
+        {
+          "claim": "Whether the hawkish stance will persist",
+          "banks_for": [
+            "The Market Ear"
+          ],
+          "for_evidence": "a mini monetary policy revolution",
+          "banks_against": [
+            "MUFG"
+          ],
+          "against_evidence": "we have our doubts how long this hawkish fervor can last"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "gulf oil supply normalization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 11
+      },
+      "consensus_view": "Banks broadly expect Gulf oil exports to recover as the Strait of Hormuz reopens and US-Iran talks progress, with Goldman already cutting its oil price forecast, though some supply may be permanently lost.",
+      "facts_agreed": [
+        {
+          "claim": "Banks treat the Strait of Hormuz reopening and US-Iran negotiations as the key driver pointing Gulf oil supply back toward normal.",
+          "banks_for": [
+            "MUFG Research",
+            "ANZ Research",
+            "Goldman Sachs",
+            "Deutsche Bank",
+            "ING",
+            "Mizuho International Plc",
+            "Barclays",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "the market is increasingly pricing in a return toward pre-war export levels",
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz energy flow restoration",
+            "US-Iran agreement impact on oil prices",
+            "Strait of Hormuz supply flow recovery"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "US-Iran high-level talks in Switzerland",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Banks across seven desks reference US-Iran high-level talks in Switzerland as a live oil and geopolitical catalyst, but none has staked a clear directional view on whether a deal holds.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are tracking the US-Iran high-level talks in Switzerland as an active de-escalation and oil-supply catalyst this window.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "MUFG Research",
+            "Mizuho International Plc",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "US-Iran high-level talks in Switzerland",
+            "US-Iran framework agreement",
+            "US-Iran oil supply progress",
+            "US-Iran ceasefire 60-day duration",
+            "Iran/US MOU de-escalation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor positioning",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Banks across several desks flag semiconductors as a crowded, heavily-bought sector seeing record money inflows, but only The Market Ear stakes a clear bullish view while the rest just note the trend without taking a side.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks reference semiconductors as a sector drawing record inflows and heavy positioning this window.",
+          "banks_for": [
+            "The Market Ear",
+            "Citadel Securities",
+            "Goldman Sachs",
+            "ING",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "net allocations now at record highs",
+            "Record semiconductor inflows",
+            "Semiconductor ETF inflows",
+            "semiconductor sector retail concentration",
+            "semiconductor supercycle"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure financing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Banks broadly agree the AI buildout keeps drawing huge committed spending from the big cloud companies, with the open question being whether firms keep spending freely or start treating that spend as a cost line to watch.",
+      "facts_agreed": [
+        {
+          "claim": "The big cloud companies (hyperscalers) remain committed to heavy AI capital spending that shows little sign of slowing.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "AI capex investments (i.e. capacity/infrastructure to facilitate the training & inferencing of AI workloads) remain elevated",
+            "First-quarter results confirmed that hyperscalers remain committed to their heavy capital expenditure plans.",
+            "Our house view remains constructive on the AI capex outlook"
+          ]
+        },
+        {
+          "claim": "The driver of AI spending has shifted toward scarcity of computing power, keeping the incentive to spend more rather than less.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "The monetization narrative has flipped from 'can they generate enough revenue' to 'there isn't enough compute'",
+            "For now, however, the incentive remains to spend more, not less."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether AI spending stays cost-blind or starts being treated as a watched cost line",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "For now, however, the incentive remains to spend more, not less.",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "Perhaps we are moving towards a recognition of the spend and cost as a line item"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed task forces",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four research desks reference new Fed Chair Warsh's task forces on the central bank's operating framework, AI, and productivity as a developing story, but none has staked out a directional market view on what the reviews will conclude.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag Chair Warsh's Fed task forces \u2014 covering the operating framework, AI, and productivity \u2014 as a topic on their radar this window.",
+          "banks_for": [
+            "ANZ Research",
+            "Academy Securities",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Chairman Warsh Fed task forces",
+            "FOMC Warsh Task Forces",
+            "Fed operational framework task forces",
+            "Fed task forces on AI and productivity"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "leveraged etf and hedge fund activity",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Several trading desks flag a sharp jump in leveraged ETF assets and hedge fund borrowing as a live market force, but none has staked a clear up-or-down call on what it means for prices.",
+      "facts_agreed": [
+        {
+          "claim": "Banks point to fast-growing leveraged ETFs and rising hedge fund leverage as a notable feature of current positioning.",
+          "banks_for": [
+            "Citadel Securities",
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Retail participation in leveraged single-stock ETFs",
+            "leveraged ETF growth",
+            "Leveraged ETF dealer gamma rebalancing",
+            "Hedge fund leverage surge"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "gold reserve accumulation",
+      "reason": "facts_agreed banks_for not in input sources or agency whitelist: 'World Gold Council'"
+    }
+  ]
+}
