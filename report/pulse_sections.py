@@ -577,34 +577,46 @@ def _clean_board_context(ctx: str, instrument: str, direction: str) -> str:
     return ctx[0].upper() + ctx[1:]
 
 
-_BOARD_MAX_ROWS = 8
+_BOARD_MAX_ROWS = 10  # safety cap; today's calls rarely exceed this
+_MONTHS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun",
+           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+
+def _fmt_since(iso: str) -> str:
+    """'2026-06-17' -> 'Jun 17'. Empty on a bad date."""
+    from datetime import date as _date
+    try:
+        d = _date.fromisoformat(iso)
+        return f"{_MONTHS[d.month - 1]} {d.day}"
+    except (ValueError, IndexError, TypeError):
+        return ""
 
 
 def render_trade_board(
     board_rows: list[dict], today: str, flips: set[str] | None = None
 ) -> str:
-    """Render the TRADE BOARD as clean markdown bullets (NOT a monospace
-    code block — that rendered as cramped fixed-width font in Discord
-    embeds, 2026-06-19 QC). Empty string when no live leans.
+    """Render ONLY the leans THIS pulse is making, as clean markdown
+    bullets. Empty string when the pulse made no leans.
 
-    Capped at the most-recent `_BOARD_MAX_ROWS` so the board stays a
-    scannable summary, not a wall of stale carries. `flips`: instruments
-    whose direction reversed today — shown as FLIP instead of NEW.
+    2026-06-22 QC rewrite: show only leans re-affirmed today (last_seen
+    == today). Stale carries the pulse stopped mentioning drop off, so
+    the board ALWAYS matches the pulse — the previous version capped by
+    age and dropped today's own headline trade ($TLT) while surfacing
+    days-old ghosts. Labels: NEW = first flagged today, FLIP = reversed
+    today, "held since <date>" = carried from an earlier pulse and
+    repeated today (no cryptic dN, no weekend-inflated counter).
     """
     if not board_rows:
         return ""
-    from datetime import date as _date
     flips = {f.upper() for f in (flips or set())}
+    # Only what TODAY's pulse actually says — last seen today.
+    rows = [r for r in board_rows if (r.get("last_seen_date") or today) == today]
+    if not rows:
+        return ""
     lines = []
-    for r in board_rows[:_BOARD_MAX_ROWS]:
+    for r in rows[:_BOARD_MAX_ROWS]:
         first = r.get("first_seen_date") or today
         is_new = first == today
-        try:
-            d_first = _date.fromisoformat(first)
-            d_today = _date.fromisoformat(today)
-            days = (d_today - d_first).days + 1
-        except ValueError:
-            days = 1
         inst_name = (r.get("instrument") or "?").upper()
         ticker0 = inst_name.split()[0]
         if is_new and ticker0 in flips:
@@ -612,7 +624,8 @@ def render_trade_board(
         elif is_new:
             status = "NEW"
         else:
-            status = f"d{min(days, 99)}"
+            since = _fmt_since(first)
+            status = f"held since {since}" if since else "held"
         raw_inst = r.get("instrument", "?")
         low = raw_inst.lower()
         # Options carry direction in the contract type (calls = bullish,
@@ -630,8 +643,9 @@ def render_trade_board(
         lines.append(f"- **{status}** {pos}{tail}")
     return (
         "## TRADE BOARD\n\n"
-        "Leans the pulse is carrying — NEW opened today, FLIP reversed "
-        "today, dN = day N live (they age off after 5 quiet days):\n\n"
+        "Leans this pulse is making — NEW = first flagged today, FLIP = "
+        "reversed today, \"held since …\" = carried from an earlier pulse "
+        "and repeated today:\n\n"
         + "\n".join(lines)
         + "\n"
     )

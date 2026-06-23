@@ -289,11 +289,36 @@ def test_render_trade_board_new_vs_live():
     assert "## TRADE BOARD" in board
     # De-monospaced 2026-06-19: clean markdown bullets, NOT a ``` block.
     assert "```" not in board, "board must NOT be a monospace code block"
+    # 2026-06-22: NEW for first-today, "held since <date>" for carries
+    # (no cryptic/weekend-inflated dN).
     assert "- **NEW**" in board and "$SOXX" in board
-    assert "- **d3**" in board and "$BNO" in board, board
+    assert "- **held since Jun 8**" in board and "$BNO" in board, board
     assert render_trade_board([], "2026-06-10") == ""
-    _ok("trade board: NEW vs dN day counts, clean bullets (no monospace), "
-        "empty when no rows")
+    _ok("trade board: NEW vs 'held since <date>', clean bullets (no "
+        "monospace/dN), empty when no rows")
+
+
+def test_board_shows_only_todays_calls():
+    """2026-06-22 QC: the board must show ONLY leans re-affirmed today
+    (last_seen == today). A stale carry the pulse stopped mentioning
+    (last_seen < today) must NOT appear — the old version surfaced
+    days-old ghosts while dropping today's own headline trade."""
+    from report.pulse_sections import render_trade_board
+    rows = [
+        # today's call — shown
+        {"instrument": "TLT", "direction": "short",
+         "first_seen_date": "2026-06-17", "last_seen_date": "2026-06-22",
+         "context_snippet": "into PCE"},
+        # stale carry — pulse didn't repeat it today — must be hidden
+        {"instrument": "VIXY", "direction": "long",
+         "first_seen_date": "2026-06-18", "last_seen_date": "2026-06-19",
+         "context_snippet": "into next week's data"},
+    ]
+    board = render_trade_board(rows, "2026-06-22")
+    assert "$TLT" in board, "today's re-affirmed lean must show"
+    assert "held since Jun 17" in board, board
+    assert "$VIXY" not in board, "stale carry (not seen today) must be hidden"
+    _ok("board: only today's calls shown; stale carries dropped")
 
 
 def test_clean_board_context_no_garble():
@@ -567,6 +592,7 @@ if __name__ == "__main__":
     test_extract_leans_closing_paragraph_only()
     test_puts_flip_direction()
     test_render_trade_board_new_vs_live()
+    test_board_shows_only_todays_calls()
     test_board_self_ref_and_options()
     test_board_caps_rows()
     test_clean_board_context_no_garble()
