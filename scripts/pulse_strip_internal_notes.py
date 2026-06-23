@@ -23,23 +23,38 @@ import re
 import sys
 
 
-# Matches a section that starts with `## _` (the underscore-prefixed header
-# indicates internal) and consumes through the next non-internal `## ` header
-# OR end of file. The lookahead `(?=\n## (?!_)|\Z)` is the key — it stops at
-# the next regular H2 without consuming it.
+# Matches ONE `## _` section (underscore-prefixed = internal), bounded by
+# the next `## ` header of ANY kind (or end of file). Matching each
+# internal section separately — rather than greedily merging consecutive
+# ones — is what lets the `keep` exemption decide per-section (e.g. strip
+# `## _DRAFT NOTES` but keep `## _LEANS` even when they sit adjacent).
 _INTERNAL_SECTION_RE = re.compile(
-    r"\n*## _[^\n]*\n.*?(?=\n## (?!_)|\Z)",
+    r"\n*## _[^\n]*\n.*?(?=\n## |\Z)",
     flags=re.DOTALL,
 )
 
 
-def strip_internal_notes(text: str) -> str:
-    """Return `text` with all `## _...` sections removed.
+def strip_internal_notes(text: str, keep: tuple = ("_LEANS",)) -> str:
+    """Return `text` with all `## _...` sections removed, EXCEPT any whose
+    header name is in `keep`.
+
+    `_LEANS` is kept by default: it's the TRADE BOARD's structural source
+    (2026-06-23), emitted by DRAFT and consumed by the bridge worker at
+    post-time, which strips it AFTER building the board and BEFORE the
+    pulse reaches Discord. So the routine must leave it in the committed
+    pulse; the bridge does the final strip.
 
     Trailing whitespace is normalized — the output always ends with a single
     newline. Returns the input unchanged when no internal sections are found.
     """
-    cleaned = _INTERNAL_SECTION_RE.sub("\n", text)
+    keep_upper = tuple(k.upper().lstrip("_") for k in keep)
+
+    def _repl(m: "re.Match") -> str:
+        hm = re.match(r"\n*## _(\S+)", m.group(0))
+        name = hm.group(1).upper() if hm else ""
+        return m.group(0) if name in keep_upper else "\n"
+
+    cleaned = _INTERNAL_SECTION_RE.sub(_repl, text)
     # Collapse 3+ consecutive newlines into 2, which can happen when an
     # internal section was the trailing block of the file.
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)

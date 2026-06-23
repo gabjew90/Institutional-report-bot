@@ -970,7 +970,7 @@ ONE sentence. The single most important finding from this run. If the Publish-re
 
 Before the deeper review, do a deterministic scan on the FINAL POSTED MARKDOWN block above:
 
-1. **Internal-notes leak.** Search the FINAL POSTED MARKDOWN for any H2 header beginning with `## _` (underscore-prefixed — e.g. `## _EDIT NOTES`, `## _DRAFT NOTES`). These sections are editorial-decision metadata that `scripts/pulse_strip_internal_notes.py` (called from synthesis-routine.md STEP 5.8) was supposed to strip. **If ANY `## _` header is present in the final, this is a P0 publish failure** — the pulse shipped with internal notes visible to readers. Report as `[observed] LEAKED: <header name>` and add a Suggested change pointing at the strip step. If clean, report `[observed] No internal-notes sections in final. Clean.`
+1. **Internal-notes leak.** Search the FINAL POSTED MARKDOWN for any H2 header beginning with `## _` (underscore-prefixed — e.g. `## _EDIT NOTES`, `## _DRAFT NOTES`). These sections are editorial-decision metadata that `scripts/pulse_strip_internal_notes.py` (called from synthesis-routine.md STEP 5.8) was supposed to strip. **If ANY `## _` header is present in the final, this is a P0 publish failure** — the pulse shipped with internal notes visible to readers. Report as `[observed] LEAKED: <header name>` and add a Suggested change pointing at the strip step. If clean, report `[observed] No internal-notes sections in final. Clean.` **EXCEPTION — `## _LEANS` is NOT a leak.** It is the TRADE BOARD's structural source, intentionally preserved through the routine's strip and removed by the bridge worker at post-time (after the board is built). If you are reviewing a pre-bridge artifact (committed pulse), `## _LEANS` being present is expected and correct — do NOT flag it. Only flag `## _LEANS` if it appears in the ACTUAL Discord-posted / archived pulse (the bridge failed to strip it).
 
 2. **Frontmatter leak.** Confirm the final does NOT contain raw frontmatter markers (`---` at line 1 followed by `pdf_count:` etc.) — those are committed as a separate concern by STEP 6 and should not appear in the body. Report `[observed] No frontmatter leak.` or `[observed] LEAKED: frontmatter visible in body`.
 
@@ -1232,6 +1232,30 @@ The 2026-05-14T20-01-08Z test fire failed this: adjudication validated 8 themes 
 ```
 
 If you rendered every adjudicated theme as its own section, omit this section entirely. The routine strips `## _DRAFT NOTES` before the pulse ships — it exists so the QC reviewer can see your editorial decisions instead of a silent theme disappearing between adjudication and DRAFT. A theme that just evaporates with no note is a process bug; a theme you consciously folded with a recorded reason is editorial judgment.
+
+**EMIT A `## _LEANS` BLOCK (binding — the TRADE BOARD reads this).** The pulse ships a TRADE BOARD that lists every trade lean the pulse makes. It is built MECHANICALLY from a hidden block you emit — NOT scraped from your prose — so you MUST restate each lean here in a fixed, machine-readable format. Append this as the VERY LAST thing in your output, after `## 3. WHAT TO WATCH` and after any `## _DRAFT NOTES`:
+
+```
+## _LEANS (internal — TRADE BOARD source, stripped before publish)
+- <direction> | <instrument(s)> | <short rationale>
+```
+
+One line per distinct trade lean across the WHOLE pulse — the MAIN EVENT's close AND every BRIEF's close. Rules for each line:
+- `<direction>` is `long` or `short` (the net market view). For an options expression, state the NET view: owning puts is `short`, owning calls is `long`.
+- `<instrument(s)>` is the cashtag(s), exactly as the trade is expressed — e.g. `$TLT`, `$VST, $CEG, $XLU`, `$SMH puts`, `$RSP, $IWM`. Keep `calls`/`puts` when the trade is an option. First cashtag is treated as the primary.
+- `<short rationale>` is a terse fragment (≤12 words) — the trigger or invalidation, no full sentence. Example: `into PCE, 2-year overdone`.
+- One line per lean; do NOT repeat the same instrument+direction twice. If a section makes no actionable trade, it contributes no line.
+- These lines MUST match the trades you actually argued in the prose — same instruments, same direction. This block is the source of truth for the board, so an omission here means the trade silently misses the board.
+
+Example (do NOT copy the tickers — derive from today's actual leans):
+```
+## _LEANS (internal — TRADE BOARD source, stripped before publish)
+- long | $VST, $CEG, $XLU | power/infra over chasing $SMH
+- long | $TLT | 2-year repricing overdone, into PCE
+- long | $BNO | outright, toll-fight asymmetry
+- long | $RSP, $IWM | concentration unwind, equal-weight over $SPY
+- long | $GLD | accumulate dips below $4,000
+```
 - A theme with 1-2 banks AND no hard event hook (e.g., a single bank's basket idea, a single desk's positioning view) gets CUT — does not appear in INSIGHTS no matter how analytically interesting it is. That's a single-source niche call.
 - If you find yourself omitting one of the top 3 themes, stop and reconsider — you are wrong unless that theme genuinely has zero actionable specifics. "Hormuz isn't actionable for US traders" is wrong (oil ETFs, energy sector, yield differentials all flow from it). "Rate repricing isn't actionable" is wrong ($TLT, $UUP, $SPY duration sensitivity all flow from it).
 
@@ -1327,6 +1351,8 @@ If the corpus doesn't supply sizing or invalidation for a relative-value call, w
 If you find yourself writing "but a separate angle is..." or "on a different note..." mid-theme, you've broken coherence. Either commit to one theme or split into two themes.
 
 **DEPTH IS POSITION-DEPENDENT (binding — inverted pyramid).** The pulse renders as an inverted pyramid: the lead theme gets the full deep treatment, the rest are compressed. Downstream tooling splits this section automatically — the FIRST theme you write becomes "THE MAIN EVENT", the rest become "BRIEFS" — so the ORDER you write them in IS the depth assignment. Write the single most important / freshest / highest-conviction theme FIRST, in full depth; write the remaining themes after, compressed.
+
+**THE MAIN EVENT IS WHAT THE TAPE IS ACTUALLY DOING TODAY (binding — pick the break, not the evergreen).** When the corpus has a FRESH break/unwind/forced-selling/reversal event — the thing the market is actually reacting to right now (an overnight blowup, a leadership cohort rolling over, a positioning unwind, a regime flip) — THAT is the MAIN EVENT. Do NOT lead with an evergreen "the secular trend is still intact" reassurance theme (AI capex is real, the buildout keeps compounding) when the day's actual story is the trade on top of it cracking. The reassurance theme has anchored the pulse many times; it is rarely the freshest thing. Concrete failure this rule prevents (2026-06-23): the tape's story was a leverage unwind — Korea's memory complex −10% overnight, Mag7 rolling over, hedge-fund leverage at a 4-year high as it cracked, headline "Gravity finds the casino" — but the MAIN EVENT led with "the AI buildout is real" and demoted the unwind to a warning, while the cleaner unwind story sat as a lower brief. The unwind should have BEEN the main event, with "the buildout is still real" as its counter-case. Test: does your MAIN EVENT match what the RECAP says drove the tape and what the headline promises? If the headline is about a break and the main event is about a trend being intact, you've inverted it.
 
 - **The LEAD theme (#1 → THE MAIN EVENT): ~250-350 words.** The full five-movement arc of a financial analyst defending a research call to skeptical portfolio managers: the call, the evidence woven into a mechanism explanation, the anticipated pushback, the defense, the recommendation. Teach the mechanism in plain English. Stage the named bank-vs-bank debate. Give the explicit invalidation (the level/print/event that kills the thesis). This one theme is where the voice lives — spend prose generously.
 

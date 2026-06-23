@@ -277,13 +277,16 @@ The hedge is cheap. Own $TLT puts into the print.
 
 def test_render_trade_board_new_vs_live():
     from report.pulse_sections import render_trade_board
+    # 2026-06-23: context_snippet now holds the FULL board display line
+    # (built upstream by parse_lean_block / extract_leans_from_markdown);
+    # render just prefixes the status.
     rows = [
         {"instrument": "SOXX", "direction": "long",
          "first_seen_date": "2026-06-10", "last_seen_date": "2026-06-10",
-         "context_snippet": "broadening thesis"},
+         "context_snippet": "Long $SOXX — broadening thesis"},
         {"instrument": "BNO", "direction": "long",
          "first_seen_date": "2026-06-08", "last_seen_date": "2026-06-10",
-         "context_snippet": "oil floor vs futures fade"},
+         "context_snippet": "Long $BNO — oil floor vs futures fade"},
     ]
     board = render_trade_board(rows, "2026-06-10")
     assert "## TRADE BOARD" in board
@@ -308,11 +311,11 @@ def test_board_shows_only_todays_calls():
         # today's call — shown
         {"instrument": "TLT", "direction": "short",
          "first_seen_date": "2026-06-17", "last_seen_date": "2026-06-22",
-         "context_snippet": "into PCE"},
+         "context_snippet": "Short $TLT — into PCE"},
         # stale carry — pulse didn't repeat it today — must be hidden
         {"instrument": "VIXY", "direction": "long",
          "first_seen_date": "2026-06-18", "last_seen_date": "2026-06-19",
-         "context_snippet": "into next week's data"},
+         "context_snippet": "Long $VIXY — into next week's data"},
     ]
     board = render_trade_board(rows, "2026-06-22")
     assert "$TLT" in board, "today's re-affirmed lean must show"
@@ -357,12 +360,11 @@ def test_clean_board_context_no_garble():
 
 
 def test_board_self_ref_and_options():
-    """2026-06-19 fixes: (1) a two-instrument lean stapled the same
-    sentence onto BOTH rows, so the second read 'paired with long $UUP'
-    on the $UUP row (self-referential nonsense); (2) options were
-    prefixed Long/Short, so 'own $SMH puts' rendered 'Short $SMH puts'."""
-    from report.pulse_sections import _clean_board_context, render_trade_board
-    # Self-ref: $UUP's own clause stripped from its descriptor.
+    """2026-06-19 fixes, now in the display builders: (1) self-ref clause
+    stripping (_clean_board_context, prose-fallback path); (2) options
+    shown without a Long/Short prefix (_build_lean_display)."""
+    from report.pulse_sections import _clean_board_context, _build_lean_display
+    # Self-ref: $UUP's own clause stripped from its descriptor (fallback).
     pair = "Short $TLT, paired with long $UUP, into PCE, sized for liquidity."
     uup = _clean_board_context(pair, "UUP", "long")
     assert "$UUP" not in uup, f"self-reference not stripped: {uup!r}"
@@ -371,20 +373,16 @@ def test_board_self_ref_and_options():
     tlt = _clean_board_context(pair, "TLT", "short")
     assert "$UUP" in tlt, "the TLT row should still name its UUP pair leg"
     # Options carry direction in the contract — no Long/Short prefix.
-    rows = [
-        {"instrument": "SMH puts", "direction": "short",
-         "first_seen_date": "2026-06-19", "last_seen_date": "2026-06-19",
-         "context_snippet": "cheap insurance on a stretched trade"},
-        {"instrument": "BNO calls", "direction": "long",
-         "first_seen_date": "2026-06-19", "last_seen_date": "2026-06-19",
-         "context_snippet": "cheap upside into the next headline"},
-    ]
-    board = render_trade_board(rows, "2026-06-19")
-    assert "Short $SMH puts" not in board, "must not prefix options w/ Short"
-    assert "$SMH puts" in board and "$BNO calls" in board, board
-    assert "Long $BNO calls" not in board, "must not prefix options w/ Long"
-    _ok("board: self-ref context stripped + options shown without "
-        "Long/Short prefix")
+    puts = _build_lean_display("short", "$SMH puts", "cheap insurance")
+    assert puts.startswith("$SMH puts"), puts
+    assert "Short" not in puts, f"options must not get a Short prefix: {puts!r}"
+    calls = _build_lean_display("long", "$BNO calls", "cheap upside")
+    assert calls.startswith("$BNO calls") and "Long" not in calls, calls
+    # Non-options DO get the direction prefix.
+    tltd = _build_lean_display("short", "$TLT", "2-year overdone")
+    assert tltd.startswith("Short $TLT — 2-year overdone"), tltd
+    _ok("display: self-ref stripped (fallback) + options have no Long/Short "
+        "prefix + plain leans get direction prefix")
 
 
 def test_board_caps_rows():

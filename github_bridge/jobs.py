@@ -488,18 +488,21 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         if not _is_test_fire:
             try:
                 from report.pulse_sections import (
-                    extract_leans_from_markdown, render_trade_board,
-                    inject_sections, split_main_event_briefs,
-                    replace_body_after_frontmatter,
+                    parse_lean_block, extract_leans_from_markdown,
+                    render_trade_board, inject_sections,
+                    split_main_event_briefs, replace_body_after_frontmatter,
                 )
-                # TRADE BOARD — extract today's leans, merge into the
-                # tracked set (which records same-instrument direction
-                # flips), render NEW / FLIP / dN as scannable bullets.
-                # WHAT CHANGED + DESK SIGNAL BOARD were removed 2026-06-19
-                # (read as debug telemetry / duplicated the prose, per
-                # QC). The board is the one deterministic section kept,
-                # for cross-day position accountability.
-                leans = extract_leans_from_markdown(markdown)
+                # TRADE BOARD — leans come from the DRAFT-emitted hidden
+                # `## _LEANS` block (structural source, 2026-06-23); fall
+                # back to prose scraping only if it's absent. Merge into
+                # the tracked set (records same-instrument flips), render
+                # today's calls as scannable bullets. WHAT CHANGED + DESK
+                # SIGNAL BOARD were removed 2026-06-19.
+                leans = parse_lean_block(markdown)
+                lean_source = "block"
+                if not leans:
+                    leans = extract_leans_from_markdown(markdown)
+                    lean_source = "prose-fallback"
                 flips = db.upsert_pulse_leans(today, leans)
                 flip_instruments = {
                     (f.get("instrument") or "").upper() for f in flips
@@ -515,13 +518,10 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                 injected = split_main_event_briefs(injected)
                 if injected != markdown:
                     markdown = injected
-                    raw_markdown = replace_body_after_frontmatter(
-                        raw_markdown, markdown
-                    )
                     log.info(
                         f"Bridge: injected TRADE BOARD + MAIN EVENT/BRIEFS "
                         f"split — board_rows={len(board_rows)}, "
-                        f"leans_today={len(leans)}"
+                        f"leans_today={len(leans)} (src={lean_source})"
                     )
             except Exception as e:
                 # Injection is enhancement, not gating — a failure ships
@@ -530,6 +530,19 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                     f"Bridge: section injection failed (shipping pulse "
                     f"without new sections): {e}", exc_info=True,
                 )
+
+        # ALWAYS strip the hidden `## _LEANS` block (the board's
+        # structural source) and rebuild raw_markdown from the final body
+        # before the pulse is posted/archived — it must never reach
+        # Discord, even on a test fire or if the injection above raised.
+        try:
+            from report.pulse_sections import (
+                strip_lean_block, replace_body_after_frontmatter,
+            )
+            markdown = strip_lean_block(markdown)
+            raw_markdown = replace_body_after_frontmatter(raw_markdown, markdown)
+        except Exception as e:
+            log.error(f"Bridge: _LEANS strip failed: {e}", exc_info=True)
 
         report = DailyReport(
             report_date=today,

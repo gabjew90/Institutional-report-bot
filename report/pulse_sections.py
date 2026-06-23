@@ -454,6 +454,101 @@ def render_desk_signal_board(today_state: dict | None) -> str:
 # TRADE BOARD
 # =====================================================================
 
+_CASHTAG_RE = re.compile(r"\$([A-Za-z]{1,5})\b")
+_LEANS_HDR_RE = re.compile(r"^##\s+_LEANS\b[^\n]*$", re.MULTILINE | re.IGNORECASE)
+_DISPLAY_RATIONALE_LIMIT = 90
+
+
+def _build_lean_display(direction: str, instruments_expr: str,
+                        rationale: str) -> str:
+    """Compose the board's human-readable lean line (everything after the
+    status prefix). Options carry their direction in the contract type
+    (calls = bullish, puts = bearish), so no Long/Short prefix; otherwise
+    prefix the direction. Rationale clipped at a word boundary."""
+    instruments_expr = (instruments_expr or "").strip()
+    low = instruments_expr.lower()
+    if low.endswith(("calls", "call", "puts", "put")):
+        head = instruments_expr
+    else:
+        d = (direction or "").strip().capitalize()
+        head = f"{d} {instruments_expr}".strip()
+    rationale = re.sub(r"\s+", " ", (rationale or "")).strip(" .,;:—-")
+    if len(rationale) > _DISPLAY_RATIONALE_LIMIT:
+        cut = rationale[:_DISPLAY_RATIONALE_LIMIT].rsplit(" ", 1)[0].rstrip(" ,;:—-")
+        rationale = (cut or rationale[:_DISPLAY_RATIONALE_LIMIT]) + "…"
+    return f"{head} — {rationale}" if rationale else head
+
+
+def parse_lean_block(md: str) -> list[dict]:
+    """Parse the DRAFT-emitted hidden `## _LEANS` block — the STRUCTURAL
+    source of the TRADE BOARD (2026-06-23). Each line is
+    `- <direction> | <instruments> | <rationale>`, e.g.
+    `- long | $VST, $CEG, $XLU | power and infra over chasing $SMH`.
+
+    Returns [{instrument (primary ticker, for keying/flip), direction,
+    context (the full board display line)}]. Empty when the block is
+    absent — the caller then falls back to prose extraction. This is the
+    robust path: the writer states the lean explicitly, so the board no
+    longer guesses leans out of varied prose."""
+    if not md:
+        return []
+    m = _LEANS_HDR_RE.search(md)
+    if not m:
+        return []
+    body_start = m.end()
+    nxt = re.search(r"^##\s", md[body_start:], re.MULTILINE)
+    block = md[body_start:body_start + nxt.start()] if nxt else md[body_start:]
+    leans: list[dict] = []
+    seen: set[tuple[str, str]] = set()
+    for line in block.splitlines():
+        line = line.strip()
+        if not line.startswith(("- ", "* ")):
+            continue
+        parts = [p.strip() for p in line[2:].split("|")]
+        if len(parts) < 2:
+            continue
+        d = parts[0].lower().strip()
+        if d in ("long", "buy", "bull", "bullish"):
+            direction = "long"
+        elif d in ("short", "sell", "bear", "bearish"):
+            direction = "short"
+        else:
+            continue
+        instruments_expr = parts[1].strip()
+        rationale = parts[2].strip() if len(parts) >= 3 else ""
+        tickers = _CASHTAG_RE.findall(instruments_expr)
+        if not tickers:
+            continue
+        primary = tickers[0].upper()
+        key = (primary, direction)
+        if key in seen:
+            continue
+        seen.add(key)
+        leans.append({
+            "instrument": primary,
+            "direction": direction,
+            "context": _build_lean_display(direction, instruments_expr, rationale),
+        })
+    return leans
+
+
+def strip_lean_block(md: str) -> str:
+    """Remove the hidden `## _LEANS` block from the markdown. Called by
+    the bridge AFTER the board is built and BEFORE the pulse is posted/
+    archived, so the internal source never reaches Discord. Robust to a
+    missing block (returns input unchanged)."""
+    if not md:
+        return md
+    m = _LEANS_HDR_RE.search(md)
+    if not m:
+        return md
+    start = m.start()
+    nxt = re.search(r"^##\s", md[m.end():], re.MULTILINE)
+    end = m.end() + nxt.start() if nxt else len(md)
+    out = md[:start] + md[end:]
+    return re.sub(r"\n{3,}", "\n\n", out).rstrip() + "\n"
+
+
 def extract_leans_from_markdown(md: str) -> list[dict]:
     """Pull trade leans from the INSIGHTS slots' CLOSING paragraphs.
 
@@ -499,15 +594,20 @@ def extract_leans_from_markdown(md: str) -> list[dict]:
             if key in seen:
                 continue
             seen.add(key)
-            # Context = the sentence containing the lean, clipped.
+            # Context = the sentence containing the lean, cleaned into a
+            # full board display line (so render is uniform with the
+            # structured _LEANS path — render just prefixes the status).
             sentences = re.split(r"(?<=[.!?])\s+", last_para)
-            context = next(
+            sentence = next(
                 (s for s in sentences if lm.group(0) in s), last_para
             )
+            rationale = _clean_board_context(sentence, instrument, direction)
+            instruments_expr = f"${ticker}" + (f" {qualifier}" if qualifier else "")
+            display = _build_lean_display(direction, instruments_expr, rationale)
             leans.append({
                 "instrument": instrument,
                 "direction": direction,
-                "context": context.strip()[:160],
+                "context": display,
             })
     # When both a bare ticker and its options-qualified form were
     # extracted ("$TLT" + "$TLT calls" from "own protection in $TLT …
@@ -626,21 +726,20 @@ def render_trade_board(
         else:
             since = _fmt_since(first)
             status = f"held since {since}" if since else "held"
-        raw_inst = r.get("instrument", "?")
-        low = raw_inst.lower()
-        # Options carry direction in the contract type (calls = bullish,
-        # puts = bearish), so don't prefix Long/Short — "Short $SMH puts"
-        # reads as shorting the puts. State the position as-is.
-        if low.endswith(("calls", "call", "puts", "put")):
-            pos = f"${raw_inst}"
-        else:
-            direction = (r.get("direction") or "").strip().capitalize()
-            pos = f"{direction} ${raw_inst}".strip()
-        ctx = _clean_board_context(
-            r.get("context_snippet") or "", inst_name, (r.get("direction") or "")
-        )
-        tail = f" — {ctx}" if ctx else ""
-        lines.append(f"- **{status}** {pos}{tail}")
+        # context_snippet IS the full display line (built upstream by
+        # parse_lean_block or extract_leans_from_markdown) — render just
+        # prefixes the status. Fall back to a bare position if a legacy
+        # row stored no display.
+        display = (r.get("context_snippet") or "").strip()
+        if not display:
+            raw_inst = r.get("instrument", "?")
+            low = raw_inst.lower()
+            if low.endswith(("calls", "call", "puts", "put")):
+                display = f"${raw_inst}"
+            else:
+                d = (r.get("direction") or "").strip().capitalize()
+                display = f"{d} ${raw_inst}".strip()
+        lines.append(f"- **{status}** {display}")
     return (
         "## TRADE BOARD\n\n"
         "Leans this pulse is making — NEW = first flagged today, FLIP = "
