@@ -335,8 +335,15 @@ _RATING_NORM = {
 # Non-USD price-target markers — calls with these are foreign-listed
 # names a US options trader can't act on; they were cluttering the board
 # (ZAR280, €21.50 observed 06-17). Drop them from the HC table.
-_FOREIGN_PT_RE = re.compile(r"(€|£|¥|₩|ZAR|R\$|HK\$|A\$|C\$|SEK|CHF|NOK|JPY|GBp|p$)",
-                            re.IGNORECASE)
+_FOREIGN_PT_RE = re.compile(
+    r"(€|£|¥|₩|R\$|HK\$|A\$|C\$|GBp|p$"
+    # 3-letter ISO codes for non-USD currencies (observed: 'PT EUR315'
+    # slipped past the symbol-only set, 2026-06-24).
+    # No trailing \b — codes attach directly to digits ("EUR315",
+    # "ZAR280") with no word boundary between the letter and the number.
+    r"|\b(?:EUR|GBP|JPY|CHF|AUD|CAD|NZD|HKD|SGD|CNY|CNH|INR|KRW|TWD|"
+    r"SEK|NOK|DKK|ZAR|BRL|MXN|RUB|TRY|PLN|THB|IDR|MYR|PHP))",
+    re.IGNORECASE)
 
 
 def _clean_inline(s: str) -> str:
@@ -692,28 +699,59 @@ def _fmt_since(iso: str) -> str:
         return ""
 
 
-def render_trade_board(
-    board_rows: list[dict], today: str, flips: set[str] | None = None
-) -> str:
-    """Render ONLY the leans THIS pulse is making, as clean markdown
-    bullets. Empty string when the pulse made no leans.
+_HC_SUBSECTION_MAX = 6
 
-    2026-06-22 QC rewrite: show only leans re-affirmed today (last_seen
-    == today). Stale carries the pulse stopped mentioning drop off, so
-    the board ALWAYS matches the pulse — the previous version capped by
-    age and dropped today's own headline trade ($TLT) while surfacing
-    days-old ghosts. Labels: NEW = first flagged today, FLIP = reversed
-    today, "held since <date>" = carried from an earlier pulse and
-    repeated today (no cryptic dN, no weekend-inflated counter).
+
+def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
+    """Render the HIGH-CONVICTION single-name calls as a clean markdown
+    sub-block under the TRADE BOARD (2026-06-24 — brought back from the
+    retired DESK SIGNAL BOARD, per user request). Reuses the desk-board
+    cleaners but renders as bullets, NOT a monospace table — fixing the
+    mid-word truncation / foreign-PT / N-A noise that got the original
+    cut. Empty string when there are no US-actionable HC calls."""
+    calls = [c for c in (hc_calls or [])
+             if not _is_foreign_pt(c.get("pt") or "")]
+    if not calls:
+        return ""
+    lines = ["**High-conviction single-name calls** (the desks' standout bets):", ""]
+    for c in calls[:_HC_SUBSECTION_MAX]:
+        bank = _clean_inline(c.get("source") or "?")
+        tk = (c.get("ticker") or "?").upper()
+        rd = _norm_rating(c.get("rating") or "", c.get("action") or "")
+        if rd.upper() in ("N/A", "NA", "NONE"):
+            rd = ""
+        pt_raw = _clean_inline(c.get("pt") or "")
+        pt = f"PT {pt_raw}" if pt_raw and pt_raw.upper() not in ("N/A", "") else ""
+        tag = ", ".join(x for x in (rd, pt) if x)
+        rat = _clip_rationale(c.get("rationale") or "", 60)
+        parts = [f"**{bank}** ${tk}"]
+        if tag:
+            parts.append(tag)
+        if rat:
+            parts.append(rat)
+        lines.append("- " + " — ".join(parts))
+    return "\n".join(lines) + "\n"
+
+
+def render_trade_board(
+    board_rows: list[dict], today: str, flips: set[str] | None = None,
+    hc_calls: list[dict] | None = None,
+) -> str:
+    """Render the TRADE BOARD: the leans THIS pulse is making (clean
+    markdown bullets) plus a HIGH-CONVICTION single-name calls subsection.
+    Empty string when the pulse made neither.
+
+    2026-06-22 QC: show only leans re-affirmed today (last_seen == today)
+    so the board ALWAYS matches the pulse. 2026-06-24: HC calls returned
+    as a subsection (from the retired DESK SIGNAL BOARD). Labels: NEW =
+    first flagged today, FLIP = reversed today, "held since <date>" =
+    carried from an earlier pulse and repeated today.
     """
-    if not board_rows:
-        return ""
     flips = {f.upper() for f in (flips or set())}
-    # Only what TODAY's pulse actually says — last seen today.
-    rows = [r for r in board_rows if (r.get("last_seen_date") or today) == today]
-    if not rows:
-        return ""
-    lines = []
+    # Leans: only what TODAY's pulse actually says — last seen today.
+    rows = [r for r in (board_rows or [])
+            if (r.get("last_seen_date") or today) == today]
+    lean_lines = []
     for r in rows[:_BOARD_MAX_ROWS]:
         first = r.get("first_seen_date") or today
         is_new = first == today
@@ -739,15 +777,23 @@ def render_trade_board(
             else:
                 d = (r.get("direction") or "").strip().capitalize()
                 display = f"{d} ${raw_inst}".strip()
-        lines.append(f"- **{status}** {display}")
-    return (
-        "## TRADE BOARD\n\n"
-        "Leans this pulse is making — NEW = first flagged today, FLIP = "
-        "reversed today, \"held since …\" = carried from an earlier pulse "
-        "and repeated today:\n\n"
-        + "\n".join(lines)
-        + "\n"
-    )
+        lean_lines.append(f"- **{status}** {display}")
+
+    hc_block = _render_hc_subsection(hc_calls)
+    if not lean_lines and not hc_block:
+        return ""
+
+    out = "## TRADE BOARD\n\n"
+    if lean_lines:
+        out += (
+            "Leans this pulse is making — NEW = first flagged today, FLIP "
+            "= reversed today, \"held since …\" = carried from an earlier "
+            "pulse and repeated today:\n\n"
+            + "\n".join(lean_lines) + "\n"
+        )
+    if hc_block:
+        out += ("\n" if lean_lines else "") + hc_block
+    return out
 
 
 # =====================================================================

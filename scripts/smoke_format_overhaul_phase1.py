@@ -385,6 +385,45 @@ def test_board_self_ref_and_options():
         "prefix + plain leans get direction prefix")
 
 
+def test_hc_calls_subsection():
+    """2026-06-24: HIGH-CONVICTION single-name calls brought back from the
+    retired DESK SIGNAL BOARD as a clean subsection under the TRADE BOARD
+    — markdown bullets (no monospace), bank bolded + ticker cashtagged,
+    foreign-PT calls dropped, N/A rating skipped, capped."""
+    from report.pulse_sections import render_trade_board, _HC_SUBSECTION_MAX
+    hc = [
+        {"source": "Goldman Sachs", "ticker": "ASML", "rating": "Buy",
+         "pt": "", "rationale": "fundamental story strong, EUV demand durable"},
+        {"source": "JPMorgan", "ticker": "JBL", "rating": "", "action": "",
+         "pt": "$450", "rationale": "accelerating FY27 AI revenue"},
+        {"source": "Barclays", "ticker": "BESI", "rating": "Buy",
+         "pt": "EUR315", "rationale": "foreign-listed, must be dropped"},
+        {"source": "The Market Ear", "ticker": "CRM", "rating": "N/A",
+         "pt": "N/A", "rationale": "record losing streak"},
+    ]
+    lean_rows = [{"instrument": "TLT", "direction": "short",
+                  "first_seen_date": "2026-06-24", "last_seen_date": "2026-06-24",
+                  "context_snippet": "Short $TLT — into PCE"}]
+    board = render_trade_board(lean_rows, "2026-06-24", None, hc)
+    # one ## TRADE BOARD header, leans + HC under it
+    assert board.count("## TRADE BOARD") == 1, board
+    assert "High-conviction single-name calls" in board
+    assert "```" not in board, "HC subsection must NOT be monospace"
+    # clean rendering: bank bolded, ticker cashtagged, rating/PT
+    assert "**Goldman Sachs** $ASML — Buy" in board, board
+    assert "**JPMorgan** $JBL — PT $450" in board, board
+    # foreign-PT call dropped, N/A rating not shown as a token
+    assert "$BESI" not in board, "foreign-PT (EUR) call must be dropped"
+    assert "N/A" not in board, "N/A rating/PT must not render"
+    # HC-only (no leans) still renders the board
+    hc_only = render_trade_board([], "2026-06-24", None, hc)
+    assert "## TRADE BOARD" in hc_only and "$ASML" in hc_only
+    # neither leans nor HC -> empty
+    assert render_trade_board([], "2026-06-24", None, []) == ""
+    _ok("board: HC-calls subsection clean bullets, foreign/N-A dropped, "
+        "renders with or without leans")
+
+
 def test_board_caps_rows():
     from report.pulse_sections import render_trade_board, _BOARD_MAX_ROWS
     rows = [
@@ -592,6 +631,7 @@ if __name__ == "__main__":
     test_render_trade_board_new_vs_live()
     test_board_shows_only_todays_calls()
     test_board_self_ref_and_options()
+    test_hc_calls_subsection()
     test_board_caps_rows()
     test_clean_board_context_no_garble()
     test_board_flip_marker()

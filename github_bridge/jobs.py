@@ -508,7 +508,22 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                     (f.get("instrument") or "").upper() for f in flips
                 }
                 board_rows = db.get_board_leans(today)
-                board_md = render_trade_board(board_rows, today, flip_instruments)
+                # HIGH-CONVICTION CALLS subsection (2026-06-24) — the
+                # single-name high-conviction calls from the retired DESK
+                # SIGNAL BOARD, now rendered under the TRADE BOARD. Source
+                # is the stamped pulse_state (the dump job saved hc_calls
+                # via extract_state_from_ctx). Non-fatal if unavailable.
+                hc_calls = []
+                try:
+                    today_stamp = db.stamp_pulse_state_for_date(today)
+                    if today_stamp:
+                        hc_calls = (json.loads(today_stamp["state_json"])
+                                    .get("hc_calls") or [])
+                except Exception as e:
+                    log.warning(f"Bridge: HC-calls fetch failed (non-fatal): {e}")
+                board_md = render_trade_board(
+                    board_rows, today, flip_instruments, hc_calls
+                )
 
                 injected = inject_sections(markdown, board_md)
                 # Phase 3: split INSIGHTS into THE MAIN EVENT + BRIEFS as

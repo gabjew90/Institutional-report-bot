@@ -76,12 +76,17 @@ def test_get_recent_user_chat_trades_and_executor():
         db._conn = None
         con = db.get_connection()
         uid = 1032155245016522763
+        # Anchor timestamps relative to NOW (2 days ago) so they stay
+        # inside the executor's default 7-day window — fixed dates went
+        # stale and straddled the cutoff (2026-06-24 flake).
+        from datetime import datetime, timedelta
+        _recent = (datetime.utcnow() - timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%S")
         msgs = [
-            ("2026-06-17T14:35:23", "💬-stonks-yapping-💬", "meta put at open 100%"),
-            ("2026-06-17T13:52:05", "💬-stonks-yapping-💬", "buy puts"),
-            ("2026-06-17T19:34:56", "💬-stonks-yapping-💬", "fomc shorts"),
-            ("2026-06-17T12:00:00", "💬-stonks-yapping-💬", "good morning"),       # not a trade
-            ("2026-06-17T12:05:00", "💬-stonks-yapping-💬", "call me later"),       # not a trade
+            (_recent, "💬-stonks-yapping-💬", "meta put at open 100%"),
+            (_recent, "💬-stonks-yapping-💬", "buy puts"),
+            (_recent, "💬-stonks-yapping-💬", "fomc shorts"),
+            (_recent, "💬-stonks-yapping-💬", "good morning"),       # not a trade
+            (_recent, "💬-stonks-yapping-💬", "call me later"),       # not a trade
         ]
         for i, (ts, ch, content) in enumerate(msgs, 1):
             con.execute(
