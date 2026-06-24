@@ -1,0 +1,133 @@
+{
+  "pulse_date": "2026-06-24",
+  "window_label": "since-last-daily (2026-06-23T13:20)",
+  "themes": [
+    {
+      "theme": "ai concentration risk",
+      "selected": true,
+      "stance_counts": { "supportive": 2, "skeptical": 4, "neutral": 9 },
+      "consensus_view": "Most desks see the AI trade as dangerously crowded and stretched, with concentration and leverage at bubble-like extremes, even as a couple of banks note the hardware/capex boom still has momentum.",
+      "facts_agreed": [
+        {
+          "claim": "The AI trade is extremely concentrated and stretched, sitting near historical bubble thresholds.",
+          "banks_for": ["Bank of America", "The Market Ear"],
+          "evidence_quotes": [
+            "AI is now 39% of SPX, or at the ceiling of bubble concentration",
+            "Nasdaq's Bubble Risk Indicator closer to the critical 0.8 level"
+          ]
+        },
+        {
+          "claim": "The AI-driven boom is showing signs of fragility, with extreme leverage and crowded positioning straining the trade.",
+          "banks_for": ["The Market Ear", "Société Générale", "Morgan Stanley"],
+          "evidence_quotes": [
+            "The market is no longer behaving as if risk does not exist.",
+            "The leverage embedded in the market has become so extreme",
+            "both consumption and investment are dependent on the AI ‘bubble’ not bursting",
+            "A leveraged unwind in AI-linked equities drove a risk-off rotation into the dollar"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI/hardware trade still has upside",
+          "banks_for": ["Goldman Sachs"],
+          "for_evidence": "Until that changes, the hardware trade likely remains in vogue.",
+          "banks_against": ["Goldman Sachs"],
+          "against_evidence": "it is getting harder to justify further large gains"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed policy shift",
+      "selected": true,
+      "stance_counts": { "supportive": 3, "skeptical": 1, "neutral": 7 },
+      "consensus_view": "Most banks read new Fed Chair Kevin Warsh's hawkish debut as a shift toward keeping interest rates higher, with markets now pricing one more hike and modest extra tightening into 2027, though one desk warns markets are still underestimating how hard the Fed could go.",
+      "facts_agreed": [
+        {
+          "claim": "New FOMC Chair Kevin Warsh opened with a hawkish stance that markets are interpreting as a shift toward tighter policy.",
+          "banks_for": ["Goldman Sachs", "Crédit Agricole CIB"],
+          "evidence_quotes": [
+            "quite the flip from the consensus assumptions six months ago",
+            "Investors have modestly reduced their risk-seeking behaviour following a hawkish debut by new FOMC Chair",
+            "the market has projected a hawkish Fed rate path"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether markets have correctly priced the Fed's hawkishness",
+          "banks_for": ["Bloomberg"],
+          "for_evidence": "A pivot to a more appropriate policy stance is acting as a volatility suppressor.",
+          "banks_against": ["The Market Ear"],
+          "against_evidence": "I think the danger is that if the generic “Iran Deal” gives Warsh a pass"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "US-Iran talks momentum",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 6 },
+      "consensus_view": "Six trading desks flag US-Iran peace talks as a live near-term market catalyst, but none has staked out a directional view on whether a deal closes.",
+      "facts_agreed": [
+        {
+          "claim": "Six banks reference US-Iran talks as an active near-term catalyst, framing it around progress toward a settlement or ceasefire without staking a directional call.",
+          "banks_for": ["Crédit Agricole CIB", "Goldman Sachs", "ING", "JPMorgan", "Morgan Stanley", "The Market Ear"],
+          "evidence_quotes": [
+            "US-Iran MOU progress",
+            "US-Iran talks momentum",
+            "US-Iran MOU completion",
+            "US-Iran deal optimism",
+            "US-Iran ceasefire",
+            "US-Iran peace deal"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "Strait of Hormuz shipping constraints",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 5 },
+      "consensus_view": "Several banks track Strait of Hormuz oil flows as a live supply story, with shipping still running well below pre-war levels but no shared directional call on how fast it recovers.",
+      "facts_agreed": [
+        {
+          "claim": "Oil flows through the Strait of Hormuz remain well below pre-war levels and would need a large increase to fully recover.",
+          "banks_for": ["Goldman Sachs", "ING"],
+          "evidence_quotes": ["Strait of Hormuz tensions", "Strait of Hormuz supply disruptions"]
+        },
+        {
+          "claim": "Multiple desks are monitoring Strait of Hormuz traffic and oil-flow conditions as an active macro input.",
+          "banks_for": ["ANZ Research", "Crédit Agricole CIB", "Goldman Sachs", "ING", "The Market Ear"],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping constraints",
+            "Hormuz Strait traffic decline",
+            "Strait of Hormuz tensions",
+            "Strait of Hormuz supply disruptions",
+            "Strait of Hormuz traffic recovery"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "biotech breakout",
+      "selected": true,
+      "stance_counts": { "supportive": 1, "skeptical": 0, "neutral": 2 },
+      "consensus_view": "One desk sees biotech turning higher, pointing to fresh price highs and a renewed wave of buyouts, but no other bank has staked a view to confirm or challenge it.",
+      "facts_agreed": [
+        {
+          "claim": "Biotech is breaking out technically, with the sector printing fresh 52-week highs alongside a renewed wave of acquisitions.",
+          "banks_for": ["The Market Ear"],
+          "evidence_quotes": ["fresh 52-week highs yesterday"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
