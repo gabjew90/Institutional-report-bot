@@ -6,6 +6,7 @@
   {"step": "STEP_3_5_DONE", "time": "2026-06-24T14:50:00Z", "detail": "adjudication: 5 validated, 0 discarded"},
   {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-06-24T14:55:00Z", "detail": "draft validator exit 0 after contrarian-header fix"},
   {"step": "STEP_5_7_SCRUB_DONE", "time": "2026-06-24T14:58:00Z", "detail": "2 SCRUB passes; 20 hard lint -> 0 hard (1 soft residual)"},
-  {"step": "STEP_6_COMMIT_DONE", "time": "2026-06-24T15:03:00Z", "detail": "pulse + adjudication + forensics committed via GitHub MCP (direct API blocked by session proxy)"}
+  {"step": "STEP_6_COMMIT_DONE", "time": "2026-06-24T15:03:00Z", "detail": "pulse + adjudication + forensics committed via GitHub MCP (direct API blocked by session proxy)"},
+  {"step": "STEP_7_QC_DONE", "time": "2026-06-24T15:10:00Z", "detail": "QC review committed; clean run, no leaks/fabrications, 5/5 validated-to-drafted"}
  ]
 }
