@@ -3,6 +3,14 @@
  "events": [
   {"step": "STEP_2_DONE", "time": "2026-06-25T13:07:22Z", "detail": "26 pdfs, 25 themes"},
   {"step": "STEP_3_DONE", "time": "2026-06-25T13:10:00Z", "detail": "theme coverage inspected"},
-  {"step": "STEP_3_5_DONE", "time": "2026-06-25T13:14:00Z", "detail": "5 validated, 1 discarded"}
+  {"step": "STEP_3_5_DONE", "time": "2026-06-25T13:14:00Z", "detail": "5 validated, 1 discarded"},
+  {"step": "STEP_4_DONE", "time": "2026-06-25T13:18:00Z", "detail": "draft written"},
+  {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-06-25T13:19:00Z", "detail": "validator exit 0 clean"},
+  {"step": "STEP_5A_STITCH_DONE", "time": "2026-06-25T13:20:00Z", "detail": "1 fix"},
+  {"step": "STEP_5B_EDIT_DONE", "time": "2026-06-25T13:24:00Z", "detail": "edit pass"},
+  {"step": "STEP_5_5_LINT_DONE", "time": "2026-06-25T13:24:30Z", "detail": "11 hard issues"},
+  {"step": "STEP_5_7_SCRUB_DONE", "time": "2026-06-25T13:25:30Z", "detail": "2 scrub passes, 0 residual"},
+  {"step": "STEP_5_8_STRIP_DONE", "time": "2026-06-25T13:26:00Z", "detail": "no internal notes"},
+  {"step": "STEP_6_COMMIT_DONE", "time": "2026-06-25T13:27:00Z", "detail": "pulse 74d66d0, adj d6600a3"}
  ]
 }
