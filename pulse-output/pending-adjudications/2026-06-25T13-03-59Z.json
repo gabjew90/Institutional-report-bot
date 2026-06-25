@@ -1,0 +1,173 @@
+{
+  "pulse_date": "2026-06-25",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Most banks see AI infrastructure spending as a durable multi-year buildout supporting chips, power and optical hardware, though Goldman warns that buying the obvious winners at peak earnings is risky.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure spending is a structural, multi-year demand driver across semiconductors, power and optical hardware.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Citi"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure spending remains alive and well despite the growing debate",
+            "AI is creating a structural, multi-year demand cycle",
+            "The AI infrastructure buildout is triggering a structural upcycle in optical interconnects"
+          ]
+        },
+        {
+          "claim": "AI infrastructure demand is a live, broadly referenced subject across multiple desks even where banks did not stake a primary directional view.",
+          "banks_for": [
+            "Barclays",
+            "Citi",
+            "JPMorgan",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "AI data center power infrastructure",
+            "AI infrastructure investment",
+            "AI infrastructure buildout",
+            "AI capex complex"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether AI infrastructure beneficiary stocks are worth chasing now",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "AI infrastructure spending remains alive and well despite the growing debate",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "Chasing beneﬁciaries at peak earnings feels dangerous."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "US-Iran conflict in Strait of Hormuz",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five banks reference the Strait of Hormuz shipping situation as a live oil-supply backdrop, but none has staked out a clear directional call on whether the conflict escalates or resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are tracking the Strait of Hormuz shipping and oil-flow situation as an active macro backdrop without committing to a direction.",
+          "banks_for": [
+            "Crédit Agricole CIB",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "Mizuho International Plc",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping traffic",
+            "US-Iran conflict in Strait of Hormuz",
+            "Hormuz oil supply flows",
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz traffic resumption"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "sticky PCE inflation trend",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three banks flag the upcoming US core PCE inflation reading as a key event this window but none has staked a clear directional call on whether inflation accelerates or cools.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are watching the US core PCE inflation release as a near-term macro event without committing to a directional view.",
+          "banks_for": [
+            "Crédit Agricole CIB",
+            "Goldman Sachs",
+            "Mizuho International Plc"
+          ],
+          "evidence_quotes": [
+            "Core PCE inflation data",
+            "May PCE inflation print",
+            "US core PCE data release",
+            "sticky PCE inflation trend"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "mag 7 positioning",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Goldman sees the megacap tech crowd (Mag 7) as lightly positioned after big-tech exposure dropped to one-year lows, which it reads as an attractive spot to start buying.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman views the pullback in Mag 7 exposure to one-year lows as creating attractive long entry points.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "I think there are some interesting entry points (on the long side) here."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai crowding and rotation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 2,
+        "neutral": 0
+      },
+      "consensus_view": "Both banks warn that AI stocks have become a dangerously crowded bet, with hedge funds starting to trim and exit, leaving these expensive positions vulnerable to a sharp pullback.",
+      "facts_agreed": [
+        {
+          "claim": "AI-related stocks have become a crowded trade that is now vulnerable as investors begin reducing exposure.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "AI now sits at the intersection of momentum and crowding",
+            "conviction is eroding at the margin, and some hedge fund investors have begun trimming exposure"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "hawkish fed rate path",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Deutsche Bank'"
+    }
+  ]
+}
