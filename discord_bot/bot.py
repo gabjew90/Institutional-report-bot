@@ -3530,6 +3530,15 @@ _TA_LEVEL_RE = re.compile(
     r"|(?:holds?|holding|breaks?|breaking)\s+\$?\d)",
     re.IGNORECASE,
 )
+# A chart level is only a tradeable claim when it carries a PRICE. The
+# bare level words above double as everyday English ("the Fed pivot",
+# "a contrarian pivot", "demographic breakdown") and were firing the
+# "I have no chart feed" hedge on roasts and macro takes (2026-06-24 QC,
+# ~4 false positives). Requiring a co-located price/level number
+# ($580, 4500, 30,000, 175.50) keeps the real catch (an "NDX 30,000
+# pivot") and kills the prose false positives. Small numbers (ages,
+# "7 times", "5min") are excluded — a level is $X or a 3+ digit number.
+_TA_LEVEL_PRICE_RE = re.compile(r"\$\s?\d|\b\d{1,3}(?:,\d{3})+|\b\d{3,}\b")
 # Attribution markers that legitimize a level claim (relayed, not
 # self-generated). A bank/analyst/desk naming the level, a "per/says/
 # sees/notes/flagged" verb, or a quoted source.
@@ -3563,7 +3572,11 @@ def _ta_violations(answer: str) -> tuple[list[str], list[str]]:
         if _TA_INDICATOR_RE.search(s):
             indicators.append(s)
             continue
-        if _TA_LEVEL_RE.search(s) and not _TA_ATTRIB_RE.search(s):
+        # A level claim must name a PRICE — a bare "pivot"/"breakdown" in
+        # prose ("the Fed pivot", "demographic breakdown") is not a chart
+        # level and must not trip the hedge.
+        if (_TA_LEVEL_RE.search(s) and _TA_LEVEL_PRICE_RE.search(s)
+                and not _TA_ATTRIB_RE.search(s)):
             levels.append(s)
     return indicators, levels
 

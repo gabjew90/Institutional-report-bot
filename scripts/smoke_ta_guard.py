@@ -100,6 +100,33 @@ def test_detector_roast_safe():
     _ok("detector: roast-safe — no TA shapes in personal jabs")
 
 
+def test_level_words_need_a_price():
+    """2026-06-24 QC: the level hedge fired on roasts/macro takes because
+    'pivot'/'breakdown' are everyday words. A level is only a chart claim
+    when it carries a PRICE — bare level words in prose must NOT fire."""
+    from discord_bot.bot import _has_unsourced_ta, _ta_violations
+    false_positives = [
+        # observed in the 06-24 ask logs — all got the bogus hedge
+        "The market is already sniffing out the Fed pivot, and once the "
+        "yield curve stops screaming the floodgates open.",
+        "BK is doing his usual contrarian pivot, forcing fringe Twitter "
+        "noise into a room busy roasting soccer.",
+        "If you're looking for a demographic breakdown, you're in the "
+        "wrong place — the only identity tracked here is your P&L.",
+        "This could be a breakout year for the small-caps if breadth holds.",
+    ]
+    for s in false_positives:
+        ind, lvl = _ta_violations(s)
+        assert not lvl, f"bare level word must not fire without a price: {s!r}"
+        assert _has_unsourced_ta(s, None, []) is False, f"must not hedge: {s!r}"
+    # But a level WITH a price still fires (the real catch).
+    real = "NDX is pivoting around the 30,000 level, watch a break of 30,500."
+    _, lvl2 = _ta_violations(real)
+    assert lvl2, "a priced chart level must still fire"
+    _ok("TA level: bare 'pivot'/'breakdown' in prose no longer hedges; "
+        "priced levels still caught")
+
+
 def test_detector_skips_plain_fundamentals():
     from discord_bot.bot import _has_unsourced_ta as f
     plain = (
@@ -171,6 +198,7 @@ if __name__ == "__main__":
     test_detector_skips_when_grounded()
     test_detector_skips_when_tool_fired()
     test_detector_roast_safe()
+    test_level_words_need_a_price()
     test_detector_skips_plain_fundamentals()
     test_violations_separates_indicator_and_level()
     test_ma_collision_safe()
