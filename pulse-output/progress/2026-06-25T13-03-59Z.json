@@ -1,10 +1,8 @@
 {
  "ts": "2026-06-25T13-03-59Z",
  "events": [
-  {
-   "step": "STEP_2_DONE",
-   "time": "2026-06-25T13:07:22Z",
-   "detail": ""
-  }
+  {"step": "STEP_2_DONE", "time": "2026-06-25T13:07:22Z", "detail": "26 pdfs, 25 themes"},
+  {"step": "STEP_3_DONE", "time": "2026-06-25T13:10:00Z", "detail": "theme coverage inspected"},
+  {"step": "STEP_3_5_DONE", "time": "2026-06-25T13:14:00Z", "detail": "5 validated, 1 discarded"}
  ]
 }
