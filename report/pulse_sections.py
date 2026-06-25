@@ -112,9 +112,12 @@ def extract_state_from_ctx(ctx: dict) -> dict:
                 "ticker": ticker,
                 "action": (mm.get("action") or "")[:40],
                 "pt": (mm.get("price_target") or "")[:20],
-                # rating + rationale power the DESK SIGNAL BOARD HC table.
+                # rating + rationale power the TRADE BOARD's HC subsection.
                 "rating": (mm.get("rating") or "")[:12],
-                "rationale": (mm.get("rationale") or "")[:80],
+                # Was [:80] — too tight, the HC rationale rendered mid-word
+                # ("disclosed $100bn…", 2026-06-25 QC). Keep the full desk
+                # reasoning; the render does a generous word-boundary clip.
+                "rationale": (mm.get("rationale") or "")[:280],
             })
 
     return {"themes": themes, "hc_calls": hc_calls[:20]}
@@ -723,7 +726,10 @@ def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
         pt_raw = _clean_inline(c.get("pt") or "")
         pt = f"PT {pt_raw}" if pt_raw and pt_raw.upper() not in ("N/A", "") else ""
         tag = ", ".join(x for x in (rd, pt) if x)
-        rat = _clip_rationale(c.get("rationale") or "", 60)
+        # 60 was clipping the desk reasoning mid-thought (2026-06-25 QC);
+        # 170 fits a full sentence, word-boundary + ellipsis only when a
+        # rationale is genuinely longer.
+        rat = _clip_rationale(c.get("rationale") or "", 170)
         parts = [f"**{bank}** ${tk}"]
         if tag:
             parts.append(tag)

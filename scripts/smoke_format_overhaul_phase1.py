@@ -415,6 +415,17 @@ def test_hc_calls_subsection():
     # foreign-PT call dropped, N/A rating not shown as a token
     assert "$BESI" not in board, "foreign-PT (EUR) call must be dropped"
     assert "N/A" not in board, "N/A rating/PT must not render"
+    # 2026-06-25: a full-sentence rationale renders WHOLE, not clipped at
+    # 60 mid-word ("disclosed $100bn…").
+    long_hc = [{"source": "Goldman Sachs", "ticker": "MU", "rating": "Buy",
+                "pt": "",
+                "rationale": "smashed expectations, raised the outlook, and "
+                "disclosed $100bn of contracted HBM revenue through 2027"}]
+    lb = render_trade_board([], "2026-06-25", None, long_hc)
+    assert "contracted HBM revenue through 2027" in lb, (
+        f"full HC rationale must render, not truncate mid-thought: {lb}"
+    )
+    assert "…" not in lb, "a sub-170-char rationale must not get an ellipsis"
     # HC-only (no leans) still renders the board
     hc_only = render_trade_board([], "2026-06-24", None, hc)
     assert "## TRADE BOARD" in hc_only and "$ASML" in hc_only
