@@ -3367,8 +3367,25 @@ def format_user_profiles_for_context(
         if slurs > 0:
             sub_signal.append(f"slurs:{slurs}")
         sub = f" ({', '.join(sub_signal)})" if sub_signal else ""
-        if rr:
-            base = f"racism-rank #{rr}/{racism_total_in_conv} in this conv{sub}"
+        if rr and racism_total_in_conv >= 3:
+            # Make the SCOPE unmistakable — this ranks only the people
+            # active in THIS conversation, not the global leaderboard.
+            # The bot conflated the two (2026-06-24: told sunny "you're
+            # #1" off a conv-scoped rank while the global top-5 had him
+            # absent). Leaderboard claims must use lookup_user_profile.
+            base = (f"racism-rank #{rr} of {racism_total_in_conv} ACTIVE "
+                    f"here (conversation-scoped, NOT the global "
+                    f"leaderboard){sub}")
+            if racism_rationale:
+                metric_bits.append(f"{base} — {racism_rationale}")
+            else:
+                metric_bits.append(base)
+        elif rr:
+            # Denominator < 3: "#1 of 1" is a meaningless ordinal the bot
+            # has mis-cited as a global "#1". Show the raw signal, not a
+            # rank — the global leaderboard is the tool's job.
+            base = (f"racism signal{sub} — too few active here to rank "
+                    f"(global leaderboard via lookup_user_profile)")
             if racism_rationale:
                 metric_bits.append(f"{base} — {racism_rationale}")
             else:
