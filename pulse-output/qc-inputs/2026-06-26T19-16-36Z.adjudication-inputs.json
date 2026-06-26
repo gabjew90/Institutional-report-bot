@@ -1,0 +1,2768 @@
+{
+ "capex investment and returns": {
+  "theme": "capex investment and returns",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 2,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "The Market Ear",
+    "theme": "hyperscaler control plane dominance",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Hyperscalers will own the identity and compliance infrastructure required for autonomous AI agents.",
+    "primary_instruments": [
+     "AMZN",
+     "MSFT",
+     "GOOGL"
+    ],
+    "vs_consensus": "",
+    "evidence": "If AI ultimately needs permissioning rather than just intelligence, Amazon, Microsoft and Google may end up owning the control plane."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "hyperscaler capex sustainability",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Markets generally prefer immediate returns to the uncertain, distant cash flows associated with heavy construction-phase capex.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "Markets have rarely rewarded companies allocating exceptionally large proportions of free cash flow toward capex"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "ai capex reflexivity",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Investors typically reward companies harvesting returns, not those still building capacity, creating a risk of capex cuts if stock performance lags.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "markets have rarely rewarded companies allocating extraordinary amounts of free cash flow to capex"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "capex expansion beneficiaries",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Industries exposed to global capex expansion have outperformed the hyperscalers themselves.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The market has rewarded the providers (i.e Semis companies) instead of the spenders"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "capex investment and returns",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler capex investment cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler capex investment cycle"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "capex investment and returns",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler capex funding constraints",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler capex funding constraints"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "capex investment and returns",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI capex cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI capex cycle"
+   },
+   {
+    "source": "Nomura",
+    "theme": "capex investment and returns",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI supply constraints and hyperscaler margins",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI supply constraints and hyperscaler margins"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "capex investment and returns",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "hyperscaler capex build phase",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "hyperscaler capex build phase"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "capex investment and returns",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler capex cuts",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler capex cuts"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "capex investment and returns",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler capex vs semiconductor equipment spending",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler capex vs semiconductor equipment spending"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "capex investment and returns",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "hyperscaler capex sustainability debate",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "hyperscaler capex sustainability debate"
+   },
+   {
+    "source": "Nomura",
+    "theme": "capex investment and returns",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI hyperscaler capex spending",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI hyperscaler capex spending"
+   }
+  ],
+  "tension_points": [
+   {
+    "source": "Bank of America",
+    "theme": "Hyperscaler capex sustainability",
+    "bull_case": "16% operating margins keep the love for stocks.",
+    "bear_case": "Questioning how far hyperscalers need to fall for the market to start trading capex cuts.",
+    "what_invalidates": "MAGS < $60"
+   }
+  ],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~28x",
+    "metric": "Amazon P/E ratio",
+    "context": "Lowest valuation ever for the company."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "91 to 38",
+    "metric": "Weekly RSI collapse",
+    "context": "Occurred over a few months, described as one for the record books."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.7B",
+    "metric": "AUM of CSOP SK Hynix Daily (2x) Leveraged Product",
+    "context": "Largest single stock leveraged ETF in the world"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100,000",
+    "metric": "Number of Ascend 910B processors used to train GLM-5.2",
+    "context": "Zero Nvidia silicon used"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5%",
+    "metric": "Nikkei decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI daily decline",
+    "context": "Closed down 10% following a trading suspension."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.5B",
+    "metric": "Foreign investor outflows",
+    "context": "Offloaded from KOSPI shares during the session."
+   },
+   {
+    "source_bank": "Korea Financial Investment Association",
+    "figure": "38.5 trillion won ($25 billion)",
+    "metric": "Margin debt",
+    "context": "Record high for the month."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$9.1B",
+    "metric": "Onshore levered ETF AUM",
+    "context": "16 onshore ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "CSOP levered ETF AUM",
+    "context": "Combined AUM for Hynix & Samsung ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "28.8%",
+    "metric": "NPS domestic equity exposure limit",
+    "context": "Pension fund rebalancing trigger."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19%",
+    "metric": "Semiconductor market cap as % of S&P 500",
+    "context": "Record high, 2x the 2000 level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$757bn",
+    "metric": "Hyperscaler AI capex forecast for 2026",
+    "context": "Consensus expectation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2 trillion",
+    "metric": "Total M&A deal value in first 5 months of 2026",
+    "context": "Vs $603bn in same period 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Corporate profits after tax as % of US GDP",
+    "context": "All-time high, 2x 2001 levels."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.8bn",
+    "metric": "Assets in largest Hong Kong Hynix ETF",
+    "context": "Largest HK ETF in issuance."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$200B",
+    "metric": "US-listed leveraged ETF assets",
+    "context": "Represents roughly $400B of market exposure."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "50%",
+    "metric": "Leveraged ETF trading volume growth",
+    "context": "Running above last year's record pace."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$400M",
+    "metric": "RAM ETF day-one trading volume",
+    "context": "Record for a US-listed leveraged/inverse ETF launch."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$60B",
+    "metric": "Forced leveraged ETF deleveraging",
+    "context": "Occurred during the June 5 tech selloff."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$45B",
+    "metric": "Estimated forced selling",
+    "context": "Potential risk during the latest tech correction."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$640mm",
+    "metric": "MOC (Market on Close) buy imbalance",
+    "context": "S&P 500 closing activity"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20.863b",
+    "metric": "Total shares traded",
+    "context": "vs 19.617bn YTD daily average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~12%",
+    "metric": "Mega-cap tech monthly underperformance",
+    "context": "Worst month since April 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1B",
+    "metric": "Hedge fund net selling",
+    "context": "Driven by industrials and comm services"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.83%",
+    "metric": "Implied move through end of week",
+    "context": "N/A"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "433.30",
+    "metric": "CMBI Total Market Index",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,490",
+    "metric": "BGCI Index",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$59,214",
+    "metric": "CMBI Bitcoin Price",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "684k",
+    "metric": "Bitcoin 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.4b",
+    "metric": "Bitcoin 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,557",
+    "metric": "CMBI Ethereum Price",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "839k",
+    "metric": "Ethereum 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.8b",
+    "metric": "Ethereum 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-4%",
+    "metric": "TAIEX WTD performance",
+    "context": "Reflects a volatile week ending on a monthly low."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6B",
+    "metric": "Foreign net outflows from Taiwan",
+    "context": "Largest net outflow in history on 6/24 Wednesday."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Asia-focused Fundamental L/S managers MTD return",
+    "context": "Outperforming MXAP index which is down 0.9%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "35.7%",
+    "metric": "Asia-focused Fundamental L/S managers YTD return",
+    "context": "Robust performance despite elevated dispersion."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "9.1",
+    "metric": "BofA Bull & Bear Indicator",
+    "context": "Down from 9.2; Sell signal active."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$9.3B",
+    "metric": "Tech sector weekly outflows",
+    "context": "Record outflow following record $19.2B inflow."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "16%",
+    "metric": "S&P 500 operating margin",
+    "context": "Cited as the primary driver for continued 'love for stocks'."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$25.5B",
+    "metric": "Cash outflows",
+    "context": "Biggest in 8 weeks."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15 million",
+    "metric": "Estimated US workers displaced by AI transition",
+    "context": "Total potential displacement over the full transition period."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11k per month",
+    "metric": "Employment contraction in industries with established AI use cases",
+    "context": "Aggregate monthly decline in AI-exposed sectors."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.3-0.4pp",
+    "metric": "Unemployment rate increase per 1% tech-driven productivity gain",
+    "context": "Sensitivity of unemployment to productivity growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.5-0.6pp",
+    "metric": "Job destruction rate increase over two years per 1% tech-driven productivity gain",
+    "context": "Cumulative impact of technology on job destruction."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$270",
+    "metric": "AAPL technical support level",
+    "context": "Convergence of 200-day moving average and trendline."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$220",
+    "metric": "AMZN technical support level",
+    "context": "Line in the sand for technical deterioration."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "28",
+    "metric": "MSFT RSI",
+    "context": "Indicates oversold conditions."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$520",
+    "metric": "META technical support level",
+    "context": "Line in the sand."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$50B",
+    "metric": "AUM of leveraged ETFs with Korean underlyings",
+    "context": "Significant growth due to market rally"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1B",
+    "metric": "Gamma imbalance in Korean market",
+    "context": "Estimated level driving dealer hedging flows"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "29,000",
+    "metric": "NDX futures key support level",
+    "context": "Key line in the sand for current range-bound price action."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7400",
+    "metric": "SPX futures key short-term support",
+    "context": "Decisive close below this level opens door to 7300."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$755bn",
+    "metric": "2026 Hyperscaler Capex estimate",
+    "context": "Expected spend for AI hyperscalers"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4mn",
+    "metric": "Annual retiree population growth",
+    "context": "Developed countries, annual increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3mn",
+    "metric": "Annual peak consumer decline",
+    "context": "Developed countries, annual decrease for 35-55 age cohort"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~28x",
+    "metric": "Amazon P/E ratio",
+    "context": "Lowest valuation ever for the company."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "91 to 38",
+    "metric": "Weekly RSI collapse",
+    "context": "Occurred over a few months, described as one for the record books."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.7B",
+    "metric": "AUM of CSOP SK Hynix Daily (2x) Leveraged Product",
+    "context": "Largest single stock leveraged ETF in the world"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100,000",
+    "metric": "Number of Ascend 910B processors used to train GLM-5.2",
+    "context": "Zero Nvidia silicon used"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5%",
+    "metric": "Nikkei decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Nomura",
+    "figure": "15%",
+    "metric": "Commodity DRAM margin premium over HBM",
+    "context": "Cited as reason for SK Hynix capacity shift."
+   },
+   {
+    "source_bank": "Nomura",
+    "figure": "+1.3%",
+    "metric": "Next-day SMH return after sell rebalance",
+    "context": "Based on top 10 sell rebalance days backtest."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI daily decline",
+    "context": "Closed down 10% following a trading suspension."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.5B",
+    "metric": "Foreign investor outflows",
+    "context": "Offloaded from KOSPI shares during the session."
+   },
+   {
+    "source_bank": "Korea Financial Investment Association",
+    "figure": "38.5 trillion won ($25 billion)",
+    "metric": "Margin debt",
+    "context": "Record high for the month."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$9.1B",
+    "metric": "Onshore levered ETF AUM",
+    "context": "16 onshore ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "CSOP levered ETF AUM",
+    "context": "Combined AUM for Hynix & Samsung ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "28.8%",
+    "metric": "NPS domestic equity exposure limit",
+    "context": "Pension fund rebalancing trigger."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19%",
+    "metric": "Semiconductor market cap as % of S&P 500",
+    "context": "Record high, 2x the 2000 level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$757bn",
+    "metric": "Hyperscaler AI capex forecast for 2026",
+    "context": "Consensus expectation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2 trillion",
+    "metric": "Total M&A deal value in first 5 months of 2026",
+    "context": "Vs $603bn in same period 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Corporate profits after tax as % of US GDP",
+    "context": "All-time high, 2x 2001 levels."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.8bn",
+    "metric": "Assets in largest Hong Kong Hynix ETF",
+    "context": "Largest HK ETF in issuance."
+   },
+   {
+    "source_bank": "Zhipu",
+    "figure": "744B",
+    "metric": "GLM-5.2 total parameters",
+    "context": "High capacity reasoning model"
+   },
+   {
+    "source_bank": "Zhipu",
+    "figure": "1M",
+    "metric": "GLM-5.2 context window tokens",
+    "context": "Second only to Claude Opus 4.8"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "820%",
+    "metric": "Z.ai stock price appreciation",
+    "context": "Since January IPO"
+   },
+   {
+    "source_bank": "Artificial Analysis",
+    "figure": "90%",
+    "metric": "Intelligence level of China's frontier models vs US",
+    "context": "Improved from 60% in 2023"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "US$0.5B",
+    "metric": "Zhipu 2025 R&D costs",
+    "context": "One-tenth of Anthropic's spending"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$200B",
+    "metric": "US-listed leveraged ETF assets",
+    "context": "Represents roughly $400B of market exposure."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "50%",
+    "metric": "Leveraged ETF trading volume growth",
+    "context": "Running above last year's record pace."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$400M",
+    "metric": "RAM ETF day-one trading volume",
+    "context": "Record for a US-listed leveraged/inverse ETF launch."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$60B",
+    "metric": "Forced leveraged ETF deleveraging",
+    "context": "Occurred during the June 5 tech selloff."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$45B",
+    "metric": "Estimated forced selling",
+    "context": "Potential risk during the latest tech correction."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100k",
+    "metric": "US monthly job gains",
+    "context": "Anticipated sustained pace."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$80/bbl",
+    "metric": "Brent crude price forecast",
+    "context": "Average for 4Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.4%",
+    "metric": "US core PCE forecast",
+    "context": "4Q/4Q basis."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.8%ar",
+    "metric": "Global services inflation",
+    "context": "First five months of 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "<30bp",
+    "metric": "Global policy rate increase",
+    "context": "Forecast over the coming year."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7,800",
+    "metric": "S&P 500 year-end price target",
+    "context": "Recently lifted"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40th %-ile",
+    "metric": "Tactical Positioning Monitor (TPM)",
+    "context": "10-year lookback"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+10%",
+    "metric": "SPW YTD performance",
+    "context": "As of June 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+0.6%",
+    "metric": "Average 5-day SPW return following sentiment decline",
+    "context": "Historical average since 2021"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$640mm",
+    "metric": "MOC (Market on Close) buy imbalance",
+    "context": "S&P 500 closing activity"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20.863b",
+    "metric": "Total shares traded",
+    "context": "vs 19.617bn YTD daily average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~12%",
+    "metric": "Mega-cap tech monthly underperformance",
+    "context": "Worst month since April 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1B",
+    "metric": "Hedge fund net selling",
+    "context": "Driven by industrials and comm services"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.83%",
+    "metric": "Implied move through end of week",
+    "context": "N/A"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "¥370 trillion",
+    "metric": "Public-private growth investment target by FY2040",
+    "context": "Government call for investment in 17 strategic areas."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+22% / +18%",
+    "metric": "HF gross leverage buildup",
+    "context": "May (+22% vs 6% avg) and June-to-date (+18% vs 10% avg)."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "-5%",
+    "metric": "Average post-expiry decline in gross leverage",
+    "context": "Historical average following mid-June options expiry."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "433.30",
+    "metric": "CMBI Total Market Index",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,490",
+    "metric": "BGCI Index",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$59,214",
+    "metric": "CMBI Bitcoin Price",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "684k",
+    "metric": "Bitcoin 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.4b",
+    "metric": "Bitcoin 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,557",
+    "metric": "CMBI Ethereum Price",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "839k",
+    "metric": "Ethereum 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.8b",
+    "metric": "Ethereum 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-4%",
+    "metric": "TAIEX WTD performance",
+    "context": "Reflects a volatile week ending on a monthly low."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6B",
+    "metric": "Foreign net outflows from Taiwan",
+    "context": "Largest net outflow in history on 6/24 Wednesday."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Asia-focused Fundamental L/S managers MTD return",
+    "context": "Outperforming MXAP index which is down 0.9%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "35.7%",
+    "metric": "Asia-focused Fundamental L/S managers YTD return",
+    "context": "Robust performance despite elevated dispersion."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "9.1",
+    "metric": "BofA Bull & Bear Indicator",
+    "context": "Down from 9.2; Sell signal active."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$9.3B",
+    "metric": "Tech sector weekly outflows",
+    "context": "Record outflow following record $19.2B inflow."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "16%",
+    "metric": "S&P 500 operating margin",
+    "context": "Cited as the primary driver for continued 'love for stocks'."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$25.5B",
+    "metric": "Cash outflows",
+    "context": "Biggest in 8 weeks."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15 million",
+    "metric": "Estimated US workers displaced by AI transition",
+    "context": "Total potential displacement over the full transition period."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11k per month",
+    "metric": "Employment contraction in industries with established AI use cases",
+    "context": "Aggregate monthly decline in AI-exposed sectors."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.3-0.4pp",
+    "metric": "Unemployment rate increase per 1% tech-driven productivity gain",
+    "context": "Sensitivity of unemployment to productivity growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.5-0.6pp",
+    "metric": "Job destruction rate increase over two years per 1% tech-driven productivity gain",
+    "context": "Cumulative impact of technology on job destruction."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$270",
+    "metric": "AAPL technical support level",
+    "context": "Convergence of 200-day moving average and trendline."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$220",
+    "metric": "AMZN technical support level",
+    "context": "Line in the sand for technical deterioration."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "28",
+    "metric": "MSFT RSI",
+    "context": "Indicates oversold conditions."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$520",
+    "metric": "META technical support level",
+    "context": "Line in the sand."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$50B",
+    "metric": "AUM of leveraged ETFs with Korean underlyings",
+    "context": "Significant growth due to market rally"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1B",
+    "metric": "Gamma imbalance in Korean market",
+    "context": "Estimated level driving dealer hedging flows"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "29,000",
+    "metric": "NDX futures key support level",
+    "context": "Key line in the sand for current range-bound price action."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7400",
+    "metric": "SPX futures key short-term support",
+    "context": "Decisive close below this level opens door to 7300."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$755bn",
+    "metric": "2026 Hyperscaler Capex estimate",
+    "context": "Expected spend for AI hyperscalers"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4mn",
+    "metric": "Annual retiree population growth",
+    "context": "Developed countries, annual increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3mn",
+    "metric": "Annual peak consumer decline",
+    "context": "Developed countries, annual decrease for 35-55 age cohort"
+   }
+  ]
+ },
+ "hormuz strait disruptions": {
+  "theme": "hormuz strait disruptions",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "Crédit Agricole CIB",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz reopening",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz reopening"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz shipping safety",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz shipping safety"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz reopening macro tailwinds",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz reopening macro tailwinds"
+   },
+   {
+    "source": "Rabobank",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz oil flow disruption",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz oil flow disruption"
+   },
+   {
+    "source": "Crédit Agricole CIB",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz traffic",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz traffic"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.7B",
+    "metric": "AUM of CSOP SK Hynix Daily (2x) Leveraged Product",
+    "context": "Largest single stock leveraged ETF in the world"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100,000",
+    "metric": "Number of Ascend 910B processors used to train GLM-5.2",
+    "context": "Zero Nvidia silicon used"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5%",
+    "metric": "Nikkei decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI daily decline",
+    "context": "Closed down 10% following a trading suspension."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.5B",
+    "metric": "Foreign investor outflows",
+    "context": "Offloaded from KOSPI shares during the session."
+   },
+   {
+    "source_bank": "Korea Financial Investment Association",
+    "figure": "38.5 trillion won ($25 billion)",
+    "metric": "Margin debt",
+    "context": "Record high for the month."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$9.1B",
+    "metric": "Onshore levered ETF AUM",
+    "context": "16 onshore ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "CSOP levered ETF AUM",
+    "context": "Combined AUM for Hynix & Samsung ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "28.8%",
+    "metric": "NPS domestic equity exposure limit",
+    "context": "Pension fund rebalancing trigger."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19%",
+    "metric": "Semiconductor market cap as % of S&P 500",
+    "context": "Record high, 2x the 2000 level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$757bn",
+    "metric": "Hyperscaler AI capex forecast for 2026",
+    "context": "Consensus expectation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2 trillion",
+    "metric": "Total M&A deal value in first 5 months of 2026",
+    "context": "Vs $603bn in same period 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Corporate profits after tax as % of US GDP",
+    "context": "All-time high, 2x 2001 levels."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.8bn",
+    "metric": "Assets in largest Hong Kong Hynix ETF",
+    "context": "Largest HK ETF in issuance."
+   },
+   {
+    "source_bank": "Zhipu",
+    "figure": "744B",
+    "metric": "GLM-5.2 total parameters",
+    "context": "High capacity reasoning model"
+   },
+   {
+    "source_bank": "Zhipu",
+    "figure": "1M",
+    "metric": "GLM-5.2 context window tokens",
+    "context": "Second only to Claude Opus 4.8"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "820%",
+    "metric": "Z.ai stock price appreciation",
+    "context": "Since January IPO"
+   },
+   {
+    "source_bank": "Artificial Analysis",
+    "figure": "90%",
+    "metric": "Intelligence level of China's frontier models vs US",
+    "context": "Improved from 60% in 2023"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "US$0.5B",
+    "metric": "Zhipu 2025 R&D costs",
+    "context": "One-tenth of Anthropic's spending"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100k",
+    "metric": "US monthly job gains",
+    "context": "Anticipated sustained pace."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$80/bbl",
+    "metric": "Brent crude price forecast",
+    "context": "Average for 4Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.4%",
+    "metric": "US core PCE forecast",
+    "context": "4Q/4Q basis."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.8%ar",
+    "metric": "Global services inflation",
+    "context": "First five months of 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "<30bp",
+    "metric": "Global policy rate increase",
+    "context": "Forecast over the coming year."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7,800",
+    "metric": "S&P 500 year-end price target",
+    "context": "Recently lifted"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40th %-ile",
+    "metric": "Tactical Positioning Monitor (TPM)",
+    "context": "10-year lookback"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+10%",
+    "metric": "SPW YTD performance",
+    "context": "As of June 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+0.6%",
+    "metric": "Average 5-day SPW return following sentiment decline",
+    "context": "Historical average since 2021"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$640mm",
+    "metric": "MOC (Market on Close) buy imbalance",
+    "context": "S&P 500 closing activity"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20.863b",
+    "metric": "Total shares traded",
+    "context": "vs 19.617bn YTD daily average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~12%",
+    "metric": "Mega-cap tech monthly underperformance",
+    "context": "Worst month since April 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1B",
+    "metric": "Hedge fund net selling",
+    "context": "Driven by industrials and comm services"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.83%",
+    "metric": "Implied move through end of week",
+    "context": "N/A"
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "4.1%",
+    "metric": "US PCE inflation (May)",
+    "context": "In line with expectations."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "3.4%",
+    "metric": "US Core PCE inflation",
+    "context": "Fastest pace in 2.5 years."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "0.3% m/m",
+    "metric": "Real personal spending",
+    "context": "Better than expected, following downward revision of April data."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "7%",
+    "metric": "Kospi index weekly decline",
+    "context": "Triggered circuit breakers."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "5.8%",
+    "metric": "Kospi daily loss",
+    "context": "Reflects growing caution."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "4.2%",
+    "metric": "Nikkei decline",
+    "context": "Reflects global tech weakness."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "¥370 trillion",
+    "metric": "Public-private growth investment target by FY2040",
+    "context": "Government call for investment in 17 strategic areas."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+22% / +18%",
+    "metric": "HF gross leverage buildup",
+    "context": "May (+22% vs 6% avg) and June-to-date (+18% vs 10% avg)."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "-5%",
+    "metric": "Average post-expiry decline in gross leverage",
+    "context": "Historical average following mid-June options expiry."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "433.30",
+    "metric": "CMBI Total Market Index",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,490",
+    "metric": "BGCI Index",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$59,214",
+    "metric": "CMBI Bitcoin Price",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "684k",
+    "metric": "Bitcoin 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.4b",
+    "metric": "Bitcoin 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,557",
+    "metric": "CMBI Ethereum Price",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "839k",
+    "metric": "Ethereum 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.8b",
+    "metric": "Ethereum 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-4%",
+    "metric": "TAIEX WTD performance",
+    "context": "Reflects a volatile week ending on a monthly low."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6B",
+    "metric": "Foreign net outflows from Taiwan",
+    "context": "Largest net outflow in history on 6/24 Wednesday."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Asia-focused Fundamental L/S managers MTD return",
+    "context": "Outperforming MXAP index which is down 0.9%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "35.7%",
+    "metric": "Asia-focused Fundamental L/S managers YTD return",
+    "context": "Robust performance despite elevated dispersion."
+   },
+   {
+    "source_bank": "Crédit Agricole CIB",
+    "figure": "219-212",
+    "metric": "Current House seat advantage (Republicans-Democrats)",
+    "context": "Includes one independent caucusing with Republicans."
+   },
+   {
+    "source_bank": "Crédit Agricole CIB",
+    "figure": "53-47",
+    "metric": "Current Senate seat advantage (Republicans-Democrats)",
+    "context": "Tie-breaking vote held by Vice President JD Vance."
+   },
+   {
+    "source_bank": "Polymarket",
+    "figure": "80%",
+    "metric": "Polymarket odds for Democrats winning the House",
+    "context": "Consistent with base case analysis."
+   },
+   {
+    "source_bank": "Polymarket",
+    "figure": "55%",
+    "metric": "Polymarket odds for Republicans retaining the Senate",
+    "context": "Shifted from two-thirds favorite earlier in the year."
+   },
+   {
+    "source_bank": "RealClearPolitics",
+    "figure": "4.8ppt",
+    "metric": "Generic Congressional polling gap",
+    "context": "As of late June 2026, favoring Democrats."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$755bn",
+    "metric": "2026 Hyperscaler Capex estimate",
+    "context": "Expected spend for AI hyperscalers"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4mn",
+    "metric": "Annual retiree population growth",
+    "context": "Developed countries, annual increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3mn",
+    "metric": "Annual peak consumer decline",
+    "context": "Developed countries, annual decrease for 35-55 age cohort"
+   }
+  ]
+ },
+ "data centre clusters": {
+  "theme": "data centre clusters",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 0,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "ING",
+    "theme": "data centre clusters",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Spatial concentration remains the most efficient model for hyperscalers to leverage shared infrastructure.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "concentration is not going away"
+   },
+   {
+    "source": "Citi",
+    "theme": "data centre clusters",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Data-centre expansion",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Data-centre expansion"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "data centre clusters",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-driven data centre expansion",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-driven data centre expansion"
+   },
+   {
+    "source": "ING",
+    "theme": "data centre clusters",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-led datacenter demand",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-led datacenter demand"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "data centre clusters",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "European datacenter pipeline growth",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "European datacenter pipeline growth"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "ING Research",
+    "figure": "55GW",
+    "metric": "Planned behind-the-meter power capacity at US data centres",
+    "context": "Exceeds total installed power capacity in New York state."
+   },
+   {
+    "source_bank": "ING Research",
+    "figure": "75%",
+    "metric": "Share of planned US onsite power capacity expected from natural gas",
+    "context": "Driven by cheap gas resources and project pipeline."
+   },
+   {
+    "source_bank": "ING Research",
+    "figure": "80%",
+    "metric": "Share of North American data centre pipeline expected to be in clusters",
+    "context": "Reflects trend toward spatial concentration for shared infrastructure."
+   },
+   {
+    "source_bank": "ING Research",
+    "figure": "22%",
+    "metric": "Retail electricity price increase in Ohio",
+    "context": "Year-over-year increase attributed to data centre hub development."
+   },
+   {
+    "source_bank": "ING Research",
+    "figure": "1,000 miles",
+    "metric": "New fibre network construction by US Signal in Ohio and Indiana",
+    "context": "Infrastructure development supporting new data centre hubs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.7B",
+    "metric": "AUM of CSOP SK Hynix Daily (2x) Leveraged Product",
+    "context": "Largest single stock leveraged ETF in the world"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100,000",
+    "metric": "Number of Ascend 910B processors used to train GLM-5.2",
+    "context": "Zero Nvidia silicon used"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5%",
+    "metric": "Nikkei decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI daily decline",
+    "context": "Closed down 10% following a trading suspension."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.5B",
+    "metric": "Foreign investor outflows",
+    "context": "Offloaded from KOSPI shares during the session."
+   },
+   {
+    "source_bank": "Korea Financial Investment Association",
+    "figure": "38.5 trillion won ($25 billion)",
+    "metric": "Margin debt",
+    "context": "Record high for the month."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$9.1B",
+    "metric": "Onshore levered ETF AUM",
+    "context": "16 onshore ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "CSOP levered ETF AUM",
+    "context": "Combined AUM for Hynix & Samsung ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "28.8%",
+    "metric": "NPS domestic equity exposure limit",
+    "context": "Pension fund rebalancing trigger."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19%",
+    "metric": "Semiconductor market cap as % of S&P 500",
+    "context": "Record high, 2x the 2000 level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$757bn",
+    "metric": "Hyperscaler AI capex forecast for 2026",
+    "context": "Consensus expectation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2 trillion",
+    "metric": "Total M&A deal value in first 5 months of 2026",
+    "context": "Vs $603bn in same period 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Corporate profits after tax as % of US GDP",
+    "context": "All-time high, 2x 2001 levels."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.8bn",
+    "metric": "Assets in largest Hong Kong Hynix ETF",
+    "context": "Largest HK ETF in issuance."
+   },
+   {
+    "source_bank": "Zhipu",
+    "figure": "744B",
+    "metric": "GLM-5.2 total parameters",
+    "context": "High capacity reasoning model"
+   },
+   {
+    "source_bank": "Zhipu",
+    "figure": "1M",
+    "metric": "GLM-5.2 context window tokens",
+    "context": "Second only to Claude Opus 4.8"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "820%",
+    "metric": "Z.ai stock price appreciation",
+    "context": "Since January IPO"
+   },
+   {
+    "source_bank": "Artificial Analysis",
+    "figure": "90%",
+    "metric": "Intelligence level of China's frontier models vs US",
+    "context": "Improved from 60% in 2023"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "US$0.5B",
+    "metric": "Zhipu 2025 R&D costs",
+    "context": "One-tenth of Anthropic's spending"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100k",
+    "metric": "US monthly job gains",
+    "context": "Anticipated sustained pace."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$80/bbl",
+    "metric": "Brent crude price forecast",
+    "context": "Average for 4Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.4%",
+    "metric": "US core PCE forecast",
+    "context": "4Q/4Q basis."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.8%ar",
+    "metric": "Global services inflation",
+    "context": "First five months of 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "<30bp",
+    "metric": "Global policy rate increase",
+    "context": "Forecast over the coming year."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7,800",
+    "metric": "S&P 500 year-end price target",
+    "context": "Recently lifted"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40th %-ile",
+    "metric": "Tactical Positioning Monitor (TPM)",
+    "context": "10-year lookback"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+10%",
+    "metric": "SPW YTD performance",
+    "context": "As of June 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+0.6%",
+    "metric": "Average 5-day SPW return following sentiment decline",
+    "context": "Historical average since 2021"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$640mm",
+    "metric": "MOC (Market on Close) buy imbalance",
+    "context": "S&P 500 closing activity"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20.863b",
+    "metric": "Total shares traded",
+    "context": "vs 19.617bn YTD daily average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~12%",
+    "metric": "Mega-cap tech monthly underperformance",
+    "context": "Worst month since April 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1B",
+    "metric": "Hedge fund net selling",
+    "context": "Driven by industrials and comm services"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.83%",
+    "metric": "Implied move through end of week",
+    "context": "N/A"
+   },
+   {
+    "source_bank": "ING Research",
+    "figure": "55GW",
+    "metric": "Planned behind-the-meter power capacity at US data centres",
+    "context": "Exceeds total installed power capacity in New York state."
+   },
+   {
+    "source_bank": "ING Research",
+    "figure": "75%",
+    "metric": "Share of planned US onsite power capacity expected from natural gas",
+    "context": "Driven by cheap gas resources and project pipeline."
+   },
+   {
+    "source_bank": "ING Research",
+    "figure": "80%",
+    "metric": "Share of North American data centre pipeline expected to be in clusters",
+    "context": "Reflects trend toward spatial concentration for shared infrastructure."
+   },
+   {
+    "source_bank": "ING Research",
+    "figure": "22%",
+    "metric": "Retail electricity price increase in Ohio",
+    "context": "Year-over-year increase attributed to data centre hub development."
+   },
+   {
+    "source_bank": "ING Research",
+    "figure": "1,000 miles",
+    "metric": "New fibre network construction by US Signal in Ohio and Indiana",
+    "context": "Infrastructure development supporting new data centre hubs."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "¥370 trillion",
+    "metric": "Public-private growth investment target by FY2040",
+    "context": "Government call for investment in 17 strategic areas."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+22% / +18%",
+    "metric": "HF gross leverage buildup",
+    "context": "May (+22% vs 6% avg) and June-to-date (+18% vs 10% avg)."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "-5%",
+    "metric": "Average post-expiry decline in gross leverage",
+    "context": "Historical average following mid-June options expiry."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "433.30",
+    "metric": "CMBI Total Market Index",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,490",
+    "metric": "BGCI Index",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$59,214",
+    "metric": "CMBI Bitcoin Price",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "684k",
+    "metric": "Bitcoin 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.4b",
+    "metric": "Bitcoin 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,557",
+    "metric": "CMBI Ethereum Price",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "839k",
+    "metric": "Ethereum 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.8b",
+    "metric": "Ethereum 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-4%",
+    "metric": "TAIEX WTD performance",
+    "context": "Reflects a volatile week ending on a monthly low."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6B",
+    "metric": "Foreign net outflows from Taiwan",
+    "context": "Largest net outflow in history on 6/24 Wednesday."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Asia-focused Fundamental L/S managers MTD return",
+    "context": "Outperforming MXAP index which is down 0.9%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "35.7%",
+    "metric": "Asia-focused Fundamental L/S managers YTD return",
+    "context": "Robust performance despite elevated dispersion."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "1.34 million units",
+    "metric": "NA vehicle production in May",
+    "context": "Down 5.2% YOY but 3% above schedule."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "$7B",
+    "metric": "ON Semiconductor acquisition of Synaptics",
+    "context": "All-stock transaction."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "10%-12%",
+    "metric": "Belden Inc EPS CAGR potential",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "10.4%",
+    "metric": "Large funds MBS overweight",
+    "context": "Lowest level since December 2023."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "215k",
+    "metric": "Initial jobless claims",
+    "context": "Lower than 224k expected."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "2.5%",
+    "metric": "Global Real GDP Growth",
+    "context": "Down from 2.9% pre-conflict."
+   },
+   {
+    "source_bank": "NOAA",
+    "figure": ">95%",
+    "metric": "Probability of El Niño event",
+    "context": "Lasting through March 2027."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "~40%",
+    "metric": "Strategic Customer Agreements as % of sales",
+    "context": "Covered over the next five years for Micron."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "10x",
+    "metric": "P/E multiple",
+    "context": "Used for Micron target price calculation."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "10bps",
+    "metric": "Rate cut",
+    "context": "Call for 26H2E in China."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "6.1%",
+    "metric": "FY27E yield",
+    "context": "For Mapletree Pan Asia Commercial Trust."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$755bn",
+    "metric": "2026 Hyperscaler Capex estimate",
+    "context": "Expected spend for AI hyperscalers"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4mn",
+    "metric": "Annual retiree population growth",
+    "context": "Developed countries, annual increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3mn",
+    "metric": "Annual peak consumer decline",
+    "context": "Developed countries, annual decrease for 35-55 age cohort"
+   }
+  ]
+ },
+ "chinese ai competitiveness": {
+  "theme": "chinese ai competitiveness",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 1,
+   "neutral": 0
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai capex over-investment",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The AI complex is priced for ever-rising capex, but frontier intelligence can be developed at a fraction of the cost in the East.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "the largest capital allocators are also the ones most exposed to over-investment risk"
+   },
+   {
+    "source": "UBS",
+    "theme": "china ai cost efficiency",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Chinese models are gaining global share by offering 'good enough' performance at a fraction of the cost of US frontier models.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "China's models are well positioned for this shift, given their structurally lower inference costs."
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "chinese ai competitiveness",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Chinese model providers are rapidly closing the capability gap with US frontier models while maintaining significant cost advantages.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "China's frontier models have reached around 90% of the intelligence level of leading US models."
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.7B",
+    "metric": "AUM of CSOP SK Hynix Daily (2x) Leveraged Product",
+    "context": "Largest single stock leveraged ETF in the world"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100,000",
+    "metric": "Number of Ascend 910B processors used to train GLM-5.2",
+    "context": "Zero Nvidia silicon used"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5%",
+    "metric": "Nikkei decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Artificial Analysis",
+    "figure": "90%",
+    "metric": "Intelligence level of Chinese frontier models vs US leaders",
+    "context": "Improved from 60% in 2023."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "US$0.5bn / US$0.3bn",
+    "metric": "2025 R&D costs for Zhipu / MiniMax",
+    "context": "One-tenth of Anthropic's R&D spending."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20-40%",
+    "metric": "API gross margins for China's major models",
+    "context": "Broadly in line with Anthropic and OpenAI."
+   },
+   {
+    "source_bank": "Entelligence",
+    "figure": "18%",
+    "metric": "Enterprise AI coding spending converted into production output",
+    "context": "May 2026 survey of 2,444 enterprises."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI daily decline",
+    "context": "Closed down 10% following a trading suspension."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.5B",
+    "metric": "Foreign investor outflows",
+    "context": "Offloaded from KOSPI shares during the session."
+   },
+   {
+    "source_bank": "Korea Financial Investment Association",
+    "figure": "38.5 trillion won ($25 billion)",
+    "metric": "Margin debt",
+    "context": "Record high for the month."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$9.1B",
+    "metric": "Onshore levered ETF AUM",
+    "context": "16 onshore ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "CSOP levered ETF AUM",
+    "context": "Combined AUM for Hynix & Samsung ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "28.8%",
+    "metric": "NPS domestic equity exposure limit",
+    "context": "Pension fund rebalancing trigger."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19%",
+    "metric": "Semiconductor market cap as % of S&P 500",
+    "context": "Record high, 2x the 2000 level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$757bn",
+    "metric": "Hyperscaler AI capex forecast for 2026",
+    "context": "Consensus expectation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2 trillion",
+    "metric": "Total M&A deal value in first 5 months of 2026",
+    "context": "Vs $603bn in same period 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Corporate profits after tax as % of US GDP",
+    "context": "All-time high, 2x 2001 levels."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.8bn",
+    "metric": "Assets in largest Hong Kong Hynix ETF",
+    "context": "Largest HK ETF in issuance."
+   },
+   {
+    "source_bank": "Zhipu",
+    "figure": "744B",
+    "metric": "GLM-5.2 total parameters",
+    "context": "High capacity reasoning model"
+   },
+   {
+    "source_bank": "Zhipu",
+    "figure": "1M",
+    "metric": "GLM-5.2 context window tokens",
+    "context": "Second only to Claude Opus 4.8"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "820%",
+    "metric": "Z.ai stock price appreciation",
+    "context": "Since January IPO"
+   },
+   {
+    "source_bank": "Artificial Analysis",
+    "figure": "90%",
+    "metric": "Intelligence level of China's frontier models vs US",
+    "context": "Improved from 60% in 2023"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "US$0.5B",
+    "metric": "Zhipu 2025 R&D costs",
+    "context": "One-tenth of Anthropic's spending"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "100k",
+    "metric": "US monthly job gains",
+    "context": "Anticipated sustained pace."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$80/bbl",
+    "metric": "Brent crude price forecast",
+    "context": "Average for 4Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.4%",
+    "metric": "US core PCE forecast",
+    "context": "4Q/4Q basis."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.8%ar",
+    "metric": "Global services inflation",
+    "context": "First five months of 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "<30bp",
+    "metric": "Global policy rate increase",
+    "context": "Forecast over the coming year."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7,800",
+    "metric": "S&P 500 year-end price target",
+    "context": "Recently lifted"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40th %-ile",
+    "metric": "Tactical Positioning Monitor (TPM)",
+    "context": "10-year lookback"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+10%",
+    "metric": "SPW YTD performance",
+    "context": "As of June 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+0.6%",
+    "metric": "Average 5-day SPW return following sentiment decline",
+    "context": "Historical average since 2021"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$640mm",
+    "metric": "MOC (Market on Close) buy imbalance",
+    "context": "S&P 500 closing activity"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20.863b",
+    "metric": "Total shares traded",
+    "context": "vs 19.617bn YTD daily average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~12%",
+    "metric": "Mega-cap tech monthly underperformance",
+    "context": "Worst month since April 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1B",
+    "metric": "Hedge fund net selling",
+    "context": "Driven by industrials and comm services"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.83%",
+    "metric": "Implied move through end of week",
+    "context": "N/A"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "¥370 trillion",
+    "metric": "Public-private growth investment target by FY2040",
+    "context": "Government call for investment in 17 strategic areas."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+22% / +18%",
+    "metric": "HF gross leverage buildup",
+    "context": "May (+22% vs 6% avg) and June-to-date (+18% vs 10% avg)."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "-5%",
+    "metric": "Average post-expiry decline in gross leverage",
+    "context": "Historical average following mid-June options expiry."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "433.30",
+    "metric": "CMBI Total Market Index",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,490",
+    "metric": "BGCI Index",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$59,214",
+    "metric": "CMBI Bitcoin Price",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "684k",
+    "metric": "Bitcoin 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.4b",
+    "metric": "Bitcoin 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,557",
+    "metric": "CMBI Ethereum Price",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "839k",
+    "metric": "Ethereum 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.8b",
+    "metric": "Ethereum 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-4%",
+    "metric": "TAIEX WTD performance",
+    "context": "Reflects a volatile week ending on a monthly low."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6B",
+    "metric": "Foreign net outflows from Taiwan",
+    "context": "Largest net outflow in history on 6/24 Wednesday."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Asia-focused Fundamental L/S managers MTD return",
+    "context": "Outperforming MXAP index which is down 0.9%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "35.7%",
+    "metric": "Asia-focused Fundamental L/S managers YTD return",
+    "context": "Robust performance despite elevated dispersion."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "19%",
+    "metric": "Average price increase on Apple products",
+    "context": "Announced June 25, 2026"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "0.02pp",
+    "metric": "Impact on core PCE price level",
+    "context": "Estimated direct impact"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "1bp",
+    "metric": "Impact on CPI",
+    "context": "Estimated direct impact"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20%",
+    "metric": "Apple's share of CPI computer/peripheral basket",
+    "context": "Estimated"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "11%",
+    "metric": "Share of price impact in June CPI",
+    "context": "0.1bp impact"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "55%",
+    "metric": "Share of price impact in July CPI",
+    "context": "0.6bp impact"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "34%",
+    "metric": "Share of price impact in August CPI",
+    "context": "0.4bp impact"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$755bn",
+    "metric": "2026 Hyperscaler Capex estimate",
+    "context": "Expected spend for AI hyperscalers"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4mn",
+    "metric": "Annual retiree population growth",
+    "context": "Developed countries, annual increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3mn",
+    "metric": "Annual peak consumer decline",
+    "context": "Developed countries, annual decrease for 35-55 age cohort"
+   }
+  ]
+ },
+ "semiconductor retail crowding": {
+  "theme": "semiconductor retail crowding",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 1,
+   "neutral": 2
+  },
+  "theme_stances": [
+   {
+    "source": "Bloomberg",
+    "theme": "semiconductor retail crowding",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The flood of retail money into semis is occurring at the worst possible time due to the exhaustion of excess liquidity.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "Money last in is often first out."
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$1B",
+    "metric": "Cumulative inflows into SpaceX-related ETFs",
+    "context": "Since the firm's IPO"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$10B",
+    "metric": "Market cap of ETFs devoted to SK Hynix",
+    "context": "Comparison vs SpaceX ETFs"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$20B",
+    "metric": "Net inflows to US semiconductor ETFs",
+    "context": "Growth from near-zero levels earlier in 2026"
+   },
+   {
+    "source_bank": "Barclays",
+    "figure": "$2 trillion",
+    "metric": "Outstanding MBS with coupon rates at 5% or higher",
+    "context": "Approximately four times their value in 2023."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$35 billion per month",
+    "metric": "Fed MBS runoff",
+    "context": "Fed is offloading convexity risk back into the market."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "10-15 bps",
+    "metric": "New estimated refinancing incentive threshold",
+    "context": "Reduced from 50-75 bps due to AI-assisted mortgage processing."
+   }
+  ]
+ },
+ "iran us mou failure": {
+  "theme": "iran us mou failure",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 1,
+   "neutral": 2
+  },
+  "theme_stances": [
+   {
+    "source": "Rabobank",
+    "theme": "iran-us mou failure",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The base case assumes the MOU will fail due to lack of Iranian deliverables on key security and nuclear issues.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "We assume the latter outcome as our base case failing a shift in Iranian deliverables"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Rabobank",
+    "figure": "4.1%",
+    "metric": "US PCE inflation (May)",
+    "context": "In line with expectations."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "3.4%",
+    "metric": "US Core PCE inflation",
+    "context": "Fastest pace in 2.5 years."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "0.3% m/m",
+    "metric": "Real personal spending",
+    "context": "Better than expected, following downward revision of April data."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "7%",
+    "metric": "Kospi index weekly decline",
+    "context": "Triggered circuit breakers."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "5.8%",
+    "metric": "Kospi daily loss",
+    "context": "Reflects growing caution."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "4.2%",
+    "metric": "Nikkei decline",
+    "context": "Reflects global tech weakness."
+   }
+  ]
+ },
+ "broadening us equity market": {
+  "theme": "broadening us equity market",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 0,
+   "neutral": 0
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "market broadening",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The rotation out of mega-cap tech into the broader AI supply chain and cyclicals is continuing.",
+    "primary_instruments": [
+     "SPX",
+     "NDX",
+     "RUT"
+    ],
+    "vs_consensus": "",
+    "evidence": "Broadening theme still underway with 305 S&P names ﬁnishing UP on the day."
+   },
+   {
+    "source": "Citi",
+    "theme": "broadening us equity market",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "We opportunistically reduce our Info Tech overweight while positioning for a cyclically led broadening call during Q3.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "positioning for a cyclically led broadening call during Q3"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.7B",
+    "metric": "AUM of CSOP SK Hynix Daily (2x) Leveraged Product",
+    "context": "Largest single stock leveraged ETF in the world"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100,000",
+    "metric": "Number of Ascend 910B processors used to train GLM-5.2",
+    "context": "Zero Nvidia silicon used"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5%",
+    "metric": "Nikkei decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Overnight session"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI daily decline",
+    "context": "Closed down 10% following a trading suspension."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.5B",
+    "metric": "Foreign investor outflows",
+    "context": "Offloaded from KOSPI shares during the session."
+   },
+   {
+    "source_bank": "Korea Financial Investment Association",
+    "figure": "38.5 trillion won ($25 billion)",
+    "metric": "Margin debt",
+    "context": "Record high for the month."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$9.1B",
+    "metric": "Onshore levered ETF AUM",
+    "context": "16 onshore ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "CSOP levered ETF AUM",
+    "context": "Combined AUM for Hynix & Samsung ETFs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "28.8%",
+    "metric": "NPS domestic equity exposure limit",
+    "context": "Pension fund rebalancing trigger."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19%",
+    "metric": "Semiconductor market cap as % of S&P 500",
+    "context": "Record high, 2x the 2000 level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$757bn",
+    "metric": "Hyperscaler AI capex forecast for 2026",
+    "context": "Consensus expectation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2 trillion",
+    "metric": "Total M&A deal value in first 5 months of 2026",
+    "context": "Vs $603bn in same period 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Corporate profits after tax as % of US GDP",
+    "context": "All-time high, 2x 2001 levels."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$16.8bn",
+    "metric": "Assets in largest Hong Kong Hynix ETF",
+    "context": "Largest HK ETF in issuance."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$640mm",
+    "metric": "MOC (Market on Close) buy imbalance",
+    "context": "S&P 500 closing activity"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20.863b",
+    "metric": "Total shares traded",
+    "context": "vs 19.617bn YTD daily average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~12%",
+    "metric": "Mega-cap tech monthly underperformance",
+    "context": "Worst month since April 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1B",
+    "metric": "Hedge fund net selling",
+    "context": "Driven by industrials and comm services"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.83%",
+    "metric": "Implied move through end of week",
+    "context": "N/A"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "433.30",
+    "metric": "CMBI Total Market Index",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,490",
+    "metric": "BGCI Index",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$59,214",
+    "metric": "CMBI Bitcoin Price",
+    "context": "-6% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "684k",
+    "metric": "Bitcoin 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.4b",
+    "metric": "Bitcoin 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,557",
+    "metric": "CMBI Ethereum Price",
+    "context": "-8% WoW"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "839k",
+    "metric": "Ethereum 24hr Active Addresses",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.8b",
+    "metric": "Ethereum 24hr Reported Spot Volume",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-4%",
+    "metric": "TAIEX WTD performance",
+    "context": "Reflects a volatile week ending on a monthly low."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6B",
+    "metric": "Foreign net outflows from Taiwan",
+    "context": "Largest net outflow in history on 6/24 Wednesday."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Asia-focused Fundamental L/S managers MTD return",
+    "context": "Outperforming MXAP index which is down 0.9%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "35.7%",
+    "metric": "Asia-focused Fundamental L/S managers YTD return",
+    "context": "Robust performance despite elevated dispersion."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "1.34 million units",
+    "metric": "NA vehicle production in May",
+    "context": "Down 5.2% YOY but 3% above schedule."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "$7B",
+    "metric": "ON Semiconductor acquisition of Synaptics",
+    "context": "All-stock transaction."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "10%-12%",
+    "metric": "Belden Inc EPS CAGR potential",
+    "context": ""
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "10.4%",
+    "metric": "Large funds MBS overweight",
+    "context": "Lowest level since December 2023."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "215k",
+    "metric": "Initial jobless claims",
+    "context": "Lower than 224k expected."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "2.5%",
+    "metric": "Global Real GDP Growth",
+    "context": "Down from 2.9% pre-conflict."
+   },
+   {
+    "source_bank": "NOAA",
+    "figure": ">95%",
+    "metric": "Probability of El Niño event",
+    "context": "Lasting through March 2027."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "~40%",
+    "metric": "Strategic Customer Agreements as % of sales",
+    "context": "Covered over the next five years for Micron."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "10x",
+    "metric": "P/E multiple",
+    "context": "Used for Micron target price calculation."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "10bps",
+    "metric": "Rate cut",
+    "context": "Call for 26H2E in China."
+   },
+   {
+    "source_bank": "Citi",
+    "figure": "6.1%",
+    "metric": "FY27E yield",
+    "context": "For Mapletree Pan Asia Commercial Trust."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$755bn",
+    "metric": "2026 Hyperscaler Capex estimate",
+    "context": "Expected spend for AI hyperscalers"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4mn",
+    "metric": "Annual retiree population growth",
+    "context": "Developed countries, annual increase"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3mn",
+    "metric": "Annual peak consumer decline",
+    "context": "Developed countries, annual decrease for 35-55 age cohort"
+   }
+  ]
+ }
+}
