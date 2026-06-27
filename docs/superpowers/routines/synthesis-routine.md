@@ -1147,10 +1147,11 @@ python3 /tmp/progress.py "STEP_4_DONE"
 
 ## STEP 4.5 — Structural validate DRAFT (deterministic check, mandatory)
 
-Run `scripts/pulse_draft_validate.py` against `/tmp/draft.md` + `/tmp/ctx.json`. The validator checks for four classes of structural violation that the DRAFT prompt is supposed to prevent but historically hasn't reliably honored:
+Run `scripts/pulse_draft_validate.py` against `/tmp/draft.md` + `/tmp/ctx.json`. The validator checks for five classes of structural violation that the DRAFT prompt is supposed to prevent but historically hasn't reliably honored:
 
 - **HARD `duplicate-sibling-sections`**: cap-blocked sibling theme pair shipped as two separate INSIGHTS sections instead of folded into one. The 2026-05-29 pulse shipped this; the 2026-06-01 fix held but the fold instruction is advisory at the prompt level — this is the code-level enforcement.
 - **HARD `contrarian-buried-in-appendix`**: a `contrarian_to_lead` theme exists in theme_map but wasn't given its own INSIGHTS section or WATCH bullet. The 2026-06-01 corpus had 5 contrarian titles all folded into the AI bear-case appendix; the contrarian detector ships them as a distinct category but DRAFT can still bury them.
+- **HARD `main-event-lean-missing`**: the MAIN EVENT (lead `###` theme) proposes a trade whose instruments are absent from the `## _LEANS` block, so the board (built mechanically from _LEANS) silently drops the pulse's headline call. The 2026-06-26 pulse shipped a lead "Long $RSP/$IWM, $GLD" rotation that never reached the TRADE BOARD because _LEANS listed only the briefs' trades.
 - **SOFT `underweighted-all-dropped`**: zero underweighted_candidate themes appear anywhere in the pulse.
 - **SOFT `stance-split-no-named-debate`**: theme with ≥2 support AND ≥2 skeptical didn't name Bank-A-vs-Bank-B in its section.
 

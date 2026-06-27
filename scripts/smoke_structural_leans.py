@@ -153,6 +153,81 @@ def test_main_event_steering_rule():
     _ok("DRAFT prompt: MAIN EVENT = the break, not the evergreen trend")
 
 
+def test_draft_requires_main_event_lean_first():
+    from ai_analysis import prompts
+    assert "FIRST line MUST be the MAIN EVENT" in prompts.DRAFT_USER, \
+        "the main-event-lean-first rule is missing from DRAFT"
+    assert "main-event-lean-missing" in prompts.DRAFT_USER, \
+        "DRAFT must name the validator flag so the model knows the stakes"
+    _ok("DRAFT prompt: MAIN EVENT trade must be the first _LEANS line")
+
+
+# A DRAFT whose MAIN EVENT proposes a rotation ($RSP/$IWM/$GLD) but whose
+# _LEANS lists only the briefs' trades — the exact 2026-06-26 board gap.
+_DRAFT_MAIN_EVENT_LEAN_MISSING = """# The rubber band snaps
+
+## 1. RECAP
+Tech sold off.
+
+## 2. INSIGHTS & ALPHA
+
+### Rotate out of the crowded trade
+The leverage unwound. Long the equal-weight and small-cap side ($RSP, $IWM) \
+over the cap-weighted index, with $GLD added on dips as the rotation hedge.
+
+### The power bottleneck
+Electricity is the ceiling. Long $XLU.
+
+### Oil priced for peace
+Crude sold off. Long $XLE into the next Hormuz headline.
+
+## 3. WHAT TO WATCH
+- NFP July 2
+
+## _LEANS (internal — TRADE BOARD source, stripped before publish)
+- long | $XLE | into the next Hormuz headline
+- long | $XLU | power bottleneck
+- long | $MU | over the spenders
+"""
+
+_DRAFT_MAIN_EVENT_LEAN_PRESENT = _DRAFT_MAIN_EVENT_LEAN_MISSING.replace(
+    "- long | $XLE | into the next Hormuz headline",
+    "- long | $RSP, $IWM | concentration unwind, equal-weight over $SPY\n"
+    "- long | $XLE | into the next Hormuz headline",
+)
+
+
+def test_validator_flags_missing_main_event_lean():
+    sys.path.insert(0, os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+    import pulse_draft_validate as v
+    violations = v.validate(_DRAFT_MAIN_EVENT_LEAN_MISSING, {"theme_map": {}})
+    kinds = [x["kind"] for x in violations]
+    assert "main-event-lean-missing" in kinds, (
+        f"must flag the lead trade absent from _LEANS; got {kinds}")
+    flag = next(x for x in violations if x["kind"] == "main-event-lean-missing")
+    assert flag["severity"] == "hard", "lead-trade-on-board is a hard violation"
+    # it identifies the dropped instruments, not the briefs' present ones
+    assert "RSP" in flag["main_event_tickers"], flag
+    assert "XLE" not in flag["main_event_tickers"], flag
+    _ok("validator: MAIN EVENT trade absent from _LEANS -> hard flag")
+
+
+def test_validator_passes_when_main_event_lean_present():
+    sys.path.insert(0, os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+    import pulse_draft_validate as v
+    violations = v.validate(_DRAFT_MAIN_EVENT_LEAN_PRESENT, {"theme_map": {}})
+    kinds = [x["kind"] for x in violations]
+    assert "main-event-lean-missing" not in kinds, (
+        f"one overlapping instrument must clear the check; got {kinds}")
+    # dollar AMOUNTS in the MAIN EVENT must never be read as tickers
+    me_trade = v._trade_tickers_in(
+        "Leveraged ETFs are a $200B pile. Long the rotation, $RSP over $SPY.")
+    assert me_trade == {"RSP", "SPY"}, me_trade
+    _ok("validator: overlapping lead lean clears; $200B not parsed as a ticker")
+
+
 if __name__ == "__main__":
     print("=== structural leans smoke ===")
     test_parse_lean_block_all_leans()
@@ -164,4 +239,7 @@ if __name__ == "__main__":
     test_qc_exempts_leans()
     test_bridge_uses_block_with_fallback()
     test_main_event_steering_rule()
+    test_draft_requires_main_event_lean_first()
+    test_validator_flags_missing_main_event_lean()
+    test_validator_passes_when_main_event_lean_present()
     print("\nALL STRUCTURAL LEANS SMOKE TESTS PASS")

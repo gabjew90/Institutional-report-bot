@@ -1246,6 +1246,7 @@ One line per distinct trade lean across the WHOLE pulse — the MAIN EVENT's clo
 - `<short rationale>` is a terse fragment (≤12 words) — the trigger or invalidation, no full sentence. Example: `into PCE, 2-year overdone`.
 - One line per lean; do NOT repeat the same instrument+direction twice. If a section makes no actionable trade, it contributes no line.
 - These lines MUST match the trades you actually argued in the prose — same instruments, same direction. This block is the source of truth for the board, so an omission here means the trade silently misses the board.
+- **The FIRST line MUST be the MAIN EVENT's trade.** The MAIN EVENT (your lead `###` theme) is the headline call and the board leads with it. If the MAIN EVENT proposes a trade and it is not line 1 here, the board drops your biggest call — the 2026-06-26 pulse shipped a lead "Long $RSP/$IWM, $GLD" rotation that never reached the board because _LEANS listed only the briefs' trades ($XLE/$XLU/$MU). A post-DRAFT validator HARD-flags `main-event-lean-missing` and the pulse is rejected when the MAIN EVENT's trade instruments are absent from this block.
 
 Example (do NOT copy the tickers — derive from today's actual leans):
 ```

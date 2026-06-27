@@ -55,7 +55,61 @@ from pathlib import Path
 HARD_VIOLATION_KINDS = {
     "duplicate-sibling-sections",
     "contrarian-buried-in-appendix",
+    "main-event-lean-missing",
 }
+
+# A cashtag is `$` + a LETTER (so dollar amounts like $9.3B / $200B never
+# match) + up to 6 more ticker chars.
+_CASHTAG_RE = re.compile(r"\$[A-Za-z][A-Za-z0-9.]{0,6}")
+
+# Direction/trade verbs that mark a sentence as proposing a position.
+_DIRECTION_RE = re.compile(
+    r"\b(long|short|buy|buying|sell|selling|own|owning|add|adding|"
+    r"fade|fading|hedge|hedging|overweight|underweight|puts|calls)\b",
+    re.IGNORECASE,
+)
+
+
+def _cashtags(text: str) -> set[str]:
+    """Bare, upper-cased tickers (no `$`) found in `text`. A sentence-final
+    period is stripped ($SPY. -> SPY) while an internal dot is kept
+    (BRK.B -> BRK.B)."""
+    return {
+        m.group(0).upper().lstrip("$").rstrip(".")
+        for m in _CASHTAG_RE.finditer(text)
+    }
+
+
+def _trade_tickers_in(text: str) -> set[str]:
+    """Cashtags that sit in a trade-bearing sentence (one with a direction
+    verb). These are the instruments a section actually proposes, as
+    opposed to every ticker it mentions in passing."""
+    tickers: set[str] = set()
+    for sent in re.split(r"(?<=[.!?])\s+", text):
+        if _DIRECTION_RE.search(sent):
+            tickers |= _cashtags(sent)
+    return tickers
+
+
+def _leans_instruments(md_text: str) -> set[str] | None:
+    """Tickers in the `## _LEANS` block (format `- <dir> | <instr> | ...`).
+    Returns None if there is no `## _LEANS` block at all (a different
+    failure the routine surfaces elsewhere)."""
+    m = re.search(
+        r"^##\s+_LEANS\b.*?(?=^##\s|\Z)",
+        md_text, re.MULTILINE | re.DOTALL | re.IGNORECASE,
+    )
+    if not m:
+        return None
+    instruments: set[str] = set()
+    for line in m.group(0).splitlines():
+        line = line.strip()
+        if not line.startswith("-"):
+            continue
+        parts = line.lstrip("- ").split("|")
+        if len(parts) >= 2:           # the <instrument(s)> column
+            instruments |= _cashtags(parts[1])
+    return instruments
 
 
 def _find_insights_sections(md_text: str) -> list[str]:
@@ -374,6 +428,42 @@ def validate(md_text: str, ctx: dict) -> list[dict]:
                 "theme": theme,
                 "supportive": sup,
                 "skeptical": skp,
+            })
+
+    # =====================================================================
+    # CHECK 5: the MAIN EVENT's trade reached the _LEANS block (the board)
+    # =====================================================================
+    # The TRADE BOARD is built mechanically from `## _LEANS`, NOT from the
+    # prose. The MAIN EVENT (the lead `###` theme) is the pulse's headline
+    # call, so its trade MUST appear in _LEANS or the board silently drops
+    # the biggest trade. 2026-06-26 failure: the lead "Long $RSP/$IWM,
+    # $GLD" rotation never reached the board because the writer's _LEANS
+    # listed only the briefs' trades ($XLE/$XLU/$MU).
+    #
+    # Conservative: flag ONLY when the MAIN EVENT clearly proposes a trade
+    # (a direction verb beside a cashtag) AND none of those instruments
+    # overlap _LEANS. Any single overlap passes — extra tickers don't
+    # trip it.
+    # ---------------------------------------------------------------------
+    leans = _leans_instruments(md_text)
+    if sections and leans is not None:
+        main_event_trade = _trade_tickers_in(sections[0])
+        if main_event_trade and not (main_event_trade & leans):
+            violations.append({
+                "kind": "main-event-lean-missing",
+                "severity": "hard",
+                "message": (
+                    f"The MAIN EVENT proposes a trade "
+                    f"({', '.join('$' + t for t in sorted(main_event_trade))}) "
+                    f"but none of its instruments appear in the ## _LEANS "
+                    f"block (leans: "
+                    f"{', '.join('$' + t for t in sorted(leans)) or 'none'}). "
+                    f"The board is built from _LEANS, so the lead trade will "
+                    f"be missing from the TRADE BOARD. Make the MAIN EVENT's "
+                    f"trade the FIRST _LEANS line."
+                ),
+                "main_event_tickers": sorted(main_event_trade),
+                "leans": sorted(leans),
             })
 
     return violations
