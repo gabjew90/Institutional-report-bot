@@ -1,0 +1,198 @@
+{
+  "pulse_date": "2026-06-29",
+  "window_label": "since-last-daily (2026-06-26T19:49)",
+  "themes": [
+    {
+      "theme": "ai capex and infrastructure rotation",
+      "selected": true,
+      "stance_counts": { "supportive": 10, "skeptical": 4, "neutral": 16 },
+      "consensus_view": "Most banks agree the AI spending boom is still going strong, but money is rotating out of the big cloud companies doing the spending and into the chip and memory makers selling them the gear, with the open question being whether all that spending ever shows up as real revenue.",
+      "facts_agreed": [
+        {
+          "claim": "The AI investment boom is still intact and a major driver of growth and earnings.",
+          "banks_for": ["TS Lombard", "Goldman Sachs", "The Market Ear", "Bank of America", "Berenberg", "Crédit Agricole CIB"],
+          "evidence_quotes": [
+            "vast majority of AI demand indicators we are tracking continue to point to robust demand",
+            "its not the end, we remain in the midst of a historic investment boom",
+            "AI investment boom is an engine of global growth at the moment",
+            "This almost secular growth driver is likely to continue to underpin AI-related sectors.",
+            "Forecasts anticipate unprecedented YoY growth in 2026 of 64%"
+          ]
+        },
+        {
+          "claim": "Capital is rotating away from the hyperscalers that spend on AI toward the semiconductor and infrastructure suppliers that benefit from the spending.",
+          "banks_for": ["Goldman Sachs", "The Market Ear", "Nomura", "Bloomberg", "Citi"],
+          "evidence_quotes": [
+            "The market has rewarded the providers (i.e Semis companies) instead of the spenders (Hyperscalers).",
+            "it feels like a continuation of funding trade with money rotating into semis and memory",
+            "Hyperscalers then evolving as the funding Shorts over the past few quarters",
+            "beneficiaries of the Capex spigots being opened full throttle into the 'AI Enablers'",
+            "pricing beneficiaries of these bottlenecks to continue to outperform"
+          ]
+        },
+        {
+          "claim": "AI infrastructure stocks, concentrated in a few memory and chip names, are driving a large share of S&P 500 earnings growth.",
+          "banks_for": ["Goldman Sachs"],
+          "evidence_quotes": ["AI infrastructure stocks are expected to contribute nearly 60% of S&P 500 EPS growth"]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the trillions in AI capex are sustainable and will earn a return",
+          "banks_for": ["TS Lombard", "Goldman Sachs"],
+          "for_evidence": "AI infrastructure spending remains alive and well despite the growing debate",
+          "banks_against": ["Goldman Sachs", "The Market Ear"],
+          "against_evidence": "there remains a searing debate within the market on the sustainability of trillions of dollars"
+        },
+        {
+          "claim": "Whether the tech sector rotation is a healthy reallocation or a risk-off exit",
+          "banks_for": ["Goldman Sachs"],
+          "for_evidence": "combined % net selling across the two sectors was the largest in over 10 years",
+          "banks_against": ["Barclays"],
+          "against_evidence": "US stocks were mostly lower this week driven by underperformance in Tech"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait transit and security",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 17 },
+      "consensus_view": "Banks across roughly 17 desks reference Strait of Hormuz transit and security as a live oil-supply story, tracking the disruption and the gradual restart of Gulf shipping, but none has staked a clear directional view on where it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Many banks flag the Strait of Hormuz as a key oil chokepoint where shipping was disrupted and is now in the process of recovering.",
+          "banks_for": ["ANZ Research", "Berenberg", "BofA Global Research", "Citadel Securities", "Crédit Agricole CIB", "Goldman Sachs", "HSBC", "ING", "JPMorgan", "Mizuho International", "Rabobank"],
+          "evidence_quotes": [
+            "Strait of Hormuz chokepoint access",
+            "Strait of Hormuz oil flow disruption",
+            "Strait of Hormuz shipping recovery",
+            "Strait of Hormuz traffic restart",
+            "Strait of Hormuz traffic normalization",
+            "Strait of Hormuz reopening"
+          ]
+        },
+        {
+          "claim": "Several banks frame the strait as a maritime-security and transit-safety concern still being worked through, including de-mining and vessel-transit threats.",
+          "banks_for": ["Newsquawk", "RBC Capital Markets", "Societe Generale", "The Market Ear", "UBS", "ANZ Research"],
+          "evidence_quotes": [
+            "Strait of Hormuz maritime security",
+            "Strait of Hormuz transit safety",
+            "Strait of Hormuz transit security",
+            "Strait of Hormuz maritime security risks",
+            "Strait of Hormuz de-mining process",
+            "Strait of Hormuz vessel transit threats"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh fed chairmanship",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 11 },
+      "consensus_view": "Banks across many desks reference Kevin Warsh's Fed chairmanship and how he runs press conferences and signals policy as a near-term thing to watch, but nobody has staked a directional view on what it means for rates.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag Kevin Warsh's Fed chairmanship and his communication style as a live focus this window.",
+          "banks_for": ["ANZ Research", "Bank of America", "BofA Global Research", "Crédit Agricole CIB", "Deutsche Bank", "Goldman Sachs", "HSBC", "One River Asset Management", "TS Lombard", "UBS"],
+          "evidence_quotes": [
+            "Fed Chair Warsh's reaction function",
+            "Fed communications regime under Chairman Warsh",
+            "Chair Warsh FOMC communication shift",
+            "Kevin Warsh Fed press conference",
+            "Fed Chairman Kevin Warsh inflation target commitment",
+            "Chair Kevin Warsh Fed leadership style"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran peace agreement",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 8 },
+      "consensus_view": "Banks across eight desks flag a US-Iran peace deal or memorandum of understanding as a live near-term catalyst, but none has staked out a clear directional view on whether it holds or how to trade it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are tracking US-Iran peace negotiations and a possible ceasefire or memorandum of understanding as an active catalyst this window.",
+          "banks_for": ["ANZ Research", "Bank of America", "Crédit Agricole CIB", "Goldman Sachs", "HSBC", "ING", "One River Asset Management"],
+          "evidence_quotes": [
+            "US-Iran peace negotiation progress",
+            "US-Iran peace deal ceasefire",
+            "US-Iran memorandum of understanding",
+            "US-Iran interim peace deal",
+            "US-Iran MoU"
+          ]
+        },
+        {
+          "claim": "A US-Iran deal is framed as enabling Iran's reintegration into the global economy, with reconstruction financing in view.",
+          "banks_for": ["Crédit Agricole CIB"],
+          "evidence_quotes": ["US-Iran memorandum of understanding"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran conflict market impact",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 7 },
+      "consensus_view": "Banks across seven research desks flag the Iran conflict mainly through its effect on oil supply and energy prices, but none has staked a clear directional market view yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks treat the Iran conflict primarily as an oil and energy supply story.",
+          "banks_for": ["Goldman Sachs", "HSBC", "JPMorgan", "TS Lombard", "ANZ Research"],
+          "evidence_quotes": [
+            "Iran war impact on energy prices",
+            "US-Iran agreement impact on oil",
+            "Middle East conflict supply disruptions",
+            "Middle East conflict product market tightness",
+            "US-Iran MoU impact on oil prices"
+          ]
+        },
+        {
+          "claim": "Banks also reference the conflict's broader macro spillover beyond oil, including metals and growth.",
+          "banks_for": ["ANZ Research", "Crédit Agricole CIB", "Jefferies"],
+          "evidence_quotes": [
+            "Iran war macro impact",
+            "Iran conflict impact on metals",
+            "Iran conflict impact on billings",
+            "US-Iran geopolitical tensions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb sintra forum",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 5 },
+      "consensus_view": "Banks across five desks flag the European Central Bank's Sintra forum as an upcoming policy-communication event to watch, but none has staked a directional view on what it will signal.",
+      "facts_agreed": [
+        {
+          "claim": "Five banks reference the ECB's Sintra forum as a live central-bank communication and policy-signalling event in this window.",
+          "banks_for": ["Deutsche Bank", "Goldman Sachs", "Mizuho International", "Rabobank", "UniCredit"],
+          "evidence_quotes": [
+            "ECB Forum in Sintra structural themes",
+            "ECB Sintra conference",
+            "ECB Sintra forum central bank communication",
+            "Sintra forum policy signalling",
+            "ECB Sintra forum"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "fed monetary policy path",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'BofA'"
+    }
+  ]
+}
