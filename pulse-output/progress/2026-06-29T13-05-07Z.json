@@ -1,10 +1,11 @@
 {
  "ts": "2026-06-29T13-05-07Z",
  "events": [
-  {
-   "step": "STEP_2_DONE",
-   "time": "2026-06-29T13:07:38Z",
-   "detail": "context recovered via MCP (raw fetch proxy-blocked)"
-  }
+  {"step": "STEP_2_DONE", "time": "2026-06-29T13:07:38Z", "detail": "context recovered via MCP (raw fetch proxy-blocked)"},
+  {"step": "STEP_3_5_DONE", "time": "2026-06-29T13:14:00Z", "detail": "6 validated, 1 discarded (fed monetary policy path)"},
+  {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-06-29T13:16:00Z", "detail": "exit 4 soft (underweighted mag7 valuation)"},
+  {"step": "STEP_5B_EDIT_DONE", "time": "2026-06-29T13:21:00Z", "detail": "EDIT rebuilt RECAP, 4 INSIGHTS"},
+  {"step": "STEP_5_7_SCRUB_DONE", "time": "2026-06-29T13:21:30Z", "detail": "1 SCRUB pass, 11->0 lint issues"},
+  {"step": "STEP_6_COMMIT_DONE", "time": "2026-06-29T13:23:30Z", "detail": "pulse+adjudication+lint committed via MCP (api.github.com proxy-blocked)"}
  ]
 }
