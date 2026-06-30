@@ -39,6 +39,24 @@ BRANCH: pulse-data
 GH_TOKEN: ${GH_TOKEN}
 ```
 
+---
+
+## ⚠️ COMMIT TRANSPORT — READ BEFORE ANY COMMIT (environment override, 2026-06-30)
+
+**The PAT / `api.github.com` write path is BLOCKED in this execution environment.** This routine runs behind the Claude Code agent proxy, which rejects every `api.github.com` request with `HTTP 403 — "GitHub access is not enabled for this session. An org admin must connect the Claude GitHub App for this organization."` — *before the PAT is even evaluated*. The fine-grained PAT is correctly scoped (all repos, Contents read/write) but **inert here**. Confirmed on 2026-06-30 across three consecutive fires. This is NOT a token problem and NOT transient — do not waste retries on it, and do not report it as a missing file or a bad token.
+
+**Therefore: perform EVERY commit through the `mcp__github__*` GitHub tools, NOT the `urllib`/`curl` PUT.** Those tools route through the connected GitHub App, which DOES have write access in this session — that is how `pulse-context/latest.json` reads succeed and how the 2026-06-30 failure marker was committed. You have already done exactly this once; do it for every artifact.
+
+**This OVERRIDES the commit mechanics in the per-step heredocs below.** Concretely:
+- The Python heredocs that build artifacts stay authoritative for **what** to commit — the destination `path`, the file **content**, `branch: pulse-data`, and the commit **message**. Each step already writes its artifact to a `/tmp` file (`/tmp/final.md` for the pulse, `/tmp/draft.md`, `/tmp/scrubbed.md`, `/tmp/lint_report.json`, the adjudication JSON, etc.).
+- For each commit the routine specifies, **call the GitHub MCP create-or-update-file tool** (or a multi-file push tool if your toolset has one, to land several artifacts in one commit) with `owner: gabjew90`, `repo: Institutional-report-bot`, `branch: pulse-data`, the `path`, the file content (read it from the step's `/tmp` file), and the message. If a commit's content exists only in heredoc memory, have the heredoc dump it to a `/tmp` file first, then commit that file via MCP.
+- Do **NOT** execute the heredoc's `urllib`/`curl` PUT and do **NOT** retry it after a 403 — it cannot succeed here. The PAT heredocs are retained only as the content spec; the write goes through MCP.
+- The load-bearing commit is `pulse-output/pending/<ts>.md` (STEP 6) — the bridge worker posts ONLY what lands there. If that MCP commit fails, the pulse does not ship: treat it as terminal and write the failure marker (also via MCP).
+
+If a future environment restores direct PAT access this override is harmless — the heredocs still describe the correct commits, and either transport may be used.
+
+---
+
 ## STEP 1 — Read prompts
 
 `cat ai_analysis/prompts.py` and locate `ADJUDICATION_SYSTEM`, `ADJUDICATION_USER`, `DRAFT_SYSTEM`, `DRAFT_USER`, `AUDIT_SYSTEM`, `AUDIT_USER`, `SCRUB_SYSTEM`, `SCRUB_USER`, `QC_SYSTEM`, `QC_USER` (full triple-quoted strings).
@@ -1382,6 +1400,8 @@ python3 /tmp/progress.py "STEP_5_8_STRIP_DONE"
 ```
 
 ## STEP 6 — Compose with frontmatter and commit BOTH files (PRODUCTION — ALL CHANNELS)
+
+> **TRANSPORT (see the COMMIT TRANSPORT override near the top):** the `urllib` PUT in the heredoc below WILL 403 in this environment. Use it to BUILD the pulse content and write it to `/tmp/final_with_frontmatter.md`, then commit that file to `pulse-output/pending/<ts>.md` (and each other artifact to its path) via the `mcp__github__*` GitHub tool. The bridge posts only what reaches `pulse-output/pending/`, so this commit is terminal-critical.
 
 ```bash
 python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
