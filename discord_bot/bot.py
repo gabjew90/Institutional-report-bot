@@ -937,6 +937,7 @@ async def _maybe_fetch_user_urls(question: str) -> str:
 # Capped at 2 images total per call.
 
 _IMAGE_MAX_BYTES = 5 * 1024 * 1024  # 5MB per image
+_PDF_MAX_BYTES = 10 * 1024 * 1024   # 10MB per PDF (Gemini reads PDFs inline)
 _IMAGE_FETCH_TIMEOUT_S = 5.0
 _IMAGE_MAX_PER_CALL = 2
 
@@ -947,9 +948,10 @@ async def _extract_images_from_message(
     remaining_slots: int,
 ) -> list[tuple[bytes, str]]:
     """Pull (bytes, mime_type) tuples from a message's attachments and
-    embed images. Caps to `remaining_slots`; skips files >5MB and any
-    non-image content types. Failures are logged and swallowed —
-    image enrichment is best-effort, never blocks the reply.
+    embed images. Accepts image/* AND application/pdf (Gemini reads both
+    inline); caps images at 5MB, PDFs at 10MB; skips everything else.
+    Failures are logged and swallowed — media enrichment is best-effort,
+    never blocks the reply.
     """
     if remaining_slots <= 0 or msg is None:
         return []
@@ -960,16 +962,18 @@ async def _extract_images_from_message(
         if len(out) >= remaining_slots:
             break
         ct = (att.content_type or "").lower()
-        if not ct.startswith("image/"):
+        is_pdf = ct.startswith("application/pdf")
+        if not (ct.startswith("image/") or is_pdf):
             continue
-        if att.size and att.size > _IMAGE_MAX_BYTES:
-            log.info(f"/ask image skipped — attachment too big ({att.size} bytes)")
+        cap = _PDF_MAX_BYTES if is_pdf else _IMAGE_MAX_BYTES
+        if att.size and att.size > cap:
+            log.info(f"/ask attachment skipped — too big ({att.size} bytes)")
             continue
         try:
             data = await att.read()
             out.append((data, ct))
         except Exception as e:
-            log.info(f"/ask image attachment read failed: {e}")
+            log.info(f"/ask attachment read failed: {e}")
 
     # Embed images — when someone pastes a direct image URL Discord
     # auto-embeds, the image lives at embed.image.url not as an attachment.
@@ -3465,6 +3469,12 @@ _MARKET_FACT_STRONG_RE = re.compile(
 _GENERIC_SPECIFIC_RE = re.compile(
     r"(\$\d[\d,]*(?:\.\d+)?|\b\d+(?:\.\d+)?\s?%|\b\d{1,2}/\d{1,2}(?:/\d{2,4})?\b)",
 )
+# A cashtag ($ + LETTER, so "$250k"/"$10M" dollar amounts never match).
+# The density net only counts when the answer is about a SPECIFIC
+# SECURITY — otherwise it misfires on general-knowledge explainers that
+# repeat plain dollar figures (2026-06-29: an FDIC explainer with
+# "$250k"/"$10M" tripped the >=3 net and got the unverified hedge).
+_BACKSTOP_CASHTAG_RE = re.compile(r"\$[A-Za-z]{1,6}\b")
 
 
 def _grounding_has_sources(gm) -> bool:
@@ -3487,7 +3497,17 @@ def _is_ungrounded_market_fact(answer: str, grounding_metadata,
         return False
     if _MARKET_FACT_STRONG_RE.search(answer):
         return True
-    return len(_GENERIC_SPECIFIC_RE.findall(answer)) >= 3
+    specifics = _GENERIC_SPECIFIC_RE.findall(answer)
+    if len(specifics) < 3:
+        return False
+    # A named security (cashtag) makes a dense answer a real data-dump.
+    if _BACKSTOP_CASHTAG_RE.search(answer):
+        return True
+    # No ticker: a cluster of PLAIN DOLLAR amounts is a textbook
+    # explainer ("FDIC covers $250k, sweep $10M"), not a market claim —
+    # don't hedge it. A %/date in the mix means it IS a stat/market claim
+    # (e.g. "moved 2% then 3%"), so hedge.
+    return any(not s.startswith("$") for s in specifics)
 
 
 # =====================================================================
@@ -3681,7 +3701,10 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     # Phase 2: mechanical replacement for the safe-to-strip kinds.
     # Em-dash family — replace with comma + space. Handles all common
     # surface forms: " — ", "—", " —"  and the half-width "‒".
-    cleaned = re.sub(r'\s*[—–‒]\s*', ', ', text)
+    # BUT leave a dash inside a numeric range alone (a digit on either
+    # side = a range, not an aside): "62–65%", "$861–$881", "24–48h".
+    # 2026-06-29 QC: "62–65%" was shipping mangled as "62, 65%".
+    cleaned = re.sub(r'(?<!\d)\s*[—–‒]\s*(?!\$?\d)', ', ', text)
     # Semicolon inside a sentence — comma reads cleanly. Don't touch
     # semicolons inside fenced code (rare in /ask answers, defensive).
     cleaned = re.sub(r';\s+', ', ', cleaned)
@@ -4138,6 +4161,12 @@ _ASK_ROUTER_INSTRUCTION = (
     "filing or corporate-action detail, market holidays / trading hours, "
     "an economic-data or earnings DATE, a macro or geopolitical event, "
     "breaking news, or the definition of some current real-world state. "
+    "ALSO answer WEB for a SCHEDULE or START TIME of any real-world event "
+    "('what time do the World Cup games start today', 'when does the game "
+    "kick off', 'is the market open Friday') and for any request for "
+    "specific HISTORICAL or SEASONAL statistics — win-rates, average "
+    "returns, 'how does the market do around July 4 / in September', any "
+    "figure a reader would expect to be sourced, not recalled. "
     "ALSO answer WEB when the question is an OPINION or recommendation "
     "that has a factual edge a lookup would sharpen — a pricing or "
     "product comparison ('best whiskey under $50', 'better laptop for "
@@ -6524,16 +6553,18 @@ def create_bot() -> commands.Bot:
                         if remaining <= 0:
                             break
                         ct = (getattr(att, "content_type", None) or "").lower()
-                        if not ct.startswith("image/"):
+                        is_pdf = ct.startswith("application/pdf")
+                        if not (ct.startswith("image/") or is_pdf):
                             continue
-                        if getattr(att, "size", 0) and att.size > _IMAGE_MAX_BYTES:
+                        cap = _PDF_MAX_BYTES if is_pdf else _IMAGE_MAX_BYTES
+                        if getattr(att, "size", 0) and att.size > cap:
                             continue
                         try:
                             data = await att.read()
                             images.append((data, ct))
                             remaining -= 1
                         except Exception as e:
-                            log.info(f"/ask referenced-msg image read failed: {e}")
+                            log.info(f"/ask referenced-msg attachment read failed: {e}")
 
                 # Resolve raw <@USER_ID> mentions in the question text
                 # so Gemini can connect tagged users to WHO'S TALKING.
