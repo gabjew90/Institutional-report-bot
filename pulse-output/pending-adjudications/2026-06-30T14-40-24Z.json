@@ -1,0 +1,160 @@
+{
+  "pulse_date": "2026-06-30",
+  "window_label": "since-last-daily (2026-06-29T13:22)",
+  "themes": [
+    {
+      "theme": "Strait of Hormuz energy flow normalization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "After the US-Iran deal, banks across seven desks agree oil is flowing back through the Strait of Hormuz and the war-risk premium in oil prices is unwinding, but nobody has staked out a clear next directional call.",
+      "facts_agreed": [
+        {
+          "claim": "Banks consistently reference the Strait of Hormuz as a live energy-flow topic, framing it around disruption risk now giving way to normalization after the Iran deal.",
+          "banks_for": ["Bank of America", "Goldman Sachs", "HSBC", "JPMorgan", "Rabobank", "TS Lombard", "UBS"],
+          "evidence_quotes": ["Strait of Hormuz energy transit", "Strait of Hormuz shipping security", "Strait of Hormuz supply disruptions", "Strait of Hormuz shipping normalization", "Strait of Hormuz energy flow normalization"]
+        },
+        {
+          "claim": "Oil prices fell sharply, roughly 10-25 percent, as the Middle East war-risk premium unwound following the US-Iran deal.",
+          "banks_for": ["Goldman Sachs", "HSBC"],
+          "evidence_quotes": ["Strait of Hormuz energy shock", "Strait of Hormuz oil supply"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {"bank": "Goldman Sachs", "subject": "Q4 Brent crude price", "direction_or_level": "$80/bbl", "by_when": "Q4 2026", "source_quote": "Q4 Brent oil price forecast"},
+        {"bank": "UBS", "subject": "Brent crude price", "direction_or_level": "USD 85/bbl", "by_when": "year-end 2026", "source_quote": "Brent crude year-end forecast"},
+        {"bank": "Goldman Sachs", "subject": "Gulf energy exports through the Strait of Hormuz", "direction_or_level": ">60% of normal levels", "by_when": "", "source_quote": "Gulf energy exports as % of normal levels"}
+      ]
+    },
+    {
+      "theme": "ai infrastructure growth",
+      "selected": true,
+      "stance_counts": {"supportive": 2, "skeptical": 0, "neutral": 5},
+      "consensus_view": "Banks broadly treat the AI buildout as the dominant growth engine right now, with AI infrastructure names expected to drive most of the market's profit growth, even as some desks trim chip and hardware exposure to balance risk.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure is the main driver of corporate profit growth this quarter and a defining market theme across desks.",
+          "banks_for": ["Goldman Sachs", "UBS", "Bank of America", "HSBC", "JPMorgan"],
+          "evidence_quotes": ["AI infrastructure stocks are expected to contribute nearly 60% of S&P 500 EPS growth", "AI investment boom", "AI capex buildout", "AI memory demand surge", "AI-led chip rally", "Global data center and AI infrastructure build-out funding needs"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {"bank": "Goldman Sachs", "subject": "AI infrastructure contribution to S&P 500 EPS growth", "direction_or_level": "60%", "by_when": "Q2 2026", "source_quote": "AI infrastructure contribution to S&P 500 EPS growth"},
+        {"bank": "UBS", "subject": "Per-unit memory cost for an iPhone", "direction_or_level": "USD 200", "by_when": "year-end", "source_quote": "Projected per-unit memory cost for iPhone by year-end"}
+      ]
+    },
+    {
+      "theme": "Middle East conflict supply bottleneck risks",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 5},
+      "consensus_view": "Five banks reference the Middle East conflict and its effect on oil supply as a live macro factor, but with a post-deal peace agreement now reopening Gulf flows nobody is staking a clear directional view on prices.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the Middle East conflict and its impact on energy supply as an active factor shaping their outlook.",
+          "banks_for": ["Goldman Sachs", "HSBC", "JPMorgan", "Morgan Stanley", "UBS"],
+          "evidence_quotes": ["Middle East conflict supply bottleneck risks", "Middle East conflict energy shock", "Middle East conflict impact", "Middle East conflict demand destruction", "Middle East conflict supply chain impact"]
+        },
+        {
+          "claim": "Banks note that Gulf oil flows are normalizing after a peace deal, easing the earlier supply-scare premium.",
+          "banks_for": ["Goldman Sachs", "UBS"],
+          "evidence_quotes": []
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {"bank": "Goldman Sachs", "subject": "Brent crude price", "direction_or_level": "$80/bbl", "by_when": "Q4 2026", "source_quote": "Q4 Brent oil price forecast"},
+        {"bank": "UBS", "subject": "Brent crude price", "direction_or_level": "USD 85/bbl", "by_when": "end of 2026", "source_quote": "Target for end of 2026"}
+      ]
+    },
+    {
+      "theme": "hyperscaler data center contracts",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 4},
+      "consensus_view": "Several desks reference hyperscaler capex and data-center buildout as a live theme, but nobody stakes a clear directional view: some flag spending strength and discipline while others note capex fatigue and a valuation discount on the big AI cloud names.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks track hyperscaler capex and data-center spending as an active theme this window, citing both ongoing investment strength and signs of fatigue or a valuation discount.",
+          "banks_for": ["Barclays", "Goldman Sachs", "The Market Ear", "UBS"],
+          "evidence_quotes": ["Hyperscalers capex strength", "Hyperscaler capex discipline", "capex investment trends", "Hyperscaler valuation discount", "Hyperscaler capex fatigue"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {"bank": "Goldman Sachs", "subject": "Korea AI data center capacity", "direction_or_level": "18.4GW (expansion from 8.4GW)", "by_when": "2035", "source_quote": "Target AI data center capacity by 2035"}
+      ]
+    },
+    {
+      "theme": "US-Iran memorandum of understanding",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 4},
+      "consensus_view": "Banks across several desks treat the US-Iran peace deal as a real market event that is reopening Gulf oil flows and pulling oil prices down, but no desk has staked a clear directional bet on what happens next.",
+      "facts_agreed": [
+        {
+          "claim": "The US-Iran deal is reopening Gulf oil flows and easing the war-risk premium that had been lifting oil prices.",
+          "banks_for": ["Goldman Sachs", "UBS"],
+          "evidence_quotes": ["US-Iran interim peace deal", "Iran-US peace agreement"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {"bank": "Goldman Sachs", "subject": "Q4 Brent crude price", "direction_or_level": "$80/bbl", "by_when": "Q4 2026", "source_quote": "Q4 Brent oil price forecast"},
+        {"bank": "UBS", "subject": "Brent crude price", "direction_or_level": "USD 85/bbl", "by_when": "year-end 2026", "source_quote": "Brent crude year-end forecast"},
+        {"bank": "Goldman Sachs", "subject": "Gold spot price", "direction_or_level": "$4,900/toz", "by_when": "year-end 2026", "source_quote": "Gold end-2026 price forecast"},
+        {"bank": "UBS", "subject": "Gold spot price", "direction_or_level": "USD 5,200/oz", "by_when": "within 12 months", "source_quote": "12-month gold price target"}
+      ]
+    },
+    {
+      "theme": "fed inflation commitment",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 0, "neutral": 2},
+      "consensus_view": "The Fed is being read as firmly recommitted to its 2% inflation goal, with new leadership signaling that holding prices steady is now a non-negotiable priority.",
+      "facts_agreed": [
+        {
+          "claim": "The Fed has reaffirmed a hard commitment to its 2% inflation target as a non-negotiable objective.",
+          "banks_for": ["One River Asset Management"],
+          "evidence_quotes": ["This Committee will deliver price stability."]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed pivot",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 0, "neutral": 2},
+      "consensus_view": "UBS reads the May inflation data as evidence the Fed's policy shift may be less aggressive than markets first feared, while the rest of the corpus only references rate-policy in passing without staking a directional view.",
+      "facts_agreed": [
+        {
+          "claim": "UBS argues the May PCE inflation release points to a less hawkish Fed pivot than initially feared.",
+          "banks_for": ["UBS"],
+          "evidence_quotes": ["the May PCE release supports our view that the Fed's pivot could be less hawkish"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {"bank": "UBS", "subject": "Fed hikes priced by December", "direction_or_level": "34 bps", "by_when": "by December", "source_quote": "Fed hikes priced by December"}
+      ]
+    },
+    {
+      "theme": "Comcast and NBCUniversal corporate separation",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Three banks reference the planned split of Comcast from NBCUniversal as a corporate event worth watching, but none has taken a clear bullish or bearish position on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag the Comcast/NBCUniversal corporate separation as an event on their radar without staking a directional view.",
+          "banks_for": ["Barclays", "Goldman Sachs", "JPMorgan"],
+          "evidence_quotes": ["NBCU spin-off implications", "Comcast NBCUniversal spin-off", "Comcast and NBCUniversal corporate separation"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
