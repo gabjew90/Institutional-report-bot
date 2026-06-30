@@ -429,9 +429,19 @@ def test_hc_calls_subsection():
     # HC-only (no leans) still renders the board
     hc_only = render_trade_board([], "2026-06-24", None, hc)
     assert "## TRADE BOARD" in hc_only and "$ASML" in hc_only
+    # 2026-06-30: a call with a BLANK/"?" ticker (the extractor now blanks
+    # foreign / collision-risk names like BAE Systems) is dropped — no
+    # cashtag, no place on a US-actionable board.
+    blanked = [{"source": "Morgan Stanley", "ticker": "", "rating": "OW",
+                "pt": "", "rationale": "BAE Systems new Top Pick in EU Defense"},
+               {"source": "UBS", "ticker": "FSLR", "rating": "Buy",
+                "pt": "$330", "rationale": "Section 232 tariff upside"}]
+    bd = render_trade_board([], "2026-06-30", None, blanked)
+    assert "BAE Systems" not in bd, "tickerless (blanked-foreign) call must drop"
+    assert "$FSLR" in bd, "the real US-tickered call must still render"
     # neither leans nor HC -> empty
     assert render_trade_board([], "2026-06-24", None, []) == ""
-    _ok("board: HC-calls subsection clean bullets, foreign/N-A dropped, "
+    _ok("board: HC subsection clean bullets; foreign/N-A/tickerless dropped, "
         "renders with or without leans")
 
 

@@ -106,7 +106,7 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
   ],
   "market_movers": [
     {
-      "ticker": "AAPL",
+      "ticker": "AAPL — the US-listed symbol for THIS exact company ONLY. Leave EMPTY if the company has no liquid US listing/ADR, or if its natural symbol collides with an unrelated US ticker (BAE Systems is NOT $BA/Boeing; Zalando is not US-listed; Centrica is NOT $CNA/CNA Financial). Same rule as entities_mentioned.ticker. The HC TRADE BOARD cashtags this field, so a wrong/foreign symbol mislabels the desk's call.",
       "action": "upgrade/downgrade/initiate/reiterate/price_target_change/positive_catalyst_watch/negative_catalyst_watch",
       "rating": "Buy/Overweight/Sell/Underweight/Neutral/Outperform/Underperform",
       "price_target": "$XXX or N/A",

@@ -488,21 +488,26 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         if not _is_test_fire:
             try:
                 from report.pulse_sections import (
-                    parse_lean_block, extract_leans_from_markdown,
+                    parse_lean_block,
                     render_trade_board, inject_sections,
                     split_main_event_briefs, replace_body_after_frontmatter,
                 )
-                # TRADE BOARD — leans come from the DRAFT-emitted hidden
-                # `## _LEANS` block (structural source, 2026-06-23); fall
-                # back to prose scraping only if it's absent. Merge into
-                # the tracked set (records same-instrument flips), render
-                # today's calls as scannable bullets. WHAT CHANGED + DESK
-                # SIGNAL BOARD were removed 2026-06-19.
+                # TRADE BOARD — leans come ONLY from the DRAFT-emitted
+                # hidden `## _LEANS` block (the single source of truth).
+                # The prose-scrape fallback was removed 2026-06-30: it
+                # produced truncated / wrong-ticker rationales ("Long $TLT
+                # — Until then the bias is"), and the validator
+                # (pulse_draft_validate `leans-block-missing`) now
+                # hard-requires the block. An absent block renders NO leans
+                # (HC subsection only) rather than scraped garbage.
                 leans = parse_lean_block(markdown)
                 lean_source = "block"
                 if not leans:
-                    leans = extract_leans_from_markdown(markdown)
-                    lean_source = "prose-fallback"
+                    log.warning(
+                        "Bridge: pulse has no parseable ## _LEANS block — "
+                        "rendering board with HC calls only (the DRAFT "
+                        "validator should have caught this)."
+                    )
                 flips = db.upsert_pulse_leans(today, leans)
                 flip_instruments = {
                     (f.get("instrument") or "").upper() for f in flips

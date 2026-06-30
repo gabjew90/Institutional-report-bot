@@ -56,6 +56,7 @@ HARD_VIOLATION_KINDS = {
     "duplicate-sibling-sections",
     "contrarian-buried-in-appendix",
     "main-event-lean-missing",
+    "leans-block-missing",
 }
 
 # A cashtag is `$` + a LETTER (so dollar amounts like $9.3B / $200B never
@@ -89,6 +90,24 @@ def _trade_tickers_in(text: str) -> set[str]:
         if _DIRECTION_RE.search(sent):
             tickers |= _cashtags(sent)
     return tickers
+
+
+def _leans_line_count(md_text: str) -> int | None:
+    """Count `- <dir> | <instr> | ...` lines in the `## _LEANS` block.
+    Returns None if there is no `## _LEANS` block at all, else the number
+    of well-formed lean lines (0 = present-but-empty)."""
+    m = re.search(
+        r"^##\s+_LEANS\b.*?(?=^##\s|\Z)",
+        md_text, re.MULTILINE | re.DOTALL | re.IGNORECASE,
+    )
+    if not m:
+        return None
+    n = 0
+    for line in m.group(0).splitlines():
+        s = line.strip()
+        if s.startswith("-") and s.count("|") >= 1:
+            n += 1
+    return n
 
 
 def _leans_instruments(md_text: str) -> set[str] | None:
@@ -445,6 +464,29 @@ def validate(md_text: str, ctx: dict) -> list[dict]:
     # overlap _LEANS. Any single overlap passes — extra tickers don't
     # trip it.
     # ---------------------------------------------------------------------
+    # =====================================================================
+    # CHECK 6: the `## _LEANS` block exists and is non-empty
+    # =====================================================================
+    # The TRADE BOARD is built ONLY from `## _LEANS` (the prose-scrape
+    # fallback was removed 2026-06-30 because it shipped truncated /
+    # wrong-ticker rationales). A missing or empty block => the board
+    # renders no leans. Hard-require it so the board is never silently
+    # empty.
+    # ---------------------------------------------------------------------
+    n_leans = _leans_line_count(md_text)
+    if not n_leans:  # None (no block) or 0 (block present but empty)
+        violations.append({
+            "kind": "leans-block-missing",
+            "severity": "hard",
+            "message": (
+                "No usable `## _LEANS` block. The TRADE BOARD is built "
+                "ONLY from this block, so without it the board is empty. "
+                "Emit `## _LEANS` with one `- <direction> | <instruments> "
+                "| <rationale>` line per trade, the MAIN EVENT's trade "
+                "first."
+            ),
+        })
+
     leans = _leans_instruments(md_text)
     if sections and leans is not None:
         main_event_trade = _trade_tickers_in(sections[0])

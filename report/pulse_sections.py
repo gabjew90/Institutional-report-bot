@@ -712,8 +712,15 @@ def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
     cleaners but renders as bullets, NOT a monospace table — fixing the
     mid-word truncation / foreign-PT / N-A noise that got the original
     cut. Empty string when there are no US-actionable HC calls."""
-    calls = [c for c in (hc_calls or [])
-             if not _is_foreign_pt(c.get("pt") or "")]
+    # Drop foreign-PT calls AND calls with no usable ticker — the
+    # extractor now blanks the ticker for foreign / collision-risk names
+    # (BAE Systems, Zalando), and a tickerless call has nothing to
+    # cashtag, so it has no place on a US-actionable board (2026-06-30).
+    calls = [
+        c for c in (hc_calls or [])
+        if not _is_foreign_pt(c.get("pt") or "")
+        and (c.get("ticker") or "").strip().strip("?").strip()
+    ]
     if not calls:
         return ""
     lines = ["**High-conviction single-name calls** (the desks' standout bets):", ""]

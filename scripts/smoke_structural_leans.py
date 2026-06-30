@@ -137,13 +137,17 @@ def test_qc_exempts_leans():
     _ok("QC prompt: _LEANS exempted from the leak check")
 
 
-def test_bridge_uses_block_with_fallback():
+def test_bridge_single_source_no_prose_fallback():
+    # 2026-06-30: the prose-scrape fallback was REMOVED — the _LEANS block
+    # is the single source of truth (the scrape shipped truncated /
+    # wrong-ticker rationales).
     import github_bridge.jobs as jobs
     src = inspect.getsource(jobs)
     assert "parse_lean_block(markdown)" in src, "bridge must read the block"
-    assert "extract_leans_from_markdown(markdown)" in src, "prose fallback missing"
+    assert "extract_leans_from_markdown(markdown)" not in src, \
+        "the prose-scrape fallback must be gone (single source of truth)"
     assert "strip_lean_block(markdown)" in src, "bridge must strip _LEANS"
-    _ok("bridge: reads _LEANS block, prose fallback, strips before post")
+    _ok("bridge: _LEANS is the single source — prose-scrape fallback removed")
 
 
 def test_main_event_steering_rule():
@@ -228,6 +232,57 @@ def test_validator_passes_when_main_event_lean_present():
     _ok("validator: overlapping lead lean clears; $200B not parsed as a ticker")
 
 
+# A DRAFT with NO `## _LEANS` block at all — the 2026-06-30 board failure
+# (bridge fell back to prose-scraping broken rationales).
+_DRAFT_NO_LEANS = """# Oil premium drains out
+
+## 1. RECAP
+Oil flat.
+
+## 2. INSIGHTS & ALPHA
+
+### The oil scare is unwinding
+The premium drained. Long $USO into the gap.
+
+## 3. WHAT TO WATCH
+- NFP Thursday
+"""
+
+
+def test_validator_hard_requires_leans_block():
+    sys.path.insert(0, os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+    import pulse_draft_validate as v
+    # no _LEANS block at all -> hard leans-block-missing
+    viol = v.validate(_DRAFT_NO_LEANS, {"theme_map": {}})
+    kinds = [x["kind"] for x in viol]
+    assert "leans-block-missing" in kinds, f"missing block must hard-flag; {kinds}"
+    flag = next(x for x in viol if x["kind"] == "leans-block-missing")
+    assert flag["severity"] == "hard"
+    assert "leans-block-missing" in v.HARD_VIOLATION_KINDS
+    # a present-but-empty block (header, zero lean lines) also flags
+    empty = _DRAFT_NO_LEANS + "\n## _LEANS (internal)\n(no leans this pulse)\n"
+    assert "leans-block-missing" in [x["kind"] for x in
+                                     v.validate(empty, {"theme_map": {}})]
+    # a block WITH a lean line clears it
+    ok = _DRAFT_NO_LEANS + "\n## _LEANS (internal)\n- long | $USO | into the gap\n"
+    assert "leans-block-missing" not in [x["kind"] for x in
+                                         v.validate(ok, {"theme_map": {}})]
+    _ok("validator: hard-requires a non-empty _LEANS block (single board source)")
+
+
+def test_market_movers_ticker_rule_present():
+    from ai_analysis import prompts
+    # the rule that prevents $BA-for-BAE / $ZAL must live on the
+    # market_movers ticker field, not just entities_mentioned.
+    blob = prompts.DEEP_ANALYSIS_USER if hasattr(prompts, "DEEP_ANALYSIS_USER") \
+        else "".join(str(getattr(prompts, n)) for n in dir(prompts)
+                     if n.isupper() and isinstance(getattr(prompts, n), str))
+    assert "BAE Systems is NOT $BA" in blob, \
+        "market_movers ticker must carry the US-listed/collision rule"
+    _ok("prompt: market_movers ticker carries the US-listed/no-collision rule")
+
+
 if __name__ == "__main__":
     print("=== structural leans smoke ===")
     test_parse_lean_block_all_leans()
@@ -237,9 +292,11 @@ if __name__ == "__main__":
     test_build_lean_display()
     test_draft_emits_leans_block()
     test_qc_exempts_leans()
-    test_bridge_uses_block_with_fallback()
+    test_bridge_single_source_no_prose_fallback()
     test_main_event_steering_rule()
     test_draft_requires_main_event_lean_first()
     test_validator_flags_missing_main_event_lean()
     test_validator_passes_when_main_event_lean_present()
+    test_validator_hard_requires_leans_block()
+    test_market_movers_ticker_rule_present()
     print("\nALL STRUCTURAL LEANS SMOKE TESTS PASS")
