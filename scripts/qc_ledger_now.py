@@ -43,7 +43,7 @@ projected = []
 for i, r in enumerate(rows):
     uid = int(r["user_id"])
     try:
-        L = _db.compute_member_points(uid, days=14)
+        L = _db.compute_member_points(uid, days=21)
     except Exception:
         L = {"points": 0, "entries_won": 0, "entries_lost": 0,
              "entries_ghosted": 0, "screenshot_wins": 0,

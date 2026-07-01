@@ -150,7 +150,7 @@ Per-section quick reference, all following the universal rule:
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned.
-- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 7-day points ledger is decayed automatically — entries / closes from 8+ days ago stop scoring, only the last week's commitments count. The final = `clip(chatter_base + honesty, 50) + receipt_points` (no upper cap — top traders separate by receipts). If last week the user posted 8 entries that closed for wins (16 points under the new wins-only +2 policy), and now those have aged out and this period they posted 2 (4 points), the score drops accordingly. That's the decay mechanism working as designed.
+- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 21-day points ledger decays automatically — a documented win scores 2 pts for its first 7 days, 1 pt from day 8 to 21, then stops scoring. The final = `clip(chatter_base + honesty, 50) + receipt_points` (no upper cap — top traders separate by receipts). If last week the user documented 8 wins (16 pts at full credit) and posts nothing new, those same wins decay to 8 pts (half credit) the following week and 0 after three — the score drifts down unless the wins keep coming. That's the decay mechanism working as designed.
 - **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter description / receipts described qualitatively), but the prose re-derives every time. Don't carry forward stale framings from a prior refresh. The rationale is QUALITATIVE — no numbers (no point counts, no score values, no win/loss counts). See the trader_rationale spec for the no-numbers rule.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly.
@@ -354,7 +354,7 @@ An alert post is a position entry the user publicly committed to BEFORE the outc
 
 __OWNED_CHANNELS_BLOCK__
 
-Posts in a caller's own channel (per the table above) are **structural full honesty**. Every entry there is documented; the caller cannot cherry-pick. These posts accumulate points in the 14-DAY POINTS LEDGER below — entry+close pairs score the +5 / +3, adding to the chatter base.
+Posts in a caller's own channel (per the table above) are **structural full honesty**. Every entry there is documented; the caller cannot cherry-pick. These posts accumulate points in the 21-DAY POINTS LEDGER below — documented WINS score (2 pts within 7 days, 1 pt at 8-21 days); losses, ghosts, and pending entries score 0.
 
 **Shared alert channels** (multiple posters, not in the owned table):
 - `🕰️-member-alerts-🕰️`
@@ -405,7 +405,7 @@ Output a single JSON object with exactly five fields, IN THIS ORDER:
 }}
 ```
 
-**You do NOT output a `trader_score`.** Python computes it deterministically downstream as `min(50, chatter_base) * activity_multiplier + receipt_points` (no upper cap — top traders separate by receipts), where `activity_multiplier = min(1, msg_count / 300)` and `receipt_points` is the exact `TOTAL RECEIPT POINTS:` value from the 7-DAY POINTS LEDGER block — not anything you judge or infer. Your job is ONLY the chatter bracket call. The activity scaling AND receipt addition are arithmetic, and Python does them.
+**You do NOT output a `trader_score`.** Python computes it deterministically downstream as `min(50, chatter_base) * activity_multiplier + receipt_points` (no upper cap — top traders separate by receipts), where `activity_multiplier = min(1, msg_count / 300)` and `receipt_points` is the exact `TOTAL RECEIPT POINTS:` value from the 21-DAY POINTS LEDGER block — not anything you judge or infer. Your job is ONLY the chatter bracket call. The activity scaling AND receipt addition are arithmetic, and Python does them.
 
 **Why this matters**: an earlier version of the prompt asked Gemini for the final `trader_score`, which produced a hallucination class — model would read the chat, see chat-claimed trades NOT in the structured ledger ("closed BTC short +50%" etc.), invent 30-40 receipt points for them, and inflate the score by that amount. The new schema makes the failure structurally impossible — Gemini only outputs the chatter judgment; receipts are computed from the deterministic ledger.
 
@@ -513,7 +513,7 @@ Final clip: **chatter base never exceeds 50**, regardless of which bracket signa
 
 **Layer 2 — Receipt points (additive, from the 14-day ledger above; unbounded above on its own — the only ceiling is the final 100 cap).**
 
-The 14-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the (clipped) chatter base. **MEMBERS** earn points across all buckets; **OFFICIAL CALLERS** (Abe, BK, f.jamal — anyone configured in the analyst_callers section) only earn points on WINS — losses, ghosts, and losing screenshots all multiply to 0. The ledger block flags caller-mode with `[CALLER — wins-only]` in its header so you can read the totals correctly without any inference.
+The 21-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the (clipped) chatter base. The policy is wins-only for EVERYONE — members and official callers alike: documented wins score (2 pts within 7 days, 1 pt at 8-21 days), while losses, ghosts, pending entries, and losing screenshots all score 0. The non-scoring buckets are still listed so your qualitative read of the trader stays honest.
 
 For members:
 
@@ -535,7 +535,7 @@ For callers (wins-only nerf):
 
 **RECEIPT POINTS = TOTAL RECEIPT POINTS FROM THE LEDGER BLOCK, VERBATIM. NO INFERENCE.**
 
-This is the single most important rule on the receipts layer. The `TOTAL RECEIPT POINTS:` value in the 14-DAY POINTS LEDGER block above is the ONLY number you may use as the receipt contribution. Specifically:
+This is the single most important rule on the receipts layer. The `TOTAL RECEIPT POINTS:` value in the 21-DAY POINTS LEDGER block above is the ONLY number you may use as the receipt contribution. Specifically:
 
 - If the ledger shows `TOTAL RECEIPT POINTS: 0`, the receipt contribution is **0**. Final score = chatter base (clipped at 50). Do NOT invent points based on chat-claimed trades, casual P&L brags, alert-channel posts mentioned in chat but not extracted into analyst_trades, "documented" trades you remember from MESSAGES, or any other source. The structured ledger IS the source of truth.
 - If the ledger shows `TOTAL RECEIPT POINTS: 14`, the receipt contribution is **14**. Not 20 because the chat mentions more trades. Not 8 because some of the wins look small. **14**.
@@ -576,7 +576,7 @@ Anchor against THIS user's messages. Zero examples = 0-15.
 
 ---
 
-14-DAY POINTS LEDGER — used by the trader_score rubric's receipts layer.
+21-DAY POINTS LEDGER — used by the trader_score rubric's receipts layer.
 
 {points_block}
 
@@ -828,74 +828,59 @@ def _load_user_data_from_store(
 
 
 def _format_points_block(user_id: int) -> str:
-    """Render the user's 14-day rolling points ledger.
+    """Render the user's 21-day rolling points ledger.
 
-    Spec (5/3/2/2/1, with 0 for pending entries):
-      +5  entry posted AND closed for a win
-      +3  entry posted AND closed for a loss
-      +2  entry posted, no close, AND (past expiry OR ≥14d old) — ghost
-      +2  standalone winning screenshot (close-only, no entry)
-      +1  standalone losing screenshot (close-only, no entry)
-       0  entry posted, no close, still pending (within 14d, before expiry)
+    Policy (wins-only, recency-banded — same rule for everyone,
+    including official callers):
+      +2  documented WIN (entry→winning close/trim, or winning
+          screenshot) documented within the last 7 days
+      +1  documented WIN documented 8-21 days ago (half credit)
+       0  everything else: losses, ghosts, pending entries, losing
+          screenshots. They're listed for the qualitative read but
+          never score.
 
-    Decay: the 14-day rolling window controls what enters the ledger.
-    Older rows stay in the DB but stop scoring. Receipts add directly
-    to the chatter base.
+    2026-07-01: this block previously displayed the RETIRED 5/3/2/1
+    point math in the bucket lines while the total used wins-only ×2 —
+    the arithmetic Gemini read didn't add up to the total it was told
+    to use. The lines below now show the real policy, so the math is
+    self-consistent.
 
     Final = clip(chatter_base + honesty, 50) + receipt_points  # no upper cap
     """
-    ledger = db.compute_member_points(int(user_id), days=14)
+    ledger = db.compute_member_points(int(user_id), days=21)
     is_caller = bool(ledger.get("is_official_caller"))
-    # Caller nerf: only win buckets contribute. Show the full
-    # bucket counts so Gemini can describe the trader qualitatively,
-    # but zero out the points columns for the loss/ghost lines so
-    # the math is transparent ("28 ghosted × 0 = 0 (caller nerf)").
-    loss_pts = 0 if is_caller else ledger['entries_lost'] * 3
-    ghost_pts = 0 if is_caller else ledger['entries_ghosted'] * 2
-    sloss_pts = 0 if is_caller else ledger['screenshot_losses']
-    pending_note = (
-        f"  - Entry posted, still PENDING (no close yet, within 14d,"
-        f" before expiry — held in suspense)  "
-        f"({ledger['entries_pending']} × 0 pts) =  0 pts"
-    )
-    caller_tag = "  [CALLER — wins-only]" if is_caller else ""
+    caller_tag = "  [OFFICIAL CALLER]" if is_caller else ""
+    wr = ledger.get("wins_recent", 0)
+    wo = ledger.get("wins_older", 0)
     lines = [
-        f"14-DAY ROLLING POINTS LEDGER{caller_tag} (decays automatically"
-        f" — older trades stop scoring but stay in the DB):",
-        f"  - Entry posted + closed for a WIN  "
-        f"({ledger['entries_won']} × 5 pts)  =  "
-        f"{ledger['entries_won'] * 5} pts",
-        f"  - Entry posted + closed for a LOSS "
-        f"({ledger['entries_lost']} × {'0' if is_caller else '3'} pts)  =  "
-        f"{loss_pts} pts"
-        + ("  (caller nerf)" if is_caller and ledger['entries_lost'] else ""),
-        f"  - Entry posted + GHOSTED (past expiry OR ≥14d open)"
-        f"  ({ledger['entries_ghosted']} × {'0' if is_caller else '2'} pts)  =  "
-        f"{ghost_pts} pts"
-        + ("  (caller nerf)" if is_caller and ledger['entries_ghosted'] else ""),
-        pending_note,
-        f"  - Standalone WINNING screenshot (close-only, no entry)  "
-        f"({ledger['screenshot_wins']} × 2 pts)  =  "
-        f"{ledger['screenshot_wins'] * 2} pts",
-        f"  - Standalone LOSING screenshot (close-only, no entry)   "
-        f"({ledger['screenshot_losses']} × {'0' if is_caller else '1'} pt"
-        f"{'s' if is_caller else ''})   =  "
-        f"{sloss_pts} pts"
-        + ("  (caller nerf)" if is_caller and ledger['screenshot_losses'] else ""),
+        f"21-DAY ROLLING POINTS LEDGER{caller_tag} (wins-only,"
+        f" recency-banded — this week's wins score double, older wins"
+        f" half; losses/ghosts/pending never score but are listed for"
+        f" the honest read):",
+        f"  - Documented WINS in the last 7 days   ({wr} × 2 pts)  =  "
+        f"{wr * 2} pts",
+        f"  - Documented WINS 8-21 days ago        ({wo} × 1 pt)   =  "
+        f"{wo} pts",
+        f"  - Entry closed for a LOSS              "
+        f"({ledger['entries_lost']} × 0)  =  0 pts",
+        f"  - Entry GHOSTED (no close; past expiry OR ≥14d open)  "
+        f"({ledger['entries_ghosted']} × 0)  =  0 pts",
+        f"  - Entry PENDING (no close yet; before expiry, <14d)   "
+        f"({ledger['entries_pending']} × 0)  =  0 pts",
+        f"  - LOSING screenshot (close-only)       "
+        f"({ledger['screenshot_losses']} × 0)  =  0 pts",
         f"",
-        f"TOTAL RECEIPT POINTS: {ledger['points']}"
-        + (
-            f"   (caller-nerf applied: losses, ghosts, losing screenshots all = 0)"
-            if is_caller else ""
-        ),
+        f"TOTAL RECEIPT POINTS: {ledger['points']}",
         f"",
-        f"(Spec: entry posted = automatic +3. Upgrades to +5 if the"
-        f" position closes for a gain. Stays at +3 if it closes for a"
-        f" loss. Becomes +2 (ghost) when the position passes its"
-        f" expiration date OR has been open for ≥14 days without a"
-        f" close. Until then, an unresolved entry sits at 0 — held"
-        f" in suspense, NOT scored as ghost yet. Winning P&L"
-        f" screenshot (no entry) = +2; losing screenshot = +1.)",
+        f"(Spec: only documented WINS score — an entry whose position"
+        f" shows a winning close or winning trim, or a standalone"
+        f" winning P&L screenshot. A win documented in the last 7 days"
+        f" = 2 pts; a win 8-21 days old = 1 pt (decays to 0 past 21"
+        f" days). Losses, ghosted entries, pending entries, and losing"
+        f" screenshots all = 0, for members and official callers alike."
+        f" The bucket counts above still describe the trader's full"
+        f" documentation pattern — use them for the qualitative read,"
+        f" not for arithmetic.)",
         f"",
         f"(Receipt points add ON TOP of the chatter base. Final ="
         f" clip(chatter_base + honesty, 50) + receipt_points (no upper cap)."
@@ -1929,7 +1914,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # clip(chatter_base, 50) * min(1, msgs/500).
                         if chatter_base is not None:
                             try:
-                                _ledger = db.compute_member_points(uid, days=14)
+                                _ledger = db.compute_member_points(uid, days=21)
                                 _receipt_pts = int(_ledger.get("points") or 0)
                             except Exception:
                                 _receipt_pts = 0
@@ -2070,7 +2055,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                 or prior_humor is not None
                             ):
                                 try:
-                                    _ledger_fb = db.compute_member_points(uid, days=14)
+                                    _ledger_fb = db.compute_member_points(uid, days=21)
                                     _receipt_fb = int(_ledger_fb.get("points") or 0)
                                 except Exception:
                                     _receipt_fb = 0
@@ -2272,7 +2257,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                 if not username:
                     continue
                 try:
-                    _ledger_d = db.compute_member_points(uid, days=14)
+                    _ledger_d = db.compute_member_points(uid, days=21)
                     _receipt_d = int(_ledger_d.get("points") or 0)
                 except Exception:
                     _receipt_d = 0

@@ -208,7 +208,7 @@ print(f"distinct active authors (14d): {len(authors)}")
 scored = []
 for a in authors:
     try:
-        L = _db.compute_member_points(int(a["author_id"]), days=14)
+        L = _db.compute_member_points(int(a["author_id"]), days=21)
         if L.get("points", 0) > 0:
             scored.append((a["author"], int(a["author_id"]), L))
     except Exception as e:

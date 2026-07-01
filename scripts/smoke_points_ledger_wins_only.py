@@ -51,14 +51,69 @@ def _conn_with_trade_history(events: list[tuple]):
     return c
 
 
-def test_default_window_is_7_days():
+def test_default_window_is_21_days():
+    # 2026-07-01: window widened 14 -> 21 with recency banding, so a
+    # documented edge no longer evaporates at the two-week cliff.
     c = _conn_with_trade_history([])
     with patch("db.get_connection", return_value=c):
         result = db.compute_member_points(100)
-    assert result["window_days"] == 7, (
-        f"expected default window_days=7, got {result['window_days']}"
+    assert result["window_days"] == 21, (
+        f"expected default window_days=21, got {result['window_days']}"
     )
-    _ok("default window is 7 days")
+    _ok("default window is 21 days")
+
+
+def test_recency_banding_older_win_half_credit():
+    """A win documented 10 days ago scores 1 pt (half credit), not 2 —
+    and not 0 (the old 14d-cliff killed it entirely at day 15)."""
+    old_open = (_NOW - timedelta(days=12)).strftime("%Y-%m-%dT%H:%M:%S")
+    old_close = (_NOW - timedelta(days=10)).strftime("%Y-%m-%dT%H:%M:%S")
+    c = _conn_with_trade_history([
+        (old_open, "open", "MRVL", None, "🕰️-member-alerts-🕰️"),
+        (old_close, "trim", "MRVL", 58.0, "🕰️-member-alerts-🕰️"),
+    ])
+    with patch("db.get_connection", return_value=c):
+        result = db.compute_member_points(100)
+    assert result["entries_won"] == 1, result
+    assert result["wins_older"] == 1 and result["wins_recent"] == 0, result
+    assert result["points"] == 1, (
+        f"a 10-day-old documented win must score 1 (half credit), "
+        f"got {result['points']}"
+    )
+    _ok("banding: 10-day-old winning trim = +1 (half credit, not 0)")
+
+
+def test_recency_banding_mixed_total():
+    """Recent win (2) + older win (1) = 3 total."""
+    old_close = (_NOW - timedelta(days=15)).strftime("%Y-%m-%dT%H:%M:%S")
+    c = _conn_with_trade_history([
+        (_T0, "close", "NVDA", 25.0, "💲-gain-loss-porn-💲"),
+        (old_close, "close", "CSCO", 60.0, "💲-gain-loss-porn-💲"),
+    ])
+    with patch("db.get_connection", return_value=c):
+        result = db.compute_member_points(100)
+    assert result["wins_recent"] == 1 and result["wins_older"] == 1, result
+    assert result["points"] == 3, (
+        f"recent(2) + older(1) must total 3, got {result['points']}"
+    )
+    _ok("banding: recent win 2 + 15-day-old win 1 = 3 pts")
+
+
+def test_ghost_age_decoupled_from_window():
+    """An entry 16 days old with no close must GHOST (fixed 14d rule),
+    not sit pending just because the scoring window widened to 21d."""
+    stale_open = (_NOW - timedelta(days=16)).strftime("%Y-%m-%dT%H:%M:%S")
+    c = _conn_with_trade_history([
+        (stale_open, "open", "GEO", None, "🕰️-member-alerts-🕰️"),
+    ])
+    with patch("db.get_connection", return_value=c):
+        result = db.compute_member_points(100)
+    assert result["entries_ghosted"] == 1, result
+    assert result["entries_pending"] == 0, (
+        "a 16-day-old closeless entry must ghost at the fixed 14d mark"
+    )
+    assert result["points"] == 0, result
+    _ok("ghost age fixed at 14d — decoupled from the 21d scoring window")
 
 
 def test_entry_plus_winning_close_scores_2():
@@ -130,8 +185,11 @@ def test_ghost_scores_0():
 
 
 if __name__ == "__main__":
-    print("=== wins-only +2 ledger smoke ===")
-    test_default_window_is_7_days()
+    print("=== wins-only banded ledger smoke ===")
+    test_default_window_is_21_days()
+    test_recency_banding_older_win_half_credit()
+    test_recency_banding_mixed_total()
+    test_ghost_age_decoupled_from_window()
     test_entry_plus_winning_close_scores_2()
     test_entry_plus_losing_close_scores_0()
     test_screenshot_win_scores_2()

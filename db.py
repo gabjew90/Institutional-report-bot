@@ -4540,81 +4540,67 @@ def is_official_caller(author_id: int) -> bool:
     return False
 
 
-def compute_member_points(author_id: int, days: int = 7) -> dict:
-    """Rolling points ledger over the last N days (default 14) for one user.
+# Ledger constants (2026-07-01): scoring window widened to 21d with a
+# recency band — wins ≤7d old score 2 pts, 8..21d score 1 pt. Ghosting
+# stays a fixed 14d judgment about the position, independent of window.
+_RECENT_WIN_DAYS = 7
+_GHOST_AGE_DAYS = 14
+
+
+def compute_member_points(author_id: int, days: int = 21) -> dict:
+    """Rolling points ledger over the last N days (default 21) for one user.
 
     Reads BOTH caller-mode rows (official-caller-channel posts) AND
     member-mode rows (shared-alert posts by non-callers) for this user.
     Both count toward the trader's points; the only distinction in the
     ledger is the source label.
 
-    **Official callers are nerfed: wins-only.** When `is_official_caller`
-    returns True for this author_id, only the win buckets contribute
-    points: `entries_won * 5 + screenshot_wins * 2`. Entries_lost,
-    entries_ghosted, and screenshot_losses all multiply to zero. Members
-    keep the full table (see Point values per trade event below). The
-    returned breakdown still lists every bucket so /ask can show the
-    full picture; only the `points` total reflects the caller nerf.
+    Policy (2026-06-02 wins-only, 2026-07-01 recency-banded): ONLY
+    documented WINS score, for everyone — members and official callers
+    alike. Losses, ghosts, pending entries, and losing screenshots all
+    contribute 0 points (they still show in the bucket counts so the
+    qualitative read stays honest).
 
-    Point values per trade event — MEMBERS:
+    Win value is banded by the age of the DOCUMENTING event (the
+    winning close/trim or the winning screenshot):
 
-        +5 — Entry posted AND the position closes for a gain (the +3
-             entry award upgrades to +5 on the winning close)
-        +3 — Entry posted AND closes for a loss in the window
-             (commitment was real; the loss doesn't subtract from it)
-        +2 — Entry posted, no close yet, AND the position has either
-             passed its expiration date OR been open ≥14 days.
-             Treated as a ghost: total-loss assumption applies a −1
-             penalty against the entry's +3 (net +2).
-        +2 — Standalone close-only P&L screenshot showing a WIN
-             (gain_pct > 0). No entry commitment but a documented
-             winning outcome.
-        +2 — Standalone close-only screenshot with gain_pct=None
-             POSTED IN gain-loss-porn. Order tickets (Robinhood
-             "Sell to close — Filled at $X.XX") don't carry a gain
-             pill; the channel itself signals win (members use it
-             to flex P&L). Channel-based default upgrades these
-             from the conservative loss assumption.
-        +1 — Standalone close-only P&L screenshot showing a LOSS
-             (gain_pct ≤ 0, OR gain_pct=None outside gain-loss-porn).
-             Weakest receipt form.
+        +2 — win documented within the last 7 days
+        +1 — win documented 8..N days ago
 
-         0 — Entry posted, no close, still within 14d AND before
-             expiry. Pending judgment — no points yet, holds in
-             suspense until either the position closes OR the
-             14d/expiry mark trips and it ghosts.
+    This replaces the old hard cliff (win worth full value on day 13,
+    worth nothing on day 15). Recency still dominates — this week's
+    tape is worth double — but a documented edge no longer evaporates
+    because someone took a vacation. Rows older than the window STAY
+    in the DB (never deleted by scoring); they just stop scoring.
 
-    Point values per trade event — OFFICIAL CALLERS (wins-only nerf):
+    A win event is either:
+      - "entry win": an entry (open/add) in the window whose position
+        shows a winning close — action='close' with gain_pct > 0, or a
+        trim with gain_pct > 0 (a documented profit realization), or
+      - "screenshot win": a close-only row with gain_pct > 0 (or
+        gain_pct=None posted in gain-loss-porn — order tickets carry
+        no gain pill and that channel is structurally a wins channel).
 
-        +5 — Entry posted AND the position closes for a gain (same
-             as members)
-        +2 — Standalone close-only P&L screenshot showing a WIN
-             (same as members)
-         0 — Everything else: entry+loss, entry+ghost, losing
-             screenshot, and pending positions all earn zero.
-             Callers are the product members pay to tail; only
-             documented wins lift their score, not unposted closes
-             or losses.
-
-    Decay: the 14-day rolling window controls which trades enter the
-    ledger. Older rows STAY in the DB (never deleted by scoring),
-    they just don't generate points anymore. The score recomputes
-    every refresh from whatever's currently within the window.
+    Ghosting is decoupled from the window: an entry with no close
+    ghosts when past its expiry OR open ≥14 days (fixed), regardless
+    of the ledger window length. Ghosts score 0 either way; the split
+    only matters for the qualitative pending-vs-ghost read.
 
     Grouping is by (UPPER(ticker), contract_type, strike, expiry). An
-    "entry" is action IN ('open', 'add'). A "close" is action='close'.
-    Trims are not closes — they're partial exits and don't upgrade
-    the entry to a win.
+    "entry" is action IN ('open', 'add'). Winning trims group with
+    closes (see above); trims without gain_pct stay neutral.
 
     Returns:
         {
-            "points": int,                # total
+            "points": int,                # wins_recent*2 + wins_older*1
             "window_days": int,
-            "entries_won": int,           # +5 each (entry + winning close)
-            "entries_lost": int,          # +3 each (entry + losing close)
-            "entries_ghosted": int,       # +2 each (entry, no close in window)
-            "screenshot_wins": int,       # +2 each (close-only, gain > 0)
-            "screenshot_losses": int,     # +1 each (close-only, gain ≤ 0)
+            "wins_recent": int,           # wins documented ≤7d ago (+2 each)
+            "wins_older": int,            # wins documented 8..Nd ago (+1 each)
+            "entries_won": int,           # entry + winning close/trim (0..N d)
+            "entries_lost": int,          # entry + losing close (0 pts)
+            "entries_ghosted": int,       # entry, no close, expired/≥14d (0 pts)
+            "screenshot_wins": int,       # close-only, gain > 0
+            "screenshot_losses": int,     # close-only, gain ≤ 0 (0 pts)
             "breakdown": list[dict],
         }
     """
@@ -4623,6 +4609,8 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
             "points": 0,
             "window_days": days,
             "is_official_caller": False,
+            "wins_recent": 0,
+            "wins_older": 0,
             "entries_won": 0,
             "entries_lost": 0,
             "entries_ghosted": 0,
@@ -4639,7 +4627,13 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
     # can ghost them; otherwise they'd fall out of SELECT first and
     # never get scored. Anything ≥(N+1) days old still falls outside.
     cutoff = (now - timedelta(days=days + 1)).isoformat()
-    ghost_age_cutoff = (now - timedelta(days=days)).isoformat()
+    # Ghosting is a judgment about the POSITION (entry with no close,
+    # past expiry or stale), not about the ledger window — fixed at 14d
+    # so widening the scoring window doesn't loosen the ghost read.
+    ghost_age_cutoff = (now - timedelta(days=_GHOST_AGE_DAYS)).isoformat()
+    # Recency band: wins documented within the last 7d score 2 pts,
+    # older wins (8..N d) score 1 pt.
+    recent_win_cutoff = (now - timedelta(days=_RECENT_WIN_DAYS)).isoformat()
     # Join chat_messages to recover the source channel for each row.
     # The channel name is the disambiguator for close-only screenshots
     # where the order ticket doesn't carry a gain pill: gain-loss-porn
@@ -4679,7 +4673,18 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
     entries_pending = 0  # within window, before expiry, < 14d — not scored yet
     screenshot_wins = 0
     screenshot_losses = 0
+    wins_recent = 0   # win documented ≤7d ago → 2 pts
+    wins_older = 0    # win documented 8..Nd ago → 1 pt
     breakdown: list[dict] = []
+
+    def _band_win(documented_at: str) -> int:
+        """2 pts for a win documented in the last 7d, 1 pt for older."""
+        nonlocal wins_recent, wins_older
+        if (documented_at or "") > recent_win_cutoff:
+            wins_recent += 1
+            return 2
+        wins_older += 1
+        return 1
 
     for key, events in groups.items():
         opens = [
@@ -4722,17 +4727,21 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
                     losing_close = c
             if winning_close is not None:
                 entries_won += 1
+                pts = _band_win(winning_close.get("posted_at") or "")
                 breakdown.append({
-                    "kind": "entry → close win (3 upgraded to 5)",
-                    "points": 5,
+                    "kind": (
+                        f"entry → documented win "
+                        f"(+{pts}: {'last 7d' if pts == 2 else 'older, half credit'})"
+                    ),
+                    "points": pts,
                     "ticker": key[0],
                     "gain_pct": winning_close.get("gain_pct"),
                 })
             elif losing_close is not None:
                 entries_lost += 1
                 breakdown.append({
-                    "kind": "entry → close loss (commitment +3)",
-                    "points": 3,
+                    "kind": "entry → close loss (wins-only: 0 pts)",
+                    "points": 0,
                     "ticker": key[0],
                     "gain_pct": losing_close.get("gain_pct"),
                 })
@@ -4756,13 +4765,13 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
                     if past_expiry:
                         reason.append(f"past expiry {expiry_str}")
                     if aged_out:
-                        reason.append(f"open ≥{days}d")
+                        reason.append(f"open ≥{_GHOST_AGE_DAYS}d")
                     breakdown.append({
                         "kind": (
                             f"entry posted, no close (ghost: "
-                            f"{', '.join(reason)}; 3 − 1 = 2)"
+                            f"{', '.join(reason)}; wins-only: 0 pts)"
                         ),
-                        "points": 2,
+                        "points": 0,
                         "ticker": key[0],
                     })
                 else:
@@ -4770,7 +4779,7 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
                     breakdown.append({
                         "kind": (
                             "entry posted, no close yet (pending — "
-                            "within window, before expiry, < 14d)"
+                            f"before expiry, open <{_GHOST_AGE_DAYS}d)"
                         ),
                         "points": 0,
                         "ticker": key[0],
@@ -4796,52 +4805,50 @@ def compute_member_points(author_id: int, days: int = 7) -> dict:
             in_winning_channel = "gain-loss-porn" in channel_lower
             if gv is not None and gv > 0:
                 screenshot_wins += 1
+                pts = _band_win(latest_close.get("posted_at") or "")
                 breakdown.append({
-                    "kind": "screenshot win (close-only, +2)",
-                    "points": 2,
+                    "kind": (
+                        f"screenshot win (close-only, "
+                        f"+{pts}: {'last 7d' if pts == 2 else 'older, half credit'})"
+                    ),
+                    "points": pts,
                     "ticker": key[0],
                     "gain_pct": gv,
                 })
             elif gv is None and in_winning_channel:
                 # No gain pill visible, but channel signals win.
                 screenshot_wins += 1
+                pts = _band_win(latest_close.get("posted_at") or "")
                 breakdown.append({
                     "kind": (
-                        "screenshot win — channel signal "
-                        "(gain-loss-porn, no gain pill on ticket, +2)"
+                        f"screenshot win — channel signal "
+                        f"(gain-loss-porn, no gain pill on ticket, +{pts})"
                     ),
-                    "points": 2,
+                    "points": pts,
                     "ticker": key[0],
                     "gain_pct": None,
                 })
             else:
                 screenshot_losses += 1
                 breakdown.append({
-                    "kind": "screenshot loss (close-only, +1)",
-                    "points": 1,
+                    "kind": "screenshot loss (close-only, wins-only: 0 pts)",
+                    "points": 0,
                     "ticker": key[0],
                     "gain_pct": gv,
                 })
         # Else: only trims / viewings — no points
 
-    # 2026-06-02 policy: wins-only +2 across the board. No caller-vs-
-    # member split — same rule applies to everyone including official
-    # callers. Old policy was +5/+3/+2/+2/+1 with a caller-nerf overlay;
-    # new policy collapses to a single rule (wins × 2) so the score
-    # reflects exactly what gets posted as a win, no implicit
-    # "commitment" credit for losses, ghosts, or pending positions.
-    #
-    # Historical comment preserved below for context — describes the
-    # old caller-nerf logic that no longer applies:
-    # documented commitment (any close) was worth something under the
-    # old rules. (End historical comment.)
+    # Wins-only (2026-06-02), recency-banded (2026-07-01): the same rule
+    # for everyone including official callers. Loss/ghost/pending → 0;
+    # a win documented ≤7d ago → 2 pts; a win 8..Nd ago → 1 pt.
     caller_mode = is_official_caller(int(author_id))
-    # New policy: (wins) × 2. Loss/ghost/pending buckets all → 0.
-    total_points = (entries_won + screenshot_wins) * 2
+    total_points = wins_recent * 2 + wins_older * 1
     return {
         "points": total_points,
         "window_days": days,
         "is_official_caller": caller_mode,
+        "wins_recent": wins_recent,
+        "wins_older": wins_older,
         "entries_won": entries_won,
         "entries_lost": entries_lost,
         "entries_ghosted": entries_ghosted,
