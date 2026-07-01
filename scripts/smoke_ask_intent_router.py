@@ -90,8 +90,14 @@ def test_router_instruction_buckets():
                "live stock price", "web", "local"]:
         assert kw in low, f"router instruction missing bucket keyword: {kw!r}"
     assert "exactly one word" in low, "output contract missing"
-    assert "unsure" in low and "local" in low, "unsure->LOCAL default missing"
-    _ok("router instruction: WEB triggers + LOCAL exemptions + one-word contract")
+    # 2026-07-01: uncertainty default FLIPPED to WEB ("facts first") —
+    # a wasted search is cheap, an unverified wrong fact gets traded on.
+    # The clearly-LOCAL classes (banter/roast/member-data/live-price) are
+    # named so they don't get dragged into the search-only path.
+    assert "unsure, answer web" in low, "unsure->WEB default missing"
+    assert "clearly" in low and "banter" in low, \
+        "the clearly-LOCAL carve-out must be named"
+    _ok("router instruction: WEB triggers + LOCAL exemptions + unsure->WEB")
 
 
 def test_router_covers_type2_factual_edge():

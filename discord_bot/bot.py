@@ -4181,7 +4181,9 @@ _ASK_ROUTER_INSTRUCTION = (
     "price or options chain, recent room chat history.\n\n"
     "The question may be preceded by chat-context lines; classify the "
     "ACTUAL question (usually the last line, after the final separator). "
-    "When genuinely unsure, answer LOCAL.\n\n"
+    "When genuinely unsure, answer WEB — a wasted search costs seconds, "
+    "but an unverified wrong fact gets traded on. Reserve LOCAL for what "
+    "is CLEARLY banter, roast, member-data, or live-price territory.\n\n"
     "Output EXACTLY one word: WEB or LOCAL."
 )
 
