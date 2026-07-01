@@ -1,0 +1,181 @@
+{
+  "pulse_date": "2026-07-01",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure capex",
+      "selected": true,
+      "stance_counts": { "supportive": 9, "skeptical": 4, "neutral": 11 },
+      "consensus_view": "Most banks see the AI data-center spending boom still running hard with roughly a trillion dollars a year of buildout coming, but a vocal minority warns the spending may outrun real profits and could stall if hyperscalers choose to reward shareholders instead of keep spending.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscalers remain committed to their capital expenditure plans and the industry is still in buildout mode.",
+          "banks_for": ["UBS", "BlackRock Investment Institute", "JPMorgan", "Goldman Sachs"],
+          "evidence_quotes": [
+            "The renewed capital-raising push confirms the industry is still in buildout mode",
+            "hyperscalers remain committed to their capital expenditure plans",
+            "AI-linked companies lifting guidance on revenue and profit margins show the AI buildout is rolling on",
+            "AI upstream theme should remain a steady pillar of growth as the capex cycle continues",
+            "the AI buildout is rapidly accelerating, which has clearly accrued to the immense benefit"
+          ]
+        },
+        {
+          "claim": "Annual AI-related capital spending is expected to keep rising toward roughly one trillion dollars next year.",
+          "banks_for": ["UBS"],
+          "evidence_quotes": ["We expect AI-related capital expenditure to keep rising, with annual spending approaching USD 1 trillion"]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether AI capex spending is sustainable or set to break",
+          "banks_for": ["UBS", "JPMorgan"],
+          "for_evidence": "we believe that the current AI CapEx cycle has further to run",
+          "banks_against": ["Goldman Sachs", "The Market Ear"],
+          "against_evidence": "The breaking point was always likely to be when one of the major spenders concludes"
+        },
+        {
+          "claim": "Whether AI investment justifies current valuations",
+          "banks_for": ["BlackRock Investment Institute"],
+          "for_evidence": "AI-linked companies lifting guidance on revenue and profit margins show the AI buildout is rolling on",
+          "banks_against": ["Natixis", "Syz Group"],
+          "against_evidence": "growing doubts over whether heavy AI investment can justify elevated valuation levels"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran peace deal",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 12 },
+      "consensus_view": "Twelve bank desks reference a US-Iran de-escalation or interim peace deal as a live near-term catalyst for oil and geopolitics, but none has staked out a directional view on whether it holds.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag an emerging US-Iran de-escalation or interim peace deal as a live geopolitical catalyst this window.",
+          "banks_for": ["Amundi", "Barclays", "Deutsche Bank", "Goldman Sachs", "HSBC", "ING", "JPMorgan", "Natixis", "Rabobank", "Raymond James", "Scotiabank", "UBS"],
+          "evidence_quotes": [
+            "US-Iran interim peace deal",
+            "US-Iran deal to halt strikes",
+            "US-Iran peace agreement",
+            "US-Iran peace deal progress",
+            "US-Iran conflict de-escalation",
+            "US-Iran ceasefire",
+            "US-Iran deal oil price impact",
+            "US-Iran peace talks in Qatar",
+            "Middle East geopolitical de-escalation",
+            "US-Iran MoU de-escalation"
+          ]
+        },
+        {
+          "claim": "Banks tie the US-Iran situation to a live diplomatic track, citing indirect talks in Qatar/Doha and an MoU with a 60-day deadline.",
+          "banks_for": ["Rabobank", "Amundi", "Deutsche Bank", "Barclays", "JPMorgan", "Scotiabank"],
+          "evidence_quotes": [
+            "US-Iran peace talks in Qatar",
+            "US-Iran indirect talks in Doha",
+            "US/Iran talks in Qatar",
+            "US-Iran MoU 60-day deadline",
+            "US-Iran MOU one-sidedness",
+            "US-Iran MoU de-escalation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh fed chair",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 9 },
+      "consensus_view": "Multiple banks reference Kevin Warsh as incoming or sitting Fed Chair and his Sintra speech as a live macro topic, but none has staked a clear directional view on what his leadership means for policy.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across desks reference Kevin Warsh as Fed Chair and his Sintra speech as an upcoming macro focal point without staking a directional view.",
+          "banks_for": ["BofA Global Research", "Goldman Sachs", "JPMorgan", "Mizuho International", "Raymond James", "TS Lombard", "The Market Ear", "UBS", "World Gold Council"],
+          "evidence_quotes": ["Kevin Warsh Fed Chair nomination", "Fed Chair Kevin Warsh Sintra address", "Warsh at Sintra speech", "Warsh hawkish pivot", "Warsh Fed reaction function"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "US LNG export cushioning of Mideast supply shortfall",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 8 },
+      "consensus_view": "Eight desks reference the Middle East conflict and its oil-supply and inflation fallout, but with Brent back down near $72 after peaking around $126, nobody has staked a directional view on whether US LNG exports specifically offset the shortfall.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the Middle East conflict and its energy-supply impact as a live macro factor this window.",
+          "banks_for": ["BlackRock Investment Institute", "Citi", "Crédit Agricole CIB", "JPMorgan", "JPMorgan Asset Management", "Mizuho International", "UBS"],
+          "evidence_quotes": ["Middle East conflict supply disruptions", "near-term inflation from Middle East conflict", "Middle East conflict energy shock", "US-Iran conflict energy impact", "Middle East conflict supply shock"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "strait of hormuz normalization",
+      "selected": true,
+      "stance_counts": { "supportive": 1, "skeptical": 0, "neutral": 8 },
+      "consensus_view": "Banks broadly treat Strait of Hormuz oil flows as gradually returning to normal after the conflict, though UBS warns the market may be pricing that recovery too fast.",
+      "facts_agreed": [
+        {
+          "claim": "Oil flows through the Persian Gulf are gradually returning to normal after the conflict, though volatility persists.",
+          "banks_for": ["SEB"],
+          "evidence_quotes": ["oil flow from the Persian Gulf will continue to gradually normalize"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "labor market resilience",
+      "selected": true,
+      "stance_counts": { "supportive": 2, "skeptical": 0, "neutral": 5 },
+      "consensus_view": "Banks read US labor data as holding up, which is pushing the market to price a firmer path for interest rates while soft patches keep wage pressure contained.",
+      "facts_agreed": [
+        {
+          "claim": "The US labor market is being treated as resilient, driving the rates market toward a more hawkish stance.",
+          "banks_for": ["Mizuho International", "ING"],
+          "evidence_quotes": ["rates market chose to focus on the labour resilience rather than the soft data spots", "Resilient US labor market"]
+        },
+        {
+          "claim": "Softer labor conditions are expected to help keep wage growth contained.",
+          "banks_for": ["JPMorgan Asset Management"],
+          "evidence_quotes": ["softer labour market conditions should help to keep wage growth contained"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb sintra forum",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 6 },
+      "consensus_view": "Six desks reference the ECB's annual Sintra central-banking forum as a live event on this week's calendar, but none has staked out a directional call on what it means for markets.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the ECB Sintra forum, featuring central bank governor speeches and policy panels, as an event this window.",
+          "banks_for": ["Goldman Sachs", "ING", "JPMorgan", "Natixis", "Scotiabank", "UBS"],
+          "evidence_quotes": ["ECB Sintra forum policy debate", "ECB Sintra forum agenda including AI and migration", "Sintra central bankers speeches", "ECB Sintra conference panel", "Sintra forum panel with central bank governors"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "global manufacturing pmis",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 4 },
+      "consensus_view": "Four banks flag global manufacturing surveys (PMIs and the US ISM index) as a subject to watch this window, but none has staked out a clear directional call on where factory activity is heading.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference global manufacturing PMIs and the US ISM manufacturing index as a live macro focus this window without staking a directional view.",
+          "banks_for": ["BofA Global Research", "Deutsche Bank", "FinChartOutlook GmbH", "ING"],
+          "evidence_quotes": ["Global manufacturing PMIs", "Global manufacturing PMI rebound", "US ISM manufacturing indices", "ISM manufacturing index focus"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
