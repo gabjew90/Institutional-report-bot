@@ -60,7 +60,19 @@ _CONTRACT = [
     # --- conflict-priority anti-fabrication ---
     ("Don't fabricate", "priority #1: don't fabricate"),
     ("add new specifics under pressure", "don't invent new specifics under challenge"),
-    # --- safety guardrail (a KEEP — see note) ---
+]
+
+# Tombstones: anchors DELIBERATELY removed from the prompt by the repo
+# owner. Recorded here rather than silently deleted, so the history stays
+# legible and the guard stays green-when-intact — a permanently-red guard
+# masks real regressions (exactly what it must catch during a rewrite).
+# If a tombstoned rule is ever re-added to the prompt, move it back into
+# _CONTRACT.
+_TOMBSTONES = [
+    # Removed by owner 2026-06-25 (commit f450537f, "Refactor bot
+    # guidelines for clarity"): the no-racial/protected-class-slurs-in-
+    # bot-voice line from "Match the room's register." The removal was
+    # the owner's explicit, repeated decision.
     ("protected-class slurs", "bot's own voice never deploys racial/protected-class slurs"),
 ]
 
@@ -84,11 +96,14 @@ def test_contract_rules_present():
 def test_contract_count_guard():
     # If the contract list itself shrinks, that's a deliberate change — make
     # it visible so nobody quietly removes an anchor from the guard too.
-    assert len(_CONTRACT) >= 26, (
+    # 25 required anchors + 1 documented tombstone (see _TOMBSTONES).
+    assert len(_CONTRACT) >= 25, (
         f"contract anchor list shrank to {len(_CONTRACT)} — removing an "
         f"anchor weakens the guard; do it deliberately, not silently"
     )
-    _ok(f"contract guard covers {len(_CONTRACT)} anchors (>=26)")
+    assert len(_TOMBSTONES) >= 1, "tombstone history must not be deleted"
+    _ok(f"contract guard covers {len(_CONTRACT)} anchors (>=25) "
+        f"+ {len(_TOMBSTONES)} documented tombstone(s)")
 
 
 if __name__ == "__main__":
