@@ -22,7 +22,7 @@ pdf_files row created with status=DOWNLOADED
   ↓                          — deep analysis (Gemini text-only, full document, ~15K tokens)
   ↓ pdf_analyses row (append; old analyses preserved as history)
   ↓
-Scheduled 9:00 AM ET (via APScheduler)
+Scheduled 10:00 AM ET (Claude.ai routine cron 0 14 * * 1-5 UTC; moved from 9 AM on 2026-07-02)
   OR user runs /pulse, /pulse hours:N
   ↓
 report/synthesizer.py — builds context (live market data + news + calendar + prev pulse if scheduled)
@@ -48,7 +48,7 @@ Deep analysis sends the full document as text to Gemini. **No image rendering, n
 ### Scheduled vs manual pulse behavior
 | | Window | Prev-pulse context |
 |---|---|---|
-| Scheduled 9 AM ET (`run_daily_pulse`) | Since last scheduled pulse | ✅ Diff-framing — skip themes unchanged from yesterday |
+| Scheduled 10 AM ET (Claude.ai routine) | Since last scheduled pulse | ✅ Diff-framing — skip themes unchanged from yesterday |
 | `/pulse` (no args) | **Last 24h always** | ❌ None — fully standalone |
 | `/pulse hours:N` | Last N hours (max 168) | ❌ None |
 
@@ -101,7 +101,7 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `discord_bot/bot.py` | Discord bot with /pulse, /status, /load, /reanalyze, /clearqueue, /seedcursor, /reprocess |
 | `discord_bot/sender.py` | Embed delivery (per-embed = separate message — batching was reverted) |
 | `pipeline/orchestrator.py` | End-to-end pipeline coordination |
-| `scheduler/jobs.py` | APScheduler cron jobs (15-min poll, 5-min process, 9 AM ET pulse) |
+| `scheduler/jobs.py` | APScheduler cron jobs (15-min poll, 5-min process; Gemini pulse job skipped — bridge/routine owns the 10 AM ET pulse) |
 | `test_pulse.py` | CLI tool for manual testing |
 | `inspect_db.py` | CLI for browsing DB state |
 | `main.py` | Entry point |
@@ -176,7 +176,7 @@ Key ones set on `worker` service:
 - `FINNHUB_APi_KEY` (note lowercase 'i' typo — pydantic-settings is case-insensitive so it works; don't fix cosmetically without reason)
 - `COMMAND_PASSWORD=<set-in-railway-env>`
 - `TIMEZONE=America/New_York`
-- `DAILY_PULSE_HOUR=9`, `DAILY_PULSE_MINUTE=0`
+- `DAILY_PULSE_HOUR=10`, `DAILY_PULSE_MINUTE=0`
 - `DB_PATH=/data/reports.db`, `PDF_DOWNLOAD_DIR=/data/pdfs` (MUST use leading slash — relative paths write to ephemeral container storage and get wiped on redeploy)
 
 ## Database

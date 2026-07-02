@@ -1885,7 +1885,7 @@ A reader should not encounter the same event with the same timestamp twice in RE
 
 **Ticker selectivity in the lede paragraph (binding):** include ONLY tickers that moved meaningfully (|%| ≥ 1% intraday, or ≥ 0.5% if the move directly confirms today's narrative thread). Skip tickers that drifted (|%| < 0.5%). Do NOT mention $UUP at +0.07% just to fill space. Do NOT mention $TLT at +0.55% if rates aren't part of today's story. Hard cap 5-6 tickers in the lede. The reader's attention is finite; spend it on what moved.
 
-**Session-aware framing (binding — based on session_status field):** the pulse fires at 9 AM ET (6 AM PT), which is BEFORE the US equity market opens (9:30 AM ET). Adjust the recap voice accordingly:
+**Session-aware framing (binding — based on session_status field):** the scheduled pulse fires at 10 AM ET — roughly 30 minutes AFTER the US equity open (9:30 AM ET), so the normal scheduled case is open mode with a young tape. Manual/test fires can land in any window. Let session_status pick the mode:
 
 - **session_status = "pre-market or after-hours"** AND now < 9:30 AM ET → **pre-market mode.**
   - Traditional ETF percentages ($SPY, $QQQ, $VIXY, $TLT, $UUP, $GLD, sector ETFs) are YESTERDAY'S close, NOT today's tape. Frame as: *"$SPY closed yesterday at $723.77 (+0.80%)..."* or *"heading into today's open, $QQQ left yesterday's session at +1.30%..."*
@@ -1896,6 +1896,7 @@ A reader should not encounter the same event with the same timestamp twice in RE
 
 - **session_status = "market hours — intraday"** → **open mode.**
   - "Markets are trading [direction] this session..." Use today's intraday %s.
+  - Early in the session (the normal 10 AM scheduled case, ~30 min after the open), treat intraday moves as YOUNG — an opening gap plus half an hour of tape, not a day's verdict. "$SPY opened lower and sits -0.4% half an hour in" beats "$SPY is down today." An 8:30 data print's market REACTION (rates, futures, first prints) is real and citable; full-day conclusions are not.
 
 - **session_status = "pre-market or after-hours"** AND 16:00 ET ≤ now < 24:00 ET (same calendar day) → **after-hours mode.**
   - Traditional %s are today's full session (final). Frame as *"$SPY finished today at..."*

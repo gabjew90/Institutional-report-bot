@@ -286,7 +286,7 @@ class Settings(BaseSettings):
     # Scheduling
     timezone: str = "America/New_York"
     # Scheduled pulse fires at this time in the configured timezone
-    daily_pulse_hour: int = 9  # 9 AM ET
+    daily_pulse_hour: int = 10  # 10 AM ET (moved from 9, 2026-07-02 — jobs-day actuals land pre-pulse)
     daily_pulse_minute: int = 0
     dropbox_poll_interval_minutes: int = 15
     process_interval_minutes: int = 5

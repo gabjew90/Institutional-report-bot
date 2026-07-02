@@ -70,7 +70,7 @@ Follow the prompts verbatim. Particularly important rules to triple-check before
 - **No AI-tells.** Strip 'it's worth noting', 'importantly', 'notably', 'meanwhile', 'moreover', 'that said', 'of course', 'overall', 'in summary'.
 - **Theme coherence.** Every sentence in a theme body must serve the theme's central thesis.
 - **'What drove the tape' = breaking market news only.** Geopolitics with measurable reaction, big earnings already reported, big macro prints already released. NOT scheduled events like Treasury QRA (those go in WHAT TO WATCH).
-- **Session-aware framing.** The `session_status` field tells you the mode. At 9 AM ET, you're in PRE-MARKET. Traditional ETF %s in the snapshot are YESTERDAY'S close. Frame as 'Heading into today's open' / '$SPY closed yesterday at...'. Crypto trades 24/7 — frame as live.
+- **Session-aware framing.** The `session_status` field tells you the mode. At the ~10 AM ET scheduled fire, the market has been OPEN ~30 minutes — ETF %s in the snapshot are TODAY'S young session (frame moves as 'half an hour in', not a day's verdict). A manual pre-market fire flips to yesterday's-close framing. Crypto trades 24/7 — always live.
 - **Insight body structure (5 movements, NO labels in output).** Italicized one-line punchline, then 3-5 bullet data points (no header above), then mechanism prose paragraph (2-3 sentences arguing from bullets), then bull/pushback/defense/positioning paragraph with visible transition phrases ('The bull case...', 'The pushback we would anticipate...', 'Even granting that pushback...', 'The cleanest read...'). NO movement labels visible in output.
 - **Trade variety across themes.** No two themes use the same primary instrument.
 - **Foreign cashtag scrub.** $TSCO/$AD/$CNA/$BA/$BT/$RR/$III/$IMB/$CCL/$ORANGE/$REP/$ORA → names.
@@ -422,7 +422,7 @@ python3 /tmp/progress.py "STEP_2_DONE"
 
 ### STEP 2.5 — Press-time freshness check (mandatory)
 
-The context is a SNAPSHOT from `dumped_at_utc`; the pulse posts at fire time. Anything that happened in between — most importantly an 8:30 AM ET data print before a ~9:05 post — is invisible to the snapshot, and the calendar inside it still says "upcoming" for events that have since occurred. (2026-07-02 failure: the dump job froze at 09:25 UTC, the pulse consumed 4-hour-stale context and told readers to WATCH the 8:30 payrolls print at 9:06 AM.) Reconcile at press time:
+The context is a SNAPSHOT from `dumped_at_utc`; the pulse posts at fire time. Anything that happened in between — most importantly an 8:30 AM ET data print before a ~10:05 post — is invisible to the snapshot, and the calendar inside it still says "upcoming" for events that have since occurred. (2026-07-02 failure: the dump job froze at 09:25 UTC, the pulse consumed 4-hour-stale context and told readers to WATCH the 8:30 payrolls print at 9:06 AM.) Reconcile at press time:
 
 ```bash
 python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
