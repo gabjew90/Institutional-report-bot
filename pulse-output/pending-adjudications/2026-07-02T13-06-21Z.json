@@ -1,0 +1,346 @@
+{
+  "pulse_date": "2026-07-02",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure capex",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 7,
+        "skeptical": 1,
+        "neutral": 9
+      },
+      "consensus_view": "Banks broadly agree the trillion-dollar AI data-center spending boom is intact and spreading into power and industrial suppliers, while The Market Ear alone warns that Meta selling its spare computing capacity could be the first crack in the shortage story that justifies all that spending.",
+      "facts_agreed": [
+        {
+          "claim": "The AI infrastructure buildout is still accelerating, with hyperscalers committed to capital spending plans and demand outstripping supply.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS",
+            "JPMorgan",
+            "Morgan Stanley",
+            "BlackRock Investment Institute"
+          ],
+          "evidence_quotes": [
+            "the AI buildout is rapidly accelerating, which has clearly accrued to the immense benefit",
+            "The renewed capital-raising push confirms the industry is still in buildout mode",
+            "yesterday\u2019s announcement shouldn\u2019t make you adjust your 2027 Capex estimates materially",
+            "we think \"chipflation\" is more likely to reprice and ration AI infrastructure than derail the cycle",
+            "We do not need to know which AI model wins to know AI requires power."
+          ]
+        },
+        {
+          "claim": "AI capital spending is diffusing beyond mega-cap tech and semiconductors into industrials and power infrastructure, broadening the set of beneficiaries.",
+          "banks_for": [
+            "JPMorgan",
+            "UBS",
+            "BofA Global Research"
+          ],
+          "evidence_quotes": [
+            "The broadening trade has real legs driven by AI capex diffusion into industrials/power infrastructure",
+            "value may start spreading beyond frontier AI labs and semiconductors",
+            "AI capex diffusion into industrials and power infrastructure"
+          ]
+        },
+        {
+          "claim": "Memory demand continues to outstrip supply, driving increased capex investment across the memory supply chain.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Demand for Memory continues to outstrip supply, and recent datapoints suggest increased capex investments"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether Meta's plan to sell excess AI compute signals the scarcity assumption behind the AI capex boom is cracking",
+          "banks_for": [
+            "The Market Ear"
+          ],
+          "for_evidence": "Meta's plan to monetize excess AI compute may have exposed the first real crack",
+          "banks_against": [
+            "JPMorgan"
+          ],
+          "against_evidence": "yesterday\u2019s announcement shouldn\u2019t make you adjust your 2027 Capex estimates materially"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran diplomatic negotiations",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 10
+      },
+      "consensus_view": "Ten banks reference ongoing US-Iran talks in Doha/Qatar and a possible interim deal as a live catalyst for markets, but none has staked a directional view on the outcome yet.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across ten desks consistently flag active US-Iran diplomatic negotiations, hosted in Qatar/Doha and centered on a potential interim deal, as a near-term macro catalyst without taking a directional position.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "HSBC",
+            "JPMorgan",
+            "Morgan Stanley",
+            "Reuters",
+            "SEB",
+            "TS Lombard",
+            "UBS",
+            "ING"
+          ],
+          "evidence_quotes": [
+            "US-Iran indirect talks in Doha",
+            "US-Iran peace talks",
+            "US/Iran talks in Qatar",
+            "US-Iran interim deal",
+            "U.S.-Iran negotiations in Qatar"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed policy outlook",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Most banks now frame the Fed under new Chair Kevin Warsh as tilting toward rate hikes and keeping rates high for longer, while Morgan Stanley stands alone in calling for no rate change at all through 2026.",
+      "facts_agreed": [
+        {
+          "claim": "Kevin Warsh is now Fed Chair and desks across the street are framing their entire policy analysis around how he will run the Fed.",
+          "banks_for": [
+            "BofA Global Research",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "TS Lombard",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Warsh Fed reaction function",
+            "Kevin Warsh Fed chair regime",
+            "Chair Warsh's communication policy",
+            "Fed Chair Warsh reaction function",
+            "Fed Chair Kevin Warsh policy task forces"
+          ]
+        },
+        {
+          "claim": "The rate conversation has shifted hawkish, meaning expectations are moving toward rate hikes and rates staying higher for longer rather than cuts.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Deutsche Bank",
+            "BofA Global Research",
+            "ING"
+          ],
+          "evidence_quotes": [
+            "Warsh hawkish pivot",
+            "Fed hawkish pivot",
+            "US Federal Reserve higher-for-longer rate expectations",
+            "higher-for-longer rate backdrop",
+            "Fed Chair Kevin Warsh hawkish policy meeting",
+            "Fed tightening expectations"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the Fed actually hikes rates or simply stays on hold through 2026",
+          "banks_for": [
+            "Morgan Stanley"
+          ],
+          "for_evidence": "our call that the Fed will remain on hold through 2026",
+          "banks_against": [
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "against_evidence": "Fed hawkish pivot"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb forum sintra",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six banks flag the ECB's annual central-bank gathering in Sintra as a near-term event where top central bankers will speak, but none of them has staked a directional market call on it.",
+      "facts_agreed": [
+        {
+          "claim": "Six banks reference the ECB's annual forum in Sintra as an upcoming catalyst this window, mentioning it as a venue where central bank leaders will speak without attaching a directional view.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "Natixis",
+            "SEB",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Sintra central bank conference",
+            "Sintra forum panel with central bank governors",
+            "ECB annual forum in Sintra",
+            "ECB Forum on Central Banking in Sintra",
+            "ECB annual symposium in Sintra"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait shipping normalization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five banks flag the Strait of Hormuz reopening and the return of Persian Gulf oil shipping to normal as a live driver behind oil's slide, but none has staked a directional trade view on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Five banks reference the Strait of Hormuz reopening and the normalization of shipping and crude flows through it as a key backdrop for energy markets this window.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "ING",
+            "JPMorgan",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping normalization",
+            "Persian Gulf crude flow normalization",
+            "Strait of Hormuz reopening",
+            "Hormuz reopening impact on energy markets",
+            "Strait of Hormuz traffic resumption"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "labor market resilience",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Banks across the stack agree the US job market is holding up or even heating back up, and the shared read is that stronger hiring data pushes the Fed toward keeping rates higher for longer.",
+      "facts_agreed": [
+        {
+          "claim": "The US labor market is proving resilient, with multiple desks flagging a rebound or reacceleration rather than the cooling many expected.",
+          "banks_for": [
+            "Mizuho International",
+            "Morgan Stanley",
+            "Natixis",
+            "TS Lombard",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "rates market chose to focus on the labour resilience rather than the soft data spots",
+            "US labor market rebound",
+            "US labor market reacceleration",
+            "US labor market tightening",
+            "US labor market resilience"
+          ]
+        },
+        {
+          "claim": "Stronger labor data is pushing markets to price a more hawkish rate path from the Fed.",
+          "banks_for": [
+            "Mizuho International",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "rates market chose to focus on the labour resilience rather than the soft data spots",
+            "consistent with the new regime of \u201chigher pressure economy\u201d and inconsistent with the prevailing market narrative"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb monetary policy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Banks agree the European Central Bank is heading toward its first interest-rate hike since 2023, with Goldman Sachs and Natixis both pointing to September as the likely start and nobody arguing against that timing.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs and Natixis both expect the ECB's first rate hike to land in September, with the ECB seen as under less time pressure than the Fed.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Natixis"
+          ],
+          "evidence_quotes": [
+            "broadly in-line data will be sufficient to convince the Governing Council to hike in September",
+            "Unlike the Fed, the ECB probably has the luxury of waiting until September."
+          ]
+        },
+        {
+          "claim": "Three more banks frame the current window around the ECB's first rate-hike cycle since 2023 without staking a directional call on timing.",
+          "banks_for": [
+            "Cr\u00e9dit Agricole CIB",
+            "Deutsche Bank",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "ECB rate hike pricing",
+            "ECB rate hike cycle",
+            "ECB first rate increase since 2023"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "Strait of Hormuz tanker traffic volatility",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five banks flag tanker traffic through the Strait of Hormuz as a live oil-supply risk they are watching, but none has staked a directional call on what it means for prices.",
+      "facts_agreed": [
+        {
+          "claim": "Five banks reference Strait of Hormuz shipping traffic and the risk of oil-flow disruption there as a near-term market subject this window, without a primary directional view.",
+          "banks_for": [
+            "BlackRock Investment Institute",
+            "Goldman Sachs",
+            "ING",
+            "Morgan Stanley",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz tanker traffic volatility",
+            "Strait of Hormuz tanker transit disruption",
+            "Strait of Hormuz traffic",
+            "Strait of Hormuz supply shock risk",
+            "Strait of Hormuz oil flows"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
