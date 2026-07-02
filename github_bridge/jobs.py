@@ -115,13 +115,45 @@ def _compute_window_cutoff() -> tuple[str, str]:
 
 
 def dump_context_job() -> None:
+    """Watchdog wrapper around the real dump job.
+
+    2026-07-02 incident: one hung call inside the dump (a stall not
+    covered by per-call timeouts, e.g. DNS resolution) blocked the job
+    thread from 09:25 UTC until the 15:28 redeploy. APScheduler runs
+    this job with max_instances=1, so the hung instance silently ate
+    every subsequent 15-min tick ("skipped: maximum number of running
+    instances reached") and the 9 AM pulse consumed a 4-hour-stale
+    context — it told readers to WATCH the 8:30 payrolls print at 9:06.
+    The wrapper gives the body a hard wall clock: on timeout the stuck
+    worker thread is abandoned (leaked, bounded — one per occurrence)
+    and the scheduler slot FREES so the next tick retries with fresh
+    sockets.
+    """
+    from concurrent.futures import ThreadPoolExecutor, TimeoutError as _FTimeout
+    ex = ThreadPoolExecutor(max_workers=1, thread_name_prefix="bridge-dump")
+    try:
+        fut = ex.submit(_dump_context_job_inner)
+        fut.result(timeout=600)
+    except _FTimeout:
+        log.critical(
+            "Bridge: dump_context_job exceeded its 10-min watchdog — "
+            "abandoning the stuck worker so the next tick can run. "
+            "pulse-context/latest.json is NOT refreshed by this instance; "
+            "if this repeats every tick, the container needs a restart."
+        )
+    finally:
+        # Never wait on a potentially-stuck worker.
+        ex.shutdown(wait=False)
+
+
+def _dump_context_job_inner() -> None:
     """Build the pulse context and commit JSON to the bridge branch.
 
     Cutoff logic via _compute_window_cutoff(): wider of since-last-daily
     or last-24h, with a 96h ceiling. Ensures Monday spans the weekend
     AND mid-day test runs still get 24h of context.
 
-    Runs in the APScheduler thread. Synchronous (no async tools used).
+    Runs in a watchdogged worker thread (see dump_context_job).
     """
     if not bridge_enabled():
         return

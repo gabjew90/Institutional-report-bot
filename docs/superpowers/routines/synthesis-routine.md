@@ -420,6 +420,64 @@ After STEP 2 succeeds, commit a progress event so the watcher sees the routine i
 python3 /tmp/progress.py "STEP_2_DONE"
 ```
 
+### STEP 2.5 — Press-time freshness check (mandatory)
+
+The context is a SNAPSHOT from `dumped_at_utc`; the pulse posts at fire time. Anything that happened in between — most importantly an 8:30 AM ET data print before a ~9:05 post — is invisible to the snapshot, and the calendar inside it still says "upcoming" for events that have since occurred. (2026-07-02 failure: the dump job froze at 09:25 UTC, the pulse consumed 4-hour-stale context and told readers to WATCH the 8:30 payrolls print at 9:06 AM.) Reconcile at press time:
+
+```bash
+python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
+import json, datetime, re
+ctx = json.load(open('/tmp/ctx.json'))
+now = datetime.datetime.utcnow()
+dumped = datetime.datetime.fromisoformat(
+    (ctx.get('dumped_at_utc') or '').replace('Z', '')[:19]
+)
+age_min = (now - dumped).total_seconds() / 60
+notes = []
+if age_min > 75:
+    et = dumped - datetime.timedelta(hours=4)  # EDT approximation
+    notes.append(
+        f"STALE SNAPSHOT: this context was captured {age_min:.0f} minutes "
+        f"ago (~{et.strftime('%-I:%M %p')} ET). Live prices, news, and "
+        f"'this morning' framings in the context are AS OF THAT TIME. "
+        f"Timestamp any live level you cite ('as of ~{et.strftime('%-I:%M %p')} "
+        f"ET') and do not present them as the current tape."
+    )
+# Events whose scheduled ET time falls between the dump and NOW have
+# already printed even though the snapshot's calendar says upcoming.
+cal = ctx.get('economic_calendar') or ''
+for line in cal.splitlines():
+    m = re.match(r"\s*(\d{2})-(\d{2}) (\d{2}):(\d{2}) ET \| \[US\] ([^|]+)\|?", line)
+    if not m:
+        continue
+    mo, dy, hh, mm, name = m.groups()
+    try:
+        sched_et = datetime.datetime(now.year, int(mo), int(dy), int(hh), int(mm))
+        sched_utc = sched_et + datetime.timedelta(hours=4)
+    except ValueError:
+        continue
+    if dumped < sched_utc <= now and 'ACTUAL=' not in line:
+        notes.append(
+            f"PRESS-TIME EVENT: '{name.strip()}' printed at {hh}:{mm} ET — "
+            f"BEFORE this pulse posts but AFTER this snapshot. The actual "
+            f"number is NOT in your context. Frame it as 'printed this "
+            f"morning — number still propagating at press time; watch the "
+            f"reaction', NEVER as upcoming, and NEVER invent or guess the "
+            f"actual. In WHAT TO WATCH, the item is the REACTION, not the print."
+        )
+if notes:
+    open('/tmp/press_time_note.txt', 'w').write(
+        "[PRESS-TIME NOTE — binding, overrides the calendar's "
+        "upcoming/released split]\n" + "\n".join(f"- {n}" for n in notes)
+    )
+    print("press-time note written:", len(notes), "item(s)")
+else:
+    print("press-time check clean — snapshot fresh, no straddled events")
+PYEOF
+```
+
+**If `/tmp/press_time_note.txt` exists, append its full content to the DRAFT prompt input in STEP 4** (after the adjudication block, before the analyses). The note is binding on DRAFT's framing.
+
 ## STEP 3 — Inspect theme coverage
 
 ```bash
@@ -1147,7 +1205,7 @@ python3 /tmp/progress.py "STEP_3_5_DONE"
 
 ## STEP 4 — Generate DRAFT (Stage 1)
 
-Apply `DRAFT_USER` substitutions and `DRAFT_SYSTEM`. **If `/tmp/adjudication.json` exists and its `themes` array is non-empty**, inject the adjudicated themes block as added structured input that the prose can use to ground its claims. **If it doesn't exist, or its `themes` array is empty** (e.g., adjudication was skipped due to missing `theme_map`, or every theme failed lint), skip the injection entirely and run DRAFT against the existing per-PDF JSON inputs only — the pulse still ships with no degradation in surface output, just without the structured adjudication grounding.
+Apply `DRAFT_USER` substitutions and `DRAFT_SYSTEM`. **If `/tmp/press_time_note.txt` exists (STEP 2.5), append its full content to the DRAFT input** — it is binding on how straddled data prints and stale live prices are framed. **If `/tmp/adjudication.json` exists and its `themes` array is non-empty**, inject the adjudicated themes block as added structured input that the prose can use to ground its claims. **If it doesn't exist, or its `themes` array is empty** (e.g., adjudication was skipped due to missing `theme_map`, or every theme failed lint), skip the injection entirely and run DRAFT against the existing per-PDF JSON inputs only — the pulse still ships with no degradation in surface output, just without the structured adjudication grounding.
 
 ```
 ADJUDICATED THEMES (use these consensus_view, facts_agreed, and falsifiable_predictions

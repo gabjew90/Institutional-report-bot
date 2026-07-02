@@ -794,6 +794,17 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
             period = e.get("actual_period")
             suffix = f" (for {period})" if period else ""
             bits.append(f"ACTUAL={actual}{unit}{suffix}")
+        elif is_released:
+            # Past its scheduled time but the actual hasn't been ingested
+            # yet (Finnhub lags releases 30-60 min). Without this marker
+            # the row sat under ALREADY RELEASED with only an est= and
+            # synthesis had no way to tell "released, number pending"
+            # from a data gap — 2026-07-02: the 9 AM pulse framed the
+            # 8:30 payrolls print as still upcoming.
+            bits.append(
+                "PRINTED — actual not ingested yet (frame as 'printed "
+                "this morning, number propagating'; NEVER as upcoming)"
+            )
         if estimate is not None:
             bits.append(f"est={estimate}{unit}")
         if prev is not None:

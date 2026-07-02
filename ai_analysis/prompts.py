@@ -1174,6 +1174,8 @@ What this means concretely:
 
 DRAFT_USER = """TODAY IS {today}. CURRENT TIME IS {now} ET.
 
+**A `[PRESS-TIME NOTE]` block in your input is BINDING and overrides {now} and the calendar's upcoming/released split.** Your context is a snapshot; the pulse posts later. When the note says an event printed between the snapshot and press time, that event is PAST: frame it as "printed this morning — number still propagating at press time, watch the reaction," never as upcoming, and NEVER invent the actual. When the note flags a stale snapshot, timestamp every live price/news item you cite ("as of ~5:25 AM ET") instead of presenting it as the current tape. A calendar row marked `PRINTED — actual not ingested yet` gets the same treatment even without a note.
+
 {ticker_block}
 
 **HOW TO USE THE TICKER LOOKUP:**
