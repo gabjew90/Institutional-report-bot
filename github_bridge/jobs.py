@@ -185,6 +185,18 @@ def _dump_context_job_inner() -> None:
         ctx["dumped_at_utc"] = datetime.utcnow().isoformat() + "Z"
         ctx["window_cutoff"] = cutoff
         ctx["window_label"] = window_label
+        # Market-holiday stamp (2026-07-02: the scheduled pulse fires on
+        # market-open days only). The routine's STEP 2 reads this and
+        # exits with a skip marker on a full NYSE closure. Name string
+        # when holiday, False when open, None when the calendar list
+        # doesn't cover the year (stale — routine proceeds normally).
+        try:
+            from world_context import is_us_market_holiday
+            et_today = ctx.get("today") or datetime.utcnow().strftime("%Y-%m-%d")
+            ctx["us_market_holiday"] = is_us_market_holiday(str(et_today))
+        except Exception as e:
+            ctx["us_market_holiday"] = None
+            log.warning(f"Bridge: holiday stamp failed (non-fatal): {e}")
 
         # Format-overhaul Phase 1: persist a compact state snapshot
         # (top themes + high-conviction calls) for the WHAT CHANGED

@@ -26,6 +26,59 @@ How to update when the world changes:
   - That's it.
 """
 
+# ─── US market holidays (NYSE full closures) ────────────────────────
+# The scheduled pulse SKIPS these days (2026-07-02 owner call: fire on
+# market-open days only). Half-days (early closes) are NOT listed — the
+# market is open, the pulse fires. UPDATE ANNUALLY: add next year's
+# list before Jan 1 or the calendar goes dark for that year and
+# is_us_market_holiday() returns None (callers treat None as "calendar
+# doesn't cover this date — proceed normally, don't skip").
+#
+# Source convention: official NYSE holiday schedule, observed dates
+# (a Saturday holiday observes Friday; a Sunday holiday observes Monday).
+
+US_MARKET_HOLIDAYS = {
+    # 2026
+    "2026-01-01": "New Year's Day",
+    "2026-01-19": "Martin Luther King Jr. Day",
+    "2026-02-16": "Presidents' Day",
+    "2026-04-03": "Good Friday",
+    "2026-05-25": "Memorial Day",
+    "2026-06-19": "Juneteenth",
+    "2026-07-03": "Independence Day (observed)",
+    "2026-09-07": "Labor Day",
+    "2026-11-26": "Thanksgiving Day",
+    "2026-12-25": "Christmas Day",
+    # 2027
+    "2027-01-01": "New Year's Day",
+    "2027-01-18": "Martin Luther King Jr. Day",
+    "2027-02-15": "Presidents' Day",
+    "2027-03-26": "Good Friday",
+    "2027-05-31": "Memorial Day",
+    "2027-06-18": "Juneteenth (observed)",
+    "2027-07-05": "Independence Day (observed)",
+    "2027-09-06": "Labor Day",
+    "2027-11-25": "Thanksgiving Day",
+    "2027-12-24": "Christmas Day (observed)",
+}
+
+_HOLIDAY_YEARS_COVERED = {y for y in
+                          {d[:4] for d in US_MARKET_HOLIDAYS}}
+
+
+def is_us_market_holiday(date_iso: str) -> str | bool | None:
+    """Holiday name if `date_iso` (YYYY-MM-DD) is a full NYSE closure,
+    False if it's a covered year but not a holiday, None if the calendar
+    doesn't cover that year (stale list — callers must proceed normally
+    and NOT skip)."""
+    if not date_iso or len(date_iso) < 10:
+        return None
+    d = date_iso[:10]
+    if d[:4] not in _HOLIDAY_YEARS_COVERED:
+        return None
+    return US_MARKET_HOLIDAYS.get(d, False)
+
+
 # ─── Fed leadership ──────────────────────────────────────────────────
 # Update both when a new chair is confirmed: FED_CHAIR is the current
 # chair's surname (used in news filter keywords), PREDECESSOR_NAME is

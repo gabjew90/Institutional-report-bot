@@ -420,6 +420,45 @@ After STEP 2 succeeds, commit a progress event so the watcher sees the routine i
 python3 /tmp/progress.py "STEP_2_DONE"
 ```
 
+### STEP 2.1 — Market-holiday gate (mandatory)
+
+The pulse fires on market-open days only (owner call, 2026-07-02). The bridge stamps `us_market_holiday` into the context from the NYSE full-closure calendar in `world_context.py`:
+
+```bash
+python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
+import json, datetime
+ctx = json.load(open('/tmp/ctx.json'))
+flag = ctx.get('us_market_holiday')
+ctx_today = str(ctx.get('today') or '')[:10]
+utc_today = datetime.datetime.utcnow().strftime('%Y-%m-%d')
+# Skip ONLY on a fresh, date-matching, truthy stamp. A None flag means
+# the holiday calendar doesn't cover this year (stale list); a date
+# mismatch means the context itself is stale — both PROCEED. Firing is
+# the default; skipping is the rare, deliberate action.
+if flag and ctx_today == utc_today:
+    print(f"MARKET HOLIDAY: {flag} — skipping today's pulse")
+    open('/tmp/holiday_skip.txt', 'w').write(str(flag))
+else:
+    print(f"holiday gate: proceed (flag={flag!r}, ctx_today={ctx_today}, utc_today={utc_today})")
+PYEOF
+```
+
+**If `/tmp/holiday_skip.txt` exists: STOP the routine here.** Do exactly two things, then end:
+
+1. Commit a skip marker to `pulse-output/qc-reviews/<ts>.md` (via the `mcp__github__*` transport, per the COMMIT TRANSPORT override) with this content — a missing pulse must be self-documenting, never a mystery to debug:
+
+   ```
+   # Pulse skipped — US market holiday
+
+   - Date: <today>
+   - Holiday: <contents of /tmp/holiday_skip.txt>
+   - No pulse was synthesized or posted (by design — the pulse fires on
+     market-open days only). Nothing is wrong. Next scheduled fire is
+     the next market-open weekday.
+   ```
+
+2. Report: "Pulse skipped — <holiday name>, US markets closed. Skip marker committed. No pulse posted (by design)." Do NOT run STEP 2.5 or anything after; do NOT post to Discord.
+
 ### STEP 2.5 — Press-time freshness check (mandatory)
 
 The context is a SNAPSHOT from `dumped_at_utc`; the pulse posts at fire time. Anything that happened in between — most importantly an 8:30 AM ET data print before a ~10:05 post — is invisible to the snapshot, and the calendar inside it still says "upcoming" for events that have since occurred. (2026-07-02 failure: the dump job froze at 09:25 UTC, the pulse consumed 4-hour-stale context and told readers to WATCH the 8:30 payrolls print at 9:06 AM.) Reconcile at press time:

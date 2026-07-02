@@ -22,7 +22,7 @@ pdf_files row created with status=DOWNLOADED
   ↓                          — deep analysis (Gemini text-only, full document, ~15K tokens)
   ↓ pdf_analyses row (append; old analyses preserved as history)
   ↓
-Scheduled 10:00 AM ET (Claude.ai routine cron 0 14 * * 1-5 UTC; moved from 9 AM on 2026-07-02)
+Scheduled 10:00 AM ET, market-open days only (Claude.ai routine cron 0 14 * * 1-5 UTC; NYSE holidays skip via world_context.US_MARKET_HOLIDAYS + routine STEP 2.1 — update the calendar annually)
   OR user runs /pulse, /pulse hours:N
   ↓
 report/synthesizer.py — builds context (live market data + news + calendar + prev pulse if scheduled)
