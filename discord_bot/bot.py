@@ -4183,11 +4183,18 @@ async def _answer_with_gemini(
     asker_username: str = "",
     channel_name: str = "",
     channel_id: int | None = None,
+    _transient_retry: bool = False,
 ) -> discord.Embed:
     """Run a Gemini grounded-search query and return a Discord embed.
 
     Enforces the per-user daily cap. Returns a single embed with the answer
     + sources footer + NFA footer, or an error embed on failure.
+
+    `_transient_retry` is internal: on a transient Gemini failure (500 /
+    503 / timeout) the function retries ITSELF once with this flag set,
+    so a server blip doesn't surface as a user-facing error. 2026-07-02
+    QC: two of five morning asks died on 500 INTERNAL while the same
+    question shape worked 21 seconds later — both were one-retry saves.
 
     `chat_context` (optional) is a pre-formatted recent-channel-history block
     from `_fetch_chat_context`. When non-empty, it's prepended to the user's
@@ -5271,6 +5278,34 @@ async def _answer_with_gemini(
         embed.set_footer(text="Hi, I'm AI-powered - NFA")
         return embed
     except Exception as e:
+        # One automatic retry on TRANSIENT server-side failures (5xx /
+        # timeout) before surfacing anything to the user. These resolve
+        # in seconds; the caller shouldn't eat a "try again" for them.
+        # The retry re-runs the whole flow (tool calls are idempotent
+        # reads); a second failure falls through to normal handling.
+        _err = str(e).lower()
+        _is_transient = any(
+            t in _err for t in ("500", "503", "internal", "timeout",
+                                "unavailable", "deadline")
+        )
+        if _is_transient and not _transient_retry:
+            log.warning(
+                f"/ask transient failure ({type(e).__name__}) — retrying "
+                f"once in 2s: {str(e)[:150]}"
+            )
+            await asyncio.sleep(2)
+            return await _answer_with_gemini(
+                question, user_id,
+                chat_context=chat_context,
+                fetched_urls=fetched_urls,
+                images=images,
+                profile_user_ids=profile_user_ids,
+                asker_display_name=asker_display_name,
+                asker_username=asker_username,
+                channel_name=channel_name,
+                channel_id=channel_id,
+                _transient_retry=True,
+            )
         log.error(f"Gemini /ask call failed: {e}", exc_info=True)
         # Log the FAILURE to the ask-log so QC sees the complete record
         # (failures were previously invisible — finding 2026-06-10).
