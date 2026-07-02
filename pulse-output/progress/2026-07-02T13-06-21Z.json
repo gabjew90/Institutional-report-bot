@@ -13,23 +13,48 @@
   },
   {
    "step": "STEP_3_5_DONE",
-   "time": "2026-07-02T13:14:36Z",
+   "time": "2026-07-02T13:12:27Z",
    "detail": "8 validated, 0 discarded"
   },
   {
    "step": "STEP_4_DONE",
-   "time": "2026-07-02T13:25:20Z",
+   "time": "2026-07-02T13:22:14Z",
    "detail": "6 INSIGHTS themes"
   },
   {
    "step": "STEP_4_5_VALIDATE_DONE",
-   "time": "2026-07-02T13:26:03Z",
+   "time": "2026-07-02T13:22:23Z",
    "detail": "exit 0, clean"
   },
   {
    "step": "STEP_5A_STITCH_DONE",
-   "time": "2026-07-02T13:26:57Z",
+   "time": "2026-07-02T13:22:41Z",
    "detail": ""
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-07-02T13:31:25Z",
+   "detail": "6 themes kept, _LEANS restored after stitch bug"
+  },
+  {
+   "step": "STEP_5_5_LINT_DONE",
+   "time": "2026-07-02T13:31:42Z",
+   "detail": "6 hard issues, SCRUB dispatch"
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-07-02T13:35:34Z",
+   "detail": "2 passes: 6 hard -> 0 hard"
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-07-02T13:35:34Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_6_COMMIT_DONE",
+   "time": "2026-07-02T13:38:07Z",
+   "detail": "pulse 85f5d3f3, artifacts ..2d7550dd"
   }
  ]
 }
