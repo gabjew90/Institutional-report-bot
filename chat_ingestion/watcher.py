@@ -183,7 +183,7 @@ async def _safe_ocr_inline(message: discord.Message, chan_name: str) -> None:
 
     Step 2: _classify_message_for_trade — new path (2026-06-02).
     Picks up text-only trade narratives that the image-only pipeline
-    misses entirely (e.g., ZHawk's 'PURR Leaps 12/18 \$14 @4.10'
+    misses entirely (e.g., ZHawk's 'PURR Leaps 12/18 $14 @4.10'
     posts that have no screenshot). Two-tier dedup in
     db.insert_text_extracted_trade_if_not_dup prevents creating a
     second row for messages where Step 1 already wrote one.

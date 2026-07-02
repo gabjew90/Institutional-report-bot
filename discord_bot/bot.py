@@ -3578,6 +3578,106 @@ def _strip_sentences(answer: str, to_remove: list[str]) -> str:
     return out.strip()
 
 
+# =====================================================================
+# Member-outcome guard — structural enforcement of "clapbacks can't
+# have no truth behind them" (2026-07-02). The trade ledger records
+# what members POSTED, not their live P&L; profiles carry qualitative
+# color ("bag-holding yapper") that the model amplifies into asserted
+# outcomes. Observed 2026-07-02: clapback told Cpig he's "underwater
+# on your own bags" — his ledger shows NO documented outcomes at all
+# (and GEO was ripping). Same failure family as the TA guard: a claim
+# with no source. This detects second-person P&L-STATE assertions and,
+# when the turn carried no trade data (no lookup_trade_log call) and
+# the sentence isn't the member's own attributed claim, rewrites the
+# jab onto documented behavior — or strips it.
+# =====================================================================
+
+# Second-person marker — the claim is about the person being addressed.
+_OUTCOME_2P_RE = re.compile(r"\b(?:you|your|ur)\b", re.IGNORECASE)
+# P&L-state assertion lexicon. Conservative: strong outcome shapes only,
+# so room-idiom banter that ISN'T an outcome claim doesn't trip it.
+_OUTCOME_CLAIM_RE = re.compile(
+    r"(\bunderwater\b"
+    r"|\bdown\s+bad\b"
+    r"|\bbag.?hold(?:ing|er)?\b"
+    r"|\bbleed(?:ing|s)?(?:\s+out)?\b"
+    r"|\bbl[eo]w(?:n|ing)?\s+up\b"
+    r"|\bround.?tripp?(?:ed|ing)?\b"
+    r"|\bin\s+the\s+red\b"
+    r"|\b(?:down|up)\s+\d+(?:\.\d+)?\s*%)",
+    re.IGNORECASE,
+)
+# Attribution / self-report markers — the member's OWN claim or a
+# documented post is a legitimate source ("you said you're up 250%",
+# "you posted the +65% close", "you never posted an exit").
+_OUTCOME_ATTRIB_RE = re.compile(
+    r"\b(?:said|says|claimed|claiming|posted|logged|screenshot(?:ted)?"
+    r"|flagged|admitted|called\s+it|your\s+own\s+words|by\s+your\s+math"
+    r"|per\s+your)\b",
+    re.IGNORECASE,
+)
+
+
+def _outcome_violations(answer: str, context_text: str = "") -> list[str]:
+    """Sentences asserting a member's P&L state with no visible source.
+    A sentence is flagged when it has a second-person marker AND an
+    outcome claim, UNLESS it carries an attribution marker or every
+    percentage it cites appears verbatim in the turn's context (i.e. it
+    came from an injected gain_pct, not thin air)."""
+    if not answer:
+        return []
+    flagged: list[str] = []
+    for s in _split_sentences(answer):
+        if not (_OUTCOME_2P_RE.search(s) and _OUTCOME_CLAIM_RE.search(s)):
+            continue
+        if _OUTCOME_ATTRIB_RE.search(s):
+            continue
+        pcts = re.findall(r"\d+(?:\.\d+)?%", s)
+        if pcts and context_text and all(p in context_text for p in pcts):
+            continue  # numbers sourced from injected context
+        flagged.append(s)
+    return flagged
+
+
+def _has_unsourced_outcome_claims(
+    answer: str, tool_trace: list, context_text: str = ""
+) -> bool:
+    """True when the answer asserts a member's P&L state and the turn
+    consulted NO trade data. Unlike the TA guard, WEB grounding does NOT
+    exempt — the open web can't source a member's book. Only a
+    lookup_trade_log call this turn counts as consulting the ledger."""
+    if not answer or len(answer) < 20:
+        return False
+    if any(
+        (t.get("tool") or "") == "lookup_trade_log"
+        for t in (tool_trace or [])
+    ):
+        return False
+    return bool(_outcome_violations(answer, context_text))
+
+
+# /ask-only passive-aggressive register templates (2026-07-02). The
+# deadpan/faux-advice ban is a pinned prompt rule the model still slips
+# on; these feed the detect→rewrite pass (same path as meta-narration).
+# Conservative: template shapes, not vibes — a direct roast doesn't
+# match these.
+_ASK_PASSIVE_AGGRESSIVE_RES = [
+    # "maybe focus on X instead of Y" / "maybe spend less time on X..."
+    re.compile(
+        r"\bmaybe\s+(?:focus|spend|put|worry|try|stick\s+to)\b"
+        r"[^.\n]{0,60}\binstead\s+of\b",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"\bif\s+you\s+(?:put|spent|gave)\s+half\s+(?:the|that)\s+"
+        r"(?:energy|time|effort)\b",
+        re.IGNORECASE,
+    ),
+    re.compile(r"\bdo\s+with\s+that\s+what\s+you\s+will\b", re.IGNORECASE),
+    re.compile(r"\bif\s+you\s+say\s+so\b", re.IGNORECASE),
+    re.compile(r"\btrading\s+in\s+your\s+head\s+again\b", re.IGNORECASE),
+]
+
 # Mechanical em-dash + semicolon strip. Pulse-side lint replaces these
 # via SCRUB; /ask doesn't have a SCRUB pass and they keep shipping.
 # Cheap mechanical replacement preserves the surrounding sentence
@@ -3640,6 +3740,15 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
                     hit_kinds.append(kind)
             except re.error:
                 continue
+        # /ask-ONLY register lint (not in the shared compose set — the
+        # pulse pipeline doesn't have this failure mode): the
+        # condescending faux-advice / sardonic templates the deadpan
+        # rule bans. Detection feeds the same rewrite pass as
+        # meta-narration (2026-07-02 QC: "maybe focus on your own
+        # portfolio instead of my hydration" shipped through).
+        for pa_pat in _ASK_PASSIVE_AGGRESSIVE_RES:
+            if pa_pat.search(scan):
+                hit_kinds.append("passive-aggressive")
     except Exception as e:
         log.debug(f"/ask voice-cleanup scan failed (non-fatal): {e}")
 
@@ -4738,12 +4847,25 @@ async def _answer_with_gemini(
         # with a tiny prompt. No tools, low budget. If the rewrite also
         # leaks (or fails), ship the original — better SOMETHING than
         # blank.
-        if answer and "meta-narration" in (hit_kinds or []):
+        _register_rewrite_kinds = {"meta-narration", "passive-aggressive"} & set(
+            hit_kinds or []
+        )
+        if answer and _register_rewrite_kinds:
             log.warning(
-                f"/ask: architecture-leak phrase shipped through lint "
-                f"(q={question[:80]!r}); requesting rewrite"
+                f"/ask: register violation shipped through lint "
+                f"({sorted(_register_rewrite_kinds)}, q={question[:80]!r}); "
+                f"requesting rewrite"
             )
             try:
+                _pa_directive = (
+                    "Convert any passive-aggressive or condescending "
+                    "faux-advice construction into a DIRECT statement — "
+                    "shapes like 'maybe focus on X instead of Y', 'if you "
+                    "put half the energy into X...', 'do with that what "
+                    "you will', 'if you say so'. Say the actual point "
+                    "straight; if it's a jab, jab directly with the same "
+                    "material — no sardonic wind-up, no advice framing. "
+                ) if "passive-aggressive" in _register_rewrite_kinds else ""
                 rewrite_prompt = (
                     "Rewrite the following Discord bot answer so it sounds "
                     "like a trader talking to another trader. Strip ANY "
@@ -4753,9 +4875,11 @@ async def _answer_with_gemini(
                     "to', 'I can search', 'my tools'. If the answer is a "
                     "decline ('can't pull that one'), keep the decline but "
                     "drop the architecture excuse — just say what you don't "
-                    "have, not why your data layer doesn't have it. Keep "
-                    "the same length, voice, and substance. Output ONLY the "
-                    "rewritten answer, no preamble.\n\n"
+                    "have, not why your data layer doesn't have it. "
+                    + _pa_directive +
+                    "Do NOT add any new facts, names, tickers, or numbers. "
+                    "Keep the same length, voice, and substance. Output ONLY "
+                    "the rewritten answer, no preamble.\n\n"
                     "ORIGINAL:\n"
                     f"{answer}"
                 )
@@ -4788,13 +4912,13 @@ async def _answer_with_gemini(
                 if rewritten:
                     # Re-lint to make sure the rewrite is actually clean.
                     rewritten, rewrite_hits = _clean_voice_violations(rewritten)
-                    if "meta-narration" not in (rewrite_hits or []):
+                    if not (_register_rewrite_kinds & set(rewrite_hits or [])):
                         answer = rewritten
-                        log.info("/ask: architecture-leak rewrite succeeded")
+                        log.info("/ask: register rewrite succeeded")
                     else:
                         log.warning(
-                            "/ask: rewrite still leaks meta-narration — "
-                            "shipping original"
+                            "/ask: rewrite still carries a register "
+                            "violation — shipping original"
                         )
                 else:
                     log.warning(
@@ -5003,6 +5127,91 @@ async def _answer_with_gemini(
                         )
             except Exception as e:
                 log.warning(f"/ask: no-chart-data retry call failed: {e}")
+
+        # Member-outcome guard — clapbacks can't have no truth behind
+        # them. If the answer asserts someone's P&L STATE ("underwater
+        # on your bags", "down 40%") and this turn consulted no trade
+        # data, rewrite the jab onto documented material; strip what
+        # survives. (2026-07-02: Cpig clapback asserted "underwater" —
+        # his ledger shows zero documented outcomes.)
+        if answer and _has_unsourced_outcome_claims(
+            answer, _ask_tool_trace, user_content
+        ):
+            oc0 = _outcome_violations(answer, user_content)
+            log.warning(
+                f"/ask: unsourced member-outcome claim(s) "
+                f"(q={question[:80]!r}, n={len(oc0)}) — requesting rewrite"
+            )
+            try:
+                oc_prompt = (
+                    "Rewrite the following Discord bot answer. It asserts "
+                    "someone's profit/loss STATE (e.g. 'underwater', 'down "
+                    "bad', 'bleeding', 'down N%') with NO documented source "
+                    "— the trade ledger only records what people POST, so "
+                    "an asserted P&L state is fabrication. Replace each "
+                    "such claim with what IS verifiable in the answer's own "
+                    "remaining material: documented behavior (entries with "
+                    "no posted exit, spamming a ticker, their own quoted "
+                    "words), or drop the claim. Do NOT add any new facts, "
+                    "tickers, percentages, or events. Keep the same length, "
+                    "voice, and heat — the jab stays, the invented outcome "
+                    "goes. Output ONLY the rewritten answer, no preamble.\n\n"
+                    "ORIGINAL:\n"
+                    f"{answer}"
+                )
+                oc_config = types.GenerateContentConfig(
+                    system_instruction=(
+                        "You are a senior trader rewriting another trader's "
+                        "message. Direct, in-register, no AI tells. Never "
+                        "state an outcome the material doesn't document."
+                    ),
+                    safety_settings=safety_settings,
+                    max_output_tokens=1500,
+                    temperature=0.4,
+                    thinking_config=types.ThinkingConfig(thinking_budget=512),
+                )
+                oc_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=[types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=oc_prompt)],
+                    )],
+                    config=oc_config,
+                )
+                _tally_retry_usage(oc_resp)
+                try:
+                    oc_answer = (oc_resp.text or "").strip()
+                except Exception:
+                    oc_answer = ""
+                if oc_answer and not _outcome_violations(
+                    oc_answer, user_content
+                ):
+                    answer = oc_answer
+                    log.info("/ask: outcome-claim rewrite succeeded")
+                else:
+                    # Strip the offending sentences from whichever draft
+                    # is cleaner; a clapback minus its invented outcome
+                    # is still a clapback.
+                    base = oc_answer if (
+                        oc_answer
+                        and len(_outcome_violations(oc_answer, user_content))
+                        < len(oc0)
+                    ) else answer
+                    to_strip = _outcome_violations(base, user_content)
+                    stripped = _strip_sentences(base, to_strip)
+                    if stripped:
+                        answer = stripped
+                        log.warning(
+                            f"/ask: stripped {len(to_strip)} unsourced "
+                            f"outcome sentence(s)"
+                        )
+                    else:
+                        log.warning(
+                            "/ask: outcome strip would empty the answer — "
+                            "shipping original"
+                        )
+            except Exception as e:
+                log.warning(f"/ask: outcome-claim rewrite call failed: {e}")
 
         # Blank-answer recovery. Gemini can return an empty text payload
         # when (a) max_output_tokens was burned in the thinking phase,
