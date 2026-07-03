@@ -1,0 +1,15 @@
+{
+ "ts": "2026-07-03T14-06-19Z",
+ "events": [
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-07-03T14:07:00Z",
+   "detail": "context fetched (58 PDFs, 39 themes); holiday gate fired next"
+  },
+  {
+   "step": "HOLIDAY_SKIP",
+   "time": "2026-07-03T14:07:30Z",
+   "detail": "Independence Day (observed) — US markets closed; pulse skipped by design"
+  }
+ ]
+}
