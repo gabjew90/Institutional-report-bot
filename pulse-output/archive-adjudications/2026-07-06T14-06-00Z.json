@@ -1,0 +1,688 @@
+{
+ "pulse_date": "2026-07-06",
+ "window_label": "96h ceiling",
+ "themes": [
+  {
+   "theme": "fed rate hike expectations",
+   "selected": true,
+   "stance_counts": {
+    "supportive": 11,
+    "skeptical": 4,
+    "neutral": 14
+   },
+   "consensus_view": "Most banks think the Fed will keep rates on hold and that traders betting on more rate hikes overdid it, especially after June's weak jobs report, but a vocal minority argues the opposite: hikes are underpriced and could go further than markets expect.",
+   "facts_agreed": [
+    {
+     "claim": "June's weak payrolls report pushed markets to pare back their bets on a near-term Fed rate hike.",
+     "banks_for": [
+      "Crédit Agricole CIB",
+      "Rabobank"
+     ],
+     "evidence_quotes": [
+      "Front-end rates declined as a weaker-than-expected headline NFP eased concerns on a near-term Fed rate hike.",
+      "US money markets pared back their pricing of Fed rate hikes somewhat."
+     ]
+    },
+    {
+     "claim": "The Fed will hold rates steady rather than hike this year, and market pricing of further hikes is too aggressive.",
+     "banks_for": [
+      "UBS",
+      "JPMorgan",
+      "Morgan Stanley",
+      "ANZ Research",
+      "ING"
+     ],
+     "evidence_quotes": [
+      "In our view, this is still too hawkish, and we expect the Fed to refrain from hikes.",
+      "On balance, we continue to see the Fed remaining patient and holding rates steady",
+      "we are comfortable sticking with our view that the Fed will not hike this year.",
+      "Our baseline view is that the Fed is on an extended pause",
+      "This may push the market further in the direction of anticipating a long pause"
+     ]
+    },
+    {
+     "claim": "The Fed under Chair Warsh is scaling back forward guidance (telling markets in advance what it plans to do) and moving toward phasing out the dot plot of rate projections.",
+     "banks_for": [
+      "Morgan Stanley",
+      "The Market Ear"
+     ],
+     "evidence_quotes": [
+      "Warsh made it abundantly clear that in the future, forward guidance will play a much smaller role",
+      "there will still be dots for a short time, at the very least"
+     ]
+    }
+   ],
+   "facts_contested": [
+    {
+     "claim": "Whether markets are underpricing or overpricing coming Fed rate hikes",
+     "banks_for": [
+      "Citadel Securities",
+      "TS Lombard",
+      "UBS Asset Management"
+     ],
+     "for_evidence": "We think that the market is underpricing the probability of a July hike.",
+     "banks_against": [
+      "UBS",
+      "Morgan Stanley",
+      "JPMorgan"
+     ],
+     "against_evidence": "In our view, this is still too hawkish, and we expect the Fed to refrain from hikes."
+    },
+    {
+     "claim": "Near-term Fed direction: a September rate cut versus holding rates steady all year",
+     "banks_for": [
+      "Academy Securities"
+     ],
+     "for_evidence": "I will continue to pound the table that this Fed Will Cut Rates in September.",
+     "banks_against": [
+      "JPMorgan",
+      "Morgan Stanley"
+     ],
+     "against_evidence": "On balance, we continue to see the Fed remaining patient and holding rates steady"
+    }
+   ],
+   "falsifiable_predictions": [
+    {
+     "bank": "Morgan Stanley",
+     "subject": "US core PCE inflation, Q4-over-Q4 2026",
+     "direction_or_level": "3.0%, below the Fed's 3.3% projection",
+     "by_when": "Q4 2026",
+     "source_quote": "Core PCE inflation forecast Q4/Q4 2026"
+    },
+    {
+     "bank": "Morgan Stanley",
+     "subject": "ECB policy rate",
+     "direction_or_level": "25bp hike",
+     "by_when": "September 2026",
+     "source_quote": "Expected ECB rate hike in September"
+    },
+    {
+     "bank": "Morgan Stanley",
+     "subject": "US breakeven payroll pace (monthly job growth needed to hold unemployment steady)",
+     "direction_or_level": "50k per month",
+     "by_when": "2026",
+     "source_quote": "Projected 2026 breakeven payroll pace"
+    }
+   ]
+  },
+  {
+   "theme": "ai infrastructure and capex",
+   "selected": true,
+   "stance_counts": {
+    "supportive": 7,
+    "skeptical": 3,
+    "neutral": 12
+   },
+   "consensus_view": "Most banks agree the massive AI infrastructure spending wave is real and still lifting earnings and chip demand, but a skeptical minority warns the debt-funded buildout is behind schedule, losing pricing power with customers, and vulnerable if the easy money funding it dries up.",
+   "facts_agreed": [
+    {
+     "claim": "The AI infrastructure and capital-spending boom is well established and remains the dominant driver of markets and earnings.",
+     "banks_for": [
+      "UBS Asset Management",
+      "Goldman Sachs",
+      "The Market Ear",
+      "UBS"
+     ],
+     "evidence_quotes": [
+      "The AI capital expenditure (capex) boom supporting the US and EM Asia is well established",
+      "All roads really do lead to datacenters",
+      "Maintain overweight exposure to AI infrastructure supply chains.",
+      "We remain constructive on the AI theme and continue to see roughly 10% upside"
+     ]
+    },
+    {
+     "claim": "AI adoption is spreading through corporate America and is expected to deliver a real productivity boost to the economy.",
+     "banks_for": [
+      "Goldman Sachs",
+      "UBS"
+     ],
+     "evidence_quotes": [
+      "we expect to see a quicker impact of AI on productivity",
+      "AI adoption in corporate America currently stands around 20.6%",
+      "AI appears to be another transformational innovation that could lead to another productivity boom"
+     ]
+    },
+    {
+     "claim": "AI demand is driving a broad upgrade and repricing cycle across semiconductors, servers, and memory hardware.",
+     "banks_for": [
+      "Morgan Stanley",
+      "JPMorgan",
+      "Goldman Sachs"
+     ],
+     "evidence_quotes": [
+      "Memory chips are emerging as a critical input in the global AI ecosystem.",
+      "full-year industry sales would be up >90% Y/Y, and in the range of $1.5-1.6T",
+      "AI server components riding on specification upgrades; and (3) ASIC AI servers’ rising penetration rate."
+     ]
+    },
+    {
+     "claim": "Meta's reported move into selling cloud AI infrastructure is a positive step toward showing a direct revenue payback on its huge AI spending.",
+     "banks_for": [
+      "Deutsche Bank",
+      "JPMorgan"
+     ],
+     "evidence_quotes": [
+      "we contend this could pivot the AI capex debate from “Capex with limited revenue upside”",
+      "we view the report as a positive development for Meta’s medium- to long-term AI monetization strategy"
+     ]
+    }
+   ],
+   "facts_contested": [
+    {
+     "claim": "Whether the debt-funded AI capex boom is sustainable or a bubble that collapses when the credit funding it runs out",
+     "banks_for": [
+      "UBS Asset Management"
+     ],
+     "for_evidence": "The AI capital expenditure (capex) boom supporting the US and EM Asia is well established",
+     "banks_against": [
+      "The Market Ear"
+     ],
+     "against_evidence": "at some point the seemingly endless credit firehose that is funding the trillions in projected capex will end"
+    },
+    {
+     "claim": "Whether the AI infrastructure buildout is on track or years behind schedule due to power shortages and community pushback",
+     "banks_for": [
+      "Goldman Sachs"
+     ],
+     "for_evidence": "All roads really do lead to datacenters",
+     "banks_against": [
+      "The Market Ear"
+     ],
+     "against_evidence": "AI supercycle, which is already years behind schedule"
+    },
+    {
+     "claim": "Whether AI companies are keeping pricing power over cost-sensitive customers",
+     "banks_for": [
+      "UBS"
+     ],
+     "for_evidence": "We remain constructive on the AI theme and continue to see roughly 10% upside",
+     "banks_against": [
+      "Bloomberg Markets Live"
+     ],
+     "against_evidence": "prices the sector commands for each unit of usage are drifting lower"
+    }
+   ],
+   "falsifiable_predictions": [
+    {
+     "bank": "UBS",
+     "subject": "Annual AI-related capex",
+     "direction_or_level": "$1T",
+     "by_when": "next year",
+     "source_quote": "Annual AI-related capex forecast"
+    },
+    {
+     "bank": "Bloomberg Markets Live",
+     "subject": "AI sector capex",
+     "direction_or_level": "$1 trillion",
+     "by_when": "2027",
+     "source_quote": "Projected 2027 capex"
+    },
+    {
+     "bank": "Goldman Sachs",
+     "subject": "Global data center power demand",
+     "direction_or_level": "up 220% vs 2023",
+     "by_when": "2030",
+     "source_quote": "Global data center power demand growth (2030 vs 2023)"
+    },
+    {
+     "bank": "Goldman Sachs",
+     "subject": "US economy-wide AI adoption rate",
+     "direction_or_level": "23.9%",
+     "by_when": "year-end 2026",
+     "source_quote": "Projected year-end AI adoption rate"
+    },
+    {
+     "bank": "Morgan Stanley",
+     "subject": "DRAM wafer capacity",
+     "direction_or_level": "30% expansion",
+     "by_when": "by 2027",
+     "source_quote": "DRAM wafer capacity expansion"
+    },
+    {
+     "bank": "Morgan Stanley",
+     "subject": "Memory supply shortfall for smartphones and PCs",
+     "direction_or_level": "12-15% shortfall",
+     "by_when": "by 2027",
+     "source_quote": "For smartphones and PCs by 2027"
+    },
+    {
+     "bank": "Morgan Stanley",
+     "subject": "Incremental memory revenue",
+     "direction_or_level": "$600B",
+     "by_when": "2026",
+     "source_quote": "Incremental memory revenue"
+    },
+    {
+     "bank": "UBS",
+     "subject": "Memory pricing quarter-over-quarter",
+     "direction_or_level": "up 30% to 40% (vs consensus 10-15%)",
+     "by_when": "Q3 2026",
+     "source_quote": "Memory pricing increase forecast"
+    },
+    {
+     "bank": "HSBC",
+     "subject": "2026 server CPU shipment growth",
+     "direction_or_level": "25% y-o-y",
+     "by_when": "2026",
+     "source_quote": "2026 Server CPU shipment growth estimate"
+    },
+    {
+     "bank": "JPMorgan",
+     "subject": "2026 semiconductor industry full-year sales",
+     "direction_or_level": "$1.5-1.6T",
+     "by_when": "full-year 2026",
+     "source_quote": "2026 full-year industry sales forecast"
+    }
+   ]
+  },
+  {
+   "theme": "Fed Chair Kevin Warsh commentary on AI disinflation",
+   "selected": true,
+   "stance_counts": {
+    "supportive": 0,
+    "skeptical": 0,
+    "neutral": 11
+   },
+   "consensus_view": "Eleven research desks flag new Fed Chair Kevin Warsh, his hawkish lean, his first FOMC meeting and his comments on inflation risks and AI-driven disinflation, as a live policy catalyst, but none has staked a directional trade view on it yet.",
+   "facts_agreed": [
+    {
+     "claim": "Eleven banks reference Fed Chair Kevin Warsh's commentary, leadership and inflation stance as a near-term policy catalyst this window without taking a directional view on it.",
+     "banks_for": [
+      "ANZ Research",
+      "Bloomberg",
+      "Citadel Securities",
+      "Crédit Agricole CIB",
+      "Deutsche Bank",
+      "Goldman Sachs",
+      "Morgan Stanley",
+      "Scotiabank",
+      "TS Lombard",
+      "UBS",
+      "UBS Asset Management"
+     ],
+     "evidence_quotes": [
+      "Fed Chair Warsh's inflation risk assessment",
+      "Chairman Warsh comments on inflation risks",
+      "Kevin Warsh FOMC leadership",
+      "Chair Warsh's first FOMC meeting",
+      "Kevin Warsh inflation commentary"
+     ]
+    },
+    {
+     "claim": "The desks that characterize Warsh's policy posture describe it as hawkish, with a tougher Fed reaction function and shifting forward guidance.",
+     "banks_for": [
+      "UBS",
+      "Crédit Agricole CIB",
+      "Citadel Securities"
+     ],
+     "evidence_quotes": [
+      "Fed Chair Kevin Warsh hawkish tilt",
+      "Warsh's hardened FOMC reaction function",
+      "Fed Chair Warsh forward guidance shift"
+     ]
+    }
+   ],
+   "facts_contested": [],
+   "falsifiable_predictions": [
+    {
+     "bank": "Morgan Stanley",
+     "subject": "US core PCE inflation (Q4/Q4 2026)",
+     "direction_or_level": "3.0%, below the Fed's 3.3% forecast",
+     "by_when": "Q4 2026",
+     "source_quote": "Core PCE inflation forecast Q4/Q4 2026"
+    },
+    {
+     "bank": "UBS",
+     "subject": "US inflation trend",
+     "direction_or_level": "0.8 percentage point reduction from unwinding tariff pass-through",
+     "by_when": "over the next year",
+     "source_quote": "Projected impact of unwinding tariff pass-through effects over the next year."
+    },
+    {
+     "bank": "Goldman Sachs",
+     "subject": "US economy-wide AI adoption rate",
+     "direction_or_level": "23.9%",
+     "by_when": "year-end 2026",
+     "source_quote": "Projected year-end AI adoption rate"
+    }
+   ]
+  },
+  {
+   "theme": "oil supply normalization",
+   "selected": true,
+   "stance_counts": {
+    "supportive": 1,
+    "skeptical": 0,
+    "neutral": 8
+   },
+   "consensus_view": "Banks across eight desks agree oil shipments through the Strait of Hormuz are coming back online after the Middle East disruption, but they split on whether the recovery is complete or still lagging.",
+   "facts_agreed": [
+    {
+     "claim": "Eight banks flag Strait of Hormuz oil flows as the central supply story this window, with the shipping chokepoint recovering after the Middle East conflict.",
+     "banks_for": [
+      "ING",
+      "ANZ Research",
+      "Goldman Sachs",
+      "JPMorgan",
+      "Morgan Stanley",
+      "The Market Ear",
+      "UBS",
+      "UBS Asset Management"
+     ],
+     "evidence_quotes": [
+      "flows through the Strait of Hormuz continue to normalise",
+      "Strait of Hormuz traffic resumption",
+      "Strait of Hormuz shipping recovery",
+      "Strait of Hormuz supply chain",
+      "Strait of Hormuz energy supply"
+     ]
+    }
+   ],
+   "facts_contested": [
+    {
+     "claim": "Whether Strait of Hormuz oil flows have fully normalized or supply remains constrained",
+     "banks_for": [
+      "ING",
+      "JPMorgan",
+      "The Market Ear"
+     ],
+     "for_evidence": "flows through the Strait of Hormuz continue to normalise",
+     "banks_against": [
+      "Morgan Stanley",
+      "UBS",
+      "ANZ Research"
+     ],
+     "against_evidence": "Persian Gulf crude export recovery lag"
+    }
+   ],
+   "falsifiable_predictions": [
+    {
+     "bank": "ANZ Research",
+     "subject": "global oil demand",
+     "direction_or_level": "contracts by 1.5mb/d",
+     "by_when": "2026",
+     "source_quote": "2026 global oil demand contraction"
+    },
+    {
+     "bank": "ANZ Research",
+     "subject": "global oil demand",
+     "direction_or_level": "recovers by 2mb/d",
+     "by_when": "2027",
+     "source_quote": "2027 oil demand recovery"
+    }
+   ]
+  },
+  {
+   "theme": "labour market health",
+   "selected": true,
+   "stance_counts": {
+    "supportive": 0,
+    "skeptical": 1,
+    "neutral": 6
+   },
+   "consensus_view": "Banks broadly agree the June jobs report was weak, with hiring at 57,000 (about half of what was expected), but they are split on whether the falling unemployment rate shows real strength or just people dropping out of the workforce.",
+   "facts_agreed": [
+    {
+     "claim": "The US labor market is cooling, with multiple desks describing softening, moderation, or weakness after the June jobs report.",
+     "banks_for": [
+      "ING",
+      "Mizuho International",
+      "Citadel Securities"
+     ],
+     "evidence_quotes": [
+      "US labor market weakness",
+      "US labour market moderation",
+      "cooling labor demand",
+      "US jobs report softness"
+     ]
+    }
+   ],
+   "facts_contested": [
+    {
+     "claim": "Whether the US labor market is weakening or holding up",
+     "banks_for": [
+      "ING",
+      "Citadel Securities"
+     ],
+     "for_evidence": "US labor market weakness",
+     "banks_against": [
+      "UBS"
+     ],
+     "against_evidence": "US labor market resilience"
+    },
+    {
+     "claim": "Whether the low unemployment rate reflects genuine labor market strength",
+     "banks_for": [
+      "ANZ Research"
+     ],
+     "for_evidence": "We do not view the current low unemployment rate as an indication of labour market strength",
+     "banks_against": [
+      "UBS"
+     ],
+     "against_evidence": "US labor market resilience"
+    }
+   ],
+   "falsifiable_predictions": [
+    {
+     "bank": "Morgan Stanley",
+     "subject": "US breakeven payroll pace",
+     "direction_or_level": "50k per month",
+     "by_when": "2026",
+     "source_quote": "Projected 2026 breakeven payroll pace"
+    }
+   ]
+  },
+  {
+   "theme": "june nonfarm payrolls",
+   "selected": true,
+   "stance_counts": {
+    "supportive": 0,
+    "skeptical": 0,
+    "neutral": 6
+   },
+   "consensus_view": "Six banks treat the June jobs report as the week's central macro event and agree it showed hiring slowing sharply, with only 57,000 jobs added versus roughly 113,000 expected, but none has staked a directional market call on it yet.",
+   "facts_agreed": [
+    {
+     "claim": "Banks across six desks flag the June nonfarm payrolls (monthly US jobs) report as a key macro catalyst in this window, mostly as an event to watch rather than a directional call.",
+     "banks_for": [
+      "Bank of America",
+      "Deutsche Bank",
+      "Goldman Sachs",
+      "MUFG Research",
+      "Morgan Stanley",
+      "UBS"
+     ],
+     "evidence_quotes": [
+      "June nonfarm payrolls data release",
+      "June payrolls report impact on rate expectations",
+      "Nonfarm payrolls print",
+      "US nonfarm payrolls",
+      "June Nonfarm Payrolls report"
+     ]
+    },
+    {
+     "claim": "June payrolls rose just 57,000, far below consensus expectations of roughly 110,000-129,000, and the prior two months were revised down by a net 74,000, pointing to a cooling job market.",
+     "banks_for": [
+      "Deutsche Bank",
+      "Goldman Sachs",
+      "MUFG Research",
+      "Morgan Stanley",
+      "UBS"
+     ],
+     "evidence_quotes": [
+      "June payrolls weakness"
+     ]
+    },
+    {
+     "claim": "The unemployment rate fell to 4.2% in June, but the decline was driven by people leaving the labor force, with participation dropping to 61.5%, rather than by stronger hiring.",
+     "banks_for": [
+      "Deutsche Bank",
+      "Goldman Sachs",
+      "Morgan Stanley",
+      "UBS"
+     ],
+     "evidence_quotes": []
+    },
+    {
+     "claim": "The three-month average pace of US job growth slowed to 111,000 from 188,000 after the June report and revisions.",
+     "banks_for": [
+      "MUFG Research",
+      "UBS"
+     ],
+     "evidence_quotes": []
+    }
+   ],
+   "facts_contested": [],
+   "falsifiable_predictions": [
+    {
+     "bank": "Goldman Sachs",
+     "subject": "June nonfarm payrolls headline print",
+     "direction_or_level": "130k",
+     "by_when": "June 2026 payrolls report",
+     "source_quote": "June nonfarm payrolls forecast"
+    },
+    {
+     "bank": "Goldman Sachs",
+     "subject": "June US unemployment rate",
+     "direction_or_level": "4.3%",
+     "by_when": "June 2026 payrolls report",
+     "source_quote": "June unemployment rate forecast"
+    },
+    {
+     "bank": "Morgan Stanley",
+     "subject": "US breakeven payroll pace (monthly job growth needed to hold unemployment steady)",
+     "direction_or_level": "50k",
+     "by_when": "2026",
+     "source_quote": "Projected 2026 breakeven payroll pace"
+    }
+   ]
+  },
+  {
+   "theme": "ai and momentum unwind",
+   "selected": true,
+   "stance_counts": {
+    "supportive": 3,
+    "skeptical": 2,
+    "neutral": 2
+   },
+   "consensus_view": "The crowded AI and momentum stocks just took one of their sharpest multi-day beatings in years, and while banks agree leverage and crowding caused it, they are split between calling it a short-term dip that bounces and the start of a deeper unwind.",
+   "facts_agreed": [
+    {
+     "claim": "AI and momentum stocks sold off violently over the last few sessions, with Goldman's high-momentum basket down roughly 18% in two days.",
+     "banks_for": [
+      "Goldman Sachs",
+      "The Market Ear"
+     ],
+     "evidence_quotes": [
+      "GSPRHIMO -8.6% continued Wednesday’s move lower (makes ~18% over last two sessions)",
+      "AI winners have been clubbed like a baby seal over the last two days"
+     ]
+    },
+    {
+     "claim": "The selloff was set up by extreme crowding, leverage, and AI concentration rather than any single company's news.",
+     "banks_for": [
+      "Goldman Sachs",
+      "The Market Ear"
+     ],
+     "evidence_quotes": [
+      "AI concentration in the S&P 500 is now greater than 50%",
+      "The combination of leverage, expensive options and retail dominance helped fuel one of Asia's most spectacular AI rallies."
+     ]
+    },
+    {
+     "claim": "The weakness has spread across the whole AI memory and semiconductor group, not just a few names.",
+     "banks_for": [
+      "The Market Ear"
+     ],
+     "evidence_quotes": [
+      "The AI memory trade is beginning to crack",
+      "When even the laggards begin to crack, it's becoming increasingly difficult to argue that the weakness is stock-specific."
+     ]
+    }
+   ],
+   "facts_contested": [
+    {
+     "claim": "Whether the momentum selloff is a tactical dip that bounces back or the start of a deeper unwind with more downside ahead",
+     "banks_for": [
+      "Goldman Sachs",
+      "HSBC"
+     ],
+     "for_evidence": "we believe there is room for a tactical bounce back in the pair",
+     "banks_against": [
+      "The Market Ear"
+     ],
+     "against_evidence": "we continue to see meaningful downside risk for anything momentum-driven"
+    }
+   ],
+   "falsifiable_predictions": [
+    {
+     "bank": "Goldman Sachs",
+     "subject": "US economy-wide AI adoption rate",
+     "direction_or_level": "23.9%",
+     "by_when": "year-end 2026",
+     "source_quote": "Projected year-end AI adoption rate"
+    },
+    {
+     "bank": "UBS",
+     "subject": "Annual AI-related capital spending",
+     "direction_or_level": "$1 trillion",
+     "by_when": "2027",
+     "source_quote": "Annual AI-related capex forecast"
+    },
+    {
+     "bank": "UBS",
+     "subject": "Memory chip prices quarter-over-quarter",
+     "direction_or_level": "up 30% to 40%",
+     "by_when": "Q3 2026",
+     "source_quote": "Memory pricing increase forecast"
+    },
+    {
+     "bank": "Morgan Stanley",
+     "subject": "Memory supply shortfall for smartphones and PCs",
+     "direction_or_level": "12-15%",
+     "by_when": "2027",
+     "source_quote": "Memory supply shortfall"
+    },
+    {
+     "bank": "HSBC",
+     "subject": "2026 server CPU shipment growth",
+     "direction_or_level": "25% year-over-year",
+     "by_when": "2026",
+     "source_quote": "2026 Server CPU shipment growth estimate"
+    }
+   ]
+  },
+  {
+   "theme": "labor force participation decline",
+   "selected": true,
+   "stance_counts": {
+    "supportive": 0,
+    "skeptical": 0,
+    "neutral": 5
+   },
+   "consensus_view": "Five research desks flag the shrinking share of Americans working or looking for work, now at its lowest level since 1976, as the real story behind June's falling unemployment rate, but no bank has staked a directional trade view on it yet.",
+   "facts_agreed": [
+    {
+     "claim": "Five banks independently flag a decline in US labor force participation, concentrated in prime-age and younger workers, as a defining feature of the June jobs data.",
+     "banks_for": [
+      "ANZ Research",
+      "Goldman Sachs",
+      "Morgan Stanley",
+      "TS Lombard",
+      "UBS"
+     ],
+     "evidence_quotes": [
+      "labor force participation decline among workers aged 25-34",
+      "Labor force participation decline",
+      "Labor force participation rate collapse",
+      "prime-age worker participation drop",
+      "labor force participation rate decline"
+     ]
+    }
+   ],
+   "facts_contested": [],
+   "falsifiable_predictions": []
+  }
+ ],
+ "discarded_themes": []
+}
