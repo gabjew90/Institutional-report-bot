@@ -30,6 +30,31 @@
    "step": "STEP_5A_STITCH_DONE",
    "time": "2026-07-06T14:20:22Z",
    "detail": "1 mechanical fix"
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-07-06T14:36:00Z",
+   "detail": "5 INSIGHTS sections"
+  },
+  {
+   "step": "STEP_5_5_LINT_DONE",
+   "time": "2026-07-06T14:36:00Z",
+   "detail": "5 hard issues -> SCRUB dispatched"
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-07-06T14:36:00Z",
+   "detail": "0 hard issues after 1 pass, 3 soft residual"
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-07-06T14:36:00Z",
+   "detail": "stripped _EDIT NOTES, _LEANS re-appended for board"
+  },
+  {
+   "step": "STEP_6_COMMIT_DONE",
+   "time": "2026-07-06T14:36:00Z",
+   "detail": "pulse 4c9aefdd, artifacts 933f52e"
   }
  ]
 }
