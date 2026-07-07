@@ -339,7 +339,11 @@ _RATING_NORM = {
 # names a US options trader can't act on; they were cluttering the board
 # (ZAR280, €21.50 observed 06-17). Drop them from the HC table.
 _FOREIGN_PT_RE = re.compile(
-    r"(€|£|¥|₩|R\$|HK\$|A\$|C\$|GBp|p$"
+    # $-suffixed symbols: NT$ (New Taiwan), S$ (Singapore), NZ$ added
+    # 2026-07-06 after "$TSM PT NT$3,000" shipped (TWD ISO was covered,
+    # the NT$ symbol form wasn't). Longer symbols first so NT$ isn't
+    # partially eaten by a shorter alternative.
+    r"(€|£|¥|₩|R\$|HK\$|NT\$|NZ\$|S\$|A\$|C\$|GBp|p$"
     # 3-letter ISO codes for non-USD currencies (observed: 'PT EUR315'
     # slipped past the symbol-only set, 2026-06-24).
     # No trailing \b — codes attach directly to digits ("EUR315",

@@ -415,6 +415,14 @@ def test_hc_calls_subsection():
     # foreign-PT call dropped, N/A rating not shown as a token
     assert "$BESI" not in board, "foreign-PT (EUR) call must be dropped"
     assert "N/A" not in board, "N/A rating/PT must not render"
+    # 2026-07-06: NT$ (New Taiwan dollar symbol) is a foreign PT — a
+    # $TSM call priced "NT$3,000" must drop (TWD ISO was covered, the
+    # NT$ symbol form wasn't).
+    from report.pulse_sections import _is_foreign_pt
+    assert _is_foreign_pt("NT$3,000") and _is_foreign_pt("S$45") \
+        and _is_foreign_pt("NZ$12"), "Asian/NZ dollar symbols must flag"
+    assert not _is_foreign_pt("$330") and not _is_foreign_pt("$1,400"), \
+        "plain USD price targets must NOT be flagged foreign"
     # 2026-06-25: a full-sentence rationale renders WHOLE, not clipped at
     # 60 mid-word ("disclosed $100bn…").
     long_hc = [{"source": "Goldman Sachs", "ticker": "MU", "rating": "Buy",

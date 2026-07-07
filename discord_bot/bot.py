@@ -3663,9 +3663,13 @@ def _has_unsourced_outcome_claims(
 # match these.
 _ASK_PASSIVE_AGGRESSIVE_RES = [
     # "maybe focus on X instead of Y" / "maybe spend less time on X..."
+    # Window widened 60->120 (2026-07-05: "maybe put that energy into a
+    # trade that doesn't end in a paperhanded exit for once instead of
+    # acting like a soap opera character" slipped the 60-char gap).
+    # [^.\n] keeps it inside one sentence so it can't span clauses.
     re.compile(
         r"\bmaybe\s+(?:focus|spend|put|worry|try|stick\s+to)\b"
-        r"[^.\n]{0,60}\binstead\s+of\b",
+        r"[^.\n]{0,120}\binstead\s+of\b",
         re.IGNORECASE,
     ),
     re.compile(
@@ -4827,6 +4831,11 @@ async def _answer_with_gemini(
         # the ask-log records it so QC sees ground truth, not just the
         # post-lint version (2026-06-10 review finding #5).
         _raw_answer_pre_clean = answer
+        # Must be bound even on the empty-answer path — the register-
+        # rewrite gate below reads it unconditionally (2026-07-05
+        # UnboundLocalError: a blank Gemini payload skipped the `if
+        # answer:` block, leaving hit_kinds undefined).
+        hit_kinds: list[str] = []
         if answer:
             answer, hit_kinds = _clean_voice_violations(answer)
             if hit_kinds:

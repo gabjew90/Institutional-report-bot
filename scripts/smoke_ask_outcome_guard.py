@@ -101,7 +101,30 @@ def test_passive_aggressive_lint():
         "you full ported geo calls and never posted an exit. that's hoping."
     )
     assert "passive-aggressive" not in k2, k2
-    _ok("passive-aggressive lint: templates flagged, direct jabs clean")
+    # 2026-07-05 gap: a long faux-advice sentence slipped the 60-char
+    # window between the verb and "instead of" — now 120.
+    _, k3 = bot._clean_voice_violations(
+        "maybe put that energy into a trade that doesn't end in a "
+        "paperhanded exit for once instead of acting like a soap opera "
+        "character."
+    )
+    assert "passive-aggressive" in k3, "long faux-advice sentence must flag"
+    _ok("passive-aggressive lint: templates (incl. long) flagged, direct clean")
+
+
+def test_empty_answer_no_unbound_hitkinds():
+    # 2026-07-05 UnboundLocalError: a blank Gemini payload skipped the
+    # `if answer:` block, leaving hit_kinds undefined when the register-
+    # rewrite gate read it. hit_kinds is now pre-initialized.
+    import discord_bot.bot as bot
+    src = inspect.getsource(bot._answer_with_gemini)
+    # the pre-init must appear BEFORE the conditional assignment
+    pre_init = src.index("hit_kinds: list[str] = []")
+    cond_assign = src.index("answer, hit_kinds = _clean_voice_violations")
+    gate = src.index("_register_rewrite_kinds = {")
+    assert pre_init < cond_assign < gate, \
+        "hit_kinds must be initialized before the conditional assign + gate"
+    _ok("empty-answer path: hit_kinds pre-initialized (no UnboundLocalError)")
 
 
 def test_rewrite_trigger_covers_both_kinds():
@@ -119,5 +142,6 @@ if __name__ == "__main__":
     test_detector_respects_sources()
     test_outcome_guard_wired()
     test_passive_aggressive_lint()
+    test_empty_answer_no_unbound_hitkinds()
     test_rewrite_trigger_covers_both_kinds()
     print("\nALL OUTCOME-GUARD SMOKE TESTS PASS")
