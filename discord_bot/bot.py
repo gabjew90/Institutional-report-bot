@@ -3639,16 +3639,25 @@ def _strip_sentences(answer: str, to_remove: list[str]) -> str:
 
 # Second-person marker — the claim is about the person being addressed.
 _OUTCOME_2P_RE = re.compile(r"\b(?:you|your|ur)\b", re.IGNORECASE)
-# P&L-state assertion lexicon. Conservative: strong outcome shapes only,
-# so room-idiom banter that ISN'T an outcome claim doesn't trip it.
+# P&L-state assertion lexicon. This one guard IS a vocabulary by nature —
+# "you're losing on X" is expressed through a bounded set of trader
+# idioms, so unlike the faux-advice family (which has a shape) this is
+# the right place for a curated list. Keep it P&L-specific so room-idiom
+# banter that ISN'T an outcome claim doesn't trip it. (2026-07-07 added
+# "in the hole" / "holding the bag" / "upside down" / "in the toilet"
+# after "deep in the hole on this prison play" slipped through.)
 _OUTCOME_CLAIM_RE = re.compile(
     r"(\bunderwater\b"
     r"|\bdown\s+bad\b"
     r"|\bbag.?hold(?:ing|er)?\b"
+    r"|\b(?:left\s+)?holding\s+(?:the\s+)?bag\b"
     r"|\bbleed(?:ing|s)?(?:\s+out)?\b"
     r"|\bbl[eo]w(?:n|ing)?\s+up\b"
     r"|\bround.?tripp?(?:ed|ing)?\b"
     r"|\bin\s+the\s+red\b"
+    r"|\bin\s+the\s+hole\b"
+    r"|\bin\s+the\s+toilet\b"
+    r"|\bupside\s+down\b"
     r"|\b(?:down|up)\s+\d+(?:\.\d+)?\s*%)",
     re.IGNORECASE,
 )

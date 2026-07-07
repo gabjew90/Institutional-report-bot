@@ -42,6 +42,17 @@ def test_detector_fires_on_the_observed_failure():
     v = bot._outcome_violations(ans, context_text="")
     assert len(v) == 1 and "underwater" in v[0], v
     assert bot._has_unsourced_outcome_claims(ans, [], "") is True
+    # 2026-07-07: the "in the hole" / "holding the bag" / "upside down"
+    # P&L idioms escaped the lexicon ("you're deep in the hole on this
+    # prison play" shipped).
+    for idiom in (
+        "you're deep in the hole on this prison play.",
+        "you're left holding the bag on those GEO calls.",
+        "you're upside down on the whole position.",
+        "your book's in the toilet.",
+    ):
+        assert bot._outcome_violations(idiom, "") == [idiom], \
+            f"P&L idiom must flag: {idiom!r}"
     # the strip leaves a working clapback
     stripped = bot._strip_sentences(ans, v)
     assert "underwater" not in stripped and "spamming the ticker" in stripped
