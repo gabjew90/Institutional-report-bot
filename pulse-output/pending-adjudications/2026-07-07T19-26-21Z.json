@@ -1,0 +1,253 @@
+{
+  "pulse_date": "2026-07-07",
+  "window_label": "since-last-daily (2026-07-06T14:33)",
+  "themes": [
+    {
+      "theme": "ai infrastructure spending",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Banks broadly agree that spending on AI infrastructure keeps rising and is now the main engine of big-tech earnings and new borrowing, though some warn the heavy spending is starting to squeeze cash flow and slow profit growth.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure demand and capex remain strong, supporting upside to earnings and continued heavy debt issuance.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ING"
+          ],
+          "evidence_quotes": [
+            "We see upside to earnings estimates across most sub-sectors",
+            "we believe consensus 2027 capex estimates are once again too conservative.",
+            "We remain supportive of robust issuance across European and US credit markets"
+          ]
+        },
+        {
+          "claim": "Orbital, space-based compute is emerging as a scalable new source of AI infrastructure capacity.",
+          "banks_for": [
+            "RBC Capital Markets",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "SPCX represents a unique opportunity from an AI and compute capacity perspective.",
+            "orbital compute could extend this advantage as SpaceX combines Starship, satellite manufacturing, space-based solar power"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "net effect of AI capex on earnings and equity valuations",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "We see upside to earnings estimates across most sub-sectors",
+          "banks_against": [
+            "ING"
+          ],
+          "against_evidence": "earnings per share growth is likely to slow, influencing equity valuations"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "starship space economy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Banks broadly agree that SpaceX's Starship rocket, thanks to its reusability and large payload, will sharply cut the cost of reaching orbit and open up a fast-growing space economy, with market-size and revenue forecasts running into the trillions over the next decade-plus.",
+      "facts_agreed": [
+        {
+          "claim": "Starship's full reusability and large payload put it on track to slash launch costs and unlock the broader space economy.",
+          "banks_for": [
+            "Citi",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "SPCX is at the beginning of a particularly catalyst-rich 2-3 years",
+            "Starship, with 5x+ the max payload of Falcon 9 and full-reusability... has a realistic opportunity to significantly cut launch costs"
+          ]
+        },
+        {
+          "claim": "Multiple desks reference Starship's launch-cost reduction, reusability, and economic potential as the core enabler of the space economy.",
+          "banks_for": [
+            "Citi",
+            "Goldman Sachs",
+            "RBC Capital Markets"
+          ],
+          "evidence_quotes": [
+            "Starship launch cost reduction",
+            "Starship deployment economic potential",
+            "Starship reusability"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor earnings",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 3
+      },
+      "consensus_view": "Banks split on chip stocks: Goldman sees more room to run as chip demand normalizes, while The Market Ear warns the sector has broken down and big investors are aggressively selling.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "near-term direction for semiconductor stocks",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "Expect broad upside but run in stocks raises the bar",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "Semiconductor stocks have now closed below their 20-day moving average for 2 consecutive days"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz supply chain risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Deutsche Bank, Goldman Sachs, and JPMorgan all reference the Strait of Hormuz supply-chain situation tied to the Iran conflict, but none stakes a clear directional view, with framings running from ongoing stress and disruption to stabilization and normalization.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag the Strait of Hormuz supply-chain situation, linked to the Iran conflict energy shock, as a live macro topic this window without staking a primary directional call.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz supply chain normalization",
+            "Supply chain stabilization",
+            "Strait of Hormuz supply chain disruptions",
+            "Strait of Hormuz supply-chain stress",
+            "US-Iran conflict energy shock"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "share buybacks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Several desks reference corporate share buybacks as an active market factor this window — from blackout-period timing to a boost for earnings per share — but none stakes a clear directional call.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag corporate share buybacks as an active influence this window, spanning new authorizations, blackout-period timing, and a tailwind to earnings per share.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ING",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Share buyback authorization",
+            "Corporate share buybacks",
+            "share buyback tailwinds for EPS",
+            "Corporate buyback blackout window"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "market broadening",
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "selected": true,
+      "consensus_view": "Only JPMorgan stakes a directional view, arguing the shift of investor money out of big Tech and into the rest of the market has already begun and may run further.",
+      "facts_agreed": [
+        {
+          "claim": "The rotation of investors out of Tech into the broader market has already started, with room for it to continue.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "The market broadening appears to have already begun, with the risk of further moves."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "factor de-risking",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Several desks flag that hedge funds and active managers are trimming crowded bets, especially in momentum stocks (recent winners) and semiconductors, but nobody has staked out a directional view on where prices go from here.",
+      "facts_agreed": [
+        {
+          "claim": "Three desks flag investors pulling back from crowded momentum-factor and active-manager positions as a live current-market dynamic.",
+          "banks_for": [
+            "JPMorgan",
+            "Morgan Stanley",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "US Momentum factor de-risking",
+            "Momentum factor de-grossing",
+            "Active manager de-risking"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "cursor acquisition and integration",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Goldman Sachs, Morgan Stanley, and RBC all reference the Cursor acquisition and its integration as a live corporate development, but none has taken a clear bullish or bearish position on it.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag the Cursor acquisition and its integration as a current corporate development worth tracking this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley",
+            "RBC Capital Markets"
+          ],
+          "evidence_quotes": [
+            "Cursor acquisition synergy",
+            "Cursor acquisition",
+            "Cursor acquisition and integration"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
