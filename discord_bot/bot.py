@@ -3701,6 +3701,46 @@ def _has_unsourced_outcome_claims(
     return bool(_outcome_violations(answer, context_text))
 
 
+# =====================================================================
+# Rank-trajectory guard — lookup_user_profile returns ONLY the current
+# rank snapshot (#N/M). There is NO historical rank data anywhere, so
+# any claim that a rank CHANGED — "you lost your top-5 spot", "dropped
+# from #3", "used to be #1", "climbed the board", "took two weeks off
+# and slid" — is invented. 2026-07-05: the bot told SV he'd "lost your
+# spot in the top 5" three hours after stating he was #9; there was no
+# top-5 to lose. Same family as the time-series guard: a snapshot
+# narrated as a trajectory. A movement claim gets stripped (the current
+# rank + the rest of the jab survive).
+# =====================================================================
+_RANK_CONTEXT_RE = re.compile(
+    # no outer \b — "#3" is non-word-led, a \b before it fails after a
+    # space (2026-07-05 smoke: "dropped from #3" wasn't matching).
+    r"(?:\brank(?:ed|ing)?\b|\bleaderboard\b|\bthe\s+(?:list|board)\b"
+    r"|\btop\s+\d+|#\d+|\bspot\b|\bplace\b|\bstanding\b)",
+    re.IGNORECASE,
+)
+_RANK_MOVE_RE = re.compile(
+    r"\b(?:lost|lose|losing|dropp?ed|drop|fell|fall|slipp?ed|slid|"
+    r"tumbled|climb(?:ed|ing)?|rose|rising|risen|jumped?|knocked|"
+    r"bumped|replaced|dethroned|overtaken|used\s+to\s+be|"
+    r"back\s+(?:up\s+)?to|fell\s+from|up\s+from|down\s+from|"
+    r"moved?\s+(?:up|down))\b",
+    re.IGNORECASE,
+)
+
+
+def _rank_trajectory_violations(answer: str) -> list[str]:
+    """Sentences asserting a rank MOVEMENT / history (a rank-context word
+    AND a movement verb in the same sentence). The bot only ever has the
+    current snapshot, so these are always unsourced."""
+    if not answer:
+        return []
+    return [
+        s for s in _split_sentences(answer)
+        if _RANK_CONTEXT_RE.search(s) and _RANK_MOVE_RE.search(s)
+    ]
+
+
 # /ask-only passive-aggressive register templates (2026-07-02). The
 # deadpan/faux-advice ban is a pinned prompt rule the model still slips
 # on; these feed the detect→rewrite pass (same path as meta-narration).
@@ -5298,6 +5338,75 @@ async def _answer_with_gemini(
                         )
             except Exception as e:
                 log.warning(f"/ask: outcome-claim rewrite call failed: {e}")
+
+        # Rank-trajectory guard — the bot only has the CURRENT rank
+        # snapshot, so a "you lost/dropped/climbed a rank" claim is
+        # invented (2026-07-05: told SV he "lost your spot in the top 5"
+        # after stating he was #9). Rewrite to drop the trajectory,
+        # keeping the current rank + the jab; strip the sentences as a
+        # fallback.
+        _rank_viol = _rank_trajectory_violations(answer) if answer else []
+        if _rank_viol:
+            log.warning(
+                f"/ask: unsourced rank-trajectory claim(s) "
+                f"(q={question[:80]!r}, n={len(_rank_viol)}) — requesting rewrite"
+            )
+            try:
+                rk_prompt = (
+                    "Rewrite the following answer. It claims someone's rank "
+                    "CHANGED over time — lost/dropped/climbed a spot, used to "
+                    "be #N, fell out of the top N, took time off and slid. "
+                    "You have ONLY the current rank (a snapshot); there is no "
+                    "rank history, so any movement claim is invented. Remove "
+                    "every rank-movement / rank-history claim. Keep the "
+                    "CURRENT rank if it's stated, and keep the rest of the "
+                    "jab. Do NOT say anyone gained, lost, dropped, climbed, "
+                    "or used to hold a position. Add no new facts. Output "
+                    "ONLY the rewritten answer.\n\n"
+                    "ORIGINAL:\n"
+                    f"{answer}"
+                )
+                rk_config = types.GenerateContentConfig(
+                    system_instruction=(
+                        "You edit a trading-room bot's message. Direct, "
+                        "in-register. Never assert a rank changed over time."
+                    ),
+                    safety_settings=safety_settings,
+                    max_output_tokens=1500,
+                    temperature=0.4,
+                    thinking_config=types.ThinkingConfig(thinking_budget=512),
+                )
+                rk_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=[types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=rk_prompt)],
+                    )],
+                    config=rk_config,
+                )
+                _tally_retry_usage(rk_resp)
+                try:
+                    rk_answer = (rk_resp.text or "").strip()
+                except Exception:
+                    rk_answer = ""
+                if rk_answer and not _rank_trajectory_violations(rk_answer):
+                    answer = rk_answer
+                    log.info("/ask: rank-trajectory rewrite succeeded")
+                else:
+                    stripped = _strip_sentences(answer, _rank_viol)
+                    if stripped and len(stripped) > 15:
+                        answer = stripped
+                        log.warning(
+                            f"/ask: stripped {len(_rank_viol)} rank-trajectory "
+                            f"sentence(s)"
+                        )
+                    else:
+                        log.warning(
+                            "/ask: rank-trajectory strip would empty the "
+                            "answer — shipping original"
+                        )
+            except Exception as e:
+                log.warning(f"/ask: rank-trajectory rewrite call failed: {e}")
 
         # Blank-answer recovery. Gemini can return an empty text payload
         # when (a) max_output_tokens was burned in the thinking phase,
