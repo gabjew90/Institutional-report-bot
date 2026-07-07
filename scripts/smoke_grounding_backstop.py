@@ -87,6 +87,31 @@ def test_detector_strong_markers():
         "float / consensus)")
 
 
+def test_detector_valuation_markers_no_cashtag():
+    """2026-07-06 CXW/GEO: a market-cap / EV / shares-outstanding claim
+    with a number is a live market fact even WITHOUT a $-cashtag — "GEO's
+    market capitalization sitting at roughly $4.04 billion" escaped the
+    density net (no $GEO) and shipped ungrounded. A valuation marker + a
+    figure now fires on its own."""
+    from discord_bot.bot import _is_ungrounded_market_fact as f
+    for s in [
+        "GEO's current market capitalization is sitting at roughly $4.04 billion.",
+        "CoreCivic trades at an enterprise value near $6 billion after the sale.",
+        "The company has about 130 million shares outstanding.",
+        "The remaining portfolio would be valued around $20 billion.",
+    ]:
+        assert f(s, None, []) is True, f"valuation marker should fire: {s!r}"
+    # grounding / a data tool still exempts (a real source CAN quote a cap)
+    class _GM:
+        grounding_chunks = [1]
+    assert f("GEO's market cap is $4.04 billion.", _GM(), []) is False
+    # the phrase without a number must NOT trip
+    assert f("You have to look at enterprise value, not just market cap.",
+             None, []) is False, "valuation phrase with no figure must not fire"
+    _ok("detector: market-cap/EV/shares-out claims fire without a cashtag; "
+        "grounded + figureless are exempt")
+
+
 def test_detector_no_false_positive_on_calendar():
     """2026-06-19 fix: bare calendar dates were stamping CORRECT
     common-knowledge answers with the unverified hedge. A market-hours /
@@ -161,6 +186,7 @@ if __name__ == "__main__":
     test_detector_skips_when_tool_fired()
     test_detector_roast_safe()
     test_detector_strong_markers()
+    test_detector_valuation_markers_no_cashtag()
     test_detector_no_false_positive_on_calendar()
     test_detector_density_threshold()
     test_grounding_has_sources()

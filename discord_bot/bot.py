@@ -3406,7 +3406,21 @@ _MARKET_FACT_STRONG_RE = re.compile(
     r"|\b(?:un)?lock(?:up|ed|s)?\b[^.\n]{0,30}?\d"
     r"|\btranche\b"
     r"|\bfloat\b[^.\n]{0,20}?\d"
-    r"|\b(?:consensus|estimate[ds]?|forecast)\b[^.\n]{0,25}?\d)",
+    r"|\b(?:consensus|estimate[ds]?|forecast)\b[^.\n]{0,25}?\d"
+    # Valuation shapes (2026-07-06 CXW/GEO: "GEO's market capitalization
+    # sitting at roughly $4.04 billion" was a confabulated live figure
+    # that escaped the density net because it used no $-cashtag — "GEO"
+    # not "$GEO"). A market-cap / EV / shares-outstanding claim with a
+    # number is a live market fact regardless of cashtag; if nothing
+    # grounded it, hedge. Requires the phrase to sit near a figure so
+    # "enterprise value matters" without a number doesn't trip.
+    r"|\bmarket\s+cap(?:italization)?\b[^.\n]{0,25}?\$?\d"
+    r"|\benterprise\s+value\b[^.\n]{0,25}?\$?\d"
+    # shares-outstanding figure sits on EITHER side ("130M shares
+    # outstanding" / "shares outstanding of 130M")
+    r"|\d[^.\n]{0,20}?\bshares?\s+outstanding\b"
+    r"|\bshares?\s+outstanding\b[^.\n]{0,25}?\d"
+    r"|\b(?:valued|valuation)\b[^.\n]{0,20}?\$\d)",
     re.IGNORECASE,
 )
 # Generic specifics — only meaningful in DENSITY (>=3 ≈ a schedule/
