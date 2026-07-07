@@ -3662,21 +3662,34 @@ def _has_unsourced_outcome_claims(
 # Conservative: template shapes, not vibes — a direct roast doesn't
 # match these.
 _ASK_PASSIVE_AGGRESSIVE_RES = [
-    # "maybe focus on X instead of Y" / "maybe spend less time on X..."
-    # Window widened 60->120 (2026-07-05: "maybe put that energy into a
-    # trade that doesn't end in a paperhanded exit for once instead of
-    # acting like a soap opera character" slipped the 60-char gap).
-    # [^.\n] keeps it inside one sentence so it can't span clauses.
+    # THE "maybe if you..." FAMILY — shape, not template (2026-07-07). The
+    # bot's most repetitive faux-advice tic; each tail ("instead of X",
+    # "half the energy", "less time X and more time Y", "put that energy
+    # into") was slipping the narrow template regexes one by one. Detect
+    # the INVARIANT instead: an advisory lead-in (maybe / if you) telling
+    # the asker to REDIRECT their energy/time/effort/focus. Two surface
+    # forms cover the family:
+    #
+    #   (a) redirect-the-object:  (maybe|if you) ... <redirect verb> ...
+    #       <energy|time|effort|focus>
+    #       — "maybe if you spent less time X", "maybe put that energy",
+    #         "if you put half the effort into Y"
     re.compile(
-        r"\bmaybe\s+(?:focus|spend|put|worry|try|stick\s+to)\b"
+        r"\b(?:maybe|if\s+you)\b[^.\n]{0,40}"
+        r"\b(?:spent?|spend|put|putting|channel|direct|pour|invest|use|"
+        r"focus)\b[^.\n]{0,25}\b(?:energy|time|effort|focus)\b",
+        re.IGNORECASE,
+    ),
+    #   (b) redirect-via-instead-of: "maybe <verb> X instead of Y"
+    #       (catches the attention-redirect variant that names no
+    #        energy/time object — "maybe focus on your portfolio instead
+    #        of my hydration"). [^.\n] keeps it inside one sentence.
+    re.compile(
+        r"\bmaybe\s+(?:focus|spend|put|worry|try|stick\s+to|use)\b"
         r"[^.\n]{0,120}\binstead\s+of\b",
         re.IGNORECASE,
     ),
-    re.compile(
-        r"\bif\s+you\s+(?:put|spent|gave)\s+half\s+(?:the|that)\s+"
-        r"(?:energy|time|effort)\b",
-        re.IGNORECASE,
-    ),
+    # Other sardonic-detachment templates (distinct shapes).
     re.compile(r"\bdo\s+with\s+that\s+what\s+you\s+will\b", re.IGNORECASE),
     re.compile(r"\bif\s+you\s+say\s+so\b", re.IGNORECASE),
     re.compile(r"\btrading\s+in\s+your\s+head\s+again\b", re.IGNORECASE),
@@ -4868,12 +4881,19 @@ async def _answer_with_gemini(
             try:
                 _pa_directive = (
                     "Convert any passive-aggressive or condescending "
-                    "faux-advice construction into a DIRECT statement — "
-                    "shapes like 'maybe focus on X instead of Y', 'if you "
-                    "put half the energy into X...', 'do with that what "
-                    "you will', 'if you say so'. Say the actual point "
-                    "straight; if it's a jab, jab directly with the same "
-                    "material — no sardonic wind-up, no advice framing. "
+                    "faux-advice construction into a DIRECT statement. KILL "
+                    "the entire 'maybe if you...' redirect-advice family — "
+                    "every shape where you tell the target to spend/put/"
+                    "channel their energy/time/effort/focus elsewhere: "
+                    "'maybe put that energy into X', 'maybe if you spent "
+                    "less time on X and more time on Y', 'if you put half "
+                    "the energy into X', 'maybe focus on X instead of Y'. "
+                    "Also 'do with that what you will', 'if you say so'. "
+                    "Don't advise the target to do anything — state the jab "
+                    "as a fact using the same material. Instead of 'maybe "
+                    "put that energy into a real trade', say what's true: "
+                    "'your last five trades were paperhanded exits'. No "
+                    "sardonic wind-up, no advice framing, no 'maybe'. "
                 ) if "passive-aggressive" in _register_rewrite_kinds else ""
                 rewrite_prompt = (
                     "Rewrite the following Discord bot answer so it sounds "

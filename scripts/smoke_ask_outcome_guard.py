@@ -90,26 +90,37 @@ def test_passive_aggressive_lint():
         "tried it. maybe focus on your own portfolio instead of my hydration."
     )
     assert "passive-aggressive" in kinds, kinds
-    # other banned templates
-    for t in ("do with that what you will",
-              "if you say so, champ",
-              "if you put half the energy into trading"):
-        _, k = bot._clean_voice_violations(t)
-        assert "passive-aggressive" in k, f"template not caught: {t!r}"
-    # a DIRECT jab does not trip it
-    _, k2 = bot._clean_voice_violations(
-        "you full ported geo calls and never posted an exit. that's hoping."
-    )
-    assert "passive-aggressive" not in k2, k2
-    # 2026-07-05 gap: a long faux-advice sentence slipped the 60-char
-    # window between the verb and "instead of" — now 120.
-    _, k3 = bot._clean_voice_violations(
+    # 2026-07-07: the WHOLE "maybe if you..." redirect-advice family must
+    # flag by shape, not by enumerated tail. Every one of these shipped
+    # or slipped a narrow regex at some point.
+    family = [
         "maybe put that energy into a trade that doesn't end in a "
         "paperhanded exit for once instead of acting like a soap opera "
-        "character."
-    )
-    assert "passive-aggressive" in k3, "long faux-advice sentence must flag"
-    _ok("passive-aggressive lint: templates (incl. long) flagged, direct clean")
+        "character.",                                     # 'instead of' tail
+        "maybe if you spent less time shouting slurs at the capital "
+        "grille and more time actually trading, you wouldn't be so "
+        "worried about your rank.",                       # 'less time / more time'
+        "if you put half the energy into trading that you put into "
+        "coping, you'd be fine.",                         # 'half the energy'
+        "maybe channel that energy into a real thesis for once.",  # 'channel energy'
+        "maybe focus on your own portfolio instead of my hydration.",  # attention-redirect
+    ]
+    for t in family:
+        _, k = bot._clean_voice_violations(t)
+        assert "passive-aggressive" in k, f"faux-advice family miss: {t[:50]!r}"
+    # other distinct templates
+    for t in ("do with that what you will", "if you say so, champ"):
+        _, k = bot._clean_voice_violations(t)
+        assert "passive-aggressive" in k, f"template not caught: {t!r}"
+    # DIRECT jabs (incl. the rewrite's target shape) do NOT trip it
+    for clean in (
+        "you full ported geo calls and never posted an exit. that's hoping.",
+        "your last five trades were paperhanded exits.",
+        "you spend all day posting wojaks and zero exits.",  # 'spend' but no advice lead-in
+    ):
+        _, k2 = bot._clean_voice_violations(clean)
+        assert "passive-aggressive" not in k2, f"false positive on direct jab: {clean!r}"
+    _ok("passive-aggressive lint: 'maybe if you' family flagged by shape, direct jabs clean")
 
 
 def test_empty_answer_no_unbound_hitkinds():
