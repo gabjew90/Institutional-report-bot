@@ -3469,6 +3469,37 @@ def _is_ungrounded_market_fact(answer: str, grounding_metadata,
     return any(not s.startswith("$") for s in specifics)
 
 
+# Any specific factual claim — numbers, big counts, $-figures, %s,
+# month/slash dates, years. Deliberately broad: this is used ONLY on a
+# WEB-routed answer (a question the router already decided needs the
+# open web), where any stated specific is a fact that must be grounded,
+# not a shape to enumerate.
+_FACTUAL_SPECIFIC_RE = re.compile(
+    r"\$\d"                                             # $4.04, $1.5
+    r"|\b\d+(?:\.\d+)?\s?%"                              # 45%
+    r"|\b\d[\d,]{3,}\b"                                  # 4-digit+ / year (75,000; 2027)
+    r"|\b\d+(?:\.\d+)?\s*(?:million|billion|trillion|bn|k)\b"  # 130 million
+    r"|\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d"  # Aug 2027
+    r"|\b\d{1,2}/\d{1,2}(?:/\d{2,4})?\b",               # 8/12
+    re.IGNORECASE,
+)
+
+
+def _ungrounded_web_specifics(answer: str, gm, was_web: bool) -> bool:
+    """A WEB-ROUTED answer that states factual specifics with NO
+    grounding. The general confabulation signal (2026-07-06 CXW/GEO:
+    invented bed counts, market cap, and contract dates escaped the
+    market-fact-SHAPE backstop). Tied to the router's own WEB decision —
+    if it said the question needs the open web and the model answered
+    with specifics but never searched, that's the failure, whatever the
+    fact shape. Grounded answers (or any data-tool answer) are exempt."""
+    if not answer or len(answer) < 25 or not was_web:
+        return False
+    if _grounding_has_sources(gm):
+        return False
+    return bool(_FACTUAL_SPECIFIC_RE.search(answer))
+
+
 # =====================================================================
 # TA guard — structural suppression of self-generated technical
 # analysis. The bot has NO indicator data source (no RSI/MACD feed, no
@@ -4995,26 +5026,34 @@ async def _answer_with_gemini(
         # rare (only when the web genuinely has nothing). The backstop
         # only fires on MARKET-FACT shapes where no tool fired on pass 1,
         # so losing the function tools on retry costs nothing.
-        if answer and _is_ungrounded_market_fact(
+        _ground_trigger_shape = _is_ungrounded_market_fact(
             answer, grounding_metadata, _ask_tool_trace
-        ):
+        )
+        _ground_trigger_web = _ungrounded_web_specifics(
+            answer, grounding_metadata, needs_web
+        )
+        if answer and (_ground_trigger_shape or _ground_trigger_web):
             log.warning(
-                f"/ask: ungrounded market-fact answer (q={question[:80]!r}) "
-                f"— forcing a search-only retry"
+                f"/ask: ungrounded answer (q={question[:80]!r}, "
+                f"trigger={'web-routed' if _ground_trigger_web else 'market-shape'})"
+                f" — forcing a search-only retry"
             )
             try:
                 forced_contents = list(contents) + [
                     types.Content(role="user", parts=[types.Part.from_text(
                         text=(
                             "[GROUNDING REQUIRED] Your previous draft stated "
-                            "specific market facts (dates, levels, percentages, "
-                            "price targets, an unlock/float schedule) WITHOUT "
-                            "consulting any source. Google Search is now your "
-                            "ONLY tool — use it to verify each specific before "
-                            "answering. If a specific cannot be found in search "
-                            "results, say you couldn't verify it instead of "
-                            "stating a number — never invent dates, tranche %s, "
-                            "tickers, or price levels from memory."
+                            "specific facts — numbers, dates, counts, figures, "
+                            "price targets, a company's market cap or bed/unit "
+                            "count, a contract or unlock schedule — WITHOUT "
+                            "consulting any source. Do NOT answer a specific "
+                            "from memory or by extrapolating from a pasted "
+                            "document. Google Search is now your ONLY tool: "
+                            "verify each specific against a real result before "
+                            "stating it. If a specific isn't in the search "
+                            "results, say you couldn't verify it — never invent "
+                            "a date, count, ticker, level, or figure to fill "
+                            "the gap."
                         ),
                     )])
                 ]
@@ -5043,14 +5082,18 @@ async def _answer_with_gemini(
                     forced_gm = forced_resp.candidates[0].grounding_metadata
                 except (AttributeError, IndexError, TypeError):
                     pass
+                _retry_still_ungrounded = (
+                    _is_ungrounded_market_fact(forced_answer, forced_gm, [])
+                    or _ungrounded_web_specifics(
+                        forced_answer, forced_gm, needs_web
+                    )
+                )
                 if forced_answer and _grounding_has_sources(forced_gm):
                     answer = forced_answer
                     response = forced_resp
                     grounding_metadata = forced_gm
                     log.info("/ask: grounded retry succeeded")
-                elif forced_answer and not _is_ungrounded_market_fact(
-                    forced_answer, forced_gm, []
-                ):
+                elif forced_answer and not _retry_still_ungrounded:
                     # Retry dropped the unverifiable specifics (e.g. said
                     # "couldn't verify") — that's the honest outcome, use it.
                     answer = forced_answer
