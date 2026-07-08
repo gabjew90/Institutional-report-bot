@@ -235,6 +235,213 @@ def _theme_in_section(theme_key: str, section_text: str) -> bool:
     return any(w in section_lower for w in words)
 
 
+# =====================================================================
+# CHECK 7 support: numeric-scope-drift
+# =====================================================================
+# The failure this catches (2026-07-07): the source said "119% Y/Y in
+# May, with memory pricing improving materially" and the draft rendered
+# it as "May SEMICONDUCTOR INDUSTRY SALES still grew 119%". The number
+# is real and present in the source, so a fabrication check passes — the
+# defect is that a MEMORY figure was re-attached to the whole industry
+# (actual 2026 semi industry growth was ~26%, memory ~39%). The number's
+# SUBJECT drifted from narrow to broad.
+#
+# Structural test: for a stat that appears in BOTH draft and source with
+# the same value, do the draft's subject words and the source's subject
+# words share anything? Zero overlap => the draft is talking about the
+# number in terms the source never used for it => scope drift.
+# ---------------------------------------------------------------------
+
+# A "statistic" figure: a percentage or a points/bps figure. These are
+# the scope-drift vector (a segment % re-scoped to the whole industry).
+# Dollar amounts are excluded on purpose — they're far more often prices
+# or draft-side arithmetic ("$700B, a sevenfold jump") than a re-scoped
+# source stat, and including them would cost precision.
+# Trailing \b lives on each WORD unit (percent/pp/bps); '%' takes none —
+# a '%' is non-word and is usually followed by a space, so a trailing \b
+# after it would never match (this silently disabled the whole check
+# until 2026-07-07).
+_STAT_FIGURE_RE = re.compile(
+    r"\b\d{1,4}(?:\.\d+)?\s*"
+    r"(?:%|percent\b|percentage\s+points?\b|pp\b|bps\b|basis\s+points?\b)",
+    re.IGNORECASE,
+)
+
+# Words that never denote what a statistic is ABOUT. Two families:
+#   1. quant / direction / time / hedge boilerplate
+#   2. MEASURE words — the thing being counted (sales, revenue, pricing,
+#      capex...). These are the METRIC, not the SUBJECT: "memory sales"
+#      and "chip sales" share "sales" but are about different things.
+#      Stripping them forces the overlap check onto the ENTITY (memory
+#      vs semiconductor), which is where scope-drift actually lives.
+# NOTE: "industry"/"sector"/"market" are deliberately NOT here — a
+# narrow->broad ENTITY swap is exactly the signal we want to keep.
+_SCOPE_NOISE = {
+    # quant / direction / time / hedge
+    "year", "years", "annual", "annualized", "month", "months", "quarter",
+    "growth", "grew", "grow", "grown", "rose", "rise", "rising", "gain",
+    "gained", "gains", "jump", "jumped", "surge", "surged", "climb",
+    "climbed", "fell", "fall", "drop", "dropped", "decline", "declined",
+    "versus", "prior", "from", "over", "under", "above", "below", "about",
+    "roughly", "around", "nearly", "still", "already", "average", "averaged",
+    "consensus", "estimate", "estimated", "reading", "print", "printed",
+    "material", "materially", "improving", "improved", "pace", "running",
+    "each", "every", "first", "second", "third", "last", "next", "this",
+    "that", "with", "and", "the", "for", "was", "were", "been", "being",
+    "into", "their", "they", "them", "which", "while", "after", "than",
+    "january", "february", "march", "april", "june", "july", "august",
+    "september", "october", "november", "december",
+    # measure words (the metric, not the subject)
+    "sales", "sale", "revenue", "revenues", "pricing", "price", "prices",
+    "priced", "capex", "capital", "spending", "spend", "expenditure",
+    "expenditures", "buyback", "buybacks", "repurchase", "repurchases",
+    "earnings", "profit", "profits", "margin", "margins", "volume",
+    "volumes", "shipments", "authorization", "authorizations", "guidance",
+    # bank / house names — ATTRIBUTION, not subject. Both the draft cite
+    # "(JPMorgan)" and the source's attribution carry these, so leaving
+    # them in would create false overlap and mask real drift.
+    "goldman", "sachs", "jpmorgan", "morgan", "stanley", "citi", "citigroup",
+    "bofa", "barclays", "mizuho", "rabobank", "mufg", "nomura", "bernstein",
+    "lombard", "wells", "fargo", "jefferies", "natixis", "deutsche",
+    "citadel", "blackrock", "america",
+}
+
+# ENTITY synonyms ONLY — merging them avoids a false flag when the draft
+# names the same entity a different way (chip vs semiconductor). A narrow
+# term is NEVER mapped to its broad parent here: mapping memory->
+# semiconductor would mask the exact drift we are trying to catch. So the
+# clusters {memory,dram,hbm,nand,flash} and {semiconductor,semi,chip,chips}
+# stay separate, and a memory->semiconductor swap surfaces as zero overlap.
+_SCOPE_SYNONYMS = {
+    "semi": "semiconductor", "semis": "semiconductor",
+    "chip": "semiconductor", "chips": "semiconductor",
+    "dram": "memory", "hbm": "memory", "nand": "memory", "flash": "memory",
+    "deposit": "deposits",
+    "hyperscalers": "hyperscaler",
+}
+
+
+def _figure_key(figure_text: str) -> str:
+    """The comparable numeric token of a stat: the digit run, unit and
+    spacing dropped. '119%' -> '119', '4.53 %' -> '4.53', '45 percentage
+    points' -> '45'."""
+    m = re.match(r"\s*(\d{1,4}(?:\.\d+)?)", figure_text)
+    return m.group(1) if m else figure_text.strip()
+
+
+def _scope_anchors(window: str) -> set[str]:
+    """The subject words in a text window: >=4-char alpha tokens minus
+    quant/time/hedge noise, synonym-normalized. This is what a statistic
+    is ABOUT."""
+    out: set[str] = set()
+    for w in re.findall(r"[a-zA-Z]+", window.lower()):
+        if len(w) < 4 or w in _SCOPE_NOISE:
+            continue
+        out.add(_SCOPE_SYNONYMS.get(w, w))
+    return out
+
+
+def _collect_source_strings(ctx: dict) -> list[str]:
+    """Every string VALUE in the context, flattened. The research text
+    DRAFT was given lives here — notably the big `analyses_json` blob,
+    which is itself serialized JSON. That blob is re-parsed so we keep
+    only its value strings (each insight isolated) and drop structural
+    keys like "source"/"key_insights" — otherwise those keys, and text
+    from a neighbouring insight, would bleed into a figure's window and
+    muddy its subject."""
+    out: list[str] = []
+
+    def walk(o: object) -> None:
+        if isinstance(o, str):
+            st = o.strip()
+            # A string that is itself a JSON container (the analyses_json
+            # blob) — parse and recurse so keys are dropped and each
+            # value stands alone.
+            if st[:1] in "[{" and st[-1:] in "]}":
+                try:
+                    walk(json.loads(st))
+                    return
+                except (ValueError, TypeError):
+                    pass
+            out.append(o)
+        elif isinstance(o, dict):
+            for v in o.values():   # values only — keys are structural
+                walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                walk(v)
+
+    walk(ctx)
+    return out
+
+
+def _source_stat_index(source_strings: list[str]) -> dict[str, set[str]]:
+    """Map each source stat value -> the union of subject words seen
+    around every occurrence of it. Union (not per-occurrence) is
+    deliberate: it makes the downstream overlap check LENIENT, so a stat
+    that legitimately spans a couple of framings never false-flags."""
+    idx: dict[str, set[str]] = {}
+    for s in source_strings:
+        for m in _STAT_FIGURE_RE.finditer(s):
+            key = _figure_key(m.group(0))
+            lo, hi = max(0, m.start() - 90), min(len(s), m.end() + 90)
+            idx.setdefault(key, set()).update(_scope_anchors(s[lo:hi]))
+    return idx
+
+
+def _numeric_scope_violations(
+    sections: list[str], source_stats: dict[str, set[str]]
+) -> list[dict]:
+    """Flag INSIGHTS stats whose subject shares NOTHING with the source's
+    subject for that same figure value. Only fires when the figure is
+    present in the source (so it's a re-scope, not a fabrication), both
+    sides have subject words, and the overlap is empty.
+
+    FIRST-OCCURRENCE ONLY: a figure enters the pulse once with its real
+    subject; the FIRST mention is where a genuine drift attaches the wrong
+    subject. Later mentions are prose callbacks that restate the number in
+    generic terms ("60% of the index's earnings rides on one trade") and
+    would false-positive against the source's concrete wording. So each
+    figure value is decided by its first subject-bearing mention, then
+    retired. Trade-off: two DIFFERENT real claims sharing one number would
+    only have the first checked — rare, and worth the precision on an
+    advisory check."""
+    violations: list[dict] = []
+    evaluated: set[str] = set()  # figure keys already decided vs the source
+    for sec in sections:
+        for sent in re.split(r"(?<=[.!?])\s+", sec):
+            for m in _STAT_FIGURE_RE.finditer(sent):
+                key = _figure_key(m.group(0))
+                if key in evaluated:
+                    continue
+                src_anchors = source_stats.get(key)
+                if not src_anchors:
+                    continue  # figure not in source as a stat -> skip
+                draft_anchors = _scope_anchors(sent)
+                if not draft_anchors:
+                    continue  # no subject in this mention -> wait for one
+                evaluated.add(key)  # first subject-bearing mention decides
+                if draft_anchors & src_anchors:
+                    continue  # subject agrees -> fine
+                violations.append({
+                    "kind": "numeric-scope-drift",
+                    "severity": "soft",
+                    "message": (
+                        f"The figure '{m.group(0).strip()}' is attached to "
+                        f"[{', '.join(sorted(draft_anchors)[:5])}] but the "
+                        f"source uses it for [{', '.join(sorted(src_anchors)[:5])}]"
+                        f" — the subjects don't overlap. This is a segment "
+                        f"stat re-scoped to a broader subject (e.g. a memory "
+                        f"figure called 'industry sales'). Re-scope the number "
+                        f"to the source's subject or drop it."
+                    ),
+                    "figure": m.group(0).strip(),
+                    "draft_subject": sorted(draft_anchors)[:8],
+                    "source_subject": sorted(src_anchors)[:8],
+                })
+    return violations
+
+
 def validate(md_text: str, ctx: dict) -> list[dict]:
     """Return a list of violation dicts. Each carries `kind`, `severity`
     (hard|soft), and a human-readable `message`. Empty list = clean."""
@@ -507,6 +714,18 @@ def validate(md_text: str, ctx: dict) -> list[dict]:
                 "main_event_tickers": sorted(main_event_trade),
                 "leans": sorted(leans),
             })
+
+    # =====================================================================
+    # CHECK 7: numeric-scope-drift (a cited figure re-scoped off its source)
+    # =====================================================================
+    # Runs over INSIGHTS sections only — RECAP carries live-market figures
+    # from a different source (market_data), not the research corpus, so a
+    # provenance check there would false-flag. See the helper header above
+    # for the mechanism.
+    # ---------------------------------------------------------------------
+    source_stats = _source_stat_index(_collect_source_strings(ctx))
+    if source_stats:
+        violations.extend(_numeric_scope_violations(sections, source_stats))
 
     return violations
 
