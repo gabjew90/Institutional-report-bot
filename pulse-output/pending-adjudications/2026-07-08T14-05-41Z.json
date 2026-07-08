@@ -1,0 +1,232 @@
+{
+  "pulse_date": "2026-07-08",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "persian gulf energy supply risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 8
+      },
+      "consensus_view": "Renewed US-Iran fighting around the Strait of Hormuz has revived oil supply fears and lifted crude prices, but banks split on how long the scare lasts, with some pointing to strong supply growth that flips the market into a large surplus by 2027.",
+      "facts_agreed": [
+        {
+          "claim": "Renewed conflict in the Persian Gulf has reignited oil supply concerns.",
+          "banks_for": [
+            "ANZ Research",
+            "ING"
+          ],
+          "evidence_quotes": [
+            "The renewed attacks have raised the prospect of a complete collapse of the interim peace deal",
+            "Re-escalation in the Persian Gulf has reignited supply concerns"
+          ]
+        },
+        {
+          "claim": "Multiple bank desks flag the Strait of Hormuz as a live supply-risk chokepoint this window.",
+          "banks_for": [
+            "ANZ Research",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "HSBC",
+            "ING",
+            "JPMorgan",
+            "MUFG Research",
+            "Mizuho International"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz severe threat level",
+            "Strait of Hormuz shipping disruptions",
+            "Strait of Hormuz tanker attacks",
+            "Strait of Hormuz shipping attacks",
+            "US-Iran military escalation in the Strait of Hormuz",
+            "Strait of Hormuz geopolitical leverage",
+            "Strait of Hormuz shipping security",
+            "Strait of Hormuz reopening"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran peace negotiations",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five research desks flag US-Iran peace negotiations as a live geopolitical catalyst hanging over oil markets, but none has staked a clear directional call on whether a deal holds or falls apart.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference US-Iran peace negotiations as an active catalyst this window, spanning an interim agreement, a memorandum of understanding, and the risk of talks breaking down or collapsing.",
+          "banks_for": [
+            "ANZ Research",
+            "Goldman Sachs",
+            "HSBC",
+            "ING",
+            "MUFG Research"
+          ],
+          "evidence_quotes": [
+            "US-Iran interim peace agreement",
+            "US-Iran interim peace deal collapse",
+            "US-Iran peace talks breakdown risk",
+            "US-Iran ceasefire negotiations",
+            "US-Iran Memorandum of Understanding"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure spending",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five bank desks all flag heavy corporate and hyperscaler spending on AI infrastructure as a dominant, still-growing market force with uncertain payoff, but none has staked out a clear bullish or bearish call on it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag hyperscaler and corporate AI infrastructure spending as a large and still-growing force whose returns remain uncertain.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Deutsche Bank",
+            "HSBC",
+            "JPMorgan",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "governments and hyperscalers keep spending (for uncertain returns)",
+            "Hyperscaler capex spending exceeding operating cash flow",
+            "AI-driven capex spilling into power and hardware",
+            "AI infrastructure capex dominance",
+            "AI capex overspending narrative"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "nato summit",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three banks flag the NATO summit as a live macro backdrop, touching on the Greenland and Turkey angles, but none has staked a directional market call on it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the NATO summit as a topical event in this window without staking a primary directional view.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "NATO Summit",
+            "NATO leaders' summit in Europe",
+            "NATO Summit Greenland debate",
+            "NATO Summit in Turkey"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "french election uncertainty",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three bank desks flag the French presidential election as a live source of political and budget risk, but none has staked a directional market call on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference the French presidential election as an active source of political and fiscal uncertainty this window.",
+          "banks_for": [
+            "Deutsche Bank",
+            "ING",
+            "Mizuho International"
+          ],
+          "evidence_quotes": [
+            "French political uncertainty regarding Le Pen",
+            "French presidential election fiscal concerns",
+            "French presidential election campaign"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai debt bubble",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "The banks split on the AI buildout: Deutsche Bank frames it as an extraordinary semiconductor boom while Goldman Sachs warns the debt and capex financing it has swelled into a bubble, leaving unresolved whether this is healthy growth or a mounting credit risk.",
+      "facts_agreed": [
+        {
+          "claim": "AI and semiconductors are the single dominant, defining theme driving markets right now.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "the standout theme is the extraordinary AI-led semiconductor boom.",
+            "the AI debt bubble we first profiled in late 2025 has gotten much bigger"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI buildout is a healthy boom or a debt-driven bubble",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "for_evidence": "the standout theme is the extraordinary AI-led semiconductor boom.",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "the AI debt bubble we first profiled in late 2025 has gotten much bigger"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed policy trajectory",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "One desk expects the Fed under new chair Warsh to keep interest rates too low for too long and then be forced into a rushed catch-up cycle of rate hikes.",
+      "facts_agreed": [
+        {
+          "claim": "The Fed under Warsh is expected to hold policy too easy for too long before shifting to a catch-up hiking cycle.",
+          "banks_for": [
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Warsh will stay “too low for too long”, like Greenspan, and shift to the “catch-up hiking trajectory”"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
