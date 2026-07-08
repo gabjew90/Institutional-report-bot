@@ -1262,7 +1262,7 @@ python3 /tmp/progress.py "STEP_4_DONE"
 
 ## STEP 4.5 — Structural validate DRAFT (deterministic check, mandatory)
 
-Run `scripts/pulse_draft_validate.py` against `/tmp/draft.md` + `/tmp/ctx.json`. The validator checks for six classes of structural violation that the DRAFT prompt is supposed to prevent but historically hasn't reliably honored:
+Run `scripts/pulse_draft_validate.py` against `/tmp/draft.md` + `/tmp/ctx.json`. The validator checks for seven classes of structural violation that the DRAFT prompt is supposed to prevent but historically hasn't reliably honored:
 
 - **HARD `duplicate-sibling-sections`**: cap-blocked sibling theme pair shipped as two separate INSIGHTS sections instead of folded into one. The 2026-05-29 pulse shipped this; the 2026-06-01 fix held but the fold instruction is advisory at the prompt level — this is the code-level enforcement.
 - **HARD `contrarian-buried-in-appendix`**: a `contrarian_to_lead` theme exists in theme_map but wasn't given its own INSIGHTS section or WATCH bullet. The 2026-06-01 corpus had 5 contrarian titles all folded into the AI bear-case appendix; the contrarian detector ships them as a distinct category but DRAFT can still bury them.
@@ -1270,6 +1270,7 @@ Run `scripts/pulse_draft_validate.py` against `/tmp/draft.md` + `/tmp/ctx.json`.
 - **HARD `leans-block-missing`**: no usable `## _LEANS` block (absent or zero lean lines). The board is built ONLY from this block — the prose-scrape fallback was removed 2026-06-30 after it shipped truncated / wrong-ticker rationales ("Long $TLT — Until then the bias is") — so without the block the board is empty. Emit `## _LEANS` with one line per trade, MAIN EVENT first.
 - **SOFT `underweighted-all-dropped`**: zero underweighted_candidate themes appear anywhere in the pulse.
 - **SOFT `stance-split-no-named-debate`**: theme with ≥2 support AND ≥2 skeptical didn't name Bank-A-vs-Bank-B in its section.
+- **SOFT `numeric-scope-drift`**: an INSIGHTS figure (e.g. `119%`) is attached to a subject the source never used for that number — a segment stat re-scoped to a broader subject (a memory figure called "industry sales"). The number is real and present in the corpus, so it's not a fabrication; only its scope drifted. Fuzzy semantic check, so it's soft: it can false-positive on a legitimately-grounded figure that the source really did scope broadly, which is why it never blocks. See the Exit 4 handling — flagged figures get re-verified in the EDIT pass, not silently shipped.
 
 ```bash
 python3 scripts/pulse_draft_validate.py /tmp/draft.md /tmp/ctx.json /tmp/draft_validation.json
@@ -1297,7 +1298,7 @@ Decision logic (read literal exit code; do NOT infer from prose):
 
   Maximum 2 re-rolls. If validation still fails after the second re-roll, log a WARNING and proceed to STEP 5 with the residual violations recorded in the QC artifact. Don't loop forever — the pulse must ship even if DRAFT can't get structural compliance perfect.
 
-- **Exit 4** — SOFT violations only. Log them and proceed to STEP 5. Soft violations land in the QC review as advisory items but don't block the publish.
+- **Exit 4** — SOFT violations only. Log them and proceed to STEP 5. Soft violations land in the QC review as advisory items but don't block the publish. **One exception in how they're carried:** if any violation is `numeric-scope-drift`, copy its `figure` + `source_subject` into the EDIT pass (STEP 5b) as a verify-this item — "Confirm `<figure>` is scoped the way the source scopes it (source subject: `<source_subject>`). If the source really did attach it to a broader subject, leave it; if the draft widened a narrow segment stat, re-scope the sentence to the source's subject or drop the number." This keeps a fuzzy semantic flag from either silently shipping a real drift OR hard-blocking on a false positive — the EDIT sub-agent adjudicates it with the source in hand. (A misread here is cheap to fix and expensive to ship: the 2026-07-07 `119%` figure looked like a drift on a truncated read but the source genuinely said "semiconductor industry sales growth accelerated to +119%", so the correct action was to leave it. Verify against the FULL source sentence, not a snippet.)
 
 - **Exit 1 or 2** — validator error (missing file, bad ctx.json). Log and proceed to STEP 5 with no violations recorded.
 

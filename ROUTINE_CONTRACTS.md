@@ -89,7 +89,7 @@ Runs AFTER DRAFT against `(draft.md, ctx.json)`:
 |---:|---|---|
 | `0` | DRAFT passes all structural checks | Proceed to STITCH |
 | `3` | Hard violation (duplicate sibling sections, contrarian buried) | **Re-roll DRAFT** with violations as feedback |
-| `4` | Soft violation (underweighted not surfaced, stance-split not named) | Lint-warn, proceed |
+| `4` | Soft violation (underweighted not surfaced, stance-split not named, numeric-scope-drift) | Lint-warn, proceed; carry any `numeric-scope-drift` into EDIT as a verify-this |
 
 Output JSON at `<output_json>`:
 
