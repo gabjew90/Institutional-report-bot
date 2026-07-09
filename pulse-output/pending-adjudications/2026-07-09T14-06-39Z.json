@@ -1,0 +1,149 @@
+{
+  "pulse_date": "2026-07-09",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure and hardware",
+      "selected": true,
+      "stance_counts": {"supportive": 5, "skeptical": 1, "neutral": 9},
+      "consensus_view": "Banks broadly agree AI infrastructure and hardware spending is enormous and a dominant market driver, but they split on durability, with most seeing robust demand while Goldman warns the hardware trade is over-earning, highly cyclical, and starting to roll over.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure and capex spending is booming and is a dominant driver of markets and earnings.",
+          "banks_for": ["Goldman Sachs", "UBS", "BofA Global Research"],
+          "evidence_quotes": ["making AI capex the dominant driver", "CIO remains constructive on the wider AI value chain", "Broadcom reported robust 2Q26 results, driven by “insatiable demand” for custom AI platforms.", "AI is becoming a broader supply-chain theme, not just a chip or data center theme."]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether AI hardware/capex demand is durable or structurally over-earning and about to roll over",
+          "banks_for": ["HSBC", "UBS"],
+          "for_evidence": "we don’t buy into that, particularly as the narrative of excessive funding needs doesn’t stack up",
+          "banks_against": ["Goldman Sachs"],
+          "against_evidence": "I still think AI hardware is structurally over earning and highly cyclical."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz geopolitical risk",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 0, "neutral": 8},
+      "consensus_view": "Most desks and wires flag the Strait of Hormuz as a live oil-and-shipping risk to monitor, but only Rabobank calls for escalation while others frame it as normalizing or just a price premium, so there is no shared directional view.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks and wire sources reference the Strait of Hormuz as a live risk to oil supply and shipping that they are actively monitoring.",
+          "banks_for": ["Bloomberg", "Deutsche Bank", "HSBC", "JPMorgan", "MUFG Research", "The Market Ear", "UBS", "Rabobank"],
+          "evidence_quotes": ["Strait of Hormuz shipping disruptions", "Strait of Hormuz shipping security", "US-Iran Strait of Hormuz confrontation", "Straits of Hormuz energy dependence", "Strait of Hormuz supply-chain stress"]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the Strait of Hormuz situation is normalizing or escalating",
+          "banks_for": ["Bloomberg", "HSBC"],
+          "for_evidence": "Strait of Hormuz shipping normalization",
+          "banks_against": ["Rabobank"],
+          "against_evidence": "the ‘Battle of Hormuz’ may be about to begin."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed policy outlook",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 0, "neutral": 5},
+      "consensus_view": "Only HSBC stakes a firm call, expecting the Fed to hold interest rates in the 3.50-3.75% range through 2027, while five other desks merely flag upcoming Fed meetings and minutes as a catalyst without committing to a direction, some noting a risk the Fed turns hawkish and raises rates.",
+      "facts_agreed": [
+        {
+          "claim": "HSBC expects the Fed to keep the federal funds target rate on hold through 2026-27.",
+          "banks_for": ["HSBC"],
+          "evidence_quotes": ["Our own long-held forecast is that the FOMC will keep the federal funds target range"]
+        },
+        {
+          "claim": "Multiple banks flag upcoming FOMC meetings and minutes as a near-term rates catalyst this window.",
+          "banks_for": ["Goldman Sachs", "Mizuho International", "Morgan Stanley", "TS Lombard", "UBS"],
+          "evidence_quotes": ["FOMC meeting minutes", "September FOMC meeting", "Fed FOMC minutes hawkish risk", "June FOMC meeting", "June FOMC hawkish interpretation"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran conflict",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 5},
+      "consensus_view": "Five banks flag the US-Iran conflict as a live geopolitical driver of oil prices, but they split between escalation and de-escalation framings and none has staked a firm directional call.",
+      "facts_agreed": [
+        {
+          "claim": "Five banks reference the US-Iran conflict as an active geopolitical catalyst this window, mainly as a driver of oil-price moves.",
+          "banks_for": ["HSBC", "JPMorgan", "MUFG Research", "Mizuho International", "UBS"],
+          "evidence_quotes": ["US-Iran geopolitical conflict", "US-Iran conflict escalation", "Iran-US geopolitical turmoil", "US military strikes on Iran", "US-Iran conflict de-escalation"]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "conflict trajectory (escalation vs de-escalation)",
+          "banks_for": ["JPMorgan"],
+          "for_evidence": "US-Iran conflict escalation",
+          "banks_against": ["UBS"],
+          "against_evidence": "US-Iran conflict de-escalation"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor supply deficit",
+      "selected": true,
+      "stance_counts": {"supportive": 2, "skeptical": 1, "neutral": 2},
+      "consensus_view": "Most banks treat memory chips and semiconductors as the market's dominant theme with supply staying tight and profits surging, but at least one desk warns the rally looks technically stretched and could reverse sharply.",
+      "facts_agreed": [
+        {
+          "claim": "Semiconductors and memory chips are the leading equity theme, backed by supply that stays tight.",
+          "banks_for": ["J.P. Morgan", "UBS"],
+          "evidence_quotes": ["Memory/Semis continue to be the dominant equity theme", "We see semiconductor wafers in tight supply for the foreseeable future"]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "near-term direction of the semiconductor sector",
+          "banks_for": ["UBS"],
+          "for_evidence": "We see semiconductor wafers in tight supply for the foreseeable future",
+          "banks_against": ["The Market Ear"],
+          "against_evidence": "Semis look to be playing out a very similar path to silver"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "US-Iran memorandum of understanding",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 4},
+      "consensus_view": "Four bank desks flag a US-Iran peace deal as a live macro backdrop, but none has staked a directional market view on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks reference a US-Iran diplomatic resolution as a contextual macro development this window.",
+          "banks_for": ["ANZ Research", "BofA Global Research", "Deutsche Bank", "HSBC"],
+          "evidence_quotes": ["US-Iran peace deal", "US-Iran resolution", "US-Iran deal normalization", "US-Iran memorandum of understanding"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh federal reserve",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Three research desks reference Kevin Warsh as the Federal Reserve Chair and flag a potential shift toward tighter interest-rate policy, but none has committed to a directional call on what he will actually do.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference Kevin Warsh as Federal Reserve Chair and note his tenure as a live macro backdrop, with some framing a possible move toward tighter policy.",
+          "banks_for": ["Bloomberg", "HSBC", "TS Lombard"],
+          "evidence_quotes": ["Kevin Warsh (Federal Reserve Chair)", "Warsh's Fed tenure", "Fed Chairman Kevin Warsh policy panel in Sintra", "Kevin Warsh hawkish Fed policy shift"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
