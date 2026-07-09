@@ -49,36 +49,57 @@ def _make_client(text=None, raise_exc=False):
 
 def test_parses_web_verdict():
     from discord_bot.bot import _classify_ask_needs_web as f
-    for verdict in ["WEB", "web", "  WEB\n", "Web — because it needs a lookup"]:
+    # 2026-07-09: router emits TWO words (route + register); the return
+    # is now (needs_web, is_factual).
+    for verdict in ["WEB FACT", "web fact", "  WEB FACT\n",
+                    "Web fact — because it needs a lookup",
+                    "WEB"]:  # one-word legacy output still parses
         client = _make_client(text=verdict)
-        got = asyncio.run(f(client, "m", [], "when does spcx unlock"))
-        assert got is True, f"{verdict!r} should classify WEB: {got}"
-    _ok("router: WEB verdict parsed (case/whitespace/trailing-text tolerant)")
+        web, fact = asyncio.run(f(client, "m", [], "when does spcx unlock"))
+        assert web is True, f"{verdict!r} should classify WEB: {web}"
+        assert fact is True, f"{verdict!r} should default/parse FACT: {fact}"
+    web, fact = _run_verdict("WEB BANTER", "who won, roast the loser")
+    assert web is True and fact is False, "WEB BANTER must parse both signals"
+    _ok("router: WEB verdict parsed; FACT/BANTER second word + legacy 1-word")
+
+
+def _run_verdict(verdict, q):
+    from discord_bot.bot import _classify_ask_needs_web as f
+    client = _make_client(text=verdict)
+    return asyncio.run(f(client, "m", [], q))
 
 
 def test_parses_local_verdict():
     from discord_bot.bot import _classify_ask_needs_web as f
-    for verdict in ["LOCAL", "local", "  LOCAL", ""]:
+    for verdict in ["LOCAL FACT", "local banter", "  LOCAL", ""]:
         client = _make_client(text=verdict)
-        got = asyncio.run(f(client, "m", [], "roast terlin"))
-        assert got is False, f"{verdict!r} should classify LOCAL: {got}"
-    _ok("router: LOCAL verdict + empty/blank parsed as LOCAL")
+        web, _fact = asyncio.run(f(client, "m", [], "roast terlin"))
+        assert web is False, f"{verdict!r} should classify LOCAL: {web}"
+    # register signal parses independently of route
+    _web, fact = _run_verdict("LOCAL BANTER", "roast terlin")
+    assert fact is False, "LOCAL BANTER must parse BANTER"
+    _web, fact = _run_verdict("LOCAL FACT", "what's abe's win rate")
+    assert fact is True, "LOCAL FACT must parse FACT"
+    _ok("router: LOCAL verdict + empty/blank parsed as LOCAL; register parses")
 
 
 def test_failsafe_on_error():
     from discord_bot.bot import _classify_ask_needs_web as f
     client = _make_client(raise_exc=True)
-    got = asyncio.run(f(client, "m", [], "anything"))
-    assert got is False, "an API error must fail-safe to LOCAL, never raise"
-    _ok("router: API error fail-safes to LOCAL (no raise)")
+    web, fact = asyncio.run(f(client, "m", [], "anything"))
+    assert web is False, "an API error must fail-safe to LOCAL, never raise"
+    assert fact is False, (
+        "an API error must fail-safe to non-FACT (no register gating)"
+    )
+    _ok("router: API error fail-safes to (LOCAL, non-FACT) (no raise)")
 
 
 def test_failsafe_on_empty_question():
     from discord_bot.bot import _classify_ask_needs_web as f
     # No call should even be attempted for a blank question.
     client = _make_client(raise_exc=True)
-    assert asyncio.run(f(client, "m", [], "   ")) is False
-    _ok("router: blank question short-circuits to LOCAL without a call")
+    assert asyncio.run(f(client, "m", [], "   ")) == (False, False)
+    _ok("router: blank question short-circuits to (LOCAL, non-FACT)")
 
 
 def test_router_instruction_buckets():
@@ -89,7 +110,12 @@ def test_router_instruction_buckets():
     for kw in ["lockup", "holiday", "macro", "banter", "roast",
                "live stock price", "web", "local"]:
         assert kw in low, f"router instruction missing bucket keyword: {kw!r}"
-    assert "exactly one word" in low, "output contract missing"
+    assert "exactly two words" in low, "two-word output contract missing"
+    # 2026-07-09: second signal — FACT vs BANTER register. Unsure→FACT
+    # (mocking a sincere question is the failure mode, not a flat answer
+    # to banter).
+    assert "fact" in low and "banter" in low, "FACT/BANTER register missing"
+    assert "unsure, answer fact" in low, "unsure->FACT default missing"
     # 2026-07-01: uncertainty default FLIPPED to WEB ("facts first") —
     # a wasted search is cheap, an unverified wrong fact gets traded on.
     # The clearly-LOCAL classes (banter/roast/member-data/live-price) are

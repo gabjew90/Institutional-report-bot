@@ -1448,9 +1448,11 @@ _CHAT_SEARCH_RESULT_LIMIT = 20
 _CHAT_TIME_WINDOW_RESULT_LIMIT = 200
 
 
-def _build_runtime_system_instruction() -> str:
+def _build_runtime_system_instruction(extra_directive: str = "") -> str:
     """Return the system instruction with a CURRENT TIME header
-    prepended.
+    prepended and an optional per-request directive appended (e.g. the
+    FACT straight-answer block when the router says the question is a
+    sincere informational ask).
 
     Why this exists: time-window questions ("what was discussed
     5-9pm EST") require the model to know "now" so it can compute
@@ -1480,7 +1482,29 @@ def _build_runtime_system_instruction() -> str:
         f"end_iso to search_chat_messages.\n\n"
         f"---\n\n"
     )
-    return header + _ASK_SYSTEM_INSTRUCTION
+    return header + _ASK_SYSTEM_INSTRUCTION + (extra_directive or "")
+
+
+# Appended to the system instruction when the intent router classifies
+# the question as FACT (a sincere informational ask, not banter).
+# Classification-gated composition, not a standing prompt rule: the
+# directive only exists on requests where it applies, so the model can't
+# average it away against the banter guidance. The failure it kills
+# (2026-07-08, "is warsh speaking today"): a real schedule question
+# answered correctly but wrapped in an invented premise ("you're
+# confusing a document release with a press conference" — the asker
+# never mentioned the minutes) plus a "stop looking" jab. Backed by the
+# code-level asker-mockery guard downstream.
+_ASK_FACT_DIRECTIVE = (
+    "\n\n---\n\n"
+    "[REAL QUESTION — ANSWER IT STRAIGHT]\n"
+    "The router classified this as a sincere informational question, "
+    "not banter. Give the direct factual answer in room voice. Do NOT "
+    "mock the asker for asking it. Do NOT invent a premise they never "
+    "stated — no \"you're confusing X with Y\", no \"stop looking "
+    "for...\", no telling them what they think. No jab padding: if the "
+    "facts embarrass someone, the facts say it themselves."
+)
 
 
 def _build_chat_search_tool():
@@ -4349,19 +4373,41 @@ _ASK_ROUTER_INSTRUCTION = (
     "When genuinely unsure, answer WEB — a wasted search costs seconds, "
     "but an unverified wrong fact gets traded on. Reserve LOCAL for what "
     "is CLEARLY banter, roast, member-data, or live-price territory.\n\n"
-    "Output EXACTLY one word: WEB or LOCAL."
+    "SECOND word — the question's REGISTER:\n"
+    "FACT if the asker genuinely wants information — a real question "
+    "with a right answer ('is warsh speaking today', 'when does ASML "
+    "report', 'what year did toy story 3 come out', 'why is the market "
+    "down'). The asker is not performing; mockery would be answering a "
+    "sincere question with a slap.\n"
+    "BANTER if the ask is itself a performance — a roast request, a "
+    "callout, a flex, a bait ('roast terlin', 'who's the biggest bag "
+    "holder', 'tell BK why he's poor'), or trash-talk dressed as a "
+    "question. When unsure, answer FACT — a straight answer to banter "
+    "is a minor miss; mocking a sincere question is the failure mode.\n\n"
+    "Output EXACTLY two words: 'WEB FACT', 'WEB BANTER', 'LOCAL FACT', "
+    "or 'LOCAL BANTER'."
 )
 
 
 async def _classify_ask_needs_web(
     client, ask_model: str, safety_settings, question: str
-) -> bool:
-    """True when the question needs an open-web lookup (route to a
-    search-only grounded pass). Fail-safe: any error / ambiguous output
-    returns False so the call takes the normal multi-tool path (today's
-    default behavior), never a hard failure."""
+) -> tuple[bool, bool]:
+    """Classify the question in ONE cheap call, two signals:
+
+    Returns (needs_web, is_factual).
+      needs_web  — True: route to the search-only grounded pass.
+      is_factual — True: a sincere informational question (FACT), which
+                   gates the straight-answer directive + the
+                   asker-mockery guard. False: banter/roast/callout, or
+                   classification unavailable — full register stays on.
+
+    Fail-safes: any error / blank question returns (False, False) — the
+    normal multi-tool path with today's register behavior, never a hard
+    failure. A one-word legacy verdict ('WEB') defaults the register to
+    FACT: a straight answer to banter is a minor miss, mocking a sincere
+    question is the failure mode."""
     if not question or not question.strip():
-        return False
+        return (False, False)
     try:
         from google.genai import types
         # Only the tail matters — the real ask sits after the context
@@ -4386,10 +4432,52 @@ async def _classify_ask_needs_web(
         # (the per-call budget reservation in _answer_with_gemini already
         # over-reserves to cover it).
         verdict = ((resp.text or "").strip().upper())
-        return verdict.startswith("WEB")
+        needs_web = verdict.startswith("WEB")
+        is_factual = "BANTER" not in verdict
+        return (needs_web, is_factual)
     except Exception as e:
         log.info(f"/ask: intent-router classify failed (defaulting LOCAL): {e}")
-        return False
+        return (False, False)
+
+
+# Asker-mockery shapes — second-person derision aimed at the ASKER of a
+# FACT-classified question: inventing a premise they never stated
+# ("you're confusing X with Y"), or scolding them for asking ("stop
+# looking for a speech that isn't happening"). Only enforced when the
+# router said FACT — on banter these same shapes are legitimate register.
+# The 2026-07-08 exemplar: "is warsh speaking today" (a sincere schedule
+# question) answered with both shapes above.
+_ASKER_MOCKERY_RES = [
+    # invented premise: telling the asker what they think/confuse.
+    # Apostrophe class covers ASCII ' and curly ’ — Discord answers ship
+    # the curly one.
+    re.compile(
+        r"\byou[’']?re\s+(?:confusing|conflating|mixing\s+up)\b",
+        re.IGNORECASE),
+    re.compile(
+        r"\byou\s+(?:clearly|obviously)\s+(?:think|believe|want|have)\b",
+        re.IGNORECASE),
+    # scolding the asker for the act of asking / hoping
+    re.compile(
+        r"\b(?:stop|quit)\s+(?:looking|asking|searching|waiting|hoping|"
+        r"hunting)\b", re.IGNORECASE),
+    re.compile(r"\bjust\s+because\s+you\s+(?:want|wish|hope)\b", re.IGNORECASE),
+    re.compile(r"\b(?:that[’']?s\s+(?:just\s+)?you\s+coping|cope\s+harder)\b",
+               re.IGNORECASE),
+]
+
+
+def _asker_mockery_violations(answer: str) -> list[str]:
+    """Sentences in `answer` that mock the asker of a sincere question.
+    Sentence-level so the strip fallback keeps the factual core. Callers
+    gate on the router's FACT verdict — never run this on banter."""
+    if not answer:
+        return []
+    out: list[str] = []
+    for sent in re.split(r"(?<=[.!?])\s+", answer):
+        if any(rx.search(sent) for rx in _ASKER_MOCKERY_RES):
+            out.append(sent)
+    return out
 
 
 async def _answer_with_gemini(
@@ -4660,16 +4748,31 @@ async def _answer_with_gemini(
         # self-data questions keep the full tool set. The post-hoc
         # grounding backstop stays only as a thin net for router
         # misclassification (it should now rarely fire).
-        needs_web = await _classify_ask_needs_web(
+        needs_web, _route_is_factual = await _classify_ask_needs_web(
             client, ask_model, safety_settings, question
         )
+        # QC metadata accumulated through the whole answer path and
+        # stamped into the ask-log entry — makes route/grounding/guard
+        # decisions auditable instead of forensic (Railway logs rotate
+        # away in ~1h; the ask-log is the durable record).
+        _ask_meta: dict = {
+            "route": "WEB" if needs_web else "LOCAL",
+            "kind": "FACT" if _route_is_factual else "BANTER",
+            "guards": [],
+        }
+        # FACT questions get the straight-answer directive appended to
+        # the system instruction (classification-gated composition).
+        _fact_extra = _ASK_FACT_DIRECTIVE if _route_is_factual else ""
         if needs_web:
             log.info(
-                f"/ask: intent-router → WEB (search-only pass) "
-                f"q={question[:80]!r}"
+                f"/ask: intent-router → WEB/"
+                f"{'FACT' if _route_is_factual else 'BANTER'} "
+                f"(search-only pass) q={question[:80]!r}"
             )
             config = types.GenerateContentConfig(
-                system_instruction=_build_runtime_system_instruction(),
+                system_instruction=_build_runtime_system_instruction(
+                    _fact_extra
+                ),
                 tools=[types.Tool(google_search=types.GoogleSearch())],
                 safety_settings=safety_settings,
                 max_output_tokens=5000,
@@ -4678,9 +4781,16 @@ async def _answer_with_gemini(
             )
         else:
             log.info(
-                f"/ask: intent-router → LOCAL (multi-tool pass) "
-                f"q={question[:80]!r}"
+                f"/ask: intent-router → LOCAL/"
+                f"{'FACT' if _route_is_factual else 'BANTER'} "
+                f"(multi-tool pass) q={question[:80]!r}"
             )
+            if _fact_extra:
+                # The multi-tool config was built before the router ran —
+                # patch the directive in rather than rebuilding the tools.
+                config.system_instruction = (
+                    _build_runtime_system_instruction(_fact_extra)
+                )
 
         # Token-budget reservation BEFORE the call. /ask assembles
         # a large prompt (WHO'S TALKING + analyst log + recent chat +
@@ -4950,6 +5060,15 @@ async def _answer_with_gemini(
                     f"/ask: voice-cleanup hits ({len(hit_kinds)}): "
                     f"{sorted(set(hit_kinds))[:8]}"
                 )
+        # Asker-mockery guard (FACT-gated): a sincere question answered
+        # with derision at the asker feeds the same detect→rewrite pass
+        # as the other register violations; hard-strip fallback after.
+        if answer and _route_is_factual and _asker_mockery_violations(answer):
+            hit_kinds.append("asker-mockery")
+            log.warning(
+                f"/ask: asker-mockery on a FACT question "
+                f"(q={question[:80]!r}) — feeding register rewrite"
+            )
 
         # Architecture-leak rewrite. The 2026-06-01 QC caught one shipped:
         # SV asked "what was discussed in chat between 5pm and 9pm est"
@@ -4963,10 +5082,13 @@ async def _answer_with_gemini(
         # with a tiny prompt. No tools, low budget. If the rewrite also
         # leaks (or fails), ship the original — better SOMETHING than
         # blank.
-        _register_rewrite_kinds = {"meta-narration", "passive-aggressive"} & set(
-            hit_kinds or []
-        )
+        _register_rewrite_kinds = {
+            "meta-narration", "passive-aggressive", "asker-mockery"
+        } & set(hit_kinds or [])
         if answer and _register_rewrite_kinds:
+            _ask_meta["guards"].extend(
+                f"register:{k}" for k in sorted(_register_rewrite_kinds)
+            )
             log.warning(
                 f"/ask: register violation shipped through lint "
                 f"({sorted(_register_rewrite_kinds)}, q={question[:80]!r}); "
@@ -4989,6 +5111,15 @@ async def _answer_with_gemini(
                     "'your last five trades were paperhanded exits'. No "
                     "sardonic wind-up, no advice framing, no 'maybe'. "
                 ) if "passive-aggressive" in _register_rewrite_kinds else ""
+                _am_directive = (
+                    "The asker asked a SINCERE factual question. Remove "
+                    "every sentence or clause that mocks them for asking "
+                    "or invents a premise they never stated — 'you're "
+                    "confusing X with Y', 'stop looking for...', 'that's "
+                    "you coping'. Keep ALL the factual content. The "
+                    "answer should read like a knowledgeable trader "
+                    "answering a colleague, not slapping them. "
+                ) if "asker-mockery" in _register_rewrite_kinds else ""
                 rewrite_prompt = (
                     "Rewrite the following Discord bot answer so it sounds "
                     "like a trader talking to another trader. Strip ANY "
@@ -4999,7 +5130,7 @@ async def _answer_with_gemini(
                     "decline ('can't pull that one'), keep the decline but "
                     "drop the architecture excuse — just say what you don't "
                     "have, not why your data layer doesn't have it. "
-                    + _pa_directive +
+                    + _pa_directive + _am_directive +
                     "Do NOT add any new facts, names, tickers, or numbers. "
                     "Keep the same length, voice, and substance. Output ONLY "
                     "the rewritten answer, no preamble.\n\n"
@@ -5034,7 +5165,13 @@ async def _answer_with_gemini(
                     rewritten = ""
                 if rewritten:
                     # Re-lint to make sure the rewrite is actually clean.
+                    # asker-mockery isn't in _clean_voice_violations'
+                    # vocabulary, so re-check it explicitly.
                     rewritten, rewrite_hits = _clean_voice_violations(rewritten)
+                    if ("asker-mockery" in _register_rewrite_kinds
+                            and _asker_mockery_violations(rewritten)):
+                        rewrite_hits = list(rewrite_hits or [])
+                        rewrite_hits.append("asker-mockery")
                     if not (_register_rewrite_kinds & set(rewrite_hits or [])):
                         answer = rewritten
                         log.info("/ask: register rewrite succeeded")
@@ -5049,6 +5186,21 @@ async def _answer_with_gemini(
                     )
             except Exception as e:
                 log.warning(f"/ask: architecture-leak rewrite call failed: {e}")
+
+        # Asker-mockery hard-strip fallback — regardless of which path
+        # the rewrite took, mockery at a sincere asker never ships. The
+        # strip is sentence-level so the factual core survives.
+        if answer and _route_is_factual:
+            _mock_residual = _asker_mockery_violations(answer)
+            if _mock_residual:
+                _ask_meta["guards"].append("asker-mockery-strip")
+                _stripped_am = _strip_sentences(answer, _mock_residual)
+                if _stripped_am.strip():
+                    answer = _stripped_am
+                    log.warning(
+                        f"/ask: hard-stripped {len(_mock_residual)} "
+                        f"asker-mockery sentence(s)"
+                    )
 
         grounding_metadata = None
         try:
@@ -5082,6 +5234,10 @@ async def _answer_with_gemini(
             answer, grounding_metadata, needs_web
         )
         if answer and (_ground_trigger_shape or _ground_trigger_web):
+            _ask_meta["guards"].append(
+                "grounding:"
+                + ("web-routed" if _ground_trigger_web else "market-shape")
+            )
             log.warning(
                 f"/ask: ungrounded answer (q={question[:80]!r}, "
                 f"trigger={'web-routed' if _ground_trigger_web else 'market-shape'})"
@@ -5141,6 +5297,7 @@ async def _answer_with_gemini(
                     answer = forced_answer
                     response = forced_resp
                     grounding_metadata = forced_gm
+                    _ask_meta["ground_retry"] = "in-voice:grounded"
                     log.info("/ask: grounded retry succeeded")
                 elif forced_answer and not _retry_still_ungrounded:
                     # Retry dropped the unverifiable specifics (e.g. said
@@ -5148,18 +5305,95 @@ async def _answer_with_gemini(
                     answer = forced_answer
                     response = forced_resp
                     grounding_metadata = forced_gm
+                    _ask_meta["ground_retry"] = "in-voice:hedged"
                     log.info("/ask: grounded retry returned a hedged answer")
                 else:
-                    # Still ungrounded specifics — flag rather than ship as fact.
-                    answer = (
-                        answer.rstrip()
-                        + "\n\n→ ⚠️ Couldn't verify these specifics against a "
-                        "live source — treat the exact numbers/dates as "
-                        "unconfirmed."
-                    )
-                    log.warning(
-                        "/ask: grounded retry still ungrounded — appended hedge"
-                    )
+                    # Stage 2 — BARE PROBE. Diagnosis from the 2026-07-08
+                    # hedge batch (Toy Story / market-down / Netflix): even
+                    # SEARCH-ONLY passes skip the discretionary search when
+                    # the request carries the full 8-10K-char room prompt +
+                    # persona — the model answers from that context and its
+                    # priors instead. The probe strips EVERYTHING except the
+                    # question: no profiles, no chat, no persona. With
+                    # nothing to answer from, searching becomes the path of
+                    # least resistance. Dry output is fine — this path only
+                    # runs for fact-specific answers, where correct-and-
+                    # plain beats in-voice-but-unverified.
+                    _probe_ok = False
+                    try:
+                        probe_q = question.strip()[-600:]
+                        probe_resp = await client.aio.models.generate_content(
+                            model=ask_model,
+                            contents=[types.Content(
+                                role="user",
+                                parts=[types.Part.from_text(text=(
+                                    "Verify with Google Search and answer "
+                                    "concisely (1-4 short sentences or "
+                                    "bullets): " + probe_q
+                                ))],
+                            )],
+                            config=types.GenerateContentConfig(
+                                system_instruction=(
+                                    "You are a fact-checking search agent. "
+                                    "You MUST run at least one Google Search "
+                                    "before answering — never answer from "
+                                    "memory alone. State only what the "
+                                    "results support; name anything you "
+                                    "could not verify. Plain prose, no "
+                                    "em-dashes."
+                                ),
+                                tools=[types.Tool(
+                                    google_search=types.GoogleSearch())],
+                                safety_settings=safety_settings,
+                                max_output_tokens=1000,
+                                temperature=0.1,
+                                thinking_config=types.ThinkingConfig(
+                                    thinking_budget=512),
+                            ),
+                        )
+                        _tally_retry_usage(probe_resp)
+                        try:
+                            probe_answer = (probe_resp.text or "").strip()
+                        except Exception:
+                            probe_answer = ""
+                        probe_gm = None
+                        try:
+                            probe_gm = (
+                                probe_resp.candidates[0].grounding_metadata
+                            )
+                        except (AttributeError, IndexError, TypeError):
+                            pass
+                        if probe_answer and _grounding_has_sources(probe_gm):
+                            # The probe bypassed the earlier voice-lint pass
+                            # — run the mechanical cleaner so em-dashes /
+                            # tells don't ship.
+                            probe_answer, _ = _clean_voice_violations(
+                                probe_answer
+                            )
+                            answer = probe_answer
+                            response = probe_resp
+                            grounding_metadata = probe_gm
+                            _probe_ok = True
+                            _ask_meta["ground_retry"] = "bare-probe:grounded"
+                            log.info(
+                                "/ask: bare-probe grounded (in-voice retry "
+                                "had failed)"
+                            )
+                    except Exception as pe:
+                        log.warning(f"/ask: bare probe failed: {pe}")
+                    if not _probe_ok:
+                        # Still ungrounded — flag rather than ship as fact.
+                        answer = (
+                            answer.rstrip()
+                            + "\n\n→ ⚠️ Couldn't verify these specifics "
+                            "against a live source — treat the exact "
+                            "numbers/dates as unconfirmed."
+                        )
+                        _ask_meta["ground_retry"] = "hedged"
+                        log.warning(
+                            "/ask: retry + bare probe both ungrounded — "
+                            "appended hedge"
+                        )
             except Exception as e:
                 log.warning(f"/ask: grounded retry call failed: {e}")
 
@@ -5175,6 +5409,7 @@ async def _answer_with_gemini(
             answer, grounding_metadata, _ask_tool_trace
         ):
             ind0, lvl0 = _ta_violations(answer)
+            _ask_meta["guards"].append("ta")
             log.warning(
                 f"/ask: unsourced TA answer (q={question[:80]!r}, "
                 f"indicators={len(ind0)}, levels={len(lvl0)}) "
@@ -5273,6 +5508,7 @@ async def _answer_with_gemini(
             answer, _ask_tool_trace, user_content
         ):
             oc0 = _outcome_violations(answer, user_content)
+            _ask_meta["guards"].append("outcome")
             log.warning(
                 f"/ask: unsourced member-outcome claim(s) "
                 f"(q={question[:80]!r}, n={len(oc0)}) — requesting rewrite"
@@ -5356,6 +5592,7 @@ async def _answer_with_gemini(
         # fallback.
         _rank_viol = _rank_trajectory_violations(answer) if answer else []
         if _rank_viol:
+            _ask_meta["guards"].append("rank-trajectory")
             log.warning(
                 f"/ask: unsourced rank-trajectory claim(s) "
                 f"(q={question[:80]!r}, n={len(_rank_viol)}) — requesting rewrite"
@@ -5669,6 +5906,17 @@ async def _answer_with_gemini(
         # so the daily publish job can push to GitHub for browseable review.
         # Failure is non-fatal — the user still gets their answer.
         try:
+            # Final grounding status + source count for the audit stamp.
+            try:
+                _ask_meta["grounded"] = bool(
+                    _grounding_has_sources(grounding_metadata)
+                )
+                _ask_meta["sources"] = len(
+                    getattr(grounding_metadata, "grounding_chunks", None)
+                    or []
+                )
+            except Exception:
+                pass
             db.append_ask_interaction(
                 asker_display_name=asker_display_name,
                 asker_username=asker_username,
@@ -5683,6 +5931,7 @@ async def _answer_with_gemini(
                 full_prompt=user_content,
                 tool_trace=_ask_tool_trace,
                 raw_answer=_raw_answer_pre_clean,
+                meta=_ask_meta,
             )
         except Exception as e:
             log.warning(f"ask-log append failed (non-fatal): {e}")

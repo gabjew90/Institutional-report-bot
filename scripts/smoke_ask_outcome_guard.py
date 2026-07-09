@@ -149,13 +149,21 @@ def test_empty_answer_no_unbound_hitkinds():
     _ok("empty-answer path: hit_kinds pre-initialized (no UnboundLocalError)")
 
 
-def test_rewrite_trigger_covers_both_kinds():
+def test_rewrite_trigger_covers_all_kinds():
     import discord_bot.bot as bot
     src = inspect.getsource(bot._answer_with_gemini)
-    assert '{"meta-narration", "passive-aggressive"}' in src, \
-        "register rewrite must fire on both kinds"
+    # 2026-07-09: the trigger set gained "asker-mockery" (FACT-gated).
+    # Assert membership of each kind rather than the exact literal so
+    # the set can grow without breaking this smoke.
+    gate = src.split("_register_rewrite_kinds = {", 1)
+    assert len(gate) == 2, "register rewrite gate missing"
+    gate_set = gate[1].split("}", 1)[0]
+    for kind in ("meta-narration", "passive-aggressive", "asker-mockery"):
+        assert f'"{kind}"' in gate_set, f"rewrite must fire on {kind!r}"
     assert "_pa_directive" in src, "faux-advice directive missing from rewrite"
-    _ok("register rewrite: fires on meta-narration AND passive-aggressive")
+    assert "_am_directive" in src, "asker-mockery directive missing from rewrite"
+    _ok("register rewrite: fires on meta-narration, passive-aggressive, "
+        "asker-mockery")
 
 
 if __name__ == "__main__":
@@ -165,5 +173,5 @@ if __name__ == "__main__":
     test_outcome_guard_wired()
     test_passive_aggressive_lint()
     test_empty_answer_no_unbound_hitkinds()
-    test_rewrite_trigger_covers_both_kinds()
+    test_rewrite_trigger_covers_all_kinds()
     print("\nALL OUTCOME-GUARD SMOKE TESTS PASS")

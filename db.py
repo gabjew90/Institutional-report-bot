@@ -2835,6 +2835,7 @@ def append_ask_interaction(
     interaction_type: str = "gemini",
     tool_trace: list[dict] | None = None,
     raw_answer: str | None = None,
+    meta: dict | None = None,
 ) -> str | None:
     """Append one /ask interaction to today's local log file. Returns the
     log file path (so a caller can later commit it to GitHub), or None on
@@ -2952,6 +2953,36 @@ def append_ask_interaction(
             if interaction_type and interaction_type != "gemini" else ""
         )
 
+        # Route/grounding/guard audit stamp (2026-07-09) — one line per
+        # entry so QC reads decisions directly instead of inferring them
+        # from the presence of Sources/hedges. Railway logs rotate away
+        # in ~1 hour; this file is the durable audit record. Rendered
+        # only when the caller passed meta (the full Gemini path).
+        meta_line = ""
+        if meta:
+            try:
+                bits = []
+                if meta.get("route"):
+                    bits.append(
+                        f"`{meta['route']}/{meta.get('kind', '?')}`"
+                    )
+                if "grounded" in meta:
+                    n_src = meta.get("sources") or 0
+                    bits.append(
+                        f"grounded ✅ ({n_src} source"
+                        f"{'s' if n_src != 1 else ''})"
+                        if meta["grounded"] else "ungrounded"
+                    )
+                if meta.get("ground_retry"):
+                    bits.append(f"retry: {meta['ground_retry']}")
+                guards = meta.get("guards") or []
+                bits.append(
+                    "guards: " + (", ".join(guards) if guards else "—")
+                )
+                meta_line = "**Route:** " + " · ".join(bits) + "\n\n"
+            except Exception:
+                meta_line = ""
+
         # Tool trace table — one row per tool call the model made.
         tools_section = ""
         if tool_trace:
@@ -2993,6 +3024,7 @@ def append_ask_interaction(
             + f"## {ts_str}\n\n"
             f"**Asker:** {asker_label} in #{channel_name or '(unknown)'}\n\n"
             f"{type_line}"
+            f"{meta_line}"
             f"**Q:** {_clip(question)}\n\n"
             "**A:**\n\n"
             f"{_clip(answer)}\n\n"
