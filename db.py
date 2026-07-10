@@ -2977,6 +2977,8 @@ def append_ask_interaction(
                     bits.append(f"retry: {meta['ground_retry']}")
                 if meta.get("filter_retry"):
                     bits.append(f"filter-retry: {meta['filter_retry']}")
+                if meta.get("images"):
+                    bits.append(f"images: {meta['images']}")
                 guards = meta.get("guards") or []
                 bits.append(
                     "guards: " + (", ".join(guards) if guards else "—")

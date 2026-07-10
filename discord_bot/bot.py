@@ -4520,6 +4520,57 @@ _ASKER_MOCKERY_RES = [
 ]
 
 
+# Phantom image-read shapes — the answer claims to have SEEN/received a
+# screenshot when NO image reached the Gemini call. 2026-07-10: the bot
+# told 2pale "So you actually have a screenshot. 6.1x isn't 7x ... you
+# finally stopped larping and posted a fill" — with zero image bytes in
+# the request. It invented a reading of a receipt and validated an
+# undocumented 7x claim on the strength of its own fabrication. Callers
+# gate on `not images` — with an image actually attached, reading it is
+# the whole point.
+_PHANTOM_IMAGE_READ_RES = [
+    # acceptance: "you actually have/posted a screenshot / fill / receipt"
+    # — gap allows up to 5 filler words ("you finally stopped larping
+    # and posted a fill", the shipped 07-10 sentence, carries 4).
+    re.compile(
+        r"\byou\s+(?:\w+\s+){0,5}?(?:actually\s+have|posted|sent|dropped|"
+        r"uploaded)\s+(?:a|the|that|your)\s+(?:screen\s*shot|screenshot|"
+        r"image|pic|chart|receipt|fill)\b",
+        re.IGNORECASE),
+    # reading: "the/your screenshot shows/says/reads ..."
+    re.compile(
+        r"\b(?:the|your|that)\s+(?:screen\s*shot|screenshot|image|pic|"
+        r"chart|receipt)\s+(?:shows|says|reads|confirms|proves)\b",
+        re.IGNORECASE),
+    # perception: "I (can) see the/your screenshot ..."
+    re.compile(
+        r"\bI\s+(?:can\s+)?see\s+(?:the|your|that)\s+(?:screen\s*shot|"
+        r"screenshot|image|pic|chart|receipt)\b",
+        re.IGNORECASE),
+]
+# Negation / demand forms are legitimate ("post the receipt", "you never
+# posted an exit") — skip sentences carrying them.
+_PHANTOM_NEGATION_RE = re.compile(
+    r"\b(?:never|no|not|didn[’']?t|don[’']?t|without|post\s+(?:the|a|it))\b",
+    re.IGNORECASE,
+)
+
+
+def _phantom_image_read_violations(answer: str) -> list[str]:
+    """Sentences claiming the bot read/received an image. Callers gate on
+    the call having carried NO image bytes — then every such claim is
+    invented. Sentence-level so the strip keeps the rest."""
+    if not answer:
+        return []
+    out: list[str] = []
+    for sent in re.split(r"(?<=[.!?])\s+", answer):
+        if _PHANTOM_NEGATION_RE.search(sent):
+            continue
+        if any(rx.search(sent) for rx in _PHANTOM_IMAGE_READ_RES):
+            out.append(sent)
+    return out
+
+
 def _asker_mockery_violations(answer: str) -> list[str]:
     """Sentences in `answer` that mock the asker of a sincere question.
     Sentence-level so the strip fallback keeps the factual core. Callers
@@ -4812,6 +4863,9 @@ async def _answer_with_gemini(
             "route": "WEB" if needs_web else "LOCAL",
             "kind": "FACT" if _route_is_factual else "BANTER",
             "guards": [],
+            # Image count matters for QC: 0 means any "your screenshot
+            # shows X" in the answer is a phantom read (2026-07-10).
+            "images": len(images or []),
         }
         # FACT questions get the straight-answer directive appended to
         # the system instruction (classification-gated composition).
@@ -5722,6 +5776,33 @@ async def _answer_with_gemini(
                         )
             except Exception as e:
                 log.warning(f"/ask: rank-trajectory rewrite call failed: {e}")
+
+        # Phantom image-read guard — when NO image reached this call,
+        # any "your screenshot shows / you posted a fill" claim is an
+        # invented reading (2026-07-10: graded 2pale's SOXL receipt as
+        # "6.1x" without ever seeing it). Detect→strip; the intake fixes
+        # (reply-to-bot trigger + look-back pull) make a real image
+        # reach the call in the first place, this is the backstop.
+        if answer and not images:
+            _phantom = _phantom_image_read_violations(answer)
+            if _phantom:
+                _ask_meta["guards"].append("phantom-image")
+                _stripped_ph = _strip_sentences(answer, _phantom)
+                if _stripped_ph.strip():
+                    answer = _stripped_ph
+                    log.warning(
+                        f"/ask: stripped {len(_phantom)} phantom "
+                        f"image-read sentence(s) (no image in call)"
+                    )
+                else:
+                    answer = (
+                        "→ Can't read a screenshot from here — repost it "
+                        "as a reply to me or attach it to the question."
+                    )
+                    log.warning(
+                        "/ask: phantom image-read strip emptied the answer "
+                        "— shipped the repost ask instead"
+                    )
 
         # Blank-answer recovery. Gemini can return an empty text payload
         # when (a) max_output_tokens was burned in the thinking phase,
@@ -7154,8 +7235,35 @@ def create_bot() -> commands.Bot:
         except Exception as e:
             log.error(f"Analyst watcher dispatch failed: {e}", exc_info=True)
 
-        # Only respond when the bot is explicitly @-mentioned.
-        if bot.user is None or bot.user not in message.mentions:
+        # Respond when the bot is explicitly @-mentioned OR when the
+        # message is a DIRECT REPLY to one of the bot's own messages.
+        # 2026-07-10: 2pale replied to the bot with an image-only SOXL
+        # receipt and no ping — the mention-only trigger dropped it
+        # entirely; his follow-up ping carried no image, and the bot
+        # graded a screenshot it never saw ("6.1x isn't 7x"). A reply
+        # to the bot IS addressed to the bot; ping on/off shouldn't
+        # decide whether it gets read.
+        _is_reply_to_bot = False
+        if bot.user is not None and getattr(message, "reference", None):
+            _ref = message.reference
+            _ref_msg = getattr(_ref, "resolved", None)
+            if _ref_msg is None and getattr(_ref, "message_id", None):
+                # Gateway didn't resolve the parent (older message) —
+                # one fetch; failure just means mention-only behavior.
+                try:
+                    _ref_msg = await message.channel.fetch_message(
+                        _ref.message_id
+                    )
+                except Exception:
+                    _ref_msg = None
+            _ref_author = getattr(_ref_msg, "author", None)
+            _is_reply_to_bot = bool(
+                _ref_author
+                and getattr(_ref_author, "id", None) == bot.user.id
+            )
+        if bot.user is None or (
+            bot.user not in message.mentions and not _is_reply_to_bot
+        ):
             await bot.process_commands(message)
             return
         # Strip the mention(s) from the content to get the actual question.
@@ -7175,7 +7283,10 @@ def create_bot() -> commands.Bot:
         if not question:
             has_reference = bool(getattr(message, "reference", None))
             has_snapshot = bool(getattr(message, "message_snapshots", None))
-            if has_reference or has_snapshot:
+            # A bare tag/reply with an image attached IS the question —
+            # "read this" (receipt, chart, screenshot).
+            has_images = bool(getattr(message, "attachments", None))
+            if has_reference or has_snapshot or has_images:
                 question = "Weigh in on this."
             else:
                 await message.reply(
@@ -7324,6 +7435,7 @@ def create_bot() -> commands.Bot:
                 # using the same byte-fetch path. Works for both replies
                 # and forwards (snapshot.attachments are real Attachment
                 # objects with .read()).
+                _image_source_msg = message if images else None
                 if ref_attachments and len(images) < _IMAGE_MAX_PER_CALL:
                     remaining = _IMAGE_MAX_PER_CALL - len(images)
                     for att in ref_attachments:
@@ -7342,6 +7454,81 @@ def create_bot() -> commands.Bot:
                             remaining -= 1
                         except Exception as e:
                             log.info(f"/ask referenced-msg attachment read failed: {e}")
+
+                # Look-back image fallback (2026-07-10): the room's
+                # pattern is screenshot first, ask second ("Weigh in on
+                # this." 9 seconds after the image, as its own message).
+                # If neither the ask nor the referenced message carried
+                # an image, scan the asker's OWN last few messages (5-min
+                # window) for one so the bot reads the actual receipt
+                # instead of grading a screenshot it never saw.
+                if not images:
+                    try:
+                        async for _prev in message.channel.history(
+                            limit=8, before=message
+                        ):
+                            if _prev.author.id != message.author.id:
+                                continue
+                            _age = (
+                                message.created_at - _prev.created_at
+                            ).total_seconds()
+                            if _age > 300:
+                                break
+                            if not _prev.attachments:
+                                continue
+                            _lb = await _extract_images_from_message(
+                                _prev, remaining_slots=_IMAGE_MAX_PER_CALL,
+                            )
+                            if _lb:
+                                images = _lb
+                                _image_source_msg = _prev
+                                log.info(
+                                    f"/ask: look-back image pulled from the "
+                                    f"asker's message {_prev.id} "
+                                    f"({int(_age)}s before the ask)"
+                                )
+                                break
+                    except Exception as e:
+                        log.info(f"/ask look-back image scan failed: {e}")
+
+                # Receipt → ledger (2026-07-10): a screenshot handed
+                # directly to the bot (reply / tag / look-back) is an
+                # entry-or-exit receipt candidate. Route the image-
+                # bearing message through the member-mode analyst
+                # watcher — OCR → trade extraction → ledger row, no
+                # announce; a non-trade image is a silent no-op and the
+                # watcher is idempotent by message id. Eager-OCR/caller
+                # channels already dispatch in on_message, so only cover
+                # the rest.
+                if images and _image_source_msg is not None:
+                    try:
+                        _rcpt_chan = getattr(message.channel, "name", "") or ""
+                        _covered = (
+                            _rcpt_chan
+                            in settings.resolve_chat_eager_ocr_channels()
+                            or bool(settings.caller_by_channel(_rcpt_chan))
+                        )
+                        if not _covered:
+                            from analyst_log.watcher import (
+                                watch_message as _receipt_watch,
+                            )
+                            asyncio.create_task(
+                                _receipt_watch(
+                                    bot, _image_source_msg,
+                                    caller=None, tracking_mode="member",
+                                ),
+                                name=(
+                                    f"ask_receipt_ledger_"
+                                    f"{_image_source_msg.id}"
+                                ),
+                            )
+                            log.info(
+                                f"/ask: receipt-candidate image dispatched "
+                                f"to member-mode ledger extraction "
+                                f"(msg={_image_source_msg.id})"
+                            )
+                    except Exception as e:
+                        log.info(f"/ask receipt ledger dispatch failed: {e}")
 
                 # Resolve raw <@USER_ID> mentions in the question text
                 # so Gemini can connect tagged users to WHO'S TALKING.
