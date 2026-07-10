@@ -153,6 +153,45 @@ def test_ask_log_meta_stamp():
     _ok("audit stamp: db renders Route line; all guard families stamp meta")
 
 
+def test_question_only_filter_rung():
+    # 2026-07-09: 2pale's "wtf is prevailing wage" + "what is WRAP" died
+    # on Voice-strip AND slur-mask (his profile carries trip density
+    # outside **Voice.**). Fourth rung: question only, no profiles/chat.
+    import discord_bot.bot as bot
+    src = inspect.getsource(bot._answer_with_gemini)
+    window = src.split("Fourth-tier retry: QUESTION-ONLY", 1)
+    assert len(window) == 2, "question-only rung missing"
+    rung = window[1][:3200]
+    assert "_mask_slur_tokens" in rung, "the bare question must be masked too"
+    assert "profiles" not in rung.split("generate_content", 1)[1][:400], \
+        "the rung's call must carry no profile content"
+    assert '_ask_meta["filter_retry"] = "question-only"' in rung
+    # all rungs stamp the audit line; terminal failure stamps too
+    for stamp in ('"voice-strip"', '"slur-mask"', '"question-only"',
+                  '"failed"'):
+        assert f'_ask_meta["filter_retry"] = {stamp}' in src, \
+            f"filter_retry stamp missing: {stamp}"
+    import db as _db
+    dsrc = inspect.getsource(_db.append_ask_interaction)
+    assert "filter_retry" in dsrc, "db stamp must render filter-retry"
+    _ok("filter ladder: question-only terminal rung + all rungs stamped")
+
+
+def test_probe_diagnostics_and_forcing():
+    import discord_bot.bot as bot
+    src = inspect.getsource(bot._answer_with_gemini)
+    probe = src.split("BARE PROBE", 1)[1][:7000]
+    # 07-09: probe converted 1 of 4 — stamp now distinguishes ran-but-
+    # didn't-search from call-died, and the forcing got stronger.
+    assert "FIRST action MUST" in probe, "probe must demand search-first"
+    assert "thinking_budget=1024" in probe, "probe thinking budget too low"
+    assert '_probe_state = "no-ground"' in probe and \
+        '_probe_state = "error"' in probe, "probe state tracking missing"
+    assert 'f"hedged(probe:{_probe_state})"' in probe, \
+        "hedge stamp must carry the probe outcome"
+    _ok("probe: search-first forcing + outcome-diagnostic stamps")
+
+
 def test_qc_parser_tolerates_meta_line():
     from ask_qc.parser import parse_ask_log
     txt = (
@@ -180,5 +219,7 @@ if __name__ == "__main__":
     test_fact_directive_threaded_both_routes()
     test_bare_probe_wired()
     test_ask_log_meta_stamp()
+    test_question_only_filter_rung()
+    test_probe_diagnostics_and_forcing()
     test_qc_parser_tolerates_meta_line()
     print("\nALL FACT-REGISTER SMOKE TESTS PASS")

@@ -2975,6 +2975,8 @@ def append_ask_interaction(
                     )
                 if meta.get("ground_retry"):
                     bits.append(f"retry: {meta['ground_retry']}")
+                if meta.get("filter_retry"):
+                    bits.append(f"filter-retry: {meta['filter_retry']}")
                 guards = meta.get("guards") or []
                 bits.append(
                     "guards: " + (", ".join(guards) if guards else "—")
@@ -4577,6 +4579,23 @@ def is_official_caller(author_id: int) -> bool:
 # stays a fixed 14d judgment about the position, independent of window.
 _RECENT_WIN_DAYS = 7
 _GHOST_AGE_DAYS = 14
+
+
+def known_trade_caller_names() -> list[str]:
+    """Distinct caller names from the analyst trade ledger ('abe', 'bk',
+    ...). These are the members whose PLAYS get discussed and followed —
+    the protection set for the /ask outcome guard's third-person check
+    (2026-07-09: 'Abe's plays are a speedrun to homelessness' shipped
+    unsourced while the ledger showed him overwhelmingly green). Cheap
+    query; callers cache it."""
+    try:
+        rows = get_connection().execute(
+            "SELECT DISTINCT caller FROM analyst_trades "
+            "WHERE caller IS NOT NULL AND TRIM(caller) != ''"
+        ).fetchall()
+        return sorted({(r[0] or "").strip().lower() for r in rows if r[0]})
+    except Exception:
+        return []
 
 
 def compute_member_points(author_id: int, days: int = 21) -> dict:

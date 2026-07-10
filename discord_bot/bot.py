@@ -4,6 +4,7 @@ import asyncio
 import html
 import logging
 import re
+import time
 from datetime import datetime, timedelta, timezone
 from urllib.parse import urlparse
 
@@ -3682,6 +3683,14 @@ _OUTCOME_CLAIM_RE = re.compile(
     r"|\bin\s+the\s+hole\b"
     r"|\bin\s+the\s+toilet\b"
     r"|\bupside\s+down\b"
+    # Ruin idioms (2026-07-09: "speedrun homelessness" shipped about
+    # Abe's plays). Person-exclusive states only — company-applicable
+    # words (bankrupt/insolvent) stay OUT: "betting on them not going
+    # insolvent" about a COMPANY is legitimate prose that shares a
+    # sentence with 'you' often enough to false-positive.
+    r"|\bhomeless(?:ness)?\b"
+    r"|\bpoorhouse\b"
+    r"|\bfood\s+stamps\b"
     r"|\b(?:down|up)\s+\d+(?:\.\d+)?\s*%)",
     re.IGNORECASE,
 )
@@ -3696,17 +3705,60 @@ _OUTCOME_ATTRIB_RE = re.compile(
 )
 
 
-def _outcome_violations(answer: str, context_text: str = "") -> list[str]:
+# Ledger-caller names, cached 10 min — the outcome guard runs per
+# answer and the DISTINCT query is cheap, but there's no reason to hit
+# the DB on every message when the caller set changes ~never.
+_MEMBER_NAMES_CACHE: tuple[float, list[str]] = (0.0, [])
+
+
+def _known_member_names() -> list[str]:
+    global _MEMBER_NAMES_CACHE
+    now = time.time()
+    ts, names = _MEMBER_NAMES_CACHE
+    if now - ts < 600 and names:
+        return names
+    try:
+        names = db.known_trade_caller_names()
+    except Exception:
+        names = names or []
+    _MEMBER_NAMES_CACHE = (now, names)
+    return names
+
+
+def _member_name_re(member_names: set[str] | list[str] | None):
+    """Compiled alternation matching any known ledger-caller name as a
+    whole word ('Abe', 'abe's', 'BK'). Returns None when there are no
+    names. Names come from db.known_trade_caller_names() — the members
+    whose plays get discussed, which is exactly the set third-person
+    outcome claims target."""
+    names = [n for n in (member_names or []) if n and len(n) >= 2]
+    if not names:
+        return None
+    alts = "|".join(re.escape(n) for n in sorted(names, key=len, reverse=True))
+    return re.compile(rf"\b(?:{alts})\b", re.IGNORECASE)
+
+
+def _outcome_violations(
+    answer: str, context_text: str = "",
+    member_names: set[str] | list[str] | None = None,
+) -> list[str]:
     """Sentences asserting a member's P&L state with no visible source.
-    A sentence is flagged when it has a second-person marker AND an
+    A sentence is flagged when it has a PERSON ANCHOR — a second-person
+    marker OR a known ledger-caller's name (2026-07-09: 'Abe's plays
+    are a speedrun to homelessness' shipped in third person, invisible
+    to the 2P-only check, while the ledger showed Abe green) — AND an
     outcome claim, UNLESS it carries an attribution marker or every
     percentage it cites appears verbatim in the turn's context (i.e. it
     came from an injected gain_pct, not thin air)."""
     if not answer:
         return []
+    name_re = _member_name_re(member_names)
     flagged: list[str] = []
     for s in _split_sentences(answer):
-        if not (_OUTCOME_2P_RE.search(s) and _OUTCOME_CLAIM_RE.search(s)):
+        person_anchor = bool(_OUTCOME_2P_RE.search(s)) or bool(
+            name_re and name_re.search(s)
+        )
+        if not (person_anchor and _OUTCOME_CLAIM_RE.search(s)):
             continue
         if _OUTCOME_ATTRIB_RE.search(s):
             continue
@@ -3718,7 +3770,8 @@ def _outcome_violations(answer: str, context_text: str = "") -> list[str]:
 
 
 def _has_unsourced_outcome_claims(
-    answer: str, tool_trace: list, context_text: str = ""
+    answer: str, tool_trace: list, context_text: str = "",
+    member_names: set[str] | list[str] | None = None,
 ) -> bool:
     """True when the answer asserts a member's P&L state and the turn
     consulted NO trade data. Unlike the TA guard, WEB grounding does NOT
@@ -3731,7 +3784,7 @@ def _has_unsourced_outcome_claims(
         for t in (tool_trace or [])
     ):
         return False
-    return bool(_outcome_violations(answer, context_text))
+    return bool(_outcome_violations(answer, context_text, member_names))
 
 
 # =====================================================================
@@ -5320,6 +5373,7 @@ async def _answer_with_gemini(
                     # runs for fact-specific answers, where correct-and-
                     # plain beats in-voice-but-unverified.
                     _probe_ok = False
+                    _probe_state = "error"  # overwritten below on a response
                     try:
                         probe_q = question.strip()[-600:]
                         probe_resp = await client.aio.models.generate_content(
@@ -5335,9 +5389,10 @@ async def _answer_with_gemini(
                             config=types.GenerateContentConfig(
                                 system_instruction=(
                                     "You are a fact-checking search agent. "
-                                    "You MUST run at least one Google Search "
-                                    "before answering — never answer from "
-                                    "memory alone. State only what the "
+                                    "Your FIRST action MUST be a Google "
+                                    "Search query — produce no answer text "
+                                    "before searching, and never answer "
+                                    "from memory alone. State only what the "
                                     "results support; name anything you "
                                     "could not verify. Plain prose, no "
                                     "em-dashes."
@@ -5347,8 +5402,11 @@ async def _answer_with_gemini(
                                 safety_settings=safety_settings,
                                 max_output_tokens=1000,
                                 temperature=0.1,
+                                # 1024: at 512 the model sometimes answered
+                                # from priors without planning a search
+                                # (07-09: probe converted only 1 of 4).
                                 thinking_config=types.ThinkingConfig(
-                                    thinking_budget=512),
+                                    thinking_budget=1024),
                             ),
                         )
                         _tally_retry_usage(probe_resp)
@@ -5363,6 +5421,7 @@ async def _answer_with_gemini(
                             )
                         except (AttributeError, IndexError, TypeError):
                             pass
+                        _probe_state = "no-ground"
                         if probe_answer and _grounding_has_sources(probe_gm):
                             # The probe bypassed the earlier voice-lint pass
                             # — run the mechanical cleaner so em-dashes /
@@ -5383,16 +5442,19 @@ async def _answer_with_gemini(
                         log.warning(f"/ask: bare probe failed: {pe}")
                     if not _probe_ok:
                         # Still ungrounded — flag rather than ship as fact.
+                        # The stamp distinguishes probe-ran-but-didn't-
+                        # search from probe-call-died, so the ask-log
+                        # shows which failure to tune next.
                         answer = (
                             answer.rstrip()
                             + "\n\n→ ⚠️ Couldn't verify these specifics "
                             "against a live source — treat the exact "
                             "numbers/dates as unconfirmed."
                         )
-                        _ask_meta["ground_retry"] = "hedged"
+                        _ask_meta["ground_retry"] = f"hedged(probe:{_probe_state})"
                         log.warning(
                             "/ask: retry + bare probe both ungrounded — "
-                            "appended hedge"
+                            f"appended hedge (probe:{_probe_state})"
                         )
             except Exception as e:
                 log.warning(f"/ask: grounded retry call failed: {e}")
@@ -5504,10 +5566,11 @@ async def _answer_with_gemini(
         # data, rewrite the jab onto documented material; strip what
         # survives. (2026-07-02: Cpig clapback asserted "underwater" —
         # his ledger shows zero documented outcomes.)
+        _oc_names = _known_member_names()
         if answer and _has_unsourced_outcome_claims(
-            answer, _ask_tool_trace, user_content
+            answer, _ask_tool_trace, user_content, _oc_names
         ):
-            oc0 = _outcome_violations(answer, user_content)
+            oc0 = _outcome_violations(answer, user_content, _oc_names)
             _ask_meta["guards"].append("outcome")
             log.warning(
                 f"/ask: unsourced member-outcome claim(s) "
@@ -5517,9 +5580,13 @@ async def _answer_with_gemini(
                 oc_prompt = (
                     "Rewrite the following Discord bot answer. It asserts "
                     "someone's profit/loss STATE (e.g. 'underwater', 'down "
-                    "bad', 'bleeding', 'down N%') with NO documented source "
-                    "— the trade ledger only records what people POST, so "
-                    "an asserted P&L state is fabrication. Replace each "
+                    "bad', 'bleeding', 'down N%', 'his plays are a road to "
+                    "ruin') with NO documented source — the trade ledger "
+                    "only records what people POST, so an asserted P&L "
+                    "state is fabrication. This applies to ANY member named "
+                    "in the answer, not just the person being addressed — "
+                    "trashing a third member's plays without their ledger "
+                    "is the same invention. Replace each "
                     "such claim with what IS verifiable in the answer's own "
                     "remaining material: documented behavior (entries with "
                     "no posted exit, spamming a ticker, their own quoted "
@@ -5555,7 +5622,7 @@ async def _answer_with_gemini(
                 except Exception:
                     oc_answer = ""
                 if oc_answer and not _outcome_violations(
-                    oc_answer, user_content
+                    oc_answer, user_content, _oc_names
                 ):
                     answer = oc_answer
                     log.info("/ask: outcome-claim rewrite succeeded")
@@ -5565,10 +5632,12 @@ async def _answer_with_gemini(
                     # is still a clapback.
                     base = oc_answer if (
                         oc_answer
-                        and len(_outcome_violations(oc_answer, user_content))
+                        and len(_outcome_violations(
+                            oc_answer, user_content, _oc_names))
                         < len(oc0)
                     ) else answer
-                    to_strip = _outcome_violations(base, user_content)
+                    to_strip = _outcome_violations(
+                        base, user_content, _oc_names)
                     stripped = _strip_sentences(base, to_strip)
                     if stripped:
                         answer = stripped
@@ -5765,6 +5834,7 @@ async def _answer_with_gemini(
                             answer = stripped_answer
                             response = stripped_resp
                             retry_succeeded = True
+                            _ask_meta["filter_retry"] = "voice-strip"
                             log.info(
                                 "/ask: profiles-stripped retry succeeded"
                             )
@@ -5848,6 +5918,7 @@ async def _answer_with_gemini(
                             answer = masked_answer
                             response = masked_resp
                             retry_succeeded = True
+                            _ask_meta["filter_retry"] = "slur-mask"
                             log.info(
                                 "/ask: slur-masked retry succeeded"
                             )
@@ -5860,14 +5931,76 @@ async def _answer_with_gemini(
                         else:
                             log.warning(
                                 "/ask: slur-masked retry also returned empty — "
-                                "shipping fallback wrapper"
+                                "attempting question-only retry"
                             )
                     except Exception as e:
                         log.warning(
                             f"/ask: slur-masked retry call failed: {e}"
                         )
 
+                # Fourth-tier retry: QUESTION-ONLY. 2026-07-09: 2pale's
+                # "wtf is prevailing wage" and "what is WRAP" died on
+                # every rung above — his profile carries trip-density
+                # slur content OUTSIDE the **Voice.** sections (the
+                # rationale text), and the mask list doesn't cover every
+                # shape. A sincere factual question must not die because
+                # the asker's rap sheet is spicy: send JUST the (masked)
+                # question — no profiles, no chat, no cross-window. The
+                # answer loses room context, which for a factual question
+                # is decoration anyway.
+                if not retry_succeeded and (prompt_block or safety_blocked):
+                    try:
+                        bare_q = _mask_slur_tokens(
+                            (question or "").strip()[-800:]
+                        )
+                        if bare_q.strip():
+                            log.warning(
+                                "/ask: fourth-tier retry — question only, "
+                                "no profiles/chat"
+                            )
+                            bare_resp = await client.aio.models.generate_content(
+                                model=ask_model,
+                                contents=[types.Content(
+                                    role="user",
+                                    parts=[types.Part.from_text(text=bare_q)],
+                                )],
+                                config=config,
+                            )
+                            _tally_retry_usage(bare_resp)
+                            try:
+                                bare_answer = (bare_resp.text or "").strip()
+                            except Exception:
+                                bare_answer = ""
+                            if bare_answer:
+                                bare_answer, _ = _clean_voice_violations(
+                                    bare_answer
+                                )
+                                answer = bare_answer
+                                response = bare_resp
+                                retry_succeeded = True
+                                _ask_meta["filter_retry"] = "question-only"
+                                log.info(
+                                    "/ask: question-only retry succeeded"
+                                )
+                                try:
+                                    grounding_metadata = (
+                                        bare_resp.candidates[0]
+                                        .grounding_metadata
+                                    )
+                                except (AttributeError, IndexError, TypeError):
+                                    grounding_metadata = None
+                            else:
+                                log.warning(
+                                    "/ask: question-only retry also empty — "
+                                    "shipping fallback wrapper"
+                                )
+                    except Exception as e:
+                        log.warning(
+                            f"/ask: question-only retry call failed: {e}"
+                        )
+
                 if not retry_succeeded:
+                    _ask_meta["filter_retry"] = "failed"
                     answer = (
                         "→ Gemini bounced this one — its hard filter blocked "
                         "the prompt. Try asking a different way or about a "

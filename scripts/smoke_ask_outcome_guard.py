@@ -59,6 +59,50 @@ def test_detector_fires_on_the_observed_failure():
     _ok("detector: 'underwater on your own bags' flagged; strip keeps the rest")
 
 
+def test_third_person_member_claims_flag():
+    import discord_bot.bot as bot
+    names = ["abe", "bk"]
+    # the exact 2026-07-09 shipped sentence — third person, invisible to
+    # the 2P-only check, and "homelessness" wasn't in the lexicon.
+    abe = ("If you want to speedrun homelessness, Abe’s plays are a hell "
+           "of a lot faster than waiting for a corporate lawsuit to catch "
+           "up to you.")
+    v = bot._outcome_violations(abe, "", names)
+    assert len(v) == 1, f"the Abe sentence must flag: {v}"
+    # pure third-person member P&L claim (no 'you' at all)
+    v2 = bot._outcome_violations("abe's book is bleeding out.", "", names)
+    assert len(v2) == 1, f"third-person member claim must flag: {v2}"
+    # WITHOUT the name list the old behavior is preserved (2P-only)
+    assert bot._outcome_violations("abe's book is bleeding out.", "") == []
+    # market prose about non-members stays exempt even with names loaded
+    assert bot._outcome_violations(
+        "the hyperscalers are bleeding while memory rips", "", names) == []
+    # company-applicable words are NOT in the lexicon — "you're betting
+    # on them not going insolvent" (ALP, 07-09) is legitimate prose
+    assert bot._outcome_violations(
+        "you're just betting on them not going insolvent before the next "
+        "hype cycle.", "", names) == []
+    # attribution still exempts a named member
+    assert bot._outcome_violations(
+        "abe posted the +65% close, he said he's up big.", "", names) == []
+    _ok("third-person: Abe sentence + member claims flag; prose/company/"
+        "attribution safe")
+
+
+def test_member_names_wired():
+    import inspect as _i
+    import discord_bot.bot as bot
+    import db as _db
+    assert callable(getattr(_db, "known_trade_caller_names", None)), \
+        "db.known_trade_caller_names missing"
+    src = _i.getsource(bot._answer_with_gemini)
+    assert "_oc_names = _known_member_names()" in src, \
+        "guard must load the ledger-caller names"
+    assert "_ask_tool_trace, user_content, _oc_names" in src, \
+        "names must reach _has_unsourced_outcome_claims"
+    _ok("wired: ledger-caller names cached + passed to the guard")
+
+
 def test_detector_respects_sources():
     import discord_bot.bot as bot
     # (a) the member's OWN claim is attributed -> not flagged
@@ -169,6 +213,8 @@ def test_rewrite_trigger_covers_all_kinds():
 if __name__ == "__main__":
     print("=== /ask outcome-guard + register-lint smoke ===")
     test_detector_fires_on_the_observed_failure()
+    test_third_person_member_claims_flag()
+    test_member_names_wired()
     test_detector_respects_sources()
     test_outcome_guard_wired()
     test_passive_aggressive_lint()
