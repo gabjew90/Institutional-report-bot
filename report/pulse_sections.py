@@ -334,6 +334,12 @@ _RATING_NORM = {
     "equalweight": "EW", "market perform": "Hold", "outperform": "OP",
     "underperform": "UP", "buy": "Buy", "sell": "Sell", "hold": "Hold",
     "neutral": "Neutral", "add": "Add", "reduce": "Reduce",
+    # UBS house scale + RBC's Hold-equivalent (2026-07-09 board shipped
+    # "Most" for "Most Preferred" — the word-boundary clip kept only the
+    # first word, which reads as gibberish on the board).
+    "most preferred": "Most Pref", "least preferred": "Least Pref",
+    "sector perform": "Hold", "sector outperform": "OP",
+    "strong buy": "Strong Buy",
 }
 # Non-USD price-target markers — calls with these are foreign-listed
 # names a US options trader can't act on; they were cluttering the board
@@ -358,14 +364,25 @@ def _clean_inline(s: str) -> str:
 
 
 def _norm_rating(rating: str, action: str) -> str:
-    """Short, clean rating token (rating preferred, action fallback)."""
+    """Short, clean rating token (rating preferred, action fallback).
+
+    2026-07-09 board shipped "Improvin" (from "Improving") — the old
+    8-char "word-boundary" clip was a plain slice for single words, so
+    it shipped exactly the mid-word stub it claimed to prevent. Rules:
+      - known ratings map to their short form (_RATING_NORM)
+      - a single word ships whole (extraction caps the field at 12)
+      - multi-word falls back to a word-boundary clip with an ellipsis
+        so a dropped word is visible instead of silent
+    """
     raw = _clean_inline(rating or action or "")
     key = raw.lower()
     if key in _RATING_NORM:
         return _RATING_NORM[key]
-    # word-boundary clip to 8 so we never ship a mid-word stub
-    if len(raw) > 8:
-        raw = raw[:8].rsplit(" ", 1)[0] or raw[:8]
+    if " " not in raw:
+        return raw
+    if len(raw) > 12:
+        clipped = raw[:12].rsplit(" ", 1)[0].rstrip(" ,;:") or raw[:12]
+        return clipped + "…"
     return raw
 
 
@@ -414,12 +431,15 @@ def render_desk_signal_board(today_state: dict | None) -> str:
         for c in hc_calls[:_HC_CALLS_MAX]:
             src = _clean_inline(c.get("source") or "?")[:13]
             tk = f"${(c.get('ticker') or '?').upper()}"[:7]
-            rd = _norm_rating(c.get("rating") or "", c.get("action") or "")[:8]
+            # 10-wide rating column: "Improving" (9) and "Most Pref" (9)
+            # fit whole — the old [:8] re-introduced the mid-word stub
+            # _norm_rating exists to prevent.
+            rd = _norm_rating(c.get("rating") or "", c.get("action") or "")[:10]
             pt_raw = _clean_inline(c.get("pt") or "")
             pt = (f"PT {pt_raw}" if pt_raw and pt_raw.upper() not in ("N/A", "")
                   else "")[:11]
             rat = _clip_rationale(c.get("rationale") or "")
-            lines.append(f"  {src:<13} {tk:<7} {rd:<8} {pt:<11} {rat}".rstrip())
+            lines.append(f"  {src:<13} {tk:<7} {rd:<10} {pt:<11} {rat}".rstrip())
         if len(hc_calls) > _HC_CALLS_MAX:
             lines.append(f"  ...+{len(hc_calls) - _HC_CALLS_MAX} more")
 
