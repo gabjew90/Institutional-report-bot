@@ -530,6 +530,8 @@ The counter-disqualification in that last pair mocks a TYPE of person holding a 
 
 **Source the heat from the ATTACKER'S OWN dossier — the whole thing.** Their profile is always in WHO'S TALKING; everything in it was originally said in chat, so all of it is fair game: *Personality and style*, *Voice*, *Retarded takes*, *Recent trades*, *Recent personal life*. **Never cross-attribute** — using one user's material against another is fabrication even when both profiles are visible. If the attacker's profile doesn't say it and chat doesn't show it, you don't have it.
 
+**Material hierarchy — personal color beats P&L (binding).** The weakest, most overused roast material is trading losses: "your bags," "post an exit," "your account is bleeding." Every jab in that register sounds like every other jab, and the room notices (2026-07-10 feedback after three straight GEO/no-exit/casino roasts: *"doesn't know you or how to insult you at all"*). The strong material is PERSONAL: *Recent personal life*, *Retarded takes*, *Personality*, and what they said in the live chat window — the quarter-mil in sealed Pokemon, the bumfuck-Idaho address, the COVID saxophone nobody's heard, the "close friend who's a director at Raytheon." Default to personal color. Touch trading-P&L angles only when the ledger hands you a specific fresh receipt, and never as the roast's only note.
+
 **Using `search_chat_messages` on Type 3.** When the attacker references something specific you don't have in context — *"you said X two weeks ago,"* *"remember when you got `<ticker>` wrong"* — call `search_chat_messages` to verify or counter. If they're misquoting you, the search receipt corrects them ("checked the log — what I actually said was `<the real line>`"). If they're cherry-picking a stale take you've since updated, surface the update with the actual dates from the search results, not invented ones. One verified beat, then done. Don't get drawn into a multi-round receipt-fight; clapbacks are one paragraph and out.
 
 **Hard rule on receipts.** Any date, ticker, percentage, or quote you cite in a Type 3 clapback MUST come from an actual search result or pre-injected context block. NEVER fabricate a date stamp like "you said this on `<date>`" without the receipt to back it. The attacker will check.
@@ -4579,6 +4581,67 @@ def _extract_roast_hooks(text: str) -> set[str]:
 
 _RECYCLE_HOOK_MIN = 4
 
+# P&L-monotone detection — 2026-07-10 user feedback: "your roasts need
+# to target more personal stuff than trading money losses cuz it's just
+# lame and repetitive." The prompt now states the hierarchy (personal
+# color beats P&L); this is the code floor: a BANTER roast built purely
+# from trading-loss vocabulary with ZERO hooks from the dossier's
+# personal-color sections gets one rewrite. Stemmed to match
+# _extract_roast_hooks output.
+_PNL_HOOKS = {
+    "bag", "baghold", "exit", "entri", "entry", "position", "portfolio",
+    "account", "trade", "trad", "loss", "losse", "loser", "call", "put",
+    "option", "casino", "money", "receipt", "ledger", "scalp", "chart",
+    "leverage", "liquidat", "underwater", "paperhand", "port", "expiry",
+    "strike", "stop-loss", "green", "gain", "profit", "pump", "dump",
+}
+
+
+def _is_pnl_hook(h: str) -> bool:
+    """P&L-vocabulary test for a hook: direct hit, singular form (short
+    words like 'bags' survive the crude stemmer un-stripped), or a bare
+    ALL-CAPS ticker."""
+    low = h.lower()
+    if low in _PNL_HOOKS:
+        return True
+    if low.endswith("s") and low[:-1] in _PNL_HOOKS:
+        return True
+    return h.isupper() and 2 <= len(h) <= 6
+
+# Dossier sections that carry personal color (vs trading records).
+_PERSONAL_SECTION_RE = re.compile(
+    r"\*\*(?:Recent personal life|Retarded takes|Personality and style)"
+    r"\.\*\*\s*\n(.*?)(?=\n\s*\*\*|\n- \*\*|\Z)",
+    re.DOTALL,
+)
+
+
+def _personal_color_hooks(profiles_block: str) -> set[str]:
+    """Hooks from the dossier's personal-color sections — the pool a
+    good roast draws from. P&L vocabulary is excluded even here:
+    'allergic to receipts' in a Personality section must not let a
+    receipts jab count as personal color."""
+    pool: set[str] = set()
+    for m in _PERSONAL_SECTION_RE.finditer(profiles_block or ""):
+        pool |= _extract_roast_hooks(m.group(1))
+    return {h for h in pool if not _is_pnl_hook(h)}
+
+
+def _roast_is_pnl_monotone(answer: str, profiles_block: str) -> bool:
+    """True when a roast is all trading-loss vocabulary and touches none
+    of the dossier's personal color. Callers gate on BANTER — factual
+    answers talk P&L legitimately."""
+    if not answer:
+        return False
+    hooks = _extract_roast_hooks(answer)
+    if not hooks:
+        return False
+    pnl_n = len({h for h in hooks if _is_pnl_hook(h)})
+    if pnl_n < 3:
+        return False
+    pool = _personal_color_hooks(profiles_block)
+    return not (hooks & pool)
+
 
 def _recycled_roast_hooks(answer: str, prior_answers: list[str]) -> list[str]:
     """Hooks the new answer shares with ANY single prior answer to the
@@ -5416,10 +5479,12 @@ async def _answer_with_gemini(
                         "paraphrase): "
                         + ", ".join(_recycled)
                         + ". Rebuild the jab from DIFFERENT material that "
-                        "is ALREADY in this conversation's context — other "
-                        "parts of their profile (personality, retarded "
-                        "takes, recent personal life, recent trades) or "
-                        "what they said in the current chat window. Same "
+                        "is ALREADY in this conversation's context — their "
+                        "PERSONAL color first (recent personal life, "
+                        "retarded takes, personality, what they said in "
+                        "the current chat window); trading-loss angles "
+                        "only if the ledger material is specific and "
+                        "fresh. Same "
                         "heat, same length, same voice. Do NOT invent new "
                         "facts, tickers, or numbers. Output ONLY the "
                         "rewritten answer.\n\nORIGINAL:\n"
@@ -5465,6 +5530,75 @@ async def _answer_with_gemini(
                             )
                 except Exception as e:
                     log.warning(f"/ask: roast-recycle rewrite failed: {e}")
+
+        # P&L-monotone guard (BANTER-gated) — "your roasts need to
+        # target more personal stuff than trading money losses cuz it's
+        # just lame and repetitive" (user, 2026-07-10). A roast that is
+        # all trading-loss vocabulary and touches NONE of the dossier's
+        # personal color gets one rewrite pointed at the personal
+        # sections. Ship the original if the rewrite doesn't improve —
+        # monotone is weak, not dangerous.
+        if (answer and not _route_is_factual and profiles_block
+                and _roast_is_pnl_monotone(answer, profiles_block)):
+            _ask_meta["guards"].append("pnl-monotone")
+            log.warning(
+                f"/ask: P&L-monotone roast (q={question[:80]!r}) — "
+                f"requesting personal-color rewrite"
+            )
+            try:
+                _pm_prompt = (
+                    "Rewrite the following Discord bot roast. Every jab "
+                    "in it is a trading-losses jab (bags, exits, account, "
+                    "casino) — the laziest register, and this room has "
+                    "called it out. Rebuild the heat from the target's "
+                    "PERSONAL color that is ALREADY in this conversation's "
+                    "context: their recent personal life, retarded takes, "
+                    "personality quirks, or what they said in the current "
+                    "chat window. One trading reference may survive if "
+                    "it's specific, but the roast's spine must be "
+                    "personal. Same heat, same length, same voice. Do NOT "
+                    "invent new facts, tickers, or numbers — only material "
+                    "from the context. Output ONLY the rewritten "
+                    "answer.\n\nORIGINAL:\n"
+                    f"{answer}"
+                )
+                _pm_config = types.GenerateContentConfig(
+                    system_instruction=(
+                        "You are a sharp trader rewriting a roast so it "
+                        "hits the person, not their P&L. Direct, "
+                        "in-register, no AI tells."
+                    ),
+                    safety_settings=safety_settings,
+                    max_output_tokens=1500,
+                    temperature=0.6,
+                    thinking_config=types.ThinkingConfig(
+                        thinking_budget=512),
+                )
+                _pm_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=[types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=_pm_prompt)],
+                    )],
+                    config=_pm_config,
+                )
+                _tally_retry_usage(_pm_resp)
+                try:
+                    _pm_answer = (_pm_resp.text or "").strip()
+                except Exception:
+                    _pm_answer = ""
+                if _pm_answer:
+                    _pm_answer, _ = _clean_voice_violations(_pm_answer)
+                    if not _roast_is_pnl_monotone(_pm_answer, profiles_block):
+                        answer = _pm_answer
+                        log.info("/ask: P&L-monotone rewrite succeeded")
+                    else:
+                        log.warning(
+                            "/ask: P&L-monotone rewrite still monotone — "
+                            "shipping original"
+                        )
+            except Exception as e:
+                log.warning(f"/ask: P&L-monotone rewrite failed: {e}")
 
         grounding_metadata = None
         try:
