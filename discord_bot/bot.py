@@ -4520,6 +4520,83 @@ _ASKER_MOCKERY_RES = [
 ]
 
 
+# Roast-recycle detection — 2026-07-10: three roasts of ZHawk inside two
+# minutes remixed the same four profile hooks (GEO / no-exit / LARP /
+# casino), earning "omniwiz doesn't know you or how to insult you at
+# all. pathetic." The prompt-level anti-recycling block is advisory and
+# the model ignored it; this is the code-level check. A roast is
+# "recycled" when it shares >= _RECYCLE_HOOK_MIN distinctive hooks
+# (cashtags + crude-stemmed content words) with a prior answer to the
+# SAME asker. BANTER-gated by the caller — factual answers legitimately
+# repeat facts.
+_HOOK_STOPWORDS = {
+    "about", "actual", "actually", "after", "again", "against", "answer",
+    "because", "been", "before", "being", "better", "call", "could",
+    "even", "every", "first", "from", "getting", "have", "here", "just",
+    "keep", "know", "like", "little", "look", "make", "more", "most",
+    "much", "need", "never", "only", "other", "over", "people", "post",
+    "real", "really", "right", "room", "same", "should", "since", "some",
+    "spend", "start", "still", "than", "that", "their", "them", "then",
+    "there", "these", "they", "thing", "think", "this", "those",
+    "through", "time", "trade", "trader", "trades", "trading", "want",
+    "week", "were", "what", "when", "where", "which", "while", "whole",
+    "with", "without", "would", "your",
+}
+
+
+# All-caps tokens that are NOT tickers (roasts write tickers bare —
+# "GEO entries", no cashtag — so caps tokens count as hooks, minus the
+# acronyms trading prose uses constantly).
+_HOOK_CAPS_STOP = {
+    "AI", "US", "UK", "EU", "USA", "CEO", "CFO", "ETF", "IPO", "GDP",
+    "CPI", "PPI", "FED", "LOL", "IMO", "NFA", "PSA", "THE", "AND",
+    "NOT", "YOU", "OK",
+}
+
+
+def _extract_roast_hooks(text: str) -> set[str]:
+    """Distinctive hooks in a roast: cashtags, bare ALL-CAPS tickers
+    ('GEO entries' carries no $), and content words >=4 chars, crude-
+    stemmed so LARPing/LARP and exits/exit collide. Contractions are
+    cut at the apostrophe ('you’re' -> 'you' -> dropped as short)."""
+    if not text:
+        return set()
+    hooks = {t.upper() for t in re.findall(r"\$([A-Za-z]{1,6})\b", text)}
+    for t in re.findall(r"\b[A-Z]{2,6}\b", text):
+        if t not in _HOOK_CAPS_STOP:
+            hooks.add(t)
+    for w in re.findall(r"[a-zA-Z][a-zA-Z'’-]{3,}", text.lower()):
+        w = w.split("'")[0].split("’")[0].strip("-")
+        for suf in ("ing", "ed", "es", "s"):
+            if w.endswith(suf) and len(w) - len(suf) >= 4:
+                w = w[: -len(suf)]
+                break
+        if len(w) < 4 or w in _HOOK_STOPWORDS:
+            continue
+        hooks.add(w)
+    return hooks
+
+
+_RECYCLE_HOOK_MIN = 4
+
+
+def _recycled_roast_hooks(answer: str, prior_answers: list[str]) -> list[str]:
+    """Hooks the new answer shares with ANY single prior answer to the
+    same asker. Compared per-prior-answer (not against the union) so the
+    threshold means 'this reads like a remix of THAT roast'."""
+    if not answer or not prior_answers:
+        return []
+    cur = _extract_roast_hooks(answer)
+    if not cur:
+        return []
+    best: set[str] = set()
+    for pa in prior_answers:
+        shared = cur & _extract_roast_hooks(pa)
+        if len(shared) > len(best):
+            best = shared
+    return sorted(best)
+
+
 # Phantom image-read shapes — the answer claims to have SEEN/received a
 # screenshot when NO image reached the Gemini call. 2026-07-10: the bot
 # told 2pale "So you actually have a screenshot. 6.1x isn't 7x ... you
@@ -4767,6 +4844,9 @@ async def _answer_with_gemini(
         # (count-bounded, no recency cap) and tags them with the same
         # [YOU said earlier]: prefix so the existing rule covers them.
         cross_window_block = ""
+        # Raw prior-answer texts, kept for the code-level roast-recycle
+        # guard (the prompt block below is advisory; the guard is not).
+        _prior_bot_answer_texts: list[str] = []
         if user_id and channel_id:
             try:
                 prior_answers = db.get_recent_bot_answers_to_asker(
@@ -4774,6 +4854,9 @@ async def _answer_with_gemini(
                     channel_id=channel_id,
                     limit=5,
                 )
+                _prior_bot_answer_texts = [
+                    (row.get("answer") or "") for row in (prior_answers or [])
+                ]
                 if prior_answers:
                     lines = [
                         "[YOUR RECENT /ASK ANSWERS TO THIS ASKER — "
@@ -5308,6 +5391,80 @@ async def _answer_with_gemini(
                         f"/ask: hard-stripped {len(_mock_residual)} "
                         f"asker-mockery sentence(s)"
                     )
+
+        # Roast-recycle guard (BANTER-gated) — a roast that remixes the
+        # same hooks as a prior answer to this asker reads as "doesn't
+        # know you or how to insult you." Force ONE rewrite with the
+        # recycled hooks banned; ship the original if the rewrite can't
+        # do better (repetition is weak, not dangerous).
+        if (answer and not _route_is_factual and _prior_bot_answer_texts):
+            _recycled = _recycled_roast_hooks(answer, _prior_bot_answer_texts)
+            if len(_recycled) >= _RECYCLE_HOOK_MIN:
+                _ask_meta["guards"].append("roast-recycle")
+                log.warning(
+                    f"/ask: roast recycles {len(_recycled)} hooks from a "
+                    f"prior answer to this asker "
+                    f"({', '.join(_recycled[:6])}) — requesting rewrite"
+                )
+                try:
+                    _rr_prompt = (
+                        "Rewrite the following Discord bot roast. It "
+                        "recycles the SAME hooks you already used on this "
+                        "person recently — they noticed, and a repeated "
+                        "roast reads as not knowing them at all. BANNED "
+                        "material for this rewrite (do not mention or "
+                        "paraphrase): "
+                        + ", ".join(_recycled)
+                        + ". Rebuild the jab from DIFFERENT material that "
+                        "is ALREADY in this conversation's context — other "
+                        "parts of their profile (personality, retarded "
+                        "takes, recent personal life, recent trades) or "
+                        "what they said in the current chat window. Same "
+                        "heat, same length, same voice. Do NOT invent new "
+                        "facts, tickers, or numbers. Output ONLY the "
+                        "rewritten answer.\n\nORIGINAL:\n"
+                        f"{answer}"
+                    )
+                    _rr_config = types.GenerateContentConfig(
+                        system_instruction=(
+                            "You are a sharp trader rewriting a roast so "
+                            "it lands fresh. Direct, in-register, no AI "
+                            "tells, no recycled material."
+                        ),
+                        safety_settings=safety_settings,
+                        max_output_tokens=1500,
+                        temperature=0.6,
+                        thinking_config=types.ThinkingConfig(
+                            thinking_budget=512),
+                    )
+                    _rr_resp = await client.aio.models.generate_content(
+                        model=ask_model,
+                        contents=[types.Content(
+                            role="user",
+                            parts=[types.Part.from_text(text=_rr_prompt)],
+                        )],
+                        config=_rr_config,
+                    )
+                    _tally_retry_usage(_rr_resp)
+                    try:
+                        _rr_answer = (_rr_resp.text or "").strip()
+                    except Exception:
+                        _rr_answer = ""
+                    if _rr_answer:
+                        _rr_answer, _ = _clean_voice_violations(_rr_answer)
+                        _still = _recycled_roast_hooks(
+                            _rr_answer, _prior_bot_answer_texts
+                        )
+                        if len(_still) < _RECYCLE_HOOK_MIN:
+                            answer = _rr_answer
+                            log.info("/ask: roast-recycle rewrite succeeded")
+                        else:
+                            log.warning(
+                                "/ask: roast-recycle rewrite still recycled "
+                                "— shipping original"
+                            )
+                except Exception as e:
+                    log.warning(f"/ask: roast-recycle rewrite failed: {e}")
 
         grounding_metadata = None
         try:
@@ -7261,6 +7418,16 @@ def create_bot() -> commands.Bot:
                 _ref_author
                 and getattr(_ref_author, "id", None) == bot.user.id
             )
+            # ...but a reply that explicitly @-tags ANOTHER user (and not
+            # the bot — that case never reaches here) is addressed to
+            # THAT user; the replier is referencing the bot's message,
+            # not talking to the bot. 2026-07-10: ZHawk replied to a bot
+            # roast with "Hey @abe can we add a new tag that says
+            # 'wageslave LARPing as a contrarian'" — riffing the bot's
+            # line TO Abe — and the bot butted in, earning "I'm not
+            # talking to you, I was just referencing your post to abe."
+            if _is_reply_to_bot and message.mentions:
+                _is_reply_to_bot = False
         if bot.user is None or (
             bot.user not in message.mentions and not _is_reply_to_bot
         ):
