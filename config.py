@@ -169,12 +169,28 @@ class Settings(BaseSettings):
         # an entry commitment from that user, structurally no-cherry-pick)
         "🦉-kloh-alerts-🦉,"
         "🫦-zhawk-thawghts-🗣,"
+        # 2026-07-11 review fix: abe-alerts + kyle-alerts were MISSING —
+        # 47 and 7 attachment messages in 30d with ZERO chat-store OCR,
+        # so profile claim-verification and /ask context couldn't read
+        # the two most-followed callers' own screenshots. (The analyst
+        # LEDGER still processed them via caller-mode watching; the gap
+        # was only in chat_messages.image_ocr_*.)
+        "🥷🏽-abe-alerts-🥷🏽,"
+        "💅🏾-kyle-alerts-💅🏾,"
         # Shared alert channels (multiple posters; each post is still an
         # entry commitment, just not 1:1 to a single caller)
         "🕰️-member-alerts-🕰️,"
         "🐄-spot-bag-alerts-🐄,"
         "🚨-0dte-lotto-alerts-🚨,"
-        "🪙-crypto-alerts-🪙"
+        "🪙-crypto-alerts-🪙,"
+        # 2026-07-11 review fix: the main room is where members actually
+        # post their P&L screenshots (879 attachment msgs in 30d vs 51
+        # in gain-loss-porn) — none reached the ledger, starving member
+        # receipts and outcome coverage. Eager OCR here also routes
+        # images through member-mode trade extraction (memes/gifs
+        # no-op). Cost: ~30 imgs/day through Flash-Lite vision ≈
+        # single-digit dollars/month.
+        "💬-stonks-yapping-💬"
     )
 
     # Per-/ask cap on lazy OCR — how many image-bearing messages will

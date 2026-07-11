@@ -454,13 +454,20 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             conn.execute(ddl)
         except sqlite3.OperationalError:
             pass  # duplicate column — already migrated
-    # Backfill caller='abe' for all pre-existing rows (single-caller era).
-    # Safe to run repeatedly — only updates rows where caller is currently
-    # NULL. New rows write caller explicitly so this only ever touches
-    # legacy data.
+    # Backfill caller='abe' for pre-existing CALLER rows (single-caller
+    # era). 2026-07-11 FIX: the original version had no tracking_mode
+    # filter, so it stamped every member-mode row (caller=NULL by
+    # design) as abe's on every boot — 432 rows from 39 different
+    # members were mislabeled, which silently shrank the outcome guard's
+    # member-name protection set to three names. Scoped + repaired.
     try:
         conn.execute(
-            "UPDATE analyst_trades SET caller = 'abe' WHERE caller IS NULL"
+            "UPDATE analyst_trades SET caller = 'abe' "
+            "WHERE caller IS NULL AND tracking_mode = 'caller'"
+        )
+        conn.execute(
+            "UPDATE analyst_trades SET caller = NULL "
+            "WHERE tracking_mode = 'member' AND caller IS NOT NULL"
         )
     except sqlite3.OperationalError:
         pass
@@ -4675,18 +4682,35 @@ _GHOST_AGE_DAYS = 14
 
 
 def known_trade_caller_names() -> list[str]:
-    """Distinct caller names from the analyst trade ledger ('abe', 'bk',
-    ...). These are the members whose PLAYS get discussed and followed —
-    the protection set for the /ask outcome guard's third-person check
+    """Names of every member with rows in the trade ledger — the
+    protection set for the /ask outcome guard's third-person check
     (2026-07-09: 'Abe's plays are a speedrun to homelessness' shipped
-    unsourced while the ledger showed him overwhelmingly green). Cheap
+    unsourced while the ledger showed him overwhelmingly green).
+
+    2026-07-11: was DISTINCT caller only — which, combined with the
+    caller-backfill bug, covered three names while 39 members had
+    ledger rows. Now unions caller names with member-mode authors'
+    usernames AND display names (resolved via chat_messages). Cheap
     query; callers cache it."""
     try:
-        rows = get_connection().execute(
+        conn = get_connection()
+        names: set[str] = set()
+        for r in conn.execute(
             "SELECT DISTINCT caller FROM analyst_trades "
             "WHERE caller IS NOT NULL AND TRIM(caller) != ''"
-        ).fetchall()
-        return sorted({(r[0] or "").strip().lower() for r in rows if r[0]})
+        ).fetchall():
+            names.add((r[0] or "").strip().lower())
+        for r in conn.execute(
+            "SELECT DISTINCT cm.author_username, cm.author_display "
+            "FROM analyst_trades t "
+            "JOIN chat_messages cm ON cm.author_id = t.author_id "
+            "WHERE t.author_id IS NOT NULL"
+        ).fetchall():
+            for v in (r[0], r[1]):
+                v = (v or "").strip().lower().lstrip(".")
+                if len(v) >= 2:
+                    names.add(v)
+        return sorted(names)
     except Exception:
         return []
 
