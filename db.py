@@ -1839,6 +1839,23 @@ def get_recent_user_chat_trades(
     return out
 
 
+def get_prev_scheduled_pulse_date(today: str) -> str | None:
+    """Date of the most recent SCHEDULED pulse before `today` — the
+    previous TRADE BOARD's date. Powers the board's DROPPED lines: a
+    lean last seen exactly on this date and absent from today's board
+    was abandoned today (2026-07-10: four of five leans vanished
+    silently). Manual pulses don't count — they don't move the board."""
+    try:
+        row = get_connection().execute(
+            "SELECT MAX(report_date) FROM daily_reports "
+            "WHERE report_type = 'daily' AND report_date < ?",
+            (today,),
+        ).fetchone()
+        return row[0] if row and row[0] else None
+    except Exception:
+        return None
+
+
 def get_board_leans(today: str, max_age_days: int = 5) -> list[dict]:
     """Live leans for the TRADE BOARD, newest-first. Ages out leans not
     re-affirmed within max_age_days as a side effect (keeps the board

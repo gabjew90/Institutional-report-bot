@@ -770,9 +770,41 @@ def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _lean_display_from_row(r: dict) -> str:
+    """The board display line for a lean row: the stored full display
+    (context_snippet) when present, else a bare position rebuilt from
+    direction + instrument (legacy rows)."""
+    display = (r.get("context_snippet") or "").strip()
+    if display:
+        return display
+    raw_inst = r.get("instrument", "?")
+    low = raw_inst.lower()
+    if low.endswith(("calls", "call", "puts", "put")):
+        return f"${raw_inst}"
+    d = (r.get("direction") or "").strip().capitalize()
+    return f"{d} ${raw_inst}".strip()
+
+
+def _row_tickers(r: dict) -> set[str]:
+    """Every ticker a lean row involves — cashtags from the full display
+    line (covers multi-instrument leans like 'Long $RSP, $XLU') plus the
+    primary instrument key."""
+    out = {
+        t.upper() for t in _CASHTAG_RE.findall(r.get("context_snippet") or "")
+    }
+    prim = (r.get("instrument") or "").strip().upper()
+    if prim:
+        out.add(prim.split()[0])
+    return out
+
+
+_BOARD_DROPPED_MAX = 6
+
+
 def render_trade_board(
     board_rows: list[dict], today: str, flips: set[str] | None = None,
     hc_calls: list[dict] | None = None,
+    prev_board_date: str | None = None,
 ) -> str:
     """Render the TRADE BOARD: the leans THIS pulse is making (clean
     markdown bullets) plus a HIGH-CONVICTION single-name calls subsection.
@@ -782,7 +814,11 @@ def render_trade_board(
     so the board ALWAYS matches the pulse. 2026-06-24: HC calls returned
     as a subsection (from the retired DESK SIGNAL BOARD). Labels: NEW =
     first flagged today, FLIP = reversed today, "held since <date>" =
-    carried from an earlier pulse and repeated today.
+    carried from an earlier pulse and repeated today, DROPPED = on the
+    prior board but not re-affirmed today (2026-07-10: four of five leans
+    — oil, memory, gold, breadth — vanished silently while the prose
+    reversed the RSP thesis; a quiet abandonment must not read as a
+    still-live call).
     """
     flips = {f.upper() for f in (flips or set())}
     # Leans: only what TODAY's pulse actually says — last seen today.
@@ -801,20 +837,37 @@ def render_trade_board(
         else:
             since = _fmt_since(first)
             status = f"held since {since}" if since else "held"
-        # context_snippet IS the full display line (built upstream by
-        # parse_lean_block or extract_leans_from_markdown) — render just
-        # prefixes the status. Fall back to a bare position if a legacy
-        # row stored no display.
-        display = (r.get("context_snippet") or "").strip()
-        if not display:
-            raw_inst = r.get("instrument", "?")
-            low = raw_inst.lower()
-            if low.endswith(("calls", "call", "puts", "put")):
-                display = f"${raw_inst}"
-            else:
-                d = (r.get("direction") or "").strip().capitalize()
-                display = f"{d} ${raw_inst}".strip()
-        lean_lines.append(f"- **{status}** {display}")
+        lean_lines.append(f"- **{status}** {_lean_display_from_row(r)}")
+
+    # DROPPED lines — leans that were on the IMMEDIATELY-PRIOR board and
+    # didn't make today's. `prev_board_date` is the previous SCHEDULED
+    # pulse date (the bridge passes db.get_prev_scheduled_pulse_date) —
+    # it can't be derived from the rows themselves: re-affirmed leans
+    # carry last_seen == today, leaving no trace of yesterday, so a
+    # max(last_seen < today) heuristic re-drops the same lean every day
+    # until age-out (caught by smoke_board_dropped's retire test). With
+    # the real date, each drop renders exactly once and a bridge retry
+    # is idempotent. Rows sharing any ticker with a lean affirmed today
+    # are skipped — those are FLIPs (already labeled above) or partial
+    # re-affirmations, not abandonments. Only renders when today has
+    # leans at all: a missing _LEANS block is a validator failure, not a
+    # mass abandonment.
+    if lean_lines and prev_board_date and prev_board_date < today:
+        today_tickers: set[str] = set()
+        for r in rows:
+            today_tickers |= _row_tickers(r)
+        n_dropped = 0
+        for r in (board_rows or []):
+            if (r.get("last_seen_date") or "") != prev_board_date:
+                continue
+            if _row_tickers(r) & today_tickers:
+                continue
+            if n_dropped >= _BOARD_DROPPED_MAX:
+                break
+            lean_lines.append(
+                f"- **DROPPED** {_lean_display_from_row(r)}"
+            )
+            n_dropped += 1
 
     hc_block = _render_hc_subsection(hc_calls)
     if not lean_lines and not hc_block:
@@ -825,7 +878,8 @@ def render_trade_board(
         out += (
             "Leans this pulse is making — NEW = first flagged today, FLIP "
             "= reversed today, \"held since …\" = carried from an earlier "
-            "pulse and repeated today:\n\n"
+            "pulse and repeated today, DROPPED = on the last board but "
+            "not re-affirmed today:\n\n"
             + "\n".join(lean_lines) + "\n"
         )
     if hc_block:

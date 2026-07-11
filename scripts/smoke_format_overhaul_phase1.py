@@ -302,26 +302,37 @@ def test_render_trade_board_new_vs_live():
 
 
 def test_board_shows_only_todays_calls():
-    """2026-06-22 QC: the board must show ONLY leans re-affirmed today
-    (last_seen == today). A stale carry the pulse stopped mentioning
-    (last_seen < today) must NOT appear — the old version surfaced
-    days-old ghosts while dropping today's own headline trade."""
+    """2026-06-22 QC: the board's LIVE section shows only leans
+    re-affirmed today. 2026-07-10 amendment: a lean from the
+    immediately-prior board that today's pulse didn't repeat now renders
+    as an explicit **DROPPED** line instead of vanishing silently (four
+    of five leans disappeared without a trace while the prose reversed
+    the RSP thesis)."""
     from report.pulse_sections import render_trade_board
     rows = [
-        # today's call — shown
+        # today's call — shown live
         {"instrument": "TLT", "direction": "short",
          "first_seen_date": "2026-06-17", "last_seen_date": "2026-06-22",
          "context_snippet": "Short $TLT — into PCE"},
-        # stale carry — pulse didn't repeat it today — must be hidden
+        # prior-board carry the pulse didn't repeat — shown as DROPPED
         {"instrument": "VIXY", "direction": "long",
          "first_seen_date": "2026-06-18", "last_seen_date": "2026-06-19",
          "context_snippet": "Long $VIXY — into next week's data"},
     ]
-    board = render_trade_board(rows, "2026-06-22")
+    board = render_trade_board(rows, "2026-06-22",
+                               prev_board_date="2026-06-19")
     assert "$TLT" in board, "today's re-affirmed lean must show"
     assert "held since Jun 17" in board, board
-    assert "$VIXY" not in board, "stale carry (not seen today) must be hidden"
-    _ok("board: only today's calls shown; stale carries dropped")
+    assert "- **DROPPED** Long $VIXY" in board, \
+        f"prior-board lean must show as DROPPED, not vanish: {board}"
+    assert board.count("$VIXY") == 1, "dropped lean renders exactly once"
+    # the bridge must feed the real prior-pulse date (daily_reports),
+    # not leave the param unset
+    import inspect as _i
+    import github_bridge.jobs as _gbj
+    assert "get_prev_scheduled_pulse_date" in _i.getsource(_gbj), \
+        "bridge must pass prev_board_date from daily_reports"
+    _ok("board: today's calls live; prior-board leans surface as DROPPED")
 
 
 def test_clean_board_context_no_garble():

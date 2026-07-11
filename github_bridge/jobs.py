@@ -571,7 +571,8 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                 except Exception as e:
                     log.warning(f"Bridge: HC-calls fetch failed (non-fatal): {e}")
                 board_md = render_trade_board(
-                    board_rows, today, flip_instruments, hc_calls
+                    board_rows, today, flip_instruments, hc_calls,
+                    prev_board_date=db.get_prev_scheduled_pulse_date(today),
                 )
 
                 injected = inject_sections(markdown, board_md)
