@@ -3317,6 +3317,37 @@ _PROFILES_BLOCK_PER_USER_CHARS = 2500  # cap each individual profile
 _PROFILES_BLOCK_MAX_USERS = 15         # hard ceiling on user count
 
 
+_PROFILE_SECTION_SPLIT_RE = __import__("re").compile(
+    r"(?=\*\*(?:Personality and style|Voice|Retarded takes|Recent trades|"
+    r"Recent personal life)\.\*\*)",
+)
+
+
+def _reorder_profile_for_roast_attention(text: str) -> str:
+    """Injection-time section reorder (2026-07-10). Stored profiles put
+    'Recent trades' ABOVE 'Recent personal life', so the model reads
+    money-loss material before it ever reaches the personal color — and
+    roasts accordingly ('lame and repetitive', user feedback). At
+    injection, personal life now precedes trades: Personality → Voice →
+    Retarded takes → Recent personal life → Recent trades. This is the
+    tendency-level fix; the prompt hierarchy and the P&L-monotone guard
+    are the rule and the floor. Storage format unchanged; returns input
+    untouched when either section is missing or already ordered."""
+    if (not text or "**Recent trades.**" not in text
+            or "**Recent personal life.**" not in text):
+        return text
+    parts = [p for p in _PROFILE_SECTION_SPLIT_RE.split(text) if p.strip()]
+    idx_tr = next((i for i, s in enumerate(parts)
+                   if s.lstrip().startswith("**Recent trades.**")), None)
+    idx_pl = next((i for i, s in enumerate(parts)
+                   if s.lstrip().startswith("**Recent personal life.**")),
+                  None)
+    if idx_tr is None or idx_pl is None or idx_pl < idx_tr:
+        return text
+    parts[idx_tr], parts[idx_pl] = parts[idx_pl], parts[idx_tr]
+    return "\n\n".join(p.strip() for p in parts)
+
+
 def format_user_profiles_for_context(
     user_ids: list[int],
     *,
@@ -3399,7 +3430,9 @@ def format_user_profiles_for_context(
         # With WHO'S TALKING scoped to asker + mentions + reply/
         # forward authors (typically 1-3 profiles), the 18K budget
         # comfortably fits full profile_text for all of them.
-        text = (p.get("profile_text") or "").strip()
+        text = _reorder_profile_for_roast_attention(
+            (p.get("profile_text") or "").strip()
+        )
         mention = f"<@{uid}>"
         if uname and uname.lower() != dn.lower():
             ident = f"**{dn}** ({uname}, {mention})"

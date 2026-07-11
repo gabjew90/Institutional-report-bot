@@ -123,6 +123,30 @@ def test_prompt_hierarchy_present():
     _ok("prompt: material hierarchy (personal beats P&L) present")
 
 
+def test_injection_reorders_personal_above_trades():
+    # The tendency-level fix: stored profiles put Recent trades ABOVE
+    # Recent personal life, priming money-loss roasts. At injection the
+    # personal color must come first.
+    import db as _db
+    reordered = _db._reorder_profile_for_roast_attention(_PROFILE)
+    i_pl = reordered.index("**Recent personal life.**")
+    i_tr = reordered.index("**Recent trades.**")
+    assert i_pl < i_tr, "personal life must precede trades at injection"
+    # content preserved
+    for frag in ("quarter mil in sealed pokemon", "$SOXL long",
+                 "futures shit easy", "get to studying"):
+        assert frag in reordered, f"reorder must not lose content: {frag!r}"
+    # missing-section profiles pass through untouched
+    thin = "**Personality and style.**\nJust vibes.\n"
+    assert _db._reorder_profile_for_roast_attention(thin) == thin
+    # wired into the formatter
+    import inspect as _i
+    src = _i.getsource(_db.format_user_profiles_for_context)
+    assert "_reorder_profile_for_roast_attention(" in src, \
+        "formatter must apply the reorder"
+    _ok("injection reorder: personal life above trades, content intact")
+
+
 def test_recycle_directive_leads_personal():
     import discord_bot.bot as bot
     src = inspect.getsource(bot._answer_with_gemini)
@@ -141,5 +165,6 @@ if __name__ == "__main__":
     test_personal_pool_extraction()
     test_guard_wired_banter_gated()
     test_prompt_hierarchy_present()
+    test_injection_reorders_personal_above_trades()
     test_recycle_directive_leads_personal()
     print("\nALL P&L-MONOTONE SMOKE TESTS PASS")
