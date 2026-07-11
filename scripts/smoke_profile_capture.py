@@ -196,6 +196,29 @@ def test_lint_placeholder_bullets_are_hard():
         "real shapes and legit bails pass")
 
 
+def test_fiction_bleed_is_hard():
+    # 2026-07-11 19:00 batch: the model lifted "the yard" from the
+    # fictional shape example into 2pale's REAL dossier (verified: he
+    # has never said it). Any fictional-example signature in output is
+    # a hard violation, and the boot sweep re-queues carriers.
+    bled = _GOOD_PROFILE.replace(
+        "- Quarter-mil Pokemon binder energy",
+        "- Works a finance-adjacent role he calls 'the yard' + [mockery]",
+    )
+    hard, _ = _lint_profile(bled, 1065, {})
+    assert any("FICTIONAL" in h for h in hard), hard
+    # clean profile untouched
+    hard2, _ = _lint_profile(_GOOD_PROFILE, 1065,
+                             {"checked_quotes": 5, "unverified_count": 0})
+    assert not any("FICTIONAL" in h for h in hard2)
+    import db as _db
+    dsrc = inspect.getsource(_db)
+    assert "LIKE '%the yard%'" in dsrc, "fiction-bleed self-heal missing"
+    assert "Banned tokens" in PROFILE_PROMPT, \
+        "prompt must name the banned fictional tokens"
+    _ok("fiction bleed: hard lint + boot re-queue + banned-token rule")
+
+
 def test_selfheal_and_template_fixed():
     import db as _db
     dsrc = inspect.getsource(_db)
@@ -270,6 +293,7 @@ if __name__ == "__main__":
     test_lint_fabrication_is_hard()
     test_lint_personal_floor_and_slur_cap_are_soft()
     test_lint_placeholder_bullets_are_hard()
+    test_fiction_bleed_is_hard()
     test_selfheal_and_template_fixed()
     test_deep_rebuild_wired()
     test_lint_retry_wired()

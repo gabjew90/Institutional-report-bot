@@ -339,7 +339,7 @@ The dossier below shows the structural shape of a complete profile (5 sections, 
 > - Trains for a triathlon he has never signed up for + [three years of "base building"]
 > - Wife runs the household budget after "the options incident" + [he reports his own allowance like earnings guidance]
 
-(End example — a FICTIONAL user.) Match the density and tone; NEVER copy the content, and NEVER emit `[bracket]` placeholders in your output (2026-07-11: rebuilt dossiers shipped with bracketed shape-descriptions as their personal-life sections — the lint now hard-fails that). Every bullet leads with REAL material from the actual MESSAGES block below.
+(End example — a FICTIONAL user.) Match the density and tone; NEVER copy the content, and NEVER emit `[bracket]` placeholders in your output (2026-07-11: rebuilt dossiers shipped with bracketed shape-descriptions as their personal-life sections — the lint now hard-fails that). Every bullet leads with REAL material from the actual MESSAGES block below. **Banned tokens:** if "the yard", the microwaved fish, the triathlon "base building", or "the options incident" appear in YOUR output, you have copied the fictional example — an automatic failure (this exact bleed shipped once: a real user's dossier claimed he calls his job "the yard"; he has never said it).
 
 ## TWO RECEIPT TYPES — alert posts (entry commitments) + closed-P&L screenshots
 
@@ -811,6 +811,22 @@ _PLACEHOLDER_BULLET_RE = __import__("re").compile(
 _NO_BAIL_SECTIONS = ("Personality and style", "Voice",
                      "Recent personal life")
 
+# Signature details of the prompt's FICTIONAL shape example. On the
+# first post-fix rebuild (2026-07-11 19:00), the model lifted "the
+# yard" straight into 2pale's real dossier — verified against his chat:
+# he has never said it. Any of these tokens in a generated profile is
+# example bleed = fabrication. Keep this list in exact sync with the
+# fictional example text in the prompt.
+_FICTION_TOKENS = (
+    "the yard", "microwaves fish", "microwaved fish", "base building",
+    "the options incident",
+)
+
+
+def _fiction_bleed(profile_text: str) -> list[str]:
+    low = (profile_text or "").lower()
+    return [t for t in _FICTION_TOKENS if t in low]
+
 
 def _lint_profile(
     profile_text: str, msg_count: int, claim_check: dict | None = None,
@@ -826,6 +842,14 @@ def _lint_profile(
         if _section_bullets(profile_text, section) is None and \
                 f"**{section}.**" not in profile_text:
             hard.append(f"required section '**{section}.**' is missing")
+    _bleed = _fiction_bleed(profile_text)
+    if _bleed:
+        hard.append(
+            f"the profile contains detail(s) from the spec's FICTIONAL "
+            f"example ({', '.join(_bleed)}) — that content is invented, "
+            f"not this user's. Every detail must come from THIS user's "
+            f"actual messages."
+        )
     _ph = [ln.strip() for ln in profile_text.splitlines()
            if _PLACEHOLDER_BULLET_RE.match(ln.strip())]
     if _ph:

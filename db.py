@@ -479,6 +479,21 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         )
     except sqlite3.OperationalError:
         pass
+    # Fiction-bleed self-heal (2026-07-11 19:00 batch): the model lifted
+    # "the yard" from the spec's FICTIONAL shape example into 2pale's
+    # real dossier (verified: he has never said it). Profiles carrying
+    # any fictional-example signature get re-queued for rebuild under
+    # the fiction-token hard-lint. Worst case on a false positive (a
+    # user who really says "the yard") is one extra rebuild.
+    try:
+        conn.execute(
+            "UPDATE user_profiles SET last_full_rebuild_at = NULL "
+            "WHERE profile_text LIKE '%the yard%' "
+            "   OR profile_text LIKE '%microwave% fish%' "
+            "   OR profile_text LIKE '%the options incident%'"
+        )
+    except sqlite3.OperationalError:
+        pass
     conn.execute(
         "CREATE INDEX IF NOT EXISTS idx_analyst_trades_caller ON analyst_trades(caller)"
     )
