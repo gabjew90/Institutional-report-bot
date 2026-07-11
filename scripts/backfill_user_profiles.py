@@ -153,7 +153,7 @@ Per-section quick reference, all following the universal rule:
 - **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 21-day points ledger decays automatically — a documented win scores 2 pts for its first 7 days, 1 pt from day 8 to 21, then stops scoring. The final = `clip(chatter_base + honesty, 50) + receipt_points` (no upper cap — top traders separate by receipts). If last week the user documented 8 wins (16 pts at full credit) and posts nothing new, those same wins decay to 8 pts (half credit) the following week and 0 after three — the score drifts down unless the wins keep coming. That's the decay mechanism working as designed.
 - **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter description / receipts described qualitatively), but the prose re-derives every time. Don't carry forward stale framings from a prior refresh. The rationale is QUALITATIVE — no numbers (no point counts, no score values, no win/loss counts). See the trader_rationale spec for the no-numbers rule.
 
-**Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly.
+**Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly. **One exemption: Recent personal life may GROW** — when it's under its 4-6 item floor and the new window (or a durable dimension the prior profile missed) supports more items, add them. Length parity must never be the reason the personal-color section stays thin.
 
 The output schema is identical to a from-scratch profile — same five profile_text sections, same JSON wrapper with four fields. The difference is the work: editing the existing dossier, not authoring a new one.
 
@@ -234,7 +234,7 @@ Roast comedian, not bully. Get to the truth via the joke, not around it.
 
 ---
 
-**Voice.** Bullet list of 4-8 verbatim phrases this user actually drops in chat. The recurring ones + the recent dumb/racist ones. Quote them exactly — no scrubbing, no paraphrase, slurs uncensored. Each bullet is just the quote (or quote + a one-line context).
+**Voice.** Bullet list of 4-8 verbatim phrases this user actually drops in chat. The recurring ones + the recent dumb/racist ones. Quote them exactly — no scrubbing, no paraphrase, slurs uncensored. Each bullet is just the quote (or quote + a one-line context). **Slur-density cap: at most 2 of the bullets may carry slurs.** Voice is their SIGNATURE phrases — the market mantras, the recurring bits, the catchphrases; slur receipts already live in the separate slur_examples field, so a Voice section that's wall-to-wall slurs wastes the slot AND concentrates filter-trip fuel into every downstream prompt that loads this dossier (observed: innocent /ask questions bouncing off Gemini's input filter purely on the asker's Voice block).
 
 Each bullet shape: `"[verbatim phrase from THIS user's messages below]" — [what triggers it / when they say it]`. Don't transfer phrases across users — see the ATTRIBUTION RULE in HOW TO WRITE.
 
@@ -716,6 +716,141 @@ def _verify_profile_claims(
     }
 
 
+# =====================================================================
+# Stratified sampling (2026-07-11). The old sample was "most recent N
+# messages merged across channels" — a heavy stonks-yapper's market
+# chatter floods the cap and their minority-channel signal (fitness-
+# yapping, gambling-yapping: the best personal color) never reaches
+# Gemini. ZHawk: 46 fitness messages, zero in the dossier. Every channel
+# a user is meaningfully active in now gets floor representation.
+# =====================================================================
+
+_STRATA_CHANNEL_FLOOR = 40   # guaranteed most-recent msgs per channel
+_STRATA_MIN_CHANNEL_MSGS = 15  # channels below this don't earn a floor
+
+
+def _stratified_sample(messages: list[dict], cap: int) -> list[dict]:
+    """Sample up to `cap` messages, guaranteeing minority-channel
+    representation: each channel with >= _STRATA_MIN_CHANNEL_MSGS gets
+    its most-recent min(_STRATA_CHANNEL_FLOOR, count) messages first;
+    the remaining budget fills with the most recent messages overall.
+    Result is timestamp-ordered (oldest first, like the input). Falls
+    back to plain recency when everything fits or channels are absent.
+    """
+    if len(messages) <= cap:
+        return list(messages)
+    by_channel: dict[str, list[dict]] = defaultdict(list)
+    for m in messages:
+        by_channel[m.get("channel_name") or "?"].append(m)
+    picked_ids: set[int] = set()   # id() keys — dicts aren't hashable
+    picked: list[dict] = []
+    for chan, msgs in by_channel.items():
+        if len(msgs) < _STRATA_MIN_CHANNEL_MSGS:
+            continue
+        for m in msgs[-_STRATA_CHANNEL_FLOOR:]:
+            if id(m) not in picked_ids and len(picked) < cap:
+                picked_ids.add(id(m))
+                picked.append(m)
+    # Fill the remaining budget with the most recent overall.
+    for m in reversed(messages):
+        if len(picked) >= cap:
+            break
+        if id(m) not in picked_ids:
+            picked_ids.add(id(m))
+            picked.append(m)
+    picked.sort(key=lambda m: m.get("timestamp") or "")
+    return picked
+
+
+# =====================================================================
+# Profile lint (2026-07-11). The spec demanded 4-6 personal-life items
+# and five sections; 17 of 54 live profiles were under the floor and 2
+# were missing sections entirely — nothing enforced the spec. Same
+# philosophy as the pulse/ask validators: detect in code, retry once
+# with the violations as feedback, keep-prior on hard failure.
+#   HARD (regenerate or keep prior): missing section; fabricated quotes
+#     (>50% of checked quotes not found in the user's real chat, min 4
+#     checked).
+#   SOFT (accept + log): personal-life bullets < 4 or Voice bullets < 3
+#     on a high-volume user (>=300 msgs); more than 2 slur-bearing Voice
+#     bullets (filter-trip fuel — slur receipts live in slur_examples).
+# =====================================================================
+
+_PROFILE_REQUIRED_SECTIONS = (
+    "Personality and style", "Voice", "Retarded takes",
+    "Recent trades", "Recent personal life",
+)
+_LINT_HIGH_VOLUME_MSGS = 300
+_LINT_PERSONAL_FLOOR = 4
+_LINT_VOICE_FLOOR = 3
+_LINT_VOICE_SLUR_MAX = 2
+
+
+def _section_bullets(profile_text: str, section: str) -> list[str] | None:
+    """Bullet lines of a named section, or None when the section header
+    is absent entirely."""
+    import re as _re
+    m = _re.search(
+        r"\*\*" + _re.escape(section) + r"\.\*\*\s*\n(.*?)(?=\n\s*\*\*|\Z)",
+        profile_text or "", _re.DOTALL,
+    )
+    if not m:
+        return None
+    return [ln.strip() for ln in m.group(1).splitlines()
+            if ln.strip().startswith("-")]
+
+
+def _lint_profile(
+    profile_text: str, msg_count: int, claim_check: dict | None = None,
+) -> tuple[list[str], list[str]]:
+    """Returns (hard_violations, soft_violations) as human-readable
+    strings — fed back verbatim as regeneration feedback."""
+    hard: list[str] = []
+    soft: list[str] = []
+    if not profile_text:
+        return (["profile text is empty"], [])
+    for section in _PROFILE_REQUIRED_SECTIONS:
+        if _section_bullets(profile_text, section) is None and \
+                f"**{section}.**" not in profile_text:
+            hard.append(f"required section '**{section}.**' is missing")
+    cc = claim_check or {}
+    checked = int(cc.get("checked_quotes") or 0)
+    unverified = int(cc.get("unverified_count") or 0)
+    if checked >= 4 and unverified / checked > 0.5:
+        hard.append(
+            f"{unverified} of {checked} quoted phrases were NOT found in "
+            f"the user's real chat — quotes must be VERBATIM from their "
+            f"messages, never invented or paraphrased. Unverifiable: "
+            f"{cc.get('unverified_quotes', [])[:3]}"
+        )
+    if msg_count >= _LINT_HIGH_VOLUME_MSGS:
+        pl = _section_bullets(profile_text, "Recent personal life")
+        if pl is not None and len(pl) < _LINT_PERSONAL_FLOOR:
+            soft.append(
+                f"Recent personal life has only {len(pl)} bullets — the "
+                f"floor is {_LINT_PERSONAL_FLOOR} for a user with "
+                f"{msg_count} messages. Mine the messages for durable "
+                f"identity dimensions (fitness, job, hobbies, family) "
+                f"and NON-trading color."
+            )
+        vo = _section_bullets(profile_text, "Voice")
+        if vo is not None and len(vo) < _LINT_VOICE_FLOOR:
+            soft.append(
+                f"Voice has only {len(vo)} bullets — floor is "
+                f"{_LINT_VOICE_FLOOR} for a high-volume user."
+            )
+    vo = _section_bullets(profile_text, "Voice") or []
+    slur_bullets = sum(1 for b in vo if count_slurs_in_text(b) > 0)
+    if slur_bullets > _LINT_VOICE_SLUR_MAX:
+        soft.append(
+            f"{slur_bullets} of {len(vo)} Voice bullets carry slurs — cap "
+            f"is {_LINT_VOICE_SLUR_MAX}. Voice should be their SIGNATURE "
+            f"phrases (slur receipts already live in slur_examples); "
+            f"swap the excess for non-slur recurring lines."
+        )
+    return (hard, soft)
+
+
 def _load_user_data_from_store(
     channels: list[str] | None, days: int
 ) -> tuple[dict, dict, dict, dict, dict]:
@@ -1080,6 +1215,7 @@ async def _generate_profile(
     images: list[dict] | None = None,
     user_id: int = 0,
     existing_profile: dict | None = None,
+    lint_feedback: str = "",
 ) -> tuple[
     str | None, int | None, str | None, int | None, str | None
 ]:
@@ -1149,7 +1285,7 @@ async def _generate_profile(
         dynamic_cap = max(
             sample_size, min(_DYNAMIC_SAMPLE_HARD_CAP, len(new_messages))
         )
-        sample = new_messages[-dynamic_cap:]
+        sample = _stratified_sample(new_messages, dynamic_cap)
         ts = existing_profile.get("trader_score")
         rh = existing_profile.get("racial_humor_score")
         prior_profile_block = PRIOR_PROFILE_TEMPLATE.format(
@@ -1161,11 +1297,11 @@ async def _generate_profile(
         )
     else:
         # Cold-start: same dynamic cap shape, applied across the full
-        # 30-day window.
+        # window (30d default; 90d on deep-rebuild passes).
         dynamic_cap = max(
             sample_size, min(_DYNAMIC_SAMPLE_HARD_CAP, len(messages))
         )
-        sample = messages[-dynamic_cap:]
+        sample = _stratified_sample(messages, dynamic_cap)
 
     msgs_block = _format_messages_block(sample)
     analyst_trades_block = _format_analyst_trades_block(user_id)
@@ -1182,6 +1318,14 @@ async def _generate_profile(
         today_utc=today_utc,
         prior_profile_block=prior_profile_block,
     )
+    # Lint-retry feedback (2026-07-11): when the first generation failed
+    # the profile lint, the violations are appended verbatim so the
+    # retry fixes exactly what failed.
+    if lint_feedback:
+        prompt += (
+            "\n\n---\nLINT FEEDBACK — your previous attempt failed these "
+            "checks. Fix each one:\n" + lint_feedback
+        )
 
     vision_enabled = (
         getattr(settings, "profile_image_ocr_enabled", False)
@@ -1716,6 +1860,73 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
             # and use min_msgs as the cold-start gate.
             existing_profiles = db.get_profiles_for_users(list(by_user.keys()))
 
+            # Deep-rebuild cycle (2026-07-11). Incremental refreshes are
+            # a one-way valve: they read ONLY messages newer than the
+            # last pass, so anything a window missed is unrecoverable
+            # forever (ZHawk: 46 fitness messages, 0 in the dossier).
+            # Every profile now cycles through a from-scratch rebuild on
+            # a 90-day window: due when the last cold-start build is
+            # older than the cycle, or the profile is stale (>21d
+            # without ANY refresh — quiet users otherwise freeze with
+            # stale scores because the delta gate never fires for them).
+            # Capped per run so each 6h tick spreads the Gemini cost.
+            _DEEP_REBUILD_DAYS = 90
+            _DEEP_REBUILD_CYCLE_DAYS = 30
+            _DEEP_REBUILD_STALE_DAYS = 21
+            _DEEP_REBUILD_PER_RUN = 6
+            _now_utc = datetime.now(timezone.utc)
+            _cycle_cut = (_now_utc - timedelta(
+                days=_DEEP_REBUILD_CYCLE_DAYS)).strftime("%Y-%m-%d %H:%M:%S")
+            _stale_cut = (_now_utc - timedelta(
+                days=_DEEP_REBUILD_STALE_DAYS)).strftime("%Y-%m-%d %H:%M:%S")
+            _rebuild_stamp = _now_utc.strftime("%Y-%m-%d %H:%M:%S")
+            rebuild_due: set[int] = set()
+            by_user_deep: dict[int, list[dict]] = {}
+            if not force:
+                for _uid, _prof in existing_profiles.items():
+                    _lfr = (_prof.get("last_full_rebuild_at") or "")
+                    _upd = (_prof.get("updated_at") or "")
+                    if (not _lfr or _lfr < _cycle_cut) or (
+                            _upd and _upd < _stale_cut):
+                        rebuild_due.add(_uid)
+                if len(rebuild_due) > _DEEP_REBUILD_PER_RUN:
+                    _ordered = sorted(
+                        rebuild_due,
+                        key=lambda u: (
+                            existing_profiles[u].get("last_full_rebuild_at")
+                            or ""
+                        ),
+                    )
+                    rebuild_due = set(_ordered[:_DEEP_REBUILD_PER_RUN])
+                if rebuild_due:
+                    print(
+                        f"Deep-rebuild due for {len(rebuild_due)} user(s) — "
+                        f"loading {_DEEP_REBUILD_DAYS}d window for them",
+                        flush=True,
+                    )
+                    (
+                        by_user_deep, _deep_meta, _deep_images,
+                        _deep_slur_counts, _deep_slur_examples,
+                    ) = _load_user_data_from_store(
+                        channels, _DEEP_REBUILD_DAYS
+                    )
+                    # Rebuild users take the deep window's meta/slur/image
+                    # data — a 90d slur count superset beats the 30d one,
+                    # and a dormant user (zero msgs in 30d) has no 30d
+                    # meta at all.
+                    for _uid in rebuild_due:
+                        if _uid in _deep_meta:
+                            user_meta[_uid] = _deep_meta[_uid]
+                        if _uid in _deep_images:
+                            images_by_user[_uid] = _deep_images[_uid]
+                        if _uid in _deep_slur_counts:
+                            slur_counts[_uid] = _deep_slur_counts[_uid]
+                        if _uid in _deep_slur_examples:
+                            slur_examples[_uid] = _deep_slur_examples[_uid]
+            # Users whose generation runs COLD-START this pass (fresh
+            # profile from the full window, not an incremental edit).
+            cold_uids: set[int] = set(rebuild_due)
+
             eligible: list[tuple[int, list[dict]]] = []
             skipped_lurkers = 0
             skipped_stable = 0  # existing profile, not enough new material
@@ -1736,6 +1947,13 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                 )
             for uid, msgs in by_user.items():
                 has_existing_profile = uid in existing_profiles
+                if not force and uid in rebuild_due:
+                    # Deep-rebuild pass: 90d window, cold-start, bypasses
+                    # both the delta gate and the floor (an existing
+                    # profile is already in the ranking — same rationale
+                    # as force mode).
+                    eligible.append((uid, by_user_deep.get(uid) or msgs))
+                    continue
                 if force:
                     # In force mode: existing profile bypasses the floor
                     # entirely; new users still need >= FORCE_LIFETIME_FLOOR.
@@ -1757,6 +1975,17 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             skipped_stable += 1
                             continue
                 eligible.append((uid, msgs))
+            # Rebuild-due users with NO messages in the base window
+            # (dormant — exactly the stale-profile class #4 exists for)
+            # never appear in by_user; pull their content from the deep
+            # window so the rebuild still runs and their scores re-derive
+            # under current rules.
+            for uid in rebuild_due:
+                if uid in by_user:
+                    continue
+                _deep_msgs = by_user_deep.get(uid) or []
+                if len(_deep_msgs) >= FORCE_LIFETIME_FLOOR:
+                    eligible.append((uid, _deep_msgs))
             eligible.sort(key=lambda t: -len(t[1]))  # most active first
 
             # Optional hard cap (default 0 = no cap; rely on threshold)
@@ -1828,6 +2057,35 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
             n_failure_exception = 0
             n_failure_empty = 0
 
+            # Deterministic score math, extracted (2026-07-11) so the
+            # lint-retry path can recompute scores from a regenerated
+            # chatter_base without duplicating the policy. n_msgs is the
+            # BASE-window activity count — deep-rebuild users read 90d of
+            # content but are scored on 30d activity like everyone else.
+            def _final_trader_score(uid: int, n_msgs: int, chatter_base):
+                if chatter_base is None:
+                    return None
+                try:
+                    _ledger = db.compute_member_points(uid, days=21)
+                    _receipt_pts = int(_ledger.get("points") or 0)
+                except Exception:
+                    _receipt_pts = 0
+                _clipped = max(0, min(50, int(chatter_base)))
+                _mult = min(
+                    1.0, n_msgs / TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS
+                )
+                # 2026-06-02 policy: no upper bound — scaled chatter caps
+                # at 50, receipts unbounded above.
+                return max(0, round(_clipped * _mult) + _receipt_pts)
+
+            def _scaled_racism(n_msgs: int, score):
+                if score is None:
+                    return None
+                _mult = min(
+                    1.0, n_msgs / TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS
+                )
+                return max(0, min(100, round(int(score) * _mult)))
+
             # One shared aiohttp session for all image downloads across
             # the batch. Lives for the duration of the Gemini loop.
             async with aiohttp.ClientSession() as http_session:
@@ -1849,7 +2107,8 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # the eligibility gate but still feed only the
                         # tiny incremental delta to Gemini.
                         existing = (
-                            None if force else existing_profiles.get(uid)
+                            None if (force or uid in cold_uids)
+                            else existing_profiles.get(uid)
                         )
                         tasks.append(_generate_profile(
                             gemini_client,
@@ -1912,26 +2171,14 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # to. Final score = scaled_chatter +  # no upper cap
                         # receipt_pts) with scaled_chatter =
                         # clip(chatter_base, 50) * min(1, msgs/500).
-                        if chatter_base is not None:
-                            try:
-                                _ledger = db.compute_member_points(uid, days=21)
-                                _receipt_pts = int(_ledger.get("points") or 0)
-                            except Exception:
-                                _receipt_pts = 0
-                            _clipped_chatter = max(0, min(50, int(chatter_base)))
-                            _activity_mult = min(
-                                1.0,
-                                len(msgs) / TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS,
-                            )
-                            _scaled_chatter = round(_clipped_chatter * _activity_mult)
-                            # 2026-06-02 policy: no upper bound on trader_score.
-                            # Removed min(100, ...) so top traders separate from
-                            # each other rather than all pinning to 100. Scaled
-                            # chatter caps at 50; receipts (wins * 2 per the
-                            # ledger overhaul) are unbounded above.
-                            trader_score = max(0, _scaled_chatter + _receipt_pts)
-                        else:
-                            trader_score = None
+                        # Score on BASE-window activity (30d), not the
+                        # content window — a deep-rebuild user reading 90d
+                        # of content must not get a 3x activity-credibility
+                        # advantage over 30d-scored peers.
+                        _score_n = len(by_user.get(uid) or msgs)
+                        trader_score = _final_trader_score(
+                            uid, _score_n, chatter_base
+                        )
                         # Activity multiplier on racism too (added
                         # 2026-05-29): same 500-msg credibility floor.
                         # A user with 45 msgs and a 95 racial_humor
@@ -1943,18 +2190,9 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # chat that IS visible; Python applies the
                         # credibility factor downstream. Same as
                         # trader_score's chatter-base scaling.
-                        if racial_humor_score is not None:
-                            _humor_mult = min(
-                                1.0,
-                                len(msgs) / TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS,
-                            )
-                            racial_humor_score = max(
-                                0,
-                                min(
-                                    100,
-                                    round(int(racial_humor_score) * _humor_mult),
-                                ),
-                            )
+                        racial_humor_score = _scaled_racism(
+                            _score_n, racial_humor_score
+                        )
                         # Guard: don't overwrite a substantial prior
                         # profile with a much shorter truncated one.
                         # Heavy users sometimes get section-1-only
@@ -1977,7 +2215,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         prior = existing_profiles.get(uid)
                         prior_len = len((prior or {}).get("profile_text") or "")
                         new_len = len(profile or "")
-                        thin_user = len(msgs) < TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS
+                        thin_user = _score_n < TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS
                         if (
                             profile
                             and not thin_user
@@ -2049,7 +2287,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             prior = existing_profiles.get(uid) or {}
                             prior_trader = prior.get("trader_score")
                             prior_humor = prior.get("racial_humor_score")
-                            thin_user = len(msgs) < TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS
+                            thin_user = _score_n < TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS
                             if thin_user and (
                                 prior_trader is not None
                                 or prior_humor is not None
@@ -2061,7 +2299,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                     _receipt_fb = 0
                                 _mult_fb = min(
                                     1.0,
-                                    len(msgs) / TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS,
+                                    _score_n / TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS,
                                 )
                                 # Estimate prior chatter from prior
                                 # trader_score - prior_receipts. The
@@ -2135,6 +2373,117 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             profile, None,
                             meta.get("username", ""),
                         )
+
+                        # Profile lint (2026-07-11) — the spec finally has
+                        # teeth: detect → one retry with the violations as
+                        # feedback → keep-prior on residual HARD failure.
+                        # 17/54 live profiles were under the personal-life
+                        # floor with nothing enforcing it.
+                        _hard_v, _soft_v = _lint_profile(
+                            profile, len(msgs), claim_check
+                        )
+                        if _hard_v or _soft_v:
+                            _fb = "\n".join(
+                                f"- {v}" for v in (_hard_v + _soft_v)
+                            )
+                            print(
+                                f"  ⚠ {meta['display_name']}: lint "
+                                f"({len(_hard_v)} hard, {len(_soft_v)} "
+                                f"soft) — retrying with feedback",
+                                flush=True,
+                            )
+                            try:
+                                _r = await _generate_profile(
+                                    gemini_client,
+                                    meta["display_name"],
+                                    msgs,
+                                    username=meta.get("username", ""),
+                                    http_session=http_session,
+                                    images=images_by_user.get(uid, []),
+                                    user_id=uid,
+                                    existing_profile=(
+                                        None if (force or uid in cold_uids)
+                                        else existing_profiles.get(uid)
+                                    ),
+                                    lint_feedback=_fb,
+                                )
+                            except Exception as _r_err:
+                                print(f"    lint retry failed: {_r_err}",
+                                      flush=True)
+                                _r = (None, None, None, None, None)
+                            if _r and _r[0]:
+                                _r_claim = _verify_profile_claims(
+                                    _r[0], None, meta.get("username", "")
+                                )
+                                _r_hard, _r_soft = _lint_profile(
+                                    _r[0], len(msgs), _r_claim
+                                )
+                                # Accept the retry only when it's strictly
+                                # better (never trade fewer hard for more
+                                # total violations).
+                                if (len(_r_hard) <= len(_hard_v)
+                                        and len(_r_hard) + len(_r_soft)
+                                        < len(_hard_v) + len(_soft_v)):
+                                    (profile, chatter_base, trader_rationale,
+                                     racial_humor_score, racism_rationale) = _r
+                                    trader_score = _final_trader_score(
+                                        uid, _score_n, chatter_base
+                                    )
+                                    racial_humor_score = _scaled_racism(
+                                        _score_n, racial_humor_score
+                                    )
+                                    claim_check = _r_claim
+                                    _hard_v, _soft_v = _r_hard, _r_soft
+                                    print("    lint retry improved — using it",
+                                          flush=True)
+                            if _hard_v:
+                                _has_prior = bool(
+                                    (existing_profiles.get(uid) or {})
+                                    .get("profile_text")
+                                )
+                                try:
+                                    db.record_pipeline_event(
+                                        "profile_user_failure",
+                                        "lint_hard_fail",
+                                        {
+                                            "user_id": uid,
+                                            "username": meta.get("username"),
+                                            "violations": _hard_v[:5],
+                                            "kept_prior": _has_prior,
+                                        },
+                                    )
+                                except Exception:
+                                    pass
+                                if _has_prior:
+                                    # Keep the prior dossier over shipping a
+                                    # structurally broken one.
+                                    n_failure_empty += 1
+                                    print(
+                                        f"  ✗ {meta['display_name']}: lint "
+                                        f"hard-fail after retry — keeping "
+                                        f"prior profile",
+                                        flush=True,
+                                    )
+                                    continue
+                                print(
+                                    f"  ⚠ {meta['display_name']}: lint "
+                                    f"hard-fail on cold-start — accepting "
+                                    f"with log (no prior to keep)",
+                                    flush=True,
+                                )
+                            elif _soft_v:
+                                try:
+                                    db.record_pipeline_event(
+                                        "profile_lint_soft", "accepted",
+                                        {
+                                            "user_id": uid,
+                                            "username": meta.get("username"),
+                                            "violations": _soft_v[:5],
+                                        },
+                                    )
+                                except Exception:
+                                    pass
+
                         if claim_check["unverified_count"] > 0:
                             print(
                                 f"  ⚠ {meta['display_name']}: "
@@ -2161,12 +2510,21 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # (Voice / Retarded takes / Recent trades /
                         # Recent personal life sections). Old DB rows
                         # keep stale data via COALESCE.
+                        # Cold-start builds (force / deep-rebuild / brand
+                        # new user) stamp last_full_rebuild_at so the
+                        # rebuild cycle knows when this dossier last saw a
+                        # from-scratch pass. Incremental passes send None
+                        # (COALESCE preserves the prior stamp).
+                        _is_cold = (
+                            force or uid in cold_uids
+                            or uid not in existing_profiles
+                        )
                         db.upsert_user_profile(
                             user_id=uid,
                             username=meta["username"],
                             display_name=meta["display_name"],
                             profile_text=profile,
-                            message_count_at_update=len(msgs),
+                            message_count_at_update=_score_n,
                             last_seen_message_at=last_seen,
                             slur_count=slur_n,
                             racial_humor_score=racial_humor_score,
@@ -2174,6 +2532,9 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             trader_rationale=trader_rationale,
                             racism_rationale=racism_rationale,
                             slur_examples=slur_ex_json,
+                            last_full_rebuild_at=(
+                                _rebuild_stamp if _is_cold else None
+                            ),
                         )
                         n_success += 1
                         n_imgs = len(images_by_user.get(uid, []))

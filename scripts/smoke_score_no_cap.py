@@ -17,10 +17,12 @@ def test_score_formula_uses_additive_no_cap():
     receipt_pts)` — no `min(100, ...)` clip."""
     import re
     src = open("scripts/backfill_user_profiles.py", encoding="utf-8").read()
-    # Positive identification of the new formula
+    # Positive identification of the formula — extracted into the
+    # _final_trader_score helper on 2026-07-11 (so the lint-retry path
+    # shares one implementation); same additive no-cap policy.
     assert (
-        "max(0, _scaled_chatter + _receipt_pts)" in src
-    ), "expected `max(0, _scaled_chatter + _receipt_pts)` in source (no cap)"
+        "max(0, round(_clipped * _mult) + _receipt_pts)" in src
+    ), "expected the no-cap additive formula in _final_trader_score"
     # Negative: there should be no `min(100, ...)` left in the RUNTIME
     # formula line. (Comments / docstrings / prompt-text may still
     # mention it for historical context.)
@@ -51,6 +53,10 @@ def test_prompt_text_no_longer_promises_cap():
         #   - racial_humor_score (rh) is intentionally 0-100 bounded
         #   - the runtime trader_score = ... line is checked separately
         if "rh = " in ln or "trader_score =" in ln:
+            continue
+        # _scaled_racism helper (2026-07-11): racial_humor_score is
+        # INTENTIONALLY 0-100 bounded — same exemption as the rh lines.
+        if "round(int(score) * _mult)" in ln:
             continue
         suspect_lines.append(ln)
     if suspect_lines:

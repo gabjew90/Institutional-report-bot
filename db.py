@@ -427,6 +427,12 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         ("slur_examples", "ALTER TABLE user_profiles ADD COLUMN slur_examples TEXT"),
         ("trader_examples", "ALTER TABLE user_profiles ADD COLUMN trader_examples TEXT"),
         ("personal_ammo", "ALTER TABLE user_profiles ADD COLUMN personal_ammo TEXT"),
+        # Deep-rebuild tracking (2026-07-11): incremental refreshes are a
+        # one-way valve — anything a window missed is unrecoverable. Each
+        # profile now records its last COLD-START rebuild so the refresh
+        # job can cycle every profile through a 90-day from-scratch pass
+        # (ZHawk's 46 fitness messages never survived the valve).
+        ("last_full_rebuild_at", "ALTER TABLE user_profiles ADD COLUMN last_full_rebuild_at TEXT"),
         # analyst_trades migration: add price + caller columns on existing deploys.
         ("price", "ALTER TABLE analyst_trades ADD COLUMN price REAL"),
         ("caller", "ALTER TABLE analyst_trades ADD COLUMN caller TEXT"),
@@ -2689,8 +2695,11 @@ def upsert_user_profile(
     slur_examples: str | None = None,
     trader_examples: str | None = None,
     personal_ammo: str | None = None,
+    last_full_rebuild_at: str | None = None,
 ) -> None:
     """Insert or replace a user profile. updated_at is auto-stamped.
+    last_full_rebuild_at is stamped only on cold-start builds (None
+    preserves the prior value via COALESCE).
 
     Metrics (slur_count, racial_humor_score, trader_score, trader_rationale,
     slur_examples, trader_examples) are part of the profile row.
@@ -2708,8 +2717,8 @@ def upsert_user_profile(
               slur_count, racial_humor_score,
               trader_score, trader_rationale, racism_rationale,
               slur_examples, trader_examples, personal_ammo,
-              updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+              last_full_rebuild_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
            ON CONFLICT(user_id) DO UPDATE SET
              username = excluded.username,
              display_name = excluded.display_name,
@@ -2724,6 +2733,7 @@ def upsert_user_profile(
              slur_examples = COALESCE(excluded.slur_examples, user_profiles.slur_examples),
              trader_examples = COALESCE(excluded.trader_examples, user_profiles.trader_examples),
              personal_ammo = COALESCE(excluded.personal_ammo, user_profiles.personal_ammo),
+             last_full_rebuild_at = COALESCE(excluded.last_full_rebuild_at, user_profiles.last_full_rebuild_at),
              updated_at = datetime('now')""",
         (
             int(user_id), username, display_name, profile_text,
@@ -2731,6 +2741,7 @@ def upsert_user_profile(
             int(slur_count), racial_humor_score,
             trader_score, trader_rationale, racism_rationale,
             slur_examples, trader_examples, personal_ammo,
+            last_full_rebuild_at,
         ),
     )
     conn.commit()
