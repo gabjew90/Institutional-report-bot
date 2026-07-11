@@ -464,6 +464,21 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         )
     except sqlite3.OperationalError:
         pass
+    # Self-heal for placeholder-corrupted profiles (2026-07-11): the
+    # first deep-rebuild batch shipped 4 dossiers whose personal-life
+    # section was the spec's literal '[bracket] + [bracket]' shape
+    # template. The '] + [' sequence only occurs in that placeholder
+    # shape (real bullets are 'text + [framing]' — one bracket group).
+    # Resetting last_full_rebuild_at puts them back at the FRONT of the
+    # rebuild queue, so the fixed prompt + lint redo them on the next
+    # tick. Idempotent: clean profiles never match.
+    try:
+        conn.execute(
+            "UPDATE user_profiles SET last_full_rebuild_at = NULL "
+            "WHERE profile_text LIKE '%] + [%'"
+        )
+    except sqlite3.OperationalError:
+        pass
     conn.execute(
         "CREATE INDEX IF NOT EXISTS idx_analyst_trades_caller ON analyst_trades(caller)"
     )

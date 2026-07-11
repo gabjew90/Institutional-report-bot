@@ -218,7 +218,7 @@ Honest, not flattering. Specific behaviors over category labels. Verbatim quotes
 
 ## SECTIONS
 
-Five sections in profile_text, all required. If signal is thin for a section, write `Insufficient signal — too few messages on this dimension.` rather than padding. Always keep the structure; never truncate sections.
+Five sections in profile_text, all required. If signal is thin for a section, write `Insufficient signal — too few messages on this dimension.` rather than padding. Always keep the structure; never truncate sections. **Insufficient-signal is a LAST resort**: for a user with hundreds of messages it is never the right answer for Personality, Voice, or Recent personal life — the signal exists, mine harder. And it is the WHOLE section when used — never placeholder bullets plus the line.
 
 The point of these dossiers: give the /ask bot enough material to (a) trash-talk people about their personal lives + stupid takes, (b) read their racism/slur volume, and (c) call out their bad trades and respect their good ones. Everything in the profile should serve one of those purposes.
 
@@ -270,13 +270,10 @@ Anti-patterns:
 
 **Recent personal life.** Bullet list of 4-6 personal-life details revealed in chat in the recent window. **Savage-but-hilarious.** Anything they posted is fair game — job, family, where they live, commute, kids, wife, dating life, health, hobbies, embarrassing admissions. Frame each one with a comedic angle, not just bare reporting. **Prioritize durable identity dimensions** — a fitness routine, a sport, a job, a signature obsession the room knows them for — over one-off incidents, and prefer NON-trading color: money-adjacent rituals (account resets, P&L habits) don't count toward the 4-6. This section is the roast bot's top-tier ammunition; if the chat shows a dimension repeatedly (someone posts marathon times, sauna routines, peptide orders), it MUST be here.
 
-Each bullet follows the same shape: [the detail sourced from chat] + [a comedic framing beat that names what's funny about it]. Don't copy these into other profiles — they're SHAPE EXAMPLES, not transferable content. Pull from THIS user's actual chat:
+Each bullet: the real detail sourced from THIS user's chat, then ` + [a comedic framing beat]`. **NEVER emit bracket placeholders** — if you catch yourself writing a bullet that is nothing but [bracketed descriptions], you have no material for that bullet; drop it (2026-07-11: four rebuilt dossiers shipped with the spec's own placeholder text as their personal-life section). Shape example from a FICTIONAL user — never copy the content, only the shape:
 
-> - [domestic-arrangement detail revealed] + [the comedic-pattern beat the room has noticed]
-> - [job complaint they keep bringing up] + [the framing that names why it's funny]
-> - [embarrassing self-admission they posted] + [how the room reacted]
-> - [physical-comfort-related detail they overshared] + [the bit they don't realize they're doing]
-> - [hobby / lifestyle detail with a status-tell] + [what it reveals]
+> - Commutes 90 minutes each way to a job he only ever calls "the yard" + [the room asks weekly why he doesn't just live at the yard]
+> - Microwaves fish in the office kitchen and posted HR's complaint email + [zero remorse, reposts it every time someone brings it up]
 
 Anti-patterns:
 - "Married with kids" (no edge, no framing)
@@ -337,12 +334,12 @@ The dossier below shows the structural shape of a complete profile (5 sections, 
 > - [a bag they're sitting on] — [the room's running joke about it]
 >
 > **Recent personal life.**
-> - [domestic / family detail they revealed] + [the comedic-pattern beat the room has noticed]
-> - [job complaint pattern] + [the framing that names what's funny]
-> - [embarrassing self-admission] + [how the room reacted]
-> - [lifestyle / status tell] + [what it reveals about them]
+> - Commutes 90 minutes each way to a job he only ever calls "the yard" + [the room asks weekly why he doesn't just live at the yard]
+> - Microwaves fish in the office kitchen and posted HR's complaint email + [zero remorse, reposts it every time someone brings it up]
+> - Trains for a triathlon he has never signed up for + [three years of "base building"]
+> - Wife runs the household budget after "the options incident" + [he reports his own allowance like earnings guidance]
 
-(End example.) The placeholders in `[brackets]` are intentional — the real profile fills each with content sourced from the actual MESSAGES block below. Density and tone match the bracketed pattern; specifics never copy across.
+(End example — a FICTIONAL user.) Match the density and tone; NEVER copy the content, and NEVER emit `[bracket]` placeholders in your output (2026-07-11: rebuilt dossiers shipped with bracketed shape-descriptions as their personal-life sections — the lint now hard-fails that). Every bullet leads with REAL material from the actual MESSAGES block below.
 
 ## TWO RECEIPT TYPES — alert posts (entry commitments) + closed-P&L screenshots
 
@@ -800,11 +797,27 @@ def _section_bullets(profile_text: str, section: str) -> list[str] | None:
             if ln.strip().startswith("-")]
 
 
+# A bullet that is NOTHING but bracketed spans is the spec's shape
+# template leaking into output (2026-07-11: 4 of the first 6 deep
+# rebuilds shipped '- [domestic-arrangement detail revealed] + [...]'
+# as their personal-life section). Real bullets start with real text.
+_PLACEHOLDER_BULLET_RE = __import__("re").compile(
+    r"^-\s*\[[^\]]+\](\s*[+—–-]\s*\[[^\]]+\])*\s*$"
+)
+# Sections where "Insufficient signal" is never legitimate for an
+# active user (Recent trades CAN be thin — some members never post
+# trades; personality/voice/personal-life always have material at
+# volume).
+_NO_BAIL_SECTIONS = ("Personality and style", "Voice",
+                     "Recent personal life")
+
+
 def _lint_profile(
     profile_text: str, msg_count: int, claim_check: dict | None = None,
 ) -> tuple[list[str], list[str]]:
     """Returns (hard_violations, soft_violations) as human-readable
     strings — fed back verbatim as regeneration feedback."""
+    import re as _re
     hard: list[str] = []
     soft: list[str] = []
     if not profile_text:
@@ -813,6 +826,29 @@ def _lint_profile(
         if _section_bullets(profile_text, section) is None and \
                 f"**{section}.**" not in profile_text:
             hard.append(f"required section '**{section}.**' is missing")
+    _ph = [ln.strip() for ln in profile_text.splitlines()
+           if _PLACEHOLDER_BULLET_RE.match(ln.strip())]
+    if _ph:
+        hard.append(
+            f"{len(_ph)} bullet(s) are literal [bracket] placeholders "
+            f"copied from the spec's shape examples — write REAL material "
+            f"from this user's messages, or drop the bullet (use the "
+            f"Insufficient-signal line if a section is truly empty). "
+            f"First offender: {_ph[0][:90]}"
+        )
+    if msg_count >= _LINT_HIGH_VOLUME_MSGS:
+        for section in _NO_BAIL_SECTIONS:
+            m = _re.search(
+                r"\*\*" + _re.escape(section) +
+                r"\.\*\*\s*\n(.*?)(?=\n\s*\*\*|\Z)",
+                profile_text, _re.DOTALL,
+            )
+            if m and "Insufficient signal" in m.group(1):
+                hard.append(
+                    f"'{section}' claims Insufficient signal for a user "
+                    f"with {msg_count} messages — the signal exists, mine "
+                    f"the messages."
+                )
     cc = claim_check or {}
     checked = int(cc.get("checked_quotes") or 0)
     unverified = int(cc.get("unverified_count") or 0)
@@ -1296,10 +1332,17 @@ async def _generate_profile(
             prior_racial_humor_score=rh if rh is not None else "n/a",
         )
     else:
-        # Cold-start: same dynamic cap shape, applied across the full
-        # window (30d default; 90d on deep-rebuild passes).
+        # Cold-start: bounded tighter than the incremental hard cap. A
+        # 90-day deep rebuild of a heavy yapper would otherwise ship a
+        # 3000-message prompt; 1500 stratified messages carry the same
+        # signal (per-channel floors guarantee the minority-channel
+        # color) at half the tokens. (The placeholder corruption in the
+        # first rebuild batch hit SMALL users too, so prompt size wasn't
+        # the primary cause — the template was — but there's no quality
+        # upside to mega-prompts and real cost.)
+        _COLD_SAMPLE_CAP = 1500
         dynamic_cap = max(
-            sample_size, min(_DYNAMIC_SAMPLE_HARD_CAP, len(messages))
+            sample_size, min(_COLD_SAMPLE_CAP, len(messages))
         )
         sample = _stratified_sample(messages, dynamic_cap)
 

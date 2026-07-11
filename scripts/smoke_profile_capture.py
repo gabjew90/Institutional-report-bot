@@ -149,6 +149,72 @@ def test_lint_personal_floor_and_slur_cap_are_soft():
     _ok("lint: personal floor + slur cap soft; thin users exempt")
 
 
+def test_lint_placeholder_bullets_are_hard():
+    # The exact 2026-07-11 corruption: 4 of the first 6 deep rebuilds
+    # shipped the spec's bracket-placeholder shape examples as their
+    # personal-life section (and one added 'Insufficient signal' on a
+    # 2380-msg user).
+    corrupted = _GOOD_PROFILE.replace(
+        "- Ran a 2:55 marathon and mocks everyone's heart rate",
+        "- [domestic-arrangement detail revealed] + [the comedic-pattern "
+        "beat the room has noticed]",
+    ).replace(
+        "- Daily sauna for years, Whoop on wrist",
+        "- [job complaint they keep bringing up] + [the framing that "
+        "names why it's funny]",
+    )
+    hard, _ = _lint_profile(corrupted, 2380, {})
+    assert any("placeholder" in h for h in hard), hard
+    # real bullets using the 'text + [framing]' shape do NOT trip it
+    hard2, _ = _lint_profile(_GOOD_PROFILE.replace(
+        "- Quarter-mil Pokemon binder energy",
+        "- Quarter-mil Pokemon binder + [the room calls it his real "
+        "portfolio]",
+    ), 1065, {"checked_quotes": 5, "unverified_count": 0})
+    assert not any("placeholder" in h for h in hard2), hard2
+    # 'Insufficient signal' in a no-bail section at volume = hard
+    bail = _GOOD_PROFILE.replace(
+        "- Ran a 2:55 marathon and mocks everyone's heart rate\n"
+        "- Daily sauna for years, Whoop on wrist\n"
+        "- Orders Semax peptides from a Texas spot\n"
+        "- Quarter-mil Pokemon binder energy\n",
+        "Insufficient signal — too few messages on this dimension.\n",
+    )
+    hard3, _ = _lint_profile(bail, 2380, {})
+    assert any("Insufficient signal" in h for h in hard3), hard3
+    # ...but legit for a thin user
+    hard4, _ = _lint_profile(bail, 80, {})
+    assert not any("Insufficient signal" in h for h in hard4), hard4
+    # ...and legit for Recent trades even at volume (some never post)
+    trades_bail = _GOOD_PROFILE.replace(
+        "- GEO / 31C — [bag]",
+        "Insufficient signal — too few messages on this dimension.",
+    )
+    hard5, _ = _lint_profile(trades_bail, 2380, {})
+    assert not any("Insufficient signal" in h for h in hard5), hard5
+    _ok("lint: placeholder bullets + bogus insufficient-signal = hard; "
+        "real shapes and legit bails pass")
+
+
+def test_selfheal_and_template_fixed():
+    import db as _db
+    dsrc = inspect.getsource(_db)
+    assert "profile_text LIKE '%] + [%'" in dsrc, \
+        "boot self-heal for corrupted profiles missing"
+    src = inspect.getsource(bp)
+    # the copyable template must be gone from the PROMPT the model sees
+    # (a code comment may still cite it as the historical failure)
+    assert "[domestic-arrangement detail revealed]" not in PROFILE_PROMPT, \
+        "the copyable placeholder template must be gone from the prompt"
+    assert "NEVER emit bracket placeholders" in PROFILE_PROMPT
+    assert "FICTIONAL user" in PROFILE_PROMPT
+    # the fictional example must not itself match the self-heal pattern
+    assert "] + [" not in PROFILE_PROMPT, \
+        "prompt example must not contain the corruption signature"
+    assert "_COLD_SAMPLE_CAP = 1500" in src, "cold-start sample cap missing"
+    _ok("self-heal sweep + uncopyable template + cold sample cap")
+
+
 def test_deep_rebuild_wired():
     src = inspect.getsource(bp)
     for frag in (
@@ -203,6 +269,8 @@ if __name__ == "__main__":
     test_lint_missing_section_is_hard()
     test_lint_fabrication_is_hard()
     test_lint_personal_floor_and_slur_cap_are_soft()
+    test_lint_placeholder_bullets_are_hard()
+    test_selfheal_and_template_fixed()
     test_deep_rebuild_wired()
     test_lint_retry_wired()
     test_prompt_anchors()
