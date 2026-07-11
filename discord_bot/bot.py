@@ -7418,16 +7418,12 @@ def create_bot() -> commands.Bot:
                 _ref_author
                 and getattr(_ref_author, "id", None) == bot.user.id
             )
-            # ...but a reply that explicitly @-tags ANOTHER user (and not
-            # the bot — that case never reaches here) is addressed to
-            # THAT user; the replier is referencing the bot's message,
-            # not talking to the bot. 2026-07-10: ZHawk replied to a bot
-            # roast with "Hey @abe can we add a new tag that says
-            # 'wageslave LARPing as a contrarian'" — riffing the bot's
-            # line TO Abe — and the bot butted in, earning "I'm not
-            # talking to you, I was just referencing your post to abe."
-            if _is_reply_to_bot and message.mentions:
-                _is_reply_to_bot = False
+            # A reply to the bot fires EVEN when it @-tags another user
+            # (user decision 2026-07-11, reversing a one-day stand-down):
+            # replying to the bot's message is engaging the bot, and the
+            # bot holding its own in a three-way exchange is the point.
+            # The roast-recycle guard keeps repeat material from shipping
+            # when it does jump in.
         if bot.user is None or (
             bot.user not in message.mentions and not _is_reply_to_bot
         ):

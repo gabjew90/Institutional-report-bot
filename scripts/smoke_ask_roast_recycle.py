@@ -10,13 +10,11 @@ doesn't know you or how to insult you at all. pathetic." Two causes:
    the SAME asker forces one rewrite with those hooks banned.
    BANTER-gated — factual answers legitimately repeat facts.
 
-2. BUTTING IN — the middle roast fired on a message that wasn't even
-   addressed to the bot: ZHawk REPLIED to the bot's message but tagged
-   @abe ("can we add a new tag that says 'wageslave LARPing as a
-   contrarian'" — he LIKED the line and was riffing it to Abe). The
-   new reply-to-bot trigger (2026-07-10 receipt-intake fix) treated the
-   reply as addressed to the bot. Refinement: a reply-to-bot that
-   @-tags another user is addressed to THAT user — skip.
+2. TRIGGER SCOPE — the middle roast fired on ZHawk's reply-to-bot that
+   tagged @abe. A one-day stand-down for tagged replies was tried and
+   REVERSED by user decision (2026-07-11): the bot fires on every reply
+   to its own messages, three-way exchanges included — freshness is the
+   recycle guard's job, not the trigger's.
 """
 
 import inspect
@@ -124,14 +122,19 @@ def test_guard_wired_banter_gated():
     _ok("wired: BANTER-gated detect -> banned-hooks rewrite -> re-check")
 
 
-def test_reply_trigger_skips_when_tagging_others():
+def test_reply_trigger_fires_even_when_tagging_others():
+    # User decision 2026-07-11 (reversing a one-day stand-down): a reply
+    # to the bot's message engages the bot even when it @-tags another
+    # user — the bot holds its own in three-way exchanges. Freshness is
+    # the recycle guard's job, not the trigger's.
     import discord_bot.bot as bot
     src = inspect.getsource(bot)
     win = src.split("_is_reply_to_bot = bool(", 1)[1][:2200]
-    assert "if _is_reply_to_bot and message.mentions:" in win, \
-        "reply-to-bot must stand down when the reply tags another user"
-    assert "_is_reply_to_bot = False" in win
-    _ok("trigger: reply-to-bot + @someone-else = addressed to them, skip")
+    assert "if _is_reply_to_bot and message.mentions:" not in win, \
+        "the tagged-reply stand-down was reverted — must not return"
+    assert "user decision 2026-07-11" in win, \
+        "the reversal must be documented at the trigger site"
+    _ok("trigger: reply-to-bot fires even when the reply tags others")
 
 
 if __name__ == "__main__":
@@ -140,5 +143,5 @@ if __name__ == "__main__":
     test_fresh_roast_passes()
     test_per_prior_answer_not_union()
     test_guard_wired_banter_gated()
-    test_reply_trigger_skips_when_tagging_others()
+    test_reply_trigger_fires_even_when_tagging_others()
     print("\nALL ROAST-RECYCLE SMOKE TESTS PASS")
