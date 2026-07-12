@@ -501,6 +501,22 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         )
     except sqlite3.OperationalError:
         pass
+    # Exit-linking backfill (2026-07-11): historical strikeless closes
+    # inherit contract fields from their scope's unclosed entries, so
+    # the position rollup finally sees open→close in one partition
+    # (outcome coverage was 40/447 member rows). Idempotent — a filled
+    # row has a strike and is skipped on the next boot. Runs after the
+    # member-caller repair above so scope matching sees clean data.
+    try:
+        _n_exit_links = backfill_orphan_exit_links()
+        if _n_exit_links:
+            import logging as _logging
+            _logging.getLogger(__name__).info(
+                f"migration: linked {_n_exit_links} orphan exit(s) to "
+                f"their entries"
+            )
+    except Exception:
+        pass
     conn.execute(
         "CREATE INDEX IF NOT EXISTS idx_analyst_trades_caller ON analyst_trades(caller)"
     )
@@ -1961,6 +1977,113 @@ def analyst_trade_exists(discord_message_id: int, discord_attachment_id: int) ->
     return row is not None
 
 
+def _find_inheritable_entry(
+    conn,
+    *,
+    ticker: str,
+    contract_type: str | None,
+    posted_at: str,
+    tracking_mode: str,
+    caller: str | None,
+    author_id: int | None,
+) -> dict | None:
+    """The scope's most recent open/add on `ticker` (45d back from
+    `posted_at`) whose position has NO close event yet — the entry an
+    orphan (strikeless) close should inherit contract fields from.
+
+    Scope rules mirror the stage-1 fill: caller closes match only the
+    same caller's opens; member closes only the same author_id's. The
+    NOT EXISTS guard prevents one entry's fields being handed to two
+    different exits (the second orphan close on a ticker whose position
+    already closed stays orphan and gets the close_without_open tag)."""
+    scope_o = " AND o.tracking_mode = ?"
+    scope_c = " AND c.tracking_mode = ?"
+    sp: tuple = (tracking_mode,)
+    if tracking_mode == "caller" and caller:
+        scope_o += " AND LOWER(COALESCE(o.caller, '')) = ?"
+        scope_c += " AND LOWER(COALESCE(c.caller, '')) = ?"
+        sp = sp + ((caller or "").strip().lower(),)
+    elif tracking_mode == "member" and author_id is not None:
+        scope_o += " AND o.author_id = ?"
+        scope_c += " AND c.author_id = ?"
+        sp = sp + (int(author_id),)
+    row = conn.execute(
+        f"""SELECT o.contract_type, o.strike, o.expiry
+           FROM analyst_trades o
+           WHERE o.is_trade = 1
+             AND o.ticker = ?
+             AND o.action IN ('open', 'add')
+             AND (? IS NULL OR COALESCE(o.contract_type, '') = COALESCE(?, ''))
+             AND o.posted_at < ?
+             AND o.posted_at > datetime(?, '-45 days')
+             {scope_o}
+             AND NOT EXISTS (
+                 SELECT 1 FROM analyst_trades c
+                 WHERE c.is_trade = 1
+                   AND c.action = 'close'
+                   AND c.ticker = o.ticker
+                   AND COALESCE(c.contract_type, '') = COALESCE(o.contract_type, '')
+                   AND COALESCE(c.strike, -1) = COALESCE(o.strike, -1)
+                   AND COALESCE(c.expiry, '') = COALESCE(o.expiry, '')
+                   AND c.posted_at > o.posted_at
+                   {scope_c}
+             )
+           ORDER BY o.posted_at DESC
+           LIMIT 1""",
+        (ticker, contract_type, contract_type, posted_at, posted_at)
+        + sp + sp,
+    ).fetchone()
+    return dict(row) if row else None
+
+
+def backfill_orphan_exit_links(days: int = 120) -> int:
+    """One-shot repair for HISTORICAL orphan closes: close rows with a
+    ticker but no strike (P&L cards show ticker + gain% only) get the
+    same contract-field inheritance record_analyst_trade now applies at
+    write time. Clears a stale close_without_open tag when the
+    inherited fields complete the position match. Returns rows updated.
+    Idempotent: a filled row has a strike and is never reprocessed."""
+    conn = get_connection()
+    orphans = conn.execute(
+        """SELECT id, ticker, contract_type, posted_at, tracking_mode,
+                  caller, author_id
+           FROM analyst_trades
+           WHERE is_trade = 1 AND action = 'close'
+             AND ticker IS NOT NULL AND strike IS NULL
+             AND posted_at > datetime('now', ?)""",
+        (f"-{int(days)} days",),
+    ).fetchall()
+    fixed = 0
+    for o in orphans:
+        tm = (o["tracking_mode"] or "caller").strip().lower()
+        cand = _find_inheritable_entry(
+            conn,
+            ticker=o["ticker"],
+            contract_type=o["contract_type"],
+            posted_at=o["posted_at"],
+            tracking_mode=tm if tm in ("caller", "member") else "caller",
+            caller=o["caller"],
+            author_id=o["author_id"],
+        )
+        if not cand:
+            continue
+        conn.execute(
+            """UPDATE analyst_trades
+               SET contract_type = COALESCE(contract_type, ?),
+                   strike = ?,
+                   expiry = COALESCE(expiry, ?),
+                   inferred_status = CASE
+                       WHEN inferred_status = 'close_without_open'
+                       THEN NULL ELSE inferred_status END
+               WHERE id = ?""",
+            (cand["contract_type"], cand["strike"], cand["expiry"],
+             o["id"]),
+        )
+        fixed += 1
+    conn.commit()
+    return fixed
+
+
 def record_analyst_trade(
     *,
     discord_message_id: int,
@@ -2041,6 +2164,32 @@ def record_analyst_trade(
         ).fetchone()
         if inferred_expiry:
             expiry = inferred_expiry[0]
+
+    # Stage-2 inheritance (2026-07-11 review). P&L close cards commonly
+    # show ONLY ticker + gain% — no strike, no contract type, no expiry.
+    # The stage-1 fill above requires strike + contract_type to match,
+    # so a strikeless close stayed orphan: it partitioned separately in
+    # the position rollup, the open stayed "live" forever ("no exit
+    # posted"), and outcome coverage starved (40 of 447 member rows had
+    # outcomes). When the close is missing its STRIKE, inherit every
+    # missing contract field from the scope's most recent open/add on
+    # the same ticker (45d) whose position has no close yet. Extracted
+    # values are never overwritten; a close that names a contract_type
+    # only matches entries of that type.
+    if is_trade and action == "close" and ticker and strike is None:
+        _cand = _find_inheritable_entry(
+            conn,
+            ticker=ticker,
+            contract_type=contract_type,
+            posted_at=posted_at,
+            tracking_mode=norm_tm,
+            caller=caller,
+            author_id=author_id,
+        )
+        if _cand:
+            contract_type = contract_type or _cand["contract_type"]
+            strike = _cand["strike"]
+            expiry = expiry or _cand["expiry"]
 
     # Close-without-open detection: when logging a `close` row with no
     # prior `open` or `add` for the same contract in the last 30 days,
