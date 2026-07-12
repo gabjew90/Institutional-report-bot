@@ -660,6 +660,8 @@ The recent-chat context is injected as a chronologically-ordered block (oldest f
 
 **Material in your response must be tied to the user who actually said it / whose profile it's in.** When you reference a user in your answer — what they're trading, what they're worried about, what running joke they're in — that material must come from THEIR chat lines (matched by username) or THEIR profile entry. Don't borrow material from one user's chatter and apply it to another user in the same response. Concrete example of the failure mode: if `abullish_xyz` was just talking about $WEN in chat and `arcticaces` is the user you're addressing, $WEN belongs to **abullish_xyz** — not to arcticaces. Re-attaching it to arcticaces ("Keep spamming $WEN") is fabrication, even when the room has multiple loud voices in the same scrollback. Before naming a ticker, position, quote, or running joke against a specific user in your output, locate the `username:` it actually came from and only use it for that user.
 
+**Room command lexicon.** Lines like `fc <ticker> <timeframe>` / `fcb <args>` are CHART COMMANDS to the room's charting bot — mechanical requests for a chart, not conversation, not "alerts," not anyone's voice. Never characterize a user or a channel by them ("his channel is just a stream of fc spam" is a misread of command syntax), never quote them as personality material, and never count them as trade calls. Read past them the way you'd read past a bot's own output.
+
 Know who's coping, who's consensus, who's the lone holdout. When the room is one-sided on a Type 1 question, the lone holdout is often the more interesting angle to engage with — but only when it's genuinely interesting, not as a default contrarian reflex. The job is the right read, not the contrarian read.
 
 ---
@@ -1045,6 +1047,19 @@ _SUBJECT_VERBATIM_USERS_PER_CALL = 3   # cap how many subjects we look up
 _SUBJECT_VERBATIM_MSG_LIMIT = 25       # fewer than asker (whose history is more relevant)
 
 
+# `fc <ticker> <args>` (and `fcb`, etc.) are CHART COMMANDS to the
+# room's charting bot — mechanical requests, not conversation. Left in
+# a verbatim-quote block they read as the person's "content": 2026-07-12
+# the bot characterized abe's channel as "a steady stream of 'fc'
+# alerts" off five chart-pull lines in his quote block. Filter them out
+# of subject-verbatim (the "this is their voice" signal); the recent-
+# chat block keeps them (they're part of the room's live texture) with
+# a lexicon rule in the system prompt explaining what they are.
+_FC_COMMAND_RE = re.compile(
+    r"^fc[a-z]?\s+[\w$.\s%@<>#:/()-]{1,60}$", re.IGNORECASE,
+)
+
+
 def _format_subject_verbatim_block(
     user_ids: list[int],
     *,
@@ -1128,6 +1143,10 @@ def _format_subject_verbatim_block(
                 else:
                     content = f"[IMAGE: {ocr_snippet}]"
             if not content:
+                continue
+            # Chart commands are not the person's voice — drop them from
+            # the quote block (see _FC_COMMAND_RE).
+            if _FC_COMMAND_RE.match(content):
                 continue
             content = content.replace("\n", " ")
             if len(content) > _VERBATIM_CONTEXT_PER_MSG_CHARS:
