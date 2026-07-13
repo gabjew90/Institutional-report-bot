@@ -67,19 +67,29 @@ def test_web_override_wired():
     _ok("router override: completion shapes force WEB/FACT")
 
 
-def test_no_fake_verbatim_rule():
+def test_quotation_first_rule():
+    # 2026-07-12 (second pass, user: "structurally fix these stupid
+    # dodges"): quotation-FIRST framing. Completing a lyric is quoting
+    # published text — the same established rule as quoting members'
+    # messages verbatim (no scrubbing). The WEB route puts the real
+    # line in search context, where the model quotes readily; a dodge
+    # is the last resort, and invented words are never acceptable.
     import discord_bot.bot as bot
     ins = bot._ASK_SYSTEM_INSTRUCTION
-    assert "Never invent verbatim text" in ins, "binding rule missing"
-    assert "karaoke machine" in ins, "the in-voice dodge example missing"
-    assert "don't fabricate a clean version" in ins, \
-        "the slur-swerve case must be named"
-    _ok("prompt: no-fake-lyrics rule + honest-dodge guidance present")
+    assert "quote it or say nothing, never invent it" in ins, \
+        "binding quotation-first rule missing"
+    assert "same job as quoting a member's message" in ins, \
+        "must anchor to the established verbatim-quotation policy"
+    assert "quote it exactly as written" in ins, \
+        "grounded completions must be quoted verbatim"
+    assert "NEVER swap in invented words" in ins, \
+        "the fabrication ban must survive the reframe"
+    _ok("prompt: quotation-first, dodge-last, fabrication never")
 
 
 if __name__ == "__main__":
     print("=== quote/lyric-completion smoke ===")
     test_completion_shapes_match()
     test_web_override_wired()
-    test_no_fake_verbatim_rule()
+    test_quotation_first_rule()
     print("\nALL LYRIC-COMPLETION SMOKE TESTS PASS")
