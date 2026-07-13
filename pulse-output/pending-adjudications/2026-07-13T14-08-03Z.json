@@ -1,0 +1,165 @@
+{
+  "pulse_date": "2026-07-13",
+  "window_label": "since-last-daily (2026-07-10T14:40)",
+  "themes": [
+    {
+      "theme": "ai investment cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 7,
+        "skeptical": 6,
+        "neutral": 13
+      },
+      "consensus_view": "Banks are split on the AI spending boom, with several arguing demand and investment remain strong while others warn it is over-earning, too reliant on debt, and headed for a bust, though most agree the buildout is now adding to inflation.",
+      "facts_agreed": [
+        {
+          "claim": "AI demand and adoption remain robust, keeping the investment cycle well-supported.",
+          "banks_for": ["TS Lombard", "Morgan Stanley", "Goldman Sachs"],
+          "evidence_quotes": [
+            "the vast majority of AI demand indicators we are tracking continue to point to robust demand",
+            "company discussions of the benefits they are seeing from AI adoption remain robust.",
+            "Agentic AI is driving organizations to invest in on-premise and edge infrastructure"
+          ]
+        },
+        {
+          "claim": "The AI build-out is pushing up inflation through rising memory, hardware, and power costs.",
+          "banks_for": ["The Market Ear", "Citi", "Deutsche Bank"],
+          "evidence_quotes": [
+            "it is undisputable that the impact of soaring memory prices... are clearly inflationary",
+            "AI boom contribution to US inflation",
+            "AI inflationary build-out phase"
+          ]
+        },
+        {
+          "claim": "AI-related debt financing is reaching capacity limits and becoming a persistent market headwind.",
+          "banks_for": ["Goldman Sachs", "The Market Ear", "JPMorgan"],
+          "evidence_quotes": [
+            "it will be very difficult to fund another $360bn in the next 12mo",
+            "That's not necessarily a problem, until one day it is.",
+            "supply fatigue is becoming a more persistent headwind"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI investment cycle is durable or a bubble heading for a bust",
+          "banks_for": ["TS Lombard", "Jefferies", "One River Asset Management"],
+          "for_evidence": "the vast majority of AI demand indicators we are tracking continue to point to robust demand",
+          "banks_against": ["Société Générale", "Apollo"],
+          "against_evidence": "every other investment boom prompted by technological innovation has seen a bust some 4-5 years later"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait security and transit",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 11},
+      "consensus_view": "Banks across eleven desks flag the Strait of Hormuz as a live risk to oil shipping and energy flows, but none has staked a clear directional view on whether the waterway closes or reopens.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are actively tracking the Strait of Hormuz as a security and oil-transit risk without committing to a directional call.",
+          "banks_for": ["ANZ Research", "Goldman Sachs", "ING", "JPMorgan", "MUFG", "One River Asset Management", "Rabobank", "Societe Generale", "Société Générale", "TS Lombard", "The Market Ear"],
+          "evidence_quotes": [
+            "Strait of Hormuz transit security",
+            "Strait of Hormuz energy flow disruptions",
+            "Strait of Hormuz shipping security",
+            "Strait of Hormuz supply shocks",
+            "Strait of Hormuz closure"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh fed commentary",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 10},
+      "consensus_view": "A new Fed chair, Kevin Warsh, is a live topic across roughly ten research desks that flag his congressional testimony, task forces, and break from old Fed habits like forward guidance, but none has staked out a clear call on where interest rates go from here.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are tracking Fed Chair Warsh's congressional testimony as a near-term macro event this window.",
+          "banks_for": ["Academy", "Citi", "Deutsche Bank", "Goldman Sachs", "Newsquawk"],
+          "evidence_quotes": ["Fed Chair Warsh congressional testimonies", "Fed Chair Warsh monetary policy testimony", "Fed Chair Warsh Humphrey-Hawkins testimony", "Warsh congressional testimony", "Fed Chair Warsh testimony"]
+        },
+        {
+          "claim": "Several banks flag Warsh's new Fed task forces and his departure from prior Fed orthodoxy, including forward guidance and the Phillips Curve, as a shift in how the central bank operates.",
+          "banks_for": ["Deutsche Bank", "The Market Ear", "Academy", "MUFG", "JPMorgan"],
+          "evidence_quotes": ["Warsh inflation task force", "Kevin Warsh's Fed task forces", "Kevin Warsh's FOMC task forces", "Warsh's dismissal of the Phillip's Curve", "Kevin Warsh's rejection of forward guidance"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran us conflict escalation",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 10},
+      "consensus_view": "Banks across roughly ten research desks flag the renewed Iran-US conflict and possible Strait of Hormuz disruption as a live near-term risk pushing oil prices around, but none has staked a clear call on whether it escalates further or calms down.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the Iran-US conflict and Strait of Hormuz situation as a live near-term catalyst affecting oil markets, without committing to a directional view on how it resolves.",
+          "banks_for": ["Bloomberg Markets Live", "Crédit Agricole CIB", "Deutsche Bank", "ING", "JPMorgan", "Rabobank", "Societe Generale", "Société Générale", "TS Lombard", "The Market Ear"],
+          "evidence_quotes": ["US-Iran conflict escalation in the Strait of Hormuz", "US-Iran military strikes in the Gulf", "Persian Gulf escalation", "Iran-conflict driven crude oil volatility", "US-Iran ceasefire collapse"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hyperscaler capex and credit risk",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 6},
+      "consensus_view": "Six research desks are all tracking how much big tech companies are borrowing and spending to build AI data centers and what that debt does to their credit, but none has yet staked out a clearly bullish or bearish call.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across the corpus flag the scale of big tech AI data center spending and the debt funding it as a live watch-item for credit risk, without taking a directional side.",
+          "banks_for": ["Apollo", "Bank of America", "Goldman Sachs", "JPMorgan", "Jefferies", "The Market Ear"],
+          "evidence_quotes": ["Hyperscaler debt leverage and credit risk", "hyperscaler 2026 capex estimates", "AI data center construction leverage risks", "AI capex debt supernova", "Hyperscaler single-issuer risk limits"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor sector outlook",
+      "selected": true,
+      "stance_counts": {"supportive": 3, "skeptical": 1, "neutral": 4},
+      "consensus_view": "Most banks call the recent drop in chip stocks a buying opportunity and expect a rebound, while BTIG warns the wild price swings look like an exhausted top that could fall another 20-25%.",
+      "facts_agreed": [
+        {
+          "claim": "The recent pullback in semiconductor stocks is a buying opportunity rather than the start of a deeper decline.",
+          "banks_for": ["Goldman Sachs", "JPMorgan", "The Market Ear"],
+          "evidence_quotes": ["I think it sets up well tactically to take a shot on the long side", "Harlan heads into 2Q26 earnings season constructive across the board.", "We view the recent weakness in semiconductor stocks as a buying opportunity."]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the semiconductor pullback is a buy or the start of a larger drawdown",
+          "banks_for": ["Goldman Sachs", "JPMorgan", "The Market Ear"],
+          "for_evidence": "We view the recent weakness in semiconductor stocks as a buying opportunity.",
+          "banks_against": ["BTIG"],
+          "against_evidence": "This setup isolates a high-volatility bounce after a drawdown within a primary uptrend"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "US midterm elections binary outcome",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 5},
+      "consensus_view": "Several banks flag the US midterm elections as an upcoming event to watch, but none has staked out a directional trading view on the outcome.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the US midterm elections as a live near-term political event without taking a directional stance.",
+          "banks_for": ["Bank of America", "Deutsche Bank", "JPMorgan"],
+          "evidence_quotes": ["US midterm elections binary outcome", "US Midterm Election", "US midterm elections"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
