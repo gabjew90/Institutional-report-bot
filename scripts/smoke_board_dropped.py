@@ -55,16 +55,19 @@ def test_the_observed_07_10_drops_surface():
     board = render_trade_board(rows, "2026-07-10", flips={"TLT"},
                                prev_board_date="2026-07-09")
     # the abandoned leans surface
-    for frag in ("- **DROPPED** Long $BNO, $XLE",
-                 "- **DROPPED** Long $GLD",
-                 "- **DROPPED** Long $RSP, $XLU"):
+    for frag in ("- **off board since Jul 9** Long $BNO, $XLE",
+                 "- **off board since Jul 9** Long $GLD",
+                 "- **off board since Jul 9** Long $RSP, $XLU"):
         assert frag in board, f"missing: {frag}\n{board}"
     # the flipped instrument is NOT double-reported as dropped
     assert board.count("$TLT") == 1, \
-        f"FLIP must not also render as DROPPED: {board}"
+        f"FLIP must not also render as off-board: {board}"
     assert "- **FLIP** Short $TLT" in board, board
-    # legend names the new state
-    assert "DROPPED = on the last board" in board, "legend missing DROPPED"
+    # legend names the new state (intent-neutral: 2026-07-13 rename from
+    # DROPPED, which implied a deliberate exit)
+    assert '"off board since …"' in board, "legend missing off-board"
+    assert "deliberate reversal would show as FLIP" in board, \
+        "legend must disclaim intent"
     _ok("07-10 case: silent drops surface; FLIP not double-reported")
 
 
@@ -90,7 +93,7 @@ def test_drop_renders_exactly_once_then_retires():
     # conservative: no DROPPED lines rather than wrong ones
     board2 = render_trade_board(rows, "2026-07-11")
     # legend text always names DROPPED — check the LINE marker
-    assert "- **DROPPED**" not in board2, "no prev date -> no DROPPED lines"
+    assert "- **off board" not in board2, "no prev date -> no off-board lines"
     _ok("lifecycle: DROPPED renders exactly once, then retires; "
         "no prev date -> conservative")
 
@@ -107,7 +110,7 @@ def test_partial_ticker_overlap_is_not_a_drop():
     ]
     board = render_trade_board(rows, "2026-07-10",
                                prev_board_date="2026-07-09")
-    assert "- **DROPPED**" not in board, \
+    assert "- **off board" not in board, \
         f"shared-ticker rows are not abandonments: {board}"
     _ok("partial overlap: shared-ticker prior lean is not DROPPED")
 
@@ -121,7 +124,7 @@ def test_no_leans_today_means_no_drop_flood():
     ]
     board = render_trade_board(rows, "2026-07-10",
                                prev_board_date="2026-07-09")
-    assert "- **DROPPED**" not in board, f"no live leans -> no drop flood: {board}"
+    assert "- **off board" not in board, f"no live leans -> no drop flood: {board}"
     _ok("guard: empty today-board never mass-drops the history")
 
 

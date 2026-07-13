@@ -814,11 +814,11 @@ def render_trade_board(
     so the board ALWAYS matches the pulse. 2026-06-24: HC calls returned
     as a subsection (from the retired DESK SIGNAL BOARD). Labels: NEW =
     first flagged today, FLIP = reversed today, "held since <date>" =
-    carried from an earlier pulse and repeated today, DROPPED = on the
-    prior board but not re-affirmed today (2026-07-10: four of five leans
-    — oil, memory, gold, breadth — vanished silently while the prose
-    reversed the RSP thesis; a quiet abandonment must not read as a
-    still-live call).
+    carried from an earlier pulse and repeated today, "off board since
+    <date>" = on the prior board but not repeated today (2026-07-10:
+    four of five leans vanished silently; 2026-07-13 rename from DROPPED
+    — that word implied a deliberate exit, but non-mention usually just
+    means today's themes went elsewhere).
     """
     flips = {f.upper() for f in (flips or set())}
     # Leans: only what TODAY's pulse actually says — last seen today.
@@ -864,8 +864,16 @@ def render_trade_board(
                 continue
             if n_dropped >= _BOARD_DROPPED_MAX:
                 break
+            # "off board since <date>" not "DROPPED" (2026-07-13 user
+            # feedback): DROPPED implied the author deliberately exited
+            # the call, but mechanically this only means "not repeated
+            # today" — often just today's themes going elsewhere. The
+            # label states the observation; a deliberate reversal shows
+            # as FLIP.
+            _since = _fmt_since(prev_board_date)
+            _tag = f"off board since {_since}" if _since else "off board"
             lean_lines.append(
-                f"- **DROPPED** {_lean_display_from_row(r)}"
+                f"- **{_tag}** {_lean_display_from_row(r)}"
             )
             n_dropped += 1
 
@@ -878,8 +886,9 @@ def render_trade_board(
         out += (
             "Leans this pulse is making — NEW = first flagged today, FLIP "
             "= reversed today, \"held since …\" = carried from an earlier "
-            "pulse and repeated today, DROPPED = on the last board but "
-            "not re-affirmed today:\n\n"
+            "pulse and repeated today, \"off board since …\" = was on the "
+            "last board and wasn't repeated today (today's themes went "
+            "elsewhere — a deliberate reversal would show as FLIP):\n\n"
             + "\n".join(lean_lines) + "\n"
         )
     if hc_block:

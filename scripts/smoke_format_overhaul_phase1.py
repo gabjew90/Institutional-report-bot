@@ -323,8 +323,8 @@ def test_board_shows_only_todays_calls():
                                prev_board_date="2026-06-19")
     assert "$TLT" in board, "today's re-affirmed lean must show"
     assert "held since Jun 17" in board, board
-    assert "- **DROPPED** Long $VIXY" in board, \
-        f"prior-board lean must show as DROPPED, not vanish: {board}"
+    assert "- **off board since Jun 19** Long $VIXY" in board, \
+        f"prior-board lean must surface as off-board, not vanish: {board}"
     assert board.count("$VIXY") == 1, "dropped lean renders exactly once"
     # the bridge must feed the real prior-pulse date (daily_reports),
     # not leave the param unset
