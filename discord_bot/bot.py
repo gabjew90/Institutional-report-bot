@@ -662,6 +662,8 @@ The recent-chat context is injected as a chronologically-ordered block (oldest f
 
 **Room command lexicon.** Lines like `fc <ticker> <timeframe>` / `fcb <args>` are CHART COMMANDS to the room's charting bot — mechanical requests for a chart, not conversation, not "alerts," not anyone's voice. Never characterize a user or a channel by them ("his channel is just a stream of fc spam" is a misread of command syntax), never quote them as personality material, and never count them as trade calls. Read past them the way you'd read past a bot's own output.
 
+**Never invent verbatim text (binding).** Lyrics, quotes, movie lines, song bars: either quote the REAL words (from search results or certain knowledge) or own the dodge in room voice — "you know the next bar, I'm not singing it for you" / "look it up, I'm not your karaoke machine." NEVER substitute made-up words that sound plausible: a fake lyric delivered confidently is worse than any dodge, the room will fact-check it instantly, and it reads as not knowing the song rather than declining to quote it. This applies especially when the real line contains words you won't repeat — dodge with self-awareness, don't fabricate a clean version.
+
 Know who's coping, who's consensus, who's the lone holdout. When the room is one-sided on a Type 1 question, the lone holdout is often the more interesting angle to engage with — but only when it's genuinely interesting, not as a default contrarian reflex. The job is the right read, not the contrarian read.
 
 ---
@@ -4514,6 +4516,21 @@ async def _classify_ask_needs_web(
         return (False, False)
 
 
+# Quote / lyric completion shapes — "finish the lyrics", "what's the
+# next line", "complete the quote". Completing a verbatim text is a
+# LOOKUP: 2026-07-12 the bot invented a fake bar rather than complete a
+# lyric whose real words it wouldn't say. These force the WEB route so
+# the answer is grounded, and the prompt's no-fake-lyrics rule handles
+# the can't-say-it case honestly.
+_QUOTE_COMPLETION_RE = re.compile(
+    r"(?:finish|complete)\s+(?:th(?:e|is|at)\s+)?(?:song\s+)?"
+    r"(?:lyrics?|quote|line|verse|bar)"
+    r"|next\s+(?:line|bar|verse|lyric)\b"
+    r"|how\s+does\s+(?:it|the\s+song|that\s+song)\s+go",
+    re.IGNORECASE,
+)
+
+
 # Asker-mockery shapes — second-person derision aimed at the ASKER of a
 # FACT-classified question: inventing a premise they never stated
 # ("you're confusing X with Y"), or scolding them for asking ("stop
@@ -5020,6 +5037,18 @@ async def _answer_with_gemini(
         needs_web, _route_is_factual = await _classify_ask_needs_web(
             client, ask_model, safety_settings, question
         )
+        # Deterministic WEB override for quote/lyric completions
+        # (2026-07-12): "finish the song lyrics: ..." routed LOCAL and
+        # the model invented a bar ("whole team winnin'" — the real line
+        # is elsewhere in the track it demonstrably knew). Completing a
+        # verbatim text is a lookup, not a memory exercise; the router's
+        # WEB rubric never named the shape, so name it in code.
+        if _QUOTE_COMPLETION_RE.search(question or "") and not needs_web:
+            needs_web = True
+            _route_is_factual = True
+            log.info(
+                "/ask: quote/lyric-completion shape — forcing WEB route"
+            )
         # QC metadata accumulated through the whole answer path and
         # stamped into the ask-log entry — makes route/grounding/guard
         # decisions auditable instead of forensic (Railway logs rotate
