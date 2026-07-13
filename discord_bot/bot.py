@@ -3542,6 +3542,11 @@ _FACTUAL_SPECIFIC_RE = re.compile(
 # REPLACED it with a persona-less blog summary that "does not rank
 # trades." The specifics in an opinion answer are the bot's PICKS, not
 # claims to verify, so the broad web trigger must stand down here.
+# Nouns that mark a request for the bot's PICKS (as opposed to a fact).
+_PICK_NOUN = (
+    r"(?:names?|tickers?|plays?|picks?|setups?|ideas?|trades?|stocks?|"
+    r"calls?|puts?|charts?|entr(?:y|ies)|movers?|runners?|lottos?)"
+)
 _OPINION_REQUEST_RE = re.compile(
     r"\b(?:rank|rate)\b"
     r"|\byour\s+(?:top|best|favou?rite|pick|picks|call|take|read|thoughts?|"
@@ -3551,18 +3556,29 @@ _OPINION_REQUEST_RE = re.compile(
     r"|\bpick\s+(?:your|the|a|some|out|favou?rite)\b"
     r"|\bwhat\b[^?\n]{0,25}\byou\s+think\b"
     r"|\bmost\s+actionable\b"
-    r"|\bbest\s+(?:plays?|setups?|trades?|names?|picks?|ideas?)\b"
     r"|\brecommend(?:ation)?s?\b"
-    r"|\bwould\s+you\s+(?:buy|play|trade|pick|rank)\b",
+    r"|\bwould\s+you\s+(?:buy|play|trade|pick|rank)\b"
+    # Imperative pick-requests (2026-07-13 kloh: "Give us 5 names from
+    # there near optimal entry" got a ChatGPT 'I cannot verify the
+    # existence of the report' refusal — 'give us N names' matched none
+    # of the above). give/name/show/list/find/get [me/us] [N] <picks>.
+    r"|\b(?:give|name|show|list|find|get|throw|drop)\s+"
+    r"(?:me|us|him|her|em)?\s*\d*\s*(?:more\s+|other\s+|new\s+)?" + _PICK_NOUN
+    # bare "5 names", "3 plays", "a few setups"
+    + r"|\b(?:\d+|a\s+few|some|any|which|more)\s+(?:good\s+|solid\s+)?"
+    + _PICK_NOUN
+    + r"|\bbest\s+" + _PICK_NOUN,
     re.IGNORECASE,
 )
 
 
 def _is_opinion_request(question: str) -> bool:
-    """The question asks for the bot's own ranked judgment about
-    securities (rank/pick/rate/your-take/best-plays). In these, output
-    cashtags and levels are RECOMMENDATIONS, not facts — the grounding
-    backstop's broad web trigger must not clobber them."""
+    """The question asks for the bot's own judgment / picks about
+    securities (rank / pick / rate / your-take / 'give us 5 names' /
+    best plays). In these, output cashtags and levels are
+    RECOMMENDATIONS, not facts — the grounding backstop's broad web
+    trigger must not clobber them, and a persona-less 'I cannot verify'
+    refusal is the worst possible register."""
     return bool(question and _OPINION_REQUEST_RE.search(question))
 
 

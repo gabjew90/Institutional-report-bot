@@ -44,6 +44,15 @@ def test_opinion_detector():
         "best setups for tomorrow?",
         "would you buy CRWV here",
         "your favorite names right now",
+        # the actual "fucking dumb" case (2026-07-13 13:51) — imperative
+        # pick-request, matched none of the original patterns
+        "Give us 5 names from there near optimal entry",
+        "give me some names",
+        "name 3 plays for tomorrow",
+        "any tickers worth a look",
+        "which names are you watching",
+        "drop a few setups",
+        "5 names near optimal entry",
     ):
         assert bot._is_opinion_request(q), f"must read as opinion: {q!r}"
     # pure factual lookups are NOT opinion — they still get grounded
@@ -53,6 +62,8 @@ def test_opinion_detector():
         "why is WRAP stock up today",
         "is warsh speaking today",
         "what year did toy story 3 come out",
+        "how many beds does GEO operate",
+        "what time does the market close friday",
     ):
         assert not bot._is_opinion_request(q), \
             f"factual lookup must NOT read as opinion: {q!r}"
