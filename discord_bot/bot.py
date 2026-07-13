@@ -3533,15 +3533,56 @@ _FACTUAL_SPECIFIC_RE = re.compile(
 )
 
 
-def _ungrounded_web_specifics(answer: str, gm, was_web: bool) -> bool:
+# Opinion / recommendation requests — the asker wants the bot's OWN
+# ranked take, not a verifiable fact. 2026-07-13: kloh asked "review
+# [substack] and rank your top 5 most actionable trades" and the good
+# in-voice answer ($WOLF/$IREN relative strength, don't martingale
+# $CRWV/$PLTR, "$80 support") tripped the web-grounding backstop — a
+# "$80" level matched the factual-specific net — and the bare probe
+# REPLACED it with a persona-less blog summary that "does not rank
+# trades." The specifics in an opinion answer are the bot's PICKS, not
+# claims to verify, so the broad web trigger must stand down here.
+_OPINION_REQUEST_RE = re.compile(
+    r"\b(?:rank|rate)\b"
+    r"|\byour\s+(?:top|best|favou?rite|pick|picks|call|take|read|thoughts?|"
+    r"favs?)\b"
+    r"|\btop\s+\d+\b"
+    r"|\bthoughts?\s+on\b"
+    r"|\bpick\s+(?:your|the|a|some|out|favou?rite)\b"
+    r"|\bwhat\b[^?\n]{0,25}\byou\s+think\b"
+    r"|\bmost\s+actionable\b"
+    r"|\bbest\s+(?:plays?|setups?|trades?|names?|picks?|ideas?)\b"
+    r"|\brecommend(?:ation)?s?\b"
+    r"|\bwould\s+you\s+(?:buy|play|trade|pick|rank)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_opinion_request(question: str) -> bool:
+    """The question asks for the bot's own ranked judgment about
+    securities (rank/pick/rate/your-take/best-plays). In these, output
+    cashtags and levels are RECOMMENDATIONS, not facts — the grounding
+    backstop's broad web trigger must not clobber them."""
+    return bool(question and _OPINION_REQUEST_RE.search(question))
+
+
+def _ungrounded_web_specifics(
+    answer: str, gm, was_web: bool, is_opinion: bool = False,
+) -> bool:
     """A WEB-ROUTED answer that states factual specifics with NO
     grounding. The general confabulation signal (2026-07-06 CXW/GEO:
     invented bed counts, market cap, and contract dates escaped the
     market-fact-SHAPE backstop). Tied to the router's own WEB decision —
     if it said the question needs the open web and the model answered
     with specifics but never searched, that's the failure, whatever the
-    fact shape. Grounded answers (or any data-tool answer) are exempt."""
-    if not answer or len(answer) < 25 or not was_web:
+    fact shape. Grounded answers (or any data-tool answer) are exempt.
+
+    `is_opinion`: skip entirely for rank/pick/your-take requests — the
+    specifics are the bot's recommendations, not groundable claims
+    (2026-07-13 kloh). The hard analyst-fact shape trigger
+    (_is_ungrounded_market_fact) is NOT suppressed: a fabricated price
+    target inside an opinion answer is still a claim worth grounding."""
+    if not answer or len(answer) < 25 or not was_web or is_opinion:
         return False
     if _grounding_has_sources(gm):
         return False
@@ -5677,7 +5718,8 @@ async def _answer_with_gemini(
             answer, grounding_metadata, _ask_tool_trace
         )
         _ground_trigger_web = _ungrounded_web_specifics(
-            answer, grounding_metadata, needs_web
+            answer, grounding_metadata, needs_web,
+            is_opinion=_is_opinion_request(question),
         )
         if answer and (_ground_trigger_shape or _ground_trigger_web):
             _ask_meta["guards"].append(
@@ -5736,7 +5778,8 @@ async def _answer_with_gemini(
                 _retry_still_ungrounded = (
                     _is_ungrounded_market_fact(forced_answer, forced_gm, [])
                     or _ungrounded_web_specifics(
-                        forced_answer, forced_gm, needs_web
+                        forced_answer, forced_gm, needs_web,
+                        is_opinion=_is_opinion_request(question),
                     )
                 )
                 if forced_answer and _grounding_has_sources(forced_gm):
