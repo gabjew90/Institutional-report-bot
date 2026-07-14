@@ -3582,6 +3582,56 @@ def _is_opinion_request(question: str) -> bool:
     return bool(question and _OPINION_REQUEST_RE.search(question))
 
 
+# Deictic references that only resolve against the LIVE conversation —
+# "from there", "those names", "the report you mentioned", "its Q3".
+# A question carrying these is a follow-up, not self-contained, so the
+# context-stripping bare probe must not touch it (2026-07-13 kloh: the
+# probe answered "give us 5 from there" with "I cannot verify the
+# existence of the report" because "there" had no antecedent once
+# context was stripped). "is there / are there" (existential) is
+# excluded so it doesn't misread "is there a levered SA etf".
+_CONTEXT_DEICTIC_RE = re.compile(
+    r"\bfrom\s+(?:there|those|them|the\s+(?:report|list|watchlist|note|"
+    r"sheet|link|article|thread|screenshot|chart|image))\b"
+    r"|\b(?:out\s+of|of|from|in|on|among)\s+(?:those|these|them)\b"
+    r"|\b(?:those|these)\s+(?:names?|setups?|tickers?|plays?|picks?|ones?|"
+    r"charts?|levels?|stocks?|trades?)\b"
+    r"|\b(?:that|the)\s+(?:report|list|watchlist|article|note|link|"
+    r"screenshot|image|chart)\s+(?:you|we|i|he|she|they|above|earlier)\b"
+    r"|\b(?:pick|choose|narrow|rank|sort|order|compare)\s+"
+    r"(?:from|among|between|down|them|those|these)\b"
+    r"|(?<!is )(?<!are )(?<!isn't )(?<!aren't )\bthere\b\s*(?:near|around|"
+    r"under|over|from|that|which|,|\.|$)",
+    re.IGNORECASE,
+)
+
+# Bracketed context blocks the reply/forward resolver injects ahead of
+# the user's actual text — their presence means the ask is ABOUT the
+# quoted material, so a bare-probe strip of everything-but-the-tail
+# drops exactly what the question references.
+_REPLY_CONTEXT_MARKERS = (
+    "[MESSAGE BEING REPLIED TO",
+    "[FORWARDED MESSAGE",
+    "[VERBATIM RECENT MESSAGES",
+)
+
+
+def _is_context_dependent(question: str) -> bool:
+    """True when the question only makes sense against the live thread —
+    a reply/forward block or a deictic reference ('there', 'those', 'the
+    report you mentioned'). The bare probe strips conversation history,
+    so it must skip these: stripping the antecedent turns a coherent
+    follow-up into an unanswerable fragment."""
+    if not question:
+        return False
+    if any(m in question for m in _REPLY_CONTEXT_MARKERS):
+        return True
+    # Only inspect the asker's actual message (the tail) for deixis —
+    # the injected context blocks above already flagged via the markers.
+    tail = question.strip()[-400:]
+    return bool(_CONTEXT_DEICTIC_RE.search(tail))
+
+
 def _ungrounded_web_specifics(
     answer: str, gm, was_web: bool, is_opinion: bool = False,
 ) -> bool:
@@ -5812,6 +5862,30 @@ async def _answer_with_gemini(
                     grounding_metadata = forced_gm
                     _ask_meta["ground_retry"] = "in-voice:hedged"
                     log.info("/ask: grounded retry returned a hedged answer")
+                elif _is_context_dependent(question):
+                    # Stage 2 is SKIPPED for context-dependent follow-ups.
+                    # The bare probe strips all conversation history, so a
+                    # question that references the live thread ("give us 5
+                    # from THERE", "what's ITS Q3 number") loses its
+                    # antecedent and the probe answers a different,
+                    # unanswerable question — 2026-07-13: kloh asked for 5
+                    # names "from there" (the OTE report discussed seconds
+                    # earlier) and the probe, context-blind, replied "I
+                    # cannot verify the existence of the report you
+                    # mentioned." It didn't refuse; it forgot, by design.
+                    # Keep the context-aware in-voice answer and hedge.
+                    answer = (
+                        answer.rstrip()
+                        + "\n\n→ ⚠️ Couldn't verify these specifics "
+                        "against a live source — treat the exact "
+                        "numbers/dates as unconfirmed."
+                    )
+                    _ask_meta["ground_retry"] = "hedged(context-dep-skip)"
+                    log.warning(
+                        "/ask: context-dependent follow-up — skipped the "
+                        "context-blind bare probe, kept in-voice answer + "
+                        "hedge"
+                    )
                 else:
                     # Stage 2 — BARE PROBE. Diagnosis from the 2026-07-08
                     # hedge batch (Toy Story / market-down / Netflix): even
@@ -5822,8 +5896,9 @@ async def _answer_with_gemini(
                     # question: no profiles, no chat, no persona. With
                     # nothing to answer from, searching becomes the path of
                     # least resistance. Dry output is fine — this path only
-                    # runs for fact-specific answers, where correct-and-
-                    # plain beats in-voice-but-unverified.
+                    # runs for self-contained fact questions (context-
+                    # dependent ones took the skip branch above), where
+                    # correct-and-plain beats in-voice-but-unverified.
                     _probe_ok = False
                     _probe_state = "error"  # overwritten below on a response
                     try:

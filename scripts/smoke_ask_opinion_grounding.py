@@ -108,10 +108,54 @@ def test_both_call_sites_pass_opinion():
     _ok("both web-trigger call sites carry the opinion flag")
 
 
+def test_context_dependent_detector():
+    import discord_bot.bot as bot
+    # deictic follow-ups (only resolve against the live thread)
+    for q in (
+        "Give us 5 names from there near optimal entry",
+        "now pick your favorites out of those setups",
+        "which of those is best",
+        "rank them by conviction",
+        "pick from the report you mentioned",
+        "[MESSAGE BEING REPLIED TO — from omniwiz] x\n\ngive us the best",
+        "[VERBATIM RECENT MESSAGES — abe] x\n\nwhat's he holding",
+    ):
+        assert bot._is_context_dependent(q), f"must be context-dep: {q!r}"
+    # self-contained questions — existential 'there' must NOT trip
+    for q in (
+        "is there a levered south africa etf like EZA",
+        "are there any fed speakers thursday",
+        "when does ASML report earnings",
+        "why is the market down today",
+        "what year did toy story 3 come out",
+    ):
+        assert not bot._is_context_dependent(q), \
+            f"self-contained must NOT be context-dep: {q!r}"
+    _ok("context detector: deixis + reply-blocks fire; existential 'there' safe")
+
+
+def test_bare_probe_skipped_on_context_dependent():
+    import discord_bot.bot as bot
+    src = inspect.getsource(bot._answer_with_gemini)
+    # the skip branch precedes the bare-probe else branch
+    assert "elif _is_context_dependent(question):" in src, \
+        "bare probe must be skipped for context-dependent follow-ups"
+    skip = src.split("elif _is_context_dependent(question):", 1)[1][:1400]
+    assert "context-blind bare probe" in skip, "skip branch mislabeled"
+    assert 'hedged(context-dep-skip)' in skip, "skip must stamp the audit line"
+    # and the branch order: the skip is BEFORE the bare-probe else
+    assert src.index("elif _is_context_dependent(question):") < \
+        src.index("Stage 2 — BARE PROBE"), \
+        "skip branch must precede the bare-probe branch"
+    _ok("bare probe: skipped on context-dependent follow-ups, keeps in-voice + hedge")
+
+
 if __name__ == "__main__":
     print("=== opinion-grounding-exemption smoke ===")
     test_opinion_detector()
     test_web_trigger_suppressed_on_opinion()
     test_hard_fact_trigger_not_suppressed()
     test_both_call_sites_pass_opinion()
+    test_context_dependent_detector()
+    test_bare_probe_skipped_on_context_dependent()
     print("\nALL OPINION-GROUNDING SMOKE TESTS PASS")
