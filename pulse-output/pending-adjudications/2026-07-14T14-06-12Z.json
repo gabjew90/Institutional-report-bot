@@ -1,0 +1,160 @@
+{
+  "pulse_date": "2026-07-14",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure capex",
+      "selected": true,
+      "stance_counts": { "supportive": 2, "skeptical": 1, "neutral": 9 },
+      "consensus_view": "Banks broadly agree AI infrastructure spending is enormous and still climbing toward roughly a trillion dollars a year, but they split on whether that build-out can keep being funded, with one desk flagging rising warning signs in the debt market.",
+      "facts_agreed": [
+        {
+          "claim": "AI-related capital spending is growing rapidly and demand for compute remains strong.",
+          "banks_for": ["UBS", "Morgan Stanley Investment Management"],
+          "evidence_quotes": [
+            "We estimate that overall AI-related capex will rise by 68% this year",
+            "AI demand is intact, with robust adoption trends and expanding agentic AI workloads.",
+            "AI agents will drive increased compute requirements through 1) greater compute per user"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI capex build-out can keep being financed",
+          "banks_for": ["UBS"],
+          "for_evidence": "AI demand is intact, with robust adoption trends and expanding agentic AI workloads.",
+          "banks_against": ["The Market Ear"],
+          "against_evidence": "Debt investors don't get paid to dream. They get paid to worry."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait shipping risk",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 8 },
+      "consensus_view": "Eight desks flag the risk that Iran tensions disrupt oil shipping through the Strait of Hormuz as a live oil-market catalyst, but none has staked a clear directional call on whether it escalates or eases.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across many desks reference Strait of Hormuz shipping disruption from US-Iran tensions as an active oil-supply risk this window.",
+          "banks_for": ["Deutsche Bank", "Goldman Sachs", "JPMorgan", "Morgan Stanley Investment Management", "Natixis", "Reuters", "TS Lombard", "UBS"],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping disruption",
+            "US-Iran conflict energy supply disruptions",
+            "Strait of Hormuz shipping flows",
+            "Strait of Hormuz tensions",
+            "Strait of Hormuz geopolitical uncertainty"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east energy supply",
+      "selected": true,
+      "stance_counts": { "supportive": 4, "skeptical": 0, "neutral": 4 },
+      "consensus_view": "Banks broadly agree that renewed Middle East conflict and disruption around the Strait of Hormuz are tightening oil and gas supply and pushing prices higher, though several judge current price levels not yet high enough to seriously threaten stocks.",
+      "facts_agreed": [
+        {
+          "claim": "Renewed Middle East hostilities and Strait of Hormuz disruption are tightening global energy supply and pushing spot prices higher.",
+          "banks_for": ["Reuters", "ANZ Research", "Goldman Sachs"],
+          "evidence_quotes": [
+            "The resumption of hostilities has started to feed through to higher spot LNG prices.",
+            "Energy surged on renewed hostility in the Middle East.",
+            "European gas balances, already tight with low inventory levels, might tighten further."
+          ]
+        },
+        {
+          "claim": "Current Brent oil levels near $80-90 are not yet high enough to seriously threaten risk assets.",
+          "banks_for": ["Deutsche Bank"],
+          "evidence_quotes": ["Brent around its present level of $80-90/bbl isn’t a sufficient pain threshold for risk assets"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "warsh fed chair testimony",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 6 },
+      "consensus_view": "Six research desks flag new Fed Chair Kevin Warsh's first congressional testimony as an upcoming event to watch, but none has staked out a directional call on what he will signal.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are tracking Kevin Warsh's first congressional testimony as Fed chair as a near-term catalyst without taking a directional view.",
+          "banks_for": ["ANZ Research", "Deutsche Bank", "Natixis", "Scotiabank", "TS Lombard", "UBS"],
+          "evidence_quotes": [
+            "Kevin Warsh's first congressional testimony as Fed chair",
+            "Fed Chair Warsh Congressional testimony",
+            "Chair Warsh's upcoming Congressional testimony",
+            "Fed Chair Warsh reaction function",
+            "Kevin Warsh's rejection of forward guidance"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran conflict tensions",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 6 },
+      "consensus_view": "Six banks reference US-Iran conflict tensions as a live geopolitical driver this window, but none has staked a clear directional view on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag US-Iran conflict tensions as an active geopolitical catalyst in their notes without committing to a directional call.",
+          "banks_for": ["Deutsche Bank", "Goldman Sachs", "JPMorgan", "Natixis", "RBC Capital Markets", "UBS"],
+          "evidence_quotes": ["US-Iran military escalation", "US strikes on Iran", "US/Iran conflict resolution", "Iran war de-escalation", "US-Iran geopolitical tensions"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us bank earnings season",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 6 },
+      "consensus_view": "Six desks flag the kickoff of second-quarter US bank and broader earnings season as a near-term event to watch, but none has staked out a directional call on how results will land.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the start of US Q2 earnings season, with financials and banks kicking it off, as an upcoming market focus.",
+          "banks_for": ["Deutsche Bank", "Goldman Sachs", "JPMorgan", "Natixis", "Scotiabank", "UBS"],
+          "evidence_quotes": ["US Q2 earnings season for financials", "US bank earnings season", "Bank earnings kickoff", "Bank earnings season kick-off", "US Q2 earnings season start"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "june cpi report",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 5 },
+      "consensus_view": "Five research desks reference the June US inflation report (CPI) as an upcoming data catalyst, but none has committed to a clear direction for the print.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the June US consumer price index report as an upcoming inflation data catalyst without staking a directional view.",
+          "banks_for": ["ANZ Research", "Goldman Sachs", "Natixis", "Raymond James", "UBS"],
+          "evidence_quotes": ["June CPI cooling amid lower oil prices", "June inflation readings progress", "June CPI print expectations", "US June CPI report", "June CPI report"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran military understanding",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 4 },
+      "consensus_view": "Four banks reference the U.S.-Iran military understanding as a live geopolitical backdrop for oil and gold, but none has staked a directional view on whether it holds.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the U.S.-Iran military understanding as an active geopolitical backdrop this window without taking a directional position on it.",
+          "banks_for": ["ANZ Research", "Morgan Stanley Investment Management", "Scotiabank", "UBS"],
+          "evidence_quotes": ["US-Iran military exchanges", "U.S.-Iran Memorandum of Understanding", "US-Iran MOU sustainability", "US-Iran Memorandum of Understanding"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
