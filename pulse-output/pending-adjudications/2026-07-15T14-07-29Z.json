@@ -1,0 +1,117 @@
+{
+  "pulse_date": "2026-07-15",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "Fed Chair Kevin Warsh inflation-fighting credibility",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 11 },
+      "consensus_view": "Eleven research desks flag new Fed Chair Kevin Warsh's congressional testimony and his push to look tough on inflation as a live event to watch, but none has yet committed to whether his hawkish signals will actually change the rate path.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference Fed Chair Kevin Warsh's semi-annual monetary policy testimony and his inflation-fighting stance as a current market focus, without staking out a directional call.",
+          "banks_for": ["ANZ Research", "Bank of America", "Crédit Agricole CIB", "Deutsche Bank", "ING", "JPMorgan", "SEB", "Scotiabank", "TS Lombard", "The Market Ear", "UBS"],
+          "evidence_quotes": ["Fed Chair Warsh congressional testimony", "Fed Chair Warsh AI disinflationary manifesto", "Fed Chair Warsh hawkish tone", "Kevin Warsh semi-annual monetary policy testimony", "Warsh's anti-inflation credibility"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait geopolitical tensions",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 10 },
+      "consensus_view": "Banks across ten desks flag tensions around the Strait of Hormuz shipping chokepoint as a live oil-supply risk, but none has staked a clear directional call on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference Strait of Hormuz disruption as a live oil-supply and shipping risk this window.",
+          "banks_for": ["ANZ Research", "Bank of America", "Deutsche Bank", "TS Lombard", "SEB"],
+          "evidence_quotes": ["Strait of Hormuz supply concerns", "Strait of Hormuz throughput", "Strait of Hormuz shipping blockade", "Strait of Hormuz blockade", "Strait of Hormuz supply-chain disruptions"]
+        },
+        {
+          "claim": "Several banks flag a proposed transit fee on cargoes crossing the Strait of Hormuz as a specific catalyst.",
+          "banks_for": ["Citi", "ING", "Goldman Sachs"],
+          "evidence_quotes": ["Strait of Hormuz transit fee", "Strait of Hormuz transit fees", "Hormuz transit fee cancellation"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us inflation cooling",
+      "selected": true,
+      "stance_counts": { "supportive": 2, "skeptical": 0, "neutral": 9 },
+      "consensus_view": "The banks that take a stance agree US inflation is cooling — June consumer prices came in soft and price pressures are fading — while most other desks simply flag the cooler-than-expected June CPI print without staking a direction.",
+      "facts_agreed": [
+        {
+          "claim": "US inflation is cooling, with underlying price pressures fading and the widely-cited inflation problem looking overstated.",
+          "banks_for": ["Bank of America", "Scotiabank"],
+          "evidence_quotes": ["major supply-driven inflation pressures are set to fade absent geopolitical conflict escalation", "At least going by core CPI we can safely offer the view that the US economy’s allegedly massive inflation problem is grossly overstated."]
+        },
+        {
+          "claim": "Multiple desks flag the June CPI print as the key data event of the window, with several noting it came in cooler than expected.",
+          "banks_for": ["ANZ Research", "Bank of America", "Citi", "Crédit Agricole CIB", "Deutsche Bank", "Goldman Sachs", "ING", "Nuveen", "UBS"],
+          "evidence_quotes": ["June CPI inflation print", "Cooler than anticipated June CPI print", "US CPI release", "US CPI downside surprise", "June CPI report"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran us geopolitical escalation",
+      "selected": true,
+      "stance_counts": { "supportive": 0, "skeptical": 0, "neutral": 9 },
+      "consensus_view": "Nine desks flag a possible US-Iran military flare-up as a live near-term market risk, mostly through its effect on oil, but none has staked out a clear directional call on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference US-Iran and broader Middle East escalation as an active geopolitical risk this window without taking a directional view.",
+          "banks_for": ["JPMorgan", "Scotiabank", "UBS", "Goldman Sachs", "Bank of America", "Citi", "Crédit Agricole CIB", "Nuveen", "SEB"],
+          "evidence_quotes": ["US-Iran conflict escalation", "US military operations against Iran", "Geopolitical risk in Iran", "Middle East geopolitical tensions", "US-Iran Situation Room meeting"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai semiconductor demand",
+      "selected": true,
+      "stance_counts": { "supportive": 5, "skeptical": 0, "neutral": 4 },
+      "consensus_view": "The banks agree that AI-driven demand for chips and the data-center gear around them stays strong and is the main engine of tech profits, with none of them calling an end to the boom.",
+      "facts_agreed": [
+        {
+          "claim": "AI-driven demand for semiconductors remains strong and intact, keeping chipmakers the primary winners of Big Tech's AI spending.",
+          "banks_for": ["UBS", "Goldman Sachs", "BofA Securities"],
+          "evidence_quotes": ["the medium-term AI demand story remains intact amid robust adoption trends", "we maintain a constructive outlook on semiconductors overall", "ASML delivered enough to validate the AI supply-bottleneck thesis", "we now expect server CPU TAM to reach ~$170bn by CY30E from ~$35bn in CY25"]
+        },
+        {
+          "claim": "AI spending is broadening beyond chips into data-center power, cooling and physical infrastructure, with enterprise budgets rotating toward it.",
+          "banks_for": ["Goldman Sachs", "The Market Ear"],
+          "evidence_quotes": ["Weakness in mainframes and infrastructure reinforced the view that enterprise spending continues to rotate", "Data centers need turbines, electrical equipment, cooling systems, construction machinery and power infrastructure"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed treasury curve flattening",
+      "selected": true,
+      "stance_counts": { "supportive": 3, "skeptical": 0, "neutral": 5 },
+      "consensus_view": "Banks disagree on which way the US bond yield curve is heading: Credit Agricole and Bank of America expect it to flatten (the gap between short and long rates shrinking) while JPMorgan sees room for it to steepen, so there is no agreed direction.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "direction of the Treasury/credit yield curve (flatten vs steepen)",
+          "banks_for": ["Crédit Agricole CIB", "Bank of America"],
+          "for_evidence": "We recommend Treasury 10-30Y flattener, as the curve looks too steep vs 5-30Y.",
+          "banks_against": ["JPMorgan"],
+          "against_evidence": "curves have room to steepen"
+        }
+      ],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    { "theme": "fed policy hold", "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Bank of America'" },
+    { "theme": "ai driven consumption acceleration", "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'BofA'" }
+  ]
+}
