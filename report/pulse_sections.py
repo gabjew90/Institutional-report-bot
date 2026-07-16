@@ -331,7 +331,8 @@ _LEDGER_THEMES_MAX = 7
 # observed 06-17). Anything unmapped is word-boundary clipped.
 _RATING_NORM = {
     "overweight": "OW", "underweight": "UW", "equal-weight": "EW",
-    "equalweight": "EW", "market perform": "Hold", "outperform": "OP",
+    "equalweight": "EW", "equal weight": "EW", "market perform": "Hold",
+    "outperform": "OP",
     "underperform": "UP", "buy": "Buy", "sell": "Sell", "hold": "Hold",
     "neutral": "Neutral", "add": "Add", "reduce": "Reduce",
     # UBS house scale + RBC's Hold-equivalent (2026-07-09 board shipped
@@ -341,6 +342,19 @@ _RATING_NORM = {
     "sector perform": "Hold", "sector outperform": "OP",
     "strong buy": "Strong Buy",
 }
+
+# Plain-English decode for the compact rating tokens — rendered as a
+# one-line legend under the HC subsection when any of these ship
+# (2026-07-15 review: OW/UW/EW reached readers with no explanation).
+_RATING_LEGEND = {
+    "OW": "overweight (own more than the index does)",
+    "UW": "underweight (own less than the index does)",
+    "EW": "equal-weight (match the index)",
+    "OP": "outperform (expected to beat its sector)",
+    "UP": "underperform (expected to lag its sector)",
+    "PT": "price target",
+}
+_RATING_LEGEND_ORDER = ("OW", "UW", "EW", "OP", "UP", "PT")
 # Non-USD price-target markers — calls with these are foreign-listed
 # names a US options trader can't act on; they were cluttering the board
 # (ZAR280, €21.50 observed 06-17). Drop them from the HC table.
@@ -748,14 +762,19 @@ def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
     if not calls:
         return ""
     lines = ["**High-conviction single-name calls** (the desks' standout bets):", ""]
+    used_tokens: set[str] = set()
     for c in calls[:_HC_SUBSECTION_MAX]:
         bank = _clean_inline(c.get("source") or "?")
         tk = (c.get("ticker") or "?").upper()
         rd = _norm_rating(c.get("rating") or "", c.get("action") or "")
         if rd.upper() in ("N/A", "NA", "NONE"):
             rd = ""
+        if rd.upper() in _RATING_LEGEND:
+            used_tokens.add(rd.upper())
         pt_raw = _clean_inline(c.get("pt") or "")
         pt = f"PT {pt_raw}" if pt_raw and pt_raw.upper() not in ("N/A", "") else ""
+        if pt:
+            used_tokens.add("PT")
         tag = ", ".join(x for x in (rd, pt) if x)
         # 60 was clipping the desk reasoning mid-thought (2026-06-25 QC);
         # 170 fits a full sentence, word-boundary + ellipsis only when a
@@ -767,6 +786,17 @@ def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
         if rat:
             parts.append(rat)
         lines.append("- " + " — ".join(parts))
+    # Reader-facing decode for the rating shorthand (2026-07-15 review:
+    # OW/UW/EW shipped with no legend — exactly the jargon the plain-
+    # English rule exists to kill). One italic line, only the tokens
+    # actually used above.
+    legend_bits = [
+        f"{tok} = {_RATING_LEGEND[tok]}"
+        for tok in _RATING_LEGEND_ORDER if tok in used_tokens
+    ]
+    if legend_bits:
+        lines.append("")
+        lines.append(f"*({', '.join(legend_bits)})*")
     return "\n".join(lines) + "\n"
 
 

@@ -1057,11 +1057,26 @@ def publish_web_fragment_job() -> None:
 
         if is_newest:
             # Full processing: fetch markdown (if needed), extract metadata,
-            # render fragment (if missing), commit, build a full entry.
-            if cached and fragment_present and "target_channels" in cached:
+            # render fragment (if missing OR the archived markdown changed),
+            # commit, build a full entry.
+            #
+            # Correction path (2026-07-15 review): fragments used to be
+            # write-once with no change detection — a pulse corrected and
+            # re-archived under the SAME <ts>.md kept serving the old
+            # fragment forever, and the latest-* pointers never refreshed
+            # (the reuse branch left latest_md unset). We now stamp the
+            # archive file's git blob sha into the cached entry; a sha
+            # mismatch on the newest pulse forces a full re-render +
+            # pointer refresh.
+            item_sha = item.get("sha") or ""
+            cached_sha = (cached or {}).get("archive_sha") or ""
+            md_changed = bool(item_sha and cached_sha and item_sha != cached_sha)
+            if (cached and fragment_present and "target_channels" in cached
+                    and not md_changed):
                 # Already up-to-date AND already classified as production.
                 # Refresh URLs in the entry but skip the markdown fetch.
                 entry = dict(cached)
+                entry["archive_sha"] = item_sha or cached_sha
                 entry["archive_url"] = (
                     f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
                 )
@@ -1090,7 +1105,13 @@ def publish_web_fragment_job() -> None:
                         pulse_md, ts=ts, source_filename=name,
                         repo=repo, branch=branch,
                     )
-                    if not fragment_present:
+                    if not fragment_present or md_changed:
+                        if md_changed:
+                            log.info(
+                                f"Bridge: web publish — archived markdown for "
+                                f"{ts} changed (sha {cached_sha[:7]} -> "
+                                f"{item_sha[:7]}), re-rendering fragment"
+                            )
                         fragment_html = render_pulse_fragment(pulse_md)
                         gh.put_file(
                             f"{WEB_FRAGMENTS_DIR}/{fragment_name}",
@@ -1104,6 +1125,8 @@ def publish_web_fragment_job() -> None:
                         "title": meta["title"],
                         "date_utc": meta["date_utc"],
                         "pdf_count": meta["pdf_count"],
+                        "themes": meta.get("themes") or [],
+                        "archive_sha": item_sha,
                         "archive_url": meta["archive_url"],
                         "fragment_url": (
                             f"https://raw.githubusercontent.com/{repo}/{branch}/{WEB_FRAGMENTS_DIR}/{fragment_name}"
@@ -1117,6 +1140,11 @@ def publish_web_fragment_job() -> None:
             # Older pulse we processed in a previous run — reuse the cached
             # entry (preserves any title/date_utc that was extracted then).
             entry = dict(cached)
+            # Stamp the current blob sha so a future correction to this
+            # pulse is detectable if it ever becomes relevant (only the
+            # newest pulse re-renders by policy).
+            if item.get("sha"):
+                entry.setdefault("archive_sha", item["sha"])
             entry["archive_url"] = (
                 f"https://raw.githubusercontent.com/{repo}/{branch}/{ARCHIVE_DIR}/{name}"
             )

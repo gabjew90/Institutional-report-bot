@@ -420,6 +420,15 @@ def render_pulse_fragment(md: str) -> str:
         f'    <p class="pulse-dateline">{dateline}</p>\n'
         '  </header>\n'
         f'  {body_html}\n'
+        # Reader-facing disclaimer (2026-07-15 review: the two published
+        # surfaces shipped directional trade leans with no disclaimer;
+        # only the local dev dashboard had one). New additive class —
+        # unstyled it renders as a plain small line, no dashboard-repo
+        # coordination required.
+        '  <footer class="pulse-disclaimer">\n'
+        '    <p>Synthesized from institutional research. Not investment '
+        'advice.</p>\n'
+        '  </footer>\n'
         '</article>\n'
     )
 
@@ -439,13 +448,20 @@ def extract_pulse_metadata(
     meta, body_md = _strip_frontmatter(md)
     title, body_md = _extract_title_and_body(body_md)
 
-    # Pull INSIGHTS theme headers (### lines inside ## 2. INSIGHTS section).
+    # Pull theme headers (### lines inside the analytical sections).
+    # 2026-07-15 fix: production pulses are archived AFTER
+    # split_main_event_briefs renames "## 2. INSIGHTS & ALPHA" to
+    # "## 2. THE MAIN EVENT" + "## 3. BRIEFS" — the old INSIGHTS/ALPHA
+    # match found nothing and every production latest.json shipped
+    # themes: []. Match all analytical-section spellings, old and new.
+    _THEME_H2 = ("INSIGHTS", "ALPHA", "MAIN EVENT", "BRIEFS")
     themes: list[str] = []
     in_insights = False
     for line in body_md.splitlines():
         stripped = line.strip()
         if stripped.startswith("## "):
-            in_insights = "INSIGHTS" in stripped.upper() or "ALPHA" in stripped.upper()
+            up = stripped.upper()
+            in_insights = any(k in up for k in _THEME_H2)
             continue
         if in_insights and stripped.startswith("### "):
             themes.append(stripped[4:].strip())

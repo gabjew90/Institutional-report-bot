@@ -32,19 +32,27 @@ from pathlib import Path
 
 # Foreign-listed cashtags that resolve to a different US-listed company on
 # Twitter/X. Strip the $ and replace with the company name.
+#
+# 2026-07-15 review: entries whose symbol IS a legitimate US-tradable
+# ticker were removed — the unconditional rewrite was destroying real
+# US cashtags:
+#   $CCL — Carnival Corp's primary listing is NYSE (the UK line is CUK);
+#          rewriting every $CCL to "Carnival UK" mislabeled a US ticker.
+#   $ORA — Ormat Technologies (NYSE). Orange's US ADR is $ORAN, so a
+#          French-telecom reference should never render $ORA anyway.
+#   $VOD — Vodafone's own US ADR; resolves correctly on X.
+#   $BA  — kept OUT of this map on purpose: $BA is Boeing, and research
+#          saying "$BA" is far more often Boeing than BAE. The extraction
+#          prompt already forces BAE's ticker to empty upstream.
 FOREIGN_CASHTAGS: dict[str, str] = {
     "TSCO": "Tesco",            # UK grocery (US $TSCO = Tractor Supply)
     "AD": "Ahold Delhaize",     # Dutch (no US $AD listing)
     "CNA": "Centrica",          # UK utility (US $CNA = CNA Financial)
-    "BA": "BAE Systems",        # UK (US $BA = Boeing)
     "BT": "BT Group",           # UK
     "RR": "Rolls-Royce",        # UK
     "III": "3i Group",          # UK
     "IMB": "Imperial Brands",   # UK
-    "CCL": "Carnival UK",       # UK share class
     "REP": "Repsol",            # Spain
-    "ORA": "Orange",            # French telecom
-    "VOD": "Vodafone UK",       # ADR exists ($VOD) but research often refs LSE
 }
 
 # When the live market snapshot uses an ETF as the broad-market reference,

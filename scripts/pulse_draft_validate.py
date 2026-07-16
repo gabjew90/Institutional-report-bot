@@ -44,6 +44,7 @@ Usage:
 """
 from __future__ import annotations
 
+import datetime
 import json
 import re
 import sys
@@ -57,6 +58,7 @@ HARD_VIOLATION_KINDS = {
     "contrarian-buried-in-appendix",
     "main-event-lean-missing",
     "leans-block-missing",
+    "weekday-date-mismatch",
 }
 
 # A cashtag is `$` + a LETTER (so dollar amounts like $9.3B / $200B never
@@ -442,6 +444,258 @@ def _numeric_scope_violations(
     return violations
 
 
+# ---------------------------------------------------------------------------
+# CHECK 8 support: weekday-vs-date consistency
+# ---------------------------------------------------------------------------
+# 2026-07-15 pulse: "Tuesday 7/22: Alphabet, Tesla, ServiceNow" — July 22,
+# 2026 is a Wednesday. Purely deterministic to catch; no model judgment
+# involved. We scan every "<Weekday> M/D" and "<Weekday>, Month D" pairing
+# and recompute the weekday from the ctx date's year.
+
+_WEEKDAYS = (
+    "Monday", "Tuesday", "Wednesday", "Thursday",
+    "Friday", "Saturday", "Sunday",
+)
+_MONTHS = {
+    m.lower(): i + 1 for i, m in enumerate((
+        "January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December",
+    ))
+}
+for _m in list(_MONTHS):
+    _MONTHS[_m[:3]] = _MONTHS[_m]  # jan/feb/... abbreviations
+
+_WEEKDAY_DATE_RE = re.compile(
+    r"\b(" + "|".join(_WEEKDAYS) + r")\s*,?\s+"
+    r"(?:"
+    r"(\d{1,2})/(\d{1,2})"                       # 7/22
+    r"|"
+    r"([A-Za-z]{3,9})\.?\s+(\d{1,2})\b"          # July 22 / Jul 22
+    r")"
+)
+
+
+def _ctx_today(ctx: dict) -> "datetime.date | None":
+    for key in ("today", "dumped_at_utc"):
+        raw = str(ctx.get(key) or "")[:10]
+        try:
+            return datetime.date.fromisoformat(raw)
+        except ValueError:
+            continue
+    return None
+
+
+def _weekday_date_violations(md_text: str, ctx: dict) -> list[dict]:
+    today = _ctx_today(ctx)
+    if today is None:
+        return []
+    out: list[dict] = []
+    seen: set[str] = set()
+    for m in _WEEKDAY_DATE_RE.finditer(md_text):
+        claimed = m.group(1)
+        if m.group(2):
+            month, day = int(m.group(2)), int(m.group(3))
+        else:
+            month = _MONTHS.get((m.group(4) or "").lower())
+            if month is None:
+                continue  # "Tuesday After ..." — not a month word
+            day = int(m.group(5))
+        # Resolve the year: the pulse talks about dates near today. Pick
+        # the candidate year that lands the date closest to today (handles
+        # a December pulse naming a January date).
+        candidates = []
+        for year in (today.year - 1, today.year, today.year + 1):
+            try:
+                candidates.append(datetime.date(year, month, day))
+            except ValueError:
+                continue
+        if not candidates:
+            continue
+        resolved = min(candidates, key=lambda d: abs((d - today).days))
+        if abs((resolved - today).days) > 120:
+            continue  # far-off date — year resolution too uncertain to judge
+        actual_weekday = _WEEKDAYS[resolved.weekday()]
+        if actual_weekday != claimed:
+            key = f"{claimed}|{month}/{day}"
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append({
+                "kind": "weekday-date-mismatch",
+                "severity": "hard",
+                "message": (
+                    f'The pulse says "{m.group(0)}" but {resolved.isoformat()} '
+                    f"is a {actual_weekday}. Fix the weekday (or the date — "
+                    f"check the calendar blocks for the event's real date)."
+                ),
+                "claimed": claimed,
+                "actual": actual_weekday,
+                "date": resolved.isoformat(),
+            })
+    return out
+
+
+# ---------------------------------------------------------------------------
+# CHECK 9 support: released-figure reconciliation against calendar ACTUALs
+# ---------------------------------------------------------------------------
+# 2026-07-15 pulse: June CPI shipped as "3.88% ... core at 2.86%" — those
+# were the consensus ESTIMATES; the print was 3.5%/2.6%. The desk-preview
+# figures reached the draft via research PDFs and nothing reconciled them
+# against the released number. This check walks every %-figure that sits
+# in a sentence naming a calendar event with an ACTUAL= value and flags
+# figures that match nothing in that event's calendar row(s) — the exact
+# signature of an estimate (or stale/wrong number) presented as the print.
+# SOFT severity: the calendar usually carries one measure (m/m) while
+# prose may legitimately cite another (y/y) that simply isn't verifiable
+# from context — the flag tells AUDIT "verify or reframe", not "wrong".
+
+_ECON_ROW_RE = re.compile(
+    r"^\s*(\d{2})-(\d{2})\s+\d{2}:\d{2}\s+ET\s*\|\s*\[[A-Z]{2}\]\s*([^|]+?)\s*\|(.*)$"
+)
+_NUM_TOKEN_RE = re.compile(r"-?\d+(?:\.\d+)?")
+_PCT_FIGURE_RE = re.compile(r"(-?\d+(?:\.\d+)?)\s*%")
+# Expectation markers: a figure already labeled as an expectation within
+# this many chars is exempt (it's presented AS an estimate — fine).
+_EXPECT_MARKERS = ("estimate", "est.", "est ", "expected", "consensus",
+                   "forecast", "preview", "penciled", "eyeing")
+_EXPECT_WINDOW = 40
+# Only rows for these events are worth reconciling — matches the hard
+# calendar whitelist that reaches synthesis.
+_EVENT_KEYWORDS = ("CPI", "PPI", "PCE", "GDP", "NFP", "PAYROLLS",
+                   "RETAIL SALES", "ISM", "UNEMPLOYMENT")
+
+
+def _seg_numbers(row_tail: str, label: str) -> set[float]:
+    """Numeric values from the `label=...` segments of a calendar row."""
+    out: set[float] = set()
+    for seg in row_tail.split("|"):
+        seg = seg.strip()
+        if not seg.upper().startswith(label.upper()):
+            continue
+        # Strip the "(for 2026-06)" period tag before harvesting numbers.
+        seg = re.sub(r"\(for [^)]*\)", "", seg)
+        out.update(float(t) for t in _NUM_TOKEN_RE.findall(seg))
+    return {n for n in out if abs(n) < 1000}
+
+
+def _released_event_rows(ctx: dict) -> dict[str, dict[str, set[float]]]:
+    """Map event keyword -> {'ok': actual+prev values, 'est': estimate
+    values} from its RELEASED calendar rows. A prose figure matching 'ok'
+    traces to the calendar; matching ONLY 'est' is the estimate-as-print
+    signature."""
+    cal = str(ctx.get("economic_calendar") or "")
+    out: dict[str, dict[str, set[float]]] = {}
+    in_released = False
+    for line in cal.splitlines():
+        up = line.upper()
+        if "ALREADY RELEASED" in up:
+            in_released = True
+            continue
+        if "STILL UPCOMING" in up:
+            in_released = False
+            continue
+        if not in_released or "ACTUAL=" not in up:
+            continue
+        m = _ECON_ROW_RE.match(line)
+        name = (m.group(3) if m else line).upper()
+        tail = line.split("|", 2)[-1] if "|" in line else line
+        ok = _seg_numbers(tail, "ACTUAL=") | _seg_numbers(tail, "prev=")
+        est = _seg_numbers(tail, "est=")
+        for kw in _EVENT_KEYWORDS:
+            if kw in name:
+                slot = out.setdefault(kw, {"ok": set(), "est": set()})
+                slot["ok"] |= ok
+                slot["est"] |= est
+    return out
+
+
+def _released_figure_violations(md_text: str, ctx: dict) -> list[dict]:
+    rows = _released_event_rows(ctx)
+    if not rows:
+        return []
+    out: list[dict] = []
+    seen: set[str] = set()
+    # Scope = one markdown LINE (a bullet or a prose paragraph). Sentence
+    # splitting separated the event keyword from its figures ("...June CPI
+    # came in cold. Headline prices fell 0.42%...") and silently skipped
+    # exactly the failure shape this check exists for.
+    for sent in md_text.splitlines():
+        up = sent.upper()
+        hit_kws = [kw for kw in rows if kw in up]
+        if not hit_kws:
+            continue
+        valid: set[float] = set()
+        est_vals: set[float] = set()
+        for kw in hit_kws:
+            valid |= rows[kw]["ok"]
+            est_vals |= rows[kw]["est"]
+        figures = list(_PCT_FIGURE_RE.finditer(sent))
+        # An expectation marker exempts only its NEAREST figure — in
+        # "against a +0.2% estimate, landing at 2.86%", the marker labels
+        # 0.2, not the 2.86 stated as the print right after it.
+        exempt: set[int] = set()
+        low_sent = sent.lower()
+        for mk in _EXPECT_MARKERS:
+            start = 0
+            while True:
+                pos = low_sent.find(mk, start)
+                if pos < 0:
+                    break
+                start = pos + 1
+                near = [
+                    (min(abs(pos - f.start()), abs(pos - f.end())), i)
+                    for i, f in enumerate(figures)
+                ]
+                if near:
+                    dist, idx = min(near)
+                    if dist <= _EXPECT_WINDOW:
+                        exempt.add(idx)
+        for f_idx, fm in enumerate(figures):
+            val = float(fm.group(1))
+            if f_idx in exempt:
+                continue
+            # Magnitude match: prose writes direction verbally ("fell
+            # 0.42%") while the calendar carries the signed value (-0.4).
+            if any(abs(abs(val) - abs(v)) <= 0.06 for v in valid):
+                continue
+            key = f"{hit_kws[0]}|{fm.group(1)}"
+            if key in seen:
+                continue
+            seen.add(key)
+            is_est_hit = any(
+                abs(abs(val) - abs(v)) <= 0.06 for v in est_vals
+            )
+            if is_est_hit:
+                msg = (
+                    f"{fm.group(1)}% stated for {hit_kws[0].title()} "
+                    f"MATCHES THE CONSENSUS ESTIMATE on the calendar row, "
+                    f"not the ACTUAL — near-certain estimate-shipped-as-"
+                    f"print (the 2026-07-15 CPI failure). Replace with the "
+                    f"ACTUAL= value or label it as the expectation."
+                )
+            else:
+                msg = (
+                    f"{fm.group(1)}% is stated for {hit_kws[0].title()} but "
+                    f"matches neither the ACTUAL nor prev on that event's "
+                    f"RELEASED calendar row (row values: "
+                    f"{sorted(valid) if valid else 'none parsed'}). Desk "
+                    f"previews carry ESTIMATES (2026-07-15: consensus "
+                    f"3.88%/2.86% shipped as the CPI print; actual was "
+                    f"3.5%/2.6%). Verify the figure is the real print, "
+                    f"label it as an expectation, or drop it."
+                )
+            out.append({
+                "kind": "unreconciled-release-figure",
+                "severity": "soft",
+                "message": msg,
+                "figure": fm.group(1),
+                "event": hit_kws[0],
+                "matches_estimate": is_est_hit,
+                "sentence": sent.strip()[:200],
+            })
+    return out
+
+
 def validate(md_text: str, ctx: dict) -> list[dict]:
     """Return a list of violation dicts. Each carries `kind`, `severity`
     (hard|soft), and a human-readable `message`. Empty list = clean."""
@@ -726,6 +980,16 @@ def validate(md_text: str, ctx: dict) -> list[dict]:
     source_stats = _source_stat_index(_collect_source_strings(ctx))
     if source_stats:
         violations.extend(_numeric_scope_violations(sections, source_stats))
+
+    # =====================================================================
+    # CHECK 8: weekday-vs-date consistency ("Tuesday 7/22" on a Wednesday)
+    # =====================================================================
+    violations.extend(_weekday_date_violations(md_text, ctx))
+
+    # =====================================================================
+    # CHECK 9: released figures reconcile against calendar ACTUAL rows
+    # =====================================================================
+    violations.extend(_released_figure_violations(md_text, ctx))
 
     return violations
 

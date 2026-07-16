@@ -499,10 +499,12 @@ for line in cal.splitlines():
         notes.append(
             f"PRESS-TIME EVENT: '{name.strip()}' printed at {hh}:{mm} ET — "
             f"BEFORE this pulse posts but AFTER this snapshot. The actual "
-            f"number is NOT in your context. Frame it as 'printed this "
-            f"morning — number still propagating at press time; watch the "
-            f"reaction', NEVER as upcoming, and NEVER invent or guess the "
-            f"actual. In WHAT TO WATCH, the item is the REACTION, not the print."
+            f"number is NOT in your context. Frame it as 'the number hit "
+            f"this morning and the first desk reads are still coming in — "
+            f"watch the reaction', NEVER as upcoming, and NEVER invent or "
+            f"guess the actual. Never copy pipeline words (propagating, "
+            f"ingested, snapshot) into reader prose. In WHAT TO WATCH, the "
+            f"item is the REACTION, not the print."
         )
 if notes:
     open('/tmp/press_time_note.txt', 'w').write(

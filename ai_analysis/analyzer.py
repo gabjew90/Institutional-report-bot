@@ -340,16 +340,48 @@ async def analyze_pdf_deep(
         )
         raise
 
-    async with limiter:
-        response = await client.aio.models.generate_content(
-            model=settings.gemini_model,
-            contents=content_parts,
-            config=types.GenerateContentConfig(
-                system_instruction=ANALYSIS_SYSTEM_PROMPT,
-                max_output_tokens=settings.gemini_max_tokens,
-                temperature=0.2,
-                response_mime_type="application/json",
-            ),
+    # TRUNCATION GUARD (2026-07-15 review). A dense morning briefing can
+    # exceed max_output_tokens; the response then ends mid-JSON and the
+    # parser either fails (analysis silently becomes {}) or — worse —
+    # rfind("}") closes on an earlier brace and a PARTIAL object ships as
+    # if complete, silently dropping the tail fields (theme_stances,
+    # key_data_points live at the end of the schema). Truncation is
+    # detectable from finish_reason: retry once with a raised cap, and if
+    # it STILL truncates, raise — a FAILED row + auto-retry is honest,
+    # a half-analysis is not.
+    max_out = settings.gemini_max_tokens
+    truncated = False
+    for attempt in (1, 2):
+        async with limiter:
+            response = await client.aio.models.generate_content(
+                model=settings.gemini_model,
+                contents=content_parts,
+                config=types.GenerateContentConfig(
+                    system_instruction=ANALYSIS_SYSTEM_PROMPT,
+                    max_output_tokens=max_out,
+                    temperature=0.2,
+                    response_mime_type="application/json",
+                ),
+            )
+        finish = ""
+        try:
+            finish = str(response.candidates[0].finish_reason or "")
+        except (AttributeError, IndexError, TypeError):
+            finish = ""
+        truncated = "MAX_TOKENS" in finish.upper()
+        if not truncated:
+            break
+        if attempt == 1:
+            new_cap = max(8192, (max_out or 4096) * 2)
+            log.warning(
+                f"Deep analysis for {file_name} truncated at "
+                f"max_output_tokens={max_out} — retrying with {new_cap}"
+            )
+            max_out = new_cap
+    if truncated:
+        raise RuntimeError(
+            f"deep analysis output truncated at max_output_tokens={max_out} "
+            f"even after retry — refusing to parse a partial JSON"
         )
 
     duration = time.time() - start_time

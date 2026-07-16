@@ -239,7 +239,9 @@ def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
         description="\n".join(footer_lines),
         color=0x95A5A6,
     )
-    footer_embed.set_footer(text=f"Next pulse: {_next_pulse_str()}")
+    footer_embed.set_footer(
+        text=f"Next pulse: {_next_pulse_str()} · Not investment advice"
+    )
     embeds.append(footer_embed)
 
     log.info(f"Formatted {len(embeds)} embeds for daily pulse")

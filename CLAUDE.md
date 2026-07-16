@@ -39,8 +39,8 @@ discord_bot/sender.py — posts to every channel in DISCORD_CHANNEL_ID
 
 ## Key Design Decisions
 
-### Text-only ingestion (multimodal was removed)
-Deep analysis sends the full document as text to Gemini. **No image rendering, no page selection, no truncation.** Multimodal was tried and dropped — text in research adequately summarizes chart takeaways. Code still has `page_selector.py` and image rendering in `extractor.py` but they're not invoked in the deep analysis path. Don't re-enable multimodal without explicit user sign-off.
+### Text-first ingestion with a narrow multimodal carve-out
+Deep analysis sends the full document as text to Gemini — no truncation. Multimodal was dropped entirely on 2026-04-13, then **selectively re-enabled on 2026-05-07** (commit `93863c7f`) for a narrow trigger: priority HIGH + source in {GS, MS, JPM, Citi, DB, BofA} + (report_type in {equity_research, derivatives, vol_commentary} or exhibit-heavy filename) + ≥5 pages. Those reports get up to 30 rendered page images attached (via `page_selector.py`); everything else stays text-only. Failures fall back to text-only. Don't broaden the trigger without explicit user sign-off.
 
 ### Gemini-only priority (no source/topic overrides)
 `_apply_priority_rules` returns Gemini's call verbatim. Tier-1 floor (GS/JPM/BofA/MS = min MEDIUM) and HIGH topic boost (macro/crypto/vol_commentary/morning_briefing/sales_trading/strategy/derivatives = force HIGH) were removed. Triage prompt has expanded LOW criteria to filter out peripheral EM macro, minor FX pairs, niche commodities, single-stock regional research, credit without spread calls, technical-only analysis, historical wrap-ups.

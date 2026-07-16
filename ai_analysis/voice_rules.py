@@ -146,6 +146,16 @@ BANNED_AI_TELL_REGEXES: list[tuple[str, str]] = [
     # One regex covers the whole authority-signal-without-content family
     # so the next variant ("the gating constraint", "the deciding read",
     # "the cleanest driver") catches on its own.
+    # Desk-counting meta-narration family (2026-07-15: "Eleven desks flag
+    # it and none calls the direction" shipped in WHAT TO WATCH). Counting
+    # the sources is surveying the corpus, not stating a view — banned in
+    # every section, whatever the number.
+    (
+        r"\b(?:\d+|two|three|four|five|six|seven|eight|nine|ten|eleven|"
+        r"twelve|several|multiple|numerous)\s+(?:desks?|banks?|houses?|"
+        r"notes?)\s+(?:flag|cover|watch|note|call|cite|mention|highlight)",
+        'meta-narration',
+    ),
     (
         r"\bthe\s+(?:binding|dominant|cleanest|deciding|gating|operative)"
         r"\s+(?:variable|constraint|signal|factor|read|driver|input)\b",
@@ -202,6 +212,15 @@ BANNED_META_NARRATION = [
     "researchers are split",
     "analysts are split",
     "there's disagreement over",
+    # 2026-07-15 QC — corpus meta-narration crept back in BRIEFS and
+    # WHAT TO WATCH ("the most heavily covered theme in the research",
+    # "eleven desks flag it", "a chunk of this conviction traces to one
+    # loud house"). Counting/surveying the sources is meta-narration in
+    # ANY section; state the view instead.
+    "heavily covered theme",
+    "covered theme in the research",
+    "one loud house",
+    "in the research corpus",
     # Pedagogical / explanatory asides — banker-newsletter asserts;
     # it doesn't lecture the reader on analytical structure.
     "is a counter-example",

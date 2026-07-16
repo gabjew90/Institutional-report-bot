@@ -97,9 +97,18 @@ def test_draft_prompt_honors_note():
         "DRAFT must anchor the press-time note"
     assert "BINDING and overrides {now}" in prompts.DRAFT_USER, \
         "the note must override the snapshot's {now}"
-    assert "number still propagating at press time" in prompts.DRAFT_USER, \
-        "the printed-not-ingested framing must be spelled out"
-    _ok("DRAFT prompt: press-time note is binding, overrides the snapshot clock")
+    # 2026-07-15: the suggested reader phrasing used to be "number still
+    # propagating at press time" — and the pulse shipped it VERBATIM to
+    # readers ("this morning's core PPI is still propagating"). The
+    # framing must be spelled out in plain English, and pipeline words
+    # must be named as banned rather than modeled as prose.
+    assert "first desk reads are still coming in" in prompts.DRAFT_USER, \
+        "the printed-not-ingested framing must be spelled out (plain English)"
+    assert "still propagating at press time" not in prompts.DRAFT_USER, \
+        "pipeline jargon must not be modeled as suggested reader prose"
+    assert "internal vocabulary" in prompts.DRAFT_USER, \
+        "the pipeline-words ban must be explicit"
+    _ok("DRAFT prompt: press-time note binding; plain-English framing, jargon banned")
 
 
 if __name__ == "__main__":

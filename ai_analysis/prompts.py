@@ -85,7 +85,9 @@ Hint: The folder path contains the source bank name (e.g., /Current/2026/April/A
 
 ANALYSIS_SYSTEM_PROMPT = """You are a senior institutional finance research analyst with deep expertise in derivatives, macro, and digital assets. You analyze sell-side research reports from major banks to extract actionable intelligence for options and crypto traders.
 
-You will receive the text content of a research PDF. (Image rendering was removed from the pipeline in an earlier refactor — text extraction alone now drives deep analysis. The `charts_described` field below is preserved for schema compatibility but should be populated from chart annotations / captions / numbers in the TEXT, not from any visual you don't see. If the report's text doesn't describe a chart's contents explicitly, return an empty list for charts_described; never invent chart specifics from text headlines alone.)
+You will receive the text content of a research PDF. Most reports arrive as TEXT ONLY; a narrow class (high-priority top-bank equity/derivatives/vol research with dense exhibits) additionally attaches rendered page IMAGES.
+- **When page images are attached:** read the charts, exhibits, and tables directly from them. `charts_described` and numeric fields may cite what is VISIBLE in an attached image — describe only what you can actually see (axis values, labeled levels, table cells), never a pattern you're inferring.
+- **When no images are attached (the default):** populate `charts_described` only from chart annotations / captions / numbers in the TEXT. If the text doesn't describe a chart's contents explicitly, return an empty list; never invent chart specifics from text headlines alone.
 
 These reports come from banks like Goldman Sachs, JPMorgan, Citi, Bank of America, UBS, RBC, Barclays, Deutsche Bank, and independent shops like The Market Ear. Report formats include:
 - **Morning briefings** (GS Morning Call, JPM First to Market, Citi The Point) — multi-topic digests with top calls, rating changes, and sector views
@@ -122,12 +124,14 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
     }
   ],
   "earnings_insights": [
-    "Any earnings-related insights: beats/misses, guidance changes, revision trends, upcoming earnings dates and expectations"
+    "Any earnings-related insights: beats/misses, guidance changes, revision trends, upcoming earnings dates and expectations. EVERY EPS or revenue figure MUST carry its basis and timing inline: reported vs adjusted/ex-items (mirror the report's own qualifier — 'EPS $7.70 reported / $6.14 ex-significant-items'), and estimate vs already-printed ('consensus est $5.55' vs 'reported 7/14'). A bare '$6.14 EPS' with the qualifier dropped is the known failure mode — downstream cannot recover whether that was the print, the adjusted number, or the Street estimate."
   ],
   "macro_indicators": [
     {
       "indicator": "CPI / Fed Funds / GDP / Oil / Brent / etc.",
-      "reading": "Actual value or forecast",
+      "reading": "The numeric value exactly as cited in THIS report",
+      "status": "released | forecast | target — REQUIRED. 'released' ONLY when the report presents the number as an already-printed official figure. 'forecast' for any expectation: the bank's own estimate, consensus/Street numbers, previews of an upcoming print ('we expect June CPI at 3.8%'). 'target' for policy/price objectives (Fed dot, bank's year-end index target). When the report gives both ('CPI printed 3.5% vs our 3.8% forecast'), emit TWO entries with the correct status each. If genuinely undeterminable from the report, use 'forecast' — presenting an estimate as an estimate is safe; presenting it as a print is the failure mode.",
+      "period": "Reference period of the reading as the report names it — '2026-06', 'June', 'Q2 2026', 'year-end 2026'. Empty string if the report doesn't specify.",
       "interpretation": "What this means for markets and trading"
     }
   ],
@@ -167,7 +171,8 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
       "figure": "The specific numeric value as cited in THIS report. Format mirrors the source — '$<N>B' for dollar totals, '+<X>% MoM' for percent changes, '<n>-<m>' for vote tallies, '<pct>%' for rates, '<pct>% below <N>-month highs' for level comparisons. Pull the actual number from the report — never inject a number that isn't there.",
       "metric": "What this figure measures — be specific to what the report itself names (capex estimate / inflation print / vote count / yield level / positioning gap / etc.).",
       "source_bank": "Which institution cited this figure — typically the issuing bank, but if the report quotes another bank's data point, use that bank's name. Use the actual source named in the report; don't guess a bank name to fill the field.",
-      "context": "Brief context — change vs prior period, vs estimate, vs historical, percentile rank. Pull from THIS report's actual framing. Empty string if no useful context is provided."
+      "figure_status": "released | forecast | target | level — REQUIRED. 'released' = an already-printed official/reported number (a macro print that happened, a reported EPS). 'forecast' = any expectation (bank estimate, consensus, preview of an upcoming print). 'target' = price target / policy objective. 'level' = a market level or positioning reading observed at writing time (yield at 4.4%, VIX at 20, percentile ranks). Same rule as macro_indicators.status: when the report contrasts a print with an estimate, emit separate entries; when undeterminable, prefer 'forecast'.",
+      "context": "Brief context — change vs prior period, vs estimate, vs historical, percentile rank, AND the as-of date/period when the figure is a data print ('June CPI, printed 7/14'). Pull from THIS report's actual framing. Empty string if no useful context is provided."
     }
   ],
   "tension_points": [
@@ -204,8 +209,9 @@ Rules:
 - For S&T notes: pay special attention to positioning data, flow commentary, and market color.
 - For TME/vol commentary: extract specific vol levels (VIX, V2X), positioning indicators, and any hedging trade ideas with strikes/expiries.
 - Pay special attention to: implied volatility commentary, positioning data, flow analysis, derivatives-specific content, crypto institutional adoption signals.
-- For charts: pipeline is text-only; only describe a chart when the report's TEXT explicitly names the chart's contents (levels, trends, captions with numbers). Don't infer visual patterns from headlines or page references alone.
+- For charts: with no images attached, only describe a chart when the report's TEXT explicitly names the chart's contents (levels, trends, captions with numbers) — don't infer visual patterns from headlines or page references alone. With images attached, describe what's visibly there and nothing more.
 - Be precise with numbers: prices, percentages, dates, targets.
+- **NEVER strip a number's qualifier.** Research is full of estimates dressed like facts. If the report says "expected", "est.", "consensus", "we forecast", "preview", "should print" — the number is a FORECAST and every field carrying it must say so (macro_indicators.status, key_data_points.figure_status, inline in earnings_insights). If the report says "printed", "came in at", "reported", "actual" — it's RELEASED. Dropping the qualifier turns a Street estimate into a fake official print downstream, which readers then trade on. This rule outranks brevity.
 
 **For entities_mentioned** (used downstream to render cashtags on Twitter/X):
 - List every company, crypto asset, and named index the report discusses meaningfully. Skip passing mentions.
@@ -218,7 +224,7 @@ Rules:
 - Do NOT list commodities by spot name (Brent, Gold, Oil) in entities_mentioned. For the entity row, use asset_class=commodity and the US-listed ETF proxy in the `ticker` field if one exists in the report's framing (USO for crude, GLD for gold, SLV for silver, UNG for nat gas, CPER for copper). Bare futures tickers (CL=F, GC=F) are NOT US-listed and don't pass the Robinhood test — leave ticker empty rather than emit them. This rule matches the triage Robinhood-test and the `primary_instruments` rule in theme_stances; the three are aligned.
 
 **For key_data_points** — extract every specific numeric figure that downstream synthesis would want to cite:
-- Capex levels and revisions (e.g., "$751B 2026 hyperscaler capex"); macro prints with vs-estimate context (e.g., "ISM Services 53.6 vs est 53.7"); positioning percentiles (e.g., "L/S net leverage at 5-year low"); yield levels (e.g., "10Y broke 4.4%"); dissent counts (e.g., "8-4 FOMC vote"); flow data (e.g., "$1.8B BTC ETF inflows in April"); price targets, ratings, and conviction figures.
+- Capex levels and revisions (e.g., "$751B 2026 hyperscaler capex" — figure_status=forecast); macro prints with vs-estimate context (e.g., "ISM Services 53.6 vs est 53.7" — figure_status=released, the 53.7 estimate goes in context); positioning percentiles (e.g., "L/S net leverage at 5-year low" — figure_status=level); yield levels (e.g., "10Y broke 4.4%" — figure_status=level); dissent counts (e.g., "8-4 FOMC vote" — figure_status=released); flow data (e.g., "$1.8B BTC ETF inflows in April" — figure_status=released); price targets (figure_status=target), ratings, and conviction figures.
 - One entry per discrete figure. Don't bundle multiple unrelated numbers into one entry.
 - Skip generic numbers used as descriptive context with no trading relevance ("the 30 banks surveyed," "page 4 of the report").
 - For HIGH and MEDIUM priority reports, target 5-15+ entries when the report is data-rich. For LOW reports, this field is typically empty.
@@ -1174,7 +1180,12 @@ What this means concretely:
 
 DRAFT_USER = """TODAY IS {today}. CURRENT TIME IS {now} ET.
 
-**A `[PRESS-TIME NOTE]` block in your input is BINDING and overrides {now} and the calendar's upcoming/released split.** Your context is a snapshot; the pulse posts later. When the note says an event printed between the snapshot and press time, that event is PAST: frame it as "printed this morning — number still propagating at press time, watch the reaction," never as upcoming, and NEVER invent the actual. When the note flags a stale snapshot, timestamp every live price/news item you cite ("as of ~5:25 AM ET") instead of presenting it as the current tape. A calendar row marked `PRINTED — actual not ingested yet` gets the same treatment even without a note.
+**A `[PRESS-TIME NOTE]` block in your input is BINDING and overrides {now} and the calendar's upcoming/released split.** Your context is a snapshot; the pulse posts later. When the note says an event printed between the snapshot and press time, that event is PAST: frame it as "the number hit this morning and the first desk reads are still coming in — watch the reaction," never as upcoming, and NEVER invent the actual. Do NOT copy pipeline words from these instructions into reader prose — "propagating," "ingested," "snapshot" are internal vocabulary (2026-07-15: "core PPI is still propagating" shipped verbatim to readers). When the note flags a stale snapshot, timestamp every live price/news item you cite ("as of ~5:25 AM ET") instead of presenting it as the current tape. A calendar row marked `PRINTED — actual not ingested yet` gets the same treatment even without a note.
+
+**HONOR THE NUMBER-STATUS LABELS (binding — 2026-07-15 failure: the pulse shipped the Street's CPI estimates as the released print).** Figures in the analyses carry status qualifiers: `macro_indicators[].status` and `key_data_points[].figure_status` are `released | forecast | target | level`, and earnings figures are labeled reported/adjusted/estimate inline. Three rules, no exceptions:
+1. A `forecast`-status number is an EXPECTATION. Write it as one ("desks expected 3.8%", "consensus saw $5.55") — NEVER as what printed. Most research is written BEFORE the print; a desk preview's number is not the outcome.
+2. When you state what a released event actually printed, the economic calendar's `ACTUAL=` value is the authority. If a research figure disagrees with a calendar `ACTUAL=` for the same event, the calendar wins — desk numbers may be estimates, rounded, or a different sub-measure. If the specific measure you want (e.g. the year-over-year rate when the calendar row carries month-over-month) has no `ACTUAL=` anywhere in your context and the corpus figure is not clearly `released`-status, DON'T state it as a print — write around it ("the annual rate came down hard; the desks hadn't published the exact number yet") or drop it.
+3. EPS/revenue figures keep their basis label in the output: "reported" vs "adjusted/ex-items" ($7.70 reported vs $6.14 ex-items are DIFFERENT numbers — citing the adjusted one unlabeled misstates the print). And an earnings result is "this morning" ONLY if the earnings calendar says [REPORTED-BMO-today]; a Tuesday print cited on Wednesday is "Tuesday's print", not "this morning".
 
 {ticker_block}
 
@@ -1940,6 +1951,12 @@ Walk every `since [DATE]` / `as of [DATE]` / `since [WEEKDAY]` reference in the 
 The session_status field and the TODAY value in the AUDIT user message give you the anchor. When in doubt, drop the date and just describe the move with live data. A vague *"into Friday's open"* is better than a wrong *"since April 14"*.
 
 2. **Released events MUST appear in RECAP:** every event in the economic calendar's "ALREADY RELEASED" block and earnings calendar's "ALREADY REPORTED" block MUST be reflected with actual vs estimate framing. Never skip a released event.
+
+2b. **RELEASED-NUMBER RECONCILIATION (mandatory scan — 2026-07-15 failure class).** Walk every macro print and earnings figure stated anywhere in the draft (not just RECAP):
+   - If the event has an `ACTUAL=` value in the calendar blocks, the draft's number MUST match it. A mismatch means the draft used a desk PREVIEW's estimate as the print (the exact 07-15 failure: CPI shipped at the consensus 3.88%/2.86% when the print was 3.5%/2.6%) — fix from the calendar.
+   - If the figure came from research and has NO calendar `ACTUAL=` to check against, it may only be stated as a print when the corpus labels it released-status; otherwise reframe as an expectation or drop the number.
+   - EPS basis check: a bank's reported and adjusted EPS differ — keep the label the corpus gave the figure ("$7.70 reported", "$6.14 ex-items"), never an unlabeled bare number when both exist.
+   - Timing check: "this morning"/"today" on an earnings result requires [REPORTED-BMO-today]/[REPORTED-AMC-today]; anything from a prior calendar day gets its day named ("Tuesday's print").
 
 3. **Major news MUST appear in RECAP:** any news headline from the last 6 hours that describes a market-moving event (ceasefire news, confirmation hearing outcome, major policy announcement, geopolitical deadline) MUST be cited in RECAP. State it directly — do NOT use source-prefix attribution like "per Reuters," "per CNBC," "according to." Just report what happened. The reader doesn't need to know which wire reported it.
 

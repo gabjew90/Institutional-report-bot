@@ -36,6 +36,12 @@ class MacroIndicator:
     indicator: str
     reading: str
     interpretation: str
+    # 2026-07-15 QC: the pulse shipped consensus CPI estimates (3.88%)
+    # as the released print (3.5%). The qualifier is captured HERE or
+    # never — synthesis cannot recover it. released | forecast | target.
+    # Defaults empty for pre-existing rows; extraction prompt requires it.
+    status: str = ""
+    period: str = ""  # reference period ("2026-06", "Q2 2026"); "" if unstated
 
 
 @dataclass
@@ -70,7 +76,10 @@ class KeyDataPoint:
     figure: str         # The numeric value (e.g., "$751B", "+1.7% MoM", "8-4")
     metric: str         # What it measures (e.g., "2026 hyperscaler capex", "Retail Sales", "FOMC dissent count")
     source_bank: str    # Which bank cited this figure (e.g., "Goldman Sachs", "UBS")
-    context: str = ""   # Brief context — change vs prior, vs estimate, percentile, etc.
+    context: str = ""   # Brief context — change vs prior, vs estimate, percentile, as-of date
+    # released | forecast | target | level — same qualifier discipline as
+    # MacroIndicator.status (2026-07-15 estimate-as-actual QC failure).
+    figure_status: str = ""
 
 
 @dataclass

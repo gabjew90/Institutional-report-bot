@@ -802,8 +802,11 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
             # from a data gap — 2026-07-02: the 9 AM pulse framed the
             # 8:30 payrolls print as still upcoming.
             bits.append(
-                "PRINTED — actual not ingested yet (frame as 'printed "
-                "this morning, number propagating'; NEVER as upcoming)"
+                "PRINTED — actual not ingested yet (frame as 'the number "
+                "hit this morning and the first desk reads are still "
+                "coming in — watch the reaction'; NEVER as upcoming, and "
+                "never use pipeline words like 'propagating' in reader "
+                "prose)"
             )
         if estimate is not None:
             bits.append(f"est={estimate}{unit}")
