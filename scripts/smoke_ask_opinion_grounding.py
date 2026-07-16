@@ -118,16 +118,21 @@ def test_context_dependent_detector():
         "rank them by conviction",
         "pick from the report you mentioned",
         "[MESSAGE BEING REPLIED TO — from omniwiz] x\n\ngive us the best",
-        "[VERBATIM RECENT MESSAGES — abe] x\n\nwhat's he holding",
     ):
         assert bot._is_context_dependent(q), f"must be context-dep: {q!r}"
-    # self-contained questions — existential 'there' must NOT trip
+    # self-contained questions — existential 'there' must NOT trip.
+    # 2026-07-16: VERBATIM RECENT MESSAGES blocks no longer trip either —
+    # they ride along on MOST subject-mention asks (the ALP 22:09 case:
+    # a self-contained ticker question got a context-dep skip because
+    # incidental channel scrollback was attached). Only explicit reply/
+    # forward framing marks true context-dependence now.
     for q in (
         "is there a levered south africa etf like EZA",
         "are there any fed speakers thursday",
         "when does ASML report earnings",
         "why is the market down today",
         "what year did toy story 3 come out",
+        "[VERBATIM RECENT MESSAGES — abe] x\n\nwhy is ALP down today",
     ):
         assert not bot._is_context_dependent(q), \
             f"self-contained must NOT be context-dep: {q!r}"
@@ -150,6 +155,113 @@ def test_bare_probe_skipped_on_context_dependent():
     _ok("bare probe: skipped on context-dependent follow-ups, keeps in-voice + hedge")
 
 
+def test_probe_refusal_detector():
+    import discord_bot.bot as bot
+    # the exact 2026-07-16 shipped refusal (grounded on a BYU page
+    # about executioners)
+    shipped = (
+        'I cannot verify the terms "omniwiz" or "glw" in relation to '
+        'being "cooked," as they do not appear in public records or '
+        'common internet slang databases. I am unable to confirm your '
+        'situation or provide advice on whether you will be saved.'
+    )
+    assert bot._probe_is_refusal(shipped), "the shipped refusal must match"
+    for r in (
+        "I cannot verify the existence of the report you mentioned.",
+        "Unable to confirm the unlock schedule from available sources.",
+        "No public records exist for this claim.",
+    ):
+        assert bot._probe_is_refusal(r), f"refusal must match: {r!r}"
+    # real grounded answers never match
+    for a in (
+        "GLW is down 36% from its June 30 peak of $271.78.",
+        "ASML reports Wednesday July 15 before the open.",
+        "The ATF ruling classifies the BolaWrap 150 as a restraint device.",
+    ):
+        assert not bot._probe_is_refusal(a), f"real answer flagged: {a!r}"
+    _ok("probe-refusal detector: refusals match, real answers don't")
+
+
+def test_probe_refusal_catches_disambiguation():
+    import discord_bot.bot as bot
+    # 2026-07-15 ALP failure: "so alp never reported?" — the bare probe
+    # lost the referent and shipped a "grounded" treatise on what the
+    # letters ALP could mean. Disambiguation essays are refusals in a suit.
+    for r in (
+        "ALP is an acronym with several possible meanings, including "
+        "alkaline phosphatase and the Australian Labor Party.",
+        "The term has several common meanings depending on the context.",
+        "You may be referring to the Australian Labor Party or the "
+        "arm's-length principle; please provide more context.",
+    ):
+        assert bot._probe_is_refusal(r), f"disambiguation must match: {r!r}"
+    # real financial answers with incidental hedging words stay clean
+    for a in (
+        "ALP (Alpine Income Property Trust) reported Q2 results July 10; "
+        "FFO of $0.44 beat by a penny.",
+        "The stock could move on the CPI print Thursday.",
+    ):
+        assert not bot._probe_is_refusal(a), f"real answer flagged: {a!r}"
+    _ok("probe-refusal: disambiguation essays rejected, real answers pass")
+
+
+def test_probe_topic_capsule():
+    import discord_bot.bot as bot
+    # cashtag in the question
+    c = bot._probe_topic_capsule("thoughts on $ALP here", "")
+    assert "$ALP" in c and "financial context" in c
+    # caps ticker only in the PRIOR ANSWER (question is three lowercase
+    # words — the exact decontextualization shape)
+    c = bot._probe_topic_capsule(
+        "so they never reported?",
+        "ALP hasn't put out a Q2 number yet, next print is August.",
+    )
+    assert "$ALP" in c, "capsule must harvest tickers from the prior answer"
+    # no tickers anywhere -> no capsule (don't invent a subject)
+    assert bot._probe_topic_capsule("will i be saved?", "you're cooked") == ""
+    # capsule is wired into the probe question
+    src = inspect.getsource(bot._answer_with_gemini)
+    assert "_probe_topic_capsule(question, answer)" in src, \
+        "capsule must be appended to probe_q"
+    _ok("topic capsule: harvests tickers from question+answer, wired into probe")
+
+
+def test_voice_cleaner_decodes_html_entities():
+    import discord_bot.bot as bot
+    # 2026-07-15: "Q&nbsp;strategy" shipped literally into Discord
+    cleaned, _kinds = bot._clean_voice_violations(
+        "the Q&nbsp;strategy note says P&amp;L was flat &gt; expectations"
+    )
+    assert "&nbsp;" not in cleaned and "&amp;" not in cleaned \
+        and "&gt;" not in cleaned, f"entities must decode: {cleaned!r}"
+    assert "P&L" in cleaned, "decoded ampersand must survive"
+    assert "Q strategy" in cleaned, "NBSP must become a plain space"
+    # text without entities passes through untouched
+    same, _ = bot._clean_voice_violations("plain answer, no entities")
+    assert "plain answer" in same
+    _ok("voice cleaner: HTML entities decoded, NBSP -> space")
+
+
+def test_probe_gated_and_refusal_rejected():
+    import discord_bot.bot as bot
+    src = inspect.getsource(bot._answer_with_gemini)
+    # LOCAL routes skip the probe entirely (before the context-dep skip)
+    assert "elif not needs_web:" in src, \
+        "bare probe must be gated to WEB routes"
+    local_skip = src.split("elif not needs_web:", 1)[1][:1600]
+    assert "hedged(local-skip)" in local_skip, \
+        "LOCAL skip must stamp the audit line"
+    assert src.index("elif not needs_web:") < \
+        src.index("elif _is_context_dependent(question):") < \
+        src.index("Stage 2 — BARE PROBE"), "skip branch order wrong"
+    # refusal-shaped probe output is treated as no-ground
+    probe = src.split("Stage 2 — BARE PROBE", 1)[1][:8000]
+    assert "_probe_is_refusal(probe_answer)" in probe, \
+        "probe acceptance must reject refusal-shaped output"
+    assert '"refusal"' in probe, "refusal state must be stamped"
+    _ok("probe: WEB-only + grounded refusals never replace an answer")
+
+
 if __name__ == "__main__":
     print("=== opinion-grounding-exemption smoke ===")
     test_opinion_detector()
@@ -158,4 +270,9 @@ if __name__ == "__main__":
     test_both_call_sites_pass_opinion()
     test_context_dependent_detector()
     test_bare_probe_skipped_on_context_dependent()
+    test_probe_refusal_detector()
+    test_probe_refusal_catches_disambiguation()
+    test_probe_topic_capsule()
+    test_voice_cleaner_decodes_html_entities()
+    test_probe_gated_and_refusal_rejected()
     print("\nALL OPINION-GROUNDING SMOKE TESTS PASS")

@@ -1,16 +1,19 @@
-"""Smoke test: /ask intent router (structural grounding, 2026-06-19).
+"""Smoke test: /ask intent router (structural grounding, 2026-06-19;
+unified tooling 2026-07-16).
 
 Replaces the answer-keyword "trip" with an up-front decision about
-whether the QUESTION needs the open web. WEB questions route to a
-search-only pass (grounded by construction); banter / self-data take the
-normal multi-tool path. The classification is the model's semantic read
-of the question, not a regex over the output — so it can't misfire on
-arbitrary words like "June 19" or "unlock".
+whether the QUESTION needs the open web. The classification is the
+model's semantic read of the question, not a regex over the output — so
+it can't misfire on arbitrary words like "June 19" or "unlock".
+
+2026-07-16: the WEB verdict no longer swaps in a search-only config —
+every ask runs the full mixed-tool config (google_search + data tools).
+The verdict now feeds only the FACT/BANTER register and the grounding
+backstop / bare-probe gate.
 
 The classifier itself makes a live Gemini call, so here we cover:
 parsing, the fail-safe (errors default LOCAL, never raise), the router
-instruction's buckets, and that the router is wired into the answer path
-with a search-only config on the WEB branch.
+instruction's buckets, and the unified-tooling wiring.
 """
 
 import asyncio
@@ -145,21 +148,28 @@ def test_router_covers_type2_factual_edge():
     _ok("router instruction: Type 2 factual-edge -> WEB, pure vibe -> LOCAL")
 
 
-def test_router_wired_search_only():
+def test_router_wired_unified_tooling():
+    """2026-07-16 structural fix: the WEB route used to swap in a
+    SEARCH-ONLY config, amputating the bot's own financial-data tools —
+    earnings-date questions couldn't reach lookup_earnings_date, $ALP
+    price questions couldn't reach lookup_market_price, and 'couldn't
+    verify' hedges shipped for data one tool call away. Now EVERY ask
+    gets the full config; the router verdict survives only as the
+    FACT/BANTER register signal and the backstop's needs_web input."""
     import discord_bot.bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
     assert "_classify_ask_needs_web(" in src, "router not called in answer path"
-    assert "if needs_web:" in src, "needs_web branch missing"
-    # The WEB branch must build a SEARCH-ONLY config (no function tools).
-    web_branch = src.split("if needs_web:", 1)[1].split("else:", 1)[0]
-    assert "google_search=types.GoogleSearch()" in web_branch, \
-        "WEB branch must use google_search"
-    for fn in ["_build_trade_log_tool", "_build_market_price_tool",
-               "_build_chat_search_tool"]:
-        assert fn not in web_branch, (
-            f"WEB branch must be search-only — {fn} must not appear"
-        )
-    _ok("router wired: WEB→search-only config, LOCAL→multi-tool path")
+    assert "UNIFIED TOOLING" in src, "unified-tooling block missing"
+    # No per-route config swap: exactly ONE GenerateContentConfig built
+    # before the router (with the full toolset), none inside a WEB branch.
+    assert "if needs_web:" not in src, \
+        "the search-only WEB branch must stay dead"
+    # needs_web still feeds the grounding backstop and the probe gate.
+    assert "grounding_metadata, needs_web" in src, \
+        "needs_web must still drive the web-specifics trigger"
+    assert "elif not needs_web:" in src, \
+        "needs_web must still gate the bare probe"
+    _ok("router wired: unified multi-tool config; verdict feeds register + backstop only")
 
 
 if __name__ == "__main__":
@@ -170,5 +180,5 @@ if __name__ == "__main__":
     test_failsafe_on_empty_question()
     test_router_instruction_buckets()
     test_router_covers_type2_factual_edge()
-    test_router_wired_search_only()
+    test_router_wired_unified_tooling()
     print("\nALL /ASK INTENT ROUTER SMOKE TESTS PASS")

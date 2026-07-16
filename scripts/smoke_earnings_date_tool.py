@@ -377,40 +377,35 @@ def test_prompt_ta_teaching_examples_scrubbed():
         "scrubbed")
 
 
-def test_earnings_date_routes_local():
+def test_earnings_date_tool_always_reachable():
     """2026-07-15: 'which of the big AI players report earnings next
-    week' routed WEB — whose config is SEARCH-ONLY — so the dedicated
-    lookup_earnings_date tool was structurally unreachable, the bare
-    probe didn't ground, and a confabulated calendar shipped with a
-    hedge. Earnings-date shapes now force the LOCAL (multi-tool) route
-    where the tool + Google fallback both live."""
+    week' routed WEB — whose config was SEARCH-ONLY — so the dedicated
+    lookup_earnings_date tool was structurally unreachable and a
+    confabulated calendar shipped with a hedge. The first fix was an
+    _EARNINGS_DATE_RE override forcing those questions LOCAL.
+
+    2026-07-16 route unification made that override moot: every ask now
+    gets the full mixed-tool config, so lookup_earnings_date is
+    reachable regardless of the router's verdict. This test pins the
+    new invariant: the regex/override must stay REMOVED (its tombstone
+    stands in for it), and no per-route config swap may come back."""
     import inspect
     import discord_bot.bot as bot
-    for q in (
-        "which of the big ai players are reporting earnings next week?",
-        "when does spcx report earnings",
-        "earnings calendar for this week",
-        "who is reporting this week",
-        "nvda earnings date",
-    ):
-        assert bot._EARNINGS_DATE_RE.search(q), f"must route LOCAL: {q!r}"
-    for q in (
-        "thoughts on NVDA into earnings",   # opinion — untouched
-        "how did MU earnings look",          # results commentary — search
-        "why is wrap stock up today",
-    ):
-        assert not bot._EARNINGS_DATE_RE.search(q), \
-            f"must NOT force LOCAL: {q!r}"
+    assert not hasattr(bot, "_EARNINGS_DATE_RE"), \
+        "_EARNINGS_DATE_RE must stay removed (unified tooling made it moot)"
     src = inspect.getsource(bot._answer_with_gemini)
-    win = src.split("_EARNINGS_DATE_RE.search(question", 1)
-    assert len(win) == 2, "LOCAL override not wired after the router"
-    assert "needs_web = False" in win[1][:400], "override must force LOCAL"
-    _ok("earnings-date shapes force LOCAL (tool reachable); opinion/results untouched")
+    assert "_EARNINGS_DATE_RE" not in src, \
+        "the earnings-date LOCAL override must stay removed"
+    assert "UNIFIED TOOLING" in src, \
+        "unified-tooling block missing — the tool would be unreachable on WEB again"
+    assert "if needs_web:" not in src, \
+        "a per-route config swap is back — earnings tool unreachable on WEB routes"
+    _ok("earnings-date tool reachable on every route (override removed, unified config)")
 
 
 if __name__ == "__main__":
     print("=== lookup_earnings_date + Google-default + NO-TA smoke ===")
-    test_earnings_date_routes_local()
+    test_earnings_date_tool_always_reachable()
     test_fetcher_signature_and_guards()
     test_fetcher_splits_next_and_last()
     test_fetcher_timing_tbd_and_no_upcoming()

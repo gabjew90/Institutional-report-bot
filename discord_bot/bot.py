@@ -3609,11 +3609,79 @@ _CONTEXT_DEICTIC_RE = re.compile(
 # the user's actual text — their presence means the ask is ABOUT the
 # quoted material, so a bare-probe strip of everything-but-the-tail
 # drops exactly what the question references.
+#
+# 2026-07-16: [VERBATIM RECENT MESSAGES was REMOVED from this list.
+# Subject-verbatim blocks are injected whenever another member is
+# name-mentioned — usually incidental to the actual question. Counting
+# them made "what did ALP report?" (self-contained, searchable) read as
+# context-dependent, which skipped the probe and shipped an unverified
+# filing story with a hedge. Only reply/forward blocks (the ask is BY
+# CONSTRUCTION about them) count; incidental deixis is handled by the
+# tail regex.
 _REPLY_CONTEXT_MARKERS = (
     "[MESSAGE BEING REPLIED TO",
     "[FORWARDED MESSAGE",
-    "[VERBATIM RECENT MESSAGES",
 )
+
+
+# Probe-refusal shapes — a probe that "grounds" a refusal ABOUT the
+# question text has not answered anything. 2026-07-16 Cemini: "is glw
+# cooked or will i be needing rope and his ladder" (LOCAL/BANTER, room
+# in-jokes) drew an excellent in-voice GLW read; the market-shape
+# trigger fired on its dense specifics, the bare probe Googled the
+# literal room slang, "grounded" one BYU literature page about
+# executioners, and its "I cannot verify the terms 'omniwiz' or 'glw'"
+# refusal REPLACED the answer because the acceptance check only counted
+# grounding chunks. A grounded refusal is a no-ground.
+_PROBE_REFUSAL_RE = re.compile(
+    r"\b(?:i\s+cannot|i\s+am\s+unable|i'?m\s+unable|unable\s+to\s+"
+    r"(?:verify|confirm|find|locate))\b"
+    r"|\bcannot\s+(?:verify|confirm|find|locate)\b"
+    r"|\bdo(?:es)?\s+not\s+appear\s+in\s+(?:public\s+records|search)"
+    r"|\bno\s+(?:public\s+)?(?:records?|information)\s+(?:exists?|"
+    r"available|found)\b"
+    # Disambiguation essays are the same failure wearing a suit — the
+    # probe lost the thread's referent and answered about the WORD
+    # instead of the thing (2026-07-15 ALP: "so alp never reported?"
+    # became a treatise on alkaline phosphatase, the Australian Labor
+    # Party, and the arm's-length principle, "grounded" with 6 sources).
+    r"|\bacronym\s+with\s+(?:several|multiple|many)\b"
+    r"|\bseveral\s+(?:common|possible|different)\s+meanings?\b"
+    r"|\b(?:may|might|could)\s+be\s+referring\s+to\b"
+    r"|\bdepending\s+on\s+the\s+context\b"
+    r"|\bprovide\s+more\s+context\b",
+    re.IGNORECASE,
+)
+
+
+def _probe_is_refusal(text: str) -> bool:
+    """The probe answered ABOUT its inability (refusal) or ABOUT the
+    ambiguity of the words (disambiguation essay) — either way, not the
+    question. Never let it replace a real answer."""
+    return bool(text and _PROBE_REFUSAL_RE.search(text))
+
+
+def _probe_topic_capsule(question: str, prior_answer: str) -> str:
+    """One mechanical hint line pinning the probe to the thread's
+    SUBJECT — tickers/cashtags harvested from the question and from the
+    in-voice answer being verified (the answer knows what the thread is
+    about even when the question is three lowercase words). This is the
+    structural cure for probe decontextualization: the probe keeps its
+    anti-riff property (no room texture to lean on) but can no longer
+    read '$ALP' as alkaline phosphatase or 'rope' as an executioner."""
+    src = f"{question or ''} {prior_answer or ''}"
+    tickers = {t.upper() for t in re.findall(r"\$([A-Za-z]{1,6})\b", src)}
+    for t in re.findall(r"\b[A-Z]{2,6}\b", prior_answer or ""):
+        if t not in _HOOK_CAPS_STOP:
+            tickers.add(t)
+    if not tickers:
+        return ""
+    shown = sorted(tickers)[:6]
+    return (
+        "\n(Topic context: this question is about the stock ticker(s) "
+        + ", ".join(f"${t}" for t in shown)
+        + " — search in that financial context.)"
+    )
 
 
 def _is_context_dependent(question: str) -> bool:
@@ -4046,6 +4114,12 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     if not text:
         return text, []
     hit_kinds: list[str] = []
+
+    # HTML entities leak from Gemini into Discord as literal text
+    # (2026-07-15: "Q&nbsp;strategy" shipped in an ALP answer). Discord
+    # renders none of them — decode to their characters up front.
+    if "&" in text:
+        text = html.unescape(text).replace(" ", " ")
 
     # Phase 1: detect all lint hits BEFORE mutating the text so the
     # kinds list reflects what was in the original answer.
@@ -4623,23 +4697,9 @@ async def _classify_ask_needs_web(
         return (False, False)
 
 
-# Earnings-date shapes — "when does X report", "who reports next week",
-# "earnings this week". The bot has a dedicated Finnhub tool
-# (lookup_earnings_date, any US ticker) — but it lives in the MULTI-TOOL
-# config, and the router rubric sends earnings dates to WEB, whose
-# config is SEARCH-ONLY. 2026-07-15: kloh asked which AI players report
-# next week; the purpose-built tool was structurally unavailable, the
-# probe didn't ground, and a confabulated calendar shipped with a hedge.
-# Force LOCAL so the tool (plus Google fallback, both available there)
-# answers it.
-_EARNINGS_DATE_RE = re.compile(
-    r"\bwhen\s+(?:do(?:es)?|is|are|will)\b[^?\n]{0,40}\b(?:report|earnings)"
-    r"|\b(?:earnings|reports?|reporting)\b[^?\n]{0,40}\b(?:next|this)\s+week\b"
-    r"|\b(?:next|this)\s+week\b[^?\n]{0,40}\bearnings\b"
-    r"|\bearnings\s+(?:date|calendar)\b"
-    r"|\bwho(?:'s|\s+is|\s+all)?\s+report(?:s|ing)\b",
-    re.IGNORECASE,
-)
+# (2026-07-16: _EARNINGS_DATE_RE removed with the route unification —
+# lookup_earnings_date is now reachable on every ask, so no override is
+# needed to steer earnings-date questions toward it.)
 
 
 # Quote / lyric completion shapes — "finish the lyrics", "what's the
@@ -5175,17 +5235,9 @@ async def _answer_with_gemini(
             log.info(
                 "/ask: quote/lyric-completion shape — forcing WEB route"
             )
-        # Earnings-date questions go LOCAL: the dedicated
-        # lookup_earnings_date tool (plus Google fallback) lives in the
-        # multi-tool config; the WEB config is search-only and can't
-        # reach it (2026-07-15 kloh).
-        if _EARNINGS_DATE_RE.search(question or "") and needs_web:
-            needs_web = False
-            _route_is_factual = True
-            log.info(
-                "/ask: earnings-date shape — forcing LOCAL route "
-                "(lookup_earnings_date lives in the multi-tool config)"
-            )
+        # (2026-07-16: the earnings-date LOCAL override was removed —
+        # with unified tooling, lookup_earnings_date is reachable on
+        # every route, which was the whole point of the override.)
         # QC metadata accumulated through the whole answer path and
         # stamped into the ask-log entry — makes route/grounding/guard
         # decisions auditable instead of forensic (Railway logs rotate
@@ -5198,37 +5250,33 @@ async def _answer_with_gemini(
             # shows X" in the answer is a phantom read (2026-07-10).
             "images": len(images or []),
         }
-        # FACT questions get the straight-answer directive appended to
-        # the system instruction (classification-gated composition).
+        # UNIFIED TOOLING (2026-07-16 structural fix). The WEB route used
+        # to swap in a SEARCH-ONLY config — which amputated the bot's own
+        # financial-data tools. Repeated damage: earnings-date questions
+        # couldn't reach lookup_earnings_date (kloh, 07-15), $ALP price/
+        # filing questions couldn't reach lookup_market_price, and the
+        # resulting ungrounded answers shipped stacked with "couldn't
+        # verify" hedges for data that was one tool call away. Search-only
+        # never delivered its promise anyway — grounding stayed
+        # discretionary and the model skipped it regardless (07-08
+        # diagnosis). Now EVERY ask gets the full config (google_search +
+        # all data tools, mixed mode); the router's verdict survives as
+        # (a) the FACT/BANTER register signal and (b) `needs_web` feeding
+        # the grounding backstop's scrutiny — enforcement moved fully to
+        # the backstop ladder, where it actually works.
         _fact_extra = _ASK_FACT_DIRECTIVE if _route_is_factual else ""
-        if needs_web:
-            log.info(
-                f"/ask: intent-router → WEB/"
-                f"{'FACT' if _route_is_factual else 'BANTER'} "
-                f"(search-only pass) q={question[:80]!r}"
+        log.info(
+            f"/ask: intent-router → "
+            f"{'WEB' if needs_web else 'LOCAL'}/"
+            f"{'FACT' if _route_is_factual else 'BANTER'} "
+            f"(unified multi-tool pass) q={question[:80]!r}"
+        )
+        if _fact_extra:
+            # The config was built before the router ran — patch the
+            # directive in rather than rebuilding the tools.
+            config.system_instruction = (
+                _build_runtime_system_instruction(_fact_extra)
             )
-            config = types.GenerateContentConfig(
-                system_instruction=_build_runtime_system_instruction(
-                    _fact_extra
-                ),
-                tools=[types.Tool(google_search=types.GoogleSearch())],
-                safety_settings=safety_settings,
-                max_output_tokens=5000,
-                temperature=0.3,
-                thinking_config=types.ThinkingConfig(thinking_budget=2000),
-            )
-        else:
-            log.info(
-                f"/ask: intent-router → LOCAL/"
-                f"{'FACT' if _route_is_factual else 'BANTER'} "
-                f"(multi-tool pass) q={question[:80]!r}"
-            )
-            if _fact_extra:
-                # The multi-tool config was built before the router ran —
-                # patch the directive in rather than rebuilding the tools.
-                config.system_instruction = (
-                    _build_runtime_system_instruction(_fact_extra)
-                )
 
         # Token-budget reservation BEFORE the call. /ask assembles
         # a large prompt (WHO'S TALKING + analyst log + recent chat +
@@ -5892,6 +5940,30 @@ async def _answer_with_gemini(
                     grounding_metadata = forced_gm
                     _ask_meta["ground_retry"] = "in-voice:hedged"
                     log.info("/ask: grounded retry returned a hedged answer")
+                elif not needs_web:
+                    # Stage 2 is SKIPPED for LOCAL-routed questions. The
+                    # probe's whole mechanism — strip all context so
+                    # searching becomes the only move — is wrong when the
+                    # answer CAME FROM context: a LOCAL/BANTER question
+                    # full of room referents becomes a nonsense web query
+                    # (2026-07-16 Cemini: the probe Googled "omniwiz ...
+                    # rope and his ladder", grounded a literature page
+                    # about executioners, and its refusal replaced an
+                    # excellent in-voice GLW read). The in-voice retry
+                    # above already attempted grounding WITH context;
+                    # failing that, hedge and keep the answer.
+                    answer = (
+                        answer.rstrip()
+                        + "\n\n→ ⚠️ Couldn't verify these specifics "
+                        "against a live source — treat the exact "
+                        "numbers/dates as unconfirmed."
+                    )
+                    _ask_meta["ground_retry"] = "hedged(local-skip)"
+                    log.warning(
+                        "/ask: LOCAL-routed answer failed grounding retry "
+                        "— skipped the context-blind bare probe, kept "
+                        "in-voice answer + hedge"
+                    )
                 elif _is_context_dependent(question):
                     # Stage 2 is SKIPPED for context-dependent follow-ups.
                     # The bare probe strips all conversation history, so a
@@ -5932,7 +6004,10 @@ async def _answer_with_gemini(
                     _probe_ok = False
                     _probe_state = "error"  # overwritten below on a response
                     try:
-                        probe_q = question.strip()[-600:]
+                        probe_q = (
+                            question.strip()[-600:]
+                            + _probe_topic_capsule(question, answer)
+                        )
                         probe_resp = await client.aio.models.generate_content(
                             model=ask_model,
                             contents=[types.Content(
@@ -5979,6 +6054,11 @@ async def _answer_with_gemini(
                         except (AttributeError, IndexError, TypeError):
                             pass
                         _probe_state = "no-ground"
+                        if probe_answer and _probe_is_refusal(probe_answer):
+                            # A "grounded" I-cannot-verify is not an
+                            # answer — never let it replace one.
+                            _probe_state = "refusal"
+                            probe_answer = ""
                         if probe_answer and _grounding_has_sources(probe_gm):
                             # The probe bypassed the earlier voice-lint pass
                             # — run the mechanical cleaner so em-dashes /

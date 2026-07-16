@@ -96,15 +96,19 @@ def test_fact_directive_threaded_both_routes():
     src = inspect.getsource(bot._answer_with_gemini)
     assert "_fact_extra = _ASK_FACT_DIRECTIVE if _route_is_factual" in src, \
         "directive must be classification-gated"
-    # threaded into the WEB config AND patched into the LOCAL config
-    web_branch = src.split("if needs_web:", 1)[1]
-    assert "_build_runtime_system_instruction(" in web_branch
-    assert "config.system_instruction = (" in src, \
-        "LOCAL branch must patch the directive into the prebuilt config"
+    # 2026-07-16 unified tooling: there is ONE config for both routes —
+    # the directive is patched into it whenever the register is FACT,
+    # regardless of WEB/LOCAL.
+    assert "if _fact_extra:" in src, \
+        "directive patch must be gated on the FACT register only"
+    patch = src.split("if _fact_extra:", 1)[1][:400]
+    assert "config.system_instruction = (" in patch and \
+        "_build_runtime_system_instruction(_fact_extra)" in patch, \
+        "FACT register must patch the directive into the unified config"
     # builder accepts the extra
     sig = inspect.signature(bot._build_runtime_system_instruction)
     assert "extra_directive" in sig.parameters, "builder must take the extra"
-    _ok("FACT directive: gated + threaded into WEB and LOCAL configs")
+    _ok("FACT directive: register-gated + patched into the unified config")
 
 
 def test_bare_probe_wired():
@@ -117,8 +121,13 @@ def test_bare_probe_wired():
     assert "fact-checking search agent" in probe, "probe persona missing"
     assert "_build_runtime_system_instruction" not in probe.split(
         "if not _probe_ok:", 1)[0], "probe must not reuse the room persona"
-    assert "probe_q = question.strip()[-600:]" in probe, \
+    assert "question.strip()[-600:]" in probe, \
         "probe must send the bare question, not the full contents"
+    # 2026-07-16: plus a mechanical topic capsule so the probe keeps the
+    # thread's SUBJECT ($ALP = the stock, not alkaline phosphatase)
+    # without regaining the room texture it must not riff on.
+    assert "_probe_topic_capsule(question, answer)" in probe, \
+        "probe must carry the topic capsule"
     # search-only tool config
     assert "google_search=types.GoogleSearch()" in probe
     # accepted only when actually grounded; mechanical clean before accept
