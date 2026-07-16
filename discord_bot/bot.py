@@ -4623,6 +4623,25 @@ async def _classify_ask_needs_web(
         return (False, False)
 
 
+# Earnings-date shapes — "when does X report", "who reports next week",
+# "earnings this week". The bot has a dedicated Finnhub tool
+# (lookup_earnings_date, any US ticker) — but it lives in the MULTI-TOOL
+# config, and the router rubric sends earnings dates to WEB, whose
+# config is SEARCH-ONLY. 2026-07-15: kloh asked which AI players report
+# next week; the purpose-built tool was structurally unavailable, the
+# probe didn't ground, and a confabulated calendar shipped with a hedge.
+# Force LOCAL so the tool (plus Google fallback, both available there)
+# answers it.
+_EARNINGS_DATE_RE = re.compile(
+    r"\bwhen\s+(?:do(?:es)?|is|are|will)\b[^?\n]{0,40}\b(?:report|earnings)"
+    r"|\b(?:earnings|reports?|reporting)\b[^?\n]{0,40}\b(?:next|this)\s+week\b"
+    r"|\b(?:next|this)\s+week\b[^?\n]{0,40}\bearnings\b"
+    r"|\bearnings\s+(?:date|calendar)\b"
+    r"|\bwho(?:'s|\s+is|\s+all)?\s+report(?:s|ing)\b",
+    re.IGNORECASE,
+)
+
+
 # Quote / lyric completion shapes — "finish the lyrics", "what's the
 # next line", "complete the quote". Completing a verbatim text is a
 # LOOKUP: 2026-07-12 the bot invented a fake bar rather than complete a
@@ -5155,6 +5174,17 @@ async def _answer_with_gemini(
             _route_is_factual = True
             log.info(
                 "/ask: quote/lyric-completion shape — forcing WEB route"
+            )
+        # Earnings-date questions go LOCAL: the dedicated
+        # lookup_earnings_date tool (plus Google fallback) lives in the
+        # multi-tool config; the WEB config is search-only and can't
+        # reach it (2026-07-15 kloh).
+        if _EARNINGS_DATE_RE.search(question or "") and needs_web:
+            needs_web = False
+            _route_is_factual = True
+            log.info(
+                "/ask: earnings-date shape — forcing LOCAL route "
+                "(lookup_earnings_date lives in the multi-tool config)"
             )
         # QC metadata accumulated through the whole answer path and
         # stamped into the ask-log entry — makes route/grounding/guard
@@ -8049,7 +8079,15 @@ def create_bot() -> commands.Bot:
         except Exception as e:
             log.error(f"@mention /ask failed: {e}", exc_info=True)
             try:
-                await message.reply(f"Error: {str(e)[:200]}", mention_author=False)
+                # Room-voice failure line (2026-07-15: a double-500 shipped
+                # "(failed: ServerError: 500 INTERNAL {'error': ...})" as
+                # chat text). The raw error stays in logs + the ask-log
+                # 'failed' entry; the room gets a human line.
+                await message.reply(
+                    "→ Gemini choked on that one mid-answer. Run it back "
+                    "in a minute.",
+                    mention_author=False,
+                )
             except Exception:
                 pass
         await bot.process_commands(message)

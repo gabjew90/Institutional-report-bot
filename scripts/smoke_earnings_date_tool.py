@@ -377,8 +377,40 @@ def test_prompt_ta_teaching_examples_scrubbed():
         "scrubbed")
 
 
+def test_earnings_date_routes_local():
+    """2026-07-15: 'which of the big AI players report earnings next
+    week' routed WEB — whose config is SEARCH-ONLY — so the dedicated
+    lookup_earnings_date tool was structurally unreachable, the bare
+    probe didn't ground, and a confabulated calendar shipped with a
+    hedge. Earnings-date shapes now force the LOCAL (multi-tool) route
+    where the tool + Google fallback both live."""
+    import inspect
+    import discord_bot.bot as bot
+    for q in (
+        "which of the big ai players are reporting earnings next week?",
+        "when does spcx report earnings",
+        "earnings calendar for this week",
+        "who is reporting this week",
+        "nvda earnings date",
+    ):
+        assert bot._EARNINGS_DATE_RE.search(q), f"must route LOCAL: {q!r}"
+    for q in (
+        "thoughts on NVDA into earnings",   # opinion — untouched
+        "how did MU earnings look",          # results commentary — search
+        "why is wrap stock up today",
+    ):
+        assert not bot._EARNINGS_DATE_RE.search(q), \
+            f"must NOT force LOCAL: {q!r}"
+    src = inspect.getsource(bot._answer_with_gemini)
+    win = src.split("_EARNINGS_DATE_RE.search(question", 1)
+    assert len(win) == 2, "LOCAL override not wired after the router"
+    assert "needs_web = False" in win[1][:400], "override must force LOCAL"
+    _ok("earnings-date shapes force LOCAL (tool reachable); opinion/results untouched")
+
+
 if __name__ == "__main__":
     print("=== lookup_earnings_date + Google-default + NO-TA smoke ===")
+    test_earnings_date_routes_local()
     test_fetcher_signature_and_guards()
     test_fetcher_splits_next_and_last()
     test_fetcher_timing_tbd_and_no_upcoming()
