@@ -6,6 +6,7 @@ import logging
 import re
 import time
 from datetime import datetime, timedelta, timezone
+from types import SimpleNamespace
 from urllib.parse import urlparse
 
 import aiohttp
@@ -5318,12 +5319,27 @@ async def _answer_with_gemini(
         # what they returned. Without it, tool-grounded answers look
         # fabricated to the grader.
         _ask_tool_trace: list[dict] = []
+        # Grounding evidence accumulated across rounds (2026-07-16 fix).
+        # In the unified mixed-tool config the model often searches FIRST
+        # and then calls a function tool; the search's grounding_metadata
+        # rides on that EARLIER round's response. Reading gm only off the
+        # final text response threw the receipt away — a correct, freshly
+        # searched TSM-earnings answer stamped 'ungrounded' and shipped
+        # wearing a "couldn't verify" hedge. Collect every round's chunks.
+        _round_gm_chunks: list = []
         for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
             response = await client.aio.models.generate_content(
                 model=ask_model,
                 contents=contents,
                 config=config,
             )
+            try:
+                _rgm = response.candidates[0].grounding_metadata
+                _round_gm_chunks.extend(
+                    getattr(_rgm, "grounding_chunks", None) or []
+                )
+            except (AttributeError, IndexError, TypeError):
+                pass
             # Tally actual usage per round so the budget reflects
             # what we really spent rather than the reservation.
             try:
@@ -5838,6 +5854,23 @@ async def _answer_with_gemini(
             grounding_metadata = response.candidates[0].grounding_metadata
         except (AttributeError, IndexError, TypeError):
             pass
+        if not _grounding_has_sources(grounding_metadata) and _round_gm_chunks:
+            # The final text turn carries no gm, but an earlier round of
+            # the tool loop searched — that evidence grounds this answer
+            # (and feeds the sources footer). Dedup chunks by URI.
+            _seen_uris: set[str] = set()
+            _merged = []
+            for ch in _round_gm_chunks:
+                uri = getattr(getattr(ch, "web", None), "uri", None) or id(ch)
+                if uri in _seen_uris:
+                    continue
+                _seen_uris.add(uri)
+                _merged.append(ch)
+            grounding_metadata = SimpleNamespace(grounding_chunks=_merged)
+            log.info(
+                f"/ask: grounding recovered from earlier tool-loop round(s) "
+                f"({len(_merged)} chunk(s)) — final turn had none"
+            )
 
         # Grounding backstop — structural enforcement of "Type 1 needs a
         # source." If the answer asserts market-fact specifics yet

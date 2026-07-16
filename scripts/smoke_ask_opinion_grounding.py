@@ -242,6 +242,37 @@ def test_voice_cleaner_decodes_html_entities():
     _ok("voice cleaner: HTML entities decoded, NBSP -> space")
 
 
+def test_grounding_accumulated_across_tool_rounds():
+    """2026-07-16: 'what were TSM earnings this morning' came back with
+    every number exactly right (verified vs the SEC 6-K) and STILL
+    shipped a 'couldn't verify' hedge. In the unified mixed-tool config
+    the model searches on an early round and then calls a function tool;
+    the search's grounding_metadata rides on THAT round's response, and
+    the code read gm only off the final text turn — throwing the receipt
+    away and stamping a correct, freshly-searched answer 'ungrounded'.
+    Grounding chunks must be accumulated across every round."""
+    import inspect
+    import discord_bot.bot as bot
+    src = inspect.getsource(bot._answer_with_gemini)
+    assert "_round_gm_chunks" in src, "per-round grounding accumulator missing"
+    # collected INSIDE the tool loop, right after each generate_content
+    loop = src.split("for round_idx in range(", 1)[1]
+    assert "_round_gm_chunks.extend(" in loop[:1600], \
+        "each round's grounding chunks must be collected"
+    # merged into the effective gm when the final turn has none
+    assert "SimpleNamespace(grounding_chunks=_merged)" in src, \
+        "earlier-round evidence must back-fill the final gm"
+    assert "grounding recovered from earlier tool-loop round" in src, \
+        "recovery must be logged for QC"
+    # dedup by URI so repeated chunks don't inflate the sources footer
+    assert "_seen_uris" in src, "chunk dedup missing"
+    # the shim satisfies the detector
+    from types import SimpleNamespace as _SN
+    assert bot._grounding_has_sources(_SN(grounding_chunks=[object()])), \
+        "detector must accept the merged shim"
+    _ok("grounding: search evidence from earlier tool rounds is kept")
+
+
 def test_probe_gated_and_refusal_rejected():
     import discord_bot.bot as bot
     src = inspect.getsource(bot._answer_with_gemini)
@@ -274,5 +305,6 @@ if __name__ == "__main__":
     test_probe_refusal_catches_disambiguation()
     test_probe_topic_capsule()
     test_voice_cleaner_decodes_html_entities()
+    test_grounding_accumulated_across_tool_rounds()
     test_probe_gated_and_refusal_rejected()
     print("\nALL OPINION-GROUNDING SMOKE TESTS PASS")
