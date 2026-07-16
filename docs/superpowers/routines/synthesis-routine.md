@@ -459,6 +459,82 @@ PYEOF
 
 2. Report: "Pulse skipped — <holiday name>, US markets closed. Skip marker committed. No pulse posted (by design)." Do NOT run STEP 2.5 or anything after; do NOT post to Discord.
 
+### STEP 2.2 — Corpus-volume gate (mandatory)
+
+A pulse synthesized from a handful of PDFs is thin gruel. 2026-07-16: the upstream research feed ran ~14 hours late, the 10 AM fire found only **4 analyzed PDFs** in its window, and 36 PDFs landed in Dropbox six minutes after the context snapshot. The pulse shipped with pdf_count: 4 while the real corpus sat in the processing queue.
+
+The bridge re-dumps `pulse-context/latest.json` every ~15 minutes, so waiting and re-fetching picks up the corpus as the worker processes it. Gate: **when `pdf_count` < 10, wait and re-fetch (10-minute intervals, up to 9 attempts = ~90 minutes) until `pdf_count` ≥ 10 or the wait budget is exhausted.**
+
+```bash
+python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
+import json, time, urllib.request, os, subprocess
+
+MIN_PDFS = 10
+MAX_WAITS = 9          # x 600s = 90 minutes max delay
+WAIT_SECS = 600
+
+def _read_token() -> str:
+    v = (os.environ.get('GH_TOKEN') or '').strip()
+    if v:
+        return v
+    try:
+        return open('/tmp/gh_token.txt').read().strip()
+    except FileNotFoundError:
+        return ''
+
+GH_TOKEN = _read_token()
+URL = 'https://raw.githubusercontent.com/gabjew90/Institutional-report-bot/pulse-data/pulse-context/latest.json'
+
+ctx = json.load(open('/tmp/ctx.json'))
+count = ctx.get('pdf_count') or 0
+waited = 0
+while count < MIN_PDFS and waited < MAX_WAITS:
+    waited += 1
+    print(f"volume gate: pdf_count={count} < {MIN_PDFS} — wait {waited}/{MAX_WAITS} ({WAIT_SECS}s), then re-fetch")
+    # progress event so the watcher sees the routine is deliberately waiting
+    try:
+        subprocess.run(['python3', '/tmp/progress.py', f'VOLUME_WAIT_{waited}',
+                        f'pdf_count={count}'], timeout=60)
+    except Exception:
+        pass
+    time.sleep(WAIT_SECS)
+    try:
+        req = urllib.request.Request(URL, headers={'Authorization': f'token {GH_TOKEN}'})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            body = resp.read()
+        new_ctx = json.loads(body)
+        new_count = new_ctx.get('pdf_count') or 0
+        # The bridge only re-dumps when there are analyses in the window;
+        # accept the refreshed context only when it isn't going BACKWARD.
+        if new_count >= count:
+            with open('/tmp/ctx.json', 'wb') as f:
+                f.write(body)
+            ctx, count = new_ctx, new_count
+    except Exception as e:
+        print(f"volume gate: re-fetch failed ({e}) — keeping current context")
+
+if count < MIN_PDFS:
+    # Wait budget exhausted — ship anyway (a late thin pulse beats no
+    # pulse; could be a genuinely quiet day), but hand DRAFT a binding
+    # note so the pulse doesn't overreach its evidence.
+    note = (
+        "[THIN-CORPUS NOTE — binding]\n"
+        f"- Only {count} research PDFs are in this window (normal is 60+); "
+        "the research feed ran late or light today. Ship FEWER, deeper "
+        "themes (2-3 max), do not pad breadth, and do not present "
+        "single-bank views as cross-desk consensus — with a corpus this "
+        "thin, name the bank on every claim."
+    )
+    open('/tmp/thin_corpus_note.txt', 'w').write(note)
+    print(f"volume gate: budget exhausted at pdf_count={count} — proceeding with thin-corpus note")
+else:
+    print(f"volume gate: pdf_count={count} — proceed")
+PYEOF
+python3 /tmp/progress.py "STEP_2_2_DONE"
+```
+
+**If `/tmp/thin_corpus_note.txt` exists, append its full content to the DRAFT prompt input in STEP 4** (alongside the press-time note). STEP 2.5 runs AFTER this gate so its freshness math evaluates the FINAL context — a 60-minute wait makes the original snapshot stale by definition, and the re-fetched dump resets that clock.
+
 ### STEP 2.5 — Press-time freshness check (mandatory)
 
 The context is a SNAPSHOT from `dumped_at_utc`; the pulse posts at fire time. Anything that happened in between — most importantly an 8:30 AM ET data print before a ~10:05 post — is invisible to the snapshot, and the calendar inside it still says "upcoming" for events that have since occurred. (2026-07-02 failure: the dump job froze at 09:25 UTC, the pulse consumed 4-hour-stale context and told readers to WATCH the 8:30 payrolls print at 9:06 AM.) Reconcile at press time:
@@ -1246,7 +1322,7 @@ python3 /tmp/progress.py "STEP_3_5_DONE"
 
 ## STEP 4 — Generate DRAFT (Stage 1)
 
-Apply `DRAFT_USER` substitutions and `DRAFT_SYSTEM`. **If `/tmp/press_time_note.txt` exists (STEP 2.5), append its full content to the DRAFT input** — it is binding on how straddled data prints and stale live prices are framed. **If `/tmp/adjudication.json` exists and its `themes` array is non-empty**, inject the adjudicated themes block as added structured input that the prose can use to ground its claims. **If it doesn't exist, or its `themes` array is empty** (e.g., adjudication was skipped due to missing `theme_map`, or every theme failed lint), skip the injection entirely and run DRAFT against the existing per-PDF JSON inputs only — the pulse still ships with no degradation in surface output, just without the structured adjudication grounding.
+Apply `DRAFT_USER` substitutions and `DRAFT_SYSTEM`. **If `/tmp/press_time_note.txt` exists (STEP 2.5), append its full content to the DRAFT input** — it is binding on how straddled data prints and stale live prices are framed. **If `/tmp/thin_corpus_note.txt` exists (STEP 2.2), append it too** — it is binding on theme count and attribution discipline when the corpus is unusually thin. **If `/tmp/adjudication.json` exists and its `themes` array is non-empty**, inject the adjudicated themes block as added structured input that the prose can use to ground its claims. **If it doesn't exist, or its `themes` array is empty** (e.g., adjudication was skipped due to missing `theme_map`, or every theme failed lint), skip the injection entirely and run DRAFT against the existing per-PDF JSON inputs only — the pulse still ships with no degradation in surface output, just without the structured adjudication grounding.
 
 ```
 ADJUDICATED THEMES (use these consensus_view, facts_agreed, and falsifiable_predictions

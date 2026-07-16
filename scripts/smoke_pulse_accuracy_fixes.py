@@ -281,6 +281,31 @@ def test_cashtag_scrub_collisions_removed():
     _ok("stitch: US-tradable tickers out of the scrub map; foreign ones kept")
 
 
+def test_routine_volume_gate():
+    """2026-07-16: the research feed ran ~14h late, the 10 AM fire found
+    4 PDFs, and 36 landed six minutes after the snapshot. The routine
+    must wait (re-fetching the ~15-min context dumps) until pdf_count
+    >= 10 or ~90 minutes pass, then ship with a binding thin-corpus
+    note if still short."""
+    md = open(os.path.join(_ROOT, "docs", "superpowers", "routines",
+                           "synthesis-routine.md"), encoding="utf-8").read()
+    assert "STEP 2.2 — Corpus-volume gate" in md, "volume gate step missing"
+    assert "MIN_PDFS = 10" in md, "10-PDF floor missing"
+    assert "MAX_WAITS = 9" in md and "WAIT_SECS = 600" in md, \
+        "wait budget must be bounded (~90 min)"
+    assert "thin_corpus_note.txt" in md, "thin-corpus fallback note missing"
+    assert md.count("thin_corpus_note.txt") >= 2, \
+        "the note must be wired into the STEP 4 DRAFT dispatch"
+    assert "if new_count >= count:" in md, \
+        "re-fetched context must never go backward"
+    # gate must run BEFORE the press-time check so freshness math sees
+    # the FINAL context
+    assert md.index("STEP 2.2 — Corpus-volume gate") < \
+        md.index("STEP 2.5 — Press-time freshness check"), \
+        "volume gate must precede the press-time check"
+    _ok("routine: corpus-volume gate waits for >=10 PDFs, bounded, noted")
+
+
 # ---------------------------------------------------------------------------
 # Task 6 — multimodal docs/code alignment
 # ---------------------------------------------------------------------------
@@ -315,5 +340,6 @@ if __name__ == "__main__":
     test_ratings_legend()
     test_discord_footer_disclaimer()
     test_cashtag_scrub_collisions_removed()
+    test_routine_volume_gate()
     test_multimodal_prompt_alignment()
     print("\nALL PULSE ACCURACY BATCH SMOKE TESTS PASS")
