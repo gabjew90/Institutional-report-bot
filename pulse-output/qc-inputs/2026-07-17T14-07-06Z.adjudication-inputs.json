@@ -1,0 +1,3266 @@
+{
+ "ai bubble risk": {
+  "theme": "ai bubble risk",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 2,
+   "neutral": 7
+  },
+  "theme_stances": [
+   {
+    "source": "Bank of America",
+    "theme": "ai bubble risk",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "High BRI readings and elevated single stock volatility suggest bubble-like dynamics that leave markets vulnerable to shocks.",
+    "primary_instruments": [
+     "SPX",
+     "NDX"
+    ],
+    "vs_consensus": "",
+    "evidence": "single stock realized vol has risen to levels last seen in the late 90s dotcom bubble"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "data center load growth",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Data centers are a key driver for long-term EPS growth and incremental capex opportunities.",
+    "primary_instruments": [
+     "DUK",
+     "XEL",
+     "FE",
+     "PCG",
+     "AEP"
+    ],
+    "vs_consensus": "",
+    "evidence": "We continue to believe data centers are a key driver behind management\u2019s confidence"
+   },
+   {
+    "source": "UBS",
+    "theme": "ai capex outlook",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Recent sell-off is a technical de-grossing event rather than a fundamental deterioration.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "sell-off in AI capex and other crowded winners looks increasingly like a technical de-grossing event"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai infrastructure spending",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "AI infrastructure is the primary driver of S&P 500 EPS growth this quarter.",
+    "primary_instruments": [
+     "NVDA",
+     "MU",
+     "MSFT"
+    ],
+    "vs_consensus": "",
+    "evidence": "AI infrastructure = ~60% of S&P 500 EPS growth this quarter."
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "AI debt bubble",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The pace of debt issuance to fund AI capex is unsustainable and is beginning to cause market carnage.",
+    "primary_instruments": [],
+    "vs_consensus": "contrarian",
+    "evidence": "what is going on in the hyperscaler/AI bond market is tantamount to a bubble"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai bubble risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI supply chain trade growth",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI supply chain trade growth"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "ai bubble risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI semiconductor trade cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI semiconductor trade cycle"
+   },
+   {
+    "source": "UBS",
+    "theme": "ai bubble risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI bubble cycle stages",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI bubble cycle stages"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "BofA",
+    "figure": "0.11",
+    "metric": "S&P 500 constituent 3-month daily correlation",
+    "context": "Historical low"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "60%",
+    "metric": "Passive AUM share",
+    "context": "As of May 2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "1.2%",
+    "metric": "Large Cap Growth AUM in private companies",
+    "context": "As of 2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$4,088.74",
+    "metric": "Gold death cross trigger price",
+    "context": "Triggered June 26, 2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "70%",
+    "metric": "Probability of gold being lower 40 trading days after death cross",
+    "context": "Based on 30 signals since 1975"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$3,827",
+    "metric": "TD Sequential risk level",
+    "context": "Valid while gold holds above this level"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$85.50",
+    "metric": "2Q26 EPS forecast",
+    "context": "vs $81.81 consensus"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$345",
+    "metric": "2026 EPS forecast",
+    "context": "raised from $335"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "1.3x",
+    "metric": "3m quarterly guidance ratio",
+    "context": "as of June 2026; 94th percentile since 2000"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "5.6% YoY",
+    "metric": "Total card spending excluding gas",
+    "context": "June 2026, strongest since April 2022"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "92nd %ile",
+    "metric": "S&P single stock realized volatility",
+    "context": "Since 1990, as of 10-Jul-26."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "74%",
+    "metric": "Nikkei hedge cost reduction",
+    "context": "Via 80% knock-out put structure."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "1.3%",
+    "metric": "TSMC downside risk",
+    "context": "Premium outlay for 1x2 call ratio."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "89%",
+    "metric": "STOXX 600 market cap reporting earnings",
+    "context": "Between July and August 2026 monthly option expiries."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~3%",
+    "metric": "2Q26 EPS estimate vs consensus",
+    "context": "Average difference across coverage universe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4%",
+    "metric": "2Q26 EPS estimate revision",
+    "context": "Average upward revision for 2Q26."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~2%",
+    "metric": "2026 EPS estimate revision",
+    "context": "Average upward revision for full year 2026."
+   },
+   {
+    "source_bank": "Truckstop.com",
+    "figure": "+101%",
+    "metric": "Market demand index YoY growth",
+    "context": "Average YTD."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+30%",
+    "metric": "Big Three West Coast imports YoY growth",
+    "context": "Most recent reading."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.5%",
+    "metric": "Total return target for TRY/NGN/KZT basket",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Total return target for USD/EGP",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-14.5%",
+    "metric": "WMT price variance vs. group average",
+    "context": "As of July 13, 2026; narrowed from -15.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6.9%",
+    "metric": "DG price variance vs. group average",
+    "context": "As of July 13, 2026; vs. -6.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10.3%",
+    "metric": "ACI price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+9.3%",
+    "metric": "WFM price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-13.2%",
+    "metric": "KR produce price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "HundredX",
+    "figure": "0.4173",
+    "metric": "R-squared correlation between value perception and NPI",
+    "context": "T3M, June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19.1%",
+    "metric": "Core ROTCE",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "400bps",
+    "metric": "Operating leverage YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Loan growth YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.8%",
+    "metric": "Standardized CET1 ratio",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$200mn",
+    "metric": "Stock buybacks",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "53bps",
+    "metric": "NCOs",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.02",
+    "metric": "2Q26 adjusted EPS",
+    "context": "Reported 2Q26 vs $1.86 consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.6bn",
+    "metric": "2Q26 revenue",
+    "context": "Reported 2Q26, up 24% YoY"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.03bn",
+    "metric": "2Q26 free cash flow",
+    "context": "Reported 2Q26 vs $1.82bn consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$7.65-$7.85",
+    "metric": "2026 adjusted EPS guidance",
+    "context": "Raised from $7.10-$7.40 prior; consensus $7.56"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$10.55-$10.75bn",
+    "metric": "2026 operating profit guidance",
+    "context": "Raised from $9.85-$10.25bn prior; consensus $10.44bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.9-$9.2bn",
+    "metric": "2026 free cash flow guidance",
+    "context": "Raised from $8.0-$8.4bn prior; consensus $8.37bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2bn",
+    "metric": "Private bank spot deposit growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2bn",
+    "metric": "Private bank loan growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.4%",
+    "metric": "CET1 ratio",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$225mn",
+    "metric": "Share repurchases",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.37%",
+    "metric": "NCOs as % of avg loans",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac43bn-\u20ac45bn",
+    "metric": "FY26 revenue guidance",
+    "context": "Upgraded from \u20ac36bn-\u20ac40bn prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "54%-56%",
+    "metric": "FY26 gross margin guidance",
+    "context": "Upgraded from 51%-53% prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac2,200",
+    "metric": "12-month price target",
+    "context": "Raised from \u20ac2,000"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">25%",
+    "metric": "FY26 advanced Logic system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">75%",
+    "metric": "FY26 Memory system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "c.30%",
+    "metric": "2027 EUV and immersion capacity increase",
+    "context": "Targeted capacity expansion"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "110 systems",
+    "metric": "Potential 2028 EUV output",
+    "context": "Based on cleanroom optimization"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "255m",
+    "metric": "Global PC shipments",
+    "context": "2026E shipment forecast"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "59%",
+    "metric": "AI PC penetration",
+    "context": "2026E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "82%",
+    "metric": "AI PC penetration",
+    "context": "2028E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$282",
+    "metric": "12m Price Target",
+    "context": "Raised from $275"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.65",
+    "metric": "2026 EPS Estimate",
+    "context": "Raised from $11.55"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.6B",
+    "metric": "2026 Tremfya Revenue Estimate",
+    "context": "Raised 10%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8B",
+    "metric": "Icotyde Peak Sales Estimate",
+    "context": "Raised from $7.7B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "Cash on hand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11%",
+    "metric": "average total return across regulated coverage",
+    "context": "As of 7/15/26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1%",
+    "metric": "GS vs consensus EPS delta for Buy rated utilities",
+    "context": "2Q26 estimate"
+   },
+   {
+    "source_bank": "FirstEnergy",
+    "figure": "5.6 GW",
+    "metric": "contracted data center demand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "PG&E Corp",
+    "figure": "10 GW+",
+    "metric": "reapplication interest from 2026 cluster study",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$2-4bn",
+    "metric": "Total potential synergy value",
+    "context": "Estimated value unlock from Spence/Sierra Gorda collaboration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.0-1.7bn",
+    "metric": "Synergy value for Spence",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.1-1.9bn",
+    "metric": "Synergy value for Sierra Gorda",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$0.25/sh",
+    "metric": "Indicative value uplift for BHP",
+    "context": "Mid-point estimate."
+   },
+   {
+    "source_bank": "South32",
+    "figure": "1.1-2.9Bt",
+    "metric": "Catabela Northeast exploration target",
+    "context": "Announced by S32, technical assessment due 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "32% GDP",
+    "metric": "US Treasury Debt to GDP",
+    "context": "Pre-GFC level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "91% GDP",
+    "metric": "US Treasury Debt to GDP",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "55%",
+    "metric": "Combined Fed and foreign central bank Treasury share",
+    "context": "2014 level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "28%",
+    "metric": "Combined Fed and foreign central bank Treasury share",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "6%",
+    "metric": "Mutual fund/ETF/MMF Treasury share",
+    "context": "Pre-GFC level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "21%",
+    "metric": "Mutual fund/ETF/MMF Treasury share",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "T-bill share of total debt",
+    "context": "2019 level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "T-bill share of total debt",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22 million metric tonnes",
+    "metric": "Reduction in Chinese monthly import volumes relative to February",
+    "context": "Equivalent to 5.2 mb/d"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "6 mb/d",
+    "metric": "Oil flow via Saudi and UAE pipelines",
+    "context": "Pre-June MoU"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$33 billion",
+    "metric": "Annualized customs duty receipts at peak",
+    "context": "October 2025 peak, amounted to 1.3% of GDP"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "24%",
+    "metric": "Decline in U.S. imports",
+    "context": "Excluding technology products, vs pre-Liberation Day levels"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$22 billion",
+    "metric": "IEEPA tariff refund payments",
+    "context": "Total issued during May 2026"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$166 billion",
+    "metric": "Total IEEPA tariff revenue",
+    "context": "Estimated total subject to potential repayment"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "40bn",
+    "metric": "US IG gross issuance",
+    "context": "Weekly issuance pick-up."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "11bn",
+    "metric": "US LL gross issuance",
+    "context": "Weekly issuance pick-up."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "75bp",
+    "metric": "US IG OAS",
+    "context": "Current spread level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "264bp",
+    "metric": "US HY OAS",
+    "context": "Current spread level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "493bp",
+    "metric": "US LL OAS",
+    "context": "Current spread level."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "16%",
+    "metric": "SOX decline from June all-time high",
+    "context": "Technical correction status"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "60x",
+    "metric": "SOX implied volatility",
+    "context": "Observed earlier this week"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "20%+",
+    "metric": "Semiconductor share of daily global volumes",
+    "context": "Across 10,000 global DM & EM stocks"
+   },
+   {
+    "source_bank": "Soc Gen",
+    "figure": "82%",
+    "metric": "FMS investors calling long semis most crowded trade",
+    "context": "FMS survey"
+   },
+   {
+    "source_bank": "Evercore ISI",
+    "figure": "81%",
+    "metric": "Investors currently long semiconductors",
+    "context": "Survey data"
+   },
+   {
+    "source_bank": "Evercore ISI",
+    "figure": "48%",
+    "metric": "Investors expecting SOX peak in 1H27",
+    "context": "Survey data"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.8T",
+    "metric": "Combined AI capex forecast for 2026/2027",
+    "context": "Driving negative FCF in Big Tech."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Retail share of US equity volumes",
+    "context": "As of July 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50M",
+    "metric": "Daily total option contracts",
+    "context": "Record average volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Call options as share of total options traded",
+    "context": "Recent peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.6B",
+    "metric": "Average daily retail net buying",
+    "context": "Year-to-date 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20%",
+    "metric": "S&P 500 P/E ratio",
+    "context": "Current valuation level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60%",
+    "metric": "AI infrastructure contribution to S&P 500 EPS growth",
+    "context": "Q2 2026 estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5",
+    "metric": "Sentiment indicator",
+    "context": "Above 1.0 is considered stretched."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Beat frequency",
+    "context": "Last quarter."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "1.8x",
+    "metric": "Hyperscaler gross leverage",
+    "context": "Surged from 0.9x in Q3 2025"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5.8 trillion",
+    "metric": "Combined AI capex estimate",
+    "context": "FY2025-FY2030"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7.3%",
+    "metric": "SpaceX bond YTW",
+    "context": "Trading two weeks after IPO"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$241B",
+    "metric": "AI-related IG issuance",
+    "context": "YTD 2026"
+   },
+   {
+    "source_bank": "TSMC",
+    "figure": "36% YoY",
+    "metric": "TSMC Q2 sales growth",
+    "context": "Q2 sales, reported July 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "27% below highs",
+    "metric": "KOSPI drawdown",
+    "context": "As of July 14, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65% premium",
+    "metric": "AAPL valuation vs S&P 500",
+    "context": "Highest level in 15+ years."
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "2.34%",
+    "metric": "10yr real rates",
+    "context": "Highest since April 2025, up from 2.11% at end of June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "12%",
+    "metric": "Share of national income held by the top 0.00001%",
+    "context": "Equivalent to the wealth of the richest Americans in a single year."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "40 years",
+    "metric": "Duration of decline in wages as a % of US gross domestic income",
+    "context": "Trend observed prior to post-GFC stabilization."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~3%",
+    "metric": "2Q26 EPS estimate vs consensus",
+    "context": "Average difference across coverage universe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4%",
+    "metric": "2Q26 EPS estimate revision",
+    "context": "Average upward revision for 2Q26."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~2%",
+    "metric": "2026 EPS estimate revision",
+    "context": "Average upward revision for full year 2026."
+   },
+   {
+    "source_bank": "Truckstop.com",
+    "figure": "+101%",
+    "metric": "Market demand index YoY growth",
+    "context": "Average YTD."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+30%",
+    "metric": "Big Three West Coast imports YoY growth",
+    "context": "Most recent reading."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.5%",
+    "metric": "Total return target for TRY/NGN/KZT basket",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Total return target for USD/EGP",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-14.5%",
+    "metric": "WMT price variance vs. group average",
+    "context": "As of July 13, 2026; narrowed from -15.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6.9%",
+    "metric": "DG price variance vs. group average",
+    "context": "As of July 13, 2026; vs. -6.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10.3%",
+    "metric": "ACI price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+9.3%",
+    "metric": "WFM price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-13.2%",
+    "metric": "KR produce price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "HundredX",
+    "figure": "0.4173",
+    "metric": "R-squared correlation between value perception and NPI",
+    "context": "T3M, June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19.1%",
+    "metric": "Core ROTCE",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "400bps",
+    "metric": "Operating leverage YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Loan growth YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.8%",
+    "metric": "Standardized CET1 ratio",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$200mn",
+    "metric": "Stock buybacks",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "53bps",
+    "metric": "NCOs",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.02",
+    "metric": "2Q26 adjusted EPS",
+    "context": "Reported 2Q26 vs $1.86 consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.6bn",
+    "metric": "2Q26 revenue",
+    "context": "Reported 2Q26, up 24% YoY"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.03bn",
+    "metric": "2Q26 free cash flow",
+    "context": "Reported 2Q26 vs $1.82bn consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$7.65-$7.85",
+    "metric": "2026 adjusted EPS guidance",
+    "context": "Raised from $7.10-$7.40 prior; consensus $7.56"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$10.55-$10.75bn",
+    "metric": "2026 operating profit guidance",
+    "context": "Raised from $9.85-$10.25bn prior; consensus $10.44bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.9-$9.2bn",
+    "metric": "2026 free cash flow guidance",
+    "context": "Raised from $8.0-$8.4bn prior; consensus $8.37bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2bn",
+    "metric": "Private bank spot deposit growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2bn",
+    "metric": "Private bank loan growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.4%",
+    "metric": "CET1 ratio",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$225mn",
+    "metric": "Share repurchases",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.37%",
+    "metric": "NCOs as % of avg loans",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac43bn-\u20ac45bn",
+    "metric": "FY26 revenue guidance",
+    "context": "Upgraded from \u20ac36bn-\u20ac40bn prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "54%-56%",
+    "metric": "FY26 gross margin guidance",
+    "context": "Upgraded from 51%-53% prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac2,200",
+    "metric": "12-month price target",
+    "context": "Raised from \u20ac2,000"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">25%",
+    "metric": "FY26 advanced Logic system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">75%",
+    "metric": "FY26 Memory system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "c.30%",
+    "metric": "2027 EUV and immersion capacity increase",
+    "context": "Targeted capacity expansion"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "110 systems",
+    "metric": "Potential 2028 EUV output",
+    "context": "Based on cleanroom optimization"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "255m",
+    "metric": "Global PC shipments",
+    "context": "2026E shipment forecast"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "59%",
+    "metric": "AI PC penetration",
+    "context": "2026E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "82%",
+    "metric": "AI PC penetration",
+    "context": "2028E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$282",
+    "metric": "12m Price Target",
+    "context": "Raised from $275"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.65",
+    "metric": "2026 EPS Estimate",
+    "context": "Raised from $11.55"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.6B",
+    "metric": "2026 Tremfya Revenue Estimate",
+    "context": "Raised 10%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8B",
+    "metric": "Icotyde Peak Sales Estimate",
+    "context": "Raised from $7.7B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "Cash on hand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11%",
+    "metric": "average total return across regulated coverage",
+    "context": "As of 7/15/26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1%",
+    "metric": "GS vs consensus EPS delta for Buy rated utilities",
+    "context": "2Q26 estimate"
+   },
+   {
+    "source_bank": "FirstEnergy",
+    "figure": "5.6 GW",
+    "metric": "contracted data center demand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "PG&E Corp",
+    "figure": "10 GW+",
+    "metric": "reapplication interest from 2026 cluster study",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$2-4bn",
+    "metric": "Total potential synergy value",
+    "context": "Estimated value unlock from Spence/Sierra Gorda collaboration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.0-1.7bn",
+    "metric": "Synergy value for Spence",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.1-1.9bn",
+    "metric": "Synergy value for Sierra Gorda",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$0.25/sh",
+    "metric": "Indicative value uplift for BHP",
+    "context": "Mid-point estimate."
+   },
+   {
+    "source_bank": "South32",
+    "figure": "1.1-2.9Bt",
+    "metric": "Catabela Northeast exploration target",
+    "context": "Announced by S32, technical assessment due 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "32% GDP",
+    "metric": "US Treasury Debt to GDP",
+    "context": "Pre-GFC level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "91% GDP",
+    "metric": "US Treasury Debt to GDP",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "55%",
+    "metric": "Combined Fed and foreign central bank Treasury share",
+    "context": "2014 level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "28%",
+    "metric": "Combined Fed and foreign central bank Treasury share",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "6%",
+    "metric": "Mutual fund/ETF/MMF Treasury share",
+    "context": "Pre-GFC level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "21%",
+    "metric": "Mutual fund/ETF/MMF Treasury share",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "T-bill share of total debt",
+    "context": "2019 level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "T-bill share of total debt",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22 million metric tonnes",
+    "metric": "Reduction in Chinese monthly import volumes relative to February",
+    "context": "Equivalent to 5.2 mb/d"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "6 mb/d",
+    "metric": "Oil flow via Saudi and UAE pipelines",
+    "context": "Pre-June MoU"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$33 billion",
+    "metric": "Annualized customs duty receipts at peak",
+    "context": "October 2025 peak, amounted to 1.3% of GDP"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "24%",
+    "metric": "Decline in U.S. imports",
+    "context": "Excluding technology products, vs pre-Liberation Day levels"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$22 billion",
+    "metric": "IEEPA tariff refund payments",
+    "context": "Total issued during May 2026"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$166 billion",
+    "metric": "Total IEEPA tariff revenue",
+    "context": "Estimated total subject to potential repayment"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "40bn",
+    "metric": "US IG gross issuance",
+    "context": "Weekly issuance pick-up."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "11bn",
+    "metric": "US LL gross issuance",
+    "context": "Weekly issuance pick-up."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "75bp",
+    "metric": "US IG OAS",
+    "context": "Current spread level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "264bp",
+    "metric": "US HY OAS",
+    "context": "Current spread level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "493bp",
+    "metric": "US LL OAS",
+    "context": "Current spread level."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "16%",
+    "metric": "SOX decline from June all-time high",
+    "context": "Technical correction status"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "60x",
+    "metric": "SOX implied volatility",
+    "context": "Observed earlier this week"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "20%+",
+    "metric": "Semiconductor share of daily global volumes",
+    "context": "Across 10,000 global DM & EM stocks"
+   },
+   {
+    "source_bank": "Soc Gen",
+    "figure": "82%",
+    "metric": "FMS investors calling long semis most crowded trade",
+    "context": "FMS survey"
+   },
+   {
+    "source_bank": "Evercore ISI",
+    "figure": "81%",
+    "metric": "Investors currently long semiconductors",
+    "context": "Survey data"
+   },
+   {
+    "source_bank": "Evercore ISI",
+    "figure": "48%",
+    "metric": "Investors expecting SOX peak in 1H27",
+    "context": "Survey data"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.8T",
+    "metric": "Combined AI capex forecast for 2026/2027",
+    "context": "Driving negative FCF in Big Tech."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Retail share of US equity volumes",
+    "context": "As of July 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50M",
+    "metric": "Daily total option contracts",
+    "context": "Record average volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Call options as share of total options traded",
+    "context": "Recent peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.6B",
+    "metric": "Average daily retail net buying",
+    "context": "Year-to-date 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20%",
+    "metric": "S&P 500 P/E ratio",
+    "context": "Current valuation level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60%",
+    "metric": "AI infrastructure contribution to S&P 500 EPS growth",
+    "context": "Q2 2026 estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5",
+    "metric": "Sentiment indicator",
+    "context": "Above 1.0 is considered stretched."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Beat frequency",
+    "context": "Last quarter."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "1.8x",
+    "metric": "Hyperscaler gross leverage",
+    "context": "Surged from 0.9x in Q3 2025"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5.8 trillion",
+    "metric": "Combined AI capex estimate",
+    "context": "FY2025-FY2030"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7.3%",
+    "metric": "SpaceX bond YTW",
+    "context": "Trading two weeks after IPO"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$241B",
+    "metric": "AI-related IG issuance",
+    "context": "YTD 2026"
+   },
+   {
+    "source_bank": "TSMC",
+    "figure": "36% YoY",
+    "metric": "TSMC Q2 sales growth",
+    "context": "Q2 sales, reported July 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "27% below highs",
+    "metric": "KOSPI drawdown",
+    "context": "As of July 14, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65% premium",
+    "metric": "AAPL valuation vs S&P 500",
+    "context": "Highest level in 15+ years."
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "2.34%",
+    "metric": "10yr real rates",
+    "context": "Highest since April 2025, up from 2.11% at end of June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "12%",
+    "metric": "Share of national income held by the top 0.00001%",
+    "context": "Equivalent to the wealth of the richest Americans in a single year."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "40 years",
+    "metric": "Duration of decline in wages as a % of US gross domestic income",
+    "context": "Trend observed prior to post-GFC stabilization."
+   }
+  ]
+ },
+ "hormuz strait disruptions": {
+  "theme": "hormuz strait disruptions",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "BofAS",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East tensions in Hormuz",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East tensions in Hormuz"
+   },
+   {
+    "source": "Citadel Securities",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz disruption",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz disruption"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz supply disruption",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz supply disruption"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz energy flow disruptions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz energy flow disruptions"
+   },
+   {
+    "source": "UBS",
+    "theme": "hormuz strait disruptions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz blockade",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz blockade"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "BofAS",
+    "figure": "$375M",
+    "metric": "Cintas/UniFirst synergies",
+    "context": "Potential synergies from strategic rationale."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "39Kt",
+    "metric": "Ero Copper 2H26 output",
+    "context": "Rising from 31Kt in 1H26."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$7B",
+    "metric": "BlackRock Aperio flows",
+    "context": "2Q26 flows split between long-only and long/short."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$25.50",
+    "metric": "JPM FY27e EPS",
+    "context": "Revised from prior estimate."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "13.5x",
+    "metric": "Atlassian EV/CY27E FCF",
+    "context": "Compared to 29x for infra peers."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$1.28",
+    "metric": "Elevance Health Q2 EPS beat",
+    "context": "Reported 2Q26."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$60-64bn",
+    "metric": "TSMC 2026 capex",
+    "context": "Lifted from US$56bn."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~3%",
+    "metric": "2Q26 EPS estimate vs consensus",
+    "context": "Average difference across coverage universe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4%",
+    "metric": "2Q26 EPS estimate revision",
+    "context": "Average upward revision for 2Q26."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~2%",
+    "metric": "2026 EPS estimate revision",
+    "context": "Average upward revision for full year 2026."
+   },
+   {
+    "source_bank": "Truckstop.com",
+    "figure": "+101%",
+    "metric": "Market demand index YoY growth",
+    "context": "Average YTD."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+30%",
+    "metric": "Big Three West Coast imports YoY growth",
+    "context": "Most recent reading."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.5%",
+    "metric": "Total return target for TRY/NGN/KZT basket",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Total return target for USD/EGP",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-14.5%",
+    "metric": "WMT price variance vs. group average",
+    "context": "As of July 13, 2026; narrowed from -15.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6.9%",
+    "metric": "DG price variance vs. group average",
+    "context": "As of July 13, 2026; vs. -6.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10.3%",
+    "metric": "ACI price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+9.3%",
+    "metric": "WFM price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-13.2%",
+    "metric": "KR produce price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "HundredX",
+    "figure": "0.4173",
+    "metric": "R-squared correlation between value perception and NPI",
+    "context": "T3M, June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19.1%",
+    "metric": "Core ROTCE",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "400bps",
+    "metric": "Operating leverage YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Loan growth YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.8%",
+    "metric": "Standardized CET1 ratio",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$200mn",
+    "metric": "Stock buybacks",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "53bps",
+    "metric": "NCOs",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.02",
+    "metric": "2Q26 adjusted EPS",
+    "context": "Reported 2Q26 vs $1.86 consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.6bn",
+    "metric": "2Q26 revenue",
+    "context": "Reported 2Q26, up 24% YoY"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.03bn",
+    "metric": "2Q26 free cash flow",
+    "context": "Reported 2Q26 vs $1.82bn consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$7.65-$7.85",
+    "metric": "2026 adjusted EPS guidance",
+    "context": "Raised from $7.10-$7.40 prior; consensus $7.56"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$10.55-$10.75bn",
+    "metric": "2026 operating profit guidance",
+    "context": "Raised from $9.85-$10.25bn prior; consensus $10.44bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.9-$9.2bn",
+    "metric": "2026 free cash flow guidance",
+    "context": "Raised from $8.0-$8.4bn prior; consensus $8.37bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2bn",
+    "metric": "Private bank spot deposit growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2bn",
+    "metric": "Private bank loan growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.4%",
+    "metric": "CET1 ratio",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$225mn",
+    "metric": "Share repurchases",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.37%",
+    "metric": "NCOs as % of avg loans",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac43bn-\u20ac45bn",
+    "metric": "FY26 revenue guidance",
+    "context": "Upgraded from \u20ac36bn-\u20ac40bn prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "54%-56%",
+    "metric": "FY26 gross margin guidance",
+    "context": "Upgraded from 51%-53% prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac2,200",
+    "metric": "12-month price target",
+    "context": "Raised from \u20ac2,000"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">25%",
+    "metric": "FY26 advanced Logic system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">75%",
+    "metric": "FY26 Memory system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "c.30%",
+    "metric": "2027 EUV and immersion capacity increase",
+    "context": "Targeted capacity expansion"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "110 systems",
+    "metric": "Potential 2028 EUV output",
+    "context": "Based on cleanroom optimization"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "255m",
+    "metric": "Global PC shipments",
+    "context": "2026E shipment forecast"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "59%",
+    "metric": "AI PC penetration",
+    "context": "2026E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "82%",
+    "metric": "AI PC penetration",
+    "context": "2028E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$282",
+    "metric": "12m Price Target",
+    "context": "Raised from $275"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.65",
+    "metric": "2026 EPS Estimate",
+    "context": "Raised from $11.55"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.6B",
+    "metric": "2026 Tremfya Revenue Estimate",
+    "context": "Raised 10%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8B",
+    "metric": "Icotyde Peak Sales Estimate",
+    "context": "Raised from $7.7B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "Cash on hand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11%",
+    "metric": "average total return across regulated coverage",
+    "context": "As of 7/15/26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1%",
+    "metric": "GS vs consensus EPS delta for Buy rated utilities",
+    "context": "2Q26 estimate"
+   },
+   {
+    "source_bank": "FirstEnergy",
+    "figure": "5.6 GW",
+    "metric": "contracted data center demand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "PG&E Corp",
+    "figure": "10 GW+",
+    "metric": "reapplication interest from 2026 cluster study",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$2-4bn",
+    "metric": "Total potential synergy value",
+    "context": "Estimated value unlock from Spence/Sierra Gorda collaboration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.0-1.7bn",
+    "metric": "Synergy value for Spence",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.1-1.9bn",
+    "metric": "Synergy value for Sierra Gorda",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$0.25/sh",
+    "metric": "Indicative value uplift for BHP",
+    "context": "Mid-point estimate."
+   },
+   {
+    "source_bank": "South32",
+    "figure": "1.1-2.9Bt",
+    "metric": "Catabela Northeast exploration target",
+    "context": "Announced by S32, technical assessment due 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "32% GDP",
+    "metric": "US Treasury Debt to GDP",
+    "context": "Pre-GFC level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "91% GDP",
+    "metric": "US Treasury Debt to GDP",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "55%",
+    "metric": "Combined Fed and foreign central bank Treasury share",
+    "context": "2014 level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "28%",
+    "metric": "Combined Fed and foreign central bank Treasury share",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "6%",
+    "metric": "Mutual fund/ETF/MMF Treasury share",
+    "context": "Pre-GFC level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "21%",
+    "metric": "Mutual fund/ETF/MMF Treasury share",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "T-bill share of total debt",
+    "context": "2019 level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "T-bill share of total debt",
+    "context": "Current level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22 million metric tonnes",
+    "metric": "Reduction in Chinese monthly import volumes relative to February",
+    "context": "Equivalent to 5.2 mb/d"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "6 mb/d",
+    "metric": "Oil flow via Saudi and UAE pipelines",
+    "context": "Pre-June MoU"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$33 billion",
+    "metric": "Annualized customs duty receipts at peak",
+    "context": "October 2025 peak, amounted to 1.3% of GDP"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "24%",
+    "metric": "Decline in U.S. imports",
+    "context": "Excluding technology products, vs pre-Liberation Day levels"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$22 billion",
+    "metric": "IEEPA tariff refund payments",
+    "context": "Total issued during May 2026"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$166 billion",
+    "metric": "Total IEEPA tariff revenue",
+    "context": "Estimated total subject to potential repayment"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "40bn",
+    "metric": "US IG gross issuance",
+    "context": "Weekly issuance pick-up."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "11bn",
+    "metric": "US LL gross issuance",
+    "context": "Weekly issuance pick-up."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "75bp",
+    "metric": "US IG OAS",
+    "context": "Current spread level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "264bp",
+    "metric": "US HY OAS",
+    "context": "Current spread level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "493bp",
+    "metric": "US LL OAS",
+    "context": "Current spread level."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "16%",
+    "metric": "SOX decline from June all-time high",
+    "context": "Technical correction status"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "60x",
+    "metric": "SOX implied volatility",
+    "context": "Observed earlier this week"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "20%+",
+    "metric": "Semiconductor share of daily global volumes",
+    "context": "Across 10,000 global DM & EM stocks"
+   },
+   {
+    "source_bank": "Soc Gen",
+    "figure": "82%",
+    "metric": "FMS investors calling long semis most crowded trade",
+    "context": "FMS survey"
+   },
+   {
+    "source_bank": "Evercore ISI",
+    "figure": "81%",
+    "metric": "Investors currently long semiconductors",
+    "context": "Survey data"
+   },
+   {
+    "source_bank": "Evercore ISI",
+    "figure": "48%",
+    "metric": "Investors expecting SOX peak in 1H27",
+    "context": "Survey data"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.8T",
+    "metric": "Combined AI capex forecast for 2026/2027",
+    "context": "Driving negative FCF in Big Tech."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Retail share of US equity volumes",
+    "context": "As of July 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50M",
+    "metric": "Daily total option contracts",
+    "context": "Record average volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Call options as share of total options traded",
+    "context": "Recent peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.6B",
+    "metric": "Average daily retail net buying",
+    "context": "Year-to-date 2026."
+   },
+   {
+    "source_bank": "Data Centre Watch",
+    "figure": "$130B",
+    "metric": "Notional value of blocked/delayed data center projects",
+    "context": "Q1 2026, 75 projects blocked or delayed nationwide."
+   },
+   {
+    "source_bank": "Real Time Population Study",
+    "figure": "39.2%",
+    "metric": "Working-age adults using AI for work at least once per week",
+    "context": "Aggregate usage continues to rise, but sector-level data shows divergence."
+   },
+   {
+    "source_bank": "Real Time Population Study",
+    "figure": "12%",
+    "metric": "Decline in AI adoption in legal occupations",
+    "context": "Q2 2026 vs Q1 2026."
+   },
+   {
+    "source_bank": "Real Time Population Study",
+    "figure": "13%",
+    "metric": "Decline in AI adoption in architectural occupations",
+    "context": "Q2 2026 vs Q1 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20%",
+    "metric": "S&P 500 P/E ratio",
+    "context": "Current valuation level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60%",
+    "metric": "AI infrastructure contribution to S&P 500 EPS growth",
+    "context": "Q2 2026 estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5",
+    "metric": "Sentiment indicator",
+    "context": "Above 1.0 is considered stretched."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Beat frequency",
+    "context": "Last quarter."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "3.2x",
+    "metric": "Retail daily net buying vs historical average",
+    "context": "July 2026 retail platform data"
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "18%",
+    "metric": "S&P 500 semiconductor weight",
+    "context": "As of July 2026"
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "73%",
+    "metric": "Average 3-month implied volatility for top 10 semiconductor companies",
+    "context": "Current level vs 29% in 2016"
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "$198B",
+    "metric": "Leveraged ETF AUM",
+    "context": "Contracted from $218B"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "1.8x",
+    "metric": "Hyperscaler gross leverage",
+    "context": "Surged from 0.9x in Q3 2025"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5.8 trillion",
+    "metric": "Combined AI capex estimate",
+    "context": "FY2025-FY2030"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7.3%",
+    "metric": "SpaceX bond YTW",
+    "context": "Trading two weeks after IPO"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$241B",
+    "metric": "AI-related IG issuance",
+    "context": "YTD 2026"
+   },
+   {
+    "source_bank": "TSMC",
+    "figure": "36% YoY",
+    "metric": "TSMC Q2 sales growth",
+    "context": "Q2 sales, reported July 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "27% below highs",
+    "metric": "KOSPI drawdown",
+    "context": "As of July 14, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65% premium",
+    "metric": "AAPL valuation vs S&P 500",
+    "context": "Highest level in 15+ years."
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "2.34%",
+    "metric": "10yr real rates",
+    "context": "Highest since April 2025, up from 2.11% at end of June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "12%",
+    "metric": "Share of national income held by the top 0.00001%",
+    "context": "Equivalent to the wealth of the richest Americans in a single year."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "40 years",
+    "metric": "Duration of decline in wages as a % of US gross domestic income",
+    "context": "Trend observed prior to post-GFC stabilization."
+   }
+  ]
+ },
+ "hawkish fed policy": {
+  "theme": "hawkish fed policy",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "BofAS",
+    "theme": "hawkish fed policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Fed hawkish monetary policy",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Fed hawkish monetary policy"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "hawkish fed policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hawkish Fed policy shift",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hawkish Fed policy shift"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "hawkish fed policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Fed Governor Waller hawkish pivot",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Fed Governor Waller hawkish pivot"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "BofAS",
+    "figure": "$375M",
+    "metric": "Cintas/UniFirst synergies",
+    "context": "Potential synergies from strategic rationale."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "39Kt",
+    "metric": "Ero Copper 2H26 output",
+    "context": "Rising from 31Kt in 1H26."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$7B",
+    "metric": "BlackRock Aperio flows",
+    "context": "2Q26 flows split between long-only and long/short."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$25.50",
+    "metric": "JPM FY27e EPS",
+    "context": "Revised from prior estimate."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "13.5x",
+    "metric": "Atlassian EV/CY27E FCF",
+    "context": "Compared to 29x for infra peers."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$1.28",
+    "metric": "Elevance Health Q2 EPS beat",
+    "context": "Reported 2Q26."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$60-64bn",
+    "metric": "TSMC 2026 capex",
+    "context": "Lifted from US$56bn."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~3%",
+    "metric": "2Q26 EPS estimate vs consensus",
+    "context": "Average difference across coverage universe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4%",
+    "metric": "2Q26 EPS estimate revision",
+    "context": "Average upward revision for 2Q26."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~2%",
+    "metric": "2026 EPS estimate revision",
+    "context": "Average upward revision for full year 2026."
+   },
+   {
+    "source_bank": "Truckstop.com",
+    "figure": "+101%",
+    "metric": "Market demand index YoY growth",
+    "context": "Average YTD."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+30%",
+    "metric": "Big Three West Coast imports YoY growth",
+    "context": "Most recent reading."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.5%",
+    "metric": "Total return target for TRY/NGN/KZT basket",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Total return target for USD/EGP",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-14.5%",
+    "metric": "WMT price variance vs. group average",
+    "context": "As of July 13, 2026; narrowed from -15.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6.9%",
+    "metric": "DG price variance vs. group average",
+    "context": "As of July 13, 2026; vs. -6.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10.3%",
+    "metric": "ACI price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+9.3%",
+    "metric": "WFM price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-13.2%",
+    "metric": "KR produce price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "HundredX",
+    "figure": "0.4173",
+    "metric": "R-squared correlation between value perception and NPI",
+    "context": "T3M, June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19.1%",
+    "metric": "Core ROTCE",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "400bps",
+    "metric": "Operating leverage YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Loan growth YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.8%",
+    "metric": "Standardized CET1 ratio",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$200mn",
+    "metric": "Stock buybacks",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "53bps",
+    "metric": "NCOs",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.02",
+    "metric": "2Q26 adjusted EPS",
+    "context": "Reported 2Q26 vs $1.86 consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.6bn",
+    "metric": "2Q26 revenue",
+    "context": "Reported 2Q26, up 24% YoY"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.03bn",
+    "metric": "2Q26 free cash flow",
+    "context": "Reported 2Q26 vs $1.82bn consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$7.65-$7.85",
+    "metric": "2026 adjusted EPS guidance",
+    "context": "Raised from $7.10-$7.40 prior; consensus $7.56"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$10.55-$10.75bn",
+    "metric": "2026 operating profit guidance",
+    "context": "Raised from $9.85-$10.25bn prior; consensus $10.44bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.9-$9.2bn",
+    "metric": "2026 free cash flow guidance",
+    "context": "Raised from $8.0-$8.4bn prior; consensus $8.37bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2bn",
+    "metric": "Private bank spot deposit growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2bn",
+    "metric": "Private bank loan growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.4%",
+    "metric": "CET1 ratio",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$225mn",
+    "metric": "Share repurchases",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.37%",
+    "metric": "NCOs as % of avg loans",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac43bn-\u20ac45bn",
+    "metric": "FY26 revenue guidance",
+    "context": "Upgraded from \u20ac36bn-\u20ac40bn prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "54%-56%",
+    "metric": "FY26 gross margin guidance",
+    "context": "Upgraded from 51%-53% prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac2,200",
+    "metric": "12-month price target",
+    "context": "Raised from \u20ac2,000"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">25%",
+    "metric": "FY26 advanced Logic system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">75%",
+    "metric": "FY26 Memory system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "c.30%",
+    "metric": "2027 EUV and immersion capacity increase",
+    "context": "Targeted capacity expansion"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "110 systems",
+    "metric": "Potential 2028 EUV output",
+    "context": "Based on cleanroom optimization"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "255m",
+    "metric": "Global PC shipments",
+    "context": "2026E shipment forecast"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "59%",
+    "metric": "AI PC penetration",
+    "context": "2026E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "82%",
+    "metric": "AI PC penetration",
+    "context": "2028E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$282",
+    "metric": "12m Price Target",
+    "context": "Raised from $275"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.65",
+    "metric": "2026 EPS Estimate",
+    "context": "Raised from $11.55"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.6B",
+    "metric": "2026 Tremfya Revenue Estimate",
+    "context": "Raised 10%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8B",
+    "metric": "Icotyde Peak Sales Estimate",
+    "context": "Raised from $7.7B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "Cash on hand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11%",
+    "metric": "average total return across regulated coverage",
+    "context": "As of 7/15/26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1%",
+    "metric": "GS vs consensus EPS delta for Buy rated utilities",
+    "context": "2Q26 estimate"
+   },
+   {
+    "source_bank": "FirstEnergy",
+    "figure": "5.6 GW",
+    "metric": "contracted data center demand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "PG&E Corp",
+    "figure": "10 GW+",
+    "metric": "reapplication interest from 2026 cluster study",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$2-4bn",
+    "metric": "Total potential synergy value",
+    "context": "Estimated value unlock from Spence/Sierra Gorda collaboration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.0-1.7bn",
+    "metric": "Synergy value for Spence",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.1-1.9bn",
+    "metric": "Synergy value for Sierra Gorda",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$0.25/sh",
+    "metric": "Indicative value uplift for BHP",
+    "context": "Mid-point estimate."
+   },
+   {
+    "source_bank": "South32",
+    "figure": "1.1-2.9Bt",
+    "metric": "Catabela Northeast exploration target",
+    "context": "Announced by S32, technical assessment due 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "16%",
+    "metric": "SOX decline from June all-time high",
+    "context": "Technical correction status"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "60x",
+    "metric": "SOX implied volatility",
+    "context": "Observed earlier this week"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "20%+",
+    "metric": "Semiconductor share of daily global volumes",
+    "context": "Across 10,000 global DM & EM stocks"
+   },
+   {
+    "source_bank": "Soc Gen",
+    "figure": "82%",
+    "metric": "FMS investors calling long semis most crowded trade",
+    "context": "FMS survey"
+   },
+   {
+    "source_bank": "Evercore ISI",
+    "figure": "81%",
+    "metric": "Investors currently long semiconductors",
+    "context": "Survey data"
+   },
+   {
+    "source_bank": "Evercore ISI",
+    "figure": "48%",
+    "metric": "Investors expecting SOX peak in 1H27",
+    "context": "Survey data"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.8T",
+    "metric": "Combined AI capex forecast for 2026/2027",
+    "context": "Driving negative FCF in Big Tech."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Retail share of US equity volumes",
+    "context": "As of July 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50M",
+    "metric": "Daily total option contracts",
+    "context": "Record average volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Call options as share of total options traded",
+    "context": "Recent peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.6B",
+    "metric": "Average daily retail net buying",
+    "context": "Year-to-date 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20%",
+    "metric": "S&P 500 P/E ratio",
+    "context": "Current valuation level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60%",
+    "metric": "AI infrastructure contribution to S&P 500 EPS growth",
+    "context": "Q2 2026 estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5",
+    "metric": "Sentiment indicator",
+    "context": "Above 1.0 is considered stretched."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Beat frequency",
+    "context": "Last quarter."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "1.8x",
+    "metric": "Hyperscaler gross leverage",
+    "context": "Surged from 0.9x in Q3 2025"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5.8 trillion",
+    "metric": "Combined AI capex estimate",
+    "context": "FY2025-FY2030"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7.3%",
+    "metric": "SpaceX bond YTW",
+    "context": "Trading two weeks after IPO"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$241B",
+    "metric": "AI-related IG issuance",
+    "context": "YTD 2026"
+   },
+   {
+    "source_bank": "TSMC",
+    "figure": "36% YoY",
+    "metric": "TSMC Q2 sales growth",
+    "context": "Q2 sales, reported July 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "27% below highs",
+    "metric": "KOSPI drawdown",
+    "context": "As of July 14, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65% premium",
+    "metric": "AAPL valuation vs S&P 500",
+    "context": "Highest level in 15+ years."
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "2.34%",
+    "metric": "10yr real rates",
+    "context": "Highest since April 2025, up from 2.11% at end of June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "12%",
+    "metric": "Share of national income held by the top 0.00001%",
+    "context": "Equivalent to the wealth of the richest Americans in a single year."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "40 years",
+    "metric": "Duration of decline in wages as a % of US gross domestic income",
+    "context": "Trend observed prior to post-GFC stabilization."
+   }
+  ]
+ },
+ "retail investor market influence": {
+  "theme": "retail investor market influence",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 0,
+   "neutral": 0
+  },
+  "theme_stances": [
+   {
+    "source": "Vanda Research",
+    "theme": "retail stock picking",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Retail investors are moving away from broad index exposure toward selective, theme-based stock picking.",
+    "primary_instruments": [
+     "MSFT",
+     "NVDA"
+    ],
+    "vs_consensus": "",
+    "evidence": "retail aren't buying the broad market. They're buying the stories they have the highest conviction in."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "retail market dominance",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Retail investors have become the primary price-setters and momentum drivers in the current market cycle.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "retail is becoming an integral part of the eco system"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~3%",
+    "metric": "2Q26 EPS estimate vs consensus",
+    "context": "Average difference across coverage universe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4%",
+    "metric": "2Q26 EPS estimate revision",
+    "context": "Average upward revision for 2Q26."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~2%",
+    "metric": "2026 EPS estimate revision",
+    "context": "Average upward revision for full year 2026."
+   },
+   {
+    "source_bank": "Truckstop.com",
+    "figure": "+101%",
+    "metric": "Market demand index YoY growth",
+    "context": "Average YTD."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+30%",
+    "metric": "Big Three West Coast imports YoY growth",
+    "context": "Most recent reading."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.5%",
+    "metric": "Total return target for TRY/NGN/KZT basket",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12%",
+    "metric": "Total return target for USD/EGP",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-14.5%",
+    "metric": "WMT price variance vs. group average",
+    "context": "As of July 13, 2026; narrowed from -15.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6.9%",
+    "metric": "DG price variance vs. group average",
+    "context": "As of July 13, 2026; vs. -6.4% in June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10.3%",
+    "metric": "ACI price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+9.3%",
+    "metric": "WFM price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-13.2%",
+    "metric": "KR produce price variance vs. group average",
+    "context": "As of July 13, 2026."
+   },
+   {
+    "source_bank": "HundredX",
+    "figure": "0.4173",
+    "metric": "R-squared correlation between value perception and NPI",
+    "context": "T3M, June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19.1%",
+    "metric": "Core ROTCE",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "400bps",
+    "metric": "Operating leverage YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Loan growth YoY",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.8%",
+    "metric": "Standardized CET1 ratio",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$200mn",
+    "metric": "Stock buybacks",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "53bps",
+    "metric": "NCOs",
+    "context": "2Q26 reported"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.02",
+    "metric": "2Q26 adjusted EPS",
+    "context": "Reported 2Q26 vs $1.86 consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$12.6bn",
+    "metric": "2Q26 revenue",
+    "context": "Reported 2Q26, up 24% YoY"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.03bn",
+    "metric": "2Q26 free cash flow",
+    "context": "Reported 2Q26 vs $1.82bn consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$7.65-$7.85",
+    "metric": "2026 adjusted EPS guidance",
+    "context": "Raised from $7.10-$7.40 prior; consensus $7.56"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$10.55-$10.75bn",
+    "metric": "2026 operating profit guidance",
+    "context": "Raised from $9.85-$10.25bn prior; consensus $10.44bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.9-$9.2bn",
+    "metric": "2026 free cash flow guidance",
+    "context": "Raised from $8.0-$8.4bn prior; consensus $8.37bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2bn",
+    "metric": "Private bank spot deposit growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2bn",
+    "metric": "Private bank loan growth",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10.4%",
+    "metric": "CET1 ratio",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$225mn",
+    "metric": "Share repurchases",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.37%",
+    "metric": "NCOs as % of avg loans",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac43bn-\u20ac45bn",
+    "metric": "FY26 revenue guidance",
+    "context": "Upgraded from \u20ac36bn-\u20ac40bn prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "54%-56%",
+    "metric": "FY26 gross margin guidance",
+    "context": "Upgraded from 51%-53% prior range"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac2,200",
+    "metric": "12-month price target",
+    "context": "Raised from \u20ac2,000"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">25%",
+    "metric": "FY26 advanced Logic system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">75%",
+    "metric": "FY26 Memory system sales growth",
+    "context": "Company expectation"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "c.30%",
+    "metric": "2027 EUV and immersion capacity increase",
+    "context": "Targeted capacity expansion"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "110 systems",
+    "metric": "Potential 2028 EUV output",
+    "context": "Based on cleanroom optimization"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "255m",
+    "metric": "Global PC shipments",
+    "context": "2026E shipment forecast"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "59%",
+    "metric": "AI PC penetration",
+    "context": "2026E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "82%",
+    "metric": "AI PC penetration",
+    "context": "2028E volume penetration"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$282",
+    "metric": "12m Price Target",
+    "context": "Raised from $275"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.65",
+    "metric": "2026 EPS Estimate",
+    "context": "Raised from $11.55"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8.6B",
+    "metric": "2026 Tremfya Revenue Estimate",
+    "context": "Raised 10%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$8B",
+    "metric": "Icotyde Peak Sales Estimate",
+    "context": "Raised from $7.7B"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$21B",
+    "metric": "Cash on hand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11%",
+    "metric": "average total return across regulated coverage",
+    "context": "As of 7/15/26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1%",
+    "metric": "GS vs consensus EPS delta for Buy rated utilities",
+    "context": "2Q26 estimate"
+   },
+   {
+    "source_bank": "FirstEnergy",
+    "figure": "5.6 GW",
+    "metric": "contracted data center demand",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "PG&E Corp",
+    "figure": "10 GW+",
+    "metric": "reapplication interest from 2026 cluster study",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$2-4bn",
+    "metric": "Total potential synergy value",
+    "context": "Estimated value unlock from Spence/Sierra Gorda collaboration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.0-1.7bn",
+    "metric": "Synergy value for Spence",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$1.1-1.9bn",
+    "metric": "Synergy value for Sierra Gorda",
+    "context": "100% basis."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$0.25/sh",
+    "metric": "Indicative value uplift for BHP",
+    "context": "Mid-point estimate."
+   },
+   {
+    "source_bank": "South32",
+    "figure": "1.1-2.9Bt",
+    "metric": "Catabela Northeast exploration target",
+    "context": "Announced by S32, technical assessment due 2026."
+   },
+   {
+    "source_bank": "Citadel Securities",
+    "figure": "$6.7B",
+    "metric": "Daily retail options premium",
+    "context": "June record, 15% jump from May, 65% above 2025 average"
+   },
+   {
+    "source_bank": "Vanda Research",
+    "figure": "$13B",
+    "metric": "Net cash inflow into stocks (4-week rolling)",
+    "context": "Lowest level since COVID"
+   },
+   {
+    "source_bank": "Vanda Research",
+    "figure": "99.7th percentile",
+    "metric": "1M rolling turnover",
+    "context": "Historical percentile rank"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.8T",
+    "metric": "Combined AI capex forecast for 2026/2027",
+    "context": "Driving negative FCF in Big Tech."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Retail share of US equity volumes",
+    "context": "As of July 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50M",
+    "metric": "Daily total option contracts",
+    "context": "Record average volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Call options as share of total options traded",
+    "context": "Recent peak."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.6B",
+    "metric": "Average daily retail net buying",
+    "context": "Year-to-date 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20%",
+    "metric": "S&P 500 P/E ratio",
+    "context": "Current valuation level."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60%",
+    "metric": "AI infrastructure contribution to S&P 500 EPS growth",
+    "context": "Q2 2026 estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5",
+    "metric": "Sentiment indicator",
+    "context": "Above 1.0 is considered stretched."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "65%",
+    "metric": "Beat frequency",
+    "context": "Last quarter."
+   }
+  ]
+ },
+ "gold correction": {
+  "theme": "gold correction",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 2,
+   "neutral": 0
+  },
+  "theme_stances": [
+   {
+    "source": "BofAS",
+    "theme": "gold correction",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The YTD correction requires more time and depth to complete.",
+    "primary_instruments": [
+     "GLD"
+    ],
+    "vs_consensus": "",
+    "evidence": "the YTD correction requires more time and potentially more depth to complete"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "gold correction",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The current correction is disproportionately short relative to the preceding 121-week uptrend.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The current correction is only 24 weeks old versus the prior 121-week advance."
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "BofAS",
+    "figure": "$375M",
+    "metric": "Cintas/UniFirst synergies",
+    "context": "Potential synergies from strategic rationale."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "39Kt",
+    "metric": "Ero Copper 2H26 output",
+    "context": "Rising from 31Kt in 1H26."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$7B",
+    "metric": "BlackRock Aperio flows",
+    "context": "2Q26 flows split between long-only and long/short."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$25.50",
+    "metric": "JPM FY27e EPS",
+    "context": "Revised from prior estimate."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "13.5x",
+    "metric": "Atlassian EV/CY27E FCF",
+    "context": "Compared to 29x for infra peers."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$1.28",
+    "metric": "Elevance Health Q2 EPS beat",
+    "context": "Reported 2Q26."
+   },
+   {
+    "source_bank": "BofAS",
+    "figure": "$60-64bn",
+    "metric": "TSMC 2026 capex",
+    "context": "Lifted from US$56bn."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "0.11",
+    "metric": "S&P 500 constituent 3-month daily correlation",
+    "context": "Historical low"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "60%",
+    "metric": "Passive AUM share",
+    "context": "As of May 2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "1.2%",
+    "metric": "Large Cap Growth AUM in private companies",
+    "context": "As of 2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$4,088.74",
+    "metric": "Gold death cross trigger price",
+    "context": "Triggered June 26, 2026"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "70%",
+    "metric": "Probability of gold being lower 40 trading days after death cross",
+    "context": "Based on 30 signals since 1975"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$3,827",
+    "metric": "TD Sequential risk level",
+    "context": "Valid while gold holds above this level"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$85.50",
+    "metric": "2Q26 EPS forecast",
+    "context": "vs $81.81 consensus"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$345",
+    "metric": "2026 EPS forecast",
+    "context": "raised from $335"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "1.3x",
+    "metric": "3m quarterly guidance ratio",
+    "context": "as of June 2026; 94th percentile since 2000"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "5.6% YoY",
+    "metric": "Total card spending excluding gas",
+    "context": "June 2026, strongest since April 2022"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "92nd %ile",
+    "metric": "S&P single stock realized volatility",
+    "context": "Since 1990, as of 10-Jul-26."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "74%",
+    "metric": "Nikkei hedge cost reduction",
+    "context": "Via 80% knock-out put structure."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "1.3%",
+    "metric": "TSMC downside risk",
+    "context": "Premium outlay for 1x2 call ratio."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "89%",
+    "metric": "STOXX 600 market cap reporting earnings",
+    "context": "Between July and August 2026 monthly option expiries."
+   }
+  ]
+ }
+}
