@@ -1,0 +1,152 @@
+{
+  "pulse_date": "2026-07-17",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai bubble risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 2,
+        "neutral": 7
+      },
+      "consensus_view": "Banks are split on whether the AI complex is a bubble: Bank of America and The Market Ear point to dotcom-era swings in single stocks and unsustainable borrowing to fund AI, while UBS and Goldman read the recent drop as investors trimming crowded positions rather than a break in the underlying earnings story.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure is the dominant driver of current S&P 500 earnings growth.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure = ~60% of S&P 500 EPS growth this quarter."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI/hyperscaler complex is a bubble",
+          "banks_for": [
+            "Bank of America",
+            "The Market Ear"
+          ],
+          "for_evidence": "single stock realized vol has risen to levels last seen in the late 90s dotcom bubble",
+          "banks_against": [
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "against_evidence": "sell-off in AI capex and other crowded winners looks increasingly like a technical de-grossing event"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait disruptions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five desks reference disruption to the Strait of Hormuz oil chokepoint as a live macro risk, but none has staked out a directional price call on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Five banks flag Strait of Hormuz supply and shipping disruption as an active Middle East risk this window.",
+          "banks_for": [
+            "BofAS",
+            "Citadel Securities",
+            "Goldman Sachs",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Middle East tensions in Hormuz",
+            "Strait of Hormuz disruption",
+            "Strait of Hormuz supply disruption",
+            "Strait of Hormuz energy flow disruptions",
+            "Strait of Hormuz blockade"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hawkish fed policy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three research desks flag a hawkish turn in Federal Reserve policy (the Fed leaning toward keeping interest rates high rather than cutting) as a live backdrop, but none has staked out a clear directional call on it.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference a hawkish shift in Fed policy as a current market backdrop without arguing a directional view.",
+          "banks_for": [
+            "BofAS",
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Fed hawkish monetary policy",
+            "Hawkish Fed policy shift",
+            "Fed Governor Waller hawkish pivot"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "retail investor market influence",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Both banks agree everyday retail investors have become a major, active force in the market, with Goldman treating them as core price-setters while Vanda notes they are picking specific high-conviction stocks rather than buying the whole market.",
+      "facts_agreed": [
+        {
+          "claim": "Retail investors have become an increasingly influential and active force in the current market.",
+          "banks_for": [
+            "Vanda Research",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "retail aren't buying the broad market. They're buying the stories they have the highest conviction in.",
+            "retail is becoming an integral part of the eco system"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "gold correction",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 2,
+        "neutral": 0
+      },
+      "consensus_view": "Both Bank of America desks think gold's pullback from its highs is not finished yet, arguing it has been too brief and too shallow to fully play out, with a bearish chart signal pointing to more downside.",
+      "facts_agreed": [
+        {
+          "claim": "The gold correction is not yet complete and likely has more time and downside to run.",
+          "banks_for": [
+            "BofAS",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "the YTD correction requires more time and potentially more depth to complete",
+            "The current correction is only 24 weeks old versus the prior 121-week advance."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
