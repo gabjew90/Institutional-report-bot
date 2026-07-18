@@ -1466,6 +1466,12 @@ _OCR_INLINE_TRUNCATE = 800
 # Capped at 3 tool-calling iterations per /ask to prevent runaway loops.
 # Each search returns up to 20 matching rows.
 _CHAT_SEARCH_MAX_ROUNDS = 3
+# Per-tool-result char clamp for the /ask function-calling loop.
+# 2026-07-17: an ask died with 400 INVALID_ARGUMENT (input exceeded the
+# 1M-token limit) — some tool result ballooned contents across rounds.
+# 30K chars ≈ 7.5K tokens per result; 3 rounds × several calls stays
+# far under the window.
+_TOOL_RESULT_CHAR_CAP = 30_000
 _CHAT_SEARCH_RESULT_LIMIT = 20
 # Time-window queries return more rows because the asker wants
 # coverage of an entire span, not just keyword matches. 200 caps
@@ -3701,6 +3707,176 @@ def _is_context_dependent(question: str) -> bool:
     return bool(_CONTEXT_DEICTIC_RE.search(tail))
 
 
+# =====================================================================
+# Identity + rewrite-fidelity guards (2026-07-17 "Morgan" incident).
+#
+# BK asked "Morgan says you don't work very well". The bot had no idea
+# who Morgan was, called no tool to find out, and silently dressed the
+# ASKER'S OWN dossier up as Morgan ("Morgan? The guy who watches his
+# heart rate..."). That wrong mapping entered the recent-chat context
+# and every follow-up inherited it ("not even talking about the right
+# people", "can we delete this bot"). Separately, the register/roast
+# rewrites — which receive ONLY the original answer text — invented
+# characterization from thin air ("manifestos", "stoic strategist")
+# when told to remove the banned shapes AND keep the length.
+# =====================================================================
+
+# Candidate person-name tokens: capitalized word, 3-12 chars. Checked
+# against the known-member alias surface; unknowns get a mechanical
+# NAME CHECK note. Gated to LOCAL-routed questions so public figures in
+# WEB lookups don't trigger it.
+_NAME_CAND_RE = re.compile(r"\b([A-Z][a-z]{2,11})\b")
+_NAME_CHECK_STOP = frozenset({
+    # sentence starters / common words
+    "the", "this", "that", "these", "those", "what", "when", "where",
+    "which", "who", "whose", "why", "how", "can", "could", "did", "does",
+    "do", "is", "are", "was", "were", "will", "would", "should", "shall",
+    "has", "have", "had", "you", "your", "yours", "they", "them", "their",
+    "there", "then", "than", "and", "but", "not", "yes", "yeah", "nah",
+    "okay", "only", "just", "also", "some", "any", "all", "every", "each",
+    "one", "two", "three", "give", "tell", "show", "make", "take", "stop",
+    "start", "keep", "let", "say", "says", "said", "ask", "asks", "asked",
+    "asking", "hey", "yo", "bro", "man", "dude", "guys", "sir", "lol",
+    "lmao", "wtf", "omg", "idk", "imo", "btw", "please", "thanks", "thank",
+    "with", "from", "about", "into", "over", "under", "after", "before",
+    # calendar
+    "monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
+    "sunday", "january", "february", "march", "april", "may", "june",
+    "july", "august", "september", "october", "november", "december",
+    "today", "tomorrow", "yesterday", "morning", "afternoon", "evening",
+    "night", "week", "month", "year",
+    # finance / rooms / geography commonly capitalized in banter
+    "market", "stock", "stocks", "calls", "puts", "earnings", "fed",
+    "street", "wall", "congress", "senate", "house", "america", "american",
+    "china", "chinese", "japan", "israel", "iran", "russia", "europe",
+    "korea", "korean", "canada", "mexico", "discord", "twitter", "reddit",
+    # public figures the room names constantly (NOT room members)
+    "trump", "biden", "powell", "warsh", "musk", "buffett", "messi",
+    "yahweh", "jerusalem",
+})
+
+
+def _unknown_member_names(
+    question: str, known_names_text: str, limit: int = 3,
+) -> list[str]:
+    """Capitalized name-like tokens in the asker's message that match no
+    known member surface (WHO'S TALKING names, chat authors, asker) and
+    no profiled user in the DB. Returns up to `limit` unknowns."""
+    if not question:
+        return []
+    # Only the asker's actual message region — injected blocks up top
+    # quote the bot/other members and would add noise.
+    tail = question.strip()[-600:]
+    known_low = (known_names_text or "").lower()
+    out: list[str] = []
+    seen: set[str] = set()
+    for m in _NAME_CAND_RE.finditer(tail):
+        tok = m.group(1)
+        low = tok.lower()
+        if low in _NAME_CHECK_STOP or low in seen:
+            continue
+        seen.add(low)
+        if low in known_low:
+            continue
+        try:
+            if db.find_users_mentioned_in_text(tok):
+                continue  # resolves to a profiled member — known
+        except Exception:
+            pass
+        out.append(tok)
+        if len(out) >= limit:
+            break
+    return out
+
+
+def _name_check_note(unknowns: list[str]) -> str:
+    if not unknowns:
+        return ""
+    names = ", ".join(f"'{n}'" for n in unknowns)
+    return (
+        f"\n\n[NAME CHECK — mechanical: the name(s) {names} match no room "
+        f"member I have on file and nobody active in this chat. If they "
+        f"refer to a PERSON, resolve who they are FIRST (lookup_user_profile "
+        f"by name, or search_chat_messages) — and if that fails, say in "
+        f"voice that you don't know who that is. NEVER map an unknown name "
+        f"onto the asker or another member, and never present anyone's "
+        f"known traits as the unknown person's. If the name is a company, "
+        f"brand, or public figure, ignore this note.]"
+    )
+
+
+# Reply-to-bot factual dispute: the asker is contesting something the
+# bot claimed. The 07-17 failure: "I haven't martingaled a play in
+# probably 2 months" — the bot's search data was in hand, the shipped
+# answer ignored the dispute and escalated with invented traits.
+_DISPUTE_RE = re.compile(
+    r"\b(?:i\s+(?:haven'?t|never|didn'?t|don'?t|wasn'?t|am\s+not|ain'?t)"
+    r"|not\s+true|that'?s\s+(?:wrong|false|not\s+right|bullshit|cap)"
+    r"|when\s+did\s+i|wasn'?t\s+me|what\s+are\s+you\s+talking\s+about"
+    r"|i\s+stopped|quit\s+that|haven'?t\s+done\s+that)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_disputing_reply(question: str) -> bool:
+    """Reply-to-bot where the asker's own message disputes a claim."""
+    if not question or "[MESSAGE BEING REPLIED TO" not in question:
+        return False
+    if "from omniwiz" not in question:
+        return False  # replying to someone else's message, not the bot's
+    tail = question.strip()[-400:]
+    return bool(_DISPUTE_RE.search(tail))
+
+
+_DISPUTE_NOTE = (
+    "\n\n[DISPUTE CHECK — mechanical: the asker is factually disputing "
+    "something you said. Before answering, pull receipts on the disputed "
+    "claim (search_chat_messages / lookup_trade_log). If receipts back "
+    "you, cite them with dates or quotes. If they don't, or you find "
+    "nothing, CONCEDE the point plainly in voice — do NOT repeat the "
+    "disputed claim, do NOT embellish it, and do NOT pivot to new "
+    "accusations to win the exchange. Conceding with style beats doubling "
+    "down on a claim you can't back.]"
+)
+
+
+# Rewrite-fidelity check: a register/roast rewrite may change TONE only.
+# Distinctive words in the rewritten answer that appear in neither the
+# original answer, the subject's dossier, nor the question are invented
+# material — above threshold, the rewrite is rejected and the original
+# ships (mechanically cleaned). Fiction is worse than a weak register.
+_NOVEL_STOP = frozenset({
+    "their", "there", "would", "could", "should", "about", "every",
+    "never", "always", "being", "doing", "going", "thing", "things",
+    "really", "actually", "because", "while", "still", "since", "until",
+    "again", "before", "after", "instead", "without", "within", "though",
+    "through", "against", "between", "another", "someone", "anyone",
+    "everyone", "nothing", "something", "anything", "everything",
+    "yourself", "himself", "herself", "itself", "maybe", "probably",
+    "clearly", "constantly", "second", "minute", "getting", "keeps",
+    "keeping", "spend", "spending", "spent", "trying", "little", "enough",
+    "better", "worse", "whole", "entire", "which", "where", "these",
+    "those", "other", "right", "wrong", "least", "most",
+})
+_REWRITE_NOVEL_MAX_RATIO = 0.35
+
+
+def _rewrite_novel_ratio(rewritten: str, source_text: str) -> float:
+    """Fraction of the rewrite's distinctive words absent from its
+    allowed sources. High ratio = the rewrite invented substance."""
+    if not rewritten:
+        return 0.0
+    words = [
+        w for w in re.findall(r"[a-z']{5,}", rewritten.lower())
+        if w not in _NOVEL_STOP
+    ]
+    if not words:
+        return 0.0
+    src = (source_text or "").lower()
+    novel = [w for w in words if w not in src]
+    return len(novel) / len(words)
+
+
 def _ungrounded_web_specifics(
     answer: str, gm, was_web: bool, is_opinion: bool = False,
 ) -> bool:
@@ -5279,6 +5455,41 @@ async def _answer_with_gemini(
                 _build_runtime_system_instruction(_fact_extra)
             )
 
+        # Pre-flight identity + dispute notes (2026-07-17 Morgan
+        # incident) — mechanical detections appended to the user turn so
+        # the model gets a targeted, binding directive for exactly the
+        # failure shape in play. The name check is LOCAL-gated (public
+        # figures in WEB lookups would false-trigger it).
+        _preflight_notes = ""
+        if not needs_web:
+            try:
+                _known_surface = " ".join(filter(None, [
+                    profiles_block or "", chat_context or "",
+                    asker_display_name or "", asker_username or "",
+                ]))
+                _unknowns = _unknown_member_names(question, _known_surface)
+                if _unknowns:
+                    _preflight_notes += _name_check_note(_unknowns)
+                    _ask_meta["guards"].append(
+                        "name-check:" + ",".join(_unknowns)
+                    )
+                    log.info(
+                        f"/ask: unknown person name(s) in question "
+                        f"({_unknowns}) — NAME CHECK note appended"
+                    )
+            except Exception as e:
+                log.warning(f"/ask: name-check failed (non-fatal): {e}")
+        if _is_disputing_reply(question):
+            _preflight_notes += _DISPUTE_NOTE
+            _ask_meta["guards"].append("dispute-check")
+            log.info("/ask: reply disputes a prior bot claim — "
+                     "DISPUTE CHECK note appended")
+        if _preflight_notes:
+            initial_parts[-1] = types.Part.from_text(
+                text=user_content + _preflight_notes
+            )
+            contents[0] = types.Content(role="user", parts=initial_parts)
+
         # Token-budget reservation BEFORE the call. /ask assembles
         # a large prompt (WHO'S TALKING + analyst log + recent chat +
         # question) that can hit 50k chars (~13k tokens). With the
@@ -5328,6 +5539,30 @@ async def _answer_with_gemini(
         # wearing a "couldn't verify" hedge. Collect every round's chunks.
         _round_gm_chunks: list = []
         for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
+            # Contents-size guard: fail CLEANLY (friendly reply + a log
+            # that names the biggest parts) instead of letting the API
+            # 400 on the 1M-token limit with zero diagnostics.
+            if round_idx > 0:
+                _part_sizes = []
+                for _ci, _c in enumerate(contents):
+                    for _p in (getattr(_c, "parts", None) or []):
+                        _sz = len(getattr(_p, "text", None) or "") or len(
+                            str(getattr(_p, "function_response", None) or "")
+                        )
+                        if _sz:
+                            _part_sizes.append((_sz, _ci))
+                _total = sum(s for s, _ in _part_sizes)
+                if _total > 2_500_000:
+                    _top = sorted(_part_sizes, reverse=True)[:5]
+                    log.error(
+                        f"/ask: contents grew to {_total} chars before "
+                        f"round {round_idx} — aborting before the API "
+                        f"400s. Largest parts (chars, content_idx): {_top}"
+                    )
+                    raise RuntimeError(
+                        f"ask contents oversized ({_total} chars) — "
+                        f"tool loop ballooned the request"
+                    )
             response = await client.aio.models.generate_content(
                 model=ask_model,
                 contents=contents,
@@ -5428,6 +5663,26 @@ async def _answer_with_gemini(
                             f"didn't go through. Do NOT fabricate the "
                             f"data it would have returned."
                         ),
+                    }
+                # Size clamp (2026-07-17: a request blew Gemini's 1M
+                # input-token limit — 400 INVALID_ARGUMENT — because a
+                # tool result ballooned the contents across rounds).
+                # Bound every tool result; log the offender so the next
+                # oversized return is diagnosable in one log line.
+                _res_str = str(result)
+                if len(_res_str) > _TOOL_RESULT_CHAR_CAP:
+                    log.warning(
+                        f"/ask: tool {fc.name} returned "
+                        f"{len(_res_str)} chars (args={args!r}) — "
+                        f"clipping to {_TOOL_RESULT_CHAR_CAP}"
+                    )
+                    result = {
+                        "status": "truncated",
+                        "note": (
+                            f"result was {len(_res_str)} chars — "
+                            f"truncated to fit the context window"
+                        ),
+                        "content": _res_str[:_TOOL_RESULT_CHAR_CAP],
                     }
                 tool_response_parts.append(
                     types.Part.from_function_response(
@@ -5622,6 +5877,15 @@ async def _answer_with_gemini(
                     "answer should read like a knowledgeable trader "
                     "answering a colleague, not slapping them. "
                 ) if "asker-mockery" in _register_rewrite_kinds else ""
+                # SUBJECT MATERIAL (2026-07-17 fix): this rewrite used
+                # to receive ONLY the original answer — told to remove
+                # the banned register shapes AND keep the length, with
+                # no profile to draw on, it invented characterization
+                # ("manifestos", "stoic strategist") that belonged to
+                # nobody. The subject's dossier is now the only allowed
+                # replacement material, and a novel-content check below
+                # rejects rewrites that invent anyway.
+                _rw_material = (profiles_block or "")[:6000]
                 rewrite_prompt = (
                     "Rewrite the following Discord bot answer so it sounds "
                     "like a trader talking to another trader. Strip ANY "
@@ -5634,9 +5898,19 @@ async def _answer_with_gemini(
                     "have, not why your data layer doesn't have it. "
                     + _pa_directive + _am_directive +
                     "Do NOT add any new facts, names, tickers, or numbers. "
-                    "Keep the same length, voice, and substance. Output ONLY "
-                    "the rewritten answer, no preamble.\n\n"
-                    "ORIGINAL:\n"
+                    "Every characterization detail in your rewrite must "
+                    "already appear in the ORIGINAL below or in the SUBJECT "
+                    "MATERIAL — inventing traits, habits, or behaviors for "
+                    "the target is a hard failure. If removing a banned "
+                    "shape leaves a hole, fill it ONLY from the SUBJECT "
+                    "MATERIAL. Keep the same length, voice, and substance. "
+                    "Output ONLY the rewritten answer, no preamble.\n\n"
+                    + (
+                        f"SUBJECT MATERIAL (the only allowed source for "
+                        f"replacement content):\n{_rw_material}\n\n"
+                        if _rw_material else ""
+                    )
+                    + "ORIGINAL:\n"
                     f"{answer}"
                 )
                 rewrite_config = types.GenerateContentConfig(
@@ -5674,7 +5948,21 @@ async def _answer_with_gemini(
                             and _asker_mockery_violations(rewritten)):
                         rewrite_hits = list(rewrite_hits or [])
                         rewrite_hits.append("asker-mockery")
-                    if not (_register_rewrite_kinds & set(rewrite_hits or [])):
+                    # Fidelity check: reject a rewrite that invented
+                    # substance (words traceable to neither the original
+                    # answer, the dossier, nor the question). Fiction is
+                    # worse than a weak register — ship the original.
+                    _novel = _rewrite_novel_ratio(
+                        rewritten,
+                        f"{answer} {profiles_block or ''} {question or ''}",
+                    )
+                    if _novel > _REWRITE_NOVEL_MAX_RATIO:
+                        _ask_meta["guards"].append("rewrite:novel-rejected")
+                        log.warning(
+                            f"/ask: register rewrite invented content "
+                            f"(novel ratio {_novel:.2f}) — shipping original"
+                        )
+                    elif not (_register_rewrite_kinds & set(rewrite_hits or [])):
                         answer = rewritten
                         log.info("/ask: register rewrite succeeded")
                     else:
@@ -5719,6 +6007,14 @@ async def _answer_with_gemini(
                     f"({', '.join(_recycled[:6])}) — requesting rewrite"
                 )
                 try:
+                    # 2026-07-17 fix: this prompt used to say "rebuild
+                    # from material ALREADY in this conversation's
+                    # context" while receiving ONLY the original answer
+                    # — an instruction it could only satisfy by
+                    # inventing. The dossier now rides along as the
+                    # actual material, and the novel-content check
+                    # below rejects inventions.
+                    _rr_material = (profiles_block or "")[:6000]
                     _rr_prompt = (
                         "Rewrite the following Discord bot roast. It "
                         "recycles the SAME hooks you already used on this "
@@ -5727,16 +6023,22 @@ async def _answer_with_gemini(
                         "material for this rewrite (do not mention or "
                         "paraphrase): "
                         + ", ".join(_recycled)
-                        + ". Rebuild the jab from DIFFERENT material that "
-                        "is ALREADY in this conversation's context — their "
-                        "PERSONAL color first (recent personal life, "
-                        "retarded takes, personality, what they said in "
-                        "the current chat window); trading-loss angles "
-                        "only if the ledger material is specific and "
-                        "fresh. Same "
-                        "heat, same length, same voice. Do NOT invent new "
-                        "facts, tickers, or numbers. Output ONLY the "
-                        "rewritten answer.\n\nORIGINAL:\n"
+                        + ". Rebuild the jab from DIFFERENT material in "
+                        "the SUBJECT MATERIAL below — "
+                        "their PERSONAL color first (recent personal "
+                        "life, retarded takes, personality); trading-"
+                        "loss angles only "
+                        "if the ledger material is specific and fresh. "
+                        "The SUBJECT MATERIAL is your ONLY allowed "
+                        "source — inventing traits, habits, or behaviors "
+                        "is a hard failure. Same heat, same length, same "
+                        "voice. Do NOT invent new facts, tickers, or "
+                        "numbers. Output ONLY the rewritten answer.\n\n"
+                        + (
+                            f"SUBJECT MATERIAL:\n{_rr_material}\n\n"
+                            if _rr_material else ""
+                        )
+                        + "ORIGINAL:\n"
                         f"{answer}"
                     )
                     _rr_config = types.GenerateContentConfig(
@@ -5769,7 +6071,21 @@ async def _answer_with_gemini(
                         _still = _recycled_roast_hooks(
                             _rr_answer, _prior_bot_answer_texts
                         )
-                        if len(_still) < _RECYCLE_HOOK_MIN:
+                        _rr_novel = _rewrite_novel_ratio(
+                            _rr_answer,
+                            f"{answer} {profiles_block or ''} "
+                            f"{question or ''}",
+                        )
+                        if _rr_novel > _REWRITE_NOVEL_MAX_RATIO:
+                            _ask_meta["guards"].append(
+                                "rewrite:novel-rejected"
+                            )
+                            log.warning(
+                                f"/ask: roast-recycle rewrite invented "
+                                f"content (novel ratio {_rr_novel:.2f}) "
+                                f"— shipping original"
+                            )
+                        elif len(_still) < _RECYCLE_HOOK_MIN:
                             answer = _rr_answer
                             log.info("/ask: roast-recycle rewrite succeeded")
                         else:

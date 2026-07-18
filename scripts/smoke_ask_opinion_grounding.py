@@ -257,7 +257,9 @@ def test_grounding_accumulated_across_tool_rounds():
     assert "_round_gm_chunks" in src, "per-round grounding accumulator missing"
     # collected INSIDE the tool loop, right after each generate_content
     loop = src.split("for round_idx in range(", 1)[1]
-    assert "_round_gm_chunks.extend(" in loop[:1600], \
+    # window widened 2026-07-17: the contents-size guard now precedes
+    # the generate call inside the loop
+    assert "_round_gm_chunks.extend(" in loop[:4000], \
         "each round's grounding chunks must be collected"
     # merged into the effective gm when the final turn has none
     assert "SimpleNamespace(grounding_chunks=_merged)" in src, \

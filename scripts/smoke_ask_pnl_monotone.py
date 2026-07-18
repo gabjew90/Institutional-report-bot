@@ -150,7 +150,9 @@ def test_injection_reorders_personal_above_trades():
 def test_recycle_directive_leads_personal():
     import discord_bot.bot as bot
     src = inspect.getsource(bot._answer_with_gemini)
-    rr = src.split("Roast-recycle guard", 1)[1][:4200]
+    # window widened 2026-07-17: the recycle rewrite gained SUBJECT
+    # MATERIAL + the novel-content fidelity check, growing the section
+    rr = src.split("Roast-recycle guard", 1)[1][:8000]
     assert "PERSONAL color first" in rr, \
         "recycle rewrite must lead with personal material"
     assert "recent trades" not in rr.split("PERSONAL color first", 1)[1][:400], \

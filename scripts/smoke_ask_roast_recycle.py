@@ -110,7 +110,9 @@ def test_guard_wired_banter_gated():
     src = inspect.getsource(bot._answer_with_gemini)
     assert "not _route_is_factual and _prior_bot_answer_texts" in src, \
         "recycle guard must be BANTER-gated"
-    win = src.split("Roast-recycle guard", 1)[1][:4200]
+    # window widened 2026-07-17: SUBJECT MATERIAL + fidelity check grew
+    # the section
+    win = src.split("Roast-recycle guard", 1)[1][:8000]
     assert "_recycled_roast_hooks(answer, _prior_bot_answer_texts)" in win
     assert '"roast-recycle"' in win, "meta stamp missing"
     assert "BANNED" in win, "rewrite must ban the recycled hooks"
