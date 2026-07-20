@@ -1,0 +1,278 @@
+{
+  "pulse_date": "2026-07-20",
+  "window_label": "since-last-daily (2026-07-17T14:33)",
+  "themes": [
+    {
+      "theme": "hormuz strait disruption",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 10
+      },
+      "consensus_view": "Ten research desks flag a possible shutdown of Strait of Hormuz oil shipping as a live geopolitical and energy-supply risk, but none has staked out a clear directional call on whether it closes further or reopens.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks are tracking a potential Strait of Hormuz shipping disruption as an active oil-supply and geopolitical risk, without committing to a directional view.",
+          "banks_for": [
+            "Academy",
+            "Bank of America",
+            "Bloomberg",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Jefferies",
+            "Morgan Stanley",
+            "TS Lombard",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping closure",
+            "Strait of Hormuz supply disruption",
+            "Strait of Hormuz blockade",
+            "Strait of Hormuz geopolitical uncertainty",
+            "Strait of Hormuz reopening"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai hyperscaler capex cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 3,
+        "neutral": 9
+      },
+      "consensus_view": "Banks agree the big cloud companies keep raising their AI infrastructure spending, but they split on the fallout: the heavy borrowing to pay for it is pushing up the extra interest investors demand on corporate bonds, and some think the chip and hardware stocks have already run too far.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler AI capital spending keeps rising and banks stay constructive on the capex outlook.",
+          "banks_for": [
+            "Morgan Stanley",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "We expect capex spend to continue to head higher",
+            "Our Internet analysts remain positive on the capex outlook for 2026",
+            "our bias is still to the upside",
+            "US capex spending rose +33% in 2025, and we forecast +23% in 2026"
+          ]
+        },
+        {
+          "claim": "The surge in debt issuance funding this capex is widening corporate bond risk premiums and adding concentration risk to credit markets.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "transition to a higher-supply environment has weighed on credit technicals",
+            "This shift is causing some widening in spreads and highlighting concentration risks",
+            "we expect spreads of investment grade bonds and data center ABS to widen"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI hardware and hyperscaler equity trade keeps working",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "our bias is still to the upside",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "Hardware multiples will likely compress well before earnings estimates are cut."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "momentum factor unwind and rotation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 5,
+        "neutral": 8
+      },
+      "consensus_view": "Banks agree the crowded trade of piling into recent winners like chip stocks has suffered one of its sharpest unwinds in years, driven by leveraged positioning being forced out rather than broken business fundamentals, but they split on whether the washout is nearly done and worth buying or has further to fall.",
+      "facts_agreed": [
+        {
+          "claim": "The momentum trade has suffered one of its most severe drawdowns in years, with chip stocks leading the reversal.",
+          "banks_for": [
+            "The Market Ear",
+            "Bloomberg",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Momentum is suffering its biggest washout in years",
+            "momentum factor delivering the sharpest selloff since the early 2000s",
+            "This is the worst Momentum drawdown since the Dec 2022 to Feb 2023 episode",
+            "SOX now underperforming the market by ~20pts since the late-June highs."
+          ]
+        },
+        {
+          "claim": "The selloff is a positioning and leverage-driven unwind rather than a deterioration in underlying business fundamentals.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "the momentum factor has been a mess in recent weeks",
+            "massive early-quarter rotation out of semis and not a fundamental move"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the momentum drawdown is near its end and buyable or has further to run",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "for_evidence": "Schlegel thinks Momo could bounce the next 1-3 months",
+          "banks_against": [
+            "Goldman Sachs",
+            "Deutsche Bank"
+          ],
+          "against_evidence": "Momentum is following its typical historical pattern after a +20% move over three months."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran middle east conflict",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 8
+      },
+      "consensus_view": "Banks across eight desks flag the US-Iran Middle East conflict as a live risk feeding into oil prices, but none has staked a firm directional market call on it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the US-Iran Middle East conflict, including Strait of Hormuz shipping risk, as an active geopolitical catalyst this window.",
+          "banks_for": [
+            "Bank of America",
+            "Bloomberg",
+            "Bloomberg Markets Live",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Morgan Stanley",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "US/Iran conflict escalation",
+            "Middle East escalation and Strait of Hormuz",
+            "US-Iran hostilities in West Asia",
+            "US-Iran conflict recession",
+            "Iran conflict geopolitical risk"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "leveraged and inverse etf risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 2,
+        "neutral": 6
+      },
+      "consensus_view": "Banks are all watching leveraged and inverse ETFs unwind their positions since June, but they split on whether it matters, with Bank of America calling it not a serious market threat while JPMorgan expects more forced selling ahead.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are tracking leveraged and inverse ETF deleveraging and rebalancing as an active market dynamic this window.",
+          "banks_for": [
+            "Bank of America",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Mechanical ETF deleveraging",
+            "Leveraged and inverse ETF rebalancing flows",
+            "Leveraged equity ETF AUM normalization",
+            "we see more room for deleveraging in leveraged equity ETFs, options and margin accounts"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether leveraged and inverse ETF deleveraging is a significant market risk",
+          "banks_for": [
+            "Bank of America"
+          ],
+          "for_evidence": "concluded that it does not pose a significant tail risk to markets at this time",
+          "banks_against": [
+            "JPMorgan"
+          ],
+          "against_evidence": "we see more room for deleveraging in leveraged equity ETFs, options and margin accounts"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kimi ai model releases",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four research desks flag the release of Moonshot AI's Chinese Kimi K3 model as a notable AI development, but none has staked out a directional market view on it.",
+      "facts_agreed": [
+        {
+          "claim": "Several bank and market desks reference Moonshot AI's Kimi K3 release as a live AI-competition talking point this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear",
+            "Tyler Durden"
+          ],
+          "evidence_quotes": [
+            "Kimi 3 open-source model release",
+            "Moonshot AI Kimi K3 model release",
+            "Kimi Moment",
+            "Moonshot Kimi K3 AI model competition",
+            "Chinese AI model Kimi"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us midterm elections",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Several banks flag the US midterm elections as an upcoming event to keep on the radar, but none has taken a directional market view on how it plays out.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the US midterm elections as an upcoming catalyst without staking a directional view.",
+          "banks_for": [
+            "Bank of America",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "US midterm elections",
+            "US Mid-term Election",
+            "Midterm elections impact"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
