@@ -3877,6 +3877,40 @@ def _rewrite_novel_ratio(rewritten: str, source_text: str) -> float:
     return len(novel) / len(words)
 
 
+# Calendar-slate questions — "what econ data / earnings do we have
+# tomorrow?" (2026-07-20 terlin). The answer to these is a list of
+# tickers and release times, which carries NONE of the shapes the
+# factual-specific nets look for ($ figures, %s, big numbers, dates),
+# so a memory-confabulated slate ships silently. The question SHAPE is
+# the reliable signal: asking what's on the near-term calendar is
+# always a lookup, never a memory exercise — force the grounded retry
+# whenever nothing sourced the answer (no Google grounding, no data
+# tool). Both halves required: subject (earnings / econ data / the
+# calendar) AND a near-term temporal, so "how did NVDA earnings go"
+# (retrospective) and "what do we have tomorrow" (no subject) pass.
+_CALENDAR_SUBJECT_RE = re.compile(
+    r"\b(earnings?"
+    r"|econ(?:omic)?\s+(?:data|calendar|releases?|events?|numbers?|prints?)"
+    r"|data\s+releases?"
+    r"|fed\s+speakers?)\b",
+    re.IGNORECASE,
+)
+_CALENDAR_TEMPORAL_RE = re.compile(
+    r"\b(today|tonight|tomorrow|tmrw?|this\s+(?:week|morning|afternoon)"
+    r"|next\s+week|upcoming|on\s+deck|pre-?market"
+    r"|after\s+(?:the\s+)?close)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_calendar_question(question: str) -> bool:
+    """True for near-term econ-data / earnings calendar lookups."""
+    q = question or ""
+    return bool(
+        _CALENDAR_SUBJECT_RE.search(q) and _CALENDAR_TEMPORAL_RE.search(q)
+    )
+
+
 def _ungrounded_web_specifics(
     answer: str, gm, was_web: bool, is_opinion: bool = False,
 ) -> bool:
@@ -6214,14 +6248,27 @@ async def _answer_with_gemini(
             answer, grounding_metadata, needs_web,
             is_opinion=_is_opinion_request(question),
         )
-        if answer and (_ground_trigger_shape or _ground_trigger_web):
-            _ask_meta["guards"].append(
-                "grounding:"
-                + ("web-routed" if _ground_trigger_web else "market-shape")
+        # Calendar-slate questions trigger on question shape, not answer
+        # shape — a ticker-and-times slate carries no factual-specific
+        # markers the other two nets can see (2026-07-20 terlin). Any
+        # data tool firing counts as a source, same as the market-shape
+        # net.
+        _ground_trigger_calendar = (
+            _is_calendar_question(question)
+            and not _grounding_has_sources(grounding_metadata)
+            and not _ask_tool_trace
+        )
+        if answer and (_ground_trigger_shape or _ground_trigger_web
+                       or _ground_trigger_calendar):
+            _ground_trigger_name = (
+                "web-routed" if _ground_trigger_web
+                else "market-shape" if _ground_trigger_shape
+                else "calendar"
             )
+            _ask_meta["guards"].append("grounding:" + _ground_trigger_name)
             log.warning(
                 f"/ask: ungrounded answer (q={question[:80]!r}, "
-                f"trigger={'web-routed' if _ground_trigger_web else 'market-shape'})"
+                f"trigger={_ground_trigger_name})"
                 f" — forcing a search-only retry"
             )
             try:
@@ -6274,6 +6321,11 @@ async def _answer_with_gemini(
                         forced_answer, forced_gm, needs_web,
                         is_opinion=_is_opinion_request(question),
                     )
+                    # A calendar retry that again skipped search is still
+                    # a memory slate — don't accept it as "hedged"; let
+                    # it fall through to the bare probe.
+                    or (_ground_trigger_calendar
+                        and not _grounding_has_sources(forced_gm))
                 )
                 if forced_answer and _grounding_has_sources(forced_gm):
                     answer = forced_answer
