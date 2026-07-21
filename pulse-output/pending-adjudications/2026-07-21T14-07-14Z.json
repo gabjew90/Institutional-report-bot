@@ -1,0 +1,190 @@
+{
+  "pulse_date": "2026-07-21",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "semiconductor market concentration",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 3
+      },
+      "consensus_view": "Banks agree semiconductors have become an outsized, crowded part of the market that drives a large share of index earnings, but they split on whether the recent pullback is a chance to buy or the start of a downturn.",
+      "facts_agreed": [
+        {
+          "claim": "Semiconductors have become an extremely crowded and concentrated part of the market, with record trading volume and heavy fund inflows and positioning.",
+          "banks_for": [
+            "The Market Ear",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Every fund, every algo, every retail account is pushing chips around the same narrow doorway.",
+            "Record high semiconductor global trading volume",
+            "Semiconductor fund inflows"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the semiconductor pullback is a buying opportunity or the start of a cyclical downswing",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "Semiconductors should soon start to find a bid.",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "Every fund, every algo, every retail account is pushing chips around the same narrow doorway."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kimi ai model news",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag China's Kimi AI model (including its K3 launch) as a fresh news item worth watching, but none has taken a clear bullish or bearish market position on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference the Chinese AI model Kimi as a current news item this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Kimi model performance news",
+            "Chinese AI model Kimi",
+            "Chinese AI model Kimi K3 launch"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hyperscaler credit and capex",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 3
+      },
+      "consensus_view": "Banks agree hyperscalers are pouring hundreds of billions into AI buildout and increasingly borrowing to fund it, but they split on whether that debt-funded spending is a healthy growth bet or a credit risk already showing up as higher borrowing costs.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscalers are ramping capital spending sharply and increasingly funding it by tapping credit and equity markets.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Hyperscalers capex surge",
+            "Hyperscaler infrastructure funding needs",
+            "Our Internet analysts remain positive on the capex outlook for 2026"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the debt-funded hyperscaler capex boom is a resilient growth driver or a building credit risk",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "Our Internet analysts remain positive on the capex outlook for 2026",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "This shift is causing some widening in spreads and highlighting concentration risks"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai productivity impact",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "Goldman is skeptical that gains in worker output from AI can be reliably predicted, warning it is a shaky basis for setting interest-rate policy, and no clear cross-bank view has formed.",
+      "facts_agreed": [
+        {
+          "claim": "Productivity growth has historically been hard to forecast, making it an unreliable basis for current monetary policy.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "productivity growth has proven difficult to forecast historically"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "open source ai commoditization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Both desks agree that freely copyable open-source AI models are turning AI into a cheap commodity, squeezing the pricing power of the big proprietary model makers.",
+      "facts_agreed": [
+        {
+          "claim": "Open-source AI models are commoditizing foundational AI and pressuring proprietary model makers to compete on price and flexibility.",
+          "banks_for": [
+            "Deutsche Bank",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Open models will force proprietary models to keep a lid on prices and remain flexible",
+            "If powerful AI models can be freely copied, modified and hosted, AI may become commoditized"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai sector rotation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 2,
+        "neutral": 0
+      },
+      "consensus_view": "The corpus mostly sees investors pulling money out of crowded AI and chip stocks after a sharp momentum-driven unwind, with a minority arguing Chinese tech is the next place that money rotates into.",
+      "facts_agreed": [
+        {
+          "claim": "Investors are rotating out of crowded AI and semiconductor names on valuation and positioning concerns rather than a change in fundamentals.",
+          "banks_for": [
+            "The Market Ear",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "massive early-quarter rotation out of semis and not a fundamental move",
+            "analysts began to question high valuations, prompting a rotation out of the AI trade"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "momentum trade reversal",
+      "reason": "facts_contested for_evidence not in inputs: 'i’m minded to think we’re now close to the end of this.'"
+    }
+  ]
+}
