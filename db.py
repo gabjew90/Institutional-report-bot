@@ -752,6 +752,56 @@ def get_failed_pdfs_for_retry(max_retries: int = 3) -> list[dict]:
     return [dict(r) for r in rows]
 
 
+def reset_stale_processing(max_age_hours: float = 2.0,
+                           max_retries: int = 3) -> list[dict]:
+    """Reap pdf_files rows stranded in PROCESSING by a worker restart.
+
+    process_single_pdf flips a row to PROCESSING before analysis; if the
+    worker dies mid-flight the row stays there forever — the queue
+    picker only reads DOWNLOADED and retry only reads FAILED
+    (2026-07-20: 11 zombies dating back to April). Rows the Opus bridge
+    owns are exempt: bridge_ingestion_state has its own watchdog +
+    fallback-sweeper state machine. Rows already out of retries go to
+    FAILED instead of crash-looping. Returns the changed rows.
+    """
+    conn = get_connection()
+    stale = conn.execute(
+        """SELECT id, file_name, retry_count FROM pdf_files
+           WHERE status = 'PROCESSING'
+             AND updated_at < datetime('now', ?)
+             AND id NOT IN (SELECT pdf_file_id FROM bridge_ingestion_state)""",
+        (f"-{max_age_hours} hours",),
+    ).fetchall()
+    changed: list[dict] = []
+    for row in stale:
+        if row["retry_count"] >= max_retries:
+            conn.execute(
+                """UPDATE pdf_files
+                   SET status = 'FAILED',
+                       error_message = 'stale PROCESSING reaper: max retries exceeded',
+                       updated_at = datetime('now')
+                   WHERE id = ?""",
+                (row["id"],),
+            )
+            new_status = "FAILED"
+        else:
+            conn.execute(
+                """UPDATE pdf_files
+                   SET status = 'DOWNLOADED',
+                       retry_count = retry_count + 1,
+                       updated_at = datetime('now')
+                   WHERE id = ?""",
+                (row["id"],),
+            )
+            new_status = "DOWNLOADED"
+        changed.append({
+            "id": row["id"], "file_name": row["file_name"],
+            "new_status": new_status,
+        })
+    conn.commit()
+    return changed
+
+
 def update_pdf_status(pdf_id: int, status: str, error_message: str | None = None) -> None:
     conn = get_connection()
     if error_message:

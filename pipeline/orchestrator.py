@@ -155,6 +155,23 @@ async def process_pending_queue() -> list[PdfAnalysis]:
     Processes with priority ordering: smaller files first for faster coverage.
     Also retries eligible failed PDFs.
     """
+    # Reap zombies first: rows stranded in PROCESSING by a worker
+    # restart re-enter the queue as DOWNLOADED (bridge-owned rows are
+    # exempt — their own watchdog handles them).
+    try:
+        reaped = db.reset_stale_processing(
+            max_age_hours=2, max_retries=settings.max_retry_count
+        )
+        if reaped:
+            log.warning(
+                f"Stale-PROCESSING reaper: reset {len(reaped)} row(s): "
+                + ", ".join(
+                    f"{r['file_name']}→{r['new_status']}" for r in reaped[:10]
+                )
+            )
+    except Exception as e:
+        log.error(f"Stale-PROCESSING reaper failed: {e}", exc_info=True)
+
     # Get pending PDFs
     pending = db.get_pending_pdfs(limit=50)
     retryable = db.get_failed_pdfs_for_retry(max_retries=settings.max_retry_count)
