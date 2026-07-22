@@ -1,0 +1,79 @@
+{
+  "pulse_date": "2026-07-22",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "semiconductor deleveraging and dip buying",
+      "selected": true,
+      "stance_counts": {"supportive": 2, "skeptical": 0, "neutral": 5},
+      "consensus_view": "Two banks read the recent chip-stock selloff as a leverage-driven positioning cleanse that investors are buying rather than a fundamental breakdown, while five other desks flag semiconductors as a dominant market theme without staking a direction.",
+      "facts_agreed": [{"claim": "The semiconductor selloff is a technical, positioning-driven deleveraging that investors are treating as a buying opportunity rather than a fundamental bust.", "banks_for": ["TS Lombard", "JPMorgan"], "evidence_quotes": ["The KOSPI selloff is a concentrated semiconductor deleveraging, not a macro bust", "Tech led again ($6.6Bn, 3.1z) as investors bought the dip in Semis"]}],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai capex leverage",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 1, "neutral": 5},
+      "consensus_view": "Banks broadly agree AI infrastructure spending is booming and increasingly paid for with hyperscaler borrowing, but they split on whether the recent AI-stock pullback is a buying chance or the first sign of a debt-driven risk.",
+      "facts_agreed": [{"claim": "Multiple banks flag surging AI hyperscaler capex as a dominant live market theme this window.", "banks_for": ["Goldman Sachs", "JPMorgan", "The Market Ear", "ZeroHedge", "Bloomberg"], "evidence_quotes": ["AI capex cycle", "AI hyperscaler capex investment", "hyperscaler capex boom", "AI compute capacity constraints", "CapEx overcycle concerns in US AI infrastructure"]}],
+      "facts_contested": [{"claim": "Whether the AI momentum drawdown is a buying opportunity or a leverage-driven risk", "banks_for": ["Goldman Sachs"], "for_evidence": "Flood a firm believer in buying this momentum drawdown", "banks_against": ["Bloomberg"], "against_evidence": "hyperscalers, issue more debt to fund demand for GPU-powered compute"}],
+      "falsifiable_predictions": [{"bank": "JPMorgan", "subject": "AI-related capex", "direction_or_level": "$870B (~77% YoY increase)", "by_when": "end-2026", "source_quote": "Projected by end-2026, ~77% YoY increase."}, {"bank": "JPMorgan", "subject": "Hyperscaler portion of AI capex", "direction_or_level": "$750B", "by_when": "end-2026", "source_quote": "Projected by end-2026."}, {"bank": "JPMorgan", "subject": "Aggregate debt issuance by 5 largest hyperscalers", "direction_or_level": "$190B, up from $40-50B in 2022", "by_when": "2026", "source_quote": "2026 figure, up from $40-50B in 2022."}]
+    },
+    {
+      "theme": "kimi k3 model release",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 4},
+      "consensus_view": "Several research desks flag Moonshot AI's open-source Kimi K3 model release as a live AI catalyst, but none has staked a clear directional market call on it.",
+      "facts_agreed": [{"claim": "Four research desks reference Moonshot AI's open-source Kimi K3 model release as a notable event this window.", "banks_for": ["Deutsche Bank", "Goldman Sachs", "SpotGamma", "ZeroHedge"], "evidence_quotes": ["Moonshot AI Kimi K3 engineering efficiency", "Moonshot Kimi K3 open-source release", "Kimi K3 open-source model launch", "Kimi-3 announcement", "Kimi K3 model release"]}],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai model commoditization",
+      "selected": true,
+      "stance_counts": {"supportive": 2, "skeptical": 1, "neutral": 0},
+      "consensus_view": "Chinese open-weight AI models have become good enough to erode the pricing power of costly US proprietary models, though banks split on whether that threatens US AI names or opens a buy case in Chinese AI infrastructure.",
+      "facts_agreed": [{"claim": "High-performance Chinese open-weight models are reaching a level that erodes the scarcity premium of proprietary US AI models.", "banks_for": ["ZeroHedge", "Goldman Sachs", "Deutsche Bank"], "evidence_quotes": ["successive Chinese releases are eroding the scarcity premium embedded in proprietary models", "China's AI open-source/open-weight models are reaching a critical point of intelligence performance"]}],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran middle east escalation",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Goldman, JPMorgan, and The Market Ear all flag Iran and broader Middle East escalation as a live risk in the background, but none has staked out a clear directional bet on how it plays out.",
+      "facts_agreed": [{"claim": "Multiple banks reference Iran and Middle East escalation as an active risk-monitoring topic without committing to a directional view.", "banks_for": ["Goldman Sachs", "JPMorgan", "The Market Ear"], "evidence_quotes": ["Iran escalation headlines", "US-Iran conflict escalation", "Middle East escalation", "Middle East conflict in Iran", "Middle East ground conflict risk"]}],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hyperscaler financial trends",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Three banks are tracking hyperscaler finances from different angles - Bank of America on weakening cash generation, Goldman on cloud profit margins, and JPMorgan on the record borrowing funding AI buildouts - but none has staked a clear bullish or bearish call yet.",
+      "facts_agreed": [{"claim": "Three banks are flagging hyperscaler financials as a live subject this window, spanning free cash flow, cloud margins, and debt-funded AI capex, without committing to a direction.", "banks_for": ["Bank of America", "Goldman Sachs", "JPMorgan"], "evidence_quotes": ["Hyperscaler free cash flow deterioration", "Hyperscaler cloud margin inflection", "US hyperscaler debt issuance"]}],
+      "facts_contested": [],
+      "falsifiable_predictions": [{"bank": "JPMorgan", "subject": "Hyperscaler portion of AI capex", "direction_or_level": "$750B", "by_when": "end-2026", "source_quote": "Hyperscaler portion of AI capex"}, {"bank": "JPMorgan", "subject": "Aggregate debt issuance by 5 largest hyperscalers", "direction_or_level": "$190B", "by_when": "2026", "source_quote": "Aggregate debt issuance by 5 largest hyperscalers"}, {"bank": "JPMorgan", "subject": "Projected AI-related capex", "direction_or_level": "$870B", "by_when": "end-2026", "source_quote": "Projected AI-related capex"}]
+    },
+    {
+      "theme": "momentum trade dynamics",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 2, "neutral": 0},
+      "consensus_view": "Momentum names (recent stock-market winners) just ripped higher in a violent one-day snapback, and the banks split on whether that is the start of a real recovery or a last gasp before the AI-winner selloff resumes.",
+      "facts_agreed": [],
+      "facts_contested": [{"claim": "whether the momentum trade is stalling out or has durably rebounded", "banks_for": ["Bloomberg", "BTIG"], "for_evidence": "we would expect high-beta momentum to begin to stall out tomorrow into Thursday", "banks_against": ["The Market Ear"], "against_evidence": "The momentum trade was up >9% yesterday, marking its best one day rally"}],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "momentum downturn",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 1, "neutral": 2},
+      "consensus_view": "Goldman warns the sharp selloff in momentum stocks (recent market winners) has not bottomed yet, because price swings in those names are still running too hot to give an all-clear.",
+      "facts_agreed": [{"claim": "The momentum-stock selloff shows no confirmed bottom because relative volatility in those names remains elevated.", "banks_for": ["Goldman Sachs"], "evidence_quotes": ["relative vol of momo still too high to give you the all clear"]}],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
