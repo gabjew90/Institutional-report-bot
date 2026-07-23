@@ -1,0 +1,131 @@
+{
+  "pulse_date": "2026-07-23",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai data center infrastructure",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 1,
+        "neutral": 7
+      },
+      "consensus_view": "Banks are broadly upbeat that AI-driven data center demand keeps hyperscaler spending and cooling and power upgrades booming, though they warn much of the buildout rides on debt and that the most aggressive capacity delivery targets probably will not be hit on time.",
+      "facts_agreed": [
+        {
+          "claim": "Banks are broadly constructive that AI and data center demand is a major, ongoing growth driver.",
+          "banks_for": ["UBS", "Bank J. Safra Sarasin", "Bank J. Safra Sarasin Ltd", "Goldman Sachs"],
+          "evidence_quotes": ["we remain constructive on AI’s growth story", "data centre demand accounted for slightly more than half of absolute sales growth", "Generative A.I. has the potential to change the anatomy of work", "I like buying this stu＀ here"]
+        },
+        {
+          "claim": "Rising AI rack densities are forcing a shift from air cooling to liquid cooling in data centers.",
+          "banks_for": ["Bernstein"],
+          "evidence_quotes": ["direct-to-chip (DTC) liquid cooling has become a critical part of the data center ecosystem", "The rapid increase in AI rack densities is forcing a transition away from traditional air-cooled architectures"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor buying opportunity",
+      "selected": true,
+      "stance_counts": {"supportive": 4, "skeptical": 0, "neutral": 2},
+      "consensus_view": "Four bank desks call the recent chip-stock selloff a buying opportunity, arguing the AI demand story is intact and positioning has thinned out, and no desk argues the other way.",
+      "facts_agreed": [
+        {
+          "claim": "The recent semiconductor pullback is an attractive opportunity to add exposure rather than a warning sign.",
+          "banks_for": ["Bank of America", "Goldman Sachs"],
+          "evidence_quotes": ["we view the semis pullback as an attractive opportunity to position for renewed upside momentum", "the sello＀ could be a good opportunity to add momentum exposure or buy the dip"]
+        },
+        {
+          "claim": "The underlying AI demand story is intact and valuations are not at bubble extremes.",
+          "banks_for": ["The Market Ear"],
+          "evidence_quotes": ["fundamental AI story remains intact and valuations are still far from Dot-com-era extremes", "posting the fastest recovery from a drawdown of more than 15% in over 30 years"]
+        },
+        {
+          "claim": "Buying demand and fundamentals across the chip space remain supportive.",
+          "banks_for": ["Goldman Sachs", "JPMorgan"],
+          "evidence_quotes": ["I believe this demand will continue", "Strong quarter and guidance reflects continued momentum in analog recovery.", "comments on the front-end space overall stayed largely positive"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz red sea supply disruption",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 5},
+      "consensus_view": "Five research desks flag disruption to oil and shipping through the Strait of Hormuz and Red Sea as a live Middle East supply risk, but none has staked out a firm directional call on where prices go from here.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference potential disruption to oil, gas, and shipping flows through the Strait of Hormuz and Red Sea as an active supply risk this window.",
+          "banks_for": ["Bank J. Safra Sarasin", "Goldman Sachs", "JPMorgan", "Newsquawk", "UBS"],
+          "evidence_quotes": ["Strait of Hormuz supply shortfall", "Strait of Hormuz oil flow disruption", "Strait of Hormuz maritime trade disruption", "Red Sea supply risk", "Strait of Hormuz LNG export halt"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran us middle east escalation",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 5},
+      "consensus_view": "Five bank desks flag renewed Iran-US and broader Middle East military tension as a live wildcard for oil markets, but none has staked a clear directional call on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference renewed Iran-US and broader Middle East military tension as a live macro wildcard this window without committing to a direction.",
+          "banks_for": ["Bank of America", "JPMorgan", "Merrill / Chief Investment Office", "Nomura", "UBS"],
+          "evidence_quotes": ["Middle East military tensions", "US-Iran geopolitical escalation", "Iranian conflict re-escalation", "Middle East geopolitical escalation", "Geopolitical tension re-escalation"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "section 232 and 301 tariffs",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 4},
+      "consensus_view": "Several banks reference Section 232 and Section 301 tariff actions as an active policy backdrop, but none stakes a clear directional market view on them.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag Section 232 and Section 301 tariff actions as an active policy topic this window.",
+          "banks_for": ["Goldman Sachs", "Rabobank", "Raymond James", "UBS"],
+          "evidence_quotes": ["Section 232 tariffs", "Section 232 tariffs on tank cars", "Section 301 tariff decisions", "Section 301 investigations", "Section 232 copper tariffs"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "section 338 tariff act",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Three banks flag Section 338 of the 1930 Tariff Act as the legal basis for new US tariffs on Canadian goods, but none stake out a directional market view on it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference Section 338 of the Tariff Act of 1930 as an active tariff authority in the current policy window.",
+          "banks_for": ["Rabobank", "Raymond James", "UBS"],
+          "evidence_quotes": ["Section 338 Tariff Act of 1930", "Section 338 tariff authority", "Section 338 of the Tariff Act of 1930"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "demand tailwinds",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Several banks flag structural demand tailwinds across power grids, electrification, energy security and federal spending, but nobody has staked a clear directional trade view yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference demand tailwinds across power grid buildout, electrification, energy security and US federal spending as supportive backdrops this window.",
+          "banks_for": ["Bernstein", "Goldman Sachs", "JPMorgan"],
+          "evidence_quotes": ["US Federal demand tailwind", "grid capex demand tailwinds", "energy security demand tailwinds", "Electrification tailwinds for electrical equipment providers"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
