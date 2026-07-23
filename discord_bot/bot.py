@@ -3434,6 +3434,19 @@ def _has_repetition_glitch(text: str) -> bool:
     return any(c >= 2 for c in loose_counts.values())
 
 
+def _repetition_glitch_sentences(text: str) -> list[str]:
+    """Sentences/bullets of `text` that individually trip the glitch
+    detector. Strip-fallback input (2026-07-22 terlin calendar answer:
+    the one-shot retry re-glitched and the failure path shipped the
+    loop untouched — excising just the glitching bullet keeps the
+    clean bullets deliverable). The per-sentence check inherits the
+    detector's >=6-token floor, so short clean bullets never match."""
+    return [
+        s for s in _split_sentences(text)
+        if _has_repetition_glitch(s)
+    ]
+
+
 # =====================================================================
 # Grounding backstop — structural enforcement that a MARKET-FACT answer
 # actually consulted a source. Gemini's Google-Search grounding is
@@ -3875,6 +3888,23 @@ def _rewrite_novel_ratio(rewritten: str, source_text: str) -> float:
     src = (source_text or "").lower()
     novel = [w for w in words if w not in src]
     return len(novel) / len(words)
+
+
+def _revoice_acceptable(revoiced: str, probe_answer: str,
+                        question: str) -> bool:
+    """Gate for the bare-probe revoice pass: accept the in-voice rewrite
+    only when it invents nothing (novel ratio vs the probe's verified
+    text + question stays under the fidelity cap) and carries no
+    repetition glitch. Rejection ships the dry probe answer — correct-
+    and-plain still beats in-voice-but-unfaithful."""
+    if not revoiced or not revoiced.strip():
+        return False
+    if _has_repetition_glitch(revoiced):
+        return False
+    novel = _rewrite_novel_ratio(
+        revoiced, f"{probe_answer or ''} {question or ''}"
+    )
+    return novel <= _REWRITE_NOVEL_MAX_RATIO
 
 
 # Calendar-slate questions — "what econ data / earnings do we have
@@ -5780,6 +5810,7 @@ async def _answer_with_gemini(
         # loop. If retry still glitches, ship the original — the user
         # gets SOMETHING rather than blank.
         if answer and _has_repetition_glitch(answer):
+            _ask_meta["guards"].append("repetition")
             log.warning(
                 f"/ask: repetition glitch in answer (q={question[:80]!r}); "
                 f"retrying once at higher temp"
@@ -5822,10 +5853,34 @@ async def _answer_with_gemini(
                 else:
                     log.warning(
                         "/ask: repetition retry didn't fix glitch — "
-                        "shipping original answer"
+                        "falling back to sentence strip"
                     )
             except Exception as e:
                 log.warning(f"/ask: repetition retry call failed: {e}")
+            # Strip fallback (2026-07-22 terlin calendar answer: the
+            # retry re-glitched and the old failure path shipped the
+            # loop to Discord untouched). The glitch is end-of-
+            # generation junk confined to its sentence/bullet — excise
+            # exactly those and keep the clean remainder. If the WHOLE
+            # answer is glitch, ship the original: something beats
+            # blank, and the ask-log marker makes it visible to QC
+            # either way.
+            if answer and _has_repetition_glitch(answer):
+                _glitch_sents = _repetition_glitch_sentences(answer)
+                _stripped = _strip_sentences(answer, _glitch_sents)
+                if _stripped and not _has_repetition_glitch(_stripped):
+                    answer = _stripped
+                    _ask_meta["guards"].append("repetition-strip")
+                    log.warning(
+                        f"/ask: hard-stripped {len(_glitch_sents)} "
+                        f"glitching sentence(s) after failed retry"
+                    )
+                else:
+                    _ask_meta["guards"].append("repetition-shipped")
+                    log.warning(
+                        "/ask: glitch survived strip fallback — "
+                        "shipping original answer"
+                    )
 
         # Voice cleanup on the final answer. The pulse-side lint runs
         # at AUDIT->SCRUB; /ask answers ship straight from Gemini to
@@ -6476,6 +6531,93 @@ async def _answer_with_gemini(
                                 "/ask: bare-probe grounded (in-voice retry "
                                 "had failed)"
                             )
+                            # REVOICE (2026-07-23). The probe is
+                            # deliberately persona-less — that dryness is
+                            # what makes it search — but every probe
+                            # answer in the 07-17..07-23 window failed QC
+                            # voice/format for exactly that reason. One
+                            # no-tools rewrite turns the verified facts
+                            # into arrow-bullet room voice; the fidelity
+                            # gate (_revoice_acceptable) rejects any
+                            # rewrite that invents substance, in which
+                            # case the dry probe answer ships as before.
+                            # Grounding receipts stay on probe_gm either
+                            # way — the rewrite never touches sources.
+                            try:
+                                _rv_prompt = (
+                                    "Rewrite this verified answer as a "
+                                    "sharp trader-to-trader Discord reply: "
+                                    "2-4 arrow bullets (each starting "
+                                    "'→ '), direct and opinionated, plain "
+                                    "English, no em-dashes, no source "
+                                    "list, no hedging filler. Do NOT add, "
+                                    "change, or drop any fact, number, "
+                                    "date, ticker, or name — every "
+                                    "specific in your rewrite must appear "
+                                    "in the ORIGINAL. Output ONLY the "
+                                    "rewritten answer.\n\n"
+                                    "QUESTION:\n"
+                                    + (question or "").strip()[-600:]
+                                    + "\n\nORIGINAL (verified):\n"
+                                    + probe_answer
+                                )
+                                _rv_resp = await (
+                                    client.aio.models.generate_content(
+                                        model=ask_model,
+                                        contents=[types.Content(
+                                            role="user",
+                                            parts=[types.Part.from_text(
+                                                text=_rv_prompt)],
+                                        )],
+                                        config=types.GenerateContentConfig(
+                                            system_instruction=(
+                                                "You are a senior trader "
+                                                "rewriting a research note "
+                                                "for the group chat. Keep "
+                                                "every fact identical."
+                                            ),
+                                            safety_settings=safety_settings,
+                                            max_output_tokens=1200,
+                                            temperature=0.4,
+                                            thinking_config=(
+                                                types.ThinkingConfig(
+                                                    thinking_budget=512)
+                                            ),
+                                        ),
+                                    )
+                                )
+                                _tally_retry_usage(_rv_resp)
+                                try:
+                                    _rv_text = (_rv_resp.text or "").strip()
+                                except Exception:
+                                    _rv_text = ""
+                                if _rv_text:
+                                    _rv_text, _ = _clean_voice_violations(
+                                        _rv_text
+                                    )
+                                if _revoice_acceptable(
+                                    _rv_text, probe_answer, question
+                                ):
+                                    answer = _rv_text
+                                    _ask_meta["ground_retry"] = (
+                                        "bare-probe:grounded+revoiced"
+                                    )
+                                    log.info(
+                                        "/ask: probe revoice accepted"
+                                    )
+                                else:
+                                    _ask_meta["ground_retry"] = (
+                                        "bare-probe:grounded(dry)"
+                                    )
+                                    log.info(
+                                        "/ask: probe revoice rejected — "
+                                        "shipping dry probe answer"
+                                    )
+                            except Exception as rve:
+                                log.warning(
+                                    f"/ask: probe revoice call failed "
+                                    f"(non-fatal): {rve}"
+                                )
                     except Exception as pe:
                         log.warning(f"/ask: bare probe failed: {pe}")
                     if not _probe_ok:

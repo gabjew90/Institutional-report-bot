@@ -16,7 +16,36 @@ outlier interactions fit comfortably under Gemini's input cap.
 
 from __future__ import annotations
 
+import re
+
 from ask_qc.models import AskInteraction
+
+
+# Slur mask (2026-07-23). The interaction's Q/A/prompt_block quote the
+# room's register verbatim — profile Voice sections are the densest slur
+# containers — and that density trips Gemini's unconfigurable safety
+# filter on the JUDGE call itself (text=None -> UNGRADED, 3 hits in the
+# 07-15..07-22 window). Grading doesn't need the tokens verbatim: both
+# the answer and its forensic context are masked identically, so
+# fabrication/voice comparisons still line up. Token family mirrors
+# bot.py's `_SLUR_MASK_RE` plus the obfuscation tolerance of
+# scripts/slur_patterns.py (which is not importable here — scripts/ is
+# not a package).
+_SLUR_MASK_RE = re.compile(
+    r"\b(?:n[i1!]gg(?:er|ah|a)s?|ch[i1!]nk(?:s|y)?|sp[i1!]c(?:s|k)?"
+    r"|k[i1!]ke?s?|f[a@]gg?(?:ot|y)?s?|pajeet(?:s)?|r[e3]t[a@]rd(?:s|ed|ation)?"
+    r"|g[o0]{2}k(?:s)?|wetb[a@]ck(?:s)?|tr[a@]nn(?:y|ies)|towel[\-\s]?head(?:s)?"
+    r"|dyk[e3]s?|paki(?:s)?)\b",
+    re.IGNORECASE,
+)
+
+
+def _mask_slurs(text: str) -> str:
+    """Replace slur tokens with `[redacted]` so the judge call clears
+    the filter. Lossy by design — see module note above."""
+    if not text:
+        return text
+    return _SLUR_MASK_RE.sub("[redacted]", text)
 
 
 # Tail-truncate prompt_block at this many chars. Gemini Flash Lite
@@ -164,15 +193,15 @@ def build_judge_prompt(interaction: AskInteraction) -> str:
     lines.append("")
     lines.append("### Question")
     lines.append("")
-    lines.append(interaction.question)
+    lines.append(_mask_slurs(interaction.question))
     lines.append("")
     lines.append("### Answer")
     lines.append("")
-    lines.append(interaction.answer)
+    lines.append(_mask_slurs(interaction.answer))
     lines.append("")
 
     if interaction.prompt_block is not None:
-        block = interaction.prompt_block
+        block = _mask_slurs(interaction.prompt_block)
         truncated = False
         if len(block) > _PROMPT_BLOCK_CAP:
             block = block[:_PROMPT_BLOCK_CAP]

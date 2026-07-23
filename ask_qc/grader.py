@@ -23,6 +23,13 @@ from config import settings
 log = logging.getLogger(__name__)
 
 
+class JudgeResponseBlocked(Exception):
+    """Gemini returned no text for the judge call — safety filter block
+    or empty candidate. Named so the QC report's `grader_error` reads
+    as a diagnosis instead of the bare TypeError that `json.loads(None)`
+    used to raise (2026-07-22 19:39 UNGRADED)."""
+
+
 # Cached client instance so we don't re-init the SDK per call.
 _client = None
 
@@ -103,7 +110,13 @@ async def _grade_interaction_once(
             response_mime_type="application/json",
         ),
     )
-    return _parse_judge_response(interaction.ts_utc, response.text)
+    raw = response.text
+    if raw is None:
+        feedback = getattr(response, "prompt_feedback", None)
+        raise JudgeResponseBlocked(
+            f"judge response had no text (prompt_feedback={feedback!r})"
+        )
+    return _parse_judge_response(interaction.ts_utc, raw)
 
 
 def _parse_judge_response(ts_utc: str, raw: str) -> GradedInteraction:
