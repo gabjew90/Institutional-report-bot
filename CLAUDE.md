@@ -178,6 +178,7 @@ Key ones set on `worker` service:
 - `TIMEZONE=America/New_York`
 - `DAILY_PULSE_HOUR=10`, `DAILY_PULSE_MINUTE=0`
 - `DB_PATH=/data/reports.db`, `PDF_DOWNLOAD_DIR=/data/pdfs` (MUST use leading slash — relative paths write to ephemeral container storage and get wiped on redeploy)
+- `MALLOC_ARENA_MAX=2` — caps glibc malloc arenas. Without it, the ~30 asyncio worker threads each get their own arena and freed PDF/image buffers never return to the OS; RSS ratchets to ~1.26 GB and Railway bills ~$10/GB-month for it (set 2026-07-23, cut RSS to ~180 MB at boot). Don't remove.
 
 ## Database
 
