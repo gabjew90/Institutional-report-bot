@@ -1,0 +1,225 @@
+{
+  "pulse_date": "2026-07-24",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure investment",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 4,
+        "neutral": 10
+      },
+      "consensus_view": "Most banks back continued heavy AI infrastructure spending as a real multi-year growth driver, but a vocal minority warns that shrinking free cash flow and hidden off-balance-sheet debt make the buildout riskier than it looks.",
+      "facts_agreed": [
+        {
+          "claim": "Banks broadly treat rising AI infrastructure and hyperscaler capex spending as a durable, multi-year growth driver.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs",
+            "JPMorgan",
+            "MUFG Bank",
+            "Raymond James"
+          ],
+          "evidence_quotes": [
+            "We remain constructive on AI’s growth story",
+            "AI proliferation as a multi-year tailwind for sales expansion.",
+            "we maintain our Tactically Bullish call flagging hyperscaler capex",
+            "AI demand continues to outstrip computing capacity.",
+            "The USD has been one of the main beneficiaries of the AI buildout"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether heavy AI capex is sustainable given deteriorating free cash flow",
+          "banks_for": [
+            "UBS",
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "We remain constructive on AI’s growth story",
+          "banks_against": [
+            "Bloomberg Markets Live",
+            "Citadel Securities",
+            "Tyler Durden"
+          ],
+          "against_evidence": "the tide is inevitably going to turn, Wall Street analysts reckon"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "geopolitical oil supply risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 1,
+        "neutral": 10
+      },
+      "consensus_view": "Most banks see the Iran and Middle East conflict disrupting oil supply and pushing crude prices higher, while one desk argues the market is only pricing a modest risk premium.",
+      "facts_agreed": [
+        {
+          "claim": "The Iran and Middle East conflict is disrupting oil supply and skewing crude price risks to the upside.",
+          "banks_for": [
+            "Citadel Securities",
+            "JPMorgan",
+            "UBS",
+            "UBS GWM"
+          ],
+          "evidence_quotes": [
+            "markets should not treat the Iran conflict as a rear-view-mirror risk",
+            "distillate cracks in both the US and Europe have surged toward record highs",
+            "Extended tensions in the Middle East and rising supply disruption risks skew price risks",
+            "absent that have pushed oil prices higher"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "size of the oil geopolitical risk premium",
+          "banks_for": [
+            "Citadel Securities"
+          ],
+          "for_evidence": "markets should not treat the Iran conflict as a rear-view-mirror risk",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "market is pricing in only a modest geopolitical risk premium"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb rate trajectory",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 2,
+        "neutral": 6
+      },
+      "consensus_view": "Banks disagree on where the European Central Bank heads next, with one arguing markets are wrongly betting on 2027 rate cuts and another saying markets are overestimating how much more the ECB will raise rates.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "direction of ECB policy into 2027 (cuts vs. continued tightening)",
+          "banks_for": [
+            "TS Lombard"
+          ],
+          "for_evidence": "consensus cuts next year from a 2.5% median forecast base are probably misplaced",
+          "banks_against": [
+            "UBS"
+          ],
+          "against_evidence": "futures markets are currently overestimating the likely extent of ECB policy tightening"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "houthi red sea tanker attacks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Several banks flag Houthi tanker attacks in the Red Sea as a live shipping and oil-supply risk in this window, but none has staked out a clear directional trade view on it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference Houthi tanker attacks in the Red Sea as an active shipping and oil-supply risk factor this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "UBS GWM"
+          ],
+          "evidence_quotes": [
+            "Houthi tanker attacks in Red Sea",
+            "Red Sea tanker strikes",
+            "Houthi attacks in the Red Sea",
+            "Red Sea tanker attacks"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "copper supply tightness",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "One desk argues copper prices stay firm because physical inventories are so thin that tight supply beats broader economic worries, while others only cite mixed demand data without taking a directional side.",
+      "facts_agreed": [
+        {
+          "claim": "Copper's near-term physical supply tightness is strong enough to outweigh broader economic uncertainty.",
+          "banks_for": [
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "Copper’s physical tightness will continue to outweigh macro uncertainty"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "chinese open source models",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three banks reference Chinese open-weight and frontier AI models as a topic worth tracking, but none has staked out a clear directional view on it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag Chinese open-source and frontier AI models as a live topic in the current window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Tyler Durden",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Chinese open-source model adoption",
+            "Chinese frontier models",
+            "Frontier closed models vs Chinese open weights"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "red sea shipping disruptions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three research desks flag Red Sea shipping trouble as a live supply-chain and shipping risk, but none has staked out a clear directional call on it.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference Red Sea shipping disruptions as a current supply-chain and shipping risk in this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Red Sea shipping disruptions",
+            "Red Sea supply chain risk",
+            "Red Sea shipping tensions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
