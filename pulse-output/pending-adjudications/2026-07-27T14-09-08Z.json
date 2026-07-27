@@ -1,0 +1,269 @@
+{
+  "pulse_date": "2026-07-27",
+  "window_label": "since-last-daily (2026-07-24T14:35)",
+  "themes": [
+    {
+      "theme": "ai investment and financing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 4,
+        "neutral": 11
+      },
+      "consensus_view": "Most desks now treat the AI buildout as a credit and cash-flow story rather than a pure growth story, with bond markets balking at hyperscaler debt and the bull case hinging on AI revenue picking up before spending peaks.",
+      "facts_agreed": [
+        {
+          "claim": "The AI infrastructure buildout has become a financing/credit story that is straining bond markets, not just an equity trade.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "AI is increasingly becoming a credit story rather than just an equity story.",
+            "The private sector is now visibly competing with the public sector for the same waning duration bid",
+            "hyperscaler spreads widening, CDS blowing out, deal concessions expanding"
+          ]
+        },
+        {
+          "claim": "The market is no longer willing to reward hyperscaler capex ambition on faith and is now demanding proof of cash-flow returns.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "the market is no longer willing to treat spend as costless",
+            "markets don't run on long-term visions. They run on cash flow."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether AI capex spending keeps rising or is due for a slowdown",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "there is no plateau in AI capex",
+          "banks_against": [
+            "Academy Securities",
+            "The Market Ear"
+          ],
+          "against_evidence": "the case that this narrative experiences a serious “hiccup” is growing."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east geopolitical escalation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 8
+      },
+      "consensus_view": "Eight desks reference the Middle East and US-Iran conflict as a live risk to oil and supply chains, but none has committed to a clear directional call on whether it escalates or calms.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across eight desks flag Middle East and US-Iran conflict escalation as a live macro catalyst this window, without staking a directional view.",
+          "banks_for": [
+            "Bank of America",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "Internal Sales & Trading",
+            "Internal Trading Desk",
+            "JPMorgan",
+            "Société Générale",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Middle East escalation/de-escalation cycle",
+            "US-Iran geopolitical escalation",
+            "Escalating conflict in Iran",
+            "Middle East tensions",
+            "Middle East production risk"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "july fed hike",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 6
+      },
+      "consensus_view": "The research leans toward a live risk that the Fed raises rates at its July meeting rather than holding, with market-implied hike odds jumping to roughly 35-40% and at least one bank arguing current rates are too low to bring inflation down, though most desks only flag the meeting as a key date to watch without staking a call.",
+      "facts_agreed": [
+        {
+          "claim": "A Fed rate hike is a real and possibly underappreciated risk, with current policy seen by some as not restrictive enough to tame inflation.",
+          "banks_for": [
+            "Bloomberg",
+            "Société Générale"
+          ],
+          "evidence_quotes": [
+            "Markets may be underpricing a July Fed hike",
+            "the Fed’s policy rate has been too low and thus not restrictive enough"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz red sea tanker attacks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five banks reference tanker disruptions in the Strait of Hormuz and Red Sea as a live supply and oil-price risk, but none has staked out a clear directional call on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag tanker traffic disruptions in the Strait of Hormuz and Red Sea as an active supply-chain and oil-market catalyst this window.",
+          "banks_for": [
+            "Bloomberg",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz tanker traffic disruption",
+            "Strait of Hormuz fertilizer supply chain disruption",
+            "Red Sea Houthi tanker attacks",
+            "Houthi attacks on Saudi tankers",
+            "US-Iran conflict and Strait of Hormuz navigation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "defensive rotation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Three desks see money quietly moving into defensive corners of the market — low-volatility names, healthcare, telecom, and biopharma — as high-flying tech loses steam, and none of them pushes back.",
+      "facts_agreed": [
+        {
+          "claim": "A defensive rotation is underway beneath the market surface as investors shift out of high-beta tech into safer pockets.",
+          "banks_for": [
+            "BTIG",
+            "Internal Trading Desk",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "starting to see a more defensive trade below the surface",
+            "more defensive rotation exiting the week",
+            "historical precedents show these types of generalist-driven non-fundamental rotations into biopharma can linger"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "geopolitical oil supply risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Banks across four desks flag the Iran and Middle East conflict as a live threat to oil supply that is pushing crude prices higher, though only one has framed it as an outright bullish oil call.",
+      "facts_agreed": [
+        {
+          "claim": "The Iran and broader Middle East conflict is threatening oil supply through key shipping chokepoints and pushing crude prices higher.",
+          "banks_for": [
+            "Bloomberg",
+            "Bank of America",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Geopolitics is driving oil higher.",
+            "Energy shock risks from Iran",
+            "geopolitical oil chokepoints",
+            "Iran War oil market disruptions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "real yield curve steepening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 3
+      },
+      "consensus_view": "Banks agree that US government bond yields are climbing and the yield curve is steepening, but only Bloomberg reads it as a warning that inflation is about to become a real problem while the others just flag the move without a directional call.",
+      "facts_agreed": [
+        {
+          "claim": "US and global government bond yields are rising and the yield curve is steepening.",
+          "banks_for": [
+            "Bank of America",
+            "Deutsche Bank",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Treasury yield curve steepening",
+            "US Treasury yield rise",
+            "Global sovereign bond yield surge"
+          ]
+        },
+        {
+          "claim": "The steepening real yield curve is read as a market signal that inflation is set to become troublesome.",
+          "banks_for": [
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "this is the market’s way of saying inflation is going to become troublesome"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "warsh congressional testimony",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Several bank desks flag new Fed Chair Kevin Warsh's Congressional testimony and policy stance as a live macro watch-item, but none has yet staked out a directional view on what it means for rates.",
+      "facts_agreed": [
+        {
+          "claim": "Three research desks reference Fed Chair Warsh's Congressional testimony and monetary-policy approach as a topic to watch this window.",
+          "banks_for": [
+            "Bloomberg",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Warsh Congressional testimony",
+            "Fed Chair Warsh Congressional testimony",
+            "Kevin Warsh Fed leadership",
+            "Chairman Warsh's policy approach",
+            "Chair Warsh monetary policy views"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
