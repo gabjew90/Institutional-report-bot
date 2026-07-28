@@ -1,0 +1,88 @@
+{
+  "pulse_date": "2026-07-28",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "china semiconductor self sufficiency",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Banks agree China is quickly building its own chipmaking capacity through home-grown DUV (older-generation chip-etching) tools and a blockbuster listing of memory-chip maker CXMT, with no one disputing the progress though they read it differently as a threat to Western equipment suppliers.",
+      "facts_agreed": [
+        {
+          "claim": "China is ramping up domestic production of DUV (deep-ultraviolet, older-generation chip-etching) lithography tools.",
+          "banks_for": ["BTIG", "JPMorgan", "The Market Ear"],
+          "evidence_quotes": ["Domestic DUV lithography production", "Chinese immersion DUV lithography production", "China DUV tool production", "China DUV chipmaking tool production"]
+        },
+        {
+          "claim": "The listing of Chinese memory-chip maker CXMT has strengthened investor confidence in Beijing's semiconductor self-sufficiency drive.",
+          "banks_for": ["Deutsche Bank"],
+          "evidence_quotes": ["The listing has reinforced investor confidence in Beijing’s drive for semiconductor self-sufficiency"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Both banks covering the topic see AI infrastructure demand holding up strong, with healthy build-out and companies like Oracle staking out leadership claims, and no bank arguing the other side.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure demand is holding up healthily, with clear corporate leaders emerging in the build-out.",
+          "banks_for": ["JPMorgan", "Deutsche Bank"],
+          "evidence_quotes": ["datapoints suggesting AI infrastructure demand remains healthy overall", "Oracle intends to be among the leaders."]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hyperscaler credit risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 3
+      },
+      "consensus_view": "Banks flag that the extra yield investors demand to hold big cloud and AI companies' bonds is widening to new highs around 145 basis points (1.45 percentage points), but none is calling a crisis and JPMorgan suspects the concentration fears may be overstated.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler and broader tech credit spreads (the extra yield investors demand to hold their bonds) are widening to new highs.",
+          "banks_for": ["JPMorgan", "BTIG", "The Market Ear"],
+          "evidence_quotes": ["hyperscaler index hit new wides of 145bp yesterday", "Hyperscaler credit spread widening", "hyperscaler credit index widening", "IG Tech Sector OAS spread widening"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor sector correction",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 2,
+        "neutral": 3
+      },
+      "consensus_view": "Several research desks read the chip-stock sell-off as an unfinished correction with more downside ahead, while others just flag the pullback without taking a directional side.",
+      "facts_agreed": [
+        {
+          "claim": "Banks flag the semiconductor group as undergoing a correction, with technical damage building and further downside expected.",
+          "banks_for": ["BTIG", "The Market Ear"],
+          "evidence_quotes": ["we continue to see meaningful downside for the group", "the 21-day moving average crossing below the 50-day moving average"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
