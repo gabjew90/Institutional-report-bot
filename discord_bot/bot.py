@@ -3134,6 +3134,28 @@ _NAME_CHECK_STOP = frozenset({
     # public figures the room names constantly (NOT room members)
     "trump", "biden", "powell", "warsh", "musk", "buffett", "messi",
     "yahweh", "jerusalem",
+    # common capitalized words + trading jargon (2026-07-28: a week of
+    # ask-logs showed chronic false positives — name-check:Great /
+    # Sell,Limit,Bid / Fuck,Cost,Expiration / Damn / Nahhh,Hail,
+    # Simulated — each appending a "verify these names" note. A
+    # sentence-position filter was rejected: "Morgan says you don't
+    # work" is sentence-initial and must keep firing.)
+    "great", "good", "nice", "damn", "fuck", "shit", "bitch", "hell",
+    "bro", "dude", "man", "hail", "mary", "nahhh", "nahh", "yeah",
+    "yep", "yup", "nope", "cool", "fine", "sure", "right", "wrong",
+    "real", "fake", "true", "false", "crazy", "wild", "sick", "insane",
+    "best", "worst", "first", "last", "next", "big", "huge", "small",
+    "look", "watch", "wait", "come", "going", "gone", "get", "got",
+    "need", "want", "know", "think", "feel", "mean", "guess", "maybe",
+    "actually", "literally", "seriously", "honestly", "basically",
+    "whatever", "anyway", "anyways", "never", "always", "probably",
+    "sell", "buy", "sold", "bought", "long", "short", "hold", "held",
+    "open", "close", "closed", "entry", "exit", "fill", "filled",
+    "limit", "bid", "offer", "cost", "price", "strike", "expiry",
+    "expiration", "order", "orders", "chart", "charts", "trade",
+    "trades", "trading", "option", "options", "share", "shares",
+    "simulated", "paper", "margin", "leverage", "volume", "target",
+    "report", "news", "data", "source", "sources",
 })
 
 

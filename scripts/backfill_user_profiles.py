@@ -247,7 +247,7 @@ Anti-patterns:
 
 **Retarded takes.** Bullet list of 4-8 specific dumb or racist takes/claims they actually made. Each item: the take + a beat of framing that names why it's dumb. Pull from chat verbatim where possible — see ATTRIBUTION RULE in HOW TO WRITE, every quoted line MUST be one of THIS user's own messages, not adjacent context.
 
-Each bullet shape: `[the take, with quoted phrase if available]` + `[the framing that names what made it dumb — sourced from chat outcome / contradiction / room reaction]`.
+Each bullet shape: `[the take, with quoted phrase if available]` + `[the framing that names what made it dumb — sourced from chat outcome, the user's own contradiction, or their own follow-up]`.
 
 Anti-patterns:
 - "Sometimes makes overconfident calls" (no specifics)
@@ -272,7 +272,7 @@ Anti-patterns:
 
 Each bullet: the real detail sourced from THIS user's chat, then ` + [a comedic framing beat]`. **NEVER emit bracket placeholders** — if you catch yourself writing a bullet that is nothing but [bracketed descriptions], you have no material for that bullet; drop it (2026-07-11: four rebuilt dossiers shipped with the spec's own placeholder text as their personal-life section). Shape example from a FICTIONAL user — never copy the content, only the shape:
 
-> - Commutes 90 minutes each way to a job he only ever calls "the yard" + [the room asks weekly why he doesn't just live at the yard]
+> - Commutes 90 minutes each way to a job he only ever calls "the yard" + [claims the drive "builds character," complains about it in chat weekly anyway]
 > - Microwaves fish in the office kitchen and posted HR's complaint email + [zero remorse, reposts it every time someone brings it up]
 
 Anti-patterns:
@@ -283,6 +283,8 @@ Anti-patterns:
 ## HOW TO WRITE
 
 **Lead with the behavior, follow with the evidence.** Write "buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play." Not "trades small caps." Write "size scales with frustration, every time." Not "tilts after losses." Specific behavior, every line.
+
+**ROOM-REACTION GROUNDING — you only see THIS user's messages, so you cannot know how the room reacted.** Your input contains {display_name}'s own messages ONLY — other members' replies, jokes, and reactions are NOT in your input. Therefore any framing beat that asserts a room reaction ("the room constantly fact-checks...", "leading to endless speculation", "the room's running joke", "the room asks weekly") is invented by construction — observed 2026-07-28: a live dossier claimed the room "fact-checks his fitness claims against his Whoop strain scores" and ran "endless 'is she real' speculation"; neither exists in anyone's chat, and both shipped into clapbacks as asserted facts. The rule: source every framing beat from THIS user's own words — their self-owns, contradictions, follow-ups, repetitions, or their OWN reports of reactions ("he says the room clowns him for it" is fine when HE said that). If the only funny angle you can find is an imagined room reaction, the beat isn't sourced — find a different angle or drop the bullet. Same softening rule as everywhere: inference gets "reads as / appears to," never asserted as fact.
 
 **ATTRIBUTION RULE — quotes MUST be this user's own words.** This is non-negotiable. Every quoted phrase in the profile (Voice bullets, Retarded takes, anywhere else) MUST be a verbatim substring of one of the MESSAGES block entries below — entries that are, by construction, all authored by {display_name}. Do NOT quote:
 - A line from someone else that appeared in a thread {display_name} was in
@@ -323,7 +325,7 @@ The dossier below shows the structural shape of a complete profile (5 sections, 
 >
 > **Retarded takes.**
 > - [stated take they made + the reality that proved it dumb + the comedic beat]
-> - [confident claim they made + the receipt that contradicts it + the room's response]
+> - [confident claim they made + the receipt that contradicts it + their own follow-up or walk-back]
 > - [boast that aged badly + the resolution + how they reacted]
 > - [overreach or self-own + the immediate consequence + the punchline]
 >
@@ -331,10 +333,10 @@ The dossier below shows the structural shape of a complete profile (5 sections, 
 > - [ticker / strike / outcome] — [respectful framing if win, savage framing if loss, anchored to specifics]
 > - [another trade] — [framing]
 > - [an open position they're defending] — [the thesis + whether it's holding]
-> - [a bag they're sitting on] — [the room's running joke about it]
+> - [a bag they're sitting on] — [how THEY talk about it — the cope, the averaging-down, the thesis revisions]
 >
 > **Recent personal life.**
-> - Commutes 90 minutes each way to a job he only ever calls "the yard" + [the room asks weekly why he doesn't just live at the yard]
+> - Commutes 90 minutes each way to a job he only ever calls "the yard" + [claims the drive "builds character," complains about it in chat weekly anyway]
 > - Microwaves fish in the office kitchen and posted HR's complaint email + [zero remorse, reposts it every time someone brings it up]
 > - Trains for a triathlon he has never signed up for + [three years of "base building"]
 > - Wife runs the household budget after "the options incident" + [he reports his own allowance like earnings guidance]
@@ -436,9 +438,9 @@ What it covers: (a) the chatter base bracket you placed them in (0-25 / 25-40 / 
 
 ### `racism_rationale` (3-5 sentences, ~400-900 chars)
 
-What it covers: the rank-defining racial-humor BEHAVIOR — sourced from real chat moments, specific targets, recurring tics, and the room's response. SAVAGE-BUT-HILARIOUS. Not "high volume of slur usage" generic — give the room a textured picture of WHY they rank where they do.
+What it covers: the rank-defining racial-humor BEHAVIOR — sourced from real chat moments, specific targets, and recurring tics in THIS user's own messages. SAVAGE-BUT-HILARIOUS. Not "high volume of slur usage" generic — give the room a textured picture of WHY they rank where they do.
 
-**Shape — high-ranking user (heavy racial humor):** 3-5 sentences naming `[the recurring target group(s) and the actual contexts/days they show up]`, `[the specific slurs or stereotyped framings from this user's chat, sourced verbatim]`, `[the room's response or callout history]`, `[what tops them out — raw volume? consistency? creativity? targeting breadth?]`. Anchor every claim to a real message.
+**Shape — high-ranking user (heavy racial humor):** 3-5 sentences naming `[the recurring target group(s) and the actual contexts/days they show up]`, `[the specific slurs or stereotyped framings from this user's chat, sourced verbatim]`, `[what tops them out — raw volume? consistency? creativity? targeting breadth?]`. Anchor every claim to a real message.
 
 **Shape — lower-ranking user (sparse / context-only):** 3-5 sentences naming `[what the regex / LLM actually saw in the window — count, contexts, isolated quotes]`, `[whether it's leading content or occasional room-joke participation]`, `[the qualifier that explains the rank position]`. Don't invent slurs to fill space — sparse evidence makes a SHORTER rationale, not a padded one.
 
@@ -828,6 +830,34 @@ def _fiction_bleed(profile_text: str) -> list[str]:
     return [t for t in _FICTION_TOKENS if t in low]
 
 
+# Room-reaction claims are unsourceable by construction: the generator's
+# input is the profiled user's OWN messages only, so "the room jokes /
+# asks / fact-checks / speculates" beats are always invented (2026-07-28
+# ZHawk audit: two such beats verified fabricated, both shipped into
+# clapbacks as asserted facts). Targets reaction-EVENT claims; neutral
+# role descriptions ("his function in the room") don't match.
+_ROOM_REACTION_RE = __import__("re").compile(
+    r"the room(?:'s)?\s+(?:constantly\s+|always\s+|still\s+|endlessly\s+|"
+    r"weekly\s+)?(?:asks?|asked|mocks?|mocked|jokes?|joked|riffs?|riffed|"
+    r"fact-checks?|fact-checked|calls?\s+(?:him|her|them|it)?\s*out|"
+    r"clowns?|clowned|roasts?|roasted|speculates?|speculated|teases?|"
+    r"teased|rips?|ripped|laughs?|laughed|cackles?|finds?\s+(?:it|this|"
+    r"him|her|them)|running\s+joke|response|reaction)"
+    r"|endless(?:ly)?\s+[^.\n]{0,30}?speculation"
+    r"|leading\s+to\s+endless",
+    __import__("re").IGNORECASE,
+)
+
+
+def _room_reaction_claims(profile_text: str) -> list[str]:
+    """Lines carrying an invented-by-construction room-reaction claim."""
+    out: list[str] = []
+    for ln in (profile_text or "").splitlines():
+        if _ROOM_REACTION_RE.search(ln):
+            out.append(ln.strip()[:120])
+    return out
+
+
 def _lint_profile(
     profile_text: str, msg_count: int, claim_check: dict | None = None,
 ) -> tuple[list[str], list[str]]:
@@ -849,6 +879,16 @@ def _lint_profile(
             f"example ({', '.join(_bleed)}) — that content is invented, "
             f"not this user's. Every detail must come from THIS user's "
             f"actual messages."
+        )
+    _room = _room_reaction_claims(profile_text)
+    if _room:
+        hard.append(
+            f"{len(_room)} line(s) assert a ROOM-REACTION the input cannot "
+            f"contain — you only see this user's own messages, so 'the "
+            f"room asks/mocks/fact-checks/speculates' beats are invented. "
+            f"Source the framing from the user's OWN words (their cope, "
+            f"contradictions, follow-ups) or drop the beat. Offender(s): "
+            f"{_room[:2]}"
         )
     _ph = [ln.strip() for ln in profile_text.splitlines()
            if _PLACEHOLDER_BULLET_RE.match(ln.strip())]
