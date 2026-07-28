@@ -116,7 +116,9 @@ def test_bare_probe_wired():
     src = inspect.getsource(bot._answer_with_gemini)
     window = src.split("BARE PROBE", 1)
     assert len(window) == 2, "bare probe stage missing from backstop"
-    probe = window[1][:6500]
+    # 14000: the 2026-07-27 revoice pass sits between the probe accept
+    # and the hedge fallback, so the window covering both grew.
+    probe = window[1][:14000]
     # the probe must NOT carry the room prompt or the persona
     assert "fact-checking search agent" in probe, "probe persona missing"
     assert "_build_runtime_system_instruction" not in probe.split(
@@ -189,7 +191,9 @@ def test_question_only_filter_rung():
 def test_probe_diagnostics_and_forcing():
     import discord_bot.bot as bot
     src = inspect.getsource(bot._answer_with_gemini)
-    probe = src.split("BARE PROBE", 1)[1][:7000]
+    # 14000: the 2026-07-27 revoice pass sits between the probe accept
+    # and the hedge fallback (offset ~11.1K), widening this window.
+    probe = src.split("BARE PROBE", 1)[1][:14000]
     # 07-09: probe converted 1 of 4 — stamp now distinguishes ran-but-
     # didn't-search from call-died, and the forcing got stronger.
     assert "FIRST action MUST" in probe, "probe must demand search-first"
