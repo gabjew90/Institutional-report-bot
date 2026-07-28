@@ -3537,6 +3537,51 @@ def _is_ungrounded_market_fact(answer: str, grounding_metadata,
     return any(not s.startswith("$") for s in specifics)
 
 
+# Price-backstop ticker extraction (2026-07-27 ORCL contradiction:
+# two banter answers asserted different ORCL prices minutes apart —
+# one wrongly accused the member of inventing a real +4% move — because
+# banter passes skip lookup_market_price and the backstop's forced
+# retry STRIPS the function tools, so the ladder could hedge but never
+# fetch. When the backstop trips on an answer asserting price levels,
+# the caller extracts the tickers with this helper, runs the price
+# executor directly, and injects the live numbers into the retry.)
+_PRICE_ASSERT_NEAR_RE = re.compile(
+    r"\$\d|\btrading\s+(?:at|around|near)\b|\b(?:up|down)\s+\d"
+    r"|\d+(?:\.\d+)?\s?%",
+    re.IGNORECASE,
+)
+# Uppercase tokens that look like tickers but never are. Prose is
+# mostly lowercase, so the residual collision surface is acronyms.
+_TICKER_FALSE_POSITIVES = frozenset({
+    "CEO", "CFO", "COO", "CTO", "IPO", "ETF", "ETFS", "API", "AI",
+    "USD", "EUR", "GBP", "JPY", "GDP", "CPI", "NFP", "PCE", "ISM",
+    "PPI", "FOMC", "FED", "SEC", "FDA", "DOJ", "FTC", "IRS", "OI",
+    "IV", "RSI", "MACD", "YOY", "QOQ", "EPS", "REV", "RPO", "EV",
+    "PE", "PT", "DD", "TA", "AM", "PM", "ET", "UTC", "EST", "EDT",
+    "USA", "US", "UK", "EU", "NYSE", "OTC", "ATH", "ATL", "EOD",
+    "YTD", "MCAP", "AH", "PLUS", "AND", "THE", "FOR", "NOT", "ALL",
+    "OCI", "AWS", "GCP", "LLM", "OPEC", "BLS", "BEA", "AMC", "BMO",
+})
+
+
+def _answer_price_tickers(answer: str) -> list[str]:
+    """Tickers named in sentences that assert a price/level/move —
+    the symbols the price backstop should fetch before the retry.
+    Cashtags always count; bare uppercase tokens count unless they're
+    known acronyms. Capped at the price tool's practical batch size."""
+    out: list[str] = []
+    for s in _split_sentences(answer or ""):
+        if not _PRICE_ASSERT_NEAR_RE.search(s):
+            continue
+        for m in re.finditer(r"\$([A-Za-z]{1,6})\b|\b([A-Z]{2,6})\b", s):
+            sym = (m.group(1) or m.group(2)).upper()
+            if not sym.isalpha() or sym in _TICKER_FALSE_POSITIVES:
+                continue
+            if sym not in out:
+                out.append(sym)
+    return out[:4]
+
+
 # Any specific factual claim — numbers, big counts, $-figures, %s,
 # month/slash dates, years. Deliberately broad: this is used ONLY on a
 # WEB-routed answer (a question the router already decided needs the
@@ -4876,7 +4921,12 @@ _ASK_ROUTER_INSTRUCTION = (
     "with a right answer ('is warsh speaking today', 'when does ASML "
     "report', 'what year did toy story 3 come out', 'why is the market "
     "down'). The asker is not performing; mockery would be answering a "
-    "sincere question with a slap.\n"
+    "sincere question with a slap. FACT also covers feedback about the "
+    "bot's previous answer — a correction, a complaint about the "
+    "answer's sources, accuracy, format, or tone ('never use X as a "
+    "source again', 'that price was wrong'), or a message agreeing "
+    "with or extending such feedback. The user wants acknowledgment "
+    "or a fix, not a comeback.\n"
     "BANTER if the ask is itself a performance — a roast request, a "
     "callout, a flex, a bait ('roast terlin', 'who's the biggest bag "
     "holder', 'tell BK why he's poor'), or trash-talk dressed as a "
@@ -5185,6 +5235,40 @@ def _asker_mockery_violations(answer: str) -> list[str]:
         if any(rx.search(sent) for rx in _ASKER_MOCKERY_RES):
             out.append(sent)
     return out
+
+
+# FACT-answer jab detection (2026-07-27 planets question: a clean
+# factual answer closed with a roast arrow about the asker's MU calls;
+# the asker's verbatim feedback — "I didn't ask for the sarcasm at the
+# end". The FACT directive and Type 1 profile rules both ban jab
+# padding; this is the code-level enforcement, same pattern as the
+# asker-mockery guard. A jab = second-person address + roast
+# vocabulary in the same sentence; the trade-advice register ("you're
+# betting on whether OCI can scale") carries no roast marker and never
+# matches. FACT-gated by the caller — on banter these shapes are the
+# product.)
+_JAB_SECOND_PERSON_RE = re.compile(
+    r"\byou(?:r|[’']re|[’']ll|[’']d|[’']ve)?\b", re.IGNORECASE,
+)
+_JAB_ROAST_MARKER_RE = re.compile(
+    r"\b(?:spamm\w*|cop(?:e|ing)\b|crying|bag[- ]?hold\w*|bags\b"
+    r"|lotto\w*|worthless|degenerate\w*|martingal\w*|liquidat\w*"
+    r"|blow(?:n|ing)?[- ]?up|round[- ]?tripp?\w*"
+    r"|chas(?:e|ing)\s+(?:green|tops|entries|pumps)"
+    r"|your\s+(?:account|portfolio|p&l|book\s+is)"
+    r"|expire[sd]?\s+worthless)",
+    re.IGNORECASE,
+)
+
+
+def _fact_jab_sentences(answer: str) -> list[str]:
+    """Sentences of a FACT-routed answer that jab the asker — roast
+    material tacked onto a sincere factual reply. Strip input."""
+    return [
+        s for s in _split_sentences(answer or "")
+        if _JAB_SECOND_PERSON_RE.search(s)
+        and _JAB_ROAST_MARKER_RE.search(s)
+    ]
 
 
 async def _answer_with_gemini(
@@ -6080,6 +6164,19 @@ async def _answer_with_gemini(
                         f"/ask: hard-stripped {len(_mock_residual)} "
                         f"asker-mockery sentence(s)"
                     )
+            # Jab strip (2026-07-27 planets sarcasm) — roast material
+            # tacked onto a sincere factual answer. Same strip pattern
+            # as mockery; only fires when a factual remainder survives.
+            _jab_residual = _fact_jab_sentences(answer)
+            if _jab_residual:
+                _stripped_jab = _strip_sentences(answer, _jab_residual)
+                if _stripped_jab.strip():
+                    answer = _stripped_jab
+                    _ask_meta["guards"].append("fact-jab-strip")
+                    log.warning(
+                        f"/ask: hard-stripped {len(_jab_residual)} "
+                        f"jab sentence(s) from FACT answer"
+                    )
 
         # Roast-recycle guard (BANTER-gated) — a roast that remixes the
         # same hooks as a prior answer to this asker reads as "doesn't
@@ -6326,6 +6423,56 @@ async def _answer_with_gemini(
                 f"trigger={_ground_trigger_name})"
                 f" — forcing a search-only retry"
             )
+            # Price backstop-fetch (2026-07-27 ORCL contradiction).
+            # The forced retry strips the function tools, so an answer
+            # asserting a live price could only ever be hedged, never
+            # corrected — and banter passes never call the tool on
+            # their own. Fetch the asserted tickers deterministically
+            # and inject the live numbers; the tool trace entry also
+            # lets the retry-acceptance check count this as a source.
+            _price_injected = False
+            _price_symbols = _answer_price_tickers(answer)
+            if _price_symbols:
+                try:
+                    _price_result = await _execute_market_price(
+                        {"symbols": _price_symbols}
+                    )
+                    if (isinstance(_price_result, dict)
+                            and _price_result.get("status") == "ok"):
+                        _ask_tool_trace.append({
+                            "tool": "lookup_market_price",
+                            "args": {"symbols": str(_price_symbols)[:80]},
+                            "status": "backstop-fetch",
+                            "result_chars": len(str(_price_result)),
+                        })
+                        contents.append(types.Content(
+                            role="user",
+                            parts=[types.Part.from_text(text=(
+                                "[LIVE PRICE DATA — system-fetched "
+                                "because your draft asserted price "
+                                "levels no tool sourced]\n"
+                                + str(_price_result)[:4000]
+                                + "\nUse ONLY these numbers for any "
+                                "price/level/percent-move claim in "
+                                "your rewrite; drop any price this "
+                                "data does not cover. If the data "
+                                "contradicts your draft's claim about "
+                                "what a ticker is doing, the data "
+                                "wins — including any claim you made "
+                                "about the asker being wrong."
+                            ))],
+                        ))
+                        _price_injected = True
+                        _ask_meta["guards"].append("price-backstop-fetch")
+                        log.info(
+                            f"/ask: price backstop-fetch injected live "
+                            f"data for {_price_symbols}"
+                        )
+                except Exception as ppe:
+                    log.warning(
+                        f"/ask: price backstop-fetch failed "
+                        f"(non-fatal): {ppe}"
+                    )
             try:
                 forced_contents = list(contents) + [
                     types.Content(role="user", parts=[types.Part.from_text(
@@ -6371,7 +6518,13 @@ async def _answer_with_gemini(
                 except (AttributeError, IndexError, TypeError):
                     pass
                 _retry_still_ungrounded = (
-                    _is_ungrounded_market_fact(forced_answer, forced_gm, [])
+                    # Trace includes the price backstop-fetch when it
+                    # ran — a retry built on injected live data counts
+                    # as tool-sourced, same as if the model had called
+                    # lookup_market_price itself.
+                    _is_ungrounded_market_fact(
+                        forced_answer, forced_gm, _ask_tool_trace
+                    )
                     or _ungrounded_web_specifics(
                         forced_answer, forced_gm, needs_web,
                         is_opinion=_is_opinion_request(question),
@@ -6390,12 +6543,20 @@ async def _answer_with_gemini(
                     log.info("/ask: grounded retry succeeded")
                 elif forced_answer and not _retry_still_ungrounded:
                     # Retry dropped the unverifiable specifics (e.g. said
-                    # "couldn't verify") — that's the honest outcome, use it.
+                    # "couldn't verify") — or rebuilt its price claims on
+                    # the injected live data. Either is the honest
+                    # outcome; the label records which.
                     answer = forced_answer
                     response = forced_resp
                     grounding_metadata = forced_gm
-                    _ask_meta["ground_retry"] = "in-voice:hedged"
-                    log.info("/ask: grounded retry returned a hedged answer")
+                    _ask_meta["ground_retry"] = (
+                        "in-voice:price-tool" if _price_injected
+                        else "in-voice:hedged"
+                    )
+                    log.info(
+                        "/ask: grounded retry accepted "
+                        f"({_ask_meta['ground_retry']})"
+                    )
                 elif not needs_web:
                     # Stage 2 is SKIPPED for LOCAL-routed questions. The
                     # probe's whole mechanism — strip all context so
