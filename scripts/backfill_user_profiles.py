@@ -709,12 +709,89 @@ def _verify_profile_claims(
         else:
             unverified.append(phrase)
 
+    # Burst fallback (2026-07-29). Discord users type one thought across
+    # consecutive rapid messages; the model legitimately stitches the
+    # burst into one quote, which the single-message LIKE above can never
+    # match — so real quotes were flagged as hallucinations and pushed
+    # profiles into lint hard-fails (EFDHD: 423 in-window msgs, still
+    # failed). Re-check misses against whitespace-normalized
+    # concatenations of the user's messages within a 180s gap.
+    if unverified:
+        still_unverified = []
+        bursts = _user_message_bursts(username)
+        for phrase in unverified:
+            pn = _burst_norm(phrase)
+            if pn and any(pn in b for b in bursts):
+                verified.append(phrase)
+            else:
+                still_unverified.append(phrase)
+        unverified = still_unverified
+
     return {
         "checked_quotes": len(candidates),
         "verified_quotes": verified,
         "unverified_quotes": unverified,
         "unverified_count": len(unverified),
     }
+
+
+_BURST_GAP_SECONDS = 180
+_BURST_FETCH_LIMIT = 4000
+
+
+def _burst_norm(s: str) -> str:
+    """Casefold + strip punctuation + collapse whitespace. The model
+    adds sentence punctuation at stitch points ("a year. Owns") that
+    the raw message concatenation won't contain — matching happens on
+    the word sequence, not the punctuation."""
+    import re as _re2
+    s = _re2.sub(r"[^\w\s$+%]", " ", (s or "").lower())
+    return _re2.sub(r"\s+", " ", s).strip()
+
+
+def _user_message_bursts(username: str) -> list[str]:
+    """Whitespace-normalized, lowercased concatenations of the user's
+    consecutive messages (gap <= _BURST_GAP_SECONDS). Fallback surface
+    for verifying quotes the model stitched across a typing burst."""
+    from datetime import datetime as _dt
+
+    try:
+        rows = db.find_user_messages_matching(
+            username, "%", limit=_BURST_FETCH_LIMIT
+        )
+    except Exception:
+        return []
+
+    def _parse(ts: str):
+        try:
+            return _dt.fromisoformat(
+                (ts or "").replace("Z", "").replace(" ", "T")[:19]
+            )
+        except Exception:
+            return None
+
+    msgs = sorted(
+        ((r.get("posted_at") or "", (r.get("content") or "").strip())
+         for r in rows if (r.get("content") or "").strip()),
+    )
+    bursts: list[str] = []
+    cur: list[str] = []
+    last_t = None
+    for ts, txt in msgs:
+        t = _parse(ts)
+        gap_broken = (
+            cur and (t is None or last_t is None
+                     or (t - last_t).total_seconds() > _BURST_GAP_SECONDS)
+        )
+        if gap_broken:
+            bursts.append(" ".join(cur))
+            cur = []
+        cur.append(txt)
+        if t is not None:
+            last_t = t
+    if cur:
+        bursts.append(" ".join(cur))
+    return [_burst_norm(b) for b in bursts if b]
 
 
 # =====================================================================
@@ -2069,6 +2146,54 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
             # Users whose generation runs COLD-START this pass (fresh
             # profile from the full window, not an incremental edit).
             cold_uids: set[int] = set(rebuild_due)
+
+            # Adaptive window (2026-07-29). Members with healthy lifetime
+            # volume but thin recent activity (arcticaces: 7 msgs/30d,
+            # itsasandbox: 2, ilonsta: 0) give the generator nothing to
+            # build anchored bullets from — generations come back empty
+            # or lint-fail, and the keep-prior valve freezes their old
+            # text forever. Widen their material window instead; widened
+            # users run cold-start (a wider window can't be an
+            # incremental "only new messages" diff).
+            _ADAPTIVE_MIN_MSGS = 60
+            _ADAPTIVE_WINDOW_DAYS = 180
+            _thin = [
+                u for u, m in by_user.items()
+                if len(m) < _ADAPTIVE_MIN_MSGS and u not in rebuild_due
+            ]
+            if _thin:
+                print(
+                    f"Adaptive window: {len(_thin)} user(s) under "
+                    f"{_ADAPTIVE_MIN_MSGS} msgs in {days}d — loading "
+                    f"{_ADAPTIVE_WINDOW_DAYS}d window for them",
+                    flush=True,
+                )
+                (
+                    _aw_users, _aw_meta, _aw_images,
+                    _aw_slurs, _aw_slur_ex,
+                ) = _load_user_data_from_store(
+                    channels, _ADAPTIVE_WINDOW_DAYS
+                )
+                _widened = 0
+                for _uid in _thin:
+                    _wide = _aw_users.get(_uid) or []
+                    if len(_wide) > len(by_user.get(_uid) or []):
+                        by_user[_uid] = _wide
+                        if _uid in _aw_meta:
+                            user_meta[_uid] = _aw_meta[_uid]
+                        if _uid in _aw_images:
+                            images_by_user[_uid] = _aw_images[_uid]
+                        if _uid in _aw_slurs:
+                            slur_counts[_uid] = _aw_slurs[_uid]
+                        if _uid in _aw_slur_ex:
+                            slur_examples[_uid] = _aw_slur_ex[_uid]
+                        cold_uids.add(_uid)
+                        _widened += 1
+                print(
+                    f"  widened {_widened} user(s) to "
+                    f"{_ADAPTIVE_WINDOW_DAYS}d material",
+                    flush=True,
+                )
 
             eligible: list[tuple[int, list[dict]]] = []
             skipped_lurkers = 0
