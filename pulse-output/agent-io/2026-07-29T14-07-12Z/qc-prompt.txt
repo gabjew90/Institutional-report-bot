@@ -1,0 +1,1144 @@
+You are auditing a Market Pulse synthesis pipeline that just finished a run. You are NOT the writer or the editor — you are an outside reviewer with full visibility into the pipeline's intermediate artifacts. Your job is to identify what worked, what failed, and what to change for the next run.
+
+Be specific and brutal. Generic praise ("the pulse covered the major themes well") is useless. Useful feedback is concrete: "Theme X was promoted to a primary INSIGHTS theme based on 1-bank conviction; theme Y had 4 banks of contextual mention but was dropped — this suggests the discovery threshold is too strict for this corpus."
+
+Focus on issues that change the next pulse. SKIP workflow stages that ran cleanly without commentary — silence on a stage means it worked.
+
+You are writing this for a human engineer who is iterating on the pipeline (prompts, voice rules, thresholds). They will read your output and decide what to change. Therefore:
+
+- Be concrete about WHERE to change things. Reference file paths (e.g., `report/synthesizer.py`, `ai_analysis/prompts.py`, `ai_analysis/voice_rules.py`, `report/theme_clusterer.py`) and the rule/parameter that should change.
+- Be concrete about WHAT to change. Don't write "improve theme detection" — write "the discovery threshold of 0.78 looks too strict for variation in bank phrasing of geopolitical events; suggest dropping to 0.72 and re-checking on the next 3 runs."
+- Be honest about what you cannot tell from the artifacts. If you don't have visibility into something, say so. Don't speculate to fill the section.
+
+When the issue is a corpus-coverage miss (a topic that was in research but not in the final pulse), check the discovery_audit FIRST. The audit shows you exactly which topics the system saw, which it promoted, and which it suppressed. Misattributing a miss to "the writer skipped it" when discovery actually filtered it out is a common failure mode of pipeline reviews — don't make it.
+
+Empty sections are fine. If the run had no voice issues worth flagging, the "Voice + structure" section just says "Clean — no issues to flag this run." Don't pad.
+
+Review this Market Pulse run end-to-end and produce a structured critique.
+
+PIPELINE STAGES that just completed (in order):
+1. Phase A theme clustering (theme_stances → embedding-based merge)
+2. Phase B discovery clustering (contextual_mentions → cross-corpus merge, ≥3-bank promotion)
+3. Adjudication (parallel sub-agents per top theme, structured JSON, lint-validated)
+4. DRAFT (long-form synthesis from per-PDF inputs + adjudicated themes)
+5. STITCH (mechanical foreign-cashtag scrub + ETF normalization)
+6. EDIT (AUDIT sub-agent — fresh-eyes editorial pass)
+7. LINT (deterministic regex scan vs voice rules)
+8. SCRUB (lint-driven sub-agent rewrite, max 2 iterations)
+9. Posted to Discord
+
+ARTIFACTS YOU HAVE FOR THIS RUN:
+
+THEME COVERAGE BLOCK:
+THEME COVERAGE — distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):
+  - ai capex excess: 5 banks / 2 PDFs (Bank of America, Bloomberg, Goldman Sachs, JPMorgan, ZeroHedge) — stance: 1 support / 1 skeptical / 4 neutral — 1 HIGH-CONVICTION stance
+  - hyperscaler credit vs equity: 5 banks / 1 PDFs (BTIG, Bank of America, Goldman Sachs, JPMorgan, ZeroHedge)
+  - semiconductor market dynamics: 4 banks / 5 PDFs (BTIG, Goldman Sachs, JPMorgan, ZeroHedge) — stance: 1 support / 3 skeptical / 0 neutral — 2 HIGH-CONVICTION stances — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - midterm election market impact: 4 banks / 1 PDFs (Bloomberg, Deutsche Bank, Goldman Sachs, JPMorgan) — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead; the trade until then is W'))
+  - dispersion unwind: 3 banks / 2 PDFs (JPMorgan, SpotGamma, The Market Ear) — stance: 2 support / 0 skeptical / 2 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead; the trade until then is W'))
+  - fomc patience: 3 banks / 1 PDFs (Goldman Sachs, JPMorgan, SpotGamma) — stance: 1 support / 0 skeptical / 2 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - global equities: 1 banks / 2 PDFs (JPMorgan) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - healthcare sector inflection: 1 banks / 2 PDFs (JPMorgan) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - ai aggregate shock: 1 banks / 1 PDFs (Goldman Sachs) — stance: 0 support / 1 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead; the trade until then is W'))
+  - ai bubble risk: 1 banks / 1 PDFs (J.P. Morgan) — stance: 0 support / 1 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - china oil import recovery: 1 banks / 1 PDFs (TS Lombard) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - equity valuation: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - krw rates: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - momentum meltdown: 1 banks / 1 PDFs (Goldman Sachs) — stance: 0 support / 1 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead; the trade until then is W'))
+  - real rate regime shift: 1 banks / 1 PDFs (Goldman Sachs) — stance: 0 support / 1 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - tech sold on the news: 1 banks / 1 PDFs (Goldman Sachs) — stance: 0 support / 1 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+
+DISCOVERED THEMES — heavily mentioned in research as context (risk_factors, geopolitical, macro interpretation) but no single bank promoted them to a primary thesis. Treat as live topics worth surfacing, but do NOT claim consensus stance — the banks discussed these without arguing direction:
+  - china duv lithography supply: 3 banks / 6 PDFs (BTIG, Goldman Sachs, JPMorgan)
+  - iran oil supply risk: 3 banks / 5 PDFs (Deutsche Bank, JPMorgan, TS Lombard)
+  - Nvidia and OpenAI data center financing talks: 3 banks / 3 PDFs (BTIG, JPMorgan, ZeroHedge)
+
+NON-BANK-ONLY THEMES — every source for these themes is a commentary publication (The Market Ear, Bloomberg, Reuters) or unattributed, NOT a bank with an analytical research desk. Useful for vol/positioning/market-color reference only. DO NOT promote these to primary INSIGHTS themes without multi-bank corroboration — they're color, not underwritten analysis:
+  - ai mania exhaustion: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+  - equity market deleveraging risk: 1 banks / 1 PDFs (Bloomberg) — stance: 0 support / 1 skeptical / 0 neutral
+  - korea ai deleveraging: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+  - short term equity bounce: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+  - volatility mispricing: 1 banks / 1 PDFs (Bloomberg) — stance: 0 support / 1 skeptical / 0 neutral
+
+CONTRARIAN / ROTATE-OUT SIGNAL — multi-PDF, multi-bank corpus voices explicitly contradicting or warning against the dominant lead theme (AI / consensus narrative). The 2026-06-01 QC review found five contrarian titles in the corpus (Nobody Wants NVDA, Sell in May, IPO BOOM = MARKET TOP?, What To Buy If Not AI, Speculation Nation) all folded into the AI bear-case appendix. When this category surfaces, do NOT bury it in an appendix — give it a dedicated INSIGHTS slot named in the form of the contrarian call, OR a top-of-WATCH bullet naming the specific rotate-out instrument lean. The bullet stance is intentionally skeptical (no support count); the trade lean should be the corresponding rotation.
+  ROTATE-OUT CLOSE — VARIETY REQUIRED. 2026-06-03 + 2026-06-04 + 2026-06-05 QC reviews all flagged that the contrarian slot keeps closing with `$RSP over $SPY` as the rotation instrument. A reader who reads the pulse daily for a week will recognize the template. Pick the close-lean instrument from the angle the corpus is actually signaling rather than defaulting to equal-weight:
+    (a) DEFENSIVE rotation (when corpus argues quality/yield over growth): $XLU utilities, $XLV health care, $XLP staples, $SPLV/$USMV low-vol, $SPYD/$VYM high-yield
+    (b) SMALL-CAP rotation (when corpus argues breadth recovery / size factor): $IWM Russell 2k, $VBR small-cap value, $IJR core small-cap
+    (c) VALUE-style rotation (when corpus argues style mean-reversion): $VTV vanguard value, $IWD large-cap value, $RPV pure value
+    (d) EQUAL-WEIGHT rotation (when corpus argues concentration risk on top-10 names): $RSP equal-weight S&P, $EWS equal-weight S&P sectors
+    (e) INTERNATIONAL rotation (when corpus argues US-vs-RoW mean reversion): $EFA developed-ex-US, $EEM emerging, $VEA developed
+    (f) COMMODITY-style rotation (when corpus argues hard-asset reflation): $GLD gold, $XLE energy, $DBC broad commodity
+    (g) TAIL-HEDGE pair (when corpus argues positioning extreme — pair this WITH one of a-f as a secondary lean): $VIXY VIX short-term, $SPY put spreads with explicit strikes
+  Pick (a)-(f) by which angle the corpus is most explicitly arguing; (g) is a permitted addition, not a standalone close. If your only honest read is `$RSP over $SPY`, that's a (d) close — you MUST pair it with at least one secondary instrument from a different category (e.g., `$RSP over $SPY + long $XLU as the defensive complement` or `$RSP over $SPY + $VIXY as the tail hedge`). A single-instrument equal-weight close is the recurring template; the secondary-instrument requirement breaks it without losing the equal-weight read when that IS the right call.
+  - consensus-contrarian / rotate-out-of-lead: 4 banks / 4 PDFs (Deutsche Bank, Goldman Sachs, TS Lombard, The Market Ear) — stance: 0 support / 4 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+      signal kinds: explicit-top-flag
+      source title: CoTD: The gravitational pull of midterms?
+      source title: The Most Important Iran Oil Chart?
+      source title: China DUV: Fundamental Shift or Market Overreaction?
+HIGH-CONVICTION SINGLE-NAME CALLS — explicit high-conviction calls on US-tradable names extracted from individual reports. These lose the bank-count contest by construction (one bank, one name) so theme ranking can never surface them — that's why they get this dedicated section. Binding treatment: when one of these names is ALREADY the trade lean of an INSIGHTS slot, you MUST cite the call as evidence in that slot (the 2026-06-09 pulse closed two slots on Long $MU while Goldman's same-day $400→$900 MU price-target raise sat unused in the corpus — the lean was right and the best evidence for it went uncited). For the rest, surface at least the strongest one as a WATCH bullet or threaded into the most relevant slot. Don't dump the whole list — pick what a trader would actually act on:
+  - JPMorgan: $ASM reiterate Overweight — Strong fundamentals and lead times support growth, though share price reaction remains vulnerable to the broader semicap tape.
+  - JPMorgan [3-12mo]: Long US Semis/Smid-Cap Semis (JP2SEM, JP2SSEM)
+  - BTIG: $SOXX negative_catalyst_watch Underweight — Semiconductors are facing structural headwinds from Chinese self-sufficiency and poor price action despite positive news flow.
+
+DISCOVERY AUDIT (Phase B promoted + near-miss clusters):
+```json
+{
+ "phase_b_ran": true,
+ "promoted": [
+  {
+   "canonical": "iran oil supply risk",
+   "banks": [
+    "Deutsche Bank",
+    "JPMorgan",
+    "TS Lombard"
+   ],
+   "pdf_ids": [
+    13000,
+    13006,
+    13007,
+    13039,
+    13040
+   ],
+   "members": [
+    "War in Iran impact on oil prices",
+    "US/Iran conflict energy impact",
+    "Strait of Hormuz supply disruption risk",
+    "Strait of Hormuz geopolitical tension",
+    "Strait of Hormuz geopolitical tensions"
+   ],
+   "max_covered_sim": 0.6505
+  },
+  {
+   "canonical": "Nvidia and OpenAI data center financing talks",
+   "banks": [
+    "BTIG",
+    "JPMorgan",
+    "ZeroHedge"
+   ],
+   "pdf_ids": [
+    13002,
+    13027,
+    13030
+   ],
+   "members": [
+    "OpenAI data center expansion",
+    "AI data center boom",
+    "Nvidia and OpenAI data center financing talks"
+   ],
+   "max_covered_sim": 0.7466
+  },
+  {
+   "canonical": "china duv lithography supply",
+   "banks": [
+    "BTIG",
+    "Goldman Sachs",
+    "JPMorgan"
+   ],
+   "pdf_ids": [
+    13004,
+    13019,
+    13020,
+    13021,
+    13030,
+    13033
+   ],
+   "members": [
+    "ASML China DUV lithography production",
+    "China DUV memory supply",
+    "Domestic immersion DUV lithography systems",
+    "China DUV capabilities",
+    "Chinese memory supply chain",
+    "Chinese DRAM self-sufficiency",
+    "Domestic DUV lithography machine production"
+   ],
+   "max_covered_sim": 0.6734
+  }
+ ],
+ "near_miss": [
+  {
+   "members": [
+    "Hyperscaler capex efficiency",
+    "Hyperscaler debt issuance",
+    "Hyperscaler funding sustainability",
+    "Hyperscaler debt risk",
+    "Hyperscaler credit spread widening"
+   ],
+   "banks": [
+    "BTIG",
+    "Bank of America",
+    "Goldman Sachs",
+    "JPMorgan",
+    "ZeroHedge"
+   ],
+   "pdf_ids": [
+    13006,
+    13014,
+    13015,
+    13027,
+    13030,
+    13034
+   ],
+   "max_covered_sim": 0.8603,
+   "nearby_phase_a": [
+    [
+     "hyperscaler credit vs equity",
+     0.8603
+    ]
+   ],
+   "n_banks": 5,
+   "reason": "covered"
+  },
+  {
+   "members": [
+    "AI-related capex cycle",
+    "AI-related capex",
+    "Competitive capex spree",
+    "AI capex sustainability",
+    "AI investment capital spending shift",
+    "AI investment ROIC concerns",
+    "AI capex and ROI"
+   ],
+   "banks": [
+    "Bloomberg",
+    "Goldman Sachs",
+    "JPMorgan",
+    "ZeroHedge"
+   ],
+   "pdf_ids": [
+    13014,
+    13024,
+    13025,
+    13027,
+    13031,
+    13032,
+    13040
+   ],
+   "max_covered_sim": 0.8858,
+   "nearby_phase_a": [
+    [
+     "ai capex excess",
+     0.8858
+    ],
+    [
+     "ai infrastructure spending",
+     0.8513
+    ]
+   ],
+   "n_banks": 4,
+   "reason": "covered"
+  },
+  {
+   "members": [
+    "Midterm elections fiscal multiplier risk",
+    "US Midterm Election uncertainty",
+    "US midterm election gridlock",
+    "US midterms gridlock"
+   ],
+   "banks": [
+    "Bloomberg",
+    "Goldman Sachs",
+    "JPMorgan"
+   ],
+   "pdf_ids": [
+    13031,
+    13032,
+    13039,
+    13040
+   ],
+   "max_covered_sim": 0.8304,
+   "nearby_phase_a": [
+    [
+     "midterm election market impact",
+     0.8304
+    ]
+   ],
+   "n_banks": 3,
+   "reason": "covered"
+  },
+  {
+   "members": [
+    "KOSPI circular AI financing",
+    "circular AI financing",
+    "Nvidia circular financing",
+    "circular AI financing mania"
+   ],
+   "banks": [
+    "Goldman Sachs",
+    "ZeroHedge"
+   ],
+   "pdf_ids": [
+    13019,
+    13021,
+    13027,
+    13029
+   ],
+   "max_covered_sim": 0.7149,
+   "nearby_phase_a": [],
+   "n_banks": 2,
+   "reason": "thin-2bank"
+  },
+  {
+   "members": [
+    "Short gamma market structure",
+    "Dealer gamma hedging dynamics",
+    "Synthetic short-gamma position dynamics",
+    "Dealer hedging flows amplifying market moves"
+   ],
+   "banks": [
+    "SpotGamma",
+    "The Market Ear"
+   ],
+   "pdf_ids": [
+    13023,
+    13028,
+    13036
+   ],
+   "max_covered_sim": 0.7098,
+   "nearby_phase_a": [],
+   "n_banks": 2,
+   "reason": "thin-2bank"
+  },
+  {
+   "members": [
+    "FOMC policy decision event risk",
+    "FOMC meeting rate hike risk"
+   ],
+   "banks": [
+    "Goldman Sachs",
+    "SpotGamma"
+   ],
+   "pdf_ids": [
+    13028,
+    13029
+   ],
+   "max_covered_sim": 0.7718,
+   "nearby_phase_a": [
+    [
+     "fomc patience",
+     0.7718
+    ]
+   ],
+   "n_banks": 2,
+   "reason": "covered"
+  },
+  {
+   "members": [
+    "Semiconductor sector unwind",
+    "AI/Tech/MOMO unwind"
+   ],
+   "banks": [
+    "JPMorgan",
+    "The Market Ear"
+   ],
+   "pdf_ids": [
+    13023,
+    13039
+   ],
+   "max_covered_sim": 0.7714,
+   "nearby_phase_a": [
+    [
+     "dispersion unwind",
+     0.7714
+    ],
+    [
+     "momentum unwind rotation",
+     0.7539
+    ]
+   ],
+   "n_banks": 2,
+   "reason": "covered"
+  },
+  {
+   "members": [
+    "CXMT Shanghai listing",
+    "CXMT STAR Market IPO debut"
+   ],
+   "banks": [
+    "Goldman Sachs",
+    "ZeroHedge"
+   ],
+   "pdf_ids": [
+    13027,
+    13033
+   ],
+   "max_covered_sim": 0.5715,
+   "nearby_phase_a": [],
+   "n_banks": 2,
+   "reason": "thin-2bank"
+  },
+  {
+   "members": [
+    "reverse dispersion"
+   ],
+   "banks": [
+    "Goldman Sachs"
+   ],
+   "pdf_ids": [
+    13021
+   ],
+   "max_covered_sim": 0.8662,
+   "nearby_phase_a": [
+    [
+     "dispersion unwind",
+     0.8662
+    ]
+   ],
+   "n_banks": 1,
+   "reason": "covered"
+  },
+  {
+   "members": [
+    "Korean AI champions leveraged ETF turnover"
+   ],
+   "banks": [
+    "The Market Ear"
+   ],
+   "pdf_ids": [
+    13036
+   ],
+   "max_covered_sim": 0.7767,
+   "nearby_phase_a": [
+    [
+     "korea ai deleveraging",
+     0.7767
+    ]
+   ],
+   "n_banks": 1,
+   "reason": "covered"
+  },
+  {
+   "members": [
+    "momentum-driven rotation in European TMT"
+   ],
+   "banks": [
+    "JPMorgan"
+   ],
+   "pdf_ids": [
+    13004
+   ],
+   "max_covered_sim": 0.7537,
+   "nearby_phase_a": [
+    [
+     "momentum unwind rotation",
+     0.7537
+    ]
+   ],
+   "n_banks": 1,
+   "reason": "covered"
+  },
+  {
+   "members": [
+    "Korean equity stabilization"
+   ],
+   "banks": [
+    "The Market Ear"
+   ],
+   "pdf_ids": [
+    13023
+   ],
+   "max_covered_sim": 0.7534,
+   "nearby_phase_a": [
+    [
+     "korea ai deleveraging",
+     0.7534
+    ]
+   ],
+   "n_banks": 1,
+   "reason": "covered"
+  }
+ ],
+ "pdfs_in_window": 29,
+ "pdfs_with_contextual_mentions": 29,
+ "total_mentions": 173,
+ "phase_a_theme_count": 23,
+ "two_tier_merges": [
+  {
+   "canonical": "ai capex excess",
+   "merged_from": [
+    "ai capex excess",
+    "ai infrastructure spending"
+   ]
+  },
+  {
+   "canonical": "dispersion unwind",
+   "merged_from": [
+    "dispersion unwind",
+    "momentum unwind rotation"
+   ]
+  }
+ ],
+ "two_tier_augment_count": 5,
+ "two_tier_cap_blocked": [],
+ "two_tier_max_absorbed_per_canonical": 4,
+ "contrarian_scan": {
+  "matches": 4,
+  "banks": 4,
+  "pdfs": 4,
+  "promoted": true,
+  "signal_labels": [
+   "explicit-top-flag"
+  ]
+ }
+}
+```
+
+ADJUDICATION SUMMARY:
+- 7 validated, 0 discarded
+- Discard reasons: (none)
+
+LINT REPORT (final, after SCRUB):
+```json
+[
+ {
+  "line": 26,
+  "kind": "slot-stat-overlap",
+  "snippet": "stat '7%' cited in 2 slots: ['Hormuz is a supply problem again, not a ', 'The dispersion unwind lands on the bigge']"
+ },
+ {
+  "line": 38,
+  "kind": "slot-stat-overlap",
+  "snippet": "stat '8%' cited in 2 slots: ['Chips: positioning washout, or something', 'The rotation into defensives is the trad']"
+ },
+ {
+  "line": 0,
+  "kind": "top-3-theme-missing",
+  "snippet": "top-3 primary theme 'ai capex excess' (5 banks) has no significant word in INSIG"
+ }
+]
+```
+
+SUB-AGENT HANDOFFS — what each dispatched sub-agent received and returned:
+
+ADJUDICATION sub-agents:
+  - Dispatched: 7 (one per selected theme; 8 ranked, 1 pruned pre-dispatch for zero inputs)
+  - Validated: 7
+  - Discarded: 0
+  - Validated themes: ai capex excess, hyperscaler credit vs equity, midterm election market impact, semiconductor market dynamics, dispersion unwind, china duv lithography supply, iran oil supply risk
+  - Discard reasons: (none)
+  - NOTE: every falsifiable_prediction emitted across all 7 themes was dropped by lint Rule 6. Rule 6 reads pred['deadline'], but ADJUDICATION_SYSTEM's schema names that field 'by_when'. Field-name mismatch, not model failure. 15 predictions dropped total.
+
+EDIT sub-agent (single dispatch):
+  - Prompt size: 77234 chars
+  - Input  (stitched.md):  11882 chars / 64 lines
+  - Output (post-EDIT md): 13643 chars / 76 lines
+  - NOTE: EDIT dropped the `## _LEANS` block entirely. The orchestrator restored it before commit (rebuilt to match the trades EDIT actually argued, including EDIT's newly-added $XLE Hormuz lean). Without that restore the TRADE BOARD would have shipped empty.
+
+SCRUB sub-agent:
+  - Status: RAN
+  - Prompt size: 28498 chars
+  - Input  (pre-SCRUB/EDIT output): 13643 chars / 76 lines
+  - Output (post-SCRUB/final):      13675 chars / 76 lines
+  - Lint issues input: 12 total (10 hard by routine count / 2 hard by linter sidecar)
+  - Result: 12 -> 3 issues; linter sidecar hard_issue_count 0, scrub_recommended false. Second pass not dispatched.
+
+
+PRE-STITCH DRAFT (what STITCH received):
+```markdown
+# Bondholders stop funding AI
+
+## 1. RECAP
+
+[LIVE PRICE RECAP]
+
+The story in the research this morning is not that AI demand disappointed. It is that the people lending the money to build it have started charging more, and the equity market is only now repricing for that. Long-dated government bond yields pushed to levels not seen since before the financial crisis, hyperscaler borrowing costs hit record wides, and the semiconductor complex went through its worst five-day stretch in nine years. Positioning tells the same story from the other side: hedge fund gross exposure sits near multi-year lows, the crowded AI long-short pair is in a record drawdown, and the buyers who would normally step into this dip already cut their risk. Underneath it, a second thread is running about supply rather than funding, with China's domestic memory and lithography push arriving exactly as the memory cycle rolls over.
+
+Today the tape has two hard catalysts stacked on top of that: a genuinely live Fed decision, and Microsoft and Meta reporting after the close.
+
+## 2. INSIGHTS & ALPHA
+
+### The bond market is what finally broke the AI trade
+
+*The AI complex is not cracking because demand missed, it is cracking because the lenders funding it started charging a lot more.*
+
+- 30-year Treasury yields reached 5.2%, the highest since June 2007, and the inflation-adjusted 30-year yield hit 3%, the highest since November 2008 (Bank of America). Every future dollar a data center earns gets discounted against that number, so the bar a project has to clear just jumped.
+- Alphabet raised 2026 capital spending to $200bn, up $15bn, and posted negative free cash flow of roughly $5.9bn in the second quarter (JPMorgan). The spending is now running ahead of the cash coming in, which is exactly what forces a company to the bond market.
+- Hyperscaler credit spreads and the cost of insuring their debt against default hit record wides (Bank of America), and investment-grade tech spreads are widening back toward March levels (BTIG). Bond buyers are repricing the buildout in real time.
+- Goldman's prime desk logged the largest single-day selling of global tech longs since September 2024, a -3.6 standard-deviation reading, while its AI long-short pair sits in a drawdown of more than 30%, the largest on record.
+- Hedge fund gross exposure is at the 6th percentile and net exposure at the 22nd (Goldman). The natural dip buyers already took their risk down, so there is no obvious bid underneath.
+
+The transmission runs one way. Higher inflation-adjusted yields raise the discount rate applied to profits that arrive in 2029 and 2030, which is where the entire AI capital-spending thesis lives, and at the same time they raise the coupon a hyperscaler has to pay to borrow the money to get there. Goldman's framing is that this is a required-return shock rather than an inflation scare, with 10-year inflation expectations still anchored near 2.25% while the inflation-adjusted 10-year yield sits at 2.40%.
+
+JPMorgan pushes the other way with the demand data, arguing that supply still cannot keep up across both the product and foundry side, and Intel's second-quarter beat backs that up. The Nasdaq trades at roughly 21.8 times forward earnings against a ten-year average of 23.6 times, about a 10% discount and the cheapest since the AI cycle began in early 2023 (Goldman). That cheapness is measured against earnings that assume the capital spending keeps getting funded on today's terms, which is precisely the assumption the bond market is now withdrawing. Goldman's own trigger points are worth writing down: equities struggle if the nominal 10-year gets to about 5% or the inflation-adjusted 10-year reaches about 2.7%, and the second one is only 30 basis points away, roughly a third of a percentage point. With cross-asset volatility still priced for a calm macro backdrop (Bloomberg), the bias here is owning upside in volatility through $VIX call spreads, which is the same hedge Goldman's clients have been buying alongside downside protection in chips and small caps.
+
+### Own the hyperscalers' bonds, not their shares
+
+*The cloud giants have quietly become credit stories, and credit is currently the better-paid side of the trade.*
+
+Goldman's argument is that heavy AI spending has rewired the relationship between these companies' stock and their debt: equity value is now tethered to uncertain asset values while credit spreads widen against eroding cash flow, and the sensitivity of their bonds to their stock is rising, especially on longer-dated debt. The path from here hinges on how free cash flow improves. Cutting capital spending protects near-term cash and favors the bonds; rising operating income favors the shares. JPMorgan has higher conviction Alphabet returns to the dollar bond market before year-end because of the timing gap between cash going out and revenue coming in, and flags widening default-insurance costs on Nvidia as a bigger worry than the hyperscalers' own. Against that, Bloomberg makes the case that high-quality corporate bonds now compete directly with equities on yield alone, which is the cleanest version of this trade. The lean is long $LQD investment-grade corporate bonds over chasing hyperscaler equity here, and tonight's capital-spending guidance is the tell that flips it.
+
+### Chips: positioning washout or the start of something structural?
+
+*The chip selloff is not finished, and the reason is supply arriving from China rather than anything in this quarter's numbers.*
+
+Three of the four desks covering semiconductors say there is further to go. BTIG's Krinsky reads the sector's refusal to rally on the reported $250bn Nvidia and OpenAI data center financing as the tell, and puts $SOXX 22% below current levels at its 200-day average, with another 23% to the March lows if that breaks. The supply story is concrete: Chinese memory maker CXMT debuted up over 470% on the STAR Market at roughly a $488bn implied valuation with 212 times retail oversubscription, and it already holds about 8% of global DRAM revenue (Goldman). NAND spot prices are falling, with the shortage expected to end by the second half of 2027 as Chinese supply lands. Goldman's counter is that domestic Chinese immersion DUV lithography output is still tiny at an estimated 5 systems this year and 20 next, with unproven yields, so the market is pricing structural replacement as if it were a current earnings event. JPMorgan is the lone bull, still backing the bull case after the SOX index ran 87.8% in the second quarter and then gave back 20.2% from June 22 to July 17, and global semiconductor long-short positioning is still at the 98th percentile of crowding. So: does Chinese supply actually reach volume before the memory cycle turns back up, or does positioning clear first? Short $SOXX says supply wins, and a memory guide-up from the Mag7 prints says it does not.
+
+### The dispersion unwind arrives right on top of the biggest earnings week
+
+*The violent single-stock rotation is crowded traders exiting at once, and it sets up a squeeze rather than a slide into tonight's prints.*
+
+SpotGamma reads the collapse in one-month implied correlation and the breach of its risk pivot as confirmation the dispersion unwind is no longer theoretical, and JPMorgan's desk agrees the tape is positioning-driven rather than fundamental. Implied correlation at 13% over three months against 17.5% over twelve (Goldman) says the market is still paying up for stocks to move apart. The gamma picture matters into tonight: Microsoft, Amazon and Meta carry positive dealer gamma below current prices and negative gamma above, which means a good print gets amplified upward rather than absorbed. Microsoft's levels are 390 and 430 on the upside with 360 as the flip. Options price implied moves near 6% for Microsoft, 7% for Meta, 6% for Amazon and 4% for Apple. If Microsoft cannot reclaim 390 on the print and hold it through Friday's PCE inflation release, the squeeze thesis is dead and the negative-gamma path opens back up. Until then the lean is long $MSFT calls into the print.
+
+### The rotation into defensives is the trade, not the hedge
+
+*Momentum is rolling over and the corpus keeps naming the same exit, which is defensives and dividends rather than a cheaper version of the same tech risk.*
+
+Michael Hartnett's call is explicit: long defensives, dividends and duration, short banks, brokers, tech and industrials, with tighter financial conditions now a bigger headwind than earnings. He reads the blue-collar semiconductor group, down 21% from its June peak, as the industrial cycle already peaked and rolling over. BTIG has healthcare's $XLV attempting a breakout from its year-to-date range while high-beta momentum names approach their 200-day averages with a high probability of breaking below. JPMorgan's strategists see healthcare hitting a durable inflection on valuation, flows and accelerating 2027 earnings, and add split-government gridlock after the midterms as a supporting argument. The counterweight is real: Deutsche Bank has second-quarter S&P 500 earnings tracking 34% year over year against 26% consensus, with about 90% of reporters beating so far, and notes the index has never been lower nine months after any of the last 20 midterm cycles. Cost of being wrong: you give up the tail of a momentum rally already 8% off its June highs with hedge fund exposure near multi-year lows. Cost of missing this if right: you sit in the exact cohort a rising real-rate regime compresses hardest, while the defensive names that repriced first do the work. Long $XLV with $XLU alongside is the expression.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **2:00 PM ET: FOMC decision, and it is genuinely live.** JPMorgan's desk puts a hawkish hold at 50% and a dovish hold at 28%, and pegs the odds of an actual hike near 30%, below where the market has it. Bank of America reads market pricing at 38% and Bloomberg at 30-35%. Options are pricing only about a 0.8% move for today's expiry against the roughly 1.1% typical around inflation prints (JPMorgan), so the event is cheap relative to what it can do. A hike takes the S&P down 1.5% to 2% on JPMorgan's math, with the Nasdaq underperforming and small caps holding up better.
+- **After the close: Microsoft and Meta report.** Capital spending guidance is the number that matters more than the earnings line, because it is the direct input into whether the bond market keeps funding this. Implied moves are near 6% and 7%.
+- **Iran and the Strait of Hormuz stay a live headline risk.** JPMorgan flags Iran's rejection of the Omani proposal to share the strait after a surprise attack, and Persian Gulf oil flows are running at 41% of pre-war levels on a seven-day average, down from 80% in late June (Goldman). Any escalation lands straight on energy and on the inflation-expectations leg the Fed is watching.
+
+### This Week
+
+- **Thursday: Apple and Amazon report, alongside Samsung.** Implied moves near 4% and 6%. Amazon's cloud margins and Apple's September-quarter guide are the two lines to read. Thirty-four percent of S&P 500 market cap reports this week with a 1.7% implied move through Friday (Goldman).
+- **Friday: PCE inflation.** This is the print that decides whether the higher-for-longer repricing extends. Goldman's framing is that the market is reacting to a required-return shock rather than an inflation scare, so a hot PCE reading that lifts inflation expectations off 2.25% would be a genuine regime change rather than more of the same.
+- **The midterm clock starts here.** There are roughly 100 days to November 3rd, and Goldman notes economic policy uncertainty historically rises through August with the S&P 500 trading sideways into election day. Deutsche Bank's counterpoint is that markets have recovered within nine months of every one of the last 20 midterms.
+
+## _DRAFT NOTES (internal — strip before publish)
+
+- Folded adjudicated theme "china duv lithography supply" (3 banks, all neutral) into the semiconductor section rather than a standalone slot. It is the mechanism of the semis theme, not a separate trade, and splitting it would have produced two sections with the same lean.
+- Folded adjudicated theme "midterm election market impact" (4 banks, all neutral) into the defensive-rotation section and a WATCH bullet. No bank staked a directional view, so there is no call to anchor a standalone section, but JPMorgan explicitly uses midterm gridlock as part of the healthcare case.
+- Folded adjudicated theme "iran oil supply risk" (3 banks, all neutral) into a WATCH bullet. Same reason: three desks flag the chokepoint, none commits to a direction on oil, so there is no thesis to defend in an INSIGHTS slot.
+
+## _LEANS (internal — TRADE BOARD source, stripped before publish)
+- long | $VIX call spreads | cross-asset vol too low for a funding squeeze
+- long | $LQD | IG credit over hyperscaler equity, capex guide is the tell
+- short | $SOXX | China memory supply, 200-day average 22% lower
+- long | $MSFT calls | dealer short gamma above 390 into the print
+- long | $XLV, $XLU | defensives over momentum, real-rate regime
+
+```
+
+POST-STITCH PRE-EDIT (what EDIT received):
+```markdown
+# Bondholders stop funding AI
+
+## 1. RECAP
+
+[LIVE PRICE RECAP]
+
+The story in the research this morning is not that AI demand disappointed. It is that the people lending the money to build it have started charging more, and the equity market is only now repricing for that. Long-dated government bond yields pushed to levels not seen since before the financial crisis, hyperscaler borrowing costs hit record wides, and the semiconductor complex went through its worst five-day stretch in nine years. Positioning tells the same story from the other side: hedge fund gross exposure sits near multi-year lows, the crowded AI long-short pair is in a record drawdown, and the buyers who would normally step into this dip already cut their risk. Underneath it, a second thread is running about supply rather than funding, with China's domestic memory and lithography push arriving exactly as the memory cycle rolls over.
+
+Today the tape has two hard catalysts stacked on top of that: a genuinely live Fed decision, and Microsoft and Meta reporting after the close.
+
+## 2. INSIGHTS & ALPHA
+
+### The bond market is what finally broke the AI trade
+
+*The AI complex is not cracking because demand missed, it is cracking because the lenders funding it started charging a lot more.*
+
+- 30-year Treasury yields reached 5.2%, the highest since June 2007, and the inflation-adjusted 30-year yield hit 3%, the highest since November 2008 (Bank of America). Every future dollar a data center earns gets discounted against that number, so the bar a project has to clear just jumped.
+- Alphabet raised 2026 capital spending to $200bn, up $15bn, and posted negative free cash flow of roughly $5.9bn in the second quarter (JPMorgan). The spending is now running ahead of the cash coming in, which is exactly what forces a company to the bond market.
+- Hyperscaler credit spreads and the cost of insuring their debt against default hit record wides (Bank of America), and investment-grade tech spreads are widening back toward March levels (BTIG). Bond buyers are repricing the buildout in real time.
+- Goldman's prime desk logged the largest single-day selling of global tech longs since September 2024, a -3.6 standard-deviation reading, while its AI long-short pair sits in a drawdown of more than 30%, the largest on record.
+- Hedge fund gross exposure is at the 6th percentile and net exposure at the 22nd (Goldman). The natural dip buyers already took their risk down, so there is no obvious bid underneath.
+
+The transmission runs one way. Higher inflation-adjusted yields raise the discount rate applied to profits that arrive in 2029 and 2030, which is where the entire AI capital-spending thesis lives, and at the same time they raise the coupon a hyperscaler has to pay to borrow the money to get there. Goldman's framing is that this is a required-return shock rather than an inflation scare, with 10-year inflation expectations still anchored near 2.25% while the inflation-adjusted 10-year yield sits at 2.40%.
+
+JPMorgan pushes the other way with the demand data, arguing that supply still cannot keep up across both the product and foundry side, and Intel's second-quarter beat backs that up. The Nasdaq trades at roughly 21.8 times forward earnings against a ten-year average of 23.6 times, about a 10% discount and the cheapest since the AI cycle began in early 2023 (Goldman). That cheapness is measured against earnings that assume the capital spending keeps getting funded on today's terms, which is precisely the assumption the bond market is now withdrawing. Goldman's own trigger points are worth writing down: equities struggle if the nominal 10-year gets to about 5% or the inflation-adjusted 10-year reaches about 2.7%, and the second one is only 30 basis points away, roughly a third of a percentage point. With cross-asset volatility still priced for a calm macro backdrop (Bloomberg), the bias here is owning upside in volatility through $VIX call spreads, which is the same hedge Goldman's clients have been buying alongside downside protection in chips and small caps.
+
+### Own the hyperscalers' bonds, not their shares
+
+*The cloud giants have quietly become credit stories, and credit is currently the better-paid side of the trade.*
+
+Goldman's argument is that heavy AI spending has rewired the relationship between these companies' stock and their debt: equity value is now tethered to uncertain asset values while credit spreads widen against eroding cash flow, and the sensitivity of their bonds to their stock is rising, especially on longer-dated debt. The path from here hinges on how free cash flow improves. Cutting capital spending protects near-term cash and favors the bonds; rising operating income favors the shares. JPMorgan has higher conviction Alphabet returns to the dollar bond market before year-end because of the timing gap between cash going out and revenue coming in, and flags widening default-insurance costs on Nvidia as a bigger worry than the hyperscalers' own. Against that, Bloomberg makes the case that high-quality corporate bonds now compete directly with equities on yield alone, which is the cleanest version of this trade. The lean is long $LQD investment-grade corporate bonds over chasing hyperscaler equity here, and tonight's capital-spending guidance is the tell that flips it.
+
+### Chips: positioning washout or the start of something structural?
+
+*The chip selloff is not finished, and the reason is supply arriving from China rather than anything in this quarter's numbers.*
+
+Three of the four desks covering semiconductors say there is further to go. BTIG's Krinsky reads the sector's refusal to rally on the reported $250bn Nvidia and OpenAI data center financing as the tell, and puts $SOXX 22% below current levels at its 200-day average, with another 23% to the March lows if that breaks. The supply story is concrete: Chinese memory maker CXMT debuted up over 470% on the STAR Market at roughly a $488bn implied valuation with 212 times retail oversubscription, and it already holds about 8% of global DRAM revenue (Goldman). NAND spot prices are falling, with the shortage expected to end by the second half of 2027 as Chinese supply lands. Goldman's counter is that domestic Chinese immersion DUV lithography output is still tiny at an estimated 5 systems this year and 20 next, with unproven yields, so the market is pricing structural replacement as if it were a current earnings event. JPMorgan is the lone bull, still backing the bull case after the SOX index ran 87.8% in the second quarter and then gave back 20.2% from June 22 to July 17, and global semiconductor long-short positioning is still at the 98th percentile of crowding. So: does Chinese supply actually reach volume before the memory cycle turns back up, or does positioning clear first? Short $SOXX says supply wins, and a memory guide-up from the Mag7 prints says it does not.
+
+### The dispersion unwind arrives right on top of the biggest earnings week
+
+*The violent single-stock rotation is crowded traders exiting at once, and it sets up a squeeze rather than a slide into tonight's prints.*
+
+SpotGamma reads the collapse in one-month implied correlation and the breach of its risk pivot as confirmation the dispersion unwind is no longer theoretical, and JPMorgan's desk agrees the tape is positioning-driven rather than fundamental. Implied correlation at 13% over three months against 17.5% over twelve (Goldman) says the market is still paying up for stocks to move apart. The gamma picture matters into tonight: Microsoft, Amazon and Meta carry positive dealer gamma below current prices and negative gamma above, which means a good print gets amplified upward rather than absorbed. Microsoft's levels are 390 and 430 on the upside with 360 as the flip. Options price implied moves near 6% for Microsoft, 7% for Meta, 6% for Amazon and 4% for Apple. If Microsoft cannot reclaim 390 on the print and hold it through Friday's PCE inflation release, the squeeze thesis is dead and the negative-gamma path opens back up. Until then the lean is long $MSFT calls into the print.
+
+### The rotation into defensives is the trade, not the hedge
+
+*Momentum is rolling over and the corpus keeps naming the same exit, which is defensives and dividends rather than a cheaper version of the same tech risk.*
+
+Michael Hartnett's call is explicit: long defensives, dividends and duration, short banks, brokers, tech and industrials, with tighter financial conditions now a bigger headwind than earnings. He reads the blue-collar semiconductor group, down 21% from its June peak, as the industrial cycle already peaked and rolling over. BTIG has healthcare's $XLV attempting a breakout from its year-to-date range while high-beta momentum names approach their 200-day averages with a high probability of breaking below. JPMorgan's strategists see healthcare hitting a durable inflection on valuation, flows and accelerating 2027 earnings, and add split-government gridlock after the midterms as a supporting argument. The counterweight is real: Deutsche Bank has second-quarter S&P 500 earnings tracking 34% year over year against 26% consensus, with about 90% of reporters beating so far, and notes the index has never been lower nine months after any of the last 20 midterm cycles. Cost of being wrong: you give up the tail of a momentum rally already 8% off its June highs with hedge fund exposure near multi-year lows. Cost of missing this if right: you sit in the exact cohort a rising real-rate regime compresses hardest, while the defensive names that repriced first do the work. Long $XLV with $XLU alongside is the expression.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **2:00 PM ET: FOMC decision, and it is genuinely live.** JPMorgan's desk puts a hawkish hold at 50% and a dovish hold at 28%, and pegs the odds of an actual hike near 30%, below where the market has it. Bank of America reads market pricing at 38% and Bloomberg at 30-35%. Options are pricing only about a 0.8% move for today's expiry against the roughly 1.1% typical around inflation prints (JPMorgan), so the event is cheap relative to what it can do. A hike takes the S&P down 1.5% to 2% on JPMorgan's math, with the Nasdaq underperforming and small caps holding up better.
+- **After the close: Microsoft and Meta report.** Capital spending guidance is the number that matters more than the earnings line, because it is the direct input into whether the bond market keeps funding this. Implied moves are near 6% and 7%.
+- **Iran and the Strait of Hormuz stay a live headline risk.** JPMorgan flags Iran's rejection of the Omani proposal to share the strait after a surprise attack, and Persian Gulf oil flows are running at 41% of pre-war levels on a seven-day average, down from 80% in late June (Goldman). Any escalation lands straight on energy and on the inflation-expectations leg the Fed is watching.
+
+### This Week
+
+- **Thursday: Apple and Amazon report, alongside Samsung.** Implied moves near 4% and 6%. Amazon's cloud margins and Apple's September-quarter guide are the two lines to read. Thirty-four percent of S&P 500 market cap reports this week with a 1.7% implied move through Friday (Goldman).
+- **Friday: PCE inflation.** This is the print that decides whether the higher-for-longer repricing extends. Goldman's framing is that the market is reacting to a required-return shock rather than an inflation scare, so a hot PCE reading that lifts inflation expectations off 2.25% would be a genuine regime change rather than more of the same.
+- **The midterm clock starts here.** There are roughly 100 days to November 3rd, and Goldman notes economic policy uncertainty historically rises through August with the S&P 500 trading sideways into election day. Deutsche Bank's counterpoint is that markets have recovered within nine months of every one of the last 20 midterms.
+
+```
+
+POST-EDIT PRE-SCRUB (what SCRUB received — equals final if SCRUB skipped):
+```markdown
+# Bondholders stop funding AI
+
+## 1. RECAP
+
+Crude is doing all the work this morning. Oil is up nearly 7% on the Middle East, with $USO +6.6% half an hour into the session, and the equity tape is refusing to care: $SPY sits at $739.79, down 0.14%, and $QQQ is flat at $675.13, with $VIXY up 1.3% the only real tell that anything happened. $BTC is holding the $64k area. The backdrop that matters more than any of it is the long end of the bond market, where the 30-year Treasury yield at 5.10% is the highest since 2007. That is the discount rate every AI capital-spending model now has to clear, and it is grinding higher hours before a Fed decision that is genuinely live at 2 PM ET.
+
+- **Airstrikes overnight, then a dead Hormuz deal.** US and Saudi forces hit Iran-backed fighters in Iraq, and Tehran followed by ruling out any regional management of the Strait of Hormuz, which kills the de-escalation trade the oil curve had been leaning on. Brent proxy $BNO is +6.1% and ADNOC cleared crude at premiums to Asian refiners in a seventh tender, so the physical barrel market is confirming the headline rather than fading it.
+- **Equities are pricing none of it.** With crude up almost 7%, $SPY is down 0.14%, $QQQ is unchanged and $GLD is actually lower at -0.27%. The only thing bid is short-dated protection at $VIXY +1.3%, which is a tape hedging a 2 PM central bank event, not an oil shock.
+- **The natural dip buyers are already gone.** Hedge fund gross exposure, the total size of their long and short book, sits at the 6th percentile of recent years, with the directional net tilt at the 22nd (Goldman). Semiconductors just came through their worst five-day stretch in nine years with no obvious bid underneath them.
+
+## 2. INSIGHTS & ALPHA
+
+### The bond market is what finally broke the AI trade
+
+*The AI complex is not cracking because demand missed. It is cracking because the lenders funding it started charging a lot more.*
+
+- **The discount rate moved, demand did not.** The inflation-adjusted 30-year yield, what a lender actually keeps after inflation, hit 3% for the first time since November 2008 (Bank of America). Every dollar a data center earns in 2030 gets discounted back against that number, so the return bar on every project currently under construction just jumped.
+- **Alphabet raised 2026 capital spending to $200bn and posted negative free cash flow of about $5.9bn in the second quarter (JPMorgan).** Cash going out now runs ahead of cash coming in, which is exactly what forces a company to the bond market instead of the checkbook.
+- **Lenders are repricing the buildout in real time.** Hyperscaler credit spreads, the extra yield investors demand to hold that debt instead of Treasuries, and the cost of insuring it against default both hit record wides (Bank of America).
+- **The buyers who would normally step in already cut risk.** Goldman's prime desk, which finances hedge funds and sees their flow, logged the largest single-day sale of global tech longs since September 2024, a 3.6 standard deviation move well outside anything a normal session produces, and its AI long-short pair sits in the deepest drawdown on record at more than 30%.
+
+The transmission runs one way. Higher after-inflation yields raise the discount applied to profits that arrive in 2029 and 2030, which is where the entire AI capital-spending thesis lives, and at the same time they raise the coupon a hyperscaler pays to go borrow the money to get there. Goldman's read is that this is a required-return shock rather than an inflation scare, which is a distinction with a trade attached: one of those reprices multiples, the other reprices the whole curve.
+
+The bull case has real support behind it. JPMorgan's demand work still shows supply unable to keep up on both the product and the foundry side, and the Nasdaq at 21.8 times forward earnings, the profits analysts expect over the coming year, is roughly a 10% discount to its ten-year average and the cheapest since this cycle started in early 2023 (Goldman). The catch is that the discount is measured against earnings that assume the capital spending keeps getting funded on today's terms, and today's terms are precisely what the bond market is withdrawing. Goldman's own trigger levels are the ones worth writing down: equities struggle if the nominal 10-year gets to about 5%, or if the after-inflation 10-year reaches about 2.7%, which is roughly a third of a percentage point from here. The 10-year sits at 4.62% this morning and is drifting the wrong way into a live decision, while cross-asset volatility is still priced for a calm macro backdrop. Long $VIXY into the 2 PM decision, sized as a hedge rather than a bet.
+
+### Hormuz is a supply problem again, not a negotiation
+
+*The de-escalation trade died in Tehran overnight, and the physical oil market is repricing faster than the paper one.*
+
+Iran ruling out any shared regional management of the Strait of Hormuz removes the diplomatic off-ramp the oil curve had been discounting, and it lands hours after US and Saudi strikes on Iran-backed fighters in Iraq. Persian Gulf oil flows are running at 41% of pre-war levels on a seven-day average, down from 80% in late June (Goldman), so this has stopped being a risk-premium story and become a barrels-not-moving story. ADNOC clearing crude at premiums to Asian refiners for a seventh straight tender is the same message from the buyer side. The counter is that ship transits through Bab el-Mandeb hit their highest in a week and the Houthis are reportedly weighing transit fees rather than closure, which is the behavior of a group that wants the traffic to keep flowing. Crude at plus 7% already pays for the headline, so the better-paid version of this is owning the producers rather than the barrel. Long $XLE, not the front-month contract.
+
+### Own the hyperscalers' bonds, not their shares
+
+*The cloud giants have quietly become credit stories, and credit is the better-paid side of that trade right now.*
+
+Heavy AI spending has rewired the link between these companies' stock and their debt (Goldman): equity value is now tethered to asset values nobody can confidently price, the extra yield lenders demand keeps widening against cash flow that is eroding, and the longer-dated bonds increasingly trade off the share price. Which side wins comes down to what happens to cash. Cutting capital spending protects near-term cash and pays the bondholder. Rising operating income pays the shareholder. JPMorgan has high conviction Alphabet returns to the dollar bond market before year-end on the timing gap between cash going out and revenue coming in, and flags the climbing cost of insuring Nvidia's debt as the more worrying signal, worse than the hyperscalers' own. Top-rated tech bonds have handed back their spread improvement and sit near March levels, which means investment-grade paper now competes with equities on yield alone. Long $LQD over adding hyperscaler equity here, and tonight's capital-spending guidance is the tell that flips it.
+
+### Chips: positioning washout, or something structural
+
+*The chip selloff is not finished, and the reason is supply arriving from China rather than anything in this quarter's numbers.*
+
+The sector's refusal to rally on the reported $250bn Nvidia and OpenAI data center financing is the tell (BTIG), and that desk puts $SOXX 22% below current levels at its 200-day average, the trend line most desks treat as the last line of support. The supply story is concrete: Chinese memory maker CXMT debuted up more than 470% on Shanghai's STAR Market and already holds about 8% of global DRAM revenue (Goldman), while NAND spot prices are falling and the shortage is expected to end by the second half of 2027 as that capacity lands. The counter from the same shop is that China's domestic immersion lithography output is still a handful of unproven systems a year, so the market is pricing a decade of substitution as though it hits this quarter's numbers. JPMorgan is the lone bull and still backing the cycle, but global semiconductor long-short positioning at the 98th percentile of crowding means almost everyone owns the same trade, and crowding that extreme clears violently in whichever direction it breaks. Short $SOXX until a memory guide-up from tonight's hyperscaler prints forces the other way.
+
+### The dispersion unwind lands on the biggest earnings night of the week
+
+*The violent single-stock rotation is crowded traders leaving at once, and it sets up a squeeze into tonight's prints rather than a slide.*
+
+One-month implied correlation, the price of stocks moving together rather than apart, has collapsed, which says the dispersion unwind is real money exiting and not a chart pattern, and JPMorgan's desk reads the tape as positioning-driven rather than fundamental. Three-month implied correlation at 13% against 17.5% at twelve months (Goldman) shows the market still paying up for stocks to go their separate ways. The mechanics into tonight matter more than the estimates: Microsoft, Amazon and Meta all carry dealer hedging that cushions moves below current prices and amplifies them above, so a good print gets accelerated rather than absorbed. Microsoft's flip level is 360 with 390 the next shelf above, and options are pricing a 6% move for Microsoft and 7% for Meta. If Microsoft cannot reclaim 390 on the print and hold it through Thursday's core inflation reading, the squeeze thesis is dead and the amplify-downward path opens back up. Long $MSFT calls into tonight's print.
+
+### The rotation into defensives is the trade, not the hedge
+
+*Momentum is rolling over and the exit everyone keeps naming is defensives and dividends, not a cheaper version of the same tech risk.*
+
+Bank of America's Hartnett is explicit: long defensives, dividends and long-dated Treasuries, short banks, brokers, tech and industrials, with tighter financial conditions now a bigger headwind than earnings, and he reads the blue-collar semiconductor group, down 21% from its June peak, as an industrial cycle that already turned over. Healthcare is where that money is going. $XLV is trying to break out of its year-to-date range while the high-momentum names that move harder than the market sit right on their 200-day averages, and JPMorgan sees healthcare hitting a durable inflection on valuation, flows and accelerating 2027 earnings, with post-midterm gridlock as the supporting argument. The counterweight is not trivial. Second-quarter S&P 500 earnings are tracking 34% year over year against 26% consensus with about 90% of reporters beating so far (Deutsche Bank), and the index has never been lower nine months after any of the last twenty midterm cycles. Being wrong here costs you the tail of a momentum rally already 8% off its June highs. Being wrong the other way leaves you sitting in the exact cohort a higher real-rate regime compresses hardest, while the defensive names that already repriced do the work. Long $XLV, with $XLU alongside for the dividend.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **2:00 PM ET: the FOMC decision, and it is genuinely live.** Consensus is a hold at 3.75%, but JPMorgan's desk splits it 50% hawkish hold, meaning no cut and a warning tone, against 28% dovish hold, and its own odds on an actual hike sit below what the market is charging (Bank of America reads market pricing near 38%). Options are pricing only about a 0.8% move for today's expiry against the 1.1% typical around inflation prints (JPMorgan), so the event is cheap relative to what it can do. A hike takes the S&P down 1.5% to 2% on JPMorgan's math, with the Nasdaq worse and small caps holding up better.
+- **After the close: Microsoft and Meta report, with ARM alongside.** Capital-spending guidance is the number that matters more than the earnings line, because it feeds straight into whether the bond market keeps funding this buildout. ARM is the smaller read at $0.41 expected earnings per share on $1.27B of revenue, and it prints into the same chip tape.
+
+### This Week
+
+- **Thursday 8:30 AM ET: advance second-quarter GDP and core PCE inflation.** GDP is expected at 2.1% against 2.0% prior, core PCE at 0.2% month over month against 0.3% prior. Core PCE is the Fed's preferred inflation gauge, and a hot one turns the required-return story into a genuine inflation scare, which is a different and worse trade than the one the market is currently running.
+- **Thursday after the close: Apple and Amazon, plus Coinbase and MicroStrategy.** Options price moves near 4% for Apple and 6% for Amazon, where cloud margins and the September-quarter guide are the two lines that matter. $COIN at a 12 cent expected loss and $MSTR at $2.90 are the crypto-levered read with $BTC sitting at $64k. Roughly 34% of S&P 500 market cap reports this week, with a 1.7% implied move through Friday (Goldman).
+- **The midterm clock starts now.** Roughly 100 days to November 3rd, and economic policy uncertainty historically climbs through August with the S&P 500 grinding sideways into election day (Goldman). It is the slow-burn reason to prefer the defensive rotation over waiting for a clean momentum re-entry.
+
+## _LEANS (internal, TRADE BOARD source, stripped before publish)
+- long | $VIXY | vol too low for a live Fed plus funding squeeze
+- long | $XLE | producers over the barrel, Hormuz off-ramp dead
+- long | $LQD | IG credit over hyperscaler equity, capex guide is the tell
+- short | $SOXX | China memory supply, 200-day average 22% lower
+- long | $MSFT calls | dealer hedging amplifies above 390 into the print
+- long | $XLV, $XLU | defensives over momentum, higher real-rate regime
+
+```
+
+FINAL POSTED MARKDOWN (post-SCRUB if SCRUB ran):
+```markdown
+# Bondholders stop funding AI
+
+## 1. RECAP
+
+Crude is doing all the work this morning. Oil is up nearly 7% on the Middle East, with $USO +6.6% half an hour into the session, and stocks are refusing to care: $SPY sits at $739.79, down 0.14%, and $QQQ is flat at $675.13, with $VIXY up 1.3% the only real tell that anything happened. $BTC is holding the $64k area. The backdrop that matters more than any of it is what is happening in 30-year Treasury bonds, where the yield at 5.10% is the highest since 2007. That is the discount rate every AI capital-spending model now has to clear, and it is grinding higher hours before a Fed decision that is genuinely live at 2 PM ET.
+
+- **Airstrikes overnight, then a dead Hormuz deal.** US and Saudi forces hit Iran-backed fighters in Iraq, and Tehran followed by ruling out any regional management of the Strait of Hormuz, which kills the de-escalation trade the oil curve had been leaning on. Brent proxy $BNO is +6.1% and ADNOC cleared crude at premiums to Asian refiners in a seventh tender, so the physical barrel market is confirming the headline rather than fading it.
+- **Equities are pricing none of it.** With crude up almost 7%, $SPY is down 0.14%, $QQQ is unchanged and $GLD is actually lower at -0.27%. The only thing being bought is short-dated protection at $VIXY +1.3%, which is traders hedging a 2 PM central bank event, not an oil shock.
+- **The natural dip buyers are already gone.** Hedge fund gross exposure, the total size of their long and short book, sits at the 6th percentile of recent years, with the directional net tilt at the 22nd (Goldman). Semiconductors just came through their worst five-day stretch in nine years with no obvious bid underneath them.
+
+## 2. INSIGHTS & ALPHA
+
+### The bond market is what finally broke the AI trade
+
+*The AI complex is not cracking because demand missed. It is cracking because the lenders funding it started charging a lot more.*
+
+- **The discount rate moved, demand did not.** The inflation-adjusted 30-year yield, what a lender actually keeps after inflation, hit 3% for the first time since November 2008 (Bank of America). Every dollar a data center earns in 2030 gets discounted back against that number, so the return bar on every project currently under construction just jumped.
+- **Alphabet raised 2026 capital spending to $200bn and posted negative free cash flow of about $5.9bn in the second quarter (JPMorgan).** Cash going out now runs ahead of cash coming in, which is exactly what forces a company to the bond market instead of the checkbook.
+- **Lenders are repricing the buildout in real time.** Hyperscaler credit spreads, the extra yield investors demand to hold that debt instead of Treasuries, and the cost of insuring it against default both hit record wides (Bank of America).
+- **The buyers who would normally step in already cut risk.** Goldman's prime desk, which finances hedge funds and sees their flow, logged the largest single-day sale of global tech longs since September 2024, a 3.6 standard deviation move well outside anything a normal session produces, and its AI long-short pair sits in the deepest drawdown on record at more than 30%.
+
+The transmission runs one way. Higher after-inflation yields raise the discount applied to profits that arrive in 2029 and 2030, which is where the entire AI capital-spending thesis lives, and at the same time they raise the coupon a hyperscaler pays to go borrow the money to get there. Goldman's read is that this is a required-return shock rather than an inflation scare, which is a distinction with a trade attached: one of those reprices multiples, the other reprices the whole curve.
+
+The bull case has real support behind it. JPMorgan's demand work still shows supply unable to keep up on both the product and the foundry side, and the Nasdaq at 21.8 times forward earnings, the profits analysts expect over the coming year, is roughly a 10% discount to its ten-year average and the cheapest since this cycle started in early 2023 (Goldman). The catch is that the discount is measured against earnings that assume the capital spending keeps getting funded on today's terms, and today's terms are precisely what the bond market is withdrawing. Goldman's own trigger levels are the ones worth writing down: equities struggle if the nominal 10-year gets to about 5%, or if the after-inflation 10-year reaches about 2.7%, which is roughly a third of a percentage point from here. The 10-year sits at 4.62% this morning and is drifting the wrong way into a live decision, while cross-asset volatility is still priced for a calm macro backdrop. Long $VIXY into the 2 PM decision, sized as a hedge rather than a bet.
+
+### Hormuz is a supply problem again, not a negotiation
+
+*The de-escalation trade died in Tehran overnight, and the physical oil market is repricing faster than the paper one.*
+
+Iran ruling out any shared regional management of the Strait of Hormuz removes the diplomatic off-ramp the oil curve had been discounting, and it lands hours after US and Saudi strikes on Iran-backed fighters in Iraq. Persian Gulf oil flows are running at 41% of pre-war levels on a seven-day average, down from 80% in late June (Goldman), so this has stopped being a risk-premium story and become a barrels-not-moving story. ADNOC clearing crude at premiums to Asian refiners for a seventh straight tender is the same message from the buyer side. The counter is that ship transits through Bab el-Mandeb hit their highest in a week and the Houthis are reportedly weighing transit fees rather than closure, which is the behavior of a group that wants the traffic to keep flowing. Crude at plus 7% already pays for the headline, so the better-paid version of this is owning the producers rather than the barrel. Long $XLE, not the front-month contract.
+
+### Own the hyperscalers' bonds, not their shares
+
+*The cloud giants have quietly become credit stories, and credit is the better-paid side of that trade right now.*
+
+Heavy AI spending has rewired the link between these companies' stock and their debt (Goldman): equity value is now tethered to asset values nobody can confidently price, the extra yield lenders demand keeps widening against cash flow that is eroding, and the longer-dated bonds increasingly trade off the share price. Which side wins comes down to what happens to cash. Cutting capital spending protects near-term cash and pays the bondholder. Rising operating income pays the shareholder. JPMorgan has high conviction Alphabet returns to the dollar bond market before year-end on the timing gap between cash going out and revenue coming in, and flags the climbing cost of insuring Nvidia's debt as the more worrying signal, worse than the hyperscalers' own. Top-rated tech bonds have handed back their spread improvement and sit near March levels, which means investment-grade paper now competes with equities on yield alone. Long $LQD over adding hyperscaler equity here, and tonight's capital-spending guidance is the tell that flips it.
+
+### Chips: positioning washout, or something structural
+
+*The chip selloff is not finished, and the reason is supply arriving from China rather than anything in this quarter's numbers.*
+
+The sector's refusal to rally on the reported $250bn Nvidia and OpenAI data center financing is the tell (BTIG), and that desk puts $SOXX 22% below current levels at its 200-day average, the trend line most desks treat as the last line of support. The supply story is concrete: Chinese memory maker CXMT debuted up more than 470% on Shanghai's STAR Market and already holds about 8% of global DRAM revenue (Goldman), while NAND spot prices are falling and the shortage is expected to end by the second half of 2027 as that capacity lands. The counter from the same shop is that China's domestic immersion lithography output is still a handful of unproven systems a year, so the market is pricing a decade of substitution as though it hits this quarter's numbers. JPMorgan is the lone bull and still backing the cycle, but global semiconductor long-short positioning at the 98th percentile of crowding means almost everyone owns the same trade, and crowding that extreme clears violently in whichever direction it breaks. Short $SOXX until a memory guide-up from tonight's hyperscaler prints forces the other way.
+
+### The dispersion unwind lands on the biggest earnings night of the week
+
+*The violent single-stock rotation is crowded traders leaving at once, and it sets up a squeeze into tonight's prints rather than a slide.*
+
+One-month implied correlation, the price of stocks moving together rather than apart, has collapsed, which says the dispersion unwind is real money exiting and not a chart pattern, and JPMorgan's desk reads the move as traders repositioning rather than anything fundamental changing. Three-month implied correlation at 13% against 17.5% at twelve months (Goldman) shows the market still paying up for stocks to go their separate ways. The mechanics into tonight matter more than the estimates: Microsoft, Amazon and Meta all sit under dealer hedging that cushions moves below current prices and amplifies them above, so a good print gets accelerated rather than absorbed. Microsoft's flip level is 360 with 390 the next shelf above, and options are pricing a 6% move for Microsoft and 7% for Meta. If Microsoft cannot reclaim 390 on the print and hold it through Thursday's core inflation reading, the squeeze thesis is dead and the amplify-downward path opens back up. Long $MSFT calls into tonight's print.
+
+### The rotation into defensives is the trade, not the hedge
+
+*Momentum is rolling over and the exit everyone keeps naming is defensives and dividends, not a cheaper version of the same tech risk.*
+
+Bank of America's Hartnett is explicit: long defensives, dividends and long-dated Treasuries, short banks, brokers, tech and industrials, with tighter financial conditions now a bigger headwind than earnings, and he reads the blue-collar semiconductor group, down 21% from its June peak, as an industrial cycle that already turned over. Healthcare is where that money is going. $XLV is trying to break out of its year-to-date range while the high-momentum names that move harder than the market sit right on their 200-day averages, and healthcare is set up for a durable turn on valuation, flows and accelerating 2027 earnings, with post-midterm gridlock as the supporting argument (JPMorgan). The counterweight is not trivial. Second-quarter S&P 500 earnings are tracking 34% year over year against 26% consensus with about 90% of reporters beating so far (Deutsche Bank), and the index has never been lower nine months after any of the last twenty midterm cycles. Being wrong here costs you the tail of a momentum rally already 8% off its June highs. Being wrong the other way leaves you sitting in the exact cohort a higher real-rate regime compresses hardest, while the defensive names that already repriced do the work. Long $XLV, with $XLU alongside for the dividend.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **2:00 PM ET: the FOMC decision, and it is genuinely live.** Consensus is a hold at 3.75%, but JPMorgan's desk splits it 50% hawkish hold, meaning no cut and a warning tone, against 28% dovish hold, and its own odds on an actual hike sit below what the market is charging (Bank of America reads market pricing near 38%). Options are pricing only about a 0.8% move for today's expiry against the 1.1% typical around inflation prints (JPMorgan), so the event is cheap relative to what it can do. A hike takes the S&P down 1.5% to 2% on JPMorgan's math, with the Nasdaq worse and small caps holding up better.
+- **After the close: Microsoft and Meta report, with ARM alongside.** Capital-spending guidance is the number that matters more than the earnings line, because it feeds straight into whether the bond market keeps funding this buildout. ARM is the smaller read at $0.41 expected earnings per share on $1.27B of revenue, and it reports into the same beaten-up chip market.
+
+### This Week
+
+- **Thursday 8:30 AM ET: advance second-quarter GDP and core PCE inflation.** GDP is expected at 2.1% against 2.0% prior, core PCE at 0.2% month over month against 0.3% prior. Core PCE is the Fed's preferred inflation gauge, and a hot one turns the required-return story into a genuine inflation scare, which is a different and worse trade than the one the market is currently running.
+- **Thursday after the close: Apple and Amazon, plus Coinbase and MicroStrategy.** Options price moves near 4% for Apple and 6% for Amazon, where cloud margins and the September-quarter guide are the two lines that matter. $COIN at a 12 cent expected loss and $MSTR at $2.90 are the crypto-levered read with $BTC sitting at $64k. Roughly 34% of S&P 500 market cap reports this week, with a 1.7% implied move through Friday (Goldman).
+- **The midterm clock starts now.** Roughly 100 days to November 3rd, and economic policy uncertainty historically climbs through August with the S&P 500 grinding sideways into election day (Goldman). It is the slow-burn reason to prefer the defensive rotation over waiting for a clean momentum re-entry.
+
+## _LEANS (internal, TRADE BOARD source, stripped before publish)
+- long | $VIXY | vol too low for a live Fed plus funding squeeze
+- long | $XLE | producers over the barrel, Hormuz off-ramp dead
+- long | $LQD | IG credit over hyperscaler equity, capex guide is the tell
+- short | $SOXX | China memory supply, 200-day average 22% lower
+- long | $MSFT calls | dealer hedging amplifies above 390 into the print
+- long | $XLV, $XLU | defensives over momentum, higher real-rate regime
+
+```
+
+PREVIOUS SCHEDULED PULSE — final markdown (2026-07-28T14-07-58Z):
+```markdown
+---
+pdf_count: 27
+input_tokens: 120000
+output_tokens: 2234
+dumped_at_utc: 2026-07-28T13:57:38.969838Z
+---
+
+# Chips crack, capex holds
+
+## 1. RECAP
+
+Markets opened lower Tuesday and the damage is concentrated in tech. $SPY is down just -0.30% half an hour into the session while $QQQ has dropped -1.81%, the split that says chips and megacap names, not the broad market, are doing the selling. The positioning backdrop is why it bites: discretionary investors have cut equity exposure to the lowest since early April, the semiconductor index is parked right on the line that held its mid-July sell-off, and the extra yield investors demand to hold big cloud companies' bonds just pushed to new highs. $BTC slipped under $63k with the risk-off tone but held its range. All of it lands two days before a Fed decision the market still cannot fully rule a hike out of.
+
+- **Apple retook the most-valuable-company crown from Nvidia at Monday's close.** Apple ended Monday as the world's most valuable company, passing Nvidia for the first time since June 2025. The handoff is a clean marker of money rotating out of AI-chip leadership, the same rotation dragging the Nasdaq this morning.
+- **The AI-capex financing question got louder.** Reports that Nvidia is in talks to backstop a $500B, 10-gigawatt OpenAI data center in Ohio, on top of a possible $250B OpenAI backstop, have investors asking how the buildout gets funded. The extra yield on big-cloud bonds at new highs shows the credit market is already nervous, and that worry is the through-line under the tech slide.
+- **Oil and gold kept unwinding the war premium.** $BNO fell -1.31% and $GLD -1.45% as the US-Iran step-back drains the scarcity bid that built during the Hormuz scare, with crude futures "pricing market adaptability, not hopeful Iran peace." Softer gold takes one inflation input off the table right before Wednesday's Fed.
+
+## 2. THE MAIN EVENT
+
+### The chip trade is correcting and the crowding says it is not done
+
+*The semiconductor sell-off is not a dip to buy yet, because the most one-sided positioning in the market still has to clear.*
+
+- Hedge-fund positioning in chips sits at the 98th percentile and tech hardware at the 86th (JPMorgan, as of Monday), meaning the long bets are about as crowded as they have been in a year, so an unwind has a long way to run before it is clean.
+- The SOX semiconductor index is parked on 11,200, the level that held the July 17 sell-off, with its momentum gauge (RSI, where under 30 is washed out) at 39, the most oversold since the AI melt-up began. A decisive close below 11,200 opens air underneath.
+- BTIG puts 22% of downside in $SOXX to its 200-day average (the long-run trend line traders watch) if that support breaks, and 23% in high-beta momentum names to their March lows, so the technical floor sits well below where the group trades now.
+- Korea's memory complex has already cracked, with Samsung down 14%, Kioxia off 60% from its peak, and the KOSPI down 35% from its June high, so the AI supply chain is unwinding hardest where it is most levered.
+- The extra yield investors demand to hold big-cloud bonds hit a new high of 1.45 percentage points over Treasuries, right after Alphabet's earnings, so the credit market began repricing AI-financing risk while stocks were still buying the dip.
+
+Three forces are pulling the group lower at once. The crowding gives an unwind its fuel, the widening in tech credit is the bond market questioning how all this capital spending gets funded, and China's push into its own chip supply chain caps the long-term revenue of the Western names. The bull case is not weak. Discretionary money has already reset to the 17th percentile, its lowest since early April (Deutsche Bank), the momentum gauge is washed out, and long-horizon valuations look reasonable, which reads as a buying opportunity to some desks. What keeps this from being the bottom is that the reset is only in the discretionary crowd. The systematic funds and hedge-fund long-short books are still at that 98th percentile, and technical damage on this scale usually takes months to repair, not days. Short $SOXX rallies until the index reclaims its 50-day average and holds 11,200 at the close, the level BTIG flags as the line between a pullback and a break.
+
+## 3. BRIEFS
+
+### China is building its own chip supply chain faster than the market priced
+
+*China's home-grown chip effort is now big enough to threaten the Western equipment makers, not just serve its own market.*
+
+CXMT, China's memory-chip maker, debuted up roughly 466% and briefly passed Intel's entire market value (Deutsche Bank, Goldman Sachs), a sign of how much conviction sits behind Beijing's self-sufficiency drive. China is ramping domestic production of DUV lithography tools, the older-generation machines that etch chip patterns, which is the direct reason $ASML broke below its 50-day trend line. Apple is pushing to source memory from Chinese suppliers like CXMT and YMTC to ease a global shortage, while Micron warns that Chinese entry could gut the US industry and points to $250B of planned US capacity (JPMorgan). Memory contract-price growth is already decelerating, with DRAM up 16% quarter-on-quarter after a 56% jump the prior quarter (JPMorgan). Fade $ASML rallies rather than chase them while the China tool story builds, since the risk is a permanent haircut to its largest growth region.
+
+### Strip out the positioning noise and AI demand is still real
+
+*The actual demand for AI infrastructure keeps showing up in the numbers even as the stocks correct.*
+
+Oracle's finance chief pegs its AI-infrastructure projects at 30% to 40% gross margins and high-20s returns on invested capital (the cash yield on money sunk into a project), with capacity tight and vendors building against booked demand rather than speculatively (Deutsche Bank, $300 target). Rental prices for the newest B200 chips rose 7.3% month-on-month while the prior-generation H100 slipped 1.1% (JPMorgan), so the money is concentrating in the latest silicon, not fading. Amazon heads into this week's 2Q report with AWS momentum and a $200B capital-spending plan the market wants to see defended, and a raise there confirms the buildout the way Alphabet's did. Long $ORCL as the direct way to own execution without the crowding, or $AMZN calls into the AWS print.
+
+### The Fed holds this week, but a hawkish hold still stings
+
+*The Fed almost certainly leaves rates alone, yet the market carries enough hike risk that the tone of the hold matters.*
+
+No change is the base case at both JPMorgan and Goldman Sachs for Wednesday's meeting. Markets are still pricing roughly 38% to 40% odds of a hike, and Goldman lifted its odds of eventual hikes to 35% from 25%. The cover for a patient hold is soft June inflation, with core CPI (prices stripped of food and energy) at -0.02% month-on-month, the weakest since May 2020 (JPMorgan). The risk sits in the messaging, with hawkish (wanting higher rates) dissents expected from Hammack and Logan and a Chair in Warsh who could tip a close call toward a surprise. If the statement reads as a clean hold with soft-inflation cover and no more than the two expected dissents, short-dated Treasuries get relief and long $TLT works into it. If Warsh forces a hike or three-plus members dissent hawkish, that trade is dead and the dollar catches a bid.
+
+## TRADE BOARD
+
+Leans this pulse is making — NEW = first flagged today, FLIP = reversed today, "held since …" = carried from an earlier pulse and repeated today, "off board since …" = was on the last board and wasn't repeated today (today's themes went elsewhere — a deliberate reversal would show as FLIP):
+
+- **NEW** Short $ASML — China DUV caps its largest growth region
+- **NEW** $ORCL, $AMZN calls — AI demand real, own execution + AWS print
+- **NEW** Short $SOXX — crowded semis, 11,200 SOX the line
+- **NEW** Long $TLT — Fed holds into soft inflation, short-dated relief
+- **off board since Jul 27** $SMH puts — fade high-beta AI into Microsoft and Meta Wednesday
+- **off board since Jul 27** Long $XLV, $SPLV — defensive rotation over high-beta
+- **off board since Jul 27** Long $GLD — steepening curve as inflation hedge
+- **off board since Jul 27** Long $BNO — Hormuz supply premium reloads
+- **off board since Jul 27** Long $UUP — underpriced July hike risk, into FOMC
+
+**High-conviction single-name calls** (the desks' standout bets):
+
+- **JPMorgan** $AVGO — OW — Samsung MOU reinforces long-term AI revenue trajectory and #1 market share in AI ASICs and switching silicon.
+- **Goldman Sachs** $DKS — Buy, PT $271.00 — Improved assortment, higher brand heat, and better shopping experience at Foot Locker are expected to drive a business inflection in 2H26.
+- **JPMorgan** $ASM — OW — Strong fundamentals and lead times support growth, though share price reaction remains vulnerable to the broader semicap tape.
+
+*(OW = overweight (own more than the index does), PT = price target)*
+
+## 4. WHAT TO WATCH
+
+### Today
+
+Consumer confidence is due, expected to slip to around 90.5 from 91.2 on Middle East tension and gas prices (JPMorgan), a second-tier read into the Fed meeting. No other research-flagged catalysts are left today.
+
+### This Week
+
+- **Wednesday, July 29: July FOMC decision (2:00 PM ET), press conference at 2:30.** On hold is the base case at both JPMorgan and Goldman Sachs, but markets price about 38% to 40% for a hike and Goldman lifted its odds of eventual hikes to 35%. Watch for hawkish dissents from Hammack and Logan and whether Chair Warsh pushes a close call. A hawkish hold bids the dollar and pressures $TLT, a clean dovish hold is relief for both long-dated bonds and growth stocks.
+- **Thursday, July 30: Q2 advance GDP and June core PCE (8:30 AM ET).** GDP is expected at +2.0% and core PCE, the Fed's preferred inflation gauge, at +0.2% month-on-month versus +0.3% prior. A soft PCE print reinforces the patient-hold read the day after the Fed.
+- **This week: mega-cap earnings wall.** Microsoft, Meta, Qualcomm and Arm report Wednesday after the close, Apple and Amazon Thursday. Amazon's AWS growth and $200B capital-spending guide is the swing factor for the AI-buildout debate, and a raise the way Alphabet did would reignite the financing-sustainability worry already widening tech credit spreads.
+
+```
+
+PREVIOUS SCHEDULED PULSE — its QC review:
+```markdown
+# QC Review — 2026-07-28T14-07-58Z
+
+## TL;DR
+[observed] Clean publish with strong day-over-day freshness, but both regressions flagged in yesterday's QC recurred — EDIT again dropped `## _LEANS` (deterministic restore caught it) and again flattened the AI-infra ranked_list close to a bare "Long $X" — so only the safety nets are holding while the prompt-level fixes clearly did not land.
+
+## Publish-readiness check
+
+1. [observed] No internal-notes sections in final. Clean. The `## _EDIT NOTES` block present in the EDIT output (pre-SCRUB) is absent from the FINAL POSTED MARKDOWN — the STEP 5.8 strip ran. `## _LEANS` IS present in the final, but this is a pre-bridge committed artifact, so that is expected and correct (bridge strips it at post-time). Not flagged.
+2. [observed] No frontmatter leak. Final body does not open with `---` / `pdf_count:`.
+3. [observed] No placeholder leak. The `[LIVE PRICE RECAP]` token that sat in DRAFT and the stitched input was replaced by EDIT with a live-data RECAP (prices + three bullets). No `[TODO]` / `[FILL IN]` markers.
+
+## Coverage audit
+
+[observed] All four heavyweight themes reached the final. china semiconductor self sufficiency (4 banks) → Theme 2; semiconductor sector correction (3 banks, source-concentrated 100% BTIG) → the LEAD theme; ai infrastructure demand (3 banks) → Theme 3; hyperscaler credit risk (3 banks) → deliberately folded into the lead theme's "three forces" plus a RECAP financing bullet rather than given a standalone slot. [inferred] The fold is the right call: the 145bp/1.45pp spread widening is the bond-market leg of the same unwind, it had 0 supportive stances, and there is no distinct US-tradable instrument beyond shorting the chip complex the lead already owns. The DRAFT NOTES and EDIT NOTES both reason to this conclusion independently, which is a good sign the fold was principled, not incidental.
+
+[observed] Discovered themes: `discovery_audit.promoted` is empty — Phase B promoted nothing, so there is no discovery-surfacing obligation and no discovery miss this run. Every near-miss cluster resolved to "covered" by a Phase A theme or "thin-2bank."
+
+[observed] Near-miss clusters — spot check of what did/didn't surface:
+- Middle East geopolitical escalation (2 banks, thin, sim 0.628) → surfaced in RECAP (US-Iran step-back draining the oil/gold war premium). Covered.
+- Chair Warsh testimony (2 banks, thin, 0.6515) → threaded into the Fed theme's messaging-risk paragraph. Covered.
+- China DRAM self-sufficiency (2 banks, 0.9418) → subsumed by the china-semi theme. Covered.
+- CTA systematic unwinds (2 banks, thin, 0.698) → [inferred] partially covered: the lead theme names "systematic funds and hedge-fund long-short books still at the 98th percentile" but never names the CTA-unwind mechanism specifically. Borderline; 2-bank thin, defensible to leave implicit.
+- Red Sea shipping capacity (Goldman + Rabobank, thin, 0.589) → dropped everywhere. [inferred] Defensible: 2-bank thin, and the oil-de-escalation narrative in RECAP supersedes the scarcity angle. Not a threshold signal.
+
+[observed] HIGH-CONVICTION SINGLE-NAME CALLS — this is a real miss. DRAFT threaded the JPMorgan `$AVGO` Overweight call ("Broadcom kept its Overweight rating at JPMorgan on its Samsung memory agreement and top share in AI custom chips") into the AI-demand theme, satisfying the section's "surface at least the strongest one" rule. EDIT deleted that sentence when it collapsed the ranked_list close. [observed] The Goldman `$DKS` call was never surfaced by DRAFT or final. Net result: **zero** of the two dedicated high-conviction single-name calls survive in the posted pulse — and the one that did survive DRAFT was cut by EDIT, not by discovery. This is the same EDIT edit that flattened the close (below); one sanding pass took out both the ranked ordering and the single-name evidence.
+
+## Workflow stage critique
+
+- **Adjudication:** [observed] 4 dispatched, 4 validated, 0 discarded — the four heaviest themes. No visibility into per-theme JSON quality from the handoff, so cannot assess rubber-stamp vs. engaged; the 4/4 on the top-4 themes is at least plausible, not suspicious.
+- **EDIT:** [observed] Did substantial, real work — grew 7508→9085 chars (+21%), rebuilt RECAP from the `[LIVE PRICE RECAP]` token into live prices + three news bullets, and expanded WHAT TO WATCH with dated/timed FOMC, GDP/PCE, and a mega-cap earnings wall. Not a rubber-stamp. But the same pass committed three defects: (1) [observed] dropped `## _LEANS` entirely (restored deterministically), (2) [observed] flattened the AI-infra ranked_list close, (3) [observed] cut the `$AVGO` single-name thread. [inferred] EDIT treats enumerated/ranked structure and "extra" attributive sentences as verbosity and sands them, while it preserves the punchy FOMC if/then close — the falsifiable_window close survived intact. The through-line: EDIT keeps what reads as tight prose and removes what reads as a list, regardless of whether the list is a designed close type.
+- **SCRUB:** [observed] Engaged correctly — 9085→8936 chars, 7→2 lint issues, and the edits landed on lint-flagged material (deduped "145 basis points, about 1.45 percentage points" to just "1.45 percentage points over Treasuries"; "broad tape"→"broad market"). Not unrelated churn.
+- **LINT:** [observed] The 2 residual `slot-stat-overlap` flags are false positives on coincidental identical numbers with different referents — 35% (KOSPI drawdown vs Goldman eventual-hike odds) and 40% (Oracle gross margin vs Fed hike-odds range). Correctly accepted as must-ship residuals, but this is the same class of lint false positive as yesterday's `top-3-theme-missing` — the rules match on surface tokens, not meaning.
+
+## Voice + structure
+[observed] Clean — no banned phrases ("it's worth noting", "notably", "Meanwhile,", "Furthermore," all absent), no structural em-dashes, no summary wrap-up. Cashtag discipline is correct: ETFs/US names get `$` ($SPY, $QQQ, $SOXX, $ASML, $ORCL, $AMZN, $TLT, $BNO, $GLD, $BTC); foreign and spot names stay bare (Samsung, Kioxia, KOSPI, CXMT, YMTC, Intel, Micron, Alphabet, Oracle). [observed] No misframing: AI-demand is presented bullish (corpus 2 support / 0 skeptical), semi-correction bearish (0 support / 2 skeptical) — both consistent with stance counts. [inferred] The one structural cost is variety: with the AI-infra ranked_list flattened, three of four theme closes are now the same shape (a bare instrument lean), and only the FOMC if/then breaks the pattern. The differentiated close types exist precisely to prevent every theme reading the same — EDIT is undoing that design.
+
+## Accuracy + sourcing
+[observed] No fabrication or manufactured consensus detected. Cross-bank claims are named ("JPMorgan and Goldman Sachs both expect no change"). RECAP live figures ($SPY -0.30%, $QQQ -1.81%, $BTC <$63k, $BNO -1.31%, $GLD -1.45%) are live-data-sourced and appropriate to RECAP only. Corpus numbers trace cleanly and match DRAFT: SOX 11,200 / RSI 39, BTIG 22%/23% downside, 98th/86th positioning percentiles, CXMT +466%, DRAM +16% after +56%, B200 +7.3% / H100 -1.1%, core CPI -0.02%, Goldman 35% from 25%. [inferred] Minor: DRAFT's RECAP "KOSPI down 11% in a session and 35% from its June high" lost the "11% in a session" in the final — a softening, not an error. The Nvidia $500B/10GW OpenAI-Ohio and $250B backstop items are RECAP news framed as "Reports that," which is the right hedge for unverifiable wire color.
+
+## Reader experience — the daily-workflow test
+
+- **Marginal value:** [inferred] The moat mostly holds. The lead theme assembles JPM positioning + BTIG technical levels + DB discretionary-reset into a single bull/bear/verdict a Twitter thread wouldn't stitch, and states a verdict (stay short until 11,200 reclaims). That is cross-bank synthesis a single note couldn't substitute for.
+- **Actionability:** [observed] 4 of 4 themes close on an executable instrument lean — Short $SOXX (with 11,200 / 50-day invalidation), Fade $ASML, Long $ORCL / $AMZN calls, Long $TLT (if/then). Strong; no "watch closely" closes.
+- **Trust:** [inferred] High. No invented levels or dates; live data is confined to RECAP; single-bank calls are attributed as single-bank.
+- **Education:** [observed] Teaches mechanism well — RSI, 200-day trend line, DUV lithography, core CPI, ROIC, hyperscaler credit-spread mechanism all explained in-line. [inferred] Slightly parenthetical-heavy in spots, but appropriate for the stated non-professional audience.
+- **Distinctive voice:** [inferred] Present but not yet a signature. "The bull case is not weak" and "the line between a pullback and a break" have a voice; there is no recurring named framing a reader would anticipate day to day.
+- **Skeptic test:** [observed] The lead theme explicitly argues the bull case (discretionary reset to 17th percentile, washed-out momentum, reasonable valuations) and rebuts it (systematic books still crowded, damage takes months) — real co
+
+[... truncated for prompt size ...]
+```
+
+PRODUCE THE QC REVIEW IN EXACTLY THIS FORMAT (markdown):
+
+# QC Review — 2026-07-29T14-07-12Z
+
+## TL;DR
+ONE sentence. The single most important finding from this run. If the Publish-readiness check below flagged a leak, that IS the most important finding — surface it here.
+
+## Publish-readiness check
+
+Before the deeper review, do a deterministic scan on the FINAL POSTED MARKDOWN block above:
+
+1. **Internal-notes leak.** Search the FINAL POSTED MARKDOWN for any H2 header beginning with `## _` (underscore-prefixed — e.g. `## _EDIT NOTES`, `## _DRAFT NOTES`). These sections are editorial-decision metadata that `scripts/pulse_strip_internal_notes.py` (called from synthesis-routine.md STEP 5.8) was supposed to strip. **If ANY `## _` header is present in the final, this is a P0 publish failure** — the pulse shipped with internal notes visible to readers. Report as `[observed] LEAKED: <header name>` and add a Suggested change pointing at the strip step. If clean, report `[observed] No internal-notes sections in final. Clean.` **EXCEPTION — `## _LEANS` is NOT a leak.** It is the TRADE BOARD's structural source, intentionally preserved through the routine's strip and removed by the bridge worker at post-time (after the board is built). If you are reviewing a pre-bridge artifact (committed pulse), `## _LEANS` being present is expected and correct — do NOT flag it. Only flag `## _LEANS` if it appears in the ACTUAL Discord-posted / archived pulse (the bridge failed to strip it).
+
+2. **Frontmatter leak.** Confirm the final does NOT contain raw frontmatter markers (`---` at line 1 followed by `pdf_count:` etc.) — those are committed as a separate concern by STEP 6 and should not appear in the body. Report `[observed] No frontmatter leak.` or `[observed] LEAKED: frontmatter visible in body`.
+
+3. **TODO/placeholder leak.** Scan for unfilled placeholders like `[LIVE PRICE RECAP]`, `[TODO]`, `[FILL IN]`, or `<placeholder>` markers that EDIT was supposed to replace. Report `[observed]` either way.
+
+This section is mechanical — three yes/no checks. Two-line section unless something leaked. If anything leaked, treat it as the top-priority finding for both TL;DR and Suggested changes.
+
+## Coverage audit
+Did the final pulse include all heavyweight themes from theme_coverage? Were any heavy clusters under-weighted?
+
+For DISCOVERED themes specifically (look at discovery_audit.promoted): was each one surfaced in the final? If not, was that the right call (the discovered topic wasn't actually actionable for traders) or a miss (the topic was real and the writer dropped it)?
+
+For NEAR-MISS clusters (discovery_audit.near_miss): are any of these worth surfacing despite being filtered out? If yes, they are signals that thresholds need tuning.
+
+## Workflow stage critique
+Per-stage assessment, but ONLY for stages that did something noteworthy. Skip stages that just executed cleanly. Aim for fewer, sharper points over generic per-stage commentary.
+
+For sub-agent stages (Adjudication, EDIT, SCRUB), use the SUB-AGENT HANDOFFS block above to assess: did the sub-agent get the right inputs? Did it actually engage with them (meaningful output delta) or rubber-stamp (~0 delta)? Did the prompt size suggest substitutions resolved correctly? Use the pre-stage / post-stage diff to spot regressions — if EDIT shrank the markdown by 50%, did it cut filler or did it drop a theme? If SCRUB rewrote 10 lines, were those the lint-flagged sentences or unrelated?
+
+- Phase A clustering:
+- Phase B discovery:
+- Adjudication:
+- DRAFT:
+- STITCH:
+- EDIT:
+- LINT:
+- SCRUB:
+
+## Voice + structure
+Tells that slipped through? Theme-coherence breaks (a sentence in theme X that's actually about theme Y)? Misframings (theme presented as bull-consensus when corpus is actually split)? Use of banned phrases the lint should have caught?
+
+## Accuracy + sourcing
+Numbers in the final that don't trace back to corpus or live data? RECAP facts that misattribute or invent? Single-bank claims presented as consensus? Forecasts dressed up as actuals?
+
+## Reader experience — the daily-workflow test
+
+**The ultimate question:** would a self-directed options/crypto trader read THIS pulse EVERY DAY before market open as part of their trading routine? Not "is it well-built" — not "would they read it weekly" — would they make it a daily habit.
+
+Daily is a much harder bar than weekly. Daily means:
+- Fits inside a tight morning attention budget (5-10 min max — they have other reads, futures to check, positions to manage)
+- Delivers fresh value EVERY day, not "this is similar to yesterday's"
+- Reliably high quality — ONE bad pulse breaks the habit, and habits don't recover quickly
+- Earns a slot in a finite morning routine where every minute competes with Bloomberg, broker research, Twitter, CNBC pre-market
+
+Roleplay the reader: a smart trader, reads the WSJ, trades actively, has those 5-10 minutes over coffee before futures heat up. Ask honestly:
+
+- **Marginal value** — what's in this pulse that the trader couldn't get from Twitter, CNBC, Bankless, Almost Daily Grant's, or their own broker's morning research? Cross-bank synthesis is the supposed moat — did this pulse actually deliver it, with named bank-vs-bank disagreement and specific data points? If a single bank's call could substitute for what this pulse said, the moat broke.
+
+- **Actionability — what would the trader DO?** Per theme: does the close give a concrete instrument lean a trader could execute today, or just describe a market? "Watch closely" is failure. "Long $TLT into Tuesday's CPI" is success. Theme-by-theme, count the actionable closes vs the descriptive ones.
+
+- **Trust** — would the trader act on these calls, or hedge with "I should verify this myself"? Specifically: any claims that pattern-match to fabricated dates, invented price levels, manufactured consensus ("multiple banks suggest" without naming), or numbers that don't trace to corpus + live data? Each soft spot erodes daily-product trust.
+
+- **Patience and education** — does the writing teach mechanism (explain WHY a market is moving) or telegraph short-and-cutty (just state the call)? A trader who reads this for 6 months should be smarter for it. If every theme reads the same — punchline + bullets + close — the reader stops learning. Variety in the analytical structure is part of the teaching.
+
+- **Distinctive voice** — does this pulse sound like one specific analyst's view, or like generic newsletter-speak? AI tells, banker filler ("the binding constraint", "the cleanest read", "the mechanism is straightforward"), corpus meta-narration ("research suggests", "analysts are split") all flatten voice. The pulse should sound like a person you'd follow, not a feed you'd skim.
+
+- **Skeptic test** — where would a smart trader disagree with this pulse? Are those points addressed in the bull/counter/defense structure, or did the pulse paper over them? A pulse that doesn't acknowledge real counter-cases reads as marketing, not analysis.
+
+- **Time-per-theme** — give a 5-min skim time budget. Could the trader walk away with 2-3 specific actionable takes after 5 min, or would they need 15-20 min to extract value? If the pulse needs 15 min of close reading to get the lift, it's not a daily product — it's a weekly research note.
+
+### The miss-it test (the real bar)
+
+**The actual product test isn't "would they read it" — it's "would a trader notice and wonder where it is if this pulse didn't come out tomorrow?"** Most newsletters fail this. Most AI-generated content fails it by design (it's forgettable, hedged, both-sided, can be skipped without losing anything). The bar is: would the trader ACTIVELY MISS this absence — open Discord asking "where's the pulse?" — or would they not notice for days?
+
+What makes content forgettable AI slop (the failure mode to avoid):
+- **Hedged claims with no call.** "Markets could go either way." "Watch closely." "The setup is constructive." Calls that cannot be wrong because they don't commit.
+- **Both-sided framings without a verdict.** Pulse says "bulls argue X, bears argue Y" and stops. The reader doesn't learn what the analyst thinks — just that there's disagreement they could've inferred from any wire.
+- **Generic newsletter-speak.** "It's worth noting that markets are volatile." "Investors are watching closely." "Multiple signals are flashing." Could be from any of 50 newsletters.
+- **Templates that read the same every day.** Punchline + bullets + close, identical structure every theme, identical verbal tics. Reader stops learning by week 2.
+- **Calls that can't be wrong.** No invalidation triggers, no specific time horizons, no falsifiable predictions. Six months in, no track record possible.
+- **No recurring point of view.** No phrase or framing the reader recognizes as "this product's signature." Compare to Hartnett's Flow Show ("Buy humiliation"), Grant's gold tilt, Bankless's crypto-as-rebellion frame. Voice you can name.
+
+What makes content miss-able when absent:
+- **Stakes.** Specific calls with specific instruments and specific time windows. The reader is tracking outcomes alongside the analyst — when CPI prints Tuesday, they want to know how the pulse's $TLT call held.
+- **Distinctive perspective.** A theme framing the reader couldn't have gotten from a Twitter thread or CNBC pre-market. Specifically: cross-bank synthesis with bank-vs-bank named disagreement is the actual moat. If a single bank's note could substitute for what the pulse said, the moat broke.
+- **Recurring patterns the reader looks forward to.** A signature framing or recurring section the reader anticipates. Could be: a daily "what the cross-bank consensus is wrong about" feature. A "sleeper trade of the day" close. The Tier-1-vs-Tier-2 disagreement as a habitual structure. Not template, signature.
+- **Education that compounds.** Mechanism teaching at consistent depth, building the reader's mental models week over week. By month 6 the reader is materially smarter about how research desks frame trades.
+- **Personality.** A view the reader can disagree with productively. Generic neutral-aggregator content provokes nothing. A pulse that takes positions and explains its reasoning gives the reader something to argue with — and engagement-via-disagreement is also retention.
+
+**Verdict:** ONE sentence answering: would a trader actively miss this pulse if it didn't come out tomorrow — open Discord asking where it is — or would they not notice for days? Then justify in 2-3 sentences naming the SPECIFIC reason. Be honest. The right answer is often "not yet" — most days the gap between "made it past lint" and "would be missed if absent" is conviction in the calls, distinctive framings the reader recognizes, and falsifiable specifics that build a track record over time.
+
+Generic praise here ("a quality product") fails this section. So does "yes, would be missed" without naming what specifically would be missed. The useful version is "yes / no, here's the specific call or framing this pulse made that would be missed (or that's currently missing and would have to be added for the pulse to earn the slot)."
+
+## Day-over-day comparison
+
+You have the PREVIOUS scheduled pulse's final markdown AND its QC review above. Compare this pulse against that one and assess **whether it improved**. This is the loop-closing section — it's how we know the prompt changes are actually landing, not just being made.
+
+- **Did yesterday's flagged issues get fixed?** Walk the previous QC review's "Suggested changes for next run" and "Signals worth tracking" lists. For each one: did this pulse fix it, partially fix it, or repeat it? Be specific — "yesterday's QC flagged that EDIT dropped the RECAP positioning color; this pulse's RECAP DOES carry retail-flow + dealer-gamma color → fixed" or "yesterday flagged the identical-template-across-themes problem; this pulse still has all three themes in the same shape → not fixed, recurring."
+- **Did any issue regress?** Something that was fine yesterday and broke today.
+- **Theme continuity.** Which themes carried over from yesterday's pulse? For ANY carried-over theme, the question is whether today's version ADVANCED the story — a new data point, a new bank's angle, a new sub-thread — or just restated yesterday's framing in different words. A theme that leads two days running and reads the same both days is a freshness problem. A theme that leads two days running but with a genuinely new angle each day is fine. Audit each carry-over on its own evidence in today's corpus — don't single out specific themes as "the recurring one." Every theme has to earn its place each day on the strength of the day's evidence.
+- **Writing trend.** Same density? Tighter? Looser? More distinctive voice or more generic? More actionable closes or fewer? Did the verdict on the miss-it test move toward "yes" or away from it vs yesterday?
+- **Net call.** ONE sentence: is this pulse BETTER than yesterday's, ABOUT THE SAME, or WORSE — and the single biggest reason. If "about the same," that's a signal too — it means the changes between runs didn't move the needle on what matters.
+
+If there's no previous scheduled pulse (first run, or only test fires preceded this one), say so in one line and skip the rest of this section.
+
+## Suggested changes for next run
+
+Specific, actionable. Each entry must include **four required fields** so a reader can judge feasibility and information cost before committing — vague answers are rejected. Format:
+
+```
+- **{{file_path}}**: {{what to change}}.
+  - Reason: {{evidence from this run, [observed] or [inferred] tagged}}.
+  - Scope: {{specific count — "~30 lines in one function" / "~80 lines across 2 files" / "200+ lines spanning a refactor". "small/medium/large" alone is rejected}}.
+  - Information or capability lost: {{what current behavior the change would remove. If none, write "none — purely additive". If "none" is unjustified, the change is over-scoped}}.
+  - When this would be the wrong call: {{what would have to be true for this fix to be incorrect or premature. If you can't think of anything, the recommendation isn't load-bearing enough to ship}}.
+```
+
+Example of right-shaped entry:
+
+```
+- **github_bridge/jobs.py:850**: gate SCRUB dispatch on `lint_issues_count > 0`.
+  - Reason: [observed] today's run dispatched SCRUB with 0 hard lint issues and produced a +1.6% character delta (cosmetic). Routine prose said "if hard == 0, skip" but the Claude session ran it anyway.
+  - Scope: ~10 lines in publish_qc_dashboards_job sibling area, no API surface changes.
+  - Information or capability lost: none — purely an early-exit on the no-op case.
+  - When this would be the wrong call: if SCRUB ever needed to run for reasons orthogonal to lint (currently it doesn't, but adding any such reason later would require this gate to relax).
+```
+
+The four fields together are an anti-over-scope guard: they force the QC reviewer to commit to feasibility and acknowledge tradeoffs. Recommendations that can't fill in "information lost" or "when this would be wrong" are probably patches on symptoms or refactors-for-tidiness rather than fixes.
+
+## Calibration tagging (binding for all diagnostic claims in this review)
+
+Every diagnostic claim — anywhere in this review, not just the recommendations — must be explicitly tagged as one of:
+
+- **[observed]** — directly visible in the artifacts: lint report, diff stats, audit JSON, sub-agent prompt sizes, character counts, archive listings. The claim says what's in the data.
+- **[inferred]** — reasoning from observed facts to a likely cause. Says what the data probably means, given the architecture.
+- **[speculative]** — plausible explanation that can't be confirmed from the artifacts available. Says what might be true if the architecture worked a certain way.
+
+The tag goes inline with the claim. Example: *"[observed] adjudication validated 8 themes but DRAFT shipped 3 INSIGHTS. [inferred] the synthesizer prompt rewards density-within-a-theme over theme-breadth. [speculative] DRAFT may be ignoring the theme-count floor instruction; verify in next run's adjudicated_themes_list substitution."*
+
+This prevents the failure mode where a per-run QC says *"the recommendation was not implemented or it was implemented and didn't catch this case"* — a [speculative] claim that reads as a finding. With the tag, the reader sees the uncertainty and acts accordingly.
+
+**Self-consistency check (binding):** before finalizing, walk every [inferred] claim. If any [inferred] claim contradicts an [observed] fact in another section of this review, resolve the contradiction in the [inferred] section itself — don't leave the contradiction for the reader to discover three sections later. The 2026-05-14T20-01-08Z QC failed this: Phase B section said "eaten at the cluster layer" (which was [inferred]), but Adjudication section said "trump-xi, Warsh, agentic AI WERE in the adjudicated set" (which was [observed]). The [inferred] should have been corrected in place.
+
+## Signals worth tracking
+Things to watch in the next 1-3 runs that THIS run hinted at but isn't yet conclusive. Empty list is OK if nothing showed up.
+
+For the next run specifically (post-Phase-2-ship, 2026-05-15 onward), explicitly report on **these two metrics** separately — do not collapse them:
+
+1. **Two-tier merge cap firing.** Check `discovery_audit.two_tier_cap_blocked` (now committed at `pulse-output/qc-inputs/<ts>.adjudication-inputs.json` adjacent artifacts). Report: total cap-blocked merges, the canonical(s) that hit the cap, and which Phase A themes stayed separate as a result. A cap that never fires across multiple runs means it's not load-bearing; a cap that fires repeatedly on the same canonical means the two-tier merge is over-reaching there specifically.
+
+2. **DRAFT validated-to-drafted ratio.** Adjudication validated N themes; DRAFT shipped M INSIGHTS sections. Report N/M explicitly with both numbers. The THEME-COUNT FLOOR rule in DRAFT_USER says when N≥6, M≥4 mandatory; when N≥8, M≥5. Track compliance. A ratio of 8:3 (today's test fire) is the failure mode this fix prevents; track whether it persists.
+
+These two metrics fix DIFFERENT bugs; don't conflate. Friday's QC could show 4+ INSIGHTS themes because the merge cap preserved more candidates AND/OR because the DRAFT floor forced it. Reporting them separately is what makes it possible to attribute Friday's results to specific fixes.
+
+---
+
+Return the markdown verbatim — no preamble, no JSON wrapper, no commentary outside the review.
