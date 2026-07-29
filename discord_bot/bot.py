@@ -2091,6 +2091,23 @@ def _build_price_history_tool():
     )
 
 
+def _json_safe(obj):
+    """Recursively replace non-finite floats (NaN / ±Infinity) with None.
+
+    Bare NaN is invalid JSON; the Gemini API rejects the whole request
+    with 400 INVALID_ARGUMENT when a tool result carries one. Applied to
+    every tool result in the loop so a single bad float can't kill an
+    otherwise good answer."""
+    import math as _math
+    if isinstance(obj, float):
+        return None if (_math.isnan(obj) or _math.isinf(obj)) else obj
+    if isinstance(obj, dict):
+        return {k: _json_safe(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_json_safe(v) for v in obj]
+    return obj
+
+
 _QUERY_ROW_CAP = 500
 _QUERY_TIMEOUT_S = 8.0
 _QUERY_TEXT_CLAMP = 400
@@ -5880,6 +5897,15 @@ async def _answer_with_gemini(
                         ),
                         "content": _res_str[:_TOOL_RESULT_CHAR_CAP],
                     }
+                # Scrub non-finite floats before they reach the API.
+                # NaN/Infinity are NOT valid JSON — one NaN anywhere in a
+                # tool result 400s the ENTIRE request ("Invalid JSON
+                # payload... Unexpected token NaN"), which the user sees
+                # as "something broke the model" (2026-07-29,
+                # lookup_price_history on a non-trading day). Fixed at
+                # the executor too; this is the loop-wide backstop so no
+                # future tool can reintroduce it.
+                result = _json_safe(result)
                 tool_response_parts.append(
                     types.Part.from_function_response(
                         name=fc.name,

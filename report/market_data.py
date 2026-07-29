@@ -243,16 +243,35 @@ def fetch_price_history(
         hist = yf.Ticker(symbol).history(**kwargs)
         if hist is None or len(hist) == 0:
             return None
+        import math as _math
+
         out: list[dict] = []
         for idx, row in hist.iterrows():
             try:
+                # yfinance yields NaN on non-trading days and for an
+                # incomplete current bar. json.dumps writes that as bare
+                # `NaN`, which is INVALID JSON — the Gemini API rejects
+                # the whole request with 400 INVALID_ARGUMENT and the
+                # user sees "something broke the model" (2026-07-29).
+                # Drop any bar that isn't fully real.
+                o = float(row["Open"])
+                h = float(row["High"])
+                lo = float(row["Low"])
+                c = float(row["Close"])
+                if any(_math.isnan(v) or _math.isinf(v)
+                       for v in (o, h, lo, c)):
+                    continue
+                try:
+                    vol = int(row.get("Volume") or 0)
+                except Exception:
+                    vol = 0
                 out.append({
                     "date": str(idx)[:10],
-                    "open": round(float(row["Open"]), 4),
-                    "high": round(float(row["High"]), 4),
-                    "low": round(float(row["Low"]), 4),
-                    "close": round(float(row["Close"]), 4),
-                    "volume": int(row.get("Volume") or 0),
+                    "open": round(o, 4),
+                    "high": round(h, 4),
+                    "low": round(lo, 4),
+                    "close": round(c, 4),
+                    "volume": vol,
                 })
             except Exception:
                 continue
