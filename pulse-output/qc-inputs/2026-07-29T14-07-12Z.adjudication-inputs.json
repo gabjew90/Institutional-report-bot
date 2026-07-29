@@ -1,0 +1,4285 @@
+{
+ "ai capex excess": {
+  "theme": "ai capex excess",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 1,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "JPMorgan",
+    "theme": "AI infrastructure spending",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "AI infrastructure spending is accelerating, driving demand across product and foundry businesses.",
+    "primary_instruments": [
+     "INTC",
+     "GOOGL",
+     "MSFT",
+     "AMZN"
+    ],
+    "vs_consensus": "",
+    "evidence": "demand continues to outpace supply across both its product and foundry businesses"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "AI capex excess",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The bond market is no longer willing to fund negative-ROI AI capex, which will force a deleveraging of risk assets.",
+    "primary_instruments": [],
+    "vs_consensus": "contrarian",
+    "evidence": "bondholders are no longer funding the AI party"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "ai capex excess",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-related capex cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-related capex cycle"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai capex excess",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-related capex",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-related capex"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "ai capex excess",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Competitive capex spree",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Competitive capex spree"
+   },
+   {
+    "source": "ZeroHedge",
+    "theme": "ai capex excess",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI capex sustainability",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI capex sustainability"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "ai capex excess",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI investment capital spending shift",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI investment capital spending shift"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai capex excess",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI investment ROIC concerns",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI investment ROIC concerns"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "ai capex excess",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI capex and ROI",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI capex and ROI"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Alphabet FY26 capex guidance",
+    "context": "Raised by $15bn at the midpoint."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$5.9bn",
+    "metric": "Alphabet 2Q negative FCF",
+    "context": "Reported in 2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$331bn",
+    "metric": "YTD TMT supply",
+    "context": "YTD 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "82%",
+    "metric": "Alphabet Cloud growth",
+    "context": "2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$750bn",
+    "metric": "OpenAI projected computing power spending",
+    "context": "Through 2030, up from $600bn."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7%",
+    "metric": "ASML share price decline",
+    "context": "Reaction to reports of Chinese DUV tool production."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5%",
+    "metric": "Vodafone share price rally",
+    "context": "Following headline results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.5%",
+    "metric": "SAP share price rally",
+    "context": "Extension of Friday's gains."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "27.5%",
+    "metric": "ASMI FY26 revenue growth forecast",
+    "context": "Versus Bloomberg consensus of 25.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "87.8%",
+    "metric": "SOX Index Q2 performance",
+    "context": "Best quarterly performance in lifetime, 26Q2."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20.2%",
+    "metric": "SOX Index peak-to-trough decline",
+    "context": "June 22 to July 17."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "60%",
+    "metric": "Weekly token share of Chinese models used by US firms",
+    "context": "Rising trend on OpenRouter."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20%",
+    "metric": "Organic inflows for thematic themes",
+    "context": "June 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Probability of Hawkish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "28%",
+    "metric": "Probability of Dovish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Probability of Rate Hike",
+    "context": "Desk view vs market pricing."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.8%",
+    "metric": "Options-implied move",
+    "context": "For July 29 expiry, as of 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.1%",
+    "metric": "Options-implied move",
+    "context": "Recent CPI event average."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "5.2%",
+    "metric": "30-year Treasury yield",
+    "context": "Highest since June 2007."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "3%",
+    "metric": "30-year real yield",
+    "context": "Highest since November 2008."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "21%",
+    "metric": "Blue collar semi sector decline",
+    "context": "Decline from June peak."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "38%",
+    "metric": "Implied probability of July 29th FOMC hike",
+    "context": "Market pricing as of July 2026."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "$2tn",
+    "metric": "US government annual deficit",
+    "context": "Current fiscal year."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A volume",
+    "context": "H1 2026, +44% y/y"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap positioning intelligence"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "98th %-tile",
+    "metric": "Global Semis L/S positioning",
+    "context": "Crowding risk indicator"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A activity",
+    "context": "H1 2026, +44% y/y."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap, indicates light positioning."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Alphabet FY26 capex guidance",
+    "context": "Raised by $15bn at the midpoint."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$5.9bn",
+    "metric": "Alphabet 2Q negative FCF",
+    "context": "Reported in 2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$331bn",
+    "metric": "YTD TMT supply",
+    "context": "YTD 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "82%",
+    "metric": "Alphabet Cloud growth",
+    "context": "2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$750bn",
+    "metric": "OpenAI projected computing power spending",
+    "context": "Through 2030, up from $600bn."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7%",
+    "metric": "ASML share price decline",
+    "context": "Reaction to reports of Chinese DUV tool production."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5%",
+    "metric": "Vodafone share price rally",
+    "context": "Following headline results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.5%",
+    "metric": "SAP share price rally",
+    "context": "Extension of Friday's gains."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "27.5%",
+    "metric": "ASMI FY26 revenue growth forecast",
+    "context": "Versus Bloomberg consensus of 25.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "87.8%",
+    "metric": "SOX Index Q2 performance",
+    "context": "Best quarterly performance in lifetime, 26Q2."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20.2%",
+    "metric": "SOX Index peak-to-trough decline",
+    "context": "June 22 to July 17."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "60%",
+    "metric": "Weekly token share of Chinese models used by US firms",
+    "context": "Rising trend on OpenRouter."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20%",
+    "metric": "Organic inflows for thematic themes",
+    "context": "June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.17",
+    "metric": "SGD/MYR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.8%",
+    "metric": "TRY/NGN/KZT basket return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-18.8bp",
+    "metric": "3y SOFR swap spread",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.4%",
+    "metric": "USD/EGP return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0bp",
+    "metric": "5y Receivers on 3m 2s5s10s Receiver Fly",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.29",
+    "metric": "1y forward 2s10s GBP OIS steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.85",
+    "metric": "THB/INR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.41%",
+    "metric": "INR 30y bond yield",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "73bp",
+    "metric": "2s10s NZD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "52bp",
+    "metric": "2s10s CAD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2107",
+    "metric": "AUD/NZD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99",
+    "metric": "NIFTY Banks vs. NIFTY Pharma ratio",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.3289",
+    "metric": "GBP/USD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$20",
+    "metric": "2027 EPS target",
+    "context": "Celestica (CLS) 2Q26 update."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.25B",
+    "metric": "Acquisition cost",
+    "context": "Expand Energy Corp. (EXE) acquisition of Twin Eagle."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4%",
+    "metric": "FFO/sh beat",
+    "context": "Merlin Properties Socimi SA (MRL.MC) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5%",
+    "metric": "Adjusted EPS vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9%",
+    "metric": "NTA vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">\u00a3500mn",
+    "metric": "Bid value",
+    "context": "Landsec (LAND.L) potential offer for Metrocentre per press report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4x",
+    "metric": "Dividend growth potential",
+    "context": "IGO Ltd. (IGO.AX) FY27 Greenbushes dividends."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">400kozpa",
+    "metric": "Expansion target",
+    "context": "Capricorn Metals Ltd. (CMM.AX) multi-year outlook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6.7%",
+    "metric": "1H27 revenue margin guidance",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$90m",
+    "metric": "Buyback announcement",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Persian Gulf oil flows as % of pre-war levels",
+    "context": "7-day moving average, down from 80% in late June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.7mb/d",
+    "metric": "Estimated hit to oil flows from Persian Gulf",
+    "context": "Doubled since early July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.3B",
+    "metric": "Foreigner outflows from KOSPI + KOSDAQ",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.70B",
+    "metric": "FINIs net sold in Taiwan equities",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.1%",
+    "metric": "Semiconductor sector average decline",
+    "context": "5-day period ending 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2027"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7.2%",
+    "metric": "Chinese Semiconductors (GSXACSEM) decline",
+    "context": "28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.6 Z-score",
+    "metric": "1-day long flow in global Info Tech",
+    "context": "Largest long selling in global Info Tech on PB book since Sep '24, as of 7/24/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">30%",
+    "metric": "US AI pair drawdown",
+    "context": "Largest drawdown on record as of 7/28/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-11.55%",
+    "metric": "KOSPI 2 daily return",
+    "context": "4th worst session on record, overnight 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Probability of Hawkish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "28%",
+    "metric": "Probability of Dovish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Probability of Rate Hike",
+    "context": "Desk view vs market pricing."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.8%",
+    "metric": "Options-implied move",
+    "context": "For July 29 expiry, as of 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.1%",
+    "metric": "Options-implied move",
+    "context": "Recent CPI event average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$30",
+    "metric": "Crude oil price move",
+    "context": "Move in crude prices from early July lows."
+   },
+   {
+    "source_bank": "ZeroHedge",
+    "figure": "40%",
+    "metric": "Kioxia stock retracement from recent peak",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "ZeroHedge",
+    "figure": "10%",
+    "metric": "Kioxia daily drop frequency",
+    "context": "Occurred five times in July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "SPX market cap reporting earnings",
+    "context": "This week"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.7%",
+    "metric": "SPX implied move",
+    "context": "Through Friday PM"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Odds of Fed hike",
+    "context": "As of Friday"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6th percentile",
+    "metric": "US fundamental L/S gross exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "22nd percentile",
+    "metric": "US fundamental L/S net exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$120bn",
+    "metric": "CTA long position in global equities",
+    "context": "49th percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13%",
+    "metric": "3m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "17.5%",
+    "metric": "12m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$100",
+    "metric": "Oil price",
+    "context": "Current hovering level near $100"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "30%-35%",
+    "metric": "Probability of Fed rate hike",
+    "context": "July 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "5-year high",
+    "metric": "Macro hedge fund sensitivity to S&P 500",
+    "context": "As of week ending July 24, 2026"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "2%-3%",
+    "metric": "Drawdown from recent highs",
+    "context": "Market performance since early June 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "470%",
+    "metric": "CXMT IPO debut surge",
+    "context": "STAR Market debut, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$488 billion",
+    "metric": "CXMT implied valuation",
+    "context": "At closing price of 49 yuan, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "212x",
+    "metric": "Retail IPO oversubscription",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.07 trillion yuan",
+    "metric": "Total retail order book value",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "66.6 billion yuan",
+    "metric": "Total capital raised",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Global DRAM revenue share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Global capacity ship share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-160 bps",
+    "metric": "Nasdaq weekly performance",
+    "context": "Weekly performance as of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~8%",
+    "metric": "Nasdaq distance from June highs",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11%",
+    "metric": "Nasdaq YTD performance",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~21.8x",
+    "metric": "Nasdaq forward P/E",
+    "context": "Compared to 10-year average of ~23.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11.25%",
+    "metric": "AT&T weekly outperformance vs S&P 500",
+    "context": "Biggest weekly outperformance since 2001"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+22%",
+    "metric": "AAPL July outperformance vs Nasdaq",
+    "context": "Biggest monthly outperformance since 2006"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Fundamental L/S hedge fund performance",
+    "context": "July 2026 performance, second worst since 2023."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250B",
+    "metric": "NVDA financial guarantee for OpenAI data center",
+    "context": "Reported by WSJ."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$350B",
+    "metric": "Potential additional chip financing",
+    "context": "Potential additional financing for OpenAI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5T+",
+    "metric": "Unfunded commitments of frontier AI firms",
+    "context": "Total unfunded commitments."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "21.8x",
+    "metric": "NDX forward P/E",
+    "context": "Current valuation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.6x",
+    "metric": "NDX 10-year average forward P/E",
+    "context": "Historical average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50 bp",
+    "metric": "Two standard deviation threshold for 10Y yields",
+    "context": "One-month increase threshold."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A volume",
+    "context": "H1 2026, +44% y/y"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap positioning intelligence"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "98th %-tile",
+    "metric": "Global Semis L/S positioning",
+    "context": "Crowding risk indicator"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A activity",
+    "context": "H1 2026, +44% y/y."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap, indicates light positioning."
+   }
+  ]
+ },
+ "hyperscaler credit vs equity": {
+  "theme": "hyperscaler credit vs equity",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "hyperscaler credit vs equity",
+    "stance": "neutral",
+    "conviction": "medium",
+    "key_argument": "The manner of FCF improvement (capex reduction vs income growth) will drive relative value between credit and equity.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The path ahead for credit likely hinges on some improvement in forward estimates of free cash flow generation."
+   },
+   {
+    "source": "BTIG",
+    "theme": "hyperscaler credit vs equity",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler capex efficiency",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler capex efficiency"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "hyperscaler credit vs equity",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler debt issuance",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler debt issuance"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "hyperscaler credit vs equity",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler funding sustainability",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler funding sustainability"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "hyperscaler credit vs equity",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler debt risk",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler debt risk"
+   },
+   {
+    "source": "ZeroHedge",
+    "theme": "hyperscaler credit vs equity",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler credit spread widening",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler credit spread widening"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.17",
+    "metric": "SGD/MYR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.8%",
+    "metric": "TRY/NGN/KZT basket return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-18.8bp",
+    "metric": "3y SOFR swap spread",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.4%",
+    "metric": "USD/EGP return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0bp",
+    "metric": "5y Receivers on 3m 2s5s10s Receiver Fly",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.29",
+    "metric": "1y forward 2s10s GBP OIS steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.85",
+    "metric": "THB/INR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.41%",
+    "metric": "INR 30y bond yield",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "73bp",
+    "metric": "2s10s NZD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "52bp",
+    "metric": "2s10s CAD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2107",
+    "metric": "AUD/NZD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99",
+    "metric": "NIFTY Banks vs. NIFTY Pharma ratio",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.3289",
+    "metric": "GBP/USD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$20",
+    "metric": "2027 EPS target",
+    "context": "Celestica (CLS) 2Q26 update."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.25B",
+    "metric": "Acquisition cost",
+    "context": "Expand Energy Corp. (EXE) acquisition of Twin Eagle."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4%",
+    "metric": "FFO/sh beat",
+    "context": "Merlin Properties Socimi SA (MRL.MC) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5%",
+    "metric": "Adjusted EPS vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9%",
+    "metric": "NTA vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">\u00a3500mn",
+    "metric": "Bid value",
+    "context": "Landsec (LAND.L) potential offer for Metrocentre per press report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4x",
+    "metric": "Dividend growth potential",
+    "context": "IGO Ltd. (IGO.AX) FY27 Greenbushes dividends."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">400kozpa",
+    "metric": "Expansion target",
+    "context": "Capricorn Metals Ltd. (CMM.AX) multi-year outlook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6.7%",
+    "metric": "1H27 revenue margin guidance",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$90m",
+    "metric": "Buyback announcement",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Persian Gulf oil flows as % of pre-war levels",
+    "context": "7-day moving average, down from 80% in late June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.7mb/d",
+    "metric": "Estimated hit to oil flows from Persian Gulf",
+    "context": "Doubled since early July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.3B",
+    "metric": "Foreigner outflows from KOSPI + KOSDAQ",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.70B",
+    "metric": "FINIs net sold in Taiwan equities",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.1%",
+    "metric": "Semiconductor sector average decline",
+    "context": "5-day period ending 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2027"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7.2%",
+    "metric": "Chinese Semiconductors (GSXACSEM) decline",
+    "context": "28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.6 Z-score",
+    "metric": "1-day long flow in global Info Tech",
+    "context": "Largest long selling in global Info Tech on PB book since Sep '24, as of 7/24/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">30%",
+    "metric": "US AI pair drawdown",
+    "context": "Largest drawdown on record as of 7/28/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-11.55%",
+    "metric": "KOSPI 2 daily return",
+    "context": "4th worst session on record, overnight 7/28/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$30",
+    "metric": "Crude oil price move",
+    "context": "Move in crude prices from early July lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "SPX market cap reporting earnings",
+    "context": "This week"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.7%",
+    "metric": "SPX implied move",
+    "context": "Through Friday PM"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Odds of Fed hike",
+    "context": "As of Friday"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6th percentile",
+    "metric": "US fundamental L/S gross exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "22nd percentile",
+    "metric": "US fundamental L/S net exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$120bn",
+    "metric": "CTA long position in global equities",
+    "context": "49th percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13%",
+    "metric": "3m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "17.5%",
+    "metric": "12m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "470%",
+    "metric": "CXMT IPO debut surge",
+    "context": "STAR Market debut, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$488 billion",
+    "metric": "CXMT implied valuation",
+    "context": "At closing price of 49 yuan, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "212x",
+    "metric": "Retail IPO oversubscription",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.07 trillion yuan",
+    "metric": "Total retail order book value",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "66.6 billion yuan",
+    "metric": "Total capital raised",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Global DRAM revenue share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Global capacity ship share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-160 bps",
+    "metric": "Nasdaq weekly performance",
+    "context": "Weekly performance as of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~8%",
+    "metric": "Nasdaq distance from June highs",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11%",
+    "metric": "Nasdaq YTD performance",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~21.8x",
+    "metric": "Nasdaq forward P/E",
+    "context": "Compared to 10-year average of ~23.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11.25%",
+    "metric": "AT&T weekly outperformance vs S&P 500",
+    "context": "Biggest weekly outperformance since 2001"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+22%",
+    "metric": "AAPL July outperformance vs Nasdaq",
+    "context": "Biggest monthly outperformance since 2006"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Fundamental L/S hedge fund performance",
+    "context": "July 2026 performance, second worst since 2023."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250B",
+    "metric": "NVDA financial guarantee for OpenAI data center",
+    "context": "Reported by WSJ."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$350B",
+    "metric": "Potential additional chip financing",
+    "context": "Potential additional financing for OpenAI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5T+",
+    "metric": "Unfunded commitments of frontier AI firms",
+    "context": "Total unfunded commitments."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "21.8x",
+    "metric": "NDX forward P/E",
+    "context": "Current valuation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.6x",
+    "metric": "NDX 10-year average forward P/E",
+    "context": "Historical average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50 bp",
+    "metric": "Two standard deviation threshold for 10Y yields",
+    "context": "One-month increase threshold."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Alphabet FY26 capex guidance",
+    "context": "Raised by $15bn at the midpoint."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$5.9bn",
+    "metric": "Alphabet 2Q negative FCF",
+    "context": "Reported in 2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$331bn",
+    "metric": "YTD TMT supply",
+    "context": "YTD 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "82%",
+    "metric": "Alphabet Cloud growth",
+    "context": "2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$750bn",
+    "metric": "OpenAI projected computing power spending",
+    "context": "Through 2030, up from $600bn."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7%",
+    "metric": "ASML share price decline",
+    "context": "Reaction to reports of Chinese DUV tool production."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5%",
+    "metric": "Vodafone share price rally",
+    "context": "Following headline results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.5%",
+    "metric": "SAP share price rally",
+    "context": "Extension of Friday's gains."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "27.5%",
+    "metric": "ASMI FY26 revenue growth forecast",
+    "context": "Versus Bloomberg consensus of 25.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "87.8%",
+    "metric": "SOX Index Q2 performance",
+    "context": "Best quarterly performance in lifetime, 26Q2."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20.2%",
+    "metric": "SOX Index peak-to-trough decline",
+    "context": "June 22 to July 17."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "60%",
+    "metric": "Weekly token share of Chinese models used by US firms",
+    "context": "Rising trend on OpenRouter."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20%",
+    "metric": "Organic inflows for thematic themes",
+    "context": "June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.17",
+    "metric": "SGD/MYR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.8%",
+    "metric": "TRY/NGN/KZT basket return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-18.8bp",
+    "metric": "3y SOFR swap spread",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.4%",
+    "metric": "USD/EGP return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0bp",
+    "metric": "5y Receivers on 3m 2s5s10s Receiver Fly",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.29",
+    "metric": "1y forward 2s10s GBP OIS steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.85",
+    "metric": "THB/INR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.41%",
+    "metric": "INR 30y bond yield",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "73bp",
+    "metric": "2s10s NZD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "52bp",
+    "metric": "2s10s CAD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2107",
+    "metric": "AUD/NZD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99",
+    "metric": "NIFTY Banks vs. NIFTY Pharma ratio",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.3289",
+    "metric": "GBP/USD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$20",
+    "metric": "2027 EPS target",
+    "context": "Celestica (CLS) 2Q26 update."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.25B",
+    "metric": "Acquisition cost",
+    "context": "Expand Energy Corp. (EXE) acquisition of Twin Eagle."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4%",
+    "metric": "FFO/sh beat",
+    "context": "Merlin Properties Socimi SA (MRL.MC) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5%",
+    "metric": "Adjusted EPS vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9%",
+    "metric": "NTA vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">\u00a3500mn",
+    "metric": "Bid value",
+    "context": "Landsec (LAND.L) potential offer for Metrocentre per press report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4x",
+    "metric": "Dividend growth potential",
+    "context": "IGO Ltd. (IGO.AX) FY27 Greenbushes dividends."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">400kozpa",
+    "metric": "Expansion target",
+    "context": "Capricorn Metals Ltd. (CMM.AX) multi-year outlook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6.7%",
+    "metric": "1H27 revenue margin guidance",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$90m",
+    "metric": "Buyback announcement",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Persian Gulf oil flows as % of pre-war levels",
+    "context": "7-day moving average, down from 80% in late June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.7mb/d",
+    "metric": "Estimated hit to oil flows from Persian Gulf",
+    "context": "Doubled since early July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.3B",
+    "metric": "Foreigner outflows from KOSPI + KOSDAQ",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.70B",
+    "metric": "FINIs net sold in Taiwan equities",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.1%",
+    "metric": "Semiconductor sector average decline",
+    "context": "5-day period ending 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2027"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7.2%",
+    "metric": "Chinese Semiconductors (GSXACSEM) decline",
+    "context": "28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.6 Z-score",
+    "metric": "1-day long flow in global Info Tech",
+    "context": "Largest long selling in global Info Tech on PB book since Sep '24, as of 7/24/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">30%",
+    "metric": "US AI pair drawdown",
+    "context": "Largest drawdown on record as of 7/28/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-11.55%",
+    "metric": "KOSPI 2 daily return",
+    "context": "4th worst session on record, overnight 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Probability of Hawkish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "28%",
+    "metric": "Probability of Dovish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Probability of Rate Hike",
+    "context": "Desk view vs market pricing."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.8%",
+    "metric": "Options-implied move",
+    "context": "For July 29 expiry, as of 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.1%",
+    "metric": "Options-implied move",
+    "context": "Recent CPI event average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$30",
+    "metric": "Crude oil price move",
+    "context": "Move in crude prices from early July lows."
+   },
+   {
+    "source_bank": "ZeroHedge",
+    "figure": "40%",
+    "metric": "Kioxia stock retracement from recent peak",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "ZeroHedge",
+    "figure": "10%",
+    "metric": "Kioxia daily drop frequency",
+    "context": "Occurred five times in July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "SPX market cap reporting earnings",
+    "context": "This week"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.7%",
+    "metric": "SPX implied move",
+    "context": "Through Friday PM"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Odds of Fed hike",
+    "context": "As of Friday"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6th percentile",
+    "metric": "US fundamental L/S gross exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "22nd percentile",
+    "metric": "US fundamental L/S net exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$120bn",
+    "metric": "CTA long position in global equities",
+    "context": "49th percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13%",
+    "metric": "3m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "17.5%",
+    "metric": "12m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "470%",
+    "metric": "CXMT IPO debut surge",
+    "context": "STAR Market debut, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$488 billion",
+    "metric": "CXMT implied valuation",
+    "context": "At closing price of 49 yuan, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "212x",
+    "metric": "Retail IPO oversubscription",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.07 trillion yuan",
+    "metric": "Total retail order book value",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "66.6 billion yuan",
+    "metric": "Total capital raised",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Global DRAM revenue share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Global capacity ship share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "$250B",
+    "metric": "Proposed data center financing",
+    "context": "Nvidia and OpenAI reported talks"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "-22%",
+    "metric": "Downside to 200 DMA",
+    "context": "SOXX ETF projected test"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "-23%",
+    "metric": "Downside to March lows",
+    "context": "Potential downside if 200 DMA fails"
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "5.2%",
+    "metric": "30-year Treasury yield",
+    "context": "Highest since June 2007."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "3%",
+    "metric": "30-year real yield",
+    "context": "Highest since November 2008."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "21%",
+    "metric": "Blue collar semi sector decline",
+    "context": "Decline from June peak."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "38%",
+    "metric": "Implied probability of July 29th FOMC hike",
+    "context": "Market pricing as of July 2026."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "$2tn",
+    "metric": "US government annual deficit",
+    "context": "Current fiscal year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-160 bps",
+    "metric": "Nasdaq weekly performance",
+    "context": "Weekly performance as of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~8%",
+    "metric": "Nasdaq distance from June highs",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11%",
+    "metric": "Nasdaq YTD performance",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~21.8x",
+    "metric": "Nasdaq forward P/E",
+    "context": "Compared to 10-year average of ~23.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11.25%",
+    "metric": "AT&T weekly outperformance vs S&P 500",
+    "context": "Biggest weekly outperformance since 2001"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+22%",
+    "metric": "AAPL July outperformance vs Nasdaq",
+    "context": "Biggest monthly outperformance since 2006"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Fundamental L/S hedge fund performance",
+    "context": "July 2026 performance, second worst since 2023."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250B",
+    "metric": "NVDA financial guarantee for OpenAI data center",
+    "context": "Reported by WSJ."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$350B",
+    "metric": "Potential additional chip financing",
+    "context": "Potential additional financing for OpenAI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5T+",
+    "metric": "Unfunded commitments of frontier AI firms",
+    "context": "Total unfunded commitments."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "21.8x",
+    "metric": "NDX forward P/E",
+    "context": "Current valuation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.6x",
+    "metric": "NDX 10-year average forward P/E",
+    "context": "Historical average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50 bp",
+    "metric": "Two standard deviation threshold for 10Y yields",
+    "context": "One-month increase threshold."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A volume",
+    "context": "H1 2026, +44% y/y"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap positioning intelligence"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "98th %-tile",
+    "metric": "Global Semis L/S positioning",
+    "context": "Crowding risk indicator"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A activity",
+    "context": "H1 2026, +44% y/y."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap, indicates light positioning."
+   }
+  ]
+ },
+ "midterm election market impact": {
+  "theme": "midterm election market impact",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "Deutsche Bank",
+    "theme": "midterm election market impact",
+    "stance": "neutral",
+    "conviction": "medium",
+    "key_argument": "Historical patterns suggest pre-midterm years are subdued, but markets typically recover strongly within nine months post-election.",
+    "primary_instruments": [
+     "SPX"
+    ],
+    "vs_consensus": "",
+    "evidence": "by nine months later it has never been lower in any of the 20 midterm cycles"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "midterm election market impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Midterm elections fiscal multiplier risk",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Midterm elections fiscal multiplier risk"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "midterm election market impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US Midterm Election uncertainty",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US Midterm Election uncertainty"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "midterm election market impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US midterm election gridlock",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US midterm election gridlock"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "midterm election market impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US midterms gridlock",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US midterms gridlock"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34%",
+    "metric": "S&P 500 Q2 earnings growth",
+    "context": "On track to reach 34% YoY, vs 26% consensus and 29% bank forecast."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "90%",
+    "metric": "Companies beating earnings expectations",
+    "context": "Two weeks into Q2 reporting season."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "10%",
+    "metric": "Aggregate earnings beat vs consensus",
+    "context": "Aggregate earnings coming in 10% above consensus."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Alphabet FY26 capex guidance",
+    "context": "Raised by $15bn at the midpoint."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$5.9bn",
+    "metric": "Alphabet 2Q negative FCF",
+    "context": "Reported in 2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$331bn",
+    "metric": "YTD TMT supply",
+    "context": "YTD 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "82%",
+    "metric": "Alphabet Cloud growth",
+    "context": "2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$750bn",
+    "metric": "OpenAI projected computing power spending",
+    "context": "Through 2030, up from $600bn."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7%",
+    "metric": "ASML share price decline",
+    "context": "Reaction to reports of Chinese DUV tool production."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5%",
+    "metric": "Vodafone share price rally",
+    "context": "Following headline results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.5%",
+    "metric": "SAP share price rally",
+    "context": "Extension of Friday's gains."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "27.5%",
+    "metric": "ASMI FY26 revenue growth forecast",
+    "context": "Versus Bloomberg consensus of 25.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "87.8%",
+    "metric": "SOX Index Q2 performance",
+    "context": "Best quarterly performance in lifetime, 26Q2."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20.2%",
+    "metric": "SOX Index peak-to-trough decline",
+    "context": "June 22 to July 17."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "60%",
+    "metric": "Weekly token share of Chinese models used by US firms",
+    "context": "Rising trend on OpenRouter."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20%",
+    "metric": "Organic inflows for thematic themes",
+    "context": "June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.17",
+    "metric": "SGD/MYR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.8%",
+    "metric": "TRY/NGN/KZT basket return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-18.8bp",
+    "metric": "3y SOFR swap spread",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.4%",
+    "metric": "USD/EGP return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0bp",
+    "metric": "5y Receivers on 3m 2s5s10s Receiver Fly",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.29",
+    "metric": "1y forward 2s10s GBP OIS steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.85",
+    "metric": "THB/INR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.41%",
+    "metric": "INR 30y bond yield",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "73bp",
+    "metric": "2s10s NZD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "52bp",
+    "metric": "2s10s CAD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2107",
+    "metric": "AUD/NZD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99",
+    "metric": "NIFTY Banks vs. NIFTY Pharma ratio",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.3289",
+    "metric": "GBP/USD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$20",
+    "metric": "2027 EPS target",
+    "context": "Celestica (CLS) 2Q26 update."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.25B",
+    "metric": "Acquisition cost",
+    "context": "Expand Energy Corp. (EXE) acquisition of Twin Eagle."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4%",
+    "metric": "FFO/sh beat",
+    "context": "Merlin Properties Socimi SA (MRL.MC) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5%",
+    "metric": "Adjusted EPS vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9%",
+    "metric": "NTA vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">\u00a3500mn",
+    "metric": "Bid value",
+    "context": "Landsec (LAND.L) potential offer for Metrocentre per press report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4x",
+    "metric": "Dividend growth potential",
+    "context": "IGO Ltd. (IGO.AX) FY27 Greenbushes dividends."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">400kozpa",
+    "metric": "Expansion target",
+    "context": "Capricorn Metals Ltd. (CMM.AX) multi-year outlook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6.7%",
+    "metric": "1H27 revenue margin guidance",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$90m",
+    "metric": "Buyback announcement",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Persian Gulf oil flows as % of pre-war levels",
+    "context": "7-day moving average, down from 80% in late June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.7mb/d",
+    "metric": "Estimated hit to oil flows from Persian Gulf",
+    "context": "Doubled since early July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.3B",
+    "metric": "Foreigner outflows from KOSPI + KOSDAQ",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.70B",
+    "metric": "FINIs net sold in Taiwan equities",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.1%",
+    "metric": "Semiconductor sector average decline",
+    "context": "5-day period ending 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2027"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7.2%",
+    "metric": "Chinese Semiconductors (GSXACSEM) decline",
+    "context": "28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.6 Z-score",
+    "metric": "1-day long flow in global Info Tech",
+    "context": "Largest long selling in global Info Tech on PB book since Sep '24, as of 7/24/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">30%",
+    "metric": "US AI pair drawdown",
+    "context": "Largest drawdown on record as of 7/28/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-11.55%",
+    "metric": "KOSPI 2 daily return",
+    "context": "4th worst session on record, overnight 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Probability of Hawkish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "28%",
+    "metric": "Probability of Dovish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Probability of Rate Hike",
+    "context": "Desk view vs market pricing."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.8%",
+    "metric": "Options-implied move",
+    "context": "For July 29 expiry, as of 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.1%",
+    "metric": "Options-implied move",
+    "context": "Recent CPI event average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$30",
+    "metric": "Crude oil price move",
+    "context": "Move in crude prices from early July lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "SPX market cap reporting earnings",
+    "context": "This week"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.7%",
+    "metric": "SPX implied move",
+    "context": "Through Friday PM"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Odds of Fed hike",
+    "context": "As of Friday"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6th percentile",
+    "metric": "US fundamental L/S gross exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "22nd percentile",
+    "metric": "US fundamental L/S net exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$120bn",
+    "metric": "CTA long position in global equities",
+    "context": "49th percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13%",
+    "metric": "3m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "17.5%",
+    "metric": "12m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$100",
+    "metric": "Oil price",
+    "context": "Current hovering level near $100"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "30%-35%",
+    "metric": "Probability of Fed rate hike",
+    "context": "July 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "5-year high",
+    "metric": "Macro hedge fund sensitivity to S&P 500",
+    "context": "As of week ending July 24, 2026"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "2%-3%",
+    "metric": "Drawdown from recent highs",
+    "context": "Market performance since early June 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "470%",
+    "metric": "CXMT IPO debut surge",
+    "context": "STAR Market debut, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$488 billion",
+    "metric": "CXMT implied valuation",
+    "context": "At closing price of 49 yuan, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "212x",
+    "metric": "Retail IPO oversubscription",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.07 trillion yuan",
+    "metric": "Total retail order book value",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "66.6 billion yuan",
+    "metric": "Total capital raised",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Global DRAM revenue share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Global capacity ship share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-160 bps",
+    "metric": "Nasdaq weekly performance",
+    "context": "Weekly performance as of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~8%",
+    "metric": "Nasdaq distance from June highs",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11%",
+    "metric": "Nasdaq YTD performance",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~21.8x",
+    "metric": "Nasdaq forward P/E",
+    "context": "Compared to 10-year average of ~23.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11.25%",
+    "metric": "AT&T weekly outperformance vs S&P 500",
+    "context": "Biggest weekly outperformance since 2001"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+22%",
+    "metric": "AAPL July outperformance vs Nasdaq",
+    "context": "Biggest monthly outperformance since 2006"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Fundamental L/S hedge fund performance",
+    "context": "July 2026 performance, second worst since 2023."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250B",
+    "metric": "NVDA financial guarantee for OpenAI data center",
+    "context": "Reported by WSJ."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$350B",
+    "metric": "Potential additional chip financing",
+    "context": "Potential additional financing for OpenAI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5T+",
+    "metric": "Unfunded commitments of frontier AI firms",
+    "context": "Total unfunded commitments."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "21.8x",
+    "metric": "NDX forward P/E",
+    "context": "Current valuation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.6x",
+    "metric": "NDX 10-year average forward P/E",
+    "context": "Historical average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50 bp",
+    "metric": "Two standard deviation threshold for 10Y yields",
+    "context": "One-month increase threshold."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A volume",
+    "context": "H1 2026, +44% y/y"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap positioning intelligence"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "98th %-tile",
+    "metric": "Global Semis L/S positioning",
+    "context": "Crowding risk indicator"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A activity",
+    "context": "H1 2026, +44% y/y."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap, indicates light positioning."
+   }
+  ]
+ },
+ "semiconductor market dynamics": {
+  "theme": "semiconductor market dynamics",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 3,
+   "neutral": 0
+  },
+  "theme_stances": [
+   {
+    "source": "JPMorgan",
+    "theme": "semiconductor bull case",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Fundamental story remains intact despite recent volatility and consensus positioning.",
+    "primary_instruments": [
+     "INTC",
+     "MRVL",
+     "MU"
+    ],
+    "vs_consensus": "with_consensus",
+    "evidence": "We agree with the Bull Case."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "semiconductor sell-off",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The magnitude of the sell-off is driven by behavioral finance and positioning rather than fundamental earnings changes.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "the magnitude of the recent sell-off appears more reflective of positioning, deleveraging and behavioral finance"
+   },
+   {
+    "source": "ZeroHedge",
+    "theme": "semiconductor cyclicality",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The AI data center boom is facing a reality check as NAND prices decline and supply increases.",
+    "primary_instruments": [
+     "WDC",
+     "NVDA"
+    ],
+    "vs_consensus": "",
+    "evidence": "concerns about the cyclical nature of other AI components are getting repriced"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "china semiconductor self-sufficiency",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The rise of a well-funded domestic DRAM champion creates a structural overhang for global memory pricing.",
+    "primary_instruments": [
+     "MU"
+    ],
+    "vs_consensus": "",
+    "evidence": "China becoming increasingly self sufficient in DRAM removes a major source of demand"
+   },
+   {
+    "source": "BTIG",
+    "theme": "semiconductor correction",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The sector's inability to rally on positive news suggests the correction has further to run.",
+    "primary_instruments": [
+     "SOXX"
+    ],
+    "vs_consensus": "",
+    "evidence": "that sort of trade in the face of a well publicized 'backstop' suggests we still have a ways to go"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Alphabet FY26 capex guidance",
+    "context": "Raised by $15bn at the midpoint."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$5.9bn",
+    "metric": "Alphabet 2Q negative FCF",
+    "context": "Reported in 2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$331bn",
+    "metric": "YTD TMT supply",
+    "context": "YTD 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "82%",
+    "metric": "Alphabet Cloud growth",
+    "context": "2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$750bn",
+    "metric": "OpenAI projected computing power spending",
+    "context": "Through 2030, up from $600bn."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7%",
+    "metric": "ASML share price decline",
+    "context": "Reaction to reports of Chinese DUV tool production."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5%",
+    "metric": "Vodafone share price rally",
+    "context": "Following headline results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.5%",
+    "metric": "SAP share price rally",
+    "context": "Extension of Friday's gains."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "27.5%",
+    "metric": "ASMI FY26 revenue growth forecast",
+    "context": "Versus Bloomberg consensus of 25.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "87.8%",
+    "metric": "SOX Index Q2 performance",
+    "context": "Best quarterly performance in lifetime, 26Q2."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20.2%",
+    "metric": "SOX Index peak-to-trough decline",
+    "context": "June 22 to July 17."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "60%",
+    "metric": "Weekly token share of Chinese models used by US firms",
+    "context": "Rising trend on OpenRouter."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20%",
+    "metric": "Organic inflows for thematic themes",
+    "context": "June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.17",
+    "metric": "SGD/MYR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.8%",
+    "metric": "TRY/NGN/KZT basket return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-18.8bp",
+    "metric": "3y SOFR swap spread",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.4%",
+    "metric": "USD/EGP return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0bp",
+    "metric": "5y Receivers on 3m 2s5s10s Receiver Fly",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.29",
+    "metric": "1y forward 2s10s GBP OIS steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.85",
+    "metric": "THB/INR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.41%",
+    "metric": "INR 30y bond yield",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "73bp",
+    "metric": "2s10s NZD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "52bp",
+    "metric": "2s10s CAD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2107",
+    "metric": "AUD/NZD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99",
+    "metric": "NIFTY Banks vs. NIFTY Pharma ratio",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.3289",
+    "metric": "GBP/USD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$20",
+    "metric": "2027 EPS target",
+    "context": "Celestica (CLS) 2Q26 update."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.25B",
+    "metric": "Acquisition cost",
+    "context": "Expand Energy Corp. (EXE) acquisition of Twin Eagle."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4%",
+    "metric": "FFO/sh beat",
+    "context": "Merlin Properties Socimi SA (MRL.MC) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5%",
+    "metric": "Adjusted EPS vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9%",
+    "metric": "NTA vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">\u00a3500mn",
+    "metric": "Bid value",
+    "context": "Landsec (LAND.L) potential offer for Metrocentre per press report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4x",
+    "metric": "Dividend growth potential",
+    "context": "IGO Ltd. (IGO.AX) FY27 Greenbushes dividends."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">400kozpa",
+    "metric": "Expansion target",
+    "context": "Capricorn Metals Ltd. (CMM.AX) multi-year outlook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6.7%",
+    "metric": "1H27 revenue margin guidance",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$90m",
+    "metric": "Buyback announcement",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Persian Gulf oil flows as % of pre-war levels",
+    "context": "7-day moving average, down from 80% in late June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.7mb/d",
+    "metric": "Estimated hit to oil flows from Persian Gulf",
+    "context": "Doubled since early July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.3B",
+    "metric": "Foreigner outflows from KOSPI + KOSDAQ",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.70B",
+    "metric": "FINIs net sold in Taiwan equities",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.1%",
+    "metric": "Semiconductor sector average decline",
+    "context": "5-day period ending 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2027"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7.2%",
+    "metric": "Chinese Semiconductors (GSXACSEM) decline",
+    "context": "28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.6 Z-score",
+    "metric": "1-day long flow in global Info Tech",
+    "context": "Largest long selling in global Info Tech on PB book since Sep '24, as of 7/24/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">30%",
+    "metric": "US AI pair drawdown",
+    "context": "Largest drawdown on record as of 7/28/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-11.55%",
+    "metric": "KOSPI 2 daily return",
+    "context": "4th worst session on record, overnight 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Probability of Hawkish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "28%",
+    "metric": "Probability of Dovish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Probability of Rate Hike",
+    "context": "Desk view vs market pricing."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.8%",
+    "metric": "Options-implied move",
+    "context": "For July 29 expiry, as of 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.1%",
+    "metric": "Options-implied move",
+    "context": "Recent CPI event average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$30",
+    "metric": "Crude oil price move",
+    "context": "Move in crude prices from early July lows."
+   },
+   {
+    "source_bank": "ZeroHedge",
+    "figure": "40%",
+    "metric": "Kioxia stock retracement from recent peak",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "ZeroHedge",
+    "figure": "10%",
+    "metric": "Kioxia daily drop frequency",
+    "context": "Occurred five times in July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "SPX market cap reporting earnings",
+    "context": "This week"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.7%",
+    "metric": "SPX implied move",
+    "context": "Through Friday PM"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Odds of Fed hike",
+    "context": "As of Friday"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6th percentile",
+    "metric": "US fundamental L/S gross exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "22nd percentile",
+    "metric": "US fundamental L/S net exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$120bn",
+    "metric": "CTA long position in global equities",
+    "context": "49th percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13%",
+    "metric": "3m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "17.5%",
+    "metric": "12m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "470%",
+    "metric": "CXMT IPO debut surge",
+    "context": "STAR Market debut, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$488 billion",
+    "metric": "CXMT implied valuation",
+    "context": "At closing price of 49 yuan, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "212x",
+    "metric": "Retail IPO oversubscription",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.07 trillion yuan",
+    "metric": "Total retail order book value",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "66.6 billion yuan",
+    "metric": "Total capital raised",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Global DRAM revenue share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Global capacity ship share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "$250B",
+    "metric": "Proposed data center financing",
+    "context": "Nvidia and OpenAI reported talks"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "-22%",
+    "metric": "Downside to 200 DMA",
+    "context": "SOXX ETF projected test"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "-23%",
+    "metric": "Downside to March lows",
+    "context": "Potential downside if 200 DMA fails"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-160 bps",
+    "metric": "Nasdaq weekly performance",
+    "context": "Weekly performance as of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~8%",
+    "metric": "Nasdaq distance from June highs",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11%",
+    "metric": "Nasdaq YTD performance",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~21.8x",
+    "metric": "Nasdaq forward P/E",
+    "context": "Compared to 10-year average of ~23.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11.25%",
+    "metric": "AT&T weekly outperformance vs S&P 500",
+    "context": "Biggest weekly outperformance since 2001"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+22%",
+    "metric": "AAPL July outperformance vs Nasdaq",
+    "context": "Biggest monthly outperformance since 2006"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Fundamental L/S hedge fund performance",
+    "context": "July 2026 performance, second worst since 2023."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250B",
+    "metric": "NVDA financial guarantee for OpenAI data center",
+    "context": "Reported by WSJ."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$350B",
+    "metric": "Potential additional chip financing",
+    "context": "Potential additional financing for OpenAI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5T+",
+    "metric": "Unfunded commitments of frontier AI firms",
+    "context": "Total unfunded commitments."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "21.8x",
+    "metric": "NDX forward P/E",
+    "context": "Current valuation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.6x",
+    "metric": "NDX 10-year average forward P/E",
+    "context": "Historical average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50 bp",
+    "metric": "Two standard deviation threshold for 10Y yields",
+    "context": "One-month increase threshold."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A volume",
+    "context": "H1 2026, +44% y/y"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap positioning intelligence"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "98th %-tile",
+    "metric": "Global Semis L/S positioning",
+    "context": "Crowding risk indicator"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A activity",
+    "context": "H1 2026, +44% y/y."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap, indicates light positioning."
+   }
+  ]
+ },
+ "dispersion unwind": {
+  "theme": "dispersion unwind",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 0,
+   "neutral": 2
+  },
+  "theme_stances": [
+   {
+    "source": "JPMorgan",
+    "theme": "momentum unwind rotation",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The current market is driven by positioning and momentum-driven rotation rather than changing fundamentals.",
+    "primary_instruments": [
+     "SAP",
+     "NOK"
+    ],
+    "vs_consensus": "",
+    "evidence": "prevailing view across investors remains that this is still primarily a positioning and momentum-driven rotation"
+   },
+   {
+    "source": "SpotGamma",
+    "theme": "dispersion unwind",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The collapse of COR1M below 8 and breach of the Risk Pivot level confirm the dispersion unwind is no longer hypothetical.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "the dispersion unwind we have been watching for is no longer hypothetical"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Alphabet FY26 capex guidance",
+    "context": "Raised by $15bn at the midpoint."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$5.9bn",
+    "metric": "Alphabet 2Q negative FCF",
+    "context": "Reported in 2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$331bn",
+    "metric": "YTD TMT supply",
+    "context": "YTD 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "82%",
+    "metric": "Alphabet Cloud growth",
+    "context": "2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$750bn",
+    "metric": "OpenAI projected computing power spending",
+    "context": "Through 2030, up from $600bn."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7%",
+    "metric": "ASML share price decline",
+    "context": "Reaction to reports of Chinese DUV tool production."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5%",
+    "metric": "Vodafone share price rally",
+    "context": "Following headline results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.5%",
+    "metric": "SAP share price rally",
+    "context": "Extension of Friday's gains."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "27.5%",
+    "metric": "ASMI FY26 revenue growth forecast",
+    "context": "Versus Bloomberg consensus of 25.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "87.8%",
+    "metric": "SOX Index Q2 performance",
+    "context": "Best quarterly performance in lifetime, 26Q2."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20.2%",
+    "metric": "SOX Index peak-to-trough decline",
+    "context": "June 22 to July 17."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "60%",
+    "metric": "Weekly token share of Chinese models used by US firms",
+    "context": "Rising trend on OpenRouter."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20%",
+    "metric": "Organic inflows for thematic themes",
+    "context": "June 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Probability of Hawkish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "28%",
+    "metric": "Probability of Dovish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Probability of Rate Hike",
+    "context": "Desk view vs market pricing."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.8%",
+    "metric": "Options-implied move",
+    "context": "For July 29 expiry, as of 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.1%",
+    "metric": "Options-implied move",
+    "context": "Recent CPI event average."
+   },
+   {
+    "source_bank": "SpotGamma",
+    "figure": "1.2%",
+    "metric": "SPX daily drop",
+    "context": "Worst session in weeks, occurred last week."
+   },
+   {
+    "source_bank": "SpotGamma",
+    "figure": "390",
+    "metric": "MSFT upside gamma level",
+    "context": "Major gamma level to monitor."
+   },
+   {
+    "source_bank": "SpotGamma",
+    "figure": "430",
+    "metric": "MSFT upside gamma level",
+    "context": "Major gamma level to monitor."
+   },
+   {
+    "source_bank": "SpotGamma",
+    "figure": "360",
+    "metric": "MSFT Gamma Flip level",
+    "context": "Positioning transitions from negative to positive gamma."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A volume",
+    "context": "H1 2026, +44% y/y"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap positioning intelligence"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "98th %-tile",
+    "metric": "Global Semis L/S positioning",
+    "context": "Crowding risk indicator"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A activity",
+    "context": "H1 2026, +44% y/y."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap, indicates light positioning."
+   }
+  ]
+ },
+ "china duv lithography supply": {
+  "theme": "china duv lithography supply",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "BTIG",
+    "theme": "china duv lithography supply",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "ASML China DUV lithography production",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "ASML China DUV lithography production"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "china duv lithography supply",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "China DUV memory supply",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "China DUV memory supply"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "china duv lithography supply",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Domestic immersion DUV lithography systems",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Domestic immersion DUV lithography systems"
+   },
+   {
+    "source": "BTIG",
+    "theme": "china duv lithography supply",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "China DUV capabilities",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "China DUV capabilities"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "china duv lithography supply",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Chinese memory supply chain",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Chinese memory supply chain"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "china duv lithography supply",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Chinese DRAM self-sufficiency",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Chinese DRAM self-sufficiency"
+   },
+   {
+    "source": "BTIG",
+    "theme": "china duv lithography supply",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Domestic DUV lithography machine production",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Domestic DUV lithography machine production"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Alphabet FY26 capex guidance",
+    "context": "Raised by $15bn at the midpoint."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$5.9bn",
+    "metric": "Alphabet 2Q negative FCF",
+    "context": "Reported in 2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$331bn",
+    "metric": "YTD TMT supply",
+    "context": "YTD 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "82%",
+    "metric": "Alphabet Cloud growth",
+    "context": "2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$750bn",
+    "metric": "OpenAI projected computing power spending",
+    "context": "Through 2030, up from $600bn."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7%",
+    "metric": "ASML share price decline",
+    "context": "Reaction to reports of Chinese DUV tool production."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5%",
+    "metric": "Vodafone share price rally",
+    "context": "Following headline results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.5%",
+    "metric": "SAP share price rally",
+    "context": "Extension of Friday's gains."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "27.5%",
+    "metric": "ASMI FY26 revenue growth forecast",
+    "context": "Versus Bloomberg consensus of 25.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "87.8%",
+    "metric": "SOX Index Q2 performance",
+    "context": "Best quarterly performance in lifetime, 26Q2."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20.2%",
+    "metric": "SOX Index peak-to-trough decline",
+    "context": "June 22 to July 17."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "60%",
+    "metric": "Weekly token share of Chinese models used by US firms",
+    "context": "Rising trend on OpenRouter."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20%",
+    "metric": "Organic inflows for thematic themes",
+    "context": "June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.17",
+    "metric": "SGD/MYR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.8%",
+    "metric": "TRY/NGN/KZT basket return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-18.8bp",
+    "metric": "3y SOFR swap spread",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.4%",
+    "metric": "USD/EGP return",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0bp",
+    "metric": "5y Receivers on 3m 2s5s10s Receiver Fly",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.29",
+    "metric": "1y forward 2s10s GBP OIS steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.85",
+    "metric": "THB/INR spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.41%",
+    "metric": "INR 30y bond yield",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "73bp",
+    "metric": "2s10s NZD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "52bp",
+    "metric": "2s10s CAD steepener",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2107",
+    "metric": "AUD/NZD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "99",
+    "metric": "NIFTY Banks vs. NIFTY Pharma ratio",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.3289",
+    "metric": "GBP/USD spot price",
+    "context": "As of 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$20",
+    "metric": "2027 EPS target",
+    "context": "Celestica (CLS) 2Q26 update."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.25B",
+    "metric": "Acquisition cost",
+    "context": "Expand Energy Corp. (EXE) acquisition of Twin Eagle."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4%",
+    "metric": "FFO/sh beat",
+    "context": "Merlin Properties Socimi SA (MRL.MC) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5%",
+    "metric": "Adjusted EPS vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9%",
+    "metric": "NTA vs consensus",
+    "context": "Unite Group (UTG.L) 1H26 results."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">\u00a3500mn",
+    "metric": "Bid value",
+    "context": "Landsec (LAND.L) potential offer for Metrocentre per press report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~4x",
+    "metric": "Dividend growth potential",
+    "context": "IGO Ltd. (IGO.AX) FY27 Greenbushes dividends."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">400kozpa",
+    "metric": "Expansion target",
+    "context": "Capricorn Metals Ltd. (CMM.AX) multi-year outlook."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6.7%",
+    "metric": "1H27 revenue margin guidance",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$90m",
+    "metric": "Buyback announcement",
+    "context": "WEB Travel Group (WEB.AX)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Persian Gulf oil flows as % of pre-war levels",
+    "context": "7-day moving average, down from 80% in late June."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13.7mb/d",
+    "metric": "Estimated hit to oil flows from Persian Gulf",
+    "context": "Doubled since early July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "KOSPI decline",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.3B",
+    "metric": "Foreigner outflows from KOSPI + KOSDAQ",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.70B",
+    "metric": "FINIs net sold in Taiwan equities",
+    "context": "Reported today."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.1%",
+    "metric": "Semiconductor sector average decline",
+    "context": "5-day period ending 28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20",
+    "metric": "Expected domestic DUV system production",
+    "context": "Full year 2027"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7.2%",
+    "metric": "Chinese Semiconductors (GSXACSEM) decline",
+    "context": "28 July 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.6 Z-score",
+    "metric": "1-day long flow in global Info Tech",
+    "context": "Largest long selling in global Info Tech on PB book since Sep '24, as of 7/24/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">30%",
+    "metric": "US AI pair drawdown",
+    "context": "Largest drawdown on record as of 7/28/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-11.55%",
+    "metric": "KOSPI 2 daily return",
+    "context": "4th worst session on record, overnight 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Probability of Hawkish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "28%",
+    "metric": "Probability of Dovish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Probability of Rate Hike",
+    "context": "Desk view vs market pricing."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.8%",
+    "metric": "Options-implied move",
+    "context": "For July 29 expiry, as of 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.1%",
+    "metric": "Options-implied move",
+    "context": "Recent CPI event average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$30",
+    "metric": "Crude oil price move",
+    "context": "Move in crude prices from early July lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "SPX market cap reporting earnings",
+    "context": "This week"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.7%",
+    "metric": "SPX implied move",
+    "context": "Through Friday PM"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Odds of Fed hike",
+    "context": "As of Friday"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6th percentile",
+    "metric": "US fundamental L/S gross exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "22nd percentile",
+    "metric": "US fundamental L/S net exposure",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$120bn",
+    "metric": "CTA long position in global equities",
+    "context": "49th percentile"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "13%",
+    "metric": "3m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "17.5%",
+    "metric": "12m ATMF implied correlation",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "470%",
+    "metric": "CXMT IPO debut surge",
+    "context": "STAR Market debut, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$488 billion",
+    "metric": "CXMT implied valuation",
+    "context": "At closing price of 49 yuan, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "212x",
+    "metric": "Retail IPO oversubscription",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.07 trillion yuan",
+    "metric": "Total retail order book value",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "66.6 billion yuan",
+    "metric": "Total capital raised",
+    "context": "CXMT IPO, 7/27/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Global DRAM revenue share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10%",
+    "metric": "Global capacity ship share",
+    "context": "Current estimate"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "$250B",
+    "metric": "Proposed data center financing",
+    "context": "Nvidia and OpenAI reported talks"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "-22%",
+    "metric": "Downside to 200 DMA",
+    "context": "SOXX ETF projected test"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "-23%",
+    "metric": "Downside to March lows",
+    "context": "Potential downside if 200 DMA fails"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-160 bps",
+    "metric": "Nasdaq weekly performance",
+    "context": "Weekly performance as of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~8%",
+    "metric": "Nasdaq distance from June highs",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11%",
+    "metric": "Nasdaq YTD performance",
+    "context": "As of July 27, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~21.8x",
+    "metric": "Nasdaq forward P/E",
+    "context": "Compared to 10-year average of ~23.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+11.25%",
+    "metric": "AT&T weekly outperformance vs S&P 500",
+    "context": "Biggest weekly outperformance since 2001"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+22%",
+    "metric": "AAPL July outperformance vs Nasdaq",
+    "context": "Biggest monthly outperformance since 2006"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Fundamental L/S hedge fund performance",
+    "context": "July 2026 performance, second worst since 2023."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250B",
+    "metric": "NVDA financial guarantee for OpenAI data center",
+    "context": "Reported by WSJ."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$350B",
+    "metric": "Potential additional chip financing",
+    "context": "Potential additional financing for OpenAI."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5T+",
+    "metric": "Unfunded commitments of frontier AI firms",
+    "context": "Total unfunded commitments."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "21.8x",
+    "metric": "NDX forward P/E",
+    "context": "Current valuation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.6x",
+    "metric": "NDX 10-year average forward P/E",
+    "context": "Historical average."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50 bp",
+    "metric": "Two standard deviation threshold for 10Y yields",
+    "context": "One-month increase threshold."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A volume",
+    "context": "H1 2026, +44% y/y"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap positioning intelligence"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "98th %-tile",
+    "metric": "Global Semis L/S positioning",
+    "context": "Crowding risk indicator"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A activity",
+    "context": "H1 2026, +44% y/y."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap, indicates light positioning."
+   }
+  ]
+ },
+ "iran oil supply risk": {
+  "theme": "iran oil supply risk",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Deutsche Bank",
+    "theme": "iran oil supply risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "War in Iran impact on oil prices",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "War in Iran impact on oil prices"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "iran oil supply risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US/Iran conflict energy impact",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US/Iran conflict energy impact"
+   },
+   {
+    "source": "TS Lombard",
+    "theme": "iran oil supply risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz supply disruption risk",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz supply disruption risk"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "iran oil supply risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz geopolitical tension",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz geopolitical tension"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "iran oil supply risk",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz geopolitical tensions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz geopolitical tensions"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34%",
+    "metric": "S&P 500 Q2 earnings growth",
+    "context": "On track to reach 34% YoY, vs 26% consensus and 29% bank forecast."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "90%",
+    "metric": "Companies beating earnings expectations",
+    "context": "Two weeks into Q2 reporting season."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "10%",
+    "metric": "Aggregate earnings beat vs consensus",
+    "context": "Aggregate earnings coming in 10% above consensus."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$200bn",
+    "metric": "Alphabet FY26 capex guidance",
+    "context": "Raised by $15bn at the midpoint."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$5.9bn",
+    "metric": "Alphabet 2Q negative FCF",
+    "context": "Reported in 2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$331bn",
+    "metric": "YTD TMT supply",
+    "context": "YTD 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "82%",
+    "metric": "Alphabet Cloud growth",
+    "context": "2Q results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$750bn",
+    "metric": "OpenAI projected computing power spending",
+    "context": "Through 2030, up from $600bn."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7%",
+    "metric": "ASML share price decline",
+    "context": "Reaction to reports of Chinese DUV tool production."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5%",
+    "metric": "Vodafone share price rally",
+    "context": "Following headline results."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.5%",
+    "metric": "SAP share price rally",
+    "context": "Extension of Friday's gains."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "27.5%",
+    "metric": "ASMI FY26 revenue growth forecast",
+    "context": "Versus Bloomberg consensus of 25.5%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "87.8%",
+    "metric": "SOX Index Q2 performance",
+    "context": "Best quarterly performance in lifetime, 26Q2."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20.2%",
+    "metric": "SOX Index peak-to-trough decline",
+    "context": "June 22 to July 17."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "60%",
+    "metric": "Weekly token share of Chinese models used by US firms",
+    "context": "Rising trend on OpenRouter."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "20%",
+    "metric": "Organic inflows for thematic themes",
+    "context": "June 2026."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "10-year low",
+    "metric": "Chinese oil import volumes",
+    "context": "Current status of import volumes due to demand destruction and high inventories."
+   },
+   {
+    "source_bank": "TS Lombard",
+    "figure": "50% higher",
+    "metric": "Refined product inventories vs pre-covid",
+    "context": "Stocks of key refined products in China."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Probability of Hawkish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "28%",
+    "metric": "Probability of Dovish Hold",
+    "context": "Desk view for upcoming FOMC decision."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Probability of Rate Hike",
+    "context": "Desk view vs market pricing."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.8%",
+    "metric": "Options-implied move",
+    "context": "For July 29 expiry, as of 7/28/2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.1%",
+    "metric": "Options-implied move",
+    "context": "Recent CPI event average."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A volume",
+    "context": "H1 2026, +44% y/y"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap positioning intelligence"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "98th %-tile",
+    "metric": "Global Semis L/S positioning",
+    "context": "Crowding risk indicator"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$3.2T",
+    "metric": "Global M&A activity",
+    "context": "H1 2026, +44% y/y."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "14.3%",
+    "metric": "EU household saving rate",
+    "context": "Unchanged as share of GDI."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th %-tile",
+    "metric": "US aggregate positioning",
+    "context": "Weekly wrap, indicates light positioning."
+   }
+  ]
+ }
+}
