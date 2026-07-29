@@ -87,11 +87,25 @@ def test_result_normalizer():
     import discord_bot.bot as bot
     import discord
     e = discord.Embed(description="x")
-    emb, files = bot._normalize_ask_result(e)
-    assert emb is e and files == [], "bare embed must normalize to (e, [])"
-    emb2, files2 = bot._normalize_ask_result((e, ["f1", "f2"]))
-    assert emb2 is e and files2 == ["f1", "f2"], "tuple must pass through"
-    _ok("send-result normalizer handles embed and (embed, files)")
+    embeds, files = bot._normalize_ask_result(e)
+    assert embeds == [e] and files == [], "bare embed -> ([e], [])"
+    embeds2, files2 = bot._normalize_ask_result(([e], ["f1", "f2"]))
+    assert embeds2 == [e] and files2 == ["f1", "f2"], "list tuple passes"
+    _ok("send-result normalizer returns (embeds_list, files)")
+
+
+def test_chart_embed_is_first():
+    import discord_bot.bot as bot
+    embeds, files = bot._build_ask_embeds("the insight", [(b"PNG", "image/png")])
+    assert len(files) == 1, files
+    assert len(embeds) == 2, embeds
+    # image embed FIRST (has an image, no description), text embed SECOND
+    assert embeds[0].image and not embeds[0].description, "chart must lead"
+    assert embeds[1].description == "the insight", "text follows the chart"
+    # no chart -> single text embed
+    embeds2, files2 = bot._build_ask_embeds("just text", [])
+    assert files2 == [] and len(embeds2) == 1 and embeds2[0].description
+    _ok("chart renders ABOVE the text (image embed first)")
 
 
 def test_prompt_announces_capability():
@@ -114,5 +128,6 @@ if __name__ == "__main__":
     test_image_extraction_final_only_and_filters()
     test_no_images_returns_empty()
     test_result_normalizer()
+    test_chart_embed_is_first()
     test_prompt_announces_capability()
     print("\nALL CODE EXECUTION SMOKE TESTS PASS")

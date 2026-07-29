@@ -4880,15 +4880,41 @@ def _extract_code_images(response) -> list[tuple[bytes, str]]:
     return imgs[-1:]  # final render only
 
 
+def _build_ask_embeds(full_text: str, code_images):
+    """Build the reply embeds + files. When a chart rendered, the image
+    goes in its OWN embed placed FIRST, then the text embed — Discord
+    always renders an embed's image at the bottom of that embed, so a
+    chart-on-top layout needs two ordered embeds (2026-07-29 owner
+    request). No chart → a single text embed."""
+    text_embed = discord.Embed(description=full_text, color=0x228B22)
+    text_embed.set_footer(text="Hi, I'm AI-powered - NFA")
+    files = []
+    img_embed = None
+    for _i, (_data, _mime) in enumerate(code_images[:1]):  # one chart
+        _ext = "png" if "png" in _mime else (_mime.split("/")[-1] or "png")
+        _fname = f"quant_{_i}.{_ext}"
+        try:
+            files.append(discord.File(io.BytesIO(_data), filename=_fname))
+            img_embed = discord.Embed(color=0x228B22)
+            img_embed.set_image(url=f"attachment://{_fname}")
+        except Exception as _fe:
+            log.warning(f"/ask: chart attach failed (non-fatal): {_fe}")
+    embeds = [img_embed, text_embed] if img_embed else [text_embed]
+    return embeds, files
+
+
 def _normalize_ask_result(result):
     """_answer_with_gemini returns a bare discord.Embed on the error/
-    guard paths and an (embed, files) tuple on the success path (files
-    = rendered code-execution charts). Normalize to (embed, files) so
-    the send sites stay simple."""
+    guard paths and an (embeds_list, files) tuple on the chart success
+    path. Normalize to (embeds_list, files) — always a list — so the
+    send sites can `send(embeds=...)` in order (chart first)."""
     if isinstance(result, tuple):
-        emb, files = result
-        return emb, list(files or [])
-    return result, []
+        first, files = result
+        files = list(files or [])
+    else:
+        first, files = result, []
+    embeds = first if isinstance(first, list) else [first]
+    return embeds, files
 
 
 async def _answer_with_gemini(
@@ -7170,23 +7196,8 @@ async def _answer_with_gemini(
         except Exception as e:
             log.warning(f"ask-log append failed (non-fatal): {e}")
 
-        embed = discord.Embed(description=full, color=0x228B22)
-        embed.set_footer(text="Hi, I'm AI-powered - NFA")
-        # Attach any sandbox-rendered chart. Reference it via
-        # attachment:// so it renders inside the embed.
-        _files = []
-        for _i, (_data, _mime) in enumerate(_code_images):
-            _ext = "png" if "png" in _mime else (
-                _mime.split("/")[-1] or "png")
-            _fname = f"quant_{_i}.{_ext}"
-            try:
-                _files.append(discord.File(io.BytesIO(_data),
-                                           filename=_fname))
-                if _i == 0:
-                    embed.set_image(url=f"attachment://{_fname}")
-            except Exception as _fe:
-                log.warning(f"/ask: chart attach failed (non-fatal): {_fe}")
-        return (embed, _files) if _files else embed
+        _embeds, _files = _build_ask_embeds(full, _code_images)
+        return (_embeds, _files) if _files else _embeds[0]
     except Exception as e:
         # One automatic retry on TRANSIENT server-side failures (5xx /
         # timeout) before surfacing anything to the user. These resolve
@@ -8204,20 +8215,23 @@ def create_bot() -> commands.Bot:
                 channel_name=getattr(interaction.channel, "name", "") or "",
                 channel_id=int(_ch_id) if _ch_id is not None else None,
             )
-            embed, _qfiles = _normalize_ask_result(embed)
+            _embeds, _qfiles = _normalize_ask_result(embed)
             await interaction.followup.send(
-                embed=embed, **({"files": _qfiles} if _qfiles else {})
+                embeds=_embeds, **({"files": _qfiles} if _qfiles else {})
             )
+            _text_embed = next(
+                (e for e in _embeds if e.description), None)
             # Cross-window anti-recycling: persist the bot's answer so the
             # next /ask from this asker in this channel can see what hooks
             # we already pulled — see ask_bot_answers table in db.py.
             try:
-                if user_id and _ch_id is not None and embed and embed.description:
+                if (user_id and _ch_id is not None and _text_embed
+                        and _text_embed.description):
                     db.record_ask_bot_answer(
                         asker_user_id=int(user_id),
                         channel_id=int(_ch_id),
                         question=question,
-                        answer=embed.description or "",
+                        answer=_text_embed.description or "",
                     )
             except Exception as e:
                 log.info(
@@ -8594,20 +8608,22 @@ def create_bot() -> commands.Bot:
                     channel_name=getattr(message.channel, "name", "") or "",
                     channel_id=int(_ch_id) if _ch_id is not None else None,
                 )
-                embed, _qfiles = _normalize_ask_result(embed)
+                _embeds, _qfiles = _normalize_ask_result(embed)
                 await message.reply(
-                    embed=embed, mention_author=False,
+                    embeds=_embeds, mention_author=False,
                     **({"files": _qfiles} if _qfiles else {})
                 )
+                _text_embed = next(
+                    (e for e in _embeds if e.description), None)
                 # Cross-window anti-recycling: persist the bot's answer.
                 try:
                     if (message.author.id and _ch_id is not None
-                            and embed and embed.description):
+                            and _text_embed and _text_embed.description):
                         db.record_ask_bot_answer(
                             asker_user_id=int(message.author.id),
                             channel_id=int(_ch_id),
                             question=question,
-                            answer=embed.description or "",
+                            answer=_text_embed.description or "",
                         )
                 except Exception as e:
                     log.info(
