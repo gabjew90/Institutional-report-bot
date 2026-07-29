@@ -889,13 +889,44 @@ _ANALYSIS_REQUEST_RE = re.compile(
 )
 
 
+# Analysis is sticky across a reply chain. A follow-up that REFINES the
+# data scope ("use the entire population", "add BK", "weight it", "what
+# about last month") carries no analysis keyword of its own — but it's
+# continuing an analysis (2026-07-29: this follow-up shipped as text,
+# no code, no chart). Detect it: analysis-RESULT markers in the
+# replied-to context + a refinement/imperative shape in the actual ask.
+_ANALYSIS_RESULT_RE = re.compile(
+    r"(correlat\w*|pearson|regress\w*|\br\s*=\s*-?\d?\.\d|"
+    r"\bp\s*=\s*\d?\.\d|distribution|std\s*dev|percentile|quartile|"
+    r"\bmatrix\b|trend\s*line|scatter|histogram|median|"
+    r"average\s+win|win\s*rate|expectancy)",
+    re.IGNORECASE,
+)
+_ANALYSIS_REFINE_RE = re.compile(
+    r"\b(use|add|include|exclude|only|drop|remove|filter|weight\w*|"
+    r"redo|re-?run|recompute|instead|entire|all|whole|everyone|"
+    r"expand|now\s+(?:do|show|run|use)|what\s+about|group|"
+    r"break\s+(?:it|this|them)\s+(?:down|out)|zoom|normalize|"
+    r"per[\s-]?capita|adjust|control\s+for)\b",
+    re.IGNORECASE,
+)
+
+
 def _is_analysis_request(question: str) -> bool:
     """True when the asker wants ANALYSIS — computed figures / a visual,
-    not a one-shot lookup or banter. Checks the actual ask (tail), not
-    the injected context blocks above it."""
+    not a one-shot lookup or banter. Fires on an analysis keyword in the
+    actual ask, OR on a scope-refinement follow-up to a prior analysis
+    (result markers in the replied-to context + a refinement shape in
+    the ask)."""
     if not question:
         return False
-    return bool(_ANALYSIS_REQUEST_RE.search(question.strip()[-600:]))
+    tail = question.strip()[-600:]
+    if _ANALYSIS_REQUEST_RE.search(tail):
+        return True
+    if (_ANALYSIS_RESULT_RE.search(question)
+            and _ANALYSIS_REFINE_RE.search(tail)):
+        return True
+    return False
 
 
 _ASK_ANALYSIS_DIRECTIVE = (
@@ -907,11 +938,19 @@ _ASK_ANALYSIS_DIRECTIVE = (
     "run the code so the numbers are real. Produce ONE sourced visual "
     "in whatever form best fits (chart, scatter, heatmap, distribution, "
     "quadrant/2x2, ranked table, matrix — quant or qual); it posts "
-    "ABOVE your text, so let it lead. Every number and label must come "
-    "from the tool data or the code output — never invented. If the "
-    "asker did NOT specify what to analyze, pick the most revealing "
-    "angle and deliver veteran-consultant rigor; don't ask them what "
-    "they meant."
+    "ABOVE your text, so let it lead. **VISUAL QUALITY — veteran "
+    "consultant, not a default matplotlib dump:** BOTH axes labeled "
+    "with what they are AND units; a real title AND a one-line subtitle "
+    "with the takeaway; every point/bar annotated with its value and "
+    "the member/label it belongs to; a legend when there's more than "
+    "one series; light gridlines; `figsize` wide enough and "
+    "`plt.tight_layout()` so there is NO wasted whitespace and nothing "
+    "clipped; readable font sizes; annotate the key finding (the trend "
+    "r-value, the outlier, the peak) right on the chart. Every number "
+    "and label must come from the tool data or the code output — never "
+    "invented. If the asker did NOT specify what to analyze, pick the "
+    "most revealing angle and deliver veteran-consultant rigor; don't "
+    "ask them what they meant."
 )
 
 

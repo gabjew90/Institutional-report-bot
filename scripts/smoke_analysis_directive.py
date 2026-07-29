@@ -44,6 +44,38 @@ def test_detector_ignores_plain():
     _ok("detector ignores plain lookups / banter")
 
 
+# The 2026-07-29 follow-up: a reply to an analysis answer that refines
+# the data scope but carries no analysis keyword of its own. The result
+# markers ("Pearson correlation r = -0.31") sit thousands of chars up
+# in the replied-to block — OUTSIDE the last-600-char ask tail — so the
+# padding here mirrors production (only the refinement is in the tail).
+_ANALYSIS_CONTEXT = (
+    "[MESSAGE BEING REPLIED TO — from omniwiz]\n"
+    "Running the matrix yields a Pearson correlation of r = -0.31 "
+    "between trader rank and racism rank, a weak inverse trend.\n\n"
+    + ("profile filler line about the room and the members. " * 40)
+    + "\n[f.jamal's message to you]\n"
+)
+
+
+def test_scope_refinement_followup_fires():
+    from discord_bot.bot import _is_analysis_request
+    for tail in ("Use the entire population", "now weight it by volume",
+                 "add BK and redo", "what about last month only",
+                 "exclude the unranked accounts"):
+        q = _ANALYSIS_CONTEXT + tail
+        assert _is_analysis_request(q), f"follow-up must inherit: {tail!r}"
+    _ok("scope-refinement reply to an analysis answer inherits the directive")
+
+
+def test_banter_reply_to_analysis_does_not_fire():
+    from discord_bot.bot import _is_analysis_request
+    for tail in ("lol nice", "based", "you're wrong bot", "kys"):
+        q = _ANALYSIS_CONTEXT + tail
+        assert not _is_analysis_request(q), f"banter reply must not fire: {tail!r}"
+    _ok("banter reply to an analysis answer does NOT fire the directive")
+
+
 def test_directive_demands_code_and_visual():
     from discord_bot.bot import _ASK_ANALYSIS_DIRECTIVE as d
     low = d.lower()
@@ -54,7 +86,14 @@ def test_directive_demands_code_and_visual():
         "directive must forbid in-head / estimated stats"
     )
     assert "visual" in low or "chart" in low, "directive must want a visual"
-    _ok("directive demands run-code + forbids eyeballing + wants a visual")
+    # rich, labeled visuals — not a bare matplotlib dump
+    assert "axes labeled" in low or ("label" in low and "axes" in low), (
+        "directive must require labeled axes"
+    )
+    assert "whitespace" in low and "tight_layout" in low, (
+        "directive must require a tight, no-wasted-space layout"
+    )
+    _ok("directive demands run-code + eyeballing ban + rich labeled visual")
 
 
 def test_directive_wired_alongside_fact():
@@ -71,6 +110,8 @@ if __name__ == "__main__":
     print("=== analysis directive smoke ===")
     test_detector_fires_on_analysis()
     test_detector_ignores_plain()
+    test_scope_refinement_followup_fires()
+    test_banter_reply_to_analysis_does_not_fire()
     test_directive_demands_code_and_visual()
     test_directive_wired_alongside_fact()
     print("\nALL ANALYSIS DIRECTIVE SMOKE TESTS PASS")
