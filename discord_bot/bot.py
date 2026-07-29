@@ -1975,6 +1975,160 @@ async def _execute_economic_calendar(args: dict) -> dict:
     return resp
 
 
+_QUERY_ROW_CAP = 500
+_QUERY_TIMEOUT_S = 8.0
+_QUERY_TEXT_CLAMP = 400
+_SQL_WRITE_RE = re.compile(
+    r"\b(insert|update|delete|drop|alter|create|replace|attach|detach|"
+    r"pragma|vacuum|reindex|trigger|grant|revoke|truncate)\b",
+    re.IGNORECASE,
+)
+
+
+def _validate_select_sql(sql: str):
+    """(ok, cleaned_sql_or_error). Read-only, single SELECT/WITH only —
+    the model-facing SQL surface, so the validation is strict AND the
+    executor opens a mode=ro connection (defense in depth)."""
+    if not sql or not sql.strip():
+        return False, "empty query"
+    s = sql.strip().rstrip(";").strip()
+    if ";" in s:
+        return False, "one statement only — no ';' inside the query"
+    low = s.lower()
+    if not (low.startswith("select") or low.startswith("with")):
+        return False, "only SELECT / WITH queries are allowed (read-only)"
+    if _SQL_WRITE_RE.search(s):
+        return False, (
+            "read-only: write/DDL/PRAGMA/ATTACH keywords are blocked"
+        )
+    return True, s
+
+
+async def _execute_query_data(args: dict) -> dict:
+    """Run a read-only SELECT against the SQLite DB and return rows.
+    Read-only connection + validation + row cap + timeout + text clamp."""
+    ok, s = _validate_select_sql(args.get("sql") or "")
+    if not ok:
+        return {"status": "error", "error": s}
+    capped = (
+        s if re.search(r"\blimit\b", s, re.IGNORECASE)
+        else f"{s} LIMIT {_QUERY_ROW_CAP}"
+    )
+
+    def _run():
+        import sqlite3 as _sql
+        import time as _t
+        try:
+            conn = _sql.connect(
+                f"file:{settings.db_path}?mode=ro", uri=True, timeout=3
+            )
+        except Exception as e:
+            return {"status": "error",
+                    "error": f"cannot open db read-only: {e}"}
+        conn.row_factory = _sql.Row
+        _deadline = _t.monotonic() + _QUERY_TIMEOUT_S
+        conn.set_progress_handler(
+            lambda: 1 if _t.monotonic() > _deadline else 0, 20000
+        )
+        try:
+            cur = conn.execute(capped)
+            rows = cur.fetchmany(_QUERY_ROW_CAP)
+            cols = [d[0] for d in cur.description] if cur.description else []
+            data = [dict(r) for r in rows]
+            for r in data:  # clamp wide text so SELECT * can't blow context
+                for k, v in list(r.items()):
+                    if isinstance(v, str) and len(v) > _QUERY_TEXT_CLAMP:
+                        r[k] = v[:_QUERY_TEXT_CLAMP] + "…"
+            return {
+                "status": "ok",
+                "columns": cols,
+                "rows": data,
+                "row_count": len(data),
+                "truncated": len(data) >= _QUERY_ROW_CAP,
+            }
+        except Exception as e:
+            return {"status": "error",
+                    "error": f"{type(e).__name__}: {str(e)[:200]}"}
+        finally:
+            conn.close()
+
+    return await asyncio.to_thread(_run)
+
+
+def _build_query_data_tool():
+    """FunctionDeclaration for `query_data` — read-only SQL over the
+    bot's SQLite DB, for aggregate/time-series analysis the other tools
+    can't do (they return capped individual rows, not GROUP BY counts)."""
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="query_data",
+                description=(
+                    "Run a READ-ONLY SQL SELECT against the bot's SQLite "
+                    "database and get rows back — for aggregates, "
+                    "trends-over-time, activity-by-hour, group-bys, and "
+                    "any analysis the other tools can't do (they return "
+                    "capped individual rows, not counts). Pair it with "
+                    "code execution: query the aggregate, then chart it. "
+                    "SELECT / WITH only; writes, DDL, PRAGMA, ATTACH and "
+                    "multi-statement are blocked; results cap at 500 "
+                    "rows and wide text fields are truncated.\n\n"
+                    "TABLES (columns):\n"
+                    "- chat_messages (165K rows): id, channel_name, "
+                    "author_username, author_display, content, posted_at "
+                    "(ISO-8601 TEXT), reply_parent_id, image_ocr_text. "
+                    "The full chat corpus — use for activity/trend/"
+                    "over-time analysis. There is NO precomputed racism "
+                    "score per message; approximate with LIKE on content "
+                    "(e.g. content LIKE '%nigg%') for a rough slur trend, "
+                    "and SAY it's an approximation.\n"
+                    "- analyst_trades (26K rows): author_username via "
+                    "`author`, author_id, caller, ticker, contract_type "
+                    "('call'/'put'), strike, expiry, action "
+                    "('open'/'add'/'close'/'trim'), gain_pct (ONLY on "
+                    "documented closes/trims), inferred_status "
+                    "('expired_unknown' = a ghost: opened, never closed), "
+                    "posted_at, price. WINS-BIASED — members screenshot "
+                    "winners; losses leak as ghosts — so a naive "
+                    "COUNT(gain_pct>0)/COUNT(*) is NOT a true win rate; "
+                    "note the bias.\n"
+                    "- user_profiles (55 rows, one per user): user_id, "
+                    "username, display_name, trader_score, trader_rank, "
+                    "racial_humor_score (0-100), slur_count, "
+                    "message_count_at_update, updated_at.\n"
+                    "- user_metrics (54 rows): user_id, slur_count_30d, "
+                    "total_messages_30d, trader_score, trader_rank "
+                    "(current snapshot).\n"
+                    "- daily_reports (104 rows): report_date, "
+                    "report_type ('daily'/'manual'), pdf_count, "
+                    "created_at.\n\n"
+                    "NOTES: posted_at/created_at are ISO TEXT — compare "
+                    "with date()/datetime(); some rows mix 'T' and space "
+                    "separators, so wrap in datetime() to be safe. Bucket "
+                    "time with strftime('%Y-%W', posted_at) for weekly, "
+                    "strftime('%Y-%m-%d', ...) for daily, "
+                    "strftime('%H', ...) for hour-of-day."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "sql": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "A single read-only SELECT/WITH query. "
+                                "GROUP BY / aggregates encouraged; a "
+                                "LIMIT is auto-added if you omit one."
+                            ),
+                        ),
+                    },
+                    required=["sql"],
+                ),
+            )
+        ]
+    )
+
+
 def _build_earnings_date_tool():
     """FunctionDeclaration for `lookup_earnings_date`. Per-symbol
     earnings dates from Finnhub's `/calendar/earnings` endpoint. The
@@ -5145,6 +5299,7 @@ async def _answer_with_gemini(
                 _build_options_chain_tool(),
                 _build_economic_calendar_tool(),
                 _build_earnings_date_tool(),
+                _build_query_data_tool(),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -5522,6 +5677,7 @@ async def _answer_with_gemini(
                 "lookup_options_chain": _execute_options_chain,
                 "lookup_economic_calendar": _execute_economic_calendar,
                 "lookup_earnings_date": _execute_earnings_date,
+                "query_data": _execute_query_data,
             }
             tool_response_parts = []
             for fc in function_calls:
