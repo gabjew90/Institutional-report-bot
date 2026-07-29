@@ -59,6 +59,94 @@ _SHORT_VERBS = {"short", "sell", "fade", "trim"}
 
 
 # =====================================================================
+# Thesis-level FLIP detection (2026-07-29 pulse feedback)
+# =====================================================================
+# The board's existing FLIP tag only catches SAME-ticker direction
+# reversals (db.upsert_pulse_leans), so a macro view reversed through a
+# DIFFERENT instrument shipped as NEW: Monday "hike risk underpriced →
+# Long $UUP" became Tuesday "clean hold → Long $TLT" — a near-reversal
+# of the Fed call, unlabeled.
+#
+# Map macro instruments to (axis, stance-when-LONG). Shorting inverts
+# the stance. Two leans on the same axis with opposing stances across
+# consecutive boards = a thesis flip. Deliberately narrow: only
+# instruments whose macro meaning is unambiguous. Single names carry no
+# axis (an NVDA call isn't a Fed view), so they never produce a flip.
+_THESIS_AXIS: dict[str, tuple[str, str]] = {
+    # Fed / rates path. "hawkish" = higher-for-longer / hike risk.
+    "UUP": ("fed", "hawkish"), "DXY": ("fed", "hawkish"),
+    "TBT": ("fed", "hawkish"), "TMV": ("fed", "hawkish"),
+    "TLT": ("fed", "dovish"), "IEF": ("fed", "dovish"),
+    "SHY": ("fed", "dovish"), "TMF": ("fed", "dovish"),
+    "TLH": ("fed", "dovish"), "ZROZ": ("fed", "dovish"),
+    # Broad risk appetite.
+    "SPY": ("risk", "on"), "QQQ": ("risk", "on"), "IWM": ("risk", "on"),
+    "SPX": ("risk", "on"), "NDX": ("risk", "on"), "DIA": ("risk", "on"),
+    "VIX": ("risk", "off"), "UVXY": ("risk", "off"),
+    "VIXY": ("risk", "off"), "VXX": ("risk", "off"),
+    "SH": ("risk", "off"), "SQQQ": ("risk", "off"),
+    "SPXU": ("risk", "off"), "PSQ": ("risk", "off"),
+    # Crude direction.
+    "USO": ("oil", "bull"), "BNO": ("oil", "bull"), "XLE": ("oil", "bull"),
+    "DBO": ("oil", "bull"), "SCO": ("oil", "bear"), "DRIP": ("oil", "bear"),
+}
+
+_STANCE_OPPOSITE = {
+    "hawkish": "dovish", "dovish": "hawkish",
+    "on": "off", "off": "on",
+    "bull": "bear", "bear": "bull",
+}
+
+
+def _lean_thesis(ticker: str, direction: str) -> tuple[str, str] | None:
+    """(axis, stance) a lean expresses, or None when the instrument
+    carries no unambiguous macro thesis. Shorting inverts the stance."""
+    hit = _THESIS_AXIS.get((ticker or "").strip().upper())
+    if not hit:
+        return None
+    axis, stance_long = hit
+    if (direction or "").strip().lower() in _SHORT_VERBS:
+        return axis, _STANCE_OPPOSITE[stance_long]
+    return axis, stance_long
+
+
+def detect_thesis_flips(
+    board_rows: list[dict], today: str, prev_board_date: str | None,
+) -> set[str]:
+    """Instruments in TODAY's leans that reverse a macro thesis the
+    PRIOR board held through a different instrument."""
+    if not prev_board_date or prev_board_date >= today:
+        return set()
+    prior_stances: dict[str, set[str]] = {}
+    for r in (board_rows or []):
+        if (r.get("last_seen_date") or "") != prev_board_date:
+            continue
+        for tk in _row_tickers(r):
+            th = _lean_thesis(tk, r.get("direction") or "")
+            if th:
+                prior_stances.setdefault(th[0], set()).add(th[1])
+    if not prior_stances:
+        return set()
+
+    flips: set[str] = set()
+    for r in (board_rows or []):
+        if (r.get("last_seen_date") or today) != today:
+            continue
+        for tk in _row_tickers(r):
+            th = _lean_thesis(tk, r.get("direction") or "")
+            if not th:
+                continue
+            axis, stance = th
+            held = prior_stances.get(axis) or set()
+            # Reversal only when the prior board held the OPPOSITE
+            # stance and does not also hold this one (a board carrying
+            # both sides isn't reversing anything).
+            if _STANCE_OPPOSITE[stance] in held and stance not in held:
+                flips.add(tk.upper())
+    return flips
+
+
+# =====================================================================
 # State extraction (called by the bridge's context-dump job)
 # =====================================================================
 
@@ -853,6 +941,13 @@ def render_trade_board(
     means today's themes went elsewhere).
     """
     flips = {f.upper() for f in (flips or set())}
+    # Merge in THESIS flips — the caller's set only covers same-ticker
+    # direction reversals, so a macro view reversed through a different
+    # instrument (Long $UUP → Long $TLT) shipped as NEW (2026-07-29).
+    try:
+        flips |= detect_thesis_flips(board_rows, today, prev_board_date)
+    except Exception as e:
+        log.info(f"thesis-flip detection failed (non-fatal): {e}")
     # Leans: only what TODAY's pulse actually says — last seen today.
     rows = [r for r in (board_rows or [])
             if (r.get("last_seen_date") or today) == today]
@@ -934,11 +1029,13 @@ def render_trade_board(
     out = "## TRADE BOARD\n\n"
     if lean_lines:
         out += (
-            "Leans this pulse is making — NEW = first flagged today, FLIP "
-            "= reversed today, \"held since …\" = carried from an earlier "
-            "pulse and repeated today, \"off board since …\" = was on the "
-            "last board and wasn't repeated today (today's themes went "
-            "elsewhere — a deliberate reversal would show as FLIP):\n\n"
+            "Leans this pulse is making.\n\n"
+            "**NEW** first flagged today. **FLIP** reverses a view this "
+            "board held — same ticker or the same macro call expressed "
+            "another way. **held since …** carried from an earlier "
+            "pulse and repeated today. **off board since …** was on the "
+            "last board, not repeated today; the move since it was "
+            "flagged is scored where price data exists.\n\n"
             + "\n".join(lean_lines) + "\n"
         )
     if hc_block:

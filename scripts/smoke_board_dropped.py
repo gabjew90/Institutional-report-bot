@@ -63,11 +63,13 @@ def test_the_observed_07_10_drops_surface():
     assert board.count("$TLT") == 1, \
         f"FLIP must not also render as off-board: {board}"
     assert "- **FLIP** Short $TLT" in board, board
-    # legend names the new state (intent-neutral: 2026-07-13 rename from
-    # DROPPED, which implied a deliberate exit)
-    assert '"off board since …"' in board, "legend missing off-board"
-    assert "deliberate reversal would show as FLIP" in board, \
-        "legend must disclaim intent"
+    # legend names the state (intent-neutral: 2026-07-13 rename from
+    # DROPPED, which implied a deliberate exit). 2026-07-29: legend
+    # rewritten (was a 60-word run-on) — bold terms, no wrapping quotes,
+    # and it now documents exit scoring + thesis-level FLIP.
+    assert "off board since …" in board, "legend missing off-board"
+    assert "not repeated today" in board, "legend must disclaim intent"
+    assert "scored" in board, "legend must document exit scoring"
     _ok("07-10 case: silent drops surface; FLIP not double-reported")
 
 
