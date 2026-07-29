@@ -833,10 +833,19 @@ def _build_runtime_system_instruction(extra_directive: str = "") -> str:
         f"CURRENT TIME (ET):     {et_label}\n"
         f"When the asker says a local time (5pm EST, this morning, "
         f"last hour), convert to UTC before passing as start_iso/"
-        f"end_iso to search_chat_messages.\n\n"
-        f"---\n\n"
+        f"end_iso to search_chat_messages.\n"
     )
-    return header + _ASK_SYSTEM_INSTRUCTION + (extra_directive or "")
+    # Ordering (2026-07-29): the static prompt goes FIRST so it forms a
+    # stable prefix for Gemini's implicit caching — a per-minute
+    # timestamp prefix used to bust the cache on the entire ~13K-token
+    # static block behind it, every single call. Dynamic content (time
+    # header, per-request FACT directive) rides in the suffix.
+    return (
+        _ASK_SYSTEM_INSTRUCTION
+        + "\n\n---\n\n"
+        + header
+        + (extra_directive or "")
+    )
 
 
 # Appended to the system instruction when the intent router classifies
@@ -4649,6 +4658,75 @@ def _fact_jab_sentences(answer: str) -> list[str]:
     ]
 
 
+# Clapback fidelity (2026-07-29 kyle/ZHawk blend). In a multi-party
+# thread both dossiers ride in WHO'S TALKING, and under sustained-roast
+# pressure the model attributed ZHawk's receipts (XSP trade, Austin,
+# Excel) to bearishkyle and invented replacements when corrected
+# ("fine, dad's fund"). Receipts at answer time: distinctive claims in
+# an ungrounded BANTER answer must appear in the ASKER'S OWN material.
+
+def _asker_material_surface(
+    profiles_block: str, chat_context: str,
+    asker_username: str, asker_display: str, question: str,
+) -> str:
+    """The asker-scoped receipts pool: THEIR WHO'S TALKING section (not
+    the co-loaded members'), THEIR chat lines, and the question."""
+    parts = [question or ""]
+    uname = (asker_username or "").strip().lower()
+    if uname:
+        for sec in re.split(r"(?m)^(?=- \*\*)", profiles_block or ""):
+            head = sec.split("\n", 1)[0].lower()
+            if f"({uname}" in head:
+                parts.append(sec)
+                break
+    disp = (asker_display or "").strip().lower()
+    for ln in (chat_context or "").splitlines():
+        label = ln.split(": ", 1)[0].lower()
+        if uname and f"({uname})" in label:
+            parts.append(ln)
+        elif disp and label == disp:
+            parts.append(ln)
+    return "\n".join(parts)
+
+
+def _clapback_claim_tokens(answer: str) -> list[str]:
+    """Distinctive claim tokens in a clapback: cashtags, bare
+    uppercase tickers (2-5 caps), and mid-sentence capitalized
+    entities. Room voice is lowercase-heavy, so mid-sentence caps are
+    deliberate entity mentions; sentence-initial caps are skipped to
+    avoid flagging ordinary sentence case."""
+    toks: list[str] = []
+    seen: set[str] = set()
+    for m in re.finditer(r"\$([A-Za-z]{1,6})\b|\b([A-Z]{2,5})\b",
+                         answer or ""):
+        t = m.group(1) or m.group(2)
+        tl = t.lower()
+        if (not t.isalpha() or t.upper() in _TICKER_FALSE_POSITIVES
+                or tl in seen):
+            continue
+        seen.add(tl)
+        toks.append(t)
+    for m in re.finditer(r"\b([A-Z][a-z]{2,15})\b", answer or ""):
+        t = m.group(1)
+        tl = t.lower()
+        if tl in seen or tl in _NAME_CHECK_STOP:
+            continue
+        prev = (answer or "")[:m.start()].rstrip()
+        if not prev or prev[-1] in '.!?"“’':
+            continue  # sentence-initial / quote-opening — plain case
+        seen.add(tl)
+        toks.append(t)
+    return toks
+
+
+def _clapback_fidelity_violations(answer: str, material: str) -> list[str]:
+    """Claim tokens in `answer` absent from the asker's own material —
+    cross-attribution or invention, either way not their receipt."""
+    low = (material or "").lower()
+    return [t for t in _clapback_claim_tokens(answer)
+            if t.lower() not in low]
+
+
 async def _answer_with_gemini(
     question: str,
     user_id: int,
@@ -5554,6 +5632,100 @@ async def _answer_with_gemini(
                     log.warning(
                         f"/ask: hard-stripped {len(_jab_residual)} "
                         f"jab sentence(s) from FACT answer"
+                    )
+
+        # Clapback fidelity guard (2026-07-29, BANTER-gated, ungrounded
+        # only). Distinctive claims must trace to the ASKER's own
+        # material — co-loaded dossiers in multi-party threads are the
+        # cross-attribution source (kyle got ZHawk's XSP trade, Austin,
+        # and Excel material); grounded banter may legitimately cite
+        # the web. One rewrite naming the offenders; then strip; a
+        # fully-stripped answer becomes a disengage line — the move the
+        # prompt prescribes when the receipts run dry.
+        if answer and not _route_is_factual and not _round_gm_chunks:
+            _fid_material = _asker_material_surface(
+                profiles_block, chat_context, asker_username,
+                asker_display_name, question,
+            )
+            _fid_viol = _clapback_fidelity_violations(answer, _fid_material)
+            if _fid_viol:
+                _ask_meta["guards"].append("clapback-fidelity")
+                log.warning(
+                    f"/ask: clapback carries non-asker material "
+                    f"({_fid_viol[:6]}) — requesting fidelity rewrite"
+                )
+                try:
+                    _fid_contents = list(contents) + [types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=(
+                            "[FIDELITY CHECK] Your draft attributed "
+                            "material that is NOT the asker's own: "
+                            + ", ".join(_fid_viol[:8]) +
+                            ". Those belong to other members or to "
+                            "nobody. Rewrite the reply using ONLY the "
+                            "asker's documented material — their "
+                            "profile, their own messages, this "
+                            "question. Never substitute a new invented "
+                            "specific for a corrected one. If you have "
+                            "no fresh receipts left, deliver a short "
+                            "one-line disengage instead. Output only "
+                            "the reply."
+                        ))],
+                    )]
+                    _fid_resp = await client.aio.models.generate_content(
+                        model=ask_model,
+                        contents=_fid_contents,
+                        config=types.GenerateContentConfig(
+                            system_instruction=(
+                                _build_runtime_system_instruction()
+                            ),
+                            safety_settings=safety_settings,
+                            max_output_tokens=1000,
+                            temperature=0.4,
+                            thinking_config=types.ThinkingConfig(
+                                thinking_budget=512),
+                        ),
+                    )
+                    _tally_retry_usage(_fid_resp)
+                    try:
+                        _fid_answer = (_fid_resp.text or "").strip()
+                    except Exception:
+                        _fid_answer = ""
+                    if _fid_answer:
+                        _fid_answer, _ = _clean_voice_violations(
+                            _fid_answer
+                        )
+                    if _fid_answer and not _clapback_fidelity_violations(
+                            _fid_answer, _fid_material):
+                        answer = _fid_answer
+                        log.info("/ask: fidelity rewrite accepted")
+                    else:
+                        _bad = [
+                            s for s in _split_sentences(answer)
+                            if _clapback_fidelity_violations(
+                                s, _fid_material)
+                        ]
+                        _stripped_f = _strip_sentences(answer, _bad)
+                        if _stripped_f.strip():
+                            answer = _stripped_f
+                            _ask_meta["guards"].append(
+                                "clapback-fidelity-strip")
+                            log.warning(
+                                f"/ask: stripped {len(_bad)} "
+                                f"non-asker sentence(s) from clapback"
+                            )
+                        else:
+                            answer = "you done?"
+                            _ask_meta["guards"].append(
+                                "clapback-fidelity-disengage")
+                            log.warning(
+                                "/ask: whole clapback was non-asker "
+                                "material — disengaging"
+                            )
+                except Exception as fe:
+                    log.warning(
+                        f"/ask: fidelity rewrite call failed "
+                        f"(non-fatal): {fe}"
                     )
 
         # Roast-recycle guard (BANTER-gated) — a roast that remixes the
