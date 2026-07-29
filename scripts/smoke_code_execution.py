@@ -59,21 +59,19 @@ def test_code_execution_tool_wired():
     _ok("code_execution tool wired into the main /ask config")
 
 
-def test_image_extraction_caps_and_filters():
+def test_image_extraction_final_only_and_filters():
     from discord_bot.bot import _extract_code_images
     parts = [
-        _img_part(b"PNGDATA1"),
+        _img_part(b"DRAFT1"),
         _img_part(b"NOTIMG", mime="text/plain"),  # ignored
-        _img_part(b"PNGDATA2"),
-        _img_part(b"PNGDATA3"),
-        _img_part(b"PNGDATA4"),  # beyond the cap
+        _img_part(b"DRAFT2"),
+        _img_part(b"FINAL"),
     ]
     imgs = _extract_code_images(_resp(parts))
     assert all(m.startswith("image/") for _b, m in imgs), imgs
-    assert b"NOTIMG" not in [b for b, _m in imgs], "non-image leaked"
-    assert len(imgs) <= 3, f"image count not capped: {len(imgs)}"
-    assert imgs[0][0] == b"PNGDATA1"
-    _ok("chart-image extraction filters non-images and caps the count")
+    # only the FINAL render surfaces — iterated drafts collapse away
+    assert len(imgs) == 1 and imgs[0][0] == b"FINAL", imgs
+    _ok("chart-image extraction filters non-images, keeps final render")
 
 
 def test_no_images_returns_empty():
@@ -108,7 +106,7 @@ def test_prompt_announces_capability():
 if __name__ == "__main__":
     print("=== code execution wiring smoke ===")
     test_code_execution_tool_wired()
-    test_image_extraction_caps_and_filters()
+    test_image_extraction_final_only_and_filters()
     test_no_images_returns_empty()
     test_result_normalizer()
     test_prompt_announces_capability()

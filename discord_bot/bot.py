@@ -1689,9 +1689,41 @@ async def _execute_trade_log(args: dict) -> dict:
 # Hardcoded crypto symbol allowlist. Extensible — append symbols here
 # as crypto questions surface them. Anything not in this set routes
 # to Finnhub (stocks/ETFs/indices).
+# Crypto-PRIORITY set: symbols routed to Binance.US FIRST (before the
+# stock path), because they're unambiguous majors we never want
+# mis-resolved to a same-letter stock. This is NO LONGER the ceiling on
+# crypto coverage — any symbol that isn't a valid US stock gets a
+# Binance.US fallback (see _crypto_quote + the executor), so SUI/PEPE/
+# TON/ARB/new-listings resolve dynamically. (2026-07-29: was a hard
+# 10-coin allowlist; long-tail coins silently missed in a crypto room.)
 _CRYPTO_SYMBOLS = frozenset({
-    "BTC", "ETH", "SOL", "DOGE", "ADA", "AVAX", "MATIC", "XRP", "BNB", "LINK",
+    "BTC", "ETH", "SOL", "DOGE", "ADA", "AVAX", "XRP", "BNB", "LINK",
+    "LTC", "DOT", "TRX", "SUI", "TON", "ARB", "OP", "APT", "NEAR",
 })
+
+
+async def _crypto_quote(sym: str) -> dict | None:
+    """A live Binance.US quote for `sym` (as {SYM}USDT), or None if the
+    pair doesn't exist / the fetch fails. The single crypto builder used
+    by both the priority path and the stock-miss fallback."""
+    from report import market_data as _md
+    try:
+        data = await asyncio.to_thread(_md._fetch_binance_24h, f"{sym}USDT")
+    except Exception:
+        return None
+    if not data:
+        return None
+    return {
+        "symbol": sym,
+        "price": data.get("price"),
+        "change_pct": data.get("change_24h_rolling"),
+        "prev_close": None,
+        "source": "binance",
+        # Crypto trades 24/7 — Binance.US price is always live regardless
+        # of US-market session; tag it so Gemini doesn't false-stale it
+        # when mixed with after-hours stock quotes in one batch.
+        "data_freshness": "live_24_7",
+    }
 
 
 def _build_economic_calendar_tool():
@@ -2266,29 +2298,15 @@ async def _execute_market_price(args: dict) -> dict:
     quotes: list[dict] = []
     for sym in symbols:
         if sym in _CRYPTO_SYMBOLS:
-            try:
-                # to_thread: sync urllib I/O — never on the event loop.
-                data = await asyncio.to_thread(
-                    _md._fetch_binance_24h, f"{sym}USDT"
-                )
-            except Exception as e:
-                quotes.append({"symbol": sym, "error": f"{type(e).__name__}: {e}"})
-                continue
-            if not data:
-                quotes.append({"symbol": sym, "error": "no quote returned"})
-                continue
-            quotes.append({
-                "symbol": sym,
-                "price": data.get("price"),
-                "change_pct": data.get("change_24h_rolling"),
-                "prev_close": None,
-                "source": "binance",
-                # Crypto trades 24/7 — Binance.US price is always live
-                # regardless of US-market session classification. Tag it
-                # explicitly so Gemini doesn't false-stale BTC/ETH when
-                # mixing them with after-hours stock quotes in one batch.
-                "data_freshness": "live_24_7",
-            })
+            cq = await _crypto_quote(sym)
+            if cq:
+                quotes.append(cq)
+            else:
+                quotes.append({
+                    "symbol": sym,
+                    "error": f"no live feed for {sym} (Binance.US quote "
+                             f"unavailable right now)",
+                })
         else:
             # During AFTER-HOURS / PRE-MARKET, try Yahoo first — it
             # surfaces the actual extended-hours print via the v8
@@ -2355,10 +2373,21 @@ async def _execute_market_price(args: dict) -> dict:
                 # to_thread: sync urllib I/O — never on the event loop.
                 data = await asyncio.to_thread(_md._fetch_finnhub_quote, sym)
             except Exception as e:
-                quotes.append({"symbol": sym, "error": f"{type(e).__name__}: {e}"})
-                continue
+                data = None
+                log.info(f"finnhub quote for {sym} raised: {e}")
             if not data:
-                quotes.append({"symbol": sym, "error": "symbol not found"})
+                # Not a resolvable US stock — try a Binance.US crypto
+                # pair before giving up (dynamic crypto coverage: SUI,
+                # PEPE, new listings that aren't in the priority set).
+                cq = await _crypto_quote(sym)
+                if cq:
+                    quotes.append(cq)
+                    continue
+                quotes.append({
+                    "symbol": sym,
+                    "error": f"no live feed for {sym} — not a recognized "
+                             f"US stock or Binance.US crypto pair",
+                })
                 continue
             quotes.append({
                 "symbol": sym,
@@ -4728,18 +4757,34 @@ def _clapback_fidelity_violations(answer: str, material: str) -> list[str]:
             if t.lower() not in low]
 
 
-_CODE_IMAGE_MAX = 3
+def _is_clapback_shaped(answer: str) -> bool:
+    """True when the answer is a clapback AT THE ASKER — it addresses
+    them in second person. The fidelity guard only applies here: a
+    third-person informational answer (chat summary, leaderboard, "who
+    said X") legitimately names OTHER members and must not be checked
+    for 'asker's own material' (2026-07-29: a summary got mangled to a
+    mid-sentence 'and' because the guard treated every named member as
+    cross-attribution)."""
+    if not answer:
+        return False
+    # Count second-person addresses; a stray "your" in an aside isn't a
+    # clapback, a wall of "you...you...your" is.
+    n = len(re.findall(
+        r"\byou(?:r|[’']re|[’']ll|[’']d|[’']ve|s)?\b", answer, re.IGNORECASE))
+    return n >= 2
 
 
 def _extract_code_images(response) -> list[tuple[bytes, str]]:
-    """(bytes, mime) for image parts a code-execution response rendered
-    (matplotlib charts come back as inline_data image parts). Non-image
-    inline data is ignored; capped at _CODE_IMAGE_MAX."""
-    out: list[tuple[bytes, str]] = []
+    """(bytes, mime) for the FINAL image the code-execution response
+    rendered. The model often iterates a chart (draft → draft → final),
+    each plt.show() emitting an inline image part; surfacing all of them
+    posts 3 near-duplicate graphs (2026-07-29). Only the last render is
+    the polished one, so return just that."""
+    imgs: list[tuple[bytes, str]] = []
     try:
         parts = response.candidates[0].content.parts or []
     except (AttributeError, IndexError, TypeError):
-        return out
+        return imgs
     for p in parts:
         inl = getattr(p, "inline_data", None)
         if inl is None:
@@ -4747,10 +4792,30 @@ def _extract_code_images(response) -> list[tuple[bytes, str]]:
         mime = getattr(inl, "mime_type", "") or ""
         data = getattr(inl, "data", None)
         if data and mime.startswith("image/"):
-            out.append((data, mime))
-            if len(out) >= _CODE_IMAGE_MAX:
-                break
-    return out
+            imgs.append((data, mime))
+    return imgs[-1:]  # final render only
+
+
+# Charting the hidden score hierarchies (racism / trader scores) with a
+# numeric axis exposes the exact numbers the disclosure rules keep
+# hidden — even when the model fabricates them, a "racism score 0-100"
+# bar chart reads as real (2026-07-29: "graph the racism leaderboard").
+# Suppress the chart attachment for these topics; the text answer
+# (ranks + rationales) still ships and still passes the disclosure
+# guards. Belt-and-suspenders for the prompt rule, which flash-lite
+# ignores under a direct "graph it" instruction.
+_SCORE_CHART_RE = re.compile(
+    r"(racism|racist|trader[\s-]?score|trader[\s-]?rank|leaderboard|"
+    r"most\s+racist|ranking|rank\s+(?:everyone|the\s+room|all)|"
+    r"hierarch)",
+    re.IGNORECASE,
+)
+
+
+def _is_score_chart_topic(question: str, answer: str) -> bool:
+    """True when a chart request touches the hidden score hierarchy —
+    charts for these are suppressed to protect the disclosure rules."""
+    return bool(_SCORE_CHART_RE.search(f"{question or ''} {answer or ''}"))
 
 
 def _normalize_ask_result(result):
@@ -5697,7 +5762,8 @@ async def _answer_with_gemini(
         # the web. One rewrite naming the offenders; then strip; a
         # fully-stripped answer becomes a disengage line — the move the
         # prompt prescribes when the receipts run dry.
-        if answer and not _route_is_factual and not _round_gm_chunks:
+        if (answer and not _route_is_factual and not _round_gm_chunks
+                and _is_clapback_shaped(answer)):
             _fid_material = _asker_material_surface(
                 profiles_block, chat_context, asker_username,
                 asker_display_name, question,
@@ -7044,9 +7110,17 @@ async def _answer_with_gemini(
 
         embed = discord.Embed(description=full, color=0x228B22)
         embed.set_footer(text="Hi, I'm AI-powered - NFA")
-        # Attach any sandbox-rendered charts. Reference the first via
-        # attachment:// so it renders inside the embed; the rest post
-        # as sibling files.
+        # Suppress charts that would expose the hidden score hierarchy
+        # (racism / trader scores) — the text answer still ships.
+        if _code_images and _is_score_chart_topic(question, answer):
+            _code_images = []
+            _ask_meta["guards"].append("score-chart-suppressed")
+            log.warning(
+                "/ask: suppressed a hidden-hierarchy score chart "
+                "(disclosure) — text answer kept"
+            )
+        # Attach any sandbox-rendered chart. Reference it via
+        # attachment:// so it renders inside the embed.
         _files = []
         for _i, (_data, _mime) in enumerate(_code_images):
             _ext = "png" if "png" in _mime else (

@@ -46,7 +46,11 @@ def test_executors_use_to_thread():
     finnhub-quote (market_price), yahoo-options x2 (options_chain),
     economic-calendar (calendar) = 6 wrapped sites."""
     import discord_bot.bot as bot_mod
-    src_mp = inspect.getsource(bot_mod._execute_market_price)
+    # 2026-07-29: the Binance fetch moved into the _crypto_quote helper
+    # (dynamic crypto fallback), so the three sync fetchers now span the
+    # executor + that helper — count across both.
+    src_mp = (inspect.getsource(bot_mod._execute_market_price)
+              + inspect.getsource(bot_mod._crypto_quote))
     src_oc = inspect.getsource(bot_mod._execute_options_chain)
     src_ec = inspect.getsource(bot_mod._execute_economic_calendar)
 
@@ -54,7 +58,8 @@ def test_executors_use_to_thread():
         "_execute_market_price must route sync fetchers through "
         "asyncio.to_thread"
     )
-    # All three fetchers in market_price wrapped
+    # All three fetchers wrapped (binance in _crypto_quote; yahoo-AH +
+    # finnhub in the executor)
     assert src_mp.count("asyncio.to_thread") >= 3, (
         f"market_price has 3 sync fetchers (binance, yahoo-AH, finnhub) "
         f"— all must be wrapped, got "
