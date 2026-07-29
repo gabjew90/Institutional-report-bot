@@ -219,8 +219,11 @@ def fetch_price_history(
 ) -> list[dict] | None:
     """Daily (or weekly) close history for `symbol` via yfinance.
 
-    Returns [{"date": "YYYY-MM-DD", "close": float, "volume": int}, ...]
-    oldest-first, or None on failure / no data. This is the ONLY source
+    Returns [{"date", "open", "high", "low", "close", "volume"}, ...]
+    oldest-first, or None on failure / no data. Full OHLC so the model
+    can draw real candlesticks (the room's charting bot sets that
+    expectation); `close` alone drives the trade-board exit scoring.
+    This is the ONLY source
     of historical market series in the codebase (2026-07-29): before it
     existed, /ask had current prices only, and the model fabricated
     weekly S&P closes to build a correlation chart. Also powers
@@ -245,6 +248,9 @@ def fetch_price_history(
             try:
                 out.append({
                     "date": str(idx)[:10],
+                    "open": round(float(row["Open"]), 4),
+                    "high": round(float(row["High"]), 4),
+                    "low": round(float(row["Low"]), 4),
                     "close": round(float(row["Close"]), 4),
                     "volume": int(row.get("Volume") or 0),
                 })
