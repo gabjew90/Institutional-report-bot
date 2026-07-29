@@ -789,7 +789,13 @@ _OCR_INLINE_TRUNCATE = 800
 #
 # Capped at 3 tool-calling iterations per /ask to prevent runaway loops.
 # Each search returns up to 20 matching rows.
-_CHAT_SEARCH_MAX_ROUNDS = 3
+# 2026-07-29: raised 3 → 6. A real analysis legitimately chains more
+# calls than the old cap allowed — "analyze trades relative to QQQ" used
+# query_data (callers) → query_data (trades) → lookup_price_history
+# (QQQ) → query_data (schema) and was still working when the cap cut it
+# off mid-flight, leaving a function-call-only turn with no text
+# ("No response came back (reason: STOP)").
+_CHAT_SEARCH_MAX_ROUNDS = 6
 # Per-tool-result char clamp for the /ask function-calling loop.
 # 2026-07-17: an ask died with 400 INVALID_ARGUMENT (input exceeded the
 # 1M-token limit) — some tool result ballooned contents across rounds.
@@ -5843,9 +5849,71 @@ async def _answer_with_gemini(
                 break  # No more tool calls — final answer is in response.text
             if round_idx >= _CHAT_SEARCH_MAX_ROUNDS:
                 log.warning(
-                    f"/ask: hit tool-calling round cap ({_CHAT_SEARCH_MAX_ROUNDS}) "
-                    f"with function_calls still pending — using best response so far"
+                    f"/ask: hit tool-calling round cap "
+                    f"({_CHAT_SEARCH_MAX_ROUNDS}) with function_calls "
+                    f"still pending — forcing a final answer from what "
+                    f"was already gathered"
                 )
+                # Don't ship the pending function-call turn: it carries
+                # NO text, so response.text is empty and the user gets
+                # "No response came back (reason: STOP)" despite every
+                # tool having succeeded (2026-07-29). Make ONE more call
+                # with tools DISABLED so the model must write prose from
+                # the results already in `contents`.
+                try:
+                    _cap_contents = list(contents) + [types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=(
+                            "[ANSWER NOW] You've used your tool budget. "
+                            "Do NOT request more data. Write the answer "
+                            "from what you already retrieved above. If "
+                            "some piece is genuinely missing, answer "
+                            "with what you have and say plainly what "
+                            "you couldn't get."
+                        ))],
+                    )]
+                    _cap_cfg = types.GenerateContentConfig(
+                        system_instruction=(
+                            _build_runtime_system_instruction(_prompt_extra)
+                        ),
+                        tools=[],  # force prose, no more tool calls
+                        safety_settings=safety_settings,
+                        max_output_tokens=5000,
+                        temperature=0.3,
+                        thinking_config=types.ThinkingConfig(
+                            thinking_budget=2000),
+                    )
+                    _cap_resp = await client.aio.models.generate_content(
+                        model=ask_model,
+                        contents=_cap_contents,
+                        config=_cap_cfg,
+                    )
+                    # Tally inline — _tally_retry_usage is defined
+                    # later in this function, after the tool loop.
+                    try:
+                        _um = _cap_resp.usage_metadata
+                        _ask_actual_total += (
+                            (_um.prompt_token_count or 0)
+                            + (_um.candidates_token_count or 0)
+                        )
+                    except Exception:
+                        pass
+                    try:
+                        _cap_text = (_cap_resp.text or "").strip()
+                    except Exception:
+                        _cap_text = ""
+                    if _cap_text:
+                        response = _cap_resp
+                        _ask_meta["guards"].append("round-cap-final-answer")
+                        log.info(
+                            "/ask: round-cap final answer produced "
+                            f"{len(_cap_text)} chars"
+                        )
+                except Exception as _ce:
+                    log.warning(
+                        f"/ask: round-cap final answer failed "
+                        f"(non-fatal): {_ce}"
+                    )
                 break
 
             # Echo the model's tool-call turn into history so the next
