@@ -2243,6 +2243,12 @@ def _build_query_data_tool():
                     "SELECT / WITH only; writes, DDL, PRAGMA, ATTACH and "
                     "multi-statement are blocked; results cap at 500 "
                     "rows and wide text fields are truncated.\n\n"
+                    "**DON'T PROBE THE SCHEMA — it's fully documented "
+                    "below.** `PRAGMA` is blocked and "
+                    "sqlite_master/SELECT * round-trips burn your tool "
+                    "budget before you get to the actual analysis "
+                    "(observed 2026-07-29: three of six rounds spent on "
+                    "discovery). Write the real query first time.\n\n"
                     "TABLES (columns):\n"
                     "- **latest_pdf_analyses** (VIEW, ~13K rows — USE "
                     "THIS for institutional-research questions, never "
@@ -5876,7 +5882,17 @@ async def _answer_with_gemini(
                         system_instruction=(
                             _build_runtime_system_instruction(_prompt_extra)
                         ),
-                        tools=[],  # force prose, no more tool calls
+                        # Keep CODE EXECUTION available — it needs no
+                        # new data and is how the answer gets computed
+                        # and charted. Only the data-fetching function
+                        # tools are withheld, so the model can't spend
+                        # more budget looking things up. (2026-07-29: an
+                        # EMPTY tool list here produced a correct prose
+                        # answer with NO chart, because it killed the
+                        # sandbox along with the lookups.)
+                        tools=[types.Tool(
+                            code_execution=types.ToolCodeExecution()
+                        )],
                         safety_settings=safety_settings,
                         max_output_tokens=5000,
                         temperature=0.3,
