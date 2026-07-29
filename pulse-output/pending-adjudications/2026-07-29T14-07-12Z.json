@@ -1,0 +1,155 @@
+{
+  "pulse_date": "2026-07-29",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai capex excess",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 1, "neutral": 4},
+      "consensus_view": "Banks agree AI spending keeps climbing, with Alphabet lifting its 2026 capital-spending plan to $200bn, but they split on whether that spending can keep getting funded, with JPMorgan seeing demand outrun supply while Bank of America says bond investors have stopped paying for it.",
+      "facts_agreed": [
+        {
+          "claim": "Several desks are treating the return on AI capital spending as an open question rather than a settled one.",
+          "banks_for": ["Goldman Sachs", "JPMorgan", "ZeroHedge"],
+          "evidence_quotes": ["AI investment ROIC concerns", "AI capex and ROI", "AI capex sustainability"]
+        },
+        {
+          "claim": "The AI capital-spending cycle is an active, broadly tracked subject across desks this window.",
+          "banks_for": ["Bloomberg", "Goldman Sachs", "JPMorgan"],
+          "evidence_quotes": ["AI-related capex cycle", "AI-related capex", "Competitive capex spree", "AI investment capital spending shift"]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether AI capital spending can keep being financed, or whether funding conditions are already breaking it",
+          "banks_for": ["JPMorgan"],
+          "for_evidence": "demand continues to outpace supply across both its product and foundry businesses",
+          "banks_against": ["Bank of America"],
+          "against_evidence": "bondholders are no longer funding the AI party"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hyperscaler credit vs equity",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 5},
+      "consensus_view": "Five desks are all watching how the big cloud companies are paying for their AI buildout — borrowing costs, bond issuance, and whether spending turns into cash — but none has yet said whether their bonds or their stock is the better place to be.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are tracking how hyperscalers fund their AI spending, flagging debt issuance, funding durability, and credit spreads as live topics this window without taking a side.",
+          "banks_for": ["Goldman Sachs", "BTIG", "Bank of America", "JPMorgan", "ZeroHedge"],
+          "evidence_quotes": ["Hyperscaler capex efficiency", "Hyperscaler debt issuance", "Hyperscaler funding sustainability", "Hyperscaler debt risk", "Hyperscaler credit spread widening"]
+        },
+        {
+          "claim": "Goldman ties the outlook for hyperscaler bonds to whether forecasts for the cash these companies generate start improving.",
+          "banks_for": ["Goldman Sachs"],
+          "evidence_quotes": ["The path ahead for credit likely hinges on some improvement in forward estimates of free cash flow generation."]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "midterm election market impact",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 4},
+      "consensus_view": "Four desks flag the US midterms as a live macro risk this window, mostly around split-government gridlock and its hit to government spending, but none has staked out a directional call on stocks yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks are flagging the US midterm elections as an upcoming source of policy uncertainty, with split-government gridlock and reduced government spending the specific worries.",
+          "banks_for": ["Goldman Sachs", "JPMorgan", "Bloomberg"],
+          "evidence_quotes": ["US Midterm Election uncertainty", "US midterm election gridlock", "US midterms gridlock", "Midterm elections fiscal multiplier risk"]
+        },
+        {
+          "claim": "Deutsche Bank points to the historical pattern that the S&P 500 has recovered in the nine months after every one of the last 20 midterm elections.",
+          "banks_for": ["Deutsche Bank"],
+          "evidence_quotes": ["by nine months later it has never been lower in any of the 20 midterm cycles"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor market dynamics",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 3, "neutral": 0},
+      "consensus_view": "Three of the four desks covering chips say the sell-off is not finished yet, blaming crowded trades being unwound and new Chinese memory-chip supply rather than worse earnings, while only JPMorgan still backs the bull case, so the sector's direction is genuinely unresolved.",
+      "facts_agreed": [
+        {
+          "claim": "The semiconductor complex is in a broad, forced repricing rather than a normal pullback, with selling pressure showing up across desks.",
+          "banks_for": ["Goldman Sachs", "ZeroHedge", "BTIG"],
+          "evidence_quotes": ["the magnitude of the recent sell-off appears more reflective of positioning, deleveraging and behavioral finance", "concerns about the cyclical nature of other AI components are getting repriced", "that sort of trade in the face of a well publicized 'backstop' suggests we still have a ways to go"]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the semiconductor drawdown is a buyable dip or has further downside to run",
+          "banks_for": ["JPMorgan"],
+          "for_evidence": "We agree with the Bull Case.",
+          "banks_against": ["BTIG", "Goldman Sachs", "ZeroHedge"],
+          "against_evidence": "that sort of trade in the face of a well publicized 'backstop' suggests we still have a ways to go"
+        },
+        {
+          "claim": "whether the sell-off reflects deteriorating fundamentals or just positioning unwind",
+          "banks_for": ["Goldman Sachs"],
+          "for_evidence": "the magnitude of the recent sell-off appears more reflective of positioning, deleveraging and behavioral finance",
+          "banks_against": ["ZeroHedge"],
+          "against_evidence": "concerns about the cyclical nature of other AI components are getting repriced"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "dispersion unwind",
+      "selected": true,
+      "stance_counts": {"supportive": 2, "skeptical": 0, "neutral": 2},
+      "consensus_view": "Both desks read the current violent rotation between stocks as crowded traders unwinding the same positions at once rather than as a change in the underlying business fundamentals.",
+      "facts_agreed": [
+        {
+          "claim": "The recent rotation is being driven by traders exiting crowded positions, not by new fundamental news, and that unwind is now visibly underway.",
+          "banks_for": ["JPMorgan", "SpotGamma"],
+          "evidence_quotes": ["prevailing view across investors remains that this is still primarily a positioning and momentum-driven rotation", "the dispersion unwind we have been watching for is no longer hypothetical"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "china duv lithography supply",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Three desks are tracking China's push to build its own DUV chipmaking machines (the tools that print circuits onto silicon) and what that means for memory-chip supply, but none has committed to a directional call yet.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag China's domestic DUV lithography tool production and its knock-on effect on Chinese memory-chip supply as a live topic this window.",
+          "banks_for": ["BTIG", "Goldman Sachs", "JPMorgan"],
+          "evidence_quotes": ["ASML China DUV lithography production", "China DUV memory supply", "Domestic immersion DUV lithography systems", "Chinese DRAM self-sufficiency", "Domestic DUV lithography machine production"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran oil supply risk",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Three banks keep flagging Iran and the Strait of Hormuz shipping chokepoint as a live risk to oil supply, but none of them has committed to a call on which way oil actually goes.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks treat the Strait of Hormuz as an active geopolitical risk to oil supply in this window.",
+          "banks_for": ["TS Lombard", "Deutsche Bank", "JPMorgan"],
+          "evidence_quotes": ["Strait of Hormuz supply disruption risk", "Strait of Hormuz geopolitical tension", "Strait of Hormuz geopolitical tensions"]
+        },
+        {
+          "claim": "Two banks flag the Iran conflict itself as a driver of energy and oil prices.",
+          "banks_for": ["Deutsche Bank", "JPMorgan"],
+          "evidence_quotes": ["War in Iran impact on oil prices", "US/Iran conflict energy impact"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
