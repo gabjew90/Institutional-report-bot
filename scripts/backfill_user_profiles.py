@@ -247,7 +247,7 @@ Anti-patterns:
 
 **Retarded takes.** Bullet list of 4-8 specific dumb or racist takes/claims they actually made. Each item: the take + a beat of framing that names why it's dumb. Pull from chat verbatim where possible — see ATTRIBUTION RULE in HOW TO WRITE, every quoted line MUST be one of THIS user's own messages, not adjacent context.
 
-Each bullet shape: `[the take, with quoted phrase if available]` + `[the framing that names what made it dumb — sourced from chat outcome, the user's own contradiction, or their own follow-up]`.
+Each bullet shape: `["the verbatim quoted take" — mandatory, see ANCHOR RECEIPTS]` + `[the framing that names what made it dumb — sourced from chat outcome, the user's own contradiction, or their own follow-up]`.
 
 Anti-patterns:
 - "Sometimes makes overconfident calls" (no specifics)
@@ -270,10 +270,10 @@ Anti-patterns:
 
 **Recent personal life.** Bullet list of 4-6 personal-life details revealed in chat in the recent window. **Savage-but-hilarious.** Anything they posted is fair game — job, family, where they live, commute, kids, wife, dating life, health, hobbies, embarrassing admissions. Frame each one with a comedic angle, not just bare reporting. **Prioritize durable identity dimensions** — a fitness routine, a sport, a job, a signature obsession the room knows them for — over one-off incidents, and prefer NON-trading color: money-adjacent rituals (account resets, P&L habits) don't count toward the 4-6. This section is the roast bot's top-tier ammunition; if the chat shows a dimension repeatedly (someone posts marathon times, sauna routines, peptide orders), it MUST be here.
 
-Each bullet: the real detail sourced from THIS user's chat, then ` + [a comedic framing beat]`. **NEVER emit bracket placeholders** — if you catch yourself writing a bullet that is nothing but [bracketed descriptions], you have no material for that bullet; drop it (2026-07-11: four rebuilt dossiers shipped with the spec's own placeholder text as their personal-life section). Shape example from a FICTIONAL user — never copy the content, only the shape:
+Each bullet: the real detail INCLUDING a "verbatim anchor quote" from this user's messages (see ANCHOR RECEIPTS — no quote, no bullet), then ` + [a comedic framing beat]`. **NEVER emit bracket placeholders** — if you catch yourself writing a bullet that is nothing but [bracketed descriptions], you have no material for that bullet; drop it (2026-07-11: four rebuilt dossiers shipped with the spec's own placeholder text as their personal-life section). Shape example from a FICTIONAL user — never copy the content, only the shape:
 
 > - Commutes 90 minutes each way to a job he only ever calls "the yard" + [claims the drive "builds character," complains about it in chat weekly anyway]
-> - Microwaves fish in the office kitchen and posted HR's complaint email + [zero remorse, reposts it every time someone brings it up]
+> - Microwaves fish in the office kitchen — "HR sent the email AGAIN lmao" + [zero remorse, reposts it every time someone brings it up]
 
 Anti-patterns:
 - "Married with kids" (no edge, no framing)
@@ -284,7 +284,9 @@ Anti-patterns:
 
 **Lead with the behavior, follow with the evidence.** Write "buys any sub-$5 ticker with three letters and a press release, holds to -40%, calls it a long-term play." Not "trades small caps." Write "size scales with frustration, every time." Not "tilts after losses." Specific behavior, every line.
 
-**ROOM-REACTION GROUNDING — you only see THIS user's messages, so you cannot know how the room reacted.** Your input contains {display_name}'s own messages ONLY — other members' replies, jokes, and reactions are NOT in your input. Therefore any framing beat that asserts a room reaction ("the room constantly fact-checks...", "leading to endless speculation", "the room's running joke", "the room asks weekly") is invented by construction — observed 2026-07-28: a live dossier claimed the room "fact-checks his fitness claims against his Whoop strain scores" and ran "endless 'is she real' speculation"; neither exists in anyone's chat, and both shipped into clapbacks as asserted facts. The rule: source every framing beat from THIS user's own words — their self-owns, contradictions, follow-ups, repetitions, or their OWN reports of reactions ("he says the room clowns him for it" is fine when HE said that). If the only funny angle you can find is an imagined room reaction, the beat isn't sourced — find a different angle or drop the bullet. Same softening rule as everywhere: inference gets "reads as / appears to," never asserted as fact.
+**ANCHOR RECEIPTS — every bullet carries its quote (binding).** Each bullet in Retarded takes and Recent personal life MUST embed at least one "verbatim quoted phrase" from THIS user's own messages — the receipt that sourced the bullet. No receipt = no bullet; drop it and find a different angle. This one mechanism is also why two claim families are banned outright:
+- **ROOM-REACTION claims** ("the room mocks/asks/fact-checks/speculates", "endless speculation", "running joke"): your input is {display_name}'s messages ONLY — other members' reactions are not in your input, so these beats can never carry a receipt. The user's OWN report of a reaction is fine when HE said it.
+- **Unreceipted IDENTITY claims** (job, role, location, family): discussing a topic is not being the person — a user correcting nurse-anesthesiologist trivia is not clinical staff. Identity facts live only in receipted bullets; Personality prose describes behavior, never unreceipted biography. Inference softens to "reads as," never asserted flat.
 
 **ATTRIBUTION RULE — quotes MUST be this user's own words.** This is non-negotiable. Every quoted phrase in the profile (Voice bullets, Retarded takes, anywhere else) MUST be a verbatim substring of one of the MESSAGES block entries below — entries that are, by construction, all authored by {display_name}. Do NOT quote:
 - A line from someone else that appeared in a thread {display_name} was in
@@ -337,7 +339,7 @@ The dossier below shows the structural shape of a complete profile (5 sections, 
 >
 > **Recent personal life.**
 > - Commutes 90 minutes each way to a job he only ever calls "the yard" + [claims the drive "builds character," complains about it in chat weekly anyway]
-> - Microwaves fish in the office kitchen and posted HR's complaint email + [zero remorse, reposts it every time someone brings it up]
+> - Microwaves fish in the office kitchen — "HR sent the email AGAIN lmao" + [zero remorse, reposts it every time someone brings it up]
 > - Trains for a triathlon he has never signed up for + [three years of "base building"]
 > - Wife runs the household budget after "the options incident" + [he reports his own allowance like earnings guidance]
 
@@ -424,8 +426,8 @@ What it covers: (a) the chatter base bracket you placed them in (0-25 / 25-40 / 
 
 - *Sharp talker, no receipts:* "Chat reads sharp on the macro side — `[chat-evidence: macro takes that land, conviction calibration, owns losses cleanly, no obvious tilt]`. No documented receipts in the window — the room hasn't seen him commit a single entry through the alert channels, so the chatter is taking it on faith. Talks a strong game; nothing certifies it yet."
 - *Average joe with some receipts:* "Chat reads middle-of-pack — `[chat-evidence: sells winners early, lukewarm conviction, follows the room when it pivots]`. A handful of receipts in the window — `[describe shape: 'a couple of clean entry-and-close pairs on the spot side,' 'mostly screenshot-only without commitments,' etc.]` — but the chatter pattern doesn't certify real edge."
-- *Bag holder:* "Chat reads bag-holder: `[chat-evidence: panic exits, sizing up to recover, tilt cycles visible, complaining about closed bags, gloat-loud / complain-vague asymmetry if visible]`. `[Describe receipts qualitatively: 'a stack of entries that mostly ghosted out without resolution,' 'a few losing screenshots,' 'no posts at all,' etc.]`. The receipts can't lift him out of the bag-holder zone when the chatter says he's tilting."
-- *Heavy poster, sharp by both layers:* "Chat reads sharp — `[chat-evidence: clean reads, repeatable framework, room tails the calls, owns misses without crisis]`. A steady stream of receipts in the window — `[describe shape: 'documented wins on $X and $Y plus the bagged $Z closed publicly,' 'consistent entry-and-close cadence in member-alerts,' etc.]`. Both layers stacking is what puts him near the top."
+- *Losing pattern:* "Chat reads loss-heavy: `[chat-evidence: panic exits, sizing up to recover, tilt cycles visible, complaining about closed losers, gloat-loud / complain-vague asymmetry if visible]`. `[Describe receipts qualitatively: 'a stack of entries that mostly ghosted out without resolution,' 'a few losing screenshots,' 'no posts at all,' etc.]`. The receipts can't lift him out of the bottom bracket when the chatter says he's tilting."
+- *Heavy poster, sharp by both layers:* "Chat reads sharp — `[chat-evidence: clean reads, repeatable framework, room tails the calls, owns misses without crisis]`. A steady stream of receipts in the window — `[describe shape: 'documented wins on $X and $Y plus the losing $Z closed publicly,' 'consistent entry-and-close cadence in member-alerts,' etc.]`. Both layers stacking is what puts him near the top."
 
 **Hard rule on the slots.** The bracketed slots are placeholders. Fill each with content sourced from the actual MESSAGES + analyst_trades + points ledger for THIS user. NEVER copy the example framing or trade descriptions across to a different user — same ATTRIBUTION RULE that governs Voice / Retarded takes.
 
@@ -502,11 +504,11 @@ final_score = min(50, chatter_base) * min(1, msg_count / 300) + receipt_points  
 
 Read the user's actual chat and place them in one of three bands. **Chatter caps at 50 absolutely — no matter how sharp someone sounds, the chat alone cannot push them above 50. Receipts are the certification.**
 
-- **0-25 — Bag holders. Never win.** Chat is dominated by losses, panic exits, copy-trading whoever's loudest, bag-holding language, sizing up to recover. Tilt cycles visible. Calls go against them more often than not. The texture is "I'm down again" and "what's bouncing." Use the lower half for active-loud bag-holders, upper half for users where the bag is there but the tone is more resigned than panicked.
+- **0-25 — Bottom bracket. Never win.** Chat is dominated by losses, panic exits, copy-trading whoever's loudest, loss-riding language, sizing up to recover. Tilt cycles visible. Calls go against them more often than not. The texture is "I'm down again" and "what's bouncing." Use the lower half for active-loud losers, upper half for users where the losses are there but the tone is more resigned than panicked.
 - **25-40 — Average joes.** Sell winners too early, hold losers too long, coin-flip outcomes over time. Follow the crowd more than they lead. Some self-awareness but doesn't translate to execution. The "talks the right setups, fades them" pattern. Lukewarm conviction; pivots when the room pivots.
 - **40-50 — Talks a good game.** Sharp reads, owns losses cleanly, calibrated conviction language, reasonable risk management talk, no obvious tilt cycle. Seems to win. Chat alone is consistent with real edge — but with no receipts, the room can't certify it. The "sounds like an actually-good trader, hasn't proven it" bracket.
 
-The chatter base IS the chat signal — it already reflects self-awareness, tilt patterns, gloat-loud / complain-vague asymmetry, and honesty in how the trader handles losses. Bake those into your chatter bracket placement directly: a gloating bag-holder who buries losses lands lower in 0-25; a self-aware mid-trader who owns misses cleanly lands higher in 25-40. No separate modifier — the bracket already does that work.
+The chatter base IS the chat signal — it already reflects self-awareness, tilt patterns, gloat-loud / complain-vague asymmetry, and honesty in how the trader handles losses. Bake those into your chatter bracket placement directly: a gloating loser who buries losses lands lower in 0-25; a self-aware mid-trader who owns misses cleanly lands higher in 25-40. No separate modifier — the bracket already does that work.
 
 Final clip: **chatter base never exceeds 50**, regardless of which bracket signal pulled you. The cap is hard.
 
@@ -548,16 +550,16 @@ If you find yourself wanting to inflate receipt points above the ledger total be
 Four populations the additive rubric reads correctly:
 
 - **Pure talker, sounds sharp, no receipts.** Chatter 45 + 0 receipts → 45. The 50 cap doesn't matter; they're below it. Talks a strong game; nothing certifies it.
-- **Pure talker, obvious bag-holder.** Chatter 20 + 0 receipts → 20. Bag-holder by chat, no receipts to lift them. Scored honestly from the complaining.
+- **Pure talker, obviously losing.** Chatter 20 + 0 receipts → 20. Losing pattern by chat, no receipts to lift them. Scored honestly from the complaining.
 - **Mid trader who posts.** Chatter 35 (average joe — coin-flip outcomes) + 30 receipt points → 65. Receipts add cleanly because the chatter base wasn't already near the cap.
 - **Sharp trader with receipts.** Chatter 48 (clipped from 51 — sharp + clean) + 40 receipt points → 88. Both layers stacking. The 40-50 chatter band combined with sustained receipts is where edge is certified.
-- **Loud bag-holder with high post volume (BK pattern).** Chatter 22 (bag-holder pattern) + 47 receipt points (9 wins × 5 + 1 winning screenshot × 2; caller-nerf zeroes out his 14 ghosts and 1 losing screenshot) → 69. Receipts lift him meaningfully but the wins-only rule keeps ghost-farming from inflating the total.
+- **Loud loss-rider with high post volume (BK pattern).** Chatter 22 (losing pattern) + 47 receipt points (9 wins × 5 + 1 winning screenshot × 2; caller-nerf zeroes out his 14 ghosts and 1 losing screenshot) → 69. Receipts lift him meaningfully but the wins-only rule keeps ghost-farming from inflating the total.
 - **Caller with consistent wins (abe pattern).** Chatter 0 (he doesn't post chat outside his alert channel) + 120 receipt points (20 wins × 5 + 10 winning screenshots × 2; caller-nerf zeroes the 2 losses and 5 ghosts) → 100, capped. Documented winning closes alone clear the ceiling. The 16 points he'd have earned from losses/ghosts under the member rule weren't needed.
 - **Thin-history lurker (activity penalty fires).** Chatter 45 (chat that's visible reads talks-good-game) but msg_count = 100 → credibility multiplier 0.2 → scaled chatter 9. Plus 0 receipts → 9. The chatter read might be accurate on the small sample, but the system can't verify the pattern over volume; the multiplier reflects that. The same user at 500+ msgs would land at 45 + receipts. The penalty applies ONLY to chatter — receipts (real trade activity logged in alert channels) are objective and never scaled.
 
 State the reasoning in trader_rationale — 3 to 5 sentences, qualitative prose (no numbers). Cover (a) chatter bracket placement + what chat-evidence drove it (self-awareness about losses, gloat patterns, tilt cycles all factor into bracket selection directly), (b) receipts described qualitatively, (c) the anchored examples that read the call. Example:
 
-> "Chat reads bag-holder. The actual outcomes visible in chat skew heavy on closed bags and complaining-vague-about-losses tilt cycles. The gloat-loud / complain-vague asymmetry is visible — he names every winner with size, every loss gets a one-line shrug. Some documented entries did make it into the alert channels, which credits some receipt weight; but the chatter pattern anchors him well below the sharp-trader range."
+> "Chat reads loss-heavy. The actual outcomes visible in chat skew toward closed losers and complaining-vague-about-losses tilt cycles. The gloat-loud / complain-vague asymmetry is visible — he names every winner with size, every loss gets a one-line shrug. Some documented entries did make it into the alert channels, which credits some receipt weight; but the chatter pattern anchors him well below the sharp-trader range."
 
 **trader_score = SKILL × ACTIVITY-CREDIBILITY + receipts.** The chatter bracket reflects skill (behavioral quality on the visible chat). Activity then acts as a CREDIBILITY FACTOR on that chatter — a user with very thin chat history can't be confidently bracketed in the 40-50 "talks-good-game" range no matter how sharp the few lines look, because there isn't enough sample to verify the pattern. Python applies the credibility multiplier (`min(1, msg_count / 300)`) downstream; you don't pre-discount the bracket. Just pick the bracket that fits the chat you SEE, and let the system handle the activity scaling. msg_count is also visible in the dossier header for reference.
 
@@ -858,6 +860,30 @@ def _room_reaction_claims(profile_text: str) -> list[str]:
     return out
 
 
+# Anchor-receipt check (2026-07-28 R1): bullets in these sections must
+# embed a verbatim quoted phrase from the user's messages — the receipt
+# that sourced the bullet. A fabricated bullet (invented biography like
+# "works in a clinical role", invented room reactions) can't produce
+# one. Presence is checked here; authenticity is checked by the
+# existing _verify_profile_claims quote verification.
+_ANCHOR_SECTIONS = ("Retarded takes", "Recent personal life")
+_ANCHOR_QUOTE_RE = __import__("re").compile(
+    r"""["“”][^"“”\n]{10,}["“”]|['‘’][^'‘’\n]{10,}['‘’]"""
+)
+
+
+def _unanchored_bullets(profile_text: str) -> list[str]:
+    """Bullets in anchor-mandatory sections that carry no quoted span."""
+    out: list[str] = []
+    for section in _ANCHOR_SECTIONS:
+        for b in (_section_bullets(profile_text, section) or []):
+            if "Insufficient signal" in b:
+                continue
+            if not _ANCHOR_QUOTE_RE.search(b):
+                out.append(f"[{section}] {b[:100]}")
+    return out
+
+
 def _lint_profile(
     profile_text: str, msg_count: int, claim_check: dict | None = None,
 ) -> tuple[list[str], list[str]]:
@@ -879,6 +905,15 @@ def _lint_profile(
             f"example ({', '.join(_bleed)}) — that content is invented, "
             f"not this user's. Every detail must come from THIS user's "
             f"actual messages."
+        )
+    _unanch = _unanchored_bullets(profile_text)
+    if _unanch:
+        hard.append(
+            f"{len(_unanch)} bullet(s) carry no verbatim anchor quote — "
+            f"every Retarded-takes / Recent-personal-life bullet must "
+            f"embed a \"quoted phrase\" from this user's own messages "
+            f"(the receipt that sourced it). No receipt = drop the "
+            f"bullet. Offender(s): {_unanch[:2]}"
         )
     _room = _room_reaction_claims(profile_text)
     if _room:

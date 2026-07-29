@@ -1,19 +1,22 @@
-"""Smoke: name-check guard must not flag ordinary capitalized words.
+"""Smoke: name-check guard fires only on near-member name confusion (R2).
 
-Context (2026-07-28 audit): the week's ask-logs show chronic false
-positives — `name-check:Great` (from "Great source you idiot"),
-`name-check:Sell,Limit,Bid`, `name-check:Fuck,Cost,Expiration`,
-`name-check:Damn`, `name-check:Nahhh,Hail,Simulated`. Each appends a
-"verify these person names" note to the prompt — attention noise on
-nearly every banter ask. Fix: extend the stoplist with common English
-words + trading jargon. NOTE: a sentence-position heuristic was
-rejected — "Morgan says you don't work very well" (the 07-17 incident
-that created this guard) is sentence-initial and MUST keep firing.
+Contract v2 (2026-07-28). The v1 fix extended a stoplist with ~70
+common words; within hours new false positives appeared (Weigh,
+Alright, Serious, United States) — a word-list treadmill. v2 replaces
+the heuristic: a capitalized token only warrants the note when it
+FUZZY-MATCHES close to a known member/display name without being one
+(the real mismap risk — "Monsoon" vs member "Moonsoon"). Tokens near
+nobody (Great, Morgan, Serious) never fire; truly-unknown-person
+handling is owned by the prompt's don't-invent-biography rule, which
+the 3.5-tier model observably respects. This deliberately RETIRES the
+v1 expectation that "Morgan" fires — the trade-off is documented in
+the R2 recommendation and watched via QC.
 
 Covers:
-  - the observed false-positive words no longer flag
-  - genuinely unknown person names still flag (Morgan regression)
-  - known members still resolve as known
+  - common capitalized words never flag (no list maintenance)
+  - near-member confusion (Monsoon/Moonsoon) DOES flag
+  - exact known member names don't flag
+  - unknown names near nobody don't flag (Morgan retirement)
 """
 
 import os
@@ -31,47 +34,62 @@ def _fail(msg):
     sys.exit(1)
 
 
-_KNOWN = "ZHawk (.zhawk) bankerkyle BK abe abullish_xyz"
+_KNOWN = ("Moonsoon (reportufirst) ZHawk (.zhawk) bankerkyle BK "
+          "abe (abullish_xyz) Tulch (tulch)")
 
 
-def test_observed_false_positives_die():
+def test_common_words_never_flag():
     from discord_bot.bot import _unknown_member_names
     cases = [
         "Great source you idiot",
         "Damn bro coming for my throat",
         "Sell Limit order sitting at Expiration",
-        "Fuck the Cost basis on this one",
-        "Nahhh Hail mary Simulated gains only",
+        "Weigh the Serious options Alright",
+        "United States of Simulated gains",
+        "Cathy said Spy puts print",
     ]
     for q in cases:
         out = _unknown_member_names(q, _KNOWN)
         assert out == [], f"false positive(s) {out} for: {q!r}"
-    _ok("observed false-positive words no longer flag as names")
+    _ok("common capitalized words never flag — no word list needed")
 
 
-def test_morgan_regression_still_fires():
+def test_near_member_confusion_flags():
+    from discord_bot.bot import _unknown_member_names
+    out = _unknown_member_names(
+        "I'm not Monsoon nigga I don't do clinical shifts", _KNOWN
+    )
+    assert "Monsoon" in out, (
+        f"near-member name (Monsoon ~ Moonsoon) must flag, got {out}"
+    )
+    _ok("near-member name confusion (Monsoon/Moonsoon) flags")
+
+
+def test_exact_known_members_dont_flag():
+    from discord_bot.bot import _unknown_member_names
+    out = _unknown_member_names(
+        "is Zhawk still holding those calls with Tulch", _KNOWN
+    )
+    assert out == [], f"known member wrongly flagged: {out}"
+    _ok("exact known member names resolve as known")
+
+
+def test_unknown_near_nobody_does_not_flag():
     from discord_bot.bot import _unknown_member_names
     out = _unknown_member_names(
         "Morgan says you don't work very well", _KNOWN
     )
-    assert "Morgan" in out, (
-        f"the 07-17 Morgan case must still fire, got {out}"
+    assert "Morgan" not in out, (
+        f"v2 contract: names near no member don't fire the note "
+        f"(prompt rule owns unknown-person handling), got {out}"
     )
-    _ok("sentence-initial unknown proper name (Morgan) still detected")
-
-
-def test_known_members_not_flagged():
-    from discord_bot.bot import _unknown_member_names
-    out = _unknown_member_names(
-        "is Zhawk still holding those calls", _KNOWN
-    )
-    assert out == [], f"known member wrongly flagged: {out}"
-    _ok("known member names resolve as known")
+    _ok("unknown name near nobody stays silent (v2 contract)")
 
 
 if __name__ == "__main__":
-    print("=== name-check false-positive smoke ===")
-    test_observed_false_positives_die()
-    test_morgan_regression_still_fires()
-    test_known_members_not_flagged()
-    print("\nALL NAME-CHECK FALSE-POSITIVE SMOKE TESTS PASS")
+    print("=== name-check near-member smoke (v2) ===")
+    test_common_words_never_flag()
+    test_near_member_confusion_flags()
+    test_exact_known_members_dont_flag()
+    test_unknown_near_nobody_does_not_flag()
+    print("\nALL NAME-CHECK NEAR-MEMBER SMOKE TESTS PASS")

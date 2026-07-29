@@ -3134,37 +3134,52 @@ _NAME_CHECK_STOP = frozenset({
     # public figures the room names constantly (NOT room members)
     "trump", "biden", "powell", "warsh", "musk", "buffett", "messi",
     "yahweh", "jerusalem",
-    # common capitalized words + trading jargon (2026-07-28: a week of
-    # ask-logs showed chronic false positives — name-check:Great /
-    # Sell,Limit,Bid / Fuck,Cost,Expiration / Damn / Nahhh,Hail,
-    # Simulated — each appending a "verify these names" note. A
-    # sentence-position filter was rejected: "Morgan says you don't
-    # work" is sentence-initial and must keep firing.)
-    "great", "good", "nice", "damn", "fuck", "shit", "bitch", "hell",
-    "bro", "dude", "man", "hail", "mary", "nahhh", "nahh", "yeah",
-    "yep", "yup", "nope", "cool", "fine", "sure", "right", "wrong",
-    "real", "fake", "true", "false", "crazy", "wild", "sick", "insane",
-    "best", "worst", "first", "last", "next", "big", "huge", "small",
-    "look", "watch", "wait", "come", "going", "gone", "get", "got",
-    "need", "want", "know", "think", "feel", "mean", "guess", "maybe",
-    "actually", "literally", "seriously", "honestly", "basically",
-    "whatever", "anyway", "anyways", "never", "always", "probably",
-    "sell", "buy", "sold", "bought", "long", "short", "hold", "held",
-    "open", "close", "closed", "entry", "exit", "fill", "filled",
-    "limit", "bid", "offer", "cost", "price", "strike", "expiry",
-    "expiration", "order", "orders", "chart", "charts", "trade",
-    "trades", "trading", "option", "options", "share", "shares",
-    "simulated", "paper", "margin", "leverage", "volume", "target",
-    "report", "news", "data", "source", "sources",
 })
+
+
+def _levenshtein_le(a: str, b: str, cap: int) -> bool:
+    """True when edit distance between `a` and `b` is <= cap. Early-exits
+    when a full row exceeds the cap."""
+    if abs(len(a) - len(b)) > cap:
+        return False
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i]
+        for j, cb in enumerate(b, 1):
+            cur.append(min(prev[j] + 1, cur[-1] + 1,
+                           prev[j - 1] + (ca != cb)))
+        if min(cur) > cap:
+            return False
+        prev = cur
+    return prev[-1] <= cap
+
+
+def _near_known_name(tok_low: str, known_low: str) -> bool:
+    """True when `tok_low` closely resembles (but isn't) a known member
+    surface name — the actual mismap risk the name-check note exists
+    for ("Monsoon" vs member "Moonsoon"). v2 contract (2026-07-28):
+    the v1 capitalized-token + stoplist heuristic was a false-positive
+    treadmill (Great / Sell / Weigh / Alright within days); tokens
+    near NO member name carry no confusion risk and never fire — the
+    prompt's don't-invent-biography rule owns truly-unknown names."""
+    for w in set(re.findall(r"[a-z][a-z._\-]{3,15}", known_low or "")):
+        w = w.strip("._-")
+        if len(w) < 4 or w == tok_low:
+            continue
+        cap = 1 if max(len(w), len(tok_low)) <= 7 else 2
+        if _levenshtein_le(tok_low, w, cap):
+            return True
+    return False
 
 
 def _unknown_member_names(
     question: str, known_names_text: str, limit: int = 3,
 ) -> list[str]:
-    """Capitalized name-like tokens in the asker's message that match no
-    known member surface (WHO'S TALKING names, chat authors, asker) and
-    no profiled user in the DB. Returns up to `limit` unknowns."""
+    """Capitalized tokens in the asker's message that closely RESEMBLE a
+    known member name without matching one — the mismap risk (the bot
+    attaching the similar member's material to a near-miss spelling).
+    Tokens near no member never fire (v2, see _near_known_name).
+    Returns up to `limit` near-miss unknowns."""
     if not question:
         return []
     # Only the asker's actual message region — injected blocks up top
@@ -3186,6 +3201,8 @@ def _unknown_member_names(
                 continue  # resolves to a profiled member — known
         except Exception:
             pass
+        if not _near_known_name(low, known_low):
+            continue  # near nobody — no confusion risk, no note
         out.append(tok)
         if len(out) >= limit:
             break
@@ -3197,14 +3214,15 @@ def _name_check_note(unknowns: list[str]) -> str:
         return ""
     names = ", ".join(f"'{n}'" for n in unknowns)
     return (
-        f"\n\n[NAME CHECK — mechanical: the name(s) {names} match no room "
-        f"member I have on file and nobody active in this chat. If they "
-        f"refer to a PERSON, resolve who they are FIRST (lookup_user_profile "
-        f"by name, or search_chat_messages) — and if that fails, say in "
-        f"voice that you don't know who that is. NEVER map an unknown name "
-        f"onto the asker or another member, and never present anyone's "
-        f"known traits as the unknown person's. If the name is a company, "
-        f"brand, or public figure, ignore this note.]"
+        f"\n\n[NAME CHECK — mechanical: the name(s) {names} closely "
+        f"resemble a member name but are NOT an exact match for anyone "
+        f"on file. Do NOT assume they mean the similar-sounding member — "
+        f"resolve FIRST (lookup_user_profile by name, or "
+        f"search_chat_messages); if that fails, say in voice you don't "
+        f"know who that is. NEVER map the name onto the asker or another "
+        f"member, and never present anyone's known traits as this "
+        f"person's. If it's a company, brand, or public figure, ignore "
+        f"this note.]"
     )
 
 

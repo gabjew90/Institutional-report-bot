@@ -39,9 +39,17 @@ _KNOWN = (
 
 
 def test_unknown_name_detection():
+    # v2 contract (2026-07-28 R2): the note fires only on NEAR-member
+    # confusion — a token resembling a known member without matching
+    # ("Monsoon" ~ member "Moonsoon"). Names near nobody (Morgan) no
+    # longer fire; the prompt's don't-invent-biography rule owns them.
+    # This deliberately retires the v1 Morgan expectation — see
+    # smoke_name_check_false_positives.py for the full v2 contract.
     unk = bot._unknown_member_names(
-        "Morgan says you don't work very well", _KNOWN)
-    assert unk == ["Morgan"], f"Morgan must be flagged unknown: {unk}"
+        "I'm not Monsoon nigga I don't do clinical shifts", _KNOWN)
+    assert unk == ["Monsoon"], f"near-member Monsoon must flag: {unk}"
+    assert bot._unknown_member_names(
+        "Morgan says you don't work very well", _KNOWN) == []
     # known members never flag
     assert bot._unknown_member_names(
         "Moonsoon says you don't work very well", _KNOWN) == []
@@ -52,17 +60,13 @@ def test_unknown_name_detection():
         "Tell me about America and China",
     ):
         assert bot._unknown_member_names(q, _KNOWN) == [], f"false flag: {q!r}"
-    # multiple unknowns capped
-    unk3 = bot._unknown_member_names(
-        "Morgan and Claudio and Beatrix and Zorro walked in", _KNOWN)
-    assert len(unk3) <= 3 and "Morgan" in unk3
-    _ok("name guard: Morgan flags; members/figures/stopwords don't")
+    _ok("name guard v2: near-member flags; members/figures/others don't")
 
 
 def test_name_check_note_shape():
     note = bot._name_check_note(["Morgan"])
     assert "'Morgan'" in note
-    assert "NEVER map an unknown name" in note
+    assert "NEVER map the name onto the asker" in note
     assert "lookup_user_profile" in note
     assert "public figure, ignore" in note, "false positives must be benign"
     assert bot._name_check_note([]) == ""

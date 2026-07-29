@@ -89,10 +89,10 @@ Cynical contrarian, marathon-running sauna monk.
 - GEO / 31C — [bag]
 
 **Recent personal life.**
-- Ran a 2:55 marathon and mocks everyone's heart rate
-- Daily sauna for years, Whoop on wrist
-- Orders Semax peptides from a Texas spot
-- Quarter-mil Pokemon binder energy
+- Ran a marathon — "2:55 and I felt amazing" — and mocks everyone's heart rate
+- Daily sauna for years — "sauna is the only real edge" — Whoop on wrist
+- Orders Semax peptides — "my semax just came in" — from a Texas spot
+- Quarter-mil Pokemon binder energy — "the binder outperforms your port"
 """
 
 
@@ -124,11 +124,12 @@ def test_lint_fabrication_is_hard():
 
 def test_lint_personal_floor_and_slur_cap_are_soft():
     thin = _GOOD_PROFILE.replace(
-        "- Ran a 2:55 marathon and mocks everyone's heart rate\n"
-        "- Daily sauna for years, Whoop on wrist\n"
-        "- Orders Semax peptides from a Texas spot\n"
-        "- Quarter-mil Pokemon binder energy\n",
-        "- Lives somewhere\n- Has a job\n",
+        '- Ran a marathon — "2:55 and I felt amazing" — and mocks everyone\'s heart rate\n'
+        '- Daily sauna for years — "sauna is the only real edge" — Whoop on wrist\n'
+        '- Orders Semax peptides — "my semax just came in" — from a Texas spot\n'
+        '- Quarter-mil Pokemon binder energy — "the binder outperforms your port"\n',
+        '- Lives somewhere — "my apartment is fine"\n'
+        '- Has a job — "work was long today"\n',
     )
     hard, soft = _lint_profile(thin, 1065, {})
     assert hard == [], hard
@@ -155,29 +156,29 @@ def test_lint_placeholder_bullets_are_hard():
     # personal-life section (and one added 'Insufficient signal' on a
     # 2380-msg user).
     corrupted = _GOOD_PROFILE.replace(
-        "- Ran a 2:55 marathon and mocks everyone's heart rate",
+        '- Ran a marathon — "2:55 and I felt amazing" — and mocks everyone\'s heart rate',
         "- [domestic-arrangement detail revealed] + [the comedic-pattern "
         "beat the room has noticed]",
     ).replace(
-        "- Daily sauna for years, Whoop on wrist",
+        '- Daily sauna for years — "sauna is the only real edge" — Whoop on wrist',
         "- [job complaint they keep bringing up] + [the framing that "
         "names why it's funny]",
     )
     hard, _ = _lint_profile(corrupted, 2380, {})
     assert any("placeholder" in h for h in hard), hard
-    # real bullets using the 'text + [framing]' shape do NOT trip it
+    # real anchored bullets using the 'text + [framing]' shape do NOT trip it
     hard2, _ = _lint_profile(_GOOD_PROFILE.replace(
-        "- Quarter-mil Pokemon binder energy",
-        "- Quarter-mil Pokemon binder + [the room calls it his real "
-        "portfolio]",
+        '- Quarter-mil Pokemon binder energy — "the binder outperforms your port"',
+        '- Quarter-mil Pokemon binder — "the binder outperforms your port" '
+        "+ [his real portfolio]",
     ), 1065, {"checked_quotes": 5, "unverified_count": 0})
     assert not any("placeholder" in h for h in hard2), hard2
     # 'Insufficient signal' in a no-bail section at volume = hard
     bail = _GOOD_PROFILE.replace(
-        "- Ran a 2:55 marathon and mocks everyone's heart rate\n"
-        "- Daily sauna for years, Whoop on wrist\n"
-        "- Orders Semax peptides from a Texas spot\n"
-        "- Quarter-mil Pokemon binder energy\n",
+        '- Ran a marathon — "2:55 and I felt amazing" — and mocks everyone\'s heart rate\n'
+        '- Daily sauna for years — "sauna is the only real edge" — Whoop on wrist\n'
+        '- Orders Semax peptides — "my semax just came in" — from a Texas spot\n'
+        '- Quarter-mil Pokemon binder energy — "the binder outperforms your port"\n',
         "Insufficient signal — too few messages on this dimension.\n",
     )
     hard3, _ = _lint_profile(bail, 2380, {})
