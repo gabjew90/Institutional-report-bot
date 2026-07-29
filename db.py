@@ -26,6 +26,10 @@ def get_connection() -> sqlite3.Connection:
         _init_schema(_conn)
         _migrate_drop_unique_constraints(_conn)
         _migrate_add_extraction_source(_conn)
+        try:
+            _migrate_pdf_query_surface(_conn)
+        except Exception as e:  # never block boot on a query-surface migration
+            log.warning(f"pdf query-surface migration skipped: {e}")
     return _conn
 
 
@@ -891,8 +895,206 @@ def insert_analysis(
         (pdf_file_id, triage_json, analysis_json, priority, pages_analyzed,
          total_pages, input_tokens, output_tokens, model, duration),
     )
+    analysis_id = cur.lastrowid
+    # Keep pdf_entities in step with new analyses so ticker lookups stay
+    # an indexed query (the boot backfill only covers pre-existing rows).
+    try:
+        _index_analysis_entities(conn, analysis_id, pdf_file_id, analysis_json)
+    except Exception as e:
+        log.warning(f"pdf_entities index failed (non-fatal): {e}")
     conn.commit()
-    return cur.lastrowid
+    return analysis_id
+
+
+def _index_analysis_entities(
+    conn, analysis_id: int, pdf_file_id: int, analysis_json: str | None
+) -> None:
+    """Fan `entities_mentioned` out into pdf_entities for one analysis."""
+    if not analysis_json:
+        return
+    import json as _json
+    try:
+        data = _json.loads(analysis_json) or {}
+    except Exception:
+        return
+    ents = data.get("entities_mentioned") or []
+    if not isinstance(ents, list):
+        return
+    payload, seen = [], set()
+    for e in ents:
+        if not isinstance(e, dict):
+            continue
+        tk = (e.get("ticker") or "").strip().upper()
+        nm = (e.get("name") or "").strip()
+        if not tk and not nm:
+            continue
+        if tk and tk in seen:
+            continue
+        seen.add(tk)
+        payload.append((
+            analysis_id, pdf_file_id, tk or None, nm[:120] or None,
+            (e.get("asset_class") or "").strip()[:20] or None,
+        ))
+    if not payload:
+        payload = [(analysis_id, pdf_file_id, None, None, None)]
+    conn.executemany(
+        "INSERT INTO pdf_entities "
+        "(analysis_id, pdf_file_id, ticker, name, asset_class) "
+        "VALUES (?, ?, ?, ?, ?)",
+        payload,
+    )
+
+
+def _migrate_pdf_query_surface(conn) -> None:
+    """Make the PDF research data queryable by a text-to-SQL bot
+    (2026-07-29 storage review). Idempotent — safe on every boot.
+
+    Before this, ~28 structured fields per PDF lived inside the
+    `analysis_json` blob with exactly ONE real column (priority):
+    source/type filtering meant json_extract full scans, ticker search
+    meant an unindexable json_each cross-join, and the append-only
+    MAX(id) dedup silently double-counted the 375 PDFs with more than
+    one analysis.
+
+    Adds:
+      * GENERATED columns source / report_type / title — computed from
+        analysis_json, so zero backfill and no writer change, and they
+        index like normal columns.
+      * Indexes for the query shapes a research bot actually uses.
+      * `latest_pdf_analyses` VIEW — pre-deduped (latest per PDF) and
+        pre-joined to pdf_files, exposing file_name + a REAL date as
+        `published_at` (analysis_json.published_at is null in every row:
+        it's only populated on read-back, never at insert).
+      * `pdf_entities` child table — one row per mentioned ticker,
+        indexed, so "which reports mention NVDA" is an indexed lookup
+        instead of a full-scan JSON cross-join.
+    """
+    # --- generated columns (ALTER ADD COLUMN supports VIRTUAL only) ---
+    existing = {r[1] for r in conn.execute(
+        "PRAGMA table_info(pdf_analyses)").fetchall()}
+    for col, path in (
+        ("source", "$.source"),
+        ("report_type", "$.report_type"),
+        ("title", "$.title"),
+    ):
+        if col in existing:
+            continue
+        try:
+            conn.execute(
+                f"ALTER TABLE pdf_analyses ADD COLUMN {col} TEXT "
+                f"GENERATED ALWAYS AS (json_extract(analysis_json, "
+                f"'{path}')) VIRTUAL"
+            )
+        except Exception as e:
+            log.warning(f"pdf query surface: add column {col} failed: {e}")
+
+    conn.executescript("""
+        CREATE INDEX IF NOT EXISTS idx_pdf_analyses_source
+            ON pdf_analyses(source);
+        CREATE INDEX IF NOT EXISTS idx_pdf_analyses_report_type
+            ON pdf_analyses(report_type);
+        CREATE INDEX IF NOT EXISTS idx_pdf_analyses_priority
+            ON pdf_analyses(priority);
+        -- serves the latest-per-PDF lookup
+        CREATE INDEX IF NOT EXISTS idx_pdf_analyses_latest
+            ON pdf_analyses(pdf_file_id, id DESC);
+
+        CREATE VIEW IF NOT EXISTS latest_pdf_analyses AS
+            SELECT
+                pa.id            AS analysis_id,
+                pa.pdf_file_id   AS pdf_file_id,
+                pa.source        AS source,
+                pa.report_type   AS report_type,
+                pa.title         AS title,
+                pa.priority      AS priority,
+                pf.file_name     AS file_name,
+                pf.dropbox_path  AS dropbox_path,
+                COALESCE(pf.dropbox_modified_at, pa.created_at)
+                                 AS published_at,
+                pa.created_at    AS analyzed_at,
+                pa.analysis_json AS analysis_json
+            FROM pdf_analyses pa
+            JOIN pdf_files pf ON pf.id = pa.pdf_file_id
+            WHERE pa.id = (
+                SELECT MAX(id) FROM pdf_analyses
+                WHERE pdf_file_id = pa.pdf_file_id
+            );
+
+        CREATE TABLE IF NOT EXISTS pdf_entities (
+            analysis_id INTEGER NOT NULL,
+            pdf_file_id INTEGER NOT NULL,
+            ticker      TEXT,
+            name        TEXT,
+            asset_class TEXT
+        );
+        CREATE INDEX IF NOT EXISTS idx_pdf_entities_ticker
+            ON pdf_entities(ticker);
+        CREATE INDEX IF NOT EXISTS idx_pdf_entities_analysis
+            ON pdf_entities(analysis_id);
+    """)
+
+    # --- backfill pdf_entities for analyses not yet represented ---
+    # Bounded per boot so a cold start can't stall; runs to completion
+    # across a few boots on a fresh DB, instantly once caught up.
+    try:
+        rows = conn.execute(
+            """SELECT pa.id, pa.pdf_file_id, pa.analysis_json
+               FROM pdf_analyses pa
+               WHERE pa.analysis_json IS NOT NULL
+                 AND NOT EXISTS (
+                     SELECT 1 FROM pdf_entities e
+                     WHERE e.analysis_id = pa.id
+                 )
+               ORDER BY pa.id DESC
+               LIMIT 5000"""
+        ).fetchall()
+    except Exception as e:
+        log.warning(f"pdf_entities backfill query failed: {e}")
+        rows = []
+
+    if rows:
+        import json as _json
+        payload = []
+        for r in rows:
+            aid, fid, blob = r[0], r[1], r[2]
+            try:
+                data = _json.loads(blob) or {}
+            except Exception:
+                continue
+            ents = data.get("entities_mentioned") or []
+            if not isinstance(ents, list):
+                continue
+            seen = set()
+            for e in ents:
+                if not isinstance(e, dict):
+                    continue
+                tk = (e.get("ticker") or "").strip().upper()
+                nm = (e.get("name") or "").strip()
+                if not tk and not nm:
+                    continue
+                if tk in seen and tk:
+                    continue
+                seen.add(tk)
+                payload.append((
+                    aid, fid, tk or None, nm[:120] or None,
+                    (e.get("asset_class") or "").strip()[:20] or None,
+                ))
+            if not ents:
+                # Mark as processed with a null-ticker sentinel so the
+                # NOT EXISTS gate doesn't re-scan this row every boot.
+                payload.append((aid, fid, None, None, None))
+        if payload:
+            conn.executemany(
+                "INSERT INTO pdf_entities "
+                "(analysis_id, pdf_file_id, ticker, name, asset_class) "
+                "VALUES (?, ?, ?, ?, ?)",
+                payload,
+            )
+            log.info(
+                f"pdf_entities backfill: {len(payload)} rows from "
+                f"{len(rows)} analyses"
+            )
+    conn.commit()
 
 
 # Shared subquery: pick the latest analysis row per pdf_file_id.
