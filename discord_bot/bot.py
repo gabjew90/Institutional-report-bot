@@ -2042,17 +2042,24 @@ def _build_options_chain_tool():
                     "and the list of available expirations.\n\n"
                     "USE for: 'what's the OI on SPY next week', 'NVDA "
                     "options volume for the June 12 expiration', 'put-"
-                    "call ratio on QQQ', 'IV on SPY this Friday'. "
-                    "DO NOT use for single-strike questions ('what's "
-                    "the IV on $750 SPY calls') — this tool returns "
-                    "expiration-aggregate stats only, not per-strike.\n\n"
+                    "call ratio on QQQ', 'IV on SPY this Friday', AND "
+                    "single-strike questions — pass `strike` + "
+                    "`contract_type` for one contract's CURRENT OI / "
+                    "volume / IV ('what's the OI on MSFT 400c 7/31', "
+                    "'IV on the SPY 750 calls'). Snapshot only — there "
+                    "is NO multi-day history, so a '5-day OI trend' "
+                    "isn't available (say so; don't fabricate it).\n\n"
                     "Args:\n"
                     "  symbol: ticker (SPY, QQQ, NVDA, NDX, SPX, etc.)\n"
                     "  expiration: optional ISO date 'YYYY-MM-DD'. When "
                     "omitted, returns the NEAREST expiration + the "
                     "list of available expirations so you can re-call "
                     "for a further-out one if the asker meant 'next "
-                    "week' / 'this Friday' / a specific date.\n\n"
+                    "week' / 'this Friday' / a specific date.\n"
+                    "  strike: optional number. When set, returns that "
+                    "ONE contract's stats instead of the aggregate.\n"
+                    "  contract_type: 'call' or 'put' (default 'call'); "
+                    "used with strike to pick the side.\n\n"
                     "Response carries `status` field: 'ok' / 'no_chain' "
                     "(Yahoo returned nothing — chain may not exist for "
                     "this symbol) / 'error' (fetch failed, rate-limit "
@@ -2073,6 +2080,22 @@ def _build_options_chain_tool():
                                 "Optional ISO date 'YYYY-MM-DD'. Omit "
                                 "to get the nearest expiration's "
                                 "summary + list of available dates."
+                            ),
+                        ),
+                        "strike": types.Schema(
+                            type=types.Type.NUMBER,
+                            description=(
+                                "Optional strike price. When set, "
+                                "returns that ONE contract's current "
+                                "OI / volume / IV instead of the "
+                                "expiration aggregate."
+                            ),
+                        ),
+                        "contract_type": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "'call' or 'put' (default 'call'). "
+                                "Used with `strike` to pick the side."
                             ),
                         ),
                     },
@@ -2153,6 +2176,67 @@ async def _execute_options_chain(args: dict) -> dict:
                 f"yfinance returned no options expirations for {symbol}. "
                 f"This symbol may not have listed options chains."
             ),
+        }
+
+    # Per-strike path (2026-07-29): current OI/volume/IV for ONE
+    # contract. The chain we already fetched carries every strike; when
+    # the asker names a specific strike we filter to it instead of only
+    # returning the expiration aggregate. Snapshot only — no history.
+    strike_raw = args.get("strike")
+    if strike_raw not in (None, ""):
+        try:
+            want = float(strike_raw)
+        except (TypeError, ValueError):
+            want = None
+        ctype = str(args.get("contract_type") or "call").strip().lower()
+        side = "puts" if ctype in ("put", "puts", "p") else "calls"
+        chain = raw.get("chain") or {}
+        contracts = chain.get(side) or []
+        avail = sorted({c.get("strike") for c in contracts
+                        if c.get("strike") is not None})
+        match = None
+        if want is not None:
+            match = next(
+                (c for c in contracts
+                 if c.get("strike") is not None
+                 and abs(float(c["strike"]) - want) < 1e-6),
+                None,
+            )
+        if match is None:
+            return {
+                "status": "no_strike",
+                "symbol": symbol,
+                "contract_type": "put" if side == "puts" else "call",
+                "expiration_iso": chain.get("expiration_iso"),
+                "error": (
+                    f"no {('put' if side == 'puts' else 'call')} at strike "
+                    f"{strike_raw} on {symbol} {chain.get('expiration_iso')}"
+                ),
+                "available_strikes": avail[:40],
+                "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+            }
+        return {
+            "status": "ok",
+            "symbol": symbol,
+            "contract": {
+                "strike": match.get("strike"),
+                "contract_type": "put" if side == "puts" else "call",
+                "expiration_iso": chain.get("expiration_iso"),
+                "open_interest": match.get("openInterest"),
+                "volume": match.get("volume"),
+                "implied_volatility": match.get("impliedVolatility"),
+                "bid": match.get("bid"),
+                "ask": match.get("ask"),
+                "last_price": match.get("lastPrice"),
+                "underlying_spot_price": raw.get("underlying_spot_price"),
+            },
+            "history_note": (
+                "SNAPSHOT ONLY — this is the current OI/volume/IV. No "
+                "multi-day history is available; for a 5-day OI trend "
+                "tell the asker to pull it from their broker."
+            ),
+            "available_expirations": expirations[:12],
+            "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
         }
 
     summary = _md.summarize_options_chain(raw)

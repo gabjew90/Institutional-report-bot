@@ -96,11 +96,16 @@ def test_result_normalizer():
 
 def test_prompt_announces_capability():
     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as S
-    assert "run" in S.lower() and "code" in S.lower() and (
-        "compute" in S.lower() or "python" in S.lower()), (
+    low = S.lower()
+    assert "run" in low and "code" in low and (
+        "compute" in low or "python" in low), (
         "prompt must tell the model the code-execution capability exists"
     )
-    _ok("prompt announces the code-execution capability")
+    # analysis requests must route to code, not a hand-waved estimate
+    assert "analy" in low and "hand-wave" in low, (
+        "prompt must direct ANALYSIS requests to write+run code"
+    )
+    _ok("prompt announces the capability + routes analysis to code")
 
 
 if __name__ == "__main__":
