@@ -96,15 +96,16 @@ def test_fact_directive_threaded_both_routes():
     src = inspect.getsource(bot._answer_with_gemini)
     assert "_fact_extra = _ASK_FACT_DIRECTIVE if _route_is_factual" in src, \
         "directive must be classification-gated"
-    # 2026-07-16 unified tooling: there is ONE config for both routes —
-    # the directive is patched into it whenever the register is FACT,
-    # regardless of WEB/LOCAL.
-    assert "if _fact_extra:" in src, \
-        "directive patch must be gated on the FACT register only"
-    patch = src.split("if _fact_extra:", 1)[1][:400]
+    # 2026-07-16 unified tooling: ONE config for both routes — the
+    # directive patches in whenever the register is FACT (regardless of
+    # WEB/LOCAL). 2026-07-29: FACT + ANALYSIS directives now COMPOSE
+    # into `_prompt_extra` and patch together.
+    assert "if _prompt_extra:" in src, \
+        "directive patch must be gated on the composed extra"
+    patch = src.split("if _prompt_extra:", 1)[1][:400]
     assert "config.system_instruction = (" in patch and \
-        "_build_runtime_system_instruction(_fact_extra)" in patch, \
-        "FACT register must patch the directive into the unified config"
+        "_build_runtime_system_instruction(_prompt_extra)" in patch, \
+        "composed FACT+ANALYSIS directive must patch the unified config"
     # builder accepts the extra
     sig = inspect.signature(bot._build_runtime_system_instruction)
     assert "extra_directive" in sig.parameters, "builder must take the extra"

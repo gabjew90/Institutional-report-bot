@@ -871,6 +871,50 @@ _ASK_FACT_DIRECTIVE = (
 )
 
 
+# Analysis-request detector + per-request directive. The buried "any
+# analysis writes+runs code" prompt rule got averaged away by flash-lite
+# (2026-07-29: "analyze the trader log" computed win rates in-head and
+# answered in arrows — no code, no visual). Same fix as the FACT
+# directive: detect the shape and APPEND a hard directive to the end of
+# the system instruction, where recency wins over a rule buried in 56K
+# chars.
+_ANALYSIS_REQUEST_RE = re.compile(
+    r"\b(analy[sz]\w*|compar\w*|correlat\w*|regress\w*|"
+    r"break\s*down|breakdown|distribution|model\s+(?:the|this|my)|"
+    r"simulat\w*|monte\s*carlo|backtest\w*|"
+    r"run\s+the\s+numbers|crunch|visuali[sz]\w*|"
+    r"(?:graph|chart|plot)\s+(?:the|this|my|it|out|me)|"
+    r"win\s*rate|hit\s*rate|expectancy|drawdown)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_analysis_request(question: str) -> bool:
+    """True when the asker wants ANALYSIS — computed figures / a visual,
+    not a one-shot lookup or banter. Checks the actual ask (tail), not
+    the injected context blocks above it."""
+    if not question:
+        return False
+    return bool(_ANALYSIS_REQUEST_RE.search(question.strip()[-600:]))
+
+
+_ASK_ANALYSIS_DIRECTIVE = (
+    "\n\n---\n\n"
+    "[ANALYSIS REQUEST — WRITE AND RUN PYTHON]\n"
+    "This asks for analysis. Pull the data with the tools FIRST, then "
+    "WRITE AND RUN Python to compute every figure — do NOT calculate "
+    "win rates, averages, or any stat in your head or estimate them; "
+    "run the code so the numbers are real. Produce ONE sourced visual "
+    "in whatever form best fits (chart, scatter, heatmap, distribution, "
+    "quadrant/2x2, ranked table, matrix — quant or qual); it posts "
+    "ABOVE your text, so let it lead. Every number and label must come "
+    "from the tool data or the code output — never invented. If the "
+    "asker did NOT specify what to analyze, pick the most revealing "
+    "angle and deliver veteran-consultant rigor; don't ask them what "
+    "they meant."
+)
+
+
 def _build_chat_search_tool():
     """Construct the search_chat_messages FunctionDeclaration for the
     Gemini tools list. Lazy because google.genai.types import is heavy
@@ -5246,17 +5290,26 @@ async def _answer_with_gemini(
         # the grounding backstop's scrutiny — enforcement moved fully to
         # the backstop ladder, where it actually works.
         _fact_extra = _ASK_FACT_DIRECTIVE if _route_is_factual else ""
+        # Analysis directive is route-independent — "analyze the trader
+        # log" is LOCAL/BANTER but still needs the run-code push.
+        _analysis_extra = (
+            _ASK_ANALYSIS_DIRECTIVE if _is_analysis_request(question) else ""
+        )
+        if _analysis_extra:
+            _ask_meta["guards"].append("analysis-directive")
         log.info(
             f"/ask: intent-router → "
             f"{'WEB' if needs_web else 'LOCAL'}/"
             f"{'FACT' if _route_is_factual else 'BANTER'} "
+            f"{'ANALYSIS ' if _analysis_extra else ''}"
             f"(unified multi-tool pass) q={question[:80]!r}"
         )
-        if _fact_extra:
+        _prompt_extra = _fact_extra + _analysis_extra
+        if _prompt_extra:
             # The config was built before the router ran — patch the
-            # directive in rather than rebuilding the tools.
+            # directive(s) in rather than rebuilding the tools.
             config.system_instruction = (
-                _build_runtime_system_instruction(_fact_extra)
+                _build_runtime_system_instruction(_prompt_extra)
             )
 
         # Pre-flight identity + dispute notes (2026-07-17 Morgan
