@@ -1,5 +1,18 @@
 # Contracts this repo exposes to the Opus pulse routine
 
+> **CORRECTION (2026-07-29): there is no separate routine repo.** This
+> doc's "two repos" framing below is stale. The executable routine is
+> **`docs/superpowers/routines/synthesis-routine.md` in THIS repo** (a
+> Claude.ai bootstrap `curl`s and runs it verbatim each fire), and it
+> already invokes the validators described here:
+> `scripts/pulse_draft_validate.py` (STEP 4.5), `scripts/pulse_stitch.py`
+> (STEP 5), `scripts/pulse_lint.py` (STEP 5.5/5.7). The prompt constants
+> it runs (`ADJUDICATION_*`, `DRAFT_*`, `AUDIT_*`, `SCRUB_*`, `QC_*`)
+> also live here in `ai_analysis/prompts.py`. So consumer-side work
+> listed below is largely DONE — verify against the routine file before
+> treating any item as outstanding. Read "second repo" as "the Claude.ai
+> routine runtime" throughout.
+
 The pulse pipeline is split across **two repos**:
 
 | Repo | What runs there |

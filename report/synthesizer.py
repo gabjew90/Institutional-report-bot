@@ -1675,7 +1675,23 @@ async def synthesize_daily_pulse(
     analyses: list[PdfAnalysis],
     use_prev_context: bool = True,
 ) -> DailyReport:
-    """Generate the Daily Market Pulse via a two-stage pipeline.
+    """⚠️ NOT THE LIVE PULSE PATH — read this before editing.
+
+    In production the scheduled pulse is written by the Claude.ai Opus
+    ROUTINE (docs/superpowers/routines/synthesis-routine.md), which
+    consumes the context this module's `build_pulse_context()` publishes
+    and runs its own ADJUDICATION → DRAFT → AUDIT → SCRUB stages. This
+    Gemini function is only reachable when `bridge_enabled()` is FALSE
+    (see scheduler/jobs.py:47) plus the disabled /pulse command and
+    test_pulse.py — i.e. it is a FALLBACK, not the shipping pulse.
+
+    Editing this to change pulse CONTENT does nothing in production;
+    edit the DRAFT_/AUDIT_/SCRUB_ prompt constants in
+    ai_analysis/prompts.py instead (the routine reads those verbatim).
+    `build_pulse_context()` and `_classify_themes()` in this same file
+    ARE live — don't mistake the whole module for dead code.
+
+    Generate the Daily Market Pulse via a two-stage pipeline.
 
     Stage 1 (DRAFT): synthesize narrative from research PDFs only — no live
     data. Focuses on INSIGHTS & ALPHA depth and WHAT TO WATCH research-backed

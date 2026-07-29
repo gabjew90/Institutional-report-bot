@@ -51,6 +51,12 @@ class TradeIdea:
     risk: str
     conviction: str = ""  # high/medium/low
     time_horizon: str = ""  # intraday/swing/1-3mo/3-12mo/longer_term
+    # US-listed tickers the trade is ON (2026-07-29). market_movers,
+    # entities_mentioned and theme_stances all expose tickers
+    # structurally; trade_ideas buried them in `description`, so
+    # "every trade idea on $NVDA" was unanswerable. Additive — the
+    # description still carries the full prose structure.
+    instruments: list[str] = field(default_factory=list)
 
 
 @dataclass

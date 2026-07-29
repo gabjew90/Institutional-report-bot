@@ -150,7 +150,8 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
       "rationale": "The report's own reasoning for the trade (paraphrased tightly). One short sentence pulled from the report's argument.",
       "risk": "The report's stated risk to the trade. If the report doesn't name a specific risk, leave empty rather than fabricating one.",
       "conviction": "high|medium|low",
-      "time_horizon": "intraday|swing|1-3mo|3-12mo|longer_term — what window the trade is sized for"
+      "time_horizon": "intraday|swing|1-3mo|3-12mo|longer_term — what window the trade is sized for",
+      "instruments": ["US-listed tickers this trade is ON, uppercase, no $ — e.g. [\"NVDA\"] or [\"XLE\",\"BNO\"]. Same US-listed-only rules as entities_mentioned. Empty list if the trade names no tradable US instrument (e.g. a rates view with no ETF). This is the STRUCTURED ticker for the trade — the description keeps the full prose."]
     }
   ],
   "risk_factors": [
