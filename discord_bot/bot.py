@@ -2,6 +2,7 @@
 
 import asyncio
 import html
+import io
 import logging
 import re
 import time
@@ -4727,6 +4728,42 @@ def _clapback_fidelity_violations(answer: str, material: str) -> list[str]:
             if t.lower() not in low]
 
 
+_CODE_IMAGE_MAX = 3
+
+
+def _extract_code_images(response) -> list[tuple[bytes, str]]:
+    """(bytes, mime) for image parts a code-execution response rendered
+    (matplotlib charts come back as inline_data image parts). Non-image
+    inline data is ignored; capped at _CODE_IMAGE_MAX."""
+    out: list[tuple[bytes, str]] = []
+    try:
+        parts = response.candidates[0].content.parts or []
+    except (AttributeError, IndexError, TypeError):
+        return out
+    for p in parts:
+        inl = getattr(p, "inline_data", None)
+        if inl is None:
+            continue
+        mime = getattr(inl, "mime_type", "") or ""
+        data = getattr(inl, "data", None)
+        if data and mime.startswith("image/"):
+            out.append((data, mime))
+            if len(out) >= _CODE_IMAGE_MAX:
+                break
+    return out
+
+
+def _normalize_ask_result(result):
+    """_answer_with_gemini returns a bare discord.Embed on the error/
+    guard paths and an (embed, files) tuple on the success path (files
+    = rendered code-execution charts). Normalize to (embed, files) so
+    the send sites stay simple."""
+    if isinstance(result, tuple):
+        emb, files = result
+        return emb, list(files or [])
+    return result, []
+
+
 async def _answer_with_gemini(
     question: str,
     user_id: int,
@@ -4855,6 +4892,16 @@ async def _answer_with_gemini(
             system_instruction=_build_runtime_system_instruction(),
             tools=[
                 types.Tool(google_search=types.GoogleSearch()),
+                # Native code execution (2026-07-29): Google runs the
+                # Python in THEIR sandbox — member-commanded code never
+                # touches Railway. The model uses it for analytical
+                # questions (payoff math, monte carlo, IV, stats) and
+                # renders charts. Verified coexisting with the function
+                # tools on 3.5-flash-lite. Raw stdout is never posted —
+                # the model's composed text answer flows through the
+                # existing disclosure/fidelity guards; only rendered
+                # chart images are surfaced.
+                types.Tool(code_execution=types.ToolCodeExecution()),
                 _build_chat_search_tool(),
                 _build_user_profile_tool(),
                 _build_trade_log_tool(),
@@ -5341,6 +5388,14 @@ async def _answer_with_gemini(
         except Exception as e:
             log.warning(f"/ask: response.text raised: {e}")
             answer = ""
+
+        # Charts rendered by the code-execution sandbox (matplotlib →
+        # inline image parts). Collected here off the final response;
+        # attached to the reply at the send site. Text still carries
+        # the composed answer + passes every downstream guard.
+        _code_images = _extract_code_images(response) if response else []
+        if _code_images:
+            _ask_meta["guards"].append(f"code-charts:{len(_code_images)}")
 
         # Repetition-glitch detection + one-shot retry. Gemini Flash Lite
         # occasionally produces token-loop artifacts at the end of an
@@ -6989,7 +7044,22 @@ async def _answer_with_gemini(
 
         embed = discord.Embed(description=full, color=0x228B22)
         embed.set_footer(text="Hi, I'm AI-powered - NFA")
-        return embed
+        # Attach any sandbox-rendered charts. Reference the first via
+        # attachment:// so it renders inside the embed; the rest post
+        # as sibling files.
+        _files = []
+        for _i, (_data, _mime) in enumerate(_code_images):
+            _ext = "png" if "png" in _mime else (
+                _mime.split("/")[-1] or "png")
+            _fname = f"quant_{_i}.{_ext}"
+            try:
+                _files.append(discord.File(io.BytesIO(_data),
+                                           filename=_fname))
+                if _i == 0:
+                    embed.set_image(url=f"attachment://{_fname}")
+            except Exception as _fe:
+                log.warning(f"/ask: chart attach failed (non-fatal): {_fe}")
+        return (embed, _files) if _files else embed
     except Exception as e:
         # One automatic retry on TRANSIENT server-side failures (5xx /
         # timeout) before surfacing anything to the user. These resolve
@@ -8007,7 +8077,10 @@ def create_bot() -> commands.Bot:
                 channel_name=getattr(interaction.channel, "name", "") or "",
                 channel_id=int(_ch_id) if _ch_id is not None else None,
             )
-            await interaction.followup.send(embed=embed)
+            embed, _qfiles = _normalize_ask_result(embed)
+            await interaction.followup.send(
+                embed=embed, **({"files": _qfiles} if _qfiles else {})
+            )
             # Cross-window anti-recycling: persist the bot's answer so the
             # next /ask from this asker in this channel can see what hooks
             # we already pulled — see ask_bot_answers table in db.py.
@@ -8394,7 +8467,11 @@ def create_bot() -> commands.Bot:
                     channel_name=getattr(message.channel, "name", "") or "",
                     channel_id=int(_ch_id) if _ch_id is not None else None,
                 )
-                await message.reply(embed=embed, mention_author=False)
+                embed, _qfiles = _normalize_ask_result(embed)
+                await message.reply(
+                    embed=embed, mention_author=False,
+                    **({"files": _qfiles} if _qfiles else {})
+                )
                 # Cross-window anti-recycling: persist the bot's answer.
                 try:
                     if (message.author.id and _ch_id is not None
