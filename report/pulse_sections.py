@@ -25,6 +25,8 @@ import json
 import logging
 import re
 
+from report.market_data import score_lean_move
+
 log = logging.getLogger(__name__)
 
 # US-tradable ticker shape — mirrors the Robinhood-test filters used in
@@ -902,8 +904,26 @@ def render_trade_board(
             # as FLIP.
             _since = _fmt_since(prev_board_date)
             _tag = f"off board since {_since}" if _since else "off board"
+            # Score the exit (2026-07-29 feedback): a lean that leaves
+            # the board silently is the credibility hole — "off board"
+            # was doing the work "stopped out, here's the damage" should
+            # do (Long $BNO ate a 6% oil crash and just vanished).
+            # Direction-aware, from the lean's OWN first_seen date.
+            # Failure is non-fatal: the board must ship regardless.
+            _outcome = ""
+            try:
+                _tk = (r.get("instrument") or "").upper().split()[0]
+                _first_seen = r.get("first_seen_date") or prev_board_date
+                if _US_TICKER_RE.match(_tk) and _first_seen:
+                    _sc = score_lean_move(
+                        _tk, r.get("direction") or "", _first_seen
+                    )
+                    if _sc:
+                        _outcome = f" — {_sc}"
+            except Exception as e:
+                log.info(f"trade-board exit scoring failed (non-fatal): {e}")
             lean_lines.append(
-                f"- **{_tag}** {_lean_display_from_row(r)}"
+                f"- **{_tag}** {_lean_display_from_row(r)}{_outcome}"
             )
             n_dropped += 1
 

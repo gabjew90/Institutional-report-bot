@@ -273,7 +273,7 @@ def test_dispatch_map_entry_present():
 
 def test_prompt_eight_tools_and_section_8():
     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
-    assert "You have NINE tools" in P
+    assert "You have TEN tools" in P
     assert "You have SEVEN tools" not in P
     assert "### 8. `lookup_earnings_date" in P
     assert "lookup_earnings_date" in P

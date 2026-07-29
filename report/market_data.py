@@ -211,6 +211,89 @@ def _fetch_yahoo_extended_hours(symbol: str) -> dict | None:
     }
 
 
+def fetch_price_history(
+    symbol: str,
+    start_iso: str,
+    end_iso: str | None = None,
+    interval: str = "1d",
+) -> list[dict] | None:
+    """Daily (or weekly) close history for `symbol` via yfinance.
+
+    Returns [{"date": "YYYY-MM-DD", "close": float, "volume": int}, ...]
+    oldest-first, or None on failure / no data. This is the ONLY source
+    of historical market series in the codebase (2026-07-29): before it
+    existed, /ask had current prices only, and the model fabricated
+    weekly S&P closes to build a correlation chart. Also powers
+    trade-board exit scoring.
+
+    `interval`: '1d' | '1wk' | '1mo'.
+    """
+    try:
+        import yfinance as yf
+    except ImportError as e:
+        log.warning(f"yfinance not installed: {e}")
+        return None
+    try:
+        kwargs = {"start": start_iso, "interval": interval}
+        if end_iso:
+            kwargs["end"] = end_iso
+        hist = yf.Ticker(symbol).history(**kwargs)
+        if hist is None or len(hist) == 0:
+            return None
+        out: list[dict] = []
+        for idx, row in hist.iterrows():
+            try:
+                out.append({
+                    "date": str(idx)[:10],
+                    "close": round(float(row["Close"]), 4),
+                    "volume": int(row.get("Volume") or 0),
+                })
+            except Exception:
+                continue
+        return out or None
+    except Exception as e:
+        log.warning(f"price history fetch failed for {symbol}: {e}")
+        return None
+
+
+def price_move_since(symbol: str, start_iso: str) -> dict | None:
+    """{first, last, pct} move for `symbol` from `start_iso` to now, or
+    None when history isn't available."""
+    hist = fetch_price_history(symbol, start_iso)
+    if not hist or len(hist) < 2:
+        return None
+    first = hist[0]["close"]
+    last = hist[-1]["close"]
+    if not first:
+        return None
+    return {
+        "first": first,
+        "last": last,
+        "pct": round((last - first) / first * 100.0, 2),
+    }
+
+
+def score_lean_move(symbol: str, direction: str, start_iso: str) -> str | None:
+    """A short, DIRECTION-AWARE outcome phrase for a trade lean — the
+    honest close an exited board line needs ('went -5.2% against it')
+    instead of vanishing silently. None when no price data (never
+    fabricate an outcome)."""
+    mv = price_move_since(symbol, start_iso)
+    if not mv:
+        return None
+    pct = mv["pct"]
+    is_short = (direction or "").strip().lower() in (
+        "short", "sell", "fade", "trim"
+    )
+    # A short profits when price falls; a long when it rises.
+    worked = (pct < 0) if is_short else (pct > 0)
+    if abs(pct) < 0.5:
+        return f"flat ({pct:+.1f}%) since flagged"
+    if worked:
+        return f"worked, {abs(pct):.1f}% in its favor"
+    return f"went {abs(pct):.1f}% against it"
+
+
 def _fetch_yahoo_options_chain(
     symbol: str,
     expiration_iso: str | None = None,

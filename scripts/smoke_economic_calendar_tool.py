@@ -316,7 +316,7 @@ def test_system_prompt_tool_count_updated():
     # Count bumped again 2026-06-10 when lookup_earnings_date shipped
     # (SEVEN → EIGHT). This test guards that the preamble count moved
     # FORWARD, not that it froze at seven.
-    assert "You have NINE tools" in _ASK_SYSTEM_INSTRUCTION, (
+    assert "You have TEN tools" in _ASK_SYSTEM_INSTRUCTION, (
         "TOOLS preamble must say 'NINE tools' (SIX → SEVEN when the "
         "macro tool shipped, SEVEN → EIGHT when lookup_earnings_date "
         "shipped)"

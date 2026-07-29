@@ -949,13 +949,13 @@ _ASK_ANALYSIS_DIRECTIVE = (
     "r-value, the outlier, the peak) right on the chart. Every number "
     "and label must come from the tool data or the code output — never "
     "invented. **This includes EVERY series in a multi-series chart:** "
-    "you have query_data (this DB) and the market tools (CURRENT prices "
-    "only — NO price history), and the code sandbox has NO network. So "
-    "you CANNOT get historical market series (S&P/index closes over "
-    "past weeks, a stock's price history). Do NOT fabricate one to pair "
-    "against real data in a correlation — if you can't source a second "
-    "series, analyze the one you CAN source and say the other isn't "
-    "available, rather than inventing numbers. Do not write markdown "
+    "for MARKET price history use `lookup_price_history` (daily/weekly "
+    "closes; indices take the caret form ^GSPC/^NDX/^VIX) — pull the "
+    "real series, never type index levels from memory. The code sandbox "
+    "has NO network, so every series must arrive via a tool first. If a "
+    "series genuinely isn't available (`status: no_data`), analyze what "
+    "you CAN source and say the rest isn't available — do NOT fabricate "
+    "numbers to fill a second axis. Do not write markdown "
     "image tags (`![...](...)`) in your reply — the chart is attached "
     "automatically. If the asker did NOT specify what to analyze, pick "
     "most revealing angle and deliver veteran-consultant rigor; don't "
@@ -1982,6 +1982,103 @@ async def _execute_economic_calendar(args: dict) -> dict:
             "asker's actual question."
         )
     return resp
+
+
+async def _execute_price_history(args: dict) -> dict:
+    """Run the lookup_price_history tool call — daily/weekly closes for
+    one symbol. The ONLY historical market series available; without it
+    the model fabricated weekly S&P closes for a correlation chart
+    (2026-07-29)."""
+    from report import market_data as _md
+
+    symbol = str(args.get("symbol") or "").strip().upper()
+    if not symbol:
+        return {"status": "error", "error": "symbol is required"}
+    start = str(args.get("start") or "").strip()
+    end = str(args.get("end") or "").strip() or None
+    interval = str(args.get("interval") or "1d").strip().lower()
+    if interval not in ("1d", "1wk", "1mo"):
+        interval = "1d"
+    if not start:
+        from datetime import timedelta
+        start = (datetime.utcnow() - timedelta(days=90)).strftime("%Y-%m-%d")
+    try:
+        hist = await asyncio.to_thread(
+            _md.fetch_price_history, symbol, start, end, interval
+        )
+    except Exception as e:
+        return {"status": "error",
+                "error": f"{type(e).__name__}: {str(e)[:160]}"}
+    if not hist:
+        return {
+            "status": "no_data",
+            "symbol": symbol,
+            "error": (
+                f"no price history for {symbol} over that window — say so, "
+                f"do NOT invent a series"
+            ),
+        }
+    return {
+        "status": "ok",
+        "symbol": symbol,
+        "interval": interval,
+        "points": hist[-400:],
+        "count": len(hist[-400:]),
+        "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+    }
+
+
+def _build_price_history_tool():
+    """FunctionDeclaration for `lookup_price_history` — historical closes
+    for ONE symbol (stocks/ETFs/indices via Yahoo)."""
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="lookup_price_history",
+                description=(
+                    "Historical daily/weekly CLOSES for one stock, ETF, "
+                    "or index — the only source of market price HISTORY "
+                    "you have (lookup_market_price is current-only). Use "
+                    "it whenever an analysis needs a time series: "
+                    "performance since a date, a drawdown, a chart over "
+                    "time, or ANY correlation against another series. "
+                    "Returns [{date, close, volume}] oldest-first.\n\n"
+                    "Index tickers use the Yahoo caret form: ^GSPC "
+                    "(S&P 500), ^NDX (Nasdaq 100), ^DJI, ^RUT, ^VIX. "
+                    "Plain tickers for everything else (SPY, NVDA, BNO).\n\n"
+                    "Args: symbol; start (ISO 'YYYY-MM-DD', default 90d "
+                    "ago); end (ISO, optional = today); interval "
+                    "('1d'|'1wk'|'1mo', default '1d').\n\n"
+                    "`status: 'no_data'` means no series exists for that "
+                    "symbol/window — SAY SO; never invent price levels "
+                    "to fill a chart axis."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "symbol": types.Schema(
+                            type=types.Type.STRING,
+                            description="Ticker, e.g. 'SPY' or '^GSPC'.",
+                        ),
+                        "start": types.Schema(
+                            type=types.Type.STRING,
+                            description="ISO start date 'YYYY-MM-DD'.",
+                        ),
+                        "end": types.Schema(
+                            type=types.Type.STRING,
+                            description="ISO end date (optional).",
+                        ),
+                        "interval": types.Schema(
+                            type=types.Type.STRING,
+                            description="'1d' | '1wk' | '1mo'.",
+                        ),
+                    },
+                    required=["symbol"],
+                ),
+            )
+        ]
+    )
 
 
 _QUERY_ROW_CAP = 500
@@ -5309,6 +5406,7 @@ async def _answer_with_gemini(
                 _build_economic_calendar_tool(),
                 _build_earnings_date_tool(),
                 _build_query_data_tool(),
+                _build_price_history_tool(),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -5687,6 +5785,7 @@ async def _answer_with_gemini(
                 "lookup_economic_calendar": _execute_economic_calendar,
                 "lookup_earnings_date": _execute_earnings_date,
                 "query_data": _execute_query_data,
+                "lookup_price_history": _execute_price_history,
             }
             tool_response_parts = []
             for fc in function_calls:

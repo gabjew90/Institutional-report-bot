@@ -60,13 +60,19 @@ def test_strip_wired_in_executor():
 def test_directive_forbids_fabricated_axis():
     from discord_bot.bot import _ASK_ANALYSIS_DIRECTIVE as d
     low = d.lower()
-    assert "no network" in low and "no price history" in low, (
-        "directive must state the sandbox/tools can't get price history"
+    # 2026-07-29: lookup_price_history shipped, so the rule flipped from
+    # "you can't get history" to "PULL the real history, never type it
+    # from memory" — the root-cause fix for the fabricated S&P axis.
+    assert "lookup_price_history" in low, (
+        "directive must route history needs to the real tool"
     )
-    assert "fabricate" in low and ("series" in low or "correlation" in low), (
-        "directive must forbid inventing a second data series"
+    assert "no network" in low, (
+        "directive must state the sandbox has no network (tools first)"
     )
-    _ok("directive forbids fabricating an unsourceable data series")
+    assert "fabricate" in low and ("series" in low or "axis" in low), (
+        "directive must forbid inventing a data series"
+    )
+    _ok("directive routes to real history + forbids fabricated series")
 
 
 if __name__ == "__main__":

@@ -295,7 +295,7 @@ def test_system_prompt_tool_count_includes_options_chain():
     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
     # Word-form check (model parses these reliably). Accept any count
     # >= SIX since that's when options_chain ship raised the floor.
-    valid_counts = ["SIX tools", "SEVEN tools", "EIGHT tools", "NINE tools"]
+    valid_counts = ["SIX tools", "SEVEN tools", "EIGHT tools", "NINE tools", "TEN tools"]
     matched = [c for c in valid_counts if c in _ASK_SYSTEM_INSTRUCTION]
     assert matched, (
         f"TOOLS preamble must declare tool count >= SIX (when "
