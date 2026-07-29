@@ -12,11 +12,9 @@
    plt.show() emitted an image part and all three posted. Fix: surface
    only the FINAL rendered image.
 
-3. SCORE CHART — "graph the racism leaderboard" rendered a 0-100 axis,
-   exposing the hidden hierarchy the disclosure rules forbid. Fix:
-   suppress chart attachment when the topic is the racism/trader
-   score hierarchy (text answer, which passes disclosure guards, still
-   ships), plus a prompt rule.
+(A score-chart suppression was added then REVERTED at owner request
+2026-07-29 — "no need to suppress any data." Score/leaderboard charts
+are allowed; only the cutoff and triple-graph fixes remain.)
 """
 
 import os
@@ -77,33 +75,9 @@ def test_only_final_chart_surfaced():
     _ok("iterated charts collapse to the final render only")
 
 
-def test_score_hierarchy_chart_suppressed():
-    from discord_bot.bot import _is_score_chart_topic
-    for q in ("graph the racism leaderboard",
-              "chart everyone's trader score",
-              "plot the racism rankings"):
-        assert _is_score_chart_topic(q, ""), f"must suppress: {q!r}"
-    # a normal chart request is fine
-    assert not _is_score_chart_topic(
-        "plot the payoff of my NVDA spread", ""), "payoff chart must pass"
-    _ok("score/rank-hierarchy chart requests flagged for suppression")
-
-
-def test_prompt_bans_score_charts():
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as S
-    low = S.lower()
-    assert "never" in low and "chart" in low and (
-        "score" in low or "hierarch" in low), (
-        "prompt must forbid charting the hidden score hierarchies"
-    )
-    _ok("prompt forbids charting the hidden score hierarchies")
-
-
 if __name__ == "__main__":
     print("=== /ask 2026-07-29 incident smoke ===")
     test_summary_answer_not_clapback_shaped()
     test_real_clapback_is_clapback_shaped()
     test_only_final_chart_surfaced()
-    test_score_hierarchy_chart_suppressed()
-    test_prompt_bans_score_charts()
     print("\nALL 2026-07-29 INCIDENT SMOKE TESTS PASS")

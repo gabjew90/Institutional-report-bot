@@ -4796,28 +4796,6 @@ def _extract_code_images(response) -> list[tuple[bytes, str]]:
     return imgs[-1:]  # final render only
 
 
-# Charting the hidden score hierarchies (racism / trader scores) with a
-# numeric axis exposes the exact numbers the disclosure rules keep
-# hidden — even when the model fabricates them, a "racism score 0-100"
-# bar chart reads as real (2026-07-29: "graph the racism leaderboard").
-# Suppress the chart attachment for these topics; the text answer
-# (ranks + rationales) still ships and still passes the disclosure
-# guards. Belt-and-suspenders for the prompt rule, which flash-lite
-# ignores under a direct "graph it" instruction.
-_SCORE_CHART_RE = re.compile(
-    r"(racism|racist|trader[\s-]?score|trader[\s-]?rank|leaderboard|"
-    r"most\s+racist|ranking|rank\s+(?:everyone|the\s+room|all)|"
-    r"hierarch)",
-    re.IGNORECASE,
-)
-
-
-def _is_score_chart_topic(question: str, answer: str) -> bool:
-    """True when a chart request touches the hidden score hierarchy —
-    charts for these are suppressed to protect the disclosure rules."""
-    return bool(_SCORE_CHART_RE.search(f"{question or ''} {answer or ''}"))
-
-
 def _normalize_ask_result(result):
     """_answer_with_gemini returns a bare discord.Embed on the error/
     guard paths and an (embed, files) tuple on the success path (files
@@ -7110,15 +7088,6 @@ async def _answer_with_gemini(
 
         embed = discord.Embed(description=full, color=0x228B22)
         embed.set_footer(text="Hi, I'm AI-powered - NFA")
-        # Suppress charts that would expose the hidden score hierarchy
-        # (racism / trader scores) — the text answer still ships.
-        if _code_images and _is_score_chart_topic(question, answer):
-            _code_images = []
-            _ask_meta["guards"].append("score-chart-suppressed")
-            log.warning(
-                "/ask: suppressed a hidden-hierarchy score chart "
-                "(disclosure) — text answer kept"
-            )
         # Attach any sandbox-rendered chart. Reference it via
         # attachment:// so it renders inside the embed.
         _files = []
