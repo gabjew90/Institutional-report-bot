@@ -948,7 +948,16 @@ _ASK_ANALYSIS_DIRECTIVE = (
     "clipped; readable font sizes; annotate the key finding (the trend "
     "r-value, the outlier, the peak) right on the chart. Every number "
     "and label must come from the tool data or the code output — never "
-    "invented. If the asker did NOT specify what to analyze, pick the "
+    "invented. **This includes EVERY series in a multi-series chart:** "
+    "you have query_data (this DB) and the market tools (CURRENT prices "
+    "only — NO price history), and the code sandbox has NO network. So "
+    "you CANNOT get historical market series (S&P/index closes over "
+    "past weeks, a stock's price history). Do NOT fabricate one to pair "
+    "against real data in a correlation — if you can't source a second "
+    "series, analyze the one you CAN source and say the other isn't "
+    "available, rather than inventing numbers. Do not write markdown "
+    "image tags (`![...](...)`) in your reply — the chart is attached "
+    "automatically. If the asker did NOT specify what to analyze, pick "
     "most revealing angle and deliver veteran-consultant rigor; don't "
     "ask them what they meant."
 )
@@ -7391,6 +7400,15 @@ async def _answer_with_gemini(
                     f"→ No response came back (reason: {finish_reason}). "
                     f"Try again or rephrase."
                 )
+
+        # Strip leaked markdown-image embeds (2026-07-29): with code
+        # execution the model writes `![alt](chart.png)` into its text
+        # assuming inline render — but the chart posts as its OWN Discord
+        # embed and the markdown shows as raw text at the top. Drop the
+        # image tag, keep any alt text as a plain caption if present.
+        answer = re.sub(r"!\[([^\]]*)\]\([^)]*\)",
+                        lambda m: m.group(1).strip(), answer or "")
+        answer = re.sub(r"\n{3,}", "\n\n", answer).strip()
 
         sources_footer = _build_sources_footer(grounding_metadata)
         full = (answer + sources_footer)[:4000]
