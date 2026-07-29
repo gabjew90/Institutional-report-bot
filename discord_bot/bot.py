@@ -2091,6 +2091,36 @@ def _build_price_history_tool():
     )
 
 
+# Inline mime types Gemini accepts on a request. Code execution can
+# emit OTHER artifacts (a saved .npy/.csv comes back as
+# application/octet-stream); echoing one of those back into `contents`
+# on the next tool round 400s the whole request with "Unsupported MIME
+# type: application/octet-stream" — which the user sees as "something
+# broke the model" (2026-07-29, "analyze trades ... relative to qqq").
+_ECHO_SAFE_INLINE_PREFIXES = ("image/", "application/pdf")
+
+
+def _safe_echo_parts(parts):
+    """Drop response parts that can't be sent back to the API.
+
+    Keeps text / executable_code / code_execution_result / function_call
+    (the tool loop needs them) and any inline_data the API accepts;
+    drops unsupported inline artifacts."""
+    out = []
+    for p in (parts or []):
+        inl = getattr(p, "inline_data", None)
+        if inl is not None:
+            mime = (getattr(inl, "mime_type", "") or "").lower()
+            if not mime.startswith(_ECHO_SAFE_INLINE_PREFIXES):
+                log.info(
+                    f"/ask: dropped un-echoable inline part ({mime!r}) "
+                    f"from the model turn"
+                )
+                continue
+        out.append(p)
+    return out
+
+
 def _json_safe(obj):
     """Recursively replace non-finite floats (NaN / ±Infinity) with None.
 
@@ -5819,9 +5849,13 @@ async def _answer_with_gemini(
                 break
 
             # Echo the model's tool-call turn into history so the next
-            # call has full context.
+            # call has full context — minus any inline artifact the API
+            # won't accept back (code-execution can emit
+            # application/octet-stream files that 400 the next round).
             contents.append(
-                types.Content(role="model", parts=response_parts)
+                types.Content(
+                    role="model", parts=_safe_echo_parts(response_parts)
+                )
             )
             # Execute each function call and build function_response parts.
             # Executor map replaces the prior if/elif chain — single
