@@ -150,7 +150,7 @@ Per-section quick reference, all following the universal rule:
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned. **EXCEPTION — durable identity dimensions are exempt from the 60-day decay.** A recurring lifestyle dimension (fitness routine, sport, job, family situation, health regimen, a hobby the room knows them for) is IDENTITY, not news — it stays in the profile as long as it keeps surfacing anywhere in their chat, even at low frequency. 2026-07-10 failure this rule exists for: ZHawk's dossier carried zero fitness content while his chat had 46 fitness messages — a 2:55 marathon PR, daily sauna for years, Whoop, HIIT evangelism, peptides — because the material peaked outside one refresh window and decayed. The roast bot then had nothing but his trading losses to work with, and the room called it "lame." Personal color is the roast material hierarchy's TOP tier — this section must never be thinner than the chat supports (4-6 items; prefer NON-trading color; money-adjacent items like account-reset rituals don't count toward the 4).
-- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 21-day points ledger decays automatically — a documented win scores 2 pts for its first 7 days, 1 pt from day 8 to 21, then stops scoring. The final = `clip(chatter_base + honesty, 50) + receipt_points` (no upper cap — top traders separate by receipts). If last week the user documented 8 wins (16 pts at full credit) and posts nothing new, those same wins decay to 8 pts (half credit) the following week and 0 after three — the score drifts down unless the wins keep coming. That's the decay mechanism working as designed.
+- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 21-day points ledger decays automatically — a documented win scores 2 pts for its first 7 days, 1 pt from day 8 to 21, then stops scoring. The final = `clip(chatter_base, 50) × activity_factor + receipt_points` (no upper cap — top traders separate by receipts). If last week the user documented 8 wins (16 pts at full credit) and posts nothing new, those same wins decay to 8 pts (half credit) the following week and 0 after three — the score drifts down unless the wins keep coming. That's the decay mechanism working as designed.
 - **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter description / receipts described qualitatively), but the prose re-derives every time. Don't carry forward stale framings from a prior refresh. The rationale is QUALITATIVE — no numbers (no point counts, no score values, no win/loss counts). See the trader_rationale spec for the no-numbers rule.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly. **One exemption: Recent personal life may GROW** — when it's under its 4-6 item floor and the new window (or a durable dimension the prior profile missed) supports more items, add them. Length parity must never be the reason the personal-color section stays thin.
@@ -512,27 +512,9 @@ The chatter base IS the chat signal — it already reflects self-awareness, tilt
 
 Final clip: **chatter base never exceeds 50**, regardless of which bracket signal pulled you. The cap is hard.
 
-**Layer 2 — Receipt points (additive, from the 14-day ledger above; unbounded above on its own — the only ceiling is the final 100 cap).**
+**Layer 2 — Receipt points (additive, from the 21-DAY POINTS LEDGER above; unbounded — receipts have no cap).**
 
-The 21-DAY POINTS LEDGER above is the receipt total. It adds DIRECTLY to the (clipped) chatter base. The policy is wins-only for EVERYONE — members and official callers alike: documented wins score (2 pts within 7 days, 1 pt at 8-21 days), while losses, ghosts, pending entries, and losing screenshots all score 0. The non-scoring buckets are still listed so your qualitative read of the trader stays honest.
-
-For members:
-
-- **+3 per entry posted (automatic on post).** Posting an entry is structural commitment — published before outcome.
-- **+5 if the position later closes for a gain in the window** (the +3 upgrades to +5; net +2 win bonus).
-- **+3 if the position closes for a loss in the window** (no upgrade; commitment was real, the loss doesn't subtract).
-- **+2 (ghost penalty) if the entry has NO close AND has either passed its expiration date OR been open ≥14 days.** Total-loss assumption: −1 against the +3 entry award. An option that expires worthless without a posted close counts as ghost; a stock entry that's been sitting for 14 days without a close also counts.
-- **0 (pending) if the entry has no close yet, is still within the 14d window, and is before its expiry.** Held in suspense — not scored as ghost YET; the entry might still close or might trip the ghost rule on a later refresh.
-- **+2 per standalone winning screenshot** (close-only P&L card with gain > 0 and no matching entry commitment in the window). Order tickets posted in `gain-loss-porn` also score as +2 even without a visible gain pill — the channel is structurally for flexing wins, so a gain-less close-ticket there is presumed positive.
-- **+1 per standalone losing screenshot** (close-only P&L card with gain ≤ 0, OR a gain-less close ticket posted OUTSIDE gain-loss-porn). The weakest receipt — no commitment, negative outcome — but still credited for the honest red post.
-
-For callers (wins-only nerf):
-
-- **+5 if the position closes for a gain in the window** — same as members.
-- **+2 per standalone winning screenshot** — same as members.
-- **0 on entry+loss closes, entry+ghosts, losing screenshots, AND pending entries.** Callers are the product members pay to tail; only documented wins lift their score. A caller with 14 ghosted positions earns 0 from that bucket; a caller posting losing screenshots earns 0 from that bucket. The `TOTAL RECEIPT POINTS:` line in the ledger block already reflects this — read it as-is, no further math.
-
-**Decay mechanism (rolling 14-day window):** The ledger only sees trades posted within the last 14 days. Older rows stay in the DB (never deleted by scoring) but stop generating points. If last week's 35 points were 28 wins-and-closes that aged out, this week's ledger picks up whatever this week posted instead. The score recomputes from scratch every refresh.
+The ledger total adds DIRECTLY to the scaled chatter base. The policy is wins-only for EVERYONE — members and official callers alike: a documented win scores **2 pts when documented within the last 7 days, 1 pt at 8-21 days**; losses, ghosts (entry with no close past expiry or open ≥14 days), pending entries, and losing screenshots all score **0**. A win is an entry with a winning close/trim, or a standalone winning screenshot (gain-loss-porn order tickets count — that channel is structurally a wins channel). The non-scoring buckets still show in the ledger block so your qualitative read stays honest. Decay is automatic: a win's value halves after a week and stops scoring after three — the score drifts down unless wins keep coming. All of this arithmetic is computed by code into the `TOTAL RECEIPT POINTS:` line — you never compute points.
 
 **RECEIPT POINTS = TOTAL RECEIPT POINTS FROM THE LEDGER BLOCK, VERBATIM. NO INFERENCE.**
 
@@ -553,9 +535,9 @@ Four populations the additive rubric reads correctly:
 - **Pure talker, obviously losing.** Chatter 20 + 0 receipts → 20. Losing pattern by chat, no receipts to lift them. Scored honestly from the complaining.
 - **Mid trader who posts.** Chatter 35 (average joe — coin-flip outcomes) + 30 receipt points → 65. Receipts add cleanly because the chatter base wasn't already near the cap.
 - **Sharp trader with receipts.** Chatter 48 (clipped from 51 — sharp + clean) + 40 receipt points → 88. Both layers stacking. The 40-50 chatter band combined with sustained receipts is where edge is certified.
-- **Loud loss-rider with high post volume (BK pattern).** Chatter 22 (losing pattern) + 47 receipt points (9 wins × 5 + 1 winning screenshot × 2; caller-nerf zeroes out his 14 ghosts and 1 losing screenshot) → 69. Receipts lift him meaningfully but the wins-only rule keeps ghost-farming from inflating the total.
-- **Caller with consistent wins (abe pattern).** Chatter 0 (he doesn't post chat outside his alert channel) + 120 receipt points (20 wins × 5 + 10 winning screenshots × 2; caller-nerf zeroes the 2 losses and 5 ghosts) → 100, capped. Documented winning closes alone clear the ceiling. The 16 points he'd have earned from losses/ghosts under the member rule weren't needed.
-- **Thin-history lurker (activity penalty fires).** Chatter 45 (chat that's visible reads talks-good-game) but msg_count = 100 → credibility multiplier 0.2 → scaled chatter 9. Plus 0 receipts → 9. The chatter read might be accurate on the small sample, but the system can't verify the pattern over volume; the multiplier reflects that. The same user at 500+ msgs would land at 45 + receipts. The penalty applies ONLY to chatter — receipts (real trade activity logged in alert channels) are objective and never scaled.
+- **Loud loss-rider with high post volume (BK pattern).** Chatter 22 (losing pattern) + 27 receipt points (11 recent wins × 2 + 5 older wins × 1; the wins-only rule zeroes his 14 ghosts and losing screenshots) → 49. Receipts lift him meaningfully but ghost-farming can't inflate the total.
+- **Caller with consistent wins (abe pattern).** Chatter 0 (he doesn't post chat outside his alert channel) + 55 receipt points (24 recent wins × 2 + 7 older wins × 1; losses and ghosts score 0) → 55. Documented winning closes alone put him near the top of the board — receipts have no cap.
+- **Thin-history lurker (activity penalty fires).** Chatter 45 (chat that's visible reads talks-good-game) but msg_count = 100 → activity multiplier ~0.33 → scaled chatter 15. Plus 0 receipts → 15. The chatter read might be accurate on the small sample, but the system can't verify the pattern over volume; the multiplier reflects that. The same user at 300+ msgs would land at 45 + receipts. The penalty applies ONLY to chatter — receipts (real trade activity logged in alert channels) are objective and never scaled.
 
 State the reasoning in trader_rationale — 3 to 5 sentences, qualitative prose (no numbers). Cover (a) chatter bracket placement + what chat-evidence drove it (self-awareness about losses, gloat patterns, tilt cycles all factor into bracket selection directly), (b) receipts described qualitatively, (c) the anchored examples that read the call. Example:
 
@@ -581,7 +563,7 @@ Anchor against THIS user's messages. Zero examples = 0-15.
 
 {points_block}
 
-The total points above are computed from analyst_trades (real entries / closes / screenshots posted by THIS user in their alert channel and gain-loss-porn). The receipts layer is ADDITIVE — points add directly to the (clipped) chatter base. There is NO internal cap on receipts; the only ceiling is the final 100 cap. A user with sustained heavy posting CAN exceed 50 from receipts alone. Pure-talker / no-receipts users land at their chatter base value (clipped at 50) — and that's by design.
+The total points above are computed from analyst_trades (real entries / closes / screenshots posted by THIS user in their alert channel and gain-loss-porn). The receipts layer is ADDITIVE — points add directly to the scaled chatter base. There is NO cap on receipts and no upper cap on the final score. A user with sustained heavy posting CAN exceed 50 from receipts alone. Pure-talker / no-receipts users land at their chatter base value (clipped at 50) — and that's by design.
 
 ---
 
@@ -1192,7 +1174,8 @@ def _format_points_block(user_id: int) -> str:
     to use. The lines below now show the real policy, so the math is
     self-consistent.
 
-    Final = clip(chatter_base + honesty, 50) + receipt_points  # no upper cap
+    Final = clip(chatter_base, 50) * activity_factor + receipt_points
+    (no upper cap)
     """
     ledger = db.compute_member_points(int(user_id), days=21)
     is_caller = bool(ledger.get("is_official_caller"))
@@ -1229,11 +1212,11 @@ def _format_points_block(user_id: int) -> str:
         f" documentation pattern — use them for the qualitative read,"
         f" not for arithmetic.)",
         f"",
-        f"(Receipt points add ON TOP of the chatter base. Final ="
-        f" clip(chatter_base + honesty, 50) + receipt_points (no upper cap)."
-        f" Chatter base caps at 50 — receipts are the only path past 50,"
-        f" and receipt points have no internal cap of their own. A heavy"
-        f" poster CAN exceed 50 from receipts alone if they post enough.)",
+        f"(Receipt points add ON TOP of the scaled chatter base. Final ="
+        f" clip(chatter_base, 50) x activity_factor + receipt_points"
+        f" (no upper cap). Chatter caps at 50 — receipts are the only"
+        f" path past 50, and receipt points have no internal cap of"
+        f" their own. A heavy poster CAN exceed 50 from receipts alone.)",
     ]
     return "\n".join(lines)
 
@@ -1567,7 +1550,8 @@ async def _generate_profile(
 
         Caller responsibility: compute final trader_score as
         scaled_chatter + receipt_points (no upper cap), where
-        scaled_chatter = clip(chatter_base, 50) * min(1, msgs/500)
+        scaled_chatter = clip(chatter_base, 50)
+            * min(1, msgs/TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS)
         and receipt_points is from db.compute_member_points(). The
         activity multiplier discounts chatter for thin-history
         users so they can't out-rank active ones on a 1-paragraph
@@ -2441,7 +2425,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # signal that the activity floor doesn't apply
                         # to. Final score = scaled_chatter +  # no upper cap
                         # receipt_pts) with scaled_chatter =
-                        # clip(chatter_base, 50) * min(1, msgs/500).
+                        # clip(chatter_base, 50) * min(1, msgs/300).
                         # Score on BASE-window activity (30d), not the
                         # content window — a deep-rebuild user reading 90d
                         # of content must not get a 3x activity-credibility

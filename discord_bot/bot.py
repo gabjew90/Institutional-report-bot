@@ -1247,6 +1247,14 @@ def _build_user_profile_tool():
                                 "end. Ignored without rank_position."
                             ),
                         ),
+                        "top_n": types.Schema(
+                            type=types.Type.INTEGER,
+                            description=(
+                                "Leaderboard mode (c) only: number of "
+                                "users to return when the asker names a "
+                                "size ('top 10'). Default 5, max 10."
+                            ),
+                        ),
                     },
                 ),
             ),
@@ -1315,13 +1323,20 @@ async def _execute_user_profile(args: dict) -> dict:
         }
 
     try:
-        # /ask exposure hardcodes top_n=5 for the leaderboard mode.
+        # Leaderboard size: honor the asked-for N, default 5, hard cap
+        # 10 (2026-07-29 — kyle asked "top 10", got a silent 5; the
+        # full-roster blast radius still argues for a ceiling).
         # rank_position mode has no cap on N.
+        try:
+            _top_n = int(args.get("top_n") or 5)
+        except Exception:
+            _top_n = 5
+        _top_n = max(1, min(10, _top_n))
         result = db.lookup_user_ranks(
             username=username,
             metric=metric,
             rank_position=rank_position,
-            top_n=5,
+            top_n=_top_n,
             from_bottom=from_bottom,
         )
     except Exception as e:
