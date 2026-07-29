@@ -23,6 +23,11 @@ class Settings(BaseSettings):
     # Set to e.g. "gemini-2.5-flash" if the primary model is preview-only and
     # not available on the free-tier ask key.
     ask_gemini_model: str = ""
+    # Optional model override for USER-PROFILE generation only. Empty = use
+    # settings.gemini_model. Added 2026-07-29: the anchor-receipts mandate
+    # needs stronger instruction-following than the PDF pipeline's lite
+    # tier (49/49 first-pass lint trips on 3.1-flash-lite).
+    profile_gemini_model: str = ""
 
     # Finnhub (optional — enables live market news + economic calendar)
     finnhub_api_key: str = ""

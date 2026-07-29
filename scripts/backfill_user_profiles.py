@@ -1722,7 +1722,7 @@ async def _generate_profile(
         # produced full output. The -preview suffix is a moving target
         # that Google can change without notice; the GA model is the
         # safer default for everyone-the-same.
-        text_model = settings.gemini_model
+        text_model = settings.profile_gemini_model or settings.gemini_model
         resp = await gemini_client.aio.models.generate_content(
             model=text_model,
             contents=prompt,
@@ -1800,9 +1800,10 @@ async def _generate_profile(
                 # No usable images — fall through to text-only.
                 return await _try_text_only(temperature=temperature)
             parts.append(types.Part.from_text(text=prompt))
-            vision_model = getattr(
-                settings, "gemini_vision_model", ""
-            ) or settings.gemini_model
+            vision_model = (
+                getattr(settings, "gemini_vision_model", "")
+                or settings.profile_gemini_model or settings.gemini_model
+            )
             try:
                 response = await gemini_client.aio.models.generate_content(
                     model=vision_model,
@@ -2181,7 +2182,10 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                 f"- **Skipped:** {skipped_lurkers} lurkers, "
                 f"{skipped_stable} stable (fresh profiles)\n"
             )
-            summary_lines.append(f"- **Model:** {settings.gemini_model}\n")
+            summary_lines.append(
+                f"- **Model:** "
+                f"{settings.profile_gemini_model or settings.gemini_model}\n"
+            )
             summary_lines.append(
                 f"- **Vision (image OCR):** "
                 f"{'enabled' if settings.profile_image_ocr_enabled else 'disabled'}"
