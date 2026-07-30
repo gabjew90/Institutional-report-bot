@@ -1,0 +1,390 @@
+{
+  "pulse_date": "2026-07-30",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai investment boom",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Banks treat the AI spending boom as the main engine of 2026 markets and keep raising their spending forecasts, with the open question being how the buildout gets funded, since debt, company balance sheets, and electricity supply come up repeatedly and no desk in this set argues the boom is ending.",
+      "facts_agreed": [
+        {
+          "claim": "AI capital spending is the central driver of the 2026 market backdrop, with datacenter and infrastructure buildout referenced across desks.",
+          "banks_for": [
+            "JPMorgan Asset Management",
+            "Citi",
+            "Goldman Sachs",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "The dominant feature of the investment landscape in 2026 remains the remarkable boom in AI investment",
+            "AI datacenter buildout",
+            "AI infrastructure buildout",
+            "AI infrastructure spending surge",
+            "AI-capex boom resilience"
+          ]
+        },
+        {
+          "claim": "How the buildout gets financed, and whether it earns a return, is a live concern rather than a settled question.",
+          "banks_for": [
+            "JPMorgan",
+            "JPMorgan Asset Management",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Nvidia AI stack infrastructure financing",
+            "AI-related capex and balance sheet risk",
+            "AI capex and ROI questions"
+          ]
+        },
+        {
+          "claim": "Physical and cost inputs to the buildout, chiefly power supply and the price of compute, are tracked as binding constraints on how far spending can run.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "TS Lombard",
+            "Citi"
+          ],
+          "evidence_quotes": [
+            "AI data center power supply constraints",
+            "AI compute economics improvement",
+            "AI compute pricing",
+            "AI capex cycle"
+          ]
+        },
+        {
+          "claim": "The buildout extends down the supply chain into semiconductor manufacturing capacity and compute deployment.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Foundry CapEx strength",
+            "AI compute application",
+            "AI-driven compute investments"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hyperscaler ai capex",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 2,
+        "neutral": 3
+      },
+      "consensus_view": "Banks agree the big cloud companies are spending far more on AI data centers than Wall Street had penciled in, but they split hard on whether that spending pays off or becomes the first real overinvestment bust since 2008, with credit markets already charging more to fund it.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscalers are still raising AI spending plans, and the banks think street forecasts are behind the actual pace.",
+          "banks_for": [
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Consensus 2027 capex is too low\u2026we model 54% growth for GOOG/L",
+            "hyperscalers continue to invest aggressively because they are confident that their unprecedented spending on AI will pay off"
+          ]
+        },
+        {
+          "claim": "Goldman argues the market is undervaluing the cash flow and core-business payoff the hyperscalers are already getting from AI compute.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "market underestimates how much future cash flow Msft, Amzn and Google will generate",
+            "solid indicator of the application of AI compute to the company\u2019s core business",
+            "we maintain our conviction that current stock performance underestimates META\u2019s ability to scale"
+          ]
+        },
+        {
+          "claim": "Desks treat hyperscaler capex as the swing factor for the broad equity tape right now.",
+          "banks_for": [
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "we maintain our Tactically Bullish call flagging hyperscaler capex as a datapoint",
+            "the stall in the S&P 500 rally we have experienced for the better part of two months"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI capex boom pays off or is overinvestment",
+          "banks_for": [
+            "JPMorgan",
+            "Bloomberg",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "we believe this point in time represents an unusually attractive buying opportunity",
+          "banks_against": [
+            "TS Lombard"
+          ],
+          "against_evidence": "For the first time since the GFC, we have a clear candidate for overinvestment"
+        },
+        {
+          "claim": "whether debt-funded AI buildout is a real credit risk",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "market underestimates how much future cash flow Msft, Amzn and Google will generate",
+          "banks_against": [
+            "The Market Ear",
+            "TS Lombard"
+          ],
+          "against_evidence": "The CDS market is charging for it."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "warsh fed policy and communication",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks treat Fed policy under Chair Warsh as a live macro driver this window, but they read his signal in opposite ways \u2014 one calls his framework hawkish (leaning toward higher rates), another heard dovish (leaning toward easier policy) tones at his press conference \u2014 so no agreed direction has been staked.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks flag Fed policy and communication under Chair Warsh as a live macro subject this window, referencing it in context rather than staking a directional call.",
+          "banks_for": [
+            "Citadel Securities",
+            "Goldman Sachs",
+            "JPMorgan",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Chair Warsh's hawkish policy framework",
+            "Kevin Warsh's Fed communication strategy",
+            "Chairman Warsh's press conference dovish signals",
+            "Fed interest rate policy under Warsh"
+          ]
+        },
+        {
+          "claim": "Warsh's own credibility and how he communicates policy are treated as part of the story, not just the rate decision itself.",
+          "banks_for": [
+            "Citadel Securities",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Fed post-Fed setup and Warsh credibility",
+            "Kevin Warsh's Fed communication strategy"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "how to read Warsh's policy signal \u2014 hawkish framework versus dovish press-conference tone",
+          "banks_for": [
+            "Citadel Securities"
+          ],
+          "for_evidence": "Chair Warsh's hawkish policy framework",
+          "banks_against": [
+            "JPMorgan"
+          ],
+          "against_evidence": "Chairman Warsh's press conference dovish signals"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait supply disruption",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks keep pointing at the Strait of Hormuz \u2014 the shipping chokepoint that moves a big slice of the world's oil and gas \u2014 as a live risk to energy supply, but none of them has committed to a call on whether it closes, reopens, or stays jammed.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks flag the Strait of Hormuz as an active supply and shipping risk this window, referencing it in context without taking a directional side.",
+          "banks_for": [
+            "Goldman Sachs",
+            "MUFG Research",
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz supply disruption",
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz closure",
+            "Strait of Hormuz shipping constraints",
+            "Strait of Hormuz energy supply disruption"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran military escalation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Goldman, JPMorgan and MUFG all reference renewed US-Iran military escalation as a live backdrop for oil and risk assets this window, but none of them stakes out a directional call on where it goes next.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag US-Iran military escalation and Middle East hostilities as an active macro backdrop this window, treating it as context rather than a directional trade.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "MUFG Research"
+          ],
+          "evidence_quotes": [
+            "US-Iran military escalation pause",
+            "US-Iran conflict escalation",
+            "US-Iran geopolitical escalation",
+            "Middle East kinetic hostilities"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "memory sector oversold",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Every desk covering this agrees memory stocks have been sold off to the point of capitulation (holders giving up and dumping), but only The Market Ear takes the next step and argues the selling has now reached chart support levels where pressing fresh bets on further downside gets expensive.",
+      "facts_agreed": [
+        {
+          "claim": "Memory stocks have been hit by a broad, heavy round of selling that desks describe as a washout rather than ordinary rotation.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan Asset Management",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Retail capitulation in memory stocks",
+            "Memory stocks washout",
+            "Memory sector long selling",
+            "Memory sector selling pressure"
+          ]
+        },
+        {
+          "claim": "Memory pricing itself is the variable desks are tracking underneath the selloff.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan Asset Management"
+          ],
+          "evidence_quotes": [
+            "elevated memory pricing headwinds",
+            "memory price trends"
+          ]
+        },
+        {
+          "claim": "The major memory names have fallen to significant technical support, which makes new short positions less attractive.",
+          "banks_for": [
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "nearly every major memory name is sitting on significant support"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor capex durability",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Every desk in this window treats the chip and AI-datacenter spending boom as the market's central story, but only one of them actually stakes a view that the spending holds up, while the rest just track how big it is, how it is being paid for, and whether it earns its money back.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across six desks are all writing about the same subject this window: the buildout of AI datacenter and compute infrastructure.",
+          "banks_for": [
+            "Citi",
+            "Goldman Sachs",
+            "JPMorgan",
+            "JPMorgan Asset Management",
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "AI datacenter buildout",
+            "AI infrastructure buildout",
+            "Nvidia AI stack infrastructure financing",
+            "AI-capex boom resilience",
+            "AI capex cycle",
+            "AI infrastructure spending surge"
+          ]
+        },
+        {
+          "claim": "How the spending is financed, and what it does to corporate balance sheets, is a live concern rather than an afterthought.",
+          "banks_for": [
+            "JPMorgan",
+            "JPMorgan Asset Management"
+          ],
+          "evidence_quotes": [
+            "Nvidia AI stack infrastructure financing",
+            "AI-related capex and balance sheet risk"
+          ]
+        },
+        {
+          "claim": "Desks are focused on whether the money spent on AI compute actually pays for itself, framed through pricing, unit economics and return questions.",
+          "banks_for": [
+            "Goldman Sachs",
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "AI compute economics improvement",
+            "AI compute pricing",
+            "AI capex and ROI questions"
+          ]
+        },
+        {
+          "claim": "Only one desk stakes a firm directional call, arguing chip-equipment spending is the most durable place to be invested.",
+          "banks_for": [
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Semiconductor capex remains his highest-conviction theme, given its more durable competitive advantages"
+          ]
+        },
+        {
+          "claim": "Physical bottlenecks and manufacturing capacity are tracked alongside the spending itself, specifically power supply and foundry output.",
+          "banks_for": [
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Foundry CapEx strength",
+            "AI data center power supply constraints"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "fed policy outlook",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'JPMorgan'"
+    }
+  ]
+}
