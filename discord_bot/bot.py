@@ -6101,7 +6101,7 @@ async def _answer_with_gemini(
             )
             try:
                 retry_config = types.GenerateContentConfig(
-                    system_instruction=_build_runtime_system_instruction(),
+                    system_instruction=_build_runtime_system_instruction(_prompt_extra),
                     tools=[
                         types.Tool(google_search=types.GoogleSearch()),
                         _build_chat_search_tool(),
@@ -6422,7 +6422,7 @@ async def _answer_with_gemini(
                         contents=_fid_contents,
                         config=types.GenerateContentConfig(
                             system_instruction=(
-                                _build_runtime_system_instruction()
+                                _build_runtime_system_instruction(_prompt_extra)
                             ),
                             safety_settings=safety_settings,
                             max_output_tokens=1000,
@@ -6790,7 +6790,7 @@ async def _answer_with_gemini(
                 # SEARCH-ONLY tool config — no function tools, so the model
                 # has nothing to route to except Google Search.
                 forced_config = types.GenerateContentConfig(
-                    system_instruction=_build_runtime_system_instruction(),
+                    system_instruction=_build_runtime_system_instruction(_prompt_extra),
                     tools=[types.Tool(google_search=types.GoogleSearch())],
                     safety_settings=safety_settings,
                     max_output_tokens=5000,
@@ -7136,7 +7136,7 @@ async def _answer_with_gemini(
                 # it — bundling the function tools just lets the model
                 # skip search and re-confabulate the level from priors.
                 ta_config = types.GenerateContentConfig(
-                    system_instruction=_build_runtime_system_instruction(),
+                    system_instruction=_build_runtime_system_instruction(_prompt_extra),
                     tools=[types.Tool(google_search=types.GoogleSearch())],
                     safety_settings=safety_settings,
                     max_output_tokens=5000,
