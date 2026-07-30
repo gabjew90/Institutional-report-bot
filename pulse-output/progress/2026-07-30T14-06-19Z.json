@@ -1,0 +1,40 @@
+{
+ "ts": "2026-07-30T14-06-19Z",
+ "events": [
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-07-30T14:08:00Z",
+   "detail": "ctx fetched via git (raw.githubusercontent 404 behind proxy); 51 PDFs"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-07-30T14:09:00Z",
+   "detail": "holiday gate proceed; volume gate pdf_count=51; press-time clean (snapshot 12min old)"
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-07-30T14:10:00Z",
+   "detail": "32 themes, 4 discovered, contrarian bucket present"
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-07-30T14:20:00Z",
+   "detail": "8 adjudication sub-agents dispatched; 7 validated, 1 discarded"
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-07-30T14:35:00Z",
+   "detail": "draft written, 5 INSIGHTS themes"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-07-30T14:40:00Z",
+   "detail": "exit 3 then re-roll 1 -> exit 0 CLEAN"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-07-30T14:42:00Z",
+   "detail": "1 mechanical fix (_DRAFT NOTES stripped)"
+  }
+ ]
+}
