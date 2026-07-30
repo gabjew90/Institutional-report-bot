@@ -155,13 +155,19 @@ def stitch(md: str) -> tuple[str, list[str], list[str]]:
     # adjudicated themes it folded/dropped and why — it's for the QC
     # reviewer (who reads the pre-stitch /tmp/draft.md) and must NOT
     # ship in the published pulse. Matches the header through to EOF or
-    # the next `## ` header (there shouldn't be one after it, but be safe).
+    # the next `## ` header — `## _LEANS` normally follows, and it MUST
+    # survive: the TRADE BOARD is built mechanically from that block.
+    # Splice out only the matched span; do NOT truncate at match.start(),
+    # which silently deleted _LEANS along with the notes and shipped an
+    # empty board (observed 2026-07-30, recovered by hand).
     notes_match = re.search(
         r'\n+##\s+_DRAFT NOTES\b.*?(?=\n##\s|\Z)',
         new_md, re.DOTALL | re.IGNORECASE,
     )
     if notes_match:
-        new_md = new_md[: notes_match.start()].rstrip() + '\n'
+        head = new_md[: notes_match.start()].rstrip()
+        tail = new_md[notes_match.end():].lstrip('\n')
+        new_md = head + '\n' + (('\n' + tail) if tail else '')
         fixes.append('stripped ## _DRAFT NOTES section (internal — kept in /tmp/draft.md for QC)')
 
     # Placeholder presence note — informational only, no file change.
