@@ -68,6 +68,11 @@ _CONCEPT_ANCHORS = [
     # trigger wording ("no clean factual answer") literally. Undisclosed
     # != subjective.
     ("Undisclosed isn't subjective", "unavailable data stays Type 1"),
+    # 2026-07-30: "who are the happiest people in the chat? How about
+    # the angriest" came back as a one-line jab at the asker with no
+    # names and no data behind it.
+    ("Room-superlative questions are Type 1", "room superlatives get names"),
+    ("binds on EVERY type", "personal-over-P&L applies to banter too"),
     ("QUOTATION", "verbatim quotation rule"),
     ("CHART COMMANDS", "fc-command lexicon"),
     ("Match by username", "username-keyed attribution"),

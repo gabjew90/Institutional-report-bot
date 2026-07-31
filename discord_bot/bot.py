@@ -6538,8 +6538,26 @@ async def _answer_with_gemini(
                     # actual material, and the novel-content check
                     # below rejects inventions.
                     _rr_material = (profiles_block or "")[:6000]
+                    # 2026-07-30 fix: this opened with "rewrite the
+                    # following roast" and shipped ONLY the answer, so
+                    # every input was treated as a single jab at the
+                    # asker. "who are the happiest people in the chat?
+                    # How about the angriest" came back with the
+                    # happiest arrow deleted. The question rides along
+                    # now and the answer has to survive rewriting.
                     _rr_prompt = (
-                        "Rewrite the following Discord bot roast. It "
+                        "Rewrite the ANSWER below. It is a bot's answer "
+                        "to a real question — it may be a roast, or a "
+                        "list, or a straight answer. Whatever shape it "
+                        "is, the rewrite must STILL ANSWER the question "
+                        "in full: every part the question asked for, "
+                        "every subject the original covered. If the "
+                        "original is arrow bullets, return the same "
+                        "number of arrow bullets on the same subjects. "
+                        "Never redirect an answer about other people "
+                        "into a jab at the asker.\n\n"
+                        f"QUESTION:\n{question}\n\n"
+                        "The problem to fix: it "
                         "recycles the SAME hooks you already used on this "
                         "person recently — they noticed, and a repeated "
                         "roast reads as not knowing them at all. BANNED "
@@ -6561,7 +6579,7 @@ async def _answer_with_gemini(
                             f"SUBJECT MATERIAL:\n{_rr_material}\n\n"
                             if _rr_material else ""
                         )
-                        + "ORIGINAL:\n"
+                        + "ORIGINAL ANSWER:\n"
                         f"{answer}"
                     )
                     _rr_config = types.GenerateContentConfig(
@@ -6635,7 +6653,15 @@ async def _answer_with_gemini(
             )
             try:
                 _pm_prompt = (
-                    "Rewrite the following Discord bot roast. Every jab "
+                    "Rewrite the ANSWER below. It is a bot's answer to a "
+                    "real question. The rewrite must STILL ANSWER that "
+                    "question in full — every part it asked for, every "
+                    "subject the original covered — and keep the same "
+                    "shape (arrow bullets in, the same arrow bullets "
+                    "out). Never redirect an answer about other people "
+                    "into a jab at the asker.\n\n"
+                    f"QUESTION:\n{question}\n\n"
+                    "The problem to fix: every jab "
                     "in it is a trading-losses jab (bags, exits, account, "
                     "casino) — the laziest register, and this room has "
                     "called it out. Rebuild the heat from the target's "
@@ -6647,7 +6673,7 @@ async def _answer_with_gemini(
                     "personal. Same heat, same length, same voice. Do NOT "
                     "invent new facts, tickers, or numbers — only material "
                     "from the context. Output ONLY the rewritten "
-                    "answer.\n\nORIGINAL:\n"
+                    "answer.\n\nORIGINAL ANSWER:\n"
                     f"{answer}"
                 )
                 _pm_config = types.GenerateContentConfig(

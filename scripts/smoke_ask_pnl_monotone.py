@@ -119,7 +119,15 @@ def test_prompt_hierarchy_present():
     ins = bot._ASK_SYSTEM_INSTRUCTION
     assert "Material hierarchy" in ins, "hierarchy rule missing from prompt"
     assert "personal color beats P&L" in ins
-    assert "never as the roast's only note" in ins
+    # 2026-07-30: was "the roast's only note". The rule was scoped to
+    # Type 3 clapbacks, so Type 2 banter had no material hierarchy at
+    # all and kept reaching for 0DTE/blown-account lines. Widened to
+    # "jab" + "binds on EVERY type"; the wording moved with it.
+    assert "never as the jab's only note" in ins
+    assert "binds on EVERY type" in ins, (
+        "the hierarchy must not be scoped to clapbacks — banter is "
+        "where the recycled P&L material actually shipped"
+    )
     _ok("prompt: material hierarchy (personal beats P&L) present")
 
 
