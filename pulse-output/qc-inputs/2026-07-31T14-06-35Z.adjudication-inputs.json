@@ -1,0 +1,2454 @@
+{
+ "hedge fund de-grossing": {
+  "theme": "hedge fund de-grossing",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "hedge fund de-grossing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "hedge fund de-grossing in single names",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "hedge fund de-grossing in single names"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "hedge fund de-grossing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hedge fund de-grossing",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hedge fund de-grossing"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "hedge fund de-grossing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hedge fund extreme de-grossing",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hedge fund extreme de-grossing"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "hedge fund de-grossing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hedge fund de-grossing in IT equities",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hedge fund de-grossing in IT equities"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25",
+    "metric": "FDA new medicine approvals",
+    "context": "Year-to-date 2026"
+   },
+   {
+    "source_bank": "DB",
+    "figure": "22nd percentile",
+    "metric": "Healthcare sector positioning",
+    "context": "Current positioning level"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "~$6.4B",
+    "metric": "Healthcare ETF net inflows",
+    "context": "Past twelve months"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "+7.5%",
+    "metric": "Mean healthcare outperformance vs SPX",
+    "context": "Midterm years"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.3%",
+    "metric": "Fundamental L/S daily performance",
+    "context": "July 28, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.0%",
+    "metric": "Systematic L/S daily performance",
+    "context": "July 28, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.7%",
+    "metric": "Multi-Strats daily performance",
+    "context": "July 28, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "89th percentile",
+    "metric": "Fundamental L/S momentum exposure",
+    "context": "vs. past five years"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34th percentile",
+    "metric": "Systematic L/S momentum exposure",
+    "context": "vs. past five years"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3 sigma",
+    "metric": "Goldman overall book de-grossing",
+    "context": "July 27, 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34%",
+    "metric": "Q2 YoY earnings growth",
+    "context": "Tracking vs 26% consensus expectation"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "90%",
+    "metric": "Companies beating earnings expectations",
+    "context": "Two weeks into Q2 reporting season"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "10%",
+    "metric": "Aggregate earnings vs consensus",
+    "context": "Q2 reporting season to date"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$62.5B",
+    "metric": "Q3 revenue guidance midpoint",
+    "context": "vs $63.17B median sellside estimate"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$6.18",
+    "metric": "Q2 EPS",
+    "context": "vs $7.19 estimate, reported 7/29/2026"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$130B-$145B",
+    "metric": "Full-year 2026 capex forecast",
+    "context": "raised from previous $125B-$145B range"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "31%",
+    "metric": "Operating margin",
+    "context": "vs 43% year-over-year"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$2.4B",
+    "metric": "Legal proceeding charges",
+    "context": "included in Q2 results"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.18B",
+    "metric": "Severance expenses",
+    "context": "related to May 2026 job cuts"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46%",
+    "metric": "KOSPI 200 decline from peak",
+    "context": "Over 27 trading days, as of 7/29/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3rd percentile",
+    "metric": "Mag 7 net exposure and L/S ratios",
+    "context": "Versus one-year history."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "9x",
+    "metric": "Momentum factor speed vs broader market",
+    "context": "Current market environment."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5 SD",
+    "metric": "Hedge fund de-grossing intensity",
+    "context": "Yesterday's de-grossing event."
+   },
+   {
+    "source_bank": "MarketWatch",
+    "figure": "7.2 million barrels",
+    "metric": "US oil stockpile draw",
+    "context": "Weekly decline."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "35%",
+    "metric": "Market-implied odds of a rate hike",
+    "context": "Pre-FOMC pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3",
+    "metric": "Activity levels (1-10 scale)",
+    "context": "Consistent with pre-FOMC paralysis."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "68%",
+    "metric": "Companies beating earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 49% historic average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "8%",
+    "metric": "Companies missing earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 13% historic average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3bps",
+    "metric": "Earnings beat performance vs S&P 500",
+    "context": "Current earnings season vs +98bps historic outperformance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-128bps",
+    "metric": "Earnings miss performance vs S&P 500",
+    "context": "Current earnings season vs -211bps historic underperformance"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$190B",
+    "metric": "CY26 capex guidance",
+    "context": "Guided by CFO Amy Hood."
+   },
+   {
+    "source_bank": "Market",
+    "figure": "$230B-$280B",
+    "metric": "FY27 capex expectations",
+    "context": "Investor range."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$230B",
+    "metric": "FY27 capex estimate",
+    "context": "Street consensus."
+   },
+   {
+    "source_bank": "Buyside",
+    "figure": "$200B-$250B",
+    "metric": "FY27 capex estimates",
+    "context": "Common buyside range for META."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20",
+    "metric": "Top models count",
+    "context": "Chinese models now lead US counterparts in token usage among the top 20 models."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "458",
+    "metric": "Client votes on Fed decision",
+    "context": "Survey conducted between July 28-29, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "25%",
+    "metric": "Client expectation of a rate hike",
+    "context": "Based on 458 client votes."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$659B",
+    "metric": "YTD Equity ETF and Mutual Fund inflows",
+    "context": "Largest YTD inflows on record."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$34B",
+    "metric": "July US equity fund inflows",
+    "context": "3rd largest July of inflows in over 20 years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "90%",
+    "metric": "S&P 500 corporates in open buyback window",
+    "context": "Expected by middle of August."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$5 trillion",
+    "metric": "AAPL market cap",
+    "context": "Topped $5T for the first time on July 29, 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "5.12%",
+    "metric": "S&P ex-AI theme MTD performance",
+    "context": "Best month since Nov 2024."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3%",
+    "metric": "SPX 30-session trading range",
+    "context": "Bottom decile going back to 1928."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$31.46B",
+    "metric": "CTA selling in down tape",
+    "context": "Projected selling over next 1 week."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "36%",
+    "metric": "KOSPI decline from highs",
+    "context": "As of July 29, 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "90%",
+    "metric": "Hedge fund deleveraging completion",
+    "context": "Estimated progress of hedge fund deleveraging"
+   },
+   {
+    "source_bank": "Vanda",
+    "figure": "$555mn",
+    "metric": "Retail stock liquidation",
+    "context": "Cumulative selling over the past three sessions."
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "85%",
+    "metric": "Leveraged ETF deleveraging",
+    "context": "Portion of April-May build-up unwound across broader equity market."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$770bn",
+    "metric": "2026 Hyperscaler capex consensus",
+    "context": "Revised up from $758bn since start of July."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$1tn",
+    "metric": "2027 Hyperscaler capex consensus",
+    "context": "Revised up from $925bn since start of July."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.8%ar",
+    "metric": "EU Q2 GDP",
+    "context": "Q2 2026 print"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.9%",
+    "metric": "Private domestic final sales surge",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "96.9",
+    "metric": "EC ESI Index",
+    "context": "July 2026, up 1.5pts"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.8x",
+    "metric": "Korea l/s ratio",
+    "context": "Retraced from 6.0x peak"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.13% m/m",
+    "metric": "Core PCE deflator",
+    "context": "June print, lowest since March 2025"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.5% q/q saar",
+    "metric": "Real GDP",
+    "context": "2Q 2026 print"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.9%",
+    "metric": "Private domestic final sales",
+    "context": "2Q 2026 growth"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$51bn",
+    "metric": "Real inventories",
+    "context": "2Q 2026 annualized drop"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.7%",
+    "metric": "Personal saving rate",
+    "context": "June 2026 level"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$130,000",
+    "metric": "Round-trip passage fee for a Suezmax oil tanker in Turkish Straits",
+    "context": "Illustrative benchmark for service-fee model"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$0.13/bbl",
+    "metric": "Effective cost per barrel for Suezmax tanker in Turkish Straits",
+    "context": ""
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$260,000",
+    "metric": "Estimated round-trip transit fee for a VLCC in Strait of Hormuz",
+    "context": "Illustrative estimate based on Turkish Straits comparison"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$130,000",
+    "metric": "Estimated round-trip transit fee for a Q-Max LNG carrier in Strait of Hormuz",
+    "context": "Illustrative estimate"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$20B",
+    "metric": "Situational Awareness fund AUM at peak",
+    "context": "Peak assets before liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "67%",
+    "metric": "Drawdown",
+    "context": "Situational Awareness fund performance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+16%",
+    "metric": "Korea market move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+21%",
+    "metric": "Samsung price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SK Hynix price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+15%",
+    "metric": "SoftBank price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+11%",
+    "metric": "Tokyo Electron price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SanDisk price move",
+    "context": "24 hours after liquidation"
+   }
+  ]
+ },
+ "ai infrastructure investment": {
+  "theme": "ai infrastructure investment",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 1,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Deutsche Bank",
+    "theme": "ai infrastructure investment",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Meta is funding its AI ambitions from a position of core-business strength and sees high-return opportunities.",
+    "primary_instruments": [
+     "META"
+    ],
+    "vs_consensus": "",
+    "evidence": "Meta\u2019s results reinforce our view that the company is funding its AI ambitions"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "hyperscaler capex trajectory",
+    "stance": "neutral",
+    "conviction": "medium",
+    "key_argument": "Investors are debating whether management can connect elevated infrastructure spending to credible long-term revenue opportunities.",
+    "primary_instruments": [
+     "MSFT",
+     "META"
+    ],
+    "vs_consensus": "",
+    "evidence": "investor focus increasingly centered on whether management can begin connecting elevated infrastructure spending"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "AI capex sustainability",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The market is questioning if AI monetization can clear the cost of capital before assets depreciate.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "the question is whether AI monetization ramps fast enough to clear the cost of capital"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "ai infrastructure investment",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure build",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure build"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "ai infrastructure investment",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure spending",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure spending"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "ai infrastructure investment",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI capex overbuild risk",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI capex overbuild risk"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "ai infrastructure investment",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI compute economics improvement",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI compute economics improvement"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "ai infrastructure investment",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI supercycle bottlenecks and facilitators",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI supercycle bottlenecks and facilitators"
+   }
+  ],
+  "tension_points": [
+   {
+    "source": "The Market Ear",
+    "theme": "AI capex sustainability",
+    "bull_case": "Hyperscalers continue to invest heavily in infrastructure.",
+    "bear_case": "Investors question if hyperscalers can finance commitments; concerns over circular funding models.",
+    "what_invalidates": "If hyperscalers cut capex commitments."
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "AI Capex Sustainability",
+    "bull_case": "Wall Street consensus for hyperscaler spending continues to rise, reaching $1tn for 2027.",
+    "bear_case": "Credit markets (CDS spreads) are not yet fully embracing the AI capex narrative.",
+    "what_invalidates": "Upcoming earnings failing to validate Wall Street's rising AI capex expectations."
+   }
+  ],
+  "key_data_points": [
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25",
+    "metric": "FDA new medicine approvals",
+    "context": "Year-to-date 2026"
+   },
+   {
+    "source_bank": "DB",
+    "figure": "22nd percentile",
+    "metric": "Healthcare sector positioning",
+    "context": "Current positioning level"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "~$6.4B",
+    "metric": "Healthcare ETF net inflows",
+    "context": "Past twelve months"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "+7.5%",
+    "metric": "Mean healthcare outperformance vs SPX",
+    "context": "Midterm years"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "30mn",
+    "metric": "M365 Copilot paid seats",
+    "context": "F4Q, up from 20mn last quarter."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+43%",
+    "metric": "Azure y/y @cc growth",
+    "context": "F4Q, vs 39.5% guidance midpoint."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$678B",
+    "metric": "Commercial RPO",
+    "context": "F4Q, +84% y/y."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "~$175B",
+    "metric": "CY26 CapEx",
+    "context": "Reset from ~$190B due to accounting changes."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "45.1%",
+    "metric": "Operating margin",
+    "context": "F4Q, vs 44.0% guidance midpoint."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$60.8B",
+    "metric": "2Q26 Revenue",
+    "context": "28% y/y growth, reported 7/30/2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$6.18",
+    "metric": "2Q26 GAAP EPS",
+    "context": "Reported 7/30/2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$75B",
+    "metric": "Advantage+ Annualized Run Rate",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "15.7%",
+    "metric": "Conversion gain from AI models",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$31.1B",
+    "metric": "2Q26 Capex",
+    "context": "Including finance-lease principal payments"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34%",
+    "metric": "Q2 YoY earnings growth",
+    "context": "Tracking vs 26% consensus expectation"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "90%",
+    "metric": "Companies beating earnings expectations",
+    "context": "Two weeks into Q2 reporting season"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "10%",
+    "metric": "Aggregate earnings vs consensus",
+    "context": "Q2 reporting season to date"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$62.5B",
+    "metric": "Q3 revenue guidance midpoint",
+    "context": "vs $63.17B median sellside estimate"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$6.18",
+    "metric": "Q2 EPS",
+    "context": "vs $7.19 estimate, reported 7/29/2026"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$130B-$145B",
+    "metric": "Full-year 2026 capex forecast",
+    "context": "raised from previous $125B-$145B range"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "31%",
+    "metric": "Operating margin",
+    "context": "vs 43% year-over-year"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$2.4B",
+    "metric": "Legal proceeding charges",
+    "context": "included in Q2 results"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.18B",
+    "metric": "Severance expenses",
+    "context": "related to May 2026 job cuts"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5 SD",
+    "metric": "Hedge fund de-grossing intensity",
+    "context": "Yesterday's de-grossing event."
+   },
+   {
+    "source_bank": "MarketWatch",
+    "figure": "7.2 million barrels",
+    "metric": "US oil stockpile draw",
+    "context": "Weekly decline."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "35%",
+    "metric": "Market-implied odds of a rate hike",
+    "context": "Pre-FOMC pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3",
+    "metric": "Activity levels (1-10 scale)",
+    "context": "Consistent with pre-FOMC paralysis."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "68%",
+    "metric": "Companies beating earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 49% historic average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "8%",
+    "metric": "Companies missing earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 13% historic average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3bps",
+    "metric": "Earnings beat performance vs S&P 500",
+    "context": "Current earnings season vs +98bps historic outperformance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-128bps",
+    "metric": "Earnings miss performance vs S&P 500",
+    "context": "Current earnings season vs -211bps historic underperformance"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$190B",
+    "metric": "CY26 capex guidance",
+    "context": "Guided by CFO Amy Hood."
+   },
+   {
+    "source_bank": "Market",
+    "figure": "$230B-$280B",
+    "metric": "FY27 capex expectations",
+    "context": "Investor range."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$230B",
+    "metric": "FY27 capex estimate",
+    "context": "Street consensus."
+   },
+   {
+    "source_bank": "Buyside",
+    "figure": "$200B-$250B",
+    "metric": "FY27 capex estimates",
+    "context": "Common buyside range for META."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20",
+    "metric": "Top models count",
+    "context": "Chinese models now lead US counterparts in token usage among the top 20 models."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "458",
+    "metric": "Client votes on Fed decision",
+    "context": "Survey conducted between July 28-29, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "25%",
+    "metric": "Client expectation of a rate hike",
+    "context": "Based on 458 client votes."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$5 trillion",
+    "metric": "AAPL market cap",
+    "context": "Topped $5T for the first time on July 29, 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "5.12%",
+    "metric": "S&P ex-AI theme MTD performance",
+    "context": "Best month since Nov 2024."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3%",
+    "metric": "SPX 30-session trading range",
+    "context": "Bottom decile going back to 1928."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$31.46B",
+    "metric": "CTA selling in down tape",
+    "context": "Projected selling over next 1 week."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "36%",
+    "metric": "KOSPI decline from highs",
+    "context": "As of July 29, 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "90%",
+    "metric": "Hedge fund deleveraging completion",
+    "context": "Estimated progress of hedge fund deleveraging"
+   },
+   {
+    "source_bank": "Vanda",
+    "figure": "$555mn",
+    "metric": "Retail stock liquidation",
+    "context": "Cumulative selling over the past three sessions."
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "85%",
+    "metric": "Leveraged ETF deleveraging",
+    "context": "Portion of April-May build-up unwound across broader equity market."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$770bn",
+    "metric": "2026 Hyperscaler capex consensus",
+    "context": "Revised up from $758bn since start of July."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$1tn",
+    "metric": "2027 Hyperscaler capex consensus",
+    "context": "Revised up from $925bn since start of July."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$20B",
+    "metric": "Situational Awareness fund AUM at peak",
+    "context": "Peak assets before liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "67%",
+    "metric": "Drawdown",
+    "context": "Situational Awareness fund performance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+16%",
+    "metric": "Korea market move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+21%",
+    "metric": "Samsung price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SK Hynix price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+15%",
+    "metric": "SoftBank price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+11%",
+    "metric": "Tokyo Electron price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SanDisk price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25",
+    "metric": "FDA new medicine approvals",
+    "context": "Year-to-date 2026"
+   },
+   {
+    "source_bank": "DB",
+    "figure": "22nd percentile",
+    "metric": "Healthcare sector positioning",
+    "context": "Current positioning level"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "~$6.4B",
+    "metric": "Healthcare ETF net inflows",
+    "context": "Past twelve months"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "+7.5%",
+    "metric": "Mean healthcare outperformance vs SPX",
+    "context": "Midterm years"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "30mn",
+    "metric": "M365 Copilot paid seats",
+    "context": "F4Q, up from 20mn last quarter."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+43%",
+    "metric": "Azure y/y @cc growth",
+    "context": "F4Q, vs 39.5% guidance midpoint."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$678B",
+    "metric": "Commercial RPO",
+    "context": "F4Q, +84% y/y."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "~$175B",
+    "metric": "CY26 CapEx",
+    "context": "Reset from ~$190B due to accounting changes."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "45.1%",
+    "metric": "Operating margin",
+    "context": "F4Q, vs 44.0% guidance midpoint."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$60.8B",
+    "metric": "2Q26 Revenue",
+    "context": "28% y/y growth, reported 7/30/2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$6.18",
+    "metric": "2Q26 GAAP EPS",
+    "context": "Reported 7/30/2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$75B",
+    "metric": "Advantage+ Annualized Run Rate",
+    "context": "As of 2Q26"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "15.7%",
+    "metric": "Conversion gain from AI models",
+    "context": "2Q26"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$31.1B",
+    "metric": "2Q26 Capex",
+    "context": "Including finance-lease principal payments"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34%",
+    "metric": "Q2 YoY earnings growth",
+    "context": "Tracking vs 26% consensus expectation"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "90%",
+    "metric": "Companies beating earnings expectations",
+    "context": "Two weeks into Q2 reporting season"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "10%",
+    "metric": "Aggregate earnings vs consensus",
+    "context": "Q2 reporting season to date"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$62.5B",
+    "metric": "Q3 revenue guidance midpoint",
+    "context": "vs $63.17B median sellside estimate"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$6.18",
+    "metric": "Q2 EPS",
+    "context": "vs $7.19 estimate, reported 7/29/2026"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$130B-$145B",
+    "metric": "Full-year 2026 capex forecast",
+    "context": "raised from previous $125B-$145B range"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "31%",
+    "metric": "Operating margin",
+    "context": "vs 43% year-over-year"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$2.4B",
+    "metric": "Legal proceeding charges",
+    "context": "included in Q2 results"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.18B",
+    "metric": "Severance expenses",
+    "context": "related to May 2026 job cuts"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5 SD",
+    "metric": "Hedge fund de-grossing intensity",
+    "context": "Yesterday's de-grossing event."
+   },
+   {
+    "source_bank": "MarketWatch",
+    "figure": "7.2 million barrels",
+    "metric": "US oil stockpile draw",
+    "context": "Weekly decline."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "35%",
+    "metric": "Market-implied odds of a rate hike",
+    "context": "Pre-FOMC pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3",
+    "metric": "Activity levels (1-10 scale)",
+    "context": "Consistent with pre-FOMC paralysis."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "68%",
+    "metric": "Companies beating earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 49% historic average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "8%",
+    "metric": "Companies missing earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 13% historic average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3bps",
+    "metric": "Earnings beat performance vs S&P 500",
+    "context": "Current earnings season vs +98bps historic outperformance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-128bps",
+    "metric": "Earnings miss performance vs S&P 500",
+    "context": "Current earnings season vs -211bps historic underperformance"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$190B",
+    "metric": "CY26 capex guidance",
+    "context": "Guided by CFO Amy Hood."
+   },
+   {
+    "source_bank": "Market",
+    "figure": "$230B-$280B",
+    "metric": "FY27 capex expectations",
+    "context": "Investor range."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$230B",
+    "metric": "FY27 capex estimate",
+    "context": "Street consensus."
+   },
+   {
+    "source_bank": "Buyside",
+    "figure": "$200B-$250B",
+    "metric": "FY27 capex estimates",
+    "context": "Common buyside range for META."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20",
+    "metric": "Top models count",
+    "context": "Chinese models now lead US counterparts in token usage among the top 20 models."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "458",
+    "metric": "Client votes on Fed decision",
+    "context": "Survey conducted between July 28-29, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "25%",
+    "metric": "Client expectation of a rate hike",
+    "context": "Based on 458 client votes."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$5 trillion",
+    "metric": "AAPL market cap",
+    "context": "Topped $5T for the first time on July 29, 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "5.12%",
+    "metric": "S&P ex-AI theme MTD performance",
+    "context": "Best month since Nov 2024."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3%",
+    "metric": "SPX 30-session trading range",
+    "context": "Bottom decile going back to 1928."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$31.46B",
+    "metric": "CTA selling in down tape",
+    "context": "Projected selling over next 1 week."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "36%",
+    "metric": "KOSPI decline from highs",
+    "context": "As of July 29, 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "90%",
+    "metric": "Hedge fund deleveraging completion",
+    "context": "Estimated progress of hedge fund deleveraging"
+   },
+   {
+    "source_bank": "Vanda",
+    "figure": "$555mn",
+    "metric": "Retail stock liquidation",
+    "context": "Cumulative selling over the past three sessions."
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "85%",
+    "metric": "Leveraged ETF deleveraging",
+    "context": "Portion of April-May build-up unwound across broader equity market."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$770bn",
+    "metric": "2026 Hyperscaler capex consensus",
+    "context": "Revised up from $758bn since start of July."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$1tn",
+    "metric": "2027 Hyperscaler capex consensus",
+    "context": "Revised up from $925bn since start of July."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.8%ar",
+    "metric": "EU Q2 GDP",
+    "context": "Q2 2026 print"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.9%",
+    "metric": "Private domestic final sales surge",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "96.9",
+    "metric": "EC ESI Index",
+    "context": "July 2026, up 1.5pts"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.8x",
+    "metric": "Korea l/s ratio",
+    "context": "Retraced from 6.0x peak"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.13% m/m",
+    "metric": "Core PCE deflator",
+    "context": "June print, lowest since March 2025"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.5% q/q saar",
+    "metric": "Real GDP",
+    "context": "2Q 2026 print"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.9%",
+    "metric": "Private domestic final sales",
+    "context": "2Q 2026 growth"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$51bn",
+    "metric": "Real inventories",
+    "context": "2Q 2026 annualized drop"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.7%",
+    "metric": "Personal saving rate",
+    "context": "June 2026 level"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$130,000",
+    "metric": "Round-trip passage fee for a Suezmax oil tanker in Turkish Straits",
+    "context": "Illustrative benchmark for service-fee model"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$0.13/bbl",
+    "metric": "Effective cost per barrel for Suezmax tanker in Turkish Straits",
+    "context": ""
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$260,000",
+    "metric": "Estimated round-trip transit fee for a VLCC in Strait of Hormuz",
+    "context": "Illustrative estimate based on Turkish Straits comparison"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$130,000",
+    "metric": "Estimated round-trip transit fee for a Q-Max LNG carrier in Strait of Hormuz",
+    "context": "Illustrative estimate"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$20B",
+    "metric": "Situational Awareness fund AUM at peak",
+    "context": "Peak assets before liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "67%",
+    "metric": "Drawdown",
+    "context": "Situational Awareness fund performance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+16%",
+    "metric": "Korea market move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+21%",
+    "metric": "Samsung price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SK Hynix price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+15%",
+    "metric": "SoftBank price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+11%",
+    "metric": "Tokyo Electron price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SanDisk price move",
+    "context": "24 hours after liquidation"
+   }
+  ]
+ },
+ "ai positioning unwind": {
+  "theme": "ai positioning unwind",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 0,
+   "neutral": 2
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai momentum unwind",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The aggressive deleveraging event has cleaned up positioning, making the sector interesting for duration capital.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "positioning is no longer the overhang it was a week ago"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "selective equity rotation",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Rotation is favored due to widening gaps in margin defense capabilities across sectors.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The rotation favors selectivity, as softer revisions and weaker sales beats argue against a wholesale shift"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "broadening out rotation",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Money is rotating into sectors with stronger earnings revisions as the S&P 500 ex-AI theme outperforms.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The Broadening out theme continued today"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "korea equity positioning",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The speculative leverage that fueled the AI rally has been flushed out, leaving positioning cleaner.",
+    "primary_instruments": [
+     "KORU"
+    ],
+    "vs_consensus": "",
+    "evidence": "positioning significantly cleaner than at the peak"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "semiconductor deleveraging",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The recent semiconductor sell-off has been driven more by positioning than deteriorating fundamentals.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "recent semiconductor sell-off has been driven more by positioning than deteriorating fundamentals"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25",
+    "metric": "FDA new medicine approvals",
+    "context": "Year-to-date 2026"
+   },
+   {
+    "source_bank": "DB",
+    "figure": "22nd percentile",
+    "metric": "Healthcare sector positioning",
+    "context": "Current positioning level"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "~$6.4B",
+    "metric": "Healthcare ETF net inflows",
+    "context": "Past twelve months"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "+7.5%",
+    "metric": "Mean healthcare outperformance vs SPX",
+    "context": "Midterm years"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.3%",
+    "metric": "Fundamental L/S daily performance",
+    "context": "July 28, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.0%",
+    "metric": "Systematic L/S daily performance",
+    "context": "July 28, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.7%",
+    "metric": "Multi-Strats daily performance",
+    "context": "July 28, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "89th percentile",
+    "metric": "Fundamental L/S momentum exposure",
+    "context": "vs. past five years"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34th percentile",
+    "metric": "Systematic L/S momentum exposure",
+    "context": "vs. past five years"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3 sigma",
+    "metric": "Goldman overall book de-grossing",
+    "context": "July 27, 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34%",
+    "metric": "Q2 YoY earnings growth",
+    "context": "Tracking vs 26% consensus expectation"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "90%",
+    "metric": "Companies beating earnings expectations",
+    "context": "Two weeks into Q2 reporting season"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "10%",
+    "metric": "Aggregate earnings vs consensus",
+    "context": "Q2 reporting season to date"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$62.5B",
+    "metric": "Q3 revenue guidance midpoint",
+    "context": "vs $63.17B median sellside estimate"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$6.18",
+    "metric": "Q2 EPS",
+    "context": "vs $7.19 estimate, reported 7/29/2026"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$130B-$145B",
+    "metric": "Full-year 2026 capex forecast",
+    "context": "raised from previous $125B-$145B range"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "31%",
+    "metric": "Operating margin",
+    "context": "vs 43% year-over-year"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$2.4B",
+    "metric": "Legal proceeding charges",
+    "context": "included in Q2 results"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.18B",
+    "metric": "Severance expenses",
+    "context": "related to May 2026 job cuts"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46%",
+    "metric": "KOSPI 200 decline from peak",
+    "context": "Over 27 trading days, as of 7/29/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3rd percentile",
+    "metric": "Mag 7 net exposure and L/S ratios",
+    "context": "Versus one-year history."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "9x",
+    "metric": "Momentum factor speed vs broader market",
+    "context": "Current market environment."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5 SD",
+    "metric": "Hedge fund de-grossing intensity",
+    "context": "Yesterday's de-grossing event."
+   },
+   {
+    "source_bank": "MarketWatch",
+    "figure": "7.2 million barrels",
+    "metric": "US oil stockpile draw",
+    "context": "Weekly decline."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "35%",
+    "metric": "Market-implied odds of a rate hike",
+    "context": "Pre-FOMC pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3",
+    "metric": "Activity levels (1-10 scale)",
+    "context": "Consistent with pre-FOMC paralysis."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "68%",
+    "metric": "Companies beating earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 49% historic average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "8%",
+    "metric": "Companies missing earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 13% historic average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3bps",
+    "metric": "Earnings beat performance vs S&P 500",
+    "context": "Current earnings season vs +98bps historic outperformance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-128bps",
+    "metric": "Earnings miss performance vs S&P 500",
+    "context": "Current earnings season vs -211bps historic underperformance"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$190B",
+    "metric": "CY26 capex guidance",
+    "context": "Guided by CFO Amy Hood."
+   },
+   {
+    "source_bank": "Market",
+    "figure": "$230B-$280B",
+    "metric": "FY27 capex expectations",
+    "context": "Investor range."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$230B",
+    "metric": "FY27 capex estimate",
+    "context": "Street consensus."
+   },
+   {
+    "source_bank": "Buyside",
+    "figure": "$200B-$250B",
+    "metric": "FY27 capex estimates",
+    "context": "Common buyside range for META."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20",
+    "metric": "Top models count",
+    "context": "Chinese models now lead US counterparts in token usage among the top 20 models."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "458",
+    "metric": "Client votes on Fed decision",
+    "context": "Survey conducted between July 28-29, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "25%",
+    "metric": "Client expectation of a rate hike",
+    "context": "Based on 458 client votes."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$659B",
+    "metric": "YTD Equity ETF and Mutual Fund inflows",
+    "context": "Largest YTD inflows on record."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$34B",
+    "metric": "July US equity fund inflows",
+    "context": "3rd largest July of inflows in over 20 years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "90%",
+    "metric": "S&P 500 corporates in open buyback window",
+    "context": "Expected by middle of August."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$5 trillion",
+    "metric": "AAPL market cap",
+    "context": "Topped $5T for the first time on July 29, 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "5.12%",
+    "metric": "S&P ex-AI theme MTD performance",
+    "context": "Best month since Nov 2024."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3%",
+    "metric": "SPX 30-session trading range",
+    "context": "Bottom decile going back to 1928."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$31.46B",
+    "metric": "CTA selling in down tape",
+    "context": "Projected selling over next 1 week."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "36%",
+    "metric": "KOSPI decline from highs",
+    "context": "As of July 29, 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "90%",
+    "metric": "Hedge fund deleveraging completion",
+    "context": "Estimated progress of hedge fund deleveraging"
+   },
+   {
+    "source_bank": "Vanda",
+    "figure": "$555mn",
+    "metric": "Retail stock liquidation",
+    "context": "Cumulative selling over the past three sessions."
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "85%",
+    "metric": "Leveraged ETF deleveraging",
+    "context": "Portion of April-May build-up unwound across broader equity market."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$770bn",
+    "metric": "2026 Hyperscaler capex consensus",
+    "context": "Revised up from $758bn since start of July."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$1tn",
+    "metric": "2027 Hyperscaler capex consensus",
+    "context": "Revised up from $925bn since start of July."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$20B",
+    "metric": "Situational Awareness fund AUM at peak",
+    "context": "Peak assets before liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "67%",
+    "metric": "Drawdown",
+    "context": "Situational Awareness fund performance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+16%",
+    "metric": "Korea market move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+21%",
+    "metric": "Samsung price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SK Hynix price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+15%",
+    "metric": "SoftBank price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+11%",
+    "metric": "Tokyo Electron price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SanDisk price move",
+    "context": "24 hours after liquidation"
+   }
+  ]
+ },
+ "momentum factor unwind": {
+  "theme": "momentum factor unwind",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 2,
+   "neutral": 0
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "momentum factor meltdown",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The coordinated hedge fund implosion is driven by wrong-way momentum positioning that has triggered a record-pace drawdown.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "coordinated implosion was driven primarily by wrong-way Momentum positioning"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "momentum unwind",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The historic momentum drawdown is likely in its final stages.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "we are in the 9th inning of this historic momentum drawdown"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "correlation event risk",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Macro uncertainty and momentum unwinds increase the likelihood of a correlation-1 event.",
+    "primary_instruments": [
+     "SPX"
+    ],
+    "vs_consensus": "",
+    "evidence": "the higher likelihood of a corr1 event is on people\u2019s radars."
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25",
+    "metric": "FDA new medicine approvals",
+    "context": "Year-to-date 2026"
+   },
+   {
+    "source_bank": "DB",
+    "figure": "22nd percentile",
+    "metric": "Healthcare sector positioning",
+    "context": "Current positioning level"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "~$6.4B",
+    "metric": "Healthcare ETF net inflows",
+    "context": "Past twelve months"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "+7.5%",
+    "metric": "Mean healthcare outperformance vs SPX",
+    "context": "Midterm years"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.3%",
+    "metric": "Fundamental L/S daily performance",
+    "context": "July 28, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.0%",
+    "metric": "Systematic L/S daily performance",
+    "context": "July 28, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.7%",
+    "metric": "Multi-Strats daily performance",
+    "context": "July 28, 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "89th percentile",
+    "metric": "Fundamental L/S momentum exposure",
+    "context": "vs. past five years"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34th percentile",
+    "metric": "Systematic L/S momentum exposure",
+    "context": "vs. past five years"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3 sigma",
+    "metric": "Goldman overall book de-grossing",
+    "context": "July 27, 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34%",
+    "metric": "Q2 YoY earnings growth",
+    "context": "Tracking vs 26% consensus expectation"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "90%",
+    "metric": "Companies beating earnings expectations",
+    "context": "Two weeks into Q2 reporting season"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "10%",
+    "metric": "Aggregate earnings vs consensus",
+    "context": "Q2 reporting season to date"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$62.5B",
+    "metric": "Q3 revenue guidance midpoint",
+    "context": "vs $63.17B median sellside estimate"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$6.18",
+    "metric": "Q2 EPS",
+    "context": "vs $7.19 estimate, reported 7/29/2026"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$130B-$145B",
+    "metric": "Full-year 2026 capex forecast",
+    "context": "raised from previous $125B-$145B range"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "31%",
+    "metric": "Operating margin",
+    "context": "vs 43% year-over-year"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$2.4B",
+    "metric": "Legal proceeding charges",
+    "context": "included in Q2 results"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.18B",
+    "metric": "Severance expenses",
+    "context": "related to May 2026 job cuts"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46%",
+    "metric": "KOSPI 200 decline from peak",
+    "context": "Over 27 trading days, as of 7/29/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3rd percentile",
+    "metric": "Mag 7 net exposure and L/S ratios",
+    "context": "Versus one-year history."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "9x",
+    "metric": "Momentum factor speed vs broader market",
+    "context": "Current market environment."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5 SD",
+    "metric": "Hedge fund de-grossing intensity",
+    "context": "Yesterday's de-grossing event."
+   },
+   {
+    "source_bank": "MarketWatch",
+    "figure": "7.2 million barrels",
+    "metric": "US oil stockpile draw",
+    "context": "Weekly decline."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "35%",
+    "metric": "Market-implied odds of a rate hike",
+    "context": "Pre-FOMC pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3",
+    "metric": "Activity levels (1-10 scale)",
+    "context": "Consistent with pre-FOMC paralysis."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "68%",
+    "metric": "Companies beating earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 49% historic average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "8%",
+    "metric": "Companies missing earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 13% historic average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3bps",
+    "metric": "Earnings beat performance vs S&P 500",
+    "context": "Current earnings season vs +98bps historic outperformance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-128bps",
+    "metric": "Earnings miss performance vs S&P 500",
+    "context": "Current earnings season vs -211bps historic underperformance"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$190B",
+    "metric": "CY26 capex guidance",
+    "context": "Guided by CFO Amy Hood."
+   },
+   {
+    "source_bank": "Market",
+    "figure": "$230B-$280B",
+    "metric": "FY27 capex expectations",
+    "context": "Investor range."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$230B",
+    "metric": "FY27 capex estimate",
+    "context": "Street consensus."
+   },
+   {
+    "source_bank": "Buyside",
+    "figure": "$200B-$250B",
+    "metric": "FY27 capex estimates",
+    "context": "Common buyside range for META."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20",
+    "metric": "Top models count",
+    "context": "Chinese models now lead US counterparts in token usage among the top 20 models."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "458",
+    "metric": "Client votes on Fed decision",
+    "context": "Survey conducted between July 28-29, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "25%",
+    "metric": "Client expectation of a rate hike",
+    "context": "Based on 458 client votes."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$659B",
+    "metric": "YTD Equity ETF and Mutual Fund inflows",
+    "context": "Largest YTD inflows on record."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$34B",
+    "metric": "July US equity fund inflows",
+    "context": "3rd largest July of inflows in over 20 years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "90%",
+    "metric": "S&P 500 corporates in open buyback window",
+    "context": "Expected by middle of August."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$5 trillion",
+    "metric": "AAPL market cap",
+    "context": "Topped $5T for the first time on July 29, 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "5.12%",
+    "metric": "S&P ex-AI theme MTD performance",
+    "context": "Best month since Nov 2024."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3%",
+    "metric": "SPX 30-session trading range",
+    "context": "Bottom decile going back to 1928."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$31.46B",
+    "metric": "CTA selling in down tape",
+    "context": "Projected selling over next 1 week."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "36%",
+    "metric": "KOSPI decline from highs",
+    "context": "As of July 29, 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "90%",
+    "metric": "Hedge fund deleveraging completion",
+    "context": "Estimated progress of hedge fund deleveraging"
+   },
+   {
+    "source_bank": "Vanda",
+    "figure": "$555mn",
+    "metric": "Retail stock liquidation",
+    "context": "Cumulative selling over the past three sessions."
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "85%",
+    "metric": "Leveraged ETF deleveraging",
+    "context": "Portion of April-May build-up unwound across broader equity market."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$770bn",
+    "metric": "2026 Hyperscaler capex consensus",
+    "context": "Revised up from $758bn since start of July."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$1tn",
+    "metric": "2027 Hyperscaler capex consensus",
+    "context": "Revised up from $925bn since start of July."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$20B",
+    "metric": "Situational Awareness fund AUM at peak",
+    "context": "Peak assets before liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "67%",
+    "metric": "Drawdown",
+    "context": "Situational Awareness fund performance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+16%",
+    "metric": "Korea market move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+21%",
+    "metric": "Samsung price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SK Hynix price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+15%",
+    "metric": "SoftBank price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+11%",
+    "metric": "Tokyo Electron price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SanDisk price move",
+    "context": "24 hours after liquidation"
+   }
+  ]
+ },
+ "midterm election caution": {
+  "theme": "midterm election caution",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 2
+  },
+  "theme_stances": [
+   {
+    "source": "The Market Ear",
+    "theme": "midterm election caution",
+    "stance": "neutral",
+    "conviction": "medium",
+    "key_argument": "Historical patterns suggest midterm years are subdued, potentially explaining the current market lethargy.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "markets are already feeling the gravitational pull of the midterms"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25",
+    "metric": "FDA new medicine approvals",
+    "context": "Year-to-date 2026"
+   },
+   {
+    "source_bank": "DB",
+    "figure": "22nd percentile",
+    "metric": "Healthcare sector positioning",
+    "context": "Current positioning level"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "~$6.4B",
+    "metric": "Healthcare ETF net inflows",
+    "context": "Past twelve months"
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "+7.5%",
+    "metric": "Mean healthcare outperformance vs SPX",
+    "context": "Midterm years"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34%",
+    "metric": "Q2 YoY earnings growth",
+    "context": "Tracking vs 26% consensus expectation"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "90%",
+    "metric": "Companies beating earnings expectations",
+    "context": "Two weeks into Q2 reporting season"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "10%",
+    "metric": "Aggregate earnings vs consensus",
+    "context": "Q2 reporting season to date"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$62.5B",
+    "metric": "Q3 revenue guidance midpoint",
+    "context": "vs $63.17B median sellside estimate"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$6.18",
+    "metric": "Q2 EPS",
+    "context": "vs $7.19 estimate, reported 7/29/2026"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$130B-$145B",
+    "metric": "Full-year 2026 capex forecast",
+    "context": "raised from previous $125B-$145B range"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "31%",
+    "metric": "Operating margin",
+    "context": "vs 43% year-over-year"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$2.4B",
+    "metric": "Legal proceeding charges",
+    "context": "included in Q2 results"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.18B",
+    "metric": "Severance expenses",
+    "context": "related to May 2026 job cuts"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.5 SD",
+    "metric": "Hedge fund de-grossing intensity",
+    "context": "Yesterday's de-grossing event."
+   },
+   {
+    "source_bank": "MarketWatch",
+    "figure": "7.2 million barrels",
+    "metric": "US oil stockpile draw",
+    "context": "Weekly decline."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "35%",
+    "metric": "Market-implied odds of a rate hike",
+    "context": "Pre-FOMC pricing."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3",
+    "metric": "Activity levels (1-10 scale)",
+    "context": "Consistent with pre-FOMC paralysis."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "68%",
+    "metric": "Companies beating earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 49% historic average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "8%",
+    "metric": "Companies missing earnings by >1stdev",
+    "context": "Q2 earnings season to date, vs 13% historic average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3bps",
+    "metric": "Earnings beat performance vs S&P 500",
+    "context": "Current earnings season vs +98bps historic outperformance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-128bps",
+    "metric": "Earnings miss performance vs S&P 500",
+    "context": "Current earnings season vs -211bps historic underperformance"
+   },
+   {
+    "source_bank": "Microsoft",
+    "figure": "$190B",
+    "metric": "CY26 capex guidance",
+    "context": "Guided by CFO Amy Hood."
+   },
+   {
+    "source_bank": "Market",
+    "figure": "$230B-$280B",
+    "metric": "FY27 capex expectations",
+    "context": "Investor range."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$230B",
+    "metric": "FY27 capex estimate",
+    "context": "Street consensus."
+   },
+   {
+    "source_bank": "Buyside",
+    "figure": "$200B-$250B",
+    "metric": "FY27 capex estimates",
+    "context": "Common buyside range for META."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20",
+    "metric": "Top models count",
+    "context": "Chinese models now lead US counterparts in token usage among the top 20 models."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "458",
+    "metric": "Client votes on Fed decision",
+    "context": "Survey conducted between July 28-29, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "25%",
+    "metric": "Client expectation of a rate hike",
+    "context": "Based on 458 client votes."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$5 trillion",
+    "metric": "AAPL market cap",
+    "context": "Topped $5T for the first time on July 29, 2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "5.12%",
+    "metric": "S&P ex-AI theme MTD performance",
+    "context": "Best month since Nov 2024."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3%",
+    "metric": "SPX 30-session trading range",
+    "context": "Bottom decile going back to 1928."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$31.46B",
+    "metric": "CTA selling in down tape",
+    "context": "Projected selling over next 1 week."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "36%",
+    "metric": "KOSPI decline from highs",
+    "context": "As of July 29, 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "90%",
+    "metric": "Hedge fund deleveraging completion",
+    "context": "Estimated progress of hedge fund deleveraging"
+   },
+   {
+    "source_bank": "Vanda",
+    "figure": "$555mn",
+    "metric": "Retail stock liquidation",
+    "context": "Cumulative selling over the past three sessions."
+   },
+   {
+    "source_bank": "JPM",
+    "figure": "85%",
+    "metric": "Leveraged ETF deleveraging",
+    "context": "Portion of April-May build-up unwound across broader equity market."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$770bn",
+    "metric": "2026 Hyperscaler capex consensus",
+    "context": "Revised up from $758bn since start of July."
+   },
+   {
+    "source_bank": "Wall Street",
+    "figure": "$1tn",
+    "metric": "2027 Hyperscaler capex consensus",
+    "context": "Revised up from $925bn since start of July."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$20B",
+    "metric": "Situational Awareness fund AUM at peak",
+    "context": "Peak assets before liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "67%",
+    "metric": "Drawdown",
+    "context": "Situational Awareness fund performance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+16%",
+    "metric": "Korea market move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+21%",
+    "metric": "Samsung price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SK Hynix price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+15%",
+    "metric": "SoftBank price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+11%",
+    "metric": "Tokyo Electron price move",
+    "context": "24 hours after liquidation"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+25%",
+    "metric": "SanDisk price move",
+    "context": "24 hours after liquidation"
+   }
+  ]
+ }
+}
