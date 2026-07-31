@@ -1031,9 +1031,31 @@ def _migrate_pdf_query_surface(conn) -> None:
         -- description warned about this and the model wrote the naive
         -- query anyway, so the honest math lives in SQL where it can't
         -- be skipped. Column names carry the caveat.
+        -- DROP first: the name-grouped version of this view already
+        -- shipped, and CREATE VIEW IF NOT EXISTS would leave it in
+        -- place. Views hold no data, so dropping is free.
+        DROP VIEW IF EXISTS trade_scoreboard;
+
+        -- Grouped by author_id, NOT by name: this room renames itself
+        -- constantly, so one trader shows up under many display names
+        -- (423994649317736448 = 'BK' + 'M&AK' + 'bearishkyle';
+        -- 1192771108332650496 = 'abe' + 'abugs bunny' + 'abullish_xyz'
+        -- + 'abearish' + ...). Name-based grouping split BK's 184
+        -- trades into three separate "traders" of 81/73/21 and
+        -- understated everyone (2026-07-30). author_id is populated on
+        -- 885 of 887 trades; the 2 stragglers fall back to the name.
         CREATE VIEW IF NOT EXISTS trade_scoreboard AS
             SELECT
-                COALESCE(caller, author)           AS trader,
+                COALESCE(CAST(author_id AS TEXT),
+                         caller, author)           AS trader_key,
+                (SELECT t2.author FROM analyst_trades t2
+                  WHERE COALESCE(CAST(t2.author_id AS TEXT), t2.caller,
+                                 t2.author)
+                        = COALESCE(CAST(t.author_id AS TEXT), t.caller,
+                                   t.author)
+                    AND t2.is_trade = 1
+                  ORDER BY t2.posted_at DESC LIMIT 1)
+                                                   AS trader,
                 COUNT(*)                           AS logged_trades,
                 SUM(CASE WHEN gain_pct > 0 THEN 1 ELSE 0 END)
                                                    AS documented_wins,
@@ -1050,7 +1072,7 @@ def _migrate_pdf_query_surface(conn) -> None:
                                    AS win_rate_honest_ghosts_as_losses,
                 ROUND(AVG(CASE WHEN gain_pct > 0 THEN gain_pct END), 1)
                                    AS avg_gain_on_wins_only
-            FROM analyst_trades
+            FROM analyst_trades t
             WHERE is_trade = 1
             GROUP BY 1;
 

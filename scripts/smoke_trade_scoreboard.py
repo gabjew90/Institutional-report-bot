@@ -46,8 +46,8 @@ def _db():
             model_used TEXT, analysis_duration_seconds REAL,
             created_at TEXT);
         CREATE TABLE analyst_trades (id INTEGER PRIMARY KEY,
-            author TEXT, caller TEXT, is_trade INT, gain_pct REAL,
-            ticker TEXT, posted_at TEXT);
+            author TEXT, author_id INTEGER, caller TEXT, is_trade INT,
+            gain_pct REAL, ticker TEXT, posted_at TEXT);
     """)
     # "Sam": 8 documented wins, 0 posted losses, 44 never closed.
     rows = [("Sam", None, 1, 50.0)] * 8 + [("Sam", None, 1, None)] * 44
@@ -97,6 +97,70 @@ def test_column_names_carry_the_caveat():
     _ok("column names make the bias impossible to quote unknowingly")
 
 
+def test_renames_do_not_split_a_trader():
+    """2026-07-30, same day as the view shipped: grouping on the
+    display name split ONE trader into three.
+
+    This room renames constantly. Discord author_id 423994649317736448
+    posts as 'BK', 'M&AK' and 'bearishkyle'; 1192771108332650496 posts
+    as 'abe', 'abugs bunny', 'abullish_xyz', 'abearish' and more. The
+    name-grouped view reported BK as three separate traders with 81 /
+    73 / 21 trades instead of one with 184, so every per-trader number
+    was understated. author_id is the stable key.
+    """
+    import db as dbmod
+    path, c = _db()
+    try:
+        c.executemany(
+            "INSERT INTO analyst_trades (author, author_id, is_trade, "
+            "gain_pct, posted_at) VALUES (?,?,?,?,?)",
+            # one human, three display names, 6 trades, 2 wins
+            [("BK", 423994649317736448, 1, 10.0, "2026-05-01"),
+             ("BK", 423994649317736448, 1, None, "2026-05-02"),
+             ("bearishkyle", 423994649317736448, 1, 20.0, "2026-06-01"),
+             ("bearishkyle", 423994649317736448, 1, None, "2026-06-02"),
+             ("M&AK", 423994649317736448, 1, None, "2026-07-01"),
+             ("M&AK", 423994649317736448, 1, -5.0, "2026-07-02")])
+        c.commit()
+        dbmod._migrate_pdf_query_surface(c)
+        rows = c.execute(
+            "SELECT trader, logged_trades, documented_wins "
+            "FROM trade_scoreboard WHERE trader_key = ?",
+            ("423994649317736448",)).fetchall()
+        assert len(rows) == 1, (
+            f"one human must be one row, got {len(rows)}: {rows}"
+        )
+        trader, logged, wins = rows[0]
+        assert logged == 6 and wins == 2, (
+            f"all three display names must roll up: {rows[0]}"
+        )
+        assert trader == "M&AK", (
+            f"display name should be the most recent one, got {trader!r}"
+        )
+    finally:
+        c.close(); os.remove(path)
+    _ok("renames roll up to one trader via author_id")
+
+
+def test_missing_author_id_still_counted():
+    """885 of 887 prod trades carry author_id; the stragglers must not
+    vanish from the board."""
+    import db as dbmod
+    path, c = _db()
+    try:
+        dbmod._migrate_pdf_query_surface(c)
+        # the fixture's 52 "Sam" rows have author_id NULL
+        r = c.execute(
+            "SELECT trader_key, logged_trades FROM trade_scoreboard"
+        ).fetchall()
+        assert r == [("Sam", 52)], (
+            f"rows without author_id must fall back to the name: {r}"
+        )
+    finally:
+        c.close(); os.remove(path)
+    _ok("trades lacking author_id fall back to the name, not dropped")
+
+
 def test_tool_points_at_the_view():
     import inspect
     import discord_bot.bot as bot
@@ -114,5 +178,7 @@ if __name__ == "__main__":
     print("=== trade scoreboard smoke ===")
     test_view_exposes_both_rates()
     test_column_names_carry_the_caveat()
+    test_renames_do_not_split_a_trader()
+    test_missing_author_id_still_counted()
     test_tool_points_at_the_view()
     print("\nALL TRADE SCOREBOARD SMOKE TESTS PASS")
