@@ -207,6 +207,55 @@ def test_unscored_closes_are_not_called_never_closed():
     _ok("unscored closes separated from genuinely open positions")
 
 
+def test_three_rates_bracket_the_truth():
+    """Neither existing rate is honest on its own.
+
+    win_rate_BIASED_documented_only divides by scored closes, so it only
+    ever sees exits the member chose to post with a number attached —
+    that is how 96-100% happens. win_rate_honest_ghosts_as_losses
+    divides by EVERY row, which calls a position announced this morning
+    a loss. The truth is bracketed by them, not equal to either.
+
+    The middle rate divides by positions that are actually closed
+    (scored + unscored), so a posted-but-numberless exit counts against
+    you while a trade still running does not.
+
+    Ghosts stay visible in never_closed — excluded from this rate, not
+    hidden. For options most ghosts are probably expirations, i.e. real
+    losses, so this rate is generous. Quote it WITH never_closed.
+    """
+    import db as dbmod
+    path, c = _db()
+    try:
+        c.executemany(
+            "INSERT INTO analyst_trades (author, author_id, is_trade, "
+            "action, gain_pct, posted_at) VALUES (?,?,1,?,?,?)",
+            [("z", 901, "open",  None, "2026-06-01"),   # still running
+             ("z", 901, "open",  None, "2026-06-02"),   # still running
+             ("z", 901, "close", None, "2026-06-03"),   # closed, unscored
+             ("z", 901, "close", 12.0, "2026-06-04")])  # closed, won
+        c.commit()
+        dbmod._migrate_pdf_query_surface(c)
+        biased, closed_only, harsh = c.execute(
+            "SELECT win_rate_BIASED_documented_only, "
+            "win_rate_closed_positions_only, "
+            "win_rate_honest_ghosts_as_losses "
+            "FROM trade_scoreboard WHERE trader_key='901'").fetchone()
+        assert biased == 100.0, f"1 win / 1 scored close: {biased}"
+        assert closed_only == 50.0, (
+            f"1 win / 2 closed positions — the unscored close must "
+            f"count against, got {closed_only}"
+        )
+        assert harsh == 25.0, f"1 win / 4 rows: {harsh}"
+        assert biased > closed_only > harsh, (
+            f"the three rates must bracket: {biased} > {closed_only} > "
+            f"{harsh}"
+        )
+    finally:
+        c.close(); os.remove(path)
+    _ok("three rates bracket the truth; open positions aren't losses")
+
+
 def test_tool_points_at_the_view():
     import inspect
     import discord_bot.bot as bot
@@ -227,5 +276,6 @@ if __name__ == "__main__":
     test_renames_do_not_split_a_trader()
     test_missing_author_id_still_counted()
     test_unscored_closes_are_not_called_never_closed()
+    test_three_rates_bracket_the_truth()
     test_tool_points_at_the_view()
     print("\nALL TRADE SCOREBOARD SMOKE TESTS PASS")

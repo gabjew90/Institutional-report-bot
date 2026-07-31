@@ -1101,6 +1101,17 @@ def _migrate_pdf_query_surface(conn) -> None:
                       / NULLIF(SUM(CASE WHEN gain_pct IS NOT NULL
                                         THEN 1 ELSE 0 END), 0), 1)
                                    AS win_rate_BIASED_documented_only,
+                -- The fair middle: divide by positions that are
+                -- actually CLOSED (scored + unscored), so a posted
+                -- exit with no number counts against you but a trade
+                -- still running does not. Generous on options, where
+                -- most never_closed rows are probably expirations —
+                -- quote it WITH never_closed, never on its own.
+                ROUND(100.0 * SUM(CASE WHEN gain_pct > 0 THEN 1 ELSE 0 END)
+                      / NULLIF(SUM(CASE WHEN gain_pct IS NOT NULL
+                                          OR action IN ('close', 'trim')
+                                        THEN 1 ELSE 0 END), 0), 1)
+                                   AS win_rate_closed_positions_only,
                 ROUND(100.0 * SUM(CASE WHEN gain_pct > 0 THEN 1 ELSE 0 END)
                       / NULLIF(COUNT(*), 0), 1)
                                    AS win_rate_honest_ghosts_as_losses,
