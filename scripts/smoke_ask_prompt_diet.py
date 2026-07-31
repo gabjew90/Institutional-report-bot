@@ -62,6 +62,12 @@ _CONCEPT_ANCHORS = [
     ("Recency is its own trigger", "recency search trigger"),
     ("no clean consensus", "uncertainty handling"),
     ("Bad-faith framing", "bad-faith questions still get answers"),
+    # 2026-07-30: "@omniwiz how much did citadel make today" came back
+    # as a Type 2 banter paragraph instead of Type 1 arrows. Citadel
+    # doesn't publish daily P&L, so the question matched Type 2's old
+    # trigger wording ("no clean factual answer") literally. Undisclosed
+    # != subjective.
+    ("Undisclosed isn't subjective", "unavailable data stays Type 1"),
     ("QUOTATION", "verbatim quotation rule"),
     ("CHART COMMANDS", "fc-command lexicon"),
     ("Match by username", "username-keyed attribution"),
