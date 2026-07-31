@@ -47,7 +47,7 @@ def _db():
             created_at TEXT);
         CREATE TABLE analyst_trades (id INTEGER PRIMARY KEY,
             author TEXT, author_id INTEGER, caller TEXT, is_trade INT,
-            gain_pct REAL, ticker TEXT, posted_at TEXT);
+            gain_pct REAL, ticker TEXT, action TEXT, posted_at TEXT);
     """)
     # "Sam": 8 documented wins, 0 posted losses, 44 never closed.
     rows = [("Sam", None, 1, 50.0)] * 8 + [("Sam", None, 1, None)] * 44
@@ -161,6 +161,52 @@ def test_missing_author_id_still_counted():
     _ok("trades lacking author_id fall back to the name, not dropped")
 
 
+def test_unscored_closes_are_not_called_never_closed():
+    """2026-07-30: `never_closed` was SUM(gain_pct IS NULL), which
+    lumps two different things together.
+
+    179 of the room's 431 closes carry no percentage — the member wrote
+    "sold DELL way too early smh" or "Im taking all 7:31 113c" and the
+    extractor had no number to parse. Those are CLOSED positions that
+    happen to be unscored. Counting them as "never closed" says the
+    trade is still open, which is simply false.
+
+    (Price-scoring them was the obvious repair and it does not work:
+    only 4 of 96 priced closes can be matched to a prior open that also
+    carries a price, because opens rarely record one. So the buckets get
+    told apart honestly instead of being guessed at.)
+    """
+    import db as dbmod
+    path, c = _db()
+    try:
+        c.executemany(
+            "INSERT INTO analyst_trades (author, author_id, is_trade, "
+            "action, gain_pct, posted_at) VALUES (?,?,1,?,?,?)",
+            [("z", 900, "open",  None, "2026-06-01"),   # truly open
+             ("z", 900, "open",  None, "2026-06-02"),   # truly open
+             ("z", 900, "close", None, "2026-06-03"),   # closed, unscored
+             ("z", 900, "close", 12.0, "2026-06-04")])  # closed, scored
+        c.commit()
+        dbmod._migrate_pdf_query_surface(c)
+        r = c.execute(
+            "SELECT logged_trades, documented_wins, closed_unscored, "
+            "never_closed FROM trade_scoreboard WHERE trader_key='900'"
+        ).fetchone()
+        logged, wins, unscored, ghosts = r
+        assert logged == 4 and wins == 1, r
+        assert unscored == 1, (
+            f"the numberless close must land in its own bucket: {r}"
+        )
+        assert ghosts == 2, (
+            f"never_closed must count ONLY positions with no close "
+            f"posted at all, got {ghosts} (the unscored close leaked "
+            f"in): {r}"
+        )
+    finally:
+        c.close(); os.remove(path)
+    _ok("unscored closes separated from genuinely open positions")
+
+
 def test_tool_points_at_the_view():
     import inspect
     import discord_bot.bot as bot
@@ -180,5 +226,6 @@ if __name__ == "__main__":
     test_column_names_carry_the_caveat()
     test_renames_do_not_split_a_trader()
     test_missing_author_id_still_counted()
+    test_unscored_closes_are_not_called_never_closed()
     test_tool_points_at_the_view()
     print("\nALL TRADE SCOREBOARD SMOKE TESTS PASS")

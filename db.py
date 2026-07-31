@@ -672,19 +672,41 @@ def _migrate_add_extraction_source(conn: sqlite3.Connection) -> None:
       - 'text'  : text classifier (no image attachments)
       - 'mixed' : classifier consumed both text + image evidence
 
-    Idempotent: PRAGMA-checks for the column before ALTER. Backfills
-    any NULL values to 'image' (every legacy row came from the image-OCR
-    pipeline; the column didn't exist before 2026-06-02). Safe to run
-    on every connection boot — already-migrated rows produce no UPDATE
-    activity.
+    Idempotent: PRAGMA-checks for the column before ALTER, then derives
+    the label from image_url. Safe to run on every connection boot.
+
+    2026-07-30 — this used to backfill NULL -> 'image' unconditionally,
+    on the theory that it was a one-time pass over legacy rows. It is
+    not one-time: it runs on every boot, and record_analyst_trade never
+    wrote the column, so EVERY row it inserted was NULL and got stamped
+    'image' at the next restart. 31,356 July chat messages were labelled
+    screenshots, and the column claimed text extraction had been dead
+    since 2026-06-01 while it was actually pulling 369 trades a month.
+
+    image_url is the ground truth: a row with no image cannot have come
+    from the image-OCR pipeline. Explicit 'text'/'mixed' labels are left
+    alone — the classifier sets those deliberately.
     """
     cols = [r[1] for r in conn.execute("PRAGMA table_info(analyst_trades)").fetchall()]
     if "extraction_source" not in cols:
         conn.execute("ALTER TABLE analyst_trades ADD COLUMN extraction_source TEXT")
-    # Backfill NULL → 'image'. Idempotent.
+    # Image evidence = a stored url OR an attachment id. 3 prod rows
+    # carry an attachment id with no url (upload presumably failed to
+    # record); treat those as image-sourced rather than guessing 'text'.
+    _no_image = ("image_url IS NULL "
+                 "AND COALESCE(discord_attachment_id, 0) = 0")
+    # Label unlabelled rows from the evidence that produced them.
     conn.execute(
-        "UPDATE analyst_trades SET extraction_source = 'image' "
-        "WHERE extraction_source IS NULL"
+        "UPDATE analyst_trades "
+        f"   SET extraction_source = CASE WHEN {_no_image} "
+        "                            THEN 'text' ELSE 'image' END "
+        " WHERE extraction_source IS NULL"
+    )
+    # Repair rows the old blanket backfill already mislabelled. Only
+    # touches 'image' rows with no image evidence — idempotent after.
+    conn.execute(
+        "UPDATE analyst_trades SET extraction_source = 'text' "
+        f" WHERE extraction_source = 'image' AND {_no_image}"
     )
     conn.commit()
 
@@ -1061,8 +1083,20 @@ def _migrate_pdf_query_surface(conn) -> None:
                                                    AS documented_wins,
                 SUM(CASE WHEN gain_pct <= 0 THEN 1 ELSE 0 END)
                                                    AS documented_losses,
-                SUM(CASE WHEN gain_pct IS NULL THEN 1 ELSE 0 END)
-                                                   AS never_closed,
+                -- A close with no percentage is CLOSED, just unscored
+                -- ("sold DELL way too early smh"). 179 of the room's
+                -- 431 closes look like this. Calling them never_closed
+                -- claims the position is still open, which is false.
+                -- Price-scoring them recovers only 4 rows — opens
+                -- almost never record a price — so they get their own
+                -- bucket rather than a guess.
+                SUM(CASE WHEN gain_pct IS NULL
+                          AND action IN ('close', 'trim')
+                         THEN 1 ELSE 0 END)         AS closed_unscored,
+                SUM(CASE WHEN gain_pct IS NULL
+                          AND (action IS NULL
+                               OR action NOT IN ('close', 'trim'))
+                         THEN 1 ELSE 0 END)         AS never_closed,
                 ROUND(100.0 * SUM(CASE WHEN gain_pct > 0 THEN 1 ELSE 0 END)
                       / NULLIF(SUM(CASE WHEN gain_pct IS NOT NULL
                                         THEN 1 ELSE 0 END), 0), 1)
@@ -2536,8 +2570,9 @@ def record_analyst_trade(
            (discord_message_id, discord_attachment_id, author, author_id,
             posted_at, image_url, caption, is_trade, ticker, contract_type,
             strike, expiry, action, gain_pct, price, caller, gemini_json,
-            inferred_status, tracking_mode)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            inferred_status, tracking_mode, extraction_source)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                   ?)""",
         (
             int(discord_message_id),
             int(discord_attachment_id),
@@ -2558,6 +2593,11 @@ def record_analyst_trade(
             _json.dumps(gemini_json) if gemini_json is not None else None,
             inferred_status,
             tm,
+            # Tag the modality here rather than leaving NULL for a boot
+            # migration to guess at — that guess is what mislabelled 31K
+            # rows as screenshots (2026-07-30). Same rule the migration
+            # uses: a url or an attachment id means image evidence.
+            "image" if (image_url or discord_attachment_id) else "text",
         ),
     )
     conn.commit()
