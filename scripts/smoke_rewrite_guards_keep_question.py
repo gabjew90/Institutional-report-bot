@@ -99,10 +99,36 @@ def test_rewrites_do_not_assume_a_roast():
     _ok("neither rewrite assumes its input is a roast")
 
 
+def test_roast_guards_skip_analysis_answers():
+    """A roast rewriter has no business touching an analysis.
+
+    Both guards are BANTER-gated (`not _route_is_factual`), and a
+    room-ranking question routes LOCAL/BANTER — so an answer built from
+    query_data + Python, with a chart attached, was still eligible to be
+    "rewritten as a roast". Preserving the question makes that survivable;
+    not running it at all is the actual fix.
+    """
+    import inspect
+    import discord_bot.bot as bot
+    src = inspect.getsource(bot._answer_with_gemini)
+    for marker, name in (("_prior_bot_answer_texts):", "roast-recycle"),
+                         ("_roast_is_pnl_monotone(answer, profiles_block)):",
+                          "P&L-monotone")):
+        i = src.find(marker)
+        assert i != -1, f"{name} guard condition not found — renamed?"
+        cond = src[max(0, i - 320):i + len(marker)]
+        assert "_analysis_extra" in cond, (
+            f"the {name} guard does not exclude analysis answers — a "
+            f"chart-backed ranking can still be rewritten as a roast"
+        )
+    _ok("roast rewrite guards skip analysis answers")
+
+
 if __name__ == "__main__":
     print("=== rewrite-guard question-preservation smoke ===")
     test_recycle_rewrite_receives_the_question()
     test_pnl_rewrite_receives_the_question()
     test_both_rewrites_demand_the_answer_survive()
     test_rewrites_do_not_assume_a_roast()
+    test_roast_guards_skip_analysis_answers()
     print("\nALL REWRITE-GUARD SMOKE TESTS PASS")

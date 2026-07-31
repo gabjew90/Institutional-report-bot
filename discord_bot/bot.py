@@ -901,17 +901,43 @@ _ANALYSIS_REQUEST_RE = re.compile(
 # continuing an analysis (2026-07-29: this follow-up shipped as text,
 # no code, no chart). Detect it: analysis-RESULT markers in the
 # replied-to context + a refinement/imperative shape in the actual ask.
+# Ranking the room by a trait IS analysis — pull the messages, score the
+# trait per author, rank it, chart it. But such a question carries none
+# of the keywords above ("who are the happiest people in the chat" has no
+# "analyze"/"compare"/"win rate"), so it slipped past the gate and shipped
+# as banter with no names and no code (2026-07-30).
+#
+# All three parts must be present, so a bare superlative doesn't fire:
+#   subject anchor  — who / rank / leaderboard / top N
+#   superlative     — most/least/best/-est ...
+#   room scope      — chat/room/here/everyone/posts/says ...
+# "who's the best CEO in tech" has the first two and no room scope; it
+# stays a Google question.
+_ROOM_SUPERLATIVE_RE = re.compile(
+    r"(?=.*\b(?:who|rank\w*|leaderboard|top\s*\d+)\b)"
+    r"(?=.*(?:\b(?:most|least|worst|best|biggest|highest|lowest|"
+    r"rank\w*|leaderboard|happiest|angriest|funniest|smartest|"
+    r"dumbest|loudest|quietest|saltiest|richest)\b"
+    r"|(?:\bthe\s+|\b\d+\s+)(?!interest\b)\w{4,}est\b))"
+    r"(?=.*\b(?:chat|room|server|channel|here|everyone|members?|users?|"
+    r"people|guys|us|posts?|posted|says?|said|talks?|talked|messages?)\b)",
+    re.IGNORECASE | re.DOTALL,
+)
 _ANALYSIS_RESULT_RE = re.compile(
     r"(correlat\w*|pearson|regress\w*|\br\s*=\s*-?\d?\.\d|"
     r"\bp\s*=\s*\d?\.\d|distribution|std\s*dev|percentile|quartile|"
     r"\bmatrix\b|trend\s*line|scatter|histogram|median|"
-    r"average\s+win|win\s*rate|expectancy)",
+    r"average\s+win|win\s*rate|expectancy|"
+    # a posted ranking is an analysis result too, so "how about the
+    # happiest" after "the angriest: SV" stays in analysis mode
+    r"happiest|angriest|funniest|smartest|dumbest|loudest|"
+    r"quietest|saltiest|richest)",
     re.IGNORECASE,
 )
 _ANALYSIS_REFINE_RE = re.compile(
     r"\b(use|add|include|exclude|only|drop|remove|filter|weight\w*|"
     r"redo|re-?run|recompute|instead|entire|all|whole|everyone|"
-    r"expand|now\s+(?:do|show|run|use)|what\s+about|group|"
+    r"expand|now\s+(?:do|show|run|use)|what\s+about|how\s+about|group|"
     r"break\s+(?:it|this|them)\s+(?:down|out)|zoom|normalize|"
     r"per[\s-]?capita|adjust|control\s+for)\b",
     re.IGNORECASE,
@@ -928,6 +954,9 @@ def _is_analysis_request(question: str) -> bool:
         return False
     tail = question.strip()[-600:]
     if _ANALYSIS_REQUEST_RE.search(tail):
+        return True
+    # Ranking the room by a trait is analysis even with no keyword.
+    if _ROOM_SUPERLATIVE_RE.search(tail):
         return True
     if (_ANALYSIS_RESULT_RE.search(question)
             and _ANALYSIS_REFINE_RE.search(tail)):
@@ -6520,7 +6549,12 @@ async def _answer_with_gemini(
         # know you or how to insult you." Force ONE rewrite with the
         # recycled hooks banned; ship the original if the rewrite can't
         # do better (repetition is weak, not dangerous).
-        if (answer and not _route_is_factual and _prior_bot_answer_texts):
+        # `not _analysis_extra`: a room-ranking question routes
+        # LOCAL/BANTER, so without this an answer built from query_data +
+        # Python with a chart attached was eligible to be rewritten as a
+        # roast. A roast rewriter has no business touching an analysis.
+        if (answer and not _route_is_factual and not _analysis_extra
+                and _prior_bot_answer_texts):
             _recycled = _recycled_roast_hooks(answer, _prior_bot_answer_texts)
             if len(_recycled) >= _RECYCLE_HOOK_MIN:
                 _ask_meta["guards"].append("roast-recycle")
@@ -6644,7 +6678,8 @@ async def _answer_with_gemini(
         # personal color gets one rewrite pointed at the personal
         # sections. Ship the original if the rewrite doesn't improve —
         # monotone is weak, not dangerous.
-        if (answer and not _route_is_factual and profiles_block
+        if (answer and not _route_is_factual and not _analysis_extra
+                and profiles_block
                 and _roast_is_pnl_monotone(answer, profiles_block)):
             _ask_meta["guards"].append("pnl-monotone")
             log.warning(

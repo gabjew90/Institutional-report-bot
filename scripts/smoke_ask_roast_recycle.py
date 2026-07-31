@@ -108,8 +108,16 @@ def test_per_prior_answer_not_union():
 def test_guard_wired_banter_gated():
     import discord_bot.bot as bot
     src = inspect.getsource(bot._answer_with_gemini)
-    assert "not _route_is_factual and _prior_bot_answer_texts" in src, \
+    # 2026-07-30: this pinned the two terms as ADJACENT text, which broke
+    # when `not _analysis_extra` was inserted between them. Check the
+    # gate is in the condition, not how it's spelled.
+    _cond_at = src.find("_prior_bot_answer_texts):")
+    assert _cond_at != -1, "recycle guard condition not found"
+    _cond = src[max(0, _cond_at - 320):_cond_at]
+    assert "not _route_is_factual" in _cond, \
         "recycle guard must be BANTER-gated"
+    assert "not _analysis_extra" in _cond, \
+        "recycle guard must not rewrite analysis answers as roasts"
     # window widened 2026-07-17: SUBJECT MATERIAL + fidelity check grew
     # the section
     win = src.split("Roast-recycle guard", 1)[1][:8000]

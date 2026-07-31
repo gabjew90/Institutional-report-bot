@@ -103,10 +103,16 @@ def test_guard_wired_banter_gated():
     assert "_roast_is_pnl_monotone(answer, profiles_block)" in src, \
         "monotone guard not wired"
     win = src.split("P&L-monotone guard", 1)[1][:4200]
-    assert "not _route_is_factual" in src.split(
-        "P&L-monotone guard", 1)[0][-600:] or \
-        "not _route_is_factual and profiles_block" in win + src.split(
-            "P&L-monotone guard", 1)[1][:300], "guard must be BANTER-gated"
+    # 2026-07-30: this pinned "not _route_is_factual and profiles_block"
+    # as adjacent text and broke when `not _analysis_extra` was inserted
+    # between them. Check the condition contains the gate, not its exact
+    # spelling.
+    _cond_at = src.find("_roast_is_pnl_monotone(answer, profiles_block)):")
+    assert _cond_at != -1, "monotone guard condition not found"
+    _cond = src[max(0, _cond_at - 320):_cond_at]
+    assert "not _route_is_factual" in _cond, "guard must be BANTER-gated"
+    assert "not _analysis_extra" in _cond, \
+        "guard must not rewrite analysis answers as roasts"
     assert '"pnl-monotone"' in win, "meta stamp missing"
     assert "PERSONAL color" in win, "rewrite must point at personal color"
     assert "_roast_is_pnl_monotone(_pm_answer, profiles_block)" in win, \
