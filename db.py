@@ -1020,6 +1020,40 @@ def _migrate_pdf_query_surface(conn) -> None:
                 WHERE pdf_file_id = pa.pdf_file_id
             );
 
+        -- Honest trade scoreboard (2026-07-30). The ledger is
+        -- WINS-BIASED: gain_pct only exists where someone POSTED a
+        -- close, and members screenshot winners while silently
+        -- abandoning losers. A naive
+        --   wins / COUNT(gain_pct IS NOT NULL)
+        -- therefore prints 96-100% "win rates" (observed: Sam 100% on
+        -- 8 documented wins while 44 of his trades were opened and
+        -- never closed — 15% once those count as losses). The tool
+        -- description warned about this and the model wrote the naive
+        -- query anyway, so the honest math lives in SQL where it can't
+        -- be skipped. Column names carry the caveat.
+        CREATE VIEW IF NOT EXISTS trade_scoreboard AS
+            SELECT
+                COALESCE(caller, author)           AS trader,
+                COUNT(*)                           AS logged_trades,
+                SUM(CASE WHEN gain_pct > 0 THEN 1 ELSE 0 END)
+                                                   AS documented_wins,
+                SUM(CASE WHEN gain_pct <= 0 THEN 1 ELSE 0 END)
+                                                   AS documented_losses,
+                SUM(CASE WHEN gain_pct IS NULL THEN 1 ELSE 0 END)
+                                                   AS never_closed,
+                ROUND(100.0 * SUM(CASE WHEN gain_pct > 0 THEN 1 ELSE 0 END)
+                      / NULLIF(SUM(CASE WHEN gain_pct IS NOT NULL
+                                        THEN 1 ELSE 0 END), 0), 1)
+                                   AS win_rate_BIASED_documented_only,
+                ROUND(100.0 * SUM(CASE WHEN gain_pct > 0 THEN 1 ELSE 0 END)
+                      / NULLIF(COUNT(*), 0), 1)
+                                   AS win_rate_honest_ghosts_as_losses,
+                ROUND(AVG(CASE WHEN gain_pct > 0 THEN gain_pct END), 1)
+                                   AS avg_gain_on_wins_only
+            FROM analyst_trades
+            WHERE is_trade = 1
+            GROUP BY 1;
+
         CREATE TABLE IF NOT EXISTS pdf_entities (
             analysis_id INTEGER NOT NULL,
             pdf_file_id INTEGER NOT NULL,
