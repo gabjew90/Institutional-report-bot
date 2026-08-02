@@ -109,10 +109,33 @@ def test_superlative_followup_is_sticky():
     _ok("superlative follow-up stays in analysis mode")
 
 
+def test_chat_messages_advertises_author_id():
+    """query_data's chat_messages listing gave author_username and
+    author_display but NOT author_id — so a per-member ranking written
+    from that listing groups by display name, the exact bug that split
+    one trader's 184 trades into 81/73/21 (this room renames
+    constantly). The stable key must be advertised where the model
+    reads the schema, with the group-by warning attached."""
+    import inspect
+    import discord_bot.bot as bot
+    decl = inspect.getsource(bot._build_query_data_tool)
+    seg = decl.split("chat_messages (", 1)
+    assert len(seg) == 2, "chat_messages not advertised in query_data"
+    # Only the chat_messages entry itself — the next table's listing
+    # mentions author_id too, which false-greened a 900-char window.
+    win = seg[1].split("analyst_trades", 1)[0]
+    assert "author_id" in win, (
+        "chat_messages listing must advertise author_id — without it "
+        "per-member analysis groups by display name and splits people"
+    )
+    _ok("chat_messages advertises author_id as the identity key")
+
+
 if __name__ == "__main__":
     print("=== room-superlative analysis-directive smoke ===")
     test_room_superlatives_fire()
     test_non_room_superlatives_stay_quiet()
     test_existing_keywords_still_fire()
     test_superlative_followup_is_sticky()
+    test_chat_messages_advertises_author_id()
     print("\nALL ROOM-SUPERLATIVE SMOKE TESTS PASS")
