@@ -1,0 +1,427 @@
+{
+  "pulse_date": "2026-08-03",
+  "window_label": "since-last-daily (2026-07-31T14:27)",
+  "themes": [
+    {
+      "theme": "ai infrastructure and capex",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 7
+      },
+      "consensus_view": "The desks agree hyperscaler spending on AI data centers keeps getting revised higher and demand still exceeds available capacity, but they split on whether that spending is a durable investment cycle or an overbuild increasingly paid for with borrowed money.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler capital spending plans for 2026 keep being revised upward and AI demand is still running ahead of available compute capacity.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI demand continues to outstrip available capacity, with cloud backlogs at record levels",
+            "aggregate 2026 spend now tracking to ~$750b (+80% y/y)",
+            "continued upward revisions to hyperscaler capex and WFE as constructive for the European semicap complex"
+          ]
+        },
+        {
+          "claim": "The latest round of big-cloud earnings was read as confirmation that the AI spending trade is still working.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "the Big 3 all reported very solid results that appear to confirm that the AI trade is alive and well",
+            "current stock performance underestimates META\u2019s ability to scale and productize and/or monetize compute"
+          ]
+        },
+        {
+          "claim": "Hyperscaler capex, how it is funded, and whether it earns a return are being tracked as a live subject across every major desk in this window.",
+          "banks_for": [
+            "Bloomberg",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Standard Chartered",
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Hyperscaler capex season",
+            "AI capital expenditure monetization",
+            "Hyperscaler debt funding reliance",
+            "AI monetization vs AI spend",
+            "AI investment ROIC"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the debt-funded portion of the AI buildout is a real risk to the spending cycle",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "Hyperscaler credit concerns seem to be overstated",
+          "banks_against": [
+            "TS Lombard"
+          ],
+          "against_evidence": "most TS Lombard clients share our doubts about the sustainability of the AI bubble"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "strait of hormuz issues",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six desks keep referencing the Strait of Hormuz as a live oil-shipping risk and an active negotiation story, but none of them has staked out a directional call on where it goes.",
+      "facts_agreed": [
+        {
+          "claim": "Six banks flag the Strait of Hormuz as a live energy-shipping risk this window, treating it as the chokepoint where oil supply could get squeezed.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Standard Chartered"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz energy chokepoint",
+            "Strait of Hormuz shipping disruption",
+            "Strait of Hormuz energy supply disruption",
+            "Strait of Hormuz disruption",
+            "Strait of Hormuz maritime law"
+          ]
+        },
+        {
+          "claim": "Several desks also track the diplomatic track around the Strait as a separate live thread, framing negotiations and a return to normal shipping as the other side of the story.",
+          "banks_for": [
+            "TS Lombard",
+            "The Market Ear",
+            "JPMorgan",
+            "Standard Chartered"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz negotiations",
+            "Strait of Hormuz diplomatic negotiations",
+            "Strait of Hormuz normalization",
+            "Strait of Hormuz regulation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "warsh fed chairmanship and press conferences",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six desks are watching Kevin Warsh's run as Fed chair and his post-meeting press conferences as a live driver of rate expectations, but none has staked out a directional call on what he does next.",
+      "facts_agreed": [
+        {
+          "claim": "Six research desks flag Kevin Warsh's Fed chairmanship and his credibility as a live macro topic this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "MUFG Bank",
+            "MUFG Research",
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh Fed chairmanship",
+            "Fed Chair Warsh policy credibility",
+            "Warsh Fed credibility issues",
+            "Kevin Warsh Fed press conference"
+          ]
+        },
+        {
+          "claim": "Multiple desks single out the Warsh FOMC press conference itself as the event to watch, with one reading it as leaning toward easier policy.",
+          "banks_for": [
+            "JPMorgan",
+            "MUFG Bank",
+            "MUFG Research",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh FOMC press conference",
+            "Fed Chair Warsh press conference",
+            "Warsh press conference dovish signals",
+            "Warsh FOMC press conference"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed credibility and guidance",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 2,
+        "neutral": 5
+      },
+      "consensus_view": "The Fed has stopped spelling out how it decides policy, and most desks read that as a credibility problem that adds uncertainty and bigger market swings, even as one house still holds a firm call that rates go higher this year.",
+      "facts_agreed": [
+        {
+          "claim": "Pulling back forward guidance without explaining how the Fed decides policy raises uncertainty and erodes the Fed's credibility.",
+          "banks_for": [
+            "Goldman Sachs",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "If you remove forward guidance while simultaneously obscuring the methodology, credibility can deteriorate",
+            "You can provide less information on the reaction function but that just means more uncertainty"
+          ]
+        },
+        {
+          "claim": "Multiple desks flag the Fed's missing guidance and unclear decision framework as an active market issue this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "MUFG Bank",
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Fed reaction function uncertainty",
+            "Fed reaction function transparency",
+            "Fed balance sheet reduction expectations",
+            "Lack of forward guidance from Fed Chair"
+          ]
+        },
+        {
+          "claim": "The July FOMC produced three dissents in favor of a rate hike.",
+          "banks_for": [
+            "Deutsche Bank",
+            "MUFG Bank"
+          ],
+          "evidence_quotes": []
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the Fed's next policy move is readable enough to forecast",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "for_evidence": "Our baseline remains that the Fed raises rates by 50bps this year",
+          "banks_against": [
+            "Goldman Sachs",
+            "TS Lombard"
+          ],
+          "against_evidence": "If you remove forward guidance while simultaneously obscuring the methodology, credibility can deteriorate"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "bond term premium",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 5
+      },
+      "consensus_view": "Banks agree the extra yield investors demand for holding long-dated government bonds is rebuilding as the Fed stops telling markets where rates go next, and the unresolved question is whether that long-end breakout forces stocks to reprice.",
+      "facts_agreed": [
+        {
+          "claim": "The extra yield investors demand for owning long-dated bonds is rising again, and desks are positioned for it to keep rising rather than fade.",
+          "banks_for": [
+            "The Market Ear",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "The Fed\u2019s move away from forward guidance is adding more term premium back to bond yields.",
+            "We continue to hold higher term premium positions in both US and European rates"
+          ]
+        },
+        {
+          "claim": "Bond market volatility has come back as a live cross-desk risk, with the long end of the curve the focal point.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "TS Lombard",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Bond volatility resurgence",
+            "Bond vigilantes return to market",
+            "Disorderly repricing of bond volatility",
+            "UST curve back-end volatility"
+          ]
+        },
+        {
+          "claim": "Long-end US yields are breaking out of a multi-year range while market-implied inflation is moving the way it did in 2022.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Years of consolidation in the US 10-year are now being tested.",
+            "10Y breakevens enduring a move that looked more akin to 2022",
+            "Reflationary bond sell-off"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "momentum factor unwind",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 2,
+        "neutral": 4
+      },
+      "consensus_view": "The crowded momentum trade (money piled into the stocks that had been rising fastest, mostly AI and chip names) has broken hard and every desk is tracking the damage, but banks split on whether the selling is now exhausted or the bounce is just forced short covering running into resistance.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks confirm the momentum factor has gone through a sharp, measurable unwind rather than a normal rotation.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Bloomberg",
+            "BTIG"
+          ],
+          "evidence_quotes": [
+            "momentum factor capitulation",
+            "Momentum factor drawdown",
+            "Momentum factor reversal",
+            "GSPRHIMO now -23% below its 200 DMA.",
+            "Retail investors have been quick to cut Tech exposure as the Semis-led Momentum Unwind"
+          ]
+        },
+        {
+          "claim": "The unwind is driven by crowded, identical positioning, so the reversal forces investors to cut exposure rather than reflecting a change in fundamentals.",
+          "banks_for": [
+            "Bloomberg",
+            "The Market Ear",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "when you\u2019re positioned the same way as everyone else, and the trend changes",
+            "rebound in tech and momentum stocks looks more like a positioning squeeze",
+            "Retail investors have been quick to cut Tech exposure as the Semis-led Momentum Unwind"
+          ]
+        },
+        {
+          "claim": "Momentum is now treated as a broad read on the AI trade and hedge fund exposure, not a niche quant strategy, and desks are tracking that exposure directly.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "Momentum has become much more than an obscure quant strategy.",
+            "Fundamental L/S momentum exposure",
+            "Systematic L/S momentum exposure",
+            "US High Beta Momentum versus SPX realized vol spread"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the momentum unwind is exhausted and a durable rebound follows",
+          "banks_for": [
+            "BTIG"
+          ],
+          "for_evidence": "GSPRHIMO now -23% below its 200 DMA.",
+          "banks_against": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "against_evidence": "expect a choppier, range bound tape for momentum rather than an explosive rebound"
+        },
+        {
+          "claim": "what the tech and momentum rebound actually is: start of risk-on versus a positioning squeeze into resistance",
+          "banks_for": [
+            "BTIG"
+          ],
+          "for_evidence": "GSPRHIMO now -23% below its 200 DMA.",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "rebound in tech and momentum stocks looks more like a positioning squeeze"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "yen carry trade unwind",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 5
+      },
+      "consensus_view": "Four desks agree Japan's currency is now being propped up by official yen-buying and a central bank that keeps lifting rates, which forces an exit from the popular trade of borrowing cheap yen to buy higher-yielding assets elsewhere, and none of them argue for a return to a weak yen.",
+      "facts_agreed": [
+        {
+          "claim": "Official yen-buying intervention, coordinated between US and Japanese authorities, is the live driver every desk is tracking on this theme.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "MoF intervention in JPY",
+            "Bank of Japan intervention speculation",
+            "Coordinated Yen FX intervention",
+            "US-Japan coordinated yen-buying intervention",
+            "Last week's intervention and rate checks have already jolted what had been an unusually steady uptrend"
+          ]
+        },
+        {
+          "claim": "The policy and valuation backdrop points to a stronger yen: the Bank of Japan is still raising its policy rate while the currency is viewed as unusually cheap.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "the Bank will continue to raise the policy interest rate",
+            "it felt like one of the most obvious medium-term trades in markets and still does"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east conflict",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Deutsche Bank and JPMorgan both keep Middle East conflict on the risk list as a background threat, but neither desk has taken a side on whether it gets worse or how markets would move if it does.",
+      "facts_agreed": [
+        {
+          "claim": "Two banks flag Middle East conflict as a live risk in this window without staking a directional view on it.",
+          "banks_for": [
+            "Deutsche Bank",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Middle East conflict escalation",
+            "Middle East conflict"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
