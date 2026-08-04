@@ -6559,7 +6559,17 @@ async def _answer_with_gemini(
         # LOCAL/BANTER, so without this an answer built from query_data +
         # Python with a chart attached was eligible to be rewritten as a
         # roast. A roast rewriter has no business touching an analysis.
+        # `_is_clapback_shaped(answer)`: the BANTER route is NOT proof
+        # the answer is a roast — the router misroutes factual questions
+        # to BANTER regularly (citadel 07-30, Boeing + earnings calendar
+        # 08-03). On 08-03 the pnl-monotone guard classified a clean
+        # factual Boeing answer as a lazy roast (dense trading vocab,
+        # zero personal color — the definition of factual) and stapled a
+        # personal jab onto every arrow; the asker complained in the
+        # room. An answer must actually address the asker in second
+        # person before either roast guard may touch it.
         if (answer and not _route_is_factual and not _analysis_extra
+                and _is_clapback_shaped(answer)
                 and _prior_bot_answer_texts):
             _recycled = _recycled_roast_hooks(answer, _prior_bot_answer_texts)
             if len(_recycled) >= _RECYCLE_HOOK_MIN:
@@ -6686,6 +6696,7 @@ async def _answer_with_gemini(
         # monotone is weak, not dangerous.
         if (answer and not _route_is_factual and not _analysis_extra
                 and profiles_block
+                and _is_clapback_shaped(answer)
                 and _roast_is_pnl_monotone(answer, profiles_block)):
             _ask_meta["guards"].append("pnl-monotone")
             log.warning(
