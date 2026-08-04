@@ -1,0 +1,363 @@
+{
+  "pulse_date": "2026-08-04",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 2,
+        "neutral": 5
+      },
+      "consensus_view": "Most of the desks think the cloud giants' enormous AI spending is working \u2014 orders are stacking up faster than they can build capacity \u2014 while a smaller group argues the money is being spent far ahead of returns nobody can yet prove.",
+      "facts_agreed": [
+        {
+          "claim": "Demand for AI computing power is running ahead of the capacity the cloud giants can deliver, and the spending cycle behind it is still intact.",
+          "banks_for": [
+            "Morgan Stanley",
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Our highest conviction view: the demand for compute is likely to significantly exceed supply",
+            "AI demand continues to outstrip available capacity, with cloud backlogs at record levels",
+            "The AI cycle remains intact and fundamentally supported",
+            "broadening use of AI is a structural driver of demand"
+          ]
+        },
+        {
+          "claim": "Management teams and the market increasingly believe the profit earned on AI capital spending is high enough to justify the spend.",
+          "banks_for": [
+            "JPMorgan",
+            "The Market Ear",
+            "Goldman Sachs",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "ROIC on their Capex is more than sufficient to justify spending",
+            "market is becoming increasingly convinced that hyperscaler AI capex is generating returns",
+            "growing evidence of return on AI investments",
+            "3 new bottom-up GenAI ROIC frameworks across GPU IaaS and model APIs show paths to 25-50% ROIC."
+          ]
+        },
+        {
+          "claim": "Underlying fundamentals and leading indicators for the AI hardware and cloud complex remain strong enough to support the next leg of the buildout.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "The Hyperscaler Reacceleration Train has arrived. Get on board!",
+            "we\u2019re most convicted in the AI hardware rebound, given intact solid fundamentals",
+            "all leading indicators rank near the top end of their range since 2022"
+          ]
+        },
+        {
+          "claim": "The AI spending story is broadening out from raw training infrastructure into the wider semiconductor supply chain and enterprise adoption.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI revolution is moving from a trade focused on training and infrastructure to the early stages",
+            "broadening AI/semiconductor capex",
+            "Accenture sees a multi-faceted opportunity to help clients leverage AI in the coming years."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the returns on hyperscaler AI capex justify the spending level (overinvestment risk)",
+          "banks_for": [
+            "JPMorgan",
+            "Morgan Stanley",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "ROIC on their Capex is more than sufficient to justify spending",
+          "banks_against": [
+            "TS Lombard"
+          ],
+          "against_evidence": "we have a clear candidate for 'overinvestment' \u2013 particularly as the returns on this capex remain highly speculative"
+        },
+        {
+          "claim": "sustainability of the current hyperscaler AI spending run-rate",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "market is becoming increasingly convinced that hyperscaler AI capex is generating returns",
+          "banks_against": [
+            "The Bear Traps Report"
+          ],
+          "against_evidence": "Unsustainable as hell."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait shipping and energy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six research desks all treat the Strait of Hormuz, the narrow waterway most Gulf oil and gas ships through, as a live risk to energy supply and shipping, with safety negotiations and a possible transit-toll regime both in play, but none of them stakes out a directional call on prices.",
+      "facts_agreed": [
+        {
+          "claim": "Six banks reference the Strait of Hormuz as a live energy supply and shipping variable in this window.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Rabobank",
+            "TS Lombard",
+            "The Bear Traps Report"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz traffic",
+            "Strait of Hormuz shipping route",
+            "Strait of Hormuz energy shock",
+            "Strait of Hormuz energy supply disruption",
+            "Strait of Hormuz oil flow disruption"
+          ]
+        },
+        {
+          "claim": "Banks flag ongoing shipping-safety talks and negotiations around the strait as an active de-escalation track.",
+          "banks_for": [
+            "JPMorgan",
+            "Rabobank",
+            "TS Lombard",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Hormuz shipping safety talks",
+            "US-Iran Hormuz shipping safety talks",
+            "Strait of Hormuz negotiations",
+            "Strait of Hormuz normalization",
+            "Strait of Hormuz shipping arrangements"
+          ]
+        },
+        {
+          "claim": "Several banks are tracking a possible transit-fee or regulatory regime for passage through the strait.",
+          "banks_for": [
+            "The Bear Traps Report",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz transit fee regulation",
+            "Strait of Hormuz regulatory strategy",
+            "Strait of Hormuz regulatory service fee strategy"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us japan jpy intervention",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six desks are all watching the same thing \u2014 the US and Japan buying yen together to stop the currency falling further \u2014 and only JPMorgan has taken a side, calling a weaker dollar plus a firmer yen good for stocks.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across six desks treat a joint US-Japan yen-buying operation as a live market event this window.",
+          "banks_for": [
+            "JPMorgan",
+            "Academy",
+            "J.P. Morgan",
+            "Rabobank",
+            "The Bear Traps Report",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "US-Japan coordinated yen-buying intervention",
+            "US-Japan coordinated JPY intervention",
+            "Coordinated US-Japan JPY intervention",
+            "Japan/US joint Yen intervention",
+            "Japan/US joint currency intervention"
+          ]
+        },
+        {
+          "claim": "Japan's Ministry of Finance is identified as the agent doing the currency buying.",
+          "banks_for": [
+            "Rabobank",
+            "JPMorgan",
+            "J.P. Morgan",
+            "Academy"
+          ],
+          "evidence_quotes": [
+            "Japanese Ministry of Finance FX intervention",
+            "Japanese MoF intervention",
+            "Japan forex intervention",
+            "Japanese Yen intervention",
+            "Coordinated FX intervention"
+          ]
+        },
+        {
+          "claim": "JPMorgan reads the combination of a weaker dollar and a stronger yen as good for risk assets rather than a threat.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "A softer dollar alongside a slightly firmer yen is actually a net positive for risk assets"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed policy stance",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 3
+      },
+      "consensus_view": "The corpus is arguing about how the new Warsh-led Fed talks to markets rather than where rates go next: Rabobank expects the Fed to sit still, Goldman warns that telling markets less about how the Fed decides will add noise instead of clarity, and no desk stakes a call on cuts.",
+      "facts_agreed": [
+        {
+          "claim": "Three desks flag the new Warsh-led Fed's communication and transparency changes as the live Fed story in this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Bear Traps Report"
+          ],
+          "evidence_quotes": [
+            "Warsh Fed regime",
+            "Warsh FOMC press conference credibility",
+            "Fed Chairman Kevin Warsh's communication policy",
+            "FOMC reaction function transparency",
+            "Warsh Fed meeting comments"
+          ]
+        },
+        {
+          "claim": "The only rate-path call staked in this window is that the Fed keeps rates where they are, and no desk argues the other side.",
+          "banks_for": [
+            "Rabobank"
+          ],
+          "evidence_quotes": [
+            "we still believe that the Fed is more likely to stay on hold"
+          ]
+        },
+        {
+          "claim": "Cutting back on what the Fed reveals about how it decides will not give policymakers better information, and no desk pushes back on that read.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Such a shift will not provide policymakers with a more reliable source of information."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "korea equity downtrend",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks track Korea's KOSPI index through chart levels, price swings and money flows without calling a direction, and the only bank taking a side reads the recent bounce as a repair rally inside a still-intact downtrend.",
+      "facts_agreed": [
+        {
+          "claim": "Four desks reference the Korean equity market this window through technical levels, volatility and fund flows rather than staking a directional view.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "J.P. Morgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "KOSPI market torque and valuation",
+            "KOSPI 200-day moving average",
+            "KOSPI volatility",
+            "Korea equity market inflows"
+          ]
+        },
+        {
+          "claim": "The only directional call on Korean equities in the corpus is bearish, treating the recent rally as a repair move inside an intact downtrend.",
+          "banks_for": [
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "index remains firmly within the downtrend channel that has been in place"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us midterm elections",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three banks flag the US midterm elections as a live risk on the horizon - mostly around swings in government spending plans and bigger market price swings - but none has committed to a direction yet.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, JPMorgan and TS Lombard all name the US midterm elections as an upcoming risk event in this window, tying it to government spending policy and expected market swings without taking a directional call.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "US midterm election risks",
+            "US midterm elections volatility",
+            "US midterm elections",
+            "US midterm elections fiscal policy sensitivity",
+            "US Mid-term Election"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us labor market conditions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks are watching the US jobs picture this window, but they describe it differently and none has committed to a call on whether hiring is genuinely rolling over or just running into a shortage of available workers.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag the state of the US jobs market as an active topic this window without staking a directional view.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "US labor market capacity constraints",
+            "US labor market softness",
+            "Labor market slack and job growth trends"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "semiconductor deleveraging",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    }
+  ]
+}

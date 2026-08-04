@@ -1,0 +1,55 @@
+{
+ "ts": "2026-08-04T14-10-16Z",
+ "events": [
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-08-04T14:11:54Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-08-04T14:11:54Z",
+   "detail": "pdf_count=72"
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-08-04T14:11:54Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-08-04T14:19:41Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-08-04T14:19:49Z",
+   "detail": "exit=4 soft only"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-08-04T14:19:49Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-08-04T14:26:04Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_5_LINT_DONE",
+   "time": "2026-08-04T14:26:11Z",
+   "detail": "14 issues"
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-08-04T14:31:24Z",
+   "detail": "14->0 hard issues, 1 pass"
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-08-04T14:31:24Z",
+   "detail": ""
+  }
+ ]
+}
