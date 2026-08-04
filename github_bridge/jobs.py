@@ -276,6 +276,12 @@ def _compute_footer_stats() -> dict:
         rows = db.get_analyses_since(cutoff)
         if not rows:
             return {}
+        # Drop LOW exactly like the dump job does — the footer must
+        # describe the corpus the pulse actually synthesized, not the
+        # wider window (2026-08-04 review, B6).
+        rows = [r for r in rows if (r.get("priority") or "").lower() != "low"]
+        if not rows:
+            return {}
         analyses = _load_analyses_from_db(rows)
         if not analyses:
             return {}
@@ -314,11 +320,14 @@ def _parse_frontmatter(markdown: str) -> tuple[dict, str]:
             continue
         k, _, v = line.partition(":")
         k = k.strip()
-        v = v.strip()
-        if v.isdigit() or (v.startswith("-") and v[1:].isdigit()):
-            meta[k] = int(v)
-        else:
-            meta[k] = v
+        # Values stay STRINGS. This used to coerce all-digit values to
+        # int, which made a numeric target_channels (a single channel ID
+        # — explicitly permitted) crash `.strip()` consumers with
+        # AttributeError; the outer handler then left the file in
+        # pending/ and it re-crashed every 60s poll forever
+        # (2026-08-04 review, B3). Numeric consumers (pdf_count,
+        # input_tokens, output_tokens) already int() for themselves.
+        meta[k] = v.strip()
     return meta, body
 
 
@@ -570,9 +579,16 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                                     .get("hc_calls") or [])
                 except Exception as e:
                     log.warning(f"Bridge: HC-calls fetch failed (non-fatal): {e}")
+                # Churn counts for today's flips — repeat reversals
+                # render their count on the board (2026-08-04 review).
+                _rev_counts = {
+                    inst: db.count_recent_reversals(inst, today)
+                    for inst in flip_instruments if inst
+                }
                 board_md = render_trade_board(
                     board_rows, today, flip_instruments, hc_calls,
                     prev_board_date=db.get_prev_scheduled_pulse_date(today),
+                    reversal_counts=_rev_counts,
                 )
 
                 injected = inject_sections(markdown, board_md)
@@ -611,7 +627,11 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
 
         report = DailyReport(
             report_date=today,
-            report_type="daily",  # routine pulses replace the scheduled Gemini one
+            # Test fires must NOT persist as 'daily': a weekend test fire
+            # becomes get_prev_scheduled_pulse_date's answer and silently
+            # disables off-board scoring + thesis-flip detection on the
+            # next production pulse (2026-08-04 review, B5).
+            report_type="manual" if _is_test_fire else "daily",
             pdf_count=pdf_count,
             markdown_content=markdown,
             raw_json=raw_json_payload,
@@ -665,6 +685,29 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             await asyncio.to_thread(
                 gh.delete_file, pending_path,
                 f"bridge: remove pending {name} (delivery-failed)",
+            )
+            return
+
+        # === Idempotency guard (2026-08-04 review, B4) ===
+        # The success path posts to Discord + inserts the DB row BEFORE
+        # the GitHub archive/delete. If either GitHub write failed, the
+        # pending file survived and the next 60s poll re-posted the whole
+        # pulse to every channel and inserted a second `daily` row. A
+        # SENT row keyed on this pending filename means Discord already
+        # got it — skip straight to the cleanup that failed last time.
+        _already_sent = db.find_sent_report_by_pending_file(name)
+        if _already_sent is not None:
+            log.warning(
+                f"Bridge: {name} already posted (report id {_already_sent}) "
+                f"— finishing cleanup only, no re-post"
+            )
+            await asyncio.to_thread(
+                gh.put_file, archive_path, raw_markdown,
+                f"bridge: archive posted pulse {name} (cleanup retry)",
+            )
+            await asyncio.to_thread(
+                gh.delete_file, pending_path,
+                f"bridge: remove pending {name} (cleanup retry)",
             )
             return
 
@@ -801,7 +844,7 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         # from before-post so we don't accumulate stale rows on retries).
         report_id = db.insert_daily_report(
             report_date=today,
-            report_type="daily",
+            report_type="manual" if _is_test_fire else "daily",
             report_json=json.dumps(report.raw_json),
             report_markdown=markdown,
             pdf_count=pdf_count,

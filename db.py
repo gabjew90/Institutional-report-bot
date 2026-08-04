@@ -1305,6 +1305,28 @@ def insert_daily_report(
     return cur.lastrowid
 
 
+def find_sent_report_by_pending_file(pending_file: str) -> int | None:
+    """Return the id of a daily_reports row already SENT to Discord for
+    this bridge pending filename, or None.
+
+    Idempotency key for the bridge success path: the payload carries
+    `"pending_file": "<name>"`, and a row with discord_sent_at set means
+    Discord already received this pulse — a surviving pending file is a
+    failed GitHub cleanup, not an undelivered pulse (2026-08-04 review).
+    Unsent rows deliberately do not match, so a failed post still
+    retries.
+    """
+    conn = get_connection()
+    row = conn.execute(
+        """SELECT id FROM daily_reports
+           WHERE discord_sent_at IS NOT NULL
+             AND report_json LIKE ?
+           ORDER BY id DESC LIMIT 1""",
+        (f'%"pending_file": "{pending_file}"%',),
+    ).fetchone()
+    return row[0] if row else None
+
+
 def mark_report_sent(report_id: int) -> None:
     conn = get_connection()
     conn.execute(
@@ -2162,10 +2184,32 @@ def upsert_pulse_leans(today: str, leans: list[dict]) -> list[dict]:
             (inst, direction),
         ).fetchone()
         if live:
+            # Lineage integrity (2026-08-04 review): a re-affirmation
+            # whose instrument set CHANGED must say so — the 08-04 board
+            # rendered "held since Jul 29: Long $MSFT, $GOOGL" when the
+            # Jul 29 lean was MSFT-only and $GOOGL had never been on any
+            # board. first_seen is kept (the thesis lineage is real for
+            # the primary) but the added/removed tickers are visible.
+            new_ctx = lean.get("context") or None
+            if new_ctx:
+                old_ctx = conn.execute(
+                    "SELECT context_snippet FROM pulse_leans WHERE id = ?",
+                    (live["id"],),
+                ).fetchone()[0] or ""
+                _tag_re = re.compile(r"\$[A-Za-z][A-Za-z0-9.]{0,6}")
+                old_set = {t.upper() for t in _tag_re.findall(
+                    old_ctx.split("· instruments updated", 1)[0])}
+                new_set = {t.upper() for t in _tag_re.findall(new_ctx)}
+                if old_set and new_set and old_set != new_set:
+                    new_ctx = (
+                        f"{new_ctx[:120]} · instruments updated today "
+                        f"(was: {', '.join(sorted(old_set))})"
+                    )
+                new_ctx = new_ctx[:200]
             conn.execute(
                 "UPDATE pulse_leans SET last_seen_date = ?, "
                 "context_snippet = COALESCE(?, context_snippet) WHERE id = ?",
-                (today, (lean.get("context") or None), live["id"]),
+                (today, new_ctx, live["id"]),
             )
         else:
             opposite = "short" if direction == "long" else "long"
@@ -2266,6 +2310,28 @@ def get_prev_scheduled_pulse_date(today: str) -> str | None:
         return row[0] if row and row[0] else None
     except Exception:
         return None
+
+
+def count_recent_reversals(
+    instrument: str, today: str, window_days: int = 10
+) -> int:
+    """Direction changes for one instrument's lean history inside a
+    rolling window — the board's churn signal.
+
+    2026-08-04 review: the SMH/SOXX complex flipped direction five times
+    in seven sessions and each FLIP rendered as if it were the first.
+    Walks the instrument's rows (any status — superseded rows ARE the
+    flip history) in first_seen order and counts adjacent direction
+    changes."""
+    conn = get_connection()
+    rows = conn.execute(
+        "SELECT direction FROM pulse_leans "
+        "WHERE instrument = ? AND first_seen_date >= date(?, ?) "
+        "ORDER BY first_seen_date, id",
+        (instrument.upper().strip(), today, f"-{int(window_days)} day"),
+    ).fetchall()
+    dirs = [r[0] for r in rows if r[0]]
+    return sum(1 for a, b in zip(dirs, dirs[1:]) if a != b)
 
 
 def get_board_leans(today: str, max_age_days: int = 5) -> list[dict]:

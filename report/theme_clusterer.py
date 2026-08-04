@@ -427,6 +427,18 @@ def discover_uncovered_clusters(
             "banks": d["banks"],
             "pdf_ids": d["pdf_ids"],
             "members": d["members"],
+            # Per-member GROUND-TRUTH attribution: which bank(s) actually
+            # said each member string. Before this, `banks` and `members`
+            # were parallel unlinked lists and the synthesis routine
+            # assigned banks to stances round-robin — fabricated
+            # attribution that adjudication then validated against
+            # itself ("Bank X argues Y" where X never said Y;
+            # 2026-08-04 review, G1). string_to_banks had the truth all
+            # along; now it ships.
+            "member_banks": {
+                m: sorted(string_to_banks.get(m, set()))
+                for m in d["members"]
+            },
             "max_covered_sim": d["max_covered_sim"],
         })
 
