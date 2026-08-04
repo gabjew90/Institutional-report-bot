@@ -126,17 +126,21 @@ def test_fallback_still_present():
 def test_retry_only_when_profiles_present():
     from discord_bot import bot as bot_mod
     src = inspect.getsource(bot_mod._answer_with_gemini)
-    # The retry must short-circuit when there's no profiles_block to
-    # strip — otherwise we'd burn a Gemini call to retry with the
-    # IDENTICAL prompt the model just blocked. The guard is the if-stmt
-    # that wraps stripped_sections build, so anchor on the build.
+    # The voice-strip rung must short-circuit when there's no
+    # profiles_block to strip — stripping nothing produces the same
+    # prompt tier 0 already resent. (2026-08-04: an IDENTICAL retry is
+    # now deliberately tier 0 of the ladder — the filter proved
+    # non-deterministic, see smoke_filter_retry_tier0 — so this rung's
+    # job is purely the content surgery, and it needs content to cut.)
     retry_start = src.find("stripped_sections: list[str] = [voice_stripped]")
     pre = src[max(0, retry_start - 800):retry_start]
-    assert "if profiles_block and" in pre, (
-        "retry must be gated by `if profiles_block` so we don't burn "
-        "a call when there's no profiles to strip"
+    assert "profiles_block and" in pre, (
+        "voice-strip rung must be gated on profiles_block being present"
     )
-    _ok("static: retry is gated on profiles_block being non-empty")
+    assert "not retry_succeeded" in pre, (
+        "voice-strip rung must be skipped when tier 0 already recovered"
+    )
+    _ok("static: voice-strip rung gated on profiles_block + tier-0 miss")
 
 
 if __name__ == "__main__":

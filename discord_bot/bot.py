@@ -7571,7 +7571,64 @@ async def _answer_with_gemini(
                 # that lets the bot still address the asker by their
                 # actual profile.
                 retry_succeeded = False
-                if profiles_block and (prompt_block or safety_blocked):
+
+                # Tier 0 — IDENTICAL retry, before any context surgery.
+                # 2026-08-01: "how many members in ommi chat" (nothing
+                # filterable in the question) died on every rung below;
+                # replaying the exact logged prompt on 2026-08-04 passed
+                # 5/5 — full prompt, bare question, profiles alone, with
+                # and without the system instruction. The unconfigurable
+                # filter is non-deterministic near its threshold: the
+                # same content flickers between pass and block. The
+                # tiers below all assume some ingredient is toxic and
+                # amputate context to find it; for a flickering block
+                # the cheapest correct move is to send the same thing
+                # again, so a transient block costs zero context.
+                if prompt_block or safety_blocked:
+                    try:
+                        log.warning(
+                            "/ask: tier-0 retry — resending identical "
+                            "prompt (filter is non-deterministic)"
+                        )
+                        same_resp = await client.aio.models.generate_content(
+                            model=ask_model,
+                            contents=contents,
+                            config=config,
+                        )
+                        _tally_retry_usage(same_resp)
+                        try:
+                            same_answer = (same_resp.text or "").strip()
+                        except Exception:
+                            same_answer = ""
+                        if same_answer:
+                            same_answer, _ = _clean_voice_violations(
+                                same_answer
+                            )
+                            answer = same_answer
+                            response = same_resp
+                            retry_succeeded = True
+                            _ask_meta["filter_retry"] = "same-prompt"
+                            log.info(
+                                "/ask: tier-0 identical retry succeeded "
+                                "— block was transient, no context lost"
+                            )
+                            try:
+                                grounding_metadata = (
+                                    same_resp.candidates[0]
+                                    .grounding_metadata
+                                )
+                            except (AttributeError, IndexError, TypeError):
+                                grounding_metadata = None
+                        else:
+                            log.warning(
+                                "/ask: tier-0 identical retry also empty "
+                                "— content may genuinely trip the "
+                                "filter, walking the strip ladder"
+                            )
+                    except Exception as e:
+                        log.warning(f"/ask: tier-0 retry call failed: {e}")
+
+                if not retry_succeeded and profiles_block and (prompt_block or safety_blocked):
                     try:
                         voice_stripped = _strip_voice_sections(profiles_block)
                         stripped_sections: list[str] = [voice_stripped]
