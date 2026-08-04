@@ -59,14 +59,19 @@ def test_multiword_clip_is_visible_not_silent():
     _ok("multi-word: short passes, long clips visibly with ellipsis")
 
 
-def test_monospace_column_widened():
+def test_live_renderer_does_not_reclip_ratings():
+    """render_desk_signal_board (the monospace board this test used to
+    pin) was removed 2026-08-04 as dead code — the live HC renderer is
+    _render_hc_subsection, which uses markdown bullets with no column
+    widths. Guard the surviving rule: the live renderer must not slice
+    _norm_rating's output back down (the 8-slice is what shipped
+    'Improvin')."""
     import report.pulse_sections as ps
-    src = inspect.getsource(ps.render_desk_signal_board)
-    assert "[:10]" in src and "{rd:<10}" in src, \
-        "monospace rating column must be 10 wide (8 re-stubbed 'Improving')"
-    assert "[:8]" not in src.split("_norm_rating", 1)[1][:200], \
-        "the old 8-slice must be gone from the rating column"
-    _ok("monospace board: rating column widened to 10")
+    src = inspect.getsource(ps._render_hc_subsection)
+    seg = src.split("_norm_rating", 1)[1][:200]
+    assert "[:8]" not in seg and "[:9]" not in seg, \
+        "live HC renderer re-slices the rating — mid-word stubs return"
+    _ok("live HC renderer ships _norm_rating output unclipped")
 
 
 if __name__ == "__main__":
@@ -74,5 +79,5 @@ if __name__ == "__main__":
     test_the_shipped_stubs_are_fixed()
     test_known_map_still_works()
     test_multiword_clip_is_visible_not_silent()
-    test_monospace_column_widened()
+    test_live_renderer_does_not_reclip_ratings()
     print("\nALL RATING-TRUNCATION SMOKE TESTS PASS")

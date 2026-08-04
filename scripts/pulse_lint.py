@@ -481,6 +481,13 @@ def main() -> int:
                 "total_issue_count": len(issues),
                 "reason": reason,
                 "exit_code": exit_code,
+                # Contract surface: consumers (the routine's STEP 5.7.1)
+                # filter SCRUB's input to hard issues using THIS list
+                # instead of re-deriving the classification inline —
+                # the inline `!= 'top-3-theme-missing'` re-derivation
+                # disagreed with these five kinds and dispatched SCRUB
+                # on soft-only lint (2026-08-04 review, B1).
+                "soft_kinds": sorted(SOFT_ISSUE_KINDS),
             },
             indent=1,
         ),

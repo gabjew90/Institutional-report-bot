@@ -550,7 +550,9 @@ dumped = datetime.datetime.fromisoformat(
 age_min = (now - dumped).total_seconds() / 60
 notes = []
 if age_min > 75:
-    et = dumped - datetime.timedelta(hours=4)  # EDT approximation
+    from zoneinfo import ZoneInfo
+    et = dumped.replace(tzinfo=datetime.timezone.utc).astimezone(
+        ZoneInfo('America/New_York'))
     notes.append(
         f"STALE SNAPSHOT: this context was captured {age_min:.0f} minutes "
         f"ago (~{et.strftime('%-I:%M %p')} ET). Live prices, news, and "
@@ -567,20 +569,34 @@ for line in cal.splitlines():
         continue
     mo, dy, hh, mm, name = m.groups()
     try:
-        sched_et = datetime.datetime(now.year, int(mo), int(dy), int(hh), int(mm))
-        sched_utc = sched_et + datetime.timedelta(hours=4)
+        # zoneinfo, NOT a fixed +4h: EDT hardcoding is off by one hour
+        # November through March, which misplaces every 8:30 ET print in
+        # exactly the straddle window this check exists for.
+        from zoneinfo import ZoneInfo
+        sched_et = datetime.datetime(
+            now.year, int(mo), int(dy), int(hh), int(mm),
+            tzinfo=ZoneInfo('America/New_York'))
+        sched_utc = sched_et.astimezone(
+            datetime.timezone.utc).replace(tzinfo=None)
     except ValueError:
         continue
     if dumped < sched_utc <= now and 'ACTUAL=' not in line:
         notes.append(
             f"PRESS-TIME EVENT: '{name.strip()}' printed at {hh}:{mm} ET — "
-            f"BEFORE this pulse posts but AFTER this snapshot. The actual "
-            f"number is NOT in your context. Frame it as 'the number hit "
-            f"this morning and the first desk reads are still coming in — "
-            f"watch the reaction', NEVER as upcoming, and NEVER invent or "
-            f"guess the actual. Never copy pipeline words (propagating, "
-            f"ingested, snapshot) into reader prose. In WHAT TO WATCH, the "
-            f"item is the REACTION, not the print."
+            f"BEFORE this pulse posts but AFTER this calendar snapshot. "
+            f"The calendar row has no actual, but the CORPUS often does: "
+            f"morning notes analyzed after the print carry it as "
+            f"macro rows with status='released' or data_points with "
+            f"figure_status='released' (on 2026-08-04 the ISM actual sat "
+            f"in a Deutsche Bank note for 7 hours while the pulse claimed "
+            f"no feed had it). SEARCH analyses_json for this event's "
+            f"released figure FIRST and report the ACTUAL with its bank "
+            f"attribution. Only if no analysis carries it: frame as 'the "
+            f"number hit this morning — watch the reaction', NEVER as "
+            f"upcoming, NEVER invent or guess the actual, and NEVER "
+            f"narrate pipeline internals to readers (no 'reached our "
+            f"feed', 'propagating', 'ingested', 'snapshot'). In WHAT TO "
+            f"WATCH, the item is the REACTION, not the print."
         )
 if notes:
     open('/tmp/press_time_note.txt', 'w').write(
@@ -807,10 +823,14 @@ for theme_name, info in selected:
 #   happened to carry. Once the input is correct, Rule 5 stops being
 #   a forcing function for special cases and just works.
 #
-# Bank attribution: synthetic stance entries cycle across the union of
-# all contributing banks (deduplicated across clusters). Members
-# deduplicated by string identity so the same mention isn't surfaced
-# twice from two different clusters covering the same topic.
+# Bank attribution: each synthetic stance is attributed to the bank(s)
+# that ACTUALLY produced that member string, via the cluster's
+# `member_banks` map (ground truth serialized by theme_clusterer since
+# 2026-08-04). Never assign a bank a member it didn't say — the old
+# cycle-across-the-union behavior was fabricated attribution, and
+# adjudication validated quotes against those fabricated pairings.
+# Members deduplicated by string identity so the same mention isn't
+# surfaced twice from two different clusters covering the same topic.
 discovery_promoted = (ctx.get('discovery_audit') or {}).get('promoted') or []
 discovery_near_miss = (ctx.get('discovery_audit') or {}).get('near_miss') or []
 
@@ -869,16 +889,21 @@ def _synthesize_stances_from_clusters(
         return 0
     seen_members: set[str] = set()
     pooled_members: list[str] = []
+    member_bank_map: dict[str, list[str]] = {}
     all_banks: set[str] = set()
     for cluster in clusters:
         for b in (cluster.get('banks') or []):
             if b:
                 all_banks.add(b)
+        cluster_mb = cluster.get('member_banks') or {}
         for m in (cluster.get('members') or []):
             if not m or m in seen_members:
                 continue
             seen_members.add(m)
             pooled_members.append(m)
+            mb = [b for b in (cluster_mb.get(m) or []) if b]
+            if mb:
+                member_bank_map[m] = mb
             if len(pooled_members) >= cap:
                 break
         if len(pooled_members) >= cap:
@@ -887,9 +912,19 @@ def _synthesize_stances_from_clusters(
     if not pooled_members or not all_banks:
         return 0
 
-    bank_list = sorted(all_banks)
-    for i, member in enumerate(pooled_members):
-        bank = bank_list[i % len(bank_list)]
+    # Bank attribution comes from the cluster's member_banks pairing —
+    # the bank(s) that ACTUALLY said each member string (theme_clusterer
+    # serializes string_to_banks per member since 2026-08-04). The old
+    # round-robin over the bank union fabricated attribution and let
+    # DRAFT print "Bank X argues Y" where X never said Y. A member with
+    # no pairing (legacy payload) is attributed to the cluster
+    # collectively, never to an arbitrary single bank.
+    for member in pooled_members:
+        mb = member_bank_map.get(member)
+        if mb:
+            bank = mb[0] if len(mb) == 1 else " + ".join(mb[:3])
+        else:
+            bank = "multiple desks (unattributed)"
         target_inputs['theme_stances'].append({
             'source': bank,
             'theme': theme_name,
@@ -1457,24 +1492,28 @@ The script prints a human-readable summary inline (issue count, breakdown by kin
 
 ## STEP 5.7 — Voice scrub (sub-agent dispatch, lint-driven)
 
-If STEP 5.5's lint report has any HARD issues (any `kind` other than `top-3-theme-missing`), dispatch a SCRUB sub-agent whose ONLY job is to rewrite the flagged sentences. SCRUB does not add or remove themes, change facts, or restructure paragraphs — it walks the lint report and rewrites the specific flagged sentences in place.
+If STEP 5.5's lint decided SCRUB is needed (per the `.decision` sidecar pulse_lint writes — the SINGLE authority on hard vs soft), dispatch a SCRUB sub-agent whose ONLY job is to rewrite the flagged sentences. SCRUB does not add or remove themes, change facts, or restructure paragraphs — it walks the hard-issue report and rewrites the specific flagged sentences in place.
 
 This is the layer that closes the voice-enforcement gap: the EDIT sub-agent handles editorial judgment but doesn't reliably iterate over every sentence to enforce voice rules; SCRUB has no other concerns competing for attention and is driven by structured lint output rather than self-supervision.
 
 ### Step 5.7.1 — Decide whether to dispatch (BINDING GATE)
 
-Read `/tmp/lint_report.json`. Count the issues whose `kind` is NOT `top-3-theme-missing`, and emit an explicit `SCRUB_DECISION` token that the next sub-step keys off:
+Read the decision sidecar `/tmp/lint_report.json.decision` — pulse_lint's own hard/soft classification. Do NOT re-derive the classification here: the old inline filter (which treated only the top-3-coverage kind as soft) disagreed with pulse_lint's five SOFT_ISSUE_KINDS (`jargon-bare`, `top-3-theme-missing`, `discovered-theme-missing`, `slot-stat-overlap`, `slot-lean-overlap`) and dispatched SCRUB on soft-only lint — including slot overlaps SCRUB structurally cannot fix, reproducing the 2026-05-29 cosmetic-regression class. Also filter the report SCRUB will consume down to hard issues:
 
 ```bash
 python3 << 'PYEOF'
-import json, sys
+import json
+dec = json.load(open('/tmp/lint_report.json.decision'))
 issues = json.load(open('/tmp/lint_report.json'))
-hard = [i for i in issues if i.get('kind') != 'top-3-theme-missing']
-print(f'hard_lint_issues: {len(hard)}')
-print(f'soft_lint_issues: {len(issues) - len(hard)}')
-# Single source of truth for the gate. Write to /tmp so subsequent
-# steps can read instead of re-deriving.
-decision = 'dispatch' if hard else 'skip'
+soft_kinds = set(dec.get('soft_kinds') or [])
+hard = [i for i in issues if i.get('kind') not in soft_kinds]
+# SCRUB's input: hard issues ONLY. Feeding the full report inflated
+# {issue_count} and defeated SCRUB's own zero-issue no-op gate.
+with open('/tmp/lint_hard.json', 'w') as f:
+    json.dump(hard, f, indent=1)
+print(f"hard_lint_issues: {dec['hard_issue_count']}")
+print(f"soft_lint_issues: {dec['soft_issue_count']}")
+decision = 'dispatch' if dec['scrub_recommended'] else 'skip'
 with open('/tmp/scrub_decision.txt', 'w') as f:
     f.write(decision)
 print(f'SCRUB_DECISION: {decision}')
@@ -1506,7 +1545,7 @@ mkdir -p /tmp/agent_io
 Build the SCRUB prompt by combining `SCRUB_SYSTEM` + `SCRUB_USER` (with substitutions) from `ai_analysis/prompts.py`. Substitutions into `SCRUB_USER`:
 
 - `{issue_count}` ← number of hard issues (computed in 5.7.1)
-- `{lint_report_json}` ← contents of `/tmp/lint_report.json` (the full report — SCRUB filters to hard issues itself)
+- `{lint_report_json}` ← contents of `/tmp/lint_hard.json` (hard issues only, filtered in 5.7.1 using the sidecar's soft_kinds — the full report inflated `{issue_count}` with soft warnings and defeated SCRUB's no-op gate)
 - `{pulse_markdown}` ← contents of `/tmp/final.md`
 
 Save the assembled prompt (SYSTEM + USER concatenated) to `/tmp/agent_io/scrub-prompt.txt` BEFORE dispatching.
@@ -1553,6 +1592,66 @@ python3 /tmp/progress.py "STEP_5_7_SCRUB_DONE"
 If validated SCRUB output is materially different from the EDIT output, that's good — the system is doing its job. If SCRUB returns nearly the same markdown, that's a sign the sub-agent didn't engage with the lint report; flag it in STEP 7's report so we can debug.
 
 If lint reports issues, the SCRUB pass (above) is supposed to handle them automatically — manual rewriting of `/tmp/final.md` is no longer the workflow. The lint report is mechanical and trusted; SCRUB is the agent that acts on it.
+
+## STEP 5.75 — Final structural re-validation (deterministic, mandatory)
+
+STEP 4.5 validated the DRAFT — but EDIT (a full-document rewrite that injects live market data, the highest fact-risk operation in the pipeline) and SCRUB (a second full rewrite) both mutate the document AFTER that check, and until 2026-08-04 only the voice regexes re-ran on the result. Anything they introduced — a wrong weekday, an estimate shipped as the print, a deleted `## _LEANS` block, a dropped MAIN EVENT lean — shipped unchecked. This step closes that gap. It MUST run before STEP 5.8 (the strip removes `## _LEANS`, which the validator's leans checks need).
+
+```bash
+python3 scripts/pulse_draft_validate.py /tmp/final.md /tmp/ctx.json /tmp/final_validation.json
+FINAL_VALIDATOR_EXIT=$?
+echo "FINAL validator exit code: $FINAL_VALIDATOR_EXIT"
+```
+
+Then compare against the DRAFT run and act deterministically:
+
+```bash
+python3 << 'PYEOF'
+import json, re
+
+final = json.load(open('/tmp/final_validation.json'))
+try:
+    draft = json.load(open('/tmp/draft_validation.json'))
+except Exception:
+    draft = {"violations": []}
+
+draft_kinds = {v.get('kind') for v in draft.get('violations') or []}
+new_hard = [
+    v for v in final.get('violations') or []
+    if v.get('kind') in {
+        'duplicate-sibling-sections', 'contrarian-buried-in-appendix',
+        'main-event-lean-missing', 'leans-block-missing',
+        'weekday-date-mismatch', 'released-figure-mismatch',
+    } and v.get('kind') not in draft_kinds
+]
+
+# Deterministic repair: a ## _LEANS block deleted by EDIT/SCRUB is
+# restored verbatim from the DRAFT — an empty trade board is a silent
+# product failure and needs no LLM to fix.
+if any(v.get('kind') == 'leans-block-missing' for v in new_hard):
+    draft_md = open('/tmp/draft.md', encoding='utf-8').read()
+    m = re.search(r'^## _LEANS\n.*?(?=^## |\Z)', draft_md,
+                  re.M | re.S)
+    if m:
+        with open('/tmp/final.md', 'a', encoding='utf-8') as f:
+            f.write('\n\n' + m.group(0).rstrip() + '\n')
+        print('RESTORED: ## _LEANS spliced back from /tmp/draft.md')
+        new_hard = [v for v in new_hard
+                    if v.get('kind') != 'leans-block-missing']
+
+with open('/tmp/final_new_hard.json', 'w') as f:
+    json.dump(new_hard, f, indent=1)
+print(f'FINAL_NEW_HARD: {len(new_hard)}')
+PYEOF
+```
+
+- **`FINAL_NEW_HARD: 0`** → proceed to STEP 5.8.
+- **`FINAL_NEW_HARD: >0`** → dispatch ONE FIXUP sub-agent (same contract as SCRUB: rewrite ONLY the flagged lines, change nothing else) with the violations from `/tmp/final_new_hard.json`, then re-run this step's validator ONCE. If violations persist after that single pass, log `WARNING: final validation residuals` and proceed — the pulse must ship, and `/tmp/final_validation.json` is committed with the QC artifacts in STEP 6 so the residuals are visible, not silent.
+- Violations the DRAFT run already carried (waived at 4.5 after its re-roll budget) do not re-block here — this gate exists to catch what EDIT/SCRUB *introduced*.
+
+```bash
+python3 /tmp/progress.py "STEP_5_75_FINAL_VALIDATE_DONE"
+```
 
 ## STEP 5.8 — Strip internal-notes sections (mechanical, mandatory)
 
@@ -1655,7 +1754,12 @@ except Exception as e:
     )
     raise SystemExit(1)
 
-input_tokens_est = 120000
+# MEASURED estimates, not invented ones: input from the actual ctx.json
+# the routine consumed, output from the final markdown, both at ~4
+# chars/token. The old hardcoded 120000 rendered on the dashboard as if
+# it were real cost telemetry (2026-08-04 review).
+import os
+input_tokens_est = max(1, os.path.getsize('/tmp/ctx.json') // 4)
 output_tokens_est = max(1, len(final_md) // 4)
 
 import os
@@ -1780,6 +1884,17 @@ if os.path.exists('/tmp/lint_report.json'):
     print('commit sha:', (result.get('commit') or {}).get('sha', '')[:12])
 else:
     print('no /tmp/lint_report.json — skipping lint commit')
+
+# Commit /tmp/final_validation.json (STEP 5.75) — the post-EDIT/SCRUB
+# structural re-validation. Residual violations that were waived to
+# keep the pulse shipping MUST be visible to QC, not silent.
+if os.path.exists('/tmp/final_validation.json'):
+    fv_path = f'pulse-output/lint/{ts}.final-validation.json'
+    fv_content = open('/tmp/final_validation.json').read().encode()
+    result = commit(fv_path, fv_content, f'routine: final validation {ts}')
+    print('committed final validation:', fv_path)
+else:
+    print('no /tmp/final_validation.json — skipping final-validation commit')
 
 # Commit /tmp/adjudication_inputs.json — the per-theme evidence bundles
 # fed to each adjudication sub-agent. WITHOUT this artifact, a QC review

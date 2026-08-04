@@ -552,8 +552,8 @@ def render_dashboard_html(md: str, source_filename: str | None = None) -> str:
     body_html = _wrap_sections(body_html)
 
     pdf_count = meta.get("pdf_count", "?")
-    in_tok = meta.get("input_tokens", 0)
-    out_tok = meta.get("output_tokens", 0)
+    in_tok = int(meta.get("input_tokens") or 0)
+    out_tok = int(meta.get("output_tokens") or 0)
     dateline = _format_dateline(meta, source_filename)
     rendered_at = datetime.now().strftime("%Y-%m-%d %H:%M")
 
@@ -561,7 +561,7 @@ def render_dashboard_html(md: str, source_filename: str | None = None) -> str:
         '<div class="footer">'
         f'<span class="label">Coverage:</span> {pdf_count} research analyses'
         ' &middot; '
-        f'<span class="label">Tokens:</span> {in_tok:,} in / {out_tok:,} out'
+        f'<span class="label">Tokens (est):</span> {in_tok:,} in / {out_tok:,} out'
         ' &middot; '
         f'<span class="label">Dashboard rendered:</span> {rendered_at}'
         '<br/>'

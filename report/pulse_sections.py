@@ -196,6 +196,17 @@ def extract_state_from_ctx(ctx: dict) -> dict:
             # near-identical WHAT CHANGED bullets).
             if (src, ticker) in seen_calls:
                 continue
+            # A call the reader can ACT on carries a rating (Buy/OW/UW)
+            # or a price target. Entries with neither are post-hoc
+            # recaps — "Earnings miss ... driving a sharp sell-off",
+            # "Stock fell 18% after outlook missed" — descriptions of
+            # what already happened that were shipping under the
+            # "high-conviction single-name calls" banner (2026-08-04
+            # review; user flagged the recap-mixing earlier).
+            _rating = (mm.get("rating") or "").strip()
+            _pt = (mm.get("price_target") or "").strip()
+            if not _rating and not _pt:
+                continue
             seen_calls.add((src, ticker))
             hc_calls.append({
                 "source": src,
@@ -237,176 +248,6 @@ _THEME_SYN = {
     "opec": "oil", "energy": "oil",
     "iran": "iran", "tehran": "iran",
 }
-
-
-def _theme_sig(label: str) -> set[str]:
-    toks: set[str] = set()
-    for w in re.findall(r"[a-z]+", (label or "").lower()):
-        if w in _THEME_SYN:
-            toks.add(_THEME_SYN[w])
-        elif len(w) >= 4 and w not in _THEME_STOP:
-            toks.add(w)
-    return toks
-
-
-def compute_what_changed(
-    prev_state: dict | None,
-    today_state: dict,
-    *,
-    lean_flips: list[dict] | None = None,
-    body_tickers: set[str] | None = None,
-) -> list[str]:
-    """Diff two state snapshots into WHAT CHANGED bullets (max 6).
-
-    Categories, in priority order:
-      - lean stance flips (we held X long, now short — the loudest signal;
-        these come from the lean tracker, not the theme snapshot, so they
-        catch the actual trade-direction reversal the reader most needs)
-      - stance flips on recurring themes
-      - lead-theme change (the dominant story rotated)
-      - new multi-bank themes entering (minus the lead, to avoid dup)
-      - themes dropping out of the top tier
-
-    DELTAS ONLY. High-conviction calls are deliberately NOT listed here —
-    they are owned by the DESK SIGNAL BOARD's HIGH-CONVICTION CALLS
-    table. WHAT CHANGED is the day-over-day change; the calls roster is
-    the board's current-state job. Listing both duplicated every call
-    across two sections (observed 06-17).
-
-    `lean_flips`: [{instrument, from, to}] from db.upsert_pulse_leans —
-    instrument-level direction reversals detected today.
-    `body_tickers`: accepted for backward-compatible call sites; no
-    longer used now that fresh-HC bullets moved to the DESK SIGNAL BOARD.
-    """
-    if not prev_state:
-        return []
-
-    bullets: list[str] = []
-    prev_themes = {t["label"]: t for t in (prev_state.get("themes") or [])}
-    today_themes = {t["label"]: t for t in (today_state.get("themes") or [])}
-
-    # Lean stance flips — highest priority. A trade we carried long that
-    # is now short (or vice-versa) is the single most important "what
-    # changed" for a reader following the leans day to day.
-    for f in (lean_flips or []):
-        inst = (f.get("instrument") or "").upper()
-        frm = (f.get("from") or "").lower()
-        to = (f.get("to") or "").lower()
-        if inst and frm and to:
-            bullets.append(f"**Flipped:** ${inst} {frm} → {to}")
-
-    # Stance flips — net direction reversed on a theme present both days.
-    for label, t in today_themes.items():
-        p = prev_themes.get(label)
-        if not p:
-            continue
-        prev_net = p.get("sup", 0) - p.get("skep", 0)
-        today_net = t.get("sup", 0) - t.get("skep", 0)
-        if prev_net * today_net < 0 and (
-            abs(prev_net) >= 1 and abs(today_net) >= 1
-        ):
-            prev_dir = "supportive" if prev_net > 0 else "skeptical"
-            today_dir = "supportive" if today_net > 0 else "skeptical"
-            bullets.append(
-                f"**Stance flip:** {label} — desks were net {prev_dir} "
-                f"yesterday, net {today_dir} today"
-            )
-
-    # Lead-theme change — the dominant story rotated. Gated on the new
-    # lead carrying >=3 banks so a trivial reshuffle of one-off themes
-    # doesn't fire daily. Tracked so the New-theme block below doesn't
-    # ALSO emit it (it was being listed twice — once as lead-change,
-    # once as new — observed 06-17).
-    lead_label = None
-    prev_list = prev_state.get("themes") or []
-    today_list = today_state.get("themes") or []
-    if prev_list and today_list:
-        prev_lead = prev_list[0].get("label")
-        today_lead_t = today_list[0]
-        today_lead = today_lead_t.get("label")
-        # Only a GENUINE rotation — not a clusterer rename of the same
-        # topic (06-17: "hormuz reopening oil price impact" -> "strait of
-        # hormuz reopening" fired a false lead change). Shared topic
-        # signature => rename => skip.
-        if (today_lead and prev_lead and today_lead != prev_lead
-                and today_lead_t.get("banks", 0) >= 3
-                and not (_theme_sig(today_lead) & _theme_sig(prev_lead))):
-            lead_label = today_lead
-            bullets.append(
-                f"**Lead theme:** {today_lead} now top "
-                f"({today_lead_t.get('banks', 0)} banks), was {prev_lead}"
-            )
-
-    # NOTE: high-conviction calls are NOT listed here — they are owned by
-    # the DESK SIGNAL BOARD's HIGH-CONVICTION CALLS table. Listing them
-    # in WHAT CHANGED too duplicated every call across two sections
-    # (observed 06-17: $AVGO in both). WHAT CHANGED is the day-over-day
-    # DELTA; the calls roster is the board's job.
-
-    # New multi-bank themes (>=3 banks, absent yesterday). Collapsed
-    # into ONE bullet — every new theme also appears in the DESK SIGNAL
-    # CONSENSUS LEDGER right below, so four separate "New theme:" lines
-    # read as a duplicate of the ledger (observed 06-17). One compact
-    # "New themes: A (9), B (8)" line keeps the delta without mirroring.
-    # Skip the lead theme (already reported as the lead-change above).
-    # A today-theme is a RENAME (not new) if it shares >=2 topic tokens
-    # with a prior theme — conservative threshold so a genuinely-new
-    # theme that merely shares one common token ("ai"/"fed"/"oil") still
-    # counts as new, but a strong relabel ("Warsh press conference" ->
-    # "termination of forward guidance by ... Warsh", 3 shared) is
-    # suppressed. Faded uses a looser 1-token rule (low stakes) above.
-    prev_sigs = [_theme_sig(lbl) for lbl in prev_themes]
-
-    def _is_rename(label: str) -> bool:
-        sig = _theme_sig(label)
-        return any(len(sig & ps) >= 2 for ps in prev_sigs)
-
-    new_themes = [
-        (label, t.get("banks", 0))
-        for label, t in today_themes.items()
-        if (t.get("banks", 0) >= 3 and label not in prev_themes
-            and label != lead_label and not _is_rename(label))
-    ]
-    new_themes.sort(key=lambda x: -x[1])
-    if len(new_themes) == 1:
-        bullets.append(
-            f"**New theme:** {new_themes[0][0]} ({new_themes[0][1]} banks)"
-        )
-    elif new_themes:
-        listed = ", ".join(f"{lbl} ({n})" for lbl, n in new_themes[:4])
-        bullets.append(f"**New themes:** {listed}")
-
-    # Dropped themes — yesterday's top-6, gone today. SUPPRESS renames:
-    # the clusterer often relabels the same topic day-over-day
-    # ("us iran geopolitical relief" -> "iran nuclear deal viability",
-    # "ai growth" -> "ai semiconductor infrastructure"), which otherwise
-    # fires a spurious New + Faded pair for one unchanged story
-    # (observed 06-18: 4 new + 4 faded, all renames). A faded theme that
-    # shares a topic signature with any current theme is a rename, not a
-    # real exit — drop it.
-    today_sigs = [_theme_sig(t["label"]) for t in (today_state.get("themes") or [])]
-    prev_top6 = [t["label"] for t in (prev_state.get("themes") or [])[:6]]
-    for label in prev_top6:
-        if label in today_themes:
-            continue
-        sig = _theme_sig(label)
-        if sig and any(sig & ts for ts in today_sigs):
-            continue  # renamed, not faded
-        bullets.append(f"**Faded:** {label} (no longer in coverage)")
-
-    return bullets[:6]
-
-
-def render_what_changed(bullets: list[str]) -> str:
-    """Render the WHAT CHANGED section. Empty string when nothing to say
-    (first run, or a genuinely unchanged day) — no empty-section noise."""
-    if not bullets:
-        return ""
-    return (
-        "## WHAT CHANGED\n\n"
-        + "\n".join(f"- {b}" for b in bullets)
-        + "\n"
-    )
 
 
 # =====================================================================
@@ -501,91 +342,6 @@ def _clip_rationale(s: str, limit: int = 40) -> str:
 
 def _is_foreign_pt(pt: str) -> bool:
     return bool(_FOREIGN_PT_RE.search(pt or ""))
-
-
-def render_desk_signal_board(today_state: dict | None) -> str:
-    """Render the DESK SIGNAL BOARD — two deterministic sub-blocks built
-    from the stamped pulse state (no LLM, no fabrication surface):
-
-      HIGH-CONVICTION CALLS — every high-conviction single-name call
-        extracted from the corpus (source, ticker, rating/action, PT,
-        one-line rationale).
-      CONSENSUS LEDGER — multi-bank themes with their bull/bear split,
-        bank count, high-conviction count, and named dissent.
-
-    Returns "" when the state carries neither (nothing to show — no
-    empty-section noise). Monospace block: Discord embeds don't render
-    markdown tables.
-    """
-    if not today_state:
-        return ""
-    # Drop foreign-listed calls (non-USD price targets) — a US options
-    # trader can't act on them and they cluttered the board (06-17).
-    hc_calls = [c for c in (today_state.get("hc_calls") or [])
-                if not _is_foreign_pt(c.get("pt") or "")]
-    themes = [t for t in (today_state.get("themes") or [])
-              if t.get("banks", 0) >= 2]
-    if not hc_calls and not themes:
-        return ""
-
-    lines: list[str] = []
-
-    if hc_calls:
-        lines.append("HIGH-CONVICTION CALLS")
-        for c in hc_calls[:_HC_CALLS_MAX]:
-            src = _clean_inline(c.get("source") or "?")[:13]
-            tk = f"${(c.get('ticker') or '?').upper()}"[:7]
-            # 10-wide rating column: "Improving" (9) and "Most Pref" (9)
-            # fit whole — the old [:8] re-introduced the mid-word stub
-            # _norm_rating exists to prevent.
-            rd = _norm_rating(c.get("rating") or "", c.get("action") or "")[:10]
-            pt_raw = _clean_inline(c.get("pt") or "")
-            pt = (f"PT {pt_raw}" if pt_raw and pt_raw.upper() not in ("N/A", "")
-                  else "")[:11]
-            rat = _clip_rationale(c.get("rationale") or "")
-            lines.append(f"  {src:<13} {tk:<7} {rd:<10} {pt:<11} {rat}".rstrip())
-        if len(hc_calls) > _HC_CALLS_MAX:
-            lines.append(f"  ...+{len(hc_calls) - _HC_CALLS_MAX} more")
-
-    if themes:
-        if lines:
-            lines.append("")
-        lines.append("CONSENSUS LEDGER")
-        for t in themes[:_LEDGER_THEMES_MAX]:
-            label = _clean_inline(t.get("label") or "?")
-            sup = t.get("sup", 0)
-            skep = t.get("skep", 0)
-            banks = t.get("banks", 0)
-            hc = t.get("hc", 0)
-            hc_str = f" · {hc} HC" if hc else ""
-            if not sup and not skep:
-                # All-neutral coverage: "0 bull / 0 bear" read as empty
-                # (observed 06-17). Say what it actually is.
-                lines.append(
-                    f"  {label} — {banks} banks tracking · no directional lean"
-                    f"{hc_str}"
-                )
-                continue
-            tail = "" if skep else " · no dissent"
-            lines.append(
-                f"  {label} — {sup} bull / {skep} bear · {banks} banks"
-                f"{hc_str}{tail}"
-            )
-            if skep:
-                names = ", ".join(t.get("skep_sources") or [])
-                lines.append(
-                    f"     dissent: {names}" if names
-                    else f"     dissent: {skep} desk(s)"
-                )
-
-    if not lines:
-        return ""
-    return (
-        "## DESK SIGNAL BOARD\n\n"
-        "```\n"
-        + "\n".join(lines)
-        + "\n```\n"
-    )
 
 
 # =====================================================================
@@ -685,81 +441,6 @@ def strip_lean_block(md: str) -> str:
     end = m.end() + nxt.start() if nxt else len(md)
     out = md[:start] + md[end:]
     return re.sub(r"\n{3,}", "\n\n", out).rstrip() + "\n"
-
-
-def extract_leans_from_markdown(md: str) -> list[dict]:
-    """Pull trade leans from the INSIGHTS slots' CLOSING paragraphs.
-
-    Only the last paragraph of each H3 slot counts (mid-body ticker
-    mentions are evidence, not leans) — same boundary rule as the
-    slot-lean-overlap lint. Returns [{instrument, direction, context}].
-    """
-    m = re.search(
-        r"##\s+(?:\d+\.\s+)?INSIGHTS.*?(?=^##\s|\Z)",
-        md, re.MULTILINE | re.DOTALL | re.IGNORECASE,
-    )
-    if not m:
-        return []
-    insights = m.group(0)
-    slot_starts = [s.start() for s in re.finditer(r"^###\s+", insights, re.MULTILINE)]
-    if not slot_starts:
-        return []
-    slot_starts.append(len(insights))
-
-    leans: list[dict] = []
-    seen: set[tuple[str, str]] = set()
-    for i in range(len(slot_starts) - 1):
-        body = insights[slot_starts[i]:slot_starts[i + 1]]
-        paragraphs = [p.strip() for p in body.split("\n\n") if p.strip()]
-        if not paragraphs:
-            continue
-        last_para = paragraphs[-1]
-        for lm in _LEAN_RE.finditer(last_para):
-            verb = lm.group(1).lower()
-            ticker = lm.group(2).upper()
-            qualifier = (lm.group(3) or "").lower()
-            direction = "long" if verb in _LONG_VERBS else "short"
-            # 'puts' flips an ostensibly-long verb to a short expression
-            # ("own $TLT puts" = short rates... actually long TLT puts =
-            # short TLT). Encode the instrument as the option when
-            # qualified so the board reads naturally.
-            instrument = ticker
-            if qualifier:
-                instrument = f"{ticker} {qualifier}"
-                if qualifier == "puts" and direction == "long":
-                    direction = "short"
-            key = (instrument, direction)
-            if key in seen:
-                continue
-            seen.add(key)
-            # Context = the sentence containing the lean, cleaned into a
-            # full board display line (so render is uniform with the
-            # structured _LEANS path — render just prefixes the status).
-            sentences = re.split(r"(?<=[.!?])\s+", last_para)
-            sentence = next(
-                (s for s in sentences if lm.group(0) in s), last_para
-            )
-            rationale = _clean_board_context(sentence, instrument, direction)
-            instruments_expr = f"${ticker}" + (f" {qualifier}" if qualifier else "")
-            display = _build_lean_display(direction, instruments_expr, rationale)
-            leans.append({
-                "instrument": instrument,
-                "direction": direction,
-                "context": display,
-            })
-    # When both a bare ticker and its options-qualified form were
-    # extracted ("$TLT" + "$TLT calls" from "own protection in $TLT …
-    # Long $TLT calls"), keep only the qualified lean — it's the more
-    # specific expression of the same idea.
-    qualified_roots = {
-        l["instrument"].split()[0] for l in leans
-        if " " in l["instrument"]
-    }
-    leans = [
-        l for l in leans
-        if " " in l["instrument"] or l["instrument"] not in qualified_roots
-    ]
-    return leans
 
 
 _BOARD_CTX_LIMIT = 64
@@ -925,6 +606,7 @@ def render_trade_board(
     board_rows: list[dict], today: str, flips: set[str] | None = None,
     hc_calls: list[dict] | None = None,
     prev_board_date: str | None = None,
+    reversal_counts: dict[str, int] | None = None,
 ) -> str:
     """Render the TRADE BOARD: the leans THIS pulse is making (clean
     markdown bullets) plus a HIGH-CONVICTION single-name calls subsection.
@@ -959,6 +641,19 @@ def render_trade_board(
         ticker0 = inst_name.split()[0]
         if is_new and ticker0 in flips:
             status = "FLIP"
+            # Churn honesty (2026-08-04 review): the SMH/SOXX complex
+            # flipped five times in seven sessions and every FLIP
+            # rendered as if it were the first. A repeat reversal names
+            # its count so a follower sees the chop, not just today's
+            # conviction. First flips stay clean.
+            n = (reversal_counts or {}).get(ticker0, 0)
+            if n >= 2:
+                ord_sfx = {1: "st", 2: "nd", 3: "rd"}.get(
+                    n if n < 20 else n % 10, "th")
+                status = (
+                    f"FLIP ({n}{ord_sfx} reversal in 10 sessions — "
+                    f"fast tape, size accordingly)"
+                )
         elif is_new:
             status = "NEW"
         else:

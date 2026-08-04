@@ -58,6 +58,7 @@ checklist at the bottom enumerates what to wire up.
 |---|---|
 | `phase_b_ran`, `pdfs_in_window`, `pdfs_with_contextual_mentions`, `total_mentions` | Phase B run stats |
 | `promoted`, `near_miss` | Phase B cluster decisions with reasons |
+| `promoted[].member_banks` | NEW 2026-08-04 — per-member ground-truth attribution: `{member_string: [banks that actually said it]}`. The routine MUST source stance attribution from this map, never by cycling the cluster's bank union — round-robin attribution let DRAFT print "Bank X argues Y" where X never said Y |
 | `two_tier_merges`, `two_tier_augment_count` | Two-tier merge outcomes |
 | `two_tier_cap_blocked` | Cap-fire log — sibling_canonicals is the consumable form of this |
 | `sibling_groups` | Connected-component view of cap-blocked siblings |
@@ -86,9 +87,16 @@ Also writes a sidecar JSON next to `<output_json>`:
     "soft_issue_count": 2,
     "total_issue_count": 2,
     "reason": "2 soft issue(s) only — routine may surface but SCRUB rewrite optional",
-    "exit_code": 4
+    "exit_code": 4,
+    "soft_kinds": ["discovered-theme-missing", "jargon-bare", "slot-lean-overlap", "slot-stat-overlap", "top-3-theme-missing"]
 }
 ```
+
+`soft_kinds` (NEW 2026-08-04) is the authoritative soft-issue list — the
+routine filters SCRUB's input to hard issues with it and must NEVER
+re-derive the classification inline (the old re-derivation treated only
+the top-3-coverage kind as soft, disagreed with these five kinds, and
+dispatched SCRUB on soft-only lint).
 
 Routine should **read the sidecar OR the exit code**, never both — they're
 guaranteed consistent. SCRUB dispatching when `scrub_recommended: false`
@@ -130,10 +138,22 @@ or contrarian_to_lead, the validator catches it and the routine re-rolls.
 Open the **Opus routine repo** and verify each of these. If any are
 missing, that's why a QC recommendation keeps recurring:
 
-- [ ] **SCRUB dispatch reads `<lint_output>.decision`** (or checks exit
-      code) and skips when `scrub_recommended: false`. Without this,
-      SCRUB runs on clean inputs and produces cosmetic regressions
-      (e.g. "basis points" → "hundredths of a percent" on 2026-05-29).
+- [x] **SCRUB dispatch reads `<lint_output>.decision`** and skips when
+      `scrub_recommended: false`. DONE 2026-08-04 — STEP 5.7.1 now
+      reads the sidecar and filters SCRUB's input to hard issues via
+      its `soft_kinds`; the inline re-derivation that dispatched SCRUB
+      on soft-only lint (the 2026-05-29 "basis points" → "hundredths
+      of a percent" cosmetic-regression class) is gone.
+
+- [x] **Final structural re-validation (STEP 5.75)** — DONE 2026-08-04:
+      `pulse_draft_validate.py` re-runs on `/tmp/final.md` after
+      EDIT + SCRUB (before the `## _LEANS` strip). NEW hard violations
+      get one FIXUP pass; a deleted `## _LEANS` is spliced back from
+      the draft deterministically; residuals commit to
+      `pulse-output/lint/<ts>.final-validation.json` so they are
+      visible to QC rather than shipping silently. Rationale: EDIT
+      injects live market data and SCRUB rewrites the full document —
+      until this step, everything they introduced shipped unchecked.
 
 - [ ] **DRAFT prompt template renders `sibling_canonicals` as
       sub-bullets** under their primary theme (already shipped on

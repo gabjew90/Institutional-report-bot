@@ -120,16 +120,6 @@ def test_full_inject_then_split_order():
         "(WHAT CHANGED + DESK SIGNAL cut)")
 
 
-def test_leans_extracted_pre_split():
-    # extract_leans runs on the INSIGHTS header BEFORE the split in the
-    # bridge, so it must still find the closing leans of every slot.
-    from report.pulse_sections import extract_leans_from_markdown
-    leans = extract_leans_from_markdown(_THREE_THEME_INSIGHTS)
-    instruments = {l["instrument"] for l in leans}
-    assert "NVDA" in instruments and "MU" in instruments and "BNO" in instruments, instruments
-    _ok("leans: still extracted from INSIGHTS pre-split (all 3 slot closes)")
-
-
 def test_formatter_colors():
     from report.formatter import _get_section_color, SECTION_COLORS
     me = _get_section_color("2. THE MAIN EVENT")
@@ -184,7 +174,6 @@ if __name__ == "__main__":
     test_split_single_theme()
     test_split_no_slots_untouched()
     test_full_inject_then_split_order()
-    test_leans_extracted_pre_split()
     test_formatter_colors()
     test_dashboard_classifier_and_wrap()
     test_draft_prompt_depth_rule()

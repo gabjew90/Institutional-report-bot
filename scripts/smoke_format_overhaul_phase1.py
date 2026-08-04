@@ -79,202 +79,6 @@ def test_extract_state_from_ctx():
         "US-tradable high conviction")
 
 
-def test_compute_what_changed_categories():
-    from report.pulse_sections import compute_what_changed
-    prev = {
-        "themes": [
-            {"label": "hormuz oil", "banks": 12, "sup": 1, "skep": 4, "hc": 0},
-            {"label": "old fading theme", "banks": 8, "sup": 2, "skep": 0, "hc": 0},
-        ],
-        "hc_calls": [{"source": "Citi", "ticker": "NVDA",
-                      "action": "reiterate Buy", "pt": "$300"}],
-    }
-    today = {
-        "themes": [
-            # stance flip: was net skeptical (1-4), now net supportive (5-1)
-            {"label": "hormuz oil", "banks": 12, "sup": 5, "skep": 1, "hc": 0},
-            # new multi-bank theme
-            {"label": "boj policy pivot", "banks": 6, "sup": 2, "skep": 0, "hc": 2},
-        ],
-        "hc_calls": [
-            {"source": "Citi", "ticker": "NVDA",
-             "action": "reiterate Buy", "pt": "$300"},        # carried — no bullet
-            {"source": "Goldman Sachs", "ticker": "MU",
-             "action": "price_target_change", "pt": "$900"},  # fresh
-        ],
-    }
-    bullets = compute_what_changed(prev, today)
-    joined = " | ".join(bullets)
-    assert "Stance flip" in joined and "hormuz oil" in joined, bullets
-    assert "New theme" in joined and "boj policy pivot" in joined, bullets
-    assert "Faded" in joined and "old fading theme" in joined, bullets
-    # HC calls are NOT listed in WHAT CHANGED anymore — they're owned by
-    # the DESK SIGNAL BOARD (2026-06-17 de-dup). Neither the fresh call
-    # ($MU) nor the carried one (NVDA) should appear here.
-    assert "Fresh high-conviction" not in joined, bullets
-    assert "$MU" not in joined and "NVDA" not in joined, bullets
-    _ok("compute_what_changed: flip + new + faded detected; HC calls "
-        "NOT duplicated here (owned by DESK SIGNAL BOARD)")
-
-
-def test_what_changed_baseline_day_empty():
-    from report.pulse_sections import compute_what_changed, render_what_changed
-    assert compute_what_changed(None, {"themes": [], "hc_calls": []}) == []
-    assert render_what_changed([]) == "", (
-        "baseline day renders NOTHING — no empty-section noise"
-    )
-    _ok("baseline day: no bullets, no section")
-
-
-def test_what_changed_lean_flip_leads_no_hc():
-    """Lean flips surface as the top bullet. HC calls do NOT appear in
-    WHAT CHANGED at all (2026-06-17: they moved to the DESK SIGNAL
-    BOARD; listing them in both duplicated every call)."""
-    from report.pulse_sections import compute_what_changed
-    prev = {"themes": [{"label": "oil scare", "banks": 6, "sup": 4, "skep": 0, "hc": 0}],
-            "hc_calls": []}
-    today = {"themes": [{"label": "oil scare", "banks": 6, "sup": 4, "skep": 0, "hc": 0}],
-             "hc_calls": [
-                 {"source": "Goldman Sachs", "ticker": "MU",
-                  "action": "reiterate Buy", "pt": "$900"},
-                 {"source": "Goldman Sachs", "ticker": "GALP",
-                  "action": "reiterate", "pt": "EUR24"},
-             ]}
-    bullets = compute_what_changed(
-        prev, today,
-        lean_flips=[{"instrument": "USO", "from": "long", "to": "short"}],
-        body_tickers={"MU", "USO", "TLT"},
-    )
-    joined = " | ".join(bullets)
-    assert bullets[0].startswith("**Flipped:**") and "$USO" in bullets[0], bullets
-    assert "long → short" in bullets[0]
-    # No HC calls leak into WHAT CHANGED — neither body-present ($MU)
-    # nor body-absent ($GALP). The board owns the calls roster.
-    assert "$MU" not in joined and "GALP" not in joined, bullets
-    assert "Fresh high-conviction" not in joined, bullets
-    _ok("WHAT CHANGED: lean flip leads; HC calls not duplicated here")
-
-
-def test_what_changed_suppresses_clusterer_renames():
-    """06-18: the clusterer relabels the same topic day-over-day, firing
-    spurious New+Faded pairs ('us iran geopolitical relief' ->
-    'iran nuclear deal viability', 'Fed Chair Warsh press conference' ->
-    'termination of forward guidance by Fed Chair Kevin Warsh'). Renames
-    must not show as new OR faded."""
-    from report.pulse_sections import compute_what_changed
-    prev = {"themes": [
-        {"label": "Fed Chair Kevin Warsh's first press conference",
-         "banks": 8, "sup": 0, "skep": 0, "hc": 0},
-        {"label": "us iran geopolitical relief", "banks": 9,
-         "sup": 3, "skep": 0, "hc": 0},
-    ], "hc_calls": []}
-    today = {"themes": [
-        {"label": "Termination of forward guidance by Fed Chair Kevin Warsh",
-         "banks": 12, "sup": 0, "skep": 0, "hc": 0},
-        {"label": "iran nuclear deal viability", "banks": 10,
-         "sup": 0, "skep": 1, "hc": 0},
-    ], "hc_calls": []}
-    bullets = compute_what_changed(prev, today)
-    joined = " | ".join(bullets)
-    # Strong rename (3 shared: fed/chair/kevin) suppressed from "new"
-    assert "Termination of forward guidance" not in joined, bullets
-    # No faded churn for either renamed topic
-    assert "Faded" not in joined, bullets
-    _ok("WHAT CHANGED: clusterer renames don't fire New (strong) or "
-        "Faded (any-overlap) churn")
-
-
-def test_what_changed_lead_theme_change():
-    from report.pulse_sections import compute_what_changed
-    prev = {"themes": [{"label": "oil scare", "banks": 7, "sup": 1, "skep": 5, "hc": 0},
-                       {"label": "ai capex", "banks": 6, "sup": 4, "skep": 0, "hc": 0}],
-            "hc_calls": []}
-    today = {"themes": [{"label": "ai capex", "banks": 6, "sup": 4, "skep": 0, "hc": 0},
-                        {"label": "oil scare", "banks": 4, "sup": 1, "skep": 2, "hc": 0}],
-             "hc_calls": []}
-    bullets = compute_what_changed(prev, today)
-    joined = " | ".join(bullets)
-    assert "Lead theme" in joined and "ai capex" in joined, bullets
-    _ok("WHAT CHANGED: lead-theme rotation surfaced")
-
-
-# =====================================================================
-# Lean extraction + board rendering
-# =====================================================================
-
-_PULSE_MD = """# Test pulse
-
-## 1. RECAP
-
-Stuff happened today.
-
-## 2. INSIGHTS & ALPHA
-
-### AI wobble theme
-
-*Punchline.*
-
-- evidence bullet mentioning long $NVDA support in the mid-body
-
-Mechanism paragraph that says you could buy $AAPL in theory here.
-
-Stay long the build-out through the broader names. Long $SOXX on the broadening thesis, sized to ride the unwind out.
-
-### BoJ theme
-
-*Punchline two.*
-
-- bullet
-
-The cost of being wrong here is small.
-
-Own some protection and trim the crowded exposure. Long $TLT calls into the June 16 decision.
-
-## 3. WHAT TO WATCH
-
-- stuff
-"""
-
-
-def test_extract_leans_closing_paragraph_only():
-    from report.pulse_sections import extract_leans_from_markdown
-    leans = extract_leans_from_markdown(_PULSE_MD)
-    by_inst = {l["instrument"]: l for l in leans}
-    assert "SOXX" in by_inst and by_inst["SOXX"]["direction"] == "long", leans
-    assert "TLT calls" in by_inst and by_inst["TLT calls"]["direction"] == "long", leans
-    # Mid-body mentions must NOT extract
-    assert "NVDA" not in by_inst, (
-        f"mid-body evidence mention extracted as a lean: {leans}"
-    )
-    assert "AAPL" not in by_inst, leans
-    _ok("lean extraction: closing-paragraph only, mid-body mentions "
-        "ignored, options qualifier captured")
-
-
-def test_puts_flip_direction():
-    from report.pulse_sections import extract_leans_from_markdown
-    md = """## 2. INSIGHTS & ALPHA
-
-### Rates theme
-
-*Punch.*
-
-Body paragraph.
-
-The hedge is cheap. Own $TLT puts into the print.
-
-## 3. WHAT TO WATCH
-- x
-"""
-    leans = extract_leans_from_markdown(md)
-    assert len(leans) == 1, leans
-    assert leans[0]["instrument"] == "TLT puts"
-    assert leans[0]["direction"] == "short", (
-        f"'own $TLT puts' is a SHORT-rates expression, got {leans[0]}"
-    )
-    _ok("'own $X puts' flips direction to short")
-
-
 def test_render_trade_board_new_vs_live():
     from report.pulse_sections import render_trade_board
     # 2026-06-23: context_snippet now holds the FULL board display line
@@ -508,6 +312,40 @@ def test_board_flip_marker():
 # Injection
 # =====================================================================
 
+_PULSE_MD = """# Test pulse
+
+## 1. RECAP
+
+Stuff happened today.
+
+## 2. INSIGHTS & ALPHA
+
+### AI wobble theme
+
+*Punchline.*
+
+- evidence bullet mentioning long $NVDA support in the mid-body
+
+Mechanism paragraph that says you could buy $AAPL in theory here.
+
+Stay long the build-out through the broader names. Long $SOXX on the broadening thesis, sized to ride the unwind out.
+
+### BoJ theme
+
+*Punchline two.*
+
+- bullet
+
+The cost of being wrong here is small.
+
+Own some protection and trim the crowded exposure. Long $TLT calls into the June 16 decision.
+
+## 3. WHAT TO WATCH
+
+- stuff
+"""
+
+
 def test_inject_sections_placement_and_idempotency():
     from report.pulse_sections import inject_sections
     # 2026-06-19: inject_sections is board-only now (WHAT CHANGED + DESK
@@ -661,13 +499,6 @@ def test_fragment_classifies_new_sections():
 if __name__ == "__main__":
     print("=== format-overhaul Phase 1 smoke ===")
     test_extract_state_from_ctx()
-    test_compute_what_changed_categories()
-    test_what_changed_baseline_day_empty()
-    test_what_changed_lean_flip_leads_no_hc()
-    test_what_changed_suppresses_clusterer_renames()
-    test_what_changed_lead_theme_change()
-    test_extract_leans_closing_paragraph_only()
-    test_puts_flip_direction()
     test_render_trade_board_new_vs_live()
     test_board_shows_only_todays_calls()
     test_board_self_ref_and_options()

@@ -606,6 +606,55 @@ def _released_event_rows(ctx: dict) -> dict[str, dict[str, set[float]]]:
                 slot = out.setdefault(kw, {"ok": set(), "est": set()})
                 slot["ok"] |= ok
                 slot["est"] |= est
+
+    # Second ground-truth source: the CORPUS's own released/forecast
+    # labels. Finnhub's calendar (the only feed carrying actuals) went
+    # behind a paid tier 2026-06-11 and the ForexFactory fallback
+    # hardcodes actual=None — so calendar-only ground truth meant this
+    # check usually never ran, while the extractor was labeling exactly
+    # these figures (MacroIndicator.status, KeyDataPoint.figure_status)
+    # in the analyses the pulse synthesizes. The 08-04 pulse told
+    # readers the ISM actual "has not reached our feed" while a DB note
+    # in its corpus carried it (55.6 vs 53.9 expected) — 2026-08-04
+    # review, G3.
+    try:
+        aj = ctx.get("analyses_json")
+        analyses = json.loads(aj) if isinstance(aj, str) else (aj or [])
+    except (json.JSONDecodeError, TypeError):
+        analyses = []
+    for a in analyses if isinstance(analyses, list) else []:
+        for mi in (a.get("macro") or []):
+            status = (mi.get("status") or "").lower()
+            name = (mi.get("indicator") or "").upper()
+            vals = {
+                float(m.group(1))
+                for m in _PCT_FIGURE_RE.finditer(mi.get("reading") or "")
+            }
+            if not vals:
+                continue
+            for kw in _EVENT_KEYWORDS:
+                if kw in name:
+                    slot = out.setdefault(kw, {"ok": set(), "est": set()})
+                    if status == "released":
+                        slot["ok"] |= vals
+                    elif status == "forecast":
+                        slot["est"] |= vals
+        for kdp in (a.get("data_points") or []):
+            status = (kdp.get("figure_status") or "").lower()
+            name = (kdp.get("metric") or "").upper()
+            vals = {
+                float(m.group(1))
+                for m in _PCT_FIGURE_RE.finditer(kdp.get("figure") or "")
+            }
+            if not vals:
+                continue
+            for kw in _EVENT_KEYWORDS:
+                if kw in name:
+                    slot = out.setdefault(kw, {"ok": set(), "est": set()})
+                    if status == "released":
+                        slot["ok"] |= vals
+                    elif status == "forecast":
+                        slot["est"] |= vals
     return out
 
 
