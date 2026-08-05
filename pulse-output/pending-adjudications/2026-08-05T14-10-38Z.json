@@ -1,0 +1,272 @@
+{
+  "pulse_date": "2026-08-05",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai hyperscaler capex",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Every bank that takes a side agrees the tech giants' huge AI data-center spending is holding up and starting to pay off, with customer order backlogs growing roughly twice as fast as the spending itself, and they expect the boom to continue through 2027.",
+      "facts_agreed": [
+        {
+          "claim": "Hyperscaler AI capital spending is not slowing and is expected to stay strong through 2027.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "we expect 2027 hyperscaler capex to remain very strong",
+            "Zero evidence from any company in the US that they've adjusted spending",
+            "The AI boom is becoming the largest and fastest investment boom ever."
+          ]
+        },
+        {
+          "claim": "Demand for AI computing, measured by cloud order backlogs, is growing much faster than the spending itself, which argues the money is earning a return.",
+          "banks_for": [
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "backlog growing more than 150% YoY to ~$1.7T vs. capex growth of ~80%",
+            "market is becoming increasingly convinced that hyperscaler AI capex is generating returns"
+          ]
+        },
+        {
+          "claim": "Banks read the recent tech selloff as a positioning washout rather than a break in AI fundamentals, and see investors re-engaging with the AI trade.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Morgan Stanley",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "investors increasingly willing to lean back into the capex theme",
+            "AI capabilities continuing to improve at a non-linear rate.",
+            "This week’s favorites are the rebound in AI hardware"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {
+          "bank": "JPMorgan",
+          "subject": "Aggregate cloud provider (CSP) capex growth",
+          "direction_or_level": "65% growth",
+          "by_when": "2027",
+          "source_quote": "Aggregate CSP capex growth forecast"
+        },
+        {
+          "bank": "Goldman Sachs",
+          "subject": "HBM memory chip pricing",
+          "direction_or_level": "up 100% year-over-year",
+          "by_when": "2027",
+          "source_quote": "2027 HBM pricing increase YoY"
+        },
+        {
+          "bank": "Goldman Sachs",
+          "subject": "Datacenter GPU revenue",
+          "direction_or_level": "$40B+",
+          "by_when": "2027",
+          "source_quote": "2027 Datacenter GPU revenue estimate"
+        }
+      ]
+    },
+    {
+      "theme": "hormuz strait shipping deal",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks mention a US/Iran deal to reopen the Strait of Hormuz to shipping as a live macro event, but none has staked a directional market view on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag negotiations toward a US/Iran agreement reopening Strait of Hormuz shipping flows as a near-term catalyst, without taking a directional position.",
+          "banks_for": [
+            "JPMorgan + TS Lombard",
+            "Deutsche Bank",
+            "JPMorgan",
+            "Mizuho"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz shipping flow negotiations",
+            "US/Iran Strait of Hormuz deal",
+            "Strait of Hormuz shipping agreement"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "high beta momentum bounce",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Desks broadly agree that momentum and high-beta stocks just went through a violent forced selloff, but only BTIG has staked a directional call, expecting a short-term bounce in line with past boom-bust cycles where the median recovery was about +35% over two weeks.",
+      "facts_agreed": [
+        {
+          "claim": "Momentum and high-beta stocks have just gone through a major unwind, a sharp forced selloff of the year's winning trades, referenced across multiple desks.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Momentum factor volatility unwind",
+            "High-Beta Momentum factor boom/bust cycles",
+            "Great Momentum Unwind",
+            "Global Momentum unwind"
+          ]
+        },
+        {
+          "claim": "BTIG expects a short-term tactical bounce in momentum stocks following the selloff.",
+          "banks_for": [
+            "BTIG"
+          ],
+          "evidence_quotes": [
+            "Krinsky discussed last week, he now expects a tactical bounce in momentum."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {
+          "bank": "BTIG",
+          "subject": "high-beta momentum stocks",
+          "direction_or_level": "+35% median recovery bounce",
+          "by_when": "over 14 days",
+          "source_quote": "Median recovery bounce"
+        }
+      ]
+    },
+    {
+      "theme": "yen intervention",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks (Goldman Sachs, JPMorgan, TS Lombard) all flag coordinated yen-buying intervention by Japanese authorities, with US involvement mentioned, as a live event this window, but none has staked a directional call on where the yen goes next.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, JPMorgan, and TS Lombard all reference coordinated yen-buying intervention by Japanese authorities as an active market event, without taking a directional view on the currency.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Coordinated Yen intervention by Japanese authorities",
+            "Coordinated Yen-buying intervention",
+            "Japan Yen intervention",
+            "US-Japan FX intervention",
+            "Coordinated Yen intervention"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "china tech import ban",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three banks flag new US restrictions on Chinese-made data center hardware, including optical transceivers, as a live development, but none has staked a directional view on what it means for markets yet.",
+      "facts_agreed": [
+        {
+          "claim": "JPMorgan, Deutsche Bank, and Goldman Sachs all reference US government bans on Chinese-made data center components and optical transceivers as an emerging catalyst this window.",
+          "banks_for": [
+            "JPMorgan",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "China data center device import ban",
+            "FCC ban on Chinese optical transceivers",
+            "China-made DC components ban",
+            "Trump administration Chinese optical transceiver ban"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "euro area macro resilience",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Only TS Lombard stakes a clear view, arguing the euro area economy is beating expectations even though its own 0.6% growth forecast for 2026 is admittedly gloomy, while the other sources mention the region without taking sides.",
+      "facts_agreed": [
+        {
+          "claim": "Euro area economic data has recently been coming in better than forecasters expected.",
+          "banks_for": [
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Economic surprises are now strongly positive for the bloc"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {
+          "bank": "TS Lombard",
+          "subject": "Euro area GDP growth 2026",
+          "direction_or_level": "0.6%",
+          "by_when": "2026",
+          "source_quote": "2026 growth forecast, noted as bearish."
+        }
+      ]
+    },
+    {
+      "theme": "central bank hike expectations",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag central bank rate-hike expectations — a possible European Central Bank hike in September and a Bank of Japan hike — as a live backdrop, but nobody has staked a directional view yet.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference upcoming central bank rate-hike expectations, specifically for the European Central Bank in September and the Bank of Japan, as context without arguing a directional call.",
+          "banks_for": [
+            "The Market Ear",
+            "Deutsche Bank",
+            "Mizuho"
+          ],
+          "evidence_quotes": [
+            "European Central Bank September hike expectations",
+            "BoJ interest rate hike expectations",
+            "ECB hike expectations"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "tech sector deleveraging",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    }
+  ]
+}
