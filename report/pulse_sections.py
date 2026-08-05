@@ -203,8 +203,16 @@ def extract_state_from_ctx(ctx: dict) -> dict:
             # what already happened that were shipping under the
             # "high-conviction single-name calls" banner (2026-08-04
             # review; user flagged the recap-mixing earlier).
+            # 'N/A'/'NA'/'None'/'-' are extraction filler, not ratings
+            # — literal 'N/A' strings are truthy and passed this filter
+            # on 2026-08-05, letting three recap entries occupy capped
+            # HC slots while the SPCX inaugural-earnings call got cut.
             _rating = (mm.get("rating") or "").strip()
             _pt = (mm.get("price_target") or "").strip()
+            if _rating.upper() in ("N/A", "NA", "NONE", "-"):
+                _rating = ""
+            if _pt.upper() in ("N/A", "NA", "NONE", "-"):
+                _pt = ""
             if not _rating and not _pt:
                 continue
             seen_calls.add((src, ticker))
@@ -221,6 +229,22 @@ def extract_state_from_ctx(ctx: dict) -> dict:
                 "rationale": (mm.get("rationale") or "")[:280],
             })
 
+    # Rank before any cap: the render slices calls[:_HC_SUBSECTION_MAX],
+    # and until 2026-08-05 that slice ran in EXTRACTION order — whatever
+    # PDF happened to be analyzed first won the slots. GS's dedicated
+    # note on SpaceX's first-ever earnings (Buy, PT $220, analyzed 3h
+    # before the pulse) arrived 13th and was cut while catalyst-watch
+    # reiterations shipped. Rank by action signal, then by having both a
+    # rating and a PT. Stable sort keeps extraction order inside a tier.
+    _ACTION_RANK = {
+        "initiate": 0, "upgrade": 0, "downgrade": 0,
+        "price_target_change": 1, "reiterate": 2,
+        "positive_catalyst_watch": 3, "negative_catalyst_watch": 3,
+    }
+    hc_calls.sort(key=lambda c: (
+        _ACTION_RANK.get((c.get("action") or "").strip().lower(), 2),
+        0 if (c.get("rating") and c.get("pt")) else 1,
+    ))
     return {"themes": themes, "hc_calls": hc_calls[:20]}
 
 

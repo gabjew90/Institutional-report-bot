@@ -168,10 +168,66 @@ def test_hc_calls_require_a_rating_or_pt():
     _ok("HC subsection keeps rated/PT calls, drops post-hoc recaps")
 
 
+def test_na_rating_is_not_a_rating():
+    """2026-08-05: the SPCX inaugural-earnings miss. Gemini extracts
+    literal 'N/A' strings for rating/pt on recap-shaped movers; 'N/A'
+    is truthy, so the rating-or-PT recap filter passed three junk
+    entries ("GS $MSFT — Blowout earnings and a +15% surge", no rating,
+    no PT) into the capped HC list."""
+    import json as _json
+    from report.pulse_sections import extract_state_from_ctx
+    ctx = {"theme_map": {}, "analyses_json": _json.dumps([
+        {"source": "Goldman Sachs", "market_movers": [
+            {"ticker": "MSFT", "conviction": "high",
+             "action": "positive_catalyst_watch", "rating": "N/A",
+             "price_target": "N/A", "rationale": "Blowout earnings"},
+        ]},
+    ])}
+    calls = extract_state_from_ctx(ctx)["hc_calls"]
+    assert not calls, f"'N/A' must count as no rating/PT: {calls}"
+    _ok("'N/A' rating/pt entries are recaps and get dropped")
+
+
+def test_hc_cap_ranks_by_action_not_arrival_order():
+    """2026-08-05: GS published a dedicated HIGH note on SpaceX's FIRST
+    EVER earnings (Buy, PT $220) — analyzed 3h before the pulse — and
+    the board cut it: calls[:6] sliced in extraction order and SPCX
+    arrived 13th. A PT change / upgrade must outrank catalyst-watch
+    reiterations regardless of when the PDF happened to be analyzed."""
+    import json as _json
+    from report.pulse_sections import extract_state_from_ctx, _HC_SUBSECTION_MAX
+    movers = []
+    # 6 low-signal catalyst-watch entries arrive FIRST...
+    for i in range(_HC_SUBSECTION_MAX):
+        movers.append({"ticker": f"AAA{chr(66 + i)}", "conviction": "high",
+                       "action": "positive_catalyst_watch",
+                       "rating": "Overweight", "price_target": "",
+                       "rationale": "strong results expected"})
+    analyses = [{"source": f"Bank{i}", "market_movers": [m]}
+                for i, m in enumerate(movers)]
+    # ...the marquee PT-change call arrives LAST.
+    analyses.append({"source": "Goldman Sachs", "market_movers": [
+        {"ticker": "SPCX", "conviction": "high",
+         "action": "price_target_change", "rating": "Buy",
+         "price_target": "$220",
+         "rationale": "Strong inaugural earnings beat"},
+    ]})
+    ctx = {"theme_map": {}, "analyses_json": _json.dumps(analyses)}
+    calls = extract_state_from_ctx(ctx)["hc_calls"]
+    top = [c["ticker"] for c in calls[:_HC_SUBSECTION_MAX]]
+    assert "SPCX" in top, (
+        f"a rating+PT change must survive the cap over catalyst-watch "
+        f"reiterations; top-{_HC_SUBSECTION_MAX} = {top}"
+    )
+    _ok("HC cap keeps rating/PT actions over catalyst-watch arrivals")
+
+
 if __name__ == "__main__":
     print("=== trade-board churn + lineage smoke ===")
     test_reversal_count()
     test_flip_renders_reversal_count()
     test_instrument_widening_breaks_silent_lineage()
     test_hc_calls_require_a_rating_or_pt()
+    test_na_rating_is_not_a_rating()
+    test_hc_cap_ranks_by_action_not_arrival_order()
     print("\nALL TRADE-BOARD CHURN SMOKE TESTS PASS")
