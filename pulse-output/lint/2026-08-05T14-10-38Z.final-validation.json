@@ -1,0 +1,33 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.6%' is attached to [area, bearish, beating, bullish, calls] but the source uses it for [adjusted, down, exhibit, income, increase] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.6%",
+   "draft_subject": [
+    "area",
+    "bearish",
+    "beating",
+    "bullish",
+    "calls",
+    "case",
+    "crowded",
+    "data"
+   ],
+   "source_subject": [
+    "adjusted",
+    "down",
+    "exhibit",
+    "income",
+    "increase",
+    "modeled",
+    "north",
+    "noting"
+   ]
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 1,
+ "exit_code": 4
+}
