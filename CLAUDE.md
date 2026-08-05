@@ -1,5 +1,11 @@
 # CLAUDE.md
 
+## Writing style (binding — applies to everything Claude writes here)
+
+Write in direct, technically accurate, plain English. Avoid melodramatic, flowery, or decorative language. Do not state the obvious or repeat points, but do not skip logical steps — explanations must be thorough on the first pass. Avoid unnecessary buzzwords; use precise domain terminology where accuracy requires it. Eliminate common AI mannerisms: do not overuse em-dashes and semicolons, and avoid generic transition words (delve, tapestry, crucial, pivotal, furthermore, in conclusion).
+
+Scope: responses to the user, commit messages, code comments, docs, and reports. This is separate from the bot's output voice — the pulse and /ask have their own voice contracts (`discord_bot/ask_prompt.py`, DRAFT_USER, `ai_analysis/voice_rules.py`) and those rules win for bot-facing text.
+
 ## Project Overview
 
 Institutional Research PDF Analyzer + Discord Market Pulse Bot. Processes 100-200 institutional financial research PDFs daily from Dropbox and delivers synthesized trading intelligence to Discord channels.
