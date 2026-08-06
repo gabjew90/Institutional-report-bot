@@ -22,9 +22,34 @@
    "detail": "exit 4: 8 soft violations, 3 numeric-scope-drift carried to EDIT"
   },
   {
-   "step": "STEP_5A_STITCH_DONE",
-   "time": "2026-08-06T14:22:30Z",
-   "detail": "1 mechanical fix (stripped _DRAFT NOTES)"
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-08-06T14:37:54Z",
+   "detail": "EDIT rewrote to 1651 words, rebuilt RECAP with live data"
+  },
+  {
+   "step": "STEP_5_5_LINT_DONE",
+   "time": "2026-08-06T14:37:54Z",
+   "detail": "14 issues, 3 hard"
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-08-06T14:37:54Z",
+   "detail": "2 passes, 3 hard -> 0 hard"
+  },
+  {
+   "step": "STEP_5_75_FINAL_VALIDATE_DONE",
+   "time": "2026-08-06T14:37:54Z",
+   "detail": "EDIT dropped _LEANS, restored deterministically, FINAL_NEW_HARD=0"
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-08-06T14:37:54Z",
+   "detail": "no internal notes present, _LEANS kept by design"
+  },
+  {
+   "step": "STEP_6_COMMIT_DONE",
+   "time": "2026-08-06T14:37:54Z",
+   "detail": "pulse 9954ed51 + adjudication 88499e94 via MCP, forensics 39d80cae via git; bridge posted to 2 channels"
   }
  ]
 }
