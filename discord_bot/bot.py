@@ -944,6 +944,61 @@ _ANALYSIS_REFINE_RE = re.compile(
 )
 
 
+_MENTION_ID_RE = re.compile(r"<@!?(\d+)>")
+
+
+def _protected_in_scope(
+    asker_id: int, question: str,
+    profile_user_ids: list[int] | None,
+    protected: set[int],
+) -> set[int]:
+    """Protected members involved in this ask: the asker, anyone
+    @-mentioned in the question, and any loaded profile subject (which
+    covers replied-to authors). Keyed by author_id only — display names
+    are unstable in this room."""
+    if not protected:
+        return set()
+    involved: set[int] = {int(asker_id)}
+    involved |= {int(m) for m in _MENTION_ID_RE.findall(question or "")}
+    involved |= {int(u) for u in (profile_user_ids or [])}
+    return involved & protected
+
+
+def _build_protected_directive(
+    prot_in_scope: set[int], asker_id: int, asker_display_name: str,
+) -> str:
+    """Binding per-request directive for protected members. Appended to
+    the system instruction like the FACT/ANALYSIS directives — recency
+    beats buried rules on flash-tier models."""
+    if not prot_in_scope:
+        return ""
+    tokens = ", ".join(f"<@{i}>" for i in sorted(prot_in_scope))
+    asker_bit = ""
+    if int(asker_id) in prot_in_scope:
+        who = asker_display_name or "the asker"
+        asker_bit = (
+            f" {who} — the asker — is protected: answer them warmly and "
+            f"straight, even if they attack you first."
+        )
+    return (
+        "\n\n---\n\n"
+        "[PROTECTED MEMBERS — binding, overrides Type 3 and every roast "
+        "rule]\n"
+        f"These members are protected: {tokens}.{asker_bit} NEVER insult "
+        "them, mock them, clap back at them, or use sarcasm toward them "
+        "— no provocation changes this. If anyone requests a roast, "
+        "dunk, ranking-at-their-expense, or comparison designed to "
+        "embarrass a protected member, decline the jab and DEFEND them "
+        "instead: answer with their real documented strengths from their "
+        "dossier or trade log. 'Roast me' FROM a protected member gets "
+        "grounded praise instead of a roast. Praise must be grounded in "
+        "material that "
+        "actually exists — never invent achievements, trades, or stats "
+        "to flatter them. Everything else about the answer (facts, "
+        "tools, format, register toward OTHER members) is unchanged."
+    )
+
+
 def _is_analysis_request(question: str) -> bool:
     """True when the asker wants ANALYSIS — computed figures / a visual,
     not a one-shot lookup or banter. Fires on an analysis keyword in the
@@ -5777,7 +5832,21 @@ async def _answer_with_gemini(
             f"{'ANALYSIS ' if _analysis_extra else ''}"
             f"(unified multi-tool pass) q={question[:80]!r}"
         )
-        _prompt_extra = _fact_extra + _analysis_extra
+        # Protected-members directive (2026-08-05 user request): never
+        # insult / clap back / sarcasm; defend and praise with grounded
+        # material. Rides _prompt_extra so every directive-preserving
+        # retry carries it.
+        _prot_in_scope = _protected_in_scope(
+            user_id, question, profile_user_ids,
+            settings.protected_user_id_set,
+        )
+        _protected_extra = _build_protected_directive(
+            _prot_in_scope, user_id, asker_display_name,
+        )
+        _asker_protected = int(user_id) in _prot_in_scope
+        if _protected_extra:
+            _ask_meta["guards"].append("protected-member")
+        _prompt_extra = _fact_extra + _analysis_extra + _protected_extra
         if _prompt_extra:
             # The config was built before the router ran — patch the
             # directive(s) in rather than rebuilding the tools.
@@ -6568,7 +6637,10 @@ async def _answer_with_gemini(
         # personal jab onto every arrow; the asker complained in the
         # room. An answer must actually address the asker in second
         # person before either roast guard may touch it.
+        # `not _asker_protected`: these rewrites INJECT jabs (the 08-03
+        # Boeing incident) — they must never run on a protected asker.
         if (answer and not _route_is_factual and not _analysis_extra
+                and not _asker_protected
                 and _is_clapback_shaped(answer)
                 and _prior_bot_answer_texts):
             _recycled = _recycled_roast_hooks(answer, _prior_bot_answer_texts)
@@ -6695,6 +6767,7 @@ async def _answer_with_gemini(
         # sections. Ship the original if the rewrite doesn't improve —
         # monotone is weak, not dangerous.
         if (answer and not _route_is_factual and not _analysis_extra
+                and not _asker_protected
                 and profiles_block
                 and _is_clapback_shaped(answer)
                 and _roast_is_pnl_monotone(answer, profiles_block)):

@@ -70,6 +70,12 @@ class Settings(BaseSettings):
     # /seedcursor, /status, /reprocess. /ask is intentionally NOT gated.
     # Empty = no restriction (commands work in every channel).
     pulse_command_channels: str = "test,tldr"
+    # Comma-separated Discord AUTHOR IDs the /ask bot must never insult,
+    # clap back at, or use sarcasm toward, and must defend and praise
+    # (with material that actually exists — no invented achievements).
+    # IDs, never display names: this room renames constantly and
+    # name-keying split one member into three on the trade scoreboard.
+    protected_user_ids: str = ""
 
     # Analyst alert-log watcher. When a message is posted in any
     # configured caller's channel with image attachments, the watcher
@@ -384,6 +390,17 @@ class Settings(BaseSettings):
         Empty list = no restriction.
         """
         return [s.strip().lower() for s in self.pulse_command_channels.split(",") if s.strip()]
+
+    @property
+    def protected_user_id_set(self) -> set[int]:
+        """Author IDs on the protected list. Junk tokens are ignored so a
+        stray typo in the env var can't crash the bot at boot."""
+        out: set[int] = set()
+        for tok in self.protected_user_ids.split(","):
+            tok = tok.strip()
+            if tok.isdigit():
+                out.add(int(tok))
+        return out
 
     def resolve_analyst_callers(self) -> list[dict]:
         """Return the effective list of analyst-caller dicts.
