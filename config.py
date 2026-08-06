@@ -76,6 +76,12 @@ class Settings(BaseSettings):
     # IDs, never display names: this room renames constantly and
     # name-keying split one member into three on the trade scoreboard.
     protected_user_ids: str = ""
+    # Comma-separated exact Discord USERNAMES (the @handle, not display
+    # name) awaiting protection for members who haven't joined yet. The
+    # first ingested message from a listed username pins its permanent
+    # author_id into the protected_users table (one-shot; first sighting
+    # wins). Once promoted, the username entry here can be removed.
+    protected_pending_usernames: str = ""
 
     # Analyst alert-log watcher. When a message is posted in any
     # configured caller's channel with image attachments, the watcher
@@ -401,6 +407,15 @@ class Settings(BaseSettings):
             if tok.isdigit():
                 out.add(int(tok))
         return out
+
+    @property
+    def protected_pending_username_set(self) -> set[str]:
+        """Lowercased pending-protection usernames. Empty set when unset."""
+        return {
+            t.strip().lower()
+            for t in self.protected_pending_usernames.split(",")
+            if t.strip()
+        }
 
     def resolve_analyst_callers(self) -> list[dict]:
         """Return the effective list of analyst-caller dicts.

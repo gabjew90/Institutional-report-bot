@@ -403,6 +403,19 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_chat_messages_author_ts  ON chat_messages(author_id, posted_at DESC);
         CREATE INDEX IF NOT EXISTS idx_chat_messages_username_ts ON chat_messages(author_username, posted_at DESC);
 
+        -- Protected members promoted from PROTECTED_PENDING_USERNAMES:
+        -- a member who hasn't joined yet is registered by exact username;
+        -- the first ingested message from that username pins the
+        -- permanent author_id here. One row per username (first sighting
+        -- wins) so a later re-claim of a released username cannot
+        -- inherit protection. Runtime protected set = env-var IDs union
+        -- this table.
+        CREATE TABLE IF NOT EXISTS protected_users (
+            author_id   INTEGER PRIMARY KEY,
+            username    TEXT NOT NULL UNIQUE,
+            promoted_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+
         -- Pipeline-event audit trail (fix #7 — observability). Generic
         -- across pipeline jobs: profile refresh, chat catchup, anything
         -- else worth tracking historically. Distinct from processing_log
@@ -4258,6 +4271,41 @@ def get_analyst_trade_by_message_id(message_id: int) -> dict | None:
     return dict(row)
 
 
+def get_promoted_protected_ids() -> set[int]:
+    """Author IDs promoted from pending usernames (see protected_users
+    table). Merged with settings.protected_user_id_set at ask time."""
+    conn = get_connection()
+    return {r[0] for r in conn.execute(
+        "SELECT author_id FROM protected_users")}
+
+
+def maybe_promote_protected(
+    username: str | None, author_id: int, pending: set[str],
+) -> bool:
+    """Pin a pending protected USERNAME to its permanent author_id on
+    first sighting in ingested chat. Case-insensitive exact match; one
+    promotion per username (INSERT OR IGNORE + UNIQUE(username)), so a
+    released-and-reclaimed handle can never inherit protection. Returns
+    True when a promotion happened."""
+    u = (username or "").strip().lower()
+    if not u or u not in pending:
+        return False
+    conn = get_connection()
+    cur = conn.execute(
+        "INSERT OR IGNORE INTO protected_users (author_id, username) "
+        "VALUES (?, ?)",
+        (int(author_id), u),
+    )
+    conn.commit()
+    if cur.rowcount > 0:
+        log.info(
+            f"protected: username {u!r} promoted to author_id "
+            f"{author_id} on first sighting"
+        )
+        return True
+    return False
+
+
 def store_chat_message(
     *,
     discord_message_id: int,
@@ -4281,6 +4329,17 @@ def store_chat_message(
     `attachment_urls` and `embed_texts` are pre-JSON-encoded strings (or
     None) — caller does the encoding so this helper stays thin.
     """
+    # Pending-protected promotion: this is the single funnel every
+    # ingested message passes through, so the first message from a
+    # pending username pins its permanent author_id here. Set-membership
+    # check first — zero cost when the pending list is empty.
+    try:
+        from config import settings as _settings
+        _pending = _settings.protected_pending_username_set
+        if _pending:
+            maybe_promote_protected(author_username, author_id, _pending)
+    except Exception as e:
+        log.warning(f"protected promotion check failed (non-fatal): {e}")
     conn = get_connection()
     try:
         cur = conn.execute(

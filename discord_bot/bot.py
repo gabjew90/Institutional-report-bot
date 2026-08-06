@@ -5836,9 +5836,13 @@ async def _answer_with_gemini(
         # insult / clap back / sarcasm; defend and praise with grounded
         # material. Rides _prompt_extra so every directive-preserving
         # retry carries it.
+        try:
+            _prot_all = (settings.protected_user_id_set
+                         | db.get_promoted_protected_ids())
+        except Exception:
+            _prot_all = settings.protected_user_id_set
         _prot_in_scope = _protected_in_scope(
-            user_id, question, profile_user_ids,
-            settings.protected_user_id_set,
+            user_id, question, profile_user_ids, _prot_all,
         )
         _protected_extra = _build_protected_directive(
             _prot_in_scope, user_id, asker_display_name,

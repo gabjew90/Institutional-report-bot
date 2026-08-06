@@ -109,6 +109,66 @@ def test_directive_wired_into_prompt_extra():
     _ok("directive rides _prompt_extra; retries inherit it; meta stamped")
 
 
+def test_pending_username_promotes_on_first_sighting():
+    """2026-08-06: a member ('ueiii') is joining soon; the user has her
+    username but not her numeric ID. PROTECTED_PENDING_USERNAMES holds
+    exact usernames; the first ingested message from that username
+    promotes it to a permanent author_id row in protected_users. One
+    promotion per username — first sighting wins, so a later username
+    re-claim by someone else cannot inherit protection."""
+    import sqlite3
+    import db as dbmod
+    conn = sqlite3.connect(":memory:")
+    conn.row_factory = sqlite3.Row
+    dbmod._init_schema(conn)
+    orig = dbmod.get_connection
+    dbmod.get_connection = lambda: conn
+    try:
+        pending = {"ueiii"}
+        # not pending -> no promotion
+        dbmod.maybe_promote_protected("someoneelse", 111, pending)
+        assert dbmod.get_promoted_protected_ids() == set()
+        # first sighting promotes (case-insensitive match)
+        dbmod.maybe_promote_protected("UEIII", 555, pending)
+        assert dbmod.get_promoted_protected_ids() == {555}
+        # idempotent on re-ingest of the same person
+        dbmod.maybe_promote_protected("ueiii", 555, pending)
+        assert dbmod.get_promoted_protected_ids() == {555}
+        # a DIFFERENT id under the same username later does NOT promote
+        dbmod.maybe_promote_protected("ueiii", 666, pending)
+        assert dbmod.get_promoted_protected_ids() == {555}, (
+            "username re-claim must not inherit protection"
+        )
+    finally:
+        dbmod.get_connection = orig
+        conn.close()
+    _ok("pending username promotes once to a permanent id row")
+
+
+def test_ingestion_funnel_calls_promotion():
+    import inspect
+    import db as dbmod
+    src = inspect.getsource(dbmod.store_chat_message)
+    assert "maybe_promote_protected" in src, (
+        "store_chat_message is the single ingest funnel and must run "
+        "the pending-username promotion check"
+    )
+    _ok("store_chat_message runs the promotion check")
+
+
+def test_bot_merges_env_and_promoted_ids():
+    import inspect
+    import discord_bot.bot as bot
+    src = inspect.getsource(bot._answer_with_gemini)
+    i = src.find("_protected_in_scope(")
+    seg = src[max(0, i - 500):i + 400]
+    assert "get_promoted_protected_ids" in seg, (
+        "the ask path must merge env-var ids with promoted ids — "
+        "otherwise auto-promoted members get no protection"
+    )
+    _ok("ask path merges env-var and promoted protected ids")
+
+
 if __name__ == "__main__":
     print("=== protected-users smoke ===")
     test_config_parses_ids()
@@ -116,4 +176,7 @@ if __name__ == "__main__":
     test_directive_content()
     test_roast_guards_skip_protected_asker()
     test_directive_wired_into_prompt_extra()
+    test_pending_username_promotes_on_first_sighting()
+    test_ingestion_funnel_calls_promotion()
+    test_bot_merges_env_and_promoted_ids()
     print("\nALL PROTECTED-USERS SMOKE TESTS PASS")
