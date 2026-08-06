@@ -50,6 +50,11 @@
    "step": "STEP_6_COMMIT_DONE",
    "time": "2026-08-06T14:37:54Z",
    "detail": "pulse 9954ed51 + adjudication 88499e94 via MCP, forensics 39d80cae via git; bridge posted to 2 channels"
+  },
+  {
+   "step": "STEP_7_QC_DONE",
+   "time": "2026-08-06T14:42:54Z",
+   "detail": "QC review committed a738841e"
   }
  ]
 }
