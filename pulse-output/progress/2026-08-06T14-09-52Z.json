@@ -10,6 +10,21 @@
    "step": "STEP_3_5_DONE",
    "time": "2026-08-06T14:15:05Z",
    "detail": "6 validated, 1 discarded (ai infrastructure demand: pred bank not in inputs)"
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-08-06T14:22:08Z",
+   "detail": "draft written, ~1500 body words, 5 INSIGHTS themes"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-08-06T14:22:08Z",
+   "detail": "exit 4: 8 soft violations, 3 numeric-scope-drift carried to EDIT"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-08-06T14:22:30Z",
+   "detail": "1 mechanical fix (stripped _DRAFT NOTES)"
   }
  ]
 }
