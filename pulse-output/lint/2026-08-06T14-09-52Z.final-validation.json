@@ -1,0 +1,92 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '9%' is attached to [high, korea, rally, semiconductor, sits] but the source uses it for [adjusted, beat, both, commerce, crcl] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "9%",
+   "draft_subject": [
+    "high",
+    "korea",
+    "rally",
+    "semiconductor",
+    "sits",
+    "taiwan",
+    "time"
+   ],
+   "source_subject": [
+    "adjusted",
+    "beat",
+    "both",
+    "commerce",
+    "crcl",
+    "decreased",
+    "eported",
+    "expects"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '16.7%' is attached to [accelerating, against, arguing, cheap, deviations] but the source uses it for [bullish, cally, citing, delivery, equities] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "16.7%",
+   "draft_subject": [
+    "accelerating",
+    "against",
+    "arguing",
+    "cheap",
+    "deviations",
+    "discount",
+    "expected",
+    "forward"
+   ],
+   "source_subject": [
+    "bullish",
+    "cally",
+    "citing",
+    "delivery",
+    "equities",
+    "strong"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.5% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.65, 4.3, 301.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.5",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "UBS upgraded European and Eurozone equities to Attractive with regional earnings growth forecast at 25% across 2026 and 2027, and European shares hit a record high this morning on earnings and US-Iran"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.65, 4.3, 301.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "UBS upgraded European and Eurozone equities to Attractive with regional earnings growth forecast at 25% across 2026 and 2027, and European shares hit a record high this morning on earnings and US-Iran"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "19.2% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.65, 4.3, 301.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "19.2",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "UBS upgraded European and Eurozone equities to Attractive with regional earnings growth forecast at 25% across 2026 and 2027, and European shares hit a record high this morning on earnings and US-Iran"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "84% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.65, 4.3, 301.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "84",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "UBS upgraded European and Eurozone equities to Attractive with regional earnings growth forecast at 25% across 2026 and 2027, and European shares hit a record high this morning on earnings and US-Iran"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 6,
+ "exit_code": 4
+}
