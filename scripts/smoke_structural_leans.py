@@ -111,7 +111,7 @@ def test_routine_strip_keeps_leans():
 
 def test_build_lean_display():
     from report.pulse_sections import _build_lean_display
-    assert _build_lean_display("long", "$TLT", "overdone") == "Long $TLT — overdone"
+    assert _build_lean_display("long", "$TLT", "overdone") == "Long $TLT · overdone"
     assert _build_lean_display("short", "$USO", "") == "Short $USO"
     assert _build_lean_display("short", "$SMH puts", "x").startswith("$SMH puts")
     # rationale clipped at a word boundary with an ellipsis

@@ -195,7 +195,7 @@ def test_board_self_ref_and_options():
     assert calls.startswith("$BNO calls") and "Long" not in calls, calls
     # Non-options DO get the direction prefix.
     tltd = _build_lean_display("short", "$TLT", "2-year overdone")
-    assert tltd.startswith("Short $TLT — 2-year overdone"), tltd
+    assert tltd.startswith("Short $TLT · 2-year overdone"), tltd
     _ok("display: self-ref stripped (fallback) + options have no Long/Short "
         "prefix + plain leans get direction prefix")
 
@@ -225,8 +225,8 @@ def test_hc_calls_subsection():
     assert "High-conviction single-name calls" in board
     assert "```" not in board, "HC subsection must NOT be monospace"
     # clean rendering: bank bolded, ticker cashtagged, rating/PT
-    assert "**Goldman Sachs** $ASML — Buy" in board, board
-    assert "**JPMorgan** $JBL — PT $450" in board, board
+    assert "**Goldman Sachs** $ASML · Buy" in board, board
+    assert "**JPMorgan** $JBL · PT $450" in board, board
     # foreign-PT call dropped, N/A rating not shown as a token
     assert "$BESI" not in board, "foreign-PT (EUR) call must be dropped"
     assert "N/A" not in board, "N/A rating/PT must not render"

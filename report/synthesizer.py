@@ -11,7 +11,6 @@ from google.genai import types
 
 from ai_analysis.models import PdfAnalysis
 from ai_analysis.prompts import (
-    DAILY_SYNTHESIS_SYSTEM, DAILY_SYNTHESIS_USER,
     DRAFT_SYSTEM, DRAFT_USER,
     AUDIT_SYSTEM, AUDIT_USER,
 )

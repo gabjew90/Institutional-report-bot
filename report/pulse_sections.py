@@ -394,7 +394,7 @@ def _build_lean_display(direction: str, instruments_expr: str,
     if len(rationale) > _DISPLAY_RATIONALE_LIMIT:
         cut = rationale[:_DISPLAY_RATIONALE_LIMIT].rsplit(" ", 1)[0].rstrip(" ,;:—-")
         rationale = (cut or rationale[:_DISPLAY_RATIONALE_LIMIT]) + "…"
-    return f"{head} — {rationale}" if rationale else head
+    return f"{head} · {rationale}" if rationale else head
 
 
 def parse_lean_block(md: str) -> list[dict]:
@@ -580,7 +580,7 @@ def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
             parts.append(tag)
         if rat:
             parts.append(rat)
-        lines.append("- " + " — ".join(parts))
+        lines.append("- " + " · ".join(parts))
     # Reader-facing decode for the rating shorthand (2026-07-15 review:
     # OW/UW/EW shipped with no legend — exactly the jargon the plain-
     # English rule exists to kill). One italic line, only the tokens
@@ -675,7 +675,7 @@ def render_trade_board(
                 ord_sfx = {1: "st", 2: "nd", 3: "rd"}.get(
                     n if n < 20 else n % 10, "th")
                 status = (
-                    f"FLIP ({n}{ord_sfx} reversal in 10 sessions — "
+                    f"FLIP ({n}{ord_sfx} reversal in 10 sessions, "
                     f"fast tape, size accordingly)"
                 )
         elif is_new:
@@ -733,7 +733,7 @@ def render_trade_board(
                         _tk, r.get("direction") or "", _first_seen
                     )
                     if _sc:
-                        _outcome = f" — {_sc}"
+                        _outcome = f" · {_sc}"
             except Exception as e:
                 log.info(f"trade-board exit scoring failed (non-fatal): {e}")
             lean_lines.append(
@@ -750,7 +750,7 @@ def render_trade_board(
         out += (
             "Leans this pulse is making.\n\n"
             "**NEW** first flagged today. **FLIP** reverses a view this "
-            "board held — same ticker or the same macro call expressed "
+            "board held, same ticker or the same macro call expressed "
             "another way. **held since …** carried from an earlier "
             "pulse and repeated today. **off board since …** was on the "
             "last board, not repeated today; the move since it was "

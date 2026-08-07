@@ -22,6 +22,8 @@ BANNED_FILLER_PHRASES = [
     "interestingly",
     "moreover",
     "furthermore",
+    "additionally",
+    "in addition,",
     "meanwhile",
     "that said",
     "of course",
@@ -33,7 +35,9 @@ BANNED_AI_CLICHE_VERBS = [
     # "leverage" as a verb is hard to disambiguate without context — skip in lint
 ]
 
-BANNED_AI_CLICHE_ADJECTIVES = ["robust"]
+# crucial/pivotal/tapestry added 2026-08-07 (user style directive) —
+# zero hits in the prior 8 pulses, banned as prevention.
+BANNED_AI_CLICHE_ADJECTIVES = ["robust", "crucial", "pivotal", "tapestry"]
 
 BANNED_HEDGING_WEASELS = [
     "could potentially",
@@ -44,7 +48,9 @@ BANNED_HEDGING_WEASELS = [
 BANNED_WRAPUP_SENTENCES = [
     "Overall,",
     "In summary",
+    "In conclusion",
     "All told",
+    "Taken together",
     "At the end of the day",
 ]
 
@@ -111,6 +117,14 @@ BANNED_AI_TELLS = [
 # Use these when a single phrase can take many surface forms but is
 # fundamentally the same generic-newsletter opener.
 BANNED_AI_TELL_REGEXES: list[tuple[str, str]] = [
+    # Melodrama family (2026-08-07 user style directive: "avoid
+    # melodramatic, flowery, or decorative language"). Deliberately
+    # conservative — pure-theatrics words only. Directional verbs that
+    # can be technically accurate (collapsed, plunged, soared) are NOT
+    # banned: "FCF collapsed 91%" is a fair description of -91%.
+    (r"\b(?:bloodbath|carnage|massacre|meat\s+grinder|eye-popping|"
+     r"jaw-dropping|breathtaking|face-ripping|to\s+the\s+moon|"
+     r"annihilat\w+|obliterat\w+)\b", 'melodrama'),
     # "today's / this week's / friday's / monday's / this morning's" + price action
     # Catches: "Today's price action is...", "This week's price action on Intel...",
     # "Friday's price action shows...", "the price action made it explicit..."
@@ -273,7 +287,9 @@ BANNED_META_NARRATION = [
 
 # Source-prefix story-connector pattern: "[Bank] [verb]s that..."
 SOURCE_PREFIX_BANKS = [
-    "Goldman", "JPMorgan", "JPM", "Citi", "BofA", "UBS", "RBC",
+    # "GS" added 2026-08-07 — "GS desk thinks..." escaped the ban
+    # because only the long form was listed.
+    "Goldman", "GS", "JPMorgan", "JPM", "Citi", "BofA", "UBS", "RBC",
     "Barclays", "Mizuho", "TME", "Market Ear", "ANZ", "ING",
     "Crédit Agricole", "Credit Agricole", "Morgan Stanley",
     "Deutsche Bank", "Bernstein", "Hartnett", "TS Lombard", "SEB",
@@ -476,6 +492,8 @@ def compose_audit_voice_block() -> str:
         "2. **Replace the term** with its plain equivalent inline, restructuring as needed.",
         "3. **Drop the term** entirely if removing it doesn't lose meaning.",
         "4. **Parenthetical gloss** ONLY when the term is a proper-noun-style technical concept that genuinely has no plain-English equivalent (rare — usually #1 or #2 work).",
+        "",
+        "**EXCEPTION — precise load-bearing terminology stays.** When the term is the exact name of the thing (basis points, core PCE, EBITDA, implied volatility, term premium), keep the term and gloss it on FIRST use, then use it bare. \"Basis points\" rewritten as \"hundredths of a percent\" is a documented regression, not a fix. Rewrite-to-drop targets desk idiom, never nomenclature that accuracy depends on.",
         "",
         "Walk every paragraph in INSIGHTS bodies and RECAP. For each jargon term in the map below, prefer a sentence rewrite over a paren gloss. The full term-to-trader-friendly-equivalent map:",
         "",
