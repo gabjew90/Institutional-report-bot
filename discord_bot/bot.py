@@ -7649,6 +7649,24 @@ async def _answer_with_gemini(
                 # actual profile.
                 retry_succeeded = False
 
+                # Ladder config: the ORIGINAL config minus function
+                # tools. 2026-08-07, SV's "summarize the last 12 hours
+                # of chat": every tier resent with the tools-bearing
+                # config, the model answered each retry with a
+                # function_call (it needs search_chat_messages), .text
+                # was empty, and the ladder read four function calls as
+                # four blocks — shipping the failure wrapper for a
+                # reason unrelated to the filter. No tier executes
+                # tools, so none may offer them; the model answers from
+                # the context already in the prompt (the recent chat
+                # window rides every ask).
+                try:
+                    _ladder_config = config.model_copy(
+                        update={"tools": None, "tool_config": None}
+                    )
+                except Exception:
+                    _ladder_config = config
+
                 # Tier 0 — IDENTICAL retry, before any context surgery.
                 # 2026-08-01: "how many members in ommi chat" (nothing
                 # filterable in the question) died on every rung below;
@@ -7670,7 +7688,7 @@ async def _answer_with_gemini(
                         same_resp = await client.aio.models.generate_content(
                             model=ask_model,
                             contents=contents,
-                            config=config,
+                            config=_ladder_config,
                         )
                         _tally_retry_usage(same_resp)
                         try:
@@ -7731,7 +7749,7 @@ async def _answer_with_gemini(
                                     parts=[types.Part.from_text(text=stripped_content)],
                                 )
                             ],
-                            config=config,
+                            config=_ladder_config,
                         )
                         _tally_retry_usage(stripped_resp)
                         try:
@@ -7821,7 +7839,7 @@ async def _answer_with_gemini(
                                     parts=[types.Part.from_text(text=masked_content)],
                                 )
                             ],
-                            config=config,
+                            config=_ladder_config,
                         )
                         _tally_retry_usage(masked_resp)
                         try:
@@ -7881,7 +7899,7 @@ async def _answer_with_gemini(
                                     role="user",
                                     parts=[types.Part.from_text(text=bare_q)],
                                 )],
-                                config=config,
+                                config=_ladder_config,
                             )
                             _tally_retry_usage(bare_resp)
                             try:

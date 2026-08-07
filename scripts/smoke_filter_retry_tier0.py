@@ -67,26 +67,50 @@ def test_tier0_runs_before_any_mutation():
     _ok("tier 0 runs before voice-strip")
 
 
-def test_tier0_resends_unchanged():
-    """Same contents, same config — not a rebuilt section list."""
+def test_tier0_resends_original_contents():
+    """Original contents object — not a rebuilt section list."""
     import discord_bot.bot as bot
     lad = _ladder(inspect.getsource(bot._answer_with_gemini))
     t0 = lad.find('"same-prompt"')
     strip = lad.find("_strip_voice_sections")
     window = lad[:strip]
-    assert "contents=contents" in window, (
+    assert t0 != -1 and "contents=contents" in window, (
         "tier 0 must resend the ORIGINAL contents object unchanged"
     )
-    assert t0 != -1 and "config=config" in window, (
-        "tier 0 must reuse the original config (tools, system "
-        "instruction, safety settings)"
+    _ok("tier 0 resends the original contents verbatim")
+
+
+def test_ladder_strips_function_tools():
+    """2026-08-07, SV's "summarize the last 12 hours of chat": every
+    tier resent with the ORIGINAL config, which carries all eight
+    function tools. A single generate_content call with tools attached,
+    on a question that REQUIRES a tool, returns a function_call part
+    with empty .text — no tier executes tools, so all four tiers read
+    as "empty" and the ladder shipped the failure wrapper for a reason
+    unrelated to the filter. Retry tiers must use a tools-stripped
+    config so the model answers from the context already in the prompt
+    (the recent chat window rides every ask)."""
+    import discord_bot.bot as bot
+    lad = _ladder(inspect.getsource(bot._answer_with_gemini))
+    assert "_ladder_config" in lad, (
+        "no tools-stripped ladder config — tool-dependent questions "
+        "make every tier return a function_call (empty text) and the "
+        "ladder false-fails"
     )
-    _ok("tier 0 resends the original contents + config verbatim")
+    assert lad.count("config=config,") == 0, (
+        "a ladder tier still reuses the tools-bearing original config"
+    )
+    assert lad.count("config=_ladder_config") >= 4, (
+        f"all four tiers must use the stripped config, found "
+        f"{lad.count('config=_ladder_config')}"
+    )
+    _ok("all ladder tiers use a tools-stripped config")
 
 
 if __name__ == "__main__":
     print("=== filter-ladder tier-0 smoke ===")
     test_tier0_identical_retry_exists()
     test_tier0_runs_before_any_mutation()
-    test_tier0_resends_unchanged()
+    test_tier0_resends_original_contents()
+    test_ladder_strips_function_tools()
     print("\nALL FILTER-LADDER TIER-0 SMOKE TESTS PASS")
