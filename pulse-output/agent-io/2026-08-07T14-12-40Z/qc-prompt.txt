@@ -1,0 +1,765 @@
+You are auditing a Market Pulse synthesis pipeline that just finished a run. You are NOT the writer or the editor — you are an outside reviewer with full visibility into the pipeline's intermediate artifacts. Your job is to identify what worked, what failed, and what to change for the next run.
+
+Be specific and brutal. Generic praise ("the pulse covered the major themes well") is useless. Useful feedback is concrete: "Theme X was promoted to a primary INSIGHTS theme based on 1-bank conviction; theme Y had 4 banks of contextual mention but was dropped — this suggests the discovery threshold is too strict for this corpus."
+
+Focus on issues that change the next pulse. SKIP workflow stages that ran cleanly without commentary — silence on a stage means it worked.
+
+You are writing this for a human engineer who is iterating on the pipeline (prompts, voice rules, thresholds). They will read your output and decide what to change. Therefore:
+
+- Be concrete about WHERE to change things. Reference file paths (e.g., `report/synthesizer.py`, `ai_analysis/prompts.py`, `ai_analysis/voice_rules.py`, `report/theme_clusterer.py`) and the rule/parameter that should change.
+- Be concrete about WHAT to change. Don't write "improve theme detection" — write "the discovery threshold of 0.78 looks too strict for variation in bank phrasing of geopolitical events; suggest dropping to 0.72 and re-checking on the next 3 runs."
+- Be honest about what you cannot tell from the artifacts. If you don't have visibility into something, say so. Don't speculate to fill the section.
+
+When the issue is a corpus-coverage miss (a topic that was in research but not in the final pulse), check the discovery_audit FIRST. The audit shows you exactly which topics the system saw, which it promoted, and which it suppressed. Misattributing a miss to "the writer skipped it" when discovery actually filtered it out is a common failure mode of pipeline reviews — don't make it.
+
+Empty sections are fine. If the run had no voice issues worth flagging, the "Voice + structure" section just says "Clean — no issues to flag this run." Don't pad.
+
+---
+
+Review this Market Pulse run end-to-end and produce a structured critique.
+
+PIPELINE STAGES that just completed (in order):
+1. Phase A theme clustering (theme_stances → embedding-based merge)
+2. Phase B discovery clustering (contextual_mentions → cross-corpus merge, ≥3-bank promotion)
+3. Adjudication (parallel sub-agents per top theme, structured JSON, lint-validated)
+4. DRAFT (long-form synthesis from per-PDF inputs + adjudicated themes)
+5. STITCH (mechanical foreign-cashtag scrub + ETF normalization)
+6. EDIT (AUDIT sub-agent — fresh-eyes editorial pass)
+7. LINT (deterministic regex scan vs voice rules)
+8. SCRUB (lint-driven sub-agent rewrite, max 2 iterations)
+9. Posted to Discord
+
+ARTIFACTS YOU HAVE FOR THIS RUN:
+
+THEME COVERAGE BLOCK:
+THEME COVERAGE — distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):
+  - dashpass flywheel acceleration: 1 banks / 1 PDFs (Deutsche Bank) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance
+  - international earnings power: 1 banks / 1 PDFs (Deutsche Bank) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead; the trade until then is W'))
+  - rhode brand scaling: 1 banks / 1 PDFs (Deutsche Bank) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - tactical equity outlook: 1 banks / 1 PDFs (JPMorgan) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+
+NON-BANK-ONLY THEMES — every source for these themes is a commentary publication (The Market Ear, Bloomberg, Reuters) or unattributed, NOT a bank with an analytical research desk. Useful for vol/positioning/market-color reference only. DO NOT promote these to primary INSIGHTS themes without multi-bank corroboration — they're color, not underwritten analysis:
+  - gold breakout: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance
+  - european equity bull market: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+  - market leadership recovery: 1 banks / 1 PDFs (The Market Ear) — stance: 0 support / 1 skeptical / 0 neutral
+  - retail ai rotation: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+  - silver momentum: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+HIGH-CONVICTION SINGLE-NAME CALLS — explicit high-conviction calls on US-tradable names extracted from individual reports. These lose the bank-count contest by construction (one bank, one name) so theme ranking can never surface them — that's why they get this dedicated section. Binding treatment: when one of these names is ALREADY the trade lean of an INSIGHTS slot, you MUST cite the call as evidence in that slot (the 2026-06-09 pulse closed two slots on Long $MU while Goldman's same-day $400→$900 MU price-target raise sat unused in the corpus — the lean was right and the best evidence for it went uncited). For the rest, surface at least the strongest one as a WATCH bullet or threaded into the most relevant slot. Don't dump the whole list — pick what a trader would actually act on:
+  - Deutsche Bank: $DASH price_target_change Buy PT $260 — Strong execution, accelerating flywheel effects, and improving international/new-vertical profitability justify a premium valuation.
+
+DISCOVERY AUDIT (Phase B promoted + near-miss clusters):
+```json
+{
+ "phase_b_ran": true,
+ "promoted": [],
+ "near_miss": [
+  {
+   "members": [
+    "Mag7 earnings",
+    "Mag-7 performance focus"
+   ],
+   "banks": [
+    "JPMorgan",
+    "The Market Ear"
+   ],
+   "pdf_ids": [
+    13603,
+    13604
+   ],
+   "max_covered_sim": 0.6305,
+   "nearby_phase_a": [],
+   "n_banks": 2,
+   "reason": "thin-2bank"
+  },
+  {
+   "members": [
+    "AI trade rotation",
+    "AI mania leadership rotation"
+   ],
+   "banks": [
+    "The Market Ear"
+   ],
+   "pdf_ids": [
+    13604,
+    13606
+   ],
+   "max_covered_sim": 0.8664,
+   "nearby_phase_a": [
+    [
+     "retail ai rotation",
+     0.8664
+    ]
+   ],
+   "n_banks": 1,
+   "reason": "covered"
+  },
+  {
+   "members": [
+    "rhode European rollout"
+   ],
+   "banks": [
+    "Deutsche Bank"
+   ],
+   "pdf_ids": [
+    13601
+   ],
+   "max_covered_sim": 0.7748,
+   "nearby_phase_a": [
+    [
+     "rhode brand scaling",
+     0.7748
+    ]
+   ],
+   "n_banks": 1,
+   "reason": "covered"
+  }
+ ],
+ "pdfs_in_window": 8,
+ "pdfs_with_contextual_mentions": 8,
+ "total_mentions": 41,
+ "phase_a_theme_count": 9,
+ "two_tier_merges": [],
+ "two_tier_augment_count": 0,
+ "two_tier_cap_blocked": [],
+ "two_tier_max_absorbed_per_canonical": 4
+}
+```
+
+ADJUDICATION SUMMARY:
+- 0 validated, 0 discarded
+- Discard reasons: (none)
+
+LINT REPORT (final, after SCRUB):
+```json
+[
+ {
+  "line": 7,
+  "kind": "jargon-bare",
+  "snippet": "basis"
+ },
+ {
+  "line": 5,
+  "kind": "jargon-bare",
+  "snippet": "tactically long"
+ },
+ {
+  "line": 7,
+  "kind": "jargon-bare",
+  "snippet": "basis points"
+ },
+ {
+  "line": 22,
+  "kind": "jargon-bare",
+  "snippet": "tape"
+ },
+ {
+  "line": 22,
+  "kind": "jargon-bare",
+  "snippet": "tape"
+ },
+ {
+  "line": 0,
+  "kind": "top-3-theme-missing",
+  "snippet": "top-3 primary theme 'dashpass flywheel acceleration' (1 banks) has no significan"
+ },
+ {
+  "line": 0,
+  "kind": "top-3-theme-missing",
+  "snippet": "top-3 primary theme 'rhode brand scaling' (1 banks) has no significant word in I"
+ }
+]
+```
+
+SUB-AGENT HANDOFFS — what each dispatched sub-agent received and returned:
+
+ADJUDICATION sub-agents:
+  - Dispatched: 0 (one per selected theme) — NOTE: zero themes were eligible this fire (every theme_map entry is single-bank in the 8-PDF corpus; the banks>=2 selection floor excluded all 9). No sub-agents dispatched; adjudication file committed with empty themes array.
+  - Validated: 0
+  - Discarded: 0
+  - Validated themes: (none validated)
+  - Discard reasons: (none)
+
+EDIT sub-agent (single dispatch):
+  - Prompt size: 70204 chars (saved to /tmp/agent_io/edit-prompt.txt)
+  - Input  (stitched.md):     5942 chars / 53 lines
+  - Output (post-EDIT md):    7894 chars / 56 lines
+
+SCRUB sub-agent:
+  - Status: RAN (2 passes: pass 1 fixed em-dash + 2x "the tape" AI-tell but introduced "the price action" which is also lint-banned; pass 2 restructured both sentences; final lint = 0 hard / 7 soft)
+  - Prompt size: 22167 chars (saved to /tmp/agent_io/scrub-prompt.txt, pass 2 in scrub-prompt-pass2.txt)
+  - Input  (pre-SCRUB / EDIT output): 7894 chars / 56 lines
+  - Output (post-SCRUB / final):      7917 chars / 56 lines
+  - Lint issues input:  3 hard (pass 1), 2 hard (pass 2)
+
+RUN ANOMALIES (orchestrator-observed, for QC):
+  - STEP 2: raw.githubusercontent.com fetch of pulse-context 404'd through the agent proxy; context was fetched byte-exact via `git show origin/pulse-data:pulse-context/latest.json` instead. api.github.com remains 403-blocked (COMMIT TRANSPORT override applied; commits went via GitHub MCP + git push).
+  - STEP 2.2: volume gate exhausted its full 90-minute budget at pdf_count=8 (< 10 floor). Thin-corpus note was active for DRAFT (2-3 themes, name-the-bank-on-every-claim).
+  - STEP 5a: scripts/pulse_stitch.py:164 BUG — stripping `## _DRAFT NOTES` truncates to EOF instead of slicing the matched span, which silently deleted the `## _LEANS` block that followed it. Orchestrator spliced _LEANS back into stitched.md before EDIT. Suggested fix target for QC.
+  - Corpus mix: 5 of 8 PDFs are The Market Ear (non-bank commentary); only JPMorgan (1 HIGH macro note) + Deutsche Bank (2 single-stock notes) are banks.
+
+EDIT FACT-PROVENANCE CHECK:
+  - EDIT injected released figures from the calendar (NFP -23.0K actual vs 85K est, unemployment 4.1%) and live snapshot levels ($SPY +0.68%, $QQQ +1.16%, $GLD +2.42% / $399, $BTC $65k, 5Y 4.36% -3.4bps). Spot-checked by orchestrator against /tmp/ctx.json: all trace. The 4.36%/1.16%/4.3% flags in final-validation.json are validator fuzz-matches (yield + $QQQ move + a clearly-labeled pre-print forecast), not provenance failures.
+
+PRE-STITCH DRAFT (what STITCH received):
+```markdown
+# Jobs print rules tape
+
+## 1. RECAP
+
+[LIVE PRICE RECAP]
+
+Research desks came into Friday positioned for a jobs-day verdict. JPMorgan's market intelligence desk was tactically long equities into the print, betting that a soft number eases yields and extends the rebound, while flow data showed retail money rotating out of software and hyperscalers into memory and semiconductor names. Precious metals carried the strongest momentum on the tape, with systematic funds covering shorts in silver and gold drawing steady Chinese buying. The unresolved question in the research: the rebound's leadership is narrow, and credit markets are quietly pricing more stress in the biggest AI borrowers even as the index recovers.
+
+## 2. INSIGHTS & ALPHA
+
+### A soft jobs print extends this rebound
+
+*A soft jobs print extends this rebound, and the only thing that breaks it from here is the leadership gap.*
+
+- JPMorgan's economics team forecast 75k July payrolls against the Street's 85k, with unemployment ticking up to 4.3% from 4.2%. A miss was the friendly outcome in their scenario work, easing yields and supporting stocks.
+- The 2-year Treasury yield had already slipped to 4.24% from a 4.35% high into the print (JPMorgan). Falling short-term yields are the market repricing Fed cuts closer, which is the fuel this rally has been running on.
+- Second-quarter earnings delivery is the cushion under the trade: blended earnings growth above 47% year over year with profit margins at 16.7%, up from 12.9% a year ago (JPMorgan). The rally is not running on hope alone.
+- Friday's expiring options priced only a 0.7% move in the S&P 500 (JPMorgan), so a surprise in either direction had room to overshoot what the market prepared for.
+
+The mechanism is a "good news is bad news" tape: a weak print pulls rate-cut bets forward, yields fall, and the biggest growth names benefit first because their valuations are the most sensitive to rates.
+
+The counter is the tape itself. The Nasdaq rebounded, but high-beta tech and the former AI leaders did not confirm the move, the Nasdaq 100 has been stuck between 28,800 and 30,000, and the cost of insuring hyperscaler debt against default kept rising through the recovery. A rally the leaders refuse to join is a rally the bulls still have to prove. Against that, JPMorgan's desk argues the momentum unwind has already run its course, and it is rotating rather than retreating, trimming financials for industrials while staying long the Mag7 and Korean semiconductor names.
+
+Watch in this order: (1) yields, where continued easing after the print keeps the tactical long Mag7 trade via $NVDA working, (2) breadth, where the former AI leaders joining the move or the Nasdaq 100 clearing the top of its 28,800 to 30,000 range would confirm the rebound, and (3) hyperscaler credit, where insurance costs on AI-linked debt need to stop widening before the all-clear.
+
+### Metals momentum is feeding on itself
+
+*The gold and silver breakouts are now self-reinforcing, with systematic buyers forced in and strategic buyers refusing to sell.*
+
+Goldman's trend-following model flipped positive on silver after the August 5 close, kicking off systematic short covering, and options flow turned to call buying with 3-month implied volatility rising as demand for downside protection faded. Gold has the structural bid: Chinese gold ETFs logged 14 consecutive days of inflows, the longest streak since March, and Goldman calls continued central-bank diversification the main driver of its constructive outlook. Positioning came into August washed out, and the August-to-September window is seasonally one of gold's strongest. The tension is a single level. Silver has to clear and hold $64, and a failure there or a break back below its 50-day average puts the squeeze on hold. The lean is long $GLD, with $SLV the higher-beta expression while $64 is in play.
+
+### Retail is rotating, not leaving
+
+*Retail flows are rotating out of software and into memory and semiconductors, which reads as renewed AI appetite rather than exit.*
+
+Retail investors dumped software at the fastest weekly pace on record, led by heavy selling in $MSFT and $PLTR after earnings, while buying memory and semiconductor names like $MU and $AMD (JPMorgan flow data). Retail call volumes pulled back from all-time highs even as institutional call buying in the S&P 500 stayed hot, and SpaceX saw its first retail outflows since June 23. The risk to the bullish read: this is profit-taking dressed up as rotation, and it lands exactly where leadership is already failing to confirm the rebound. Until that resolves, the flow says own what retail is accumulating. The lean is long $MU and $AMD over software.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **July jobs report reaction (printed 8:30 AM ET).** The number is out and the reaction is the trade. Yields easing further keeps the tactical long Mag7 case intact, while a reversal higher in yields says the market read the print as inflationary rather than growth-negative and the rebound loses its fuel.
+- **Options expiry today.** Expiring contracts priced a 0.7% S&P 500 move (JPMorgan). A tape moving beyond that range has less options-market cushion than usual into the close.
+
+### This Week
+
+- **$DASH post-earnings follow-through.** Deutsche Bank raised its target to $260 (Buy) after the second-quarter beat: order volume of $33.1bn up 36% year over year, adjusted earnings of $914mn versus the $843mn consensus, and DashPass subscribers now driving roughly 75% of US grocery and retail orders. Strength holding above the guidance midpoint ($33.0-34.0bn in orders next quarter) keeps the premium-valuation case alive.
+
+## _DRAFT NOTES (internal — strip before publish)
+
+- Adjudication validated zero themes this fire (every theme in the map is single-bank in an 8-PDF corpus), so no adjudicated-theme accounting applies. Theme selection follows the thin-corpus note: 3 deeper themes, bank named on every claim.
+- Folded the "market leadership recovery" skeptical thread into the MAIN EVENT counter-case rather than a standalone section (single commentary source, and it is the direct counter to the tactical-long call).
+- Folded "silver momentum" and "gold breakout" into one metals brief (same trade family, shared systematic-flow driver).
+- Dropped "european equity bull market" (non-bank-only source, no US-listed instrument argued, fails the US-trader filter).
+- Dropped "rhode brand scaling" / e.l.f. Beauty (single bank, Hold-rated, no actionable lean beyond a raised target on a Hold).
+- Folded the two DoorDash themes ("dashpass flywheel acceleration", "international earnings power") into a single WATCH bullet carrying Deutsche Bank's high-conviction $260 target, per the single-name-calls rule.
+
+## _LEANS (internal — TRADE BOARD source, stripped before publish)
+- long | $NVDA | tactical Mag7 rebound, jobs-print yield relief
+- long | $GLD, $SLV | systematic short covering, Chinese inflows, seasonals
+- long | $MU, $AMD | retail rotation into memory, out of software
+
+```
+
+POST-STITCH PRE-EDIT (what EDIT received):
+```markdown
+# Jobs print rules tape
+
+## 1. RECAP
+
+[LIVE PRICE RECAP]
+
+Research desks came into Friday positioned for a jobs-day verdict. JPMorgan's market intelligence desk was tactically long equities into the print, betting that a soft number eases yields and extends the rebound, while flow data showed retail money rotating out of software and hyperscalers into memory and semiconductor names. Precious metals carried the strongest momentum on the tape, with systematic funds covering shorts in silver and gold drawing steady Chinese buying. The unresolved question in the research: the rebound's leadership is narrow, and credit markets are quietly pricing more stress in the biggest AI borrowers even as the index recovers.
+
+## 2. INSIGHTS & ALPHA
+
+### A soft jobs print extends this rebound
+
+*A soft jobs print extends this rebound, and the only thing that breaks it from here is the leadership gap.*
+
+- JPMorgan's economics team forecast 75k July payrolls against the Street's 85k, with unemployment ticking up to 4.3% from 4.2%. A miss was the friendly outcome in their scenario work, easing yields and supporting stocks.
+- The 2-year Treasury yield had already slipped to 4.24% from a 4.35% high into the print (JPMorgan). Falling short-term yields are the market repricing Fed cuts closer, which is the fuel this rally has been running on.
+- Second-quarter earnings delivery is the cushion under the trade: blended earnings growth above 47% year over year with profit margins at 16.7%, up from 12.9% a year ago (JPMorgan). The rally is not running on hope alone.
+- Friday's expiring options priced only a 0.7% move in the S&P 500 (JPMorgan), so a surprise in either direction had room to overshoot what the market prepared for.
+
+The mechanism is a "good news is bad news" tape: a weak print pulls rate-cut bets forward, yields fall, and the biggest growth names benefit first because their valuations are the most sensitive to rates.
+
+The counter is the tape itself. The Nasdaq rebounded, but high-beta tech and the former AI leaders did not confirm the move, the Nasdaq 100 has been stuck between 28,800 and 30,000, and the cost of insuring hyperscaler debt against default kept rising through the recovery. A rally the leaders refuse to join is a rally the bulls still have to prove. Against that, JPMorgan's desk argues the momentum unwind has already run its course, and it is rotating rather than retreating, trimming financials for industrials while staying long the Mag7 and Korean semiconductor names.
+
+Watch in this order: (1) yields, where continued easing after the print keeps the tactical long Mag7 trade via $NVDA working, (2) breadth, where the former AI leaders joining the move or the Nasdaq 100 clearing the top of its 28,800 to 30,000 range would confirm the rebound, and (3) hyperscaler credit, where insurance costs on AI-linked debt need to stop widening before the all-clear.
+
+### Metals momentum is feeding on itself
+
+*The gold and silver breakouts are now self-reinforcing, with systematic buyers forced in and strategic buyers refusing to sell.*
+
+Goldman's trend-following model flipped positive on silver after the August 5 close, kicking off systematic short covering, and options flow turned to call buying with 3-month implied volatility rising as demand for downside protection faded. Gold has the structural bid: Chinese gold ETFs logged 14 consecutive days of inflows, the longest streak since March, and Goldman calls continued central-bank diversification the main driver of its constructive outlook. Positioning came into August washed out, and the August-to-September window is seasonally one of gold's strongest. The tension is a single level. Silver has to clear and hold $64, and a failure there or a break back below its 50-day average puts the squeeze on hold. The lean is long $GLD, with $SLV the higher-beta expression while $64 is in play.
+
+### Retail is rotating, not leaving
+
+*Retail flows are rotating out of software and into memory and semiconductors, which reads as renewed AI appetite rather than exit.*
+
+Retail investors dumped software at the fastest weekly pace on record, led by heavy selling in $MSFT and $PLTR after earnings, while buying memory and semiconductor names like $MU and $AMD (JPMorgan flow data). Retail call volumes pulled back from all-time highs even as institutional call buying in the S&P 500 stayed hot, and SpaceX saw its first retail outflows since June 23. The risk to the bullish read: this is profit-taking dressed up as rotation, and it lands exactly where leadership is already failing to confirm the rebound. Until that resolves, the flow says own what retail is accumulating. The lean is long $MU and $AMD over software.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **July jobs report reaction (printed 8:30 AM ET).** The number is out and the reaction is the trade. Yields easing further keeps the tactical long Mag7 case intact, while a reversal higher in yields says the market read the print as inflationary rather than growth-negative and the rebound loses its fuel.
+- **Options expiry today.** Expiring contracts priced a 0.7% S&P 500 move (JPMorgan). A tape moving beyond that range has less options-market cushion than usual into the close.
+
+### This Week
+
+- **$DASH post-earnings follow-through.** Deutsche Bank raised its target to $260 (Buy) after the second-quarter beat: order volume of $33.1bn up 36% year over year, adjusted earnings of $914mn versus the $843mn consensus, and DashPass subscribers now driving roughly 75% of US grocery and retail orders. Strength holding above the guidance midpoint ($33.0-34.0bn in orders next quarter) keeps the premium-valuation case alive.
+
+## _LEANS (internal — TRADE BOARD source, stripped before publish)
+- long | $NVDA | tactical Mag7 rebound, jobs-print yield relief
+- long | $GLD, $SLV | systematic short covering, Chinese inflows, seasonals
+- long | $MU, $AMD | retail rotation into memory, out of software
+
+```
+
+POST-EDIT PRE-SCRUB (what SCRUB received — equals final if SCRUB skipped):
+```markdown
+# Payrolls turn negative
+
+## 1. RECAP
+
+Two hours into Friday's session the tape belongs to the jobs report, and the market is treating a genuinely ugly print as good news. Stocks are rallying on the rate-cut math: $SPY is +0.68% with $QQQ out front, exactly the reaction JPMorgan's desk positioned for when it went tactically long equities into the print. $GLD is the standout mover, +2.42% and on track for its best week since January. $BTC is holding the $65k area. Under the surface, retail money is rotating out of software into memory and chip names at a record weekly pace, and credit markets are still pricing more stress in the biggest AI borrowers even as the index recovers.
+
+- **July payrolls contracted by 23,000 against an 85,000-gain consensus (prior +57,000).** Unemployment still fell to 4.1% versus a 4.2% estimate, a mixed signal, but the market is trading the payroll miss: the 5-year yield eased 3 basis points to 4.36% and $QQQ is up +1.16% as rate-sensitive growth leads the rally.
+- **Gold's best week since January.** $GLD is +2.42% at $399 as inflation fears ebb, and the payroll contraction adds fuel because falling yields cut the cost of holding metal that pays no interest.
+- **Software earnings are holding up even as retail sells the group.** Datadog posted $0.65 EPS on $1.12B revenue Thursday morning, and Atlassian is rising today after a strong quarter. The prints cut against the record retail exodus from software covered below.
+
+## 2. INSIGHTS & ALPHA
+
+### A negative jobs print is extending the rebound
+
+*The soft print arrived even softer than anyone forecast. What breaks the rebound from here is the leadership gap, not the Fed.*
+
+- JPMorgan's economists went into the morning below the Street at 75k July payrolls versus an 85k consensus, with a miss as the friendly outcome in their scenario work. The actual print undershot everyone: payrolls contracted by 23k.
+- Unemployment fell to 4.1% when JPMorgan's pre-print call had it rising to 4.3%. The mixed signal softens the recession read even as the payroll count shrank, which keeps the benign rate-cut story intact for now.
+- Short-term yields were already sliding into the print, with the 2-year down to 4.24% (JPMorgan), and they eased again on the number this morning. Falling short-term yields are the market pricing Fed cuts closer, which is the fuel this rally has been running on.
+- Second-quarter earnings delivery is the cushion under the trade: blended earnings growth above 47% year over year with profit margins at 16.7%, an expansion JPMorgan attributes to Mag7 earnings. The rally is not running on hope alone.
+
+This is a bad news is good news tape. A shrinking payroll count pulls rate-cut bets forward, yields fall, and the biggest growth names benefit first because their valuations are the most sensitive to rates. The early tape is following that script.
+
+The counter is the tape itself. The Nasdaq rebounded, but high-beta tech (the names that swing hardest with the market) and the former AI leaders have not confirmed the move, the Nasdaq 100 is still stuck below the top of its recent range near 30,000, and the cost of insuring the biggest cloud builders' debt against default kept rising through the recovery. A rally the leaders refuse to join is a rally the bulls still have to prove. Against that, JPMorgan's desk argues the momentum unwind has already run its course and money is rotating rather than retreating, trimming financials for industrials while staying long the Mag7 and Korean chipmakers. Watch yields first, then breadth, then AI credit: continued yield relief keeps the trade working, the former leaders joining the move or the Nasdaq 100 clearing 30,000 confirms it, and insurance costs on AI-linked debt need to stop widening before the all-clear. Long $NVDA while the yield relief holds.
+
+### Metals momentum is feeding on itself
+
+*The gold and silver breakouts are now self-reinforcing, with systematic buyers forced in and strategic buyers refusing to sell.*
+
+Goldman's trend-following model flipped positive on silver after the August 5 close, forcing rules-based funds that were short to buy back in, and options flow swung to call buying as demand for downside protection faded. Gold has the structural bid: Chinese gold ETFs have logged 14 consecutive days of inflows, the longest streak since March, and Goldman calls continued central-bank diversification the main driver of its constructive outlook. The move is confirming live, with $GLD tracking its best week since January, positioning that came into August washed out, and the August-to-September window seasonally one of gold's strongest. The tension is a single level: silver has to clear and hold $64, and a failure there or a break back below its 50-day average (the rough two-month trend line) puts the squeeze on hold. Long $GLD, with $SLV as the higher-octane expression while $64 is in play.
+
+### Retail is rotating, not leaving
+
+*Retail flows are rotating out of software and into memory and semiconductors, which reads as renewed AI appetite rather than exit.*
+
+Retail investors dumped software at the fastest weekly pace on record, led by heavy selling in $MSFT and $PLTR after earnings, while buying memory and chip names like $MU and $AMD (JPMorgan flow data). Retail call-option volumes pulled back from all-time highs even as institutional call buying in the S&P 500 stayed hot, and SpaceX saw its first retail outflows since June 23. The risk to the bullish read: this is profit-taking dressed up as rotation, and it lands exactly where leadership is already failing to confirm the rebound. Until that resolves, the flow says own what retail is accumulating. Long $MU and $AMD over software.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **The post-print yield path into the close.** The jobs number is out, so the reaction is the trade now. Yields easing further keeps the tactical long Mag7 case working, while a reversal higher would say the bond market doubts the cuts are coming and the rebound loses its fuel.
+- **Options expiry this afternoon.** Contracts expiring today priced only a 0.7% S&P 500 move (JPMorgan), and $SPY is already up 0.68% two hours in. A push beyond that range into the close has less options-market cushion than usual.
+
+### This Week
+
+- **Inflation data restarts Wednesday.** July CPI lands August 12 at 8:30 AM ET, with PPI Thursday and Retail Sales Friday (no consensus posted yet). After a negative payroll print, a cool CPI locks in the rate-cut pricing, while a hot one revives the worst-case mix of shrinking jobs and sticky prices that this rally is not priced for.
+- **$SMCI reports Tuesday after the close (est. $0.98 EPS on $11.78B revenue).** It is the first AI-server read since the payroll shock and a checkpoint for the memory-and-chips rotation retail is crowding into.
+- **$DASH post-earnings follow-through.** Deutsche Bank raised its target to $260 (Buy) after the second-quarter beat: order volume of $33.1B up 36% year over year, adjusted earnings of $914M against an $843M consensus, and DashPass subscribers now driving roughly 75% of US grocery and retail orders. Strength holding above the guidance midpoint ($33.0-34.0B in orders next quarter) keeps the premium-valuation case alive.
+- **Iran-Oman talks over Hormuz.** Vessel traffic through the strait dwindled this week while markets watch the negotiations, and a deal would take the scarcity premium out of oil. The talks come as Saudi Arabia, Turkey, and Pakistan pledged mutual defence Friday morning, so the regional risk premium is not gone. $USO and $BNO are the tickers to watch on any headline.
+
+## _LEANS (internal — TRADE BOARD source, stripped before publish)
+- long | $NVDA | tactical Mag7 rebound, jobs-print yield relief
+- long | $GLD, $SLV | systematic short covering, Chinese inflows, seasonals
+- long | $MU, $AMD | retail rotation into memory, out of software
+
+```
+
+FINAL POSTED MARKDOWN (post-SCRUB if SCRUB ran):
+```markdown
+# Payrolls turn negative
+
+## 1. RECAP
+
+Two hours into Friday's session the jobs report is driving stocks, bonds, and gold alike, and the market is treating a genuinely ugly print as good news. Stocks are rallying on the rate-cut math: $SPY is +0.68% with $QQQ out front, exactly the reaction JPMorgan's desk positioned for when it went tactically long equities into the print. $GLD is the standout mover, +2.42% and on track for its best week since January. $BTC is holding the $65k area. Under the surface, retail money is rotating out of software into memory and chip names at a record weekly pace, and credit markets are still pricing more stress in the biggest AI borrowers even as the index recovers.
+
+- **July payrolls contracted by 23,000 against an 85,000-gain consensus (prior +57,000).** Unemployment still fell to 4.1% versus a 4.2% estimate, a mixed signal, but the market is trading the payroll miss: the 5-year yield eased 3 basis points to 4.36% and $QQQ is up +1.16% as rate-sensitive growth leads the rally.
+- **Gold's best week since January.** $GLD is +2.42% at $399 as inflation fears ebb, and the payroll contraction adds fuel because falling yields cut the cost of holding metal that pays no interest.
+- **Software earnings are holding up even as retail sells the group.** Datadog posted $0.65 EPS on $1.12B revenue Thursday morning, and Atlassian is rising today after a strong quarter. The prints cut against the record retail exodus from software covered below.
+
+## 2. INSIGHTS & ALPHA
+
+### A negative jobs print is extending the rebound
+
+*The soft print arrived even softer than anyone forecast. What breaks the rebound from here is the leadership gap, not the Fed.*
+
+- JPMorgan's economists went into the morning below the Street at 75k July payrolls versus an 85k consensus, with a miss as the friendly outcome in their scenario work. The actual print undershot everyone: payrolls contracted by 23k.
+- Unemployment fell to 4.1% when JPMorgan's pre-print call had it rising to 4.3%. The mixed signal softens the recession read even as the payroll count shrank, which keeps the benign rate-cut story intact for now.
+- Short-term yields were already sliding into the print, with the 2-year down to 4.24% (JPMorgan), and they eased again on the number this morning. Falling short-term yields are the market pricing Fed cuts closer, which is the fuel this rally has been running on.
+- Second-quarter earnings delivery is the cushion under the trade: blended earnings growth above 47% year over year with profit margins at 16.7%, an expansion JPMorgan attributes to Mag7 earnings. The rally is not running on hope alone.
+
+This is a bad news is good news tape. A shrinking payroll count pulls rate-cut bets forward, yields fall, and the biggest growth names benefit first because their valuations are the most sensitive to rates. The early tape is following that script.
+
+The counter is the leadership gap. The Nasdaq rebounded, but high-beta tech (the names that swing hardest with the market) and the former AI leaders have not confirmed the move, the Nasdaq 100 is still stuck below the top of its recent range near 30,000, and the cost of insuring the biggest cloud builders' debt against default kept rising through the recovery. A rally the leaders refuse to join is a rally the bulls still have to prove. Against that, JPMorgan's desk argues the momentum unwind has already run its course and money is rotating rather than retreating, trimming financials for industrials while staying long the Mag7 and Korean chipmakers. Watch yields first, then breadth, then AI credit: continued yield relief keeps the trade working, the former leaders joining the move or the Nasdaq 100 clearing 30,000 confirms it, and insurance costs on AI-linked debt need to stop widening before the all-clear. Long $NVDA while the yield relief holds.
+
+### Metals momentum is feeding on itself
+
+*The gold and silver breakouts are now self-reinforcing, with systematic buyers forced in and strategic buyers refusing to sell.*
+
+Goldman's trend-following model flipped positive on silver after the August 5 close, forcing rules-based funds that were short to buy back in, and options flow swung to call buying as demand for downside protection faded. Gold has the structural bid: Chinese gold ETFs have logged 14 consecutive days of inflows, the longest streak since March, and Goldman calls continued central-bank diversification the main driver of its constructive outlook. The move is confirming live, with $GLD tracking its best week since January, positioning that came into August washed out, and the August-to-September window seasonally one of gold's strongest. The tension is a single level: silver has to clear and hold $64, and a failure there or a break back below its 50-day average (the rough two-month trend line) puts the squeeze on hold. Long $GLD, with $SLV as the higher-octane expression while $64 is in play.
+
+### Retail is rotating, not leaving
+
+*Retail flows are rotating out of software and into memory and semiconductors, which reads as renewed AI appetite rather than exit.*
+
+Retail investors dumped software at the fastest weekly pace on record, led by heavy selling in $MSFT and $PLTR after earnings, while buying memory and chip names like $MU and $AMD (JPMorgan flow data). Retail call-option volumes pulled back from all-time highs even as institutional call buying in the S&P 500 stayed hot, and SpaceX saw its first retail outflows since June 23. The risk to the bullish read: this is profit-taking dressed up as rotation, and it lands exactly where leadership is already failing to confirm the rebound. Until that resolves, the flow says own what retail is accumulating. Long $MU and $AMD over software.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **The post-print yield path into the close.** The jobs number is out, so the reaction is the trade now. Yields easing further keeps the tactical long Mag7 case working, while a reversal higher would say the bond market doubts the cuts are coming and the rebound loses its fuel.
+- **Options expiry this afternoon.** Contracts expiring today priced only a 0.7% S&P 500 move (JPMorgan), and $SPY is already up 0.68% two hours in. A push beyond that range into the close has less options-market cushion than usual.
+
+### This Week
+
+- **Inflation data restarts Wednesday.** July CPI lands August 12 at 8:30 AM ET, with PPI Thursday and Retail Sales Friday (no consensus posted yet). After a negative payroll print, a cool CPI locks in the rate-cut pricing, while a hot one revives the worst-case mix of shrinking jobs and sticky prices that this rally is not priced for.
+- **$SMCI reports Tuesday after the close (est. $0.98 EPS on $11.78B revenue).** It is the first AI-server read since the payroll shock and a checkpoint for the memory-and-chips rotation retail is crowding into.
+- **$DASH post-earnings follow-through.** Deutsche Bank raised its target to $260 (Buy) after the second-quarter beat: order volume of $33.1B up 36% year over year, adjusted earnings of $914M against an $843M consensus, and DashPass subscribers now driving roughly 75% of US grocery and retail orders. Strength holding above the guidance midpoint ($33.0-34.0B in orders next quarter) keeps the premium-valuation case alive.
+- **Iran-Oman talks over Hormuz.** Vessel traffic through the strait dwindled this week while markets watch the negotiations, and a deal would take the scarcity premium out of oil. The talks come as Saudi Arabia, Turkey, and Pakistan pledged mutual defence Friday morning, so the regional risk premium is not gone. $USO and $BNO are the tickers to watch on any headline.
+
+## _LEANS (internal, TRADE BOARD source, stripped before publish)
+- long | $NVDA | tactical Mag7 rebound, jobs-print yield relief
+- long | $GLD, $SLV | systematic short covering, Chinese inflows, seasonals
+- long | $MU, $AMD | retail rotation into memory, out of software
+
+```
+
+PREVIOUS SCHEDULED PULSE — final markdown (2026-08-06T14-09-52Z):
+```markdown
+---
+pdf_count: 72
+input_tokens: 119879
+output_tokens: 2602
+dumped_at_utc: 2026-08-06T13:53:15.286341Z
+---
+
+# Record highs, credit whispers
+
+## 1. RECAP
+
+Half an hour into Thursday's session, the market is catching its breath just above record highs. The rally's two engines, earnings beats landing well above the historical norm and hopes for the provisional Iran-Oman arrangement on the Strait of Hormuz, are both getting stress-tested this morning. $SPY is up 0.22% while $QQQ sits fractionally red, with chip caution lingering after AMD's guidance disappointed elevated expectations and memory names SanDisk and Western Digital guided below the most bullish hopes. $BTC is flat near $64,500. With nothing major on today's calendar, Friday's jobs report carries the week.
+
+- **Oil rebounds as the Hormuz deal wobbles.** A Houthi attack on a Saudi tanker cut Gulf shipping traffic overnight, and Iran warned Gulf states this morning to tell Trump to desist or get hit hard. $BNO is up 1.78% and $USO 1.40%, clawing back part of Tuesday's roughly 5% Brent drop.
+- **Wednesday's data pulled two directions at once.** ISM services, the main services-sector activity survey, held at 54.1 with strong new orders, but its employment gauge sank to 47.4, prices paid (the survey's inflation read) jumped to 70.3 against 65.0 expected, and ADP private payrolls printed 44k, the weakest since January. September rate-cut pricing slipped to 54% from 58% on the mix.
+- **Datadog kicked off today's prints.** $DDOG reported $0.65 EPS on $1.12 billion in revenue before the open. The early tech tape around it is muted, with $QQQ off 0.19%.
+
+## 2. THE MAIN EVENT
+
+### The AI melt-up is a squeeze, and its own confirmation signals have not signed off
+
+*This rally's fuel is trapped positioning rather than new AI news, so the move is to buy the parts of the trade that have not squeezed instead of chasing the parts that have.*
+
+- Goldman's prime brokerage desk (the arm that finances hedge funds and sees their flows) recorded the largest liquidation of global technology stocks on record between July 24 and July 29, and hedge funds focused on tech, media, and telecom lost 10.2% in July, the worst month in their history (JPMorgan). The natural institutional buyers were forced out at the lows, so this bounce is running on thin ownership.
+- Monday's session delivered a 1.79% S&P 500 move against the 0.4% the options market had priced (Goldman), on a record day for total S&P call volume (JPMorgan). Dealers who sold those calls are short gamma, meaning they must buy as the market rises, which mechanically amplifies every up-move.
+- Credit default swaps on the hyperscalers (the cost of insuring the big cloud companies' debt, which rises when investors get nervous) are widening again, the same signal that showed up before July's tech selloff.
+- The Korea ETF $EWY sits 22% below its all-time high and Taiwan's $EWT 9% below (JPMorgan) while US semis rally. The stocks that led the AI boom are not confirming this rebound.
+- The demand side is not the problem: the Mag7's AI backlog is near $1.7 trillion and growing more than 150% year over year against roughly 80% capex growth (JPMorgan), and Goldman just raised its 2027 AI circuit-board market forecast by 38% to $38 billion.
+
+The buyers changed, not the story. Forced sellers exited in July, retail flowed back through memory names and semiconductor ETFs, and short-gamma dealers buy strength, so price is currently set by flows while the deepest-pocketed holders have structurally less capacity to return.
+
+The bull case has real money behind it. JPMorgan is tactically long, arguing the Mag7 trades more than 2 standard deviations below its average forward price-to-earnings ratio (its price against next year's expected profits, a rare discount versus its own history) while S&P 500 second-quarter profit margins hit 16.7% versus 12.9% a year ago, and cheap plus accelerating usually wins. Cheap and accelerating still needs holders with capacity, though, and the same JPMorgan flow work concludes hedge fund capacity for tech is structurally reduced, leaving the market leaning on retail, the least stable ownership base in a drawdown. Buy $QQQ on dips only, not on chases, until either credit spreads or Korea confirm.
+
+**The Korea sub-thread.** JPMorgan reads $EWY and $EWT as catch-up trades with room to run. The skeptical read is that SK Hynix and Samsung keep failing at their 21-day moving averages (the short-term trend line) while Korean implied volatility near 80 prices roughly 5% daily swings, so the laggards may be a warning rather than a discount. Does the KOSPI, Korea's main stock index, break its downtrend before hyperscaler credit spreads break wider? Long $EWY is the bet that it does, sized for the 5%-a-day tape.
+
+## 3. BRIEFS
+
+### The Hormuz deal is a toll booth, not a peace treaty
+
+*Oil's floor holds because this arrangement defers the hard questions instead of answering them.*
+
+Iran and Oman reached a provisional deal on Strait of Hormuz shipping: a 60-day arrangement under which Iran suspends its toll ambitions for 2 to 4 months and vessels transit under a notification regime (TS Lombard), which in practice leaves Iran controlling the strait while looking cooperative. The sticking points that killed prior attempts are still live. Iran reportedly wants a 7% transit fee with exemptions for Russia and China against a US proposal of 5% (Rabobank), and the risk premium is not gone: a Houthi tanker attack cut Gulf shipping traffic overnight, Tehran threatened Gulf states over any new US strikes, and oil opened higher this morning. Brent found a floor around $80 and the bond market's oil-driven rally stalled there (Mizuho). Long $BNO at the floor. A signed deal that genuinely resolves the toll dispute is what ends the trade.
+
+### September's rate cut is the rally's weakest leg
+
+*The market is holding a coin-flip cut in one hand and hot services inflation in the other, and one of them drops.*
+
+Market pricing for a September Fed cut slipped to 54% from 58% after the services survey's prices paid gauge jumped to 70.3 against 65.0 expected and Kansas City Fed's Schmid explicitly backed a hike to finish the inflation job. ADP's 44k was soft, but JPMorgan and Goldman both kept their official payroll forecasts at 75k because the private count is a poor predictor of the government's first print. The sharper claim comes from TS Lombard: Fed Chair Warsh holds a 7-5 committee majority, US fundamentals will eventually force tightening rather than easing, and the 10-year yield reaches 6% in 2027. With the 10-year term premium (the extra yield investors demand for holding long-term bonds) at 0.8% versus a 1.2% long-run average, long bonds are priced for the friendly outcome. Cost of being wrong: a September cut that is already half priced, worth a modest bounce in $TLT. Cost of missing it if the hawks are right: a multi-year repricing toward that 6% call. Friday's jobs report is the next test. Short $TLT.
+
+### Earnings breadth is the real bull case
+
+*The quarter is beating by enough, in enough places, to fund a rally that does not depend on seven stocks.*
+
+About 80% of S&P 500 companies have beaten estimates versus a 73% historical norm, and the median beat is 5.8% against a 3.5% average (UBS), enough surprise to fund upside beyond the Mag7. The price confirmation: July's equal-weighted S&P 500 (every stock counts the same) gained 0.9% while the cap-weighted index slipped 0.1% (UBS), which is what broadening looks like. The cleanest single-name expression is Shopify: 32% growth in gross merchandise volume (the total value of goods sold on its platform) against the Street's 28%, third-quarter revenue guided to low-30s growth versus the Street's 27%, and Deutsche Bank reiterating Buy with a $175 target on a reacceleration it expects to drive estimate revisions. If the third-quarter print lands below that low-30s guide, the thesis is dead. Until then, long $SHOP.
+
+### Europe's upgrade has a doubter in the room
+
+*The earnings recovery is real enough that the region's biggest skeptic just raised its own European growth forecast.*
+
+UBS upgraded European and Eurozone equities to Attractive with regional earnings growth forecast at 25% across 2026 and 2027, and European shares hit a record high this morning on earnings and US-Iran optimism. The doubt sits at the top: JPMorgan raised its Europe third-quarter GDP forecast to 1.25% annualized, well above the ECB's 0.5%, yet still prefers US and Asian equities over the region. For a US account the actionable leg is the banks. Goldman calls the selloff in HSBC on China's reported offshore-insurance tax an overreaction, since insurance is roughly 4 to 5% of earnings, and the bank earns a 19.2% return on tangible equity (the profit it generates on its core capital base). The ECB's September hike is 84% priced. Delivered without cracking the activity data, it validates the upgrade. Long $HSBC.
+
+## TRADE BOARD
+
+Leans this pulse is making.
+
+**NEW** first flagged today. **FLIP** reverses a view this board held — same ticker or the same macro call expressed another way. **held since …** carried from an earlier pulse and repeated today. **off board since …** was on the last board, not repeated today; the move since it was flagged is scored where price data exists.
+
+- **FLIP** Long $BNO — $80 floor holds, toll dispute unresolved
+- **NEW** Long $EWY, $EWT — Korea catch-up, needs KOSPI downtrend break
+- **NEW** Long $HSBC — tax selloff overreaction, Europe upgrade
+- **NEW** Long $SHOP — reacceleration, DB $175 target
+- **held since Jul 31** Long $QQQ — dips only, Mag7 2SD cheap, don't chase the squeeze
+- **held since Jul 30** Short $TLT — hawkish repricing, term premium has room up
+- **off board since Aug 5** Long $FEZ — record euro shorts vs positive surprises
+- **off board since Aug 5** Long $SMH — forced selling exhausted, shorts at 99th percentile — went 1.0% against it
+- **off board since Aug 5** Short $USO — Hormuz interim deal unwinds scarcity premium — worked, 5.9% in its favor
+- **off board since Aug 5** Long $MSFT, $AMZN — backlog compounding twice capex pace, earnings validated — worked, 24.8% in its favor
+
+**High-conviction single-name calls** (the desks' standout bets):
+
+- **Deutsche Bank** $PLTR — Buy, PT $200.00 — Exceptional 2Q results, accelerated revenue growth, and a superior financial profile (Rule of 155) justify a premium valuation.
+- **Goldman Sachs** $SITM — Buy, PT $900 — Strong quarterly results, robust AI datacenter growth, and material accretion from the Renesas timing business.
+- **Goldman Sachs** $SN — Buy, PT $204.00 — Reflects 2Q beat, stronger domestic growth, and updated margin forecasts; valuation multiple raised to 17.5x from 15.25x to reflect more durable growth.
+- **Deutsche Bank** $SHOP — Buy, PT $175.00 — Strong 2Q performance and guidance affirm Shopify's market position and sustainable growth, supporting a reacceleration narrative.
+- **Deutsche Bank** $SPCX — Buy, PT $255.00 — The stock is materially below the price target, and SOTP valuation suggests the Space and Connectivity segments alone justify nearly the entire current valuation, making…
+- **Goldman Sachs** $STX — Buy, PT $837.66 — We prefer Buy-rated Seagate given its stronger pricing momentum as it has navigated through the bulk of its HAMR technology transition.
+
+*(PT = price target)*
+
+## 4. WHAT TO WATCH
+
+### Today
+
+No major research-flagged catalysts are still to come today. Hormuz headlines can hit at any hour, and oil reacts first.
+
+### This Week
+
+- **Friday, Aug 7, 8:30 AM ET: July jobs report.** The calendar consensus sits at 85k, but the desks are lower: JPMorgan and Goldman economists are both at 75k, with unemployment seen holding at 4.2%. A soft print revives the September-cut trade, a hot one prices it out. Yields move first, so watch $TLT before $SPY.
+- **Rolling all week: Hormuz follow-through.** Any headline resolving the 7%-versus-5% toll dispute pressures
+
+[... truncated for prompt size ...]
+```
+
+PREVIOUS SCHEDULED PULSE — its QC review:
+```markdown
+# QC Review — 2026-08-06T14-09-52Z
+
+## TL;DR
+[observed] For the third consecutive run the adjudication gate discarded the corpus's #1 theme on a provably false roster check — 'ai infrastructure demand' (5 banks / 7 PDFs) was thrown out for "falsifiable_prediction bank not in inputs or agency whitelist: 'JPMorgan'" when JPMorgan is a listed member bank of that exact theme — and DRAFT shipped it anyway as slot 1 from per-PDF data, while EDIT's deletion reflex moved down-market: it undid DRAFT's rule-(b) compliance by deleting the $PLTR and $LLY high-conviction evidence outright and flattened the one ranked_list close (now 0-for-3 survival across two runs).
+
+## Publish-readiness check
+
+1. [observed] No internal-notes sections in final. Clean. H2s are `## 1. RECAP`, `## 2. INSIGHTS & ALPHA`, `## 3. WHAT TO WATCH`, `## _LEANS`. `## _LEANS` is the sanctioned pre-bridge exception — not flagged. `## _DRAFT NOTES` was present in DRAFT, absent from final. Caveat (recurring, see STITCH): [observed] the post-STITCH artifact contains neither `## _DRAFT NOTES` nor `## _LEANS`, so the final's `## _LEANS` is the STEP 5.75 deterministic restoration from DRAFT, not pipeline preservation.
+2. [observed] No frontmatter leak. Body opens `# Record highs, credit whispers`.
+3. [observed] No TODO/placeholder leak. `[LIVE PRICE RECAP]` was in DRAFT and post-STITCH; EDIT replaced it with a live lead paragraph + 3 RECAP bullets. No `[TODO]`, `[FILL IN]`, `<placeholder>`.
+
+Clean publish.
+
+## Coverage audit
+
+**Every validated theme landed, with documented routing. Best mapping of the last three runs.** [observed] mapping:
+
+| Theme (banks/PDFs) | Where it landed |
+|---|---|
+| ai infrastructure demand (5/7, 2 HIGH-conv, source-concentrated) — **adjudication-discarded** | Slot 1, shipped from per-PDF data |
+| hormuz shipping arrangement (6/8, discovered) | Slot 2 + RECAP bullet 1 + WATCH rolling bullet |
+| hyperscaler business trends (4/6, discovered + validated) | Folded into slot 1 as the CDS-widening bullet — documented in DRAFT NOTES |
+| fed policy trajectory (3/1) | Slot 3 — prescribed asymmetry close held |
+| growth acceleration and sustainability (2/2, 1 HIGH-conv) | Slot 4 — prescribed falsifiable_window close held ($SHOP low-30s guide) |
+| european equities (2/1, 1 HIGH-conv) | Slot 5 — prescribed ranked_list close **flattened by EDIT** (see EDIT) |
+| asia ai semiconductor rally (2/2, 1-1 split) | Korea sub-thread inside slot 1 — documented; prescribed single_question close held |
+
+**Discovered themes: 2/2 surfaced.** [observed] Hormuz got a full slot plus RECAP and WATCH treatment; hyperscaler business trends (all-neutral, no directional stance) was folded as evidence rather than given a stanceless standalone slot, with a written rationale in DRAFT NOTES. Both routings are correct for their stance profiles. No tuning needed.
+
+**High-conviction single-name calls: rule (a) held, rule (b) failed — but the failure moved from DRAFT to EDIT.**
+- [observed] Rule (a): $SHOP is a lean, and Deutsche Bank's $175 PT with attribution survived into the exact slot that closes Long $SHOP. Second consecutive run rule (a) held.
+- [observed] Rule (b): DRAFT complied — slot 4's breadth evidence included Eli Lilly ($23.0B revenue beat, guidance raise; GS has $LLY Buy PT $1,283 in the call list) and Palantir ("Deutsche Bank upgraded to Buy, $200 target"). EDIT deleted both sentences entirely, leaving $SHOP as the only single-name expression. $SITM (GS PT $900), $SN, $STX, $SPCX also appear nowhere, and no call reached WATCH. Third consecutive run the final ships without rule (b), but the diagnosis is now sharp: the writer complies, the editor undoes it.
+
+**Near-miss clusters — thin-2bank orphan streak is now six runs.** [observed] 10 of the near-miss clusters are thin-2bank rejections with `nearby_phase_a: []`. Two observations on this corpus:
+- [observed] `US labor market softening/resilience` (DB + UBS) was orphaned, yet the final pulse leans heavily on labor (ADP 44k in RECAP, jobs report as slot 3's "next test" and the WATCH lead) — [inferred] same routing-around-the-filter diagnosis as the prior five runs: DRAFT pulls the facts from per-PDF JSON, so the floor costs bookkeeping accuracy without changing output.
+- [observed] `Hyperliquid platform regulatory challenges` (GS + JPM, 3 PDFs) was orphaned and genuinely unused. This is the only multi-bank crypto cluster in the corpus, the stated audience includes crypto traders, and the final's entire crypto content is one clause ("$BTC is flat near $64,500"). This is the one orphan on this corpus a trader would actually have wanted.
+- [observed] `US-Iran MOU progress` (JPM + TSL) shows `nearby_phase_a: []` but its content shipped inside the Hormuz slot — [inferred] the nearby-check only compares against Phase A themes, not Phase B discovered themes, so it under-reports coverage of geopolitics clusters. Bookkeeping-only issue.
+
+## Workflow stage critique
+
+- **Phase A clustering:** [observed] 48 themes; one two-tier merge (`ai infrastructure demand` absorbed `ai investment expansion` + `ai monetization`, augment count 3); `two_tier_cap_blocked` is empty — the cap never fired this run (it fired once yesterday). Clean stage; cap-firing tracked below.
+- **Phase B discovery:** [observed] 2 promoted, 2 surfaced; dedup dropped 3 exact-key duplicates (72 → 69) cleanly. Only flag is the thin-2bank orphan floor issue above — threshold-spec, not execution.
+- **Adjudication:** [observed] 7 dispatched, 6 validated, 1 discarded: `ai infrastructure demand`, reason "falsifiable_prediction bank not in inputs or agency whitelist: 'JPMorgan'". [observed] JPMorgan IS a member bank of that theme in the theme coverage block (DB, GS, JPM, TME, UBS). [inferred] This is a false-positive discard, the third in three runs, and this time the rejected bank name differs from yesterday's ("Goldman Sachs" then, "JPMorgan" now) — which weakens yesterday's name-normalization hypothesis and points instead at packet assembly: the per-theme sub-agent's input packet likely omits some member-bank PDFs, so a legitimate citation looks out-of-roster. Three runs running, the discarded theme is the #1 theme by bank count and DRAFT ships it anyway from per-PDF data. The gate filters nothing and generates a false paper trail.
+- **DRAFT:** [observed] Best DRAFT of the recent sequence. 6 validated → 5 slots (floor N≥6 → M≥4 satisfied with margin); both folds documented in `_DRAFT NOTES` — yesterday's undocumented-fold flag is fixed; all four prescribed close-forms it was responsible for were complied with; rule (b) evidence was placed. Every subsequent defect in this run was introduced downstream.
+- **STITCH:** [observed] Recurring: body text passed through byte-identical (no foreign cashtags to scrub this corpus), but `## _DRAFT NOTES` and `## _LEANS` are gone from the post-STITCH artifact. [observed] The orchestrator NOTE says "EDIT dropped the ## _LEANS block" — that attribution is impossible: EDIT's input (post-STITCH) already lacked the block. The STEP 5.75 deterministic repair works, but it is masking a STITCH-stage drop for at least the fourth run, and now the run log misattributes the drop to the wrong stage.
+- **EDIT:** [observed] Engaged hard (+490 chars, 88,329-char prompt): built a good live RECAP from the placeholder (three bullets with live oil/ISM/DDOG anchors), and added genuinely strong translations (prime brokerage, GMV, KOSPI, equal-weight, return on tangible equity). But three deletion reflexes, all recurring in kind:
+  1. [observed] Flattened slot 5's prescribed ranked_list close ("Watch in this order: (1)(2)(3)") into prose and deleted item (3) entirely — the periphery-core PMI gap (Spain 58.3, Italy 52.5 vs sub-50 France/Germany), a substantive breadth gauge, not filler. Ranked_list closes are now 0-for-3 survival across two runs; the other three close-forms all survived.
+  2. [observed] Deleted the $LLY and $PLTR (DB Buy, $200 PT) breadth evidence — the rule-(b) failure above, and the same strip-the-PT reflex flagged yesterday on $PLTR, escalated from stripping the number to deleting the sentence.
+  3. [observed] Stripped four attributions/stats: "(Deutsche Bank)" from the 54%-from-58% cut pricing, "(JPMorgan)" plus the 64k figure from the ADP-miss stat ("misses by 64k on average" became "is a poor predictor"), "(JPMorgan)" from the term-premium comparison, "(Deutsche Bank)" from the 84% ECB pricing, plus "Goldman pegs Street consensus near 80k" from the WATCH payrolls bullet.
+- **LINT:** [observed] 8 residual issues post-SCRUB. Quality of the flags is mixed: both `slot-stat-overlap` hits are false positives — the "5%" flagged across 3 slots is four semantically distinct quantities (Brent drop, Korean daily swings, transit fee, insurance share of earnings), and "80%" is capex growth vs beat rate. The `gamma` jargon-bare flags are also arguable false positives (the final explains it inline: "meaning they must buy as the market rises"). Real residuals: 
+
+[... truncated for prompt size ...]
+```
+
+PRODUCE THE QC REVIEW IN EXACTLY THIS FORMAT (markdown):
+
+# QC Review — 2026-08-07T14-12-40Z
+
+## TL;DR
+ONE sentence. The single most important finding from this run. If the Publish-readiness check below flagged a leak, that IS the most important finding — surface it here.
+
+## Publish-readiness check
+
+Before the deeper review, do a deterministic scan on the FINAL POSTED MARKDOWN block above:
+
+1. **Internal-notes leak.** Search the FINAL POSTED MARKDOWN for any H2 header beginning with `## _` (underscore-prefixed — e.g. `## _EDIT NOTES`, `## _DRAFT NOTES`). These sections are editorial-decision metadata that `scripts/pulse_strip_internal_notes.py` (called from synthesis-routine.md STEP 5.8) was supposed to strip. **If ANY `## _` header is present in the final, this is a P0 publish failure** — the pulse shipped with internal notes visible to readers. Report as `[observed] LEAKED: <header name>` and add a Suggested change pointing at the strip step. If clean, report `[observed] No internal-notes sections in final. Clean.` **EXCEPTION — `## _LEANS` is NOT a leak.** It is the TRADE BOARD's structural source, intentionally preserved through the routine's strip and removed by the bridge worker at post-time (after the board is built). If you are reviewing a pre-bridge artifact (committed pulse), `## _LEANS` being present is expected and correct — do NOT flag it. Only flag `## _LEANS` if it appears in the ACTUAL Discord-posted / archived pulse (the bridge failed to strip it).
+
+2. **Frontmatter leak.** Confirm the final does NOT contain raw frontmatter markers (`---` at line 1 followed by `pdf_count:` etc.) — those are committed as a separate concern by STEP 6 and should not appear in the body. Report `[observed] No frontmatter leak.` or `[observed] LEAKED: frontmatter visible in body`.
+
+3. **TODO/placeholder leak.** Scan for unfilled placeholders like `[LIVE PRICE RECAP]`, `[TODO]`, `[FILL IN]`, or `<placeholder>` markers that EDIT was supposed to replace. Report `[observed]` either way.
+
+This section is mechanical — three yes/no checks. Two-line section unless something leaked. If anything leaked, treat it as the top-priority finding for both TL;DR and Suggested changes.
+
+## Coverage audit
+Did the final pulse include all heavyweight themes from theme_coverage? Were any heavy clusters under-weighted?
+
+For DISCOVERED themes specifically (look at discovery_audit.promoted): was each one surfaced in the final? If not, was that the right call (the discovered topic wasn't actually actionable for traders) or a miss (the topic was real and the writer dropped it)?
+
+For NEAR-MISS clusters (discovery_audit.near_miss): are any of these worth surfacing despite being filtered out? If yes, they are signals that thresholds need tuning.
+
+## Workflow stage critique
+Per-stage assessment, but ONLY for stages that did something noteworthy. Skip stages that just executed cleanly. Aim for fewer, sharper points over generic per-stage commentary.
+
+For sub-agent stages (Adjudication, EDIT, SCRUB), use the SUB-AGENT HANDOFFS block above to assess: did the sub-agent get the right inputs? Did it actually engage with them (meaningful output delta) or rubber-stamp (~0 delta)? Did the prompt size suggest substitutions resolved correctly? Use the pre-stage / post-stage diff to spot regressions — if EDIT shrank the markdown by 50%, did it cut filler or did it drop a theme? If SCRUB rewrote 10 lines, were those the lint-flagged sentences or unrelated?
+
+- Phase A clustering:
+- Phase B discovery:
+- Adjudication:
+- DRAFT:
+- STITCH:
+- EDIT:
+- LINT:
+- SCRUB:
+
+## Voice + structure
+Tells that slipped through? Theme-coherence breaks (a sentence in theme X that's actually about theme Y)? Misframings (theme presented as bull-consensus when corpus is actually split)? Use of banned phrases the lint should have caught?
+
+## Accuracy + sourcing
+Numbers in the final that don't trace back to corpus or live data? RECAP facts that misattribute or invent? Single-bank claims presented as consensus? Forecasts dressed up as actuals?
+
+## Reader experience — the daily-workflow test
+
+**The ultimate question:** would a self-directed options/crypto trader read THIS pulse EVERY DAY before market open as part of their trading routine? Not "is it well-built" — not "would they read it weekly" — would they make it a daily habit.
+
+Daily is a much harder bar than weekly. Daily means:
+- Fits inside a tight morning attention budget (5-10 min max — they have other reads, futures to check, positions to manage)
+- Delivers fresh value EVERY day, not "this is similar to yesterday's"
+- Reliably high quality — ONE bad pulse breaks the habit, and habits don't recover quickly
+- Earns a slot in a finite morning routine where every minute competes with Bloomberg, broker research, Twitter, CNBC pre-market
+
+Roleplay the reader: a smart trader, reads the WSJ, trades actively, has those 5-10 minutes over coffee before futures heat up. Ask honestly:
+
+- **Marginal value** — what's in this pulse that the trader couldn't get from Twitter, CNBC, Bankless, Almost Daily Grant's, or their own broker's morning research? Cross-bank synthesis is the supposed moat — did this pulse actually deliver it, with named bank-vs-bank disagreement and specific data points? If a single bank's call could substitute for what this pulse said, the moat broke.
+
+- **Actionability — what would the trader DO?** Per theme: does the close give a concrete instrument lean a trader could execute today, or just describe a market? "Watch closely" is failure. "Long $TLT into Tuesday's CPI" is success. Theme-by-theme, count the actionable closes vs the descriptive ones.
+
+- **Trust** — would the trader act on these calls, or hedge with "I should verify this myself"? Specifically: any claims that pattern-match to fabricated dates, invented price levels, manufactured consensus ("multiple banks suggest" without naming), or numbers that don't trace to corpus + live data? Each soft spot erodes daily-product trust.
+
+- **Patience and education** — does the writing teach mechanism (explain WHY a market is moving) or telegraph short-and-cutty (just state the call)? A trader who reads this for 6 months should be smarter for it. If every theme reads the same — punchline + bullets + close — the reader stops learning. Variety in the analytical structure is part of the teaching.
+
+- **Distinctive voice** — does this pulse sound like one specific analyst's view, or like generic newsletter-speak? AI tells, banker filler ("the binding constraint", "the cleanest read", "the mechanism is straightforward"), corpus meta-narration ("research suggests", "analysts are split") all flatten voice. The pulse should sound like a person you'd follow, not a feed you'd skim.
+
+- **Skeptic test** — where would a smart trader disagree with this pulse? Are those points addressed in the bull/counter/defense structure, or did the pulse paper over them? A pulse that doesn't acknowledge real counter-cases reads as marketing, not analysis.
+
+- **Time-per-theme** — give a 5-min skim time budget. Could the trader walk away with 2-3 specific actionable takes after 5 min, or would they need 15-20 min to extract value? If the pulse needs 15 min of close reading to get the lift, it's not a daily product — it's a weekly research note.
+
+### The miss-it test (the real bar)
+
+**The actual product test isn't "would they read it" — it's "would a trader notice and wonder where it is if this pulse didn't come out tomorrow?"** Most newsletters fail this. Most AI-generated content fails it by design (it's forgettable, hedged, both-sided, can be skipped without losing anything). The bar is: would the trader ACTIVELY MISS this absence — open Discord asking "where's the pulse?" — or would they not notice for days?
+
+What makes content forgettable AI slop (the failure mode to avoid):
+- **Hedged claims with no call.** "Markets could go either way." "Watch closely." "The setup is constructive." Calls that cannot be wrong because they don't commit.
+- **Both-sided framings without a verdict.** Pulse says "bulls argue X, bears argue Y" and stops. The reader doesn't learn what the analyst thinks — just that there's disagreement they could've inferred from any wire.
+- **Generic newsletter-speak.** "It's worth noting that markets are volatile." "Investors are watching closely." "Multiple signals are flashing." Could be from any of 50 newsletters.
+- **Templates that read the same every day.** Punchline + bullets + close, identical structure every theme, identical verbal tics. Reader stops learning by week 2.
+- **Calls that can't be wrong.** No invalidation triggers, no specific time horizons, no falsifiable predictions. Six months in, no track record possible.
+- **No recurring point of view.** No phrase or framing the reader recognizes as "this product's signature." Compare to Hartnett's Flow Show ("Buy humiliation"), Grant's gold tilt, Bankless's crypto-as-rebellion frame. Voice you can name.
+
+What makes content miss-able when absent:
+- **Stakes.** Specific calls with specific instruments and specific time windows. The reader is tracking outcomes alongside the analyst — when CPI prints Tuesday, they want to know how the pulse's $TLT call held.
+- **Distinctive perspective.** A theme framing the reader couldn't have gotten from a Twitter thread or CNBC pre-market. Specifically: cross-bank synthesis with bank-vs-bank named disagreement is the actual moat. If a single bank's note could substitute for what the pulse said, the moat broke.
+- **Recurring patterns the reader looks forward to.** A signature framing or recurring section the reader anticipates. Could be: a daily "what the cross-bank consensus is wrong about" feature. A "sleeper trade of the day" close. The Tier-1-vs-Tier-2 disagreement as a habitual structure. Not template, signature.
+- **Education that compounds.** Mechanism teaching at consistent depth, building the reader's mental models week over week. By month 6 the reader is materially smarter about how research desks frame trades.
+- **Personality.** A view the reader can disagree with productively. Generic neutral-aggregator content provokes nothing. A pulse that takes positions and explains its reasoning gives the reader something to argue with — and engagement-via-disagreement is also retention.
+
+**Verdict:** ONE sentence answering: would a trader actively miss this pulse if it didn't come out tomorrow — open Discord asking where it is — or would they not notice for days? Then justify in 2-3 sentences naming the SPECIFIC reason. Be honest. The right answer is often "not yet" — most days the gap between "made it past lint" and "would be missed if absent" is conviction in the calls, distinctive framings the reader recognizes, and falsifiable specifics that build a track record over time.
+
+Generic praise here ("a quality product") fails this section. So does "yes, would be missed" without naming what specifically would be missed. The useful version is "yes / no, here's the specific call or framing this pulse made that would be missed (or that's currently missing and would have to be added for the pulse to earn the slot)."
+
+## Day-over-day comparison
+
+You have the PREVIOUS scheduled pulse's final markdown AND its QC review above. Compare this pulse against that one and assess **whether it improved**. This is the loop-closing section — it's how we know the prompt changes are actually landing, not just being made.
+
+- **Did yesterday's flagged issues get fixed?** Walk the previous QC review's "Suggested changes for next run" and "Signals worth tracking" lists. For each one: did this pulse fix it, partially fix it, or repeat it? Be specific — "yesterday's QC flagged that EDIT dropped the RECAP positioning color; this pulse's RECAP DOES carry retail-flow + dealer-gamma color → fixed" or "yesterday flagged the identical-template-across-themes problem; this pulse still has all three themes in the same shape → not fixed, recurring."
+- **Did any issue regress?** Something that was fine yesterday and broke today.
+- **Theme continuity.** Which themes carried over from yesterday's pulse? For ANY carried-over theme, the question is whether today's version ADVANCED the story — a new data point, a new bank's angle, a new sub-thread — or just restated yesterday's framing in different words. A theme that leads two days running and reads the same both days is a freshness problem. A theme that leads two days running but with a genuinely new angle each day is fine. Audit each carry-over on its own evidence in today's corpus — don't single out specific themes as "the recurring one." Every theme has to earn its place each day on the strength of the day's evidence.
+- **Writing trend.** Same density? Tighter? Looser? More distinctive voice or more generic? More actionable closes or fewer? Did the verdict on the miss-it test move toward "yes" or away from it vs yesterday?
+- **Net call.** ONE sentence: is this pulse BETTER than yesterday's, ABOUT THE SAME, or WORSE — and the single biggest reason. If "about the same," that's a signal too — it means the changes between runs didn't move the needle on what matters.
+
+If there's no previous scheduled pulse (first run, or only test fires preceded this one), say so in one line and skip the rest of this section.
+
+## Suggested changes for next run
+
+Specific, actionable. Each entry must include **four required fields** so a reader can judge feasibility and information cost before committing — vague answers are rejected. Format:
+
+```
+- **{file_path}**: {what to change}.
+  - Reason: {evidence from this run, [observed] or [inferred] tagged}.
+  - Scope: {specific count — "~30 lines in one function" / "~80 lines across 2 files" / "200+ lines spanning a refactor". "small/medium/large" alone is rejected}.
+  - Information or capability lost: {what current behavior the change would remove. If none, write "none — purely additive". If "none" is unjustified, the change is over-scoped}.
+  - When this would be the wrong call: {what would have to be true for this fix to be incorrect or premature. If you can't think of anything, the recommendation isn't load-bearing enough to ship}.
+```
+
+Example of right-shaped entry:
+
+```
+- **github_bridge/jobs.py:850**: gate SCRUB dispatch on `lint_issues_count > 0`.
+  - Reason: [observed] today's run dispatched SCRUB with 0 hard lint issues and produced a +1.6% character delta (cosmetic). Routine prose said "if hard == 0, skip" but the Claude session ran it anyway.
+  - Scope: ~10 lines in publish_qc_dashboards_job sibling area, no API surface changes.
+  - Information or capability lost: none — purely an early-exit on the no-op case.
+  - When this would be the wrong call: if SCRUB ever needed to run for reasons orthogonal to lint (currently it doesn't, but adding any such reason later would require this gate to relax).
+```
+
+The four fields together are an anti-over-scope guard: they force the QC reviewer to commit to feasibility and acknowledge tradeoffs. Recommendations that can't fill in "information lost" or "when this would be wrong" are probably patches on symptoms or refactors-for-tidiness rather than fixes.
+
+## Calibration tagging (binding for all diagnostic claims in this review)
+
+Every diagnostic claim — anywhere in this review, not just the recommendations — must be explicitly tagged as one of:
+
+- **[observed]** — directly visible in the artifacts: lint report, diff stats, audit JSON, sub-agent prompt sizes, character counts, archive listings. The claim says what's in the data.
+- **[inferred]** — reasoning from observed facts to a likely cause. Says what the data probably means, given the architecture.
+- **[speculative]** — plausible explanation that can't be confirmed from the artifacts available. Says what might be true if the architecture worked a certain way.
+
+The tag goes inline with the claim. Example: *"[observed] adjudication validated 8 themes but DRAFT shipped 3 INSIGHTS. [inferred] the synthesizer prompt rewards density-within-a-theme over theme-breadth. [speculative] DRAFT may be ignoring the theme-count floor instruction; verify in next run's adjudicated_themes_list substitution."*
+
+This prevents the failure mode where a per-run QC says *"the recommendation was not implemented or it was implemented and didn't catch this case"* — a [speculative] claim that reads as a finding. With the tag, the reader sees the uncertainty and acts accordingly.
+
+**Self-consistency check (binding):** before finalizing, walk every [inferred] claim. If any [inferred] claim contradicts an [observed] fact in another section of this review, resolve the contradiction in the [inferred] section itself — don't leave the contradiction for the reader to discover three sections later. The 2026-05-14T20-01-08Z QC failed this: Phase B section said "eaten at the cluster layer" (which was [inferred]), but Adjudication section said "trump-xi, Warsh, agentic AI WERE in the adjudicated set" (which was [observed]). The [inferred] should have been corrected in place.
+
+## Signals worth tracking
+Things to watch in the next 1-3 runs that THIS run hinted at but isn't yet conclusive. Empty list is OK if nothing showed up.
+
+For the next run specifically (post-Phase-2-ship, 2026-05-15 onward), explicitly report on **these two metrics** separately — do not collapse them:
+
+1. **Two-tier merge cap firing.** Check `discovery_audit.two_tier_cap_blocked` (now committed at `pulse-output/qc-inputs/<ts>.adjudication-inputs.json` adjacent artifacts). Report: total cap-blocked merges, the canonical(s) that hit the cap, and which Phase A themes stayed separate as a result. A cap that never fires across multiple runs means it's not load-bearing; a cap that fires repeatedly on the same canonical means the two-tier merge is over-reaching there specifically.
+
+2. **DRAFT validated-to-drafted ratio.** Adjudication validated N themes; DRAFT shipped M INSIGHTS sections. Report N/M explicitly with both numbers. The THEME-COUNT FLOOR rule in DRAFT_USER says when N≥6, M≥4 mandatory; when N≥8, M≥5. Track compliance. A ratio of 8:3 (today's test fire) is the failure mode this fix prevents; track whether it persists.
+
+These two metrics fix DIFFERENT bugs; don't conflate. Friday's QC could show 4+ INSIGHTS themes because the merge cap preserved more candidates AND/OR because the DRAFT floor forced it. Reporting them separately is what makes it possible to attribute Friday's results to specific fixes.
+
+---
+
+Return the markdown verbatim — no preamble, no JSON wrapper, no commentary outside the review.
