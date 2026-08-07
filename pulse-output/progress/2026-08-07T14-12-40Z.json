@@ -5,6 +5,106 @@
    "step": "STEP_2_DONE",
    "time": "2026-08-07T14:14:29Z",
    "detail": ""
+  },
+  {
+   "step": "VOLUME_WAIT_1",
+   "time": "2026-08-07T14:14:57Z",
+   "detail": "pdf_count=8"
+  },
+  {
+   "step": "VOLUME_WAIT_2",
+   "time": "2026-08-07T14:24:58Z",
+   "detail": "pdf_count=8"
+  },
+  {
+   "step": "VOLUME_WAIT_3",
+   "time": "2026-08-07T14:35:00Z",
+   "detail": "pdf_count=8"
+  },
+  {
+   "step": "VOLUME_WAIT_4",
+   "time": "2026-08-07T14:45:01Z",
+   "detail": "pdf_count=8"
+  },
+  {
+   "step": "VOLUME_WAIT_5",
+   "time": "2026-08-07T14:55:02Z",
+   "detail": "pdf_count=8"
+  },
+  {
+   "step": "VOLUME_WAIT_6",
+   "time": "2026-08-07T15:05:03Z",
+   "detail": "pdf_count=8"
+  },
+  {
+   "step": "VOLUME_WAIT_7",
+   "time": "2026-08-07T15:15:04Z",
+   "detail": "pdf_count=8"
+  },
+  {
+   "step": "VOLUME_WAIT_8",
+   "time": "2026-08-07T15:25:06Z",
+   "detail": "pdf_count=8"
+  },
+  {
+   "step": "VOLUME_WAIT_9",
+   "time": "2026-08-07T15:35:07Z",
+   "detail": "pdf_count=8"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-08-07T15:45:31Z",
+   "detail": "volume gate exhausted, pdf_count=8, thin-corpus note active"
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-08-07T15:45:40Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-08-07T15:45:58Z",
+   "detail": "no eligible themes (all single-bank); adjudication empty; DRAFT falls back to per-PDF inputs"
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-08-07T15:49:05Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-08-07T15:49:17Z",
+   "detail": "exit 4, 2 soft violations carried to EDIT"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-08-07T15:49:18Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-08-07T15:54:56Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-08-07T15:56:10Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_75_FINAL_VALIDATE_DONE",
+   "time": "2026-08-07T15:57:25Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-08-07T15:57:25Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_6_COMMIT_DONE",
+   "time": "2026-08-07T15:58:57Z",
+   "detail": "pulse d738d9d9, artifacts a6cef75f"
   }
  ]
 }
