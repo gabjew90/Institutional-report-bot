@@ -1,0 +1,34 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.36% is stated for Payrolls but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-23.0, 4.1, 4.2, 57.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.36",
+   "event": "PAYROLLS",
+   "matches_estimate": false,
+   "sentence": "- **July payrolls contracted by 23,000 against an 85,000-gain consensus (prior +57,000).** Unemployment still fell to 4.1% versus a 4.2% estimate, a mixed signal, but the market is trading the payroll"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "1.16% is stated for Payrolls but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-23.0, 4.1, 4.2, 57.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "1.16",
+   "event": "PAYROLLS",
+   "matches_estimate": false,
+   "sentence": "- **July payrolls contracted by 23,000 against an 85,000-gain consensus (prior +57,000).** Unemployment still fell to 4.1% versus a 4.2% estimate, a mixed signal, but the market is trading the payroll"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.3% stated for Unemployment MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "4.3",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": true,
+   "sentence": "- Unemployment fell to 4.1% when JPMorgan's pre-print call had it rising to 4.3%. The mixed signal softens the recession read even as the payroll count shrank, which keeps the benign rate-cut story in"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 3,
+ "exit_code": 4
+}
