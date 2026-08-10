@@ -11,10 +11,27 @@ Verdict literals:
             answer type where the rubric doesn't apply)
 
 Overall verdict rollup (computed property):
+  - INFRA    — the bot never produced an answer; a system wrapper shipped
+               instead (filter block, token budget, MAX_TOKENS). Not
+               graded, because there is no bot answer to grade.
   - UNGRADED — grader_error was set; dimensions intentionally empty
   - FAIL     — any dimension is FAIL
   - CONCERN  — no FAIL, any dimension is CONCERN
   - CLEAN    — all dimensions PASS or N/A
+
+Why INFRA exists (2026-08-10). The filter-block wrapper is one fixed
+string, and over 2026-08-07..09 the judge graded that identical string
+CLEAN twice and FAIL twice. On format_adherence alone it produced both
+"used the required arrow bullet format even for the error message" and
+"failed to use the required arrow bullet format". One FAIL went further
+and called the accurate "hard filter" report a fabrication, when the ask
+log's own route metadata records the block as real.
+
+Asking an LLM to grade voice, depth and fabrication on a canned system
+string is a category error: there is no authored answer under it. The
+verdict is now decided deterministically from the recorded system state,
+so CLEAN/FAIL counts mean "the bot answered well/badly" and infra
+failures are counted separately instead of polluting both buckets.
 """
 
 from __future__ import annotations
@@ -52,6 +69,12 @@ class AskInteraction:
     question: str
     answer: str
     prompt_block: Optional[str]
+    # The `**Route:**` line verbatim, e.g.
+    # "`LOCAL/BANTER` · ungrounded · filter-retry: failed · guards: —".
+    # This is recorded system state, not prose, so the INFRA short-circuit
+    # reads it in preference to pattern-matching the answer text. `None`
+    # for legacy entries written before the Route line shipped.
+    route_meta: Optional[str] = None
 
 
 @dataclass
@@ -72,9 +95,15 @@ class GradedInteraction:
     dimensions: dict[str, DimensionVerdict] = field(default_factory=dict)
     notable_pattern: Optional[str] = None
     grader_error: Optional[str] = None
+    # Set when the interaction never produced a bot answer. Short-circuits
+    # the judge entirely — no Gemini call is made — and holds the reason
+    # ("filter-block", "token-budget", "max-tokens") for the report.
+    infra_reason: Optional[str] = None
 
     @property
     def overall_verdict(self) -> str:
+        if self.infra_reason:
+            return "INFRA"
         if self.grader_error:
             return "UNGRADED"
         verdicts = {d.verdict for d in self.dimensions.values()}

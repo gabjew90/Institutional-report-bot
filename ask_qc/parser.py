@@ -48,6 +48,12 @@ _ASKER_RE = re.compile(
 # Username inside the asker label: "BK (`bankerkyle`)" -> bankerkyle
 _USERNAME_RE = re.compile(r"`([^`]+)`")
 
+# Route line: "**Route:** `LOCAL/BANTER` · ungrounded · filter-retry: failed
+# · guards: —". Recorded system state, kept verbatim — the grader reads it
+# to decide whether an interaction is gradable at all. Absent on legacy
+# entries written before the line shipped.
+_ROUTE_RE = re.compile(r"^\*\*Route:\*\*\s*(?P<meta>.+?)\s*$", re.MULTILINE)
+
 # Question body: between "**Q:**" and the next "**A:**"
 _QA_SPLIT_RE = re.compile(
     r"\*\*Q:\*\*\s*\n?(?P<q>.*?)\n\s*\*\*A:\*\*\s*\n+(?P<a>.*?)"
@@ -110,6 +116,9 @@ def _parse_block(ts_utc: str, body: str) -> Optional[AskInteraction]:
     details_m = _DETAILS_RE.search(body)
     prompt_block = details_m.group("body").strip() if details_m else None
 
+    route_m = _ROUTE_RE.search(body)
+    route_meta = route_m.group("meta").strip() if route_m else None
+
     return AskInteraction(
         ts_utc=ts_utc,
         asker_label=label,
@@ -118,4 +127,5 @@ def _parse_block(ts_utc: str, body: str) -> Optional[AskInteraction]:
         question=question,
         answer=answer,
         prompt_block=prompt_block,
+        route_meta=route_meta,
     )

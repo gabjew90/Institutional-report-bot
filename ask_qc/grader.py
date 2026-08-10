@@ -23,6 +23,43 @@ from config import settings
 log = logging.getLogger(__name__)
 
 
+# Infra wrappers the bot ships INSTEAD of an answer. The literals live in
+# discord_bot/bot.py (search "→ Gemini bounced this one"); they are
+# duplicated here rather than imported because ask_qc is deliberately
+# decoupled from the bot module. smoke_ask_qc_infra_bucket asserts the
+# bot's live strings are still covered, so drift fails a test instead of
+# silently sending canned strings back to the judge.
+#
+# `filter-retry: failed` in the route metadata is the PRIMARY signal —
+# recorded system state beats matching prose. The prefixes below cover the
+# two paths that ship a wrapper without touching filter_retry (token
+# budget, MAX_TOKENS) and legacy entries with no Route line.
+_INFRA_ANSWER_SIGNATURES = (
+    ("Gemini bounced this one", "filter-block"),
+    ("Daily token budget reached", "token-budget"),
+    ("Thought myself in circles and ran out of room", "max-tokens"),
+)
+
+
+def infra_failure_reason(interaction: AskInteraction) -> Optional[str]:
+    """Return a reason string when this interaction has no bot answer to
+    grade, else None.
+
+    An infra failure is not a bad answer — it is the absence of one. The
+    judge cannot tell the difference, and over 2026-08-07..09 it graded
+    the identical filter-block wrapper CLEAN twice and FAIL twice, once
+    calling the accurate block report a fabrication. This decides it from
+    system state instead."""
+    route = (interaction.route_meta or "").lower()
+    if "filter-retry: failed" in route:
+        return "filter-block"
+    answer = interaction.answer or ""
+    for needle, reason in _INFRA_ANSWER_SIGNATURES:
+        if needle in answer:
+            return reason
+    return None
+
+
 class JudgeResponseBlocked(Exception):
     """Gemini returned no text for the judge call — safety filter block
     or empty candidate. Named so the QC report's `grader_error` reads
@@ -58,6 +95,20 @@ async def grade_day(
     sem = asyncio.Semaphore(sem_size)
 
     async def _grade_one(ix: AskInteraction) -> GradedInteraction:
+        # Short-circuit BEFORE the semaphore: an infra failure costs no
+        # Gemini call and shouldn't occupy a concurrency slot.
+        reason = infra_failure_reason(ix)
+        if reason:
+            log.info(
+                f"ask-qc INFRA {ix.ts_utc}: {reason} — no bot answer to "
+                f"grade, judge skipped"
+            )
+            return GradedInteraction(
+                interaction_ts_utc=ix.ts_utc,
+                dimensions={},
+                notable_pattern=None,
+                infra_reason=reason,
+            )
         async with sem:
             return await _grade_interaction_with_retry(ix)
 
