@@ -5323,8 +5323,25 @@ def known_trade_caller_names() -> list[str]:
     2026-07-11: was DISTINCT caller only — which, combined with the
     caller-backfill bug, covered three names while 39 members had
     ledger rows. Now unions caller names with member-mode authors'
-    usernames AND display names (resolved via chat_messages). Cheap
-    query; callers cache it."""
+    usernames AND display names (resolved via chat_messages).
+
+    2026-08-10 — this was NOT a cheap query, whatever the previous
+    docstring claimed. Written as `analyst_trades JOIN chat_messages ON
+    author_id`, SQLite inverted the join: `SCAN cm USING INDEX
+    idx_chat_messages_username_ts` then a probe into analyst_trades per
+    row. With 189,855 chat_messages and 49,320 analyst_trades that is a
+    full scan of the message table plus a temp B-tree for DISTINCT, and
+    it measured **172.9s in production**. The /ask caller caches for
+    600s, so it ran on a cache miss — synchronously, on the Discord
+    event loop, blocking the gateway heartbeat for ~3 minutes and
+    stalling every interaction queued behind it. That is the "responses
+    take 60+ seconds now" report.
+
+    Driving from the small side instead (author_ids in the ledger, then
+    an indexed probe into chat_messages) uses
+    idx_chat_messages_author_ts and measures 0.146s — same 114 rows,
+    1183x faster. Keep the subquery form; do not "simplify" it back
+    into a JOIN."""
     try:
         conn = get_connection()
         names: set[str] = set()
@@ -5334,10 +5351,10 @@ def known_trade_caller_names() -> list[str]:
         ).fetchall():
             names.add((r[0] or "").strip().lower())
         for r in conn.execute(
-            "SELECT DISTINCT cm.author_username, cm.author_display "
-            "FROM analyst_trades t "
-            "JOIN chat_messages cm ON cm.author_id = t.author_id "
-            "WHERE t.author_id IS NOT NULL"
+            "SELECT DISTINCT author_username, author_display "
+            "FROM chat_messages WHERE author_id IN ("
+            "  SELECT author_id FROM analyst_trades "
+            "  WHERE author_id IS NOT NULL)"
         ).fetchall():
             for v in (r[0], r[1]):
                 v = (v or "").strip().lower().lstrip(".")
