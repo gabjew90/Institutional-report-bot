@@ -7649,20 +7649,44 @@ async def _answer_with_gemini(
                 # actual profile.
                 retry_succeeded = False
 
-                # Ladder config: the ORIGINAL config minus function
-                # tools. 2026-08-07, SV's "summarize the last 12 hours
-                # of chat": every tier resent with the tools-bearing
-                # config, the model answered each retry with a
-                # function_call (it needs search_chat_messages), .text
-                # was empty, and the ladder read four function calls as
-                # four blocks — shipping the failure wrapper for a
-                # reason unrelated to the filter. No tier executes
-                # tools, so none may offer them; the model answers from
-                # the context already in the prompt (the recent chat
-                # window rides every ask).
+                # Ladder config: the ORIGINAL config minus the FUNCTION
+                # tools, keeping google_search. 2026-08-07, SV's
+                # "summarize the last 12 hours of chat": every tier
+                # resent with the tools-bearing config, the model
+                # answered each retry with a function_call (it needs
+                # search_chat_messages), .text was empty, and the ladder
+                # read four function calls as four blocks — shipping the
+                # failure wrapper for a reason unrelated to the filter.
+                # No tier executes function calls, so none may offer
+                # them; the model answers from the context already in
+                # the prompt (the recent chat window rides every ask).
+                #
+                # google_search is different in kind and must survive:
+                # it resolves server-side, needs no round trip through
+                # our code, and returns text rather than a function_call
+                # — so it cannot cause the empty-.text failure the strip
+                # exists to prevent. Nulling the whole tools list took it
+                # out too, which is why every ladder tier answered
+                # ungrounded (2026-08-07 COHR earnings, platinum/palladium
+                # options; 2026-08-09 money-market volumes — all factual
+                # questions where search IS the answer). Recovering the
+                # ask but losing grounding trades one failure for another.
                 try:
+                    _ladder_tools = [
+                        t for t in (config.tools or [])
+                        if getattr(t, "google_search", None) is not None
+                    ] or None
                     _ladder_config = config.model_copy(
-                        update={"tools": None, "tool_config": None}
+                        update={
+                            "tools": _ladder_tools,
+                            # tool_config only carries
+                            # include_server_side_tool_invocations, which
+                            # is what surfaces google_search's grounding
+                            # records. Keep it while search is offered.
+                            "tool_config": (
+                                config.tool_config if _ladder_tools else None
+                            ),
+                        }
                     )
                 except Exception:
                     _ladder_config = config
