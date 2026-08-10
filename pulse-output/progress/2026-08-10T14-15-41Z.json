@@ -5,6 +5,36 @@
    "step": "STEP_2_DONE",
    "time": "2026-08-10T14:17:09Z",
    "detail": "pdf_count=32 via MCP transport"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-08-10T14:18:12Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-08-10T14:18:12Z",
+   "detail": "gates clean, 32 pdfs"
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-08-10T14:29:02Z",
+   "detail": "4 validated, 1 discarded"
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-08-10T14:29:02Z",
+   "detail": "draft written, 5 themes"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-08-10T14:29:02Z",
+   "detail": "exit 4, 22 soft violations"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-08-10T14:29:02Z",
+   "detail": ""
   }
  ]
 }
