@@ -35,6 +35,36 @@
    "step": "STEP_5A_STITCH_DONE",
    "time": "2026-08-10T14:29:02Z",
    "detail": ""
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-08-10T14:39:20Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_5_LINT_DONE",
+   "time": "2026-08-10T14:39:20Z",
+   "detail": "13 issues, 2 hard"
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-08-10T14:39:20Z",
+   "detail": "scrub ran, 0 hard residual"
+  },
+  {
+   "step": "STEP_5_75_FINAL_VALIDATE_DONE",
+   "time": "2026-08-10T14:39:20Z",
+   "detail": "0 new hard"
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-08-10T14:39:20Z",
+   "detail": "_LEANS kept for board"
+  },
+  {
+   "step": "STEP_6_COMMIT_DONE",
+   "time": "2026-08-10T14:39:20Z",
+   "detail": "pulse+adjudication sha 28dcdbdd"
   }
  ]
 }
