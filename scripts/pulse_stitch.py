@@ -161,7 +161,13 @@ def stitch(md: str) -> tuple[str, list[str], list[str]]:
         new_md, re.DOTALL | re.IGNORECASE,
     )
     if notes_match:
-        new_md = new_md[: notes_match.start()].rstrip() + '\n'
+        # Splice out ONLY the matched span. Slicing to match.start() and
+        # discarding the rest truncated the file to EOF, which silently
+        # deleted `## _LEANS` (the TRADE BOARD source, written after
+        # _DRAFT NOTES by contract) on every run where DRAFT emitted both.
+        head = new_md[: notes_match.start()].rstrip()
+        tail = new_md[notes_match.end():].lstrip('\n')
+        new_md = head + '\n' + (f'\n{tail}' if tail else '')
         fixes.append('stripped ## _DRAFT NOTES section (internal — kept in /tmp/draft.md for QC)')
 
     # Placeholder presence note — informational only, no file change.
