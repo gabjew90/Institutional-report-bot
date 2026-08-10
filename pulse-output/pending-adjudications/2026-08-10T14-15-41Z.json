@@ -1,0 +1,140 @@
+{
+  "pulse_date": "2026-08-10",
+  "window_label": "since-last-daily (2026-08-07T15:59)",
+  "themes": [
+    {
+      "theme": "ai investment cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Multiple desks treat AI infrastructure spending as a live market driver, but only Goldman Sachs stakes a directional view, arguing this earnings season showed hyperscaler AI revenue starting to prove the spending pays off.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs sees this earnings season as the point where hyperscaler AI revenue began demonstrating a return on AI investment.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "This quarter marked an inflection in hyperscaler AI revenue contribution"
+          ]
+        },
+        {
+          "claim": "Multiple desks reference AI infrastructure capital spending and the data-center build-out as a recurring subject this window without staking a directional call.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure capital spending",
+            "AI-capex spending build-out",
+            "AI-driven demand for data centers and power infrastructure",
+            "AI capex growth sustainability"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {
+          "bank": "Goldman Sachs",
+          "subject": "Implied AI capex",
+          "direction_or_level": "$250-350B",
+          "by_when": "FY27",
+          "source_quote": "Implied AI capex FY27"
+        }
+      ]
+    },
+    {
+      "theme": "hormuz strait transit uncertainty",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks mention the Strait of Hormuz reopening and shipping transit situation as a live catalyst for oil and shipping, but none has staked a directional call on how it resolves.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks flag the Strait of Hormuz situation, spanning reopening negotiations, an Iran-Oman deal, supply rumors, and a shipping transit window, as an unresolved near-term catalyst without taking a directional view.",
+          "banks_for": [
+            "Mizuho",
+            "The Market Ear",
+            "Rabobank",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz reopening uncertainty",
+            "Strait of Hormuz oil supply rumors",
+            "Strait of Hormuz reopening negotiations",
+            "Strait of Hormuz shipping transit window",
+            "Iran-Oman Strait of Hormuz deal"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh monetary policy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag Kevin Warsh's possible Fed leadership and his dislike of telegraphing rate moves in advance as a live story, but none has yet staked a view on what it means for markets.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks reference Kevin Warsh in the context of Fed leadership and a shift in how monetary policy would be run, at the mention level and without a directional market call.",
+          "banks_for": [
+            "Lombard Street Research",
+            "The Market Ear",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh monetary task forces",
+            "Kevin Warsh's quiet revolution",
+            "Kevin Warsh's distaste for forward guidance",
+            "Kevin Warsh Fed leadership"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "warsh economic outlook",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks reference Kevin Warsh's economic outlook, a steady labor market, growth without inflation, and its bearing on Fed interest rate policy, but no bank has staked a directional view on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag Warsh's economic framing as a live subject this window, at the mention level only, spanning his labor market read, his growth-without-inflation thesis, and Fed rate policy.",
+          "banks_for": [
+            "Mizuho",
+            "TS Lombard",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Warsh solid steady labor market framing",
+            "Warsh thesis of growth without inflation",
+            "Warsh Fed interest rate policy"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "fed guidance and market volatility",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Market pricing'"
+    }
+  ]
+}
