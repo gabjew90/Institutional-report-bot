@@ -1,0 +1,207 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.05%' is attached to [against, wage] but the source uses it for [falling, hourly, rate, slowed] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.05%",
+   "draft_subject": [
+    "against",
+    "wage"
+   ],
+   "source_subject": [
+    "falling",
+    "hourly",
+    "rate",
+    "slowed"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '34 basis points' is attached to [bank, basis, even, futures, hikes] but the source uses it for [daily, four, hike, increase, increased] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "34 basis points",
+   "draft_subject": [
+    "bank",
+    "basis",
+    "even",
+    "futures",
+    "hikes",
+    "points"
+   ],
+   "source_subject": [
+    "daily",
+    "four",
+    "hike",
+    "increase",
+    "increased",
+    "weeks"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '5.23%' is attached to [morning, trades] but the source uses it for [change, close, crypto, indices, shown] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "5.23%",
+   "draft_subject": [
+    "morning",
+    "trades"
+   ],
+   "source_subject": [
+    "change",
+    "close",
+    "crypto",
+    "indices",
+    "shown",
+    "since",
+    "spread",
+    "today"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '25%' is attached to [amazon, asset, builders, call, cloud] but the source uses it for [approaching, averaging, beta, billion, business] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "25%",
+   "draft_subject": [
+    "amazon",
+    "asset",
+    "builders",
+    "call",
+    "cloud",
+    "conviction",
+    "even",
+    "finally"
+   ],
+   "source_subject": [
+    "approaching",
+    "averaging",
+    "beta",
+    "billion",
+    "business",
+    "categories",
+    "current",
+    "currently"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '28%' is attached to [actually, bank, borrow, buying, central] but the source uses it for [concerns, dline, drops, excluding, heavily] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "28%",
+   "draft_subject": [
+    "actually",
+    "bank",
+    "borrow",
+    "buying",
+    "central",
+    "cost",
+    "counters",
+    "down"
+   ],
+   "source_subject": [
+    "concerns",
+    "dline",
+    "drops",
+    "excluding",
+    "heavily",
+    "highlighting",
+    "illiquid",
+    "opaque"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.1% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.1",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "Forty-five minutes into Monday's session, the market is quiet everywhere except energy. $SPY is flat at +0.1%, $QQQ is barely better, and $VIXY is drifting lower as the market digests a sharp four-day"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.42]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "Forty-five minutes into Monday's session, the market is quiet everywhere except energy. $SPY is flat at +0.1%, $QQQ is barely better, and $VIXY is drifting lower as the market digests a sharp four-day"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "61.4% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.2, 4.1, 4.2]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "61.4",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "- The unemployment rate fell to 4.1%, but participation, the share of adults working or looking for work, dropped to 61.4% (Goldman). The jobless rate improved because people left the workforce, not b"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "25% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "25",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "This earnings season gave the AI trade its first hard proof of return. AI revenue at the hyperscalers (the giant cloud builders: Microsoft, Amazon, Google, Meta) finally turned meaningfully upward, Go"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "25% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.42]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "25",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "The squeeze that carried stocks into this week was shorts buying back, not fresh conviction, and the retail flow underneath it is defensive. Citadel Securities' July data shows $5.4 billion a day of r"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "35% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.42]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "35",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "The squeeze that carried stocks into this week was shorts buying back, not fresh conviction, and the retail flow underneath it is defensive. Citadel Securities' July data shows $5.4 billion a day of r"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.50% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.42]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.50",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "The squeeze that carried stocks into this week was shorts buying back, not fresh conviction, and the retail flow underneath it is defensive. Citadel Securities' July data shows $5.4 billion a day of r"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.35% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.42]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.35",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "The squeeze that carried stocks into this week was shorts buying back, not fresh conviction, and the retail flow underneath it is defensive. Citadel Securities' July data shows $5.4 billion a day of r"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.2% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.2",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday Aug 12, 8:30 AM ET: July CPI.** Consensus sees +0.1% headline and +0.2% core for the month, while Deutsche Bank forecasts +0.15% and +0.26%. A hot print locks in the September-hike prici"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.26% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL — near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.26",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday Aug 12, 8:30 AM ET: July CPI.** Consensus sees +0.1% headline and +0.2% core for the month, while Deutsche Bank forecasts +0.15% and +0.26%. A hot print locks in the September-hike prici"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 15,
+ "exit_code": 4
+}
