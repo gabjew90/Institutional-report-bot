@@ -3311,9 +3311,15 @@ _REP_STOPWORDS = frozenset({
 })
 
 
-def _strip_voice_sections(profiles_block: str) -> str:
+def _strip_voice_sections(
+    profiles_block: str, reason: str = "omitted on retry to clear filter",
+) -> str:
     """Remove `**Voice.**` bullet sections from every profile in the
     profiles_block while keeping the rest of each profile intact.
+
+    `reason` fills the stub left behind. The default reads as a retry
+    because that was the only caller until profile depth moved to
+    assembly time (2026-08-10); the proactive caller passes its own.
 
     Used by the filter-blocked retry path. Empirical testing
     (2026-06-03 19:49 UTC reproduction) showed that the Voice section
@@ -3343,7 +3349,7 @@ def _strip_voice_sections(profiles_block: str) -> str:
     import re as _re
     return _re.sub(
         r"\*\*Voice\.\*\*[ \t]*\n(?:[ \t]*- .*\n)+",
-        "**Voice.**\n- (omitted on retry to clear filter)\n",
+        f"**Voice.**\n- ({reason})\n",
         profiles_block,
     )
 
@@ -3361,6 +3367,123 @@ _SLUR_MASK_RE = re.compile(
     r"\b(?:nigg[ae]r?s?|chink|spic|kike|fag(?:got)?|pajeet)\b",
     re.IGNORECASE,
 )
+
+
+# ---------------------------------------------------------------------
+# PROFILE DEPTH — decided at prompt assembly, not after a filter block.
+#
+# Structural note (2026-08-10). Every filter fix before this one lived on
+# the RECOVERY path: voice-strip retry (06-03), slur-mask retry (06-04),
+# question-only retry, tier-0 identical resend (08-04), tools stripped
+# from the ladder config (08-07), google_search kept in it (08-10). Six
+# fixes, one unchanged premise — build the maximal prompt, send it, and
+# find out it was too hot only when Gemini rejects it. The ladder grew a
+# rung per incident and each rung shipped its own bug.
+#
+# The premise is the defect. The profile block is the filter bait, and
+# whether the ask needs that bait is knowable BEFORE the send: a question
+# about palladium options needs none of it, a roast needs all of it. So
+# profile depth becomes an assembly-time decision with a stamped reason,
+# and the ladder drops back to what it should always have been — a net
+# for the residual flicker on prompts that were already trimmed.
+#
+# The bait is in three containers, only one of which the ladder could
+# ever reach:
+#   1. **Voice.** verbatim chat samples          — _strip_voice_sections
+#   2. the racism-signal metric + its rationale prose  (header line)
+#   3. the "recent slur usage (regex fallback)" examples block
+# (2) and (3) sit outside **Voice.**, so every voice-strip retry left
+# them in. 2026-08-09's block is the tell: Ry_bry's Voice samples are
+# mild (humor:12/100, no slurs) and the ask still died.
+
+_PROFILE_METRICS_RE = re.compile(r'^(- \*\*.*?— )_([^_]*)_(:.*)$', re.M)
+_SLUR_EXAMPLES_RE = re.compile(
+    r'^[ \t]*recent slur usage \(regex fallback\):\n(?:[ \t]*· .*\n?)*',
+    re.M,
+)
+_PROFILE_NAME_RE = re.compile(r'^- \*\*(.+?)\*\* \(([^,)]+)', re.M)
+
+# Question shapes that genuinely need the person material. Deliberately
+# broad: a false FULL costs an occasional filter flicker (the ladder
+# still covers it), a false LEAN silently degrades a roast — which is
+# the product. When in doubt this must answer True.
+_PERSON_QUESTION_RE = re.compile(
+    r'\b(roast|clown|cook|dunk|drag|flame|insult|shit\s*talk|'
+    r'clap\s*back|jab|burn|mock|make\s*fun|'
+    r'who(?:\'s| is| are)?\b|whose|which (?:one|member|guy|trader)|'
+    r'worst|best|most|least|top \d|rank(?:ing|ed)?|leaderboard|'
+    r'profile|dossier|personality|vibe|say about|think about|'
+    r'compare|versus|vs\.?)\b',
+    re.IGNORECASE,
+)
+
+
+def _profile_names_in_block(profiles_block: str) -> list[str]:
+    """Display names + usernames of everyone loaded into WHO'S TALKING."""
+    out: list[str] = []
+    for disp, uname in _PROFILE_NAME_RE.findall(profiles_block or ""):
+        for n in (disp, uname):
+            n = (n or "").strip()
+            if len(n) >= 3:
+                out.append(n)
+    return out
+
+
+def _question_needs_person_material(
+    question: str, profiles_block: str,
+) -> tuple[bool, str]:
+    """Does this ask need the Voice samples / racism signal?
+
+    Returns (needs, reason). Reason is stamped into the ask-log so the
+    decision is auditable rather than forensic.
+    """
+    q = question or ""
+    if "[MESSAGE BEING REPLIED TO" in q:
+        # Replies are aimed at a person by construction.
+        return True, "reply-to-member"
+    if re.search(r"<@!?\d+>", q):
+        return True, "mentions-member"
+    try:
+        if _is_slur_count_question(q) or _is_message_count_question(q):
+            # These ARE the racism/message analytics — the material is
+            # the answer, not decoration.
+            return True, "room-analytics"
+    except Exception:
+        return True, "detector-error"
+    low = q.lower()
+    for name in _profile_names_in_block(profiles_block):
+        if re.search(rf"\b{re.escape(name.lower())}\b", low):
+            return True, "names-member"
+    if _PERSON_QUESTION_RE.search(q):
+        return True, "person-shape"
+    return False, "impersonal"
+
+
+def _lean_profiles_for_prompt(profiles_block: str) -> str:
+    """The profile block minus all three filter-bait containers.
+
+    Keeps what makes the bot sound like it knows the room — Personality
+    and style, trader-rank + rationale, Retarded takes, Recent trades,
+    Recent personal life — so an impersonal question still gets an
+    in-register answer addressed to a person the bot recognises.
+
+    The voice-strip half of this is the empirically validated shape:
+    "strip Voice only -> PASSES (3/3 runs)" (2026-06-03 reproduction).
+    LEAN drops strictly more, so it clears by at least as much.
+    """
+    if not profiles_block:
+        return profiles_block
+    out = _strip_voice_sections(
+        profiles_block, reason="not needed for this question",
+    )
+    out = _SLUR_EXAMPLES_RE.sub("", out)
+
+    def _drop_racism_bit(m: re.Match) -> str:
+        bits = [b for b in m.group(2).split(" · ")
+                if not b.lstrip().lower().startswith("racism")]
+        return f"{m.group(1)}_{' · '.join(bits)}_{m.group(3)}"
+
+    return _PROFILE_METRICS_RE.sub(_drop_racism_bit, out)
 
 
 def _mask_slur_tokens(text: str) -> str:
@@ -5726,9 +5849,29 @@ async def _answer_with_gemini(
                     f"Cross-window bot-answers fetch failed (non-fatal): {e}"
                 )
 
+        # PROFILE DEPTH decided here, before the send — see the block
+        # comment above _lean_profiles_for_prompt. `profiles_block` stays
+        # the FULL material because the answer-time guards (clapback
+        # fidelity, roast-recycle, pnl-monotone) check the answer against
+        # everything we know, not against what we chose to send.
+        # `profiles_for_prompt` is the only thing that reaches Gemini,
+        # on the first send and on every ladder rebuild.
+        _needs_person, _depth_reason = _question_needs_person_material(
+            question, profiles_block,
+        )
+        if profiles_block and not _needs_person:
+            profiles_for_prompt = _lean_profiles_for_prompt(profiles_block)
+            log.info(
+                f"/ask: profile depth LEAN ({_depth_reason}) — dropped "
+                f"{len(profiles_block) - len(profiles_for_prompt)} chars "
+                f"of voice/racism material the question doesn't need"
+            )
+        else:
+            profiles_for_prompt = profiles_block
+
         sections: list[str] = []
-        if profiles_block:
-            sections.append(profiles_block)
+        if profiles_for_prompt:
+            sections.append(profiles_for_prompt)
         if fetched_urls:
             sections.append(fetched_urls)
         if cross_window_block:
@@ -5799,6 +5942,12 @@ async def _answer_with_gemini(
             "route": "WEB" if needs_web else "LOCAL",
             "kind": "FACT" if _route_is_factual else "BANTER",
             "guards": [],
+            # Which profile shape actually went to Gemini, and why. The
+            # filter-block post-mortems before 2026-08-10 all had to
+            # reconstruct this from the logged prompt text.
+            "profile_depth": (
+                f"{'full' if _needs_person else 'lean'}:{_depth_reason}"
+            ),
             # Image count matters for QC: 0 means any "your screenshot
             # shows X" in the answer is a phantom read (2026-07-10).
             "images": len(images or []),
@@ -7747,9 +7896,31 @@ async def _answer_with_gemini(
                     except Exception as e:
                         log.warning(f"/ask: tier-0 retry call failed: {e}")
 
-                if not retry_succeeded and profiles_block and (prompt_block or safety_blocked):
+                # Tier 1 — voice-strip. Operates on what was ACTUALLY
+                # sent, never on the full block: a ladder rung must only
+                # ever shrink the payload. Rebuilding from profiles_block
+                # here would re-add the voice/racism material that
+                # assembly deliberately withheld, i.e. escalate on retry.
+                # When assembly already went LEAN this rung is a
+                # byte-identical resend of tier 0, so skip it and let the
+                # ladder move on to a genuinely different shape.
+                _voice_stripped_preview = _strip_voice_sections(
+                    profiles_for_prompt
+                ) if profiles_for_prompt else ""
+                _tier1_is_noop = (
+                    _voice_stripped_preview == profiles_for_prompt
+                )
+                if _tier1_is_noop and profiles_for_prompt:
+                    log.info(
+                        "/ask: skipping voice-strip tier — assembly already "
+                        "sent LEAN profiles, this rung would resend the "
+                        "identical prompt"
+                    )
+                if (not retry_succeeded and profiles_for_prompt
+                        and not _tier1_is_noop
+                        and (prompt_block or safety_blocked)):
                     try:
-                        voice_stripped = _strip_voice_sections(profiles_block)
+                        voice_stripped = _voice_stripped_preview
                         stripped_sections: list[str] = [voice_stripped]
                         if fetched_urls:
                             stripped_sections.append(fetched_urls)
@@ -7762,7 +7933,7 @@ async def _answer_with_gemini(
                         log.warning(
                             f"/ask: prompt_block={prompt_block!r}, safety_blocked="
                             f"{safety_blocked}, retrying once with Voice sections "
-                            f"stripped ({len(profiles_block) - len(voice_stripped)} "
+                            f"stripped ({len(profiles_for_prompt) - len(voice_stripped)} "
                             f"chars dropped)"
                         )
                         stripped_resp = await client.aio.models.generate_content(
@@ -7825,9 +7996,12 @@ async def _answer_with_gemini(
                 # text + chat-context slur density trips the filter on
                 # BOTH the first attempt and the Voice-strip retry. The
                 # mask drops the prompt below the threshold.
-                if not retry_succeeded and profiles_block and (prompt_block or safety_blocked):
+                # Same shrink-only rule as tier 1: mask what was sent.
+                if not retry_succeeded and profiles_for_prompt and (prompt_block or safety_blocked):
                     try:
-                        voice_stripped = _strip_voice_sections(profiles_block)
+                        voice_stripped = _strip_voice_sections(
+                            profiles_for_prompt
+                        )
                         masked_sections: list[str] = [
                             _mask_slur_tokens(voice_stripped)
                         ]

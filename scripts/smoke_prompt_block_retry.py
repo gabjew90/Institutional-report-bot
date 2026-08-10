@@ -15,6 +15,7 @@ Can't run the full _answer_with_gemini end-to-end (needs Gemini key
 """
 
 import inspect
+import re
 import sys
 
 
@@ -132,15 +133,28 @@ def test_retry_only_when_profiles_present():
     # now deliberately tier 0 of the ladder — the filter proved
     # non-deterministic, see smoke_filter_retry_tier0 — so this rung's
     # job is purely the content surgery, and it needs content to cut.)
+    # 2026-08-10: this used to pin the literal identifier
+    # `"profiles_block and"`. Profile depth moved to assembly time and the
+    # gate became the stricter `profiles_for_prompt and not _tier1_is_noop`
+    # — the rung now skips both when there is nothing loaded AND when
+    # assembly already sent LEAN profiles (where stripping voice is a
+    # byte-identical resend of tier 0). The intent never changed; only the
+    # name did, and the pin failed on a strictly better gate. Assert the
+    # intent instead.
     retry_start = src.find("stripped_sections: list[str] = [voice_stripped]")
-    pre = src[max(0, retry_start - 800):retry_start]
-    assert "profiles_block and" in pre, (
-        "voice-strip rung must be gated on profiles_block being present"
+    pre = src[max(0, retry_start - 1200):retry_start]
+    assert re.search(r"if \(?not retry_succeeded\s+and profiles_\w+", pre), (
+        "voice-strip rung must be gated on a profile payload being present"
     )
     assert "not retry_succeeded" in pre, (
         "voice-strip rung must be skipped when tier 0 already recovered"
     )
-    _ok("static: voice-strip rung gated on profiles_block + tier-0 miss")
+    assert "_tier1_is_noop" in pre, (
+        "voice-strip rung must also skip when it would resend an identical "
+        "prompt (assembly already sent LEAN profiles)"
+    )
+    _ok("static: voice-strip rung gated on payload present + tier-0 miss "
+        "+ not-a-noop")
 
 
 if __name__ == "__main__":
