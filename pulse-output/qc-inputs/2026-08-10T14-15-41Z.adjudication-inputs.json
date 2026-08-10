@@ -1,0 +1,2143 @@
+{
+ "ai investment cycle": {
+  "theme": "ai investment cycle",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 0,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "AI investment cycle",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Hyperscaler AI revenue contribution shows clear evidence of ROI.",
+    "primary_instruments": [
+     "AMZN",
+     "MSFT"
+    ],
+    "vs_consensus": "",
+    "evidence": "This quarter marked an inflection in hyperscaler AI revenue contribution"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai investment cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure capital spending",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure capital spending"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai investment cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure capital expenditure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure capital expenditure"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai investment cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-capex spending build-out",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-capex spending build-out"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai investment cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-driven demand for data centers and power infrastructure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-driven demand for data centers and power infrastructure"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai investment cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI build out",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI build out"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai investment cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler AI revenue",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler AI revenue"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai investment cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI capex growth sustainability",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI capex growth sustainability"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3%",
+    "metric": "Managed Money net length 2-year rank",
+    "context": "As of July 28, indicating extreme positioning lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+8.3%",
+    "metric": "Silver price change",
+    "context": "July 28 - August 5."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$2.4B",
+    "metric": "Silver aggregate open interest increase",
+    "context": "July 28 - August 5."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-23k",
+    "metric": "Nonfarm payrolls",
+    "context": "July print vs 80k median forecast."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.1%",
+    "metric": "Unemployment rate",
+    "context": "July print vs 4.2% median forecast."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.05%",
+    "metric": "Average hourly earnings MoM",
+    "context": "July print vs 0.3% median forecast."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20k",
+    "metric": "Three-month average payroll growth",
+    "context": "Down from 111k prior to report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5k",
+    "metric": "Underlying pace of job growth",
+    "context": "GS estimate, down from 74k prior to report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75k",
+    "metric": "Nonfarm payrolls estimate",
+    "context": "July 2026, vs consensus 80k"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.3%",
+    "metric": "Unemployment rate estimate",
+    "context": "July 2026, vs consensus 4.2%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.3%",
+    "metric": "Average hourly earnings MoM estimate",
+    "context": "July 2026, in line with consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "111k",
+    "metric": "Three-month average payroll growth",
+    "context": "As of July 2026"
+   },
+   {
+    "source_bank": "Department of Labor",
+    "figure": "1.1%",
+    "metric": "JOLTS layoff rate",
+    "context": "June 2026, unchanged"
+   },
+   {
+    "source_bank": "The Conference Board",
+    "figure": "+3.1",
+    "metric": "Conference Board labor differential",
+    "context": "July 2026, edged down 0.7pt"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75k",
+    "metric": "Nonfarm payrolls forecast",
+    "context": "July estimate vs 80k consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.3%",
+    "metric": "Unemployment rate forecast",
+    "context": "July estimate vs 4.2% consensus"
+   },
+   {
+    "source_bank": "Infineon",
+    "figure": "€16.3bn",
+    "metric": "FY26 revenue forecast",
+    "context": "11% YoY increase"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "19%",
+    "metric": "Q2 net profit beat",
+    "context": "vs company-compiled consensus"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "5%",
+    "metric": "Q2 net profit beat",
+    "context": "vs company-compiled consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3,150p",
+    "metric": "Price target",
+    "context": "Smiths Group"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">€7bn",
+    "metric": "2026 EBIT forecast",
+    "context": "DHL Group"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "27:1",
+    "metric": "value ratio of bids to new UK listings",
+    "context": "Current UK corporate takeout activity"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+25% y/y",
+    "metric": "S&P 500 earnings growth",
+    "context": "Average for Q1 and Q2 (ex-privates)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$25B",
+    "metric": "Alphabet bond issuance",
+    "context": "Reported this week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+18%",
+    "metric": "NVDA rally",
+    "context": "Rally off the lows of last week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+3",
+    "metric": "Gold positioning index",
+    "context": "Scale of -10 to +10; January was +10."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4k",
+    "metric": "Gold price base",
+    "context": "Base created by central bank purchases."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75k",
+    "metric": "Nonfarm payrolls forecast",
+    "context": "July forecast vs 80k consensus."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.3%",
+    "metric": "Unemployment rate forecast",
+    "context": "July forecast vs 4.2% consensus."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Hungary inflation print",
+    "context": "Versus 1.6% consensus; 7th consecutive downside surprise."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "28%",
+    "metric": "Central bank gold buying decline",
+    "context": "Y/Y YTD decline."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.8%",
+    "metric": "EURHUF sensitivity to oil",
+    "context": "Impact of 10% oil move on EURHUF."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "-0.42% MoM",
+    "metric": "June headline CPI",
+    "context": "June print, used as comparison for July forecast."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "55.2",
+    "metric": "July University of Michigan consumer sentiment index",
+    "context": "July print, used as comparison for August forecast."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$58bn",
+    "metric": "US 3-yr Note auction size",
+    "context": "Scheduled for August 11."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$42bn",
+    "metric": "US 10-yr Note auction size",
+    "context": "Scheduled for August 12."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$25bn",
+    "metric": "US 30-yr Bond auction size",
+    "context": "Scheduled for August 13."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+1.8%",
+    "metric": "S&P 500 daily return",
+    "context": "Rally following 1.5% gain on Monday, 8/5/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+13%",
+    "metric": "Goldman Sachs 'most shorted' basket return",
+    "context": "4-day performance as of 8/6/2026."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "65%",
+    "metric": "US share of total OECD profits",
+    "context": "As of end-2025, up from 50% in late 2022."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "50%-55%",
+    "metric": "US share of OECD revenues",
+    "context": "Stable range over the past two decades."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "10%",
+    "metric": "Manufacturing share of US economy",
+    "context": "Cited as a proportion of final sales."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "4%",
+    "metric": "Gold price increase",
+    "context": "Intraday move on August 6, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19k lots",
+    "metric": "Shanghai exchange open interest increase",
+    "context": "6% increase, top-5 move on 3y lookback."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~50%",
+    "metric": "Chinese total length vs 4q25 high",
+    "context": "Current positioning remains well below previous highs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "225 MT",
+    "metric": "Chinese gold imports YTD",
+    "context": "Compared to 28 MT in 1H 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~28%",
+    "metric": "Central bank buying decline y/y",
+    "context": "YTD figure."
+   },
+   {
+    "source_bank": "Market pricing",
+    "figure": "55%",
+    "metric": "Probability of September rate hike",
+    "context": "Implied by futures market as of August 2026."
+   },
+   {
+    "source_bank": "Federal Reserve",
+    "figure": "2%",
+    "metric": "Inflation target",
+    "context": "Long-term goal; market expectations remain anchored here."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3%",
+    "metric": "Managed Money net length 2-year rank",
+    "context": "As of July 28, indicating extreme positioning lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+8.3%",
+    "metric": "Silver price change",
+    "context": "July 28 - August 5."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$2.4B",
+    "metric": "Silver aggregate open interest increase",
+    "context": "July 28 - August 5."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+46%",
+    "metric": "y/y EPS growth (headline)",
+    "context": "Reported earnings season growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+28%",
+    "metric": "y/y EPS growth (ex-privates)",
+    "context": "Adjusted earnings growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250-350B",
+    "metric": "Implied AI capex FY27",
+    "context": "Based on SpaceX inaugural print."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$60.6B",
+    "metric": "Street AI capex estimate",
+    "context": "Comparison to SpaceX implied capex."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.1%",
+    "metric": "Hedge fund net allocation to Korean semis",
+    "context": "As of July 29, down from 7.2% at end-June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1,000",
+    "metric": "psychologically important support level",
+    "context": "Longer-term uptrend support for SanDisk."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$900",
+    "metric": "200-day moving average support",
+    "context": "Support level for SanDisk."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+5%",
+    "metric": "Silver price move",
+    "context": "As of writing"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$72",
+    "metric": "Resistance level",
+    "context": "Aligned with 200-day moving average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$250",
+    "metric": "Gold price surge",
+    "context": "Move over a matter of sessions."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$230",
+    "metric": "Gold price increase",
+    "context": "Increase from Wednesday's lows."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$4,400",
+    "metric": "Gold resistance level",
+    "context": "Near the 100-day moving average."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$10 billion",
+    "metric": "SoftBank loan against OpenAI stake",
+    "context": "Revealed yesterday."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$250 billion",
+    "metric": "Nvidia data center project backstop",
+    "context": "Commitment for OpenAI data center project."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$215 billion",
+    "metric": "Nvidia total annual revenue",
+    "context": "At the height of the bubble."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5 trillion",
+    "metric": "Aggregate hyperscaler lease commitments",
+    "context": "Includes $1 trillion in commitments not yet commenced."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25bp",
+    "metric": "AI-related IG spread widening",
+    "context": "Vs non-AI counterparts."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "34bp",
+    "metric": "Hyperscaler spread widening",
+    "context": "Since June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "18bp",
+    "metric": "Hardware and software spread widening",
+    "context": "Since June."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "22%",
+    "metric": "Bills outstanding as a proportion of total debt",
+    "context": "Historically elevated level."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.3%",
+    "metric": "Hyperscaler share of $IG index",
+    "context": "Current share as of August 2026."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "32bps",
+    "metric": "YTD spread widening for $IG hyperscalers",
+    "context": "YTD performance vs -1bp for non-fin ex-hyperscalers."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "21%",
+    "metric": "Hyperscaler share of 30-year $IG bucket",
+    "context": "Current concentration level."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "40%",
+    "metric": "Hyperscaler share of 30-year deals YTD",
+    "context": "YTD 2026 supply data."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "20%",
+    "metric": "S&P 500 drawdown",
+    "context": "October 2018 market correction cited as evidence of FCI volatility."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "5% to 10%",
+    "metric": "Nucor shipment growth expectation for 2026",
+    "context": "Updated expectation for 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$289B",
+    "metric": "RTX backlog",
+    "context": "Record high, up 22% YoY and 6% sequentially"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$20B",
+    "metric": "RTX OE and aftermarket orders",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$10.732B",
+    "metric": "Amphenol orders",
+    "context": "Record Q2 2026, up 94% YoY and 14% sequentially"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "1.23:1",
+    "metric": "Amphenol book-to-bill ratio",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "36.7%",
+    "metric": "AWS revenue growth",
+    "context": "Q2 2026 YoY"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4%",
+    "metric": "Verizon mobility and broadband service revenue growth forecast",
+    "context": "Q4 2026 YoY"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "13%",
+    "metric": "Ameriprise revenue growth",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$14.1B",
+    "metric": "Comfort Systems USA backlog",
+    "context": "New high"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$230B",
+    "metric": "Lockheed Martin backlog",
+    "context": "New all-time high"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "11%",
+    "metric": "Raymond James fee-based assets growth",
+    "context": "Sequentially entering Q4"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "12%",
+    "metric": "Union Pacific freight revenue growth",
+    "context": "Q2 2026 YoY"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "29.8 million",
+    "metric": "CME Group average daily volume",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "1.84x",
+    "metric": "Northrop Grumman book-to-bill ratio",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$105B",
+    "metric": "Northrop Grumman backlog",
+    "context": "New record high"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "17%",
+    "metric": "General Electric orders growth",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "6% to 8%",
+    "metric": "East West Bancorp full-year loan growth guidance",
+    "context": "Updated guidance for year-end 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "65k",
+    "metric": "Nonfarm Payrolls forecast",
+    "context": "July forecast vs 57k previous"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.2%",
+    "metric": "Unemployment rate forecast",
+    "context": "July forecast vs 4.2% consensus"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+11.0bps",
+    "metric": "US 1yr inflation swap daily increase",
+    "context": "Largest daily increase in four weeks"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34bps",
+    "metric": "Fed hikes priced by year-end",
+    "context": "Increased by 3.0bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "199k",
+    "metric": "Initial jobless claims",
+    "context": "Week ending Aug 1 vs 205k est"
+   },
+   {
+    "source_bank": "Challenger, Gray & Christmas",
+    "figure": "33,429",
+    "metric": "Job cut announcements",
+    "context": "Lowest level in two years vs 45,849 prior month"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+1.4%",
+    "metric": "US non-farm productivity Q2",
+    "context": "vs +0.6% est"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-23k",
+    "metric": "Nonfarm payrolls",
+    "context": "July print vs 80k median forecast."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.1%",
+    "metric": "Unemployment rate",
+    "context": "July print vs 4.2% median forecast."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.05%",
+    "metric": "Average hourly earnings MoM",
+    "context": "July print vs 0.3% median forecast."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20k",
+    "metric": "Three-month average payroll growth",
+    "context": "Down from 111k prior to report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5k",
+    "metric": "Underlying pace of job growth",
+    "context": "GS estimate, down from 74k prior to report."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75k",
+    "metric": "Nonfarm payrolls estimate",
+    "context": "July 2026, vs consensus 80k"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.3%",
+    "metric": "Unemployment rate estimate",
+    "context": "July 2026, vs consensus 4.2%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.3%",
+    "metric": "Average hourly earnings MoM estimate",
+    "context": "July 2026, in line with consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "111k",
+    "metric": "Three-month average payroll growth",
+    "context": "As of July 2026"
+   },
+   {
+    "source_bank": "Department of Labor",
+    "figure": "1.1%",
+    "metric": "JOLTS layoff rate",
+    "context": "June 2026, unchanged"
+   },
+   {
+    "source_bank": "The Conference Board",
+    "figure": "+3.1",
+    "metric": "Conference Board labor differential",
+    "context": "July 2026, edged down 0.7pt"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75k",
+    "metric": "Nonfarm payrolls forecast",
+    "context": "July estimate vs 80k consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.3%",
+    "metric": "Unemployment rate forecast",
+    "context": "July estimate vs 4.2% consensus"
+   },
+   {
+    "source_bank": "Infineon",
+    "figure": "€16.3bn",
+    "metric": "FY26 revenue forecast",
+    "context": "11% YoY increase"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "19%",
+    "metric": "Q2 net profit beat",
+    "context": "vs company-compiled consensus"
+   },
+   {
+    "source_bank": "ING",
+    "figure": "5%",
+    "metric": "Q2 net profit beat",
+    "context": "vs company-compiled consensus"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3,150p",
+    "metric": "Price target",
+    "context": "Smiths Group"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": ">€7bn",
+    "metric": "2026 EBIT forecast",
+    "context": "DHL Group"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "27:1",
+    "metric": "value ratio of bids to new UK listings",
+    "context": "Current UK corporate takeout activity"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+25% y/y",
+    "metric": "S&P 500 earnings growth",
+    "context": "Average for Q1 and Q2 (ex-privates)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$25B",
+    "metric": "Alphabet bond issuance",
+    "context": "Reported this week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+18%",
+    "metric": "NVDA rally",
+    "context": "Rally off the lows of last week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+3",
+    "metric": "Gold positioning index",
+    "context": "Scale of -10 to +10; January was +10."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4k",
+    "metric": "Gold price base",
+    "context": "Base created by central bank purchases."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75k",
+    "metric": "Nonfarm payrolls forecast",
+    "context": "July forecast vs 80k consensus."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.3%",
+    "metric": "Unemployment rate forecast",
+    "context": "July forecast vs 4.2% consensus."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Hungary inflation print",
+    "context": "Versus 1.6% consensus; 7th consecutive downside surprise."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "28%",
+    "metric": "Central bank gold buying decline",
+    "context": "Y/Y YTD decline."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.8%",
+    "metric": "EURHUF sensitivity to oil",
+    "context": "Impact of 10% oil move on EURHUF."
+   }
+  ]
+ },
+ "hormuz strait transit uncertainty": {
+  "theme": "hormuz strait transit uncertainty",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "Mizuho",
+    "theme": "hormuz strait transit uncertainty",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz reopening uncertainty",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz reopening uncertainty"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "hormuz strait transit uncertainty",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz oil supply rumors",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz oil supply rumors"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "hormuz strait transit uncertainty",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz reopening negotiations",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz reopening negotiations"
+   },
+   {
+    "source": "Rabobank",
+    "theme": "hormuz strait transit uncertainty",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz shipping transit window",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz shipping transit window"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "hormuz strait transit uncertainty",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Iran-Oman Strait of Hormuz deal",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Iran-Oman Strait of Hormuz deal"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Consensus",
+    "figure": "80k",
+    "metric": "NFP consensus estimate",
+    "context": "August payrolls"
+   },
+   {
+    "source_bank": "Consensus",
+    "figure": "4.2%",
+    "metric": "Unemployment rate consensus",
+    "context": "August payrolls"
+   },
+   {
+    "source_bank": "Consensus",
+    "figure": "0.3% MoM",
+    "metric": "AHE consensus",
+    "context": "August payrolls"
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "-3.3% YoY",
+    "metric": "Japanese household spending",
+    "context": "June print vs 0.9% consensus"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "-0.42% MoM",
+    "metric": "June headline CPI",
+    "context": "June print, used as comparison for July forecast."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "55.2",
+    "metric": "July University of Michigan consumer sentiment index",
+    "context": "July print, used as comparison for August forecast."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$58bn",
+    "metric": "US 3-yr Note auction size",
+    "context": "Scheduled for August 11."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$42bn",
+    "metric": "US 10-yr Note auction size",
+    "context": "Scheduled for August 12."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$25bn",
+    "metric": "US 30-yr Bond auction size",
+    "context": "Scheduled for August 13."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "4%",
+    "metric": "Gold price increase",
+    "context": "Intraday move on August 6, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19k lots",
+    "metric": "Shanghai exchange open interest increase",
+    "context": "6% increase, top-5 move on 3y lookback."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~50%",
+    "metric": "Chinese total length vs 4q25 high",
+    "context": "Current positioning remains well below previous highs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "225 MT",
+    "metric": "Chinese gold imports YTD",
+    "context": "Compared to 28 MT in 1H 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~28%",
+    "metric": "Central bank buying decline y/y",
+    "context": "YTD figure."
+   },
+   {
+    "source_bank": "Market pricing",
+    "figure": "55%",
+    "metric": "Probability of September rate hike",
+    "context": "Implied by futures market as of August 2026."
+   },
+   {
+    "source_bank": "Federal Reserve",
+    "figure": "2%",
+    "metric": "Inflation target",
+    "context": "Long-term goal; market expectations remain anchored here."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+46%",
+    "metric": "y/y EPS growth (headline)",
+    "context": "Reported earnings season growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+28%",
+    "metric": "y/y EPS growth (ex-privates)",
+    "context": "Adjusted earnings growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250-350B",
+    "metric": "Implied AI capex FY27",
+    "context": "Based on SpaceX inaugural print."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$60.6B",
+    "metric": "Street AI capex estimate",
+    "context": "Comparison to SpaceX implied capex."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.1%",
+    "metric": "Hedge fund net allocation to Korean semis",
+    "context": "As of July 29, down from 7.2% at end-June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1,000",
+    "metric": "psychologically important support level",
+    "context": "Longer-term uptrend support for SanDisk."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$900",
+    "metric": "200-day moving average support",
+    "context": "Support level for SanDisk."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+5%",
+    "metric": "Silver price move",
+    "context": "As of writing"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$72",
+    "metric": "Resistance level",
+    "context": "Aligned with 200-day moving average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$250",
+    "metric": "Gold price surge",
+    "context": "Move over a matter of sessions."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$230",
+    "metric": "Gold price increase",
+    "context": "Increase from Wednesday's lows."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$4,400",
+    "metric": "Gold resistance level",
+    "context": "Near the 100-day moving average."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$10 billion",
+    "metric": "SoftBank loan against OpenAI stake",
+    "context": "Revealed yesterday."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$250 billion",
+    "metric": "Nvidia data center project backstop",
+    "context": "Commitment for OpenAI data center project."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$215 billion",
+    "metric": "Nvidia total annual revenue",
+    "context": "At the height of the bubble."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5 trillion",
+    "metric": "Aggregate hyperscaler lease commitments",
+    "context": "Includes $1 trillion in commitments not yet commenced."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25bp",
+    "metric": "AI-related IG spread widening",
+    "context": "Vs non-AI counterparts."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "34bp",
+    "metric": "Hyperscaler spread widening",
+    "context": "Since June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "18bp",
+    "metric": "Hardware and software spread widening",
+    "context": "Since June."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "0.2% m/m",
+    "metric": "German industrial production",
+    "context": "June print, offset by lower growth in previous month."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "0.4% q/q",
+    "metric": "Eurozone GDP growth",
+    "context": "Preliminary estimate, risk of downward revision."
+   },
+   {
+    "source_bank": "Consensus",
+    "figure": "80,000",
+    "metric": "US non-farm payrolls",
+    "context": "July expectation."
+   },
+   {
+    "source_bank": "Consensus",
+    "figure": "4.2%",
+    "metric": "US unemployment rate",
+    "context": "July expectation."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.3%",
+    "metric": "Hyperscaler share of $IG index",
+    "context": "Current share as of August 2026."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "32bps",
+    "metric": "YTD spread widening for $IG hyperscalers",
+    "context": "YTD performance vs -1bp for non-fin ex-hyperscalers."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "21%",
+    "metric": "Hyperscaler share of 30-year $IG bucket",
+    "context": "Current concentration level."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "40%",
+    "metric": "Hyperscaler share of 30-year deals YTD",
+    "context": "YTD 2026 supply data."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "20%",
+    "metric": "S&P 500 drawdown",
+    "context": "October 2018 market correction cited as evidence of FCI volatility."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "5% to 10%",
+    "metric": "Nucor shipment growth expectation for 2026",
+    "context": "Updated expectation for 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$289B",
+    "metric": "RTX backlog",
+    "context": "Record high, up 22% YoY and 6% sequentially"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$20B",
+    "metric": "RTX OE and aftermarket orders",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$10.732B",
+    "metric": "Amphenol orders",
+    "context": "Record Q2 2026, up 94% YoY and 14% sequentially"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "1.23:1",
+    "metric": "Amphenol book-to-bill ratio",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "36.7%",
+    "metric": "AWS revenue growth",
+    "context": "Q2 2026 YoY"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4%",
+    "metric": "Verizon mobility and broadband service revenue growth forecast",
+    "context": "Q4 2026 YoY"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "13%",
+    "metric": "Ameriprise revenue growth",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$14.1B",
+    "metric": "Comfort Systems USA backlog",
+    "context": "New high"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$230B",
+    "metric": "Lockheed Martin backlog",
+    "context": "New all-time high"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "11%",
+    "metric": "Raymond James fee-based assets growth",
+    "context": "Sequentially entering Q4"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "12%",
+    "metric": "Union Pacific freight revenue growth",
+    "context": "Q2 2026 YoY"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "29.8 million",
+    "metric": "CME Group average daily volume",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "1.84x",
+    "metric": "Northrop Grumman book-to-bill ratio",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$105B",
+    "metric": "Northrop Grumman backlog",
+    "context": "New record high"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "17%",
+    "metric": "General Electric orders growth",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "6% to 8%",
+    "metric": "East West Bancorp full-year loan growth guidance",
+    "context": "Updated guidance for year-end 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "65k",
+    "metric": "Nonfarm Payrolls forecast",
+    "context": "July forecast vs 57k previous"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.2%",
+    "metric": "Unemployment rate forecast",
+    "context": "July forecast vs 4.2% consensus"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+11.0bps",
+    "metric": "US 1yr inflation swap daily increase",
+    "context": "Largest daily increase in four weeks"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34bps",
+    "metric": "Fed hikes priced by year-end",
+    "context": "Increased by 3.0bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "199k",
+    "metric": "Initial jobless claims",
+    "context": "Week ending Aug 1 vs 205k est"
+   },
+   {
+    "source_bank": "Challenger, Gray & Christmas",
+    "figure": "33,429",
+    "metric": "Job cut announcements",
+    "context": "Lowest level in two years vs 45,849 prior month"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+1.4%",
+    "metric": "US non-farm productivity Q2",
+    "context": "vs +0.6% est"
+   }
+  ]
+ },
+ "kevin warsh monetary policy": {
+  "theme": "kevin warsh monetary policy",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Lombard Street Research",
+    "theme": "kevin warsh monetary policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Kevin Warsh monetary task forces",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Kevin Warsh monetary task forces"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "kevin warsh monetary policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Kevin Warsh's quiet revolution",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Kevin Warsh's quiet revolution"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "kevin warsh monetary policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Kevin Warsh's distaste for forward guidance",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Kevin Warsh's distaste for forward guidance"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "kevin warsh monetary policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Kevin Warsh Fed leadership",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Kevin Warsh Fed leadership"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Lombard Street Research",
+    "figure": "57k",
+    "metric": "July payrolls",
+    "context": "Reported 07/2026, noted as half of market consensus."
+   },
+   {
+    "source_bank": "Lombard Street Research",
+    "figure": "4.2%",
+    "metric": "Unemployment rate",
+    "context": "Down from 4.3% in prior period, driven by participation decline."
+   },
+   {
+    "source_bank": "Lombard Street Research",
+    "figure": "3.5% YoY",
+    "metric": "Earnings growth",
+    "context": "July 2026 print."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+1.8%",
+    "metric": "S&P 500 daily return",
+    "context": "Rally following 1.5% gain on Monday, 8/5/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+13%",
+    "metric": "Goldman Sachs 'most shorted' basket return",
+    "context": "4-day performance as of 8/6/2026."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "65%",
+    "metric": "US share of total OECD profits",
+    "context": "As of end-2025, up from 50% in late 2022."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "50%-55%",
+    "metric": "US share of OECD revenues",
+    "context": "Stable range over the past two decades."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "10%",
+    "metric": "Manufacturing share of US economy",
+    "context": "Cited as a proportion of final sales."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "4%",
+    "metric": "Gold price increase",
+    "context": "Intraday move on August 6, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19k lots",
+    "metric": "Shanghai exchange open interest increase",
+    "context": "6% increase, top-5 move on 3y lookback."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~50%",
+    "metric": "Chinese total length vs 4q25 high",
+    "context": "Current positioning remains well below previous highs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "225 MT",
+    "metric": "Chinese gold imports YTD",
+    "context": "Compared to 28 MT in 1H 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~28%",
+    "metric": "Central bank buying decline y/y",
+    "context": "YTD figure."
+   },
+   {
+    "source_bank": "Market pricing",
+    "figure": "55%",
+    "metric": "Probability of September rate hike",
+    "context": "Implied by futures market as of August 2026."
+   },
+   {
+    "source_bank": "Federal Reserve",
+    "figure": "2%",
+    "metric": "Inflation target",
+    "context": "Long-term goal; market expectations remain anchored here."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+46%",
+    "metric": "y/y EPS growth (headline)",
+    "context": "Reported earnings season growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+28%",
+    "metric": "y/y EPS growth (ex-privates)",
+    "context": "Adjusted earnings growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250-350B",
+    "metric": "Implied AI capex FY27",
+    "context": "Based on SpaceX inaugural print."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$60.6B",
+    "metric": "Street AI capex estimate",
+    "context": "Comparison to SpaceX implied capex."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.1%",
+    "metric": "Hedge fund net allocation to Korean semis",
+    "context": "As of July 29, down from 7.2% at end-June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1,000",
+    "metric": "psychologically important support level",
+    "context": "Longer-term uptrend support for SanDisk."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$900",
+    "metric": "200-day moving average support",
+    "context": "Support level for SanDisk."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+5%",
+    "metric": "Silver price move",
+    "context": "As of writing"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$72",
+    "metric": "Resistance level",
+    "context": "Aligned with 200-day moving average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$250",
+    "metric": "Gold price surge",
+    "context": "Move over a matter of sessions."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$230",
+    "metric": "Gold price increase",
+    "context": "Increase from Wednesday's lows."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$4,400",
+    "metric": "Gold resistance level",
+    "context": "Near the 100-day moving average."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$10 billion",
+    "metric": "SoftBank loan against OpenAI stake",
+    "context": "Revealed yesterday."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$250 billion",
+    "metric": "Nvidia data center project backstop",
+    "context": "Commitment for OpenAI data center project."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$215 billion",
+    "metric": "Nvidia total annual revenue",
+    "context": "At the height of the bubble."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5 trillion",
+    "metric": "Aggregate hyperscaler lease commitments",
+    "context": "Includes $1 trillion in commitments not yet commenced."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25bp",
+    "metric": "AI-related IG spread widening",
+    "context": "Vs non-AI counterparts."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "34bp",
+    "metric": "Hyperscaler spread widening",
+    "context": "Since June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "18bp",
+    "metric": "Hardware and software spread widening",
+    "context": "Since June."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "22%",
+    "metric": "Bills outstanding as a proportion of total debt",
+    "context": "Historically elevated level."
+   }
+  ]
+ },
+ "warsh economic outlook": {
+  "theme": "warsh economic outlook",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Mizuho",
+    "theme": "warsh economic outlook",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Warsh solid steady labor market framing",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Warsh solid steady labor market framing"
+   },
+   {
+    "source": "TS Lombard",
+    "theme": "warsh economic outlook",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Warsh thesis of growth without inflation",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Warsh thesis of growth without inflation"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "warsh economic outlook",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Warsh Fed interest rate policy",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Warsh Fed interest rate policy"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Consensus",
+    "figure": "80k",
+    "metric": "NFP consensus estimate",
+    "context": "August payrolls"
+   },
+   {
+    "source_bank": "Consensus",
+    "figure": "4.2%",
+    "metric": "Unemployment rate consensus",
+    "context": "August payrolls"
+   },
+   {
+    "source_bank": "Consensus",
+    "figure": "0.3% MoM",
+    "metric": "AHE consensus",
+    "context": "August payrolls"
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "-3.3% YoY",
+    "metric": "Japanese household spending",
+    "context": "June print vs 0.9% consensus"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "-0.42% MoM",
+    "metric": "June headline CPI",
+    "context": "June print, used as comparison for July forecast."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "55.2",
+    "metric": "July University of Michigan consumer sentiment index",
+    "context": "July print, used as comparison for August forecast."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$58bn",
+    "metric": "US 3-yr Note auction size",
+    "context": "Scheduled for August 11."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$42bn",
+    "metric": "US 10-yr Note auction size",
+    "context": "Scheduled for August 12."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$25bn",
+    "metric": "US 30-yr Bond auction size",
+    "context": "Scheduled for August 13."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.3%",
+    "metric": "Hyperscaler share of $IG index",
+    "context": "Current share as of August 2026."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "32bps",
+    "metric": "YTD spread widening for $IG hyperscalers",
+    "context": "YTD performance vs -1bp for non-fin ex-hyperscalers."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "21%",
+    "metric": "Hyperscaler share of 30-year $IG bucket",
+    "context": "Current concentration level."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "40%",
+    "metric": "Hyperscaler share of 30-year deals YTD",
+    "context": "YTD 2026 supply data."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "20%",
+    "metric": "S&P 500 drawdown",
+    "context": "October 2018 market correction cited as evidence of FCI volatility."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "5% to 10%",
+    "metric": "Nucor shipment growth expectation for 2026",
+    "context": "Updated expectation for 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$289B",
+    "metric": "RTX backlog",
+    "context": "Record high, up 22% YoY and 6% sequentially"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$20B",
+    "metric": "RTX OE and aftermarket orders",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$10.732B",
+    "metric": "Amphenol orders",
+    "context": "Record Q2 2026, up 94% YoY and 14% sequentially"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "1.23:1",
+    "metric": "Amphenol book-to-bill ratio",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "36.7%",
+    "metric": "AWS revenue growth",
+    "context": "Q2 2026 YoY"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4%",
+    "metric": "Verizon mobility and broadband service revenue growth forecast",
+    "context": "Q4 2026 YoY"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "13%",
+    "metric": "Ameriprise revenue growth",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$14.1B",
+    "metric": "Comfort Systems USA backlog",
+    "context": "New high"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$230B",
+    "metric": "Lockheed Martin backlog",
+    "context": "New all-time high"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "11%",
+    "metric": "Raymond James fee-based assets growth",
+    "context": "Sequentially entering Q4"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "12%",
+    "metric": "Union Pacific freight revenue growth",
+    "context": "Q2 2026 YoY"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "29.8 million",
+    "metric": "CME Group average daily volume",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "1.84x",
+    "metric": "Northrop Grumman book-to-bill ratio",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$105B",
+    "metric": "Northrop Grumman backlog",
+    "context": "New record high"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "17%",
+    "metric": "General Electric orders growth",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "6% to 8%",
+    "metric": "East West Bancorp full-year loan growth guidance",
+    "context": "Updated guidance for year-end 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "65k",
+    "metric": "Nonfarm Payrolls forecast",
+    "context": "July forecast vs 57k previous"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.2%",
+    "metric": "Unemployment rate forecast",
+    "context": "July forecast vs 4.2% consensus"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+11.0bps",
+    "metric": "US 1yr inflation swap daily increase",
+    "context": "Largest daily increase in four weeks"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "34bps",
+    "metric": "Fed hikes priced by year-end",
+    "context": "Increased by 3.0bps"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "199k",
+    "metric": "Initial jobless claims",
+    "context": "Week ending Aug 1 vs 205k est"
+   },
+   {
+    "source_bank": "Challenger, Gray & Christmas",
+    "figure": "33,429",
+    "metric": "Job cut announcements",
+    "context": "Lowest level in two years vs 45,849 prior month"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+1.4%",
+    "metric": "US non-farm productivity Q2",
+    "context": "vs +0.6% est"
+   }
+  ]
+ },
+ "fed guidance and market volatility": {
+  "theme": "fed guidance and market volatility",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 3,
+   "neutral": 0
+  },
+  "theme_stances": [
+   {
+    "source": "Lombard Street Research",
+    "theme": "fed forward guidance",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Moving away from forward guidance may increase short-term volatility and risks undermining central bank accountability.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The implications: more short-term volatility (and maybe less longer-term volatility)"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "fed communication shift",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Stripping away guidance does not produce better information but rather less accurate market beliefs.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "Strip away guidance and you do not magically produce better information"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "rate volatility regime",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The lack of Fed forward guidance under Kevin Warsh creates a structurally more volatile backdrop for financial markets.",
+    "primary_instruments": [
+     "TLT"
+    ],
+    "vs_consensus": "",
+    "evidence": "Higher volatility will remain a feature of the Warsh era"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Lombard Street Research",
+    "figure": "57k",
+    "metric": "July payrolls",
+    "context": "Reported 07/2026, noted as half of market consensus."
+   },
+   {
+    "source_bank": "Lombard Street Research",
+    "figure": "4.2%",
+    "metric": "Unemployment rate",
+    "context": "Down from 4.3% in prior period, driven by participation decline."
+   },
+   {
+    "source_bank": "Lombard Street Research",
+    "figure": "3.5% YoY",
+    "metric": "Earnings growth",
+    "context": "July 2026 print."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "+1.8%",
+    "metric": "S&P 500 daily return",
+    "context": "Rally following 1.5% gain on Monday, 8/5/2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+13%",
+    "metric": "Goldman Sachs 'most shorted' basket return",
+    "context": "4-day performance as of 8/6/2026."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "65%",
+    "metric": "US share of total OECD profits",
+    "context": "As of end-2025, up from 50% in late 2022."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "50%-55%",
+    "metric": "US share of OECD revenues",
+    "context": "Stable range over the past two decades."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "10%",
+    "metric": "Manufacturing share of US economy",
+    "context": "Cited as a proportion of final sales."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "4%",
+    "metric": "Gold price increase",
+    "context": "Intraday move on August 6, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19k lots",
+    "metric": "Shanghai exchange open interest increase",
+    "context": "6% increase, top-5 move on 3y lookback."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~50%",
+    "metric": "Chinese total length vs 4q25 high",
+    "context": "Current positioning remains well below previous highs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "225 MT",
+    "metric": "Chinese gold imports YTD",
+    "context": "Compared to 28 MT in 1H 2025."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~28%",
+    "metric": "Central bank buying decline y/y",
+    "context": "YTD figure."
+   },
+   {
+    "source_bank": "Market pricing",
+    "figure": "55%",
+    "metric": "Probability of September rate hike",
+    "context": "Implied by futures market as of August 2026."
+   },
+   {
+    "source_bank": "Federal Reserve",
+    "figure": "2%",
+    "metric": "Inflation target",
+    "context": "Long-term goal; market expectations remain anchored here."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+46%",
+    "metric": "y/y EPS growth (headline)",
+    "context": "Reported earnings season growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+28%",
+    "metric": "y/y EPS growth (ex-privates)",
+    "context": "Adjusted earnings growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250-350B",
+    "metric": "Implied AI capex FY27",
+    "context": "Based on SpaceX inaugural print."
+   },
+   {
+    "source_bank": "Street",
+    "figure": "$60.6B",
+    "metric": "Street AI capex estimate",
+    "context": "Comparison to SpaceX implied capex."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.1%",
+    "metric": "Hedge fund net allocation to Korean semis",
+    "context": "As of July 29, down from 7.2% at end-June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1,000",
+    "metric": "psychologically important support level",
+    "context": "Longer-term uptrend support for SanDisk."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$900",
+    "metric": "200-day moving average support",
+    "context": "Support level for SanDisk."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "+5%",
+    "metric": "Silver price move",
+    "context": "As of writing"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$72",
+    "metric": "Resistance level",
+    "context": "Aligned with 200-day moving average"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$250",
+    "metric": "Gold price surge",
+    "context": "Move over a matter of sessions."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$230",
+    "metric": "Gold price increase",
+    "context": "Increase from Wednesday's lows."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$4,400",
+    "metric": "Gold resistance level",
+    "context": "Near the 100-day moving average."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$10 billion",
+    "metric": "SoftBank loan against OpenAI stake",
+    "context": "Revealed yesterday."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$250 billion",
+    "metric": "Nvidia data center project backstop",
+    "context": "Commitment for OpenAI data center project."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$215 billion",
+    "metric": "Nvidia total annual revenue",
+    "context": "At the height of the bubble."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5 trillion",
+    "metric": "Aggregate hyperscaler lease commitments",
+    "context": "Includes $1 trillion in commitments not yet commenced."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "25bp",
+    "metric": "AI-related IG spread widening",
+    "context": "Vs non-AI counterparts."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "34bp",
+    "metric": "Hyperscaler spread widening",
+    "context": "Since June."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "18bp",
+    "metric": "Hardware and software spread widening",
+    "context": "Since June."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "22%",
+    "metric": "Bills outstanding as a proportion of total debt",
+    "context": "Historically elevated level."
+   }
+  ]
+ }
+}
