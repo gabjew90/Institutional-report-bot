@@ -403,6 +403,30 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_chat_messages_author_ts  ON chat_messages(author_id, posted_at DESC);
         CREATE INDEX IF NOT EXISTS idx_chat_messages_username_ts ON chat_messages(author_username, posted_at DESC);
 
+        -- 2026-08-10 latency review. Two index gaps, both found by running
+        -- EXPLAIN QUERY PLAN over every SQL literal in this file against
+        -- the production database (189,864 chat_messages).
+        --
+        -- 1. Every username lookup here is written LOWER(author_username)
+        --    = LOWER(?), and a function on the column makes
+        --    idx_chat_messages_username_ts unusable — SQLite fell back to
+        --    a full scan plus a temp B-tree for ORDER BY. Five call sites:
+        --    resolve_username_to_user_id, get_recent_user_messages,
+        --    find_user_messages_matching, search_chat_messages_for_ask,
+        --    and the pending-protected lookup at boot. Measured 0.035-0.052s
+        --    each, all on the Discord event loop. An index ON THE
+        --    EXPRESSION is what SQLite can match: 0.052s -> 0.000s.
+        --    Keep the call sites written as LOWER(col) = ? — rewriting
+        --    them to bare equality would silently stop matching this index.
+        -- 2. Time-window retrieval filters bare posted_at, which is only
+        --    ever a trailing column in the composite indexes above, so it
+        --    could not be used as a range scan. 0.035s -> 0.000s for a
+        --    200-row window, 0.048s -> 0.015s for the profile bulk read.
+        --
+        -- Both built in under 0.5s against the live 205MB database.
+        CREATE INDEX IF NOT EXISTS idx_chat_messages_lower_username ON chat_messages(LOWER(author_username), posted_at DESC);
+        CREATE INDEX IF NOT EXISTS idx_chat_messages_posted_at ON chat_messages(posted_at);
+
         -- Protected members promoted from PROTECTED_PENDING_USERNAMES:
         -- a member who hasn't joined yet is registered by exact username;
         -- the first ingested message from that username pins the
