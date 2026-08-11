@@ -1,0 +1,429 @@
+{
+  "pulse_date": "2026-08-11",
+  "window_label": "since-last-daily (2026-08-10T14:37)",
+  "themes": [
+    {
+      "theme": "hormuz strait shipping and geopolitical risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Nine desks treat the Strait of Hormuz shipping chokepoint and the US-Iran talks around reopening it as a live risk this window, but none of them stakes out a directional call on oil or shipping.",
+      "facts_agreed": [
+        {
+          "claim": "Several banks are tracking US-Iran negotiations over reopening the Strait of Hormuz as the swing factor for the region.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "Rabobank",
+            "UBS",
+            "Bank J. Safra Sarasin"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping negotiations",
+            "Strait of Hormuz negotiations",
+            "Strait of Hormuz shipping route negotiations",
+            "US-Iran negotiations and Strait of Hormuz",
+            "US-Iran Strait of Hormuz negotiations"
+          ]
+        },
+        {
+          "claim": "Banks describe traffic through the strait as still disrupted, with energy flows the channel through which the disruption reaches markets.",
+          "banks_for": [
+            "The Market Ear",
+            "Deutsche Bank",
+            "JPMorgan",
+            "Goldman Sachs",
+            "Rabobank"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz transit restrictions",
+            "Strait of Hormuz shipping standstill",
+            "Middle East conflict and Strait of Hormuz traffic",
+            "Strait of Hormuz energy supply",
+            "US blockade of Iranian ports"
+          ]
+        },
+        {
+          "claim": "The disruption is being carried beyond the strait itself into wider shipping capacity and oil-services effects.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Middle East disruptions in oil services",
+            "Red Sea shipping capacity",
+            "Iran War oil market disruptions",
+            "Strait of Hormuz shipping lane uncertainty"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure capex cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 2,
+        "neutral": 8
+      },
+      "consensus_view": "The banks broadly agree the AI buildout is still accelerating and that second-quarter results confirmed it, and the live disagreement is whether spending funded increasingly by borrowing rather than company cash flow can keep driving earnings.",
+      "facts_agreed": [
+        {
+          "claim": "Second-quarter hyperscaler results confirmed the AI spending cycle is still intact and growing.",
+          "banks_for": [
+            "Bank of America",
+            "Goldman Sachs",
+            "JPMorgan",
+            "UBS",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Hyperscalers\u2019 reports this earnings season reaffirmed that the AI spend cycle remains intact",
+            "earnings are solid and the AI capex cycle remains firmly on track",
+            "demand and order coverage are improving relative to capex",
+            "recent results provide further evidence that AI investment is driving demand",
+            "the AI boom has further to run \u2013 at least another 12-18 months."
+          ]
+        },
+        {
+          "claim": "Planned hyperscaler spending is now large enough to exceed the cash these companies generate, so the buildout has to be part-funded with borrowed money.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Consensus estimates imply hyperscaler capex of $1.1 trillion will exceed operating cash flow",
+            "more than $1 trillion of hyperscaler capex in 2027 and 2028."
+          ]
+        },
+        {
+          "claim": "Demand for AI computing capacity still exceeds what can be supplied, and the spending is pulling through power, networking and software businesses alongside the chips.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "demand for AI Infrastructure continues to outstrip supply which is a positive for Neocloud players",
+            "We continue to see the Reliability investment cycle as durable.",
+            "Networking unlocks computing capability for single AI chips, connecting multiple chips, enabling seamless data exchange and low latency.",
+            "emergence of potential \u2018inference economy\u2019 stocks in Software",
+            "recent results provide further evidence that AI investment is driving demand"
+          ]
+        },
+        {
+          "claim": "AI capital spending is now the main driver of corporate profit growth and overall equity market direction.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "the AI capex cycle now matters more than the month we\u2019re in.",
+            "AI infrastructure spending providing a massive tailwind to corporate profits"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether AI-capex-driven earnings growth is self-sustaining",
+          "banks_for": [
+            "Goldman Sachs",
+            "Bank of America",
+            "UBS"
+          ],
+          "for_evidence": "earnings are solid and the AI capex cycle remains firmly on track",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "half of the S&P 500's earnings growth is now coming from AI capital expenditure"
+        },
+        {
+          "claim": "how much economic damage the AI spending cycle would cause if it reverses",
+          "banks_for": [
+            "Apollo Management"
+          ],
+          "for_evidence": "The AI cycle is building at close to twice the pace of the housing boom",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "our analysis in prior work and above suggests that both claims are exaggerated."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor sector recovery",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Chip stocks sold off and got dumped by funds through July, and desks now describe them as cheap relative to their own earnings power, but nobody has settled whether that is a buying setup or the front end of a bubble deflating.",
+      "facts_agreed": [
+        {
+          "claim": "Semiconductors went through a July drawdown marked by fund selling, ETF withdrawals and bearish positioning.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Semiconductor sector volatility in July",
+            "Semiconductor ETF outflows",
+            "Semiconductor sector long position liquidation",
+            "Semiconductors & Equipment bearish positioning"
+          ]
+        },
+        {
+          "claim": "Chip share prices have fallen behind the sector's underlying earnings, leaving room for prices to close the gap.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Semiconductor fundamental valuation gap",
+            "Semiconductor fundamental catch-up potential",
+            "Semiconductor stock rally"
+          ]
+        },
+        {
+          "claim": "Money that came out of chips moved into software and the largest tech names, where desks see improving earnings.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "rotation from semis to tech behemoths",
+            "Software and Services bullish rotation",
+            "Software sector revival",
+            "Software earnings AI tailwind",
+            "Software and internet sector earnings momentum"
+          ]
+        },
+        {
+          "claim": "Bank of America points to Applied Materials earnings as the next event that could turn the chip group higher.",
+          "banks_for": [
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "AMAT could be a positive catalyst for semis"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the July chip selloff is a recovery entry point or the start of a bubble unwind",
+          "banks_for": [
+            "Bank of America"
+          ],
+          "for_evidence": "AMAT could be a positive catalyst for semis",
+          "banks_against": [
+            "multiple desks (unattributed)"
+          ],
+          "against_evidence": "Semiconductor bubble risk"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai exposure shifts",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 7
+      },
+      "consensus_view": "Money around AI is being repositioned rather than simply added to: funds are putting on new short bets against AI names while keeping their existing long bets, and bonds issued by AI-linked companies now pay more than everyone else's, but the desks split on whether investors are leaving the AI trade or just moving into the biggest names.",
+      "facts_agreed": [
+        {
+          "claim": "Funds are hedging their existing AI longs by adding shorts rather than by cutting the long positions.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "The simultaneous short build across both themes, even as long crowding holds near prior levels"
+          ]
+        },
+        {
+          "claim": "AI-linked borrowers are trading at a wider spread than non-AI borrowers, and that gap is expected to stay wide because the capex funding need is long-dated.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI-driven credit markets are becoming more bifurcated, with spreads of AI-related issuers underperforming",
+            "We expect this gap will persist, keeping AI-related spreads wider vs. non-AI peers",
+            "our base case for the macro backdrop implies a healthy premium"
+          ]
+        },
+        {
+          "claim": "Buyers of AI-related debt are getting saturated, with the concentration of AI issuance in the investment-grade market meeting visible resistance.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "investor appetite is showing clear signs of indigestion."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether investors are exiting AI exposure outright or rotating within it",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "investor skepticism \u2013 and measures of exposure \u2013 to Tech are shifting dramatically.",
+          "banks_against": [
+            "Morgan Stanley"
+          ],
+          "against_evidence": "the bid has shifted up the quality scale as Hyperscalers have seen demand"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "labor market conditions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Banks read the weak July jobs report as a labor market that is cooling and creating fewer jobs rather than one falling apart, and no desk argued the opposite.",
+      "facts_agreed": [
+        {
+          "claim": "The July payrolls miss shows a labor market that is slowing, not one that is breaking down.",
+          "banks_for": [
+            "Deutsche Bank",
+            "The Market Ear",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "consistent with a broadly stable labour market rather than a sharp deterioration",
+            "Fed officials have broadly characterized the labor market as stable",
+            "it is too early to tell, and would come in the light of a swathe of indicators"
+          ]
+        },
+        {
+          "claim": "Multiple desks describe US hiring and wage growth as softening over this window.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Labor market differential softening",
+            "US labor market easing",
+            "Labour market sentiment softness",
+            "US labor market cooling",
+            "US wage growth moderation"
+          ]
+        },
+        {
+          "claim": "Easing labor market pressure removes the case for further Fed rate increases this year.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Our base case remains that the Fed will keep rates unchanged this year."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "broadening earnings leadership",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Six desks agree that second-quarter profit growth beat expectations by a wide margin and that the strength reaches well past the big AI names, so they expect stock gains to spread into cyclical, financial and healthcare shares in the second half, with no bank arguing the other side.",
+      "facts_agreed": [
+        {
+          "claim": "Second-quarter 2026 profits came in well above expectations and grew faster than the prior quarter.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Deutsche Bank",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "2Q results continued to track stronger than expectations with Median profits up 17% yoy",
+            "Global earnings growth accelerated from an extremely high 26.1% in Q1 to 39.1% in Q2",
+            "We remain constructive on equities, supported by strong earnings, broader participation."
+          ]
+        },
+        {
+          "claim": "Market gains should spread beyond the largest tech companies in the second half as profit strength shows up outside AI.",
+          "banks_for": [
+            "UBS",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "We expect future gains to come from a broader range of sectors.",
+            "We think participation should pick up further in 2H",
+            "The building blocks for broader market leadership are emerging"
+          ]
+        },
+        {
+          "claim": "Buying is already rotating into economically sensitive and non-AI sectors including biotech, housing and financials.",
+          "banks_for": [
+            "Morgan Stanley",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "buying has broadened into areas like Biotech, Housing, and Financials",
+            "we look for Cyclicals to resume leading in 2H, on stronger earnings delivery"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "july inflation data",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six desks flag the July US consumer and producer price releases as the main scheduled event of the window without staking out a directional call, and the two banks that published numbers land close together at roughly 3.4% to 3.5% headline inflation and about 2.5% underlying inflation.",
+      "facts_agreed": [
+        {
+          "claim": "Six research desks name the July US inflation releases as the key upcoming data event this window.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Bank of America",
+            "Rabobank",
+            "UBS",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "July CPI and PPI data docket",
+            "July CPI inflation print",
+            "US July CPI inflation data",
+            "US July inflation data test",
+            "July CPI and PPI inflation data releases"
+          ]
+        },
+        {
+          "claim": "Deutsche Bank and JPMorgan both treat the July inflation print as a risk event for rates and publish forecasts that cluster around the same headline and underlying levels.",
+          "banks_for": [
+            "Deutsche Bank",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "July CPI and PPI data docket",
+            "US CPI inflation risk"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}

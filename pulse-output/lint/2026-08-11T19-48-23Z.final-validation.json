@@ -1,0 +1,142 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '1.64%' is attached to [added, again, against, another, apart] but the source uses it for [date, session, vixy] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "1.64%",
+   "draft_subject": [
+    "added",
+    "again",
+    "against",
+    "another",
+    "apart",
+    "back",
+    "bank",
+    "barrel"
+   ],
+   "source_subject": [
+    "date",
+    "session",
+    "vixy"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '31 basis points' is attached to [added, again, against, another, apart] but the source uses it for [activity, ahead, beat, cloud, deal] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "31 basis points",
+   "draft_subject": [
+    "added",
+    "again",
+    "against",
+    "another",
+    "apart",
+    "back",
+    "bank",
+    "barrel"
+   ],
+   "source_subject": [
+    "activity",
+    "ahead",
+    "beat",
+    "cloud",
+    "deal",
+    "enterprise",
+    "excluding",
+    "expectations"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.8 percentage points' is attached to [beat, beats, both, companies, half] but the source uses it for [bitcoin, choice, commodity, crowding, currencies] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.8 percentage points",
+   "draft_subject": [
+    "beat",
+    "beats",
+    "both",
+    "companies",
+    "half",
+    "historical",
+    "outperforming",
+    "paid"
+   ],
+   "source_subject": [
+    "bitcoin",
+    "choice",
+    "commodity",
+    "crowding",
+    "currencies",
+    "deflationary",
+    "design",
+    "down"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '5.24%' is attached to [climbing, comes, core, damage, instead] but the source uses it for [change, close, crypto, indices, shown] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "5.24%",
+   "draft_subject": [
+    "climbing",
+    "comes",
+    "core",
+    "damage",
+    "instead",
+    "keeps",
+    "mean",
+    "reverting"
+   ],
+   "source_subject": [
+    "change",
+    "close",
+    "crypto",
+    "indices",
+    "shown",
+    "since",
+    "spread",
+    "today"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.30% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [4.09, 4.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.30",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "Payrolls fell 23,000 in July while private payrolls still grew 30,000, which is a stalled hiring rate rather than a wave of layoffs. Unemployment at 4.1% is a 13-month low, but the labor force shrank "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.24% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [4.09, 4.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.24",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "Payrolls fell 23,000 in July while private payrolls still grew 30,000, which is a stalled hiring rate rather than a wave of layoffs. Unemployment at 4.1% is a 13-month low, but the labor force shrank "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.3% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.3",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "- **Thursday, 8:30 AM ET: July producer prices.** Core is seen at 0.3% month over month, and it matters mainly for what it implies about core PCE, the inflation gauge the Fed actually targets."
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.2% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [5.7]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.2",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **Friday, 8:30 AM ET: July retail sales.** Consensus is 0.1% headline and 0.2% core, with the split between high and low income consumers the thing to read past the headline."
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 8,
+ "exit_code": 4
+}
