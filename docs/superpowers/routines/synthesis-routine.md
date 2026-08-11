@@ -59,7 +59,23 @@ If a future environment restores direct PAT access this override is harmless —
 
 ## STEP 1 — Read prompts
 
-`cat ai_analysis/prompts.py` and locate `ADJUDICATION_SYSTEM`, `ADJUDICATION_USER`, `DRAFT_SYSTEM`, `DRAFT_USER`, `AUDIT_SYSTEM`, `AUDIT_USER`, `SCRUB_SYSTEM`, `SCRUB_USER`, `QC_SYSTEM`, `QC_USER` (full triple-quoted strings).
+```bash
+python3 scripts/dump_prompts.py /tmp/prompts 2>&1 | tee -a /tmp/routine.log
+```
+
+Then read the files in `/tmp/prompts/`: `ADJUDICATION_SYSTEM.txt`, `ADJUDICATION_USER.txt`, `DRAFT_SYSTEM.txt`, `DRAFT_USER.txt`, `AUDIT_SYSTEM.txt`, `AUDIT_USER.txt`, `SCRUB_SYSTEM.txt`, `SCRUB_USER.txt`, `QC_SYSTEM.txt`, `QC_USER.txt`.
+
+**If the script exits non-zero, STOP and report.** A non-zero exit means a prompt still contains an unresolved `<<PLACEHOLDER>>` token, which means a required block is not reaching the model.
+
+**Do NOT `cat ai_analysis/prompts.py` and read the triple-quoted strings directly.** That was this step's instruction until 2026-08-11 and it reads the SOURCE text, not the finished prompt. Three prompts are only completed at Python import time and contain placeholder tokens in the file:
+
+| Prompt | Placeholder in the file | Composed from |
+|---|---|---|
+| `SCRUB_SYSTEM` | `<<SCRUB_REFERENCE_BLOCK>>` | `compose_scrub_reference_block()` |
+| `DRAFT_SYSTEM` | `<<VOICE_RULES_BLOCK>>` | `compose_audit_voice_block()` |
+| `AUDIT_SYSTEM` | `<<VOICE_RULES_BLOCK>>` | `compose_audit_voice_block()` |
+
+Reading the raw file gives you the literal `<<...>>` token and silently drops the banned-phrase list, the jargon map and the rewrite-over-gloss rule. The voice contract already failed to reach a model once this way (`compose_audit_voice_block()` sat with zero callers for months while pulses drifted toward a definition in every other sentence). The dump script is what makes that failure loud instead of silent.
 
 Follow the prompts verbatim. Particularly important rules to triple-check before commit:
 
