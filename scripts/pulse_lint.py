@@ -26,7 +26,7 @@ Exit code is the structural signal for whether SCRUB is needed:
     1 → input file missing / config error
     2 → invalid CLI args
     3 → hard issues found; routine should DISPATCH SCRUB
-    4 → only soft issues (jargon-bare, etc.); SCRUB dispatch is OPTIONAL
+    4 → only soft issues (gloss-density, etc.); SCRUB dispatch is OPTIONAL
 
 The same signal is also embedded in two sidecar artifacts so the
 routine can consume it without parsing exit codes:
@@ -70,7 +70,12 @@ except ImportError:
 # Kinds emitted by lint_markdown that aren't in either set default to
 # 'hard' for safety (SCRUB will look at it).
 SOFT_ISSUE_KINDS = {
+    # Retired 2026-08-11 but kept in the set: a stale artifact or a
+    # re-enabled context-aware jargon check must still classify as soft.
     "jargon-bare",
+    # Document-level readability measure. Soft because the fix is a
+    # sentence rewrite, which is EDIT/DRAFT work, not a SCRUB substitution.
+    "gloss-density",
     "top-3-theme-missing",
     "discovered-theme-missing",
     # Slot-overlap is structural — SCRUB can't fix it (SCRUB rewrites
@@ -144,6 +149,54 @@ def _extract_stat_tokens(slot_text: str) -> set[str]:
             )
             tokens.add(t)
     return tokens
+
+
+def _check_gloss_density(md_text: str) -> list[dict]:
+    """Flag a pulse that defines terms inline instead of rewriting them.
+
+    The reader complaint on 2026-08-11 was "wordy and jargony". Measured
+    across five shipped pulses, total length had FALLEN 26% and average
+    sentence length was down; what had risen 5.6x was inline definitions:
+
+        2026-07-30  0.15 glosses/100w      2026-08-06  0.71
+        2026-08-03  0.12                   2026-08-10  0.84
+        2026-08-05  0.25
+
+    Keeping the jargon and appending its definition costs more words than
+    either the term or a rewrite, and reads worse than both. The fix is
+    always a sentence rewrite, so unlike the retired jargon-bare check
+    this one is actionable.
+
+    Scoped to prose. Skips headings, the TRADE BOARD, and table rows,
+    where parentheticals are structural rather than explanatory.
+    """
+    from ai_analysis.voice_rules import GLOSS_DENSITY_LIMIT, gloss_density
+
+    prose_lines: list[str] = []
+    in_board = False
+    for ln in md_text.splitlines():
+        s = ln.strip()
+        if s.startswith('#'):
+            in_board = 'TRADE BOARD' in s.upper()
+            continue
+        if in_board or not s or s.startswith('|'):
+            continue
+        if re.match(r'^-\s+\*\*(NEW|FLIP|held since|off board)', s):
+            continue
+        prose_lines.append(s)
+
+    n, words, density = gloss_density('\n'.join(prose_lines))
+    if words < 200 or density <= GLOSS_DENSITY_LIMIT:
+        return []
+    return [{
+        'line': 0,
+        'kind': 'gloss-density',
+        'snippet': (
+            f'{n} inline definitions in {words} words '
+            f'({density:.2f}/100w, limit {GLOSS_DENSITY_LIMIT}). Rewrite the '
+            f'sentences instead of glossing the terms.'
+        )[:200],
+    }]
 
 
 def _check_slot_stat_overlap(md_text: str) -> list[dict]:
@@ -313,13 +366,22 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
         for m in re.finditer(pattern, scan_text, re.IGNORECASE):
             add(line_of(m, scan_text), kind, m.group())
 
-    # Jargon scan (soft — model is supposed to translate inline; linter
-    # surfaces hits for review but doesn't block the commit). Each hit
-    # means: the term is present; verify a plain-English translation is
-    # in the same paragraph or rewrite to drop the term.
+    # Jargon scan — retired 2026-08-11, compose_jargon_lint_patterns()
+    # now returns []. It flagged term PRESENCE and could not tell a
+    # glossed term from a bare one, so it fired on correct prose and the
+    # only way to satisfy it was to delete nomenclature the voice
+    # contract requires keeping. Loop kept so a future context-aware
+    # jargon check can be dropped back in without re-plumbing.
     for pattern, kind in compose_jargon_lint_patterns():
         for m in re.finditer(pattern, scan_text, re.IGNORECASE):
             add(line_of(m, scan_text), kind, m.group())
+
+    # Gloss density (soft). Replaces the jargon scan with a measure of the
+    # habit that actually degrades readability: keeping the jargon AND
+    # bolting its definition on beside it. One hit per pulse, carrying the
+    # measured rate, because this is a document-level property — flagging
+    # each gloss individually would just recreate the old noise.
+    issues.extend(_check_gloss_density(scan_text))
 
     # Slot-stat-overlap scan (soft — structural, SCRUB can't fix).
     # 2026-06-04 QC flagged adjacent INSIGHTS slots citing the same

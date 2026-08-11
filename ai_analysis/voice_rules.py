@@ -449,11 +449,24 @@ JARGON_WITH_TRANSLATIONS: dict[str, str] = {
 # === Helpers for prompt interpolation ===
 
 def compose_audit_voice_block() -> str:
-    """Build the AUDIT_SYSTEM voice rules section from the constants above.
+    """Build the shared voice-rules section from the constants above.
 
-    Called at module load by prompts.py; the returned string is interpolated
-    into AUDIT_SYSTEM. If a banned phrase changes here, the prompt
-    automatically reflects it on next module load (i.e. next routine fire).
+    Interpolated into BOTH DRAFT_SYSTEM and AUDIT_SYSTEM at module load
+    by prompts.py, so a change here reaches the writer and the editor on
+    the next routine fire.
+
+    2026-08-11: this docstring used to claim it was "called at module load
+    by prompts.py". It was not. The function had ZERO callers anywhere in
+    the repo and had never reached a model, which meant the
+    rewrite-over-gloss rule below existed only as an intention. What the
+    live prompts actually said was the opposite: DRAFT offered inline
+    glossing as a coequal first option, AUDIT called parenthetical
+    glossing "the right pattern", and the linter flagged bare jargon it
+    could not distinguish from glossed jargon. Every live stage rewarded
+    glossing. Measured across five pulses, inline glosses went from 0.15
+    to 0.84 per 100 words while total length fell 26% — the pulses got
+    shorter and read denser, because nearly every sentence carried a
+    parenthetical definition.
     """
     def quoted_list(items):
         return ', '.join(f'"{p}"' for p in items)
@@ -485,7 +498,9 @@ def compose_audit_voice_block() -> str:
         "",
         "**Plain-English jargon scrub (BINDING — the highest-priority readability rule).** The audience is a self-directed US options/crypto trader, smart but NOT a finance professional. They read the WSJ, not institutional research. The default voice is **plain English written for that reader**.",
         "",
-        "**REWRITE the sentence, do NOT just append a parenthetical translation.** Glossing terms in parens still leaves the sentence structure trader-speak — example failure: *\"long-end Treasuries got hit on coupon supply (new Treasury bonds being auctioned).\"* Even with the gloss, *\"got hit\"* and the bond-trader sentence rhythm are still broken for a non-trader. The correct rewrite: *\"30-year Treasury bonds fell because the government is auctioning a wave of new long-term debt — more supply means buyers demand higher yields.\"*",
+        "**REWRITE the sentence, do NOT just append a parenthetical translation.** Glossing terms in parens still leaves the sentence structure trader-speak. Example failure: *\"long-end Treasuries got hit on coupon supply (new Treasury bonds being auctioned).\"* Even with the gloss, *\"got hit\"* and the bond-trader sentence rhythm are still broken for a non-trader. The correct rewrite: *\"30-year Treasury bonds fell because the government is auctioning a wave of new long-term debt, and more supply means buyers demand higher yields.\"*",
+        "",
+        "**A gloss on every technical noun is its own failure mode.** A paragraph where four sentences each stop to define a term reads denser than the jargon did, because the reader is interrupted four times. If you find yourself writing a third parenthetical in one paragraph, the paragraph needs rewriting, not more definitions.",
         "",
         "**Order of preference when you find jargon:**",
         "1. **Rewrite the sentence** so the meaning is plain-English structure (no idioms, no compressed trader phrasing). This is the default.",
@@ -493,7 +508,9 @@ def compose_audit_voice_block() -> str:
         "3. **Drop the term** entirely if removing it doesn't lose meaning.",
         "4. **Parenthetical gloss** ONLY when the term is a proper-noun-style technical concept that genuinely has no plain-English equivalent (rare — usually #1 or #2 work).",
         "",
-        "**EXCEPTION — precise load-bearing terminology stays.** When the term is the exact name of the thing (basis points, core PCE, EBITDA, implied volatility, term premium), keep the term and gloss it on FIRST use, then use it bare. \"Basis points\" rewritten as \"hundredths of a percent\" is a documented regression, not a fix. Rewrite-to-drop targets desk idiom, never nomenclature that accuracy depends on.",
+        "**EXCEPTION (the only one) — named metrics and ratios keep their name and take a gloss.** When the term is the exact name of the thing (basis points, core PCE, EBITDA, P/E, EV/EBITDA, ROIC, FCF yield, leverage ratio, coverage ratio, implied volatility, term premium), keep the term and gloss it on FIRST use only, then use it bare for the rest of the pulse. Two documented regressions come from ignoring this: \"basis points\" rewritten as \"hundredths of a percent\", and \"net debt to EBITDA at 0.3x\" rewritten as \"net debt to one-year cash earnings\", which is numerically wrong because EBITDA is not cash earnings. For these terms a substitution changes the meaning, so gloss instead of rewriting.",
+        "",
+        "This exception is narrow on purpose. It covers nomenclature a number is computed FROM. It does not cover desk idiom (\"got hit\", \"caught a bid\", \"bear-steeper\", \"the long end\", \"de-grossing\", \"the tape\"), which has no definitional precision to protect and should be rewritten away. If you are glossing something that is not a named metric, you are in rule #1, not the exception.",
         "",
         "Walk every paragraph in INSIGHTS bodies and RECAP. For each jargon term in the map below, prefer a sentence rewrite over a paren gloss. The full term-to-trader-friendly-equivalent map:",
         "",
@@ -510,9 +527,9 @@ def compose_audit_voice_block() -> str:
         "- Bad (gloss only): *\"$BTC found support at the 50-day moving average and caught a bid.\"*",
         "- Good (sentence rewrite): *\"$BTC stopped falling at its 50-day average price and buyers stepped in there.\"*",
         "- Bad (gloss only): *\"hyperscaler capex revisions are pushing curves bear-steeper.\"*",
-        "- Good (sentence rewrite): *\"big tech is spending so much on AI data centers that the Treasury market is starting to price in long-term inflation pressure — the 30-year yield is rising faster than the 2-year, which usually signals more inflation ahead.\"*",
+        "- Good (sentence rewrite): *\"big tech is spending so much on AI data centers that the 30-year Treasury yield is rising faster than the 2-year, which usually signals more inflation ahead.\"*",
         "",
-        "If your rewrite is longer than the original, that's fine. Word-count is not the constraint; comprehension on first read is.",
+        "A rewrite may run slightly longer than the trader-speak original. That is fine. What is not fine is a sentence that keeps the jargon AND adds the definition, which costs more words than either and reads worse than both. Comprehension on first read is the constraint.",
     ])
     return '\n'.join(parts)
 
@@ -597,20 +614,69 @@ def compose_scrub_reference_block() -> str:
     return '\n'.join(lines)
 
 
-def compose_jargon_lint_patterns() -> list[tuple[str, str]]:
-    """Soft-warning patterns for the jargon scan.
+# An inline definition: a parenthetical or comma-appositive that exists to
+# explain the phrase before it. Deliberately conservative — it wants
+# "(the longest-maturity, most rate-sensitive bonds)" and
+# ", the share of adults working or looking for work," but NOT
+# "(Goldman)", "(JPM, $755B capex)", "(est. $0.98 EPS)" or "(Buy, PT $260)",
+# which are attribution and data, not definitions.
+GLOSS_PAREN_RE = re.compile(
+    r'\((?:the|a|an|which|meaning|i\.e\.|funds|traders|investors)\b[^)]{12,160}\)',
+    re.IGNORECASE,
+)
+GLOSS_APPOSITIVE_RE = re.compile(
+    r',\s(?:the|a|an)\s[a-z][^,()]{12,120},\s',
+)
 
-    Flags any bare use of a jargon term from JARGON_WITH_TRANSLATIONS.
-    The linter classifies these as 'jargon-bare' (soft) — they don't
-    block commits because the model is supposed to translate the term
-    in the same paragraph, and the linter can't context-check that.
-    Soft warnings let the routine surface jargon hits for review.
+# Glosses per 100 words above which the prose reads as annotated rather
+# than written. Calibrated on shipped pulses: 2026-07-30 scored 0.15 and
+# 2026-08-03 scored 0.12 (both read clean); 2026-08-06 scored 0.71 and
+# 2026-08-10 scored 0.84 (both flagged by the reader as wordy/jargony).
+# 0.45 sits between the two clusters.
+GLOSS_DENSITY_LIMIT = 0.45
+
+
+def count_inline_glosses(text: str) -> int:
+    """Inline definitions in `text` (parenthetical + comma-appositive)."""
+    return (len(GLOSS_PAREN_RE.findall(text))
+            + len(GLOSS_APPOSITIVE_RE.findall(text)))
+
+
+def gloss_density(text: str) -> tuple[int, int, float]:
+    """(glosses, words, glosses-per-100-words) for prose `text`."""
+    words = len(text.split())
+    n = count_inline_glosses(text)
+    return n, words, (100.0 * n / words if words else 0.0)
+
+
+def compose_jargon_lint_patterns() -> list[tuple[str, str]]:
+    """Retired. Returns no patterns.
+
+    This used to flag every appearance of a term in JARGON_WITH_TRANSLATIONS
+    as 'jargon-bare'. Its own docstring conceded "the linter can't
+    context-check that", so it fired identically on a term that had been
+    glossed, a term that had been rewritten around, and a bare one. Two
+    consequences, both bad:
+
+      1. The only way to clear the flag was to delete the term, but the
+         voice contract REQUIRES keeping load-bearing nomenclature
+         (basis points, core PCE, EBITDA). The check therefore fired on
+         correct prose and could never be satisfied. It was permanently
+         soft and routinely ignored — 2026-08-07 shipped with five hits
+         including "basis points" twice, all correct.
+      2. When SCRUB did act on it, it produced the documented cosmetic
+         regression: "25-40 basis points" -> "25-40 hundredths of a percent".
+
+    Worse, it pushed the writer the wrong way. The cheapest way to look
+    compliant against a term-presence check is to leave the term and add a
+    definition next to it, which is precisely the habit that took inline
+    glosses from 0.15 to 0.84 per 100 words between 2026-07-30 and
+    2026-08-10 while total pulse length fell 26%.
+
+    Gloss density (see gloss_density above, wired into pulse_lint as the
+    'gloss-density' kind) measures the thing that actually degraded and is
+    actionable: the fix is to rewrite a sentence, which is what the voice
+    contract asks for. The jargon map itself is still live — it feeds SCRUB
+    reference and the DRAFT/AUDIT voice block.
     """
-    patterns: list[tuple[str, str]] = []
-    for term in JARGON_WITH_TRANSLATIONS:
-        # Word-boundary, case-insensitive applied at use site.
-        # Multi-word terms get \b boundaries on both ends; single tokens
-        # like "skew" or "duration" need stricter boundaries to avoid
-        # matching inside other words.
-        patterns.append((r'\b' + re.escape(term) + r'\b', 'jargon-bare'))
-    return patterns
+    return []

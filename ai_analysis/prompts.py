@@ -833,6 +833,12 @@ What this means concretely:
   **Heuristic that works:** if removing "X bank said" leaves the sentence intact and stronger, remove it. If the sentence falls apart without the attribution, the attribution belongs in a parenthetical at the end, not as an opener.
 
   **AUDIT-side enforcement:** before finalizing, walk every sentence in INSIGHTS bodies. For any sentence opening with a bank name followed by a generic verb (says, notes, flags, adds, observes, leans on, keeps hammering, pushes, points to, argues, thinks, sees), rewrite. Move the attribution to a parenthetical or strip it entirely.
+
+---
+
+## SHARED VOICE CONTRACT (identical text is given to AUDIT)
+
+<<VOICE_RULES_BLOCK>>
 """
 
 
@@ -1239,15 +1245,17 @@ To find tension points, pull from each relevant analysis's `risk_factors` field,
 
 If a theme's body has fewer than 5 data points + a tension point, OR the prose is just headline-level summary ("a structural shift," "tangible revenue realization," "supply shocks are forcing rethinks"), go back to the analyses_json and pull the specifics. The reader paid for institutional research; surface it.
 
-**Plain English by default (binding — most-cut feedback from readers).** The audience is a smart options/crypto trader who is NOT a finance professional. They don't know what "duration," "breakevens," "term curve," "rate differential," "fixed-rate receiver," "bear-flatten," "products draw," or "single-name" mean. The default voice is **plain English**. Treat every technical term like a foreign word: only use it if (a) there's no plain equivalent AND (b) you immediately translate it in the same sentence.
+**Plain English by default (binding — most-cut feedback from readers).** The audience is a smart options/crypto trader who is NOT a finance professional. They don't know what "duration," "breakevens," "term curve," "rate differential," "fixed-rate receiver," "bear-flatten," "products draw," or "single-name" mean. The default voice is **plain English**.
+
+**Rewrite the sentence. Do not keep the term and bolt a definition onto it.** The order of preference is in the SHARED VOICE CONTRACT at the end of the system prompt, and it is binding: rewrite first, replace the term second, drop it third, and gloss in parentheses only for a named metric whose meaning a substitution would change (basis points, core PCE, EBITDA, P/E). A pulse where four sentences each stop to define a term reads denser than the jargon did.
 
 **Reframing test:** instead of "translate jargon," try "rewrite in trader-friendly language." Example contrast:
 - Banker phrasing: *"The 10y broke 4.4% on supply concerns ahead of Treasury refunding; long-end auction tail risk skews bear-steepener."*
-- Trader phrasing: *"The 10-year Treasury yield broke 4.4% — the bond market is nervous about a flood of new long-term debt at this week's Treasury auction. If the 30-year auction goes badly (weak demand at the price), long-term yields could spike further while short-term yields hold, which would hammer $TLT and any rate-sensitive equities."*
+- Trader phrasing: *"The 10-year Treasury yield broke 4.4%. The bond market is nervous about a flood of new long-term debt at this week's auction, and if demand comes in weak, long-term yields spike further while short-term yields hold. That hammers $TLT and rate-sensitive stocks."*
 
-The trader version is longer but the meaning is unambiguous. Don't optimize for word count over comprehension. **A 28-year-old options trader should be able to read every theme and immediately know (a) what's happening, (b) why it matters, and (c) what to do.** If any sentence fails one of those three tests, rewrite.
+Note what the trader version does NOT do: it never writes "supply concerns (new bonds being sold)" or "bear-steepener (long yields rising faster than short)". It rebuilds the sentence so no definition is needed. **A 28-year-old options trader should be able to read every theme and immediately know (a) what's happening, (b) why it matters, and (c) what to do.** If any sentence fails one of those three tests, rewrite it rather than annotate it.
 
-**Banned-without-translation list** (if you write any of these, you MUST add a plain-English translation in the same sentence or in parens):
+**Rewrite-these-away list.** Each of these is desk idiom with no definitional precision to protect, so rewriting is always available and always better than a parenthetical. The plain phrasing on the right is a starting point for the rewrite, not a gloss to paste in parens next to the term:
 - "duration" → "long-dated bonds — the longer the maturity, the bigger the price move when yields shift"
 - "term curve" / "term structure" → "what the market expects rates to do over time"
 - "breakevens" → "the inflation rate priced into the bond market"
@@ -1356,7 +1364,7 @@ You are auditing a draft Market Pulse against live market data, today's released
 
 - **NO em-dashes (—) ever.** Use commas, periods, or split into two sentences. If the DRAFT had em-dashes, rewrite to remove them; if you introduce one in your rewrite, you've added work for SCRUB. Either way, em-dashes are banned in your output.
 - **NO semicolons (;).** Same rule.
-- **NO bare jargon.** If you use a technical term that needs translation (duration, NII, CTAs, breakevens, gamma, basis, RSI 70, prime brokerage flows, etc.), translate it inline in the same sentence OR rewrite the sentence to drop the term. Never leave a jargon term untranslated. The full jargon list with translations is in `voice_rules.JARGON_WITH_TRANSLATIONS` — apply the translation when you use the term.
+- **NO bare jargon, and no bolted-on definitions either.** For any technical term that needs translation (duration, NII, CTAs, breakevens, gamma, basis, RSI 70, prime brokerage flows, etc.), REWRITE the sentence so the term is not needed. Inline translation is the fallback when a rewrite genuinely will not carry the meaning, not the first move, and a parenthetical gloss is reserved for named metrics per FINANCIAL RATIO PRECISION below. The order of preference is in the SHARED VOICE CONTRACT at the end of this prompt and it is binding. Leaving the term untranslated is still wrong; so is keeping it and appending its definition.
 - **NO source-prefix story-connectors.** "Goldman says...", "JPM notes that...", "UBS argues..." as sentence openers are banned. Bank attribution goes mid-sentence with a specific call ("Goldman raised 2026 capex to $755B") or in parenthetical ("...(Goldman, $755B 2026 capex)"), never as opener.
 - **NO AI-tells / template-defaults.** "the cleanest read", "the pushback we would anticipate", "that risk is real but", "where we disagree", "the mechanism is straightforward", "Today's price action is" — banned. The full list is in `voice_rules.BANNED_AI_TELLS`. Don't use any of them; the model picks one as a default opener and uses it every theme, which becomes visible repetition.
 
@@ -1380,12 +1388,14 @@ If you want to ADD context and the fact isn't in your inputs, REPHRASE around wh
 
 When applying plain-English glosses to jargon, do NOT change the ratio's definition. Past regression: an AUDIT pass rewrote `"net debt to EBITDA at 0.3x"` to `"net debt to one-year cash earnings, 0.3x"` — a well-meaning gloss but EBITDA ≠ one-year cash earnings (EBITDA includes non-cash D&A, excludes capex / interest / tax; "cash earnings" is closer to free cash flow). This is a precision regression a sophisticated reader will catch.
 
-The right pattern: PARENTHETICAL gloss, not substitution.
-- ❌ DRAFT: `net debt to EBITDA at 0.3x` → EDIT: `net debt to one-year cash earnings, 0.3x` (definition changed — wrong)
-- ✅ DRAFT: `net debt to EBITDA at 0.3x` → EDIT: `net debt to EBITDA at 0.3x (operating profit before non-cash items — basically how much profit covers the debt)` (definition preserved, gloss added — right)
-- ✅ Even better when context allows: drop the ratio entirely and state the implication: `the AI build is debt-fundable — the cohort has 3x more profit than debt to absorb leverage if needed.`
+**This is the ONE case where a parenthetical gloss beats a rewrite, and it is narrow.** It applies to named metrics and ratios only: P/E, EV/EBITDA, ROIC, FCF yield, leverage ratio, coverage ratio, basis points, core PCE. For these, a substitution changes which numerator or denominator is being used, so the name has to stay.
 
-Other ratios that LLMs commonly mis-paraphrase: P/E, EV/EBITDA, ROIC, FCF yield, leverage ratio, coverage ratio. If you're tempted to rewrite a ratio in plainer terms, check whether your rewrite changes WHICH numerator or denominator is being used. If yes, gloss parenthetically instead.
+Preference order for a named ratio, best first:
+- ✅ **Best — drop the ratio and state the implication:** `the AI build is debt-fundable, with 3x more profit than debt to absorb leverage if needed.` No term, no gloss, no definitional risk.
+- ✅ **Acceptable — keep the name, gloss on FIRST use only, then use it bare:** `net debt to EBITDA at 0.3x (operating profit before non-cash items, so how much profit covers the debt)`.
+- ❌ **Wrong — substitute a plainer phrase:** `net debt to one-year cash earnings, 0.3x`. EBITDA is not cash earnings; it includes non-cash D&A and excludes capex, interest and tax. A sophisticated reader catches this.
+
+**Do NOT generalize this rule past named metrics.** It exists to stop one specific numerical regression. It is not a licence to gloss desk idiom. "Got hit", "caught a bid", "bear-steepener", "the long end", "de-grossing", "risk-on" and the rest carry no definition worth protecting, and every one of them should be rewritten away under the SHARED VOICE CONTRACT rather than annotated in parentheses. Treating this ratio rule as the house style is how a pulse ends up with a definition in every other sentence.
 
 **MARKDOWN STRUCTURE PRESERVATION (binding — hard rule):**
 
@@ -1738,6 +1748,14 @@ If a theme's analysis can't credibly support any specific trade idea, the theme 
 
 Note: the Stage-1 diff-framing is a starting point, but if a surviving theme should be reordered for impact (e.g., fresh CPI catalyst should lead), reorder it.
 
+---
+
+## SHARED VOICE CONTRACT (identical text was given to DRAFT)
+
+<<VOICE_RULES_BLOCK>>
+
+---
+
 **Output:** the COMPLETE revised pulse in markdown. No preamble, no commentary about what you changed. Just the final pulse.
 """
 
@@ -1798,3 +1816,25 @@ Each pulse is standalone — do not compare to or reference previous pulses, EXC
 from ai_analysis.voice_rules import compose_scrub_reference_block as _compose_scrub_ref
 SCRUB_SYSTEM = SCRUB_SYSTEM.replace("<<SCRUB_REFERENCE_BLOCK>>", _compose_scrub_ref())
 del _compose_scrub_ref
+
+# The shared voice contract reaches the two stages that WRITE prose.
+# 2026-08-11: compose_audit_voice_block() had zero callers. The
+# rewrite-over-gloss rule lived only in voice_rules.py and had never been
+# sent to a model, while the live DRAFT and AUDIT text both permitted or
+# recommended parenthetical glossing. Inline glosses ran 5.6x higher per
+# 100 words across five pulses as a result. Interpolating it here is what
+# makes voice_rules.py the single source of truth it already claims to be
+# — SCRUB alone was never enough, because SCRUB only sees what DRAFT and
+# AUDIT already wrote.
+from ai_analysis.voice_rules import compose_audit_voice_block as _compose_voice
+_VOICE_BLOCK = _compose_voice()
+for _name in ("DRAFT_SYSTEM", "AUDIT_SYSTEM"):
+    _tpl = globals()[_name]
+    if "<<VOICE_RULES_BLOCK>>" not in _tpl:
+        raise RuntimeError(
+            f"{_name} is missing the <<VOICE_RULES_BLOCK>> placeholder — the "
+            f"shared voice contract would silently not reach it, which is the "
+            f"exact failure this wiring exists to prevent"
+        )
+    globals()[_name] = _tpl.replace("<<VOICE_RULES_BLOCK>>", _VOICE_BLOCK)
+del _compose_voice, _VOICE_BLOCK, _tpl, _name
