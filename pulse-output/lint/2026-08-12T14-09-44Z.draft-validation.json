@@ -1,0 +1,78 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '25 basis points' is attached to [against, basis, before, bill, bond] but the source uses it for [bargaining, bullish, citing, compute, correction] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "25 basis points",
+   "draft_subject": [
+    "against",
+    "basis",
+    "before",
+    "bill",
+    "bond",
+    "bonds",
+    "borrowers",
+    "buildout"
+   ],
+   "source_subject": [
+    "bargaining",
+    "bullish",
+    "citing",
+    "compute",
+    "correction",
+    "despite",
+    "experienced",
+    "higher"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.9% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.42, -0.4, -0.02, 0.0, 0.3, 2.6, 2.86, 3.5, 3.88]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.9",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "- **The reaction to this morning's CPI, not the print itself.** Options expiring today were pricing about a 0.9% S&P move, and hawkish inflation surprises have been hitting harder than dovish ones hav"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.47% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "2.47",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- ACCURACY FLAG for the editor: the economic calendar in this run is the ForexFactory fallback feed (Finnhub down) and its `ACTUAL=` values on the 2026-08-12 08:30 rows are stamped \"(for 2026-06)\", me"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.22% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.22",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- ACCURACY FLAG for the editor: the economic calendar in this run is the ForexFactory fallback feed (Finnhub down) and its `ACTUAL=` values on the 2026-08-12 08:30 rows are stamped \"(for 2026-06)\", me"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.5% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "2.5",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- ACCURACY FLAG for the editor: the economic calendar in this run is the ForexFactory fallback feed (Finnhub down) and its `ACTUAL=` values on the 2026-08-12 08:30 rows are stamped \"(for 2026-06)\", me"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.51% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "2.51",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- ACCURACY FLAG for the editor: the economic calendar in this run is the ForexFactory fallback feed (Finnhub down) and its `ACTUAL=` values on the 2026-08-12 08:30 rows are stamped \"(for 2026-06)\", me"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 6,
+ "exit_code": 4
+}

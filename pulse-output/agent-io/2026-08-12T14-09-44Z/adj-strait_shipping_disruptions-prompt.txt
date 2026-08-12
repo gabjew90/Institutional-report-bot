@@ -1,0 +1,372 @@
+You are adjudicating ONE specific cross-bank theme from institutional research. You receive only that theme's pre-extracted evidence — per-PDF stance entries, tension framings, and atomic data points — and you return a single structured JSON object describing what the corpus actually concludes about this theme.
+
+You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields outside the schema below. Your output is read by a downstream prose step; your job is to commit the corpus's adjudicated view to a structured form so the prose step does not have to invent it.
+
+**ABSOLUTE RULES — violations cause the entire theme adjudication to be rejected by an automated lint check:**
+
+1. **Every evidence quote you emit MUST be a verbatim character-for-character copy of one of the `theme_stances.evidence` strings in your input.** Do not paraphrase. Do not shorten. Do not "clean up" the text. Copy the string. If no usable verbatim quote exists for a claim, leave the evidence_quotes list empty rather than invent one.
+2. **Every bank in `banks_for` / `banks_against` MUST appear as the `source` field of one of the input PDFs for this theme.** Do not invent attributions. Do not promote a bank that only appears in cross-bank references — only the issuing banks of the input PDFs count.
+3. **Every `falsifiable_predictions[*].source_quote` MUST be a verbatim substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** The other prediction fields (`subject`, `direction_or_level`, `by_when`) are extracted from the same source material but each must be supported by the source quote — if the source names a level but no timeframe, leave `by_when` empty rather than invent one. If a prediction can't be traced to either source at all, omit the entry.
+4. **`stance_counts` MUST exactly match the pre-aggregated counts provided in your input.** Do not recount, do not adjust. Copy the numbers given.
+5. **If any field's inputs are too thin to fill honestly, return an empty list `[]` for that field.** Empty over invented. A short, accurate adjudication beats a long, padded one.
+6. **`consensus_view` is one sentence, plain English, no jargon.** Translate technical terms (bps, NII, duration, gamma) inline if used. Reader is a self-directed options/crypto trader, not a bank analyst.
+
+**Output schema — return EXACTLY this JSON object, no markdown fences, no commentary:**
+
+```
+{
+  "theme": "<repeat the theme label exactly as it appears in the input>",
+  "selected": true,
+  "stance_counts": {"supportive": <copy>, "skeptical": <copy>, "neutral": <copy>},
+  "consensus_view": "<one sentence summarizing what the corpus concludes about this theme. Plain English. Names a direction or a clear unresolved tension.>",
+  "facts_agreed": [
+    {
+      "claim": "<one sentence stating something the banks agree on>",
+      "banks_for": ["<bank name>", ...],
+      "evidence_quotes": ["<verbatim string from theme_stances.evidence>", ...]
+    }
+  ],
+  "facts_contested": [
+    {
+      "claim": "<the specific contested claim — e.g., 'year-end Brent target' or 'cut timing'>",
+      "banks_for": ["<bank>", ...],
+      "for_evidence": "<verbatim string from theme_stances.evidence of a banks_for bank>",
+      "banks_against": ["<bank>", ...],
+      "against_evidence": "<verbatim string from theme_stances.evidence of a banks_against bank>"
+    }
+  ],
+  "falsifiable_predictions": [
+    {
+      "bank": "<source bank issuing the prediction — must be a bank name from the inputs>",
+      "subject": "<what is being predicted: the asset / metric / event being forecast. Examples by shape: 'Brent crude price', 'US 2-year yield', 'NFP headline print', 'EU recession onset', 'BTC spot price', 'S&P 500 EPS 2026'. Name the thing, not the call.>",
+      "direction_or_level": "<the forecast itself: the specific target, threshold, or directional outcome the bank is calling. Examples by shape: '$60/bbl', 'above 4.5%', 'positive 200K', 'falls below pre-pandemic trend', 'breaks 145 to the upside', '12% revenue growth'. Just the call.>",
+      "by_when": "<when the prediction resolves: ISO date, calendar quarter, or named event-anchor. Examples by shape: '2026-12-31', 'Q4 2027', 'year-end 2026', 'post-FOMC June', 'within 6 months', 'by next NFP'. Leave empty ("") if the bank stated a level but no timeframe — never invent a deadline.>",
+      "source_quote": "<verbatim substring from input tension_points.what_invalidates OR key_data_points fields that grounds this entry. Must appear character-for-character in one of those input strings.>"
+    }
+  ]
+}
+```
+
+**Empty fields are normal and acceptable.** Many themes have agreed facts but no contested ones, or contested ones but no falsifiable predictions. Do not pad. Return [] and move on.
+
+**Worked examples of falsifiable_predictions extraction** (showing how to fill all five fields from a single source quote, including the empty-`by_when` case):
+
+Example A — source field has both level and timeframe:
+```
+input: tension_points[0].what_invalidates = "Brent breaking below $90 sustained for two weeks would invalidate the supply-scare thesis"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "Brent crude price",
+  "direction_or_level": "below $90 sustained",
+  "by_when": "within two weeks",
+  "source_quote": "Brent breaking below $90 sustained for two weeks"
+}
+```
+
+Example B — source field has level but NO timeframe (the `by_when=""` case — emit the entry anyway, do not skip):
+```
+input: key_data_points[3].metric = "Goldman 2026 hyperscaler capex target $751B"
+       key_data_points[3].context = "up $80B in two weeks"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "2026 hyperscaler capex",
+  "direction_or_level": "$751B",
+  "by_when": "",
+  "source_quote": "Goldman 2026 hyperscaler capex target $751B"
+}
+```
+
+The right reflex when in doubt: ship the entry with empty `by_when` rather than omit it. Omit ONLY when there's no verbatim source quote at all — never because one derived field couldn't be cleanly populated.
+
+**Self-discard when evidence is too thin.** If after honest review you have `facts_agreed=[]` AND `facts_contested=[]` AND `falsifiable_predictions=[]` — i.e., NO substantive evidence to commit to the structured form — set `selected: false` in your output. The downstream lint also discards these mechanically, but flagging it yourself keeps the audit trail honest. (The discovered-theme branch below is the exception: those produce at least one `facts_agreed` entry, so they don't trip this.)
+
+**Do not number, do not bullet, do not bold.** This is structured data, not prose.
+
+**DISCOVERED-THEME BRANCH (when every input stance is `neutral`).** If your `theme_stances` input contains only stance=`neutral` entries with `evidence` strings that are short contextual mentions (not multi-sentence stance arguments), this is a discovery-promoted theme: a subject several banks mentioned in context without staking a primary directional view. The standard adjudication shape still applies, but adjust how you fill the schema:
+
+- `consensus_view` describes the topic as a live subject + the absence of directional consensus. Example: "Banks across N desks reference the Trump-Xi summit as a near-term macro catalyst; nobody has staked a directional view yet."
+- `facts_agreed` should contain at least one entry summarizing what the banks consistently SAY about the topic at the mention level. Use the cluster of bank names in `banks_for` (multiple banks; the topic is broadly discussed) and copy 2-5 mention strings from `theme_stances.evidence` into `evidence_quotes`. The claim is descriptive, not prescriptive — e.g., "N banks flag X as an upcoming catalyst this window."
+- `facts_contested` is usually `[]` for these themes — no bank argued the contrary.
+- `falsifiable_predictions` is usually `[]` unless a specific tension_point with a `what_invalidates` field was provided.
+
+This branch keeps discovered themes in the pulse with honest framing instead of returning empty arrays that would cause the theme to be dropped at the post-filter emptiness check.
+
+Return ONLY the JSON object.
+
+Theme: strait shipping disruptions
+
+Pre-aggregated stance counts (copy these exactly into the output):
+{"supportive": 0, "skeptical": 0, "neutral": 3}
+
+Per-PDF evidence assigned to this theme:
+{
+ "theme_stances": [
+  {
+   "source": "Deutsche Bank",
+   "theme": "strait shipping disruptions",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Strait of Hormuz blockage",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Strait of Hormuz blockage"
+  },
+  {
+   "source": "The Market Ear",
+   "theme": "strait shipping disruptions",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Strait of Hormuz shipping disruptions",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Strait of Hormuz shipping disruptions"
+  },
+  {
+   "source": "Deutsche Bank",
+   "theme": "strait shipping disruptions",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Strait of Hormuz blockade",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Strait of Hormuz blockade"
+  },
+  {
+   "source": "Mizuho EMEA",
+   "theme": "strait shipping disruptions",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Bab el-Mandeb Strait shipping disruptions",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Bab el-Mandeb Strait shipping disruptions"
+  },
+  {
+   "source": "Mizuho EMEA",
+   "theme": "strait shipping disruptions",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Strait of Hormuz closure",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Strait of Hormuz closure"
+  }
+ ],
+ "tension_points": [],
+ "key_data_points": [
+  {
+   "source_bank": "The Market Ear",
+   "figure": "12,600",
+   "metric": "SOX short-term resistance level",
+   "context": "Key resistance level for potential breakout."
+  },
+  {
+   "source_bank": "Spotgamma",
+   "figure": "7,800",
+   "metric": "Key upside gamma level",
+   "context": "Key upside pivot for SPX"
+  },
+  {
+   "source_bank": "Spotgamma",
+   "figure": "7,700",
+   "metric": "Gamma flip level",
+   "context": "Gamma turns positive below this level"
+  },
+  {
+   "source_bank": "Spotgamma",
+   "figure": "7,680",
+   "metric": "Risk Pivot",
+   "context": "Break below this level could open extended move lower"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "+7.25%",
+   "metric": "GLD weekly return",
+   "context": "Best week since January 2026."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$1.6B",
+   "metric": "Spot-gold ETF inflows",
+   "context": "Inflows recorded over the last week."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "15%",
+   "metric": "weekly drop",
+   "context": "SK Hynix recent performance."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "W54tn",
+   "metric": "infrastructure plan",
+   "context": "SK Hynix long-term AI demand preparation."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "49 times",
+   "metric": "investment growth",
+   "context": "Korean equity investment 2020-2025 vs preceding eight years."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "4.1%",
+   "metric": "Unemployment rate",
+   "context": "13-month low, July 2026"
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "3.7%",
+   "metric": "PCE inflation",
+   "context": "June 2026"
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "3.5%",
+   "metric": "CPI inflation",
+   "context": "Current level"
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "525bps",
+   "metric": "Total Fed tightening",
+   "context": "2022-23 hiking cycle"
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "$88/bbl",
+   "metric": "Brent crude price",
+   "context": "August 2026"
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": ">$10/bbl",
+   "metric": "Brent futures curve backwardation",
+   "context": "12-month futures beneath front-end"
+  },
+  {
+   "source_bank": "Nvidia Corp.",
+   "figure": "$500B",
+   "metric": "AI infrastructure funding partnership",
+   "context": "Proposed partnership with US investment giants."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "31%",
+   "metric": "Open market buyback flow concentration",
+   "context": "Increase from 22% two weeks ago."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "93%",
+   "metric": "S&P 500 corporates in open window",
+   "context": "Estimated current status."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "<1",
+   "metric": "Vol Panic Index",
+   "context": "Lowest level since June 2024."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "99.8",
+   "metric": "NFIB Small Business Optimism Index",
+   "context": "July print vs 97.5 expected, 11-month high."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "4.06m",
+   "metric": "Existing Home Sales",
+   "context": "July annualised pace vs 4.05m expected."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "51%",
+   "metric": "September Fed hike probability",
+   "context": "Market pricing as of morning of report."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "$89.74/bbl",
+   "metric": "Brent Crude price",
+   "context": "As of morning of report."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "15",
+   "metric": "VIX level",
+   "context": "VIX closing below 15 as S&P hit new highs"
+  },
+  {
+   "source_bank": "Spotgamma",
+   "figure": "25-delta",
+   "metric": "SPY put option delta",
+   "context": "Charted as the cheapest level of the year"
+  },
+  {
+   "source_bank": "Mizuho EMEA",
+   "figure": "1.2x-1.4x",
+   "metric": "Implied/realized volatility ratio",
+   "context": "USD and EUR rates volatility surface."
+  },
+  {
+   "source_bank": "Mizuho EMEA",
+   "figure": "400k b/d",
+   "metric": "Jazan refinery processing capacity",
+   "context": "Major downstream facility currently facing restart delays."
+  },
+  {
+   "source_bank": "Mizuho EMEA",
+   "figure": "5m b/d",
+   "metric": "Saudi East-West pipeline capacity",
+   "context": "Capacity cannot fully replace Hormuz-dependent volumes."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "$650M",
+   "metric": "ARR",
+   "context": "As of 2Q26, up 40% y/y."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": ">70%",
+   "metric": "Adjusted gross margin",
+   "context": "Sustained despite rapidly increasing AI usage."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "7,800",
+   "metric": "Customer count",
+   "context": "Includes ~75% of S&P 500 and 90% of S&P 100."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "1.4bn",
+   "metric": "Annualized query run rate",
+   "context": "As of June 2026."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "35tn",
+   "metric": "Annualized token consumption",
+   "context": "As of June 2026, up 4-5x from beginning of year."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "70%",
+   "metric": "ARR concentration",
+   "context": "Customers generating $100K+ ARR."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "42%",
+   "metric": "ARR concentration",
+   "context": "Customers generating $500K+ ARR."
+  }
+ ]
+}
+
+Adjudicate this theme per the rules in your system prompt. Return the JSON object only.

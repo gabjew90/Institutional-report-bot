@@ -1,0 +1,43 @@
+You are performing a surgical FIXUP pass on a finished market-pulse markdown file. Your contract is strict: rewrite ONLY the lines identified below. Change nothing else in the document — not a word, not a ticker, not a heading. Do not restructure, do not re-voice other sections, do not add or remove themes.
+
+## The defect
+
+The pulse's RECAP asserts specific figures as this morning's JULY CPI print. Those figures are WRONG. They were pulled from an economic-calendar row whose `ACTUAL=` values are explicitly stamped "(for 2026-06)" — they are the JUNE figures sitting on a July-print row, because the calendar this run is a degraded fallback feed (its own header says: "FALLBACK FEED (Finnhub down) ... no released ACTUAL values — released events below show schedule + consensus only; pull actual printed values from research PDFs published after the release").
+
+So these specific claims in the pulse are false and must not ship:
+- "Headline prices fell 0.42% on the month against the 0.1% rise economists expected"
+- "core prices excluding food and energy were flat at -0.02% versus 0.2% expected"
+- "The annual comparisons ran hotter than forecast at 3.88% headline and 2.86% core against 3.4% and 2.5%"
+- The framing that the report "broke in two directions" (soft monthly / hot annual) — that split is an artifact of the wrong numbers and is not true.
+
+## What IS established and may be used
+
+1. The July CPI report was released this morning at 8:30 AM ET. That much is certain.
+2. Live news (CNBC, 08:50 EDT today) reports: "The July CPI report matched expectations." That is the only sourced characterization of the outcome available.
+3. The research corpus contains only PRE-PRINT desk FORECASTS for July CPI. These are ESTIMATES and must be written as estimates, with the desk named:
+   - Goldman Sachs: core +0.19% on the month (2.47% year over year), headline +0.05% on the month (3.35% year over year)
+   - JPMorgan: core +0.22% on the month (2.5% year over year), headline +0.12% on the month (3.4% year over year)
+   - Deutsche Bank: core +0.26% on the month (2.51% year over year), headline +0.15% on the month (3.45% year over year)
+4. NO analysis in the corpus carries a confirmed released July figure. You must NOT state what July CPI actually printed as a number. Do not invent one, do not infer one, and do not reuse the June values.
+5. The market reaction figures in the bullet ARE correct and live, and should be KEPT: $QQQ +0.92%, $VIXY -1.45%, the 5-year Treasury yield down 3.3 basis points.
+6. Deutsche Bank had September Fed hike pricing near a coin flip (51%) going into the print.
+
+## Your edits
+
+**Edit 1 — the RECAP opening sentence** (currently begins "Stocks opened higher after a July inflation report that broke in two directions, and the split is doing most of the work in this morning's positioning."). Rewrite ONLY this sentence so it no longer claims a two-way split. It should say the July inflation report landed in line with what desks expected and that the reaction, not the print, is what is driving positioning. Keep the rest of that paragraph exactly as written.
+
+**Edit 2 — the first RECAP bullet** (the one beginning "- **July CPI, 8:30 AM ET.**"). Rewrite the bullet so that it:
+   - states the July CPI report landed at 8:30 and came in close to what the desks had penciled in (per this morning's reporting), WITHOUT asserting any specific printed figure;
+   - names at least two desks' pre-print estimates explicitly AS ESTIMATES (e.g. "Goldman had core at +0.19% on the month, JPMorgan at +0.22%") so the reader knows what "in line" was measured against;
+   - keeps the live market reaction ($QQQ +0.92%, $VIXY -1.45%, 5-year yield down 3.3 basis points) and the existing first-use gloss of "basis point" as one hundredth of a percent;
+   - does not narrate pipeline internals. NEVER write words like "feed", "calendar", "snapshot", "ingested", "propagating", "our data", or anything about where numbers came from. The reader must not learn that a data source failed. Write it as ordinary market copy.
+
+## Voice rules that still bind on the lines you touch
+
+No em-dashes. No semicolons. No "it's worth noting", "notably", "meanwhile", "moreover", "importantly", "overall", "in summary". No sentence that opens with a bank name followed by a generic verb (says/notes/flags/adds/argues) as a story connector — attribution goes in a parenthetical or is paired directly with a number. Plain English for a smart non-professional trader.
+
+## Output
+
+Write the COMPLETE pulse markdown, with only those two edits applied and every other line byte-identical to the input, to /tmp/fixed.md using the Write tool. No preamble, no commentary, no code fence.
+
+The input file to read is /tmp/final.md.

@@ -1,0 +1,76 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.89%' is attached to [down, none, traded] but the source uses it for [date, session] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.89%",
+   "draft_subject": [
+    "down",
+    "none",
+    "traded"
+   ],
+   "source_subject": [
+    "date",
+    "session"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.22% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.22",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **July CPI, 8:30 AM ET.** The July report came out at 8:30 and, per this morning's reporting, landed close to what the desks had penciled in. Goldman Sachs had estimated core at +0.19% on the month "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.12% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.12",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **July CPI, 8:30 AM ET.** The July report came out at 8:30 and, per this morning's reporting, landed close to what the desks had penciled in. Goldman Sachs had estimated core at +0.19% on the month "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.92% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.42, -0.4, -0.02, 0.0, 0.3, 2.6, 2.86, 3.5, 3.88]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.92",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "- **July CPI, 8:30 AM ET.** The July report came out at 8:30 and, per this morning's reporting, landed close to what the desks had penciled in. Goldman Sachs had estimated core at +0.19% on the month "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-1.45% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.42, -0.4, -0.02, 0.0, 0.3, 2.6, 2.86, 3.5, 3.88]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-1.45",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "- **July CPI, 8:30 AM ET.** The July report came out at 8:30 and, per this morning's reporting, landed close to what the desks had penciled in. Goldman Sachs had estimated core at +0.19% on the month "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.9% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.42, -0.4, -0.02, 0.0, 0.3, 2.6, 2.86, 3.5, 3.88]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.9",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "- **How the rest of the session digests CPI.** Options expiring today were priced for about a 0.9% move in the S&P (JPMorgan), and hot inflation surprises have been hitting harder than cool ones have "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.2% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.2",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **Friday, August 14, 8:30 AM ET: July Retail Sales.** Consensus is 0.1% on the month, 0.2% excluding autos. JPMorgan is holding back full deployment of its tech-and-cyclicals barbell until both CPI "
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 7,
+ "exit_code": 4
+}

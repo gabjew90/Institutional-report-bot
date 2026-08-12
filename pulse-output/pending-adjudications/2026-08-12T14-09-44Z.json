@@ -1,0 +1,196 @@
+{
+  "pulse_date": "2026-08-12",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai credit market concerns",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 4,
+        "neutral": 7
+      },
+      "consensus_view": "Banks agree AI borrowers now pay noticeably more to raise debt than everyone else and that the gap is likely to stick, but they split on whether that extra cost is fair payment for real growth or the first crack in the AI trade.",
+      "facts_agreed": [
+        {
+          "claim": "AI-linked borrowers are paying a wider borrowing cost than comparable non-AI companies, and that gap is expected to persist given how much money the buildout still needs.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Nomura",
+            "Bloomberg Markets Live"
+          ],
+          "evidence_quotes": [
+            "our base case for the macro backdrop implies a healthy premium",
+            "AI-related issuance has been quite rate-insensitive given the existential rationale",
+            "wider spreads are becoming a less comfortable companion to equity gains"
+          ]
+        },
+        {
+          "claim": "Bond investors are actively positioning against AI borrowers, and that pressure is now bleeding into how the equities trade.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Bloomberg Markets Live"
+          ],
+          "evidence_quotes": [
+            "All 10 of the most shorted bonds in IG are AI names",
+            "wider spreads are becoming a less comfortable companion to equity gains"
+          ]
+        },
+        {
+          "claim": "AI spending is starting to show up in reported company results, which supports the case that the borrowers can carry the debt they are raising.",
+          "banks_for": [
+            "JPMorgan",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "25 companies in SPX are now quantifying the impact",
+            "latest earnings from CoreWeave and Super Micro Computer led to renewed optimism on the AI trade",
+            "The market is increasingly willing to give these businesses the benefit of the doubt"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the higher cost of AI debt reflects healthy funding of real growth or genuine credit deterioration",
+          "banks_for": [
+            "JPMorgan",
+            "Deutsche Bank"
+          ],
+          "for_evidence": "25 companies in SPX are now quantifying the impact",
+          "banks_against": [
+            "Goldman Sachs",
+            "Nomura",
+            "Bloomberg Markets Live",
+            "The Market Ear"
+          ],
+          "against_evidence": "All 10 of the most shorted bonds in IG are AI names"
+        },
+        {
+          "claim": "whether the AI trade still has upside from here",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "for_evidence": "latest earnings from CoreWeave and Super Micro Computer led to renewed optimism on the AI trade",
+          "banks_against": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "against_evidence": "the recent price action is beginning to challenge that view"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us inflation data",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the upcoming US inflation reports as the week's main event and tie them to what the Fed does next, but none of them commits to a direction on the print.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks point to the upcoming US inflation reports as the near-term catalyst for this window.",
+          "banks_for": [
+            "The Market Ear",
+            "Deutsche Bank",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Upcoming CPI and PPI prints",
+            "July US CPI print",
+            "US CPI inflation risk"
+          ]
+        },
+        {
+          "claim": "JPMorgan links the July inflation report directly to what the market expects the Fed to do with rates.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "July CPI print and Fed hike expectations"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "strait shipping disruptions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks keep the risk of oil tankers being blocked at the Strait of Hormuz on the watch list, but none of them has taken a side on whether it happens or what it does to prices.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference a possible closure or blockage of the Strait of Hormuz as a live risk this window without staking a directional view.",
+          "banks_for": [
+            "Deutsche Bank",
+            "The Market Ear",
+            "Mizuho EMEA"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz blockage",
+            "Strait of Hormuz shipping disruptions",
+            "Strait of Hormuz blockade",
+            "Strait of Hormuz closure"
+          ]
+        },
+        {
+          "claim": "Mizuho EMEA extends the shipping-chokepoint watch beyond Hormuz to the Bab el-Mandeb Strait.",
+          "banks_for": [
+            "Mizuho EMEA"
+          ],
+          "evidence_quotes": [
+            "Bab el-Mandeb Strait shipping disruptions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "memory market outlook",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 1
+      },
+      "consensus_view": "Both banks expect memory chip prices to keep climbing into 2027 because supply stays short of demand, but they split on how much upside is left, with JPMorgan seeing the boom running through the end of 2028 and Goldman saying the easy gains from scarcity are already banked.",
+      "facts_agreed": [
+        {
+          "claim": "Memory supply stays short of demand and prices keep rising at least into 2027.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "maintaining that the supply-demand shortage worsens into 2027E before a modest improvement in 2028E",
+            "Absolute prices should still rise into mid-2027, but the easy scarcity beta is behind us."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "how much of the memory upcycle is left after 2027",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "we continue to see the memory upcycle continuing through 28E-end",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "Absolute prices should still rise into mid-2027, but the easy scarcity beta is behind us."
+        }
+      ],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
