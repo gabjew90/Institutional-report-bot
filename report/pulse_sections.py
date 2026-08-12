@@ -682,7 +682,30 @@ def render_trade_board(
             status = "NEW"
         else:
             since = _fmt_since(first)
-            status = f"held since {since}" if since else "held"
+            # RE-ENTRY vs held. "held since X" claims the call ran
+            # unbroken from X to today. A lean that was dropped and
+            # picked back up keeps its original first_seen_date, so
+            # without prev_seen_date the gap is invisible: 2026-08-12
+            # shipped "held since Aug 7" for $MU (off the board Aug 10
+            # and Aug 11) and "held since Aug 10" for $QQQ puts (off the
+            # board Aug 11, and scored "flat (-0.3%)" on the way out).
+            # A follower sizing off an unbroken two-day call is reading
+            # something that did not happen.
+            #
+            # prev_seen_date is NULL on rows written before the column
+            # existed; treat unknown as continuous rather than inventing
+            # a re-entry.
+            prev_seen = r.get("prev_seen_date")
+            gapped = bool(
+                prev_board_date and prev_seen and prev_seen != prev_board_date
+            )
+            if gapped:
+                back = _fmt_since(prev_seen)
+                status = (
+                    f"RE-ENTRY (last on {back})" if back else "RE-ENTRY"
+                )
+            else:
+                status = f"held since {since}" if since else "held"
         lean_lines.append(f"- **{status}** {_lean_display_from_row(r)}")
 
     # DROPPED lines — leans that were on the IMMEDIATELY-PRIOR board and
@@ -751,8 +774,10 @@ def render_trade_board(
             "Leans this pulse is making.\n\n"
             "**NEW** first flagged today. **FLIP** reverses a view this "
             "board held, same ticker or the same macro call expressed "
-            "another way. **held since …** carried from an earlier "
-            "pulse and repeated today. **off board since …** was on the "
+            "another way. **held since …** on every board since that "
+            "date, unbroken. **RE-ENTRY** was flagged before, dropped, "
+            "and is back today, with the date it was last on the board. "
+            "**off board since …** was on the "
             "last board, not repeated today; the move since it was "
             "flagged is scored where price data exists.\n\n"
             + "\n".join(lean_lines) + "\n"

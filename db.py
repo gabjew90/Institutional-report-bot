@@ -26,6 +26,7 @@ def get_connection() -> sqlite3.Connection:
         _init_schema(_conn)
         _migrate_drop_unique_constraints(_conn)
         _migrate_add_extraction_source(_conn)
+        _migrate_add_lean_prev_seen(_conn)
         try:
             _migrate_pdf_query_surface(_conn)
         except Exception as e:  # never block boot on a query-surface migration
@@ -228,6 +229,14 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             direction TEXT NOT NULL,         -- 'long' | 'short'
             first_seen_date TEXT NOT NULL,   -- YYYY-MM-DD
             last_seen_date TEXT NOT NULL,    -- YYYY-MM-DD (updated on re-appearance)
+            -- The last_seen_date from BEFORE the most recent upsert. Makes
+            -- a gap visible: a lean dropped and re-added keeps its original
+            -- first_seen_date and gets last_seen stamped to today, so
+            -- without this the board cannot tell a continuous hold from a
+            -- re-entry (2026-08-12, "held since Aug 7" for a $MU that was
+            -- off the board for two sessions). NULL on rows written before
+            -- the column existed and on a lean's first sighting.
+            prev_seen_date TEXT,
             context_snippet TEXT,            -- the lean sentence, clipped
             status TEXT NOT NULL DEFAULT 'live',  -- 'live' | 'aged_out'
             UNIQUE(instrument, direction, first_seen_date)
@@ -698,6 +707,32 @@ def _migrate_drop_unique_constraints(conn: sqlite3.Connection) -> None:
             ALTER TABLE daily_reports_new RENAME TO daily_reports;
             CREATE INDEX IF NOT EXISTS idx_daily_reports_type_created ON daily_reports(report_type, created_at);
         """)
+        conn.commit()
+
+
+def _migrate_add_lean_prev_seen(conn: sqlite3.Connection) -> None:
+    """Add prev_seen_date to pulse_leans (2026-08-12).
+
+    The TRADE BOARD labelled a lean "held since <first_seen_date>" for
+    anything whose first_seen_date was not today. That cannot distinguish
+    a continuous hold from a re-entry: a lean dropped and re-added keeps
+    its original first_seen_date, and the upsert stamps last_seen_date to
+    today, so the gap is erased.
+
+    Both cases shipped on 2026-08-12. $MU rendered "held since Aug 7"
+    having been off the board on Aug 10 and Aug 11. $QQQ puts rendered
+    "held since Aug 10" having been off the board on Aug 11, where it was
+    scored "flat (-0.3%) since flagged" on its way out. A follower reads
+    an unbroken two-day call in both cases.
+
+    prev_seen_date holds the last_seen_date from BEFORE today's upsert,
+    which is what makes the gap visible. Idempotent: PRAGMA-checks before
+    ALTER. Existing rows get NULL, which the renderer treats as unknown
+    and falls back to the old behaviour rather than inventing a re-entry.
+    """
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(pulse_leans)")}
+    if "prev_seen_date" not in cols:
+        conn.execute("ALTER TABLE pulse_leans ADD COLUMN prev_seen_date TEXT")
         conn.commit()
 
 
@@ -2275,8 +2310,19 @@ def upsert_pulse_leans(today: str, leans: list[dict]) -> list[dict]:
                         f"(was: {', '.join(sorted(old_set))})"
                     )
                 new_ctx = new_ctx[:200]
+            # Preserve the PRIOR last_seen before overwriting it. Without
+            # this the board cannot tell a continuous hold from a
+            # re-entry: a lean dropped and re-added still carries its
+            # original first_seen_date, and last_seen_date is stamped to
+            # today, so the gap leaves no trace. 2026-08-12 shipped
+            # "held since Aug 7" for $MU (absent Aug 10 and Aug 11) and
+            # "held since Aug 10" for $QQQ puts (absent Aug 11, and
+            # scored "flat (-0.3%)" on its way off the board the day
+            # before). A reader sees an unbroken call; the board actually
+            # dropped it and picked it back up.
             conn.execute(
-                "UPDATE pulse_leans SET last_seen_date = ?, "
+                "UPDATE pulse_leans SET prev_seen_date = last_seen_date, "
+                "last_seen_date = ?, "
                 "context_snippet = COALESCE(?, context_snippet) WHERE id = ?",
                 (today, new_ctx, live["id"]),
             )
@@ -2416,7 +2462,8 @@ def get_board_leans(today: str, max_age_days: int = 5) -> list[dict]:
     conn.commit()
     rows = conn.execute(
         "SELECT instrument, direction, first_seen_date, last_seen_date, "
-        "context_snippet FROM pulse_leans WHERE status = 'live' "
+        "prev_seen_date, context_snippet FROM pulse_leans "
+        "WHERE status = 'live' "
         "ORDER BY first_seen_date DESC, instrument",
     ).fetchall()
     return [dict(r) for r in rows]
