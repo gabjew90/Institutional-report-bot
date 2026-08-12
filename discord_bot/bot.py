@@ -5524,6 +5524,16 @@ def _roast_subject(
     return None
 
 
+# Third-person reference to the subject. The naming problem exists ONLY
+# here: a reply that addresses someone as "you" is unambiguous by
+# construction, because the referent is whoever is being replied to.
+_THIRD_PERSON_REF_RE = re.compile(
+    r"\b(he|him|his|she|her|hers|they|them|their|"
+    r"(?:the|that|this|a) (?:guy|dude|man|kid))\b",
+    re.IGNORECASE,
+)
+
+
 def _member_material_surface(
     profiles_block: str, chat_context: str,
     username: str, display: str, question: str,
@@ -6872,8 +6882,22 @@ async def _answer_with_gemini(
         # not a correctness one, and a guard that rewrites correct roasts
         # to fix presentation is how pnl-monotone vandalized a factual
         # answer (2026-08-04).
+        # NOT gated on _is_clapback_shaped. That heuristic is the right
+        # gate for the fidelity guard, which polices receipts inside a
+        # clapback, and the wrong one here: it returns False for the
+        # 2026-08-12 Tulch answer, so a naming guard behind it could not
+        # fire on the case it was built for. The condition below is
+        # narrower and needs no shape heuristic — prose (not the
+        # arrow-bullet fact format) that talks ABOUT a third party in the
+        # third person and never says who.
+        #
+        # Measured across all 467 logged answers: 9 replies are
+        # third-person prose about a third party, and 4 of them (44%)
+        # never name the subject, including the one that drew the
+        # complaint. Under the old clapback gate only 1 of those 4 was
+        # even visible.
         if (answer and not _route_is_factual and not _round_gm_chunks
-                and _is_clapback_shaped(answer)):
+                and not answer.lstrip().startswith("→")):
             _nm_subject = _roast_subject(
                 question, profiles_block, asker_username, asker_display_name,
             )
@@ -6883,7 +6907,7 @@ async def _answer_with_gemini(
                     re.search(rf"\b{re.escape(h)}\b", answer, re.I)
                     for h in (_nm_disp, _nm_uname) if len(h) >= 3
                 )
-                if not _named:
+                if not _named and _THIRD_PERSON_REF_RE.search(answer):
                     _ask_meta["guards"].append("subject-unnamed")
                     log.warning(
                         f"/ask: third-party roast never names its subject "

@@ -154,6 +154,36 @@ def test_guard_uses_subject_scope_and_stamps_it():
     _ok("fidelity guard scopes to the subject and records which pool it used")
 
 
+REAL_UNNAMED = (
+    "hot streak is doing some heavy lifting for a guy whose entire "
+    "member alert ledger is a graveyard except for SanDisk. give him a "
+    "week and he'll be right back to begging for a cock rocket."
+)
+
+
+def test_naming_gate_catches_the_motivating_case():
+    """The 2026-08-12 answer verbatim. _is_clapback_shaped() returns False
+    for it, so a naming guard behind that gate could not fire on the very
+    case it was built for. The gate must be third-person reference."""
+    from discord_bot.bot import _is_clapback_shaped, _THIRD_PERSON_REF_RE
+    if _is_clapback_shaped(REAL_UNNAMED):
+        _fail("premise changed: the real answer is now clapback-shaped, "
+              "re-derive whether the naming gate still needs to differ")
+    if not _THIRD_PERSON_REF_RE.search(REAL_UNNAMED):
+        _fail("third-person gate does not match the real unnamed roast")
+    _ok("naming gate catches the case _is_clapback_shaped misses")
+
+
+def test_second_person_replies_are_not_flagged():
+    """"you" is unambiguous — the referent is whoever is being replied to."""
+    from discord_bot.bot import _THIRD_PERSON_REF_RE
+    for a in ("you're crying about a leaderboard while you're stuck at the "
+              "pharmacy", "your entire risk model is vibes and hope"):
+        if _THIRD_PERSON_REF_RE.search(a):
+            _fail(f"second-person reply matched the third-person gate: {a[:50]}")
+    _ok("second-person replies do not trip the naming guard")
+
+
 def test_naming_guard_is_advisory_only():
     """Presentation problems must not vandalize correct roasts."""
     import discord_bot.bot as bot
@@ -165,6 +195,11 @@ def test_naming_guard_is_advisory_only():
     # comment edit cannot silently move the checks out of range.
     end = src.find("Roast-recycle guard", i)
     block = src[i:end if end > i else i + 6000]
+    if "_is_clapback_shaped(answer)" in block:
+        _fail("naming guard is gated on clapback shape again — that gate "
+              "excludes the 2026-08-12 case it exists for")
+    if "_THIRD_PERSON_REF_RE" not in block:
+        _fail("naming guard does not gate on a third-person reference")
     if "subject-unnamed" not in block:
         _fail("naming guard does not stamp a guard name")
     if "_clapback_fidelity_violations(" not in block:
@@ -190,6 +225,8 @@ if __name__ == "__main__":
     test_subject_material_is_the_subjects_not_the_askers()
     test_real_answer_passes_under_subject_scope_and_fails_under_asker()
     test_guard_uses_subject_scope_and_stamps_it()
+    test_naming_gate_catches_the_motivating_case()
+    test_second_person_replies_are_not_flagged()
     test_naming_guard_is_advisory_only()
     test_prompt_requires_naming_the_subject()
     print("\nAll roast-subject-scope smoke tests passed.")
