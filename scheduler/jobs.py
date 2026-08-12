@@ -61,6 +61,23 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     else:
         log.info("GitHub-bridge active — skipping internal Gemini scheduled pulse")
 
+        # Missing-pulse watchdog. Only meaningful when the routine owns the
+        # scheduled pulse, since it exists to catch the routine dying
+        # silently. 12:30 local (ET) is comfortably past the routine's
+        # worst observed finish: the 2026-08-07 run exhausted its full
+        # 90-minute volume gate and still committed by 11:58 ET.
+        scheduler.add_job(
+            _missing_pulse_watchdog_job,
+            trigger=CronTrigger(
+                day_of_week="mon-fri", hour=12, minute=30, timezone=tz,
+            ),
+            id="missing_pulse_watchdog",
+            name="Watchdog: scheduled pulse missing",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=3600,
+        )
+
     # Bridge jobs (only register if GITHUB_TOKEN is set)
     if bridge_active:
         from github_bridge.jobs import dump_context_job
@@ -912,6 +929,94 @@ async def _retention_purge_job():
                 log.debug(f"retention purge: {table} clean")
     except Exception as e:
         log.error(f"retention purge job failed: {e}", exc_info=True)
+
+
+async def _missing_pulse_watchdog_job(bot=None):
+    """Post to the pulse channels when a market-open weekday produced no
+    scheduled pulse.
+
+    Why this exists (2026-08-11): the Claude.ai routine that writes the
+    pulse ran out of model credits mid-run. It wrote one progress stamp at
+    STEP 2 and stopped. No pulse, no error artifact, no skip marker, no
+    alert. The miss was found only because a human noticed the pulse was
+    absent and went digging through the pulse-data branch.
+
+    The routine's holiday path self-documents by committing a skip marker,
+    but that only works while the agent is alive to commit it. Credit
+    exhaustion, a crash, or a bootstrap failure all kill the agent before
+    it can report anything. So the check has to live outside the routine,
+    on the always-on worker, and it deliberately tests for the ABSENCE OF A
+    RESULT rather than trying to detect any particular cause.
+
+    scripts/routine_watcher.py looks like it covers this but does not: it
+    is a manual tool a human invokes under the Monitor tool to watch a fire
+    in real time. Nothing schedules it.
+    """
+    try:
+        import db
+        from datetime import datetime
+        from pytz import timezone as _tz
+
+        local_now = datetime.now(_tz(settings.timezone))
+        today = local_now.strftime("%Y-%m-%d")
+
+        # Weekends never fire a pulse. The cron already restricts to
+        # mon-fri; this is belt-and-braces for a misfire replay.
+        if local_now.weekday() >= 5:
+            return
+
+        # Market holidays are an expected miss, not a failure.
+        try:
+            import world_context
+            holiday = world_context.is_us_market_holiday(today)
+        except Exception:
+            holiday = False
+        if holiday:
+            log.info(f"Missing-pulse watchdog: {today} is {holiday} — no "
+                     f"pulse expected, staying quiet")
+            return
+
+        if db.daily_pulse_delivered_on(today):
+            log.info(f"Missing-pulse watchdog: pulse delivered for {today}")
+            return
+
+        if db.watchdog_already_alerted("pulse_watchdog", today):
+            log.info(f"Missing-pulse watchdog: already alerted for {today}")
+            return
+
+        log.warning(f"Missing-pulse watchdog: NO scheduled pulse for {today}")
+
+        # Record before posting. A send failure must not re-alert on the
+        # next worker restart; the log line above is the durable signal.
+        try:
+            db.log_event(None, "pulse_watchdog", "missing", today)
+        except Exception as e:
+            log.error(f"Missing-pulse watchdog: could not record alert: {e}")
+
+        if bot is None:
+            return
+        raw = (settings.discord_channel_id or "").strip()
+        channel_ids = [c.strip() for c in raw.split(",") if c.strip()]
+        if not channel_ids:
+            return
+
+        body = (
+            f"⚠️ **No market pulse today ({today}).** The synthesis routine "
+            f"did not deliver one. Markets were open, so this is a failure, "
+            f"not a scheduled skip.\n"
+            f"Research already ingested is not lost — the next successful "
+            f"run covers the full window back to the last pulse."
+        )
+        for cid in channel_ids:
+            try:
+                ch = bot.get_channel(int(cid))
+                if ch is None:
+                    ch = await bot.fetch_channel(int(cid))
+                await ch.send(body[:1900])
+            except Exception as e:
+                log.error(f"Missing-pulse watchdog: send to {cid} failed: {e}")
+    except Exception as e:
+        log.error(f"Missing-pulse watchdog failed: {e}", exc_info=True)
 
 
 async def _analyst_purge_job(bot=None):

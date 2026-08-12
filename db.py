@@ -1373,6 +1373,38 @@ def mark_report_sent(report_id: int) -> None:
     conn.commit()
 
 
+def daily_pulse_delivered_on(report_date: str) -> bool:
+    """Did a SCHEDULED pulse actually land on `report_date` (local date)?
+
+    The bridge writes a daily_reports row with report_type='daily' when it
+    posts the routine's pulse to Discord, so a missing row means no pulse
+    reached anyone. Manual /pulse writes report_type='manual' and does not
+    count — it does not satisfy the scheduled cadence.
+
+    Used by the missing-pulse watchdog. 2026-08-11: the routine's model ran
+    out of credits mid-run, wrote one progress stamp and stopped. No pulse,
+    no error, no marker. The holiday path self-documents because the agent
+    is alive to commit a skip marker; an agent that dies cannot report its
+    own death, so the check has to live outside it.
+    """
+    row = get_connection().execute(
+        """SELECT 1 FROM daily_reports
+           WHERE report_date = ? AND report_type = 'daily' LIMIT 1""",
+        (report_date,),
+    ).fetchone()
+    return row is not None
+
+
+def watchdog_already_alerted(kind: str, day: str) -> bool:
+    """True if this watchdog already posted for `day` (idempotency guard)."""
+    row = get_connection().execute(
+        """SELECT 1 FROM processing_log
+           WHERE event_type = ? AND details = ? LIMIT 1""",
+        (kind, day),
+    ).fetchone()
+    return row is not None
+
+
 def get_last_report_time() -> str | None:
     """Get the created_at timestamp of the most recent daily report, any date."""
     row = get_connection().execute(
