@@ -61,13 +61,15 @@ def test_multiword_clip_is_visible_not_silent():
 
 def test_live_renderer_does_not_reclip_ratings():
     """render_desk_signal_board (the monospace board this test used to
-    pin) was removed 2026-08-04 as dead code — the live HC renderer is
-    _render_hc_subsection, which uses markdown bullets with no column
-    widths. Guard the surviving rule: the live renderer must not slice
-    _norm_rating's output back down (the 8-slice is what shipped
-    'Improvin')."""
+    pin) was removed 2026-08-04 as dead code. The live HC renderer was
+    _render_hc_subsection and became _hc_call_lines on 2026-08-12, when
+    the desk calls stopped rendering under their own header and merged
+    into the board's single list. Either way it is markdown bullets with
+    no column widths. Guard the surviving rule: the live renderer must
+    not slice _norm_rating's output back down (the 8-slice is what
+    shipped 'Improvin')."""
     import report.pulse_sections as ps
-    src = inspect.getsource(ps._render_hc_subsection)
+    src = inspect.getsource(ps._hc_call_lines)
     seg = src.split("_norm_rating", 1)[1][:200]
     assert "[:8]" not in seg and "[:9]" not in seg, \
         "live HC renderer re-slices the rating — mid-word stubs return"

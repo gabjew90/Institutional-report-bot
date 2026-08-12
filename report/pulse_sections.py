@@ -25,8 +25,6 @@ import json
 import logging
 import re
 
-from report.market_data import score_lean_move
-
 log = logging.getLogger(__name__)
 
 # US-tradable ticker shape — mirrors the Robinhood-test filters used in
@@ -538,8 +536,8 @@ def _fmt_since(iso: str) -> str:
 _HC_SUBSECTION_MAX = 6
 
 
-def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
-    """Render the HIGH-CONVICTION single-name calls as a clean markdown
+def _hc_call_lines(hc_calls: list[dict] | None) -> list[str]:
+    """Bullet lines for the desks' HIGH-CONVICTION single-name calls as a clean markdown
     sub-block under the TRADE BOARD (2026-06-24 — brought back from the
     retired DESK SIGNAL BOARD, per user request). Reuses the desk-board
     cleaners but renders as bullets, NOT a monospace table — fixing the
@@ -555,8 +553,8 @@ def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
         and (c.get("ticker") or "").strip().strip("?").strip()
     ]
     if not calls:
-        return ""
-    lines = ["**High-conviction single-name calls** (the desks' standout bets):", ""]
+        return []
+    lines: list[str] = []
     used_tokens: set[str] = set()
     for c in calls[:_HC_SUBSECTION_MAX]:
         bank = _clean_inline(c.get("source") or "?")
@@ -592,7 +590,16 @@ def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
     if legend_bits:
         lines.append("")
         lines.append(f"*({', '.join(legend_bits)})*")
-    return "\n".join(lines) + "\n"
+    return lines
+
+
+def _render_hc_subsection(hc_calls: list[dict] | None) -> str:
+    """String form of the HC calls, kept for callers that want the block
+    on its own. The board itself merges the lines into one list now, so
+    the "High-conviction single-name calls" header is gone: every line on
+    the board is a call being made today, desk calls included."""
+    lines = _hc_call_lines(hc_calls)
+    return "\n".join(lines) + "\n" if lines else ""
 
 
 def _lean_display_from_row(r: dict) -> str:
@@ -632,158 +639,49 @@ def render_trade_board(
     prev_board_date: str | None = None,
     reversal_counts: dict[str, int] | None = None,
 ) -> str:
-    """Render the TRADE BOARD: the leans THIS pulse is making (clean
-    markdown bullets) plus a HIGH-CONVICTION single-name calls subsection.
-    Empty string when the pulse made neither.
+    # flips / prev_board_date / reversal_counts are accepted but unused
+    # since the 2026-08-12 rewrite. They stay in the signature so the
+    # bridge call site is untouched and so re-enabling any of the label
+    # families is a one-function change. See the docstring.
+    """Render the TRADE BOARD: calls made TODAY, nothing else.
 
-    2026-06-22 QC: show only leans re-affirmed today (last_seen == today)
-    so the board ALWAYS matches the pulse. 2026-06-24: HC calls returned
-    as a subsection (from the retired DESK SIGNAL BOARD). Labels: NEW =
-    first flagged today, FLIP = reversed today, "held since <date>" =
-    carried from an earlier pulse and repeated today, "off board since
-    <date>" = on the prior board but not repeated today (2026-07-10:
-    four of five leans vanished silently; 2026-07-13 rename from DROPPED
-    — that word implied a deliberate exit, but non-mention usually just
-    means today's themes went elsewhere).
+    2026-08-12 rewrite (owner call). The board had grown into a status
+    ledger — repeated "held since" lines for every live position, "off
+    board since" exit rows with scoring, FLIP and RE-ENTRY labels, and a
+    six-line legend defining all of it that reprinted verbatim every
+    single pulse. On 2026-08-12 the entire board was eight rows of
+    repeats and exits with not one new call in it, under a legend longer
+    than the content.
+
+    What ships now is one list: the leans this pulse is initiating, plus
+    the desks' high-conviction single-name calls, in the same list. No
+    legend, no status prefixes, no carried positions, no exit scoring.
+    Every line is a call being made today, so no line needs a label
+    saying so. Empty string when the pulse made no new calls.
+
+    NOTE: the tracking is unchanged. pulse_leans still records
+    first/prev/last-seen for every lean, so lineage, flip detection and
+    move scoring stay queryable — they simply no longer render. Bringing
+    any of it back is a rendering change, not a data migration.
     """
-    flips = {f.upper() for f in (flips or set())}
-    # Merge in THESIS flips — the caller's set only covers same-ticker
-    # direction reversals, so a macro view reversed through a different
-    # instrument (Long $UUP → Long $TLT) shipped as NEW (2026-07-29).
-    try:
-        flips |= detect_thesis_flips(board_rows, today, prev_board_date)
-    except Exception as e:
-        log.info(f"thesis-flip detection failed (non-fatal): {e}")
-    # Leans: only what TODAY's pulse actually says — last seen today.
-    rows = [r for r in (board_rows or [])
-            if (r.get("last_seen_date") or today) == today]
-    lean_lines = []
-    for r in rows[:_BOARD_MAX_ROWS]:
-        first = r.get("first_seen_date") or today
-        is_new = first == today
-        inst_name = (r.get("instrument") or "?").upper()
-        ticker0 = inst_name.split()[0]
-        if is_new and ticker0 in flips:
-            status = "FLIP"
-            # Churn honesty (2026-08-04 review): the SMH/SOXX complex
-            # flipped five times in seven sessions and every FLIP
-            # rendered as if it were the first. A repeat reversal names
-            # its count so a follower sees the chop, not just today's
-            # conviction. First flips stay clean.
-            n = (reversal_counts or {}).get(ticker0, 0)
-            if n >= 2:
-                ord_sfx = {1: "st", 2: "nd", 3: "rd"}.get(
-                    n if n < 20 else n % 10, "th")
-                status = (
-                    f"FLIP ({n}{ord_sfx} reversal in 10 sessions, "
-                    f"fast tape, size accordingly)"
-                )
-        elif is_new:
-            status = "NEW"
-        else:
-            since = _fmt_since(first)
-            # RE-ENTRY vs held. "held since X" claims the call ran
-            # unbroken from X to today. A lean that was dropped and
-            # picked back up keeps its original first_seen_date, so
-            # without prev_seen_date the gap is invisible: 2026-08-12
-            # shipped "held since Aug 7" for $MU (off the board Aug 10
-            # and Aug 11) and "held since Aug 10" for $QQQ puts (off the
-            # board Aug 11, and scored "flat (-0.3%)" on the way out).
-            # A follower sizing off an unbroken two-day call is reading
-            # something that did not happen.
-            #
-            # prev_seen_date is NULL on rows written before the column
-            # existed; treat unknown as continuous rather than inventing
-            # a re-entry.
-            prev_seen = r.get("prev_seen_date")
-            gapped = bool(
-                prev_board_date and prev_seen and prev_seen != prev_board_date
-            )
-            if gapped:
-                back = _fmt_since(prev_seen)
-                status = (
-                    f"RE-ENTRY (last on {back})" if back else "RE-ENTRY"
-                )
-            else:
-                status = f"held since {since}" if since else "held"
-        lean_lines.append(f"- **{status}** {_lean_display_from_row(r)}")
+    # Only leans FIRST flagged today. A lean re-affirmed from an earlier
+    # pulse carries last_seen == today but an older first_seen, and it is
+    # exactly what the owner asked to drop.
+    rows = [
+        r for r in (board_rows or [])
+        if (r.get("last_seen_date") or today) == today
+        and (r.get("first_seen_date") or today) == today
+    ]
+    lean_lines = [
+        f"- {_lean_display_from_row(r)}" for r in rows[:_BOARD_MAX_ROWS]
+    ]
 
-    # DROPPED lines — leans that were on the IMMEDIATELY-PRIOR board and
-    # didn't make today's. `prev_board_date` is the previous SCHEDULED
-    # pulse date (the bridge passes db.get_prev_scheduled_pulse_date) —
-    # it can't be derived from the rows themselves: re-affirmed leans
-    # carry last_seen == today, leaving no trace of yesterday, so a
-    # max(last_seen < today) heuristic re-drops the same lean every day
-    # until age-out (caught by smoke_board_dropped's retire test). With
-    # the real date, each drop renders exactly once and a bridge retry
-    # is idempotent. Rows sharing any ticker with a lean affirmed today
-    # are skipped — those are FLIPs (already labeled above) or partial
-    # re-affirmations, not abandonments. Only renders when today has
-    # leans at all: a missing _LEANS block is a validator failure, not a
-    # mass abandonment.
-    if lean_lines and prev_board_date and prev_board_date < today:
-        today_tickers: set[str] = set()
-        for r in rows:
-            today_tickers |= _row_tickers(r)
-        n_dropped = 0
-        for r in (board_rows or []):
-            if (r.get("last_seen_date") or "") != prev_board_date:
-                continue
-            if _row_tickers(r) & today_tickers:
-                continue
-            if n_dropped >= _BOARD_DROPPED_MAX:
-                break
-            # "off board since <date>" not "DROPPED" (2026-07-13 user
-            # feedback): DROPPED implied the author deliberately exited
-            # the call, but mechanically this only means "not repeated
-            # today" — often just today's themes going elsewhere. The
-            # label states the observation; a deliberate reversal shows
-            # as FLIP.
-            _since = _fmt_since(prev_board_date)
-            _tag = f"off board since {_since}" if _since else "off board"
-            # Score the exit (2026-07-29 feedback): a lean that leaves
-            # the board silently is the credibility hole — "off board"
-            # was doing the work "stopped out, here's the damage" should
-            # do (Long $BNO ate a 6% oil crash and just vanished).
-            # Direction-aware, from the lean's OWN first_seen date.
-            # Failure is non-fatal: the board must ship regardless.
-            _outcome = ""
-            try:
-                _tk = (r.get("instrument") or "").upper().split()[0]
-                _first_seen = r.get("first_seen_date") or prev_board_date
-                if _US_TICKER_RE.match(_tk) and _first_seen:
-                    _sc = score_lean_move(
-                        _tk, r.get("direction") or "", _first_seen
-                    )
-                    if _sc:
-                        _outcome = f" · {_sc}"
-            except Exception as e:
-                log.info(f"trade-board exit scoring failed (non-fatal): {e}")
-            lean_lines.append(
-                f"- **{_tag}** {_lean_display_from_row(r)}{_outcome}"
-            )
-            n_dropped += 1
-
-    hc_block = _render_hc_subsection(hc_calls)
-    if not lean_lines and not hc_block:
+    hc_lines = _hc_call_lines(hc_calls)
+    if not lean_lines and not hc_lines:
         return ""
 
     out = "## TRADE BOARD\n\n"
-    if lean_lines:
-        out += (
-            "Leans this pulse is making.\n\n"
-            "**NEW** first flagged today. **FLIP** reverses a view this "
-            "board held, same ticker or the same macro call expressed "
-            "another way. **held since …** on every board since that "
-            "date, unbroken. **RE-ENTRY** was flagged before, dropped, "
-            "and is back today, with the date it was last on the board. "
-            "**off board since …** was on the "
-            "last board, not repeated today; the move since it was "
-            "flagged is scored where price data exists.\n\n"
-            + "\n".join(lean_lines) + "\n"
-        )
-    if hc_block:
-        out += ("\n" if lean_lines else "") + hc_block
+    out += "\n".join(lean_lines + hc_lines) + "\n"
     return out
 
 

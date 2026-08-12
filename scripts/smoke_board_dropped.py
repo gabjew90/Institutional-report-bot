@@ -54,22 +54,19 @@ def test_the_observed_07_10_drops_surface():
     ]
     board = render_trade_board(rows, "2026-07-10", flips={"TLT"},
                                prev_board_date="2026-07-09")
-    # the abandoned leans surface
-    for frag in ("- **off board since Jul 9** Long $BNO, $XLE",
-                 "- **off board since Jul 9** Long $GLD",
-                 "- **off board since Jul 9** Long $RSP, $XLU"):
-        assert frag in board, f"missing: {frag}\n{board}"
-    # the flipped instrument is NOT double-reported as dropped
+    # 2026-08-12 (owner decision): abandoned leans no longer RENDER. The
+    # board carries today's calls only — see smoke_board_new_calls_only.
+    # What this case still pins is that yesterday's leans cannot leak
+    # back onto the board under any label, and that today's own calls
+    # survive the change.
+    for gone in ("off board", "$BNO", "$GLD", "$RSP", "$XLU"):
+        assert gone not in board, \
+            f"a dropped lean leaked back onto the board: {gone}\n{board}"
+    assert "$BTC" in board, f"today's own call vanished:\n{board}"
     assert board.count("$TLT") == 1, \
-        f"FLIP must not also render as off-board: {board}"
-    assert "- **FLIP** Short $TLT" in board, board
-    # legend names the state (intent-neutral: 2026-07-13 rename from
-    # DROPPED, which implied a deliberate exit). 2026-07-29: legend
-    # rewritten (was a 60-word run-on) — bold terms, no wrapping quotes,
-    # and it now documents exit scoring + thesis-level FLIP.
-    assert "off board since …" in board, "legend missing off-board"
-    assert "not repeated today" in board, "legend must disclaim intent"
-    assert "scored" in board, "legend must document exit scoring"
+        f"today's TLT call should appear exactly once: {board}"
+    for legend in ("off board since …", "not repeated today", "scored"):
+        assert legend not in board, f"legend text survives: {legend}"
     _ok("07-10 case: silent drops surface; FLIP not double-reported")
 
 

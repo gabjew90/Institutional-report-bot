@@ -62,7 +62,12 @@ def test_score_none_when_no_data():
     _ok("no price data -> no score (never fabricates an outcome)")
 
 
-def test_board_appends_outcome_on_exit():
+def test_exit_scoring_is_no_longer_rendered():
+    """2026-08-12 (owner decision): the board carries today's calls only,
+    so exited leans and their scored outcomes no longer render.
+    score_lean_move itself is unchanged and still covered by the tests
+    above — the scoring stays available for anything that wants it, it
+    just does not appear on the board."""
     from report.pulse_sections import render_trade_board
     rows = [
         {"instrument": "SOXX", "direction": "short",
@@ -72,31 +77,23 @@ def test_board_appends_outcome_on_exit():
          "first_seen_date": "2026-07-22", "last_seen_date": "2026-07-27",
          "context_snippet": "Long $BNO — Hormuz premium reloads"},
     ]
-    with patch("report.pulse_sections.score_lean_move",
-               return_value="went -5.2% against it"):
-        out = render_trade_board(rows, "2026-07-28",
-                                 prev_board_date="2026-07-27")
-    assert "off board" in out, out
-    assert "-5.2% against it" in out, (
-        f"exited lean must carry its outcome, not vanish silently:\n{out}"
-    )
-    _ok("exited lean renders with its scored outcome")
+    out = render_trade_board(rows, "2026-07-28",
+                             prev_board_date="2026-07-27")
+    assert "off board" not in out, f"exit rows should be retired: {out}"
+    assert "$BNO" not in out, f"the exited lean should not render: {out}"
+    assert "against it" not in out and "worked" not in out, \
+        f"exit scoring should not render: {out}"
+    assert "$SOXX" in out, f"today's own call must still render: {out}"
+    _ok("exit rows and their scoring retired from the board")
 
 
-def test_board_survives_scoring_failure():
-    from report.pulse_sections import render_trade_board
-    rows = [
-        {"instrument": "SOXX", "direction": "short",
-         "first_seen_date": "2026-07-28", "last_seen_date": "2026-07-28"},
-        {"instrument": "BNO", "direction": "long",
-         "first_seen_date": "2026-07-22", "last_seen_date": "2026-07-27"},
-    ]
-    with patch("report.pulse_sections.score_lean_move",
-               side_effect=RuntimeError("yahoo down")):
-        out = render_trade_board(rows, "2026-07-28",
-                                 prev_board_date="2026-07-27")
-    assert "off board" in out, "board must still render when scoring fails"
-    _ok("scoring failure degrades gracefully (board still ships)")
+def test_board_needs_no_scoring_to_render():
+    """The board no longer calls score_lean_move at all, so a dead price
+    feed cannot affect it. Previously this was a try/except guard."""
+    import inspect
+    import report.pulse_sections as ps
+    assert "score_lean_move" not in inspect.getsource(ps.render_trade_board),         "board should no longer depend on the price feed"
+    _ok("board render has no price-feed dependency left")
 
 
 if __name__ == "__main__":
@@ -104,6 +101,6 @@ if __name__ == "__main__":
     test_score_long_loss()
     test_score_short_win()
     test_score_none_when_no_data()
-    test_board_appends_outcome_on_exit()
-    test_board_survives_scoring_failure()
+    test_exit_scoring_is_no_longer_rendered()
+    test_board_needs_no_scoring_to_render()
     print("\nALL TRADE SCORING SMOKE TESTS PASS")

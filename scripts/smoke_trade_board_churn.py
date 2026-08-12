@@ -80,19 +80,21 @@ def test_flip_renders_reversal_count():
         prev_board_date="2026-08-03",
         reversal_counts={"SMH": 4},
     )
-    assert "FLIP" in md, md
-    assert "4th reversal" in md, (
-        f"a FLIP that is the 4th direction change in the window must "
-        f"say so on the board:\n{md}"
-    )
-    # A first flip stays clean — no scare annotation.
+    # 2026-08-12 (owner decision): the board carries today's calls with
+    # no status labels, so the churn annotation no longer renders.
+    # count_recent_reversals is unchanged and still covered above — the
+    # churn signal remains queryable for anything that wants it.
+    assert "FLIP" not in md, f"FLIP label should be retired:\n{md}"
+    assert "reversal" not in md, f"churn annotation should be retired:\n{md}"
+    assert "$SMH" in md, f"the lean itself must still render:\n{md}"
+    # The reversal_counts argument is now inert: same output either way.
     md1 = render_trade_board(
         rows, "2026-08-04", flips={"SMH"}, hc_calls=[],
         prev_board_date="2026-08-03",
         reversal_counts={"SMH": 1},
     )
-    assert "reversal" not in md1, f"first flip must not be annotated:\n{md1}"
-    _ok("repeat flips carry their reversal count; first flips stay clean")
+    assert md1 == md, "reversal_counts must no longer change the render"
+    _ok("churn annotation retired from the board; counts still computed")
 
 
 def test_instrument_widening_breaks_silent_lineage():

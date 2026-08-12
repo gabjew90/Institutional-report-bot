@@ -15,7 +15,6 @@ a FLIP.
 
 import os
 import sys
-from unittest.mock import patch
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -87,18 +86,22 @@ def test_unmapped_tickers_never_flip():
     _ok("single names with no macro axis never produce thesis flips")
 
 
-def test_board_labels_thesis_flip():
+def test_reversed_lean_still_renders_as_a_call():
+    """2026-08-12 (owner decision): the board dropped every status label,
+    FLIP included. Detection is unchanged and still covered by the tests
+    above — detect_thesis_flips is what a future consumer would use. What
+    matters at the render layer now is only that a reversed lean is still
+    ON the board as one of today's calls, unlabelled."""
     from report.pulse_sections import render_trade_board
     rows = _rows([("UUP", "long")], [("TLT", "long")])
-    with patch("report.pulse_sections.score_lean_move", return_value=None):
-        out = render_trade_board(rows, "2026-07-28",
-                                 prev_board_date="2026-07-27")
+    out = render_trade_board(rows, "2026-07-28",
+                             prev_board_date="2026-07-27")
     tlt_line = [ln for ln in out.splitlines() if "TLT" in ln]
     assert tlt_line, out
-    assert "FLIP" in tlt_line[0], (
-        f"TLT must render as FLIP, not NEW:\n{tlt_line[0]}"
-    )
-    _ok("board renders the reversed lean as FLIP instead of NEW")
+    assert "FLIP" not in out, f"FLIP label should be gone:\n{out}"
+    assert "UUP" not in out, (
+        f"yesterday's opposing lean must not render:\n{out}")
+    _ok("reversed lean renders as a plain call; FLIP label retired")
 
 
 if __name__ == "__main__":
@@ -108,5 +111,5 @@ if __name__ == "__main__":
     test_risk_axis_reversal_flagged()
     test_same_stance_is_not_a_flip()
     test_unmapped_tickers_never_flip()
-    test_board_labels_thesis_flip()
+    test_reversed_lean_still_renders_as_a_call()
     print("\nALL THESIS FLIP SMOKE TESTS PASS")

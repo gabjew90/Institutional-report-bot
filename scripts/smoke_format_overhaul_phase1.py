@@ -96,13 +96,16 @@ def test_render_trade_board_new_vs_live():
     assert "## TRADE BOARD" in board
     # De-monospaced 2026-06-19: clean markdown bullets, NOT a ``` block.
     assert "```" not in board, "board must NOT be a monospace code block"
-    # 2026-06-22: NEW for first-today, "held since <date>" for carries
-    # (no cryptic/weekend-inflated dN).
-    assert "- **NEW**" in board and "$SOXX" in board
-    assert "- **held since Jun 8**" in board and "$BNO" in board, board
+    # 2026-08-12 (owner decision): the board carries today's calls only,
+    # with no status labels. SOXX was first flagged today so it ships;
+    # BNO is a carry from Jun 8 and no longer renders at all.
+    assert "$SOXX" in board, board
+    assert "- **NEW**" not in board, f"status labels are retired:\n{board}"
+    assert "$BNO" not in board, f"a carried lean still renders:\n{board}"
+    assert "held since" not in board, board
     assert render_trade_board([], "2026-06-10") == ""
-    _ok("trade board: NEW vs 'held since <date>', clean bullets (no "
-        "monospace/dN), empty when no rows")
+    _ok("trade board: today's calls only, clean bullets, no labels, "
+        "empty when no rows")
 
 
 def test_board_shows_only_todays_calls():
@@ -125,18 +128,19 @@ def test_board_shows_only_todays_calls():
     ]
     board = render_trade_board(rows, "2026-06-22",
                                prev_board_date="2026-06-19")
-    assert "$TLT" in board, "today's re-affirmed lean must show"
-    assert "held since Jun 17" in board, board
-    assert "- **off board since Jun 19** Long $VIXY" in board, \
-        f"prior-board lean must surface as off-board, not vanish: {board}"
-    assert board.count("$VIXY") == 1, "dropped lean renders exactly once"
-    # the bridge must feed the real prior-pulse date (daily_reports),
-    # not leave the param unset
+    # 2026-08-12 (owner decision): neither of these renders now. $TLT is
+    # a re-affirmed carry from Jun 17, not a call made today, and $VIXY
+    # is a prior-board lean that was not repeated. The board is today's
+    # calls only, so with no new call in this fixture it renders empty.
+    assert board == "", f"neither a carry nor a drop should render:\n{board}"
+    # the bridge must still feed the real prior-pulse date — the param is
+    # inert at the render layer today but the plumbing stays wired so
+    # re-enabling lineage display is a one-function change.
     import inspect as _i
     import github_bridge.jobs as _gbj
     assert "get_prev_scheduled_pulse_date" in _i.getsource(_gbj), \
         "bridge must pass prev_board_date from daily_reports"
-    _ok("board: today's calls live; prior-board leans surface as DROPPED")
+    _ok("board: carries and drops no longer render; bridge plumbing intact")
 
 
 def test_clean_board_context_no_garble():
@@ -205,7 +209,7 @@ def test_hc_calls_subsection():
     retired DESK SIGNAL BOARD as a clean subsection under the TRADE BOARD
     — markdown bullets (no monospace), bank bolded + ticker cashtagged,
     foreign-PT calls dropped, N/A rating skipped, capped."""
-    from report.pulse_sections import render_trade_board, _HC_SUBSECTION_MAX
+    from report.pulse_sections import render_trade_board
     hc = [
         {"source": "Goldman Sachs", "ticker": "ASML", "rating": "Buy",
          "pt": "", "rationale": "fundamental story strong, EUV demand durable"},
@@ -222,8 +226,12 @@ def test_hc_calls_subsection():
     board = render_trade_board(lean_rows, "2026-06-24", None, hc)
     # one ## TRADE BOARD header, leans + HC under it
     assert board.count("## TRADE BOARD") == 1, board
-    assert "High-conviction single-name calls" in board
-    assert "```" not in board, "HC subsection must NOT be monospace"
+    # 2026-08-12 (owner decision): the desk calls merged into the board's
+    # single list, so they no longer sit under their own header. They are
+    # still calls made today, which is what the board is for.
+    assert "High-conviction single-name calls" not in board, \
+        f"desk calls should merge into the one list:\n{board}"
+    assert "```" not in board, "HC calls must NOT be monospace"
     # clean rendering: bank bolded, ticker cashtagged, rating/PT
     assert "**Goldman Sachs** $ASML · Buy" in board, board
     assert "**JPMorgan** $JBL · PT $450" in board, board
@@ -270,14 +278,16 @@ def test_hc_calls_subsection():
 
 def test_board_caps_rows():
     from report.pulse_sections import render_trade_board, _BOARD_MAX_ROWS
+    # first_seen == today now: only calls made today reach the board, so
+    # the cap has to be exercised with today's calls (2026-08-12).
     rows = [
         {"instrument": f"TIC{i}", "direction": "long",
-         "first_seen_date": "2026-06-01", "last_seen_date": "2026-06-19",
+         "first_seen_date": "2026-06-19", "last_seen_date": "2026-06-19",
          "context_snippet": "x"}
         for i in range(_BOARD_MAX_ROWS + 6)
     ]
     board = render_trade_board(rows, "2026-06-19")
-    bullet_count = sum(1 for l in board.splitlines() if l.startswith("- **"))
+    bullet_count = sum(1 for l in board.splitlines() if l.startswith("- "))
     assert bullet_count == _BOARD_MAX_ROWS, (
         f"board must cap at {_BOARD_MAX_ROWS}, got {bullet_count}"
     )
@@ -291,21 +301,16 @@ def test_board_flip_marker():
          "first_seen_date": "2026-06-15", "last_seen_date": "2026-06-15",
          "context_snippet": "Short $USO, with an energy underweight."},
     ]
-    # Check the bullet rows, not the legend line (which always names
-    # FLIP/NEW). The row marker is bolded — "- **NEW**" / "- **FLIP**".
+    # 2026-08-12 (owner decision): NEW and FLIP markers are both retired.
+    # The lean renders either way, and passing the flip set changes
+    # nothing — the argument is inert at the render layer now.
     plain = render_trade_board(rows, "2026-06-15")
-    plain_rows = "\n".join(
-        l for l in plain.splitlines() if l.startswith("- **")
-    )
-    assert "**NEW**" in plain_rows and "**FLIP**" not in plain_rows, plain_rows
-    # With USO in the flip set → FLIP marker instead of NEW
     flipped = render_trade_board(rows, "2026-06-15", {"USO"})
-    flipped_rows = "\n".join(
-        l for l in flipped.splitlines() if l.startswith("- **")
-    )
-    assert "**FLIP**" in flipped_rows and "$USO" in flipped_rows, flipped_rows
-    assert "**NEW**" not in flipped_rows, flipped_rows
-    _ok("board: FLIP marker shown for reversed-today instruments")
+    assert "$USO" in plain, plain
+    assert plain == flipped, "the flips argument must no longer alter output"
+    for label in ("**NEW**", "**FLIP**"):
+        assert label not in plain, f"{label} should be retired:\n{plain}"
+    _ok("board: NEW/FLIP markers retired; flips argument is inert")
 
 
 # =====================================================================
