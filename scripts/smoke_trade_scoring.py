@@ -79,11 +79,7 @@ def test_exit_scoring_is_no_longer_rendered():
     ]
     out = render_trade_board(rows, "2026-07-28",
                              prev_board_date="2026-07-27")
-    assert "off board" not in out, f"exit rows should be retired: {out}"
-    assert "$BNO" not in out, f"the exited lean should not render: {out}"
-    assert "against it" not in out and "worked" not in out, \
-        f"exit scoring should not render: {out}"
-    assert "$SOXX" in out, f"today's own call must still render: {out}"
+    assert out == "", f"no house lean or exit row should render: {out}"
     _ok("exit rows and their scoring retired from the board")
 
 
@@ -92,7 +88,11 @@ def test_board_needs_no_scoring_to_render():
     feed cannot affect it. Previously this was a try/except guard."""
     import inspect
     import report.pulse_sections as ps
-    assert "score_lean_move" not in inspect.getsource(ps.render_trade_board),         "board should no longer depend on the price feed"
+    # Skip the docstring — it names score_lean_move to record that the
+    # scoring still exists and simply no longer renders.
+    body = inspect.getsource(ps.render_trade_board).split('"""')[-1]
+    assert "score_lean_move" not in body, \
+        "board should no longer depend on the price feed"
     _ok("board render has no price-feed dependency left")
 
 

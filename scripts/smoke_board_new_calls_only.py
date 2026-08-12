@@ -1,4 +1,4 @@
-"""Smoke: the TRADE BOARD carries today's calls and nothing else.
+"""Smoke: the TRADE BOARD carries only trades a desk explicitly called.
 
 2026-08-12 owner decision. The board had become a status ledger: a
 "held since <date>" line for every live position, "off board since"
@@ -7,10 +7,15 @@ legend defining all of it reprinted verbatim every pulse. That day's
 board was eight rows of repeats and exits, zero new calls, under a
 legend longer than the content.
 
-New contract: one list, no legend, no status prefixes. The leans this
-pulse is initiating plus the desks' high-conviction single-name calls,
-merged. Every line is a call being made today so no line needs a label
-saying so.
+Then a second decision the same day: the pulse's OWN synthesized leans
+came off the board too. "Let's not make up longs, let's only do it when
+explicitly called." What remains is one list of calls a named desk
+published — rating, usually a price target, their reasoning. No legend,
+no status prefixes, no house leans.
+
+That also killed a duplication: 2026-08-11 carried both "Long $AMAT"
+(ours, synthesized) and "Bank of America $AMAT · Buy, PT $720" (theirs)
+as though they were two separate calls.
 
 This file replaces the rendering assertions in smoke_board_dropped,
 smoke_thesis_flip and smoke_trade_board_churn. The DETECTION those files
@@ -51,21 +56,43 @@ def _board(rows, hc=None, today="2026-08-12", prev="2026-08-11"):
                               prev_board_date=prev)
 
 
-def test_only_todays_calls_render():
+def test_house_leans_never_render():
+    """The core of the second decision. A synthesized lean is the pulse's
+    own view assembled across the corpus, not a call anyone published."""
     md = _board([
         _row("MU", "2026-08-12", "2026-08-12", ctx="Long $MU · new today"),
         _row("BNO", "2026-08-06", "2026-08-12", prev="2026-08-11",
              ctx="Long $BNO · carried from Aug 6"),
-    ])
-    if "$MU" not in md:
-        _fail(f"today's new call is missing:\n{md}")
+    ], hc=HC)
+    if "$MU" in md:
+        _fail(f"a house lean rendered — we do not make up longs:\n{md}")
     if "$BNO" in md:
-        _fail(f"a carried lean still renders:\n{md}")
-    _ok("only leans first flagged today render")
+        _fail(f"a carried house lean rendered:\n{md}")
+    if "$DASH" not in md:
+        _fail(f"the explicitly-called desk trade is missing:\n{md}")
+    _ok("house leans never render; the desk call does")
+
+
+def test_the_amat_duplication_is_gone():
+    """2026-08-11 carried 'Long $AMAT' (ours) and 'Bank of America $AMAT ·
+    Buy, PT $720' (theirs) as if they were two calls."""
+    md = _board(
+        [_row("AMAT", "2026-08-11", "2026-08-11",
+              ctx="Long $AMAT · into Thursday print")],
+        hc=[{"source": "Bank of America", "ticker": "AMAT",
+             "action": "reiterate", "rating": "Buy", "pt": "$720",
+             "rationale": "Constructive into earnings."}],
+        today="2026-08-11", prev="2026-08-10")
+    bullets = [l for l in md.splitlines() if l.startswith("- ")]
+    if len(bullets) != 1:
+        _fail(f"$AMAT should appear once, as BofA's call: {bullets}")
+    if "Bank of America" not in bullets[0]:
+        _fail(f"the surviving row is not the desk call: {bullets[0]}")
+    _ok("no more house-lean/desk-call duplication on one ticker")
 
 
 def test_no_status_labels():
-    md = _board([_row("MU", "2026-08-12", "2026-08-12")])
+    md = _board([_row("MU", "2026-08-12", "2026-08-12")], hc=HC)
     for label in ("NEW", "FLIP", "RE-ENTRY", "held since", "off board"):
         if label in md:
             _fail(f"status label {label!r} still renders:\n{md}")
@@ -82,17 +109,14 @@ def test_no_legend():
     _ok("the repeated legend is gone")
 
 
-def test_desk_calls_merge_into_the_same_list():
-    md = _board([_row("MU", "2026-08-12", "2026-08-12")], hc=HC)
+def test_desk_calls_have_no_separate_header():
+    md = _board([], hc=HC)
     if "High-conviction single-name calls" in md:
         _fail(f"desk calls still render under their own header:\n{md}")
     bullets = [l for l in md.splitlines() if l.startswith("- ")]
-    if len(bullets) != 2:
-        _fail(f"expected one lean + one desk call in one list, got "
-              f"{len(bullets)}:\n{md}")
-    if "$MU" not in bullets[0] or "$DASH" not in bullets[1]:
-        _fail(f"lean and desk call are not in one list:\n{md}")
-    _ok("desk calls merge into the same list as the leans")
+    if len(bullets) != 1 or "$DASH" not in bullets[0]:
+        _fail(f"expected one desk call in one list:\n{md}")
+    _ok("desk calls render as one plain list, no sub-header")
 
 
 def test_rating_legend_survives():
@@ -104,20 +128,21 @@ def test_rating_legend_survives():
     _ok("the conditional rating decode still renders")
 
 
-def test_no_new_calls_renders_nothing():
-    """A day with only carried positions has made no calls. Say nothing
-    rather than reprint yesterday."""
-    md = _board([_row("BNO", "2026-08-06", "2026-08-12", prev="2026-08-11")])
+def test_no_desk_calls_renders_nothing():
+    """No desk called anything today, so there is no board. Say nothing
+    rather than fall back to house views to fill it."""
+    md = _board([_row("BNO", "2026-08-06", "2026-08-12", prev="2026-08-11"),
+                 _row("MU", "2026-08-12", "2026-08-12")], hc=[])
     if md.strip():
-        _fail(f"board rendered with no new calls:\n{md}")
-    _ok("a board with no new calls renders empty")
+        _fail(f"board rendered with no explicit desk calls:\n{md}")
+    _ok("no desk calls renders empty; house leans do not fill the gap")
 
 
-def test_desk_calls_alone_still_render():
+def test_desk_calls_alone_render():
     md = _board([], hc=HC)
     if "$DASH" not in md or "TRADE BOARD" not in md:
         _fail(f"desk calls alone did not render:\n{md}")
-    _ok("desk calls render even with no leans of our own")
+    _ok("desk calls are the whole board")
 
 
 def test_tracking_is_unchanged():
@@ -142,12 +167,13 @@ def test_tracking_is_unchanged():
 
 
 if __name__ == "__main__":
-    test_only_todays_calls_render()
+    test_house_leans_never_render()
+    test_the_amat_duplication_is_gone()
     test_no_status_labels()
     test_no_legend()
-    test_desk_calls_merge_into_the_same_list()
+    test_desk_calls_have_no_separate_header()
     test_rating_legend_survives()
-    test_no_new_calls_renders_nothing()
-    test_desk_calls_alone_still_render()
+    test_no_desk_calls_renders_nothing()
+    test_desk_calls_alone_render()
     test_tracking_is_unchanged()
     print("\nAll new-calls-only board smoke tests passed.")

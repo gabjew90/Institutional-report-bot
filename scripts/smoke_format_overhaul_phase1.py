@@ -92,20 +92,26 @@ def test_render_trade_board_new_vs_live():
          "first_seen_date": "2026-06-08", "last_seen_date": "2026-06-10",
          "context_snippet": "Long $BNO — oil floor vs futures fade"},
     ]
+    # 2026-08-12 (owner decisions): no status labels, and the board
+    # carries only trades a desk EXPLICITLY called. These fixtures are
+    # all house leans, so nothing renders.
     board = render_trade_board(rows, "2026-06-10")
+    assert board == "", f"house leans should not render:\n{board}"
+    # With a desk call present the board ships, as clean markdown bullets
+    # and never a monospace block (de-monospaced 2026-06-19).
+    hc = [{"source": "Goldman Sachs", "ticker": "ASML", "rating": "Buy",
+           "pt": "$1,100", "action": "reiterate",
+           "rationale": "Order book supports the upgrade cycle."}]
+    board = render_trade_board(rows, "2026-06-10", None, hc)
     assert "## TRADE BOARD" in board
-    # De-monospaced 2026-06-19: clean markdown bullets, NOT a ``` block.
     assert "```" not in board, "board must NOT be a monospace code block"
-    # 2026-08-12 (owner decision): the board carries today's calls only,
-    # with no status labels. SOXX was first flagged today so it ships;
-    # BNO is a carry from Jun 8 and no longer renders at all.
-    assert "$SOXX" in board, board
-    assert "- **NEW**" not in board, f"status labels are retired:\n{board}"
-    assert "$BNO" not in board, f"a carried lean still renders:\n{board}"
-    assert "held since" not in board, board
+    assert "$ASML" in board, board
+    assert "$SOXX" not in board and "$BNO" not in board, \
+        f"house leans still render alongside the desk call:\n{board}"
+    assert "- **NEW**" not in board and "held since" not in board, board
     assert render_trade_board([], "2026-06-10") == ""
-    _ok("trade board: today's calls only, clean bullets, no labels, "
-        "empty when no rows")
+    _ok("trade board: desk calls only, clean bullets, no labels, "
+        "empty when nothing was called")
 
 
 def test_board_shows_only_todays_calls():
@@ -277,21 +283,21 @@ def test_hc_calls_subsection():
 
 
 def test_board_caps_rows():
-    from report.pulse_sections import render_trade_board, _BOARD_MAX_ROWS
-    # first_seen == today now: only calls made today reach the board, so
-    # the cap has to be exercised with today's calls (2026-08-12).
-    rows = [
-        {"instrument": f"TIC{i}", "direction": "long",
-         "first_seen_date": "2026-06-19", "last_seen_date": "2026-06-19",
-         "context_snippet": "x"}
-        for i in range(_BOARD_MAX_ROWS + 6)
+    """2026-08-12: house leans no longer render, so the cap that matters
+    is the desk-call cap (_HC_SUBSECTION_MAX), not _BOARD_MAX_ROWS."""
+    from report.pulse_sections import (render_trade_board,
+                                       _HC_SUBSECTION_MAX)
+    hc = [
+        {"source": "Goldman Sachs", "ticker": f"TIC{i}", "rating": "Buy",
+         "pt": f"${100 + i}", "action": "reiterate", "rationale": "x"}
+        for i in range(_HC_SUBSECTION_MAX + 6)
     ]
-    board = render_trade_board(rows, "2026-06-19")
+    board = render_trade_board([], "2026-06-19", None, hc)
     bullet_count = sum(1 for l in board.splitlines() if l.startswith("- "))
-    assert bullet_count == _BOARD_MAX_ROWS, (
-        f"board must cap at {_BOARD_MAX_ROWS}, got {bullet_count}"
+    assert bullet_count == _HC_SUBSECTION_MAX, (
+        f"board must cap at {_HC_SUBSECTION_MAX}, got {bullet_count}"
     )
-    _ok(f"board: caps at {_BOARD_MAX_ROWS} rows (no wall of stale carries)")
+    _ok(f"board: caps at {_HC_SUBSECTION_MAX} desk calls")
 
 
 def test_board_flip_marker():
@@ -301,15 +307,13 @@ def test_board_flip_marker():
          "first_seen_date": "2026-06-15", "last_seen_date": "2026-06-15",
          "context_snippet": "Short $USO, with an energy underweight."},
     ]
-    # 2026-08-12 (owner decision): NEW and FLIP markers are both retired.
-    # The lean renders either way, and passing the flip set changes
-    # nothing — the argument is inert at the render layer now.
+    # 2026-08-12 (owner decisions): NEW and FLIP markers are retired, and
+    # house leans do not render at all, so the flips argument cannot
+    # change anything.
     plain = render_trade_board(rows, "2026-06-15")
     flipped = render_trade_board(rows, "2026-06-15", {"USO"})
-    assert "$USO" in plain, plain
+    assert plain == "", f"house leans should not render:\n{plain}"
     assert plain == flipped, "the flips argument must no longer alter output"
-    for label in ("**NEW**", "**FLIP**"):
-        assert label not in plain, f"{label} should be retired:\n{plain}"
     _ok("board: NEW/FLIP markers retired; flips argument is inert")
 
 

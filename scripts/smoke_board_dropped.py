@@ -54,19 +54,15 @@ def test_the_observed_07_10_drops_surface():
     ]
     board = render_trade_board(rows, "2026-07-10", flips={"TLT"},
                                prev_board_date="2026-07-09")
-    # 2026-08-12 (owner decision): abandoned leans no longer RENDER. The
-    # board carries today's calls only — see smoke_board_new_calls_only.
-    # What this case still pins is that yesterday's leans cannot leak
-    # back onto the board under any label, and that today's own calls
-    # survive the change.
-    for gone in ("off board", "$BNO", "$GLD", "$RSP", "$XLU"):
+    # 2026-08-12 (owner decisions): abandoned leans no longer render, and
+    # neither do the pulse's OWN leans — the board carries only trades a
+    # desk explicitly called (see smoke_board_new_calls_only). This
+    # fixture has no desk calls at all, so the whole board is empty. What
+    # it still pins is that nothing from the lean history leaks back in.
+    assert board == "", f"lean rows should not render at all:\n{board}"
+    for gone in ("off board", "$BNO", "$GLD", "$RSP", "$XLU", "$BTC", "$TLT"):
         assert gone not in board, \
-            f"a dropped lean leaked back onto the board: {gone}\n{board}"
-    assert "$BTC" in board, f"today's own call vanished:\n{board}"
-    assert board.count("$TLT") == 1, \
-        f"today's TLT call should appear exactly once: {board}"
-    for legend in ("off board since …", "not repeated today", "scored"):
-        assert legend not in board, f"legend text survives: {legend}"
+            f"a lean leaked onto the board: {gone}\n{board}"
     _ok("07-10 case: silent drops surface; FLIP not double-reported")
 
 

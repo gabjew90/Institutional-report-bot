@@ -86,7 +86,7 @@ def test_flip_renders_reversal_count():
     # churn signal remains queryable for anything that wants it.
     assert "FLIP" not in md, f"FLIP label should be retired:\n{md}"
     assert "reversal" not in md, f"churn annotation should be retired:\n{md}"
-    assert "$SMH" in md, f"the lean itself must still render:\n{md}"
+    assert md == "", f"house leans no longer render at all:\n{md}"
     # The reversal_counts argument is now inert: same output either way.
     md1 = render_trade_board(
         rows, "2026-08-04", flips={"SMH"}, hc_calls=[],

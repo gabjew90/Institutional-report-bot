@@ -639,49 +639,46 @@ def render_trade_board(
     prev_board_date: str | None = None,
     reversal_counts: dict[str, int] | None = None,
 ) -> str:
-    # flips / prev_board_date / reversal_counts are accepted but unused
-    # since the 2026-08-12 rewrite. They stay in the signature so the
-    # bridge call site is untouched and so re-enabling any of the label
-    # families is a one-function change. See the docstring.
-    """Render the TRADE BOARD: calls made TODAY, nothing else.
+    # board_rows / flips / prev_board_date / reversal_counts are accepted
+    # but unused as of 2026-08-12. They stay in the signature so the
+    # bridge call site is untouched and so re-enabling house leans or any
+    # of the label families is a one-function change. See the docstring.
+    """Render the TRADE BOARD: trades a desk EXPLICITLY called today.
 
-    2026-08-12 rewrite (owner call). The board had grown into a status
-    ledger — repeated "held since" lines for every live position, "off
-    board since" exit rows with scoring, FLIP and RE-ENTRY labels, and a
-    six-line legend defining all of it that reprinted verbatim every
-    single pulse. On 2026-08-12 the entire board was eight rows of
-    repeats and exits with not one new call in it, under a legend longer
-    than the content.
+    Two owner decisions on 2026-08-12, in order.
 
-    What ships now is one list: the leans this pulse is initiating, plus
-    the desks' high-conviction single-name calls, in the same list. No
-    legend, no status prefixes, no carried positions, no exit scoring.
-    Every line is a call being made today, so no line needs a label
-    saying so. Empty string when the pulse made no new calls.
+    First, the board stopped being a status ledger. It had accumulated a
+    "held since" line for every live position, "off board since" exit
+    rows with move scoring, NEW / FLIP / RE-ENTRY labels, and a six-line
+    legend defining all of it that reprinted verbatim every pulse. That
+    day's board was eight rows of repeats and exits with no new call in
+    it, under a legend longer than the content.
 
-    NOTE: the tracking is unchanged. pulse_leans still records
-    first/prev/last-seen for every lean, so lineage, flip detection and
-    move scoring stay queryable — they simply no longer render. Bringing
-    any of it back is a rendering change, not a data migration.
+    Second, and this is the current contract: the board carries ONLY
+    calls a desk explicitly published — a named bank, a rating, usually a
+    price target, and their own reasoning. The pulse's OWN synthesized
+    leans (the `## _LEANS` block DRAFT writes, one view assembled across
+    the corpus) no longer render here. "Let's not make up longs, let's
+    only do it when explicitly called."
+
+    That also resolves a duplication the merge created: on 2026-08-11 the
+    board carried both "Long $AMAT" (ours) and "Bank of America $AMAT ·
+    Buy, PT $720" (theirs) as if they were two calls.
+
+    NOTE: the leans are still PARSED, TRACKED and VALIDATED. DRAFT still
+    writes `## _LEANS`, pulse_draft_validate still hard-fails a missing
+    block, pulse_leans still records first/prev/last-seen, and
+    score_lean_move can still mark them to market. Only the rendering
+    stopped. The prose also still closes each theme with a trade
+    implication, per the voice contract — that is a separate decision
+    from what the board displays.
     """
-    # Only leans FIRST flagged today. A lean re-affirmed from an earlier
-    # pulse carries last_seen == today but an older first_seen, and it is
-    # exactly what the owner asked to drop.
-    rows = [
-        r for r in (board_rows or [])
-        if (r.get("last_seen_date") or today) == today
-        and (r.get("first_seen_date") or today) == today
-    ]
-    lean_lines = [
-        f"- {_lean_display_from_row(r)}" for r in rows[:_BOARD_MAX_ROWS]
-    ]
-
     hc_lines = _hc_call_lines(hc_calls)
-    if not lean_lines and not hc_lines:
+    if not hc_lines:
         return ""
 
     out = "## TRADE BOARD\n\n"
-    out += "\n".join(lean_lines + hc_lines) + "\n"
+    out += "\n".join(hc_lines) + "\n"
     return out
 
 

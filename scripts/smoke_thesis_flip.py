@@ -87,21 +87,17 @@ def test_unmapped_tickers_never_flip():
 
 
 def test_reversed_lean_still_renders_as_a_call():
-    """2026-08-12 (owner decision): the board dropped every status label,
-    FLIP included. Detection is unchanged and still covered by the tests
-    above — detect_thesis_flips is what a future consumer would use. What
-    matters at the render layer now is only that a reversed lean is still
-    ON the board as one of today's calls, unlabelled."""
+    """2026-08-12 (owner decisions): the board dropped every status label,
+    FLIP included, and then dropped house leans entirely — it carries only
+    trades a desk explicitly called. Detection is unchanged and still
+    covered by the tests above; detect_thesis_flips is what a future
+    consumer would use."""
     from report.pulse_sections import render_trade_board
     rows = _rows([("UUP", "long")], [("TLT", "long")])
     out = render_trade_board(rows, "2026-07-28",
                              prev_board_date="2026-07-27")
-    tlt_line = [ln for ln in out.splitlines() if "TLT" in ln]
-    assert tlt_line, out
-    assert "FLIP" not in out, f"FLIP label should be gone:\n{out}"
-    assert "UUP" not in out, (
-        f"yesterday's opposing lean must not render:\n{out}")
-    _ok("reversed lean renders as a plain call; FLIP label retired")
+    assert out == "", f"house leans do not render at all now:\n{out}"
+    _ok("FLIP label retired and house leans no longer render")
 
 
 if __name__ == "__main__":
