@@ -1,0 +1,40 @@
+{
+ "ts": "2026-08-12T14-09-44Z",
+ "events": [
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-08-12T14:10:00Z",
+   "detail": "ctx via git (raw+api 403-blocked); 44 pdfs"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-08-12T14:11:00Z",
+   "detail": "pdf_count=44, volume gate passed"
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-08-12T14:12:00Z",
+   "detail": "32 themes, 2 discovered"
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-08-12T14:16:00Z",
+   "detail": "4 adjudicated, 4 validated, 0 discarded"
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-08-12T14:17:00Z",
+   "detail": "draft written"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-08-12T14:18:00Z",
+   "detail": "exit 4 soft-only"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-08-12T14:18:30Z",
+   "detail": "1 mechanical fix"
+  }
+ ]
+}
