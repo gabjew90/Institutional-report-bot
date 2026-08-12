@@ -5472,21 +5472,77 @@ def _fact_jab_sentences(answer: str) -> list[str]:
 # ("fine, dad's fund"). Receipts at answer time: distinctive claims in
 # an ungrounded BANTER answer must appear in the ASKER'S OWN material.
 
-def _asker_material_surface(
+def _member_handles_in_profiles(profiles_block: str) -> list[tuple[str, str]]:
+    """(display, username) for every member loaded into WHO'S TALKING."""
+    out: list[tuple[str, str]] = []
+    for m in re.finditer(r'^- \*\*(.+?)\*\*\s*\(([^,)]+)', profiles_block or "",
+                         re.M):
+        disp = (m.group(1) or "").strip()
+        uname = (m.group(2) or "").strip().lstrip("@")
+        if uname:
+            out.append((disp, uname))
+    return out
+
+
+def _roast_subject(
+    question: str, profiles_block: str,
+    asker_username: str, asker_display: str,
+) -> tuple[str, str] | None:
+    """The member a question is ABOUT, when that is not the asker.
+
+    2026-08-12: SV asked "is @Tulch still the donkey of the room?" and the
+    fidelity guard below scoped its receipts pool to SV. Every correct
+    claim about Tulch (his SanDisk-only alert ledger, his 86.93% SPXW
+    close, his own catchphrase) is absent from SV's material, so a guard
+    that fired would have flagged all of them and rewritten a correct
+    roast into a vague one. `ask_prompt.py` already tells the model that a
+    question about another member takes its substance from the SUBJECT'S
+    profile; the guard disagreed with the prompt about whose material
+    counts. This resolves that disagreement in the prompt's favour.
+
+    Returns None when the question names nobody but the asker, which
+    keeps the original asker-scoped behaviour for self-directed banter.
+    """
+    q = question or ""
+    # Only the real question line matters. The injected VERBATIM and
+    # REPLIED-TO blocks quote other members wholesale and would otherwise
+    # make every reply look like a third-party question.
+    lines = [ln for ln in q.splitlines()
+             if ln.strip() and not ln.strip().startswith(("[", "2026-"))]
+    ask_line = lines[-1] if lines else q
+    a_uname = (asker_username or "").strip().lower()
+    a_disp = (asker_display or "").strip().lower()
+    for disp, uname in _member_handles_in_profiles(profiles_block):
+        if uname.lower() in (a_uname, a_disp) or disp.lower() in (a_uname,
+                                                                  a_disp):
+            continue  # the asker is not their own subject
+        for handle in (uname, disp):
+            if len(handle) < 3:
+                continue
+            if re.search(rf"@?\b{re.escape(handle)}\b", ask_line, re.I):
+                return disp, uname
+    return None
+
+
+def _member_material_surface(
     profiles_block: str, chat_context: str,
-    asker_username: str, asker_display: str, question: str,
+    username: str, display: str, question: str,
 ) -> str:
-    """The asker-scoped receipts pool: THEIR WHO'S TALKING section (not
-    the co-loaded members'), THEIR chat lines, and the question."""
+    """Receipts pool for ONE member: THEIR WHO'S TALKING section (not the
+    co-loaded members'), THEIR chat lines, and the question.
+
+    Used for the asker on self-directed banter and for the subject when
+    the question is about somebody else.
+    """
     parts = [question or ""]
-    uname = (asker_username or "").strip().lower()
+    uname = (username or "").strip().lower()
     if uname:
         for sec in re.split(r"(?m)^(?=- \*\*)", profiles_block or ""):
             head = sec.split("\n", 1)[0].lower()
             if f"({uname}" in head:
                 parts.append(sec)
                 break
-    disp = (asker_display or "").strip().lower()
+    disp = (display or "").strip().lower()
     for ln in (chat_context or "").splitlines():
         label = ln.split(": ", 1)[0].lower()
         if uname and f"({uname})" in label:
@@ -5494,6 +5550,16 @@ def _asker_material_surface(
         elif disp and label == disp:
             parts.append(ln)
     return "\n".join(parts)
+
+
+def _asker_material_surface(
+    profiles_block: str, chat_context: str,
+    asker_username: str, asker_display: str, question: str,
+) -> str:
+    """Back-compat wrapper — the asker-scoped pool."""
+    return _member_material_surface(
+        profiles_block, chat_context, asker_username, asker_display, question,
+    )
 
 
 def _clapback_claim_tokens(answer: str) -> list[str]:
@@ -6687,27 +6753,46 @@ async def _answer_with_gemini(
         # prompt prescribes when the receipts run dry.
         if (answer and not _route_is_factual and not _round_gm_chunks
                 and _is_clapback_shaped(answer)):
-            _fid_material = _asker_material_surface(
-                profiles_block, chat_context, asker_username,
-                asker_display_name, question,
+            # Scope the pool to whoever the roast is ABOUT. On a
+            # third-party question the subject's receipts are the correct
+            # ones and the asker's are irrelevant; scoping to the asker
+            # flagged correct material and could not see the actual
+            # cross-attribution case the guard exists to catch.
+            _fid_subject = _roast_subject(
+                question, profiles_block, asker_username, asker_display_name,
+            )
+            if _fid_subject:
+                _fid_disp, _fid_uname = _fid_subject
+                _ask_meta["fidelity_scope"] = f"subject:{_fid_uname}"
+            else:
+                _fid_disp, _fid_uname = asker_display_name, asker_username
+                _ask_meta["fidelity_scope"] = "asker"
+            _fid_material = _member_material_surface(
+                profiles_block, chat_context, _fid_uname, _fid_disp, question,
             )
             _fid_viol = _clapback_fidelity_violations(answer, _fid_material)
             if _fid_viol:
                 _ask_meta["guards"].append("clapback-fidelity")
+                _fid_who = (
+                    f"{_fid_disp} ({_fid_uname})" if _fid_subject
+                    else "the asker"
+                )
                 log.warning(
-                    f"/ask: clapback carries non-asker material "
-                    f"({_fid_viol[:6]}) — requesting fidelity rewrite"
+                    f"/ask: clapback carries material not belonging to "
+                    f"{_fid_who} ({_fid_viol[:6]}) — requesting fidelity "
+                    f"rewrite"
                 )
                 try:
                     _fid_contents = list(contents) + [types.Content(
                         role="user",
                         parts=[types.Part.from_text(text=(
-                            "[FIDELITY CHECK] Your draft attributed "
-                            "material that is NOT the asker's own: "
+                            "[FIDELITY CHECK] This reply is about "
+                            f"{_fid_who}. Your draft attributed material "
+                            f"that is NOT theirs: "
                             + ", ".join(_fid_viol[:8]) +
                             ". Those belong to other members or to "
-                            "nobody. Rewrite the reply using ONLY the "
-                            "asker's documented material — their "
+                            "nobody. Rewrite the reply using ONLY "
+                            f"{_fid_who}'s documented material: their "
                             "profile, their own messages, this "
                             "question. Never substitute a new invented "
                             "specific for a corrected one. If you have "
@@ -6771,6 +6856,96 @@ async def _answer_with_gemini(
                         f"/ask: fidelity rewrite call failed "
                         f"(non-fatal): {fe}"
                     )
+
+        # Subject-naming guard (BANTER-gated, third-party roasts only).
+        # 2026-08-12: SV asked "is @Tulch still the donkey of the room?"
+        # and the reply ran "a guy whose entire member alert ledger...",
+        # "give him a week...". Every claim was correctly Tulch's, but the
+        # roast never said whose they were, and the room read it as the
+        # bot talking about the wrong person. In a fast thread where the
+        # bot's reply quotes the ASKER's message, an unnamed "him" has
+        # nothing anchoring it to the subject.
+        #
+        # Deliberately weak: ONE rewrite request, accepted only if it
+        # names the subject AND still passes fidelity. Otherwise the
+        # original ships. Ambiguous attribution is a readability problem,
+        # not a correctness one, and a guard that rewrites correct roasts
+        # to fix presentation is how pnl-monotone vandalized a factual
+        # answer (2026-08-04).
+        if (answer and not _route_is_factual and not _round_gm_chunks
+                and _is_clapback_shaped(answer)):
+            _nm_subject = _roast_subject(
+                question, profiles_block, asker_username, asker_display_name,
+            )
+            if _nm_subject:
+                _nm_disp, _nm_uname = _nm_subject
+                _named = any(
+                    re.search(rf"\b{re.escape(h)}\b", answer, re.I)
+                    for h in (_nm_disp, _nm_uname) if len(h) >= 3
+                )
+                if not _named:
+                    _ask_meta["guards"].append("subject-unnamed")
+                    log.warning(
+                        f"/ask: third-party roast never names its subject "
+                        f"({_nm_disp}) — requesting one naming rewrite"
+                    )
+                    try:
+                        _nm_material = _member_material_surface(
+                            profiles_block, chat_context, _nm_uname,
+                            _nm_disp, question,
+                        )
+                        _nm_resp = await client.aio.models.generate_content(
+                            model=ask_model,
+                            contents=list(contents) + [types.Content(
+                                role="user",
+                                parts=[types.Part.from_text(text=(
+                                    "[NAMING] This reply is about "
+                                    f"{_nm_disp}, but it never says so. It "
+                                    "reads as if it could be about anyone "
+                                    "in the room. Rewrite it so "
+                                    f"{_nm_disp} is named once, early and "
+                                    "naturally. Change NOTHING else: same "
+                                    "claims, same jokes, same length, same "
+                                    "voice. Do not add material. Output "
+                                    "only the reply."
+                                ))],
+                            )],
+                            config=types.GenerateContentConfig(
+                                system_instruction=(
+                                    _build_runtime_system_instruction(
+                                        _prompt_extra)
+                                ),
+                                safety_settings=safety_settings,
+                                max_output_tokens=1000,
+                                temperature=0.3,
+                                thinking_config=types.ThinkingConfig(
+                                    thinking_budget=256),
+                            ),
+                        )
+                        _tally_retry_usage(_nm_resp)
+                        try:
+                            _nm_answer = (_nm_resp.text or "").strip()
+                        except Exception:
+                            _nm_answer = ""
+                        if _nm_answer:
+                            _nm_answer, _ = _clean_voice_violations(_nm_answer)
+                        _nm_ok = bool(_nm_answer) and any(
+                            re.search(rf"\b{re.escape(h)}\b", _nm_answer,
+                                      re.I)
+                            for h in (_nm_disp, _nm_uname) if len(h) >= 3
+                        ) and not _clapback_fidelity_violations(
+                            _nm_answer, _nm_material)
+                        if _nm_ok:
+                            answer = _nm_answer
+                            log.info("/ask: naming rewrite accepted")
+                        else:
+                            log.info(
+                                "/ask: naming rewrite rejected — keeping the "
+                                "original (presentation issue, not a "
+                                "correctness one)"
+                            )
+                    except Exception as e:
+                        log.warning(f"/ask: naming rewrite failed: {e}")
 
         # Roast-recycle guard (BANTER-gated) — a roast that remixes the
         # same hooks as a prior answer to this asker reads as "doesn't
