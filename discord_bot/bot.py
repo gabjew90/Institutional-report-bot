@@ -5484,6 +5484,47 @@ def _member_handles_in_profiles(profiles_block: str) -> list[tuple[str, str]]:
     return out
 
 
+def _roast_subjects(
+    question: str, profiles_block: str,
+    asker_username: str, asker_display: str,
+) -> list[tuple[str, str]]:
+    """Every member a question is about, ordered by first mention.
+
+    2026-08-12, second pass: the single-subject version walked the
+    PROFILES block and returned the first member whose handle appeared
+    anywhere in the question. With two people tagged that resolved by
+    profiles-block order, which has nothing to do with the question —
+    "is @Tulch worse than @Monsoon" and "is @Monsoon worse than @Tulch"
+    both returned Monsoon, because Monsoon happened to be listed first.
+
+    Ordering by position in the question makes the primary subject the
+    one actually named first, and returning all of them lets a
+    comparison question draw on both dossiers legitimately.
+    """
+    q = question or ""
+    lines = [ln for ln in q.splitlines()
+             if ln.strip() and not ln.strip().startswith(("[", "2026-"))]
+    ask_line = lines[-1] if lines else q
+    a_uname = (asker_username or "").strip().lower()
+    a_disp = (asker_display or "").strip().lower()
+    found: list[tuple[int, str, str]] = []
+    for disp, uname in _member_handles_in_profiles(profiles_block):
+        if uname.lower() in (a_uname, a_disp) or disp.lower() in (a_uname,
+                                                                  a_disp):
+            continue  # the asker is not their own subject
+        best: int | None = None
+        for handle in (uname, disp):
+            if len(handle) < 3:
+                continue
+            m = re.search(rf"@?\b{re.escape(handle)}\b", ask_line, re.I)
+            if m and (best is None or m.start() < best):
+                best = m.start()
+        if best is not None:
+            found.append((best, disp, uname))
+    found.sort(key=lambda t: t[0])
+    return [(d, u) for _pos, d, u in found]
+
+
 def _roast_subject(
     question: str, profiles_block: str,
     asker_username: str, asker_display: str,
@@ -5502,26 +5543,16 @@ def _roast_subject(
 
     Returns None when the question names nobody but the asker, which
     keeps the original asker-scoped behaviour for self-directed banter.
+    With several members tagged this is the FIRST one named — see
+    _roast_subjects for the full list.
+
+    Only the real question line is read. The injected VERBATIM and
+    REPLIED-TO blocks quote other members wholesale and would otherwise
+    make every reply look like a third-party question.
     """
-    q = question or ""
-    # Only the real question line matters. The injected VERBATIM and
-    # REPLIED-TO blocks quote other members wholesale and would otherwise
-    # make every reply look like a third-party question.
-    lines = [ln for ln in q.splitlines()
-             if ln.strip() and not ln.strip().startswith(("[", "2026-"))]
-    ask_line = lines[-1] if lines else q
-    a_uname = (asker_username or "").strip().lower()
-    a_disp = (asker_display or "").strip().lower()
-    for disp, uname in _member_handles_in_profiles(profiles_block):
-        if uname.lower() in (a_uname, a_disp) or disp.lower() in (a_uname,
-                                                                  a_disp):
-            continue  # the asker is not their own subject
-        for handle in (uname, disp):
-            if len(handle) < 3:
-                continue
-            if re.search(rf"@?\b{re.escape(handle)}\b", ask_line, re.I):
-                return disp, uname
-    return None
+    subs = _roast_subjects(question, profiles_block, asker_username,
+                           asker_display)
+    return subs[0] if subs else None
 
 
 # Third-person reference to the subject. The naming problem exists ONLY
@@ -6768,18 +6799,36 @@ async def _answer_with_gemini(
             # ones and the asker's are irrelevant; scoping to the asker
             # flagged correct material and could not see the actual
             # cross-attribution case the guard exists to catch.
-            _fid_subject = _roast_subject(
+            _fid_subjects = _roast_subjects(
                 question, profiles_block, asker_username, asker_display_name,
             )
-            if _fid_subject:
-                _fid_disp, _fid_uname = _fid_subject
-                _ask_meta["fidelity_scope"] = f"subject:{_fid_uname}"
+            _fid_subject = _fid_subjects[0] if _fid_subjects else None
+            if _fid_subjects:
+                # Union over EVERY tagged member. "@Tulch vs @Monsoon, who
+                # is worse" legitimately draws on both dossiers, and
+                # scoping to one would flag the other's correct receipts.
+                # The tradeoff is explicit: this cannot detect a swap
+                # BETWEEN two people the question named, because both
+                # pools are in scope. It still catches material belonging
+                # to an uninvolved member or to nobody, which is the
+                # cross-attribution shape the guard was built for.
+                _fid_disp, _fid_uname = _fid_subjects[0]
+                _fid_material = "\n".join(
+                    _member_material_surface(
+                        profiles_block, chat_context, u, d, question,
+                    )
+                    for d, u in _fid_subjects
+                )
+                _ask_meta["fidelity_scope"] = "subject:" + ",".join(
+                    u for _d, u in _fid_subjects
+                )
             else:
                 _fid_disp, _fid_uname = asker_display_name, asker_username
                 _ask_meta["fidelity_scope"] = "asker"
-            _fid_material = _member_material_surface(
-                profiles_block, chat_context, _fid_uname, _fid_disp, question,
-            )
+                _fid_material = _member_material_surface(
+                    profiles_block, chat_context, _fid_uname, _fid_disp,
+                    question,
+                )
             _fid_viol = _clapback_fidelity_violations(answer, _fid_material)
             if _fid_viol:
                 _ask_meta["guards"].append("clapback-fidelity")
@@ -6898,14 +6947,17 @@ async def _answer_with_gemini(
         # even visible.
         if (answer and not _route_is_factual and not _round_gm_chunks
                 and not answer.lstrip().startswith("→")):
-            _nm_subject = _roast_subject(
+            _nm_subjects = _roast_subjects(
                 question, profiles_block, asker_username, asker_display_name,
             )
+            _nm_subject = _nm_subjects[0] if _nm_subjects else None
             if _nm_subject:
                 _nm_disp, _nm_uname = _nm_subject
+                # Naming ANY tagged member anchors the reply. A comparison
+                # answer that names one of the two is not ambiguous.
                 _named = any(
                     re.search(rf"\b{re.escape(h)}\b", answer, re.I)
-                    for h in (_nm_disp, _nm_uname) if len(h) >= 3
+                    for d, u in _nm_subjects for h in (d, u) if len(h) >= 3
                 )
                 if not _named and _THIRD_PERSON_REF_RE.search(answer):
                     _ask_meta["guards"].append("subject-unnamed")

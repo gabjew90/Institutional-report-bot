@@ -143,9 +143,14 @@ def test_guard_uses_subject_scope_and_stamps_it():
     import discord_bot.bot as bot
     src = inspect.getsource(bot._answer_with_gemini)
     i = src.find("Clapback fidelity guard")
-    block = src[i:i + 2000]
-    if "_roast_subject(" not in block:
-        _fail("the fidelity guard does not resolve the roast subject")
+    # Bound at the next guard rather than a fixed width — a comment edit
+    # should not silently move the checks out of range.
+    end = src.find("Subject-naming guard", i)
+    block = src[i:end if end > i else i + 6000]
+    if "_roast_subjects(" not in block:
+        _fail("the fidelity guard does not resolve the roast subject(s)")
+    if "fidelity_scope" not in block or "subject:" not in block:
+        _fail("the fidelity guard does not stamp which subject pool it used")
     if "_member_material_surface(" not in block:
         _fail("the fidelity guard still builds an asker-only pool")
     if "fidelity_scope" not in block:
@@ -159,6 +164,58 @@ REAL_UNNAMED = (
     "member alert ledger is a graveyard except for SanDisk. give him a "
     "week and he'll be right back to begging for a cock rocket."
 )
+
+
+MULTI = (
+    "- **SV** (sv77788, <@1>) — _r_:\n**SV**\n"
+    "- **Monsoon** (reportufirst, <@2>) — _r_:\n**Monsoon**\n"
+    "- **Tulch** (tulch, <@3>) — _r_:\n**Tulch**\n"
+)
+
+
+def test_two_tags_resolve_by_question_order_not_profile_order():
+    """Monsoon is listed FIRST in the profiles block. The primary subject
+    must still follow the question, not the block."""
+    from discord_bot.bot import _roast_subject
+    a = _roast_subject("is @Tulch worse than @Monsoon", MULTI, "sv77788", "SV")
+    b = _roast_subject("is @Monsoon worse than @Tulch", MULTI, "sv77788", "SV")
+    if a[0] != "Tulch":
+        _fail(f"primary subject should be Tulch, got {a}")
+    if b[0] != "Monsoon":
+        _fail(f"primary subject should be Monsoon, got {b}")
+    _ok("two tags resolve by question order, not profiles-block order")
+
+
+def test_all_tagged_members_are_returned():
+    from discord_bot.bot import _roast_subjects
+    got = [d for d, _u in _roast_subjects(
+        "is @Tulch worse than @Monsoon", MULTI, "sv77788", "SV")]
+    if got != ["Tulch", "Monsoon"]:
+        _fail(f"expected both subjects in question order, got {got}")
+    one = _roast_subjects("is @Tulch still the donkey", MULTI, "sv77788", "SV")
+    if len(one) != 1:
+        _fail(f"single-tag question returned {len(one)} subjects")
+    _ok("every tagged member is returned, ordered by first mention")
+
+
+def test_comparison_pool_covers_both_dossiers():
+    """A vs B question must not flag B's receipts as unsourced."""
+    from discord_bot.bot import _roast_subjects, _member_material_surface
+    profiles = MULTI.replace(
+        "**Monsoon**\n",
+        "**Monsoon**\n**Recent trades.**\n- NVDA calls.\n",
+    ).replace(
+        "**Tulch**\n",
+        "**Tulch**\n**Recent trades.**\n- SNDK calls.\n",
+    )
+    subs = _roast_subjects("is @Tulch worse than @Monsoon", profiles,
+                           "sv77788", "SV")
+    pool = "\n".join(
+        _member_material_surface(profiles, "", u, d, "") for d, u in subs)
+    for receipt in ("SNDK", "NVDA"):
+        if receipt not in pool:
+            _fail(f"union pool is missing {receipt!r} from a tagged member")
+    _ok("comparison pool covers every tagged member's material")
 
 
 def test_naming_gate_catches_the_motivating_case():
@@ -225,6 +282,9 @@ if __name__ == "__main__":
     test_subject_material_is_the_subjects_not_the_askers()
     test_real_answer_passes_under_subject_scope_and_fails_under_asker()
     test_guard_uses_subject_scope_and_stamps_it()
+    test_two_tags_resolve_by_question_order_not_profile_order()
+    test_all_tagged_members_are_returned()
+    test_comparison_pool_covers_both_dossiers()
     test_naming_gate_catches_the_motivating_case()
     test_second_person_replies_are_not_flagged()
     test_naming_guard_is_advisory_only()
