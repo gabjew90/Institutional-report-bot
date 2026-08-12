@@ -683,7 +683,7 @@ Roleplay the reader: a smart trader, reads the WSJ, trades actively, has those 5
 
 - **Marginal value** — what's in this pulse that the trader couldn't get from Twitter, CNBC, Bankless, Almost Daily Grant's, or their own broker's morning research? Cross-bank synthesis is the supposed moat — did this pulse actually deliver it, with named bank-vs-bank disagreement and specific data points? If a single bank's call could substitute for what this pulse said, the moat broke.
 
-- **Actionability — what would the trader DO?** Per theme: does the close give a concrete instrument lean a trader could execute today, or just describe a market? "Watch closely" is failure. "Long $TLT into Tuesday's CPI" is success. Theme-by-theme, count the actionable closes vs the descriptive ones.
+- **Actionability — what would the trader DO?** Per theme: does the close give the reader something to act on, or just describe a market? Vague "watch closely" is still failure. Success is one of: a trade a NAMED DESK called, attributed ("Goldman has this as a Buy to $260"), or the falsifiable condition that decides it ("silver has to clear and hold $64"), or the specific catalyst that resolves it. An invented house position ("Long $NVDA while the yield relief holds") is NOT success — as of 2026-08-12 the pulse does not issue trade calls of its own, and a close that does is a defect to flag, not an actionable close to count. Theme-by-theme, count attributed-or-falsifiable closes vs merely descriptive ones.
 
 - **Trust** — would the trader act on these calls, or hedge with "I should verify this myself"? Specifically: any claims that pattern-match to fabricated dates, invented price levels, manufactured consensus ("multiple banks suggest" without naming), or numbers that don't trace to corpus + live data? Each soft spot erodes daily-product trust.
 
@@ -1147,7 +1147,19 @@ Write the defense using **theme-specific words** — start with the actual conte
 
 Each theme's defense leads with the SPECIFIC counter being addressed, not a generic acknowledge-and-rebut transition.
 
-**Movement 5 — THE POSITIONING HINT (ONE sentence, integrated into the same paragraph as Movements 3-4).** Close with a brief positioning view: what the setup leans toward for someone with US options/crypto exposure, with the cleanest instrument expression named in passing. ONE sentence is the target. Do NOT include a specific invalidation level or "risk" line — that lives in the bull/bear analysis above and the formal trade calls (in a future TRADE PLAYBOOK section), not in the insight close. Plain English. NO `**Trade Implication:**` header, NO `Hint:` label, NO bullet, NO "Why:" / "Risk:" structure. Just one sentence woven into the paragraph's close.
+**Movement 5 — THE CLOSE (ONE sentence, integrated into the same paragraph as Movements 3-4).**
+
+**DO NOT INVENT A POSITION.** You are not a desk and you do not have a book. Never close with a house trade call the corpus did not make — no "Long $NVDA while the yield relief holds", no "Long $GLD, with $SLV as the higher-octane expression". Those read as recommendations you have no standing to issue, and a reader sizing off one is acting on a position nobody actually took.
+
+Close with ONE of these instead, in this order of preference:
+
+1. **A trade a named desk explicitly called**, attributed: *"Goldman has this as a Buy to $260."* / *"Deutsche Bank is short the long end into the auction."* The call is theirs, the attribution is yours, and the reader can weigh the source.
+2. **The falsifiable condition** — the level, print or event that decides the theme: *"Silver has to clear and hold $64; a break back below the 50-day says the squeeze is done."*
+3. **What resolves it next** — the specific catalyst and what each outcome would mean.
+
+ONE sentence is the target. Plain English. NO `**Trade Implication:**` header, NO `Hint:` label, NO bullet, NO "Why:" / "Risk:" structure. Just one sentence woven into the paragraph's close.
+
+The `## _LEANS` block at the end of the draft is unaffected — keep writing it exactly as specified. It feeds position tracking and validation, not the reader.
 
 **Vary the positioning sentence — and BAN the openers that became template tells.** *"The cleanest read..."* and *"the cleanest expression..."* are HARD-BANNED — do not use these phrases anywhere, period. They became visible AI tells from repetition.
 
