@@ -128,8 +128,22 @@ def test_released_figure_reconciliation():
     v3 = pdv._released_figure_violations(est_as_print, _CTX)
     assert v3 and v3[0]["matches_estimate"] is True, \
         "est-value-as-print must be flagged as the estimate signature"
-    assert all(x["severity"] == "soft" for x in v + v2 + v3)
-    _ok("CHECK 9: estimate-as-print flags; correct prints pass; est-match named")
+    # 2026-08-12: severity now splits. A figure matching the CONSENSUS on
+    # a row that has already printed is the estimate-shipped-as-print
+    # signature and is HARD — it shipped soft on 2026-07-15 and again on
+    # 2026-08-12. The generic no-match case stays SOFT, because a stray
+    # percentage in a long bullet is the noisy shape (three false
+    # positives on 2026-08-07).
+    for x in v + v2 + v3:
+        want = "hard" if x["matches_estimate"] else "soft"
+        assert x["severity"] == want, (
+            f"{x['figure']} matches_estimate={x['matches_estimate']} "
+            f"should be {want}, got {x['severity']}"
+        )
+    assert any(x["severity"] == "hard" for x in v3), \
+        "the est-as-print case must be hard"
+    _ok("CHECK 9: estimate-as-print flags HARD; generic mismatch stays soft; "
+        "correct prints pass")
 
 
 # ---------------------------------------------------------------------------

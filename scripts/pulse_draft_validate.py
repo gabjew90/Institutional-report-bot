@@ -54,6 +54,10 @@ from pathlib import Path
 # Hard violations REQUIRE a re-roll. Soft violations are advisory —
 # the routine can lint-warn and ship anyway.
 HARD_VIOLATION_KINDS = {
+    # A released macro event the pulse discusses without its print, and
+    # a figure that matches the consensus on a row that has already
+    # printed. Both shipped on 2026-08-12 (see the check docstrings).
+    "released-actual-missing",
     "duplicate-sibling-sections",
     "contrarian-buried-in-appendix",
     "main-event-lean-missing",
@@ -599,13 +603,19 @@ def _released_event_rows(ctx: dict) -> dict[str, dict[str, set[float]]]:
         m = _ECON_ROW_RE.match(line)
         name = (m.group(3) if m else line).upper()
         tail = line.split("|", 2)[-1] if "|" in line else line
-        ok = _seg_numbers(tail, "ACTUAL=") | _seg_numbers(tail, "prev=")
+        actual = _seg_numbers(tail, "ACTUAL=")
+        ok = actual | _seg_numbers(tail, "prev=")
         est = _seg_numbers(tail, "est=")
         for kw in _EVENT_KEYWORDS:
             if kw in name:
-                slot = out.setdefault(kw, {"ok": set(), "est": set()})
+                slot = out.setdefault(
+                    kw, {"ok": set(), "est": set(), "actual": set()})
                 slot["ok"] |= ok
                 slot["est"] |= est
+                # Kept separate from 'ok' (which folds in prev) so the
+                # missing-print check can ask specifically whether the
+                # ACTUAL reached the reader.
+                slot["actual"] |= actual
 
     # Second ground-truth source: the CORPUS's own released/forecast
     # labels. Finnhub's calendar (the only feed carrying actuals) went
@@ -634,9 +644,11 @@ def _released_event_rows(ctx: dict) -> dict[str, dict[str, set[float]]]:
                 continue
             for kw in _EVENT_KEYWORDS:
                 if kw in name:
-                    slot = out.setdefault(kw, {"ok": set(), "est": set()})
+                    slot = out.setdefault(
+                        kw, {"ok": set(), "est": set(), "actual": set()})
                     if status == "released":
                         slot["ok"] |= vals
+                        slot["actual"] |= vals
                     elif status == "forecast":
                         slot["est"] |= vals
         for kdp in (a.get("data_points") or []):
@@ -650,9 +662,11 @@ def _released_event_rows(ctx: dict) -> dict[str, dict[str, set[float]]]:
                 continue
             for kw in _EVENT_KEYWORDS:
                 if kw in name:
-                    slot = out.setdefault(kw, {"ok": set(), "est": set()})
+                    slot = out.setdefault(
+                        kw, {"ok": set(), "est": set(), "actual": set()})
                     if status == "released":
                         slot["ok"] |= vals
+                        slot["actual"] |= vals
                     elif status == "forecast":
                         slot["est"] |= vals
     return out
@@ -735,13 +749,96 @@ def _released_figure_violations(md_text: str, ctx: dict) -> list[dict]:
                 )
             out.append({
                 "kind": "unreconciled-release-figure",
-                "severity": "soft",
+                # HARD when the figure matches the CONSENSUS on a row
+                # that has already printed. That is not an ambiguous
+                # stray number, it is the estimate-shipped-as-print
+                # signature, and it has now shipped twice: 2026-07-15
+                # (consensus 3.88%/2.86% published as the CPI print,
+                # actual 3.5%/2.6%) and 2026-08-12 (0.22% and 0.12%
+                # published as JPMorgan's forecasts when 0.22% was the
+                # actual core print). Both times the check fired soft
+                # and the pulse shipped. The generic no-match case stays
+                # soft — a stray percentage in a long bullet is the
+                # noisy shape (three false positives on 2026-08-07).
+                "severity": "hard" if is_est_hit else "soft",
                 "message": msg,
                 "figure": fm.group(1),
                 "event": hit_kws[0],
                 "matches_estimate": is_est_hit,
                 "sentence": sent.strip()[:200],
             })
+    return out
+
+
+def _missing_release_actual_violations(
+    md_text: str, ctx: dict,
+) -> list[dict]:
+    """A released event the pulse discusses must carry its ACTUAL.
+
+    2026-08-12: CPI printed at 8:30 ET and the pulse fired at 10:09 with
+    the numbers in its context under a header reading "ECONOMIC EVENTS
+    ALREADY RELEASED (belongs in RECAP...)". The RECAP bullet gave
+    Goldman's, JPMorgan's and Deutsche Bank's forecasts and stopped. A
+    reader learned what three desks expected and never learned what the
+    print was, while the pulse asserted it "landed close to what the
+    desks had penciled in" — core actually came in hot on both measures
+    (0.22% vs 0.2% est m/m, 2.67% vs 2.5% est y/y).
+
+    Nothing caught it. unreconciled-release-figure only fires on numbers
+    that fail to reconcile; a bullet that discusses CPI and simply never
+    states the result trips no check at all. This is the positive
+    requirement: if it printed and we talk about it, say what it was.
+
+    HARD. A macro recap missing its headline number is the most visible
+    failure this product has, and the fix is mechanical — the value is
+    already in the context.
+    """
+    rows = _released_event_rows(ctx)
+    if not rows:
+        return []
+    body = md_text
+    figures = {float(m.group(1)) for m in _PCT_FIGURE_RE.finditer(body)}
+    up = body.upper()
+    out: list[dict] = []
+    for kw, slot in sorted(rows.items()):
+        actual = slot.get("actual") or set()
+        if not actual:
+            continue          # nothing printed, or the feed lacks it
+        if kw not in up:
+            continue          # the pulse does not discuss this event
+        # Rounding match, NOT the 0.06 tolerance the reconcile check
+        # uses. That tolerance exists there to absorb sign and rounding
+        # noise while hunting for a mismatch; here it would let a
+        # FORECAST stand in for the print by coincidence — Deutsche
+        # Bank's 0.26% estimate sits 0.04 from the 0.22% actual and
+        # would have satisfied the check on the very bullet that
+        # prompted it. Accept the actual written to 2dp or rounded to
+        # 1dp (2.67 -> "2.7") and nothing else.
+        # The 1dp fallback only applies at magnitudes where it cannot
+        # collapse distinct readings: month-over-month prints live in
+        # 0.0-0.5 where 0.19, 0.21 and 0.22 all round to 0.2, so a
+        # forecast would pass for the print. Year-over-year prints
+        # (2.67 -> "2.7") are far enough apart for it to be safe.
+        if any(
+            round(abs(a), 2) == round(abs(f), 2)
+            or (abs(a) >= 1.0 and round(abs(a), 1) == round(abs(f), 1))
+            for a in actual for f in figures
+        ):
+            continue          # the print reached the reader
+        out.append({
+            "kind": "released-actual-missing",
+            "severity": "hard",
+            "message": (
+                f"{kw.title()} has already printed "
+                f"(ACTUAL={', '.join(f'{a:g}%' for a in sorted(actual))}) "
+                f"and the pulse discusses it, but none of those values "
+                f"appear anywhere in the text. The 2026-08-12 CPI recap "
+                f"shipped three banks' forecasts and never the print. "
+                f"State the actual figure."
+            ),
+            "event": kw,
+            "actual": sorted(actual),
+        })
     return out
 
 
@@ -1039,6 +1136,7 @@ def validate(md_text: str, ctx: dict) -> list[dict]:
     # CHECK 9: released figures reconcile against calendar ACTUAL rows
     # =====================================================================
     violations.extend(_released_figure_violations(md_text, ctx))
+    violations.extend(_missing_release_actual_violations(md_text, ctx))
 
     return violations
 
