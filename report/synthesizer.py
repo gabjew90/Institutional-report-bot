@@ -638,6 +638,16 @@ def _classify_themes(
             "skeptical_sources": sorted(
                 canonical_stance_banks.get(tag, {}).get("skeptical", set())
             ),
+            # Names of the supportive banks (2026-08-12). Movement 3 now
+            # REQUIRES a >=2/>=2 split to render as a named debate with
+            # banks on each side. With only skeptical names available,
+            # DRAFT had to guess the supporting side — the exact
+            # round-robin attribution failure the member_banks
+            # ground-truth map exists to prevent on discovered themes
+            # ("Bank X argues Y" where X never said Y, 2026-08-04 P0).
+            "supportive_sources": sorted(
+                canonical_stance_banks.get(tag, {}).get("supportive", set())
+            ),
             # Count of high-conviction DIRECTIONAL stances. Ranking input:
             # at equal bank counts, themes carrying real conviction beat
             # neutral-consensus themes.
@@ -1163,15 +1173,20 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
     # the named shape. Default (bull/risk/resolution) is left implicit
     # for backward compatibility; alternates are flagged so DRAFT picks
     # them up. See _CLOSE_STYLE_EXPLAIN below for the prose templates.
+    # 2026-08-12: two templates used to instruct trade-idea closes
+    # ("+ trade idea", "the trade until then is W") — invented house
+    # positions, banned by the Movement 5 rewrite. These steers are
+    # injected per theme, so a stale template here would push DRAFT
+    # toward the exact close the prompt forbids, every single theme.
     _CLOSE_STYLE_EXPLAIN = {
         "bull_risk_resolution": (
-            "default close — explicit bull case / risk case / resolution "
-            "+ trade idea"
+            "default close — explicit bull case / risk case / resolution, "
+            "ending on what decides it (a desk call attributed, a level, "
+            "or a dated catalyst — never a house trade)"
         ),
         "falsifiable_window": (
             "close with a time-bound falsifiable prediction "
-            "('if X doesn't print Y by Z, the thesis is dead; the trade "
-            "until then is W')"
+            "('if X doesn't print Y by Z, the thesis is dead')"
         ),
         "ranked_list": (
             "close with a 3-5 item ordered list of what to watch next, "
@@ -1200,7 +1215,26 @@ def _format_theme_coverage(theme_map: dict[str, dict]) -> str:
         skp = info.get("skeptical", 0)
         neu = info.get("neutral", 0)
         if sup or skp:
-            stance_str = f" — stance: {sup} support / {skp} skeptical / {neu} neutral"
+            # Name the banks on each side when a real split exists
+            # (>=2/>=2). Movement 3 requires the debate staged with named
+            # banks per side; counts alone made DRAFT guess who was
+            # where, which is the round-robin attribution failure class.
+            # Names are ground truth from canonical_stance_banks — DRAFT
+            # is told to use exactly these, not infer.
+            sup_names = info.get("supportive_sources") or []
+            skp_names = info.get("skeptical_sources") or []
+            if sup >= 2 and skp >= 2 and sup_names and skp_names:
+                stance_str = (
+                    f" — SPLIT, name both sides: "
+                    f"support ({', '.join(sup_names[:4])}) vs "
+                    f"skeptical ({', '.join(skp_names[:4])})"
+                    f"{f' / {neu} neutral' if neu else ''}"
+                )
+            else:
+                stance_str = (
+                    f" — stance: {sup} support / {skp} skeptical "
+                    f"/ {neu} neutral"
+                )
         else:
             stance_str = ""
         # Per-theme close_style guidance. The default shape stays

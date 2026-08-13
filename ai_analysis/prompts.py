@@ -613,6 +613,11 @@ FINAL POSTED MARKDOWN (post-SCRUB if SCRUB ran):
 {final_md}
 ```
 
+OPEN DIRECTIONAL READS AT DRAFT TIME (settlement-rule input — grade the Voice + structure settlement check against this list; "(none)" or "(unavailable)" means no settlements were owed):
+```
+{open_reads_block}
+```
+
 PREVIOUS SCHEDULED PULSE — final markdown ({prev_pulse_ts}):
 ```markdown
 {prev_pulse_md}
@@ -665,6 +670,12 @@ For sub-agent stages (Adjudication, EDIT, SCRUB), use the SUB-AGENT HANDOFFS blo
 
 ## Voice + structure
 Tells that slipped through? Theme-coherence breaks (a sentence in theme X that's actually about theme Y)? Misframings (theme presented as bull-consensus when corpus is actually split)? Use of banned phrases the lint should have caught?
+
+Overhaul-tracking checks (2026-08-12 MAIN EVENT/BRIEFS contract — grade each explicitly):
+- **Brief shapes**: which of the three shapes (data / debate / catalyst) did each brief use? Consecutive briefs sharing a shape without the content forcing it is the clone-slot failure. All briefs one shape = the finding.
+- **Named debates**: for every theme the coverage block marked "SPLIT, name both sides", did the section stage banks on BOTH sides, and — critically — did it put each bank on the side the coverage block says they're on? Wrong-side attribution is a P0-class trust failure, worse than no debate at all.
+- **Dated stakes**: does the MAIN EVENT close carry a date/time when the deciding event has one? Count dated vs undated closes across the pulse.
+- **Settlement**: if the ctx open-reads list had a read that TODAY's events resolved, was it settled in one sentence in the owning theme? Was any settlement premature (scoring a still-open read) or missing (a resolved read gone silent — the $TLT-into-FOMC failure)? If nothing resolved, confirm no settlement sentences were forced.
 
 ## Accuracy + sourcing
 Numbers in the final that don't trace back to corpus or live data? RECAP facts that misattribute or invent? Single-bank claims presented as consensus? Forecasts dressed up as actuals?

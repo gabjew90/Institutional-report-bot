@@ -2289,6 +2289,9 @@ qc_inputs = {
     'final_md': final_md,
     'pre_scrub_md': pre_scrub_md,
     'handoffs_summary': handoffs_summary,
+    # Open directional reads at DRAFT time — QC grades the settlement
+    # rule against this list (2026-08-12 overhaul).
+    'open_reads_block': ctx.get('open_reads_block', '(unavailable)'),
     'prev_pulse_ts': prev_ts or '(none)',
     'prev_pulse_md': prev_pulse_md,
     'prev_qc_review': prev_qc_review,
@@ -2319,6 +2322,7 @@ Build the QC prompt by combining `QC_SYSTEM` + `QC_USER` (with substitutions fro
 - `{lint_summary_json}`
 - `{handoffs_summary}` — sub-agent dispatch + I/O sizes
 - `{draft_md}`, `{stitched_md}`, `{pre_scrub_md}`, `{final_md}` — pre_scrub_md equals final if SCRUB skipped
+- `{open_reads_block}` — the open directional reads DRAFT saw, for grading the settlement rule
 - `{prev_pulse_ts}`, `{prev_pulse_md}`, `{prev_qc_review}` — the previous scheduled pulse's final markdown + its QC review, for the day-over-day comparison section. Both default to a "(none)" placeholder string when there's no prior scheduled pulse (first run, or only test fires preceding) — the QC review then just notes the comparison is N/A.
 
 Dispatch ONE `general-purpose` Agent with the assembled prompt. The sub-agent runs in fresh context — no DRAFT/EDIT/SCRUB history, just the artifacts the prompt provides. It returns the QC review markdown (no preamble, no JSON wrapper).

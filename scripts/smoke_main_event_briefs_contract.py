@@ -168,6 +168,56 @@ def test_placeholder_is_format_style_not_composition():
     _ok("dump_prompts accepts the new placeholder")
 
 
+def test_theme_map_names_both_sides_of_a_split():
+    """E2E review finding #1: Movement 3 requires a named debate, but
+    theme_map carried only skeptical_sources — DRAFT had to guess the
+    supporting side, the round-robin attribution failure class."""
+    import inspect
+    import report.synthesizer as syn
+    src = inspect.getsource(syn)
+    if '"supportive_sources"' not in src:
+        _fail("theme_map has no supportive_sources — DRAFT must guess who "
+              "supports, inviting wrong-side attribution")
+    if "SPLIT, name both sides" not in src:
+        _fail("theme_coverage does not render both sides' names on a "
+              ">=2/>=2 split")
+    _ok("theme_map + coverage name banks on both sides of a split")
+
+
+def test_close_style_templates_carry_no_trade_ideas():
+    """E2E review finding #2: the close-style steers injected per theme
+    still instructed '+ trade idea' / 'the trade until then is W' —
+    pushing DRAFT toward the banned close on every steered theme."""
+    import inspect
+    import report.synthesizer as syn
+    src = inspect.getsource(syn)
+    i = src.find("_CLOSE_STYLE_EXPLAIN = {")
+    block = src[i:src.find("}", i)]
+    for stale in ("+ trade idea", "the trade until then is W"):
+        if stale in block:
+            _fail(f"close-style steer still instructs a house trade: "
+                  f"{stale!r}")
+    _ok("close-style steers no longer instruct house trades")
+
+
+def test_qc_can_grade_the_overhaul():
+    """E2E review finding #3: the QC loop is the only measurement of
+    whether the overhaul works. It must see the open-reads list and be
+    told to grade shapes, named debates, dated stakes and settlement."""
+    import ai_analysis.prompts as p
+    q = p.QC_USER
+    for marker, why in (
+        ("{open_reads_block}", "settlement input"),
+        ("Brief shapes", "shape grading"),
+        ("Named debates", "debate-side grading"),
+        ("Dated stakes", "stake grading"),
+        ("Settlement", "settlement grading"),
+    ):
+        if marker not in q:
+            _fail(f"QC_USER missing {why} ({marker!r})")
+    _ok("QC grades shapes, debates, stakes and settlement with real input")
+
+
 if __name__ == "__main__":
     test_draft_carries_the_new_beats()
     test_invented_positions_only_appear_as_bad_examples()
@@ -176,4 +226,7 @@ if __name__ == "__main__":
     test_ctx_supplies_open_reads()
     test_open_reads_block_renders_from_leans()
     test_placeholder_is_format_style_not_composition()
+    test_theme_map_names_both_sides_of_a_split()
+    test_close_style_templates_carry_no_trade_ideas()
+    test_qc_can_grade_the_overhaul()
     print("\nAll MAIN EVENT / BRIEFS contract smoke tests passed.")
