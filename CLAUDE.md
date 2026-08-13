@@ -35,7 +35,7 @@ report/synthesizer.py — builds context (live market data + news + calendar + p
   ↓ calls Gemini with aggregated per-PDF JSON
   ↓ daily_reports row
   ↓
-report/formatter.py — Discord embeds (3 sections)
+report/formatter.py — Discord embeds (RECAP / MAIN EVENT / BRIEFS / WHAT TO WATCH + TRADE BOARD)
 discord_bot/sender.py — posts to every channel in DISCORD_CHANNEL_ID
 ```
 
@@ -63,10 +63,18 @@ Scheduled pulse updates `daily_reports` with `report_type='daily'` (this is the 
 ### Timestamp format normalization
 SQLite's `datetime('now')` uses space separator (`"2026-04-14 13:00:00"`); Python's `isoformat()` uses T (`"2026-04-14T13:00:00"`). Lexical TEXT comparison treats T > space, so mixed-format comparisons are broken. `db._normalize_ts()` is applied at every cutoff comparison site. `insert_daily_report` explicitly writes T-format going forward.
 
-### Pulse output structure (3 sections)
-1. **RECAP** (gold embed) — live market prices + news + this morning's data releases (with ACTUAL values when tagged `[RELEASED]` in Finnhub economic calendar). Only section where live prices/news are used.
-2. **INSIGHTS & ALPHA** (blue embed) — flowing prose or bullets, 3-8 themes entirely from research. Prioritizes dedicated single-topic notes (FINRA PDT rule removal, M&A deals, etc.) over broad macro narratives. Calls out consensus vs divergence between banks. Each theme ends with trade implication.
-3. **WHAT TO WATCH** (orange embed) — ### Today + ### This Week subsections. **Calendar is filtered hard at the data layer** — only FOMC/Powell/CPI/PCE/NFP/GDP/Retail Sales/ISM/PPI + MAG7/big-bank earnings reach Gemini. Fed governor speeches (non-Powell), regional Fed surveys, minor data, foreign macro are dropped before synthesis.
+### Pulse output structure (4 sections + TRADE BOARD)
+
+**This section described 3 sections with an `INSIGHTS & ALPHA` block until 2026-08-12. That has been wrong since the phase-3 overhaul on 2026-06-18** (`docs/superpowers/specs/2026-06-18-format-overhaul-phase3-main-event-briefs.md`).
+
+1. **RECAP** (gold embed) — live market prices + news + this morning's data releases. Only section where live prices/news are used. A Tier-1 event that has already printed must carry its ACTUAL value: `pulse_draft_validate` hard-fails `released-actual-missing` otherwise (2026-08-12, a CPI recap shipped three banks' forecasts and never the print).
+2. **THE MAIN EVENT** — the single lead theme, ~250-350 words, full five-movement arc with a named bank-vs-bank debate and an explicit invalidation. Must be what the tape is actually doing today (a fresh break/unwind/reversal), never an evergreen "the trend is intact" reassurance.
+3. **BRIEFS** — every remaining theme, ~80-120 words each, 3-4 sentences. No five-movement arc, no bullet stacks, form varied so they don't read as clones.
+4. **WHAT TO WATCH** (orange embed) — ### Today + ### This Week subsections. **Calendar is filtered hard at the data layer** — only FOMC/Powell/CPI/PCE/NFP/GDP/Retail Sales/ISM/PPI + MAG7/big-bank earnings reach synthesis. Fed governor speeches (non-Powell), regional Fed surveys, minor data, foreign macro are dropped.
+
+DRAFT writes 2 and 3 as ONE ordered list under a single `## 2. INSIGHTS & ALPHA` header; downstream tooling splits it, so **the order DRAFT chooses is the depth assignment** — first theme becomes THE MAIN EVENT, the rest become BRIEFS. That header is still the seam every upstream fixture uses.
+
+**TRADE BOARD** renders between BRIEFS and WHAT TO WATCH and carries only trades a desk explicitly called (see the Writing voice section). `## _LEANS` is a separate internal block DRAFT writes and the routine strips before publish; it records each theme's directional read for `pulse_leans` tracking and is not a published recommendation.
 
 Footer: dynamic stats (top sources, priority mix always shows high/medium/low, research date range, next pulse time).
 
