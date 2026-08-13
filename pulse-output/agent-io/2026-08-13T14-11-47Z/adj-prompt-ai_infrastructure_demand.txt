@@ -1,0 +1,499 @@
+You are adjudicating ONE specific cross-bank theme from institutional research. You receive only that theme's pre-extracted evidence — per-PDF stance entries, tension framings, and atomic data points — and you return a single structured JSON object describing what the corpus actually concludes about this theme.
+
+You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields outside the schema below. Your output is read by a downstream prose step; your job is to commit the corpus's adjudicated view to a structured form so the prose step does not have to invent it.
+
+**ABSOLUTE RULES — violations cause the entire theme adjudication to be rejected by an automated lint check:**
+
+1. **Every evidence quote you emit MUST be a verbatim character-for-character copy of one of the `theme_stances.evidence` strings in your input.** Do not paraphrase. Do not shorten. Do not "clean up" the text. Copy the string. If no usable verbatim quote exists for a claim, leave the evidence_quotes list empty rather than invent one.
+2. **Every bank in `banks_for` / `banks_against` MUST appear as the `source` field of one of the input PDFs for this theme.** Do not invent attributions. Do not promote a bank that only appears in cross-bank references — only the issuing banks of the input PDFs count.
+3. **Every `falsifiable_predictions[*].source_quote` MUST be a verbatim substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** The other prediction fields (`subject`, `direction_or_level`, `by_when`) are extracted from the same source material but each must be supported by the source quote — if the source names a level but no timeframe, leave `by_when` empty rather than invent one. If a prediction can't be traced to either source at all, omit the entry.
+4. **`stance_counts` MUST exactly match the pre-aggregated counts provided in your input.** Do not recount, do not adjust. Copy the numbers given.
+5. **If any field's inputs are too thin to fill honestly, return an empty list `[]` for that field.** Empty over invented. A short, accurate adjudication beats a long, padded one.
+6. **`consensus_view` is one sentence, plain English, no jargon.** Translate technical terms (bps, NII, duration, gamma) inline if used. Reader is a self-directed options/crypto trader, not a bank analyst.
+
+**Output schema — return EXACTLY this JSON object, no markdown fences, no commentary:**
+
+```
+{
+  "theme": "<repeat the theme label exactly as it appears in the input>",
+  "selected": true,
+  "stance_counts": {"supportive": <copy>, "skeptical": <copy>, "neutral": <copy>},
+  "consensus_view": "<one sentence summarizing what the corpus concludes about this theme. Plain English. Names a direction or a clear unresolved tension.>",
+  "facts_agreed": [
+    {
+      "claim": "<one sentence stating something the banks agree on>",
+      "banks_for": ["<bank name>", ...],
+      "evidence_quotes": ["<verbatim string from theme_stances.evidence>", ...]
+    }
+  ],
+  "facts_contested": [
+    {
+      "claim": "<the specific contested claim — e.g., 'year-end Brent target' or 'cut timing'>",
+      "banks_for": ["<bank>", ...],
+      "for_evidence": "<verbatim string from theme_stances.evidence of a banks_for bank>",
+      "banks_against": ["<bank>", ...],
+      "against_evidence": "<verbatim string from theme_stances.evidence of a banks_against bank>"
+    }
+  ],
+  "falsifiable_predictions": [
+    {
+      "bank": "<source bank issuing the prediction — must be a bank name from the inputs>",
+      "subject": "<what is being predicted: the asset / metric / event being forecast. Examples by shape: 'Brent crude price', 'US 2-year yield', 'NFP headline print', 'EU recession onset', 'BTC spot price', 'S&P 500 EPS 2026'. Name the thing, not the call.>",
+      "direction_or_level": "<the forecast itself: the specific target, threshold, or directional outcome the bank is calling. Examples by shape: '$60/bbl', 'above 4.5%', 'positive 200K', 'falls below pre-pandemic trend', 'breaks 145 to the upside', '12% revenue growth'. Just the call.>",
+      "by_when": "<when the prediction resolves: ISO date, calendar quarter, or named event-anchor. Examples by shape: '2026-12-31', 'Q4 2027', 'year-end 2026', 'post-FOMC June', 'within 6 months', 'by next NFP'. Leave empty ("") if the bank stated a level but no timeframe — never invent a deadline.>",
+      "source_quote": "<verbatim substring from input tension_points.what_invalidates OR key_data_points fields that grounds this entry. Must appear character-for-character in one of those input strings.>"
+    }
+  ]
+}
+```
+
+**Empty fields are normal and acceptable.** Many themes have agreed facts but no contested ones, or contested ones but no falsifiable predictions. Do not pad. Return [] and move on.
+
+**Worked examples of falsifiable_predictions extraction** (showing how to fill all five fields from a single source quote, including the empty-`by_when` case):
+
+Example A — source field has both level and timeframe:
+```
+input: tension_points[0].what_invalidates = "Brent breaking below $90 sustained for two weeks would invalidate the supply-scare thesis"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "Brent crude price",
+  "direction_or_level": "below $90 sustained",
+  "by_when": "within two weeks",
+  "source_quote": "Brent breaking below $90 sustained for two weeks"
+}
+```
+
+Example B — source field has level but NO timeframe (the `by_when=""` case — emit the entry anyway, do not skip):
+```
+input: key_data_points[3].metric = "Goldman 2026 hyperscaler capex target $751B"
+       key_data_points[3].context = "up $80B in two weeks"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "2026 hyperscaler capex",
+  "direction_or_level": "$751B",
+  "by_when": "",
+  "source_quote": "Goldman 2026 hyperscaler capex target $751B"
+}
+```
+
+The right reflex when in doubt: ship the entry with empty `by_when` rather than omit it. Omit ONLY when there's no verbatim source quote at all — never because one derived field couldn't be cleanly populated.
+
+**Self-discard when evidence is too thin.** If after honest review you have `facts_agreed=[]` AND `facts_contested=[]` AND `falsifiable_predictions=[]` — i.e., NO substantive evidence to commit to the structured form — set `selected: false` in your output. The downstream lint also discards these mechanically, but flagging it yourself keeps the audit trail honest. (The discovered-theme branch below is the exception: those produce at least one `facts_agreed` entry, so they don't trip this.)
+
+**Do not number, do not bullet, do not bold.** This is structured data, not prose.
+
+**DISCOVERED-THEME BRANCH (when every input stance is `neutral`).** If your `theme_stances` input contains only stance=`neutral` entries with `evidence` strings that are short contextual mentions (not multi-sentence stance arguments), this is a discovery-promoted theme: a subject several banks mentioned in context without staking a primary directional view. The standard adjudication shape still applies, but adjust how you fill the schema:
+
+- `consensus_view` describes the topic as a live subject + the absence of directional consensus. Example: "Banks across N desks reference the Trump-Xi summit as a near-term macro catalyst; nobody has staked a directional view yet."
+- `facts_agreed` should contain at least one entry summarizing what the banks consistently SAY about the topic at the mention level. Use the cluster of bank names in `banks_for` (multiple banks; the topic is broadly discussed) and copy 2-5 mention strings from `theme_stances.evidence` into `evidence_quotes`. The claim is descriptive, not prescriptive — e.g., "N banks flag X as an upcoming catalyst this window."
+- `facts_contested` is usually `[]` for these themes — no bank argued the contrary.
+- `falsifiable_predictions` is usually `[]` unless a specific tension_point with a `what_invalidates` field was provided.
+
+This branch keeps discovered themes in the pulse with honest framing instead of returning empty arrays that would cause the theme to be dropped at the post-filter emptiness check.
+
+Return ONLY the JSON object.
+
+---
+
+Theme: ai infrastructure demand
+
+Pre-aggregated stance counts (copy these exactly into the output):
+{"supportive": 2, "skeptical": 0, "neutral": 3}
+
+Per-PDF evidence assigned to this theme:
+{
+ "theme_stances": [
+  {
+   "source": "Deutsche Bank",
+   "theme": "ai infrastructure demand",
+   "stance": "supportive",
+   "conviction": "medium",
+   "key_argument": "Demand for AI computing remains exceptionally strong, driving semiconductor performance.",
+   "primary_instruments": [
+    "SMCI"
+   ],
+   "vs_consensus": "",
+   "evidence": "Demand for AI computing remains exceptionally strong"
+  },
+  {
+   "source": "Goldman Sachs",
+   "theme": "AI infrastructure demand",
+   "stance": "supportive",
+   "conviction": "high",
+   "key_argument": "Results from CoreWeave, Lumentum, and Supermicro confirm strong demand backdrop for AI infrastructure.",
+   "primary_instruments": [
+    "LITE",
+    "SMCI"
+   ],
+   "vs_consensus": "",
+   "evidence": "results overnight broadly supportive for AI infrastructure and optical networking"
+  },
+  {
+   "source": "Goldman Sachs",
+   "theme": "ai infrastructure investment",
+   "stance": "supportive",
+   "conviction": "high",
+   "key_argument": "Alphabet is well positioned to capitalize on distribution, monetization, and scaled infrastructure for the next phase of the AI narrative.",
+   "primary_instruments": [
+    "GOOGL"
+   ],
+   "vs_consensus": "",
+   "evidence": "We remain highly convicted in our view of Alphabet as well positioned"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "ai infrastructure demand",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "AI infrastructure backlog demand",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "AI infrastructure backlog demand"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "ai infrastructure demand",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "AI infrastructure capex intensity",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "AI infrastructure capex intensity"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "ai infrastructure demand",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Hyperscaler capex intensity",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Hyperscaler capex intensity"
+  }
+ ],
+ "tension_points": [],
+ "key_data_points": [
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "11%",
+   "metric": "DAX earnings growth",
+   "context": "Q2 2026, strongest pace in ten quarters."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "16bps",
+   "metric": "Back-book margin growth",
+   "context": "June 2026 data."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "3.5%",
+   "metric": "Loan growth",
+   "context": "June 2026 YoY."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "46%",
+   "metric": "Electrified car volume growth",
+   "context": "July 2026 YoY in EU5 region."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "+21.2% YoY",
+   "metric": "Computer software and accessories price increase",
+   "context": "Largest increase on record, July."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "4.20%",
+   "metric": "2yr Treasury yield",
+   "context": "Fell -1.4bps post-CPI."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "5.26%",
+   "metric": "30yr Treasury yield",
+   "context": "Rose +1.7bps, near post-2007 high."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "2.43%",
+   "metric": "1yr euro inflation swap",
+   "context": "Two-week high."
+  },
+  {
+   "source_bank": "Deutsche Bank",
+   "figure": "+75.1% YTD",
+   "metric": "Philadelphia Semiconductor Index performance",
+   "context": "Year-to-date performance."
+  },
+  {
+   "source_bank": "Cisco",
+   "figure": "$4bn",
+   "metric": "AI hyperscaler orders",
+   "context": "F4Q orders"
+  },
+  {
+   "source_bank": "Cisco",
+   "figure": "$7.5bn",
+   "metric": "AI hyperscale revenue guide",
+   "context": "FY27 guidance"
+  },
+  {
+   "source_bank": "Nebius",
+   "figure": "5GW",
+   "metric": "Capacity guidance",
+   "context": "Year-end 2026"
+  },
+  {
+   "source_bank": "Tencent",
+   "figure": "CNY52.8bn",
+   "metric": "Capex spend",
+   "context": "64% above consensus"
+  },
+  {
+   "source_bank": "Bharti Airtel",
+   "figure": "17%",
+   "metric": "Tariff hike",
+   "context": "Prepaid smartphone users"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "22%",
+   "metric": "Adyen Q2 net revenue growth ex-FX",
+   "context": "Broadly in line with 21.5% consensus."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "15%",
+   "metric": "2026 STOXX Europe 600 EPS growth forecast",
+   "context": "Raised from 10%."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "4.2%",
+   "metric": "Stroeer organic revenue growth",
+   "context": "Vs 2.7% street estimate."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "33%",
+   "metric": "2027 CAPEX growth",
+   "context": "Implies >$1T total spend."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$46",
+   "metric": "Resistance level",
+   "context": "First major resistance for URA"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$100",
+   "metric": "Resistance level",
+   "context": "First major resistance for CCJ, coinciding with 50-day MA"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "~14.4x",
+   "metric": "Forward P/E ratio relative to CY27 EPS",
+   "context": "Valuation metric ahead of August 26 earnings."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "12%",
+   "metric": "Recent stock rally",
+   "context": "Context for elevated expectations ahead of earnings."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "3.6%",
+   "metric": "Momentum L/S pair performance",
+   "context": "1.1z move, August 12"
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "3%",
+   "metric": "NVDA daily return",
+   "context": "August 12"
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "3.4%",
+   "metric": "META daily decline",
+   "context": "August 12"
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "150% YoY",
+   "metric": "Hyperscaler backlog growth",
+   "context": "Compared to ~80% capex growth"
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "~$1.7T",
+   "metric": "Hyperscaler backlog value",
+   "context": "August 12"
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "30% upside",
+   "metric": "MegaCap Tech ex-Semis valuation catch-up",
+   "context": "To one standard deviation below mean"
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "56% upside",
+   "metric": "MegaCap Tech ex-Semis valuation catch-up",
+   "context": "To return to average valuation"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "$2M",
+   "metric": "Memory content per VR200 rack",
+   "context": "Compared to $374k in GB300 racks."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "49%",
+   "metric": "Memory share of CSP capex",
+   "context": "Rise from under 10% pre-AI."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "16-20%",
+   "metric": "Combined shareholder yield",
+   "context": "For Samsung and SK Hynix."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "300k",
+   "metric": "Additional DRAM wafers required",
+   "context": "Required to balance the market."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "~14.4x",
+   "metric": "NVDA forward P/E multiple",
+   "context": "Based on CY27 EPS estimates."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "12%",
+   "metric": "NVDA recent rally",
+   "context": "Contextualizing high expectations for upcoming earnings."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "$374k",
+   "metric": "Memory content in GB300 rack",
+   "context": "Comparison point for AI infrastructure cost shift."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "$2M",
+   "metric": "Memory content in VR200 rack",
+   "context": "Represents 26% of total rack cost."
+  },
+  {
+   "source_bank": "Jefferies",
+   "figure": "40-50%",
+   "metric": "QoQ memory price increase",
+   "context": "Contradicts peak-cycle narrative."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "134% YoY",
+   "metric": "Asian Semis revenue growth",
+   "context": "June print, tenth consecutive month of acceleration."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "64%ile",
+   "metric": "Retail buying flows",
+   "context": "Rebounded from 4%ile last week."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "78th percentile",
+   "metric": "KOSPI LT L/S ratio",
+   "context": "As of August 13."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "0.07%",
+   "metric": "US Headline CPI MoM",
+   "context": "July print."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "0.22%",
+   "metric": "US Core CPI MoM",
+   "context": "July print."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "3.3%oya",
+   "metric": "Core PCE",
+   "context": "July estimate."
+  },
+  {
+   "source_bank": "Cisco",
+   "figure": "$4bn",
+   "metric": "AI hyperscaler orders",
+   "context": "F4Q orders"
+  },
+  {
+   "source_bank": "Cisco",
+   "figure": "$7.5bn",
+   "metric": "AI hyperscale revenue guide",
+   "context": "FY27 guidance"
+  },
+  {
+   "source_bank": "Nebius",
+   "figure": "5GW",
+   "metric": "Capacity guidance",
+   "context": "Year-end 2026"
+  },
+  {
+   "source_bank": "Tencent",
+   "figure": "CNY52.8bn",
+   "metric": "Capex spend",
+   "context": "64% above consensus"
+  },
+  {
+   "source_bank": "Bharti Airtel",
+   "figure": "17%",
+   "metric": "Tariff hike",
+   "context": "Prepaid smartphone users"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "22%",
+   "metric": "Adyen Q2 net revenue growth ex-FX",
+   "context": "Broadly in line with 21.5% consensus."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "15%",
+   "metric": "2026 STOXX Europe 600 EPS growth forecast",
+   "context": "Raised from 10%."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "4.2%",
+   "metric": "Stroeer organic revenue growth",
+   "context": "Vs 2.7% street estimate."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "33%",
+   "metric": "2027 CAPEX growth",
+   "context": "Implies >$1T total spend."
+  }
+ ]
+}
+
+Adjudicate this theme per the rules in your system prompt. Return the JSON object only.

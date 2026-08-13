@@ -1,0 +1,401 @@
+{
+ "ai infrastructure demand": {
+  "theme": "ai infrastructure demand",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Deutsche Bank",
+    "theme": "ai infrastructure demand",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Demand for AI computing remains exceptionally strong, driving semiconductor performance.",
+    "primary_instruments": [
+     "SMCI"
+    ],
+    "vs_consensus": "",
+    "evidence": "Demand for AI computing remains exceptionally strong"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "AI infrastructure demand",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Results from CoreWeave, Lumentum, and Supermicro confirm strong demand backdrop for AI infrastructure.",
+    "primary_instruments": [
+     "LITE",
+     "SMCI"
+    ],
+    "vs_consensus": "",
+    "evidence": "results overnight broadly supportive for AI infrastructure and optical networking"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai infrastructure investment",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Alphabet is well positioned to capitalize on distribution, monetization, and scaled infrastructure for the next phase of the AI narrative.",
+    "primary_instruments": [
+     "GOOGL"
+    ],
+    "vs_consensus": "",
+    "evidence": "We remain highly convicted in our view of Alphabet as well positioned"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure demand",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure backlog demand",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure backlog demand"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure demand",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure capex intensity",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure capex intensity"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure demand",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler capex intensity",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler capex intensity"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "11%",
+    "metric": "DAX earnings growth",
+    "context": "Q2 2026, strongest pace in ten quarters."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "16bps",
+    "metric": "Back-book margin growth",
+    "context": "June 2026 data."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "3.5%",
+    "metric": "Loan growth",
+    "context": "June 2026 YoY."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "46%",
+    "metric": "Electrified car volume growth",
+    "context": "July 2026 YoY in EU5 region."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+21.2% YoY",
+    "metric": "Computer software and accessories price increase",
+    "context": "Largest increase on record, July."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.20%",
+    "metric": "2yr Treasury yield",
+    "context": "Fell -1.4bps post-CPI."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "5.26%",
+    "metric": "30yr Treasury yield",
+    "context": "Rose +1.7bps, near post-2007 high."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "2.43%",
+    "metric": "1yr euro inflation swap",
+    "context": "Two-week high."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "+75.1% YTD",
+    "metric": "Philadelphia Semiconductor Index performance",
+    "context": "Year-to-date performance."
+   },
+   {
+    "source_bank": "Cisco",
+    "figure": "$4bn",
+    "metric": "AI hyperscaler orders",
+    "context": "F4Q orders"
+   },
+   {
+    "source_bank": "Cisco",
+    "figure": "$7.5bn",
+    "metric": "AI hyperscale revenue guide",
+    "context": "FY27 guidance"
+   },
+   {
+    "source_bank": "Nebius",
+    "figure": "5GW",
+    "metric": "Capacity guidance",
+    "context": "Year-end 2026"
+   },
+   {
+    "source_bank": "Tencent",
+    "figure": "CNY52.8bn",
+    "metric": "Capex spend",
+    "context": "64% above consensus"
+   },
+   {
+    "source_bank": "Bharti Airtel",
+    "figure": "17%",
+    "metric": "Tariff hike",
+    "context": "Prepaid smartphone users"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "22%",
+    "metric": "Adyen Q2 net revenue growth ex-FX",
+    "context": "Broadly in line with 21.5% consensus."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15%",
+    "metric": "2026 STOXX Europe 600 EPS growth forecast",
+    "context": "Raised from 10%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.2%",
+    "metric": "Stroeer organic revenue growth",
+    "context": "Vs 2.7% street estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "33%",
+    "metric": "2027 CAPEX growth",
+    "context": "Implies >$1T total spend."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$46",
+    "metric": "Resistance level",
+    "context": "First major resistance for URA"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$100",
+    "metric": "Resistance level",
+    "context": "First major resistance for CCJ, coinciding with 50-day MA"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~14.4x",
+    "metric": "Forward P/E ratio relative to CY27 EPS",
+    "context": "Valuation metric ahead of August 26 earnings."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "12%",
+    "metric": "Recent stock rally",
+    "context": "Context for elevated expectations ahead of earnings."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.6%",
+    "metric": "Momentum L/S pair performance",
+    "context": "1.1z move, August 12"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3%",
+    "metric": "NVDA daily return",
+    "context": "August 12"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.4%",
+    "metric": "META daily decline",
+    "context": "August 12"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "150% YoY",
+    "metric": "Hyperscaler backlog growth",
+    "context": "Compared to ~80% capex growth"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$1.7T",
+    "metric": "Hyperscaler backlog value",
+    "context": "August 12"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30% upside",
+    "metric": "MegaCap Tech ex-Semis valuation catch-up",
+    "context": "To one standard deviation below mean"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "56% upside",
+    "metric": "MegaCap Tech ex-Semis valuation catch-up",
+    "context": "To return to average valuation"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2M",
+    "metric": "Memory content per VR200 rack",
+    "context": "Compared to $374k in GB300 racks."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "49%",
+    "metric": "Memory share of CSP capex",
+    "context": "Rise from under 10% pre-AI."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "16-20%",
+    "metric": "Combined shareholder yield",
+    "context": "For Samsung and SK Hynix."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "300k",
+    "metric": "Additional DRAM wafers required",
+    "context": "Required to balance the market."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~14.4x",
+    "metric": "NVDA forward P/E multiple",
+    "context": "Based on CY27 EPS estimates."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "12%",
+    "metric": "NVDA recent rally",
+    "context": "Contextualizing high expectations for upcoming earnings."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$374k",
+    "metric": "Memory content in GB300 rack",
+    "context": "Comparison point for AI infrastructure cost shift."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2M",
+    "metric": "Memory content in VR200 rack",
+    "context": "Represents 26% of total rack cost."
+   },
+   {
+    "source_bank": "Jefferies",
+    "figure": "40-50%",
+    "metric": "QoQ memory price increase",
+    "context": "Contradicts peak-cycle narrative."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "134% YoY",
+    "metric": "Asian Semis revenue growth",
+    "context": "June print, tenth consecutive month of acceleration."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "64%ile",
+    "metric": "Retail buying flows",
+    "context": "Rebounded from 4%ile last week."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "78th percentile",
+    "metric": "KOSPI LT L/S ratio",
+    "context": "As of August 13."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.07%",
+    "metric": "US Headline CPI MoM",
+    "context": "July print."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.22%",
+    "metric": "US Core CPI MoM",
+    "context": "July print."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "3.3%oya",
+    "metric": "Core PCE",
+    "context": "July estimate."
+   },
+   {
+    "source_bank": "Cisco",
+    "figure": "$4bn",
+    "metric": "AI hyperscaler orders",
+    "context": "F4Q orders"
+   },
+   {
+    "source_bank": "Cisco",
+    "figure": "$7.5bn",
+    "metric": "AI hyperscale revenue guide",
+    "context": "FY27 guidance"
+   },
+   {
+    "source_bank": "Nebius",
+    "figure": "5GW",
+    "metric": "Capacity guidance",
+    "context": "Year-end 2026"
+   },
+   {
+    "source_bank": "Tencent",
+    "figure": "CNY52.8bn",
+    "metric": "Capex spend",
+    "context": "64% above consensus"
+   },
+   {
+    "source_bank": "Bharti Airtel",
+    "figure": "17%",
+    "metric": "Tariff hike",
+    "context": "Prepaid smartphone users"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "22%",
+    "metric": "Adyen Q2 net revenue growth ex-FX",
+    "context": "Broadly in line with 21.5% consensus."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15%",
+    "metric": "2026 STOXX Europe 600 EPS growth forecast",
+    "context": "Raised from 10%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.2%",
+    "metric": "Stroeer organic revenue growth",
+    "context": "Vs 2.7% street estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "33%",
+    "metric": "2027 CAPEX growth",
+    "context": "Implies >$1T total spend."
+   }
+  ]
+ }
+}

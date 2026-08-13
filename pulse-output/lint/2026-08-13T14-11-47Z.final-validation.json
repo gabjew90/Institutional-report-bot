@@ -1,0 +1,88 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '50%' is attached to [contract] but the source uses it for [bank, concentrated, conviction, forecasts, high] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "50%",
+   "draft_subject": [
+    "contract"
+   ],
+   "source_subject": [
+    "bank",
+    "concentrated",
+    "conviction",
+    "forecasts",
+    "high",
+    "house",
+    "increase",
+    "independent"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.28%' is attached to [again, against, anyone, core, desks] but the source uses it for [actual, belongs, economic, events, high] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.28%",
+   "draft_subject": [
+    "again",
+    "against",
+    "anyone",
+    "core",
+    "desks",
+    "enough",
+    "forecast",
+    "forecasting"
+   ],
+   "source_subject": [
+    "actual",
+    "belongs",
+    "economic",
+    "events",
+    "high",
+    "impact",
+    "prev",
+    "upcoming"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "40% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.4, 0.0, 0.07, 0.1, 0.2, 0.22, 2.5, 2.6, 2.67, 3.4, 3.5, 3.52]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "40",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday's CPI did the setup work.** Headline consumer prices rose 0.07% on the month and 3.52% from a year earlier, while the core measure ran 0.22% and 2.67%, above the 2.5% consensus on the ye"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-0.28% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.4, 0.0, 0.07, 0.1, 0.2, 0.22, 2.5, 2.6, 2.67, 3.4, 3.5, 3.52]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-0.28",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "Headline producer prices printed at -0.28% month over month against desks looking for a rise, and the core reads are still landing. September hike odds had already dropped to roughly 40% after Wednesd"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.3% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.4, 0.0, 0.07, 0.1, 0.2, 0.22, 2.5, 2.6, 2.67, 3.4, 3.5, 3.52]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.3",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "Headline producer prices printed at -0.28% month over month against desks looking for a rise, and the core reads are still landing. September hike odds had already dropped to roughly 40% after Wednesd"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.21% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.4, 0.0, 0.07, 0.1, 0.2, 0.22, 2.5, 2.6, 2.67, 3.4, 3.5, 3.52]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.21",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "Headline producer prices printed at -0.28% month over month against desks looking for a rise, and the core reads are still landing. September hike odds had already dropped to roughly 40% after Wednesd"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 6,
+ "exit_code": 4
+}
