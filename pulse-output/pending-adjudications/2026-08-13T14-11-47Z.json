@@ -1,11 +1,52 @@
 {
   "pulse_date": "2026-08-13",
   "window_label": "last-24h",
-  "themes": [],
-  "discarded_themes": [
+  "themes": [
     {
       "theme": "ai infrastructure demand",
-      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Cisco'"
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Every desk that took a side says demand for AI computing hardware is still running hot, backed by fresh earnings and order numbers, and no bank in this set argued the other way.",
+      "facts_agreed": [
+        {
+          "claim": "Demand for AI computing hardware remains very strong and is showing up in chip and networking company results.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Demand for AI computing remains exceptionally strong",
+            "results overnight broadly supportive for AI infrastructure and optical networking"
+          ]
+        },
+        {
+          "claim": "Companies that own large-scale computing capacity and distribution are seen as the winners of the next stage of AI spending.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "We remain highly convicted in our view of Alphabet as well positioned"
+          ]
+        },
+        {
+          "claim": "Several desks track order backlogs and the scale of big cloud providers' spending as the live measures of this theme.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure backlog demand",
+            "AI infrastructure capex intensity",
+            "Hyperscaler capex intensity"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
     }
-  ]
+  ],
+  "discarded_themes": []
 }
