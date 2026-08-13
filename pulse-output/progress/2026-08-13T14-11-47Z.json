@@ -1,0 +1,13 @@
+{
+ "ts": "2026-08-13T14-11-47Z",
+ "events": [
+  {"step": "STEP_2_DONE", "time": "2026-08-13T14:13:09Z", "detail": "pdf_count=12"},
+  {"step": "STEP_2_2_DONE", "time": "2026-08-13T14:13:10Z", "detail": "volume gate passed"},
+  {"step": "STEP_3_DONE", "time": "2026-08-13T14:13:14Z", "detail": ""},
+  {"step": "STEP_3_5_DONE", "time": "2026-08-13T14:15:13Z", "detail": "0 validated, 1 discarded"},
+  {"step": "STEP_4_DONE", "time": "2026-08-13T14:20:53Z", "detail": "draft written"},
+  {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-08-13T14:21:48Z", "detail": "exit=4 soft-only after 1 re-roll"},
+  {"step": "STEP_5A_STITCH_DONE", "time": "2026-08-13T14:21:49Z", "detail": ""},
+  {"step": "STEP_5B_EDIT_DISPATCHED", "time": "2026-08-13T14:24:00Z", "detail": "EDIT sub-agent running"}
+ ]
+}
