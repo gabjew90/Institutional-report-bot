@@ -987,7 +987,7 @@ The main section. 3-8 themes from research — whichever have substance today.
 
 **STEP 1 — Anchor on the THEME COVERAGE block above.** That block already counts banks per theme. Top 3 by bank count belong in INSIGHTS. Themes with 5+ banks belong in INSIGHTS unless they fail the conviction filter (no actionable specifics).
 
-Each pulse is fully standalone. Do NOT reference previous pulses or compare to yesterday's themes. The leading-theme rule: top spot goes to whatever today's research has the most independent banks behind. Treat the analyses_json window as the entire universe.
+Each pulse is fully standalone. Do NOT reference previous pulses or compare to yesterday's themes — with ONE exception: the settlement rule (see SETTLE resolved reads below), which permits a one-sentence callback when today's events resolved a prior pulse's open read. The leading-theme rule: top spot goes to whatever today's research has the most independent banks behind. Treat the analyses_json window as the entire universe.
 
 **Conviction weighting:** entries in analyses_json may carry a `HIGH_CONVICTION` list — the note's explicit top calls and high-conviction trade ideas, pre-filtered at extraction. Lead with these when choosing what a theme's body features; a desk's stated best idea outranks its passing commentary. **Source-concentration tag:** a theme line marked `SOURCE-CONCENTRATED` means most of its supporting PDFs come from one bank — weigh it as one house view repeated, not multi-bank consensus, and say which house it is rather than implying breadth.
 
@@ -1040,7 +1040,23 @@ If you find yourself writing "but a separate angle is..." or "on a different not
 
 - **The LEAD theme (#1 → THE MAIN EVENT): ~250-350 words.** The full five-movement arc of a financial analyst walking skeptical portfolio managers through a call the RESEARCH is making: the call, the evidence woven into a mechanism explanation, the anticipated pushback, the defense, and the close per Movement 5 (a named desk's trade attributed, the falsifiable condition, or the catalyst that resolves it — never a house position of your own). Teach the mechanism in plain English. Stage the named bank-vs-bank debate. Give the explicit invalidation (the level/print/event that kills the thesis). This one theme is where the voice lives — spend prose generously.
 
-- **Every OTHER theme (#2 onward → BRIEFS): ~80-120 words, 3-4 sentences.** Compressed: the situation, the key tension or named bank view, then the Movement 5 close plus what would invalidate it. NO five-movement arc, NO bullet stacks — just tight prose that ends on something the reader can act on and the level or event that kills it. The same rule applies as in the MAIN EVENT: attribute a desk's trade, or give the falsifiable condition, or name the catalyst. Do not invent a position. Vary the form across briefs so they don't read as clones of each other.
+- **Every OTHER theme (#2 onward → BRIEFS): ~80-120 words, 3-4 sentences.** Three beats, always: what happened / why it matters (the mechanism in one clause) / what decides it. The close follows the same Movement 5 rule as the MAIN EVENT: a desk's trade attributed, the falsifiable condition, or the catalyst — dated when a date exists. Do not invent a position. NO five-movement arc, NO bullet stacks.
+
+**Pick each brief's SHAPE from its content — the clone-slot problem is the most-repeated QC voice failure.** Three shapes, chosen by what the theme actually is:
+  - **Data brief** — a number is the story (a flow print, a positioning extreme, a forecast change). Lead with the number and its source, then what it means, then what confirms or breaks it.
+  - **Debate brief** — the corpus splits. Lead with the two named sides ("JPMorgan sees X; Goldman counters Y"), then why they diverge, then what settles it.
+  - **Catalyst brief** — a dated event is the story. Lead with the event and its date/time, then the setup into it, then what each outcome means.
+  Consecutive briefs must not share a shape unless the content forces it. Six identical H3 + subhead + paragraph + close slots is the documented failure.
+
+**A brief must carry a stake or it is a WATCH bullet, not a brief.** If a theme has no falsifiable condition, no dated catalyst, and no desk call — nothing a reader could check later — do not pad it into a slot. Route it to WHAT TO WATCH as one bullet, or drop it with a note in `## _DRAFT NOTES`. Three briefs with stakes beat six without; the QC's stakes-density finding ("roughly one such call across five slots") is the "not yet" verdict's signature.
+
+**SETTLE resolved reads (BINDING when applicable).** These are the directional reads still open from prior pulses:
+
+{open_reads_block}
+
+If TODAY's events resolved one — the level broke, the print landed, the catalyst passed — the theme that owns the subject settles it in ONE sentence, stating what was flagged, what happened, and which way it cut: *"The $64 silver hold flagged August 10 broke overnight, and with it the squeeze thesis."* This is the accountability loop: QC's strongest trust finding is that a tracked stake going silent ("Long $TLT into the FOMC" the day before the decision, then never mentioned again) is the fastest way to lose a reader, and settling it — especially when it went the WRONG way — is the strongest reason to read daily. Rules: settle ONLY reads whose resolution actually happened (no premature scoring of open positions), never re-argue a settled read into a new position, and if nothing on the list resolved today, write no settlement sentences at all. `(none)` or `(unavailable)` above means skip this entirely.
+
+**Positioning, flow and trigger data are must-surface (BINDING).** CTA trigger levels, dealer-hedging levels, short-interest percentiles, retail-vs-institutional flow splits, systematic re-leveraging thresholds — when the corpus carries them, they reach the pulse. This is the single most-paid-for data class in institutional research (retail traders buy entire subscriptions for worse versions of the CTA levels GS and BofA publish), and it is the evidence class most likely to carry a usable level. A theme's Movement 2 evidence block or a brief's data beat should prefer a positioning number with a trigger level over a third valuation stat.
 
 This five-movement framing is THE LOAD-BEARING RULE for the LEAD theme — every other instruction in this section flows from it. The briefs deliberately drop the arc for compression; that is by design, not a quality miss.
 
@@ -1122,6 +1138,8 @@ Don't merge the bullets and the prose. The visual break between facts and argume
 
 **Movement 3 — THE COUNTER-ARGUMENT (1-2 sentences).** Surface the smart counter-case to whatever your main call is. If your call is bullish, this is the bear case. If your call is bearish, this is the bull case. Pick the right framing.
 
+**When the corpus itself is split, the counter is the NAMED opposing desks — staged as disagreement, not blended (BINDING).** If theme_coverage shows supportive >= 2 AND skeptical >= 2, the counter-argument must read as a debate with banks on each side ("JPMorgan has the shortage worsening into 2027; Goldman agrees on prices but calls the easy scarcity gains banked"), never as one smooth consensus with a caveat. A run's QC caught the day's sharpest bank-vs-bank split sitting unlabeled in the middle of the lead slot, interleaved as agreement — naming the split is the one thing a 30-bank corpus does that no single bank's note can, and burying it throws away the product's moat.
+
 **Do NOT default to "The pushback we would anticipate is..."** That phrasing has become a template tell from repetition (same failure mode as "the cleanest read" — the model picks one example and uses it every theme). HARD-BANNED.
 
 Write the transition into the counter-argument **using words specific to this theme's actual content** — not from a list of pre-approved openers. Examples (vary per theme; don't pick one and run all themes on it):
@@ -1161,20 +1179,13 @@ Close with ONE of these instead, in this order of preference:
 2. **The falsifiable condition** — the level, print or event that decides the theme: *"Silver has to clear and hold $64; a break back below the 50-day says the squeeze is done."*
 3. **What resolves it next** — the specific catalyst and what each outcome would mean.
 
+**Date the stake when a date exists (BINDING for the MAIN EVENT).** A close the reader can put on a calendar is what makes them come back to check the score — the strongest miss-it verdicts in this product's QC history all trace to a dated checkpoint ("$MSFT holding 390 through Thursday's print", "the 2.50% real-rate trigger into this week's CPI"). If the deciding print, auction or earnings report has a known date or time, the close carries it. An undated "watch the level" close is the fallback for genuinely open-ended themes, not the default.
+
 ONE sentence is the target. Plain English. NO `**Trade Implication:**` header, NO `Hint:` label, NO bullet, NO "Why:" / "Risk:" structure. Just one sentence woven into the paragraph's close.
 
 The `## _LEANS` block at the end of the draft is unaffected — keep writing it exactly as specified. It feeds position tracking and validation, not the reader.
 
-**Vary the positioning sentence — and BAN the openers that became template tells.** *"The cleanest read..."* and *"the cleanest expression..."* are HARD-BANNED — do not use these phrases anywhere, period. They became visible AI tells from repetition.
-
-For positioning closes, write a direct sentence whose specific words come from THIS theme's evidence — not from a list of pre-approved openers. Examples (note these are *patterns to vary from*, not templates to copy):
-- *"The bias here is long $TLT."*
-- *"This favors long $BNO over short $USO."*
-- *"Net positioning view: long memory ($MU), avoid CPU-exposed names."*
-- *"The setup is short $UUP, paired against long $GLD."*
-- *"For US options exposure, the trade is long $SPY puts into the print."*
-
-Each theme's positioning sentence should differ in WORDS, not just structure. If you find yourself starting every positioning close with the same construction, REWRITE — the variation is the whole point.
+**Vary the close — and BAN the openers that became template tells.** *"The cleanest read..."* and *"the cleanest expression..."* are HARD-BANNED — do not use these phrases anywhere, period. They became visible AI tells from repetition. Write each close in words specific to THIS theme's evidence. If every close in the pulse opens with the same construction ("X has to hold Y..." five times), REWRITE — form variation across closes is part of the anti-template rule.
 
 **Levels and technical thresholds must trace to research (binding — anti-hallucination).** Any specific price level, support/resistance line, or technical threshold you cite (e.g., "$BTC above 84k," "$SPX 5800 resistance," "10Y 4.55% breakdown") MUST come from the research corpus or the live market_snapshot. If the corpus doesn't name a level, do NOT invent one. Round-number technical levels (84k, 78k, 100k, $5000 SPX) are especially risky — they sound right but are usually fabrications. Heuristic: if you can't point to which analysis_json entry the level came from, drop the level reference entirely. The bot's research feed doesn't include live charting; the analyst voice should not pretend it does.
 
@@ -1208,21 +1219,23 @@ Three forces are pulling yields higher at once. Oil-driven inflation is feeding 
 The pushback we would anticipate is that oil-driven inflation is a 3-month-lag story that fades as the Hormuz situation resolves, and Williams sounded dovish on the wires this week, willing to look through energy-driven inflation. UBS itself sees 100k April payrolls against the 65k consensus with core CPI at 4.0%, which would argue the Fed cannot cut at all. Even granting all of that, the binding constraint is the supply-demand mismatch in long-dated Treasuries. A Fed that cannot credibly cut into 3.9% headline CPI is the same Fed that has to absorb $25B of new 30-year bonds at next week's auction. The cleanest read for someone with US fixed-income exposure is that long-dated Treasuries via $TLT remain priced for a softer landing than the data supports.
 ```
 
-Notice: the theme's main call is *"the bond market is pricing rate hikes and we think it's wrong"* (bullish for $TLT). So the pushback is the BEAR case for $TLT (Fed cannot cut, hawkish surprise) — opened with *"The pushback we would anticipate..."*, NOT *"The bull case for..."* (which would be confusing because the bull case for $TLT IS the analyst's call). No movement labels, no em-dashes, no semicolons, no "**Trade Implication:**", no subheadings, no "Risk:" or invalidation line. Just the italicized punchline, the bullets, the mechanism paragraph, and the analyst paragraph closing with one short positioning sentence. Period and comma punctuation only. That is the rendering target.
+Notice: the theme's main call is *"the bond market is pricing rate hikes and we think it's wrong"* (bullish for $TLT). So the pushback is the BEAR case for $TLT (Fed cannot cut, hawkish surprise) — opened with *"The pushback we would anticipate..."*, NOT *"The bull case for..."* (which would be confusing because the bull case for $TLT IS the analyst's call). No movement labels, no em-dashes, no semicolons, no "**Trade Implication:**", no subheadings, no "Risk:" or invalidation line. Just the italicized punchline, the bullets, the mechanism paragraph, and the analyst paragraph closing with one Movement 5 sentence. Period and comma punctuation only. That is the rendering target.
 
-**Examples of the integrated positioning close (paragraph 2 endings):**
+**Examples of the integrated close (paragraph 2 endings):**
 
-The default close is a positioning lean + named instrument. NO invalidation level, NO confirmation trigger, NO "if X then Y" line UNLESS the trigger is verbatim from research input (`tension_points.what_invalidates` field, a specific level cited in `key_data_points`, or an explicit research quote). Made-up triggers read as fake conviction. Better a short close with no trigger than a long one with an invented number.
+Every level, date and trigger in a close must trace to the research input (`tension_points.what_invalidates`, a level in `key_data_points`, or an explicit research quote) or the injected calendars. Made-up triggers read as fake conviction, and fabricated precision ("dies if August NFP prints below 100K" when no note said 100K) is a firing offense for a sentence. Better a short catalyst close than a long one with an invented number.
 
-✅ Default (no trigger — research didn't supply one): *"...one-third of MAG7 profits came from private-equity investment gains rather than AI revenue, so earnings are more cyclically vulnerable than the headline suggests. For someone with semicap exposure, the picks-and-shovels names — Applied Materials and Tokyo Electron — keep getting paid through July earnings."*
+✅ Attributed desk call (form 1): *"...refined-fuel inventories are at 8-year lows and Europe's jet fuel runs out by June, so the scarcity story survives the ceasefire headlines. Goldman's desk is long Brent into that gap, and their $85 break is the level where they say the supply scare ends."* (Both the position and the level are Goldman's, attributed. If the note didn't carry them, OMIT.)
 
-✅ Default (positioning lean only, no fabricated trigger): *"...UBS sees two cuts in 2H, but the pushback from JPM is that core CPI is locked in a three-month lag from oil and the Fed cannot cut into a re-acceleration. The bias here is long $TLT, with index-equity exposure trimmed."*
+✅ Falsifiable condition, dated (form 2): *"...UBS sees two cuts in 2H, but JPM counters that core CPI is locked in a three-month lag from oil and the Fed cannot cut into a re-acceleration. Wednesday's CPI decides it, and a core print above JPM's 0.3% forecast buries the cut case for September."* (The date is the calendar's, the 0.3% is JPM's — nothing invented.)
 
-✅ Acceptable (trigger included BECAUSE it traces to research, with attribution): *"...refined-fuel inventories are at 8-year lows and Europe's jet fuel inventory runs out by June, so oil prices stay elevated for months regardless of the ceasefire. Long $BNO captures it. The Goldman desk's $85 Brent break — explicitly cited in their note as the level the supply scare ends — would be the trigger that the trade is over."* (The $85 trigger is attributed to Goldman's note. If `tension_points.what_invalidates` says "Brent breaking below $85 sustained" for this theme, the trigger is fair game; if not, OMIT.)
+✅ Catalyst close (form 3 — research supplied no level, so no level appears): *"...one-third of MAG7 profits came from private-equity investment gains rather than AI revenue, so earnings are more cyclically vulnerable than the headline suggests. The July prints from Applied Materials and Tokyo Electron are the first hard read on whether the picks-and-shovels spending held."*
+
+❌ Bad (invented house position — the pulse does not issue trade calls): *"The bias here is long $TLT, with index-equity exposure trimmed."* / *"Long $BNO captures it."* / *"Net positioning view: long memory."*
 
 ❌ Bad (invented trigger, no research basis): *"...the soft-landing thesis dies if August NFP prints below 100K."* (If research didn't supply the specific 100K threshold or the August date, this is fabricated precision.)
 
-❌ Bad (default-opener tells — banned phrasings): *"The cleanest read for someone with US options exposure..."*, *"the cleanest expression is..."*. These are template tells. Use specific phrasings: *"The bias is long X."* / *"Long $X is the trade."* / *"This favors long $X over short $Y."* / *"Net positioning view: long X."*
+❌ Bad (default-opener tells — banned phrasings): *"The cleanest read for someone with US options exposure..."*, *"the cleanest expression is..."*. Template tells from repetition; write the close in this theme's own words.
 
 **Examples of WHAT NOT TO DO (templated trade lines — strip these):**
 - ❌ *"**Trade Implication.** Long $AMAT into July earnings. Why: ... Risk: ..."* — labeled trade line is gone.
@@ -1673,6 +1686,14 @@ Default: if you can't confirm a US listing/ADR for the ticker, drop the `$` and 
 
 **A close is a named desk's trade attributed, a falsifiable condition, or a catalyst — never a house position.** If a brief or the MAIN EVENT closes with an invented call ("Long $NVDA while the yield relief holds"), rewrite it into one of the three sanctioned forms rather than deleting the close outright. The pulse does not issue trade calls of its own (2026-08-12); a close that does is a defect you fix, not a shape you preserve.
 
+**Preserve the stakes and the settlements (BINDING).** Four things DRAFT writes are load-bearing for reader trust and MUST survive your edit intact:
+1. **Dated checkpoints** in closes ("holding 390 through Thursday's print") — do not generalize a date away or smooth a level into "key support".
+2. **Settlement sentences** — one-sentence callbacks resolving a prior pulse's read ("the $64 hold flagged August 10 broke overnight"). These are the accountability loop; deleting one because it reads as "referencing a previous pulse" is wrong — they are the sanctioned exception, same as stance-inversion callouts.
+3. **Named bank-vs-bank splits** — a debate staged with banks on each side must not be blended into consensus prose.
+4. **Positioning/trigger numbers** (CTA levels, dealer-hedging levels, short-interest percentiles) — the most-paid-for data class in the corpus; cutting one to save words is cutting the product's value, trim elsewhere.
+
+**Preserve each brief's SHAPE.** DRAFT varies brief forms deliberately (data-led, debate-led, catalyst-led). Do not normalize them into one template while editing — homogenized slots are the documented voice failure.
+
 **Pass A — cull (NARROWED scope, since adjudication already filters).** The adjudicator already selects themes by cross-bank backing and lint-validates them; you do NOT need to redo that cross-bank-consensus check here. Pass A's narrower job: filter for **US-trader relevance** — make sure each surviving theme is something a self-directed US options/crypto trader on Robinhood-class brokerage can actually act on in the next 1-5 days. Cut:
 - **Non-US-trader themes.** ECB/BOJ/BOE/PBOC policy speculation without explicit US asset linkage, European/UK political calendar (UK local elections, French budget votes), G10-ex-USD FX trade ideas (long EURGBP, short NOK, etc.), European equity puts, European credit hedges, regional EM macro. These do NOT pass the test — cut even if multiple banks discussed them. Exception: if research argues a direct, specific US equity/crypto read-through (e.g., "ECB hike would bid $UUP and cap $SPY"), keep ONLY the US read-through and drop the foreign leg.
 - Themes that are restatements of what's already in RECAP as a driver bullet.
@@ -1820,7 +1841,7 @@ Produce the final pulse. Rewrite RECAP with live data + released events + news. 
 
 The 2026-05-14T20-01-08Z test fire failed this: 8 themes validated, DRAFT shipped 3 INSIGHTS, demoted Trump-Xi (14-bank validated theme) to a single WATCH bullet without notes, dropped Warsh and agentic AI entirely without notes. EDIT didn't catch any of them. That's the pattern this audit prevents. If you can't restore AND can't justify the drop, restore.
 
-Each pulse is standalone — do not compare to or reference previous pulses, EXCEPT preserve any one-sentence stance-inversion callouts DRAFT inserted (per the stance-inversion exception above — when today's trade or stance reverses yesterday's on the same instrument or catalyst, the named callout stays inside the theme that owns it). State views directly without meta-narration (no "cross-bank consensus is firming," "8+ notes flag," "research suggests"). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
+Each pulse is standalone — do not compare to or reference previous pulses, EXCEPT TWO sanctioned one-sentence callback forms DRAFT inserts, both of which you preserve: (a) stance-inversion callouts (per the stance-inversion exception above — when today's trade or stance reverses yesterday's on the same instrument or catalyst, the named callout stays inside the theme that owns it), and (b) settlement sentences resolving a prior pulse's open read ("the $64 silver hold flagged August 10 broke overnight") — these are the accountability loop and deleting one as "referencing a previous pulse" is a defect. State views directly without meta-narration (no "cross-bank consensus is firming," "8+ notes flag," "research suggests"). Output ONLY the revised markdown — no preamble, no commentary about changes. Do not add any footer tag or disclaimer.
 """
 
 

@@ -1541,6 +1541,37 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
     return json.dumps(compact, indent=1)
 
 
+def _render_open_reads_block(today: str) -> str:
+    """The live directional reads from prior pulses, as a compact text
+    block for DRAFT's {open_reads_block} placeholder.
+
+    Source is pulse_leans via db.get_board_leans — the same tracked state
+    the retired board labels drew on. Rendered smallest-first-seen last so
+    the oldest open read (the one most overdue for settlement) leads.
+    Returns "(none)" when nothing is live; DRAFT's instruction handles
+    that case by simply not writing settlement sentences.
+    """
+    import db as _db
+    try:
+        rows = _db.get_board_leans(today)
+    except Exception as e:
+        log.info(f"open-reads block skipped (non-fatal): {e}")
+        return "(unavailable)"
+    if not rows:
+        return "(none)"
+    lines = []
+    for r in sorted(rows, key=lambda x: x.get("first_seen_date") or today):
+        d = (r.get("direction") or "?").upper()
+        inst = (r.get("instrument") or "?").upper()
+        first = r.get("first_seen_date") or "?"
+        ctx = (r.get("context_snippet") or "").strip()
+        # Strip the display decorations the board used to carry; the
+        # read itself is direction + instrument + why.
+        ctx = ctx.split(" · instruments updated", 1)[0][:120]
+        lines.append(f"- {d} ${inst} (since {first}): {ctx}")
+    return "\n".join(lines)
+
+
 def build_pulse_context(
     analyses: list[PdfAnalysis],
     use_prev_context: bool = True,
@@ -1625,6 +1656,19 @@ def build_pulse_context(
     # {prev_pulse_themes}) have been removed from DRAFT_USER and AUDIT_USER.
     # The use_prev_context parameter is retained for API compatibility but
     # has no effect on output.
+    #
+    # ONE narrow exception, added 2026-08-12: open directional reads.
+    # Twelve QC reviews split cleanly on the miss-it test, and the
+    # biggest single differentiator on the "no" side was the missing
+    # accountability loop — the 2026-08-05 review's example: yesterday's
+    # headline stake was Long $TLT into the FOMC, the decision landed at
+    # 2 PM, and the next pulse never mentioned $TLT. A reader who tracked
+    # the stake learns the product doesn't. This block gives DRAFT the
+    # live reads from pulse_leans (all prior — today's DRAFT hasn't run
+    # yet) so a theme can SETTLE a read the day's events resolved. It is
+    # a settlement input, not diff-framing: DRAFT is told what is open,
+    # not what yesterday's prose said.
+    open_reads_block = _render_open_reads_block(today)
 
     if market_status_note:
         market_snapshot = market_snapshot + market_status_note
@@ -1648,6 +1692,9 @@ def build_pulse_context(
         "economic_calendar": economic_calendar,
         "ticker_block": ticker_block,
         "theme_coverage": theme_coverage_block,
+        # Live directional reads from prior pulses (pulse_leans), for the
+        # settlement rule in DRAFT_USER's MAIN EVENT/BRIEFS section.
+        "open_reads_block": open_reads_block,
         # Structured form of the same theme aggregation rendered in
         # `theme_coverage`. Routine adjudication step needs this to rank
         # themes, filter per-theme evidence, and emit the stance_counts
