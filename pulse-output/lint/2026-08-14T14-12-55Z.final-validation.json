@@ -1,0 +1,69 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.20%' is attached to [against, beat, beats, historical, historically] but the source uses it for [claims, components, core, date, downwardly] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.20%",
+   "draft_subject": [
+    "against",
+    "beat",
+    "beats",
+    "historical",
+    "historically",
+    "median",
+    "only",
+    "rate"
+   ],
+   "source_subject": [
+    "claims",
+    "components",
+    "core",
+    "date",
+    "downwardly",
+    "estimates",
+    "estimating",
+    "expectations"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.10% stated for Retail Sales MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.10",
+   "event": "RETAIL SALES",
+   "matches_estimate": true,
+   "sentence": "July retail sales landed at 8:30 this morning far below what desks expected, and the bond market moved the wrong way on it. Forty minutes into the session $SPY is up 0.10% and $QQQ 0.20%, both hanging"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.24% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.58, -0.31, -0.2, 0.2]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.24",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "July retail sales landed at 8:30 this morning far below what desks expected, and the bond market moved the wrong way on it. Forty minutes into the session $SPY is up 0.10% and $QQQ 0.20%, both hanging"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.45% stated for Retail Sales MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.45",
+   "event": "RETAIL SALES",
+   "matches_estimate": true,
+   "sentence": "July retail sales landed at 8:30 this morning far below what desks expected, and the bond market moved the wrong way on it. Forty minutes into the session $SPY is up 0.10% and $QQQ 0.20%, both hanging"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "1.35% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.58, -0.31, -0.2, 0.2]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "1.35",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "July retail sales landed at 8:30 this morning far below what desks expected, and the bond market moved the wrong way on it. Forty minutes into the session $SPY is up 0.10% and $QQQ 0.20%, both hanging"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 5,
+ "exit_code": 4
+}

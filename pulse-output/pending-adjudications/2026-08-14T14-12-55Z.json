@@ -1,0 +1,356 @@
+{
+  "pulse_date": "2026-08-14",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai semiconductor demand cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 2,
+        "neutral": 7
+      },
+      "consensus_view": "Banks agree AI chip and data-center demand is still growing fast with prices holding firm, but they split on whether the easy gains are already behind us and whether the debt funding the build-out becomes a problem.",
+      "facts_agreed": [
+        {
+          "claim": "Demand for AI chips and data-center hardware is still accelerating, with suppliers reporting record pricing and results that came in ahead of expectations.",
+          "banks_for": [
+            "The Market Ear",
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "pricing and margins for our Blackwell and Vera Rubin chips are setting new highs",
+            "we expect the AI-driven semiconductor upcycle to continue",
+            "The results overnight broadly supportive for AI infrastructure and optical networking",
+            "positive results and commentary from these picks-and-shovels stocks are boosting confidence"
+          ]
+        },
+        {
+          "claim": "Spending on AI infrastructure keeps rising and the payback on that spending is starting to show up in reported earnings.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI ROI started to show up, and Capex estimates rose modestly this quarter",
+            "AI datacenter architectures increasingly transition from copper to optical connectivity"
+          ]
+        },
+        {
+          "claim": "AI has become a stock-picking problem rather than one trade to own, and AI exposure now explains more index movement than the broad market itself.",
+          "banks_for": [
+            "Bloomberg",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "AI has stopped being a trade to own, and is now instead a list of choices",
+            "explained more Russell 1000 index variance than the 1st principal component"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the AI trade still has easy upside left",
+          "banks_for": [
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "for_evidence": "we expect the AI-driven semiconductor upcycle to continue",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "the easy, high-velocity phase of the AI trade appears to be behind us for now."
+        },
+        {
+          "claim": "whether the financing behind the AI build-out is sound or a bubble",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "AI ROI started to show up, and Capex estimates rose modestly this quarter",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "Every ingredient of the last cycle's blow-up is present"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait energy disruption",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six banks are tracking the Strait of Hormuz and the wider Middle East conflict as a live risk to oil, gas and tanker traffic, but none of them has committed to a direction for energy prices.",
+      "facts_agreed": [
+        {
+          "claim": "Six banks flag the Strait of Hormuz as an active disruption risk to energy shipments in this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear",
+            "Mizuho International",
+            "Deutsche Bank",
+            "JPMorgan",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz energy disruption",
+            "Strait of Hormuz energy supply disruptions",
+            "Strait of Hormuz shipping disruptions",
+            "Strait of Hormuz shipping security",
+            "Strait of Hormuz oil flow monitoring"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs and JPMorgan extend the same risk beyond crude to gas supply and to Persian Gulf export flows that are hard to track.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Middle East conflict LNG supply disruptions",
+            "Middle East conflict energy shock",
+            "Persian Gulf oil export dark flows"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs and TS Lombard both watch physical tanker and export flow data as the read on whether the disruption is real.",
+          "banks_for": [
+            "Goldman Sachs",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Persian Gulf oil export dark flows",
+            "Strait of Hormuz tanker flow"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "boj normalization pace",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Desks agree the Bank of Japan's next rate increase is most likely at the September meeting, but only Mizuho commits to that call outright while the rest just track the odds without taking a side.",
+      "facts_agreed": [
+        {
+          "claim": "September is the focal meeting for the Bank of Japan's next rate increase, and desks are watching how much of that hike the market has already priced.",
+          "banks_for": [
+            "Mizuho Securities",
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "We now expect the next hike to come in September.",
+            "September Bank of Japan hike probability",
+            "BOJ September rate hike expectations",
+            "Japan BOJ September rate hike pricing",
+            "Bank of Japan September hike expectations"
+          ]
+        },
+        {
+          "claim": "Desks treat Japanese policy tightening as an active topic covering government backing for a hike, the expected path, and where rates ultimately settle.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Japan government support for BOJ rate hike",
+            "BoJ rate hike expectations",
+            "Japan BOJ rate hike policy",
+            "BoJ terminal rate acceleration"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "iran middle east geopolitical risks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks flag the Iran and wider Middle East conflict as a live risk hanging over markets, but none of them has taken a side on whether it gets better or worse from here.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks name the Iran and Middle East conflict as an active background risk for markets in this window without staking a directional call on it.",
+          "banks_for": [
+            "JPMorgan",
+            "Mizuho International",
+            "The Market Ear",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Middle East geopolitical escalation",
+            "US-Iran geopolitical tensions",
+            "Middle East Iran war impasse",
+            "Iran war-induced macro risks"
+          ]
+        },
+        {
+          "claim": "The desks frame the conflict as unresolved and as a channel into broader economic risk rather than a contained regional story.",
+          "banks_for": [
+            "The Market Ear",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Middle East Iran war impasse",
+            "Iran war-induced macro risks"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "software sector outlook",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "The research reads software as recovering rather than broken: the sector is back in positive territory for the year, buying is rotating toward data infrastructure and security names, and a possible private equity buyout of Workday is seen as setting a price floor under valuations.",
+      "facts_agreed": [
+        {
+          "claim": "Software and the wider tech complex have recovered from their lows, with software back positive on the year and participation broad rather than concentrated.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Software (IGV +3%) is now green on the year",
+            "75% of S&P 500 technology sector stocks finished above their 200-day moving average"
+          ]
+        },
+        {
+          "claim": "Money is moving within software toward data infrastructure and security, and private equity interest is seen as putting a floor under depressed software valuations.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "investor interest in parts of the sector (data infra / tools + security)",
+            "Silver Lake may have put a private-equity floor under software valuations."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "jackson hole symposium",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the Fed's Jackson Hole meeting as an upcoming event that could move rates and bond markets, but none has staked out a view on what gets said or which way prices go.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, JPMorgan and Bloomberg all reference the Jackson Hole symposium as an upcoming risk event in this window without taking a side.",
+          "banks_for": [
+            "Bloomberg + Goldman Sachs",
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole symposium",
+            "Jackson Hole event risk",
+            "Jackson Hole symposium setup",
+            "Jackson Hole bond volatility"
+          ]
+        },
+        {
+          "claim": "JPMorgan ties the event specifically to bigger price swings in government bonds.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole bond volatility",
+            "Jackson Hole bond volatility risk"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "warsh policy approach",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag how Fed Chair Kevin Warsh will actually set policy as an open question, noting his tough-on-inflation reputation has faded without anyone committing to a call on what he does next.",
+      "facts_agreed": [
+        {
+          "claim": "Three research desks reference Kevin Warsh's approach to running the Fed as an unsettled subject this window, without staking a directional view.",
+          "banks_for": [
+            "Bloomberg",
+            "The Market Ear",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh policy approach",
+            "Fed Chair Warsh policy reluctance",
+            "Warsh hawkish tilt evaporation",
+            "Kevin Warsh monetary policy ambiguity"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "september fomc meeting",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the September Fed meeting as the next scheduled rate decision and track the market-implied odds of a hike, which have been falling, but none of them has committed to a call on the outcome.",
+      "facts_agreed": [
+        {
+          "claim": "Several desks reference the September Fed meeting as an upcoming decision point without staking a directional view on it.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Tyler Durden / Various",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "September FOMC meeting",
+            "September FOMC meeting dot plot",
+            "September FOMC rate hike expectations",
+            "Fed September rate hike probability"
+          ]
+        },
+        {
+          "claim": "The metric the desks watch into that meeting is the market-implied probability of a rate hike.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "September FOMC rate hike expectations",
+            "Fed September rate hike probability"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
