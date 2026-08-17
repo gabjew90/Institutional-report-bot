@@ -1,0 +1,736 @@
+You are adjudicating ONE specific cross-bank theme from institutional research. You receive only that theme's pre-extracted evidence — per-PDF stance entries, tension framings, and atomic data points — and you return a single structured JSON object describing what the corpus actually concludes about this theme.
+
+You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields outside the schema below. Your output is read by a downstream prose step; your job is to commit the corpus's adjudicated view to a structured form so the prose step does not have to invent it.
+
+**ABSOLUTE RULES — violations cause the entire theme adjudication to be rejected by an automated lint check:**
+
+1. **Every evidence quote you emit MUST be a verbatim character-for-character copy of one of the `theme_stances.evidence` strings in your input.** Do not paraphrase. Do not shorten. Do not "clean up" the text. Copy the string. If no usable verbatim quote exists for a claim, leave the evidence_quotes list empty rather than invent one.
+2. **Every bank in `banks_for` / `banks_against` MUST appear as the `source` field of one of the input PDFs for this theme.** Do not invent attributions. Do not promote a bank that only appears in cross-bank references — only the issuing banks of the input PDFs count.
+3. **Every `falsifiable_predictions[*].source_quote` MUST be a verbatim substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** The other prediction fields (`subject`, `direction_or_level`, `by_when`) are extracted from the same source material but each must be supported by the source quote — if the source names a level but no timeframe, leave `by_when` empty rather than invent one. If a prediction can't be traced to either source at all, omit the entry.
+4. **`stance_counts` MUST exactly match the pre-aggregated counts provided in your input.** Do not recount, do not adjust. Copy the numbers given.
+5. **If any field's inputs are too thin to fill honestly, return an empty list `[]` for that field.** Empty over invented. A short, accurate adjudication beats a long, padded one.
+6. **`consensus_view` is one sentence, plain English, no jargon.** Translate technical terms (bps, NII, duration, gamma) inline if used. Reader is a self-directed options/crypto trader, not a bank analyst.
+
+**Output schema — return EXACTLY this JSON object, no markdown fences, no commentary:**
+
+```
+{
+  "theme": "<repeat the theme label exactly as it appears in the input>",
+  "selected": true,
+  "stance_counts": {"supportive": <copy>, "skeptical": <copy>, "neutral": <copy>},
+  "consensus_view": "<one sentence summarizing what the corpus concludes about this theme. Plain English. Names a direction or a clear unresolved tension.>",
+  "facts_agreed": [
+    {
+      "claim": "<one sentence stating something the banks agree on>",
+      "banks_for": ["<bank name>", ...],
+      "evidence_quotes": ["<verbatim string from theme_stances.evidence>", ...]
+    }
+  ],
+  "facts_contested": [
+    {
+      "claim": "<the specific contested claim — e.g., 'year-end Brent target' or 'cut timing'>",
+      "banks_for": ["<bank>", ...],
+      "for_evidence": "<verbatim string from theme_stances.evidence of a banks_for bank>",
+      "banks_against": ["<bank>", ...],
+      "against_evidence": "<verbatim string from theme_stances.evidence of a banks_against bank>"
+    }
+  ],
+  "falsifiable_predictions": [
+    {
+      "bank": "<source bank issuing the prediction — must be a bank name from the inputs>",
+      "subject": "<what is being predicted: the asset / metric / event being forecast. Examples by shape: 'Brent crude price', 'US 2-year yield', 'NFP headline print', 'EU recession onset', 'BTC spot price', 'S&P 500 EPS 2026'. Name the thing, not the call.>",
+      "direction_or_level": "<the forecast itself: the specific target, threshold, or directional outcome the bank is calling. Examples by shape: '$60/bbl', 'above 4.5%', 'positive 200K', 'falls below pre-pandemic trend', 'breaks 145 to the upside', '12% revenue growth'. Just the call.>",
+      "by_when": "<when the prediction resolves: ISO date, calendar quarter, or named event-anchor. Examples by shape: '2026-12-31', 'Q4 2027', 'year-end 2026', 'post-FOMC June', 'within 6 months', 'by next NFP'. Leave empty ("") if the bank stated a level but no timeframe — never invent a deadline.>",
+      "source_quote": "<verbatim substring from input tension_points.what_invalidates OR key_data_points fields that grounds this entry. Must appear character-for-character in one of those input strings.>"
+    }
+  ]
+}
+```
+
+**Empty fields are normal and acceptable.** Many themes have agreed facts but no contested ones, or contested ones but no falsifiable predictions. Do not pad. Return [] and move on.
+
+**Worked examples of falsifiable_predictions extraction** (showing how to fill all five fields from a single source quote, including the empty-`by_when` case):
+
+Example A — source field has both level and timeframe:
+```
+input: tension_points[0].what_invalidates = "Brent breaking below $90 sustained for two weeks would invalidate the supply-scare thesis"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "Brent crude price",
+  "direction_or_level": "below $90 sustained",
+  "by_when": "within two weeks",
+  "source_quote": "Brent breaking below $90 sustained for two weeks"
+}
+```
+
+Example B — source field has level but NO timeframe (the `by_when=""` case — emit the entry anyway, do not skip):
+```
+input: key_data_points[3].metric = "Goldman 2026 hyperscaler capex target $751B"
+       key_data_points[3].context = "up $80B in two weeks"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "2026 hyperscaler capex",
+  "direction_or_level": "$751B",
+  "by_when": "",
+  "source_quote": "Goldman 2026 hyperscaler capex target $751B"
+}
+```
+
+The right reflex when in doubt: ship the entry with empty `by_when` rather than omit it. Omit ONLY when there's no verbatim source quote at all — never because one derived field couldn't be cleanly populated.
+
+**Self-discard when evidence is too thin.** If after honest review you have `facts_agreed=[]` AND `facts_contested=[]` AND `falsifiable_predictions=[]` — i.e., NO substantive evidence to commit to the structured form — set `selected: false` in your output. The downstream lint also discards these mechanically, but flagging it yourself keeps the audit trail honest. (The discovered-theme branch below is the exception: those produce at least one `facts_agreed` entry, so they don't trip this.)
+
+**Do not number, do not bullet, do not bold.** This is structured data, not prose.
+
+**DISCOVERED-THEME BRANCH (when every input stance is `neutral`).** If your `theme_stances` input contains only stance=`neutral` entries with `evidence` strings that are short contextual mentions (not multi-sentence stance arguments), this is a discovery-promoted theme: a subject several banks mentioned in context without staking a primary directional view. The standard adjudication shape still applies, but adjust how you fill the schema:
+
+- `consensus_view` describes the topic as a live subject + the absence of directional consensus. Example: "Banks across N desks reference the Trump-Xi summit as a near-term macro catalyst; nobody has staked a directional view yet."
+- `facts_agreed` should contain at least one entry summarizing what the banks consistently SAY about the topic at the mention level. Use the cluster of bank names in `banks_for` (multiple banks; the topic is broadly discussed) and copy 2-5 mention strings from `theme_stances.evidence` into `evidence_quotes`. The claim is descriptive, not prescriptive — e.g., "N banks flag X as an upcoming catalyst this window."
+- `facts_contested` is usually `[]` for these themes — no bank argued the contrary.
+- `falsifiable_predictions` is usually `[]` unless a specific tension_point with a `what_invalidates` field was provided.
+
+This branch keeps discovered themes in the pulse with honest framing instead of returning empty arrays that would cause the theme to be dropped at the post-filter emptiness check.
+
+Return ONLY the JSON object.
+
+---
+
+Theme: semiconductor super cycle
+
+Pre-aggregated stance counts (copy these exactly into the output):
+{"supportive": 1, "skeptical": 0, "neutral": 3}
+
+Per-PDF evidence assigned to this theme:
+{
+ "theme_stances": [
+  {
+   "source": "The Market Ear",
+   "theme": "semiconductor super-cycle",
+   "stance": "supportive",
+   "conviction": "medium",
+   "key_argument": "Korea is poised to monetize the cycle through massive scale and price leadership.",
+   "primary_instruments": [],
+   "vs_consensus": "",
+   "evidence": "distinguished by massive scale, demand visibility, and price leadership"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "semiconductor super cycle",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Korean semiconductor super-cycle monetization",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Korean semiconductor super-cycle monetization"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "semiconductor super cycle",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Semiconductor cyclical recovery",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Semiconductor cyclical recovery"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "semiconductor super cycle",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "semiconductor boom/bust top counter-trend rally",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "semiconductor boom/bust top counter-trend rally"
+  }
+ ],
+ "tension_points": [],
+ "key_data_points": [
+  {
+   "source_bank": "The Market Ear",
+   "figure": "+20%",
+   "metric": "IGV performance",
+   "context": "Performance over the past month."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+40%",
+   "metric": "IGV performance",
+   "context": "Performance from April lows."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "within 10%",
+   "metric": "IGV distance to all-time highs",
+   "context": "Current price level."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "4x",
+   "metric": "Call spread payoff",
+   "context": "Realized return on the Aug 95/104 IGV call spread."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "20%",
+   "metric": "IGV index performance",
+   "context": "Gain since late June tactical setup."
+  },
+  {
+   "source_bank": "Nomura",
+   "figure": "4%",
+   "metric": "Downside trigger distance",
+   "context": "Distance below current market where mechanical sellers overlap."
+  },
+  {
+   "source_bank": "Bloomberg",
+   "figure": "31%",
+   "metric": "S&P 500 ex-Mag 7 EPS growth",
+   "context": "Q2 y/y growth."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$2.6 million",
+   "metric": "Tomahawk missile cost",
+   "context": "Comparison cost for defense interceptors."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "14.4x",
+   "metric": "FY2 P/E ratio for alternative asset managers",
+   "context": "Compared to 17.3x five-year average."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "KRW3,550tn",
+   "metric": "Combined investment commitment from Samsung and SK Group",
+   "context": "Bull case scenario for semiconductor super-cycle."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "KRW256tn",
+   "metric": "Average annual capex through 2030",
+   "context": "Bull case scenario for Korean semiconductor sector."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "HKD 677.50",
+   "metric": "Tencent peak price",
+   "context": "Sept 2025 peak"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "RMB 52.8bn",
+   "metric": "Q2 capex",
+   "context": "64% above consensus"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$4.66 billion",
+   "metric": "Dual-currency bond offering",
+   "context": "Comprising $2.45B USD and 15B yuan CNH"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$1.5 billion",
+   "metric": "Foreign buying in KOSPI",
+   "context": "August 14, 2026"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "25.8%",
+   "metric": "Capex as % of revenue",
+   "context": "Q2 2026"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "7,800",
+   "metric": "S&P 500 level",
+   "context": "Index topped this level for the first time but failed to close above it."
+  },
+  {
+   "source_bank": "Energy Secretary Chris Wright",
+   "figure": "9 million barrels a day",
+   "metric": "Hormuz oil flows",
+   "context": "Average over the past week, noted as higher than industry estimates."
+  },
+  {
+   "source_bank": "Citadel Securities",
+   "figure": "$1 trillion",
+   "metric": "Corporate buybacks",
+   "context": "Amount of announced buybacks entering a reopened window."
+  },
+  {
+   "source_bank": "Cevian Capital",
+   "figure": "50%",
+   "metric": "Estimated portion of US stock market value consisting of 'air'",
+   "context": "Based on 2% FCF yield vs 5% 10Y yield."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "239%",
+   "metric": "Buffett Indicator",
+   "context": "Highest level on record."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$20B",
+   "metric": "INTC equity capital raise",
+   "context": "Reported this week."
+  },
+  {
+   "source_bank": "Institute of International Finance",
+   "figure": "$18.8B",
+   "metric": "Net EM securities inflows",
+   "context": "July, first positive month in three months."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$18.62B",
+   "metric": "Global equity fund inflows",
+   "context": "Week through August 12, 12th consecutive week."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$1.7B",
+   "metric": "Technology fund outflows",
+   "context": "Breaking a six-week inflow streak."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$2.62B",
+   "metric": "Gold fund inflows",
+   "context": "Weekly inflow."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "$3.2T",
+   "metric": "Total AI buildout spending",
+   "context": "Through 2028"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "$1.75T",
+   "metric": "Credit market funding for AI",
+   "context": "Through 2028"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "-$40B",
+   "metric": "Oracle 2027 FCF forecast",
+   "context": "Sharp cut to prior estimates"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "$982B",
+   "metric": "Purchase commitments",
+   "context": "Current level"
+  },
+  {
+   "source_bank": "Apollo",
+   "figure": "40%",
+   "metric": "AI issuance share of longer duration supply",
+   "context": "Current market composition"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "+25bp",
+   "metric": "HQ Hyperscalers credit spread widening",
+   "context": "YTD 2026"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "190bp",
+   "metric": "Oracle CDS peak",
+   "context": "April 2026"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "1.3x",
+   "metric": "Hyperscaler gross leverage",
+   "context": "1Q26 sector metrics"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "+29%",
+   "metric": "Cloud capex tracker growth",
+   "context": "2027 estimate raised from 14%"
+  },
+  {
+   "source_bank": "Edmond de Rothschild",
+   "figure": "$198B",
+   "metric": "Assets under management",
+   "context": "Total assets managed by the modern group."
+  },
+  {
+   "source_bank": "Edmond de Rothschild",
+   "figure": "$1T",
+   "metric": "Annual AI infrastructure spend",
+   "context": "Estimated annual spend for 4-5 years."
+  },
+  {
+   "source_bank": "Edmond de Rothschild",
+   "figure": "$45M",
+   "metric": "Legal settlement",
+   "context": "Settlement related to U.S. tax investigation."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "10%",
+   "metric": "NDX surge",
+   "context": "Since late July."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$5 to $12",
+   "metric": "Median monthly AI spend per employee",
+   "context": "Increase from start of year to July."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$240 to $650",
+   "metric": "Top-decile AI spend per employee",
+   "context": "Increase from start of year to July."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "29,500",
+   "metric": "NDX support level",
+   "context": "Current technical support."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "+20%",
+   "metric": "IGV performance",
+   "context": "Performance over the past month."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+40%",
+   "metric": "IGV performance",
+   "context": "Performance from April lows."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "within 10%",
+   "metric": "IGV distance to all-time highs",
+   "context": "Current price level."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "4x",
+   "metric": "Call spread payoff",
+   "context": "Realized return on the Aug 95/104 IGV call spread."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "20%",
+   "metric": "IGV index performance",
+   "context": "Gain since late June tactical setup."
+  },
+  {
+   "source_bank": "Nomura",
+   "figure": "4%",
+   "metric": "Downside trigger distance",
+   "context": "Distance below current market where mechanical sellers overlap."
+  },
+  {
+   "source_bank": "Bloomberg",
+   "figure": "31%",
+   "metric": "S&P 500 ex-Mag 7 EPS growth",
+   "context": "Q2 y/y growth."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$2.6 million",
+   "metric": "Tomahawk missile cost",
+   "context": "Comparison cost for defense interceptors."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "14.4x",
+   "metric": "FY2 P/E ratio for alternative asset managers",
+   "context": "Compared to 17.3x five-year average."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "KRW3,550tn",
+   "metric": "Combined investment commitment from Samsung and SK Group",
+   "context": "Bull case scenario for semiconductor super-cycle."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "KRW256tn",
+   "metric": "Average annual capex through 2030",
+   "context": "Bull case scenario for Korean semiconductor sector."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "HKD 677.50",
+   "metric": "Tencent peak price",
+   "context": "Sept 2025 peak"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "RMB 52.8bn",
+   "metric": "Q2 capex",
+   "context": "64% above consensus"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$4.66 billion",
+   "metric": "Dual-currency bond offering",
+   "context": "Comprising $2.45B USD and 15B yuan CNH"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$1.5 billion",
+   "metric": "Foreign buying in KOSPI",
+   "context": "August 14, 2026"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "25.8%",
+   "metric": "Capex as % of revenue",
+   "context": "Q2 2026"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "7,800",
+   "metric": "S&P 500 level",
+   "context": "Index topped this level for the first time but failed to close above it."
+  },
+  {
+   "source_bank": "Energy Secretary Chris Wright",
+   "figure": "9 million barrels a day",
+   "metric": "Hormuz oil flows",
+   "context": "Average over the past week, noted as higher than industry estimates."
+  },
+  {
+   "source_bank": "Citadel Securities",
+   "figure": "$1 trillion",
+   "metric": "Corporate buybacks",
+   "context": "Amount of announced buybacks entering a reopened window."
+  },
+  {
+   "source_bank": "Cevian Capital",
+   "figure": "50%",
+   "metric": "Estimated portion of US stock market value consisting of 'air'",
+   "context": "Based on 2% FCF yield vs 5% 10Y yield."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "239%",
+   "metric": "Buffett Indicator",
+   "context": "Highest level on record."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$20B",
+   "metric": "INTC equity capital raise",
+   "context": "Reported this week."
+  },
+  {
+   "source_bank": "Institute of International Finance",
+   "figure": "$18.8B",
+   "metric": "Net EM securities inflows",
+   "context": "July, first positive month in three months."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$18.62B",
+   "metric": "Global equity fund inflows",
+   "context": "Week through August 12, 12th consecutive week."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$1.7B",
+   "metric": "Technology fund outflows",
+   "context": "Breaking a six-week inflow streak."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$2.62B",
+   "metric": "Gold fund inflows",
+   "context": "Weekly inflow."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "$3.2T",
+   "metric": "Total AI buildout spending",
+   "context": "Through 2028"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "$1.75T",
+   "metric": "Credit market funding for AI",
+   "context": "Through 2028"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "-$40B",
+   "metric": "Oracle 2027 FCF forecast",
+   "context": "Sharp cut to prior estimates"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "$982B",
+   "metric": "Purchase commitments",
+   "context": "Current level"
+  },
+  {
+   "source_bank": "Apollo",
+   "figure": "40%",
+   "metric": "AI issuance share of longer duration supply",
+   "context": "Current market composition"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "+25bp",
+   "metric": "HQ Hyperscalers credit spread widening",
+   "context": "YTD 2026"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "190bp",
+   "metric": "Oracle CDS peak",
+   "context": "April 2026"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "1.3x",
+   "metric": "Hyperscaler gross leverage",
+   "context": "1Q26 sector metrics"
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "+29%",
+   "metric": "Cloud capex tracker growth",
+   "context": "2027 estimate raised from 14%"
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "$942m",
+   "metric": "Total META youth-safety penalty (New Mexico)",
+   "context": "Includes $375m jury penalty and $567m abatement costs."
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "EUR 890m",
+   "metric": "GOOGL DMA fine",
+   "context": "Issued July 2026."
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "~$2.1B",
+   "metric": "PriceRunner (Klarna) award against GOOGL",
+   "context": "Includes interest, awarded July 2026."
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "30%",
+   "metric": "Support for CGWU rideshare unionization",
+   "context": "Secured 8/7/26."
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "50MW+",
+   "metric": "Data center capacity threshold for PJM restrictions",
+   "context": "Proposed policy awaiting FERC approval."
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "20%",
+   "metric": "Recovery from 7/29 bottom",
+   "context": "Semiconductor stocks recovery as of 8/15/2026"
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "75%",
+   "metric": "YTD performance",
+   "context": "SOX index YTD as of 8/15/2026"
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "19%",
+   "metric": "AI-related revenue share",
+   "context": "Estimate for ADI"
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "$18",
+   "metric": "CY27 EPS upside",
+   "context": "ADI CY27 EPS estimate"
+  },
+  {
+   "source_bank": "Cantor Fitzgerald",
+   "figure": "$20",
+   "metric": "CY28 EPS upside",
+   "context": "ADI CY28 EPS estimate"
+  },
+  {
+   "source_bank": "BTIG",
+   "figure": "-7%",
+   "metric": "Historical average pullback in Aug-Oct period during mid-term years",
+   "context": "Since 1990, occurred in '90, '98, '02, '10, '14, '18, '22."
+  },
+  {
+   "source_bank": "BTIG",
+   "figure": "11%",
+   "metric": "Premium of RSP price to 200-day moving average",
+   "context": "Stretched level relative to historical norms."
+  },
+  {
+   "source_bank": "BTIG",
+   "figure": "21",
+   "metric": "Average annual 80% NYSE downside volume days",
+   "context": "Current year has had zero."
+  },
+  {
+   "source_bank": "Edmond de Rothschild",
+   "figure": "$198B",
+   "metric": "Assets under management",
+   "context": "Total assets managed by the modern group."
+  },
+  {
+   "source_bank": "Edmond de Rothschild",
+   "figure": "$1T",
+   "metric": "Annual AI infrastructure spend",
+   "context": "Estimated annual spend for 4-5 years."
+  },
+  {
+   "source_bank": "Edmond de Rothschild",
+   "figure": "$45M",
+   "metric": "Legal settlement",
+   "context": "Settlement related to U.S. tax investigation."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "10%",
+   "metric": "NDX surge",
+   "context": "Since late July."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$5 to $12",
+   "metric": "Median monthly AI spend per employee",
+   "context": "Increase from start of year to July."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$240 to $650",
+   "metric": "Top-decile AI spend per employee",
+   "context": "Increase from start of year to July."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "29,500",
+   "metric": "NDX support level",
+   "context": "Current technical support."
+  }
+ ]
+}
+
+Adjudicate this theme per the rules in your system prompt. Return the JSON object only.

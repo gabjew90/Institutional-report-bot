@@ -1,0 +1,280 @@
+{
+  "pulse_date": "2026-08-17",
+  "window_label": "since-last-daily (2026-08-14T14:36)",
+  "themes": [
+    {
+      "theme": "ai infrastructure financing and capex",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 3,
+        "neutral": 9
+      },
+      "consensus_view": "Most desks say spending on AI data centers and chips is now the main engine of US stock earnings and keeps running, while a smaller group argues the spending is increasingly paid for with borrowed money and vendor-backed deals that make a bust more likely.",
+      "facts_agreed": [
+        {
+          "claim": "AI-linked spending and earnings are now the dominant driver of US equity performance.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure stocks have accounted for 50% of that EPS growth",
+            "it has explained more Russell 1000 index variance than the 1st principal component",
+            "AI earnings remain the market's universal solvent with strong outperformance",
+            "AI capex is and should continue to be a tailwind for growth."
+          ]
+        },
+        {
+          "claim": "Physical infrastructure, hardware and power supply are the binding constraint on AI growth, and that is where the durable demand sits.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Cantor Fitzgerald",
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "No. 7 on infrastructure and hardware as the bottleneck",
+            "we view today's AI Infrastructure buildout as durable and elongated",
+            "hyperscalers will still be incentivized to sign data center PPAs",
+            "Own the infrastructure required to produce billions of them."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the debt-financed AI buildout is sustainable or is setting up a bust",
+          "banks_for": [
+            "Cantor Fitzgerald",
+            "JPMorgan",
+            "Bank of America"
+          ],
+          "for_evidence": "we view today's AI Infrastructure buildout as durable and elongated",
+          "banks_against": [
+            "Bank for International Settlements",
+            "The Market Ear",
+            "Bloomberg"
+          ],
+          "against_evidence": "The race to commit early through debt and circular financing also makes a bust more likely."
+        },
+        {
+          "claim": "whether current AI-driven equity valuations are worth owning",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "our view is that Tech is on its way up",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "I really don't understand why you should be in the extremely highly valued US stock market."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait supply risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the risk that oil shipments through the Strait of Hormuz get disrupted, but none has taken a side on whether that risk gets priced higher or fades.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, The Market Ear and Deutsche Bank all cite a possible disruption to oil flowing through the Strait of Hormuz as a live risk this window, tied to US-Iran naval tensions.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "US-Iran naval blockade concerns",
+            "Strait of Hormuz supply concerns",
+            "Strait of Hormuz oil supply risk",
+            "Strait of Hormuz oil inventory risks",
+            "Strait of Hormuz supply shock"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "china domestic demand weakness",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks keep flagging soft Chinese household spending as a live background risk, but none has committed to a direction on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, The Market Ear and Deutsche Bank all reference weak Chinese household and domestic spending as an ongoing condition in this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "China consumer weakness",
+            "China domestic consumption weakness",
+            "China domestic demand growth concerns",
+            "China rebalancing dynamics"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east conflict energy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag Middle East conflict as a live risk to oil prices, inflation and bond yields, but none has staked out a directional call on where energy prices go.",
+      "facts_agreed": [
+        {
+          "claim": "Deutsche Bank, Academy Securities and JPMorgan all treat the Middle East conflict as a current driver of oil prices and, through energy costs, of inflation and bond yields.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Academy Securities",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Middle East conflict inflation risks",
+            "Middle East conflict energy price impact",
+            "Iran energy shock impact on bond yields",
+            "Middle East conflict impact on oil"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "capital flows",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag money moving in and out of markets as a live topic, with emerging markets and retail buying on one side and China equities and tech funds on the other, but none of them takes a directional position.",
+      "facts_agreed": [
+        {
+          "claim": "Three desks track fund flows across regions and sectors this window, citing emerging market and retail equity buying alongside China equity and tech selling, without any of them arguing a direction.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Emerging market capital inflows",
+            "Retail investor equity inflows",
+            "China equity outflows",
+            "Tech sector outflows"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kospi market drivers",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks point to the same explanation for Korea's stock market run, foreign money coming in and technology names leading, but none of them has staked out a call on where it goes next.",
+      "facts_agreed": [
+        {
+          "claim": "Three desks describe the Korean stock market's move as driven by incoming foreign money and led by technology shares.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "KOSPI rebound led by tech",
+            "KOSPI foreign buying surge",
+            "KOSPI foreign inflows"
+          ]
+        },
+        {
+          "claim": "Two desks single out foreign buying as the driver of the Korean market move.",
+          "banks_for": [
+            "The Market Ear",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "KOSPI foreign buying surge",
+            "KOSPI foreign inflows"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "dealer gamma hedging impact",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks are tracking how the hedging trades that options market makers are forced to do keep pushing index prices around, but none of them has staked out a directional call on where it leads.",
+      "facts_agreed": [
+        {
+          "claim": "Three desks flag options dealers' hedging flows as an active driver of index price action in this window.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "Dealer gamma and vanna tailwinds",
+            "Dealer gamma suppression of volatility",
+            "SPX hedger gamma positioning"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs and Bank of America both frame that hedging flow in terms of its effect on how much the index actually moves day to day.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "Dealer gamma suppression of volatility",
+            "Delta-hedging impact on realized volatility"
+          ]
+        },
+        {
+          "claim": "Bank of America separates out same-day-expiry options as a distinct piece of the total hedging flow.",
+          "banks_for": [
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "0DTE option gamma contribution"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "semiconductor super cycle",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Morgan Stanley'"
+    }
+  ]
+}

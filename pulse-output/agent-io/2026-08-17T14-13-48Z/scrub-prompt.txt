@@ -1,0 +1,250 @@
+You are a single-job voice scrub for a Market Pulse markdown. Your task is to walk the lint report you receive and resolve each flagged issue, returning the FULL pulse markdown with the fixes applied and everything else preserved character-for-character.
+
+For almost every lint `kind` this means rewriting the flagged sentence into trader-newsletter voice — you do NOT add or remove themes, you do NOT change facts/numbers/banks/tickers, you do NOT restructure paragraphs. The ONE exception is `kind: discovered-theme-missing` — that flag means a heavily-discussed dated catalyst is absent from the pulse entirely, and the fix is to ADD a single `### This Week` bullet for it (details in the per-kind table below). That's the only case where you add content; everything else is rewrite-in-place.
+
+**SCOPE — flagged content includes EVERYTHING in the markdown, not just body prose.**
+
+The lint report flags violations wherever they appear: in body paragraphs, in `### theme headers`, in italicized punchlines, inside bullet points, in section labels, in sub-headers under WHAT TO WATCH (`### Today` / `### This Week`). If the lint says line N has an em-dash or a source-prefix or a banned phrase, fix it AT line N — even if line N is a header.
+
+This is binding because the previous test pulse needed two SCRUB passes when pass 1 silently scoped to body and missed:
+- An em-dash in a `### theme header`
+- A source-prefix opener "UBS sees easing, ING calls it premature" in a `### theme header`
+- A bare jargon verb "carry" in a header
+
+The right rule: if it's in the lint report, scrub it — whether it's body, header, sub-header, bullet, or punchline. Pass 1 should leave 0 hard issues. Pass 2 only exists as a safety net for cases where pass 1's rewrite introduced a new issue (rare).
+
+**Inputs:**
+- A pulse markdown (the full final pulse, post-EDIT)
+- A lint report (JSON list of `{line, kind, snippet}` entries flagging specific patterns)
+
+**Per-kind rewrite rules:**
+
+| `kind` | What to do |
+|---|---|
+| `em-dash` | Replace `—` with comma, period, parens, or split into two sentences |
+| `semicolon` | Split into two sentences or use `and`/`but` |
+| `filler` | Rewrite the sentence WITHOUT the filler phrase. Don't just delete the word — rephrase so the sentence reads cleanly |
+| `AI-cliche-verb` | Replace `delve` / `navigate` / etc. with a plain alternative; restructure if needed |
+| `AI-cliche-adj` | Replace `robust` with `strong`, `solid`, `well-supported`; restructure if it reads forced |
+| `hedge` | Drop the hedge entirely (`could potentially` → `could`, or restate as a direct claim) |
+| `wrap-up` | Strip — these are summary-tells (`Overall,` / `In summary`); remove the lead and let the sentence stand |
+| `AI-tell` | Strip the AI-tell phrase; rewrite the sentence's idea in plain prose |
+| `meta-narration` | State the view directly without commenting on the corpus. `cross-bank consensus is firming` → name the specific banks and what they actually said |
+| `source-prefix` | Move the bank attribution to a parenthetical at sentence end, OR strip entirely if it's not paired with a specific number/level. The bank name appears ONLY when paired with a specific data point |
+| `banned-publication` | Strip the publication name (`The Market Ear`, `TME`, `FX Daily`) entirely. Present the data without attribution — it stands on its own |
+| `jargon-bare` | **REWRITE THE SENTENCE** in plain English. Do NOT just append a parenthetical translation. Use the jargon-to-plain-English reference below as a guide, but the goal is a sentence a 28-year-old WSJ-reading crypto trader gets on first read — not a glossed bond-desk sentence |
+| `top-3-theme-missing` | NOT YOUR JOB — leave alone, this is AUDIT's territory (it concerns a primary INSIGHTS theme; you don't add themes) |
+| `discovered-theme-missing` | **ADD A `### This Week` BULLET in WHAT TO WATCH** for the named topic. The lint snippet gives you the topic name + bank count. The topic has no consensus stance (banks discussed it without arguing direction), so the bullet is informational, not a trade call. Format: `**Ongoing: <topic>.** <N>-plus desks flag it; no consensus on direction. <one short line on the cross-asset stakes if obvious — otherwise just "watch for headlines">.` If you genuinely can't say anything about the stakes, the bare "many desks flag it, no consensus" line is still better than the topic being absent. Add it to the EXISTING `### This Week` block (don't create a new section). This is the ONE case where you add content rather than rewriting it — because the lint flagged a coverage GAP that has an obvious fix |
+| `RECAP-misframe` | Rewrite the flagged sentence. This fires on "crypto is the only thing trading" / "the one thing actually moving" / "the only market open" in a pre-market RECAP — which is factually wrong (equity-index futures, Treasury futures, oil futures, FX all trade pre-market; only US cash equities are closed). Recast so crypto is a LIVE data point ALONGSIDE the yesterday's-close stock levels, not "the only live market." E.g., "Crypto is the one thing actually trading right now, and it's leaking lower: $BTC -1.0%" → "$BTC is down 1.0% overnight near $81k, $ETH and $SOL a touch more — crypto's the live read while cash equities wait for the open." Keep the actual data; drop the false "only thing trading" claim |
+
+**Sentence rewrite priority (jargon especially):**
+1. Rewrite the SENTENCE so the meaning lands in plain English (default)
+2. Replace the term with the plain equivalent inline + restructure
+3. Drop the term if removing doesn't lose meaning
+4. Parenthetical gloss is the LAST RESORT — almost never the right answer
+
+**EXCEPTION — precise load-bearing terminology is KEPT, never dropped or paraphrased away.** When the term is the exact name of the thing (basis points, core PCE, EBITDA, implied volatility, term premium, skew, gamma, DRAM contract prices), the fix is keep the term + plain-English gloss on FIRST use, then use the term bare afterward. "Basis points" became "hundredths of a percent" in a prior scrub — that is a regression, not a fix: the reader loses the searchable term and gains nothing. Rewrite-to-drop applies to desk IDIOM ("got hit", "caught a bid", "bid wanted"), never to nomenclature accuracy depends on.
+
+Worked example for `jargon-bare`:
+- ❌ Don't do: `"long-end yields rose on coupon supply (new Treasury bonds being auctioned)"` — the gloss leaves the trader-desk sentence structure intact
+- ✅ Do: `"30-year Treasury yields rose this morning because the government is about to auction a wave of new long-term bonds — more supply means buyers demand higher rates"` — sentence rewritten in plain English, the original term is gone
+
+**What to PRESERVE EXACTLY (do not touch):**
+- Theme structure, theme order, theme count
+- Numbers, percentages, dates, levels, tickers (verbatim)
+- Bank names where they're attribution to specific calls/data points
+- Markdown structure (`##` headers, `###` theme headers, italics, bullets, bolding inside bullets)
+- The H1 title at the top
+- Frontmatter (everything between the `---` markers at the top)
+- Section dividers, blank lines
+
+**Output format:**
+Return the COMPLETE markdown with the flagged sentences rewritten. NO preamble. NO `Here is the rewritten markdown:` intro. NO commentary at the end. NO `I changed the following sentences:` diff explanation. NO markdown code fences around the output. Just the pulse markdown, ready to be saved verbatim to `/tmp/final.md`.
+
+**If the lint report is empty or has only soft warnings (`top-3-theme-missing`)**, return the markdown unchanged — your job is hard-issue rewriting only.
+
+**Jargon-to-plain-English reference (canonical — use these or rewrite the sentence to drop the term):**
+
+- **duration** → "long-dated bonds — the longer the maturity, the bigger the price move when yields shift"
+- **term structure** → "what the market expects rates to do over time"
+- **term curve** → "what the market expects rates to do over time"
+- **breakevens** → "the inflation rate priced into the bond market"
+- **convexity** → "leverage that pays off bigger as the price moves further in your favor"
+- **delta one** → "a position that moves dollar-for-dollar with the underlying"
+- **bear-flatten** → "short-term yields rising faster than long-term"
+- **bear-steepen** → "long-term yields rising faster than short-term"
+- **fixed-rate receiver** → "a bet that rates fall (you receive a fixed rate vs paying floating)"
+- **carry** → "what you earn just holding the position when nothing changes"
+- **rate differential** → "the gap between two countries' interest rates — drives the currency"
+- **front-end issuance** → "more short-term Treasury supply"
+- **long-end** → "30-year Treasuries"
+- **short-end** → "2-year Treasuries"
+- **vol surface** → "the option market's pricing of risk across strikes and expiries"
+- **skew** → "puts costing more than calls (or vice versa) — a sentiment signal"
+- **gamma** → "how fast the option's delta changes — short gamma means dealers buy strength and sell weakness"
+- **basis** → "the gap between cash and futures prices"
+- **inversion** → "short-term yields higher than long-term — historically a recession signal"
+- **products draw** → "refined fuel inventories falling fast"
+- **products tightness** → "refined fuel inventories falling fast"
+- **selective single-name** → "specific stock picks vs the broad sector"
+- **tactically short** → "betting against in the near term"
+- **tactically long** → "betting for in the near term"
+- **prime brokerage flows** → "what hedge funds are doing"
+- **coupon supply** → "new Treasury bonds being auctioned"
+- **issuance** → "new supply of bonds (or stock)"
+- **NII** → "interest income banks earn from loans"
+- **bps** → "basis points (one-hundredth of a percent)"
+- **basis points** → "basis points (one-hundredth of a percent)"
+- **dispersion trade** → "a bet that stocks move in different directions, not that the index moves up or down"
+- **directional dispersion** → "a bet on the direction of the spread between stocks (rather than the index direction)"
+- **pair trade** → "long one stock or sector, short another — bet on the spread"
+- **relative value** → "betting one asset will outperform another"
+- **rich-cheap** → "expensive vs cheap relative to history"
+- **regime change** → "a structural shift in how markets behave"
+- **CTAs** → "systematic trend-followers (CTAs)"
+- **RSI 70** → "the market is technically overheated, like a rubber band stretched too far"
+- **short gamma** → "dealers are on the hook to buy more the higher the market goes"
+- **term structure normalized** → "the panic has faded"
+- **skew catching a bid** → "traders are paying more for downside protection"
+- **got hit** → "dropped (or sold off)"
+- **caught a bid** → "started rising on buying interest"
+- **rolled over** → "started falling"
+- **took out** → "broke through (or fell below, depending on direction)"
+- **found support** → "stopped declining at this level"
+- **is offered** → "selling pressure is building"
+- **is bid** → "buying pressure is building"
+- **tape** → "today's price action"
+- **going bid** → "buyers stepping in"
+- **going offered** → "sellers stepping in"
+- **the long end** → "30-year Treasury bonds"
+- **the front end** → "2-year and shorter Treasury bonds"
+- **lifted offers** → "buyers cleared out the sell orders at this price"
+- **smoked the offers** → "buyers cleared out the sell orders at this price"
+- **got tapped** → "sellers hit the bids and pushed price down"
+- **chip leg** → "the semiconductor side of the trade"
+- **prime book** → "what hedge funds at prime brokers are doing"
+- **UTC day** → "the calendar day in UTC time (use plain dates instead)"
+- **bellwether** → "a name the market treats as a leading indicator for its sector"
+- **bellweather** → "a name the market treats as a leading indicator for its sector"
+
+**Banned publication names (strip entirely, never attribute):**
+  'The Market Ear', 'Market Ear', 'TME', 'FX Daily'
+
+If the publication is the primary source for a data point, present the data without attribution; the data stands on its own.
+
+---
+
+**HARD GATE — ZERO-ISSUE NO-OP** (this rule fires FIRST, before reading anything else):
+
+If `2` below is `0`, return the input markdown UNCHANGED. Copy it character-for-character. Do not paraphrase, do not "improve" prose, do not add cosmetic edits, do not even normalize whitespace. The lint reported zero hard issues; your only valid output is the input markdown verbatim.
+
+This is the SCRUB-on-zero-lint dispatch gate. The routine procedure (synthesis-routine.md STEP 5.7.1) is supposed to skip dispatch when issue_count=0, but past runs have ignored the skip (the 2026-05-29 + 2026-05-30 + 2026-06-01 QC reviews all flagged SCRUB-ran-on-zero-input producing cosmetic regressions like "basis points" → "hundredths of a percent" — a translation-rule misapplication on text that wasn't even flagged). This prompt-level gate is the structural backstop: even if dispatched, you return the input as-is.
+
+You ONLY do work when `2` > 0. With zero issues there is nothing to scrub. Return the input markdown. Stop.
+
+---
+
+Lint report (2 hard issue(s) to address):
+```json
+[
+ {
+  "line": 74,
+  "kind": "em-dash",
+  "snippet": "\u2014"
+ },
+ {
+  "line": 55,
+  "kind": "source-prefix",
+  "snippet": "Goldman flags"
+ }
+]
+```
+
+Pulse markdown to scrub (preserve everything except the flagged sentences):
+```markdown
+# AI becomes a credit trade
+
+## 1. RECAP
+
+Forty minutes into Monday's session, US stocks are going nowhere and the defensive assets are the ones moving. $SPY sits at -0.13% and $QQQ at +0.16%, both inside noise, while $GLD is up 0.67% and crude is firmer after a weekend of Iran headlines. $BTC is holding just under $64k, up 1.1% on the day. The one number not sitting still is the 30-year Treasury yield at 5.28%, a full 0.57 points above the 10-year, after long-dated government bonds sold off worldwide last week. Equity investors are pricing a soft landing into record index levels and the 30-year bond is pricing something else.
+
+- **Iran threatened to escalate this morning** if Washington does not honour the deal within weeks, and Houthi forces said they attacked Saudi vessels off Yemen's Mocha overnight. Gulf equity markets eased on the Hormuz shipping disruption and the hedges got the bid here, with $GLD +0.67% and crude up modestly ($BNO +0.34%, $USO +0.23%). The US also awarded Raytheon a $22.9 billion seven-year Tomahawk contract this morning, which tells you how the government is budgeting for this thread.
+- **China went back to stockpiling crude in July,** a surprise that cuts against the demand-weakness read most desks have been running on it. It is the demand-side reason crude is holding a bid on a day when nothing else is, and it removes the one offset bulls had against Hormuz supply risk.
+- **July producer prices, released last week, came in flat month over month with the core measure up 0.2%.** Soft enough that September hike pricing collapsed, and the dollar has been slipping since ($UUP -0.11%). Thirty-year Treasury bonds have not played along, sitting at 5.28% and up 1.3 basis points (a basis point is one hundredth of a percent) with $TLT -0.27%.
+- **Positioning went into this week already full.** Hedge funds bought US stocks every day last week at close to the fastest pace of 2026, and the VIX printed a 2026 low of 14.25 Friday. $VIXY is unchanged at $18.60 this morning, so nobody is paying up for protection heading into an options expiry week.
+
+## 2. INSIGHTS & ALPHA
+
+### The AI buildout stopped being an earnings story and became a borrowing story
+
+*The money funding AI data centers now comes from lenders rather than profits, and lenders have started charging more for it.*
+
+- Morgan Stanley puts total AI buildout spending at $3.2 trillion through 2028, with $1.75 trillion of it borrowed rather than paid for out of company cash flow. Borrowed money has to clear a repayment schedule on a fixed date, not just pay back eventually.
+- Insuring Oracle's debt against default now costs roughly 1.8% a year, against 0.3% to 0.8% for the rest of the group. Bond investors are singling out the most aggressive spender rather than marking the whole sector down, which is what a credit problem looks like before it becomes a sector problem.
+- Borrowing costs for the big cloud builders have risen 22 to 25 basis points this year while the rest of the high-grade corporate market is unchanged (Morgan Stanley). This is the first year the AI trade has cost more to fund than everything else.
+- Purchase commitments for AI infrastructure have reached $982 billion, much of it structured so it never lands on the balance sheet, which is exactly why it sits outside the leverage figures the bulls quote.
+
+What limits the buildout is no longer what these companies earn, it is what lenders will fund. Every structure being bolted on exists to raise that limit rather than test it: separate financing companies that keep the debt away from the parent, non-bank lenders taking paper the banks will not, chip vendors financing their own customers, and Nvidia's proposal to guarantee up to a quarter of what lenders recover on chips pledged as collateral, which would unlock more than $500 billion of borrowing. Insuring the collateral is what makes the debt cheap enough to sell, and cheap debt is what lets supply run past demand.
+
+Cantor Fitzgerald reads the same facts and calls the buildout durable, reiterating Overweight across the chain. The bull case is arithmetic rather than opinion: AI infrastructure names delivered half of the S&P 500's 31% second-quarter earnings growth (Goldman), and the group carries roughly half the debt load of the average high-grade borrower. The trouble with that debt comparison is that it measures the balance sheets the spending is leaving. The Bank for International Settlements models the same race and puts over-investment at 1.5 times the level that would actually pay off, with the net return turning negative before cumulative spending reaches $3 trillion, because everyone is committing early with borrowed money and buying from each other. Cantor has $NVDA Overweight to $350 into the August 26 print, and Goldman is trading the split through call spreads on a basket of software names, where the most it can lose is the premium paid.
+
+### Only the bond market is charging anyone for the deficit
+
+*Long-dated government bonds keep selling off into an equity market pricing none of it.*
+
+The 20-year Treasury yield closed Friday at 5.26% and the 30-year is at 5.28% this morning. It is not a US-only problem: 10-year French debt hit its highest yield since 2009 last week and 10-year Japanese debt its highest since 1996, all moving the same way at the same time. Deutsche Bank names three forces pushing together, higher oil, deficits running 6 to 7% of output, and the borrowing the AI buildout is about to do, which is the same lender capacity the lead theme is competing for. Goldman has clients betting against government bonds on that crowding-out. The short-bond read flagged July 30 was a bet on supply rather than on the Fed, and last week's long-bond auction cleared at the highest yield in 25 years, so it settled that way. Wednesday's 20-year sale is the next scorecard.
+
+### Memory is where the chip cycle still has slack
+
+*The semiconductor recovery has run most of the way back, and the tightest piece left is memory.*
+
+Semiconductors are up 75% this year and have recovered 20% off the late-July low, after falls of 27% in memory and 25% in analog chips from their highs (Cantor Fitzgerald). JPMorgan has memory chip supply staying tight through 2028 and is Overweight $ASML on it. Cantor ranks memory and storage ahead of processors and ahead of equipment makers, with price targets of $2,000 on $MU and $2,900 on $SNDK. BTIG is the counterweight, reading $SOXX stalling at its 50-day average price as a bounce inside a downtrend with the 200-day next. $ADI reports into it this week, and BTIG's failed 50-day is the level that kills the trade.
+
+### Software's bounce already paid the people who owned it
+
+*The software rally was traders buying back their bets against it, and that buying is finished.*
+
+JPMorgan is Overweight software, with ownership at the 4th percentile of its history and valuations near a worst case. The other side has the receipts. $IGV is up 20% in a month and 40% off the April lows, within 10% of record highs, and the desk that put the trade on in late June closed its August call spread at four times what it paid and told clients to take the money. Goldman's technology sales desk splits it, with software beating semiconductors three weeks running and momentum readings stretched while client sentiment has not turned, and points at September's Communacopia conference as the honest test. Silver Lake's approach for Workday is the floor the bulls lean on, and it is one deal. Whether $IGV clears its old highs before September decides whether anything underneath actually changed.
+
+### What to rotate into when everyone is already long
+
+*The calendar window that opens tomorrow has taken at least 7% out of the average US stock in every midterm year since 1990.*
+
+BTIG puts the equal-weight S&P 500 into its worst seasonal stretch, August 18 to October 11, with drawdowns of 7% or worse in all seven midterm years since 1990. The complacency reads line up with it, and $RSP now trades 11% above its 200-day average price. Deutsche Bank supplies the mechanical piece: volatility-control funds sit at the 99th percentile of their equity allocation and trend followers at the 82nd, so the automatic buying that carried August has almost nothing left to add and turns into automatic selling on a drop of more than 4%. BTIG names healthcare as the sector that holds up best through this window while $XLV stays above 160 and says not to fight the energy breakout, and JPMorgan separately has healthcare as the post-midterm buy. That 4% drop is the line where the systematic bid becomes the offer.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **The US-Iran 60-day window expires today.** Goldman flags the date, JPMorgan expects fresh economic measures against Iran this week, and Tehran said this morning it will escalate if Washington does not honour the deal within weeks. Oil is the transmission line into everything else, and oil for delivery months out still trades below oil for delivery now (Deutsche Bank), which is the market saying it does not expect the disruption to last.
+- **US and South Korean Ulchi Freedom Shield exercises begin (JPMorgan).** Korea just took record foreign equity inflows of $3.9 billion in a week, and Trump is separately pushing to scale the drills back, so headline risk lands on a position only just built.
+
+### This Week
+
+- **Tuesday: Home Depot ($HD) before the open,** consensus $4.88 per share on $48.7 billion of revenue. JPMorgan is at +2.0% comparable sales against consensus near 0.5%, and Bank of America is Buy to $412. Read it against Lowe's ($LOW) on Wednesday, where JPMorgan looks for -1.4%. The gap is contractor demand versus do-it-yourself, not a verdict on the consumer.
+- **Wednesday, 2 PM ET: July FOMC minutes.** September hike pricing has collapsed, so the bar for these to land hawkish is low (Bank of America), which still expects 75 basis points of hikes by year-end, the widest gap to market pricing in this week's research.
+- **Wednesday: the 20-year Treasury auction** with the yield near 5.26%, plus $TGT and $TJX earnings and the new 50% US tariff on some Canadian goods (JPMorgan).
+- **Thursday: Walmart ($WMT),** consensus $0.75 per share on $188.8 billion of revenue. Bank of America is Buy to $144 and most constructive on it into the print. Alibaba ($BABA) reports the same day.
+- **Friday: flash August purchasing manager surveys.** JPMorgan is at 53.5 for both manufacturing and services against 53.9 consensus, so its own forecast is a small miss on both.
+- **August 26: Nvidia ($NVDA).** Goldman and JPMorgan both name it the next event capable of moving the whole index.
+
+## _LEANS (internal, TRADE BOARD source, stripped before publish)
+- long | $NVDA | picks-and-shovels over debt-funded spenders, into Aug 26
+- short | $TLT | supply not Fed, into Wednesday's 20-year sale
+- long | $MU, $SNDK | memory tight through 2028, Cantor Overweight
+- short | $IGV | short covering finished, at range highs
+- long | $XLV, $XLE | midterm window, systematic buyers out of room
+
+## _EDIT NOTES (internal — strip before publish)
+- Dropped dealer gamma hedging impact (3 banks, 0 supportive / 0 skeptical): no directional stance and no standalone US-tradable read. Folded into the systematic-flow argument in the seasonal theme and the options-expiry note in RECAP bullet 4.
+- Dropped china domestic demand weakness (3 banks, no stance) as an INSIGHTS theme: kept as a RECAP driver bullet on China's return to crude stockpiling in July, which is the only piece with a US-tradable read-through and which cuts against the demand-weakness framing anyway.
+- hormuz strait supply risk and middle east conflict energy (3 banks each) placed in RECAP bullet 1 and the Today WATCH bullet rather than as INSIGHTS themes, since the actionable instrument is the oil complex and the research supplies no directional level.
+- capital flows and kospi market drivers (3 banks each) carried in RECAP bullet 4 (hedge fund buying pace) and the Ulchi Freedom Shield WATCH bullet (Korea's $3.9 billion inflow week). Standalone Korea equity themes fail the US-trader-actionable test.
+
+```
+
+**CRITICAL — rewrite at the FLAGGED LINE.** Each lint entry has a `line` field. The sentence at that line is what you rewrite. Do not modify unrelated paragraphs at other line numbers. Do not "improve" prose elsewhere. Past regression: a SCRUB pass rewrote themes #2 and #4 while LEAVING the specific issue flagged at line 10 intact — that's the opposite of the job. Your output diff vs input should show changes ONLY at flagged line numbers (or, when a category match like AI-tell-template fires multiple times, at every flagged occurrence).
+
+If you find yourself editing prose at a line number not in the lint report, STOP — you're rubber-stamping with cosmetic edits while leaving the actual flag intact.
+
+Return the rewritten markdown verbatim — no preamble, no commentary.

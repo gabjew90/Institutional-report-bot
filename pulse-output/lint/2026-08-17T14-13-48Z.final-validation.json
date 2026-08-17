@@ -1,0 +1,168 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '1.8%' is attached to [against, costs, debt, default, group] but the source uses it for [backdrop, comp, consumer, forecast, high] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "1.8%",
+   "draft_subject": [
+    "against",
+    "costs",
+    "debt",
+    "default",
+    "group",
+    "insuring",
+    "oracle",
+    "rest"
+   ],
+   "source_subject": [
+    "backdrop",
+    "comp",
+    "consumer",
+    "forecast",
+    "high",
+    "income",
+    "raised",
+    "supportive"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.8%' is attached to [against, costs, debt, default, group] but the source uses it for [change, close, crypto, ebitda, indices] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.8%",
+   "draft_subject": [
+    "against",
+    "costs",
+    "debt",
+    "default",
+    "group",
+    "insuring",
+    "oracle",
+    "rest"
+   ],
+   "source_subject": [
+    "change",
+    "close",
+    "crypto",
+    "ebitda",
+    "indices",
+    "moderated",
+    "narrowing",
+    "respectively"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '5.26%' is attached to [anyone, bond, bonds, charging, closed] but the source uses it for [currently, esday, expected, expensive, issuance] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "5.26%",
+   "draft_subject": [
+    "anyone",
+    "bond",
+    "bonds",
+    "charging",
+    "closed",
+    "dated",
+    "deficit",
+    "equity"
+   ],
+   "source_subject": [
+    "currently",
+    "esday",
+    "expected",
+    "expensive",
+    "issuance",
+    "most",
+    "yields"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '5.28%' is attached to [anyone, bond, bonds, charging, closed] but the source uses it for [change, close, crypto, indices, shown] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "5.28%",
+   "draft_subject": [
+    "anyone",
+    "bond",
+    "bonds",
+    "charging",
+    "closed",
+    "dated",
+    "deficit",
+    "equity"
+   ],
+   "source_subject": [
+    "change",
+    "close",
+    "crypto",
+    "indices",
+    "shown",
+    "since",
+    "spread",
+    "today"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '11%' is attached to [complacency, line, reads, trades] but the source uses it for [beating, embraer, exhibit, factset, forward] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "11%",
+   "draft_subject": [
+    "complacency",
+    "line",
+    "reads",
+    "trades"
+   ],
+   "source_subject": [
+    "beating",
+    "embraer",
+    "exhibit",
+    "factset",
+    "forward",
+    "lows",
+    "moving",
+    "nasdaq"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.67% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.0, 0.2, 0.4]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.67",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **Iran threatened to escalate this morning** if Washington does not honour the deal within weeks, and Houthi forces said they attacked Saudi vessels off Yemen's Mocha overnight. Gulf equity markets "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-0.11% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.0, 0.2, 0.4]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-0.11",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **July producer prices, released last week, came in flat month over month with the core measure up 0.2%.** Soft enough that September hike pricing collapsed, and the dollar has been slipping since ("
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.28% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.0, 0.2, 0.4]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.28",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **July producer prices, released last week, came in flat month over month with the core measure up 0.2%.** Soft enough that September hike pricing collapsed, and the dollar has been slipping since ("
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-0.27% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.0, 0.2, 0.4]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-0.27",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **July producer prices, released last week, came in flat month over month with the core measure up 0.2%.** Soft enough that September hike pricing collapsed, and the dollar has been slipping since ("
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 9,
+ "exit_code": 4
+}
