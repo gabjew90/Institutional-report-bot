@@ -1,0 +1,215 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '6%' is attached to [buyer, deficits, economy, finds, have] but the source uses it for [actual, better, expected, flat, increase] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "6%",
+   "draft_subject": [
+    "buyer",
+    "deficits",
+    "economy",
+    "finds",
+    "have",
+    "more",
+    "pool",
+    "pull"
+   ],
+   "source_subject": [
+    "actual",
+    "better",
+    "expected",
+    "flat",
+    "increase",
+    "line",
+    "linquencies",
+    "performing"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '4.1%' is attached to [actually, against, because, core, economics] but the source uses it for [down] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "4.1%",
+   "draft_subject": [
+    "actually",
+    "against",
+    "because",
+    "core",
+    "economics",
+    "fewer",
+    "funds",
+    "hawkish"
+   ],
+   "source_subject": [
+    "down"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '59 basis point' is attached to [basis, between, climbing, down, happening] but the source uses it for [crypto, during, shown, since, spread] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "59 basis point",
+   "draft_subject": [
+    "basis",
+    "between",
+    "climbing",
+    "down",
+    "happening",
+    "keep",
+    "opened",
+    "payrolls"
+   ],
+   "source_subject": [
+    "crypto",
+    "during",
+    "shown",
+    "since",
+    "spread",
+    "today",
+    "yesterday"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '4.8%' is attached to [against, anyone, close, committee, desk] but the source uses it for [breached, breakout, chart, level, levels] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "4.8%",
+   "draft_subject": [
+    "against",
+    "anyone",
+    "close",
+    "committee",
+    "desk",
+    "drift",
+    "fomc",
+    "forced"
+   ],
+   "source_subject": [
+    "breached",
+    "breakout",
+    "chart",
+    "level",
+    "levels",
+    "long",
+    "major",
+    "resistance"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '13.1%' is attached to [against, energy, exploration, geopolitical, hedging] but the source uses it for [compared] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "13.1%",
+   "draft_subject": [
+    "against",
+    "energy",
+    "exploration",
+    "geopolitical",
+    "hedging",
+    "index",
+    "names",
+    "refiners"
+   ],
+   "source_subject": [
+    "compared"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '4.4%' is attached to [across, against, bracket, card, close] but the source uses it for [consumer, demand, indicating, resilient, stronger] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "4.4%",
+   "draft_subject": [
+    "across",
+    "against",
+    "bracket",
+    "card",
+    "close",
+    "cuts",
+    "data",
+    "economy"
+   ],
+   "source_subject": [
+    "consumer",
+    "demand",
+    "indicating",
+    "resilient",
+    "stronger"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '3.0%' is attached to [come, funds, least, looking, morning] but the source uses it for [canada, dece, exceeding, increase, leading] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "3.0%",
+   "draft_subject": [
+    "come",
+    "funds",
+    "least",
+    "looking",
+    "morning",
+    "ones",
+    "open",
+    "settle"
+   ],
+   "source_subject": [
+    "canada",
+    "dece",
+    "exceeding",
+    "increase",
+    "leading",
+    "markets",
+    "probability"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.20% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.20",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "Market pricing for the funds rate is too hawkish, per a Goldman economics note published over the weekend under the title \"They're Not Hiking,\" which puts underlying job growth at 5,000 in July agains"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "31% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [4.1, 4.9, 5.2]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "31",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Market pricing for the funds rate is too hawkish, per a Goldman economics note published over the weekend under the title \"They're Not Hiking,\" which puts underlying job growth at 5,000 in July agains"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "35% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [4.1, 4.9, 5.2]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "35",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Market pricing for the funds rate is too hawkish, per a Goldman economics note published over the weekend under the title \"They're Not Hiking,\" which puts underlying job growth at 5,000 in July agains"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "4.8% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "4.8",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "Market pricing for the funds rate is too hawkish, per a Goldman economics note published over the weekend under the title \"They're Not Hiking,\" which puts underlying job growth at 5,000 in July agains"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.73% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [4.1, 4.9, 5.2]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.73",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Market pricing for the funds rate is too hawkish, per a Goldman economics note published over the weekend under the title \"They're Not Hiking,\" which puts underlying job growth at 5,000 in July agains"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 12,
+ "exit_code": 4
+}
