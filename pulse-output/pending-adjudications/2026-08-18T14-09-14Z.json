@@ -1,0 +1,231 @@
+{
+  "pulse_date": "2026-08-18",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "long-end yield dynamics",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Several desks keep flagging the behavior of long-dated US and Japanese government bond yields as a live topic, linking it to government borrowing and to the Bank of Japan, but none of them has committed to a direction.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks track the long end of the US Treasury curve as an active subject, tied to government deficits and to the gap between long and short maturities.",
+          "banks_for": [
+            "Goldman Sachs",
+            "BTIG",
+            "Goldman Sachs Asset Management",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Long-end rates and fiscal deficits",
+            "long-end U.S. treasury yield divergence",
+            "US Treasury yield curve slope",
+            "Long-end yield drift",
+            "Yield curve flattening"
+          ]
+        },
+        {
+          "claim": "Desks also treat Japanese long-dated yields and Bank of Japan policy as part of the same long-end story.",
+          "banks_for": [
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Japanese long end yields",
+            "Bank of Japan yield-curve control"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait risks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five desks are tracking the Strait of Hormuz as a live risk to oil shipments, but none of them has taken a side on whether it closes or what oil does if it does.",
+      "facts_agreed": [
+        {
+          "claim": "Five banks flag possible disruption of the Strait of Hormuz as an active oil-supply risk in this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Rabobank",
+            "Deutsche Bank",
+            "JPMorgan",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz closure",
+            "Strait of Hormuz blockade",
+            "Strait of Hormuz closure risks",
+            "US/Iran risk premium in Strait of Hormuz",
+            "Strait of Hormuz maritime oil trade"
+          ]
+        },
+        {
+          "claim": "The specific channel banks point to is seaborne oil moving through the strait and the tanker traffic that carries it.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz maritime oil trade",
+            "Strait of Hormuz tanker traffic restrictions"
+          ]
+        },
+        {
+          "claim": "JPMorgan frames the exposure as a US/Iran risk premium sitting in the oil price rather than a supply outage already happening.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "US/Iran risk premium in Strait of Hormuz"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east oil impact",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four bank desks are watching Middle East conflict as a live driver of oil supply and energy prices, but none of them has committed to a direction for crude from here.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, JPMorgan, Goldman Sachs Asset Management and UBS all flag Middle East conflict as a current driver of oil supply and energy prices without taking a side on where crude goes next.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Goldman Sachs Asset Management",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Middle East strike impact on oil",
+            "Middle East conflict supply constraints",
+            "Middle East conflict impact on oil",
+            "Middle East supply concerns driving crude oil rebound",
+            "US-Iran conflict energy price impact"
+          ]
+        },
+        {
+          "claim": "UBS treats the US-Iran conflict as both an energy price event and a shipping-route problem, tracking how cargoes are rerouted around the disruption.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "US-Iran conflict energy price impact",
+            "US-Iran conflict energy shipping workarounds"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "rates supply pressure",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 0
+      },
+      "consensus_view": "Most desks agree that long-term borrowing costs are rising because of the sheer volume of new government and company debt being sold rather than because of central bank policy, and the open question is how much that hurts stocks.",
+      "facts_agreed": [
+        {
+          "claim": "The rise in long-term borrowing costs is driven by the amount of new debt being issued rather than by central bank policy.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "rates are increasingly a supply problem, not necessarily a central bank discipline problem.",
+            "massive sovereign issuance colliding with an AI capex boom increasingly funded through debt markets"
+          ]
+        },
+        {
+          "claim": "Long-dated yields are moving independently of the rate policy outlook and curves are steepening as a result.",
+          "banks_for": [
+            "Mizuho International",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "USD rates followed Europe into a bear-steepening move",
+            "long-end yields increasingly decoupling from the policy outlook, which are the main headwinds for risk sentiment"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed policy path",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "Goldman and UBS both expect the Fed to leave interest rates alone through the rest of the year after two cooler inflation prints, and both think traders are still pricing too much chance of a rate increase.",
+      "facts_agreed": [
+        {
+          "claim": "The Fed is expected to leave rates unchanged, with recent inflation data giving it room to stay put.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "we\u2019ve now had two months of the better inflation news that the FOMC wanted to see",
+            "We expect the Fed to keep rates on hold for the remainder of the year."
+          ]
+        },
+        {
+          "claim": "Market pricing for the path of the policy rate is too tilted toward rate increases.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "we still think market pricing for the funds rate is too hawkish."
+          ]
+        },
+        {
+          "claim": "A clearly signalled extended pause would support stocks and other risk assets.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "A similarly clear indication of an extended pause this year would provide another tailwind"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "vertical integration of ai stack",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'UBS'"
+    },
+    {
+      "theme": "ai infrastructure demand",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Morgan Stanley'"
+    },
+    {
+      "theme": "energy inflation pass through",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    }
+  ]
+}
