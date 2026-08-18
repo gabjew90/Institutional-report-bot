@@ -1,21 +1,30 @@
 # Brand assets
 
-## omnibeta-logo.png (REQUIRED for the daily calendar graphic)
+## omnibeta-logo.png — source lockup (owner-supplied, 950x960)
 
-Drop the Omnibeta logo here as `omnibeta-logo.png`.
+The full square lockup: mark + wordmark on the radial green ground. Kept as
+the source of truth. Not composited directly, because its ground is a
+radial gradient and the calendar sheet's is flat — pasting the square
+would show a visible disc.
 
-Preferred: the MARK ALONE (the lotus/compass mandala) on a transparent
-background, square, at least 512x512. The calendar renderer composites it
-into the sheet header and draws the OMNIBETA wordmark itself as text, so a
-version that already includes the wordmark will double it up.
+## omnibeta-mark.png — the mark alone, transparent (derived, 275x287)
 
-Acceptable fallback: the full square lockup (mark + wordmark on the green
-ground). The renderer will letterbox it and skip drawing its own wordmark.
+Extracted from the lockup: cropped to the mark's bounding box (measured at
+350,233 - 597,492 in the source) and its ground keyed to alpha with a soft
+falloff so anti-aliased stroke edges keep their gradient. Verified against
+a magenta ground with no green halo. THIS is what the calendar renderer
+composites into the header. If the source logo is ever replaced, re-derive
+this file (the extraction is a ~20-line Pillow script; see the commit that
+added it).
 
-SVG is welcome as `omnibeta-logo.svg` alongside the PNG — it is not used
-today (the renderer is Pillow-based and rasterizes) but keeping the vector
-here means a future move to SVG rendering costs nothing.
+## ground.txt
 
-If neither file is present the renderer logs a warning and ships the sheet
-with the wordmark only. The graphic never fails to post over a missing
-logo.
+The ground colour sampled directly beneath the mark in the source logo,
+#273632. The calendar sheet uses this exact value so the mark sits on the
+same green it was drawn on.
+
+## Fallback behaviour
+
+If omnibeta-mark.png is missing the renderer logs a warning once per boot
+and ships the sheet with the wordmark only. A missing logo never blocks
+the calendar from posting.
