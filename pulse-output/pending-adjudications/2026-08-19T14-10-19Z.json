@@ -1,0 +1,298 @@
+{
+  "pulse_date": "2026-08-19",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure spending",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 1,
+        "neutral": 8
+      },
+      "consensus_view": "Banks agree AI spending is still growing and is spreading out of chips into power, memory and the debt markets funding it, but they split on whether the original chip leaders like Nvidia keep leading the move.",
+      "facts_agreed": [
+        {
+          "claim": "AI spending has broadened from a pure technology story into a physical buildout and a financing story.",
+          "banks_for": [
+            "The Market Ear",
+            "UBS",
+            "Morgan Stanley",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "The AI trade is increasingly becoming a physical-infrastructure trade.",
+            "AI is no longer just a technology story. It is increasingly a capital markets story.",
+            "We remain strongly exposed to the enabling layer.",
+            "supported by strong spending patterns."
+          ]
+        },
+        {
+          "claim": "Capital is rotating down the stack into memory, storage, power and the hyperscaler layer that sits underneath the models.",
+          "banks_for": [
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "fresh money moving down-stack into TSMC, memory/storage, and AI infrastructure names",
+            "the hyperscalers can become model-agnostic toll roads",
+            "We remain strongly exposed to the enabling layer."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the primary AI hardware leaders (Nvidia, Broadcom) still lead the trade",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "We remain strongly exposed to the enabling layer.",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "Nvidia's tape is quietly negative among these filers"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait security risks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Seven desks flag shipping through the Strait of Hormuz as a live risk to oil supply, but none has staked out a direction on whether the route reopens or stays disrupted.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across seven desks treat the security of oil shipping through the Strait of Hormuz as an active risk running through this window.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs + UBS",
+            "MUFG Research",
+            "Rabobank",
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz ship attacks",
+            "Strait of Hormuz closure",
+            "Strait of Hormuz shipping security",
+            "US-Iran Hormuz passage tensions",
+            "Strait of Hormuz geopolitical risk"
+          ]
+        },
+        {
+          "claim": "The risk framing extends past Hormuz itself to the wider regional shipping lanes and a possible full blockade.",
+          "banks_for": [
+            "MUFG Research",
+            "Deutsche Bank",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Houthi blockade of Saudi shipping",
+            "Strait of Hormuz blockade",
+            "Strait of Hormuz geopolitical tension"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "jackson hole symposium",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Several desks flag the Jackson Hole symposium as the next Fed policy event on the calendar, but none has committed to a view on what comes out of it or how to trade it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks reference the Jackson Hole symposium as an upcoming Fed policy event in this window, tied to the broader rate-policy outlook.",
+          "banks_for": [
+            "Bloomberg Markets Live + JPMorgan",
+            "Bank of America",
+            "Bloomberg",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole symposium",
+            "Jackson Hole Economic Symposium",
+            "Jackson Hole and FOMC policy outlook",
+            "Jackson Hole conference",
+            "Jackson Hole meeting"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "bond market supply pressure",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 3,
+        "neutral": 4
+      },
+      "consensus_view": "Every desk covering this expects long-dated government bond yields to keep rising because governments and AI-related borrowers are issuing far more debt than buyers want, and the open question is whether that is a borrowing-supply problem or a sign the Fed is behind on inflation.",
+      "facts_agreed": [
+        {
+          "claim": "Long-dated government bonds stay under selling pressure, with yields at the far end of the curve grinding higher.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs",
+            "Bloomberg",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "market keeps a firm bearish short-term trend bias while cheaper than 5.15-5.20%",
+            "Global 30-year government bond yields will keep grinding higher",
+            "the long end of the curve is quietly screaming under 6–7% deficits",
+            "bear-steepening in the Treasury curve looks to be extending"
+          ]
+        },
+        {
+          "claim": "Heavy government deficits plus AI-related corporate borrowing are the structural reason long bonds are unattractive here.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Bank of America",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "rates are increasingly a supply problem, not necessarily a central bank discipline problem",
+            "asset allocation conviction remains Anything But Bonds",
+            "Global 30-year government bond yields will keep grinding higher"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "what is actually driving the long-end selloff: debt issuance volume versus a Fed that is behind on inflation",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "rates are increasingly a supply problem, not necessarily a central bank discipline problem",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "bear-steepening in the Treasury curve looks to be extending"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "boj policy normalization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "JPMorgan has moved its call for the Bank of Japan's next rate increase forward to September and sees Japan's policy rate reaching 1.5% by the end of 2026, while other desks flag a falling yen and rising pressure to tighten without committing to their own timing.",
+      "facts_agreed": [
+        {
+          "claim": "JPMorgan expects the Bank of Japan to raise rates sooner than it previously assumed, pulling the next hike forward to September.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "We bring forward our call for the next BoJ hike from October to September.",
+            "it appears that an early policy adjustment has become increasingly unavoidable."
+          ]
+        },
+        {
+          "claim": "Several desks reference Bank of Japan tightening and a weakening yen as a live subject this window without staking a directional call.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Japan Bank of Japan tightening outlook",
+            "BoJ rate hikes",
+            "Bank of Japan rate hike cycle",
+            "yen depreciation prompting BoJ rate hikes",
+            "Japan BOJ tightening pressure"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "semiconductor momentum",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 3
+      },
+      "consensus_view": "Chip stocks are rolling over and money is rotating out of them into software, and no desk in this batch argues the uptrend is still intact.",
+      "facts_agreed": [
+        {
+          "claim": "Semiconductor stocks are selling off and losing their leadership, with money moving out of chips and into software names.",
+          "banks_for": [
+            "The Market Ear",
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "SOX reversed right at the 50-day MA and is breaking below short-term support levels",
+            "Chip stock selloff",
+            "Rotation from semiconductors to SaaS stocks",
+            "semiconductor stocks"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "data center financing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks are tracking how the data-center buildout is being paid for, through borrowing, equipment-backed loans, and vendors funding their own customers, but none has taken a directional side on whether that funding structure holds up.",
+      "facts_agreed": [
+        {
+          "claim": "UBS, Goldman Sachs and Morgan Stanley all flag how the data-center buildout is being funded as a live subject this window.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "Circular financing in data center development",
+            "Data-center debt issuance",
+            "asset-level financing for compute equipment"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs and Morgan Stanley both point to borrowing rather than operating cash flow as the channel funding data-center and compute buildout.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "Data-center debt issuance",
+            "asset-level financing for compute equipment"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "fed policy outlook",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'UBS'"
+    }
+  ]
+}
