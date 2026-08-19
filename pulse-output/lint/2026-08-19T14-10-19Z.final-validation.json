@@ -1,0 +1,209 @@
+{
+ "violations": [
+  {
+   "kind": "underweighted-all-dropped",
+   "severity": "soft",
+   "message": "1 underweighted-candidate theme(s) surfaced in theme_coverage but none appear in the pulse. Examples: gamma driven volatility regime. Surface at least one as a WHAT TO WATCH bullet.",
+   "themes": [
+    "gamma driven volatility regime"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '1%' is attached to [barely, break, crowded, high, market] but the source uses it for [bogey, comps, momentum, monday, more] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "1%",
+   "draft_subject": [
+    "barely",
+    "break",
+    "crowded",
+    "high",
+    "market",
+    "rather",
+    "trade",
+    "unwinding"
+   ],
+   "source_subject": [
+    "bogey",
+    "comps",
+    "momentum",
+    "monday",
+    "more",
+    "much",
+    "reversing",
+    "semiconductor"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '203.5%' is attached to [borrowed, clients, exposure, fund, hedge] but the source uses it for [cautious, gross, leverage, percentile, reflecting] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "203.5%",
+   "draft_subject": [
+    "borrowed",
+    "clients",
+    "exposure",
+    "fund",
+    "hedge",
+    "less",
+    "past",
+    "total"
+   ],
+   "source_subject": [
+    "cautious",
+    "gross",
+    "leverage",
+    "percentile",
+    "reflecting"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '2.80%' is attached to [against, argument, bond, both, buyers] but the source uses it for [date, session] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "2.80%",
+   "draft_subject": [
+    "against",
+    "argument",
+    "bond",
+    "both",
+    "buyers",
+    "call",
+    "dollar",
+    "down"
+   ],
+   "source_subject": [
+    "date",
+    "session"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.71%' is attached to [against, argument, bond, both, buyers] but the source uses it for [change, date, indices, live, session] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.71%",
+   "draft_subject": [
+    "against",
+    "argument",
+    "bond",
+    "both",
+    "buyers",
+    "call",
+    "dollar",
+    "down"
+   ],
+   "source_subject": [
+    "change",
+    "date",
+    "indices",
+    "live",
+    "session",
+    "treasury",
+    "yahoo",
+    "yield"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '35%' is attached to [before, difference, expect, fund, hike] but the source uses it for [against, automotive, china, chinese, coal] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "35%",
+   "draft_subject": [
+    "before",
+    "difference",
+    "expect",
+    "fund",
+    "hike",
+    "managers",
+    "market",
+    "midterms"
+   ],
+   "source_subject": [
+    "against",
+    "automotive",
+    "china",
+    "chinese",
+    "coal",
+    "competitors",
+    "cost",
+    "disadvantage"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '90%' is attached to [barrels, early, egypt, flows, hitting] but the source uses it for [adjusted, allocation, applications, approaches, avoid] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "90%",
+   "draft_subject": [
+    "barrels",
+    "early",
+    "egypt",
+    "flows",
+    "hitting",
+    "kerir",
+    "loadings",
+    "mandeb"
+   ],
+   "source_subject": [
+    "adjusted",
+    "allocation",
+    "applications",
+    "approaches",
+    "avoid",
+    "between",
+    "billion",
+    "black"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-7% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.13, 4.1, 4.5, 4.9]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-7",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "Jan Hatzius has written the September hike down to near-zero, pointing at underlying job growth of 5,000 in July against the roughly 50,000 needed to hold unemployment steady, an unemployment rate tha"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "30% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.13, 4.1, 4.5, 4.9]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "30",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "Jan Hatzius has written the September hike down to near-zero, pointing at underlying job growth of 5,000 in July against the roughly 50,000 needed to hold unemployment steady, an unemployment rate tha"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "35% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.13, 4.1, 4.5, 4.9]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "35",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "Jan Hatzius has written the September hike down to near-zero, pointing at underlying job growth of 5,000 in July against the roughly 50,000 needed to hold unemployment steady, an unemployment rate tha"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "72% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.13, 4.1, 4.5, 4.9]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "72",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "Jan Hatzius has written the September hike down to near-zero, pointing at underlying job growth of 5,000 in July against the roughly 50,000 needed to hold unemployment steady, an unemployment rate tha"
+  },
+  {
+   "kind": "released-actual-missing",
+   "severity": "hard",
+   "message": "Gdp has already printed (ACTUAL=1.1%, 2.5%, 4.6%) and the pulse discusses it, but none of those values appear anywhere in the text. The 2026-08-12 CPI recap shipped three banks' forecasts and never the print. State the actual figure.",
+   "event": "GDP",
+   "actual": [
+    1.1,
+    2.5,
+    4.6
+   ]
+  }
+ ],
+ "hard_count": 1,
+ "soft_count": 11,
+ "exit_code": 3
+}
