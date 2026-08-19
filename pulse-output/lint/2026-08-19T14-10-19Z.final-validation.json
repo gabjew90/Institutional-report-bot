@@ -11,7 +11,7 @@
   {
    "kind": "numeric-scope-drift",
    "severity": "soft",
-   "message": "The figure '1%' is attached to [barely, break, crowded, high, market] but the source uses it for [bogey, comps, momentum, monday, more] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "message": "The figure '1%' is attached to [barely, break, crowded, high, market] but the source uses it for [bogey, comps, momentum, monday, more] \\u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
    "figure": "1%",
    "draft_subject": [
     "barely",
@@ -37,7 +37,7 @@
   {
    "kind": "numeric-scope-drift",
    "severity": "soft",
-   "message": "The figure '203.5%' is attached to [borrowed, clients, exposure, fund, hedge] but the source uses it for [cautious, gross, leverage, percentile, reflecting] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "message": "The figure '203.5%' is attached to [borrowed, clients, exposure, fund, hedge] but the source uses it for [cautious, gross, leverage, percentile, reflecting] \\u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
    "figure": "203.5%",
    "draft_subject": [
     "borrowed",
@@ -60,7 +60,7 @@
   {
    "kind": "numeric-scope-drift",
    "severity": "soft",
-   "message": "The figure '2.80%' is attached to [against, argument, bond, both, buyers] but the source uses it for [date, session] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "message": "The figure '2.80%' is attached to [against, argument, bond, both, buyers] but the source uses it for [date, session] \\u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
    "figure": "2.80%",
    "draft_subject": [
     "against",
@@ -80,7 +80,7 @@
   {
    "kind": "numeric-scope-drift",
    "severity": "soft",
-   "message": "The figure '0.71%' is attached to [against, argument, bond, both, buyers] but the source uses it for [change, date, indices, live, session] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "message": "The figure '0.71%' is attached to [against, argument, bond, both, buyers] but the source uses it for [change, date, indices, live, session] \\u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
    "figure": "0.71%",
    "draft_subject": [
     "against",
@@ -106,7 +106,7 @@
   {
    "kind": "numeric-scope-drift",
    "severity": "soft",
-   "message": "The figure '35%' is attached to [before, difference, expect, fund, hike] but the source uses it for [against, automotive, china, chinese, coal] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "message": "The figure '35%' is attached to [before, difference, expect, fund, hike] but the source uses it for [against, automotive, china, chinese, coal] \\u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
    "figure": "35%",
    "draft_subject": [
     "before",
@@ -132,7 +132,7 @@
   {
    "kind": "numeric-scope-drift",
    "severity": "soft",
-   "message": "The figure '90%' is attached to [barrels, early, egypt, flows, hitting] but the source uses it for [adjusted, allocation, applications, approaches, avoid] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "message": "The figure '90%' is attached to [barrels, early, egypt, flows, hitting] but the source uses it for [adjusted, allocation, applications, approaches, avoid] \\u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
    "figure": "90%",
    "draft_subject": [
     "barrels",
