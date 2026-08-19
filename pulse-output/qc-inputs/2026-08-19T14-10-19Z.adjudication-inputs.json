@@ -1,0 +1,2703 @@
+{
+ "ai infrastructure spending": {
+  "theme": "ai infrastructure spending",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 4,
+   "skeptical": 1,
+   "neutral": 8
+  },
+  "theme_stances": [
+   {
+    "source": "The Market Ear",
+    "theme": "ai infrastructure rotation",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The AI trade is increasingly becoming a physical-infrastructure trade as capital shifts to energy and the grid.",
+    "primary_instruments": [
+     "VST",
+     "AEP",
+     "DTE"
+    ],
+    "vs_consensus": "",
+    "evidence": "The AI trade is increasingly becoming a physical-infrastructure trade."
+   },
+   {
+    "source": "UBS",
+    "theme": "AI infrastructure buildout",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "We remain strongly exposed to the enabling layer as token demand continues to grow rapidly.",
+    "primary_instruments": [
+     "NVDA",
+     "AMD",
+     "AMZN",
+     "GOOGL",
+     "MSFT"
+    ],
+    "vs_consensus": "",
+    "evidence": "We remain strongly exposed to the enabling layer."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "AI infrastructure capex",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Robust AI capex trends at key customer accounts continue to support spending.",
+    "primary_instruments": [
+     "AVGO"
+    ],
+    "vs_consensus": "",
+    "evidence": "supported by strong spending patterns."
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "hyperscaler infrastructure monetization",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Hyperscalers can win even if model intelligence commoditizes because higher usage drives demand for compute and inference.",
+    "primary_instruments": [
+     "GOOGL",
+     "MSFT"
+    ],
+    "vs_consensus": "",
+    "evidence": "the hyperscalers can become model-agnostic toll roads"
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "ai capital cycle",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "AI has transitioned from a technology story to a capital markets story where financing outcomes determine competitive success.",
+    "primary_instruments": [
+     "MSFT",
+     "GOOGL",
+     "AMZN",
+     "META",
+     "NVDA",
+     "AVGO"
+    ],
+    "vs_consensus": "",
+    "evidence": "AI is no longer just a technology story. It is increasingly a capital markets story."
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "ai hardware distribution",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Institutional filers are rotating out of primary AI hardware leaders like Nvidia and Broadcom.",
+    "primary_instruments": [
+     "NVDA",
+     "AVGO"
+    ],
+    "vs_consensus": "",
+    "evidence": "Nvidia's tape is quietly negative among these filers"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "ai infrastructure rotation",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Fresh capital is moving down-stack into memory, storage, and power-compute periphery names.",
+    "primary_instruments": [
+     "STX",
+     "WULF",
+     "RIOT"
+    ],
+    "vs_consensus": "",
+    "evidence": "fresh money moving down-stack into TSMC, memory/storage, and AI infrastructure names"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "AI trade concentration",
+    "stance": "neutral",
+    "conviction": "medium",
+    "key_argument": "The momentum trade has collapsed into a singular AI relative-value factor bet, though the Mag 7 itself is not trading as a monolithic group.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "today's momentum trade isn't some diversified factor bet. It has increasingly collapsed into one giant AI relative-value trade."
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure trade",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure trade"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure buildout",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure buildout"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI supply chain investment",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI supply chain investment"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI investment capital demand",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI investment capital demand"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-related industrial revival",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-related industrial revival"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI bubble",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI bubble"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI sector de-grossing and unwind",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI sector de-grossing and unwind"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Physical AI sector valuation",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Physical AI sector valuation"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI token cost deflation",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI token cost deflation"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-driven profitability in memory sector",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-driven profitability in memory sector"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-driven price chasing in megacap stocks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-driven price chasing in megacap stocks"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI capex funding through debt markets",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI capex funding through debt markets"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI spending boom",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI spending boom"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-trade stabilization",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-trade stabilization"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI buildout financing",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI buildout financing"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "maturation of the AI capital cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "maturation of the AI capital cycle"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure spending",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure financing gap",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure financing gap"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points_sample": [
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7566",
+    "metric": "Short-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7298",
+    "metric": "Medium-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7900",
+    "metric": "NDX upside trigger"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "34%",
+    "metric": "Foreign competition risk in AI"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "57",
+    "metric": "Instances of price and breadth moving in opposite directions"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "10,400",
+    "metric": "SOX support level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$489bn",
+    "metric": "AI-linked debt issuance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.5tn",
+    "metric": "USD IG issuance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "Foreign competition risk"
+   },
+   {
+    "source_bank": "Thiel Macro",
+    "figure": "$418mn",
+    "metric": "Thiel Macro capital deployment"
+   },
+   {
+    "source_bank": "Thiel Macro",
+    "figure": "72%",
+    "metric": "Thiel Macro allocation to energy/utilities"
+   },
+   {
+    "source_bank": "World Gold Council",
+    "figure": "51 metric tons",
+    "metric": "Central bank net gold purchases"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20 metric tons",
+    "metric": "PBoC gold reserve increase"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "500 metric tons",
+    "metric": "Quarterly investment demand required for USD 5,000/oz"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 3,850/oz",
+    "metric": "Downside risk price level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "0.4",
+    "metric": "Correlation between crypto basket and US equities"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "50%",
+    "metric": "Bitcoin risk contribution to 60/40 portfolio"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "7.3%",
+    "metric": "95% historical monthly expected shortfall"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "600%",
+    "metric": "Notional investment in delta-hedged put strategy"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$1T",
+    "metric": "Semiconductor TAM"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "Big 3 DRAM capex decline"
+   },
+   {
+    "source_bank": "AMD",
+    "figure": "$200B",
+    "metric": "AMD server CPU TAM"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "67%",
+    "metric": "Previous memory cycle peak gross margin"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$2.5T",
+    "metric": "Big 4 cloud backlog"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$2.73",
+    "metric": "H100 GPU rental price per hour"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$80B",
+    "metric": "NVIDIA estimated equity investments"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 90",
+    "metric": "Brent benchmark oil future price"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "100 to 230 basis points",
+    "metric": "Yield rise required for bond price decline to cancel income returns"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "-6.7%",
+    "metric": "China fixed-asset investment contraction"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "-3.2% y/y",
+    "metric": "China new home prices"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-69bps",
+    "metric": "S&P 500 daily change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6%",
+    "metric": "High Beta Momentum Basket (GSPRHIMO) daily change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-49%",
+    "metric": "AI token cost change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20x",
+    "metric": "One-day -5% sell-offs in High Beta Momentum"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "112%",
+    "metric": "ETF + index options Put/Call ratio"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+53%",
+    "metric": "Delta between ETF/index vs single stock Put/Call ratio"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8.8%",
+    "metric": "Geberit organic sales growth"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$33bn",
+    "metric": "BHP FY26 EBITDA"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$18.2bn",
+    "metric": "BHP copper division EBITDA"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$65bn",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40t won",
+    "metric": "SK Hynix buyback"
+   },
+   {
+    "source_bank": "Trendforce",
+    "figure": "$68.9bn",
+    "metric": "Combined revenue of top five NAND Flash brands"
+   },
+   {
+    "source_bank": "Wall Street Journal",
+    "figure": "$3 trillion",
+    "metric": "Off-balance-sheet AI infrastructure commitments"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "134 million",
+    "metric": "Global travel eSIM users"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$150,000",
+    "metric": "Statutory damages per work infringed"
+   }
+  ],
+  "_artifact_note": "STORAGE-REDUCED ARTIFACT. `theme_stances` (25 entries) and `tension_points` (0 entries) are VERBATIM AND COMPLETE, exactly as fed to this theme's adjudication sub-agent. `key_data_points_sample` is a sample: 251 entries were fed, 157 of them unique, first 45 unique shown with the free-text `context` field dropped. Reduction was required because the GitHub MCP write path takes file content as a single response-emitted parameter and the full 207,625-byte artifact exceeds that output limit. The full artifact was regenerable from pulse-context/latest.json at the time of this run."
+ },
+ "hormuz strait security risks": {
+  "theme": "hormuz strait security risks",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 7
+  },
+  "theme_stances": [
+   {
+    "source": "JPMorgan",
+    "theme": "hormuz strait security risks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz ship attacks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz ship attacks"
+   },
+   {
+    "source": "Goldman Sachs + UBS",
+    "theme": "hormuz strait security risks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz closure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz closure"
+   },
+   {
+    "source": "MUFG Research",
+    "theme": "hormuz strait security risks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz shipping security",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz shipping security"
+   },
+   {
+    "source": "MUFG Research",
+    "theme": "hormuz strait security risks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Houthi blockade of Saudi shipping",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Houthi blockade of Saudi shipping"
+   },
+   {
+    "source": "Rabobank",
+    "theme": "hormuz strait security risks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran Hormuz passage tensions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran Hormuz passage tensions"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "hormuz strait security risks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz blockade",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz blockade"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "hormuz strait security risks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz shipping attacks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz shipping attacks"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "hormuz strait security risks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz geopolitical risk",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz geopolitical risk"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "hormuz strait security risks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz geopolitical tension",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz geopolitical tension"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points_sample": [
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7566",
+    "metric": "Short-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7298",
+    "metric": "Medium-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7900",
+    "metric": "NDX upside trigger"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "34%",
+    "metric": "Foreign competition risk in AI"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "57",
+    "metric": "Instances of price and breadth moving in opposite directions"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "10,400",
+    "metric": "SOX support level"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "-2.3%",
+    "metric": "FY4Q26 tracked channel consumption growth"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "~7%",
+    "metric": "Dividend yield"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "-7.8%",
+    "metric": "FY4Q26 sales growth forecast"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$65B",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.702%",
+    "metric": "10Y Treasury Yield"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40%-ile",
+    "metric": "Aggregate Positioning"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$85.12",
+    "metric": "WTI Crude Price"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "350,000",
+    "metric": "Projected European automotive job losses"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%-35%",
+    "metric": "Reduction in Chinese oil imports"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "17% - 35%",
+    "metric": "New BEV duties on Chinese imports"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Share of Chinese industrial entities operating at a loss"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$6.8bn",
+    "metric": "Foreign net purchase of long-term Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$35.6bn",
+    "metric": "Foreign official net sales of short-term Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.4%",
+    "metric": "Foreign ownership of total T-bills outstanding"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$450bn",
+    "metric": "2026 foreign demand forecast for Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.30%",
+    "metric": "30-year Treasury yield swing objective"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$489bn",
+    "metric": "AI-linked debt issuance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.5tn",
+    "metric": "USD IG issuance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "Foreign competition risk"
+   },
+   {
+    "source_bank": "Thiel Macro",
+    "figure": "$418mn",
+    "metric": "Thiel Macro capital deployment"
+   },
+   {
+    "source_bank": "Thiel Macro",
+    "figure": "72%",
+    "metric": "Thiel Macro allocation to energy/utilities"
+   },
+   {
+    "source_bank": "World Gold Council",
+    "figure": "51 metric tons",
+    "metric": "Central bank net gold purchases"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20 metric tons",
+    "metric": "PBoC gold reserve increase"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "500 metric tons",
+    "metric": "Quarterly investment demand required for USD 5,000/oz"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 3,850/oz",
+    "metric": "Downside risk price level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "0.4",
+    "metric": "Correlation between crypto basket and US equities"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "50%",
+    "metric": "Bitcoin risk contribution to 60/40 portfolio"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "7.3%",
+    "metric": "95% historical monthly expected shortfall"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "600%",
+    "metric": "Notional investment in delta-hedged put strategy"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$1T",
+    "metric": "Semiconductor TAM"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "Big 3 DRAM capex decline"
+   },
+   {
+    "source_bank": "AMD",
+    "figure": "$200B",
+    "metric": "AMD server CPU TAM"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "67%",
+    "metric": "Previous memory cycle peak gross margin"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$2.5T",
+    "metric": "Big 4 cloud backlog"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$2.73",
+    "metric": "H100 GPU rental price per hour"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$80B",
+    "metric": "NVIDIA estimated equity investments"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 90",
+    "metric": "Brent benchmark oil future price"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "100 to 230 basis points",
+    "metric": "Yield rise required for bond price decline to cancel income returns"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "-6.7%",
+    "metric": "China fixed-asset investment contraction"
+   }
+  ],
+  "_artifact_note": "STORAGE-REDUCED ARTIFACT. `theme_stances` (9 entries) and `tension_points` (0 entries) are VERBATIM AND COMPLETE, exactly as fed to this theme's adjudication sub-agent. `key_data_points_sample` is a sample: 136 entries were fed, 136 of them unique, first 45 unique shown with the free-text `context` field dropped. Reduction was required because the GitHub MCP write path takes file content as a single response-emitted parameter and the full 207,625-byte artifact exceeds that output limit. The full artifact was regenerable from pulse-context/latest.json at the time of this run."
+ },
+ "jackson hole symposium": {
+  "theme": "jackson hole symposium",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "Bloomberg Markets Live + JPMorgan",
+    "theme": "jackson hole symposium",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Jackson Hole symposium",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Jackson Hole symposium"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "jackson hole symposium",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Jackson Hole Economic Symposium",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Jackson Hole Economic Symposium"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "jackson hole symposium",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Jackson Hole",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Jackson Hole"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "jackson hole symposium",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Jackson Hole conference",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Jackson Hole conference"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "jackson hole symposium",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Jackson Hole and FOMC policy outlook",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Jackson Hole and FOMC policy outlook"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "jackson hole symposium",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Jackson Hole meeting",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Jackson Hole meeting"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points_sample": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$65B",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.702%",
+    "metric": "10Y Treasury Yield"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40%-ile",
+    "metric": "Aggregate Positioning"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$85.12",
+    "metric": "WTI Crude Price"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "350,000",
+    "metric": "Projected European automotive job losses"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%-35%",
+    "metric": "Reduction in Chinese oil imports"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "17% - 35%",
+    "metric": "New BEV duties on Chinese imports"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Share of Chinese industrial entities operating at a loss"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$6.8bn",
+    "metric": "Foreign net purchase of long-term Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$35.6bn",
+    "metric": "Foreign official net sales of short-term Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.4%",
+    "metric": "Foreign ownership of total T-bills outstanding"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$450bn",
+    "metric": "2026 foreign demand forecast for Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.30%",
+    "metric": "30-year Treasury yield swing objective"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "3.5%",
+    "metric": "Average cash level"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "net 56% OW",
+    "metric": "Global equity allocation"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "net 19% OW",
+    "metric": "Corporate balance sheets overleveraged"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "9.3",
+    "metric": "Bull & Bear Indicator"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$800B",
+    "metric": "2026 hyperscalers' AI-related capex"
+   },
+   {
+    "source_bank": "SIPRI",
+    "figure": "2.5%",
+    "metric": "Global defense spending as % of world GDP"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$850B",
+    "metric": "U.S. defense primes order backlogs"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$2.7B",
+    "metric": "Single stock net inflows"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$0.4B",
+    "metric": "Equity ETF net inflows"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "0.19%",
+    "metric": "Corporate buybacks as % of S&P 500 market cap"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "3.78",
+    "metric": "Tech sector inflow z-score"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "14.25",
+    "metric": "VIX YTD low"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "17.1%",
+    "metric": "GFSI Risk Allocator overweight position"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "72%",
+    "metric": "Discount to vanilla"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "36%",
+    "metric": "Probability of SoH normalization"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "600%",
+    "metric": "Unitree IPO debut gain"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15m",
+    "metric": "Codex active users"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "32nd %-tile",
+    "metric": "US TPM level"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "46th %-tile",
+    "metric": "European HF positioning"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-69bps",
+    "metric": "S&P 500 daily change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6%",
+    "metric": "High Beta Momentum Basket (GSPRHIMO) daily change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-49%",
+    "metric": "AI token cost change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20x",
+    "metric": "One-day -5% sell-offs in High Beta Momentum"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "112%",
+    "metric": "ETF + index options Put/Call ratio"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+53%",
+    "metric": "Delta between ETF/index vs single stock Put/Call ratio"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8.8%",
+    "metric": "Geberit organic sales growth"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$33bn",
+    "metric": "BHP FY26 EBITDA"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$18.2bn",
+    "metric": "BHP copper division EBITDA"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$65bn",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40t won",
+    "metric": "SK Hynix buyback"
+   },
+   {
+    "source_bank": "Trendforce",
+    "figure": "$68.9bn",
+    "metric": "Combined revenue of top five NAND Flash brands"
+   },
+   {
+    "source_bank": "Wall Street Journal",
+    "figure": "$3 trillion",
+    "metric": "Off-balance-sheet AI infrastructure commitments"
+   }
+  ],
+  "_artifact_note": "STORAGE-REDUCED ARTIFACT. `theme_stances` (6 entries) and `tension_points` (0 entries) are VERBATIM AND COMPLETE, exactly as fed to this theme's adjudication sub-agent. `key_data_points_sample` is a sample: 93 entries were fed, 93 of them unique, first 45 unique shown with the free-text `context` field dropped. Reduction was required because the GitHub MCP write path takes file content as a single response-emitted parameter and the full 207,625-byte artifact exceeds that output limit. The full artifact was regenerable from pulse-context/latest.json at the time of this run."
+ },
+ "bond market supply pressure": {
+  "theme": "bond market supply pressure",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 3,
+   "skeptical": 3,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "JPMorgan",
+    "theme": "long-end treasury bearishness",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Global factors and rising JGB yields are putting renewed bearish pressure on the long end of the Treasury curve.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "market keeps a firm bearish short-term trend bias while cheaper than 5.15-5.20%"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "supply-driven bond selloff",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Massive sovereign and AI-related debt issuance is forcing real rates higher regardless of central bank discipline.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "rates are increasingly a supply problem, not necessarily a central bank discipline problem"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "yield curve steepening",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The bear-steepening of the Treasury curve signals a potential Fed policy error by pricing in hotter inflation and growth than the Fed anticipates.",
+    "primary_instruments": [
+     "TLT",
+     "IEF"
+    ],
+    "vs_consensus": "",
+    "evidence": "bear-steepening in the Treasury curve looks to be extending"
+   },
+   {
+    "source": "Bloomberg",
+    "theme": "long-end bond yields",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "Structural drivers including deficits and AI-related spending ensure a sustained bear cycle for long-dated debt.",
+    "primary_instruments": [
+     "TLT"
+    ],
+    "vs_consensus": "",
+    "evidence": "Global 30-year government bond yields will keep grinding higher"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "anything but bonds",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Rising debt servicing costs and crowding-out from corporate supply make bonds unattractive.",
+    "primary_instruments": [
+     "XBI",
+     "KRE"
+    ],
+    "vs_consensus": "",
+    "evidence": "asset allocation conviction remains Anything But Bonds"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "treasury curve outlook",
+    "stance": "skeptical",
+    "conviction": "high",
+    "key_argument": "The long end of the curve is underperforming due to massive fiscal deficits and Treasury supply.",
+    "primary_instruments": [
+     "TLT"
+    ],
+    "vs_consensus": "",
+    "evidence": "the long end of the curve is quietly screaming under 6–7% deficits"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "bond market supply pressure",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "JGB curve bearish steepening",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "JGB curve bearish steepening"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "bond market supply pressure",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "global bear steepening",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "global bear steepening"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "bond market supply pressure",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "JGB yield pressure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "JGB yield pressure"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "bond market supply pressure",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US 30-year yield curve pressure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US 30-year yield curve pressure"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "bond market supply pressure",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "JGB market fiscal concerns",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "JGB market fiscal concerns"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "bond market supply pressure",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "3-month/30-year Treasury curve steepener",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "3-month/30-year Treasury curve steepener"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "bond market supply pressure",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury curve re-steepening",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury curve re-steepening"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points_sample": [
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7566",
+    "metric": "Short-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7298",
+    "metric": "Medium-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7900",
+    "metric": "NDX upside trigger"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "34%",
+    "metric": "Foreign competition risk in AI"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "57",
+    "metric": "Instances of price and breadth moving in opposite directions"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "10,400",
+    "metric": "SOX support level"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$65B",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.702%",
+    "metric": "10Y Treasury Yield"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40%-ile",
+    "metric": "Aggregate Positioning"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$85.12",
+    "metric": "WTI Crude Price"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "350,000",
+    "metric": "Projected European automotive job losses"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%-35%",
+    "metric": "Reduction in Chinese oil imports"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "17% - 35%",
+    "metric": "New BEV duties on Chinese imports"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Share of Chinese industrial entities operating at a loss"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$6.8bn",
+    "metric": "Foreign net purchase of long-term Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$35.6bn",
+    "metric": "Foreign official net sales of short-term Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.4%",
+    "metric": "Foreign ownership of total T-bills outstanding"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$450bn",
+    "metric": "2026 foreign demand forecast for Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.30%",
+    "metric": "30-year Treasury yield swing objective"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$489bn",
+    "metric": "AI-linked debt issuance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.5tn",
+    "metric": "USD IG issuance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "Foreign competition risk"
+   },
+   {
+    "source_bank": "Thiel Macro",
+    "figure": "$418mn",
+    "metric": "Thiel Macro capital deployment"
+   },
+   {
+    "source_bank": "Thiel Macro",
+    "figure": "72%",
+    "metric": "Thiel Macro allocation to energy/utilities"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "3.5%",
+    "metric": "Average cash level"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "net 56% OW",
+    "metric": "Global equity allocation"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "net 19% OW",
+    "metric": "Corporate balance sheets overleveraged"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "9.3",
+    "metric": "Bull & Bear Indicator"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$800B",
+    "metric": "2026 hyperscalers' AI-related capex"
+   },
+   {
+    "source_bank": "SIPRI",
+    "figure": "2.5%",
+    "metric": "Global defense spending as % of world GDP"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$850B",
+    "metric": "U.S. defense primes order backlogs"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$2.7B",
+    "metric": "Single stock net inflows"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$0.4B",
+    "metric": "Equity ETF net inflows"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "0.19%",
+    "metric": "Corporate buybacks as % of S&P 500 market cap"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "3.78",
+    "metric": "Tech sector inflow z-score"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "14.25",
+    "metric": "VIX YTD low"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "17.1%",
+    "metric": "GFSI Risk Allocator overweight position"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "72%",
+    "metric": "Discount to vanilla"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "36%",
+    "metric": "Probability of SoH normalization"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "600%",
+    "metric": "Unitree IPO debut gain"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15m",
+    "metric": "Codex active users"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "32nd %-tile",
+    "metric": "US TPM level"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "46th %-tile",
+    "metric": "European HF positioning"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-69bps",
+    "metric": "S&P 500 daily change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6%",
+    "metric": "High Beta Momentum Basket (GSPRHIMO) daily change"
+   }
+  ],
+  "_artifact_note": "STORAGE-REDUCED ARTIFACT. `theme_stances` (13 entries) and `tension_points` (0 entries) are VERBATIM AND COMPLETE, exactly as fed to this theme's adjudication sub-agent. `key_data_points_sample` is a sample: 221 entries were fed, 129 of them unique, first 45 unique shown with the free-text `context` field dropped. Reduction was required because the GitHub MCP write path takes file content as a single response-emitted parameter and the full 207,625-byte artifact exceeds that output limit. The full artifact was regenerable from pulse-context/latest.json at the time of this run."
+ },
+ "fed policy outlook": {
+  "theme": "fed policy outlook",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 0,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "fed policy outlook",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Goldman argues that soft consumption and fading inflation drivers make a September rate hike very unlikely.",
+    "primary_instruments": [],
+    "vs_consensus": "out_of_consensus",
+    "evidence": "Goldman has effectively written the September rate-hike probability down to near-zero."
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "fed policy outlook",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US monetary policy uncertainty",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US monetary policy uncertainty"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "fed policy outlook",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "neutral rate uncertainty",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "neutral rate uncertainty"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "fed policy outlook",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Fed reaction function clarity",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Fed reaction function clarity"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "fed policy outlook",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Fed policy error signaling",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Fed policy error signaling"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "fed policy outlook",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Fed credibility concerns",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Fed credibility concerns"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points_sample": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-69bps",
+    "metric": "S&P 500 daily change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6%",
+    "metric": "High Beta Momentum Basket (GSPRHIMO) daily change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-49%",
+    "metric": "AI token cost change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20x",
+    "metric": "One-day -5% sell-offs in High Beta Momentum"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "112%",
+    "metric": "ETF + index options Put/Call ratio"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+53%",
+    "metric": "Delta between ETF/index vs single stock Put/Call ratio"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8.8%",
+    "metric": "Geberit organic sales growth"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$33bn",
+    "metric": "BHP FY26 EBITDA"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$18.2bn",
+    "metric": "BHP copper division EBITDA"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$65bn",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40t won",
+    "metric": "SK Hynix buyback"
+   },
+   {
+    "source_bank": "Trendforce",
+    "figure": "$68.9bn",
+    "metric": "Combined revenue of top five NAND Flash brands"
+   },
+   {
+    "source_bank": "Wall Street Journal",
+    "figure": "$3 trillion",
+    "metric": "Off-balance-sheet AI infrastructure commitments"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "134 million",
+    "metric": "Global travel eSIM users"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$150,000",
+    "metric": "Statutory damages per work infringed"
+   },
+   {
+    "source_bank": "MediaRadar",
+    "figure": "$109 million",
+    "metric": "H&R Block measured media spending"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.8 trillion",
+    "metric": "Total space economy market size"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$55 billion",
+    "metric": "Capital inflow into space economy"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$36 billion",
+    "metric": "Capital inflow into space economy"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$65,400",
+    "metric": "Cost per kg to LEO"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,500",
+    "metric": "Cost per kg to LEO"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11 billion",
+    "metric": "Starlink annual revenue"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10,000",
+    "metric": "Starlink satellite constellation size"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$489B",
+    "metric": "AI-related debt supply"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5T",
+    "metric": "USD IG issuance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250B",
+    "metric": "IG hyperscaler issuance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "33%",
+    "metric": "Trump approval rating"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30%",
+    "metric": "Market-implied probability of a September rate hike"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Unemployment rate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.13%",
+    "metric": "Core PCE monthly rise"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6-7%",
+    "metric": "Fiscal deficit"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20%",
+    "metric": "NFIB hiring intentions"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "14",
+    "metric": "VIX handle"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7566",
+    "metric": "Short-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7298",
+    "metric": "Medium-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7900",
+    "metric": "NDX upside trigger"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "34%",
+    "metric": "Foreign competition risk in AI"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "57",
+    "metric": "Instances of price and breadth moving in opposite directions"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "10,400",
+    "metric": "SOX support level"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$65B",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.702%",
+    "metric": "10Y Treasury Yield"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40%-ile",
+    "metric": "Aggregate Positioning"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$85.12",
+    "metric": "WTI Crude Price"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "350,000",
+    "metric": "Projected European automotive job losses"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%-35%",
+    "metric": "Reduction in Chinese oil imports"
+   }
+  ],
+  "_artifact_note": "STORAGE-REDUCED ARTIFACT. `theme_stances` (6 entries) and `tension_points` (0 entries) are VERBATIM AND COMPLETE, exactly as fed to this theme's adjudication sub-agent. `key_data_points_sample` is a sample: 154 entries were fed, 121 of them unique, first 45 unique shown with the free-text `context` field dropped. Reduction was required because the GitHub MCP write path takes file content as a single response-emitted parameter and the full 207,625-byte artifact exceeds that output limit. The full artifact was regenerable from pulse-context/latest.json at the time of this run."
+ },
+ "boj policy normalization": {
+  "theme": "boj policy normalization",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 0,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "JPMorgan",
+    "theme": "BoJ policy",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Increased market volatility risks necessitate earlier rate hikes.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "We bring forward our call for the next BoJ hike from October to September."
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "boj policy normalization",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The BoJ must accelerate rate hikes to avoid falling behind the curve and to address yen depreciation.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "it appears that an early policy adjustment has become increasingly unavoidable."
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "boj policy normalization",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Japan Bank of Japan tightening outlook",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Japan Bank of Japan tightening outlook"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "boj policy normalization",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "BoJ rate hikes",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "BoJ rate hikes"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "boj policy normalization",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Bank of Japan rate hike cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Bank of Japan rate hike cycle"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "boj policy normalization",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "yen depreciation prompting BoJ rate hikes",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "yen depreciation prompting BoJ rate hikes"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "boj policy normalization",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "BoJ policy communication difficulty",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "BoJ policy communication difficulty"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "boj policy normalization",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Japan BOJ tightening pressure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Japan BOJ tightening pressure"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points_sample": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$65B",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.702%",
+    "metric": "10Y Treasury Yield"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40%-ile",
+    "metric": "Aggregate Positioning"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$85.12",
+    "metric": "WTI Crude Price"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "350,000",
+    "metric": "Projected European automotive job losses"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%-35%",
+    "metric": "Reduction in Chinese oil imports"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "17% - 35%",
+    "metric": "New BEV duties on Chinese imports"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "30%",
+    "metric": "Share of Chinese industrial entities operating at a loss"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$6.8bn",
+    "metric": "Foreign net purchase of long-term Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$35.6bn",
+    "metric": "Foreign official net sales of short-term Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.4%",
+    "metric": "Foreign ownership of total T-bills outstanding"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$450bn",
+    "metric": "2026 foreign demand forecast for Treasuries"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.30%",
+    "metric": "30-year Treasury yield swing objective"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "36%",
+    "metric": "Probability of SoH normalization"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "600%",
+    "metric": "Unitree IPO debut gain"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15m",
+    "metric": "Codex active users"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "32nd %-tile",
+    "metric": "US TPM level"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "46th %-tile",
+    "metric": "European HF positioning"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "1.5%",
+    "metric": "End-2026 policy rate forecast"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "2.25%",
+    "metric": "End-2027 policy rate forecast"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "18,000",
+    "metric": "Unitree cumulative shipments"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15,000",
+    "metric": "AgiBot cumulative shipments"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12,000 units/year",
+    "metric": "Figure AI production capacity"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb150.8/share",
+    "metric": "Unitree IPO issue price"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5,000–8,000x",
+    "metric": "Unitree retail oversubscription"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "40–50%",
+    "metric": "Planetary roller screw localization"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "<30%",
+    "metric": "Six-axis force sensor localization"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15%",
+    "metric": "Hynix shareholder return estimate"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "34%",
+    "metric": "Hynix shareholder return estimate"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$65B",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~18%",
+    "metric": "SOXX decline from July low"
+   },
+   {
+    "source_bank": "Zillow",
+    "figure": "$371,774",
+    "metric": "US July typical mid-tier home value"
+   },
+   {
+    "source_bank": "World Gold Council",
+    "figure": "51 metric tons",
+    "metric": "Central bank net gold purchases"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20 metric tons",
+    "metric": "PBoC gold reserve increase"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "500 metric tons",
+    "metric": "Quarterly investment demand required for USD 5,000/oz"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 3,850/oz",
+    "metric": "Downside risk price level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "0.4",
+    "metric": "Correlation between crypto basket and US equities"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "50%",
+    "metric": "Bitcoin risk contribution to 60/40 portfolio"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "7.3%",
+    "metric": "95% historical monthly expected shortfall"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "600%",
+    "metric": "Notional investment in delta-hedged put strategy"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$1T",
+    "metric": "Semiconductor TAM"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "Big 3 DRAM capex decline"
+   },
+   {
+    "source_bank": "AMD",
+    "figure": "$200B",
+    "metric": "AMD server CPU TAM"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "67%",
+    "metric": "Previous memory cycle peak gross margin"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$2.5T",
+    "metric": "Big 4 cloud backlog"
+   }
+  ],
+  "_artifact_note": "STORAGE-REDUCED ARTIFACT. `theme_stances` (8 entries) and `tension_points` (0 entries) are VERBATIM AND COMPLETE, exactly as fed to this theme's adjudication sub-agent. `key_data_points_sample` is a sample: 137 entries were fed, 105 of them unique, first 45 unique shown with the free-text `context` field dropped. Reduction was required because the GitHub MCP write path takes file content as a single response-emitted parameter and the full 207,625-byte artifact exceeds that output limit. The full artifact was regenerable from pulse-context/latest.json at the time of this run."
+ },
+ "semiconductor momentum": {
+  "theme": "semiconductor momentum",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 1,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "The Market Ear",
+    "theme": "semiconductor momentum",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The SOX index is losing momentum and breaking below short-term support levels.",
+    "primary_instruments": [
+     "SOXX"
+    ],
+    "vs_consensus": "",
+    "evidence": "SOX reversed right at the 50-day MA and is breaking below short-term support levels"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "semiconductor momentum",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "semiconductor stocks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "semiconductor stocks"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "semiconductor momentum",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Chip stock selloff",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Chip stock selloff"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "semiconductor momentum",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Rotation from semiconductors to SaaS stocks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Rotation from semiconductors to SaaS stocks"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points_sample": [
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7566",
+    "metric": "Short-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7298",
+    "metric": "Medium-term CTA pivot level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7900",
+    "metric": "NDX upside trigger"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "34%",
+    "metric": "Foreign competition risk in AI"
+   },
+   {
+    "source_bank": "BTIG",
+    "figure": "57",
+    "metric": "Instances of price and breadth moving in opposite directions"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "10,400",
+    "metric": "SOX support level"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$489bn",
+    "metric": "AI-linked debt issuance"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$1.5tn",
+    "metric": "USD IG issuance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34%",
+    "metric": "Foreign competition risk"
+   },
+   {
+    "source_bank": "Thiel Macro",
+    "figure": "$418mn",
+    "metric": "Thiel Macro capital deployment"
+   },
+   {
+    "source_bank": "Thiel Macro",
+    "figure": "72%",
+    "metric": "Thiel Macro allocation to energy/utilities"
+   },
+   {
+    "source_bank": "Squeezemetrics",
+    "figure": "$15bn",
+    "metric": "Dealer gamma positioning"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "73%",
+    "metric": "Nasdaq names above 200-day MA"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "5.31%",
+    "metric": "30Y Treasury Yield"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+2.1 sigma",
+    "metric": "Hedge fund net buying pace"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3%",
+    "metric": "US-listed ETF short decrease"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.70",
+    "metric": "Aggregate long/short ratio for US Real Estate"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "154.2M",
+    "metric": "SPCX shares held by Saudi PIF"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "78.8M",
+    "metric": "GOOGL shares held by Berkshire Hathaway"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "18",
+    "metric": "Number of funds acting on AMZN"
+   },
+   {
+    "source_bank": "Analysts",
+    "figure": "15%",
+    "metric": "STOXX 600 H1 2026 EPS growth"
+   },
+   {
+    "source_bank": "Analysts",
+    "figure": "8%",
+    "metric": "STOXX 600 H1 2026 EPS growth ex-commodities"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10x",
+    "metric": "European Banks 2027 P/E"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "11x",
+    "metric": "SX7P forward P/E"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8%",
+    "metric": "Goldman momentum long/short basket daily decline"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "53%",
+    "metric": "FMS investors identifying long global semis as most crowded"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "82%",
+    "metric": "FMS investors identifying long global semis as most crowded"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "0.67",
+    "metric": "Nvidia correlation with broader market"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "0.66",
+    "metric": "Tesla correlation with broader market"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "0.24",
+    "metric": "Apple correlation with broader market"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "0.33",
+    "metric": "Microsoft correlation with broader market"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "6%",
+    "metric": "KOSPI index decline"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "6%",
+    "metric": "ChiNext index decline"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "7%",
+    "metric": "STAR 50 index decline"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "KRW 40 trillion ($28.6bn)",
+    "metric": "SK Hynix share buyback program"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "3.3%",
+    "metric": "Buyback as percentage of shares outstanding"
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "50%",
+    "metric": "Minimum free cash flow return commitment"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "-2.3%",
+    "metric": "FY4Q26 tracked channel consumption growth"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "~7%",
+    "metric": "Dividend yield"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "-7.8%",
+    "metric": "FY4Q26 sales growth forecast"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "3.5%",
+    "metric": "Average cash level"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "net 56% OW",
+    "metric": "Global equity allocation"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "net 19% OW",
+    "metric": "Corporate balance sheets overleveraged"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "9.3",
+    "metric": "Bull & Bear Indicator"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$800B",
+    "metric": "2026 hyperscalers' AI-related capex"
+   }
+  ],
+  "_artifact_note": "STORAGE-REDUCED ARTIFACT. `theme_stances` (4 entries) and `tension_points` (0 entries) are VERBATIM AND COMPLETE, exactly as fed to this theme's adjudication sub-agent. `key_data_points_sample` is a sample: 72 entries were fed, 72 of them unique, first 45 unique shown with the free-text `context` field dropped. Reduction was required because the GitHub MCP write path takes file content as a single response-emitted parameter and the full 207,625-byte artifact exceeds that output limit. The full artifact was regenerable from pulse-context/latest.json at the time of this run."
+ },
+ "data center financing": {
+  "theme": "data center financing",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "UBS",
+    "theme": "data center financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Circular financing in data center development",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Circular financing in data center development"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "data center financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Data-center debt issuance",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Data-center debt issuance"
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "data center financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "asset-level financing for compute equipment",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "asset-level financing for compute equipment"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points_sample": [
+   {
+    "source_bank": "World Gold Council",
+    "figure": "51 metric tons",
+    "metric": "Central bank net gold purchases"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20 metric tons",
+    "metric": "PBoC gold reserve increase"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "500 metric tons",
+    "metric": "Quarterly investment demand required for USD 5,000/oz"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 3,850/oz",
+    "metric": "Downside risk price level"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "0.4",
+    "metric": "Correlation between crypto basket and US equities"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "50%",
+    "metric": "Bitcoin risk contribution to 60/40 portfolio"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "7.3%",
+    "metric": "95% historical monthly expected shortfall"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "600%",
+    "metric": "Notional investment in delta-hedged put strategy"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$1T",
+    "metric": "Semiconductor TAM"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "Big 3 DRAM capex decline"
+   },
+   {
+    "source_bank": "AMD",
+    "figure": "$200B",
+    "metric": "AMD server CPU TAM"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "67%",
+    "metric": "Previous memory cycle peak gross margin"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$2.5T",
+    "metric": "Big 4 cloud backlog"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$2.73",
+    "metric": "H100 GPU rental price per hour"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "$80B",
+    "metric": "NVIDIA estimated equity investments"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 90",
+    "metric": "Brent benchmark oil future price"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "100 to 230 basis points",
+    "metric": "Yield rise required for bond price decline to cancel income returns"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "-6.7%",
+    "metric": "China fixed-asset investment contraction"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "-3.2% y/y",
+    "metric": "China new home prices"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-69bps",
+    "metric": "S&P 500 daily change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-6%",
+    "metric": "High Beta Momentum Basket (GSPRHIMO) daily change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-49%",
+    "metric": "AI token cost change"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20x",
+    "metric": "One-day -5% sell-offs in High Beta Momentum"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "112%",
+    "metric": "ETF + index options Put/Call ratio"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+53%",
+    "metric": "Delta between ETF/index vs single stock Put/Call ratio"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8.8%",
+    "metric": "Geberit organic sales growth"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$33bn",
+    "metric": "BHP FY26 EBITDA"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "US$18.2bn",
+    "metric": "BHP copper division EBITDA"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$65bn",
+    "metric": "Anthropic ARR"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40t won",
+    "metric": "SK Hynix buyback"
+   },
+   {
+    "source_bank": "Trendforce",
+    "figure": "$68.9bn",
+    "metric": "Combined revenue of top five NAND Flash brands"
+   },
+   {
+    "source_bank": "Wall Street Journal",
+    "figure": "$3 trillion",
+    "metric": "Off-balance-sheet AI infrastructure commitments"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "134 million",
+    "metric": "Global travel eSIM users"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$150,000",
+    "metric": "Statutory damages per work infringed"
+   },
+   {
+    "source_bank": "MediaRadar",
+    "figure": "$109 million",
+    "metric": "H&R Block measured media spending"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.8 trillion",
+    "metric": "Total space economy market size"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$55 billion",
+    "metric": "Capital inflow into space economy"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$36 billion",
+    "metric": "Capital inflow into space economy"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$65,400",
+    "metric": "Cost per kg to LEO"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,500",
+    "metric": "Cost per kg to LEO"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11 billion",
+    "metric": "Starlink annual revenue"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10,000",
+    "metric": "Starlink satellite constellation size"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$489B",
+    "metric": "AI-related debt supply"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.5T",
+    "metric": "USD IG issuance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$250B",
+    "metric": "IG hyperscaler issuance"
+   }
+  ],
+  "_artifact_note": "STORAGE-REDUCED ARTIFACT. `theme_stances` (3 entries) and `tension_points` (0 entries) are VERBATIM AND COMPLETE, exactly as fed to this theme's adjudication sub-agent. `key_data_points_sample` is a sample: 57 entries were fed, 57 of them unique, first 45 unique shown with the free-text `context` field dropped. Reduction was required because the GitHub MCP write path takes file content as a single response-emitted parameter and the full 207,625-byte artifact exceeds that output limit. The full artifact was regenerable from pulse-context/latest.json at the time of this run."
+ }
+}
