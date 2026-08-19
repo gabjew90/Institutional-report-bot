@@ -90,6 +90,7 @@ DEFAULT_PROFILE_CHANNELS = [
     "💬-stonks-yapping-💬",
     "₿-crypto-yapping-₿",
     "🏃-fitness-yapping-🏋",
+    "🏈-fantasy-football-yapping-🏈",
     "🎲-gambling-yapping-🎲",
 ]
 

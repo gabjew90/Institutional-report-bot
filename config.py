@@ -233,8 +233,11 @@ class Settings(BaseSettings):
 
     # Default chat-ingestion channels — the bot persists messages from
     # these into chat_messages by default (when chat_ingestion_channels
-    # is not set as an override). Four "yapping" rooms + four alert
-    # rooms, all the channels the bot already cares about.
+    # is not set as an override). Five "yapping" rooms + six alert
+    # rooms, all the channels the bot already cares about. Fantasy
+    # football added 2026-08-19 (owner request): recorded like the other
+    # yapping rooms so it feeds chat_messages, /ask history search, and
+    # the profile builder.
     #
     # Historically this field also scoped the profile-builder to these
     # 8 channels. That filter was removed: the profile builder now
@@ -247,6 +250,7 @@ class Settings(BaseSettings):
         "₿-crypto-yapping-₿,"
         "🏃-fitness-yapping-🏋,"
         "🎲-gambling-yapping-🎲,"
+        "🏈-fantasy-football-yapping-🏈,"
         "🦉-kloh-alerts-🦉,"
         "🫦-zhawk-thawghts-🗣,"
         "🕰️-member-alerts-🕰️,"
