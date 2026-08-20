@@ -220,7 +220,13 @@ def extract_state_from_ctx(ctx: dict) -> dict:
                 "action": (mm.get("action") or "")[:40],
                 "pt": (mm.get("price_target") or "")[:20],
                 # rating + rationale power the TRADE BOARD's HC subsection.
-                "rating": (mm.get("rating") or "")[:12],
+                # Was [:12] — a plain slice that shipped "Most Preferr"
+                # from "Most Preferred" (2026-08-18 board, three times).
+                # Same defect class as the 2026-07-09 "Improvin" fix,
+                # which patched the render site and left this one. 24
+                # covers real rating phrases; _norm_rating does the
+                # word-boundary clip with a visible ellipsis.
+                "rating": (mm.get("rating") or "")[:24],
                 # Was [:80] — too tight, the HC rationale rendered mid-word
                 # ("disclosed $100bn…", 2026-06-25 QC). Keep the full desk
                 # reasoning; the render does a generous word-boundary clip.
@@ -327,7 +333,13 @@ _FOREIGN_PT_RE = re.compile(
 
 
 def _clean_inline(s: str) -> str:
-    return re.sub(r"\s+", " ", (s or "").strip())
+    """Whitespace-collapse plus the hard voice bans (em-dash, semicolon)
+    — board strings come from PDF extraction and are restored verbatim
+    after lint/SCRUB, so this is their only enforcement point
+    (2026-08-20: published rationales shipped semicolons)."""
+    s = re.sub(r"\s+", " ", (s or "").strip())
+    s = s.replace("—", ", ").replace("–", ", ").replace(";", ",")
+    return re.sub(r"\s+,", ",", re.sub(r",\s*,", ",", s))
 
 
 def _norm_rating(rating: str, action: str) -> str:
@@ -547,10 +559,27 @@ def _hc_call_lines(hc_calls: list[dict] | None) -> list[str]:
     # extractor now blanks the ticker for foreign / collision-risk names
     # (BAE Systems, Zalando), and a tickerless call has nothing to
     # cashtag, so it has no place on a US-actionable board (2026-06-30).
+    # Board text is restored verbatim AFTER the routine's lint/SCRUB
+    # stage, so nothing downstream can fix it — the voice contract has
+    # to be enforced HERE (2026-08-20 review: published boards carried
+    # semicolons in rationales and a "The Market Ear" source line, both
+    # hard-banned; lint flagged them but SCRUB's board edits get
+    # overwritten by the verbatim restore).
+    from ai_analysis.voice_rules import BANNED_PUBLICATION_NAMES
+
+    def _banned_source(src: str) -> bool:
+        s = (src or "").lower()
+        return any(p.lower() in s for p in BANNED_PUBLICATION_NAMES)
+
     calls = [
         c for c in (hc_calls or [])
         if not _is_foreign_pt(c.get("pt") or "")
         and (c.get("ticker") or "").strip().strip("?").strip()
+        # TME et al. are non-bank commentary, banned as attribution —
+        # and their "calls" are usually relays of another desk's view
+        # (2026-08-18 board: "The Market Ear $META · Meta is identified
+        # as Morgan Stanley's top pick"). Not a desk call; drop.
+        and not _banned_source(c.get("source"))
     ]
     if not calls:
         return []

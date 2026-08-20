@@ -181,7 +181,9 @@ def test_db_cache_roundtrip():
                position TEXT, team TEXT,
                updated_at TEXT NOT NULL DEFAULT (datetime('now')))"""
     )
-    with patch.object(db_mod, "get_connection", return_value=conn):
+    with patch.object(db_mod, "get_connection", return_value=conn),          patch.object(db_mod, "SLEEPER_DUMP_MIN_ROWS", 2):
+        # anomaly guard: a tiny dump must NOT wipe the cache
+        assert db_mod.upsert_sleeper_players([("1", "One", "QB", "X")]) == 0
         n = db_mod.upsert_sleeper_players(
             [("4034", "Ja'Marr Chase", "WR", "CIN"),
              ("6794", "Bijan Robinson", "RB", "ATL")])
@@ -190,7 +192,7 @@ def test_db_cache_roundtrip():
         assert got == {"4034": "Ja'Marr Chase (WR, CIN)"}, got
         age = db_mod.sleeper_players_cache_age_hours()
         assert age is not None and age < 1, age
-    _ok("db cache: upsert + name render + age")
+    _ok("db cache: anomaly guard + upsert + name render + age")
 
 
 if __name__ == "__main__":

@@ -5912,10 +5912,19 @@ def mark_expired_analyst_positions() -> list[dict]:
 # Sleeper fantasy player cache (2026-08-20)
 # ---------------------------------------------------------------------
 
+SLEEPER_DUMP_MIN_ROWS = 1000  # anomaly guard threshold, patchable in tests
+
+
 def upsert_sleeper_players(rows: list[tuple]) -> int:
     """Replace the sleeper_players cache with a fresh trimmed dump.
     Rows are (player_id, name, position, team). Full replace, not
-    incremental — the dump is authoritative and ~11K rows is cheap."""
+    incremental — the dump is authoritative and ~11K rows is cheap.
+
+    Anomaly guard: a suspiciously small dump (API hiccup returning a
+    near-empty body) must NOT wipe a working cache — the real NFL dump
+    is ~11K entries. Keep the stale cache and return 0 instead."""
+    if len(rows) < SLEEPER_DUMP_MIN_ROWS:
+        return 0
     conn = get_connection()
     conn.execute("DELETE FROM sleeper_players")
     conn.executemany(

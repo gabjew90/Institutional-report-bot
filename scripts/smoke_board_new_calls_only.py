@@ -166,6 +166,37 @@ def test_tracking_is_unchanged():
     _ok("pulse_leans still records full lineage behind the scenes")
 
 
+def test_board_voice_sanitation():
+    """2026-08-20: published boards carried semicolons in rationales and
+    a 'The Market Ear' source line. Board text is restored verbatim
+    after lint/SCRUB, so the renderer is the only enforcement point:
+    banned-publication sources are dropped, semicolons and em-dashes in
+    rationale/rating strings are rewritten."""
+    hc = [
+        {"source": "The Market Ear", "ticker": "META", "action": "",
+         "pt": "", "rating": "OW",
+         "rationale": "Relay of Morgan Stanley's top pick."},
+        {"source": "Goldman Sachs", "ticker": "EOAN", "action": "",
+         "pt": "", "rating": "Buy",
+         "rationale": "Key GS long; weakness — a buying opportunity."},
+        {"source": "UBS", "ticker": "DTEGY", "action": "",
+         "pt": "", "rating": "Most Preferred",
+         "rationale": "Best-in-class operator."},
+    ]
+    md = _board([], hc=hc)
+    if "Market Ear" in md:
+        _fail(f"banned publication survived on the board: {md}")
+    if "$META" in md:
+        _fail("banned-source call itself must be dropped, not re-attributed")
+    if ";" in md or "—" in md:
+        _fail(f"semicolon/em-dash survived board sanitation: {md}")
+    if "Most Preferr " in md or "Most Preferr·" in md:
+        _fail(f"mid-word rating stub on board: {md}")
+    if "$EOAN" not in md or "$DTEGY" not in md:
+        _fail(f"legit calls were over-filtered: {md}")
+    _ok("board: banned sources dropped, semicolons/em-dashes rewritten")
+
+
 if __name__ == "__main__":
     test_house_leans_never_render()
     test_the_amat_duplication_is_gone()
@@ -176,4 +207,5 @@ if __name__ == "__main__":
     test_no_desk_calls_renders_nothing()
     test_desk_calls_alone_render()
     test_tracking_is_unchanged()
+    test_board_voice_sanitation()
     print("\nAll new-calls-only board smoke tests passed.")

@@ -190,6 +190,15 @@ def _names(ids: list, resolver) -> list[str]:
     return [known.get(i, f"id:{i}") for i in ids]
 
 
+def _name1(pid, resolver) -> str:
+    """One id -> one name, total: a missing/None id returns '?' instead
+    of the IndexError `_names([pid])[0]` raises when pid is falsy
+    (2026-08-20 review — a malformed trending/draft row would have
+    killed the whole payload)."""
+    got = _names([pid], resolver)
+    return got[0] if got else "?"
+
+
 def build_topic_payload(
     league_id: str,
     topic: str,
@@ -380,7 +389,7 @@ def build_topic_payload(
             nm = (
                 f"{meta.get('first_name', '')} "
                 f"{meta.get('last_name', '')}".strip()
-                or _names([p.get("player_id")], resolver)[0]
+                or _name1(p.get("player_id"), resolver)
             )
             rendered.append({
                 "pick": f"{p.get('round')}.{p.get('pick_no')}",
@@ -397,12 +406,12 @@ def build_topic_payload(
 
     elif topic == "trending":
         out["trending_adds"] = [
-            {"player": _names([t.get("player_id")], resolver)[0],
+            {"player": _name1(t.get("player_id"), resolver),
              "adds": t.get("count")}
             for t in fetch_trending("add")
         ]
         out["trending_drops"] = [
-            {"player": _names([t.get("player_id")], resolver)[0],
+            {"player": _name1(t.get("player_id"), resolver),
              "drops": t.get("count")}
             for t in fetch_trending("drop")
         ]
