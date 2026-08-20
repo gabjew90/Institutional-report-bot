@@ -1452,7 +1452,7 @@ Foreign cashtag scrub (`$TSCO` → "Tesco", `$CNA` → "Centrica", etc.) and ETF
 
 EDIT runs in a fresh `general-purpose` Agent session — NOT in the orchestrator's accumulated context. The sub-agent has no DRAFT history, no adjudication memory, just the stitched pulse + live data. That fresh-eyes property is the entire reason for the dispatch: an in-context AUDIT re-reads its own work; an out-of-context EDIT actually reviews.
 
-Build the sub-agent prompt by combining `AUDIT_SYSTEM` + `AUDIT_USER` (with substitutions) from `ai_analysis/prompts.py`. Substitute `{draft_markdown}` with the contents of `/tmp/stitched.md` (post-STITCH, NOT the raw `/tmp/draft.md`). All other substitutions (`{today}`, `{now}`, `{session_status}`, `{market_snapshot}`, `{news_snapshot}`, `{earnings_calendar}`, `{economic_calendar}`) come from `/tmp/ctx.json`.
+Build the sub-agent prompt by combining `AUDIT_SYSTEM` + `AUDIT_USER` (with substitutions) from `ai_analysis/prompts.py`. Substitute `{draft_markdown}` with the contents of `/tmp/stitched.md` (post-STITCH, NOT the raw `/tmp/draft.md`). All other substitutions (`{today}`, `{now}`, `{session_status}`, `{market_snapshot}`, `{news_snapshot}`, `{earnings_calendar}`, `{economic_calendar}`, `{prev_consensus_block}`) come from `/tmp/ctx.json`. `{prev_consensus_block}` is the CONSENSUS LEDGER — earnings consensus figures the previous pulse published; the RECAP rewrite must settle these as beat/miss when the name reports and must never claim "no consensus" for a listed name (the `consensus-amnesia` hard validator enforces this at STEP 5.75).
 
 Also substitute `{adjudicated_themes_list}` with a human-readable list of every validated theme from `/tmp/adjudication.json`. Format: one bullet per theme, including the canonical name and bank count. This is what powers the AUDIT prompt's DROPPED-THEME AUDIT (anti-DRAFT-compression) section — without this substitution, EDIT can't audit dropped themes.
 
@@ -1638,6 +1638,7 @@ new_hard = [
         'duplicate-sibling-sections', 'contrarian-buried-in-appendix',
         'main-event-lean-missing', 'leans-block-missing',
         'weekday-date-mismatch', 'released-figure-mismatch',
+        'consensus-amnesia',
     } and v.get('kind') not in draft_kinds
 ]
 

@@ -154,8 +154,10 @@ def test_draft_prompt_depth_rule():
     src = prompts.DRAFT_USER
     assert "THE MAIN EVENT" in src, "DRAFT must name the lead->MAIN EVENT mapping"
     assert "BRIEFS" in src, "DRAFT must name the rest->BRIEFS mapping"
-    assert "250-350" in src, "lead theme deep-word target missing"
-    assert re.search(r"80-120|3-4 sentences", src), "brief compression target missing"
+    # 2026-08-20: contract reconciled to the observed good range
+    # (four straight pulses ran 407-471 / 125-191 and read well).
+    assert "300-450" in src, "lead theme deep-word target missing"
+    assert re.search(r"110-180|4-6 sentences", src), "brief compression target missing"
     _ok("DRAFT prompt: position-dependent depth (lead deep, rest compressed)")
 
 

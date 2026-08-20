@@ -63,6 +63,9 @@ HARD_VIOLATION_KINDS = {
     "main-event-lean-missing",
     "leans-block-missing",
     "weekday-date-mismatch",
+    # The previous pulse published a consensus this pulse now denies
+    # or ignores while reporting the actual (2026-08-19 Target).
+    "consensus-amnesia",
 }
 
 # A cashtag is `$` + a LETTER (so dollar amounts like $9.3B / $200B never
@@ -842,6 +845,104 @@ def _missing_release_actual_violations(
     return out
 
 
+_CONSENSUS_COMPARE_RE = re.compile(
+    r"\b(beat|miss(?:ed)?|above|below|against|versus|vs\.?|short of|"
+    r"topped|in line|matched|ahead of|under(?:shot)?|over(?:shot)?|"
+    r"expected|consensus|the street|wanted|looked for)\b",
+    re.IGNORECASE,
+)
+_NO_CONSENSUS_RE = re.compile(
+    r"\bno consensus\b|\bconsensus (?:figures? )?"
+    r"(?:was|were)(?: not|n't) (?:posted|published|available)\b",
+    re.IGNORECASE,
+)
+# Words too generic to identify a company from a ledger line.
+_LEDGER_STOPWORDS = frozenset({
+    "the", "and", "with", "before", "after", "open", "close", "reports",
+    "consensus", "share", "revenue", "earnings", "morning", "wednesday",
+    "thursday", "friday", "monday", "tuesday", "expected", "per",
+})
+
+
+def _ledger_names(ctx: dict) -> list[str]:
+    """Company identifiers from the prev_consensus_block ledger lines:
+    cashtags plus Capitalized words that aren't stopwords. Loose on
+    purpose — a false name here only fires when the RECAP also reports
+    an actual for it."""
+    block = str(ctx.get("prev_consensus_block") or "")
+    if block.strip().lower() in ("", "(none)", "(unavailable)"):
+        return []
+    names: list[str] = []
+    for ln in block.splitlines():
+        if not ln.strip().startswith("-"):
+            continue
+        names.extend(m.group(0) for m in _CASHTAG_RE.finditer(ln))
+        for w in re.findall(r"\b[A-Z][a-z]{2,}(?:'s)?\b", ln):
+            w = w.rstrip("'s").rstrip("'")
+            if w.lower() not in _LEDGER_STOPWORDS:
+                names.append(w)
+    seen, out = set(), []
+    for n in names:
+        if n.lower() not in seen:
+            seen.add(n.lower())
+            out.append(n)
+    return out
+
+
+def _consensus_amnesia_violations(md_text: str, ctx: dict) -> list[dict]:
+    """HARD. The 2026-08-19 failure class: the previous pulse published
+    a consensus for a name; today's RECAP reports that name's actual
+    print and either (a) claims no consensus exists, or (b) states the
+    actual with no comparison against the expectation. The ledger comes
+    in via ctx['prev_consensus_block'] (rendered from the previous
+    scheduled pulse's own text), so 'no consensus' about a ledger name
+    is a factual error about this product's own prior edition."""
+    names = _ledger_names(ctx)
+    if not names:
+        return []
+    m = re.search(r"^## 1\. RECAP\s*$(.*?)(?=^## )", md_text, re.M | re.S)
+    recap = m.group(1) if m else md_text
+    out: list[dict] = []
+    # Split into bullets/paragraphs so the comparison-language test is
+    # local to the sentence block reporting the print.
+    blocks = [b.strip() for b in re.split(r"\n(?=- )|\n\n", recap) if b.strip()]
+    reported_re = re.compile(
+        r"\b(reported|printed|came in|landed|posted|delivered|earned)\b",
+        re.IGNORECASE,
+    )
+    for b in blocks:
+        hit = [n for n in names if re.search(rf"\b{re.escape(n)}\b", b)]
+        if not hit:
+            continue
+        if _NO_CONSENSUS_RE.search(b):
+            out.append({
+                "kind": "consensus-amnesia",
+                "severity": "hard",
+                "message": (
+                    f"RECAP claims no consensus for {hit[0]} but the "
+                    f"previous pulse published one (see the CONSENSUS "
+                    f"LEDGER). State the actual against that figure as "
+                    f"a beat or a miss."
+                ),
+                "name": hit[0],
+            })
+            continue
+        if (reported_re.search(b) and re.search(r"\$\d", b)
+                and not _CONSENSUS_COMPARE_RE.search(b)):
+            out.append({
+                "kind": "consensus-amnesia",
+                "severity": "hard",
+                "message": (
+                    f"RECAP reports {hit[0]}'s actual print but never "
+                    f"frames it against the consensus the previous "
+                    f"pulse published. Beat or miss is the content of "
+                    f"an earnings recap — state it."
+                ),
+                "name": hit[0],
+            })
+    return out
+
+
 def validate(md_text: str, ctx: dict) -> list[dict]:
     """Return a list of violation dicts. Each carries `kind`, `severity`
     (hard|soft), and a human-readable `message`. Empty list = clean."""
@@ -1137,6 +1238,7 @@ def validate(md_text: str, ctx: dict) -> list[dict]:
     # =====================================================================
     violations.extend(_released_figure_violations(md_text, ctx))
     violations.extend(_missing_release_actual_violations(md_text, ctx))
+    violations.extend(_consensus_amnesia_violations(md_text, ctx))
 
     return violations
 

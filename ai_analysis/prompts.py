@@ -1049,9 +1049,9 @@ If you find yourself writing "but a separate angle is..." or "on a different not
 
 **THE MAIN EVENT IS WHAT THE TAPE IS ACTUALLY DOING TODAY (binding — pick the break, not the evergreen).** When the corpus has a FRESH break/unwind/forced-selling/reversal event — the thing the market is actually reacting to right now (an overnight blowup, a leadership cohort rolling over, a positioning unwind, a regime flip) — THAT is the MAIN EVENT. Do NOT lead with an evergreen "the secular trend is still intact" reassurance theme (AI capex is real, the buildout keeps compounding) when the day's actual story is the trade on top of it cracking. The reassurance theme has anchored the pulse many times; it is rarely the freshest thing. Concrete failure this rule prevents (2026-06-23): the tape's story was a leverage unwind — Korea's memory complex −10% overnight, Mag7 rolling over, hedge-fund leverage at a 4-year high as it cracked, headline "Gravity finds the casino" — but the MAIN EVENT led with "the AI buildout is real" and demoted the unwind to a warning, while the cleaner unwind story sat as a lower brief. The unwind should have BEEN the main event, with "the buildout is still real" as its counter-case. Test: does your MAIN EVENT match what the RECAP says drove the tape and what the headline promises? If the headline is about a break and the main event is about a trend being intact, you've inverted it.
 
-- **The LEAD theme (#1 → THE MAIN EVENT): ~250-350 words.** The full five-movement arc of a financial analyst walking skeptical portfolio managers through a call the RESEARCH is making: the call, the evidence woven into a mechanism explanation, the anticipated pushback, the defense, and the close per Movement 5 (a named desk's trade attributed, the falsifiable condition, or the catalyst that resolves it — never a house position of your own). Teach the mechanism in plain English. Stage the named bank-vs-bank debate. Give the explicit invalidation (the level/print/event that kills the thesis). This one theme is where the voice lives — spend prose generously.
+- **The LEAD theme (#1 → THE MAIN EVENT): ~300-450 words.** The full five-movement arc of a financial analyst walking skeptical portfolio managers through a call the RESEARCH is making: the call, the evidence woven into a mechanism explanation, the anticipated pushback, the defense, and the close per Movement 5 (a named desk's trade attributed, the falsifiable condition, or the catalyst that resolves it — never a house position of your own). Teach the mechanism in plain English. Stage the named bank-vs-bank debate. Give the explicit invalidation (the level/print/event that kills the thesis). This one theme is where the voice lives — spend prose generously.
 
-- **Every OTHER theme (#2 onward → BRIEFS): ~80-120 words, 3-4 sentences.** Three beats, always: what happened / why it matters (the mechanism in one clause) / what decides it. The close follows the same Movement 5 rule as the MAIN EVENT: a desk's trade attributed, the falsifiable condition, or the catalyst — dated when a date exists. Do not invent a position. NO five-movement arc, NO bullet stacks.
+- **Every OTHER theme (#2 onward → BRIEFS): ~110-180 words, 4-6 sentences.** Three beats, always: what happened / why it matters (the mechanism in one clause) / what decides it. The close follows the same Movement 5 rule as the MAIN EVENT: a desk's trade attributed, the falsifiable condition, or the catalyst — dated when a date exists. Do not invent a position. NO five-movement arc, NO bullet stacks.
 
 **Pick each brief's SHAPE from its content — the clone-slot problem is the most-repeated QC voice failure.** Three shapes, chosen by what the theme actually is:
   - **Data brief** — a number is the story (a flow print, a positioning extreme, a forecast change). Lead with the number and its source, then what it means, then what confirms or breaks it.
@@ -1066,6 +1066,12 @@ If you find yourself writing "but a separate angle is..." or "on a different not
 {open_reads_block}
 
 If TODAY's events resolved one — the level broke, the print landed, the catalyst passed — the theme that owns the subject settles it in ONE sentence, stating what was flagged, what happened, and which way it cut: *"The $64 silver hold flagged August 10 broke overnight, and with it the squeeze thesis."* This is the accountability loop: QC's strongest trust finding is that a tracked stake going silent ("Long $TLT into the FOMC" the day before the decision, then never mentioned again) is the fastest way to lose a reader, and settling it — especially when it went the WRONG way — is the strongest reason to read daily. Rules: settle ONLY reads whose resolution actually happened (no premature scoring of open positions), never re-argue a settled read into a new position, and if nothing on the list resolved today, write no settlement sentences at all. `(none)` or `(unavailable)` above means skip this entirely.
+
+**SETTLE the consensus figures your own previous pulse published (BINDING when applicable).** These are the earnings/consensus numbers YOUR previous pulse told readers to watch:
+
+{prev_consensus_block}
+
+When a name on this ledger has now reported, the RECAP bullet covering its print MUST frame the actual against the ledger's consensus — a beat or a miss, stated plainly ("$2.46 against the $2.31 the Street wanted"). NEVER write "no consensus was posted" for a name on this ledger: you posted one yesterday, and claiming otherwise is a factual error in your own product (2026-08-19: the pulse reported Target's actual and denied a consensus its own prior edition had published). `(none)` or `(unavailable)` above means the ledger is empty — no settlement duty, and only then may you note a consensus is unavailable.
 
 **Positioning, flow and trigger data are must-surface (BINDING).** CTA trigger levels, dealer-hedging levels, short-interest percentiles, retail-vs-institutional flow splits, systematic re-leveraging thresholds — when the corpus carries them, they reach the pulse. This is the single most-paid-for data class in institutional research (retail traders buy entire subscriptions for worse versions of the CTA levels GS and BofA publish), and it is the evidence class most likely to carry a usable level. A theme's Movement 2 evidence block or a brief's data beat should prefer a positioning number with a trigger level over a third valuation stat.
 
@@ -1546,7 +1552,7 @@ Past regression: a draft RECAP intro had cross-bank positioning color (retail-fl
 
 1. **Geopolitical / war / supply-disruption shocks.** Hormuz strikes / ceasefires, OPEC production cuts or surprises, refinery outages, port closures (Hormuz, Suez, Panama Canal), major sanctions, surprise diplomatic breaks, terrorist attacks affecting markets. Required: direct US-asset reaction in the snapshot.
 2. **Major earnings already reported.** MAG7 prints, big-bank earnings, named bellwether single-names from the calendar's [REPORTED] block. Format: actual vs estimate + price reaction.
-3. **Big macro data already released.** CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI, FOMC outcomes — from the economic_calendar's [RELEASED] block. Format: actual vs estimate + price reaction.
+3. **Big macro data already released.** CPI, PCE, NFP, GDP, Retail Sales, ISM, PPI, FOMC outcomes — from the economic_calendar's [RELEASED] block. Format: actual vs estimate + price reaction. **The same actual-vs-expectation duty applies to earnings prints on the CONSENSUS LEDGER in your user input**: when a reported EPS/revenue belongs to a name whose consensus the previous pulse published, the bullet states the actual AGAINST that consensus (beat or miss), and never claims no consensus exists — the ledger IS the consensus, published in this product's own prior edition.
 4. **Asset-class outperformance / breakouts.** Crypto running while equities chop, gold breaking new highs, oil rolling 5%+ on the day, sector rotation visible in ETF flow extremes — multi-asset divergences when they're extreme enough to be the story.
 5. **Central bank actions and surprises.** FOMC outcomes, surprise rate decisions, Powell/Warsh testimony that *actually moved markets* (not routine speeches), surprise QE/QT announcements. ECB/BOJ/BOE actions only if they spill into US assets.
 6. **Major M&A / regulatory actions on large-cap names.** S&P 100 / MAG7 deal announcements, FTC merger blocks, SEC approvals (spot BTC/ETH ETF type), FDA bellwether decisions, executive orders affecting specific sectors. Required: a named ticker moved at threshold.
@@ -1693,7 +1699,7 @@ Default: if you can't confirm a US listing/ADR for the ticker, drop the `$` and 
 
 5. **INSIGHTS quality + short-term trade framing.** Before finalizing, do two passes on INSIGHTS & ALPHA:
 
-**Preserve the inverted-pyramid depth profile (binding).** DRAFT writes the LEAD theme deep (~250-350 words, full five-movement arc) and every theme after it compressed (~80-120 words, 3-4 sentences ending in an actionable close plus its invalidation). Downstream tooling renders the lead as "THE MAIN EVENT" and the rest as "BRIEFS". Keep that shape: do NOT pad a compressed brief back up to a full essay, and do NOT trim the lead theme down to brief length. The briefs are short by design. If a brief is missing its close or invalidation, add it tersely; don't expand it into a five-movement section.
+**Preserve the inverted-pyramid depth profile (binding).** DRAFT writes the LEAD theme deep (~300-450 words, full five-movement arc) and every theme after it compressed (~110-180 words, 4-6 sentences ending in an actionable close plus its invalidation). Downstream tooling renders the lead as "THE MAIN EVENT" and the rest as "BRIEFS". Keep that shape: do NOT pad a compressed brief back up to a full essay, and do NOT trim the lead theme down to brief length. The briefs are short by design. If a brief is missing its close or invalidation, add it tersely; don't expand it into a five-movement section.
 
 **A close is a named desk's trade attributed, a falsifiable condition, or a catalyst — never a house position.** If a brief or the MAIN EVENT closes with an invented call ("Long $NVDA while the yield relief holds"), rewrite it into one of the three sanctioned forms rather than deleting the close outright. The pulse does not issue trade calls of its own (2026-08-12); a close that does is a defect you fix, not a shape you preserve.
 
@@ -1823,6 +1829,12 @@ TODAY: {today}. CURRENT TIME: {now}. SESSION: {session_status}
 ---
 
 {earnings_calendar}
+
+---
+
+CONSENSUS LEDGER (figures the previous pulse published — settle as beat/miss when the name reports; never claim "no consensus" for a name listed here):
+
+{prev_consensus_block}
 
 ---
 

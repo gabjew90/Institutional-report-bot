@@ -1575,6 +1575,47 @@ def _analyses_to_json(analyses: list[PdfAnalysis]) -> str:
     return json.dumps(compact, indent=1)
 
 
+def _render_prev_consensus_block() -> str:
+    """CONSENSUS LEDGER for DRAFT/AUDIT's {prev_consensus_block}.
+
+    2026-08-19 failure: the 8/18 pulse published Target's consensus
+    ($2.31 on $26.32bn); the 8/19 RECAP reported Target's actual and
+    claimed "No consensus figures were posted" — false by the pulse's
+    own prior text, and the beat went unremarked. The diff-framing
+    rework removed the full prev-pulse from ctx deliberately; this
+    block reinstates ONLY the consensus figures the previous pulse
+    published, so RECAP can settle the numbers it teed up yesterday.
+
+    Extraction is line-level: any prev-pulse line naming a consensus
+    with a dollar figure. Returns "(none)" when the prior pulse posted
+    no consensus figures.
+    """
+    import db as _db
+    try:
+        prev = _db.get_last_daily_pulse()
+    except Exception as e:
+        log.info(f"consensus ledger skipped (non-fatal): {e}")
+        return "(unavailable)"
+    md = (prev or {}).get("report_markdown") or ""
+    if not md.strip():
+        return "(none)"
+    out: list[str] = []
+    for ln in md.splitlines():
+        s = ln.strip().lstrip("-*").strip()
+        if "onsensus" not in s or not re.search(r"\$\d", s):
+            continue
+        s = s.replace("**", "")
+        out.append(f"- {s[:240]}")
+        if len(out) >= 12:
+            break
+    if not out:
+        return "(none)"
+    return (
+        f"[from your own pulse dated {prev.get('report_date', '?')}]\n"
+        + "\n".join(out)
+    )
+
+
 def _render_open_reads_block(today: str) -> str:
     """The live directional reads from prior pulses, as a compact text
     block for DRAFT's {open_reads_block} placeholder.
@@ -1703,6 +1744,7 @@ def build_pulse_context(
     # a settlement input, not diff-framing: DRAFT is told what is open,
     # not what yesterday's prose said.
     open_reads_block = _render_open_reads_block(today)
+    prev_consensus_block = _render_prev_consensus_block()
 
     if market_status_note:
         market_snapshot = market_snapshot + market_status_note
@@ -1729,6 +1771,10 @@ def build_pulse_context(
         # Live directional reads from prior pulses (pulse_leans), for the
         # settlement rule in DRAFT_USER's MAIN EVENT/BRIEFS section.
         "open_reads_block": open_reads_block,
+        # Consensus figures the previous scheduled pulse published —
+        # RECAP must settle these as beat/miss when the name reports
+        # (consensus-amnesia guard, 2026-08-20).
+        "prev_consensus_block": prev_consensus_block,
         # Structured form of the same theme aggregation rendered in
         # `theme_coverage`. Routine adjudication step needs this to rank
         # themes, filter per-theme evidence, and emit the stance_counts
@@ -1971,6 +2017,8 @@ async def synthesize_daily_pulse(
         prev_pulse=prev_context,
         theme_coverage=theme_coverage_block,
         analyses_json=analyses_json,
+        open_reads_block=_render_open_reads_block(today_label[:10]),
+        prev_consensus_block=_render_prev_consensus_block(),
     )
     draft_response = await client.aio.models.generate_content(
         model=settings.gemini_model,
@@ -2004,6 +2052,7 @@ async def synthesize_daily_pulse(
         economic_calendar=economic_calendar,
         prev_pulse_themes=audit_prev_block,
         draft_markdown=draft_markdown,
+        prev_consensus_block=_render_prev_consensus_block(),
     )
     audit_response = await client.aio.models.generate_content(
         model=settings.gemini_model,

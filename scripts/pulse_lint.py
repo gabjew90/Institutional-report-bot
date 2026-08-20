@@ -90,6 +90,9 @@ SOFT_ISSUE_KINDS = {
     # closed Long $MU). The CROSS-SLOT INSTRUMENT OVERLAP block in
     # theme_coverage is the write-time prevention; this is the catch.
     "slot-lean-overlap",
+    # Length drift is a DRAFT-composition matter, not a SCRUB
+    # substitution; see _check_section_lengths (2026-08-20).
+    "section-length",
 }
 
 
@@ -345,6 +348,46 @@ def classify_issues(issues: list[dict]) -> tuple[int, int]:
     return hard, soft
 
 
+# Length contract (2026-08-20). Reconciled to the observed good range:
+# four straight published pulses ran MAIN EVENT 407-471w / briefs
+# 125-191w against a prompt saying 250-350 / 80-120, and read well —
+# so the contract numbers moved to 300-450 / 110-180 and this check
+# makes future drift VISIBLE instead of silent. Soft: the fix is
+# DRAFT-time composition, not a SCRUB substitution.
+_ME_RANGE = (250, 500)      # flag outside this tolerance band
+_BRIEF_RANGE = (70, 220)
+
+
+def _check_section_lengths(md_text: str) -> list[dict]:
+    out: list[dict] = []
+    m = re.search(r"^## (?:2\. )?THE MAIN EVENT\s*$(.*?)(?=^## )",
+                  md_text, re.M | re.S)
+    if m:
+        w = len(m.group(1).split())
+        lo, hi = _ME_RANGE
+        if not lo <= w <= hi:
+            out.append({
+                "line": 0, "kind": "section-length",
+                "snippet": (f"MAIN EVENT {w} words (contract ~300-450, "
+                            f"flag outside {lo}-{hi})")[:200],
+            })
+    mb = re.search(r"^## (?:3\. )?BRIEFS\s*$(.*?)(?=^## )",
+                   md_text, re.M | re.S)
+    if mb:
+        for bm in re.finditer(r"^### (.+?)$\n(.*?)(?=^### |\Z)",
+                              mb.group(1), re.M | re.S):
+            w = len(bm.group(2).split())
+            lo, hi = _BRIEF_RANGE
+            if not lo <= w <= hi:
+                out.append({
+                    "line": 0, "kind": "section-length",
+                    "snippet": (f"brief {bm.group(1)[:40]!r} {w} words "
+                                f"(contract ~110-180, flag outside "
+                                f"{lo}-{hi})")[:200],
+                })
+    return out
+
+
 def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
     """Scan final-pulse markdown for banned patterns. Returns list of
     issue dicts: {line, kind, snippet}.
@@ -382,6 +425,7 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
     # measured rate, because this is a document-level property — flagging
     # each gloss individually would just recreate the old noise.
     issues.extend(_check_gloss_density(scan_text))
+    issues.extend(_check_section_lengths(md_text))
 
     # Slot-stat-overlap scan (soft — structural, SCRUB can't fix).
     # 2026-06-04 QC flagged adjacent INSIGHTS slots citing the same
