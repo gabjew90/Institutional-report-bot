@@ -102,11 +102,21 @@ def render_pages_to_images(
     return images
 
 
-def extract_pdf(pdf_path: str | Path, selected_pages: list[int] | None = None) -> PdfExtraction:
-    """Full extraction: text from all pages + images of selected pages."""
+def extract_pdf(
+    pdf_path: str | Path,
+    selected_pages: list[int] | None = None,
+    pages: list[PageText] | None = None,
+) -> PdfExtraction:
+    """Full extraction: text from all pages + images of selected pages.
+
+    `pages` (2026-08-20): the orchestrator already ran
+    extract_text_per_page for triage — pass those through instead of
+    re-opening and re-extracting the same file (pointless on 90-page
+    diaries)."""
     pdf_path = Path(pdf_path)
 
-    pages = extract_text_per_page(pdf_path)
+    if pages is None:
+        pages = extract_text_per_page(pdf_path)
     full_text = "\n\n".join(f"[Page {p.page_number + 1}]\n{p.text}" for p in pages)
 
     images = []

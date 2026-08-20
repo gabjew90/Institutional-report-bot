@@ -373,6 +373,20 @@ async def analyze_pdf_deep(
             break
         if attempt == 1:
             new_cap = max(8192, (max_out or 4096) * 2)
+            # Reserve the retry's extra output before refiring (2026-08-20
+            # review: the second call was unbudgeted). Input was already
+            # covered by attempt 1's reservation; the delta is output cap.
+            try:
+                get_budget().reserve_or_raise(
+                    estimated_tokens=new_cap,
+                    caller=f"pdf_deep_retry:{file_name[:40]}",
+                )
+            except BudgetExceeded as e:
+                log.warning(
+                    f"Truncation retry for {file_name} skipped — "
+                    f"token budget: {e}"
+                )
+                break
             log.warning(
                 f"Deep analysis for {file_name} truncated at "
                 f"max_output_tokens={max_out} — retrying with {new_cap}"
@@ -493,27 +507,3 @@ async def analyze_pdf_deep(
     )
     return analysis
 
-
-async def analyze_batch(
-    items: list[tuple[int, str, PdfExtraction, str]],
-) -> list[PdfAnalysis]:
-    """Process multiple PDFs concurrently.
-
-    Items: list of (pdf_file_id, file_name, extraction, priority)
-    Rate limiter handles concurrency internally.
-    """
-    tasks = [
-        analyze_pdf_deep(pdf_id, fname, extraction, priority)
-        for pdf_id, fname, extraction, priority in items
-    ]
-    results = await asyncio.gather(*tasks, return_exceptions=True)
-
-    analyses = []
-    for i, result in enumerate(results):
-        if isinstance(result, Exception):
-            pdf_id, fname, _, _ = items[i]
-            log.error(f"Analysis failed for {fname} (id={pdf_id}): {result}")
-        else:
-            analyses.append(result)
-
-    return analyses

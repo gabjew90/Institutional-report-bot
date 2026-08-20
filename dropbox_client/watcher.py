@@ -147,7 +147,11 @@ def poll_and_download() -> list[dict]:
 
     downloaded = []
     for entry in new_files:
-        # Skip if already in database
+        # Skip if already in database. INTENTIONAL: dedup is by path only.
+        # A bank re-uploading a corrected PDF at the same path (new rev)
+        # is skipped — rev is stored but not compared. Accepted for this
+        # feed: banks version by filename ("...v2.pdf"), and reprocessing
+        # same-path re-uploads would re-analyze on every metadata touch.
         existing = db.get_pdf_by_path(entry.path)
         if existing:
             continue
@@ -179,9 +183,32 @@ def poll_and_download() -> list[dict]:
             log.info(f"Registered PDF: {entry.name} (id={pdf_id})")
         except Exception as e:
             log.error(f"Failed to download {entry.path}: {e}")
-            db.log_event(None, "download", "failed", f"{entry.path}: {e}")
+            # Register a FAILED row BEFORE the cursor advances (2026-08-20
+            # review, HIGH): the cursor moves past this entry permanently
+            # below, so without a row the PDF was silently gone unless
+            # someone ran /load. With the row, the processing queue's
+            # retry sweep picks it up and process_single_pdf re-downloads
+            # from dropbox_path.
+            try:
+                pdf_id = db.insert_pdf_file(
+                    dropbox_path=entry.path,
+                    file_name=entry.name,
+                    local_path=str(local_path),
+                    dropbox_rev=entry.rev,
+                    file_size_bytes=entry.size,
+                    dropbox_modified_at=entry.server_modified,
+                    status="FAILED",
+                )
+                db.log_event(
+                    pdf_id or None, "download", "failed",
+                    f"{entry.path}: {e} — registered for retry sweep",
+                )
+            except Exception as e2:
+                log.error(f"Could not register failed download row: {e2}")
+                db.log_event(None, "download", "failed", f"{entry.path}: {e}")
 
-    # Update cursor only after successful processing
+    # Advance the cursor: every entry now has a pdf_files row (DOWNLOADED
+    # or FAILED-for-retry), so nothing is lost by moving past it.
     db.update_dropbox_cursor(cursor)
     log.info(f"Dropbox poll complete. Downloaded {len(downloaded)} new PDF(s)")
     return downloaded

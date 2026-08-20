@@ -46,10 +46,14 @@ usage from `usage_metadata`.
 
 STATE
 =====
-Counter resets at UTC midnight. Persists in DB via
-`pipeline_events` for cross-process visibility (the bot process and
-any cron-spawned scripts share the same counter when they query
-`get_budget()`).
+Counter resets at UTC midnight. **PROCESS-MEMORY ONLY** (docstring
+corrected 2026-08-20 — it previously claimed DB persistence that was
+never implemented): a worker restart mid-day resets the counter to
+zero, and a separately-spawned process gets its own fresh budget.
+Only hard-stop rejections are written to `pipeline_events`, as an
+audit trail, not as shared state. Treat this as a soft cap against
+runaway single-process loops, NOT a durable daily spend ceiling —
+the real ceiling is the spend cap at ai.studio/spend.
 
 The budget is configurable via env var `GEMINI_DAILY_TOKEN_BUDGET`
 (default: 4_000_000 tokens — ~$1.60/day at Flash Lite input prices,

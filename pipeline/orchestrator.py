@@ -11,7 +11,7 @@ from dataclasses import asdict
 from datetime import date, datetime
 from pathlib import Path
 
-from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep, analyze_batch
+from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep
 from ai_analysis.models import PdfAnalysis
 from dropbox_client.watcher import list_folder_files, download_file, _get_client
 from pdf_processing.extractor import extract_text_per_page, extract_pdf
@@ -37,9 +37,29 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
     folder_path = str(Path(dropbox_path).parent) if dropbox_path else ""
 
     if not local_path or not Path(local_path).exists():
-        log.error(f"PDF file not found: {local_path}")
-        db.update_pdf_status(pdf_id, "FAILED", "Local file not found")
-        return None
+        # Missing-file recovery (2026-08-20): re-download from Dropbox
+        # instead of burning a retry on "file not found". This is the
+        # retry path for downloads that failed at poll time (the watcher
+        # registers those as FAILED rows so the cursor can advance) and
+        # for local files lost to a volume wipe.
+        if dropbox_path and local_path:
+            try:
+                from dropbox_client.watcher import download_file
+                Path(local_path).parent.mkdir(parents=True, exist_ok=True)
+                await asyncio.to_thread(
+                    download_file, dropbox_path, Path(local_path))
+                db.log_event(pdf_id, "download", "completed",
+                             "re-downloaded by retry sweep")
+                log.info(f"Re-downloaded missing PDF: {file_name}")
+            except Exception as e:
+                log.error(f"Re-download failed for {dropbox_path}: {e}")
+                db.update_pdf_status(
+                    pdf_id, "FAILED", f"re-download failed: {str(e)[:200]}")
+                return None
+        if not local_path or not Path(local_path).exists():
+            log.error(f"PDF file not found: {local_path}")
+            db.update_pdf_status(pdf_id, "FAILED", "Local file not found")
+            return None
 
     try:
         db.update_pdf_status(pdf_id, "PROCESSING")
@@ -104,7 +124,10 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
             # Deep analysis — text-only by default; multimodal triggers
             # selectively for top-bank equity research / vol / derivatives
             # via _should_run_multimodal() in analyzer.py
-            extraction = await asyncio.to_thread(extract_pdf, local_path, None)
+            # pages from the triage extraction are reused — extract_pdf
+            # skips its own re-extraction when they're passed (2026-08-20)
+            extraction = await asyncio.to_thread(
+                extract_pdf, local_path, None, pages)
             analysis = await analyze_pdf_deep(
                 pdf_file_id=pdf_id,
                 file_name=file_name,

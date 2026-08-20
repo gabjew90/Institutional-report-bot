@@ -833,15 +833,20 @@ def insert_pdf_file(
     dropbox_rev: str | None = None,
     file_size_bytes: int | None = None,
     dropbox_modified_at: str | None = None,
+    status: str = "DOWNLOADED",
 ) -> int:
+    """`status` param (2026-08-20): the watcher registers a FAILED row
+    for a download that exhausted its retries, so the cursor can advance
+    without silently dropping the file — the retry sweep re-downloads it
+    (see process_single_pdf's missing-file recovery)."""
     conn = get_connection()
     cur = conn.execute(
         """INSERT OR IGNORE INTO pdf_files
            (dropbox_path, file_name, local_path, dropbox_rev, file_size_bytes,
             dropbox_modified_at, downloaded_at, status)
-           VALUES (?, ?, ?, ?, ?, ?, ?, 'DOWNLOADED')""",
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
         (dropbox_path, file_name, local_path, dropbox_rev, file_size_bytes,
-         dropbox_modified_at, datetime.utcnow().isoformat()),
+         dropbox_modified_at, datetime.utcnow().isoformat(), status),
     )
     conn.commit()
     return cur.lastrowid
