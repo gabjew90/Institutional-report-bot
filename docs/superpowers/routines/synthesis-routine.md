@@ -106,6 +106,9 @@ This step also bootstraps the routine's observability layer:
 # stdout+stderr through `tee -a /tmp/routine.log` so commit_failure can
 # include the last N lines as failure context.
 : > /tmp/routine.log
+# Fresh driver state per fire — the preflight audits THIS run's gate
+# trail, not a stale one (scripts/pulse_driver.py, 2026-08-20).
+rm -f /tmp/driver_state.json
 
 python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log
 import urllib.request, urllib.error, time, os, json, base64, datetime, traceback, glob
@@ -459,7 +462,13 @@ else:
 PYEOF
 ```
 
-**If `/tmp/holiday_skip.txt` exists: STOP the routine here.** Do exactly two things, then end:
+Then consult the driver — read the literal token:
+
+```bash
+python3 scripts/pulse_driver.py gate holiday 2>&1 | tee -a /tmp/routine.log
+```
+
+**If `DECISION: SKIP_PULSE`: STOP the routine here.** Do exactly two things, then end:
 
 1. Commit a skip marker to `pulse-output/qc-reviews/<ts>.md` (via the `mcp__github__*` transport, per the COMMIT TRANSPORT override) with this content — a missing pulse must be self-documenting, never a mystery to debug:
 
@@ -546,6 +555,7 @@ if count < MIN_PDFS:
 else:
     print(f"volume gate: pdf_count={count} — proceed")
 PYEOF
+python3 scripts/pulse_driver.py gate volume 2>&1 | tee -a /tmp/routine.log
 python3 /tmp/progress.py "STEP_2_2_DONE"
 ```
 
@@ -1402,12 +1412,22 @@ Run `scripts/pulse_draft_validate.py` against `/tmp/draft.md` + `/tmp/ctx.json`.
 - **SOFT `numeric-scope-drift`**: an INSIGHTS figure (e.g. `119%`) is attached to a subject the source never used for that number — a segment stat re-scoped to a broader subject (a memory figure called "industry sales"). The number is real and present in the corpus, so it's not a fabrication; only its scope drifted. Fuzzy semantic check, so it's soft: it can false-positive on a legitimately-grounded figure that the source really did scope broadly, which is why it never blocks. See the Exit 4 handling — flagged figures get re-verified in the EDIT pass, not silently shipped.
 
 ```bash
-python3 scripts/pulse_draft_validate.py /tmp/draft.md /tmp/ctx.json /tmp/draft_validation.json
-VALIDATOR_EXIT=$?
-echo "DRAFT validator exit code: $VALIDATOR_EXIT"
+python3 scripts/pulse_driver.py gate draft_validate 2>&1 | tee -a /tmp/routine.log
 ```
 
-Decision logic (read literal exit code; do NOT infer from prose):
+The driver runs the validator itself, applies the exit-code decision
+table below, tracks the max-2 re-roll budget, and prints a literal
+`DECISION:` token. Act on the TOKEN, not on your reading of the prose:
+
+- **`DECISION: REROLL_DRAFT`** — re-dispatch DRAFT with the contents of
+  `/tmp/draft_reroll_feedback.txt` (written by the driver) appended to
+  the DRAFT prompt. Then run `gate draft_validate` again.
+- **`DECISION: CONTINUE`** — proceed to STEP 5. If the driver wrote
+  `/tmp/edit_verify_items.txt` (exit-4 numeric-scope-drift carry),
+  append its contents to the EDIT prompt in STEP 5b.
+
+Background on what the validator checks and why (the decision itself is
+the driver's now):
 
 - **Exit 0** — clean. Proceed to STEP 5.
 - **Exit 3** — HARD violations. Re-dispatch DRAFT with the violations surfaced as fix-this feedback. Read the violation messages from `/tmp/draft_validation.json` and append them to the DRAFT prompt as:
@@ -1500,9 +1520,16 @@ Mechanical check before commit. Single source of truth: `ai_analysis/voice_rules
 The repo is already cloned in the routine sandbox via `session_context.sources`, so `scripts/pulse_lint.py` runs directly with `python3` and resolves its `from ai_analysis.voice_rules import ...` against the cloned tree.
 
 ```bash
-python3 scripts/pulse_lint.py /tmp/final.md /tmp/lint_report.json /tmp/ctx.json
+python3 scripts/pulse_driver.py gate lint 2>&1 | tee -a /tmp/routine.log
 python3 /tmp/progress.py "STEP_5_5_LINT_DONE"
 ```
+
+The driver runs the linter, reads the `.decision` sidecar (the SINGLE
+authority on hard vs soft), and prints the literal token:
+
+- **`DECISION: SKIP_SCRUB`** — skip STEP 5.7 entirely. Do NOT dispatch
+  SCRUB. Proceed to the end-of-5.7 progress event, then STEP 5.75.
+- **`DECISION: DISPATCH_SCRUB`** — continue to Step 5.7.2.
 
 The script prints a human-readable summary inline (issue count, breakdown by kind, first 20 examples with line + snippet). Full structured issues are written to `/tmp/lint_report.json` for STEP 6 to commit alongside the pulse.
 
@@ -1585,17 +1612,14 @@ fi
 
 This is intentionally redundant with the 5.7.1 gate AND the 5.7.2 conditional dispatch — three layers of enforcement because each previous layer has been bypassed at least once.
 
-Re-run the lint scan against the (possibly reverted) markdown:
+Re-run the lint through the driver, which compares hard counts against the pre-SCRUB run, tracks the max-2 SCRUB budget, and prints the literal token:
 
 ```bash
-python3 scripts/pulse_lint.py /tmp/final.md /tmp/lint_report.json /tmp/ctx.json
+python3 scripts/pulse_driver.py gate scrub_relint 2>&1 | tee -a /tmp/routine.log
 ```
 
-Check the new hard-issue count:
-
-- **0 hard issues** → great, proceed to STEP 6.
-- **>0 hard issues, but fewer than before** → SCRUB made progress. Dispatch ONE more SCRUB pass (same prompt, fresh UUID, with the new lint report). Re-lint. Accept whatever lint reports after this second pass — proceed to STEP 6 even if residuals exist. The residual lint report ships with the pulse for inspection.
-- **>0 hard issues, no progress** → log `WARNING: SCRUB did not reduce lint issues` and proceed to STEP 6 anyway. Don't loop forever — the pulse must ship.
+- **`DECISION: REDISPATCH_SCRUB`** — SCRUB made progress but hard issues remain and budget allows one more pass. Dispatch ONE more SCRUB (same prompt, fresh UUID, with the new `/tmp/lint_report.json`), then run `gate scrub_relint` again.
+- **`DECISION: CONTINUE`** — proceed to STEP 5.75 (either clean, or residuals ship with the lint report; the driver's detail line says which).
 
 After SCRUB completes (or if SCRUB was skipped), commit a progress event:
 
@@ -1614,56 +1638,13 @@ If lint reports issues, the SCRUB pass (above) is supposed to handle them automa
 STEP 4.5 validated the DRAFT — but EDIT (a full-document rewrite that injects live market data, the highest fact-risk operation in the pipeline) and SCRUB (a second full rewrite) both mutate the document AFTER that check, and until 2026-08-04 only the voice regexes re-ran on the result. Anything they introduced — a wrong weekday, an estimate shipped as the print, a deleted `## _LEANS` block, a dropped MAIN EVENT lean — shipped unchecked. This step closes that gap. It MUST run before STEP 5.8 (the strip removes `## _LEANS`, which the validator's leans checks need).
 
 ```bash
-python3 scripts/pulse_draft_validate.py /tmp/final.md /tmp/ctx.json /tmp/final_validation.json
-FINAL_VALIDATOR_EXIT=$?
-echo "FINAL validator exit code: $FINAL_VALIDATOR_EXIT"
+python3 scripts/pulse_driver.py gate final_validate 2>&1 | tee -a /tmp/routine.log
 ```
 
-Then compare against the DRAFT run and act deterministically:
+The driver re-runs the validator on `/tmp/final.md`, computes the EDIT/SCRUB-introduced hard delta against the DRAFT run, deterministically restores a deleted `## _LEANS` block from `/tmp/draft.md` (an empty trade board is a silent product failure and needs no LLM to fix), writes `/tmp/final_new_hard.json`, and prints the literal token:
 
-```bash
-python3 << 'PYEOF'
-import json, re
-
-final = json.load(open('/tmp/final_validation.json'))
-try:
-    draft = json.load(open('/tmp/draft_validation.json'))
-except Exception:
-    draft = {"violations": []}
-
-draft_kinds = {v.get('kind') for v in draft.get('violations') or []}
-new_hard = [
-    v for v in final.get('violations') or []
-    if v.get('kind') in {
-        'duplicate-sibling-sections', 'contrarian-buried-in-appendix',
-        'main-event-lean-missing', 'leans-block-missing',
-        'weekday-date-mismatch', 'released-figure-mismatch',
-        'consensus-amnesia',
-    } and v.get('kind') not in draft_kinds
-]
-
-# Deterministic repair: a ## _LEANS block deleted by EDIT/SCRUB is
-# restored verbatim from the DRAFT — an empty trade board is a silent
-# product failure and needs no LLM to fix.
-if any(v.get('kind') == 'leans-block-missing' for v in new_hard):
-    draft_md = open('/tmp/draft.md', encoding='utf-8').read()
-    m = re.search(r'^## _LEANS\n.*?(?=^## |\Z)', draft_md,
-                  re.M | re.S)
-    if m:
-        with open('/tmp/final.md', 'a', encoding='utf-8') as f:
-            f.write('\n\n' + m.group(0).rstrip() + '\n')
-        print('RESTORED: ## _LEANS spliced back from /tmp/draft.md')
-        new_hard = [v for v in new_hard
-                    if v.get('kind') != 'leans-block-missing']
-
-with open('/tmp/final_new_hard.json', 'w') as f:
-    json.dump(new_hard, f, indent=1)
-print(f'FINAL_NEW_HARD: {len(new_hard)}')
-PYEOF
-```
-
-- **`FINAL_NEW_HARD: 0`** → proceed to STEP 5.8.
-- **`FINAL_NEW_HARD: >0`** → dispatch ONE FIXUP sub-agent (same contract as SCRUB: rewrite ONLY the flagged lines, change nothing else) with the violations from `/tmp/final_new_hard.json`, then re-run this step's validator ONCE. If violations persist after that single pass, log `WARNING: final validation residuals` and proceed — the pulse must ship, and `/tmp/final_validation.json` is committed with the QC artifacts in STEP 6 so the residuals are visible, not silent.
+- **`DECISION: CONTINUE`** → proceed to STEP 5.8.
+- **`DECISION: DISPATCH_FIXUP`** → dispatch ONE FIXUP sub-agent (same contract as SCRUB: rewrite ONLY the flagged lines, change nothing else) with the violations from `/tmp/final_fixup_violations.json`, then run `python3 scripts/pulse_driver.py gate final_validate --recheck` ONCE. The recheck prints `CONTINUE` either way (clean, or residuals recorded for QC) — but it MUST run: the commit preflight refuses if FIXUP was dispatched and the recheck never happened.
 - Violations the DRAFT run already carried (waived at 4.5 after its re-roll budget) do not re-block here — this gate exists to catch what EDIT/SCRUB *introduced*.
 
 ```bash
@@ -1677,8 +1658,10 @@ EDIT and DRAFT prompts emit `## _DRAFT NOTES` and `## _EDIT NOTES` sections cont
 This step is mechanical: a regex-based scan that removes any H2 header beginning with `## _` and its body up to the next non-internal H2 (or EOF). Idempotent — safe to run multiple times.
 
 ```bash
-python3 scripts/pulse_strip_internal_notes.py /tmp/final.md 2>&1 | tee -a /tmp/routine.log
+python3 scripts/pulse_driver.py gate strip 2>&1 | tee -a /tmp/routine.log
 ```
+
+(The driver runs `scripts/pulse_strip_internal_notes.py` and then verifies no `## _` header other than `## _LEANS` survived.)
 
 The script prints either `stripped N chars from /tmp/final.md` or `no internal-notes sections found in /tmp/final.md`. The latter is fine — the EDIT/DRAFT prompts may not have emitted notes on a clean run.
 
@@ -1693,6 +1676,16 @@ python3 /tmp/progress.py "STEP_5_8_STRIP_DONE"
 ```
 
 ## STEP 6 — Compose with frontmatter and commit BOTH files (PRODUCTION — ALL CHANNELS)
+
+**MANDATORY PREFLIGHT — the commit choke point.** Before composing anything, run:
+
+```bash
+python3 scripts/pulse_driver.py preflight 2>&1 | tee -a /tmp/routine.log
+```
+
+- **`DECISION: PASS`** — proceed with the commit below.
+- **`DECISION: BLOCK`** — do NOT commit. The output names each problem (a gate that was never consulted, a FIXUP without its recheck, a SCRUB dispatch without its relint, a missing or leaking artifact). Fix exactly what it names — usually by running the named `gate` command — then re-run preflight. There is no legitimate path to STEP 6's commit while preflight says BLOCK; a BLOCK override is not a judgment call available to this routine.
+
 
 > **TRANSPORT (see the COMMIT TRANSPORT override near the top):** the `urllib` PUT in the heredoc below WILL 403 in this environment. Use it to BUILD the pulse content and write it to `/tmp/final_with_frontmatter.md`, then commit that file to `pulse-output/pending/<ts>.md` (and each other artifact to its path) via the `mcp__github__*` GitHub tool. The bridge posts only what reaches `pulse-output/pending/`, so this commit is terminal-critical.
 
