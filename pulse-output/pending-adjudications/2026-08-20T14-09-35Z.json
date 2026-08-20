@@ -1,0 +1,178 @@
+{
+  "pulse_date": "2026-08-20",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "us treasury long end dynamics",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 6,
+        "skeptical": 5,
+        "neutral": 9
+      },
+      "consensus_view": "Banks agree the Treasury doubled its buybacks of long-dated bonds to hold down long-term borrowing costs, but they split on whether that durably lowers yields or simply pushes the strain onto a weaker dollar.",
+      "facts_agreed": [
+        {
+          "claim": "The Treasury has doubled its buybacks of long-dated bonds to hold down long-term borrowing costs and signal support for the long end.",
+          "banks_for": ["Citi", "Barclays", "Goldman Sachs", "Deutsche Bank"],
+          "evidence_quotes": [
+            "Treasury’s actions should send a very strong signal to the market.",
+            "The Treasury is signaling that recent pressure on long-end yields has not gone unnoticed.",
+            "Treasury is showing a strong preference to subdue term premium.",
+            "buyback represented a soft-form financial repression policy aimed at containing the long-end"
+          ]
+        },
+        {
+          "claim": "Supporting long-dated bonds this way is negative for the US dollar.",
+          "banks_for": ["Deutsche Bank", "Goldman Sachs", "TS Lombard"],
+          "evidence_quotes": [
+            "we see both developments as negative for the dollar",
+            "Supporting bonds may come at the expense of letting the USD become the adjustment valve.",
+            "if you operate procyclical fiscal policy, should be hiking and you keep on shortening the debt maturity, that is a recipe for dollar weakness."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether Treasury buybacks durably lower long-end yields",
+          "banks_for": ["Citi", "Goldman Sachs"],
+          "for_evidence": "Treasury’s actions should send a very strong signal to the market.",
+          "banks_against": ["JPMorgan", "Bloomberg"],
+          "against_evidence": "today’s actions are likely to have a fleeting impact on long-end yields"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai capital expenditure",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 2,
+        "neutral": 6
+      },
+      "consensus_view": "Banks agree the money pouring into AI computing and power is a major driver of growth right now, but they split on whether the borrowing behind it can hold up, so there is no settled call on where the spending cycle lands.",
+      "facts_agreed": [
+        {
+          "claim": "Heavy AI infrastructure spending is treated as an active, front-of-mind investment theme, with money flowing first into power and energy before data centers.",
+          "banks_for": ["UBS", "J. Safra Sarasin"],
+          "evidence_quotes": [
+            "AI investment is a very significant growth driver.",
+            "Power/energy came first, ahead of data center infrastructure."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI spending cycle is financially sustainable",
+          "banks_for": ["UBS"],
+          "for_evidence": "AI investment is a very significant growth driver.",
+          "banks_against": ["The Market Ear"],
+          "against_evidence": "hyperscaler CapEx-needs trigger 'competition for capital' that is crushing sovereigns"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fomc july meeting minutes",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 4},
+      "consensus_view": "Four desks flag the July Federal Reserve meeting minutes as a live macro focus, with Deutsche Bank and JPMorgan reading a lean toward keeping interest rates higher for longer, but nobody has staked a clear directional trade yet.",
+      "facts_agreed": [
+        {
+          "claim": "Four desks reference the July Federal Reserve meeting minutes as a near-term macro focal point.",
+          "banks_for": ["Goldman Sachs", "Deutsche Bank", "Bloomberg", "JPMorgan"],
+          "evidence_quotes": ["FOMC July hike miss", "FOMC July minutes hawkish bias", "July FOMC meeting deliberations", "FOMC minutes hawkish shift"]
+        },
+        {
+          "claim": "Deutsche Bank and JPMorgan read the minutes as leaning toward higher-for-longer interest rates.",
+          "banks_for": ["Deutsche Bank", "JPMorgan"],
+          "evidence_quotes": ["FOMC July minutes hawkish bias", "FOMC minutes hawkish shift"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait tensions",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 4},
+      "consensus_view": "Four bank desks flag rising US-Iran friction and a possible shutdown of the Strait of Hormuz shipping lane as a live oil-supply risk, but none has staked out a directional price call.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference escalating US-Iran tensions and a potential Strait of Hormuz shipping disruption as an active geopolitical risk this window, without taking a directional view.",
+          "banks_for": ["JPMorgan", "J. Safra Sarasin", "Deutsche Bank", "The Market Ear"],
+          "evidence_quotes": ["US military shipping corridor in Strait of Hormuz", "US-Iran conflict and Strait of Hormuz tensions", "Strait of Hormuz blockage", "US-Iran geopolitical tensions", "Strait of Hormuz standoff"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "broadening stock rally",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 0, "neutral": 2},
+      "consensus_view": "Only UBS takes a directional view, arguing now is the time to spread stock bets beyond concentrated US AI names into European and Asian markets, and no bank has argued the other side.",
+      "facts_agreed": [
+        {
+          "claim": "UBS says investors should position for the rally to broaden beyond concentrated US AI holdings.",
+          "banks_for": ["UBS"],
+          "evidence_quotes": ["Now may be the right time to position for a broadening stock rally."]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "momentum factor selloff",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 1, "neutral": 3},
+      "consensus_view": "A sharp momentum-stock selloff, a roughly 4.7 standard deviation move that is far outside the normal range, is forcing systematic hedge funds into their worst losses in years, and Goldman reads it as a crowded-positioning unwind rather than the start of a lasting trend break.",
+      "facts_agreed": [
+        {
+          "claim": "Momentum stocks are in a sharp multi-day drawdown, led by semiconductors and AI names, large enough to hit systematic hedge funds.",
+          "banks_for": ["Goldman Sachs", "multiple desks (unattributed)"],
+          "evidence_quotes": ["global momentum down 4.7 SD", "Semis and AI momentum drawdown", "Momentum factor drawdown", "momentum unwind in equity markets"]
+        },
+        {
+          "claim": "The internal composition of the momentum factor is shifting, with short-term and long-term momentum winners overlapping far less than usual.",
+          "banks_for": ["Goldman Sachs"],
+          "evidence_quotes": ["The overlap between 12-month winners and 3-month winners is at multi-year lows."]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hyperscaler spending",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Three banks flag spending by the big cloud providers as a live topic, covering how fast their cloud sales are growing, their AI investment, and how much of the bond market their borrowing takes up, but none has taken a clear bullish or bearish stance yet.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference hyperscaler spending as an active topic, spanning cloud spending growth, AI investment, and their concentration as bond issuers, without any staking a directional view.",
+          "banks_for": ["UBS", "Goldman Sachs", "JPMorgan"],
+          "evidence_quotes": ["hyperscaler spending growth", "Hyperscaler AI spending", "Hyperscaler issuer concentration"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed policy expectations",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 3},
+      "consensus_view": "Three desks flag what the Federal Reserve does next on interest rates as a live question, but none has staked out a directional call on the timing or size of moves.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag Fed rate policy and its uncertain path as an active near-term focus this window.",
+          "banks_for": ["BTIG", "JPMorgan", "Bloomberg"],
+          "evidence_quotes": ["Fed inflation expectations showdown", "Fed policy expectations", "Fed policy reaction function uncertainty"]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
