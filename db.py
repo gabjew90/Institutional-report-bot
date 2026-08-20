@@ -443,6 +443,18 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         -- wins) so a later re-claim of a released username cannot
         -- inherit protection. Runtime protected set = env-var IDs union
         -- this table.
+        -- Symbol market-cap cache (2026-08-20, daily calendar graphic).
+        -- Finnhub /stock/profile2 lookups are paced at ~1/s under the
+        -- free 60/min limit; a 7-day TTL keeps the nightly refresh to
+        -- the handful of symbols not seen this week. cap in $M as
+        -- Finnhub returns it; name rides along for the render.
+        CREATE TABLE IF NOT EXISTS symbol_market_cap (
+            symbol TEXT PRIMARY KEY,
+            market_cap_musd REAL,
+            name TEXT,
+            fetched_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+
         -- Sleeper player-ID -> name cache (2026-08-20). The fantasy
         -- /ask tool needs id->name translation for rosters/matchups/
         -- transactions; Sleeper's full players dump is ~15MB so it is
@@ -5955,3 +5967,62 @@ def sleeper_players_cache_age_hours() -> float | None:
         return (datetime.now(timezone.utc) - ts).total_seconds() / 3600.0
     except ValueError:
         return None
+
+
+# ---------------------------------------------------------------------
+# Symbol market-cap cache (2026-08-20, daily calendar graphic)
+# ---------------------------------------------------------------------
+
+def get_market_caps(symbols: list[str], max_age_days: int = 7) -> dict:
+    """symbol -> {'cap': float_musd, 'name': str} for cache rows fresher
+    than max_age_days. Symbols missing or stale are absent — the caller
+    fetches those from Finnhub and upserts."""
+    symbols = [s for s in symbols if s]
+    if not symbols:
+        return {}
+    out: dict = {}
+    conn = get_connection()
+    for i in range(0, len(symbols), 500):
+        chunk = symbols[i:i + 500]
+        placeholders = ",".join("?" * len(chunk))
+        rows = conn.execute(
+            f"SELECT symbol, market_cap_musd, name FROM symbol_market_cap "
+            f"WHERE symbol IN ({placeholders}) "
+            f"AND fetched_at >= datetime('now', ?)",
+            [*chunk, f"-{int(max_age_days)} days"],
+        ).fetchall()
+        for r in rows:
+            out[r["symbol"]] = {
+                "cap": r["market_cap_musd"] or 0.0,
+                "name": r["name"] or r["symbol"],
+            }
+    return out
+
+
+def upsert_market_caps(rows: list[tuple]) -> int:
+    """rows: (symbol, market_cap_musd, name). Upsert with a fresh
+    fetched_at. A failed profile lookup should be stored as (sym, 0, sym)
+    so it still gets the 7-day TTL instead of re-fetching nightly."""
+    if not rows:
+        return 0
+    conn = get_connection()
+    conn.executemany(
+        "INSERT OR REPLACE INTO symbol_market_cap "
+        "(symbol, market_cap_musd, name, fetched_at) "
+        "VALUES (?, ?, ?, datetime('now'))",
+        rows,
+    )
+    conn.commit()
+    return len(rows)
+
+
+def calendar_already_posted(date_iso: str) -> bool:
+    """Idempotency check for the daily calendar graphic — True when a
+    calendar_posted pipeline event exists for this date (spec §6: no
+    re-post on reboot)."""
+    row = get_connection().execute(
+        "SELECT 1 FROM pipeline_events WHERE event_type = 'calendar_posted' "
+        "AND payload LIKE ? LIMIT 1",
+        (f'%{date_iso}%',),
+    ).fetchone()
+    return row is not None

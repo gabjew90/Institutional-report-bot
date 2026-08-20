@@ -852,3 +852,81 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
     if len(out) <= 1:
         return "ECONOMIC CALENDAR: no high-impact releases in window."
     return "\n".join(out)
+
+
+# ---------------------------------------------------------------------
+# Daily calendar graphic fetchers (2026-08-20). Unlike everything above,
+# these return structured rows, not prompt strings — the consumer is
+# report/calendar_data.py, not a Gemini prompt.
+# ---------------------------------------------------------------------
+
+def fetch_earnings_calendar_all(date_iso: str) -> list[dict] | None:
+    """Every earnings row for one date, UNFILTERED (the pulse fetcher
+    above filters to _MAJOR_TICKERS; the calendar graphic ranks the full
+    list by market cap instead). Returns None on fetch failure so the
+    caller can distinguish 'feed down' from 'zero earnings today'."""
+    key = settings.finnhub_api_key
+    if not key:
+        return None
+    url = (
+        f"https://finnhub.io/api/v1/calendar/earnings"
+        f"?from={date_iso}&to={date_iso}"
+        f"&token={urllib.parse.quote(key)}"
+    )
+    data = _fetch_json(url, timeout=15.0)
+    if data is None:
+        return None
+    return data.get("earningsCalendar", []) or []
+
+
+def fetch_symbol_profiles(
+    symbols: list[str], pace_seconds: float = 1.1
+) -> dict:
+    """symbol -> {'cap': musd_float, 'name': str} via Finnhub profile2,
+    paced under the free 60/min limit. A symbol with no profile (fresh
+    IPO, delisting, bogus) returns cap 0 so it sorts last but is still
+    shown. Verified 2026-08-20: unknown symbols are HTTP 200 + {}, and
+    a 40-call paced run was 40/40."""
+    import time as _time
+    key = settings.finnhub_api_key
+    out: dict = {}
+    if not key:
+        return out
+    for i, sym in enumerate(symbols):
+        url = (
+            f"https://finnhub.io/api/v1/stock/profile2"
+            f"?symbol={urllib.parse.quote(sym)}"
+            f"&token={urllib.parse.quote(key)}"
+        )
+        p = _fetch_json(url) or {}
+        out[sym] = {
+            "cap": float(p.get("marketCapitalization") or 0.0),
+            "name": (p.get("name") or sym),
+        }
+        if i < len(symbols) - 1:
+            _time.sleep(pace_seconds)
+    return out
+
+
+def fetch_us_econ_events_for_date(date_iso: str) -> list[dict] | None:
+    """US medium/high-impact economic events for one date, from the
+    ForexFactory feed the pulse already uses. Rows: {'event', 'time'
+    (UTC ISO), 'impact', 'estimate', 'prev'}. None = feed down (vs []
+    = genuinely quiet day)."""
+    try:
+        events = _fetch_ff_economic_events()
+    except Exception as e:
+        log.warning(f"FF econ fetch failed for calendar graphic: {e}")
+        return None
+    if not events:
+        return None
+    out = []
+    for e in events:
+        if (e.get("country") or "").upper() not in ("US", "USD"):
+            continue
+        if (e.get("impact") or "").lower() not in ("high", "medium"):
+            continue
+        if not (e.get("time") or "").startswith(date_iso):
+            continue
+        out.append(e)
+    return out

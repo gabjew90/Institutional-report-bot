@@ -395,6 +395,25 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             f"05:30 {settings.timezone}"
         )
 
+    # Daily Omnibeta calendar graphic (2026-08-20). 00:00 UTC Mon-Fri —
+    # UTC deliberately, NOT the scheduler's local tz: Monday 00:00 UTC
+    # is Sunday evening ET, giving Sun-Thu-night sheets that each cover
+    # the next US session (spec §2). Registered unconditionally: unlike
+    # the pulse jobs it does not depend on the bridge.
+    from pytz import utc as _utc
+    scheduler.add_job(
+        _daily_calendar_job,
+        trigger=CronTrigger(day_of_week="mon-fri", hour=0, minute=0,
+                            timezone=_utc),
+        id="daily_calendar",
+        name="Daily Omnibeta calendar graphic",
+        kwargs={"bot": bot},
+        max_instances=1,
+        misfire_grace_time=3600,
+    )
+    log.info("Daily calendar graphic active — 00:00 UTC Mon-Fri "
+             "(Sun-Thu nights ET)")
+
     log.info(
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
@@ -1130,3 +1149,77 @@ async def _sleeper_players_refresh_job():
         log.info(f"Sleeper players cache refreshed: {n} rows")
     except Exception as e:
         log.error(f"Sleeper players cache refresh failed: {e}")
+
+
+async def _daily_calendar_job(bot=None):
+    """Nightly Omnibeta calendar graphic (2026-08-20, spec
+    docs/superpowers/specs/2026-08-15-daily-calendar-graphic-design.md).
+    Fires 00:00 UTC Mon-Fri = Sun-Thu evening ET; covers the UTC
+    calendar date at fire time, which is the next US session. Never
+    skips silently and never posts a misleading empty sheet."""
+    import asyncio as _asyncio
+    from datetime import datetime, timezone as _tz
+    import db
+    from report.calendar_data import build_calendar_day
+    from report.calendar_render import render_calendar_png
+    from discord_bot.sender import send_file_to_channels
+
+    date_iso = datetime.now(_tz.utc).strftime("%Y-%m-%d")
+    try:
+        if db.calendar_already_posted(date_iso):
+            log.info(f"Calendar {date_iso}: already posted — skipping")
+            return
+
+        # build_calendar_day does paced Finnhub I/O (up to ~4 min on a
+        # cold cap cache) — keep it off the event loop.
+        day = await _asyncio.to_thread(build_calendar_day, date_iso)
+
+        if not day.earnings_available and not day.econ_available:
+            # Both feeds down: plain honest line, no empty sheet (§6).
+            db.record_pipeline_event(
+                "calendar_watchdog", "failed",
+                payload=f"{date_iso}: both feeds unavailable",
+            )
+            log.error(f"Calendar {date_iso}: both data feeds unavailable")
+            if bot is not None:
+                from discord_bot.sender import send_plain_messages
+                raw = (settings.discord_channel_id or "").strip()
+                for cid in [c.strip() for c in raw.split(",") if c.strip()]:
+                    try:
+                        ch = bot.get_channel(int(cid)) or \
+                            await bot.fetch_channel(int(cid))
+                        await send_plain_messages(ch, [
+                            "Tonight's calendar could not be built "
+                            "(data feeds unavailable)."
+                        ])
+                    except Exception as e:
+                        log.error(f"Calendar fallback send {cid}: {e}")
+            return
+
+        png = await _asyncio.to_thread(render_calendar_png, day)
+        if not day.earnings_available:
+            log.error(f"Calendar {date_iso}: earnings feed down — "
+                      f"posted econ-only sheet")
+        if not day.econ_available:
+            log.error(f"Calendar {date_iso}: econ feed down — "
+                      f"posted earnings-only sheet")
+
+        if bot is None:
+            log.warning(f"Calendar {date_iso}: no bot instance — rendered "
+                        f"but not posted")
+            return
+        sent = await send_file_to_channels(
+            bot, png, f"omnibeta-calendar-{date_iso}.png"
+        )
+        if sent:
+            db.record_pipeline_event(
+                "calendar_posted", "completed",
+                payload=f"{date_iso}: {sent} channel(s), "
+                        f"{len(day.bmo)}+{len(day.amc)} names, "
+                        f"{len(day.econ)} econ",
+            )
+            log.info(f"Calendar {date_iso}: posted to {sent} channel(s)")
+        else:
+            log.error(f"Calendar {date_iso}: send failed on all channels")
+    except Exception as e:
+        log.error(f"Calendar job failed for {date_iso}: {e}", exc_info=True)

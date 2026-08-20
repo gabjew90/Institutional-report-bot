@@ -231,3 +231,38 @@ async def send_plain_messages(
         if ok and i < len(messages) - 1:
             await asyncio.sleep(delay)
     return success
+
+
+async def send_file_to_channels(
+    bot,
+    file_bytes: bytes,
+    filename: str,
+    caption: str = "",
+) -> int:
+    """Post one file attachment (fresh discord.File per channel — a
+    consumed BytesIO can't be re-sent) to every channel in
+    DISCORD_CHANNEL_ID. Returns the number of channels that succeeded.
+    Added 2026-08-20 for the daily calendar graphic."""
+    import io
+    from config import settings
+
+    raw = (settings.discord_channel_id or "").strip()
+    channel_ids = [c.strip() for c in raw.split(",") if c.strip()]
+    sent = 0
+    for cid in channel_ids:
+        try:
+            channel = bot.get_channel(int(cid))
+            if channel is None:
+                channel = await bot.fetch_channel(int(cid))
+        except Exception as e:
+            log.error(f"send_file_to_channels: resolve {cid} failed: {e}")
+            continue
+        ok, _err = await _send_with_retry(
+            lambda ch=channel: ch.send(
+                content=caption or None,
+                file=discord.File(io.BytesIO(file_bytes), filename=filename),
+            ),
+            label=f"file {filename} channel={cid}",
+        )
+        sent += 1 if ok else 0
+    return sent
