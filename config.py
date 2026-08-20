@@ -40,6 +40,12 @@ class Settings(BaseSettings):
     # paid entitlement. Empty = FRED layer dormant.
     fred_api_key: str = ""
 
+    # Sleeper fantasy league (optional — enables the lookup_fantasy_league
+    # /ask tool). No API key needed; Sleeper's API is public read-only.
+    # Empty = tool not registered. 2026 league: 1395566811415588864
+    # ("Omnibeta Degens").
+    sleeper_league_id: str = ""
+
     # Daily query cap per Discord user for /ask + @mention. Resets at UTC
     # midnight. Set to 0 to disable the cap (not recommended).
     # The /ask backend is Gemini with Google Search grounding (reuses

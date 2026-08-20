@@ -376,6 +376,25 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             f"to channel {settings.reminder_channel_id}"
         )
 
+    # Sleeper player-name cache refresh (2026-08-20). The fantasy /ask
+    # tool translates player IDs through db.sleeper_players; the dump is
+    # ~15MB so it refreshes once daily here (05:30 local — quiet hour),
+    # with a lazy backstop in the tool executor for cold caches.
+    if (settings.sleeper_league_id or "").strip():
+        scheduler.add_job(
+            _sleeper_players_refresh_job,
+            trigger=CronTrigger(hour=5, minute=30, timezone=tz),
+            id="sleeper_players_refresh",
+            name="Sleeper: refresh player-name cache",
+            max_instances=1,
+            misfire_grace_time=3600,
+        )
+        log.info(
+            f"Sleeper fantasy tool active — league "
+            f"{settings.sleeper_league_id}, player cache refresh daily "
+            f"05:30 {settings.timezone}"
+        )
+
     log.info(
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
@@ -1096,3 +1115,18 @@ async def _analyst_expire_sweep_job(bot=None):
         return
     except Exception as e:
         log.error(f"Analyst expire sweep failed: {e}", exc_info=True)
+
+
+async def _sleeper_players_refresh_job():
+    """Daily refresh of the sleeper_players id->name cache. Failure is
+    non-fatal: the fantasy tool's lazy backstop retries on next use and
+    a stale cache still translates almost every id."""
+    import asyncio as _asyncio
+    import db
+    from report import sleeper_data
+    try:
+        rows = await _asyncio.to_thread(sleeper_data.fetch_players_trimmed)
+        n = await _asyncio.to_thread(db.upsert_sleeper_players, rows)
+        log.info(f"Sleeper players cache refreshed: {n} rows")
+    except Exception as e:
+        log.error(f"Sleeper players cache refresh failed: {e}")

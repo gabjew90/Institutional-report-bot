@@ -443,6 +443,19 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         -- wins) so a later re-claim of a released username cannot
         -- inherit protection. Runtime protected set = env-var IDs union
         -- this table.
+        -- Sleeper player-ID -> name cache (2026-08-20). The fantasy
+        -- /ask tool needs id->name translation for rosters/matchups/
+        -- transactions; Sleeper's full players dump is ~15MB so it is
+        -- fetched at most daily (scheduler job + lazy first-use) and
+        -- trimmed to these four fields (~11K rows, <1MB).
+        CREATE TABLE IF NOT EXISTS sleeper_players (
+            player_id TEXT PRIMARY KEY,
+            name TEXT NOT NULL,
+            position TEXT,
+            team TEXT,
+            updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+
         CREATE TABLE IF NOT EXISTS protected_users (
             author_id   INTEGER PRIMARY KEY,
             username    TEXT NOT NULL UNIQUE,
@@ -5881,3 +5894,64 @@ def mark_expired_analyst_positions() -> list[dict]:
     )
     conn.commit()
     return [dict(r) for r in targets]
+
+
+# ---------------------------------------------------------------------
+# Sleeper fantasy player cache (2026-08-20)
+# ---------------------------------------------------------------------
+
+def upsert_sleeper_players(rows: list[tuple]) -> int:
+    """Replace the sleeper_players cache with a fresh trimmed dump.
+    Rows are (player_id, name, position, team). Full replace, not
+    incremental — the dump is authoritative and ~11K rows is cheap."""
+    conn = get_connection()
+    conn.execute("DELETE FROM sleeper_players")
+    conn.executemany(
+        "INSERT OR REPLACE INTO sleeper_players "
+        "(player_id, name, position, team, updated_at) "
+        "VALUES (?, ?, ?, ?, datetime('now'))",
+        rows,
+    )
+    conn.commit()
+    return len(rows)
+
+
+def get_sleeper_player_names(ids: list[str]) -> dict[str, str]:
+    """player_id -> 'Name (POS, TEAM)' for the given ids. Missing ids
+    are simply absent from the result — the caller shows the raw id."""
+    ids = [str(i) for i in ids if i]
+    if not ids:
+        return {}
+    out: dict[str, str] = {}
+    # chunk to stay under SQLite's default 999-var limit
+    for i in range(0, len(ids), 500):
+        chunk = ids[i:i + 500]
+        placeholders = ",".join("?" * len(chunk))
+        rows = get_connection().execute(
+            f"SELECT player_id, name, position, team FROM sleeper_players "
+            f"WHERE player_id IN ({placeholders})",
+            chunk,
+        ).fetchall()
+        for r in rows:
+            extra = ", ".join(x for x in (r["position"], r["team"]) if x)
+            out[r["player_id"]] = (
+                f"{r['name']} ({extra})" if extra else r["name"]
+            )
+    return out
+
+
+def sleeper_players_cache_age_hours() -> float | None:
+    """Hours since the cache was last refreshed; None when empty."""
+    row = get_connection().execute(
+        "SELECT MAX(updated_at) AS ts, COUNT(*) AS n FROM sleeper_players"
+    ).fetchone()
+    if not row or not row["n"] or not row["ts"]:
+        return None
+    from datetime import datetime, timezone
+    try:
+        ts = datetime.fromisoformat(_normalize_ts(row["ts"]))
+        if ts.tzinfo is None:
+            ts = ts.replace(tzinfo=timezone.utc)
+        return (datetime.now(timezone.utc) - ts).total_seconds() / 3600.0
+    except ValueError:
+        return None

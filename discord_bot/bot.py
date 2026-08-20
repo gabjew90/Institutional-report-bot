@@ -2830,6 +2830,116 @@ async def _execute_options_chain(args: dict) -> dict:
     }
 
 
+def _build_fantasy_league_tool():
+    """FunctionDeclaration for `lookup_fantasy_league` — live data from
+    the room's Sleeper league (settings.sleeper_league_id). Registered
+    only when the league id is configured."""
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="lookup_fantasy_league",
+                description=(
+                    "Live data from the room's Sleeper fantasy football "
+                    "league (Omnibeta Degens). Use for ANY question "
+                    "about the fantasy league: standings, records, "
+                    "matchup scores, rosters, waiver/trade activity, "
+                    "draft picks, who's trending, projections. Managers "
+                    "are resolved to their Discord identities.\n"
+                    "`topic` (required): 'league' (settings + who's in "
+                    "it) | 'standings' (records + points) | 'matchups' "
+                    "(scores for a week) | 'roster' (one manager's "
+                    "starters + bench — requires `member`) | "
+                    "'transactions' (waivers/trades/FAAB, recent) | "
+                    "'draft' (picks) | 'trending' (adds/drops across "
+                    "all of Sleeper) | 'projections' (projected PPR "
+                    "points; optional `member` for their starters).\n"
+                    "`week`: NFL week number (defaults to the current "
+                    "week).\n"
+                    "`member`: a Discord username/display name or "
+                    "Sleeper name, for topic='roster' or "
+                    "'projections'."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "topic": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "league | standings | matchups | roster "
+                                "| transactions | draft | trending | "
+                                "projections"
+                            ),
+                        ),
+                        "week": types.Schema(
+                            type=types.Type.INTEGER,
+                            description="NFL week (default: current).",
+                        ),
+                        "member": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "Manager to look up (discord or sleeper "
+                                "name) — for roster/projections."
+                            ),
+                        ),
+                    },
+                    required=["topic"],
+                ),
+            )
+        ]
+    )
+
+
+async def _execute_fantasy_league(args: dict) -> dict:
+    """Run the lookup_fantasy_league tool call. All Sleeper I/O is
+    synchronous urllib in report/sleeper_data — run in a thread. Player
+    IDs translate through the sleeper_players DB cache, lazily refreshed
+    on first use / when older than 26h (the daily scheduler job is the
+    primary refresher; this is the backstop)."""
+    from report import sleeper_data as _sd
+
+    league_id = (settings.sleeper_league_id or "").strip()
+    if not league_id:
+        return {
+            "status": "error",
+            "error": (
+                "fantasy league not configured (SLEEPER_LEAGUE_ID unset) "
+                "— say the fantasy lookup isn't available."
+            ),
+        }
+
+    def _sync() -> dict:
+        age = db.sleeper_players_cache_age_hours()
+        if age is None or age > 26:
+            try:
+                n = db.upsert_sleeper_players(_sd.fetch_players_trimmed())
+                log.info(f"sleeper players cache refreshed ({n} rows)")
+            except Exception as e:
+                # stale cache still translates most ids; empty cache
+                # degrades to raw ids, which the payload surfaces
+                log.warning(f"sleeper players cache refresh failed: {e}")
+        return _sd.build_topic_payload(
+            league_id,
+            (args.get("topic") or "standings"),
+            week=args.get("week"),
+            member=(args.get("member") or "").strip() or None,
+            player_name_resolver=db.get_sleeper_player_names,
+        )
+
+    try:
+        result = await asyncio.to_thread(_sync)
+    except Exception as e:
+        log.warning(f"lookup_fantasy_league failed: {e}")
+        return {
+            "status": "error",
+            "error": (
+                f"Sleeper API unavailable ({str(e)[:120]}) — say the "
+                "lookup failed. Do NOT invent league data."
+            ),
+        }
+    return result
+
+
 def _build_market_price_tool():
     """FunctionDeclaration for `lookup_market_price`. Routes symbols
     to Finnhub (stocks) or Binance.US (crypto) based on a hardcoded
@@ -5894,6 +6004,11 @@ async def _answer_with_gemini(
                 _build_earnings_date_tool(),
                 _build_query_data_tool(),
                 _build_price_history_tool(),
+                # Sleeper fantasy tool only exists when a league is
+                # configured — an unregistered tool costs no schema
+                # tokens and can't be miscalled.
+                *([_build_fantasy_league_tool()]
+                  if (settings.sleeper_league_id or "").strip() else []),
             ],
             tool_config=types.ToolConfig(
                 include_server_side_tool_invocations=True,
@@ -6393,6 +6508,7 @@ async def _answer_with_gemini(
                 "lookup_earnings_date": _execute_earnings_date,
                 "query_data": _execute_query_data,
                 "lookup_price_history": _execute_price_history,
+                "lookup_fantasy_league": _execute_fantasy_league,
             }
             tool_response_parts = []
             for fc in function_calls:
@@ -6547,6 +6663,8 @@ async def _answer_with_gemini(
                 _build_options_chain_tool(),
                 _build_economic_calendar_tool(),
                 _build_earnings_date_tool(),
+                *([_build_fantasy_league_tool()]
+                  if (settings.sleeper_league_id or "").strip() else []),
                     ],
                     tool_config=types.ToolConfig(
                         include_server_side_tool_invocations=True,
