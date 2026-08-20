@@ -216,8 +216,21 @@ ledger. Production runs untouched. Nothing is deleted during the pilot.
    - **2a. Brief-vs-source fidelity** — the daily spot-audit grades,
      aggregated across the window, split by reader tier. Brief quality
      is the load-bearing unverified assumption; running the pilot
-     without measuring it would be malpractice. *Pass: zero briefs
-     graded "distorts the source's argument."*
+     without measuring it would be malpractice.
+     *Pass: zero MATERIAL distortions.* A distortion is **material**
+     when acting on the brief instead of the source would change a
+     stance direction (bullish/bearish/neutral), a trade lean or its
+     instrument, a conviction level, an invalidation condition, or a
+     figure's released/forecast/target status. Everything else —
+     compression losses, dropped secondary caveats, tonal drift,
+     omitted supporting evidence that doesn't change the call — is
+     **non-material**: logged and counted, never a pilot-killer, with
+     a soft ceiling of 20% of audited briefs (breach = flag for the
+     iteration decision, not a fail). Zero-tolerance on a graded
+     judgment without this line means one borderline grader call
+     stalls the pilot on day 6; the materiality test gives graders a
+     falsifiable question ("would the trade change?") instead of a
+     vibe.
 3. **Mechanism preservation** — does the shadow pulse's lead theme
    reproduce the causal chain the source note actually argued, graded
    against the PDF? Binary per day. *Pass: ≥ production across the
@@ -236,7 +249,9 @@ excluded — the artifacts cannot be blinded (format differences identify
 them), so all grading is per-artifact against source.
 
 **Decision rule (frozen now).** Expand to MEDIUM only if 1, 2, 2a, and
-3 all pass. Kill if 2, 2a, or 3 regress. Anything else buys exactly one
+3 all pass (2a = zero material distortions; the non-material soft
+ceiling informs the iteration decision but cannot kill). Kill if 2,
+2a, or 3 regress. Anything else buys exactly one
 iteration on the reader prompt, then re-run, then decide. No third
 iteration: an architecture that needs three rounds of prompt surgery to
 beat the incumbent has answered the question.
