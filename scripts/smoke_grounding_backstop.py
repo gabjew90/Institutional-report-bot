@@ -179,9 +179,39 @@ def test_forced_retry_is_search_only():
     _ok("forced retry is SEARCH-ONLY (function tools stripped)")
 
 
+def test_detector_room_sourced_exemption():
+    """Density-net specifics quoted verbatim from the injected context
+    are room-sourced, not confabulated (2026-08-19: a fantasy-odds
+    table re-send, every figure from an OCR'd chat image + the bot's
+    prior answer, got hedged and the retry mangled the table). One
+    invented number must still fire, and the strong-marker path is
+    never exempted."""
+    from discord_bot.bot import _is_ungrounded_market_fact as f
+    table = (
+        "1. TipDrop 19.0% implied\n2. Cemini 15.4%\n3. Arxfic 13.3% "
+        "with the 8/19 draft order locked"
+    )
+    ctx = (
+        "recent chat: [IMAGE: TipDrop +425 19.0% Cemini +550 15.4% "
+        "Arxfic +650 13.3%] posted 8/19 draft order"
+    )
+    assert f(table, None, [], context=ctx) is False, \
+        "all specifics in context must be exempt"
+    assert f(table, None, [], context="unrelated chat") is True, \
+        "specifics NOT in context must still fire"
+    invented = table + " and a hidden 44.4% vig"
+    assert f(invented, None, [], context=ctx) is True, \
+        "one invented number must still fire (all-must-match)"
+    strong = "float sits at 24.75M shares, 13.80% of it short"
+    assert f(strong, None, [], context=strong) is True, \
+        "strong analyst-fact markers are never context-exempted"
+    _ok("detector: room-sourced specifics exempt; strong markers are not")
+
+
 if __name__ == "__main__":
     print("=== grounding backstop smoke ===")
     test_detector_fires_on_confab_no_source()
+    test_detector_room_sourced_exemption()
     test_detector_skips_when_grounded()
     test_detector_skips_when_tool_fired()
     test_detector_roast_safe()

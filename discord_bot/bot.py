@@ -1344,6 +1344,18 @@ async def _execute_chat_search(args: dict) -> dict:
         "count": len(matches),
         "window_start": window_start,
         "window_end": window_end,
+        # Empty is a RESULT, not a shrug (2026-08-19: an empty lookup on
+        # the fantasy channel was followed by 12 invented per-member
+        # verdicts — the model treated no-rows the same as no-call and
+        # fell back to profile priors). Tell it explicitly what an empty
+        # result obligates.
+        **({} if matches else {"note": (
+            "No messages matched these filters. If your answer depends "
+            "on this lookup, SAY the search came back empty — do NOT "
+            "invent chat content, takes, or behavior you did not "
+            "retrieve. Consider retrying with a different keyword or a "
+            "wider window before giving up."
+        )}),
         "filters": {
             "keyword": keyword or None,
             "days": days if not has_window else None,
@@ -3665,11 +3677,17 @@ def _grounding_has_sources(gm) -> bool:
 
 
 def _is_ungrounded_market_fact(answer: str, grounding_metadata,
-                               tool_trace: list) -> bool:
+                               tool_trace: list,
+                               context: str = "") -> bool:
     """True when an answer asserts market-fact specifics but consulted NO
     source (no Google grounding, no data tool). The confabulation
     signature. Roast-safe: requires a strong analyst-fact marker OR
-    >=3 dense specifics, which a personal-life jab won't have."""
+    >=3 dense specifics, which a personal-life jab won't have.
+
+    `context` is the full user_content sent to the model. Specifics the
+    model is QUOTING from the room (OCR'd screenshots, prior answers,
+    recent chat) are not confabulation — see the density-net exemption
+    below."""
     if not answer or len(answer) < 25:
         return False
     if _grounding_has_sources(grounding_metadata):
@@ -3680,6 +3698,18 @@ def _is_ungrounded_market_fact(answer: str, grounding_metadata,
         return True
     specifics = _GENERIC_SPECIFIC_RE.findall(answer)
     if len(specifics) < 3:
+        return False
+    # Room-sourced exemption (2026-08-19: BK asked the bot to re-send a
+    # fantasy-odds table whose every figure came verbatim from an OCR'd
+    # image in chat + the bot's own prior answer; the density net hedged
+    # it and the forced retry mangled the table into a numbered list).
+    # If EVERY specific already appears in the injected context, the
+    # model is quoting the room, not inventing market data. All-must-
+    # match keeps this conservative: one invented number still fires.
+    # The strong-marker path above is deliberately NOT exempted — a
+    # price-target/float/market-cap claim needs a real source even if
+    # the numbers echo something a member once pasted.
+    if context and all(s in context for s in specifics):
         return False
     # A named security (cashtag) makes a dense answer a real data-dump.
     if _BACKSTOP_CASHTAG_RE.search(answer):
@@ -7286,7 +7316,8 @@ async def _answer_with_gemini(
         # only fires on MARKET-FACT shapes where no tool fired on pass 1,
         # so losing the function tools on retry costs nothing.
         _ground_trigger_shape = _is_ungrounded_market_fact(
-            answer, grounding_metadata, _ask_tool_trace
+            answer, grounding_metadata, _ask_tool_trace,
+            context=user_content,
         )
         _ground_trigger_web = _ungrounded_web_specifics(
             answer, grounding_metadata, needs_web,
@@ -7415,7 +7446,8 @@ async def _answer_with_gemini(
                     # as tool-sourced, same as if the model had called
                     # lookup_market_price itself.
                     _is_ungrounded_market_fact(
-                        forced_answer, forced_gm, _ask_tool_trace
+                        forced_answer, forced_gm, _ask_tool_trace,
+                        context=user_content,
                     )
                     or _ungrounded_web_specifics(
                         forced_answer, forced_gm, needs_web,

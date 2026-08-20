@@ -5210,7 +5210,18 @@ def search_chat_messages_for_ask(
     from datetime import datetime, timedelta, timezone
     keyword = (keyword or "").strip() or None
     has_window = bool(start_iso) and bool(end_iso)
-    if not keyword and not has_window:
+    # Shape C: username/channel_name alone is a valid call — recent
+    # messages by that user / in that channel within the trailing
+    # `days` window. This early return predated shape C (added at the
+    # bot layer 2026-06-01) and silently killed it: the bot advertised
+    # and validated the shape, then this line returned [] before the
+    # filters below ever applied (found 2026-08-19 — the fantasy-league
+    # IQ board fabricated 12 verdicts off an empty lookup while 384
+    # matching rows sat in the table).
+    has_entity_filter = bool((username or "").strip()) or bool(
+        (channel_name or "").strip()
+    )
+    if not keyword and not has_window and not has_entity_filter:
         return []
 
     sql_parts: list[str] = [
