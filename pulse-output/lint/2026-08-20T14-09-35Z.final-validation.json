@@ -1,0 +1,16 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.823% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [6.5]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.823",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "Citi and JPMorgan read the mechanics the same way: less long-dated bond supply for dealers to warehouse means less pressure on 30-year yields, which is why yields dropped on the announcement. Where th"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 1,
+ "exit_code": 4
+}
