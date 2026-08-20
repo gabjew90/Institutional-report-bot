@@ -210,3 +210,54 @@ MAG7_EARNINGS_AWARENESS_BLOCK = (
     "commentary and should be triaged on its own merits, not floored "
     "to HIGH by the mention alone."
 )
+
+
+# ---------------------------------------------------------------------
+# Major scheduled market events with VERIFIED dates (2026-08-20).
+#
+# Why: Jackson Hole is not a calendar-feed row (the Tier-1 whitelist
+# passes FOMC/Powell/CPI-class releases; a symposium has no "release"),
+# so DRAFT dated it from desk prose — and the 8/17, 8/18 and 8/19
+# pulses all placed it under "This Week" a week early. This dict is the
+# ground truth the economic-calendar block injects so synthesis never
+# dates these events from research vibes.
+#
+# Update annually alongside US_MARKET_HOLIDAYS. Source: the event's
+# own organizer (Kansas City Fed for Jackson Hole).
+MAJOR_MARKET_EVENTS = [
+    {
+        "start": "2026-08-27", "end": "2026-08-29",
+        "name": "Jackson Hole Economic Policy Symposium",
+        "detail": "Fed Chair Warsh keynote Friday Aug 28 morning",
+    },
+]
+
+
+def upcoming_market_events(today_iso: str, days_ahead: int = 12) -> list[str]:
+    """Human-readable lines for MAJOR_MARKET_EVENTS within the window
+    (including events currently in progress). Empty list when none."""
+    import datetime as _dt
+    try:
+        today = _dt.date.fromisoformat(str(today_iso)[:10])
+    except ValueError:
+        return []
+    horizon = today + _dt.timedelta(days=days_ahead)
+    out = []
+    for ev in MAJOR_MARKET_EVENTS:
+        try:
+            start = _dt.date.fromisoformat(ev["start"])
+            end = _dt.date.fromisoformat(ev["end"])
+        except (KeyError, ValueError):
+            continue
+        if end < today or start > horizon:
+            continue
+        # %-d is not portable; compose day numbers manually
+        label = (f"{start.strftime('%a %b')} {start.day}"
+                 f" - {end.strftime('%a %b')} {end.day}")
+        line = f"{ev['name']}: {label}"
+        if ev.get("detail"):
+            line += f" ({ev['detail']})"
+        if start <= today <= end:
+            line += " [IN PROGRESS]"
+        out.append(line)
+    return out

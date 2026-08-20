@@ -86,12 +86,20 @@ def test_scrub_receives_hard_issues_only():
 
 
 def test_final_md_revalidated_before_ship():
+    # 2026-08-20: the driver owns STEP 5.75 now — the routine invokes
+    # `pulse_driver.py gate final_validate`, and the DRIVER runs the
+    # validator on /tmp/final.md. Assert both halves of that contract.
     doc = open(ROUTINE, encoding="utf-8").read()
-    assert "pulse_draft_validate.py /tmp/final.md" in doc, (
+    assert "pulse_driver.py gate final_validate" in doc, (
         "no post-SCRUB structural validation — everything EDIT/SCRUB "
         "introduce ships unchecked (B2)"
     )
-    i_final = doc.find("pulse_draft_validate.py /tmp/final.md")
+    drv = open(os.path.join(REPO, "scripts", "pulse_driver.py"),
+               encoding="utf-8").read()
+    assert "pulse_draft_validate.py" in drv and "final.md" in drv, (
+        "driver's final_validate gate must run the validator on final.md"
+    )
+    i_final = doc.find("pulse_driver.py gate final_validate")
     i_strip = doc.find("## STEP 5.8")
     assert i_strip != -1 and i_final < i_strip, (
         "final validation must run BEFORE STEP 5.8 strips ## _LEANS — "
@@ -102,8 +110,10 @@ def test_final_md_revalidated_before_ship():
 
 def test_leans_block_restored_deterministically():
     doc = open(ROUTINE, encoding="utf-8").read()
-    assert "leans-block-missing" in doc.split(
-        "pulse_draft_validate.py /tmp/final.md", 1)[1][:4000], (
+    drv = open(os.path.join(REPO, "scripts", "pulse_driver.py"),
+               encoding="utf-8").read()
+    assert "leans-block-missing" in drv.split(
+        "def gate_final_validate", 1)[1][:4000], (
         "a leans block deleted by EDIT/SCRUB must be spliced back from "
         "/tmp/draft.md deterministically — an empty trade board is a "
         "silent product failure"

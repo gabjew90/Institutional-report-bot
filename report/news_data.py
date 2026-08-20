@@ -575,6 +575,7 @@ def fetch_economic_calendar_structured(
     the FEED is down (so it doesn't claim "no such event exists").
     """
     today = datetime.utcnow().date()
+
     start = today - timedelta(days=days_window)
     end = today + timedelta(days=days_window)
     items, _source = _fetch_economic_events_raw(start, end)
@@ -688,6 +689,19 @@ def fetch_economic_calendar_structured(
 def fetch_economic_calendar(days_ahead: int = 7) -> str:
     """Return upcoming US + major economic releases with actual dates/times/estimates."""
     today = datetime.utcnow().date()
+    # Verified event dates from world_context (2026-08-20: three
+    # straight pulses dated Jackson Hole a week early off desk prose --
+    # symposiums have no calendar-feed row, so this is the ground
+    # truth). Appended to EVERY return path, including outages: the
+    # dates are static, not fetched.
+    from world_context import upcoming_market_events
+    _events = upcoming_market_events(today.isoformat(), days_ahead=12)
+    _events_block = (
+        "\nVERIFIED EVENT DATES (from the organizers, not the feed -- "
+        "these dates are authoritative; if a research note implies a "
+        "different week, the note is wrong):\n"
+        + "\n".join(f"  {e}" for e in _events)
+    ) if _events else ""
     # Fetch from yesterday to capture data released overnight that's still context
     start = today - timedelta(days=1)
     end = today + timedelta(days=days_ahead)
@@ -704,6 +718,7 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
             "release dates/times as verified; if research PDFs "
             "disagree on an event's date, trust only PDFs published "
             "TODAY and say the date is per that bank's note.)"
+            + _events_block
         )
     # Whitelist of event name substrings that actually move markets for a US
     # options/crypto trader. Anything else (regional Fed surveys, Fed governor
@@ -762,7 +777,7 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
                 "ECONOMIC CALENDAR (fallback feed): no high-impact "
                 "releases in the visible window."
             )
-        return f"ECONOMIC CALENDAR (next {days_ahead}d): no high-impact releases."
+        return f"ECONOMIC CALENDAR (next {days_ahead}d): no high-impact releases." + _events_block
 
     now_utc = datetime.utcnow()
     released_lines = []
@@ -850,8 +865,8 @@ def fetch_economic_calendar(days_ahead: int = 7) -> str:
         out.append("ECONOMIC EVENTS STILL UPCOMING (belongs in WHAT TO WATCH):")
         out.extend(upcoming_lines)
     if len(out) <= 1:
-        return "ECONOMIC CALENDAR: no high-impact releases in window."
-    return "\n".join(out)
+        return "ECONOMIC CALENDAR: no high-impact releases in window." + _events_block
+    return "\n".join(out) + _events_block
 
 
 # ---------------------------------------------------------------------
