@@ -64,14 +64,16 @@ def _build(date="2026-08-20", earnings=None, econ=None, caps=None,
             p.stop()
 
 
-def test_top20_and_dropped_counts():
+def test_topn_and_dropped_counts():
     day = _build()
-    assert len(day.bmo) == 20 and day.dropped_bmo == 10, \
+    n = cd.TOP_N
+    assert len(day.bmo) == n and day.dropped_bmo == 30 - n, \
         (len(day.bmo), day.dropped_bmo)
-    # AMC pool = 25 amc + 10 blank + 2 dmh = 37 -> 20 kept, 17 dropped
-    assert len(day.amc) == 20 and day.dropped_amc == 17, \
+    # AMC pool = 25 amc + 10 blank + 2 dmh = 37
+    assert len(day.amc) == n and day.dropped_amc == 37 - n, \
         (len(day.amc), day.dropped_amc)
-    _ok("exactly 20 per session; dropped_* counts right")
+    assert n == 15, "owner-set cut (2026-08-20): 15 per session"
+    _ok(f"exactly {n} per session; dropped_* counts right")
 
 
 def test_cap_sort_and_missing_cap_last():
@@ -137,7 +139,7 @@ def test_et_conversion_dst_correct():
 
 if __name__ == "__main__":
     print("=== calendar data smoke ===")
-    test_top20_and_dropped_counts()
+    test_topn_and_dropped_counts()
     test_cap_sort_and_missing_cap_last()
     test_blank_and_dmh_land_in_amc_flagged()
     test_holiday_flag_and_no_earnings()

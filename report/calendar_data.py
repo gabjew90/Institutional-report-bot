@@ -16,7 +16,7 @@ from report import news_data
 log = logging.getLogger(__name__)
 
 _ET = ZoneInfo("America/New_York")
-TOP_N = 20
+TOP_N = 15  # owner call 2026-08-20: 15 per session (was 20, then 10)
 
 
 @dataclass

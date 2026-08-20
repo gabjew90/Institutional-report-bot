@@ -43,7 +43,7 @@ def test_full_sheet():
     png = render_calendar_png(_day())
     assert png[:8] == b"\x89PNG\r\n\x1a\n", "PNG magic bytes"
     img = Image.open(io.BytesIO(png))
-    assert img.size == (1080, 1350), img.size
+    assert img.width == 1080 and 700 <= img.height <= 1620, img.size
     assert len(png) > 30_000, f"suspiciously small: {len(png)}"
     out = os.path.join(tempfile.gettempdir(), "calendar-smoke-eyeball.png")
     open(out, "wb").write(png)
@@ -55,11 +55,10 @@ def test_long_name_truncated():
     # 60-char name must be truncated with … and fit its column: measure
     png = render_calendar_png(_day())
     img = Image.open(io.BytesIO(png)).convert("RGB")
-    # column boundary x for the right column's name area ends at 1080-66;
     # verify no non-ground pixels bleed past the right margin in the
-    # earnings rows band (y 700-1250)
+    # earnings rows band (lower 40% of the adaptive canvas)
     ground = img.getpixel((5, 5))
-    for y in range(700, 1250, 10):
+    for y in range(int(img.height * 0.5), img.height - 80, 10):
         for x in range(1080 - 60, 1080 - 2):
             px = img.getpixel((x, y))
             if px != ground and max(
@@ -74,7 +73,7 @@ def test_closed_card():
         econ=[EconRow("8:30", "Nonfarm Payrolls", "high")],
     ))
     img = Image.open(io.BytesIO(png))
-    assert img.size == (1080, 1350)
+    assert img.width == 1080 and img.height >= 700
     assert len(png) > 20_000
     _ok("closed card renders (holiday name + rare econ release)")
 

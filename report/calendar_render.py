@@ -1,8 +1,8 @@
 """Pillow renderer for the daily calendar graphic. Pure rendering: no
 network I/O; the only file reads are committed assets (fonts, logo).
 
-render_calendar_png(day) -> PNG bytes, 1080x1350 (4:5 — the tallest
-ratio Discord shows un-cropped), drawn at 2x and downsampled.
+render_calendar_png(day) -> PNG bytes, 1080 wide, height adaptive
+to content (700 min, 1620 max), drawn at 2x and downsampled.
 
 Fonts are committed OFL files in assets/fonts/ (the Railway container
 has no system fonts). A missing font is a DEPLOY defect and raises at
@@ -34,7 +34,10 @@ TEXT = "#E8F0EA"
 WHITE = "#FFFFFF"
 
 _S = 2                       # supersample factor
-_W, _H = 1080 * _S, 1350 * _S
+_W, _H = 1080 * _S, 1620 * _S  # 1620 = 2:3 hard max; the
+# adaptive crop in _finish keeps typical days ~1100-1250 tall
+# (4:5 or shorter). Only a packed econ day + two full 15-row
+# columns stretches past 1350.
 _MARGIN = 66 * _S
 
 
@@ -175,8 +178,7 @@ def render_calendar_png(day: CalendarDay) -> bytes:
         if day.econ:
             y += 20 * _S
             y = _econ_block(d, day, f, y, col_w, x_l, x_r)
-        _footer(d, f)
-        return _finish(img)
+        return _finish(img, _footer(d, f, y))
 
     # 5. ECONOMIC
     if not day.econ_available:
@@ -193,14 +195,16 @@ def render_calendar_png(day: CalendarDay) -> bytes:
         y += 52 * _S
 
     # 6. BEFORE OPEN / AFTER CLOSE
+    any_flag = False
     if not day.earnings_available:
         y = _band(d, "Earnings", _MARGIN, _W - _MARGIN, y, f)
         d.text((_MARGIN, y), "unavailable tonight", font=f["ev"],
                fill=_dim(TEXT, 0.5))
+        y += 52 * _S
     else:
         yl = _band(d, "Before Open", x_l, x_l + col_w, y, f)
         _band(d, "After Close", x_r, x_r + col_w, y, f)
-        any_flag = False
+        col_bottom = yl
         for cx, rows, dropped in (
             (x_l, day.bmo, day.dropped_bmo),
             (x_r, day.amc, day.dropped_amc),
@@ -220,15 +224,17 @@ def render_calendar_png(day: CalendarDay) -> bytes:
             if dropped:
                 d.text((cx, cy + 2 * _S), f"+{dropped} more",
                        font=f["note"], fill=_dim(TEXT, 0.4))
-        if any_flag:
-            # footer baseline, left-aligned — the centered ALL TIMES ET
-            # leaves the left margin clear, and full 20-row columns
-            # reach too far down for a line of their own
-            d.text((_MARGIN, _H - 56 * _S), "* session not confirmed",
-                   font=f["note"], fill=_dim(TEXT, 0.4))
+                cy += 40 * _S
+            col_bottom = max(col_bottom, cy)
+        y = col_bottom
 
-    _footer(d, f)
-    return _finish(img)
+    footer_y = _footer(d, f, y)
+    if any_flag:
+        # footer baseline, left-aligned — the centered ALL TIMES ET
+        # leaves the left margin clear
+        d.text((_MARGIN, footer_y), "* session not confirmed",
+               font=f["note"], fill=_dim(TEXT, 0.4))
+    return _finish(img, footer_y)
 
 
 def _econ_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
@@ -249,13 +255,22 @@ def _econ_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
     return y + max(1, half) * 38 * _S + 34 * _S
 
 
-def _footer(d, f):
-    _tracked(d, _H - 56 * _S, "ALL TIMES ET", f["foot"],
+def _footer(d, f, content_bottom: int) -> int:
+    """Draw the centered footer just below the content and return its
+    y. The canvas is cropped to the footer (adaptive height) — a
+    10-15-row day no longer leaves a third of the sheet empty."""
+    fy = content_bottom + 34 * _S
+    _tracked(d, fy, "ALL TIMES ET", f["foot"],
              _dim(TEXT, 0.38), int(4 * _S), _W / 2)
+    return fy
 
 
-def _finish(img: Image.Image) -> bytes:
-    img = img.resize((1080, 1350), Image.LANCZOS)
+def _finish(img: Image.Image, footer_y: int) -> bytes:
+    """Crop to content height (min 700px, max the full 4:5 1350px),
+    then downsample from the 2x supersample."""
+    h2 = min(_H, max(700 * _S, footer_y + 56 * _S))
+    img = img.crop((0, 0, _W, h2))
+    img = img.resize((1080, h2 // _S), Image.LANCZOS)
     buf = io.BytesIO()
     img.save(buf, "PNG")
     return buf.getvalue()

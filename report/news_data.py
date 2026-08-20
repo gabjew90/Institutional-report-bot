@@ -909,10 +909,15 @@ def fetch_symbol_profiles(
 
 
 def fetch_us_econ_events_for_date(date_iso: str) -> list[dict] | None:
-    """US medium/high-impact economic events for one date, from the
+    """ALL US economic events for one date (every impact tier), from the
     ForexFactory feed the pulse already uses. Rows: {'event', 'time'
     (UTC ISO), 'impact', 'estimate', 'prev'}. None = feed down (vs []
-    = genuinely quiet day)."""
+    = genuinely quiet day).
+
+    No impact filter, by owner call 2026-08-20: a quiet Thursday has
+    only 4 US rows total and the reference sheet included low-impact
+    items (EIA nat gas); the US-only filter is what keeps the block
+    small."""
     try:
         events = _fetch_ff_economic_events()
     except Exception as e:
@@ -923,8 +928,6 @@ def fetch_us_econ_events_for_date(date_iso: str) -> list[dict] | None:
     out = []
     for e in events:
         if (e.get("country") or "").upper() not in ("US", "USD"):
-            continue
-        if (e.get("impact") or "").lower() not in ("high", "medium"):
             continue
         if not (e.get("time") or "").startswith(date_iso):
             continue
