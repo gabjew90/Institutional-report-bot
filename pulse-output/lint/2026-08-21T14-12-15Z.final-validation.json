@@ -1,0 +1,63 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '5.26%' is attached to [announcement, back, before, given, morning] but the source uses it for [change, close, crypto, indices, shown] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "5.26%",
+   "draft_subject": [
+    "announcement",
+    "back",
+    "before",
+    "given",
+    "morning",
+    "move",
+    "sits",
+    "spoke"
+   ],
+   "source_subject": [
+    "change",
+    "close",
+    "crypto",
+    "indices",
+    "shown",
+    "since",
+    "spread",
+    "today"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.45%' is attached to [against, before, betting, brent, escalation] but the source uses it for [date, session, vixy] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.45%",
+   "draft_subject": [
+    "against",
+    "before",
+    "betting",
+    "brent",
+    "escalation",
+    "hormuz",
+    "market",
+    "morning"
+   ],
+   "source_subject": [
+    "date",
+    "session",
+    "vixy"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "6.7% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "6.7",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "The same session that showed the consumer cracking showed inflation expectations going the other way. The inflation rate priced into the market for the next twelve months jumped 16 basis points, its b"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 3,
+ "exit_code": 4
+}

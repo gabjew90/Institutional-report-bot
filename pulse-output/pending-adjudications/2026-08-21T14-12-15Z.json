@@ -1,0 +1,136 @@
+{
+  "pulse_date": "2026-08-21",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "treasury long end policy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Desks agree the Treasury is buying back long-dated bonds to hold down long-term borrowing costs, but they split on whether that changes where yields end up or just shifts the pressure onto a weaker dollar.",
+      "facts_agreed": [
+        {
+          "claim": "The Treasury is actively using long-end buybacks to manage how much long-dated debt the market has to hold.",
+          "banks_for": [
+            "Goldman Sachs",
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "The Treasury is showing a strong preference to subdue term premium.",
+            "The response to pressure in the long end can include changing the way Treasury manages duration.",
+            "Treasury long-end buyback program",
+            "Treasury duration management",
+            "US Treasury liquidity support buyback operations"
+          ]
+        },
+        {
+          "claim": "Supporting long-dated bond prices carries a cost that shows up in the dollar.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Supporting bonds may come at the expense of letting the USD become the adjustment valve."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether buybacks change where long-end yields ultimately settle",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "The bull flattener makes sense in this context.",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "Twists can change the path, but they rarely change the destination."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran sanctions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three banks mention US pressure on Iran as background risk in this window, but none of them takes a side on where it goes or what it does to markets.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag US-Iran pressure and sanctions as a live background risk this window without staking a directional view.",
+          "banks_for": [
+            "Deutsche Bank",
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "US-Iran geopolitical tensions",
+            "US-Iran economic pressure campaign",
+            "Iran sanctions escalation",
+            "Iran sanctions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "inference cost reduction",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the falling cost of running AI models as a live subject this window, but none of them has staked out a directional call on what it does to prices.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference the declining cost of running AI models as an ongoing development worth tracking.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "inference cost optimization",
+            "Inference cost compression",
+            "Falling inference costs"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai capex cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Both banks with a view here say AI spending is still growing and is now better covered by real revenue, with Goldman calling for $1-1.5 trillion of spending next year and JPMorgan sizing the 2026-2030 buildout at $5-10 trillion, and nobody in this set arguing the other side.",
+      "facts_agreed": [
+        {
+          "claim": "The AI spending cycle is still expanding and looks economically justified by the revenue it is generating.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "recent acceleration in AI companies' revenues makes the AI capex cycle look more economically viable",
+            "AI demand/capex is still growing (1-1.5trn for next year)"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}

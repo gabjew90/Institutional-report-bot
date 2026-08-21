@@ -1,0 +1,3269 @@
+{
+ "treasury long end policy": {
+  "theme": "treasury long end policy",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 1,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "long-end treasury buybacks",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Increased buybacks will anchor long-end volatility and act as a quasi-Twist to stabilize the curve.",
+    "primary_instruments": [
+     "TLT"
+    ],
+    "vs_consensus": "",
+    "evidence": "The Treasury is showing a strong preference to subdue term premium."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "usd adjustment valve",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Treasury support for the long end will likely come at the expense of a weaker USD.",
+    "primary_instruments": [
+     "UUP"
+    ],
+    "vs_consensus": "",
+    "evidence": "Supporting bonds may come at the expense of letting the USD become the adjustment valve."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "long-end yield suppression",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Policymakers can influence the path of yields temporarily but cannot change the structural destination driven by fiscal and capital demand factors.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "Twists can change the path, but they rarely change the destination."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "treasury buyback impact",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Treasury's willingness to use buybacks to manage duration is bullish for equities and gold.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The response to pressure in the long end can include changing the way Treasury manages duration."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "long-end treasury buybacks",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Increased buybacks will anchor long-end volatility and support a bull flattener.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The bull flattener makes sense in this context."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "usd outlook",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "Treasury prioritizing yield control over FX stability will likely lead to a weaker USD.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "Supporting bonds may come at the expense of letting the USD become the adjustment valve."
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury Buyback directive",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury Buyback directive"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury liquidity support buybacks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury liquidity support buybacks"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US Treasury liquidity support buyback operations",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US Treasury liquidity support buyback operations"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury long-end buyback program",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury long-end buyback program"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury duration management",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury duration management"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury buyback intervention",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury buyback intervention"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury long-end liquidity buybacks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury long-end liquidity buybacks"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Bessent twist in Treasury markets",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Bessent twist in Treasury markets"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US Treasury buyback surprise",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US Treasury buyback surprise"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury bond market twist",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury bond market twist"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury bond market buybacks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury bond market buybacks"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury yield retracement",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury yield retracement"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "treasury long end policy",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US Treasury buyback announcement",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US Treasury buyback announcement"
+   }
+  ],
+  "tension_points": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "Treasury buyback impact",
+    "bull_case": "Buybacks act as a 'quasi-Twist' to stabilize the long end and support risk assets.",
+    "bear_case": "Underlying supply remains high and deficits will continue to weigh on duration.",
+    "what_invalidates": "If the market stops believing Treasury will use liability-management tools to stabilize the long end."
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "Treasury buyback impact",
+    "bull_case": "Buybacks act as a stabilizer for the long end and anchor volatility.",
+    "bear_case": "Underlying supply from deficits and AI spending remains, preventing a deep rally in yields.",
+    "what_invalidates": ""
+   }
+  ],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily return",
+    "context": "7708 level, +13% YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-16%",
+    "metric": "GS TMT Momentum Pair 2-day return",
+    "context": "Led by semiconductor weakness"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury buyback operation size",
+    "context": "Increased from $2bn maximum"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-724 bp",
+    "metric": "Mutual fund underweight to Mag 7",
+    "context": "End of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical lows"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x 2022 value"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7%",
+    "metric": "TRGP daily price change",
+    "context": "As of August 18, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+60%",
+    "metric": "TRGP YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+50%",
+    "metric": "Brent YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$80-$100",
+    "metric": "TTF trading range",
+    "context": "Expected range for fall/winter."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10%",
+    "metric": "TTF 1-month performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.4%",
+    "metric": "Systematic L/S manager drawdown",
+    "context": "As of 1pm EST, 2026-08-19; >3 SD on 3 years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "Momentum factor contribution to underperformance",
+    "context": "Two-day period ending 2026-08-19."
+   },
+   {
+    "source_bank": "OpenAI",
+    "figure": "$40bn",
+    "metric": "OpenAI ARR",
+    "context": "Up 35% quarter-to-date vs ~$20bn end-2025."
+   },
+   {
+    "source_bank": "SK Hynix",
+    "figure": "W40trn",
+    "metric": "SK Hynix share buyback",
+    "context": "3.3% of shares outstanding, executed 20 Aug - 19 Nov."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.6mm",
+    "metric": "IBIT call volume",
+    "context": "2026-08-19 vs 535k puts."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "20 Aug 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "14.89",
+    "metric": "VIX level",
+    "context": "20 Aug 2026, -6% vs prior"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6.7bn",
+    "metric": "OpenAI Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.6bn",
+    "metric": "Anthropic Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance rate",
+    "context": "YTD 2026, vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "As of 20 Aug 2026, near record low"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Total annual long-end buybacks",
+    "context": "Reflects new buyback pace including $18bn quarterly increase."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Impact of increased buyback operations."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current option pricing for EUR trade."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-10bp",
+    "metric": "30y Treasury yield move",
+    "context": "Immediate reaction to Treasury buyback announcement."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-20bp",
+    "metric": "Historical yield suppression impact",
+    "context": "Estimated impact of 1961 and 2011 US programs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20-40bp",
+    "metric": "Projected curve flattening",
+    "context": "Potential impact of current Treasury/Fed measures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6%",
+    "metric": "KOSPI index move",
+    "context": "Overnight move on 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "KRW40tn",
+    "metric": "SK Hynix buyback size",
+    "context": "Announced 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7%",
+    "metric": "GSPUMOMO index change",
+    "context": "Over the 48 hours preceding 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury long-end buyback size",
+    "context": "Increased from $2bn per operation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-38%",
+    "metric": "Token expenditure index change",
+    "context": "Since end of June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily performance",
+    "context": "20.08.2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.6 trillion",
+    "metric": "Active mutual fund equity assets",
+    "context": "Analyzed 504 large-cap funds"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical low"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x the value of 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Annual long-end buybacks",
+    "context": "Increased from previous levels due to Treasury policy change."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Resulting from the new buyback program."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current implied vol breakeven for EUR options."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "Daily move to 7707"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Near record low from December 2025"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance",
+    "context": "YTD vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "74%",
+    "metric": "Large-cap growth fund outperformance",
+    "context": "YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.1%",
+    "metric": "JD Sports Q2 LFL",
+    "context": "vs consensus -2%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-11%",
+    "metric": "Siemens FY26 OSG guidance",
+    "context": "Raised guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5B",
+    "metric": "Net selling by desk",
+    "context": "Weekly net selling volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$3.2B",
+    "metric": "Net outflows in Info Tech",
+    "context": "Weekly net outflows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$477M",
+    "metric": "Net buying in Healthcare",
+    "context": "Weekly net buying."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+15.5% YTD",
+    "metric": "Global Fundamental L/S performance",
+    "context": "As of 8/17."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "460%",
+    "metric": "Unitree day 1 price jump",
+    "context": "A-shares IPO debut."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$74B",
+    "metric": "Foreign outflows from Korea",
+    "context": "Aggregated over 3 months (May-July)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.7B",
+    "metric": "FII net buying in India",
+    "context": "First two weeks of August."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.6B",
+    "metric": "FII net short position in index derivatives",
+    "context": "India market positioning."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years, first miss in at least five."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "80%",
+    "metric": "Probability of September BOJ hike",
+    "context": "Based on current CPI acceleration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance over the week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4,500",
+    "metric": "Gold 200-day moving average",
+    "context": "Key technical level cleared."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$92t",
+    "metric": "FMG average realized iron ore price",
+    "context": "Annual average realized price."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$600m",
+    "metric": "FMG FCF generation",
+    "context": "Aggregate FCF for the two-year period."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$720M",
+    "metric": "SB net selling flow",
+    "context": "Current week net flow."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50-60%",
+    "metric": "Estimated price upside for European diesel timespread",
+    "context": "Scenario with persistent refinery outages."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24",
+    "metric": "1-day selloffs > 5% in flagship momentum basket",
+    "context": "YTD 2026, more than the prior five years combined."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Kangaroo bond issuance",
+    "context": "GOOG issuance this week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46th percentile",
+    "metric": "Gross exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30th percentile",
+    "metric": "Net exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "322%",
+    "metric": "Total return of US energy refiners basket",
+    "context": "COVID / post-COVID era."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "440%",
+    "metric": "Global bank stocks index return",
+    "context": "Since COVID lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Treasury buyback limit per issue",
+    "context": "Cited as part of Treasury's 'big toolkit'."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance on the week."
+   },
+   {
+    "source_bank": "Nomura",
+    "figure": "+59% YoY",
+    "metric": "Corporate issuance growth",
+    "context": "Reflects the 'supply deluge' in corporate credit."
+   },
+   {
+    "source_bank": "Nomura",
+    "figure": "$1.7667T",
+    "metric": "Total IG supply YTD",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "Nomura",
+    "figure": "160k",
+    "metric": "VIX Sep 24 Call volume",
+    "context": "Purchased Monday at $0.73."
+   },
+   {
+    "source_bank": "Nomura",
+    "figure": "0%ile",
+    "metric": "IWM 3m ATM Volatility",
+    "context": "Two-year lookback."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily return",
+    "context": "7708 level, +13% YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-16%",
+    "metric": "GS TMT Momentum Pair 2-day return",
+    "context": "Led by semiconductor weakness"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury buyback operation size",
+    "context": "Increased from $2bn maximum"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-724 bp",
+    "metric": "Mutual fund underweight to Mag 7",
+    "context": "End of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical lows"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x 2022 value"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7%",
+    "metric": "TRGP daily price change",
+    "context": "As of August 18, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+60%",
+    "metric": "TRGP YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+50%",
+    "metric": "Brent YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$80-$100",
+    "metric": "TTF trading range",
+    "context": "Expected range for fall/winter."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10%",
+    "metric": "TTF 1-month performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.4%",
+    "metric": "Systematic L/S manager drawdown",
+    "context": "As of 1pm EST, 2026-08-19; >3 SD on 3 years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "Momentum factor contribution to underperformance",
+    "context": "Two-day period ending 2026-08-19."
+   },
+   {
+    "source_bank": "OpenAI",
+    "figure": "$40bn",
+    "metric": "OpenAI ARR",
+    "context": "Up 35% quarter-to-date vs ~$20bn end-2025."
+   },
+   {
+    "source_bank": "SK Hynix",
+    "figure": "W40trn",
+    "metric": "SK Hynix share buyback",
+    "context": "3.3% of shares outstanding, executed 20 Aug - 19 Nov."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.6mm",
+    "metric": "IBIT call volume",
+    "context": "2026-08-19 vs 535k puts."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "20 Aug 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "14.89",
+    "metric": "VIX level",
+    "context": "20 Aug 2026, -6% vs prior"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6.7bn",
+    "metric": "OpenAI Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.6bn",
+    "metric": "Anthropic Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance rate",
+    "context": "YTD 2026, vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "As of 20 Aug 2026, near record low"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Total annual long-end buybacks",
+    "context": "Reflects new buyback pace including $18bn quarterly increase."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Impact of increased buyback operations."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current option pricing for EUR trade."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-10bp",
+    "metric": "30y Treasury yield move",
+    "context": "Immediate reaction to Treasury buyback announcement."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-20bp",
+    "metric": "Historical yield suppression impact",
+    "context": "Estimated impact of 1961 and 2011 US programs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20-40bp",
+    "metric": "Projected curve flattening",
+    "context": "Potential impact of current Treasury/Fed measures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6%",
+    "metric": "KOSPI index move",
+    "context": "Overnight move on 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "KRW40tn",
+    "metric": "SK Hynix buyback size",
+    "context": "Announced 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7%",
+    "metric": "GSPUMOMO index change",
+    "context": "Over the 48 hours preceding 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury long-end buyback size",
+    "context": "Increased from $2bn per operation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-38%",
+    "metric": "Token expenditure index change",
+    "context": "Since end of June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily performance",
+    "context": "20.08.2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.6 trillion",
+    "metric": "Active mutual fund equity assets",
+    "context": "Analyzed 504 large-cap funds"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical low"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x the value of 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Annual long-end buybacks",
+    "context": "Increased from previous levels due to Treasury policy change."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Resulting from the new buyback program."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current implied vol breakeven for EUR options."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "Daily move to 7707"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Near record low from December 2025"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance",
+    "context": "YTD vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "74%",
+    "metric": "Large-cap growth fund outperformance",
+    "context": "YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.1%",
+    "metric": "JD Sports Q2 LFL",
+    "context": "vs consensus -2%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-11%",
+    "metric": "Siemens FY26 OSG guidance",
+    "context": "Raised guidance"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "80%",
+    "metric": "Global humanoid shipment share held by China",
+    "context": "Based on Omdia data."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Actuation cost as percentage of total bill of materials",
+    "context": "Estimated cost structure for humanoid robots."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "9 to 38",
+    "metric": "Number of companies showing robotic hands at WAIC",
+    "context": "Year-over-year increase indicating potential commoditization."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "1,000,000+",
+    "metric": "Amazon warehouse robots in operation",
+    "context": "Growth from 15,000 in 2014."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2bn",
+    "metric": "China humanoid market size",
+    "context": "2026 estimate."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$15bn",
+    "metric": "China humanoid market size",
+    "context": "2030 estimate."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "93%",
+    "metric": "CAGR of China humanoid market",
+    "context": "2026-2030 period."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "14th percentile",
+    "metric": "GS panic index",
+    "context": "Past decade, as of August"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100bps+",
+    "metric": "HY spread widening",
+    "context": "Over three months"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.5 quadrillion",
+    "metric": "Token volume run rate",
+    "context": "OpenRouter data."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "29%",
+    "metric": "AI spend acceleration",
+    "context": "APAC AI implementation survey."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "32nd %-tile",
+    "metric": "US TPM level",
+    "context": "Since 2015."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5B",
+    "metric": "Net selling by desk",
+    "context": "Weekly net selling volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$3.2B",
+    "metric": "Net outflows in Info Tech",
+    "context": "Weekly net outflows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$477M",
+    "metric": "Net buying in Healthcare",
+    "context": "Weekly net buying."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+15.5% YTD",
+    "metric": "Global Fundamental L/S performance",
+    "context": "As of 8/17."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "460%",
+    "metric": "Unitree day 1 price jump",
+    "context": "A-shares IPO debut."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$74B",
+    "metric": "Foreign outflows from Korea",
+    "context": "Aggregated over 3 months (May-July)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.7B",
+    "metric": "FII net buying in India",
+    "context": "First two weeks of August."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.6B",
+    "metric": "FII net short position in index derivatives",
+    "context": "India market positioning."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years, first miss in at least five."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "80%",
+    "metric": "Probability of September BOJ hike",
+    "context": "Based on current CPI acceleration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance over the week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4,500",
+    "metric": "Gold 200-day moving average",
+    "context": "Key technical level cleared."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$92t",
+    "metric": "FMG average realized iron ore price",
+    "context": "Annual average realized price."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$600m",
+    "metric": "FMG FCF generation",
+    "context": "Aggregate FCF for the two-year period."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$720M",
+    "metric": "SB net selling flow",
+    "context": "Current week net flow."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50-60%",
+    "metric": "Estimated price upside for European diesel timespread",
+    "context": "Scenario with persistent refinery outages."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "US$5.9tn",
+    "metric": "Market capitalization of surveyed companies",
+    "context": "As of 20 August 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "91%",
+    "metric": "Share of APAC firms investing in AI",
+    "context": "Last 12 months."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "29%",
+    "metric": "Expected growth in AI spend",
+    "context": "Next 12 months."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.2%",
+    "metric": "Projected AI budget as % of expenses + capex for Chinese firms",
+    "context": "Next 12 months."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12ppt",
+    "metric": "Optimism gap",
+    "context": "Difference between own-firm profitability sentiment and industry profit pool sentiment."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$7.5tr",
+    "metric": "Cumulative AI data-center capex",
+    "context": "Midpoint of $5tr-$10tr range for 2026-2030."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1.6tr",
+    "metric": "Combined AI revenue run-rate",
+    "context": "Estimated for end-2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.8%",
+    "metric": "Expected AI spend share of expenses plus capex",
+    "context": "For next 12 months, based on Asia Pacific survey."
+   },
+   {
+    "source_bank": "BIS",
+    "figure": "$415bn",
+    "metric": "Total credit in yen to non-bank borrowers outside Japan",
+    "context": "As of 1Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$77k",
+    "metric": "Bitcoin production cost",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "22%",
+    "metric": "After-tax project IRR on incremental AI capex",
+    "context": "Compared to ~10% cost of capital."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb67.7bn",
+    "metric": "Quarterly capex",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb44.7bn",
+    "metric": "FCF outflow",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12%",
+    "metric": "Cloud EBITDA margin",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb13.9bn",
+    "metric": "AI Labs and Applications quarterly loss",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "53.3",
+    "metric": "US PMI-Mfg",
+    "context": "August flash estimate vs 53.9 prior."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "53.5",
+    "metric": "US PMI-Srvcs",
+    "context": "August flash estimate vs 54.6 prior."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.696%",
+    "metric": "10Y Treasury Yield",
+    "context": "As of August 21."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15.71",
+    "metric": "VIX",
+    "context": "As of August 21."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24",
+    "metric": "1-day selloffs > 5% in flagship momentum basket",
+    "context": "YTD 2026, more than the prior five years combined."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Kangaroo bond issuance",
+    "context": "GOOG issuance this week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46th percentile",
+    "metric": "Gross exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30th percentile",
+    "metric": "Net exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "322%",
+    "metric": "Total return of US energy refiners basket",
+    "context": "COVID / post-COVID era."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "440%",
+    "metric": "Global bank stocks index return",
+    "context": "Since COVID lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Treasury buyback limit per issue",
+    "context": "Cited as part of Treasury's 'big toolkit'."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance on the week."
+   }
+  ]
+ },
+ "us iran sanctions": {
+  "theme": "us iran sanctions",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Deutsche Bank",
+    "theme": "us iran sanctions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran geopolitical tensions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran geopolitical tensions"
+   },
+   {
+    "source": "JPMorgan",
+    "theme": "us iran sanctions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran economic pressure campaign",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran economic pressure campaign"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "us iran sanctions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Iran sanctions escalation",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Iran sanctions escalation"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "us iran sanctions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Iran sanctions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Iran sanctions"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "16x",
+    "metric": "FY28 EV/revenue",
+    "context": "Implied by $350 price target."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$6B",
+    "metric": "Multi-year AWS agreement value",
+    "context": "Recent agreement mentioned in report."
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "126%",
+    "metric": "F1Q TTM NRR",
+    "context": "Reported in F1Q."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "38%",
+    "metric": "cRPO y/y growth",
+    "context": "Anticipated for F2Q."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$200.00",
+    "metric": "Price target",
+    "context": "Reiterated 19 August 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$171.54",
+    "metric": "Price at 18 Aug 26",
+    "context": "Closing price as of 18 August 2026"
+   },
+   {
+    "source_bank": "Palantir (via Deutsche Bank)",
+    "figure": "1/70th",
+    "metric": "Cost relative to frontier models",
+    "context": "Customer demo example of open-weight model efficiency"
+   },
+   {
+    "source_bank": "Palantir (via Deutsche Bank)",
+    "figure": "6x",
+    "metric": "Speed relative to frontier models",
+    "context": "Customer demo example of open-weight model efficiency"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily return",
+    "context": "7708 level, +13% YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-16%",
+    "metric": "GS TMT Momentum Pair 2-day return",
+    "context": "Led by semiconductor weakness"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury buyback operation size",
+    "context": "Increased from $2bn maximum"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-724 bp",
+    "metric": "Mutual fund underweight to Mag 7",
+    "context": "End of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical lows"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x 2022 value"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7%",
+    "metric": "TRGP daily price change",
+    "context": "As of August 18, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+60%",
+    "metric": "TRGP YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+50%",
+    "metric": "Brent YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$80-$100",
+    "metric": "TTF trading range",
+    "context": "Expected range for fall/winter."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10%",
+    "metric": "TTF 1-month performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.4%",
+    "metric": "Systematic L/S manager drawdown",
+    "context": "As of 1pm EST, 2026-08-19; >3 SD on 3 years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "Momentum factor contribution to underperformance",
+    "context": "Two-day period ending 2026-08-19."
+   },
+   {
+    "source_bank": "OpenAI",
+    "figure": "$40bn",
+    "metric": "OpenAI ARR",
+    "context": "Up 35% quarter-to-date vs ~$20bn end-2025."
+   },
+   {
+    "source_bank": "SK Hynix",
+    "figure": "W40trn",
+    "metric": "SK Hynix share buyback",
+    "context": "3.3% of shares outstanding, executed 20 Aug - 19 Nov."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.6mm",
+    "metric": "IBIT call volume",
+    "context": "2026-08-19 vs 535k puts."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "20 Aug 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "14.89",
+    "metric": "VIX level",
+    "context": "20 Aug 2026, -6% vs prior"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6.7bn",
+    "metric": "OpenAI Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.6bn",
+    "metric": "Anthropic Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance rate",
+    "context": "YTD 2026, vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "As of 20 Aug 2026, near record low"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Total annual long-end buybacks",
+    "context": "Reflects new buyback pace including $18bn quarterly increase."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Impact of increased buyback operations."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current option pricing for EUR trade."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-10bp",
+    "metric": "30y Treasury yield move",
+    "context": "Immediate reaction to Treasury buyback announcement."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-20bp",
+    "metric": "Historical yield suppression impact",
+    "context": "Estimated impact of 1961 and 2011 US programs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20-40bp",
+    "metric": "Projected curve flattening",
+    "context": "Potential impact of current Treasury/Fed measures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6%",
+    "metric": "KOSPI index move",
+    "context": "Overnight move on 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "KRW40tn",
+    "metric": "SK Hynix buyback size",
+    "context": "Announced 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7%",
+    "metric": "GSPUMOMO index change",
+    "context": "Over the 48 hours preceding 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury long-end buyback size",
+    "context": "Increased from $2bn per operation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-38%",
+    "metric": "Token expenditure index change",
+    "context": "Since end of June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily performance",
+    "context": "20.08.2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.6 trillion",
+    "metric": "Active mutual fund equity assets",
+    "context": "Analyzed 504 large-cap funds"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical low"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x the value of 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Annual long-end buybacks",
+    "context": "Increased from previous levels due to Treasury policy change."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Resulting from the new buyback program."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current implied vol breakeven for EUR options."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "Daily move to 7707"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Near record low from December 2025"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance",
+    "context": "YTD vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "74%",
+    "metric": "Large-cap growth fund outperformance",
+    "context": "YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.1%",
+    "metric": "JD Sports Q2 LFL",
+    "context": "vs consensus -2%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-11%",
+    "metric": "Siemens FY26 OSG guidance",
+    "context": "Raised guidance"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$79B",
+    "metric": "Samsung Electronics proposed dividend and buyback package",
+    "context": "Reported as a planned package."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.12%",
+    "metric": "10yr OAT yield",
+    "context": "New post-2008 high."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u20ac65.50/MWh",
+    "metric": "European gas prices",
+    "context": "Highest level since January 2023."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.5 quadrillion",
+    "metric": "Token volume run rate",
+    "context": "OpenRouter data."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "29%",
+    "metric": "AI spend acceleration",
+    "context": "APAC AI implementation survey."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "32nd %-tile",
+    "metric": "US TPM level",
+    "context": "Since 2015."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5B",
+    "metric": "Net selling by desk",
+    "context": "Weekly net selling volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$3.2B",
+    "metric": "Net outflows in Info Tech",
+    "context": "Weekly net outflows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$477M",
+    "metric": "Net buying in Healthcare",
+    "context": "Weekly net buying."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+15.5% YTD",
+    "metric": "Global Fundamental L/S performance",
+    "context": "As of 8/17."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "460%",
+    "metric": "Unitree day 1 price jump",
+    "context": "A-shares IPO debut."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$74B",
+    "metric": "Foreign outflows from Korea",
+    "context": "Aggregated over 3 months (May-July)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.7B",
+    "metric": "FII net buying in India",
+    "context": "First two weeks of August."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.6B",
+    "metric": "FII net short position in index derivatives",
+    "context": "India market positioning."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years, first miss in at least five."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "80%",
+    "metric": "Probability of September BOJ hike",
+    "context": "Based on current CPI acceleration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance over the week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4,500",
+    "metric": "Gold 200-day moving average",
+    "context": "Key technical level cleared."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$92t",
+    "metric": "FMG average realized iron ore price",
+    "context": "Annual average realized price."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$600m",
+    "metric": "FMG FCF generation",
+    "context": "Aggregate FCF for the two-year period."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$720M",
+    "metric": "SB net selling flow",
+    "context": "Current week net flow."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50-60%",
+    "metric": "Estimated price upside for European diesel timespread",
+    "context": "Scenario with persistent refinery outages."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "US$5.9tn",
+    "metric": "Market capitalization of surveyed companies",
+    "context": "As of 20 August 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "91%",
+    "metric": "Share of APAC firms investing in AI",
+    "context": "Last 12 months."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "29%",
+    "metric": "Expected growth in AI spend",
+    "context": "Next 12 months."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.2%",
+    "metric": "Projected AI budget as % of expenses + capex for Chinese firms",
+    "context": "Next 12 months."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12ppt",
+    "metric": "Optimism gap",
+    "context": "Difference between own-firm profitability sentiment and industry profit pool sentiment."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$7.5tr",
+    "metric": "Cumulative AI data-center capex",
+    "context": "Midpoint of $5tr-$10tr range for 2026-2030."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1.6tr",
+    "metric": "Combined AI revenue run-rate",
+    "context": "Estimated for end-2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.8%",
+    "metric": "Expected AI spend share of expenses plus capex",
+    "context": "For next 12 months, based on Asia Pacific survey."
+   },
+   {
+    "source_bank": "BIS",
+    "figure": "$415bn",
+    "metric": "Total credit in yen to non-bank borrowers outside Japan",
+    "context": "As of 1Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$77k",
+    "metric": "Bitcoin production cost",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "22%",
+    "metric": "After-tax project IRR on incremental AI capex",
+    "context": "Compared to ~10% cost of capital."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb67.7bn",
+    "metric": "Quarterly capex",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb44.7bn",
+    "metric": "FCF outflow",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12%",
+    "metric": "Cloud EBITDA margin",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb13.9bn",
+    "metric": "AI Labs and Applications quarterly loss",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "53.3",
+    "metric": "US PMI-Mfg",
+    "context": "August flash estimate vs 53.9 prior."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "53.5",
+    "metric": "US PMI-Srvcs",
+    "context": "August flash estimate vs 54.6 prior."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.696%",
+    "metric": "10Y Treasury Yield",
+    "context": "As of August 21."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15.71",
+    "metric": "VIX",
+    "context": "As of August 21."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24",
+    "metric": "1-day selloffs > 5% in flagship momentum basket",
+    "context": "YTD 2026, more than the prior five years combined."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Kangaroo bond issuance",
+    "context": "GOOG issuance this week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46th percentile",
+    "metric": "Gross exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30th percentile",
+    "metric": "Net exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "322%",
+    "metric": "Total return of US energy refiners basket",
+    "context": "COVID / post-COVID era."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "440%",
+    "metric": "Global bank stocks index return",
+    "context": "Since COVID lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Treasury buyback limit per issue",
+    "context": "Cited as part of Treasury's 'big toolkit'."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance on the week."
+   }
+  ]
+ },
+ "inference cost reduction": {
+  "theme": "inference cost reduction",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Deutsche Bank",
+    "theme": "inference cost reduction",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "inference cost optimization",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "inference cost optimization"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "inference cost reduction",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Inference cost compression",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Inference cost compression"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "inference cost reduction",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Falling inference costs",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Falling inference costs"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "16x",
+    "metric": "FY28 EV/revenue",
+    "context": "Implied by $350 price target."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$6B",
+    "metric": "Multi-year AWS agreement value",
+    "context": "Recent agreement mentioned in report."
+   },
+   {
+    "source_bank": "Snowflake",
+    "figure": "126%",
+    "metric": "F1Q TTM NRR",
+    "context": "Reported in F1Q."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "38%",
+    "metric": "cRPO y/y growth",
+    "context": "Anticipated for F2Q."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$200.00",
+    "metric": "Price target",
+    "context": "Reiterated 19 August 2026"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "$171.54",
+    "metric": "Price at 18 Aug 26",
+    "context": "Closing price as of 18 August 2026"
+   },
+   {
+    "source_bank": "Palantir (via Deutsche Bank)",
+    "figure": "1/70th",
+    "metric": "Cost relative to frontier models",
+    "context": "Customer demo example of open-weight model efficiency"
+   },
+   {
+    "source_bank": "Palantir (via Deutsche Bank)",
+    "figure": "6x",
+    "metric": "Speed relative to frontier models",
+    "context": "Customer demo example of open-weight model efficiency"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily return",
+    "context": "7708 level, +13% YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-16%",
+    "metric": "GS TMT Momentum Pair 2-day return",
+    "context": "Led by semiconductor weakness"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury buyback operation size",
+    "context": "Increased from $2bn maximum"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-724 bp",
+    "metric": "Mutual fund underweight to Mag 7",
+    "context": "End of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical lows"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x 2022 value"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7%",
+    "metric": "TRGP daily price change",
+    "context": "As of August 18, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+60%",
+    "metric": "TRGP YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+50%",
+    "metric": "Brent YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$80-$100",
+    "metric": "TTF trading range",
+    "context": "Expected range for fall/winter."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10%",
+    "metric": "TTF 1-month performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.4%",
+    "metric": "Systematic L/S manager drawdown",
+    "context": "As of 1pm EST, 2026-08-19; >3 SD on 3 years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "Momentum factor contribution to underperformance",
+    "context": "Two-day period ending 2026-08-19."
+   },
+   {
+    "source_bank": "OpenAI",
+    "figure": "$40bn",
+    "metric": "OpenAI ARR",
+    "context": "Up 35% quarter-to-date vs ~$20bn end-2025."
+   },
+   {
+    "source_bank": "SK Hynix",
+    "figure": "W40trn",
+    "metric": "SK Hynix share buyback",
+    "context": "3.3% of shares outstanding, executed 20 Aug - 19 Nov."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.6mm",
+    "metric": "IBIT call volume",
+    "context": "2026-08-19 vs 535k puts."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "20 Aug 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "14.89",
+    "metric": "VIX level",
+    "context": "20 Aug 2026, -6% vs prior"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6.7bn",
+    "metric": "OpenAI Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.6bn",
+    "metric": "Anthropic Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance rate",
+    "context": "YTD 2026, vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "As of 20 Aug 2026, near record low"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Total annual long-end buybacks",
+    "context": "Reflects new buyback pace including $18bn quarterly increase."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Impact of increased buyback operations."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current option pricing for EUR trade."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-10bp",
+    "metric": "30y Treasury yield move",
+    "context": "Immediate reaction to Treasury buyback announcement."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-20bp",
+    "metric": "Historical yield suppression impact",
+    "context": "Estimated impact of 1961 and 2011 US programs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20-40bp",
+    "metric": "Projected curve flattening",
+    "context": "Potential impact of current Treasury/Fed measures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6%",
+    "metric": "KOSPI index move",
+    "context": "Overnight move on 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "KRW40tn",
+    "metric": "SK Hynix buyback size",
+    "context": "Announced 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7%",
+    "metric": "GSPUMOMO index change",
+    "context": "Over the 48 hours preceding 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury long-end buyback size",
+    "context": "Increased from $2bn per operation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-38%",
+    "metric": "Token expenditure index change",
+    "context": "Since end of June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily performance",
+    "context": "20.08.2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.6 trillion",
+    "metric": "Active mutual fund equity assets",
+    "context": "Analyzed 504 large-cap funds"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical low"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x the value of 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Annual long-end buybacks",
+    "context": "Increased from previous levels due to Treasury policy change."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Resulting from the new buyback program."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current implied vol breakeven for EUR options."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "Daily move to 7707"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Near record low from December 2025"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance",
+    "context": "YTD vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "74%",
+    "metric": "Large-cap growth fund outperformance",
+    "context": "YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.1%",
+    "metric": "JD Sports Q2 LFL",
+    "context": "vs consensus -2%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-11%",
+    "metric": "Siemens FY26 OSG guidance",
+    "context": "Raised guidance"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "80%",
+    "metric": "Global humanoid shipment share held by China",
+    "context": "Based on Omdia data."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "50%",
+    "metric": "Actuation cost as percentage of total bill of materials",
+    "context": "Estimated cost structure for humanoid robots."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "9 to 38",
+    "metric": "Number of companies showing robotic hands at WAIC",
+    "context": "Year-over-year increase indicating potential commoditization."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "1,000,000+",
+    "metric": "Amazon warehouse robots in operation",
+    "context": "Growth from 15,000 in 2014."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2bn",
+    "metric": "China humanoid market size",
+    "context": "2026 estimate."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$15bn",
+    "metric": "China humanoid market size",
+    "context": "2030 estimate."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "93%",
+    "metric": "CAGR of China humanoid market",
+    "context": "2026-2030 period."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "14th percentile",
+    "metric": "GS panic index",
+    "context": "Past decade, as of August"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100bps+",
+    "metric": "HY spread widening",
+    "context": "Over three months"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$79B",
+    "metric": "Samsung Electronics proposed dividend and buyback package",
+    "context": "Reported as a planned package."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.12%",
+    "metric": "10yr OAT yield",
+    "context": "New post-2008 high."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "\u20ac65.50/MWh",
+    "metric": "European gas prices",
+    "context": "Highest level since January 2023."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5B",
+    "metric": "Net selling by desk",
+    "context": "Weekly net selling volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$3.2B",
+    "metric": "Net outflows in Info Tech",
+    "context": "Weekly net outflows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$477M",
+    "metric": "Net buying in Healthcare",
+    "context": "Weekly net buying."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+15.5% YTD",
+    "metric": "Global Fundamental L/S performance",
+    "context": "As of 8/17."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "460%",
+    "metric": "Unitree day 1 price jump",
+    "context": "A-shares IPO debut."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$74B",
+    "metric": "Foreign outflows from Korea",
+    "context": "Aggregated over 3 months (May-July)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.7B",
+    "metric": "FII net buying in India",
+    "context": "First two weeks of August."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.6B",
+    "metric": "FII net short position in index derivatives",
+    "context": "India market positioning."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years, first miss in at least five."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "80%",
+    "metric": "Probability of September BOJ hike",
+    "context": "Based on current CPI acceleration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance over the week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4,500",
+    "metric": "Gold 200-day moving average",
+    "context": "Key technical level cleared."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$92t",
+    "metric": "FMG average realized iron ore price",
+    "context": "Annual average realized price."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$600m",
+    "metric": "FMG FCF generation",
+    "context": "Aggregate FCF for the two-year period."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$720M",
+    "metric": "SB net selling flow",
+    "context": "Current week net flow."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50-60%",
+    "metric": "Estimated price upside for European diesel timespread",
+    "context": "Scenario with persistent refinery outages."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24",
+    "metric": "1-day selloffs > 5% in flagship momentum basket",
+    "context": "YTD 2026, more than the prior five years combined."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Kangaroo bond issuance",
+    "context": "GOOG issuance this week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46th percentile",
+    "metric": "Gross exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30th percentile",
+    "metric": "Net exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "322%",
+    "metric": "Total return of US energy refiners basket",
+    "context": "COVID / post-COVID era."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "440%",
+    "metric": "Global bank stocks index return",
+    "context": "Since COVID lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Treasury buyback limit per issue",
+    "context": "Cited as part of Treasury's 'big toolkit'."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance on the week."
+   }
+  ]
+ },
+ "ai capex cycle": {
+  "theme": "ai capex cycle",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 0,
+   "neutral": 2
+  },
+  "theme_stances": [
+   {
+    "source": "JPMorgan",
+    "theme": "ai infrastructure capex",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Recent acceleration in AI companies' revenues makes the AI capex cycle look more economically viable.",
+    "primary_instruments": [
+     "NVDA"
+    ],
+    "vs_consensus": "",
+    "evidence": "recent acceleration in AI companies' revenues makes the AI capex cycle look more economically viable"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai capex cycle",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "AI demand and capex remain robust with $1-1.5 trillion projected for next year.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "AI demand/capex is still growing (1-1.5trn for next year)"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily return",
+    "context": "7708 level, +13% YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-16%",
+    "metric": "GS TMT Momentum Pair 2-day return",
+    "context": "Led by semiconductor weakness"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury buyback operation size",
+    "context": "Increased from $2bn maximum"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-724 bp",
+    "metric": "Mutual fund underweight to Mag 7",
+    "context": "End of 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical lows"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x 2022 value"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7%",
+    "metric": "TRGP daily price change",
+    "context": "As of August 18, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+60%",
+    "metric": "TRGP YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+50%",
+    "metric": "Brent YTD performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$80-$100",
+    "metric": "TTF trading range",
+    "context": "Expected range for fall/winter."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+10%",
+    "metric": "TTF 1-month performance",
+    "context": "As of August 19, 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.4%",
+    "metric": "Systematic L/S manager drawdown",
+    "context": "As of 1pm EST, 2026-08-19; >3 SD on 3 years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "Momentum factor contribution to underperformance",
+    "context": "Two-day period ending 2026-08-19."
+   },
+   {
+    "source_bank": "OpenAI",
+    "figure": "$40bn",
+    "metric": "OpenAI ARR",
+    "context": "Up 35% quarter-to-date vs ~$20bn end-2025."
+   },
+   {
+    "source_bank": "SK Hynix",
+    "figure": "W40trn",
+    "metric": "SK Hynix share buyback",
+    "context": "3.3% of shares outstanding, executed 20 Aug - 19 Nov."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.6mm",
+    "metric": "IBIT call volume",
+    "context": "2026-08-19 vs 535k puts."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "20 Aug 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "14.89",
+    "metric": "VIX level",
+    "context": "20 Aug 2026, -6% vs prior"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$6.7bn",
+    "metric": "OpenAI Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$11.6bn",
+    "metric": "Anthropic Q2 revenue",
+    "context": "Q2 2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance rate",
+    "context": "YTD 2026, vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "As of 20 Aug 2026, near record low"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Total annual long-end buybacks",
+    "context": "Reflects new buyback pace including $18bn quarterly increase."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Impact of increased buyback operations."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current option pricing for EUR trade."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-10bp",
+    "metric": "30y Treasury yield move",
+    "context": "Immediate reaction to Treasury buyback announcement."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-20bp",
+    "metric": "Historical yield suppression impact",
+    "context": "Estimated impact of 1961 and 2011 US programs."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20-40bp",
+    "metric": "Projected curve flattening",
+    "context": "Potential impact of current Treasury/Fed measures."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~6%",
+    "metric": "KOSPI index move",
+    "context": "Overnight move on 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "KRW40tn",
+    "metric": "SK Hynix buyback size",
+    "context": "Announced 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-7%",
+    "metric": "GSPUMOMO index change",
+    "context": "Over the 48 hours preceding 20 August 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4bn",
+    "metric": "Treasury long-end buyback size",
+    "context": "Increased from $2bn per operation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-38%",
+    "metric": "Token expenditure index change",
+    "context": "Since end of June 2026."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "S&P 500 daily performance",
+    "context": "20.08.2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4.6 trillion",
+    "metric": "Active mutual fund equity assets",
+    "context": "Analyzed 504 large-cap funds"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Historical low"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "$8000bn",
+    "metric": "Money market fund cash",
+    "context": "Nearly 2x the value of 2022"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$144bn",
+    "metric": "Annual long-end buybacks",
+    "context": "Increased from previous levels due to Treasury policy change."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "16%",
+    "metric": "Reduction in 20y and 30y supply",
+    "context": "Resulting from the new buyback program."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "1m ATMF EUR call terminal breakeven",
+    "context": "Current implied vol breakeven for EUR options."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+21bps",
+    "metric": "SPX daily performance",
+    "context": "Daily move to 7707"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.2%",
+    "metric": "Mutual fund cash balances",
+    "context": "Near record low from December 2025"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "41%",
+    "metric": "Large-cap mutual fund outperformance",
+    "context": "YTD vs 37% historical average"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "74%",
+    "metric": "Large-cap growth fund outperformance",
+    "context": "YTD"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3.1%",
+    "metric": "JD Sports Q2 LFL",
+    "context": "vs consensus -2%"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "10-11%",
+    "metric": "Siemens FY26 OSG guidance",
+    "context": "Raised guidance"
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.5 quadrillion",
+    "metric": "Token volume run rate",
+    "context": "OpenRouter data."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "29%",
+    "metric": "AI spend acceleration",
+    "context": "APAC AI implementation survey."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "32nd %-tile",
+    "metric": "US TPM level",
+    "context": "Since 2015."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5B",
+    "metric": "Net selling by desk",
+    "context": "Weekly net selling volume."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$3.2B",
+    "metric": "Net outflows in Info Tech",
+    "context": "Weekly net outflows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+$477M",
+    "metric": "Net buying in Healthcare",
+    "context": "Weekly net buying."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+15.5% YTD",
+    "metric": "Global Fundamental L/S performance",
+    "context": "As of 8/17."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "460%",
+    "metric": "Unitree day 1 price jump",
+    "context": "A-shares IPO debut."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-$74B",
+    "metric": "Foreign outflows from Korea",
+    "context": "Aggregated over 3 months (May-July)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.7B",
+    "metric": "FII net buying in India",
+    "context": "First two weeks of August."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$3.6B",
+    "metric": "FII net short position in index derivatives",
+    "context": "India market positioning."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years, first miss in at least five."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "80%",
+    "metric": "Probability of September BOJ hike",
+    "context": "Based on current CPI acceleration."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance over the week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4,500",
+    "metric": "Gold 200-day moving average",
+    "context": "Key technical level cleared."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$92t",
+    "metric": "FMG average realized iron ore price",
+    "context": "Annual average realized price."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$600m",
+    "metric": "FMG FCF generation",
+    "context": "Aggregate FCF for the two-year period."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$720M",
+    "metric": "SB net selling flow",
+    "context": "Current week net flow."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50-60%",
+    "metric": "Estimated price upside for European diesel timespread",
+    "context": "Scenario with persistent refinery outages."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "US$5.9tn",
+    "metric": "Market capitalization of surveyed companies",
+    "context": "As of 20 August 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "91%",
+    "metric": "Share of APAC firms investing in AI",
+    "context": "Last 12 months."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "29%",
+    "metric": "Expected growth in AI spend",
+    "context": "Next 12 months."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "7.2%",
+    "metric": "Projected AI budget as % of expenses + capex for Chinese firms",
+    "context": "Next 12 months."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12ppt",
+    "metric": "Optimism gap",
+    "context": "Difference between own-firm profitability sentiment and industry profit pool sentiment."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$7.5tr",
+    "metric": "Cumulative AI data-center capex",
+    "context": "Midpoint of $5tr-$10tr range for 2026-2030."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$1.6tr",
+    "metric": "Combined AI revenue run-rate",
+    "context": "Estimated for end-2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "5.8%",
+    "metric": "Expected AI spend share of expenses plus capex",
+    "context": "For next 12 months, based on Asia Pacific survey."
+   },
+   {
+    "source_bank": "BIS",
+    "figure": "$415bn",
+    "metric": "Total credit in yen to non-bank borrowers outside Japan",
+    "context": "As of 1Q26."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$77k",
+    "metric": "Bitcoin production cost",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "22%",
+    "metric": "After-tax project IRR on incremental AI capex",
+    "context": "Compared to ~10% cost of capital."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb67.7bn",
+    "metric": "Quarterly capex",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb44.7bn",
+    "metric": "FCF outflow",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12%",
+    "metric": "Cloud EBITDA margin",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "Rmb13.9bn",
+    "metric": "AI Labs and Applications quarterly loss",
+    "context": "June quarter 2026."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "53.3",
+    "metric": "US PMI-Mfg",
+    "context": "August flash estimate vs 53.9 prior."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "53.5",
+    "metric": "US PMI-Srvcs",
+    "context": "August flash estimate vs 54.6 prior."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.696%",
+    "metric": "10Y Treasury Yield",
+    "context": "As of August 21."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "15.71",
+    "metric": "VIX",
+    "context": "As of August 21."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "24",
+    "metric": "1-day selloffs > 5% in flagship momentum basket",
+    "context": "YTD 2026, more than the prior five years combined."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Kangaroo bond issuance",
+    "context": "GOOG issuance this week."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "46th percentile",
+    "metric": "Gross exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "30th percentile",
+    "metric": "Net exposure",
+    "context": "1-year lookback across GS PB book."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "322%",
+    "metric": "Total return of US energy refiners basket",
+    "context": "COVID / post-COVID era."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "440%",
+    "metric": "Global bank stocks index return",
+    "context": "Since COVID lows."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.6%",
+    "metric": "Walmart US comps growth",
+    "context": "Slowest pace in six years."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%",
+    "metric": "Walmart traffic growth",
+    "context": "Slowed from 3% in Q1."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4B",
+    "metric": "Treasury buyback limit per issue",
+    "context": "Cited as part of Treasury's 'big toolkit'."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1-1.5trn",
+    "metric": "AI demand/capex",
+    "context": "Expected for next year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.7%",
+    "metric": "US Stagflation basket performance",
+    "context": "Performance on the week."
+   }
+  ]
+ }
+}
