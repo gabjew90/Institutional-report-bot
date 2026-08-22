@@ -845,10 +845,14 @@ def _missing_release_actual_violations(
     return out
 
 
+# Explicit expectation references ONLY. Bare directional words
+# (above/below/under/over) were removed 2026-08-21: the real 8/21 WMT
+# bullet passed on "fuel above $4 a gallon" — an unrelated clause —
+# while never framing the print against the $0.75/$188.79bn consensus.
 _CONSENSUS_COMPARE_RE = re.compile(
-    r"\b(beat|miss(?:ed)?|above|below|against|versus|vs\.?|short of|"
-    r"topped|in line|matched|ahead of|under(?:shot)?|over(?:shot)?|"
-    r"expected|consensus|the street|wanted|looked for)\b",
+    r"\b(beat|miss(?:ed)?|against|versus|vs\.?|short of|topped|"
+    r"in line|expected|expectations|consensus|estimate[sd]?|forecast|"
+    r"the street|wanted|looked for|looking for|whisper)\b",
     re.IGNORECASE,
 )
 _NO_CONSENSUS_RE = re.compile(
@@ -861,6 +865,13 @@ _LEDGER_STOPWORDS = frozenset({
     "the", "and", "with", "before", "after", "open", "close", "reports",
     "consensus", "share", "revenue", "earnings", "morning", "wednesday",
     "thursday", "friday", "monday", "tuesday", "expected", "per",
+    # banks / attribution tokens that appear in ledger lines as the
+    # SOURCE of a consensus, never as the reporting company — without
+    # these, "Goldman reported $X" in a recap would false-fire
+    "goldman", "sachs", "jpmorgan", "morgan", "stanley", "bofa", "citi",
+    "ubs", "nomura", "deutsche", "barclays", "bank", "america", "street",
+    "wall", "read", "buy", "sell", "overweight", "both", "direct", "each",
+    "august", "september", "july", "june", "october",
 })
 
 
@@ -878,7 +889,7 @@ def _ledger_names(ctx: dict) -> list[str]:
             continue
         names.extend(m.group(0) for m in _CASHTAG_RE.finditer(ln))
         for w in re.findall(r"\b[A-Z][a-z]{2,}(?:'s)?\b", ln):
-            w = w.rstrip("'s").rstrip("'")
+            w = re.sub(r"'s?$", "", w)
             if w.lower() not in _LEDGER_STOPWORDS:
                 names.append(w)
     seen, out = set(), []
@@ -906,12 +917,22 @@ def _consensus_amnesia_violations(md_text: str, ctx: dict) -> list[dict]:
     # Split into bullets/paragraphs so the comparison-language test is
     # local to the sentence block reporting the print.
     blocks = [b.strip() for b in re.split(r"\n(?=- )|\n\n", recap) if b.strip()]
+    # Verbs AND the nouns/adjectives real recaps use ("Q2 print", "EPS
+    # $0.81 actual", "$WMT fell 9.15%") — the 8/20 and 8/21 pulses
+    # reported Walmart with none of the original verbs.
     reported_re = re.compile(
-        r"\b(reported|printed|came in|landed|posted|delivered|earned)\b",
+        r"\b(reported|reports|printed|print|came in|landed|posted|"
+        r"delivered|earned|actual|results|fell|rose|dropped|jumped)\b",
         re.IGNORECASE,
     )
     for b in blocks:
-        hit = [n for n in names if re.search(rf"\b{re.escape(n)}\b", b)]
+        # \b cannot sit before '$' (a non-word char): a bullet opening
+        # "**$WMT fell" never matched the $WMT ledger name. Lookarounds
+        # handle cashtags and words alike.
+        hit = [
+            n for n in names
+            if re.search(rf"(?<![\w$]){re.escape(n)}(?![\w])", b)
+        ]
         if not hit:
             continue
         if _NO_CONSENSUS_RE.search(b):

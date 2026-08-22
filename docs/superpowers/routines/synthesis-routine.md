@@ -1895,6 +1895,19 @@ if os.path.exists('/tmp/lint_report.json'):
 else:
     print('no /tmp/lint_report.json — skipping lint commit')
 
+# Commit /tmp/driver_state.json (2026-08-21) — the gate trail
+# scripts/pulse_driver.py recorded this fire: every DECISION token, the
+# re-roll/SCRUB budgets, and the preflight verdict. This is the PROOF
+# the control flow ran through the driver; without it QC can only infer
+# it from the shape of the other artifacts.
+if os.path.exists('/tmp/driver_state.json'):
+    drv_path = f'pulse-output/driver/{ts}.json'
+    drv_content = open('/tmp/driver_state.json').read().encode()
+    result = commit(drv_path, drv_content, f'routine: driver gate trail {ts}')
+    print('committed driver state:', drv_path)
+else:
+    print('no /tmp/driver_state.json — driver did not run this fire (flag in QC)')
+
 # Commit /tmp/final_validation.json (STEP 5.75) — the post-EDIT/SCRUB
 # structural re-validation. Residual violations that were waived to
 # keep the pulse shipping MUST be visible to QC, not silent.

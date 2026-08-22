@@ -6040,3 +6040,19 @@ def calendar_already_posted(date_iso: str) -> bool:
         (f'%{date_iso}%',),
     ).fetchone()
     return row is not None
+
+
+def get_last_daily_pulses(limit: int = 3) -> list[dict]:
+    """The last `limit` scheduled pulses, newest first — report_date +
+    report_markdown. Used by the consensus ledger (2026-08-21): a
+    consensus is often published 2-3 pulses before the print (WMT's
+    $0.75/$188.79bn ran 8/18, the print was 8/20), so a single-pulse
+    lookback missed it."""
+    rows = get_connection().execute(
+        """SELECT report_date, created_at, report_markdown
+           FROM daily_reports
+           WHERE report_type = 'daily'
+           ORDER BY created_at DESC LIMIT ?""",
+        (int(limit),),
+    ).fetchall()
+    return [dict(r) for r in rows]

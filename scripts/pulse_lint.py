@@ -395,6 +395,21 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
     # Strip fenced code blocks before scanning so URL/code semicolons
     # and dashes don't false-positive. INSIGHTS prose has no fenced blocks.
     scan_text = re.sub(r'```.*?```', '', md_text, flags=re.DOTALL)
+    # Voice rules apply to READER prose only. `## _`-prefixed internal
+    # blocks (_LEANS, _DRAFT NOTES, _EDIT NOTES) are stripped by the
+    # strip step or the bridge before anyone reads them, and the TRADE
+    # BOARD's voice enforcement lives in the renderer (pulse_sections
+    # _clean_inline). 2026-08-21 QC: an em-dash inside the `## _LEANS`
+    # header was one of three hard issues and part of why SCRUB was
+    # dispatched. Blank the internal blocks (line-preserving, so
+    # reported line numbers stay right) for the voice scan only —
+    # structural checks below still see the full text.
+    def _blank_internal(text: str) -> str:
+        def _blank(m: re.Match) -> str:
+            return "\n" * m.group(0).count("\n")
+        return re.sub(r'^## _\S+.*?(?=^## |\Z)', _blank, text,
+                      flags=re.M | re.S)
+    voice_text = _blank_internal(scan_text)
 
     issues: list[dict] = []
 
@@ -406,8 +421,8 @@ def lint_markdown(md_text: str, ctx: dict | None = None) -> list[dict]:
 
     # Banned-pattern scan from voice_rules (high-confidence)
     for pattern, kind in compose_lint_patterns():
-        for m in re.finditer(pattern, scan_text, re.IGNORECASE):
-            add(line_of(m, scan_text), kind, m.group())
+        for m in re.finditer(pattern, voice_text, re.IGNORECASE):
+            add(line_of(m, voice_text), kind, m.group())
 
     # Jargon scan — retired 2026-08-11, compose_jargon_lint_patterns()
     # now returns []. It flagged term PRESENCE and could not tell a

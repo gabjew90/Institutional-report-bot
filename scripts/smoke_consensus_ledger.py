@@ -33,6 +33,15 @@ _PREV_MD = """# Prior pulse
 - **Jackson Hole.** No figures here.
 """
 
+# The 8/19 phrasing that the old extractor missed: "expected", no
+# "consensus" word. And a 2-pulses-back line the old lookback missed.
+_PREV_MD_NEWEST = """# Newer pulse
+
+## 4. WHAT TO WATCH
+
+- **Thursday, August 20: Walmart reports before the open**, with $188.79 billion of revenue expected.
+"""
+
 _LEDGER_CTX = {
     "prev_consensus_block": (
         "[from your own pulse dated 2026-08-18]\n"
@@ -47,16 +56,40 @@ _LEDGER_CTX = {
 def test_ledger_extraction():
     import db
     from report.synthesizer import _render_prev_consensus_block
-    with patch.object(db, "get_last_daily_pulse",
-                      return_value={"report_date": "2026-08-18",
-                                    "report_markdown": _PREV_MD}):
+    with patch.object(db, "get_last_daily_pulses",
+                      return_value=[
+                          {"report_date": "2026-08-19",
+                           "report_markdown": _PREV_MD_NEWEST},
+                          {"report_date": "2026-08-18",
+                           "report_markdown": _PREV_MD},
+                      ]):
         block = _render_prev_consensus_block()
+    # "expected" phrasing (8/19) must be captured
+    assert "$188.79 billion of revenue expected" in block, block
+    # two-pulses-back consensus (8/18) must be captured
     assert "Target" in block and "$2.31" in block, block
-    assert "Walmart" in block and "$0.75" in block, block
+    assert "$0.75" in block, block
     assert "Jackson Hole" not in block, "no-figure lines must not enter"
-    with patch.object(db, "get_last_daily_pulse", return_value=None):
+    assert "dated 2026-08-19" in block and "dated 2026-08-18" in block
+    with patch.object(db, "get_last_daily_pulses", return_value=[]):
         assert _render_prev_consensus_block() == "(none)"
-    _ok("ledger: extracts consensus lines, honest empty path")
+    _ok("ledger: 'expected' phrasing + 3-pulse lookback + empty path")
+
+
+def test_lint_ignores_internal_blocks_for_voice():
+    sys.path.insert(0, "scripts")
+    import importlib
+    pl = importlib.import_module("pulse_lint")
+    dash = "—"
+    md = ("## 1. RECAP\n\nclean prose here.\n\n"
+          f"## _LEANS (internal {dash} TRADE BOARD source)\n"
+          f"- long | $SPY | a; b {dash} c\n")
+    kinds = [i["kind"] for i in pl.lint_markdown(md)]
+    assert not any(k in ("em-dash", "semicolon") for k in kinds), kinds
+    md2 = f"## 1. RECAP\n\nprose {dash} with a dash.\n"
+    assert "em-dash" in [i["kind"] for i in pl.lint_markdown(md2)], \
+        "reader prose must still be scanned"
+    _ok("lint: internal ## _ blocks exempt from voice scan, prose not")
 
 
 def _pdv():
@@ -151,5 +184,6 @@ if __name__ == "__main__":
     test_amnesia_quiet_when_framed_or_no_ledger()
     test_amnesia_registered_hard()
     test_section_length_lint()
+    test_lint_ignores_internal_blocks_for_voice()
     test_prompt_wiring()
     print("\nALL CONSENSUS-LEDGER SMOKE TESTS PASS")

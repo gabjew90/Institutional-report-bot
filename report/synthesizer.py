@@ -1592,28 +1592,62 @@ def _render_prev_consensus_block() -> str:
     """
     import db as _db
     try:
-        prev = _db.get_last_daily_pulse()
+        pulses = _db.get_last_daily_pulses(limit=3)
     except Exception as e:
         log.info(f"consensus ledger skipped (non-fatal): {e}")
         return "(unavailable)"
-    md = (prev or {}).get("report_markdown") or ""
-    if not md.strip():
+    if not pulses:
         return "(none)"
-    out: list[str] = []
-    for ln in md.splitlines():
-        s = ln.strip().lstrip("-*").strip()
-        if "onsensus" not in s or not re.search(r"\$\d", s):
-            continue
-        s = s.replace("**", "")
-        out.append(f"- {s[:240]}")
-        if len(out) >= 12:
-            break
-    if not out:
-        return "(none)"
-    return (
-        f"[from your own pulse dated {prev.get('report_date', '?')}]\n"
-        + "\n".join(out)
+    # 2026-08-21 fix: the 8/20 print-day recap shipped Walmart's actual
+    # with no beat/miss because (a) the 8/19 line said "$188.79 billion
+    # of revenue expected" — no "consensus" word, so the old filter
+    # missed it — and (b) the 8/18 "Consensus is $0.75 a share" line
+    # was two pulses back. Broader expectation vocabulary + 3-pulse
+    # lookback, deduped, newest first.
+    expect_re = re.compile(
+        r"consensus|expected|expectations|estimate[sd]?|the street|"
+        r"looking for|looks for|forecast|whisper",
+        re.IGNORECASE,
     )
+    # Earnings-shaped only: the ledger is for prints that get settled as
+    # beat/miss. Without this, gold forecasts / debt figures / flow
+    # stats entered and seeded false names into the validator.
+    earnings_re = re.compile(
+        r"a share|per share|\bEPS\b|revenue|comparable sales|comps\b|"
+        r"same-store",
+        re.IGNORECASE,
+    )
+    groups: list[str] = []
+    seen: set[str] = set()
+    total = 0
+    for p in pulses:
+        md = (p or {}).get("report_markdown") or ""
+        lines: list[str] = []
+        for ln in md.splitlines():
+            s = ln.strip().lstrip("-*").strip()
+            if (not re.search(r"\$\d", s) or not expect_re.search(s)
+                    or not earnings_re.search(s)):
+                continue
+            # must name something: a cashtag or a Capitalized word
+            if not re.search(r"\$[A-Z]{1,6}\b|\b[A-Z][a-z]{2,}", s):
+                continue
+            s = s.replace("**", "")
+            key = re.sub(r"\W+", " ", s.lower())[:80]
+            if key in seen:
+                continue
+            seen.add(key)
+            lines.append(f"- {s[:240]}")
+            total += 1
+            if total >= 14:
+                break
+        if lines:
+            groups.append(
+                f"[from your own pulse dated {p.get('report_date', '?')}]\n"
+                + "\n".join(lines)
+            )
+        if total >= 14:
+            break
+    return "\n".join(groups) if groups else "(none)"
 
 
 def _render_open_reads_block(today: str) -> str:
