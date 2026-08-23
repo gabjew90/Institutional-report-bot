@@ -191,6 +191,7 @@ class Settings(BaseSettings):
         # Caller-owned alert channels (1:1 user → channel — every post is
         # an entry commitment from that user, structurally no-cherry-pick)
         "🦉-kloh-alerts-🦉,"
+        "🧙🏻‍♀️-wiz-of-cemini-alerts-🐸,"
         "🫦-zhawk-thawghts-🗣,"
         # 2026-07-11 review fix: abe-alerts + kyle-alerts were MISSING —
         # 47 and 7 attachment messages in 30d with ZERO chat-store OCR,
@@ -257,6 +258,10 @@ class Settings(BaseSettings):
         "🏃-fitness-yapping-🏋,"
         "🎲-gambling-yapping-🎲,"
         "🏈-fantasy-football-yapping-🏈,"
+        # 2026-08-22: Cemini's alerts channel (shared with wizard_of_alt).
+        # Ingestion + profiles only — NOT a registered analyst caller
+        # (owner call: "just ingestion").
+        "🧙🏻‍♀️-wiz-of-cemini-alerts-🐸,"
         "🦉-kloh-alerts-🦉,"
         "🫦-zhawk-thawghts-🗣,"
         "🕰️-member-alerts-🕰️,"
