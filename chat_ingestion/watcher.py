@@ -344,7 +344,18 @@ async def run_chat_catchup(
             #   3. Cold-start for a brand-new channel: scan the full 30d.
             scan_from = None
             try:
-                gap_iso = db.find_oldest_chat_gap(target.id, days=_CATCHUP_HARD_CAP_DAYS, gap_minutes=60)
+                # Sealed-range floor: only gap-scan past the last fully
+                # rescanned point (2026-08-23 — stops the permanent
+                # month-deep rescan on every boot/resume/4h tick).
+                _wm = None
+                try:
+                    _wm = db.get_catchup_watermark(target.id)
+                except Exception:
+                    _wm = None
+                gap_iso = db.find_oldest_chat_gap(
+                    target.id, days=_CATCHUP_HARD_CAP_DAYS, gap_minutes=60,
+                    since_iso=_wm,
+                )
             except Exception as e:
                 log.warning(f"Chat catchup: gap-detect failed: {e}")
                 gap_iso = None
@@ -397,6 +408,7 @@ async def run_chat_catchup(
 
         new_this_channel = 0
         seen_this_channel = 0
+        scan_ok = False
         last_msg: discord.Message | None = None
         for attempt in range(1, _MAX_SCAN_ATTEMPTS + 1):
             kwargs: dict = {"limit": None, "oldest_first": True}
@@ -417,6 +429,7 @@ async def run_chat_catchup(
                     # on /ask demand instead.
                     if await ingest_message(msg, trigger_eager_ocr=False):
                         new_this_channel += 1
+                scan_ok = True
                 break  # full iteration succeeded
             except Exception as e:
                 if attempt < _MAX_SCAN_ATTEMPTS:
@@ -459,6 +472,16 @@ async def run_chat_catchup(
                 f"Chat catchup ({reason}): #{chan_name} — "
                 f"scanned {seen_this_channel}, nothing new"
             )
+        # Seal the scanned range (2026-08-23). `scan_ok` is True only when
+        # the history walk completed (the retry loop hit `break`); a
+        # failed/partial walk leaves the watermark alone so the next run
+        # re-examines it. 1h buffer mirrors the MAX-resume buffer.
+        if scan_ok:
+            try:
+                db.set_catchup_watermark(
+                    target.id, (now - timedelta(hours=1)).isoformat())
+            except Exception as e:
+                log.debug(f"Chat catchup: watermark write failed: {e}")
 
     # Observability (fix #7): record run summary so we can see catchup
     # frequency / volume historically without spelunking logs.
@@ -476,4 +499,10 @@ async def run_chat_catchup(
     except Exception as e:
         log.debug(f"Chat catchup: could not record pipeline event: {e}")
 
+    # Return the walk's freed memory to the OS (2026-08-23 cost fix).
+    try:
+        import memtrim
+        memtrim.trim_and_log(f"catchup:{reason}")
+    except Exception:
+        pass
     return total_new

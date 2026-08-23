@@ -455,6 +455,19 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             fetched_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
 
+        -- Chat-catchup watermark (2026-08-23). The gap detector treats
+        -- ANY 60-min silence in the last 30 days as a gap, so every
+        -- channel permanently "has a gap" (overnight) and every boot /
+        -- resume / 4h tick re-walked a month of all 15 channels storing
+        -- 0 rows (26 runs on 2026-08-23 alone). Once a range has been
+        -- fully rescanned it is SEALED here; gap detection only looks
+        -- past scanned_through.
+        CREATE TABLE IF NOT EXISTS chat_catchup_watermark (
+            channel_id INTEGER PRIMARY KEY,
+            scanned_through TEXT NOT NULL,
+            updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+
         -- Sleeper player-ID -> name cache (2026-08-20). The fantasy
         -- /ask tool needs id->name translation for rosters/matchups/
         -- transactions; Sleeper's full players dump is ~15MB so it is
@@ -4566,6 +4579,7 @@ def find_oldest_chat_gap(
     *,
     days: int = 30,
     gap_minutes: int = 60,
+    since_iso: str | None = None,
 ) -> str | None:
     """Find the earliest gap in stored chat_messages for a channel,
     within the last `days`. A "gap" is any stretch >= `gap_minutes`
@@ -4585,6 +4599,11 @@ def find_oldest_chat_gap(
     cutoff = (
         datetime.now(timezone.utc) - timedelta(days=int(days))
     ).isoformat()
+    # Sealed-range floor (2026-08-23): a range already fully rescanned
+    # (chat_catchup_watermark) is not re-examined — that is what stops
+    # the permanent monthly rescan. See the table comment in the schema.
+    if since_iso and str(since_iso) > cutoff:
+        cutoff = str(since_iso)
     row = get_connection().execute(
         """WITH ordered AS (
                SELECT posted_at,
@@ -6056,3 +6075,44 @@ def get_last_daily_pulses(limit: int = 3) -> list[dict]:
         (int(limit),),
     ).fetchall()
     return [dict(r) for r in rows]
+
+
+# ---------------------------------------------------------------------
+# Chat-catchup watermark + VACUUM (2026-08-23, memory/cost fixes)
+# ---------------------------------------------------------------------
+
+def get_catchup_watermark(channel_id: int) -> str | None:
+    row = get_connection().execute(
+        "SELECT scanned_through FROM chat_catchup_watermark WHERE channel_id = ?",
+        (int(channel_id),),
+    ).fetchone()
+    return row["scanned_through"] if row else None
+
+
+def set_catchup_watermark(channel_id: int, scanned_through_iso: str) -> None:
+    """Seal [.., scanned_through] for this channel: a later catchup only
+    gap-scans past it. Only call after a FULL successful history walk."""
+    conn = get_connection()
+    conn.execute(
+        "INSERT INTO chat_catchup_watermark (channel_id, scanned_through, updated_at) "
+        "VALUES (?, ?, datetime('now')) "
+        "ON CONFLICT(channel_id) DO UPDATE SET "
+        "scanned_through = excluded.scanned_through, updated_at = excluded.updated_at",
+        (int(channel_id), str(scanned_through_iso)),
+    )
+    conn.commit()
+
+
+def vacuum_db() -> dict:
+    """VACUUM the database (weekly, quiet hour). Reclaims pages freed by
+    the retention purges so the file — and the OS page cache Railway
+    meters as memory — shrinks. Returns before/after page counts.
+    Cannot run inside a transaction; brief write lock."""
+    conn = get_connection()
+    before = conn.execute("PRAGMA page_count").fetchone()[0]
+    free_before = conn.execute("PRAGMA freelist_count").fetchone()[0]
+    conn.commit()
+    conn.execute("VACUUM")
+    after = conn.execute("PRAGMA page_count").fetchone()[0]
+    return {"pages_before": before, "freelist_before": free_before,
+            "pages_after": after}

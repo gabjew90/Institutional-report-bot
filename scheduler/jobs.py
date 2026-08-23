@@ -414,6 +414,26 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     log.info("Daily calendar graphic active — 00:00 UTC Mon-Fri "
              "(Sun-Thu nights ET)")
 
+    # Memory/cost fixes (2026-08-23): periodic malloc_trim + weekly
+    # VACUUM. See memtrim.py and db.vacuum_db docstrings.
+    scheduler.add_job(
+        _malloc_trim_job,
+        trigger=IntervalTrigger(minutes=15),
+        id="malloc_trim",
+        name="Memory: periodic malloc_trim",
+        max_instances=1,
+        misfire_grace_time=300,
+    )
+    scheduler.add_job(
+        _db_vacuum_job,
+        trigger=CronTrigger(day_of_week="sun", hour=4, minute=45,
+                            timezone=tz),
+        id="db_vacuum",
+        name="DB: weekly VACUUM",
+        max_instances=1,
+        misfire_grace_time=3600,
+    )
+
     log.info(
         f"Scheduler configured: "
         f"poll every {settings.dropbox_poll_interval_minutes}min, "
@@ -1223,3 +1243,27 @@ async def _daily_calendar_job(bot=None):
             log.error(f"Calendar {date_iso}: send failed on all channels")
     except Exception as e:
         log.error(f"Calendar job failed for {date_iso}: {e}", exc_info=True)
+
+
+async def _malloc_trim_job():
+    """15-min safety trim (2026-08-23 cost fix): return freed heap to
+    the OS so steady-state RSS reflects live objects, not the high-water
+    mark of the last heavy job. Railway bills the difference."""
+    try:
+        import memtrim
+        memtrim.trim_and_log("periodic")
+    except Exception as e:
+        log.debug(f"malloc trim job: {e}")
+
+
+async def _db_vacuum_job():
+    """Weekly VACUUM (Sunday 04:45 local, after the 04:15 retention
+    purge). Reclaims freed pages so the DB file — and the OS page cache
+    Railway meters as container memory — shrinks."""
+    try:
+        import db
+        import asyncio as _asyncio
+        res = await _asyncio.to_thread(db.vacuum_db)
+        log.info(f"weekly VACUUM: {res}")
+    except Exception as e:
+        log.error(f"weekly VACUUM failed: {e}")
