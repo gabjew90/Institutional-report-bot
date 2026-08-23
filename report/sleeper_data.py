@@ -403,6 +403,14 @@ def build_topic_payload(
                     str(p.get("picked_by") or ""), users_by_id),
             })
         out["picks"] = rendered
+        # Grouped view (2026-08-23): report-card asks need rosters, and
+        # reassembling 180 flat picks in-context invites cross-team
+        # attribution errors. Same data, pre-grouped.
+        by_mgr: dict[str, list] = {}
+        for r in rendered:
+            by_mgr.setdefault(r["manager"], []).append(
+                f"{r['pick']} {r['player']}")
+        out["rosters_by_manager"] = by_mgr
         if not rendered:
             out["note"] = (
                 f"Draft has no picks yet (league status: "
