@@ -2851,7 +2851,7 @@ def _build_fantasy_league_tool():
                     "(scores for a week) | 'roster' (one manager's "
                     "starters + bench — requires `member`) | "
                     "'transactions' (waivers/trades/FAAB, recent) | "
-                    "'draft' (picks) | 'trending' (adds/drops across "
+                    "'draft' (all picks + rosters_by_manager; USE THIS for draft grading/review/who-drafted-best questions, NOT standings, which is all zeros pre-season) | 'trending' (adds/drops across "
                     "all of Sleeper) | 'projections' (projected PPR "
                     "points; optional `member` for their starters).\n"
                     "`week`: NFL week number (defaults to the current "
