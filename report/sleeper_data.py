@@ -40,7 +40,12 @@ SLEEPER_TO_DISCORD: dict[str, tuple[int, str, str]] = {
     "1395638093469454336": (162444150577299456, "f.jamal", "f.jamal"),
     "1395573375782367232": (264777559026171905, "2pale", "2Pale"),
     "1395814374639144960": (757772170863837206, "nft_spaceman", "Ry"),
-    "1393740565673177088": (883873127359201300, "tipdropio", "TipDrop"),
+    # 2026-08-23: TipDrop (1393740565673177088 / tipdropio) dropped out
+    # the night before the draft ("some real shitty news"); BK replaced
+    # him with StinkyDillPickle on roster 3. Identified via Arxfic's
+    # best-team tag during the draft.
+    "1268074568744976384": (296014750477844502, "re4lsl1msh4dy",
+                            "DeepFried"),
     "1135287187546898432": (704361827290579084, "tulch", "Tulch"),
     "737063774686687232": (811385796295655434, "vincenzo9231", "Vincenzo"),
 }
