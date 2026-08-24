@@ -1,0 +1,104 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '12%' is attached to [basket, billion, five, funds, indices] but the source uses it for [beta, down, gsprhimo, high, momo] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "12%",
+   "draft_subject": [
+    "basket",
+    "billion",
+    "five",
+    "funds",
+    "indices",
+    "lost",
+    "momentum",
+    "most"
+   ],
+   "source_subject": [
+    "beta",
+    "down",
+    "gsprhimo",
+    "high",
+    "momo",
+    "move",
+    "pair",
+    "risk"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '70%' is attached to [answer, boom, break, bust, capacity] but the source uses it for [across, broadly, compared, contract, coverage] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "70%",
+   "draft_subject": [
+    "answer",
+    "boom",
+    "break",
+    "bust",
+    "capacity",
+    "chinese",
+    "consumer",
+    "contracts"
+   ],
+   "source_subject": [
+    "across",
+    "broadly",
+    "compared",
+    "contract",
+    "coverage",
+    "current",
+    "durations",
+    "level"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "40% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "40",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Warsh gives the keynote Friday, August 28 at 10:00 AM ET, with the symposium running Thursday to Saturday. Most Jackson Hole speeches do not move the 2-year Treasury yield more than an ordinary tradin"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Warsh gives the keynote Friday, August 28 at 10:00 AM ET, with the symposium running Thursday to Saturday. Most Jackson Hole speeches do not move the 2-year Treasury yield more than an ordinary tradin"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.1% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.1",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday August 26, 8:30 AM ET: July core PCE plus the second-quarter GDP estimate.** Consensus is 0.2% on the month for core PCE against 0.1% prior, and 1.5% for GDP. Deutsche Bank forecasts cor"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "1.5% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.0, 67.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "1.5",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday August 26, 8:30 AM ET: July core PCE plus the second-quarter GDP estimate.** Consensus is 0.2% on the month for core PCE against 0.1% prior, and 1.5% for GDP. Deutsche Bank forecasts cor"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "3.22% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "3.22",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday August 26, 8:30 AM ET: July core PCE plus the second-quarter GDP estimate.** Consensus is 0.2% on the month for core PCE against 0.1% prior, and 1.5% for GDP. Deutsche Bank forecasts cor"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 7,
+ "exit_code": 4
+}

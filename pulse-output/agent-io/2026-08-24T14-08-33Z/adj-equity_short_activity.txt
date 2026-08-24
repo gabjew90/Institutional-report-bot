@@ -1,0 +1,904 @@
+You are adjudicating ONE specific cross-bank theme from institutional research. You receive only that theme's pre-extracted evidence — per-PDF stance entries, tension framings, and atomic data points — and you return a single structured JSON object describing what the corpus actually concludes about this theme.
+
+You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields outside the schema below. Your output is read by a downstream prose step; your job is to commit the corpus's adjudicated view to a structured form so the prose step does not have to invent it.
+
+**ABSOLUTE RULES — violations cause the entire theme adjudication to be rejected by an automated lint check:**
+
+1. **Every evidence quote you emit MUST be a verbatim character-for-character copy of one of the `theme_stances.evidence` strings in your input.** Do not paraphrase. Do not shorten. Do not "clean up" the text. Copy the string. If no usable verbatim quote exists for a claim, leave the evidence_quotes list empty rather than invent one.
+2. **Every bank in `banks_for` / `banks_against` MUST appear as the `source` field of one of the input PDFs for this theme.** Do not invent attributions. Do not promote a bank that only appears in cross-bank references — only the issuing banks of the input PDFs count.
+3. **Every `falsifiable_predictions[*].source_quote` MUST be a verbatim substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** The other prediction fields (`subject`, `direction_or_level`, `by_when`) are extracted from the same source material but each must be supported by the source quote — if the source names a level but no timeframe, leave `by_when` empty rather than invent one. If a prediction can't be traced to either source at all, omit the entry.
+4. **`stance_counts` MUST exactly match the pre-aggregated counts provided in your input.** Do not recount, do not adjust. Copy the numbers given.
+5. **If any field's inputs are too thin to fill honestly, return an empty list `[]` for that field.** Empty over invented. A short, accurate adjudication beats a long, padded one.
+6. **`consensus_view` is one sentence, plain English, no jargon.** Translate technical terms (bps, NII, duration, gamma) inline if used. Reader is a self-directed options/crypto trader, not a bank analyst.
+
+**Output schema — return EXACTLY this JSON object, no markdown fences, no commentary:**
+
+```
+{
+  "theme": "<repeat the theme label exactly as it appears in the input>",
+  "selected": true,
+  "stance_counts": {"supportive": <copy>, "skeptical": <copy>, "neutral": <copy>},
+  "consensus_view": "<one sentence summarizing what the corpus concludes about this theme. Plain English. Names a direction or a clear unresolved tension.>",
+  "facts_agreed": [
+    {
+      "claim": "<one sentence stating something the banks agree on>",
+      "banks_for": ["<bank name>", ...],
+      "evidence_quotes": ["<verbatim string from theme_stances.evidence>", ...]
+    }
+  ],
+  "facts_contested": [
+    {
+      "claim": "<the specific contested claim — e.g., 'year-end Brent target' or 'cut timing'>",
+      "banks_for": ["<bank>", ...],
+      "for_evidence": "<verbatim string from theme_stances.evidence of a banks_for bank>",
+      "banks_against": ["<bank>", ...],
+      "against_evidence": "<verbatim string from theme_stances.evidence of a banks_against bank>"
+    }
+  ],
+  "falsifiable_predictions": [
+    {
+      "bank": "<source bank issuing the prediction — must be a bank name from the inputs>",
+      "subject": "<what is being predicted: the asset / metric / event being forecast. Examples by shape: 'Brent crude price', 'US 2-year yield', 'NFP headline print', 'EU recession onset', 'BTC spot price', 'S&P 500 EPS 2026'. Name the thing, not the call.>",
+      "direction_or_level": "<the forecast itself: the specific target, threshold, or directional outcome the bank is calling. Examples by shape: '$60/bbl', 'above 4.5%', 'positive 200K', 'falls below pre-pandemic trend', 'breaks 145 to the upside', '12% revenue growth'. Just the call.>",
+      "by_when": "<when the prediction resolves: ISO date, calendar quarter, or named event-anchor. Examples by shape: '2026-12-31', 'Q4 2027', 'year-end 2026', 'post-FOMC June', 'within 6 months', 'by next NFP'. Leave empty ("") if the bank stated a level but no timeframe — never invent a deadline.>",
+      "source_quote": "<verbatim substring from input tension_points.what_invalidates OR key_data_points fields that grounds this entry. Must appear character-for-character in one of those input strings.>"
+    }
+  ]
+}
+```
+
+**Empty fields are normal and acceptable.** Many themes have agreed facts but no contested ones, or contested ones but no falsifiable predictions. Do not pad. Return [] and move on.
+
+**Worked examples of falsifiable_predictions extraction** (showing how to fill all five fields from a single source quote, including the empty-`by_when` case):
+
+Example A — source field has both level and timeframe:
+```
+input: tension_points[0].what_invalidates = "Brent breaking below $90 sustained for two weeks would invalidate the supply-scare thesis"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "Brent crude price",
+  "direction_or_level": "below $90 sustained",
+  "by_when": "within two weeks",
+  "source_quote": "Brent breaking below $90 sustained for two weeks"
+}
+```
+
+Example B — source field has level but NO timeframe (the `by_when=""` case — emit the entry anyway, do not skip):
+```
+input: key_data_points[3].metric = "Goldman 2026 hyperscaler capex target $751B"
+       key_data_points[3].context = "up $80B in two weeks"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "2026 hyperscaler capex",
+  "direction_or_level": "$751B",
+  "by_when": "",
+  "source_quote": "Goldman 2026 hyperscaler capex target $751B"
+}
+```
+
+The right reflex when in doubt: ship the entry with empty `by_when` rather than omit it. Omit ONLY when there's no verbatim source quote at all — never because one derived field couldn't be cleanly populated.
+
+**Self-discard when evidence is too thin.** If after honest review you have `facts_agreed=[]` AND `facts_contested=[]` AND `falsifiable_predictions=[]` — i.e., NO substantive evidence to commit to the structured form — set `selected: false` in your output. The downstream lint also discards these mechanically, but flagging it yourself keeps the audit trail honest. (The discovered-theme branch below is the exception: those produce at least one `facts_agreed` entry, so they don't trip this.)
+
+**Do not number, do not bullet, do not bold.** This is structured data, not prose.
+
+**DISCOVERED-THEME BRANCH (when every input stance is `neutral`).** If your `theme_stances` input contains only stance=`neutral` entries with `evidence` strings that are short contextual mentions (not multi-sentence stance arguments), this is a discovery-promoted theme: a subject several banks mentioned in context without staking a primary directional view. The standard adjudication shape still applies, but adjust how you fill the schema:
+
+- `consensus_view` describes the topic as a live subject + the absence of directional consensus. Example: "Banks across N desks reference the Trump-Xi summit as a near-term macro catalyst; nobody has staked a directional view yet."
+- `facts_agreed` should contain at least one entry summarizing what the banks consistently SAY about the topic at the mention level. Use the cluster of bank names in `banks_for` (multiple banks; the topic is broadly discussed) and copy 2-5 mention strings from `theme_stances.evidence` into `evidence_quotes`. The claim is descriptive, not prescriptive — e.g., "N banks flag X as an upcoming catalyst this window."
+- `facts_contested` is usually `[]` for these themes — no bank argued the contrary.
+- `falsifiable_predictions` is usually `[]` unless a specific tension_point with a `what_invalidates` field was provided.
+
+This branch keeps discovered themes in the pulse with honest framing instead of returning empty arrays that would cause the theme to be dropped at the post-filter emptiness check.
+
+Return ONLY the JSON object.
+
+---
+
+Theme: equity short activity
+
+Pre-aggregated stance counts (copy these exactly into the output):
+{"supportive": 0, "skeptical": 0, "neutral": 4}
+
+Per-PDF evidence assigned to this theme:
+{
+ "theme_stances": [
+  {
+   "source": "Goldman Sachs",
+   "theme": "equity short activity",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Daily short activity in US equities",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Daily short activity in US equities"
+  },
+  {
+   "source": "Goldman Sachs",
+   "theme": "equity short activity",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Institutional short flow positioning",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Institutional short flow positioning"
+  },
+  {
+   "source": "Goldman Sachs",
+   "theme": "equity short activity",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Sector-specific short flow trends",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Sector-specific short flow trends"
+  },
+  {
+   "source": "Goldman Sachs",
+   "theme": "equity short activity",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "ETF short activity index",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "ETF short activity index"
+  },
+  {
+   "source": "The Market Ear",
+   "theme": "equity short activity",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Short liquidation cluster dynamics",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Short liquidation cluster dynamics"
+  },
+  {
+   "source": "JPMorgan",
+   "theme": "equity short activity",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Retail sector shorting activity",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Retail sector shorting activity"
+  },
+  {
+   "source": "BTIG",
+   "theme": "equity short activity",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "High Beta Momentum Short factor",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "High Beta Momentum Short factor"
+  }
+ ],
+ "tension_points": [],
+ "key_data_points": [
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "14.5%",
+   "metric": "Short flow change for WMT",
+   "context": "As of 08/21/2026"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "13.6%",
+   "metric": "Short flow change for DE",
+   "context": "As of 08/21/2026"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "-11.4%",
+   "metric": "Short flow change for DKS",
+   "context": "As of 08/21/2026"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "-11.1%",
+   "metric": "Short flow change for DOW",
+   "context": "As of 08/21/2026"
+  },
+  {
+   "source_bank": "Nomura",
+   "figure": "103.8",
+   "metric": "Nomura Chip Shortage Index",
+   "context": "July reading, signals shortage conditions."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$4,600",
+   "metric": "Gold resistance level",
+   "context": "Approaching major resistance."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$4,500",
+   "metric": "200-day moving average",
+   "context": "Key technical level recently breached."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "8/10",
+   "metric": "Trade setup conviction",
+   "context": "Conviction score following the breach of the 200-day MA."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "37 MT pm",
+   "metric": "UK exports to China (PBOC proxy)",
+   "context": "Q2 2026 average"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "15 MT pm",
+   "metric": "UK exports to China (PBOC proxy)",
+   "context": "2025 average"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "809 MT",
+   "metric": "Turkey swap adjusted gold holdings",
+   "context": "Current holdings"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "822 MT",
+   "metric": "Turkey swap adjusted gold holdings",
+   "context": "Historical high"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "135 MT",
+   "metric": "Chinese physical gold imports",
+   "context": "July 2026"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "173 MT",
+   "metric": "Chinese physical gold imports",
+   "context": "June 2026"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+444 MT",
+   "metric": "Total Chinese gold imports",
+   "context": "80% y/y YTD"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+$7/oz",
+   "metric": "Forward EFP",
+   "context": "Historical indicator of spec buying"
+  },
+  {
+   "source_bank": "BofA",
+   "figure": "3.5%",
+   "metric": "BofA FMS Cash Level",
+   "context": "6th lowest since 1998, August."
+  },
+  {
+   "source_bank": "BofA",
+   "figure": "+23",
+   "metric": "Net overweight US equities",
+   "context": "August, return to positive positioning."
+  },
+  {
+   "source_bank": "GIR",
+   "figure": "$400B",
+   "metric": "YTD inflows to US equity mutual funds and ETFs",
+   "context": "Year-to-date."
+  },
+  {
+   "source_bank": "GIR",
+   "figure": "724 bp",
+   "metric": "Mutual fund underweight to Magnificent 7",
+   "context": "Q2 2026."
+  },
+  {
+   "source_bank": "GIR",
+   "figure": "+231 bp",
+   "metric": "Mutual fund overweight Financials",
+   "context": "Highest level relative to past 10 years."
+  },
+  {
+   "source_bank": "GIR",
+   "figure": "-660 bp",
+   "metric": "Mutual fund underweight Info Tech",
+   "context": "10-year low."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "86bp",
+   "metric": "OAT-Bund spread",
+   "context": "Widened spread indicating shift in core status."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "+1.88",
+   "metric": "OAT-Bund spread weekly Z-score",
+   "context": "Approaching historically stretched territory."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "\u20ac900bn",
+   "metric": "French debt in 0-3 year maturity bucket",
+   "context": "Largest amount among major Eurozone issuers."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "\u20ac1.4tn",
+   "metric": "Eurozone sovereign issuance",
+   "context": "2026 projection, up 27% from 2025."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "2.0x\u20132.5x",
+   "metric": "French benchmark auction bid-to-cover ratios",
+   "context": "Compressed demand levels."
+  },
+  {
+   "source_bank": "Nomura",
+   "figure": "103.8",
+   "metric": "Nomura Chip Shortage Index",
+   "context": "July reading, signals shortage conditions."
+  },
+  {
+   "source_bank": "BofA",
+   "figure": "3.5%",
+   "metric": "FMS Cash as % of AUM",
+   "context": "6th lowest since 1998, below 4.0% sell threshold."
+  },
+  {
+   "source_bank": "BofA",
+   "figure": "+23",
+   "metric": "Net Overweight US Equities",
+   "context": "August reading, return to positive positioning."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$4,600",
+   "metric": "Gold Resistance Level",
+   "context": "First major resistance level."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$4,800",
+   "metric": "Gold Resistance Level",
+   "context": "Secondary resistance level if $4,600 is cleared."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "84",
+   "metric": "3-day RSI",
+   "context": "Historically extreme overbought level."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$65k\u2013$67k",
+   "metric": "Short liquidation cluster",
+   "context": "Dense cluster that triggered the recent short squeeze."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$3.3bn",
+   "metric": "Short liquidations",
+   "context": "Total shorts liquidated during the recent move."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$1bn",
+   "metric": "Hourly short liquidations",
+   "context": "Amount liquidated in a single hour."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "48.3%",
+   "metric": "US L/S Net Leverage",
+   "context": "1-year low, down 3 points WoW."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "205%",
+   "metric": "US L/S Gross Leverage",
+   "context": "11th percentile one-year, up 1.5 points WoW."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "1.58mm",
+   "metric": "IBIT daily call volume",
+   "context": "Highest one-day call volume ever, recorded this week."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$155mm",
+   "metric": "Global CTA bond short position",
+   "context": "Estimated DV01, near multi-year lows."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "3rd percentile",
+   "metric": "Fundamental L/S Gross leverage",
+   "context": "1-year lookback"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "4th percentile",
+   "metric": "Fundamental L/S Net leverage",
+   "context": "1-year lookback"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "1.617",
+   "metric": "US Fundamental long/short ratio (MV)",
+   "context": "4th percentile one-year"
+  },
+  {
+   "source_bank": "Koyfin",
+   "figure": "22.8x",
+   "metric": "Nasdaq 100 forward earnings multiple",
+   "context": "Below 10-year average of 24.8x"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "4% yoy",
+   "metric": "Real GDP growth",
+   "context": "Early Q3 estimate."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "3.2%",
+   "metric": "Services sales growth",
+   "context": "July print, down from >5% earlier this year."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "-3 to -4",
+   "metric": "Credit impulse",
+   "context": "Rolled over from a peak near +4."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "17 of 70",
+   "metric": "Major cities with new-home price increases",
+   "context": "July data."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$1.7667T",
+   "metric": "Total IG supply YTD",
+   "context": "As of August 2026."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "+59%",
+   "metric": "YoY Corporate issuance",
+   "context": "As of August 2026."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "1.7%",
+   "metric": "S&P 500 weekly performance",
+   "context": "Worst weekly performance since the last week of June."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "15%",
+   "metric": "Bitcoin and Ether 24-hour surge",
+   "context": "Reversal of recent bearish trend."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "4,511",
+   "metric": "Gold 200DMA",
+   "context": "Gold broke above this level for the first time since early June."
+  },
+  {
+   "source_bank": "BTIG",
+   "figure": "+43%",
+   "metric": "Energy sector YTD performance",
+   "context": "Leading the S&P 500 as of August 22, 2026."
+  },
+  {
+   "source_bank": "BTIG",
+   "figure": "+11%",
+   "metric": "XOP performance",
+   "context": "Performance over the last 9 days."
+  },
+  {
+   "source_bank": "Morgan Stanley",
+   "figure": "43%",
+   "metric": "Refiners & Integrated Index vs 200 DMA",
+   "context": "Extreme level relative to 15-year history."
+  },
+  {
+   "source_bank": "BTIG",
+   "figure": "-8%",
+   "metric": "RSP drawdown",
+   "context": "Historical comparison when XOP was at current levels."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "~-0.57",
+   "metric": "Correlation between AI-concentrated indices and broad market benchmarks",
+   "context": "Reflects severe rotation and factor-specific positioning."
+  },
+  {
+   "source_bank": "Coinglass",
+   "figure": "$2.73bn",
+   "metric": "Crypto short liquidations",
+   "context": "Largest crypto short-liquidation event on record."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "2.1",
+   "metric": "Sharpe ratio of FX carry trade",
+   "context": "Performance over the last year."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$4bn",
+   "metric": "Treasury buyback size per issue",
+   "context": "Cited as part of Bessent's 'big toolkit'."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "1.5%",
+   "metric": "Walmart traffic growth",
+   "context": "Slowed from 3% in Q1."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$1-1.5trn",
+   "metric": "AI demand/capex",
+   "context": "Expected for next year."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$4B",
+   "metric": "Kangaroo bond issuance",
+   "context": "GOOG issuance this week."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "46th percentile",
+   "metric": "Gross exposure",
+   "context": "1-year lookback across GS book."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "30th percentile",
+   "metric": "Net exposure",
+   "context": "1-year lookback across GS book."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "322%",
+   "metric": "Total return",
+   "context": "US energy refiners basket in COVID/post-COVID era."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "440%",
+   "metric": "Total return",
+   "context": "Global bank stocks index since COVID lows."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$40T+",
+   "metric": "U.S. debt/funding problem",
+   "context": "Underlying structural issue cited as reason for bond market skepticism."
+  },
+  {
+   "source_bank": "Walmart",
+   "figure": "2.6%",
+   "metric": "Walmart U.S. comparable sales growth",
+   "context": "Slowest growth in six years, reported 8/22."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$11.7B",
+   "metric": "U.S. equity fund inflows",
+   "context": "Through August 19."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$10B",
+   "metric": "Bond fund inflows",
+   "context": "Through August 19."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$4,900/toz",
+   "metric": "Gold price forecast",
+   "context": "End-2026 forecast"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "135 MT",
+   "metric": "Chinese gold imports",
+   "context": "July 2026"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "37 MT pm",
+   "metric": "UK exports to China (PBOC proxy)",
+   "context": "Q2 2026 average vs 15 MT pm in 2025"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "809 MT",
+   "metric": "Turkey swap adjusted gold holdings",
+   "context": "vs high of ~822 MT"
+  },
+  {
+   "source_bank": "BofA",
+   "figure": ">10%",
+   "metric": "projected equity correction",
+   "context": "Scenario involving Democratic Senate win and Republican loss in Texas."
+  },
+  {
+   "source_bank": "LSEG Workspace",
+   "figure": "$6B",
+   "metric": "semiconductor ETF outflows",
+   "context": "Cumulative over the past three weeks."
+  },
+  {
+   "source_bank": "BofA",
+   "figure": "4x",
+   "metric": "max payout",
+   "context": "Nov 56/52 XLF put spread."
+  },
+  {
+   "source_bank": "BofA",
+   "figure": "$56",
+   "metric": "key support level",
+   "context": "XLF 50-day MA support."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$50B",
+   "metric": "Sunk costs in NEOM project",
+   "context": "Reported as total sunk capital to date"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$5B",
+   "metric": "Funding for LIV Golf",
+   "context": "Total capital deployed to create the league"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$38B",
+   "metric": "Planned PIF deployment into gaming sector",
+   "context": "Announced in 2022"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$55B",
+   "metric": "PIF takeover of EA",
+   "context": "Reported as occurring this month"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$1.25B",
+   "metric": "Total cost of Salvator Mundi, Serene yacht, and Ch\u00e2teau Louis XIV",
+   "context": "Historical expenditure examples"
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "+0.8%",
+   "metric": "All Strategy hedge fund returns MTD",
+   "context": "MTD return as of August 21, 2026, down from >2% earlier in the week."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "~40th %-tile",
+   "metric": "US Total Portfolio Management (TPM) positioning",
+   "context": "As of August 21, 2026, indicating slightly below average positioning."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "-1z",
+   "metric": "Hedge fund volume and turnover",
+   "context": "Weekly reading as of August 21, 2026."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$1.7tr",
+   "metric": "AI spending by large enterprises",
+   "context": "Implied by 5.8% share of expenses plus capex over next 12 months."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$1.6tr",
+   "metric": "AI ecosystem revenue run-rate",
+   "context": "Estimated by end-2026."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$77k",
+   "metric": "Bitcoin production cost",
+   "context": "As of August 2026."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$64k",
+   "metric": "Bitcoin market price",
+   "context": "As of August 2026."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$8B",
+   "metric": "TSMC CapEx estimate increase",
+   "context": "Annual increase for 2026-28."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "22%",
+   "metric": "Samsung DRAM CapEx estimate increase",
+   "context": "Average 2026-28 increase."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "19%",
+   "metric": "SK Hynix DRAM CapEx estimate increase",
+   "context": "Average 2026-28 increase."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$16.8B",
+   "metric": "Terafab initial phase commitment",
+   "context": "Committed by SpaceX and Tesla."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "US$82bn",
+   "metric": "China Semis Capex",
+   "context": "2030E estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "34%",
+   "metric": "China 7nm S/D gap",
+   "context": "2035E estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "50%",
+   "metric": "CXMT DRAM demand share",
+   "context": "2028E estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "US$257bn",
+   "metric": "China DRAM market TAM",
+   "context": "2028E estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+$22.2bn",
+   "metric": "Speculator Gold futures purchases",
+   "context": "July 28th to August 18th, 10+ year notional max."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+$13.6bn",
+   "metric": "Long augmentation",
+   "context": "July 28th to August 18th."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+$8.6bn",
+   "metric": "Short covering",
+   "context": "July 28th to August 18th."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "93%",
+   "metric": "Net length percentile",
+   "context": "2-year lookback as of August 18th."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+$8.9bn",
+   "metric": "Gold aggregate open interest increase",
+   "context": "August 18th to August 21st."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+5.9%",
+   "metric": "Gold price change",
+   "context": "August 18th to August 21st."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "67%",
+   "metric": "HBM TAM growth yoy",
+   "context": "2026 estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "108%",
+   "metric": "HBM TAM growth yoy",
+   "context": "2027 estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "420%",
+   "metric": "SOCAMM demand growth yoy",
+   "context": "2026 estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "51%",
+   "metric": "SEMCO substrate revenue growth yoy",
+   "context": "2026 estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "134%",
+   "metric": "SEC plastic film import growth yoy",
+   "context": "July 2026"
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "7%",
+   "metric": "EM performance gain",
+   "context": "Since July-end low."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "+0.8%",
+   "metric": "HF Strategy returns",
+   "context": "MTD August."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "40th %-tile",
+   "metric": "US TPM",
+   "context": "Slightly below average."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "136 days",
+   "metric": "Overall semiconductor inventory days",
+   "context": "2Q26, down from 140 days in 1Q26."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "1.5% below",
+   "metric": "Seasonally-adjusted semiconductor inventory vs 3Y average",
+   "context": "2Q26, compared to 5.5% below in 1Q26."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "149 days",
+   "metric": "Wireless component inventory days",
+   "context": "2Q26, up from 139 days in 1Q26."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "163 days",
+   "metric": "Auto/industrial-exposed inventory days",
+   "context": "2Q26, down from 173 days in 1Q26."
+  },
+  {
+   "source_bank": "WSTS",
+   "figure": "182%",
+   "metric": "NAND ASP YoY growth",
+   "context": "June 2026."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "5.5bp",
+   "metric": "Standard deviation of daily 2y Treasury yield changes",
+   "context": "Since 2000, used to measure market sensitivity to Jackson Hole speeches."
+  }
+ ]
+}
+
+Adjudicate this theme per the rules in your system prompt. Return the JSON object only.

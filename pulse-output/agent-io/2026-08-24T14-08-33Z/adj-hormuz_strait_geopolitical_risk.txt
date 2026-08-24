@@ -1,0 +1,394 @@
+You are adjudicating ONE specific cross-bank theme from institutional research. You receive only that theme's pre-extracted evidence — per-PDF stance entries, tension framings, and atomic data points — and you return a single structured JSON object describing what the corpus actually concludes about this theme.
+
+You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields outside the schema below. Your output is read by a downstream prose step; your job is to commit the corpus's adjudicated view to a structured form so the prose step does not have to invent it.
+
+**ABSOLUTE RULES — violations cause the entire theme adjudication to be rejected by an automated lint check:**
+
+1. **Every evidence quote you emit MUST be a verbatim character-for-character copy of one of the `theme_stances.evidence` strings in your input.** Do not paraphrase. Do not shorten. Do not "clean up" the text. Copy the string. If no usable verbatim quote exists for a claim, leave the evidence_quotes list empty rather than invent one.
+2. **Every bank in `banks_for` / `banks_against` MUST appear as the `source` field of one of the input PDFs for this theme.** Do not invent attributions. Do not promote a bank that only appears in cross-bank references — only the issuing banks of the input PDFs count.
+3. **Every `falsifiable_predictions[*].source_quote` MUST be a verbatim substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** The other prediction fields (`subject`, `direction_or_level`, `by_when`) are extracted from the same source material but each must be supported by the source quote — if the source names a level but no timeframe, leave `by_when` empty rather than invent one. If a prediction can't be traced to either source at all, omit the entry.
+4. **`stance_counts` MUST exactly match the pre-aggregated counts provided in your input.** Do not recount, do not adjust. Copy the numbers given.
+5. **If any field's inputs are too thin to fill honestly, return an empty list `[]` for that field.** Empty over invented. A short, accurate adjudication beats a long, padded one.
+6. **`consensus_view` is one sentence, plain English, no jargon.** Translate technical terms (bps, NII, duration, gamma) inline if used. Reader is a self-directed options/crypto trader, not a bank analyst.
+
+**Output schema — return EXACTLY this JSON object, no markdown fences, no commentary:**
+
+```
+{
+  "theme": "<repeat the theme label exactly as it appears in the input>",
+  "selected": true,
+  "stance_counts": {"supportive": <copy>, "skeptical": <copy>, "neutral": <copy>},
+  "consensus_view": "<one sentence summarizing what the corpus concludes about this theme. Plain English. Names a direction or a clear unresolved tension.>",
+  "facts_agreed": [
+    {
+      "claim": "<one sentence stating something the banks agree on>",
+      "banks_for": ["<bank name>", ...],
+      "evidence_quotes": ["<verbatim string from theme_stances.evidence>", ...]
+    }
+  ],
+  "facts_contested": [
+    {
+      "claim": "<the specific contested claim — e.g., 'year-end Brent target' or 'cut timing'>",
+      "banks_for": ["<bank>", ...],
+      "for_evidence": "<verbatim string from theme_stances.evidence of a banks_for bank>",
+      "banks_against": ["<bank>", ...],
+      "against_evidence": "<verbatim string from theme_stances.evidence of a banks_against bank>"
+    }
+  ],
+  "falsifiable_predictions": [
+    {
+      "bank": "<source bank issuing the prediction — must be a bank name from the inputs>",
+      "subject": "<what is being predicted: the asset / metric / event being forecast. Examples by shape: 'Brent crude price', 'US 2-year yield', 'NFP headline print', 'EU recession onset', 'BTC spot price', 'S&P 500 EPS 2026'. Name the thing, not the call.>",
+      "direction_or_level": "<the forecast itself: the specific target, threshold, or directional outcome the bank is calling. Examples by shape: '$60/bbl', 'above 4.5%', 'positive 200K', 'falls below pre-pandemic trend', 'breaks 145 to the upside', '12% revenue growth'. Just the call.>",
+      "by_when": "<when the prediction resolves: ISO date, calendar quarter, or named event-anchor. Examples by shape: '2026-12-31', 'Q4 2027', 'year-end 2026', 'post-FOMC June', 'within 6 months', 'by next NFP'. Leave empty ("") if the bank stated a level but no timeframe — never invent a deadline.>",
+      "source_quote": "<verbatim substring from input tension_points.what_invalidates OR key_data_points fields that grounds this entry. Must appear character-for-character in one of those input strings.>"
+    }
+  ]
+}
+```
+
+**Empty fields are normal and acceptable.** Many themes have agreed facts but no contested ones, or contested ones but no falsifiable predictions. Do not pad. Return [] and move on.
+
+**Worked examples of falsifiable_predictions extraction** (showing how to fill all five fields from a single source quote, including the empty-`by_when` case):
+
+Example A — source field has both level and timeframe:
+```
+input: tension_points[0].what_invalidates = "Brent breaking below $90 sustained for two weeks would invalidate the supply-scare thesis"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "Brent crude price",
+  "direction_or_level": "below $90 sustained",
+  "by_when": "within two weeks",
+  "source_quote": "Brent breaking below $90 sustained for two weeks"
+}
+```
+
+Example B — source field has level but NO timeframe (the `by_when=""` case — emit the entry anyway, do not skip):
+```
+input: key_data_points[3].metric = "Goldman 2026 hyperscaler capex target $751B"
+       key_data_points[3].context = "up $80B in two weeks"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "2026 hyperscaler capex",
+  "direction_or_level": "$751B",
+  "by_when": "",
+  "source_quote": "Goldman 2026 hyperscaler capex target $751B"
+}
+```
+
+The right reflex when in doubt: ship the entry with empty `by_when` rather than omit it. Omit ONLY when there's no verbatim source quote at all — never because one derived field couldn't be cleanly populated.
+
+**Self-discard when evidence is too thin.** If after honest review you have `facts_agreed=[]` AND `facts_contested=[]` AND `falsifiable_predictions=[]` — i.e., NO substantive evidence to commit to the structured form — set `selected: false` in your output. The downstream lint also discards these mechanically, but flagging it yourself keeps the audit trail honest. (The discovered-theme branch below is the exception: those produce at least one `facts_agreed` entry, so they don't trip this.)
+
+**Do not number, do not bullet, do not bold.** This is structured data, not prose.
+
+**DISCOVERED-THEME BRANCH (when every input stance is `neutral`).** If your `theme_stances` input contains only stance=`neutral` entries with `evidence` strings that are short contextual mentions (not multi-sentence stance arguments), this is a discovery-promoted theme: a subject several banks mentioned in context without staking a primary directional view. The standard adjudication shape still applies, but adjust how you fill the schema:
+
+- `consensus_view` describes the topic as a live subject + the absence of directional consensus. Example: "Banks across N desks reference the Trump-Xi summit as a near-term macro catalyst; nobody has staked a directional view yet."
+- `facts_agreed` should contain at least one entry summarizing what the banks consistently SAY about the topic at the mention level. Use the cluster of bank names in `banks_for` (multiple banks; the topic is broadly discussed) and copy 2-5 mention strings from `theme_stances.evidence` into `evidence_quotes`. The claim is descriptive, not prescriptive — e.g., "N banks flag X as an upcoming catalyst this window."
+- `facts_contested` is usually `[]` for these themes — no bank argued the contrary.
+- `falsifiable_predictions` is usually `[]` unless a specific tension_point with a `what_invalidates` field was provided.
+
+This branch keeps discovered themes in the pulse with honest framing instead of returning empty arrays that would cause the theme to be dropped at the post-filter emptiness check.
+
+Return ONLY the JSON object.
+
+---
+
+Theme: hormuz strait geopolitical risk
+
+Pre-aggregated stance counts (copy these exactly into the output):
+{"supportive": 0, "skeptical": 0, "neutral": 4}
+
+Per-PDF evidence assigned to this theme:
+{
+ "theme_stances": [
+  {
+   "source": "Rabobank",
+   "theme": "hormuz strait geopolitical risk",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Strait of Hormuz geopolitical risk",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Strait of Hormuz geopolitical risk"
+  },
+  {
+   "source": "The Bear Traps Report",
+   "theme": "hormuz strait geopolitical risk",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Strait of Hormuz geopolitical tensions",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Strait of Hormuz geopolitical tensions"
+  },
+  {
+   "source": "Academy",
+   "theme": "hormuz strait geopolitical risk",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Strait of Hormuz tensions",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Strait of Hormuz tensions"
+  },
+  {
+   "source": "JPMorgan",
+   "theme": "hormuz strait geopolitical risk",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Strait of Hormuz oil transit",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Strait of Hormuz oil transit"
+  }
+ ],
+ "tension_points": [],
+ "key_data_points": [
+  {
+   "source_bank": "Rabobank",
+   "figure": "USD 14bn",
+   "metric": "Additional long-dated bond buybacks",
+   "context": "Total amount for the current refunding quarter."
+  },
+  {
+   "source_bank": "Rabobank",
+   "figure": "USD 32trn",
+   "metric": "Treasury market size",
+   "context": "As of August 2026."
+  },
+  {
+   "source_bank": "Rabobank",
+   "figure": "USD 40trn",
+   "metric": "Federal debt",
+   "context": "As of August 2026."
+  },
+  {
+   "source_bank": "Rabobank",
+   "figure": "7bp",
+   "metric": "30-year Treasury yield retracement",
+   "context": "Following a 10bp rally on Thursday."
+  },
+  {
+   "source_bank": "Barcap",
+   "figure": "$3T",
+   "metric": "Off-balance-sheet commitments for nine tech companies",
+   "context": "Analysis of securities filings."
+  },
+  {
+   "source_bank": "The Bear Traps Report",
+   "figure": "1.92x",
+   "metric": "Declining to advancing stock ratio",
+   "context": "NYSE close, August 18, 2026."
+  },
+  {
+   "source_bank": "The Bear Traps Report",
+   "figure": "4.706%",
+   "metric": "US 10-Year Treasury yield",
+   "context": "Close on Tuesday, August 18, 2026."
+  },
+  {
+   "source_bank": "Barcap",
+   "figure": "$3T",
+   "metric": "Off-balance-sheet commitments by nine tech companies",
+   "context": "Analysis of securities filings."
+  },
+  {
+   "source_bank": "The Bear Traps Report",
+   "figure": "1.92x",
+   "metric": "Declining vs advancing stocks ratio",
+   "context": "NYSE close, August 18, 2026."
+  },
+  {
+   "source_bank": "Bank of America",
+   "figure": "27%",
+   "metric": "Net overweight US stocks",
+   "context": "August fund manager survey, up from 24% in July."
+  },
+  {
+   "source_bank": "The Bear Traps Report",
+   "figure": "118bps",
+   "metric": "Spread between US 30s and Japan 30s",
+   "context": "August 2026 vs 323bps in October 2023."
+  },
+  {
+   "source_bank": "Academy",
+   "figure": "$426B",
+   "metric": "Fed holdings of bonds maturing <1 year",
+   "context": "As of August 2026"
+  },
+  {
+   "source_bank": "Academy",
+   "figure": "2.9%",
+   "metric": "Average coupon on Fed bond holdings",
+   "context": "As of August 2026"
+  },
+  {
+   "source_bank": "Academy",
+   "figure": "50%",
+   "metric": "Fed ownership of bonds maturing 10-15 years",
+   "context": "As of August 2026"
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "+0.8%",
+   "metric": "All Strategy hedge fund returns MTD",
+   "context": "MTD return as of August 21, 2026, down from >2% earlier in the week."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "~40th %-tile",
+   "metric": "US Total Portfolio Management (TPM) positioning",
+   "context": "As of August 21, 2026, indicating slightly below average positioning."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "-1z",
+   "metric": "Hedge fund volume and turnover",
+   "context": "Weekly reading as of August 21, 2026."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$1.7tr",
+   "metric": "AI spending by large enterprises",
+   "context": "Implied by 5.8% share of expenses plus capex over next 12 months."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$1.6tr",
+   "metric": "AI ecosystem revenue run-rate",
+   "context": "Estimated by end-2026."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$77k",
+   "metric": "Bitcoin production cost",
+   "context": "As of August 2026."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$64k",
+   "metric": "Bitcoin market price",
+   "context": "As of August 2026."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "7%",
+   "metric": "EM performance gain",
+   "context": "Since July-end low."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "+0.8%",
+   "metric": "HF Strategy returns",
+   "context": "MTD August."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "40th %-tile",
+   "metric": "US TPM",
+   "context": "Slightly below average."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "136 days",
+   "metric": "Overall semiconductor inventory days",
+   "context": "2Q26, down from 140 days in 1Q26."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "1.5% below",
+   "metric": "Seasonally-adjusted semiconductor inventory vs 3Y average",
+   "context": "2Q26, compared to 5.5% below in 1Q26."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "149 days",
+   "metric": "Wireless component inventory days",
+   "context": "2Q26, up from 139 days in 1Q26."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "163 days",
+   "metric": "Auto/industrial-exposed inventory days",
+   "context": "2Q26, down from 173 days in 1Q26."
+  },
+  {
+   "source_bank": "WSTS",
+   "figure": "182%",
+   "metric": "NAND ASP YoY growth",
+   "context": "June 2026."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "5.5bp",
+   "metric": "Standard deviation of daily 2y Treasury yield changes",
+   "context": "Since 2000, used to measure market sensitivity to Jackson Hole speeches."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "50%-70%",
+   "metric": "LTA volume coverage",
+   "context": "Broad industry coverage for memory makers."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "+43% y-y",
+   "metric": "Industry HBM ASP growth",
+   "context": "Industry assumption."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "30%+",
+   "metric": "Server DRAM content growth",
+   "context": "Driven by agent-AI led CPU demand."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "9%",
+   "metric": "DRAM spot price rebound",
+   "context": "Since July bottom."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "15%",
+   "metric": "NAND spot price rebound",
+   "context": "Since July bottom."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "6.1%",
+   "metric": "JPMPURE Index drawdown",
+   "context": "Momentum unwind last week."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "9.2%",
+   "metric": "JPPQMO Index drawdown",
+   "context": "Momentum unwind last week."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "20%+",
+   "metric": "US earnings growth outlook",
+   "context": "26Q3 and 26Q4 expectations."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "14%",
+   "metric": "TOPIX YoY sales growth",
+   "context": "26Q2 earnings recap."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "70%",
+   "metric": "TOPIX YoY net profit growth",
+   "context": "26Q2 earnings recap."
+  }
+ ]
+}
+
+Adjudicate this theme per the rules in your system prompt. Return the JSON object only.

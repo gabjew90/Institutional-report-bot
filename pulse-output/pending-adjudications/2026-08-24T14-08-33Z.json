@@ -1,0 +1,329 @@
+{
+  "pulse_date": "2026-08-24",
+  "window_label": "since-last-daily (2026-08-21T14:33)",
+  "themes": [
+    {
+      "theme": "us treasury buybacks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Multiple desks are tracking the Treasury's expanded program of buying back its own longer-dated bonds as a live policy story, with several tying it to Bessent's debt-management toolkit, but none has staked a directional view on what it does to long-term interest rates.",
+      "facts_agreed": [
+        {
+          "claim": "Desks across several banks flag the Treasury's buyback operations in longer-dated bonds as an active and expanding program this window.",
+          "banks_for": [
+            "Mizuho",
+            "Goldman Sachs",
+            "Deutsche Bank",
+            "Bloomberg Markets Live",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "US Treasury long-end buyback programme",
+            "Treasury liability management and long-end buybacks",
+            "US Treasury buyback operations for longer-dated Treasuries",
+            "Treasury long-end buyback program expansion",
+            "US Treasury long-end buybacks"
+          ]
+        },
+        {
+          "claim": "Several desks frame the buybacks as a Bessent debt-management tool that resembles central-bank bond buying rather than routine housekeeping.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Academy",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Scott Bessent Buyback Operation Twist",
+            "Bessent Treasury bond-buying operations",
+            "QE-lite buyback framing"
+          ]
+        },
+        {
+          "claim": "Desks treat the buyback announcement itself as a tradable event, with one noting the initial market boost did not hold.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Wednesday UST buyback announcement",
+            "Treasury buyback announcement",
+            "Treasury buyback signaling",
+            "Treasury buyback boost failure"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "asia memory and eu semis",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 8
+      },
+      "consensus_view": "Banks agree memory chips and chip-making equipment are running short of supply while spending forecasts get raised, and the only real pushback is about how safely the companies funding that buildout can borrow.",
+      "facts_agreed": [
+        {
+          "claim": "Banks are raising their spending forecasts for chip equipment and domestic chip capacity.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "We raise our 2026/27/28 WFE estimates to $150/$218/$281 bn",
+            "JPM Analysts remain bullish on Asia Memory and EU Semis",
+            "AI is becoming strategic infrastructure, pushing governments to favor domestic capacity"
+          ]
+        },
+        {
+          "claim": "Memory and broader semiconductor supply is tight while sector inventories stay lean, so demand is running ahead of what producers can deliver.",
+          "banks_for": [
+            "multiple desks (unattributed)",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Server memory demand outpacing supply",
+            "DRAM and NAND memory market shortage",
+            "Memory supply constraints",
+            "semiconductor industry capacity constraints",
+            "inventory in the sector remains in check and there is no indication of over-building"
+          ]
+        },
+        {
+          "claim": "Memory pricing and producer discipline are cited as supports for the up-cycle rather than signs of over-supply.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "DDR5 contract price increases",
+            "Capex discipline in memory sector"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the AI spending cycle that drives memory and semi demand is durable or is being strained by the cost of financing it",
+          "banks_for": [
+            "Morgan Stanley"
+          ],
+          "for_evidence": "Sovereign AI should reinforce rather than undermine the AI capex cycle",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "Hyperscaler CDS are also blowing out again, with both Oracle and Nvidia trading at the widest on record"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "jackson hole market impact",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 8
+      },
+      "consensus_view": "Desks across the corpus treat the Jackson Hole symposium as the week's main policy event and the source of uncertainty about the Fed's next signal, but none has staked a directional view, and JPMorgan's read of the record is that the Chair's speech rarely produces a big move in two-year Treasury yields.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks flag the Jackson Hole symposium as the upcoming policy event and a source of uncertainty about the Fed's guidance, without taking a side on the outcome.",
+          "banks_for": [
+            "JPMorgan",
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole Symposium",
+            "Jackson Hole guidance uncertainty",
+            "Jackson Hole policy trilemma",
+            "Jackson Hole Economic Policy Symposium",
+            "Jackson Hole symposium policy expectations"
+          ]
+        },
+        {
+          "claim": "JPMorgan says history shows the Fed Chair's Jackson Hole speech usually does not produce a large move in two-year Treasury yields.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "big moves in 2-year yields are the exception rather than the rule"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "yield curve management and fed credibility",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 6,
+        "neutral": 0
+      },
+      "consensus_view": "Most desks think the Treasury's bigger bond buybacks can put a ceiling on long-term borrowing costs but cannot actually bring them down, because investors doubt how the Fed will react to inflation and want extra compensation for holding long-dated government debt.",
+      "facts_agreed": [
+        {
+          "claim": "Buying back long-dated Treasuries helps the plumbing of the bond market but will not meaningfully lower long-term yields.",
+          "banks_for": [
+            "Rabobank",
+            "Goldman Sachs",
+            "The Market Ear",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "The medium-term implication is therefore less lower yields than a more managed yield curve.",
+            "seems unlikely to meaningfully reset levels here",
+            "traders concluded that buybacks may improve market plumbing but do little to solve the problem",
+            "we say this should cap but not reduce US bond yields"
+          ]
+        },
+        {
+          "claim": "Uncertainty about how the Fed will respond to inflation is pushing investors to demand more compensation to hold bonds, and that leaves stocks exposed.",
+          "banks_for": [
+            "Bloomberg Markets Live",
+            "BTIG"
+          ],
+          "evidence_quotes": [
+            "investors demanding a larger risk premium for uncertainty around the Fed\u2019s inflation reaction function",
+            "Our view remains that stocks are vulnerable here."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether official action can actually pull long-end yields lower rather than just cap them",
+          "banks_for": [
+            "Academy"
+          ],
+          "for_evidence": "If the admin wants to see the long end of the yield curve go down",
+          "banks_against": [
+            "Bank of America",
+            "Goldman Sachs"
+          ],
+          "against_evidence": "we say this should cap but not reduce US bond yields"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "warsh fed chair focus",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five desks are pointing at Fed Chair Warsh's Jackson Hole appearance as the next big event for rates, but none of them has committed to a view on what he will actually say or which way it moves markets.",
+      "facts_agreed": [
+        {
+          "claim": "Desks across five banks flag Fed Chair Warsh's Jackson Hole appearance and the policy signal it carries as the live near-term macro event.",
+          "banks_for": [
+            "Mizuho",
+            "Deutsche Bank",
+            "Morgan Stanley",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole Symposium keynote by Chair Warsh",
+            "Jackson Hole symposium Fed Chair Warsh speech",
+            "Chairman Warsh policy preview",
+            "Fed Chair Warsh forward guidance"
+          ]
+        },
+        {
+          "claim": "Banks frame Warsh's arrival at the Fed as a change in how the central bank will be run, referencing the nomination itself rather than a specific policy path.",
+          "banks_for": [
+            "Mizuho",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "Warsh Fed regime change",
+            "Kevin Warsh Fed Chair nomination"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "equity short activity",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks are tracking how much investors are betting against stocks and where those bets are concentrated, but none of them has taken a side on whether short positions keep building or get squeezed out.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks are actively tracking how much money is positioned against US stocks, broken down by day, by sector, and by individual name.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "BTIG",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Daily short activity in US equities",
+            "Institutional short flow positioning",
+            "Sector-specific short flow trends",
+            "Retail sector shorting activity",
+            "High Beta Momentum Short factor"
+          ]
+        },
+        {
+          "claim": "Desks are watching where bets against the market are bunched up, because those clusters are what forces buying when prices move against them.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Short liquidation cluster dynamics",
+            "ETF short activity index"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait geopolitical risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks flag the Strait of Hormuz and the oil shipped through it as a live risk to watch, but none of them has taken a side on where oil or the conflict goes from here.",
+      "facts_agreed": [
+        {
+          "claim": "Four research desks reference tension around the Strait of Hormuz and the oil moving through it as an active background risk this window, without any of them staking a directional call.",
+          "banks_for": [
+            "Rabobank",
+            "The Bear Traps Report",
+            "Academy",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz geopolitical risk",
+            "Strait of Hormuz geopolitical tensions",
+            "Strait of Hormuz tensions",
+            "Strait of Hormuz oil transit"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
