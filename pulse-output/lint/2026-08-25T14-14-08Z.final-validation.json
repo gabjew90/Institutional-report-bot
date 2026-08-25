@@ -1,0 +1,142 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '5.20%' is attached to [closing, friday, high, morning, reach] but the source uses it for [area, bearish, bias, bond, change] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "5.20%",
+   "draft_subject": [
+    "closing",
+    "friday",
+    "high",
+    "morning",
+    "reach",
+    "sits",
+    "treasury",
+    "within"
+   ],
+   "source_subject": [
+    "area",
+    "bearish",
+    "bias",
+    "bond",
+    "change",
+    "cheaper",
+    "close",
+    "crypto"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '5.41%' is attached to [closing, friday, high, morning, reach] but the source uses it for [concerns, elevated, fiscal, inflation, nearing] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "5.41%",
+   "draft_subject": [
+    "closing",
+    "friday",
+    "high",
+    "morning",
+    "reach",
+    "sits",
+    "treasury",
+    "within"
+   ],
+   "source_subject": [
+    "concerns",
+    "elevated",
+    "fiscal",
+    "inflation",
+    "nearing",
+    "peak",
+    "reflect",
+    "yields"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.75%' is attached to [down, high, morning, risk, small] but the source uses it for [date, session] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.75%",
+   "draft_subject": [
+    "down",
+    "high",
+    "morning",
+    "risk",
+    "small",
+    "taking",
+    "three",
+    "version"
+   ],
+   "source_subject": [
+    "date",
+    "session"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '45%' is attached to [across, billion, equipment, forecasts, number] but the source uses it for [estimates, revisions] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "45%",
+   "draft_subject": [
+    "across",
+    "billion",
+    "equipment",
+    "forecasts",
+    "number",
+    "raised",
+    "semiconductor",
+    "taking"
+   ],
+   "source_subject": [
+    "estimates",
+    "revisions"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.1% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [5.6]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.1",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday August 26, 8:30 AM ET: core PCE and the first revision to second-quarter GDP.** Consensus is 0.2% month-over-month against a 0.1% prior, and Goldman expects the release to confirm rather"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.87% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [11.0, 222.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.87",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- Dropped hormuz strait shipping tensions (3 banks, all neutral, no directional call): folded into the Iran sanctions bullet in WATCH and the oil driver in RECAP. The only US-tradable expression is cr"
+  },
+  {
+   "kind": "released-actual-missing",
+   "severity": "hard",
+   "message": "Gdp has already printed (ACTUAL=5.6%) and the pulse discusses it, but none of those values appear anywhere in the text. The 2026-08-12 CPI recap shipped three banks' forecasts and never the print. State the actual figure.",
+   "event": "GDP",
+   "actual": [
+    5.6
+   ]
+  },
+  {
+   "kind": "released-actual-missing",
+   "severity": "hard",
+   "message": "Ppi has already printed (ACTUAL=11%, 222%) and the pulse discusses it, but none of those values appear anywhere in the text. The 2026-08-12 CPI recap shipped three banks' forecasts and never the print. State the actual figure.",
+   "event": "PPI",
+   "actual": [
+    11.0,
+    222.0
+   ]
+  },
+  {
+   "kind": "consensus-amnesia",
+   "severity": "hard",
+   "message": "RECAP reports $QQQ's actual print but never frames it against the consensus the previous pulse published. Beat or miss is the content of an earnings recap \u2014 state it.",
+   "name": "$QQQ"
+  }
+ ],
+ "hard_count": 3,
+ "soft_count": 6,
+ "exit_code": 3
+}

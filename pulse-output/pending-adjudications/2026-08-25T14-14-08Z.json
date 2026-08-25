@@ -1,0 +1,214 @@
+{
+  "pulse_date": "2026-08-25",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "jackson hole symposium",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Four major banks flag the Jackson Hole central bank meeting as the near-term event to watch for signals on interest rate policy, but none has staked out a directional call on what it will deliver.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across four desks reference the Jackson Hole symposium as an upcoming policy event in this window without taking a side on the outcome.",
+          "banks_for": [
+            "Deutsche Bank",
+            "JPMorgan",
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole Symposium keynote address",
+            "Jackson Hole Symposium",
+            "Jackson Hole central bank symposium",
+            "Jackson Hole Economic Policy Symposium",
+            "Jackson Hole policy guidance"
+          ]
+        },
+        {
+          "claim": "The keynote speech is the specific part of the event desks are pointing to, with Goldman naming Warsh as the speaker.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole symposium with Warsh speaking",
+            "Jackson Hole keynote speech",
+            "Jackson Hole Roadmap keynote by Chairman Warsh"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "gold volatility",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Gold has run to about $4,600 an ounce and the desks covering it agree the price is now swinging harder in both directions as heavy call-option buying amplifies every move, with UBS still targeting $5,400 over the next year.",
+      "facts_agreed": [
+        {
+          "claim": "Heavy demand for call options on gold is amplifying the size of price moves in both directions, not just to the upside.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "creating a mechanical price amplifier to both the upside and downside"
+          ]
+        },
+        {
+          "claim": "Gold is trading near $4,600 an ounce after a sharp August advance, and both desks mark the same level.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": []
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "Banks agree that demand for AI computing power is still running ahead of what suppliers can deliver and is now pulling through into power, copper and chip-making spending, but they disagree on whether the companies building it can raise all the money they have committed to spend.",
+      "facts_agreed": [
+        {
+          "claim": "Demand for AI computing capacity continues to exceed available supply, and contract activity backs that up.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Demand for compute remains robust and continues to exceed available supply.",
+            "Management characterised demand as exceptionally strong, reflected in four landmark billion-dollar contracts"
+          ]
+        },
+        {
+          "claim": "AI is a durable driver of earnings and investment over a multi-year horizon.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "We have strong conviction in the long-term potential gains offered by AI."
+          ]
+        },
+        {
+          "claim": "AI spending is feeding through into physical commodity demand, with copper the clearest channel.",
+          "banks_for": [
+            "Societe Generale"
+          ],
+          "evidence_quotes": [
+            "AI-related investment ultimately translates into expectations for higher physical copper demand"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the debt needed to fund the AI buildout is a real risk to the companies building it",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "If you assign any probability that companies ultimately cannot finance everything they intend to build",
+          "banks_against": [
+            "UBS"
+          ],
+          "against_evidence": "We have strong conviction in the long-term potential gains offered by AI."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait shipping tensions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three banks keep pointing at possible disruption to oil shipping through the Strait of Hormuz as a live risk this window, but none has committed to a call on which way prices go from here.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag the Strait of Hormuz as an open shipping and oil supply risk tied to the US-Iran conflict.",
+          "banks_for": [
+            "UBS",
+            "Morgan Stanley",
+            "Societe Generale"
+          ],
+          "evidence_quotes": [
+            "US-Iran conflict and Strait of Hormuz shipping",
+            "Strait of Hormuz shipping disruption",
+            "Strait of Hormuz closure risk",
+            "Strait of Hormuz oil supply tensions"
+          ]
+        },
+        {
+          "claim": "UBS returns to the Strait across several notes, treating it as an ongoing conflict and a shipping-restriction risk rather than a settled event.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping restrictions",
+            "Strait of Hormuz conflict"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran economic sanctions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks reference US sanctions and economic pressure on Iran as an active backdrop this window, but none has taken a directional position on how it resolves or what it does to markets.",
+      "facts_agreed": [
+        {
+          "claim": "JPMorgan, UBS and Goldman Sachs all flag US economic sanctions and financial pressure on Iran as a live backdrop in this window without arguing a market direction from it.",
+          "banks_for": [
+            "JPMorgan",
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "US-Iran economic sanctions",
+            "Economic warfare against Iran",
+            "US economic isolation of Iran",
+            "US Treasury economic sanctions on Iran",
+            "Treasury Iran sanctions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "treasury buyback curve dynamics",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Deutsche Bank'"
+    },
+    {
+      "theme": "us canada trade war",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Deutsche Bank'"
+    },
+    {
+      "theme": "enterprise ai adoption",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'UBS'"
+    }
+  ]
+}
