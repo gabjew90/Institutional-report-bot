@@ -87,6 +87,7 @@ class _Fonts:
                 "foot": _font("Inter-SemiBold.ttf", 15),
                 "closed": _font("Inter-Bold.ttf", 44),
                 "note": _font("Inter-Regular.ttf", 20),
+                "mv": _font("JetBrainsMono-Bold.ttf", 19),
             }
         return cls._cache
 
@@ -196,6 +197,7 @@ def render_calendar_png(day: CalendarDay) -> bytes:
 
     # 6. BEFORE OPEN / AFTER CLOSE
     any_flag = False
+    any_move = False
     if not day.earnings_available:
         y = _band(d, "Earnings", _MARGIN, _W - _MARGIN, y, f)
         d.text((_MARGIN, y), "unavailable tonight", font=f["ev"],
@@ -213,11 +215,22 @@ def render_calendar_png(day: CalendarDay) -> bytes:
             for r in rows:
                 sym = r.symbol + ("" if r.session_confirmed else "*")
                 any_flag = any_flag or not r.session_confirmed
+                any_move = any_move or r.implied_move is not None
                 d.text((cx, cy), sym, font=f["sym"], fill=TEXT)
+                # Implied move, right-aligned at the column edge. A name
+                # with no honest straddle gets a dash, never a guess
+                # (2026-08-25) — same discipline as the session flag.
+                mv = (f"±{r.implied_move:.1f}%"
+                      if r.implied_move is not None else "—")
+                mv_w = d.textlength(mv, font=f["mv"])
+                d.text((cx + col_w - mv_w, cy + 2 * _S), mv, font=f["mv"],
+                       fill=GOLD if r.implied_move is not None
+                       else _dim(TEXT, 0.28))
                 nm = r.name.title() if r.name.isupper() else r.name
                 d.text(
                     (cx + 108 * _S, cy + 1 * _S),
-                    _truncate(d, nm, f["nm"], col_w - 116 * _S),
+                    _truncate(d, nm, f["nm"],
+                              col_w - 116 * _S - mv_w - 14 * _S),
                     font=f["nm"], fill=_dim(TEXT, 0.55),
                 )
                 cy += 40 * _S
@@ -234,6 +247,13 @@ def render_calendar_png(day: CalendarDay) -> bytes:
         # leaves the left margin clear
         d.text((_MARGIN, footer_y), "* session not confirmed",
                font=f["note"], fill=_dim(TEXT, 0.4))
+    if any_move:
+        # Name the method: a bare ±% invites "implied by what?".
+        # Right-aligned, under the move column it explains.
+        legend = "± = ATM STRADDLE"
+        lw = d.textlength(legend, font=f["note"])
+        d.text((_W - _MARGIN - lw, footer_y), legend,
+               font=f["note"], fill=_dim(TEXT, 0.34))
     return _finish(img, footer_y)
 
 

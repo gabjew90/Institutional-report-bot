@@ -38,7 +38,7 @@ def _caps_for(rows):
 
 
 def _build(date="2026-08-20", earnings=None, econ=None, caps=None,
-           holiday=False):
+           holiday=False, moves_fn=None):
     earnings = _fixture_earnings() if earnings is None else earnings
     caps = _caps_for(earnings if isinstance(earnings, list) else []) \
         if caps is None else caps
@@ -51,6 +51,9 @@ def _build(date="2026-08-20", earnings=None, econ=None, caps=None,
         patch.object(cd.db, "upsert_market_caps", lambda rows: len(rows)),
         patch.object(cd.news_data, "fetch_symbol_profiles",
                      lambda syms, **kw: {}),
+        patch("report.implied_move.implied_moves_for",
+              moves_fn or (lambda syms, date, **kw:
+                           {s: 6.5 for s in syms[:2]})),
     ]
     import world_context
     hp = patch.object(world_context, "US_MARKET_HOLIDAYS",
@@ -137,8 +140,25 @@ def test_et_conversion_dst_correct():
     _ok("UTC->ET conversion is DST-correct (zoneinfo)")
 
 
+def test_implied_move_attached_and_optional():
+    """Moves ride on the ranked rows; a name without one keeps None
+    (renderer shows a dash) and a total failure never blocks the day."""
+    day = _build()
+    got = [r.implied_move for r in day.bmo]
+    assert got[0] == 6.5 and got[1] == 6.5, got
+    assert got[2] is None, "unpriced names stay None, never guessed"
+    # implied-move layer exploding must not break the calendar
+    def _boom(syms, date, **kw):
+        raise RuntimeError("yahoo down")
+    day2 = _build(moves_fn=_boom)
+    assert len(day2.bmo) == 15, "calendar still builds without moves"
+    assert all(r.implied_move is None for r in day2.bmo)
+    _ok("implied move: attached, optional, failure never blocks the sheet")
+
+
 if __name__ == "__main__":
     print("=== calendar data smoke ===")
+    test_implied_move_attached_and_optional()
     test_topn_and_dropped_counts()
     test_cap_sort_and_missing_cap_last()
     test_blank_and_dmh_land_in_amc_flagged()

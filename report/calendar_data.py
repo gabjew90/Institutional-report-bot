@@ -31,7 +31,8 @@ class EarnRow:
     symbol: str
     name: str
     cap_musd: float
-    session_confirmed: bool  # False = Finnhub hour was blank/dmh —
+    implied_move: float | None = None  # ATM straddle ±% into the print
+    session_confirmed: bool = False  # False = Finnhub hour was blank/dmh —
     #                          rendered with the * flag. Verified
     #                          2026-08-20: ~40-60% of rows are blank
     #                          even in final historical data, so the
@@ -140,6 +141,22 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
 
     caps = _resolve_caps(bmo_syms + amc_syms)
 
+    # Implied moves for the names that actually make the sheet — the
+    # top-N per session only (<=30 chains/night, paced). Never blocks:
+    # any failure leaves the column blank for that row (2026-08-25).
+    _ranked_syms = []
+    for _pool in (bmo_syms, amc_syms):
+        _ranked_syms += sorted(
+            _pool, key=lambda s: -(caps.get(s, {}).get("cap") or 0))[:TOP_N]
+    moves: dict = {}
+    try:
+        from report.implied_move import implied_moves_for
+        moves = implied_moves_for(_ranked_syms, date_iso)
+        log.info(f"calendar: implied moves for {len(moves)}/"
+                 f"{len(_ranked_syms)} ranked names")
+    except Exception as e:
+        log.warning(f"calendar: implied moves unavailable ({e})")
+
     def _rank(syms: list[str]) -> tuple[list[EarnRow], int]:
         ranked = sorted(
             syms, key=lambda s: -(caps.get(s, {}).get("cap") or 0)
@@ -150,6 +167,7 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
                 name=str(caps.get(s, {}).get("name") or s),
                 cap_musd=float(caps.get(s, {}).get("cap") or 0),
                 session_confirmed=confirmed.get(s, False),
+                implied_move=moves.get(s),
             )
             for s in ranked[:TOP_N]
         ]
