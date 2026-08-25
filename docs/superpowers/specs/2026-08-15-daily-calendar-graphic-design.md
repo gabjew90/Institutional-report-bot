@@ -119,7 +119,17 @@ present without competing with the content.
 5. `ECONOMIC` band, then events in TWO columns, each row `HH:MM  Event
    name`. Sorted by time; column-major fill.
 6. `BEFORE OPEN` and `AFTER CLOSE` bands side by side, each column up to
-   20 rows of `SYM  Company name`, sorted by market cap descending.
+   15 rows of `SYM  Company name  ±X%`, sorted by market cap descending
+   (owner cut 20 → 15 on 2026-08-20). The trailing figure is the earnings
+   IMPLIED MOVE, added 2026-08-25: the ATM straddle (call mid + put mid
+   over spot) on the first expiry covering the report date, via yfinance
+   in `report/implied_move.py` — no key, no cost, ~25s added to the build
+   since only the ranked top-15 per session are priced. Straddle-based
+   rather than IV-derived on purpose: IV needs a model and a rate
+   assumption, the straddle is what someone would actually pay. A name
+   whose chain lacks an honest two-sided ATM quote renders `—` rather
+   than a fabricated number, and a total yfinance outage drops the
+   column, never the sheet.
 7. Footer: `ALL TIMES ET` in small dim caps.
 
 Every text row is measured with `ImageDraw.textlength`; a company name
