@@ -234,13 +234,27 @@ which has no declaration to move into — Gemini's built-in sandbox tool
 takes no description) or by re-moving an anti-fabrication rule the
 measurement says is load-bearing. *Owner's call; nothing further changed.*
 
-**Side effect worth knowing:** `19-no-fabricated-lyrics` went 3/3 -> 1/3,
-grounding on only one attempt of three. It is a Google-only turn with no
-function tool that applies. The plausible mechanism is that the function
-declarations are now much larger, so `google_search` competes against
-more salient function tools. If real, it is a direct cost of the
-declarations-over-prompt premise and would show up on any grounding-only
-question.
+**MEASURED COST: the migration suppresses grounding on Google-only
+turns.** Tested rather than assumed, on the pinned production model, the
+same fixture, pre- and post-migration commits:
+
+| arm | `19-no-fabricated-lyrics` grounded |
+|---|---|
+| pre-migration (`HEAD~1`, TOOLS 18,735) | 5/5, plus 3/3 in the baseline = **8/8** |
+| post-migration (TOOLS 9,204) | 3/5, plus 1/3 in the full run = **4/8** |
+
+8/8 to 4/8 on the pinned model. The finding reproduces and stands.
+
+`19` is a Google-only turn: no function tool applies, so `google_search`
+is the only correct route. The mechanism is tool competition — the
+function declarations grew by roughly the 9,531 chars the prompt lost,
+so on a turn where no function tool fits, `google_search` now competes
+against far more salient alternatives and loses about half the time.
+
+This is a direct cost of the declarations-over-prompt premise, not a
+local defect, and it should be expected on ANY grounding-only question.
+Moving text into declarations is not free: it trades prompt weight for
+tool-selection noise.
 
 Net: pass rate **34/39 (87%)**, up from the 32/39 baseline. Grounding
 **12/13**, down from 13/13, entirely from `19`.
@@ -255,6 +269,42 @@ no routing text. The model cannot prioritise a tool the routing section
 does not list. Adding it is a one-line change to the priority sentence
 and would be a legitimate cross-tool routing fix rather than fixture
 tuning, but it was left alone.
+
+### MEASURED EXCEPTION to CLAUDE.md rule 2
+
+CLAUDE.md's prompt-enforcement policy, rule 2, says tool mechanics belong
+in the tool declaration rather than the system prompt. That is correct
+for mechanics. **It does not hold for anti-fabrication rules, and the
+fixtures priced the difference immediately.**
+
+Both rules below were moved from the prompt into the relevant tool
+schemas during the TOOLS migration, changing nothing else:
+
+| rule | fixture | in the prompt | moved to the schema |
+|---|---|---|---|
+| ZERO UNFORCED TRADE-OUTCOME ASSERTIONS | `10` | 3/3 | **1/3** — "expired worthless" shipped on two of three attempts |
+| NO SELF-GENERATED TECHNICAL ANALYSIS | `11c` | 2/3 | **0/3** |
+
+Restored to the prompt, both recover: `10` to 3/3 and `11c` to 3/3, and
+suite pass rate goes 30/39 to 34/39.
+
+**The reason is what the rule governs, not what it mentions.** A schema
+description is read while the model is CHOOSING a tool. An
+anti-fabrication rule does not govern that choice — it governs what the
+model may write once the result is in hand, which happens after tool
+selection is over and the declaration has stopped being the salient
+context. A rule about composing the answer has to live where the answer
+is composed.
+
+The dividing line, for future migrations:
+
+- **Schema** — parameter semantics, status codes, usage shapes, examples,
+  per-tool when-to-call. Anything that helps PICK the tool.
+- **System instruction** — what you may and may not ASSERT once you have
+  the data. Anti-fabrication, provenance, and outcome discipline.
+
+Rule 2 stands for mechanics. This exception is measured, not argued, and
+should be cited before anything else is moved out of the prompt.
 
 ### Known harness limitation
 
