@@ -38,6 +38,9 @@ USAGE
   python scripts/ask_fixture_run.py --offline      # validate fixtures only
   python scripts/ask_fixture_run.py --self-test    # validate the ASSERTIONS
   python scripts/ask_fixture_run.py --json out.json
+  python scripts/ask_fixture_run.py --model gemini-3.1-flash-lite
+  python scripts/ask_fixture_run.py --baseline docs/prior.json
+  python scripts/ask_fixture_run.py --two-condition   # prompt vs no prompt
 
 Exit codes: 0 all passed, 1 one or more failed, 2 harness error.
 """
@@ -54,6 +57,15 @@ REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO))
 
 FIXTURE_DIR = REPO / "tests" / "ask_fixtures"
+
+# The model under test, pinned HERE and deliberately NOT read from the
+# environment. Both earlier baselines were measured against
+# gemini-3.1-flash-lite-preview because local .env fell through to
+# GEMINI_MODEL while Railway sets ASK_GEMINI_MODEL, and nothing in the
+# output made that visible. A baseline is only evidence about the model
+# production actually runs, so the runner names it rather than inheriting
+# whatever the shell happens to hold. Override with --model.
+HARNESS_MODEL = "gemini-3.5-flash-lite"
 
 
 # ---------------------------------------------------------------- helpers
@@ -219,6 +231,10 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
 
     tools_called: list[str] = []
     grounded = False
+    # The requested string is an alias and can move server-side without
+    # notice (that is how a "-preview" build silently replaced the model
+    # two baselines were measured on). Record what the server says it ran.
+    model_version = getattr(resp, "model_version", None)
 
     def _scan(r):
         nonlocal grounded
@@ -271,7 +287,7 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
     except Exception:
         answer = ""
     return {"answer": answer, "tools_called": tools_called,
-            "grounded": grounded}
+            "grounded": grounded, "model_version": model_version}
 
 
 def _expect_hash(fx: dict) -> str:
@@ -280,16 +296,162 @@ def _expect_hash(fx: dict) -> str:
     return hashlib.sha256(blob.encode()).hexdigest()[:12]
 
 
-def suite_fingerprint(fixtures: list[dict]) -> str:
+def suite_fingerprint(fixtures: list[dict] | None = None) -> str:
     """Hash of every fixture's id + assertions.
 
     A baseline is only comparable to a run of the same assertions.
     Tightening one fixture changes this, which turns a silent mismatch
     into a visible one.
     """
+    # ALWAYS the full suite on disk, never the --only subset: a filtered
+    # run must still be comparable to a full baseline, and fingerprinting
+    # the subset made every partial run look like an assertion change.
+    fixtures = load_fixtures(None) if fixtures is None else fixtures
     blob = json.dumps(
         sorted((fx.get("id"), _expect_hash(fx)) for fx in fixtures))
     return hashlib.sha256(blob.encode()).hexdigest()[:12]
+
+
+def run_two_condition(fixtures: list[dict], client, model, tools,
+                      safety) -> list[dict]:
+    """Every fixture twice: with the system prompt, and with none.
+
+    Measures ONE thing — whether the prompt changes which source the model
+    reaches for on the FIRST turn. Deliberately a single call per arm with
+    no stubbed tool rounds: routing is decided on turn one, and running
+    the loop would let a later round mask the initial choice.
+
+    A prompt that suppresses grounding is not hypothetical. On
+    gemini-3.1-flash-lite-preview the same fixtures went 0/3 grounded with
+    the prompt and 3/3 without it. This asks whether the production model
+    shows a smaller version of the same effect.
+    """
+    from google.genai import types
+    from discord_bot.bot import _build_runtime_system_instruction
+
+    sysinst = _build_runtime_system_instruction("")
+    out = []
+    for fx in fixtures:
+        row = {"id": fx["id"],
+               "grounding_required": bool(fx.get("grounding_required"))}
+        for arm, si in (("with_prompt", sysinst), ("no_prompt", None)):
+            cfg_kw = dict(
+                tools=tools,
+                tool_config=types.ToolConfig(
+                    include_server_side_tool_invocations=True),
+                safety_settings=safety, max_output_tokens=1200,
+                temperature=0.2)
+            if si:
+                cfg_kw["system_instruction"] = si
+            try:
+                resp = client.models.generate_content(
+                    model=model,
+                    contents=[types.Content(role="user", parts=[
+                        types.Part.from_text(
+                            text=build_user_content(fx))])],
+                    config=types.GenerateContentConfig(**cfg_kw))
+                cand = resp.candidates[0]
+                gm = getattr(cand, "grounding_metadata", None)
+                grounded = bool(getattr(gm, "grounding_chunks", None))
+                calls = [pp.function_call.name
+                         for pp in (getattr(cand.content, "parts", None) or [])
+                         if getattr(pp, "function_call", None)]
+                row[arm] = {"grounded": grounded, "tools_called": calls,
+                            "sourced": bool(grounded or calls), "error": None}
+            except Exception as e:
+                row[arm] = {"grounded": False, "tools_called": [],
+                            "sourced": None,
+                            "error": f"{type(e).__name__}: {str(e)[:100]}"}
+        w, n = row["with_prompt"], row["no_prompt"]
+        if w["sourced"] is None or n["sourced"] is None:
+            row["delta"] = "error"
+        elif w["sourced"] == n["sourced"]:
+            row["delta"] = "same"
+        elif n["sourced"] and not w["sourced"]:
+            row["delta"] = "prompt_suppressed"
+        else:
+            row["delta"] = "prompt_induced"
+        print(f"  {row['id']:<34} with={w['sourced']!s:<5} "
+              f"without={n['sourced']!s:<5} {row['delta']}")
+        out.append(row)
+    return out
+
+
+def baseline_guard(path: str, model: str,
+                   allow_model: bool, allow_suite: bool) -> tuple[dict, list]:
+    """Refuse to compare a run against a baseline it is not comparable to.
+
+    A baseline answers "did this change break something". That only holds
+    if the two runs differ in the ONE thing under test. Two ways it
+    silently stops holding, both of which have already happened here:
+
+      model   both prior baselines were recorded on
+              gemini-3.1-flash-lite-preview while production runs
+              gemini-3.5-flash-lite, so their numbers described a model
+              no user reaches.
+      suite   ask-baseline-01f124a was recorded before four fixtures had
+              their assertions tightened, so it measured a different
+              suite than any later run.
+
+    Neither was detectable from the output at the time. Both are now.
+    """
+    blockers = []
+    try:
+        base = json.loads(Path(path).read_text(encoding="utf-8"))
+    except Exception as e:
+        return {}, [f"cannot read baseline {path}: {e}"]
+
+    if base.get("invalid_for_deletion_evidence"):
+        blockers.append(
+            f"baseline is marked INVALID: "
+            f"{base.get('invalid_reason', '(no reason recorded)')}")
+
+    bm = base.get("model")
+    if bm is None:
+        blockers.append(
+            "baseline predates the `model` field, so the model it "
+            "measured cannot be established (--allow-model-change to "
+            "proceed anyway)" if not allow_model else "")
+    elif bm != model and not allow_model:
+        blockers.append(
+            f"model mismatch: baseline ran {bm!r}, this run is {model!r}. "
+            f"Pass --allow-model-change if the model change IS what you "
+            f"are measuring.")
+
+    bf = base.get("suite_fingerprint")
+    cf = suite_fingerprint()
+    if bf and bf != cf and not allow_suite:
+        blockers.append(
+            f"suite mismatch: baseline fingerprint {bf}, current {cf}. "
+            f"The assertions changed, so a pass-rate delta mixes a "
+            f"behavior change with an assertion change. Pass "
+            f"--allow-suite-change to proceed.")
+
+    return base, [b for b in blockers if b]
+
+
+def compare_to_baseline(base: dict, records: list[dict]) -> None:
+    """Print per-fixture transitions against a baseline."""
+    prior = {f["id"]: f for f in base.get("fixtures") or []}
+    moved = []
+    for r in records:
+        b = prior.get(r["id"])
+        if not b:
+            moved.append((r["id"], "(new)", r["status"], "", ""))
+            continue
+        if b.get("status") != r["status"]:
+            moved.append((r["id"], b.get("status"), r["status"],
+                          f"{b.get('attempts_passed','?')}/"
+                          f"{b.get('attempts','?')}",
+                          f"{r['attempts_passed']}/{r['attempts']}"))
+    print("\n" + "-" * 64)
+    print(f"VS BASELINE  model={base.get('model')} "
+          f"suite={base.get('suite_fingerprint')} "
+          f"pass={base.get('passed')}/{base.get('total')}")
+    if not moved:
+        print("  no fixture changed status")
+    for fid, was, now, wa, na in moved:
+        print(f"  {fid:<34} {was:>5} -> {now:<5} {wa:>5} -> {na}")
 
 
 def load_fixtures(only: list[str] | None) -> list[dict]:
@@ -431,6 +593,23 @@ def main() -> int:
     ap_.add_argument("--self-test", dest="self_test", action="store_true",
                      help="validate each fixture's assertions against a "
                           "hand-written good and bad answer; no model calls")
+    ap_.add_argument("--model", default=HARNESS_MODEL,
+                     help=f"model under test (default {HARNESS_MODEL}); "
+                          f"NOT read from the environment")
+    ap_.add_argument("--baseline", default=None,
+                     help="prior baseline JSON to compare this run against")
+    ap_.add_argument("--allow-model-change", dest="allow_model_change",
+                     action="store_true",
+                     help="permit comparing against a baseline recorded on "
+                          "a different model")
+    ap_.add_argument("--allow-suite-change", dest="allow_suite_change",
+                     action="store_true",
+                     help="permit comparing against a baseline recorded "
+                          "with different assertions")
+    ap_.add_argument("--two-condition", dest="two_condition",
+                     action="store_true",
+                     help="also run every fixture with NO system prompt and "
+                          "record the grounding/tool-routing delta")
     ap_.add_argument("--json", dest="json_out", default=None)
     args = ap_.parse_args()
 
@@ -486,7 +665,20 @@ def main() -> int:
         print("HARNESS ERROR: no GOOGLE_API_KEY / GOOGLE_ASK_API_KEY set")
         return 2
     client = genai.Client(api_key=key)
-    model = settings.ask_gemini_model or settings.gemini_model
+    model = args.model
+    print(f"model under test: {model}  (pinned in the runner; "
+          f"env ASK_GEMINI_MODEL/GEMINI_MODEL are ignored)\n")
+
+    baseline = {}
+    if args.baseline:
+        baseline, blockers = baseline_guard(
+            args.baseline, model,
+            args.allow_model_change, args.allow_suite_change)
+        if blockers:
+            print(f"REFUSING TO COMPARE against {args.baseline}")
+            for b in blockers:
+                print("  - " + b)
+            return 2
 
     tool_list = [
         types.Tool(google_search=types.GoogleSearch()),
@@ -506,6 +698,7 @@ def main() -> int:
     ]
 
     records = []
+    model_versions: set[str] = set()
     passed = 0
     ground_turns = 0
     ground_satisfied = 0
@@ -525,6 +718,10 @@ def main() -> int:
         flaky = (not ok) and any(not f for _r, f in attempts)
         res0, fails0 = next(((r, f) for r, f in attempts if f), attempts[0])
         n_ok = sum(1 for _r, f in attempts if not f)
+        for _r, _f in attempts:
+            mv = _r.get("model_version")
+            if mv:
+                model_versions.add(mv)
 
         if fx.get("grounding_required"):
             ground_turns += 1
@@ -570,6 +767,36 @@ def main() -> int:
           f"called a tool or grounded")
     print("=" * 64)
 
+    if baseline:
+        compare_to_baseline(baseline, records)
+
+    two_cond = None
+    if args.two_condition:
+        print("\n" + "=" * 64)
+        print("TWO-CONDITION: every fixture with the prompt and without it")
+        print("(one call per arm, first-turn routing only)")
+        print("=" * 64)
+        two_cond = run_two_condition(fixtures, client, model, tool_list,
+                                     safety)
+        supp = [r["id"] for r in two_cond if r["delta"] == "prompt_suppressed"]
+        ind = [r["id"] for r in two_cond if r["delta"] == "prompt_induced"]
+        same = [r for r in two_cond if r["delta"] == "same"]
+        errs = [r["id"] for r in two_cond if r["delta"] == "error"]
+        print("\n" + "-" * 64)
+        print(f"TWO-CONDITION DELTA   same {len(same)} | "
+              f"prompt suppressed sourcing {len(supp)} | "
+              f"prompt induced sourcing {len(ind)}"
+              + (f" | errors {len(errs)}" if errs else ""))
+        if supp:
+            print(f"  suppressed: {supp}")
+        if ind:
+            print(f"  induced:    {ind}")
+        gr = [r for r in two_cond if r["grounding_required"]]
+        gw = sum(1 for r in gr if r["with_prompt"]["sourced"])
+        gn = sum(1 for r in gr if r["no_prompt"]["sourced"])
+        print(f"  grounding-required turns sourced: "
+              f"with prompt {gw}/{len(gr)} | without {gn}/{len(gr)}")
+
     if args.json_out:
         try:
             import discord_bot.ask_prompt as _ap
@@ -577,15 +804,20 @@ def main() -> int:
         except Exception:
             prompt_chars = None
         Path(args.json_out).write_text(json.dumps({
-            "suite_fingerprint": suite_fingerprint(fixtures),
+            "suite_fingerprint": suite_fingerprint(),
+            "ran_subset": bool(args.only),
             "prompt_chars": prompt_chars,
             "repeat": max(1, args.repeat),
             "model": model,
+            "model_pinned_in_runner": model == HARNESS_MODEL,
+            "model_versions_seen": sorted(model_versions),
+            "compared_against": args.baseline,
             "pass_rate": rate, "passed": passed, "total": total,
             "tool_call_rate_grounding": grate,
             "grounding_turns": ground_turns,
             "grounding_satisfied": ground_satisfied,
             "fixtures": records,
+            "two_condition": two_cond,
         }, indent=1), encoding="utf-8")
         print(f"wrote {args.json_out}")
 

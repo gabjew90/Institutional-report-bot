@@ -108,35 +108,46 @@ the price tool called) and the anti-recycling rule.
    confirms the *model* still glitches and the detector is load-bearing —
    an argument for keeping the code and deleting any prompt text about it.
 
-6. **The prompt actively suppresses web grounding** (`11a`, `16`, `19`,
-   `30`; ledger 2026-06-17, 2026-07-06, 2026-07-12, 2026-08-25). This is
-   the largest finding in the suite and it is measured, not inferred.
+6. **~~The prompt actively suppresses web grounding~~ — STRUCK, WRONG.**
+   ~~Corrected 2026-08-25 within a day of being written.~~ The prompt does
+   not suppress grounding. The model did. Replaced by finding 6b.
 
-   Same question, same ten-tool config, same `include_server_side_tool_-`
-   `invocations=True`, only the system instruction varies:
+6b. **Grounding behavior is model-dependent, and 3.1-preview cannot
+   combine `google_search` with a large system instruction** (`11a`, `16`,
+   `19`, `30`; ledger 2026-06-17, 2026-07-06, 2026-07-12, 2026-08-25).
 
-   | condition | grounded-or-tool |
-   |---|---|
-   | with the `/ask` system prompt | **0/3** |
-   | no system prompt | **3/3** |
+   The original test held the model fixed and varied the prompt, which
+   made the prompt look guilty. Holding the prompt fixed and varying the
+   model instead, on the same four fixtures, three attempts each:
 
-   Grounding is not broken and not rate-limited — `google_search` alone
-   returns 5-6 chunks on the same question, and the full tool list grounds
-   3/3 on the bare question. Adding the prompt is what turns it off.
+   | fixture | 3.1-flash-lite-preview | **3.5-flash-lite (production)** | 3.5, no prompt |
+   |---|---|---|---|
+   | `16-valuation-confab` | 0/3 | **3/3** | 3/3 |
+   | `11a-unlock-schedule-confab` | 0/3 | **3/3** | 3/3 |
+   | `19-no-fabricated-lyrics` | 0/3 | **3/3** | 3/3 |
+   | `30-live-input-recency` | 0/3 | **3/3** | 3/3 |
 
-   All four affected fixtures are turns where search is the *only* correct
-   route: a lockup schedule, a market cap, song lyrics, an MSTR premium.
-   With grounding suppressed the model answers from memory, which is
-   exactly the confabulation those four ledger incidents record. The
-   prompt is producing the failure it was extended to prevent.
+   On production's model the prompt costs nothing: grounded 3/3 with it
+   and 3/3 without. The suppression is specific to
+   `gemini-3.1-flash-lite-preview`, which the harness was accidentally
+   measuring because local `.env` left `ASK_GEMINI_MODEL` unset and
+   resolution fell through to `GEMINI_MODEL`.
 
-   *Proposal:* find which block does it before deleting anything else.
-   The likely candidates are the tool-routing priority text and the
-   local-context-first rules (`21` wants the opposite behavior and passes
-   3/3), so the two goals are in direct tension and the prompt currently
-   resolves it the wrong way. Bisecting the prompt against these four
-   fixtures is a concrete, cheap experiment and it needs owner sign-off
-   because it means editing `ask_prompt.py`.
+   What survives as a real caution: a large system instruction CAN defeat
+   `google_search` on at least one model, silently, with no error — the
+   model just answers from memory. That is the confabulation those four
+   ledger incidents record. So grounding behavior must be re-measured on
+   any model change rather than assumed to carry over. That is what the
+   `--baseline` model guard and the `--two-condition` suite exist for.
+
+   *No prompt change is proposed.* The earlier bisect proposal is
+   withdrawn — there is nothing to bisect on the production model.
+
+   **Method note, worth more than the finding.** The bad conclusion came
+   from a two-arm test where both arms shared an unexamined constant. The
+   test was internally valid and the inference from it was wrong. When a
+   result implicates the thing you happen to be studying, vary the
+   constants before believing it.
 
 ### Known harness limitation
 

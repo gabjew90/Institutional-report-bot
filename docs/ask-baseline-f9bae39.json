@@ -1,4 +1,6 @@
 {
+ "invalid_for_deletion_evidence": true,
+ "invalid_reason": "Measured against gemini-3.1-flash-lite-preview, not production's gemini-3.5-flash-lite. Local .env left ASK_GEMINI_MODEL unset so resolution fell through to GEMINI_MODEL. Numbers here describe a model no user reaches and must not be used as deletion evidence or as a comparison baseline. Superseded by the 3.5 baseline.",
  "suite_fingerprint": "44c57ff66434",
  "prompt_chars": 64090,
  "repeat": 3,
