@@ -114,12 +114,22 @@ PRODUCTION_CONFIG = {
     "safety_all_block_none": True,
     # how many declared function tools ride alongside google_search
     "function_tool_count": 10,
+    # production declares google_search on every turn
+    "search_on_every_fixture": True,
 }
 
 # Differences that are DELIBERATE. Each needs a reason, and the reason is
 # printed, so an unexplained entry is visible in review.
 ALLOWED_CONFIG_DIFFS = {
-    # (nothing today — every known difference has been removed)
+    # google_search is withheld from fixtures that do not test grounding.
+    # Production always declares it; this saves the grounding quota that
+    # is the suite's binding cost. grounding_required fixtures and any
+    # fixture with `search_tool: true` still get it, so nothing that
+    # MEASURES grounding is affected. Override with --always-search.
+    "search_on_every_fixture": (
+        "withheld from fixtures that are neither grounding_required nor "
+        "search_tool:true — saves grounding quota without changing what "
+        "any grounding test measures"),
 }
 
 
@@ -141,6 +151,7 @@ def resolve_harness_config(tool_list=None, model=None) -> dict:
                 names.append(fd.name)
         cfg["fantasy_tool_registered"] = "lookup_fantasy_league" in names
         cfg["function_tool_count"] = len(names)
+    cfg["search_on_every_fixture"] = False
     return cfg
 
 
@@ -323,10 +334,29 @@ def build_user_content(fx: dict) -> str:
     return "\n\n".join(parts)
 
 
-def run_fixture(fx: dict, client, model, tools, safety) -> dict:
+def run_fixture(fx: dict, client, model, tools, safety,
+                skip_search: bool = True) -> dict:
     """One live turn: model -> (optional stubbed tool round) -> answer."""
     from google.genai import types
     from discord_bot.bot import _build_runtime_system_instruction
+
+    # GROUNDING QUOTA. google_search is billed separately from tokens
+    # (free tier 5,000 grounded prompts/month, then ~$14/1000) and is the
+    # binding cost of running this suite. A fixture that does not test
+    # grounding does not need the tool declared, so it is withheld unless
+    # the fixture is `grounding_required` or opts in with
+    # `search_tool: true`.
+    #
+    # This IS a deliberate divergence from production, which always
+    # declares google_search — recorded in ALLOWED_CONFIG_DIFFS rather
+    # than left silent. The opt-in exists because a fixture can depend on
+    # search being AVAILABLE without being grounding_required: fixture
+    # 40's whole failure mode is confabulating FROM search results, and
+    # withholding the tool would hide the behaviour it exists to catch.
+    if (skip_search and not fx.get("grounding_required")
+            and not fx.get("search_tool")):
+        tools = [t for t in tools
+                 if not getattr(t, "google_search", None)]
 
     sysinst = _build_runtime_system_instruction("")
     contents = [types.Content(
@@ -822,6 +852,11 @@ def main() -> int:
                      action="store_true",
                      help="permit comparing against a baseline recorded "
                           "with different assertions")
+    ap_.add_argument("--always-search", dest="always_search",
+                     action="store_true",
+                     help="declare google_search on every fixture, not "
+                          "just grounding_required ones (costs grounding "
+                          "quota; production always declares it)")
     ap_.add_argument("--two-condition", dest="two_condition",
                      action="store_true",
                      help="also run every fixture with NO system prompt and "
@@ -956,7 +991,8 @@ def main() -> int:
         attempts = []
         for _ in range(max(1, args.repeat)):
             try:
-                res = run_fixture(fx, client, model, tool_list, safety)
+                res = run_fixture(fx, client, model, tool_list, safety,
+                                  skip_search=not args.always_search)
                 fails = evaluate(fx, res)
             except Exception as e:
                 res = {"answer": "", "tools_called": [], "grounded": False}

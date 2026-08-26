@@ -4,6 +4,68 @@ Findings that need an owner decision. Nothing here has been applied.
 
 ---
 
+## STANDING RULE 1 — diff the config before believing the finding
+
+> **A measurement that implicates the thing you are studying is more
+> likely a config artifact than a discovery. Diff the config against
+> production BEFORE writing the finding down.**
+
+This is the project's first standing rule because it has been paid for
+four times. Every case had the same shape: the harness resolved a
+different configuration than the deployed worker, nothing in the output
+said so, and the resulting number looked like a discovery about the
+prompt.
+
+### The seven divergences
+
+| # | divergence | what it did |
+|---|---|---|
+| 1 | `ASK_GEMINI_MODEL` unset locally, resolution fell through to `GEMINI_MODEL` | two baselines measured `gemini-3.1-flash-lite-preview`, a model production never runs |
+| 2 | local `GEMINI_MODEL` pinned to a `-preview` alias | the alias moved server-side between runs and read as a prompt regression |
+| 3 | `SLEEPER_LEAGUE_ID` unset locally | `lookup_fantasy_league` was never declared, so fixture 27 asserted a tool absent from the request and could not pass for any prompt |
+| 4 | `max_output_tokens` 1200 vs production 5000; `temperature` 0.2 vs 0.3 | produced the "empty answer" failures and inflated a 32/39 that was never comparable |
+| 5 | suite fingerprint computed over the `--only` subset | made every partial run a false mismatch — a bug in the guard built to catch divergences |
+| 6 | `thinking_budget` 0 vs production 2000 | suppressed tool use, which became the withdrawn grounding-cost finding below |
+| 7 | no round-cap final-answer rung | "empty answer after N tool calls" was recorded in this file for weeks as an unavoidable harness limitation; it was a production rung the harness lacked |
+
+### The four findings they produced or retracted
+
+1. **Finding 6, "the prompt suppresses web grounding" — RETRACTED.**
+   0/3 grounded with the prompt, 3/3 without, on the same tool config.
+   The arms shared an unexamined constant: both ran 3.1-preview. On
+   production's 3.5-flash-lite the same four fixtures ground 3/3 WITH
+   the prompt. Cause was divergence 2, not the prompt.
+
+2. **"Pass rate regressed 32/39 → 31/39" — RETRACTED.**
+   The 32/39 was measured at 1200/0.2. Nothing got worse; the earlier
+   number described a system nobody deploys. Cause was divergence 4.
+
+3. **"The TOOLS migration costs grounding" — WITHDRAWN.**
+   Fixture `19-no-fabricated-lyrics` grounded 8/8 pre-migration and 4/8
+   post, reproduced on the pinned production model, and was recorded as
+   a measured cost of trading prompt weight for tool-selection noise.
+   It was measured with **no thinking budget** while production sets
+   2000. With that matched, `19` goes **0/3 → 3/3** and suite grounding
+   goes **11/13 → 14/14**. There is no grounding cost to the
+   declarations migration. Cause was divergence 6.
+
+4. **"Empty answer after N tool calls is a harness limitation" —
+   RETRACTED.** Treated as inconclusive-by-nature and used to excuse
+   failures on `08`, `21`, `22a`, `23`. It was divergence 7. With the
+   rung added, all of them pass.
+
+Only ONE finding in this class survived contact with a matched config:
+the [rule-2 exception](#measured-exception-to-claudemd-rule-2), where
+anti-fabrication rules moved into tool schemas measurably weakened.
+
+**What makes the next one cheap:** `config_guard()` asserts 9 keys
+against `PRODUCTION_CONFIG` and exits before the first API call;
+`config_fingerprint` is recorded in every baseline so a mismatched
+comparison is refused; and `ALLOWED_CONFIG_DIFFS` requires a written,
+printed reason for any difference that is deliberate.
+
+---
+
 ## 2026-08-25 — /ask fixture harness: baseline and prompt gaps
 
 `scripts/ask_fixture_run.py` + `tests/ask_fixtures/` (39 fixtures, all 25
@@ -234,48 +296,6 @@ which has no declaration to move into — Gemini's built-in sandbox tool
 takes no description) or by re-moving an anti-fabrication rule the
 measurement says is load-bearing. *Owner's call; nothing further changed.*
 
-**~~MEASURED COST: the migration suppresses grounding~~ — WITHDRAWN,
-it was a seventh config artifact.**
-
-The finding was: fixture `19-no-fabricated-lyrics` grounded 8/8
-pre-migration and 4/8 post, so moving text into tool declarations was
-said to cost grounding by tool competition. It reproduced on the pinned
-production model, which is why it was recorded.
-
-It was still measured under a harness config production does not run.
-Production sets `thinking_config=ThinkingConfig(thinking_budget=2000)`;
-the harness set none. Thinking budget drives tool-use decisions. With it
-matched, `19` goes **0/3 -> 3/3** and suite grounding goes **11/13 ->
-14/14**. There is no grounding cost to the declarations migration.
-
-**That is the third finding in this project killed by a config
-divergence** — finding 6 (the prompt "suppressing" grounding, actually
-3.1-preview), the 32/39-vs-31/39 "regression" (actually 1200/0.2), and
-now this one. The pattern is stable enough to state as a rule:
-
-> A measurement that implicates the thing you are studying is more
-> likely a config artifact than a discovery. Diff the config against
-> production BEFORE writing the finding down.
-
-`config_guard` now asserts 8 keys, which is what makes the next one
-cheap to catch instead of expensive to believe.
-
-### Config divergences found and closed (the full list)
-
-| # | divergence | how it corrupted a result |
-|---|---|---|
-| 1 | `ASK_GEMINI_MODEL` unset locally | two baselines measured a model production never runs |
-| 2 | `GEMINI_MODEL` pinned to a `-preview` alias | alias moved server-side, read as a prompt regression |
-| 3 | `SLEEPER_LEAGUE_ID` unset | `lookup_fantasy_league` never declared; fixture 27 unpassable |
-| 4 | `max_output_tokens` 1200 vs 5000, temp 0.2 vs 0.3 | source of the "empty answer" failures; inflated 32/39 |
-| 5 | fingerprint computed on the `--only` subset | every partial run a false mismatch (my own guard's bug) |
-| 6 | `thinking_budget` 0 vs 2000 | the withdrawn grounding-cost finding above |
-| 7 | no round-cap final-answer rung | "empty answer after N tool calls", written off for weeks as an unavoidable harness limitation, was production behaviour the harness lacked |
-
-Seven. Every one silent until someone went looking, and each one cost a
-session or a wrong conclusion. The guard exists so number eight is a
-message instead.
-
 ### MEASURED EXCEPTION to CLAUDE.md rule 2
 
 CLAUDE.md's prompt-enforcement policy, rule 2, says tool mechanics belong
@@ -312,15 +332,23 @@ The dividing line, for future migrations:
 Rule 2 stands for mechanics. This exception is measured, not argued, and
 should be cited before anything else is moved out of the prompt.
 
-### Known harness limitation
+### Harness bugs found and fixed (none of these are "limitations")
 
-Two harness bugs produced false failures in the first runs and are fixed:
-the `min_distinct_names` check required 3+ character names (so "BK" and
-"Ry" never counted, and a correct 3-manager draft grade scored 1), and the
-tool-round cap was too low, so a model that chained calls returned an empty
-answer. The cap is now 6 rounds; `23-calendar-forced-grounding` still hits
-it occasionally, which is a harness limit rather than a behavior finding —
-treat an "empty answer after N tool call(s)" failure as inconclusive.
+- `min_distinct_names` required 3+ character names, so "BK" and "Ry"
+  never counted and a correct 3-manager draft grade scored 1.
+- The tool-round cap was 4, below production's 6. Now 6, matching.
+- **"Empty answer after N tool call(s)" — no longer a limitation.**
+  This section previously said to treat it as inconclusive by nature.
+  That was wrong for weeks and excused real failures on `08`, `21`,
+  `22a` and `23`. Production, on ending a round with tool calls but no
+  text, makes one more call with the data-fetching tools withheld (code
+  execution kept) to force text out. The harness returned `""`. It was
+  divergence 7 in STANDING RULE 1, not a property of the harness. With
+  the rung added, every fixture that failed this way passes.
+
+The lesson generalises: **"known limitation" is where unexamined
+divergences go to be forgiven.** Before writing that phrase again, check
+whether production has a rung the harness lacks.
 
 ### Detector note (not a prompt issue)
 
