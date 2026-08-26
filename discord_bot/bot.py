@@ -10026,7 +10026,21 @@ def create_bot() -> commands.Bot:
                     _ref_msg = await message.channel.fetch_message(
                         _ref.message_id
                     )
-                except Exception:
+                except Exception as _e:
+                    # WAS a bare silent except. When this fires the
+                    # trigger silently degrades to mention-only, so a
+                    # reply-to-bot stops firing and looks identical to a
+                    # message that never triggered at all. Logged so the
+                    # next occurrence is diagnosable instead of invisible.
+                    log.warning(
+                        "reply-parent fetch FAILED for message id=%s in "
+                        "#%s (parent id=%s): %s: %s — reply-to-bot "
+                        "trigger degrades to mention-only for this turn",
+                        message.id,
+                        getattr(message.channel, "name", "?"),
+                        getattr(_ref, "message_id", "?"),
+                        type(_e).__name__, _e,
+                    )
                     _ref_msg = None
             _ref_author = getattr(_ref_msg, "author", None)
             _is_reply_to_bot = bool(

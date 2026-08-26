@@ -174,6 +174,13 @@ class Settings(BaseSettings):
     # grows forever). 180 default = ~6 months of history retained,
     # plenty for profile-refresh windows + claim verification without
     # bloating the DB.
+    # What to do with @-mentions and replies-to-bot found by the
+    # startup catch-up, i.e. messages that arrived while the bot was
+    # down (every deploy is such a window, and every push deploys).
+    #   "log"    -- warn in the logs only (default, safest)
+    #   "ack"    -- post ONE line in the channel naming the miss
+    #   "answer" -- re-dispatch them through the normal handler
+    catchup_missed_trigger_mode: str = "log"
     chat_retention_days: int = 180
 
     # Comma-separated channel names where ingest_message OCRs image

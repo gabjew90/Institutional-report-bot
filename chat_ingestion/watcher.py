@@ -267,6 +267,64 @@ async def _classify_message_for_trade(
         )
 
 
+
+def _is_missed_trigger(bot, msg) -> bool:
+    """Would this message have summoned the bot had it been online?
+
+    Two shapes, matching the live trigger: an explicit @-mention, and a
+    reply to one of the bot's own messages (which fires WITHOUT a ping,
+    including when it tags someone else).
+    """
+    try:
+        if bot.user is None or msg.author.bot:
+            return False
+        if bot.user.mentioned_in(msg):
+            return True
+        ref = getattr(msg, "reference", None)
+        if ref is None:
+            return False
+        parent = getattr(ref, "resolved", None)
+        author = getattr(parent, "author", None)
+        return bool(author is not None and author.id == bot.user.id)
+    except Exception:
+        return False
+
+
+async def _handle_missed_triggers(bot, channel, missed: list) -> None:
+    """Log / acknowledge / re-dispatch messages the bot slept through."""
+    if not missed:
+        return
+    from config import settings
+    mode = (getattr(settings, "catchup_missed_trigger_mode", "log")
+            or "log").strip().lower()
+    ids = [m.id for m in missed]
+    log.warning(
+        "catchup: %d message(s) in #%s would have triggered the bot but "
+        "arrived while it was offline (mode=%s): %s",
+        len(missed), getattr(channel, "name", "?"), mode, ids[:10],
+    )
+    if mode == "ack":
+        try:
+            who = ", ".join(sorted({m.author.display_name for m in missed}))
+            await channel.send(
+                f"was offline for a redeploy and missed {len(missed)} "
+                f"message(s) aimed at me ({who}). say it again if it "
+                f"still matters."
+            )
+        except Exception as e:
+            log.warning(f"catchup ack post failed: {e}")
+    elif mode == "answer":
+        # Re-dispatch through discord.py's own event system so the REAL
+        # handler runs -- no second copy of the trigger logic to drift.
+        # ingest_message is idempotent, so the re-run does not duplicate
+        # rows.
+        for m in missed:
+            try:
+                bot.dispatch("message", m)
+            except Exception as e:
+                log.warning(f"catchup re-dispatch failed for {m.id}: {e}")
+
+
 async def run_chat_catchup(
     bot: discord.Client,
     *,
@@ -406,6 +464,7 @@ async def run_chat_catchup(
         _MAX_SCAN_ATTEMPTS = 3
         _RETRY_BACKOFF = [5, 15, 30]
 
+        missed_triggers: list = []
         new_this_channel = 0
         seen_this_channel = 0
         scan_ok = False
@@ -429,6 +488,12 @@ async def run_chat_catchup(
                     # on /ask demand instead.
                     if await ingest_message(msg, trigger_eager_ocr=False):
                         new_this_channel += 1
+                    # A message that would have TRIGGERED the bot but
+                    # arrived while it was down. Every deploy is such a
+                    # window and every push deploys, so this is a
+                    # recurring hole, not a one-off.
+                    if _is_missed_trigger(bot, msg):
+                        missed_triggers.append(msg)
                 scan_ok = True
                 break  # full iteration succeeded
             except Exception as e:
@@ -458,6 +523,13 @@ async def run_chat_catchup(
                         f"on_resumed.",
                         exc_info=True,
                     )
+
+        # Handle anything that would have summoned the bot while it
+        # was offline. Only when the walk COMPLETED: a partial scan has
+        # not seen the whole gap, and acking or answering half of it is
+        # worse than waiting for the next run to do all of it.
+        if scan_ok:
+            await _handle_missed_triggers(bot, target, missed_triggers)
 
         if new_this_channel:
             log.info(
