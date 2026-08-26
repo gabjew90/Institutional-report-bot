@@ -97,13 +97,32 @@ def test_disengage_is_gated_in_the_pipeline():
     _ok("pipeline: disengage gated, benign path re-asks plainly")
 
 
+def test_quote_is_not_a_biography_rule():
+    """The 8/25 'who is my little brother?' failure: a one-off joke
+    deflection ("My little brother" — answering why his PSN handle was
+    skibidi toilet) became biography, then got EXTENDED into a brother
+    "carrying the household". The material was genuinely his, so the
+    provenance check passes it — this is an interpretation failure and
+    the rule has to live in both prompts."""
+    from discord_bot import ask_prompt as ap
+    ask = open(ap.__file__, encoding="utf-8").read()
+    assert "A QUOTE IS NOT A BIOGRAPHY" in ask
+    assert "Never extend a personal claim past the words said" in ask
+    assert "deflection, not a disclosure" in ask
+    assert "returned to across days" in ask, "corroboration rule missing"
+    prof = open("scripts/backfill_user_profiles.py", encoding="utf-8").read()
+    assert "A QUOTE PROVES THEY SAID IT, NOT THAT IT IS TRUE" in prof,         "profile generation must not encode deflections as biography"
+    assert "returned to across multiple days" in prof
+    _ok("quote-is-not-biography rule present in ask + profile prompts")
+
+
 def test_prompt_carries_proportionality_and_recency():
     from discord_bot import ask_prompt as ap
     txt = ap.ASK_PROMPT if hasattr(ap, "ASK_PROMPT") else open(
         ap.__file__, encoding="utf-8").read()
     assert "PROPORTIONALITY IS MEASURED IN SENTENCES" in txt
     assert "Good boy" in txt, "the worked example must be concrete"
-    assert "Never open profile material the exchange did not open" in txt
+    assert "Never open profile material the exchange didn't open" in txt
     assert "would become false when a number moved" in txt, \
         "live-input recency rule missing"
     _ok("prompt: proportionality example + live-input recency rule")
@@ -161,5 +180,6 @@ if __name__ == "__main__":
     test_hostility_gate()
     test_quoted_block_is_not_the_askers_hostility()
     test_disengage_is_gated_in_the_pipeline()
+    test_quote_is_not_a_biography_rule()
     test_prompt_carries_proportionality_and_recency()
     print("\nALL CLAPBACK-SCOPE SMOKE TESTS PASS")
