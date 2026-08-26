@@ -62,7 +62,11 @@ _PLUMBING = (
     r"back[- ]?end|API|endpoint|poll(?:s|ed|ing)?|snapshot|schema|feed|"
     r"stor(?:e|es|ed|ing|age)|ingest(?:s|ed|ion)?|databases?|DB|cach(?:e|es|ed|ing)|"
     r"data (?:source|pipeline|layer)|cron|scrape[sdr]?|scraping|"
-    r"index(?:es|ed|ing)?|table|query the|rate[- ]limit"
+    # `index` and `table` were in this list and should never have
+    # been: "the index hugs all-time highs" is a MARKET index, and a
+    # table is something an answer legitimately shows. Both produced
+    # false positives in the recorded-corpus sweep.
+    r"query the|rate[- ]limit|plumbing"
 )
 
 # Density-only vocabulary. NOT used for pointwise detection, because
@@ -116,8 +120,13 @@ _EXTERNAL_SUBJECT = re.compile(
 # is how a real 07b answer slipped past the windowed detector. These fire
 # unless the sentence is plainly about an external company.
 _BOT_NOUNS = re.compile(
-    r"\b(?:the|my|our) (?:feeds?|back[- ]?ends?|plumbing|pipelines?|"
-    r"trackers?|databases?|caches?|indexe?s?|data layers?|endpoints?|"
+    # `index` is gone: "the index hugs all-time highs" is a MARKET
+    # index. `plumbing` is gone too — it moved to the windowed detector,
+    # because "essential reading on market plumbing" is about markets
+    # while "I'm looking at an order book, not the plumbing" is about
+    # the bot, and only a nearby self-reference separates them.
+    r"\b(?:the|my|our) (?:feeds?|back[- ]?ends?|pipelines?|"
+    r"trackers?|databases?|caches?|data layers?|endpoints?|"
     r"APIs?|schemas?|snapshots?)\b"
     r"|\b(?:spot|static|current) snapshots?\b"
     r"|\b(?:feeds?|endpoints?) are (?:wired|live|up|down)\b",
@@ -139,6 +148,20 @@ def _line_at(text: str, pos: int) -> str:
     return text[a: b if b != -1 else len(text)]
 
 
+# The answer the rule PRESCRIBES. "I only have the current snapshot --
+# no historical log" is the correct response to a history question, and
+# the first cut of this validator flagged it on the word `snapshot`,
+# then stripped it. A validator that deletes the sentence its own rule
+# asks for is worse than no validator.
+_PRESCRIBED_REFUSAL = re.compile(
+    r"(?i)\b(?:don'?t|do not|doesn'?t)\s+have\b"
+    r"|\bonly\s+have\b|\bno\s+(?:historical|multi-?day|history|live)\b"
+    r"|\bpull\s+(?:it\s+|that\s+)?(?:from|off)\b"
+    r"|\byour\s+broker\b|\bdata vendor\b"
+    r"|\bnot?\s+(?:chart|indicator)\s+(?:view|feed)\b"
+)
+
+
 def check_meta_plumbing(answer: str, tool_calls=None,
                         **_) -> list[Violation]:
     """Flag plumbing vocabulary used to describe the BOT'S OWN operation.
@@ -157,16 +180,19 @@ def check_meta_plumbing(answer: str, tool_calls=None,
             if m.span() in seen:
                 continue
             seen.add(m.span())
+            sent = _line_at(answer, m.start())
+            if _PRESCRIBED_REFUSAL.search(sent):
+                continue
             out.append(Violation(
-                "meta-plumbing", m.group(0), m.span(),
-                _line_at(answer, m.start()),
+                "meta-plumbing", m.group(0), m.span(), sent,
                 "describes the bot's own data plumbing"))
 
     for m in _BOT_NOUNS.finditer(answer or ""):
         if m.span() in seen:
             continue
         sentence = _line_at(answer, m.start())
-        if _EXTERNAL_SUBJECT.search(sentence):
+        if (_EXTERNAL_SUBJECT.search(sentence)
+                or _PRESCRIBED_REFUSAL.search(sentence)):
             continue
         seen.add(m.span())
         out.append(Violation(
@@ -184,7 +210,8 @@ def check_meta_plumbing(answer: str, tool_calls=None,
         # An external subject in the same sentence makes this legitimate
         # ("$SNOW's database business", "Coinbase's API went down").
         sentence = _line_at(answer, m.start())
-        if _EXTERNAL_SUBJECT.search(sentence):
+        if (_EXTERNAL_SUBJECT.search(sentence)
+                or _PRESCRIBED_REFUSAL.search(sentence)):
             continue
         seen.add(m.span())
         out.append(Violation(
@@ -199,7 +226,9 @@ def check_meta_plumbing(answer: str, tool_calls=None,
     # so past a threshold the shape itself is the violation regardless of
     # who the nominal subject is.
     distinct = {m.group(0).lower()
-                for m in _DENSITY_RE.finditer(answer or "")}
+                for m in _DENSITY_RE.finditer(answer or "")
+                if not _PRESCRIBED_REFUSAL.search(
+                    _line_at(answer or "", m.start()))}
     if len(distinct) >= 3 and not any(v.rule == "meta-plumbing"
                                       for v in out):
         out.append(Violation(
@@ -404,6 +433,24 @@ def check_unfetchable_link_claim(answer: str, tool_calls=None,
 #
 # Imported lazily: bot.py imports THIS module at load time, so a
 # module-level import here would be a cycle.
+def _is_in_tail(answer: str, sentence: str, frac: float = 0.4) -> bool:
+    """Is this sentence in the last `frac` of the answer?"""
+    i = answer.find(sentence)
+    return i >= 0 and i >= int(len(answer) * (1 - frac))
+
+
+def _is_quotation(answer: str, sentence: str) -> bool:
+    """Quoted material repeats on purpose. Lyrics are the clear case."""
+    t = sentence.strip()
+    if t.startswith(">") or t.startswith("> "):
+        return True
+    i = answer.find(sentence)
+    if i < 0:
+        return False
+    line = _line_at(answer, i)
+    return line.strip().startswith(">") or '"' in line
+
+
 def check_repetition(answer: str, tool_calls=None, **_) -> list[Violation]:
     if not answer:
         return []
@@ -415,7 +462,25 @@ def check_repetition(answer: str, tool_calls=None, **_) -> list[Violation]:
                           f"detector unavailable: {e}")]
     if not _has_repetition_glitch(answer):
         return []
-    sents = _repetition_glitch_sentences(answer) or []
+
+    # SCOPE: end-of-generation only, which is the signature the detector
+    # documents. A corpus sweep found 23 false positives from applying it
+    # to the whole answer, all of them legitimate structure rather than a
+    # loop:
+    #   quoted lyrics   "Swerve, swerve, swerve, swerve, deeper now"
+    #                   -- fixture 19 EXISTS to quote lyrics verbatim
+    #   parallel data   "May revised down from +129K; June revised down
+    #                    from +57K"
+    #   chain listings  "total call open interest at 1.2M, put open
+    #                    interest at 1.5M"
+    # Mid-answer clause restatement is a DIFFERENT failure with a
+    # different fix (validator class 6); it does not belong to this
+    # detector, and widening this one to reach it is what produced the
+    # false positives.
+    sents = [t for t in (_repetition_glitch_sentences(answer) or [])
+             if _is_in_tail(answer, t) and not _is_quotation(answer, t)]
+    if not sents:
+        return []
     if not sents:
         return [Violation("repetition-glitch", "<whole answer>", (0, 0),
                           answer.strip().splitlines()[0][:120],

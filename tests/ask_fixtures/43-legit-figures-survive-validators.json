@@ -1,0 +1,33 @@
+{
+  "id": "43-legit-figures-survive-validators",
+  "ledger": "2026-08-26",
+  "title": "NEGATIVE fixture — numbers the validators must NOT strip",
+  "why": "Asserts the negative. Class 3 shipped green at 41/42 while stripping '$3 courthouse parking receipts', a BTC holdings count, revenue and open interest out of correct answers; nothing turned red because no fixture asserted those sentences. This one does. A validator that deletes a revenue figure or a holdings count now fails a test instead of passing quietly. See STANDING RULE 4.",
+  "question": "@omniwiz whats MSTR's actual business, how much bitcoin do they hold and what does the software side bring in",
+  "context": {
+    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n"
+  },
+  "grounding_required": true,
+  "tool_stubs": {},
+  "expect": {
+    "require_grounding_or_tool": true,
+    "answer_must_match_any": [
+      "(?i)\\d{3},\\d{3}\\s*\\**\\+?\\s*\\**\\s*(?:BTC|bitcoin)",
+      "(?i)bitcoin",
+      "(?i)BTC"
+    ],
+    "min_words": 25
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> a bitcoin treasury vehicle: holds ~818,000+ BTC, funded by converts and ATM issuance. the legacy software side still generates roughly $490M a year in enterprise analytics revenue, which is now a rounding error next to the BTC stack.",
+      "tools_called": [],
+      "grounded": true
+    },
+    "bad": {
+      "answer": "-> it holds bitcoin.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
+}

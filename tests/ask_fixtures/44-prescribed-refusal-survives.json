@@ -1,0 +1,50 @@
+{
+  "id": "44-prescribed-refusal-survives",
+  "ledger": "2026-08-26",
+  "title": "NEGATIVE fixture — the refusal the rule prescribes must survive",
+  "why": "The meta-plumbing validator shipped to production flagging the word 'snapshot' inside 'I only have the current snapshot — no historical log', which is the exact answer the rule asks for, and stripped it. A validator that deletes the sentence its own rule prescribes is worse than no validator. This fixture fails if that recurs.",
+  "question": "@omniwiz whats the 5 day trend on SPY open interest",
+  "context": {
+    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n"
+  },
+  "grounding_required": false,
+  "tool_stubs": {
+    "lookup_options_chain": {
+      "status": "ok",
+      "summary": {
+        "expiration": "2026-08-28",
+        "call_oi": 1200000,
+        "put_oi": 1500000
+      }
+    }
+  },
+  "expect": {
+    "answer_must_match_any": [
+      "(?i)only have",
+      "(?i)don'?t have",
+      "(?i)no (?:historical|multi-?day)",
+      "(?i)snapshot",
+      "(?i)broker"
+    ],
+    "answer_must_not_match": [
+      "(?i)over the (last|past) \\**\\s*\\d+\\s*\\**\\s*(d|day)"
+    ],
+    "min_words": 6
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> only have the current snapshot, no multi-day history here. pull the 5-day series off your broker.",
+      "tools_called": [
+        "lookup_options_chain"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> call open interest is down 10.7% over the past 5 days.",
+      "tools_called": [
+        "lookup_options_chain"
+      ],
+      "grounded": false
+    }
+  }
+}

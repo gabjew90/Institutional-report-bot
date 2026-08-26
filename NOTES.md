@@ -178,6 +178,33 @@ are a harness limitation" survived for weeks.
 
 ---
 
+## STANDING RULE 4 — a green suite measures the assertions, nothing else
+
+> **Absence of a failing test is not absence of a problem. A pass rate
+> reports what the fixtures assert and is silent on everything else.**
+
+Every case below was green at the time:
+
+| what was green | what was actually true |
+|---|---|
+| "empty answer after N tool calls" logged as a harness limitation for weeks | production has a round-cap rung the harness lacked; four failures were artifacts |
+| fixture 27 failing "because the router can't reach the tool" | `lookup_fantasy_league` was never REGISTERED locally — the fixture asserted a tool absent from the request |
+| two baselines, 82% and 92% | measured on a model production never runs |
+| class 3 shipped at 41/42, best suite result yet | it was stripping `$3 parking receipts`, a BTC holdings count, revenue and open interest out of correct answers |
+| class 1 shipped and deployed | it was stripping **the refusal its own rule prescribes** — "I only have the current snapshot" flagged on the word `snapshot` |
+
+The last two are the sharpest: in both, the suite went UP while the
+validator deleted correct content. The fixtures did not assert the
+deleted sentences, so nothing turned red.
+
+**What this buys.** A pass rate answers "did the things I thought to
+check still work". It cannot answer "is this change harming things I did
+not think to check". That second question needs a different instrument —
+here, `scripts/validator_sweep.py` over the recorded corpus, plus
+negative fixtures that assert what the validator must LEAVE ALONE.
+
+---
+
 ## STANDING RULE 3 — an erroring gate is a failed gate
 
 > **A check that raises instead of returning a verdict has FAILED. It is
@@ -234,6 +261,27 @@ enforced more weakly than before it started: the prose was deleted while
 2. **Prove it on recorded answers** — every logged violation of that
    class from the baseline JSONs, plus the correct answers that must NOT
    fire. Extend `_BAD` / `_GOOD` so `--self-test` covers both directions.
+2b. **SWEEP FOR FALSE POSITIVES** — `python scripts/validator_sweep.py
+   --rule <class>`. Report BOTH numbers: catch rate against the class's
+   fixtures, and false-positive rate against the recorded corpus. **No
+   prompt prose is deleted until false positives are ZERO.**
+
+   This step exists because class 3 passed every fixture, raised the
+   suite to 41/42, and was silently stripping correct sentences the
+   whole time. The reference process is its 17 -> 5 -> 2 -> 0:
+
+   | cut | flags | what the sweep exposed |
+   |---|---|---|
+   | first | 17 | `$3` parking receipts, a BTC holdings count, revenue, open interest |
+   | +price cue, exclusions | 5 | quantities still read as levels |
+   | +unit exclusion | 2 | markdown `**818,000**` broke the unit match |
+   | +markdown tolerance | **0** | one flag left, a genuine catch |
+
+   A flag on an answer the fixture ACCEPTED is the signal. When such a
+   flag is genuinely a violation the fixture does not assert, add it to
+   `REVIEWED_TRUE_POSITIVES` with the reason — never to silence a flag
+   nobody read.
+
 3. **WIRE IT INTO THE SEND PATH** in `bot.py` via
    `resolve_violations()`. Never write a second copy of the ladder — one
    decision function, or production and the harness drift.
