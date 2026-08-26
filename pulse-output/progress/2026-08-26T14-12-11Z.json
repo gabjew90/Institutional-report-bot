@@ -1,14 +1,80 @@
 {
  "ts": "2026-08-26T14-12-11Z",
  "events": [
-  {"step": "STEP_2_DONE", "time": "2026-08-26T14:13:23Z", "detail": "context fetched via git transport (raw+PAT 404/403 in this env)"},
-  {"step": "STEP_2_1_HOLIDAY_GATE", "time": "2026-08-26T14:15:00Z", "detail": "DECISION: CONTINUE"},
-  {"step": "STEP_2_2_DONE", "time": "2026-08-26T14:16:00Z", "detail": "volume gate CONTINUE -- pdf_count=40"},
-  {"step": "STEP_2_5_PRESS_TIME", "time": "2026-08-26T14:17:00Z", "detail": "snapshot fresh (15 min), no straddled events"},
-  {"step": "STEP_3_DONE", "time": "2026-08-26T14:18:00Z", "detail": "36 themes, 4 promoted discoveries"},
-  {"step": "STEP_3_5_DONE", "time": "2026-08-26T14:30:00Z", "detail": "8 adjudicated, 8 validated, 0 discarded"},
-  {"step": "STEP_4_DONE", "time": "2026-08-26T14:45:00Z", "detail": "draft written, 6 INSIGHTS themes"},
-  {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-08-26T14:47:00Z", "detail": "DECISION: CONTINUE -- 1 soft violation"},
-  {"step": "STEP_5A_STITCH_DONE", "time": "2026-08-26T14:48:00Z", "detail": "1 mechanical fix, _DRAFT NOTES stripped"}
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-08-26T14:13:23Z",
+   "detail": "context fetched via git transport (raw+PAT 404/403 in this env)"
+  },
+  {
+   "step": "STEP_2_1_HOLIDAY_GATE",
+   "time": "2026-08-26T14:15:00Z",
+   "detail": "DECISION: CONTINUE"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-08-26T14:16:00Z",
+   "detail": "volume gate CONTINUE -- pdf_count=40"
+  },
+  {
+   "step": "STEP_2_5_PRESS_TIME",
+   "time": "2026-08-26T14:17:00Z",
+   "detail": "snapshot fresh (15 min), no straddled events"
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-08-26T14:18:00Z",
+   "detail": "36 themes, 4 promoted discoveries"
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-08-26T14:30:00Z",
+   "detail": "8 adjudicated, 8 validated, 0 discarded"
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-08-26T14:45:00Z",
+   "detail": "draft written, 6 INSIGHTS themes"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-08-26T14:47:00Z",
+   "detail": "DECISION: CONTINUE -- 1 soft violation"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-08-26T14:48:00Z",
+   "detail": "1 mechanical fix, _DRAFT NOTES stripped"
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-08-26T14:32:00Z",
+   "detail": "RECAP rebuilt with live data, consensus ledger settled"
+  },
+  {
+   "step": "STEP_5_5_LINT_DONE",
+   "time": "2026-08-26T14:33:00Z",
+   "detail": "DECISION: DISPATCH_SCRUB -- 2 hard (source-prefix)"
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-08-26T14:36:00Z",
+   "detail": "relint clean, 0 hard issues"
+  },
+  {
+   "step": "STEP_5_75_FINAL_VALIDATE_DONE",
+   "time": "2026-08-26T14:37:00Z",
+   "detail": "CONTINUE -- no EDIT/SCRUB-introduced hard violations"
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-08-26T14:38:00Z",
+   "detail": "stripped 700 chars"
+  },
+  {
+   "step": "STEP_6_COMMIT_DONE",
+   "time": "2026-08-26T14:41:00Z",
+   "detail": "pulse + 11 artifacts pushed, hash verified"
+  }
  ]
 }
