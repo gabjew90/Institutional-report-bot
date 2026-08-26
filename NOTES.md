@@ -234,220 +234,47 @@ which has no declaration to move into — Gemini's built-in sandbox tool
 takes no description) or by re-moving an anti-fabrication rule the
 measurement says is load-bearing. *Owner's call; nothing further changed.*
 
-**MEASURED COST: the migration suppresses grounding on Google-only
-turns.** Tested rather than assumed, on the pinned production model, the
-same fixture, pre- and post-migration commits:
+**~~MEASURED COST: the migration suppresses grounding~~ — WITHDRAWN,
+it was a seventh config artifact.**
 
-| arm | `19-no-fabricated-lyrics` grounded |
-|---|---|
-| pre-migration (`HEAD~1`, TOOLS 18,735) | 5/5, plus 3/3 in the baseline = **8/8** |
-| post-migration (TOOLS 9,204) | 3/5, plus 1/3 in the full run = **4/8** |
+The finding was: fixture `19-no-fabricated-lyrics` grounded 8/8
+pre-migration and 4/8 post, so moving text into tool declarations was
+said to cost grounding by tool competition. It reproduced on the pinned
+production model, which is why it was recorded.
 
-8/8 to 4/8 on the pinned model. The finding reproduces and stands.
+It was still measured under a harness config production does not run.
+Production sets `thinking_config=ThinkingConfig(thinking_budget=2000)`;
+the harness set none. Thinking budget drives tool-use decisions. With it
+matched, `19` goes **0/3 -> 3/3** and suite grounding goes **11/13 ->
+14/14**. There is no grounding cost to the declarations migration.
 
-`19` is a Google-only turn: no function tool applies, so `google_search`
-is the only correct route. The mechanism is tool competition — the
-function declarations grew by roughly the 9,531 chars the prompt lost,
-so on a turn where no function tool fits, `google_search` now competes
-against far more salient alternatives and loses about half the time.
+**That is the third finding in this project killed by a config
+divergence** — finding 6 (the prompt "suppressing" grounding, actually
+3.1-preview), the 32/39-vs-31/39 "regression" (actually 1200/0.2), and
+now this one. The pattern is stable enough to state as a rule:
 
-This is a direct cost of the declarations-over-prompt premise, not a
-local defect, and it should be expected on ANY grounding-only question.
-Moving text into declarations is not free: it trades prompt weight for
-tool-selection noise.
+> A measurement that implicates the thing you are studying is more
+> likely a config artifact than a discovery. Diff the config against
+> production BEFORE writing the finding down.
 
-Net: pass rate **34/39 (87%)**, up from the 32/39 baseline. Grounding
-**12/13**, down from 13/13, entirely from `19`.
+`config_guard` now asserts 8 keys, which is what makes the next one
+cheap to catch instead of expensive to believe.
 
-`27-group-scope-answer` still fails 0/3, unchanged, calling `query_data`
-and `search_chat_messages` instead of `lookup_fantasy_league`. Not tuned
-for, per the brief. The likely cause is visible now: **the prompt's tool
-inventory never mentions `lookup_fantasy_league`.** The routing-priority
-line opens "You have TEN tools" and enumerates ten; the fantasy tool is an
-eleventh, registered only when `SLEEPER_LEAGUE_ID` is set, and appears in
-no routing text. The model cannot prioritise a tool the routing section
-does not list. Adding it is a one-line change to the priority sentence
-and would be a legitimate cross-tool routing fix rather than fixture
-tuning, but it was left alone.
+### Config divergences found and closed (the full list)
 
-### Session 4 — jab-rule cluster collapsed to one rule
-
-Five rules governed one decision (when the bot may jab the asker):
-the 2026-07-30 joke-substitution ban, TONE-MATCHING, PROPORTIONALITY IS
-MEASURED IN SENTENCES, THE DIAL RESTS AT ZERO, and the group-scope rule.
-Replaced by a single **THE DIAL** rule, with THE DIAL RESTS AT ZERO
-authoritative where they conflicted. Incident narrative and owner
-parentheticals stripped; provenance moved to the docstring ledger, which
-grew 25 -> 32 entries.
-
-Prompt 55,287 -> 53,269 (**-2,018**). Remaining date-check failures are
-exactly the lines 96-102 cluster, left for Session 5.
-
-**Collapsing five overlapping rules into one made every governed
-fixture MORE reliable, not merely equivalent.** Three went from FLAKY to
-clean:
-
-| fixture | before | after |
+| # | divergence | how it corrupted a result |
 |---|---|---|
-| `29-praise-is-not-an-attack` | FLAKY 2/3 | **3/3** |
-| `28-benign-ask-no-disengage` | FLAKY 2/3 | **3/3** |
-| `03-sustained-clapback-rotation` | FLAKY 1/3 | **3/3** |
-| `27-group-scope-answer` | FAIL 0/3 | **3/3** |
-| `25b` / `25c` / `31` | 3/3 | 3/3 |
+| 1 | `ASK_GEMINI_MODEL` unset locally | two baselines measured a model production never runs |
+| 2 | `GEMINI_MODEL` pinned to a `-preview` alias | alias moved server-side, read as a prompt regression |
+| 3 | `SLEEPER_LEAGUE_ID` unset | `lookup_fantasy_league` never declared; fixture 27 unpassable |
+| 4 | `max_output_tokens` 1200 vs 5000, temp 0.2 vs 0.3 | source of the "empty answer" failures; inflated 32/39 |
+| 5 | fingerprint computed on the `--only` subset | every partial run a false mismatch (my own guard's bug) |
+| 6 | `thinking_budget` 0 vs 2000 | the withdrawn grounding-cost finding above |
+| 7 | no round-cap final-answer rung | "empty answer after N tool calls", written off for weeks as an unavoidable harness limitation, was production behaviour the harness lacked |
 
-Nothing regressed. The overlap was not redundant protection — **the
-overlap was the cause of the inconsistency.** Five rules pointing at one
-decision from five angles, two of them contradicting each other on how
-much history counts as provocation, gave the model a choice about which
-to follow, and the flakiness was that choice being made differently on
-different attempts. One unambiguous rule removed the choice.
-
-That is the evidence base for doing the same to lines 96-102, the second
-collision cluster: four routing rules governing one decision (which
-source a number may come from). Expect the same shape — fewer chars AND
-better adherence, not a trade between them.
-
-| criterion | result | |
-|---|---|---|
-| pass rate >= 32/39 | 32/39 | met |
-| chars removed >= 2,000 | 2,018 | met |
-| dates limited to 96-102 | yes | met |
-| grounding >= 13/13 | **12/13** | **not met** |
-
-**The grounding criterion is blocked by `19-no-fabricated-lyrics`, and
-not by anything Session 4 changed.** It is the fixture whose regression
-was measured and confirmed in task 1 as a cost of the TOOLS migration:
-8/8 grounded pre-migration, 4/8 post. Session 4 touched no routing or
-grounding text. Restoring 13/13 means addressing tool-declaration weight,
-which is the migration's cost, not the jab rules'.
-
-Two fixtures drifted on rules Session 4 did not touch: `09` 3/3 -> 1/3
-(earnings-date tool not called) and `32` 3/3 -> 2/3 (quote-is-not-
-biography, whose rule was explicitly left alone). `10` sits at 2/3.
-Given five FLAKY fixtures in the baseline itself and the documented
-run-to-run variance, treat these as unattributed until they reproduce —
-the same discipline that killed finding 6.
-
-### SESSION TEMPLATE — moving one rule class from prompt to code
-
-Required steps, in order. **Step 3 is not optional and was missing from
-the Session 5 spec**, which is how class 1 briefly ended up enforced more
-weakly than before it started: the prose was deleted while `validate()`
-was still an unwired module. Four classes remain; none may repeat it.
-
-1. **Build the detector** in `scripts/ask_response_validate.py` as a
-   `check_<class>()` returning `Violation`s. Add it to `_CHECKS`.
-2. **Prove it on recorded answers** — every logged violation of that
-   class from the baseline JSONs, plus the correct answers that must NOT
-   fire. Extend `_BAD` / `_GOOD` so `--self-test` covers both directions.
-   Do not proceed until it is N/N with zero false positives.
-3. **WIRE IT INTO THE SEND PATH** in `bot.py`, before the answer is
-   sent, via `resolve_violations()`. Never write a second copy of the
-   ladder — one decision function, or production and the harness drift.
-   Log the outcome so `regenerated` / `stripped` / `replaced` / `shipped`
-   are distinguishable in the ask log.
-4. **Only then delete the prompt prose**, leaving at most one line naming
-   the behavior. Repoint the diet smoke's concept anchor at that line.
-5. **Gate it** — the validator's `--self-test` is already a check in
-   `scripts/smoke_ask_prompt_diet.py`. A new class inherits that gate
-   automatically, which is what keeps a deleted rule from becoming
-   enforced by nothing later.
-6. **Measure**: the class's fixture at `--repeat 3`, then the full suite
-   against the current production-config baseline. Report chars removed.
-
-Ordering matters. Steps 1-3 are additive and safe to land alone; step 4
-is the only destructive one and must never precede step 3.
-
-### DETERMINISTIC FIRST — the strongest evidence in the project
-
-A 788-char prompt block that quoted the violating sentence almost
-verbatim caught **none** of the seven violations it was written to
-prevent. Three regexes caught **all seven**, with zero false positives.
-
-| enforcement | caught | false positives |
-|---|---|---|
-| NEVER META-NARRATE, 788 chars of prose | **0 / 7** | — |
-| `check_meta_plumbing`, three detectors | **7 / 7** | **0** |
-
-Both columns are measured on the same set: every `07b` answer recorded
-across every run, each produced while the full prompt block was in force.
-The block did not merely fail to help. It named the exact shape never to
-repeat, and the model reproduced that shape while reading it.
-
-This is the evidence base for CLAUDE.md rule 1. When a rule is checkable,
-prose is not enforcement — it is a description of the enforcement someone
-still has to write.
-
-### Session 5, class 1 — meta-plumbing moved from prompt to code
-
-`scripts/ask_response_validate.py :: check_meta_plumbing`. The prompt's
-NEVER META-NARRATE block went 788 -> 211 chars (**-577**), keeping one
-line naming the behavior.
-
-Enforcement comparison on every `07b` answer recorded across all runs,
-with the full prompt block in force at the time each was produced:
-
-| enforcement | caught | false positives |
-|---|---|---|
-| the prompt block (788 chars, quoted the violating sentence verbatim) | **0 / 7** | — |
-| `check_meta_plumbing` | **7 / 7** | **0** |
-
-The prompt named the exact shape never to repeat and the model
-reproduced it anyway. That is the cleanest evidence in the suite that
-prompt text is not enforcement.
-
-**WIRED, and the risk is closed.** `bot.py` calls `validate()` before
-send on the composed answer plus the turn's tool-call log, then runs the
-ladder. `07b` went **0/3 -> 3/3**, and the harness scores the
-post-validation answer because production does — a fixture that asserts
-"a user never sees plumbing" has to measure the stage the user sees.
-
-The ladder, one shared `resolve_violations()` used by both bot and
-harness so they cannot drift:
-
-| rung | outcome | logged as |
-|---|---|---|
-| answer is clean | `clean` | — |
-| regenerate once at temp 0.7, retry clean | `regenerated` | `meta-plumbing-regenerated` |
-| retry still violates, excise offending sentences | `stripped` | `meta-plumbing-strip` |
-| answer is plumbing end to end, nothing to keep | `replaced` | (see below) |
-| nothing worked | `shipped` | `meta-plumbing-shipped` (log.error) |
-
-**The `replaced` rung goes beyond the specified ladder and needs a
-ruling.** The repetition detector ships the original when strip fails,
-because a glitchy answer still carries the content and something beats
-blank. That reasoning does not transfer: here the violation IS the
-content, and there is a correct non-blank answer — the refusal the
-deleted block prescribed. Without this rung `07b` sat at 1/3, because two
-of three answers were plumbing end to end and sentence-strip had nothing
-to keep. Shipping known plumbing to satisfy "something beats blank" would
-defeat the only assertion this class makes. Revert it by passing
-`fallback=None`.
-
-Guard activity across the full suite: 109 clean, 6 stripped, 2 replaced,
-0 shipped. It fired on exactly three fixtures — `07a`, `07b`, `11c` — all
-plumbing-adjacent by subject. No unrelated fixture was touched.
-
-Everything else improved against the `aadacee` baseline: **34/39 (87%)
-vs 31/39**, grounding **12/13 vs 11/13**.
-
-### Config assertion — the env-divergence class, retired
-
-Enumerating the class turned up a fourth instance nobody had noticed:
-the harness sent `max_output_tokens=1200, temperature=0.2` while
-production `/ask` sends **5000 / 0.3**. The 1200 cap is what produced the
-"empty answer after N tool calls" failures previously written off as a
-harness limitation.
-
-`PRODUCTION_CONFIG` now pins the deployed values, `config_guard` prints a
-readable diff and exits 2 before the first API call, and
-`config_fingerprint` is recorded in every baseline so a config mismatch
-invalidates a comparison exactly as an assertion mismatch does.
-`ALLOWED_CONFIG_DIFFS` is empty.
-
-Note the cost of the correction: the honest baseline on production config
-is **31/39**, below the 32/39 recorded under 1200/0.2. That was never a
-better result, it was a different experiment.
+Seven. Every one silent until someone went looking, and each one cost a
+session or a wrong conclusion. The guard exists so number eight is a
+message instead.
 
 ### MEASURED EXCEPTION to CLAUDE.md rule 2
 

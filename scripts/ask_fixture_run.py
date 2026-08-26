@@ -405,6 +405,34 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
     except Exception:
         answer = ""
 
+    # ROUND-CAP FINAL ANSWER — seventh config divergence, found
+    # 2026-08-26. When the tool loop hits its cap with a call still
+    # pending, production does NOT ship an empty answer: it makes one
+    # more call with the data-fetching tools withheld (code execution
+    # kept, per bot.py's 2026-07-29 note) to force text out. The harness
+    # returned "" instead, which is where every "empty answer after N
+    # tool call(s)" failure came from. Those were never behaviour
+    # failures — they were the harness missing a production rung, and
+    # they were written off as an unavoidable harness limitation for
+    # weeks.
+    if not answer and calls:
+        try:
+            cap_cfg = types.GenerateContentConfig(
+                system_instruction=sysinst,
+                tools=[types.Tool(
+                    code_execution=types.ToolCodeExecution())],
+                safety_settings=safety,
+                max_output_tokens=HARNESS_MAX_OUTPUT_TOKENS,
+                temperature=HARNESS_TEMPERATURE,
+                thinking_config=types.ThinkingConfig(
+                    thinking_budget=HARNESS_THINKING_BUDGET),
+            )
+            cap_resp = client.models.generate_content(
+                model=model, contents=contents, config=cap_cfg)
+            answer = (cap_resp.text or "").strip()
+        except Exception:
+            pass
+
     # Score what the USER sees, not what the model first emitted.
     # 07b asserts a user never sees plumbing; since 2026-08-26 that rule
     # lives in ask_response_validate, and production runs the same guard
