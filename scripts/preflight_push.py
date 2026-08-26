@@ -20,10 +20,16 @@ WHAT THIS CHECKS
 1. Local Python major.minor == the container's. A mismatch is a FAILURE,
    not a warning. If this machine cannot run the deployed interpreter, it
    cannot validate a deploy from here — say so rather than guess.
-2. `discord_bot.bot` imports with DeprecationWarnings promoted to
-   errors. Catches the whole class of "deprecated here, removed there"
-   before the deploy instead of after.
-3. The diet smoke's own checks are reachable and terminate.
+2. `discord_bot.bot` imports PLAINLY on that interpreter. This is the
+   check that would have caught the outage: a mid-pattern `(?i)` raises
+   re.error on 3.12, not a warning.
+3. No DeprecationWarning originates from a file in THIS repo. Scoped
+   deliberately: discord.py imports `audioop` (deprecated 3.12, removed
+   3.13), and a blanket -W error would fail every push forever over a
+   library's deprecation. Third-party ones print as FORWARD-RISK notes,
+   because that audioop import WILL break on 3.13.
+4. The diet smoke's own checks are reachable and terminate.
+5. NOTES.md still carries every load-bearing section.
 
 CHECK-THE-CHECKS
 ================
@@ -90,16 +96,64 @@ def check_python_parity() -> None:
     )
 
 
-def check_import_under_error_warnings() -> None:
-    """bot.py must import with deprecations promoted to errors."""
+def check_import_on_container_python() -> None:
+    """bot.py must import, plainly, on the container's interpreter.
+
+    THIS is the check that would have caught the 2026-08-26 outage: a
+    mid-pattern `(?i)` raises re.error on 3.12, not a warning. With
+    python parity in place, a plain import is the real signal.
+    """
     r = subprocess.run(
-        [sys.executable, "-W", "error::DeprecationWarning", "-c",
-         "from discord_bot.bot import create_bot"],
+        [sys.executable, "-c", "from discord_bot.bot import create_bot"],
         capture_output=True, text=True, cwd=REPO,
     )
-    _record("bot.py imports with deprecations as errors",
+    _record("bot.py imports on the container's Python",
             r.returncode == 0,
             (r.stderr or "").strip())
+
+
+# Runs in the child: promote deprecations to errors ONLY when the warning
+# comes from a file inside this repo. A third-party library's deprecation
+# is not our defect and must not block a push -- discord.py imports
+# `audioop` (deprecated 3.12, removed 3.13), which would otherwise fail
+# every push forever. Third-party ones are surfaced as FORWARD RISK
+# instead, because that same audioop import WILL break when the container
+# moves to 3.13.
+_DEPRECATION_PROBE = r'''
+import os, sys, warnings
+REPO = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else ".")
+ours, theirs = [], []
+def _show(message, category, filename, lineno, file=None, line=None):
+    fn = os.path.abspath(filename)
+    rec = "%s:%s %s: %s" % (filename, lineno, category.__name__, message)
+    if fn.startswith(REPO) and "site-packages" not in fn:
+        ours.append(rec)
+    else:
+        theirs.append(rec)
+warnings.simplefilter("always", DeprecationWarning)
+warnings.showwarning = _show
+from discord_bot.bot import create_bot
+for r in theirs:
+    print("FORWARD-RISK " + r)
+for r in ours:
+    print("OURS " + r)
+sys.exit(1 if ours else 0)
+'''
+
+
+def check_own_code_deprecations() -> None:
+    """Deprecations raised by OUR files are errors; libraries' are not."""
+    r = subprocess.run(
+        [sys.executable, "-c", _DEPRECATION_PROBE, REPO],
+        capture_output=True, text=True, cwd=REPO,
+    )
+    out = (r.stdout or "") + (r.stderr or "")
+    ours = [ln for ln in out.splitlines() if ln.startswith("OURS ")]
+    risks = [ln for ln in out.splitlines() if ln.startswith("FORWARD-RISK ")]
+    _record("no deprecations from this repo's own code",
+            not ours, "\n".join(ours))
+    for ln in risks:
+        print(f"       note: {ln}")
 
 
 def check_gates_are_runnable() -> None:
@@ -138,7 +192,8 @@ def main() -> int:
     print(f"repo: {REPO}")
     print()
     for fn in (check_python_parity,
-               check_import_under_error_warnings,
+               check_import_on_container_python,
+               check_own_code_deprecations,
                check_gates_are_runnable,
                check_notes_intact):
         try:
