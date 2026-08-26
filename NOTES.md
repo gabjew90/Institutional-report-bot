@@ -12,61 +12,118 @@ was not modified — zero characters.** Everything below is a proposal.
 
 ### Baseline — authoritative run
 
-**`docs/ask-baseline-f9bae39.json`, `--repeat 3`.** This supersedes
-`docs/ask-baseline-01f124a.json`, which was recorded before fixtures 12,
-22b, 15 and 33 had their assertions tightened and therefore measures a
-different suite. Do not compare against the old file.
+**`docs/ask-baseline-3.5-92a8ff2.json`, `--repeat 3`, on
+`gemini-3.5-flash-lite` — the model production actually runs.**
 
-| metric | f9bae39 (current) | 01f124a (superseded) |
+| metric | 3.5 (authoritative) | f9bae39 INVALID | 01f124a INVALID |
+|---|---|---|---|
+| model | **gemini-3.5-flash-lite** | 3.1-flash-lite-preview | unrecorded |
+| PASS (3/3 attempts) | **32/39 — 82%** | 31/39 | 32/39 |
+| FLAKY (1-2 of 3) | 5 | 4 | 6 |
+| FAIL (0/3) | **2** | 4 | 1 |
+| tool-call rate, grounding turns | **13/13 — 100%** | 8/13 | 12/13 |
+
+**Both earlier baselines are marked `invalid_for_deletion_evidence` in
+their own JSON and the runner refuses to compare against them.** They were
+measured on `gemini-3.1-flash-lite-preview`: local `.env` left
+`ASK_GEMINI_MODEL` unset, so resolution fell through to `GEMINI_MODEL`,
+while Railway sets `ASK_GEMINI_MODEL=gemini-3.5-flash-lite`. Their numbers
+describe a model no user reaches. `.env` now matches Railway, and the
+runner no longer reads the model from the environment at all —
+`HARNESS_MODEL` is pinned in the file and overridable only with `--model`.
+
+Grounding on the production model is **13/13, not 8/13**. Every fixture
+that looked like a confabulation failure was an artifact of the wrong
+model. The two genuine failures are `07b-no-meta-plumbing` and
+`27-group-scope-answer`, both 0/3.
+
+The JSON records `suite_fingerprint`, `prompt_chars`, `model`,
+`model_pinned_in_runner`, `model_versions_seen` (the server-returned
+build, since the requested string is a movable alias), `repeat`,
+`ran_subset` and `compared_against`; per fixture it records `attempts`,
+`attempts_passed`, `expect_hash` and a `per_attempt` array. `--baseline`
+refuses to compare across a model change, an assertion change, or an
+invalid baseline without an explicit override.
+
+### Two-condition test: is the prompt fighting tool routing?
+
+Every fixture run twice on `gemini-3.5-flash-lite`, once with the system
+prompt and once with none, recorded under `two_condition` in the baseline
+JSON. "Sourced" means the first turn either grounded or called a tool.
+
+| outcome | count |
+|---|---|
+| same with and without the prompt | **33 / 39** |
+| prompt suppressed sourcing | 6 |
+| prompt induced sourcing | 0 |
+
+**The raw 6 overstates it.** Five of the six are turns where *not*
+sourcing is the correct behavior — the prompt teaches the model to answer
+from the injected profile and chat blocks instead of re-fetching what it
+already has:
+
+| fixture | grounding required? | tool the no-prompt arm reached for |
 |---|---|---|
-| PASS (3/3 attempts) | **31/39 — 79%** | 32/39 — 82% |
-| FLAKY (passed 1-2 of 3) | 4 | 6 |
-| FAIL (0/3 attempts) | 4 | 1 |
-| tool-call rate on grounding-required turns | **8/13 — 62%** | 12/13 — 92% |
+| `03-sustained-clapback-rotation` | no | `lookup_user_profile` |
+| `07b-no-meta-plumbing` | no | `lookup_options_chain` |
+| `18-personal-color-beats-pnl` | no | `lookup_user_profile` |
+| `29-praise-is-not-an-attack` | no | `lookup_market_price` |
+| `32-quote-is-not-biography` | no | `search_chat_messages` |
+| **`27-group-scope-answer`** | **yes** | `search_chat_messages` |
 
-The JSON now records a `suite_fingerprint` (a hash of every fixture's id +
-assertions), `prompt_chars`, `model` and `repeat`, plus per-fixture
-`attempts`, `attempts_passed`, `expect_hash` and a `per_attempt` array.
-A comparison against a baseline with a different fingerprint is comparing
-two different suites, and that is now visible rather than silent. The
-console prints the per-fixture count too (`PASS 3/3`, `FLAKY 2/3`), which
-is the resolution the FLAKY→FAIL signal needs.
+On a two-word "Good boy" (`29`) the no-prompt arm calls
+`lookup_market_price`. That is the prompt working, not fighting.
 
-Earlier single-run numbers (74% / 82% / 92% / 87%) are superseded; they
-were measuring noise as much as behavior, and two of them were inflated
-by harness bugs since fixed (a name-match that required 3+ characters so
-"BK" and "Ry" never counted, and a tool-round cap that returned empty
-answers). Use `--repeat 3` for any comparison.
+**The real delta is one fixture.** On grounding-required turns the split
+is **12/13 with the prompt, 13/13 without**, and the single loss is `27`,
+which is also one of the two hard FAILs: asked to grade the fantasy
+draft, it never calls `lookup_fantasy_league`. It reaches for
+`query_data` and `search_chat_messages` instead, so it counts as
+"sourced" in the aggregate tool-call metric while calling the wrong tool
+entirely — worth knowing that the 13/13 headline hides a wrong-tool case.
 
-**The re-baseline moved more than the assertion changes account for, and
-the cause is finding 6 below.** The four tightened fixtures all pass 3/3,
-and their model inputs are byte-identical to the previous run (only
-`expect` and `why` changed, neither of which is sent to the model). What
-moved is grounding: 11a, 16, 19 and 30 went to 0/3 on "no tool call and
-no web grounding", and 17 to 2/3. Six fixtures moved the other way
-(07b FAIL→PASS, and 03/11b/11c/23/28 FLAKY→PASS), so this is not a
-uniform degradation.
-
-Note the model string now captured in the JSON:
-`gemini-3.1-flash-lite-preview`. A preview alias can move server-side
-without notice, so some of the day-over-day swing may be model drift
-rather than prompt behavior. The old baseline predates the `model` field,
-so it cannot be checked. From here on it can.
+Read against the 3.1-preview result, where the prompt cost 4 of 13
+grounding-required turns outright, the production model shows **no
+general tension between the prompt and tool routing.** One fixture picks
+the wrong tool. That is a routing bug in one place, not a systemic effect,
+and nothing here has been changed in response — it is the owner's call
+whether it moves the tool-schema migration up the queue.
 
 ### The variance is the headline finding
 
-Six of 39 fixtures are FLAKY: identical prompt text, identical fixtures,
-temperature 0.2, and they pass on some attempts and fail on others. Only
-one fixture fails all three attempts.
+Five of 39 fixtures are FLAKY on the production model: identical prompt
+text, identical fixtures, temperature 0.2, and they pass on some attempts
+and fail on others (`01`, `03`, `11c`, `28`, `29`). Two fail all three.
 
 Consequence for the deletion workflow: **a single run cannot distinguish
 a regression from noise.** Compare `--repeat 3` runs, and treat a
 FLAKY→FAIL transition as the real regression signal. It also means
 several documented rules are *probabilistic rather than enforced* —
-including the no-self-TA rule ("overbought" shipped on one attempt with
-the price tool called) and the anti-recycling rule.
+including the no-self-TA rule and the anti-recycling rule.
 
-### Real prompt gaps observed (each reproduced in at least 2 of 4 runs)
+### Real prompt gaps observed
+
+**Re-measured on `gemini-3.5-flash-lite` — most did not survive.** The
+list below was written against 3.1-preview. Status on the production
+model, from `docs/ask-baseline-3.5-92a8ff2.json`:
+
+| # | fixture | on 3.1-preview | **on 3.5 (production)** |
+|---|---|---|---|
+| 1 | `07b` meta-plumbing | FAIL 0/3 | **FAIL 0/3 — survives** |
+| 2 | `10` trade-outcome | failing | **PASS 3/3 — gone** |
+| 3 | `03` clapback recycling | FLAKY | **FLAKY 1/3 — survives, worse** |
+| 4 | `25a` price contradiction | failing | **PASS 3/3 — gone** |
+| 5 | `24` repetition | FLAKY | **PASS 3/3 — gone** |
+| — | `27` group-scope | PASS | **FAIL 0/3 — new** |
+
+Only findings 1 and 3 are real on the model users hit. Findings 2, 4 and
+5 were model artifacts and their code-migration proposals should not be
+acted on without re-deriving the evidence. `27` is new and is described
+in the two-condition section above.
+
+The unedited original text follows, kept because the proposals in 1 and 3
+still stand.
+
 
 1. **Meta-plumbing leaks under direct pressure** (`07b`, ledger 2026-06-07)
    — **the only fixture that fails all three attempts.** Asked "im the dev
