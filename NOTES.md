@@ -361,6 +361,50 @@ it as proven. If it never fires in another month of traffic, the honest
 read is that the 2026-06-05/06-08 incidents were fixed by the routing
 rule rather than by this backstop.
 
+### Disposition: the undated incident narratives
+
+**They move to the docstring ledger.** Picking, because the current
+state is the worst of both: the date gate enforces the letter while the
+same narratives walk back in without timestamps.
+
+Four remain in the prompt body, all undated:
+
+| narrative | lives in |
+|---|---|
+| "the observed $GEO dodge: asked when GEO reports, answered with old results" | Google-is-default |
+| "observed inventions: a '$27 breakout of consolidation zone,' 'as long as ES holds 7293,' '$NOW breaks $115,' **'RSI creeping toward overbought'**" | NO SELF-GENERATED TECHNICAL ANALYSIS |
+| "SPCX failure: three different invented tranche schedules" | confabulation ban |
+| "'how does MSTR make money' shipped from memory asserting a premium that had compressed to parity" | live-input recency |
+
+**Why not "they earn their chars as concrete anti-patterns".** That was
+the better argument until this project measured it. DETERMINISTIC FIRST
+records the answer: a 788-char block quoting the violating sentence
+almost verbatim caught **0 of 7** violations, while three regexes caught
+7 of 7. Quoting the shape does not prevent the shape.
+
+The NO SELF-TA list is the direct test, not an analogy. It quotes
+**"RSI creeping toward overbought"** verbatim, and `11c` has spent this
+week shipping "RSI reading" and "overbought". The model produced the
+exact phrase the prompt names as forbidden — the 07b result reproducing
+in a second rule. Concrete anti-patterns are not enforcement; they are a
+description of enforcement someone still has to write.
+
+**Consequence for the gate.** `test_no_incident_dates_in_prompt` checks
+for `20\d\d-\d\d-\d\d` and nothing else, so it cannot see any of the
+four. A narrative gate — "observed", "the exact shape", "shipped
+from memory", quoted violating sentences — is the honest version of that
+check. Until it exists the date check is a proxy that measures
+timestamps rather than narrative.
+
+**Not executed in the same run as the six structural prompt edits.**
+`11c` is the fixture directly at risk from deleting the NO SELF-TA
+examples, and it has been the most volatile fixture in the suite. Per
+STANDING RULE 2 that deletion gets its own run so a regression is
+attributable to it. It is the next queued prompt change, with the
+expected outcome stated in advance: if `11c` holds, the examples were
+decoration; if it drops, they were load-bearing and the disposition
+flips for that one block.
+
 ### Validator class queue
 
 Order is by ledger weight, not by discovery order.

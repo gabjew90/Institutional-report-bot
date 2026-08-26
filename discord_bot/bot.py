@@ -8960,6 +8960,17 @@ async def _answer_with_gemini(
             msg = "Config issue on the API key — admin needs to check it."
         elif "500" in err_str or "503" in err_str or "timeout" in err_str or "unavailable" in err_str:
             msg = "Google's hiccuping. Try again in a sec."
+        elif "failed_precondition" in err_str or "precondition" in err_str:
+            # NOT the user's fault. FAILED_PRECONDITION is an account or
+            # API-state problem (billing, feature enablement, a transient
+            # backend precondition) that happens to carry a 400. It was
+            # falling through to the "rephrase your question" branch
+            # below, which sent a member chasing a problem that was never
+            # theirs -- observed on a reply to the calendar post, where
+            # the question was fine and the API was mid-wobble.
+            msg = "API's in a bad state on my end, not your question. Give it a minute."
+        elif "remoteprotocol" in err_str or "peer closed" in err_str                 or "incomplete" in err_str:
+            msg = "Connection dropped mid-answer. Try again."
         elif "400" in err_str or "invalid" in err_str:
             msg = "Something about that question broke the model. Try rephrasing."
         else:

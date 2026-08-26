@@ -109,6 +109,18 @@ def _truncate(d, text, font, max_w):
     return text + "…"
 
 
+def _et_abbrev(date_str: str) -> str:
+    """EDT or EST for a given ET date. Never a hardcoded guess."""
+    try:
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        dt = datetime.strptime(date_str[:10], "%Y-%m-%d").replace(
+            hour=12, tzinfo=ZoneInfo("America/New_York"))
+        return dt.tzname() or "ET"
+    except Exception:
+        return "ET"
+
+
 def _band(d, label, x0, x1, y, f):
     d.text((x0, y), label.upper(), font=f["band"], fill=GOLD)
     ly = y + 34 * _S
@@ -265,10 +277,16 @@ def _econ_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
         cy = y
         cx = x_l if ci == 0 else x_r
         for r in chunk:
-            d.text((cx, cy), r.time_et, font=f["time"], fill=GOLD)
+            # White, with the zone spelled out after the time.
+            # The abbreviation is DERIVED, not hardcoded: the room
+            # is on ET, which is EDT from March to November and EST
+            # the rest of the year. Printing a flat "EST" in August
+            # would put a wrong label on a correct time.
+            _t = f"{r.time_et} {_et_abbrev(day.date_iso)}"
+            d.text((cx, cy), _t, font=f["time"], fill=TEXT)
             d.text(
-                (cx + 84 * _S, cy + 1 * _S),
-                _truncate(d, r.event, f["ev"], col_w - 90 * _S),
+                (cx + 132 * _S, cy + 1 * _S),
+                _truncate(d, r.event, f["ev"], col_w - 138 * _S),
                 font=f["ev"], fill=_dim(TEXT, 0.92),
             )
             cy += 38 * _S
