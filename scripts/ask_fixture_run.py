@@ -489,7 +489,11 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         try:
             retry_cfg = types.GenerateContentConfig(
                 system_instruction=sysinst,
-                tools=[types.Tool(google_search=types.GoogleSearch())],
+                # Full tool set, matching production's repetition retry.
+                # A search-only retry was a leftover from the plumbing
+                # class and is a different request than the one the user
+                # would actually get.
+                tools=tools,
                 safety_settings=safety,
                 max_output_tokens=HARNESS_MAX_OUTPUT_TOKENS,
                 temperature=0.7,   # mirrors the bot's retry temperature

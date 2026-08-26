@@ -292,21 +292,30 @@ _BLOCKED_HOSTS = ("x.com", "twitter.com", "t.co")
 _URL_RE = re.compile(r"https?://[^\s<>\"'`]+")
 
 # The answer claiming to know what the link contains.
+#
+# Case-insensitivity goes in the FLAGS argument, never as an inline
+# `(?i)` in the middle of a pattern. Python 3.10 only warns about a
+# mid-pattern global flag; Python 3.12 — which is what the Railway
+# container runs — raises re.error at import. That took the bot down
+# on 2026-08-26. The DeprecationWarning was visible in harness output
+# for hours beforehand and went unread.
 _LINK_CLAIM = re.compile(
-    r"(?i)\bthe (?:tweet|post|article|link|thread)\s+"
+    r"\bthe (?:tweet|post|article|link|thread)\s+"
     r"(?:says|said|claims?|argues?|points? out|shows?|notes?|reads)"
-    r"|(?i)\baccording to the (?:tweet|post|link|thread)\b"
-    r"|(?i)\bhe'?s (?:right|wrong) (?:that|about)\b"
-    r"|(?i)\bthat'?s (?:basically )?(?:it|correct|right|true)\b"
-    r"|(?i)\bknowing \w+,? it'?s\b"
+    r"|\baccording to the (?:tweet|post|link|thread)\b"
+    r"|\bhe'?s (?:right|wrong) (?:that|about)\b"
+    r"|\bthat'?s (?:basically )?(?:it|correct|right|true)\b"
+    r"|\bknowing \w+,? it'?s\b",
+    re.I,
 )
 
 # The answer doing the correct thing instead.
 _ASKS_FOR_TEXT = re.compile(
-    r"(?i)\bpaste\b|\bcopy .{0,20}(?:the )?(?:text|tweet|post)\b"
+    r"\bpaste\b|\bcopy .{0,20}(?:the )?(?:text|tweet|post)\b"
     r"|\bdrop the text\b|\bwhat does it say\b"
     r"|\bcan'?t (?:open|see|read|access)\b|\bdon'?t have access\b"
-    r"|\bscreenshot\b"
+    r"|\bscreenshot\b",
+    re.I,
 )
 
 
@@ -383,10 +392,44 @@ def check_unfetchable_link_claim(answer: str, tool_calls=None,
     return []
 
 
+
+# ----------------------------------------- class 4: repetition glitch
+# NOT a new detector. This wraps the one production already runs
+# (_has_repetition_glitch / _repetition_glitch_sentences in bot.py) so
+# the harness scores the answer AFTER the same retry-then-strip ladder
+# the user's answer goes through. Fixture 24 asserts a user never sees a
+# repetition loop; scoring raw model output measured a stage where that
+# rule does not live, exactly as 07b did before the plumbing class was
+# wired. This was the eighth production/harness divergence.
+#
+# Imported lazily: bot.py imports THIS module at load time, so a
+# module-level import here would be a cycle.
+def check_repetition(answer: str, tool_calls=None, **_) -> list[Violation]:
+    if not answer:
+        return []
+    try:
+        from discord_bot.bot import (
+            _has_repetition_glitch, _repetition_glitch_sentences)
+    except Exception as e:
+        return [Violation("repetition-glitch", "", (0, 0), "",
+                          f"detector unavailable: {e}")]
+    if not _has_repetition_glitch(answer):
+        return []
+    sents = _repetition_glitch_sentences(answer) or []
+    if not sents:
+        return [Violation("repetition-glitch", "<whole answer>", (0, 0),
+                          answer.strip().splitlines()[0][:120],
+                          "answer loops but no single sentence isolates it")]
+    return [Violation("repetition-glitch", t[:60], (0, 0), t,
+                      "end-of-generation repetition loop")
+            for t in sents]
+
+
 _CHECKS = {
     "meta-plumbing": check_meta_plumbing,
     "macro-unsourced": check_macro_unsourced,
     "unfetchable-link-claim": check_unfetchable_link_claim,
+    "repetition-glitch": check_repetition,
 }
 
 
@@ -434,8 +477,16 @@ def resolve_violations(answer: str, retry_answer: str | None,
 
     rules = {v.rule for v in vs}
     if fallback is None:
-        fallback = (PASTE_REQUEST if "unfetchable-link-claim" in rules
-                    else SAFE_REFUSAL)
+        if "unfetchable-link-claim" in rules:
+            fallback = PASTE_REQUEST
+        elif rules == {"repetition-glitch"}:
+            # Production ships the ORIGINAL when the strip fails: a
+            # glitchy answer still carries the content, so something
+            # beats blank. Replacing it with a refusal would delete a
+            # correct answer over a duplicated clause.
+            fallback = None
+        else:
+            fallback = SAFE_REFUSAL
 
     # A blocked-URL answer is unfounded END TO END — it describes a page
     # nobody read. Excising sentences would leave the same fabrication

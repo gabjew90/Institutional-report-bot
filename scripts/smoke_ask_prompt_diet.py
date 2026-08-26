@@ -200,6 +200,33 @@ def test_response_validator():
     _ok("response validator catches every recorded violation")
 
 
+def test_production_import_is_clean():
+    """bot.py must import with DeprecationWarnings promoted to errors.
+
+    On 2026-08-26 a mid-pattern `(?i)` in ask_response_validate compiled
+    with a DeprecationWarning on local Python 3.10 and raised re.error on
+    the container's Python 3.12, crash-looping the worker on import. The
+    warning was visible in harness output for hours and nobody read it.
+
+    Promoting warnings to errors here catches the whole class -- any
+    construct Python is deprecating locally but has already removed in a
+    newer runtime -- BEFORE it reaches Railway.
+    """
+    r = subprocess.run(
+        [sys.executable, "-W", "error::DeprecationWarning", "-c",
+         "from discord_bot.bot import create_bot"],
+        capture_output=True, text=True,
+        cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    if r.returncode != 0:
+        tail = "
+".join((r.stderr or "").strip().splitlines()[-12:])
+        _fail("bot.py does not import cleanly with deprecations as "
+              "errors. This is what takes the worker down on deploy:
+"
+              + tail)
+    _ok("bot.py imports clean with deprecations promoted to errors")
+
+
 # Every check runs even after one fails. Fixing a gate one rediscovered
 # failure at a time is how a build stays red for a week.
 _CHECKS = [
@@ -209,6 +236,7 @@ _CHECKS = [
     test_every_incident_has_a_fixture,
     test_fixture_assertions_self_test,
     test_response_validator,
+    test_production_import_is_clean,
 ]
 
 
