@@ -192,6 +192,7 @@ Every case below was green at the time:
 | two baselines, 82% and 92% | measured on a model production never runs |
 | class 3 shipped at 41/42, best suite result yet | it was stripping `$3 parking receipts`, a BTC holdings count, revenue and open interest out of correct answers |
 | class 1 shipped and deployed | it was stripping **the refusal its own rule prescribes** — "I only have the current snapshot" flagged on the word `snapshot` |
+| fixture `07a` recorded a PASS | the answer said "open interest down 10.7% **over the past 5 days**" — a textbook violation of 07a's own rule. Its regex was markdown-blind, so the fixture certified its own violation as correct |
 
 The last two are the sharpest: in both, the suite went UP while the
 validator deleted correct content. The fixtures did not assert the
@@ -302,6 +303,63 @@ destructive one and must never precede step 3. Step 7 gates the push
 regardless of which steps ran.
 
 ---
+
+### Class 1 production impact: measured, not estimated
+
+**Zero answers affected.**
+
+The meta-plumbing validator was live in production with 17 known false
+positives for roughly four and a half hours — wired at 07:54 PDT
+(`200c328b`), fixed at 13:23 PDT (`67aabf1b`). During that window
+production served **15 `/ask` turns** (12:32–19:55 UTC).
+
+The published ask-log records the guard list on every turn, so this is
+countable rather than inferable. Every one of the 15 reads
+`guards: —` except 13:41:04, which reads `guards: repetition` — the
+pre-existing detector, not this validator. **No turn shows `validate:`
+or `validate-strip`.** The validator never fired on a real answer.
+
+Why: all 15 turns routed `LOCAL/BANTER`. The FP-prone vocabulary
+(`snapshot`, `feed`, `index`) lives in options and data questions, and
+none were asked in that window. The exposure was real; the harm was
+zero, by luck of traffic mix rather than by design.
+
+Stated separately from the 17 -> 0 number on purpose. "17 false
+positives found and fixed" describes the DETECTOR. "0 answers affected"
+describes the BLAST RADIUS. Conflating them would have let a fix report
+sound like a damage report.
+
+**Worth keeping:** `ask-logs/YYYY-MM-DD.md` on the `pulse-data` branch
+carries `guards:` per turn, which makes "did a guard mangle a real
+answer" an answerable question after the fact. That is the only
+production-side instrument in this system that can answer it.
+
+### Class 2 is well-scoped, not broken — and unvalidated in production
+
+The sweep reported **0 true positives and 0 false positives** across 591
+answers. That is ambiguous on its face: a detector that never fires is
+either well-scoped or dead, and the sweep cannot tell you which.
+
+Synthetic proof it fires:
+
+| answer | tools called | verdict |
+|---|---|---|
+| "CPI came in at 3.1% headline, hotter than the 2.9% consensus" | none | **FIRES** |
+| "core PCE printed 2.6% year over year" | none | **FIRES** |
+| "CPI ran 3.1%" | `lookup_market_price`, `search_chat_messages` | **FIRES** |
+| "core PCE at 2.6%" | `lookup_economic_calendar` | silent (correct) |
+
+So the detector works. The zero is real: **no recorded answer states a
+macro figure without the calendar tool**, because the fixtures that ask
+macro questions reliably call it. The rule it enforces has not been
+violated since the corpus began.
+
+**Status: UNVALIDATED IN PRODUCTION.** It has never fired on a real
+answer, only on synthetic input. That is not a reason to remove it — the
+prose it replaced had a worse record — but it is a reason not to count
+it as proven. If it never fires in another month of traffic, the honest
+read is that the 2026-06-05/06-08 incidents were fixed by the routing
+rule rather than by this backstop.
 
 ### Validator class queue
 
