@@ -48,6 +48,7 @@ _ASK_CONTEXT_PER_MSG_CHARS = 600
 # `bot._ASK_SYSTEM_INSTRUCTION` addressable for the contract + diet
 # smokes and downstream tooling.
 from discord_bot.ask_prompt import _ASK_SYSTEM_INSTRUCTION  # noqa: E402
+from discord_bot.tool_docs import TOOL_DOCS as _TOOL_DOCS  # noqa: E402
 
 
 # --- URL fetching for /ask --------------------------------------------------
@@ -1070,7 +1071,7 @@ def _build_chat_search_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="search_chat_messages",
-                description=(
+                description=_TOOL_DOCS["search_chat_messages"] + (
                     "Search this Discord server's chat history. Two "
                     "shapes:\n"
                     "(A) KEYWORD search — pass `keyword` (and optionally "
@@ -1394,7 +1395,7 @@ def _build_user_profile_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="lookup_user_profile",
-                description=(
+                description=_TOOL_DOCS["lookup_user_profile"] + (
                     "Look up rank + optional full profile for a "
                     "Discord room member. Three anchor shapes "
                     "(use EXACTLY one):\n"
@@ -1644,7 +1645,7 @@ def _build_trade_log_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="lookup_trade_log",
-                description=(
+                description=_TOOL_DOCS["lookup_trade_log"] + (
                     "Look up trade history. Two anchors (use EXACTLY one):\n"
                     "(a) `caller`: registered analyst caller name "
                     "('abe', 'bankerkyle', ...). Returns structured "
@@ -1941,7 +1942,7 @@ def _build_economic_calendar_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="lookup_economic_calendar",
-                description=(
+                description=_TOOL_DOCS["lookup_economic_calendar"] + (
                     "Canonical scheduled-time + consensus + previous + "
                     "actual values for US Tier-1 macro releases (CPI, "
                     "PCE, NFP / payrolls, unemployment, GDP, retail "
@@ -2146,7 +2147,7 @@ def _build_price_history_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="lookup_price_history",
-                description=(
+                description=_TOOL_DOCS["lookup_price_history"] + (
                     "Historical daily/weekly CLOSES for one stock, ETF, "
                     "or index — the only source of market price HISTORY "
                     "you have (lookup_market_price is current-only). Use "
@@ -2329,7 +2330,7 @@ def _build_query_data_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="query_data",
-                description=(
+                description=_TOOL_DOCS["query_data"] + (
                     "Run a READ-ONLY SQL SELECT against the bot's SQLite "
                     "database and get rows back — for aggregates, "
                     "trends-over-time, activity-by-hour, group-bys, and "
@@ -2489,7 +2490,7 @@ def _build_earnings_date_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="lookup_earnings_date",
-                description=(
+                description=_TOOL_DOCS["lookup_earnings_date"] + (
                     "Next upcoming earnings date + last reported "
                     "quarter for ONE stock ticker. Returns the next "
                     "report date with timing (before open / after "
@@ -2616,7 +2617,7 @@ def _build_options_chain_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="lookup_options_chain",
-                description=(
+                description=_TOOL_DOCS["lookup_options_chain"] + (
                     "Aggregated options-chain stats for ONE expiration "
                     "of a stock / ETF / index. Returns total call + put "
                     "volume, total call + put open interest, ATM "
@@ -2839,7 +2840,7 @@ def _build_fantasy_league_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="lookup_fantasy_league",
-                description=(
+                description=_TOOL_DOCS["lookup_fantasy_league"] + (
                     "Live data from the room's Sleeper fantasy football "
                     "league (Omnibeta Degens). Use for ANY question "
                     "about the fantasy league: standings, records, "
@@ -2949,7 +2950,7 @@ def _build_market_price_tool():
         function_declarations=[
             types.FunctionDeclaration(
                 name="lookup_market_price",
-                description=(
+                description=_TOOL_DOCS["lookup_market_price"] + (
                     "Get prices for stocks / ETFs / indices and crypto. "
                     "Pass a list of symbols (cap 10 per call). Response "
                     "includes per-symbol price, change_pct, source, "

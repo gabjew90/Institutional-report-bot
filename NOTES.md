@@ -206,6 +206,56 @@ still stand.
    result implicates the thing you happen to be studying, vary the
    constants before believing it.
 
+### TOOLS migration: the 7,000-char target and the keep-list conflict
+
+Per-tool documentation moved from the prompt's `## TOOLS` section into
+`discord_bot/tool_docs.py`, prepended to each FunctionDeclaration at
+build time. **TOOLS 18,735 -> 9,204 chars; prompt 64,090 -> 54,559.**
+
+The 7,000-char target was reached (6,909) and then deliberately given up,
+because measuring it showed two of the moves were regressions:
+
+| moved rule | fixture | result when moved to the schema |
+|---|---|---|
+| ZERO UNFORCED TRADE-OUTCOME ASSERTIONS | `10` | 3/3 -> **1/3**, "expired worthless" shipped twice |
+| NO SELF-GENERATED TECHNICAL ANALYSIS | `11c` | 2/3 -> **0/3** |
+
+Both are anti-fabrication rules, which the brief said to keep in the
+prompt. They were moved only to fit the char target, and the fixtures
+priced that decision immediately. Restored, both recover (`10` 3/3,
+`11c` 3/3) and TOOLS lands at 9,204.
+
+**The two constraints are arithmetically incompatible.** What the
+keep-list requires, at current sizes: date-locked lines 4,007 + routing
+priority 416 + Google-is-default 700 + code execution 1,430 +
+trade-outcome 891 + no-self-TA 1,286 + headings ~470 = **~9,200**. Under
+7,000 is only reachable by dropping the code-execution block (1,430,
+which has no declaration to move into — Gemini's built-in sandbox tool
+takes no description) or by re-moving an anti-fabrication rule the
+measurement says is load-bearing. *Owner's call; nothing further changed.*
+
+**Side effect worth knowing:** `19-no-fabricated-lyrics` went 3/3 -> 1/3,
+grounding on only one attempt of three. It is a Google-only turn with no
+function tool that applies. The plausible mechanism is that the function
+declarations are now much larger, so `google_search` competes against
+more salient function tools. If real, it is a direct cost of the
+declarations-over-prompt premise and would show up on any grounding-only
+question.
+
+Net: pass rate **34/39 (87%)**, up from the 32/39 baseline. Grounding
+**12/13**, down from 13/13, entirely from `19`.
+
+`27-group-scope-answer` still fails 0/3, unchanged, calling `query_data`
+and `search_chat_messages` instead of `lookup_fantasy_league`. Not tuned
+for, per the brief. The likely cause is visible now: **the prompt's tool
+inventory never mentions `lookup_fantasy_league`.** The routing-priority
+line opens "You have TEN tools" and enumerates ten; the fantasy tool is an
+eleventh, registered only when `SLEEPER_LEAGUE_ID` is set, and appears in
+no routing text. The model cannot prioritise a tool the routing section
+does not list. Adding it is a one-line change to the priority sentence
+and would be a legitimate cross-tool routing fix rather than fixture
+tuning, but it was left alone.
+
 ### Known harness limitation
 
 Two harness bugs produced false failures in the first runs and are fixed:
