@@ -8917,7 +8917,22 @@ async def _answer_with_gemini(
         _err = str(e).lower()
         _is_transient = any(
             t in _err for t in ("500", "503", "internal", "timeout",
-                                "unavailable", "deadline")
+                                "unavailable", "deadline",
+                                # Added after the 2026-08-26 miss: a
+                                # reply to the calendar post surfaced
+                                # "rephrase your question" to a member
+                                # because FAILED_PRECONDITION was not in
+                                # this list, so it never got the retry
+                                # every other transient fault gets. The
+                                # same window logged truncated JSON and
+                                # dropped connections, i.e. the API was
+                                # wobbling, not the question. If it is
+                                # instead a real account fault the retry
+                                # costs one call and the honest message
+                                # still lands.
+                                "failed_precondition", "precondition",
+                                "remoteprotocol", "peer closed",
+                                "incomplete", "connection reset")
         )
         if _is_transient and not _transient_retry:
             log.warning(
