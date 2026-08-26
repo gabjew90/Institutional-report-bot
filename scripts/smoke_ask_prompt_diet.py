@@ -43,6 +43,8 @@ _FIXTURE_DIR = os.path.join(
     "tests", "ask_fixtures")
 _RUNNER = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "ask_fixture_run.py")
+_VALIDATOR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "ask_response_validate.py")
 _DATE_RE = re.compile(r"20\d\d-\d\d-\d\d")
 
 # (anchor substring, rule family it proves survived)
@@ -50,7 +52,11 @@ _CONCEPT_ANCHORS = [
     # framing
     ("ghost writer", "ghost-writer framing (filter-critical — see memory)"),
     ("options-alert service", "customer-respect framing"),
-    ("NEVER META-NARRATE", "no plumbing talk"),
+    # Rule moved to code 2026-08-26 (scripts/ask_response_validate.py,
+    # check_meta_plumbing). The prompt keeps one line naming the
+    # behavior; the anchor tracks that line, not the deleted block.
+    ("narrate the bot's own plumbing", "no plumbing talk (enforced "
+     "by scripts/ask_response_validate.py)"),
     # types + format
     ("TYPE 1", "type taxonomy"),
     ("TYPE 2", "type taxonomy"),
@@ -177,6 +183,23 @@ def test_fixture_assertions_self_test():
     _ok(f"fixture self-test clean — {summary[-1] if summary else 'exit 0'}")
 
 
+def test_response_validator():
+    """Rules deleted from the prompt must still be enforced somewhere.
+
+    NEVER META-NARRATE moved to ask_response_validate.check_meta_plumbing
+    on 2026-08-26. If that validator stops catching the recorded
+    violations, the rule is enforced NOWHERE — the prompt text is already
+    gone. This check is what makes the deletion safe.
+    """
+    r = subprocess.run([sys.executable, _VALIDATOR, "--self-test"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        tail = "\n".join((r.stdout or "").strip().splitlines()[-20:])
+        _fail("ask_response_validate --self-test failed. A rule deleted "
+              "from the prompt is now enforced by nothing:\n" + tail)
+    _ok("response validator catches every recorded violation")
+
+
 # Every check runs even after one fails. Fixing a gate one rediscovered
 # failure at a time is how a build stays red for a week.
 _CHECKS = [
@@ -185,6 +208,7 @@ _CHECKS = [
     test_no_incident_dates_in_prompt,
     test_every_incident_has_a_fixture,
     test_fixture_assertions_self_test,
+    test_response_validator,
 ]
 
 
