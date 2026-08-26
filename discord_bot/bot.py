@@ -5979,6 +5979,66 @@ def _normalize_ask_result(result):
     return embeds, files
 
 
+def _record_published_book(out_meta: dict, sent_msg, channel_id) -> None:
+    """Pair a captured book with the message id it went out as.
+
+    Best-effort by design: failing to record a book costs one missed
+    correction opportunity, which is exactly where things stood before
+    this feature existed. It must never turn a delivered answer into a
+    user-visible error.
+    """
+    try:
+        book = (out_meta or {}).get("book")
+        mid = getattr(sent_msg, "id", None)
+        if not book or mid is None or channel_id is None:
+            return
+        db.record_bot_book_post(
+            discord_message_id=int(mid),
+            channel_id=int(channel_id),
+            caller=book["caller"],
+            tickers=book["tickers"],
+        )
+        log.info(
+            f"book post recorded: caller={book['caller']} "
+            f"msg={mid} tickers={','.join(book['tickers'])}")
+    except Exception as e:
+        log.warning(f"record_bot_book_post failed (non-fatal): {e}")
+
+
+def _capture_book_context(args: dict, result, out_meta: dict) -> None:
+    """Note that this turn published a registered caller's open book.
+
+    Only the CALLER anchor counts, and only when the response actually
+    carried open positions (kind 'open' or 'all'). A 'recent' or 'tally'
+    lookup publishes no position list, so there is nothing for a
+    correction to refer to.
+
+    Reads the tickers from the DB rather than parsing them back out of
+    the rendered text: the block is prose assembled for a model, and
+    re-parsing prose to recover data we already had is how a formatting
+    tweak silently breaks a correctness path.
+    """
+    try:
+        if not isinstance(result, dict) or result.get("status") != "ok":
+            return
+        anchor = result.get("anchor") or {}
+        if anchor.get("type") != "caller":
+            return
+        caller = (anchor.get("name") or "").strip().lower()
+        kind = (args.get("kind") or "all").strip().lower()
+        if not caller or kind not in ("open", "all"):
+            return
+        positions = db.get_current_analyst_positions(
+            caller=caller, tracking_mode="caller")
+        tickers = sorted({(p.get("ticker") or "").strip().upper()
+                          for p in positions if (p.get("ticker") or "").strip()})
+        if tickers:
+            out_meta["book"] = {"caller": caller, "tickers": tickers}
+    except Exception as e:
+        # Never let bookkeeping break an answer that is otherwise fine.
+        log.warning(f"book-context capture failed (non-fatal): {e}")
+
+
 async def _answer_with_gemini(
     question: str,
     user_id: int,
@@ -5991,11 +6051,21 @@ async def _answer_with_gemini(
     channel_name: str = "",
     channel_id: int | None = None,
     _transient_retry: bool = False,
+    out_meta: dict | None = None,
 ) -> discord.Embed:
     """Run a Gemini grounded-search query and return a Discord embed.
 
     Enforces the per-user daily cap. Returns a single embed with the answer
     + sources footer + NFA footer, or an error embed on failure.
+
+    `out_meta` (optional) is filled in by this function for the caller
+    to read AFTER the send. Currently one key: `book`, set when the turn
+    published a registered caller's open positions, carrying
+    {"caller", "tickers"}. The send site records it against the sent
+    message id so a correction seconds later ("No AVGO") has a book to
+    attach to — see analyst_log/book_reply.py. The message id does not
+    exist until after the send, which is why this is an out-param
+    rather than part of the return value.
 
     `_transient_retry` is internal: on a transient Gemini failure (500 /
     503 / timeout) the function retries ITSELF once with this flag set,
@@ -6658,6 +6728,12 @@ async def _answer_with_gemini(
                     continue
                 try:
                     result = await executor(args)
+                    # A published book is the antecedent a later "No
+                    # AVGO" refers to. Capture whose book and which
+                    # tickers; the send site pairs it with the message
+                    # id, which does not exist yet here.
+                    if fc.name == "lookup_trade_log" and out_meta is not None:
+                        _capture_book_context(args, result, out_meta)
                 except Exception as e:
                     # Degrade, don't die: the model gets a structured
                     # error and can answer from remaining context.
@@ -9928,6 +10004,9 @@ def create_bot() -> commands.Bot:
                         question = f"{subject_verbatim}\n\n{question}"
             except Exception as e:
                 log.warning(f"Subject-verbatim injection failed (/ask): {e}")
+            # Filled by _answer_with_gemini when this turn publishes a
+            # caller's open book; read back after the send.
+            _ask_out_meta: dict = {}
             asker = interaction.user
             # Resolve raw <@USER_ID> mentions in the question to readable
             # @DisplayName (username) so Gemini can connect them to the
@@ -9950,11 +10029,14 @@ def create_bot() -> commands.Bot:
                 asker_username=getattr(asker, "name", "") or "",
                 channel_name=getattr(interaction.channel, "name", "") or "",
                 channel_id=int(_ch_id) if _ch_id is not None else None,
+                out_meta=_ask_out_meta,
             )
             _embeds, _qfiles = _normalize_ask_result(embed)
-            await interaction.followup.send(
-                embeds=_embeds, **({"files": _qfiles} if _qfiles else {})
+            _sent_msg = await interaction.followup.send(
+                embeds=_embeds, **({"files": _qfiles} if _qfiles else {}),
+                wait=True,
             )
+            _record_published_book(_ask_out_meta, _sent_msg, _ch_id)
             _text_embed = next(
                 (e for e in _embeds if e.description), None)
             # Cross-window anti-recycling: persist the bot's answer so the
@@ -10021,6 +10103,19 @@ def create_bot() -> commands.Bot:
                     )
         except Exception as e:
             log.error(f"Analyst watcher dispatch failed: {e}", exc_info=True)
+
+        # Caller corrections to a book the bot just published. Runs in
+        # EVERY channel, not just the caller's alerts channel — the
+        # whole point is that the correction lands wherever the book was
+        # published, which is wherever someone asked. Independent of the
+        # mention/reply trigger below: BK's "No AVGO" and "No MU
+        # anymore" carried no ping and no reply reference, so gating
+        # this on the bot deciding to respond would have missed both.
+        try:
+            from analyst_log.book_reply import handle_book_correction
+            await handle_book_correction(bot, message)
+        except Exception as e:
+            log.error(f"Book-correction dispatch failed: {e}", exc_info=True)
 
         # Respond when the bot is explicitly @-mentioned OR when the
         # message is a DIRECT REPLY to one of the bot's own messages.
@@ -10343,6 +10438,9 @@ def create_bot() -> commands.Bot:
                     bot, message.guild, question
                 )
                 _ch_id = getattr(message.channel, "id", None)
+                # Filled by _answer_with_gemini when this turn publishes
+                # a caller's open book; read back after the send.
+                _ask_out_meta: dict = {}
                 embed = await _answer_with_gemini(
                     question,
                     message.author.id,
@@ -10357,12 +10455,14 @@ def create_bot() -> commands.Bot:
                     asker_username=message.author.name,
                     channel_name=getattr(message.channel, "name", "") or "",
                     channel_id=int(_ch_id) if _ch_id is not None else None,
+                    out_meta=_ask_out_meta,
                 )
                 _embeds, _qfiles = _normalize_ask_result(embed)
-                await message.reply(
+                _sent_msg = await message.reply(
                     embeds=_embeds, mention_author=False,
                     **({"files": _qfiles} if _qfiles else {})
                 )
+                _record_published_book(_ask_out_meta, _sent_msg, _ch_id)
                 _text_embed = next(
                     (e for e in _embeds if e.description), None)
                 # Cross-window anti-recycling: persist the bot's answer.

@@ -202,6 +202,27 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_ask_bot_answers_asker_channel_ts
             ON ask_bot_answers(asker_user_id, channel_id, answered_at DESC);
 
+        -- Books the bot published, so a caller's correction can be
+        -- attributed (2026-08-26). BK's book listed MU 980C and AVGO
+        -- 450C as open; he replied "No AVGO" / "No MU anymore". Both
+        -- were true -- he had exited and never posted an exit in his
+        -- alerts channel, so analyst_trades held an open with no close
+        -- and the book had no way to know.
+        --
+        -- The correction is only interpretable against the book it
+        -- corrects: "No AVGO" alone is not a trade event, it is a
+        -- pronoun. This table is the antecedent. Retained briefly --
+        -- a correction lands within minutes or not at all.
+        CREATE TABLE IF NOT EXISTS bot_book_posts (
+            discord_message_id INTEGER PRIMARY KEY,
+            channel_id INTEGER NOT NULL,
+            caller TEXT NOT NULL,       -- whose book (canonical lowercase)
+            tickers TEXT NOT NULL,      -- JSON list, as published
+            posted_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+        CREATE INDEX IF NOT EXISTS idx_bot_book_posts_lookup
+            ON bot_book_posts(channel_id, caller, posted_at DESC);
+
         -- Format-overhaul Phase 1 state (2026-06-10). Two tables:
         --
         -- pulse_state: compact per-context-dump snapshot of the theme map
@@ -2996,6 +3017,88 @@ def get_recent_analyst_trades(
         (*params, limit),
     ).fetchall()
     return [dict(r) for r in rows]
+
+
+def record_bot_book_post(*, discord_message_id: int, channel_id: int,
+                         caller: str, tickers: list[str]) -> None:
+    """Remember that the bot published `caller`'s book as this message.
+
+    Written right after the send, so a correction arriving seconds later
+    has something to attach to.
+    """
+    import json as _json
+    conn = get_connection()
+    # posted_at comes from the column DEFAULT datetime('now'), not from
+    # Python. find_recent_book_posts compares against datetime('now',
+    # ...), and SQLite's format uses a space separator while Python's
+    # isoformat() uses T. TEXT comparison sorts T after space, so mixing
+    # the two silently breaks every window query -- the same defect
+    # documented for the pulse cutoffs.
+    conn.execute(
+        "INSERT OR REPLACE INTO bot_book_posts "
+        "(discord_message_id, channel_id, caller, tickers) "
+        "VALUES (?, ?, ?, ?)",
+        (int(discord_message_id), int(channel_id),
+         (caller or "").strip().lower(),
+         _json.dumps(sorted({(t or "").strip().upper()
+                             for t in tickers if (t or "").strip()}))),
+    )
+    conn.commit()
+
+
+def find_recent_book_posts(*, channel_id: int,
+                           within_minutes: int = 10) -> list[dict]:
+    """Books published in this channel in the last `within_minutes`.
+
+    Returns newest first: [{message_id, caller, tickers:[...]}]. The
+    caller is NOT filtered here -- the handler matches it against the
+    correcting author, and reading them all lets a caller correct a book
+    someone else asked for, which is the normal case (Abe asked for
+    Kyle's book; Kyle corrected it).
+    """
+    import json as _json
+    rows = get_connection().execute(
+        "SELECT discord_message_id, caller, tickers FROM bot_book_posts "
+        "WHERE channel_id = ? "
+        "AND posted_at >= datetime('now', ?) "
+        "ORDER BY posted_at DESC LIMIT 20",
+        (int(channel_id), f"-{int(within_minutes)} minutes"),
+    ).fetchall()
+    out = []
+    for r in rows:
+        try:
+            tickers = _json.loads(r[2]) or []
+        except Exception:
+            tickers = []
+        out.append({"message_id": r[0], "caller": r[1], "tickers": tickers})
+    return out
+
+
+def get_bot_book_post(discord_message_id: int) -> dict | None:
+    """One published book by message id, for the direct-reply path."""
+    import json as _json
+    r = get_connection().execute(
+        "SELECT discord_message_id, caller, tickers FROM bot_book_posts "
+        "WHERE discord_message_id = ?", (int(discord_message_id),),
+    ).fetchone()
+    if not r:
+        return None
+    try:
+        tickers = _json.loads(r[2]) or []
+    except Exception:
+        tickers = []
+    return {"message_id": r[0], "caller": r[1], "tickers": tickers}
+
+
+def prune_bot_book_posts(keep_days: int = 3) -> int:
+    """Drop books older than `keep_days`. A correction lands in minutes,
+    so this table has no reason to grow."""
+    conn = get_connection()
+    cur = conn.execute(
+        "DELETE FROM bot_book_posts WHERE posted_at < datetime('now', ?)",
+        (f"-{int(keep_days)} days",))
+    conn.commit()
+    return cur.rowcount or 0
 
 
 def get_current_analyst_positions(

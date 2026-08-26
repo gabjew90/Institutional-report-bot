@@ -1085,6 +1085,18 @@ async def _analyst_purge_job(bot=None):
     """
     try:
         import db
+        # Published books ride along on this cron. A correction lands
+        # within minutes of the book or not at all, so anything older
+        # than a few days is dead weight. Unconditional: it is not
+        # governed by analyst_trade_retention_days and must still run
+        # when trade retention is disabled.
+        try:
+            dropped = db.prune_bot_book_posts(keep_days=3)
+            if dropped:
+                log.info(f"Book-post prune: deleted {dropped} rows")
+        except Exception as e:
+            log.warning(f"Book-post prune failed (non-fatal): {e}")
+
         retention = settings.analyst_trade_retention_days
         if retention <= 0:
             return
