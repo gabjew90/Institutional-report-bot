@@ -262,3 +262,100 @@ def test_unparseable_stamp_falls_back_to_prefix():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+# ---------------------------------------------------------------- logos
+
+def _write_logo(symbol: str, blob: bytes, age_days: int) -> None:
+    conn = db.get_connection()
+    conn.execute("CREATE TABLE IF NOT EXISTS symbol_logo ("
+                 "symbol TEXT PRIMARY KEY, image BLOB, "
+                 "fetched_at TEXT NOT NULL DEFAULT (datetime('now')))")
+    conn.execute(
+        "INSERT OR REPLACE INTO symbol_logo (symbol, image, fetched_at) "
+        "VALUES (?, ?, datetime('now', ?))",
+        (symbol, blob, f"-{age_days} days"))
+    conn.commit()
+
+
+def test_logo_hit_keeps_the_long_ttl():
+    _write_logo("LOGOOK", b"\x89PNG-ish", age_days=20)
+    assert "LOGOOK" in db.get_symbol_logos(["LOGOOK"])
+
+
+def test_logo_hit_expires_eventually():
+    _write_logo("LOGOOLD", b"\x89PNG-ish", age_days=40)
+    assert "LOGOOLD" not in db.get_symbol_logos(["LOGOOLD"])
+
+
+def test_logo_miss_expires_sooner_than_a_hit():
+    """A cached MISS (b'') must not survive as long as a real logo, or
+    one bad fetch hides a company's logo for the full month."""
+    _write_logo("LOGOMISS", b"", age_days=20)
+    assert "LOGOMISS" not in db.get_symbol_logos(["LOGOMISS"]), (
+        "a 20-day-old MISS took the long success TTL")
+
+
+def test_fresh_logo_miss_is_still_cached():
+    """Misses do earn a TTL — otherwise every logoless name refetches
+    nightly."""
+    _write_logo("LOGOMISS2", b"", age_days=1)
+    got = db.get_symbol_logos(["LOGOMISS2"])
+    assert "LOGOMISS2" in got and got["LOGOMISS2"] == b""
+
+
+def test_downscale_produces_a_square_rgba_tile():
+    import io
+    from PIL import Image
+    from report.calendar_data import _downscale_logo, LOGO_PX
+    src = Image.new("RGBA", (512, 128), (10, 20, 30, 255))
+    buf = io.BytesIO()
+    src.save(buf, "PNG")
+    out = _downscale_logo(buf.getvalue())
+    assert out, "a valid wide PNG must downscale, not be dropped"
+    tile = Image.open(io.BytesIO(out))
+    assert tile.size == (LOGO_PX * 2, LOGO_PX * 2), tile.size
+    assert tile.mode == "RGBA", "corners need alpha to sit on the sheet"
+
+
+def test_downscale_rejects_garbage_without_raising():
+    """A broken logo degrades to no logo. The calendar renders
+    unattended at 04:00; it must never fail over artwork."""
+    from report.calendar_data import _downscale_logo
+    assert _downscale_logo(b"not an image at all") == b""
+    assert _downscale_logo(b"") == b""
+
+
+def test_resolve_logos_skips_symbols_with_no_fresh_profile():
+    """A symbol whose CAP came from cache had no profile call, so we
+    learned nothing about its logo. Caching b'' for it would mark every
+    warm-cap name as logoless."""
+    from report import calendar_data as cd
+    got = cd._resolve_logos(["NOPROFILE"], {"NOPROFILE": {"cap": 1.0}})
+    assert "NOPROFILE" not in got
+    assert db.get_symbol_logos(["NOPROFILE"]) == {}
+
+
+def test_resolve_logos_caches_a_real_empty_logo():
+    """Finnhub answered and has no logo. That IS cacheable."""
+    from report import calendar_data as cd
+    got = cd._resolve_logos(
+        ["NOART"], {"NOART": {"cap": 1.0, "name": "x", "logo": ""}})
+    assert got.get("NOART") == b""
+    assert db.get_symbol_logos(["NOART"]).get("NOART") == b""
+
+
+def test_resolve_logos_never_downloads_a_cached_symbol():
+    from report import calendar_data as cd
+    _write_logo("CACHEDLOGO", b"\x89PNG-ish", age_days=1)
+    calls = []
+    orig = cd._http_bytes
+    try:
+        cd._http_bytes = lambda url, timeout=8: calls.append(url) or b""
+        got = cd._resolve_logos(
+            ["CACHEDLOGO"],
+            {"CACHEDLOGO": {"logo": "http://example.invalid/l.png"}})
+    finally:
+        cd._http_bytes = orig
+    assert calls == [], f"downloaded a cached logo: {calls}"
+    assert got["CACHEDLOGO"] == b"\x89PNG-ish"

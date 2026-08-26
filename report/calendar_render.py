@@ -39,6 +39,13 @@ _W, _H = 1080 * _S, 1620 * _S  # 1620 = 2:3 hard max; the
 # (4:5 or shorter). Only a packed econ day + two full 15-row
 # columns stretches past 1350.
 _MARGIN = 66 * _S
+# Row logos. _LOGO_PX must match calendar_data.LOGO_PX * _S — the cache
+# stores tiles already at this size so the render path never resizes.
+# The gutter is wider than the tile, and is reserved on EVERY row
+# whether or not a logo exists, so symbols stay aligned down the column.
+_LOGO_PX = 22 * _S
+_LOGO_GUTTER = 30 * _S
+_LOGO_DY = 3 * _S           # nudge onto the symbol's optical line
 
 
 def _hex2rgb(h: str) -> tuple:
@@ -228,7 +235,15 @@ def render_calendar_png(day: CalendarDay) -> bytes:
                 sym = r.symbol + ("" if r.session_confirmed else "*")
                 any_flag = any_flag or not r.session_confirmed
                 any_move = any_move or r.implied_move is not None
-                d.text((cx, cy), sym, font=f["sym"], fill=TEXT)
+                # The logo gutter is reserved UNCONDITIONALLY and the
+                # logo is drawn into it only when present. Sizing the
+                # row to the logo instead would left-align rows
+                # differently depending on whether Finnhub happened to
+                # have artwork, and a column whose symbols do not line
+                # up reads as a rendering bug.
+                _draw_logo(img, getattr(r, "logo", b""), cx, cy)
+                d.text((cx + _LOGO_GUTTER, cy), sym, font=f["sym"],
+                       fill=TEXT)
                 # Implied move, right-aligned at the column edge. A name
                 # with no honest straddle gets a dash, never a guess
                 # (2026-08-25) — same discipline as the session flag.
@@ -239,10 +254,13 @@ def render_calendar_png(day: CalendarDay) -> bytes:
                        fill=GOLD if r.implied_move is not None
                        else _dim(TEXT, 0.28))
                 nm = r.name.title() if r.name.isupper() else r.name
+                _nm_x = cx + _LOGO_GUTTER + 108 * _S
                 d.text(
-                    (cx + 108 * _S, cy + 1 * _S),
+                    (_nm_x, cy + 1 * _S),
                     _truncate(d, nm, f["nm"],
-                              col_w - 116 * _S - mv_w - 14 * _S),
+                              # width left between the name's start and
+                              # the right-aligned implied move
+                              (cx + col_w - mv_w - 14 * _S) - _nm_x),
                     font=f["nm"], fill=_dim(TEXT, 0.55),
                 )
                 cy += 40 * _S
@@ -301,6 +319,34 @@ def _footer(d, f, content_bottom: int) -> int:
     _tracked(d, fy, "ALL TIMES ET", f["foot"],
              _dim(TEXT, 0.38), int(4 * _S), _W / 2)
     return fy
+
+
+def _draw_logo(img: Image.Image, png: bytes, cx: int, cy: int) -> None:
+    """Paste a row logo into the reserved gutter. No-op when absent.
+
+    Swallows every failure. These bytes come from a third-party URL
+    through a cache, the sheet renders unattended at 04:00, and no logo
+    is worth failing a calendar over.
+    """
+    if not png:
+        return
+    try:
+        import io
+        tile = Image.open(io.BytesIO(png))
+        tile.load()
+        if tile.mode != "RGBA":
+            tile = tile.convert("RGBA")
+        if tile.size != (_LOGO_PX, _LOGO_PX):
+            # Cached at the wrong size (a changed LOGO_PX, an older
+            # row). Correct it here rather than pasting something that
+            # overlaps the symbol.
+            tile = tile.resize((_LOGO_PX, _LOGO_PX), Image.LANCZOS)
+        # Vertically nudged onto the symbol's optical line rather than
+        # the row box. Pasted THROUGH its own alpha so the rounded
+        # corners take the sheet's background instead of white.
+        img.paste(tile, (int(cx), int(cy + _LOGO_DY)), tile)
+    except Exception as e:
+        log.info(f"calendar render: logo paste skipped ({e})")
 
 
 def _finish(img: Image.Image, footer_y: int) -> bytes:

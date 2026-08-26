@@ -32,6 +32,9 @@ class EarnRow:
     name: str
     cap_musd: float
     implied_move: float | None = None  # ATM straddle ±% into the print
+    logo: bytes = b""             # render-ready PNG, b"" = none. Bytes,
+    #                          not a URL: the renderer must never touch
+    #                          the network.
     session_confirmed: bool = False  # False = Finnhub hour was blank/dmh —
     #                          rendered with the * flag. Verified
     #                          2026-08-20: ~40-60% of rows are blank
@@ -91,6 +94,124 @@ def _resolve_caps(symbols: list[str]) -> dict:
         )
         cached.update(fetched)
     return cached
+
+
+# Logo edge length in FINAL (post-downsample) pixels. The renderer
+# supersamples 2x, so it scales this up itself. Stored at render size so
+# the render path never resizes.
+LOGO_PX = 22
+
+
+def _downscale_logo(raw: bytes) -> bytes:
+    """Square PNG of LOGO_PX*2 (supersample size), or b'' if unusable.
+
+    Returns b'' rather than raising on anything malformed. A broken logo
+    must degrade to no logo, never to a broken sheet -- the calendar
+    posts unattended at 04:00 and nobody is watching it render.
+    """
+    import io
+    try:
+        from PIL import Image
+        im = Image.open(io.BytesIO(raw))
+        im.load()
+        side = LOGO_PX * 2
+        # Flatten onto white: many Finnhub logos are transparent PNGs
+        # drawn in near-black, invisible against a dark sheet. A white
+        # tile reads as a favicon and matches how these appear
+        # everywhere else.
+        im = im.convert("RGBA")
+        canvas = Image.new("RGBA", im.size, (255, 255, 255, 255))
+        canvas.alpha_composite(im)
+        canvas = canvas.convert("RGB")
+        canvas.thumbnail((side, side), Image.LANCZOS)
+        square = Image.new("RGB", (side, side), (255, 255, 255))
+        square.paste(canvas, ((side - canvas.width) // 2,
+                              (side - canvas.height) // 2))
+        # Round the corners. A hard white square punches four bright
+        # right angles into a dark sheet and reads as a rendering
+        # artifact; a rounded tile reads as a favicon. Saved with alpha
+        # so the corners take the sheet's own background rather than a
+        # colour this module would have to know.
+        from PIL import ImageDraw as _ID
+        mask = Image.new("L", (side, side), 0)
+        _ID.Draw(mask).rounded_rectangle(
+            (0, 0, side - 1, side - 1), radius=max(2, side // 5), fill=255)
+        square = square.convert("RGBA")
+        square.putalpha(mask)
+        buf = io.BytesIO()
+        square.save(buf, "PNG")
+        return buf.getvalue()
+    except Exception as e:
+        log.info(f"calendar: logo unusable, skipping ({e})")
+        return b""
+
+
+def _resolve_logos(symbols: list[str], profiles: dict) -> dict:
+    """symbol -> render-ready PNG bytes (b'' = no logo).
+
+    Cache-first. `profiles` carries the logo URLs already returned by
+    the cap fetch, so a symbol whose cap came from cache has no URL here
+    and is simply skipped -- its logo is either already cached or will
+    be picked up the next time its profile refreshes. Nothing about
+    logos is worth an extra Finnhub call.
+
+    Never raises: the calendar renders without logos rather than not at
+    all.
+    """
+    if not symbols:
+        return {}
+    try:
+        cached = db.get_symbol_logos(symbols)
+    except Exception as e:
+        log.warning(f"calendar: logo cache read failed ({e})")
+        return {}
+
+    fetched: list[tuple] = []
+    for sym in symbols:
+        if sym in cached:
+            continue
+        entry = profiles.get(sym) or {}
+        if "logo" not in entry:
+            # This symbol's cap came from cache, so no profile call was
+            # made this run and we learned nothing about its logo.
+            # Absence of the KEY is the signal, not an empty value: an
+            # empty value means Finnhub answered and has no logo, which
+            # IS cacheable. Conflating the two would cache "no logo" for
+            # every symbol with a warm cap.
+            continue
+        url = (entry.get("logo") or "").strip()
+        if not url:
+            fetched.append((sym, b""))
+            cached[sym] = b""
+            continue
+        raw = _http_bytes(url)
+        png = _downscale_logo(raw) if raw else b""
+        fetched.append((sym, png))
+        cached[sym] = png
+
+    if fetched:
+        try:
+            db.upsert_symbol_logos(fetched)
+        except Exception as e:
+            log.warning(f"calendar: logo cache write failed ({e})")
+        got = sum(1 for _, b in fetched if b)
+        log.info(f"calendar: logos fetched {got}/{len(fetched)} "
+                 f"({len(symbols) - len(fetched)} from cache)")
+    return cached
+
+
+def _http_bytes(url: str, timeout: int = 8) -> bytes:
+    import urllib.request
+    try:
+        req = urllib.request.Request(
+            url, headers={"User-Agent": "omnibeta-calendar/1.0"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            # Cap the read: a logo is a few KB, and an unbounded read of
+            # an unexpected URL is how a render job eats memory.
+            return r.read(512 * 1024)
+    except Exception as e:
+        log.info(f"calendar: logo download failed for {url[:60]} ({e})")
+        return b""
 
 
 def build_calendar_day(date_iso: str) -> CalendarDay:
@@ -161,6 +282,15 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
     for _pool in (bmo_syms, amc_syms):
         _ranked_syms += sorted(
             _pool, key=lambda s: -(caps.get(s, {}).get("cap") or 0))[:TOP_N]
+    # Logos for the names that make the sheet, same top-N set as the
+    # implied moves. Cache-first and best-effort: a sheet with no logos
+    # is fine, a sheet that failed to render is not.
+    logos: dict = {}
+    try:
+        logos = _resolve_logos(_ranked_syms, caps)
+    except Exception as e:
+        log.warning(f"calendar: logos unavailable ({e})")
+
     moves: dict = {}
     try:
         from report.implied_move import implied_moves_for
@@ -181,6 +311,7 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
                 cap_musd=float(caps.get(s, {}).get("cap") or 0),
                 session_confirmed=confirmed.get(s, False),
                 implied_move=moves.get(s),
+                logo=logos.get(s) or b"",
             )
             for s in ranked[:TOP_N]
         ]

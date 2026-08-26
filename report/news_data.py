@@ -897,11 +897,16 @@ def fetch_earnings_calendar_all(date_iso: str) -> list[dict] | None:
 def fetch_symbol_profiles(
     symbols: list[str], pace_seconds: float = 1.1
 ) -> dict:
-    """symbol -> {'cap': musd_float, 'name': str} via Finnhub profile2,
-    paced under the free 60/min limit. A symbol with no profile (fresh
-    IPO, delisting, bogus) returns cap 0 so it sorts last but is still
-    shown. Verified 2026-08-20: unknown symbols are HTTP 200 + {}, and
-    a 40-call paced run was 40/40."""
+    """symbol -> {'cap': musd_float, 'name': str, 'logo': str} via
+    Finnhub profile2, paced under the free 60/min limit. A symbol with
+    no profile (fresh IPO, delisting, bogus) returns cap 0 so it sorts
+    last but is still shown. Verified 2026-08-20: unknown symbols are
+    HTTP 200 + {}, and a 40-call paced run was 40/40.
+
+    `logo` is a URL and comes free with this response — the calendar's
+    row logos add NO Finnhub calls on top of the cap fetch. It is ''
+    when Finnhub has no logo, which is common enough that the renderer
+    must treat a missing logo as normal rather than exceptional."""
     import time as _time
     key = settings.finnhub_api_key
     out: dict = {}
@@ -917,6 +922,7 @@ def fetch_symbol_profiles(
         out[sym] = {
             "cap": float(p.get("marketCapitalization") or 0.0),
             "name": (p.get("name") or sym),
+            "logo": (p.get("logo") or "").strip(),
         }
         if i < len(symbols) - 1:
             _time.sleep(pace_seconds)

@@ -202,6 +202,23 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_ask_bot_answers_asker_channel_ts
             ON ask_bot_answers(asker_user_id, channel_id, answered_at DESC);
 
+        -- Company logos for the calendar's earnings rows (2026-08-26).
+        -- Stores the RENDER-READY PNG bytes, already downscaled to the
+        -- row height, not the original artwork: the renderer must never
+        -- touch the network or resize, and a row logo is ~2KB at that
+        -- size.
+        --
+        -- A symbol Finnhub has no logo for is cached as a ZERO-BYTE
+        -- blob. That is a real answer ("asked, none exists"), and
+        -- caching it is what stops a nightly re-fetch of every logoless
+        -- name. get_symbol_logos gives those the short TTL, same split
+        -- as the market caps.
+        CREATE TABLE IF NOT EXISTS symbol_logo (
+            symbol TEXT PRIMARY KEY,
+            image BLOB,
+            fetched_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+
         -- Books the bot published, so a caller's correction can be
         -- attributed (2026-08-26). BK's book listed MU 980C and AVGO
         -- 450C as open; he replied "No AVGO" / "No MU anymore". Both
@@ -3017,6 +3034,53 @@ def get_recent_analyst_trades(
         (*params, limit),
     ).fetchall()
     return [dict(r) for r in rows]
+
+
+def get_symbol_logos(symbols: list[str], max_age_days: int = 30,
+                     miss_max_age_days: int = 7) -> dict:
+    """symbol -> PNG bytes (b'' = known to have no logo), fresh rows only.
+
+    Same two-TTL split as get_market_caps, for the same reason: a
+    successful logo is stable for a month, but a MISS must expire sooner
+    or one bad fetch hides a logo until the long TTL lapses. A miss is
+    cheap to recheck; a wrong one is visible on every sheet.
+    """
+    if not symbols:
+        return {}
+    out: dict = {}
+    for i in range(0, len(symbols), 400):
+        chunk = symbols[i:i + 400]
+        placeholders = ",".join("?" for _ in chunk)
+        rows = get_connection().execute(
+            f"SELECT symbol, image FROM symbol_logo "
+            f"WHERE symbol IN ({placeholders}) AND ("
+            f"  (LENGTH(COALESCE(image, X'')) > 0 "
+            f"   AND fetched_at >= datetime('now', ?)) "
+            f"  OR "
+            f"  (LENGTH(COALESCE(image, X'')) = 0 "
+            f"   AND fetched_at >= datetime('now', ?)) "
+            f")",
+            [*chunk, f"-{int(max_age_days)} days",
+             f"-{int(miss_max_age_days)} days"],
+        ).fetchall()
+        for sym, img in rows:
+            out[sym] = bytes(img) if img else b""
+    return out
+
+
+def upsert_symbol_logos(rows: list[tuple]) -> int:
+    """rows: (symbol, png_bytes). Pass b'' for 'Finnhub has no logo' —
+    that is a cached answer, not a failure to record."""
+    if not rows:
+        return 0
+    conn = get_connection()
+    conn.executemany(
+        "INSERT OR REPLACE INTO symbol_logo (symbol, image, fetched_at) "
+        "VALUES (?, ?, datetime('now'))",
+        [(s, sqlite3.Binary(b or b"")) for s, b in rows],
+    )
+    conn.commit()
+    return len(rows)
 
 
 def record_bot_book_post(*, discord_message_id: int, channel_id: int,
