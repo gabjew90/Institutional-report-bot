@@ -36,6 +36,7 @@ USAGE
   python scripts/ask_fixture_run.py --only 05 28   # substring match on id
   python scripts/ask_fixture_run.py --repeat 3     # flakiness check
   python scripts/ask_fixture_run.py --offline      # validate fixtures only
+  python scripts/ask_fixture_run.py --self-test    # validate the ASSERTIONS
   python scripts/ask_fixture_run.py --json out.json
 
 Exit codes: 0 all passed, 1 one or more failed, 2 harness error.
@@ -43,6 +44,7 @@ Exit codes: 0 all passed, 1 one or more failed, 2 harness error.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -270,6 +272,24 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         answer = ""
     return {"answer": answer, "tools_called": tools_called,
             "grounded": grounded}
+
+
+def _expect_hash(fx: dict) -> str:
+    """Stable hash of one fixture's assertions."""
+    blob = json.dumps(fx.get("expect") or {}, sort_keys=True)
+    return hashlib.sha256(blob.encode()).hexdigest()[:12]
+
+
+def suite_fingerprint(fixtures: list[dict]) -> str:
+    """Hash of every fixture's id + assertions.
+
+    A baseline is only comparable to a run of the same assertions.
+    Tightening one fixture changes this, which turns a silent mismatch
+    into a visible one.
+    """
+    blob = json.dumps(
+        sorted((fx.get("id"), _expect_hash(fx)) for fx in fixtures))
+    return hashlib.sha256(blob.encode()).hexdigest()[:12]
 
 
 def load_fixtures(only: list[str] | None) -> list[dict]:
@@ -504,6 +524,7 @@ def main() -> int:
         ok = all(not f for _r, f in attempts)
         flaky = (not ok) and any(not f for _r, f in attempts)
         res0, fails0 = next(((r, f) for r, f in attempts if f), attempts[0])
+        n_ok = sum(1 for _r, f in attempts if not f)
 
         if fx.get("grounding_required"):
             ground_turns += 1
@@ -513,15 +534,28 @@ def main() -> int:
         status = "PASS" if ok else ("FLAKY" if flaky else "FAIL")
         passed += 1 if ok else 0
         mark = {"PASS": "PASS ", "FLAKY": "FLAKY", "FAIL": "FAIL "}[status]
-        print(f"{mark} {fx['id']:<34} [{fx['ledger']}] {fx['title']}")
+        print(f"{mark} {n_ok}/{len(attempts)} {fx['id']:<34} "
+              f"[{fx['ledger']}] {fx['title']}")
         if not ok:
             for f in fails0[:4]:
                 print(f"        - {f}")
             print(f"        answer: {(res0.get('answer') or '')[:150]!r}")
             print(f"        tools: {res0.get('tools_called')} "
                   f"grounded={res0.get('grounded')}")
+        # Per-attempt detail, not just the rolled-up status: the signal
+        # that separates a regression from noise is 3/3 dropping to 2/3
+        # on one fixture, and an aggregate cannot show that.
         records.append({"id": fx["id"], "ledger": fx["ledger"],
-                        "status": status, "failures": fails0,
+                        "status": status,
+                        "attempts": len(attempts),
+                        "attempts_passed": n_ok,
+                        "expect_hash": _expect_hash(fx),
+                        "per_attempt": [
+                            {"passed": not f, "failures": f,
+                             "tools_called": r.get("tools_called"),
+                             "grounded": r.get("grounded")}
+                            for r, f in attempts],
+                        "failures": fails0,
                         "tools_called": res0.get("tools_called"),
                         "grounded": res0.get("grounded"),
                         "answer": res0.get("answer")})
@@ -537,7 +571,16 @@ def main() -> int:
     print("=" * 64)
 
     if args.json_out:
+        try:
+            import discord_bot.ask_prompt as _ap
+            prompt_chars = len(_ap._ASK_SYSTEM_INSTRUCTION)
+        except Exception:
+            prompt_chars = None
         Path(args.json_out).write_text(json.dumps({
+            "suite_fingerprint": suite_fingerprint(fixtures),
+            "prompt_chars": prompt_chars,
+            "repeat": max(1, args.repeat),
+            "model": model,
             "pass_rate": rate, "passed": passed, "total": total,
             "tool_call_rate_grounding": grate,
             "grounding_turns": ground_turns,

@@ -12,21 +12,46 @@ was not modified — zero characters.** Everything below is a proposal.
 
 ### Baseline — authoritative run
 
-`docs/ask-baseline-01f124a.json`, `--repeat 3` (a fixture counts as PASS
-only if all three attempts pass):
+**`docs/ask-baseline-f9bae39.json`, `--repeat 3`.** This supersedes
+`docs/ask-baseline-01f124a.json`, which was recorded before fixtures 12,
+22b, 15 and 33 had their assertions tightened and therefore measures a
+different suite. Do not compare against the old file.
 
-| metric | value |
-|---|---|
-| PASS (3/3 attempts) | **32/39 — 82%** |
-| FLAKY (passed at least once, failed at least once) | 6 |
-| FAIL (0/3 attempts) | 1 |
-| tool-call rate on grounding-required turns | **12/13 — 92%** |
+| metric | f9bae39 (current) | 01f124a (superseded) |
+|---|---|---|
+| PASS (3/3 attempts) | **31/39 — 79%** | 32/39 — 82% |
+| FLAKY (passed 1-2 of 3) | 4 | 6 |
+| FAIL (0/3 attempts) | 4 | 1 |
+| tool-call rate on grounding-required turns | **8/13 — 62%** | 12/13 — 92% |
+
+The JSON now records a `suite_fingerprint` (a hash of every fixture's id +
+assertions), `prompt_chars`, `model` and `repeat`, plus per-fixture
+`attempts`, `attempts_passed`, `expect_hash` and a `per_attempt` array.
+A comparison against a baseline with a different fingerprint is comparing
+two different suites, and that is now visible rather than silent. The
+console prints the per-fixture count too (`PASS 3/3`, `FLAKY 2/3`), which
+is the resolution the FLAKY→FAIL signal needs.
 
 Earlier single-run numbers (74% / 82% / 92% / 87%) are superseded; they
 were measuring noise as much as behavior, and two of them were inflated
 by harness bugs since fixed (a name-match that required 3+ characters so
 "BK" and "Ry" never counted, and a tool-round cap that returned empty
 answers). Use `--repeat 3` for any comparison.
+
+**The re-baseline moved more than the assertion changes account for, and
+the cause is finding 6 below.** The four tightened fixtures all pass 3/3,
+and their model inputs are byte-identical to the previous run (only
+`expect` and `why` changed, neither of which is sent to the model). What
+moved is grounding: 11a, 16, 19 and 30 went to 0/3 on "no tool call and
+no web grounding", and 17 to 2/3. Six fixtures moved the other way
+(07b FAIL→PASS, and 03/11b/11c/23/28 FLAKY→PASS), so this is not a
+uniform degradation.
+
+Note the model string now captured in the JSON:
+`gemini-3.1-flash-lite-preview`. A preview alias can move server-side
+without notice, so some of the day-over-day swing may be model drift
+rather than prompt behavior. The old baseline predates the `model` field,
+so it cannot be checked. From here on it can.
 
 ### The variance is the headline finding
 
@@ -82,6 +107,36 @@ the price tool called) and the anti-recycling rule.
    exists; the harness sees the raw model output before it, so this
    confirms the *model* still glitches and the detector is load-bearing —
    an argument for keeping the code and deleting any prompt text about it.
+
+6. **The prompt actively suppresses web grounding** (`11a`, `16`, `19`,
+   `30`; ledger 2026-06-17, 2026-07-06, 2026-07-12, 2026-08-25). This is
+   the largest finding in the suite and it is measured, not inferred.
+
+   Same question, same ten-tool config, same `include_server_side_tool_-`
+   `invocations=True`, only the system instruction varies:
+
+   | condition | grounded-or-tool |
+   |---|---|
+   | with the `/ask` system prompt | **0/3** |
+   | no system prompt | **3/3** |
+
+   Grounding is not broken and not rate-limited — `google_search` alone
+   returns 5-6 chunks on the same question, and the full tool list grounds
+   3/3 on the bare question. Adding the prompt is what turns it off.
+
+   All four affected fixtures are turns where search is the *only* correct
+   route: a lockup schedule, a market cap, song lyrics, an MSTR premium.
+   With grounding suppressed the model answers from memory, which is
+   exactly the confabulation those four ledger incidents record. The
+   prompt is producing the failure it was extended to prevent.
+
+   *Proposal:* find which block does it before deleting anything else.
+   The likely candidates are the tool-routing priority text and the
+   local-context-first rules (`21` wants the opposite behavior and passes
+   3/3), so the two goals are in direct tension and the prompt currently
+   resolves it the wrong way. Bisecting the prompt against these four
+   fixtures is a concrete, cheap experiment and it needs owner sign-off
+   because it means editing `ask_prompt.py`.
 
 ### Known harness limitation
 

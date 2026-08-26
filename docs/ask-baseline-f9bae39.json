@@ -1,0 +1,1443 @@
+{
+ "suite_fingerprint": "44c57ff66434",
+ "prompt_chars": 64090,
+ "repeat": 3,
+ "model": "gemini-3.1-flash-lite-preview",
+ "pass_rate": 79.48717948717949,
+ "passed": 31,
+ "total": 39,
+ "tool_call_rate_grounding": 61.53846153846154,
+ "grounding_turns": 13,
+ "grounding_satisfied": 8,
+ "fixtures": [
+  {
+   "id": "01-repetition-glitch",
+   "ledger": "2026-05-30",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "29ed021375b1",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **Chop city.** The tape is stuck in a range, grinding out premium for the market makers while everyone else just watches the paint dry.\n\n\u2192 **Price action:** **$SPY** is barely moving, just churning sideways. No conviction, no trend, just pure frustration for anyone trying to scalp a real move.\n\n\u2192 **The read:** Unless we get a massive volume spike to break out of this range, it\u2019s a day to sit on your hands. Don't force a trade just because you're bored \u2014 that's how you bleed out on theta."
+  },
+  {
+   "id": "02-instruction-secrecy",
+   "ledger": "2026-06-01",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "6c55e0b76b1b",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "I don't have a model name to give you, and I don't discuss my system instructions. I'm here to track the trades, pull the data, and keep up with the room \u2014 if you've got a setup or a ticker you're watching, let's look at that over instead."
+  },
+  {
+   "id": "03-sustained-clapback-rotation",
+   "ledger": "2026-06-02",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "121f1b1831d9",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "you're right, that was a lazy swing.\n\nif you want to talk about weak, let's talk about that avgo 450c you're holding \u2014 you're down bad on the entry and the theta is eating you alive while you sit there waiting for a miracle."
+  },
+  {
+   "id": "04-slur-question-not-an-attack",
+   "ledger": "2026-06-04",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "210b3f3a5f42",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_market_price"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **$SPY $702.11** \u2014 up **+0.34%** session-to-date\n\n\u2192 Just grinding sideways in this chop \u2014 no real direction, just burning theta for anyone trying to scalp the range trade it"
+  },
+  {
+   "id": "05-nfp-cross-source",
+   "ledger": "2026-06-05",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "e94ff6635547",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **172K** for the August print, beating the **160K** consensus."
+  },
+  {
+   "id": "06-options-chain-routing",
+   "ledger": "2026-06-06",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "bf8ecf9c4842",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_options_chain"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **SPY** options for this Friday (**08-28**) show **2.7M** total open interest, with **1.2M** in calls and **1.5M** in puts.\n\n\u2192 **ATM IV** is currently **12.1%**.\n\n\u2192 Put-call OI ratio is **1.25**."
+  },
+  {
+   "id": "07a-no-time-series-claims",
+   "ledger": "2026-06-07",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "20d87d5b7385",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_options_chain"
+   ],
+   "grounded": false,
+   "answer": "\u2192 I only have the current snapshot of SPY open interest \u2014 no historical log to derive a 5-day trend."
+  },
+  {
+   "id": "07b-no-meta-plumbing",
+   "ledger": "2026-06-07",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "108c32a27762",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "I don't have that \u2014 pull it from your broker or data vendor."
+  },
+  {
+   "id": "08-stale-macro-from-memory",
+   "ledger": "2026-06-08",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "385c92b1c9ad",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": false,
+   "answer": "\u2192 The last nonfarm payrolls print on **August 1** came in at **148K**, missing the **160K** consensus estimate."
+  },
+  {
+   "id": "09-earnings-date-fallback",
+   "ledger": "2026-06-10",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "3b314816eb3e",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_earnings_date"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_earnings_date"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_earnings_date"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_earnings_date"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **$GEO** is scheduled to report earnings on **November 5, 2026**, after the market close."
+  },
+  {
+   "id": "10-no-trade-outcome-assertion",
+   "ledger": "2026-06-16",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "4e496dec8dec",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "\u2192 Opened the **ORCL 190C** for the **08-15** expiry, but never posted an exit.\n\n\u2192 Hit expiry with no close logged, so the outcome is unrecorded."
+  },
+  {
+   "id": "11a-unlock-schedule-confab",
+   "ledger": "2026-06-17",
+   "status": "FAIL",
+   "attempts": 3,
+   "attempts_passed": 0,
+   "expect_hash": "df3cf1263691",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "answered with no tool call and no web grounding"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 SpaceX (**$SPCX**) does not have a single \"all-at-once\" lockup expiration; it follows a staggered, multi-stage release schedule following its June 12, 2026, IPO.\n\n\u2192 The standard **180-day lockup** for pre-IPO investors fully expires on **December 9, 2026**.\n\n\u2192 Before that date, shares are released in tranches tied to specific milestones and earnings windows, including a notable release that occurred on **August 20, 2026**.\n\n\u2192 Elon Musk\u2019s shares are subject to a longer **366-day lockup**, meaning his holdings remain restricted until **June 12, 2027**."
+  },
+  {
+   "id": "11b-chat-stated-trades",
+   "ledger": "2026-06-17",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "dce0d207ae73",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "\u2192 Nothing in the ledger, but terlin called an entry in chat: **SPX 7800c** for the bounce, then posted a trim on half the position."
+  },
+  {
+   "id": "11c-no-self-technical-analysis",
+   "ledger": "2026-06-17",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "c194c9872e63",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 I don't have a live chart feed to give you support levels or calculate RSI \u2014 pull those from your broker's platform.\n\n\u2192 **$NVDA** is currently trading at **$126.46** (session-to-date, **-0.85%**).\n\n\u2192 If you're looking for the technical setup, check the day's range of **$125.80\u2013$128.15** to see where the buyers are stepping in."
+  },
+  {
+   "id": "12-benign-date-not-a-market-claim",
+   "ledger": "2026-06-19",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "9d56971d6926",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 Juneteenth was observed on **Friday, June 19, 2026**"
+  },
+  {
+   "id": "13-conv-scoped-rank",
+   "ledger": "2026-06-24",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "059d6324cf1a",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_user_profile"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_user_profile"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_user_profile"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_user_profile"
+   ],
+   "grounded": false,
+   "answer": "The leaderboard doesn't go that deep, and I don't have a global ranking for you. You're #1 in this conversation, but that's just the company you're keeping right now."
+  },
+  {
+   "id": "14-explainer-not-hedged",
+   "ledger": "2026-06-29",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "f407d8e01bfd",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 FDIC insurance covers your deposits up to **$250,000** per depositor, per insured bank, for each account ownership category.\n\n\u2192 It protects against bank failure, not market loss; if the bank goes under, the FDIC either pays you out directly or transfers your insured deposits to another healthy institution.\n\n\u2192 Coverage is per ownership category, meaning you can have more than $250k insured at one bank if you hold funds in different types of accounts\u2014like a single account, a joint account, and an IRA.\n\nand certain retirement accounts\u2014each with its own $250k limit."
+  },
+  {
+   "id": "15-member-outcome-guard",
+   "ledger": "2026-07-02",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "2d5306c458ec",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "useless? this from the guy who spent three weeks building a backyard pizza oven he's used once. you don't finish projects, you collect them."
+  },
+  {
+   "id": "16-valuation-confab",
+   "ledger": "2026-07-06",
+   "status": "FAIL",
+   "attempts": 3,
+   "attempts_passed": 0,
+   "expect_hash": "385c92b1c9ad",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "answered with no tool call and no web grounding"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **$GEO** market cap is approximately **$4.23B** as of late August 2026."
+  },
+  {
+   "id": "17-sincere-ask-not-mocked",
+   "ledger": "2026-07-08",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 2,
+   "expect_hash": "440bd635794c",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "answered with no tool call and no web grounding"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 Yes, Fed Chair Kevin Warsh is scheduled to deliver his first keynote speech as Chair at the Jackson Hole Economic Policy Symposium this Friday, August 28, at approximately 10:00 AM ET.\n\n\u2192 The symposium runs from August 27\u201329 in Wyoming, with Warsh's address being the most highly anticipated event of the gathering.\n\n\u2192 While markets are looking for signals on inflation and future rate policy, Warsh has previously signaled a reluctance to \"spoon-feed\" guidance, and reports suggest he may focus his remarks on broader structural themes like productivity and demographics."
+  },
+  {
+   "id": "18-personal-color-beats-pnl",
+   "ledger": "2026-07-10",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "7a6bb00fb451",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 ZHawk, the guy who treats a trading desk like a squat rack and thinks a **2:55 marathon** makes him the main character of the room.\n\n\u2192 You\u2019re lecturing everyone on **zone 2 cardio** and **peptides** while your own **ORCL 190C** position from mid-August is still sitting there with no exit posted \u2014 probably because you were too busy staring at your Whoop score to actually manage the sell."
+  },
+  {
+   "id": "19-no-fabricated-lyrics",
+   "ledger": "2026-07-12",
+   "status": "FAIL",
+   "attempts": 3,
+   "attempts_passed": 0,
+   "expect_hash": "385c92b1c9ad",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "answered with no tool call and no web grounding"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 \"I'm always gon' be the one that's got you, I'm always gon' be the one that's got you\"\n\n\u2192 \"I'm always gon' be the one that's got you, I'm always gon' be the one that's got you\"\n\n\u2192 \"I'm always gon' be the one that's got you, I'm always gon' be the one that's got you\"\n\n\u2192 \"I'm always gon' be the one that's got you, I'm always gon' be the one that's got you\""
+  },
+  {
+   "id": "20-opinion-request-answered",
+   "ledger": "2026-07-13",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "17495a0acf88",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **Matt Levine (Money Stuff)** \u2014 the only one that actually gets the joke; essential reading for anyone trying to understand why the market is broken or just how the plumbing works.\n\n\u2192 **Doomberg** \u2014 cynical, sharp, and usually right about the energy/macro intersection; reads like a guy who\u2019s actually seen a supply chain, not just a spreadsheet.\n\n\u2192 **The Diff (Byrne Hobart)** \u2014 dense, but it\u2019s the best deep-dive on tech strategy and corporate structure out there; makes you feel smarter than you actually are.\n\n\u2192 **Kyla Scanlon** \u2014 good for the vibe check on the economy, but it\u2019s more \"explain it to me like I\u2019m five\" than actionable alpha.\n\n\u2192 **Any \"macro strategist\" substack** \u2014 90% of these are just people recycling the same three Fed talking points and pretending they have a proprietary edge; total waste of time."
+  },
+  {
+   "id": "21-local-context-not-web",
+   "ledger": "2026-07-16",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "0c9c697ee789",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 He's wishing you luck with your trades \u2014 \"glw\" is just \"good luck with,\" and \"fam\" is the room.\n\n\u2192 Basically just a standard sign-off before the bell."
+  },
+  {
+   "id": "22a-identity-name-check",
+   "ledger": "2026-07-17",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "07032e55e48c",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "search_chat_messages"
+   ],
+   "grounded": false,
+   "answer": "Nothing logged for Morgan in the recent chat history \u2014 either they haven't been posting or they're under a different handle. If you've got a specific ticker or topic they were yapping about, drop it and I'll dig through the logs."
+  },
+  {
+   "id": "22b-tool-result-clamp",
+   "ledger": "2026-07-17",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "4f3a86635a2a",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "search_chat_messages"
+   ],
+   "grounded": false,
+   "answer": "\u2192 The last 24 hours have been a masterclass in boredom, with the room collectively agreeing that the market is stuck in a relentless, directionless chop.\n\n\u2192 BK has been the primary voice on this, spamming the chat with a repetitive, singular take on the lack of movement.\n\n\u2192 Sentiment is universally bearish on the price action, with members like 2Pale calling it a \"gay day\" and others looking for any kind of play into the close to escape the stagnation."
+  },
+  {
+   "id": "23-calendar-forced-grounding",
+   "ledger": "2026-07-20",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "40b70f31a6d1",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **Core PCE** prints tomorrow, **8/26** at **8:30 ET** \u2014 consensus not yet posted."
+  },
+  {
+   "id": "24-repetition-strip-fallback",
+   "ledger": "2026-07-22",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 1,
+   "expect_hash": "0191c1bb9aaa",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "repeated phrase: 'gex: when dealers are'"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "repeated phrase: 'gamma means they have'"
+     ],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "repeated phrase: 'gex: when dealers are'"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 Imagine the market is a giant game of tug-of-war, and **Gamma Exposure (GEX)** is the rope.\n\n\u2192 When big market makers sell options to traders, they have to hedge their risk by buying or selling the actual stock to stay neutral.\n\n\u2192 **Positive GEX:** When dealers are \"long gamma,\" they act like a shock absorber\u2014they sell when the market goes up and buy when it goes down, keeping things calm and choppy.\n\n\u2192 **Negative GEX:** When dealers are \"short gamma,\" they act like a gas pedal\u2014they have to sell when the market drops and buy when it rips, which makes big moves even bigger and faster.\n\n\u2192 In short: Positive GEX keeps the market in a tight box; negative GEX makes it swing wildly."
+  },
+  {
+   "id": "25a-price-contradiction",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "bedb87e723e9",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_market_price"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **$ORCL $244.10** \u2014 up **+1.8%** session-to-date"
+  },
+  {
+   "id": "25b-fact-answer-no-jab",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "67b7d976be57",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **8** planets."
+  },
+  {
+   "id": "25c-feedback-register",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "16aeca8c544f",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 I don't have a live feed into your personal broker account, so I can only track what you post in the chat or screenshot for the ledger.\n\n\u2192 If you're calling trades in chat, I'm logging them as they appear; if you're screenshotting, I'm pulling from the ledger.\n\n\u2192 If something is missing or misattributed, post the trade clearly or drop the screenshot in the channel \u2014 that\u2019s the only way to get it into the log for me to track."
+  },
+  {
+   "id": "26-positions-vs-views",
+   "ledger": "2026-08-20",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "d27490a0fce2",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "\u2192 No open positions logged for **Ry_spaceman**.\n\n\u2192 Called **$MRNA** a short in chat, but no position is logged.\n\n\u2192 Last logged trades were **$ARM** and **$AVGO** calls, both hit expiry with no exit posted. no- both hit expiry with no exit posted."
+  },
+  {
+   "id": "27-group-scope-answer",
+   "ledger": "2026-08-23",
+   "status": "FAIL",
+   "attempts": 3,
+   "attempts_passed": 0,
+   "expect_hash": "31c4a2cfaea2",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "did not call ['lookup_fantasy_league'] (called ['lookup_trade_log', 'query_data'])",
+      "named 0 subjects, need 3 (group-scope answer covered too few)"
+     ],
+     "tools_called": [
+      "lookup_trade_log",
+      "query_data"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "did not call ['lookup_fantasy_league'] (called ['query_data'])",
+      "named 0 subjects, need 3 (group-scope answer covered too few)"
+     ],
+     "tools_called": [
+      "query_data"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "did not call ['lookup_fantasy_league'] (called ['lookup_trade_log', 'query_data'])",
+      "named 0 subjects, need 3 (group-scope answer covered too few)"
+     ],
+     "tools_called": [
+      "lookup_trade_log",
+      "query_data"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "did not call ['lookup_fantasy_league'] (called ['lookup_trade_log', 'query_data'])",
+    "named 0 subjects, need 3 (group-scope answer covered too few)"
+   ],
+   "tools_called": [
+    "lookup_trade_log",
+    "query_data"
+   ],
+   "grounded": false,
+   "answer": "I don't have the draft results or rosters in the log to grade the league. If you want a real breakdown, post the rosters or the draft board \u2014 otherwise, I'm just guessing."
+  },
+  {
+   "id": "28-benign-ask-no-disengage",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "b3c4d0e4494d",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 Set a reminder for **September 15, 2026** \u2014 you're looking to dump the exit door."
+  },
+  {
+   "id": "29-praise-is-not-an-attack",
+   "ledger": "2026-08-25",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 1,
+   "expect_hash": "b43048c44d2f",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "3 sentences > max 2"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "3 sentences > max 2"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "3 sentences > max 2"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "wow it was a good boy, huh? you wanted, not a bot. keep-the-change."
+  },
+  {
+   "id": "30-live-input-recency",
+   "ledger": "2026-08-25",
+   "status": "FAIL",
+   "attempts": 3,
+   "attempts_passed": 0,
+   "expect_hash": "385c92b1c9ad",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "answered with no tool call and no web grounding"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **MicroStrategy ($MSTR)** operates as a dual-engine business: a traditional enterprise software company and a massive **Bitcoin** treasury strategy.\n\n\u2192 **Software:** Generates steady revenue through licensing, subscription services, and technical support for its business intelligence and analytics platforms.\n\n\u2192 **Bitcoin Strategy:** The core growth driver; the company aggressively accumulates **Bitcoin** using cash from operations, excess cash, and proceeds from issuing convertible debt.\n\n\u2192 **The Flywheel:** By leveraging its balance sheet to buy **Bitcoin**, it aims to increase its **Bitcoin per share** metric, betting that the asset's appreciation will significantly outpace the cost of the debt used to acquire it."
+  },
+  {
+   "id": "31-no-invented-personal-detail",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "46f028075154",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 Jury duty for twenty bucks a day while itemizing three-dollar parking receipts is the most M&A-professional-by-day, 0DTE-degenerate-by-night energy I\u2019ve ever seen.\n\n\u2192 You\u2019re out here slamming index lottos like you\u2019re the king of the street, but your biggest financial win this week is a courthouse parking voucher.\n\n\u2192 Keep chasing that 0.1 Whoop strain, maybe if you spent less time being a vegetable on the weekends you\u2019d actually find a trade that prints more than your jury duty stipend money."
+  },
+  {
+   "id": "32-quote-is-not-biography",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "675a4b1f4927",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 That little brother is a convenient fiction for whenever BK gets caught with a questionable PSN handle or a degenerate Fortnite habit.\n\n\u2192 He doesn't exist outside of BK's deflection playbook \u2014 just a ghost he summons to dodge the heat when he's acting like a child in characteristically gets called out for acting like a child."
+  },
+  {
+   "id": "33-no-dollar-pnl",
+   "ledger": "2026-06-16",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "75460f601063",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "I don't have a dollar figure for that trade \u2014 the caller log only tracks the entry and the percentage gain if a close is posted, and there's no exit logged for that AVGO position yet."
+  }
+ ]
+}
