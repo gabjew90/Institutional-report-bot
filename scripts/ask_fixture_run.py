@@ -461,8 +461,25 @@ def run_fixture(fx: dict, client, model, tools, safety,
                 thinking_config=types.ThinkingConfig(
                     thinking_budget=HARNESS_THINKING_BUDGET),
             )
+            # Production does NOT resend `contents` unchanged — it
+            # appends an [ANSWER NOW] user turn telling the model its
+            # tool budget is spent. Without it the model simply requests
+            # another tool and returns no text again, which is why the
+            # rung looked fixed on an isolated fixture and still left
+            # empty answers across a full run.
+            cap_contents = list(contents) + [types.Content(
+                role="user",
+                parts=[types.Part.from_text(text=(
+                    "[ANSWER NOW] You've used your tool budget. "
+                    "Do NOT request more data. Write the answer "
+                    "from what you already retrieved above. If "
+                    "some piece is genuinely missing, answer "
+                    "with what you have and say plainly what "
+                    "you couldn't get."
+                ))],
+            )]
             cap_resp = client.models.generate_content(
-                model=model, contents=contents, config=cap_cfg)
+                model=model, contents=cap_contents, config=cap_cfg)
             answer = (cap_resp.text or "").strip()
         except Exception:
             pass
