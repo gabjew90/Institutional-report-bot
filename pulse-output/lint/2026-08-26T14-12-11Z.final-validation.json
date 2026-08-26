@@ -1,0 +1,181 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '5.18%' is attached to [basis, capped, long, morning, points] but the source uses it for [change, close, crypto, indices, shown] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "5.18%",
+   "draft_subject": [
+    "basis",
+    "capped",
+    "long",
+    "morning",
+    "points",
+    "shape",
+    "sits"
+   ],
+   "source_subject": [
+    "change",
+    "close",
+    "crypto",
+    "indices",
+    "shown",
+    "since",
+    "spread",
+    "today"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '52 basis points' is attached to [basis, capped, long, morning, points] but the source uses it for [crypto, during, shown, since, spread] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "52 basis points",
+   "draft_subject": [
+    "basis",
+    "capped",
+    "long",
+    "morning",
+    "points",
+    "shape",
+    "sits"
+   ],
+   "source_subject": [
+    "crypto",
+    "during",
+    "shown",
+    "since",
+    "spread",
+    "today",
+    "yesterday"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '48.3%' is attached to [adding, book, directional, equity, funds] but the source uses it for [gross, hitting, leverage] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "48.3%",
+   "draft_subject": [
+    "adding",
+    "book",
+    "directional",
+    "equity",
+    "funds",
+    "hedge",
+    "hedges",
+    "long"
+   ],
+   "source_subject": [
+    "gross",
+    "hitting",
+    "leverage"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '205%' is attached to [adding, book, directional, equity, funds] but the source uses it for [gross, hitting, leverage] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "205%",
+   "draft_subject": [
+    "adding",
+    "book",
+    "directional",
+    "equity",
+    "funds",
+    "hedge",
+    "hedges",
+    "long"
+   ],
+   "source_subject": [
+    "gross",
+    "hitting",
+    "leverage"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.79%' is attached to [core, dollar, down, firmer, front] but the source uses it for [date, session] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.79%",
+   "draft_subject": [
+    "core",
+    "dollar",
+    "down",
+    "firmer",
+    "front",
+    "like",
+    "look",
+    "morning"
+   ],
+   "source_subject": [
+    "date",
+    "session"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.18% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.18",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "- **July core PCE at 0.25% against 0.2% expected.** This is the inflation gauge the Fed actually targets, and it more than doubled from June's 0.1%, running above Goldman's 0.20% call and Deutsche Ban"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.38% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.1, 0.25]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.38",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "- **July core PCE at 0.25% against 0.2% expected.** This is the inflation gauge the Fed actually targets, and it more than doubled from June's 0.1%, running above Goldman's 0.20% call and Deutsche Ban"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.66% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.1, 0.25]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.66",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "- **July core PCE at 0.25% against 0.2% expected.** This is the inflation gauge the Fed actually targets, and it more than doubled from June's 0.1%, running above Goldman's 0.20% call and Deutsche Ban"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.34% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.1, 0.25]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.34",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "- **July core PCE at 0.25% against 0.2% expected.** This is the inflation gauge the Fed actually targets, and it more than doubled from June's 0.1%, running above Goldman's 0.20% call and Deutsche Ban"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.30% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.1, 0.25]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.30",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "One reading treats all of this as deliberate. The Treasury's cash account held $954bn on August 25, and spending it into a market where trend-followers are record short is a way to force those shorts "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.18% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.1, 0.25]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.18",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "One reading treats all of this as deliberate. The Treasury's cash account held $954bn on August 25, and spending it into a market where trend-followers are record short is a way to force those shorts "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.79% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.1, 0.25]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.79",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Speculators bought a record $22.2bn of gold futures in the three weeks to August 18, the largest stretch in more than a decade of data, leaving the bullish position at the 93rd percentile of the past "
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 12,
+ "exit_code": 4
+}

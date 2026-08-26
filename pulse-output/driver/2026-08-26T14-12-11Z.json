@@ -1,0 +1,90 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-08-26T14:13:35.433522Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=40",
+   "at": "2026-08-26T14:13:45.767459Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-08-26T14:23:12.701384Z"
+  },
+  "lint": {
+   "decision": "DISPATCH_SCRUB",
+   "detail": "2 hard issue(s)",
+   "at": "2026-08-26T14:28:29.379995Z"
+  },
+  "scrub_relint": {
+   "decision": "CONTINUE",
+   "detail": "0 hard issues after SCRUB",
+   "at": "2026-08-26T14:30:00.792966Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-08-26T14:30:04.663801Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-08-26T14:30:15.653854Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-08-26T14:30:40.928691Z"
+  }
+ },
+ "budgets": {},
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-08-26T14:13:35.433522Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-08-26T14:13:45.767459Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-08-26T14:23:12.701384Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "DISPATCH_SCRUB",
+   "at": "2026-08-26T14:28:29.379995Z"
+  },
+  {
+   "gate": "scrub_relint",
+   "decision": "CONTINUE",
+   "at": "2026-08-26T14:30:00.792966Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-08-26T14:30:04.663801Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-08-26T14:30:15.653854Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-08-26T14:30:40.928691Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
