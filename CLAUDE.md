@@ -6,6 +6,27 @@ Write in direct, technically accurate, plain English. Avoid melodramatic, flower
 
 Scope: responses to the user, commit messages, code comments, docs, and reports. This is separate from the bot's output voice — the pulse and /ask have their own voice contracts (`discord_bot/ask_prompt.py`, DRAFT_USER, `ai_analysis/voice_rules.py`) and those rules win for bot-facing text.
 
+## /ask prompt: enforcement policy (binding on all sessions)
+
+The system prompt is a scarce shared resource, currently ~64,000 chars.
+The budget below is provisional and set by the owner; it is not a
+measured optimum. Treat it as a spending limit, not a target.
+
+1. Deterministic first. If a rule can be checked by regex, a tool-call-log
+   assertion, or a schema constraint, implement it as CODE and DELETE the
+   corresponding prompt text in the same commit. Never both.
+2. Tool mechanics belong in tool declarations, not the system prompt.
+   Parameter semantics, status handling, and per-tool usage shapes go in
+   the schema. Only cross-tool routing priority stays in the prompt.
+3. Every prompt addition names its paying deletion in the commit message:
+   "adds N chars, removes M chars, net -X".
+4. Incident narratives live in the ask_prompt.py module docstring ledger.
+   The prompt body carries the RULE only — no dates, no story, no "observed:".
+5. Before adding a rule, grep for the behavior it governs. If a rule already
+   covers it, REWRITE that rule. Never add a second one alongside.
+6. _SIZE_CEILING only decreases. Raising it is owner-only, requires evidence
+   from scripts/ask_fixture_run.py, and is not an agent-available action.
+
 ## Project Overview
 
 Institutional Research PDF Analyzer + Discord Market Pulse Bot. Processes 100-200 institutional financial research PDFs daily from Dropbox and delivers synthesized trading intelligence to Discord channels.
