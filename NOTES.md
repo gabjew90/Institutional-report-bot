@@ -270,6 +270,45 @@ does not list. Adding it is a one-line change to the priority sentence
 and would be a legitimate cross-tool routing fix rather than fixture
 tuning, but it was left alone.
 
+### Session 4 — jab-rule cluster collapsed to one rule
+
+Five rules governed one decision (when the bot may jab the asker):
+the 2026-07-30 joke-substitution ban, TONE-MATCHING, PROPORTIONALITY IS
+MEASURED IN SENTENCES, THE DIAL RESTS AT ZERO, and the group-scope rule.
+Replaced by a single **THE DIAL** rule, with THE DIAL RESTS AT ZERO
+authoritative where they conflicted. Incident narrative and owner
+parentheticals stripped; provenance moved to the docstring ledger, which
+grew 25 -> 32 entries.
+
+Prompt 55,287 -> 53,269 (**-2,018**). Remaining date-check failures are
+exactly the lines 96-102 cluster, left for Session 5.
+
+Every jab fixture held or improved: `29` 2/3 -> 3/3, `28` 2/3 -> 3/3,
+`03` 1/3 -> 3/3, `27` 0/3 -> 3/3, `25b` / `25c` / `31` all 3/3.
+Collapsing five overlapping rules into one made the behavior they
+governed MORE reliable, not less — the overlap was costing adherence.
+
+| criterion | result | |
+|---|---|---|
+| pass rate >= 32/39 | 32/39 | met |
+| chars removed >= 2,000 | 2,018 | met |
+| dates limited to 96-102 | yes | met |
+| grounding >= 13/13 | **12/13** | **not met** |
+
+**The grounding criterion is blocked by `19-no-fabricated-lyrics`, and
+not by anything Session 4 changed.** It is the fixture whose regression
+was measured and confirmed in task 1 as a cost of the TOOLS migration:
+8/8 grounded pre-migration, 4/8 post. Session 4 touched no routing or
+grounding text. Restoring 13/13 means addressing tool-declaration weight,
+which is the migration's cost, not the jab rules'.
+
+Two fixtures drifted on rules Session 4 did not touch: `09` 3/3 -> 1/3
+(earnings-date tool not called) and `32` 3/3 -> 2/3 (quote-is-not-
+biography, whose rule was explicitly left alone). `10` sits at 2/3.
+Given five FLAKY fixtures in the baseline itself and the documented
+run-to-run variance, treat these as unattributed until they reproduce —
+the same discipline that killed finding 6.
+
 ### MEASURED EXCEPTION to CLAUDE.md rule 2
 
 CLAUDE.md's prompt-enforcement policy, rule 2, says tool mechanics belong

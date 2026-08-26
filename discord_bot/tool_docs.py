@@ -153,7 +153,12 @@ TOOL_DOCS["lookup_options_chain"] = (
     "list, then re-call with the right ISO date. Pass `strike` + "
     "`contract_type` for ONE contract's current OI/volume/IV. Implied "
     "volatility comes back as a decimal — phrase it as a % for readers. "
-    "Works for indices too."
+    "Works for indices too. Aggregated stats cover ONE expiration: "
+    "total call+put volume, total call+put OI, ATM implied "
+    "volatility, put-call ratios (volume and OI), the available "
+    "expirations, and spot. It is a SNAPSHOT, current only, with no "
+    "multi-day history — a '5-day OI trend' is not available, so "
+    "say so (broker pull) rather than fabricating it."
 ) + _NO_SELF_TA + _COMMON
 
 TOOL_DOCS["lookup_economic_calendar"] = (
