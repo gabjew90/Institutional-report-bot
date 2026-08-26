@@ -105,9 +105,11 @@ _EXTERNAL_SUBJECT = re.compile(
 # is how a real 07b answer slipped past the windowed detector. These fire
 # unless the sentence is plainly about an external company.
 _BOT_NOUNS = re.compile(
-    r"\bthe (?:feed|back[- ]?end|plumbing|pipeline|tracker|database|"
-    r"cache|index|data layer)\b|\b(?:spot|static|current) snapshots?\b|"
-    r"\bmy (?:feed|back[- ]?end|plumbing|database|cache)\b",
+    r"\b(?:the|my|our) (?:feeds?|back[- ]?ends?|plumbing|pipelines?|"
+    r"trackers?|databases?|caches?|indexe?s?|data layers?|endpoints?|"
+    r"APIs?|schemas?|snapshots?)\b"
+    r"|\b(?:spot|static|current) snapshots?\b"
+    r"|\b(?:feeds?|endpoints?) are (?:wired|live|up|down)\b",
     re.I,
 )
 

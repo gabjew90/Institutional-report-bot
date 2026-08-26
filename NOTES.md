@@ -328,6 +328,62 @@ Given five FLAKY fixtures in the baseline itself and the documented
 run-to-run variance, treat these as unattributed until they reproduce —
 the same discipline that killed finding 6.
 
+### Session 5, class 1 — meta-plumbing moved from prompt to code
+
+`scripts/ask_response_validate.py :: check_meta_plumbing`. The prompt's
+NEVER META-NARRATE block went 788 -> 211 chars (**-577**), keeping one
+line naming the behavior.
+
+Enforcement comparison on every `07b` answer recorded across all runs,
+with the full prompt block in force at the time each was produced:
+
+| enforcement | caught | false positives |
+|---|---|---|
+| the prompt block (788 chars, quoted the violating sentence verbatim) | **0 / 7** | — |
+| `check_meta_plumbing` | **7 / 7** | **0** |
+
+The prompt named the exact shape never to repeat and the model
+reproduced it anyway. That is the cleanest evidence in the suite that
+prompt text is not enforcement.
+
+**OPEN RISK — the validator is NOT wired into the send path.** It is a
+standalone module with a self-test. `discord_bot/bot.py` does not call
+it, so production currently has the one-line prompt rule and nothing
+else, and `07b` moved 2/3 -> 1/3 on raw model output once the block was
+deleted. Until `validate()` runs before the answer is sent, this class is
+enforced WEAKER than it was, not stronger. Closing it needs an owner
+decision on what a violation does: regenerate the turn, strip the
+offending sentence, or refuse. Recommend regenerate-once-then-strip, the
+shape the repetition detector already uses.
+
+A second consequence: the harness scores RAW model output, so `07b` can
+never reach 3/3 by deleting prompt text no matter how good the validator
+is. Once the validator is wired, either the harness should score the
+post-validation answer or `07b`'s assertion should assert the validator
+catches it. Right now the fixture measures a stage that is no longer
+where the rule lives.
+
+Everything else improved against the `aadacee` baseline: **34/39 (87%)
+vs 31/39**, grounding **12/13 vs 11/13**.
+
+### Config assertion — the env-divergence class, retired
+
+Enumerating the class turned up a fourth instance nobody had noticed:
+the harness sent `max_output_tokens=1200, temperature=0.2` while
+production `/ask` sends **5000 / 0.3**. The 1200 cap is what produced the
+"empty answer after N tool calls" failures previously written off as a
+harness limitation.
+
+`PRODUCTION_CONFIG` now pins the deployed values, `config_guard` prints a
+readable diff and exits 2 before the first API call, and
+`config_fingerprint` is recorded in every baseline so a config mismatch
+invalidates a comparison exactly as an assertion mismatch does.
+`ALLOWED_CONFIG_DIFFS` is empty.
+
+Note the cost of the correction: the honest baseline on production config
+is **31/39**, below the 32/39 recorded under 1200/0.2. That was never a
+better result, it was a different experiment.
+
 ### MEASURED EXCEPTION to CLAUDE.md rule 2
 
 CLAUDE.md's prompt-enforcement policy, rule 2, says tool mechanics belong

@@ -482,8 +482,8 @@ def run_two_condition(fixtures: list[dict], client, model, tools,
 
 
 def baseline_guard(path: str, model: str, allow_model: bool,
-                   allow_suite: bool,
-                   allow_config: bool = False) -> tuple[dict, list]:
+                   allow_suite: bool, allow_config: bool = False,
+                   resolved_cfg: dict | None = None) -> tuple[dict, list]:
     """Refuse to compare a run against a baseline it is not comparable to.
 
     A baseline answers "did this change break something". That only holds
@@ -507,7 +507,12 @@ def baseline_guard(path: str, model: str, allow_model: bool,
         return {}, [f"cannot read baseline {path}: {e}"]
 
     bc = base.get("config_fingerprint")
-    cc = config_fingerprint(resolve_harness_config(model=model))
+    # MUST be the same resolved config the run will send, tool list
+    # included. Rebuilding a partial one here made every comparison
+    # a false mismatch.
+    cc = config_fingerprint(
+        resolved_cfg if resolved_cfg is not None
+        else resolve_harness_config(model=model))
     if bc is None:
         blockers.append(
             "baseline predates the `config_fingerprint` field, so the "
@@ -793,17 +798,11 @@ def main() -> int:
     print(f"model under test: {model}  (pinned in the runner; "
           f"env ASK_GEMINI_MODEL/GEMINI_MODEL are ignored)\n")
 
+    # NOTE: the baseline comparison happens AFTER the tool list is built,
+    # further down. It needs the fully resolved config (tool set
+    # included) to fingerprint, and rebuilding a partial one here made
+    # every comparison a false mismatch.
     baseline = {}
-    if args.baseline:
-        baseline, blockers = baseline_guard(
-            args.baseline, model,
-            args.allow_model_change, args.allow_suite_change,
-            args.allow_config_change)
-        if blockers:
-            print(f"REFUSING TO COMPARE against {args.baseline}")
-            for b in blockers:
-                print("  - " + b)
-            return 2
 
     tool_list = [
         types.Tool(google_search=types.GoogleSearch()),
@@ -848,6 +847,17 @@ def main() -> int:
     print(f"config OK — matches production on "
           f"{len(PRODUCTION_CONFIG)} checked keys "
           f"(fingerprint {config_fingerprint(resolved_cfg)})\n")
+
+    if args.baseline:
+        baseline, blockers = baseline_guard(
+            args.baseline, model, args.allow_model_change,
+            args.allow_suite_change, args.allow_config_change,
+            resolved_cfg)
+        if blockers:
+            print(f"REFUSING TO COMPARE against {args.baseline}")
+            for b in blockers:
+                print("  - " + b)
+            return 2
 
     records = []
     model_versions: set[str] = set()
