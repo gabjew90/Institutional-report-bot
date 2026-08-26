@@ -297,6 +297,20 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_posted ON analyst_trades(posted_at);
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_expiry ON analyst_trades(expiry);
         CREATE INDEX IF NOT EXISTS idx_analyst_trades_ticker ON analyst_trades(ticker);
+
+        -- analyst_trades is 98% NON-trades. The classifier writes a row
+        -- for every message it inspects, and 75,960 of 77,362 rows carry
+        -- is_trade=0 with ticker/action/gain_pct all NULL. Any query that
+        -- forgets `WHERE is_trade = 1` reads ~2% signal.
+        --
+        -- The view exists so the read path cannot forget. query_data's
+        -- tool docs point at it, which is enforcement rather than a
+        -- reminder -- the same reason the meta-plumbing rule moved out of
+        -- the prompt and into code.
+        CREATE VIEW IF NOT EXISTS analyst_trades_real AS
+            SELECT * FROM analyst_trades WHERE is_trade = 1;
+        CREATE INDEX IF NOT EXISTS idx_analyst_trades_is_trade
+            ON analyst_trades(is_trade);
         -- Indexes on tracking_mode / author_id moved OUT of executescript().
         -- On a live deploy with the legacy schema, those columns don't
         -- exist yet at this point — they get added by the ALTER TABLE
