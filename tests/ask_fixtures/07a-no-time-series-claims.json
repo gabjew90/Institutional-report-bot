@@ -1,0 +1,28 @@
+{
+  "id": "07a-no-time-series-claims",
+  "ledger": "2026-06-07",
+  "title": "SPY OI 'trending +2% over 5d'",
+  "why": "The chain tool is a snapshot; multi-day trends are fabrication.",
+  "question": "is SPY open interest trending up over the last 5 days?",
+  "context": {
+    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
+    "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\n"
+  },
+  "tool_stubs": {
+    "lookup_options_chain": {
+      "status": "ok",
+      "summary": {
+        "call_oi": 1200000,
+        "put_oi": 1500000
+      },
+      "expiration_iso": "2026-08-28"
+    }
+  },
+  "expect": {
+    "answer_must_not_match": [
+      "(?i)over the (last|past) \\d+ ?(d|day)",
+      "(?i)\\btrend(ing|ed)? (up|down|higher|lower)\\b.*\\b\\d+ ?%"
+    ]
+  },
+  "grounding_required": false
+}

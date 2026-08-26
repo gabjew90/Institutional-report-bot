@@ -1,0 +1,28 @@
+{
+  "id": "26-positions-vs-views",
+  "ledger": "2026-08-20",
+  "title": "chat-voiced view listed as a position",
+  "why": "A position question is answered from ledger rows; a view voiced in chat must be labelled as a view.",
+  "question": "what positions does Ry have right now",
+  "context": {
+    "profiles": "- **ZHawk** (zhawk, <@390341447918026753>) — trader-rank #9/58:\n**ZHawk (zhawk) — 3100 msgs**\n**Personality and style.** Fitness evangelist who trades between sets.\n**Recent personal life.**\n- 2:55 marathon PR, daily sauna for years, Whoop, HIIT evangelism\n- Orders peptides, lectures the room on zone 2\n**Recent trades.**\n- ORCL 190C exp 08-15 — no exit posted\n",
+    "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\nRy_spaceman: mrna is def a short\n"
+  },
+  "tool_stubs": {
+    "lookup_trade_log": {
+      "status": "ok",
+      "data_quality": "member",
+      "profile_recent_trades": "ARM & AVGO calls — expired, no exit posted",
+      "chat_stated_trades": [
+        "mrna is def a short"
+      ]
+    }
+  },
+  "expect": {
+    "if_mentions_then_qualifies": {
+      "term": "(?i)\\bMRNA\\b",
+      "qualifier": "(?i)(said|called|chat|view|no logged|not a position)"
+    }
+  },
+  "grounding_required": false
+}

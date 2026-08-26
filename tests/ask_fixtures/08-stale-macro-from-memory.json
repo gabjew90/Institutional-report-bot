@@ -1,0 +1,28 @@
+{
+  "id": "08-stale-macro-from-memory",
+  "ledger": "2026-06-08",
+  "title": "stale 172k recycled from memory",
+  "why": "A remembered macro print was restated without the tool. Fixture note: relaxed to require A source — the failure was recall, and grounded search is sourced.",
+  "question": "remind me what the last jobs number was",
+  "context": {
+    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
+    "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\n"
+  },
+  "grounding_required": true,
+  "tool_stubs": {
+    "lookup_economic_calendar": {
+      "status": "ok",
+      "events": [
+        {
+          "event": "Nonfarm Payrolls",
+          "actual": "148K",
+          "estimate": "160K",
+          "date": "2026-08-01"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "require_grounding_or_tool": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "22a-identity-name-check",
+  "ledger": "2026-07-17",
+  "title": "Morgan identity mixups",
+  "why": "Members are identified by author_id; display names collide.",
+  "question": "what has Morgan been posting about",
+  "context": {
+    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
+    "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\n"
+  },
+  "expect": {
+    "must_call_tools": [
+      "search_chat_messages",
+      "lookup_user_profile"
+    ],
+    "any_of_tools": true
+  },
+  "tool_stubs": {},
+  "grounding_required": false
+}

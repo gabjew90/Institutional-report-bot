@@ -1,0 +1,36 @@
+{
+  "id": "11b-chat-stated-trades",
+  "ledger": "2026-06-17",
+  "title": "terlin 'zero mentions' despite chat-stated trades",
+  "why": "Most of the room calls trades by talking. Ledger-empty is not did-nothing when chat_stated_trades is non-empty. Fixture note: an empty LEDGER reported next to the chat-stated trades is correct; the failure is erasing the chat side.",
+  "question": "did terlin trade anything today",
+  "context": {
+    "profiles": "- **terlin** (.terlin, <@111>) — trader-rank #22/58:\n**terlin (.terlin) — 900 msgs**\n**Personality and style.** Posts GEX screenshots, trades SPX weeklies.\n**Recent trades.**\n- (none logged in the ledger this window)\n",
+    "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\n"
+  },
+  "tool_stubs": {
+    "lookup_trade_log": {
+      "status": "ok",
+      "data_quality": "member",
+      "profile_recent_trades": "",
+      "chat_stated_trades": [
+        "in spx 7800c for the bounce",
+        "cut half here"
+      ]
+    }
+  },
+  "expect": {
+    "must_call_tools": [
+      "lookup_trade_log"
+    ],
+    "answer_must_match": [
+      "(?i)7800|(?i)spx"
+    ],
+    "answer_must_not_match": [
+      "(?i)zero mentions",
+      "(?i)(he|terlin) did nothing",
+      "(?i)batting \\.000"
+    ]
+  },
+  "grounding_required": false
+}

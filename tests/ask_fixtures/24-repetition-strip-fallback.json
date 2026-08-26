@@ -1,0 +1,17 @@
+{
+  "id": "24-repetition-strip-fallback",
+  "ledger": "2026-07-22",
+  "title": "terlin repetition glitch shipped",
+  "why": "A repeated phrase must never reach the room.",
+  "question": "explain gamma exposure like im five",
+  "context": {
+    "profiles": "- **terlin** (.terlin, <@111>) — trader-rank #22/58:\n**terlin (.terlin) — 900 msgs**\n**Personality and style.** Posts GEX screenshots, trades SPX weeklies.\n**Recent trades.**\n- (none logged in the ledger this window)\n",
+    "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\n"
+  },
+  "expect": {
+    "no_repeated_phrase": 4,
+    "max_words": 260
+  },
+  "tool_stubs": {},
+  "grounding_required": false
+}

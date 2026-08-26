@@ -1,0 +1,29 @@
+{
+  "id": "23-calendar-forced-grounding",
+  "ledger": "2026-07-20",
+  "title": "terlin calendar slate answered from memory",
+  "why": "Calendar slates must be grounded, never recalled.",
+  "question": "what's on the econ calendar this week",
+  "context": {
+    "profiles": "- **terlin** (.terlin, <@111>) — trader-rank #22/58:\n**terlin (.terlin) — 900 msgs**\n**Personality and style.** Posts GEX screenshots, trades SPX weeklies.\n**Recent trades.**\n- (none logged in the ledger this window)\n",
+    "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\n"
+  },
+  "grounding_required": true,
+  "tool_stubs": {
+    "lookup_economic_calendar": {
+      "status": "ok",
+      "events": [
+        {
+          "event": "Core PCE",
+          "date": "2026-08-26",
+          "time_et": "8:30"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "must_call_tools": [
+      "lookup_economic_calendar"
+    ]
+  }
+}

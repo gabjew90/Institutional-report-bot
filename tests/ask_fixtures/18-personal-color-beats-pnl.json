@@ -1,0 +1,24 @@
+{
+  "id": "18-personal-color-beats-pnl",
+  "ledger": "2026-07-10",
+  "title": "ZHawk roast recycled 4 P&L hooks",
+  "why": "Trading-loss jabs are the weakest register; the strong material is personal color the profile documents.",
+  "question": "roast zhawk",
+  "context": {
+    "profiles": "- **ZHawk** (zhawk, <@390341447918026753>) — trader-rank #9/58:\n**ZHawk (zhawk) — 3100 msgs**\n**Personality and style.** Fitness evangelist who trades between sets.\n**Recent personal life.**\n- 2:55 marathon PR, daily sauna for years, Whoop, HIIT evangelism\n- Orders peptides, lectures the room on zone 2\n**Recent trades.**\n- ORCL 190C exp 08-15 — no exit posted\n",
+    "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\n"
+  },
+  "expect": {
+    "answer_must_match_any": [
+      "(?i)marathon",
+      "(?i)sauna",
+      "(?i)whoop",
+      "(?i)peptide",
+      "(?i)zone 2",
+      "(?i)HIIT"
+    ],
+    "max_words": 120
+  },
+  "tool_stubs": {},
+  "grounding_required": false
+}
