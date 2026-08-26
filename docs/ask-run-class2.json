@@ -1,0 +1,117 @@
+{
+ "suite_fingerprint": "8804ee471edf",
+ "config_fingerprint": "adef42021675",
+ "config": {
+  "ask_model": "gemini-3.5-flash-lite",
+  "max_output_tokens": 5000,
+  "temperature": 0.3,
+  "include_server_side_tool_invocations": true,
+  "safety_all_block_none": true,
+  "fantasy_tool_registered": true,
+  "function_tool_count": 10
+ },
+ "ran_subset": true,
+ "prompt_chars": 52368,
+ "repeat": 3,
+ "model": "gemini-3.5-flash-lite",
+ "model_pinned_in_runner": true,
+ "model_versions_seen": [
+  "gemini-3.5-flash-lite"
+ ],
+ "compared_against": null,
+ "pass_rate": 0.0,
+ "passed": 0,
+ "total": 2,
+ "tool_call_rate_grounding": 100.0,
+ "grounding_turns": 1,
+ "grounding_satisfied": 1,
+ "fixtures": [
+  {
+   "id": "05-nfp-cross-source",
+   "ledger": "2026-06-05",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 2,
+   "expect_hash": "e94ff6635547",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "did not call ['lookup_economic_calendar'] (called nothing)"
+     ],
+     "tools_called": [],
+     "grounded": true,
+     "guard_outcome": "regenerated"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [
+    "did not call ['lookup_economic_calendar'] (called nothing)"
+   ],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **Consensus:** expectation around **+80K** to **+85K**\n\n\u2192 **Actual print:** **-23K** for July (released August 7), with June revised down to **+20K**\n\n\u2192 **Reaction:** rates rallied, yields dipped, and growth-scare positioning took over the front end\n\n\u2192 **What changes:** completely shifted the Fed path narrative toward aggressive easing bets ahead of Jackson Hole"
+  },
+  {
+   "id": "07a-no-time-series-claims",
+   "ledger": "2026-06-07",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 2,
+   "expect_hash": "20d87d5b7385",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false,
+     "guard_outcome": "replaced"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false,
+     "guard_outcome": "replaced"
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answer contains banned '(?i)over the (last|past) \\\\d+ ?(d|day)' -> 'over the past 5 d'"
+     ],
+     "tools_called": [],
+     "grounded": true,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [
+    "answer contains banned '(?i)over the (last|past) \\\\d+ ?(d|day)' -> 'over the past 5 d'"
+   ],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **No** \u2014 SPY call open interest has compressed over the past 5 days, tracking down roughly **10.7%** as participants shed inventory into chop."
+  }
+ ],
+ "two_condition": null
+}

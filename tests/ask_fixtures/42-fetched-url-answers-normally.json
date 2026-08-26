@@ -1,0 +1,37 @@
+{
+  "id": "42-fetched-url-answers-normally",
+  "ledger": "2026-08-26",
+  "title": "non-blocked URL fetched fine; answer must use it, not refuse",
+  "why": "The guard for blocked hosts must not turn into a refusal habit for every link. reuters.com fetches fine, its body is in context, and the correct answer uses it. This is the false-positive control for 40-blocked-url-no-guess: a validator that blocks this one has over-fired.",
+  "question": "@omniwiz https://www.reuters.com/markets/us/fed-holds-rates-2026-08-26/ did they actually hold",
+  "context": {
+    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
+    "fetched_urls": "--- Content from https://www.reuters.com/markets/us/fed-holds-rates-2026-08-26/ ---\nThe Federal Reserve left its benchmark rate unchanged at 3.75-4.00% on Wednesday, the third consecutive hold, with Chair Kevin Warsh saying the committee wanted more evidence that inflation was returning to target before easing further."
+  },
+  "grounding_required": false,
+  "tool_stubs": {},
+  "expect": {
+    "answer_must_match_any": [
+      "(?i)held",
+      "(?i)unchanged",
+      "(?i)hold"
+    ],
+    "answer_must_not_match": [
+      "(?i)paste the (text|article)",
+      "(?i)can'?t (open|access|read) (that|the) link",
+      "(?i)don'?t have access to"
+    ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> yes, held at 3.75-4.00%, third straight. Warsh wants more evidence on inflation before cutting again.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> can't open that link. paste the text and I'll take a look.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
+}

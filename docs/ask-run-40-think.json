@@ -1,0 +1,81 @@
+{
+ "suite_fingerprint": "7c86aec016aa",
+ "config_fingerprint": "5d9a8f51e46c",
+ "config": {
+  "ask_model": "gemini-3.5-flash-lite",
+  "max_output_tokens": 5000,
+  "temperature": 0.3,
+  "thinking_budget": 2000,
+  "include_server_side_tool_invocations": true,
+  "safety_all_block_none": true,
+  "fantasy_tool_registered": true,
+  "function_tool_count": 10
+ },
+ "ran_subset": true,
+ "prompt_chars": 52368,
+ "repeat": 5,
+ "model": "gemini-3.5-flash-lite",
+ "model_pinned_in_runner": true,
+ "model_versions_seen": [
+  "gemini-3.5-flash-lite"
+ ],
+ "compared_against": null,
+ "pass_rate": 100.0,
+ "passed": 1,
+ "total": 1,
+ "tool_call_rate_grounding": 0.0,
+ "grounding_turns": 0,
+ "grounding_satisfied": 0,
+ "fixtures": [
+  {
+   "id": "40-unfetchable-link-confab",
+   "ledger": "2026-08-26",
+   "status": "PASS",
+   "attempts": 5,
+   "attempts_passed": 5,
+   "expect_hash": "275393a64a2a",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **Bogus link** \u2014 status ID **1928734** is only 7 digits, whereas real X posts use 18-to-19 digit IDs\n\n\u2192 **Not real** \u2014 nothing on macroalf's timeline matches that; it's a fabricated URL or a placeholder stub"
+  }
+ ],
+ "two_condition": null
+}

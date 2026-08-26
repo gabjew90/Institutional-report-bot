@@ -1,0 +1,33 @@
+{
+  "id": "41-source-quality",
+  "ledger": "2026-08-26",
+  "title": "regional news domain cited as primary support for a tweet claim",
+  "why": "A grounded answer cited bljesak.info — a Bosnian regional news site — as support for a claim about what a tweet said. Grounding that lands on an unrelated regional outlet is worse than no citation: it reads as sourced while the source has no bearing on the question. The source-quality hierarchy already exists in the prompt; this asserts it survives into grounded answers.",
+  "question": "@omniwiz did powell actually say that in the speech",
+  "context": {
+    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
+    "chat": "[10:41] spockbones: everyone quoting this powell line\n[10:42] BK: source?"
+  },
+  "grounding_required": true,
+  "tool_stubs": {},
+  "expect": {
+    "require_grounding_or_tool": true,
+    "answer_must_not_match": [
+      "(?i)bljesak",
+      "(?i)\\b[a-z0-9-]+\\.(?:hr|ba|rs|si|mk|al|bg)\\b",
+      "(?i)(?:per|according to|source:)\\s+[a-z0-9-]+\\.(?:hr|ba|rs|si|info)\\b"
+    ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> yes. he said it in the Jackson Hole keynote, in the section on the labour market. the transcript is on the Fed's site.",
+      "tools_called": [],
+      "grounded": true
+    },
+    "bad": {
+      "answer": "-> yes, per bljesak.info he said exactly that, and dnevnik.hr carried the same line.",
+      "tools_called": [],
+      "grounded": true
+    }
+  }
+}

@@ -6859,11 +6859,13 @@ async def _answer_with_gemini(
         # slip, not a content problem), then strip the offending
         # sentences if it re-violates. Whole sentences only — a
         # mid-sentence excision mangles prose.
-        _plumb = _validate_response(answer, _ask_tool_log) if answer else []
+        _vctx = {"question": question, "fetched": fetched_urls}
+        _plumb = (_validate_response(answer, _ask_tool_log, **_vctx)
+                  if answer else [])
         if _plumb:
-            _ask_meta["guards"].append("meta-plumbing")
+            _ask_meta["guards"].append("validate:" + ",".join(sorted({v.rule for v in _plumb})))
             log.warning(
-                f"/ask: meta-plumbing in answer (q={question[:80]!r}); "
+                f"/ask: response-validate hit (q={question[:80]!r}); "
                 f"hits={[v.match for v in _plumb][:6]}; retrying once"
             )
             _plumb_retry = ""
@@ -6893,28 +6895,31 @@ async def _answer_with_gemini(
 
             # ONE decision function, shared with the harness, so what
             # ships and what gets measured cannot drift apart.
-            _bad_sents = _violating_sentences(answer, _ask_tool_log)
+            _bad_sents = _violating_sentences(
+                answer, _ask_tool_log, **_vctx)
             answer, _outcome = _resolve_violations(
-                answer, _plumb_retry, _ask_tool_log, _strip_sentences)
+                answer, _plumb_retry, _ask_tool_log, _strip_sentences,
+                **_vctx)
             if _outcome == "regenerated":
-                _ask_meta["guards"].append("meta-plumbing-regenerated")
+                _ask_meta["guards"].append("validate-regenerated")
                 log.info(
                     "/ask: meta-plumbing FIXED BY REGENERATE — clean on "
                     "retry, no strip needed (q=%r)", question[:80])
             elif _outcome == "stripped":
-                _ask_meta["guards"].append("meta-plumbing-strip")
+                _ask_meta["guards"].append("validate-strip")
                 log.warning(
                     "/ask: meta-plumbing STRIP WAS NEEDED — regenerate "
                     "failed, excised %d sentence(s): %s (q=%r)",
                     len(_bad_sents), [t[:70] for t in _bad_sents][:4],
                     question[:80])
             elif _outcome == "shipped":
-                _ask_meta["guards"].append("meta-plumbing-shipped")
+                _ask_meta["guards"].append("validate-shipped")
                 log.error(
                     "/ask: meta-plumbing SURVIVED BOTH regenerate and "
                     "strip — shipping with hits=%s (q=%r)",
                     [v.match for v in _validate_response(
-                        answer, _ask_tool_log)][:6], question[:80])
+                        answer, _ask_tool_log, **_vctx)][:6],
+                    question[:80])
 
         # Voice cleanup on the final answer. The pulse-side lint runs
         # at AUDIT->SCRUB; /ask answers ship straight from Gemini to
@@ -8848,6 +8853,38 @@ async def _answer_with_gemini(
                     getattr(grounding_metadata, "grounding_chunks", None)
                     or []
                 )
+                # "grounded ✅ (4 sources)" was false confidence on
+                # 2026-08-26: the question carried an x.com link, nothing
+                # retrieved it, and the four sources were unrelated macro
+                # news the model then attributed to the tweet. When the
+                # question carries a URL, say WHICH source got grounded.
+                _q_urls = _USER_URL_RE.findall(question or "")
+                if _q_urls:
+                    _chunks = (getattr(grounding_metadata,
+                                       "grounding_chunks", None) or [])
+                    _uris = []
+                    for _c in _chunks:
+                        _w = getattr(_c, "web", None)
+                        _u = (getattr(_w, "uri", None)
+                              or getattr(_w, "domain", None))
+                        if _u:
+                            _uris.append(str(_u).lower())
+                    _q_hosts = {
+                        u.split("//", 1)[-1].split("/", 1)[0].lower()
+                        for u in _q_urls
+                    }
+                    _on_link = any(h and h in uri
+                                   for uri in _uris for h in _q_hosts)
+                    _ask_meta["link_grounding"] = (
+                        "on-linked-source" if _on_link else "OFF-LINK")
+                    _ask_meta["linked_urls"] = _q_urls[:3]
+                    if not _on_link:
+                        log.warning(
+                            "/ask: OFF-LINK GROUNDING — question carried "
+                            "%d URL(s), %d grounding source(s), none of "
+                            "them the linked page. Any claim about the "
+                            "link's contents is unfounded. (q=%r)",
+                            len(_q_urls), len(_uris), question[:80])
             except Exception:
                 pass
             db.append_ask_interaction(

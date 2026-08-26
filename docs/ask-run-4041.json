@@ -1,0 +1,123 @@
+{
+ "suite_fingerprint": "8804ee471edf",
+ "config_fingerprint": "adef42021675",
+ "config": {
+  "ask_model": "gemini-3.5-flash-lite",
+  "max_output_tokens": 5000,
+  "temperature": 0.3,
+  "include_server_side_tool_invocations": true,
+  "safety_all_block_none": true,
+  "fantasy_tool_registered": true,
+  "function_tool_count": 10
+ },
+ "ran_subset": true,
+ "prompt_chars": 52692,
+ "repeat": 3,
+ "model": "gemini-3.5-flash-lite",
+ "model_pinned_in_runner": true,
+ "model_versions_seen": [
+  "gemini-3.5-flash-lite"
+ ],
+ "compared_against": null,
+ "pass_rate": 50.0,
+ "passed": 1,
+ "total": 2,
+ "tool_call_rate_grounding": 100.0,
+ "grounding_turns": 2,
+ "grounding_satisfied": 2,
+ "fixtures": [
+  {
+   "id": "40-reply-quote-claim-scope",
+   "ledger": "2026-08-26",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 2,
+   "expect_hash": "904c5bd7c757",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "answer missing required pattern \"(?i)(true|false|not (quite|really|what|the)|overstat|misread|oversimplif|correct|right|wrong|holds up|doesn'?t hold|part of it|more to it)\""
+     ],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": true,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages",
+      "lookup_price_history"
+     ],
+     "grounded": true,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": true,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [
+    "answer missing required pattern \"(?i)(true|false|not (quite|really|what|the)|overstat|misread|oversimplif|correct|right|wrong|holds up|doesn'?t hold|part of it|more to it)\""
+   ],
+   "tools_called": [
+    "search_chat_messages"
+   ],
+   "grounded": true,
+   "answer": "\u2192 yeah, that's basically it \u2014 long end got completely nuked when 30-year yields pushed toward **5.34%**, hitting levels not seen since 2007\n\n\u2192 structural buyers stepped back from the debt load, forcing the Treasury to scramble and double buybacks just to keep the curve from breaking equities entirely"
+  },
+  {
+   "id": "41-source-quality",
+   "ledger": "2026-08-26",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "6a65bc776ec1",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": true,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": true,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar",
+      "search_chat_messages"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": true,
+   "answer": "\u2192 **No** \u2014 Powell left the Fed back in May, so any quote floating around right now is either from an older transcript or straight-up fabricated wire-chasing. \n\n\u2192 **Kevin Warsh** is the chair now and hasn't even given his first Jackson Hole address yet. Anyone dropping fresh \"Powell speech\" quotes today is farming engagement."
+  }
+ ],
+ "two_condition": null
+}

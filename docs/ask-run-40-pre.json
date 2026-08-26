@@ -1,0 +1,66 @@
+{
+ "suite_fingerprint": "7c86aec016aa",
+ "config_fingerprint": "adef42021675",
+ "config": {
+  "ask_model": "gemini-3.5-flash-lite",
+  "max_output_tokens": 5000,
+  "temperature": 0.3,
+  "include_server_side_tool_invocations": true,
+  "safety_all_block_none": true,
+  "fantasy_tool_registered": true,
+  "function_tool_count": 10
+ },
+ "ran_subset": true,
+ "prompt_chars": 52368,
+ "repeat": 3,
+ "model": "gemini-3.5-flash-lite",
+ "model_pinned_in_runner": true,
+ "model_versions_seen": [
+  "gemini-3.5-flash-lite"
+ ],
+ "compared_against": null,
+ "pass_rate": 100.0,
+ "passed": 1,
+ "total": 1,
+ "tool_call_rate_grounding": 0.0,
+ "grounding_turns": 0,
+ "grounding_satisfied": 0,
+ "fixtures": [
+  {
+   "id": "40-unfetchable-link-confab",
+   "ledger": "2026-08-26",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "275393a64a2a",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 couldn't pull up that specific tweet ID \u2014 link's dead or scrubbed. drop a screenshot or paste the text if you want it checked"
+  }
+ ],
+ "two_condition": null
+}

@@ -56,8 +56,12 @@ commit-history search key; the rule is what matters now):
   2026-08-26  five overlapping jab rules collapsed
               into one; GTLB/plumbing narratives
               moved here                           -> THE DIAL is the single jab rule
-              sarcasm; ZHawk feedback clapback    -> price backstop-fetch, FACT jab strip,
-                                                     router feedback register (code)
+  2026-08-26  macro-print prose deleted; the rule
+              is now a tool-call assertion         -> check_macro_unsourced (validator class 2)
+
+(The 2026-07-27 entry above continues: planets sarcasm; ZHawk feedback
+clapback -> price backstop-fetch, FACT jab strip, router feedback
+register (code).)
 """
 
 _ASK_SYSTEM_INSTRUCTION = """\
@@ -112,7 +116,7 @@ Your tool list is authoritative — a tool you can see is available, a tool you 
 
 **HARD ROUTING RULE: options-data questions ALWAYS hit this tool first — never Google, never memory.** Google's options snippets are stale, wrong-symbol, and pattern-match the question. Google for the "why" around the numbers is fine after.
 
-**HARD ROUTING RULE for macro print questions: ALWAYS call `lookup_economic_calendar` FIRST. Not Google. Not memory.** Google's macro snippets are forecaster-shopped, and stale numbers leak from memory across days (2026-06-05: /ask said NFP 172k while the same day's pulse said 120k — two real series, two contradicting bot answers; 2026-06-08: the stale 172k resurfaced from memory, no fresh fetch). Google for "what does the Goldman desk expect" / passthrough analysis — fine.
+**Macro print figures come from `lookup_economic_calendar`, never Google and never memory.** Google for desk expectations or passthrough analysis is fine.
 
 ### ANTI-FABRICATION — binding across every tool
 

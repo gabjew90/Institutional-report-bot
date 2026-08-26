@@ -74,6 +74,11 @@ HARNESS_MODEL = "gemini-3.5-flash-lite"
 # were the source of the "empty answer after N tool calls" failures.
 HARNESS_MAX_OUTPUT_TOKENS = 5000
 HARNESS_TEMPERATURE = 0.3
+# Sixth divergence, found 2026-08-26: production sets a 2000-token
+# thinking budget and the harness set none. Thinking budget drives
+# tool-use decisions, so every grounding number measured without it
+# described a model reasoning less than the deployed one does.
+HARNESS_THINKING_BUDGET = 2000
 
 # ---------------------------------------------------------------------
 # PRODUCTION CONFIG SNAPSHOT
@@ -104,6 +109,7 @@ PRODUCTION_CONFIG = {
     # generation config on the /ask call
     "max_output_tokens": 5000,
     "temperature": 0.3,
+    "thinking_budget": 2000,
     "include_server_side_tool_invocations": True,
     "safety_all_block_none": True,
     # how many declared function tools ride alongside google_search
@@ -124,6 +130,7 @@ def resolve_harness_config(tool_list=None, model=None) -> dict:
         "ask_model": model or HARNESS_MODEL,
         "max_output_tokens": HARNESS_MAX_OUTPUT_TOKENS,
         "temperature": HARNESS_TEMPERATURE,
+        "thinking_budget": HARNESS_THINKING_BUDGET,
         "include_server_side_tool_invocations": True,
         "safety_all_block_none": True,
     }
@@ -306,6 +313,12 @@ def build_user_content(fx: dict) -> str:
             "guard]\n" + ctx["prior_answers"])
     if ctx.get("chat"):
         parts.append(ctx["chat"])
+    # Server-side URL fetch result, mirroring _maybe_fetch_user_urls.
+    # Its ABSENCE is the whole point of the blocked-domain fixtures: a
+    # blocked host returns "", so the model sees a bare link and no
+    # content, with nothing telling it the content is missing.
+    if ctx.get("fetched_urls"):
+        parts.append(ctx["fetched_urls"])
     parts.append("--- the asker is asking: ---\n" + fx.get("question", ""))
     return "\n\n".join(parts)
 
@@ -328,6 +341,8 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         safety_settings=safety,
         max_output_tokens=HARNESS_MAX_OUTPUT_TOKENS,
         temperature=HARNESS_TEMPERATURE,
+        thinking_config=types.ThinkingConfig(
+            thinking_budget=HARNESS_THINKING_BUDGET),
     )
     resp = client.models.generate_content(
         model=model, contents=contents, config=cfg)
@@ -400,8 +415,12 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         validate as _validate, resolve_violations as _resolve)
     from discord_bot.bot import _strip_sentences
 
+    # Same context production passes: the question and whatever the
+    # server-side fetcher actually retrieved.
+    _vctx = {"question": fx.get("question", ""),
+             "fetched": (fx.get("context") or {}).get("fetched_urls")}
     guard_outcome = "clean"
-    if answer and _validate(answer, tools_called):
+    if answer and _validate(answer, tools_called, **_vctx):
         retry_answer = ""
         try:
             retry_cfg = types.GenerateContentConfig(
@@ -410,6 +429,8 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
                 safety_settings=safety,
                 max_output_tokens=HARNESS_MAX_OUTPUT_TOKENS,
                 temperature=0.7,   # mirrors the bot's retry temperature
+                thinking_config=types.ThinkingConfig(
+                    thinking_budget=HARNESS_THINKING_BUDGET),
             )
             retry_resp = client.models.generate_content(
                 model=model, contents=contents, config=retry_cfg)
@@ -417,7 +438,8 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         except Exception:
             retry_answer = ""
         answer, guard_outcome = _resolve(
-            answer, retry_answer, tools_called, _strip_sentences)
+            answer, retry_answer, tools_called, _strip_sentences,
+            **_vctx)
 
     return {"answer": answer, "tools_called": tools_called,
             "grounded": grounded, "model_version": model_version,
@@ -475,7 +497,9 @@ def run_two_condition(fixtures: list[dict], client, model, tools,
                     include_server_side_tool_invocations=True),
                 safety_settings=safety,
                 max_output_tokens=HARNESS_MAX_OUTPUT_TOKENS,
-                temperature=HARNESS_TEMPERATURE)
+                temperature=HARNESS_TEMPERATURE,
+                thinking_config=types.ThinkingConfig(
+                    thinking_budget=HARNESS_THINKING_BUDGET))
             if si:
                 cfg_kw["system_instruction"] = si
             try:
