@@ -1,3 +1,10 @@
+# Python is PINNED. Nixpacks auto-detects otherwise, and a base
+# image update could move the runtime under us -- which is
+# divergence 9 in NOTES.md, the one that crash-looped the bot.
+# .python-version carries the same pin for local tooling.
+[variables]
+NIXPACKS_PYTHON_VERSION = "3.12"
+
 [phases.setup]
 aptPkgs = ["poppler-utils"]
 # nixLibs add to LD_LIBRARY_PATH at runtime. stdenv.cc.cc.lib provides

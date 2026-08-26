@@ -24,7 +24,7 @@
       "lookup_trade_log"
     ],
     "answer_must_match": [
-      "(?i)7800|(?i)spx"
+      "(?i)7800|spx"
     ],
     "answer_must_not_match": [
       "(?i)zero mentions",

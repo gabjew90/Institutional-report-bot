@@ -23,3 +23,9 @@ pyflakes>=3.0.0
 # (introduced ~2024); raw urllib hits HTTP 401 from Railway IPs.
 # yfinance handles the crumb-session dance internally.
 yfinance>=0.2.40
+# FORWARD-RISK disposition (2026-08-26, owner: harness gate).
+# discord.py imports the stdlib `audioop`, removed in Python
+# 3.13. audioop-lts is the PSF-blessed backport; declaring it
+# conditionally means a 3.13 move degrades to a dependency
+# install instead of a crash-loop on import.
+audioop-lts>=0.2.1; python_version >= "3.13"

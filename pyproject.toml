@@ -6,7 +6,13 @@ build-backend = "setuptools.backends._legacy:_Backend"
 name = "institutional-report-bot"
 version = "0.1.0"
 description = "Analyzes institutional financial research PDFs and delivers Market Pulse reports via Discord"
-requires-python = ">=3.11"
+# Pinned to the container runtime (see .python-version and
+# scripts/preflight_push.py CONTAINER_PYTHON). The upper bound is
+# deliberate: on 3.13 the stdlib `audioop` module is REMOVED and
+# discord.py imports it directly, so an unpinned base-image bump
+# would crash the bot on import. Moving this bound is a deliberate
+# act that must come with audioop-lts (already declared below).
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "google-genai>=1.0.0",
     "discord.py>=2.4.0",

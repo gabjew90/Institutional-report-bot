@@ -156,6 +156,64 @@ def check_own_code_deprecations() -> None:
         print(f"       note: {ln}")
 
 
+# FORWARD-RISK register. A note that only prints is a warning nobody
+# reads -- the DeprecationWarning that predicted the 2026-08-26 outage
+# printed for hours. Every known forward risk needs an OWNER and a
+# DISPOSITION here, and the gate fails on any risk it sees that is not
+# registered. Adding a line is cheap; that is the point.
+FORWARD_RISK_REGISTER = {
+    "audioop": (
+        "discord.py imports the stdlib `audioop`, removed in Python 3.13. "
+        "DISPOSITION: runtime pinned to 3.12 three ways "
+        "(.python-version, nixpacks NIXPACKS_PYTHON_VERSION, pyproject "
+        "requires-python <3.13), and audioop-lts declared in "
+        "requirements.txt for python_version >= 3.13 so a deliberate "
+        "move degrades to a dependency install rather than a crash-loop. "
+        "OWNER: the push gate -- revisit when the container moves off "
+        "3.12."),
+}
+
+
+def check_forward_risks_registered() -> None:
+    """Every forward risk the probe reports must have a disposition."""
+    r = subprocess.run(
+        [sys.executable, "-c", _DEPRECATION_PROBE, REPO],
+        capture_output=True, text=True, cwd=REPO,
+    )
+    seen = [ln for ln in ((r.stdout or "") + (r.stderr or "")).splitlines()
+            if ln.startswith("FORWARD-RISK ")]
+    unregistered = [
+        ln for ln in seen
+        if not any(k in ln for k in FORWARD_RISK_REGISTER)
+    ]
+    _record(
+        f"forward risks registered ({len(seen)} seen, "
+        f"{len(FORWARD_RISK_REGISTER)} registered)",
+        not unregistered,
+        "\n".join(
+            ["Unregistered forward risk. Add it to "
+             "FORWARD_RISK_REGISTER with an owner and a disposition, "
+             "or fix it:"] + unregistered))
+
+
+def check_runtime_is_pinned() -> None:
+    """The container runtime must be pinned, not auto-detected."""
+    problems = []
+    pv = os.path.join(REPO, ".python-version")
+    want = f"{CONTAINER_PYTHON[0]}.{CONTAINER_PYTHON[1]}"
+    if not os.path.exists(pv):
+        problems.append(".python-version missing")
+    elif open(pv).read().strip() != want:
+        problems.append(f".python-version is {open(pv).read().strip()!r}, "
+                        f"expected {want!r}")
+    nix = open(os.path.join(REPO, "nixpacks.toml"), encoding="utf-8").read()
+    if f'NIXPACKS_PYTHON_VERSION = "{want}"' not in nix:
+        problems.append(f"nixpacks.toml does not pin "
+                        f"NIXPACKS_PYTHON_VERSION to {want}")
+    _record(f"container runtime pinned to {want}",
+            not problems, "\n".join(problems))
+
+
 def check_gates_are_runnable() -> None:
     """The diet smoke must RUN. Syntax errors in a gate are failures."""
     r = subprocess.run(
@@ -194,6 +252,8 @@ def main() -> int:
     for fn in (check_python_parity,
                check_import_on_container_python,
                check_own_code_deprecations,
+               check_forward_risks_registered,
+               check_runtime_is_pinned,
                check_gates_are_runnable,
                check_notes_intact):
         try:
