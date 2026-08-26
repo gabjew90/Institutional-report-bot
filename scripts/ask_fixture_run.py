@@ -415,7 +415,11 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
     # failures — they were the harness missing a production rung, and
     # they were written off as an unavoidable harness limitation for
     # weeks.
-    if not answer and calls:
+    # Fires whenever the loop produced tool calls but no text, not
+    # only when calls are still pending at the cap: a model can end
+    # a round with neither text nor a new call, and that shipped an
+    # empty answer too.
+    if not answer and tools_called:
         try:
             cap_cfg = types.GenerateContentConfig(
                 system_instruction=sysinst,

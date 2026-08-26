@@ -1,0 +1,120 @@
+{
+ "suite_fingerprint": "7c86aec016aa",
+ "config_fingerprint": "5d9a8f51e46c",
+ "config": {
+  "ask_model": "gemini-3.5-flash-lite",
+  "max_output_tokens": 5000,
+  "temperature": 0.3,
+  "thinking_budget": 2000,
+  "include_server_side_tool_invocations": true,
+  "safety_all_block_none": true,
+  "fantasy_tool_registered": true,
+  "function_tool_count": 10
+ },
+ "ran_subset": true,
+ "prompt_chars": 52368,
+ "repeat": 3,
+ "model": "gemini-3.5-flash-lite",
+ "model_pinned_in_runner": true,
+ "model_versions_seen": [
+  "gemini-3.5-flash-lite"
+ ],
+ "compared_against": null,
+ "pass_rate": 100.0,
+ "passed": 2,
+ "total": 2,
+ "tool_call_rate_grounding": 100.0,
+ "grounding_turns": 2,
+ "grounding_satisfied": 2,
+ "fixtures": [
+  {
+   "id": "08-stale-macro-from-memory",
+   "ledger": "2026-06-08",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "385c92b1c9ad",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar",
+      "search_chat_messages"
+     ],
+     "grounded": true,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": true,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": true,
+     "guard_outcome": "regenerated"
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar",
+    "search_chat_messages"
+   ],
+   "grounded": true,
+   "answer": "\u2192 Nonfarm payrolls printed at **-23,000** for July, missing expectations of an increase of around **+85K to +95K**\n\n\u2192 Unemployment rate edged down to **4.1%** with labor force participation at **61.4%**\n\n\u2192 Massive downward revisions: Prior months were slashed by a combined **103,000** jobs (May revised to **+63K**, June to **+20K**)"
+  },
+  {
+   "id": "27-group-scope-answer",
+   "ledger": "2026-08-23",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "31c4a2cfaea2",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_fantasy_league"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_fantasy_league"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_fantasy_league"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_fantasy_league"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **Arxfic (1.1 Jahmyr Gibbs):** Heavy draft capital for an explosive dual-threat back, locking down Detroit's backfield anchor right out of the gate.\n\n\u2192 **BK (1.4 Jaxon Smith-Njigba):** Reaching for JSN in the first round is peak high-variance degeneracy \u2014 banking on a massive sophomore/junior year breakout while leaving Tier-1 anchors on the board.\n\n\u2192 **Ry (1.6 Puka Nacua):** Absolute steal at the middle of the first if health holds, securing elite target volume right away."
+  }
+ ],
+ "two_condition": null
+}
