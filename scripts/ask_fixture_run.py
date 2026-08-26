@@ -687,9 +687,17 @@ def main() -> int:
         _build_options_chain_tool(), _build_economic_calendar_tool(),
         _build_earnings_date_tool(), _build_query_data_tool(),
         _build_price_history_tool(),
+        # Registered unconditionally, NOT gated on settings like
+        # production gates it. Railway has SLEEPER_LEAGUE_ID set, so the
+        # deployed bot always sees this tool; a local run without the env
+        # var saw a DIFFERENT tool list and fixture 27 was asserting a
+        # tool that was never declared — unpassable for a reason that had
+        # nothing to do with the prompt. Same failure shape as the model
+        # falling through to GEMINI_MODEL: the harness must mirror the
+        # deployed tool set, not the local shell. Fixtures stub the tool,
+        # so no live Sleeper access is involved.
+        _build_fantasy_league_tool(),
     ]
-    if (settings.sleeper_league_id or "").strip():
-        tool_list.append(_build_fantasy_league_tool())
     safety = [
         types.SafetySetting(category=c, threshold="BLOCK_NONE")
         for c in ("HARM_CATEGORY_HARASSMENT", "HARM_CATEGORY_HATE_SPEECH",

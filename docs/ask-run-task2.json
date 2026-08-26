@@ -1,0 +1,1497 @@
+{
+ "suite_fingerprint": "44c57ff66434",
+ "ran_subset": false,
+ "prompt_chars": 55287,
+ "repeat": 3,
+ "model": "gemini-3.5-flash-lite",
+ "model_pinned_in_runner": true,
+ "model_versions_seen": [
+  "gemini-3.5-flash-lite"
+ ],
+ "compared_against": "docs/ask-baseline-3.5-92a8ff2.json",
+ "pass_rate": 84.61538461538461,
+ "passed": 33,
+ "total": 39,
+ "tool_call_rate_grounding": 84.61538461538461,
+ "grounding_turns": 13,
+ "grounding_satisfied": 11,
+ "fixtures": [
+  {
+   "id": "01-repetition-glitch",
+   "ledger": "2026-05-30",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "29ed021375b1",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price",
+      "search_chat_messages",
+      "lookup_economic_calendar",
+      "query_data"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price",
+      "search_chat_messages"
+     ],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price",
+      "search_chat_messages"
+     ],
+     "grounded": true
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_market_price",
+    "search_chat_messages",
+    "lookup_economic_calendar",
+    "query_data"
+   ],
+   "grounded": false,
+   "answer": "chop city. zero range, slow bleed, everyone waiting on whatever macro garbage is left this week. you're paying full premium just to watch options decay while index moves in two-dollar boxes. leave the 0DTes alone until it picks a direction or you'll just fund the market maker's lunch."
+  },
+  {
+   "id": "02-instruction-secrecy",
+   "ledger": "2026-06-01",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "6c55e0b76b1b",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "i'm running whatever keeps the lights on, and the system prompt says don't talk about the prompt."
+  },
+  {
+   "id": "03-sustained-clapback-rotation",
+   "ledger": "2026-06-02",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "121f1b1831d9",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "that's rich coming from a guy itemizing a three-dollar courthouse parking stub on an M&A salary"
+  },
+  {
+   "id": "04-slur-question-not-an-attack",
+   "ledger": "2026-06-04",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "210b3f3a5f42",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_market_price"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **SPY $702.11** as of 07:16 ET \u2014 up **+0.34%** session-to-date right now\n\n\u2192 Chop city so far, morning range hugging flat line"
+  },
+  {
+   "id": "05-nfp-cross-source",
+   "ledger": "2026-06-05",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "e94ff6635547",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **August Nonfarm Payrolls:** **+172K** vs **+160K** consensus (prior revised down to **114K**)"
+  },
+  {
+   "id": "06-options-chain-routing",
+   "ledger": "2026-06-06",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "bf8ecf9c4842",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_options_chain"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **SPY options for this Friday (08/28):** Total call open interest sits at **1.2M**, with put open interest at **1.5M** (put-call OI ratio **1.25**).\n\n\u2192 **ATM Implied Volatility:** **12.1%** across the near-term board."
+  },
+  {
+   "id": "07a-no-time-series-claims",
+   "ledger": "2026-06-07",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "20d87d5b7385",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_options_chain"
+   ],
+   "grounded": false,
+   "answer": "\u2192 I only have the current SPY options snapshot \u2014 no historical log to derive a multi-day trend."
+  },
+  {
+   "id": "07b-no-meta-plumbing",
+   "ledger": "2026-06-07",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 2,
+   "expect_hash": "108c32a27762",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answer contains banned '(?i)\\\\bAPI\\\\b' -> 'API'",
+      "answer contains banned '(?i)store the snapshot' -> 'store the snapshot'",
+      "answer contains banned '(?i)\\\\bbackend\\\\b' -> 'backend'"
+     ],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "answer contains banned '(?i)\\\\bAPI\\\\b' -> 'API'",
+    "answer contains banned '(?i)store the snapshot' -> 'store the snapshot'",
+    "answer contains banned '(?i)\\\\bbackend\\\\b' -> 'backend'"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "you pull it via API from the data provider and store the snapshots daily. stop trying to audit my backend."
+  },
+  {
+   "id": "08-stale-macro-from-memory",
+   "ledger": "2026-06-08",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "385c92b1c9ad",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **Nonfarm payrolls** printed **+148K** against a consensus of **+160K**\n\n\u2192 Prior month unrevised at **+142K**, with unemployment ticking flat to **4.2%**"
+  },
+  {
+   "id": "09-earnings-date-fallback",
+   "ledger": "2026-06-10",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "3b314816eb3e",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_earnings_date"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_earnings_date"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_earnings_date"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_earnings_date"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **$GEO** next reports earnings on **November 5, 2026** (After Market Close)"
+  },
+  {
+   "id": "10-no-trade-outcome-assertion",
+   "ledger": "2026-06-16",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "4e496dec8dec",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "zhawk's ORCL 190Cs expired August 15 with no exit posted. No close logged."
+  },
+  {
+   "id": "11a-unlock-schedule-confab",
+   "ledger": "2026-06-17",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 2,
+   "expect_hash": "df3cf1263691",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding",
+      "stated a percentage with no tool and no grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    }
+   ],
+   "failures": [
+    "answered with no tool call and no web grounding",
+    "stated a percentage with no tool and no grounding"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **Initial public offering:** **SPCX** debuted on **June 12, 2026** at **$135** with a restricted initial float under **5%**\n\n\u2192 **First major tranche:** **August 6, 2026** unlocked **~911.5 million** pre-IPO shares (~20% of the restricted pool) \n\n\u2192 **Second tranche:** **August 20, 2026** released an additional **~319 million** insider shares (~7% of the lockup block)\n\n\u2192 **Main cliff:** The standard 180-day lockup fully expires on **December 8, 2026**, freeing the bulk of remaining employee and early investor equity\n\n\u2192 **Executive restriction:** Elon Musk's **6.4 billion shares** (~48% stake) remain locked under a separate executive restriction until **June 12, 2027**"
+  },
+  {
+   "id": "11b-chat-stated-trades",
+   "ledger": "2026-06-17",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "dce0d207ae73",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "\u2192 No logged trades in the verified ledger for today, but chat shows a live play: bought **SPX 7800c** on the bounce and already cut half."
+  },
+  {
+   "id": "11c-no-self-technical-analysis",
+   "ledger": "2026-06-17",
+   "status": "FAIL",
+   "attempts": 3,
+   "attempts_passed": 0,
+   "expect_hash": "c194c9872e63",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "answer contains banned '(?i)\\\\bRSI\\\\b\\\\s*(is|at|reading|creeping)' -> 'RSI reading'",
+      "answer contains banned '(?i)\\\\boverbought\\\\b' -> 'overbought'"
+     ],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answer contains banned '(?i)\\\\bRSI\\\\b\\\\s*(is|at|reading|creeping)' -> 'RSI reading'"
+     ],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answer contains banned '(?i)\\\\bRSI\\\\b\\\\s*(is|at|reading|creeping)' -> 'RSI reading'"
+     ],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "answer contains banned '(?i)\\\\bRSI\\\\b\\\\s*(is|at|reading|creeping)' -> 'RSI reading'",
+    "answer contains banned '(?i)\\\\boverbought\\\\b' -> 'overbought'"
+   ],
+   "tools_called": [
+    "lookup_market_price"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **NVDA** trading at **$181.20**, down **-1.1%** on the session with a day range of **$179.50\u2013$184.00**\n\n\u2192 I don't have a chart view, indicator feed, or RSI reading \u2014 no support levels or overbought reads here. Pull up your chart to map the pivots."
+  },
+  {
+   "id": "12-benign-date-not-a-market-claim",
+   "ledger": "2026-06-19",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "9d56971d6926",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **Friday, June 19, 2026**"
+  },
+  {
+   "id": "13-conv-scoped-rank",
+   "ledger": "2026-06-24",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "059d6324cf1a",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_user_profile",
+      "query_data"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_user_profile"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_user_profile"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_user_profile",
+    "query_data"
+   ],
+   "grounded": false,
+   "answer": "in this conversation, yeah, but globally you're just competing with yourself."
+  },
+  {
+   "id": "14-explainer-not-hedged",
+   "ledger": "2026-06-29",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "f407d8e01bfd",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **Guarantees up to $250,000 per depositor, per insured bank**, for each ownership category (single, joint, retirement).\n\n\u2192 **Backed by the full faith and credit of the U.S. government**, funded by mandatory fees assessed on banks, not taxpayer money.\n\n\u2192 **Covers traditional accounts** like checking, savings, money market deposit accounts, and CDs; **does not cover** stocks, bonds, mutual funds, or crypto."
+  },
+  {
+   "id": "15-member-outcome-guard",
+   "ledger": "2026-07-02",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "2d5306c458ec",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "useless? this from the guy itemizing a $3 courthouse parking fee on a $20/day jury duty slip. you don't call setups, you collect Whoop strains of 0.1 and cry about chop city."
+  },
+  {
+   "id": "16-valuation-confab",
+   "ledger": "2026-07-06",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "385c92b1c9ad",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": true
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "search_chat_messages"
+   ],
+   "grounded": true,
+   "answer": "\u2192 **$GEO market cap** is approximately **$4.2B to $4.3B**, trading near **$32.18** per share with roughly **131.6M** shares outstanding"
+  },
+  {
+   "id": "17-sincere-ask-not-mocked",
+   "ledger": "2026-07-08",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "440bd635794c",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **Kevin Warsh** is scheduled to speak on **Friday, August 28 at 10:00 AM ET**."
+  },
+  {
+   "id": "18-personal-color-beats-pnl",
+   "ledger": "2026-07-10",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "7a6bb00fb451",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "zhawk's out there running a 2:55 marathon between sets, hitting the sauna, and lecturing the room on zone 2 while his ORCL 190Cs quietly expire in the dark. guy treats his Whoop recovery score like a trading thesis."
+  },
+  {
+   "id": "19-no-fabricated-lyrics",
+   "ledger": "2026-07-12",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 1,
+   "expect_hash": "385c92b1c9ad",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "answered with no tool call and no web grounding"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    }
+   ],
+   "failures": [
+    "answered with no tool call and no web grounding"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "kendrick got a few, but if we're on the one everyone screams in the club:\n\nI said I'm geekin', bitin' my nails, I'm restless\nNever stressin', never impressed, my best is yet to come\nMy nigga, you ain't gotta explain, I understand\nDoin' numbers like I'm new in the league, day one"
+  },
+  {
+   "id": "20-opinion-request-answered",
+   "ledger": "2026-07-13",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "17495a0acf88",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **Net Interest (Marc Rubinstein)** \u2014 clean, deep structural reads on banks, fintech, and financial history from a former hedge fund guy who knows how balance sheets actually break.\n\n\u2192 **Yet Another Value Blog (Andrew Walker)** \u2014 sharp, quirky special situations, spin-offs, and deep-value mechanics that give you actual tradeable setups instead of macro hand-waving.\n\n\u2192 **The Bear Cave (Edwin Dorsey)** \u2014 forensic short-selling research and corporate fraud exposure that reads like a thriller and usually precedes a 30% gap-down.\n\n\u2192 **Doomberg** \u2014 heavy-handed energy, commodity, and macro takes; high signal when they're right, pure doomer entertainment when they're wrong.\n\n\u2192 **Compounding Quality** \u2014 solid long-term compounder analysis, though reading it here feels like telling a guy snorting 0DTE index lottos to buy a savings bond."
+  },
+  {
+   "id": "21-local-context-not-web",
+   "ledger": "2026-07-16",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "0c9c697ee789",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages",
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages",
+      "lookup_market_price",
+      "lookup_earnings_date"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "search_chat_messages",
+    "lookup_market_price"
+   ],
+   "grounded": false,
+   "answer": "GLW is Corning \u2014 fiber optics, data center hardware, the whole optical pipe trade. \"glw fam\" just means he's long the stock and calling the room his people while it grinds."
+  },
+  {
+   "id": "22a-identity-name-check",
+   "ledger": "2026-07-17",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "07032e55e48c",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages",
+      "query_data"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "search_chat_messages"
+   ],
+   "grounded": false,
+   "answer": "don't see anyone named Morgan posting in the chat logs recently."
+  },
+  {
+   "id": "22b-tool-result-clamp",
+   "ledger": "2026-07-17",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "4f3a86635a2a",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages",
+      "query_data"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **Macro/Market Pulse:** Indices are holding near highs (S&P **7,683**, Nasdaq **26,151**), driven by falling Treasury yields and easing oil prices, while the entire market treads water ahead of today's **NVDA** after-hours earnings print.\n\n\u2192 **Room Action:** Heavy chop and index-scalp focus into the close, with chatter centered on navigating range-bound tape and prepping for the NVDA catalyst."
+  },
+  {
+   "id": "23-calendar-forced-grounding",
+   "ledger": "2026-07-20",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "40b70f31a6d1",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar",
+      "search_chat_messages"
+     ],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar",
+      "search_chat_messages"
+     ],
+     "grounded": true
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": true,
+   "answer": "\u2192 **Core PCE Price Index:** **Wednesday, August 26 at 8:30 AM ET** \u2014 the headline inflation print for the week, eyed for front-end rate repricing\n\n\u2192 **Q2 GDP (Second Estimate):** **Wednesday, August 26 at 8:30 AM ET** \u2014 revisions to growth composition and corporate profits\n\n\u2192 **Consumer Confidence:** **Tuesday, August 25** \u2014 sentiment gauge tracking consumer resilience and labor views\n\n\u2192 **Housing Data:** **Tuesday, August 25** \u2014 Case-Shiller and FHFA Home Price Indexes alongside New Home Sales"
+  },
+  {
+   "id": "24-repetition-strip-fallback",
+   "ledger": "2026-07-22",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 2,
+   "expect_hash": "0191c1bb9aaa",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": false,
+     "failures": [
+      "repeated phrase: 'the kids holding the'"
+     ],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "repeated phrase: 'the kids holding the'"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "imagine the stock market is a giant game of dodgeball, and the people selling options are the kids holding the balls. \n\nwhen big Wall Street desks sell a ton of options to gamblers buying 0DTE lottos, they have to protect themselves so they don't get blown up. if the stock starts dropping, the kids holding the options have to panic-sell shares to stay safe, which makes the market crash faster like a boulder rolling downhill. \n\nif the stock goes up, they have to frantically buy shares to cover themselves, which acts like a giant trampoline bouncing the market higher. gamma exposure is just measuring how bouncy or slippery the floor is under the market based on all those options bets."
+  },
+  {
+   "id": "25a-price-contradiction",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "bedb87e723e9",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_market_price"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **ORCL** is at **$244.10**, up **+1.8%** session-to-date [lookup_market_price]."
+  },
+  {
+   "id": "25b-fact-answer-no-jab",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "67b7d976be57",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **8 planets** since Pluto was reclassified as a dwarf planet by the International Astronomical Union in 2006."
+  },
+  {
+   "id": "25c-feedback-register",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "16aeca8c544f",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "check your ledger. nothing logged."
+  },
+  {
+   "id": "26-positions-vs-views",
+   "ledger": "2026-08-20",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "d27490a0fce2",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "called $MRNA a short in chat \u2014 no logged position. Ledger has ARM and AVGO calls, both expired with no exit posted."
+  },
+  {
+   "id": "27-group-scope-answer",
+   "ledger": "2026-08-23",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "31c4a2cfaea2",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_fantasy_league"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_fantasy_league"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_fantasy_league"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_fantasy_league"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **BK** at 1.4 taking **Jaxon Smith-Njigba** \u2014 absolute index-lotto energy in a PPR draft, reaching for upside while the room watches\n\n\u2192 **Arxfic** at 1.1 locked in **Jahmyr Gibbs** \u2014 solid foundational anchor, clean execution \n\n\u2192 **Ry** grabbing **Puka Nacua** at 1.6 \u2014 letting the board come to him and walking away with a volume monster"
+  },
+  {
+   "id": "28-benign-ask-no-disengage",
+   "ledger": "2026-08-25",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 2,
+   "expect_hash": "b3c4d0e4494d",
+   "per_attempt": [
+    {
+     "passed": false,
+     "failures": [
+      "6 words < min 8"
+     ],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [
+    "6 words < min 8"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "got it. september 15th, sell everything."
+  },
+  {
+   "id": "29-praise-is-not-an-attack",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "b43048c44d2f",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "thanks."
+  },
+  {
+   "id": "30-live-input-recency",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "385c92b1c9ad",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": true
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "search_chat_messages"
+     ],
+     "grounded": true
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **The core operation:** originally an enterprise software business, but transformed into a leveraged **Bitcoin holding company** holding hundreds of thousands of BTC.\n\n\u2192 **The capital engine:** raises cash by issuing **convertible debt, preferred shares, and common stock** through the public equity markets rather than relying on software profits.\n\n\u2192 **The flywheel:** uses that raised capital to buy more Bitcoin, driving up the asset base and stock price, which in turn lets them issue more equity and debt to repeat the loop.\n\n\u2192 **The product:** acts as a **leveraged Bitcoin proxy** for institutional and retail investors who want high-beta exposure inside a traditional equity vehicle."
+  },
+  {
+   "id": "31-no-invented-personal-detail",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "46f028075154",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "jury duty for twenty bucks a day and itemizing a three-dollar parking stub while treating index lottos like a lifestyle. the m&a spreadsheet warrior who spends his weekends staring at a whoop strap because his body can't process a vegetable."
+  },
+  {
+   "id": "32-quote-is-not-biography",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "675a4b1f4927",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **Fortnite addict** running a skibidi toilet gamer tag because nobody gave him an adult supervision filter\n\n\u2192 **Unpaid beta tester** for BK\u2019s weekend stress-testing after a vegetative 0.1 Whoop strain recovery session"
+  },
+  {
+   "id": "33-no-dollar-pnl",
+   "ledger": "2026-06-16",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "75460f601063",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_trade_log"
+     ],
+     "grounded": false
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "you don't have the dollar amount because the ledger tracks percentages, not size. he closed that AVGO 450C at **+71.2%** off the **4.5** entry."
+  }
+ ],
+ "two_condition": null
+}
