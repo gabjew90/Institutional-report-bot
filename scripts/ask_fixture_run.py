@@ -67,6 +67,107 @@ FIXTURE_DIR = REPO / "tests" / "ask_fixtures"
 # whatever the shell happens to hold. Override with --model.
 HARNESS_MODEL = "gemini-3.5-flash-lite"
 
+# Request parameters, mirrored from the production /ask call in
+# discord_bot/bot.py (the generate_content config around line 6142).
+# These are NOT free harness choices: a different token cap or
+# temperature is a different experiment. The old values (1200 / 0.2)
+# were the source of the "empty answer after N tool calls" failures.
+HARNESS_MAX_OUTPUT_TOKENS = 5000
+HARNESS_TEMPERATURE = 0.3
+
+# ---------------------------------------------------------------------
+# PRODUCTION CONFIG SNAPSHOT
+# ---------------------------------------------------------------------
+# Three times a harness result was corrupted before anyone noticed,
+# always the same way: the local process resolved a different config than
+# the deployed worker, and nothing in the output said so.
+#
+#   1. ASK_GEMINI_MODEL unset locally -> resolution fell through to
+#      GEMINI_MODEL, so two baselines measured a model production never
+#      runs.
+#   2. GEMINI_MODEL pinned to a "-preview" alias locally -> the alias
+#      moved server-side between runs and looked like a prompt
+#      regression.
+#   3. SLEEPER_LEAGUE_ID unset locally -> lookup_fantasy_league was
+#      never declared, so fixture 27 asserted a tool that did not exist
+#      in the request and could not pass for any prompt.
+#
+# Every one of those was invisible until someone went looking. This
+# table makes them loud. Values are a snapshot of the Railway `worker`
+# service; update it deliberately when production changes, never to
+# silence a diff.
+PRODUCTION_CONFIG = {
+    # what model answers an /ask turn
+    "ask_model": "gemini-3.5-flash-lite",
+    # whether lookup_fantasy_league is in the declared tool set
+    "fantasy_tool_registered": True,
+    # generation config on the /ask call
+    "max_output_tokens": 5000,
+    "temperature": 0.3,
+    "include_server_side_tool_invocations": True,
+    "safety_all_block_none": True,
+    # how many declared function tools ride alongside google_search
+    "function_tool_count": 10,
+}
+
+# Differences that are DELIBERATE. Each needs a reason, and the reason is
+# printed, so an unexplained entry is visible in review.
+ALLOWED_CONFIG_DIFFS = {
+    # (nothing today — every known difference has been removed)
+}
+
+
+def resolve_harness_config(tool_list=None, model=None) -> dict:
+    """What THIS process will actually send, resolved the same way the
+    request builder resolves it."""
+    cfg = {
+        "ask_model": model or HARNESS_MODEL,
+        "max_output_tokens": HARNESS_MAX_OUTPUT_TOKENS,
+        "temperature": HARNESS_TEMPERATURE,
+        "include_server_side_tool_invocations": True,
+        "safety_all_block_none": True,
+    }
+    if tool_list is not None:
+        names = []
+        for t in tool_list:
+            for fd in (getattr(t, "function_declarations", None) or []):
+                names.append(fd.name)
+        cfg["fantasy_tool_registered"] = "lookup_fantasy_league" in names
+        cfg["function_tool_count"] = len(names)
+    return cfg
+
+
+def config_guard(cfg: dict) -> list[str]:
+    """Readable diff of harness config against production. Runs BEFORE
+    any API call, so a mismatch costs nothing but a message."""
+    blockers = []
+    for key, want in PRODUCTION_CONFIG.items():
+        if key not in cfg:
+            continue
+        got = cfg[key]
+        if got == want:
+            continue
+        if key in ALLOWED_CONFIG_DIFFS:
+            print(f"  config diff ALLOWED  {key}: harness={got!r} "
+                  f"production={want!r}  ({ALLOWED_CONFIG_DIFFS[key]})")
+            continue
+        blockers.append(
+            f"{key}: harness={got!r} production={want!r}")
+    return blockers
+
+
+def config_fingerprint(cfg: dict) -> str:
+    """Hash of the resolved config, recorded next to suite_fingerprint.
+
+    A baseline measured under a different config is not comparable, for
+    the same reason a baseline measured under different assertions is
+    not comparable.
+    """
+    keys = sorted(set(PRODUCTION_CONFIG) | set(cfg))
+    blob = json.dumps([(k, cfg.get(k)) for k in keys], default=str)
+    return hashlib.sha256(blob.encode()).hexdigest()[:12]
+
+
 
 # ---------------------------------------------------------------- helpers
 def _words(text: str) -> list[str]:
@@ -224,7 +325,9 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         # function tools, which the API only allows with this flag.
         tool_config=types.ToolConfig(
             include_server_side_tool_invocations=True),
-        safety_settings=safety, max_output_tokens=1200, temperature=0.2,
+        safety_settings=safety,
+        max_output_tokens=HARNESS_MAX_OUTPUT_TOKENS,
+        temperature=HARNESS_TEMPERATURE,
     )
     resp = client.models.generate_content(
         model=model, contents=contents, config=cfg)
@@ -339,8 +442,9 @@ def run_two_condition(fixtures: list[dict], client, model, tools,
                 tools=tools,
                 tool_config=types.ToolConfig(
                     include_server_side_tool_invocations=True),
-                safety_settings=safety, max_output_tokens=1200,
-                temperature=0.2)
+                safety_settings=safety,
+                max_output_tokens=HARNESS_MAX_OUTPUT_TOKENS,
+                temperature=HARNESS_TEMPERATURE)
             if si:
                 cfg_kw["system_instruction"] = si
             try:
@@ -377,8 +481,9 @@ def run_two_condition(fixtures: list[dict], client, model, tools,
     return out
 
 
-def baseline_guard(path: str, model: str,
-                   allow_model: bool, allow_suite: bool) -> tuple[dict, list]:
+def baseline_guard(path: str, model: str, allow_model: bool,
+                   allow_suite: bool,
+                   allow_config: bool = False) -> tuple[dict, list]:
     """Refuse to compare a run against a baseline it is not comparable to.
 
     A baseline answers "did this change break something". That only holds
@@ -400,6 +505,21 @@ def baseline_guard(path: str, model: str,
         base = json.loads(Path(path).read_text(encoding="utf-8"))
     except Exception as e:
         return {}, [f"cannot read baseline {path}: {e}"]
+
+    bc = base.get("config_fingerprint")
+    cc = config_fingerprint(resolve_harness_config(model=model))
+    if bc is None:
+        blockers.append(
+            "baseline predates the `config_fingerprint` field, so the "
+            "config it measured cannot be established "
+            "(--allow-config-change to proceed anyway)"
+            if not allow_config else "")
+    elif bc != cc and not allow_config:
+        blockers.append(
+            f"config mismatch: baseline fingerprint {bc}, current {cc}. "
+            f"A different model, tool set, token cap or temperature is a "
+            f"different experiment. Pass --allow-config-change if the "
+            f"config change IS what you are measuring.")
 
     if base.get("invalid_for_deletion_evidence"):
         blockers.append(
@@ -602,6 +722,10 @@ def main() -> int:
                      action="store_true",
                      help="permit comparing against a baseline recorded on "
                           "a different model")
+    ap_.add_argument("--allow-config-change", dest="allow_config_change",
+                     action="store_true",
+                     help="permit comparing against a baseline recorded "
+                          "under a different resolved config")
     ap_.add_argument("--allow-suite-change", dest="allow_suite_change",
                      action="store_true",
                      help="permit comparing against a baseline recorded "
@@ -673,7 +797,8 @@ def main() -> int:
     if args.baseline:
         baseline, blockers = baseline_guard(
             args.baseline, model,
-            args.allow_model_change, args.allow_suite_change)
+            args.allow_model_change, args.allow_suite_change,
+            args.allow_config_change)
         if blockers:
             print(f"REFUSING TO COMPARE against {args.baseline}")
             for b in blockers:
@@ -704,6 +829,25 @@ def main() -> int:
                   "HARM_CATEGORY_SEXUALLY_EXPLICIT",
                   "HARM_CATEGORY_DANGEROUS_CONTENT")
     ]
+
+    # Config assertion. Runs after the tool list exists (it is part of
+    # the config) but before the first API call, so a mismatch costs a
+    # message rather than a corrupted run.
+    resolved_cfg = resolve_harness_config(tool_list, model)
+    cfg_blockers = config_guard(resolved_cfg)
+    if cfg_blockers:
+        print("HARNESS CONFIG DOES NOT MATCH PRODUCTION — refusing to run.")
+        print("A result measured under a different config is evidence "
+              "about a system nobody deploys.\n")
+        for b in cfg_blockers:
+            print("  " + b)
+        print("\nFix the harness to match, or add a reasoned entry to "
+              "ALLOWED_CONFIG_DIFFS. Do not update PRODUCTION_CONFIG "
+              "unless production actually changed.")
+        return 2
+    print(f"config OK — matches production on "
+          f"{len(PRODUCTION_CONFIG)} checked keys "
+          f"(fingerprint {config_fingerprint(resolved_cfg)})\n")
 
     records = []
     model_versions: set[str] = set()
@@ -813,6 +957,9 @@ def main() -> int:
             prompt_chars = None
         Path(args.json_out).write_text(json.dumps({
             "suite_fingerprint": suite_fingerprint(),
+            "config_fingerprint": config_fingerprint(
+                resolve_harness_config(tool_list, model)),
+            "config": resolve_harness_config(tool_list, model),
             "ran_subset": bool(args.only),
             "prompt_chars": prompt_chars,
             "repeat": max(1, args.repeat),

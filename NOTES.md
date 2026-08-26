@@ -283,10 +283,29 @@ grew 25 -> 32 entries.
 Prompt 55,287 -> 53,269 (**-2,018**). Remaining date-check failures are
 exactly the lines 96-102 cluster, left for Session 5.
 
-Every jab fixture held or improved: `29` 2/3 -> 3/3, `28` 2/3 -> 3/3,
-`03` 1/3 -> 3/3, `27` 0/3 -> 3/3, `25b` / `25c` / `31` all 3/3.
-Collapsing five overlapping rules into one made the behavior they
-governed MORE reliable, not less — the overlap was costing adherence.
+**Collapsing five overlapping rules into one made every governed
+fixture MORE reliable, not merely equivalent.** Three went from FLAKY to
+clean:
+
+| fixture | before | after |
+|---|---|---|
+| `29-praise-is-not-an-attack` | FLAKY 2/3 | **3/3** |
+| `28-benign-ask-no-disengage` | FLAKY 2/3 | **3/3** |
+| `03-sustained-clapback-rotation` | FLAKY 1/3 | **3/3** |
+| `27-group-scope-answer` | FAIL 0/3 | **3/3** |
+| `25b` / `25c` / `31` | 3/3 | 3/3 |
+
+Nothing regressed. The overlap was not redundant protection — **the
+overlap was the cause of the inconsistency.** Five rules pointing at one
+decision from five angles, two of them contradicting each other on how
+much history counts as provocation, gave the model a choice about which
+to follow, and the flakiness was that choice being made differently on
+different attempts. One unambiguous rule removed the choice.
+
+That is the evidence base for doing the same to lines 96-102, the second
+collision cluster: four routing rules governing one decision (which
+source a number may come from). Expect the same shape — fewer chars AND
+better adherence, not a trade between them.
 
 | criterion | result | |
 |---|---|---|
