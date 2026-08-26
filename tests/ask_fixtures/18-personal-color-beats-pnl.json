@@ -20,5 +20,17 @@
     "max_words": 120
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "the man ran a 2:55 marathon and still finds time to lecture the room about sauna protocol between sets.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "another blown 0dte account, another red day, another lotto ticket torched. the bags keep bleeding and the exits never come.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

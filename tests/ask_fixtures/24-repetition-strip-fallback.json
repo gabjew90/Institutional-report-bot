@@ -13,5 +13,17 @@
     "max_words": 260
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "dealers hedge their books, and that hedging pins the tape near big strikes until the options roll off.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "dealers have to buy shares. dealers have to buy shares. that's why dealers have to buy shares when it moves.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

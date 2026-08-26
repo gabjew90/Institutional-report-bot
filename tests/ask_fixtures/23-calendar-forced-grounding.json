@@ -25,5 +25,19 @@
     "must_call_tools": [
       "lookup_economic_calendar"
     ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> core PCE wednesday 8:30 ET is the one that matters this week.",
+      "tools_called": [
+        "lookup_economic_calendar"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> i think there's PCE and maybe some housing data, off the top of my head.",
+      "tools_called": [],
+      "grounded": false
+    }
   }
 }

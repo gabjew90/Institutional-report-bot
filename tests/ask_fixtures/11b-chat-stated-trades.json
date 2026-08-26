@@ -32,5 +32,19 @@
       "(?i)batting \\.000"
     ]
   },
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> ledger: nothing posted today. -> chat: he called being in SPX 7800c for the bounce and cutting half.",
+      "tools_called": [
+        "lookup_trade_log"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> zero mentions. terlin did nothing today, batting .000.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

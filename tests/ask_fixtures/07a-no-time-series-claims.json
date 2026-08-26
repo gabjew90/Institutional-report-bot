@@ -24,5 +24,21 @@
       "(?i)\\btrend(ing|ed)? (up|down|higher|lower)\\b.*\\b\\d+ ?%"
     ]
   },
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> snapshot only: call OI 1.2M, put OI 1.5M for the 8/28 expiry. no multi-day history available — pull that from your broker.",
+      "tools_called": [
+        "lookup_options_chain"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> open interest has been trending up 2% over the last 5 days.",
+      "tools_called": [
+        "lookup_options_chain"
+      ],
+      "grounded": false
+    }
+  }
 }

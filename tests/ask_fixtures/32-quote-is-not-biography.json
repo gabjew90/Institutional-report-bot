@@ -14,5 +14,17 @@
     ]
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "he blamed a little brother for the psn handle. classic dodge, and nobody bought it.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "his little brother carries the household and works a real job while he trades.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

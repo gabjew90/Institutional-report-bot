@@ -303,6 +303,16 @@ def validate_fixtures(fixtures: list[dict]) -> list[str]:
                 re.compile(pat)
             except re.error as e:
                 problems.append(f"{fid}: bad regex {pat!r} ({e})")
+        # A fixture with no synthetic pair has never been shown to tell a
+        # correct answer from a wrong one, so its live result carries no
+        # evidentiary weight. Required, not optional.
+        st = fx.get("self_test") or {}
+        for side in ("good", "bad"):
+            if not (st.get(side) or {}).get("answer"):
+                problems.append(
+                    f"{fid}: missing self_test.{side}.answer — run "
+                    f"--self-test; every fixture needs a hand-written "
+                    f"answer that passes and one that fails")
     return problems
 
 
@@ -317,11 +327,90 @@ def ledger_coverage() -> tuple[set, set]:
     return ledger, covered
 
 
+def run_self_test(fixtures: list[dict]) -> int:
+    """Validate the assertions themselves, with no model in the loop.
+
+    Each fixture carries two hand-written synthetic results: a `good` one
+    built to satisfy every assertion, and a `bad` one built to violate at
+    least one. A usable fixture passes the good result and fails the bad
+    one. Anything else is a defect in the fixture, not in the prompt:
+
+      TOO WEAK  passes both — the assertion cannot see the regression it
+                exists to catch (this is the shape fixture 27's
+                name-length bug had: a correct answer and a wrong answer
+                scored identically).
+      BROKEN    fails both — the assertion rejects even a correct answer,
+                so any live failure it reports is uninformative.
+      MISSING   no synthetic pair, so the fixture is unvalidated.
+
+    Returns a process exit code.
+    """
+    print("SELF-TEST — assertions vs. hand-written good/bad answers")
+    print("(no model calls; this validates the harness, not the prompt)\n")
+
+    ok = weak = broken = missing = 0
+    for fx in fixtures:
+        fid = fx["id"]
+        st = fx.get("self_test") or {}
+        good, bad = st.get("good"), st.get("bad")
+        if not good or not bad:
+            print(f"MISSING   {fid}")
+            print("          no self_test.good / self_test.bad pair\n")
+            missing += 1
+            continue
+
+        gf = evaluate(fx, good)
+        bf = evaluate(fx, bad)
+
+        if not gf and bf:
+            ok += 1
+            print(f"OK        {fid}")
+            print(f"          catches: {bf[0]}")
+            continue
+
+        if not gf and not bf:
+            weak += 1
+            print(f"TOO WEAK  {fid}")
+            print("          the bad answer passed every assertion — this "
+                  "fixture cannot detect a regression")
+            print(f"          bad answer: {(bad.get('answer') or '')[:160]!r}")
+        elif gf and bf:
+            broken += 1
+            print(f"BROKEN    {fid}")
+            print("          the good answer was rejected too, so live "
+                  "failures from this fixture mean nothing")
+            for f in gf:
+                print(f"          good-answer failure: {f}")
+        else:   # gf and not bf — inverted
+            broken += 1
+            print(f"BROKEN    {fid}")
+            print("          INVERTED: rejects the good answer, accepts "
+                  "the bad one")
+            for f in gf:
+                print(f"          good-answer failure: {f}")
+        print()
+
+    total = len(fixtures)
+    print("-" * 62)
+    print(f"OK {ok}/{total} | TOO WEAK {weak} | BROKEN {broken} | "
+          f"MISSING {missing}")
+    if weak or broken or missing:
+        print("\nThe harness is NOT cleared to authorize prompt deletion "
+              "until every fixture is OK.")
+        return 1
+    print("\nEvery fixture separates a correct answer from a wrong one. "
+          "Assertions are cleared for use as deletion evidence.")
+    return 0
+
+
 def main() -> int:
     ap_ = argparse.ArgumentParser()
     ap_.add_argument("--only", nargs="*", default=None)
     ap_.add_argument("--repeat", type=int, default=1)
     ap_.add_argument("--offline", action="store_true")
+    ap_.add_argument("--self-test", dest="self_test", action="store_true",
+                     help="validate each fixture's assertions against a "
+                          "hand-written good and bad answer; no model calls")
     ap_.add_argument("--json", dest="json_out", default=None)
     args = ap_.parse_args()
 
@@ -349,6 +438,9 @@ def main() -> int:
           f"{len(ledger & covered)}"
           + (f" | UNCOVERED: {missing}" if missing else ""))
     print(f"fixtures: {len(fixtures)}\n")
+
+    if args.self_test:
+        return run_self_test(fixtures)
 
     if args.offline:
         print("offline mode — fixtures structurally valid, no model run")

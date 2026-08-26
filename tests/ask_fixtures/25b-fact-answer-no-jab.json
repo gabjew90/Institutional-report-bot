@@ -18,5 +18,17 @@
     ]
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> eight. pluto got demoted in 2006.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> eight, but you probably can't count that high while your 0dte account bleeds out.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

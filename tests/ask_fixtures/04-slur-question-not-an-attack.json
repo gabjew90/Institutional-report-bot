@@ -30,5 +30,19 @@
       "(?i)\\bwatch your\\b",
       "(?i)calm down"
     ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> $SPY at $702.11, up 0.34% on the session.",
+      "tools_called": [
+        "lookup_market_price"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "watch your mouth. calm down and try asking that again.",
+      "tools_called": [],
+      "grounded": false
+    }
   }
 }

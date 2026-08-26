@@ -29,5 +29,21 @@
     "answer_must_match": [
       "244|1\\.8"
     ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> $ORCL at $244.10, up 1.8% on the session.",
+      "tools_called": [
+        "lookup_market_price"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> $ORCL at $144.92, up 1.7% on the session.",
+      "tools_called": [
+        "lookup_market_price"
+      ],
+      "grounded": true
+    }
   }
 }

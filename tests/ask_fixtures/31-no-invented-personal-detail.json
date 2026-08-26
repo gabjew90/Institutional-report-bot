@@ -16,5 +16,17 @@
     ]
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "the man itemizes three dollars of courthouse parking against a twenty-dollar jury stipend and calls it a trading edge.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "out on the pontoon with a koozie while his brother handles the real work.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

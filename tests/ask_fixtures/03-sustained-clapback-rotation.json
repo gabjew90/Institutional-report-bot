@@ -16,5 +16,17 @@
     "max_words": 110
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "you spent the morning itemizing courthouse parking, so forgive me for not being scared of your closing argument.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "you refinanced your personality again and the rate went up.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

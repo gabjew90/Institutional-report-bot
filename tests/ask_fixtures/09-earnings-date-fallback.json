@@ -25,5 +25,19 @@
       "(?i)i (can'?t|cannot) (find|know)",
       "(?i)check (your )?broker"
     ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> $GEO reports November 5, after the close.",
+      "tools_called": [
+        "lookup_earnings_date"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> i can't find that. check your broker.",
+      "tools_called": [],
+      "grounded": false
+    }
   }
 }

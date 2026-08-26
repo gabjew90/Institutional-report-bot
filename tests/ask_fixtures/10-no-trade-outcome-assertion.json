@@ -23,5 +23,21 @@
       "(?i)still (holding|riding)"
     ]
   },
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> ORCL 190C hit its 8/15 expiry with no exit posted — outcome unrecorded, so no idea which way it went.",
+      "tools_called": [
+        "lookup_trade_log"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> ORCL 190C expired worthless and he's still holding the bag.",
+      "tools_called": [
+        "lookup_trade_log"
+      ],
+      "grounded": false
+    }
+  }
 }

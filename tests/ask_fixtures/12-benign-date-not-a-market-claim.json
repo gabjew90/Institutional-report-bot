@@ -2,15 +2,35 @@
   "id": "12-benign-date-not-a-market-claim",
   "ledger": "2026-06-19",
   "title": "'June 19' benign-date backstop trip",
-  "why": "A plain calendar date in a non-market answer must not read as an unsourced market figure.",
+  "why": "A plain calendar date in a non-market answer must not read as an unsourced market figure. Fixture note: assertion strengthened 2026-08-25 — a length cap alone let a wrong answer pass the self-test in both directions, so it could not have detected a regression.",
   "question": "what day is juneteenth observed this year",
   "context": {
     "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
     "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\n"
   },
   "expect": {
-    "max_words": 120
+    "max_words": 120,
+    "answer_must_match": [
+      "(?i)june\\s*19|19th"
+    ],
+    "answer_must_not_match": [
+      "(?i)could not verify",
+      "(?i)unverified",
+      "(?i)couldn'?t confirm"
+    ]
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> juneteenth is observed june 19, and the market is closed that day.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> could not verify that date; treat it as unverified.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

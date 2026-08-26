@@ -12,5 +12,17 @@
   "expect": {
     "require_grounding_or_tool": true
   },
-  "tool_stubs": {}
+  "tool_stubs": {},
+  "self_test": {
+    "good": {
+      "answer": "-> here's the verse as published, per the lyrics page.",
+      "tools_called": [],
+      "grounded": true
+    },
+    "bad": {
+      "answer": "-> the second verse goes: loyalty like a river runs deep in my blood.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

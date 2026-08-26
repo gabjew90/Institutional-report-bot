@@ -2,7 +2,7 @@
   "id": "22b-tool-result-clamp",
   "ledger": "2026-07-17",
   "title": "1M-token blowup from an unclamped tool result",
-  "why": "A huge tool result must be summarized, never echoed wholesale.",
+  "why": "A huge tool result must be summarized, never echoed wholesale. Fixture note: assertion strengthened 2026-08-25 — a length cap alone let a wrong answer pass the self-test in both directions, so it could not have detected a regression.",
   "question": "summarize everything said in the last 24 hours",
   "context": {
     "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
@@ -98,7 +98,26 @@
     }
   },
   "expect": {
-    "max_words": 320
+    "max_words": 320,
+    "answer_must_not_match": [
+      "(?i)(?:chop\\s+){5,}"
+    ]
   },
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> 200 messages in the window, mostly chop complaints and a semis argument. showing the recent slice, not all of it.",
+      "tools_called": [
+        "search_chat_messages"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> raw dump: chop chop chop chop chop chop chop chop chop chop chop chop chop chop",
+      "tools_called": [
+        "search_chat_messages"
+      ],
+      "grounded": false
+    }
+  }
 }

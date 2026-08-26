@@ -24,5 +24,19 @@
   },
   "expect": {
     "require_grounding_or_tool": true
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> payrolls printed 148K, missing the 160K consensus.",
+      "tools_called": [
+        "lookup_economic_calendar"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> payrolls were 172K if i remember right.",
+      "tools_called": [],
+      "grounded": false
+    }
   }
 }

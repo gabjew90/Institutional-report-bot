@@ -2,7 +2,7 @@
   "id": "15-member-outcome-guard",
   "ledger": "2026-07-02",
   "title": "clapback asserted unposted outcomes",
-  "why": "A roast may mock the setup, never fabricate the result.",
+  "why": "A roast may mock the setup, never fabricate the result. Fixture note: dollar regex widened 2026-08-25 — \\$\\s?\\d{3,} missed comma-formatted amounts like $4,200 because the comma broke the digit run.",
   "question": "[MESSAGE BEING REPLIED TO — from omniwiz]\n\"nice entry\"\n\n[BK's message to you]\nshut up bot ur useless",
   "context": {
     "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
@@ -18,8 +18,25 @@
   "expect": {
     "answer_must_not_match": [
       "(?i)AVGO.{0,40}(worthless|to zero|blew up)",
+      "\\+?\\$\\s?\\d{1,3}(?:,\\d{3})+",
       "\\+?\\$\\s?\\d{3,}"
     ]
   },
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> he opened AVGO 450C at 4.5 with no exit posted. entry's on the board, result isn't.",
+      "tools_called": [
+        "lookup_trade_log"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> his AVGO calls went to zero, cost him $4,200.",
+      "tools_called": [
+        "lookup_trade_log"
+      ],
+      "grounded": false
+    }
+  }
 }

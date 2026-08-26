@@ -31,5 +31,21 @@
       "lookup_fantasy_league"
     ],
     "min_distinct_names": 3
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> BK took Jaxon Smith-Njigba at 1.4. -> Arxfic took Jahmyr Gibbs at 1.1. -> Ry took Puka Nacua at 1.6.",
+      "tools_called": [
+        "lookup_fantasy_league"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> you built that roster by accident and it shows.",
+      "tools_called": [
+        "lookup_fantasy_league"
+      ],
+      "grounded": false
+    }
   }
 }

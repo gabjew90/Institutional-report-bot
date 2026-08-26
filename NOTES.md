@@ -103,6 +103,58 @@ the concrete failure (a personal noun absent from the material) rather than
 using the detector as a pass/fail gate. **Do not promote that detector to a
 hard gate without a much larger stoplist.**
 
+### Harness validated before use — `--self-test`
+
+```bash
+python scripts/ask_fixture_run.py --self-test
+```
+
+Every fixture now carries two hand-written synthetic results in a
+`self_test` block: a `good` one built to satisfy all its assertions and a
+`bad` one built to violate at least one. `--self-test` runs `evaluate()`
+against both with no model calls and classifies each fixture:
+
+| verdict | meaning |
+|---|---|
+| **OK** | passes good, fails bad — can actually detect a regression |
+| **TOO WEAK** | passes both — the assertion is blind to what it exists to catch |
+| **BROKEN** | fails both, or is inverted — live failures from it mean nothing |
+| **MISSING** | no synthetic pair, so it was never validated |
+
+Current state: **OK 39/39, 0 weak, 0 broken, 0 missing.** A missing pair
+is now a hard `validate_fixtures` error, so a new fixture cannot enter the
+suite unvalidated.
+
+**Two fixtures were genuinely TOO WEAK before this and are fixed.** Both
+asserted only a length cap, so a wrong answer under the cap scored
+identically to a correct one — the same shape as the `min_distinct_names`
+bug that made me report a false finding on fixture 27:
+
+- `12-benign-date-not-a-market-claim` — was `max_words: 120` alone. Now
+  also requires the actual date and bans the hedge vocabulary, which is
+  the behavior the incident was about.
+- `22b-tool-result-clamp` — was `max_words: 320` alone. Now also bans
+  echoing the stub's filler verbatim.
+
+Two more assertions were widened after inspection (not caught by the
+self-test, since the bad answers failed on another rule): `15` and `33`
+banned dollar P&L with `\$\s?\d{3,}`, which misses comma-formatted
+amounts — `$4,200` passed because the comma broke the digit run.
+
+All four re-ran live at `--repeat 3` and still PASS 3/3, so the tighter
+assertions did not introduce false failures.
+
+**What `--self-test` does and does not prove.** It proves each assertion
+separates one correct answer from one wrong answer. It does not prove the
+assertion catches *every* wrong answer, because the same author wrote the
+assertion and the bad answer. Treat it as a floor — a fixture that fails
+it is definitely unusable — not as a certificate.
+
+The self-test was itself checked against four deliberately defective
+fixtures (a length-cap-only fixture, an unsatisfiable assertion, an
+inverted good/bad pair, and a fixture with no pair). It reported TOO WEAK,
+BROKEN, BROKEN and MISSING respectively and exited non-zero.
+
 ### Fixture fixes made during bring-up (mine, not the prompt's)
 
 Six fixtures asserted more than the rule actually requires and were

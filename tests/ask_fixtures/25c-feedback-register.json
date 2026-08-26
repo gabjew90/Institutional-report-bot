@@ -17,5 +17,17 @@
     "max_words": 130
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> fair. the ledger should be the first stop on a trade question, not the last.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> rich coming from someone whose own account is a crater. cope.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

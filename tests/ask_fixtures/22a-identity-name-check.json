@@ -16,5 +16,19 @@
     "any_of_tools": true
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> pulled the log: he's been posting about semis all week.",
+      "tools_called": [
+        "search_chat_messages"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> he's been quiet lately i think.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

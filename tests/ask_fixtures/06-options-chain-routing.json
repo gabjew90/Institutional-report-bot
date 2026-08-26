@@ -25,5 +25,19 @@
     "must_call_tools": [
       "lookup_options_chain"
     ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> call OI 1.2M against put OI 1.5M, ATM IV 12.1%.",
+      "tools_called": [
+        "lookup_options_chain"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> open interest is somewhere around a million and IV looks like roughly 12 percent.",
+      "tools_called": [],
+      "grounded": false
+    }
   }
 }

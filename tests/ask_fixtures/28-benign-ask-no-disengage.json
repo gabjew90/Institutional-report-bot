@@ -16,5 +16,17 @@
     "min_words": 8
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> noted for september 15, right in the middle of OPEX week.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "you done?",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

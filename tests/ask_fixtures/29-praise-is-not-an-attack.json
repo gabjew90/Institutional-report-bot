@@ -13,5 +13,17 @@
     "max_sentences": 2
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "took me long enough. noted.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "easy to talk smack when your little brother carries the household, you spam entries with no exits, and your whole week is koozies on the water. go check your account before you praise anyone. next time bring something real to the conversation instead of a pat on the head like some kind of expert.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

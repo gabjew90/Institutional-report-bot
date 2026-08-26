@@ -18,5 +18,17 @@
     ]
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> FDIC covers 250k per depositor, per insured bank, per ownership category.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> could not verify the coverage limit, treat this as unverified.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

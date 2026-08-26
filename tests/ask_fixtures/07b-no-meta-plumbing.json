@@ -20,5 +20,17 @@
     ]
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> don't have multi-day chain history. your broker keeps it.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> the API only returns a snapshot, so you'd poll the endpoint daily and store the snapshot in the backend schema.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

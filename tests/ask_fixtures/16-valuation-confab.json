@@ -12,5 +12,17 @@
   "expect": {
     "require_grounding_or_tool": true
   },
-  "tool_stubs": {}
+  "tool_stubs": {},
+  "self_test": {
+    "good": {
+      "answer": "-> $GEO market cap sits near $4.0B on the latest count.",
+      "tools_called": [],
+      "grounded": true
+    },
+    "bad": {
+      "answer": "-> $GEO is worth about $4.04 billion.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

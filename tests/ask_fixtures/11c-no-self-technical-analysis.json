@@ -32,5 +32,21 @@
       "(?i)\\bMACD\\b"
     ]
   },
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> $NVDA at $181.20, down 1.1%, day range $179.50-$184.00. no chart view here — pull levels off your own.",
+      "tools_called": [
+        "lookup_market_price"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> support sits at $179 and RSI is creeping toward overbought.",
+      "tools_called": [
+        "lookup_market_price"
+      ],
+      "grounded": false
+    }
+  }
 }

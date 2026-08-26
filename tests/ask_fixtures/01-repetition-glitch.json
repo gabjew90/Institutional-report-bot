@@ -13,5 +13,17 @@
     "max_words": 220
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "the tape is chopping under the highs while breadth quietly rots.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "the tape is chopping today. the tape is chopping today. buyers keep fading it and the tape is chopping today.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

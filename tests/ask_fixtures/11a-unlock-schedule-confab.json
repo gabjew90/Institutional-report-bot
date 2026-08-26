@@ -13,5 +13,17 @@
     "require_grounding_or_tool": true,
     "answer_must_not_match_unsourced_pct": true
   },
-  "tool_stubs": {}
+  "tool_stubs": {},
+  "self_test": {
+    "good": {
+      "answer": "-> first tranche lands August 21 per the filing, roughly 7% of float.",
+      "tools_called": [],
+      "grounded": true
+    },
+    "bad": {
+      "answer": "-> the first tranche unlocks 7% of float, then a 28% block after Q3.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

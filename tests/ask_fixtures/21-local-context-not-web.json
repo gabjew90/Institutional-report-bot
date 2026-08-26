@@ -17,5 +17,17 @@
     ]
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> he's just signing off, good luck to the room. nothing to read into it.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> GLW is Corning on the NYSE, price target near $60, earnings report due next month.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

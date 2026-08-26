@@ -17,5 +17,21 @@
     ]
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> that rank is scoped to this conversation, not the server. globally you're #7 of 58.",
+      "tools_called": [
+        "lookup_user_profile"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> yeah you're #1 in the whole server.",
+      "tools_called": [
+        "lookup_user_profile"
+      ],
+      "grounded": false
+    }
+  }
 }

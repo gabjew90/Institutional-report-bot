@@ -15,5 +15,17 @@
     ]
   },
   "tool_stubs": {},
-  "grounding_required": false
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "-> 1. the macro one. 2. the vol letter. 3. the rest are filler.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> as an ai i can't rank those.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }

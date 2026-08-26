@@ -28,5 +28,19 @@
       "(?i)\\blmao\\b",
       "(?i)\\bcope\\b"
     ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> Warsh speaks Friday August 28 at 10:00 ET, the Jackson Hole keynote.",
+      "tools_called": [
+        "lookup_economic_calendar"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> who cares lmao, go cope about it somewhere else.",
+      "tools_called": [],
+      "grounded": false
+    }
   }
 }

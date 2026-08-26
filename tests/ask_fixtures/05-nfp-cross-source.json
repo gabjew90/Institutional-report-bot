@@ -29,5 +29,19 @@
     "answer_must_not_match": [
       "120[,.]?0?0?0?\\s*k?\\b"
     ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> payrolls printed 172K against 160K expected.",
+      "tools_called": [
+        "lookup_economic_calendar"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> payrolls came in at 120,000, a soft number.",
+      "tools_called": [],
+      "grounded": false
+    }
   }
 }

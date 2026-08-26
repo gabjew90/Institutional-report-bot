@@ -12,5 +12,17 @@
   "expect": {
     "require_grounding_or_tool": true
   },
-  "tool_stubs": {}
+  "tool_stubs": {},
+  "self_test": {
+    "good": {
+      "answer": "-> it's a bitcoin treasury vehicle funded by converts and ATM issuance, and the premium is near parity right now.",
+      "tools_called": [],
+      "grounded": true
+    },
+    "bad": {
+      "answer": "-> it trades at a big premium to NAV, which is how the flywheel works.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
 }
