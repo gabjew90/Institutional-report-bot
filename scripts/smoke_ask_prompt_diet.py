@@ -218,11 +218,9 @@ def test_production_import_is_clean():
         capture_output=True, text=True,
         cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     if r.returncode != 0:
-        tail = "
-".join((r.stderr or "").strip().splitlines()[-12:])
+        tail = "\n".join((r.stderr or "").strip().splitlines()[-12:])
         _fail("bot.py does not import cleanly with deprecations as "
-              "errors. This is what takes the worker down on deploy:
-"
+              "errors. This is what takes the worker down on deploy:\n"
               + tail)
     _ok("bot.py imports clean with deprecations promoted to errors")
 
