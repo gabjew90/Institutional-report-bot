@@ -708,6 +708,160 @@ def check_unforced_time_series(answer: str, tool_calls=None,
         f"(calls: {calls or 'none'})")]
 
 
+
+# --------------- class 6: NOT SHIPPED. Kept as the evidence trail.
+#
+# VERDICT: there is no such failure class. Built, swept, and withdrawn
+# the same day.
+#
+# The case for it was fixture 24 failing on repeated 4-word phrases. The
+# answer it failed on turned out to be GOOD EXPLANATORY PROSE using
+# deliberate parallel construction:
+#
+#     "if dealer gamma is **positive**, they are basically speed bumps"
+#     "if dealer gamma is **negative**, they become gas pedals"
+#
+# That is not a loop. The defect was the FIXTURE's assertion
+# (no_repeated_phrase: 4), which cannot tell parallel explanation from
+# repetition. Raised to 5, which still catches the real loop
+# ("dealers have to buy shares" x3) and lets the explainer through.
+#
+# Tuned to zero false positives this detector caught ONE thing across
+# 634 answers, and the seven "true positives" it lost were all
+# legitimate parallel construction. A validator with no demonstrated
+# real violation should not ship; it can only cost.
+#
+# The code stays unregistered, as the record of what was tested.
+# --------------------------- class 6: mid-answer clause restatement
+# A DIFFERENT failure from the repetition glitch, and deliberately a
+# different detector. _has_repetition_glitch targets end-of-generation
+# loops with a >=6-token floor; this is the model restating the same
+# short clause while EXPLAINING something -- fixture 24's "gamma is when
+# they", "if dealers are net", "gex means they act".
+#
+# The corpus that looked like a starting point was not one. Releasing
+# mid-answer sentences from the repetition detector surfaced 18
+# candidates and nearly all were legitimate PARALLEL STRUCTURE:
+#     "May revised down from +129K; June revised down from +57K"
+#     "call open interest at 1.2M, put open interest at 1.5M"
+#     "Swerve, swerve, swerve, swerve"      (quoted lyrics)
+# Parallel structure repeats a frame around DIFFERENT data, which is
+# good writing. Restatement repeats the frame AND says nothing new. The
+# exclusions below are that distinction, made mechanical.
+_CLAUSE_N = 4               # words per candidate phrase
+_CLAUSE_MIN_CHARS = 14      # skip trivially short function-word runs
+
+
+def _norm_words(text: str) -> list[str]:
+    clean = re.sub(r"(?m)^\s*(?:[-*>]|\d+[.)])\s*", " ", text or "")
+    # Arrow bullets appear MID-TEXT too, and leaving them in produced
+    # phantom phrases that straddle two bullets ("the ledger -> if").
+    clean = clean.replace("→", " ").replace("->", " ")
+    clean = clean.replace("**", " ").replace("__", " ")
+    return [w.lower().strip(".,!?*_`:;()[]\"'")
+            for w in re.split(r"\s+", clean) if w.strip()]
+
+
+def _numbers_near(text: str, phrase: str) -> list[set]:
+    """Numbers adjacent to each occurrence of `phrase`.
+
+    Parallel structure carries DIFFERENT numbers per occurrence
+    ("May revised down from +129K" / "June revised down from +57K").
+    Restatement carries the same, or none.
+    """
+    out = []
+    low = text.lower()
+    start = 0
+    while True:
+        i = low.find(phrase, start)
+        if i < 0:
+            break
+        seg = text[max(0, i - 70): i + len(phrase) + 70]
+        out.append(set(re.findall(r"\d[\d,.]*", seg)))
+        start = i + 1
+    return out
+
+
+_SCHEDULE_TOKEN = re.compile(
+    r"\b(?:mon|tues|wednes|thurs|fri|satur|sun)day\b"
+    r"|\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)"
+    r"(?:uary|ruary|ch|il|e|y|ust|tember|ober|ember)?\b"
+    r"|\b\d{1,2}:\d{2}\b|\bam\b|\bpm\b|\bet\b",
+    re.I,
+)
+
+
+def _contexts_around(text: str, phrase: str, span: int = 90) -> list[set]:
+    """Vocabulary surrounding each occurrence, excluding the phrase."""
+    out, low, start = [], " ".join(_norm_words(text)), 0
+    pw = set(phrase.split())
+    while True:
+        i = low.find(phrase, start)
+        if i < 0:
+            break
+        seg = low[max(0, i - span): i] + " " + low[i + len(phrase): i + len(phrase) + span]
+        out.append({w for w in seg.split() if w and w not in pw})
+        start = i + 1
+    return out
+
+
+def check_clause_restatement(answer: str, tool_calls=None,
+                             **_) -> list[Violation]:
+    """Flag a short clause restated mid-answer with nothing new added."""
+    text = answer or ""
+    if not text.strip():
+        return []
+    ws = _norm_words(text)
+    seen: dict[tuple, int] = {}
+    for i in range(len(ws) - _CLAUSE_N + 1):
+        key = tuple(ws[i:i + _CLAUSE_N])
+        phrase = " ".join(key)
+        if len(phrase) < _CLAUSE_MIN_CHARS:
+            continue
+        seen[key] = seen.get(key, 0) + 1
+        if seen[key] < 2:
+            continue
+
+        # 1. quoted material repeats on purpose (lyrics, verbatim quotes)
+        occ_lines = [ln for ln in text.splitlines()
+                     if phrase in " ".join(_norm_words(ln))]
+        if any(ln.strip().startswith(">") or '"' in ln for ln in occ_lines):
+            continue
+
+        # 2. a single word repeated consecutively is style, not a loop
+        if len(set(key)) == 1:
+            continue
+
+        # 3. schedule strings repeat because events share a time.
+        #    "Wednesday, August 26 at 8:30 AM ET" across three calendar
+        #    entries is the answer being consistent, not looping.
+        if _SCHEDULE_TOKEN.search(phrase):
+            continue
+
+        # 4. parallel structure, generalised: restatement repeats the
+        #    frame AND says the same thing around it. If the two
+        #    surroundings share little vocabulary, the frame is carrying
+        #    DIFFERENT content, which is good writing.
+        ctxs = _contexts_around(text, phrase)
+        if len(ctxs) >= 2:
+            a_, b_ = ctxs[0], ctxs[1]
+            overlap = len(a_ & b_) / max(1, len(a_ | b_))
+            if overlap < 0.5:
+                continue
+
+        # 5. parallel structure: same frame, DIFFERENT numbers
+        numsets = _numbers_near(text, phrase)
+        if len(numsets) >= 2 and any(
+                a != b for a, b in zip(numsets, numsets[1:])):
+            continue
+
+        return [Violation(
+            "clause-restatement", phrase, (0, 0),
+            (occ_lines[0] if occ_lines else text.splitlines()[0])[:120],
+            f"clause restated {seen[key]}x mid-answer with nothing added")]
+    return []
+
+
 _CHECKS = {
     "meta-plumbing": check_meta_plumbing,
     "macro-unsourced": check_macro_unsourced,

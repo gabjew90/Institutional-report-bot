@@ -372,27 +372,47 @@ Order is by ledger weight, not by discovery order.
 | 3 | **unforced PRICE assertions** | **next** — largest of the three remaining ZERO UNFORCED blocks, most ledger incidents behind it |
 | 4 | unforced MARKET-DATA assertions | queued |
 | 5 | unforced TIME-SERIES claims | queued |
-| 6 | mid-answer clause restatement | queued, behind 3-5 |
+| 6 | mid-answer clause restatement | **WITHDRAWN — no such failure class** |
 
-**Class 6 — why it is a separate detector from the one that exists.**
-Fixture `24-repetition-strip-fallback` fails with `guard=clean`: the
-production ladder RAN and found nothing, so the phrase ships. It is a
-real user-visible failure, not a stage mismatch like `07b` was.
+**Class 6 — BUILT, SWEPT, AND WITHDRAWN THE SAME DAY.**
 
-The two shapes:
+The case for it was fixture `24` failing on repeated 4-word phrases
+mid-answer. Building the detector and sweeping it first, as step 2b now
+requires, showed the case was wrong.
 
-| | `_has_repetition_glitch` (exists) | class 6 (needed) |
+The answer `24` failed on:
+
+> if dealer gamma is **positive**, they are basically speed bumps — they
+> sell when the market spikes and buy when it dips.
+> if dealer gamma is **negative**, they become gas pedals — they have to
+> chase the market higher.
+
+That is not a loop. It is good explanatory prose using deliberate
+parallel construction, and it is exactly what this bot should write.
+
+**The defect was the FIXTURE.** `no_repeated_phrase: 4` cannot tell
+parallel explanation from repetition. Raised to 5 on `24` and `01`:
+
+| n | parallel explainer | real loop ("dealers have to buy shares" x3) |
 |---|---|---|
-| where | end of generation | mid-answer |
-| what | the model loops and cannot stop | the model restates one clause while explaining |
-| floor | >= 6 tokens per sentence | shorter — "gamma is when they", "if dealers are net", "gex means they act" |
-| fix | retry, then strip the looping tail | rewrite the duplicated clause |
+| 4 | **flagged** (wrong) | flagged |
+| 5 | clean | **flagged** |
 
-The existing detector cannot be widened to cover class 6 without firing
-on legitimate repetition in explainers, where restating a term is often
-correct. It needs its own detector and its own false-positive corpus.
-`01-repetition-glitch` passes 3/3 with `guard=stripped`, which confirms
-the existing ladder works for the shape it targets.
+Precision bought at some recall, deliberately and recorded.
+
+The detector itself, tuned to zero false positives, caught **one** thing
+across 634 answers — and the seven "true positives" it lost on the way
+were all legitimate parallel construction: macro revisions, chain
+listings, unlock tranches, quoted lyrics. A validator with no
+demonstrated real violation should not ship; it can only cost. The code
+stays in `ask_response_validate.py`, unregistered, as the record of what
+was tested and why it was rejected.
+
+**The starting corpus was the tell.** Tail-scoping the repetition class
+released 18 mid-answer candidates that looked like class 6's evidence.
+Sixteen were parallel structure. A corpus assembled by relaxing another
+detector is not evidence of a new failure class — it is the other
+detector's false positives, wearing a new label.
 
 ---
 
