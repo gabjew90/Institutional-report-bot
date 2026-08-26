@@ -1,0 +1,204 @@
+{
+ "suite_fingerprint": "7c86aec016aa",
+ "config_fingerprint": "241eb9ed3e3b",
+ "config": {
+  "ask_model": "gemini-3.5-flash-lite",
+  "max_output_tokens": 5000,
+  "temperature": 0.3,
+  "thinking_budget": 2000,
+  "include_server_side_tool_invocations": true,
+  "safety_all_block_none": true,
+  "fantasy_tool_registered": true,
+  "function_tool_count": 10,
+  "search_on_every_fixture": true
+ },
+ "ran_subset": true,
+ "prompt_chars": 51763,
+ "repeat": 3,
+ "model": "gemini-3.5-flash-lite",
+ "model_pinned_in_runner": true,
+ "model_versions_seen": [
+  "gemini-3.5-flash-lite"
+ ],
+ "compared_against": null,
+ "pass_rate": 75.0,
+ "passed": 3,
+ "total": 4,
+ "tool_call_rate_grounding": 100.0,
+ "grounding_turns": 2,
+ "grounding_satisfied": 2,
+ "fixtures": [
+  {
+   "id": "05-nfp-cross-source",
+   "ledger": "2026-06-05",
+   "status": "FLAKY",
+   "attempts": 3,
+   "attempts_passed": 2,
+   "expect_hash": "e94ff6635547",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar",
+      "search_chat_messages"
+     ],
+     "grounded": true,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_economic_calendar"
+     ],
+     "grounded": true,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": false,
+     "failures": [
+      "empty answer after 2 tool call(s) (['lookup_economic_calendar', 'search_chat_messages']) \u2014 model never produced text"
+     ],
+     "tools_called": [
+      "lookup_economic_calendar",
+      "search_chat_messages"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [
+    "empty answer after 2 tool call(s) (['lookup_economic_calendar', 'search_chat_messages']) \u2014 model never produced text"
+   ],
+   "tools_called": [
+    "lookup_economic_calendar",
+    "search_chat_messages"
+   ],
+   "grounded": false,
+   "answer": ""
+  },
+  {
+   "id": "07a-no-time-series-claims",
+   "ledger": "2026-06-07",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "20d87d5b7385",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false,
+     "guard_outcome": "stripped"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false,
+     "guard_outcome": "stripped"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_options_chain"
+     ],
+     "grounded": false,
+     "guard_outcome": "replaced"
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_options_chain"
+   ],
+   "grounded": false,
+   "answer": "\u2192 Current SPY open interest for the **08-28** expiry stands at **1,200,000 calls** and **1,500,000 puts**"
+  },
+  {
+   "id": "07b-no-meta-plumbing",
+   "ledger": "2026-06-07",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "108c32a27762",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "stripped"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "stripped"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [],
+     "grounded": false,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "Without historical storage behind it, you're just staring at today's numbers."
+  },
+  {
+   "id": "25a-price-contradiction",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "attempts": 3,
+   "attempts_passed": 3,
+   "expect_hash": "bedb87e723e9",
+   "per_attempt": [
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    },
+    {
+     "passed": true,
+     "failures": [],
+     "tools_called": [
+      "lookup_market_price"
+     ],
+     "grounded": false,
+     "guard_outcome": "clean"
+    }
+   ],
+   "failures": [],
+   "tools_called": [
+    "lookup_market_price"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **ORCL** at **$244.10** \u2014 up **+1.8%** session-to-date\n\n\u2192 Regular session live print"
+  }
+ ],
+ "two_condition": null
+}

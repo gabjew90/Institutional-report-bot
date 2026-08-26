@@ -425,11 +425,87 @@ def check_repetition(answer: str, tool_calls=None, **_) -> list[Violation]:
             for t in sents]
 
 
+
+# ------------------------------------- class 3: unforced price levels
+# An absolute price level for a ticker, index or crypto must come from a
+# lookup_market_price call in the SAME turn. Not memory, not the chat
+# block, not a Google snippet -- snippets return wrong-symbol index
+# numbers, which is how an NDX question once volunteered "near its
+# 52-week highs around $30,500", a level no index called NDX trades at.
+#
+# Keyed on the tool-call log because that is a fact about the turn.
+# Whether a number is "from memory" is not checkable; whether the tool
+# fired is.
+_PRICE_TOOL = "lookup_market_price"
+
+# A ticker-ish token: $CASHTAG, or a bare 2-5 letter symbol, or one of
+# the index/crypto names the room actually uses.
+_TICKERISH = re.compile(
+    r"\$[A-Za-z]{1,5}\b"
+    r"|\b(?:SPX|SPY|NDX|QQQ|DJI|RUT|VIX|ES|NQ|BTC|ETH|SOL|SUI|PEPE|"
+    r"DXY|GLD|SLV|USO|TLT|IWM)\b"
+    r"|\b(?:bitcoin|ethereum|solana|nasdaq|the dow|s&p|russell)\b",
+    re.I,
+)
+
+# An ABSOLUTE level, not a change. "$244.10", "244.10", "5,900", "$4.5k".
+# Percentages are deliberately excluded: "up 1.8%" is a change, and the
+# rule is about levels. Small bare integers are excluded too -- strike
+# counts, contract counts and "8 planets" are not price levels.
+_PRICE_LEVEL = re.compile(
+    r"\$\s?\d{1,3}(?:,\d{3})+(?:\.\d+)?"
+    r"|\$\s?\d+(?:\.\d+)?\s?[kK]?"
+    r"|\b\d{1,3}(?:,\d{3})+(?:\.\d+)?\b"
+    r"|\b\d{3,}\.\d+\b"
+)
+
+# Shapes that are NOT a spot level even though they look numeric.
+_NOT_A_LEVEL = re.compile(
+    r"\b\d{1,5}\s*[cp]\b"                 # 450c / 190p strikes
+    r"|\bstrike\b|\bexpir|\b\d{1,2}/\d{1,2}\b"
+    r"|\b(?:FDIC|insured|covers?)\b"        # the $250k explainer
+    r"|\bmarket cap\b|\bvaluation\b|\bAUM\b|\brevenue\b"
+    r"|\bpayrolls?\b|\bCPI\b|\bPCE\b|\bGDP\b|\bclaims\b",
+    re.I,
+)
+
+_PRICE_WINDOW = 120
+
+
+def check_unforced_price(answer: str, tool_calls=None,
+                         **_) -> list[Violation]:
+    """Flag an absolute price level stated without the price tool firing.
+
+    The prompt carried this rule in 719 chars, in bold, with the incident
+    quoted. It is a tool-call assertion, so it is checkable, so per
+    CLAUDE.md rule 1 it belongs here instead.
+    """
+    if _PRICE_TOOL in (tool_calls or []):
+        return []
+    text = answer or ""
+    for m in _PRICE_LEVEL.finditer(text):
+        lo = max(0, m.start() - _PRICE_WINDOW)
+        hi = min(len(text), m.end() + _PRICE_WINDOW)
+        window = text[lo:hi]
+        if not _TICKERISH.search(window):
+            continue
+        sentence = _line_at(text, m.start())
+        # Strikes, expirations, market caps, macro prints and the FDIC
+        # explainer are all numbers near a ticker that are NOT spot.
+        if _NOT_A_LEVEL.search(sentence):
+            continue
+        return [Violation(
+            "unforced-price", m.group(0).strip(), m.span(), sentence,
+            f"absolute price level with no {_PRICE_TOOL} call this turn")]
+    return []
+
+
 _CHECKS = {
     "meta-plumbing": check_meta_plumbing,
     "macro-unsourced": check_macro_unsourced,
     "unfetchable-link-claim": check_unfetchable_link_claim,
     "repetition-glitch": check_repetition,
+    "unforced-price": check_unforced_price,
 }
 
 
@@ -608,6 +684,32 @@ _MACRO_GOOD = [
 ]
 
 
+_PRICE_BAD = [
+    ("-> $ORCL at $244.10, up 1.8% on the session.", []),
+    ("-> NDX is holding near its 52-week highs around $30,500.", []),
+    ("-> bitcoin is sitting at 94,300 right now.", []),
+    ("-> SPX around 5,912 into the close.", ["search_chat_messages"]),
+]
+_PRICE_GOOD = [
+    # the tool fired
+    ("-> $ORCL at $244.10, up 1.8% on the session.",
+     ["lookup_market_price"]),
+    # changes are not levels
+    ("-> $NVDA down 1.1% on the session.", []),
+    # strikes are not spot
+    ("-> he opened AVGO 450C at 4.5 with no exit posted.", []),
+    # the FDIC explainer, a standing false-positive risk
+    ("-> FDIC covers 250k per depositor, per insured bank.", []),
+    # market cap is class 4 territory, not a price level
+    ("-> $GEO market cap sits near $4.0B on the latest count.", []),
+    # macro prints belong to class 2
+    ("-> payrolls printed 172K against 160K expected.",
+     ["lookup_economic_calendar"]),
+    # no ticker anywhere near the number
+    ("-> 200 messages in the window, mostly chop complaints.", []),
+]
+
+
 def _self_test() -> int:
     print("=== ask_response_validate self-test ===\n")
     fails = 0
@@ -627,6 +729,21 @@ def _self_test() -> int:
         print(f"  {'clean  ' if ok else 'FALSE+ '} {a[:66]!r}")
         if vs:
             print(f"            -> {vs[0]}")
+    print("\nCLASS 3 — MUST FLAG (price level, no price tool):")
+    for a, tc in _PRICE_BAD:
+        vs = check_unforced_price(a, tc)
+        ok = bool(vs)
+        fails += 0 if ok else 1
+        print(f"  {'caught ' if ok else 'MISSED '} {a[:64]!r}")
+    print("\nCLASS 3 — MUST NOT FLAG:")
+    for a, tc in _PRICE_GOOD:
+        vs = check_unforced_price(a, tc)
+        ok = not vs
+        fails += 0 if ok else 1
+        print(f"  {'clean  ' if ok else 'FALSE+ '} {a[:64]!r}")
+        if vs:
+            print(f"            -> {vs[0]}")
+
     print("\nCLASS 2 — MUST FLAG (macro figure, no calendar tool):")
     for a, tc in _MACRO_BAD:
         vs = check_macro_unsourced(a, tc)
