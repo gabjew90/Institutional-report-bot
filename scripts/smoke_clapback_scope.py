@@ -109,8 +109,54 @@ def test_prompt_carries_proportionality_and_recency():
     _ok("prompt: proportionality example + live-input recency rule")
 
 
+def test_invented_personal_details():
+    """The wrong-personal-facts complaint. _clapback_claim_tokens sees
+    only cashtags/CAPS/Capitalized words, so a roast made entirely of
+    lowercase personal nouns produced ZERO checkable tokens while
+    inventing a detail (2026-08-25 "on the pontoon" — a boat appearing
+    in no profile, no message, no prompt)."""
+    import discord_bot.bot as b
+    roast = ("easy to talk smack when your little brother is carrying "
+             "the household in fortnite while you spam memory chip "
+             "entries with zero posted exits. go pop another "
+             "non-carbonated koozie on the pontoon before your next "
+             "basecat gamble gets aped.")
+    assert b._clapback_claim_tokens(roast) == [],         "documents the blind spot this check exists to cover"
+    # mirrors the real profile: the words the roast reuses ARE there
+    material = ("little brother He sure do love that Fortnite "
+                "zero carbonated koozie selfies basecat memory chip "
+                "entries exits gamble aped")
+    inv = b._invented_personal_details(roast, material)
+    assert "pontoon" in inv, f"must catch the invented detail: {inv}"
+    assert "koozie" not in inv, "documented material must pass"
+    assert "fortnite" not in inv, "documented material must pass"
+    # hyphenated words present part-wise in material must pass
+    assert "non-carbonated" not in inv, inv
+    # nothing invented -> empty
+    assert b._invented_personal_details(
+        "your koozie and your basecat gamble", material) == []
+    _ok("invented details: lowercase inventions caught, real material passes")
+
+
+def test_invented_signal_cannot_mangle_an_answer():
+    """A fuzzy signal must never drive the destructive paths: it feeds
+    the rewrite instruction only. The strip/disengage cascade stays
+    gated on hard token violations."""
+    import inspect
+    import discord_bot.bot as b
+    src = inspect.getsource(b._answer_with_gemini)
+    assert "_fid_invented" in src, "signal must be computed"
+    assert "if _fid_viol or _fid_invented:" in src,         "invented details should be able to trigger a rewrite"
+    # the strip block must reference ONLY _clapback_fidelity_violations
+    strip = src[src.index("_bad = ["):src.index("_stripped_f =")]
+    assert "_fid_invented" not in strip,         "the fuzzy signal must never drive sentence stripping"
+    _ok("invented signal: rewrite-only, never strips")
+
+
 if __name__ == "__main__":
     print("=== clapback scope smoke ===")
+    test_invented_personal_details()
+    test_invented_signal_cannot_mangle_an_answer()
     test_arrow_answers_are_not_clapbacks()
     test_hostility_gate()
     test_quoted_block_is_not_the_askers_hostility()

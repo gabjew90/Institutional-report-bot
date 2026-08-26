@@ -5773,6 +5773,86 @@ def _clapback_claim_tokens(answer: str) -> list[str]:
     return toks
 
 
+# Words a roast can use freely: they carry no personal claim. Kept
+# deliberately broad — this list only has to cover ordinary prose, and
+# a miss costs one flagged word that the rewrite pass can restore.
+_GENERIC_ROAST_WORDS = frozenset("""
+about after again against already always another anyone around because
+before being below better between board bought bring building built
+called cannot chart charts check close closed comes coming could
+country couple course covered decided decide deep does doing done
+down during early enough entire entry entries even ever every exactly
+exit exits expect expecting first found from getting gonna guess
+happen happened having here hold holding hours https https into
+its just keep keeps kind know known last later least leave less
+level levels like liked little long longer look looking looks lose
+loses losing loss losses lost made make makes making many market
+markets maybe mean means might money month months more morning most
+move moved moves much need needs never next nothing number numbers
+often only open opened other others over own paid people perfect
+place play played playing point points position positions post
+posted price prices probably put puts quite rate rates read ready
+real really reason right same season second seems sell selling send
+sent series session share shares short should show shows side simply
+since single small some someone something soon spend spent still
+stock stocks stop street strike sure take taken takes taking talk
+talking tape than that their them then there these they thing things
+think this those though three through time times today together
+tomorrow took trade traded trades trading tried true trying turn
+under until using very wait waiting want wanted watch watching week
+weeks well went were what when where which while whole will with
+without work working would year years your yours
+smack smacking carry carrying carried household night nights writing
+write wrote spend spending build built building account accounts
+straight lately barely hardly simply merely mostly rather pretty
+whatever anything everything nobody somebody everyone entire whole
+""".split())
+
+
+def _invented_personal_details(answer: str, *contexts: str) -> list[str]:
+    """Distinctive content words in a personal roast that appear NOWHERE
+    in the model's own input.
+
+    WHY (2026-08-25): _clapback_claim_tokens only sees cashtags, caps
+    tickers and mid-sentence Capitalized words. Personal-life details
+    are lowercase — pontoon, koozie, apartment, elevator — so a roast
+    could invent one and the fidelity guard found literally zero tokens
+    to check. A real answer to a member ("your next basecat gamble ...
+    on the pontoon") shipped with "pontoon" appearing in no profile,
+    no message, and no part of the prompt.
+
+    The rule is provenance, not vocabulary: if a distinctive word is not
+    in the subject's material, the question, or the chat the model was
+    handed, the model made it up. Generic prose is stoplisted; short
+    words are ignored; anything the input contains passes.
+    """
+    hay = " ".join(c or "" for c in contexts).lower()
+    hay = re.sub(r"[^a-z0-9 ]+", " ", hay)
+    hay_words = set(hay.split())
+    out: list[str] = []
+    seen: set[str] = set()
+    for m in re.finditer(r"\b([a-z][a-z'-]{4,15})\b", (answer or "").lower()):
+        w = m.group(1).strip("'-")
+        if len(w) < 5 or w in seen or w in _GENERIC_ROAST_WORDS:
+            continue
+        # "non-carbonated" is present when the material says
+        # "NON CARBONATED"; compare part-wise, not as one token.
+        if "-" in w and all(
+                p in hay_words or len(p) < 5 for p in w.split("-")):
+            continue
+        # Singular/plural and simple inflections count as present.
+        stems = {w, w.rstrip("s"), w + "s"}
+        if w.endswith("ing"):
+            stems |= {w[:-3], w[:-3] + "e"}
+        if w.endswith("ed"):
+            stems |= {w[:-2], w[:-1]}
+        if stems & hay_words:
+            continue
+        seen.add(w)
+        out.append(w)
+    return out
+
+
 def _clapback_fidelity_violations(answer: str, material: str) -> list[str]:
     """Claim tokens in `answer` absent from the asker's own material —
     cross-attribution or invention, either way not their receipt."""
@@ -7014,7 +7094,20 @@ async def _answer_with_gemini(
                     question,
                 )
             _fid_viol = _clapback_fidelity_violations(answer, _fid_material)
-            if _fid_viol:
+            # Lowercase personal details are where the wrong-facts
+            # complaints live, and the token check above is blind to
+            # them (2026-08-25: an entire roast produced ZERO checkable
+            # tokens while inventing "pontoon"). Provenance rule: a
+            # distinctive word that appears in NEITHER the subject's
+            # material NOR the prompt's own context was invented.
+            # Surfaced as rewrite input only — a false positive costs
+            # one rewrite, never a stripped or mangled answer.
+            _fid_invented = _invented_personal_details(
+                answer, _fid_material, question, chat_context or "",
+            )[:6]
+            if _fid_invented:
+                _ask_meta["invented_details"] = _fid_invented
+            if _fid_viol or _fid_invented:
                 _ask_meta["guards"].append("clapback-fidelity")
                 _fid_who = (
                     f"{_fid_disp} ({_fid_uname})" if _fid_subject
@@ -7032,9 +7125,13 @@ async def _answer_with_gemini(
                             "[FIDELITY CHECK] This reply is about "
                             f"{_fid_who}. Your draft attributed material "
                             f"that is NOT theirs: "
-                            + ", ".join(_fid_viol[:8]) +
+                            + ", ".join((_fid_viol + _fid_invented)[:8]) +
                             ". Those belong to other members or to "
-                            "nobody. Rewrite the reply using ONLY "
+                            "nobody — anything listed that appears in "
+                            "no profile, no message and no part of this "
+                            "prompt was INVENTED, which is how a member "
+                            "gets told about a boat they do not own. "
+                            "Rewrite the reply using ONLY "
                             f"{_fid_who}'s documented material: their "
                             "profile, their own messages, this "
                             "question. Never substitute a new invented "
