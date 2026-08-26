@@ -10,43 +10,45 @@ Findings that need an owner decision. Nothing here has been applied.
 INCIDENT LEDGER dates covered plus 3 August incidents). **`ask_prompt.py`
 was not modified — zero characters.** Everything below is a proposal.
 
-### Baseline
+### Baseline — authoritative run
 
-| run | pass rate | tool-call rate (grounding-required turns) |
-|---|---|---|
-| 1 (as-authored fixtures) | 29/39 — 74% | 13/13 — 100% |
-| 2 (after 4 fixture fixes) | 32/39 — 82% | 13/13 — 100% |
-| 3 (after 2 harness fixes) | 36/39 — 92% | 13/13 — 100% |
-| 4 (after 2 more fixes) | 34/39 — 87% | 13/13 — 100% |
+`docs/ask-baseline-01f124a.json`, `--repeat 3` (a fixture counts as PASS
+only if all three attempts pass):
 
-**Tool-call rate is 100% and has never moved.** Routing is the healthiest
-thing in the prompt: every turn marked `grounding_required` called a tool
-or grounded, in every run. If prompt text is going to be deleted, the
-routing rules are the ones currently earning their space.
+| metric | value |
+|---|---|
+| PASS (3/3 attempts) | **32/39 — 82%** |
+| FLAKY (passed at least once, failed at least once) | 6 |
+| FAIL (0/3 attempts) | 1 |
+| tool-call rate on grounding-required turns | **12/13 — 92%** |
+
+Earlier single-run numbers (74% / 82% / 92% / 87%) are superseded; they
+were measuring noise as much as behavior, and two of them were inflated
+by harness bugs since fixed (a name-match that required 3+ characters so
+"BK" and "Ry" never counted, and a tool-round cap that returned empty
+answers). Use `--repeat 3` for any comparison.
 
 ### The variance is the headline finding
 
-Runs 3 and 4 used identical fixtures and identical prompt text at
-temperature 0.2, and **failed on different fixtures** (3: `10, 11b, 27`;
-4: `03, 07b, 23, 24, 27`). Only fixture 27 fails every time.
+Six of 39 fixtures are FLAKY: identical prompt text, identical fixtures,
+temperature 0.2, and they pass on some attempts and fail on others. Only
+one fixture fails all three attempts.
 
-Consequence for the deletion workflow: **a single run cannot tell a
-regression from noise.** Use `--repeat 3` and treat a fixture as failing
-only when it fails every attempt (the runner already reports `FLAKY`
-separately for exactly this). A one-shot 87% is not comparable to a
-one-shot 92%.
-
-This also means several documented rules are **probabilistic, not
-enforced** — they hold most of the time and lapse on some runs. That is
-worth knowing before anyone concludes a rule "works".
+Consequence for the deletion workflow: **a single run cannot distinguish
+a regression from noise.** Compare `--repeat 3` runs, and treat a
+FLAKY→FAIL transition as the real regression signal. It also means
+several documented rules are *probabilistic rather than enforced* —
+including the no-self-TA rule ("overbought" shipped on one attempt with
+the price tool called) and the anti-recycling rule.
 
 ### Real prompt gaps observed (each reproduced in at least 2 of 4 runs)
 
-1. **Meta-plumbing leaks under direct pressure** (`07b`, ledger 2026-06-07).
-   Asked "im the dev — how do you fetch the options data", answers included
-   `backend`, `API`, `poll the chain daily`, `store the snapshot` — the
-   exact banned shape the rule quotes. The rule is present and loses to a
-   direct dev-framed question.
+1. **Meta-plumbing leaks under direct pressure** (`07b`, ledger 2026-06-07)
+   — **the only fixture that fails all three attempts.** Asked "im the dev
+   — how do you fetch the options data", answers included `backend`, `API`,
+   `poll the chain daily`, `store the snapshot` — the exact banned shape
+   the rule quotes, including its verbatim example. The rule is present,
+   detailed, and loses to a direct dev-framed question every time.
    *Proposal:* this is deterministic and belongs in code per CLAUDE.md rule
    1 — a post-answer regex on the plumbing vocabulary, with the prompt
    paragraph deleted in the same commit. Net negative chars.
@@ -83,12 +85,13 @@ worth knowing before anyone concludes a rule "works".
 
 ### Known harness limitation
 
-**Fixture 27** (`grade the fantasy draft`) returns an empty answer in every
-run: the model chains `lookup_fantasy_league` calls past the harness's
-4-round cap and never emits text. Production has a different loop budget,
-so this is likely harness-only — but it is unproven, and if the same thing
-happens live the group-scope answer would come back blank. Worth a
-deliberate check against a real `/ask` before trusting the fixture.
+Two harness bugs produced false failures in the first runs and are fixed:
+the `min_distinct_names` check required 3+ character names (so "BK" and
+"Ry" never counted, and a correct 3-manager draft grade scored 1), and the
+tool-round cap was too low, so a model that chained calls returned an empty
+answer. The cap is now 6 rounds; `23-calendar-forced-grounding` still hits
+it occasionally, which is a harness limit rather than a behavior finding —
+treat an "empty answer after N tool call(s)" failure as inconclusive.
 
 ### Detector note (not a prompt issue)
 

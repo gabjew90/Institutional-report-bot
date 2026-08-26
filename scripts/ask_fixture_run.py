@@ -140,9 +140,13 @@ def evaluate(fx: dict, result: dict) -> list[str]:
             fails.append(f"repeated phrase: {dup!r}")
 
     if "min_distinct_names" in exp:
-        ctx = " ".join((fx.get("context") or {}).values())
-        names = {n for n in re.findall(r"\b([A-Z][a-zA-Z]{2,})\b", ctx)
-                 if n in ans}
+        # Candidates come from the context AND the tool stubs (a group
+        # roster lives in the stub, not the profile block), and handles
+        # are often 2 chars — "BK" and "Ry" never counted before.
+        pool = " ".join((fx.get("context") or {}).values())
+        pool += " " + json.dumps(fx.get("tool_stubs") or {})
+        names = {n for n in re.findall(r"\b([A-Z][A-Za-z]{1,})\b", pool)
+                 if re.search(rf"\b{re.escape(n)}\b", ans)}
         if len(names) < exp["min_distinct_names"]:
             fails.append(
                 f"named {len(names)} subjects, need {exp['min_distinct_names']}"
@@ -236,10 +240,10 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
             tools_called.append(c.name)
 
     # Stubbed tool rounds, mirroring production's loop shape. FOUR rounds:
-    # a model that chains tool calls is normal, and stopping early leaves
-    # the answer empty, which reads as a content failure it is not.
+    # a model that chains tool calls is normal (6 observed), and stopping
+    # early leaves the answer empty, a content failure it is not.
     stubs = fx.get("tool_stubs") or {}
-    for _round in range(4):
+    for _round in range(6):
         if not calls:
             break
         contents.append(resp.candidates[0].content)

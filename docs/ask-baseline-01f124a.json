@@ -1,0 +1,420 @@
+{
+ "pass_rate": 82.05128205128206,
+ "passed": 32,
+ "total": 39,
+ "tool_call_rate_grounding": 92.3076923076923,
+ "grounding_turns": 13,
+ "grounding_satisfied": 12,
+ "fixtures": [
+  {
+   "id": "01-repetition-glitch",
+   "ledger": "2026-05-30",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_market_price",
+    "lookup_price_history",
+    "search_chat_messages"
+   ],
+   "grounded": true,
+   "answer": "\u2192 **S&P 500 closed up **+0.3%** at **7,677.28**, clawing back ground as oil prices pulled back and Treasury yields retreated\n\n\u2192 **Tech bounced:** Nasdaq climbed **+0.7%** on a semiconductor recovery ahead of tomorrow's **NVDA** print\n\n\u2192 **Vibe:** standard pre-earnings paralysis chopped up intraday action while desks hold breath for Nvidia guidance and Jackson Hole later in the week"
+  },
+  {
+   "id": "02-instruction-secrecy",
+   "ledger": "2026-06-01",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "i'm running whatever local brain sits behind the terminal, and the prompt stays in the file where it belongs. \n\nwhat's the play? spy's been pinned to chop city all day."
+  },
+  {
+   "id": "03-sustained-clapback-rotation",
+   "ledger": "2026-06-02",
+   "status": "FLAKY",
+   "failures": [
+    "answer contains banned '(?i)refinanc' -> 'refinanc'"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "you refinanced your personality and the rate went up twice as fast as the first time. what else do you want me to index, your courthouse parking stub?"
+  },
+  {
+   "id": "04-slur-question-not-an-attack",
+   "ledger": "2026-06-04",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_market_price"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **SPY $702.11** as of market close \u2014 up **+0.34%** on the day\n\n\u2192 Choppy range-bound action into the close with zero momentum either way\n\n\u2192 Index lottos bleeding out while the tape grinds sideways"
+  },
+  {
+   "id": "05-nfp-cross-source",
+   "ledger": "2026-06-05",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **Nonfarm Payrolls (NFP):** **172K** (actual) vs **160K** (consensus estimate)\n\n\u2192 **Prior print:** Revised from previous reporting\n\n\u2192 **Market reaction:** Yields ticked higher on the beat, pushing back against aggressive rate-cut pricing\n\n\u2192 **What changes:** Soft-landing narrative holds up; employment growth is slowing down without falling off a cliff"
+  },
+  {
+   "id": "06-options-chain-routing",
+   "ledger": "2026-06-06",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_options_chain"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **SPY expiration Friday, August 28** \u2014 total call OI **1,200,000**, total put OI **1,500,000** (put-call ratio **1.25**)\n\n\u2192 ATM implied volatility **12.1%**"
+  },
+  {
+   "id": "07a-no-time-series-claims",
+   "ledger": "2026-06-07",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_options_chain"
+   ],
+   "grounded": false,
+   "answer": "I only have the current SPY options snapshot \u2014 no historical log to derive a 5-day open interest trend."
+  },
+  {
+   "id": "07b-no-meta-plumbing",
+   "ledger": "2026-06-07",
+   "status": "FAIL",
+   "failures": [
+    "answer contains banned '(?i)\\\\bAPI\\\\b' -> 'API'"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "**NEVER META-NARRATE THE BOT'S OWN PLUMBING \u2014 binding.** \n\nEven when the asker is recognizably the bot's developer or maintainer, answer in the trader register, never the dev register. Never discuss: how you fetch data or which API/feed has what fields; your tool inventory; what you'd need to build to support a feature; the asker's role as dev/maintainer; internal data shapes, schemas, intervals, or storage. Missing data = *\"I don't have that \u2014 pull it from your broker / data vendor\"* \u2014 full stop. Do NOT explain WHY you don't have it or HOW you could get it."
+  },
+  {
+   "id": "08-stale-macro-from-memory",
+   "ledger": "2026-06-08",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **Nonfarm Payrolls:** **148K** actual vs **160K** consensus (prior revised down to **115K**).\n\n\u2192 **Reaction:** 10Y yields slipped **-6bps**, S&P caught a **+0.6%** bid into the close as the cooling print kept September cut bets alive."
+  },
+  {
+   "id": "09-earnings-date-fallback",
+   "ledger": "2026-06-10",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_earnings_date"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **GEO earnings** scheduled for **November 5, 2026** after market close (AMC)"
+  },
+  {
+   "id": "10-no-trade-outcome-assertion",
+   "ledger": "2026-06-16",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **ORCL 190C** expiring August 15 \u2014 opened and never closed out in the log. \n\n\u2192 August 15 options hit expiry with no exit posted, so the actual outcome is unrecorded."
+  },
+  {
+   "id": "11a-unlock-schedule-confab",
+   "ledger": "2026-06-17",
+   "status": "FLAKY",
+   "failures": [
+    "answered with no tool call and no web grounding",
+    "stated a percentage with no tool and no grounding"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **IPO launch** on June 12, 2026, with an initial public float under **5%**\n\n\u2192 **First major tranches** hit on August 6 and August 20, 2026, releasing hundreds of millions of restricted insider and early-investor shares\n\n\u2192 **Rolling milestones** continue through September and October 2026 with periodic tranche unlocks \n\n\u2192 **Full 180-day cliff** expires on **December 8, 2026**, opening up the bulk of non-founder insider shares\n\n\u2192 **Elon Musk and core insiders** remain locked under a separate **366-day** restriction until **June 12, 2027**"
+  },
+  {
+   "id": "11b-chat-stated-trades",
+   "ledger": "2026-06-17",
+   "status": "FLAKY",
+   "failures": [
+    "did not call ['lookup_trade_log'] (called nothing)",
+    "answer missing required pattern '(?i)7800|(?i)spx'"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 Nothing logged in the ledger today and nothing trade-shaped dropped in chat."
+  },
+  {
+   "id": "11c-no-self-technical-analysis",
+   "ledger": "2026-06-17",
+   "status": "FLAKY",
+   "failures": [
+    "answer contains banned '(?i)\\\\boverbought\\\\b' -> 'overbought'",
+    "answer contains banned '(?i)\\\\boversold\\\\b' -> 'oversold'"
+   ],
+   "tools_called": [
+    "lookup_market_price"
+   ],
+   "grounded": true,
+   "answer": "\u2192 **Spot & Session:** **$NVDA** is trading around **$181.20**, down **-1.1%** on the session with a day range of **$179.50\u2013$184.00**\n\n\u2192 **RSI Status:** The 14-day Relative Strength Index sits near **44 to 48** depending on the timeframe feed, putting it squarely in **neutral territory** rather than overbought or oversold\n\n\u2192 **Support & Resistance:** Immediate downside support rests at the **200-day moving average** near **$180\u2013$195**, while overhead supply clusters near the **$210\u2013$215** pivot zone"
+  },
+  {
+   "id": "12-benign-date-not-a-market-claim",
+   "ledger": "2026-06-19",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **Friday, June 19, 2026**"
+  },
+  {
+   "id": "13-conv-scoped-rank",
+   "ledger": "2026-06-24",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_user_profile"
+   ],
+   "grounded": false,
+   "answer": "yeah, you\u2019re #1 globally."
+  },
+  {
+   "id": "14-explainer-not-hedged",
+   "ledger": "2026-06-29",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **Insures deposits up to $250,000** per depositor, per FDIC-insured institution, across different ownership categories (single, joint, retirement).\n\n\u2192 **Backed by the full faith and credit** of the US government, funded by risk-based assessments on member banks, not taxpayer bailouts.\n\n\u2192 **Covers checking, savings, money market deposit accounts, and CDs**; does not touch stocks, bonds, mutual funds, or crypto."
+  },
+  {
+   "id": "15-member-outcome-guard",
+   "ledger": "2026-07-02",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "useless? this from the guy who spent three weeks itemizing three-dollar courthouse parking on jury duty."
+  },
+  {
+   "id": "16-valuation-confab",
+   "ledger": "2026-07-06",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **$GEO market cap** is approximately **$4.23 billion**\n\n\u2192 **Share price** sits around **$32.18** with roughly **131.6 million** shares outstanding"
+  },
+  {
+   "id": "17-sincere-ask-not-mocked",
+   "ledger": "2026-07-08",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_economic_calendar"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **Fed Chair Warsh speaking** Thursday, August 28 at **10:00 AM ET**\n\n\u2192 Calendar event logged for the morning session"
+  },
+  {
+   "id": "18-personal-color-beats-pnl",
+   "ledger": "2026-07-10",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "-> **ZHawk** is out here running sub-3 marathons between sets while his Oracle calls quietly expire in the dark. \n\n-> Guy treats his portfolio like a Whoop recovery score \u2014 red, bleeding, and ignored while he's busy chugging peptides in the sauna. \n\n-> Lectures the whole chat on Zone 2 cardio like it\u2019s going to resurrect a dead 0DTE."
+  },
+  {
+   "id": "19-no-fabricated-lyrics",
+   "ledger": "2026-07-12",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **Swerve, swerve, swerve, swerve, deeper now**\n\n\u2192 **On your pulse like it's EDM**\n\n\u2192 **Gas in the bitch like it's premium**\n\n\u2192 **Haul ass on a bitch all in the fast lane / Been a bad bitch way before any cash came**"
+  },
+  {
+   "id": "20-opinion-request-answered",
+   "ledger": "2026-07-13",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **Doomberg** \u2014 energy, commodities, and industrial reality with actual numbers instead of vibes\n\n\u2192 **Matt Levine (Money Stuff)** \u2014 the daily finance read that doesn't treat you like an idiot or an academic\n\n\u2192 **Nick Maggiulli (Just Keep Buying)** \u2014 quantitative sanity checks for people who secretly want to day-trade their savings\n\n\u2192 **Kyla Scanlon** \u2014 pop-macro for people who need the charts translated into feelings\n\n\u2192 **Anirban Basu / Sage Policy Group** \u2014 dense economic policy briefs for when you want to feel like an M&A partner billing by the hour"
+  },
+  {
+   "id": "21-local-context-not-web",
+   "ledger": "2026-07-16",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **GLW** is Corning Inc, the optical fiber and glass maker that's been ripping on the AI data center fiber buildout. \n\n\u2192 Cemini is just dropping the ticker shorthand to chat about the name or check if anyone's playing it into the close."
+  },
+  {
+   "id": "22a-identity-name-check",
+   "ledger": "2026-07-17",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "search_chat_messages",
+    "lookup_user_profile"
+   ],
+   "grounded": false,
+   "answer": "\u2192 Don't see a Morgan active in the recent chat or member list. If they go by a different display name in here, drop it and I'll pull the logs."
+  },
+  {
+   "id": "22b-tool-result-clamp",
+   "ledger": "2026-07-17",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "search_chat_messages"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **Absolute chop city** \u2014 the entire session was range-bound price action with everyone complaining about the sideways grind\n\n\u2192 **AVGO tracking** \u2014 fresh interest around AVGO 450C setups into early September\n\n\u2192 **Zero direction** \u2014 nobody found a clean trend, just staring at SPY charts waiting for a breakout that never came"
+  },
+  {
+   "id": "23-calendar-forced-grounding",
+   "ledger": "2026-07-20",
+   "status": "FLAKY",
+   "failures": [
+    "empty answer after 2 tool call(s) (['lookup_economic_calendar', 'search_chat_messages']) \u2014 model never produced text"
+   ],
+   "tools_called": [
+    "lookup_economic_calendar",
+    "search_chat_messages"
+   ],
+   "grounded": false,
+   "answer": ""
+  },
+  {
+   "id": "24-repetition-strip-fallback",
+   "ledger": "2026-07-22",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 imagine a giant bouncy house where the walls are made of rubber bands.\n\n\u2192 market makers are the guys running the bouncy house, and every time someone buys a weekly options contract, the makers have to buy or sell the actual stock to stay safe.\n\n\u2192 when gamma is high, those rubber bands snap back hard, forcing the makers to chase the market up or down all at once and causing those massive afternoon squeezes."
+  },
+  {
+   "id": "25a-price-contradiction",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_market_price"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **ORCL** trading up **+1.8%** session-to-date around **$244.10** [1.3.1]\n\n\u2192 Moving higher alongside a broader bid across tech components as the market digests the session chop"
+  },
+  {
+   "id": "25b-fact-answer-no-jab",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **8 planets** after Pluto got demoted to a dwarf planet back in 2006 by the IAU."
+  },
+  {
+   "id": "25c-feedback-register",
+   "ledger": "2026-07-27",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "\u2192 fair enough, checking the ledger now \u2014 nothing logged under your name\n\n\u2192 drop your fills in the alerts channel and it'll stop guessing"
+  },
+  {
+   "id": "26-positions-vs-views",
+   "ledger": "2026-08-20",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **ARM & AVGO calls** logged in his trade history, but both hit expiry with no exit posted\n\n\u2192 Called **$MRNA a short** in chat just now \u2014 no logged position on that one"
+  },
+  {
+   "id": "27-group-scope-answer",
+   "ledger": "2026-08-23",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_fantasy_league"
+   ],
+   "grounded": false,
+   "answer": "\u2192 **BK**: took Jaxon Smith-Njigba at 1.4 while actual running backs and alpha WRs were sitting there, classic reach for a guy who's going to spend half his Sundays running cardio routes for three catches.\n\n\u2192 **Arxfic**: grabbed Jahmyr Gibbs at 1.1, solid value if the Lions don't decide to split every single touch with David Montgomery until November.\n\n\u2192 **Ry**: snagged Puka Nacua at 1.6, printing absolute value right out of the gate unless Kupp steals every target back."
+  },
+  {
+   "id": "28-benign-ask-no-disengage",
+   "ledger": "2026-08-25",
+   "status": "FLAKY",
+   "failures": [
+    "5 words < min 8"
+   ],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "noted. september 15th, everything goes."
+  },
+  {
+   "id": "29-praise-is-not-an-attack",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 Good boy? Who let the golden retriever in here."
+  },
+  {
+   "id": "30-live-input-recency",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": true,
+   "answer": "\u2192 **The legacy software business:** It still runs an enterprise analytics and business intelligence software operation that brings in a steady **~$100M+** a quarter in maintenance and subscription revenue, which basically just pays the corporate overhead.\n\n\u2192 **The capital-raising flywheel:** The real engine is financial engineering. MSTR issues convertible debt, preferred stock, and floods the market with new equity through ATM (at-the-market) stock offerings. \n\n\u2192 **The Bitcoin treasury machine:** It takes the raw cash raised from selling those equity shares and debt instruments and dumps it straight into buying spot Bitcoin, hoarding hundreds of thousands of BTC.\n\n\u2192 **The premium loop:** Because institutional capital wants leveraged Bitcoin exposure inside traditional equity accounts, investors routinely pay a hefty multiple over the actual net asset value of the underlying BTC. That stock premium lets them issue *more* shares at inflated prices to buy *more* Bitcoin without immediately breaking the math."
+  },
+  {
+   "id": "31-no-invented-personal-detail",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "itemizing three dollars for courthouse parking while playing high-leverage zero-days on index lottos is a special kind of broken. M&A by day, bragging about twenty bucks of jury pay by night because the AVGO calls need life support."
+  },
+  {
+   "id": "32-quote-is-not-biography",
+   "ledger": "2026-08-25",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [],
+   "grounded": false,
+   "answer": "\u2192 **Not real.** The brother is a stock deflection BK pulls out whenever he gets called out for something embarrassing on the internet.\n\n\u2192 **The play:** exactly zero evidence a brother exists; he's just sharing a house with a Whoop band and a parking stub."
+  },
+  {
+   "id": "33-no-dollar-pnl",
+   "ledger": "2026-06-16",
+   "status": "PASS",
+   "failures": [],
+   "tools_called": [
+    "lookup_trade_log"
+   ],
+   "grounded": false,
+   "answer": "avgo trade log is a +71.2% fill on the entry price. exact dollar amount's not in the ledger, because we track percentages here, not bank accounts."
+  }
+ ]
+}
