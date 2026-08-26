@@ -328,6 +328,56 @@ Given five FLAKY fixtures in the baseline itself and the documented
 run-to-run variance, treat these as unattributed until they reproduce —
 the same discipline that killed finding 6.
 
+### SESSION TEMPLATE — moving one rule class from prompt to code
+
+Required steps, in order. **Step 3 is not optional and was missing from
+the Session 5 spec**, which is how class 1 briefly ended up enforced more
+weakly than before it started: the prose was deleted while `validate()`
+was still an unwired module. Four classes remain; none may repeat it.
+
+1. **Build the detector** in `scripts/ask_response_validate.py` as a
+   `check_<class>()` returning `Violation`s. Add it to `_CHECKS`.
+2. **Prove it on recorded answers** — every logged violation of that
+   class from the baseline JSONs, plus the correct answers that must NOT
+   fire. Extend `_BAD` / `_GOOD` so `--self-test` covers both directions.
+   Do not proceed until it is N/N with zero false positives.
+3. **WIRE IT INTO THE SEND PATH** in `bot.py`, before the answer is
+   sent, via `resolve_violations()`. Never write a second copy of the
+   ladder — one decision function, or production and the harness drift.
+   Log the outcome so `regenerated` / `stripped` / `replaced` / `shipped`
+   are distinguishable in the ask log.
+4. **Only then delete the prompt prose**, leaving at most one line naming
+   the behavior. Repoint the diet smoke's concept anchor at that line.
+5. **Gate it** — the validator's `--self-test` is already a check in
+   `scripts/smoke_ask_prompt_diet.py`. A new class inherits that gate
+   automatically, which is what keeps a deleted rule from becoming
+   enforced by nothing later.
+6. **Measure**: the class's fixture at `--repeat 3`, then the full suite
+   against the current production-config baseline. Report chars removed.
+
+Ordering matters. Steps 1-3 are additive and safe to land alone; step 4
+is the only destructive one and must never precede step 3.
+
+### DETERMINISTIC FIRST — the strongest evidence in the project
+
+A 788-char prompt block that quoted the violating sentence almost
+verbatim caught **none** of the seven violations it was written to
+prevent. Three regexes caught **all seven**, with zero false positives.
+
+| enforcement | caught | false positives |
+|---|---|---|
+| NEVER META-NARRATE, 788 chars of prose | **0 / 7** | — |
+| `check_meta_plumbing`, three detectors | **7 / 7** | **0** |
+
+Both columns are measured on the same set: every `07b` answer recorded
+across every run, each produced while the full prompt block was in force.
+The block did not merely fail to help. It named the exact shape never to
+repeat, and the model reproduced that shape while reading it.
+
+This is the evidence base for CLAUDE.md rule 1. When a rule is checkable,
+prose is not enforcement — it is a description of the enforcement someone
+still has to write.
+
 ### Session 5, class 1 — meta-plumbing moved from prompt to code
 
 `scripts/ask_response_validate.py :: check_meta_plumbing`. The prompt's
@@ -346,22 +396,37 @@ The prompt named the exact shape never to repeat and the model
 reproduced it anyway. That is the cleanest evidence in the suite that
 prompt text is not enforcement.
 
-**OPEN RISK — the validator is NOT wired into the send path.** It is a
-standalone module with a self-test. `discord_bot/bot.py` does not call
-it, so production currently has the one-line prompt rule and nothing
-else, and `07b` moved 2/3 -> 1/3 on raw model output once the block was
-deleted. Until `validate()` runs before the answer is sent, this class is
-enforced WEAKER than it was, not stronger. Closing it needs an owner
-decision on what a violation does: regenerate the turn, strip the
-offending sentence, or refuse. Recommend regenerate-once-then-strip, the
-shape the repetition detector already uses.
+**WIRED, and the risk is closed.** `bot.py` calls `validate()` before
+send on the composed answer plus the turn's tool-call log, then runs the
+ladder. `07b` went **0/3 -> 3/3**, and the harness scores the
+post-validation answer because production does — a fixture that asserts
+"a user never sees plumbing" has to measure the stage the user sees.
 
-A second consequence: the harness scores RAW model output, so `07b` can
-never reach 3/3 by deleting prompt text no matter how good the validator
-is. Once the validator is wired, either the harness should score the
-post-validation answer or `07b`'s assertion should assert the validator
-catches it. Right now the fixture measures a stage that is no longer
-where the rule lives.
+The ladder, one shared `resolve_violations()` used by both bot and
+harness so they cannot drift:
+
+| rung | outcome | logged as |
+|---|---|---|
+| answer is clean | `clean` | — |
+| regenerate once at temp 0.7, retry clean | `regenerated` | `meta-plumbing-regenerated` |
+| retry still violates, excise offending sentences | `stripped` | `meta-plumbing-strip` |
+| answer is plumbing end to end, nothing to keep | `replaced` | (see below) |
+| nothing worked | `shipped` | `meta-plumbing-shipped` (log.error) |
+
+**The `replaced` rung goes beyond the specified ladder and needs a
+ruling.** The repetition detector ships the original when strip fails,
+because a glitchy answer still carries the content and something beats
+blank. That reasoning does not transfer: here the violation IS the
+content, and there is a correct non-blank answer — the refusal the
+deleted block prescribed. Without this rung `07b` sat at 1/3, because two
+of three answers were plumbing end to end and sentence-strip had nothing
+to keep. Shipping known plumbing to satisfy "something beats blank" would
+defeat the only assertion this class makes. Revert it by passing
+`fallback=None`.
+
+Guard activity across the full suite: 109 clean, 6 stripped, 2 replaced,
+0 shipped. It fired on exactly three fixtures — `07a`, `07b`, `11c` — all
+plumbing-adjacent by subject. No unrelated fixture was touched.
 
 Everything else improved against the `aadacee` baseline: **34/39 (87%)
 vs 31/39**, grounding **12/13 vs 11/13**.

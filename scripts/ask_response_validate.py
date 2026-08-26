@@ -65,6 +65,17 @@ _PLUMBING = (
     r"index(?:es|ed|ing)?|table|query the|rate[- ]limit"
 )
 
+# Density-only vocabulary. NOT used for pointwise detection, because
+# "pull it from your broker or data vendor" is the sanctioned refusal the
+# rule actually prescribes — flagging it would punish the correct answer.
+# In aggregate though, these are the giveaway that an answer is walking
+# through a fetch path.
+_DENSITY_EXTRA = (
+    r"REST|WebSockets?|web ?sockets?|data vendors?|data providers?|"
+    r"fetch(?:es|ed|ing)?|pipelines?|latency|payloads?|"
+    r"broker APIs?|market data (?:feed|provider)"
+)
+
 # The bot talking about ITSELF. Includes the dev-address shape, which is
 # the 07b trigger: the asker being recognised as the maintainer.
 _SELF = (
@@ -114,6 +125,7 @@ _BOT_NOUNS = re.compile(
 )
 
 _PLUMBING_RE = re.compile(rf"\b(?:{_PLUMBING})\b", re.I)
+_DENSITY_RE = re.compile(rf"\b(?:{_PLUMBING}|{_DENSITY_EXTRA})\b", re.I)
 _SELF_RE = re.compile(_SELF, re.I)
 _ABSOLUTE_RES = [re.compile(p, re.I) for p in _ABSOLUTE]
 
@@ -178,11 +190,109 @@ def check_meta_plumbing(answer: str, tool_calls=None) -> list[Violation]:
             "meta-plumbing", m.group(0), m.span(), sentence,
             "plumbing vocabulary with the bot as the subject"))
 
+    # DENSITY. The exemptions above are per-sentence, and a dev-framed
+    # answer defeats them by naming real vendors while still explaining
+    # the fetch path ("live chains come from broker APIs or data vendors
+    # via REST/WebSocket endpoints (like Tradier, Polygon...)"). No
+    # legitimate trader answer enumerates fetch mechanics this densely,
+    # so past a threshold the shape itself is the violation regardless of
+    # who the nominal subject is.
+    distinct = {m.group(0).lower()
+                for m in _DENSITY_RE.finditer(answer or "")}
+    if len(distinct) >= 3 and not any(v.rule == "meta-plumbing"
+                                      for v in out):
+        out.append(Violation(
+            "meta-plumbing", ", ".join(sorted(distinct)[:6]), (0, 0),
+            (answer or "").strip().splitlines()[0][:120] if answer else "",
+            f"{len(distinct)} distinct plumbing terms — the answer is "
+            f"explaining the fetch path"))
+
     out.sort(key=lambda v: v.span[0])
     return out
 
 
 _CHECKS = {"meta-plumbing": check_meta_plumbing}
+
+
+# The phrasing the deleted prompt block prescribed for exactly this
+# situation. Used only when an answer is plumbing END TO END, so a
+# sentence strip has nothing left to keep.
+SAFE_REFUSAL = ("→ don't have that one — pull it from your broker or "
+                "data vendor.")
+
+
+def resolve_violations(answer: str, retry_answer: str | None,
+                       tool_calls=None, strip_fn=None,
+                       fallback: str | None = SAFE_REFUSAL
+                       ) -> tuple[str, str]:
+    """The guard ladder, as ONE decision both callers share.
+
+    Returns (final_answer, outcome) where outcome is one of:
+      clean        nothing was wrong
+      regenerated  the retry came back clean and was used
+      stripped     the retry still violated; offending sentences excised
+      replaced     the answer was plumbing end to end, so there was
+                   nothing to keep; the prescribed refusal goes out
+                   instead
+      shipped      nothing worked and no fallback was given
+
+    Callers do their own regeneration (async in the bot, sync in the
+    harness) and hand the result in, so the DECISION lives in one place
+    while the I/O stays where it belongs. Two implementations of this
+    ladder would drift, and drifting between what production does and
+    what the harness measures is the exact failure this project has
+    already paid for four times.
+    """
+    strip_fn = strip_fn or _default_strip
+    if not answer or not validate(answer, tool_calls):
+        return answer, "clean"
+    if retry_answer and not validate(retry_answer, tool_calls):
+        return retry_answer, "regenerated"
+    bad = violating_sentences(answer, tool_calls)
+    stripped = strip_fn(answer, bad)
+    if stripped and not validate(stripped, tool_calls):
+        return stripped, "stripped"
+    # BEYOND the repetition detector's ladder, deliberately. That one
+    # ships the original because a glitchy answer still carries the
+    # content and something beats blank. Here the violation IS the
+    # content, and there is a correct non-blank answer — the refusal the
+    # rule prescribes. Shipping known plumbing to satisfy "something
+    # beats blank" would defeat the only assertion this class makes.
+    if fallback and not validate(fallback, tool_calls):
+        return fallback, "replaced"
+    return answer, "shipped"
+
+
+def _default_strip(answer: str, to_remove: list[str]) -> str:
+    """Fallback strip. The bot passes its own `_strip_sentences`."""
+    out = answer
+    for t in to_remove:
+        out = out.replace(t, " ")
+    return re.sub(r"\s{2,}", " ", out).strip()
+
+
+def violating_sentences(answer: str, tool_calls=None, only=None) -> list[str]:
+    """The exact sentence strings carrying a violation.
+
+    Feeds the strip fallback, which removes whole sentences rather than
+    editing inside them — the same shape `_repetition_glitch_sentences`
+    uses, and for the same reason: excising a clause mid-sentence mangles
+    prose, while a violating sentence is self-contained.
+    """
+    out, seen = [], set()
+    for v in validate(answer, tool_calls, only):
+        line = v.line.strip()
+        for sent in re.split(r"(?<=[.!?])\s+", line):
+            if v.match.lower() in sent.lower():
+                if sent not in seen:
+                    seen.add(sent)
+                    out.append(sent)
+                break
+        else:
+            if line and line not in seen:
+                seen.add(line)
+                out.append(line)
+    return out
 
 
 def validate(answer: str, tool_calls=None, only=None) -> list[Violation]:

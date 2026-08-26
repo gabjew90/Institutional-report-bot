@@ -389,8 +389,39 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         answer = (resp.text or "").strip()
     except Exception:
         answer = ""
+
+    # Score what the USER sees, not what the model first emitted.
+    # 07b asserts a user never sees plumbing; since 2026-08-26 that rule
+    # lives in ask_response_validate, and production runs the same guard
+    # ladder before sending. Scoring the raw draft measured a stage the
+    # rule no longer lives at, so the harness runs the same ladder:
+    # regenerate once, then strip, via the SHARED decision function.
+    from scripts.ask_response_validate import (
+        validate as _validate, resolve_violations as _resolve)
+    from discord_bot.bot import _strip_sentences
+
+    guard_outcome = "clean"
+    if answer and _validate(answer, tools_called):
+        retry_answer = ""
+        try:
+            retry_cfg = types.GenerateContentConfig(
+                system_instruction=sysinst,
+                tools=[types.Tool(google_search=types.GoogleSearch())],
+                safety_settings=safety,
+                max_output_tokens=HARNESS_MAX_OUTPUT_TOKENS,
+                temperature=0.7,   # mirrors the bot's retry temperature
+            )
+            retry_resp = client.models.generate_content(
+                model=model, contents=contents, config=retry_cfg)
+            retry_answer = (retry_resp.text or "").strip()
+        except Exception:
+            retry_answer = ""
+        answer, guard_outcome = _resolve(
+            answer, retry_answer, tools_called, _strip_sentences)
+
     return {"answer": answer, "tools_called": tools_called,
-            "grounded": grounded, "model_version": model_version}
+            "grounded": grounded, "model_version": model_version,
+            "guard_outcome": guard_outcome}
 
 
 def _expect_hash(fx: dict) -> str:
@@ -912,7 +943,8 @@ def main() -> int:
                         "per_attempt": [
                             {"passed": not f, "failures": f,
                              "tools_called": r.get("tools_called"),
-                             "grounded": r.get("grounded")}
+                             "grounded": r.get("grounded"),
+                             "guard_outcome": r.get("guard_outcome")}
                             for r, f in attempts],
                         "failures": fails0,
                         "tools_called": res0.get("tools_called"),

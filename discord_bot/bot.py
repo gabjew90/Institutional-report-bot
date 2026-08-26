@@ -49,6 +49,11 @@ _ASK_CONTEXT_PER_MSG_CHARS = 600
 # smokes and downstream tooling.
 from discord_bot.ask_prompt import _ASK_SYSTEM_INSTRUCTION  # noqa: E402
 from discord_bot.tool_docs import TOOL_DOCS as _TOOL_DOCS  # noqa: E402
+from scripts.ask_response_validate import (  # noqa: E402
+    validate as _validate_response,
+    violating_sentences as _violating_sentences,
+    resolve_violations as _resolve_violations,
+)
 
 
 # --- URL fetching for /ask --------------------------------------------------
@@ -6307,6 +6312,10 @@ async def _answer_with_gemini(
         # stamped into the ask-log entry — makes route/grounding/guard
         # decisions auditable instead of forensic (Railway logs rotate
         # away in ~1h; the ask-log is the durable record).
+        # Every tool this turn actually called, in order. The response
+        # validator takes it alongside the answer: a plumbing word is
+        # judged differently when the turn genuinely used a data tool.
+        _ask_tool_log: list[str] = []
         _ask_meta: dict = {
             "route": "WEB" if needs_web else "LOCAL",
             "kind": "FACT" if _route_is_factual else "BANTER",
@@ -6519,6 +6528,7 @@ async def _answer_with_gemini(
                 fc = getattr(p, "function_call", None)
                 if fc and getattr(fc, "name", None):
                     function_calls.append(fc)
+                    _ask_tool_log.append(fc.name)
             if not function_calls:
                 break  # No more tool calls — final answer is in response.text
             if round_idx >= _CHAT_SEARCH_MAX_ROUNDS:
@@ -6836,6 +6846,75 @@ async def _answer_with_gemini(
                         "/ask: glitch survived strip fallback — "
                         "shipping original answer"
                     )
+
+        # Meta-plumbing guard (2026-08-26). The NEVER META-NARRATE prose
+        # was deleted from the prompt in the same change that added
+        # scripts/ask_response_validate.py, per CLAUDE.md rule 1: a rule
+        # a regex can check is code, never both. The prose caught 0 of 7
+        # recorded violations while quoting the violating sentence almost
+        # verbatim; the validator catches 7 of 7 with no false positives.
+        #
+        # Same ladder as the repetition guard above, and for the same
+        # reason: regenerate once (a plumbing answer is usually a framing
+        # slip, not a content problem), then strip the offending
+        # sentences if it re-violates. Whole sentences only — a
+        # mid-sentence excision mangles prose.
+        _plumb = _validate_response(answer, _ask_tool_log) if answer else []
+        if _plumb:
+            _ask_meta["guards"].append("meta-plumbing")
+            log.warning(
+                f"/ask: meta-plumbing in answer (q={question[:80]!r}); "
+                f"hits={[v.match for v in _plumb][:6]}; retrying once"
+            )
+            _plumb_retry = ""
+            try:
+                _plumb_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=contents,
+                    config=types.GenerateContentConfig(
+                        system_instruction=_build_runtime_system_instruction(
+                            _prompt_extra),
+                        tools=[types.Tool(
+                            google_search=types.GoogleSearch())],
+                        safety_settings=safety_settings,
+                        max_output_tokens=5000,
+                        temperature=0.7,
+                        thinking_config=types.ThinkingConfig(
+                            thinking_budget=2000),
+                    ),
+                )
+                _tally_retry_usage(_plumb_resp)
+                try:
+                    _plumb_retry = (_plumb_resp.text or "").strip()
+                except Exception:
+                    _plumb_retry = ""
+            except Exception as e:
+                log.warning(f"/ask: meta-plumbing retry call failed: {e}")
+
+            # ONE decision function, shared with the harness, so what
+            # ships and what gets measured cannot drift apart.
+            _bad_sents = _violating_sentences(answer, _ask_tool_log)
+            answer, _outcome = _resolve_violations(
+                answer, _plumb_retry, _ask_tool_log, _strip_sentences)
+            if _outcome == "regenerated":
+                _ask_meta["guards"].append("meta-plumbing-regenerated")
+                log.info(
+                    "/ask: meta-plumbing FIXED BY REGENERATE — clean on "
+                    "retry, no strip needed (q=%r)", question[:80])
+            elif _outcome == "stripped":
+                _ask_meta["guards"].append("meta-plumbing-strip")
+                log.warning(
+                    "/ask: meta-plumbing STRIP WAS NEEDED — regenerate "
+                    "failed, excised %d sentence(s): %s (q=%r)",
+                    len(_bad_sents), [t[:70] for t in _bad_sents][:4],
+                    question[:80])
+            elif _outcome == "shipped":
+                _ask_meta["guards"].append("meta-plumbing-shipped")
+                log.error(
+                    "/ask: meta-plumbing SURVIVED BOTH regenerate and "
+                    "strip — shipping with hits=%s (q=%r)",
+                    [v.match for v in _validate_response(
+                        answer, _ask_tool_log)][:6], question[:80])
 
         # Voice cleanup on the final answer. The pulse-side lint runs
         # at AUDIT->SCRUB; /ask answers ship straight from Gemini to
