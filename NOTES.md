@@ -48,7 +48,7 @@ The bigger *cost* lever is the 3.5 side: profile refresh runs 4x/day
 has measured its token draw. That is the number to get before touching
 anything else.
 
-### The seven divergences
+### The nine divergences
 
 | # | divergence | what it did |
 |---|---|---|
@@ -58,6 +58,8 @@ anything else.
 | 4 | `max_output_tokens` 1200 vs production 5000; `temperature` 0.2 vs 0.3 | produced the "empty answer" failures and inflated a 32/39 that was never comparable |
 | 5 | suite fingerprint computed over the `--only` subset | made every partial run a false mismatch — a bug in the guard built to catch divergences |
 | 6 | `thinking_budget` 0 vs production 2000 | suppressed tool use, which became the withdrawn grounding-cost finding below |
+| 8 | no repetition retry-then-strip rung | fixtures 24/01 scored raw output at a stage where production strips; `01` now passes 3/3 with `guard=stripped` |
+| 9 | **local Python 3.10 vs container Python 3.12** | a mid-pattern `(?i)` warned locally and raised `re.error` in the container, crash-looping the live bot for 7 minutes. Divergences 1-8 are about what gets SENT; this one is what the code RUNS ON |
 | 7 | no round-cap final-answer rung | "empty answer after N tool calls" was recorded in this file for weeks as an unavoidable harness limitation; it was a production rung the harness lacked |
 
 ### The four findings they produced or retracted
@@ -173,6 +175,83 @@ Corollary, learned the same day: **do not certify a divergence as
 harmless.** The grounding-skip experiment was reverted rather than
 measured, because "we measured it and it was fine" is how "empty answers
 are a harness limitation" survived for weeks.
+
+---
+
+## STANDING RULE 3 — an erroring gate is a failed gate
+
+> **A check that raises instead of returning a verdict has FAILED. It is
+> never "inconclusive", never skipped, never a pass.**
+
+Violated twice on 2026-08-26, hours apart:
+
+- The deprecation guard written to prevent the outage shipped with a
+  literal newline inside a string, so `smoke_ask_prompt_diet.py` could
+  not parse and the gate could not run at all. A gate that cannot run
+  guards nothing, and its silence is indistinguishable from success.
+- `DeprecationWarning: Flags not at the start of the expression` printed
+  in harness output for hours before the outage — the signal that
+  predicted it exactly — and was read past on every run.
+
+Enforced in `scripts/preflight_push.py`: every check is wrapped and an
+exception inside one is recorded as a FAILURE naming it, while
+`check_gates_are_runnable` asserts the diet smoke renders a verdict
+rather than a traceback.
+
+---
+
+## DETERMINISTIC FIRST — the strongest evidence in the project
+
+A 788-char prompt block that quoted the violating sentence almost
+verbatim caught **none** of the seven violations it was written to
+prevent. Three regexes caught **all seven**, with zero false positives.
+
+| enforcement | caught | false positives |
+|---|---|---|
+| NEVER META-NARRATE, 788 chars of prose | **0 / 7** | — |
+| `check_meta_plumbing`, three detectors | **7 / 7** | **0** |
+
+Both columns are measured on the same set: every `07b` answer recorded
+across every run, each produced while the full prompt block was in
+force. The block did not merely fail to help — it named the exact shape
+never to repeat, and the model reproduced that shape while reading it.
+
+This is the evidence base for CLAUDE.md rule 1. When a rule is
+checkable, prose is not enforcement; it is a description of the
+enforcement someone still has to write.
+
+---
+
+## SESSION TEMPLATE — moving one rule class from prompt to code
+
+Required steps, in order. **Step 3 is not optional** — it was missing
+from the Session 5 spec, which is how one class briefly ended up
+enforced more weakly than before it started: the prose was deleted while
+`validate()` was still an unwired module.
+
+1. **Build the detector** in `scripts/ask_response_validate.py` as a
+   `check_<class>()` returning `Violation`s. Add it to `_CHECKS`.
+2. **Prove it on recorded answers** — every logged violation of that
+   class from the baseline JSONs, plus the correct answers that must NOT
+   fire. Extend `_BAD` / `_GOOD` so `--self-test` covers both directions.
+3. **WIRE IT INTO THE SEND PATH** in `bot.py` via
+   `resolve_violations()`. Never write a second copy of the ladder — one
+   decision function, or production and the harness drift.
+4. **Only then delete the prompt prose**, leaving at most one line
+   naming the behavior. Repoint the diet smoke's concept anchor at it.
+5. **Gate it** — the validator's `--self-test` is already a smoke check,
+   so a new class inherits it.
+6. **Measure** — the class's fixture at `--repeat 3`, then the FULL
+   suite against the current baseline (STANDING RULE 2). Report chars
+   removed.
+7. **RUN THE PUSH GATE.** `python scripts/preflight_push.py` must exit 0
+   before ANY push to the deploy branch. Required, not advisory: a push
+   auto-redeploys the live bot, and one took the worker down for seven
+   minutes on 2026-08-26. No override flag by design.
+
+Steps 1-3 are additive and safe to land alone; step 4 is the only
+destructive one and must never precede step 3. Step 7 gates the push
+regardless of which steps ran.
 
 ---
 
