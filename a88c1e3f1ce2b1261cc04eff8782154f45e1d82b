@@ -1,0 +1,25 @@
+PACKAGING NOTE (added 2026-08-26).
+
+This commit's message describes validator classes 4 and 5 only, but the
+commit ALSO contains a separate piece of work that deserved its own
+entry in the history:
+
+  RUNTIME PIN + FORWARD-RISK REGISTER
+  .python-version, nixpacks NIXPACKS_PYTHON_VERSION and pyproject
+  requires-python = '>=3.12,<3.13' now pin the container runtime three
+  ways, because nothing pinned it and a base-image bump could have moved
+  it under us -- divergence 9, the one that crash-looped the bot.
+
+  discord.py 2.7.1 imports the stdlib 'audioop', removed in 3.13. No
+  release avoids the import; audioop-lts is the supported backport and is
+  now declared in requirements.txt for python_version >= 3.13, so a
+  deliberate 3.13 move degrades to a dependency install rather than a
+  crash-loop on import.
+
+  scripts/preflight_push.py gained FORWARD_RISK_REGISTER (every forward
+  risk needs an owner and a disposition; the gate FAILS on an
+  unregistered one) and check_runtime_is_pinned.
+
+Cause: two 'git add -A && git commit' calls were chained, so the first
+staged everything and the second had nothing left to commit. Its message
+was lost. Recorded here rather than rewriting a pushed commit.
