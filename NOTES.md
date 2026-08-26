@@ -16,6 +16,38 @@ different configuration than the deployed worker, nothing in the output
 said so, and the resulting number looked like a discovery about the
 prompt.
 
+### Where the Gemini money actually goes (Aug 2026, SKU-level)
+
+$46.31/month, and the shape matters more than the number:
+
+- **$31.47 (68%) — gemini-3.1-flash-lite, declining.** PDF ingestion
+  (37.3M input tokens recorded in `pdf_analyses`) plus the trade
+  classifier. Steady, and shrinking as PDF volume falls.
+- **$13.47 (29%) — gemini-3.5-flash-lite, growing 166%.** The `/ask`
+  path and profile refresh. This is the whole month-over-month increase.
+- **$1.03 — embeddings.** Flat.
+- **$0.00 — grounding.** 686 free search queries.
+
+**The clearest waste, though it is not the largest line:** the trade
+classifier runs on every message with any text — the only gate is that
+the string is non-empty ([analyst_log/ocr.py](analyst_log/ocr.py)). In
+August that was **42,514 Gemini calls producing 41,628 rows marked
+`is_trade=0`** against **936 real trades**: a 97.8% miss rate, on
+captions like "theres a giant onion" and "im not free till sunday".
+Roughly 20M input tokens (~$5) to find 936 trades, and 41.6k junk rows
+in a table `query_data` reads and whose tool docs already warn it is
+wins-biased.
+
+A regex pre-filter (cashtag, strike notation, calls/puts/entry/filled
+vocabulary, a date, or a decimal) keeps 3,388 of August's 46,060
+messages — **93% fewer calls**, with all 936 real trades inside the
+retained 7%. Worth doing for the data quality regardless of the money.
+
+The bigger *cost* lever is the 3.5 side: profile refresh runs 4x/day
+(03/09/15/21) over all channels with `profile_sample_size=500`. Nobody
+has measured its token draw. That is the number to get before touching
+anything else.
+
 ### The seven divergences
 
 | # | divergence | what it did |
@@ -54,14 +86,41 @@ prompt.
    failures on `08`, `21`, `22a`, `23`. It was divergence 7. With the
    rung added, all of them pass.
 
-5. **"The August Gemini cost is the harness, not the bot" — RETRACTED.**
-   Asserted from request counts: production traffic was at its lowest
-   month on record, the harness was the only new consumer, so the harness
-   must be the cost. The billing data says $46.31 spread evenly across
-   Aug 1-26 at ~$1.80/day, starting weeks before any harness run, +12%
-   over July. A steady month-long line cannot come from three days of
-   activity. Same error as the others: a cause inferred from counts
-   without looking at the SKU-level data that would settle it.
+5. **"The August Gemini cost is the harness / it's grounding quota" —
+   RETRACTED, both halves, by SKU-level billing data.**
+
+   Asserted from request counts and from the CLAUDE.md note that
+   grounded prompts bill at ~$14/1000 past a free tier. Neither claim
+   survived the actual invoice:
+
+   | SKU | tokens | cost | vs prev |
+   |---|---|---|---|
+   | 3.1-flash-lite input text | 91.9M | **$22.97** | -12% |
+   | 3.5-flash-lite input text | 32.1M | **$9.62** | +166% |
+   | 3.1-flash-lite output text | 4.7M | **$7.00** | -10% |
+   | 3.5-flash-lite output text | 1.2M | **$2.98** | +131% |
+   | 3.1-flash-lite input image | 5.3M | $1.32 | +17% |
+   | gemini-embedding-001 | 6.9M | $1.03 | +2% |
+   | 3.5-flash-lite CACHED input | 29.2M | $0.87 | +691% |
+   | **search query gemini 3 — FREE** | **686** | **$0.00** | 0% |
+
+   **Grounding cost $0.00.** 686 search queries all month, billed free.
+   The grounding-quota theory was wrong, and the grounding-skip built on
+   it would have saved nothing — it was a config divergence bought for
+   zero dollars. Removed by owner call before it was ever measured, which
+   was the right instinct for the right reason.
+
+   **The total is not the harness.** The 3.1 family is **$31.47 (68%)**
+   and it is DECLINING (-12% / -10%): that is PDF ingestion plus the
+   trade classifier, flat since long before any harness run, matching
+   the level ~$1.80/day line from Aug 1.
+
+   **The month-over-month INCREASE is the 3.5 family**, +$8.45, offset by
+   3.1 falling -$3.80, netting the reported +$4.86. Everything on 3.5 is
+   the `/ask` path and profile refresh — and the harness runs that exact
+   path on that exact model, ~1,006 turns this week. So the original
+   claim was wrong about the bill and partly right about the delta. State
+   deltas and totals separately; they have different causes.
 
 Only ONE finding in this class survived contact with a matched config:
 the [rule-2 exception](#measured-exception-to-claudemd-rule-2), where
