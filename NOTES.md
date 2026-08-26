@@ -54,6 +54,15 @@ prompt.
    failures on `08`, `21`, `22a`, `23`. It was divergence 7. With the
    rung added, all of them pass.
 
+5. **"The August Gemini cost is the harness, not the bot" — RETRACTED.**
+   Asserted from request counts: production traffic was at its lowest
+   month on record, the harness was the only new consumer, so the harness
+   must be the cost. The billing data says $46.31 spread evenly across
+   Aug 1-26 at ~$1.80/day, starting weeks before any harness run, +12%
+   over July. A steady month-long line cannot come from three days of
+   activity. Same error as the others: a cause inferred from counts
+   without looking at the SKU-level data that would settle it.
+
 Only ONE finding in this class survived contact with a matched config:
 the [rule-2 exception](#measured-exception-to-claudemd-rule-2), where
 anti-fabrication rules moved into tool schemas measurably weakened.
@@ -63,6 +72,48 @@ against `PRODUCTION_CONFIG` and exits before the first API call;
 `config_fingerprint` is recorded in every baseline so a mismatched
 comparison is refused; and `ALLOWED_CONFIG_DIFFS` requires a written,
 printed reason for any difference that is deliberate.
+
+---
+
+## STANDING RULE 2 — a fix validated only on what motivated it is unvalidated
+
+> **A fix tested only against the fixtures that prompted it has not been
+> tested. Validation runs the full suite.**
+
+Two wrong results this week came from exactly this, one of them twice in
+a day:
+
+1. **The fixture self-test.** Each fixture's assertions were checked
+   against a good and a bad answer *written by the same author who wrote
+   the assertions*. It proved each assertion separates those two
+   answers, and nothing more. It was recorded at the time as a floor
+   rather than a certificate, which was correct — but the same shape
+   then reappeared without that caution.
+
+2. **The round-cap rung.** Added to fix "empty answer after N tool
+   calls", tested on fixtures `08` and `27`, both went 3/3, declared
+   fixed. The next full 42-fixture run still had **four** empty-answer
+   failures. The rung resent `contents` unchanged; production appends an
+   `[ANSWER NOW]` turn telling the model its tool budget is spent.
+   Without it the model simply requests another tool and returns no
+   text — which only shows up on fixtures whose tool chains differ from
+   the two it was tuned against.
+
+The mechanism is the same both times: a fix derived from N cases and
+tested on those same N cases is a tautology. The cases that would falsify
+it are, by construction, the ones nobody looked at.
+
+**Consequence.** A change to anything that touches how a turn terminates,
+what is declared, or what is sent — the ladder, the tool list, the
+generation config, the round loop — is validated by a full `--repeat 3`
+run and nothing less. Spot-checking the motivating fixtures is a smoke
+test to see whether it is worth running the suite at all, never evidence
+that it worked.
+
+Corollary, learned the same day: **do not certify a divergence as
+harmless.** The grounding-skip experiment was reverted rather than
+measured, because "we measured it and it was fine" is how "empty answers
+are a harness limitation" survived for weeks.
 
 ---
 

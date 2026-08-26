@@ -2,7 +2,7 @@
   "id": "40-unfetchable-link-confab",
   "ledger": "2026-08-26",
   "title": "x.com link never fetched; bot invented the tweet's subject",
-  "why": "The asker linked a tweet about China moving the yuan onto a gold standard and Hong Kong's gold clearing system. NOTHING in the system can retrieve an x.com URL: no registered tool takes a URL, google_search grounds on question text rather than browsing, code execution has no network, and _maybe_fetch_user_urls skips login-walled hosts and returns an empty string with no signal that content is missing. The model searched, got that day's long-end macro news, and wrote three confident bullets about 30Y Treasury yields and Treasury buybacks, asserting the tweet 'called it a total system collapse because nobody wanted the long-end debt.' Wrong subject entirely, about a document the asker was looking at, with four citations attached and every guard green. Citations on a confabulation are worse than a visibly wrong answer. Fixture note: search_tool:true — this fixture is not grounding_required, but its failure mode IS confabulating from search results, so google_search must stay declared or the behaviour cannot appear.",
+  "why": "The asker linked a tweet about China moving the yuan onto a gold standard and Hong Kong's gold clearing system. NOTHING in the system can retrieve an x.com URL: no registered tool takes a URL, google_search grounds on question text rather than browsing, code execution has no network, and _maybe_fetch_user_urls skips login-walled hosts and returns an empty string with no signal that content is missing. The model searched, got that day's long-end macro news, and wrote three confident bullets about 30Y Treasury yields and Treasury buybacks, asserting the tweet 'called it a total system collapse because nobody wanted the long-end debt.' Wrong subject entirely, about a document the asker was looking at, with four citations attached and every guard green. Citations on a confabulation are worse than a visibly wrong answer.",
   "question": "@omniwiz can you verify this https://x.com/macroalf/status/1928734",
   "context": {
     "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
@@ -30,6 +30,5 @@
       "tools_called": [],
       "grounded": true
     }
-  },
-  "search_tool": true
+  }
 }
