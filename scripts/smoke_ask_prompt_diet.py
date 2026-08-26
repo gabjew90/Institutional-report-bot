@@ -17,6 +17,8 @@ Two guards:
 """
 
 import os
+import re
+import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -31,7 +33,17 @@ def _fail(msg):
     sys.exit(1)
 
 
-_SIZE_CEILING = 65_000  # chars (~16K tokens). Was 94,795 pre-diet.
+# Provisional budget, owner-set, not a measured optimum. Ratchet:
+# decreases only. Raising requires owner approval plus ask_fixture_run
+# evidence.
+_SIZE_CEILING = 63_590  # chars. Was 65,000; 94,795 pre-diet.
+
+_FIXTURE_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "tests", "ask_fixtures")
+_RUNNER = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "ask_fixture_run.py")
+_DATE_RE = re.compile(r"20\d\d-\d\d-\d\d")
 
 # (anchor substring, rule family it proves survived)
 _CONCEPT_ANCHORS = [
@@ -96,16 +108,98 @@ def test_concept_anchors_present():
 def test_size_ceiling():
     import discord_bot.bot as bot_mod
     n = len(bot_mod._ASK_SYSTEM_INSTRUCTION)
-    assert n <= _SIZE_CEILING, (
-        f"/ask system prompt is {n} chars (ceiling {_SIZE_CEILING}). "
-        f"New rules must displace narrative, not stack on it — move "
-        f"incident stories to the code-comment ledger in ask_prompt.py."
-    )
+    if n > _SIZE_CEILING:
+        _fail(
+            f"/ask system prompt is {n} chars (ceiling {_SIZE_CEILING}, "
+            f"over by {n - _SIZE_CEILING}). New rules must displace "
+            f"narrative, not stack on it — move incident stories to the "
+            f"INCIDENT LEDGER in the ask_prompt.py module docstring. "
+            f"The ceiling ratchets down only; raising it is owner-only "
+            f"and needs ask_fixture_run evidence.")
     _ok(f"prompt size {n} chars <= {_SIZE_CEILING} ceiling")
+
+
+def test_no_incident_dates_in_prompt():
+    """Incident dates belong in the docstring ledger, not the prompt body.
+
+    A date in the prompt is the signature of narrative accretion: the rule
+    gets restated with its story attached, and the story is what made the
+    prompt 94,795 chars. The RULE is what the model needs; the date is
+    provenance for humans and belongs in the ledger.
+    """
+    import discord_bot.bot as bot_mod
+    ins = bot_mod._ASK_SYSTEM_INSTRUCTION
+    hits = []
+    for i, line in enumerate(ins.splitlines(), 1):
+        for m in _DATE_RE.finditer(line):
+            hits.append((i, m.group(0), line.strip()[:96]))
+    if hits:
+        lines = "\n".join(f"  line {i}: {d}  |  {t}" for i, d, t in hits)
+        _fail(
+            f"{len(hits)} incident date(s) in the prompt body — move the "
+            f"provenance to the INCIDENT LEDGER in the ask_prompt.py "
+            f"module docstring and leave the rule:\n{lines}")
+    _ok("no incident dates in the prompt body")
+
+
+def test_every_incident_has_a_fixture():
+    """A new incident must arrive with a fixture, not just a rule.
+
+    A rule with no fixture cannot be shown to work and cannot be safely
+    deleted later, which is exactly how the prompt became append-only.
+    """
+    import discord_bot.ask_prompt as ap
+    doc = ap.__doc__ or ""
+    ledger = re.findall(r"^\s{2}(20\d\d-\d\d-\d\d)", doc, re.M)
+    n_fix = len([f for f in os.listdir(_FIXTURE_DIR) if f.endswith(".json")])
+    if n_fix < len(ledger):
+        _fail(
+            f"{n_fix} fixtures for {len(ledger)} INCIDENT LEDGER entries. "
+            f"Every incident that earned a rule needs a fixture proving "
+            f"the rule works, or the rule can never be safely deleted.")
+    _ok(f"{n_fix} fixtures >= {len(ledger)} ledger entries")
+
+
+def test_fixture_assertions_self_test():
+    """The fixtures must be able to tell a good answer from a bad one.
+
+    A fixture whose assertions pass both is not evidence, it is
+    decoration, and it reads as a green build while detecting nothing.
+    """
+    r = subprocess.run([sys.executable, _RUNNER, "--self-test"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        tail = "\n".join((r.stdout or "").strip().splitlines()[-25:])
+        _fail("ask_fixture_run.py --self-test failed (TOO WEAK / BROKEN / "
+              f"MISSING fixtures block the build):\n{tail}")
+    summary = [ln for ln in (r.stdout or "").splitlines()
+               if ln.startswith("OK ")]
+    _ok(f"fixture self-test clean — {summary[-1] if summary else 'exit 0'}")
+
+
+# Every check runs even after one fails. Fixing a gate one rediscovered
+# failure at a time is how a build stays red for a week.
+_CHECKS = [
+    test_concept_anchors_present,
+    test_size_ceiling,
+    test_no_incident_dates_in_prompt,
+    test_every_incident_has_a_fixture,
+    test_fixture_assertions_self_test,
+]
 
 
 if __name__ == "__main__":
     print("=== /ask prompt diet smoke ===")
-    test_concept_anchors_present()
-    test_size_ceiling()
+    failed = 0
+    for check in _CHECKS:
+        try:
+            check()
+        except SystemExit:
+            failed += 1
+        except Exception as e:            # a broken check is a failed check
+            print(f"FAIL {check.__name__} raised {type(e).__name__}: {e}")
+            failed += 1
+    if failed:
+        print(f"\n{failed} of {len(_CHECKS)} /ASK PROMPT DIET CHECKS FAILED")
+        sys.exit(1)
     print("\nALL /ASK PROMPT DIET SMOKE TESTS PASS")
