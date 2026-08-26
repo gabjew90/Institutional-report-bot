@@ -5781,6 +5781,31 @@ def _clapback_fidelity_violations(answer: str, material: str) -> list[str]:
             if t.lower() not in low]
 
 
+_HOSTILE_RE = re.compile(
+    r"\b(shut up|stfu|fuck you|fuck off|you suck|useless|garbage bot|"
+    r"dumb bot|stupid bot|trash bot|retarded bot|dogshit|dog shit|"
+    r"worthless|kys|kill yourself|shut the fuck)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_hostile_exchange(question: str) -> bool:
+    """True when the asker actually came at the bot in THIS message.
+    Gates the disengage line (2026-08-25): "you done?" is the right
+    answer to an attack and a bizarre one to "remind me to sell
+    everything on Sept 15". Deliberately narrow — the cost of missing
+    an attack is a plain answer; the cost of a false positive is the
+    bot insulting someone who asked a normal question."""
+    if not question:
+        return False
+    # Strip the quoted [MESSAGE BEING REPLIED TO] block: the bot's own
+    # prior words are not the asker's hostility.
+    q = re.sub(r"\[MESSAGE BEING REPLIED TO.*?\]\s*\".*?\"",
+               " ", question, flags=re.S)
+    q = re.sub(r"\[VERBATIM RECENT MESSAGES.*?\]", " ", q, flags=re.S)
+    return bool(_HOSTILE_RE.search(q))
+
+
 def _is_clapback_shaped(answer: str) -> bool:
     """True when the answer is a clapback AT THE ASKER — it addresses
     them in second person. The fidelity guard only applies here: a
@@ -5790,6 +5815,17 @@ def _is_clapback_shaped(answer: str) -> bool:
     mid-sentence 'and' because the guard treated every named member as
     cross-attribution)."""
     if not answer:
+        return False
+    # An ARROW-FORMATTED answer is the informational shape, never a
+    # clapback — even when it closes with a jab that says "your"
+    # (2026-08-25: "remind me to sell everything on Sept 15" returned
+    # two arrows, one of them a light jab; this counted 2x "you", the
+    # fidelity guard then flagged the bot's OWN words "Reminder" and
+    # "OPEX" as another member's receipts, stripped both arrows, and
+    # shipped the hostile disengage line "you done?" to a benign
+    # question). Jab-stripping on informational answers is the
+    # `_jab_residual` path's job, not the clapback guard's.
+    if "→" in answer:
         return False
     # Count second-person addresses; a stray "your" in an aside isn't a
     # clapback, a wall of "you...you...your" is.
@@ -7050,7 +7086,7 @@ async def _answer_with_gemini(
                                 f"/ask: stripped {len(_bad)} "
                                 f"non-asker sentence(s) from clapback"
                             )
-                        else:
+                        elif _is_hostile_exchange(question):
                             answer = "you done?"
                             _ask_meta["guards"].append(
                                 "clapback-fidelity-disengage")
@@ -7058,6 +7094,50 @@ async def _answer_with_gemini(
                                 "/ask: whole clapback was non-asker "
                                 "material — disengaging"
                             )
+                        else:
+                            # The disengage line is a response to an
+                            # ATTACK. On a benign question it reads as
+                            # the bot being hostile for no reason
+                            # (2026-08-25). Re-ask plainly instead.
+                            _ask_meta["guards"].append(
+                                "clapback-fidelity-plain-retry")
+                            log.warning(
+                                "/ask: fidelity strip emptied a "
+                                "NON-hostile answer — plain re-ask"
+                            )
+                            try:
+                                _plain = await client.aio.models.generate_content(
+                                    model=ask_model,
+                                    contents=[types.Content(
+                                        role="user",
+                                        parts=[types.Part.from_text(text=(
+                                            "Answer this plainly and "
+                                            "usefully. No jokes about "
+                                            "the asker, no jabs, no "
+                                            "personal material — just "
+                                            "the answer.\n\n"
+                                            + question[:4000]
+                                        ))],
+                                    )],
+                                    config=types.GenerateContentConfig(
+                                        system_instruction=(
+                                            _build_runtime_system_instruction(
+                                                _prompt_extra)
+                                        ),
+                                        safety_settings=safety_settings,
+                                        max_output_tokens=800,
+                                        temperature=0.3,
+                                        thinking_config=types.ThinkingConfig(
+                                            thinking_budget=256),
+                                    ),
+                                )
+                                _tally_retry_usage(_plain)
+                                _pa = (_plain.text or "").strip()
+                                if _pa:
+                                    _pa, _ = _clean_voice_violations(_pa)
+                                answer = _pa or answer
+                            except Exception as e:
+                                log.warning(f"/ask: plain re-ask failed: {e}")
                 except Exception as fe:
                     log.warning(
                         f"/ask: fidelity rewrite call failed "
