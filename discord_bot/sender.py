@@ -238,15 +238,22 @@ async def send_file_to_channels(
     file_bytes: bytes,
     filename: str,
     caption: str = "",
+    channel_ids: str | None = None,
 ) -> int:
     """Post one file attachment (fresh discord.File per channel — a
-    consumed BytesIO can't be re-sent) to every channel in
-    DISCORD_CHANNEL_ID. Returns the number of channels that succeeded.
-    Added 2026-08-20 for the daily calendar graphic."""
+    consumed BytesIO can't be re-sent) to a comma-separated channel
+    list. Returns the number of channels that succeeded.
+    Added 2026-08-20 for the daily calendar graphic.
+
+    channel_ids: explicit destination. None or empty falls back to
+    DISCORD_CHANNEL_ID, so a caller passing an unset setting keeps the
+    original behaviour rather than posting to nowhere.
+    """
     import io
     from config import settings
 
-    raw = (settings.discord_channel_id or "").strip()
+    raw = (channel_ids or "").strip() or (
+        settings.discord_channel_id or "").strip()
     channel_ids = [c.strip() for c in raw.split(",") if c.strip()]
     sent = 0
     for cid in channel_ids:

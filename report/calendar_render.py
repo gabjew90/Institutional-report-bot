@@ -304,9 +304,23 @@ def _footer(d, f, content_bottom: int) -> int:
 
 
 def _finish(img: Image.Image, footer_y: int) -> bytes:
-    """Crop to content height (min 700px, max the full 4:5 1350px),
-    then downsample from the 2x supersample."""
-    h2 = min(_H, max(700 * _S, footer_y + 56 * _S))
+    """Crop to content height (min 700px, max the full 2:3 1620px),
+    then downsample from the 2x supersample.
+
+    The docstring said "4:5 1350px" until 2026-08-26. The canvas has
+    been 2:3 / 1620 since the aspect change, so the comment described a
+    crop bound that had not existed for some time -- exactly the kind of
+    stale note that gets trusted instead of the code.
+    """
+    want = footer_y + 56 * _S
+    if want > _H:
+        # The min() below silently crops whatever does not fit, so the
+        # footer legend disappears with no error anywhere. Say so.
+        log.warning(
+            f"calendar render: content needs {want // _S}px but the "
+            f"canvas is {_H // _S}px — the footer is being cropped off. "
+            f"Reduce TOP_N or raise the canvas.")
+    h2 = min(_H, max(700 * _S, want))
     img = img.crop((0, 0, _W, h2))
     img = img.resize((1080, h2 // _S), Image.LANCZOS)
     buf = io.BytesIO()

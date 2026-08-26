@@ -68,10 +68,16 @@ def _to_et_hhmm(utc_iso: str) -> str:
 
 
 def _resolve_caps(symbols: list[str]) -> dict:
-    """Cache-first market caps: hit symbol_market_cap (7-day TTL), fetch
-    only the misses from Finnhub (paced), upsert what came back. A
-    failed lookup is stored as cap 0 so it gets the TTL too instead of
-    re-fetching every night."""
+    """Cache-first market caps: hit symbol_market_cap, fetch only the
+    misses from Finnhub (paced), upsert what came back.
+
+    A failed lookup is stored as cap 0 so it is still cached, but
+    get_market_caps expires failures by calendar day while successes
+    keep the 7-day TTL. That split matters here specifically: this
+    function feeds the earnings RANKING, so a cap of 0 does not read as
+    "unknown", it reads as "smallest company on the sheet". Under the
+    old shared 7-day TTL one transient Finnhub failure sorted a mega-cap
+    below micro-caps and dropped it from the calendar for a week."""
     cached = db.get_market_caps(symbols)
     missing = [s for s in symbols if s not in cached]
     if missing:
@@ -124,10 +130,17 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
 
     bmo_syms, amc_syms = [], []
     confirmed: dict[str, bool] = {}
+    # Finnhub can return a symbol more than once for one date (a revised
+    # row, or the same name under two sessions). Without a seen set the
+    # duplicate is ranked and rendered twice, and since ranking is by
+    # cap the two copies sort ADJACENT -- the sheet shows the same
+    # company on consecutive lines. First row wins.
+    _seen: set[str] = set()
     for r in raw:
         sym = (r.get("symbol") or "").strip()
-        if not sym:
+        if not sym or sym in _seen:
             continue
+        _seen.add(sym)
         hour = (r.get("hour") or "").lower()
         # blank / dmh (during market hours) land in AMC, FLAGGED —
         # that's where a reader looks for them last, and the flag keeps

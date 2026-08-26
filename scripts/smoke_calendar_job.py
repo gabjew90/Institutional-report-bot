@@ -22,8 +22,14 @@ def _run(day, already_posted=False, bot=object()):
     events = []
     sent = {"png": 0, "plain": 0}
 
-    async def _fake_send_file(bot_, png, filename, caption=""):
+    async def _fake_send_file(bot_, png, filename, caption="",
+                              channel_ids=None):
+        # channel_ids added 2026-08-26 (CALENDAR_CHANNEL_IDS). The stub
+        # must mirror the real signature or the job's call raises
+        # TypeError and this smoke reports "0 sent" instead of the
+        # actual cause.
         sent["png"] += 1
+        sent["dest"] = channel_ids
         return 2
 
     async def _fake_send_plain(ch, msgs, **kw):

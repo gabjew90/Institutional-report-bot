@@ -6020,10 +6020,29 @@ def sleeper_players_cache_age_hours() -> float | None:
 # Symbol market-cap cache (2026-08-20, daily calendar graphic)
 # ---------------------------------------------------------------------
 
-def get_market_caps(symbols: list[str], max_age_days: int = 7) -> dict:
-    """symbol -> {'cap': float_musd, 'name': str} for cache rows fresher
-    than max_age_days. Symbols missing or stale are absent — the caller
-    fetches those from Finnhub and upserts."""
+def get_market_caps(symbols: list[str], max_age_days: int = 7,
+                    fail_max_age_days: int = 1) -> dict:
+    """symbol -> {'cap': float_musd, 'name': str} for fresh cache rows.
+
+    TWO TTLs, deliberately. A successful lookup is good for
+    `max_age_days` (7) measured in elapsed time. A FAILED one — stored
+    as cap 0 so it still gets cached — expires by CALENDAR DAY: it is
+    served only if it was fetched within `fail_max_age_days` (1) date
+    boundaries, so the next nightly run always retries it.
+
+    The failure branch compares dates rather than elapsed hours on
+    purpose. The refresh job runs on a ~24h cadence, so an elapsed-time
+    cutoff of exactly 1 day puts every real retry precisely on the
+    boundary, where `>=` keeps the stale failure and the retry silently
+    does not happen. A date comparison has no such edge.
+
+    Before this split, a single transient Finnhub failure cached a
+    mega-cap at 0 for the full 7 days. The calendar ranks by cap, so
+    that name sorted below micro-caps and fell off the sheet for a
+    week on one bad request. The failure row still earns a TTL (it
+    stops a hot retry loop within the day); it just must not earn the
+    success TTL.
+    """
     symbols = [s for s in symbols if s]
     if not symbols:
         return {}
@@ -6034,9 +6053,15 @@ def get_market_caps(symbols: list[str], max_age_days: int = 7) -> dict:
         placeholders = ",".join("?" * len(chunk))
         rows = conn.execute(
             f"SELECT symbol, market_cap_musd, name FROM symbol_market_cap "
-            f"WHERE symbol IN ({placeholders}) "
-            f"AND fetched_at >= datetime('now', ?)",
-            [*chunk, f"-{int(max_age_days)} days"],
+            f"WHERE symbol IN ({placeholders}) AND ("
+            f"  (COALESCE(market_cap_musd, 0) > 0 "
+            f"   AND fetched_at >= datetime('now', ?)) "
+            f"  OR "
+            f"  (COALESCE(market_cap_musd, 0) <= 0 "
+            f"   AND date(fetched_at) > date('now', ?)) "
+            f")",
+            [*chunk, f"-{int(max_age_days)} days",
+             f"-{int(fail_max_age_days)} days"],
         ).fetchall()
         for r in rows:
             out[r["symbol"]] = {
@@ -6048,8 +6073,10 @@ def get_market_caps(symbols: list[str], max_age_days: int = 7) -> dict:
 
 def upsert_market_caps(rows: list[tuple]) -> int:
     """rows: (symbol, market_cap_musd, name). Upsert with a fresh
-    fetched_at. A failed profile lookup should be stored as (sym, 0, sym)
-    so it still gets the 7-day TTL instead of re-fetching nightly."""
+    fetched_at. A failed profile lookup is stored as (sym, 0, sym) so it
+    still gets a TTL instead of re-fetching in a hot loop — but
+    get_market_caps expires those after ONE day, not seven, so a
+    transient failure cannot bench a real name for a week."""
     if not rows:
         return 0
     conn = get_connection()

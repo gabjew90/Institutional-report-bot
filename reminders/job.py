@@ -56,10 +56,23 @@ async def reminder_check_job(bot) -> None:
     if not due:
         return
 
+    # get_channel reads the local cache only. That cache is populated by
+    # GUILD_CREATE and can legitimately be empty or incomplete right
+    # after a reconnect, so a cache miss is not evidence the channel is
+    # gone -- it is usually evidence the bot only just came back. Fall
+    # through to an API fetch before giving up, otherwise a reconnect
+    # that lands near the job's cron simply skips the day's reminders
+    # and logs it as a config problem.
     channel = bot.get_channel(cid)
     if channel is None:
-        log.warning(f"reminder job: channel {cid} not in bot cache — skipping")
-        return
+        try:
+            channel = await bot.fetch_channel(cid)
+            log.info(f"reminder job: channel {cid} fetched from API "
+                     f"(cache miss)")
+        except Exception as e:
+            log.warning(f"reminder job: channel {cid} not in cache and "
+                        f"fetch failed ({type(e).__name__}: {e}) — skipping")
+            return
 
     from discord_bot.sender import _send_with_retry
 

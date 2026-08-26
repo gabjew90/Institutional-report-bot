@@ -1229,7 +1229,8 @@ async def _daily_calendar_job(bot=None):
                         f"but not posted")
             return
         sent = await send_file_to_channels(
-            bot, png, f"omnibeta-calendar-{date_iso}.png"
+            bot, png, f"omnibeta-calendar-{date_iso}.png",
+            channel_ids=settings.calendar_channel_ids,
         )
         if sent:
             db.record_pipeline_event(

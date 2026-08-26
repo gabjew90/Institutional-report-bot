@@ -375,6 +375,14 @@ class Settings(BaseSettings):
     # HIGH/MEDIUM PDF, trickled 1-per-interval. Empty = feed disabled.
     discord_ingest_feed_channel_id: str = ""
 
+    # Daily calendar graphic destination. Comma-separated channel ids,
+    # same shape as DISCORD_CHANNEL_ID. EMPTY FALLS BACK to
+    # DISCORD_CHANNEL_ID, which is the behaviour that shipped before
+    # this setting existed -- an unset value must never silently stop
+    # the calendar from posting anywhere. Set it to route the sheet to a
+    # dedicated channel instead of the pulse channels.
+    calendar_channel_ids: str = ""
+
     # Channel reminder system — the daily 3:45 PM ET job posts due
     # calendar reminders (reminders/calendar.json) to this channel.
     # Empty = reminders disabled. Single channel id (not comma list).

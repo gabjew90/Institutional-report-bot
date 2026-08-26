@@ -923,6 +923,23 @@ def fetch_symbol_profiles(
     return out
 
 
+def _et_date(utc_iso: str) -> str:
+    """UTC ISO timestamp -> its calendar date in America/New_York."""
+    if not utc_iso:
+        return ""
+    try:
+        from datetime import datetime, timezone
+        from zoneinfo import ZoneInfo
+        dt = datetime.fromisoformat(str(utc_iso).replace("Z", ""))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        # Unparseable stamps fall back to the raw prefix rather than
+        # silently dropping the event.
+        return str(utc_iso)[:10]
+
+
 def fetch_us_econ_events_for_date(date_iso: str) -> list[dict] | None:
     """ALL US economic events for one date (every impact tier), from the
     ForexFactory feed the pulse already uses. Rows: {'event', 'time'
@@ -944,7 +961,13 @@ def fetch_us_econ_events_for_date(date_iso: str) -> list[dict] | None:
     for e in events:
         if (e.get("country") or "").upper() not in ("US", "USD"):
             continue
-        if not (e.get("time") or "").startswith(date_iso):
+        # Filter by the event's ET DATE, not the UTC date string.
+        # The feed stamps UTC, and the sheet is an ET document: an 8 PM
+        # ET Fed speaker is 00:00 UTC the NEXT day, so a prefix match on
+        # UTC filed it under tomorrow, where it then rendered as
+        # "20:00" and read as tomorrow evening. Wrong day, plausible
+        # time -- the worst combination.
+        if _et_date(e.get("time") or "") != date_iso:
             continue
         out.append(e)
     return out
