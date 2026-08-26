@@ -45,6 +45,7 @@ import subprocess
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, REPO)
 
 # The interpreter the Railway container runs. Read off a traceback:
 #   File "/root/.nix-profile/lib/python3.12/asyncio/base_events.py"
@@ -119,13 +120,27 @@ def check_gates_are_runnable() -> None:
             "\n".join(out.strip().splitlines()[-12:]))
 
 
+def check_notes_intact() -> None:
+    """NOTES.md must still carry every load-bearing section.
+
+    A script that edits NOTES and forgets to call assert_notes_intact()
+    is still caught here, before the damage reaches the branch.
+    """
+    from scripts.notes_guard import missing_sections
+    gone = missing_sections()
+    _record("NOTES.md required sections present",
+            not gone,
+            "\n".join(f"missing {m!r} — {why}" for m, why in gone))
+
+
 def main() -> int:
     print("=== pre-push gate ===")
     print(f"repo: {REPO}")
     print()
     for fn in (check_python_parity,
                check_import_under_error_warnings,
-               check_gates_are_runnable):
+               check_gates_are_runnable,
+               check_notes_intact):
         try:
             fn()
         except Exception as e:                    # check-the-checks

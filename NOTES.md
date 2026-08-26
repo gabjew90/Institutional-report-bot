@@ -255,6 +255,41 @@ regardless of which steps ran.
 
 ---
 
+### Validator class queue
+
+Order is by ledger weight, not by discovery order.
+
+| # | class | status |
+|---|---|---|
+| 1 | meta-plumbing | shipped, prose deleted |
+| 2 | macro print figures | shipped, prose deleted |
+| 3 | **unforced PRICE assertions** | **next** — largest of the three remaining ZERO UNFORCED blocks, most ledger incidents behind it |
+| 4 | unforced MARKET-DATA assertions | queued |
+| 5 | unforced TIME-SERIES claims | queued |
+| 6 | mid-answer clause restatement | queued, behind 3-5 |
+
+**Class 6 — why it is a separate detector from the one that exists.**
+Fixture `24-repetition-strip-fallback` fails with `guard=clean`: the
+production ladder RAN and found nothing, so the phrase ships. It is a
+real user-visible failure, not a stage mismatch like `07b` was.
+
+The two shapes:
+
+| | `_has_repetition_glitch` (exists) | class 6 (needed) |
+|---|---|---|
+| where | end of generation | mid-answer |
+| what | the model loops and cannot stop | the model restates one clause while explaining |
+| floor | >= 6 tokens per sentence | shorter — "gamma is when they", "if dealers are net", "gex means they act" |
+| fix | retry, then strip the looping tail | rewrite the duplicated clause |
+
+The existing detector cannot be widened to cover class 6 without firing
+on legitimate repetition in explainers, where restating a term is often
+correct. It needs its own detector and its own false-positive corpus.
+`01-repetition-glitch` passes 3/3 with `guard=stripped`, which confirms
+the existing ladder works for the shape it targets.
+
+---
+
 ## 2026-08-25 — /ask fixture harness: baseline and prompt gaps
 
 `scripts/ask_fixture_run.py` + `tests/ask_fixtures/` (39 fixtures, all 25
