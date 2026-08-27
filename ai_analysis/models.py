@@ -86,6 +86,14 @@ class KeyDataPoint:
     # released | forecast | target | level — same qualifier discipline as
     # MacroIndicator.status (2026-07-15 estimate-as-actual QC failure).
     figure_status: str = ""
+    # Verbatim quote from the source document containing the figure —
+    # redesign sequencing step 2 (2026-08-27, claim-card spec §3). This
+    # is the string ai_analysis/anchor_check.py verifies against the
+    # extracted PDF text with normalized matching, making extraction
+    # fidelity measurable instead of assumed. Empty on rows analyzed
+    # before the field existed; the checker counts those separately
+    # rather than as failures.
+    anchor: str = ""
 
 
 @dataclass
@@ -162,6 +170,12 @@ class PdfAnalysis:
     # Each entry is a 3-12 word phrase specific enough to embed without
     # ambiguity ("US strikes on Iranian targets", not bare "Iran").
     contextual_mentions: list[str] = field(default_factory=list)
+    # Anchor-verification stats from ai_analysis/anchor_check.py —
+    # {total, matched, missed, empty, too_short, match_rate, misses}.
+    # Warn-only measurement (redesign step 2): rides into analysis_json
+    # via asdict so QC and the shadow pilot can read fidelity per
+    # document. Empty dict on rows analyzed before the field existed.
+    anchor_check: dict = field(default_factory=dict)
     pages_analyzed: int = 0
     total_pages: int = 0
     input_tokens: int = 0

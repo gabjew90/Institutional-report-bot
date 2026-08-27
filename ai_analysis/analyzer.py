@@ -498,6 +498,31 @@ async def analyze_pdf_deep(
         output_tokens=output_tokens,
     )
 
+    # Anchor verification — redesign step 2, WARN-ONLY. The source text
+    # is in memory right here and only here; verifying later would mean
+    # re-extracting the PDF. Stats ride into analysis_json for QC and
+    # the pilot. Nothing is dropped or retried at this step.
+    try:
+        from ai_analysis.anchor_check import check_anchors
+        analysis.anchor_check = check_anchors(
+            analysis.key_data_points, text_content)
+        ac = analysis.anchor_check
+        if ac.get("missed"):
+            log.warning(
+                f"Anchor check {file_name}: {ac['missed']}/{ac['matched'] + ac['missed']} "
+                f"verifiable anchors NOT found in source "
+                f"(rate={ac.get('match_rate')}); first miss: "
+                f"{(ac.get('misses') or [{}])[0]}"
+            )
+        elif ac.get("total"):
+            log.info(
+                f"Anchor check {file_name}: {ac['matched']}/{ac['total']} "
+                f"matched (empty={ac.get('empty', 0)}, "
+                f"too_short={ac.get('too_short', 0)})"
+            )
+    except Exception as e:
+        log.warning(f"Anchor check skipped for {file_name}: {e}")
+
     log.info(
         f"Analyzed {file_name}: priority={priority}, "
         f"{'multimodal' if pages_analyzed_count else 'text-only'}"
