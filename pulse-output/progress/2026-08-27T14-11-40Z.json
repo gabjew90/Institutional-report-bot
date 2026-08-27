@@ -1,12 +1,75 @@
 {
  "ts": "2026-08-27T14-11-40Z",
  "events": [
-  {"step": "STEP_2_DONE", "time": "2026-08-27T14:22:21Z", "detail": "pdf_count=29, snapshot 15min old"},
-  {"step": "STEP_2_2_DONE", "time": "2026-08-27T14:22:21Z", "detail": "volume gate pass"},
-  {"step": "STEP_3_DONE", "time": "2026-08-27T14:22:21Z", "detail": "28 themes, 1 multi-bank + 4 discovered"},
-  {"step": "STEP_3_5_DONE", "time": "2026-08-27T14:22:21Z", "detail": "5 validated, 0 discarded"},
-  {"step": "STEP_4_DONE", "time": "2026-08-27T14:22:21Z", "detail": "draft 2009 words"},
-  {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-08-27T14:22:21Z", "detail": "3 soft numeric-scope-drift, CONTINUE"},
-  {"step": "STEP_5A_STITCH_DONE", "time": "2026-08-27T14:22:21Z", "detail": "1 mechanical fix"}
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-08-27T14:12:43Z",
+   "detail": "pdf_count=29, snapshot 15min old"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-08-27T14:13:02Z",
+   "detail": "volume gate pass"
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-08-27T14:13:10Z",
+   "detail": "28 themes: 1 multi-bank primary + 4 discovered"
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-08-27T14:17:40Z",
+   "detail": "5 adjudicated, 5 validated, 0 discarded"
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-08-27T14:19:00Z",
+   "detail": "draft 2009 words, 4 themes"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-08-27T14:19:35Z",
+   "detail": "3 soft numeric-scope-drift, CONTINUE"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-08-27T14:19:45Z",
+   "detail": "1 mechanical fix (_DRAFT NOTES stripped)"
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-08-27T14:25:30Z",
+   "detail": "EDIT rebuilt RECAP with live data"
+  },
+  {
+   "step": "STEP_5_5_LINT_DONE",
+   "time": "2026-08-27T14:25:43Z",
+   "detail": "2 hard source-prefix -> DISPATCH_SCRUB"
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-08-27T14:27:12Z",
+   "detail": "2 lines rewritten, relint 0 hard"
+  },
+  {
+   "step": "STEP_5_75_FINAL_VALIDATE_DONE",
+   "time": "2026-08-27T14:35:22Z",
+   "detail": "consensus-amnesia -> FIXUP -> recheck CONTINUE"
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-08-27T14:35:22Z",
+   "detail": "no internal headers"
+  },
+  {
+   "step": "STEP_5_85_ADVERSARIAL_DONE",
+   "time": "2026-08-27T14:34:48Z",
+   "detail": "0 hard, 4 soft (all applied as corrections)"
+  },
+  {
+   "step": "STEP_6_COMMIT_DONE",
+   "time": "2026-08-27T14:37:01Z",
+   "detail": "pulse 2a6afb2, adjudication a81c893; bridge archived + published fragment"
+  }
  ]
 }
