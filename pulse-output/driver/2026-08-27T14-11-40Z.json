@@ -1,0 +1,17 @@
+{
+ "gates": {
+  "holiday": {"decision": "CONTINUE", "detail": "", "at": "2026-08-27T14:12:43Z"},
+  "volume": {"decision": "CONTINUE", "detail": "pdf_count=29", "at": "2026-08-27T14:13:02Z"},
+  "draft_validate": {"decision": "CONTINUE", "detail": "soft violations only (advisory)", "at": "2026-08-27T14:19:35Z"},
+  "lint": {"decision": "DISPATCH_SCRUB", "detail": "2 hard issue(s)", "at": "2026-08-27T14:25:43Z"},
+  "scrub_relint": {"decision": "CONTINUE", "detail": "0 hard issues after SCRUB", "at": "2026-08-27T14:27:12Z"},
+  "final_validate": {"decision": "DISPATCH_FIXUP", "detail": "1 EDIT/SCRUB-introduced hard violation (consensus-amnesia)", "at": "2026-08-27T14:27:15Z"},
+  "final_validate_recheck": {"decision": "CONTINUE", "detail": "no EDIT/SCRUB-introduced hard violations", "at": "2026-08-27T14:35:22Z"},
+  "strip": {"decision": "CONTINUE", "detail": "no internal headers", "at": "2026-08-27T14:35:22Z"},
+  "adversarial": {"decision": "CONTINUE", "detail": "0 hard findings, 4 soft (recorded)", "at": "2026-08-27T14:34:48Z"},
+  "preflight": {"decision": "PASS", "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit", "at": "2026-08-27T14:35:24Z"}
+ },
+ "budgets": {"scrub_used": 1, "fixup_used": 1, "draft_reroll_used": 0},
+ "lint": {"last_hard": 0},
+ "note": "All four adversarial soft findings were applied as corrections after the adversarial gate returned CONTINUE, then lint + final_validate + strip were re-run clean. See the QC review for the rationale and the EDIT race-condition writeup."
+}
