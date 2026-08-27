@@ -1,0 +1,12 @@
+{
+ "ts": "2026-08-27T14-11-40Z",
+ "events": [
+  {"step": "STEP_2_DONE", "time": "2026-08-27T14:22:21Z", "detail": "pdf_count=29, snapshot 15min old"},
+  {"step": "STEP_2_2_DONE", "time": "2026-08-27T14:22:21Z", "detail": "volume gate pass"},
+  {"step": "STEP_3_DONE", "time": "2026-08-27T14:22:21Z", "detail": "28 themes, 1 multi-bank + 4 discovered"},
+  {"step": "STEP_3_5_DONE", "time": "2026-08-27T14:22:21Z", "detail": "5 validated, 0 discarded"},
+  {"step": "STEP_4_DONE", "time": "2026-08-27T14:22:21Z", "detail": "draft 2009 words"},
+  {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-08-27T14:22:21Z", "detail": "3 soft numeric-scope-drift, CONTINUE"},
+  {"step": "STEP_5A_STITCH_DONE", "time": "2026-08-27T14:22:21Z", "detail": "1 mechanical fix"}
+ ]
+}
