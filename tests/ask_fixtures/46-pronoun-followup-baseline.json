@@ -1,0 +1,32 @@
+{
+  "id": "46-pronoun-followup-baseline",
+  "ledger": "2026-08-27",
+  "title": "pronoun follow-up — BASELINE, not enforcement",
+  "why": "The 'what about him?' shape: subject resolution finds nobody, the question refers to someone in the third person, and the answer draws on the asker's material by default. This fixture RECORDS current behavior so the seam:pronoun-subject-miss counter has a fixture-side twin; assertions are deliberately minimal (no fabricated personal facts about either member) and must be tightened only when the seam counts justify a guard.",
+  "question": "lol what about him though",
+  "context": {
+    "profiles": "WHO'S TALKING (background on people active in this conversation):\n- **Sam** (theorb_18574, <@318466418301730816>) — trader-rank #21/58:\n**Sam (theorb_18574) — 2210 msgs**\n**Personality and style.** Momentum chaser, narrates every AVGO tick.\n**Recent trades.**\n- Opened AVGO 355C 0dte @0.61 (member alert)\n- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE degeneracy by night.\n**Recent personal life.**\n- Jury duty for $20 a day\n**Recent trades.**\n- Opened MU 980C exp 08-28 @6.90 (caller log)\n- Sold SPX 7735C same day for +130% (caller log)\n",
+    "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): Spx +130% laughing at you all\nBK (bankerkyle): WE DID IT CHAT\nSam (theorb_18574): lol what about him though\n"
+  },
+  "asker": {"username": "theorb_18574", "display": "Sam"},
+  "expect": {
+    "answer_must_not_match": [
+      "(?i)(his|him|he).{0,50}(divorce|fired|arrested|broke|homeless)",
+      "(?i)jury duty.{0,40}(sam|theorb)"
+    ]
+  },
+  "tool_stubs": {},
+  "grounding_required": false,
+  "self_test": {
+    "good": {
+      "answer": "him? the man just printed +130% on a same-day SPX call and wants the room to kneel. let him have the afternoon, the MU 980c decides if he keeps it.",
+      "tools_called": [],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "he's been broke since the divorce, that's why he's doing jury duty. Sam knows all about jury duty too.",
+      "tools_called": [],
+      "grounded": false
+    }
+  }
+}

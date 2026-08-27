@@ -5660,9 +5660,24 @@ def _roast_subjects(
             continue  # the asker is not their own subject
         best: int | None = None
         for handle in (uname, disp):
-            if len(handle) < 3:
+            if not handle:
                 continue
-            m = re.search(rf"@?\b{re.escape(handle)}\b", ask_line, re.I)
+            if len(handle) < 3:
+                # Short handles (BK, Ry) can never bare-text match —
+                # two letters collide with ordinary words constantly.
+                # But an explicit @-mention is unambiguous REGARDLESS
+                # of length: mention resolution already ran, so "@BK"
+                # in the question is a deliberate reference, not a
+                # collision. Without this, short-handle members could
+                # never be subjects and their questions fell back to
+                # asker-scoped receipts — the same misscoping the Tulch
+                # incident documented, and the same >=3 assumption that
+                # turned out to be the fixture-27 harness bug. The
+                # production copy was never revisited until 2026-08-27.
+                m = re.search(rf"@{re.escape(handle)}\b", ask_line, re.I)
+            else:
+                m = re.search(rf"@?\b{re.escape(handle)}\b", ask_line,
+                              re.I)
             if m and (best is None or m.start() < best):
                 best = m.start()
         if best is not None:
@@ -7437,6 +7452,21 @@ async def _answer_with_gemini(
                 question, profiles_block, asker_username, asker_display_name,
             )
             _nm_subject = _nm_subjects[0] if _nm_subjects else None
+            # Seam counter, NOT a guard (2026-08-27 review, session 1):
+            # the "what about him?" shape — a BANTER turn whose subject
+            # resolution found nobody while the question refers to
+            # someone in the third person. The answer then draws on the
+            # ASKER's material by default, which is the misscoping the
+            # Tulch incident documented. No behavior change here: a
+            # month of counts decides whether this seam deserves a
+            # guard or is theoretical.
+            if _nm_subject is None and _THIRD_PERSON_REF_RE.search(
+                    question or ""):
+                log.info(
+                    f"/ask seam:pronoun-subject-miss — BANTER, no "
+                    f"resolvable subject, third-person pronoun in "
+                    f"question (q={question[:80]!r})"
+                )
             if _nm_subject:
                 _nm_disp, _nm_uname = _nm_subject
                 # Naming ANY tagged member anchors the reply. A comparison
@@ -7508,6 +7538,35 @@ async def _answer_with_gemini(
                             )
                     except Exception as e:
                         log.warning(f"/ask: naming rewrite failed: {e}")
+
+        # Seam counter, NOT a guard (2026-08-27 review, session 1): a
+        # FACT-routed answer that names a member from WHO'S TALKING.
+        # Factual answers should be about the world, not the room;
+        # member material surfacing in one is the profile-confusion
+        # seam with no guard on it. Log-only — same month-of-counts
+        # test as the pronoun seam before anyone builds enforcement.
+        if answer and _route_is_factual and profiles_block:
+            try:
+                _seam_named = []
+                for _sd, _su in _member_handles_in_profiles(profiles_block):
+                    for _h in (_sd, _su):
+                        if not _h or _h.lower() in (
+                                (asker_username or "").lower(),
+                                (asker_display_name or "").lower()):
+                            continue
+                        _pat = (rf"@{re.escape(_h)}\b" if len(_h) < 3
+                                else rf"\b{re.escape(_h)}\b")
+                        if re.search(_pat, answer, re.I):
+                            _seam_named.append(_sd)
+                            break
+                if _seam_named:
+                    log.info(
+                        f"/ask seam:fact-names-member — FACT answer "
+                        f"names {sorted(set(_seam_named))[:4]} "
+                        f"(q={question[:80]!r})"
+                    )
+            except Exception:
+                pass
 
         # Roast-recycle guard (BANTER-gated) — a roast that remixes the
         # same hooks as a prior answer to this asker reads as "doesn't
