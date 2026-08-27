@@ -86,16 +86,23 @@ def test_failure_expires_by_calendar_day_not_elapsed_hours():
 
 # ------------------------------------------------ earnings assembly
 
-def _build_with(raw_rows, econ_rows=()):
-    """Run build_calendar_day against canned feed rows. Patches the two
-    network boundaries and restores them, so nothing here touches
-    Finnhub or ForexFactory."""
+def _build_with(raw_rows, econ_rows=(), moves=None):
+    """Run build_calendar_day against canned feed rows. Patches every
+    network boundary and restores them, so nothing here touches
+    Finnhub, ForexFactory, or Yahoo.
+
+    `moves`: dict symbol -> implied move for the patched fetch. Default
+    None for every symbol, which exercises the wholesale-failure
+    fallback — all names shown, dashes — matching the sheet's old
+    behaviour, so assembly tests stay about assembly."""
     from report import calendar_data as cd
     from report import news_data as nd
 
     orig_earn = nd.fetch_earnings_calendar_all
     orig_econ = nd.fetch_us_econ_events_for_date
     orig_caps = cd._resolve_caps
+    orig_move = cd._implied_move_fetch
+    orig_pace = cd._MOVE_PACE_S
     try:
         nd.fetch_earnings_calendar_all = lambda d: list(raw_rows)
         nd.fetch_us_econ_events_for_date = lambda d: list(econ_rows)
@@ -105,11 +112,15 @@ def _build_with(raw_rows, econ_rows=()):
             s: {"cap": 1000.0 - i, "name": f"{s} Inc"}
             for i, s in enumerate(dict.fromkeys(syms))
         }
+        cd._implied_move_fetch = lambda s, d: (moves or {}).get(s)
+        cd._MOVE_PACE_S = 0
         return cd.build_calendar_day("2026-08-27")
     finally:
         nd.fetch_earnings_calendar_all = orig_earn
         nd.fetch_us_econ_events_for_date = orig_econ
         cd._resolve_caps = orig_caps
+        cd._implied_move_fetch = orig_move
+        cd._MOVE_PACE_S = orig_pace
 
 
 def test_duplicate_symbol_appears_once():
@@ -137,17 +148,129 @@ def test_duplicate_across_sessions_keeps_first_row():
     assert [r.symbol for r in day.amc] == []
 
 
-def test_blank_hour_lands_in_amc_unconfirmed():
-    """Unchanged behaviour, pinned so the dedupe edit cannot quietly
-    reroute it."""
-    day = _build_with([{"symbol": "XYZ", "hour": ""}])
-    assert [r.symbol for r in day.amc] == ["XYZ"]
-    assert day.amc[0].session_confirmed is False
+def test_blank_hour_is_excluded_but_counted():
+    """Owner call 2026-08-27: a name whose session Finnhub cannot
+    confirm (blank/dmh hour) does not render at all — it used to show
+    under AFTER CLOSE with a * flag. It still counts toward "+N more"
+    so the sheet stays honest about what it is not showing."""
+    day = _build_with([{"symbol": "XYZ", "hour": ""},
+                       {"symbol": "OK", "hour": "amc"}],
+                      moves={"OK": 4.0})
+    assert [r.symbol for r in day.amc] == ["OK"]
+    assert day.dropped_amc == 1
+
+
+def test_dmh_hour_is_excluded_too():
+    day = _build_with([{"symbol": "MIDDAY", "hour": "dmh"}])
+    assert day.amc == []
+    assert day.dropped_amc == 1
 
 
 def test_bmo_is_confirmed():
     day = _build_with([{"symbol": "XYZ", "hour": "bmo"}])
     assert day.bmo[0].session_confirmed is True
+
+
+# ------------------------------------ implied-move selection (owner
+# call 2026-08-27: a name earns its row by pricing an honest implied
+# move; unpriceable names are dropped, not dashed)
+
+def test_unpriceable_name_is_dropped_and_backfilled():
+    """The 8/27 incident shape: illiquid names between liquid ones. The
+    unpriceable one vanishes and the next-ranked name takes its slot."""
+    from report import calendar_data as cd
+    orig = cd.TOP_N
+    try:
+        cd.TOP_N = 2
+        day = _build_with(
+            [{"symbol": s, "hour": "amc"} for s in
+             ("BIG", "ILLIQUID", "NEXT")],
+            moves={"BIG": 5.0, "NEXT": 3.0},   # ILLIQUID -> None
+        )
+    finally:
+        cd.TOP_N = orig
+    assert [r.symbol for r in day.amc] == ["BIG", "NEXT"]
+    assert [r.implied_move for r in day.amc] == [5.0, 3.0]
+    # the dropped name counts toward "+N more" so the sheet stays
+    # honest about coverage
+    assert day.dropped_amc == 1
+
+
+def test_every_shown_row_has_a_move():
+    """The rule itself: when at least one name prices, nothing dashless
+    reaches the sheet."""
+    day = _build_with(
+        [{"symbol": s, "hour": "bmo"} for s in ("AA", "BB", "CC")],
+        moves={"AA": 4.2},
+    )
+    assert [r.symbol for r in day.bmo] == ["AA"]
+    assert all(r.implied_move is not None for r in day.bmo)
+    assert day.dropped_bmo == 2
+
+
+def test_wholesale_move_failure_falls_back_to_dashes():
+    """Yahoo down / module broken (the numpy incident): every fetch
+    returns None. An EMPTY earnings column would claim nobody reports
+    tomorrow — a lie. The dashes only claim we couldn't price them, so
+    that is the degradation."""
+    day = _build_with(
+        [{"symbol": s, "hour": "amc"} for s in ("AA", "BB")],
+        moves={},
+    )
+    assert [r.symbol for r in day.amc] == ["AA", "BB"]
+    assert all(r.implied_move is None for r in day.amc)
+
+
+def test_selection_respects_the_fetch_budget():
+    """The walk must stop at TOP_N + MOVE_FETCH_BUDGET_EXTRA attempts,
+    or one all-illiquid tail turns the nightly render into an unbounded
+    Yahoo crawl."""
+    from report import calendar_data as cd
+    calls = []
+    orig_move, orig_pace = cd._implied_move_fetch, cd._MOVE_PACE_S
+    try:
+        cd._implied_move_fetch = lambda s, d: calls.append(s)  # None
+        cd._MOVE_PACE_S = 0
+        pool = [f"S{i:02d}" for i in range(cd.TOP_N * 4)]
+        kept = cd._select_priced(pool, "2026-08-27")
+    finally:
+        cd._implied_move_fetch, cd._MOVE_PACE_S = orig_move, orig_pace
+    assert kept == []
+    assert len(calls) == cd.TOP_N + cd.MOVE_FETCH_BUDGET_EXTRA
+
+
+def test_selection_stops_once_top_n_priced():
+    """No fetch is spent past the point the sheet is full."""
+    from report import calendar_data as cd
+    calls = []
+    orig_move, orig_pace = cd._implied_move_fetch, cd._MOVE_PACE_S
+    try:
+        cd._implied_move_fetch = (
+            lambda s, d: (calls.append(s), 5.0)[1])
+        cd._MOVE_PACE_S = 0
+        pool = [f"S{i:02d}" for i in range(cd.TOP_N * 4)]
+        kept = cd._select_priced(pool, "2026-08-27")
+    finally:
+        cd._implied_move_fetch, cd._MOVE_PACE_S = orig_move, orig_pace
+    assert len(kept) == cd.TOP_N
+    assert len(calls) == cd.TOP_N
+
+
+def test_a_raising_fetch_is_an_unpriceable_name_not_a_crash():
+    from report import calendar_data as cd
+    orig_move, orig_pace = cd._implied_move_fetch, cd._MOVE_PACE_S
+
+    def boom(s, d):
+        if s == "BAD":
+            raise RuntimeError("chain fetch exploded")
+        return 4.0
+    try:
+        cd._implied_move_fetch = boom
+        cd._MOVE_PACE_S = 0
+        kept = cd._select_priced(["BAD", "GOOD"], "2026-08-27")
+    finally:
+        cd._implied_move_fetch, cd._MOVE_PACE_S = orig_move, orig_pace
+    assert kept == [("GOOD", 4.0)]
 
 
 # ------------------------------------------------------ destination

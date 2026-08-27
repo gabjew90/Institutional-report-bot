@@ -214,6 +214,69 @@ def _http_bytes(url: str, timeout: int = 8) -> bytes:
         return b""
 
 
+# Per-session fetch budget for the implied-move selection: how far past
+# TOP_N the backfill may walk. Bounded because every attempt is a paced
+# Yahoo chain fetch, and the deep tail of a cap-ranked pool is
+# micro-caps that will fail the liquidity guards anyway — an unbounded
+# walk spends minutes proving what the ranking already implied.
+MOVE_FETCH_BUDGET_EXTRA = 10
+_MOVE_PACE_S = 0.6
+
+
+def _implied_move_fetch(sym: str, date_iso: str) -> float | None:
+    """One name's implied move. Module-level indirection so tests can
+    patch it; the import stays lazy so a broken implied_move module
+    degrades to None instead of breaking calendar_data at import."""
+    from report.implied_move import implied_move_pct
+    return implied_move_pct(sym, date_iso)
+
+
+def _select_priced(ranked: list[str],
+                   date_iso: str) -> list[tuple[str, float]]:
+    """First TOP_N names from the cap-ranked pool whose ATM straddle
+    prices honestly, in rank order: [(symbol, move_pct), ...].
+
+    A name whose chain cannot be priced (zero-bid leg, spread wider
+    than the mid, no ATM put, no options at all) is SKIPPED and the
+    next-ranked name takes its slot — owner call 2026-08-27, replacing
+    the earlier render-a-dash behaviour. Attempts are capped at
+    TOP_N + MOVE_FETCH_BUDGET_EXTRA per session.
+
+    One bad symbol never aborts the walk, and every skip is logged by
+    name — a row silently vanishing from the sheet must be explicable
+    from the log.
+    """
+    import time as _time
+    kept: list[tuple[str, float]] = []
+    skipped: list[str] = []
+    budget = TOP_N + MOVE_FETCH_BUDGET_EXTRA
+    for i, sym in enumerate(ranked[:budget]):
+        if len(kept) >= TOP_N:
+            break
+        if i > 0 and _MOVE_PACE_S:
+            _time.sleep(_MOVE_PACE_S)
+        try:
+            mv = _implied_move_fetch(sym, date_iso)
+        except Exception as e:
+            log.info(f"calendar: implied move {sym} raised ({e}) — "
+                     f"treated as unpriceable")
+            mv = None
+        if mv is None:
+            skipped.append(sym)
+            continue
+        kept.append((sym, mv))
+    if skipped:
+        log.info(
+            f"calendar: dropped {len(skipped)} unpriceable name(s): "
+            f"{', '.join(skipped)}")
+    leftover = len(ranked) - min(len(ranked), TOP_N + MOVE_FETCH_BUDGET_EXTRA)
+    if len(kept) < TOP_N and leftover > 0:
+        log.info(
+            f"calendar: fetch budget exhausted with {len(kept)}/{TOP_N} "
+            f"kept — {leftover} ranked name(s) never attempted")
+    return kept
+
+
 def build_calendar_day(date_iso: str) -> CalendarDay:
     """Assemble everything the renderer needs for one session date."""
     from world_context import is_us_market_holiday
@@ -275,48 +338,61 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
 
     caps = _resolve_caps(bmo_syms + amc_syms)
 
-    # Implied moves for the names that actually make the sheet — the
-    # top-N per session only (<=30 chains/night, paced). Never blocks:
-    # any failure leaves the column blank for that row (2026-08-25).
-    _ranked_syms = []
-    for _pool in (bmo_syms, amc_syms):
-        _ranked_syms += sorted(
-            _pool, key=lambda s: -(caps.get(s, {}).get("cap") or 0))[:TOP_N]
-    # Logos for the names that make the sheet, same top-N set as the
-    # implied moves. Cache-first and best-effort: a sheet with no logos
-    # is fine, a sheet that failed to render is not.
-    logos: dict = {}
-    try:
-        logos = _resolve_logos(_ranked_syms, caps)
-    except Exception as e:
-        log.warning(f"calendar: logos unavailable ({e})")
-
-    moves: dict = {}
-    try:
-        from report.implied_move import implied_moves_for
-        moves = implied_moves_for(_ranked_syms, date_iso)
-        log.info(f"calendar: implied moves for {len(moves)}/"
-                 f"{len(_ranked_syms)} ranked names")
-    except Exception as e:
-        log.warning(f"calendar: implied moves unavailable ({e})")
-
+    # A name earns its row by having an honestly-priceable implied move
+    # (owner call 2026-08-27: the 8 dash rows on that sheet were all
+    # illiquid tail names — zero-bid legs, spreads wider than the mid,
+    # no ATM put — and the owner would rather not show them at all).
+    # Walk each session's cap-ranked pool and keep the first TOP_N
+    # names whose ATM straddle prices, backfilling past rank TOP_N
+    # where needed, within a bounded fetch budget.
     def _rank(syms: list[str]) -> tuple[list[EarnRow], int]:
+        # Confirmed sessions only (owner call 2026-08-27, extending the
+        # priced-move rule): a blank/dmh Finnhub hour meant the row
+        # rendered under AFTER CLOSE with a * flag, which was honest but
+        # noisy — 40-60% of raw rows lack an hour, skewing small-cap.
+        # The owner would rather not show them. The unconfirmed names
+        # still count toward "+N more", so the sheet stays honest about
+        # what it is not showing.
         ranked = sorted(
-            syms, key=lambda s: -(caps.get(s, {}).get("cap") or 0)
+            (s for s in syms if confirmed.get(s)),
+            key=lambda s: -(caps.get(s, {}).get("cap") or 0)
         )
+        kept = _select_priced(ranked, date_iso)
+        if not kept and ranked:
+            # WHOLESALE failure — Yahoo down, module broken (the
+            # 2026-08-27 numpy/LD_LIBRARY_PATH incident), or a session
+            # of pure micro-caps. An empty earnings column under a
+            # "Before Open" band claims nobody reports tomorrow, which
+            # is a lie; the old dash rows only claimed we couldn't
+            # price them. Degrade to the dashes, never to the lie.
+            log.warning(
+                f"calendar: 0/{len(ranked)} names priced an implied "
+                f"move — falling back to unpriced top-{TOP_N} rows")
+            kept = [(s, None) for s in ranked[:TOP_N]]
         rows = [
             EarnRow(
                 symbol=s,
                 name=str(caps.get(s, {}).get("name") or s),
                 cap_musd=float(caps.get(s, {}).get("cap") or 0),
                 session_confirmed=confirmed.get(s, False),
-                implied_move=moves.get(s),
-                logo=logos.get(s) or b"",
+                implied_move=mv,
             )
-            for s in ranked[:TOP_N]
+            for s, mv in kept
         ]
-        return rows, max(0, len(syms) - TOP_N)
+        return rows, max(0, len(syms) - len(rows))
 
     day.bmo, day.dropped_bmo = _rank(bmo_syms)
     day.amc, day.dropped_amc = _rank(amc_syms)
+
+    # Logos for the names that actually made the sheet. Resolved AFTER
+    # selection so an excluded name costs no artwork fetch. Cache-first
+    # and best-effort: a sheet with no logos is fine, a sheet that
+    # failed to render is not.
+    try:
+        shown = [r.symbol for r in day.bmo + day.amc]
+        logos = _resolve_logos(shown, caps)
+        for r in day.bmo + day.amc:
+            r.logo = logos.get(r.symbol) or b""
+    except Exception as e:
+        log.warning(f"calendar: logos unavailable ({e})")
     return day

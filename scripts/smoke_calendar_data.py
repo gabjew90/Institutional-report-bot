@@ -51,9 +51,13 @@ def _build(date="2026-08-20", earnings=None, econ=None, caps=None,
         patch.object(cd.db, "upsert_market_caps", lambda rows: len(rows)),
         patch.object(cd.news_data, "fetch_symbol_profiles",
                      lambda syms, **kw: {}),
-        patch("report.implied_move.implied_moves_for",
-              moves_fn or (lambda syms, date, **kw:
-                           {s: 6.5 for s in syms[:2]})),
+        # The selection seam (2026-08-27): per-symbol fetch, not the old
+        # batch implied_moves_for. Default: every name prices at 6.5 so
+        # assembly tests keep full rows — selection behaviour has its
+        # own test below.
+        patch.object(cd, "_implied_move_fetch",
+                     moves_fn or (lambda s, d: 6.5)),
+        patch.object(cd, "_MOVE_PACE_S", 0),
     ]
     import world_context
     hp = patch.object(world_context, "US_MARKET_HOLIDAYS",
@@ -91,7 +95,11 @@ def test_cap_sort_and_missing_cap_last():
     _ok("sorted by cap desc; missing-cap symbols sort last, still shown")
 
 
-def test_blank_and_dmh_land_in_amc_flagged():
+def test_blank_and_dmh_are_excluded_but_counted():
+    """Owner call 2026-08-27: unconfirmed-session names (blank/dmh
+    Finnhub hour) do not render — they used to show under AFTER CLOSE
+    with a * flag. They still count toward the dropped tally so the
+    sheet stays honest about what it is not showing."""
     earnings = [{"symbol": "W", "hour": "bmo"},
                 {"symbol": "BLANK", "hour": ""},
                 {"symbol": "DUR", "hour": "dmh"},
@@ -99,12 +107,11 @@ def test_blank_and_dmh_land_in_amc_flagged():
     day = _build(earnings=earnings,
                  caps={s["symbol"]: {"cap": 1, "name": s["symbol"]}
                        for s in earnings})
-    amc = {r.symbol: r.session_confirmed for r in day.amc}
-    assert set(amc) == {"BLANK", "DUR", "REAL"}, amc
-    assert amc["REAL"] is True and amc["BLANK"] is False \
-        and amc["DUR"] is False, amc
+    assert [r.symbol for r in day.amc] == ["REAL"], day.amc
+    assert day.amc[0].session_confirmed is True
+    assert day.dropped_amc == 2, "excluded names must still be counted"
     assert day.bmo[0].session_confirmed is True
-    _ok("dmh/blank -> AMC and flagged; true amc/bmo confirmed")
+    _ok("dmh/blank excluded from the sheet, counted in '+N more'")
 
 
 def test_holiday_flag_and_no_earnings():
@@ -141,19 +148,19 @@ def test_et_conversion_dst_correct():
 
 
 def test_implied_move_attached_and_optional():
-    """Moves ride on the ranked rows; a name without one keeps None
-    (renderer shows a dash) and a total failure never blocks the day."""
+    """Owner call 2026-08-27: a name earns its row by pricing a move.
+    Unpriceable names are dropped and backfilled; a WHOLESALE failure
+    falls back to dashes rather than an empty (lying) column."""
     day = _build()
-    got = [r.implied_move for r in day.bmo]
-    assert got[0] == 6.5 and got[1] == 6.5, got
-    assert got[2] is None, "unpriced names stay None, never guessed"
+    assert all(r.implied_move == 6.5 for r in day.bmo), (
+        "every shown row must carry a priced move")
     # implied-move layer exploding must not break the calendar
-    def _boom(syms, date, **kw):
+    def _boom(s, d):
         raise RuntimeError("yahoo down")
     day2 = _build(moves_fn=_boom)
-    assert len(day2.bmo) == 15, "calendar still builds without moves"
+    assert len(day2.bmo) > 0, "wholesale failure must not empty the sheet"
     assert all(r.implied_move is None for r in day2.bmo)
-    _ok("implied move: attached, optional, failure never blocks the sheet")
+    _ok("implied move: required per row, wholesale failure -> dashes")
 
 
 if __name__ == "__main__":
@@ -161,7 +168,7 @@ if __name__ == "__main__":
     test_implied_move_attached_and_optional()
     test_topn_and_dropped_counts()
     test_cap_sort_and_missing_cap_last()
-    test_blank_and_dmh_land_in_amc_flagged()
+    test_blank_and_dmh_are_excluded_but_counted()
     test_holiday_flag_and_no_earnings()
     test_feed_down_vs_quiet_day()
     test_et_conversion_dst_correct()
