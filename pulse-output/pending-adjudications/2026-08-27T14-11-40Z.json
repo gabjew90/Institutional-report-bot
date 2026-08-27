@@ -1,0 +1,196 @@
+{
+  "pulse_date": "2026-08-27",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai capex financing",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 5
+      },
+      "consensus_view": "Banks agree the big cloud companies are now spending more on AI hardware and data centers than their operations bring in as cash, and they are covering the gap with debt, leases and new shares, but they disagree on whether that funding gap is a problem yet.",
+      "facts_agreed": [
+        {
+          "claim": "AI spending by the large cloud companies now runs above the cash their operations generate, so the difference has to be funded externally.",
+          "banks_for": [
+            "UBS",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "AI capex is on trend to outpace operating cash flow by end-2026",
+            "investment levels well in excess of cash generated in operations"
+          ]
+        },
+        {
+          "claim": "AI infrastructure spending is still growing rather than rolling over.",
+          "banks_for": [
+            "UBS",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "expect continued strength in AI capital expenditure",
+            "AI infrastructure is becoming more heterogeneous, not simply rotating away from GPUs."
+          ]
+        },
+        {
+          "claim": "The AI funding structures behind this spending are too new and too poorly disclosed to price with confidence.",
+          "banks_for": [
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "the tail remains too early-stage, opaque, and sizable to step in."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether AI spending outrunning cash flow is a digestion risk or a sustainable trend",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "AI capex is on trend to outpace operating cash flow by end-2026",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "AI infrastructure is becoming more heterogeneous, not simply rotating away from GPUs."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us treasury buybacks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five desks are all watching the government's expanded program of buying back its own longer-dated bonds, but none of them has committed to a view on where it pushes yields.",
+      "facts_agreed": [
+        {
+          "claim": "Five separate desks flag the expansion of the US Treasury's bond buyback program as a live topic in this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Bear Traps Report",
+            "Bank of America",
+            "UBS",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "US Treasury buybacks",
+            "Treasury buyback program expansion",
+            "U.S. Treasury refunding strategy",
+            "US Treasury buyback program expansion",
+            "US Treasury expanded buyback program"
+          ]
+        },
+        {
+          "claim": "The buyback discussion is framed around the long-dated end of the government bond market and the mechanics of the operations themselves.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Treasury long-end buybacks",
+            "US Treasury buyback operations"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait corridor discussions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks mention the Strait of Hormuz shipping route and the talks around it as a live oil-supply story, but none of them takes a side on where oil goes because of it.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks reference the Strait of Hormuz shipping route and the negotiations around it as an active oil-supply topic without staking a directional view.",
+          "banks_for": [
+            "Rabobank",
+            "Mizuho International",
+            "Mizuho Securities",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "US-Iran Hormuz corridor discussions",
+            "Strait of Hormuz shipping corridor",
+            "Oman-Iran negotiations for Strait of Hormuz corridor",
+            "Strait of Hormuz energy flows"
+          ]
+        },
+        {
+          "claim": "Crude shipped through the Strait of Hormuz has been falling.",
+          "banks_for": [
+            "Mizuho Securities"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz crude oil shipment decline"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai cloud monetization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "JPMorgan, Goldman Sachs and UBS all treat turning AI into paid cloud revenue as a live subject this window, but none of the three takes a side on whether that revenue actually shows up.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks flag how AI gets turned into revenue through the big cloud businesses as an active topic, without staking a directional call on it.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "AI monetization via cloud businesses",
+            "AI monetization strategy",
+            "Big 4 cloud revenue monetization"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "jackson hole symposium",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Several desks name the Jackson Hole central bank gathering as an event on the calendar to watch, but none of them takes a position on what it will do to markets.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple research desks reference the Jackson Hole symposium as an upcoming macro event without staking a directional view on it.",
+          "banks_for": [
+            "Goldman Sachs + The Bear Traps Report",
+            "Mizuho International"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole economic symposium",
+            "Jackson Hole symposium"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
