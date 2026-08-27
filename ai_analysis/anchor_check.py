@@ -71,11 +71,22 @@ def normalize(text: str) -> str:
         s = s.replace(src, dst)
     for src, dst in _CHAR_MAP.items():
         s = s.replace(src, dst)
-    # Soft line-wrap dehyphenation: a hyphen at end-of-line joining two
-    # letter runs is a rendering artifact ("infla-\ntion"). A hyphen
-    # between letters WITHOUT a line break is real ("bear-steepener")
-    # and survives.
+    # Hyphens between letters are removed on BOTH sides, uniformly.
+    #
+    # A line-break hyphen is ambiguous: "infla-\ntion" is a soft wrap
+    # of one word, but "end-\nFeb" (live-fire miss, JPM Matejka
+    # 2026-04-13) is a REAL hyphenated compound that happened to break
+    # at the line. No local rule can tell them apart — the first
+    # version of this normalizer guessed "soft wrap" and turned the
+    # source into "endfeb" while the model's faithful anchor said
+    # "end-Feb", failing an honest quote. Removing letter-letter
+    # hyphens everywhere makes the guess unnecessary: both readings
+    # normalize identically, so matching is unaffected by which one
+    # was true. Digit-adjacent hyphens are untouched — "8-4", "10-year"
+    # and "-18.4%" keep their hyphens, so vote tallies and negative
+    # numbers stay exact.
     s = re.sub(r"(?<=[A-Za-z])-\s*\n\s*(?=[A-Za-z])", "", s)
+    s = re.sub(r"(?<=[A-Za-z])-(?=[A-Za-z])", "", s)
     s = s.casefold()
     s = re.sub(r"\s+", " ", s)
     return s.strip()

@@ -21,10 +21,26 @@ def test_line_wrap_hyphen_is_joined():
         normalize("core inflation pressure")
 
 
-def test_real_hyphen_survives():
-    """'bear-steepener' has no line break — the hyphen is content."""
-    assert "bear-steepener" in normalize("a bear-steepener move")
-    assert normalize("bear-steepener") != normalize("bearsteepener")
+def test_letter_hyphens_fold_uniformly():
+    """A line-break hyphen is ambiguous — "end-\\nFeb" (live-fire miss,
+    JPM Matejka 2026-04-13) is a REAL compound broken at the line, while
+    "infla-\\ntion" is a soft wrap. No local rule distinguishes them, so
+    letter-letter hyphens fold on BOTH sides and the guess disappears:
+    every reading normalizes identically."""
+    # the real miss: faithful anchor vs line-broken source
+    assert normalize("stand at 18.4%, up from 15.4% as of end-Feb.") == \
+        normalize("stand at 18.4%, up from 15.4% as of end-\nFeb.")
+    # plain compound matches its broken and joined forms
+    assert normalize("bear-steepener") == normalize("bear-\nsteepener")
+    assert normalize("bear-steepener") == normalize("bearsteepener")
+
+
+def test_digit_hyphens_are_preserved():
+    """"8-4" is a vote tally and "-18.4%" is a negative number — folding
+    those would equate different figures."""
+    assert normalize("voted 8-4") != normalize("voted 84")
+    assert normalize("-18.4%") != normalize("18.4%")
+    assert normalize("the 10-year") != normalize("the 10 year")
 
 
 def test_ligatures_fold():
