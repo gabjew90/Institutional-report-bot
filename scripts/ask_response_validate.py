@@ -1004,6 +1004,100 @@ def check_self_generated_ta(answer: str, tool_calls=None,
     return []
 
 
+# --------------------------------------- class 9: dollar P&L
+# The trade log stores PERCENTAGES, never position sizes, so a dollar
+# P&L on a member's trade ("+$8,839.28") is fabricated by construction
+# — the rule's own text. Percentages are legal; dollars in a
+# profit/loss frame are the violation.
+#
+# The known FP shapes, all from the class-3 sweep, all structural here:
+#  - joke figures: "$3 courthouse parking receipts", "$20 jury duty" —
+#    small amounts in a non-P&L frame (no made/lost verb governs them)
+#  - company financials: revenue, net income, capex — carried at
+#    B/M/million scale or with financial-statement vocabulary
+#  - holdings counts and prices: "$4.50 entry", "at $0.61" — cost
+#    bases, not outcomes
+# The verb must GOVERN the dollar amount — verb first, dollars within
+# the same clause. Co-occurrence in a window was the first version and
+# it produced 53 sweep FPs from one shape: spot quotes ("SPY $702.11 —
+# up +0.34%"), where "up" governs a PERCENTAGE and the dollars are the
+# price. Bare up/down count only when the dollars follow immediately
+# ("up $4,200"), which is the P&L reading; "up to $250,000" (FDIC) has
+# "to" between and never matches. A standalone SIGNED dollar
+# ("+$8,839.28") is P&L-shaped on its own — that is the incident
+# figure's exact form.
+_PNL_CLAIM = re.compile(
+    r"\b(?:made|making|banked|pocketed|cleared|printed|netted|"
+    r"profited|walked\s+(?:away\s+)?with|took\s+home|"
+    r"lost|losing|blew|torched|donated|gave\s+back)\b"
+    r"[^.\n?]{0,40}?[-+]?\$\s?\d"
+    r"|\b(?:up|down)\s+[-+]?\$\s?\d"
+    r"|(?:^|[\s(→])[-+]\$\s?\d",
+    re.I | re.M,
+)
+
+# Company/institution scale and financial-statement vocabulary — a
+# grounded FACT answer saying "Citadel made $16B" or "revenue of
+# $470M" is not a member P&L claim.
+_PNL_COMPANY = re.compile(
+    r"(?i)\$\s?\d[\d,.]*\s?(?:B|bn|billion|M|million|trillion|T)\b"
+    r"|\b(?:revenue|net\s+income|profit\s+margin|earnings|EBITDA|"
+    r"guidance|market\s+cap|capex|AUM|quarter|Q[1-4]\b|fiscal|"
+    r"per\s+share|EPS|buyback|dividend)\b",
+)
+
+# Non-outcome dollar frames: entries/exits/strikes/prices, wages and
+# fees, per-unit rates. "$4.50 entry" and "$20 a day" are not P&L.
+_PNL_NOT_OUTCOME = re.compile(
+    # Trade-price labels only when ADJACENT to the dollars: "$4.50
+    # entry" and "entry at $4.50" are cost bases; "up $1,250 since
+    # entry" is an OUTCOME that merely mentions the entry, and the
+    # first version's bare \bentry\b veto ate it.
+    r"(?i)\$\s?\d[\d,.]*\s{0,2}(?:entry|exit|strike|premium|fill|"
+    r"limit|stop|cost)\b"
+    r"|\b(?:entry|exit|strike|premium|cost\s+basis|average\s+cost|"
+    r"fill(?:ed)?|limit|stop)\s+(?:at|of|price|@)\s?\$?\s?\d"
+    r"|@\s?\$?\d"
+    r"|\$\s?\d[\d,.]*\s?(?:/|a\s+|per\s+)(?:day|hour|month|year|share|"
+    r"contract)"
+    r"|\b(?:parking|jury|stipend|fee|fine|ticket|subscription|"
+    r"cost[s]?|price[sd]?|pay(?:s|ing)?|salary|paycheck|spend)\b",
+)
+
+_PNL_WINDOW = 60
+
+
+def check_dollar_pnl(answer: str, tool_calls=None, **_) -> list[Violation]:
+    """Flag a dollar figure asserted as a trade outcome.
+
+    A P&L verb must GOVERN the dollar amount (verb first, same clause),
+    the sentence must not be company-financial or a non-outcome dollar
+    frame, and percentages never flag. There is no tool exemption: no
+    tool returns dollar P&L, so a sourced one does not exist.
+    """
+    text = answer or ""
+    for m in _PNL_CLAIM.finditer(text):
+        sentence = _line_at(text, m.start())
+        if _PNL_COMPANY.search(sentence):
+            continue
+        if _PNL_NOT_OUTCOME.search(sentence):
+            continue
+        # quoted material is someone else's claim, reported
+        stripped = sentence.strip()
+        if stripped.startswith(">") or stripped.count('"') >= 2:
+            continue
+        # the prescribed answer names the absence
+        if re.search(r"(?i)\bonly\s+(?:have|keeps?)\s+(?:the\s+)?"
+                     r"percentage|\bno\s+(?:position\s+)?sizes?\b"
+                     r"|\bdon'?t\s+have\b|\bnot\s+recorded\b", sentence):
+            continue
+        return [Violation(
+            "dollar-pnl", m.group(0).strip(), m.span(), sentence,
+            "dollar P&L asserted; the log records percentages, never "
+            "sizes — a dollar outcome is fabricated by construction")]
+    return []
+
+
 _CHECKS = {
     "meta-plumbing": check_meta_plumbing,
     "macro-unsourced": check_macro_unsourced,
@@ -1013,6 +1107,7 @@ _CHECKS = {
     "unforced-market-data": check_unforced_market_data,
     "unforced-time-series": check_unforced_time_series,
     "self-generated-ta": check_self_generated_ta,
+    "dollar-pnl": check_dollar_pnl,
 }
 
 
