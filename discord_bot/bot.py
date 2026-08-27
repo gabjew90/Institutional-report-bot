@@ -3375,6 +3375,93 @@ def _get_gemini_ask_client():
         return None
 
 
+# Source-quality sane list (2026-08-27, review session 4 — the
+# bljesak.info incident: a grounded answer cited a Bosnian regional
+# news site as support for a claim about a tweet; grounded ✅ on a
+# domain with no business supporting the claim). WARN-ONLY: when every
+# cited domain falls outside this list, a tagged log line and an
+# ask-log stamp are emitted and nothing else happens. Source quality
+# has too much legitimate long tail (company IR domains above all) to
+# enforce blind — a week of counts decides whether this becomes a
+# blocking class.
+#
+# Suffix-matched: "www.reuters.com" and "graphics.reuters.com" both
+# count. Any .gov and .gov.xx counts without enumeration.
+_SANE_SOURCE_DOMAINS = (
+    # wires + major financial press
+    "reuters.com", "apnews.com", "bloomberg.com", "wsj.com", "ft.com",
+    "cnbc.com", "marketwatch.com", "barrons.com", "axios.com",
+    "businessinsider.com", "nytimes.com", "washingtonpost.com",
+    "yahoo.com", "investors.com", "morningstar.com", "fortune.com",
+    # exchanges + market infrastructure
+    "nasdaq.com", "nyse.com", "cboe.com", "cmegroup.com",
+    "spglobal.com", "theice.com",
+    # government / regulators / official
+    "federalreserve.gov", "sec.gov", "bls.gov", "bea.gov",
+    "treasury.gov", "stlouisfed.org", "bis.org", "imf.org",
+    "ecb.europa.eu",
+    # crypto trade press
+    "coindesk.com", "cointelegraph.com", "theblock.co", "decrypt.co",
+    # reference + market data
+    "investopedia.com", "tradingview.com", "stockanalysis.com",
+    "wikipedia.org",
+    # primary for tweet/social claims
+    "x.com", "twitter.com",
+)
+
+
+def _domain_is_sane(host: str) -> bool:
+    h = (host or "").lower().strip().rstrip(".")
+    if not h:
+        return False
+    if h.endswith(".gov") or ".gov." in h:
+        return True
+    return any(h == d or h.endswith("." + d)
+               for d in _SANE_SOURCE_DOMAINS)
+
+
+def _citation_domains(grounding_metadata) -> list[str]:
+    """Best-effort domain per grounding chunk. Gemini's chunk uri is
+    often a vertexaisearch redirect; the TITLE then carries the real
+    domain ("bljesak.info"), so a domain-shaped title wins over a
+    redirect host."""
+    from urllib.parse import urlparse
+    out = []
+    for chunk in getattr(grounding_metadata, "grounding_chunks",
+                         None) or []:
+        web = getattr(chunk, "web", None)
+        if web is None:
+            continue
+        title = (getattr(web, "title", None) or "").strip().lower()
+        host = ""
+        try:
+            host = (urlparse(getattr(web, "uri", "") or "").hostname
+                    or "").lower()
+        except Exception:
+            pass
+        if re.fullmatch(r"[a-z0-9.-]+\.[a-z]{2,}", title) and (
+                not host or "vertexaisearch" in host
+                or host.endswith("google.com")):
+            out.append(title)
+        elif host and "vertexaisearch" not in host \
+                and not host.endswith("google.com"):
+            out.append(host)
+        elif title:
+            out.append(title)
+    return out
+
+
+def _source_quality_unlisted(grounding_metadata) -> list[str]:
+    """The cited domains, returned ONLY when none of them is on the
+    sane list — the all-fringe shape worth counting. [] otherwise."""
+    domains = _citation_domains(grounding_metadata)
+    if not domains:
+        return []
+    if any(_domain_is_sane(d) for d in domains):
+        return []
+    return sorted(set(domains))
+
+
 def _build_sources_footer(grounding_metadata) -> str:
     """Render Gemini's grounding_chunks as a Discord-friendly Sources list.
 
@@ -8956,6 +9043,25 @@ async def _answer_with_gemini(
         answer = re.sub(r"!\[([^\]]*)\]\([^)]*\)",
                         lambda m: m.group(1).strip(), answer or "")
         answer = re.sub(r"\n{3,}", "\n\n", answer).strip()
+
+        # Source-quality counter, WARN-ONLY (2026-08-27, session 4):
+        # every citation on a domain outside the sane list = the
+        # bljesak shape. Logged with a distinct tag and stamped into
+        # the ask-log meta (Railway logs rotate in ~1h; the ask-log is
+        # where a week of counts can actually be read). No blocking, no
+        # stripping — the legitimate long tail (company IR domains) is
+        # exactly why this collects counts before it enforces anything.
+        try:
+            _sq_unlisted = _source_quality_unlisted(grounding_metadata)
+            if _sq_unlisted:
+                _ask_meta["source_quality"] = {"unlisted": _sq_unlisted}
+                log.info(
+                    f"/ask seam:source-quality — all {len(_sq_unlisted)} "
+                    f"cited domain(s) unlisted: {_sq_unlisted[:4]} "
+                    f"(q={question[:80]!r})"
+                )
+        except Exception:
+            pass
 
         sources_footer = _build_sources_footer(grounding_metadata)
         full = (answer + sources_footer)[:4000]

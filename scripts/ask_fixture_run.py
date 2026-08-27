@@ -369,6 +369,13 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
     # two baselines were measured on). Record what the server says it ran.
     model_version = getattr(resp, "model_version", None)
 
+    # Cited domains, recorded per answer (2026-08-27, session 4). The
+    # source-quality sweep found the corpus carries NO citation data —
+    # answers are recorded before the footer is appended — so the
+    # bljesak class was invisible to every retrospective sweep. This is
+    # data-only: nothing asserts on it yet.
+    source_domains: list[str] = []
+
     def _scan(r):
         nonlocal grounded
         try:
@@ -378,6 +385,13 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         gm = getattr(cand, "grounding_metadata", None)
         if getattr(gm, "grounding_chunks", None):
             grounded = True
+            try:
+                from discord_bot.bot import _citation_domains
+                for d in _citation_domains(gm):
+                    if d not in source_domains:
+                        source_domains.append(d)
+            except Exception:
+                pass
         calls = []
         for p in (getattr(cand.content, "parts", None) or []):
             fc = getattr(p, "function_call", None)
@@ -511,7 +525,8 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
 
     return {"answer": answer, "tools_called": tools_called,
             "grounded": grounded, "model_version": model_version,
-            "guard_outcome": guard_outcome}
+            "guard_outcome": guard_outcome,
+            "source_domains": source_domains}
 
 
 def _expect_hash(fx: dict) -> str:
@@ -1041,6 +1056,7 @@ def main() -> int:
                         "failures": fails0,
                         "tools_called": res0.get("tools_called"),
                         "grounded": res0.get("grounded"),
+                        "source_domains": res0.get("source_domains"),
                         "answer": res0.get("answer")})
 
     total = len(fixtures)
