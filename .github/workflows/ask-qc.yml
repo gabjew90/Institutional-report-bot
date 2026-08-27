@@ -75,12 +75,20 @@ jobs:
             echo "::error::CLAUDE_CODE_OAUTH_TOKEN secret is missing."
             exit 1
           fi
-          if ! claude -p "reply with exactly: ok" --model haiku \
-              --max-turns 1 2>err.txt | grep -qi "ok"; then
-            echo "::error::Claude auth failed — the setup-token has \
-          likely expired. Re-mint with 'claude setup-token' and update \
-          the CLAUDE_CODE_OAUTH_TOKEN repo secret."
-            cat err.txt
+          # Exit code FIRST, then content. The first version piped
+          # into grep, and a 401 (stderr, pipeline exit swallowed)
+          # sailed through the gate whose only job was catching it.
+          set +e
+          out=$(claude -p "reply with exactly: ok" --model haiku \
+              --max-turns 1 2>&1)
+          rc=$?
+          set -e
+          if [ $rc -ne 0 ] || ! printf '%s' "$out" | grep -qi "ok"; then
+            echo "::error::Claude auth failed (exit $rc) — the token is \
+          invalid or expired. Re-mint with 'claude setup-token' and \
+          update the CLAUDE_CODE_OAUTH_TOKEN repo secret (Name exactly \
+          that; the token goes in the Value box)."
+            printf '%s\n' "$out" | tail -5
             exit 1
           fi
 
