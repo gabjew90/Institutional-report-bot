@@ -79,6 +79,15 @@ def _seed(tmp, draft=DRAFT_OK, final=FINAL_OK, ctx=CTX):
     (tmp / "final.md").write_text(final, encoding="utf-8")
 
 
+def _pass_adversarial(tmp):
+    """Clean verdict + gate consult — the minimum for preflight PASS
+    now that adversarial is a required gate."""
+    (tmp / "adversarial_verdict.json").write_text(
+        '{"findings": []}', encoding="utf-8")
+    dec, out, _ = drv(tmp, "gate", "adversarial")
+    assert dec == "CONTINUE", (dec, out)
+
+
 def test_holiday_skip_blocks_commit():
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
@@ -103,9 +112,13 @@ def test_happy_path_and_preflight_pass():
         assert dec == "CONTINUE", (dec, out)
         dec, _, _ = drv(tmp, "gate", "strip")
         assert dec == "CONTINUE", dec
+        # adversarial not yet consulted: preflight must name it
+        dec, out, code = drv(tmp, "preflight")
+        assert dec == "BLOCK" and "adversarial" in out, out
+        _pass_adversarial(tmp)
         dec, out, code = drv(tmp, "preflight")
         assert dec == "PASS" and code == 0, (dec, out)
-    _ok("happy path: all gates CONTINUE, preflight PASS exit 0")
+    _ok("happy path: all gates + adversarial CONTINUE, preflight PASS")
 
 
 def test_skipped_gate_detected():
@@ -173,6 +186,7 @@ def test_fixup_path_and_recheck_enforcement():
         dec, _, _ = drv(tmp, "gate", "final_validate", "--recheck")
         assert dec == "CONTINUE", dec
         drv(tmp, "gate", "strip")
+        _pass_adversarial(tmp)
         dec, out, _ = drv(tmp, "preflight")
         assert dec == "PASS", out
     _ok("fixup: dispatch, recheck-enforced preflight, then PASS")
@@ -196,6 +210,7 @@ def test_scrub_relint_required_when_dispatched():
         (tmp / "final.md").write_text(FINAL_OK, encoding="utf-8")
         dec, out, _ = drv(tmp, "gate", "scrub_relint")
         assert dec == "CONTINUE" and "0 hard" in out, (dec, out)
+        _pass_adversarial(tmp)
         dec, _, _ = drv(tmp, "preflight")
         assert dec == "PASS", "trail complete after relint"
     _ok("scrub: dispatch -> preflight blocks until relint gate runs")
@@ -212,6 +227,106 @@ def test_strip_removes_internal_notes():
     _ok("strip: internal-notes section removed, gate recorded")
 
 
+def test_adversarial_missing_verdict_blocks():
+    """An unreadable verdict is a FAILED gate (STANDING RULE 3) — and
+    preflight refuses an adversarial loop that ended in BLOCK."""
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        _seed(tmp)
+        dec, out, _ = drv(tmp, "gate", "adversarial")
+        assert dec == "BLOCK", (dec, out)
+        for g in ("holiday", "volume", "draft_validate", "lint",
+                  "final_validate", "strip"):
+            drv(tmp, "gate", g)
+        dec, out, _ = drv(tmp, "preflight")
+        assert dec == "BLOCK" and "unfinished" in out, out
+    _ok("adversarial: unreadable verdict -> BLOCK, preflight refuses")
+
+
+def test_adversarial_hard_finding_dispatches_repair():
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        _seed(tmp)
+        (tmp / "adversarial_verdict.json").write_text(json.dumps({
+            "findings": [{"severity": "hard", "kind": "unsupported-figure",
+                          "quote": "Walmart reported $0.81 a share",
+                          "why": "context says $0.75",
+                          "fix": "use the context figure"}]}),
+            encoding="utf-8")
+        dec, out, _ = drv(tmp, "gate", "adversarial")
+        assert dec == "DISPATCH_REPAIR", (dec, out)
+        items = json.loads((tmp / "adversarial_repair_items.json")
+                           .read_text(encoding="utf-8"))
+        assert len(items) == 1 and items[0]["kind"] == "unsupported-figure"
+        # preflight must refuse the unfinished loop
+        for g in ("holiday", "volume", "draft_validate", "lint",
+                  "final_validate", "strip"):
+            drv(tmp, "gate", g)
+        dec, out, _ = drv(tmp, "preflight")
+        assert dec == "BLOCK" and "unfinished" in out, out
+        # repair happened, fresh clean verdict, recheck concludes
+        (tmp / "adversarial_verdict.json").write_text(
+            '{"findings": []}', encoding="utf-8")
+        dec, _, _ = drv(tmp, "gate", "adversarial", "--recheck")
+        assert dec == "CONTINUE", dec
+        dec, out, _ = drv(tmp, "preflight")
+        assert dec == "PASS", out
+    _ok("adversarial: hard -> DISPATCH_REPAIR, recheck-enforced, PASS")
+
+
+def test_adversarial_hallucinated_quote_is_demoted():
+    """A hard finding whose quote is not in final.md must not block or
+    burn a repair round — the checker hallucinating a sentence is the
+    checker's failure, not the draft's."""
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        _seed(tmp)
+        (tmp / "adversarial_verdict.json").write_text(json.dumps({
+            "findings": [{"severity": "hard", "kind": "unsupported-figure",
+                          "quote": "this sentence appears nowhere",
+                          "why": "x", "fix": "y"}]}), encoding="utf-8")
+        dec, out, _ = drv(tmp, "gate", "adversarial")
+        assert dec == "CONTINUE" and "demoted" in out, (dec, out)
+    _ok("adversarial: hallucinated quote demoted to soft, CONTINUE")
+
+
+def test_adversarial_budget_ships_with_residual_note():
+    """Two failed repair rounds ship with the labeled note (spec §6),
+    inserted BEFORE ## _LEANS so the bridge's strip can't eat it, and
+    preflight verifies the note survived."""
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        _seed(tmp)
+        bad = json.dumps({
+            "findings": [{"severity": "hard", "kind": "misattribution",
+                          "quote": "Walmart reported $0.81 a share",
+                          "why": "x", "fix": "y"}]})
+        (tmp / "adversarial_verdict.json").write_text(bad, encoding="utf-8")
+        dec, _, _ = drv(tmp, "gate", "adversarial")
+        assert dec == "DISPATCH_REPAIR", dec
+        dec, _, _ = drv(tmp, "gate", "adversarial", "--recheck")
+        assert dec == "DISPATCH_REPAIR", dec
+        dec, out, _ = drv(tmp, "gate", "adversarial", "--recheck")
+        assert dec == "CONTINUE_WITH_RESIDUAL", (dec, out)
+        md = (tmp / "final.md").read_text(encoding="utf-8")
+        assert "*Accuracy note:" in md
+        # the note must sit BEFORE the _LEANS block
+        assert md.index("*Accuracy note:") < md.index("## _LEANS")
+        assert (tmp / "adversarial_residuals.json").exists()
+        for g in ("holiday", "volume", "draft_validate", "lint",
+                  "final_validate", "strip"):
+            drv(tmp, "gate", g)
+        dec, out, _ = drv(tmp, "preflight")
+        assert dec == "PASS", out
+        # a later mutation that removes the note re-blocks preflight
+        (tmp / "final.md").write_text(
+            md.replace("*Accuracy note:", "*gone:"), encoding="utf-8")
+        dec, out, _ = drv(tmp, "preflight")
+        assert dec == "BLOCK" and "residual note is missing" in out, out
+    _ok("adversarial: budget spent -> residual note, placement, "
+        "preflight guards the note")
+
+
 if __name__ == "__main__":
     print("=== pulse driver smoke ===")
     test_holiday_skip_blocks_commit()
@@ -222,4 +337,8 @@ if __name__ == "__main__":
     test_fixup_path_and_recheck_enforcement()
     test_scrub_relint_required_when_dispatched()
     test_strip_removes_internal_notes()
+    test_adversarial_missing_verdict_blocks()
+    test_adversarial_hard_finding_dispatches_repair()
+    test_adversarial_hallucinated_quote_is_demoted()
+    test_adversarial_budget_ships_with_residual_note()
     print("\nALL PULSE DRIVER SMOKE TESTS PASS")

@@ -42,6 +42,11 @@ Commands:
                            run, deterministic _LEANS restore)
   gate strip            -> CONTINUE (runs the strip, verifies no `## _`
                            headers remain)
+  gate adversarial      -> CONTINUE | DISPATCH_REPAIR (max 2; items at
+                           /tmp/adversarial_repair_items.json) |
+                           CONTINUE_WITH_RESIDUAL (budget spent, note
+                           appended) | BLOCK (verdict unreadable);
+                           --recheck after each repair round
   record <label> [detail]  free-form trail entry (agent dispatches etc.)
   preflight             -> PASS | BLOCK (the choke point before STEP 6)
   status                -> dump state
@@ -70,6 +75,15 @@ FINAL_GATE_HARD_KINDS = {
 
 MAX_DRAFT_REROLLS = 2
 MAX_SCRUB_ITERS = 2
+# Redesign sequencing step 3 (spec §6): repair rounds the adversarial
+# gate may dispatch before shipping with a labeled residual note.
+MAX_ADVERSARIAL_REPAIRS = 2
+
+# The residual marker the driver appends when the repair budget is
+# spent with hard findings remaining. Preflight verifies this exact
+# prefix is present whenever the gate decided CONTINUE_WITH_RESIDUAL —
+# the note is the spec's ship-anyway condition, not optional garnish.
+RESIDUAL_NOTE_PREFIX = "*Accuracy note:"
 
 
 class Driver:
@@ -361,6 +375,130 @@ class Driver:
                 f"{leaked[:3]} -- investigate before commit")
         return self._decide("strip", "CONTINUE", "no internal headers")
 
+    def gate_adversarial(self, recheck: bool = False) -> str:
+        """STEP 5.85 — the blocking pre-commit adversarial check
+        (redesign sequencing step 3, spec §6, scoped to the CURRENT
+        pipeline: final.md vs the day's research context, no
+        briefs/cards/ledger yet).
+
+        The routine dispatches a FRESH sub-agent (no drafting history)
+        with ADVERSARIAL_SYSTEM/USER; the agent writes
+        {tmp}/adversarial_verdict.json:
+
+            {"findings": [{"severity": "hard"|"soft", "kind": str,
+                           "quote": str, "why": str, "fix": str}]}
+
+        This gate is the deterministic half: parse the verdict, demote
+        hard findings whose `quote` does not actually appear in
+        final.md (a checker hallucinating a sentence must not burn a
+        repair round), and decide:
+
+          BLOCK                  verdict missing/unreadable — an
+                                 erroring gate is a failed gate
+                                 (STANDING RULE 3); re-dispatch the
+                                 checker, then re-run this gate
+          CONTINUE               no hard findings (softs recorded)
+          DISPATCH_REPAIR        hard findings, repair budget left —
+                                 items at adversarial_repair_items.json
+          CONTINUE_WITH_RESIDUAL budget spent, hard findings remain —
+                                 the driver has appended the labeled
+                                 residual note (spec's ship-anyway)
+        """
+        gate_name = "adversarial_recheck" if recheck else "adversarial"
+        vpath = self.tmp / "adversarial_verdict.json"
+        try:
+            raw = json.loads(vpath.read_text(encoding="utf-8"))
+            findings = raw["findings"]
+            assert isinstance(findings, list)
+        except Exception as e:
+            return self._decide(
+                gate_name, "BLOCK",
+                f"adversarial verdict missing or unreadable at {vpath} "
+                f"({type(e).__name__}) -- dispatch the checker agent, "
+                f"then re-run this gate. An unreadable verdict is a "
+                f"FAILED gate, never a pass.")
+
+        try:
+            final_md = (self.tmp / "final.md").read_text(encoding="utf-8")
+        except Exception:
+            return self._decide(gate_name, "BLOCK",
+                                "final.md missing -- nothing to check")
+
+        def _norm(s: str) -> str:
+            return re.sub(r"\s+", " ", s or "").strip().lower()
+
+        doc = _norm(final_md)
+        hard, soft, demoted = [], [], 0
+        for f in findings:
+            if not isinstance(f, dict):
+                continue
+            sev = (f.get("severity") or "").lower()
+            if sev == "hard":
+                # Quote-grounding: a hard finding must point at text
+                # that exists. Whitespace-normalized substring, same
+                # spirit as the extraction anchor check.
+                if _norm(f.get("quote") or "") and \
+                        _norm(f.get("quote") or "") in doc:
+                    hard.append(f)
+                else:
+                    demoted += 1
+                    soft.append({**f, "severity": "soft",
+                                 "demoted": "quote not found in final.md"})
+            else:
+                soft.append(f)
+
+        budgets = self.state.setdefault("budgets", {})
+        repairs = budgets.get("adversarial_repairs", 0)
+        detail_soft = (f", {len(soft)} soft (recorded)" if soft else "")
+        if demoted:
+            detail_soft += f", {demoted} demoted (quote unfound)"
+
+        if not hard:
+            return self._decide(
+                gate_name, "CONTINUE",
+                f"0 hard findings{detail_soft}")
+        if repairs >= MAX_ADVERSARIAL_REPAIRS:
+            self._append_residual_note(len(hard))
+            (self.tmp / "adversarial_residuals.json").write_text(
+                json.dumps(hard, indent=1), encoding="utf-8")
+            return self._decide(
+                gate_name, "CONTINUE_WITH_RESIDUAL",
+                f"{len(hard)} hard finding(s) after {repairs} repair "
+                f"pass(es) -- residual note appended, residuals at "
+                f"adversarial_residuals.json for QC")
+        budgets["adversarial_repairs"] = repairs + 1
+        self._save()
+        (self.tmp / "adversarial_repair_items.json").write_text(
+            json.dumps(hard, indent=1), encoding="utf-8")
+        return self._decide(
+            gate_name, "DISPATCH_REPAIR",
+            f"{len(hard)} hard finding(s){detail_soft}; repair "
+            f"{repairs + 1}/{MAX_ADVERSARIAL_REPAIRS}; items at "
+            f"adversarial_repair_items.json; after the repair agent, "
+            f"RE-DISPATCH the checker fresh, then run: "
+            f"gate adversarial --recheck")
+
+    def _append_residual_note(self, n: int) -> None:
+        """Deterministic ship-anyway marker. Voice-contract compliant:
+        no em-dashes, no semicolons, one sentence.
+
+        Inserted BEFORE the ## _LEANS block, never after it: _LEANS is
+        the last section and the bridge deletes that whole block at
+        post time, so text appended after its header ships to nobody.
+        """
+        note = (f"\n\n{RESIDUAL_NOTE_PREFIX} {n} statement(s) in this "
+                f"edition did not clear the final source check and "
+                f"will be corrected if wrong.*\n")
+        path = self.tmp / "final.md"
+        md = path.read_text(encoding="utf-8")
+        m = re.search(r"^## _LEANS", md, re.M)
+        if m:
+            md = md[:m.start()].rstrip() + note + "\n" + md[m.start():]
+        else:
+            md = md.rstrip() + note
+        path.write_text(md, encoding="utf-8")
+        print(f"APPENDED: residual accuracy note ({n} finding(s))")
+
     # ------------------------------------------------------------------
     def record(self, label: str, detail: str = ""):
         now = datetime.datetime.utcnow().isoformat() + "Z"
@@ -377,10 +515,32 @@ class Driver:
         problems: list[str] = []
         gates = self.state.get("gates", {})
         required = ["holiday", "volume", "draft_validate", "lint",
-                    "final_validate", "strip"]
+                    "final_validate", "strip", "adversarial"]
         for g in required:
             if g not in gates:
                 problems.append(f"gate never consulted: {g}")
+        # The adversarial loop must have CONCLUDED, not just started: a
+        # last decision of DISPATCH_REPAIR means the repair/recheck
+        # cycle was abandoned mid-flight, and BLOCK means the verdict
+        # was never readable. Both are unfinished gates, not passes.
+        _adv_last = (gates.get("adversarial_recheck")
+                     or gates.get("adversarial") or {}).get("decision")
+        if _adv_last in ("DISPATCH_REPAIR", "BLOCK"):
+            problems.append(
+                f"adversarial gate unfinished (last decision "
+                f"{_adv_last}) -- run the dispatched step, then "
+                f"gate adversarial --recheck")
+        if _adv_last == "CONTINUE_WITH_RESIDUAL":
+            try:
+                _md = (self.tmp / "final.md").read_text(encoding="utf-8")
+            except Exception:
+                _md = ""
+            if RESIDUAL_NOTE_PREFIX not in _md:
+                problems.append(
+                    "adversarial gate shipped with residuals but the "
+                    "labeled residual note is missing from final.md "
+                    "(a later mutation removed it) -- re-run "
+                    "gate adversarial --recheck")
         if gates.get("holiday", {}).get("decision") == "SKIP_PULSE":
             problems.append("holiday gate said SKIP_PULSE -- there is "
                             "nothing to commit today")
@@ -454,6 +614,8 @@ def main() -> int:
         }.get(gate)
         if gate == "final_validate":
             d.gate_final_validate(recheck=recheck)
+        elif gate == "adversarial":
+            d.gate_adversarial(recheck=recheck)
         elif fn:
             fn()
         else:

@@ -63,7 +63,7 @@ If a future environment restores direct PAT access this override is harmless —
 python3 scripts/dump_prompts.py /tmp/prompts 2>&1 | tee -a /tmp/routine.log
 ```
 
-Then read the files in `/tmp/prompts/`: `ADJUDICATION_SYSTEM.txt`, `ADJUDICATION_USER.txt`, `DRAFT_SYSTEM.txt`, `DRAFT_USER.txt`, `AUDIT_SYSTEM.txt`, `AUDIT_USER.txt`, `SCRUB_SYSTEM.txt`, `SCRUB_USER.txt`, `QC_SYSTEM.txt`, `QC_USER.txt`.
+Then read the files in `/tmp/prompts/`: `ADJUDICATION_SYSTEM.txt`, `ADJUDICATION_USER.txt`, `DRAFT_SYSTEM.txt`, `DRAFT_USER.txt`, `AUDIT_SYSTEM.txt`, `AUDIT_USER.txt`, `SCRUB_SYSTEM.txt`, `SCRUB_USER.txt`, `ADVERSARIAL_SYSTEM.txt`, `ADVERSARIAL_USER.txt`, `QC_SYSTEM.txt`, `QC_USER.txt`.
 
 **If the script exits non-zero, STOP and report.** A non-zero exit means a prompt still contains an unresolved `<<PLACEHOLDER>>` token, which means a required block is not reaching the model.
 
@@ -1673,6 +1673,28 @@ Commit a progress event:
 
 ```bash
 python3 /tmp/progress.py "STEP_5_8_STRIP_DONE"
+```
+
+## STEP 5.85 — Adversarial pre-commit check (BLOCKING — redesign step 3)
+
+A fresh sub-agent with NO drafting history checks `/tmp/final.md` against the day's research context. This is the accuracy gate the spec's §6 describes, scoped to the current pipeline: it catches unsupported figures, misattributions, invented calls, and fabricated events BEFORE Discord instead of documenting them after.
+
+1. Dispatch ONE checker sub-agent with `ADVERSARIAL_SYSTEM` as its system prompt and `ADVERSARIAL_USER` as its user message (both in `/tmp/prompts/` from STEP 1), filling `{final_md}` with `/tmp/final.md` and `{context}` with the same research context block DRAFT received. The agent's entire output is strict JSON; write it VERBATIM to `/tmp/adversarial_verdict.json`.
+2. Run the gate:
+
+```bash
+python3 scripts/pulse_driver.py gate adversarial 2>&1 | tee -a /tmp/routine.log
+```
+
+- **`DECISION: CONTINUE`** → proceed to STEP 6. Soft findings are recorded for QC; they change nothing here.
+- **`DECISION: DISPATCH_REPAIR`** → dispatch ONE repair sub-agent (SCRUB contract: rewrite ONLY the lines quoted in `/tmp/adversarial_repair_items.json`, change nothing else, apply the `fix` field of each item), then RE-DISPATCH the checker fresh (step 1 again — a new agent, a new verdict file), then run `gate adversarial --recheck`. The recheck can dispatch a second repair (budget 2) or conclude.
+- **`DECISION: CONTINUE_WITH_RESIDUAL`** → the repair budget is spent with hard findings remaining. The driver has already appended the labeled accuracy note to `/tmp/final.md` and written `/tmp/adversarial_residuals.json` for QC. Proceed to STEP 6 — this is the sanctioned ship-anyway path, and the note is the label.
+- **`DECISION: BLOCK`** → the verdict file is missing or unreadable. The checker was not dispatched, or emitted something other than the JSON contract. Fix that (re-dispatch, verify the file parses), then re-run the gate. There is no path to STEP 6 through a BLOCK — the preflight refuses an unfinished adversarial loop.
+
+The checker's hard findings are quote-grounded: the gate verifies each quoted passage actually appears in `/tmp/final.md` and demotes any that don't to soft. A checker that hallucinates cannot block a commit or burn a repair round.
+
+```bash
+python3 /tmp/progress.py "STEP_5_85_ADVERSARIAL_DONE"
 ```
 
 ## STEP 6 — Compose with frontmatter and commit BOTH files (PRODUCTION — ALL CHANNELS)
