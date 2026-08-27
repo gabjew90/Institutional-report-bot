@@ -1,0 +1,83 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '94%' is attached to [amazon, budget, budgets, closely, cloud] but the source uses it for [ains, estimates, higher, revised, robust] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "94%",
+   "draft_subject": [
+    "amazon",
+    "budget",
+    "budgets",
+    "closely",
+    "cloud",
+    "demand",
+    "even",
+    "meet"
+   ],
+   "source_subject": [
+    "ains",
+    "estimates",
+    "higher",
+    "revised",
+    "robust"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '4.66%' is attached to [between, bond, chase, clients, hole] but the source uses it for [change, close, crypto, indices, live] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "4.66%",
+   "draft_subject": [
+    "between",
+    "bond",
+    "chase",
+    "clients",
+    "hole",
+    "jackson",
+    "morning",
+    "rally"
+   ],
+   "source_subject": [
+    "change",
+    "close",
+    "crypto",
+    "indices",
+    "live",
+    "shown",
+    "since",
+    "spread"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.25% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [1.5, 6.2, 6.5, 100.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.25",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday's core inflation reading ran hot and the 30-year has not forgiven it.** The Fed's preferred core measure rose 0.25% in July against the 0.2% expected and 0.1% the month before, while sec"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.1% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [1.5, 6.2, 6.5, 100.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.1",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday's core inflation reading ran hot and the 30-year has not forgiven it.** The Fed's preferred core measure rose 0.25% in July against the 0.2% expected and 0.1% the month before, while sec"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.19% is stated for Gdp but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [1.5, 6.2, 6.5, 100.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.19",
+   "event": "GDP",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday's core inflation reading ran hot and the 30-year has not forgiven it.** The Fed's preferred core measure rose 0.25% in July against the 0.2% expected and 0.1% the month before, while sec"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 5,
+ "exit_code": 4
+}

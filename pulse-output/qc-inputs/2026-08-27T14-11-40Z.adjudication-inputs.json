@@ -1,0 +1,2578 @@
+{
+ "ai capex financing": {
+  "theme": "ai capex financing",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 1,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "The Market Ear",
+    "theme": "ai infrastructure capex",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Better AI economics make sustained capex easier to justify for hyperscalers.",
+    "primary_instruments": [
+     "AMZN"
+    ],
+    "vs_consensus": "",
+    "evidence": "AI infrastructure is becoming more heterogeneous, not simply rotating away from GPUs."
+   },
+   {
+    "source": "UBS",
+    "theme": "ai capex cycle",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "AI capex is surging and on trend to outpace operating cash flow, creating digestion risks.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "AI capex is on trend to outpace operating cash flow by end-2026"
+   },
+   {
+    "source": "UBS",
+    "theme": "ai investment resilience",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "We expect continued strength in AI capital expenditure to support corporate earnings growth.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "expect continued strength in AI capital expenditure"
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "ai infrastructure financing",
+    "stance": "neutral",
+    "conviction": "medium",
+    "key_argument": "Hyperscalers are shifting from self-funding to external debt, lease, and equity structures to sustain AI capex.",
+    "primary_instruments": [
+     "GOOGL",
+     "META",
+     "MSFT",
+     "AMZN",
+     "NVDA",
+     "AVGO",
+     "ORCL"
+    ],
+    "vs_consensus": "",
+    "evidence": "investment levels well in excess of cash generated in operations"
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "nvda credit outlook",
+    "stance": "neutral",
+    "conviction": "medium",
+    "key_argument": "While fundamentals are supportive, the tail risk from AI financing is too early-stage and opaque to step in.",
+    "primary_instruments": [
+     "NVDA"
+    ],
+    "vs_consensus": "",
+    "evidence": "the tail remains too early-stage, opaque, and sizable to step in."
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai capex financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure capex cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure capex cycle"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai capex financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler capex revisions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler capex revisions"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai capex financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI capex funding competition",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI capex funding competition"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai capex financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler capital expenditure trends",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler capital expenditure trends"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai capex financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-related capital expenditure growth",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-related capital expenditure growth"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai capex financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI capital expenditure strength",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI capital expenditure strength"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai capex financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure capacity expansion",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure capacity expansion"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai capex financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler capital investment cycles",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler capital investment cycles"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai capex financing",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Hyperscaler compute cycle",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Hyperscaler compute cycle"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.96",
+    "metric": "Correlation between cloud capex and semiconductor revenues",
+    "context": "Calculated since 2019."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "91%",
+    "metric": "Variation in semiconductor industry revenues explained by quarterly cloud capex",
+    "context": "Since 2019."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$544bn",
+    "metric": "AI infrastructure spending",
+    "context": "Over the last 12 months."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.23%",
+    "metric": "30-year US Treasury yield",
+    "context": "Closed on 24 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40 trillion",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 20 billion",
+    "metric": "Value of US products subject to Canadian counter-tariffs",
+    "context": "Effective 8 September 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "50%",
+    "metric": "US tariff on Canadian goods",
+    "context": "Retaliatory measure."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Treasury buyback program size per operation",
+    "context": "Increased from previous USD 2bn plan."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40tr",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "China exports to US",
+    "context": "Level at end-2025."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "China exports to US",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "People's Bank of China",
+    "figure": "20 metric tons",
+    "metric": "Gold reserve increase",
+    "context": "July increase, largest monthly increase since October 2023."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "Gold price appreciation",
+    "context": "Month-to-date performance."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 315 billion",
+    "metric": "Total stablecoin market capitalization",
+    "context": "As of 23 June 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "<1%",
+    "metric": "Visa stablecoin settlement and card payment volume share",
+    "context": "Annualized volume as of 3 July 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "9bps",
+    "metric": "30-year yield decline",
+    "context": "Initial market impact of the 19 August Treasury buyback announcement."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Long-end buyback operation size",
+    "context": "Increased from USD 2bn previously, announced 19 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "Share of bills in debt mix",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.9 years",
+    "metric": "Weighted average maturity (WAM) of US debt",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "1,000x",
+    "metric": "Agentic vs chat token consumption",
+    "context": "Projected increase in token consumption for agentic coding tasks."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "40%",
+    "metric": "CPU market CAGR",
+    "context": "Expected growth over the next 5 years."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "27%",
+    "metric": "Semicap industry growth",
+    "context": "2026 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "35%",
+    "metric": "Semicap industry growth",
+    "context": "2027 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "25%",
+    "metric": "Semicap industry growth",
+    "context": "2028 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "16",
+    "metric": "VIX index level",
+    "context": "As of report writing, described as not stretched."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20%",
+    "metric": "Bull case probability",
+    "context": "Assigned probability for upside scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "AI bear market probability",
+    "context": "Assigned probability for AI bear scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "Fed policy test probability",
+    "context": "Assigned probability for policy test scenario."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$3.1tn",
+    "metric": "Total disclosed off-balance sheet commitments",
+    "context": "Aggregate of hyperscalers, NVDA, and AVGO."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.1tn",
+    "metric": "Undiscounted lease payments not yet commenced",
+    "context": "As of latest filings."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.7tn",
+    "metric": "Total purchase commitments",
+    "context": "As of latest filings."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$770bn",
+    "metric": "Total on-balance sheet debt and lease liabilities",
+    "context": "Across hyperscalers."
+   },
+   {
+    "source_bank": "Oracle",
+    "figure": "$4.6bn",
+    "metric": "Customer prepayments for capex",
+    "context": "Disclosed in most recent quarter."
+   },
+   {
+    "source_bank": "Google",
+    "figure": "$50bn",
+    "metric": "Equity issued",
+    "context": "2Q26."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$35bn",
+    "metric": "First TPU-financing tranche size",
+    "context": "Initial tranche size for AI lab financing."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": ">20GW",
+    "metric": "Compute capacity target",
+    "context": "Broadcom AI XPV platform capacity through 2028."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$300bn",
+    "metric": "Theoretical maximum supported exposure",
+    "context": "Potential exposure for Broadcom if platform scales."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$430-550bn",
+    "metric": "Additional TPU/XPU financing",
+    "context": "Estimated financing beyond first tranche if 20GW target is met."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$350bn",
+    "metric": "GPU financing",
+    "context": "Reported potential NVDA financing for unrated AI lab."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$250bn",
+    "metric": "Lease backstop",
+    "context": "Reported potential NVDA lease backstop for Ohio project."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2tn",
+    "metric": "Hyperscaler capital investment",
+    "context": "Total expected over the next 3 years."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$388bn",
+    "metric": "Signed but uncommenced lease commitments",
+    "context": "Aggregated across hyperscalers."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$15bn",
+    "metric": "Estimated lease liability for ORCL Abilene Phase 2",
+    "context": "Expected to be recognized by mid-CY26."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "7%",
+    "metric": "Incremental borrowing rate (IBR) assumption",
+    "context": "Used for illustrative ORCL lease accounting model."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "15 years",
+    "metric": "Lease term assumption",
+    "context": "Used for illustrative ORCL lease accounting model."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$200bn",
+    "metric": "All-in credit exposure",
+    "context": "Forecasted by CY28-end."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$170bn",
+    "metric": "Adjustments and contingent obligations",
+    "context": "Included in all-in credit exposure by CY28-end."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "0.4x",
+    "metric": "All-in gross adj. leverage",
+    "context": "Forecasted for CY28-end."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": ">$500bn",
+    "metric": "Third-party AI infrastructure capital",
+    "context": "Partnership initiative announced August 10, 2026."
+   },
+   {
+    "source_bank": "S&P",
+    "figure": "1.5x",
+    "metric": "S&P downgrade threshold",
+    "context": "Standard S&P leverage threshold."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~84/89bp",
+    "metric": "NVDA 5Y CDS",
+    "context": "As of 08/24/2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20%",
+    "metric": "Interest costs as percentage of tax revenues",
+    "context": "Structural fiscal pressure indicator."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$3.5tn",
+    "metric": "Forecasted funding gap",
+    "context": "2025 fiscal outlook."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "40%",
+    "metric": "Probability of September hike",
+    "context": "Market expectations ahead of Jackson Hole."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.96",
+    "metric": "Correlation between cloud capex and semiconductor revenues",
+    "context": "Calculated since 2019."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "91%",
+    "metric": "Variation in semiconductor industry revenues explained by quarterly cloud capex",
+    "context": "Since 2019."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$544bn",
+    "metric": "AI infrastructure spending",
+    "context": "Over the last 12 months."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$113.00",
+    "metric": "Price Target",
+    "context": "Expand Energy Corp (EXE)"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15-18%",
+    "metric": "FY26 Topline Guidance",
+    "context": "WuXi Biologics (2269.HK) raised guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "200bn",
+    "metric": "GMV Target",
+    "context": "Busy Ming Group (1768.HK) in c.3Y"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$0.31",
+    "metric": "2Q26 adjusted EPS",
+    "context": "Excluding tariff refund benefits, vs. $0.22 GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,514mn",
+    "metric": "2Q26 net sales",
+    "context": "Vs. $1,483mn GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40.4%",
+    "metric": "2Q26 gross margin",
+    "context": "Excluding tariff refund benefits, vs. 40.0% GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.60-$2.80",
+    "metric": "FY26 adjusted EPS guidance",
+    "context": "Raised from $2.40-$2.65 range."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$0.07-$0.12",
+    "metric": "3Q26 adjusted EPS guidance",
+    "context": "Vs. $0.22 GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.6%",
+    "metric": "2Q26 inventory y/y change",
+    "context": "As of end of 2Q26."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5.3bn",
+    "metric": "non-risk-adjusted peak sales forecast for tozorakimab",
+    "context": "vs company-compiled consensus of $4.3bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75%",
+    "metric": "probability of success (POS) for tozorakimab",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.3x",
+    "metric": "2027 P/E",
+    "context": "GSe"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7%",
+    "metric": "2027-32E core EPS CAGR",
+    "context": "vs 5% for European Large Cap pharma sector"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.82bn",
+    "metric": "2Q26 revenue",
+    "context": "Reported 2Q26 revenue, below GSe $2.15bn."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.9GW",
+    "metric": "2Q26 module shipments",
+    "context": "Reported 2Q26 shipments, above 14.9GW GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.2%",
+    "metric": "2Q26 gross margin",
+    "context": "Reported 2Q26 margin, below 7.9% GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "($1.94)",
+    "metric": "2Q26 GAAP EPS",
+    "context": "Reported 2Q26 EPS, below ($1.13) GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15GW-17GW",
+    "metric": "3Q26 module shipment guidance",
+    "context": "Company guidance vs 21.9GW GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60GW-70GW",
+    "metric": "FY2026 module shipment guidance",
+    "context": "Lowered from 75GW-85GW; GSe was ~76GW."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100GW",
+    "metric": "YE2026 integrated production capacity",
+    "context": "Management maintained guidance."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$15.00",
+    "metric": "12-month price target",
+    "context": "Based on 4.7X EV/EBITDA multiple."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~$100mn",
+    "metric": "tariff refund benefit",
+    "context": "Recognized in 2Q26 gross margin."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$821mn",
+    "metric": "cash and cash equivalents",
+    "context": "As of 2Q26 quarter-end."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-2.7% Y/Y",
+    "metric": "inventory change",
+    "context": "2Q26 quarter-end vs GS expectation of -1.4%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.0x",
+    "metric": "EV/EBITDA valuation multiple",
+    "context": "Used for 12-month price target calculation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$101.8bn",
+    "metric": "Market cap",
+    "context": "As of report date"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%-3%",
+    "metric": "TurboTax growth guidance",
+    "context": "FY2027 guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12.7-13.5%",
+    "metric": "GBS growth guidance",
+    "context": "FY2027 guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3%",
+    "metric": "QuickBooks Online paying customer growth",
+    "context": "4QFY26 YoY"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$197.8mn",
+    "metric": "Total tariff refunds collected",
+    "context": "As of August 2nd"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$167.8mn",
+    "metric": "Tariff refund reduction to COGS",
+    "context": "Recorded in 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.3x",
+    "metric": "NTM P/E",
+    "context": "Current valuation vs 3-year average of 18.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3 pts",
+    "metric": "Weekly decline in US L/S Net leverage",
+    "context": "Largest weekly decline in ~5 months."
+   },
+   {
+    "source_bank": "Coinglass",
+    "figure": "$2.99B",
+    "metric": "Crypto liquidations",
+    "context": "August 19, 2026; 8th largest in history."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Implied move for NVDA",
+    "context": "Based on options market pricing for earnings tonight."
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "$1.5 trillion",
+    "metric": "Value increase in crypto and precious metals",
+    "context": "Post-Treasury buyback announcement"
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "50%",
+    "metric": "Tariff rate on Canadian imports",
+    "context": "Effective Friday, August 21"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "50% MoM",
+    "metric": "AI spend per employee (top 1% firms)",
+    "context": "July 2026"
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "104 points",
+    "metric": "S&P 500 implied move",
+    "context": "For the week of August 23"
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.23%",
+    "metric": "30-year US Treasury yield",
+    "context": "Closed on 24 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40 trillion",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 20 billion",
+    "metric": "Value of US products subject to Canadian counter-tariffs",
+    "context": "Effective 8 September 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "50%",
+    "metric": "US tariff on Canadian goods",
+    "context": "Retaliatory measure."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Treasury buyback program size per operation",
+    "context": "Increased from previous USD 2bn plan."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40tr",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "China exports to US",
+    "context": "Level at end-2025."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "China exports to US",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "People's Bank of China",
+    "figure": "20 metric tons",
+    "metric": "Gold reserve increase",
+    "context": "July increase, largest monthly increase since October 2023."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "Gold price appreciation",
+    "context": "Month-to-date performance."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 315 billion",
+    "metric": "Total stablecoin market capitalization",
+    "context": "As of 23 June 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "<1%",
+    "metric": "Visa stablecoin settlement and card payment volume share",
+    "context": "Annualized volume as of 3 July 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "9bps",
+    "metric": "30-year yield decline",
+    "context": "Initial market impact of the 19 August Treasury buyback announcement."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Long-end buyback operation size",
+    "context": "Increased from USD 2bn previously, announced 19 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "Share of bills in debt mix",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.9 years",
+    "metric": "Weighted average maturity (WAM) of US debt",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "1,000x",
+    "metric": "Agentic vs chat token consumption",
+    "context": "Projected increase in token consumption for agentic coding tasks."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "40%",
+    "metric": "CPU market CAGR",
+    "context": "Expected growth over the next 5 years."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "27%",
+    "metric": "Semicap industry growth",
+    "context": "2026 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "35%",
+    "metric": "Semicap industry growth",
+    "context": "2027 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "25%",
+    "metric": "Semicap industry growth",
+    "context": "2028 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "16",
+    "metric": "VIX index level",
+    "context": "As of report writing, described as not stretched."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20%",
+    "metric": "Bull case probability",
+    "context": "Assigned probability for upside scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "AI bear market probability",
+    "context": "Assigned probability for AI bear scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "Fed policy test probability",
+    "context": "Assigned probability for policy test scenario."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$3.1tn",
+    "metric": "Total disclosed off-balance sheet commitments",
+    "context": "Aggregate of hyperscalers, NVDA, and AVGO."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.1tn",
+    "metric": "Undiscounted lease payments not yet commenced",
+    "context": "As of latest filings."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.7tn",
+    "metric": "Total purchase commitments",
+    "context": "As of latest filings."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$770bn",
+    "metric": "Total on-balance sheet debt and lease liabilities",
+    "context": "Across hyperscalers."
+   },
+   {
+    "source_bank": "Oracle",
+    "figure": "$4.6bn",
+    "metric": "Customer prepayments for capex",
+    "context": "Disclosed in most recent quarter."
+   },
+   {
+    "source_bank": "Google",
+    "figure": "$50bn",
+    "metric": "Equity issued",
+    "context": "2Q26."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$35bn",
+    "metric": "First TPU-financing tranche size",
+    "context": "Initial tranche size for AI lab financing."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": ">20GW",
+    "metric": "Compute capacity target",
+    "context": "Broadcom AI XPV platform capacity through 2028."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$300bn",
+    "metric": "Theoretical maximum supported exposure",
+    "context": "Potential exposure for Broadcom if platform scales."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$430-550bn",
+    "metric": "Additional TPU/XPU financing",
+    "context": "Estimated financing beyond first tranche if 20GW target is met."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$350bn",
+    "metric": "GPU financing",
+    "context": "Reported potential NVDA financing for unrated AI lab."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$250bn",
+    "metric": "Lease backstop",
+    "context": "Reported potential NVDA lease backstop for Ohio project."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2tn",
+    "metric": "Hyperscaler capital investment",
+    "context": "Total expected over the next 3 years."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$388bn",
+    "metric": "Signed but uncommenced lease commitments",
+    "context": "Aggregated across hyperscalers."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$15bn",
+    "metric": "Estimated lease liability for ORCL Abilene Phase 2",
+    "context": "Expected to be recognized by mid-CY26."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "7%",
+    "metric": "Incremental borrowing rate (IBR) assumption",
+    "context": "Used for illustrative ORCL lease accounting model."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "15 years",
+    "metric": "Lease term assumption",
+    "context": "Used for illustrative ORCL lease accounting model."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$200bn",
+    "metric": "All-in credit exposure",
+    "context": "Forecasted by CY28-end."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~$170bn",
+    "metric": "Adjustments and contingent obligations",
+    "context": "Included in all-in credit exposure by CY28-end."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "0.4x",
+    "metric": "All-in gross adj. leverage",
+    "context": "Forecasted for CY28-end."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": ">$500bn",
+    "metric": "Third-party AI infrastructure capital",
+    "context": "Partnership initiative announced August 10, 2026."
+   },
+   {
+    "source_bank": "S&P",
+    "figure": "1.5x",
+    "metric": "S&P downgrade threshold",
+    "context": "Standard S&P leverage threshold."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "~84/89bp",
+    "metric": "NVDA 5Y CDS",
+    "context": "As of 08/24/2026."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20%",
+    "metric": "Interest costs as percentage of tax revenues",
+    "context": "Structural fiscal pressure indicator."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$3.5tn",
+    "metric": "Forecasted funding gap",
+    "context": "2025 fiscal outlook."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "40%",
+    "metric": "Probability of September hike",
+    "context": "Market expectations ahead of Jackson Hole."
+   }
+  ]
+ },
+ "us treasury buybacks": {
+  "theme": "us treasury buybacks",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs",
+    "theme": "us treasury buybacks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury long-end buybacks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury long-end buybacks"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "us treasury buybacks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US Treasury buybacks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US Treasury buybacks"
+   },
+   {
+    "source": "The Bear Traps Report",
+    "theme": "us treasury buybacks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Treasury buyback program expansion",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Treasury buyback program expansion"
+   },
+   {
+    "source": "Bank of America",
+    "theme": "us treasury buybacks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "U.S. Treasury refunding strategy",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "U.S. Treasury refunding strategy"
+   },
+   {
+    "source": "UBS",
+    "theme": "us treasury buybacks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US Treasury buyback program expansion",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US Treasury buyback program expansion"
+   },
+   {
+    "source": "UBS",
+    "theme": "us treasury buybacks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US Treasury buyback operations",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US Treasury buyback operations"
+   },
+   {
+    "source": "The Market Ear",
+    "theme": "us treasury buybacks",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US Treasury expanded buyback program",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US Treasury expanded buyback program"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "0.96",
+    "metric": "Correlation between cloud capex and semiconductor revenues",
+    "context": "Calculated since 2019."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "91%",
+    "metric": "Variation in semiconductor industry revenues explained by quarterly cloud capex",
+    "context": "Since 2019."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$544bn",
+    "metric": "AI infrastructure spending",
+    "context": "Over the last 12 months."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$113.00",
+    "metric": "Price Target",
+    "context": "Expand Energy Corp (EXE)"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15-18%",
+    "metric": "FY26 Topline Guidance",
+    "context": "WuXi Biologics (2269.HK) raised guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "200bn",
+    "metric": "GMV Target",
+    "context": "Busy Ming Group (1768.HK) in c.3Y"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$0.31",
+    "metric": "2Q26 adjusted EPS",
+    "context": "Excluding tariff refund benefits, vs. $0.22 GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,514mn",
+    "metric": "2Q26 net sales",
+    "context": "Vs. $1,483mn GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40.4%",
+    "metric": "2Q26 gross margin",
+    "context": "Excluding tariff refund benefits, vs. 40.0% GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.60-$2.80",
+    "metric": "FY26 adjusted EPS guidance",
+    "context": "Raised from $2.40-$2.65 range."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$0.07-$0.12",
+    "metric": "3Q26 adjusted EPS guidance",
+    "context": "Vs. $0.22 GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.6%",
+    "metric": "2Q26 inventory y/y change",
+    "context": "As of end of 2Q26."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5.3bn",
+    "metric": "non-risk-adjusted peak sales forecast for tozorakimab",
+    "context": "vs company-compiled consensus of $4.3bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75%",
+    "metric": "probability of success (POS) for tozorakimab",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.3x",
+    "metric": "2027 P/E",
+    "context": "GSe"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7%",
+    "metric": "2027-32E core EPS CAGR",
+    "context": "vs 5% for European Large Cap pharma sector"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.82bn",
+    "metric": "2Q26 revenue",
+    "context": "Reported 2Q26 revenue, below GSe $2.15bn."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.9GW",
+    "metric": "2Q26 module shipments",
+    "context": "Reported 2Q26 shipments, above 14.9GW GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.2%",
+    "metric": "2Q26 gross margin",
+    "context": "Reported 2Q26 margin, below 7.9% GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "($1.94)",
+    "metric": "2Q26 GAAP EPS",
+    "context": "Reported 2Q26 EPS, below ($1.13) GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15GW-17GW",
+    "metric": "3Q26 module shipment guidance",
+    "context": "Company guidance vs 21.9GW GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60GW-70GW",
+    "metric": "FY2026 module shipment guidance",
+    "context": "Lowered from 75GW-85GW; GSe was ~76GW."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100GW",
+    "metric": "YE2026 integrated production capacity",
+    "context": "Management maintained guidance."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$15.00",
+    "metric": "12-month price target",
+    "context": "Based on 4.7X EV/EBITDA multiple."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~$100mn",
+    "metric": "tariff refund benefit",
+    "context": "Recognized in 2Q26 gross margin."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$821mn",
+    "metric": "cash and cash equivalents",
+    "context": "As of 2Q26 quarter-end."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-2.7% Y/Y",
+    "metric": "inventory change",
+    "context": "2Q26 quarter-end vs GS expectation of -1.4%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.0x",
+    "metric": "EV/EBITDA valuation multiple",
+    "context": "Used for 12-month price target calculation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$101.8bn",
+    "metric": "Market cap",
+    "context": "As of report date"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%-3%",
+    "metric": "TurboTax growth guidance",
+    "context": "FY2027 guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12.7-13.5%",
+    "metric": "GBS growth guidance",
+    "context": "FY2027 guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3%",
+    "metric": "QuickBooks Online paying customer growth",
+    "context": "4QFY26 YoY"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$197.8mn",
+    "metric": "Total tariff refunds collected",
+    "context": "As of August 2nd"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$167.8mn",
+    "metric": "Tariff refund reduction to COGS",
+    "context": "Recorded in 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.3x",
+    "metric": "NTM P/E",
+    "context": "Current valuation vs 3-year average of 18.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3 pts",
+    "metric": "Weekly decline in US L/S Net leverage",
+    "context": "Largest weekly decline in ~5 months."
+   },
+   {
+    "source_bank": "Coinglass",
+    "figure": "$2.99B",
+    "metric": "Crypto liquidations",
+    "context": "August 19, 2026; 8th largest in history."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Implied move for NVDA",
+    "context": "Based on options market pricing for earnings tonight."
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "$1.5 trillion",
+    "metric": "Value increase in crypto and precious metals",
+    "context": "Post-Treasury buyback announcement"
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "50%",
+    "metric": "Tariff rate on Canadian imports",
+    "context": "Effective Friday, August 21"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "50% MoM",
+    "metric": "AI spend per employee (top 1% firms)",
+    "context": "July 2026"
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "104 points",
+    "metric": "S&P 500 implied move",
+    "context": "For the week of August 23"
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "$40 trillion",
+    "metric": "Total U.S. government debt",
+    "context": "Surpassed this level as of August 2026."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "$32 trillion",
+    "metric": "Debt held by the public",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "U.S. Treasury",
+    "figure": "$1.2 trillion",
+    "metric": "Interest payments",
+    "context": "First 10 months of fiscal year, up 15% YoY."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "$6.1 billion",
+    "metric": "Icebreaker development deal",
+    "context": "U.S. deal with Finland signed in 2025."
+   },
+   {
+    "source_bank": "Bank of America",
+    "figure": "120 yen",
+    "metric": "Fair value per dollar",
+    "context": "Implied purchasing power parity."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.23%",
+    "metric": "30-year US Treasury yield",
+    "context": "Closed on 24 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40 trillion",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 20 billion",
+    "metric": "Value of US products subject to Canadian counter-tariffs",
+    "context": "Effective 8 September 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "50%",
+    "metric": "US tariff on Canadian goods",
+    "context": "Retaliatory measure."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Treasury buyback program size per operation",
+    "context": "Increased from previous USD 2bn plan."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40tr",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "China exports to US",
+    "context": "Level at end-2025."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "China exports to US",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "People's Bank of China",
+    "figure": "20 metric tons",
+    "metric": "Gold reserve increase",
+    "context": "July increase, largest monthly increase since October 2023."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "Gold price appreciation",
+    "context": "Month-to-date performance."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 315 billion",
+    "metric": "Total stablecoin market capitalization",
+    "context": "As of 23 June 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "<1%",
+    "metric": "Visa stablecoin settlement and card payment volume share",
+    "context": "Annualized volume as of 3 July 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "9bps",
+    "metric": "30-year yield decline",
+    "context": "Initial market impact of the 19 August Treasury buyback announcement."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Long-end buyback operation size",
+    "context": "Increased from USD 2bn previously, announced 19 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "Share of bills in debt mix",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.9 years",
+    "metric": "Weighted average maturity (WAM) of US debt",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "1,000x",
+    "metric": "Agentic vs chat token consumption",
+    "context": "Projected increase in token consumption for agentic coding tasks."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "40%",
+    "metric": "CPU market CAGR",
+    "context": "Expected growth over the next 5 years."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "27%",
+    "metric": "Semicap industry growth",
+    "context": "2026 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "35%",
+    "metric": "Semicap industry growth",
+    "context": "2027 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "25%",
+    "metric": "Semicap industry growth",
+    "context": "2028 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "16",
+    "metric": "VIX index level",
+    "context": "As of report writing, described as not stretched."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20%",
+    "metric": "Bull case probability",
+    "context": "Assigned probability for upside scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "AI bear market probability",
+    "context": "Assigned probability for AI bear scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "Fed policy test probability",
+    "context": "Assigned probability for policy test scenario."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20%",
+    "metric": "Interest costs as percentage of tax revenues",
+    "context": "Structural fiscal pressure indicator."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "$3.5tn",
+    "metric": "Forecasted funding gap",
+    "context": "2025 fiscal outlook."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "40%",
+    "metric": "Probability of September hike",
+    "context": "Market expectations ahead of Jackson Hole."
+   }
+  ]
+ },
+ "hormuz strait corridor discussions": {
+  "theme": "hormuz strait corridor discussions",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "Rabobank",
+    "theme": "hormuz strait corridor discussions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-Iran Hormuz corridor discussions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-Iran Hormuz corridor discussions"
+   },
+   {
+    "source": "Mizuho International",
+    "theme": "hormuz strait corridor discussions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz shipping corridor",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz shipping corridor"
+   },
+   {
+    "source": "Mizuho Securities",
+    "theme": "hormuz strait corridor discussions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz crude oil shipment decline",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz crude oil shipment decline"
+   },
+   {
+    "source": "Mizuho Securities",
+    "theme": "hormuz strait corridor discussions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Oman-Iran negotiations for Strait of Hormuz corridor",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Oman-Iran negotiations for Strait of Hormuz corridor"
+   },
+   {
+    "source": "UBS",
+    "theme": "hormuz strait corridor discussions",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz energy flows",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz energy flows"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Rabobank",
+    "figure": "50%",
+    "metric": "Canadian tariff rate on US goods",
+    "context": "Response to Trump administration policies."
+   },
+   {
+    "source_bank": "Rabobank",
+    "figure": "500,000",
+    "metric": "Imminent Russian mobilization",
+    "context": "Reported imminent mobilization."
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "$70bn",
+    "metric": "5Y UST auction size",
+    "context": "Supply hurdle for the market."
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "4%",
+    "metric": "Ofgem price cap increase",
+    "context": "October increase impacting household inflation."
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "\u20ac2bn",
+    "metric": "German long-end DBR supply",
+    "context": "Today's focus for EUR duration."
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "\u20ac3bn",
+    "metric": "Italian short-term BTP auction",
+    "context": "Maximum size for today's auction."
+   },
+   {
+    "source_bank": "Mizuho Securities",
+    "figure": "60",
+    "metric": "entities, individuals, and vessels sanctioned",
+    "context": "As of 24 August 2026, part of the new US sanctions package."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.23%",
+    "metric": "30-year US Treasury yield",
+    "context": "Closed on 24 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40 trillion",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 20 billion",
+    "metric": "Value of US products subject to Canadian counter-tariffs",
+    "context": "Effective 8 September 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "50%",
+    "metric": "US tariff on Canadian goods",
+    "context": "Retaliatory measure."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Treasury buyback program size per operation",
+    "context": "Increased from previous USD 2bn plan."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40tr",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "China exports to US",
+    "context": "Level at end-2025."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "China exports to US",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "People's Bank of China",
+    "figure": "20 metric tons",
+    "metric": "Gold reserve increase",
+    "context": "July increase, largest monthly increase since October 2023."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "Gold price appreciation",
+    "context": "Month-to-date performance."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 315 billion",
+    "metric": "Total stablecoin market capitalization",
+    "context": "As of 23 June 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "<1%",
+    "metric": "Visa stablecoin settlement and card payment volume share",
+    "context": "Annualized volume as of 3 July 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "9bps",
+    "metric": "30-year yield decline",
+    "context": "Initial market impact of the 19 August Treasury buyback announcement."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Long-end buyback operation size",
+    "context": "Increased from USD 2bn previously, announced 19 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "Share of bills in debt mix",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.9 years",
+    "metric": "Weighted average maturity (WAM) of US debt",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "1,000x",
+    "metric": "Agentic vs chat token consumption",
+    "context": "Projected increase in token consumption for agentic coding tasks."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "40%",
+    "metric": "CPU market CAGR",
+    "context": "Expected growth over the next 5 years."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "27%",
+    "metric": "Semicap industry growth",
+    "context": "2026 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "35%",
+    "metric": "Semicap industry growth",
+    "context": "2027 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "25%",
+    "metric": "Semicap industry growth",
+    "context": "2028 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "16",
+    "metric": "VIX index level",
+    "context": "As of report writing, described as not stretched."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20%",
+    "metric": "Bull case probability",
+    "context": "Assigned probability for upside scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "AI bear market probability",
+    "context": "Assigned probability for AI bear scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "Fed policy test probability",
+    "context": "Assigned probability for policy test scenario."
+   }
+  ]
+ },
+ "ai cloud monetization": {
+  "theme": "ai cloud monetization",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "JPMorgan",
+    "theme": "ai cloud monetization",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI monetization via cloud businesses",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI monetization via cloud businesses"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "ai cloud monetization",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI monetization strategy",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI monetization strategy"
+   },
+   {
+    "source": "UBS",
+    "theme": "ai cloud monetization",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Big 4 cloud revenue monetization",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Big 4 cloud revenue monetization"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "JPMorgan",
+    "figure": "$950B",
+    "metric": "FY26 CSP Capex",
+    "context": "+94% YoY growth."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "12%",
+    "metric": "BABA cloud margin",
+    "context": "Reported margin; JPM believes it understates mature-vintage economics near 20%."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+31%",
+    "metric": "Infra Software Index (JP2INFSF)",
+    "context": "Performance of sub-sector."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "+28.9%",
+    "metric": "Security Software Index (JP2SESF)",
+    "context": "Performance of sub-sector."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "26%",
+    "metric": "KOSPI distance from all-time highs",
+    "context": "Recovery remains incomplete."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "4.71%",
+    "metric": "US 10Y Yield",
+    "context": "Moved from 4.47% QTD."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "~$70B",
+    "metric": "Annual cumulative EM equity fund flows",
+    "context": "Highest level as of 2022."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$113.00",
+    "metric": "Price Target",
+    "context": "Expand Energy Corp (EXE)"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15-18%",
+    "metric": "FY26 Topline Guidance",
+    "context": "WuXi Biologics (2269.HK) raised guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "200bn",
+    "metric": "GMV Target",
+    "context": "Busy Ming Group (1768.HK) in c.3Y"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$0.31",
+    "metric": "2Q26 adjusted EPS",
+    "context": "Excluding tariff refund benefits, vs. $0.22 GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,514mn",
+    "metric": "2Q26 net sales",
+    "context": "Vs. $1,483mn GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40.4%",
+    "metric": "2Q26 gross margin",
+    "context": "Excluding tariff refund benefits, vs. 40.0% GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.60-$2.80",
+    "metric": "FY26 adjusted EPS guidance",
+    "context": "Raised from $2.40-$2.65 range."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$0.07-$0.12",
+    "metric": "3Q26 adjusted EPS guidance",
+    "context": "Vs. $0.22 GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.6%",
+    "metric": "2Q26 inventory y/y change",
+    "context": "As of end of 2Q26."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5.3bn",
+    "metric": "non-risk-adjusted peak sales forecast for tozorakimab",
+    "context": "vs company-compiled consensus of $4.3bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75%",
+    "metric": "probability of success (POS) for tozorakimab",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.3x",
+    "metric": "2027 P/E",
+    "context": "GSe"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7%",
+    "metric": "2027-32E core EPS CAGR",
+    "context": "vs 5% for European Large Cap pharma sector"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.82bn",
+    "metric": "2Q26 revenue",
+    "context": "Reported 2Q26 revenue, below GSe $2.15bn."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.9GW",
+    "metric": "2Q26 module shipments",
+    "context": "Reported 2Q26 shipments, above 14.9GW GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.2%",
+    "metric": "2Q26 gross margin",
+    "context": "Reported 2Q26 margin, below 7.9% GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "($1.94)",
+    "metric": "2Q26 GAAP EPS",
+    "context": "Reported 2Q26 EPS, below ($1.13) GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15GW-17GW",
+    "metric": "3Q26 module shipment guidance",
+    "context": "Company guidance vs 21.9GW GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60GW-70GW",
+    "metric": "FY2026 module shipment guidance",
+    "context": "Lowered from 75GW-85GW; GSe was ~76GW."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100GW",
+    "metric": "YE2026 integrated production capacity",
+    "context": "Management maintained guidance."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$15.00",
+    "metric": "12-month price target",
+    "context": "Based on 4.7X EV/EBITDA multiple."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~$100mn",
+    "metric": "tariff refund benefit",
+    "context": "Recognized in 2Q26 gross margin."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$821mn",
+    "metric": "cash and cash equivalents",
+    "context": "As of 2Q26 quarter-end."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-2.7% Y/Y",
+    "metric": "inventory change",
+    "context": "2Q26 quarter-end vs GS expectation of -1.4%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.0x",
+    "metric": "EV/EBITDA valuation multiple",
+    "context": "Used for 12-month price target calculation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$101.8bn",
+    "metric": "Market cap",
+    "context": "As of report date"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%-3%",
+    "metric": "TurboTax growth guidance",
+    "context": "FY2027 guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12.7-13.5%",
+    "metric": "GBS growth guidance",
+    "context": "FY2027 guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3%",
+    "metric": "QuickBooks Online paying customer growth",
+    "context": "4QFY26 YoY"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$197.8mn",
+    "metric": "Total tariff refunds collected",
+    "context": "As of August 2nd"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$167.8mn",
+    "metric": "Tariff refund reduction to COGS",
+    "context": "Recorded in 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.3x",
+    "metric": "NTM P/E",
+    "context": "Current valuation vs 3-year average of 18.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3 pts",
+    "metric": "Weekly decline in US L/S Net leverage",
+    "context": "Largest weekly decline in ~5 months."
+   },
+   {
+    "source_bank": "Coinglass",
+    "figure": "$2.99B",
+    "metric": "Crypto liquidations",
+    "context": "August 19, 2026; 8th largest in history."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Implied move for NVDA",
+    "context": "Based on options market pricing for earnings tonight."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.23%",
+    "metric": "30-year US Treasury yield",
+    "context": "Closed on 24 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40 trillion",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 20 billion",
+    "metric": "Value of US products subject to Canadian counter-tariffs",
+    "context": "Effective 8 September 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "50%",
+    "metric": "US tariff on Canadian goods",
+    "context": "Retaliatory measure."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Treasury buyback program size per operation",
+    "context": "Increased from previous USD 2bn plan."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 40tr",
+    "metric": "Total US federal debt",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "China exports to US",
+    "context": "Level at end-2025."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "China exports to US",
+    "context": "Current level."
+   },
+   {
+    "source_bank": "People's Bank of China",
+    "figure": "20 metric tons",
+    "metric": "Gold reserve increase",
+    "context": "July increase, largest monthly increase since October 2023."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "15%",
+    "metric": "Gold price appreciation",
+    "context": "Month-to-date performance."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 315 billion",
+    "metric": "Total stablecoin market capitalization",
+    "context": "As of 23 June 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "<1%",
+    "metric": "Visa stablecoin settlement and card payment volume share",
+    "context": "Annualized volume as of 3 July 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "9bps",
+    "metric": "30-year yield decline",
+    "context": "Initial market impact of the 19 August Treasury buyback announcement."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "USD 4bn",
+    "metric": "Long-end buyback operation size",
+    "context": "Increased from USD 2bn previously, announced 19 August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "22%",
+    "metric": "Share of bills in debt mix",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "5.9 years",
+    "metric": "Weighted average maturity (WAM) of US debt",
+    "context": "As of August 2026."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "1,000x",
+    "metric": "Agentic vs chat token consumption",
+    "context": "Projected increase in token consumption for agentic coding tasks."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "40%",
+    "metric": "CPU market CAGR",
+    "context": "Expected growth over the next 5 years."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "27%",
+    "metric": "Semicap industry growth",
+    "context": "2026 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "35%",
+    "metric": "Semicap industry growth",
+    "context": "2027 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "25%",
+    "metric": "Semicap industry growth",
+    "context": "2028 industry growth estimate."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "16",
+    "metric": "VIX index level",
+    "context": "As of report writing, described as not stretched."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "20%",
+    "metric": "Bull case probability",
+    "context": "Assigned probability for upside scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "AI bear market probability",
+    "context": "Assigned probability for AI bear scenario."
+   },
+   {
+    "source_bank": "UBS",
+    "figure": "10%",
+    "metric": "Fed policy test probability",
+    "context": "Assigned probability for policy test scenario."
+   }
+  ]
+ },
+ "jackson hole symposium": {
+  "theme": "jackson hole symposium",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "Goldman Sachs + The Bear Traps Report",
+    "theme": "jackson hole symposium",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Jackson Hole economic symposium",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Jackson Hole economic symposium"
+   },
+   {
+    "source": "Mizuho International",
+    "theme": "jackson hole symposium",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Jackson Hole symposium",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Jackson Hole symposium"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$113.00",
+    "metric": "Price Target",
+    "context": "Expand Energy Corp (EXE)"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15-18%",
+    "metric": "FY26 Topline Guidance",
+    "context": "WuXi Biologics (2269.HK) raised guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "200bn",
+    "metric": "GMV Target",
+    "context": "Busy Ming Group (1768.HK) in c.3Y"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$0.31",
+    "metric": "2Q26 adjusted EPS",
+    "context": "Excluding tariff refund benefits, vs. $0.22 GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1,514mn",
+    "metric": "2Q26 net sales",
+    "context": "Vs. $1,483mn GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40.4%",
+    "metric": "2Q26 gross margin",
+    "context": "Excluding tariff refund benefits, vs. 40.0% GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.60-$2.80",
+    "metric": "FY26 adjusted EPS guidance",
+    "context": "Raised from $2.40-$2.65 range."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$0.07-$0.12",
+    "metric": "3Q26 adjusted EPS guidance",
+    "context": "Vs. $0.22 GS estimate."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-9.6%",
+    "metric": "2Q26 inventory y/y change",
+    "context": "As of end of 2Q26."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5.3bn",
+    "metric": "non-risk-adjusted peak sales forecast for tozorakimab",
+    "context": "vs company-compiled consensus of $4.3bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "75%",
+    "metric": "probability of success (POS) for tozorakimab",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.3x",
+    "metric": "2027 P/E",
+    "context": "GSe"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7%",
+    "metric": "2027-32E core EPS CAGR",
+    "context": "vs 5% for European Large Cap pharma sector"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.82bn",
+    "metric": "2Q26 revenue",
+    "context": "Reported 2Q26 revenue, below GSe $2.15bn."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15.9GW",
+    "metric": "2Q26 module shipments",
+    "context": "Reported 2Q26 shipments, above 14.9GW GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.2%",
+    "metric": "2Q26 gross margin",
+    "context": "Reported 2Q26 margin, below 7.9% GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "($1.94)",
+    "metric": "2Q26 GAAP EPS",
+    "context": "Reported 2Q26 EPS, below ($1.13) GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15GW-17GW",
+    "metric": "3Q26 module shipment guidance",
+    "context": "Company guidance vs 21.9GW GSe."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60GW-70GW",
+    "metric": "FY2026 module shipment guidance",
+    "context": "Lowered from 75GW-85GW; GSe was ~76GW."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100GW",
+    "metric": "YE2026 integrated production capacity",
+    "context": "Management maintained guidance."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$15.00",
+    "metric": "12-month price target",
+    "context": "Based on 4.7X EV/EBITDA multiple."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "~$100mn",
+    "metric": "tariff refund benefit",
+    "context": "Recognized in 2Q26 gross margin."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$821mn",
+    "metric": "cash and cash equivalents",
+    "context": "As of 2Q26 quarter-end."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-2.7% Y/Y",
+    "metric": "inventory change",
+    "context": "2Q26 quarter-end vs GS expectation of -1.4%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.0x",
+    "metric": "EV/EBITDA valuation multiple",
+    "context": "Used for 12-month price target calculation."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$101.8bn",
+    "metric": "Market cap",
+    "context": "As of report date"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.5%-3%",
+    "metric": "TurboTax growth guidance",
+    "context": "FY2027 guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "12.7-13.5%",
+    "metric": "GBS growth guidance",
+    "context": "FY2027 guidance"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3%",
+    "metric": "QuickBooks Online paying customer growth",
+    "context": "4QFY26 YoY"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$197.8mn",
+    "metric": "Total tariff refunds collected",
+    "context": "As of August 2nd"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$167.8mn",
+    "metric": "Tariff refund reduction to COGS",
+    "context": "Recorded in 2Q26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "23.3x",
+    "metric": "NTM P/E",
+    "context": "Current valuation vs 3-year average of 18.6x"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-3 pts",
+    "metric": "Weekly decline in US L/S Net leverage",
+    "context": "Largest weekly decline in ~5 months."
+   },
+   {
+    "source_bank": "Coinglass",
+    "figure": "$2.99B",
+    "metric": "Crypto liquidations",
+    "context": "August 19, 2026; 8th largest in history."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.4%",
+    "metric": "Implied move for NVDA",
+    "context": "Based on options market pricing for earnings tonight."
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "$1.5 trillion",
+    "metric": "Value increase in crypto and precious metals",
+    "context": "Post-Treasury buyback announcement"
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "50%",
+    "metric": "Tariff rate on Canadian imports",
+    "context": "Effective Friday, August 21"
+   },
+   {
+    "source_bank": "Citadel",
+    "figure": "50% MoM",
+    "metric": "AI spend per employee (top 1% firms)",
+    "context": "July 2026"
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "104 points",
+    "metric": "S&P 500 implied move",
+    "context": "For the week of August 23"
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "$70bn",
+    "metric": "5Y UST auction size",
+    "context": "Supply hurdle for the market."
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "4%",
+    "metric": "Ofgem price cap increase",
+    "context": "October increase impacting household inflation."
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "\u20ac2bn",
+    "metric": "German long-end DBR supply",
+    "context": "Today's focus for EUR duration."
+   },
+   {
+    "source_bank": "Mizuho",
+    "figure": "\u20ac3bn",
+    "metric": "Italian short-term BTP auction",
+    "context": "Maximum size for today's auction."
+   }
+  ]
+ }
+}
