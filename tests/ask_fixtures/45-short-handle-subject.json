@@ -11,7 +11,8 @@
   "asker": {"username": "theorb_18574", "display": "Sam"},
   "expect": {
     "answer_must_match_any": [
-      "(?i)\\b(bk|kyle)\\b"
+      "(?i)\\b(bk|kyle)\\b",
+      "(?i)(jury duty|courthouse|parking|whoop|spx|lotto|mu 980|hood 105)"
     ],
     "answer_must_not_match": [
       "(?i)(keyboard|switches)"

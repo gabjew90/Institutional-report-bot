@@ -862,6 +862,148 @@ def check_clause_restatement(answer: str, tool_calls=None,
     return []
 
 
+# ------------------------------------ class 7: self-generated TA
+# The bot has NO chart view and NO indicator feed — nothing it can
+# access computes an indicator. A technical read it states is invention
+# by construction (observed: a "$27 breakout of consolidation zone",
+# "as long as ES holds 7293", "RSI creeping toward overbought", an NDX
+# "30,000 level acting as the immediate pivot" — none had a source).
+#
+# The carve-out is the hard part and it is the rule's own text: a level
+# EXPLICITLY ATTRIBUTED to a named source in the turn is legal — a
+# member's call ("kloh's watching 7300"), a research note, a
+# tool-returned number named as such (day high/low, prior close). So
+# detection is sentence-scoped: a TA claim flags only when its own
+# sentence carries no attribution, no quotation, and is not the
+# prescribed no-chart-view refusal.
+#
+# Vocabulary tiers, because over-match kills this class ("the index"
+# lesson from class 1):
+#  - UNCONDITIONAL terms are TA-only vocabulary: RSI, MACD, stochastic,
+#    overbought/oversold, Fibonacci, golden/death cross, bull/bear
+#    flag, consolidation zone, "the chart looks".
+#  - CONDITIONAL terms are common English that only reads as TA with a
+#    LEVEL in the same sentence: support/resistance ("customer
+#    support"), pivot ("pivot to AI"), breakout ("breakout year"),
+#    breakdown ("revenue breakdown"), moving averages, holds/loses
+#    triggers.
+_TA_UNCONDITIONAL = re.compile(
+    r"\bRSI\b|\bMACD\b|\bstochastics?\b"
+    r"|\bover(?:bought|sold)\b"
+    r"|\bfib(?:onacci)?\s+(?:retracement|level|extension)s?\b"
+    r"|\b(?:golden|death)\s+cross\b"
+    r"|\b(?:bull|bear)\s+(?:flag|pennant)\b"
+    r"|\b(?:rising|falling|ascending|descending)?\s?wedge\s+"
+    r"(?:pattern|forming|setup)\b"
+    r"|\bconsolidation\s+zone\b"
+    r"|\bhead\s+and\s+shoulders\b|\bdouble\s+(?:top|bottom)\b"
+    r"|\bthe\s+chart\s+looks?\b",
+    re.I,
+)
+
+_TA_CONDITIONAL = re.compile(
+    # support/resistance only in the CHART shape. Bare "support" is a
+    # verb half the time ("software that supports the business" — two
+    # sweep FPs) and "breakout" belongs to sports and growth stories as
+    # much as charts ("full sophomore breakout" — five sweep FPs from
+    # one fantasy-football fixture). The chart shapes are prepositional
+    # or adjectival: "support at/near X", "acting as support",
+    # "key/immediate resistance", "$27 breakout of", "breaks below".
+    r"\b(?:support|resistance)\s+(?:at|near|around|level|zone|line)\b"
+    r"|\b(?:acting|acts)\s+as\s+(?:support|resistance)\b"
+    r"|\b(?:key|major|strong|critical|immediate)\s+"
+    r"(?:support|resistance|pivot)\b"
+    r"|\bpivot\s+(?:point|level)\b"
+    r"|\bacting\s+as\s+the\s+\S{0,20}\s?pivot\b"
+    r"|\bbreak(?:out|down)\s+(?:of|above|below|from|at|zone|level)\b"
+    r"|\b\$?\d[\d,.]*\s+break(?:out|down)\b"
+    r"|\bbreak(?:s|ing)?\s+(?:above|below)\s+\$?\d"
+    r"|\b\d{1,3}[- ](?:day|week)\s+(?:moving\s+average|[SE]?MA)\b"
+    r"|\bmoving\s+average\b"
+    # holds/loses triggers need a NUMBER: "if health holds" is an
+    # injury note, "as long as ES holds 7293" is a chart trigger. The
+    # first version required a capitalised token, which re.I silently
+    # neutralised — the number is the honest discriminator.
+    r"|\b(?:as\s+long\s+as|if)\s+\S{1,12}\s+holds\s+(?:above\s+|below\s+)?\$?\d"
+    r"|\bholds?\s+(?:above|below)\s+\$?\d"
+    r"|\bloses\s+\$?\d",
+    re.I,
+)
+
+# A price-ish level in the sentence — what turns conditional vocabulary
+# into a chart claim. "$27", "7293", "the 30,000 level", "115.50".
+_TA_LEVEL = re.compile(
+    r"\$\s?\d|\b\d{3,6}(?:,\d{3})?\b|\b\d+\.\d+\b"
+)
+
+# Attribution that legalises a level: a NAMED source doing the calling.
+# Possessives ("kloh's watching"), reporting verbs, research framing,
+# and tool-number naming (day high/low, prior close, 52-week) all
+# count. The attribution must be in the SAME sentence — that is the
+# rule's own bar ("can't name where the level came from, can't state
+# it").
+_TA_ATTRIBUTION = re.compile(
+    r"\b\w+['’]s\s+(?:watching|level|call|line|number|zone|target)\b"
+    r"|\b(?:watching|calling|called|flagged|marked|drew|posted|noted|"
+    r"pinned|says?|said|per)\b"
+    r"|\baccording to\b|\bdesk\b|\bnote\b|\bresearch\b|\banalyst[s]?\b"
+    r"|\bday\s+(?:high|low|range)\b|\bprior\s+close\b|\bpremarket\s+"
+    r"(?:high|low)\b|\b52[- ]week\b|\bafter[- ]?hours\s+(?:high|low)\b"
+    r"|\ball[- ]time\s+high\b|\bATH\b|\bstrike\b|\bmax\s+pain\b",
+    re.I,
+)
+
+# The prescribed refusal names the absence — never a violation. "run"
+# and "track" are in the list because the live model phrases it that
+# way ("I don't run charts, indicators, or RSI feeds" — flagged by the
+# first sweep as if it were a chart read).
+_TA_REFUSAL = re.compile(
+    r"(?i)\bno\s+chart(?:\s+view)?\b"
+    r"|\bdon'?t\s+(?:have|run|track|see|do)\b"
+    r"|\bno\s+(?:technical\s+)?(?:indicator|chart)\s*"
+    r"(?:feeds?|overlays?|view)?\b"
+    r"|\bcan'?t\s+(?:read|see|compute)\b"
+    r"|\byour\s+(?:own\s+)?chart\b|\bfrom\s+the\s+chart\s+you\b"
+    r"|\bpull\s+(?:levels|it)\b|\bno\s+(?:live\s+)?"
+    r"(?:feed|data|source)\b|\bno\s+technical\s+view\b",
+)
+
+
+def check_self_generated_ta(answer: str, tool_calls=None,
+                            **_) -> list[Violation]:
+    """Flag an unattributed technical-analysis claim.
+
+    Sentence-scoped: quoted lines and lines that attribute their level
+    to a named source pass; the prescribed no-chart-view refusal
+    passes; conditional vocabulary needs a numeric level in the same
+    sentence before it counts as a chart claim at all.
+    """
+    text = answer or ""
+    for m in list(_TA_UNCONDITIONAL.finditer(text)) + \
+            list(_TA_CONDITIONAL.finditer(text)):
+        sentence = _line_at(text, m.start())
+        stripped = sentence.strip()
+        # quoted material is someone else's words — a member saying
+        # "avgo chart looks like ass" quoted back is reporting, not a
+        # chart read of the bot's own
+        if stripped.startswith(">") or stripped.count('"') >= 2:
+            continue
+        if _TA_REFUSAL.search(sentence):
+            continue
+        if _TA_ATTRIBUTION.search(sentence):
+            continue
+        if _TA_CONDITIONAL.fullmatch(m.group(0)) or \
+                _TA_CONDITIONAL.match(m.group(0)):
+            if not _TA_UNCONDITIONAL.search(m.group(0)):
+                if not _TA_LEVEL.search(sentence):
+                    continue
+        return [Violation(
+            "self-generated-ta", m.group(0).strip(), m.span(), sentence,
+            "technical-analysis claim with no attributed source "
+            "(no chart view or indicator feed exists)")]
+    return []
+
+
 _CHECKS = {
     "meta-plumbing": check_meta_plumbing,
     "macro-unsourced": check_macro_unsourced,
@@ -870,6 +1012,7 @@ _CHECKS = {
     "unforced-price": check_unforced_price,
     "unforced-market-data": check_unforced_market_data,
     "unforced-time-series": check_unforced_time_series,
+    "self-generated-ta": check_self_generated_ta,
 }
 
 
