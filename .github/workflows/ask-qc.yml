@@ -14,8 +14,11 @@ name: ask-qc
 
 on:
   schedule:
-    - cron: "0 2 * * *"     # 02:00 UTC — day's log closed at 00:00,
-                            # publisher pushes every 30 min, margin 90m
+    - cron: "0 15 * * *"    # 8:00 AM Pacific (owner call 2026-08-28).
+                            # GitHub cron is UTC-fixed: this is 8 AM
+                            # during PDT and drifts to 7 AM in winter
+                            # PST. The graded day (yesterday UTC)
+                            # closed 15h earlier either way.
   workflow_dispatch:
     inputs:
       date:
