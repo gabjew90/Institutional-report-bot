@@ -381,15 +381,15 @@ def test_volume_gate_prints_anchor_line():
     _ok("volume gate: daily anchor-fidelity line visible in the trail")
 
 
-def test_adversarial_budget_ships_with_residual_note():
-    """Two failed repair rounds ship with the labeled note (spec §6),
-    inserted BEFORE ## _LEANS so the bridge's strip can't eat it, and
-    preflight verifies the note survived."""
+def test_adversarial_budget_ships_clean_and_records_residuals():
+    """Owner call 2026-08-28 (option B): a residual morning ships
+    CLEAN — no reader-facing note — and the residuals FILE is the
+    record the owner page and QC depend on, so preflight requires it."""
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         _seed(tmp)
         bad = json.dumps({
-            "findings": [{"severity": "hard", "kind": "misattribution",
+            "findings": [{"kind": "misattribution",
                           "quote": "Walmart reported $0.81 a share",
                           "why": "x", "fix": "y"}]})
         (tmp / "adversarial_verdict.json").write_text(bad, encoding="utf-8")
@@ -400,22 +400,20 @@ def test_adversarial_budget_ships_with_residual_note():
         dec, out, _ = drv(tmp, "gate", "adversarial", "--recheck")
         assert dec == "CONTINUE_WITH_RESIDUAL", (dec, out)
         md = (tmp / "final.md").read_text(encoding="utf-8")
-        assert "*Accuracy note:" in md
-        # the note must sit BEFORE the _LEANS block
-        assert md.index("*Accuracy note:") < md.index("## _LEANS")
+        assert "Accuracy note" not in md, "reader must see nothing"
         assert (tmp / "adversarial_residuals.json").exists()
         for g in ("holiday", "volume", "draft_validate", "lint",
                   "final_validate", "strip"):
             drv(tmp, "gate", g)
         dec, out, _ = drv(tmp, "preflight")
         assert dec == "PASS", out
-        # a later mutation that removes the note re-blocks preflight
-        (tmp / "final.md").write_text(
-            md.replace("*Accuracy note:", "*gone:"), encoding="utf-8")
+        # losing the residuals file re-blocks: without it the owner
+        # page and the QC record have nothing to point at
+        (tmp / "adversarial_residuals.json").unlink()
         dec, out, _ = drv(tmp, "preflight")
-        assert dec == "BLOCK" and "residual note is missing" in out, out
-    _ok("adversarial: budget spent -> residual note, placement, "
-        "preflight guards the note")
+        assert dec == "BLOCK" and "residuals" in out, out
+    _ok("adversarial: budget spent -> ships clean, residuals file "
+        "preflight-required (owner call B)")
 
 
 if __name__ == "__main__":
@@ -435,5 +433,5 @@ if __name__ == "__main__":
     test_adversarial_soft_rule_applies_once()
     test_adversarial_softs_recorded_when_hard_budget_touched()
     test_volume_gate_prints_anchor_line()
-    test_adversarial_budget_ships_with_residual_note()
+    test_adversarial_budget_ships_clean_and_records_residuals()
     print("\nALL PULSE DRIVER SMOKE TESTS PASS")

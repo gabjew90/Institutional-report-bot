@@ -883,6 +883,29 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
         )
         db.mark_report_sent(report_id)
 
+        # Residual-morning owner page (owner call 2026-08-28, option
+        # B): the pulse just shipped CLEAN despite hard findings that
+        # survived the repair budget. The reader sees nothing; the
+        # owner gets paged the same minute, with the pointer to the
+        # committed residuals. Keyed on the frontmatter flag STEP 6
+        # stamps from the driver's file — deterministic end to end.
+        try:
+            _n_res = int(meta.get("adversarial_residuals") or 0)
+        except (TypeError, ValueError):
+            _n_res = 0
+        if _n_res:
+            try:
+                from discord_bot.bot import _ops_alert
+                await _ops_alert(
+                    f"🔴 pulse {name} shipped CLEAN with {_n_res} "
+                    f"unresolved hard finding(s) (owner call B). "
+                    f"Review pulse-output/adversarial-residuals/ and "
+                    f"decide whether a correction goes out.",
+                    dedupe_key=f"pulse-residuals-{name}",
+                )
+            except Exception as e:
+                log.warning(f"Bridge: residual owner page failed: {e}")
+
         await asyncio.to_thread(
             gh.put_file,
             archive_path,

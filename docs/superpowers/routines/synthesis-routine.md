@@ -1691,7 +1691,7 @@ python3 scripts/pulse_driver.py gate adversarial 2>&1 | tee -a /tmp/routine.log
 
 Severity is GATE-ASSIGNED from each finding's `kind` (the four contract kinds map hard, everything else soft); the checker no longer emits a severity and any it does emit is ignored. On 2026-08-28 the checker had marked two misattributions soft and they shipped — that vote is gone.
 - **`DECISION: DISPATCH_REPAIR`** → dispatch ONE repair sub-agent (SCRUB contract: rewrite ONLY the lines quoted in `/tmp/adversarial_repair_items.json`, change nothing else, apply the `fix` field of each item), then RE-DISPATCH the checker fresh (step 1 again — a new agent, a new verdict file), then run `gate adversarial --recheck`. The recheck can dispatch a second repair (budget 2) or conclude.
-- **`DECISION: CONTINUE_WITH_RESIDUAL`** → the repair budget is spent with hard findings remaining. The driver has already appended the labeled accuracy note to `/tmp/final.md` and written `/tmp/adversarial_residuals.json` for QC. Proceed to STEP 6 — this is the sanctioned ship-anyway path, and the note is the label.
+- **`DECISION: CONTINUE_WITH_RESIDUAL`** → the repair budget is spent with hard findings remaining. OWNER CALL 2026-08-28 (option B): the pulse ships CLEAN — no reader-facing note. The driver wrote `/tmp/adversarial_residuals.json`; STEP 6 commits it and stamps `adversarial_residuals: N` into the frontmatter, and the bridge pages the owner on the ops-alert channel at post time. Proceed to STEP 6.
 - **`DECISION: BLOCK`** → the verdict file is missing or unreadable. The checker was not dispatched, or emitted something other than the JSON contract. Fix that (re-dispatch, verify the file parses), then re-run the gate. There is no path to STEP 6 through a BLOCK — the preflight refuses an unfinished adversarial loop.
 
 The checker's hard findings are quote-grounded: the gate verifies each quoted passage actually appears in `/tmp/final.md` and demotes any that don't to soft. A checker that hallucinates cannot block a commit or burn a repair round.
@@ -1805,6 +1805,15 @@ frontmatter_lines = [
     f'output_tokens: {output_tokens_est}',
     f'dumped_at_utc: {ctx.get("dumped_at_utc", "")}',
 ]
+# Residual flag (owner call 2026-08-28, option B): the bridge reads
+# this at post time and pages the owner. Deterministic -- keyed on the
+# file the driver wrote, never on model judgment.
+if os.path.exists('/tmp/adversarial_residuals.json'):
+    try:
+        _n_res = len(json.load(open('/tmp/adversarial_residuals.json')))
+    except Exception:
+        _n_res = -1
+    frontmatter_lines.append(f'adversarial_residuals: {_n_res}')
 # === TEST/PROD via TARGET_CHANNELS ===
 # Default (file empty / absent): no target_channels line emitted -> all
 # configured channels (production behavior). For test fires, the routine
@@ -1945,6 +1954,14 @@ if os.path.exists('/tmp/adversarial_verdict.json'):
     print('committed adversarial verdict:', adv_path)
 else:
     print('no /tmp/adversarial_verdict.json — flag in QC (gate should have required it)')
+
+# Commit /tmp/adversarial_residuals.json when present (owner call B):
+# the owner page points here, and QC reads it.
+if os.path.exists('/tmp/adversarial_residuals.json'):
+    res_path = f'pulse-output/adversarial-residuals/{ts}.json'
+    res_content = open('/tmp/adversarial_residuals.json').read().encode()
+    result = commit(res_path, res_content, f'routine: adversarial residuals {ts}')
+    print('committed adversarial residuals:', res_path)
 
 # Commit /tmp/final_validation.json (STEP 5.75) — the post-EDIT/SCRUB
 # structural re-validation. Residual violations that were waived to

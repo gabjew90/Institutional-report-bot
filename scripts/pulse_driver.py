@@ -99,11 +99,11 @@ MAX_ADVERSARIAL_REPAIRS = 2
 ADVERSARIAL_HARD_KIND_RE = re.compile(
     r"unsupported|misattribut|invented|fabricat|mismatch", re.I)
 
-# The residual marker the driver appends when the repair budget is
-# spent with hard findings remaining. Preflight verifies this exact
-# prefix is present whenever the gate decided CONTINUE_WITH_RESIDUAL —
-# the note is the spec's ship-anyway condition, not optional garnish.
-RESIDUAL_NOTE_PREFIX = "*Accuracy note:"
+# Owner call 2026-08-28 (option B): a residual morning ships CLEAN and
+# pages the owner instead of carrying a reader-facing accuracy note.
+# Preflight verifies the residuals FILE exists whenever the gate
+# decided CONTINUE_WITH_RESIDUAL — the page and the QC record replace
+# the label as the ship-anyway condition.
 
 
 class Driver:
@@ -524,14 +524,19 @@ class Driver:
                 gate_name, "CONTINUE",
                 f"0 hard findings{detail_soft}{_tail}")
         if repairs >= MAX_ADVERSARIAL_REPAIRS:
-            self._append_residual_note(len(hard))
+            # OWNER CALL 2026-08-28 (option B): the pulse ships CLEAN.
+            # No reader-facing note -- the residuals file is committed
+            # for QC and the bridge PAGES THE OWNER at post time via
+            # the ops-alert channel. The alternative (a visible
+            # accuracy label) was considered and declined.
             (self.tmp / "adversarial_residuals.json").write_text(
                 json.dumps(hard, indent=1), encoding="utf-8")
             return self._decide(
                 gate_name, "CONTINUE_WITH_RESIDUAL",
                 f"{len(hard)} hard finding(s) after {repairs} repair "
-                f"pass(es) -- residual note appended, residuals at "
-                f"adversarial_residuals.json for QC")
+                f"pass(es) -- shipping CLEAN (owner call B); residuals "
+                f"at adversarial_residuals.json; the bridge pages the "
+                f"owner at post time")
         budgets["adversarial_repairs"] = repairs + 1
         self._save()
         (self.tmp / "adversarial_repair_items.json").write_text(
@@ -543,27 +548,6 @@ class Driver:
             f"adversarial_repair_items.json; after the repair agent, "
             f"RE-DISPATCH the checker fresh, then run: "
             f"gate adversarial --recheck")
-
-    def _append_residual_note(self, n: int) -> None:
-        """Deterministic ship-anyway marker. Voice-contract compliant:
-        no em-dashes, no semicolons, one sentence.
-
-        Inserted BEFORE the ## _LEANS block, never after it: _LEANS is
-        the last section and the bridge deletes that whole block at
-        post time, so text appended after its header ships to nobody.
-        """
-        note = (f"\n\n{RESIDUAL_NOTE_PREFIX} {n} statement(s) in this "
-                f"edition did not clear the final source check and "
-                f"will be corrected if wrong.*\n")
-        path = self.tmp / "final.md"
-        md = path.read_text(encoding="utf-8")
-        m = re.search(r"^## _LEANS", md, re.M)
-        if m:
-            md = md[:m.start()].rstrip() + note + "\n" + md[m.start():]
-        else:
-            md = md.rstrip() + note
-        path.write_text(md, encoding="utf-8")
-        print(f"APPENDED: residual accuracy note ({n} finding(s))")
 
     # ------------------------------------------------------------------
     def record(self, label: str, detail: str = ""):
@@ -598,16 +582,12 @@ class Driver:
                 f"{_adv_last}) -- run the dispatched step, then "
                 f"gate adversarial --recheck")
         if _adv_last == "CONTINUE_WITH_RESIDUAL":
-            try:
-                _md = (self.tmp / "final.md").read_text(encoding="utf-8")
-            except Exception:
-                _md = ""
-            if RESIDUAL_NOTE_PREFIX not in _md:
+            if not (self.tmp / "adversarial_residuals.json").exists():
                 problems.append(
-                    "adversarial gate shipped with residuals but the "
-                    "labeled residual note is missing from final.md "
-                    "(a later mutation removed it) -- re-run "
-                    "gate adversarial --recheck")
+                    "adversarial gate shipped with residuals but "
+                    "adversarial_residuals.json is missing -- the "
+                    "owner page and the QC record depend on it; "
+                    "re-run gate adversarial --recheck")
         if gates.get("holiday", {}).get("decision") == "SKIP_PULSE":
             problems.append("holiday gate said SKIP_PULSE -- there is "
                             "nothing to commit today")
