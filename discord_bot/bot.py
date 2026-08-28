@@ -6632,6 +6632,15 @@ async def _answer_with_gemini(
         # what they returned. Without it, tool-grounded answers look
         # fabricated to the grader.
         _ask_tool_trace: list[dict] = []
+        # Initialized HERE, not at first assignment (2026-08-28 outage:
+        # the class-10 ctx read at the validator ladder referenced this
+        # before the post-loop assignment at the bottom of the function,
+        # and the read short-circuits behind `bool(_round_gm_chunks) or`
+        # — so it crashed ONLY on turns with zero grounding chunks,
+        # which is why the suite, the import smoke, and every grounded
+        # live turn missed it while every ungrounded /ask died with
+        # UnboundLocalError for ~14 hours).
+        grounding_metadata = None
         # Grounding evidence accumulated across rounds (2026-07-16 fix).
         # In the unified mixed-tool config the model often searches FIRST
         # and then calls a function tool; the search's grounding_metadata
