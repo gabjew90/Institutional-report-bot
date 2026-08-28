@@ -2,20 +2,20 @@
   "id": "45-short-handle-subject",
   "ledger": "2026-08-27",
   "title": "@-mentioned short handle resolves as the subject",
-  "why": "Handles under 3 chars could never match as subjects (_roast_subjects >=3 floor), so a question about @BK fell back to asker-scoped receipts — the Tulch misscoping, permanent for every short-handle member. An explicit @-mention is unambiguous regardless of length; the fix admits it while keeping the >=3 floor for bare-text matches.",
+  "why": "Handles under 3 chars could never match as subjects (_roast_subjects >=3 floor), so a question about @BK fell back to asker-scoped receipts \u2014 the Tulch misscoping, permanent for every short-handle member. An explicit @-mention is unambiguous regardless of length; the fix admits it while keeping the >=3 floor for bare-text matches. Loosened 2026-08-28: the keyboard/switches ban was wrong \u2014 the answer may ALSO jab the ASKER with the asker's own material (that is always sanctioned); the misscope this fixture guards is the answer drawing ONLY on the asker, which the BK-material must_match_any alone detects.",
   "question": "is @BK cooked or what",
   "context": {
-    "profiles": "WHO'S TALKING (background on people active in this conversation):\n- **Sam** (theorb_18574, <@318466418301730816>) — trader-rank #21/58:\n**Sam (theorb_18574) — 2210 msgs**\n**Personality and style.** Momentum chaser, narrates every AVGO tick, collects vintage mechanical keyboards and will not stop talking about the new switches.\n**Recent trades.**\n- Opened AVGO 355C 0dte @0.61 (member alert)\n- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE degeneracy by night. Slams index lottos, gloats when they print.\n**Recent personal life.**\n- Jury duty for $20 a day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened MU 980C exp 08-28 @6.90 (caller log)\n- Opened HOOD 105P exp 08-28 @0.79 (caller log)\n- Sold SPX 7735C same day for +130% (caller log)\n",
+    "profiles": "WHO'S TALKING (background on people active in this conversation):\n- **Sam** (theorb_18574, <@318466418301730816>) \u2014 trader-rank #21/58:\n**Sam (theorb_18574) \u2014 2210 msgs**\n**Personality and style.** Momentum chaser, narrates every AVGO tick, collects vintage mechanical keyboards and will not stop talking about the new switches.\n**Recent trades.**\n- Opened AVGO 355C 0dte @0.61 (member alert)\n- **BK** (bankerkyle, <@423994649317736448>) \u2014 trader-rank #4/58:\n**BK (bankerkyle) \u2014 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE degeneracy by night. Slams index lottos, gloats when they print.\n**Recent personal life.**\n- Jury duty for $20 a day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened MU 980C exp 08-28 @6.90 (caller log)\n- Opened HOOD 105P exp 08-28 @0.79 (caller log)\n- Sold SPX 7735C same day for +130% (caller log)\n",
     "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): Spx +130% laughing at you all\nSam (theorb_18574): is @BK cooked or what\n"
   },
-  "asker": {"username": "theorb_18574", "display": "Sam"},
+  "asker": {
+    "username": "theorb_18574",
+    "display": "Sam"
+  },
   "expect": {
     "answer_must_match_any": [
       "(?i)\\b(bk|kyle)\\b",
       "(?i)(jury duty|courthouse|parking|whoop|spx|lotto|mu 980|hood 105)"
-    ],
-    "answer_must_not_match": [
-      "(?i)(keyboard|switches)"
     ]
   },
   "tool_stubs": {},

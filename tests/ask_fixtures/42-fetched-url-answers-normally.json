@@ -2,19 +2,20 @@
   "id": "42-fetched-url-answers-normally",
   "ledger": "2026-08-26",
   "title": "non-blocked URL fetched fine; answer must use it, not refuse",
-  "why": "The guard for blocked hosts must not turn into a refusal habit for every link. reuters.com fetches fine, its body is in context, and the correct answer uses it. This is the false-positive control for 40-blocked-url-no-guess: a validator that blocks this one has over-fired.",
-  "question": "@omniwiz https://www.reuters.com/markets/us/fed-holds-rates-2026-08-26/ did they actually hold",
+  "why": "A successfully FETCHED url must be answered from its content, never met with the paste-request reserved for blocked fetches. Reshaped 2026-08-28: the original premise was a fabricated FOMC hold dated 8/26, and the live model SEARCHED, found no such meeting existed, and truthfully contradicted the fixture \u2014 a correct answer failing a fictional assertion. The premise is now an ANALYSIS piece (opinions about the future), which reality cannot contradict, so the fixture measures fetch-handling instead of the model's willingness to repeat a false fact it can check.",
+  "question": "@omniwiz https://www.reuters.com/technology/chip-capex-analysis/ whats the argument here",
   "context": {
-    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
-    "fetched_urls": "--- Content from https://www.reuters.com/markets/us/fed-holds-rates-2026-08-26/ ---\nThe Federal Reserve left its benchmark rate unchanged at 3.75-4.00% on Wednesday, the third consecutive hold, with Chair Kevin Warsh saying the committee wanted more evidence that inflation was returning to target before easing further."
+    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) \u2014 trader-rank #4/58:\n**BK (bankerkyle) \u2014 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
+    "fetched_urls": "--- Content from https://www.reuters.com/technology/chip-capex-analysis/ ---\nAnalysis: Three reasons hyperscaler chip capex could disappoint next year. First, depreciation schedules are catching up with reported earnings and CFOs are under pressure to slow the growth rate of purchases. Second, power availability, not chip supply, has become the binding constraint on new data center capacity. Third, custom silicon programs at the largest buyers reduce their reliance on merchant GPUs over time."
   },
   "grounding_required": false,
   "tool_stubs": {},
   "expect": {
     "answer_must_match_any": [
-      "(?i)held",
-      "(?i)unchanged",
-      "(?i)hold"
+      "(?i)depreciation",
+      "(?i)power",
+      "(?i)custom silicon",
+      "(?i)capex"
     ],
     "answer_must_not_match": [
       "(?i)paste the (text|article)",
@@ -24,12 +25,12 @@
   },
   "self_test": {
     "good": {
-      "answer": "-> yes, held at 3.75-4.00%, third straight. Warsh wants more evidence on inflation before cutting again.",
+      "answer": "-> the piece argues capex disappoints next year for three reasons: depreciation catching up with earnings, power as the binding constraint, and custom silicon displacing merchant GPUs.",
       "tools_called": [],
       "grounded": false
     },
     "bad": {
-      "answer": "-> can't open that link. paste the text and I'll take a look.",
+      "answer": "can't open that link. paste the text and I'll break it down.",
       "tools_called": [],
       "grounded": false
     }

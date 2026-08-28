@@ -92,6 +92,7 @@ def load_corpus() -> list[dict]:
                 "id": f["id"],
                 "answer": ans,
                 "tools_called": f.get("tools_called") or [],
+                "grounded": bool(f.get("grounded")),
                 "fixture_failed": bool(f.get("failures")),
             })
     return out
@@ -101,7 +102,8 @@ def sweep(rule: str, fn, corpus: list[dict]) -> dict:
     tp, fp = [], []
     for rec in corpus:
         vs = fn(rec["answer"], rec["tools_called"],
-                question=rec.get("question"), fetched=None)
+                question=rec.get("question"), fetched=None,
+                grounded=rec.get("grounded", False))
         if not vs:
             continue
         entry = (rec["id"], vs[0].match, vs[0].line.strip()[:88])

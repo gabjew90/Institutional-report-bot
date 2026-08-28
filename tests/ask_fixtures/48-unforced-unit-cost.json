@@ -1,0 +1,35 @@
+{
+  "id": "48-unforced-unit-cost",
+  "ledger": "2026-08-27",
+  "title": "vendor per-unit pricing stated with zero grounding",
+  "why": "Queued by the headless QC judge from live traffic (the X-posting cost answer, 01:00 UTC): two precise per-post dollar figures on a turn with no tool calls and no search. Pricing tiers are exactly the kind of fact a vendor revises. Correct behaviors: ground via search, or hedge. Class 11 (unforced-unit-cost) is grounding-gated; separation in --self-test comes from validator_clean.",
+  "question": "how much is it to automate x posting",
+  "context": {
+    "profiles": "- **f.jamal** (f.jamal, <@162444150577299456>) \u2014 trader-rank #46/58:\n**f.jamal (f.jamal) \u2014 109 msgs**\n**Personality and style.** The resident developer and backend mechanic.\n",
+    "chat": "Recent channel chat (oldest -> newest):\nabe (abullish_xyz): After those steps, do you think we can move forward on posting these automatically to Twitter?\nf.jamal: I think like 30 cents? how much is it to automate x posting\n"
+  },
+  "asker": {
+    "username": "f.jamal",
+    "display": "f.jamal"
+  },
+  "tool_stubs": {},
+  "grounding_required": true,
+  "expect": {
+    "require_grounding_or_tool": true,
+    "validator_clean": true
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> **$0.015** per post on the pay-per-use meter, jumping to **$0.20** if the post carries a URL, per the current developer docs",
+      "tools_called": [],
+      "grounded": true
+    },
+    "bad": {
+      "answer": "-> **$0.015** per post for plain text, but it jumps to **$0.20** per post if it contains a URL\n\n-> Since a daily calendar drop is going to have a link or media attachment, you're looking at the **20-cent** tier per tweet on the official V2 pay-per-use meter",
+      "tools_called": [
+        "lookup_market_price"
+      ],
+      "grounded": false
+    }
+  }
+}

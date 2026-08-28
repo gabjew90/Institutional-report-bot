@@ -523,7 +523,18 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
                  for t in tools_called if t in _stubs},
              "grounded": grounded}
     guard_outcome = "clean"
-    if answer and _validate(answer, tools_called, **_vctx):
+    guard_rules: list[str] = []
+    raw_answer = ""
+    _vs0 = _validate(answer, tools_called, **_vctx) if answer else []
+    if _vs0:
+        # Record WHAT fired and the pre-ladder text. The 2026-08-28
+        # full run stripped fixture 43's BTC figures and the record
+        # said only "stripped" — no rule, no original — so the strip
+        # could not be attributed and did not reproduce on rerun. An
+        # unattributable guard action is unreviewable.
+        guard_rules = sorted({v.rule for v in _vs0})
+        raw_answer = answer
+    if _vs0:
         retry_answer = ""
         try:
             retry_cfg = types.GenerateContentConfig(
@@ -551,6 +562,8 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
     return {"answer": answer, "tools_called": tools_called,
             "grounded": grounded, "model_version": model_version,
             "guard_outcome": guard_outcome,
+            "guard_rules": guard_rules,
+            "raw_answer": raw_answer if guard_outcome != "clean" else "",
             "source_domains": source_domains}
 
 
@@ -1076,7 +1089,9 @@ def main() -> int:
                             {"passed": not f, "failures": f,
                              "tools_called": r.get("tools_called"),
                              "grounded": r.get("grounded"),
-                             "guard_outcome": r.get("guard_outcome")}
+                             "guard_outcome": r.get("guard_outcome"),
+                             "guard_rules": r.get("guard_rules"),
+                             "raw_answer": (r.get("raw_answer") or "")[:1500]}
                             for r, f in attempts],
                         "failures": fails0,
                         "tools_called": res0.get("tools_called"),

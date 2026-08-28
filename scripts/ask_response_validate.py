@@ -1160,6 +1160,70 @@ def check_failed_tool_confidence(answer: str, tool_calls=None,
     return []
 
 
+# -------------------- class 11: unforced unit-cost (vendor pricing)
+# Drafted by the headless QC judge (queue 2026-08-27, the X-posting
+# answer): two precise per-post dollar figures stated on a turn with
+# zero tool calls and zero grounding. Pricing tiers are exactly the
+# kind of fact a vendor revises, and no existing class looks at
+# per-unit dollar claims outside ticker/chain/macro domains.
+#
+# Grounding-gated: a turn that searched carries chunks and is clean —
+# a sourced rate card is a fine answer. The unit list is
+# SERVICE-pricing units only. per-hour/day/week are wages ("$20 a day
+# jury duty"), per-share is EPS, per-contract is options premium —
+# all excluded, each belongs to other classes or to nobody.
+# `[\s*_]*` separators, not \s*: answers arrive with markdown bold, and
+# "**$0.015** per post" must match the same as the plain form (same
+# lesson as class 5's trend patterns).
+_UNIT_COST = re.compile(
+    r"\$\s?\d+(?:\.\d+)?[kK]?[\s*_]*(?:per\b|/|\ba\s)[\s*_]*"
+    r"(?:post|tweet|month|year|user|seat|request|query|token|"
+    r"(?:API[\s*_]*)?call|message|image|video|GB|TB|subscription)\b"
+    r"|\b\d{1,2}[- ]cent\b[\s*_]*(?:tier|rate|fee)\b",
+    re.I,
+)
+
+# The hedge carve-out, same window discipline as classes 3/2: an
+# uncertainty marker near the figure makes it an estimate, which is
+# the prescribed shape when nothing grounded the turn.
+_UNIT_COST_HEDGE = re.compile(
+    r"(?i)\broughly\b|\baround\b|\babout\b|~|\bestimated?\b|"
+    r"\blast\s+(?:i|time|published|checked)\b|\bas\s+of\b|"
+    r"\bmay\s+have\s+changed\b|\bcheck\s+(?:the\s+)?current\b|"
+    r"\bballpark\b|\bwas\s+(?:something\s+like|near)\b")
+
+# Wage/salary context is banter about jobs, not vendor pricing.
+_UNIT_COST_WAGE = re.compile(
+    r"(?i)\bsalar(?:y|ies)\b|\bwage\b|\bearn(?:s|ing)?\b|"
+    r"\bmakes?\b|\bpaid\b|\bincome\b|\bcomp\b|\bstipend\b|\bjob\b")
+
+_UNIT_COST_WINDOW = 60
+
+
+def check_unforced_unit_cost(answer: str, tool_calls=None,
+                             grounded=False, **_) -> list[Violation]:
+    """Flag a confident per-unit price on an ungrounded turn."""
+    if grounded:
+        return []
+    text = answer or ""
+    for m in _UNIT_COST.finditer(text):
+        sentence = _line_at(text, m.start())
+        stripped = sentence.strip()
+        if stripped.startswith(">") or stripped.count('"') >= 2:
+            continue
+        lo = max(0, m.start() - _UNIT_COST_WINDOW)
+        window = text[lo:m.end() + _UNIT_COST_WINDOW]
+        if _UNIT_COST_HEDGE.search(window):
+            continue
+        if _UNIT_COST_WAGE.search(sentence):
+            continue
+        return [Violation(
+            "unforced-unit-cost", m.group(0), m.span(), sentence,
+            "vendor per-unit price stated with no grounding this turn "
+            "— pricing tiers change, and nothing sourced this one")]
+    return []
+
+
 _CHECKS = {
     "meta-plumbing": check_meta_plumbing,
     "macro-unsourced": check_macro_unsourced,
@@ -1171,6 +1235,7 @@ _CHECKS = {
     "self-generated-ta": check_self_generated_ta,
     "dollar-pnl": check_dollar_pnl,
     "failed-tool-confidence": check_failed_tool_confidence,
+    "unforced-unit-cost": check_unforced_unit_cost,
 }
 
 
