@@ -1,0 +1,30 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '44%' is attached to [against, analysts, buyers, cloud, earlier] but the source uses it for [dance, expectations, significantly, street, well] \\u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "44%",
+   "draft_subject": [
+    "against",
+    "analysts",
+    "buyers",
+    "cloud",
+    "earlier",
+    "fiscal",
+    "five",
+    "forward"
+   ],
+   "source_subject": [
+    "dance",
+    "expectations",
+    "significantly",
+    "street",
+    "well"
+   ]
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 1,
+ "exit_code": 4
+}
