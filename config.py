@@ -386,6 +386,15 @@ class Settings(BaseSettings):
     # Channel reminder system — the daily 3:45 PM ET job posts due
     # calendar reminders (reminders/calendar.json) to this channel.
     # Empty = reminders disabled. Single channel id (not comma list).
+    # Ops alerts — a single channel id that receives immediate one-line
+    # alerts when an /ask turn CRASHES (interaction_type=failed). Added
+    # 2026-08-28: three ungrounded asks died on an UnboundLocalError for
+    # 14 hours and the fastest detector in the system was the owner.
+    # The nightly QC grades answer QUALITY on a day's delay; a crash is
+    # a deterministic signal that deserves a same-minute ping. Empty =
+    # disabled. Rate-limited in code so a crash loop cannot spam.
+    ops_alert_channel_id: str = ""
+
     reminder_channel_id: str = ""
     ingest_feed_interval_seconds: int = 60
     # Startup backlog threshold: if more than N HIGH/MEDIUM PDFs are queued

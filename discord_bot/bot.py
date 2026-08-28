@@ -3462,6 +3462,51 @@ def _source_quality_unlisted(grounding_metadata) -> list[str]:
     return sorted(set(domains))
 
 
+# Per-error-class timestamps for _ops_alert rate limiting. Module
+# state, deliberately: a crash loop must ping once an hour, not once
+# a turn.
+_OPS_ALERT_LAST: dict[str, float] = {}
+_OPS_ALERT_MIN_INTERVAL_S = 3600
+
+
+async def _ops_alert(text: str, dedupe_key: str = "") -> None:
+    """One-line ops ping to OPS_ALERT_CHANNEL_ID, immediately.
+
+    Sends via the REST API rather than the gateway client so it works
+    from any context without plumbing the bot object through, and so a
+    sick client cannot also take down its own alarm. Best-effort by
+    contract: callers wrap it, and a failed alert only logs.
+    """
+    cid = (settings.ops_alert_channel_id or "").strip()
+    if not cid:
+        return
+    import time as _time
+    key = dedupe_key or text[:40]
+    now = _time.time()
+    if now - _OPS_ALERT_LAST.get(key, 0) < _OPS_ALERT_MIN_INTERVAL_S:
+        return
+    _OPS_ALERT_LAST[key] = now
+    import asyncio as _aio
+    import json as _json
+    import urllib.request as _rq
+
+    def _post():
+        req = _rq.Request(
+            f"https://discord.com/api/v10/channels/{cid}/messages",
+            data=_json.dumps({"content": text[:1900]}).encode(),
+            headers={"Authorization": "Bot " + settings.discord_bot_token,
+                     "Content-Type": "application/json",
+                     "User-Agent": "omnibeta-ops"},
+            method="POST")
+        _rq.urlopen(req, timeout=10)
+    try:
+        await _aio.to_thread(_post)
+        log.info(f"ops alert sent ({key})")
+    except Exception as e:
+        log.warning(f"ops alert send failed ({e}) — original issue "
+                    f"was: {text[:120]}")
+
+
 def _build_sources_footer(grounding_metadata) -> str:
     """Render Gemini's grounding_chunks as a Discord-friendly Sources list.
 
@@ -9241,6 +9286,20 @@ async def _answer_with_gemini(
                 question=question,
                 answer=f"(failed: {type(e).__name__}: {str(e)[:200]})",
                 interaction_type="failed",
+            )
+        except Exception:
+            pass
+        # Immediate ops alert (2026-08-28). A crash is DETERMINISTIC —
+        # it needs no judge and must not wait for the nightly QC's
+        # day-delayed read. Rate-limited per error class so a crash
+        # loop pings once an hour, not once a turn. Best-effort: the
+        # alert failing must never worsen the failure it reports.
+        try:
+            await _ops_alert(
+                f"⚠️ /ask FAILED: {type(e).__name__}: {str(e)[:140]} "
+                f"(q={question[:60]!r} by {asker_username} "
+                f"in #{channel_name})",
+                dedupe_key=type(e).__name__,
             )
         except Exception:
             pass
