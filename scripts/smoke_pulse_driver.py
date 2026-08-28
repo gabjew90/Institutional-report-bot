@@ -290,6 +290,97 @@ def test_adversarial_hallucinated_quote_is_demoted():
     _ok("adversarial: hallucinated quote demoted to soft, CONTINUE")
 
 
+def test_adversarial_severity_is_gate_assigned():
+    """The checker's severity field is IGNORED: a misattribution it
+    marks soft still maps hard (the 2026-08-28 TS-Lombard-as-Goldman
+    ship), and checker synonym kinds (figure-mismatch) map hard too."""
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        _seed(tmp)
+        (tmp / "adversarial_verdict.json").write_text(json.dumps({
+            "findings": [
+                {"severity": "soft", "kind": "misattribution",
+                 "quote": "Walmart reported $0.81 a share",
+                 "why": "x", "fix": "y"},
+                {"severity": "soft", "kind": "figure-mismatch",
+                 "quote": "against the $0.75 consensus",
+                 "why": "x", "fix": "y"},
+            ]}), encoding="utf-8")
+        dec, out, _ = drv(tmp, "gate", "adversarial")
+        assert dec == "DISPATCH_REPAIR", (dec, out)
+        items = json.loads((tmp / "adversarial_repair_items.json")
+                           .read_text(encoding="utf-8"))
+        assert len(items) == 2
+        assert all(i["severity"] == "hard" for i in items)
+    _ok("adversarial: severity gate-assigned; checker's soft vote ignored")
+
+
+def test_adversarial_soft_rule_applies_once():
+    """THE SOFT RULE: budget untouched -> one soft pass; after it, a
+    clean-with-softs verdict records only."""
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        _seed(tmp)
+        soft_verdict = json.dumps({
+            "findings": [{"kind": "overstated-claim",
+                          "quote": "lede paragraph here.",
+                          "why": "x", "fix": "y"}]})
+        (tmp / "adversarial_verdict.json").write_text(soft_verdict,
+                                                      encoding="utf-8")
+        dec, out, _ = drv(tmp, "gate", "adversarial")
+        assert dec == "DISPATCH_SOFT_REPAIR", (dec, out)
+        assert (tmp / "adversarial_soft_items.json").exists()
+        # preflight refuses the unfinished soft loop
+        for g in ("holiday", "volume", "draft_validate", "lint",
+                  "final_validate", "strip"):
+            drv(tmp, "gate", g)
+        dec, out, _ = drv(tmp, "preflight")
+        assert dec == "BLOCK" and "unfinished" in out, out
+        # recheck with softs STILL present: recorded, no second pass
+        dec, out, _ = drv(tmp, "gate", "adversarial", "--recheck")
+        assert dec == "CONTINUE" and "soft pass already spent" in out, out
+        dec, out, _ = drv(tmp, "preflight")
+        assert dec == "PASS", out
+    _ok("adversarial: soft rule — one pass, then recorded, preflight-enforced")
+
+
+def test_adversarial_softs_recorded_when_hard_budget_touched():
+    """Hard findings consumed the budget -> a later soft-only verdict
+    records instead of dispatching the soft pass."""
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        _seed(tmp)
+        (tmp / "adversarial_verdict.json").write_text(json.dumps({
+            "findings": [{"kind": "misattribution",
+                          "quote": "Walmart reported $0.81 a share",
+                          "why": "x", "fix": "y"}]}), encoding="utf-8")
+        dec, _, _ = drv(tmp, "gate", "adversarial")
+        assert dec == "DISPATCH_REPAIR", dec
+        (tmp / "adversarial_verdict.json").write_text(json.dumps({
+            "findings": [{"kind": "overstated-claim",
+                          "quote": "lede paragraph here.",
+                          "why": "x", "fix": "y"}]}), encoding="utf-8")
+        dec, out, _ = drv(tmp, "gate", "adversarial", "--recheck")
+        assert dec == "CONTINUE" and "recorded" in out, (dec, out)
+    _ok("adversarial: softs recorded-only once hard budget is touched")
+
+
+def test_volume_gate_prints_anchor_line():
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        ctx = dict(CTX)
+        ctx["pdf_count"] = 40
+        ctx["anchor_stats"] = {"total": 182, "matched": 177, "missed": 5,
+                               "empty": 0, "too_short": 0, "docs": 42,
+                               "match_rate": 0.973}
+        _seed(tmp, ctx=ctx)
+        dec, out, _ = drv(tmp, "gate", "volume")
+        assert dec == "CONTINUE"
+        assert "anchors 177/182 matched" in out, out
+        assert "rate=0.973" in out, out
+    _ok("volume gate: daily anchor-fidelity line visible in the trail")
+
+
 def test_adversarial_budget_ships_with_residual_note():
     """Two failed repair rounds ship with the labeled note (spec §6),
     inserted BEFORE ## _LEANS so the bridge's strip can't eat it, and
@@ -340,5 +431,9 @@ if __name__ == "__main__":
     test_adversarial_missing_verdict_blocks()
     test_adversarial_hard_finding_dispatches_repair()
     test_adversarial_hallucinated_quote_is_demoted()
+    test_adversarial_severity_is_gate_assigned()
+    test_adversarial_soft_rule_applies_once()
+    test_adversarial_softs_recorded_when_hard_budget_touched()
+    test_volume_gate_prints_anchor_line()
     test_adversarial_budget_ships_with_residual_note()
     print("\nALL PULSE DRIVER SMOKE TESTS PASS")

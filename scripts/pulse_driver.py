@@ -44,9 +44,14 @@ Commands:
                            headers remain)
   gate adversarial      -> CONTINUE | DISPATCH_REPAIR (max 2; items at
                            /tmp/adversarial_repair_items.json) |
+                           DISPATCH_SOFT_REPAIR (one pass, only when
+                           the hard budget is untouched) |
                            CONTINUE_WITH_RESIDUAL (budget spent, note
                            appended) | BLOCK (verdict unreadable);
-                           --recheck after each repair round
+                           --recheck after each repair round.
+                           Severity is GATE-assigned from kind
+                           (ADVERSARIAL_HARD_KIND_RE); the checker's
+                           severity field is ignored.
   record <label> [detail]  free-form trail entry (agent dispatches etc.)
   preflight             -> PASS | BLOCK (the choke point before STEP 6)
   status                -> dump state
@@ -78,6 +83,21 @@ MAX_SCRUB_ITERS = 2
 # Redesign sequencing step 3 (spec §6): repair rounds the adversarial
 # gate may dispatch before shipping with a labeled residual note.
 MAX_ADVERSARIAL_REPAIRS = 2
+
+# Severity is assigned HERE, deterministically, from the finding's
+# kind. It was the checker's field until 2026-08-28, and the checker
+# used it to wave its own findings through: two misattributions came
+# back marked "soft" and shipped (TS Lombard's numbers credited to
+# Goldman), and the 8/27 verdict invented kinds the contract never
+# defined ("figure-mismatch", "overstated-claim") with every one soft.
+# The contract's hard set is unsupported-figure / misattribution /
+# invented-call / fabricated-event; the patterns below match those
+# plus the checker's observed synonyms for them. figure-mismatch maps
+# hard because the contract's own unsupported-figure definition says
+# "numbers the context states differently count too". Everything else
+# is soft. The checker supplies kind/quote/why/fix only.
+ADVERSARIAL_HARD_KIND_RE = re.compile(
+    r"unsupported|misattribut|invented|fabricat|mismatch", re.I)
 
 # The residual marker the driver appends when the repair budget is
 # spent with hard findings remaining. Preflight verifies this exact
@@ -150,7 +170,22 @@ class Driver:
         except Exception as e:
             return self._decide("volume", "CONTINUE",
                                 f"ctx unreadable ({e}) - proceeding")
-        return self._decide("volume", "CONTINUE", f"pdf_count={count}")
+        # Anchor-fidelity aggregate, one line a human reads every day
+        # (2026-08-28). Step 2's checker is warn-only and its stats
+        # lived in per-PDF analysis_json where nobody looked -- a
+        # warn-only metric nobody sees is how drift goes invisible,
+        # which is the lesson the spot-audit exists for. The bridge
+        # stamps the aggregate into the context dump; the driver puts
+        # it in the state file, which is committed and QC-read daily.
+        detail = f"pdf_count={count}"
+        anc = ctx.get("anchor_stats") or {}
+        if anc.get("total"):
+            detail += (f"; anchors {anc.get('matched', 0)}/"
+                       f"{anc.get('matched', 0) + anc.get('missed', 0)}"
+                       f" matched, {anc.get('empty', 0)} empty, "
+                       f"{anc.get('too_short', 0)} too_short "
+                       f"(rate={anc.get('match_rate')})")
+        return self._decide("volume", "CONTINUE", detail)
 
     def gate_draft_validate(self) -> str:
         """STEP 4.5 — runs the validator itself, applies the literal
@@ -432,8 +467,13 @@ class Driver:
         for f in findings:
             if not isinstance(f, dict):
                 continue
-            sev = (f.get("severity") or "").lower()
-            if sev == "hard":
+            # Severity is GATE-ASSIGNED from the kind — the checker's
+            # own severity field, if present, is ignored (2026-08-28:
+            # it marked misattributions soft and they shipped).
+            is_hard = bool(ADVERSARIAL_HARD_KIND_RE.search(
+                str(f.get("kind") or "")))
+            f = {**f, "severity": "hard" if is_hard else "soft"}
+            if is_hard:
                 # Quote-grounding: a hard finding must point at text
                 # that exists. Whitespace-normalized substring, same
                 # spirit as the extraction anchor check.
@@ -449,14 +489,40 @@ class Driver:
 
         budgets = self.state.setdefault("budgets", {})
         repairs = budgets.get("adversarial_repairs", 0)
-        detail_soft = (f", {len(soft)} soft (recorded)" if soft else "")
+        soft_repairs = budgets.get("adversarial_soft_repairs", 0)
+        detail_soft = (f", {len(soft)} soft" if soft else "")
         if demoted:
             detail_soft += f", {demoted} demoted (quote unfound)"
 
         if not hard:
+            # THE SOFT RULE (owner call 2026-08-28, replacing ad-hoc
+            # model judgment — 8/27 applied all four softs, 8/28
+            # applied none): softs are APPLIED via one repair pass when
+            # the hard-repair budget is untouched, and recorded only
+            # otherwise. One soft pass ever; a second clean verdict
+            # with softs records them.
+            # Demoted findings never fuel the soft pass: their quote
+            # is not in the document, so a repair agent has nothing to
+            # act on -- they are checker errors, recorded for QC only.
+            _actionable = [x for x in soft if "demoted" not in x]
+            if _actionable and repairs == 0 and soft_repairs == 0:
+                budgets["adversarial_soft_repairs"] = 1
+                self._save()
+                (self.tmp / "adversarial_soft_items.json").write_text(
+                    json.dumps(_actionable, indent=1), encoding="utf-8")
+                return self._decide(
+                    gate_name, "DISPATCH_SOFT_REPAIR",
+                    f"0 hard, {len(_actionable)} soft finding(s) and the "
+                    f"repair budget is untouched -- apply them: ONE "
+                    f"repair pass (SCRUB contract) with items at "
+                    f"adversarial_soft_items.json, re-dispatch the "
+                    f"checker fresh, then run: gate adversarial "
+                    f"--recheck")
+            _tail = (" (recorded; soft pass already spent)" if soft
+                     and soft_repairs else " (recorded)" if soft else "")
             return self._decide(
                 gate_name, "CONTINUE",
-                f"0 hard findings{detail_soft}")
+                f"0 hard findings{detail_soft}{_tail}")
         if repairs >= MAX_ADVERSARIAL_REPAIRS:
             self._append_residual_note(len(hard))
             (self.tmp / "adversarial_residuals.json").write_text(
@@ -525,7 +591,8 @@ class Driver:
         # was never readable. Both are unfinished gates, not passes.
         _adv_last = (gates.get("adversarial_recheck")
                      or gates.get("adversarial") or {}).get("decision")
-        if _adv_last in ("DISPATCH_REPAIR", "BLOCK"):
+        if _adv_last in ("DISPATCH_REPAIR", "DISPATCH_SOFT_REPAIR",
+                         "BLOCK"):
             problems.append(
                 f"adversarial gate unfinished (last decision "
                 f"{_adv_last}) -- run the dispatched step, then "

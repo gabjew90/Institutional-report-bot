@@ -1686,7 +1686,10 @@ A fresh sub-agent with NO drafting history checks `/tmp/final.md` against the da
 python3 scripts/pulse_driver.py gate adversarial 2>&1 | tee -a /tmp/routine.log
 ```
 
-- **`DECISION: CONTINUE`** → proceed to STEP 6. Soft findings are recorded for QC; they change nothing here.
+- **`DECISION: CONTINUE`** → proceed to STEP 6. Any soft findings are recorded for QC and change nothing here.
+- **`DECISION: DISPATCH_SOFT_REPAIR`** → zero hard findings, soft findings present, repair budget untouched. THE SOFT RULE (owner call 2026-08-28): softs are applied when the hard-repair budget is untouched, recorded only otherwise. Dispatch ONE repair sub-agent (SCRUB contract) with `/tmp/adversarial_soft_items.json`, RE-DISPATCH the checker fresh, then run `gate adversarial --recheck`. The soft pass happens at most once per run; the recheck concludes with CONTINUE either way.
+
+Severity is GATE-ASSIGNED from each finding's `kind` (the four contract kinds map hard, everything else soft); the checker no longer emits a severity and any it does emit is ignored. On 2026-08-28 the checker had marked two misattributions soft and they shipped — that vote is gone.
 - **`DECISION: DISPATCH_REPAIR`** → dispatch ONE repair sub-agent (SCRUB contract: rewrite ONLY the lines quoted in `/tmp/adversarial_repair_items.json`, change nothing else, apply the `fix` field of each item), then RE-DISPATCH the checker fresh (step 1 again — a new agent, a new verdict file), then run `gate adversarial --recheck`. The recheck can dispatch a second repair (budget 2) or conclude.
 - **`DECISION: CONTINUE_WITH_RESIDUAL`** → the repair budget is spent with hard findings remaining. The driver has already appended the labeled accuracy note to `/tmp/final.md` and written `/tmp/adversarial_residuals.json` for QC. Proceed to STEP 6 — this is the sanctioned ship-anyway path, and the note is the label.
 - **`DECISION: BLOCK`** → the verdict file is missing or unreadable. The checker was not dispatched, or emitted something other than the JSON contract. Fix that (re-dispatch, verify the file parses), then re-run the gate. There is no path to STEP 6 through a BLOCK — the preflight refuses an unfinished adversarial loop.
@@ -1929,6 +1932,19 @@ if os.path.exists('/tmp/driver_state.json'):
     print('committed driver state:', drv_path)
 else:
     print('no /tmp/driver_state.json — driver did not run this fire (flag in QC)')
+
+# Commit /tmp/adversarial_verdict.json (2026-08-28) — the pre-commit
+# checker's verdict. 8/27's was committed, 8/28's was not; the daily
+# QC control series (pre-pilot fidelity baseline) needs every day's
+# verdict, so this commit is part of the standard artifact set, not a
+# judgment call.
+if os.path.exists('/tmp/adversarial_verdict.json'):
+    adv_path = f'pulse-output/adversarial/{ts}.json'
+    adv_content = open('/tmp/adversarial_verdict.json').read().encode()
+    result = commit(adv_path, adv_content, f'routine: adversarial verdict {ts}')
+    print('committed adversarial verdict:', adv_path)
+else:
+    print('no /tmp/adversarial_verdict.json — flag in QC (gate should have required it)')
 
 # Commit /tmp/final_validation.json (STEP 5.75) — the post-EDIT/SCRUB
 # structural re-validation. Residual violations that were waived to

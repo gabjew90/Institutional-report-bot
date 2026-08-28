@@ -36,17 +36,24 @@ Environment: `QC_PULSE_TS` env var holds today's run timestamp
 
 ## What to check, in order
 
-1. **Gate-trail anomalies** — budgets exhausted, residual notes
+1. **Control-series line** — the daily adversarial verdicts
+   (`pulse-output/adversarial/`) are the PRE-PILOT CONTROL SERIES:
+   the shadow pilot's fidelity comparison inherits this baseline
+   instead of starting cold. Append today's counts (hard/soft by
+   kind, repairs spent) to your report's summary table, and flag any
+   day the verdict file is MISSING from the archive — a gap in the
+   series is a finding.
+2. **Gate-trail anomalies** — budgets exhausted, residual notes
    shipped, WARNING details in any gate, adversarial soft findings
    that recur across days (compare against earlier driver files).
-2. **Accuracy spot-check** — pick the MAIN EVENT plus two briefs;
+3. **Accuracy spot-check** — pick the MAIN EVENT plus two briefs;
    trace their specific figures and attributions into the context
    dump. Rule 2 applies to every claim of error.
-3. **Selection review** — themes in the context with 3+ banks or
+4. **Selection review** — themes in the context with 3+ banks or
    HIGH conviction that the pulse never mentions. This is the known
    weak spot (single-bank HIGH themes dropping when slots fill,
    promotion keyed on bank count not PDF count).
-4. **Voice/format** — ONLY flagrant breaks (em-dashes in prose, an
+5. **Voice/format** — ONLY flagrant breaks (em-dashes in prose, an
    invented house trade call). pulse_lint already polices style;
    do not re-litigate its soft calls.
 

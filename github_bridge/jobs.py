@@ -198,6 +198,36 @@ def _dump_context_job_inner() -> None:
             ctx["us_market_holiday"] = None
             log.warning(f"Bridge: holiday stamp failed (non-fatal): {e}")
 
+        # Anchor-fidelity aggregate for the day's corpus (2026-08-28).
+        # Step 2's checker is warn-only and its stats live in per-PDF
+        # analysis_json where nobody looks; this one dict makes the
+        # daily number visible in the driver state (gate volume prints
+        # it) and gives the pilot its control series. Best-effort.
+        try:
+            rows = db.get_connection().execute(
+                "SELECT analysis_json FROM pdf_analyses "
+                "WHERE created_at >= datetime('now', '-24 hours')"
+            ).fetchall()
+            agg = {"total": 0, "matched": 0, "missed": 0, "empty": 0,
+                   "too_short": 0, "docs": 0}
+            for r in rows:
+                try:
+                    ac = (json.loads(r[0]) or {}).get("anchor_check") or {}
+                except Exception:
+                    continue
+                if not ac.get("total"):
+                    continue
+                agg["docs"] += 1
+                for k in ("total", "matched", "missed", "empty",
+                          "too_short"):
+                    agg[k] += ac.get(k, 0)
+            verifiable = agg["matched"] + agg["missed"]
+            agg["match_rate"] = (round(agg["matched"] / verifiable, 3)
+                                 if verifiable else None)
+            ctx["anchor_stats"] = agg
+        except Exception as e:
+            log.warning(f"Bridge: anchor aggregate failed (non-fatal): {e}")
+
         # Format-overhaul Phase 1: persist a compact state snapshot
         # (top themes + high-conviction calls) for the WHAT CHANGED
         # diff. The bridge stamps the consumed candidate at daily-pulse
