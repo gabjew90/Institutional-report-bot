@@ -1,0 +1,286 @@
+{
+  "pulse_date": "2026-08-28",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "warsh speech jackson hole",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Six desks flag Kevin Warsh's Jackson Hole keynote as the next big Fed event for bonds and stocks, but none of them has said which way it moves markets.",
+      "facts_agreed": [
+        {
+          "claim": "Six banks flag Warsh's Jackson Hole keynote as an upcoming Fed catalyst in this window.",
+          "banks_for": [
+            "GlobalData TS Lombard",
+            "Goldman Sachs",
+            "Mizuho International",
+            "The Market Ear",
+            "Citadel Securities",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Warsh's upcoming reset speech",
+            "Jackson Hole symposium keynote by Warsh",
+            "Kevin Warsh Fed Chair speculation",
+            "Warsh speech at Jackson Hole",
+            "Jackson Hole keynote speech by Fed's Warsh"
+          ]
+        },
+        {
+          "claim": "Desks treat the speech as a possible reset of how the Fed explains itself, with knock-on effects in both bonds and equities.",
+          "banks_for": [
+            "GlobalData TS Lombard",
+            "Citadel Securities",
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Warsh's upcoming reset speech",
+            "Chair Warsh Fed presser reaction function",
+            "Warsh speech impact on bonds and equities",
+            "Chairman Warsh Fed communication"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai compute demand growth",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 1,
+        "neutral": 4
+      },
+      "consensus_view": "Most desks read Nvidia's guidance as evidence that spending on AI computing keeps accelerating into next year, and only Bloomberg questions how long that spending can keep compounding.",
+      "facts_agreed": [
+        {
+          "claim": "Nvidia's guidance points to AI computing demand staying strong well into next year rather than peaking now.",
+          "banks_for": [
+            "JPMorgan",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Multi-year demand visibility remains exceptionally strong and is explicitly framed as a floor",
+            "signaled greater optimism that current runaway growth in AI demand would continue into next year."
+          ]
+        },
+        {
+          "claim": "Spending by the largest cloud companies is the engine behind that demand, and Nvidia is the stock the market uses to trade it.",
+          "banks_for": [
+            "The Market Ear",
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "CapEx by the top five hyperscalers is expected to reach $800 billion in 2026",
+            "We remain of the view that NVDA will maintain market leadership in AI compute",
+            "The market increasingly appears to be treating AI as the cyclical trade"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether AI computing demand can keep compounding at this pace",
+          "banks_for": [
+            "JPMorgan",
+            "Deutsche Bank"
+          ],
+          "for_evidence": "Multi-year demand visibility remains exceptionally strong and is explicitly framed as a floor",
+          "banks_against": [
+            "Bloomberg"
+          ],
+          "against_evidence": "I have argued Jevons’ paradox will not keep indefinitely sustaining the argument"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us treasury buybacks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five desks flag the Treasury's plan to buy back its own outstanding bonds as a live topic this window, but none of them has staked out a view on whether it pushes bond prices up or down.",
+      "facts_agreed": [
+        {
+          "claim": "Five desks reference the US Treasury's bond buyback program as an active policy item in this window without arguing a direction.",
+          "banks_for": [
+            "JPMorgan",
+            "GlobalData TS Lombard",
+            "Goldman Sachs",
+            "Bloomberg",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "US Treasury buybacks",
+            "Bessent's Treasury buyback scheme",
+            "US Treasury bond buyback plans",
+            "Treasury buyback plan impact",
+            "Treasury buybacks"
+          ]
+        },
+        {
+          "claim": "Two desks specifically frame the buybacks as targeting the longest-dated end of the Treasury curve.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "Treasury long-end buybacks",
+            "Treasury long-end buyback operations"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "software monetization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Goldman is the only desk taking a side, arguing that established software companies can charge existing customers more by building AI into products they already use and that spare computing capacity can be rented out for extra revenue, while four other desks only flag AI monetization as a topic without picking a direction.",
+      "facts_agreed": [
+        {
+          "claim": "Established software vendors are building AI into their existing products using data, workflows and sales channels they already own, which lets them charge their current customer base more.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "incumbent software vendors use their proprietary data, workflows and distribution to embed AI"
+          ]
+        },
+        {
+          "claim": "Selling spare computing capacity to outside customers is treated as extra revenue upside that is not yet in the numbers.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Broadly we see the potential to externally monetize available compute capacity as upside optionality"
+          ]
+        },
+        {
+          "claim": "Several desks flag AI monetization as the frame for reading software and cloud earnings this window without staking a directional view on it.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "AI monetization",
+            "AI monetization and cloud profitability",
+            "Dreamforce AI monetization strategy",
+            "AI-led profit growth",
+            "AI monetization strategies"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait geopolitical issues",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks keep the Strait of Hormuz on the watch list as an open shipping and oil-supply risk tied to Iran-Oman talks, but none of them has taken a side on whether the risk gets worse or fades.",
+      "facts_agreed": [
+        {
+          "claim": "JPMorgan and Goldman Sachs both track whether ships can still move freely through the Strait of Hormuz as the thing that matters about the region.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping flows",
+            "Strait of Hormuz free navigation",
+            "Strait of Hormuz maritime navigation"
+          ]
+        },
+        {
+          "claim": "Mizuho International and The Market Ear both flag the strait as a live source of oil supply and political risk rather than a settled situation.",
+          "banks_for": [
+            "Mizuho International",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz supply risk",
+            "Hormuz geopolitical risk"
+          ]
+        },
+        {
+          "claim": "The negotiation track around the strait, covering Iran-Oman talks and how transit revenue would be split, is being watched as the path to any resolution.",
+          "banks_for": [
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz revenue-sharing",
+            "Iran-Oman Strait of Hormuz diplomacy"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "agricultural supply squeeze",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Only HSBC stakes out a clear view, saying supply problems rather than demand are what is driving crop prices higher, and no desk in this window argued the other side.",
+      "facts_agreed": [
+        {
+          "claim": "Supply-side problems, not demand, are what is setting agricultural prices right now.",
+          "banks_for": [
+            "HSBC",
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "We see supply-side issues continuing to dominate developments in agricultural commodity prices",
+            "tightening grain supplies",
+            "fertilizer and sulphur supply constraints"
+          ]
+        },
+        {
+          "claim": "Desks point to the Black Sea and Russia-Ukraine grain trade as the specific channel tightening supply.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Black Sea wheat supply disruption",
+            "Russia-Ukraine grain export disruption",
+            "Black Sea shipment disruptions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "jackson hole symposium",
+      "reason": "facts_agreed banks_for not in input sources or agency whitelist: 'Goldman Sachs'"
+    },
+    {
+      "theme": "ai buildout",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    }
+  ]
+}
