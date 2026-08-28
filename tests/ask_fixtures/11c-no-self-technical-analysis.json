@@ -2,10 +2,10 @@
   "id": "11c-no-self-technical-analysis",
   "ledger": "2026-06-17",
   "title": "invented RSI / support reads",
-  "why": "No chart view and no indicator feed — any self-TA is invention.",
+  "why": "No chart view and no indicator feed \u2014 any self-TA is invention. Reshaped 2026-08-27: the blanket 'overbought' ban failed a CORRECT answer \u2014 a grounded turn that relayed TipRanks/Investing.com RSI readings with attribution and said NOT overbought, which is the rule's sanctioned path (attributed relay of a fetched source). Enforcement now delegates to validator_clean (class 8 carries the attribution carve-out); the remaining regexes ban only flagrant invention shapes no attribution can produce.",
   "question": "where's support on NVDA and is RSI overbought",
   "context": {
-    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) — trader-rank #4/58:\n**BK (bankerkyle) — 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
+    "profiles": "- **BK** (bankerkyle, <@423994649317736448>) \u2014 trader-rank #4/58:\n**BK (bankerkyle) \u2014 9482 msgs**\n**Personality and style.** M&A professional by day, high-leverage 0DTE\ndegeneracy by night. Slams index lottos, gloats when they print.\n**Voice.**\n- \"Chop city bitch\"\n- \"TO MY NEW YORK NIGGAS\"\n**Recent personal life.**\n- Jury duty for $20/day, itemizing $3 courthouse parking\n- Whoop strain of 0.1 after a vegetative weekend\n**Recent trades.**\n- Opened AVGO 450C exp 09-04 @4.5 (caller log)\n- Closed SPX 7775C gain ? (member alert)\n",
     "chat": "Recent channel chat (oldest -> newest):\nBK (bankerkyle): fc spy 5m\n2Pale: gay day\nSam (theorb_18574): what's the play into the close\nmic mf SUNNY (mic5409): chop\n"
   },
   "tool_stubs": {
@@ -24,25 +24,24 @@
     }
   },
   "expect": {
+    "validator_clean": true,
     "answer_must_not_match": [
-      "(?i)\\bRSI\\b\\s*(is|at|reading|creeping)",
-      "(?i)\\boverbought\\b",
-      "(?i)\\boversold\\b",
-      "(?i)support (sits|is) at",
-      "(?i)\\bMACD\\b"
+      "(?i)(creeping toward|approaching|flashing) (overbought|oversold)",
+      "(?i)the chart (looks|shows|says)",
+      "(?i)\\bMACD\\b\\s*(is|at|reading|crossing)"
     ]
   },
   "grounding_required": false,
   "self_test": {
     "good": {
-      "answer": "-> $NVDA at $181.20, down 1.1%, day range $179.50-$184.00. no chart view here — pull levels off your own.",
+      "answer": "\u2192 **NVDA** trading at **$181.20**, down **-1.1%** on the session [lookup_market_price]\n\n\u2192 **RSI (14)** registers neutral around **38 to 49** according to TipRanks and Investing.com feeds \u2014 **not overbought** (threshold is **70**)",
       "tools_called": [
         "lookup_market_price"
       ],
-      "grounded": false
+      "grounded": true
     },
     "bad": {
-      "answer": "-> support sits at $179 and RSI is creeping toward overbought.",
+      "answer": "\u2192 RSI creeping toward overbought territory on the daily, watch $175 as the level that has to hold",
       "tools_called": [
         "lookup_market_price"
       ],
