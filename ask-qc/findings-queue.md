@@ -23,21 +23,8 @@ branch)*
 
 ## 2026-08-27
 
-- 1. regex-able (X-posting cost, 01:00 UTC turn) — `LOCAL/BANTER` route,
-  zero tool calls, no search grounding, answer states two precise
-  per-post dollar figures ("$0.015 per post", "$0.20 per post... official
-  V2 pay-per-use meter") with full confidence. `validate_answer.py
-  --tools ""` returns clean — none of `check_unforced_price` /
-  `check_unforced_market_data` / `check_macro_unsourced` look outside
-  ticker prices, options-chain stats, and macro print figures, so this
-  is uncovered territory, not a miss. Candidate `check_unforced_unit_cost`
-  fixture (question, bad answer, assertion regex, hedge/grounding
-  carve-out) is drafted in full in `pulse-data/ask-qc/2026-08-27.claude.md`
-  under the 01:00 entry. Same shape recurred at 21:58 UTC same day
-  (Jackson Hole keynote specifics) but with a named person + exact time
-  + venue instead of a dollar figure — see finding 2, bucketed separately
-  because the fix there isn't a regex.
-- 2. judgment (Jackson Hole keynote specifics, 21:58 UTC turn) — same
+- ~~1. regex-able (X-posting cost)~~ — **shipped 2026-08-28** as validator class 11 `unforced-unit-cost` (commit 9899d5fc on the main branch): grounding-gated, hedge + wage carve-outs, fixture 48, 0 sweep FPs.
+- (open) 2. judgment (Jackson Hole keynote specifics, 21:58 UTC turn) — same
   zero-tool-call, zero-grounding `LOCAL/BANTER` shape as finding 1, but
   invents a named Fed official + exact clock time + streaming venue for
   tomorrow's keynote with nothing in the visible prompt or any tool/search
