@@ -289,27 +289,30 @@ def render_calendar_png(day: CalendarDay) -> bytes:
 
 
 def _econ_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
+    """Single full-width column (owner call 2026-08-27). The old
+    two-column layout gave each event name roughly half the sheet and
+    truncated routine names ("Prelim Benchmark Payrolls Rev..."). Econ
+    days are short — 9 events on the heaviest recorded day — so the
+    height cost of one row per event is small and the full name always
+    fits. The _truncate stays as a safety net only."""
     y = _band(d, "Economic", _MARGIN, _W - _MARGIN, y, f)
-    rows = day.econ
-    half = (len(rows) + 1) // 2
-    for ci, chunk in enumerate([rows[:half], rows[half:]]):
-        cy = y
-        cx = x_l if ci == 0 else x_r
-        for r in chunk:
-            # White, with the zone spelled out after the time.
-            # The abbreviation is DERIVED, not hardcoded: the room
-            # is on ET, which is EDT from March to November and EST
-            # the rest of the year. Printing a flat "EST" in August
-            # would put a wrong label on a correct time.
-            _t = f"{r.time_et} {_et_abbrev(day.date_iso)}"
-            d.text((cx, cy), _t, font=f["time"], fill=TEXT)
-            d.text(
-                (cx + 132 * _S, cy + 1 * _S),
-                _truncate(d, r.event, f["ev"], col_w - 138 * _S),
-                font=f["ev"], fill=_dim(TEXT, 0.92),
-            )
-            cy += 38 * _S
-    return y + max(1, half) * 38 * _S + 34 * _S
+    cy = y
+    for r in day.econ:
+        # White, with the zone spelled out after the time.
+        # The abbreviation is DERIVED, not hardcoded: the room
+        # is on ET, which is EDT from March to November and EST
+        # the rest of the year. Printing a flat "EST" in August
+        # would put a wrong label on a correct time.
+        _t = f"{r.time_et} {_et_abbrev(day.date_iso)}"
+        d.text((_MARGIN, cy), _t, font=f["time"], fill=TEXT)
+        d.text(
+            (_MARGIN + 132 * _S, cy + 1 * _S),
+            _truncate(d, r.event, f["ev"],
+                      _W - 2 * _MARGIN - 138 * _S),
+            font=f["ev"], fill=_dim(TEXT, 0.92),
+        )
+        cy += 38 * _S
+    return cy + 34 * _S
 
 
 def _footer(d, f, content_bottom: int) -> int:
