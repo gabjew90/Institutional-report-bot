@@ -36,6 +36,13 @@ def main() -> int:
                     help="comma-separated tool names the turn called")
     ap.add_argument("--question", default="",
                     help="the question, for question-shape checks")
+    ap.add_argument("--tool-status", default="",
+                    help="comma list of name=status pairs, e.g. "
+                         "lookup_earnings_date=no_data (QC queue "
+                         "finding 2: classes that key on tool status "
+                         "need it here or the triage cannot see them)")
+    ap.add_argument("--grounded", action="store_true",
+                    help="the turn had web grounding")
     args = ap.parse_args()
 
     if args.file:
@@ -44,7 +51,10 @@ def main() -> int:
         text = sys.stdin.read()
     tools = [t.strip() for t in args.tools.split(",") if t.strip()]
 
-    vs = validate(text, tools, question=args.question, fetched=None)
+    status = dict(pair.split("=", 1)
+                  for pair in args.tool_status.split(",") if "=" in pair)
+    vs = validate(text, tools, question=args.question, fetched=None,
+                  tool_status=status, grounded=args.grounded)
     print(json.dumps({"violations": [
         {"rule": v.rule, "match": v.match, "line": v.line.strip()[:140],
          "why": v.why} for v in vs

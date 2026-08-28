@@ -1098,6 +1098,68 @@ def check_dollar_pnl(answer: str, tool_calls=None, **_) -> list[Violation]:
     return []
 
 
+# ------------------------ class 10: confidence despite a failed tool
+# The 2026-08-26 GPS shape (first entry the headless QC judge queued):
+# lookup_earnings_date returned no_data, no search grounding fired, and
+# the answer asserted a specific date, an EPS range, revenue, and a
+# call time anyway. None of the other classes can see this, because
+# they receive tool NAMES only -- this class consumes per-tool STATUS
+# (ctx key `tool_status`) and the turn's grounding (ctx key
+# `grounded`).
+#
+# Deliberately narrow: keyed to lookup_earnings_date, the observed
+# incident tool. Status-gated, so with no statuses in ctx (the whole
+# recorded corpus) it can never fire -- its false-positive surface
+# lives only in live turns with a failed tool, which is why the
+# grounded-twin carve-out below is load-bearing: the same day had a
+# near-identical GPS turn that grounded via real search and was
+# CORRECT to state the date.
+_FAILED_TOOL_STATUSES = {"no_data", "error", "empty", "not_found"}
+_EARN_TOOL = "lookup_earnings_date"
+
+_EARN_DATE_RE = re.compile(
+    r"(?i)\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)"
+    r"[a-z]*\.?\s+\d{1,2}\b")
+
+# The sentence must actually be about earnings for the date to count.
+_EARN_CONTEXT_RE = re.compile(
+    r"(?i)\bearnings\b|\breport(?:s|ing)?\b|\bresults\b|\bAMC\b|"
+    r"\bBMO\b|\bafter (?:the )?(?:market )?close\b|\bpre-?market\b|"
+    r"\bconference call\b|\brelease\b|\bfiscal\b|\bQ[1-4]\b")
+
+# Saying you don't know is the prescribed answer, never a violation.
+_EARN_UNCERTAIN_RE = re.compile(
+    r"(?i)\bdon'?t have\b|\bno (?:date|data)\b|\bnot (?:yet )?"
+    r"(?:announced|confirmed|scheduled|set)\b|\bunconfirmed\b|"
+    r"\bcan'?t confirm\b|\btypically\b|\busually\b|\bhistorically\b|"
+    r"\bestimated?\b|\btentative\b|\bexpected window\b")
+
+
+def check_failed_tool_confidence(answer: str, tool_calls=None,
+                                 tool_status=None, grounded=False,
+                                 **_) -> list[Violation]:
+    """Flag a confident earnings date stated after the earnings tool
+    FAILED, with no grounding to replace it. The model watched its one
+    relevant source come back empty and asserted specifics anyway."""
+    if grounded:
+        return []
+    status = (tool_status or {}).get(_EARN_TOOL)
+    if status not in _FAILED_TOOL_STATUSES:
+        return []
+    text = answer or ""
+    for m in _EARN_DATE_RE.finditer(text):
+        sentence = _line_at(text, m.start())
+        if not _EARN_CONTEXT_RE.search(sentence):
+            continue
+        if _EARN_UNCERTAIN_RE.search(sentence):
+            continue
+        return [Violation(
+            "failed-tool-confidence", m.group(0), m.span(), sentence,
+            f"{_EARN_TOOL} returned {status!r} and nothing grounded the "
+            f"turn, yet the answer states a specific earnings date")]
+    return []
+
+
 _CHECKS = {
     "meta-plumbing": check_meta_plumbing,
     "macro-unsourced": check_macro_unsourced,
@@ -1108,6 +1170,7 @@ _CHECKS = {
     "unforced-time-series": check_unforced_time_series,
     "self-generated-ta": check_self_generated_ta,
     "dollar-pnl": check_dollar_pnl,
+    "failed-tool-confidence": check_failed_tool_confidence,
 }
 
 
@@ -1127,6 +1190,7 @@ PASTE_REQUEST = ("→ can't open x/twitter links — they serve a login wall. "
 def resolve_violations(answer: str, retry_answer: str | None,
                        tool_calls=None, strip_fn=None,
                        fallback: str | None = None,
+                       retry_ctx: dict | None = None,
                        **ctx) -> tuple[str, str]:
     """The guard ladder, as ONE decision both callers share.
 
@@ -1150,7 +1214,14 @@ def resolve_violations(answer: str, retry_answer: str | None,
     vs = validate(answer, tool_calls, **ctx) if answer else []
     if not vs:
         return answer, "clean"
-    if retry_answer and not validate(retry_answer, tool_calls, **ctx):
+    # `retry_ctx` overrides ctx keys for judging the RETRY only. The
+    # regenerate rung runs with Google Search enabled, so a retry can
+    # legitimately ground itself out of a grounding-gated violation
+    # (class 10) -- judging it with the original turn's grounded=False
+    # would re-flag a now-sourced answer and the ladder would strip or
+    # refuse a correct regeneration.
+    _rctx = {**ctx, **(retry_ctx or {})}
+    if retry_answer and not validate(retry_answer, tool_calls, **_rctx):
         return retry_answer, "regenerated"
 
     rules = {v.rule for v in vs}

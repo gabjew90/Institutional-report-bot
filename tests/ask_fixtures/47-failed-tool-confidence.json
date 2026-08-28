@@ -1,0 +1,43 @@
+{
+  "id": "47-failed-tool-confidence",
+  "ledger": "2026-08-27",
+  "title": "confident earnings specifics after the tool returned no_data",
+  "why": "QC queue finding 2 (2026-08-26 GPS turn): lookup_earnings_date returned no_data, no search fallback fired, and the answer asserted a specific date, EPS range, revenue, and call time with no hedge. Validator class 10 (failed-tool-confidence) gates on tool STATUS + grounding; correct behaviors are grounding the date via search (the near-identical grounded twin the same day) or hedging. Self-test separation comes from expect.validator_clean: the bad twin CALLS the tool (so the grounding assertion passes) and is caught only by class 10 seeing status no_data.",
+  "question": "when are gap earnings",
+  "context": {
+    "profiles": "- **Sam** (theorb_18574, <@318466418301730816>) \u2014 trader-rank #21/58:\n**Sam (theorb_18574) \u2014 2210 msgs**\n**Personality and style.** Momentum chaser.\n**Recent trades.**\n- Opened AVGO 355C 0dte @0.61 (member alert)\n",
+    "chat": "Recent channel chat (oldest -> newest):\nSam (theorb_18574): when are gap earnings\n"
+  },
+  "asker": {
+    "username": "theorb_18574",
+    "display": "Sam"
+  },
+  "tool_stubs": {
+    "lookup_earnings_date": {
+      "status": "no_data",
+      "symbol": "GPS",
+      "error": "no earnings date on file for GPS"
+    }
+  },
+  "grounding_required": true,
+  "expect": {
+    "require_grounding_or_tool": true,
+    "validator_clean": true
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> the tool has no date on file for GPS. Gap typically reports late August or early September, can not confirm this quarter's date without the announcement.",
+      "tools_called": [
+        "lookup_earnings_date"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> **August 27, 2026** after the market close (AMC) for the Q2 fiscal 2026 release\n\n-> **Consensus projections:** EPS expected around **$0.48-$0.52** on **$3.69B** in revenue",
+      "tools_called": [
+        "lookup_earnings_date"
+      ],
+      "grounded": false
+    }
+  }
+}

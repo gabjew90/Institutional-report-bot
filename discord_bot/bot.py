@@ -7037,7 +7037,25 @@ async def _answer_with_gemini(
         # slip, not a content problem), then strip the offending
         # sentences if it re-violates. Whole sentences only — a
         # mid-sentence excision mangles prose.
-        _vctx = {"question": question, "fetched": fetched_urls}
+        # Per-tool STATUS and the turn's grounding reach the validator
+        # (2026-08-27, QC queue finding 2): class 10 fires on confident
+        # specifics after the one relevant tool FAILED, which tool
+        # names alone cannot express. "ok" is sticky across duplicate
+        # calls — one successful fetch of a tool means the model had
+        # its data. Grounding at this point includes tool-loop rounds
+        # (_round_gm_chunks); the later recovery/backstop machinery
+        # runs after this ladder and must not be waited on.
+        _v_tool_status: dict = {}
+        try:
+            for _t in _ask_tool_trace:
+                if _v_tool_status.get(_t["tool"]) != "ok":
+                    _v_tool_status[_t["tool"]] = _t.get("status") or "ok"
+        except Exception:
+            pass
+        _v_grounded = bool(_round_gm_chunks) or _grounding_has_sources(
+            grounding_metadata)
+        _vctx = {"question": question, "fetched": fetched_urls,
+                 "tool_status": _v_tool_status, "grounded": _v_grounded}
         _plumb = (_validate_response(answer, _ask_tool_log, **_vctx)
                   if answer else [])
         if _plumb:
@@ -7047,6 +7065,7 @@ async def _answer_with_gemini(
                 f"hits={[v.match for v in _plumb][:6]}; retrying once"
             )
             _plumb_retry = ""
+            _plumb_retry_ctx: dict = {}
             try:
                 _plumb_resp = await client.aio.models.generate_content(
                     model=ask_model,
@@ -7068,6 +7087,15 @@ async def _answer_with_gemini(
                     _plumb_retry = (_plumb_resp.text or "").strip()
                 except Exception:
                     _plumb_retry = ""
+                # The retry runs WITH search: if it grounded itself,
+                # judge it as grounded, or a grounding-gated class
+                # re-flags a now-sourced regeneration.
+                try:
+                    _retry_gm = _plumb_resp.candidates[0].grounding_metadata
+                    if getattr(_retry_gm, "grounding_chunks", None):
+                        _plumb_retry_ctx = {"grounded": True}
+                except (AttributeError, IndexError, TypeError):
+                    pass
             except Exception as e:
                 log.warning(f"/ask: meta-plumbing retry call failed: {e}")
 
@@ -7077,7 +7105,7 @@ async def _answer_with_gemini(
                 answer, _ask_tool_log, **_vctx)
             answer, _outcome = _resolve_violations(
                 answer, _plumb_retry, _ask_tool_log, _strip_sentences,
-                **_vctx)
+                retry_ctx=_plumb_retry_ctx, **_vctx)
             if _outcome == "regenerated":
                 _ask_meta["guards"].append("validate-regenerated")
                 log.info(

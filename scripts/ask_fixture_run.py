@@ -250,6 +250,23 @@ def evaluate(fx: dict, result: dict) -> list[str]:
     if exp.get("require_grounding_or_tool") and not (tools or grounded):
         fails.append("answered with no tool call and no web grounding")
 
+    # validator_clean: the FINAL answer must carry no validator
+    # violations, judged with the fixture's own tool statuses and
+    # grounding (2026-08-27, class 10). In the live path the ladder
+    # runs before this and normally guarantees it; in --self-test it is
+    # what lets a status-gated class separate good from bad, because
+    # the assertion-level nets cannot see tool status at all.
+    if exp.get("validator_clean"):
+        from scripts.ask_response_validate import validate as _vclean
+        _stubs = fx.get("tool_stubs") or {}
+        for v in _vclean(
+                ans, tools, question=fx.get("question", ""), fetched=None,
+                tool_status={t: (_stubs.get(t) or {}).get("status") or "ok"
+                             for t in tools if t in _stubs},
+                grounded=grounded):
+            fails.append(
+                f"validator violation survived: [{v.rule}] {v.match!r}")
+
     for pat in exp.get("answer_must_match") or []:
         if not re.search(pat, ans):
             fails.append(f"answer missing required pattern {pat!r}")
@@ -495,8 +512,16 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
 
     # Same context production passes: the question and whatever the
     # server-side fetcher actually retrieved.
+    # Mirror production's ctx exactly (2026-08-27, class 10): per-tool
+    # status from the stubs the model actually called, and the turn's
+    # grounding. What ships and what gets measured must not drift.
+    _stubs = fx.get("tool_stubs") or {}
     _vctx = {"question": fx.get("question", ""),
-             "fetched": (fx.get("context") or {}).get("fetched_urls")}
+             "fetched": (fx.get("context") or {}).get("fetched_urls"),
+             "tool_status": {
+                 t: (_stubs.get(t) or {}).get("status") or "ok"
+                 for t in tools_called if t in _stubs},
+             "grounded": grounded}
     guard_outcome = "clean"
     if answer and _validate(answer, tools_called, **_vctx):
         retry_answer = ""

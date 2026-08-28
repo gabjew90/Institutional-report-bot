@@ -58,7 +58,17 @@ PYTHONPATH=. python scripts/validate_answer.py --file /tmp/ans.txt \
     --question "<the question>"
 ```
 
+Before bucketing a validator-miss, CHECK THE CLASS EXISTED: run
+`git log -1 --format=%cI -S "<rule-name>" -- scripts/ask_response_validate.py`
+and compare against the turn UTC timestamp. A turn that shipped
+before the class deployed is **predates-class**, not a miss - the
+first live queue entry made exactly this error (13:41 turn, 19:15
+deploy) and cost a trace session to un-make.
+
 Buckets:
+- **predates-class** - the flagging class did not exist in
+  production when the turn shipped. Note the deploy time; no
+  action needed.
 - **validator-miss** — the CLI returns a violation for the failing
   content: an existing class fires on it, so production's ladder
   should have handled it. Note which rule and why it may not have
