@@ -264,10 +264,11 @@ def render_calendar_png(day: CalendarDay) -> bytes:
                     font=f["nm"], fill=_dim(TEXT, 0.55),
                 )
                 cy += 40 * _S
-            if dropped:
-                d.text((cx, cy + 2 * _S), f"+{dropped} more",
-                       font=f["note"], fill=_dim(TEXT, 0.4))
-                cy += 40 * _S
+            # "+N more" is NOT rendered (owner call 2026-08-27). The
+            # dropped counts stay in CalendarDay and the pipeline event
+            # for QC, but the published sheet shows only the names that
+            # earned a row.
+            _ = dropped
             col_bottom = max(col_bottom, cy)
         y = col_bottom
 
