@@ -1,0 +1,105 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-08-28T14:11:34.080996Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=45",
+   "at": "2026-08-28T14:11:46.820917Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-08-28T14:21:13.202089Z"
+  },
+  "lint": {
+   "decision": "DISPATCH_SCRUB",
+   "detail": "1 hard issue(s)",
+   "at": "2026-08-28T14:27:29.198523Z"
+  },
+  "scrub_relint": {
+   "decision": "CONTINUE",
+   "detail": "0 hard issues after SCRUB",
+   "at": "2026-08-28T14:28:26.501443Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-08-28T14:28:30.234295Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-08-28T14:28:30.294030Z"
+  },
+  "adversarial": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings, 4 soft (recorded)",
+   "at": "2026-08-28T14:33:28.230365Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-08-28T14:33:34.781888Z"
+  }
+ },
+ "budgets": {},
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-08-28T14:11:34.080996Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-08-28T14:11:46.820917Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-08-28T14:20:24.851714Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-08-28T14:21:13.202089Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "DISPATCH_SCRUB",
+   "at": "2026-08-28T14:27:29.198523Z"
+  },
+  {
+   "gate": "scrub_relint",
+   "decision": "CONTINUE",
+   "at": "2026-08-28T14:28:26.501443Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-08-28T14:28:30.234295Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-08-28T14:28:30.294030Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "CONTINUE",
+   "at": "2026-08-28T14:33:28.230365Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-08-28T14:33:34.781888Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
