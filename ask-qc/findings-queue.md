@@ -43,3 +43,22 @@ branch)*
 - (13:10 UTC Jackson Hole turn graded CONCERN, not FAIL — lower-specificity
   version of finding 2, no named person/time/venue. Not triaged per Step 3
   since it has no FAIL dimension; noted in the full report for context.)
+
+## 2026-08-28
+
+- (open) 1. judgment (wrong Fed Chair named, 20:51:41 UTC turn) — grounded
+  turn answering "whens the next fed meeting" states "Jerome Powell press
+  conference" for the Sept 16 FOMC. Wrong: the bot's own next turn 35
+  seconds later (20:52:16, also grounded, 2 different sources) names
+  "Fed Chair Kevin Warsh," and the room's own visible chat in the first
+  turn's prompt block already treats Warsh as the sitting chair ("WARSH
+  TODAY AT 10AM EST CHAT... BE PREPARED", "Bring back jpow ties"). Same
+  fact-shape as the 08-27 Jackson Hole findings (invented specifics with
+  nothing to check them against) but here the corpus itself proves the
+  claim wrong rather than just being unverifiable — a cross-turn
+  consistency check, not a single-turn hedge/decline problem.
+  `scripts/validate_answer.py` confirmed clean (no existing rule class
+  looks at named officials/persons — all 12 classes are numeric-claim or
+  tool-status shaped). Queued as prompt-session material: should a turn
+  naming a specific office-holder be required to check against the most
+  recent grounded turn that named the same office, before publish?
