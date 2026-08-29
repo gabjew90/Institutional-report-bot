@@ -172,7 +172,18 @@ jobs:
         run: |
           git config user.name "ask-qc-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add ask-qc/ pulse-output/qc-headless/ pulse-output/findings-queue.md
+          # Add each path only if it exists: on weekends the pulse
+          # phase skips and pulse-output/qc-headless/ is never created,
+          # and an unconditional git add on a missing pathspec is
+          # FATAL — the first Saturday run discarded a perfectly good
+          # ask-phase grading over it (2026-08-29).
+          git add ask-qc/
+          if [ -d pulse-output/qc-headless ]; then
+            git add pulse-output/qc-headless/
+          fi
+          if [ -f pulse-output/findings-queue.md ]; then
+            git add pulse-output/findings-queue.md
+          fi
           git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
           git commit -m "daily-qc: claude judge $QC_DATE (+pulse $QC_PULSE_TS)"
           git push origin pulse-data
