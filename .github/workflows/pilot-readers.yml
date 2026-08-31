@@ -1,0 +1,181 @@
+# Shadow-pilot readers — one agent per unread HIGH document.
+#
+# Emits the two-part artifact (document brief + verified claim cards)
+# per spec section 2, on the upload-weighted cadence of section 2.1:
+# dense through the 5-10 AM ET research window, sparse overnight, so
+# the morning catch-up read stays genuinely marginal.
+#
+# Model strings are PINNED via scripts/pilot_config.py (plan 3.7) and
+# a change to them restarts the pilot clock. Provenance (requested
+# model, returned version, prompt hash) rides in every cards file.
+#
+# Reads PILOT_ROOT from the env so the owner's pending destination
+# decision changes one value, not this file.
+name: pilot-readers
+
+on:
+  schedule:
+    # Dense window: hourly 09-14 UTC (~5-10 AM ET) plus a 13:15 run
+    # (~9:15 AM ET) to catch the pre-pulse stack.
+    - cron: "0 9-14 * * 1-5"
+    - cron: "15 13 * * 1-5"
+    # Sparse overnight / weekend: every 4h.
+    - cron: "0 1,5,17,21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pilot-readers
+  cancel-in-progress: false
+
+env:
+  PILOT_ROOT: pilot
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Checkout pulse-data
+        uses: actions/checkout@v4
+        with:
+          ref: pulse-data
+          path: pulse-data
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find unread documents
+        id: unread
+        run: |
+          # Unread = a source-text file with no matching cards file.
+          # Skip-fast keeps the ~10 daily runs near a minute each when
+          # nothing landed.
+          python scripts/pilot_list_unread.py \
+            --root "pulse-data/$PILOT_ROOT" --out /tmp/unread.json
+          N=$(python -c "import json;print(len(json.load(open('/tmp/unread.json'))))")
+          echo "count=$N" >> "$GITHUB_OUTPUT"
+          echo "unread: $N"
+
+      - name: Install Claude Code
+        if: steps.unread.outputs.count != '0'
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Auth check
+        if: steps.unread.outputs.count != '0'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          set +e
+          out=$(claude -p "reply with exactly: ok" --model haiku \
+              --max-turns 1 2>&1)
+          rc=$?
+          set -e
+          if [ $rc -ne 0 ] || ! printf '%s' "$out" | grep -qi "ok"; then
+            echo "::error::Claude auth failed (exit $rc) — re-mint with \
+          'claude setup-token' and update CLAUDE_CODE_OAUTH_TOKEN."
+            printf '%s\n' "$out" | tail -5
+            exit 1
+          fi
+
+      - name: Read each document
+        if: steps.unread.outputs.count != '0'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          set -u
+          # TSV, read line-by-line: a `for` over command substitution
+          # word-splits, and document slugs are not guaranteed
+          # space-free.
+          python - <<'PY' > /tmp/unread.tsv
+          import json
+          for d in json.load(open("/tmp/unread.json")):
+              print("\t".join([d["id"], d["text_path"], d["model"],
+                               d["tier"], d["date"]]))
+          PY
+          TOTAL=0; FAILED=0
+          while IFS=$'\t' read -r ID TEXT MODEL TIER DATE; do
+            [ -z "${ID:-}" ] && continue
+            TOTAL=$((TOTAL+1))
+            OUT="pulse-data/$PILOT_ROOT/cards/$DATE/$ID.json"
+            mkdir -p "$(dirname "$OUT")"
+
+            # Build the prompt in a FILE. Everything here stays
+            # indented: a column-0 line would terminate this YAML
+            # block scalar.
+            {
+              cat docs/superpowers/routines/pilot/reader.md
+              printf '\n\nSOURCE_TEXT_PATH=%s\n' "$TEXT"
+            } > /tmp/reader_prompt.txt
+
+            claude -p "$(cat /tmp/reader_prompt.txt)" \
+              --model "$MODEL" \
+              --permission-mode bypassPermissions \
+              --max-turns 12 \
+              > /tmp/reader_out.txt 2>/tmp/reader_err.txt || true
+
+            if ! python scripts/pilot_finalize_read.py \
+                --raw /tmp/reader_out.txt --out "$OUT" \
+                --source "$TEXT" --tier "$TIER" --model "$MODEL" \
+                --prompt docs/superpowers/routines/pilot/reader.md; then
+              echo "::warning::reader failed for $ID"
+              tail -3 /tmp/reader_err.txt || true
+              FAILED=$((FAILED+1))
+              continue
+            fi
+
+            # Pass 1: verify anchors, collect failures for ONE re-ask,
+            # in-session per spec section 3 (a deferred re-ask is a
+            # card lost for hours).
+            python scripts/pilot_verify_cards.py "$OUT" "$TEXT" \
+              --reask-out /tmp/reask.json
+            NEEDS=$(python -c "import json;print(json.load(open('$OUT'))['verify']['needs_reask'])")
+            if [ "$NEEDS" = "True" ]; then
+              {
+                cat /tmp/reader_prompt.txt
+                printf '\n[RE-ASK] These cards had anchors NOT found in the source:\n'
+                cat /tmp/reask.json
+                printf '\nRe-emit the COMPLETE artifact. For each failed card, either copy its anchor character-for-character from the source or omit that card. Change nothing else.\n'
+              } > /tmp/reask_prompt.txt
+              claude -p "$(cat /tmp/reask_prompt.txt)" \
+                --model "$MODEL" \
+                --permission-mode bypassPermissions \
+                --max-turns 12 \
+                > /tmp/reader_out.txt 2>/dev/null || true
+              python scripts/pilot_finalize_read.py \
+                --raw /tmp/reader_out.txt --out "$OUT" \
+                --source "$TEXT" --tier "$TIER" --model "$MODEL" \
+                --prompt docs/superpowers/routines/pilot/reader.md || true
+            fi
+            # Pass 2: drop whatever still fails, and count the drops.
+            python scripts/pilot_verify_cards.py "$OUT" "$TEXT" --final
+          done < /tmp/unread.tsv
+          echo "read $TOTAL document(s), $FAILED failed"
+          # Metric 5 (ops) reads this rate. One poisoned PDF must not
+          # stop the pilot's day; a total wipeout should be loud.
+          if [ "$TOTAL" -gt 0 ] && [ "$FAILED" -eq "$TOTAL" ]; then
+            echo "::error::every reader failed this run"; exit 1
+          fi
+
+      - name: Commit cards
+        if: steps.unread.outputs.count != '0'
+        working-directory: pulse-data
+        run: |
+          git config user.name "pilot-reader-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if [ -d "$PILOT_ROOT/cards" ]; then
+            git add "$PILOT_ROOT/cards/"
+          fi
+          git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
+          git commit -m "pilot: reader cards ($(date -u +%FT%TZ))"
+          # The publisher and QC jobs also push here; rebase before
+          # push so a concurrent commit is a retry, not a lost run.
+          git pull --rebase --quiet origin pulse-data || true
+          git push origin pulse-data
