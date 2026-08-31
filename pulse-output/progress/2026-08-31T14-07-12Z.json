@@ -1,0 +1,75 @@
+{
+ "ts": "2026-08-31T14-07-12Z",
+ "events": [
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-08-31T14:08:26Z",
+   "detail": "api.github.com writes blocked by proxy; progress buffered locally, committed via MCP at checkpoints"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-08-31T14:08:40Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-08-31T14:08:40Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-08-31T14:11:52Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-08-31T14:18:13Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-08-31T14:18:55Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-08-31T14:18:59Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-08-31T14:26:11Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_5_LINT_DONE",
+   "time": "2026-08-31T14:26:11Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-08-31T14:27:59Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_75_FINAL_VALIDATE_DONE",
+   "time": "2026-08-31T14:28:02Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-08-31T14:29:19Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_85_ADVERSARIAL_DONE",
+   "time": "2026-08-31T14:38:04Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_85_ADVERSARIAL_DONE",
+   "time": "2026-08-31T14:42:53Z",
+   "detail": ""
+  }
+ ]
+}

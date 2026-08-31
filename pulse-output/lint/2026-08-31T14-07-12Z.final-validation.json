@@ -1,0 +1,122 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '4%' is attached to [because, categories, counts, crude, energy] but the source uses it for [attacks, cnbc, comp, conservative, cramer] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "4%",
+   "draft_subject": [
+    "because",
+    "categories",
+    "counts",
+    "crude",
+    "energy",
+    "falls",
+    "morning",
+    "most"
+   ],
+   "source_subject": [
+    "attacks",
+    "cnbc",
+    "comp",
+    "conservative",
+    "cramer",
+    "equity",
+    "exchanged",
+    "iran"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '70%' is attached to [against, between, crude, diesel, exports] but the source uses it for [absent, accounting, accounts, advertising, ahead] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "70%",
+   "draft_subject": [
+    "against",
+    "between",
+    "crude",
+    "diesel",
+    "exports",
+    "gulf",
+    "have",
+    "itself"
+   ],
+   "source_subject": [
+    "absent",
+    "accounting",
+    "accounts",
+    "advertising",
+    "ahead",
+    "amazon",
+    "balance",
+    "billion"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "3.46% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.25, 3.0, 3.3, 3.34, 3.6, 3.7, 4.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "3.46",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Morgan Stanley and Goldman Sachs both still have the Fed on hold through September. Morgan Stanley reads the speech as positioning rather than guidance and forecasts six-month annualized core PCE at 3"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.4% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.25, 3.0, 3.3, 3.34, 3.6, 3.7, 4.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.4",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Morgan Stanley and Goldman Sachs both still have the Fed on hold through September. Morgan Stanley reads the speech as positioning rather than guidance and forecasts six-month annualized core PCE at 3"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "21% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [5.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "21",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "*Momentum is already rolling over and the crowd has not moved yet.* JPMorgan turned cautious for the next few weeks and is telling clients to cut how much they are net long and to pair longs with shor"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "34% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [5.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "34",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "*Momentum is already rolling over and the crowd has not moved yet.* JPMorgan turned cautious for the next few weeks and is telling clients to cut how much they are net long and to pair longs with shor"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "46% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [5.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "46",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "*Momentum is already rolling over and the crowd has not moved yet.* JPMorgan turned cautious for the next few weeks and is telling clients to cut how much they are net long and to pair longs with shor"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.7% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [5.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.7",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "*Momentum is already rolling over and the crowd has not moved yet.* JPMorgan turned cautious for the next few weeks and is telling clients to cut how much they are net long and to pair longs with shor"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.4% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [4.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.4",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "- **Friday September 4, 08:30 ET: August payrolls and unemployment.** Consensus is plus 58,000 against a minus 23,000 prior with unemployment holding at 4.1%. Deutsche Bank has plus 65,000 headline an"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 9,
+ "exit_code": 4
+}

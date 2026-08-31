@@ -1,0 +1,247 @@
+{
+  "pulse_date": "2026-08-31",
+  "window_label": "since-last-daily (2026-08-28T14:35)",
+  "themes": [
+    {
+      "theme": "ai infrastructure demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 2,
+        "neutral": 5
+      },
+      "consensus_view": "Most desks read AI hardware and data center spending as still accelerating with electricity supply as the real bottleneck, while a smaller skeptical camp argues the spending is being funded with borrowing that current profits cannot cover.",
+      "facts_agreed": [
+        {
+          "claim": "Nvidia's results and guidance were treated across desks as the confirmation that the whole chain of AI hardware spending is still growing.",
+          "banks_for": [
+            "The Market Ear",
+            "Morgan Stanley",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "A strong report would validate the entire AI capital-expenditure chain",
+            "NVDA's outlook reinforced confidence in the broader AI investment cycle",
+            "market is not simply reacting to the earnings beat, but instead focusing on guidance",
+            "Chinese AI demand is very real and increasingly showing up in production workloads"
+          ]
+        },
+        {
+          "claim": "Electricity supply and grid connection are the binding physical constraint on building AI data centers.",
+          "banks_for": [
+            "RiskHedge",
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Disruptors who can connect AI companies to the grid are among the fastest-growing stocks today.",
+            "AI data center power demand",
+            "AI power constraints"
+          ]
+        },
+        {
+          "claim": "Desks consistently describe AI infrastructure as demand running ahead of what can currently be supplied, inside an otherwise slow economy.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "AI capex demand-supply imbalance",
+            "AI infrastructure supply/demand imbalance",
+            "Two-speed economy with weak growth and AI capex"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether hyperscalers can actually fund the announced AI spending",
+          "banks_for": [
+            "Morgan Stanley",
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "for_evidence": "NVDA's outlook reinforced confidence in the broader AI investment cycle",
+          "banks_against": [
+            "ZeroHedge"
+          ],
+          "against_evidence": "the capital hole is far greater than most analysts assume"
+        },
+        {
+          "claim": "size of the equity drawdown if AI spending disappoints",
+          "banks_for": [
+            "Apollo",
+            "ZeroHedge"
+          ],
+          "for_evidence": "If AI does not work out, the bubble bursts and the Nasdaq is down 50%",
+          "banks_against": [
+            "Goldman Sachs",
+            "Morgan Stanley"
+          ],
+          "against_evidence": "Chinese AI demand is very real and increasingly showing up in production workloads"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "kevin warsh fed commentary",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Desks at TS Lombard, Goldman Sachs, Morgan Stanley, JPMorgan, The Market Ear and Bloomberg all treat new Fed Chair Kevin Warsh, his Jackson Hole speech and his push to shrink the Fed's bond holdings as the live policy question right now, but none of them has staked out a call on what he actually does next.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag Fed Chair Kevin Warsh's Jackson Hole speech as the near-term policy event they are watching.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "Morgan Stanley",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Fed Chairman Kevin Warsh Jackson Hole speech",
+            "Chair Warsh's Jackson Hole speech",
+            "Chair Warsh Jackson Hole speech",
+            "Warsh Jackson Hole speech",
+            "Fed Chair Warsh Jackson Hole debut"
+          ]
+        },
+        {
+          "claim": "Banks consistently characterize Warsh's Fed as a tighter, more hawkish regime, including a plan to shrink the Fed's balance sheet.",
+          "banks_for": [
+            "TS Lombard",
+            "The Market Ear",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "Kevin Warsh hawkish policy stance",
+            "Warsh Fed policy tightening",
+            "Chair Warsh's Fed reaction function",
+            "Chairman Warsh balance-sheet reform agenda"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "treasury yield sustainability",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 6
+      },
+      "consensus_view": "Banks treat the Treasury's long-end bond buyback program as the live tool for holding down government borrowing costs, but they split on whether it works, with Morgan Stanley arguing that shrinking the Fed's bond holdings can leave interest rates lower without disrupting markets and TS Lombard arguing no buying program of that size can outweigh what global investors demand to keep lending.",
+      "facts_agreed": [
+        {
+          "claim": "Desks across the corpus are tracking the Treasury's long-end bond buyback program as the active mechanism aimed at government borrowing costs.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Treasury buyback scheme as mini-QE",
+            "US Treasury long-end buybacks",
+            "Treasury long-end bond buyback plan",
+            "Treasury enhanced buybacks announcement",
+            "Bessent's Treasury buyback 'twist'"
+          ]
+        },
+        {
+          "claim": "Morgan Stanley argues across two notes that shrinking the Fed's bond holdings is compatible with lower interest rates and can be executed without meaningful market disruption.",
+          "banks_for": [
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "if the \u201cmoney\u201d created by the balance sheet is removed, interest rates could be lower.",
+            "balance sheet normalization can have an almost trivial effect on financial markets"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether official operations (Fed balance sheet reduction and Treasury buybacks) can hold long-term yields down",
+          "banks_for": [
+            "Morgan Stanley"
+          ],
+          "for_evidence": "if the \u201cmoney\u201d created by the balance sheet is removed, interest rates could be lower.",
+          "banks_against": [
+            "TS Lombard"
+          ],
+          "against_evidence": "fighting the weight of global capital flows with investors demanding higher yields is not going to be sustainable."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed policy direction",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 1,
+        "neutral": 1
+      },
+      "consensus_view": "Most desks read Chair Warsh's speech as a signal the Fed is leaning toward raising rates and now treat a September hike as live, with market-implied odds jumping to roughly 58 to 60 percent, while Morgan Stanley still expects no hike and TS Lombard thinks the mixed data pushes any move to December.",
+      "facts_agreed": [
+        {
+          "claim": "Warsh's speech was read across desks as a shift toward tighter policy and more concern about inflation.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Bloomberg",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Warsh delivered a message that was bullish on the economy and hawkish on inflation",
+            "the market reaction was consistent with the speech\u2019s hawkish tilt.",
+            "The net takeaway was somewhat hawkish and markets re-priced the probability of a September hike",
+            "Warsh has now given investors another reason to stay cautious"
+          ]
+        },
+        {
+          "claim": "Markets repriced the odds of a September rate hike higher immediately after the speech.",
+          "banks_for": [
+            "JPMorgan",
+            "Bloomberg"
+          ],
+          "evidence_quotes": [
+            "The net takeaway was somewhat hawkish and markets re-priced the probability of a September hike",
+            "the market reaction was consistent with the speech\u2019s hawkish tilt."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the Fed hikes at the September FOMC meeting",
+          "banks_for": [
+            "Deutsche Bank",
+            "The Market Ear",
+            "JPMorgan",
+            "Bloomberg"
+          ],
+          "for_evidence": "Warsh delivered a message that was bullish on the economy and hawkish on inflation",
+          "banks_against": [
+            "Morgan Stanley",
+            "TS Lombard"
+          ],
+          "against_evidence": "We retain our view of a Fed on hold, but the call is closer than before"
+        }
+      ],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "jackson hole policy guidance",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Morgan Stanley'"
+    },
+    {
+      "theme": "ai deflationary impact",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    },
+    {
+      "theme": "hyperscaler financial impacts",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Morgan Stanley'"
+    }
+  ]
+}
