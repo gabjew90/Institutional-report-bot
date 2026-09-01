@@ -184,14 +184,32 @@ TOOL_DOCS["lookup_economic_calendar"] = (
     "Google the wire."
 ) + _COMMON
 
+TOOL_DOCS["lookup_earnings_slate"] = (
+    "WHEN TO CALL: any question asking WHO reports on a date - 'who "
+    "reports earnings today', 'what is reporting after close', 'any "
+    "big earnings tomorrow', 'what earnings do we have'. This is the "
+    "ONLY correct source for a slate; Google returns a PARTIAL list "
+    "and has repeatedly omitted the largest name on the day. Returns "
+    "both sessions, cap-ranked, from the same feed the omni-calendar "
+    "sheet uses, so your answer and the sheet cannot disagree.\n"
+    "Lead with the biggest names by market cap - that is the ranking "
+    "you are given, and it is what the room is asking about.\n"
+    "`session_confirmed: false` means the feed has not stamped the "
+    "timing YET, not that the company is absent: report the name and "
+    "note the session is unconfirmed. Dropping it is the failure this "
+    "tool exists to fix.\n"
+    "Args: date - 'YYYY-MM-DD', or 'tomorrow'; omit for today (ET)."
+)
+
 TOOL_DOCS["lookup_earnings_date"] = (
     "WHEN TO CALL: next earnings date and last reported quarter for ONE "
     "ticker — ANY US-listed symbol, no whitelist. Call for 'when does "
     "GEO report', 'did PLTR beat last quarter', and next-quarter "
     "estimates. NOT for earnings CONTENT (guidance commentary, why it "
     "moved — Google), not for macro prints "
-    "(`lookup_economic_calendar`), and not for broad 'what reports this "
-    "week' sweeps (Google — this tool is one symbol per call). The "
+    "(`lookup_economic_calendar`), and not for broad 'who reports' "
+    "sweeps — those go to `lookup_earnings_slate`, NEVER to Google. "
+    "This tool is one symbol per call. The "
     "`timing` field is before open / after close / during hours / TBD.\n"
     "FALLBACK IS REQUIRED, NOT OPTIONAL: on `no_data`, `error`, or a "
     "null `next` (common more than 6 weeks out) go straight to Google "

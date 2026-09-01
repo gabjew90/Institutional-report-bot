@@ -2494,6 +2494,27 @@ def _build_earnings_date_tool():
     return types.Tool(
         function_declarations=[
             types.FunctionDeclaration(
+                name="lookup_earnings_slate",
+                description=_TOOL_DOCS["lookup_earnings_slate"] + (
+                    "\n\nResponse shape: {status, date, before_open: "
+                    "[{symbol, name, market_cap_musd, "
+                    "session_confirmed}], after_close: [...], counts}. "
+                    "status: ok | empty (no US earnings that date) | "
+                    "error (feed down — say so, do NOT substitute a "
+                    "Google list)."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "date": types.Schema(
+                            type=types.Type.STRING,
+                            description=("'YYYY-MM-DD' or 'tomorrow'; "
+                                         "omit for today (ET)"),
+                        ),
+                    },
+                ),
+            ),
+            types.FunctionDeclaration(
                 name="lookup_earnings_date",
                 description=_TOOL_DOCS["lookup_earnings_date"] + (
                     "Next upcoming earnings date + last reported "
@@ -2540,6 +2561,92 @@ def _build_earnings_date_tool():
             )
         ]
     )
+
+
+async def _execute_earnings_slate(args: dict) -> dict:
+    """Today's (or a given date's) FULL earnings slate, cap-ranked.
+
+    Built 2026-09-01 after the room asked "who reports after close
+    today" three times in one afternoon and got three different
+    partial answers, each missing PANW — the largest name on the
+    slate. Every one of those turns called NO tool: the earnings-date
+    tool's own docs sent broad "what reports today" sweeps to Google
+    Search, and a search snippet is a partial list by nature (one
+    answer was sourced to digrin.com).
+
+    Same Finnhub feed and the same cap ranking the calendar graphic
+    uses, so the bot and the sheet can no longer disagree about who
+    reports.
+    """
+    from datetime import datetime, timedelta
+
+    import pytz
+
+    date_iso = (args.get("date") or "").strip()
+    if not date_iso:
+        et = datetime.now(pytz.timezone(settings.timezone))
+        date_iso = et.strftime("%Y-%m-%d")
+    elif date_iso.lower() == "tomorrow":
+        et = datetime.now(pytz.timezone(settings.timezone)) + timedelta(days=1)
+        date_iso = et.strftime("%Y-%m-%d")
+
+    as_of = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    try:
+        from report import calendar_data as _cd
+        from report import news_data as _nd
+
+        raw = await asyncio.to_thread(_nd.fetch_earnings_calendar_all,
+                                      date_iso)
+        if raw is None:
+            return {"status": "error", "as_of": as_of, "date": date_iso,
+                    "error": "earnings feed unavailable right now"}
+        bmo, amc, conf, seen = [], [], {}, set()
+        for r in raw:
+            sym = (r.get("symbol") or "").strip()
+            if not sym or sym in seen:
+                continue
+            seen.add(sym)
+            hour = (r.get("hour") or "").lower()
+            if hour == "bmo":
+                bmo.append(sym)
+                conf[sym] = True
+            else:
+                amc.append(sym)
+                conf[sym] = hour == "amc"
+        if not bmo and not amc:
+            return {"status": "empty", "as_of": as_of, "date": date_iso,
+                    "note": "no US earnings scheduled for this date"}
+
+        caps = await asyncio.to_thread(_cd._resolve_caps, bmo + amc)
+
+        def _rows(syms):
+            ranked = sorted(
+                syms, key=lambda s: -(caps.get(s, {}).get("cap") or 0))
+            return [{
+                "symbol": s,
+                "name": str(caps.get(s, {}).get("name") or s),
+                "market_cap_musd": round(
+                    float(caps.get(s, {}).get("cap") or 0)),
+                # Finnhub fills `hour` progressively through the day; an
+                # unconfirmed session is NOT absence from the slate, and
+                # saying so is what keeps a big name from vanishing.
+                "session_confirmed": bool(conf.get(s)),
+            } for s in ranked[:25]]
+
+        return {
+            "status": "ok", "as_of": as_of, "date": date_iso,
+            "before_open": _rows(bmo), "after_close": _rows(amc),
+            "counts": {"before_open": len(bmo), "after_close": len(amc)},
+            "note": ("Cap-ranked, top 25 per session. "
+                     "session_confirmed=false means Finnhub has not yet "
+                     "stamped the timing, not that the company is absent "
+                     "— report those names, noting the session is "
+                     "unconfirmed."),
+        }
+    except Exception as e:
+        log.warning(f"lookup_earnings_slate failed: {e}")
+        return {"status": "error", "as_of": as_of, "date": date_iso,
+                "error": f"{type(e).__name__}: {e}"}
 
 
 async def _execute_earnings_date(args: dict) -> dict:
@@ -6859,6 +6966,7 @@ async def _answer_with_gemini(
                 "lookup_options_chain": _execute_options_chain,
                 "lookup_economic_calendar": _execute_economic_calendar,
                 "lookup_earnings_date": _execute_earnings_date,
+                "lookup_earnings_slate": _execute_earnings_slate,
                 "query_data": _execute_query_data,
                 "lookup_price_history": _execute_price_history,
                 "lookup_fantasy_league": _execute_fantasy_league,

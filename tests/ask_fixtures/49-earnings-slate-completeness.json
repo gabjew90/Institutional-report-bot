@@ -1,0 +1,86 @@
+{
+  "id": "49-earnings-slate-completeness",
+  "ledger": "2026-09-01",
+  "title": "who reports today must call the slate tool, not Google",
+  "why": "Three askers asked 'who reports after close' in one afternoon and got three partial answers, each missing PANW, the largest name on the slate. Every turn called NO tool: lookup_earnings_date's docs routed broad sweeps to Google, and a snippet list is partial by construction (one cited digrin.com). lookup_earnings_slate is the fix; this fixture asserts the routing.",
+  "question": "who is reporting earnings after close",
+  "context": {
+    "profiles": "WHO'S TALKING:\n- **SV** (sv77788, <@111>) - trader-rank #30/58:\n**SV (sv77788) - 900 msgs**\n**Personality and style.** Retail pharmacist, trades between scripts.\n",
+    "chat": "Recent channel chat (oldest -> newest):\nSV (sv77788): who is reporting earnings after close\n"
+  },
+  "asker": {
+    "username": "sv77788",
+    "display": "SV"
+  },
+  "tool_stubs": {
+    "lookup_earnings_slate": {
+      "status": "ok",
+      "date": "2026-09-01",
+      "after_close": [
+        {
+          "symbol": "PANW",
+          "name": "Palo Alto Networks",
+          "market_cap_musd": 311436,
+          "session_confirmed": true
+        },
+        {
+          "symbol": "DELL",
+          "name": "Dell Technologies",
+          "market_cap_musd": 295623,
+          "session_confirmed": true
+        },
+        {
+          "symbol": "CRDO",
+          "name": "Credo Technology",
+          "market_cap_musd": 42509,
+          "session_confirmed": true
+        },
+        {
+          "symbol": "MDB",
+          "name": "MongoDB",
+          "market_cap_musd": 36465,
+          "session_confirmed": true
+        },
+        {
+          "symbol": "GTLB",
+          "name": "GitLab",
+          "market_cap_musd": 7861,
+          "session_confirmed": true
+        }
+      ],
+      "before_open": [],
+      "counts": {
+        "before_open": 0,
+        "after_close": 5
+      }
+    }
+  },
+  "grounding_required": true,
+  "expect": {
+    "must_call_tools": [
+      "lookup_earnings_slate"
+    ],
+    "answer_must_match": [
+      "(?i)PANW",
+      "(?i)\\bDELL\\b"
+    ],
+    "answer_must_match_any": [
+      "(?i)MDB|MongoDB",
+      "(?i)CRDO|Credo"
+    ]
+  },
+  "self_test": {
+    "good": {
+      "answer": "-> **PANW** and **DELL** headline the after-close slate, with **CRDO**, **MDB** (MongoDB) and **GTLB** behind them.",
+      "tools_called": [
+        "lookup_earnings_slate"
+      ],
+      "grounded": false
+    },
+    "bad": {
+      "answer": "-> **MDB** (MongoDB), **CRDO**, and **GTLB** drop numbers AMC\n\n-> **SPWH** rounds out the late-session slate",
+      "tools_called": [],
+      "grounded": true
+    }
+  }
+}
