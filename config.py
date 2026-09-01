@@ -386,6 +386,12 @@ class Settings(BaseSettings):
     # Channel reminder system — the daily 3:45 PM ET job posts due
     # calendar reminders (reminders/calendar.json) to this channel.
     # Empty = reminders disabled. Single channel id (not comma list).
+    # Shadow pilot: publish HIGH source text to the pilot-data branch
+    # for the Actions readers. DEFAULT OFF — flipped on at day -2 of
+    # the shakedown, so deploying the code cannot start filling a
+    # branch. HIGH only; the pilot is HIGH-only by design.
+    pilot_publish_enabled: bool = False
+
     # Ops alerts — a single channel id that receives immediate one-line
     # alerts when an /ask turn CRASHES (interaction_type=failed). Added
     # 2026-08-28: three ungrounded asks died on an UnboundLocalError for

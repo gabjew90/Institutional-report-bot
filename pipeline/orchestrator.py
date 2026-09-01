@@ -119,6 +119,22 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 # produces a Gemini analysis.
                 # Local file stays on disk — dump job needs it; cleanup
                 # happens after successful bridge commit.
+                #
+                # PILOT INTERACTION (2026-09-01): this branch returns
+                # before the pilot publish hook below, so with the
+                # opus_bridge backend the pilot would receive ZERO
+                # HIGH documents — its entire corpus — silently. The
+                # backend defaults to "gemini" and production does not
+                # override it, so the hook fires today; this warning
+                # exists so a future backend flip during the pilot is
+                # loud instead of a mystery empty branch.
+                if getattr(settings, "pilot_publish_enabled", False):
+                    log.warning(
+                        "pilot: HIGH pdf %s routed to opus_bridge, so it "
+                        "will NOT be published to the pilot branch. With "
+                        "this backend the pilot receives no documents.",
+                        pdf_id,
+                    )
                 return None
 
             # Deep analysis — text-only by default; multimodal triggers
@@ -155,6 +171,27 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
 
         db.update_pdf_status(pdf_id, "PROCESSED")
         db.log_event(pdf_id, "process", "completed", f"Duration: {duration:.1f}s")
+
+        # Shadow pilot: publish HIGH source text to the pilot-data
+        # branch for the Actions readers (default OFF until shakedown
+        # day -2). Placed AFTER the status update deliberately — the
+        # analysis is complete and recorded by this point, so nothing
+        # the pilot does can affect whether the document counts as
+        # processed. Best-effort inside, never raises.
+        try:
+            from github_bridge.pilot_publish import publish_high_document
+            await asyncio.to_thread(
+                publish_high_document,
+                pdf_file_id=pdf_id,
+                file_name=file_name,
+                source=triage.source,
+                title=analysis.title or file_name,
+                priority=triage.priority,
+                published_at=analysis.published_at,
+                full_text=extraction.full_text,
+            )
+        except Exception as e:
+            log.warning(f"pilot publish dispatch failed (non-fatal): {e}")
 
         # Clean up local PDF file to save disk space
         try:

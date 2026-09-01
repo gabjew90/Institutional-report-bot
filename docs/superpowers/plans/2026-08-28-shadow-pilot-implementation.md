@@ -5,9 +5,11 @@
 the WHAT).
 
 **Status:** APPROVED to build 2026-08-31 with six required changes,
-all incorporated below (owner review). **Piece 1 (worker publish job)
-is HELD** pending a separate owner decision on where the pilot tree
-lives; pieces 2–8 build against a configurable destination.
+all incorporated below (owner review). **Destination decided
+2026-09-01 (option B): the `pilot-data` ORPHAN branch** — production
+artifacts cannot be touched even by accident, the pulse archive's
+history stays readable, and cleanup after the verdict is deleting one
+branch. Piece 1 is UNHELD and built.
 
 ## 0. The one fork: what rail do the readers run on
 
@@ -30,10 +32,10 @@ queryable, ledger-buildable), different substrate, and the pilot stays
 fully decoupled from production (nothing to migrate, everything
 prunable after the verdict).
 
-**Destination is configurable and UNDECIDED.** Every piece reads its
-root from one constant (`PILOT_ROOT`, default `pilot/` on the
-`pulse-data` branch). The owner's separate decision on where the tree
-lives changes that constant and nothing else.
+**Destination (decided 2026-09-01, option B):** the `pilot-data`
+orphan branch, `pilot/` root. Both live in `scripts/pilot_config.py`
+(`PILOT_BRANCH`, `PILOT_ROOT`), env-overridable, so a relocation is
+still a one-value change.
 
 ## 1. Data flow
 
@@ -70,8 +72,7 @@ Production is untouched end to end.
 
 ## 2. Build pieces, in dependency order
 
-1. **Worker publish job** — **HELD** pending the destination decision.
-   When unheld: on HIGH deep-analysis completion, publish extracted
+1. **Worker publish job** — BUILT 2026-09-01. On HIGH deep-analysis completion, publish extracted
    full text + meta. Size guard (~400KB/file), dedupe by pdf_file_id,
    batched with the existing bridge cadence. ~19 HIGH/day observed →
    ~1.5–2MB/day. Gated on `PILOT_PUBLISH_ENABLED` (default off until

@@ -19,8 +19,14 @@ from __future__ import annotations
 import hashlib
 import os
 
-# Where the pilot tree lives, relative to the pulse-data checkout.
-# DEFAULT ONLY — pending the owner's decision (plan §0).
+# Where the pilot tree lives. Owner decision 2026-09-01 (option B):
+# a dedicated ORPHAN branch, not the production pulse-data branch, so
+# the pilot cannot touch production artifacts even by accident, the
+# pulse archive's history stays readable, and cleanup after the
+# verdict is deleting one branch.
+PILOT_BRANCH = os.environ.get("PILOT_BRANCH", "pilot-data")
+# Root WITHIN that branch's checkout. Env-overridable so a relocation
+# still needs no code edit.
 PILOT_ROOT = os.environ.get("PILOT_ROOT", "pilot")
 
 # Subdirectories, derived. Nothing else in the codebase hardcodes
