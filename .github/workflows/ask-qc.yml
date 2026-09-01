@@ -159,15 +159,26 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |
-          claude -p "$(cat docs/superpowers/routines/pulse-qc-headless.md)"             --model sonnet             --permission-mode bypassPermissions             --max-turns 60             2>&1 | tee pulse_qc_run.log
+          claude -p "$(cat docs/superpowers/routines/pulse-qc-headless.md)"             --model sonnet             --permission-mode bypassPermissions             --max-turns 80             2>&1 | tee pulse_qc_run.log
+          # Show the judge's tail on failure. The 2026-09-01 run died
+          # on this grep and the log carried nothing about WHY, so the
+          # cause had to be inferred. An unexplained gate failure is
+          # only marginally better than a silent one.
           grep -q "^PULSE QC RESULT:" pulse_qc_run.log || {
-            echo "::error::pulse judge finished without its result line           — treating as a failed run";
+            echo "::error::pulse judge finished without its result line           — treating as a failed run. Its last output follows:";
+            tail -25 pulse_qc_run.log;
             exit 1; }
           test -f "pulse-data/pulse-output/qc-headless/$QC_PULSE_TS.md" || {
             echo "::error::pulse report file missing"; exit 1; }
 
+      # always(): a LATER phase's failure must not discard an EARLIER
+      # phase's completed work. Twice now the ask judge graded a full
+      # day cleanly and the run threw it away — first on the weekend
+      # pathspec (2026-08-29), then when the pulse judge missed its
+      # result line (2026-09-01). The run still FAILS in both cases,
+      # loudly; it just no longer costs the work that succeeded.
       - name: Commit to pulse-data
-        if: steps.date.outputs.skip != 'true' || steps.pulse.outputs.skip != 'true'
+        if: always()
         working-directory: pulse-data
         run: |
           git config user.name "ask-qc-bot"
