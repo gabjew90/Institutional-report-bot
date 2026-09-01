@@ -1209,9 +1209,28 @@ for theme, inputs in inputs_per_theme.items():
     })
 
     def _is_valid_source(name: str) -> bool:
+        # COMPOSITE SOURCES (fixed 2026-09-01). The adjudicator writes
+        # a joint attribution as one string when two banks assert the
+        # same fact -- "Deutsche Bank + Goldman Sachs". Exact matching
+        # rejected those, so a theme whose only multi-bank fact was
+        # jointly sourced was DISCARDED for a bug, not a judgment: on
+        # 2026-09-01 the `jackson hole symposium` theme dropped this
+        # way, and the published MAIN EVENT was built on Jackson Hole
+        # without ever naming it.
+        #
+        # Split on the separators the adjudicator actually uses and
+        # require EVERY part to be valid: a composite is only as
+        # trustworthy as its weakest attribution, so "Goldman Sachs +
+        # SomeMadeUpDesk" must still fail.
         if not name:
             return True
-        return name in valid_sources or name in AGENCY_WHITELIST
+        if name in valid_sources or name in AGENCY_WHITELIST:
+            return True
+        parts = [p.strip() for p in re.split(r'\s*(?:\+|&|/|,| and )\s*', name) if p.strip()]
+        if len(parts) < 2:
+            return False
+        return all(p in valid_sources or p in AGENCY_WHITELIST
+                   for p in parts)
 
     # Rule 2: banks must appear in input sources (or agency whitelist)
     if not fail_reason:
