@@ -1,0 +1,6 @@
+[PRESS-TIME NOTE - binding, overrides the calendar's upcoming/released split]
+
+ROUTINE NOTE (2026-09-01): STEP 2.5's regex in synthesis-routine.md matches ' ET | [US]' but this calendar's fallback feed (Finnhub down, ForexFactory weekly) emits ' EDT | [US]'. The straddle check therefore printed 'clean' and produced NO note, even though a Tier-1 event straddled the snapshot. The note below was written by hand after inspecting the calendar. FIX NEEDED: widen the regex to (?:E[SD]T|ET).
+
+- PRESS-TIME EVENT: 'ISM Manufacturing PMI' (and 'ISM Manufacturing Prices') was scheduled for 10:00 EDT on 2026-09-01. It PRINTS BEFORE this pulse posts but AFTER the 09:37 EDT context snapshot. The calendar row still lists it as upcoming with est=55.2 / prev=55.6; that row is stale. The corpus was searched for a released actual and carries NONE: every ISM entry in analyses_json is figure_status='forecast' (Goldman Sachs 56.0, JPMorgan/Feroli 55.0 vs 55.2 survey vs 55.6 prior). Therefore: frame ISM as 'the number hit this morning' and make the item the REACTION, not the print. NEVER present ISM Manufacturing as an upcoming event to watch. NEVER invent, guess, or imply an actual value.
+- The ISM Manufacturing Prices sub-index (est=70.5, prev=71.1) printed at the same time and is subject to the identical rule.

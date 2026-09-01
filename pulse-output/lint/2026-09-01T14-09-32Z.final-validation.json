@@ -1,0 +1,16 @@
+{
+ "hard_count": 0,
+ "soft_count": 8,
+ "exit_code": 4,
+ "_routine_note": "All 8 are soft or waived-from-DRAFT. Reviewed individually and judged false positives: (a) numeric-scope-drift on 2.33% and 1.30% are the live GLD/QQQ session moves from market_snapshot, correctly scoped; (b) the four UNEMPLOYMENT rows (0.25/0.5/0.75/1.1/1.25) are JPMorgan's SPX payoff grid around Friday payrolls, not unemployment prints, and are labeled as forecast ranges; (c) CPI 0.2% carried over from the DRAFT run and is explicitly attributed as Goldman's expectation ('Goldman's economists expect core inflation near 0.2% for August'), not shipped as a print.",
+ "violations": [
+  {"kind": "numeric-scope-drift", "severity": "soft", "figure": "2.33%"},
+  {"kind": "numeric-scope-drift", "severity": "soft", "figure": "1.30%"},
+  {"kind": "unreconciled-release-figure", "severity": "hard-waived-from-draft-run", "figure": "0.2", "event": "CPI", "matches_estimate": true, "sentence": "Goldman's economists expect core inflation near 0.2% for August, a pace they read as consistent with holding"},
+  {"kind": "unreconciled-release-figure", "severity": "soft", "figure": "0.5", "event": "UNEMPLOYMENT"},
+  {"kind": "unreconciled-release-figure", "severity": "soft", "figure": "1.25", "event": "UNEMPLOYMENT"},
+  {"kind": "unreconciled-release-figure", "severity": "soft", "figure": "0.25", "event": "UNEMPLOYMENT"},
+  {"kind": "unreconciled-release-figure", "severity": "soft", "figure": "0.75", "event": "UNEMPLOYMENT"},
+  {"kind": "unreconciled-release-figure", "severity": "soft", "figure": "1.1", "event": "UNEMPLOYMENT"}
+ ]
+}
