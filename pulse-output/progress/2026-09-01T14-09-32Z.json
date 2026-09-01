@@ -1,30 +1,18 @@
 {
  "ts": "2026-09-01T14-09-32Z",
  "events": [
-  {
-   "step": "STEP_2_DONE",
-   "time": "2026-09-01T14:12:00Z",
-   "detail": "ctx fetched via MCP (raw.githubusercontent 404 in this env); pdf_count=57, themes=33"
-  },
-  {
-   "step": "STEP_2_2_DONE",
-   "time": "2026-09-01T14:13:00Z",
-   "detail": "holiday gate CONTINUE; volume gate CONTINUE pdf_count=57; press-time note written for 10:00 EDT ISM straddle"
-  },
-  {
-   "step": "STEP_3_5_DONE",
-   "time": "2026-09-01T14:20:00Z",
-   "detail": "8 themes dispatched, 7 validated, 1 discarded (jackson hole symposium)"
-  },
-  {
-   "step": "STEP_4_5_VALIDATE_DONE",
-   "time": "2026-09-01T14:30:00Z",
-   "detail": "draft_validate DECISION: CONTINUE (6 soft, 0 hard)"
-  },
-  {
-   "step": "STEP_5B_EDIT_DISPATCHED",
-   "time": "2026-09-01T14:33:00Z",
-   "detail": "stitch applied 1 fix; EDIT sub-agent dispatched"
-  }
+  {"step": "STEP_2_DONE", "time": "2026-09-01T14:12:00Z", "detail": "ctx fetched via MCP (raw.githubusercontent 404 in this env); pdf_count=57, themes=33"},
+  {"step": "STEP_2_2_DONE", "time": "2026-09-01T14:13:00Z", "detail": "holiday gate CONTINUE; volume gate CONTINUE pdf_count=57; press-time note hand-written for 10:00 EDT ISM straddle (regex missed it)"},
+  {"step": "STEP_3_5_DONE", "time": "2026-09-01T14:20:00Z", "detail": "8 themes dispatched, 7 validated, 1 discarded (jackson hole symposium)"},
+  {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-09-01T14:21:12Z", "detail": "draft_validate DECISION: CONTINUE (6 soft, 0 hard)"},
+  {"step": "STEP_5A_STITCH_DONE", "time": "2026-09-01T14:22:00Z", "detail": "1 mechanical fix (stripped _DRAFT NOTES)"},
+  {"step": "STEP_5B_EDIT_DONE", "time": "2026-09-01T14:26:00Z", "detail": "EDIT sub-agent returned 12341 chars from 11118 in"},
+  {"step": "STEP_5_5_LINT_DONE", "time": "2026-09-01T14:26:27Z", "detail": "1 hard (source-prefix), 1 soft -> DISPATCH_SCRUB"},
+  {"step": "STEP_5_7_SCRUB_DONE", "time": "2026-09-01T14:27:05Z", "detail": "SCRUB single targeted rewrite; relint 0 hard"},
+  {"step": "STEP_5_75_FINAL_VALIDATE_DONE", "time": "2026-09-01T14:27:08Z", "detail": "CONTINUE, no EDIT/SCRUB-introduced hard violations"},
+  {"step": "STEP_5_8_STRIP_DONE", "time": "2026-09-01T14:27:13Z", "detail": "stripped 541 chars (_EDIT NOTES)"},
+  {"step": "STEP_5_85_ADVERSARIAL_DONE", "time": "2026-09-01T14:39:48Z", "detail": "round1 3 hard/1 soft -> repair -> round2 fresh checker 0 hard/1 soft -> CONTINUE"},
+  {"step": "STEP_6_COMMIT_DONE", "time": "2026-09-01T14:44:00Z", "detail": "preflight PASS; pulse + adjudication + forensics committed via MCP"},
+  {"step": "STEP_7_QC_DONE", "time": "2026-09-01T14:57:04Z", "detail": "QC review committed, 42518 bytes"}
  ]
 }
