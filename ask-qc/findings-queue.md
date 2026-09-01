@@ -62,3 +62,7 @@ branch)*
   tool-status shaped). Queued as prompt-session material: should a turn
   naming a specific office-holder be required to check against the most
   recent grounded turn that named the same office, before publish?
+
+## 2026-08-31
+
+no findings
