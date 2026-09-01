@@ -1,0 +1,251 @@
+{
+  "pulse_date": "2026-09-01",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "hawkish fed policy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four bank desks read Fed Chair Warsh's Jackson Hole speech as a clear hawkish turn that puts bringing inflation down ahead of everything else, and the market now prices roughly a 60% chance of a rate increase at the September meeting.",
+      "facts_agreed": [
+        {
+          "claim": "Warsh's Jackson Hole speech was a hawkish shift from his earlier tone, restating the 2% inflation goal and making the short-term policy rate the main tool.",
+          "banks_for": [
+            "Deutsche Bank",
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Warsh’s Jackson Hole speech marked a notable communication shift, delivering greater specificity",
+            "Warsh’s speech was a strong departure from his comments at the July FOMC meeting",
+            "Warsh said that with inflation “running above our 2 percent target,” “the Fed’s predominant focus"
+          ]
+        },
+        {
+          "claim": "Higher inflation will be answered with a higher policy rate, and further increases stay on the table unless inflation data improves.",
+          "banks_for": [
+            "JPMorgan",
+            "Rabobank"
+          ],
+          "evidence_quotes": [
+            "higher inflation will be met with a higher funds rate.",
+            "he explicitly expressed dissatisfaction with recent inflation developments and signalled that he was open"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai and memory capex outlook",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Both banks read AI and memory spending as still accelerating: chip and data-center budgets are expected to hold up through 2027 and 2028, and memory chip prices, especially the fast memory that AI servers depend on, keep getting revised higher.",
+      "facts_agreed": [
+        {
+          "claim": "Memory pricing is set to keep rising into 2027, with the fast memory used in AI servers leading the move and supplier capacity being steered toward it.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "we continue to hold a more positive view on next year’s HBM pricing.",
+            "We also raised our estimates to 100% yoy (from +50% yoy)",
+            "remains overall positive on pricing due to suppliers’ capacity allocation towards server DRAM and HBM."
+          ]
+        },
+        {
+          "claim": "AI infrastructure spending is running strong and is not expected to slow over the next one to two years.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Recent results from hyperscalers and Nvidia reinforce our view of a robust AI spending environment",
+            "a slowdown looks unlikely to happen, at least in 2027",
+            "We are expecting a strong WFE industry upturn to materialize through at least 2028"
+          ]
+        },
+        {
+          "claim": "Goldman expects AI computing power to concentrate among the leading labs rather than spread out, and to keep pulling physical data-center buildout with it.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "better economics at the frontier may cause compute to centralize",
+            "SLB sees the acquisition of Kelvion as a strategy to strengthen the company’s Data Center Solutions business"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "september central bank meetings",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the September Fed meeting, and for one of them the Bank of Japan meeting too, as the event that sets the tone for the month, but none has staked out a call on what the Fed actually does.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks point to the September Fed meeting as the central event of the window, framed around whether a rate hike comes.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "September FOMC meeting seasonality",
+            "September FOMC hike expectations",
+            "Fed September meeting uncertainty",
+            "September FOMC meeting"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs and JPMorgan both treat September as a month loaded with events that can move markets rather than a quiet stretch.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "September market catalysts",
+            "September FOMC meeting seasonality"
+          ]
+        },
+        {
+          "claim": "The September central bank watch extends past the Fed to the Bank of Japan, where a rate increase is also in play.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "BoJ September hike expectations"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "labor day holiday liquidity",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the Labor Day holiday as a period of thinner trading volume and reduced market activity, but none takes a directional view on what that does to prices.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, JPMorgan and The Market Ear all note the Labor Day holiday as a driver of lower trading volume and liquidity in US markets this week.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Labor Day holiday seasonal volume deceleration",
+            "Labor Day holiday US market slowdown",
+            "Labor Day liquidity reduction",
+            "Labor Day weekend liquidity",
+            "Labor Day vol sale"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai semiconductor recovery",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Only one desk has taken a side: JPMorgan says the sell-off in AI chip stocks is past its worst point, and the rest of the corpus mentions the subject without arguing either way.",
+      "facts_agreed": [
+        {
+          "claim": "JPMorgan reads the drop in AI semiconductor-related sectors as having already passed its deepest phase.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "the prevailing market narrative supports our QDS team’s assessment that the correction in AI semiconductor-related sectors has passed its worst phase"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us canada trade war",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the trade fight between the US and Canada as a live risk in this window, but none of them has taken a side on where it goes next.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, Rabobank and JPMorgan all reference the US-Canada trade conflict as an active macro risk, with JPMorgan framing it as escalating.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Rabobank",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "US-Canada trade war",
+            "US-Canadian trade war",
+            "US-Canada trade war escalation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us iran military exchange",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the US-Iran military exchange as a live risk they are tracking, but none of them has taken a side on where it pushes markets.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference the US-Iran military exchange as an active geopolitical event this window without staking a directional view.",
+          "banks_for": [
+            "Rabobank",
+            "JPMorgan",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "US-Iran military strikes in Jordan",
+            "US-Iran kinetic exchange",
+            "US-Iran geopolitical exchange"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "jackson hole symposium",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    }
+  ]
+}
