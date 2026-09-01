@@ -72,5 +72,16 @@ Environment: `QC_PULSE_TS` env var holds today's run timestamp
    action yet). No findings is a legitimate day — append the heading
    with "no findings". Entries are removed by sessions, never by you.
 
-End with exactly one line:
+## The result line — MANDATORY, and it is the LAST thing you emit
+
+Your final message must END with this line, alone, exactly:
+
 `PULSE QC RESULT: <n> finding(s), gate trail <clean|anomalous>, spot-check <n>/<n> verified`
+
+Not before a summary, not followed by closing prose — LAST. The
+workflow greps for it to decide whether your run counted, so a report
+that is written, committed, and correct still FAILS the run without
+it. That is exactly what happened on 2026-09-01: a complete review
+ending in a prose summary instead of this line.
+
+Do NOT run git. The workflow commits your files.
