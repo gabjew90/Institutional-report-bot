@@ -5,6 +5,26 @@
    "step": "STEP_2_DONE",
    "time": "2026-09-01T14:12:00Z",
    "detail": "ctx fetched via MCP (raw.githubusercontent 404 in this env); pdf_count=57, themes=33"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-09-01T14:13:00Z",
+   "detail": "holiday gate CONTINUE; volume gate CONTINUE pdf_count=57; press-time note written for 10:00 EDT ISM straddle"
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-09-01T14:20:00Z",
+   "detail": "8 themes dispatched, 7 validated, 1 discarded (jackson hole symposium)"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-09-01T14:30:00Z",
+   "detail": "draft_validate DECISION: CONTINUE (6 soft, 0 hard)"
+  },
+  {
+   "step": "STEP_5B_EDIT_DISPATCHED",
+   "time": "2026-09-01T14:33:00Z",
+   "detail": "stitch applied 1 fix; EDIT sub-agent dispatched"
   }
  ]
 }
