@@ -97,3 +97,55 @@ Full report: `pulse-output/qc-headless/2026-08-31T14-07-12Z.md`.
   worth someone checking where the "6 banks" figure came from before
   it's used to justify a fix — the severity ordering between this
   theme and the hyperscaler miss may be backwards.
+
+## 2026-09-01 — headless QC on 2026-09-01T14-09-32Z
+
+Full report: `pulse-output/qc-headless/2026-09-01T14-09-32Z.md`. STEP 7's
+self-review this fire was unusually thorough (`qc-reviews/2026-09-01T14-09-32Z.md`)
+and I independently verified its central claims from `pending-adjudications.json`
+and the drafts/pre-scrub diff rather than taking them on faith; no disagreements
+on substance. Below are the items that are new or that cross a confirmation
+threshold today.
+
+- **deterministic-fixable** — `pulse-context/latest.json` overwritten-by-later-run
+  staleness bug, now confirmed **2/2** (first flagged 2026-08-31, recurs today:
+  `dumped_at_utc` in `latest.json` is 2026-09-01T18:12:28Z / 59 PDFs / last-24h,
+  while this run's actual scheduled dump was 13:37:33Z / 57 PDFs, per the archive
+  frontmatter). Two confirmed occurrences is enough to stop treating this as
+  "worth tracking" — it's systemic. Either stop overwriting `latest.json`
+  intraday, or repoint QC/verification tooling at the run-scoped
+  `pulse-output/pending-adjudications/$TS.json` / `drafts/$TS.md` /
+  `pre-scrub/$TS.md` (which is what today's headless QC used instead, and it
+  worked fine as a substitute).
+- **deterministic-fixable** — `slot-stat-overlap` lint false positive, now
+  confirmed **5/5** sampled days (2026-08-27 "15%", 08-28 "3%", 08-31 "4%"/"34%",
+  09-01 "40%"). Today's instance verified by hand: the two citing sentences
+  ("OpenAI and Anthropic could absorb 40% to 50% of all incremental computing
+  power" vs. "roughly 40% of the S&P 500 enters the... buyback blackout window")
+  share nothing but a round number. STEP 7's proposed fix (key on `(value, unit,
+  nearest subject noun)` instead of the bare numeral, in
+  `scripts/pulse_lint.py :: _check_slot_stat_overlap`) is already written up with
+  scope in today's qc-reviews file — promoting from "worth tracking" to "should
+  ship" given the every-single-day recurrence.
+- **deterministic-fixable** — duplicate "highest since January 2025" superlative
+  attached to two different 10-year Treasury yield figures in the same pulse:
+  RECAP says 4.78% is "its highest since January 2025," the MAIN EVENT bullet
+  says 4.75% (Monday's close) is "its highest since January 2025." Both survived
+  all four adversarial repair rounds untouched — the repairs fixed the *date*
+  attribution on the 4.75% figure (Friday→Monday) but nobody checked the two
+  superlatives against each other. Needs either a deterministic check (two
+  distinct figures for the same series+metric both claiming the same superlative
+  in one document is always a contradiction) or folding into the adversarial
+  checker's remit, since it's exactly the kind of cross-reference error that
+  checker already catches for dates/attributions.
+- **observation** — the Jackson Hole discard (composite source-string bug,
+  `_is_valid_source` at `synthesis-routine.md:1212`, already fully written up by
+  STEP 7 with scope/fix) and the "Jackson Hole never named in the final despite
+  being the MAIN EVENT's entire basis" reader-comprehension defect are the same
+  failure surfacing twice, confirmed via `pending-adjudications.json`'s
+  `discarded_themes` reason string matching the theme's own `banks_for` list.
+  Not filing as a separate item — STEP 7's queued fix for the source-string bug
+  should be understood as also fixing the naming gap, since the discarded
+  theme's `facts_agreed` block is where "Jackson Hole" as a proper noun lives in
+  the pipeline. Worth confirming next run that a fix restores the name, not just
+  the theme's validation status.
