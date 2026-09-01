@@ -86,7 +86,7 @@ def test_failure_expires_by_calendar_day_not_elapsed_hours():
 
 # ------------------------------------------------ earnings assembly
 
-def _build_with(raw_rows, econ_rows=(), moves=None):
+def _build_with(raw_rows, econ_rows=(), moves=None, caps=None):
     """Run build_calendar_day against canned feed rows. Patches every
     network boundary and restores them, so nothing here touches
     Finnhub, ForexFactory, or Yahoo.
@@ -108,10 +108,14 @@ def _build_with(raw_rows, econ_rows=(), moves=None):
         nd.fetch_us_econ_events_for_date = lambda d: list(econ_rows)
         # every symbol resolves to a distinct descending cap so ranking
         # is deterministic and never hits the network
-        cd._resolve_caps = lambda syms: {
-            s: {"cap": 1000.0 - i, "name": f"{s} Inc"}
-            for i, s in enumerate(dict.fromkeys(syms))
-        }
+        # Default caps sit BELOW MIN_CAP_ALWAYS_SHOW so the tier
+        # rules under test are the session/move ones; pass `caps` to
+        # exercise the cap floor.
+        cd._resolve_caps = (lambda syms: dict(caps)) if caps else (
+            lambda syms: {
+                s: {"cap": 1000.0 - i, "name": f"{s} Inc"}
+                for i, s in enumerate(dict.fromkeys(syms))
+            })
         cd._implied_move_fetch = lambda s, d: (moves or {}).get(s)
         cd._MOVE_PACE_S = 0
         return cd.build_calendar_day("2026-08-27")
@@ -482,3 +486,63 @@ def test_resolve_logos_never_downloads_a_cached_symbol():
         cd._http_bytes = orig
     assert calls == [], f"downloaded a cached logo: {calls}"
     assert got["CACHEDLOGO"] == b"\x89PNG-ish"
+
+
+# ------------------------------------------- cap floor (2026-09-01)
+
+def test_big_cap_renders_without_a_confirmed_session():
+    """The 9/1 defect: the sheet renders at 00:00 UTC, when Finnhub has
+    not yet filled `hour` for many names. MongoDB and GitLab were
+    dropped from AMC while the room asked the bot who reports tonight;
+    both were confirmed hours later. Above the cap floor a name renders
+    regardless."""
+    day = _build_with([{"symbol": "MDB", "hour": ""}],
+                      moves={"MDB": 15.7},
+                      caps={"MDB": {"cap": 36_465.0, "name": "MongoDB"}})
+    assert [r.symbol for r in day.amc] == ["MDB"]
+    assert day.amc[0].session_confirmed is False
+
+
+def test_big_cap_renders_without_a_priced_move():
+    """"This major reports tonight, unpriced" is information; silently
+    omitting it is not."""
+    day = _build_with([{"symbol": "MDB", "hour": "amc"}], moves={},
+                      caps={"MDB": {"cap": 36_465.0, "name": "MongoDB"}})
+    assert [r.symbol for r in day.amc] == ["MDB"]
+    assert day.amc[0].implied_move is None
+
+
+def test_small_cap_exclusions_still_stand():
+    """Below the floor the owner's rules are unchanged: unconfirmed or
+    unpriceable small names stay off the sheet."""
+    # A third name PRICES, so the wholesale-failure fallback (which
+    # shows everything with dashes rather than claim an empty session)
+    # does not fire and the exclusions are what is actually under test.
+    day = _build_with([{"symbol": "TINY", "hour": ""},
+                       {"symbol": "SMALL", "hour": "amc"},
+                       {"symbol": "OKAY", "hour": "amc"}],
+                      moves={"OKAY": 6.0},
+                      caps={"TINY": {"cap": 100.0, "name": "Tiny"},
+                            "SMALL": {"cap": 200.0, "name": "Small"},
+                            "OKAY": {"cap": 300.0, "name": "Okay"}})
+    assert [r.symbol for r in day.amc] == ["OKAY"], (
+        "TINY is unconfirmed and SMALL cannot price; both are below the "
+        "cap floor, so both stay off the sheet")
+    assert day.dropped_amc == 2
+
+
+def test_floor_does_not_resurrect_junk_above_it_by_accident():
+    """The floor is a cap test, not a bypass: a big name still counts
+    toward TOP_N and ranks by cap like everything else."""
+    from report import calendar_data as cd
+    orig_n = cd.TOP_N
+    try:
+        cd.TOP_N = 1
+        day = _build_with([{"symbol": "MID", "hour": "amc"},
+                           {"symbol": "BIG", "hour": ""}],
+                          moves={"MID": 5.0, "BIG": 7.0},
+                          caps={"BIG": {"cap": 300_000.0, "name": "Big"},
+                                "MID": {"cap": 9_000.0, "name": "Mid"}})
+    finally:
+        cd.TOP_N = orig_n
+    assert [r.symbol for r in day.amc] == ["BIG"]

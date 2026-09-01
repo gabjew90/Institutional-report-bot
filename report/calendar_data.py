@@ -18,6 +18,23 @@ log = logging.getLogger(__name__)
 _ET = ZoneInfo("America/New_York")
 TOP_N = 15  # owner call 2026-08-20: 15 per session (was 20, then 10)
 
+# Market cap (in $M) above which a name ALWAYS renders, even without a
+# confirmed session and even when its implied move will not price.
+#
+# WHY (2026-09-01): the sheet renders at 00:00 UTC, the earliest and
+# least-complete moment of Finnhub's day — it fills the `hour` field
+# progressively, and Yahoo's chains are thin right at 8 PM ET. The
+# confirmed-session and priced-move exclusions are correct for the
+# junk tail, but applied at that hour they also dropped MongoDB,
+# GitLab and others from the AMC column while the room was asking the
+# bot who reports tonight (three separate times, 2026-09-01). Those
+# names were confirmed and priceable hours later.
+#
+# A reader needs to know a major reports tonight even when the sheet
+# cannot price it. Below the floor the exclusions stand as the owner
+# set them.
+MIN_CAP_ALWAYS_SHOW = 5_000  # $5B
+
 
 @dataclass
 class EconRow:
@@ -231,8 +248,9 @@ def _implied_move_fetch(sym: str, date_iso: str) -> float | None:
     return implied_move_pct(sym, date_iso)
 
 
-def _select_priced(ranked: list[str],
-                   date_iso: str) -> list[tuple[str, float]]:
+def _select_priced(ranked: list[str], date_iso: str,
+                   always_keep: set | None = None
+                   ) -> list[tuple[str, float]]:
     """First TOP_N names from the cap-ranked pool whose ATM straddle
     prices honestly, in rank order: [(symbol, move_pct), ...].
 
@@ -262,6 +280,12 @@ def _select_priced(ranked: list[str],
                      f"treated as unpriceable")
             mv = None
         if mv is None:
+            # Above the cap floor the name renders anyway, with a dash
+            # for the move — "this major reports tonight, unpriced" is
+            # information; silently omitting it is not.
+            if sym in (always_keep or set()):
+                kept.append((sym, None))
+                continue
             skipped.append(sym)
             continue
         kept.append((sym, mv))
@@ -353,11 +377,20 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
         # The owner would rather not show them. The unconfirmed names
         # still count toward "+N more", so the sheet stays honest about
         # what it is not showing.
+        def _cap(sym: str) -> float:
+            return float(caps.get(sym, {}).get("cap") or 0)
+
+        # A name is a candidate when its session is confirmed OR it is
+        # big enough to matter regardless (see MIN_CAP_ALWAYS_SHOW).
         ranked = sorted(
-            (s for s in syms if confirmed.get(s)),
-            key=lambda s: -(caps.get(s, {}).get("cap") or 0)
+            (s for s in syms
+             if confirmed.get(s) or _cap(s) >= MIN_CAP_ALWAYS_SHOW),
+            key=lambda s: -_cap(s)
         )
-        kept = _select_priced(ranked, date_iso)
+        kept = _select_priced(
+            ranked, date_iso,
+            always_keep={s for s in ranked
+                         if _cap(s) >= MIN_CAP_ALWAYS_SHOW})
         if not kept and ranked:
             # WHOLESALE failure — Yahoo down, module broken (the
             # 2026-08-27 numpy/LD_LIBRARY_PATH incident), or a session
