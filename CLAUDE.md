@@ -131,7 +131,7 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | Module | Purpose |
 |---|---|
 | `config.py` | All settings from env vars via pydantic-settings |
-| `db.py` | SQLite schema + query helpers (WAL mode) |
+| `db.py` | SQLite core: connection model, schema, migrations, shared helpers, and the FACADE that re-exports every query helper from `db_parts/` (split by subject 2026-09-01: `pdf`, `chat`, `pulse`, `analyst`, `summaries`, `ask`). Always `import db` and call `db.<name>`; inside `db_parts/` every db call reads `_db.<name>` so facade patches keep working. New helper: put it in the subject module and add it to the facade import list at the bottom of `db.py` |
 | `dropbox_client/watcher.py` | Cursor-based Dropbox polling + download |
 | `pdf_processing/extractor.py` | PyMuPDF text extraction; page-image rendering used only by the multimodal carve-out |
 | `pdf_processing/page_selector.py` | Multi-signal page scoring. LIVE again since 2026-05-07 for the narrow multimodal carve-out (see Key Design Decisions); imported by `ai_analysis/analyzer.py` |

@@ -886,3 +886,18 @@ Google. Fixed deterministically (slate prefetch in phase 2, mirrored
 in the harness). The harness's production fingerprint moved from 10 to
 11 function tools because production did.
 
+## 2026-09-01 — db.py split by subject (facade kept)
+
+db.py was 6,326 lines. Now ~1,500 lines of core (connection model,
+schema, migrations, shared helpers) plus six subject modules under
+db_parts/ (pdf 46 fns, chat 31, pulse 25, analyst 20, summaries 8,
+ask 4). Classification by the tables a function's SQL touches; helpers
+with no SQL follow their single caller.
+
+Verbatim moves with one deliberate rewrite: inside a moved body every
+reference to a db.py function reads `_db.<name>`, so monkeypatches on
+the facade (two smokes replace `db.get_connection`) and the
+thread-local connection model keep working. Nothing outside db.py
+changed. Verified with the full unit suite, the fast smoke tier,
+pyflakes on all seven files and the container import gate.
+
