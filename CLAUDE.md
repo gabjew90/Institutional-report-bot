@@ -143,7 +143,7 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `report/market_data.py` | CoinGecko + Yahoo Finance live price snapshot |
 | `report/news_data.py` | Finnhub news + earnings calendar + economic calendar (all hard-filtered) |
 | `report/formatter.py` | Discord embed formatting with color-coded sections + dynamic footer |
-| `discord_bot/bot.py` | Discord bot with /pulse, /status, /load, /reanalyze, /clearqueue, /seedcursor, /reprocess; `_answer_with_gemini` is the /ask pipeline |
+| `discord_bot/bot.py` | Discord bot with /pulse, /status, /load, /reanalyze, /clearqueue, /seedcursor, /reprocess. `_answer_with_gemini` is the /ask pipeline: ~380 lines that call eleven phase functions `_ask_00_setup_tools_and_context` .. `_ask_10_log_and_render` in order (split 2026-09-01, text verbatim, explicit parameter/return interfaces; `_AskEarly` carries the budget refusal out of phase 2). Edit the phase, not the caller |
 | `discord_bot/ask_tools.py` | The /ask tool layer: `_build_*_tool` declarations and `_execute_*` executors (extracted from bot.py 2026-09-01; bot.py re-exports every name) |
 | `discord_bot/tool_docs.py` | Routing text for every tool (WHEN TO CALL / DO NOT use); tested by `tests/test_tool_docs.py` |
 | `discord_bot/ops_alert.py` | Ops pings to `OPS_ALERT_CHANNEL_ID` from any context |
@@ -153,6 +153,10 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `test_pulse.py` | CLI tool for manual testing |
 | `inspect_db.py` | CLI for browsing DB state |
 | `main.py` | Entry point |
+
+### /ask: deterministic routing nets live in code, not the prompt
+
+`_is_calendar_question` forces a grounded retry for ungrounded calendar answers. `_is_earnings_slate_question` (2026-09-01) goes further: phase 2 calls `lookup_earnings_slate` itself BEFORE the first model call and injects the result as an authoritative block, because with the tool declared the model still reached for chat search plus Google and shipped a partial list. `scripts/ask_fixture_run.py` mirrors the prefetch so fixture 49 measures the deployed behaviour. Add new nets the same way: a regex classifier with a unit test, a prefetch or forced retry in the phase, and a fixture.
 
 ## Discord Commands
 

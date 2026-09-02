@@ -863,3 +863,26 @@ least complete moment of Finnhub's day; a 12:30 UTC refresh that
 re-posts when the confirmed set changed would remove the whole class
 that the $5B cap floor only patches.
 
+## 2026-09-01 — /ask pipeline split into phases (verbatim)
+
+`_answer_with_gemini` was 3,145 lines in one try block. It is now ~380
+lines calling eleven `_ask_NN_*` phase functions in order. The split is
+mechanical and verbatim: an AST pass partitioned the try body into
+blocks of at least 150 lines at statement boundaries, computed each
+block's true inputs (locals read before written, evaluation-order
+aware) and outputs (locals later blocks read), and emitted one async
+function per block with those as parameters and return tuple. The one
+early return (budget refusal in phase 2) rides out as `_AskEarly`.
+Reconstructing the original body from the phases and diffing it showed
+exactly one differing line: the closing paren of that wrapper.
+
+Verified: 232 unit tests, 49/49 fixtures self-test, fixtures 03 and 49
+live through the real model, fast smoke tier (157), pyflakes clean.
+
+Found while doing it: fixture 49 failed LIVE before and after the
+split, for the same reason: with `lookup_earnings_slate` declared, the
+model still answered "who reports after close" from chat search plus
+Google. Fixed deterministically (slate prefetch in phase 2, mirrored
+in the harness). The harness's production fingerprint moved from 10 to
+11 function tools because production did.
+

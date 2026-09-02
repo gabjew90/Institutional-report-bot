@@ -2299,6 +2299,29 @@ def _is_calendar_question(question: str) -> bool:
     )
 
 
+_SLATE_RE = re.compile(
+    r"\b(?:who(?:'s|s| is| are)?\s+(?:all\s+)?report(?:s|ing)?"
+    r"|(?:reports?|reporting|earnings)\b.{0,40}?\b(?:today|tonight|tomorrow|tmrw?"
+    r"|this\s+week|after\s+(?:the\s+)?(?:close|bell)|before\s+(?:the\s+)?(?:open|bell)"
+    r"|on\s+deck|slate|lineup|calendar))\b",
+    re.IGNORECASE,
+)
+_SLATE_NOT_RE = re.compile(
+    r"\b(?:when\s+(?:does|is|do)|did\s+\S+\s+(?:beat|miss|report)|last\s+quarter"
+    r"|results?\b|how\s+did)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_earnings_slate_question(question: str) -> bool:
+    """"Who reports today / after close / this week": a slate question,
+    answered from the calendar feed, not from search. Excludes the
+    one-symbol shapes lookup_earnings_date owns ("when does NVDA
+    report") and post-print questions ("did PLTR beat")."""
+    q = question or ""
+    return bool(_SLATE_RE.search(q)) and not _SLATE_NOT_RE.search(q)
+
+
 def _ungrounded_web_specifics(
     answer: str, gm, was_web: bool, is_opinion: bool = False,
 ) -> bool:
@@ -4027,6 +4050,3311 @@ def _capture_book_context(args: dict, result, out_meta: dict) -> None:
         log.warning(f"book-context capture failed (non-fatal): {e}")
 
 
+class _AskEarly:
+    """A phase decided the answer early (budget refusal); the caller
+    returns .value in place of the pipeline result."""
+    __slots__ = ("value",)
+
+    def __init__(self, value):
+        self.value = value
+
+
+async def _ask_00_setup_tools_and_context(
+    channel_id,
+    profile_user_ids,
+    user_id
+):
+    """Phase 0 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+    _prior_bot_answer_texts = None
+    config = None
+    cross_window_block = None
+    profiles_block = None
+    safety_settings = None
+    types = None
+    from google.genai import types
+    # Two tools available to the model:
+    #   1. Google Search grounding — for current/factual lookups
+    #   2. search_chat_messages — for historical room-chat lookups
+    # Gemini requires tool_config.include_server_side_tool_invocations=True
+    # to mix a built-in tool (Google Search) with function declarations.
+    # Without that flag the API returns 400 INVALID_ARGUMENT. The model
+    # picks which tool (or none) based on the question.
+    # Safety settings — set ALL categories to BLOCK_NONE on input.
+    # The prompt deliberately injects raw verbatim quotes from chat
+    # (subject-verbatim block, slur_examples in user profiles) so
+    # the bot can analyze room dynamics, racism-rank, and answer
+    # questions like "what's Abe's win rate" without the input
+    # being rejected. Production log on 2026-05-28:
+    #   prompt_block='PROHIBITED_CONTENT'
+    # …on a benign "what's Abe's win rate this week" because the
+    # subject-verbatim block contained slurs Abe had posted. With
+    # default safety, Gemini rejects the whole prompt before
+    # generating anything, and the user sees a blank embed (or
+    # the misleading "safety filter tripped" fallback). The bot's
+    # design intent is to READ this content for analysis; output
+    # safety still applies to anything the bot itself emits.
+    safety_settings = [
+        types.SafetySetting(
+            category=cat,
+            threshold=types.HarmBlockThreshold.BLOCK_NONE,
+        )
+        for cat in (
+            types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+        )
+    ]
+
+    config = types.GenerateContentConfig(
+        system_instruction=_build_runtime_system_instruction(),
+        tools=[
+            types.Tool(google_search=types.GoogleSearch()),
+            # Native code execution (2026-07-29): Google runs the
+            # Python in THEIR sandbox — member-commanded code never
+            # touches Railway. The model uses it for analytical
+            # questions (payoff math, monte carlo, IV, stats) and
+            # renders charts. Verified coexisting with the function
+            # tools on 3.5-flash-lite. Raw stdout is never posted —
+            # the model's composed text answer flows through the
+            # existing disclosure/fidelity guards; only rendered
+            # chart images are surfaced.
+            types.Tool(code_execution=types.ToolCodeExecution()),
+            _build_chat_search_tool(),
+            _build_user_profile_tool(),
+            _build_trade_log_tool(),
+            _build_market_price_tool(),
+            _build_options_chain_tool(),
+            _build_economic_calendar_tool(),
+            _build_earnings_date_tool(),
+            _build_earnings_slate_tool(),
+            _build_query_data_tool(),
+            _build_price_history_tool(),
+            # Sleeper fantasy tool only exists when a league is
+            # configured — an unregistered tool costs no schema
+            # tokens and can't be miscalled.
+            *([_build_fantasy_league_tool()]
+              if (settings.sleeper_league_id or "").strip() else []),
+        ],
+        tool_config=types.ToolConfig(
+            include_server_side_tool_invocations=True,
+        ),
+        safety_settings=safety_settings,
+        # max_output_tokens = 5000 (bumped 2026-05-28 from 4000).
+        # Thinking budget bumped to 2000 — Type 1 answers with
+        # search grounding can use more reasoning when working
+        # through caller-trade context + WHO'S TALKING + the
+        # recent-chat block. The 200-word soft cap in the prompt
+        # still binds the visible answer; the larger total budget
+        # exists to prevent cliff-truncation, not to encourage
+        # longer responses.
+        max_output_tokens=5000,
+        temperature=0.3,
+        thinking_config=types.ThinkingConfig(thinking_budget=2000),
+    )
+    # Compose the final user message:
+    #   1. WHO'S TALKING — profiles for users active in this chat
+    #   2. Analyst trade log (Abe's recent trades)
+    #   3. Fetched URL contents (user-shared sources)
+    #   4. Recent channel chat context
+    #   5. Separator + actual question
+    # Skip any section that's empty.
+    profiles_block = ""
+    try:
+        if profile_user_ids:
+            profiles_block = db.format_user_profiles_for_context(profile_user_ids)
+    except Exception as e:
+        log.warning(f"User-profile fetch failed (non-fatal): {e}")
+
+    # Analyst trade context is no longer auto-injected (was: a
+    # multi-caller block from format_analyst_trades_for_context for
+    # each configured caller). The model now fetches it on demand
+    # via the lookup_trade_log tool when a question references
+    # trades. Save ~8-12 KB of prompt per call on questions that
+    # don't touch caller trades (most of them).
+
+    # Cross-window anti-recycling block. The 50-msg / 24h chat_context
+    # window scrolls past the bot's prior /ask answers to this asker in
+    # under 30 min on active channels (stonks-yapping etc.) — so the
+    # anti-recycling rule that scans [YOU said earlier]: lines has
+    # nothing to act on and recurring hooks like "LARPing as a quant"
+    # get reused. This block pulls the last few /ask answers given to
+    # this asker in this channel directly from ask_bot_answers
+    # (count-bounded, no recency cap) and tags them with the same
+    # [YOU said earlier]: prefix so the existing rule covers them.
+    cross_window_block = ""
+    # Raw prior-answer texts, kept for the code-level roast-recycle
+    # guard (the prompt block below is advisory; the guard is not).
+    _prior_bot_answer_texts: list[str] = []
+    if user_id and channel_id:
+        try:
+            prior_answers = db.get_recent_bot_answers_to_asker(
+                asker_user_id=user_id,
+                channel_id=channel_id,
+                limit=5,
+            )
+            _prior_bot_answer_texts = [
+                (row.get("answer") or "") for row in (prior_answers or [])
+            ]
+            if prior_answers:
+                lines = [
+                    "[YOUR RECENT /ASK ANSWERS TO THIS ASKER — "
+                    "cross-window anti-recycling guard. These are your "
+                    "OWN prior answers; do not reuse the same hooks, "
+                    "anecdote pulls, voice opener, or framing twice "
+                    "in a row. Pull from a different angle of the "
+                    "asker's profile instead.]"
+                ]
+                for row in prior_answers:
+                    q_snip = (row.get("question") or "").strip().replace(
+                        "\n", " "
+                    )[:120]
+                    a_snip = (row.get("answer") or "").strip().replace(
+                        "\n", " "
+                    )[:600]
+                    if q_snip:
+                        lines.append(
+                            f"[YOU said earlier to this asker, "
+                            f"re: {q_snip!r}]: {a_snip}"
+                        )
+                    else:
+                        lines.append(
+                            f"[YOU said earlier to this asker]: {a_snip}"
+                        )
+                cross_window_block = "\n".join(lines)
+        except Exception as e:
+            log.info(
+                f"Cross-window bot-answers fetch failed (non-fatal): {e}"
+            )
+    return (_prior_bot_answer_texts, config, cross_window_block, profiles_block, safety_settings, types)
+
+
+async def _ask_01_build_prompt(
+    asker_display_name,
+    asker_username,
+    chat_context,
+    client,
+    config,
+    cross_window_block,
+    fetched_urls,
+    images,
+    profile_user_ids,
+    profiles_block,
+    question,
+    safety_settings,
+    types,
+    user_id
+):
+    """Phase 1 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+    _analysis_extra = None
+    _ask_meta = None
+    _ask_tool_log = None
+    _asker_protected = None
+    _prompt_extra = None
+    _route_is_factual = None
+    ask_model = None
+    contents = None
+    initial_parts = None
+    needs_web = None
+    profiles_for_prompt = None
+    separator = None
+    user_content = None
+
+    # PROFILE DEPTH decided here, before the send — see the block
+    # comment above _lean_profiles_for_prompt. `profiles_block` stays
+    # the FULL material because the answer-time guards (clapback
+    # fidelity, roast-recycle, pnl-monotone) check the answer against
+    # everything we know, not against what we chose to send.
+    # `profiles_for_prompt` is the only thing that reaches Gemini,
+    # on the first send and on every ladder rebuild.
+    _needs_person, _depth_reason = _question_needs_person_material(
+        question, profiles_block,
+    )
+    if profiles_block and not _needs_person:
+        profiles_for_prompt = _lean_profiles_for_prompt(profiles_block)
+        log.info(
+            f"/ask: profile depth LEAN ({_depth_reason}) — dropped "
+            f"{len(profiles_block) - len(profiles_for_prompt)} chars "
+            f"of voice/racism material the question doesn't need"
+        )
+    else:
+        profiles_for_prompt = profiles_block
+
+    sections: list[str] = []
+    if profiles_for_prompt:
+        sections.append(profiles_for_prompt)
+    if fetched_urls:
+        sections.append(fetched_urls)
+    if cross_window_block:
+        sections.append(cross_window_block)
+    if chat_context:
+        sections.append(chat_context)
+    # Explicit asker identification. The bot pulled WHO'S TALKING
+    # profiles for everyone active in chat — without naming the
+    # asker on the separator, the model has to guess from scrollback
+    # who's asking, and sometimes addresses the wrong person.
+    if asker_display_name or asker_username:
+        who = asker_display_name or asker_username
+        if asker_username and asker_display_name and \
+                asker_display_name.lower() != asker_username.lower():
+            who = f"{asker_display_name} ({asker_username})"
+        separator = f"--- {who} is asking: ---"
+    else:
+        separator = "--- The user is now asking: ---"
+    sections.append(f"{separator}\n{question}")
+    user_content = "\n\n".join(sections)
+
+    # Build the initial user turn as a structured Content object so
+    # we can append follow-up turns during the tool-calling loop.
+    # Images go first as Parts so the model sees them before the
+    # text question.
+    initial_parts: list = []
+    if images:
+        for img_bytes, mime in images:
+            initial_parts.append(
+                types.Part.from_bytes(data=img_bytes, mime_type=mime)
+            )
+    initial_parts.append(types.Part.from_text(text=user_content))
+    contents: list = [types.Content(role="user", parts=initial_parts)]
+
+    ask_model = settings.ask_gemini_model or settings.gemini_model
+
+    # Intent router (structural grounding). Decide up front whether
+    # this question needs the open web. If it does, swap the
+    # multi-tool config for a SEARCH-ONLY one so Google Search is the
+    # model's only move and the answer is grounded BY CONSTRUCTION —
+    # no post-hoc keyword detection, no discretionary skip. Banter /
+    # self-data questions keep the full tool set. The post-hoc
+    # grounding backstop stays only as a thin net for router
+    # misclassification (it should now rarely fire).
+    needs_web, _route_is_factual = await _classify_ask_needs_web(
+        client, ask_model, safety_settings, question
+    )
+    # Deterministic WEB override for quote/lyric completions
+    # (2026-07-12): "finish the song lyrics: ..." routed LOCAL and
+    # the model invented a bar ("whole team winnin'" — the real line
+    # is elsewhere in the track it demonstrably knew). Completing a
+    # verbatim text is a lookup, not a memory exercise; the router's
+    # WEB rubric never named the shape, so name it in code.
+    if _QUOTE_COMPLETION_RE.search(question or "") and not needs_web:
+        needs_web = True
+        _route_is_factual = True
+        log.info(
+            "/ask: quote/lyric-completion shape — forcing WEB route"
+        )
+    # (2026-07-16: the earnings-date LOCAL override was removed —
+    # with unified tooling, lookup_earnings_date is reachable on
+    # every route, which was the whole point of the override.)
+    # QC metadata accumulated through the whole answer path and
+    # stamped into the ask-log entry — makes route/grounding/guard
+    # decisions auditable instead of forensic (Railway logs rotate
+    # away in ~1h; the ask-log is the durable record).
+    # Every tool this turn actually called, in order. The response
+    # validator takes it alongside the answer: a plumbing word is
+    # judged differently when the turn genuinely used a data tool.
+    _ask_tool_log: list[str] = []
+    _ask_meta: dict = {
+        "route": "WEB" if needs_web else "LOCAL",
+        "kind": "FACT" if _route_is_factual else "BANTER",
+        "guards": [],
+        # Which profile shape actually went to Gemini, and why. The
+        # filter-block post-mortems before 2026-08-10 all had to
+        # reconstruct this from the logged prompt text.
+        "profile_depth": (
+            f"{'full' if _needs_person else 'lean'}:{_depth_reason}"
+        ),
+        # Image count matters for QC: 0 means any "your screenshot
+        # shows X" in the answer is a phantom read (2026-07-10).
+        "images": len(images or []),
+    }
+    # UNIFIED TOOLING (2026-07-16 structural fix). The WEB route used
+    # to swap in a SEARCH-ONLY config — which amputated the bot's own
+    # financial-data tools. Repeated damage: earnings-date questions
+    # couldn't reach lookup_earnings_date (kloh, 07-15), $ALP price/
+    # filing questions couldn't reach lookup_market_price, and the
+    # resulting ungrounded answers shipped stacked with "couldn't
+    # verify" hedges for data that was one tool call away. Search-only
+    # never delivered its promise anyway — grounding stayed
+    # discretionary and the model skipped it regardless (07-08
+    # diagnosis). Now EVERY ask gets the full config (google_search +
+    # all data tools, mixed mode); the router's verdict survives as
+    # (a) the FACT/BANTER register signal and (b) `needs_web` feeding
+    # the grounding backstop's scrutiny — enforcement moved fully to
+    # the backstop ladder, where it actually works.
+    _fact_extra = _ASK_FACT_DIRECTIVE if _route_is_factual else ""
+    # Analysis directive is route-independent — "analyze the trader
+    # log" is LOCAL/BANTER but still needs the run-code push.
+    _analysis_extra = (
+        _ASK_ANALYSIS_DIRECTIVE if _is_analysis_request(question) else ""
+    )
+    if _analysis_extra:
+        _ask_meta["guards"].append("analysis-directive")
+    log.info(
+        f"/ask: intent-router → "
+        f"{'WEB' if needs_web else 'LOCAL'}/"
+        f"{'FACT' if _route_is_factual else 'BANTER'} "
+        f"{'ANALYSIS ' if _analysis_extra else ''}"
+        f"(unified multi-tool pass) q={question[:80]!r}"
+    )
+    # Protected-members directive (2026-08-05 user request): never
+    # insult / clap back / sarcasm; defend and praise with grounded
+    # material. Rides _prompt_extra so every directive-preserving
+    # retry carries it.
+    try:
+        _prot_all = (settings.protected_user_id_set
+                     | db.get_promoted_protected_ids())
+    except Exception:
+        _prot_all = settings.protected_user_id_set
+    _prot_in_scope = _protected_in_scope(
+        user_id, question, profile_user_ids, _prot_all,
+    )
+    _protected_extra = _build_protected_directive(
+        _prot_in_scope, user_id, asker_display_name,
+    )
+    _asker_protected = int(user_id) in _prot_in_scope
+    if _protected_extra:
+        _ask_meta["guards"].append("protected-member")
+    _prompt_extra = _fact_extra + _analysis_extra + _protected_extra
+    if _prompt_extra:
+        # The config was built before the router ran — patch the
+        # directive(s) in rather than rebuilding the tools.
+        config.system_instruction = (
+            _build_runtime_system_instruction(_prompt_extra)
+        )
+    return (_analysis_extra, _ask_meta, _ask_tool_log, _asker_protected, _prompt_extra, _route_is_factual, ask_model, contents, initial_parts, needs_web, profiles_for_prompt, separator, user_content)
+
+
+async def _ask_02_call_model_with_tools(
+    _ask_meta,
+    _ask_tool_log,
+    _prompt_extra,
+    ask_model,
+    asker_display_name,
+    asker_username,
+    chat_context,
+    client,
+    config,
+    contents,
+    initial_parts,
+    needs_web,
+    out_meta,
+    profiles_block,
+    question,
+    safety_settings,
+    types,
+    user_content
+):
+    """Phase 2 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+    _ask_actual_total = None
+    _ask_est_total = None
+    _ask_tool_trace = None
+    _round_gm_chunks = None
+    get_budget = None
+    grounding_metadata = None
+    response = None
+    um = None
+
+    # Pre-flight identity + dispute notes (2026-07-17 Morgan
+    # incident) — mechanical detections appended to the user turn so
+    # the model gets a targeted, binding directive for exactly the
+    # failure shape in play. The name check is LOCAL-gated (public
+    # figures in WEB lookups would false-trigger it).
+    _preflight_notes = ""
+    if not needs_web:
+        try:
+            _known_surface = " ".join(filter(None, [
+                profiles_block or "", chat_context or "",
+                asker_display_name or "", asker_username or "",
+            ]))
+            _unknowns = _unknown_member_names(question, _known_surface)
+            if _unknowns:
+                _preflight_notes += _name_check_note(_unknowns)
+                _ask_meta["guards"].append(
+                    "name-check:" + ",".join(_unknowns)
+                )
+                log.info(
+                    f"/ask: unknown person name(s) in question "
+                    f"({_unknowns}) — NAME CHECK note appended"
+                )
+        except Exception as e:
+            log.warning(f"/ask: name-check failed (non-fatal): {e}")
+    if _is_disputing_reply(question):
+        _preflight_notes += _DISPUTE_NOTE
+        _ask_meta["guards"].append("dispute-check")
+        log.info("/ask: reply disputes a prior bot claim — "
+                 "DISPUTE CHECK note appended")
+    if _preflight_notes:
+        initial_parts[-1] = types.Part.from_text(
+            text=user_content + _preflight_notes
+        )
+        contents[0] = types.Content(role="user", parts=initial_parts)
+
+    # Token-budget reservation BEFORE the call. /ask assembles
+    # a large prompt (WHO'S TALKING + analyst log + recent chat +
+    # question) that can hit 50k chars (~13k tokens). With the
+    # tool-call loop, total per-question spend can hit 50k+ tokens
+    # on a thrashing question. Reserve conservatively for the full
+    # loop budget; record actual after.
+    from ai_analysis.token_budget import get_budget, BudgetExceeded
+    # Heuristic: input ~user_content chars / 4 + per-round 5000
+    # output cap, scaled by max rounds.
+    _ask_est_per_round = (
+        len(user_content) // 4 + 5000 + 500
+    )
+    _ask_est_total = _ask_est_per_round * (_CHAT_SEARCH_MAX_ROUNDS + 1)
+    try:
+        get_budget().reserve_or_raise(
+            estimated_tokens=_ask_est_total,
+            caller=f"ask:{(question or '')[:60]}",
+        )
+    except BudgetExceeded as e:
+        log.warning(f"/ask blocked by token budget: {e}")
+        return _AskEarly(discord.Embed(
+            description=(
+                "→ Daily token budget reached — try again after "
+                "UTC midnight, or ask a quicker question."
+            ),
+            color=0xE67E22,
+        ))
+
+    # Tool-calling loop. On each round we call Gemini; if the
+    # response has function_call parts, we execute them and feed
+    # the results back. Loop exits when the model returns a
+    # text-only response (the final answer) or we hit the
+    # iteration cap.
+    response = None
+    _ask_actual_total = 0
+    # Tool trace accumulated across rounds — appended to the ask-log
+    # so QC (human + automated grader) can see which tools ran and
+    # what they returned. Without it, tool-grounded answers look
+    # fabricated to the grader.
+    _ask_tool_trace: list[dict] = []
+    # Initialized HERE, not at first assignment (2026-08-28 outage:
+    # the class-10 ctx read at the validator ladder referenced this
+    # before the post-loop assignment at the bottom of the function,
+    # and the read short-circuits behind `bool(_round_gm_chunks) or`
+    # — so it crashed ONLY on turns with zero grounding chunks,
+    # which is why the suite, the import smoke, and every grounded
+    # live turn missed it while every ungrounded /ask died with
+    # UnboundLocalError for ~14 hours).
+    grounding_metadata = None
+    # Grounding evidence accumulated across rounds (2026-07-16 fix).
+    # In the unified mixed-tool config the model often searches FIRST
+    # and then calls a function tool; the search's grounding_metadata
+    # rides on that EARLIER round's response. Reading gm only off the
+    # final text response threw the receipt away — a correct, freshly
+    # searched TSM-earnings answer stamped 'ungrounded' and shipped
+    # wearing a "couldn't verify" hedge. Collect every round's chunks.
+    # Deterministic slate prefetch (2026-09-01). "Who reports today" is
+    # answered from the same feed as the calendar sheet BEFORE the model
+    # picks a tool: live, with lookup_earnings_slate declared, the model
+    # still reached for chat search plus Google and returned a partial
+    # list. Code, not prompt text (CLAUDE.md /ask policy, rule 1). The
+    # trace entry lets the grounding nets count it as a source.
+    if _is_earnings_slate_question(question):
+        import json as _json
+        _slate_date = ("tomorrow" if re.search(r"\b(tomorrow|tmrw?)\b", question or "", re.I)
+                       else "")
+        try:
+            _slate = await _execute_earnings_slate({"date": _slate_date})
+        except Exception as _e:
+            _slate = {"status": "error", "error": f"{type(_e).__name__}: {_e}"}
+        _ask_tool_log.append("lookup_earnings_slate")
+        _ask_tool_trace.append({
+            "tool": "lookup_earnings_slate",
+            "args": {"date": _slate_date or "today"},
+            "status": f"prefetch:{_slate.get('status')}",
+            "result_chars": len(str(_slate)),
+        })
+        contents.append(types.Content(
+            role="user",
+            parts=[types.Part.from_text(text=(
+                "[EARNINGS SLATE — system-fetched from the same feed as "
+                "the calendar sheet. This list is authoritative: answer "
+                "from it, lead with the biggest names, and do not "
+                "substitute a search-engine list. session_confirmed=false "
+                "means the timing is not stamped yet, not that the "
+                "company is absent. status=error means the feed is down: "
+                "say so.]\n" + _json.dumps(_slate, default=str)[:6000]
+            ))],
+        ))
+    _round_gm_chunks: list = []
+    for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
+        # Contents-size guard: fail CLEANLY (friendly reply + a log
+        # that names the biggest parts) instead of letting the API
+        # 400 on the 1M-token limit with zero diagnostics.
+        if round_idx > 0:
+            _part_sizes = []
+            for _ci, _c in enumerate(contents):
+                for _p in (getattr(_c, "parts", None) or []):
+                    _sz = len(getattr(_p, "text", None) or "") or len(
+                        str(getattr(_p, "function_response", None) or "")
+                    )
+                    if _sz:
+                        _part_sizes.append((_sz, _ci))
+            _total = sum(s for s, _ in _part_sizes)
+            if _total > 2_500_000:
+                _top = sorted(_part_sizes, reverse=True)[:5]
+                log.error(
+                    f"/ask: contents grew to {_total} chars before "
+                    f"round {round_idx} — aborting before the API "
+                    f"400s. Largest parts (chars, content_idx): {_top}"
+                )
+                raise RuntimeError(
+                    f"ask contents oversized ({_total} chars) — "
+                    f"tool loop ballooned the request"
+                )
+        response = await client.aio.models.generate_content(
+            model=ask_model,
+            contents=contents,
+            config=config,
+        )
+        try:
+            _rgm = response.candidates[0].grounding_metadata
+            _round_gm_chunks.extend(
+                getattr(_rgm, "grounding_chunks", None) or []
+            )
+        except (AttributeError, IndexError, TypeError):
+            pass
+        # Tally actual usage per round so the budget reflects
+        # what we really spent rather than the reservation.
+        try:
+            um = response.usage_metadata
+            _ask_actual_total += (
+                (um.prompt_token_count or 0)
+                + (um.candidates_token_count or 0)
+            )
+        except Exception:
+            pass
+        # Pull function_call parts off the response, if any.
+        function_calls = []
+        response_parts = []
+        try:
+            response_parts = list(
+                response.candidates[0].content.parts or []
+            )
+        except (AttributeError, IndexError, TypeError):
+            response_parts = []
+        for p in response_parts:
+            fc = getattr(p, "function_call", None)
+            if fc and getattr(fc, "name", None):
+                function_calls.append(fc)
+                _ask_tool_log.append(fc.name)
+        if not function_calls:
+            break  # No more tool calls — final answer is in response.text
+        if round_idx >= _CHAT_SEARCH_MAX_ROUNDS:
+            log.warning(
+                f"/ask: hit tool-calling round cap "
+                f"({_CHAT_SEARCH_MAX_ROUNDS}) with function_calls "
+                f"still pending — forcing a final answer from what "
+                f"was already gathered"
+            )
+            # Don't ship the pending function-call turn: it carries
+            # NO text, so response.text is empty and the user gets
+            # "No response came back (reason: STOP)" despite every
+            # tool having succeeded (2026-07-29). Make ONE more call
+            # with tools DISABLED so the model must write prose from
+            # the results already in `contents`.
+            try:
+                _cap_contents = list(contents) + [types.Content(
+                    role="user",
+                    parts=[types.Part.from_text(text=(
+                        "[ANSWER NOW] You've used your tool budget. "
+                        "Do NOT request more data. Write the answer "
+                        "from what you already retrieved above. If "
+                        "some piece is genuinely missing, answer "
+                        "with what you have and say plainly what "
+                        "you couldn't get."
+                    ))],
+                )]
+                _cap_cfg = types.GenerateContentConfig(
+                    system_instruction=(
+                        _build_runtime_system_instruction(_prompt_extra)
+                    ),
+                    # Keep CODE EXECUTION available — it needs no
+                    # new data and is how the answer gets computed
+                    # and charted. Only the data-fetching function
+                    # tools are withheld, so the model can't spend
+                    # more budget looking things up. (2026-07-29: an
+                    # EMPTY tool list here produced a correct prose
+                    # answer with NO chart, because it killed the
+                    # sandbox along with the lookups.)
+                    tools=[types.Tool(
+                        code_execution=types.ToolCodeExecution()
+                    )],
+                    safety_settings=safety_settings,
+                    max_output_tokens=5000,
+                    temperature=0.3,
+                    thinking_config=types.ThinkingConfig(
+                        thinking_budget=2000),
+                )
+                _cap_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=_cap_contents,
+                    config=_cap_cfg,
+                )
+                # Tally inline — _tally_retry_usage is defined
+                # later in this function, after the tool loop.
+                try:
+                    _um = _cap_resp.usage_metadata
+                    _ask_actual_total += (
+                        (_um.prompt_token_count or 0)
+                        + (_um.candidates_token_count or 0)
+                    )
+                except Exception:
+                    pass
+                try:
+                    _cap_text = (_cap_resp.text or "").strip()
+                except Exception:
+                    _cap_text = ""
+                if _cap_text:
+                    response = _cap_resp
+                    _ask_meta["guards"].append("round-cap-final-answer")
+                    log.info(
+                        "/ask: round-cap final answer produced "
+                        f"{len(_cap_text)} chars"
+                    )
+            except Exception as _ce:
+                log.warning(
+                    f"/ask: round-cap final answer failed "
+                    f"(non-fatal): {_ce}"
+                )
+            break
+
+        # Echo the model's tool-call turn into history so the next
+        # call has full context — minus any inline artifact the API
+        # won't accept back (code-execution can emit
+        # application/octet-stream files that 400 the next round).
+        contents.append(
+            types.Content(
+                role="model", parts=_safe_echo_parts(response_parts)
+            )
+        )
+        # Execute each function call and build function_response parts.
+        # Executor map replaces the prior if/elif chain — single
+        # guarded call site so an UNCAUGHT exception inside any
+        # executor degrades to a tool-error result the model can
+        # work around, instead of killing the whole /ask interaction
+        # (2026-06-10 second-pass review finding #2).
+        _tool_executors = {
+            "search_chat_messages": _execute_chat_search,
+            "lookup_user_profile": _execute_user_profile,
+            "lookup_trade_log": _execute_trade_log,
+            "lookup_market_price": _execute_market_price,
+            "lookup_options_chain": _execute_options_chain,
+            "lookup_economic_calendar": _execute_economic_calendar,
+            "lookup_earnings_date": _execute_earnings_date,
+            "lookup_earnings_slate": _execute_earnings_slate,
+            "query_data": _execute_query_data,
+            "lookup_price_history": _execute_price_history,
+            "lookup_fantasy_league": _execute_fantasy_league,
+        }
+        tool_response_parts = []
+        for fc in function_calls:
+            try:
+                args = dict(fc.args) if fc.args else {}
+            except Exception:
+                args = {}
+            executor = _tool_executors.get(fc.name)
+            if executor is None:
+                log.warning(f"/ask: unknown tool call {fc.name!r}")
+                tool_response_parts.append(
+                    types.Part.from_function_response(
+                        name=fc.name,
+                        response={"error": f"unknown tool {fc.name}"},
+                    )
+                )
+                _ask_tool_trace.append(
+                    {"tool": fc.name, "status": "unknown_tool"}
+                )
+                continue
+            try:
+                result = await executor(args)
+                # A published book is the antecedent a later "No
+                # AVGO" refers to. Capture whose book and which
+                # tickers; the send site pairs it with the message
+                # id, which does not exist yet here.
+                if fc.name == "lookup_trade_log" and out_meta is not None:
+                    _capture_book_context(args, result, out_meta)
+            except Exception as e:
+                # Degrade, don't die: the model gets a structured
+                # error and can answer from remaining context.
+                log.warning(
+                    f"/ask: tool {fc.name} raised: {e}", exc_info=True
+                )
+                result = {
+                    "status": "error",
+                    "error": (
+                        f"{fc.name} failed internally — that lookup "
+                        f"is unavailable right now. Answer from what "
+                        f"you have; tell the asker the live lookup "
+                        f"didn't go through. Do NOT fabricate the "
+                        f"data it would have returned."
+                    ),
+                }
+            # Size clamp (2026-07-17: a request blew Gemini's 1M
+            # input-token limit — 400 INVALID_ARGUMENT — because a
+            # tool result ballooned the contents across rounds).
+            # Bound every tool result; log the offender so the next
+            # oversized return is diagnosable in one log line.
+            _res_str = str(result)
+            if len(_res_str) > _TOOL_RESULT_CHAR_CAP:
+                log.warning(
+                    f"/ask: tool {fc.name} returned "
+                    f"{len(_res_str)} chars (args={args!r}) — "
+                    f"clipping to {_TOOL_RESULT_CHAR_CAP}"
+                )
+                result = {
+                    "status": "truncated",
+                    "note": (
+                        f"result was {len(_res_str)} chars — "
+                        f"truncated to fit the context window"
+                    ),
+                    "content": _res_str[:_TOOL_RESULT_CHAR_CAP],
+                }
+            # Scrub non-finite floats before they reach the API.
+            # NaN/Infinity are NOT valid JSON — one NaN anywhere in a
+            # tool result 400s the ENTIRE request ("Invalid JSON
+            # payload... Unexpected token NaN"), which the user sees
+            # as "something broke the model" (2026-07-29,
+            # lookup_price_history on a non-trading day). Fixed at
+            # the executor too; this is the loop-wide backstop so no
+            # future tool can reintroduce it.
+            result = _json_safe(result)
+            tool_response_parts.append(
+                types.Part.from_function_response(
+                    name=fc.name,
+                    response={"result": result},
+                )
+            )
+            # Compact tool trace for the ask-log (QC-grader input —
+            # without this, tool-grounded answers look fabricated to
+            # the grader because the log has no record the tool ran).
+            _trace_status = (
+                result.get("status", "ok")
+                if isinstance(result, dict) else "ok"
+            )
+            _trace_args = {
+                k: (str(v)[:80]) for k, v in list(args.items())[:5]
+            }
+            _ask_tool_trace.append({
+                "tool": fc.name,
+                "args": _trace_args,
+                "status": _trace_status,
+                "result_chars": len(str(result)),
+            })
+        contents.append(
+            types.Content(role="user", parts=tool_response_parts)
+        )
+    return (_ask_actual_total, _ask_est_total, _ask_tool_trace, _round_gm_chunks, get_budget, grounding_metadata, response, um)
+
+
+async def _ask_03_assemble_response(
+    _ask_actual_total,
+    _ask_meta,
+    _ask_tool_log,
+    _ask_tool_trace,
+    _prompt_extra,
+    _round_gm_chunks,
+    ask_model,
+    client,
+    contents,
+    fetched_urls,
+    grounding_metadata,
+    question,
+    response,
+    safety_settings,
+    types,
+    um
+):
+    """Phase 3 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+    _code_images = None
+    _tally_retry_usage = None
+    answer = None
+
+    # Token-budget reconciliation MOVED to the end of this function
+    # (2026-06-10): it previously ran here — before the repetition /
+    # voice-strip / slur-mask retries — so retry calls burned tokens
+    # the budget never saw. Each retry below adds its usage via
+    # _tally_retry_usage; the single record_actual runs after all
+    # of them (just before the quota record).
+    def _tally_retry_usage(resp) -> None:
+        nonlocal _ask_actual_total
+        try:
+            um = resp.usage_metadata
+            _ask_actual_total += (
+                (um.prompt_token_count or 0)
+                + (um.candidates_token_count or 0)
+            )
+        except Exception:
+            pass
+
+    # Pull response.text defensively — the SDK raises if the response
+    # has no candidates or only function-call parts. Treat all failures
+    # as "no text" and let the empty-answer branch below produce a
+    # human-readable fallback instead of a blank Discord embed.
+    answer = ""
+    try:
+        answer = (response.text or "").strip() if response else ""
+    except Exception as e:
+        log.warning(f"/ask: response.text raised: {e}")
+        answer = ""
+
+    # Charts rendered by the code-execution sandbox (matplotlib →
+    # inline image parts). Collected here off the final response;
+    # attached to the reply at the send site. Text still carries
+    # the composed answer + passes every downstream guard.
+    _code_images = _extract_code_images(response) if response else []
+    if _code_images:
+        _ask_meta["guards"].append(f"code-charts:{len(_code_images)}")
+
+    # Repetition-glitch detection + one-shot retry. Gemini Flash Lite
+    # occasionally produces token-loop artifacts at the end of an
+    # answer ("compounding risk and volatility decay risks of
+    # volatility decay and volatility" — 9 hits across 2026-05-30
+    # logs). Single retry with bumped temperature usually breaks the
+    # loop. If retry still glitches, ship the original — the user
+    # gets SOMETHING rather than blank.
+    if answer and _has_repetition_glitch(answer):
+        _ask_meta["guards"].append("repetition")
+        log.warning(
+            f"/ask: repetition glitch in answer (q={question[:80]!r}); "
+            f"retrying once at higher temp"
+        )
+        try:
+            retry_config = types.GenerateContentConfig(
+                system_instruction=_build_runtime_system_instruction(_prompt_extra),
+                tools=[
+                    types.Tool(google_search=types.GoogleSearch()),
+                    _build_chat_search_tool(),
+                    _build_user_profile_tool(),
+            _build_trade_log_tool(),
+            _build_market_price_tool(),
+            _build_options_chain_tool(),
+            _build_economic_calendar_tool(),
+            _build_earnings_date_tool(),
+            _build_earnings_slate_tool(),
+            *([_build_fantasy_league_tool()]
+              if (settings.sleeper_league_id or "").strip() else []),
+                ],
+                tool_config=types.ToolConfig(
+                    include_server_side_tool_invocations=True,
+                ),
+                safety_settings=safety_settings,
+                max_output_tokens=5000,
+                temperature=0.7,  # bumped from 0.3 to break the loop
+                thinking_config=types.ThinkingConfig(thinking_budget=2000),
+            )
+            retry_resp = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=contents,
+                config=retry_config,
+            )
+            _tally_retry_usage(retry_resp)
+            try:
+                retry_answer = (retry_resp.text or "").strip()
+            except Exception:
+                retry_answer = ""
+            if retry_answer and not _has_repetition_glitch(retry_answer):
+                answer = retry_answer
+                response = retry_resp
+                log.info("/ask: repetition retry succeeded")
+            else:
+                log.warning(
+                    "/ask: repetition retry didn't fix glitch — "
+                    "falling back to sentence strip"
+                )
+        except Exception as e:
+            log.warning(f"/ask: repetition retry call failed: {e}")
+        # Strip fallback (2026-07-22 terlin calendar answer: the
+        # retry re-glitched and the old failure path shipped the
+        # loop to Discord untouched). The glitch is end-of-
+        # generation junk confined to its sentence/bullet — excise
+        # exactly those and keep the clean remainder. If the WHOLE
+        # answer is glitch, ship the original: something beats
+        # blank, and the ask-log marker makes it visible to QC
+        # either way.
+        if answer and _has_repetition_glitch(answer):
+            _glitch_sents = _repetition_glitch_sentences(answer)
+            _stripped = _strip_sentences(answer, _glitch_sents)
+            if _stripped and not _has_repetition_glitch(_stripped):
+                answer = _stripped
+                _ask_meta["guards"].append("repetition-strip")
+                log.warning(
+                    f"/ask: hard-stripped {len(_glitch_sents)} "
+                    f"glitching sentence(s) after failed retry"
+                )
+            else:
+                _ask_meta["guards"].append("repetition-shipped")
+                log.warning(
+                    "/ask: glitch survived strip fallback — "
+                    "shipping original answer"
+                )
+
+    # Meta-plumbing guard (2026-08-26). The NEVER META-NARRATE prose
+    # was deleted from the prompt in the same change that added
+    # scripts/ask_response_validate.py, per CLAUDE.md rule 1: a rule
+    # a regex can check is code, never both. The prose caught 0 of 7
+    # recorded violations while quoting the violating sentence almost
+    # verbatim; the validator catches 7 of 7 with no false positives.
+    #
+    # Same ladder as the repetition guard above, and for the same
+    # reason: regenerate once (a plumbing answer is usually a framing
+    # slip, not a content problem), then strip the offending
+    # sentences if it re-violates. Whole sentences only — a
+    # mid-sentence excision mangles prose.
+    # Per-tool STATUS and the turn's grounding reach the validator
+    # (2026-08-27, QC queue finding 2): class 10 fires on confident
+    # specifics after the one relevant tool FAILED, which tool
+    # names alone cannot express. "ok" is sticky across duplicate
+    # calls — one successful fetch of a tool means the model had
+    # its data. Grounding at this point includes tool-loop rounds
+    # (_round_gm_chunks); the later recovery/backstop machinery
+    # runs after this ladder and must not be waited on.
+    _v_tool_status: dict = {}
+    try:
+        for _t in _ask_tool_trace:
+            if _v_tool_status.get(_t["tool"]) != "ok":
+                _v_tool_status[_t["tool"]] = _t.get("status") or "ok"
+    except Exception:
+        pass
+    _v_grounded = bool(_round_gm_chunks) or _grounding_has_sources(
+        grounding_metadata)
+    _vctx = {"question": question, "fetched": fetched_urls,
+             "tool_status": _v_tool_status, "grounded": _v_grounded}
+    _plumb = (_validate_response(answer, _ask_tool_log, **_vctx)
+              if answer else [])
+    if _plumb:
+        _ask_meta["guards"].append("validate:" + ",".join(sorted({v.rule for v in _plumb})))
+        log.warning(
+            f"/ask: response-validate hit (q={question[:80]!r}); "
+            f"hits={[v.match for v in _plumb][:6]}; retrying once"
+        )
+        _plumb_retry = ""
+        _plumb_retry_ctx: dict = {}
+        try:
+            _plumb_resp = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=contents,
+                config=types.GenerateContentConfig(
+                    system_instruction=_build_runtime_system_instruction(
+                        _prompt_extra),
+                    tools=[types.Tool(
+                        google_search=types.GoogleSearch())],
+                    safety_settings=safety_settings,
+                    max_output_tokens=5000,
+                    temperature=0.7,
+                    thinking_config=types.ThinkingConfig(
+                        thinking_budget=2000),
+                ),
+            )
+            _tally_retry_usage(_plumb_resp)
+            try:
+                _plumb_retry = (_plumb_resp.text or "").strip()
+            except Exception:
+                _plumb_retry = ""
+            # The retry runs WITH search: if it grounded itself,
+            # judge it as grounded, or a grounding-gated class
+            # re-flags a now-sourced regeneration.
+            try:
+                _retry_gm = _plumb_resp.candidates[0].grounding_metadata
+                if getattr(_retry_gm, "grounding_chunks", None):
+                    _plumb_retry_ctx = {"grounded": True}
+            except (AttributeError, IndexError, TypeError):
+                pass
+        except Exception as e:
+            log.warning(f"/ask: meta-plumbing retry call failed: {e}")
+
+        # ONE decision function, shared with the harness, so what
+        # ships and what gets measured cannot drift apart.
+        _bad_sents = _violating_sentences(
+            answer, _ask_tool_log, **_vctx)
+        answer, _outcome = _resolve_violations(
+            answer, _plumb_retry, _ask_tool_log, _strip_sentences,
+            retry_ctx=_plumb_retry_ctx, **_vctx)
+        if _outcome == "regenerated":
+            _ask_meta["guards"].append("validate-regenerated")
+            log.info(
+                "/ask: meta-plumbing FIXED BY REGENERATE — clean on "
+                "retry, no strip needed (q=%r)", question[:80])
+        elif _outcome == "stripped":
+            _ask_meta["guards"].append("validate-strip")
+            log.warning(
+                "/ask: meta-plumbing STRIP WAS NEEDED — regenerate "
+                "failed, excised %d sentence(s): %s (q=%r)",
+                len(_bad_sents), [t[:70] for t in _bad_sents][:4],
+                question[:80])
+        elif _outcome == "shipped":
+            _ask_meta["guards"].append("validate-shipped")
+            log.error(
+                "/ask: meta-plumbing SURVIVED BOTH regenerate and "
+                "strip — shipping with hits=%s (q=%r)",
+                [v.match for v in _validate_response(
+                    answer, _ask_tool_log, **_vctx)][:6],
+                question[:80])
+    return (_code_images, _tally_retry_usage, answer, response)
+
+
+async def _ask_04_clean_answer(
+    _ask_meta,
+    _route_is_factual,
+    _tally_retry_usage,
+    answer,
+    ask_model,
+    client,
+    profiles_block,
+    question,
+    safety_settings,
+    types
+):
+    """Phase 4 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+    _raw_answer_pre_clean = None
+
+    # Voice cleanup on the final answer. The pulse-side lint runs
+    # at AUDIT->SCRUB; /ask answers ship straight from Gemini to
+    # Discord with no scrub pass. Run a mechanical strip for the
+    # deterministic violations (em-dash inside sentences, semicolons
+    # mid-sentence) and log any other lint hits so we can track them
+    # without rewriting natural prose. The 2026-05-30->06-01 ask log
+    # had 13+ em-dash hits across the three days; this catches them
+    # all at the bot boundary.
+    # Snapshot the RAW model output before any cleanup/rewrites —
+    # the ask-log records it so QC sees ground truth, not just the
+    # post-lint version (2026-06-10 review finding #5).
+    _raw_answer_pre_clean = answer
+    # Must be bound even on the empty-answer path — the register-
+    # rewrite gate below reads it unconditionally (2026-07-05
+    # UnboundLocalError: a blank Gemini payload skipped the `if
+    # answer:` block, leaving hit_kinds undefined).
+    hit_kinds: list[str] = []
+    if answer:
+        answer, hit_kinds = _clean_voice_violations(answer)
+        if hit_kinds:
+            log.info(
+                f"/ask: voice-cleanup hits ({len(hit_kinds)}): "
+                f"{sorted(set(hit_kinds))[:8]}"
+            )
+    # Asker-mockery guard (FACT-gated): a sincere question answered
+    # with derision at the asker feeds the same detect→rewrite pass
+    # as the other register violations; hard-strip fallback after.
+    if answer and _route_is_factual and _asker_mockery_violations(answer):
+        hit_kinds.append("asker-mockery")
+        log.warning(
+            f"/ask: asker-mockery on a FACT question "
+            f"(q={question[:80]!r}) — feeding register rewrite"
+        )
+
+    # Architecture-leak rewrite. The 2026-06-01 QC caught one shipped:
+    # SV asked "what was discussed in chat between 5pm and 9pm est"
+    # and the bot returned "Can't pull a clean summary for that
+    # specific window — the chat logs available to me don't cover
+    # that block of time in enough detail to give you a reliable
+    # read on it." Voice lint DETECTS "available to me" / "in enough
+    # detail to" / "the chat logs available" but the mechanical pass
+    # only strips em-dashes/semicolons — leaked phrases ship. When
+    # any 'meta-narration' kind fires, do a one-shot Gemini rewrite
+    # with a tiny prompt. No tools, low budget. If the rewrite also
+    # leaks (or fails), ship the original — better SOMETHING than
+    # blank.
+    _register_rewrite_kinds = {
+        "meta-narration", "passive-aggressive", "asker-mockery"
+    } & set(hit_kinds or [])
+    if answer and _register_rewrite_kinds:
+        _ask_meta["guards"].extend(
+            f"register:{k}" for k in sorted(_register_rewrite_kinds)
+        )
+        log.warning(
+            f"/ask: register violation shipped through lint "
+            f"({sorted(_register_rewrite_kinds)}, q={question[:80]!r}); "
+            f"requesting rewrite"
+        )
+        try:
+            _pa_directive = (
+                "Convert any passive-aggressive or condescending "
+                "faux-advice construction into a DIRECT statement. KILL "
+                "the entire 'maybe if you...' redirect-advice family — "
+                "every shape where you tell the target to spend/put/"
+                "channel their energy/time/effort/focus elsewhere: "
+                "'maybe put that energy into X', 'maybe if you spent "
+                "less time on X and more time on Y', 'if you put half "
+                "the energy into X', 'maybe focus on X instead of Y'. "
+                "Also 'do with that what you will', 'if you say so'. "
+                "Don't advise the target to do anything — state the jab "
+                "as a fact using the same material. Instead of 'maybe "
+                "put that energy into a real trade', say what's true: "
+                "'your last five trades were paperhanded exits'. No "
+                "sardonic wind-up, no advice framing, no 'maybe'. "
+            ) if "passive-aggressive" in _register_rewrite_kinds else ""
+            _am_directive = (
+                "The asker asked a SINCERE factual question. Remove "
+                "every sentence or clause that mocks them for asking "
+                "or invents a premise they never stated — 'you're "
+                "confusing X with Y', 'stop looking for...', 'that's "
+                "you coping'. Keep ALL the factual content. The "
+                "answer should read like a knowledgeable trader "
+                "answering a colleague, not slapping them. "
+            ) if "asker-mockery" in _register_rewrite_kinds else ""
+            # SUBJECT MATERIAL (2026-07-17 fix): this rewrite used
+            # to receive ONLY the original answer — told to remove
+            # the banned register shapes AND keep the length, with
+            # no profile to draw on, it invented characterization
+            # ("manifestos", "stoic strategist") that belonged to
+            # nobody. The subject's dossier is now the only allowed
+            # replacement material, and a novel-content check below
+            # rejects rewrites that invent anyway.
+            _rw_material = (profiles_block or "")[:6000]
+            rewrite_prompt = (
+                "Rewrite the following Discord bot answer so it sounds "
+                "like a trader talking to another trader. Strip ANY "
+                "phrase that exposes the bot's internal data access or "
+                "limitations — phrases like 'available to me', 'in my "
+                "context', 'the chat logs available', 'in enough detail "
+                "to', 'I can search', 'my tools'. If the answer is a "
+                "decline ('can't pull that one'), keep the decline but "
+                "drop the architecture excuse — just say what you don't "
+                "have, not why your data layer doesn't have it. "
+                + _pa_directive + _am_directive +
+                "Do NOT add any new facts, names, tickers, or numbers. "
+                "Every characterization detail in your rewrite must "
+                "already appear in the ORIGINAL below or in the SUBJECT "
+                "MATERIAL — inventing traits, habits, or behaviors for "
+                "the target is a hard failure. If removing a banned "
+                "shape leaves a hole, fill it ONLY from the SUBJECT "
+                "MATERIAL. Keep the same length, voice, and substance. "
+                "Output ONLY the rewritten answer, no preamble.\n\n"
+                + (
+                    f"SUBJECT MATERIAL (the only allowed source for "
+                    f"replacement content):\n{_rw_material}\n\n"
+                    if _rw_material else ""
+                )
+                + "ORIGINAL:\n"
+                f"{answer}"
+            )
+            rewrite_config = types.GenerateContentConfig(
+                system_instruction=(
+                    "You are a senior trader rewriting another trader's "
+                    "message. Be direct, plain-English, no AI tells, no "
+                    "self-references to data sources or tools."
+                ),
+                safety_settings=safety_settings,
+                max_output_tokens=1500,
+                temperature=0.4,
+                thinking_config=types.ThinkingConfig(thinking_budget=512),
+            )
+            rewrite_resp = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=[
+                    types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=rewrite_prompt)],
+                    )
+                ],
+                config=rewrite_config,
+            )
+            _tally_retry_usage(rewrite_resp)
+            try:
+                rewritten = (rewrite_resp.text or "").strip()
+            except Exception:
+                rewritten = ""
+            if rewritten:
+                # Re-lint to make sure the rewrite is actually clean.
+                # asker-mockery isn't in _clean_voice_violations'
+                # vocabulary, so re-check it explicitly.
+                rewritten, rewrite_hits = _clean_voice_violations(rewritten)
+                if ("asker-mockery" in _register_rewrite_kinds
+                        and _asker_mockery_violations(rewritten)):
+                    rewrite_hits = list(rewrite_hits or [])
+                    rewrite_hits.append("asker-mockery")
+                # Fidelity check: reject a rewrite that invented
+                # substance (words traceable to neither the original
+                # answer, the dossier, nor the question). Fiction is
+                # worse than a weak register — ship the original.
+                _novel = _rewrite_novel_ratio(
+                    rewritten,
+                    f"{answer} {profiles_block or ''} {question or ''}",
+                )
+                if _novel > _REWRITE_NOVEL_MAX_RATIO:
+                    _ask_meta["guards"].append("rewrite:novel-rejected")
+                    log.warning(
+                        f"/ask: register rewrite invented content "
+                        f"(novel ratio {_novel:.2f}) — shipping original"
+                    )
+                elif not (_register_rewrite_kinds & set(rewrite_hits or [])):
+                    answer = rewritten
+                    log.info("/ask: register rewrite succeeded")
+                else:
+                    log.warning(
+                        "/ask: rewrite still carries a register "
+                        "violation — shipping original"
+                    )
+            else:
+                log.warning(
+                    "/ask: rewrite returned empty — shipping original"
+                )
+        except Exception as e:
+            log.warning(f"/ask: architecture-leak rewrite call failed: {e}")
+    return (_raw_answer_pre_clean, answer)
+
+
+async def _ask_05_strip_asker_mockery(
+    _ask_meta,
+    _prompt_extra,
+    _round_gm_chunks,
+    _route_is_factual,
+    _tally_retry_usage,
+    answer,
+    ask_model,
+    asker_display_name,
+    asker_username,
+    chat_context,
+    client,
+    contents,
+    profiles_block,
+    question,
+    safety_settings,
+    types
+):
+    """Phase 5 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+
+    # Asker-mockery hard-strip fallback — regardless of which path
+    # the rewrite took, mockery at a sincere asker never ships. The
+    # strip is sentence-level so the factual core survives.
+    if answer and _route_is_factual:
+        _mock_residual = _asker_mockery_violations(answer)
+        if _mock_residual:
+            _ask_meta["guards"].append("asker-mockery-strip")
+            _stripped_am = _strip_sentences(answer, _mock_residual)
+            if _stripped_am.strip():
+                answer = _stripped_am
+                log.warning(
+                    f"/ask: hard-stripped {len(_mock_residual)} "
+                    f"asker-mockery sentence(s)"
+                )
+        # Jab strip (2026-07-27 planets sarcasm) — roast material
+        # tacked onto a sincere factual answer. Same strip pattern
+        # as mockery; only fires when a factual remainder survives.
+        _jab_residual = _fact_jab_sentences(answer)
+        if _jab_residual:
+            _stripped_jab = _strip_sentences(answer, _jab_residual)
+            if _stripped_jab.strip():
+                answer = _stripped_jab
+                _ask_meta["guards"].append("fact-jab-strip")
+                log.warning(
+                    f"/ask: hard-stripped {len(_jab_residual)} "
+                    f"jab sentence(s) from FACT answer"
+                )
+
+    # Clapback fidelity guard (2026-07-29, BANTER-gated, ungrounded
+    # only). Distinctive claims must trace to the ASKER's own
+    # material — co-loaded dossiers in multi-party threads are the
+    # cross-attribution source (kyle got ZHawk's XSP trade, Austin,
+    # and Excel material); grounded banter may legitimately cite
+    # the web. One rewrite naming the offenders; then strip; a
+    # fully-stripped answer becomes a disengage line — the move the
+    # prompt prescribes when the receipts run dry.
+    if (answer and not _route_is_factual and not _round_gm_chunks
+            and _is_clapback_shaped(answer)):
+        # Scope the pool to whoever the roast is ABOUT. On a
+        # third-party question the subject's receipts are the correct
+        # ones and the asker's are irrelevant; scoping to the asker
+        # flagged correct material and could not see the actual
+        # cross-attribution case the guard exists to catch.
+        _fid_subjects = _roast_subjects(
+            question, profiles_block, asker_username, asker_display_name,
+        )
+        _fid_subject = _fid_subjects[0] if _fid_subjects else None
+        if _fid_subjects:
+            # Union over EVERY tagged member. "@Tulch vs @Monsoon, who
+            # is worse" legitimately draws on both dossiers, and
+            # scoping to one would flag the other's correct receipts.
+            # The tradeoff is explicit: this cannot detect a swap
+            # BETWEEN two people the question named, because both
+            # pools are in scope. It still catches material belonging
+            # to an uninvolved member or to nobody, which is the
+            # cross-attribution shape the guard was built for.
+            _fid_disp, _fid_uname = _fid_subjects[0]
+            _fid_material = "\n".join(
+                _member_material_surface(
+                    profiles_block, chat_context, u, d, question,
+                )
+                for d, u in _fid_subjects
+            )
+            _ask_meta["fidelity_scope"] = "subject:" + ",".join(
+                u for _d, u in _fid_subjects
+            )
+        else:
+            _fid_disp, _fid_uname = asker_display_name, asker_username
+            _ask_meta["fidelity_scope"] = "asker"
+            _fid_material = _member_material_surface(
+                profiles_block, chat_context, _fid_uname, _fid_disp,
+                question,
+            )
+        _fid_viol = _clapback_fidelity_violations(answer, _fid_material)
+        # Lowercase personal details are where the wrong-facts
+        # complaints live, and the token check above is blind to
+        # them (2026-08-25: an entire roast produced ZERO checkable
+        # tokens while inventing "pontoon"). Provenance rule: a
+        # distinctive word that appears in NEITHER the subject's
+        # material NOR the prompt's own context was invented.
+        # Surfaced as rewrite input only — a false positive costs
+        # one rewrite, never a stripped or mangled answer.
+        _fid_invented = _invented_personal_details(
+            answer, _fid_material, question, chat_context or "",
+        )[:6]
+        if _fid_invented:
+            _ask_meta["invented_details"] = _fid_invented
+        if _fid_viol or _fid_invented:
+            _ask_meta["guards"].append("clapback-fidelity")
+            _fid_who = (
+                f"{_fid_disp} ({_fid_uname})" if _fid_subject
+                else "the asker"
+            )
+            log.warning(
+                f"/ask: clapback carries material not belonging to "
+                f"{_fid_who} ({_fid_viol[:6]}) — requesting fidelity "
+                f"rewrite"
+            )
+            try:
+                _fid_contents = list(contents) + [types.Content(
+                    role="user",
+                    parts=[types.Part.from_text(text=(
+                        "[FIDELITY CHECK] This reply is about "
+                        f"{_fid_who}. Your draft attributed material "
+                        f"that is NOT theirs: "
+                        + ", ".join((_fid_viol + _fid_invented)[:8]) +
+                        ". Those belong to other members or to "
+                        "nobody — anything listed that appears in "
+                        "no profile, no message and no part of this "
+                        "prompt was INVENTED, which is how a member "
+                        "gets told about a boat they do not own. "
+                        "Rewrite the reply using ONLY "
+                        f"{_fid_who}'s documented material: their "
+                        "profile, their own messages, this "
+                        "question. Never substitute a new invented "
+                        "specific for a corrected one. If you have "
+                        "no fresh receipts left, deliver a short "
+                        "one-line disengage instead. Output only "
+                        "the reply."
+                    ))],
+                )]
+                _fid_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=_fid_contents,
+                    config=types.GenerateContentConfig(
+                        system_instruction=(
+                            _build_runtime_system_instruction(_prompt_extra)
+                        ),
+                        safety_settings=safety_settings,
+                        max_output_tokens=1000,
+                        temperature=0.4,
+                        thinking_config=types.ThinkingConfig(
+                            thinking_budget=512),
+                    ),
+                )
+                _tally_retry_usage(_fid_resp)
+                try:
+                    _fid_answer = (_fid_resp.text or "").strip()
+                except Exception:
+                    _fid_answer = ""
+                if _fid_answer:
+                    _fid_answer, _ = _clean_voice_violations(
+                        _fid_answer
+                    )
+                if _fid_answer and not _clapback_fidelity_violations(
+                        _fid_answer, _fid_material):
+                    answer = _fid_answer
+                    log.info("/ask: fidelity rewrite accepted")
+                else:
+                    _bad = [
+                        s for s in _split_sentences(answer)
+                        if _clapback_fidelity_violations(
+                            s, _fid_material)
+                    ]
+                    _stripped_f = _strip_sentences(answer, _bad)
+                    if _stripped_f.strip():
+                        answer = _stripped_f
+                        _ask_meta["guards"].append(
+                            "clapback-fidelity-strip")
+                        log.warning(
+                            f"/ask: stripped {len(_bad)} "
+                            f"non-asker sentence(s) from clapback"
+                        )
+                    elif _is_hostile_exchange(question):
+                        answer = "you done?"
+                        _ask_meta["guards"].append(
+                            "clapback-fidelity-disengage")
+                        log.warning(
+                            "/ask: whole clapback was non-asker "
+                            "material — disengaging"
+                        )
+                    else:
+                        # The disengage line is a response to an
+                        # ATTACK. On a benign question it reads as
+                        # the bot being hostile for no reason
+                        # (2026-08-25). Re-ask plainly instead.
+                        _ask_meta["guards"].append(
+                            "clapback-fidelity-plain-retry")
+                        log.warning(
+                            "/ask: fidelity strip emptied a "
+                            "NON-hostile answer — plain re-ask"
+                        )
+                        try:
+                            _plain = await client.aio.models.generate_content(
+                                model=ask_model,
+                                contents=[types.Content(
+                                    role="user",
+                                    parts=[types.Part.from_text(text=(
+                                        "Answer this plainly and "
+                                        "usefully. No jokes about "
+                                        "the asker, no jabs, no "
+                                        "personal material — just "
+                                        "the answer.\n\n"
+                                        + question[:4000]
+                                    ))],
+                                )],
+                                config=types.GenerateContentConfig(
+                                    system_instruction=(
+                                        _build_runtime_system_instruction(
+                                            _prompt_extra)
+                                    ),
+                                    safety_settings=safety_settings,
+                                    max_output_tokens=800,
+                                    temperature=0.3,
+                                    thinking_config=types.ThinkingConfig(
+                                        thinking_budget=256),
+                                ),
+                            )
+                            _tally_retry_usage(_plain)
+                            _pa = (_plain.text or "").strip()
+                            if _pa:
+                                _pa, _ = _clean_voice_violations(_pa)
+                            answer = _pa or answer
+                        except Exception as e:
+                            log.warning(f"/ask: plain re-ask failed: {e}")
+            except Exception as fe:
+                log.warning(
+                    f"/ask: fidelity rewrite call failed "
+                    f"(non-fatal): {fe}"
+                )
+    return (answer,)
+
+
+async def _ask_06_roast_subject_guards(
+    _analysis_extra,
+    _ask_meta,
+    _asker_protected,
+    _prior_bot_answer_texts,
+    _prompt_extra,
+    _round_gm_chunks,
+    _route_is_factual,
+    _tally_retry_usage,
+    answer,
+    ask_model,
+    asker_display_name,
+    asker_username,
+    chat_context,
+    client,
+    contents,
+    profiles_block,
+    question,
+    safety_settings,
+    types
+):
+    """Phase 6 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+
+    # Subject-naming guard (BANTER-gated, third-party roasts only).
+    # 2026-08-12: SV asked "is @Tulch still the donkey of the room?"
+    # and the reply ran "a guy whose entire member alert ledger...",
+    # "give him a week...". Every claim was correctly Tulch's, but the
+    # roast never said whose they were, and the room read it as the
+    # bot talking about the wrong person. In a fast thread where the
+    # bot's reply quotes the ASKER's message, an unnamed "him" has
+    # nothing anchoring it to the subject.
+    #
+    # Deliberately weak: ONE rewrite request, accepted only if it
+    # names the subject AND still passes fidelity. Otherwise the
+    # original ships. Ambiguous attribution is a readability problem,
+    # not a correctness one, and a guard that rewrites correct roasts
+    # to fix presentation is how pnl-monotone vandalized a factual
+    # answer (2026-08-04).
+    # NOT gated on _is_clapback_shaped. That heuristic is the right
+    # gate for the fidelity guard, which polices receipts inside a
+    # clapback, and the wrong one here: it returns False for the
+    # 2026-08-12 Tulch answer, so a naming guard behind it could not
+    # fire on the case it was built for. The condition below is
+    # narrower and needs no shape heuristic — prose (not the
+    # arrow-bullet fact format) that talks ABOUT a third party in the
+    # third person and never says who.
+    #
+    # Measured across all 467 logged answers: 9 replies are
+    # third-person prose about a third party, and 4 of them (44%)
+    # never name the subject, including the one that drew the
+    # complaint. Under the old clapback gate only 1 of those 4 was
+    # even visible.
+    if (answer and not _route_is_factual and not _round_gm_chunks
+            and not answer.lstrip().startswith("→")):
+        _nm_subjects = _roast_subjects(
+            question, profiles_block, asker_username, asker_display_name,
+        )
+        _nm_subject = _nm_subjects[0] if _nm_subjects else None
+        # Seam counter, NOT a guard (2026-08-27 review, session 1):
+        # the "what about him?" shape — a BANTER turn whose subject
+        # resolution found nobody while the question refers to
+        # someone in the third person. The answer then draws on the
+        # ASKER's material by default, which is the misscoping the
+        # Tulch incident documented. No behavior change here: a
+        # month of counts decides whether this seam deserves a
+        # guard or is theoretical.
+        if _nm_subject is None and _THIRD_PERSON_REF_RE.search(
+                question or ""):
+            log.info(
+                f"/ask seam:pronoun-subject-miss — BANTER, no "
+                f"resolvable subject, third-person pronoun in "
+                f"question (q={question[:80]!r})"
+            )
+        if _nm_subject:
+            _nm_disp, _nm_uname = _nm_subject
+            # Naming ANY tagged member anchors the reply. A comparison
+            # answer that names one of the two is not ambiguous.
+            _named = any(
+                re.search(rf"\b{re.escape(h)}\b", answer, re.I)
+                for d, u in _nm_subjects for h in (d, u) if len(h) >= 3
+            )
+            if not _named and _THIRD_PERSON_REF_RE.search(answer):
+                _ask_meta["guards"].append("subject-unnamed")
+                log.warning(
+                    f"/ask: third-party roast never names its subject "
+                    f"({_nm_disp}) — requesting one naming rewrite"
+                )
+                try:
+                    _nm_material = _member_material_surface(
+                        profiles_block, chat_context, _nm_uname,
+                        _nm_disp, question,
+                    )
+                    _nm_resp = await client.aio.models.generate_content(
+                        model=ask_model,
+                        contents=list(contents) + [types.Content(
+                            role="user",
+                            parts=[types.Part.from_text(text=(
+                                "[NAMING] This reply is about "
+                                f"{_nm_disp}, but it never says so. It "
+                                "reads as if it could be about anyone "
+                                "in the room. Rewrite it so "
+                                f"{_nm_disp} is named once, early and "
+                                "naturally. Change NOTHING else: same "
+                                "claims, same jokes, same length, same "
+                                "voice. Do not add material. Output "
+                                "only the reply."
+                            ))],
+                        )],
+                        config=types.GenerateContentConfig(
+                            system_instruction=(
+                                _build_runtime_system_instruction(
+                                    _prompt_extra)
+                            ),
+                            safety_settings=safety_settings,
+                            max_output_tokens=1000,
+                            temperature=0.3,
+                            thinking_config=types.ThinkingConfig(
+                                thinking_budget=256),
+                        ),
+                    )
+                    _tally_retry_usage(_nm_resp)
+                    try:
+                        _nm_answer = (_nm_resp.text or "").strip()
+                    except Exception:
+                        _nm_answer = ""
+                    if _nm_answer:
+                        _nm_answer, _ = _clean_voice_violations(_nm_answer)
+                    _nm_ok = bool(_nm_answer) and any(
+                        re.search(rf"\b{re.escape(h)}\b", _nm_answer,
+                                  re.I)
+                        for h in (_nm_disp, _nm_uname) if len(h) >= 3
+                    ) and not _clapback_fidelity_violations(
+                        _nm_answer, _nm_material)
+                    if _nm_ok:
+                        answer = _nm_answer
+                        log.info("/ask: naming rewrite accepted")
+                    else:
+                        log.info(
+                            "/ask: naming rewrite rejected — keeping the "
+                            "original (presentation issue, not a "
+                            "correctness one)"
+                        )
+                except Exception as e:
+                    log.warning(f"/ask: naming rewrite failed: {e}")
+
+    # Seam counter, NOT a guard (2026-08-27 review, session 1): a
+    # FACT-routed answer that names a member from WHO'S TALKING.
+    # Factual answers should be about the world, not the room;
+    # member material surfacing in one is the profile-confusion
+    # seam with no guard on it. Log-only — same month-of-counts
+    # test as the pronoun seam before anyone builds enforcement.
+    if answer and _route_is_factual and profiles_block:
+        try:
+            _seam_named = []
+            for _sd, _su in _member_handles_in_profiles(profiles_block):
+                for _h in (_sd, _su):
+                    if not _h or _h.lower() in (
+                            (asker_username or "").lower(),
+                            (asker_display_name or "").lower()):
+                        continue
+                    _pat = (rf"@{re.escape(_h)}\b" if len(_h) < 3
+                            else rf"\b{re.escape(_h)}\b")
+                    if re.search(_pat, answer, re.I):
+                        _seam_named.append(_sd)
+                        break
+            if _seam_named:
+                log.info(
+                    f"/ask seam:fact-names-member — FACT answer "
+                    f"names {sorted(set(_seam_named))[:4]} "
+                    f"(q={question[:80]!r})"
+                )
+        except Exception:
+            pass
+
+    # Roast-recycle guard (BANTER-gated) — a roast that remixes the
+    # same hooks as a prior answer to this asker reads as "doesn't
+    # know you or how to insult you." Force ONE rewrite with the
+    # recycled hooks banned; ship the original if the rewrite can't
+    # do better (repetition is weak, not dangerous).
+    # `not _analysis_extra`: a room-ranking question routes
+    # LOCAL/BANTER, so without this an answer built from query_data +
+    # Python with a chart attached was eligible to be rewritten as a
+    # roast. A roast rewriter has no business touching an analysis.
+    # `_is_clapback_shaped(answer)`: the BANTER route is NOT proof
+    # the answer is a roast — the router misroutes factual questions
+    # to BANTER regularly (citadel 07-30, Boeing + earnings calendar
+    # 08-03). On 08-03 the pnl-monotone guard classified a clean
+    # factual Boeing answer as a lazy roast (dense trading vocab,
+    # zero personal color — the definition of factual) and stapled a
+    # personal jab onto every arrow; the asker complained in the
+    # room. An answer must actually address the asker in second
+    # person before either roast guard may touch it.
+    # `not _asker_protected`: these rewrites INJECT jabs (the 08-03
+    # Boeing incident) — they must never run on a protected asker.
+    if (answer and not _route_is_factual and not _analysis_extra
+            and not _asker_protected
+            and _is_clapback_shaped(answer)
+            and _prior_bot_answer_texts):
+        _recycled = _recycled_roast_hooks(answer, _prior_bot_answer_texts)
+        if len(_recycled) >= _RECYCLE_HOOK_MIN:
+            _ask_meta["guards"].append("roast-recycle")
+            log.warning(
+                f"/ask: roast recycles {len(_recycled)} hooks from a "
+                f"prior answer to this asker "
+                f"({', '.join(_recycled[:6])}) — requesting rewrite"
+            )
+            try:
+                # 2026-07-17 fix: this prompt used to say "rebuild
+                # from material ALREADY in this conversation's
+                # context" while receiving ONLY the original answer
+                # — an instruction it could only satisfy by
+                # inventing. The dossier now rides along as the
+                # actual material, and the novel-content check
+                # below rejects inventions.
+                _rr_material = (profiles_block or "")[:6000]
+                # 2026-07-30 fix: this opened with "rewrite the
+                # following roast" and shipped ONLY the answer, so
+                # every input was treated as a single jab at the
+                # asker. "who are the happiest people in the chat?
+                # How about the angriest" came back with the
+                # happiest arrow deleted. The question rides along
+                # now and the answer has to survive rewriting.
+                _rr_prompt = (
+                    "Rewrite the ANSWER below. It is a bot's answer "
+                    "to a real question — it may be a roast, or a "
+                    "list, or a straight answer. Whatever shape it "
+                    "is, the rewrite must STILL ANSWER the question "
+                    "in full: every part the question asked for, "
+                    "every subject the original covered. If the "
+                    "original is arrow bullets, return the same "
+                    "number of arrow bullets on the same subjects. "
+                    "Never redirect an answer about other people "
+                    "into a jab at the asker.\n\n"
+                    f"QUESTION:\n{question}\n\n"
+                    "The problem to fix: it "
+                    "recycles the SAME hooks you already used on this "
+                    "person recently — they noticed, and a repeated "
+                    "roast reads as not knowing them at all. BANNED "
+                    "material for this rewrite (do not mention or "
+                    "paraphrase): "
+                    + ", ".join(_recycled)
+                    + ". Rebuild the jab from DIFFERENT material in "
+                    "the SUBJECT MATERIAL below — "
+                    "their PERSONAL color first (recent personal "
+                    "life, retarded takes, personality); trading-"
+                    "loss angles only "
+                    "if the ledger material is specific and fresh. "
+                    "The SUBJECT MATERIAL is your ONLY allowed "
+                    "source — inventing traits, habits, or behaviors "
+                    "is a hard failure. Same heat, same length, same "
+                    "voice. Do NOT invent new facts, tickers, or "
+                    "numbers. Output ONLY the rewritten answer.\n\n"
+                    + (
+                        f"SUBJECT MATERIAL:\n{_rr_material}\n\n"
+                        if _rr_material else ""
+                    )
+                    + "ORIGINAL ANSWER:\n"
+                    f"{answer}"
+                )
+                _rr_config = types.GenerateContentConfig(
+                    system_instruction=(
+                        "You are a sharp trader rewriting a roast so "
+                        "it lands fresh. Direct, in-register, no AI "
+                        "tells, no recycled material."
+                    ),
+                    safety_settings=safety_settings,
+                    max_output_tokens=1500,
+                    temperature=0.6,
+                    thinking_config=types.ThinkingConfig(
+                        thinking_budget=512),
+                )
+                _rr_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=[types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=_rr_prompt)],
+                    )],
+                    config=_rr_config,
+                )
+                _tally_retry_usage(_rr_resp)
+                try:
+                    _rr_answer = (_rr_resp.text or "").strip()
+                except Exception:
+                    _rr_answer = ""
+                if _rr_answer:
+                    _rr_answer, _ = _clean_voice_violations(_rr_answer)
+                    _still = _recycled_roast_hooks(
+                        _rr_answer, _prior_bot_answer_texts
+                    )
+                    _rr_novel = _rewrite_novel_ratio(
+                        _rr_answer,
+                        f"{answer} {profiles_block or ''} "
+                        f"{question or ''}",
+                    )
+                    if _rr_novel > _REWRITE_NOVEL_MAX_RATIO:
+                        _ask_meta["guards"].append(
+                            "rewrite:novel-rejected"
+                        )
+                        log.warning(
+                            f"/ask: roast-recycle rewrite invented "
+                            f"content (novel ratio {_rr_novel:.2f}) "
+                            f"— shipping original"
+                        )
+                    elif len(_still) < _RECYCLE_HOOK_MIN:
+                        answer = _rr_answer
+                        log.info("/ask: roast-recycle rewrite succeeded")
+                    else:
+                        log.warning(
+                            "/ask: roast-recycle rewrite still recycled "
+                            "— shipping original"
+                        )
+            except Exception as e:
+                log.warning(f"/ask: roast-recycle rewrite failed: {e}")
+    return (answer,)
+
+
+async def _ask_07_validation_ladder(
+    _analysis_extra,
+    _ask_meta,
+    _ask_tool_trace,
+    _asker_protected,
+    _prompt_extra,
+    _round_gm_chunks,
+    _route_is_factual,
+    _tally_retry_usage,
+    answer,
+    ask_model,
+    client,
+    contents,
+    needs_web,
+    profiles_block,
+    question,
+    response,
+    safety_settings,
+    types,
+    user_content
+):
+    """Phase 7 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+    grounding_metadata = None
+
+    # P&L-monotone guard (BANTER-gated) — "your roasts need to
+    # target more personal stuff than trading money losses cuz it's
+    # just lame and repetitive" (user, 2026-07-10). A roast that is
+    # all trading-loss vocabulary and touches NONE of the dossier's
+    # personal color gets one rewrite pointed at the personal
+    # sections. Ship the original if the rewrite doesn't improve —
+    # monotone is weak, not dangerous.
+    if (answer and not _route_is_factual and not _analysis_extra
+            and not _asker_protected
+            and profiles_block
+            and _is_clapback_shaped(answer)
+            and _roast_is_pnl_monotone(answer, profiles_block)):
+        _ask_meta["guards"].append("pnl-monotone")
+        log.warning(
+            f"/ask: P&L-monotone roast (q={question[:80]!r}) — "
+            f"requesting personal-color rewrite"
+        )
+        try:
+            _pm_prompt = (
+                "Rewrite the ANSWER below. It is a bot's answer to a "
+                "real question. The rewrite must STILL ANSWER that "
+                "question in full — every part it asked for, every "
+                "subject the original covered — and keep the same "
+                "shape (arrow bullets in, the same arrow bullets "
+                "out). Never redirect an answer about other people "
+                "into a jab at the asker.\n\n"
+                f"QUESTION:\n{question}\n\n"
+                "The problem to fix: every jab "
+                "in it is a trading-losses jab (bags, exits, account, "
+                "casino) — the laziest register, and this room has "
+                "called it out. Rebuild the heat from the target's "
+                "PERSONAL color that is ALREADY in this conversation's "
+                "context: their recent personal life, retarded takes, "
+                "personality quirks, or what they said in the current "
+                "chat window. One trading reference may survive if "
+                "it's specific, but the roast's spine must be "
+                "personal. Same heat, same length, same voice. Do NOT "
+                "invent new facts, tickers, or numbers — only material "
+                "from the context. Output ONLY the rewritten "
+                "answer.\n\nORIGINAL ANSWER:\n"
+                f"{answer}"
+            )
+            _pm_config = types.GenerateContentConfig(
+                system_instruction=(
+                    "You are a sharp trader rewriting a roast so it "
+                    "hits the person, not their P&L. Direct, "
+                    "in-register, no AI tells."
+                ),
+                safety_settings=safety_settings,
+                max_output_tokens=1500,
+                temperature=0.6,
+                thinking_config=types.ThinkingConfig(
+                    thinking_budget=512),
+            )
+            _pm_resp = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=[types.Content(
+                    role="user",
+                    parts=[types.Part.from_text(text=_pm_prompt)],
+                )],
+                config=_pm_config,
+            )
+            _tally_retry_usage(_pm_resp)
+            try:
+                _pm_answer = (_pm_resp.text or "").strip()
+            except Exception:
+                _pm_answer = ""
+            if _pm_answer:
+                _pm_answer, _ = _clean_voice_violations(_pm_answer)
+                if not _roast_is_pnl_monotone(_pm_answer, profiles_block):
+                    answer = _pm_answer
+                    log.info("/ask: P&L-monotone rewrite succeeded")
+                else:
+                    log.warning(
+                        "/ask: P&L-monotone rewrite still monotone — "
+                        "shipping original"
+                    )
+        except Exception as e:
+            log.warning(f"/ask: P&L-monotone rewrite failed: {e}")
+
+    grounding_metadata = None
+    try:
+        grounding_metadata = response.candidates[0].grounding_metadata
+    except (AttributeError, IndexError, TypeError):
+        pass
+    if not _grounding_has_sources(grounding_metadata) and _round_gm_chunks:
+        # The final text turn carries no gm, but an earlier round of
+        # the tool loop searched — that evidence grounds this answer
+        # (and feeds the sources footer). Dedup chunks by URI.
+        _seen_uris: set[str] = set()
+        _merged = []
+        for ch in _round_gm_chunks:
+            uri = getattr(getattr(ch, "web", None), "uri", None) or id(ch)
+            if uri in _seen_uris:
+                continue
+            _seen_uris.add(uri)
+            _merged.append(ch)
+        grounding_metadata = SimpleNamespace(grounding_chunks=_merged)
+        log.info(
+            f"/ask: grounding recovered from earlier tool-loop round(s) "
+            f"({len(_merged)} chunk(s)) — final turn had none"
+        )
+
+    # Grounding backstop — structural enforcement of "Type 1 needs a
+    # source." If the answer asserts market-fact specifics yet
+    # nothing grounded it (no Google grounding, no data tool), force
+    # ONE SEARCH-ONLY retry; if that STILL doesn't ground, append a
+    # hedge so the unverified specifics aren't presented as fact.
+    #
+    # SEARCH-ONLY is the load-bearing detail (2026-06-19 fix). Gemini
+    # grounding is discretionary, and when google_search rides in the
+    # same request as the bot's function tools, the model routinely
+    # skips search and answers from priors — which is the
+    # confabulation. The earlier version of this retry re-sent ALL
+    # the function tools, so it did the exact same thing and fell
+    # straight through to the hedge: it confirmed it hadn't searched
+    # rather than actually searching. Stripping the function tools so
+    # Google Search is the ONLY move makes grounding fire for real,
+    # so the retry returns a verified answer and the hedge becomes
+    # rare (only when the web genuinely has nothing). The backstop
+    # only fires on MARKET-FACT shapes where no tool fired on pass 1,
+    # so losing the function tools on retry costs nothing.
+    _ground_trigger_shape = _is_ungrounded_market_fact(
+        answer, grounding_metadata, _ask_tool_trace,
+        context=user_content,
+    )
+    _ground_trigger_web = _ungrounded_web_specifics(
+        answer, grounding_metadata, needs_web,
+        is_opinion=_is_opinion_request(question),
+    )
+    # Calendar-slate questions trigger on question shape, not answer
+    # shape — a ticker-and-times slate carries no factual-specific
+    # markers the other two nets can see (2026-07-20 terlin). Any
+    # data tool firing counts as a source, same as the market-shape
+    # net.
+    _ground_trigger_calendar = (
+        _is_calendar_question(question)
+        and not _grounding_has_sources(grounding_metadata)
+        and not _ask_tool_trace
+    )
+    if answer and (_ground_trigger_shape or _ground_trigger_web
+                   or _ground_trigger_calendar):
+        _ground_trigger_name = (
+            "web-routed" if _ground_trigger_web
+            else "market-shape" if _ground_trigger_shape
+            else "calendar"
+        )
+        _ask_meta["guards"].append("grounding:" + _ground_trigger_name)
+        log.warning(
+            f"/ask: ungrounded answer (q={question[:80]!r}, "
+            f"trigger={_ground_trigger_name})"
+            f" — forcing a search-only retry"
+        )
+        # Price backstop-fetch (2026-07-27 ORCL contradiction).
+        # The forced retry strips the function tools, so an answer
+        # asserting a live price could only ever be hedged, never
+        # corrected — and banter passes never call the tool on
+        # their own. Fetch the asserted tickers deterministically
+        # and inject the live numbers; the tool trace entry also
+        # lets the retry-acceptance check count this as a source.
+        _price_injected = False
+        _price_symbols = _answer_price_tickers(answer)
+        if _price_symbols:
+            try:
+                _price_result = await _execute_market_price(
+                    {"symbols": _price_symbols}
+                )
+                if (isinstance(_price_result, dict)
+                        and _price_result.get("status") == "ok"):
+                    _ask_tool_trace.append({
+                        "tool": "lookup_market_price",
+                        "args": {"symbols": str(_price_symbols)[:80]},
+                        "status": "backstop-fetch",
+                        "result_chars": len(str(_price_result)),
+                    })
+                    contents.append(types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=(
+                            "[LIVE PRICE DATA — system-fetched "
+                            "because your draft asserted price "
+                            "levels no tool sourced]\n"
+                            + str(_price_result)[:4000]
+                            + "\nUse ONLY these numbers for any "
+                            "price/level/percent-move claim in "
+                            "your rewrite; drop any price this "
+                            "data does not cover. If the data "
+                            "contradicts your draft's claim about "
+                            "what a ticker is doing, the data "
+                            "wins — including any claim you made "
+                            "about the asker being wrong."
+                        ))],
+                    ))
+                    _price_injected = True
+                    _ask_meta["guards"].append("price-backstop-fetch")
+                    log.info(
+                        f"/ask: price backstop-fetch injected live "
+                        f"data for {_price_symbols}"
+                    )
+            except Exception as ppe:
+                log.warning(
+                    f"/ask: price backstop-fetch failed "
+                    f"(non-fatal): {ppe}"
+                )
+        try:
+            forced_contents = list(contents) + [
+                types.Content(role="user", parts=[types.Part.from_text(
+                    text=(
+                        "[GROUNDING REQUIRED] Your previous draft stated "
+                        "specific facts — numbers, dates, counts, figures, "
+                        "price targets, a company's market cap or bed/unit "
+                        "count, a contract or unlock schedule — WITHOUT "
+                        "consulting any source. Do NOT answer a specific "
+                        "from memory or by extrapolating from a pasted "
+                        "document. Google Search is now your ONLY tool: "
+                        "verify each specific against a real result before "
+                        "stating it. If a specific isn't in the search "
+                        "results, say you couldn't verify it — never invent "
+                        "a date, count, ticker, level, or figure to fill "
+                        "the gap."
+                    ),
+                )])
+            ]
+            # SEARCH-ONLY tool config — no function tools, so the model
+            # has nothing to route to except Google Search.
+            forced_config = types.GenerateContentConfig(
+                system_instruction=_build_runtime_system_instruction(_prompt_extra),
+                tools=[types.Tool(google_search=types.GoogleSearch())],
+                safety_settings=safety_settings,
+                max_output_tokens=5000,
+                temperature=0.3,
+                thinking_config=types.ThinkingConfig(thinking_budget=2000),
+            )
+            forced_resp = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=forced_contents,
+                config=forced_config,
+            )
+            _tally_retry_usage(forced_resp)
+            try:
+                forced_answer = (forced_resp.text or "").strip()
+            except Exception:
+                forced_answer = ""
+            forced_gm = None
+            try:
+                forced_gm = forced_resp.candidates[0].grounding_metadata
+            except (AttributeError, IndexError, TypeError):
+                pass
+            _retry_still_ungrounded = (
+                # Trace includes the price backstop-fetch when it
+                # ran — a retry built on injected live data counts
+                # as tool-sourced, same as if the model had called
+                # lookup_market_price itself.
+                _is_ungrounded_market_fact(
+                    forced_answer, forced_gm, _ask_tool_trace,
+                    context=user_content,
+                )
+                or _ungrounded_web_specifics(
+                    forced_answer, forced_gm, needs_web,
+                    is_opinion=_is_opinion_request(question),
+                )
+                # A calendar retry that again skipped search is still
+                # a memory slate — don't accept it as "hedged"; let
+                # it fall through to the bare probe.
+                or (_ground_trigger_calendar
+                    and not _grounding_has_sources(forced_gm))
+            )
+            if forced_answer and _grounding_has_sources(forced_gm):
+                answer = forced_answer
+                response = forced_resp
+                grounding_metadata = forced_gm
+                _ask_meta["ground_retry"] = "in-voice:grounded"
+                log.info("/ask: grounded retry succeeded")
+            elif forced_answer and not _retry_still_ungrounded:
+                # Retry dropped the unverifiable specifics (e.g. said
+                # "couldn't verify") — or rebuilt its price claims on
+                # the injected live data. Either is the honest
+                # outcome; the label records which.
+                answer = forced_answer
+                response = forced_resp
+                grounding_metadata = forced_gm
+                _ask_meta["ground_retry"] = (
+                    "in-voice:price-tool" if _price_injected
+                    else "in-voice:hedged"
+                )
+                log.info(
+                    "/ask: grounded retry accepted "
+                    f"({_ask_meta['ground_retry']})"
+                )
+            elif not needs_web:
+                # Stage 2 is SKIPPED for LOCAL-routed questions. The
+                # probe's whole mechanism — strip all context so
+                # searching becomes the only move — is wrong when the
+                # answer CAME FROM context: a LOCAL/BANTER question
+                # full of room referents becomes a nonsense web query
+                # (2026-07-16 Cemini: the probe Googled "omniwiz ...
+                # rope and his ladder", grounded a literature page
+                # about executioners, and its refusal replaced an
+                # excellent in-voice GLW read). The in-voice retry
+                # above already attempted grounding WITH context;
+                # failing that, hedge and keep the answer.
+                answer = (
+                    answer.rstrip()
+                    + "\n\n→ ⚠️ Couldn't verify these specifics "
+                    "against a live source — treat the exact "
+                    "numbers/dates as unconfirmed."
+                )
+                _ask_meta["ground_retry"] = "hedged(local-skip)"
+                log.warning(
+                    "/ask: LOCAL-routed answer failed grounding retry "
+                    "— skipped the context-blind bare probe, kept "
+                    "in-voice answer + hedge"
+                )
+            elif _is_context_dependent(question):
+                # Stage 2 is SKIPPED for context-dependent follow-ups.
+                # The bare probe strips all conversation history, so a
+                # question that references the live thread ("give us 5
+                # from THERE", "what's ITS Q3 number") loses its
+                # antecedent and the probe answers a different,
+                # unanswerable question — 2026-07-13: kloh asked for 5
+                # names "from there" (the OTE report discussed seconds
+                # earlier) and the probe, context-blind, replied "I
+                # cannot verify the existence of the report you
+                # mentioned." It didn't refuse; it forgot, by design.
+                # Keep the context-aware in-voice answer and hedge.
+                answer = (
+                    answer.rstrip()
+                    + "\n\n→ ⚠️ Couldn't verify these specifics "
+                    "against a live source — treat the exact "
+                    "numbers/dates as unconfirmed."
+                )
+                _ask_meta["ground_retry"] = "hedged(context-dep-skip)"
+                log.warning(
+                    "/ask: context-dependent follow-up — skipped the "
+                    "context-blind bare probe, kept in-voice answer + "
+                    "hedge"
+                )
+            else:
+                # Stage 2 — BARE PROBE. Diagnosis from the 2026-07-08
+                # hedge batch (Toy Story / market-down / Netflix): even
+                # SEARCH-ONLY passes skip the discretionary search when
+                # the request carries the full 8-10K-char room prompt +
+                # persona — the model answers from that context and its
+                # priors instead. The probe strips EVERYTHING except the
+                # question: no profiles, no chat, no persona. With
+                # nothing to answer from, searching becomes the path of
+                # least resistance. Dry output is fine — this path only
+                # runs for self-contained fact questions (context-
+                # dependent ones took the skip branch above), where
+                # correct-and-plain beats in-voice-but-unverified.
+                _probe_ok = False
+                _probe_state = "error"  # overwritten below on a response
+                try:
+                    probe_q = (
+                        question.strip()[-600:]
+                        + _probe_topic_capsule(question, answer)
+                    )
+                    probe_resp = await client.aio.models.generate_content(
+                        model=ask_model,
+                        contents=[types.Content(
+                            role="user",
+                            parts=[types.Part.from_text(text=(
+                                "Verify with Google Search and answer "
+                                "concisely (1-4 short sentences or "
+                                "bullets): " + probe_q
+                            ))],
+                        )],
+                        config=types.GenerateContentConfig(
+                            system_instruction=(
+                                "You are a fact-checking search agent. "
+                                "Your FIRST action MUST be a Google "
+                                "Search query — produce no answer text "
+                                "before searching, and never answer "
+                                "from memory alone. State only what the "
+                                "results support; name anything you "
+                                "could not verify. Plain prose, no "
+                                "em-dashes."
+                            ),
+                            tools=[types.Tool(
+                                google_search=types.GoogleSearch())],
+                            safety_settings=safety_settings,
+                            max_output_tokens=1000,
+                            temperature=0.1,
+                            # 1024: at 512 the model sometimes answered
+                            # from priors without planning a search
+                            # (07-09: probe converted only 1 of 4).
+                            thinking_config=types.ThinkingConfig(
+                                thinking_budget=1024),
+                        ),
+                    )
+                    _tally_retry_usage(probe_resp)
+                    try:
+                        probe_answer = (probe_resp.text or "").strip()
+                    except Exception:
+                        probe_answer = ""
+                    probe_gm = None
+                    try:
+                        probe_gm = (
+                            probe_resp.candidates[0].grounding_metadata
+                        )
+                    except (AttributeError, IndexError, TypeError):
+                        pass
+                    _probe_state = "no-ground"
+                    if probe_answer and _probe_is_refusal(probe_answer):
+                        # A "grounded" I-cannot-verify is not an
+                        # answer — never let it replace one.
+                        _probe_state = "refusal"
+                        probe_answer = ""
+                    if probe_answer and _grounding_has_sources(probe_gm):
+                        # The probe bypassed the earlier voice-lint pass
+                        # — run the mechanical cleaner so em-dashes /
+                        # tells don't ship.
+                        probe_answer, _ = _clean_voice_violations(
+                            probe_answer
+                        )
+                        answer = probe_answer
+                        response = probe_resp
+                        grounding_metadata = probe_gm
+                        _probe_ok = True
+                        _ask_meta["ground_retry"] = "bare-probe:grounded"
+                        log.info(
+                            "/ask: bare-probe grounded (in-voice retry "
+                            "had failed)"
+                        )
+                        # REVOICE (2026-07-23). The probe is
+                        # deliberately persona-less — that dryness is
+                        # what makes it search — but every probe
+                        # answer in the 07-17..07-23 window failed QC
+                        # voice/format for exactly that reason. One
+                        # no-tools rewrite turns the verified facts
+                        # into arrow-bullet room voice; the fidelity
+                        # gate (_revoice_acceptable) rejects any
+                        # rewrite that invents substance, in which
+                        # case the dry probe answer ships as before.
+                        # Grounding receipts stay on probe_gm either
+                        # way — the rewrite never touches sources.
+                        try:
+                            _rv_prompt = (
+                                "Rewrite this verified answer as a "
+                                "sharp trader-to-trader Discord reply: "
+                                "2-4 arrow bullets (each starting "
+                                "'→ '), direct and opinionated, plain "
+                                "English, no em-dashes, no source "
+                                "list, no hedging filler. Do NOT add, "
+                                "change, or drop any fact, number, "
+                                "date, ticker, or name — every "
+                                "specific in your rewrite must appear "
+                                "in the ORIGINAL. Output ONLY the "
+                                "rewritten answer.\n\n"
+                                "QUESTION:\n"
+                                + (question or "").strip()[-600:]
+                                + "\n\nORIGINAL (verified):\n"
+                                + probe_answer
+                            )
+                            _rv_resp = await (
+                                client.aio.models.generate_content(
+                                    model=ask_model,
+                                    contents=[types.Content(
+                                        role="user",
+                                        parts=[types.Part.from_text(
+                                            text=_rv_prompt)],
+                                    )],
+                                    config=types.GenerateContentConfig(
+                                        system_instruction=(
+                                            "You are a senior trader "
+                                            "rewriting a research note "
+                                            "for the group chat. Keep "
+                                            "every fact identical."
+                                        ),
+                                        safety_settings=safety_settings,
+                                        max_output_tokens=1200,
+                                        temperature=0.4,
+                                        thinking_config=(
+                                            types.ThinkingConfig(
+                                                thinking_budget=512)
+                                        ),
+                                    ),
+                                )
+                            )
+                            _tally_retry_usage(_rv_resp)
+                            try:
+                                _rv_text = (_rv_resp.text or "").strip()
+                            except Exception:
+                                _rv_text = ""
+                            if _rv_text:
+                                _rv_text, _ = _clean_voice_violations(
+                                    _rv_text
+                                )
+                            if _revoice_acceptable(
+                                _rv_text, probe_answer, question
+                            ):
+                                answer = _rv_text
+                                _ask_meta["ground_retry"] = (
+                                    "bare-probe:grounded+revoiced"
+                                )
+                                log.info(
+                                    "/ask: probe revoice accepted"
+                                )
+                            else:
+                                _ask_meta["ground_retry"] = (
+                                    "bare-probe:grounded(dry)"
+                                )
+                                log.info(
+                                    "/ask: probe revoice rejected — "
+                                    "shipping dry probe answer"
+                                )
+                        except Exception as rve:
+                            log.warning(
+                                f"/ask: probe revoice call failed "
+                                f"(non-fatal): {rve}"
+                            )
+                except Exception as pe:
+                    log.warning(f"/ask: bare probe failed: {pe}")
+                if not _probe_ok:
+                    # Still ungrounded — flag rather than ship as fact.
+                    # The stamp distinguishes probe-ran-but-didn't-
+                    # search from probe-call-died, so the ask-log
+                    # shows which failure to tune next.
+                    answer = (
+                        answer.rstrip()
+                        + "\n\n→ ⚠️ Couldn't verify these specifics "
+                        "against a live source — treat the exact "
+                        "numbers/dates as unconfirmed."
+                    )
+                    _ask_meta["ground_retry"] = f"hedged(probe:{_probe_state})"
+                    log.warning(
+                        "/ask: retry + bare probe both ungrounded — "
+                        f"appended hedge (probe:{_probe_state})"
+                    )
+        except Exception as e:
+            log.warning(f"/ask: grounded retry call failed: {e}")
+    return (answer, grounding_metadata, response)
+
+
+async def _ask_08_technical_analysis_guard(
+    _ask_meta,
+    _ask_tool_trace,
+    _prompt_extra,
+    _tally_retry_usage,
+    answer,
+    ask_model,
+    client,
+    contents,
+    grounding_metadata,
+    question,
+    safety_settings,
+    types,
+    user_content
+):
+    """Phase 8 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+    response = None
+
+    # TA guard — structural suppression of self-generated technical
+    # analysis. If the answer makes indicator/level claims that
+    # nothing sourced (no grounding, no data tool), regenerate ONCE
+    # with a "[NO CHART DATA]" directive; prefer the cleaner result;
+    # then HARD-STRIP any indicator sentences that survive (the bot
+    # has no indicator feed, so those are always invented). Level
+    # claims are left to the regen — stripping prose mid-sentence
+    # risks mangling it — with a one-line hedge if they persist.
+    if answer and _has_unsourced_ta(
+        answer, grounding_metadata, _ask_tool_trace
+    ):
+        ind0, lvl0 = _ta_violations(answer)
+        _ask_meta["guards"].append("ta")
+        log.warning(
+            f"/ask: unsourced TA answer (q={question[:80]!r}, "
+            f"indicators={len(ind0)}, levels={len(lvl0)}) "
+            f"— forcing a no-chart-data retry"
+        )
+        try:
+            ta_contents = list(contents) + [
+                types.Content(role="user", parts=[types.Part.from_text(
+                    text=(
+                        "[NO CHART DATA] Your previous draft made "
+                        "technical-analysis claims (indicator reads like "
+                        "RSI/MACD/moving averages, or chart levels like "
+                        "support/resistance/breakouts/pivots) that NO "
+                        "source backed. You have NO chart or indicator "
+                        "feed — never state an indicator value or an "
+                        "overbought/oversold read from memory. For a price "
+                        "level, either attribute it to a named source you "
+                        "found via Google Search, or drop it. Re-answer the "
+                        "question on fundamentals/catalysts/positioning and "
+                        "omit any TA you cannot source."
+                    ),
+                )])
+            ]
+            # SEARCH-ONLY (same rationale as the grounding backstop):
+            # if a level can be sourced, search is the only way to do
+            # it — bundling the function tools just lets the model
+            # skip search and re-confabulate the level from priors.
+            ta_config = types.GenerateContentConfig(
+                system_instruction=_build_runtime_system_instruction(_prompt_extra),
+                tools=[types.Tool(google_search=types.GoogleSearch())],
+                safety_settings=safety_settings,
+                max_output_tokens=5000,
+                temperature=0.3,
+                thinking_config=types.ThinkingConfig(thinking_budget=2000),
+            )
+            ta_resp = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=ta_contents,
+                config=ta_config,
+            )
+            _tally_retry_usage(ta_resp)
+            try:
+                ta_answer = (ta_resp.text or "").strip()
+            except Exception:
+                ta_answer = ""
+            ta_gm = None
+            try:
+                ta_gm = ta_resp.candidates[0].grounding_metadata
+            except (AttributeError, IndexError, TypeError):
+                pass
+            # Prefer the retry when it's clean (grounded, or no TA
+            # violations left). Otherwise keep whichever draft has
+            # fewer violations as the base for the strip.
+            if ta_answer and not _has_unsourced_ta(ta_answer, ta_gm, []):
+                answer = ta_answer
+                response = ta_resp
+                grounding_metadata = ta_gm
+                log.info("/ask: no-chart-data retry returned a clean answer")
+            else:
+                if ta_answer:
+                    ind_new, lvl_new = _ta_violations(ta_answer)
+                    if len(ind_new) + len(lvl_new) < len(ind0) + len(lvl0):
+                        answer = ta_answer
+                        response = ta_resp
+                        grounding_metadata = ta_gm
+                # Hard-strip surviving invented indicator sentences.
+                ind_left, lvl_left = _ta_violations(answer)
+                if ind_left:
+                    answer = _strip_sentences(answer, ind_left)
+                    log.warning(
+                        f"/ask: stripped {len(ind_left)} invented "
+                        f"indicator sentence(s)"
+                    )
+                # Levels we can't safely strip — hedge once if present.
+                _, lvl_after = _ta_violations(answer)
+                if lvl_after and answer:
+                    answer = (
+                        answer.rstrip()
+                        + "\n\n→ ⚠️ Any chart levels above are unsourced — "
+                        "I have no chart feed, so treat them as rough, not "
+                        "precise."
+                    )
+                    log.warning(
+                        "/ask: unsourced levels remain — appended TA hedge"
+                    )
+        except Exception as e:
+            log.warning(f"/ask: no-chart-data retry call failed: {e}")
+
+    # Member-outcome guard — clapbacks can't have no truth behind
+    # them. If the answer asserts someone's P&L STATE ("underwater
+    # on your bags", "down 40%") and this turn consulted no trade
+    # data, rewrite the jab onto documented material; strip what
+    # survives. (2026-07-02: Cpig clapback asserted "underwater" —
+    # his ledger shows zero documented outcomes.)
+    _oc_names = _known_member_names()
+    if answer and _has_unsourced_outcome_claims(
+        answer, _ask_tool_trace, user_content, _oc_names
+    ):
+        oc0 = _outcome_violations(answer, user_content, _oc_names)
+        _ask_meta["guards"].append("outcome")
+        log.warning(
+            f"/ask: unsourced member-outcome claim(s) "
+            f"(q={question[:80]!r}, n={len(oc0)}) — requesting rewrite"
+        )
+        try:
+            oc_prompt = (
+                "Rewrite the following Discord bot answer. It asserts "
+                "someone's profit/loss STATE (e.g. 'underwater', 'down "
+                "bad', 'bleeding', 'down N%', 'his plays are a road to "
+                "ruin') with NO documented source — the trade ledger "
+                "only records what people POST, so an asserted P&L "
+                "state is fabrication. This applies to ANY member named "
+                "in the answer, not just the person being addressed — "
+                "trashing a third member's plays without their ledger "
+                "is the same invention. Replace each "
+                "such claim with what IS verifiable in the answer's own "
+                "remaining material: documented behavior (entries with "
+                "no posted exit, spamming a ticker, their own quoted "
+                "words), or drop the claim. Do NOT add any new facts, "
+                "tickers, percentages, or events. Keep the same length, "
+                "voice, and heat — the jab stays, the invented outcome "
+                "goes. Output ONLY the rewritten answer, no preamble.\n\n"
+                "ORIGINAL:\n"
+                f"{answer}"
+            )
+            oc_config = types.GenerateContentConfig(
+                system_instruction=(
+                    "You are a senior trader rewriting another trader's "
+                    "message. Direct, in-register, no AI tells. Never "
+                    "state an outcome the material doesn't document."
+                ),
+                safety_settings=safety_settings,
+                max_output_tokens=1500,
+                temperature=0.4,
+                thinking_config=types.ThinkingConfig(thinking_budget=512),
+            )
+            oc_resp = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=[types.Content(
+                    role="user",
+                    parts=[types.Part.from_text(text=oc_prompt)],
+                )],
+                config=oc_config,
+            )
+            _tally_retry_usage(oc_resp)
+            try:
+                oc_answer = (oc_resp.text or "").strip()
+            except Exception:
+                oc_answer = ""
+            if oc_answer and not _outcome_violations(
+                oc_answer, user_content, _oc_names
+            ):
+                answer = oc_answer
+                log.info("/ask: outcome-claim rewrite succeeded")
+            else:
+                # Strip the offending sentences from whichever draft
+                # is cleaner; a clapback minus its invented outcome
+                # is still a clapback.
+                base = oc_answer if (
+                    oc_answer
+                    and len(_outcome_violations(
+                        oc_answer, user_content, _oc_names))
+                    < len(oc0)
+                ) else answer
+                to_strip = _outcome_violations(
+                    base, user_content, _oc_names)
+                stripped = _strip_sentences(base, to_strip)
+                if stripped:
+                    answer = stripped
+                    log.warning(
+                        f"/ask: stripped {len(to_strip)} unsourced "
+                        f"outcome sentence(s)"
+                    )
+                else:
+                    log.warning(
+                        "/ask: outcome strip would empty the answer — "
+                        "shipping original"
+                    )
+        except Exception as e:
+            log.warning(f"/ask: outcome-claim rewrite call failed: {e}")
+    return (answer, grounding_metadata, response)
+
+
+async def _ask_09_rank_and_regen_guards(
+    _ask_meta,
+    _tally_retry_usage,
+    answer,
+    ask_model,
+    chat_context,
+    client,
+    config,
+    contents,
+    cross_window_block,
+    fetched_urls,
+    images,
+    profiles_for_prompt,
+    question,
+    response,
+    safety_settings,
+    separator,
+    types
+):
+    """Phase 9 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+    grounding_metadata = None
+
+    # Rank-trajectory guard — the bot only has the CURRENT rank
+    # snapshot, so a "you lost/dropped/climbed a rank" claim is
+    # invented (2026-07-05: told SV he "lost your spot in the top 5"
+    # after stating he was #9). Rewrite to drop the trajectory,
+    # keeping the current rank + the jab; strip the sentences as a
+    # fallback.
+    _rank_viol = _rank_trajectory_violations(answer) if answer else []
+    if _rank_viol:
+        _ask_meta["guards"].append("rank-trajectory")
+        log.warning(
+            f"/ask: unsourced rank-trajectory claim(s) "
+            f"(q={question[:80]!r}, n={len(_rank_viol)}) — requesting rewrite"
+        )
+        try:
+            rk_prompt = (
+                "Rewrite the following answer. It claims someone's rank "
+                "CHANGED over time — lost/dropped/climbed a spot, used to "
+                "be #N, fell out of the top N, took time off and slid. "
+                "You have ONLY the current rank (a snapshot); there is no "
+                "rank history, so any movement claim is invented. Remove "
+                "every rank-movement / rank-history claim. Keep the "
+                "CURRENT rank if it's stated, and keep the rest of the "
+                "jab. Do NOT say anyone gained, lost, dropped, climbed, "
+                "or used to hold a position. Add no new facts. Output "
+                "ONLY the rewritten answer.\n\n"
+                "ORIGINAL:\n"
+                f"{answer}"
+            )
+            rk_config = types.GenerateContentConfig(
+                system_instruction=(
+                    "You edit a trading-room bot's message. Direct, "
+                    "in-register. Never assert a rank changed over time."
+                ),
+                safety_settings=safety_settings,
+                max_output_tokens=1500,
+                temperature=0.4,
+                thinking_config=types.ThinkingConfig(thinking_budget=512),
+            )
+            rk_resp = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=[types.Content(
+                    role="user",
+                    parts=[types.Part.from_text(text=rk_prompt)],
+                )],
+                config=rk_config,
+            )
+            _tally_retry_usage(rk_resp)
+            try:
+                rk_answer = (rk_resp.text or "").strip()
+            except Exception:
+                rk_answer = ""
+            if rk_answer and not _rank_trajectory_violations(rk_answer):
+                answer = rk_answer
+                log.info("/ask: rank-trajectory rewrite succeeded")
+            else:
+                stripped = _strip_sentences(answer, _rank_viol)
+                if stripped and len(stripped) > 15:
+                    answer = stripped
+                    log.warning(
+                        f"/ask: stripped {len(_rank_viol)} rank-trajectory "
+                        f"sentence(s)"
+                    )
+                else:
+                    log.warning(
+                        "/ask: rank-trajectory strip would empty the "
+                        "answer — shipping original"
+                    )
+        except Exception as e:
+            log.warning(f"/ask: rank-trajectory rewrite call failed: {e}")
+
+    # Phantom image-read guard — when NO image reached this call,
+    # any "your screenshot shows / you posted a fill" claim is an
+    # invented reading (2026-07-10: graded 2pale's SOXL receipt as
+    # "6.1x" without ever seeing it). Detect→strip; the intake fixes
+    # (reply-to-bot trigger + look-back pull) make a real image
+    # reach the call in the first place, this is the backstop.
+    if answer and not images:
+        _phantom = _phantom_image_read_violations(answer)
+        if _phantom:
+            _ask_meta["guards"].append("phantom-image")
+            _stripped_ph = _strip_sentences(answer, _phantom)
+            if _stripped_ph.strip():
+                answer = _stripped_ph
+                log.warning(
+                    f"/ask: stripped {len(_phantom)} phantom "
+                    f"image-read sentence(s) (no image in call)"
+                )
+            else:
+                answer = (
+                    "→ Can't read a screenshot from here — repost it "
+                    "as a reply to me or attach it to the question."
+                )
+                log.warning(
+                    "/ask: phantom image-read strip emptied the answer "
+                    "— shipped the repost ask instead"
+                )
+
+    # Blank-answer recovery. Gemini can return an empty text payload
+    # when (a) max_output_tokens was burned in the thinking phase,
+    # (b) finish_reason is MAX_TOKENS / SAFETY / RECITATION /
+    # MALFORMED_FUNCTION_CALL, or (c) the tool-call loop exited
+    # while the model still wanted to call tools. Without this
+    # branch, the @mention handler renders `discord.Embed(
+    # description="")` — a literal blank message in chat. Log the
+    # diagnostic, then surface a short user-facing fallback that
+    # tells the asker what to do next.
+    if not answer:
+        finish_reason = None
+        safety_blocked = False
+        try:
+            cand = response.candidates[0] if response else None
+            if cand is not None:
+                fr = getattr(cand, "finish_reason", None)
+                finish_reason = getattr(fr, "name", None) or str(fr) if fr else None
+                sr = getattr(cand, "safety_ratings", None) or []
+                for r in sr:
+                    if getattr(r, "blocked", False):
+                        safety_blocked = True
+                        break
+        except (AttributeError, IndexError, TypeError):
+            pass
+        prompt_block = None
+        try:
+            pf = getattr(response, "prompt_feedback", None)
+            br = getattr(pf, "block_reason", None) if pf else None
+            prompt_block = getattr(br, "name", None) or str(br) if br else None
+        except Exception:
+            pass
+        log.warning(
+            f"/ask: empty response.text "
+            f"(finish_reason={finish_reason!r}, "
+            f"safety_blocked={safety_blocked}, "
+            f"prompt_block={prompt_block!r}, "
+            f"q={question[:140]!r})"
+        )
+        if safety_blocked or prompt_block:
+            # With BLOCK_NONE on all configurable categories, this
+            # is Gemini's unconfigurable hard filter (CSAM, severe
+            # policy).
+            #
+            # Most common cause in production: verbatim slur tokens
+            # in the prompt — either in profile **Voice.** sections
+            # (which quote each user's chat verbatim, including
+            # slurs they use as filler) or in recent-chat lines
+            # like "BK (bankerkyle): Nigga" (filler interjections).
+            #
+            # Recovery: retry once with the **Voice.** sections of
+            # each profile stripped out. Empirical testing (2026-
+            # 06-03 19:49 UTC Ry_bry/Dovahjo AVGO trip) showed:
+            #   - Full prompt          -> BLOCKED
+            #   - Strip ALL profile    -> still BLOCKED (chat slurs)
+            #   - Strip Voice only     -> PASSES (3/3 runs)
+            # So the right surgical fix is: keep the rest of the
+            # profile (Personality, Retarded takes, Recent trades,
+            # Recent personal life, rationale, ranks) AND keep the
+            # chat — just drop the **Voice.** subsections. Voice
+            # samples are the highest-density slur container and
+            # dropping them drops the prompt below the filter's
+            # threshold while preserving the analytical context
+            # that lets the bot still address the asker by their
+            # actual profile.
+            retry_succeeded = False
+
+            # Ladder config: the ORIGINAL config minus the FUNCTION
+            # tools, keeping google_search. 2026-08-07, SV's
+            # "summarize the last 12 hours of chat": every tier
+            # resent with the tools-bearing config, the model
+            # answered each retry with a function_call (it needs
+            # search_chat_messages), .text was empty, and the ladder
+            # read four function calls as four blocks — shipping the
+            # failure wrapper for a reason unrelated to the filter.
+            # No tier executes function calls, so none may offer
+            # them; the model answers from the context already in
+            # the prompt (the recent chat window rides every ask).
+            #
+            # google_search is different in kind and must survive:
+            # it resolves server-side, needs no round trip through
+            # our code, and returns text rather than a function_call
+            # — so it cannot cause the empty-.text failure the strip
+            # exists to prevent. Nulling the whole tools list took it
+            # out too, which is why every ladder tier answered
+            # ungrounded (2026-08-07 COHR earnings, platinum/palladium
+            # options; 2026-08-09 money-market volumes — all factual
+            # questions where search IS the answer). Recovering the
+            # ask but losing grounding trades one failure for another.
+            try:
+                _ladder_tools = [
+                    t for t in (config.tools or [])
+                    if getattr(t, "google_search", None) is not None
+                ] or None
+                _ladder_config = config.model_copy(
+                    update={
+                        "tools": _ladder_tools,
+                        # tool_config only carries
+                        # include_server_side_tool_invocations, which
+                        # is what surfaces google_search's grounding
+                        # records. Keep it while search is offered.
+                        "tool_config": (
+                            config.tool_config if _ladder_tools else None
+                        ),
+                    }
+                )
+            except Exception:
+                _ladder_config = config
+
+            # Tier 0 — IDENTICAL retry, before any context surgery.
+            # 2026-08-01: "how many members in ommi chat" (nothing
+            # filterable in the question) died on every rung below;
+            # replaying the exact logged prompt on 2026-08-04 passed
+            # 5/5 — full prompt, bare question, profiles alone, with
+            # and without the system instruction. The unconfigurable
+            # filter is non-deterministic near its threshold: the
+            # same content flickers between pass and block. The
+            # tiers below all assume some ingredient is toxic and
+            # amputate context to find it; for a flickering block
+            # the cheapest correct move is to send the same thing
+            # again, so a transient block costs zero context.
+            if prompt_block or safety_blocked:
+                try:
+                    log.warning(
+                        "/ask: tier-0 retry — resending identical "
+                        "prompt (filter is non-deterministic)"
+                    )
+                    same_resp = await client.aio.models.generate_content(
+                        model=ask_model,
+                        contents=contents,
+                        config=_ladder_config,
+                    )
+                    _tally_retry_usage(same_resp)
+                    try:
+                        same_answer = (same_resp.text or "").strip()
+                    except Exception:
+                        same_answer = ""
+                    if same_answer:
+                        same_answer, _ = _clean_voice_violations(
+                            same_answer
+                        )
+                        answer = same_answer
+                        response = same_resp
+                        retry_succeeded = True
+                        _ask_meta["filter_retry"] = "same-prompt"
+                        log.info(
+                            "/ask: tier-0 identical retry succeeded "
+                            "— block was transient, no context lost"
+                        )
+                        try:
+                            grounding_metadata = (
+                                same_resp.candidates[0]
+                                .grounding_metadata
+                            )
+                        except (AttributeError, IndexError, TypeError):
+                            grounding_metadata = None
+                    else:
+                        log.warning(
+                            "/ask: tier-0 identical retry also empty "
+                            "— content may genuinely trip the "
+                            "filter, walking the strip ladder"
+                        )
+                except Exception as e:
+                    log.warning(f"/ask: tier-0 retry call failed: {e}")
+
+            # Tier 1 — voice-strip. Operates on what was ACTUALLY
+            # sent, never on the full block: a ladder rung must only
+            # ever shrink the payload. Rebuilding from profiles_block
+            # here would re-add the voice/racism material that
+            # assembly deliberately withheld, i.e. escalate on retry.
+            # When assembly already went LEAN this rung is a
+            # byte-identical resend of tier 0, so skip it and let the
+            # ladder move on to a genuinely different shape.
+            _voice_stripped_preview = _strip_voice_sections(
+                profiles_for_prompt
+            ) if profiles_for_prompt else ""
+            _tier1_is_noop = (
+                _voice_stripped_preview == profiles_for_prompt
+            )
+            if _tier1_is_noop and profiles_for_prompt:
+                log.info(
+                    "/ask: skipping voice-strip tier — assembly already "
+                    "sent LEAN profiles, this rung would resend the "
+                    "identical prompt"
+                )
+            if (not retry_succeeded and profiles_for_prompt
+                    and not _tier1_is_noop
+                    and (prompt_block or safety_blocked)):
+                try:
+                    voice_stripped = _voice_stripped_preview
+                    stripped_sections: list[str] = [voice_stripped]
+                    if fetched_urls:
+                        stripped_sections.append(fetched_urls)
+                    if cross_window_block:
+                        stripped_sections.append(cross_window_block)
+                    if chat_context:
+                        stripped_sections.append(chat_context)
+                    stripped_sections.append(f"{separator}\n{question}")
+                    stripped_content = "\n\n".join(stripped_sections)
+                    log.warning(
+                        f"/ask: prompt_block={prompt_block!r}, safety_blocked="
+                        f"{safety_blocked}, retrying once with Voice sections "
+                        f"stripped ({len(profiles_for_prompt) - len(voice_stripped)} "
+                        f"chars dropped)"
+                    )
+                    stripped_resp = await client.aio.models.generate_content(
+                        model=ask_model,
+                        contents=[
+                            types.Content(
+                                role="user",
+                                parts=[types.Part.from_text(text=stripped_content)],
+                            )
+                        ],
+                        config=_ladder_config,
+                    )
+                    _tally_retry_usage(stripped_resp)
+                    try:
+                        stripped_answer = (stripped_resp.text or "").strip()
+                    except Exception:
+                        stripped_answer = ""
+                    if stripped_answer:
+                        # Run the lint pass on the recovery answer so a
+                        # rewrite-without-profiles still gets em-dash /
+                        # semicolon cleanup. Meta-narration and
+                        # repetition retries are NOT chained on the
+                        # recovery path — recovery is an emergency
+                        # fallback, simpler is safer.
+                        stripped_answer, _ = _clean_voice_violations(
+                            stripped_answer
+                        )
+                        answer = stripped_answer
+                        response = stripped_resp
+                        retry_succeeded = True
+                        _ask_meta["filter_retry"] = "voice-strip"
+                        log.info(
+                            "/ask: profiles-stripped retry succeeded"
+                        )
+                        # Refresh grounding metadata for the new response
+                        try:
+                            grounding_metadata = (
+                                stripped_resp.candidates[0].grounding_metadata
+                            )
+                        except (AttributeError, IndexError, TypeError):
+                            grounding_metadata = None
+                    else:
+                        log.warning(
+                            "/ask: profiles-stripped retry returned empty — "
+                            "attempting third-tier slur-mask retry"
+                        )
+                except Exception as e:
+                    log.warning(
+                        f"/ask: profiles-stripped retry call failed: {e}"
+                    )
+
+            # Third-tier retry: when the Voice-strip retry ALSO came
+            # back empty (or the call raised), mask slur tokens in
+            # voice_stripped profile + chat + question and try one
+            # more time. Lossy answer (bot can't quote the slur
+            # verbatim) but answer-not-refusal.
+            #
+            # Concrete failure this catches (observed 2026-06-04
+            # 16:57 UTC): asker asks about chat-slur usage; question
+            # text + chat-context slur density trips the filter on
+            # BOTH the first attempt and the Voice-strip retry. The
+            # mask drops the prompt below the threshold.
+            # Same shrink-only rule as tier 1: mask what was sent.
+            if not retry_succeeded and profiles_for_prompt and (prompt_block or safety_blocked):
+                try:
+                    voice_stripped = _strip_voice_sections(
+                        profiles_for_prompt
+                    )
+                    masked_sections: list[str] = [
+                        _mask_slur_tokens(voice_stripped)
+                    ]
+                    if fetched_urls:
+                        masked_sections.append(fetched_urls)
+                    if cross_window_block:
+                        masked_sections.append(
+                            _mask_slur_tokens(cross_window_block)
+                        )
+                    if chat_context:
+                        masked_sections.append(
+                            _mask_slur_tokens(chat_context)
+                        )
+                    masked_sections.append(
+                        f"{separator}\n{_mask_slur_tokens(question)}"
+                    )
+                    masked_content = "\n\n".join(masked_sections)
+                    # Count masked tokens for the log line so the
+                    # diff vs the previous retry is visible.
+                    n_masked = (
+                        (len(voice_stripped or "") - len(_mask_slur_tokens(voice_stripped or "")))
+                        // len("[redacted]")
+                    )
+                    log.warning(
+                        f"/ask: third-tier retry with slur tokens masked "
+                        f"(~{n_masked} tokens replaced)"
+                    )
+                    masked_resp = await client.aio.models.generate_content(
+                        model=ask_model,
+                        contents=[
+                            types.Content(
+                                role="user",
+                                parts=[types.Part.from_text(text=masked_content)],
+                            )
+                        ],
+                        config=_ladder_config,
+                    )
+                    _tally_retry_usage(masked_resp)
+                    try:
+                        masked_answer = (masked_resp.text or "").strip()
+                    except Exception:
+                        masked_answer = ""
+                    if masked_answer:
+                        masked_answer, _ = _clean_voice_violations(
+                            masked_answer
+                        )
+                        answer = masked_answer
+                        response = masked_resp
+                        retry_succeeded = True
+                        _ask_meta["filter_retry"] = "slur-mask"
+                        log.info(
+                            "/ask: slur-masked retry succeeded"
+                        )
+                        try:
+                            grounding_metadata = (
+                                masked_resp.candidates[0].grounding_metadata
+                            )
+                        except (AttributeError, IndexError, TypeError):
+                            grounding_metadata = None
+                    else:
+                        log.warning(
+                            "/ask: slur-masked retry also returned empty — "
+                            "attempting question-only retry"
+                        )
+                except Exception as e:
+                    log.warning(
+                        f"/ask: slur-masked retry call failed: {e}"
+                    )
+
+            # Fourth-tier retry: QUESTION-ONLY. 2026-07-09: 2pale's
+            # "wtf is prevailing wage" and "what is WRAP" died on
+            # every rung above — his profile carries trip-density
+            # slur content OUTSIDE the **Voice.** sections (the
+            # rationale text), and the mask list doesn't cover every
+            # shape. A sincere factual question must not die because
+            # the asker's rap sheet is spicy: send JUST the (masked)
+            # question — no profiles, no chat, no cross-window. The
+            # answer loses room context, which for a factual question
+            # is decoration anyway.
+            if not retry_succeeded and (prompt_block or safety_blocked):
+                try:
+                    bare_q = _mask_slur_tokens(
+                        (question or "").strip()[-800:]
+                    )
+                    if bare_q.strip():
+                        log.warning(
+                            "/ask: fourth-tier retry — question only, "
+                            "no profiles/chat"
+                        )
+                        bare_resp = await client.aio.models.generate_content(
+                            model=ask_model,
+                            contents=[types.Content(
+                                role="user",
+                                parts=[types.Part.from_text(text=bare_q)],
+                            )],
+                            config=_ladder_config,
+                        )
+                        _tally_retry_usage(bare_resp)
+                        try:
+                            bare_answer = (bare_resp.text or "").strip()
+                        except Exception:
+                            bare_answer = ""
+                        if bare_answer:
+                            bare_answer, _ = _clean_voice_violations(
+                                bare_answer
+                            )
+                            answer = bare_answer
+                            response = bare_resp
+                            retry_succeeded = True
+                            _ask_meta["filter_retry"] = "question-only"
+                            log.info(
+                                "/ask: question-only retry succeeded"
+                            )
+                            try:
+                                grounding_metadata = (
+                                    bare_resp.candidates[0]
+                                    .grounding_metadata
+                                )
+                            except (AttributeError, IndexError, TypeError):
+                                grounding_metadata = None
+                        else:
+                            log.warning(
+                                "/ask: question-only retry also empty — "
+                                "shipping fallback wrapper"
+                            )
+                except Exception as e:
+                    log.warning(
+                        f"/ask: question-only retry call failed: {e}"
+                    )
+
+            if not retry_succeeded:
+                _ask_meta["filter_retry"] = "failed"
+                answer = (
+                    "→ Gemini bounced this one — its hard filter blocked "
+                    "the prompt. Try asking a different way or about a "
+                    "different subject."
+                )
+        elif finish_reason in ("MAX_TOKENS", "OTHER", None):
+            answer = (
+                "→ Thought myself in circles and ran out of room. "
+                "Try asking it more directly."
+            )
+        else:
+            answer = (
+                f"→ No response came back (reason: {finish_reason}). "
+                f"Try again or rephrase."
+            )
+    return (answer, grounding_metadata)
+
+
+async def _ask_10_log_and_render(
+    _ask_actual_total,
+    _ask_est_total,
+    _ask_meta,
+    _ask_tool_trace,
+    _code_images,
+    _raw_answer_pre_clean,
+    answer,
+    asker_display_name,
+    asker_username,
+    channel_name,
+    get_budget,
+    grounding_metadata,
+    question,
+    user_content,
+    user_id
+):
+    """Phase 10 of /ask (split 2026-09-01; text verbatim from
+    _answer_with_gemini). Parameters are the locals the original
+    block read; the return tuple is the locals later blocks read.
+    None-initialised outputs are assigned only on some paths and
+    were never read on the others.
+    """
+
+    # Strip leaked markdown-image embeds (2026-07-29): with code
+    # execution the model writes `![alt](chart.png)` into its text
+    # assuming inline render — but the chart posts as its OWN Discord
+    # embed and the markdown shows as raw text at the top. Drop the
+    # image tag, keep any alt text as a plain caption if present.
+    answer = re.sub(r"!\[([^\]]*)\]\([^)]*\)",
+                    lambda m: m.group(1).strip(), answer or "")
+    answer = re.sub(r"\n{3,}", "\n\n", answer).strip()
+
+    # Source-quality counter, WARN-ONLY (2026-08-27, session 4):
+    # every citation on a domain outside the sane list = the
+    # bljesak shape. Logged with a distinct tag and stamped into
+    # the ask-log meta (Railway logs rotate in ~1h; the ask-log is
+    # where a week of counts can actually be read). No blocking, no
+    # stripping — the legitimate long tail (company IR domains) is
+    # exactly why this collects counts before it enforces anything.
+    try:
+        _sq_unlisted = _source_quality_unlisted(grounding_metadata)
+        if _sq_unlisted:
+            _ask_meta["source_quality"] = {"unlisted": _sq_unlisted}
+            log.info(
+                f"/ask seam:source-quality — all {len(_sq_unlisted)} "
+                f"cited domain(s) unlisted: {_sq_unlisted[:4]} "
+                f"(q={question[:80]!r})"
+            )
+    except Exception:
+        pass
+
+    sources_footer = _build_sources_footer(grounding_metadata)
+    full = (answer + sources_footer)[:4000]
+
+    # Reconcile token budget with EVERYTHING actually spent — the
+    # tool-call loop plus all retry calls (repetition, voice-strip,
+    # slur-mask). Moved here 2026-06-10; previously ran before the
+    # retries, leaving their usage unmeasured.
+    try:
+        get_budget().record_actual(
+            estimated=_ask_est_total,
+            actual=_ask_actual_total,
+            caller=f"ask:{(question or '')[:60]}",
+        )
+    except Exception as e:
+        log.debug(f"/ask token_budget record_actual non-fatal: {e}")
+
+    db.record_ask_query(user_id)
+
+    # QC log: append every interaction to /data/ask-logs/YYYY-MM-DD.md
+    # so the daily publish job can push to GitHub for browseable review.
+    # Failure is non-fatal — the user still gets their answer.
+    try:
+        # Final grounding status + source count for the audit stamp.
+        try:
+            _ask_meta["grounded"] = bool(
+                _grounding_has_sources(grounding_metadata)
+            )
+            _ask_meta["sources"] = len(
+                getattr(grounding_metadata, "grounding_chunks", None)
+                or []
+            )
+            # "grounded ✅ (4 sources)" was false confidence on
+            # 2026-08-26: the question carried an x.com link, nothing
+            # retrieved it, and the four sources were unrelated macro
+            # news the model then attributed to the tweet. When the
+            # question carries a URL, say WHICH source got grounded.
+            _q_urls = _USER_URL_RE.findall(question or "")
+            if _q_urls:
+                _chunks = (getattr(grounding_metadata,
+                                   "grounding_chunks", None) or [])
+                _uris = []
+                for _c in _chunks:
+                    _w = getattr(_c, "web", None)
+                    _u = (getattr(_w, "uri", None)
+                          or getattr(_w, "domain", None))
+                    if _u:
+                        _uris.append(str(_u).lower())
+                _q_hosts = {
+                    u.split("//", 1)[-1].split("/", 1)[0].lower()
+                    for u in _q_urls
+                }
+                _on_link = any(h and h in uri
+                               for uri in _uris for h in _q_hosts)
+                _ask_meta["link_grounding"] = (
+                    "on-linked-source" if _on_link else "OFF-LINK")
+                _ask_meta["linked_urls"] = _q_urls[:3]
+                if not _on_link:
+                    log.warning(
+                        "/ask: OFF-LINK GROUNDING — question carried "
+                        "%d URL(s), %d grounding source(s), none of "
+                        "them the linked page. Any claim about the "
+                        "link's contents is unfounded. (q=%r)",
+                        len(_q_urls), len(_uris), question[:80])
+        except Exception:
+            pass
+        db.append_ask_interaction(
+            asker_display_name=asker_display_name,
+            asker_username=asker_username,
+            channel_name=channel_name,
+            question=question,
+            answer=full,
+            # Forensic logging: pass the FULL user_content (profiles
+            # + analyst + chat context + separator + question) so
+            # the log shows what Gemini actually saw, not just the
+            # last 5% of the prompt. Rendered in a collapsible
+            # <details> block in the markdown file.
+            full_prompt=user_content,
+            tool_trace=_ask_tool_trace,
+            raw_answer=_raw_answer_pre_clean,
+            meta=_ask_meta,
+        )
+    except Exception as e:
+        log.warning(f"ask-log append failed (non-fatal): {e}")
+
+    _embeds, _files = _build_ask_embeds(full, _code_images)
+    return (_embeds, _files) if _files else _embeds[0]
+
+
 async def _answer_with_gemini(
     question: str,
     user_id: int,
@@ -4126,2955 +7454,191 @@ async def _answer_with_gemini(
         )
 
     try:
-        from google.genai import types
-        # Two tools available to the model:
-        #   1. Google Search grounding — for current/factual lookups
-        #   2. search_chat_messages — for historical room-chat lookups
-        # Gemini requires tool_config.include_server_side_tool_invocations=True
-        # to mix a built-in tool (Google Search) with function declarations.
-        # Without that flag the API returns 400 INVALID_ARGUMENT. The model
-        # picks which tool (or none) based on the question.
-        # Safety settings — set ALL categories to BLOCK_NONE on input.
-        # The prompt deliberately injects raw verbatim quotes from chat
-        # (subject-verbatim block, slur_examples in user profiles) so
-        # the bot can analyze room dynamics, racism-rank, and answer
-        # questions like "what's Abe's win rate" without the input
-        # being rejected. Production log on 2026-05-28:
-        #   prompt_block='PROHIBITED_CONTENT'
-        # …on a benign "what's Abe's win rate this week" because the
-        # subject-verbatim block contained slurs Abe had posted. With
-        # default safety, Gemini rejects the whole prompt before
-        # generating anything, and the user sees a blank embed (or
-        # the misleading "safety filter tripped" fallback). The bot's
-        # design intent is to READ this content for analysis; output
-        # safety still applies to anything the bot itself emits.
-        safety_settings = [
-            types.SafetySetting(
-                category=cat,
-                threshold=types.HarmBlockThreshold.BLOCK_NONE,
-            )
-            for cat in (
-                types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-                types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            )
-        ]
-
-        config = types.GenerateContentConfig(
-            system_instruction=_build_runtime_system_instruction(),
-            tools=[
-                types.Tool(google_search=types.GoogleSearch()),
-                # Native code execution (2026-07-29): Google runs the
-                # Python in THEIR sandbox — member-commanded code never
-                # touches Railway. The model uses it for analytical
-                # questions (payoff math, monte carlo, IV, stats) and
-                # renders charts. Verified coexisting with the function
-                # tools on 3.5-flash-lite. Raw stdout is never posted —
-                # the model's composed text answer flows through the
-                # existing disclosure/fidelity guards; only rendered
-                # chart images are surfaced.
-                types.Tool(code_execution=types.ToolCodeExecution()),
-                _build_chat_search_tool(),
-                _build_user_profile_tool(),
-                _build_trade_log_tool(),
-                _build_market_price_tool(),
-                _build_options_chain_tool(),
-                _build_economic_calendar_tool(),
-                _build_earnings_date_tool(),
-                _build_earnings_slate_tool(),
-                _build_query_data_tool(),
-                _build_price_history_tool(),
-                # Sleeper fantasy tool only exists when a league is
-                # configured — an unregistered tool costs no schema
-                # tokens and can't be miscalled.
-                *([_build_fantasy_league_tool()]
-                  if (settings.sleeper_league_id or "").strip() else []),
-            ],
-            tool_config=types.ToolConfig(
-                include_server_side_tool_invocations=True,
-            ),
+        (_prior_bot_answer_texts, config, cross_window_block, profiles_block, safety_settings, types) = await _ask_00_setup_tools_and_context(
+            channel_id=channel_id,
+            profile_user_ids=profile_user_ids,
+            user_id=user_id,
+        )
+        (_analysis_extra, _ask_meta, _ask_tool_log, _asker_protected, _prompt_extra, _route_is_factual, ask_model, contents, initial_parts, needs_web, profiles_for_prompt, separator, user_content) = await _ask_01_build_prompt(
+            asker_display_name=asker_display_name,
+            asker_username=asker_username,
+            chat_context=chat_context,
+            client=client,
+            config=config,
+            cross_window_block=cross_window_block,
+            fetched_urls=fetched_urls,
+            images=images,
+            profile_user_ids=profile_user_ids,
+            profiles_block=profiles_block,
+            question=question,
             safety_settings=safety_settings,
-            # max_output_tokens = 5000 (bumped 2026-05-28 from 4000).
-            # Thinking budget bumped to 2000 — Type 1 answers with
-            # search grounding can use more reasoning when working
-            # through caller-trade context + WHO'S TALKING + the
-            # recent-chat block. The 200-word soft cap in the prompt
-            # still binds the visible answer; the larger total budget
-            # exists to prevent cliff-truncation, not to encourage
-            # longer responses.
-            max_output_tokens=5000,
-            temperature=0.3,
-            thinking_config=types.ThinkingConfig(thinking_budget=2000),
+            types=types,
+            user_id=user_id,
         )
-        # Compose the final user message:
-        #   1. WHO'S TALKING — profiles for users active in this chat
-        #   2. Analyst trade log (Abe's recent trades)
-        #   3. Fetched URL contents (user-shared sources)
-        #   4. Recent channel chat context
-        #   5. Separator + actual question
-        # Skip any section that's empty.
-        profiles_block = ""
-        try:
-            if profile_user_ids:
-                profiles_block = db.format_user_profiles_for_context(profile_user_ids)
-        except Exception as e:
-            log.warning(f"User-profile fetch failed (non-fatal): {e}")
-
-        # Analyst trade context is no longer auto-injected (was: a
-        # multi-caller block from format_analyst_trades_for_context for
-        # each configured caller). The model now fetches it on demand
-        # via the lookup_trade_log tool when a question references
-        # trades. Save ~8-12 KB of prompt per call on questions that
-        # don't touch caller trades (most of them).
-
-        # Cross-window anti-recycling block. The 50-msg / 24h chat_context
-        # window scrolls past the bot's prior /ask answers to this asker in
-        # under 30 min on active channels (stonks-yapping etc.) — so the
-        # anti-recycling rule that scans [YOU said earlier]: lines has
-        # nothing to act on and recurring hooks like "LARPing as a quant"
-        # get reused. This block pulls the last few /ask answers given to
-        # this asker in this channel directly from ask_bot_answers
-        # (count-bounded, no recency cap) and tags them with the same
-        # [YOU said earlier]: prefix so the existing rule covers them.
-        cross_window_block = ""
-        # Raw prior-answer texts, kept for the code-level roast-recycle
-        # guard (the prompt block below is advisory; the guard is not).
-        _prior_bot_answer_texts: list[str] = []
-        if user_id and channel_id:
-            try:
-                prior_answers = db.get_recent_bot_answers_to_asker(
-                    asker_user_id=user_id,
-                    channel_id=channel_id,
-                    limit=5,
-                )
-                _prior_bot_answer_texts = [
-                    (row.get("answer") or "") for row in (prior_answers or [])
-                ]
-                if prior_answers:
-                    lines = [
-                        "[YOUR RECENT /ASK ANSWERS TO THIS ASKER — "
-                        "cross-window anti-recycling guard. These are your "
-                        "OWN prior answers; do not reuse the same hooks, "
-                        "anecdote pulls, voice opener, or framing twice "
-                        "in a row. Pull from a different angle of the "
-                        "asker's profile instead.]"
-                    ]
-                    for row in prior_answers:
-                        q_snip = (row.get("question") or "").strip().replace(
-                            "\n", " "
-                        )[:120]
-                        a_snip = (row.get("answer") or "").strip().replace(
-                            "\n", " "
-                        )[:600]
-                        if q_snip:
-                            lines.append(
-                                f"[YOU said earlier to this asker, "
-                                f"re: {q_snip!r}]: {a_snip}"
-                            )
-                        else:
-                            lines.append(
-                                f"[YOU said earlier to this asker]: {a_snip}"
-                            )
-                    cross_window_block = "\n".join(lines)
-            except Exception as e:
-                log.info(
-                    f"Cross-window bot-answers fetch failed (non-fatal): {e}"
-                )
-
-        # PROFILE DEPTH decided here, before the send — see the block
-        # comment above _lean_profiles_for_prompt. `profiles_block` stays
-        # the FULL material because the answer-time guards (clapback
-        # fidelity, roast-recycle, pnl-monotone) check the answer against
-        # everything we know, not against what we chose to send.
-        # `profiles_for_prompt` is the only thing that reaches Gemini,
-        # on the first send and on every ladder rebuild.
-        _needs_person, _depth_reason = _question_needs_person_material(
-            question, profiles_block,
+        _r = await _ask_02_call_model_with_tools(
+            _ask_meta=_ask_meta,
+            _ask_tool_log=_ask_tool_log,
+            _prompt_extra=_prompt_extra,
+            ask_model=ask_model,
+            asker_display_name=asker_display_name,
+            asker_username=asker_username,
+            chat_context=chat_context,
+            client=client,
+            config=config,
+            contents=contents,
+            initial_parts=initial_parts,
+            needs_web=needs_web,
+            out_meta=out_meta,
+            profiles_block=profiles_block,
+            question=question,
+            safety_settings=safety_settings,
+            types=types,
+            user_content=user_content,
         )
-        if profiles_block and not _needs_person:
-            profiles_for_prompt = _lean_profiles_for_prompt(profiles_block)
-            log.info(
-                f"/ask: profile depth LEAN ({_depth_reason}) — dropped "
-                f"{len(profiles_block) - len(profiles_for_prompt)} chars "
-                f"of voice/racism material the question doesn't need"
-            )
-        else:
-            profiles_for_prompt = profiles_block
-
-        sections: list[str] = []
-        if profiles_for_prompt:
-            sections.append(profiles_for_prompt)
-        if fetched_urls:
-            sections.append(fetched_urls)
-        if cross_window_block:
-            sections.append(cross_window_block)
-        if chat_context:
-            sections.append(chat_context)
-        # Explicit asker identification. The bot pulled WHO'S TALKING
-        # profiles for everyone active in chat — without naming the
-        # asker on the separator, the model has to guess from scrollback
-        # who's asking, and sometimes addresses the wrong person.
-        if asker_display_name or asker_username:
-            who = asker_display_name or asker_username
-            if asker_username and asker_display_name and \
-                    asker_display_name.lower() != asker_username.lower():
-                who = f"{asker_display_name} ({asker_username})"
-            separator = f"--- {who} is asking: ---"
-        else:
-            separator = "--- The user is now asking: ---"
-        sections.append(f"{separator}\n{question}")
-        user_content = "\n\n".join(sections)
-
-        # Build the initial user turn as a structured Content object so
-        # we can append follow-up turns during the tool-calling loop.
-        # Images go first as Parts so the model sees them before the
-        # text question.
-        initial_parts: list = []
-        if images:
-            for img_bytes, mime in images:
-                initial_parts.append(
-                    types.Part.from_bytes(data=img_bytes, mime_type=mime)
-                )
-        initial_parts.append(types.Part.from_text(text=user_content))
-        contents: list = [types.Content(role="user", parts=initial_parts)]
-
-        ask_model = settings.ask_gemini_model or settings.gemini_model
-
-        # Intent router (structural grounding). Decide up front whether
-        # this question needs the open web. If it does, swap the
-        # multi-tool config for a SEARCH-ONLY one so Google Search is the
-        # model's only move and the answer is grounded BY CONSTRUCTION —
-        # no post-hoc keyword detection, no discretionary skip. Banter /
-        # self-data questions keep the full tool set. The post-hoc
-        # grounding backstop stays only as a thin net for router
-        # misclassification (it should now rarely fire).
-        needs_web, _route_is_factual = await _classify_ask_needs_web(
-            client, ask_model, safety_settings, question
+        if isinstance(_r, _AskEarly):
+            return _r.value
+        (_ask_actual_total, _ask_est_total, _ask_tool_trace, _round_gm_chunks, get_budget, grounding_metadata, response, um) = _r
+        (_code_images, _tally_retry_usage, answer, response) = await _ask_03_assemble_response(
+            _ask_actual_total=_ask_actual_total,
+            _ask_meta=_ask_meta,
+            _ask_tool_log=_ask_tool_log,
+            _ask_tool_trace=_ask_tool_trace,
+            _prompt_extra=_prompt_extra,
+            _round_gm_chunks=_round_gm_chunks,
+            ask_model=ask_model,
+            client=client,
+            contents=contents,
+            fetched_urls=fetched_urls,
+            grounding_metadata=grounding_metadata,
+            question=question,
+            response=response,
+            safety_settings=safety_settings,
+            types=types,
+            um=um,
         )
-        # Deterministic WEB override for quote/lyric completions
-        # (2026-07-12): "finish the song lyrics: ..." routed LOCAL and
-        # the model invented a bar ("whole team winnin'" — the real line
-        # is elsewhere in the track it demonstrably knew). Completing a
-        # verbatim text is a lookup, not a memory exercise; the router's
-        # WEB rubric never named the shape, so name it in code.
-        if _QUOTE_COMPLETION_RE.search(question or "") and not needs_web:
-            needs_web = True
-            _route_is_factual = True
-            log.info(
-                "/ask: quote/lyric-completion shape — forcing WEB route"
-            )
-        # (2026-07-16: the earnings-date LOCAL override was removed —
-        # with unified tooling, lookup_earnings_date is reachable on
-        # every route, which was the whole point of the override.)
-        # QC metadata accumulated through the whole answer path and
-        # stamped into the ask-log entry — makes route/grounding/guard
-        # decisions auditable instead of forensic (Railway logs rotate
-        # away in ~1h; the ask-log is the durable record).
-        # Every tool this turn actually called, in order. The response
-        # validator takes it alongside the answer: a plumbing word is
-        # judged differently when the turn genuinely used a data tool.
-        _ask_tool_log: list[str] = []
-        _ask_meta: dict = {
-            "route": "WEB" if needs_web else "LOCAL",
-            "kind": "FACT" if _route_is_factual else "BANTER",
-            "guards": [],
-            # Which profile shape actually went to Gemini, and why. The
-            # filter-block post-mortems before 2026-08-10 all had to
-            # reconstruct this from the logged prompt text.
-            "profile_depth": (
-                f"{'full' if _needs_person else 'lean'}:{_depth_reason}"
-            ),
-            # Image count matters for QC: 0 means any "your screenshot
-            # shows X" in the answer is a phantom read (2026-07-10).
-            "images": len(images or []),
-        }
-        # UNIFIED TOOLING (2026-07-16 structural fix). The WEB route used
-        # to swap in a SEARCH-ONLY config — which amputated the bot's own
-        # financial-data tools. Repeated damage: earnings-date questions
-        # couldn't reach lookup_earnings_date (kloh, 07-15), $ALP price/
-        # filing questions couldn't reach lookup_market_price, and the
-        # resulting ungrounded answers shipped stacked with "couldn't
-        # verify" hedges for data that was one tool call away. Search-only
-        # never delivered its promise anyway — grounding stayed
-        # discretionary and the model skipped it regardless (07-08
-        # diagnosis). Now EVERY ask gets the full config (google_search +
-        # all data tools, mixed mode); the router's verdict survives as
-        # (a) the FACT/BANTER register signal and (b) `needs_web` feeding
-        # the grounding backstop's scrutiny — enforcement moved fully to
-        # the backstop ladder, where it actually works.
-        _fact_extra = _ASK_FACT_DIRECTIVE if _route_is_factual else ""
-        # Analysis directive is route-independent — "analyze the trader
-        # log" is LOCAL/BANTER but still needs the run-code push.
-        _analysis_extra = (
-            _ASK_ANALYSIS_DIRECTIVE if _is_analysis_request(question) else ""
+        (_raw_answer_pre_clean, answer) = await _ask_04_clean_answer(
+            _ask_meta=_ask_meta,
+            _route_is_factual=_route_is_factual,
+            _tally_retry_usage=_tally_retry_usage,
+            answer=answer,
+            ask_model=ask_model,
+            client=client,
+            profiles_block=profiles_block,
+            question=question,
+            safety_settings=safety_settings,
+            types=types,
         )
-        if _analysis_extra:
-            _ask_meta["guards"].append("analysis-directive")
-        log.info(
-            f"/ask: intent-router → "
-            f"{'WEB' if needs_web else 'LOCAL'}/"
-            f"{'FACT' if _route_is_factual else 'BANTER'} "
-            f"{'ANALYSIS ' if _analysis_extra else ''}"
-            f"(unified multi-tool pass) q={question[:80]!r}"
+        (answer,) = await _ask_05_strip_asker_mockery(
+            _ask_meta=_ask_meta,
+            _prompt_extra=_prompt_extra,
+            _round_gm_chunks=_round_gm_chunks,
+            _route_is_factual=_route_is_factual,
+            _tally_retry_usage=_tally_retry_usage,
+            answer=answer,
+            ask_model=ask_model,
+            asker_display_name=asker_display_name,
+            asker_username=asker_username,
+            chat_context=chat_context,
+            client=client,
+            contents=contents,
+            profiles_block=profiles_block,
+            question=question,
+            safety_settings=safety_settings,
+            types=types,
         )
-        # Protected-members directive (2026-08-05 user request): never
-        # insult / clap back / sarcasm; defend and praise with grounded
-        # material. Rides _prompt_extra so every directive-preserving
-        # retry carries it.
-        try:
-            _prot_all = (settings.protected_user_id_set
-                         | db.get_promoted_protected_ids())
-        except Exception:
-            _prot_all = settings.protected_user_id_set
-        _prot_in_scope = _protected_in_scope(
-            user_id, question, profile_user_ids, _prot_all,
+        (answer,) = await _ask_06_roast_subject_guards(
+            _analysis_extra=_analysis_extra,
+            _ask_meta=_ask_meta,
+            _asker_protected=_asker_protected,
+            _prior_bot_answer_texts=_prior_bot_answer_texts,
+            _prompt_extra=_prompt_extra,
+            _round_gm_chunks=_round_gm_chunks,
+            _route_is_factual=_route_is_factual,
+            _tally_retry_usage=_tally_retry_usage,
+            answer=answer,
+            ask_model=ask_model,
+            asker_display_name=asker_display_name,
+            asker_username=asker_username,
+            chat_context=chat_context,
+            client=client,
+            contents=contents,
+            profiles_block=profiles_block,
+            question=question,
+            safety_settings=safety_settings,
+            types=types,
         )
-        _protected_extra = _build_protected_directive(
-            _prot_in_scope, user_id, asker_display_name,
+        (answer, grounding_metadata, response) = await _ask_07_validation_ladder(
+            _analysis_extra=_analysis_extra,
+            _ask_meta=_ask_meta,
+            _ask_tool_trace=_ask_tool_trace,
+            _asker_protected=_asker_protected,
+            _prompt_extra=_prompt_extra,
+            _round_gm_chunks=_round_gm_chunks,
+            _route_is_factual=_route_is_factual,
+            _tally_retry_usage=_tally_retry_usage,
+            answer=answer,
+            ask_model=ask_model,
+            client=client,
+            contents=contents,
+            needs_web=needs_web,
+            profiles_block=profiles_block,
+            question=question,
+            response=response,
+            safety_settings=safety_settings,
+            types=types,
+            user_content=user_content,
         )
-        _asker_protected = int(user_id) in _prot_in_scope
-        if _protected_extra:
-            _ask_meta["guards"].append("protected-member")
-        _prompt_extra = _fact_extra + _analysis_extra + _protected_extra
-        if _prompt_extra:
-            # The config was built before the router ran — patch the
-            # directive(s) in rather than rebuilding the tools.
-            config.system_instruction = (
-                _build_runtime_system_instruction(_prompt_extra)
-            )
-
-        # Pre-flight identity + dispute notes (2026-07-17 Morgan
-        # incident) — mechanical detections appended to the user turn so
-        # the model gets a targeted, binding directive for exactly the
-        # failure shape in play. The name check is LOCAL-gated (public
-        # figures in WEB lookups would false-trigger it).
-        _preflight_notes = ""
-        if not needs_web:
-            try:
-                _known_surface = " ".join(filter(None, [
-                    profiles_block or "", chat_context or "",
-                    asker_display_name or "", asker_username or "",
-                ]))
-                _unknowns = _unknown_member_names(question, _known_surface)
-                if _unknowns:
-                    _preflight_notes += _name_check_note(_unknowns)
-                    _ask_meta["guards"].append(
-                        "name-check:" + ",".join(_unknowns)
-                    )
-                    log.info(
-                        f"/ask: unknown person name(s) in question "
-                        f"({_unknowns}) — NAME CHECK note appended"
-                    )
-            except Exception as e:
-                log.warning(f"/ask: name-check failed (non-fatal): {e}")
-        if _is_disputing_reply(question):
-            _preflight_notes += _DISPUTE_NOTE
-            _ask_meta["guards"].append("dispute-check")
-            log.info("/ask: reply disputes a prior bot claim — "
-                     "DISPUTE CHECK note appended")
-        if _preflight_notes:
-            initial_parts[-1] = types.Part.from_text(
-                text=user_content + _preflight_notes
-            )
-            contents[0] = types.Content(role="user", parts=initial_parts)
-
-        # Token-budget reservation BEFORE the call. /ask assembles
-        # a large prompt (WHO'S TALKING + analyst log + recent chat +
-        # question) that can hit 50k chars (~13k tokens). With the
-        # tool-call loop, total per-question spend can hit 50k+ tokens
-        # on a thrashing question. Reserve conservatively for the full
-        # loop budget; record actual after.
-        from ai_analysis.token_budget import get_budget, BudgetExceeded
-        # Heuristic: input ~user_content chars / 4 + per-round 5000
-        # output cap, scaled by max rounds.
-        _ask_est_per_round = (
-            len(user_content) // 4 + 5000 + 500
+        (answer, grounding_metadata, response) = await _ask_08_technical_analysis_guard(
+            _ask_meta=_ask_meta,
+            _ask_tool_trace=_ask_tool_trace,
+            _prompt_extra=_prompt_extra,
+            _tally_retry_usage=_tally_retry_usage,
+            answer=answer,
+            ask_model=ask_model,
+            client=client,
+            contents=contents,
+            grounding_metadata=grounding_metadata,
+            question=question,
+            safety_settings=safety_settings,
+            types=types,
+            user_content=user_content,
         )
-        _ask_est_total = _ask_est_per_round * (_CHAT_SEARCH_MAX_ROUNDS + 1)
-        try:
-            get_budget().reserve_or_raise(
-                estimated_tokens=_ask_est_total,
-                caller=f"ask:{(question or '')[:60]}",
-            )
-        except BudgetExceeded as e:
-            log.warning(f"/ask blocked by token budget: {e}")
-            return discord.Embed(
-                description=(
-                    "→ Daily token budget reached — try again after "
-                    "UTC midnight, or ask a quicker question."
-                ),
-                color=0xE67E22,
-            )
-
-        # Tool-calling loop. On each round we call Gemini; if the
-        # response has function_call parts, we execute them and feed
-        # the results back. Loop exits when the model returns a
-        # text-only response (the final answer) or we hit the
-        # iteration cap.
-        response = None
-        _ask_actual_total = 0
-        # Tool trace accumulated across rounds — appended to the ask-log
-        # so QC (human + automated grader) can see which tools ran and
-        # what they returned. Without it, tool-grounded answers look
-        # fabricated to the grader.
-        _ask_tool_trace: list[dict] = []
-        # Initialized HERE, not at first assignment (2026-08-28 outage:
-        # the class-10 ctx read at the validator ladder referenced this
-        # before the post-loop assignment at the bottom of the function,
-        # and the read short-circuits behind `bool(_round_gm_chunks) or`
-        # — so it crashed ONLY on turns with zero grounding chunks,
-        # which is why the suite, the import smoke, and every grounded
-        # live turn missed it while every ungrounded /ask died with
-        # UnboundLocalError for ~14 hours).
-        grounding_metadata = None
-        # Grounding evidence accumulated across rounds (2026-07-16 fix).
-        # In the unified mixed-tool config the model often searches FIRST
-        # and then calls a function tool; the search's grounding_metadata
-        # rides on that EARLIER round's response. Reading gm only off the
-        # final text response threw the receipt away — a correct, freshly
-        # searched TSM-earnings answer stamped 'ungrounded' and shipped
-        # wearing a "couldn't verify" hedge. Collect every round's chunks.
-        _round_gm_chunks: list = []
-        for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
-            # Contents-size guard: fail CLEANLY (friendly reply + a log
-            # that names the biggest parts) instead of letting the API
-            # 400 on the 1M-token limit with zero diagnostics.
-            if round_idx > 0:
-                _part_sizes = []
-                for _ci, _c in enumerate(contents):
-                    for _p in (getattr(_c, "parts", None) or []):
-                        _sz = len(getattr(_p, "text", None) or "") or len(
-                            str(getattr(_p, "function_response", None) or "")
-                        )
-                        if _sz:
-                            _part_sizes.append((_sz, _ci))
-                _total = sum(s for s, _ in _part_sizes)
-                if _total > 2_500_000:
-                    _top = sorted(_part_sizes, reverse=True)[:5]
-                    log.error(
-                        f"/ask: contents grew to {_total} chars before "
-                        f"round {round_idx} — aborting before the API "
-                        f"400s. Largest parts (chars, content_idx): {_top}"
-                    )
-                    raise RuntimeError(
-                        f"ask contents oversized ({_total} chars) — "
-                        f"tool loop ballooned the request"
-                    )
-            response = await client.aio.models.generate_content(
-                model=ask_model,
-                contents=contents,
-                config=config,
-            )
-            try:
-                _rgm = response.candidates[0].grounding_metadata
-                _round_gm_chunks.extend(
-                    getattr(_rgm, "grounding_chunks", None) or []
-                )
-            except (AttributeError, IndexError, TypeError):
-                pass
-            # Tally actual usage per round so the budget reflects
-            # what we really spent rather than the reservation.
-            try:
-                um = response.usage_metadata
-                _ask_actual_total += (
-                    (um.prompt_token_count or 0)
-                    + (um.candidates_token_count or 0)
-                )
-            except Exception:
-                pass
-            # Pull function_call parts off the response, if any.
-            function_calls = []
-            response_parts = []
-            try:
-                response_parts = list(
-                    response.candidates[0].content.parts or []
-                )
-            except (AttributeError, IndexError, TypeError):
-                response_parts = []
-            for p in response_parts:
-                fc = getattr(p, "function_call", None)
-                if fc and getattr(fc, "name", None):
-                    function_calls.append(fc)
-                    _ask_tool_log.append(fc.name)
-            if not function_calls:
-                break  # No more tool calls — final answer is in response.text
-            if round_idx >= _CHAT_SEARCH_MAX_ROUNDS:
-                log.warning(
-                    f"/ask: hit tool-calling round cap "
-                    f"({_CHAT_SEARCH_MAX_ROUNDS}) with function_calls "
-                    f"still pending — forcing a final answer from what "
-                    f"was already gathered"
-                )
-                # Don't ship the pending function-call turn: it carries
-                # NO text, so response.text is empty and the user gets
-                # "No response came back (reason: STOP)" despite every
-                # tool having succeeded (2026-07-29). Make ONE more call
-                # with tools DISABLED so the model must write prose from
-                # the results already in `contents`.
-                try:
-                    _cap_contents = list(contents) + [types.Content(
-                        role="user",
-                        parts=[types.Part.from_text(text=(
-                            "[ANSWER NOW] You've used your tool budget. "
-                            "Do NOT request more data. Write the answer "
-                            "from what you already retrieved above. If "
-                            "some piece is genuinely missing, answer "
-                            "with what you have and say plainly what "
-                            "you couldn't get."
-                        ))],
-                    )]
-                    _cap_cfg = types.GenerateContentConfig(
-                        system_instruction=(
-                            _build_runtime_system_instruction(_prompt_extra)
-                        ),
-                        # Keep CODE EXECUTION available — it needs no
-                        # new data and is how the answer gets computed
-                        # and charted. Only the data-fetching function
-                        # tools are withheld, so the model can't spend
-                        # more budget looking things up. (2026-07-29: an
-                        # EMPTY tool list here produced a correct prose
-                        # answer with NO chart, because it killed the
-                        # sandbox along with the lookups.)
-                        tools=[types.Tool(
-                            code_execution=types.ToolCodeExecution()
-                        )],
-                        safety_settings=safety_settings,
-                        max_output_tokens=5000,
-                        temperature=0.3,
-                        thinking_config=types.ThinkingConfig(
-                            thinking_budget=2000),
-                    )
-                    _cap_resp = await client.aio.models.generate_content(
-                        model=ask_model,
-                        contents=_cap_contents,
-                        config=_cap_cfg,
-                    )
-                    # Tally inline — _tally_retry_usage is defined
-                    # later in this function, after the tool loop.
-                    try:
-                        _um = _cap_resp.usage_metadata
-                        _ask_actual_total += (
-                            (_um.prompt_token_count or 0)
-                            + (_um.candidates_token_count or 0)
-                        )
-                    except Exception:
-                        pass
-                    try:
-                        _cap_text = (_cap_resp.text or "").strip()
-                    except Exception:
-                        _cap_text = ""
-                    if _cap_text:
-                        response = _cap_resp
-                        _ask_meta["guards"].append("round-cap-final-answer")
-                        log.info(
-                            "/ask: round-cap final answer produced "
-                            f"{len(_cap_text)} chars"
-                        )
-                except Exception as _ce:
-                    log.warning(
-                        f"/ask: round-cap final answer failed "
-                        f"(non-fatal): {_ce}"
-                    )
-                break
-
-            # Echo the model's tool-call turn into history so the next
-            # call has full context — minus any inline artifact the API
-            # won't accept back (code-execution can emit
-            # application/octet-stream files that 400 the next round).
-            contents.append(
-                types.Content(
-                    role="model", parts=_safe_echo_parts(response_parts)
-                )
-            )
-            # Execute each function call and build function_response parts.
-            # Executor map replaces the prior if/elif chain — single
-            # guarded call site so an UNCAUGHT exception inside any
-            # executor degrades to a tool-error result the model can
-            # work around, instead of killing the whole /ask interaction
-            # (2026-06-10 second-pass review finding #2).
-            _tool_executors = {
-                "search_chat_messages": _execute_chat_search,
-                "lookup_user_profile": _execute_user_profile,
-                "lookup_trade_log": _execute_trade_log,
-                "lookup_market_price": _execute_market_price,
-                "lookup_options_chain": _execute_options_chain,
-                "lookup_economic_calendar": _execute_economic_calendar,
-                "lookup_earnings_date": _execute_earnings_date,
-                "lookup_earnings_slate": _execute_earnings_slate,
-                "query_data": _execute_query_data,
-                "lookup_price_history": _execute_price_history,
-                "lookup_fantasy_league": _execute_fantasy_league,
-            }
-            tool_response_parts = []
-            for fc in function_calls:
-                try:
-                    args = dict(fc.args) if fc.args else {}
-                except Exception:
-                    args = {}
-                executor = _tool_executors.get(fc.name)
-                if executor is None:
-                    log.warning(f"/ask: unknown tool call {fc.name!r}")
-                    tool_response_parts.append(
-                        types.Part.from_function_response(
-                            name=fc.name,
-                            response={"error": f"unknown tool {fc.name}"},
-                        )
-                    )
-                    _ask_tool_trace.append(
-                        {"tool": fc.name, "status": "unknown_tool"}
-                    )
-                    continue
-                try:
-                    result = await executor(args)
-                    # A published book is the antecedent a later "No
-                    # AVGO" refers to. Capture whose book and which
-                    # tickers; the send site pairs it with the message
-                    # id, which does not exist yet here.
-                    if fc.name == "lookup_trade_log" and out_meta is not None:
-                        _capture_book_context(args, result, out_meta)
-                except Exception as e:
-                    # Degrade, don't die: the model gets a structured
-                    # error and can answer from remaining context.
-                    log.warning(
-                        f"/ask: tool {fc.name} raised: {e}", exc_info=True
-                    )
-                    result = {
-                        "status": "error",
-                        "error": (
-                            f"{fc.name} failed internally — that lookup "
-                            f"is unavailable right now. Answer from what "
-                            f"you have; tell the asker the live lookup "
-                            f"didn't go through. Do NOT fabricate the "
-                            f"data it would have returned."
-                        ),
-                    }
-                # Size clamp (2026-07-17: a request blew Gemini's 1M
-                # input-token limit — 400 INVALID_ARGUMENT — because a
-                # tool result ballooned the contents across rounds).
-                # Bound every tool result; log the offender so the next
-                # oversized return is diagnosable in one log line.
-                _res_str = str(result)
-                if len(_res_str) > _TOOL_RESULT_CHAR_CAP:
-                    log.warning(
-                        f"/ask: tool {fc.name} returned "
-                        f"{len(_res_str)} chars (args={args!r}) — "
-                        f"clipping to {_TOOL_RESULT_CHAR_CAP}"
-                    )
-                    result = {
-                        "status": "truncated",
-                        "note": (
-                            f"result was {len(_res_str)} chars — "
-                            f"truncated to fit the context window"
-                        ),
-                        "content": _res_str[:_TOOL_RESULT_CHAR_CAP],
-                    }
-                # Scrub non-finite floats before they reach the API.
-                # NaN/Infinity are NOT valid JSON — one NaN anywhere in a
-                # tool result 400s the ENTIRE request ("Invalid JSON
-                # payload... Unexpected token NaN"), which the user sees
-                # as "something broke the model" (2026-07-29,
-                # lookup_price_history on a non-trading day). Fixed at
-                # the executor too; this is the loop-wide backstop so no
-                # future tool can reintroduce it.
-                result = _json_safe(result)
-                tool_response_parts.append(
-                    types.Part.from_function_response(
-                        name=fc.name,
-                        response={"result": result},
-                    )
-                )
-                # Compact tool trace for the ask-log (QC-grader input —
-                # without this, tool-grounded answers look fabricated to
-                # the grader because the log has no record the tool ran).
-                _trace_status = (
-                    result.get("status", "ok")
-                    if isinstance(result, dict) else "ok"
-                )
-                _trace_args = {
-                    k: (str(v)[:80]) for k, v in list(args.items())[:5]
-                }
-                _ask_tool_trace.append({
-                    "tool": fc.name,
-                    "args": _trace_args,
-                    "status": _trace_status,
-                    "result_chars": len(str(result)),
-                })
-            contents.append(
-                types.Content(role="user", parts=tool_response_parts)
-            )
-
-        # Token-budget reconciliation MOVED to the end of this function
-        # (2026-06-10): it previously ran here — before the repetition /
-        # voice-strip / slur-mask retries — so retry calls burned tokens
-        # the budget never saw. Each retry below adds its usage via
-        # _tally_retry_usage; the single record_actual runs after all
-        # of them (just before the quota record).
-        def _tally_retry_usage(resp) -> None:
-            nonlocal _ask_actual_total
-            try:
-                um = resp.usage_metadata
-                _ask_actual_total += (
-                    (um.prompt_token_count or 0)
-                    + (um.candidates_token_count or 0)
-                )
-            except Exception:
-                pass
-
-        # Pull response.text defensively — the SDK raises if the response
-        # has no candidates or only function-call parts. Treat all failures
-        # as "no text" and let the empty-answer branch below produce a
-        # human-readable fallback instead of a blank Discord embed.
-        answer = ""
-        try:
-            answer = (response.text or "").strip() if response else ""
-        except Exception as e:
-            log.warning(f"/ask: response.text raised: {e}")
-            answer = ""
-
-        # Charts rendered by the code-execution sandbox (matplotlib →
-        # inline image parts). Collected here off the final response;
-        # attached to the reply at the send site. Text still carries
-        # the composed answer + passes every downstream guard.
-        _code_images = _extract_code_images(response) if response else []
-        if _code_images:
-            _ask_meta["guards"].append(f"code-charts:{len(_code_images)}")
-
-        # Repetition-glitch detection + one-shot retry. Gemini Flash Lite
-        # occasionally produces token-loop artifacts at the end of an
-        # answer ("compounding risk and volatility decay risks of
-        # volatility decay and volatility" — 9 hits across 2026-05-30
-        # logs). Single retry with bumped temperature usually breaks the
-        # loop. If retry still glitches, ship the original — the user
-        # gets SOMETHING rather than blank.
-        if answer and _has_repetition_glitch(answer):
-            _ask_meta["guards"].append("repetition")
-            log.warning(
-                f"/ask: repetition glitch in answer (q={question[:80]!r}); "
-                f"retrying once at higher temp"
-            )
-            try:
-                retry_config = types.GenerateContentConfig(
-                    system_instruction=_build_runtime_system_instruction(_prompt_extra),
-                    tools=[
-                        types.Tool(google_search=types.GoogleSearch()),
-                        _build_chat_search_tool(),
-                        _build_user_profile_tool(),
-                _build_trade_log_tool(),
-                _build_market_price_tool(),
-                _build_options_chain_tool(),
-                _build_economic_calendar_tool(),
-                _build_earnings_date_tool(),
-                _build_earnings_slate_tool(),
-                *([_build_fantasy_league_tool()]
-                  if (settings.sleeper_league_id or "").strip() else []),
-                    ],
-                    tool_config=types.ToolConfig(
-                        include_server_side_tool_invocations=True,
-                    ),
-                    safety_settings=safety_settings,
-                    max_output_tokens=5000,
-                    temperature=0.7,  # bumped from 0.3 to break the loop
-                    thinking_config=types.ThinkingConfig(thinking_budget=2000),
-                )
-                retry_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=contents,
-                    config=retry_config,
-                )
-                _tally_retry_usage(retry_resp)
-                try:
-                    retry_answer = (retry_resp.text or "").strip()
-                except Exception:
-                    retry_answer = ""
-                if retry_answer and not _has_repetition_glitch(retry_answer):
-                    answer = retry_answer
-                    response = retry_resp
-                    log.info("/ask: repetition retry succeeded")
-                else:
-                    log.warning(
-                        "/ask: repetition retry didn't fix glitch — "
-                        "falling back to sentence strip"
-                    )
-            except Exception as e:
-                log.warning(f"/ask: repetition retry call failed: {e}")
-            # Strip fallback (2026-07-22 terlin calendar answer: the
-            # retry re-glitched and the old failure path shipped the
-            # loop to Discord untouched). The glitch is end-of-
-            # generation junk confined to its sentence/bullet — excise
-            # exactly those and keep the clean remainder. If the WHOLE
-            # answer is glitch, ship the original: something beats
-            # blank, and the ask-log marker makes it visible to QC
-            # either way.
-            if answer and _has_repetition_glitch(answer):
-                _glitch_sents = _repetition_glitch_sentences(answer)
-                _stripped = _strip_sentences(answer, _glitch_sents)
-                if _stripped and not _has_repetition_glitch(_stripped):
-                    answer = _stripped
-                    _ask_meta["guards"].append("repetition-strip")
-                    log.warning(
-                        f"/ask: hard-stripped {len(_glitch_sents)} "
-                        f"glitching sentence(s) after failed retry"
-                    )
-                else:
-                    _ask_meta["guards"].append("repetition-shipped")
-                    log.warning(
-                        "/ask: glitch survived strip fallback — "
-                        "shipping original answer"
-                    )
-
-        # Meta-plumbing guard (2026-08-26). The NEVER META-NARRATE prose
-        # was deleted from the prompt in the same change that added
-        # scripts/ask_response_validate.py, per CLAUDE.md rule 1: a rule
-        # a regex can check is code, never both. The prose caught 0 of 7
-        # recorded violations while quoting the violating sentence almost
-        # verbatim; the validator catches 7 of 7 with no false positives.
-        #
-        # Same ladder as the repetition guard above, and for the same
-        # reason: regenerate once (a plumbing answer is usually a framing
-        # slip, not a content problem), then strip the offending
-        # sentences if it re-violates. Whole sentences only — a
-        # mid-sentence excision mangles prose.
-        # Per-tool STATUS and the turn's grounding reach the validator
-        # (2026-08-27, QC queue finding 2): class 10 fires on confident
-        # specifics after the one relevant tool FAILED, which tool
-        # names alone cannot express. "ok" is sticky across duplicate
-        # calls — one successful fetch of a tool means the model had
-        # its data. Grounding at this point includes tool-loop rounds
-        # (_round_gm_chunks); the later recovery/backstop machinery
-        # runs after this ladder and must not be waited on.
-        _v_tool_status: dict = {}
-        try:
-            for _t in _ask_tool_trace:
-                if _v_tool_status.get(_t["tool"]) != "ok":
-                    _v_tool_status[_t["tool"]] = _t.get("status") or "ok"
-        except Exception:
-            pass
-        _v_grounded = bool(_round_gm_chunks) or _grounding_has_sources(
-            grounding_metadata)
-        _vctx = {"question": question, "fetched": fetched_urls,
-                 "tool_status": _v_tool_status, "grounded": _v_grounded}
-        _plumb = (_validate_response(answer, _ask_tool_log, **_vctx)
-                  if answer else [])
-        if _plumb:
-            _ask_meta["guards"].append("validate:" + ",".join(sorted({v.rule for v in _plumb})))
-            log.warning(
-                f"/ask: response-validate hit (q={question[:80]!r}); "
-                f"hits={[v.match for v in _plumb][:6]}; retrying once"
-            )
-            _plumb_retry = ""
-            _plumb_retry_ctx: dict = {}
-            try:
-                _plumb_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=contents,
-                    config=types.GenerateContentConfig(
-                        system_instruction=_build_runtime_system_instruction(
-                            _prompt_extra),
-                        tools=[types.Tool(
-                            google_search=types.GoogleSearch())],
-                        safety_settings=safety_settings,
-                        max_output_tokens=5000,
-                        temperature=0.7,
-                        thinking_config=types.ThinkingConfig(
-                            thinking_budget=2000),
-                    ),
-                )
-                _tally_retry_usage(_plumb_resp)
-                try:
-                    _plumb_retry = (_plumb_resp.text or "").strip()
-                except Exception:
-                    _plumb_retry = ""
-                # The retry runs WITH search: if it grounded itself,
-                # judge it as grounded, or a grounding-gated class
-                # re-flags a now-sourced regeneration.
-                try:
-                    _retry_gm = _plumb_resp.candidates[0].grounding_metadata
-                    if getattr(_retry_gm, "grounding_chunks", None):
-                        _plumb_retry_ctx = {"grounded": True}
-                except (AttributeError, IndexError, TypeError):
-                    pass
-            except Exception as e:
-                log.warning(f"/ask: meta-plumbing retry call failed: {e}")
-
-            # ONE decision function, shared with the harness, so what
-            # ships and what gets measured cannot drift apart.
-            _bad_sents = _violating_sentences(
-                answer, _ask_tool_log, **_vctx)
-            answer, _outcome = _resolve_violations(
-                answer, _plumb_retry, _ask_tool_log, _strip_sentences,
-                retry_ctx=_plumb_retry_ctx, **_vctx)
-            if _outcome == "regenerated":
-                _ask_meta["guards"].append("validate-regenerated")
-                log.info(
-                    "/ask: meta-plumbing FIXED BY REGENERATE — clean on "
-                    "retry, no strip needed (q=%r)", question[:80])
-            elif _outcome == "stripped":
-                _ask_meta["guards"].append("validate-strip")
-                log.warning(
-                    "/ask: meta-plumbing STRIP WAS NEEDED — regenerate "
-                    "failed, excised %d sentence(s): %s (q=%r)",
-                    len(_bad_sents), [t[:70] for t in _bad_sents][:4],
-                    question[:80])
-            elif _outcome == "shipped":
-                _ask_meta["guards"].append("validate-shipped")
-                log.error(
-                    "/ask: meta-plumbing SURVIVED BOTH regenerate and "
-                    "strip — shipping with hits=%s (q=%r)",
-                    [v.match for v in _validate_response(
-                        answer, _ask_tool_log, **_vctx)][:6],
-                    question[:80])
-
-        # Voice cleanup on the final answer. The pulse-side lint runs
-        # at AUDIT->SCRUB; /ask answers ship straight from Gemini to
-        # Discord with no scrub pass. Run a mechanical strip for the
-        # deterministic violations (em-dash inside sentences, semicolons
-        # mid-sentence) and log any other lint hits so we can track them
-        # without rewriting natural prose. The 2026-05-30->06-01 ask log
-        # had 13+ em-dash hits across the three days; this catches them
-        # all at the bot boundary.
-        # Snapshot the RAW model output before any cleanup/rewrites —
-        # the ask-log records it so QC sees ground truth, not just the
-        # post-lint version (2026-06-10 review finding #5).
-        _raw_answer_pre_clean = answer
-        # Must be bound even on the empty-answer path — the register-
-        # rewrite gate below reads it unconditionally (2026-07-05
-        # UnboundLocalError: a blank Gemini payload skipped the `if
-        # answer:` block, leaving hit_kinds undefined).
-        hit_kinds: list[str] = []
-        if answer:
-            answer, hit_kinds = _clean_voice_violations(answer)
-            if hit_kinds:
-                log.info(
-                    f"/ask: voice-cleanup hits ({len(hit_kinds)}): "
-                    f"{sorted(set(hit_kinds))[:8]}"
-                )
-        # Asker-mockery guard (FACT-gated): a sincere question answered
-        # with derision at the asker feeds the same detect→rewrite pass
-        # as the other register violations; hard-strip fallback after.
-        if answer and _route_is_factual and _asker_mockery_violations(answer):
-            hit_kinds.append("asker-mockery")
-            log.warning(
-                f"/ask: asker-mockery on a FACT question "
-                f"(q={question[:80]!r}) — feeding register rewrite"
-            )
-
-        # Architecture-leak rewrite. The 2026-06-01 QC caught one shipped:
-        # SV asked "what was discussed in chat between 5pm and 9pm est"
-        # and the bot returned "Can't pull a clean summary for that
-        # specific window — the chat logs available to me don't cover
-        # that block of time in enough detail to give you a reliable
-        # read on it." Voice lint DETECTS "available to me" / "in enough
-        # detail to" / "the chat logs available" but the mechanical pass
-        # only strips em-dashes/semicolons — leaked phrases ship. When
-        # any 'meta-narration' kind fires, do a one-shot Gemini rewrite
-        # with a tiny prompt. No tools, low budget. If the rewrite also
-        # leaks (or fails), ship the original — better SOMETHING than
-        # blank.
-        _register_rewrite_kinds = {
-            "meta-narration", "passive-aggressive", "asker-mockery"
-        } & set(hit_kinds or [])
-        if answer and _register_rewrite_kinds:
-            _ask_meta["guards"].extend(
-                f"register:{k}" for k in sorted(_register_rewrite_kinds)
-            )
-            log.warning(
-                f"/ask: register violation shipped through lint "
-                f"({sorted(_register_rewrite_kinds)}, q={question[:80]!r}); "
-                f"requesting rewrite"
-            )
-            try:
-                _pa_directive = (
-                    "Convert any passive-aggressive or condescending "
-                    "faux-advice construction into a DIRECT statement. KILL "
-                    "the entire 'maybe if you...' redirect-advice family — "
-                    "every shape where you tell the target to spend/put/"
-                    "channel their energy/time/effort/focus elsewhere: "
-                    "'maybe put that energy into X', 'maybe if you spent "
-                    "less time on X and more time on Y', 'if you put half "
-                    "the energy into X', 'maybe focus on X instead of Y'. "
-                    "Also 'do with that what you will', 'if you say so'. "
-                    "Don't advise the target to do anything — state the jab "
-                    "as a fact using the same material. Instead of 'maybe "
-                    "put that energy into a real trade', say what's true: "
-                    "'your last five trades were paperhanded exits'. No "
-                    "sardonic wind-up, no advice framing, no 'maybe'. "
-                ) if "passive-aggressive" in _register_rewrite_kinds else ""
-                _am_directive = (
-                    "The asker asked a SINCERE factual question. Remove "
-                    "every sentence or clause that mocks them for asking "
-                    "or invents a premise they never stated — 'you're "
-                    "confusing X with Y', 'stop looking for...', 'that's "
-                    "you coping'. Keep ALL the factual content. The "
-                    "answer should read like a knowledgeable trader "
-                    "answering a colleague, not slapping them. "
-                ) if "asker-mockery" in _register_rewrite_kinds else ""
-                # SUBJECT MATERIAL (2026-07-17 fix): this rewrite used
-                # to receive ONLY the original answer — told to remove
-                # the banned register shapes AND keep the length, with
-                # no profile to draw on, it invented characterization
-                # ("manifestos", "stoic strategist") that belonged to
-                # nobody. The subject's dossier is now the only allowed
-                # replacement material, and a novel-content check below
-                # rejects rewrites that invent anyway.
-                _rw_material = (profiles_block or "")[:6000]
-                rewrite_prompt = (
-                    "Rewrite the following Discord bot answer so it sounds "
-                    "like a trader talking to another trader. Strip ANY "
-                    "phrase that exposes the bot's internal data access or "
-                    "limitations — phrases like 'available to me', 'in my "
-                    "context', 'the chat logs available', 'in enough detail "
-                    "to', 'I can search', 'my tools'. If the answer is a "
-                    "decline ('can't pull that one'), keep the decline but "
-                    "drop the architecture excuse — just say what you don't "
-                    "have, not why your data layer doesn't have it. "
-                    + _pa_directive + _am_directive +
-                    "Do NOT add any new facts, names, tickers, or numbers. "
-                    "Every characterization detail in your rewrite must "
-                    "already appear in the ORIGINAL below or in the SUBJECT "
-                    "MATERIAL — inventing traits, habits, or behaviors for "
-                    "the target is a hard failure. If removing a banned "
-                    "shape leaves a hole, fill it ONLY from the SUBJECT "
-                    "MATERIAL. Keep the same length, voice, and substance. "
-                    "Output ONLY the rewritten answer, no preamble.\n\n"
-                    + (
-                        f"SUBJECT MATERIAL (the only allowed source for "
-                        f"replacement content):\n{_rw_material}\n\n"
-                        if _rw_material else ""
-                    )
-                    + "ORIGINAL:\n"
-                    f"{answer}"
-                )
-                rewrite_config = types.GenerateContentConfig(
-                    system_instruction=(
-                        "You are a senior trader rewriting another trader's "
-                        "message. Be direct, plain-English, no AI tells, no "
-                        "self-references to data sources or tools."
-                    ),
-                    safety_settings=safety_settings,
-                    max_output_tokens=1500,
-                    temperature=0.4,
-                    thinking_config=types.ThinkingConfig(thinking_budget=512),
-                )
-                rewrite_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=[
-                        types.Content(
-                            role="user",
-                            parts=[types.Part.from_text(text=rewrite_prompt)],
-                        )
-                    ],
-                    config=rewrite_config,
-                )
-                _tally_retry_usage(rewrite_resp)
-                try:
-                    rewritten = (rewrite_resp.text or "").strip()
-                except Exception:
-                    rewritten = ""
-                if rewritten:
-                    # Re-lint to make sure the rewrite is actually clean.
-                    # asker-mockery isn't in _clean_voice_violations'
-                    # vocabulary, so re-check it explicitly.
-                    rewritten, rewrite_hits = _clean_voice_violations(rewritten)
-                    if ("asker-mockery" in _register_rewrite_kinds
-                            and _asker_mockery_violations(rewritten)):
-                        rewrite_hits = list(rewrite_hits or [])
-                        rewrite_hits.append("asker-mockery")
-                    # Fidelity check: reject a rewrite that invented
-                    # substance (words traceable to neither the original
-                    # answer, the dossier, nor the question). Fiction is
-                    # worse than a weak register — ship the original.
-                    _novel = _rewrite_novel_ratio(
-                        rewritten,
-                        f"{answer} {profiles_block or ''} {question or ''}",
-                    )
-                    if _novel > _REWRITE_NOVEL_MAX_RATIO:
-                        _ask_meta["guards"].append("rewrite:novel-rejected")
-                        log.warning(
-                            f"/ask: register rewrite invented content "
-                            f"(novel ratio {_novel:.2f}) — shipping original"
-                        )
-                    elif not (_register_rewrite_kinds & set(rewrite_hits or [])):
-                        answer = rewritten
-                        log.info("/ask: register rewrite succeeded")
-                    else:
-                        log.warning(
-                            "/ask: rewrite still carries a register "
-                            "violation — shipping original"
-                        )
-                else:
-                    log.warning(
-                        "/ask: rewrite returned empty — shipping original"
-                    )
-            except Exception as e:
-                log.warning(f"/ask: architecture-leak rewrite call failed: {e}")
-
-        # Asker-mockery hard-strip fallback — regardless of which path
-        # the rewrite took, mockery at a sincere asker never ships. The
-        # strip is sentence-level so the factual core survives.
-        if answer and _route_is_factual:
-            _mock_residual = _asker_mockery_violations(answer)
-            if _mock_residual:
-                _ask_meta["guards"].append("asker-mockery-strip")
-                _stripped_am = _strip_sentences(answer, _mock_residual)
-                if _stripped_am.strip():
-                    answer = _stripped_am
-                    log.warning(
-                        f"/ask: hard-stripped {len(_mock_residual)} "
-                        f"asker-mockery sentence(s)"
-                    )
-            # Jab strip (2026-07-27 planets sarcasm) — roast material
-            # tacked onto a sincere factual answer. Same strip pattern
-            # as mockery; only fires when a factual remainder survives.
-            _jab_residual = _fact_jab_sentences(answer)
-            if _jab_residual:
-                _stripped_jab = _strip_sentences(answer, _jab_residual)
-                if _stripped_jab.strip():
-                    answer = _stripped_jab
-                    _ask_meta["guards"].append("fact-jab-strip")
-                    log.warning(
-                        f"/ask: hard-stripped {len(_jab_residual)} "
-                        f"jab sentence(s) from FACT answer"
-                    )
-
-        # Clapback fidelity guard (2026-07-29, BANTER-gated, ungrounded
-        # only). Distinctive claims must trace to the ASKER's own
-        # material — co-loaded dossiers in multi-party threads are the
-        # cross-attribution source (kyle got ZHawk's XSP trade, Austin,
-        # and Excel material); grounded banter may legitimately cite
-        # the web. One rewrite naming the offenders; then strip; a
-        # fully-stripped answer becomes a disengage line — the move the
-        # prompt prescribes when the receipts run dry.
-        if (answer and not _route_is_factual and not _round_gm_chunks
-                and _is_clapback_shaped(answer)):
-            # Scope the pool to whoever the roast is ABOUT. On a
-            # third-party question the subject's receipts are the correct
-            # ones and the asker's are irrelevant; scoping to the asker
-            # flagged correct material and could not see the actual
-            # cross-attribution case the guard exists to catch.
-            _fid_subjects = _roast_subjects(
-                question, profiles_block, asker_username, asker_display_name,
-            )
-            _fid_subject = _fid_subjects[0] if _fid_subjects else None
-            if _fid_subjects:
-                # Union over EVERY tagged member. "@Tulch vs @Monsoon, who
-                # is worse" legitimately draws on both dossiers, and
-                # scoping to one would flag the other's correct receipts.
-                # The tradeoff is explicit: this cannot detect a swap
-                # BETWEEN two people the question named, because both
-                # pools are in scope. It still catches material belonging
-                # to an uninvolved member or to nobody, which is the
-                # cross-attribution shape the guard was built for.
-                _fid_disp, _fid_uname = _fid_subjects[0]
-                _fid_material = "\n".join(
-                    _member_material_surface(
-                        profiles_block, chat_context, u, d, question,
-                    )
-                    for d, u in _fid_subjects
-                )
-                _ask_meta["fidelity_scope"] = "subject:" + ",".join(
-                    u for _d, u in _fid_subjects
-                )
-            else:
-                _fid_disp, _fid_uname = asker_display_name, asker_username
-                _ask_meta["fidelity_scope"] = "asker"
-                _fid_material = _member_material_surface(
-                    profiles_block, chat_context, _fid_uname, _fid_disp,
-                    question,
-                )
-            _fid_viol = _clapback_fidelity_violations(answer, _fid_material)
-            # Lowercase personal details are where the wrong-facts
-            # complaints live, and the token check above is blind to
-            # them (2026-08-25: an entire roast produced ZERO checkable
-            # tokens while inventing "pontoon"). Provenance rule: a
-            # distinctive word that appears in NEITHER the subject's
-            # material NOR the prompt's own context was invented.
-            # Surfaced as rewrite input only — a false positive costs
-            # one rewrite, never a stripped or mangled answer.
-            _fid_invented = _invented_personal_details(
-                answer, _fid_material, question, chat_context or "",
-            )[:6]
-            if _fid_invented:
-                _ask_meta["invented_details"] = _fid_invented
-            if _fid_viol or _fid_invented:
-                _ask_meta["guards"].append("clapback-fidelity")
-                _fid_who = (
-                    f"{_fid_disp} ({_fid_uname})" if _fid_subject
-                    else "the asker"
-                )
-                log.warning(
-                    f"/ask: clapback carries material not belonging to "
-                    f"{_fid_who} ({_fid_viol[:6]}) — requesting fidelity "
-                    f"rewrite"
-                )
-                try:
-                    _fid_contents = list(contents) + [types.Content(
-                        role="user",
-                        parts=[types.Part.from_text(text=(
-                            "[FIDELITY CHECK] This reply is about "
-                            f"{_fid_who}. Your draft attributed material "
-                            f"that is NOT theirs: "
-                            + ", ".join((_fid_viol + _fid_invented)[:8]) +
-                            ". Those belong to other members or to "
-                            "nobody — anything listed that appears in "
-                            "no profile, no message and no part of this "
-                            "prompt was INVENTED, which is how a member "
-                            "gets told about a boat they do not own. "
-                            "Rewrite the reply using ONLY "
-                            f"{_fid_who}'s documented material: their "
-                            "profile, their own messages, this "
-                            "question. Never substitute a new invented "
-                            "specific for a corrected one. If you have "
-                            "no fresh receipts left, deliver a short "
-                            "one-line disengage instead. Output only "
-                            "the reply."
-                        ))],
-                    )]
-                    _fid_resp = await client.aio.models.generate_content(
-                        model=ask_model,
-                        contents=_fid_contents,
-                        config=types.GenerateContentConfig(
-                            system_instruction=(
-                                _build_runtime_system_instruction(_prompt_extra)
-                            ),
-                            safety_settings=safety_settings,
-                            max_output_tokens=1000,
-                            temperature=0.4,
-                            thinking_config=types.ThinkingConfig(
-                                thinking_budget=512),
-                        ),
-                    )
-                    _tally_retry_usage(_fid_resp)
-                    try:
-                        _fid_answer = (_fid_resp.text or "").strip()
-                    except Exception:
-                        _fid_answer = ""
-                    if _fid_answer:
-                        _fid_answer, _ = _clean_voice_violations(
-                            _fid_answer
-                        )
-                    if _fid_answer and not _clapback_fidelity_violations(
-                            _fid_answer, _fid_material):
-                        answer = _fid_answer
-                        log.info("/ask: fidelity rewrite accepted")
-                    else:
-                        _bad = [
-                            s for s in _split_sentences(answer)
-                            if _clapback_fidelity_violations(
-                                s, _fid_material)
-                        ]
-                        _stripped_f = _strip_sentences(answer, _bad)
-                        if _stripped_f.strip():
-                            answer = _stripped_f
-                            _ask_meta["guards"].append(
-                                "clapback-fidelity-strip")
-                            log.warning(
-                                f"/ask: stripped {len(_bad)} "
-                                f"non-asker sentence(s) from clapback"
-                            )
-                        elif _is_hostile_exchange(question):
-                            answer = "you done?"
-                            _ask_meta["guards"].append(
-                                "clapback-fidelity-disengage")
-                            log.warning(
-                                "/ask: whole clapback was non-asker "
-                                "material — disengaging"
-                            )
-                        else:
-                            # The disengage line is a response to an
-                            # ATTACK. On a benign question it reads as
-                            # the bot being hostile for no reason
-                            # (2026-08-25). Re-ask plainly instead.
-                            _ask_meta["guards"].append(
-                                "clapback-fidelity-plain-retry")
-                            log.warning(
-                                "/ask: fidelity strip emptied a "
-                                "NON-hostile answer — plain re-ask"
-                            )
-                            try:
-                                _plain = await client.aio.models.generate_content(
-                                    model=ask_model,
-                                    contents=[types.Content(
-                                        role="user",
-                                        parts=[types.Part.from_text(text=(
-                                            "Answer this plainly and "
-                                            "usefully. No jokes about "
-                                            "the asker, no jabs, no "
-                                            "personal material — just "
-                                            "the answer.\n\n"
-                                            + question[:4000]
-                                        ))],
-                                    )],
-                                    config=types.GenerateContentConfig(
-                                        system_instruction=(
-                                            _build_runtime_system_instruction(
-                                                _prompt_extra)
-                                        ),
-                                        safety_settings=safety_settings,
-                                        max_output_tokens=800,
-                                        temperature=0.3,
-                                        thinking_config=types.ThinkingConfig(
-                                            thinking_budget=256),
-                                    ),
-                                )
-                                _tally_retry_usage(_plain)
-                                _pa = (_plain.text or "").strip()
-                                if _pa:
-                                    _pa, _ = _clean_voice_violations(_pa)
-                                answer = _pa or answer
-                            except Exception as e:
-                                log.warning(f"/ask: plain re-ask failed: {e}")
-                except Exception as fe:
-                    log.warning(
-                        f"/ask: fidelity rewrite call failed "
-                        f"(non-fatal): {fe}"
-                    )
-
-        # Subject-naming guard (BANTER-gated, third-party roasts only).
-        # 2026-08-12: SV asked "is @Tulch still the donkey of the room?"
-        # and the reply ran "a guy whose entire member alert ledger...",
-        # "give him a week...". Every claim was correctly Tulch's, but the
-        # roast never said whose they were, and the room read it as the
-        # bot talking about the wrong person. In a fast thread where the
-        # bot's reply quotes the ASKER's message, an unnamed "him" has
-        # nothing anchoring it to the subject.
-        #
-        # Deliberately weak: ONE rewrite request, accepted only if it
-        # names the subject AND still passes fidelity. Otherwise the
-        # original ships. Ambiguous attribution is a readability problem,
-        # not a correctness one, and a guard that rewrites correct roasts
-        # to fix presentation is how pnl-monotone vandalized a factual
-        # answer (2026-08-04).
-        # NOT gated on _is_clapback_shaped. That heuristic is the right
-        # gate for the fidelity guard, which polices receipts inside a
-        # clapback, and the wrong one here: it returns False for the
-        # 2026-08-12 Tulch answer, so a naming guard behind it could not
-        # fire on the case it was built for. The condition below is
-        # narrower and needs no shape heuristic — prose (not the
-        # arrow-bullet fact format) that talks ABOUT a third party in the
-        # third person and never says who.
-        #
-        # Measured across all 467 logged answers: 9 replies are
-        # third-person prose about a third party, and 4 of them (44%)
-        # never name the subject, including the one that drew the
-        # complaint. Under the old clapback gate only 1 of those 4 was
-        # even visible.
-        if (answer and not _route_is_factual and not _round_gm_chunks
-                and not answer.lstrip().startswith("→")):
-            _nm_subjects = _roast_subjects(
-                question, profiles_block, asker_username, asker_display_name,
-            )
-            _nm_subject = _nm_subjects[0] if _nm_subjects else None
-            # Seam counter, NOT a guard (2026-08-27 review, session 1):
-            # the "what about him?" shape — a BANTER turn whose subject
-            # resolution found nobody while the question refers to
-            # someone in the third person. The answer then draws on the
-            # ASKER's material by default, which is the misscoping the
-            # Tulch incident documented. No behavior change here: a
-            # month of counts decides whether this seam deserves a
-            # guard or is theoretical.
-            if _nm_subject is None and _THIRD_PERSON_REF_RE.search(
-                    question or ""):
-                log.info(
-                    f"/ask seam:pronoun-subject-miss — BANTER, no "
-                    f"resolvable subject, third-person pronoun in "
-                    f"question (q={question[:80]!r})"
-                )
-            if _nm_subject:
-                _nm_disp, _nm_uname = _nm_subject
-                # Naming ANY tagged member anchors the reply. A comparison
-                # answer that names one of the two is not ambiguous.
-                _named = any(
-                    re.search(rf"\b{re.escape(h)}\b", answer, re.I)
-                    for d, u in _nm_subjects for h in (d, u) if len(h) >= 3
-                )
-                if not _named and _THIRD_PERSON_REF_RE.search(answer):
-                    _ask_meta["guards"].append("subject-unnamed")
-                    log.warning(
-                        f"/ask: third-party roast never names its subject "
-                        f"({_nm_disp}) — requesting one naming rewrite"
-                    )
-                    try:
-                        _nm_material = _member_material_surface(
-                            profiles_block, chat_context, _nm_uname,
-                            _nm_disp, question,
-                        )
-                        _nm_resp = await client.aio.models.generate_content(
-                            model=ask_model,
-                            contents=list(contents) + [types.Content(
-                                role="user",
-                                parts=[types.Part.from_text(text=(
-                                    "[NAMING] This reply is about "
-                                    f"{_nm_disp}, but it never says so. It "
-                                    "reads as if it could be about anyone "
-                                    "in the room. Rewrite it so "
-                                    f"{_nm_disp} is named once, early and "
-                                    "naturally. Change NOTHING else: same "
-                                    "claims, same jokes, same length, same "
-                                    "voice. Do not add material. Output "
-                                    "only the reply."
-                                ))],
-                            )],
-                            config=types.GenerateContentConfig(
-                                system_instruction=(
-                                    _build_runtime_system_instruction(
-                                        _prompt_extra)
-                                ),
-                                safety_settings=safety_settings,
-                                max_output_tokens=1000,
-                                temperature=0.3,
-                                thinking_config=types.ThinkingConfig(
-                                    thinking_budget=256),
-                            ),
-                        )
-                        _tally_retry_usage(_nm_resp)
-                        try:
-                            _nm_answer = (_nm_resp.text or "").strip()
-                        except Exception:
-                            _nm_answer = ""
-                        if _nm_answer:
-                            _nm_answer, _ = _clean_voice_violations(_nm_answer)
-                        _nm_ok = bool(_nm_answer) and any(
-                            re.search(rf"\b{re.escape(h)}\b", _nm_answer,
-                                      re.I)
-                            for h in (_nm_disp, _nm_uname) if len(h) >= 3
-                        ) and not _clapback_fidelity_violations(
-                            _nm_answer, _nm_material)
-                        if _nm_ok:
-                            answer = _nm_answer
-                            log.info("/ask: naming rewrite accepted")
-                        else:
-                            log.info(
-                                "/ask: naming rewrite rejected — keeping the "
-                                "original (presentation issue, not a "
-                                "correctness one)"
-                            )
-                    except Exception as e:
-                        log.warning(f"/ask: naming rewrite failed: {e}")
-
-        # Seam counter, NOT a guard (2026-08-27 review, session 1): a
-        # FACT-routed answer that names a member from WHO'S TALKING.
-        # Factual answers should be about the world, not the room;
-        # member material surfacing in one is the profile-confusion
-        # seam with no guard on it. Log-only — same month-of-counts
-        # test as the pronoun seam before anyone builds enforcement.
-        if answer and _route_is_factual and profiles_block:
-            try:
-                _seam_named = []
-                for _sd, _su in _member_handles_in_profiles(profiles_block):
-                    for _h in (_sd, _su):
-                        if not _h or _h.lower() in (
-                                (asker_username or "").lower(),
-                                (asker_display_name or "").lower()):
-                            continue
-                        _pat = (rf"@{re.escape(_h)}\b" if len(_h) < 3
-                                else rf"\b{re.escape(_h)}\b")
-                        if re.search(_pat, answer, re.I):
-                            _seam_named.append(_sd)
-                            break
-                if _seam_named:
-                    log.info(
-                        f"/ask seam:fact-names-member — FACT answer "
-                        f"names {sorted(set(_seam_named))[:4]} "
-                        f"(q={question[:80]!r})"
-                    )
-            except Exception:
-                pass
-
-        # Roast-recycle guard (BANTER-gated) — a roast that remixes the
-        # same hooks as a prior answer to this asker reads as "doesn't
-        # know you or how to insult you." Force ONE rewrite with the
-        # recycled hooks banned; ship the original if the rewrite can't
-        # do better (repetition is weak, not dangerous).
-        # `not _analysis_extra`: a room-ranking question routes
-        # LOCAL/BANTER, so without this an answer built from query_data +
-        # Python with a chart attached was eligible to be rewritten as a
-        # roast. A roast rewriter has no business touching an analysis.
-        # `_is_clapback_shaped(answer)`: the BANTER route is NOT proof
-        # the answer is a roast — the router misroutes factual questions
-        # to BANTER regularly (citadel 07-30, Boeing + earnings calendar
-        # 08-03). On 08-03 the pnl-monotone guard classified a clean
-        # factual Boeing answer as a lazy roast (dense trading vocab,
-        # zero personal color — the definition of factual) and stapled a
-        # personal jab onto every arrow; the asker complained in the
-        # room. An answer must actually address the asker in second
-        # person before either roast guard may touch it.
-        # `not _asker_protected`: these rewrites INJECT jabs (the 08-03
-        # Boeing incident) — they must never run on a protected asker.
-        if (answer and not _route_is_factual and not _analysis_extra
-                and not _asker_protected
-                and _is_clapback_shaped(answer)
-                and _prior_bot_answer_texts):
-            _recycled = _recycled_roast_hooks(answer, _prior_bot_answer_texts)
-            if len(_recycled) >= _RECYCLE_HOOK_MIN:
-                _ask_meta["guards"].append("roast-recycle")
-                log.warning(
-                    f"/ask: roast recycles {len(_recycled)} hooks from a "
-                    f"prior answer to this asker "
-                    f"({', '.join(_recycled[:6])}) — requesting rewrite"
-                )
-                try:
-                    # 2026-07-17 fix: this prompt used to say "rebuild
-                    # from material ALREADY in this conversation's
-                    # context" while receiving ONLY the original answer
-                    # — an instruction it could only satisfy by
-                    # inventing. The dossier now rides along as the
-                    # actual material, and the novel-content check
-                    # below rejects inventions.
-                    _rr_material = (profiles_block or "")[:6000]
-                    # 2026-07-30 fix: this opened with "rewrite the
-                    # following roast" and shipped ONLY the answer, so
-                    # every input was treated as a single jab at the
-                    # asker. "who are the happiest people in the chat?
-                    # How about the angriest" came back with the
-                    # happiest arrow deleted. The question rides along
-                    # now and the answer has to survive rewriting.
-                    _rr_prompt = (
-                        "Rewrite the ANSWER below. It is a bot's answer "
-                        "to a real question — it may be a roast, or a "
-                        "list, or a straight answer. Whatever shape it "
-                        "is, the rewrite must STILL ANSWER the question "
-                        "in full: every part the question asked for, "
-                        "every subject the original covered. If the "
-                        "original is arrow bullets, return the same "
-                        "number of arrow bullets on the same subjects. "
-                        "Never redirect an answer about other people "
-                        "into a jab at the asker.\n\n"
-                        f"QUESTION:\n{question}\n\n"
-                        "The problem to fix: it "
-                        "recycles the SAME hooks you already used on this "
-                        "person recently — they noticed, and a repeated "
-                        "roast reads as not knowing them at all. BANNED "
-                        "material for this rewrite (do not mention or "
-                        "paraphrase): "
-                        + ", ".join(_recycled)
-                        + ". Rebuild the jab from DIFFERENT material in "
-                        "the SUBJECT MATERIAL below — "
-                        "their PERSONAL color first (recent personal "
-                        "life, retarded takes, personality); trading-"
-                        "loss angles only "
-                        "if the ledger material is specific and fresh. "
-                        "The SUBJECT MATERIAL is your ONLY allowed "
-                        "source — inventing traits, habits, or behaviors "
-                        "is a hard failure. Same heat, same length, same "
-                        "voice. Do NOT invent new facts, tickers, or "
-                        "numbers. Output ONLY the rewritten answer.\n\n"
-                        + (
-                            f"SUBJECT MATERIAL:\n{_rr_material}\n\n"
-                            if _rr_material else ""
-                        )
-                        + "ORIGINAL ANSWER:\n"
-                        f"{answer}"
-                    )
-                    _rr_config = types.GenerateContentConfig(
-                        system_instruction=(
-                            "You are a sharp trader rewriting a roast so "
-                            "it lands fresh. Direct, in-register, no AI "
-                            "tells, no recycled material."
-                        ),
-                        safety_settings=safety_settings,
-                        max_output_tokens=1500,
-                        temperature=0.6,
-                        thinking_config=types.ThinkingConfig(
-                            thinking_budget=512),
-                    )
-                    _rr_resp = await client.aio.models.generate_content(
-                        model=ask_model,
-                        contents=[types.Content(
-                            role="user",
-                            parts=[types.Part.from_text(text=_rr_prompt)],
-                        )],
-                        config=_rr_config,
-                    )
-                    _tally_retry_usage(_rr_resp)
-                    try:
-                        _rr_answer = (_rr_resp.text or "").strip()
-                    except Exception:
-                        _rr_answer = ""
-                    if _rr_answer:
-                        _rr_answer, _ = _clean_voice_violations(_rr_answer)
-                        _still = _recycled_roast_hooks(
-                            _rr_answer, _prior_bot_answer_texts
-                        )
-                        _rr_novel = _rewrite_novel_ratio(
-                            _rr_answer,
-                            f"{answer} {profiles_block or ''} "
-                            f"{question or ''}",
-                        )
-                        if _rr_novel > _REWRITE_NOVEL_MAX_RATIO:
-                            _ask_meta["guards"].append(
-                                "rewrite:novel-rejected"
-                            )
-                            log.warning(
-                                f"/ask: roast-recycle rewrite invented "
-                                f"content (novel ratio {_rr_novel:.2f}) "
-                                f"— shipping original"
-                            )
-                        elif len(_still) < _RECYCLE_HOOK_MIN:
-                            answer = _rr_answer
-                            log.info("/ask: roast-recycle rewrite succeeded")
-                        else:
-                            log.warning(
-                                "/ask: roast-recycle rewrite still recycled "
-                                "— shipping original"
-                            )
-                except Exception as e:
-                    log.warning(f"/ask: roast-recycle rewrite failed: {e}")
-
-        # P&L-monotone guard (BANTER-gated) — "your roasts need to
-        # target more personal stuff than trading money losses cuz it's
-        # just lame and repetitive" (user, 2026-07-10). A roast that is
-        # all trading-loss vocabulary and touches NONE of the dossier's
-        # personal color gets one rewrite pointed at the personal
-        # sections. Ship the original if the rewrite doesn't improve —
-        # monotone is weak, not dangerous.
-        if (answer and not _route_is_factual and not _analysis_extra
-                and not _asker_protected
-                and profiles_block
-                and _is_clapback_shaped(answer)
-                and _roast_is_pnl_monotone(answer, profiles_block)):
-            _ask_meta["guards"].append("pnl-monotone")
-            log.warning(
-                f"/ask: P&L-monotone roast (q={question[:80]!r}) — "
-                f"requesting personal-color rewrite"
-            )
-            try:
-                _pm_prompt = (
-                    "Rewrite the ANSWER below. It is a bot's answer to a "
-                    "real question. The rewrite must STILL ANSWER that "
-                    "question in full — every part it asked for, every "
-                    "subject the original covered — and keep the same "
-                    "shape (arrow bullets in, the same arrow bullets "
-                    "out). Never redirect an answer about other people "
-                    "into a jab at the asker.\n\n"
-                    f"QUESTION:\n{question}\n\n"
-                    "The problem to fix: every jab "
-                    "in it is a trading-losses jab (bags, exits, account, "
-                    "casino) — the laziest register, and this room has "
-                    "called it out. Rebuild the heat from the target's "
-                    "PERSONAL color that is ALREADY in this conversation's "
-                    "context: their recent personal life, retarded takes, "
-                    "personality quirks, or what they said in the current "
-                    "chat window. One trading reference may survive if "
-                    "it's specific, but the roast's spine must be "
-                    "personal. Same heat, same length, same voice. Do NOT "
-                    "invent new facts, tickers, or numbers — only material "
-                    "from the context. Output ONLY the rewritten "
-                    "answer.\n\nORIGINAL ANSWER:\n"
-                    f"{answer}"
-                )
-                _pm_config = types.GenerateContentConfig(
-                    system_instruction=(
-                        "You are a sharp trader rewriting a roast so it "
-                        "hits the person, not their P&L. Direct, "
-                        "in-register, no AI tells."
-                    ),
-                    safety_settings=safety_settings,
-                    max_output_tokens=1500,
-                    temperature=0.6,
-                    thinking_config=types.ThinkingConfig(
-                        thinking_budget=512),
-                )
-                _pm_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=[types.Content(
-                        role="user",
-                        parts=[types.Part.from_text(text=_pm_prompt)],
-                    )],
-                    config=_pm_config,
-                )
-                _tally_retry_usage(_pm_resp)
-                try:
-                    _pm_answer = (_pm_resp.text or "").strip()
-                except Exception:
-                    _pm_answer = ""
-                if _pm_answer:
-                    _pm_answer, _ = _clean_voice_violations(_pm_answer)
-                    if not _roast_is_pnl_monotone(_pm_answer, profiles_block):
-                        answer = _pm_answer
-                        log.info("/ask: P&L-monotone rewrite succeeded")
-                    else:
-                        log.warning(
-                            "/ask: P&L-monotone rewrite still monotone — "
-                            "shipping original"
-                        )
-            except Exception as e:
-                log.warning(f"/ask: P&L-monotone rewrite failed: {e}")
-
-        grounding_metadata = None
-        try:
-            grounding_metadata = response.candidates[0].grounding_metadata
-        except (AttributeError, IndexError, TypeError):
-            pass
-        if not _grounding_has_sources(grounding_metadata) and _round_gm_chunks:
-            # The final text turn carries no gm, but an earlier round of
-            # the tool loop searched — that evidence grounds this answer
-            # (and feeds the sources footer). Dedup chunks by URI.
-            _seen_uris: set[str] = set()
-            _merged = []
-            for ch in _round_gm_chunks:
-                uri = getattr(getattr(ch, "web", None), "uri", None) or id(ch)
-                if uri in _seen_uris:
-                    continue
-                _seen_uris.add(uri)
-                _merged.append(ch)
-            grounding_metadata = SimpleNamespace(grounding_chunks=_merged)
-            log.info(
-                f"/ask: grounding recovered from earlier tool-loop round(s) "
-                f"({len(_merged)} chunk(s)) — final turn had none"
-            )
-
-        # Grounding backstop — structural enforcement of "Type 1 needs a
-        # source." If the answer asserts market-fact specifics yet
-        # nothing grounded it (no Google grounding, no data tool), force
-        # ONE SEARCH-ONLY retry; if that STILL doesn't ground, append a
-        # hedge so the unverified specifics aren't presented as fact.
-        #
-        # SEARCH-ONLY is the load-bearing detail (2026-06-19 fix). Gemini
-        # grounding is discretionary, and when google_search rides in the
-        # same request as the bot's function tools, the model routinely
-        # skips search and answers from priors — which is the
-        # confabulation. The earlier version of this retry re-sent ALL
-        # the function tools, so it did the exact same thing and fell
-        # straight through to the hedge: it confirmed it hadn't searched
-        # rather than actually searching. Stripping the function tools so
-        # Google Search is the ONLY move makes grounding fire for real,
-        # so the retry returns a verified answer and the hedge becomes
-        # rare (only when the web genuinely has nothing). The backstop
-        # only fires on MARKET-FACT shapes where no tool fired on pass 1,
-        # so losing the function tools on retry costs nothing.
-        _ground_trigger_shape = _is_ungrounded_market_fact(
-            answer, grounding_metadata, _ask_tool_trace,
-            context=user_content,
+        (answer, grounding_metadata) = await _ask_09_rank_and_regen_guards(
+            _ask_meta=_ask_meta,
+            _tally_retry_usage=_tally_retry_usage,
+            answer=answer,
+            ask_model=ask_model,
+            chat_context=chat_context,
+            client=client,
+            config=config,
+            contents=contents,
+            cross_window_block=cross_window_block,
+            fetched_urls=fetched_urls,
+            images=images,
+            profiles_for_prompt=profiles_for_prompt,
+            question=question,
+            response=response,
+            safety_settings=safety_settings,
+            separator=separator,
+            types=types,
         )
-        _ground_trigger_web = _ungrounded_web_specifics(
-            answer, grounding_metadata, needs_web,
-            is_opinion=_is_opinion_request(question),
+        return await _ask_10_log_and_render(
+            _ask_actual_total=_ask_actual_total,
+            _ask_est_total=_ask_est_total,
+            _ask_meta=_ask_meta,
+            _ask_tool_trace=_ask_tool_trace,
+            _code_images=_code_images,
+            _raw_answer_pre_clean=_raw_answer_pre_clean,
+            answer=answer,
+            asker_display_name=asker_display_name,
+            asker_username=asker_username,
+            channel_name=channel_name,
+            get_budget=get_budget,
+            grounding_metadata=grounding_metadata,
+            question=question,
+            user_content=user_content,
+            user_id=user_id,
         )
-        # Calendar-slate questions trigger on question shape, not answer
-        # shape — a ticker-and-times slate carries no factual-specific
-        # markers the other two nets can see (2026-07-20 terlin). Any
-        # data tool firing counts as a source, same as the market-shape
-        # net.
-        _ground_trigger_calendar = (
-            _is_calendar_question(question)
-            and not _grounding_has_sources(grounding_metadata)
-            and not _ask_tool_trace
-        )
-        if answer and (_ground_trigger_shape or _ground_trigger_web
-                       or _ground_trigger_calendar):
-            _ground_trigger_name = (
-                "web-routed" if _ground_trigger_web
-                else "market-shape" if _ground_trigger_shape
-                else "calendar"
-            )
-            _ask_meta["guards"].append("grounding:" + _ground_trigger_name)
-            log.warning(
-                f"/ask: ungrounded answer (q={question[:80]!r}, "
-                f"trigger={_ground_trigger_name})"
-                f" — forcing a search-only retry"
-            )
-            # Price backstop-fetch (2026-07-27 ORCL contradiction).
-            # The forced retry strips the function tools, so an answer
-            # asserting a live price could only ever be hedged, never
-            # corrected — and banter passes never call the tool on
-            # their own. Fetch the asserted tickers deterministically
-            # and inject the live numbers; the tool trace entry also
-            # lets the retry-acceptance check count this as a source.
-            _price_injected = False
-            _price_symbols = _answer_price_tickers(answer)
-            if _price_symbols:
-                try:
-                    _price_result = await _execute_market_price(
-                        {"symbols": _price_symbols}
-                    )
-                    if (isinstance(_price_result, dict)
-                            and _price_result.get("status") == "ok"):
-                        _ask_tool_trace.append({
-                            "tool": "lookup_market_price",
-                            "args": {"symbols": str(_price_symbols)[:80]},
-                            "status": "backstop-fetch",
-                            "result_chars": len(str(_price_result)),
-                        })
-                        contents.append(types.Content(
-                            role="user",
-                            parts=[types.Part.from_text(text=(
-                                "[LIVE PRICE DATA — system-fetched "
-                                "because your draft asserted price "
-                                "levels no tool sourced]\n"
-                                + str(_price_result)[:4000]
-                                + "\nUse ONLY these numbers for any "
-                                "price/level/percent-move claim in "
-                                "your rewrite; drop any price this "
-                                "data does not cover. If the data "
-                                "contradicts your draft's claim about "
-                                "what a ticker is doing, the data "
-                                "wins — including any claim you made "
-                                "about the asker being wrong."
-                            ))],
-                        ))
-                        _price_injected = True
-                        _ask_meta["guards"].append("price-backstop-fetch")
-                        log.info(
-                            f"/ask: price backstop-fetch injected live "
-                            f"data for {_price_symbols}"
-                        )
-                except Exception as ppe:
-                    log.warning(
-                        f"/ask: price backstop-fetch failed "
-                        f"(non-fatal): {ppe}"
-                    )
-            try:
-                forced_contents = list(contents) + [
-                    types.Content(role="user", parts=[types.Part.from_text(
-                        text=(
-                            "[GROUNDING REQUIRED] Your previous draft stated "
-                            "specific facts — numbers, dates, counts, figures, "
-                            "price targets, a company's market cap or bed/unit "
-                            "count, a contract or unlock schedule — WITHOUT "
-                            "consulting any source. Do NOT answer a specific "
-                            "from memory or by extrapolating from a pasted "
-                            "document. Google Search is now your ONLY tool: "
-                            "verify each specific against a real result before "
-                            "stating it. If a specific isn't in the search "
-                            "results, say you couldn't verify it — never invent "
-                            "a date, count, ticker, level, or figure to fill "
-                            "the gap."
-                        ),
-                    )])
-                ]
-                # SEARCH-ONLY tool config — no function tools, so the model
-                # has nothing to route to except Google Search.
-                forced_config = types.GenerateContentConfig(
-                    system_instruction=_build_runtime_system_instruction(_prompt_extra),
-                    tools=[types.Tool(google_search=types.GoogleSearch())],
-                    safety_settings=safety_settings,
-                    max_output_tokens=5000,
-                    temperature=0.3,
-                    thinking_config=types.ThinkingConfig(thinking_budget=2000),
-                )
-                forced_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=forced_contents,
-                    config=forced_config,
-                )
-                _tally_retry_usage(forced_resp)
-                try:
-                    forced_answer = (forced_resp.text or "").strip()
-                except Exception:
-                    forced_answer = ""
-                forced_gm = None
-                try:
-                    forced_gm = forced_resp.candidates[0].grounding_metadata
-                except (AttributeError, IndexError, TypeError):
-                    pass
-                _retry_still_ungrounded = (
-                    # Trace includes the price backstop-fetch when it
-                    # ran — a retry built on injected live data counts
-                    # as tool-sourced, same as if the model had called
-                    # lookup_market_price itself.
-                    _is_ungrounded_market_fact(
-                        forced_answer, forced_gm, _ask_tool_trace,
-                        context=user_content,
-                    )
-                    or _ungrounded_web_specifics(
-                        forced_answer, forced_gm, needs_web,
-                        is_opinion=_is_opinion_request(question),
-                    )
-                    # A calendar retry that again skipped search is still
-                    # a memory slate — don't accept it as "hedged"; let
-                    # it fall through to the bare probe.
-                    or (_ground_trigger_calendar
-                        and not _grounding_has_sources(forced_gm))
-                )
-                if forced_answer and _grounding_has_sources(forced_gm):
-                    answer = forced_answer
-                    response = forced_resp
-                    grounding_metadata = forced_gm
-                    _ask_meta["ground_retry"] = "in-voice:grounded"
-                    log.info("/ask: grounded retry succeeded")
-                elif forced_answer and not _retry_still_ungrounded:
-                    # Retry dropped the unverifiable specifics (e.g. said
-                    # "couldn't verify") — or rebuilt its price claims on
-                    # the injected live data. Either is the honest
-                    # outcome; the label records which.
-                    answer = forced_answer
-                    response = forced_resp
-                    grounding_metadata = forced_gm
-                    _ask_meta["ground_retry"] = (
-                        "in-voice:price-tool" if _price_injected
-                        else "in-voice:hedged"
-                    )
-                    log.info(
-                        "/ask: grounded retry accepted "
-                        f"({_ask_meta['ground_retry']})"
-                    )
-                elif not needs_web:
-                    # Stage 2 is SKIPPED for LOCAL-routed questions. The
-                    # probe's whole mechanism — strip all context so
-                    # searching becomes the only move — is wrong when the
-                    # answer CAME FROM context: a LOCAL/BANTER question
-                    # full of room referents becomes a nonsense web query
-                    # (2026-07-16 Cemini: the probe Googled "omniwiz ...
-                    # rope and his ladder", grounded a literature page
-                    # about executioners, and its refusal replaced an
-                    # excellent in-voice GLW read). The in-voice retry
-                    # above already attempted grounding WITH context;
-                    # failing that, hedge and keep the answer.
-                    answer = (
-                        answer.rstrip()
-                        + "\n\n→ ⚠️ Couldn't verify these specifics "
-                        "against a live source — treat the exact "
-                        "numbers/dates as unconfirmed."
-                    )
-                    _ask_meta["ground_retry"] = "hedged(local-skip)"
-                    log.warning(
-                        "/ask: LOCAL-routed answer failed grounding retry "
-                        "— skipped the context-blind bare probe, kept "
-                        "in-voice answer + hedge"
-                    )
-                elif _is_context_dependent(question):
-                    # Stage 2 is SKIPPED for context-dependent follow-ups.
-                    # The bare probe strips all conversation history, so a
-                    # question that references the live thread ("give us 5
-                    # from THERE", "what's ITS Q3 number") loses its
-                    # antecedent and the probe answers a different,
-                    # unanswerable question — 2026-07-13: kloh asked for 5
-                    # names "from there" (the OTE report discussed seconds
-                    # earlier) and the probe, context-blind, replied "I
-                    # cannot verify the existence of the report you
-                    # mentioned." It didn't refuse; it forgot, by design.
-                    # Keep the context-aware in-voice answer and hedge.
-                    answer = (
-                        answer.rstrip()
-                        + "\n\n→ ⚠️ Couldn't verify these specifics "
-                        "against a live source — treat the exact "
-                        "numbers/dates as unconfirmed."
-                    )
-                    _ask_meta["ground_retry"] = "hedged(context-dep-skip)"
-                    log.warning(
-                        "/ask: context-dependent follow-up — skipped the "
-                        "context-blind bare probe, kept in-voice answer + "
-                        "hedge"
-                    )
-                else:
-                    # Stage 2 — BARE PROBE. Diagnosis from the 2026-07-08
-                    # hedge batch (Toy Story / market-down / Netflix): even
-                    # SEARCH-ONLY passes skip the discretionary search when
-                    # the request carries the full 8-10K-char room prompt +
-                    # persona — the model answers from that context and its
-                    # priors instead. The probe strips EVERYTHING except the
-                    # question: no profiles, no chat, no persona. With
-                    # nothing to answer from, searching becomes the path of
-                    # least resistance. Dry output is fine — this path only
-                    # runs for self-contained fact questions (context-
-                    # dependent ones took the skip branch above), where
-                    # correct-and-plain beats in-voice-but-unverified.
-                    _probe_ok = False
-                    _probe_state = "error"  # overwritten below on a response
-                    try:
-                        probe_q = (
-                            question.strip()[-600:]
-                            + _probe_topic_capsule(question, answer)
-                        )
-                        probe_resp = await client.aio.models.generate_content(
-                            model=ask_model,
-                            contents=[types.Content(
-                                role="user",
-                                parts=[types.Part.from_text(text=(
-                                    "Verify with Google Search and answer "
-                                    "concisely (1-4 short sentences or "
-                                    "bullets): " + probe_q
-                                ))],
-                            )],
-                            config=types.GenerateContentConfig(
-                                system_instruction=(
-                                    "You are a fact-checking search agent. "
-                                    "Your FIRST action MUST be a Google "
-                                    "Search query — produce no answer text "
-                                    "before searching, and never answer "
-                                    "from memory alone. State only what the "
-                                    "results support; name anything you "
-                                    "could not verify. Plain prose, no "
-                                    "em-dashes."
-                                ),
-                                tools=[types.Tool(
-                                    google_search=types.GoogleSearch())],
-                                safety_settings=safety_settings,
-                                max_output_tokens=1000,
-                                temperature=0.1,
-                                # 1024: at 512 the model sometimes answered
-                                # from priors without planning a search
-                                # (07-09: probe converted only 1 of 4).
-                                thinking_config=types.ThinkingConfig(
-                                    thinking_budget=1024),
-                            ),
-                        )
-                        _tally_retry_usage(probe_resp)
-                        try:
-                            probe_answer = (probe_resp.text or "").strip()
-                        except Exception:
-                            probe_answer = ""
-                        probe_gm = None
-                        try:
-                            probe_gm = (
-                                probe_resp.candidates[0].grounding_metadata
-                            )
-                        except (AttributeError, IndexError, TypeError):
-                            pass
-                        _probe_state = "no-ground"
-                        if probe_answer and _probe_is_refusal(probe_answer):
-                            # A "grounded" I-cannot-verify is not an
-                            # answer — never let it replace one.
-                            _probe_state = "refusal"
-                            probe_answer = ""
-                        if probe_answer and _grounding_has_sources(probe_gm):
-                            # The probe bypassed the earlier voice-lint pass
-                            # — run the mechanical cleaner so em-dashes /
-                            # tells don't ship.
-                            probe_answer, _ = _clean_voice_violations(
-                                probe_answer
-                            )
-                            answer = probe_answer
-                            response = probe_resp
-                            grounding_metadata = probe_gm
-                            _probe_ok = True
-                            _ask_meta["ground_retry"] = "bare-probe:grounded"
-                            log.info(
-                                "/ask: bare-probe grounded (in-voice retry "
-                                "had failed)"
-                            )
-                            # REVOICE (2026-07-23). The probe is
-                            # deliberately persona-less — that dryness is
-                            # what makes it search — but every probe
-                            # answer in the 07-17..07-23 window failed QC
-                            # voice/format for exactly that reason. One
-                            # no-tools rewrite turns the verified facts
-                            # into arrow-bullet room voice; the fidelity
-                            # gate (_revoice_acceptable) rejects any
-                            # rewrite that invents substance, in which
-                            # case the dry probe answer ships as before.
-                            # Grounding receipts stay on probe_gm either
-                            # way — the rewrite never touches sources.
-                            try:
-                                _rv_prompt = (
-                                    "Rewrite this verified answer as a "
-                                    "sharp trader-to-trader Discord reply: "
-                                    "2-4 arrow bullets (each starting "
-                                    "'→ '), direct and opinionated, plain "
-                                    "English, no em-dashes, no source "
-                                    "list, no hedging filler. Do NOT add, "
-                                    "change, or drop any fact, number, "
-                                    "date, ticker, or name — every "
-                                    "specific in your rewrite must appear "
-                                    "in the ORIGINAL. Output ONLY the "
-                                    "rewritten answer.\n\n"
-                                    "QUESTION:\n"
-                                    + (question or "").strip()[-600:]
-                                    + "\n\nORIGINAL (verified):\n"
-                                    + probe_answer
-                                )
-                                _rv_resp = await (
-                                    client.aio.models.generate_content(
-                                        model=ask_model,
-                                        contents=[types.Content(
-                                            role="user",
-                                            parts=[types.Part.from_text(
-                                                text=_rv_prompt)],
-                                        )],
-                                        config=types.GenerateContentConfig(
-                                            system_instruction=(
-                                                "You are a senior trader "
-                                                "rewriting a research note "
-                                                "for the group chat. Keep "
-                                                "every fact identical."
-                                            ),
-                                            safety_settings=safety_settings,
-                                            max_output_tokens=1200,
-                                            temperature=0.4,
-                                            thinking_config=(
-                                                types.ThinkingConfig(
-                                                    thinking_budget=512)
-                                            ),
-                                        ),
-                                    )
-                                )
-                                _tally_retry_usage(_rv_resp)
-                                try:
-                                    _rv_text = (_rv_resp.text or "").strip()
-                                except Exception:
-                                    _rv_text = ""
-                                if _rv_text:
-                                    _rv_text, _ = _clean_voice_violations(
-                                        _rv_text
-                                    )
-                                if _revoice_acceptable(
-                                    _rv_text, probe_answer, question
-                                ):
-                                    answer = _rv_text
-                                    _ask_meta["ground_retry"] = (
-                                        "bare-probe:grounded+revoiced"
-                                    )
-                                    log.info(
-                                        "/ask: probe revoice accepted"
-                                    )
-                                else:
-                                    _ask_meta["ground_retry"] = (
-                                        "bare-probe:grounded(dry)"
-                                    )
-                                    log.info(
-                                        "/ask: probe revoice rejected — "
-                                        "shipping dry probe answer"
-                                    )
-                            except Exception as rve:
-                                log.warning(
-                                    f"/ask: probe revoice call failed "
-                                    f"(non-fatal): {rve}"
-                                )
-                    except Exception as pe:
-                        log.warning(f"/ask: bare probe failed: {pe}")
-                    if not _probe_ok:
-                        # Still ungrounded — flag rather than ship as fact.
-                        # The stamp distinguishes probe-ran-but-didn't-
-                        # search from probe-call-died, so the ask-log
-                        # shows which failure to tune next.
-                        answer = (
-                            answer.rstrip()
-                            + "\n\n→ ⚠️ Couldn't verify these specifics "
-                            "against a live source — treat the exact "
-                            "numbers/dates as unconfirmed."
-                        )
-                        _ask_meta["ground_retry"] = f"hedged(probe:{_probe_state})"
-                        log.warning(
-                            "/ask: retry + bare probe both ungrounded — "
-                            f"appended hedge (probe:{_probe_state})"
-                        )
-            except Exception as e:
-                log.warning(f"/ask: grounded retry call failed: {e}")
-
-        # TA guard — structural suppression of self-generated technical
-        # analysis. If the answer makes indicator/level claims that
-        # nothing sourced (no grounding, no data tool), regenerate ONCE
-        # with a "[NO CHART DATA]" directive; prefer the cleaner result;
-        # then HARD-STRIP any indicator sentences that survive (the bot
-        # has no indicator feed, so those are always invented). Level
-        # claims are left to the regen — stripping prose mid-sentence
-        # risks mangling it — with a one-line hedge if they persist.
-        if answer and _has_unsourced_ta(
-            answer, grounding_metadata, _ask_tool_trace
-        ):
-            ind0, lvl0 = _ta_violations(answer)
-            _ask_meta["guards"].append("ta")
-            log.warning(
-                f"/ask: unsourced TA answer (q={question[:80]!r}, "
-                f"indicators={len(ind0)}, levels={len(lvl0)}) "
-                f"— forcing a no-chart-data retry"
-            )
-            try:
-                ta_contents = list(contents) + [
-                    types.Content(role="user", parts=[types.Part.from_text(
-                        text=(
-                            "[NO CHART DATA] Your previous draft made "
-                            "technical-analysis claims (indicator reads like "
-                            "RSI/MACD/moving averages, or chart levels like "
-                            "support/resistance/breakouts/pivots) that NO "
-                            "source backed. You have NO chart or indicator "
-                            "feed — never state an indicator value or an "
-                            "overbought/oversold read from memory. For a price "
-                            "level, either attribute it to a named source you "
-                            "found via Google Search, or drop it. Re-answer the "
-                            "question on fundamentals/catalysts/positioning and "
-                            "omit any TA you cannot source."
-                        ),
-                    )])
-                ]
-                # SEARCH-ONLY (same rationale as the grounding backstop):
-                # if a level can be sourced, search is the only way to do
-                # it — bundling the function tools just lets the model
-                # skip search and re-confabulate the level from priors.
-                ta_config = types.GenerateContentConfig(
-                    system_instruction=_build_runtime_system_instruction(_prompt_extra),
-                    tools=[types.Tool(google_search=types.GoogleSearch())],
-                    safety_settings=safety_settings,
-                    max_output_tokens=5000,
-                    temperature=0.3,
-                    thinking_config=types.ThinkingConfig(thinking_budget=2000),
-                )
-                ta_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=ta_contents,
-                    config=ta_config,
-                )
-                _tally_retry_usage(ta_resp)
-                try:
-                    ta_answer = (ta_resp.text or "").strip()
-                except Exception:
-                    ta_answer = ""
-                ta_gm = None
-                try:
-                    ta_gm = ta_resp.candidates[0].grounding_metadata
-                except (AttributeError, IndexError, TypeError):
-                    pass
-                # Prefer the retry when it's clean (grounded, or no TA
-                # violations left). Otherwise keep whichever draft has
-                # fewer violations as the base for the strip.
-                if ta_answer and not _has_unsourced_ta(ta_answer, ta_gm, []):
-                    answer = ta_answer
-                    response = ta_resp
-                    grounding_metadata = ta_gm
-                    log.info("/ask: no-chart-data retry returned a clean answer")
-                else:
-                    if ta_answer:
-                        ind_new, lvl_new = _ta_violations(ta_answer)
-                        if len(ind_new) + len(lvl_new) < len(ind0) + len(lvl0):
-                            answer = ta_answer
-                            response = ta_resp
-                            grounding_metadata = ta_gm
-                    # Hard-strip surviving invented indicator sentences.
-                    ind_left, lvl_left = _ta_violations(answer)
-                    if ind_left:
-                        answer = _strip_sentences(answer, ind_left)
-                        log.warning(
-                            f"/ask: stripped {len(ind_left)} invented "
-                            f"indicator sentence(s)"
-                        )
-                    # Levels we can't safely strip — hedge once if present.
-                    _, lvl_after = _ta_violations(answer)
-                    if lvl_after and answer:
-                        answer = (
-                            answer.rstrip()
-                            + "\n\n→ ⚠️ Any chart levels above are unsourced — "
-                            "I have no chart feed, so treat them as rough, not "
-                            "precise."
-                        )
-                        log.warning(
-                            "/ask: unsourced levels remain — appended TA hedge"
-                        )
-            except Exception as e:
-                log.warning(f"/ask: no-chart-data retry call failed: {e}")
-
-        # Member-outcome guard — clapbacks can't have no truth behind
-        # them. If the answer asserts someone's P&L STATE ("underwater
-        # on your bags", "down 40%") and this turn consulted no trade
-        # data, rewrite the jab onto documented material; strip what
-        # survives. (2026-07-02: Cpig clapback asserted "underwater" —
-        # his ledger shows zero documented outcomes.)
-        _oc_names = _known_member_names()
-        if answer and _has_unsourced_outcome_claims(
-            answer, _ask_tool_trace, user_content, _oc_names
-        ):
-            oc0 = _outcome_violations(answer, user_content, _oc_names)
-            _ask_meta["guards"].append("outcome")
-            log.warning(
-                f"/ask: unsourced member-outcome claim(s) "
-                f"(q={question[:80]!r}, n={len(oc0)}) — requesting rewrite"
-            )
-            try:
-                oc_prompt = (
-                    "Rewrite the following Discord bot answer. It asserts "
-                    "someone's profit/loss STATE (e.g. 'underwater', 'down "
-                    "bad', 'bleeding', 'down N%', 'his plays are a road to "
-                    "ruin') with NO documented source — the trade ledger "
-                    "only records what people POST, so an asserted P&L "
-                    "state is fabrication. This applies to ANY member named "
-                    "in the answer, not just the person being addressed — "
-                    "trashing a third member's plays without their ledger "
-                    "is the same invention. Replace each "
-                    "such claim with what IS verifiable in the answer's own "
-                    "remaining material: documented behavior (entries with "
-                    "no posted exit, spamming a ticker, their own quoted "
-                    "words), or drop the claim. Do NOT add any new facts, "
-                    "tickers, percentages, or events. Keep the same length, "
-                    "voice, and heat — the jab stays, the invented outcome "
-                    "goes. Output ONLY the rewritten answer, no preamble.\n\n"
-                    "ORIGINAL:\n"
-                    f"{answer}"
-                )
-                oc_config = types.GenerateContentConfig(
-                    system_instruction=(
-                        "You are a senior trader rewriting another trader's "
-                        "message. Direct, in-register, no AI tells. Never "
-                        "state an outcome the material doesn't document."
-                    ),
-                    safety_settings=safety_settings,
-                    max_output_tokens=1500,
-                    temperature=0.4,
-                    thinking_config=types.ThinkingConfig(thinking_budget=512),
-                )
-                oc_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=[types.Content(
-                        role="user",
-                        parts=[types.Part.from_text(text=oc_prompt)],
-                    )],
-                    config=oc_config,
-                )
-                _tally_retry_usage(oc_resp)
-                try:
-                    oc_answer = (oc_resp.text or "").strip()
-                except Exception:
-                    oc_answer = ""
-                if oc_answer and not _outcome_violations(
-                    oc_answer, user_content, _oc_names
-                ):
-                    answer = oc_answer
-                    log.info("/ask: outcome-claim rewrite succeeded")
-                else:
-                    # Strip the offending sentences from whichever draft
-                    # is cleaner; a clapback minus its invented outcome
-                    # is still a clapback.
-                    base = oc_answer if (
-                        oc_answer
-                        and len(_outcome_violations(
-                            oc_answer, user_content, _oc_names))
-                        < len(oc0)
-                    ) else answer
-                    to_strip = _outcome_violations(
-                        base, user_content, _oc_names)
-                    stripped = _strip_sentences(base, to_strip)
-                    if stripped:
-                        answer = stripped
-                        log.warning(
-                            f"/ask: stripped {len(to_strip)} unsourced "
-                            f"outcome sentence(s)"
-                        )
-                    else:
-                        log.warning(
-                            "/ask: outcome strip would empty the answer — "
-                            "shipping original"
-                        )
-            except Exception as e:
-                log.warning(f"/ask: outcome-claim rewrite call failed: {e}")
-
-        # Rank-trajectory guard — the bot only has the CURRENT rank
-        # snapshot, so a "you lost/dropped/climbed a rank" claim is
-        # invented (2026-07-05: told SV he "lost your spot in the top 5"
-        # after stating he was #9). Rewrite to drop the trajectory,
-        # keeping the current rank + the jab; strip the sentences as a
-        # fallback.
-        _rank_viol = _rank_trajectory_violations(answer) if answer else []
-        if _rank_viol:
-            _ask_meta["guards"].append("rank-trajectory")
-            log.warning(
-                f"/ask: unsourced rank-trajectory claim(s) "
-                f"(q={question[:80]!r}, n={len(_rank_viol)}) — requesting rewrite"
-            )
-            try:
-                rk_prompt = (
-                    "Rewrite the following answer. It claims someone's rank "
-                    "CHANGED over time — lost/dropped/climbed a spot, used to "
-                    "be #N, fell out of the top N, took time off and slid. "
-                    "You have ONLY the current rank (a snapshot); there is no "
-                    "rank history, so any movement claim is invented. Remove "
-                    "every rank-movement / rank-history claim. Keep the "
-                    "CURRENT rank if it's stated, and keep the rest of the "
-                    "jab. Do NOT say anyone gained, lost, dropped, climbed, "
-                    "or used to hold a position. Add no new facts. Output "
-                    "ONLY the rewritten answer.\n\n"
-                    "ORIGINAL:\n"
-                    f"{answer}"
-                )
-                rk_config = types.GenerateContentConfig(
-                    system_instruction=(
-                        "You edit a trading-room bot's message. Direct, "
-                        "in-register. Never assert a rank changed over time."
-                    ),
-                    safety_settings=safety_settings,
-                    max_output_tokens=1500,
-                    temperature=0.4,
-                    thinking_config=types.ThinkingConfig(thinking_budget=512),
-                )
-                rk_resp = await client.aio.models.generate_content(
-                    model=ask_model,
-                    contents=[types.Content(
-                        role="user",
-                        parts=[types.Part.from_text(text=rk_prompt)],
-                    )],
-                    config=rk_config,
-                )
-                _tally_retry_usage(rk_resp)
-                try:
-                    rk_answer = (rk_resp.text or "").strip()
-                except Exception:
-                    rk_answer = ""
-                if rk_answer and not _rank_trajectory_violations(rk_answer):
-                    answer = rk_answer
-                    log.info("/ask: rank-trajectory rewrite succeeded")
-                else:
-                    stripped = _strip_sentences(answer, _rank_viol)
-                    if stripped and len(stripped) > 15:
-                        answer = stripped
-                        log.warning(
-                            f"/ask: stripped {len(_rank_viol)} rank-trajectory "
-                            f"sentence(s)"
-                        )
-                    else:
-                        log.warning(
-                            "/ask: rank-trajectory strip would empty the "
-                            "answer — shipping original"
-                        )
-            except Exception as e:
-                log.warning(f"/ask: rank-trajectory rewrite call failed: {e}")
-
-        # Phantom image-read guard — when NO image reached this call,
-        # any "your screenshot shows / you posted a fill" claim is an
-        # invented reading (2026-07-10: graded 2pale's SOXL receipt as
-        # "6.1x" without ever seeing it). Detect→strip; the intake fixes
-        # (reply-to-bot trigger + look-back pull) make a real image
-        # reach the call in the first place, this is the backstop.
-        if answer and not images:
-            _phantom = _phantom_image_read_violations(answer)
-            if _phantom:
-                _ask_meta["guards"].append("phantom-image")
-                _stripped_ph = _strip_sentences(answer, _phantom)
-                if _stripped_ph.strip():
-                    answer = _stripped_ph
-                    log.warning(
-                        f"/ask: stripped {len(_phantom)} phantom "
-                        f"image-read sentence(s) (no image in call)"
-                    )
-                else:
-                    answer = (
-                        "→ Can't read a screenshot from here — repost it "
-                        "as a reply to me or attach it to the question."
-                    )
-                    log.warning(
-                        "/ask: phantom image-read strip emptied the answer "
-                        "— shipped the repost ask instead"
-                    )
-
-        # Blank-answer recovery. Gemini can return an empty text payload
-        # when (a) max_output_tokens was burned in the thinking phase,
-        # (b) finish_reason is MAX_TOKENS / SAFETY / RECITATION /
-        # MALFORMED_FUNCTION_CALL, or (c) the tool-call loop exited
-        # while the model still wanted to call tools. Without this
-        # branch, the @mention handler renders `discord.Embed(
-        # description="")` — a literal blank message in chat. Log the
-        # diagnostic, then surface a short user-facing fallback that
-        # tells the asker what to do next.
-        if not answer:
-            finish_reason = None
-            safety_blocked = False
-            try:
-                cand = response.candidates[0] if response else None
-                if cand is not None:
-                    fr = getattr(cand, "finish_reason", None)
-                    finish_reason = getattr(fr, "name", None) or str(fr) if fr else None
-                    sr = getattr(cand, "safety_ratings", None) or []
-                    for r in sr:
-                        if getattr(r, "blocked", False):
-                            safety_blocked = True
-                            break
-            except (AttributeError, IndexError, TypeError):
-                pass
-            prompt_block = None
-            try:
-                pf = getattr(response, "prompt_feedback", None)
-                br = getattr(pf, "block_reason", None) if pf else None
-                prompt_block = getattr(br, "name", None) or str(br) if br else None
-            except Exception:
-                pass
-            log.warning(
-                f"/ask: empty response.text "
-                f"(finish_reason={finish_reason!r}, "
-                f"safety_blocked={safety_blocked}, "
-                f"prompt_block={prompt_block!r}, "
-                f"q={question[:140]!r})"
-            )
-            if safety_blocked or prompt_block:
-                # With BLOCK_NONE on all configurable categories, this
-                # is Gemini's unconfigurable hard filter (CSAM, severe
-                # policy).
-                #
-                # Most common cause in production: verbatim slur tokens
-                # in the prompt — either in profile **Voice.** sections
-                # (which quote each user's chat verbatim, including
-                # slurs they use as filler) or in recent-chat lines
-                # like "BK (bankerkyle): Nigga" (filler interjections).
-                #
-                # Recovery: retry once with the **Voice.** sections of
-                # each profile stripped out. Empirical testing (2026-
-                # 06-03 19:49 UTC Ry_bry/Dovahjo AVGO trip) showed:
-                #   - Full prompt          -> BLOCKED
-                #   - Strip ALL profile    -> still BLOCKED (chat slurs)
-                #   - Strip Voice only     -> PASSES (3/3 runs)
-                # So the right surgical fix is: keep the rest of the
-                # profile (Personality, Retarded takes, Recent trades,
-                # Recent personal life, rationale, ranks) AND keep the
-                # chat — just drop the **Voice.** subsections. Voice
-                # samples are the highest-density slur container and
-                # dropping them drops the prompt below the filter's
-                # threshold while preserving the analytical context
-                # that lets the bot still address the asker by their
-                # actual profile.
-                retry_succeeded = False
-
-                # Ladder config: the ORIGINAL config minus the FUNCTION
-                # tools, keeping google_search. 2026-08-07, SV's
-                # "summarize the last 12 hours of chat": every tier
-                # resent with the tools-bearing config, the model
-                # answered each retry with a function_call (it needs
-                # search_chat_messages), .text was empty, and the ladder
-                # read four function calls as four blocks — shipping the
-                # failure wrapper for a reason unrelated to the filter.
-                # No tier executes function calls, so none may offer
-                # them; the model answers from the context already in
-                # the prompt (the recent chat window rides every ask).
-                #
-                # google_search is different in kind and must survive:
-                # it resolves server-side, needs no round trip through
-                # our code, and returns text rather than a function_call
-                # — so it cannot cause the empty-.text failure the strip
-                # exists to prevent. Nulling the whole tools list took it
-                # out too, which is why every ladder tier answered
-                # ungrounded (2026-08-07 COHR earnings, platinum/palladium
-                # options; 2026-08-09 money-market volumes — all factual
-                # questions where search IS the answer). Recovering the
-                # ask but losing grounding trades one failure for another.
-                try:
-                    _ladder_tools = [
-                        t for t in (config.tools or [])
-                        if getattr(t, "google_search", None) is not None
-                    ] or None
-                    _ladder_config = config.model_copy(
-                        update={
-                            "tools": _ladder_tools,
-                            # tool_config only carries
-                            # include_server_side_tool_invocations, which
-                            # is what surfaces google_search's grounding
-                            # records. Keep it while search is offered.
-                            "tool_config": (
-                                config.tool_config if _ladder_tools else None
-                            ),
-                        }
-                    )
-                except Exception:
-                    _ladder_config = config
-
-                # Tier 0 — IDENTICAL retry, before any context surgery.
-                # 2026-08-01: "how many members in ommi chat" (nothing
-                # filterable in the question) died on every rung below;
-                # replaying the exact logged prompt on 2026-08-04 passed
-                # 5/5 — full prompt, bare question, profiles alone, with
-                # and without the system instruction. The unconfigurable
-                # filter is non-deterministic near its threshold: the
-                # same content flickers between pass and block. The
-                # tiers below all assume some ingredient is toxic and
-                # amputate context to find it; for a flickering block
-                # the cheapest correct move is to send the same thing
-                # again, so a transient block costs zero context.
-                if prompt_block or safety_blocked:
-                    try:
-                        log.warning(
-                            "/ask: tier-0 retry — resending identical "
-                            "prompt (filter is non-deterministic)"
-                        )
-                        same_resp = await client.aio.models.generate_content(
-                            model=ask_model,
-                            contents=contents,
-                            config=_ladder_config,
-                        )
-                        _tally_retry_usage(same_resp)
-                        try:
-                            same_answer = (same_resp.text or "").strip()
-                        except Exception:
-                            same_answer = ""
-                        if same_answer:
-                            same_answer, _ = _clean_voice_violations(
-                                same_answer
-                            )
-                            answer = same_answer
-                            response = same_resp
-                            retry_succeeded = True
-                            _ask_meta["filter_retry"] = "same-prompt"
-                            log.info(
-                                "/ask: tier-0 identical retry succeeded "
-                                "— block was transient, no context lost"
-                            )
-                            try:
-                                grounding_metadata = (
-                                    same_resp.candidates[0]
-                                    .grounding_metadata
-                                )
-                            except (AttributeError, IndexError, TypeError):
-                                grounding_metadata = None
-                        else:
-                            log.warning(
-                                "/ask: tier-0 identical retry also empty "
-                                "— content may genuinely trip the "
-                                "filter, walking the strip ladder"
-                            )
-                    except Exception as e:
-                        log.warning(f"/ask: tier-0 retry call failed: {e}")
-
-                # Tier 1 — voice-strip. Operates on what was ACTUALLY
-                # sent, never on the full block: a ladder rung must only
-                # ever shrink the payload. Rebuilding from profiles_block
-                # here would re-add the voice/racism material that
-                # assembly deliberately withheld, i.e. escalate on retry.
-                # When assembly already went LEAN this rung is a
-                # byte-identical resend of tier 0, so skip it and let the
-                # ladder move on to a genuinely different shape.
-                _voice_stripped_preview = _strip_voice_sections(
-                    profiles_for_prompt
-                ) if profiles_for_prompt else ""
-                _tier1_is_noop = (
-                    _voice_stripped_preview == profiles_for_prompt
-                )
-                if _tier1_is_noop and profiles_for_prompt:
-                    log.info(
-                        "/ask: skipping voice-strip tier — assembly already "
-                        "sent LEAN profiles, this rung would resend the "
-                        "identical prompt"
-                    )
-                if (not retry_succeeded and profiles_for_prompt
-                        and not _tier1_is_noop
-                        and (prompt_block or safety_blocked)):
-                    try:
-                        voice_stripped = _voice_stripped_preview
-                        stripped_sections: list[str] = [voice_stripped]
-                        if fetched_urls:
-                            stripped_sections.append(fetched_urls)
-                        if cross_window_block:
-                            stripped_sections.append(cross_window_block)
-                        if chat_context:
-                            stripped_sections.append(chat_context)
-                        stripped_sections.append(f"{separator}\n{question}")
-                        stripped_content = "\n\n".join(stripped_sections)
-                        log.warning(
-                            f"/ask: prompt_block={prompt_block!r}, safety_blocked="
-                            f"{safety_blocked}, retrying once with Voice sections "
-                            f"stripped ({len(profiles_for_prompt) - len(voice_stripped)} "
-                            f"chars dropped)"
-                        )
-                        stripped_resp = await client.aio.models.generate_content(
-                            model=ask_model,
-                            contents=[
-                                types.Content(
-                                    role="user",
-                                    parts=[types.Part.from_text(text=stripped_content)],
-                                )
-                            ],
-                            config=_ladder_config,
-                        )
-                        _tally_retry_usage(stripped_resp)
-                        try:
-                            stripped_answer = (stripped_resp.text or "").strip()
-                        except Exception:
-                            stripped_answer = ""
-                        if stripped_answer:
-                            # Run the lint pass on the recovery answer so a
-                            # rewrite-without-profiles still gets em-dash /
-                            # semicolon cleanup. Meta-narration and
-                            # repetition retries are NOT chained on the
-                            # recovery path — recovery is an emergency
-                            # fallback, simpler is safer.
-                            stripped_answer, _ = _clean_voice_violations(
-                                stripped_answer
-                            )
-                            answer = stripped_answer
-                            response = stripped_resp
-                            retry_succeeded = True
-                            _ask_meta["filter_retry"] = "voice-strip"
-                            log.info(
-                                "/ask: profiles-stripped retry succeeded"
-                            )
-                            # Refresh grounding metadata for the new response
-                            try:
-                                grounding_metadata = (
-                                    stripped_resp.candidates[0].grounding_metadata
-                                )
-                            except (AttributeError, IndexError, TypeError):
-                                grounding_metadata = None
-                        else:
-                            log.warning(
-                                "/ask: profiles-stripped retry returned empty — "
-                                "attempting third-tier slur-mask retry"
-                            )
-                    except Exception as e:
-                        log.warning(
-                            f"/ask: profiles-stripped retry call failed: {e}"
-                        )
-
-                # Third-tier retry: when the Voice-strip retry ALSO came
-                # back empty (or the call raised), mask slur tokens in
-                # voice_stripped profile + chat + question and try one
-                # more time. Lossy answer (bot can't quote the slur
-                # verbatim) but answer-not-refusal.
-                #
-                # Concrete failure this catches (observed 2026-06-04
-                # 16:57 UTC): asker asks about chat-slur usage; question
-                # text + chat-context slur density trips the filter on
-                # BOTH the first attempt and the Voice-strip retry. The
-                # mask drops the prompt below the threshold.
-                # Same shrink-only rule as tier 1: mask what was sent.
-                if not retry_succeeded and profiles_for_prompt and (prompt_block or safety_blocked):
-                    try:
-                        voice_stripped = _strip_voice_sections(
-                            profiles_for_prompt
-                        )
-                        masked_sections: list[str] = [
-                            _mask_slur_tokens(voice_stripped)
-                        ]
-                        if fetched_urls:
-                            masked_sections.append(fetched_urls)
-                        if cross_window_block:
-                            masked_sections.append(
-                                _mask_slur_tokens(cross_window_block)
-                            )
-                        if chat_context:
-                            masked_sections.append(
-                                _mask_slur_tokens(chat_context)
-                            )
-                        masked_sections.append(
-                            f"{separator}\n{_mask_slur_tokens(question)}"
-                        )
-                        masked_content = "\n\n".join(masked_sections)
-                        # Count masked tokens for the log line so the
-                        # diff vs the previous retry is visible.
-                        n_masked = (
-                            (len(voice_stripped or "") - len(_mask_slur_tokens(voice_stripped or "")))
-                            // len("[redacted]")
-                        )
-                        log.warning(
-                            f"/ask: third-tier retry with slur tokens masked "
-                            f"(~{n_masked} tokens replaced)"
-                        )
-                        masked_resp = await client.aio.models.generate_content(
-                            model=ask_model,
-                            contents=[
-                                types.Content(
-                                    role="user",
-                                    parts=[types.Part.from_text(text=masked_content)],
-                                )
-                            ],
-                            config=_ladder_config,
-                        )
-                        _tally_retry_usage(masked_resp)
-                        try:
-                            masked_answer = (masked_resp.text or "").strip()
-                        except Exception:
-                            masked_answer = ""
-                        if masked_answer:
-                            masked_answer, _ = _clean_voice_violations(
-                                masked_answer
-                            )
-                            answer = masked_answer
-                            response = masked_resp
-                            retry_succeeded = True
-                            _ask_meta["filter_retry"] = "slur-mask"
-                            log.info(
-                                "/ask: slur-masked retry succeeded"
-                            )
-                            try:
-                                grounding_metadata = (
-                                    masked_resp.candidates[0].grounding_metadata
-                                )
-                            except (AttributeError, IndexError, TypeError):
-                                grounding_metadata = None
-                        else:
-                            log.warning(
-                                "/ask: slur-masked retry also returned empty — "
-                                "attempting question-only retry"
-                            )
-                    except Exception as e:
-                        log.warning(
-                            f"/ask: slur-masked retry call failed: {e}"
-                        )
-
-                # Fourth-tier retry: QUESTION-ONLY. 2026-07-09: 2pale's
-                # "wtf is prevailing wage" and "what is WRAP" died on
-                # every rung above — his profile carries trip-density
-                # slur content OUTSIDE the **Voice.** sections (the
-                # rationale text), and the mask list doesn't cover every
-                # shape. A sincere factual question must not die because
-                # the asker's rap sheet is spicy: send JUST the (masked)
-                # question — no profiles, no chat, no cross-window. The
-                # answer loses room context, which for a factual question
-                # is decoration anyway.
-                if not retry_succeeded and (prompt_block or safety_blocked):
-                    try:
-                        bare_q = _mask_slur_tokens(
-                            (question or "").strip()[-800:]
-                        )
-                        if bare_q.strip():
-                            log.warning(
-                                "/ask: fourth-tier retry — question only, "
-                                "no profiles/chat"
-                            )
-                            bare_resp = await client.aio.models.generate_content(
-                                model=ask_model,
-                                contents=[types.Content(
-                                    role="user",
-                                    parts=[types.Part.from_text(text=bare_q)],
-                                )],
-                                config=_ladder_config,
-                            )
-                            _tally_retry_usage(bare_resp)
-                            try:
-                                bare_answer = (bare_resp.text or "").strip()
-                            except Exception:
-                                bare_answer = ""
-                            if bare_answer:
-                                bare_answer, _ = _clean_voice_violations(
-                                    bare_answer
-                                )
-                                answer = bare_answer
-                                response = bare_resp
-                                retry_succeeded = True
-                                _ask_meta["filter_retry"] = "question-only"
-                                log.info(
-                                    "/ask: question-only retry succeeded"
-                                )
-                                try:
-                                    grounding_metadata = (
-                                        bare_resp.candidates[0]
-                                        .grounding_metadata
-                                    )
-                                except (AttributeError, IndexError, TypeError):
-                                    grounding_metadata = None
-                            else:
-                                log.warning(
-                                    "/ask: question-only retry also empty — "
-                                    "shipping fallback wrapper"
-                                )
-                    except Exception as e:
-                        log.warning(
-                            f"/ask: question-only retry call failed: {e}"
-                        )
-
-                if not retry_succeeded:
-                    _ask_meta["filter_retry"] = "failed"
-                    answer = (
-                        "→ Gemini bounced this one — its hard filter blocked "
-                        "the prompt. Try asking a different way or about a "
-                        "different subject."
-                    )
-            elif finish_reason in ("MAX_TOKENS", "OTHER", None):
-                answer = (
-                    "→ Thought myself in circles and ran out of room. "
-                    "Try asking it more directly."
-                )
-            else:
-                answer = (
-                    f"→ No response came back (reason: {finish_reason}). "
-                    f"Try again or rephrase."
-                )
-
-        # Strip leaked markdown-image embeds (2026-07-29): with code
-        # execution the model writes `![alt](chart.png)` into its text
-        # assuming inline render — but the chart posts as its OWN Discord
-        # embed and the markdown shows as raw text at the top. Drop the
-        # image tag, keep any alt text as a plain caption if present.
-        answer = re.sub(r"!\[([^\]]*)\]\([^)]*\)",
-                        lambda m: m.group(1).strip(), answer or "")
-        answer = re.sub(r"\n{3,}", "\n\n", answer).strip()
-
-        # Source-quality counter, WARN-ONLY (2026-08-27, session 4):
-        # every citation on a domain outside the sane list = the
-        # bljesak shape. Logged with a distinct tag and stamped into
-        # the ask-log meta (Railway logs rotate in ~1h; the ask-log is
-        # where a week of counts can actually be read). No blocking, no
-        # stripping — the legitimate long tail (company IR domains) is
-        # exactly why this collects counts before it enforces anything.
-        try:
-            _sq_unlisted = _source_quality_unlisted(grounding_metadata)
-            if _sq_unlisted:
-                _ask_meta["source_quality"] = {"unlisted": _sq_unlisted}
-                log.info(
-                    f"/ask seam:source-quality — all {len(_sq_unlisted)} "
-                    f"cited domain(s) unlisted: {_sq_unlisted[:4]} "
-                    f"(q={question[:80]!r})"
-                )
-        except Exception:
-            pass
-
-        sources_footer = _build_sources_footer(grounding_metadata)
-        full = (answer + sources_footer)[:4000]
-
-        # Reconcile token budget with EVERYTHING actually spent — the
-        # tool-call loop plus all retry calls (repetition, voice-strip,
-        # slur-mask). Moved here 2026-06-10; previously ran before the
-        # retries, leaving their usage unmeasured.
-        try:
-            get_budget().record_actual(
-                estimated=_ask_est_total,
-                actual=_ask_actual_total,
-                caller=f"ask:{(question or '')[:60]}",
-            )
-        except Exception as e:
-            log.debug(f"/ask token_budget record_actual non-fatal: {e}")
-
-        db.record_ask_query(user_id)
-
-        # QC log: append every interaction to /data/ask-logs/YYYY-MM-DD.md
-        # so the daily publish job can push to GitHub for browseable review.
-        # Failure is non-fatal — the user still gets their answer.
-        try:
-            # Final grounding status + source count for the audit stamp.
-            try:
-                _ask_meta["grounded"] = bool(
-                    _grounding_has_sources(grounding_metadata)
-                )
-                _ask_meta["sources"] = len(
-                    getattr(grounding_metadata, "grounding_chunks", None)
-                    or []
-                )
-                # "grounded ✅ (4 sources)" was false confidence on
-                # 2026-08-26: the question carried an x.com link, nothing
-                # retrieved it, and the four sources were unrelated macro
-                # news the model then attributed to the tweet. When the
-                # question carries a URL, say WHICH source got grounded.
-                _q_urls = _USER_URL_RE.findall(question or "")
-                if _q_urls:
-                    _chunks = (getattr(grounding_metadata,
-                                       "grounding_chunks", None) or [])
-                    _uris = []
-                    for _c in _chunks:
-                        _w = getattr(_c, "web", None)
-                        _u = (getattr(_w, "uri", None)
-                              or getattr(_w, "domain", None))
-                        if _u:
-                            _uris.append(str(_u).lower())
-                    _q_hosts = {
-                        u.split("//", 1)[-1].split("/", 1)[0].lower()
-                        for u in _q_urls
-                    }
-                    _on_link = any(h and h in uri
-                                   for uri in _uris for h in _q_hosts)
-                    _ask_meta["link_grounding"] = (
-                        "on-linked-source" if _on_link else "OFF-LINK")
-                    _ask_meta["linked_urls"] = _q_urls[:3]
-                    if not _on_link:
-                        log.warning(
-                            "/ask: OFF-LINK GROUNDING — question carried "
-                            "%d URL(s), %d grounding source(s), none of "
-                            "them the linked page. Any claim about the "
-                            "link's contents is unfounded. (q=%r)",
-                            len(_q_urls), len(_uris), question[:80])
-            except Exception:
-                pass
-            db.append_ask_interaction(
-                asker_display_name=asker_display_name,
-                asker_username=asker_username,
-                channel_name=channel_name,
-                question=question,
-                answer=full,
-                # Forensic logging: pass the FULL user_content (profiles
-                # + analyst + chat context + separator + question) so
-                # the log shows what Gemini actually saw, not just the
-                # last 5% of the prompt. Rendered in a collapsible
-                # <details> block in the markdown file.
-                full_prompt=user_content,
-                tool_trace=_ask_tool_trace,
-                raw_answer=_raw_answer_pre_clean,
-                meta=_ask_meta,
-            )
-        except Exception as e:
-            log.warning(f"ask-log append failed (non-fatal): {e}")
-
-        _embeds, _files = _build_ask_embeds(full, _code_images)
-        return (_embeds, _files) if _files else _embeds[0]
     except Exception as e:
         # One automatic retry on TRANSIENT server-side failures (5xx /
         # timeout) before surfacing anything to the user. These resolve

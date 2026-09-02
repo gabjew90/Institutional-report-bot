@@ -113,7 +113,7 @@ PRODUCTION_CONFIG = {
     "include_server_side_tool_invocations": True,
     "safety_all_block_none": True,
     # how many declared function tools ride alongside google_search
-    "function_tool_count": 10,
+    "function_tool_count": 11,  # 11 since 2026-09-01: lookup_earnings_slate
     # production declares google_search on every turn
     "search_on_every_fixture": True,
 }
@@ -376,10 +376,27 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         thinking_config=types.ThinkingConfig(
             thinking_budget=HARNESS_THINKING_BUDGET),
     )
+    # Mirror of production's deterministic slate prefetch (bot.py phase
+    # 2, 2026-09-01): a "who reports today" question gets the slate
+    # injected BEFORE the model chooses a tool, from the fixture's stub.
+    _prefetched: list[str] = []
+    from discord_bot.bot import _is_earnings_slate_question
+    if _is_earnings_slate_question(fx.get("question") or ""):
+        _stub = (fx.get("tool_stubs") or {}).get("lookup_earnings_slate") or {
+            "status": "error", "error": "fixture has no lookup_earnings_slate stub"}
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(text=(
+            "[EARNINGS SLATE " + chr(8212) + " system-fetched from the same feed as the calendar "
+            "sheet. This list is authoritative: answer from it, lead with the biggest "
+            "names, and do not substitute a search-engine list. session_confirmed=false "
+            "means the timing is not stamped yet, not that the company is absent. "
+            "status=error means the feed is down: say so.]" + chr(10)
+            + json.dumps(_stub, default=str)[:6000]))]))
+        _prefetched.append("lookup_earnings_slate")
+
     resp = client.models.generate_content(
         model=model, contents=contents, config=cfg)
 
-    tools_called: list[str] = []
+    tools_called: list[str] = list(_prefetched)
     grounded = False
     # The requested string is an alias and can move server-side without
     # notice (that is how a "-preview" build silently replaced the model
@@ -958,7 +975,7 @@ def main() -> int:
             _build_chat_search_tool, _build_user_profile_tool,
             _build_trade_log_tool, _build_market_price_tool,
             _build_options_chain_tool, _build_economic_calendar_tool,
-            _build_earnings_date_tool, _build_query_data_tool,
+            _build_earnings_date_tool, _build_earnings_slate_tool, _build_query_data_tool,
             _build_price_history_tool, _build_fantasy_league_tool,
         )
     except Exception as e:
@@ -985,7 +1002,8 @@ def main() -> int:
         _build_chat_search_tool(), _build_user_profile_tool(),
         _build_trade_log_tool(), _build_market_price_tool(),
         _build_options_chain_tool(), _build_economic_calendar_tool(),
-        _build_earnings_date_tool(), _build_query_data_tool(),
+        _build_earnings_date_tool(), _build_earnings_slate_tool(),
+        _build_query_data_tool(),
         _build_price_history_tool(),
         # Registered unconditionally, NOT gated on settings like
         # production gates it. Railway has SLEEPER_LEAGUE_ID set, so the
