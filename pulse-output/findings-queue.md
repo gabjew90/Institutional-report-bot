@@ -149,3 +149,57 @@ threshold today.
   theme's `facts_agreed` block is where "Jackson Hole" as a proper noun lives in
   the pipeline. Worth confirming next run that a fix restores the name, not just
   the theme's validation status.
+
+## 2026-09-02 — headless QC on 2026-09-02T14-08-29Z
+
+Full report: `pulse-output/qc-headless/2026-09-02T14-08-29Z.md`. STEP 7's
+self-review this run was again unusually thorough
+(`qc-reviews/2026-09-02T14-08-29Z.md`); I independently verified its core
+claims against `pulse-context/latest.json`'s `analyses_json` by direct grep
+rather than trusting the self-review, and found no disagreement on substance.
+Items below are new, or cross a confirmation threshold today.
+
+- **prompt-session** — "highest since January 2025" is a recurring wrong
+  anchor for the 10-year Treasury yield, now confirmed **2/2 consecutive
+  scheduled pulses** (2026-09-01, 2026-09-02) with a known-correct answer.
+  Today's corpus is unambiguous and internally consistent across two
+  independent PDFs that the correct anchor is **October 2023**
+  (`"US 10yr Treasury yield reached 4.80%, the highest level since October
+  2023"` — Deutsche Bank; corroborated by a second PDF referencing "the
+  October 2023 yield peak of 4.99%"). Nothing in either day's corpus contains
+  "January 2025" for this figure. 2026-08-31's pulse discusses the same yield
+  curve without this phrase at all, so it isn't a standing error — it started
+  2026-09-01 and repeated 2026-09-02 with a different yield reading each time
+  (4.78%/4.75% then 4.80%/4.79%). STEP 7's 2026-09-01 entry on this (filed as
+  "duplicate superlative attached to two different figures," proposing a
+  same-document cross-reference check) treated it as an unresolved two-way
+  conflict with no known-correct value. Having checked the corpus directly,
+  it isn't ambiguous — October 2023 is right, January 2025 is wrong, and the
+  fact it's the same wrong phrase two days running with different underlying
+  figures suggests EDIT/RECAP-authoring may be carrying phrasing from the
+  previous day's own published pulse rather than deriving it fresh from the
+  current corpus each run. Needs a DRAFT/AUDIT-side fix, not just a
+  same-document consistency check.
+- **deterministic-fixable** — `pulse-context/latest.json`
+  overwritten-by-later-run staleness bug, now confirmed **3/3** occurrences
+  (2026-08-31, 2026-09-01, 2026-09-02). Today's instance: `latest.json`'s
+  `dumped_at_utc` is `2026-09-02T18:14:32Z` / 55 PDFs / last-24h window, while
+  the archived pulse's own frontmatter shows `dumped_at_utc
+  2026-09-02T13:55:21Z` / 29 PDFs / since-last-pulse window — a ~4.5 hour-later,
+  differently-windowed dump. Practical cost today: RECAP's live price
+  percentages were unverifiable against this artifact (the stale snapshot's
+  numbers differ from the published ones by normal intraday drift, not error,
+  but I can't prove that without a timestamp-matched snapshot). Three
+  confirmed occurrences across three different sessions' QC reviews is past
+  "worth tracking" — either stop overwriting `latest.json` intraday, or point
+  QC tooling at the run-scoped `pulse-output/drafts/$TS.md` /
+  `pre-scrub/$TS.md` artifacts the way 2026-09-01's QC did as a workaround.
+- **observation** — `pulse-output/adversarial/2026-08-28T14-10-34Z.json` is
+  missing from disk even though that day's driver trail proves the gate ran
+  and recorded a result inline (`"0 hard findings, 4 soft (recorded)"` at
+  2026-08-28T14:33:28Z). Distinct from 2026-08-24 through 2026-08-26, where
+  `gates.adversarial` is `null` because the gate didn't exist in the routine
+  yet — 08-28 is a case where the result existed and the standalone verdict
+  file wasn't persisted. Low priority (one historical day, control-series
+  completeness only) but worth a one-line check in whatever writes that file
+  to confirm it isn't silently dropping writes on other days too.

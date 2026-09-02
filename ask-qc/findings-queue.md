@@ -66,3 +66,30 @@ branch)*
 ## 2026-08-31
 
 no findings
+
+## 2026-09-01
+
+- (open) 1. judgment (unsourced options-flow claim, 17:28:03 UTC turn) —
+  grounded turn answering "who reports earnings today" (2 sources, both
+  earnings-calendar/estimate sites) correctly lists the earnings slate,
+  then adds a third bullet in the same sourced-looking arrow format:
+  "Flow focus: heavy options positioning concentrating on DELL and GTLB
+  into the afternoon print." No options-chain tool fired, neither cited
+  source plausibly carries flow data, and nothing in the visible chat
+  window mentions DELL/GTLB options flow. Same fact-shape as the
+  2026-08-27 Jackson Hole and 2026-08-28 wrong-Fed-Chair findings —
+  confident invented specificity with nothing in the visible payload to
+  check it against. `scripts/validate_answer.py --tools "" --question
+  "who reports earnings today" --grounded` returns clean (only an
+  unrelated `repetition-glitch` "detector unavailable" notice from a
+  missing optional dependency, not a finding). Checked the closest
+  existing rule, class 4 `check_unforced_market_data` (fires on
+  "dealer positioning" et al. *with* a numeric figure attached) — this
+  claim has no figure attached to "positioning," so the class correctly
+  does not fire and can't be tightened to this shape without also
+  flagging legitimate qualitative color commentary. Queued as
+  prompt-session material: should a Type 1 arrow bullet that reads as
+  sourced-fact format but carries a qualitative claim (flow/positioning/
+  sentiment) with zero grounding be required to hedge or be dropped,
+  distinct from the calendar/rank-invention shape already queued from
+  08-27/08-28?
