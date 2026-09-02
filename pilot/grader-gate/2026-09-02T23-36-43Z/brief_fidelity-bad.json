@@ -1,0 +1,49 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "MSFT/META guide above consensus -> GS raises 2026 capex to $751B -> real constraint is supply (HBM/CoWoS sold out through 1H27, buyers pulling forward 2027 orders) not appetite -> because supply is the constraint, rising HBM prices (+18% into 1Q27) push capex guides higher -> cycle extends rather than peaks -> Buy NVDA $250 target -> invalidation: HBM contract prices fall for two straight months, breaking the pull-forward thesis and cutting 2027 guides -> Fed rate decisions explicitly not expected to matter",
+   "brief_chain": "MSFT/META guide above consensus -> GS raises 2026 capex to $751B -> mechanism is demand outrunning supply, buyers ordering sold-out HBM/CoWoS capacity to meet it -> because appetite is the constraint, rising HBM prices are a headwind that could cap guides -> cycle is closer to peaking than extending -> Buy NVDA $250 target -> invalidation: a Fed rate decision tightening financial conditions -> HBM pricing framed as secondary",
+   "distortions": [
+    {
+     "what": "Brief states appetite/demand is the binding constraint; source explicitly says the constraint is supply, not appetite",
+     "material": true,
+     "would_the_trade_change": "Yes - a demand-constrained read implies the capex cycle can cool if demand softens, while source's supply-lock read implies durability regardless of demand; this reverses the conviction basis for staying long the trade"
+    },
+    {
+     "what": "Brief frames rising HBM prices as a headwind capping capex guides and puts the cycle 'closer to peaking than extending'; source frames rising HBM prices as the reason guides keep rising and explicitly frames the cycle as extending rather than peaking",
+     "material": true,
+     "would_the_trade_change": "Yes - this is a direct stance-direction inversion (bullish 'extends' vs bearish 'peaking') on the same underlying variable, which changes conviction and whether a trader treats the current capex trajectory as durable or near its top"
+    },
+    {
+     "what": "Brief gives the invalidation condition as a Fed rate decision tightening financial conditions; source's invalidation is HBM contract prices falling for two consecutive months, and source explicitly states it does not expect a Fed rate decision to change the picture",
+     "material": true,
+     "would_the_trade_change": "Yes - a trader monitoring the brief's stated invalidation would watch Fed policy instead of HBM pricing trends, missing the source's actual falsifiable trigger entirely and acting on a condition the source explicitly disclaims"
+    },
+    {
+     "what": "Brief calls HBM pricing 'a secondary factor'; in the source it is the central mechanism driving both the capex raise and the invalidation",
+     "material": true,
+     "would_the_trade_change": "Yes - demoting the primary causal driver to secondary changes what a trader would prioritize monitoring for a change in the thesis"
+    }
+   ],
+   "material_count": 4,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 4,
+ "non_material_total": 0,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,59 @@
+{
+ "metric": 2,
+ "artifact": "fixture",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "The 10-year yield broke 4.40% on Friday for the first time since May.",
+   "why": "Exact match to source figure, date, and framing."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We think the move is a bear-steepener: the front end is anchored by a Fed on hold",
+   "why": "Source is JPMorgan's own note ('We'), so attributing this read to JPMorgan is correct."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We recommend paying 5s30s at 62bp with a stop at 48bp.",
+   "why": "The trade call belongs to JPMorgan ('We', the note's author), not Citi. Citi is described in the same source as holding the opposite read ('sees the break as a positioning flush and expects 4.40% to hold'), not as issuing this trade \u2014 the sentence misattributes JPMorgan's call to Citi."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "",
+   "why": "No mention of Goldman, a 4.75% year-end target, or fading foreign demand anywhere in the source document."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "A hot core PCE print on Thursday (consensus 0.3% m/m) would validate our steepener",
+   "why": "Correctly states 0.3% m/m as consensus (not a print) and correctly frames it as the conditional test for the steepener."
+  }
+ ],
+ "faithful": 3,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.6,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

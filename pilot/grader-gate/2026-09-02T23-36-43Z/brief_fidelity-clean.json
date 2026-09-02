@@ -1,0 +1,28 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "MSFT/Meta guide above consensus therefore GS raises 2026 hyperscaler capex to $751B therefore because the raise is driven by a supply lock (HBM/CoWoS sold out through 1H27, buyers pulling forward 2027 orders) rather than demand appetite, rising HBM prices (+18% into 1Q27) keep pushing capex guides higher therefore the cycle extends rather than peaks, with a two-consecutive-month HBM price decline as the condition that would break the pull-forward thesis and cut 2027 guides",
+   "brief_chain": "MSFT/Meta guide above consensus therefore GS raises 2026 hyperscaler capex to $751B therefore because the constraint is supply (HBM/CoWoS sold out through 1H27, buyers pulling forward 2027 orders), rising HBM prices (+18% into 1Q27) push capex guides higher therefore the cycle extends rather than peaks, with a two-consecutive-month HBM price decline as the invalidation that breaks the pull-forward argument and cuts 2027 guides",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 0,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

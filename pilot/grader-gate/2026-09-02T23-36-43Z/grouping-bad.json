@@ -1,0 +1,38 @@
+{
+ "metric": 1,
+ "total_cards": 6,
+ "fragmentation_sets": [
+  {
+   "subject": "hyperscaler AI capex spending growth",
+   "labels": [
+    "AI capex cycle",
+    "hyperscaler spending acceleration"
+   ],
+   "cards": 2
+  }
+ ],
+ "fragmented_mass_share": 0.33,
+ "mis_merges": [
+  {
+   "label": "Oil",
+   "subjects": [
+    "Hormuz supply-risk / Brent scarcity premium (oil)",
+    "rates curve trade: pay 5s30s at 62bp and the 4.40% level holding on a close"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The JPM 5s30s and Citi 4.40% cards are a rates/curve story with no oil content, so bundling them under 'Oil' would cause an editor to either miscast a rates theme as an oil theme or drop it entirely instead of selecting it as its own theme."
+  }
+ ],
+ "pass": false,
+ "notes": "AI capex cycle and hyperscaler spending acceleration are one subject split by wording. Oil mis-merges a genuine Hormuz/Brent card with two unrelated rates cards, which alone would change theme selection.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "d9ae7367c064"
+ },
+ "failed": false,
+ "problems": []
+}
