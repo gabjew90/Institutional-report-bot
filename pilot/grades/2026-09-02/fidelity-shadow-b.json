@@ -6,121 +6,121 @@
    "id": "s1",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt / 15087__international-market-intelligence-morning-briefing.txt",
-   "span": "We are moving to a Tactically Cautious / Neutral stance ... / INT MKT INTEL MONETIZATION: We are tactically cautious/neutral on Global Equities",
-   "why": "Both desks confirmed as tactically cautious/neutral; the 2-3 week window matches the US desk's stated outlook period."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
+   "span": "The fresh catalyst for the sell-off over the last 24 hours was the jump in energy prices... that meant equities took a decent hit as well",
+   "why": "DB's note frames the session as starting with an energy catalyst (Brent spike) and ending with equities down (S&P -0.71%, Stoxx -0.56%), matching the 'started in energy, ended in equities' framing."
   },
   {
    "id": "s2",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "positioning is not giving a clean read on market direction and history suggests a choppy next 3-4 weeks ... September screens as the worst performing month for the SPX followed by Q4 being the strongest quarter ... a spike in issuance in the two weeks post-Labor Day driving spreads wider which can pressure Equities",
-   "why": "All three claims (positioning, seasonality, credit supply/spreads) match the source's numbered rationale list verbatim in substance."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt; pilot-data/pilot/source-text/2026-09-02/15103__duttenhoefers-daily-2-sep-2026.txt; pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
+   "span": "the US escalated again, targeting Iranian air defense, radar and communications infrastructure around the Strait... Tehran fired missiles and drones at various sites across the region in response... Brent crude (+4.60%) was up to $94.65/bbl by the close... oil prices are further +0.67% higher trading at $95.28/bbl",
+   "why": "Every figure and both sides of the strike/response are individually confirmed across the three GS/DB sources."
   },
   {
    "id": "s3",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "[10%] NFP prints above 95k. SPX loses 50bp \u2013 1.25%",
-   "why": "Exact match on probability and index impact range."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+   "span": "Chris Wright said 17m barrels transited Monday. That number is heavily debated, but if flows really are normalizing anywhere near that level, oil could probably find its way lower.",
+   "why": "The oil-flow-normalization condition that resolves the argument is stated as Goldman's (Privorotsky's) own view."
   },
   {
    "id": "s4",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "AVGO Earnings \u2013 may prove spectacular and fail to drive meaningful stock appreciation in AI / Memory / Semis.",
-   "why": "Direct match; earnings after the close today confirms \"tonight.\""
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+   "span": "higher commodity inflation is now pulling the front end with it as the market prices a greater chance the Fed actually responds. That matters. You potentially have a supply shock hurting growth at the same time as the Fed is pushed toward tightening.",
+   "why": "Same GS note ties unresolved energy prices directly to Fed policy path, supporting the conditional."
   },
   {
    "id": "s5",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "15087__international-market-intelligence-morning-briefing.txt / 15095__us-market-intelligence-morning-briefing.txt",
-   "span": "We continue to think that a multi-week factor rotation is still in the cards... Hence, we stay hedged via options on momentum, but we are minded to buying dips. / Momentum (JPMPURE Index) is down more than 21%... 'Classic' Momentum... down nearly 34% from its June ATH",
-   "why": "The hedge/rotation-duration claim is sourced to the international desk, but the causal premise (\"crowded side liquidated while the index barely moved\") isn't stated by either desk \u2014 it splices the US desk's Momentum-drawdown stat into a causal claim attributed to the international desk's reasoning, which the source never makes."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+   "span": "Momentum (JPMPURE Index) is down more than 21% from its June ATH and 'Classic' Momentum (JPPQMO Index) is down nearly 34% from its June ATH. These moves fall outside the typical drawdown ranges of 10-15%.",
+   "why": "Both figures and the 'deeper than usual' framing match JPM's note exactly."
   },
   {
    "id": "s6",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "Asset Managers ... materially cut longs in UST Long Bonds (-2.1z). Leveraged Funds reduced shorts in NDX (+1.9z)",
-   "why": "Figures and directions match exactly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15117__lack-of-consistent-direction-the-complete-flows-technicals-a.txt",
+   "span": "\"Lack Of Consistent Direction\": The Complete Flows, Technicals And Positioning Market Rundown... there is some confusion how hedge funds should be positioning",
+   "why": "Note's own title and framing describe positioning data giving no clean directional signal."
   },
   {
    "id": "s7",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "current YTD default rates at 2.63% for HY bonds and 2.33% for Leveraged Loans... The 25-year average default rates for HY and LL are 3.2% and 2.9%",
-   "why": "Current default rates running below long-run averages supports the \"benign\" characterization; opinion-shaped but grounded in the reported figures."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15094__sell-sell-or-sell.txt",
+   "span": "Vol-control equity allocations at a maxed out 100th percentile. Deutsche Bank",
+   "why": "Figure and bank attribution (Deutsche Bank) match exactly; 'nothing left to add' is a reasonable read of 'maxed out'."
   },
   {
    "id": "s8",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "current YTD default rates at 2.63% for HY bonds and 2.33% for Leveraged Loans... The 25-year average default rates for HY and LL are 3.2% and 2.9%, respectively.",
-   "why": "Exact match on all four figures."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15087__international-market-intelligence-morning-briefing.txt; pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
+   "span": "The muted moves in VIX and downside skew are somewhat surprising, although realized volatility remains low / (VIX @ 16.34 // +1.42)",
+   "why": "VIX level from DB's data table and the 'surprising, muted' framing sourced to JPM ('International Market Intelligence')."
   },
   {
    "id": "s9",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "For YE26 he forecasts default rates of 2.25% for both HY bonds and LL. For YE27, he sees HY bonds having a 2.75% default rate and 4.5% for LL.",
-   "why": "Exact match, including analyst name Nelson Jantzen and all four forecast figures."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+   "span": "AI server demand remains through the roof... This remains the fundamental counterweight to the cycle/rates concerns.",
+   "why": "Near-verbatim match: GS explicitly calls Dell/hardware strength the counterweight to rates concerns."
   },
   {
    "id": "s10",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "As hedges we like shorting Credit ETFs and buying VIX products. Until we get through the Fed Meeting on Sep 16",
-   "why": "Exact match on hedge composition and the Sep 16 Fed meeting anchor."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15099__gs-us-daily-download-2-sep-2026.txt",
+   "span": "DELL's F2Q27 EPS of $7.04 beat GS/consensus/guidance on stronger than expected revenue in ISG (+89% yoy v. guidance for 75% growth)",
+   "why": "EPS figure, beat scope (GS/consensus/guidance), and the 89% vs 75% ISG (server/storage) growth all match exactly."
   },
   {
    "id": "s11",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt / 15087__international-market-intelligence-morning-briefing.txt",
-   "span": "WTI +28bps at $90.47, NatGas +148bps to $2.95 ... Equities will continue to struggle until crude / rates stabilize. / We raise our Brent and TTF price assumption",
-   "why": "All figures match; \"European gas\" corresponds to TTF, the European gas benchmark JPM's international desk raised."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15103__duttenhoefers-daily-2-sep-2026.txt",
+   "span": "our GS EU Nat Gas Consumers basket is composed of European companies expected to underperform with rising natural gas prices... on the long side, we highlight our GS EU Power Price Sensitive Utilities basket (GSXEPWPR Index, 16 stocks)",
+   "why": "Basket composition, direction (underperform vs. gain), and the 16-stock utilities count all match."
   },
   {
    "id": "s12",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "through Aug 20, the MTD spending was +5.4% YoY vs. +4.4% in July",
-   "why": "Exact match."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+   "span": "hard to see Europe sustainably outperforming while that persists... I think this is becoming a meaningful tail risk\u2026 the conflict increasingly spilling into European infrastructure, aviation and security policy.",
+   "why": "Author is GS Equity Sales; wording on sustainable outperformance and the infrastructure/aviation tail risk matches closely."
   },
   {
    "id": "s13",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "Upper Income +6.9% YoY vs. 5.7% in July; (ii) Middle Income +7.3% YoY vs. 6.2% in July; and (iii) Lower Income +4.8% YoY vs. +4.3% in July",
-   "why": "All three income cohorts accelerated YoY, supporting that the spending pickup wasn't confined to upper-income households."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
+   "span": "(Gold^ @ 4306 // -3.47%)",
+   "why": "Level and percentage move match exactly; the 'gold falling despite war escalation' framing is a reasonable, non-fact-altering editorial gloss on the same data."
   },
   {
    "id": "s14",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
-   "span": "a recession is highly unlikely to manifest over the next few quarters, but Warsh's comments now make Sep a live meeting ... market fundamentals (econ & earnings) remain intact ... These prints are weaker than expected but not enough to change one's investment hypothesis. The economy remains in expansion mode",
-   "why": "Recession framing, live September meeting, and weaker-but-still-expansionary manufacturing all match; \"positioning event vs economic one\" reasonably synthesizes the source's own framing that fundamentals remain intact."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "We continue to think this is an opportunity to add again, looking for debasement trade to resume.",
+   "why": "The 'add on the selloff, debasement trade to resume' view is J.P. Morgan's Global Markets Strategy team (Mislav Matejka, J.P. Morgan Securities plc), not Morgan Stanley. No Morgan Stanley document exists in the day's source set. Bare 'Morgan's strategy team' reads as Morgan Stanley to a market-literate reader, misattributing the call to the wrong bank."
   },
   {
    "id": "s15",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15095__us-market-intelligence-morning-briefing.txt / 15087__international-market-intelligence-morning-briefing.txt",
-   "span": "see the next 2-3 weeks being choppy ... Are we heading towards an attractive Q4 setup? Most likely.",
-   "why": "Both desks frame the caution as a bounded tactical window ahead of an expected improvement, supporting \"has an expiry date.\""
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+   "span": "keep an eye on gold to see if $4,300 acts as support",
+   "why": "Level and 'support' framing match JPM's note exactly."
   }
  ],
  "faithful": 14,

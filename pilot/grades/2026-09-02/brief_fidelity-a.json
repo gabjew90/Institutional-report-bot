@@ -4,75 +4,111 @@
   {
    "id": "d2",
    "tier": "top",
-   "bank": "J.P. Morgan",
-   "source_chain": "Yields/oil-driven risk-off plus debated bond-sell-off drivers push JPM Market Intel tactically cautious/neutral on equities and to take profit on gold, but industrial-growth forecasts, falling Asia positioning, resumed EM inflows and Korean buybacks keep the desk's medium-term Q4 setup constructive, long US/Asia vs Europe with hedges.",
-   "brief_chain": "Yields/oil in charge and debated bond-sell-off drivers turn the desk tactically cautious/neutral on equities and prompt a gold profit-take, but the desk still expects an attractive Q4 setup on 3% industrial growth, falling Asia positioning, EM inflows and Korean buybacks, staying long US/Asia vs Europe with supercycle longs and index hedges.",
+   "bank": "Goldman Sachs",
+   "source_chain": "US strikes Iranian air-defense/radar/comms near Hormuz while oil already rising intraday, Iran retaliates against military not energy assets, so crude/distillates/gas all push higher -> commodity inflation now pulls the front end (not just term premium), so a supply shock hits growth just as Fed odds rise, pressuring multiples -> Europe most exposed (gas spike + spreading sub-NATO-threshold attacks, a real tail risk) -> AI hardware (Dell beat, Palo Alto raised guidance, Broadcom tonight) is the offsetting strength -> path forward hinges on energy: falling crude/gas/products lets yields stabilize and risk recover (if NFP/CPI cooperate); continued energy strength makes sustained upside much harder.",
+   "brief_chain": "Same chain: Iran strikes/retaliation drive energy higher -> energy inflation now hits the front end and pressures multiples via tighter Fed policy -> Europe most exposed via gas + spreading attacks -> hardware (Dell/Palo Alto/Broadcom) offsets -> outlook conditional on energy falling (recovery, NFP/CPI-dependent) vs. rising (harder upside).",
    "distortions": [
     {
-     "what": "Brief's 'even with near-term caution' pulls a phrase from the IN DETAIL Asia-equity-strategy subsection ('cautious over next few weeks') into the page-2/'20 seconds' Q4-setup summary sentence, which doesn't itself hedge that way.",
+     "what": "Brief omits the OpenAI Astra / Chain-of-Thought monitorability discussion entirely.",
      "material": false,
-     "would_the_trade_change": "No \u2014 the underlying call (Asian equities on an upward medium-term path) is identical either way."
+     "would_the_trade_change": "No \u2014 it's a side commentary on AI oversight, not a market call or level."
     },
     {
-     "what": "Brief's 'index hedges added' generalizes what the source specifies as EU-specific hedging ('adding cheap index hedges' tied to EU equities on positioning/regime grounds, and 'downside EU Index hedges' in the option-hedges list) into an unqualified clause attached to the Longs/regional-preference sentence.",
+     "what": "Brief drops the '17m barrels transited Monday' debate and the note's musing on US reflexivity/possible de-escalation window.",
      "material": false,
-     "would_the_trade_change": "No \u2014 the regional stance (long US/Asia vs. hedged EU) is unchanged; only which index gets hedged is left unspecified."
+     "would_the_trade_change": "No \u2014 this is color on why oil might ease, but the brief's conclusion already states the same conditional (oil down -> recovery) without it."
+    },
+    {
+     "what": "Brief omits the closing line reiterating Nvidia/Dell fundamentals and the heating-oil/10yr correlation side-note.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 redundant with the hardware paragraph already retained; the correlation note is descriptive, not a call."
     }
    ],
    "material_count": 0,
-   "non_material_count": 2
+   "non_material_count": 3
   },
   {
-   "id": "d1",
+   "id": "d6",
    "tier": "top",
-   "bank": "J.P. Morgan",
-   "source_chain": "Warsh's full-employment/inflation-too-high read makes the Sep 16 FOMC meeting live, so CPI (Sep 11) outranks NFP and a strong NFP becomes bad news via higher yields; positioning, post-Labor-Day credit issuance, September seasonality and an outsized momentum drawdown stack toward chop, but intact fundamentals (recession unlikely, strong earnings, tolerable Fed hikes) argue against a real pullback, so the desk cuts net longs and goes dollar-neutral via +NDX/-RTY, Mag7 over AI/Memory/Semis, short credit/long VIX hedges.",
-   "brief_chain": "Warsh's post-Jackson Hole full-employment/high-inflation view makes Sep 16 live, so CPI outranks NFP and NFP inverts into good-news-is-bad-news; positioning, issuance, seasonality and momentum-drawdown signals stack bearish-for-chop, but intact fundamentals (no recession, strong earnings, tolerable hikes) mean the call is chop not a dramatic pullback, arguing for reduced net longs and a dollar-neutral approach via +NDX/-RTY, Mag7 over AI/Memory/Semis, short credit/long VIX hedges.",
+   "bank": "Goldman Sachs",
+   "source_chain": "US strikes on Iran + Tehran missile response drive risk-off: S&P -71bps to 7631, Brent to $95, US/Bund 10yr to 4.80%/3.34%, Japan 10yr >3% (first since 1996), Fed Sept-hike odds to 66% -> European gas >\u20ac70/MWh (above 2022) supports short gas-consumers/long power-price-sensitive-utilities basket -> Dell beats and raises F2027 guidance (AI server rev to $74bn from $60bn, total rev to $192bn), GS raises F2027-29 EPS 38% and keeps Buy $425 PT -> GS stays constructive on Europe (14.5x, 5.3% FCF yield) and upgrades Deutsche Bank to Buy on ~300bps ROTE improvement -> secondary: BTC ETF inflow streak ends, CLARITY Act floor vote 15 Sept.",
+   "brief_chain": "Same chain and same figures throughout, correctly preserving that DB is an upgrade (not a reiteration) and that Dell's guidance raise (not just the beat) drives GS's EPS increase and price target.",
    "distortions": [
     {
-     "what": "Brief lists 'recession unlikely' and 'two 25bp hikes wouldn't derail the bull market' together as one 'fundamentals held intact' block; in the source these come from two different passages (the tactical-view (i)-(vi) list and a separate IB-blast quote in the Equity & Macro Narrative section) that aren't presented as one enumerated list.",
+     "what": "Brief omits the mid-term election Polymarket odds (Democratic sweep probability).",
      "material": false,
-     "would_the_trade_change": "No \u2014 both statements are genuine JPM Market Intel calls in the same note; only their internal grouping is a synthesis choice."
+     "would_the_trade_change": "No \u2014 unrelated side item, not tied to any equity/rates call in the note."
+    },
+    {
+     "what": "Brief omits the Anthropic cloud-computing deal figures (Lambda, Nscale, Fluidstack, SpaceX).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 tangential data point, not part of the note's trade calls."
+    },
+    {
+     "what": "Brief drops the chip-pricing bull/bear debate and the Quote/Stat/Chart of the Day.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 supporting color, compression loss only."
+    },
+    {
+     "what": "Brief drops the specific \u20ac43.75 Deutsche Bank price target while keeping the Buy upgrade.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the material element (rating change to Buy) is preserved; only the numeric target is dropped."
     }
    ],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 4
   },
   {
    "id": "d3",
-   "tier": "rest",
-   "bank": "BofA (via The Market Ear)",
-   "source_chain": "Systematic positioning is already high, not just elevated, leaving little incremental buying capacity in ANY market direction: BofA models selling $163bn in a down market, $1bn if flat, and still $9bn even in an up market; DB shows vol-control allocations maxed at the 100th percentile; Goldman corroborates (modest buying only if markets rise, violent unwind if they fall, systematic length at the upper end of its range); buybacks near peak just as the September blackout window expands, pulling away the other main buying source; net read is no incremental buying support in any scenario, compounded by a strategist's 'epic' vol-collapse loss warning.",
-   "brief_chain": "Systematic positioning already high (not merely elevated) drives an asymmetric flow picture: BofA models $163bn sold in a down market versus only $9bn bought in an up market; DB shows vol-control allocations maxed at the 100th percentile; Goldman corroborates the asymmetry with systematic length at the upper end of its range; the buyback blackout removes the other main buying source; net read is two-sided flow risk skewed bearish, compounded by a strategist's vol-collapse loss warning.",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Renewed US-Iran strikes near Hormuz push Brent +4.60% to $94.65 and gas to a 3-year high (\u20ac72.22/MWh) -> higher energy feeds inflation/rate expectations, sending bund/OAT/gilt/UST/JGB yields to fresh multi-year or decades highs -> rising nominal/real yields hit equities (S&P -0.71%, Stoxx -0.56%), Asia extends losses -> Fed pricing turns more hawkish (64bps by June 2027, 69% Sept-hike odds vs 27% on Aug 17), reinforced by Governor Barr -> softer US data (ISM 54.6, JOLTS 7.271m, quits 1.9%) only temporarily eases the selloff -> Euro Area CPI in line (3.3%, core 2.4%) but ECB's Simkus stays hawkish -> RBNZ hikes 25bps to 2.75%, strong Australian GDP lifts RBA hike bets.",
+   "brief_chain": "Same chain, same figures, same causal order (energy -> yields -> equities -> Fed hawkishness -> data pause -> Europe/Antipodean hikes), with no numeric alterations.",
    "distortions": [
     {
-     "what": "Brief states BofA's model shows $9bn 'bought in an up market'; the source states the model shows $9bn SOLD in an up market ('sell $9bn in an up market') \u2014 the article's entire thesis ('Sell sell or sell') is that systematics are projected to sell in all three scenarios, down, flat, and up, not just in a downturn.",
+     "what": "Brief omits Bessent's comments that Hormuz will be 'bypassed' in two years and his sanctions-related remarks (BVI accounts, airline leasing).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 a longer-horizon aside, doesn't affect today's risk-off read or the yield/equity levels cited."
+    },
+    {
+     "what": "Brief omits UK gilt fiscal-buffer commentary, final PMI revisions, and BOJ Governor Ueda's remarks.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 supporting detail, compression loss only."
+    },
+    {
+     "what": "Brief omits the personal holiday anecdote and day-ahead calendar list.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 irrelevant to the market thesis, correctly dropped."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d9",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "Systematic positioning is high with little incremental buying capacity left: BofA models systematics as net SELLERS in every scenario (sell $163bn down, sell $1bn flat, sell $9bn even in an up market); DB shows vol-control allocations maxed at the 100th percentile; GS corroborates with modest additional buying only if markets rise but a violent unwind if markets fall, with current systematic length ($146.5bn) at the upper end of its 1-year range -> separately, vol has collapsed to 'epic' compressed levels (McElligott), raising loss risk -> buybacks near peak just as the September blackout window expands, removing another buyer -> net message: incremental buying support is drying up from multiple directions just as vol is unusually compressed, a latent September unwind risk.",
+   "brief_chain": "Systematic flows/buyback support becoming a headwind amid vol compression; states BofA sells $163bn in a down market but is BOUGHT $9bn in an up market; DB at 100th percentile; GS modest buying up/violent unwind down with length at upper end of range; McElligott calls vol collapse epic; buybacks near peak amid expanding blackout window.",
+   "distortions": [
+    {
+     "what": "Brief states BofA's model shows systematics '$9bn bought in an up market,' but the source has BofA modeling systematics as net SELLERS in an up market too (sell $9bn) \u2014 the note's whole point ('Sell sell or sell') is that BofA sees selling in all three scenarios, only the size varies.",
      "material": true,
-     "would_the_trade_change": "Yes \u2014 the source shows zero incremental buying support at any market direction (a uniformly bearish flow signal), while the brief implies systematics still buy into strength, which reads as normal two-sided asymmetry and would lead a trader to expect dip-buying support on a rally that the source says doesn't exist."
+     "would_the_trade_change": "Yes \u2014 reading BofA as a net buyer in a rising market removes the one-sided/asymmetric selling risk that is the source's central thesis, understating how thin the offsetting-buyer support actually is if the tape rallies."
     },
     {
-     "what": "Brief adds an interpretive clause to the DB 100th-percentile data point ('leaving no room for further buying') that isn't in the source caption, which states only the percentile figure.",
+     "what": "Brief's framing that the asymmetry is 'driven by positioning already being high rather than merely elevated' garbles the source's actual point, which is that the problem isn't the level of positioning per se but the lack of remaining incremental buying capacity.",
      "material": false,
-     "would_the_trade_change": "No \u2014 a maxed-out 100th percentile allocation implies no further buying room regardless of whether the brief states it explicitly."
-    },
-    {
-     "what": "Brief softens the McElligott quote from 'major trading losses may soon surface' to 'warns of possible trading losses,' dropping 'major' and downgrading 'may soon surface' to 'possible.'",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the strategist's warning is a tangential aside in both versions, not load-bearing for the systematic-flow thesis."
-    },
-    {
-     "what": "Brief attaches the source's general framing sentence ('positioning already high, not just elevated') as the specific causal explanation for the $163bn/$9bn asymmetry, where the source states it as a standalone framing line before introducing the BofA figures.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 same underlying mechanism (high positioning limits incremental buying), only the attribution is tightened."
+     "would_the_trade_change": "No \u2014 imprecise paraphrase, but it still lands on the correct overall conclusion (no room left to buy)."
     }
    ],
    "material_count": 1,
-   "non_material_count": 3
+   "non_material_count": 1
   }
  ],
  "material_total": 1,
- "non_material_total": 6,
- "audited": 3,
+ "non_material_total": 11,
+ "audited": 4,
  "dim": "brief_fidelity",
  "agent": "a",
  "artifact": "",

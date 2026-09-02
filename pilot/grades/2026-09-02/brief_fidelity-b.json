@@ -4,100 +4,101 @@
   {
    "id": "d2",
    "tier": "top",
-   "bank": "J.P. Morgan",
-   "source_chain": "APAC/US/EU risk-off with yields+oil driving a debated bond sell-off (geopolitics, fiscal, AI issuance crowding-out, inflation, buyback scepticism, hawkish BOJ repricing) therefore desk turns tactically cautious/neutral on equities and takes profit on gold but plans to re-enter therefore despite near-term caution, manufacturing strength + falling Asia positioning + EM inflows + Korea buybacks therefore still an attractive Q4 setup, staying long US/Asia vs EU with supercycle core longs and EU downside index hedges.",
-   "brief_chain": "Same risk-off setup and cautious pivot therefore attractive Q4 setup expected on manufacturing strength and improving Asia positioning/EM flows therefore long US/Asia vs EU with supercycle longs, gold position shown as profit-taken with no mention of the plan to re-enter, generic 'index hedges added'.",
+   "bank": "Goldman Sachs",
+   "source_chain": "US strikes Iranian air defense/comms near Hormuz while oil already rising in market hours, Iran hits military not energy targets, so crude/distillates/gas break out; that makes commodity inflation a front-end (not just term-premium) story, so a supply shock hits growth just as the Fed is pushed toward tightening, pressuring multiples; Europe is most exposed via gas plus spreading sub-NATO-threshold attacks; hardware (Dell/Broadcom) is the offsetting strength; outcome hinges on whether crude/gas/product prices fall (stabilization, conditional on NFP/CPI) or keep rising (sustained pressure).",
+   "brief_chain": "Same chain: Iran strikes near Hormuz during already-rising oil, Iran retaliates against military not energy, crude/distillates/gas rise; front-end pricing shift plus growth-vs-tightening squeeze pressures multiples; Europe most exposed via gas and spreading Russia-linked attacks; hardware (Dell, Palo Alto, Broadcom) is the offset; conclusion conditional on energy falling vs. rising, with NFP/CPI as the qualifier.",
    "distortions": [
     {
-     "what": "Source says JPM 'took profit on gold but look to re-enter' (Option hedges bullet); brief states only 'took profit on gold', dropping the stated intent to re-enter.",
-     "material": true,
-     "would_the_trade_change": "Yes \u2014 a reader sees JPM as having exited gold conviction entirely rather than tactically stepping aside with a stated plan to re-buy, which changes the conviction level on the gold position."
+     "what": "Brief folds Palo Alto Networks' guidance raise into the 'hardware' offset cluster; source lists it under a separate AI/Cyber Security section discussing Chain-of-Thought monitoring risk, which the brief omits entirely.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the fact (PANW raised guidance) is preserved correctly; only its topical grouping and the unrelated alignment/monitorability tangent are dropped."
     },
     {
-     "what": "Brief cites Asia positioning falling '75th percentile to the 40th', matching the note's page-2 top-line summary, while the note's later 'IN BRIEF' detail section separately states '75th percentile to the 32nd' over a different date window.",
+     "what": "Brief renders the conclusion as 'risk can recover' vs. source's more hedged 'risk has a path to recover'.",
      "material": false,
-     "would_the_trade_change": "No \u2014 both figures support the same directional read (positioning cooled sharply, medium-term bullish), and the brief did not invent either number; it reflects a pre-existing inconsistency inside the source itself."
-    },
-    {
-     "what": "Source poses the Q4 setup as a hedged question ('Are we heading towards an attractive Q4 setup? Most likely.'); brief states it flatly as something the desk 'expects'.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 direction and conviction are unchanged, just phrasing tightened from a qualified rhetorical question to a declarative statement."
-    },
-    {
-     "what": "Source ties the 155-165 USD/JPY range to 'no major change in market expectations for Fed policy'; brief drops that conditionality and states the range as tied only to quarterly BOJ hikes.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the specific range and hike cadence are both preserved correctly; only a secondary caveat about the Fed path is dropped."
-    },
-    {
-     "what": "Source's 'downside EU Index hedges' (an EU-specific tactical addition) becomes generic 'index hedges added' in the brief.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the regional preference (long US/Asia vs EU) and the fact that hedges are being added are both preserved; only the EU-specific qualifier is compressed away."
+     "would_the_trade_change": "No \u2014 same conditional invalidation (oil/gas/products falling, NFP/CPI cooperating) is preserved verbatim in substance."
     }
    ],
-   "material_count": 1,
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d6",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Risk-off tape (S&P -71bps, Brent to $95, yields up, 66% Sep hike odds) driven by Iran headlines; rising TTF gas supports a short gas-consumers-basket / long power-price-sensitive-utilities pair trade; Dell beats and raises F2027 AI-server and total revenue guidance, GS lifts F2027-29 EPS 38% and keeps Buy $425 PT; GS stays constructive on Europe (14.5x, 5.3% FCF yield) with sector OW/UW calls and upgrades DB to Buy (\u20ac43.75 PT) on a ~300bps 3yr ROTE improvement; sidebar on BTC ETF flows and the CLARITY Act vote.",
+   "brief_chain": "Same top-line risk-off drivers and levels; same short-gas-consumers/long-utilities basket trade; same Dell beat-and-raise, 38% EPS lift, Buy $425 PT; same constructive Europe stance and DB upgrade to Buy on the ROTE thesis; same BTC/CLARITY Act sidebar.",
+   "distortions": [
+    {
+     "what": "Brief drops GS's explicit sector Overweight list (Technology, Banks, Defence, Telecoms, Renewables), Underweight list (Autos, Chemicals, Travel & Leisure, Healthcare), and the HALO pair trade.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are separate, secondary calls not tied to the note's lead themes (gas basket, Dell, DB); omitting them doesn't alter any call the brief does make."
+    },
+    {
+     "what": "Brief omits the DB price target (\u20ac43.75) while keeping the Buy upgrade and ROTE rationale.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 direction and rationale of the call are intact; only the specific target level is missing."
+    },
+    {
+     "what": "Brief omits the Anthropic cloud-computing deal item (Lambda/Nscale/Fluidstack/SpaceX) entirely.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 unconnected side item, not part of any call in the note."
+    },
+    {
+     "what": "Brief omits the memory/HBM chip-pricing debate, quote of the day, and stat of the day.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 supporting color, not a call or figure the brief's chain depends on."
+    }
+   ],
+   "material_count": 0,
    "non_material_count": 4
   },
   {
-   "id": "d1",
+   "id": "d3",
    "tier": "top",
-   "bank": "J.P. Morgan",
-   "source_chain": "Warsh flags full employment / inflation too high therefore Sep 16 FOMC is live therefore CPI (Sep 11) outranks NFP (Sep 4), NFP becomes a good-news-is-bad-news setup therefore positioning gives no clean read, post-Labor Day issuance widens spreads, September is seasonally the worst SPX month before a strong Q4, Momentum crashed outside its normal drawdown range therefore fundamentals (econ/earnings) still intact, two 25bp hikes wouldn't derail the bull therefore conclusion is chop not a dramatic pullback, arguing reduced net longs and potentially a $-neutral or market-neutral approach therefore monetization menu: +NDX/-RTY, Mag7 over AI/Memory/Semis, short credit ETFs, long VIX.",
-   "brief_chain": "Same causal chain through the fundamentals-intact and chop conclusion, but the brief states the desk's book construction as a definitive 'dollar-neutral approach' rather than the source's tentative either/or between dollar-neutral and market-neutral.",
+   "bank": "Deutsche Bank",
+   "source_chain": "Renewed US-Iran strikes near Hormuz push Brent +4.60% to $94.65 and EU gas to a 3yr high of \u20ac72.22/MWh; that lifts DM yields to multi-year highs (bund, OAT, gilt, Treasury, JGB) and hits equities globally; Fed pricing turns more hawkish (64bps by June 2027, 69% Sept-hike odds vs. 27% on Aug 17), reinforced by Governor Barr; softer US data (ISM 54.6, JOLTS, quits) only briefly pauses the selloff; in Europe, sticky core CPI (2.4%) keeps ECB's Simkus hawkish; RBNZ hikes 25bps and strong Australian GDP firms up RBA hike bets.",
+   "brief_chain": "Same causal chain end to end: Iran strikes drive oil/gas higher, which drives multi-year DM yield highs and a global equity selloff, hawkish Fed pricing reinforced by Barr, softer US data only a temporary pause, sticky Euro Area core CPI keeping the ECB hawkish via Simkus, RBNZ hike and strong Australian GDP firming RBA bets.",
    "distortions": [
     {
-     "what": "Source: 'reducing net-longs and potentially adopting a $-neutral or market-neutral approach' (tentative, two named alternatives). Brief: 'arguing for reduced net longs and a dollar-neutral approach' \u2014 drops 'potentially' and the market-neutral alternative, presenting one specific instrument choice as the firm recommendation.",
-     "material": true,
-     "would_the_trade_change": "Yes \u2014 dollar-neutral and market-neutral (beta-neutral) are different portfolio constructions; a trader following the brief builds a different hedge than one following the source's actual hedged either/or guidance."
+     "what": "Brief drops the personal/holiday narrative opener, Bessent's Hormuz-bypass and Iran-sanctions remarks, UK gilt/fiscal-buffer and budget-date detail, JGB specifics, final PMI revisions, and the day-ahead data/earnings calendar.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 none of these change the stance, the Fed/ECB pricing calls, or the invalidation; they're secondary color and calendar housekeeping."
     },
     {
-     "what": "Source's six-item 'US MKT INTEL VIEW' list includes AVGO Earnings as a sixth input; brief's 'four further inputs' enumerates only positioning, credit spreads, seasonality, and Momentum.",
+     "what": "Brief states Fed pricing as a flat '64bps of hikes by June 2027' where source frames it as a same-day move ('up +5.1bps on the day to 64bps').",
      "material": false,
-     "would_the_trade_change": "No \u2014 AVGO is still covered elsewhere in the brief as its own line item ('AVGO earnings preview'), so nothing is lost, only re-grouped."
-    },
-    {
-     "what": "Source: earnings 'likely to print very strongly the next 2 quarters, or longer'; brief: 'earnings should print strongly for two more quarters', dropping 'or longer'.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the core two-quarter forecast is intact; only an open-ended upside qualifier is trimmed."
-    },
-    {
-     "what": "Source's Aug 31 Monetization Menu also names Large-Cap Banks, Consumer Discretionary, Healthcare and a Software note; brief keeps only +NDX/-RTY, Mag7 over AI/Memory/Semis, and the credit/VIX hedges.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the headline trades are preserved verbatim; the dropped names are secondary, lower-conviction mentions in the source itself."
+     "would_the_trade_change": "No \u2014 end-state figure (64bps, 69% Sept odds) is preserved correctly; only the day-over-day delta framing is compressed away."
     }
    ],
-   "material_count": 1,
-   "non_material_count": 3
+   "material_count": 0,
+   "non_material_count": 2
   },
   {
-   "id": "d3",
+   "id": "d9",
    "tier": "rest",
-   "bank": "BofA (compiled by The Market Ear)",
-   "source_chain": "BofA models systematics net-selling in all three scenarios \u2014 sell $163bn down, sell $1bn flat, sell $9bn even in an up market \u2014 because there is no incremental buying room left (not simply because positioning is high) therefore DB shows vol-control at a maxed 100th percentile therefore GS corroborates: modest buying if up, violent unwind if down, GS length at $146.5bn near the top of its 1-year range therefore McElligott calls the vol collapse 'epic' and warns of losses therefore buybacks near peak just as the September blackout expands, removing another buying source.",
-   "brief_chain": "Same chain except the BofA up-market data point is flipped to '$9bn bought in an up market' instead of sold, and the causal driver is restated as positioning 'already being high' rather than the source's explicit point that high positioning alone isn't the problem.",
+   "bank": "The Market Ear",
+   "source_chain": "CTA/vol-control positioning is already high and vol-control equity allocations sit at the 100th percentile, so there is little room for further buying; BofA models systematic strategies selling in all three scenarios \u2014 $163bn sold in a down market, $1bn sold if flat, and $9bn sold even in an up market; GS's own one-month conditional projections agree (modest buying if up, violent unwind if down) and GS's current systematic length ($146.5bn) sits at the upper end of its 1yr range; McElligott calls the vol collapse 'epic' and flags possible trading-loss risk; buyback support is near its peak just as the September blackout window expands, removing a major incremental buyer \u2014 net message: selling risk dominates and there's little genuine buying support left, even on the upside.",
+   "brief_chain": "Same setup (positioning high, vol-control maxed at 100th percentile) but states BofA shows systematics buying $9bn in an up market, then GS's conditional projections (modest buying if up, violent unwind if down) and current length at the upper end of the 1yr range, McElligott's 'epic' vol-collapse warning, and buyback fading into the September blackout.",
    "distortions": [
     {
-     "what": "Source: BofA models systematics selling $9bn even 'in an up market'. Brief: 'only $9bn bought in an up market' \u2014 inverts the sign of the up-market flow.",
+     "what": "Brief reports BofA's up-market figure as '$9bn bought in an up market'; the source states BofA modeled systematics selling $9bn even in an up market ('sell $163bn in a down market, sell $1bn if markets are flat, and sell $9bn in an up market') \u2014 the brief inverts sell to buy for that scenario.",
      "material": true,
-     "would_the_trade_change": "Yes \u2014 the source's entire thesis is that systematics are net sellers in every scenario including up moves, i.e. no incremental buying support on a rally; reporting it as $9bn bought instead reverses that and implies rally support that the source explicitly says doesn't exist."
+     "would_the_trade_change": "Yes \u2014 the note's whole thesis ('Sell sell or sell') is that systematic flow is a net seller across down, flat, and up scenarios, i.e. no scenario provides real buying support; the brief's inversion turns the up-market case into a (weak) buy signal, which softens the flow-headwind read a reader would act on."
     },
     {
-     "what": "Source: 'The problem isn't simply that systematic positioning is high. It's that there isn't much incremental buying left.' Brief: 'an asymmetry driven by positioning already being high rather than merely elevated' \u2014 restates the causal driver as elevated positioning, the exact framing the source disclaims.",
+     "what": "Brief renders McElligott's warning as 'possible trading losses' vs. source's 'major trading losses may soon surface'.",
      "material": false,
-     "would_the_trade_change": "No \u2014 this is an explanatory/causal nuance about why the setup is fragile, not itself a stance, level, or instrument; the downstream selling-risk read is unchanged on its own."
-    },
-    {
-     "what": "Source: McElligott 'warns that major trading losses may soon surface'; brief: 'warns of possible trading losses' \u2014 softens both the severity ('major') and the timing urgency ('may soon surface').",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the warning direction is preserved; only its emphasis is diluted."
+     "would_the_trade_change": "No \u2014 both convey a genuine risk warning; severity wording shift doesn't change what a reader would do with it."
     }
    ],
    "material_count": 1,
-   "non_material_count": 2
+   "non_material_count": 1
   }
  ],
- "material_total": 3,
+ "material_total": 1,
  "non_material_total": 9,
- "audited": 3,
+ "audited": 4,
  "dim": "brief_fidelity",
  "agent": "b",
  "artifact": "",

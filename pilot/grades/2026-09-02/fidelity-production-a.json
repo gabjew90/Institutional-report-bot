@@ -6,41 +6,41 @@
    "id": "s1",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "15098__warsh-and-the-road-not-taken.txt",
-   "span": "only a 68% market probability the FOMC hikes at the upcoming meeting, even though Warsh's speech says he tightens",
-   "why": "Multiple sources (TS Lombard's 'oddly low probability of a hike' framing, Duttenhoefer's down-day recap on Iran/inflation/yields) support a genuinely undecided, high-stakes Fed-meeting setup; this is a fair composite scene-setter, not a checkable figure."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15120__from-conflict-to-crowding-out-global-bond-yields-soar-to-200.txt",
+   "span": "the rate on 10-year Japanese government notes touched 3% for the first time since 1996, UK 30-year yields reached the highest since 1998, Aussie 10-yeay yields hit their highest since 2011, and the 10-year Treasury rate hit levels last seen January last year",
+   "why": "Fresh multi-year/decade highs confirmed in 4+ countries (also Germany/France per 15086); Sept 16 FOMC as live meeting confirmed in 15116 ('the FOMC decision on September 16') and 15095. 'Three countries' undercounts but doesn't misdirect."
   },
   {
    "id": "s2",
-   "grade": "distorted",
-   "live_market": true,
-   "source_file": "15086__early-morning-reid-macro-strategy.txt",
-   "span": "Treasury yield reached its highest level since October 2023",
-   "why": "The 10yr level itself (SPY/QQQ intraday, 4.79-4.80% yield) is unsupported live-market data, but the sentence also asserts Tuesday's move was the highest 'since January 2025' \u2014 the only source discussing the milestone says 'since October 2023,' a contradicted date/figure."
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15120__from-conflict-to-crowding-out-global-bond-yields-soar-to-200.txt",
+   "span": "The same AI capex and private sector issuance supporting earnings also compete with Treasury supply for a finite pool of savings",
+   "why": "Matches the 'crowding out' framing directly; source explicitly says the selloff 'is about more than Fed policy.'"
   },
   {
    "id": "s3",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "15094__sell-sell-or-sell.txt",
-   "span": "Vol-control equity allocations at a maxed out 100th percentile.",
-   "why": "Systematic/trend-following funds being maximally long is well supported (TME piece, Goldman/BofA/DB positioning charts). No source anywhere in the set mentions hedge fund equity exposure; the 'hedge funds under-owned' half of the contrast is invented and grafted onto the real systematic-positioning claim."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15099__gs-us-daily-download-2-sep-2026.txt",
+   "span": "DELL's F2Q27 EPS of $7.04 beat GS/consensus/guidance on stronger than expected revenue... and notable strength in both CSG margins... and ISG margins",
+   "why": "Dell's margin beat is the fresh, this-week catalyst; Nvidia's 'blockbuster print' referenced in 15115 is retrospective (earlier in the year), not this week, so the 'not from anything with a chip in it' framing holds."
   },
   {
    "id": "s4",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "15098__warsh-and-the-road-not-taken.txt",
-   "span": "only a 68% market probability the FOMC hikes at the upcoming meeting",
-   "why": "A 66-68% probability is not 'the bond market has decided' anything \u2014 TS Lombard explicitly frames it as an 'oddly low probability... 15 days from meeting.' Separately, the DB Reid piece shows long-dated yields breaking to multi-year highs in five countries that day (US, UK, Germany, France, Japan), not three."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15103__duttenhoefers-daily-2-sep-2026.txt",
+   "span": "raised outlook for $74 bn in AI server revenue in F2027 (v. $60bn prior)... BUY with $425 px target",
+   "why": "Exact match on both figures and rating/target; +8.4% confirmed verbatim in 15099 ('DELL shares are indicated +8.4% higher')."
   },
   {
    "id": "s5",
    "grade": "distorted",
    "live_market": false,
-   "source_file": "15103__duttenhoefers-daily-2-sep-2026.txt",
-   "span": "markets now pricing 66% probability of a Fed rate hike in Sep",
-   "why": "The 66% figure is genuinely from a Goldman note. But no Goldman document in the set argues for a hold \u2014 that argument ('he will be poring through the upcoming data to find some wiggle room to hold rates constant... I still think he finds it') is TS Lombard's own view in 15098, misattributed to Goldman."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "\u2026we do not expect Tech/AI to drive returns in 2H\u2026 Tech earnings and cash flow are diverging",
+   "why": "JPM's chart supports earnings/cash-flow divergence for Mag 7, but the extracted text never states cash flow went negative \u2014 that's an escalation beyond what the source confirms (chart values aren't in extracted text)."
   },
   {
    "id": "s6",
@@ -48,23 +48,23 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "No document in the source set contains a 2027 cloud-capex forecast of $1.2-1.5trn, an $800bn current-year figure, or language about demand broadening into 'ordinary companies and governments.'"
+   "why": "No source states $165bn Q2 capex or FCF falling to $7bn from $60bn for 'four largest cloud builders.' The only related content (15089) discusses Mag 7 broadly via an unlabeled chart, not four named cloud builders with these figures."
   },
   {
    "id": "s7",
-   "grade": "distorted",
-   "live_market": false,
-   "source_file": "15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "we do not expect Tech/AI to drive returns in 2H\u2026 Tech earnings and cash flow are diverging",
-   "why": "JPM's thesis that Mag-7 earnings and free cash flow are diverging is real, but the source doesn't say cash flow is negative or that profits are at a 'record' \u2014 that specificity is invented and paired with the fabricated dollar figures in s8."
-  },
-  {
-   "id": "s8",
    "grade": "unsupported",
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "No source gives cloud-builder Q2 capex of $165bn or free cash flow falling from $60bn to $7bn; these numbers do not appear anywhere in the corpus."
+   "why": "No Bank of America / BofA document exists anywhere in today's 38-file source set. The $3.1trn AI-linked off-balance-sheet debt figure and the 'called the bubble in late 2025' claim appear nowhere."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15120__from-conflict-to-crowding-out-global-bond-yields-soar-to-200.txt",
+   "span": "the AI investment boom is both the equity bull case and the duration bear case",
+   "why": "Goldman's Privorotsky frames AI capex/profits as the bull case for equities but the bear case for duration/rates \u2014 matches 'the hole in that answer is rates.'"
   },
   {
    "id": "s9",
@@ -72,7 +72,7 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "No source mentions a software-sector 6.7% rally, Salesforce/CrowdStrike/Okta results, or a Goldman desk position in IGV calls; none of the three Goldman documents in the set reference IGV or software at all."
+   "why": "No source frames gold's move as 'best month in decades'; the only 'best month since [date]' language found (15121) describes Bitcoin (+25%, best since Nov 2024), not gold."
   },
   {
    "id": "s10",
@@ -80,7 +80,7 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "Opinion resting entirely on the fabricated software/IGV claim in s9, which has no source; the stance itself appears in no document."
+   "why": "No source gives a gold monthly gain of ~10%; the only gold-move figures found are '-5.6% from its high' and 'surged more than 4% in a single session' (15121). No BofA document exists to support the $7.3bn gold-fund-inflow claim."
   },
   {
    "id": "s11",
@@ -88,7 +88,7 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "There is no Bank of America document anywhere in the day's source set, and no source reports gold up ~10% in August or a $7.3bn weekly gold-fund inflow. The cited attribution doesn't correspond to any ingested document."
+   "why": "No 'Goldman materials desk' content, 100-day average, or Chinese-selling claim for gold appears in any source, including the Goldman traders' top-charts note (15122), which covers chips/robots/consumer but not gold."
   },
   {
    "id": "s12",
@@ -96,7 +96,7 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "None of the three Goldman documents (US Daily Download, Duttenhoefer's Daily, Privorotsky) mention a derivatives desk position buying upside/selling downside on a debasement thesis."
+   "why": "No source cites a $4,221 200-day average for gold or this conditional framing. The only 200-day-MA gold reference found (15121) says the move was already 'testing/breaking' it, with no $4,221 level and no attribution to 'positioning vs. real move.'"
   },
   {
    "id": "s13",
@@ -104,7 +104,7 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "No Goldman document discusses a materials desk view, a broken 100-day moving average, or Chinese selling in materials."
+   "why": "No source discusses a refining-capacity 'revision' or its resilience to a ceasefire headline. Related-but-distinct content exists (15120, 15121) on refined-product export declines from Persian Gulf/Russia disruption, but none frames it as a capacity revision or ceasefire-survival argument."
   },
   {
    "id": "s14",
@@ -112,21 +112,21 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "No source contains a Goldman diesel-margin forecast ($75/bbl over Brent for Q4, $63 for 2027, up from $27 in February, or any refining-margin figures at all)."
+   "why": "Same as s13 \u2014 no 'revision that size' or de-escalation-headline framing found in any source."
   },
   {
    "id": "s15",
    "grade": "unsupported",
-   "live_market": false,
-   "source_file": "none",
-   "span": "",
-   "why": "Commentary built entirely on the fabricated diesel-margin revision in s14; no source supports the underlying data point it interprets."
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
+   "span": "(Brent Oil^ @ 95.39 // +4.74%)",
+   "why": "Brent $95.39 is grounded in 15086, but the live $USO -1.23% 'this morning' move has no PDF source \u2014 it's a live-market data point per grading rubric, so the sentence is graded unsupported with live_market flagged."
   }
  ],
- "faithful": 1,
- "distorted": 5,
+ "faithful": 5,
+ "distorted": 1,
  "unsupported": 9,
- "faithful_rate": 0.067,
+ "faithful_rate": 0.333,
  "dim": "fidelity",
  "agent": "a",
  "provenance": {
