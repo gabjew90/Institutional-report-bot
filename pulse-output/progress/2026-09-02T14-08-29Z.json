@@ -1,0 +1,40 @@
+{
+ "ts": "2026-09-02T14-08-29Z",
+ "events": [
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-09-02T14:21:14Z",
+   "detail": "pdf_count=29, ctx fresh 14.7min"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-09-02T14:21:14Z",
+   "detail": "volume gate CONTINUE, anchors 127/128"
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-09-02T14:21:14Z",
+   "detail": "theme_coverage read, 33 themes"
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-09-02T14:21:14Z",
+   "detail": "adjudication 7 validated / 1 discarded"
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-09-02T14:21:14Z",
+   "detail": "draft written, 1744 published words"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-09-02T14:21:14Z",
+   "detail": "draft_validate CONTINUE, 11 soft"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-09-02T14:21:14Z",
+   "detail": "stitch 1 fix (_DRAFT NOTES stripped)"
+  }
+ ]
+}
