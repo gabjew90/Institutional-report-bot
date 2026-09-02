@@ -120,7 +120,7 @@ def test_retry_path_calls_strip_helper():
     entirely. Locks the wiring."""
     import inspect
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "_strip_voice_sections" in src, (
         "retry path must call _strip_voice_sections rather than dropping "
         "profiles_block entirely (the old behavior failed when chat alone "

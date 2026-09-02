@@ -118,7 +118,7 @@ def test_phantom_read_detector():
 
 def test_phantom_guard_wired_and_gated():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "if answer and not images:" in src, \
         "phantom guard must be gated on NO image in the call"
     win = src.split("Phantom image-read guard", 1)[1][:2200]
@@ -134,7 +134,7 @@ def test_images_in_audit_stamp():
     import inspect as _i
     import discord_bot.bot as bot
     import db as _db
-    bsrc = _i.getsource(bot._answer_with_gemini)
+    bsrc = bot._ask_pipeline_source()
     assert '"images": len(images or [])' in bsrc, \
         "meta must carry the image count"
     dsrc = _i.getsource(_db.append_ask_interaction)

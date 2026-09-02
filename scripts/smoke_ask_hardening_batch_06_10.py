@@ -90,7 +90,7 @@ def test_executors_use_to_thread():
 
 def test_dispatch_map_covers_all_seven_tools():
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     for tool in ("search_chat_messages", "lookup_user_profile",
                  "lookup_trade_log", "lookup_market_price",
                  "lookup_options_chain", "lookup_economic_calendar"):
@@ -102,7 +102,7 @@ def test_dispatch_guards_executor_exceptions():
     """An executor that raises must produce a structured error result,
     not propagate. Anchor on the guard + the no-fabricate fallback."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "result = await executor(args)" in src
     # The try/except around the executor call with the degrade message
     anchor = src.find("result = await executor(args)")
@@ -121,7 +121,7 @@ def test_dispatch_guards_executor_exceptions():
 
 def test_tool_trace_recorded():
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "_ask_tool_trace: list[dict] = []" in src
     assert "_ask_tool_trace.append" in src
     assert "tool_trace=_ask_tool_trace" in src, (
@@ -160,7 +160,7 @@ def test_short_circuits_log_to_ask_log():
 
 def test_failures_log_to_ask_log():
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert 'interaction_type="failed"' in src, (
         "the exception path must log a 'failed' entry so QC sees the "
         "complete record"
@@ -170,7 +170,7 @@ def test_failures_log_to_ask_log():
 
 def test_raw_answer_snapshot_before_cleanup():
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     snap_idx = src.find("_raw_answer_pre_clean = answer")
     clean_idx = src.find("answer, hit_kinds = _clean_voice_violations(answer)")
     assert snap_idx != -1 and clean_idx != -1
@@ -296,7 +296,7 @@ def test_slash_path_has_subject_verbatim_and_raw_mentions():
 
 def test_token_reconciliation_after_retries():
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "_tally_retry_usage" in src
     # All four retry generate_content sites tally usage
     n_tallies = src.count("_tally_retry_usage(")

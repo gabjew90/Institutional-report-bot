@@ -135,7 +135,7 @@ def test_loop_wide_json_scrub():
     assert clean["b"][2]["c"] is None and clean["d"] == "ok"
     import inspect
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_json_safe(result)" in src, (
         "tool loop must scrub every result before sending"
     )

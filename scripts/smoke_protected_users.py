@@ -82,7 +82,7 @@ def test_directive_content():
 
 def test_roast_guards_skip_protected_asker():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     for marker, name in (("_prior_bot_answer_texts):", "roast-recycle"),
                          ("_roast_is_pnl_monotone(answer, profiles_block)):",
                           "P&L-monotone")):
@@ -98,7 +98,7 @@ def test_roast_guards_skip_protected_asker():
 
 def test_directive_wired_into_prompt_extra():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_protected_extra" in src, "directive never assembled"
     i = src.find("_prompt_extra = _fact_extra + _analysis_extra")
     assert i != -1 and "_protected_extra" in src[i:i + 120], (
@@ -159,7 +159,7 @@ def test_ingestion_funnel_calls_promotion():
 def test_bot_merges_env_and_promoted_ids():
     import inspect
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     i = src.find("_protected_in_scope(")
     seg = src[max(0, i - 500):i + 400]
     assert "get_promoted_protected_ids" in seg, (

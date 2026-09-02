@@ -58,7 +58,7 @@ def test_web_grounding_respects_router_and_grounding():
 
 def test_trigger_and_retry_wired():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # the retry must be triggered by BOTH the market-shape backstop AND
     # the router-tied web-ungrounded check
     assert "_ground_trigger_web = _ungrounded_web_specifics(" in src, \

@@ -263,7 +263,7 @@ def test_tool_registered_in_both_tool_arrays():
     call AND the retry call. Missing the retry adds a regression where
     the model loses access to options-chain on the Voice-strip retry."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     n_registrations = src.count("_build_options_chain_tool()")
     assert n_registrations >= 2, (
         f"lookup_options_chain must be registered in >=2 tools=[] "
@@ -278,7 +278,7 @@ def test_dispatch_branch_present():
     otherwise calls go to the 'unknown tool' fallback. Dispatch
     refactored 2026-06-10 to a guarded `_tool_executors` map."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert '"lookup_options_chain": _execute_options_chain' in src, (
         "dispatch executor map must have the lookup_options_chain "
         "entry; otherwise model calls route to 'unknown tool'"

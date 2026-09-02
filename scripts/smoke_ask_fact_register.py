@@ -73,7 +73,7 @@ def test_mockery_detector_leaves_straight_facts_alone():
 
 def test_mockery_guard_wired_and_fact_gated():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # detection is gated on the router's FACT verdict
     assert "_route_is_factual and _asker_mockery_violations(answer)" in src, \
         "mockery detection must be FACT-gated"
@@ -93,7 +93,7 @@ def test_fact_directive_threaded_both_routes():
     assert "real question" in low and "straight" in low
     assert "confusing" in low and "premise" in low, \
         "directive must name the invented-premise failure"
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_fact_extra = _ASK_FACT_DIRECTIVE if _route_is_factual" in src, \
         "directive must be classification-gated"
     # 2026-07-16 unified tooling: ONE config for both routes — the
@@ -114,7 +114,7 @@ def test_fact_directive_threaded_both_routes():
 
 def test_bare_probe_wired():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     window = src.split("BARE PROBE", 1)
     assert len(window) == 2, "bare probe stage missing from backstop"
     # 14000: the 2026-07-27 revoice pass sits between the probe accept
@@ -153,7 +153,7 @@ def test_ask_log_meta_stamp():
         assert key in src, f"meta stamp must render {key!r}"
     # bot side: meta accumulated and passed
     import discord_bot.bot as bot
-    bsrc = _i.getsource(bot._answer_with_gemini)
+    bsrc = bot._ask_pipeline_source()
     assert "_ask_meta: dict = {" in bsrc, "meta accumulator missing"
     assert "meta=_ask_meta," in bsrc, "meta not passed to the log call"
     # every guard family stamps itself
@@ -170,7 +170,7 @@ def test_question_only_filter_rung():
     # on Voice-strip AND slur-mask (his profile carries trip density
     # outside **Voice.**). Fourth rung: question only, no profiles/chat.
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     window = src.split("Fourth-tier retry: QUESTION-ONLY", 1)
     assert len(window) == 2, "question-only rung missing"
     rung = window[1][:3200]
@@ -191,7 +191,7 @@ def test_question_only_filter_rung():
 
 def test_probe_diagnostics_and_forcing():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # 14000: the 2026-07-27 revoice pass sits between the probe accept
     # and the hedge fallback (offset ~11.1K), widening this window.
     probe = src.split("BARE PROBE", 1)[1][:14000]

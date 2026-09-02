@@ -73,7 +73,7 @@ def test_ladder_source_does_not_null_tools():
     """Guard the regression directly: `"tools": None` in the ladder config
     is the exact line that cost grounding."""
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     i = src.find("_ladder_config = config.model_copy")
     if i == -1:
         _fail("ladder config construction not found")
@@ -91,7 +91,7 @@ def test_tool_config_survives_with_search():
     """include_server_side_tool_invocations is what surfaces grounding
     records; it must ride along whenever search is offered."""
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     i = src.find("_ladder_config = config.model_copy")
     window = src[i: i + 600]
     if 'config.tool_config' not in window:

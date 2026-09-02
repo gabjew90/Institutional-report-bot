@@ -51,7 +51,7 @@ def _resp(parts):
 
 def test_code_execution_tool_wired():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     head = src.split("Tool-calling loop", 1)[0]
     assert "ToolCodeExecution()" in head, (
         "code_execution tool must be in the main /ask config"

@@ -98,7 +98,7 @@ def test_directive_demands_code_and_visual():
 
 def test_directive_wired_alongside_fact():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_is_analysis_request(question)" in src, (
         "analysis directive must be composed per-request from the question"
     )

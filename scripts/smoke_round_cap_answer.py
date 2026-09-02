@@ -43,7 +43,7 @@ def test_round_cap_raised():
 
 def test_cap_exhaustion_forces_a_final_answer():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     seg = src.split("hit tool-calling round cap", 1)
     assert len(seg) == 2, "round-cap branch missing"
     after = seg[1][:4200]
@@ -77,7 +77,7 @@ def test_query_data_discourages_schema_probing():
 
 def test_final_call_is_guarded():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     after = src.split("hit tool-calling round cap", 1)[1][:4200]
     assert "except" in after, (
         "the final answer call must be exception-guarded — a failure "

@@ -166,7 +166,7 @@ def test_answer_with_gemini_accepts_channel_id():
 def test_answer_with_gemini_calls_cross_window_helper():
     """Source-level anchor: _answer_with_gemini calls the new helper."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "get_recent_bot_answers_to_asker" in src, (
         "_answer_with_gemini must query db.get_recent_bot_answers_to_asker"
     )
@@ -186,7 +186,7 @@ def test_cross_window_section_threads_through_retries():
     window block. Without this, a filter-trip retry loses the anti-
     recycling signal."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     # Both retry sections should reference cross_window_block
     n = src.count("cross_window_block")
     assert n >= 4, (

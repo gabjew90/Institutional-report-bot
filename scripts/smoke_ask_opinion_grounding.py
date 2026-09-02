@@ -90,7 +90,7 @@ def test_hard_fact_trigger_not_suppressed():
     # a fabricated PRICE TARGET inside an opinion answer is still a claim
     # — _is_ungrounded_market_fact has no opinion exemption and must
     # still catch it.
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_ground_trigger_shape = _is_ungrounded_market_fact(" in src
     # shape trigger call takes NO is_opinion arg
     shape_call = src.split("_ground_trigger_shape = _is_ungrounded_market_fact(", 1)[1][:120]
@@ -101,7 +101,7 @@ def test_hard_fact_trigger_not_suppressed():
 
 def test_both_call_sites_pass_opinion():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # the fire trigger AND the retry-acceptance re-check both pass it
     assert src.count("is_opinion=_is_opinion_request(question)") >= 2, \
         "both the trigger and the retry-acceptance check must pass opinion"
@@ -141,7 +141,7 @@ def test_context_dependent_detector():
 
 def test_bare_probe_skipped_on_context_dependent():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # the skip branch precedes the bare-probe else branch
     assert "elif _is_context_dependent(question):" in src, \
         "bare probe must be skipped for context-dependent follow-ups"
@@ -220,7 +220,7 @@ def test_probe_topic_capsule():
     # no tickers anywhere -> no capsule (don't invent a subject)
     assert bot._probe_topic_capsule("will i be saved?", "you're cooked") == ""
     # capsule is wired into the probe question
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_probe_topic_capsule(question, answer)" in src, \
         "capsule must be appended to probe_q"
     _ok("topic capsule: harvests tickers from question+answer, wired into probe")
@@ -253,7 +253,7 @@ def test_grounding_accumulated_across_tool_rounds():
     Grounding chunks must be accumulated across every round."""
     import inspect
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_round_gm_chunks" in src, "per-round grounding accumulator missing"
     # collected INSIDE the tool loop, right after each generate_content
     loop = src.split("for round_idx in range(", 1)[1]
@@ -277,7 +277,7 @@ def test_grounding_accumulated_across_tool_rounds():
 
 def test_probe_gated_and_refusal_rejected():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # LOCAL routes skip the probe entirely (before the context-dep skip)
     assert "elif not needs_web:" in src, \
         "bare probe must be gated to WEB routes"

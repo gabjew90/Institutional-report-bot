@@ -158,7 +158,7 @@ def test_ladder_rungs_only_ever_shrink():
     """A retry must never re-add material assembly withheld. Both rungs
     that rebuild the prompt must source it from profiles_for_prompt."""
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     i = src.find("if safety_blocked or prompt_block:")
     j = src.find('_ask_meta["filter_retry"] = "failed"', i)
     ladder = src[i:j]

@@ -123,7 +123,7 @@ def test_declaration_and_wiring():
     assert "wins-biased" in decl.lower() or "wins-bias" in decl.lower(), (
         "declaration must warn about the wins-biased trade ledger"
     )
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert '"query_data": _execute_query_data' in src, "not in executor map"
     _ok("query_data declared (schema + caveats) and wired into the loop")
 

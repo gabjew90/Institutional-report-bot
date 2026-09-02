@@ -157,7 +157,7 @@ def test_executor_unconfigured():
 def test_wiring():
     import inspect
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert '"lookup_fantasy_league": _execute_fantasy_league' in src, \
         "executor map entry missing"
     assert src.count("_build_fantasy_league_tool()") >= 2, \

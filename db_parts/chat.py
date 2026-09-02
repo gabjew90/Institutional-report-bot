@@ -8,11 +8,6 @@ from datetime import datetime, date, timedelta
 import logging
 
 import db as _db  # noqa: E402
-from db import (  # noqa: E402
-    SLEEPER_DUMP_MIN_ROWS,
-    _CHAT_TRADE_RE,
-    log,
-)
 
 log = logging.getLogger("db")
 
@@ -40,7 +35,7 @@ def get_recent_user_chat_trades(
     out: list[dict] = []
     for r in rows:
         content = (r["content"] or "").strip()
-        if not content or not _CHAT_TRADE_RE.search(content):
+        if not content or not _db._CHAT_TRADE_RE.search(content):
             continue
         out.append({
             "posted_at": (r["posted_at"] or "")[:16].replace("T", " "),
@@ -1324,7 +1319,7 @@ def upsert_sleeper_players(rows: list[tuple]) -> int:
     Anomaly guard: a suspiciously small dump (API hiccup returning a
     near-empty body) must NOT wipe a working cache — the real NFL dump
     is ~11K entries. Keep the stale cache and return 0 instead."""
-    if len(rows) < SLEEPER_DUMP_MIN_ROWS:
+    if len(rows) < _db.SLEEPER_DUMP_MIN_ROWS:
         return 0
     conn = _db.get_connection()
     conn.execute("DELETE FROM sleeper_players")

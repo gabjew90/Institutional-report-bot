@@ -292,7 +292,7 @@ def test_tool_registered_in_both_arrays():
     """Initial + Voice-strip retry both need the tool, otherwise filter-
     trip retries lose access to macro lookups."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     n = src.count("_build_economic_calendar_tool()")
     assert n >= 2, (
         f"_build_economic_calendar_tool() must be registered in both "
@@ -305,7 +305,7 @@ def test_tool_registered_in_both_arrays():
 def test_dispatch_branch_present():
     # Dispatch refactored 2026-06-10 to a guarded `_tool_executors` map.
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert '"lookup_economic_calendar": _execute_economic_calendar' in src
     _ok("dispatch executor map routes lookup_economic_calendar to "
         "_execute_economic_calendar")

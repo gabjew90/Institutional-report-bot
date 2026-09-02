@@ -36,7 +36,7 @@ def _fail(msg):
 
 def test_only_initial_config_builds_bare():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     bare = len(re.findall(
         r"_build_runtime_system_instruction\(\)", src))
     assert bare <= 1, (
@@ -49,7 +49,7 @@ def test_only_initial_config_builds_bare():
 
 def test_retries_pass_prompt_extra():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     withx = len(re.findall(
         r"_build_runtime_system_instruction\(_prompt_extra\)", src))
     # initial patch + repetition + revoice + grounding + TA
@@ -62,7 +62,7 @@ def test_retries_pass_prompt_extra():
 def test_repetition_retry_specifically():
     """The retry that caused the incident, checked by name."""
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     seg = src.split("retry_config = types.GenerateContentConfig(", 1)
     assert len(seg) == 2, "repetition retry_config not found"
     window = seg[1][:400]

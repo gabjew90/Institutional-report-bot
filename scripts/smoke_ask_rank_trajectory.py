@@ -74,7 +74,7 @@ def test_strip_keeps_the_jab():
 
 def test_guard_wired():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_rank_trajectory_violations(answer)" in src, "guard not wired"
     # getsource returns the split string literals, so check substrings
     # that don't straddle a line break.

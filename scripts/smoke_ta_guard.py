@@ -173,7 +173,7 @@ def test_strip_removes_indicator_sentences():
 
 def test_guard_block_wired():
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "_has_unsourced_ta(" in src, "detector must gate the path"
     assert "NO CHART DATA" in src, "no-chart-data retry directive missing"
     assert "_strip_sentences(" in src, "indicator strip step missing"

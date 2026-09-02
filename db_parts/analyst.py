@@ -9,10 +9,6 @@ import json
 import logging
 
 import db as _db  # noqa: E402
-from db import (  # noqa: E402
-    _GHOST_AGE_DAYS,
-    _RECENT_WIN_DAYS,
-)
 
 log = logging.getLogger("db")
 
@@ -1052,10 +1048,10 @@ def compute_member_points(author_id: int, days: int = 21) -> dict:
     # Ghosting is a judgment about the POSITION (entry with no close,
     # past expiry or stale), not about the ledger window — fixed at 14d
     # so widening the scoring window doesn't loosen the ghost read.
-    ghost_age_cutoff = (now - timedelta(days=_GHOST_AGE_DAYS)).isoformat()
+    ghost_age_cutoff = (now - timedelta(days=_db._GHOST_AGE_DAYS)).isoformat()
     # Recency band: wins documented within the last 7d score 2 pts,
     # older wins (8..N d) score 1 pt.
-    recent_win_cutoff = (now - timedelta(days=_RECENT_WIN_DAYS)).isoformat()
+    recent_win_cutoff = (now - timedelta(days=_db._RECENT_WIN_DAYS)).isoformat()
     # Join chat_messages to recover the source channel for each row.
     # The channel name is the disambiguator for close-only screenshots
     # where the order ticket doesn't carry a gain pill: gain-loss-porn
@@ -1187,7 +1183,7 @@ def compute_member_points(author_id: int, days: int = 21) -> dict:
                     if past_expiry:
                         reason.append(f"past expiry {expiry_str}")
                     if aged_out:
-                        reason.append(f"open ≥{_GHOST_AGE_DAYS}d")
+                        reason.append(f"open ≥{_db._GHOST_AGE_DAYS}d")
                     breakdown.append({
                         "kind": (
                             f"entry posted, no close (ghost: "
@@ -1201,7 +1197,7 @@ def compute_member_points(author_id: int, days: int = 21) -> dict:
                     breakdown.append({
                         "kind": (
                             "entry posted, no close yet (pending — "
-                            f"before expiry, open <{_GHOST_AGE_DAYS}d)"
+                            f"before expiry, open <{_db._GHOST_AGE_DAYS}d)"
                         ),
                         "points": 0,
                         "ticker": key[0],

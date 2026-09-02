@@ -146,7 +146,7 @@ def test_novel_ratio_rejects_the_shipped_fiction():
 
 
 def test_wiring():
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # pre-flight notes: LOCAL-gated name check + dispute check, injected
     # into the FIRST user turn (not a dangling extra turn)
     assert "_unknown_member_names(question, _known_surface)" in src

@@ -34,7 +34,7 @@ def test_retry_branch_wired():
     the Ry_bry/Dovahjo AVGO trip showed chat alone trips the filter
     too. The success-log marker is preserved (renamed slightly)."""
     from discord_bot import bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "retrying once with Voice sections" in src or "Voice sections stripped" in src, (
         "expected new 'Voice sections stripped' retry log line in _answer_with_gemini"
     )
@@ -53,7 +53,7 @@ def test_stripped_content_keeps_voice_stripped_profile():
     test asserted the full profile was dropped; we now keep it
     Voice-stripped because chat alone trips the filter."""
     from discord_bot import bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     retry_start = src.find("stripped_sections: list[str] = [voice_stripped]")
     assert retry_start > 0, (
         "couldn't find new stripped_sections build (expected to be "
@@ -87,7 +87,7 @@ def test_stripped_content_keeps_voice_stripped_profile():
 
 def test_grounding_metadata_refreshed():
     from discord_bot import bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     retry_start = src.find("stripped_sections: list[str] = [voice_stripped]")
     window = src[retry_start:retry_start + 4500]
     assert (
@@ -99,7 +99,7 @@ def test_grounding_metadata_refreshed():
 
 def test_clean_voice_violations_on_recovery():
     from discord_bot import bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     retry_start = src.find("stripped_sections: list[str] = [voice_stripped]")
     window = src[retry_start:retry_start + 4500]
     assert "_clean_voice_violations(" in window, (
@@ -110,7 +110,7 @@ def test_clean_voice_violations_on_recovery():
 
 def test_fallback_still_present():
     from discord_bot import bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert (
         "Gemini bounced this one" in src
         and "Try asking a different way" in src
@@ -126,7 +126,7 @@ def test_fallback_still_present():
 
 def test_retry_only_when_profiles_present():
     from discord_bot import bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     # The voice-strip rung must short-circuit when there's no
     # profiles_block to strip — stripping nothing produces the same
     # prompt tier 0 already resent. (2026-08-04: an IDENTICAL retry is

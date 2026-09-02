@@ -78,7 +78,7 @@ def test_loop_parts_always_survive():
 def test_wired_into_echo():
     import inspect
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_safe_echo_parts(response_parts)" in src, (
         "the model-turn echo must go through the scrub"
     )

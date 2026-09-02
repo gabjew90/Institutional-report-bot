@@ -182,7 +182,7 @@ def test_dispatch_handles_all_new_tools():
     entry exists (a missing entry routes to 'unknown tool' error)."""
     import inspect
     from discord_bot import bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     for tool_name in (
         "search_chat_messages",
         "lookup_user_profile",

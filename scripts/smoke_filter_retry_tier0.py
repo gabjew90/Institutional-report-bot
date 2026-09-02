@@ -45,7 +45,7 @@ def _ladder(src):
 
 def test_tier0_identical_retry_exists():
     import discord_bot.bot as bot
-    lad = _ladder(inspect.getsource(bot._answer_with_gemini))
+    lad = _ladder(bot._ask_pipeline_source())
     assert '"same-prompt"' in lad, (
         "no identical-retry tier — the ladder starts amputating context "
         "on the first block, but the filter is non-deterministic and "
@@ -56,7 +56,7 @@ def test_tier0_identical_retry_exists():
 
 def test_tier0_runs_before_any_mutation():
     import discord_bot.bot as bot
-    lad = _ladder(inspect.getsource(bot._answer_with_gemini))
+    lad = _ladder(bot._ask_pipeline_source())
     t0 = lad.find('"same-prompt"')
     strip = lad.find("_strip_voice_sections")
     assert strip != -1, "voice-strip tier missing"
@@ -70,7 +70,7 @@ def test_tier0_runs_before_any_mutation():
 def test_tier0_resends_original_contents():
     """Original contents object — not a rebuilt section list."""
     import discord_bot.bot as bot
-    lad = _ladder(inspect.getsource(bot._answer_with_gemini))
+    lad = _ladder(bot._ask_pipeline_source())
     t0 = lad.find('"same-prompt"')
     strip = lad.find("_strip_voice_sections")
     window = lad[:strip]
@@ -91,7 +91,7 @@ def test_ladder_strips_function_tools():
     config so the model answers from the context already in the prompt
     (the recent chat window rides every ask)."""
     import discord_bot.bot as bot
-    lad = _ladder(inspect.getsource(bot._answer_with_gemini))
+    lad = _ladder(bot._ask_pipeline_source())
     assert "_ladder_config" in lad, (
         "no tools-stripped ladder config — tool-dependent questions "
         "make every tier return a function_call (empty text) and the "

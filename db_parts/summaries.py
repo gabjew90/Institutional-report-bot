@@ -7,11 +7,6 @@ patch point and the thread-local connection model lives in db.py.
 import logging
 
 import db as _db  # noqa: E402
-from db import (  # noqa: E402
-    _PROFILES_BLOCK_BUDGET_CHARS,
-    _PROFILES_BLOCK_MAX_USERS,
-    _PROFILE_SECTION_SPLIT_RE,
-)
 
 log = logging.getLogger("db")
 
@@ -478,7 +473,7 @@ def _reorder_profile_for_roast_attention(text: str) -> str:
     if (not text or "**Recent trades.**" not in text
             or "**Recent personal life.**" not in text):
         return text
-    parts = [p for p in _PROFILE_SECTION_SPLIT_RE.split(text) if p.strip()]
+    parts = [p for p in _db._PROFILE_SECTION_SPLIT_RE.split(text) if p.strip()]
     idx_tr = next((i for i, s in enumerate(parts)
                    if s.lstrip().startswith("**Recent trades.**")), None)
     idx_pl = next((i for i, s in enumerate(parts)
@@ -493,8 +488,8 @@ def _reorder_profile_for_roast_attention(text: str) -> str:
 def format_user_profiles_for_context(
     user_ids: list[int],
     *,
-    max_chars: int = _PROFILES_BLOCK_BUDGET_CHARS,
-    max_users: int = _PROFILES_BLOCK_MAX_USERS,
+    max_chars: int = _db._PROFILES_BLOCK_BUDGET_CHARS,
+    max_users: int = _db._PROFILES_BLOCK_MAX_USERS,
 ) -> str:
     """Render a "WHO'S TALKING" block for the given user_ids. Skips users
     with no profile (lurkers, new joiners). Returns "" when nobody on the

@@ -9,10 +9,6 @@ from pathlib import Path
 import logging
 
 import db as _db  # noqa: E402
-from db import (  # noqa: E402
-    _LATEST_ANALYSIS_CTE,
-    log,
-)
 
 log = logging.getLogger("db")
 
@@ -288,7 +284,7 @@ def get_todays_analyses(today: str | None = None) -> list[dict]:
     if today is None:
         today = date.today().isoformat()
     rows = _db.get_connection().execute(
-        _LATEST_ANALYSIS_CTE + """
+        _db._LATEST_ANALYSIS_CTE + """
         SELECT la.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
         FROM latest_analyses la
         JOIN pdf_files pf ON la.pdf_file_id = pf.id
@@ -303,7 +299,7 @@ def get_analyses_since(since_time: str) -> list[dict]:
     """Get latest analysis per PDF where the PDF was uploaded to Dropbox after since_time."""
     since_time = _db._normalize_ts(since_time)
     rows = _db.get_connection().execute(
-        _LATEST_ANALYSIS_CTE + """
+        _db._LATEST_ANALYSIS_CTE + """
         SELECT la.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
         FROM latest_analyses la
         JOIN pdf_files pf ON la.pdf_file_id = pf.id
@@ -319,7 +315,7 @@ def get_analyses_between(start_time: str, end_time: str) -> list[dict]:
     start_time = _db._normalize_ts(start_time)
     end_time = _db._normalize_ts(end_time)
     rows = _db.get_connection().execute(
-        _LATEST_ANALYSIS_CTE + """
+        _db._LATEST_ANALYSIS_CTE + """
         SELECT la.*, pf.file_name, pf.dropbox_path, pf.dropbox_modified_at
         FROM latest_analyses la
         JOIN pdf_files pf ON la.pdf_file_id = pf.id
@@ -366,7 +362,7 @@ def get_next_pdf_to_announce(after_pdf_file_id: int) -> dict | None:
     are deduped). Skips LOW priority. Returns dict or None if none pending.
     """
     row = _db.get_connection().execute(
-        _LATEST_ANALYSIS_CTE + """
+        _db._LATEST_ANALYSIS_CTE + """
         SELECT la.*, pf.id AS pf_id, pf.file_name, pf.dropbox_path,
                pf.dropbox_modified_at, pf.file_size_bytes
         FROM latest_analyses la
@@ -387,7 +383,7 @@ def count_pending_announcements(after_pdf_file_id: int) -> dict:
     Returns {'high': N, 'medium': M, 'total': N+M}.
     """
     rows = _db.get_connection().execute(
-        _LATEST_ANALYSIS_CTE + """
+        _db._LATEST_ANALYSIS_CTE + """
         SELECT la.priority, COUNT(*) as n
         FROM latest_analyses la
         JOIN pdf_files pf ON la.pdf_file_id = pf.id
@@ -409,7 +405,7 @@ def max_announceable_pdf_file_id() -> int:
     Used at startup to fast-forward last_announced past a backfilled batch.
     """
     row = _db.get_connection().execute(
-        _LATEST_ANALYSIS_CTE + """
+        _db._LATEST_ANALYSIS_CTE + """
         SELECT COALESCE(MAX(pf.id), 0) AS m
         FROM latest_analyses la
         JOIN pdf_files pf ON la.pdf_file_id = pf.id

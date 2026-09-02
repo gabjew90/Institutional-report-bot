@@ -157,7 +157,7 @@ def test_router_wired_unified_tooling():
     gets the full config; the router verdict survives only as the
     FACT/BANTER register signal and the backstop's needs_web input."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "_classify_ask_needs_web(" in src, "router not called in answer path"
     assert "UNIFIED TOOLING" in src, "unified-tooling block missing"
     # No per-route config swap: exactly ONE GenerateContentConfig built

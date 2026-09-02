@@ -72,7 +72,7 @@ def test_mentioned_ids_still_extracted():
 
 def test_analyst_block_not_assembled():
     """_answer_with_gemini should no longer build the analyst_block."""
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "analyst_blocks: list[str] = []" not in src, (
         "_answer_with_gemini still builds analyst_blocks - should be removed"
     )

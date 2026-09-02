@@ -99,7 +99,7 @@ def test_personal_pool_extraction():
 
 def test_guard_wired_banter_gated():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_roast_is_pnl_monotone(answer, profiles_block)" in src, \
         "monotone guard not wired"
     win = src.split("P&L-monotone guard", 1)[1][:4200]
@@ -163,7 +163,7 @@ def test_injection_reorders_personal_above_trades():
 
 def test_recycle_directive_leads_personal():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # window widened 2026-07-17: the recycle rewrite gained SUBJECT
     # MATERIAL + the novel-content fidelity check, growing the section
     rr = src.split("Roast-recycle guard", 1)[1][:8000]

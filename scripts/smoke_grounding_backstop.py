@@ -150,7 +150,7 @@ def test_grounding_has_sources():
 
 def test_backstop_block_wired():
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "_is_ungrounded_market_fact(" in src, "detector must gate the path"
     assert "GROUNDING REQUIRED" in src, "forced-retry directive missing"
     assert "Couldn't verify these specifics" in src, "hedge fallback missing"
@@ -164,7 +164,7 @@ def test_forced_retry_is_search_only():
     actually grounding. Guard the SEARCH-ONLY config + the directive
     that tells the model search is its only tool."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     # The forced-retry block must carry the search-only marker + the
     # single-tool google_search config, and must NOT re-list the
     # function-tool builders inside that retry.

@@ -901,3 +901,24 @@ thread-local connection model keep working. Nothing outside db.py
 changed. Verified with the full unit suite, the fast smoke tier,
 pyflakes on all seven files and the container import gate.
 
+## 2026-09-01 — Gate bypass incident (mine) and the repair
+
+Two pushes (f04712ad, ea74d04d) went out with the pre-push gate
+FAILING. The ad-hoc shell chain was `preflight | tail -2 && git push`:
+the `&&` tested tail's exit code, not the gate's. The same pipe hid
+two earlier fast-tier runs that had actually failed. The gate itself
+was right both times: 41 wiring smokes read
+`inspect.getsource(bot._answer_with_gemini)` and the phase split had
+moved the strings they pin into the phase functions; one smoke patched
+`db.SLEEPER_DUMP_MIN_ROWS`, which the db split had imported by name.
+
+Behaviour was never wrong (unit suite, fixtures, live runs were read
+from their output, not their pipe status), but the process was.
+
+Repair: `bot._ask_pipeline_source()` returns the caller plus all
+eleven phases and the 45 pins now read it; constants read inside
+db_parts/ go through `_db.<CONST>` like functions do, so facade
+patches keep working; a local `.git/hooks/pre-push` runs the gate and
+refuses the push on non-zero, so a shell mistake can no longer skip
+it. Rule for every future chain: never put the gate behind a pipe.
+

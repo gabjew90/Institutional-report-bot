@@ -85,7 +85,7 @@ def test_quoted_block_is_not_the_askers_hostility():
 def test_disengage_is_gated_in_the_pipeline():
     import inspect
     import discord_bot.bot as b
-    src = inspect.getsource(b._answer_with_gemini)
+    src = b._ask_pipeline_source()
     assert 'elif _is_hostile_exchange(question):' in src, \
         "disengage must be gated on real hostility"
     i_dis = src.index('answer = "you done?"')
@@ -166,7 +166,7 @@ def test_invented_signal_cannot_mangle_an_answer():
     gated on hard token violations."""
     import inspect
     import discord_bot.bot as b
-    src = inspect.getsource(b._answer_with_gemini)
+    src = b._ask_pipeline_source()
     assert "_fid_invented" in src, "signal must be computed"
     assert "if _fid_viol or _fid_invented:" in src,         "invented details should be able to trigger a rewrite"
     # the strip block must reference ONLY _clapback_fidelity_violations

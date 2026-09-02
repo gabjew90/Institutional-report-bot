@@ -141,7 +141,7 @@ def test_real_answer_passes_under_subject_scope_and_fails_under_asker():
 
 def test_guard_uses_subject_scope_and_stamps_it():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     i = src.find("Clapback fidelity guard")
     # Bound at the next guard rather than a fixed width — a comment edit
     # should not silently move the checks out of range.
@@ -244,7 +244,7 @@ def test_second_person_replies_are_not_flagged():
 def test_naming_guard_is_advisory_only():
     """Presentation problems must not vandalize correct roasts."""
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     i = src.find("Subject-naming guard")
     if i < 0:
         _fail("no subject-naming guard")

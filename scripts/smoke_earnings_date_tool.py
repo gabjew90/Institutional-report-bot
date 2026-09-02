@@ -252,7 +252,7 @@ def test_executor_uses_to_thread():
 
 def test_tool_registered_in_both_arrays():
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     n = src.count("_build_earnings_date_tool()")
     assert n >= 2, (
         f"_build_earnings_date_tool() must be in both tools=[] arrays "
@@ -264,7 +264,7 @@ def test_tool_registered_in_both_arrays():
 
 def test_dispatch_map_entry_present():
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert '"lookup_earnings_date": _execute_earnings_date' in src
     _ok("executor map routes lookup_earnings_date")
 
@@ -399,7 +399,7 @@ def test_earnings_date_tool_always_reachable():
     import discord_bot.bot as bot
     assert not hasattr(bot, "_EARNINGS_DATE_RE"), \
         "_EARNINGS_DATE_RE must stay removed (unified tooling made it moot)"
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_EARNINGS_DATE_RE" not in src, \
         "the earnings-date LOCAL override must stay removed"
     assert "UNIFIED TOOLING" in src, \

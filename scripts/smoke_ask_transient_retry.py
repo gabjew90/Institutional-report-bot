@@ -30,7 +30,7 @@ def test_retry_wired():
     assert "_transient_retry" in sig.parameters, "retry guard param missing"
     assert sig.parameters["_transient_retry"].default is False
 
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # the retry fires only for transient error classes...
     assert "_is_transient" in src and '"500"' in src and '"timeout"' in src, \
         "transient error classes must be matched"
@@ -46,7 +46,7 @@ def test_retry_wired():
 
 def test_retry_happens_before_failure_logging():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # The retry decision must come BEFORE the failure is appended to the
     # ask-log, so a recovered blip logs one clean success, not a
     # failed-then-succeeded pair... the retry's own outcome logs itself.

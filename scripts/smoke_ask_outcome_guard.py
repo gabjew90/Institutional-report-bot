@@ -95,7 +95,7 @@ def test_member_names_wired():
     import db as _db
     assert callable(getattr(_db, "known_trade_caller_names", None)), \
         "db.known_trade_caller_names missing"
-    src = _i.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_oc_names = _known_member_names()" in src, \
         "guard must load the ledger-caller names"
     assert "_ask_tool_trace, user_content, _oc_names" in src, \
@@ -128,7 +128,7 @@ def test_detector_respects_sources():
 
 def test_outcome_guard_wired():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert "_has_unsourced_outcome_claims(" in src, "guard not in answer path"
     assert "user_content" in src.split("_has_unsourced_outcome_claims(", 1)[1][:80], \
         "guard must see the injected context for the sourced-% exemption"
@@ -183,7 +183,7 @@ def test_empty_answer_no_unbound_hitkinds():
     # `if answer:` block, leaving hit_kinds undefined when the register-
     # rewrite gate read it. hit_kinds is now pre-initialized.
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # the pre-init must appear BEFORE the conditional assignment
     pre_init = src.index("hit_kinds: list[str] = []")
     cond_assign = src.index("answer, hit_kinds = _clean_voice_violations")
@@ -195,7 +195,7 @@ def test_empty_answer_no_unbound_hitkinds():
 
 def test_rewrite_trigger_covers_all_kinds():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # 2026-07-09: the trigger set gained "asker-mockery" (FACT-gated).
     # Assert membership of each kind rather than the exact literal so
     # the set can grow without breaking this smoke.

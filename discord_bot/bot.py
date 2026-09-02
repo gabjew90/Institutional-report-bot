@@ -4050,6 +4050,18 @@ def _capture_book_context(args: dict, result, out_meta: dict) -> None:
         log.warning(f"book-context capture failed (non-fatal): {e}")
 
 
+def _ask_pipeline_source() -> str:
+    """Source of the whole /ask pipeline: _answer_with_gemini plus its
+    eleven phase functions, in order. The wiring smokes pin strings in
+    this text; before the 2026-09-01 split they read the one function."""
+    import inspect as _inspect
+    g = globals()
+    parts = [_inspect.getsource(g["_answer_with_gemini"])]
+    for name in sorted(n for n in g if re.match(r"_ask_\d\d_", n)):
+        parts.append(_inspect.getsource(g[name]))
+    return chr(10).join(parts)
+
+
 class _AskEarly:
     """A phase decided the answer early (budget refusal); the caller
     returns .value in place of the pipeline result."""

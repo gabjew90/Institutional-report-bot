@@ -98,7 +98,7 @@ def test_retry_block_calls_mask_helper():
     _mask_slur_tokens on chat_context, voice_stripped profile, AND the
     question. All three sources of slur density must be masked."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "_mask_slur_tokens" in src, (
         "retry block must call _mask_slur_tokens"
     )
@@ -116,7 +116,7 @@ def test_retry_block_runs_after_voice_strip_retry_empty():
     """The third-tier retry must run AFTER the Voice-strip retry, not
     INSTEAD of it. Anchor on the source order."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     voice_strip_idx = src.find("voice_stripped = _strip_voice_sections")
     mask_retry_idx = src.find("third-tier retry")
     assert voice_strip_idx != -1, "voice-strip retry not found"
@@ -131,7 +131,7 @@ def test_retry_block_records_voice_lint_on_recovery():
     """Recovery answer must run through _clean_voice_violations same
     as the Voice-strip retry path."""
     import discord_bot.bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     mask_retry_idx = src.find("third-tier retry")
     window = src[mask_retry_idx:mask_retry_idx + 4000] if mask_retry_idx != -1 else ""
     assert "_clean_voice_violations" in window, (

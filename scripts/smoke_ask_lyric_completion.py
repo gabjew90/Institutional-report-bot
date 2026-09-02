@@ -57,7 +57,7 @@ def test_completion_shapes_match():
 
 def test_web_override_wired():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     win = src.split("_QUOTE_COMPLETION_RE.search(question", 1)
     assert len(win) == 2, "WEB override not wired after the router"
     tail = win[1][:400]

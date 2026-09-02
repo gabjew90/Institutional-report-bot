@@ -77,7 +77,7 @@ def test_clean_answer_no_meta_narration():
 # 4. Static check: retry branch wired in
 def test_retry_branch_wired():
     from discord_bot import bot as bot_mod
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     assert "meta-narration" in src, "expected 'meta-narration' hit-check in _answer_with_gemini"
     assert "architecture-leak rewrite" in src, (
         "expected architecture-leak rewrite log line in _answer_with_gemini"

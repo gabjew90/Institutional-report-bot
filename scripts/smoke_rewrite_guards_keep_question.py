@@ -43,7 +43,7 @@ def _guard_window(src, marker, size=2200):
 
 def test_recycle_rewrite_receives_the_question():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     win = _guard_window(src, "_rr_prompt = (")
     assert "{question" in win, (
         "the roast-recycle rewrite prompt never includes the question, "
@@ -54,7 +54,7 @@ def test_recycle_rewrite_receives_the_question():
 
 def test_pnl_rewrite_receives_the_question():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     win = _guard_window(src, "_pm_prompt = (")
     assert "{question" in win, (
         "the P&L-monotone rewrite prompt never includes the question"
@@ -66,7 +66,7 @@ def test_both_rewrites_demand_the_answer_survive():
     """Not enough to see the question — the prompt must say the output
     is still an answer to it, in the same shape."""
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     for marker, name in (("_rr_prompt = (", "roast-recycle"),
                          ("_pm_prompt = (", "P&L-monotone")):
         win = _guard_window(src, marker)
@@ -88,7 +88,7 @@ def test_rewrites_do_not_assume_a_roast():
     a roast at the asker. That framing is what redirected a question
     about the ROOM into a jab at BK."""
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     for marker, name in (("_rr_prompt = (", "roast-recycle"),
                          ("_pm_prompt = (", "P&L-monotone")):
         win = _guard_window(src, marker)
@@ -110,7 +110,7 @@ def test_roast_guards_skip_analysis_answers():
     """
     import inspect
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     for marker, name in (("_prior_bot_answer_texts):", "roast-recycle"),
                          ("_roast_is_pnl_monotone(answer, profiles_block)):",
                           "P&L-monotone")):
@@ -143,7 +143,7 @@ def test_roast_guards_require_clapback_shape():
     """
     import inspect
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     for marker, name in (("_prior_bot_answer_texts):", "roast-recycle"),
                          ("_roast_is_pnl_monotone(answer, profiles_block)):",
                           "P&L-monotone")):

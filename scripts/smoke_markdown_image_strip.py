@@ -50,7 +50,7 @@ def test_plain_text_untouched():
 def test_strip_wired_in_executor():
     import inspect
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     assert r"!\[([^\]]*)\]\([^)]*\)" in src, (
         "markdown-image strip must run in the answer pipeline"
     )

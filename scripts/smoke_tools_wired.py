@@ -31,7 +31,7 @@ SRC = inspect.getsource(bot_mod)
 
 def test_main_config_has_all_tools():
     """The main GenerateContentConfig tools list contains all 4 tools."""
-    src = inspect.getsource(bot_mod._answer_with_gemini)
+    src = bot_mod._ask_pipeline_source()
     for builder in (
         "_build_chat_search_tool",
         "_build_user_profile_tool",

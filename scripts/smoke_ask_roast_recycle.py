@@ -107,7 +107,7 @@ def test_per_prior_answer_not_union():
 
 def test_guard_wired_banter_gated():
     import discord_bot.bot as bot
-    src = inspect.getsource(bot._answer_with_gemini)
+    src = bot._ask_pipeline_source()
     # 2026-07-30: this pinned the two terms as ADJACENT text, which broke
     # when `not _analysis_extra` was inserted between them. Check the
     # gate is in the condition, not how it's spelled.
