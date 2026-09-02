@@ -160,8 +160,32 @@ jobs:
             python scripts/pilot_verify_cards.py "$OUT" "$TEXT" --final
           done < /tmp/unread.tsv
           echo "read $TOTAL document(s), $FAILED failed"
-          # Metric 5 (ops) reads this rate. One poisoned PDF must not
-          # stop the pilot's day; a total wipeout should be loud.
+          # Metric 5 (ops): append this run to pilot/ops/<date>.json so the
+          # scoreboard can compute the day's reader failure rate and whether
+          # a read ran into the pulse window (13:55-14:15 UTC).
+          python - "$TOTAL" "$FAILED" <<'PY'
+          import json, os, sys
+          from datetime import datetime, timezone
+          total, failed = int(sys.argv[1]), int(sys.argv[2])
+          now = datetime.now(timezone.utc)
+          path = os.path.join("pilot-data", os.environ["PILOT_ROOT"], "ops", now.strftime("%Y-%m-%d") + ".json")
+          os.makedirs(os.path.dirname(path), exist_ok=True)
+          doc = {"runs": []}
+          if os.path.exists(path):
+              try:
+                  doc = json.load(open(path, encoding="utf-8"))
+              except Exception:
+                  doc = {"runs": []}
+          hm = now.hour * 60 + now.minute
+          doc["runs"].append({"finished_utc": now.strftime("%H:%M"), "total": total, "failed": failed,
+                              "in_pulse_window": 13 * 60 + 55 <= hm <= 14 * 60 + 15})
+          t = sum(r["total"] for r in doc["runs"]); f = sum(r["failed"] for r in doc["runs"])
+          doc["reader_failure_rate"] = round(f / t, 3) if t else None
+          doc["collided_with_pulse_window"] = any(r["in_pulse_window"] and r["total"] > 0 for r in doc["runs"])
+          json.dump(doc, open(path, "w", encoding="utf-8"), indent=1)
+          PY
+          # One poisoned PDF must not stop the pilot's day; a total
+          # wipeout should be loud.
           if [ "$TOTAL" -gt 0 ] && [ "$FAILED" -eq "$TOTAL" ]; then
             echo "::error::every reader failed this run"; exit 1
           fi
@@ -174,6 +198,9 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           if [ -d "$PILOT_ROOT/cards" ]; then
             git add "$PILOT_ROOT/cards/"
+          fi
+          if [ -d "$PILOT_ROOT/ops" ]; then
+            git add "$PILOT_ROOT/ops/"
           fi
           git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
           git commit -m "pilot: reader cards ($(date -u +%FT%TZ))"

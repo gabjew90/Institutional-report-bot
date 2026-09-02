@@ -15,6 +15,11 @@ Environment: `QC_PULSE_TS` env var holds today's run timestamp
 - `pulse-output/driver/$QC_PULSE_TS.json` — the gate trail
 - `pulse-output/adversarial/$QC_PULSE_TS.json` — pre-commit verdict
 - `pulse-output/qc-reviews/$QC_PULSE_TS.md` — STEP 7's self-review
+
+You grade PRODUCTION only. Ignore the shadow pilot entirely: anything
+on the `pilot-data` branch or under a `pilot/` directory (shadow
+pulses, cards, grades, scoreboard) is a separate experiment with its
+own graders and must not appear in your review or your result line.
 - `pulse-context/latest.json` — the day's research context dump
 
 ## Ground rules

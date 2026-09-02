@@ -9,7 +9,7 @@ all incorporated below (owner review). **Destination decided
 2026-09-01 (option B): the `pilot-data` ORPHAN branch** — production
 artifacts cannot be touched even by accident, the pulse archive's
 history stays readable, and cleanup after the verdict is deleting one
-branch. Piece 1 is UNHELD and built.
+branch. Piece 1 is UNHELD and built. **Pieces 2-8 BUILT 2026-09-01** (build session 2 shipped the shadow editor, frozen graders, separation gate, scoreboard and runbook). Shakedown begins when `PILOT_PUBLISH_ENABLED` is set; day 1 when `pilot/DAY1` is committed after the grader gate clears.
 
 ## 0. The one fork: what rail do the readers run on
 

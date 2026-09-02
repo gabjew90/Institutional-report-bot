@@ -315,6 +315,10 @@ The pulse fragment classes are a **stable contract**. Don't rename `.pulse`, `.p
 
 **Backfill policy** (worth knowing when a user asks "why aren't past pulses showing up"): the bridge worker's `publish_web_fragment_job` only renders the HTML fragment for the **single most recent** archived pulse. Older entries in `archive.json` are minimal stubs (just `{ts, filename, archive_url}` — no `fragment_url`). The dashboard's pulse page filters stubs out, so historical pulses don't appear until a fragment exists. To backfill (e.g., to populate a full historical week-by-week view), a one-shot script is needed; none exists yet.
 
+## Shadow pilot (claim-card redesign)
+
+Runs beside production on the `pilot-data` orphan branch and GitHub Actions; production is never written by any pilot job. Runbook: `docs/superpowers/routines/pilot/RUNBOOK.md`. Frozen grader prompts and fixtures live under `docs/superpowers/routines/pilot/`; a change to them or to a model string in `scripts/pilot_config.py` restarts the pilot clock. The daily-qc pulse judge ignores the pilot tree by instruction. `PILOT_PUBLISH_ENABLED` on the Railway worker is the on/off switch for the whole chain.
+
 ## Recent Session Context (2026-04-14 → 2026-04-16)
 
 Major improvements made in the recent iteration sequence:

@@ -922,3 +922,25 @@ patches keep working; a local `.git/hooks/pre-push` runs the gate and
 refuses the push on non-zero, so a shell mistake can no longer skip
 it. Rule for every future chain: never put the gate behind a pipe.
 
+## 2026-09-01 — Shadow pilot build session 2 (pieces 5-8)
+
+Shadow editor (13:55 UTC), frozen graders (17:00 UTC, two agents per
+dimension), the grader separation gate with seeded known-bad fixtures,
+the scoreboard, the runbook. All on GitHub Actions against the
+pilot-data orphan branch; production untouched.
+
+Two things the dry run taught before anything ran live: the ledger's
+bank-dedup must not drive the pack order (a bank's second card on the
+same name landed at the end of the pack), and the citation verifier
+needs word-bounded bank names ("ing" matched "holding") and must not
+treat calendar years as figures.
+
+Deviations recorded in RUNBOOK.md: shadow omits WHAT TO WATCH as well
+as RECAP (no live data on the runner); grader fixtures are frozen in
+this repo beside the prompts, with the gate verdict copied to the data
+branch; metric 5 comes from ops/<date>.json written by the readers.
+
+Next: PILOT_PUBLISH_ENABLED on, two shakedown days, run the grader
+gate from the Actions tab until every dimension separates, then commit
+pilot/DAY1.
+
