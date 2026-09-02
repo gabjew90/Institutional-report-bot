@@ -1,0 +1,34 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "MSFT and Meta guide above consensus -> Goldman raises 2026 hyperscaler capex to $751B from $671B -> driver is HBM/CoWoS supply lock (sold out through 1H27), so top 4 buyers pull 2027 orders forward -> because constraint is supply not demand, rising HBM contract prices (+18% into 1Q27) push capex guides higher -> cycle extends rather than peaks -> Buy NVDA, $250 target -> invalidation: HBM prices falling 2 consecutive months breaks the pull-forward thesis and cuts 2027 guides -> a Fed rate decision is not expected to change this",
+   "brief_chain": "MSFT and Meta guide above consensus -> Goldman raises 2026 hyperscaler capex to $751B from $671B -> mechanism is supply not appetite: top 4 buyers pull 2027 orders forward to lock HBM/CoWoS capacity sold out through 1H27 -> because constraint is supply, rising HBM contract prices (+18% into 1Q27) push capex guides higher, so cycle extends rather than peaks -> Buy NVDA, $250 target -> invalidation: HBM prices falling 2 months running breaks the pull-forward argument and cuts 2027 guides -> a Fed decision is not expected to change the picture",
+   "distortions": [
+    {
+     "what": "Brief says 'A Fed decision' where source specifies 'a Fed rate decision'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the claim (Fed action doesn't affect this thesis) is unchanged regardless of which Fed decision type is named."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 1,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

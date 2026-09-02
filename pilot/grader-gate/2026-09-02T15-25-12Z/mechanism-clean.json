@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "fixture",
+ "source_file": "C:\\Users\\gabje\\AppData\\Local\\Temp/gate_local/in\\source-rates.txt",
+ "source_span": "the front end is anchored by a Fed on hold, so the long end is doing the work as term premium rebuilds",
+ "source_chain": "10-year broke 4.40% therefore (Fed on hold pins the front end) the long end does the work via term premium rebuilding therefore JPM calls it a bear-steepener and pays 5s30s at 62bp, stop 48bp; invalidation/trigger: Thursday's core PCE (0.3% m/m consensus) \u2014 hot validates, soft does not by itself reverse it while the Fed stays on hold. Citi frames the same break as a positioning flush that holds 4.40% on a close.",
+ "pulse_chain": "10-year broke 4.40% therefore (Fed on hold pins the front end) JPM reads it as the long end doing the work, a bear-steepener from term premium rebuilding rather than hike fear, therefore pays 5s30s at 62bp, stop 48bp; invalidation/trigger: Thursday's core PCE (0.3% m/m consensus) \u2014 hot validates the steepener, soft does not reverse it while the Fed stays put. Citi disagrees, calls it a positioning flush that holds 4.40% on a close.",
+ "preserved": true,
+ "why": "Every step, the JPM/Citi attribution, the trade parameters, and the PCE invalidation condition all match the source note with only compression and rewording.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

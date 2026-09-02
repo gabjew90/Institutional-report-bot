@@ -1,0 +1,59 @@
+{
+ "metric": 2,
+ "artifact": "fixture",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "The 10-year yield broke 4.40% on Friday for the first time since May.",
+   "why": "Verbatim match on level, day, and recency claim."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We think the move is a bear-steepener: the front end is anchored by a Fed on hold",
+   "why": "Attributed to J.P. Morgan Rates Strategy in the source; view and mechanism match."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We recommend paying 5s30s at 62bp with a stop at 48bp.",
+   "why": "Trade, levels, and JPM attribution match exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "Citi's rates desk, by contrast, sees the break as a positioning flush and expects 4.40% to hold on a closing basis.",
+   "why": "Attribution, view, and level match exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "A hot core PCE print on Thursday (consensus 0.3% m/m) would validate our steepener",
+   "why": "Day, metric, and consensus figure match; 'test for the steepener' is a fair compression of the conditional validate/not-reverse framing, not a distortion of direction or status."
+  }
+ ],
+ "faithful": 5,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

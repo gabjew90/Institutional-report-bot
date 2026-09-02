@@ -1,0 +1,38 @@
+{
+ "metric": 1,
+ "total_cards": 6,
+ "fragmentation_sets": [
+  {
+   "subject": "hyperscaler AI capex spending guidance",
+   "labels": [
+    "AI capex cycle",
+    "hyperscaler spending acceleration"
+   ],
+   "cards": 2
+  }
+ ],
+ "fragmented_mass_share": 0.33,
+ "mis_merges": [
+  {
+   "label": "Oil",
+   "subjects": [
+    "Brent scarcity premium / Hormuz supply-risk thesis",
+    "rates curve trade (5s30s steepener, 10Y yield level)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "the JPM 5s30s pay and Citi 4.40% level cards are a rates-curve story, not oil, and folding them into 'Oil' would hide a distinct rates theme from an editor picking the day's leads."
+  }
+ ],
+ "pass": false,
+ "notes": "Goldman and MS capex cards split one subject across two labels well above the 10% threshold, and the Oil label mixes an unrelated rates-curve trade in with the Brent/Hormuz story.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "d9ae7367c064"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,25 @@
+{
+ "dimensions": {
+  "grouping": {
+   "bad_failed": true,
+   "clean_passed": true,
+   "status": "separates"
+  },
+  "fidelity": {
+   "bad_failed": true,
+   "clean_passed": true,
+   "status": "separates"
+  },
+  "brief_fidelity": {
+   "bad_failed": true,
+   "clean_passed": true,
+   "status": "separates"
+  },
+  "mechanism": {
+   "bad_failed": true,
+   "clean_passed": true,
+   "status": "separates"
+  }
+ },
+ "all_separate": true
+}

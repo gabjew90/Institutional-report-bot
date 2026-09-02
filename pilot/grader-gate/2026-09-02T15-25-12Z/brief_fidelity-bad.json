@@ -1,0 +1,44 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "MSFT/Meta guide above consensus -> GS raises 2026 capex to $751B -> driver is supply lock (buyers pulling forward 2027 orders to secure HBM/CoWoS capacity sold out through 1H27, not demand alone) -> because the constraint is supply not appetite, rising HBM pricing (+18% into 1Q27) reinforces guides rising further -> cycle extends rather than peaks -> Buy NVDA, $250 target -> invalidation: HBM contract prices falling for two consecutive months breaks the pull-forward argument and cuts 2027 guides; a Fed rate decision is explicitly NOT expected to change this",
+   "brief_chain": "MSFT/Meta guide above consensus -> GS raises 2026 capex to $751B -> driver is demand (inference workloads outrunning supply), buyers ordering HBM/CoWoS sold out through 1H27 to meet demand -> because appetite is the constraint, rising HBM pricing is a headwind that could cap capex guides -> cycle is closer to peaking than extending -> Buy NVDA, $250 target -> invalidation: a Fed rate decision that tightens financial conditions cuts 2027 guides; HBM pricing demoted to secondary factor",
+   "distortions": [
+    {
+     "what": "Source frames the driver as a supply lock (buyers pulling forward 2027 orders to secure scarce HBM/CoWoS capacity) with supply, not appetite, as the binding constraint. Brief frames the driver as demand outrunning supply, with appetite as the constraint.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 this inverts the read on cycle trajectory itself (source: supply-constrained, so the cycle extends; brief: demand-constrained, so the cycle is closer to peaking), which changes conviction on whether to add to or trim the NVDA position as the cycle matures."
+    },
+    {
+     "what": "Source treats rising HBM prices as part of the mechanism that keeps capex guides rising (constraint tightens -> guides rise). Brief treats rising HBM prices as a headwind that could cap capex guides.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a factor recast from bullish-reinforcing to a capping headwind reverses its directional implication for future capex guides, which is the basis for staying long NVDA on this thesis."
+    },
+    {
+     "what": "Source's stated invalidation is HBM contract prices falling for two consecutive months, and it explicitly states a Fed rate decision would NOT change the picture. Brief's invalidation is a Fed rate decision that tightens financial conditions, with HBM pricing demoted to a secondary factor.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 trading off the brief's invalidation means watching the wrong trigger (Fed action the source explicitly rules out) while missing the actual falsifying signal (HBM price rollover), producing both false invalidation signals and missed real ones."
+    }
+   ],
+   "material_count": 3,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 3,
+ "non_material_total": 0,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

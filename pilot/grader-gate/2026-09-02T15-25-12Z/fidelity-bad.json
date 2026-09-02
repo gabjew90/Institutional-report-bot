@@ -1,0 +1,58 @@
+{
+ "metric": 2,
+ "artifact": "fixture",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "The 10-year yield broke 4.40% on Friday for the first time since May.",
+   "why": "Exact match to source figure, day, and lookback."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We think the move is a bear-steepener: the front end is anchored by a Fed on hold",
+   "why": "Note is authored by J.P. Morgan Rates Strategy; 'we think' is JPMorgan's own view, correctly attributed."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We recommend paying 5s30s at 62bp with a stop at 48bp. Citi's rates desk, by contrast, sees the break as a positioning flush and expects 4.40% to hold on a closing basis.",
+   "why": "The pay 5s30s trade at 62bp/48bp is JPMorgan's own call ('We recommend'), not Citi's. Citi's actual view in the source is the opposite framing (positioning flush, expects the level to hold) with no trade recommendation attached. The figures are correct but the attribution swaps banks."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "why": "No source document mentions Goldman, a 4.75% year-end target, or fading foreign demand; the only forecast content in the source is JPMorgan's steepener call and Citi's hold-the-level view."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "A hot core PCE print on Thursday (consensus 0.3% m/m) would validate our steepener",
+   "why": "Consensus figure, day, and framing as the catalyst/test for the steepener match the source."
+  }
+ ],
+ "faithful": 3,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.6,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}
