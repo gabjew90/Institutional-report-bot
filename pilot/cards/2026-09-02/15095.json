@@ -1,0 +1,804 @@
+{
+ "brief": "JPMorgan US Market Intelligence moves to a Tactically Cautious / Neutral stance. The chain: Warsh's post-Jackson Hole view that the US is at full employment with inflation too high makes the Sep 16 meeting live, so CPI on Sep 11 outranks Friday's NFP, and NFP inverts into a good-news-is-bad-news setup because a stronger print lifts yields and weighs on equities. Four further inputs stack on. Positioning gives no clean directional read, post-Labor Day issuance widens credit spreads, September screens as the worst SPX month before a strong Q4, and Momentum is down more than 21% (JPMPURE) and nearly 34% (JPPQMO) from June highs, outside typical 10-15% drawdowns. Fundamentals are held intact: recession is unlikely, earnings should print strongly for two more quarters, and two 25bp hikes would not derail the bull market. The conclusion is chop rather than a dramatic pullback, arguing for reduced net longs and a dollar-neutral approach. The monetization menu is +NDX vs. -RTY, Mag7 over AI/Memory/Semis, short credit ETFs and long VIX as hedges. The note also carries Feroli's NFP preview, an AVGO earnings preview, weekly delta-one flows, consumer spending and credit default updates.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "JPM US Market Intelligence is moving to a Tactically Cautious / Neutral stance on equities.",
+   "anchor": "We are moving to a Tactically Cautious / Neutral view, which is to say that Equity",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 2-3 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk expects equity market fundamentals to remain intact but the next 2-3 weeks to be choppy.",
+   "anchor": "we think market fundamentals (econ & earnings) remain intact but see the",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 2-3 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk argues for reducing net-longs and potentially adopting a dollar-neutral or market-neutral approach.",
+   "anchor": "This argues for reducing net-longs and potentially adopting a $-neutral or market-neutral approach.",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 2-3 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "If the Fed hikes, two 25bp hikes is the most likely path and would not derail the equity bull market.",
+   "anchor": "Two 25bp hikes seems most likely if/when the Fed pulls the trigger, which would",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk views CPI on Sep 11 as more impactful for markets than the Sep 4 NFP print.",
+   "anchor": "we view CPI as more impactful and that NFP is operating in a 'Good",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "ahead of the Sep 16 Fed meeting"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "A stronger NFP print will likely push bond yields higher and weigh on equities.",
+   "anchor": "A stronger NFP print will likely push bond yields higher, weighing on Equities",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Sep 4 NFP"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Michael Feroli forecasts 50k nonfarm payrolls added versus the Street's 55k, against a prior print of -23k.",
+   "anchor": "He sees 50k jobs being added, versus the Street's estimate of 55k; the prior print was -23k jobs.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sep 4 NFP"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Feroli forecasts the U.3 unemployment rate at 4.1%, unchanged from prior.",
+   "anchor": "For the unemployment rate (U.3) he sees 4.1% vs. 4.1% prior.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sep 4 NFP"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Feroli forecasts Average Hourly Earnings of +0.25% MoM and +3.0% YoY.",
+   "anchor": "For Average Hourly Earnings, he sees +0.25% MoM and +3.0% YoY.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sep 4 NFP"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "SPX index options expiring September 4, 2026 imply a 1.1% move.",
+   "anchor": "For SPX index options expiring on September 4, 2026, using data from August 31, show a 1.1% implied move.",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "expiry September 4, 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk assigns a 30% probability to NFP printing between 35k and 65k, with SPX ranging from -25bp to +50bp.",
+   "anchor": "[30%] NFP prints between 35k - 65k. SPX loses 25bp to gains 50bp",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sep 4 NFP"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk assigns a 10% probability to NFP printing above 95k, in which case SPX loses 50bp to 1.25%.",
+   "anchor": "[10%] NFP prints above 95k. SPX loses 50bp - 1.25%",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Sep 4 NFP"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk assigns a 25% probability to NFP printing between 5k and 35k, with SPX gaining 25bp to 75bp.",
+   "anchor": "[25%] NFP prints between 5k - 35k. SPX gains 25bp - 75bp",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Sep 4 NFP"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk considers a 30k to 70k payroll print the goldilocks outcome.",
+   "anchor": "Goldilocks is like in the 30k - 70k range.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Sep 4 NFP"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The monetization menu starts with a long NDX versus short RTY position.",
+   "anchor": "MONETIZATION MENU (AUG 31) - We start with a +NDX vs. -RTY position.",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Within Tech the desk favors Mag7 as the near-term play given AI, Memory and Semis cannot sustain a bid.",
+   "anchor": "we like Mag7 as the favored near-term play given the inability for AI / Memory / Semis to sustain a bid",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk expects SMID-caps to underperform as part of the tactical call.",
+   "anchor": "we think that SMID-caps are likely to underperform as part of this tactical call",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk likes Large-Cap Banks on the growth story plus loose financial conditions, and Consumer Discretionary if energy prices fall.",
+   "anchor": "we like Large-Cap Banks given the economic growth story accompanied by loose financial conditions",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "As hedges the desk likes shorting Credit ETFs and buying VIX products.",
+   "anchor": "As hedges we like shorting Credit ETFs and buying VIX products.",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "until the Sep 16 Fed meeting"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Within Defensives, Healthcare tends to be the best performing sector into midterms.",
+   "anchor": "Within Defensives, Healthcare tends to be the best performing sector into midterms.",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into midterms"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk expects the Dollar Debasement trade to struggle until the Sep 16 Fed meeting.",
+   "anchor": "Until we get through the Fed Meeting on Sep 16, the Dollar Debasement trade may struggle",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "until Sep 16"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Momentum (JPMPURE Index) is down more than 21% from its June all-time high and Classic Momentum (JPPQMO Index) is down nearly 34%.",
+   "anchor": "Momentum (JPMPURE Index) is down more than 21% from its June ATH and 'Classic'",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since June"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "September screens as the worst performing month for the SPX, followed by Q4 as the strongest quarter.",
+   "anchor": "September screens as the worst performing month for the SPX followed by Q4 being the strongest",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September and Q4"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Since 1990 the SPX has rallied +5.4% at 3 months and +14.7% at 12 months after midterm election days, with hit rates of 78% and 100%.",
+   "anchor": "the SPX rallied +5.4%, +11.4%, +12.5%, and +14.7% at 3 month",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3 to 12 months post midterms"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "SPX futures are down 0.3%, NDX down 0.6% and RTY down 0.2% pre-market.",
+   "anchor": "SPX -0.3%, NDX -0.6%, RTY -0.2%. WTI +28bps at $90.47",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "WTI crude is up 28bps at $90.47 and NatGas up 148bps to $2.95.",
+   "anchor": "WTI +28bps at $90.47, NatGas +148bps to",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Gold is down 46bps to $4,309 and Silver down 67bps to $63.65.",
+   "anchor": "Gold -46bps to $4,309, Silver -67bps to $63.65",
+   "status": "level",
+   "instruments": [
+    "GLD",
+    "SLV"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The 10-year Treasury yield is 4.812% and VIX is 16.76.",
+   "anchor": "10Y @ 4.812%, and VIX @ 16.76.",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk expects equities to keep struggling until crude and rates stabilize.",
+   "anchor": "Equities will continue to struggle until crude / rates stabilize.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk flags $4,300 as the level to watch as gold support.",
+   "anchor": "keep an eye on gold to see if $4,300 acts as support",
+   "status": "level",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "AVGO is down 53bps pre-market with earnings after the close today.",
+   "anchor": "AVGO is -53bp with earnings after the Close today",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "JPM assigns Broadcom a positioning score of +3 on a -5 to +5 scale.",
+   "anchor": "POSITIONING SCORE (-5 = max short/UW, 5 = max long/OW): +3",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Consensus models Broadcom revenue growth of +33% QoQ and +85% YoY while the JPM buyside survey shows +36% and +89%.",
+   "anchor": "Consensus models Revenue +33%QoQ & +85%YoY, and my buyside survey shows even higher expectations of +36% & +89%",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "current quarter"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Broadcom revenue growth expectations are backed by over 150% YoY growth in AI revenue.",
+   "anchor": "all backed by over 150%YoY growth in AI revenue",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "current quarter"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Buyside expectations for Broadcom this quarter are for a 2.2% revenue beat, wider than recent quarters.",
+   "anchor": "expectations for this quarter (for a 2.2% Revenue beat) are wider than we've",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "current quarter"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Most survey respondents expect Hock Tan to raise the FY27 AI revenue guide, with $120b the consensus landing zone.",
+   "anchor": "The majority of respondents also expect Hock to raise the FY27 AI",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Buyside survey respondents sit 5% below consensus for Broadcom F28 AI revenue.",
+   "anchor": "respondents to my buyside survey are 5% below consensus for F28 AI",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "F28"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "If Harlan Sur's estimate that the Broadcom F27 AI backlog exceeds $150B is right, there is room for Hock Tan to wrong-foot the bears, though probably not this quarter.",
+   "anchor": "if Harlan is right that the F27 AI backlog exceeds $150B, there is",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "F27"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Broadcom 2H26 is supported by a strong shipment inflection from the TPU v8i ramp and Tomahawk 6 is essentially sold out.",
+   "anchor": "2H26 is supported by a strong shipment inflection from the TPU v8i ramp",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2H26"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The chief investor concern on Broadcom is share loss at Alphabet to co-developed projects with MediaTek.",
+   "anchor": "The chief investor concern is share loss at GOOGL to COT projects co-developed with MediaTek",
+   "status": "level",
+   "instruments": [
+    "AVGO",
+    "GOOGL"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "JPM is confident the Alphabet-Marvell deal does not involve TPU and does not believe the unconfirmed AMD project can be TPU.",
+   "anchor": "MRVL deal (which we are confident does not involve TPU) and unconfirmed reports of a project with AMD",
+   "status": "level",
+   "instruments": [
+    "GOOGL",
+    "MRVL",
+    "AMD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Broadcom remains a crowded net long, though net crowding trails blue-chip tech peers including NVDA.",
+   "anchor": "Broadcom remains a quite crowded net long",
+   "status": "level",
+   "instruments": [
+    "AVGO",
+    "NVDA"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Investors aggressively cut duration last week, rotating ETF flows out of medium-term and broad government bonds into the front end.",
+   "anchor": "Investors aggressively cut duration last week.",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "US rates futures saw $37.5Bn of net buying at 1.9 standard deviations, led by the front end.",
+   "anchor": "US rates were heavily bought ($37.5Bn, 1.9z), led by the front end",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Equity ETFs took $35Bn of inflows at 0.5 standard deviations last week.",
+   "anchor": "Equities ($35Bn, 0.5z) and Commodities ($1.4Bn, 0.3z) were",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Financials ETFs posted a third consecutive week of outflows at -$1.6Bn and -1.5 standard deviations.",
+   "anchor": "Financials posted a third consecutive week of strong outflows (-",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Semis led tech ETF inflows with +$3.3Bn across SMH, SOXX and SOXL.",
+   "anchor": "Semis led tech inflows (+$3.3Bn across SMH/SOXX/SOXL)",
+   "status": "released",
+   "instruments": [
+    "SMH",
+    "SOXX",
+    "SOXL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Fixed income ETF investors rotated out of multi-term government bonds at -3.8 standard deviations into short-term government bonds at +6.3z.",
+   "anchor": "and multi-term (-3.8z; mainly GOVT) into short-term government bonds (+6.3z; primarily VGSH/SCHO/SPTS)",
+   "status": "released",
+   "instruments": [
+    "GOVT",
+    "VGSH",
+    "SCHO",
+    "SPTS"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Crypto ETFs saw a second consecutive week of inflows at $1.8Bn and 1.2 standard deviations.",
+   "anchor": "Crypto saw a second consecutive week of strong inflows ($1.8Bn, 1.2z)",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "CTAs likely remain broadly long global equities and short rates, with China the exception for both.",
+   "anchor": "CTAs likely remain broadly long global equities and short rates (China the",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Asset Managers materially cut longs in UST Long Bonds by 2.1 standard deviations while Leveraged Funds reduced NDX shorts by 1.9z.",
+   "anchor": "Asset Managers bought EM and NDX, and materially cut",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "DRAM thematic ETFs posted their first weekly outflow since launch at -$0.9Bn.",
+   "anchor": "Thematics (-0.5z) were weak as DRAM (-$0.9Bn) posted its first weekly outflow since launch",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Month-to-date consumer spending through Aug 20 ran +5.4% YoY versus +4.4% in July.",
+   "anchor": "the MTD spending was +5.4% YoY vs. +4.4% in July led by an increase in discretionary",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through Aug 20"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Discretionary consumer spending ran +5.8% YoY versus July's +4.4% while non-discretionary was flat at 4.5% YoY.",
+   "anchor": "spending, +5.8% vs. July's +4.4%, as non-discretionary was flat versus July at 4.5% YoY",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through Aug 20"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "By income cohort, Upper Income spending rose 6.9% YoY versus 5.7% in July and Middle Income rose 7.3% versus 6.2%.",
+   "anchor": "By income cohort, (i) Upper Income +6.9% YoY vs. 5.7% in July; (ii) Middle Income",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through Aug 20"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Lower Income spending rose 4.8% YoY versus +4.3% in July.",
+   "anchor": "and (iii) Lower Income +4.8% YoY vs. +4.3% in July.",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through Aug 20"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Year-to-date default rates are 2.63% for HY bonds and 2.33% for Leveraged Loans, par-weighted and including distressed exchanges.",
+   "anchor": "YTD default rates at 2.63% for HY bonds and 2.33% for Leveraged Loans, both rates are",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Nelson Jantzen forecasts year-end 2026 default rates of 2.25% for both HY bonds and Leveraged Loans.",
+   "anchor": "For YE26 he forecasts default rates of",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "For year-end 2027 Jantzen forecasts a 2.75% HY bond default rate and 4.5% for Leveraged Loans.",
+   "anchor": "For YE27, he sees HY bonds having a 2.75% default",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year-end 2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The 25-year average default rates are 3.2% for HY and 2.9% for Leveraged Loans.",
+   "anchor": "The 25-year average default rates for HY and LL are 3.2% and",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "25-year average"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The ISM Manufacturing print was weaker than expected but shows the economy still in expansion.",
+   "anchor": "These prints are weaker than expected but not enough to change one's investment",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk expects earnings to print very strongly over the next two quarters or longer.",
+   "anchor": "The economy remains in expansion mode with earnings likely to print very",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 2 quarters"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk sees a recession as highly unlikely over the next few quarters, but Warsh's comments make September a live meeting.",
+   "anchor": "a recession is highly unlikely to manifest over the next few quarters, but Warsh's",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next few quarters"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk expects a post-Labor Day issuance spike to widen credit spreads, which can pressure equities.",
+   "anchor": "there is a spike in issuance in the two weeks post-Labor Day driving spreads wider",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two weeks post-Labor Day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "The desk warns AVGO earnings may prove spectacular yet fail to drive meaningful appreciation in AI, Memory and Semis.",
+   "anchor": "AVGO Earnings - may prove spectacular and fail to drive meaningful stock appreciation in AI / Memory / Semis.",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Positioning is not giving a clean read on market direction and history suggests a choppy next 3-4 weeks.",
+   "anchor": "positioning is not giving a clean read on market direction and history suggests a",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 3-4 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Morning Briefing",
+   "claim": "Asian equities were weak overnight with KOSPI down 4.0% and NKY down 2.9%.",
+   "anchor": "NKY -2.9%, ASX -1.0%, KOSPI -4.0%.",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c267bda11387"
+ },
+ "verify": {
+  "total": 67,
+  "matched": 67,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}

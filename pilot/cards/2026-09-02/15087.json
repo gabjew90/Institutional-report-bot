@@ -1,0 +1,589 @@
+{
+ "brief": "JPMorgan's Market Intelligence desk reports APAC equities and US and EU futures lower, with yields and oil in charge. It lists the debated bond sell-off drivers: geopolitics, global fiscal concerns, crowding out from AI corporate issuance, inflation risk, buyback scepticism, and hawkish repricing of central bank paths, notably the BOJ. On that basis the desk turned tactically cautious or neutral on global equities and took profit on gold, while flagging that muted VIX and downside skew moves sit against low realized volatility. It still expects an attractive Q4 setup, arguing the global manufacturing upturn supports JPM Economics' 3% annualised industrial growth forecast for 2H26, and that Asian positioning falling from the 75th percentile to the 40th, plus resumed EM inflows and Korean corporate buybacks, leaves Asian equities on an upward medium-term path even with near-term caution. Regional preference stays long US and Asia versus Europe, with supercycle themes as core longs and index hedges added. The note also carries an EM monetization menu, a Japan FX view tying quarterly BOJ hikes to a 155 to 165 USD/JPY range, and a positioning wrap on hedge fund de-grossing.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "APAC equities and US and EU equity futures are trading lower, with yields and oil the dominant drivers.",
+   "anchor": "APAC equities and US/EU futures are in the red. Yields and oil remain in",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Hawkish repricing of central bank paths, notably the Bank of Japan this morning, is one of the debated drivers of the bond sell-off.",
+   "anchor": "of CB paths, notably the BOJ this am",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The JPMorgan Market Intelligence desk turned more cautious and Drew moved to tactically neutral on Monday.",
+   "anchor": "Market Intel/Trading (we) turned more cautious.  Drew moved to tactically",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "tactical"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk took profit on its gold position and is looking to re-enter.",
+   "anchor": "4) took profit on gold but look to re-enter",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Muted moves in VIX and downside skew are surprising to the desk, with realized volatility still low and higher on up days than down days.",
+   "anchor": "The muted moves in VIX and downside skew are somewhat surprising, although",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk expects the market is most likely heading towards an attractive Q4 setup.",
+   "anchor": "Are we heading towards an attractive Q4 setup? Most likely.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q4 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "JPM Economics forecasts sustained 3% annualised global industrial growth in the second half of 2026, supported by the global manufacturing upturn.",
+   "anchor": "Economics' forecast for sustained 3% annualised global industrial growth in 2H26",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2H26"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "JPM Research's aggregate measure of investor positioning in Asia has fallen from the 75th percentile in late June to the 40th percentile today.",
+   "anchor": "fallen from the 75th percentile in late June to the 40th today",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The aggregate measure of Asia investor positioning dropped from the 75th percentile to the 32nd percentile between mid-June and late July.",
+   "anchor": "from the 75th percentile to the 32nd percentile from mid-June to late-July",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The biggest change in Asia long-only positioning in the second quarter was substantial cuts to Tech in both Korea and Taiwan.",
+   "anchor": "positioning cuts in Tech \u2013 both Korea and Taiwan (Figure 2)",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2Q26"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Emerging market asset class inflows have resumed since July, totalling 19 billion dollars.",
+   "anchor": "EM asset class inflows have resumed since July (with $19bn of inflows)",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Korean corporate buybacks have emerged as a major new source of equity demand.",
+   "anchor": "new buyer has emerged in Korea in the form of corporate buybacks",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The Asia equity strategy team is cautious on Asian equities over the next few weeks while holding an upward medium-term trajectory view.",
+   "anchor": "Team is cautious \nover next few weeks but in the medium term",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next few weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Mislav remains bullish in his September chartbook, citing earnings revisions, PMIs and aggregate positioning.",
+   "anchor": "Mislav remains bullish in his September chartbook, citing earnings revisions,",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Germany's state elections are not a risk event and look more like a done deal.",
+   "anchor": "I would not call Germany's state elections a risk event; they look more like a",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The global equity strategy team remains bullish into year end on positive earnings revisions in all regions.",
+   "anchor": "Team remains bullish into year end, supported by",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The euro area stands out regionally with three consecutive months of PMI improvement.",
+   "anchor": "Regionally, the EA stands out with three",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The global equity strategy team expects the Tech and AI trade to struggle to dominate in the second half, unlike 2025.",
+   "anchor": "the view that it will struggle to dominate in 2H, unlike what transpired in 2025",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2H26"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The global equity strategy team is thematically positive on Basic Resources and Defense.",
+   "anchor": "thematically, positive on Basic Resources and Defense",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Euro area headline inflation increased to 3.3% year over year on fuel prices.",
+   "anchor": "Headline inflation increased to 3.3%oya due to fuel prices",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Euro area core inflation inched down to 2.4% year over year, with the decline driven by services while core goods inflation increased.",
+   "anchor": "inflation inched down to 2.4%oya. Core decline driven by services, while core goods",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "JPMorgan raises its Brent and TTF price assumptions.",
+   "anchor": "We raise our Brent and TTF price assumption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "JPMorgan expects Bank of Japan rate hikes roughly once per quarter for the time being, after intervention at end-July raised hike expectations.",
+   "anchor": "and we currently expect rate hikes roughly once per quarter for the",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "USD/JPY is likely to remain in a 155 to 165 range absent a major change in Fed policy expectations.",
+   "anchor": "we think it is likely that USD/JPY will remain in a 155\u2013165",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The International Market Intelligence desk is tactically cautious or neutral on global equities.",
+   "anchor": "INT MKT INTEL MONETIZATION: We are tactically cautious/neutral on Global",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tactical"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Macro and thematics support a relative regional preference for long US and Asia including Japan, South Korea and Taiwan versus Europe.",
+   "anchor": "Macro & thematics still impose the relative regional preference (long US &",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk has been tactically bullish on European equities since early May on positioning, underperformance and the Strait of Hormuz reopening regime switch.",
+   "anchor": "We have been tactically bullish on EU Equities since early May",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "tactical"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk would add cheap index hedges on European equities now.",
+   "anchor": "be adding cheap index hedges now",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Supercycle themes including AI bottlenecks and facilitators, Cyber, Physical AI, Clean Energy, Modern Warfare and Critical Minerals are key longs in an international equity portfolio.",
+   "anchor": "Supercycle themes - AI bottlenecks/facilitators, Cyber, Physical AI,",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk expects a multi-week factor rotation that keeps the complex choppy and vulnerable to drawdowns, so it stays hedged via options on momentum while buying dips.",
+   "anchor": "we stay hedged via \noptions on momentum, but we are minded to buying dips",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "multi-week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk likes cyclicals with a secular tailwind including EU and Japan Banks, EU Industrials, Japan Machinery and German Infrastructure.",
+   "anchor": "Cyclicals but with a secular tailwind. EU & JA Banks",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "EU Miners look attractive to the desk right now.",
+   "anchor": "EU Miners are looking attractive \nright now",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "In low volatility exposures the desk likes EU Pharma and the FTSE 100.",
+   "anchor": "In Low Vol space, we like EU Pharma and UKX",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk is short AI Vulnerable excluding Software, EU Insurance, and challenged industries including Autos, Chemicals, Asian Consumer Electronics, MedTech and the MDAX.",
+   "anchor": "Span AI Vulnerable (ex-Software), EU Insurance, challenged",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk is high conviction short EU Chemicals and Asia Consumer Electronics.",
+   "anchor": "We are high conviction on EU Chemicals and Asia Consumer",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk keeps a FTSE 250 underperform versus FTSE 100 option hedge until clarity emerges on spending, pragmatism and ideology.",
+   "anchor": "Keep 1) MCX < UKX until clarity emerges on spending",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The desk keeps a short France versus EU Domestics hedge on politics and dislocation.",
+   "anchor": "Short FR vs EU Domestics on politics and dislocation",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Emerging market equities rose 7% from the end-July low on the global momentum and tech rebound.",
+   "anchor": "The global momentum/tech rebound drove EM 7% higher since the July-end low",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The EM team is bullish on emerging markets on improving macro, a weaker dollar and AI capex tailwinds, while expecting divergence at country and sector level.",
+   "anchor": "given (i) improving macro; (ii) weaker USD; (iii) AI CapEx tailwinds, but continue to",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The EM team is tactically long China H-shares over A-shares, seeing room into China Tech earnings next week.",
+   "anchor": "LONG China H-shares over A-shares: the pair has been trading well in July given",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "tactical"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The EM team expresses the China view with a tactical long in China Internet via KWEB.",
+   "anchor": "this view via a TACTICALLY LONG in China Internet (KWEB)",
+   "status": "target",
+   "instruments": [
+    "KWEB"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "tactical"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The EM team is tactically long Taiwan after the July global tech selloff, viewing it as less volatile AI and Asia tech exposure than Korea.",
+   "anchor": "LONG Taiwan following the Global Tech selloff in July. Taiwan offers a less volatile",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "tactical"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The EM team likes long LatAm via ILF as a diversifying hedge against EM AI theme weakness and geopolitical risk.",
+   "anchor": "We like long LatAm (ILF) as a diversifying play",
+   "status": "target",
+   "instruments": [
+    "ILF"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The EM team suggests a long India versus short Southeast Asia pair trade using INDA against ASEA.",
+   "anchor": "You may consider a L/S pair with LONG India and",
+   "status": "target",
+   "instruments": [
+    "INDA",
+    "ASEA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Hedge fund All Strategy returns are back to plus 0.8% month to date, down from over 2% earlier in the week.",
+   "anchor": "same as they were 2 weeks ago\u2026All Strategy returns are back to +0.8%",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "MTD"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Rolling 20-day gross flows in the US have bottomed and are getting less negative.",
+   "anchor": "Rolling 20d gross flows in the US have bottomed",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Every year since 2018, 20-day gross flows have turned positive by mid-September.",
+   "anchor": "gross flows turn positive by mid-Sep",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by mid-September"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "The US Tactical Positioning Monitor sits at roughly the 40th percentile, slightly below average, while retail and institutional sentiment continue to trend higher.",
+   "anchor": "Our US TPM is ~40th %-tile (i.e. slightly below average), but",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "US healthcare could continue to do well because hedge fund positioning has not rebounded much and ETF flows remain positive.",
+   "anchor": "HC in the US could continue to do well",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "through end of Q3"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Metals and Mining positioning does not look stretched despite the past month's rally.",
+   "anchor": "Metals & Mining positioning does not",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "International Market Intelligence | Morning Briefing",
+   "claim": "Hedge funds have sold EU Banks sharply.",
+   "anchor": "EU Banks have been sold \nsharply by HFs which is interesting",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-02/15087__international-market-intelligence-morning-briefing.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c267bda11387"
+ },
+ "verify": {
+  "total": 51,
+  "matched": 51,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}

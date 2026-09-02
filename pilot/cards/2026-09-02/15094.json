@@ -1,0 +1,87 @@
+{
+ "brief": "The Market Ear compiles cross-bank data arguing systematic flows and buyback support are turning into a headwind just as volatility compresses to unusual extremes. BofA models systematic strategies selling $163bn in a down market versus only $9bn bought in an up market, an asymmetry driven by positioning already being high rather than merely elevated. Deutsche Bank shows vol-control equity allocations maxed at the 100th percentile, leaving no room for further buying. Goldman's one-month conditional projections corroborate this: modest additional buying if markets rise, a violent unwind if markets fall, both globally and in the S&P; Goldman's own estimated systematic length stands at $146.5bn, up ~$2bn week over week and at the upper end of its one-year range. Separately, a strategist (McElligott) calls the collapse in volatility \"epic\" and warns of possible trading losses. Compounding this, buyback activity is near its peak just as the September blackout window begins expanding, removing a major source of incremental buying. The note reports these data points rather than issuing its own forecast beyond the implied selling risk.",
+ "cards": [
+  {
+   "bank": "BofA",
+   "document": "Sell sell or sell",
+   "claim": "BofA estimates systematic strategies could sell $163bn in a down market, sell $1bn if markets are flat, and sell $9bn in an up market.",
+   "anchor": "Systematic strategies could sell $163bn in a down market, sell $1bn if markets are flat, and sell $9bn in an up market.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Sell sell or sell",
+   "claim": "Deutsche Bank estimates vol-control equity allocations are at a maxed out 100th percentile.",
+   "anchor": "Vol-control equity allocations at a maxed out 100th percentile.",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Sell sell or sell",
+   "claim": "Goldman's one-month conditional projections show relatively modest additional buying in an up market but a violent unwind in the Down Big scenario, both globally and in the S&P.",
+   "anchor": "relatively modest additional buying in an up market but a violent unwind under the \u201cDown Big\u201d scenario",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "one-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Sell sell or sell",
+   "claim": "Goldman estimates current systematic positioning at $146.5bn across global equity indices, up about $2bn from the prior week.",
+   "anchor": "Current estimated positioning stands at $146.5bn across global equity indices, an increase of ~$2bn from last week.",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Sell sell or sell",
+   "claim": "Equity buyback activity is near its peak just as the corporate blackout window begins expanding rapidly through September, removing a major source of buying.",
+   "anchor": "We are around peak machine-driven buyback activity now, just as the blackout window begins to expand rapidly through September.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Sell sell or sell",
+   "claim": "McElligott describes the recent collapse in volatility as epic and warns major trading losses may soon surface.",
+   "anchor": "describes the collapse in vol as \u201cepic\u201d and warns that major trading losses may soon surface",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-02/15094__sell-sell-or-sell.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c267bda11387"
+ },
+ "verify": {
+  "total": 6,
+  "matched": 6,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
