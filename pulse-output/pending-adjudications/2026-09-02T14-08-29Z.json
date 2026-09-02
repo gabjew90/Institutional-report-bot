@@ -1,0 +1,259 @@
+{
+  "pulse_date": "2026-09-02",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "us iran middle east tensions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks keep flagging US-Iran conflict and the Strait of Hormuz as a live risk in the background of their notes, but none of them has taken a side on whether it escalates or cools from here.",
+      "facts_agreed": [
+        {
+          "claim": "Four banks reference US-Iran conflict and Middle East escalation as an active risk in this window without staking a directional view.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs",
+            "Bank of America",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "US-Iran geopolitical tensions",
+            "US-Iran conflict escalation",
+            "US-Iran conflict capitulation",
+            "Strait of Hormuz geopolitical escalation",
+            "Middle East kinetic hostilities"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs frames the Iran situation as something that feeds through to oil prices and bond yields rather than as a standalone political story.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Iran escalation impacting oil and yields",
+            "Iran escalation and oil price volatility"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai and enterprise hardware demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Banks agree demand for AI computing power and the hardware behind it is still accelerating rather than cooling, with spending broadening from the largest cloud companies to ordinary corporate buyers, and no desk arguing the other side.",
+      "facts_agreed": [
+        {
+          "claim": "Demand for AI computing power is not slowing, and inference workloads keep growing.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "it's clear demand for AI compute is not slowing",
+            "demand is not slowing and inference demand continues to grow."
+          ]
+        },
+        {
+          "claim": "Corporate IT hardware buying is being held up by data center upgrades rather than a one-off spending burst.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "durable enterprise IT hardware demand is underpinned by data center modernization trends"
+          ]
+        },
+        {
+          "claim": "Desks are tracking the funding and supply side of the buildout as live subjects without taking a directional view.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "China AI value chain capex",
+            "AI capex boom financing",
+            "Semiconductor capex cycle"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "boj monetary policy normalization",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks flag the Bank of Japan moving away from ultra-low rates as a live topic and expect its policy rate to keep rising, but none stakes out a directional trade around it.",
+      "facts_agreed": [
+        {
+          "claim": "JPMorgan, Deutsche Bank and Goldman Sachs all reference the Bank of Japan stepping back from near-zero rates as an active subject this window, without arguing a direction.",
+          "banks_for": [
+            "JPMorgan",
+            "Deutsche Bank",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "BoJ policy normalization acceleration",
+            "BoJ interest rate policy",
+            "BOJ hawkish repricing",
+            "BOJ monetary policy normalization",
+            "BOJ rate hike discussions"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "september fed meeting",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three desks treat the September Fed meeting as a live event that markets are now pricing for a possible rate increase, but none of them has committed to a call on what the Fed actually does.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs, JPMorgan and The Market Ear all flag the September Fed meeting as a live near-term catalyst without taking a side on the outcome.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "September FOMC meeting hike probability",
+            "September Fed meeting uncertainty",
+            "Fed September live meeting",
+            "September market volatility expectations"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs and JPMorgan both report that markets have started pricing a chance the Fed raises rates in September rather than holding.",
+          "banks_for": [
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": []
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hawkish fed profile",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Only one desk stakes a directional view: traders are now betting the Fed stays tighter for longer, with long-term US government borrowing rates at their highest since October 2023 and the market-implied odds of a September rate hike up to 69% from 27% in mid-August.",
+      "facts_agreed": [
+        {
+          "claim": "Investors have moved to price a more hawkish Fed path for the year ahead.",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "investors also priced in an increasingly hawkish Fed profile for the year ahead"
+          ]
+        },
+        {
+          "claim": "The repricing shows up in the tape: the 10-year Treasury yield closed at 4.80%, its highest since October 2023, and September hike odds rose to 69% from 27% on August 17th.",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": []
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "european equity themes",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Both banks covering Europe are positive: Goldman sees strong company profits, steady growth, and cheap valuations, with European companies throwing off 5.3% of their market value in cash each year against under 2% for the biggest US stocks, while Citi expects European chipmakers to earn more than analysts currently forecast.",
+      "facts_agreed": [
+        {
+          "claim": "European companies are delivering profits strong enough to carry the market, with Citi expecting chipmaker earnings to run above analyst forecasts and Goldman crediting earnings and steady growth for Europe's 2026 gains.",
+          "banks_for": [
+            "Citi",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "supports FY28 earnings above consensus",
+            "solid 2026 performance driven by strong earnings and resilient economic growth"
+          ]
+        },
+        {
+          "claim": "European equities are cheap on cash generation relative to the largest US stocks.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Europe has healthy cash flow and trades on a FCF yield of 5.3%"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "debasement and hard assets",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 0
+      },
+      "consensus_view": "Both desks covering this theme say the worry that the dollar is being eroded by government borrowing is back and still has room to run, and both point the same way: own gold.",
+      "facts_agreed": [
+        {
+          "claim": "JPMorgan and Goldman Sachs both say the debasement story is active again and expect it to keep supporting gold, with gold funds the instrument they name.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Debasement narrative resurfaced in August, driven by US Treasury actions",
+            "he does not think the thematic of debasement is going anywhere"
+          ]
+        },
+        {
+          "claim": "Both banks recorded an exceptionally strong August for gold, near a 10 percent monthly gain, alongside the heaviest week of gold fund buying since October.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": []
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "ai monetization strategies",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Palo Alto Networks'"
+    }
+  ]
+}
