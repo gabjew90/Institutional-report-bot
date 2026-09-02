@@ -1,0 +1,49 @@
+{
+ "unread_source_files_at_edit": 6,
+ "pack": {
+  "documents": 3,
+  "cards": 124
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": false,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 99,
+  "brief_citations": 5,
+  "distinct_cards_cited": 94,
+  "card_count": 124,
+  "quintiles": [
+   20,
+   16,
+   23,
+   21,
+   19
+  ],
+  "edge_quintile_share": 0.394,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "JPMorgan's momentum factor index is down more than 21% from its June record and the classic version down nearly 34% [c85], well outside the 10% to 15% these unwinds normally run.",
+    "cite": "c85",
+    "reason": "figures not in cited card(s): ['10%', '15%']"
+   },
+   {
+    "sentence": "The trade list opens with long Nasdaq 100 against short Russell 2000 [c119], with small and mid caps expected to lag [c82].",
+    "cite": "c119,c82",
+    "reason": "figures not in cited card(s): ['100']"
+   },
+   {
+    "sentence": "Crude is the other half of the pressure on equities, with WTI up 28 basis points at $90.47 and natural gas up 148 to $2.95 [c21], and JPMorgan has raised its Brent and European gas price assumptions [",
+    "cite": "c21,c31",
+    "reason": "figures not in cited card(s): ['148']"
+   }
+  ],
+  "leans": 2,
+  "leans_block_present": true,
+  "word_count": 1899
+ }
+}
