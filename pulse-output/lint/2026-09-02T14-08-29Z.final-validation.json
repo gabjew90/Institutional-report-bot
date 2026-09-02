@@ -1,0 +1,141 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '15.0%' is attached to [against, argument, bear, because, business] but the source uses it for [dell, reported] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "15.0%",
+   "draft_subject": [
+    "against",
+    "argument",
+    "bear",
+    "because",
+    "business",
+    "case",
+    "decides",
+    "figure"
+   ],
+   "source_subject": [
+    "dell",
+    "reported"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '11.7%' is attached to [against, argument, bear, because, business] but the source uses it for [dell, reported] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "11.7%",
+   "draft_subject": [
+    "against",
+    "argument",
+    "bear",
+    "because",
+    "business",
+    "case",
+    "decides",
+    "figure"
+   ],
+   "source_subject": [
+    "dell",
+    "reported"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '1.17%' is attached to [clears, condition, correction, down, momentum] but the source uses it for [date, session] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "1.17%",
+   "draft_subject": [
+    "clears",
+    "condition",
+    "correction",
+    "down",
+    "momentum",
+    "morning",
+    "overheated",
+    "peak"
+   ],
+   "source_subject": [
+    "date",
+    "session"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '1.23%' is attached to [brent, comes, crude, down, east] but the source uses it for [date, session] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "1.23%",
+   "draft_subject": [
+    "brent",
+    "comes",
+    "crude",
+    "down",
+    "east",
+    "escalation",
+    "going",
+    "middle"
+   ],
+   "source_subject": [
+    "date",
+    "session"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "66% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [3.3, 3.5]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "66",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "The hold case is being made by Goldman while Goldman's own screen shows 66% odds of a hike. Its economists expect the August core inflation reading to land soft enough to keep the Fed on hold, and the"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.35% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [3.3, 3.5]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.35",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "The hold case is being made by Goldman while Goldman's own screen shows 66% odds of a hike. Its economists expect the August core inflation reading to land soft enough to keep the Fed on hold, and the"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "6.8% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [3.3, 3.5]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "6.8",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "The hold case is being made by Goldman while Goldman's own screen shows 66% odds of a hike. Its economists expect the August core inflation reading to land soft enough to keep the Fed on hold, and the"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.7% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [3.3, 3.5]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.7",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "The hold case is being made by Goldman while Goldman's own screen shows 66% odds of a hike. Its economists expect the August core inflation reading to land soft enough to keep the Fed on hold, and the"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "4.1% stated for Unemployment MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "4.1",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": true,
+   "sentence": "- **Friday, 8:30 ET: August payrolls and the unemployment rate.** The Street is at 55,000 jobs with unemployment at 4.1%, JPMorgan is at 50,000 with average hourly earnings at 3.0% from a year ago. Go"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "3.0% is stated for Unemployment but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "3.0",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": false,
+   "sentence": "- **Friday, 8:30 ET: August payrolls and the unemployment rate.** The Street is at 55,000 jobs with unemployment at 4.1%, JPMorgan is at 50,000 with average hourly earnings at 3.0% from a year ago. Go"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 10,
+ "exit_code": 4
+}
