@@ -1,0 +1,575 @@
+{
+ "brief": "Deutsche Bank's daily macro wrap reports a risk-off start to September and gives the chain behind it. Renewed US strikes on Iranian targets around the Strait of Hormuz lifted Brent 4.60% to $94.65/bbl at the close and European gas to a 3-year high of \u20ac72.22/MWh. Higher energy prices fed inflation and rate expectations, and government bond yields set multi-year highs: bund 3.34%, OAT 4.20%, gilt 5.22%, 10yr Treasury 4.80%, and Japanese 10yr above 3% for the first time in 30 years. Rising nominal and real yields pushed equities lower, S&P 500 -0.71% and Stoxx 600 -0.56%, with Asia extending the decline. Fed pricing turned hawkish, 64bps of hikes by June 2027 and 69% odds of a September hike against 27% on August 17, reinforced by Governor Barr saying the Fed should hike in September if inflation is not moderating sufficiently. Softer US data, ISM 54.6, job openings 7.271m and quits 1.9%, only temporarily eased the selloff. Euro Area flash CPI at 3.3% with core at 2.4% did not stop the ECB's Simkus saying one September hike is not enough. The RBNZ hiked 25bps to 2.75% and stronger Australian GDP raised bets on an extended RBA tightening cycle.",
+ "cards": [
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Brent crude rose 4.60% to $94.65/bbl at yesterday's close, its highest level since July.",
+   "anchor": "Brent crude (+4.60%) was up to $94.65/bbl by the close, its highest level since",
+   "status": "released",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Brent was a further 0.67% higher at $95.28/bbl in early trading on the morning of publication.",
+   "anchor": "oil prices are further +0.67% higher trading at $95.28/bbl as we go to",
+   "status": "released",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "European natural gas futures rose 3.30% to a 3-year high of EUR72.22/MWh.",
+   "anchor": "whilst European natural gas futures (+3.30%) hit a 3-year high of \u20ac72.22/MWh.",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "WTI crude is quoted at 90.67, up 4.68%, in the document's market data table.",
+   "anchor": "(WTI Oil^ @ 90.67 // +4.68%)",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 10yr German bund yield rose 1.9bps to a post-2011 high of 3.34%.",
+   "anchor": "the 10yr bund yield (+1.9bps) hitting a post-2011 high of 3.34%",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 10yr French OAT yield rose 3.0bps to a post-2008 high of 4.20%.",
+   "anchor": "the 10yr OAT yield (+3.0bps) hitting a post-2008 high of 4.20%",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 10yr UK gilt yield rose 8.1bps to a post-2008 high of 5.22%, partly a catch-up from the prior bank holiday.",
+   "anchor": "the 10yr gilt yield (+8.1bps) reaching a post-2008 high of 5.22%",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 30yr UK gilt yield rose 7.6bps to a post-1998 high of 5.86%.",
+   "anchor": "the 30yr gilt yield (+7.6bps) hit a post-1998 high of 5.86%",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 10yr US Treasury yield rose 4.8bps to a post-2023 high of 4.80%.",
+   "anchor": "the 10yr Treasury (+4.8bps) hit a post-2023 high of 4.80%",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 2yr US Treasury yield rose 5.8bps to 4.40%, its highest since July 2024.",
+   "anchor": "while 2yr (+5.8bps to 4.40%) reached its highest level since July 2024",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Japanese 10yr government bond yields crossed 3% for the first time in 30 years.",
+   "anchor": "in Japan 10yr yields have crossed 3% for the first time in 30 years",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "10y US breakevens are at 2.36, up 4bp.",
+   "anchor": "(10y US Real Yield @ 2.44 // 1 bp) (10y US Breakevens @ 2.36 // 4 bp)",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Markets price 64bps of Fed hikes by the June 2027 meeting, up 5.1bps on the day.",
+   "anchor": "the number of hikes priced by the June 2027 meeting up +5.1bps on the day to 64bps",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "by the June 2027 meeting"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The market-implied probability of a September Fed hike rose to 69%, from 27% on August 17.",
+   "anchor": "the pricing of a September hike up to 69%. We traded as low as 27% when I started my holiday on August 17th.",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Fed Governor Barr said the Fed should raise rates in September if inflation appears not to be moderating sufficiently.",
+   "anchor": "Fed should raise rates in September if \u201cinflation appears not to be moderating sufficiently.\u201d",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "US ISM manufacturing fell to 54.6 in August against 55.2 expected.",
+   "anchor": "a weaker-than-expected ISM manufacturing print, which fell to 54.6 in August (vs. 55.2 expected)",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The ISM new orders component fell to 53.7 from 56.7.",
+   "anchor": "with new orders down to 53.7 (from 56.7)",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The ISM employment component fell to 51.2 from a post-2022 high of 52.8.",
+   "anchor": "employment down to 51.2 (from a post-2022 high of 52.8)",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "US job openings were 7.271m in July against 7.313m expected.",
+   "anchor": "with job openings only at 7.271m in July (vs. 7.313m expected)",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The US quits rate unexpectedly fell to 1.9% against 2.0% expected.",
+   "anchor": "the quits rate of those voluntarily leaving their role unexpectedly fell to 1.9% (vs. 2.0% expected)",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Euro Area flash headline CPI for August came in at 3.3%, in line with expectations.",
+   "anchor": "flash CPI print for August yesterday. That came in at 3.3% as expected",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Italian August CPI came in at +3.2% against +3.4% expected.",
+   "anchor": "the releases from the biggest member states except for Italy (+3.2% vs +3.4% expected)",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Euro Area core CPI came in at +2.4% against +2.5% expected.",
+   "anchor": "Euro Area core CPI was slightly on the downside at +2.4% (vs. +2.5% expected)",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The ECB's Simkus said in an interview that the September hike is not going to be enough based on current data.",
+   "anchor": "Simkus said in an interview that \u201cthis September hike is not going to be enough\u201d",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Market pricing of ECB hikes by December rose 3.6bps to 49bps.",
+   "anchor": "Expectations of ECB hikes by December rose by +3.6bps to 49bps yesterday.",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "by December"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The S&P 500 closed at 7631, down 0.71%.",
+   "anchor": "(S&P 500 @ 7631 // -0.71%)",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The STOXX Europe 600 closed at 647, down 0.56%.",
+   "anchor": "(STOXX Europe 600 @ 647 // -0.56%)",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The Philadelphia Semiconductor Index led US equity declines, falling 2.14%.",
+   "anchor": "led by the Philadelphia Semiconductor Stock Exchange Index (-2.14%)",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The Kospi fell 3.79%, leading Asian equity losses.",
+   "anchor": "and the Kospi (-3.79%) leading losses",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The Nikkei is quoted at 64329, down 2.85%, in the document's market data table.",
+   "anchor": "(NIKKEI @ 64329 // -2.85%)",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The S&P/ASX 200 fell 1.04% as stronger-than-expected GDP reinforced expectations of another RBA rate hike later this year.",
+   "anchor": "the S&P/ASX 200 (-1.04%) also trading notably weaker, with stronger-than-expected GDP data reinforcing expectations of another RBA rate hike",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "later this year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Chinese equities fell, with the CSI 300 down 1.25%, the Shanghai Composite down 0.82% and the Hang Seng down 0.96%.",
+   "anchor": "the CSI 300 (-1.25%), the Shanghai Composite (-0.82%) and the Hang Seng (-0.96%) are also lower",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "S&P futures are down 0.10% and Nasdaq futures down 0.26% ahead of the US open.",
+   "anchor": "S&P (-0.10%) and Nasdaq (-0.26%) futures are lower following last",
+   "status": "released",
+   "instruments": [
+    "SPY",
+    "QQQ"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The Dollar Index is at 99.79, up 0.44%.",
+   "anchor": "(Dollar Index^ @ 99.79 // +0.44%)",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The VIX is at 16.34, up 1.42 points.",
+   "anchor": "(Hang Seng @ 25087 // -0.96%) (VIX @ 16.34 // +1.42)",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Gold is at 4306, down 3.47%.",
+   "anchor": "(VIX @ 16.34 // +1.42) (Gold^ @ 4306 // -3.47%)",
+   "status": "level",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The RBNZ raised its official cash rate by 25bps to 2.75%, its second consecutive increase.",
+   "anchor": "the Reserve Bank of New Zealand (RBNZ) raised its official cash rate by 25bps to 2.75%",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Updated RBNZ projections point to the possibility of one additional 25bp hike before year-end.",
+   "anchor": "Updated RBNZ projections suggest the possibility of one additional 25bp rate hike before year-end.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "before year-end"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The RBNZ now expects New Zealand inflation to ease to 3.9% in Q3, above its previous 3.3% estimate.",
+   "anchor": "The central bank now expects inflation to ease to 3.9% in Q3, higher than its previous estimate of 3.3%",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The RBNZ forecasts inflation returning to the 2% target midpoint in early 2028, later than its previous Q3 2027 expectation.",
+   "anchor": "forecasts inflation will return to the 2% midpoint of its target range in early 2028",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "early 2028"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Australian GDP expanded 0.4% quarter-on-quarter in Q2 against 0.3% expected.",
+   "anchor": "the economy expanded 0.4% quarter-on-quarter in Q2, surpassing expectations of 0.3% growth",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Australian GDP rose 2.1% year-on-year, above the 1.8% consensus estimate.",
+   "anchor": "On an annual basis, GDP rose 2.1%, ahead of the",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The Australian 3-year government bond yield is 7.5bps higher at 4.79% as investors raised bets the RBA tightening cycle extends into next year.",
+   "anchor": "the yield on policy-sensitive three-year government bond is currently +7.5bps to 4.79%",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "into next year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Treasury Secretary Bessent said he would prefer the BoJ to raise interest rates to support the yen rather than repeated market intervention.",
+   "anchor": "Bessent stated that he preferred the BoJ to raise interest rates to help the yen",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Bessent said at the G20 summit that the Strait of Hormuz will be bypassed within two years as oil moves to land pipelines.",
+   "anchor": "the Strait of Hormuz will be \u201cbypassed\u201d in two years given that oil will be going on land pipelines",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The US carried out strikes on Iranian targets around the Strait of Hormuz after the European close.",
+   "anchor": "US was carrying out strikes on Iranian targets around the Strait of Hormuz",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Euro Area final manufacturing PMI was revised marginally lower to 52.7 from a 52.8 flash reading.",
+   "anchor": "with the Euro Area manufacturing revised marginally lower (52.7 vs 52.8 prevs)",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Deutsche Bank forecasts the August ADP employment report at 47k, matching consensus and above the 44k prior.",
+   "anchor": "(ADP Employment Report // 47k // 44k // 47k)",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Deutsche Bank forecasts July factory orders at 0.7%, matching consensus and up from -0.3% prior.",
+   "anchor": "(Factory Orders // 0.7% // -0.3% // 0.7%)",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "C:\\Users\\gabje\\AppData\\Local\\Temp/pd_rd/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c267bda11387"
+ },
+ "verify": {
+  "total": 50,
+  "matched": 49,
+  "failed": 1,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 1,
+  "needs_reask": false
+ }
+}

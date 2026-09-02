@@ -1,0 +1,263 @@
+{
+ "brief": "Kevin Warsh's FOMC speech addressed monetary policy's role in inflation but avoided assigning government (budget, trade, regulations, war) any responsibility, which kept post-speech concerns about the Fed-Treasury accord quiet but left the long end of the yield curve unmoved. Market probability of a hike at the next meeting sits at 68%, far below the ~95% certainty typical two weeks before a meeting, because softening data (ISM new orders, JOLTS quit rate, consumer confidence) leads inflation lower. Taylor Rule models using standard inputs imply a funds rate above 5% (range 4.47%-6.83%), but using the Dallas Fed's 6M trimmed-mean inflation (2.35%) instead puts the funds rate about where it already is, so no hike is needed. Rising 10-year yields reflect budget deficits, capex demand, and normalization after Fed suppression rather than US credit stress, since German, Japanese and UK yields moved similarly while only France and Italy spreads widened. The author expects Warsh to find room in August CPI, PPI, and employment data to hold rates through year-end, and still recommends cheap portfolio insurance given the added volatility risk.",
+ "cards": [
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "The market is pricing a 68% probability of a Fed hike at the upcoming FOMC meeting.",
+   "anchor": "the market is at a 68% probability of a hike, despite Warsh\u2019s hawkish tone",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Two weeks before an FOMC meeting, market certainty about the Fed's action typically averages near 95%.",
+   "anchor": "there is an average of near 95% certainty over what the Fed will do",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "The August CPI release on 9/11 will be the deciding data point for the upcoming FOMC meeting.",
+   "anchor": "August CPI released 9/11 will be the final word for this meeting.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "9/11"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Standard Taylor Rule model inputs imply a fed funds rate ranging from 4.47% to 6.83%.",
+   "anchor": "the answers run from 4.47% to 6.83% (Table 1)",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Using the Dallas Fed's 6-month trimmed mean inflation measure in the Taylor Rule shows the current fed funds rate is already about where it should be.",
+   "anchor": "If we use the Dallas 6M number for the Taylor Rule, the funds rate is right where it should be.",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "The Dallas Fed trimmed mean 6-month inflation measure never really exceeded 2.5% SAAR and has fallen back to 2.35%.",
+   "anchor": "the Dallas Fed trimmed mean 6M inflation never really broached 2.5% SAAR and is back down to 2.35%.",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Core PCE inflation on a 6-month basis has fallen back to 3.5% SAAR.",
+   "anchor": "Even the Core PCE 6M number is back down, to 3.5% SAAR",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Core PCE inflation on a 3-month annualized basis was 3.05% SAAR in July.",
+   "anchor": "the 3M %Ch was 3.05% SAAR in July.",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "July"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Outstanding Treasury notes and bonds are up 6.8% year-over-year while the Fed's holdings are up only 0.7%.",
+   "anchor": "The volume of outstanding Treasury notes and bonds are up 6.8% Y/Y, but the Fed\u2019s holdings are up only 0.7%.",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "The author's ongoing forecast is wobbly equities, a steepening yield curve, and a 6% 10-year Treasury yield in 2027.",
+   "anchor": "wobbly equities, steepening yield curve, and a 6% 10Y in 2027.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Over the past three months US 10-year yields rose 36.7bp, closely matched by German (+36.8bp), Japanese (+44bp), and UK (+36.1bp) yield moves.",
+   "anchor": "US 10Y yields are up 36.7bp in the past three months, German yields are +36.8bp, Japan +44bp, UK +36.1bp",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "past three months"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Sovereign spreads widened where credit is a concern, up 61.2bp in France and 48.5bp in Italy, versus only 3bp in Switzerland where it is not.",
+   "anchor": "Spreads are widening where credit is more of a concern (France +61.2, Italy +48.5), or less when it is not (Switzerland +3).",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "ISM net new orders dropped unexpectedly in August.",
+   "anchor": "ISM net new orders (% saying orders are up - % saying orders are down) dropped unexpectedly in August.",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "The pace of ISM new-orders deceleration since May was faster this year than in the prior two years or in 2018.",
+   "anchor": "the pace of deceleration since May was faster this year than in the past two, or in 2018.",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Falling Conference Board consumer confidence generally tracks the drop in the private-sector quit rate.",
+   "anchor": "Falling consumer confidence, as measured by the Conference Board, generally tracks the drop in the quite rate",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Using the Wicksellian spread as a benchmark, current yield levels are not yet constraining private capital investment.",
+   "anchor": "using the Wicksellian spread as benchmark, yields are not yet constraining private capital investment.",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Warsh said that at the July FOMC meeting a good majority of his colleagues thought it wiser to wait for new information before acting.",
+   "anchor": "a \u201cgood majority of my colleagues and I thought the wiser course was to await new information in the intermeeting period\u201d",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "July meeting"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Warsh said no simple function like a Taylor Rule could be rigorously relied upon to set policy.",
+   "anchor": "some simple function like a Taylor rule could be rigorously relied upon.",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "The author expects Warsh will find wiggle room in upcoming data to hold rates constant for another month or two.",
+   "anchor": "he will be poring through the upcoming data to find some wiggle room to hold rates constant for another month or two.",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "another month or two"
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "The author still believes Warsh finds a reason to hold rates and continues to recommend portfolio insurance as cheap.",
+   "anchor": "I still think he finds it. Portfolio insurance remains cheap.",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "Warsh's speech adds market volatility but not new information or credibility, so portfolio insurance is still cheap.",
+   "anchor": "Warsh adds volatility but not information or credibility (not yet anyway) \u2013 insurance is still cheap",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "TS Lombard",
+   "document": "Warsh and the Road Not Taken",
+   "claim": "If Jerome Powell had given the same speech instead of Warsh, the market would price a 100% probability of a September hike.",
+   "anchor": "If this was a Jerome Powell speech \u2014 100% probability of a hike in September.",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "C:\\Users\\gabje\\AppData\\Local\\Temp/pd_rd/pilot/source-text/2026-09-02/15098__warsh-and-the-road-not-taken.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c267bda11387"
+ },
+ "verify": {
+  "total": 22,
+  "matched": 22,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}

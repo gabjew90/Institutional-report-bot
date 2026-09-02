@@ -1,0 +1,403 @@
+{
+ "brief": "Goldman Sachs FICC and Equities daily note dated 2 September 2026. Macro: August ISM manufacturing fell 1.0pt to 54.6, below expectations, with new orders, production and employment all lower, so cyclicals lagged defensives on the tape. Against that, the S&P Global manufacturing PMI was revised higher and Goldman's own manufacturing survey tracker hit its highest level since April 2022, so the desk reads regional surveys as improving despite the ISM print. July job openings rose 89k to 7,271k from a downwardly revised June, lifting the jobs-workers gap estimate to 0.3mn in August. Construction spending fell 0.5% in July. Q3 GDP tracking stays at +2.7%. Positioning: ETF shorts are 10.2% of the US equity short book excluding index products, down from 10.7% in July and in the 2nd percentile over one and five years. Equities closed lower Tuesday on rising yields and oil after the latest Iran escalation, SPX -71bps to 7631. DELL beat on F2Q27 EPS of $7.04 with ISG revenue +89% and raised its F2027 server and storage outlook, and shares indicated +8.4% after the bell.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "ETF shorts are 10.2% of the US equity short book excluding index products, down from 10.7% at the end of July.",
+   "anchor": "ETF shorts now make up 10.2% of the US equity short book excl. Index products",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The ETF share of the US equity short book sits in the 2nd percentile versus the past year and the past five years.",
+   "anchor": "in the 2nd percentile vs. both the past year and the past five years",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The August ISM manufacturing index fell 1.0 point to 54.6, below expectations, with new orders, production and employment components all declining.",
+   "anchor": "The ISM manufacturing index declined by 1.0pt to 54.6 in August, below expectations",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The S&P Global manufacturing PMI was revised slightly higher in the August final reading.",
+   "anchor": "The S&P Global manufacturing PMI was revised slightly higher in the August final reading",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Goldman Sachs' manufacturing survey tracker reached its highest level since April 2022 in August, reflecting improvement in regional manufacturing surveys.",
+   "anchor": "our manufacturing survey tracker reached in August its highest level since April 2022",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "July job openings rose 89k to 7,271k from a downwardly revised June level, roughly in line with expectations.",
+   "anchor": "Job openings increased by 89k to 7,271k in July from a downwardly-revised level in June",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Goldman Sachs' jobs-workers gap estimate based on JOLTS, Indeed and LinkUp job openings stands at 0.3mn in August after rebounding slightly over the year.",
+   "anchor": "has rebounded slightly over the course of the year and stands at 0.3mn in August",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Nominal construction spending fell 0.5% in July, below consensus expectations.",
+   "anchor": "Nominal construction spending declined 0.5% in July, below consensus expectations",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Goldman Sachs left its Q3 GDP tracking estimate unchanged at +2.7% quarter-over-quarter annualized.",
+   "anchor": "We left our Q3 GDP tracking estimate unchanged at +2.7%",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Waymo's miles between accidents increased over the last several months.",
+   "anchor": "The number of miles between accidents for Waymo increased over the last several months",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Tesla's miles between accidents were more flattish over recent months and Tesla operates at lower scale than Waymo.",
+   "anchor": "while Tesla was more flattish and is at lower scale",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Tesla's direct-to-consumer robotaxi app has grown at a much faster rate than Waymo's app.",
+   "anchor": "the DTC app has grown at a much faster rate relative to Waymo",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The Tesla Robotaxi app has grown at a double-digit percent month-over-month rate since June 2026.",
+   "anchor": "Robotaxi app has continued to grow DD% on a MoM basis",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The Tesla Robotaxi app has a slightly higher session count and engagement rate per user than Waymo's app, per SensorTower.",
+   "anchor": "while also having a slightly higher session count/engagement rate for users of the app",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Waymo has more total app downloads than Tesla.",
+   "anchor": "Waymo has more total app downloads than Tesla.",
+   "status": "level",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The Waymo and Tesla Robotaxi apps have lower session-count engagement than US traditional rideshare platforms Uber and Lyft.",
+   "anchor": "continue to have lower engagement (with session count utilized as a proxy) relative to traditional rideshare platforms",
+   "status": "level",
+   "instruments": [
+    "TSLA",
+    "UBER",
+    "LYFT"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Dell reported F2Q27 EPS of $7.04, beating Goldman Sachs, consensus and company guidance.",
+   "anchor": "DELL's F2Q27 EPS of $7.04 beat GS/consensus/guidance on stronger than expected revenue in ISG",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Dell's ISG revenue grew 89% year-over-year versus guidance for 75% growth.",
+   "anchor": "revenue in ISG (+89% yoy v. guidance for 75% growth)",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Dell's CSG margin came in at 7.6% versus the Goldman Sachs estimate of 6.0%.",
+   "anchor": "notable strength in both CSG margins (7.6% v. GSe 6.0%) and ISG margins (15.0% v. GSe 11.7%)",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Dell's ISG margin came in at 15.0% versus the Goldman Sachs estimate of 11.7%.",
+   "anchor": "notable strength in both CSG margins (7.6% v. GSe 6.0%) and ISG margins (15.0% v. GSe 11.7%)",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Dell raised its F2027 traditional server revenue growth outlook to over 100% year-over-year from 60% prior.",
+   "anchor": "DELL raised its traditional server (100%+ year-over-year growth v. 60% prior)",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Dell raised its F2027 storage revenue growth outlook to mid-teens percent year-over-year from mid-single-digit percent prior.",
+   "anchor": "storage (mid-teens % year-over-year growth v. MSD% prior) revenue outlook for F2027",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Dell's installed base contains 1.2 million servers that are 14G or older and are candidates for refresh.",
+   "anchor": "1.2 mn 14G or older servers in DELL's installed base",
+   "status": "level",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Dell shares were indicated 8.4% higher after the bell following the earnings report.",
+   "anchor": "After the bell, DELL shares are indicated +8.4% higher following strong EPS",
+   "status": "level",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "US equities closed lower on Tuesday near the worst levels of the session, with cyclicals lagging defensives on rising yields and oil after the latest Iran escalation.",
+   "anchor": "US equities were lower on Tuesday, ending near worst levels as cyclicals lagged defensives",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The S&P 500 fell 71 basis points on Tuesday to close at 7631.",
+   "anchor": "SPX -71bps to 7631, NDX -129bps to 29,077, RTY -123bps to 2920",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The Nasdaq 100 fell 129 basis points on Tuesday to close at 29,077.",
+   "anchor": "SPX -71bps to 7631, NDX -129bps to 29,077, RTY -123bps to 2920",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The Russell 2000 fell 123 basis points on Tuesday to close at 2920.",
+   "anchor": "SPX -71bps to 7631, NDX -129bps to 29,077, RTY -123bps to 2920",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Seven of eleven S&P 500 sectors closed lower on Tuesday.",
+   "anchor": "7 of 11 sectors closed in the red",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Energy gained 154 basis points and Utilities gained 85 basis points, outperforming the broader market on Tuesday.",
+   "anchor": "with Energy +154bps and Utilities +85bps outperforming",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "Consumer Discretionary fell 189 basis points and Industrials fell 139 basis points on Tuesday.",
+   "anchor": "as Consumer Discretionary -189bps and Industrials -139bps fell",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download",
+   "claim": "The Goldman Sachs Cyclicals versus Defensives basket fell 212 basis points as the below-expectations ISM print landed alongside a backup in yields.",
+   "anchor": "Cyclicals vs Defensives (GSP1CYDE, -212bps) came under pressure",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "C:\\Users\\gabje\\AppData\\Local\\Temp/pd_rd/pilot/source-text/2026-09-02/15099__gs-us-daily-download-2-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c267bda11387"
+ },
+ "verify": {
+  "total": 32,
+  "matched": 32,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
