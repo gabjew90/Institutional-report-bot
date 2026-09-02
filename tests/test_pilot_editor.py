@@ -134,6 +134,15 @@ def test_bank_alias_matches_the_cited_card():
     assert any("bank named" in f["reason"] for f in verify(bad, meta)["failures"])
 
 
+def test_index_names_are_not_figures():
+    """Shakedown 2026-09-02: 'long Nasdaq 100 against short Russell 2000'
+    failed on '100' and '2000', which are names, not figures."""
+    cards = [_card("J.P. Morgan", "long Nasdaq against short Russell", "long the Nasdaq and short the Russell", instruments=(), file="j.json")]
+    _, meta = build_pack(cards, {})
+    md = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nJPM opens with long Nasdaq 100 against short Russell 2000 [c1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | x | y\n"
+    assert verify(md, meta)["failures"] == []
+
+
 def test_strip_markers_leaves_clean_prose():
     assert strip_markers("Capex to $751B [c142] rose [d3].") == "Capex to $751B rose."
 

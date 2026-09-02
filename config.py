@@ -391,6 +391,10 @@ class Settings(BaseSettings):
     # the shakedown, so deploying the code cannot start filling a
     # branch. HIGH only; the pilot is HIGH-only by design.
     pilot_publish_enabled: bool = False
+    # Dispatch the pilot workflows from the worker's clock instead of
+    # relying on GitHub's cron, which dropped most runs on shakedown
+    # day 1 (2026-09-02). Needs Actions: read and write on GITHUB_TOKEN.
+    pilot_dispatch_enabled: bool = False
 
     # Ops alerts — a single channel id that receives immediate one-line
     # alerts when an /ask turn CRASHES (interaction_type=failed). Added

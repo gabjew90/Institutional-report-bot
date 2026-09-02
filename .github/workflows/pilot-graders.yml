@@ -115,8 +115,10 @@ jobs:
             { cat "$PROMPT"; printf '\n\n---\n\n'; cat "$INPUT"; } > /tmp/gr/prompt.txt
             # Prompt on stdin, not as an argument: a source-heavy input can
             # exceed the kernel's per-argument limit (review 2026-09-01).
+            # 60 turns: tracing 15 sentences through nine source files
+            # exhausted 30 on shakedown day 1 (2026-09-02).
             claude -p --model "$MODEL" \
-              --permission-mode bypassPermissions --max-turns 30 \
+              --permission-mode bypassPermissions --max-turns 60 \
               < /tmp/gr/prompt.txt > /tmp/gr/raw.txt 2>/dev/null || true
             python scripts/pilot_finalize_grade.py --raw /tmp/gr/raw.txt \
               --out "$OUT/$NAME-$AG.json" --dim "$DIM" --agent "$AG" \

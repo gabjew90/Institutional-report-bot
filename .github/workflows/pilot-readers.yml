@@ -117,11 +117,18 @@ jobs:
               printf '\n\nSOURCE_TEXT_PATH=%s\n' "$TEXT"
             } > /tmp/reader_prompt.txt
 
-            claude -p "$(cat /tmp/reader_prompt.txt)" \
-              --model "$MODEL" \
+            # Turn budget scales with the document. Shakedown 2026-09-02:
+            # a 432 KB JPM strategy deck exhausted 12 turns just reading
+            # itself and returned "Reached max turns" instead of JSON;
+            # that alone was the day's reader failure rate.
+            BYTES=$(wc -c < "$TEXT")
+            MAXT=12
+            [ "$BYTES" -gt 150000 ] && MAXT=20
+            [ "$BYTES" -gt 300000 ] && MAXT=30
+            claude -p --model "$MODEL" \
               --permission-mode bypassPermissions \
-              --max-turns 12 \
-              > /tmp/reader_out.txt 2>/tmp/reader_err.txt || true
+              --max-turns "$MAXT" \
+              < /tmp/reader_prompt.txt > /tmp/reader_out.txt 2>/tmp/reader_err.txt || true
 
             if ! python scripts/pilot_finalize_read.py \
                 --raw /tmp/reader_out.txt --out "$OUT" \
@@ -146,11 +153,10 @@ jobs:
                 cat /tmp/reask.json
                 printf '\nRe-emit the COMPLETE artifact. For each failed card, either copy its anchor character-for-character from the source or omit that card. Change nothing else.\n'
               } > /tmp/reask_prompt.txt
-              claude -p "$(cat /tmp/reask_prompt.txt)" \
-                --model "$MODEL" \
+              claude -p --model "$MODEL" \
                 --permission-mode bypassPermissions \
-                --max-turns 12 \
-                > /tmp/reader_out.txt 2>/dev/null || true
+                --max-turns "$MAXT" \
+                < /tmp/reask_prompt.txt > /tmp/reader_out.txt 2>/dev/null || true
               python scripts/pilot_finalize_read.py \
                 --raw /tmp/reader_out.txt --out "$OUT" \
                 --source "$TEXT" --tier "$TIER" --model "$MODEL" \

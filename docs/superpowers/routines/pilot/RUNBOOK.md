@@ -15,6 +15,24 @@ Discord, Railway DB) is never written by any pilot job.
 | 17:00 | `pilot-graders.yml` | `grades/<date>/<dim>-<artifact>-<a|b>.json`, `scoreboard.md` |
 | dispatch only | `pilot-grader-gate.yml` | `grader-gate/<ts>/` |
 
+## Scheduling: the worker's clock, not GitHub's cron
+
+Shakedown day 1 (2026-09-02) showed GitHub's cron dropping most of our
+schedules: the heartbeat fired twice in a day instead of every 30
+minutes, the readers' 09-14 UTC hourly window fired once, and the
+13:55 editor never fired. `github_bridge/workflow_dispatch.py` POSTs
+`workflow_dispatch` for the readers, editor and graders from the
+worker's APScheduler at the declared times. It is gated on
+`PILOT_DISPATCH_ENABLED` and needs the worker's `GITHUB_TOKEN` to carry
+**Actions: read and write** (the current fine-grained PAT answers 403,
+which pages ops hourly rather than failing silently). The workflow
+`schedule:` blocks stay as a fallback; each workflow's `concurrency`
+group makes a double fire harmless.
+
+Until the token is extended, run a missed step locally with the same
+scripts the workflow uses (see the 2026-09-02 NOTES entry for the exact
+commands); the artifacts are identical.
+
 ## Before day 1 (plan section 4)
 
 1. Set `PILOT_PUBLISH_ENABLED=true` on the Railway worker. Source text

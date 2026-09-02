@@ -317,7 +317,7 @@ The pulse fragment classes are a **stable contract**. Don't rename `.pulse`, `.p
 
 ## Shadow pilot (claim-card redesign)
 
-Runs beside production on the `pilot-data` orphan branch and GitHub Actions; production is never written by any pilot job. Runbook: `docs/superpowers/routines/pilot/RUNBOOK.md`. Frozen grader prompts and fixtures live under `docs/superpowers/routines/pilot/`; a change to them or to a model string in `scripts/pilot_config.py` restarts the pilot clock. The daily-qc pulse judge ignores the pilot tree by instruction. `PILOT_PUBLISH_ENABLED` on the Railway worker is the on/off switch for the whole chain.
+Runs beside production on the `pilot-data` orphan branch and GitHub Actions; production is never written by any pilot job. Runbook: `docs/superpowers/routines/pilot/RUNBOOK.md`. Frozen grader prompts and fixtures live under `docs/superpowers/routines/pilot/`; a change to them or to a model string in `scripts/pilot_config.py` restarts the pilot clock. The daily-qc pulse judge ignores the pilot tree by instruction. `PILOT_PUBLISH_ENABLED` on the Railway worker is the on/off switch for the whole chain. `PILOT_DISPATCH_ENABLED` makes the worker dispatch the pilot workflows on its own clock (GitHub's cron dropped most runs on 2026-09-02); it needs Actions: read and write on `GITHUB_TOKEN`.
 
 ## Recent Session Context (2026-04-14 → 2026-04-16)
 

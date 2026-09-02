@@ -944,3 +944,51 @@ Next: PILOT_PUBLISH_ENABLED on, two shakedown days, run the grader
 gate from the Actions tab until every dimension separates, then commit
 pilot/DAY1.
 
+## 2026-09-02 — Shadow pilot shakedown day 1 (uncounted)
+
+What flowed: 9 HIGH documents published to pilot-data overnight and
+through the morning; readers produced cards with anchors verifying at
+100% on every completed read (51/51, 67/67, 50/50, 43/43, 40/40,
+32/32, 28/28, 22/22, 6/6).
+
+What broke, and the fix for each:
+
+1. GitHub's cron dropped most schedules. The 30-minute heartbeat fired
+   twice all day, the readers' 09-14 UTC hourly window fired once, and
+   the 13:55 editor never fired (zero runs on an active workflow).
+   Fix: github_bridge/workflow_dispatch.py dispatches the pilot
+   workflows from the worker's APScheduler; gated on
+   PILOT_DISPATCH_ENABLED. It needs Actions: read and write on the
+   worker's GITHUB_TOKEN (the current fine-grained PAT answers 403,
+   probed from the container). Until the owner extends the token, the
+   missed steps were run locally with the same scripts, and the
+   artifacts committed to pilot-data by hand. Runbook updated.
+2. Reader failure rate 40% on the 13:12 run (2 of 5). Reproduced
+   locally: a 432 KB JPMorgan strategy deck exhausted the 12-turn
+   budget reading itself and returned "Reached max turns" instead of
+   JSON. With 30 turns it produced 43 cards, all verified. Fix: the
+   readers workflow scales the turn budget with document size (12 /
+   20 / 30 at 150 KB / 300 KB).
+3. Metric 1 was meaningless as built. Cards carried no reader topic
+   label, so the ledger's soft key was the claim's leading clause and
+   the grouping grader measured 48% fragmentation by construction.
+   Fix: readers now emit `topic` (reader.md), the ledger groups on it
+   with a claim fallback for older cards. This is a reader-prompt
+   change made during shakedown, before the freeze.
+4. The citation verifier flagged "Nasdaq 100" and "Russell 2000" as
+   figures; index names are now excluded. The shadow pulse's 3
+   residual failures were 2 of those plus one real one.
+5. The production-arm fidelity grade exhausted 30 turns tracing 15
+   sentences through nine source files. Graders now get 60.
+
+Grader separation gate: run locally, every dimension separates on the
+first try (bad brief: 3 material distortions vs 0; bad sentences: 1
+distorted plus 1 unsupported vs 0; bad ledger: 33% fragmented vs 0;
+bad mechanism: not preserved vs preserved). Verdict recorded on
+pilot-data under grader-gate/.
+
+Shadow pulse for the day: 1,899 words, MAIN EVENT plus nine briefs,
+99 card citations covering 94 of 124 cards, edge-quintile share 39%
+(no attention flag), 11 lean lines, unread at edit 6 (the backlog the
+dropped reader runs left; all 9 documents were read by end of day).
+

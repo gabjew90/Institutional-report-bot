@@ -63,6 +63,20 @@ def test_topic_labels_fold_filler_words():
     assert _norm_label("The AI capex cycle") == _norm_label("AI capex cycle")
 
 
+def test_reader_topic_label_is_the_soft_key_when_present():
+    """Shakedown 2026-09-02: labels derived from claim text fragmented
+    48% by construction. Readers now emit `topic`; two banks' different
+    claims on the same topic share one label, and a card without the
+    field still falls back to its claim."""
+    a = {**_card("GS", "AI capex to $751B"), "topic": "AI capex"}
+    b = {**_card("MS", "hyperscaler spending accelerates"), "topic": "AI capex"}
+    c = _card("UBS", "Legacy card with no topic field")
+    led = build([a, b, c])
+    labels = led["by_topic_label"]
+    assert len(labels) == 2, labels.keys()
+    assert any(len(v) == 2 for v in labels.values())
+
+
 def test_topic_fragmentation_is_visible_not_smoothed():
     """Two labels for the same subject must stay SEPARATE — that
     fragmentation is metric 1's measurement. A ledger that merged them

@@ -40,6 +40,7 @@ checkable.
   "document": "the document title",
   "claim": "one sentence, self-contained, no pronouns referring outside the card",
   "anchor": "VERBATIM quote from the document containing the claim",
+  "topic": "2 to 4 word subject label, the same words for the same subject across cards",
   "status": "released | forecast | target | level",
   "instruments": ["US-listed tickers only, [] when the claim is macro"],
   "direction": "bullish | bearish | neutral",
@@ -61,6 +62,11 @@ it costs a re-ask round and takes its claim out of the ledger. Copying
 is cheaper than reconstructing.
 
 Rules:
+- `topic` is the ledger's soft grouping key and the fragmentation
+  metric is measured on it. Pick the plainest subject phrase ("AI
+  capex", "10-year yield", "Broadcom earnings", "oil supply risk")
+  and use the identical words for every card on that subject in this
+  document. Not a claim summary, not a bank name, not a ticker.
 - `conviction: high` ONLY when the document itself signals it
   ("high conviction", "top call", "best idea") or the whole note is a
   dedicated thesis piece. A stated view without those markers is

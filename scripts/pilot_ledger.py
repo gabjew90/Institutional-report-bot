@@ -99,9 +99,14 @@ def build(cards: list[dict]) -> dict:
         if fk:
             by_figure[fk].append({"bank": bank, "claim": c.get("claim")})
 
-        # SOFT key: topic label, derived from the claim's leading
-        # clause. Fragmentation here is the measurement, not a defect.
-        label = _norm_label((c.get("claim") or "").split(",")[0][:60])
+        # SOFT key: the reader's `topic` label (added 2026-09-02 after
+        # shakedown day 1 measured 48% "fragmentation" on labels derived
+        # from claim text, which fragment by construction). Cards from
+        # readers that predate the field fall back to the claim's
+        # leading clause. Fragmentation here is the measurement, not a
+        # defect.
+        label = _norm_label((c.get("topic") or "").strip()
+                            or (c.get("claim") or "").split(",")[0][:60])
         if label:
             by_label[label].append({"bank": bank, "claim": c.get("claim")})
 

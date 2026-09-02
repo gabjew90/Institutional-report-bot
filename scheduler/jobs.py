@@ -427,6 +427,14 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     log.info("Daily calendar graphic active — 4:20 PM ET post for the next "
              "session, 7:30 AM ET in-place refresh")
 
+    # Shadow-pilot workflow dispatch from the worker's clock (2026-09-02):
+    # GitHub's cron dropped most pilot runs on shakedown day 1. Off until
+    # GITHUB_TOKEN carries Actions: read and write.
+    if settings.pilot_dispatch_enabled:
+        from github_bridge.workflow_dispatch import register_jobs as _register_dispatch
+        _n = _register_dispatch(scheduler, tz)
+        log.info(f"Pilot workflow dispatch active — {_n} cron slot(s) on the worker clock")
+
     # Memory/cost fixes (2026-08-23): periodic malloc_trim + weekly
     # VACUUM. See memtrim.py and db.vacuum_db docstrings.
     scheduler.add_job(

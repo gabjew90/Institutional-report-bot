@@ -48,7 +48,15 @@ def _norm_num(tok: str) -> str:
     return t
 
 
+_INDEX_NAME_RE = re.compile(
+    r"\b(?:nasdaq|russell|s&p|sp|stoxx|nikkei|ftse|dax|cac|hang seng|topix|msci)\s*-?\s*\d{2,4}\b",
+    re.IGNORECASE)
+
+
 def _numbers(text: str) -> set[str]:
+    # "Nasdaq 100", "Russell 2000", "S&P 500" are names, not figures
+    # (shakedown 2026-09-02: three false failures on one shadow pulse)
+    text = _INDEX_NAME_RE.sub(" ", text or "")
     out = set()
     for m in NUM_RE.finditer(text or ""):
         n = _norm_num(m.group(0))
