@@ -12,8 +12,9 @@
     {"id": "s2", "text": "JPMorgan reads the move as a bear-steepener with the front end anchored by a Fed on hold."},
     {"id": "s3", "text": "JPMorgan recommends paying 5s30s at 62bp with a stop at 48bp."},
     {"id": "s4", "text": "Citi sees the break as a positioning flush and expects 4.40% to hold on a closing basis."},
-    {"id": "s5", "text": "Thursday's core PCE print, consensus 0.3% month on month, is the test for the steepener."}
+    {"id": "s5", "text": "A hot core PCE print on Thursday, consensus 0.3% month on month, would validate the steepener, and a soft print would not by itself reverse it while the Fed stays on hold."}
   ],
+  "_s5_note": "2026-09-02: the first GitHub gate run graded the earlier clean s5 ('is the test for the steepener') as distorted for flattening the source's asymmetric conditional. The grader was right; the sentence now carries both halves.",
   "sentences_bad": [
     {"id": "s1", "text": "The 10-year broke 4.40% on Friday for the first time since May."},
     {"id": "s2", "text": "JPMorgan reads the move as a bear-steepener with the front end anchored by a Fed on hold."},
