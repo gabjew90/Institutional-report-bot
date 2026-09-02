@@ -1,0 +1,34 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "MSFT/Meta guide above consensus -> GS raises 2026 capex to $751B from $671B; underlying driver is supply not demand: HBM/CoWoS sold out through 1H27 -> four largest buyers pull 2027 orders forward -> that supply lock is why the cycle extends rather than peaks; separately, rising HBM prices (+18% into 1Q27) keep pushing capex guides higher because the constraint is supply; therefore Buy NVDA $250 PT; invalidated if HBM contract prices fall two consecutive months -> pull-forward argument breaks -> 2027 guides get cut; a Fed rate decision is not expected to change this.",
+   "brief_chain": "MSFT/Meta guide above consensus -> GS raises 2026 capex to $751B from $671B; mechanism is supply not appetite: four largest buyers pull 2027 orders forward to lock sold-out HBM/CoWoS capacity through 1H27; because the constraint is supply, rising HBM prices (+18% into 1Q27) push capex guides higher, so the cycle extends rather than peaks; Buy NVDA $250 PT; invalidation is HBM prices falling two months running, breaking the pull-forward argument and cutting 2027 guides; Fed decision not expected to change the picture.",
+   "distortions": [
+    {
+     "what": "Source treats the supply-lock pull-forward and the rising-memory-price effect as two distinct supporting mechanisms (the former is why the cycle extends, the latter separately reinforces rising capex guides). The brief compresses them into a single causal chain where rising prices are presented as the direct cause of the cycle extending.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both framings converge on the same call (Buy NVDA, $250 PT) and the same invalidation condition (HBM prices falling two months running), so acting on the brief instead of the source produces an identical trade."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 1,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

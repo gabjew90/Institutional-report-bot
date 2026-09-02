@@ -1,0 +1,25 @@
+{
+ "dimensions": {
+  "grouping": {
+   "bad_failed": true,
+   "clean_passed": true,
+   "status": "separates"
+  },
+  "fidelity": {
+   "bad_failed": true,
+   "clean_passed": false,
+   "status": "TOO HARSH (failed the clean artifact)"
+  },
+  "brief_fidelity": {
+   "bad_failed": true,
+   "clean_passed": true,
+   "status": "separates"
+  },
+  "mechanism": {
+   "bad_failed": true,
+   "clean_passed": true,
+   "status": "separates"
+  }
+ },
+ "all_separate": false
+}

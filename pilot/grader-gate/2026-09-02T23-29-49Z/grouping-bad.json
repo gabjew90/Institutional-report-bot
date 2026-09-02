@@ -1,0 +1,38 @@
+{
+ "metric": 1,
+ "total_cards": 6,
+ "fragmentation_sets": [
+  {
+   "subject": "hyperscaler AI capex spending acceleration",
+   "labels": [
+    "AI capex cycle",
+    "hyperscaler spending acceleration"
+   ],
+   "cards": 2
+  }
+ ],
+ "fragmented_mass_share": 0.33,
+ "mis_merges": [
+  {
+   "label": "Oil",
+   "subjects": [
+    "Hormuz supply-risk / Brent scarcity premium",
+    "rates positioning (5s30s curve steepener at 62bp, 4.40% yield level holding on a close)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Two of the three cards under 'Oil' are rate-curve/yield-level trades with no oil content, so an editor scanning labels would never see a standalone rates theme and the oil label itself would misrepresent its own card mix."
+  }
+ ],
+ "pass": false,
+ "notes": "Capex-cycle label is split across two near-identical wordings, and 'Oil' silently absorbs unrelated rates trades, both of which would mislead an editor picking lead themes from labels alone.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "d9ae7367c064"
+ },
+ "failed": false,
+ "problems": []
+}

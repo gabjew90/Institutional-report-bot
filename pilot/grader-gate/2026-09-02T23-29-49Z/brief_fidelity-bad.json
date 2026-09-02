@@ -1,0 +1,49 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "MSFT/Meta guide above consensus, and buyers pull forward 2027 orders to lock scarce HBM/CoWoS capacity (sold out through 1H27) therefore supply, not appetite, is the binding constraint therefore rising HBM prices (+18% into 1Q27) signal the lock is holding and capex guides keep rising therefore the cycle extends rather than peaks therefore Buy NVDA $250 target, invalidated only by a memory-price rollover (HBM prices falling 2 consecutive months), explicitly not by a Fed rate decision",
+   "brief_chain": "MSFT/Meta guide above consensus therefore GS raises 2026 capex to $751B because inference demand is outgrowing supply (appetite is the constraint) therefore rising HBM prices are a headwind that could cap capex guides therefore the cycle is closer to peaking than extending therefore Buy NVDA $250 target, invalidated by a Fed rate decision tightening financial conditions, with HBM pricing only secondary",
+   "distortions": [
+    {
+     "what": "Source frames the binding constraint as supply (buyers locking scarce HBM/CoWoS capacity sold out through 1H27); brief frames it as demand/appetite (inference workloads outgrowing supply) \u2014 the opposite constraint.",
+     "material": true,
+     "would_the_trade_change": "Yes: this reverses the causal story used to read future memory-pricing data, which is the variable the invalidation condition hinges on."
+    },
+    {
+     "what": "Source says rising HBM prices are evidence the cycle extends (supply lock holding); brief says rising HBM prices are a headwind that could cap capex guides \u2014 the same input produces opposite read-throughs.",
+     "material": true,
+     "would_the_trade_change": "Yes: a trader watching HBM pricing would draw the opposite conclusion about the capex cycle depending on which version they read."
+    },
+    {
+     "what": "Source's explicit stance is the cycle extends rather than peaks; brief's explicit stance is the cycle is closer to peaking than extending \u2014 a direct inversion of the thesis conviction.",
+     "material": true,
+     "would_the_trade_change": "Yes: this is a stance-direction reversal on the core call the report is making, even though the nominal NVDA rating is unchanged."
+    },
+    {
+     "what": "Source's stated invalidation is a memory-price rollover (HBM contract prices falling for two consecutive months), and it explicitly states a Fed rate decision would NOT change the picture. Brief's invalidation is a Fed rate decision tightening financial conditions, with HBM pricing demoted to secondary.",
+     "material": true,
+     "would_the_trade_change": "Yes: the brief tells a reader to watch and act on the exact condition (Fed decision) the source explicitly rules out, and downgrades the one the source actually names."
+    }
+   ],
+   "material_count": 4,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 4,
+ "non_material_total": 0,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

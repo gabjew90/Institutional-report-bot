@@ -1,0 +1,59 @@
+{
+ "metric": 2,
+ "artifact": "fixture",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "The 10-year yield broke 4.40% on Friday for the first time since May.",
+   "why": "Exact match of level, day, and recency claim."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We think the move is a bear-steepener: the front end is anchored by a Fed on hold",
+   "why": "Note is JPMorgan's own ('We'), so attributing the bear-steepener read and the anchoring mechanism to JPMorgan is correct."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We recommend paying 5s30s at 62bp with a stop at 48bp. Citi's rates desk, by contrast, sees the break as a positioning flush and expects 4.40% to hold on a closing basis.",
+   "why": "The pay 5s30s @62bp/stop 48bp trade is JPMorgan's own call ('We recommend'). Citi is cited only for a contrasting view that 4.40% holds \u2014 Citi never calls this trade. Attribution swapped from JPMorgan to Citi."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "(no matching content \u2014 source contains no Goldman view, no 4.75% target, no foreign-demand claim)",
+   "why": "Goldman is not mentioned anywhere in the source; the 4.75% year-end target and foreign-demand-fading rationale have no basis in this document."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "A hot core PCE print on Thursday (consensus 0.3% m/m) would validate our steepener",
+   "why": "Thursday timing, 0.3% m/m consensus, and the framing as the test/validator for the steepener trade all match."
+  }
+ ],
+ "faithful": 3,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.6,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}
