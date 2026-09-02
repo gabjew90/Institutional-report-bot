@@ -25,6 +25,34 @@ def test_sampling_is_deterministic_per_date_and_excludes_leans_and_headers():
     assert sample_sentences(SHADOW, "2026-09-03") != a
 
 
+def test_sampling_is_limited_to_the_sections_both_pulses_contain():
+    """Shakedown 2026-09-02: production's RECAP (live prices) and WHAT TO
+    WATCH were sampled and graded unsupported. Only THE MAIN EVENT and
+    BRIEFS are shared with the shadow pulse."""
+    from scripts.pilot_grader_inputs import shared_sections
+    prod = ("---\nx: y\n---\n\n# Head\n\n## 1. RECAP\n\nS&P futures are down 0.3% before the open this morning.\n\n"
+            "## 2. THE MAIN EVENT\n\n### T\n\nThe main event sentence has enough words to count here.\n\n"
+            "## 3. BRIEFS\n\n### B\n\nA brief sentence that also has enough words to be sampled.\n\n"
+            "## TRADE BOARD\n\n- x\n\n## 4. WHAT TO WATCH\n\n### Today\n\nCPI at 8:30 ET is the print to watch today.\n")
+    sec = shared_sections(prod)
+    assert "RECAP" not in sec and "WHAT TO WATCH" not in sec and "TRADE BOARD" not in sec
+    sents = sentences_of(prod)
+    assert all("futures" not in s and "CPI" not in s for s in sents), sents
+    assert len(sents) == 2
+
+
+def test_non_material_share_counts_briefs_not_distortions():
+    d = _grades()
+    for ag in ("a", "b"):
+        d["grades"]["brief_fidelity"][ag]["briefs"] = [
+            {"id": "d1", "tier": "top", "material_count": 0, "non_material_count": 3},
+            {"id": "d2", "tier": "top", "material_count": 0, "non_material_count": 0},
+            {"id": "d3", "tier": "rest", "material_count": 0, "non_material_count": 0},
+            {"id": "d4", "tier": "rest", "material_count": 0, "non_material_count": 0}]
+    r = day_row("2026-09-02", d)
+    assert r["m2a"]["non_material_share"] == 0.25
+
+
 def test_main_event_extracts_only_section_two():
     me = main_event(SHADOW)
     assert me.startswith("### Rates do the work") and "Memory pricing" not in me

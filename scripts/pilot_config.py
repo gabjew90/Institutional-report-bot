@@ -32,6 +32,9 @@ PILOT_ROOT = os.environ.get("PILOT_ROOT", "pilot")
 # Subdirectories, derived. Nothing else in the codebase hardcodes
 # these paths.
 SOURCE_TEXT_DIR = f"{PILOT_ROOT}/source-text"
+# MEDIUM documents, for the graders' source set only (2026-09-02); the
+# readers never read this tree.
+SOURCE_TEXT_ALL_DIR = f"{PILOT_ROOT}/source-text-all"
 CARDS_DIR = f"{PILOT_ROOT}/cards"
 SHADOW_DIR = f"{PILOT_ROOT}/shadow"
 GRADES_DIR = f"{PILOT_ROOT}/grades"

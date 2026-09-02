@@ -125,10 +125,12 @@ def day_row(date: str, d: dict) -> dict:
         t["audited"] += 1
         t["material"] += v["material"]
         t["non_material"] += v["non_material"]
-    audited = sum(t["audited"] for t in tiers.values()) or 0
-    nonmat = sum(t["non_material"] for t in tiers.values())
+    audited = len(per_brief)
+    # The soft ceiling is "20% of audited BRIEFS carry a non-material
+    # distortion", not a count of distortions (day 1 rendered 333%).
+    briefs_with_nonmat = sum(1 for v in per_brief.values() if v["non_material"] > 0)
     row["m2a"] = {"material": mat, "note": note, "tiers": dict(tiers),
-                  "non_material_share": round(nonmat / audited, 2) if audited else None,
+                  "non_material_share": round(briefs_with_nonmat / audited, 2) if audited else None,
                   "pass": mat == 0}
     # metric 3 per artifact
     for art in ("shadow", "production"):

@@ -10,6 +10,7 @@ Discord, Railway DB) is never written by any pilot job.
 | when | job | writes |
 |---|---|---|
 | worker, on HIGH analysis | `github_bridge/pilot_publish.py` (gated `PILOT_PUBLISH_ENABLED`) | `source-text/<date>/<id>__<slug>.txt` + `.meta.json` |
+| worker, on MEDIUM analysis | same publisher | `source-text-all/<date>/...` (graders' corpus only; readers never read it) |
 | 09:00-14:00 hourly, 13:15, 01/05/17/21 | `pilot-readers.yml` | `cards/<date>/<id>.json`, `ops/<date>.json` |
 | 13:55 | `pilot-editor.yml` | `shadow/<date>.md`, `.clean.md`, `.meta.json` |
 | 17:00 | `pilot-graders.yml` | `grades/<date>/<dim>-<artifact>-<a|b>.json`, `scoreboard.md` |

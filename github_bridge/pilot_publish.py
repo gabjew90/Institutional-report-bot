@@ -57,17 +57,25 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
     from config import settings
     if not getattr(settings, "pilot_publish_enabled", False):
         return False
-    if (priority or "").strip().lower() != "high":
+    # HIGH feeds the readers (source-text/). MEDIUM is published to
+    # source-text-all/ for the GRADERS only (2026-09-02): production's
+    # pulse draws on MEDIUM documents too, and grading it against the
+    # HIGH-only set marked its sentences "unsupported" for documents the
+    # pilot simply never had. Readers never read source-text-all/. LOW is
+    # not published.
+    pri = (priority or "").strip().lower()
+    if pri not in ("high", "medium"):
         return False
 
     try:
         from github_bridge import client as gh
-        from scripts.pilot_config import PILOT_BRANCH, SOURCE_TEXT_DIR
+        from scripts.pilot_config import PILOT_BRANCH, SOURCE_TEXT_ALL_DIR, SOURCE_TEXT_DIR
 
+        base = SOURCE_TEXT_DIR if pri == "high" else SOURCE_TEXT_ALL_DIR
         date = (published_at or "")[:10] or _today()
         stem = f"{pdf_file_id}__{_slug(title or file_name)}"
-        text_path = f"{SOURCE_TEXT_DIR}/{date}/{stem}.txt"
-        meta_path = f"{SOURCE_TEXT_DIR}/{date}/{pdf_file_id}.meta.json"
+        text_path = f"{base}/{date}/{stem}.txt"
+        meta_path = f"{base}/{date}/{pdf_file_id}.meta.json"
 
         # Idempotence: a published document is never republished. A
         # duplicate would be read twice and double-count in every

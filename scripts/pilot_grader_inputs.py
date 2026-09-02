@@ -45,8 +45,22 @@ def window_dates(day_iso: str, days: int) -> set[str]:
     return {(d0 - timedelta(days=i)).isoformat() for i in range(days + 1)}
 
 
+SHARED_SECTIONS_RE = re.compile(
+    r"(## 2\. THE MAIN EVENT.*?)(?=\n## (?!3\. BRIEFS)|\Z)", re.S)
+
+
+def shared_sections(md: str) -> str:
+    """THE MAIN EVENT and BRIEFS only (plan 3.6): the shadow pulse has
+    no RECAP or WHAT TO WATCH, so those production sections must not be
+    sampled. Shakedown day 1 graded production's live-market RECAP
+    lines as 'unsupported', which measured the section list, not
+    fidelity."""
+    m = SHARED_SECTIONS_RE.search(md.split("## _LEANS")[0])
+    return m.group(1) if m else md
+
+
 def sentences_of(md: str, keep_markers: bool = False) -> list[str]:
-    body = md.split("## _LEANS")[0]
+    body = shared_sections(md)
     body = re.sub(r"^#.*$", "", body, flags=re.M)
     out = []
     for para in body.split("\n"):
@@ -113,11 +127,17 @@ def choose_briefs(pack: dict, main_ids: list[str], date_iso: str, k: int = 4) ->
 
 
 def source_files(source_root: str, date_iso: str, days: int) -> list[str]:
+    """HIGH sources (source-text/) plus the MEDIUM grading corpus
+    (source-text-all/, a sibling directory) for the window. Production
+    draws on MEDIUM documents; grading it against HIGH only marked
+    real sentences 'unsupported' on shakedown day 1."""
     wanted = window_dates(date_iso, days)
+    roots = [source_root, os.path.join(os.path.dirname(source_root.rstrip("/\\")), "source-text-all")]
     out = []
-    for p in sorted(glob.glob(os.path.join(source_root, "*", "*.txt"))):
-        if os.path.basename(os.path.dirname(p)) in wanted:
-            out.append(p)
+    for root in roots:
+        for p in sorted(glob.glob(os.path.join(root, "*", "*.txt"))):
+            if os.path.basename(os.path.dirname(p)) in wanted:
+                out.append(p)
     return out
 
 

@@ -992,3 +992,25 @@ Shadow pulse for the day: 1,899 words, MAIN EVENT plus nine briefs,
 (no attention flag), 11 lean lines, unread at edit 6 (the backlog the
 dropped reader runs left; all 9 documents were read by end of day).
 
+Day-1 grades (uncounted, two agents each): shadow fidelity 93% / 93%
+with zero unsupported and one distorted sentence; brief fidelity 1 and
+3 MATERIAL distortions (agents disagree on count, agree on the worst:
+a TME/BofA brief inverted "$9bn sold in an up market" into "bought";
+a JPM brief dropped "but looks to re-enter" after "took profit on
+gold"; another collapsed "dollar-neutral or market-neutral" into one
+construction). Those are real reader errors and the reader prompt now
+names both failure shapes; this is the pre-freeze iteration the
+shakedown exists for. Mechanism: shadow preserved by both agents,
+production not preserved by both.
+
+Three measurement defects found by the day-1 grades, fixed the same
+day: (1) production was graded against the HIGH-only source set while
+its pulse draws on MEDIUM documents, so real sentences read
+"unsupported"; MEDIUM text is now published to source-text-all/ for
+the graders only. (2) The sampler drew production's RECAP and WHAT TO
+WATCH sentences, which the shadow does not have; sampling is limited
+to THE MAIN EVENT and BRIEFS. (3) The 2a soft ceiling was computed as
+distortions per brief (333%); it is the share of audited briefs with
+any non-material distortion. Day-1's 7% production fidelity is
+therefore a shakedown artifact, not a result.
+

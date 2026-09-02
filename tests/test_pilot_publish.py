@@ -45,10 +45,20 @@ def test_disabled_by_default_publishes_nothing():
     assert ok is False and calls == []
 
 
-def test_medium_priority_is_not_published():
-    """HIGH only — publishing MEDIUM would quietly change the
-    experiment's corpus."""
+def test_medium_goes_to_the_grading_corpus_not_the_reader_tree():
+    """MEDIUM is published under source-text-all/ for the GRADERS
+    (2026-09-02: production draws on MEDIUM documents and grading it
+    against HIGH only marked real sentences unsupported). The readers'
+    tree, source-text/, stays HIGH-only so the experiment's reading
+    corpus is unchanged."""
     ok, calls = _call(True, priority="medium")
+    assert ok is True and calls
+    assert all("/source-text-all/" in p for p, _ in calls), calls
+    assert not any("/source-text/" in p for p, _ in calls), calls
+
+
+def test_low_priority_is_not_published():
+    ok, calls = _call(True, priority="low")
     assert ok is False and calls == []
 
 

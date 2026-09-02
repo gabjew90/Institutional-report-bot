@@ -27,6 +27,14 @@ Rules:
   ambiguity the document leaves open.
 - Preserve every qualifier that changes meaning: forecast vs released,
   the bank's view vs a consensus it cites, conditional vs asserted.
+- Signs and directions are the first thing a grader checks. "Sold
+  $9bn in an up market" and "bought $9bn in an up market" are opposite
+  theses; re-read every flow, positioning and P&L sentence before you
+  write its direction.
+- Preserve stated intent and stated alternatives. "Took profit on gold
+  but looks to re-enter" is not "took profit on gold"; "dollar-neutral
+  or market-neutral" is two constructions, not one. Dropping the second
+  half changes what a trader would do.
 
 ## Part 2 — claim cards
 
