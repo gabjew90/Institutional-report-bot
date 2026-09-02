@@ -1,0 +1,60 @@
+# Worker heartbeat — the watchdog the worker cannot be for itself.
+#
+# railway.toml restarts the worker at most 5 times and has no health
+# check, and the in-process ops alert cannot fire for a boot-time crash
+# (bad env var, import error). Until 2026-09-01 the only external signal
+# was daily-qc noticing a missing pulse at 8:20 AM Pacific on weekdays.
+#
+# Every 30 minutes: hit /healthz (aiohttp, api/server.py, public on the
+# Railway domain). Three tries with backoff so a redeploy in progress is
+# not an alarm. On failure, post to the ops Discord webhook if the
+# DISCORD_OPS_WEBHOOK secret exists, and fail the job either way so
+# GitHub's own failure email is a second channel.
+name: heartbeat
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: heartbeat
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Probe /healthz
+        id: probe
+        run: |
+          URL="https://worker-production-b256.up.railway.app/healthz"
+          ok=0
+          for delay in 0 45 90; do
+            sleep "$delay"
+            code=$(curl -s -m 15 -o /tmp/body -w "%{http_code}" "$URL" || echo 000)
+            if [ "$code" = "200" ] && grep -q '"ok"' /tmp/body; then
+              ok=1; echo "healthz ok"; break
+            fi
+            echo "healthz returned $code"
+          done
+          echo "ok=$ok" >> "$GITHUB_OUTPUT"
+
+      - name: Page ops channel
+        if: steps.probe.outputs.ok != '1'
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_OPS_WEBHOOK }}
+        run: |
+          MSG="Worker heartbeat FAILED: /healthz did not answer 200 in three tries over ~2 minutes. Check Railway (marvelous-dream / worker)."
+          if [ -n "$WEBHOOK" ]; then
+            curl -s -m 15 -H "Content-Type: application/json" \
+              -d "{\"content\": \"$MSG\"}" "$WEBHOOK" >/dev/null || true
+          else
+            echo "::warning::DISCORD_OPS_WEBHOOK secret not set; relying on the GitHub failure email"
+          fi
+          echo "::error::$MSG"
+          exit 1

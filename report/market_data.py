@@ -517,7 +517,6 @@ def _fetch_finnhub_quote(symbol: str) -> dict | None:
     Finnhub response fields: c=current, pc=prev close, dp=pct change.
     """
     from config import settings
-    import time
     key = settings.finnhub_api_key
     if not key:
         return None

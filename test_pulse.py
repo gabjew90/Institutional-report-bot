@@ -126,7 +126,7 @@ async def run_ingest(since_str: str | None = None, until_str: str | None = None,
                                     "key_tickers": triage.key_tickers, "summary": triage.summary}),
             analysis_json=json.dumps(asdict(analysis)),
             priority=triage.priority,
-            pages_analyzed=len(selected),
+            pages_analyzed=len(pages),  # text-only: every page is analyzed
             total_pages=len(pages),
             input_tokens=analysis.input_tokens,
             output_tokens=analysis.output_tokens,

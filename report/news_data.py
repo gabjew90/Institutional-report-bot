@@ -247,7 +247,7 @@ def fetch_earnings_calendar(days_ahead: int = 7) -> str:
         out.append("EARNINGS STILL UPCOMING (belongs in WHAT TO WATCH):")
         out.extend(upcoming_lines)
     if not out:
-        return f"EARNINGS CALENDAR: no major tickers in window."
+        return "EARNINGS CALENDAR: no major tickers in window."
     return "\n".join(out)
 
 

@@ -245,6 +245,33 @@ def check_notes_intact() -> None:
             "\n".join(f"missing {m!r} — {why}" for m, why in gone))
 
 
+def check_requirements_pinned() -> None:
+    """Every dependency line is ==-pinned (2026-09-01 review). A `>=`
+    line means the next deploy resolves whatever is newest that minute."""
+    import re as _re
+    bad = []
+    for raw in open(os.path.join(REPO, "requirements.txt"), encoding="utf-8"):
+        line = raw.split("#", 1)[0].strip()
+        if not line:
+            continue
+        spec = line.split(";", 1)[0].strip()
+        if not _re.match(r"^[A-Za-z0-9_.-]+==\S+$", spec):
+            bad.append(line)
+    _record("requirements.txt is fully ==-pinned", not bad,
+            "unpinned: " + ", ".join(bad) if bad else "")
+
+
+def check_smoke_manifest_fast() -> None:
+    """The fast tier of scripts/smoke_manifest.json must pass. The full
+    tier runs via `py -3.12 scripts/run_smokes.py --full`."""
+    r = subprocess.run(
+        [sys.executable, os.path.join(REPO, "scripts", "run_smokes.py"),
+         "--tier", "fast"], capture_output=True, text=True, cwd=REPO)
+    out = (r.stdout or "") + (r.stderr or "")
+    _record("fast smoke tier passes", r.returncode == 0,
+            chr(10).join(out.strip().splitlines()[-12:]))
+
+
 def main() -> int:
     print("=== pre-push gate ===")
     print(f"repo: {REPO}")
@@ -255,6 +282,8 @@ def main() -> int:
                check_forward_risks_registered,
                check_runtime_is_pinned,
                check_gates_are_runnable,
+               check_requirements_pinned,
+               check_smoke_manifest_fast,
                check_notes_intact):
         try:
             fn()

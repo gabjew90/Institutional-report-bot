@@ -311,70 +311,82 @@ def test_dispatch_branch_present():
         "_execute_economic_calendar")
 
 
-def test_system_prompt_tool_count_updated():
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    # Count bumped again 2026-06-10 when lookup_earnings_date shipped
-    # (SEVEN → EIGHT). This test guards that the preamble count moved
-    # FORWARD, not that it froze at seven.
-    assert "You have TEN tools" in _ASK_SYSTEM_INSTRUCTION, (
-        "TOOLS preamble must say 'NINE tools' (SIX → SEVEN when the "
-        "macro tool shipped, SEVEN → EIGHT when lookup_earnings_date "
-        "shipped)"
-    )
-    assert "You have SIX tools" not in _ASK_SYSTEM_INSTRUCTION
-    assert "You have SEVEN tools" not in _ASK_SYSTEM_INSTRUCTION
-    _ok("system prompt tool count current (EIGHT)")
+# RETIRED 2026-09-01 (test_system_prompt_tool_count_updated): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_system_prompt_tool_count_updated():
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
+#     # Count bumped again 2026-06-10 when lookup_earnings_date shipped
+#     # (SEVEN → EIGHT). This test guards that the preamble count moved
+#     # FORWARD, not that it froze at seven.
+#     assert "You have TEN tools" in _ASK_SYSTEM_INSTRUCTION, (
+#         "TOOLS preamble must say 'NINE tools' (SIX → SEVEN when the "
+#         "macro tool shipped, SEVEN → EIGHT when lookup_earnings_date "
+#         "shipped)"
+#     )
+#     assert "You have SIX tools" not in _ASK_SYSTEM_INSTRUCTION
+#     assert "You have SEVEN tools" not in _ASK_SYSTEM_INSTRUCTION
+#     _ok("system prompt tool count current (EIGHT)")
 
 
-def test_system_prompt_section_7_present():
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    assert "### 7. `lookup_economic_calendar" in _ASK_SYSTEM_INSTRUCTION
-    # Concrete examples
-    assert "May CPI" in _ASK_SYSTEM_INSTRUCTION
-    assert "ECB" in _ASK_SYSTEM_INSTRUCTION
-    assert "payrolls" in _ASK_SYSTEM_INSTRUCTION.lower()
-    # Status field semantics
-    assert '"released"' in _ASK_SYSTEM_INSTRUCTION
-    assert '"scheduled"' in _ASK_SYSTEM_INSTRUCTION
-    assert '"past_no_data"' in _ASK_SYSTEM_INSTRUCTION
-    # Hard routing rule for macro questions
-    assert "HARD ROUTING RULE for macro print questions" in _ASK_SYSTEM_INSTRUCTION
-    _ok("system prompt §7 has when-to-call + status semantics + macro "
-        "routing rule")
+# RETIRED 2026-09-01 (test_system_prompt_section_7_present): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_system_prompt_section_7_present():
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
+#     assert "### 7. `lookup_economic_calendar" in _ASK_SYSTEM_INSTRUCTION
+#     # Concrete examples
+#     assert "May CPI" in _ASK_SYSTEM_INSTRUCTION
+#     assert "ECB" in _ASK_SYSTEM_INSTRUCTION
+#     assert "payrolls" in _ASK_SYSTEM_INSTRUCTION.lower()
+#     # Status field semantics
+#     assert '"released"' in _ASK_SYSTEM_INSTRUCTION
+#     assert '"scheduled"' in _ASK_SYSTEM_INSTRUCTION
+#     assert '"past_no_data"' in _ASK_SYSTEM_INSTRUCTION
+#     # Hard routing rule for macro questions
+#     assert "HARD ROUTING RULE for macro print questions" in _ASK_SYSTEM_INSTRUCTION
+#     _ok("system prompt §7 has when-to-call + status semantics + macro "
+#         "routing rule")
 
 
-def test_system_prompt_anchors_2026_06_05_06_08_failures():
-    """The §7 section + assertion rule extension must reference the
-    concrete observed failures (06-05 NFP cross-source conflict + 06-08
-    recycled 172k three days later) so the model recognizes the
-    pattern."""
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    assert "2026-06-05" in _ASK_SYSTEM_INSTRUCTION
-    assert "2026-06-08" in _ASK_SYSTEM_INSTRUCTION
-    assert "172k" in _ASK_SYSTEM_INSTRUCTION
-    assert "120k" in _ASK_SYSTEM_INSTRUCTION
-    _ok("system prompt anchors the 06-05 NFP cross-source conflict + "
-        "06-08 recycling failure")
+# RETIRED 2026-09-01 (test_system_prompt_anchors_2026_06_05_06_08_failures): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_system_prompt_anchors_2026_06_05_06_08_failures():
+#     """The §7 section + assertion rule extension must reference the
+#     concrete observed failures (06-05 NFP cross-source conflict + 06-08
+#     recycled 172k three days later) so the model recognizes the
+#     pattern."""
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
+#     assert "2026-06-05" in _ASK_SYSTEM_INSTRUCTION
+#     assert "2026-06-08" in _ASK_SYSTEM_INSTRUCTION
+#     assert "172k" in _ASK_SYSTEM_INSTRUCTION
+#     assert "120k" in _ASK_SYSTEM_INSTRUCTION
+#     _ok("system prompt anchors the 06-05 NFP cross-source conflict + "
+#         "06-08 recycling failure")
 
 
-def test_assertion_rule_references_macro_tool():
-    """The existing ZERO UNFORCED MARKET-DATA ASSERTIONS rule must now
-    reference lookup_economic_calendar — otherwise it still reads as
-    'no tool for macro' which would conflict with the new routing."""
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    rule_anchor = _ASK_SYSTEM_INSTRUCTION.find(
-        "ZERO UNFORCED MARKET-DATA ASSERTIONS"
-    )
-    rule_window = _ASK_SYSTEM_INSTRUCTION[rule_anchor:rule_anchor + 3500]
-    assert "lookup_economic_calendar" in rule_window, (
-        "the existing market-data assertion rule must now reference "
-        "lookup_economic_calendar so the routing is consistent with "
-        "the new tool's existence"
-    )
-    # And reference macro print categories
-    assert "macro print" in rule_window or "macro" in rule_window
-    _ok("ZERO UNFORCED MARKET-DATA ASSERTIONS rule now references the "
-        "macro tool")
+# RETIRED 2026-09-01 (test_assertion_rule_references_macro_tool): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_assertion_rule_references_macro_tool():
+#     """The existing ZERO UNFORCED MARKET-DATA ASSERTIONS rule must now
+#     reference lookup_economic_calendar — otherwise it still reads as
+#     'no tool for macro' which would conflict with the new routing."""
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
+#     rule_anchor = _ASK_SYSTEM_INSTRUCTION.find(
+#         "ZERO UNFORCED MARKET-DATA ASSERTIONS"
+#     )
+#     rule_window = _ASK_SYSTEM_INSTRUCTION[rule_anchor:rule_anchor + 3500]
+#     assert "lookup_economic_calendar" in rule_window, (
+#         "the existing market-data assertion rule must now reference "
+#         "lookup_economic_calendar so the routing is consistent with "
+#         "the new tool's existence"
+#     )
+#     # And reference macro print categories
+#     assert "macro print" in rule_window or "macro" in rule_window
+#     _ok("ZERO UNFORCED MARKET-DATA ASSERTIONS rule now references the "
+#         "macro tool")
 
 
 if __name__ == "__main__":
@@ -390,8 +402,8 @@ if __name__ == "__main__":
     test_executor_clamps_days_window()
     test_tool_registered_in_both_arrays()
     test_dispatch_branch_present()
-    test_system_prompt_tool_count_updated()
-    test_system_prompt_section_7_present()
-    test_system_prompt_anchors_2026_06_05_06_08_failures()
-    test_assertion_rule_references_macro_tool()
+    pass  # retired: test_system_prompt_tool_count_updated
+    pass  # retired: test_system_prompt_section_7_present
+    pass  # retired: test_system_prompt_anchors_2026_06_05_06_08_failures
+    pass  # retired: test_assertion_rule_references_macro_tool
     print("\nALL ECONOMIC-CALENDAR TOOL SMOKE TESTS PASS")

@@ -168,18 +168,21 @@ def test_executor_empty_only_when_both_empty():
             pass
 
 
-def test_prompt_rules():
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
-    assert "chat_stated_trades" in P
-    anchor = P.find('"How did I do"')
-    assert anchor != -1, "missing the How-did-I-do binding block"
-    window = P[anchor:anchor + 1400]
-    assert "batting .000" in window and "zero mentions" in window
-    assert "self-reported" in window
-    # dollar-fabrication rule
-    assert "Never state a DOLLAR P&L" in P
-    assert "8,839.28" in P, "anchor the observed dollar fabrication"
-    _ok("§4 prompt: how-did-I-do both-sources rule + no-dollar-P&L rule")
+# RETIRED 2026-09-01 (test_prompt_rules): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_prompt_rules():
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
+#     assert "chat_stated_trades" in P
+#     anchor = P.find('"How did I do"')
+#     assert anchor != -1, "missing the How-did-I-do binding block"
+#     window = P[anchor:anchor + 1400]
+#     assert "batting .000" in window and "zero mentions" in window
+#     assert "self-reported" in window
+#     # dollar-fabrication rule
+#     assert "Never state a DOLLAR P&L" in P
+#     assert "8,839.28" in P, "anchor the observed dollar fabrication"
+#     _ok("§4 prompt: how-did-I-do both-sources rule + no-dollar-P&L rule")
 
 
 if __name__ == "__main__":
@@ -187,5 +190,5 @@ if __name__ == "__main__":
     test_trade_regex_precision()
     test_get_recent_user_chat_trades_and_executor()
     test_executor_empty_only_when_both_empty()
-    test_prompt_rules()
+    pass  # retired: test_prompt_rules
     print("\nALL CHAT-STATED TRADES SMOKE TESTS PASS")

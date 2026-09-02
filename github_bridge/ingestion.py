@@ -44,7 +44,6 @@ CONSUMER CONTRACT (Anthropic-side cron routine):
 
 import json
 import logging
-from dataclasses import asdict
 from pathlib import Path
 
 from config import settings

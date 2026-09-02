@@ -8,7 +8,7 @@ import json
 import logging
 import time
 from dataclasses import asdict
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 
 from ai_analysis.analyzer import triage_pdf, analyze_pdf_deep

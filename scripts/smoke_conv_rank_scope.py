@@ -68,20 +68,23 @@ def test_three_scored_users_rank_with_loud_scope():
     _ok("annotation: >=3 active → ranked, but scope is loudly conv-not-global")
 
 
-def test_prompt_rule_present():
-    import discord_bot.bot as bot_mod
-    ins = bot_mod._ASK_SYSTEM_INSTRUCTION
-    assert "CONV-SCOPED rank ≠ GLOBAL leaderboard" in ins, "rule missing"
-    assert "not a license to invent a rank" in ins.lower() or \
-        "roast is not a license to invent a rank" in ins.lower(), \
-        "the no-fabricated-rank clause is missing"
-    assert "lookup_user_profile" in ins, "must point global asks at the tool"
-    _ok("prompt: conv-scoped-vs-global rank rule present + tool pointer")
+# RETIRED 2026-09-01 (test_prompt_rule_present): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_prompt_rule_present():
+#     import discord_bot.bot as bot_mod
+#     ins = bot_mod._ASK_SYSTEM_INSTRUCTION
+#     assert "CONV-SCOPED rank ≠ GLOBAL leaderboard" in ins, "rule missing"
+#     assert "not a license to invent a rank" in ins.lower() or \
+#         "roast is not a license to invent a rank" in ins.lower(), \
+#         "the no-fabricated-rank clause is missing"
+#     assert "lookup_user_profile" in ins, "must point global asks at the tool"
+#     _ok("prompt: conv-scoped-vs-global rank rule present + tool pointer")
 
 
 if __name__ == "__main__":
     print("=== conv-rank scope smoke ===")
     test_single_scored_user_no_meaningless_rank()
     test_three_scored_users_rank_with_loud_scope()
-    test_prompt_rule_present()
+    pass  # retired: test_prompt_rule_present
     print("\nALL CONV-RANK SCOPE SMOKE TESTS PASS")

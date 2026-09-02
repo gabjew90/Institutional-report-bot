@@ -38,7 +38,8 @@ def _token_ok(request: web.Request) -> bool:
     if not expected:
         return False  # API disabled when no token configured
     given = request.query.get("token", "").strip()
-    return given == expected
+    import hmac
+    return hmac.compare_digest(given.encode(), expected.encode())
 
 
 async def _healthz(request: web.Request) -> web.Response:

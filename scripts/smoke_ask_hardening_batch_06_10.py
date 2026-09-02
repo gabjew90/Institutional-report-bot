@@ -253,20 +253,23 @@ def test_chat_search_size_cap():
 # 5 — prompt diet (conservative)
 # =====================================================================
 
-def test_routing_rule_deduplicated():
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as S
-    # The GTLB anecdote previously appeared 2-3x; exactly one copy stays
-    n_gtlb = S.count("GTLB +9%")
-    assert n_gtlb == 1, (
-        f"GTLB wrong-direction anecdote should appear exactly once "
-        f"(canonical HARD ROUTING RULES), got {n_gtlb}"
-    )
-    # The directive is now a compact pointer
-    assert "Full routing rules + examples: HARD ROUTING RULES" in S
-    # Canonical section + its smoke-anchored line intact
-    assert "HARD ROUTING RULES" in S
-    assert "call `lookup_market_price` FIRST" in S
-    _ok("price-routing rule de-duplicated to one canonical copy")
+# RETIRED 2026-09-01 (test_routing_rule_deduplicated): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_routing_rule_deduplicated():
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as S
+#     # The GTLB anecdote previously appeared 2-3x; exactly one copy stays
+#     n_gtlb = S.count("GTLB +9%")
+#     assert n_gtlb == 1, (
+#         f"GTLB wrong-direction anecdote should appear exactly once "
+#         f"(canonical HARD ROUTING RULES), got {n_gtlb}"
+#     )
+#     # The directive is now a compact pointer
+#     assert "Full routing rules + examples: HARD ROUTING RULES" in S
+#     # Canonical section + its smoke-anchored line intact
+#     assert "HARD ROUTING RULES" in S
+#     assert "call `lookup_market_price` FIRST" in S
+#     _ok("price-routing rule de-duplicated to one canonical copy")
 
 
 # =====================================================================
@@ -344,7 +347,7 @@ if __name__ == "__main__":
     test_slang_vocab_added()
     test_chat_search_size_cap()
     print("\n--- 5: prompt diet ---")
-    test_routing_rule_deduplicated()
+    pass  # retired: test_routing_rule_deduplicated
     print("\n--- 6: parity + reconciliation + matching ---")
     test_slash_path_has_subject_verbatim_and_raw_mentions()
     test_token_reconciliation_after_retries()

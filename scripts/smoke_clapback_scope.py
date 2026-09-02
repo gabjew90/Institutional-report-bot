@@ -116,16 +116,19 @@ def test_quote_is_not_a_biography_rule():
     _ok("quote-is-not-biography rule present in ask + profile prompts")
 
 
-def test_prompt_carries_proportionality_and_recency():
-    from discord_bot import ask_prompt as ap
-    txt = ap.ASK_PROMPT if hasattr(ap, "ASK_PROMPT") else open(
-        ap.__file__, encoding="utf-8").read()
-    assert "PROPORTIONALITY IS MEASURED IN SENTENCES" in txt
-    assert "Good boy" in txt, "the worked example must be concrete"
-    assert "Never open profile material the exchange didn't open" in txt
-    assert "would become false when a number moved" in txt, \
-        "live-input recency rule missing"
-    _ok("prompt: proportionality example + live-input recency rule")
+# RETIRED 2026-09-01 (test_prompt_carries_proportionality_and_recency): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_prompt_carries_proportionality_and_recency():
+#     from discord_bot import ask_prompt as ap
+#     txt = ap.ASK_PROMPT if hasattr(ap, "ASK_PROMPT") else open(
+#         ap.__file__, encoding="utf-8").read()
+#     assert "PROPORTIONALITY IS MEASURED IN SENTENCES" in txt
+#     assert "Good boy" in txt, "the worked example must be concrete"
+#     assert "Never open profile material the exchange didn't open" in txt
+#     assert "would become false when a number moved" in txt, \
+#         "live-input recency rule missing"
+#     _ok("prompt: proportionality example + live-input recency rule")
 
 
 def test_invented_personal_details():
@@ -181,5 +184,5 @@ if __name__ == "__main__":
     test_quoted_block_is_not_the_askers_hostility()
     test_disengage_is_gated_in_the_pipeline()
     test_quote_is_not_a_biography_rule()
-    test_prompt_carries_proportionality_and_recency()
+    pass  # retired: test_prompt_carries_proportionality_and_recency
     print("\nALL CLAPBACK-SCOPE SMOKE TESTS PASS")

@@ -16,7 +16,6 @@ import argparse
 import io
 import json
 import sys
-from datetime import date
 
 if sys.platform == "win32":
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')

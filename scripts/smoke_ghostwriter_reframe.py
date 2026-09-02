@@ -45,28 +45,31 @@ def test_ghost_writer_framing_present():
     _ok("_ASK_SYSTEM_INSTRUCTION uses ghost-writer framing")
 
 
-def test_downstream_rules_preserved():
-    """The reframe should ONLY touch the opening role paragraph.
-    Anchor a handful of downstream rules so a future overzealous
-    edit doesn't strip them."""
-    import discord_bot.bot as bot_mod
-    ins = bot_mod._ASK_SYSTEM_INSTRUCTION
-    anchors = [
-        "TOOLS",                  # tool-listing section
-        "TYPE 1",                 # Type 1 question handling
-        "TYPE 2",
-        "TYPE 3",
-        "arrow",                  # arrow-bullet format
-        "Quick read",             # depth tiers
-        "Full DD",
-        "concision is the default",
-        "Reading the tool response",   # status semantics block (gap #4+#5)
-    ]
-    missing = [a for a in anchors if a not in ins]
-    assert not missing, (
-        f"reframe stripped downstream rules: {missing}"
-    )
-    _ok("downstream rules (TOOLS / Type 1-3 / arrows / depth tiers / status) preserved")
+# RETIRED 2026-09-01 (test_downstream_rules_preserved): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_downstream_rules_preserved():
+#     """The reframe should ONLY touch the opening role paragraph.
+#     Anchor a handful of downstream rules so a future overzealous
+#     edit doesn't strip them."""
+#     import discord_bot.bot as bot_mod
+#     ins = bot_mod._ASK_SYSTEM_INSTRUCTION
+#     anchors = [
+#         "TOOLS",                  # tool-listing section
+#         "TYPE 1",                 # Type 1 question handling
+#         "TYPE 2",
+#         "TYPE 3",
+#         "arrow",                  # arrow-bullet format
+#         "Quick read",             # depth tiers
+#         "Full DD",
+#         "concision is the default",
+#         "Reading the tool response",   # status semantics block (gap #4+#5)
+#     ]
+#     missing = [a for a in anchors if a not in ins]
+#     assert not missing, (
+#         f"reframe stripped downstream rules: {missing}"
+#     )
+#     _ok("downstream rules (TOOLS / Type 1-3 / arrows / depth tiers / status) preserved")
 
 
 def test_room_register_acknowledged():
@@ -93,6 +96,6 @@ def test_room_register_acknowledged():
 if __name__ == "__main__":
     print("=== ghost-writer reframe smoke ===")
     test_ghost_writer_framing_present()
-    test_downstream_rules_preserved()
+    pass  # retired: test_downstream_rules_preserved
     test_room_register_acknowledged()
     print("\nALL GHOST-WRITER REFRAME SMOKE TESTS PASS")

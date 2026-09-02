@@ -133,8 +133,8 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `config.py` | All settings from env vars via pydantic-settings |
 | `db.py` | SQLite schema + query helpers (WAL mode) |
 | `dropbox_client/watcher.py` | Cursor-based Dropbox polling + download |
-| `pdf_processing/extractor.py` | PyMuPDF text extraction (image rendering exists but unused) |
-| `pdf_processing/page_selector.py` | Multi-signal page scoring (exists but unused — multimodal removed) |
+| `pdf_processing/extractor.py` | PyMuPDF text extraction; page-image rendering used only by the multimodal carve-out |
+| `pdf_processing/page_selector.py` | Multi-signal page scoring. LIVE again since 2026-05-07 for the narrow multimodal carve-out (see Key Design Decisions); imported by `ai_analysis/analyzer.py` |
 | `ai_analysis/prompts.py` | Gemini prompt templates (triage, deep analysis, synthesis) |
 | `ai_analysis/analyzer.py` | Gemini orchestrator (triage + deep analysis, text-only) |
 | `ai_analysis/rate_limiter.py` | Concurrency + RPM management |
@@ -143,7 +143,10 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `report/market_data.py` | CoinGecko + Yahoo Finance live price snapshot |
 | `report/news_data.py` | Finnhub news + earnings calendar + economic calendar (all hard-filtered) |
 | `report/formatter.py` | Discord embed formatting with color-coded sections + dynamic footer |
-| `discord_bot/bot.py` | Discord bot with /pulse, /status, /load, /reanalyze, /clearqueue, /seedcursor, /reprocess |
+| `discord_bot/bot.py` | Discord bot with /pulse, /status, /load, /reanalyze, /clearqueue, /seedcursor, /reprocess; `_answer_with_gemini` is the /ask pipeline |
+| `discord_bot/ask_tools.py` | The /ask tool layer: `_build_*_tool` declarations and `_execute_*` executors (extracted from bot.py 2026-09-01; bot.py re-exports every name) |
+| `discord_bot/tool_docs.py` | Routing text for every tool (WHEN TO CALL / DO NOT use); tested by `tests/test_tool_docs.py` |
+| `discord_bot/ops_alert.py` | Ops pings to `OPS_ALERT_CHANNEL_ID` from any context |
 | `discord_bot/sender.py` | Embed delivery (per-embed = separate message — batching was reverted) |
 | `pipeline/orchestrator.py` | End-to-end pipeline coordination |
 | `scheduler/jobs.py` | APScheduler cron jobs (15-min poll, 5-min process; Gemini pulse job skipped — bridge/routine owns the 10 AM ET pulse) |
@@ -158,7 +161,7 @@ Password gate: `COMMAND_PASSWORD=<set-in-railway-env>` env var. Gated commands t
 Channel allowlist: pulse/admin commands (everything except `/ask`) only execute in channels listed in `PULSE_COMMAND_CHANNELS` (env var, comma-separated channel names, default `"test,tldr"`). Empty value disables the restriction. Discord still lists the commands in the global picker — the bouncer fires on execution, replying with an ephemeral "command not available here" message.
 
 **Visible in slash menu (currently registered):**
-- `/ask question:X` — Gemini-grounded web-search Q&A (Google Search tool). Works in **every** channel (not gated by `PULSE_COMMAND_CHANNELS`). 20 queries/user/day cap; resets at UTC midnight. Reuses the existing `GOOGLE_API_KEY` env var. Also responds to `@bot question` mentions in any channel. Free tier on Gemini 3.x = **5,000 grounded prompts/month** (shared across the Google AI Studio account); paid overage is ~$14 per 1000 queries.
+- `/ask question:X` — Gemini-grounded web-search Q&A (Google Search tool). Works in **every** channel (not gated by `PULSE_COMMAND_CHANNELS`). Per-user daily cap from `ASK_DAILY_QUOTA_PER_USER` (default 40); resets at UTC midnight. Reuses the existing `GOOGLE_API_KEY` env var. Also responds to `@bot question` mentions in any channel. Free tier on Gemini 3.x = **5,000 grounded prompts/month** (shared across the Google AI Studio account); paid overage is ~$14 per 1000 queries.
 - `/status` — dashboard: today's ingestion + total DB state + priority mix (always shows high/medium/low even if 0) + upload range + all-time tokens + last pulse times + Dropbox cursor state + upload volume (24h + since last scheduled) + last 5 ingested filenames (in configured timezone). Channel-allowlisted.
 - `/reanalyze hours:N password:<your-command-password>` — re-analyze PDFs already in DB with current prompt (appends new pdf_analyses rows; old preserved). Channel-allowlisted + password-gated.
 
@@ -170,6 +173,12 @@ Channel allowlist: pulse/admin commands (everything except `/ask`) only execute 
 - `/reprocess filename:X` — manual retry of a single failed PDF (auto-retry covers this via `MAX_RETRY_COUNT`).
 
 ## Deployment
+
+**Dependencies are `==`-pinned to the production environment** (`requirements.txt`, refreshed from `requirements.lock`, 2026-09-01). Bump a pin deliberately, deploy, then refresh the lock. `scripts/preflight_push.py` refuses an unpinned line.
+
+**External heartbeat:** `.github/workflows/heartbeat.yml` curls the public `/healthz` every 30 min and fails loudly (GitHub email, plus the ops channel if the `DISCORD_OPS_WEBHOOK` repo secret is set). The worker cannot page for its own boot-time crash; this is the watchdog.
+
+**Smoke tiers:** `scripts/smoke_manifest.json` lists every `scripts/smoke_*.py` with a tier. `py -3.12 scripts/run_smokes.py` runs the fast tier (preflight runs it too); `--full` runs everything not retired. A smoke on disk that is missing from the manifest fails the gate.
 
 Railway project **`marvelous-dream`**, service **`worker`**, environment **`production`**. Volume mounted at **`/data`** (SQLite DB + temp PDFs). Every `git push` to the working branch auto-redeploys.
 
@@ -223,11 +232,14 @@ Key ones set on `worker` service:
 - `TIMEZONE=America/New_York`
 - `DAILY_PULSE_HOUR=10`, `DAILY_PULSE_MINUTE=0`
 - `DB_PATH=/data/reports.db`, `PDF_DOWNLOAD_DIR=/data/pdfs` (MUST use leading slash — relative paths write to ephemeral container storage and get wiped on redeploy)
+- `OPS_ALERT_CHANNEL_ID` — one-line ops pings via REST (`discord_bot/ops_alert.py`; `ops_alert()` on the loop, `ops_alert_sync()` from worker threads; 1 h dedupe per key).
 - `MALLOC_ARENA_MAX=2` — caps glibc malloc arenas. Without it, the ~30 asyncio worker threads each get their own arena and freed PDF/image buffers never return to the OS; RSS ratchets to ~1.26 GB and Railway bills ~$10/GB-month for it (set 2026-07-23, cut RSS to ~180 MB at boot). Don't remove.
 
 ## Database
 
 SQLite with WAL mode at `/data/reports.db` (persists on Railway volume).
+
+**Connection model (2026-09-01):** the main thread keeps the module-level `db._conn`; every other thread gets its own connection from a `threading.local` (`db.get_connection()` handles both). One shared connection across threads let thread B's `commit()` commit thread A's half-written rows. Every DML helper in `db.py` commits before returning; keep it that way, a cross-thread reader never sees uncommitted rows now. Tests use `db.reset_connections()`; the legacy `db._conn = None` reset still works on the main thread.
 
 Tables:
 - `dropbox_state` — cursor for delta polling

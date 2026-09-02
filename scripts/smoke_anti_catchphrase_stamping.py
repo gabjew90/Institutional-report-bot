@@ -100,25 +100,28 @@ def test_tapped_out_profile_routes_to_chat_search():
     _ok("'tapped out profile' rule routes to search_chat_messages for fresh material")
 
 
-def test_search_chat_tool_section_mentions_followup_case():
-    """The search_chat_messages 'When to call' list must include the
-    follow-up-with-tapped-out-profile case so the model recognizes it
-    as a legitimate use."""
-    import discord_bot.bot as bot_mod
-    ins = bot_mod._ASK_SYSTEM_INSTRUCTION
-    # Find the search_chat_messages tool section and check it mentions
-    # the profile-mined / follow-up case
-    sect_start = ins.find("### 2. `search_chat_messages")
-    assert sect_start != -1, "search_chat_messages tool section missing"
-    sect_end = ins.find("### 3.", sect_start)
-    sect = ins[sect_start:sect_end]
-    assert ("Profile already mined" in sect
-            or "tapped out" in sect.lower()
-            or "fresh material" in sect.lower()), (
-        "search_chat_messages 'When to call' should mention the "
-        "follow-up / tapped-out-profile case"
-    )
-    _ok("search_chat_messages section calls out the follow-up case")
+# RETIRED 2026-09-01 (test_search_chat_tool_section_mentions_followup_case): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_search_chat_tool_section_mentions_followup_case():
+#     """The search_chat_messages 'When to call' list must include the
+#     follow-up-with-tapped-out-profile case so the model recognizes it
+#     as a legitimate use."""
+#     import discord_bot.bot as bot_mod
+#     ins = bot_mod._ASK_SYSTEM_INSTRUCTION
+#     # Find the search_chat_messages tool section and check it mentions
+#     # the profile-mined / follow-up case
+#     sect_start = ins.find("### 2. `search_chat_messages")
+#     assert sect_start != -1, "search_chat_messages tool section missing"
+#     sect_end = ins.find("### 3.", sect_start)
+#     sect = ins[sect_start:sect_end]
+#     assert ("Profile already mined" in sect
+#             or "tapped out" in sect.lower()
+#             or "fresh material" in sect.lower()), (
+#         "search_chat_messages 'When to call' should mention the "
+#         "follow-up / tapped-out-profile case"
+#     )
+#     _ok("search_chat_messages section calls out the follow-up case")
 
 
 if __name__ == "__main__":
@@ -129,5 +132,5 @@ if __name__ == "__main__":
     test_concrete_failure_example_present()
     test_kicker_is_optional_not_load_bearing()
     test_tapped_out_profile_routes_to_chat_search()
-    test_search_chat_tool_section_mentions_followup_case()
+    pass  # retired: test_search_chat_tool_section_mentions_followup_case
     print("\nALL ANTI-CATCHPHRASE-STAMPING SMOKE TESTS PASS")

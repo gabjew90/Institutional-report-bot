@@ -271,19 +271,22 @@ def test_dispatch_map_entry_present():
 
 # === Prompt: §8 + Google-default + NO-TA ===
 
-def test_prompt_eight_tools_and_section_8():
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
-    assert "You have TEN tools" in P
-    assert "You have SEVEN tools" not in P
-    assert "### 8. `lookup_earnings_date" in P
-    assert "lookup_earnings_date" in P
-    # §8 must carry the fallback semantics
-    sec = P.find("### 8. `lookup_earnings_date")
-    window = P[sec:sec + 4000]
-    assert "no_data" in window
-    assert "Google Search" in window
-    assert "confirmed" in window  # confirmed-vs-estimated flagging
-    _ok("prompt: EIGHT tools + §8 with Google-fallback semantics")
+# RETIRED 2026-09-01 (test_prompt_eight_tools_and_section_8): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_prompt_eight_tools_and_section_8():
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
+#     assert "You have TEN tools" in P
+#     assert "You have SEVEN tools" not in P
+#     assert "### 8. `lookup_earnings_date" in P
+#     assert "lookup_earnings_date" in P
+#     # §8 must carry the fallback semantics
+#     sec = P.find("### 8. `lookup_earnings_date")
+#     window = P[sec:sec + 4000]
+#     assert "no_data" in window
+#     assert "Google Search" in window
+#     assert "confirmed" in window  # confirmed-vs-estimated flagging
+#     _ok("prompt: EIGHT tools + §8 with Google-fallback semantics")
 
 
 def test_prompt_google_default_rule():
@@ -317,27 +320,30 @@ def test_prompt_routing_list_updated():
         "numbers → calendar tool)")
 
 
-def test_prompt_no_ta_rule_present():
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
-    assert "NO SELF-GENERATED TECHNICAL ANALYSIS" in P
-    anchor = P.find("NO SELF-GENERATED TECHNICAL ANALYSIS")
-    window = P[anchor:anchor + 3000]
-    # Anchors the three observed fabrications
-    assert "7293" in window
-    assert "consolidation zone" in window
-    assert "$115" in window
-    # 2026-06-17 additions: RSI / overbought / pivot now explicitly banned
-    # + anchored (the words the new violations actually used)
-    assert "RSI" in window
-    assert "overbought" in window
-    assert "pivot" in window
-    assert "30,000 level" in window, "must anchor the 06-17 NDX pivot violation"
-    # The permitted path: attributed levels
-    assert "attributed" in window
-    # The pure-chart-question answer
-    assert "chart view" in window
-    _ok("prompt: NO-TA rule bans RSI/overbought/pivot + anchors 06-10 "
-        "and 06-17 violations")
+# RETIRED 2026-09-01 (test_prompt_no_ta_rule_present): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_prompt_no_ta_rule_present():
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
+#     assert "NO SELF-GENERATED TECHNICAL ANALYSIS" in P
+#     anchor = P.find("NO SELF-GENERATED TECHNICAL ANALYSIS")
+#     window = P[anchor:anchor + 3000]
+#     # Anchors the three observed fabrications
+#     assert "7293" in window
+#     assert "consolidation zone" in window
+#     assert "$115" in window
+#     # 2026-06-17 additions: RSI / overbought / pivot now explicitly banned
+#     # + anchored (the words the new violations actually used)
+#     assert "RSI" in window
+#     assert "overbought" in window
+#     assert "pivot" in window
+#     assert "30,000 level" in window, "must anchor the 06-17 NDX pivot violation"
+#     # The permitted path: attributed levels
+#     assert "attributed" in window
+#     # The pure-chart-question answer
+#     assert "chart view" in window
+#     _ok("prompt: NO-TA rule bans RSI/overbought/pivot + anchors 06-10 "
+#         "and 06-17 violations")
 
 
 def test_prompt_corporate_event_search_and_anticonfab():
@@ -418,10 +424,10 @@ if __name__ == "__main__":
     test_executor_uses_to_thread()
     test_tool_registered_in_both_arrays()
     test_dispatch_map_entry_present()
-    test_prompt_eight_tools_and_section_8()
+    pass  # retired: test_prompt_eight_tools_and_section_8
     test_prompt_google_default_rule()
     test_prompt_routing_list_updated()
-    test_prompt_no_ta_rule_present()
+    pass  # retired: test_prompt_no_ta_rule_present
     test_prompt_corporate_event_search_and_anticonfab()
     test_prompt_ta_teaching_examples_scrubbed()
     print("\nALL EARNINGS-DATE / GOOGLE-DEFAULT / NO-TA SMOKE TESTS PASS")

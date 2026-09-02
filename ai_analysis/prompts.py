@@ -7,7 +7,6 @@ here. The Warsh-leak bug (stale Fed chair name baked into multiple
 prompt strings) was the motivating fix.
 """
 
-import world_context
 
 # =============================================================================
 # TIER 1: TRIAGE PROMPT (Gemini 3.1 Flash Lite — text-only, cheap classification)

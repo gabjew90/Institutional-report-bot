@@ -159,7 +159,6 @@ async def ingest_message(
         try:
             eager_channels = settings.resolve_chat_eager_ocr_channels()
             if chan_name in eager_channels:
-                from chat_ingestion.ocr import ocr_attachments_inline
                 asyncio.create_task(
                     _safe_ocr_inline(message, chan_name),
                     name=f"eager_ocr_{message.id}",

@@ -4,6 +4,7 @@ import json
 import logging
 import re
 import sqlite3
+import threading
 from datetime import datetime, date, timedelta
 from pathlib import Path
 
@@ -11,27 +12,101 @@ from config import settings
 
 log = logging.getLogger(__name__)
 
+# Connection model (2026-09-01 review, P1).
+#
+# One connection was shared by every thread with check_same_thread=False
+# and no lock: the event loop, asyncio.to_thread(poll_and_download), the
+# bridge jobs, the bridge-dump executor and the weekly VACUUM. SQLite's
+# own mutex kept that from corrupting memory, but transactions are
+# per-connection: thread B's commit() committed whatever thread A had
+# half-written, and VACUUM could land inside another thread's implicit
+# transaction. Latent (no error had surfaced) and growing with the
+# analyst-log, chat-ingestion and ask-log write volume.
+#
+# Now: the MAIN thread keeps the module-level `_conn` (exact old
+# behaviour, and the legacy `db._conn = None` reset that test scripts
+# use still works); every other thread gets its own connection from a
+# threading.local. WAL mode lets readers and one writer overlap, and
+# busy_timeout absorbs the rare write-write collision. Schema and
+# migrations run once, under a lock, on the first connection. Every
+# DML helper in this module commits before returning (verified by AST
+# scan on 2026-09-01), so no cross-thread reader ever depended on
+# seeing another thread's uncommitted rows.
 _conn: sqlite3.Connection | None = None
+_local = threading.local()
+_schema_lock = threading.Lock()
+_schema_ready = False
+_BUSY_TIMEOUT_S = 30
+
+
+def _open_connection() -> sqlite3.Connection:
+    db_path = Path(settings.db_path)
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(str(db_path), check_same_thread=False,
+                           timeout=_BUSY_TIMEOUT_S)
+    conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA foreign_keys=ON")
+    conn.execute(f"PRAGMA busy_timeout={_BUSY_TIMEOUT_S * 1000}")
+    return conn
+
+
+def _ensure_schema(conn: sqlite3.Connection) -> None:
+    global _schema_ready
+    with _schema_lock:
+        if _schema_ready:
+            return
+        _init_schema(conn)
+        _migrate_drop_unique_constraints(conn)
+        _migrate_add_extraction_source(conn)
+        _migrate_add_lean_prev_seen(conn)
+        try:
+            _migrate_pdf_query_surface(conn)
+        except Exception as e:  # never block boot on a query-surface migration
+            log.warning(f"pdf query-surface migration skipped: {e}")
+        _schema_ready = True
 
 
 def get_connection() -> sqlite3.Connection:
     global _conn
-    if _conn is None:
-        db_path = Path(settings.db_path)
-        db_path.parent.mkdir(parents=True, exist_ok=True)
-        _conn = sqlite3.connect(str(db_path), check_same_thread=False)
-        _conn.row_factory = sqlite3.Row
-        _conn.execute("PRAGMA journal_mode=WAL")
-        _conn.execute("PRAGMA foreign_keys=ON")
-        _init_schema(_conn)
-        _migrate_drop_unique_constraints(_conn)
-        _migrate_add_extraction_source(_conn)
-        _migrate_add_lean_prev_seen(_conn)
+    if threading.current_thread() is threading.main_thread():
+        if _conn is None:
+            _conn = _open_connection()
+            _schema_ready_reset_if_new_path()
+            _ensure_schema(_conn)
+        return _conn
+    conn = getattr(_local, "conn", None)
+    if conn is None:
+        conn = _open_connection()
+        _ensure_schema(conn)
+        _local.conn = conn
+    return conn
+
+
+_schema_path: str | None = None
+
+
+def _schema_ready_reset_if_new_path() -> None:
+    """Test scripts repoint settings.db_path and set `db._conn = None`
+    to get a fresh database; the schema must then be created again."""
+    global _schema_ready, _schema_path
+    if _schema_path != str(settings.db_path):
+        _schema_path = str(settings.db_path)
+        _schema_ready = False
+
+
+def reset_connections() -> None:
+    """Close and forget every connection this module holds (tests)."""
+    global _conn, _schema_ready
+    for c in (_conn, getattr(_local, "conn", None)):
         try:
-            _migrate_pdf_query_surface(_conn)
-        except Exception as e:  # never block boot on a query-surface migration
-            log.warning(f"pdf query-surface migration skipped: {e}")
-    return _conn
+            if c is not None:
+                c.close()
+        except Exception:
+            pass
+    _conn = None
+    _local.conn = None
+    _schema_ready = False
 
 
 def _init_schema(conn: sqlite3.Connection) -> None:
@@ -915,6 +990,18 @@ def insert_pdf_file(
     )
     conn.commit()
     return cur.lastrowid
+
+
+def get_latest_dropbox_modified_at() -> str | None:
+    """Newest Dropbox server_modified we have registered, ISO string, or
+    None on an empty table. Used as the floor when a cursor reset forces
+    a from-scratch listing (2026-09-01): only entries newer than this
+    are new, everything older is history the bot already saw or never
+    wanted."""
+    conn = get_connection()
+    row = conn.execute(
+        "SELECT MAX(dropbox_modified_at) AS m FROM pdf_files").fetchone()
+    return row["m"] if row and row["m"] else None
 
 
 def get_pdf_by_path(dropbox_path: str) -> dict | None:
@@ -4057,7 +4144,7 @@ def export_user_profiles_markdown() -> str:
     lines: list[str] = [
         "# User profiles snapshot",
         "",
-        f"_Auto-generated by the daily user-profile refresh job._",
+        "_Auto-generated by the daily user-profile refresh job._",
         f"_Generated at: **{now}**_  ",
         f"_Total profiles: **{len(rows)}**_",
         "",

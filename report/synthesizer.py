@@ -2007,7 +2007,7 @@ async def synthesize_daily_pulse(
             + (prev.get('report_markdown') or '')[:4000]
             + "\n\n---\n\n"
             + recent_titles_block
-            + f"Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM — these are the exact headlines the reader saw yesterday):\n"
+            + "Themes already covered in yesterday's pulse (DO NOT REPEAT VERBATIM — these are the exact headlines the reader saw yesterday):\n"
             + "\n".join(f"  - {t}" for t in prev_themes_list)
             + "\n\nYour job today:\n"
             + "1. For each theme above, ask: has the research today materially advanced it? If no → SKIP. If yes → lead with 'Since yesterday: [what's new/changed]'.\n"

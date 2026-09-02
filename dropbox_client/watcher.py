@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 import dropbox
-from dropbox.files import FileMetadata, FolderMetadata
+from dropbox.files import FileMetadata
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
 from config import settings
@@ -57,21 +57,52 @@ def list_new_files(folder_path: str | None = None) -> tuple[list[DropboxFileEntr
     cursor = db.get_dropbox_cursor()
 
     entries: list[DropboxFileEntry] = []
+    floor: str | None = None
 
     if cursor:
-        result = dbx.files_list_folder_continue(cursor)
+        try:
+            result = dbx.files_list_folder_continue(cursor)
+        except dropbox.exceptions.ApiError as e:
+            # Dropbox invalidates a cursor after folder restructures or
+            # long gaps (ListFolderContinueError.reset). Before
+            # 2026-09-01 that raised on every 15-minute poll forever and
+            # ingestion stopped without a word: the tenacity retry list
+            # never included it and /seedcursor is disabled. Recover in
+            # place: forget the cursor, re-list from scratch, and treat
+            # only entries newer than the newest PDF already registered
+            # as new. Everything older is history the bot either has or
+            # never wanted; get_pdf_by_path dedups the overlap.
+            err = getattr(e, "error", None)
+            if not (err is not None and hasattr(err, "is_reset")
+                    and err.is_reset()):
+                raise
+            floor = db.get_latest_dropbox_modified_at()
+            log.error(f"Dropbox cursor RESET by the server; re-listing "
+                      f"{folder} from scratch with floor {floor}")
+            try:
+                from discord_bot.ops_alert import ops_alert_sync
+                ops_alert_sync(
+                    "Dropbox cursor was reset by the server; re-listed "
+                    f"from scratch (floor {floor}). Ingestion continues.",
+                    dedupe_key="dropbox-cursor-reset")
+            except Exception as ae:
+                log.warning(f"cursor-reset alert failed: {ae}")
+            result = dbx.files_list_folder(folder, recursive=True)
     else:
         result = dbx.files_list_folder(folder, recursive=True)
 
     while True:
         for entry in result.entries:
             if isinstance(entry, FileMetadata) and entry.name.lower().endswith(".pdf"):
+                modified = entry.server_modified.isoformat()
+                if floor and modified <= floor:
+                    continue
                 entries.append(DropboxFileEntry(
                     path=entry.path_display,
                     name=entry.name,
                     rev=entry.rev,
                     size=entry.size,
-                    server_modified=entry.server_modified.isoformat(),
+                    server_modified=modified,
                 ))
         if not result.has_more:
             break

@@ -67,27 +67,30 @@ def test_tool_schemas_serialize():
     _ok("all 4 tool schemas serialize cleanly via SDK model_dump")
 
 
-def test_system_instruction_builds():
-    """Runtime prompt-builder should produce a non-empty string."""
-    from discord_bot import bot as bot_mod
-    instr = bot_mod._build_runtime_system_instruction()
-    assert isinstance(instr, str), f"instruction not str: {type(instr)}"
-    assert len(instr) > 1000, f"instruction implausibly short: {len(instr)} chars"
-    # Must mention each new tool name
-    for tool_name in (
-        "lookup_user_profile",
-        "lookup_trade_log",
-        "lookup_market_price",
-        "search_chat_messages",
-    ):
-        assert tool_name in instr, f"instruction missing reference to {tool_name!r}"
-    # Must NOT mention the dead tool name
-    assert "lookup_user_ranks" not in instr, (
-        "instruction still references the dead tool lookup_user_ranks"
-    )
-    print(f"  instruction: {len(instr)} chars; all 4 tool names present; "
-          f"no dead-tool refs")
-    _ok("_build_runtime_system_instruction() produces clean prompt")
+# RETIRED 2026-09-01 (test_system_instruction_builds): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_system_instruction_builds():
+#     """Runtime prompt-builder should produce a non-empty string."""
+#     from discord_bot import bot as bot_mod
+#     instr = bot_mod._build_runtime_system_instruction()
+#     assert isinstance(instr, str), f"instruction not str: {type(instr)}"
+#     assert len(instr) > 1000, f"instruction implausibly short: {len(instr)} chars"
+#     # Must mention each new tool name
+#     for tool_name in (
+#         "lookup_user_profile",
+#         "lookup_trade_log",
+#         "lookup_market_price",
+#         "search_chat_messages",
+#     ):
+#         assert tool_name in instr, f"instruction missing reference to {tool_name!r}"
+#     # Must NOT mention the dead tool name
+#     assert "lookup_user_ranks" not in instr, (
+#         "instruction still references the dead tool lookup_user_ranks"
+#     )
+#     print(f"  instruction: {len(instr)} chars; all 4 tool names present; "
+#           f"no dead-tool refs")
+#     _ok("_build_runtime_system_instruction() produces clean prompt")
 
 
 def test_executor_end_to_end_shapes():
@@ -218,7 +221,7 @@ def test_no_orphan_references():
 if __name__ == "__main__":
     print("=== Deeper end-to-end validation ===")
     test_tool_schemas_serialize()
-    test_system_instruction_builds()
+    pass  # retired: test_system_instruction_builds
     test_executor_end_to_end_shapes()
     test_dispatch_handles_all_new_tools()
     test_no_orphan_references()

@@ -1215,7 +1215,12 @@ async def _daily_calendar_job(bot=None):
             log.error(f"Calendar {date_iso}: both data feeds unavailable")
             if bot is not None:
                 from discord_bot.sender import send_plain_messages
-                raw = (settings.discord_channel_id or "").strip()
+                # The sheet moved to the omni-calendar channel on
+                # 2026-08-28; the failure notice must follow it, or the
+                # calendar channel goes silent while a pulse channel
+                # gets an apology for a sheet it never carried.
+                raw = (settings.calendar_channel_ids
+                       or settings.discord_channel_id or "").strip()
                 for cid in [c.strip() for c in raw.split(",") if c.strip()]:
                     try:
                         ch = bot.get_channel(int(cid)) or \

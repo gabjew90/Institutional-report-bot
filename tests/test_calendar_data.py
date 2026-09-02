@@ -116,7 +116,7 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None):
                 s: {"cap": 1000.0 - i, "name": f"{s} Inc"}
                 for i, s in enumerate(dict.fromkeys(syms))
             })
-        cd._implied_move_fetch = lambda s, d: (moves or {}).get(s)
+        cd._implied_move_fetch = lambda s, d, session=None: (moves or {}).get(s)
         cd._MOVE_PACE_S = 0
         return cd.build_calendar_day("2026-08-27")
     finally:
@@ -233,7 +233,7 @@ def test_selection_respects_the_fetch_budget():
     calls = []
     orig_move, orig_pace = cd._implied_move_fetch, cd._MOVE_PACE_S
     try:
-        cd._implied_move_fetch = lambda s, d: calls.append(s)  # None
+        cd._implied_move_fetch = lambda s, d, session=None: calls.append(s)  # None
         cd._MOVE_PACE_S = 0
         pool = [f"S{i:02d}" for i in range(cd.TOP_N * 4)]
         kept = cd._select_priced(pool, "2026-08-27")
@@ -250,7 +250,7 @@ def test_selection_stops_once_top_n_priced():
     orig_move, orig_pace = cd._implied_move_fetch, cd._MOVE_PACE_S
     try:
         cd._implied_move_fetch = (
-            lambda s, d: (calls.append(s), 5.0)[1])
+            lambda s, d, session=None: (calls.append(s), 5.0)[1])
         cd._MOVE_PACE_S = 0
         pool = [f"S{i:02d}" for i in range(cd.TOP_N * 4)]
         kept = cd._select_priced(pool, "2026-08-27")
@@ -264,7 +264,7 @@ def test_a_raising_fetch_is_an_unpriceable_name_not_a_crash():
     from report import calendar_data as cd
     orig_move, orig_pace = cd._implied_move_fetch, cd._MOVE_PACE_S
 
-    def boom(s, d):
+    def boom(s, d, session=None):
         if s == "BAD":
             raise RuntimeError("chain fetch exploded")
         return 4.0
@@ -546,3 +546,117 @@ def test_floor_does_not_resurrect_junk_above_it_by_accident():
     finally:
         cd.TOP_N = orig_n
     assert [r.symbol for r in day.amc] == ["BIG"]
+
+
+# -------------------------------------------- implied move (2026-09-01)
+
+def test_after_close_print_skips_the_same_day_expiry():
+    """AVGO (AMC 9/2) priced off a 9/2 expiry, which settles at the
+    close hours before the print, and came back unpriceable. An
+    after-close print's first covering expiry is strictly AFTER the
+    report date."""
+    from report import implied_move as im
+    from report import market_data as md
+    seen = []
+
+    def fake_chain(symbol, expiration_iso=None):
+        seen.append(expiration_iso)
+        exp = expiration_iso or "2026-09-02"
+        return {"underlying_spot_price": 100.0,
+                "expiration_dates": ["2026-09-02", "2026-09-04"],
+                "chain": {"expiration_iso": exp,
+                          "calls": [{"strike": 100.0, "bid": 3.0, "ask": 3.2}],
+                          "puts": [{"strike": 100.0, "bid": 2.8, "ask": 3.0}]}}
+    orig = md._fetch_yahoo_options_chain
+    try:
+        md._fetch_yahoo_options_chain = fake_chain
+        pct = im.implied_move_pct("AVGO", "2026-09-02", session="amc")
+    finally:
+        md._fetch_yahoo_options_chain = orig
+    assert "2026-09-04" in seen, seen
+    assert pct == 6.0
+
+
+def test_before_open_print_is_covered_by_a_same_day_expiry():
+    from report import implied_move as im
+    from report import market_data as md
+    seen = []
+
+    def fake_chain(symbol, expiration_iso=None):
+        seen.append(expiration_iso)
+        return {"underlying_spot_price": 100.0,
+                "expiration_dates": ["2026-09-02", "2026-09-04"],
+                "chain": {"expiration_iso": "2026-09-02",
+                          "calls": [{"strike": 100.0, "bid": 3.0, "ask": 3.2}],
+                          "puts": [{"strike": 100.0, "bid": 2.8, "ask": 3.0}]}}
+    orig = md._fetch_yahoo_options_chain
+    try:
+        md._fetch_yahoo_options_chain = fake_chain
+        pct = im.implied_move_pct("X", "2026-09-02", session="bmo")
+    finally:
+        md._fetch_yahoo_options_chain = orig
+    assert "2026-09-04" not in seen, seen
+    assert pct == 6.0
+
+
+def test_class_share_symbol_is_translated_for_yahoo():
+    """BF.B (Finnhub) is BF-B at Yahoo; the dotted form returns an empty
+    chain and the sheet rendered a dash."""
+    from report import implied_move as im
+    from report import market_data as md
+    asked = []
+    orig = md._fetch_yahoo_options_chain
+    try:
+        md._fetch_yahoo_options_chain = lambda symbol, expiration_iso=None: (
+            asked.append(symbol) or None)
+        im.implied_move_pct("BF.B", "2026-09-02")
+    finally:
+        md._fetch_yahoo_options_chain = orig
+    assert asked == ["BF-B"], asked
+
+
+def test_session_reaches_the_pricer_from_the_calendar():
+    """The BMO column must price with bmo semantics and AMC with amc."""
+    seen = {}
+    from report import calendar_data as cd
+    from report import news_data as nd
+    o_earn, o_econ, o_caps, o_move, o_pace = (
+        nd.fetch_earnings_calendar_all, nd.fetch_us_econ_events_for_date,
+        cd._resolve_caps, cd._implied_move_fetch, cd._MOVE_PACE_S)
+    try:
+        nd.fetch_earnings_calendar_all = lambda d: [
+            {"symbol": "A", "hour": "bmo"}, {"symbol": "B", "hour": "amc"}]
+        nd.fetch_us_econ_events_for_date = lambda d: []
+        cd._resolve_caps = lambda syms: {s: {"cap": 10.0, "name": s} for s in syms}
+        cd._implied_move_fetch = lambda s, d, session: seen.__setitem__(s, session) or 5.0
+        cd._MOVE_PACE_S = 0
+        cd.build_calendar_day("2026-09-02")
+    finally:
+        nd.fetch_earnings_calendar_all, nd.fetch_us_econ_events_for_date = o_earn, o_econ
+        cd._resolve_caps, cd._implied_move_fetch, cd._MOVE_PACE_S = o_caps, o_move, o_pace
+    assert seen == {"A": "bmo", "B": "amc"}, seen
+
+
+# ------------------------------------------------- logos (2026-09-01)
+
+def test_warm_cap_name_without_a_logo_gets_a_profile_backfill():
+    """AVGO's cap was cached, so no profile call ran and no logo URL was
+    learned; the sheet rendered it bare. Shown names missing both a
+    cached logo and a fresh profile get one bounded profile fetch."""
+    from report import calendar_data as cd
+    from report import news_data as nd
+    asked = []
+    o_prof, o_http, o_get, o_up = (nd.fetch_symbol_profiles, cd._http_bytes,
+                                   db.get_symbol_logos, db.upsert_symbol_logos)
+    try:
+        db.get_symbol_logos = lambda syms: {}
+        db.upsert_symbol_logos = lambda rows: None
+        nd.fetch_symbol_profiles = lambda syms: (
+            asked.extend(syms) or {s: {"cap": 1.0, "name": s, "logo": "http://x/l.png"} for s in syms})
+        cd._http_bytes = lambda url, timeout=8: b""
+        out = cd._resolve_logos(["AVGO", "SNOW"], {"SNOW": {"cap": 1.0, "logo": ""}})
+    finally:
+        nd.fetch_symbol_profiles, cd._http_bytes = o_prof, o_http
+        db.get_symbol_logos, db.upsert_symbol_logos = o_get, o_up
+    assert asked == ["AVGO"], asked
+    assert "AVGO" in out and "SNOW" in out

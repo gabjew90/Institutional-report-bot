@@ -6,7 +6,6 @@ analysis, reducing API costs ~75% while preserving high-value content.
 
 import re
 import logging
-from collections import Counter
 
 from pdf_processing.models import PageText
 from config import settings

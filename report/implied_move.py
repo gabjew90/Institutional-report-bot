@@ -58,14 +58,23 @@ def _nearest_strike(options: list[dict], spot: float) -> float | None:
     return min(strikes, key=lambda s: abs(s - spot))
 
 
-def implied_move_pct(symbol: str, report_date_iso: str) -> float | None:
+def _yahoo_symbol(symbol: str) -> str:
+    """Finnhub writes class shares with a dot (BF.B, BRK.B); Yahoo wants a
+    dash (BF-B). Found 2026-09-01: Brown-Forman rendered a dash for its
+    move because the dotted symbol returned an empty chain."""
+    return symbol.strip().upper().replace(".", "-")
+
+
+def implied_move_pct(symbol: str, report_date_iso: str,
+                     session: str = "amc") -> float | None:
     """±% the ATM straddle implies for `symbol` through its first
     expiry on/after `report_date_iso`. None when unavailable or when
     the chain is too illiquid to price honestly."""
     from report import market_data as _md
 
+    ysym = _yahoo_symbol(symbol)
     try:
-        raw = _md._fetch_yahoo_options_chain(symbol)
+        raw = _md._fetch_yahoo_options_chain(ysym)
     except Exception as e:
         log.info(f"implied move {symbol}: chain fetch failed ({e})")
         return None
@@ -78,16 +87,22 @@ def implied_move_pct(symbol: str, report_date_iso: str) -> float | None:
         return None
 
     # First expiry that still covers the report — an expiry BEFORE the
-    # print prices a different event entirely.
-    target = next((e for e in sorted(expirations)
-                   if e >= str(report_date_iso)[:10]), None)
+    # print prices a different event entirely. For an AFTER-CLOSE print
+    # that includes an expiry ON the report date: it settles at the
+    # close, hours before the numbers. Found 2026-09-01 when AVGO
+    # ($1.7T, AMC 9/2) priced off a 9/2 expiry with three strikes and
+    # came back unpriceable. Before-open prints are covered by a
+    # same-day expiry, so they keep >=.
+    day = str(report_date_iso)[:10]
+    covers = (lambda e: e >= day) if session == "bmo" else (lambda e: e > day)
+    target = next((e for e in sorted(expirations) if covers(e)), None)
     if not target:
         return None
 
     chain = raw.get("chain") or {}
     if chain.get("expiration_iso") != target:
         try:
-            raw = _md._fetch_yahoo_options_chain(symbol, expiration_iso=target)
+            raw = _md._fetch_yahoo_options_chain(ysym, expiration_iso=target)
             chain = (raw or {}).get("chain") or {}
         except Exception as e:
             log.info(f"implied move {symbol}: expiry refetch failed ({e})")

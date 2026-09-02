@@ -56,7 +56,7 @@ def _build(date="2026-08-20", earnings=None, econ=None, caps=None,
         # assembly tests keep full rows — selection behaviour has its
         # own test below.
         patch.object(cd, "_implied_move_fetch",
-                     moves_fn or (lambda s, d: 6.5)),
+                     moves_fn or (lambda s, d, session=None: 6.5)),
         patch.object(cd, "_MOVE_PACE_S", 0),
     ]
     import world_context
@@ -155,7 +155,7 @@ def test_implied_move_attached_and_optional():
     assert all(r.implied_move == 6.5 for r in day.bmo), (
         "every shown row must carry a priced move")
     # implied-move layer exploding must not break the calendar
-    def _boom(s, d):
+    def _boom(s, d, session=None):
         raise RuntimeError("yahoo down")
     day2 = _build(moves_fn=_boom)
     assert len(day2.bmo) > 0, "wholesale failure must not empty the sheet"

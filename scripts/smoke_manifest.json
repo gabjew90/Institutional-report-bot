@@ -1,0 +1,646 @@
+{
+ "smoke_adjacent_dupe_collapse": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_adjudicator_whitelist_widened": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_ai_capex_power_pairing": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_analysis_directive": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_anti_catchphrase_stamping": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_arch_leak_retry": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_fact_register": {
+  "tier": "fast",
+  "baseline_seconds": 5
+ },
+ "smoke_ask_fc_filter": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_hardening_batch_06_10": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_identity_fidelity": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_incident_0729": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_intent_router": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_ask_lyric_completion": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_no_meta_plumbing": {
+  "tier": "retired",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_opinion_grounding": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_outcome_guard": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_pnl_monotone": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_profile_depth": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_prompt_contract": {
+  "tier": "retired",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_prompt_diet": {
+  "tier": "fast",
+  "baseline_seconds": 19
+ },
+ "smoke_ask_qc_20260629": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_qc_aggregator": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_ask_qc_blocked": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_qc_end_to_end": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_qc_grader": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_qc_infra_bucket": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_qc_judge_prompt": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_ask_qc_models": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_ask_qc_parser": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_ask_qc_scheduler_wired": {
+  "tier": "fast",
+  "baseline_seconds": 11
+ },
+ "smoke_ask_rank_trajectory": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_receipt_intake": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_ask_roast_recycle": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_transient_retry": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ask_unforced_price_assertions": {
+  "tier": "retired",
+  "baseline_seconds": 8
+ },
+ "smoke_ask_web_grounding": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_backfill_resumable": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_banned_mechanics_uncomfortable": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_batch2": {
+  "tier": "fast",
+  "baseline_seconds": 10
+ },
+ "smoke_board_dropped": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_board_new_calls_only": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_bridge_delivery_integrity": {
+  "tier": "fast",
+  "baseline_seconds": 10
+ },
+ "smoke_cadence_tweaks": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_calendar_data": {
+  "tier": "fast",
+  "baseline_seconds": 4
+ },
+ "smoke_calendar_job": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_calendar_render": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_candlestick_charts": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_chat_messages_index_coverage": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_chat_search_keyword_optional": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_chat_stated_trades": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_clapback_fidelity": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_clapback_scope": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_cluster_member_banks": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_code_execution": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_consensus_ledger": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_contrarian_close_variety": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_conv_rank_scope": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_cross_window_anti_recycling": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_db_recent_trades_section": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_db_resolve_username": {
+  "tier": "fast",
+  "baseline_seconds": 2
+ },
+ "smoke_deeper_validation": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_dynamic_crypto": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_earnings_date_tool": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_earnings_est_sanity": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_echo_parts": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_economic_calendar_fallback": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_economic_calendar_tool": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_edit_stance_inversion_carveout": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_exit_linking": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_extract_trade_from_message": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_extraction_prose_fidelity": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_extraction_source_column": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_fact_jab_strip": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_fidelity_followups_06_10": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_filter_ladder_keeps_search": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_filter_retry_tier0": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_final_validation_gate": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_format_analyst_trades_kind": {
+  "tier": "fast",
+  "baseline_seconds": 2
+ },
+ "smoke_format_overhaul_phase1": {
+  "tier": "fast",
+  "baseline_seconds": 10
+ },
+ "smoke_format_overhaul_phase3": {
+  "tier": "fast",
+  "baseline_seconds": 5
+ },
+ "smoke_fred_calendar": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_freshness_and_status": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_ghostwriter_reframe": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_grounding_backstop": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_implied_move": {
+  "tier": "fast",
+  "baseline_seconds": 5
+ },
+ "smoke_ingestion_review_fixes": {
+  "tier": "fast",
+  "baseline_seconds": 10
+ },
+ "smoke_known_caller_names_plan": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_ledger_review_fixes": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_main_event_briefs_contract": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_markdown_image_strip": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_market_holiday_gate": {
+  "tier": "fast",
+  "baseline_seconds": 10
+ },
+ "smoke_market_price_session_note": {
+  "tier": "fast",
+  "baseline_seconds": 10
+ },
+ "smoke_market_price_tool": {
+  "tier": "fast",
+  "baseline_seconds": 10
+ },
+ "smoke_memory_cost_fixes": {
+  "tier": "fast",
+  "baseline_seconds": 5
+ },
+ "smoke_message_count_short_circuit": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_missing_pulse_watchdog": {
+  "tier": "fast",
+  "baseline_seconds": 5
+ },
+ "smoke_name_check_false_positives": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_no_passive_aggressive_register": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_options_chain_tool": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_options_per_strike": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_pdf_query_surface": {
+  "tier": "fast",
+  "baseline_seconds": 4
+ },
+ "smoke_points_ledger_wins_only": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_price_backstop_fetch": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_price_history_nan": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_probe_revoice": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_profile_anchor_receipts": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_profile_capture": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_profile_model_override": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_profile_refresh_gaps": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_profile_room_reaction_lint": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_profile_scope_narrowed": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_prompt_block_retry": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_prompts_fully_composed": {
+  "tier": "fast",
+  "baseline_seconds": 2
+ },
+ "smoke_protected_users": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_pulse_accuracy_fixes": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_pulse_driver": {
+  "tier": "full",
+  "baseline_seconds": 60
+ },
+ "smoke_pulse_numeric_scope": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_pulse_phase_b_phase_a_merge": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_pulse_press_time": {
+  "tier": "fast",
+  "baseline_seconds": 10
+ },
+ "smoke_pulse_quality_batch_06_09": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_pulse_title_novelty": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_pyflakes_undefined": {
+  "tier": "fast",
+  "baseline_seconds": 5
+ },
+ "smoke_query_data": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_rating_truncation": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_released_actual_required": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_released_figures_from_corpus": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_reminder_system": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_repetition_strip_fallback": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_retry_keeps_directives": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_rewrite_guards_keep_question": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_roast_subject_scope": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_room_superlative_analysis": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_round_cap_answer": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_router_feedback_register": {
+  "tier": "fast",
+  "baseline_seconds": 6
+ },
+ "smoke_score_no_cap": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_scoring_docs_consistency": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_scrub_post_hoc_revert": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_sleeper_tool": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_slot_stat_overlap": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_slur_count_short_circuit": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_slur_mask_retry": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_stance_inversion_directive": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_stitch_draft_notes_span": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_stitch_index_level_preservation": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_structural_leans": {
+  "tier": "fast",
+  "baseline_seconds": 12
+ },
+ "smoke_ta_guard": {
+  "tier": "fast",
+  "baseline_seconds": 7
+ },
+ "smoke_text_extraction_dedup": {
+  "tier": "fast",
+  "baseline_seconds": 3
+ },
+ "smoke_thesis_flip": {
+  "tier": "fast",
+  "baseline_seconds": 2
+ },
+ "smoke_threshold_tweaks": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_tier1_filter_nfp_fix": {
+  "tier": "fast",
+  "baseline_seconds": 5
+ },
+ "smoke_tools_wired": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_trade_board_churn": {
+  "tier": "fast",
+  "baseline_seconds": 4
+ },
+ "smoke_trade_log_tool": {
+  "tier": "fast",
+  "baseline_seconds": 12
+ },
+ "smoke_trade_outcome_honesty": {
+  "tier": "fast",
+  "baseline_seconds": 12
+ },
+ "smoke_trade_scoreboard": {
+  "tier": "fast",
+  "baseline_seconds": 10
+ },
+ "smoke_trade_scoring": {
+  "tier": "fast",
+  "baseline_seconds": 4
+ },
+ "smoke_type3_recycling_and_selfharm": {
+  "tier": "fast",
+  "baseline_seconds": 8
+ },
+ "smoke_user_profile_tool": {
+  "tier": "fast",
+  "baseline_seconds": 9
+ },
+ "smoke_voice_contract_wired": {
+  "tier": "fast",
+  "baseline_seconds": 1
+ },
+ "smoke_voice_strip_retry": {
+  "tier": "fast",
+  "baseline_seconds": 5
+ },
+ "smoke_yahoo_extended_hours": {
+  "tier": "fast",
+  "baseline_seconds": 5
+ }
+}

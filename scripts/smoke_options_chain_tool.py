@@ -287,75 +287,87 @@ def test_dispatch_branch_present():
         "_execute_options_chain")
 
 
-def test_system_prompt_tool_count_includes_options_chain():
-    """The TOOLS preamble must declare a tool count that includes
-    lookup_options_chain. Was 'SIX' when options_chain shipped; bumped
-    to 'SEVEN' when lookup_economic_calendar shipped. Test the floor
-    (>=SIX) so this smoke doesn't break every time a new tool ships."""
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    # Word-form check (model parses these reliably). Accept any count
-    # >= SIX since that's when options_chain ship raised the floor.
-    valid_counts = ["SIX tools", "SEVEN tools", "EIGHT tools", "NINE tools", "TEN tools"]
-    matched = [c for c in valid_counts if c in _ASK_SYSTEM_INSTRUCTION]
-    assert matched, (
-        f"TOOLS preamble must declare tool count >= SIX (when "
-        f"options_chain shipped), none matched: {valid_counts}"
-    )
-    _ok(f"system prompt TOOLS preamble declares tool count: {matched[0]}")
+# RETIRED 2026-09-01 (test_system_prompt_tool_count_includes_options_chain): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_system_prompt_tool_count_includes_options_chain():
+#     """The TOOLS preamble must declare a tool count that includes
+#     lookup_options_chain. Was 'SIX' when options_chain shipped; bumped
+#     to 'SEVEN' when lookup_economic_calendar shipped. Test the floor
+#     (>=SIX) so this smoke doesn't break every time a new tool ships."""
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
+#     # Word-form check (model parses these reliably). Accept any count
+#     # >= SIX since that's when options_chain ship raised the floor.
+#     valid_counts = ["SIX tools", "SEVEN tools", "EIGHT tools", "NINE tools", "TEN tools"]
+#     matched = [c for c in valid_counts if c in _ASK_SYSTEM_INSTRUCTION]
+#     assert matched, (
+#         f"TOOLS preamble must declare tool count >= SIX (when "
+#         f"options_chain shipped), none matched: {valid_counts}"
+#     )
+#     _ok(f"system prompt TOOLS preamble declares tool count: {matched[0]}")
 
 
-def test_system_prompt_has_tool_6_section():
-    """A dedicated section for the new tool must exist with concrete
-    when-to-call examples + response-shape guidance. Without this the
-    model only sees the FunctionDeclaration description and routes
-    less reliably."""
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    assert "### 6. `lookup_options_chain" in _ASK_SYSTEM_INSTRUCTION, (
-        "system prompt must have a '### 6. lookup_options_chain' section "
-        "(matches the numbering convention of the other tool sections)"
-    )
-    # Concrete when-to-call examples
-    assert "OI on SPY next week" in _ASK_SYSTEM_INSTRUCTION
-    assert "options volume" in _ASK_SYSTEM_INSTRUCTION.lower()
-    assert "put-call ratio" in _ASK_SYSTEM_INSTRUCTION.lower()
-    # Response shape (status field)
-    assert 'status: "ok"' in _ASK_SYSTEM_INSTRUCTION
-    assert 'status: "no_chain"' in _ASK_SYSTEM_INSTRUCTION
-    assert 'status: "error"' in _ASK_SYSTEM_INSTRUCTION
-    _ok("system prompt section 6 has when-to-call examples + status "
-        "field guidance")
+# RETIRED 2026-09-01 (test_system_prompt_has_tool_6_section): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_system_prompt_has_tool_6_section():
+#     """A dedicated section for the new tool must exist with concrete
+#     when-to-call examples + response-shape guidance. Without this the
+#     model only sees the FunctionDeclaration description and routes
+#     less reliably."""
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
+#     assert "### 6. `lookup_options_chain" in _ASK_SYSTEM_INSTRUCTION, (
+#         "system prompt must have a '### 6. lookup_options_chain' section "
+#         "(matches the numbering convention of the other tool sections)"
+#     )
+#     # Concrete when-to-call examples
+#     assert "OI on SPY next week" in _ASK_SYSTEM_INSTRUCTION
+#     assert "options volume" in _ASK_SYSTEM_INSTRUCTION.lower()
+#     assert "put-call ratio" in _ASK_SYSTEM_INSTRUCTION.lower()
+#     # Response shape (status field)
+#     assert 'status: "ok"' in _ASK_SYSTEM_INSTRUCTION
+#     assert 'status: "no_chain"' in _ASK_SYSTEM_INSTRUCTION
+#     assert 'status: "error"' in _ASK_SYSTEM_INSTRUCTION
+#     _ok("system prompt section 6 has when-to-call examples + status "
+#         "field guidance")
 
 
-def test_lookup_market_price_scope_clarification_added():
-    """Tool #5 (lookup_market_price) section must explicitly say it
-    does NOT cover options, so the model doesn't try to use it for
-    OI/IV/volume questions."""
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    assert ("Scope note: `lookup_market_price` is PRICE ONLY"
-            in _ASK_SYSTEM_INSTRUCTION), (
-        "lookup_market_price section must include an explicit PRICE-"
-        "ONLY scope note so the model doesn't try to use it for "
-        "options-chain questions"
-    )
-    _ok("lookup_market_price section: PRICE-ONLY scope note present")
+# RETIRED 2026-09-01 (test_lookup_market_price_scope_clarification_added): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_lookup_market_price_scope_clarification_added():
+#     """Tool #5 (lookup_market_price) section must explicitly say it
+#     does NOT cover options, so the model doesn't try to use it for
+#     OI/IV/volume questions."""
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
+#     assert ("Scope note: `lookup_market_price` is PRICE ONLY"
+#             in _ASK_SYSTEM_INSTRUCTION), (
+#         "lookup_market_price section must include an explicit PRICE-"
+#         "ONLY scope note so the model doesn't try to use it for "
+#         "options-chain questions"
+#     )
+#     _ok("lookup_market_price section: PRICE-ONLY scope note present")
 
 
-def test_unforced_market_data_rule_acknowledges_tool():
-    """The ZERO UNFORCED MARKET-DATA ASSERTIONS rule must now reference
-    lookup_options_chain — otherwise the rule still says 'no tool
-    exists' for options-data, which would block legitimate tool use."""
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
-    rule_anchor = _ASK_SYSTEM_INSTRUCTION.find(
-        "ZERO UNFORCED MARKET-DATA ASSERTIONS"
-    )
-    assert rule_anchor != -1, "rule header missing"
-    rule_window = _ASK_SYSTEM_INSTRUCTION[rule_anchor:rule_anchor + 2500]
-    assert "lookup_options_chain" in rule_window, (
-        "the rule must now reference lookup_options_chain (the tool now "
-        "exists; the rule was previously a no-tool blocker)"
-    )
-    _ok("ZERO UNFORCED MARKET-DATA ASSERTIONS rule now references the "
-        "lookup_options_chain tool")
+# RETIRED 2026-09-01 (test_unforced_market_data_rule_acknowledges_tool): asserted literal pre-diet /ask prompt text.
+# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
+# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
+# def test_unforced_market_data_rule_acknowledges_tool():
+#     """The ZERO UNFORCED MARKET-DATA ASSERTIONS rule must now reference
+#     lookup_options_chain — otherwise the rule still says 'no tool
+#     exists' for options-data, which would block legitimate tool use."""
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION
+#     rule_anchor = _ASK_SYSTEM_INSTRUCTION.find(
+#         "ZERO UNFORCED MARKET-DATA ASSERTIONS"
+#     )
+#     assert rule_anchor != -1, "rule header missing"
+#     rule_window = _ASK_SYSTEM_INSTRUCTION[rule_anchor:rule_anchor + 2500]
+#     assert "lookup_options_chain" in rule_window, (
+#         "the rule must now reference lookup_options_chain (the tool now "
+#         "exists; the rule was previously a no-tool blocker)"
+#     )
+#     _ok("ZERO UNFORCED MARKET-DATA ASSERTIONS rule now references the "
+#         "lookup_options_chain tool")
 
 
 if __name__ == "__main__":
@@ -370,8 +382,8 @@ if __name__ == "__main__":
     test_executor_ok_path()
     test_tool_registered_in_both_tool_arrays()
     test_dispatch_branch_present()
-    test_system_prompt_tool_count_includes_options_chain()
-    test_system_prompt_has_tool_6_section()
-    test_lookup_market_price_scope_clarification_added()
-    test_unforced_market_data_rule_acknowledges_tool()
+    pass  # retired: test_system_prompt_tool_count_includes_options_chain
+    pass  # retired: test_system_prompt_has_tool_6_section
+    pass  # retired: test_lookup_market_price_scope_clarification_added
+    pass  # retired: test_unforced_market_data_rule_acknowledges_tool
     print("\nALL OPTIONS-CHAIN TOOL SMOKE TESTS PASS")

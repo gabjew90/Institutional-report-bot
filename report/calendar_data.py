@@ -183,6 +183,24 @@ def _resolve_logos(symbols: list[str], profiles: dict) -> dict:
         log.warning(f"calendar: logo cache read failed ({e})")
         return {}
 
+    # A name whose cap came from cache made no profile call this run,
+    # so we know nothing about its logo. That used to mean "skip", and a
+    # warm-cap name with no logo row stayed logo-less for as long as its
+    # cap stayed cached: AVGO rendered bare on the 2026-09-02 sheet for
+    # exactly this reason. Fetch profiles for JUST the shown names that
+    # are missing both a cached logo and a fresh profile: bounded by the
+    # sheet (at most 2 x TOP_N) and in practice a handful per night.
+    unknown = [s for s in symbols
+               if s not in cached and "logo" not in (profiles.get(s) or {})]
+    if unknown:
+        try:
+            profiles = dict(profiles)
+            profiles.update(news_data.fetch_symbol_profiles(unknown))
+            log.info(f"calendar: fetched {len(unknown)} profile(s) for "
+                     f"logo backfill: {', '.join(unknown)}")
+        except Exception as e:
+            log.warning(f"calendar: logo profile backfill failed ({e})")
+
     fetched: list[tuple] = []
     for sym in symbols:
         if sym in cached:
@@ -240,16 +258,18 @@ MOVE_FETCH_BUDGET_EXTRA = 10
 _MOVE_PACE_S = 0.6
 
 
-def _implied_move_fetch(sym: str, date_iso: str) -> float | None:
+def _implied_move_fetch(sym: str, date_iso: str,
+                        session: str = "amc") -> float | None:
     """One name's implied move. Module-level indirection so tests can
     patch it; the import stays lazy so a broken implied_move module
     degrades to None instead of breaking calendar_data at import."""
     from report.implied_move import implied_move_pct
-    return implied_move_pct(sym, date_iso)
+    return implied_move_pct(sym, date_iso, session=session)
 
 
 def _select_priced(ranked: list[str], date_iso: str,
-                   always_keep: set | None = None
+                   always_keep: set | None = None,
+                   session: str = "amc",
                    ) -> list[tuple[str, float]]:
     """First TOP_N names from the cap-ranked pool whose ATM straddle
     prices honestly, in rank order: [(symbol, move_pct), ...].
@@ -274,7 +294,7 @@ def _select_priced(ranked: list[str], date_iso: str,
         if i > 0 and _MOVE_PACE_S:
             _time.sleep(_MOVE_PACE_S)
         try:
-            mv = _implied_move_fetch(sym, date_iso)
+            mv = _implied_move_fetch(sym, date_iso, session)
         except Exception as e:
             log.info(f"calendar: implied move {sym} raised ({e}) — "
                      f"treated as unpriceable")
@@ -369,7 +389,7 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
     # Walk each session's cap-ranked pool and keep the first TOP_N
     # names whose ATM straddle prices, backfilling past rank TOP_N
     # where needed, within a bounded fetch budget.
-    def _rank(syms: list[str]) -> tuple[list[EarnRow], int]:
+    def _rank(syms: list[str], session: str) -> tuple[list[EarnRow], int]:
         # Confirmed sessions only (owner call 2026-08-27, extending the
         # priced-move rule): a blank/dmh Finnhub hour meant the row
         # rendered under AFTER CLOSE with a * flag, which was honest but
@@ -390,7 +410,8 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
         kept = _select_priced(
             ranked, date_iso,
             always_keep={s for s in ranked
-                         if _cap(s) >= MIN_CAP_ALWAYS_SHOW})
+                         if _cap(s) >= MIN_CAP_ALWAYS_SHOW},
+            session=session)
         if not kept and ranked:
             # WHOLESALE failure — Yahoo down, module broken (the
             # 2026-08-27 numpy/LD_LIBRARY_PATH incident), or a session
@@ -414,8 +435,8 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
         ]
         return rows, max(0, len(syms) - len(rows))
 
-    day.bmo, day.dropped_bmo = _rank(bmo_syms)
-    day.amc, day.dropped_amc = _rank(amc_syms)
+    day.bmo, day.dropped_bmo = _rank(bmo_syms, "bmo")
+    day.amc, day.dropped_amc = _rank(amc_syms, "amc")
 
     # Logos for the names that actually made the sheet. Resolved AFTER
     # selection so an excluded name costs no artwork fetch. Cache-first

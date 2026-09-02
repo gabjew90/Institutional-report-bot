@@ -816,3 +816,50 @@ an empty ledger reported *alongside* the chat-stated trades is the correct
 answer, and using the invented-detail detector as a gate. Two harness bugs
 were also fixed: bullet markers tripping the repetition check, and a
 name-match that required 3+ characters so "BK" and "Ry" never counted.
+
+## 2026-09-01 — End-to-end code review: what shipped
+
+Review at 5c4b4c23 (report: claude.ai artifact "Report Bot Code Audit").
+Everything below P0 was implemented the same day. P0 (member data on the
+public repo: `pulse-data` profile snapshots and ask logs, root dumps,
+fixture snowflakes) is UNTOUCHED pending the owner's choice between
+going private (move web fragments out) and purging history.
+
+P1 — one SQLite connection shared across threads: per-thread connections
+(`db.get_connection`), schema once under a lock, `busy_timeout`, tests
+in `tests/test_db_threading.py` (8 threads x 25 commits, 200 rows).
+
+P1 — Dropbox cursor reset: caught in `list_new_files`, re-lists from
+scratch with a `dropbox_modified_at` floor, pages ops. Tests in
+`tests/test_dropbox_reset.py`.
+
+P2 — heartbeat workflow against `/healthz`; `==` pins from the prod
+freeze plus `requirements.lock`; `discord_bot/ask_tools.py` (34 nodes,
+2.1k lines out of bot.py, every name re-exported); smoke manifest with
+tiers and `scripts/run_smokes.py` in preflight; tests for tool_docs,
+ingestion_feed, page_selector; ops alerts moved to
+`discord_bot/ops_alert.py` with a sync variant for threads.
+
+P3 — CLAUDE.md drift, `.env.example` now generated
+(`scripts/gen_env_example.py`), `test_pulse.py` NameError,
+`hmac.compare_digest` on the API token and command password, 14 unused
+imports removed. 13 smokes that pinned pre-diet /ask prompt text were
+retired function-by-function (3 whole files are stubs).
+
+NOT done, deliberately: the `_answer_with_gemini` phase split and the
+`db.py` split. Both are multi-day changes on the live bot and belong in
+a quiet week as their own session, not at the end of a day that already
+changed the DB model and the tool layer.
+
+Omnicalendar review (same day): AVGO ($1.7T, AMC 9/2) came back
+unpriceable because the pricer chose the expiry ON the report date,
+which settles before an after-close print. Expiry choice is now
+session-aware. BF.B returned an empty chain because Yahoo wants BF-B.
+A warm-cap name with no logo row never fetched a logo (AVGO rendered
+bare); shown names missing both now get one bounded profile fetch. The
+both-feeds-down notice posted to the pulse channels, not the calendar
+channel. Design note, not built: the sheet renders at 00:00 UTC, the
+least complete moment of Finnhub's day; a 12:30 UTC refresh that
+re-posts when the confirmed set changed would remove the whole class
+that the $5B cap floor only patches.
+

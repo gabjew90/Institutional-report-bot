@@ -19,8 +19,6 @@ are configured. Empty token = bridge disabled.
 import asyncio
 import json
 import logging
-import re
-from dataclasses import asdict
 from datetime import date, datetime
 from typing import Any
 
@@ -30,7 +28,6 @@ from pipeline.orchestrator import _load_analyses_from_db
 from report.synthesizer import build_pulse_context
 from report.formatter import format_report_embeds, format_report_header_message
 from report.models import DailyReport
-from discord_bot.sender import send_embeds
 import db
 
 log = logging.getLogger(__name__)
@@ -895,7 +892,7 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
             _n_res = 0
         if _n_res:
             try:
-                from discord_bot.bot import _ops_alert
+                from discord_bot.ops_alert import ops_alert as _ops_alert
                 await _ops_alert(
                     f"🔴 pulse {name} shipped CLEAN with {_n_res} "
                     f"unresolved hard finding(s) (owner call B). "
