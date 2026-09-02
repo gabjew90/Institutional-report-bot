@@ -273,3 +273,62 @@ async def send_file_to_channels(
         )
         sent += 1 if ok else 0
     return sent
+
+
+async def send_file_collect_ids(
+    bot,
+    file_bytes: bytes,
+    filename: str,
+    caption: str = "",
+    channel_ids: str | None = None,
+) -> list[tuple[int, int]]:
+    """Like send_file_to_channels but returns [(channel_id, message_id)]
+    for every successful post, so a later job can edit the message in
+    place (calendar refresh, 2026-09-01)."""
+    import io
+    from config import settings
+    raw = (channel_ids or "").strip() or (
+        settings.discord_channel_id or "").strip()
+    out: list[tuple[int, int]] = []
+    for cid in [c.strip() for c in raw.split(",") if c.strip()]:
+        try:
+            channel = bot.get_channel(int(cid))
+            if channel is None:
+                channel = await bot.fetch_channel(int(cid))
+        except Exception as e:
+            log.error(f"send_file_collect_ids: resolve {cid} failed: {e}")
+            continue
+        holder: dict = {}
+
+        async def _do(ch=channel):
+            holder["msg"] = await ch.send(
+                content=caption or None,
+                file=discord.File(io.BytesIO(file_bytes), filename=filename))
+
+        ok, _err = await _send_with_retry(_do, label=f"file {filename} channel={cid}")
+        msg = holder.get("msg")
+        if ok and msg is not None:
+            out.append((int(cid), int(msg.id)))
+    return out
+
+
+async def edit_file_message(
+    bot, channel_id: int, message_id: int, file_bytes: bytes, filename: str,
+) -> bool:
+    """Replace the attachment on a message the bot posted earlier. Returns
+    False (and logs) when the message is gone or the edit is refused."""
+    import io
+    try:
+        channel = bot.get_channel(int(channel_id))
+        if channel is None:
+            channel = await bot.fetch_channel(int(channel_id))
+        msg = await channel.fetch_message(int(message_id))
+    except Exception as e:
+        log.error(f"edit_file_message: fetch {channel_id}/{message_id} failed: {e}")
+        return False
+    ok, _err = await _send_with_retry(
+        lambda: msg.edit(attachments=[
+            discord.File(io.BytesIO(file_bytes), filename=filename)]),
+        label=f"edit {filename} message={message_id}")
+    return ok
+

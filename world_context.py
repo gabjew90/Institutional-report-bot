@@ -86,6 +86,24 @@ def is_us_market_holiday(date_iso: str) -> str | bool | None:
 # comments retain some market relevance, _DESCRIPTION is the prose
 # block that gets injected into prompts.
 
+def next_trading_day(date_iso: str) -> str:
+    """First NYSE session date strictly after `date_iso`: skips weekends
+    and full closures. A year the holiday list does not cover is treated
+    as no holidays (never skip on a stale list). Used by the calendar
+    sheet, which posts the evening before the session it covers
+    (2026-09-01)."""
+    from datetime import date, timedelta
+    d = date.fromisoformat(date_iso[:10])
+    for _ in range(14):
+        d += timedelta(days=1)
+        if d.weekday() >= 5:
+            continue
+        if is_us_market_holiday(d.isoformat()):
+            continue
+        return d.isoformat()
+    return d.isoformat()
+
+
 FED_CHAIR = "Warsh"
 FED_CHAIR_FULL = "Kevin Warsh"
 PREDECESSOR_NAME = "Powell"

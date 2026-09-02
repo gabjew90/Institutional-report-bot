@@ -395,24 +395,37 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             f"05:30 {settings.timezone}"
         )
 
-    # Daily Omnibeta calendar graphic (2026-08-20). 00:00 UTC Mon-Fri —
-    # UTC deliberately, NOT the scheduler's local tz: Monday 00:00 UTC
-    # is Sunday evening ET, giving Sun-Thu-night sheets that each cover
-    # the next US session (spec §2). Registered unconditionally: unlike
-    # the pulse jobs it does not depend on the bridge.
-    from pytz import utc as _utc
+    # Daily Omnibeta calendar graphic. Posts at 4:20 PM ET Mon-Fri for
+    # the NEXT trading day (2026-09-01; was 00:00 UTC). Twenty minutes
+    # after the close the closing option quotes are still two-sided, so
+    # implied moves price; by 8 PM ET market makers have pulled bids and
+    # the pricer honestly refuses. Friday's post covers Monday; holidays
+    # roll to the next session via world_context.next_trading_day.
     scheduler.add_job(
         _daily_calendar_job,
-        trigger=CronTrigger(day_of_week="mon-fri", hour=0, minute=0,
-                            timezone=_utc),
+        trigger=CronTrigger(day_of_week="mon-fri", hour=16, minute=20,
+                            timezone=tz),
         id="daily_calendar",
         name="Daily Omnibeta calendar graphic",
         kwargs={"bot": bot},
         max_instances=1,
         misfire_grace_time=3600,
     )
-    log.info("Daily calendar graphic active — 00:00 UTC Mon-Fri "
-             "(Sun-Thu nights ET)")
+    # 7:30 AM ET refresh: rebuild today's sheet and, ONLY if the lineup
+    # changed overnight (a session confirmed, a name added, a move now
+    # priceable), edit the posted message in place. No second post.
+    scheduler.add_job(
+        _calendar_refresh_job,
+        trigger=CronTrigger(day_of_week="mon-fri", hour=7, minute=30,
+                            timezone=tz),
+        id="daily_calendar_refresh",
+        name="Daily Omnibeta calendar refresh",
+        kwargs={"bot": bot},
+        max_instances=1,
+        misfire_grace_time=1800,
+    )
+    log.info("Daily calendar graphic active — 4:20 PM ET post for the next "
+             "session, 7:30 AM ET in-place refresh")
 
     # Memory/cost fixes (2026-08-23): periodic malloc_trim + weekly
     # VACUUM. See memtrim.py and db.vacuum_db docstrings.
@@ -1196,7 +1209,11 @@ async def _daily_calendar_job(bot=None):
     from report.calendar_render import render_calendar_png
     from discord_bot.sender import send_file_to_channels
 
-    date_iso = datetime.now(_tz.utc).strftime("%Y-%m-%d")
+    import pytz as _pytz
+    from world_context import next_trading_day
+    from report.calendar_data import lineup_signature
+    today_et = datetime.now(_pytz.timezone(settings.timezone)).strftime("%Y-%m-%d")
+    date_iso = next_trading_day(today_et)
     try:
         if db.calendar_already_posted(date_iso):
             log.info(f"Calendar {date_iso}: already posted — skipping")
@@ -1245,11 +1262,17 @@ async def _daily_calendar_job(bot=None):
             log.warning(f"Calendar {date_iso}: no bot instance — rendered "
                         f"but not posted")
             return
-        sent = await send_file_to_channels(
+        from discord_bot.sender import send_file_collect_ids
+        posts = await send_file_collect_ids(
             bot, png, f"omnibeta-calendar-{date_iso}.png",
             channel_ids=settings.calendar_channel_ids,
         )
+        sent = len(posts)
         if sent:
+            try:
+                db.record_calendar_posts(date_iso, posts, lineup_signature(day))
+            except Exception as e:
+                log.error(f"Calendar {date_iso}: could not record posts: {e}")
             db.record_pipeline_event(
                 "calendar_posted", "completed",
                 payload=f"{date_iso}: {sent} channel(s), "
@@ -1261,6 +1284,58 @@ async def _daily_calendar_job(bot=None):
             log.error(f"Calendar {date_iso}: send failed on all channels")
     except Exception as e:
         log.error(f"Calendar job failed for {date_iso}: {e}", exc_info=True)
+
+
+async def _calendar_refresh_job(bot=None):
+    """7:30 AM ET: rebuild today's sheet; if the lineup changed since the
+    4:20 PM post, edit the posted message(s) in place. Silent when
+    nothing changed, when today has no sheet, or on a holiday."""
+    import asyncio as _asyncio
+    from datetime import datetime
+    import pytz as _pytz
+    import db
+    from world_context import is_us_market_holiday
+    from report.calendar_data import build_calendar_day, lineup_signature
+    from report.calendar_render import render_calendar_png
+    from discord_bot.sender import edit_file_message
+
+    date_iso = datetime.now(_pytz.timezone(settings.timezone)).strftime("%Y-%m-%d")
+    try:
+        if is_us_market_holiday(date_iso):
+            return
+        posts = db.get_calendar_posts(date_iso)
+        if not posts:
+            log.info(f"Calendar refresh {date_iso}: no posted sheet to refresh")
+            return
+        day = await _asyncio.to_thread(build_calendar_day, date_iso)
+        if not day.earnings_available and not day.econ_available:
+            log.error(f"Calendar refresh {date_iso}: feeds down, keeping the evening sheet")
+            return
+        sig = lineup_signature(day)
+        if all(p["lineup_hash"] == sig for p in posts):
+            log.info(f"Calendar refresh {date_iso}: lineup unchanged")
+            return
+        if bot is None:
+            log.warning(f"Calendar refresh {date_iso}: lineup changed but no bot instance")
+            return
+        png = await _asyncio.to_thread(render_calendar_png, day)
+        edited = 0
+        for p in posts:
+            ok = await edit_file_message(
+                bot, p["channel_id"], p["message_id"], png,
+                f"omnibeta-calendar-{date_iso}.png")
+            edited += 1 if ok else 0
+        if edited:
+            db.mark_calendar_refreshed(date_iso, sig)
+            db.record_pipeline_event(
+                "calendar_refreshed", "completed",
+                payload=f"{date_iso}: edited {edited}/{len(posts)} message(s), "
+                        f"{len(day.bmo)}+{len(day.amc)} names")
+            log.info(f"Calendar refresh {date_iso}: edited {edited} message(s)")
+        else:
+            log.error(f"Calendar refresh {date_iso}: every edit failed")
+    except Exception as e:
+        log.error(f"Calendar refresh failed for {date_iso}: {e}", exc_info=True)
 
 
 async def _malloc_trim_job():

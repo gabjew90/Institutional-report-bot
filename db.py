@@ -288,6 +288,18 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         -- caching it is what stops a nightly re-fetch of every logoless
         -- name. get_symbol_logos gives those the short TTL, same split
         -- as the market caps.
+        -- Calendar sheet messages the bot posted, so the morning refresh
+        -- can edit them in place instead of posting again (2026-09-01).
+        CREATE TABLE IF NOT EXISTS calendar_posts (
+            date_iso TEXT NOT NULL,
+            channel_id INTEGER NOT NULL,
+            message_id INTEGER NOT NULL,
+            lineup_hash TEXT NOT NULL,
+            posted_at TEXT NOT NULL DEFAULT (datetime('now')),
+            refreshed_at TEXT,
+            PRIMARY KEY (date_iso, channel_id)
+        );
+
         CREATE TABLE IF NOT EXISTS symbol_logo (
             symbol TEXT PRIMARY KEY,
             image BLOB,
@@ -6344,10 +6356,41 @@ def upsert_market_caps(rows: list[tuple]) -> int:
     return len(rows)
 
 
+def record_calendar_posts(date_iso: str, posts: list[tuple[int, int]],
+                          lineup_hash: str) -> None:
+    """posts: [(channel_id, message_id), ...] for one sheet."""
+    conn = get_connection()
+    conn.executemany(
+        "INSERT OR REPLACE INTO calendar_posts "
+        "(date_iso, channel_id, message_id, lineup_hash) VALUES (?, ?, ?, ?)",
+        [(date_iso, int(c), int(m), lineup_hash) for c, m in posts])
+    conn.commit()
+
+
+def get_calendar_posts(date_iso: str) -> list[dict]:
+    rows = get_connection().execute(
+        "SELECT channel_id, message_id, lineup_hash, refreshed_at "
+        "FROM calendar_posts WHERE date_iso = ?", (date_iso,)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def mark_calendar_refreshed(date_iso: str, lineup_hash: str) -> None:
+    conn = get_connection()
+    conn.execute(
+        "UPDATE calendar_posts SET lineup_hash = ?, "
+        "refreshed_at = datetime('now') WHERE date_iso = ?",
+        (lineup_hash, date_iso))
+    conn.commit()
+
+
 def calendar_already_posted(date_iso: str) -> bool:
     """Idempotency check for the daily calendar graphic — True when a
     calendar_posted pipeline event exists for this date (spec §6: no
     re-post on reboot)."""
+    if get_connection().execute(
+            "SELECT 1 FROM calendar_posts WHERE date_iso = ? LIMIT 1",
+            (date_iso,)).fetchone():
+        return True
     row = get_connection().execute(
         "SELECT 1 FROM pipeline_events WHERE event_type = 'calendar_posted' "
         "AND payload LIKE ? LIMIT 1",

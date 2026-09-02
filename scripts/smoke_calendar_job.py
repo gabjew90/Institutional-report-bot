@@ -30,7 +30,8 @@ def _run(day, already_posted=False, bot=object()):
         # actual cause.
         sent["png"] += 1
         sent["dest"] = channel_ids
-        return 2
+        # the job now receives [(channel_id, message_id)] (2026-09-01)
+        return [(123, 1001), (456, 1002)]
 
     async def _fake_send_plain(ch, msgs, **kw):
         sent["plain"] += 1
@@ -50,7 +51,7 @@ def _run(day, already_posted=False, bot=object()):
                lambda d: day), \
          patch("report.calendar_render.render_calendar_png",
                lambda d: b"\x89PNG fakebytes"), \
-         patch.object(sender, "send_file_to_channels", _fake_send_file), \
+         patch.object(sender, "send_file_collect_ids", _fake_send_file), \
          patch.object(sender, "send_plain_messages", _fake_send_plain), \
          patch.object(jobs.settings, "discord_channel_id", "123,456"):
         asyncio.run(jobs._daily_calendar_job(
@@ -94,15 +95,20 @@ def test_holiday_still_posts_closed_card():
     _ok("holiday: closed card posts (never a silent skip)")
 
 
-def test_cron_registered_utc_monfri():
+def test_cron_registered_et_post_and_refresh():
+    """2026-09-01: the sheet posts at 4:20 PM ET for the NEXT session
+    (closing option quotes still two-sided) and a 7:30 AM ET job edits it
+    in place when the lineup changed. Both in the scheduler's ET tz."""
     import inspect
     src = inspect.getsource(jobs.setup_scheduler)
-    assert 'id="daily_calendar"' in src, "job not registered"
-    assert 'day_of_week="mon-fri"' in src
-    assert "timezone=_utc" in src, \
-        "calendar cron must be UTC, not the scheduler's local tz"
+    post = src.split('id="daily_calendar"')[0][-600:]
+    assert 'day_of_week="mon-fri", hour=16, minute=20' in post, "post cron"
+    assert "timezone=tz" in post, "post cron must be ET"
+    assert 'id="daily_calendar_refresh"' in src, "refresh job not registered"
+    refresh = src.split('id="daily_calendar_refresh"')[0][-600:]
+    assert 'day_of_week="mon-fri", hour=7, minute=30' in refresh, "refresh cron"
     assert "misfire_grace_time=3600" in src.split('id="daily_calendar"')[1][:400]
-    _ok("cron: mon-fri 00:00 UTC, misfire grace 3600")
+    _ok("cron: 4:20 PM ET post + 7:30 AM ET refresh, misfire grace 3600")
 
 
 if __name__ == "__main__":
@@ -111,5 +117,5 @@ if __name__ == "__main__":
     test_idempotent_reboot()
     test_both_feeds_down_plain_fallback()
     test_holiday_still_posts_closed_card()
-    test_cron_registered_utc_monfri()
+    test_cron_registered_et_post_and_refresh()
     print("\nALL CALENDAR JOB SMOKE TESTS PASS")

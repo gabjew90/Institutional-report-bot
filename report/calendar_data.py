@@ -321,6 +321,21 @@ def _select_priced(ranked: list[str], date_iso: str,
     return kept
 
 
+def lineup_signature(day: CalendarDay) -> str:
+    """Stable hash of what the sheet SHOWS: names, sessions, moves,
+    econ rows, holiday state. The 7:30 AM refresh edits the posted
+    sheet only when this changes (2026-09-01)."""
+    import hashlib
+    parts = [day.date_iso, str(day.is_holiday),
+             str(day.earnings_available), str(day.econ_available)]
+    for lbl, rows in (("bmo", day.bmo), ("amc", day.amc)):
+        for r in rows:
+            parts.append(f"{lbl}:{r.symbol}:{r.implied_move}:{int(r.session_confirmed)}")
+    for e in day.econ:
+        parts.append(f"econ:{e.time_et}:{e.event}:{e.impact}")
+    return hashlib.sha1("|".join(parts).encode("utf-8")).hexdigest()[:16]
+
+
 def build_calendar_day(date_iso: str) -> CalendarDay:
     """Assemble everything the renderer needs for one session date."""
     from world_context import is_us_market_holiday
