@@ -6,13 +6,20 @@ brief citations `[dN]` get existence verification. Metric 4 (ledger
 attention) is the distribution of cited card positions, computed here.
 The `## _LEANS` block is a hard requirement (section 9.1).
 
+Review 2026-09-01: checks run once per SENTENCE (a sentence with two
+card cites used to report the same missing figure twice), a sentence
+that carries a figure but cites no card is itself a failure (editor
+rule 1 is otherwise unenforced), and bank matching is word-bounded on
+both sides ("ing" is a bank; "holding" and "JPMorgan" are not
+"Morgan Stanley").
+
 Usage:
   pilot_verify_citations.py <shadow.md> <pack.json> --meta-out <meta.json>
       [--stripped-out <clean.md>] [--reask-out <reask.json>] [--final]
 
 Exit 0 when clean or when --final (record and continue); exit 2 when
 failures exist and --reask-out was requested (the workflow re-asks
-once); exit 1 on structural failure (no leans block, unparseable).
+once); exit 1 on structural failure (no leans block).
 """
 from __future__ import annotations
 
@@ -28,6 +35,10 @@ sys.path.insert(0, REPO)
 CITE_RE = re.compile(r"\[(c|d)(\d+)\]")
 NUM_RE = re.compile(r"(?<![A-Za-z])[$€£]?\d[\d,]*(?:\.\d+)?%?(?:\s?(?:bp|bps|k|K|m|M|bn|B|T|x))?")
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z$\[(])")
+
+KNOWN_BANKS = ["goldman", "morgan stanley", "jpm", "jpmorgan", "citi", "bofa", "bank of america",
+               "ubs", "rbc", "barclays", "deutsche", "mizuho", "mufg", "rabobank", "ts lombard",
+               "ing", "anz", "market ear", "tme", "hsbc", "wells", "nomura", "jefferies"]
 
 
 def _norm_num(tok: str) -> str:
@@ -48,21 +59,27 @@ def _numbers(text: str) -> set[str]:
     return out
 
 
-def _bank_tokens(bank: str) -> list[str]:
-    b = (bank or "").lower()
-    toks = [b]
-    for part in re.split(r"[\s/&,]+", b):
-        if len(part) >= 3 and part not in ("bank", "the", "and", "of", "inc", "co", "group"):
-            toks.append(part)
-    return toks
+def _word_in(needle: str, hay: str) -> bool:
+    return re.search(r"(?<![a-z])" + re.escape(needle) + r"(?![a-z])", hay) is not None
 
 
-KNOWN_BANKS = ["goldman", "morgan stanley", "jpm", "jpmorgan", "citi", "bofa", "bank of america",
-               "ubs", "rbc", "barclays", "deutsche", "mizuho", "mufg", "rabobank", "ts lombard",
-               "ing", "anz", "market ear", "tme", "hsbc", "wells", "nomura", "jefferies"]
+def _bank_matches(named: str, cited_bank: str) -> bool:
+    """Does the bank a sentence names correspond to a cited card's bank?"""
+    cb = (cited_bank or "").lower()
+    if _word_in(named, cb):
+        return True
+    aliases = {
+        "goldman": ["goldman", "gs"], "jpm": ["jpm", "jpmorgan", "j.p. morgan"],
+        "jpmorgan": ["jpm", "jpmorgan", "j.p. morgan"], "citi": ["citi", "citigroup"],
+        "bofa": ["bofa", "bank of america"], "bank of america": ["bofa", "bank of america"],
+        "deutsche": ["deutsche", "db"], "morgan stanley": ["morgan stanley", "ms"],
+        "market ear": ["market ear", "tme"], "tme": ["market ear", "tme"],
+    }
+    return any(_word_in(a, cb) for a in aliases.get(named, []))
 
 
-def sentences_with_citations(md: str) -> list[tuple[str, list[tuple[str, int]]]]:
+def sentences(md: str) -> list[tuple[str, list[tuple[str, int]]]]:
+    """Every prose sentence of the body with its citations (possibly none)."""
     body = md.split("## _LEANS")[0]
     out = []
     for para in body.split("\n"):
@@ -70,9 +87,12 @@ def sentences_with_citations(md: str) -> list[tuple[str, list[tuple[str, int]]]]
             continue
         for s in SENT_SPLIT.split(para.strip()):
             cites = [(k, int(n)) for k, n in CITE_RE.findall(s)]
-            if cites:
-                out.append((s, cites))
+            out.append((s, cites))
     return out
+
+
+def sentences_with_citations(md: str) -> list[tuple[str, list[tuple[str, int]]]]:
+    return [(s, c) for s, c in sentences(md) if c]
 
 
 def verify(md: str, pack: dict) -> dict:
@@ -82,47 +102,45 @@ def verify(md: str, pack: dict) -> dict:
     failures: list[dict] = []
     cited_positions: list[int] = []
     n_card_cites = n_doc_cites = 0
-    for sent, cites in sentences_with_citations(md):
+    for sent, cites in sentences(md):
         clean = CITE_RE.sub("", sent)
         sent_nums = _numbers(clean)
+        card_keys = [f"c{n}" for k, n in cites if k == "c"]
         for kind, n in cites:
             key = f"{kind}{n}"
             if kind == "d":
                 n_doc_cites += 1
                 if key not in docs:
                     failures.append({"sentence": sent[:200], "cite": key, "reason": "brief does not exist"})
-                continue
-            n_card_cites += 1
-            card = cards.get(key)
-            if not card:
-                failures.append({"sentence": sent[:200], "cite": key, "reason": "card does not exist"})
-                continue
-            cited_positions.append(n)
-            card_text = f"{card.get('claim', '')} {card.get('anchor', '')}"
-            card_nums = _numbers(card_text)
-            # HARD: every figure in the sentence must be in SOME cited card
-            all_cited_text = " ".join(
-                f"{cards[f'c{m}'].get('claim', '')} {cards[f'c{m}'].get('anchor', '')}"
-                for k2, m in cites if k2 == "c" and f"c{m}" in cards)
-            all_nums = _numbers(all_cited_text)
-            missing = sorted(x for x in sent_nums if x not in all_nums)
-            if missing:
-                failures.append({"sentence": sent[:200], "cite": key,
-                                 "reason": f"figures not in cited card(s): {missing}"})
-            # bank names named in the sentence must match a cited card's bank
-            low = clean.lower()
-            # word-bounded: "ing" is a bank, "holding" is not (dry run 2026-09-01)
-            named = [b for b in KNOWN_BANKS
-                     if re.search(r"(?<![a-z])" + re.escape(b) + r"(?![a-z])", low)]
-            if named:
-                cited_banks = " ".join(
-                    (cards[f"c{m}"].get("bank") or "").lower()
-                    for k2, m in cites if k2 == "c" and f"c{m}" in cards)
-                ok = any(any(tok in cited_banks for tok in _bank_tokens(b)) for b in named)
-                if not ok:
-                    failures.append({"sentence": sent[:200], "cite": key,
-                                     "reason": f"bank named ({named}) is not the cited card's bank"})
-            _ = card_nums
+            else:
+                n_card_cites += 1
+                if key in cards:
+                    cited_positions.append(n)
+                else:
+                    failures.append({"sentence": sent[:200], "cite": key, "reason": "card does not exist"})
+        valid_cards = [cards[k] for k in card_keys if k in cards]
+        # Rule 1: a figure needs a card. No card cited at all is a failure
+        # in its own right, not a sentence the verifier never looks at.
+        if sent_nums and not card_keys:
+            failures.append({"sentence": sent[:200], "cite": "",
+                             "reason": f"figures with no card citation: {sorted(sent_nums)}"})
+            continue
+        if not valid_cards:
+            continue
+        # HARD: every figure in the sentence must be in SOME cited card
+        all_nums = _numbers(" ".join(f"{c.get('claim', '')} {c.get('anchor', '')}" for c in valid_cards))
+        missing = sorted(x for x in sent_nums if x not in all_nums)
+        if missing:
+            failures.append({"sentence": sent[:200], "cite": ",".join(card_keys),
+                             "reason": f"figures not in cited card(s): {missing}"})
+        # a bank named in the sentence must be a cited card's bank
+        low = clean.lower()
+        named = [b for b in KNOWN_BANKS if _word_in(b, low)]
+        if named:
+            ok = any(_bank_matches(b, c.get("bank") or "") for b in named for c in valid_cards)
+            if not ok:
+                failures.append({"sentence": sent[:200], "cite": ",".join(card_keys),
+                                 "reason": f"bank named ({named}) is not the cited card's bank"})
     # metric 4: quintile distribution of cited positions
     quintiles = [0, 0, 0, 0, 0]
     for p in cited_positions:

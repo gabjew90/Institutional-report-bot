@@ -117,6 +117,40 @@ def test_day_row_passes_and_flags_disagreement():
     assert "m2_shadow" in r2["disagreements"]
 
 
+def test_source_files_are_restricted_to_the_window():
+    from scripts.pilot_grader_inputs import source_files
+    with tempfile.TemporaryDirectory() as td:
+        for d in ("2026-08-20", "2026-09-01", "2026-09-02"):
+            os.makedirs(os.path.join(td, d))
+            with open(os.path.join(td, d, "1__x.txt"), "w") as fh:
+                fh.write("x")
+        got = source_files(td, "2026-09-02", 1)
+    assert [os.path.basename(os.path.dirname(p)) for p in got] == ["2026-09-01", "2026-09-02"]
+
+
+def test_choose_briefs_returns_nothing_when_no_brief_has_text():
+    assert choose_briefs({"docs": {"d1": {"tier": "top", "brief": ""}}}, [], "2026-09-02") == []
+
+
+def test_2a_counts_each_brief_once_across_both_agents():
+    d = _grades()
+    for ag in ("a", "b"):
+        d["grades"]["brief_fidelity"][ag]["briefs"] = [
+            {"id": "d1", "tier": "top", "material_count": 0, "non_material_count": 1},
+            {"id": "d2", "tier": "rest", "material_count": 0, "non_material_count": 0}]
+    r = day_row("2026-09-02", d)
+    assert r["m2a"]["tiers"]["top"]["audited"] == 1 and r["m2a"]["tiers"]["rest"]["audited"] == 1
+    assert r["m2a"]["non_material_share"] == 0.5
+
+
+def test_owner_tiebreak_replaces_both_agents():
+    d = _grades(shadow_rate=0.9, b_rate=0.4)
+    assert "m2_shadow" in day_row("2026-09-02", d)["disagreements"]
+    d["grades"]["fidelity-shadow"]["tiebreak"] = {"faithful_rate": 0.9, "unsupported": 0}
+    r = day_row("2026-09-02", d)
+    assert r["disagreements"] == [] and r["m2_shadow"]["rate"] == 0.9
+
+
 def test_scoreboard_counts_only_days_after_day1():
     with tempfile.TemporaryDirectory() as td:
         for date, ok in (("2026-09-02", True), ("2026-09-03", True), ("2026-09-04", False)):

@@ -56,9 +56,9 @@ jobs:
           for DIM in grouping fidelity brief_fidelity mechanism; do
             for CASE in bad clean; do
               { cat "$P/$DIM.md"; printf '\n\n---\n\n'; cat "/tmp/gate/in/$DIM-$CASE.md"; } > /tmp/gate/prompt.txt
-              claude -p "$(cat /tmp/gate/prompt.txt)" --model "$MODEL" \
+              claude -p --model "$MODEL" \
                 --permission-mode bypassPermissions --max-turns 20 \
-                > /tmp/gate/raw.txt 2>/dev/null || true
+                < /tmp/gate/prompt.txt > /tmp/gate/raw.txt 2>/dev/null || true
               python scripts/pilot_finalize_grade.py --raw /tmp/gate/raw.txt \
                 --out "/tmp/gate/grades/$DIM-$CASE.json" --dim "$DIM" --agent a \
                 --model "$MODEL" --prompt "$P/$DIM.md" --artifact fixture || true

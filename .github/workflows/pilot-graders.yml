@@ -109,10 +109,15 @@ jobs:
           run_one () {  # dim prompt input artifact agent
             DIM="$1"; PROMPT="$2"; INPUT="$3"; ART="$4"; AG="$5"
             NAME="$DIM"; [ -n "$ART" ] && NAME="$DIM-$ART"
+            if [ "$DIM" = "brief_fidelity" ] && [ -f /tmp/gr/in/brief_fidelity.SKIP ]; then
+              echo "skip brief_fidelity: no briefs in the window"; return 0
+            fi
             { cat "$PROMPT"; printf '\n\n---\n\n'; cat "$INPUT"; } > /tmp/gr/prompt.txt
-            claude -p "$(cat /tmp/gr/prompt.txt)" --model "$MODEL" \
+            # Prompt on stdin, not as an argument: a source-heavy input can
+            # exceed the kernel's per-argument limit (review 2026-09-01).
+            claude -p --model "$MODEL" \
               --permission-mode bypassPermissions --max-turns 30 \
-              > /tmp/gr/raw.txt 2>/dev/null || true
+              < /tmp/gr/prompt.txt > /tmp/gr/raw.txt 2>/dev/null || true
             python scripts/pilot_finalize_grade.py --raw /tmp/gr/raw.txt \
               --out "$OUT/$NAME-$AG.json" --dim "$DIM" --agent "$AG" \
               --model "$MODEL" --prompt "$PROMPT" --artifact "$ART" || true

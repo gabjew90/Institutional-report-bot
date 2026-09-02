@@ -105,6 +105,35 @@ def test_missing_leans_block_is_structural():
     assert "missing ## _LEANS" in structural_problems(md)
 
 
+def test_a_figure_with_no_card_citation_is_a_failure():
+    """Editor rule 1 was unenforced: a sentence with figures and no [cN]
+    was never looked at (review 2026-09-01)."""
+    meta = _pack()
+    md = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nCapex goes to $751B this year [d1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | $NVDA | x\n"
+    res = verify(md, meta)
+    assert any("no card citation" in f["reason"] for f in res["failures"]), res["failures"]
+
+
+def test_checks_run_once_per_sentence_not_per_citation():
+    meta = _pack()
+    c1, c2 = _cid(meta, "target raised"), _cid(meta, "stalls")
+    md = f"# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nGoldman and Citi split on NVDA at $999 [{c1}] [{c2}].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | $NVDA | x\n"
+    res = verify(md, meta)
+    figure_failures = [f for f in res["failures"] if "figures not in" in f["reason"]]
+    assert len(figure_failures) == 1, res["failures"]
+
+
+def test_bank_alias_matches_the_cited_card():
+    """'JPM' in prose against a card whose bank is 'J.P. Morgan'; and
+    'Morgan Stanley' must NOT be satisfied by a JPMorgan card."""
+    cards = [_card("J.P. Morgan", "pay 5s30s at 62bp", "pay 5s30s at 62bp", instruments=(), file="jpm.json")]
+    _, meta = build_pack(cards, {})
+    ok = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nJPM pays 5s30s at 62bp [c1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | x | y\n"
+    assert verify(ok, meta)["failures"] == []
+    bad = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nMorgan Stanley pays 5s30s at 62bp [c1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | x | y\n"
+    assert any("bank named" in f["reason"] for f in verify(bad, meta)["failures"])
+
+
 def test_strip_markers_leaves_clean_prose():
     assert strip_markers("Capex to $751B [c142] rose [d3].") == "Capex to $751B rose."
 

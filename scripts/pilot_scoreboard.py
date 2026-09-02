@@ -73,8 +73,20 @@ def agree(a, b, key, tol=0.0):
     return (va, "") if va == vb else (None, f"disagree {va} vs {vb}")
 
 
+def _apply_tiebreaks(grades: dict) -> dict:
+    """An owner tiebreak (agent `tiebreak` or `owner`, see RUNBOOK) is
+    the day's call for that dimension: it replaces both agent grades so
+    the disagreement clears. Review 2026-09-01: it was recorded and
+    ignored."""
+    out = {}
+    for dim, agents in grades.items():
+        tb = agents.get("tiebreak") or agents.get("owner")
+        out[dim] = {"a": tb, "b": tb} if tb else agents
+    return out
+
+
 def day_row(date: str, d: dict) -> dict:
-    g = d["grades"]
+    g = _apply_tiebreaks(d["grades"])
     row = {"date": date}
     # metric 1
     ga, gb = g.get("grouping", {}).get("a"), g.get("grouping", {}).get("b")
@@ -98,13 +110,21 @@ def day_row(date: str, d: dict) -> dict:
     # metric 2a with tier split
     a_, b_ = g.get("brief_fidelity", {}).get("a"), g.get("brief_fidelity", {}).get("b")
     mat, note = agree(a_, b_, "material_total")
-    tiers = defaultdict(lambda: {"audited": 0, "material": 0, "non_material": 0})
+    # Both agents audit the SAME briefs: count each brief once, taking
+    # the stricter agent's call (review 2026-09-01: audited was doubled).
+    per_brief: dict[str, dict] = {}
     for x in (a_, b_):
         for br in (x or {}).get("briefs") or []:
-            t = tiers[br.get("tier") or "?"]
-            t["audited"] += 1
-            t["material"] += br.get("material_count", 0) or 0
-            t["non_material"] += br.get("non_material_count", 0) or 0
+            bid = br.get("id") or f"{br.get('bank')}:{br.get('tier')}"
+            cur = per_brief.setdefault(bid, {"tier": br.get("tier") or "?", "material": 0, "non_material": 0})
+            cur["material"] = max(cur["material"], br.get("material_count", 0) or 0)
+            cur["non_material"] = max(cur["non_material"], br.get("non_material_count", 0) or 0)
+    tiers = defaultdict(lambda: {"audited": 0, "material": 0, "non_material": 0})
+    for v in per_brief.values():
+        t = tiers[v["tier"]]
+        t["audited"] += 1
+        t["material"] += v["material"]
+        t["non_material"] += v["non_material"]
     audited = sum(t["audited"] for t in tiers.values()) or 0
     nonmat = sum(t["non_material"] for t in tiers.values())
     row["m2a"] = {"material": mat, "note": note, "tiers": dict(tiers),

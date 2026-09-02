@@ -94,9 +94,11 @@ jobs:
           OUTDIR="pilot-data/$PILOT_ROOT/shadow"
           mkdir -p "$OUTDIR"
           python scripts/pilot_editor_prompt.py /tmp/ed/pack.md --out /tmp/ed/prompt.txt
-          claude -p "$(cat /tmp/ed/prompt.txt)" --model "$MODEL" \
+          # Prompt on stdin: the pack can exceed the kernel's per-argument
+          # limit on a heavy day or a merged stress run (review 2026-09-01).
+          claude -p --model "$MODEL" \
             --permission-mode bypassPermissions --max-turns 6 \
-            > /tmp/ed/raw.md 2>/tmp/ed/err.txt || true
+            < /tmp/ed/prompt.txt > /tmp/ed/raw.md 2>/tmp/ed/err.txt || true
           python scripts/pilot_finalize_edit.py --raw /tmp/ed/raw.md \
             --out "$OUTDIR/$EDIT_DATE.md" --meta "$OUTDIR/$EDIT_DATE.meta.json" \
             --model "$MODEL" --unread "$UNREAD_AT_EDIT" \
@@ -115,9 +117,9 @@ jobs:
               cat /tmp/ed/reask.json
               printf '\nRe-emit the COMPLETE pulse. For each failed sentence, cite the card that actually carries the figure or bank, or remove the figure. Change nothing else.\n'
             } > /tmp/ed/reask_prompt.txt
-            claude -p "$(cat /tmp/ed/reask_prompt.txt)" --model "$MODEL" \
+            claude -p --model "$MODEL" \
               --permission-mode bypassPermissions --max-turns 6 \
-              > /tmp/ed/raw.md 2>/dev/null || true
+              < /tmp/ed/reask_prompt.txt > /tmp/ed/raw.md 2>/dev/null || true
             python scripts/pilot_finalize_edit.py --raw /tmp/ed/raw.md \
               --out "$OUTDIR/$EDIT_DATE.md" --meta "$OUTDIR/$EDIT_DATE.meta.json" \
               --model "$MODEL" --unread "$UNREAD_AT_EDIT" \

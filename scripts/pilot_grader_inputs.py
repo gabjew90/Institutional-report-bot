@@ -5,10 +5,16 @@
   the same sentences. Headlines and the _LEANS block are excluded.
 - metric 2a (brief fidelity): 3 to 5 briefs, weighted toward the ones
   the shadow MAIN EVENT cites, tier-stratified (at least one of each
-  tier when both exist).
+  tier when both exist). When the window has no briefs at all, a
+  `brief_fidelity.SKIP` marker is written instead and the workflow
+  skips that dimension for the day.
 - metric 3 (mechanism): the shadow lead theme with its cited briefs'
   source paths; the production lead theme with the day's source list.
 - metric 1 (grouping): the ledger's labels and instrument groups.
+
+Sources and cards are restricted to the same window the editor pack
+used (`--days`), so graders trace against what the pulse could have
+read, not the whole history (review 2026-09-01).
 
 Writes <out_dir>/{grouping,fidelity-shadow,fidelity-production,
 brief_fidelity,mechanism-shadow,mechanism-production}.md, each a
@@ -23,6 +29,7 @@ import os
 import random
 import re
 import sys
+from datetime import date, timedelta
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
@@ -31,6 +38,11 @@ from scripts.pilot_ledger import build, load_cards  # noqa: E402
 from scripts.pilot_verify_citations import CITE_RE, strip_markers  # noqa: E402
 
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z$(])")
+
+
+def window_dates(day_iso: str, days: int) -> set[str]:
+    d0 = date.fromisoformat(day_iso)
+    return {(d0 - timedelta(days=i)).isoformat() for i in range(days + 1)}
 
 
 def sentences_of(md: str, keep_markers: bool = False) -> list[str]:
@@ -78,7 +90,9 @@ def cited_docs(section: str, pack: dict) -> list[str]:
 
 
 def choose_briefs(pack: dict, main_ids: list[str], date_iso: str, k: int = 4) -> list[dict]:
-    docs = pack.get("docs") or {}
+    docs = {d: v for d, v in (pack.get("docs") or {}).items() if (v.get("brief") or "").strip()}
+    if not docs:
+        return []
     rng = random.Random(f"briefs:{date_iso}")
     ordered = [d for d in main_ids if d in docs]
     rest = [d for d in docs if d not in ordered]
@@ -98,12 +112,22 @@ def choose_briefs(pack: dict, main_ids: list[str], date_iso: str, k: int = 4) ->
     return [{"id": d, **docs[d]} for d in picked[:5]]
 
 
-def source_files(source_root: str, date_iso: str) -> list[str]:
+def source_files(source_root: str, date_iso: str, days: int) -> list[str]:
+    wanted = window_dates(date_iso, days)
     out = []
     for p in sorted(glob.glob(os.path.join(source_root, "*", "*.txt"))):
-        if os.path.basename(os.path.dirname(p)) <= date_iso:
+        if os.path.basename(os.path.dirname(p)) in wanted:
             out.append(p)
-    return out[-60:]
+    return out
+
+
+def window_cards(cards_root: str, date_iso: str, days: int) -> list[dict]:
+    wanted = window_dates(date_iso, days)
+    cards = []
+    for d in sorted(glob.glob(os.path.join(cards_root, "*"))):
+        if os.path.isdir(d) and os.path.basename(d) in wanted:
+            cards.extend(load_cards(d))
+    return cards
 
 
 def write(path: str, text: str) -> None:
@@ -115,6 +139,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--pilot-root", required=True)
     ap.add_argument("--date", required=True)
+    ap.add_argument("--days", type=int, default=1)
     ap.add_argument("--production-md", required=True)
     ap.add_argument("--pack-json", required=True)
     ap.add_argument("--out-dir", required=True)
@@ -127,16 +152,11 @@ def main() -> int:
         prod = fh.read()
     with open(a.pack_json, encoding="utf-8") as fh:
         pack = json.load(fh)
-    srcs = source_files(os.path.join(a.pilot_root, "source-text"), a.date)
-    src_block = "\n".join(f"- {p}" for p in srcs)
+    srcs = source_files(os.path.join(a.pilot_root, "source-text"), a.date, a.days)
+    src_block = "\n".join(f"- {p}" for p in srcs) or "(no source text in the window)"
 
     # metric 1
-    cards = []
-    for d in sorted(glob.glob(os.path.join(a.pilot_root, "cards", "*"))):
-        if os.path.isdir(d) and os.path.basename(d) <= a.date:
-            cards.extend(load_cards(d))
-    cards = cards[-400:]
-    ledger = build(cards)
+    ledger = build(window_cards(os.path.join(a.pilot_root, "cards"), a.date, a.days))
     lines = [f"## Ledger for {a.date}: {ledger['card_count']} cards", ""]
     lines.append("### Reader topic labels")
     for label, entries in ledger["by_topic_label"].items():
@@ -160,14 +180,20 @@ def main() -> int:
     me = main_event(shadow)
     main_ids = cited_docs(me, pack)
     briefs = choose_briefs(pack, main_ids, a.date)
-    block = ["## Briefs to audit", ""]
-    for b in briefs:
-        block.append(f"### [{b['id']}] {b.get('bank')} — {b.get('title')} (tier {b.get('tier')})")
-        block.append(f"source text: {b.get('source_text_path')}")
-        block.append("")
-        block.append((b.get("brief") or "").strip())
-        block.append("")
-    write(os.path.join(a.out_dir, "brief_fidelity.md"), "\n".join(block) + "\n")
+    skip = os.path.join(a.out_dir, "brief_fidelity.SKIP")
+    if os.path.exists(skip):
+        os.remove(skip)
+    if briefs:
+        block = ["## Briefs to audit", ""]
+        for b in briefs:
+            block.append(f"### [{b['id']}] {b.get('bank')} — {b.get('title')} (tier {b.get('tier')})")
+            block.append(f"source text: {b.get('source_text_path')}")
+            block.append("")
+            block.append((b.get("brief") or "").strip())
+            block.append("")
+        write(os.path.join(a.out_dir, "brief_fidelity.md"), "\n".join(block) + "\n")
+    else:
+        write(skip, "no briefs in the window\n")
 
     # metric 3
     docs = pack.get("docs") or {}
@@ -177,7 +203,7 @@ def main() -> int:
           f"## Artifact: shadow\n\n### Lead theme\n\n{me}\n\n### Cited briefs and their sources\n{cited or '(none cited)'}\n\n### All source text files\n{src_block}\n")
     write(os.path.join(a.out_dir, "mechanism-production.md"),
           f"## Artifact: production\n\n### Lead theme\n\n{main_event(prod)}\n\n### Source text files\n{src_block}\n")
-    print(f"grader inputs: {len(srcs)} sources, {len(briefs)} briefs, main-event cites {main_ids}")
+    print(f"grader inputs: {len(srcs)} sources in window, {len(briefs)} briefs, main-event cites {main_ids}")
     return 0
 
 
