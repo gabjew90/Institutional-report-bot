@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15098__warsh-and-the-road-not-taken.txt",
+   "span": "only a 68% market probability the FOMC hikes at the upcoming meeting, even though Warsh's speech says he tightens",
+   "why": "Multiple sources (TS Lombard's 'oddly low probability of a hike' framing, Duttenhoefer's down-day recap on Iran/inflation/yields) support a genuinely undecided, high-stakes Fed-meeting setup; this is a fair composite scene-setter, not a checkable figure."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": true,
+   "source_file": "15086__early-morning-reid-macro-strategy.txt",
+   "span": "Treasury yield reached its highest level since October 2023",
+   "why": "The 10yr level itself (SPY/QQQ intraday, 4.79-4.80% yield) is unsupported live-market data, but the sentence also asserts Tuesday's move was the highest 'since January 2025' \u2014 the only source discussing the milestone says 'since October 2023,' a contradicted date/figure."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "15094__sell-sell-or-sell.txt",
+   "span": "Vol-control equity allocations at a maxed out 100th percentile.",
+   "why": "Systematic/trend-following funds being maximally long is well supported (TME piece, Goldman/BofA/DB positioning charts). No source anywhere in the set mentions hedge fund equity exposure; the 'hedge funds under-owned' half of the contrast is invented and grafted onto the real systematic-positioning claim."
+  },
+  {
+   "id": "s4",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "15098__warsh-and-the-road-not-taken.txt",
+   "span": "only a 68% market probability the FOMC hikes at the upcoming meeting",
+   "why": "A 66-68% probability is not 'the bond market has decided' anything \u2014 TS Lombard explicitly frames it as an 'oddly low probability... 15 days from meeting.' Separately, the DB Reid piece shows long-dated yields breaking to multi-year highs in five countries that day (US, UK, Germany, France, Japan), not three."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "15103__duttenhoefers-daily-2-sep-2026.txt",
+   "span": "markets now pricing 66% probability of a Fed rate hike in Sep",
+   "why": "The 66% figure is genuinely from a Goldman note. But no Goldman document in the set argues for a hold \u2014 that argument ('he will be poring through the upcoming data to find some wiggle room to hold rates constant... I still think he finds it') is TS Lombard's own view in 15098, misattributed to Goldman."
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "No document in the source set contains a 2027 cloud-capex forecast of $1.2-1.5trn, an $800bn current-year figure, or language about demand broadening into 'ordinary companies and governments.'"
+  },
+  {
+   "id": "s7",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "we do not expect Tech/AI to drive returns in 2H\u2026 Tech earnings and cash flow are diverging",
+   "why": "JPM's thesis that Mag-7 earnings and free cash flow are diverging is real, but the source doesn't say cash flow is negative or that profits are at a 'record' \u2014 that specificity is invented and paired with the fabricated dollar figures in s8."
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "No source gives cloud-builder Q2 capex of $165bn or free cash flow falling from $60bn to $7bn; these numbers do not appear anywhere in the corpus."
+  },
+  {
+   "id": "s9",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "No source mentions a software-sector 6.7% rally, Salesforce/CrowdStrike/Okta results, or a Goldman desk position in IGV calls; none of the three Goldman documents in the set reference IGV or software at all."
+  },
+  {
+   "id": "s10",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "Opinion resting entirely on the fabricated software/IGV claim in s9, which has no source; the stance itself appears in no document."
+  },
+  {
+   "id": "s11",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "There is no Bank of America document anywhere in the day's source set, and no source reports gold up ~10% in August or a $7.3bn weekly gold-fund inflow. The cited attribution doesn't correspond to any ingested document."
+  },
+  {
+   "id": "s12",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "None of the three Goldman documents (US Daily Download, Duttenhoefer's Daily, Privorotsky) mention a derivatives desk position buying upside/selling downside on a debasement thesis."
+  },
+  {
+   "id": "s13",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "No Goldman document discusses a materials desk view, a broken 100-day moving average, or Chinese selling in materials."
+  },
+  {
+   "id": "s14",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "No source contains a Goldman diesel-margin forecast ($75/bbl over Brent for Q4, $63 for 2027, up from $27 in February, or any refining-margin figures at all)."
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "Commentary built entirely on the fabricated diesel-margin revision in s14; no source supports the underlying data point it interprets."
+  }
+ ],
+ "faithful": 1,
+ "distorted": 5,
+ "unsupported": 9,
+ "faithful_rate": 0.067,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

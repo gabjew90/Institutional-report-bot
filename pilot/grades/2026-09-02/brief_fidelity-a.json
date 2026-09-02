@@ -1,0 +1,86 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "J.P. Morgan",
+   "source_chain": "Yields/oil-driven risk-off plus debated bond-sell-off drivers push JPM Market Intel tactically cautious/neutral on equities and to take profit on gold, but industrial-growth forecasts, falling Asia positioning, resumed EM inflows and Korean buybacks keep the desk's medium-term Q4 setup constructive, long US/Asia vs Europe with hedges.",
+   "brief_chain": "Yields/oil in charge and debated bond-sell-off drivers turn the desk tactically cautious/neutral on equities and prompt a gold profit-take, but the desk still expects an attractive Q4 setup on 3% industrial growth, falling Asia positioning, EM inflows and Korean buybacks, staying long US/Asia vs Europe with supercycle longs and index hedges.",
+   "distortions": [
+    {
+     "what": "Brief's 'even with near-term caution' pulls a phrase from the IN DETAIL Asia-equity-strategy subsection ('cautious over next few weeks') into the page-2/'20 seconds' Q4-setup summary sentence, which doesn't itself hedge that way.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying call (Asian equities on an upward medium-term path) is identical either way."
+    },
+    {
+     "what": "Brief's 'index hedges added' generalizes what the source specifies as EU-specific hedging ('adding cheap index hedges' tied to EU equities on positioning/regime grounds, and 'downside EU Index hedges' in the option-hedges list) into an unqualified clause attached to the Longs/regional-preference sentence.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the regional stance (long US/Asia vs. hedged EU) is unchanged; only which index gets hedged is left unspecified."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "J.P. Morgan",
+   "source_chain": "Warsh's full-employment/inflation-too-high read makes the Sep 16 FOMC meeting live, so CPI (Sep 11) outranks NFP and a strong NFP becomes bad news via higher yields; positioning, post-Labor-Day credit issuance, September seasonality and an outsized momentum drawdown stack toward chop, but intact fundamentals (recession unlikely, strong earnings, tolerable Fed hikes) argue against a real pullback, so the desk cuts net longs and goes dollar-neutral via +NDX/-RTY, Mag7 over AI/Memory/Semis, short credit/long VIX hedges.",
+   "brief_chain": "Warsh's post-Jackson Hole full-employment/high-inflation view makes Sep 16 live, so CPI outranks NFP and NFP inverts into good-news-is-bad-news; positioning, issuance, seasonality and momentum-drawdown signals stack bearish-for-chop, but intact fundamentals (no recession, strong earnings, tolerable hikes) mean the call is chop not a dramatic pullback, arguing for reduced net longs and a dollar-neutral approach via +NDX/-RTY, Mag7 over AI/Memory/Semis, short credit/long VIX hedges.",
+   "distortions": [
+    {
+     "what": "Brief lists 'recession unlikely' and 'two 25bp hikes wouldn't derail the bull market' together as one 'fundamentals held intact' block; in the source these come from two different passages (the tactical-view (i)-(vi) list and a separate IB-blast quote in the Equity & Macro Narrative section) that aren't presented as one enumerated list.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both statements are genuine JPM Market Intel calls in the same note; only their internal grouping is a synthesis choice."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d3",
+   "tier": "rest",
+   "bank": "BofA (via The Market Ear)",
+   "source_chain": "Systematic positioning is already high, not just elevated, leaving little incremental buying capacity in ANY market direction: BofA models selling $163bn in a down market, $1bn if flat, and still $9bn even in an up market; DB shows vol-control allocations maxed at the 100th percentile; Goldman corroborates (modest buying only if markets rise, violent unwind if they fall, systematic length at the upper end of its range); buybacks near peak just as the September blackout window expands, pulling away the other main buying source; net read is no incremental buying support in any scenario, compounded by a strategist's 'epic' vol-collapse loss warning.",
+   "brief_chain": "Systematic positioning already high (not merely elevated) drives an asymmetric flow picture: BofA models $163bn sold in a down market versus only $9bn bought in an up market; DB shows vol-control allocations maxed at the 100th percentile; Goldman corroborates the asymmetry with systematic length at the upper end of its range; the buyback blackout removes the other main buying source; net read is two-sided flow risk skewed bearish, compounded by a strategist's vol-collapse loss warning.",
+   "distortions": [
+    {
+     "what": "Brief states BofA's model shows $9bn 'bought in an up market'; the source states the model shows $9bn SOLD in an up market ('sell $9bn in an up market') \u2014 the article's entire thesis ('Sell sell or sell') is that systematics are projected to sell in all three scenarios, down, flat, and up, not just in a downturn.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 the source shows zero incremental buying support at any market direction (a uniformly bearish flow signal), while the brief implies systematics still buy into strength, which reads as normal two-sided asymmetry and would lead a trader to expect dip-buying support on a rally that the source says doesn't exist."
+    },
+    {
+     "what": "Brief adds an interpretive clause to the DB 100th-percentile data point ('leaving no room for further buying') that isn't in the source caption, which states only the percentile figure.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 a maxed-out 100th percentile allocation implies no further buying room regardless of whether the brief states it explicitly."
+    },
+    {
+     "what": "Brief softens the McElligott quote from 'major trading losses may soon surface' to 'warns of possible trading losses,' dropping 'major' and downgrading 'may soon surface' to 'possible.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the strategist's warning is a tangential aside in both versions, not load-bearing for the systematic-flow thesis."
+    },
+    {
+     "what": "Brief attaches the source's general framing sentence ('positioning already high, not just elevated') as the specific causal explanation for the $163bn/$9bn asymmetry, where the source states it as a standalone framing line before introducing the BofA figures.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same underlying mechanism (high positioning limits incremental buying), only the attribution is tightened."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 6,
+ "audited": 3,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

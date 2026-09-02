@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+ "source_span": "Post-Jackson Hole, Warsh has flagged that the economy is at full employment and that inflation is too high. With 1x NFP and 1x CPI ahead of the Sep 16 Fed meeting, we view CPI as more impactful... Equities will continue to struggle until crude / rates stabilize.",
+ "source_chain": "Warsh's post-Jackson-Hole full-employment/inflation-too-high line makes the Sep 16 FOMC live, therefore CPI (Sep 11) matters more than NFP (Sep 4) and a strong NFP would push yields up and equities down (inverting the normal read), therefore combined with unclear positioning, negative September seasonality, and post-Labor-Day credit supply, JPM moves Tactically Cautious/Neutral (trim net longs toward market-neutral, hedge via short credit ETFs / long VIX) while still holding the underlying bull case (low recession odds, strong earnings, hikes capped at two 25bp). Invalidation: equities keep struggling until crude and rates stabilize.",
+ "pulse_chain": "Warsh's full-employment/inflation line makes Sep 16 live, therefore CPI (Sep 11) outranks Friday's NFP and inverts the usual read (strong payrolls -> yields up -> equities down), therefore combined with directionless positioning, worst-seasonality September, and post-Labor-Day credit supply, JPMorgan goes tactically cautious/neutral wanting smaller net longs -- reinforced by a second, flow-mechanics line (BofA/DB/GS systematic positioning maxed out, fading buybacks) showing the same conclusion from a different angle, while JPM's own bull case (low recession odds, strong earnings, hikes capped at two 25bp) is stated as the reason this is chop, not a drawdown. Invalidation: equities keep struggling until crude and rates stabilize; hedges (short credit ETFs, long VIX) run into Sep 16.",
+ "preserved": true,
+ "why": "Every step, the bank attribution (JPMorgan for the calendar/Fed logic, BofA/DB/GS for the flow-mechanics figures), and the exact invalidation ('until crude and rates stabilize') carry through unchanged; the pulse only compresses and adds the d3 flow evidence as a parallel supporting line, which the note's own structure invites (JPM's brief doesn't contain the $163bn/$146.5bn figures, so the pulse's synthesis is compression across cited sources, not invention).",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

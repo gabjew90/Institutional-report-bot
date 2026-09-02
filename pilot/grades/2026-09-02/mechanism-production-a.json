@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "C:\\Users\\gabje\\AppData\\Local\\Temp/pd_ed/pilot\\source-text\\2026-09-02\\15098__warsh-and-the-road-not-taken.txt",
+ "source_span": "If there was that credibility, market probabilities of a hike with 15 days to go before the meeting would be in the 90s instead of 68%",
+ "source_chain": "Warsh's hawkish-toned Jackson Hole speech avoided challenging the government/fiscal drivers of inflation, so it added volatility but not credibility, therefore the market's September-hike probability sits at an anomalously low 68% versus the 90-100% typical this close to a meeting, and with the Dallas Fed trimmed mean (2.35% 6M) and core PCE (3.5% 6M) already near Taylor-Rule-implied levels plus softening ISM/JOLTS data, therefore Blitz expects Warsh finds 'wiggle room' to hold rather than hike, with the 9/11 CPI print as the invalidating data point if it runs hot.",
+ "pulse_chain": "Warsh's hawkish message plus Governor Barr's hike support convinced the market the Fed tightens into a slowdown, therefore hike odds ran 27%->69% and long bond yields are breaking across three countries with vol-control funds maxed and forced-selling risk, and separately 'the hold case is being made by Goldman' citing the Dallas Fed trimmed mean (2.35%), core PCE (3.5%), and Treasury issuance-vs-Fed-holdings growth (6.8% vs 0.7%) even though 'Goldman's own screen shows 66% odds of a hike,' with September 11 CPI (attributed to JPMorgan) as the resolving print.",
+ "preserved": false,
+ "why": "The pulse lifts TS Lombard/Blitz's entire hold-case argument and its exact supporting statistics (Dallas Fed trimmed mean 2.35%, core PCE 3.5% 6M, Treasury stock +6.8% vs Fed holdings +0.7%) and attributes them to Goldman Sachs, a bank that never made this argument in any sourced note, while dropping TS Lombard's actual mechanism \u2014 that Warsh's credibility deficit is why the hike probability is anomalously low versus historical precedent, not merely soft inflation data.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

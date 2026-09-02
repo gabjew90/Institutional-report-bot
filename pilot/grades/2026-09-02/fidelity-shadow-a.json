@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "We are moving to a Tactically Cautious / Neutral view, which is to say that Equity market fundamentals remain strong",
+   "why": "US desk's own stated shift matches exactly; international desk's identical stance is separately stated in 15087 ('We are tactically cautious/neutral on Global Equities')."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "positioning is not giving a clean read on market direction and history suggests a choppy next 3-4 weeks",
+   "why": "Matches 'no clean directional read'/'three or four choppy weeks'; same doc's seasonality bullet ('September screens as the worst performing month for the SPX followed by Q4 being the strongest quarter') and credit-spreads bullet ('spike in issuance in the two weeks post-Labor Day driving spreads wider which can pressure Equities') back the rest of the sentence."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "[10%] NFP prints above 95k. SPX loses 50bp \u2013 1.25%",
+   "why": "Exact probability and index cost match the NFP scenario table."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "AVGO Earnings \u2013 may prove spectacular and fail to drive meaningful stock appreciation in AI / Memory / Semis",
+   "why": "Matches the desk's warning verbatim; 'earnings after the Close today' supports 'reports tonight.'"
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "15087__international-market-intelligence-morning-briefing.txt",
+   "span": "Hence, we stay hedged via options on momentum, but we are minded to buying dips.",
+   "why": "The rotation-runs-several-more-weeks/hedge/buy-dips clause is directly sourced ('a multi-week factor rotation is still in the cards'). But the opening frame \u2014 'the crowded side of the market has been liquidated while the index has barely moved' \u2014 is not stated anywhere; the closest material is momentum-factor drawdown language in 15095 (factor down 21-34% from ATH) and shorts rallying/HF crowding language in 15087, neither of which says a crowded long side was liquidated with the index flat. That invented causal frame changes what the source actually claims."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "Asset Managers bought EM and NDX, and materially cut longs in UST Long Bonds (-2.1z). Leveraged Funds reduced shorts in NDX (+1.9z)",
+   "why": "UST Long Bonds = 30-year Treasury futures; both z-scores and the correct desks (Asset Managers vs. Leveraged Funds) match."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "current YTD default rates at 2.63% for HY bonds and 2.33% for Leveraged Loans",
+   "why": "No source literally uses the word 'benign,' but it is a fair characterization of the adjacent data (defaults running below 25-year averages, forecast staying near/below average through 2026) rather than an invented figure or reversed direction."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "current YTD default rates at 2.63% for HY bonds and 2.33% for Leveraged Loans... The 25-year average default rates for HY and LL are 3.2% and 2.9%",
+   "why": "Exact figures for both YTD rates and 25-year averages."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "For YE26 he forecasts default rates of 2.25% for both HY bonds and LL. For YE27, he sees HY bonds having a 2.75% default rate and 4.5% for LL",
+   "why": "Exact figures and correct attribution to Nelson Jantzen."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "As hedges we like shorting Credit ETFs and buying VIX products. Until we get through the Fed Meeting on Sep 16",
+   "why": "Matches hedge instruments and the Sep 16 Fed-meeting framing exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": true,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "WTI +28bps at $90.47, NatGas +148bps to $2.95",
+   "why": "Live price levels match exactly; the Brent/European-gas assumption raise is separately confirmed in 15087 ('We raise our Brent and TTF price assumption'). Flagged live_market since the price levels are morning snapshot data, though also directly sourced."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "the MTD spending was +5.4% YoY vs. +4.4% in July",
+   "why": "Exact figures and 'through Aug 20' matches Rick Shane's consumer spending update."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "Middle Income +7.3% YoY vs. 6.2% in July; and (iii) Lower Income +4.8% YoY vs. +4.3% in July",
+   "why": "All three income cohorts (upper/middle/lower) accelerated YoY, with Middle Income actually outpacing Upper Income \u2014 genuinely 'not confined to the top.'"
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "recession is highly unlikely to manifest over the next few quarters, but Warsh's comments now make Sep a live meeting",
+   "why": "Recession/September-live language matches exactly; 'weaker than expected but... economy still in expansion' matches the ISM-Mfg paragraph. 'Positioning event rather than an economic one' is a fair synthesis of the doc's own split between 'market fundamentals (econ & earnings) remain intact' and the positioning-driven chop argument, not an invented claim."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15087__international-market-intelligence-morning-briefing.txt",
+   "span": "Remains tactically cautious while heading to an attractive Q4 setup",
+   "why": "Directly matches the doc's own headline framing of near-term caution against a constructive Q4."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+ "source_span": "We are moving to a Tactically Cautious / Neutral view, which is to say that Equity market fundamentals remain strong but that near-term variables are likely to cause markets to chop sideways.",
+ "source_chain": "Warsh's post-Jackson-Hole line (full employment, inflation still too high) makes the Sep 16 Fed meeting live, therefore Sep 11 CPI outranks Friday's NFP as the critical print, therefore combined with unclean positioning, post-Labor-Day credit supply, and weak seasonality JPM moves to Tactically Cautious/Neutral and cuts net longs, therefore it hedges via short credit ETFs and long VIX into Sep 16; invalidation: equities keep struggling until crude/rates stabilize.",
+ "pulse_chain": "Warsh's full-employment/inflation-too-high stance makes Sep 16 live, therefore Sep 11 CPI matters more than Friday's NFP (inverting the usual good-news read), therefore JPM goes Tactically Cautious/Neutral with smaller net longs, framed as chop not drawdown since JPM's own base case still sees no recession and strong earnings; systematic-flow asymmetry (BofA/DB/GS) and the buyback blackout add downside skew; invalidation: equities keep struggling until crude and rates stabilize, hence JPM buys protection (short credit ETFs, long VIX) into Sep 16.",
+ "preserved": true,
+ "why": "The pulse reproduces JPM's exact steps (Warsh makes Sep 16 live, CPI over NFP, cautious/neutral with credit-ETF/VIX hedges) attributed to the same JPM desk, closing on the identical invalidation of crude/rates stabilizing.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "15095__us-market-intelligence-morning-briefing.txt",
+   "span": "Warsh's comments now make Sep a live meeting.",
+   "why": "JPM's own stance is that the Fed meeting has become a live risk/decision point; matches the sentence's framing."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": true,
+   "source_file": "15086__early-morning-reid-macro-strategy.txt",
+   "span": "the 10yr (+4.8bps to 4.80%) Treasury yield reached its highest level since October 2023",
+   "why": "DB Reid puts the 10-year's multi-year high at 'since October 2023,' not January 2025; the SPY/QQQ intraday percentages and the specific 4.79% level are live-market data with no source support, but the date claim directly contradicts the source figure, so this is a distortion rather than a plain unsupported live sentence."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "15094__sell-sell-or-sell.txt",
+   "span": "Vol-control equity allocations at a maxed out 100th percentile ... Goldman agrees with the message that CTAs have considerably more room to sell",
+   "why": "The systematic/CTA side (carrying the most exposure) is well supported by this note, but no source anywhere in the set states hedge funds are carrying 'less stock exposure than at almost any point in the past year' \u2014 that clause is invented and paired with the real systematic finding to manufacture a false symmetry."
+  },
+  {
+   "id": "s4",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "15086__early-morning-reid-macro-strategy.txt",
+   "span": "the pricing of a September hike up to 69%... the 10yr bund yield... hitting a post-2011 high of 3.34%, the 10yr OAT yield... post-2008 high of 4.20%, and the 10yr gilt yield... post-2008 high",
+   "why": "The three-country long-bond break (UK, Germany, France) is supported, but the market pricing a 66-69% hike probability is a conditional presented as a settled fact ('has decided') \u2014 the rubric's example distortion exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "15098__warsh-and-the-road-not-taken.txt",
+   "span": "he will be poring through the upcoming data to find some wiggle room to hold rates constant for another month or two. I still think he finds it.",
+   "why": "The hold case in today's set is made by TS Lombard's Steven Blitz (with a 68% hike probability, Table 2), not by Goldman; the 66% figure instead comes from GS Duttenhoefer's Daily describing 'markets... pricing' a hike, not a Goldman-authored hold argument or 'Goldman's own screen.' The sentence misattributes who made the case and mismatches the number tied to it."
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "No document among the 9 sources (DB Reid, JPM x2, JPM equity strategy, TME, TS Lombard, GS Abbas/Duttenhoefer/Privorotsky) mentions cloud-builder 2027 capex forecasts or a $1.2-1.5trn vs $800bn figure; searched 'cloud capex', 'hyperscaler', 'IGV' etc. with no hits."
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "No source frames AI as producing 'record profits and negative cash flow at the same time'; this framing does not appear anywhere in the source set."
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "No source gives cloud-builder Q2 spend of $165bn or free cash flow falling from $60bn to $7bn; searched '165bn', 'free cash flow', 'FCF' across all files with no matching content."
+  },
+  {
+   "id": "s9",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "No source mentions a software-sector 6.7% rally, Salesforce/CrowdStrike/Okta results, or a Goldman desk position in IGV upside calls; none of these terms appear in any of the 9 documents."
+  },
+  {
+   "id": "s10",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "Editorial continuation of the fabricated s9 'software answer' narrative; no independent source content."
+  },
+  {
+   "id": "s11",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "There is no Bank of America document at all among today's 9 sources, and no other source states gold gained ~10% in August or that gold funds took in $7.3bn last week; the attribution cites a bank whose research isn't even in the source set."
+  },
+  {
+   "id": "s12",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "None of the three Goldman notes (Abbas, Duttenhoefer, Privorotsky) describe a Goldman derivatives desk position buying upside/selling downside protection on a 'debasement story'; searched 'debasement story', 'upside call', 'downside protection' with no hits tying this to Goldman."
+  },
+  {
+   "id": "s13",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "No source describes a Goldman materials desk view citing a broken 100-day average, Chinese selling, or rising hike odds; searched '100-day', 'materials desk', 'Chinese selling' with no hits."
+  },
+  {
+   "id": "s14",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "No source contains a Goldman diesel margin forecast (Q4 $75/bbl over Brent, 2027 average $63, up from $27 in February); searched 'diesel' across all files \u2014 only Privorotsky's one-word mention of 'diesel' breaking out with no margin figures, and JPM's equity strategy mentions diesel storage days, not margin forecasts."
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none in today's set",
+   "span": "",
+   "why": "Editorial conclusion built entirely on the unsupported s14 diesel-margin claim; no independent source content."
+  }
+ ],
+ "faithful": 1,
+ "distorted": 4,
+ "unsupported": 10,
+ "faithful_rate": 0.067,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

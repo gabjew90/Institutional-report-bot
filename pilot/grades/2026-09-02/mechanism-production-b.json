@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "C:\\Users\\gabje\\AppData\\Local\\Temp/pd_ed/pilot\\source-text\\2026-09-02\\15098__warsh-and-the-road-not-taken.txt",
+ "source_span": "There is only a 68% market probability the FOMC hikes at the upcoming meeting, even though Warsh's speech says he tightens... he will be poring through the upcoming data to find some wiggle room to hold rates constant.",
+ "source_chain": "Warsh's Jackson Hole speech was hawkish in tone but avoided challenging government/Treasury on inflation, so it added no credibility, THEREFORE the market prices only 68% odds of a hike 15 days out versus a historical ~90-100% norm at that distance, THEREFORE the market itself doesn't believe he hikes; the Dallas Fed trimmed mean (2.35%) and Core PCE 6M (3.5%) support patience, and rising yields are a structural supply story (Treasury debt +6.8% Y/Y vs Fed holdings +0.7%) largely independent of the hike decision, THEREFORE (author's own call) Warsh finds wiggle room and holds in September, with August CPI (9/11) as the final swing factor.",
+ "pulse_chain": "Hike odds have surged (27%\u219269%) and yields are breaking multi-year highs everywhere, THEREFORE the bond market has 'decided' the Fed hikes on Sept 16; Warsh's and Barr's hawkish comments convinced the market this Fed tightens into a slowdown, THEREFORE the hold case -- attributed to Goldman, using the Dallas trimmed mean/Core PCE figures -- is a losing minority argument, because the bond market clears on supply regardless of the vote, THEREFORE a second negative payrolls print is the one thing that stops the hike.",
+ "preserved": false,
+ "why": "The pulse takes the TS Lombard note's own data (Dallas trimmed mean, Core PCE, Treasury-supply stats) and its own conclusion -- that the abnormally low 68% probability shows the market doesn't actually believe Warsh will hike, so he holds -- and re-attributes it to Goldman as a weak counter-argument inside a 'the market has decided on a hike' narrative, inverting the note's actual forecast and swapping the bank that made it.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
