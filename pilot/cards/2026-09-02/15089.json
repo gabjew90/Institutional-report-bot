@@ -1,0 +1,498 @@
+{
+ "brief": "JPMorgan's global equity strategy deck stays bullish into year end and argues the case as a chain. Global equities are up 15% year to date in USD total return, EPS revisions have turned outright positive in every region and PMIs are rebounding, so earnings stay a support. Rising bond yields are read as reflecting stronger activity rather than de-anchoring inflation, because wage growth is soft and labour markets are mixed, so central banks deliver less tightening than is priced, so yields do not block equities. A USD that has run as a safe haven and no longer looks cheap then turns lower, which supports international stocks, EM and gold. From that, the note holds equities at 65% versus a 60% benchmark, overweights EM versus DM and the Eurozone within developed markets, keeps the US neutral at 20x forward earnings, and expects Tech/AI not to lead in the second half, so participation broadens into Cyclicals, small caps, Mining, Capital Goods and Semis, ranked over hyperscalers over AI-at-risk plays. December 2026 index targets are MSCI Eurozone 420 and FTSE 100 11,000. Energy stays underweight unless the Iran conflict fully re-escalates.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan stays bullish on global equities into year end and expects continued strong earnings delivery.",
+   "anchor": "we stay bullish into year end. We expect continued strong earnings delivery",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Global equities are up 15% year to date on a total return basis in USD.",
+   "anchor": "Global equities are up 15% so far ytd, TR in USD",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "EPS revisions have turned outright positive in all regions.",
+   "anchor": "EPS revisions have moved outright positive in all regions",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Eurozone PMIs have risen for three consecutive months.",
+   "anchor": "Eurozone PMIs in particular are up for 3 months in a row",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan does not expect rising bond yields to be an insurmountable obstacle for equities, since most of the move reflects stronger activity.",
+   "anchor": "we do not expect rising bond yields to present an insurmountable obstacle for stocks",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan expects central banks to deliver less tightening than markets currently price.",
+   "anchor": "central banks might deliver less tightening than is currently priced in",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan expects rate increase expectations to stop getting more hawkish and does not see inflation expectations de-anchoring, with wage growth soft and labour markets mixed.",
+   "anchor": "Rate increase expectations are unlikely to get more hawkish",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "The USD has traded as a safe haven during the geopolitical escalation, does not look cheap, and could resume depreciating.",
+   "anchor": "USD has been acting as a safe haven during the geopolitical escalation, but does not look cheap",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Gold has fallen back 20-25% since the Iran conflict started after being a consensus long in January.",
+   "anchor": "Gold was everyone's favourite long in January, only to become shunned as it fell back 20-25%",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan sees the gold selloff as an opportunity to add, expecting the debasement trade to resume.",
+   "anchor": "We continue to think this is an opportunity to add again, looking for debasement trade to resume",
+   "status": "forecast",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "US equity valuations are stretched at 20x forward P/E while international markets look cheaper.",
+   "anchor": "Valuations still look stretched in the US at 20x forward P/E, but international markets appear cheaper",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Non-US equities are ahead of US equities by 4% this year.",
+   "anchor": "non-US stocks are again ahead this year, by 4%",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "MSCI AC World ex US beat the US by more than 15% in 2025 on total return in USD.",
+   "anchor": "In 2025, MSCI AC World ex US was ahead of the US by a big 15%+, total return, in USD",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2025"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan is overweight emerging markets versus developed markets, having turned bullish on EM in 2025.",
+   "anchor": "OW EM vs DM. After years of our cautious EM stance, we turned bullish on EM in 2025",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 6 to 12 months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "EM equities cumulatively underperformed DM by almost 50% between 2018 and 2024 before outperforming in 2025.",
+   "anchor": "EM equities have outperformed DM in 2025 after cumulatively underperforming DM by almost 50% between 2018 and 2024",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2018 to 2025"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan's EM team is bullish on Korea, China, Taiwan, Chile and South Africa.",
+   "anchor": "Our EM team is bullish on Korea, China, Taiwan, Chile and South Africa, among other",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Of the 22 EM central banks J.P. Morgan economists track, 8 are expected to cut rates further and 5 to stay on hold.",
+   "anchor": "Of the 22 EM central banks our economists track, 8 are expected to cut rates further and 5 to remain on hold",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan's December 2026 target for MSCI Eurozone is 420, 7% above the 381 level of 29 July 2026.",
+   "anchor": "Dec '26 Target 29-Jul-26 % upside MSCI EUROZONE 420 381 7%",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "December 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan's December 2026 target for the FTSE 100 is 11,000, 1% above the 10,908 level of 29 July 2026.",
+   "anchor": "FTSE 100 11,000 10,908 1% Key Indices 2026 Targets",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "December 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan holds equities at 65% against a 60% benchmark weight, an overweight of 5 percentage points.",
+   "anchor": "Recommendation Equities 60% 65% 5% Overweight Bonds 30% 30% 0% Neutral",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 6 to 12 months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan holds bonds neutral at 30% and underweights cash at 5% against a 10% benchmark weight.",
+   "anchor": "Bonds 30% 30% 0% Neutral Cash 10% 5% -5% Underweight",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 6 to 12 months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Within developed markets J.P. Morgan holds the US neutral at 73.0% and Japan neutral at 6.0%.",
+   "anchor": "US 73.3% 73.0% -0.3% Neutral Japan 5.7% 6.0% 0.3% Neutral",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 6 to 12 months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Within developed markets J.P. Morgan overweights the Eurozone at 11.0% against an 8.7% index weight and holds the UK neutral.",
+   "anchor": "Eurozone 8.7% 11.0% 2.3% Overweight UK 3.5% 3.0% -0.5% Neutral",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 6 to 12 months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Eurozone earnings fell again in 2025, which J.P. Morgan had expected, and it now looks for a rebound in the region's corporate profits this year.",
+   "anchor": "Eurozone earnings were outright down again in 2025, as we feared",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan expects the Tech/AI trade to struggle to dominate returns in the second half, unlike 2025.",
+   "anchor": "we remain of the view that it will struggle to dominate in 2H, unlike what transpired in 2025",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "second half of 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan's year-end preference ranks Semis above hyperscalers above AI-at-risk plays.",
+   "anchor": "Our pecking order into year end is Semis over hyperscalers over AI at risk plays",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan stays cautious on the AI cannibalisation areas of Software, Business Services and Media.",
+   "anchor": "we stay cautious on AI cannibalization areas - Software, Business Services and Media",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "second half of 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Semis outperformed the market by almost 150% from the summer 2025 lows before giving back some gains.",
+   "anchor": "Semis had outperformed the market by almost 150% from the summer 2025 lows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan expects Cyclicals to lead again into year end.",
+   "anchor": "but believe Cyclicals will lead again into year end",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Consumer groups have historically outperformed over the following 12 months when consumer confidence is at lows, as it is now.",
+   "anchor": "when consumer confidence is at lows, such as most recently, consumer groups tended to outperform over the next 12 months",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 12 months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "The consumer groups that outperformed in that pattern were Homebuilders, Airlines, Retail, Hotels, Luxury and Autos.",
+   "anchor": "This included Homebuilders, Airlines, Retail, Hotels, Luxury and Autos",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "next 12 months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan has turned more positive on Defense after more than 12 months of the sector not working, favouring modernisation plays.",
+   "anchor": "Thematically, the Defense sector was not working for more than 12 months, and we recently argued to turn more positive on the space",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan runs a pair trade in Financials of Banks over Insurance.",
+   "anchor": "have a pair trade in Financials of Banks over Insurance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan is positive on Basic Resources and double upgraded the sector in March 2025.",
+   "anchor": "We are positive on Basic Resources, having double upgraded the sector in March '25",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan sees Energy stocks as unattractive unless the Iran conflict fully re-escalates, given likely increased supply.",
+   "anchor": "Energy stocks do not look attractive unless Iran conflict fully re-escalates, in our view",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan is unexcited about Defensives and relatively cautious on Staples, Real Estate, Telecoms and Healthcare.",
+   "anchor": "We remain unexcited about Defensives, relatively cautious on Staples, Real Estate, Telecoms and Healthcare",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan finds Utilities interesting and stays positive on Renewables.",
+   "anchor": "Utilities look interesting, and we remain positive on Renewables",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan's key global sector calls include Overweight on Metals and Mining, Capital Goods, Construction Materials, Luxury and Semis.",
+   "anchor": "Metals & Mining Overweight Capital Goods Overweight Construction Materials Overweight Luxury Overweight Semis Overweight",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 6 to 12 months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan expects broadening market participation to support Small caps.",
+   "anchor": "likely broadening in market participation should mean better performance of Small caps",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan judges overall investor positioning to be light, making the pain trade higher.",
+   "anchor": "The pain trade is therefore higher, and we find that overall investor positioning is still light",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "J.P. Morgan is long Japanese Banks as the gap with yields has widened, while judging Japan a hostage to Tech direction with elevated valuations.",
+   "anchor": "Within Japan, we are long Banks, as the gap with yields has widened",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "Japan's fundamental outlook stays strong but the market remains a hostage to Tech direction and valuations are elevated.",
+   "anchor": "Japan's outlook fundamentally continues to look strong, but it remains a hostage to Tech direction and valuations are elevated",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Equity Strategy: Stay constructive into year end",
+   "claim": "The UK trades at a large valuation discount to other regions and carries the highest dividend yield globally.",
+   "anchor": "The UK is showing a large valuation discount vs other regions, as well as the highest dividend yield globally",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "C:\\Users\\gabje\\AppData\\Local\\Temp/pd_rd/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b7a4d9595c3b"
+ },
+ "verify": {
+  "total": 43,
+  "matched": 43,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
