@@ -31,6 +31,18 @@ gives you:
    is NOT fabrication — this judge's Gemini predecessor produced false
    FAILs by ignoring exactly this, and it is the failure you must not
    repeat.
+5. **No source is a red flag, not a pass** (owner rule 2026-09-02).
+   The mirror image of rule 4: when the Route line says `ungrounded`
+   and there is NO TOOLS table, every specific claim in the answer
+   came from the model's memory. Scrutinize those entries hardest.
+   Before grading one, web-search each figure, date, consensus,
+   target, historical statistic, or named mechanism presented as
+   fact, and write what you found (or could not find) in the Notes
+   line for that entry. Contradicted is FAIL; unverifiable is CONCERN;
+   PASS is reserved for time-invariant general knowledge (what a
+   company does). A confident Type 1 arrow-bullet answer with numbers
+   and no source is the shape that has produced every fabrication
+   finding in this queue; treat the shape itself as the trigger.
 
 ## Step 1 — read the rubric from source
 
