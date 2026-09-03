@@ -1,0 +1,259 @@
+{
+  "pulse_date": "2026-09-03",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "us iran regional conflict escalation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 10
+      },
+      "consensus_view": "Ten banks and newswires reference an escalating US-Iran military conflict as a near-term market catalyst, but none has staked a clear directional bet on it yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks and newswires flag an escalating US-Iran military conflict as a live macro catalyst this window without staking a directional market view.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "Mizuho International",
+            "Mizuho International Plc",
+            "JPMorgan + MUFG Research",
+            "UBS",
+            "Bank J. Safra Sarasin",
+            "Reuters",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "US-Iran kinetic warfare escalation",
+            "US-Iran geopolitical flare-up",
+            "US-Iran regional conflict",
+            "US strikes on Iran",
+            "U.S.-Iran military strikes"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed hawkish shift",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 8
+      },
+      "consensus_view": "Research desks read Fed Chair Kevin Warsh's Jackson Hole speech as a hawkish turn toward higher interest rates, and Mizuho argues the question has flipped from whether the Fed will cut to whether it must raise, with a September rate hike now the market's base case.",
+      "facts_agreed": [
+        {
+          "claim": "Desks read Fed Chair Kevin Warsh's Jackson Hole remarks as a hawkish shift in Fed policy, pushing markets to price rate hikes rather than cuts.",
+          "banks_for": [
+            "Mizuho International Plc",
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "the burden of proof has shifted from “why hike?” to “why not hike?”",
+            "Warsh hawkish tilt at Jackson Hole",
+            "Fed Chair Kevin Warsh hawkish Jackson Hole remarks",
+            "Kevin Warsh hawkish Fed policy"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure investment",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "consensus_view": "Banks broadly agree that AI infrastructure and data-center spending keeps rising and remains the main engine of profit and economic growth, and no desk argues the buildout is slowing.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure spending is continuing and remains the primary driver of earnings and global growth.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Zürcher Kantonalbank",
+            "Reuters",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Ai capex isn’t going away anytime soon.",
+            "AI infrastructure: still the main driver of EPS growth.",
+            "AI remains the highest capital allocation priority",
+            "Investment is rising significantly, thereby supporting global growth.",
+            "Berkshire Hathaway CEO Greg Abel said he sees significant opportunities for the conglomerate from the buildout",
+            "Domestic AI compute demand is likely to show an ~80% CAGR"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait supply disruption",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 8
+      },
+      "consensus_view": "Eight research desks flag the Strait of Hormuz as a live oil-supply risk tied to the Iran conflict, but none has staked out a directional call on prices or the odds of an actual blockade.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks flag the Strait of Hormuz as a live oil-supply and energy-flow risk this window without taking a directional view.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "Mizuho International",
+            "MUFG Research",
+            "UBS",
+            "Zürcher Kantonalbank",
+            "London Stock Exchange Group",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz supply contraction",
+            "Strait of Hormuz disruption",
+            "Strait of Hormuz supply risks",
+            "Strait of Hormuz energy flow risks",
+            "Strait of Hormuz oil flow disruption risk"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "boj rate hike pace",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 6
+      },
+      "consensus_view": "Several desks are watching the Bank of Japan's rate-hike path as a live macro subject, and the one desk with a firm call, Mizuho, thinks the market is pricing too many hikes and expects the BOJ's rate to top out at 1.75% rather than the roughly 2.5% the market implies.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks flag Bank of Japan rate hikes, its terminal and neutral rate, and balance sheet reduction as a live macro subject this window.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Bank of Japan rate hike expectations",
+            "BOJ policy rate hikes",
+            "BoJ neutral rate expectations",
+            "Bank of Japan balance sheet reduction",
+            "Bank of Japan September rate hike probability"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "jackson hole symposium",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Several desks flag the Fed's Jackson Hole gathering as a near-term event to watch for policy signals, but none has staked out a clear bet on which way rates go.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the Jackson Hole symposium as an upcoming Fed policy event to watch.",
+          "banks_for": [
+            "Bloomberg",
+            "Citadel Securities",
+            "JPMorgan + Mizuho International Plc",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole speech confirmation",
+            "Jackson Hole symposium",
+            "Jackson Hole Fed commentary",
+            "Jackson Hole Symposium hawkish comments"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "global bond yield trends",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 2,
+        "neutral": 3
+      },
+      "consensus_view": "Banks agree global government bond yields are climbing to multi-year and multi-decade highs, but split on whether it is a benign return to normal interest rates or a structural sell-off driven by deficits, energy inflation, and AI spending.",
+      "facts_agreed": [
+        {
+          "claim": "Global government bond yields are rising broadly across major markets, and desks expect that direction to continue.",
+          "banks_for": [
+            "Deutsche Bank",
+            "The Market Ear",
+            "Bank J. Safra Sarasin"
+          ],
+          "evidence_quotes": [
+            "latest rise in global yields is a continuation of the normalisation after the financial repression",
+            "The direction of travel is going to be higher yields from here",
+            "The backup in global bond yields was the dominant story"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the rise in yields is a benign normalization or a structural sell-off",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "for_evidence": "latest rise in global yields is a continuation of the normalisation after the financial repression",
+          "banks_against": [
+            "The Market Ear",
+            "Bank J. Safra Sarasin"
+          ],
+          "against_evidence": "The direction of travel is going to be higher yields from here"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "middle east conflict energy",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four banks flag Middle East conflict as a live driver of oil and gas supply risk this window, but none has staked a directional price call on it.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference Middle East and Iran conflict as a source of oil and gas supply risk this window.",
+          "banks_for": [
+            "JPMorgan",
+            "Goldman Sachs",
+            "The Market Ear",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Iran conflict impact on gas prices",
+            "Iran/US conflict and oil supply constraints",
+            "Middle East conflict driving oil prices",
+            "Middle East conflict energy supply risks"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
