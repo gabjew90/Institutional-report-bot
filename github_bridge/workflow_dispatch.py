@@ -27,7 +27,6 @@ from config import settings
 
 log = logging.getLogger(__name__)
 
-OWNER_REPO = "gabjew90/Institutional-report-bot"
 DEFAULT_REF = "claude/financial-pdf-discord-bot-mDpbk"
 
 PILOT_WORKFLOWS = {
@@ -51,8 +50,9 @@ def dispatch(workflow_file: str, ref: str = DEFAULT_REF,
     body = {"ref": ref}
     if inputs:
         body["inputs"] = inputs
+    repo = settings.github_repo.strip().strip("/")
     req = urllib.request.Request(
-        f"https://api.github.com/repos/{OWNER_REPO}/actions/workflows/{workflow_file}/dispatches",
+        f"https://api.github.com/repos/{repo}/actions/workflows/{workflow_file}/dispatches",
         data=json.dumps(body).encode(),
         headers={"Authorization": "Bearer " + tok,
                  "Accept": "application/vnd.github+json",
@@ -84,8 +84,9 @@ def dispatch(workflow_file: str, ref: str = DEFAULT_REF,
     return status
 
 
-def register_jobs(scheduler, tz) -> int:
-    """Add one APScheduler cron job per (workflow, time). Returns the count."""
+def register_jobs(scheduler) -> int:
+    """Add one APScheduler cron job per (workflow, time), all on UTC
+    because the workflow files declare UTC. Returns the count."""
     from apscheduler.triggers.cron import CronTrigger
     import pytz
     n = 0
@@ -102,5 +103,4 @@ def register_jobs(scheduler, tz) -> int:
                 misfire_grace_time=600,
             )
             n += 1
-    _ = tz
     return n

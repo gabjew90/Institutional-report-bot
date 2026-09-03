@@ -763,3 +763,34 @@ def test_warm_cap_name_without_a_logo_gets_a_profile_backfill():
         db.get_symbol_logos, db.upsert_symbol_logos = o_get, o_up
     assert asked == ["AVGO"], asked
     assert "AVGO" in out and "SNOW" in out
+
+
+# 2026-09-02 review: a rejected Yahoo session used to read as "no listed
+# options" and drop a $1.7T name; the chain is unknown until a spot
+# proves Yahoo answered. The memo also stops the second fetch per name.
+def test_chain_presence_is_unknown_without_a_spot():
+    from report import implied_move as IM
+    IM.reset_chain_presence()
+    assert IM._record_presence("AVGO", {"expiration_dates": [], "underlying_spot_price": None}) is None
+    assert IM._record_presence("PDI", {"expiration_dates": [], "underlying_spot_price": 18.2}) is False
+    assert IM._record_presence("NVDA", {"expiration_dates": ["2026-09-04"], "underlying_spot_price": 120.0}) is True
+    assert IM._record_presence("X", None) is None
+    assert IM.has_options_chain("PDI") is False and IM.has_options_chain("AVGO") is None
+    IM.reset_chain_presence()
+
+
+def test_has_options_chain_reads_the_memo_before_fetching():
+    from unittest.mock import patch
+    from report import implied_move as IM
+    from report import market_data as MD
+    calls = []
+
+    def _fetch(sym, expiration_iso=None):
+        calls.append(sym)
+        return {"expiration_dates": ["2026-09-04"], "underlying_spot_price": 100.0}
+    IM.reset_chain_presence()
+    with patch.object(MD, "_fetch_yahoo_options_chain", _fetch):
+        IM.implied_move_pct("NVDA", "2026-09-04")
+        assert IM.has_options_chain("NVDA") is True
+    assert calls == ["NVDA"], calls
+    IM.reset_chain_presence()

@@ -54,17 +54,6 @@ def order_cards(cards: list[dict], ledger: dict) -> list[dict]:
     """Deterministic ledger order (see module docstring)."""
     seen: set[int] = set()
     ordered: list[dict] = []
-    idx = {id(c): c for c in cards}
-    by_claim: dict[tuple, list[dict]] = {}
-    for c in cards:
-        by_claim.setdefault((c.get("bank"), c.get("claim")), []).append(c)
-
-    def take(bank, claim):
-        for c in by_claim.get((bank, claim), []):
-            if id(c) not in seen:
-                seen.add(id(c))
-                ordered.append(c)
-                return
 
     # Walk the ledger's groups but take EVERY card in the group, not
     # the ledger's bank-deduplicated entries: the ledger keeps one
@@ -89,9 +78,8 @@ def order_cards(cards: list[dict], ledger: dict) -> list[dict]:
         if id(c) not in seen:
             seen.add(id(c))
             ordered.append(c)
-    _ = take
     assert len(ordered) == len(cards), (len(ordered), len(cards))
-    return [idx[id(c)] for c in ordered]
+    return ordered
 
 
 def build_pack(cards: list[dict], briefs: dict[str, dict]) -> tuple[str, dict]:

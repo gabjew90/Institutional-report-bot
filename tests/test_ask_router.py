@@ -16,7 +16,9 @@ CASES = [
     ("who is reporting earnings after close", R.EARNINGS_SLATE, [R.T_SLATE]),
     ("what earnings are today", R.EARNINGS_SLATE, [R.T_SLATE]),
     ("any big earnings tomorrow", R.EARNINGS_SLATE, [R.T_SLATE]),
-    ("what on the economic calendar for this week ? Who's reporting earnings", R.EARNINGS_SLATE, [R.T_SLATE]),
+    # A week question keeps the slate tools but is not prefetched: the
+    # tool answers one date and today's names are not the week.
+    ("what on the economic calendar for this week ? Who's reporting earnings", R.EARNINGS_SLATE, []),
     # single-ticker earnings
     ("when does NVDA report", R.EARNINGS_DATE, [R.T_EDATE]),
     ("did PLTR beat last quarter", R.EARNINGS_DATE, [R.T_EDATE]),
@@ -132,7 +134,7 @@ def test_filter_tools_keeps_code_execution_and_applies_policy():
 def test_factual_and_web_flags_follow_the_shape():
     assert R.classify("what's TSLA at").is_factual and not R.classify("what's TSLA at").needs_web
     assert R.classify("why is mrvl down off avgo earnings").needs_web
-    assert not R.classify("show all of Abe's current holdings").is_factual
+    assert R.classify("show all of Abe's current holdings").is_factual
     assert not R.classify("you good?").deterministic
 
 
@@ -143,3 +145,50 @@ def test_inject_text_says_so_on_error():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+# 2026-09-02 review: shapes that stripped the right tool, and lead-in
+# words that became tickers.
+def test_quote_and_public_figure_questions_are_not_room_history():
+    r = R.classify("quote TSLA")
+    assert r.shape == R.PRICE and r.prefetch == [(R.T_PRICE, {"symbols": ["TSLA"]})], r
+    r = R.classify("what did powell say today")
+    assert r.shape != R.CHAT_HISTORY and r.google_allowed(), r
+    assert R.classify("what did abe say about semis").shape == R.CHAT_HISTORY
+    assert R.classify("quote abe's take on nvda").shape == R.CHAT_HISTORY
+
+
+def test_lead_in_words_are_not_tickers():
+    assert R.extract_tickers("what's the price of gold") == []
+    r = R.classify("when is the next fed meeting")
+    assert r.shape == R.ECON_CALENDAR and r.prefetch, r
+    assert R.classify("what is CPI in march").shape == R.ECON_CALENDAR
+
+
+def test_index_and_crypto_price_questions_route_to_the_price_tool():
+    r = R.classify("what's the VIX at right now")
+    assert r.shape == R.PRICE and r.prefetch == [(R.T_PRICE, {"symbols": ["^VIX"]})], r
+    r = R.classify("what's spx at")
+    assert r.prefetch == [(R.T_PRICE, {"symbols": ["^GSPC"]})], r
+    r = R.classify("btc price?")
+    assert r.shape == R.PRICE and r.prefetch == [(R.T_PRICE, {"symbols": ["BTC"]})], r
+
+
+def test_ledger_and_chat_shapes_are_factual():
+    assert R.classify("show all of Abe's current holdings").is_factual
+    assert R.classify("what did abe say about semis").is_factual
+
+
+def test_every_prefetch_tool_has_an_executor_in_phase_2():
+    from discord_bot import bot as B
+    src = B._ask_pipeline_source()
+    used = set()
+    for q in ("who reports today", "when does NVDA report", "what's TSLA at",
+              "NVDA options chain", "when is CPI", "how has NVDA done ytd",
+              "why is nvda down, odds it beats"):
+        used |= {t for t, _ in R.classify(q).prefetch}
+    used |= {t for t, _ in R.classify("league standings", fantasy_enabled=True).prefetch}
+    assert used >= {R.T_SLATE, R.T_EDATE, R.T_PRICE, R.T_CHAIN, R.T_ECON, R.T_HISTORY, R.T_FANTASY}
+    for t in used:
+        const = [k for k, v in vars(R).items() if k.startswith("T_") and v == t][0]
+        assert f"_ask_router.{const}: _execute_" in src, t

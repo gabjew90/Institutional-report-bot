@@ -1079,3 +1079,52 @@ slate that is Ciena, Lululemon and Zscaler beside the mega-caps, which
 is the desk coverage the owner meant. A failed coverage query costs
 the bold, never the sheet.
 
+
+## 2026-09-02 — Review of the day's work, and a cleanup
+
+The code-review skill ran over 5c4b4c23..HEAD (eight finder angles;
+the verifier agents hit the session rate limit, so every candidate was
+verified by hand against the working tree). Ten findings, all confirmed
+and nine fixed in this commit:
+
+- Calendar: yfinance answers an empty expirations tuple both for "no
+  listed options" and for a rejected Yahoo session, so a 401 at 3 PM
+  read as "no chain" and would have dropped every cap-floor name and
+  emptied the wholesale fallback. The chain fetch now records a spot
+  when Yahoo answered; no spot means unknown, and unknown keeps the
+  dash. Chain presence is memoised per build, so the floor path and
+  the fallback no longer re-fetch chains the walk just pulled.
+- Router: "quote TSLA" and "what did powell say" routed to room
+  history (no price tool, no Google); "what's the price of gold" made
+  PRICE the ticker and "when is the next fed meeting" made NEXT one,
+  which blocked the macro route; SPX/NDX/VIX/DOW were stopwords so
+  index price questions had no route at all; "who reports next week"
+  injected today's slate as authoritative; ledger and chat shapes were
+  hard-coded BANTER. Fixed with a public-figure guard, a lead-in
+  stopword list, index symbols mapped to Yahoo's caret form, no
+  prefetch for week questions, and the two shapes added to
+  FACTUAL_SHAPES. Prefetches now run together under one deadline each.
+- The grader gate captured tee's exit status (no pipefail), so it could
+  never fail. .env.example was unloadable (Python repr for the callers
+  list, GEMINI_MAX_TOKENS blanked by a substring match, PORT emitted
+  under its field name); gen_env_example writes JSON, matches secret
+  suffixes, and uses the alias, and Settings(_env_file='.env.example')
+  loads.
+- Prompt: the directive that pointed at the deleted HARD ROUTING RULES
+  block now states the price rule in one sentence; the fantasy
+  reconstruction sentence and the macro-print bullet the router
+  enforces are gone. Adds 467 chars, removes 583, net -116; the prompt
+  is 48,362 chars.
+
+Not fixed: calendar_posts.lineup_json is never written, so the 7:30 AM
+refresh (gated off) would still rebuild from pre-market chains and
+downgrade priced rows if re-enabled. The real fix is a row-level merge
+in the refresh job; tracked in the TODO.
+
+Cleanup in the same commit: root scratch dumps, one-off probe scripts
+and screenshots deleted and ignored; the dead slate regex in bot.py
+(router owns it), the unused citation helper, the editor pack's
+abandoned ledger-walk scaffolding, the duplicate sentence splitter in
+the grader inputs, the duplicate file-send body in sender.py, and the
+dispatcher's hardcoded repo and unused tz parameter. CLAUDE.md's stale
+market-context, session-ledger and TODO sections were rewritten.

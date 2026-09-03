@@ -249,30 +249,7 @@ async def send_file_to_channels(
     DISCORD_CHANNEL_ID, so a caller passing an unset setting keeps the
     original behaviour rather than posting to nowhere.
     """
-    import io
-    from config import settings
-
-    raw = (channel_ids or "").strip() or (
-        settings.discord_channel_id or "").strip()
-    channel_ids = [c.strip() for c in raw.split(",") if c.strip()]
-    sent = 0
-    for cid in channel_ids:
-        try:
-            channel = bot.get_channel(int(cid))
-            if channel is None:
-                channel = await bot.fetch_channel(int(cid))
-        except Exception as e:
-            log.error(f"send_file_to_channels: resolve {cid} failed: {e}")
-            continue
-        ok, _err = await _send_with_retry(
-            lambda ch=channel: ch.send(
-                content=caption or None,
-                file=discord.File(io.BytesIO(file_bytes), filename=filename),
-            ),
-            label=f"file {filename} channel={cid}",
-        )
-        sent += 1 if ok else 0
-    return sent
+    return len(await send_file_collect_ids(bot, file_bytes, filename, caption, channel_ids))
 
 
 async def send_file_collect_ids(
@@ -296,7 +273,7 @@ async def send_file_collect_ids(
             if channel is None:
                 channel = await bot.fetch_channel(int(cid))
         except Exception as e:
-            log.error(f"send_file_collect_ids: resolve {cid} failed: {e}")
+            log.error(f"send_file: resolve {cid} failed: {e}")
             continue
         holder: dict = {}
 

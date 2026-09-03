@@ -69,6 +69,8 @@ jobs:
         id: judge
         run: |
           set +e
+          # Without pipefail $? is tee's status and the gate can never fail.
+          set -o pipefail
           python scripts/pilot_grader_gate.py --judge /tmp/gate/grades | tee /tmp/gate/judge.txt
           echo "rc=$?" >> "$GITHUB_OUTPUT"
 

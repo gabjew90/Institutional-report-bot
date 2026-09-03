@@ -99,10 +99,6 @@ def sentences(md: str) -> list[tuple[str, list[tuple[str, int]]]]:
     return out
 
 
-def sentences_with_citations(md: str) -> list[tuple[str, list[tuple[str, int]]]]:
-    return [(s, c) for s, c in sentences(md) if c]
-
-
 def verify(md: str, pack: dict) -> dict:
     cards = pack.get("cards") or {}
     docs = pack.get("docs") or {}

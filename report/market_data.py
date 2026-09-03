@@ -357,9 +357,19 @@ def _fetch_yahoo_options_chain(
         ticker = yf.Ticker(symbol)
         expirations = list(ticker.options or [])
         if not expirations:
+            # yfinance answers an empty tuple both for "no listed
+            # options" and for a rejected session crumb (401/403); the
+            # spot tells them apart. With a spot, Yahoo answered and the
+            # chain is genuinely absent; without one, Yahoo is down and
+            # callers treat the chain as unknown (2026-09-02).
+            spot = None
+            try:
+                spot = float(ticker.fast_info["last_price"])
+            except Exception:
+                pass
             return {
                 "underlying_symbol": symbol.upper(),
-                "underlying_spot_price": None,
+                "underlying_spot_price": spot,
                 "expiration_dates": [],
                 "chain": {"expiration_iso": None, "calls": [], "puts": []},
                 "source": "yahoo",

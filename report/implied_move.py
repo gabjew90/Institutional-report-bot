@@ -73,15 +73,43 @@ def has_options_chain(symbol: str) -> bool | None:
     2026-09-03 sheet rendered PDI, a $7.4B PIMCO closed-end fund, with a
     dash and an unconfirmed flag because the cap floor admitted it.
     Never raises."""
+    if symbol in _chain_presence:
+        return _chain_presence[symbol]
     from report import market_data as _md
     try:
         raw = _md._fetch_yahoo_options_chain(_yahoo_symbol(symbol))
     except Exception as e:
         log.info(f"options chain check {symbol}: fetch failed ({e})")
         return None
-    if raw is None:
-        return None
-    return bool(raw.get("expiration_dates"))
+    return _record_presence(symbol, raw)
+
+
+# Chain presence observed during a build, keyed by symbol. implied_move_pct
+# already fetched the chain for every candidate, so has_options_chain
+# reads the answer here instead of fetching it again; a build clears the
+# memo first (2026-09-02: the cap-floor path and the wholesale fallback
+# each re-fetched chains the walk had just pulled).
+_chain_presence: dict[str, bool | None] = {}
+
+
+def reset_chain_presence() -> None:
+    _chain_presence.clear()
+
+
+def _record_presence(symbol: str, raw: dict | None) -> bool | None:
+    """True: expirations listed. False: Yahoo answered (spot known) and
+    lists none. None: the fetch failed or Yahoo returned nothing at all,
+    so the chain is unknown, not absent."""
+    if not raw:
+        presence = None
+    elif raw.get("expiration_dates"):
+        presence = True
+    elif raw.get("underlying_spot_price"):
+        presence = False
+    else:
+        presence = None
+    _chain_presence[symbol] = presence
+    return presence
 
 
 def implied_move_pct(symbol: str, report_date_iso: str,
@@ -96,7 +124,9 @@ def implied_move_pct(symbol: str, report_date_iso: str,
         raw = _md._fetch_yahoo_options_chain(ysym)
     except Exception as e:
         log.info(f"implied move {symbol}: chain fetch failed ({e})")
+        _record_presence(symbol, None)
         return None
+    _record_presence(symbol, raw)
     if not raw:
         return None
 

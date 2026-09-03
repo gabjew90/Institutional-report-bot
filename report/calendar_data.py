@@ -400,7 +400,9 @@ def lineup_signature(day: CalendarDay) -> str:
 def build_calendar_day(date_iso: str) -> CalendarDay:
     """Assemble everything the renderer needs for one session date."""
     from world_context import is_us_market_holiday
+    from report.implied_move import reset_chain_presence
 
+    reset_chain_presence()
     day = CalendarDay(
         date_iso=date_iso,
         weekday_label=_weekday_label(date_iso),

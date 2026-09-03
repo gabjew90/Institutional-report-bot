@@ -60,3 +60,16 @@ _sample_pulse*.pdf
 
 # Brainstorming visual-companion session files
 .superpowers/
+
+# Local scratch dumps (2026-09-02 cleanup): never track these again
+_*.json
+_*.md
+_ask_log_*.md
+pulse_*_qc.*
+pulse[0-9]*.md
+pulse_20*.txt
+pulse_latest_qc.txt
+ingestions_24h.*
+sample_high.txt
+probe_*.md
+user_screenshot.png

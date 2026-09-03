@@ -2300,29 +2300,6 @@ def _is_calendar_question(question: str) -> bool:
     )
 
 
-_SLATE_RE = re.compile(
-    r"\b(?:who(?:'s|s| is| are)?\s+(?:all\s+)?report(?:s|ing)?"
-    r"|(?:reports?|reporting|earnings)\b.{0,40}?\b(?:today|tonight|tomorrow|tmrw?"
-    r"|this\s+week|after\s+(?:the\s+)?(?:close|bell)|before\s+(?:the\s+)?(?:open|bell)"
-    r"|on\s+deck|slate|lineup|calendar))\b",
-    re.IGNORECASE,
-)
-_SLATE_NOT_RE = re.compile(
-    r"\b(?:when\s+(?:does|is|do)|did\s+\S+\s+(?:beat|miss|report)|last\s+quarter"
-    r"|results?\b|how\s+did)\b",
-    re.IGNORECASE,
-)
-
-
-def _is_earnings_slate_question(question: str) -> bool:
-    """"Who reports today / after close / this week": a slate question,
-    answered from the calendar feed, not from search. Excludes the
-    one-symbol shapes lookup_earnings_date owns ("when does NVDA
-    report") and post-print questions ("did PLTR beat")."""
-    q = question or ""
-    return bool(_SLATE_RE.search(q)) and not _SLATE_NOT_RE.search(q)
-
-
 def _ungrounded_web_specifics(
     answer: str, gm, was_web: bool, is_opinion: bool = False,
 ) -> bool:
@@ -4610,17 +4587,17 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_FANTASY: _execute_fantasy_league,
     }
     _ask_meta["route_shape"] = _ask_route.shape
-    for _pf_tool, _pf_args in _ask_route.prefetch:
-        _pf_fn = _prefetch_exec.get(_pf_tool)
-        if _pf_fn is None:
-            continue
+
+    async def _run_prefetch(_pf_tool, _pf_args):
+        """One prefetch under its own deadline. Returns the result dict,
+        or None on timeout (the trace entry is written here either way).
+        Deadline (2026-09-02): the slate prefetch resolves market caps
+        for every name on the day and a cold Finnhub cache could take
+        tens of seconds. Past the deadline the turn proceeds without the
+        block and the model keeps its own tools."""
+        _pf_fn = _prefetch_exec[_pf_tool]
         _pf_t0 = time.monotonic()
         try:
-            # Deadline (2026-09-02): the slate prefetch resolves market
-            # caps for every name on the day and a cold Finnhub cache
-            # could take tens of seconds. Past the deadline the turn
-            # proceeds without the block and the model keeps its own
-            # tools; the trace records the timeout.
             _pf_res = await asyncio.wait_for(_pf_fn(dict(_pf_args)),
                                              timeout=_ASK_PREFETCH_TIMEOUT_S)
         except asyncio.TimeoutError:
@@ -4629,12 +4606,11 @@ async def _ask_02_call_model_with_tools(
             _ask_tool_trace.append({"tool": _pf_tool, "args": {k: str(v)[:80] for k, v in _pf_args.items()},
                                     "status": "prefetch:timeout",
                                     "seconds": round(time.monotonic() - _pf_t0, 2)})
-            continue
+            return None
         except Exception as _e:
             _pf_res = {"status": "error", "error": f"{type(_e).__name__}: {_e}"}
         if not isinstance(_pf_res, dict):
             _pf_res = {"status": "ok", "result": _pf_res}
-        _ask_tool_log.append(_pf_tool)
         _ask_tool_trace.append({
             "tool": _pf_tool,
             "args": {k: str(v)[:80] for k, v in _pf_args.items()},
@@ -4642,6 +4618,20 @@ async def _ask_02_call_model_with_tools(
             "result_chars": len(str(_pf_res)),
             "seconds": round(time.monotonic() - _pf_t0, 2),
         })
+        return _pf_res
+
+    # A route with two prefetches (news + earnings odds) used to pay both
+    # deadlines back to back; they run together now and are injected in
+    # route order. A prefetch tool without an executor is a wiring bug,
+    # not a silent skip (tests/test_ask_router.py pins the coverage).
+    _pf_plan = [(t, a) for t, a in _ask_route.prefetch if t in _prefetch_exec]
+    for _pf_tool, _ in set(_ask_route.prefetch) - set(_pf_plan):
+        log.error(f"/ask: router prefetch {_pf_tool} has no executor; skipped")
+    _pf_results = await asyncio.gather(*[_run_prefetch(t, a) for t, a in _pf_plan])
+    for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):
+        if _pf_res is None:
+            continue
+        _ask_tool_log.append(_pf_tool)
         contents.append(types.Content(
             role="user",
             parts=[types.Part.from_text(text=_ask_router.inject_text(_pf_tool, _pf_res))],

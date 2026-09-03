@@ -44,8 +44,12 @@ NEWS_EVENT = "news_event"
 BANTER = "banter"
 UNKNOWN = "unknown"
 
+# A ledger or chat lookup is a data question too: it gets the straight-
+# answer directive and the asker-mockery strip, not the banter path
+# (2026-09-02 review: both shapes were hard-coded BANTER).
 FACTUAL_SHAPES = {EARNINGS_SLATE, EARNINGS_DATE, PRICE, OPTIONS_CHAIN, ECON_CALENDAR,
-                  PRICE_HISTORY, COMPANY_PROFILE, HISTORICAL_STAT, NEWS_EVENT, FANTASY}
+                  PRICE_HISTORY, COMPANY_PROFILE, HISTORICAL_STAT, NEWS_EVENT, FANTASY,
+                  MEMBER_LEDGER, CHAT_HISTORY}
 
 # Tool names as declared in discord_bot/ask_tools.py
 T_GOOGLE = "google_search"
@@ -131,11 +135,23 @@ _NOT_TICKERS = {
     "EV", "EBITDA", "ROIC", "FCF", "BTC", "ETH", "SOL",
 }
 _CRYPTO = {"BTC", "ETH", "SOL"}
+# Index names the price tool quotes in Yahoo's caret form. They stay
+# tickers here (a "what's SPX at" is a price question) and are mapped
+# when the prefetch is built.
+INDEX_SYMBOLS = {"SPX": "^GSPC", "NDX": "^NDX", "VIX": "^VIX", "DOW": "^DJI",
+                 "DJIA": "^DJI", "RUT": "^RUT"}
+_KEEP = _CRYPTO | set(INDEX_SYMBOLS)
+_LOWER_KEEP_RE = re.compile(r"\b(btc|eth|sol|spx|ndx|vix|dow|rut)\b", re.I)
 
 
-def extract_tickers(text: str) -> list[str]:
+def price_symbol(t: str) -> str:
+    return INDEX_SYMBOLS.get(t, t)
+
+
+def extract_tickers(text: str, *, lowercase: bool = True) -> list[str]:
     """Cashtags first; bare uppercase tokens only when nothing is
-    cashtagged. Never a stopword. Order preserved, deduplicated."""
+    cashtagged; lowercase lead-in guesses only when `lowercase` and
+    nothing else matched. Never a stopword. Order preserved, deduplicated."""
     text = text or ""
     out: list[str] = []
     for m in _CASHTAG_RE.finditer(text):
@@ -146,12 +162,17 @@ def extract_tickers(text: str) -> list[str]:
         return out
     for m in _BARE_RE.finditer(text):
         t = m.group(1)
-        if t in _NOT_TICKERS and t not in _CRYPTO:
+        if t in _NOT_TICKERS and t not in _KEEP:
             continue
-        if t in _CRYPTO or t not in _NOT_TICKERS:
-            if t not in out:
-                out.append(t)
+        if t not in out:
+            out.append(t)
     if out:
+        return out
+    for m in _LOWER_KEEP_RE.finditer(text):
+        t = m.group(1).upper()
+        if t not in out:
+            out.append(t)
+    if out or not lowercase:
         return out
     # The room types tickers in lowercase ("why is mrvl down off avgo
     # earnings", "explain pltr death"). With no cashtag and no uppercase
@@ -180,6 +201,21 @@ _COMMON_WORDS = {
     "call", "calls", "put", "puts", "trade", "trades", "print", "beat", "miss", "odds", "guy",
     "guys", "man", "bro", "lol", "lmao", "what", "who", "when", "where", "why", "how", "me",
     "you", "him", "them", "there", "here", "now", "then", "still", "just", "even", "only",
+    # 2026-09-02 review: "what's the price of gold" made PRICE the ticker
+    # and "when is the next fed meeting" made NEXT one, which then
+    # blocked the econ route. Ordinary 2-5 letter words after a lead-in.
+    "price", "level", "quote", "next", "last", "first", "best", "worst", "going",
+    "doing", "mean", "deal", "plan", "point", "data", "same", "much", "many", "more",
+    "less", "good", "bad", "new", "old", "real", "true", "sure", "time", "year", "day",
+    "days", "hour", "open", "close", "high", "low", "long", "short", "buy", "sell",
+    "hold", "way", "thing", "lot", "bit", "kind", "sort", "type", "case", "risk",
+    "play", "setup", "story", "take", "read", "view", "idea", "sense", "cost", "worth",
+    "value", "cash", "money", "bank", "banks", "gas", "fund", "funds", "etf", "etfs",
+    "index", "space", "name", "names", "note", "notes", "war", "jobs", "job", "world",
+    "these", "those", "any", "each", "every", "such", "over", "under", "into", "than",
+    "again", "after", "before", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug",
+    "sep", "sept", "oct", "nov", "dec", "march", "april", "june", "july", "cpi", "pce",
+    "gdp", "nfp", "ppi", "ism", "fomc", "eps", "ath", "ytd", "vs", "per", "like",
 }
 
 
@@ -197,10 +233,11 @@ _EDATE_RE = re.compile(
     r"|(?:expected|consensus|estimates?)\s+(?:for|on)\s+\S+\s+earnings"
     r"|what(?:'s| is)\s+expected\s+for)\b", re.I)
 _PRICE_RE = re.compile(
-    r"\b(?:what(?:'s| is|s)\s+\S+\s+(?:at|trading\s+at|price|doing|going\s+for)"
+    r"\b(?:what(?:'s| is|s)\s+(?:the\s+)?\S+\s+(?:at|trading\s+at|price|doing|going\s+for)"
     r"|price\s+(?:of|on|for)\b|how(?:'s| is)\s+\S+\s+(?:doing|looking|trading)"
     r"|is\s+\S+\s+(?:green|red|up|down)\b|\b(?:after\s*hours?|premarket|pre-market)\s+(?:print|move|price)"
-    r"|current\s+(?:price|level|quote)|where(?:'s| is)\s+\S+\s+(?:at|trading))\b", re.I)
+    r"|current\s+(?:price|level|quote)|where(?:'s| is)\s+\S+\s+(?:at|trading)"
+    r"|^\s*\$?\w{2,5}\s+(?:price|quote|level)\s*\??\s*$|quote\s+(?:on\s+|for\s+|me\s+)?\$?[a-z]{1,5}\b)", re.I)
 _CHAIN_RE = re.compile(
     r"\b(?:options?\s+chain|open\s+interest|\bOI\b|put[/ -]call|implied\s+vol|\bIV\b"
     r"|straddle|strangle|max\s+pain|gamma|\d{2,5}\s?[cp]\b|(?:calls?|puts?)\s+(?:on|for)\s+\S+"
@@ -222,7 +259,14 @@ _LEDGER_RE = re.compile(
     r"|win\s*rate|track\s+record|full\s*port(?:ed)?\s+into|current\s+holdings|open\s+positions|trade\s+log)\b", re.I)
 _CHAT_RE = re.compile(
     r"\b(?:who\s+said|what\s+did\s+\S+\s+say|room\s+(?:saying|think|consensus)|what(?:'s| is)\s+the\s+room"
-    r"|(?:earlier|yesterday|last\s+week)\s+(?:someone|\S+)\s+(?:said|posted|called)|quote\s+\S+|messages?\s+(?:from|about)|how\s+many\s+(?:messages|times))\b", re.I)
+    r"|(?:earlier|yesterday|last\s+week)\s+(?:someone|\S+)\s+(?:said|posted|called)"
+    r"|quote\s+(?:from\s+)?(?:abe|kyle|bk|jamal|him|her|them|me|\w+'s)\b"
+    r"|messages?\s+(?:from|about)|how\s+many\s+(?:messages|times))\b", re.I)
+# "what did powell say" is a news question, not a room-history one; the
+# chat shape would strip Google and every market tool (2026-09-02 review).
+_PUBLIC_FIGURE_RE = re.compile(
+    r"\b(?:powell|warsh|fed|trump|musk|elon|jensen|huang|bessent|dimon|zuck(?:erberg)?"
+    r"|altman|buffett|lutnick|hassett|waller|the\s+(?:president|treasury|ecb|boj|white\s+house))\b", re.I)
 _FANTASY_RE = re.compile(
     r"\b(?:fantasy|sleeper|waiver|matchup|roster|draft\s+(?:grade|pick)|standings|league)\b", re.I)
 _STAT_RE = re.compile(
@@ -258,6 +302,9 @@ def classify(question: str, *, fantasy_enabled: bool = False) -> Route:
     q = _last_line(question)
     ql = q.lower()
     tickers = extract_tickers(q)
+    # Cashtag or uppercase only: a lowercase lead-in guess must not veto
+    # the macro route ("when is the next fed meeting").
+    strong = extract_tickers(q, lowercase=False)
     r = Route(shape=UNKNOWN, tickers=tickers)
     if not q:
         r.shape = UNKNOWN
@@ -269,10 +316,16 @@ def classify(question: str, *, fantasy_enabled: bool = False) -> Route:
     if _LEDGER_RE.search(q):
         r.shape, r.reason = MEMBER_LEDGER, "member ledger words"
         return r
-    if _CHAT_RE.search(q):
+    if _CHAT_RE.search(q) and not _PUBLIC_FIGURE_RE.search(q):
         r.shape, r.reason = CHAT_HISTORY, "room-history words"
         return r
     if _SLATE_RE.search(q) and not _EDATE_RE.search(q):
+        if re.search(r"\b(?:this|next)\s+week\b", ql):
+            # The slate tool answers one date. Injecting today's names
+            # as the authoritative answer to a week question was wrong
+            # (2026-09-02 review); the model calls the tool per day.
+            r.shape, r.reason = EARNINGS_SLATE, "week slate: per-day tool, no prefetch"
+            return r
         r.shape, r.reason = EARNINGS_SLATE, "who-reports shape"
         date = "tomorrow" if re.search(r"\b(tomorrow|tmrw?)\b", ql) else ""
         r.prefetch = [(T_SLATE, {"date": date})]
@@ -289,11 +342,11 @@ def classify(question: str, *, fantasy_enabled: bool = False) -> Route:
     if _NEWS_RE.search(q):
         r.shape, r.reason = NEWS_EVENT, "why/what-happened/odds shape"
         if tickers:
-            r.prefetch = [(T_PRICE, {"symbols": tickers[:4]})]
+            r.prefetch = [(T_PRICE, {"symbols": [price_symbol(t) for t in tickers[:4]]})]
             if re.search(r"\bodds\b|\bbeat|\bmiss", ql):
                 r.prefetch.append((T_EDATE, {"symbol": tickers[0]}))
         return r
-    if _ECON_RE.search(q) and not tickers:
+    if _ECON_RE.search(q) and not strong:
         r.shape, r.reason = ECON_CALENDAR, "macro print words"
         r.prefetch = [(T_ECON, {"days": 7})]
         return r
@@ -306,11 +359,11 @@ def classify(question: str, *, fantasy_enabled: bool = False) -> Route:
         return r
     if _PRICE_RE.search(q) and tickers:
         r.shape, r.reason = PRICE, "price shape + ticker"
-        r.prefetch = [(T_PRICE, {"symbols": tickers[:6]})]
+        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(t) for t in tickers[:6]]})]
         return r
     if _PROFILE_RE.search(q) and tickers and not _SINGLE_TICKER_OPINION_RE.search(q):
         r.shape, r.reason = COMPANY_PROFILE, "what-does-X-do shape"
-        r.prefetch = [(T_PRICE, {"symbols": tickers[:1]})]
+        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(tickers[0])]})]
         return r
     r.shape = UNKNOWN
     return r

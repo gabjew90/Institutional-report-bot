@@ -439,8 +439,8 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     # GITHUB_TOKEN carries Actions: read and write.
     if settings.pilot_dispatch_enabled:
         from github_bridge.workflow_dispatch import register_jobs as _register_dispatch
-        _n = _register_dispatch(scheduler, tz)
-        log.info(f"Pilot workflow dispatch active — {_n} cron slot(s) on the worker clock")
+        _n = _register_dispatch(scheduler)
+        log.info(f"Pilot workflow dispatch active: {_n} cron slot(s) on the worker clock")
 
     # Memory/cost fixes (2026-08-23): periodic malloc_trim + weekly
     # VACUUM. See memtrim.py and db.vacuum_db docstrings.

@@ -74,7 +74,7 @@ def test_register_jobs_covers_every_declared_slot():
         def __init__(self): self.jobs = []
         def add_job(self, fn, **kw): self.jobs.append(kw)
     s = _Sched()
-    n = W.register_jobs(s, None)
+    n = W.register_jobs(s)
     expected = sum(len(v) for v in W.PILOT_WORKFLOWS.values())
     assert n == expected == len(s.jobs)
     ids = {j["id"] for j in s.jobs}

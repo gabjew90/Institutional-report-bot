@@ -275,12 +275,9 @@ Root: `/Current`
 
 /Current volume: ~100-200 PDFs/day across all sources.
 
-## Current Geopolitical Context (April 2026)
+## Market context
 
-- Middle East / Iran / Strait of Hormuz blockade driving oil markets
-- Ceasefire negotiations ongoing (deadlines referenced in research vary)
-- Oil prices split: physical Brent markets pricing scarcity premium, futures pricing resolution
-- CTA systematic squeeze dynamics — hedge fund positioning oscillating, re-risking in tech
+Do not hardcode the tape or the geopolitics in this file; both move daily. The live pulse (`pulse-output/archive/` on the `pulse-data` branch) is the current read, and `world_context.py` carries the few facts the pipeline depends on (Fed chair, NYSE holidays, market-holiday helpers). Update `world_context.py` when a fact there changes, not this section.
 
 ## Cost Monitoring
 
@@ -320,30 +317,15 @@ The pulse fragment classes are a **stable contract**. Don't rename `.pulse`, `.p
 
 Runs beside production on the `pilot-data` orphan branch and GitHub Actions; production is never written by any pilot job. Runbook: `docs/superpowers/routines/pilot/RUNBOOK.md`. Frozen grader prompts and fixtures live under `docs/superpowers/routines/pilot/`; a change to them or to a model string in `scripts/pilot_config.py` restarts the pilot clock. The daily-qc pulse judge ignores the pilot tree by instruction. `PILOT_PUBLISH_ENABLED` on the Railway worker is the on/off switch for the whole chain. `PILOT_DISPATCH_ENABLED` makes the worker dispatch the pilot workflows on its own clock (GitHub's cron dropped most runs on 2026-09-02); it needs Actions: read and write on `GITHUB_TOKEN`.
 
-## Recent Session Context (2026-04-14 → 2026-04-16)
+## Session ledger
 
-Major improvements made in the recent iteration sequence:
-
-1. **Removed multimodal entirely** — text-only deep analysis with full document
-2. **Timestamp format bug fix** — was inflating "since last pulse" counts
-3. **Diff-framing for scheduled pulse** — skip themes unchanged vs yesterday
-4. **Manual pulse fully standalone** — no prev-pulse context, last-24h default
-5. **Hard-filtered Finnhub calendars** — only Tier 1 events reach Gemini
-6. **Elevated single-topic dedicated notes** — don't let catalyst notes get drowned by broad macro themes
-7. **Plain-English translation table** — 20+ jargon terms with plain equivalents
-8. **Structured entity extraction** for reliable cashtag formatting
-9. **Previous pulse freshness check** — skip diff if prior scheduled pulse >48h old
-10. **LOW-source hardcode fix** — was tagging LOW PDFs as "Unknown"
-11. **Expanded LOW criteria** — peripheral EM macro, minor FX, niche commodities now correctly LOW
-12. **Multi-channel DISCORD_CHANNEL_ID** — comma-separated list support
-13. **/status enrichments** — upload volume windows, last-5-ingested, priority shows 0 for empty buckets
+Dated entries live in `NOTES.md` (newest at the bottom); this file carries only the standing structure. The structural changes of 2026-09-01/02 that a new session must know: `db.py` is a facade over `db_parts/` with per-thread connections; `/ask` runs as eleven `_ask_NN_*` phases behind a deterministic router (`discord_bot/ask_router.py`) with the tool layer in `discord_bot/ask_tools.py`; dependencies are `==`-pinned and every push runs `scripts/preflight_push.py` (including the fast smoke tier) through a local pre-push hook; the shadow pilot runs on the `pilot-data` branch, dispatched from the worker's clock.
 
 ## Next Steps / TODO
 
-No unchecked infrastructure items. Deployed, stable, functioning.
-
-Potential future work (not prioritized):
-- Q&A RAG agent over pdf_analyses (SQL + FTS5, no embeddings needed given structured data)
-- Dropbox DB backup job
-- Log retention pruning (processing_log grows fastest)
-- Ticker-specific news filtering for deeper RECAP
+- Shadow pilot: two clean shakedown days, then commit `pilot/DAY1` on `pilot-data` and freeze prompts and model strings (runbook: `docs/superpowers/routines/pilot/RUNBOOK.md`).
+- /ask structural fix 2: a general figure-provenance check (every figure in a factual answer must appear in a tool payload or grounding snippet, else one grounded retry, else strip), replacing the per-shape `unforced-*` validators. The pilot's citation verifier already has the matcher.
+- Pilot stress datapoint (plan 4.3): run the ledger and editor over a merged three-day card set once during shakedown.
+- Prompt diet continues as router shapes retire prompt text (policy at the top of this file).
+- Calendar refresh (`CALENDAR_REFRESH_ENABLED`, off): before re-enabling, give the 7:30 AM job a row-level merge that keeps the 3 PM priced moves (`calendar_posts.lineup_json` exists for this and is never written). Rebuilding from pre-market chains downgrades priced rows to dashes.
+- /ask ticker extraction exists twice (`ask_router.extract_tickers` and `bot._answer_price_tickers` with a different stopword set); fold the price backstop onto the router's extractor.

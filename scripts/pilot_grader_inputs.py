@@ -35,9 +35,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
 
 from scripts.pilot_ledger import build, load_cards  # noqa: E402
-from scripts.pilot_verify_citations import CITE_RE, strip_markers  # noqa: E402
-
-SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z$(])")
+from scripts.pilot_verify_citations import CITE_RE, SENT_SPLIT, strip_markers  # noqa: E402
 
 
 def window_dates(day_iso: str, days: int) -> set[str]:
