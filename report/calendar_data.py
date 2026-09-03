@@ -5,6 +5,7 @@ CalendarDay this module builds.
 Spec: docs/superpowers/specs/2026-08-15-daily-calendar-graphic-design.md
 """
 
+import re
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -40,7 +41,36 @@ MIN_CAP_ALWAYS_SHOW = 5_000  # $5B
 class EconRow:
     time_et: str        # "8:30"
     event: str
-    impact: str         # "high" | "medium"
+    impact: str         # "high" | "medium" | "low"
+    important: bool = False  # rendered bold (owner call 2026-09-02)
+
+
+# Tier-1 names the pulse itself keys on (CLAUDE.md WHAT TO WATCH
+# filter), so the sheet and the pulse agree on what "important" means.
+_ECON_IMPORTANT_RE = re.compile(
+    r"\b(?:CPI|PCE|PPI|GDP|ISM|FOMC|Fed(?:eral)?\s+Funds|Non-?farm|Nonfarm|NFP|Payrolls"
+    r"|Unemployment\s+Rate|Retail\s+Sales|Powell|Warsh|Jobless\s+Claims|Unemployment\s+Claims"
+    r"|Core\s+(?:CPI|PCE)|Average\s+Hourly\s+Earnings|Consumer\s+Confidence|Michigan)\b",
+    re.IGNORECASE,
+)
+_ECON_UNIMPORTANT_RE = re.compile(
+    r"\b(?:FOMC\s+Member|Fed\s+Governor|Speaks|Revised|Prelim|Final\s+(?:Services|Manufacturing)"
+    r"|Natural\s+Gas|Crude\s+Oil|Challenger|Trade\s+Balance|Factory\s+Orders)\b",
+    re.IGNORECASE,
+)
+
+
+def econ_is_important(event: str, impact: str) -> bool:
+    """Bold on the sheet: a Tier-1 series by name, or anything the feed
+    rates high impact. Fed member speeches, revisions and second prints
+    stay regular even when their name contains a Tier-1 word ("FOMC
+    Member Waller Speaks" is not the FOMC decision)."""
+    ev = (event or "").strip()
+    if _ECON_UNIMPORTANT_RE.search(ev) and not re.search(r"\b(?:Powell|Warsh)\b", ev, re.I):
+        return False
+    if (impact or "").lower() == "high":
+        return True
+    return bool(_ECON_IMPORTANT_RE.search(ev))
 
 
 @dataclass
@@ -267,6 +297,13 @@ def _implied_move_fetch(sym: str, date_iso: str,
     return implied_move_pct(sym, date_iso, session=session)
 
 
+def _has_options(sym: str) -> bool:
+    """Seam for tests. Only consulted for a cap-floor name whose
+    straddle would not price; a name with no chain at all is dropped."""
+    from report.implied_move import has_options_chain
+    return has_options_chain(sym)
+
+
 def _select_priced(ranked: list[str], date_iso: str,
                    always_keep: set | None = None,
                    session: str = "amc",
@@ -302,8 +339,13 @@ def _select_priced(ranked: list[str], date_iso: str,
         if mv is None:
             # Above the cap floor the name renders anyway, with a dash
             # for the move — "this major reports tonight, unpriced" is
-            # information; silently omitting it is not.
-            if sym in (always_keep or set()):
+            # information; silently omitting it is not. But only if it
+            # HAS listed options: the 2026-09-03 sheet carried PDI, a
+            # $7.4B closed-end fund with no chain at all, on the floor
+            # rule alone. No options, no row, whatever the cap.
+            # `is not False`: a fetch failure (Yahoo down) is unknown, and
+            # unknown keeps the dash; only a known empty chain drops.
+            if sym in (always_keep or set()) and _has_options(sym) is not False:
                 kept.append((sym, None))
                 continue
             skipped.append(sym)
@@ -357,6 +399,8 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
                 time_et=_to_et_hhmm(e["time"]),
                 event=(e.get("event") or "").strip(),
                 impact=(e.get("impact") or "").lower(),
+                important=econ_is_important(e.get("event") or "",
+                                            e.get("impact") or ""),
             )
             for e in rows
             if e.get("time") and e.get("event")
@@ -437,7 +481,12 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
             log.warning(
                 f"calendar: 0/{len(ranked)} names priced an implied "
                 f"move — falling back to unpriced top-{TOP_N} rows")
-            kept = [(s, None) for s in ranked[:TOP_N]]
+            # A name Yahoo positively lists no options for is still
+            # dropped here (2026-09-02, PDI). When Yahoo is DOWN the
+            # check is unknown (None) and every name keeps its dash,
+            # which is the whole point of this fallback.
+            kept = [(s, None) for s in ranked[:TOP_N]
+                    if _has_options(s) is not False]
         rows = [
             EarnRow(
                 symbol=s,

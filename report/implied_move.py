@@ -65,6 +65,25 @@ def _yahoo_symbol(symbol: str) -> str:
     return symbol.strip().upper().replace(".", "-")
 
 
+def has_options_chain(symbol: str) -> bool | None:
+    """True when Yahoo lists ANY expiration for the symbol, False when
+    Yahoo answered and lists none, None when the fetch itself failed
+    (Yahoo down: unknown, not "no chain"). A name with no listed options
+    is not on an options trader's calendar however large it is: the
+    2026-09-03 sheet rendered PDI, a $7.4B PIMCO closed-end fund, with a
+    dash and an unconfirmed flag because the cap floor admitted it.
+    Never raises."""
+    from report import market_data as _md
+    try:
+        raw = _md._fetch_yahoo_options_chain(_yahoo_symbol(symbol))
+    except Exception as e:
+        log.info(f"options chain check {symbol}: fetch failed ({e})")
+        return None
+    if raw is None:
+        return None
+    return bool(raw.get("expiration_dates"))
+
+
 def implied_move_pct(symbol: str, report_date_iso: str,
                      session: str = "amc") -> float | None:
     """±% the ATM straddle implies for `symbol` through its first

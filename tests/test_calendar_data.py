@@ -86,7 +86,7 @@ def test_failure_expires_by_calendar_day_not_elapsed_hours():
 
 # ------------------------------------------------ earnings assembly
 
-def _build_with(raw_rows, econ_rows=(), moves=None, caps=None):
+def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None):
     """Run build_calendar_day against canned feed rows. Patches every
     network boundary and restores them, so nothing here touches
     Finnhub, ForexFactory, or Yahoo.
@@ -118,6 +118,9 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None):
             })
         cd._implied_move_fetch = lambda s, d, session=None: (moves or {}).get(s)
         cd._MOVE_PACE_S = 0
+        # every name has a chain unless a test says otherwise (2026-09-02)
+        orig_has = cd._has_options
+        cd._has_options = lambda s: s not in (no_chain or set())
         return cd.build_calendar_day("2026-08-27")
     finally:
         nd.fetch_earnings_calendar_all = orig_earn
@@ -125,6 +128,7 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None):
         cd._resolve_caps = orig_caps
         cd._implied_move_fetch = orig_move
         cd._MOVE_PACE_S = orig_pace
+        cd._has_options = orig_has
 
 
 def test_duplicate_symbol_appears_once():
@@ -529,6 +533,55 @@ def test_small_cap_exclusions_still_stand():
         "TINY is unconfirmed and SMALL cannot price; both are below the "
         "cap floor, so both stay off the sheet")
     assert day.dropped_amc == 2
+
+
+# ------------------------------------------ bold econ rows (2026-09-02)
+
+def test_tier_one_series_and_high_impact_are_important():
+    from report.calendar_data import econ_is_important as imp
+    assert imp("Unemployment Claims", "medium")
+    assert imp("ISM Services PMI", "medium")
+    assert imp("Core PCE Price Index m/m", "high")
+    assert imp("Non-Farm Employment Change", "high")
+    assert imp("Fed Chair Warsh Speaks", "high")
+    assert imp("Some Obscure Print", "high"), "feed-rated high is bold whatever the name"
+
+
+def test_speeches_revisions_and_minor_prints_stay_regular():
+    from report.calendar_data import econ_is_important as imp
+    assert not imp("FOMC Member Waller Speaks", "low")
+    assert not imp("Revised Nonfarm Productivity q/q", "low")
+    assert not imp("Final Services PMI", "low")
+    assert not imp("Natural Gas Storage", "low")
+    assert not imp("Challenger Job Cuts y/y", "low")
+    assert not imp("Trade Balance", "low")
+
+
+def test_build_marks_important_rows():
+    day = _build_with([], econ_rows=[
+        {"time": "2026-08-27T12:30:00Z", "event": "Unemployment Claims", "impact": "medium"},
+        {"time": "2026-08-27T14:30:00Z", "event": "Natural Gas Storage", "impact": "low"}])
+    flags = {r.event: r.important for r in day.econ}
+    assert flags == {"Unemployment Claims": True, "Natural Gas Storage": False}, flags
+
+
+def test_floor_name_with_no_options_chain_is_dropped():
+    """The 2026-09-03 sheet: PDI, a $7.4B closed-end fund with no
+    listed options, rendered with a dash and an unconfirmed flag on the
+    cap floor alone. No options, no row, whatever the cap."""
+    day = _build_with([{"symbol": "PDI", "hour": ""}], moves={},
+                      caps={"PDI": {"cap": 7_436.0, "name": "PIMCO Dynamic Income"}},
+                      no_chain={"PDI"})
+    assert day.amc == [] and day.dropped_amc == 1
+
+
+def test_floor_name_with_a_chain_but_no_price_keeps_its_dash():
+    """AVGO-class: a real chain that would not price at that hour still
+    renders unpriced, which is the information the floor exists for."""
+    day = _build_with([{"symbol": "MDB", "hour": ""}], moves={},
+                      caps={"MDB": {"cap": 36_465.0, "name": "MongoDB"}})
+    assert [r.symbol for r in day.amc] == ["MDB"]
+    assert day.amc[0].implied_move is None
 
 
 def test_floor_does_not_resurrect_junk_above_it_by_accident():

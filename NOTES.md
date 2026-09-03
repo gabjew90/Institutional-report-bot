@@ -1014,3 +1014,23 @@ distortions per brief (333%); it is the share of audited briefs with
 any non-material distortion. Day-1's 7% production fidelity is
 therefore a shakedown artifact, not a result.
 
+## 2026-09-02 — Calendar: floor names need listed options; important econ rows are bold
+
+Owner: the Thursday 9/3 sheet still showed a name with no move and no
+confirmed session. It was PDI, a $7.4B PIMCO closed-end fund with no
+options chain, admitted by the $5B cap floor. Rule added: above the
+floor a name still renders unpriced, but only if Yahoo lists options
+for it at all. The check is three-state (True / False / None for a
+fetch failure) so a Yahoo outage keeps the dash-fallback behaviour and
+only a positively empty chain drops a name, in both the normal path
+and the wholesale-failure fallback. The posted 9/3 sheet self-corrects
+at the 7:30 AM ET refresh once the deploy is live.
+
+Owner: bold only the important economic events. EconRow.important is
+decided in the data layer (Tier-1 series by name: CPI, PCE, PPI, GDP,
+ISM, FOMC decision, payrolls, claims, retail sales, Powell/Warsh; or
+anything the feed rates high impact; Fed member speeches, revisions,
+second prints and minor series stay regular) and the renderer draws
+those rows in semibold at full brightness, the rest regular and
+dimmed.
+

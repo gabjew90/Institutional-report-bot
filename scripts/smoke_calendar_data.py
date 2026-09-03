@@ -58,6 +58,9 @@ def _build(date="2026-08-20", earnings=None, econ=None, caps=None,
         patch.object(cd, "_implied_move_fetch",
                      moves_fn or (lambda s, d, session=None: 6.5)),
         patch.object(cd, "_MOVE_PACE_S", 0),
+        # chain check is "unknown" here (2026-09-02): only a positively
+        # empty chain drops a floor name, and these symbols are fake
+        patch.object(cd, "_has_options", lambda s: None),
     ]
     import world_context
     hp = patch.object(world_context, "US_MARKET_HOLIDAYS",

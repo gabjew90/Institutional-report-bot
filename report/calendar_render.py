@@ -89,6 +89,7 @@ class _Fonts:
                 "band": _font("Inter-SemiBold.ttf", 21),
                 "time": _font("JetBrainsMono-Bold.ttf", 22),
                 "ev": _font("Inter-Regular.ttf", 23),
+                "evb": _font("Inter-SemiBold.ttf", 23),   # important econ rows
                 "sym": _font("JetBrainsMono-Bold.ttf", 23),
                 "nm": _font("Inter-Regular.ttf", 22),
                 "foot": _font("Inter-SemiBold.ttf", 15),
@@ -305,11 +306,17 @@ def _econ_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
         # would put a wrong label on a correct time.
         _t = f"{r.time_et} {_et_abbrev(day.date_iso)}"
         d.text((_MARGIN, cy), _t, font=f["time"], fill=TEXT)
+        # Important rows (Tier-1 series or feed-rated high impact) are
+        # bold and full-bright; the rest stay regular and slightly
+        # dimmed so the eye lands on the prints that move the tape
+        # (owner call 2026-09-02).
+        ev_font = f["evb"] if getattr(r, "important", False) else f["ev"]
         d.text(
             (_MARGIN + 132 * _S, cy + 1 * _S),
-            _truncate(d, r.event, f["ev"],
+            _truncate(d, r.event, ev_font,
                       _W - 2 * _MARGIN - 138 * _S),
-            font=f["ev"], fill=_dim(TEXT, 0.92),
+            font=ev_font,
+            fill=TEXT if getattr(r, "important", False) else _dim(TEXT, 0.80),
         )
         cy += 38 * _S
     return cy + 34 * _S
