@@ -93,3 +93,26 @@ no findings
   sentiment) with zero grounding be required to hedge or be dropped,
   distinct from the calendar/rank-invention shape already queued from
   08-27/08-28?
+
+## 2026-09-02 (owner review of the 08-31 to 09-02 logs, added by the session)
+
+- (open) 1. infra-or-model (HPE odds, 18:29 UTC turn) — the user received
+  "Thought myself in circles and ran out of room. Try asking it more
+  directly." The tool trace shows lookup_earnings_date ok, then FOUR
+  search_chat_messages rounds (two empty) before the round cap ended the
+  turn. A factual "odds X beats" question should never spend its budget
+  on chat search. Two things to decide in a session: why the router kept
+  reaching for chat search after the earnings tool answered, and whether
+  the round-cap fallback text is acceptable to ship to a user at all
+  (it reads as the bot's own failure, which it is).
+- (open) 2. judgment cluster: uncited specifics in zero-tool, zero-grounding
+  LOCAL/BANTER turns on 09-02 — GOLD/gold.com earnings (14:11: EPS,
+  revenue, price, target, all from memory), September 11 market history
+  (18:35: a "14% first-week DJIA drop" and a "55% of Septembers negative"
+  statistic), MRVL-off-AVGO mechanism (20:20), software-and-semis
+  history (20:25: "late 2023" and "Q1 2024" with SOXX/IGV). None cited a
+  source; the judge's rubric now treats this shape as the trigger (rule
+  5). Session question: should a Type 1 arrow answer with figures and no
+  tool/grounding be forced through a grounded retry the way calendar
+  questions are (`_is_calendar_question` net), i.e. a "numbers without a
+  source" net in code rather than a prompt rule.
