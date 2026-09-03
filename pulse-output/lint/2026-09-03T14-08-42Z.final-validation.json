@@ -1,0 +1,21 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.92%' is attached to [again, crude, firm, morning] but the source uses it for [date, session] — the subjects don't overlap.",
+   "figure": "0.92%"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "4.1% stated for Unemployment MATCHES THE CONSENSUS ESTIMATE on the calendar row. The pulse labels it as the expectation ('seen holding at 4.1%'), so it ships correctly framed.",
+   "figure": "4.1",
+   "event": "UNEMPLOYMENT",
+   "matches_estimate": true
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 2,
+ "exit_code": 4
+}
