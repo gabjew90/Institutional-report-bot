@@ -268,7 +268,49 @@ _PUBLIC_FIGURE_RE = re.compile(
     r"\b(?:powell|warsh|fed|trump|musk|elon|jensen|huang|bessent|dimon|zuck(?:erberg)?"
     r"|altman|buffett|lutnick|hassett|waller|the\s+(?:president|treasury|ecb|boj|white\s+house))\b", re.I)
 _FANTASY_RE = re.compile(
-    r"\b(?:fantasy|sleeper|waiver|matchup|roster|draft\s+(?:grade|pick)|standings|league)\b", re.I)
+    r"\b(?:fantasy|sleeper|waiver|matchup|roster|standings|league|faab"
+    # Bare "draft" is a league question in this room. DraftKings is not.
+    r"|draft(?!\s*kings)\b(?!\s*kings)"
+    r"|start\s+or\s+sit|sit\s+or\s+start|who\s+(?:should|do|would)\s+i\s+start"
+    r"|free\s+agent|add[/\s]drop|pick\s*up\s+(?:off\s+)?(?:the\s+)?(?:waivers?|wire)"
+    r"|flex\s+(?:spot|play|start)|points?\s+against|playoff\s+(?:odds|seed|picture)"
+    # "my team" and "first place" are NOT gate words: in a trading room
+    # they collide ("my team is bleeding on this trade", "first place in
+    # the s&p sectors") and the fantasy shape strips Google and every
+    # market tool, so a false positive is expensive.
+    r"|trending\s+(?:adds?|drops?)|project(?:ed|ions?)\s+points?)\b", re.I)
+
+# Which Sleeper topic answers the question. The old code prefetched
+# standings for every fantasy question, so a waiver or draft ask got
+# standings injected as authoritative, and pre-season standings are all
+# zeros (2026-09-03 review, same defect class as the week-slate prefetch).
+_TOPIC_RES: list[tuple[str, "re.Pattern"]] = [
+    ("draft", re.compile(r"\bdraft(?!\s*kings)\b", re.I)),
+    ("transactions", re.compile(
+        r"\b(?:waivers?|faab|free\s+agent|add[/\s]drop|dropped|pick(?:ed)?\s*up|traded?\s+(?:for|away|to)"
+        r"|trade\s+(?:offer|deadline)|wire)\b", re.I)),
+    ("trending", re.compile(r"\b(?:trending|most\s+added|hot\s+pick|everyone\s+(?:adding|dropping))\b", re.I)),
+    ("projections", re.compile(
+        r"\b(?:project(?:ed|ions?)|start\s+or\s+sit|sit\s+or\s+start|who\s+(?:should|do|would)\s+i\s+start"
+        r"|flex\s+(?:spot|play|start)|bench|lineup)\b", re.I)),
+    ("matchups", re.compile(
+        r"\b(?:matchup|who\s+(?:am|is)\s+\w+\s+playing|score(?:s|board)?\s+(?:this|last)\s+week"
+        r"|winning\s+this\s+week|beat\s+\w+\s+this\s+week)\b", re.I)),
+    ("roster", re.compile(r"\b(?:roster|squad|whos?\s+on\s+\w+(?:'s)?\s+team|my\s+team)\b", re.I)),
+    ("league", re.compile(
+        r"\b(?:league\s+(?:settings?|rules?|scoring|size|members)"
+        r"|who(?:'s|s| is| are)\s+in\s+the\s+league)\b", re.I)),
+    ("standings", re.compile(r"\b(?:standings?|records?|first\s+place|last\s+place|who(?:'s| is)\s+(?:winning|leading|best|worst))\b", re.I)),
+]
+
+
+def fantasy_topic(question: str) -> str:
+    """The Sleeper topic that answers this question. 'standings' is the
+    fallback, not the default for everything."""
+    for topic, rx in _TOPIC_RES:
+        if rx.search(question or ""):
+            return topic
+    return "standings"
 _STAT_RE = re.compile(
     r"\b(?:how\s+(?:has|does|did)\s+the\s+market\s+(?:do|perform|trade)|market\s+(?:performed?|history|historically)"
     r"|historically|on\s+average|average\s+(?:return|move|gain|loss)|last\s+time\s+(?:both|that|the|\S+\s+and)"
@@ -310,8 +352,14 @@ def classify(question: str, *, fantasy_enabled: bool = False) -> Route:
         r.shape = UNKNOWN
         return r
     if fantasy_enabled and _FANTASY_RE.search(q):
-        r.shape, r.reason = FANTASY, "fantasy words"
-        r.prefetch = [(T_FANTASY, {"topic": "standings"})]
+        topic = fantasy_topic(q)
+        r.shape, r.reason = FANTASY, f"fantasy words -> topic {topic}"
+        # A roster needs a manager and the router cannot resolve one from
+        # the question. Prefetching it would inject "could not match a
+        # manager" as the authoritative block; the model calls the tool
+        # itself with the name it reads.
+        if topic != "roster":
+            r.prefetch = [(T_FANTASY, {"topic": topic})]
         return r
     if _LEDGER_RE.search(q):
         r.shape, r.reason = MEMBER_LEDGER, "member ledger words"
@@ -403,7 +451,12 @@ def inject_text(tool: str, result: dict) -> str:
         T_CHAIN: "OPTIONS CHAIN, system-fetched. Every OI, volume, IV and strike figure comes from here or is not stated.",
         T_ECON: "ECONOMIC CALENDAR, system-fetched. Print dates, consensus and actuals come from here, never from memory.",
         T_HISTORY: "PRICE HISTORY, system-fetched. Any period return or level path comes from here.",
-        T_FANTASY: "LEAGUE STATE, system-fetched from Sleeper. Authoritative over chat and SQL.",
+        T_FANTASY: (
+            "LEAGUE STATE, system-fetched from Sleeper for the topic named in the payload. "
+            "Authoritative over chat and SQL for that topic. If the question needs a different "
+            "slice (draft picks, matchups, a manager's roster, waivers, projections), call "
+            "lookup_fantasy_league again with that topic rather than answering from this one. "
+            "Pre-season standings are all zeros and are not a draft result."),
     }.get(tool, f"{tool.upper()}, system-fetched. Authoritative.")
     tail = (" status=error or empty means the source is unavailable: say so; do not fill the gap from memory."
             if status not in ("ok",) else "")

@@ -143,9 +143,6 @@ def test_inject_text_says_so_on_error():
     assert "do not fill the gap from memory" in txt and "feed down" in txt
 
 
-if __name__ == "__main__":
-    sys.exit("run via: py -3.12 tests/run_tests.py")
-
 
 # 2026-09-02 review: shapes that stripped the right tool, and lead-in
 # words that became tickers.
@@ -192,3 +189,78 @@ def test_every_prefetch_tool_has_an_executor_in_phase_2():
     for t in used:
         const = [k for k, v in vars(R).items() if k.startswith("T_") and v == t][0]
         assert f"_ask_router.{const}: _execute_" in src, t
+
+
+# 2026-09-03: the fantasy shape used to require "draft grade"/"draft
+# pick" and prefetched standings for every question, so a draft ask got
+# pre-season zeros injected as the authoritative block.
+def test_fantasy_gate_catches_the_room_phrasings():
+    for q in ("who won the draft", "grade my draft", "draft recap",
+              "best waiver pickup", "who should i start this week",
+              "start or sit gibbs", "my matchup this week", "faab left",
+              "trending adds", "who is in the league", "whats on my roster"):
+        assert R.classify(q, fantasy_enabled=True).shape == R.FANTASY, q
+
+
+def test_fantasy_gate_does_not_steal_trading_questions():
+    # The shape strips Google and every market tool, so a false positive
+    # is expensive. "my team" and "first place" are deliberately not gate
+    # words.
+    for q in ("my team is bleeding on this trade", "first place in the s&p sectors",
+              "whats DKNG at", "draftkings earnings date", "who reports today",
+              "whats the lineup for tomorrow earnings", "trade idea on nvda",
+              "how many times did bk say bench"):
+        assert R.classify(q, fantasy_enabled=True).shape != R.FANTASY, q
+
+
+def test_fantasy_prefetch_topic_follows_the_question():
+    cases = {
+        "who won the draft": "draft",
+        "grade my draft": "draft",
+        "best waiver pickup": "transactions",
+        "faab left": "transactions",
+        "trending adds": "trending",
+        "who should i start this week": "projections",
+        "my matchup this week": "matchups",
+        "who is in the league": "league",
+        "league standings": "standings",
+        "hows the league doing": "standings",   # fallback
+    }
+    for q, topic in cases.items():
+        r = R.classify(q, fantasy_enabled=True)
+        assert r.prefetch == [(R.T_FANTASY, {"topic": topic})], (q, r.prefetch)
+
+
+def test_roster_questions_are_not_prefetched():
+    # topic=roster needs a manager the router cannot resolve; prefetching
+    # would inject "could not match a manager" as authoritative.
+    r = R.classify("whats on my roster", fantasy_enabled=True)
+    assert r.shape == R.FANTASY and r.prefetch == [], r
+
+
+def test_fantasy_topics_are_all_real_sleeper_topics():
+    from report.sleeper_data import TOPICS
+    for _topic, _rx in R._TOPIC_RES:
+        assert _topic in TOPICS, _topic
+    assert R.fantasy_topic("something with no topic words") in TOPICS
+
+
+def test_code_execution_survives_the_fantasy_tool_filter():
+    class _FD:
+        def __init__(s, n): s.name = n
+
+    class _T:
+        def __init__(s, names=None, google=None, code=None):
+            s.function_declarations = [_FD(n) for n in names] if names else None
+            s.google_search = google
+            s.code_execution = code
+    tools = [_T(google="g"), _T(code="c")] + [_T([n]) for n in sorted(R.ALL_TOOLS - {R.T_GOOGLE})]
+    route = R.classify("who won the draft", fantasy_enabled=True)
+    kept = R.filter_tools(route, tools)
+    assert any(t.code_execution for t in kept), "sandbox must stay: it is how the answer is computed"
+    assert not any(t.google_search for t in kept)
+    decls = {d.name for t in kept if t.function_declarations for d in t.function_declarations}
+    assert decls == {R.T_FANTASY}, decls
+
+if __name__ == "__main__":
+    sys.exit("run via: py -3.12 tests/run_tests.py")

@@ -1128,3 +1128,47 @@ abandoned ledger-walk scaffolding, the duplicate sentence splitter in
 the grader inputs, the duplicate file-send body in sender.py, and the
 dispatcher's hardcoded repo and unused tz parameter. CLAUDE.md's stale
 market-context, session-ledger and TODO sections were rewritten.
+
+## 2026-09-03 — Fantasy routing: the topic follows the question
+
+Owner asked whether the bot can answer any league question off the
+Sleeper API and still run Python. Both were true in principle and the
+sandbox does survive the fantasy tool filter (a fantasy question sees
+exactly two tools, lookup_fantasy_league and code execution). Two gaps
+made "any question" wrong:
+
+1. The gate required "draft grade" or "draft pick", so "who won the
+   draft" and "grade my draft" fell to UNKNOWN, where Google is allowed
+   and nothing forces the league tool. The gate now catches bare draft
+   (DraftKings excluded), start-or-sit, faab, free agent, add/drop,
+   trending adds, projected points and playoff wording.
+2. Every fantasy question prefetched topic='standings' and the injected
+   block called it authoritative. Pre-season standings are all zeros,
+   which the tool's own docs warn about, so a draft question was handed
+   zeros as the answer. Same defect class as the week-slate prefetch
+   fixed on 09-02. `fantasy_topic()` now maps the question to one of
+   Sleeper's eight topics, and a test pins every mapped topic against
+   report.sleeper_data.TOPICS.
+
+Two rules that came out of the testing and are worth keeping: the
+fantasy shape strips Google and every market tool, so a false positive
+is expensive, and "my team" and "first place" are therefore NOT gate
+words (they hit "my team is bleeding on this trade" and "first place in
+the s&p sectors"). And topic='roster' is never prefetched: it needs a
+manager the router cannot resolve, and prefetching it injected "could
+not match a manager" as the authoritative block.
+
+The injected lead for the fantasy tool now names the topic it fetched
+and tells the model to call again for a different slice rather than
+answering from the wrong one.
+
+Separately, on ingestion: the fantasy and cemini-alerts channels ARE
+ingested (901 and 111 messages since 2026-08-13, current). The reason
+profiles carry no draft content is the profile sampler, not ingestion.
+Draft day was 08-23 (294 messages, ten times any other day), every full
+rebuild ran on or after 08-28, and the per-channel floor takes the 40
+MOST RECENT messages, so draft day fell outside the sample for heavy
+posters. Light posters whose whole history fit under the 1500 cap kept
+it, which is exactly the split in the data (BK: 364 fantasy messages,
+nothing in his dossier; D3clan: 41, present). Not fixed yet: the floor
+should spread across the window instead of taking the tail.
