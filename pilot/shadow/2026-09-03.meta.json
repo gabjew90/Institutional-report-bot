@@ -1,5 +1,5 @@
 {
- "unread_source_files_at_edit": 22,
+ "unread_source_files_at_edit": 25,
  "pack": {
   "documents": 9,
   "cards": 338
@@ -10,107 +10,45 @@
   "prompt_sha": "28e9d1a17949"
  },
  "reasked": true,
- "structural_problems": [
-  "no markdown document in output"
- ],
+ "structural_problems": [],
  "citations": {
-  "card_citations": 128,
-  "brief_citations": 6,
-  "distinct_cards_cited": 126,
+  "card_citations": 113,
+  "brief_citations": 1,
+  "distinct_cards_cited": 111,
   "card_count": 338,
   "quintiles": [
-   36,
+   35,
+   15,
+   27,
    20,
-   25,
-   26,
-   21
+   16
   ],
-  "edge_quintile_share": 0.445,
+  "edge_quintile_share": 0.451,
   "metric4_flag": false,
   "failures": [
    {
-    "sentence": "The 10-year US Treasury yield rose 4.8 basis points (one basis point is one hundredth of a percent) to 4.80%, the highest since 2023 [c162], the German 10-year reached 3.34% [c158], the UK 10-year 5.2",
-    "cite": "c162,c158,c160,c164",
-    "reason": "figures not in cited card(s): ['4.8']"
-   },
-   {
-    "sentence": "It is pulling short-maturity yields up too, because traders are pricing a real chance the Fed answers it [c206][d2], and the 2-year Treasury yield rose 5.8 basis points to 4.40%, its highest since Jul",
-    "cite": "c206,c163",
-    "reason": "figures not in cited card(s): ['5.8']"
-   },
-   {
-    "sentence": "Morgan looks for 50,000 jobs against the street's 55,000, after a prior print of -23,000 [c318], with unemployment steady at 4.1% [c319] and hourly earnings up 0.25% on the month and 3.0% on the year ",
+    "sentence": "Michael Feroli forecasts 50k nonfarm payrolls against the Street's 55k and a prior print of -23k, with unemployment unchanged at 4.1% and average hourly earnings up 0.25% on the month [c318][c319][c32",
     "cite": "c318,c319,c320",
-    "reason": "figures not in cited card(s): ['0.25%', '23000', '50000', '55000']"
+    "reason": "figures not in cited card(s): ['0.25%']"
    },
    {
-    "sentence": "His desk maps the outcomes: a 25% chance of 5,000 to 35,000, which buys the S&P 25 to 75 basis points [c138], a 30% chance of 35,000 to 65,000 for anything between -25 and +50 [c322], and a 10% chance",
-    "cite": "c138,c322,c233",
-    "reason": "figures not in cited card(s): ['35000', '5000', '65000', '95000']"
+    "sentence": "Consensus models revenue growth of 33% quarter on quarter and 85% year on year, while J.P.",
+    "cite": "",
+    "reason": "figures with no card citation: ['33%', '85%']"
    },
    {
-    "sentence": "Most survey respondents expect Hock Tan to raise the FY27 AI revenue guide toward $120 billion [c9], and Harlan Sur's estimate of a fiscal 2027 AI backlog above $150 billion leaves room to wrong-foot ",
-    "cite": "c9,c10",
-    "reason": "figures not in cited card(s): ['150']"
-   },
-   {
-    "sentence": "The outlook moved more than the print, with the F2027 AI server revenue target raised to $74 billion from $60 billion and total revenue to $192 billion from $165-169 billion [c43][c44], built on $60.9",
-    "cite": "c43,c44,c48",
-    "reason": "figures not in cited card(s): ['169', '192', '60.9']"
-   },
-   {
-    "sentence": "None of that held the chip group up, with the Philadelphia Semiconductor Index leading US declines at 2.14% [c25] and memory-chip funds posting their first weekly outflow since launch at $0.9 billion ",
-    "cite": "c25,c244",
-    "reason": "figures not in cited card(s): ['0.9']"
-   },
-   {
-    "sentence": "BofA estimates they sell $163 billion in a down market, $1 billion in a flat one, and still sell $9 billion when markets rise [c157].",
-    "cite": "c157",
-    "reason": "figures not in cited card(s): ['163']"
-   },
-   {
-    "sentence": "Goldman's one-month projections say the same thing from the other side, modest extra buying if markets rise and a violent unwind in its down-big case, both globally and in the S&P [c188], with its est",
-    "cite": "c188,c189",
-    "reason": "figures not in cited card(s): ['146.5']"
-   },
-   {
-    "sentence": "It stays constructive on the region at 14.5 times earnings [c75], where companies generate cash equal to 5.3% of market value a year against under 2% for the ten largest US stocks [c76], and it upgrad",
-    "cite": "c75,c76,c32,c30",
-    "reason": "figures not in cited card(s): ['14.5', '300']"
-   },
-   {
-    "sentence": "It stays constructive on the region at 14.5 times earnings [c75], where companies generate cash equal to 5.3% of market value a year against under 2% for the ten largest US stocks [c76], and it upgrad",
+    "sentence": "The same house stays constructive on Europe at 14.5x earnings and a 5.3% free cash flow yield against under 2% for the 10 largest US stocks [c75][c76], and upgraded Deutsche Bank to Buy with a \u20ac43.75 ",
     "cite": "c75,c76,c32,c30",
     "reason": "bank named (['deutsche']) is not the cited card's bank"
    },
    {
-    "sentence": "Morgan's desk would buy cheap index hedges on Europe now [c219] and prefers the US and Asia [c94], while its strategy team overweights the Eurozone at 11.0% against an 8.7% index weight [c122] with a ",
-    "cite": "c219,c94,c122,c120",
-    "reason": "figures not in cited card(s): ['2026m']"
-   },
-   {
-    "sentence": "It sits at $4,309, down 46 basis points [c20], right on the $4,300 level J.P.",
+    "sentence": "It sits at $4,309 [c20], with $4,300 the level J.P.",
     "cite": "c20",
     "reason": "figures not in cited card(s): ['4300']"
-   },
-   {
-    "sentence": "Bond investors have already shortened up, rotating out of medium and longer-maturity government bond funds at 3.8 standard deviations into short-maturity funds at 6.3 [c52], alongside $37.5 billion of",
-    "cite": "c52,c143",
-    "reason": "figures not in cited card(s): ['37.5']"
-   },
-   {
-    "sentence": "Bank shares are being sold too, with financials funds seeing a third straight week of outflows at $1.6 billion [c242].",
-    "cite": "c242",
-    "reason": "figures not in cited card(s): ['1.6']"
-   },
-   {
-    "sentence": "The desk's named hedge into the September 16 meeting is shorting credit funds and buying VIX products [c235].",
-    "cite": "c235",
-    "reason": "figures not in cited card(s): ['16m']"
    }
   ],
-  "leans": 5,
+  "leans": 3,
   "leans_block_present": true,
-  "word_count": 2171
+  "word_count": 1680
  }
 }
