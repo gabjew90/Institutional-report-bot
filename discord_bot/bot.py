@@ -838,6 +838,7 @@ _OCR_INLINE_TRUNCATE = 800
 # off mid-flight, leaving a function-call-only turn with no text
 # ("No response came back (reason: STOP)").
 _CHAT_SEARCH_MAX_ROUNDS = 6
+_ASK_PREFETCH_TIMEOUT_S = 8.0  # router prefetch deadline (2026-09-02)
 # Per-tool-result char clamp for the /ask function-calling loop.
 # 2026-07-17: an ask died with 400 INVALID_ARGUMENT (input exceeded the
 # 1M-token limit) — some tool result ballooned contents across rounds.
@@ -4613,8 +4614,22 @@ async def _ask_02_call_model_with_tools(
         _pf_fn = _prefetch_exec.get(_pf_tool)
         if _pf_fn is None:
             continue
+        _pf_t0 = time.monotonic()
         try:
-            _pf_res = await _pf_fn(dict(_pf_args))
+            # Deadline (2026-09-02): the slate prefetch resolves market
+            # caps for every name on the day and a cold Finnhub cache
+            # could take tens of seconds. Past the deadline the turn
+            # proceeds without the block and the model keeps its own
+            # tools; the trace records the timeout.
+            _pf_res = await asyncio.wait_for(_pf_fn(dict(_pf_args)),
+                                             timeout=_ASK_PREFETCH_TIMEOUT_S)
+        except asyncio.TimeoutError:
+            log.warning(f"/ask: prefetch {_pf_tool} exceeded {_ASK_PREFETCH_TIMEOUT_S}s; "
+                        "continuing without it")
+            _ask_tool_trace.append({"tool": _pf_tool, "args": {k: str(v)[:80] for k, v in _pf_args.items()},
+                                    "status": "prefetch:timeout",
+                                    "seconds": round(time.monotonic() - _pf_t0, 2)})
+            continue
         except Exception as _e:
             _pf_res = {"status": "error", "error": f"{type(_e).__name__}: {_e}"}
         if not isinstance(_pf_res, dict):
@@ -4625,6 +4640,7 @@ async def _ask_02_call_model_with_tools(
             "args": {k: str(v)[:80] for k, v in _pf_args.items()},
             "status": f"prefetch:{_pf_res.get('status')}",
             "result_chars": len(str(_pf_res)),
+            "seconds": round(time.monotonic() - _pf_t0, 2),
         })
         contents.append(types.Content(
             role="user",
@@ -7431,6 +7447,7 @@ async def _answer_with_gemini(
     question so Gemini can reference what users were just discussing — useful
     for bro-mode roasts and follow-up research questions.
     """
+    _ask_t0 = time.monotonic()
     cap = settings.ask_daily_quota_per_user
     if cap > 0:
         used = db.count_ask_queries_today_for_user(user_id)
@@ -7662,6 +7679,10 @@ async def _answer_with_gemini(
             separator=separator,
             types=types,
         )
+        # Wall-clock for the whole turn, into the ask log's meta so the
+        # router's real effect on response time is measured, not
+        # estimated (owner question 2026-09-02).
+        _ask_meta["latency_s"] = round(time.monotonic() - _ask_t0, 2)
         return await _ask_10_log_and_render(
             _ask_actual_total=_ask_actual_total,
             _ask_est_total=_ask_est_total,
