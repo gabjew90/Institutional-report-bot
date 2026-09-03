@@ -1,0 +1,26 @@
+{
+ "gates": {
+  "holiday": {"decision": "CONTINUE", "detail": "", "at": "2026-09-03T14:09:49.930139Z"},
+  "volume": {"decision": "CONTINUE", "detail": "pdf_count=55; anchors 253/257 matched, 0 empty, 0 too_short (rate=0.984)", "at": "2026-09-03T14:10:09.398033Z"},
+  "draft_validate": {"decision": "CONTINUE", "detail": "soft violations only (advisory)", "at": "2026-09-03T14:17:44.332985Z"},
+  "lint": {"decision": "DISPATCH_SCRUB", "detail": "1 hard issue(s)", "at": "2026-09-03T14:24:50.543894Z"},
+  "scrub_relint": {"decision": "CONTINUE", "detail": "0 hard issues after SCRUB", "at": "2026-09-03T14:26:13.538975Z"},
+  "final_validate": {"decision": "CONTINUE", "detail": "no EDIT/SCRUB-introduced hard violations", "at": "2026-09-03T14:26:20.991775Z"},
+  "strip": {"decision": "CONTINUE", "detail": "no internal headers", "at": "2026-09-03T14:26:36.016268Z"},
+  "adversarial": {"decision": "DISPATCH_REPAIR", "detail": "2 hard finding(s), 2 soft; repair 1/2", "at": "2026-09-03T14:34:47.882723Z"},
+  "adversarial_recheck": {"decision": "CONTINUE", "detail": "0 hard findings", "at": "2026-09-03T14:52:36.975525Z"},
+  "preflight": {"decision": "PASS", "detail": "all gates consulted, artifact sane", "at": "2026-09-03T14:52:41.116115Z"}
+ },
+ "budgets": {"draft_rerolls": 1, "adversarial_repairs": 2},
+ "history": [
+  {"gate": "draft_validate", "decision": "REROLL_DRAFT", "at": "2026-09-03T14:17:04.195099Z"},
+  {"gate": "draft_validate", "decision": "CONTINUE", "at": "2026-09-03T14:17:44.332985Z"},
+  {"gate": "lint", "decision": "DISPATCH_SCRUB", "at": "2026-09-03T14:24:50.543894Z"},
+  {"gate": "scrub_relint", "decision": "CONTINUE", "at": "2026-09-03T14:26:13.538975Z"},
+  {"gate": "adversarial", "decision": "DISPATCH_REPAIR", "at": "2026-09-03T14:34:47.882723Z"},
+  {"gate": "adversarial_recheck", "decision": "DISPATCH_REPAIR", "at": "2026-09-03T14:45:12.910794Z"},
+  {"gate": "adversarial_recheck", "decision": "CONTINUE", "at": "2026-09-03T14:52:36.975525Z"},
+  {"gate": "preflight", "decision": "PASS", "at": "2026-09-03T14:52:41.116115Z"}
+ ],
+ "lint": {"last_hard": 0}
+}
