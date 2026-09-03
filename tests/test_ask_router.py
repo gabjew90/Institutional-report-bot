@@ -392,5 +392,27 @@ def test_prefetch_plan_reports_a_tool_with_no_executor():
     plan, missing = _ask_prefetch_plan(route, {})
     assert plan == [] and missing == [R.T_PRICE], (plan, missing)
 
+
+# 2026-09-03 ask-log review: figures answered from memory with no tool
+# and no search. These shapes now route to the web with FACT register.
+def test_sourced_figure_questions_route_to_the_web():
+    for q in ("whats the probability according to kalshi or polymarket on fed raising rates",
+              "how much total market cap does 1$ of NVDA stock price moving represent",
+              "what's NVDA shares outstanding", "why didnt you tell us there was a cybercab event today"):
+        r = R.classify(q)
+        assert r.shape == R.NEWS_EVENT and r.google_allowed() and r.is_factual, (q, r)
+    # "float" alone is a verb in this room.
+    assert R.classify("float the idea to abe").shape == R.UNKNOWN
+
+
+def test_implied_move_routes_to_the_chain_unless_past_tense():
+    r = R.classify("implied move on lulu earnings")
+    assert r.shape == R.OPTIONS_CHAIN and r.prefetch == [(R.T_CHAIN, {"symbol": "LULU"})], r
+    assert R.classify("expected move on nvda").shape == R.OPTIONS_CHAIN
+    # After the print the chain prices the next expiry; the answer lives
+    # in chat or on the web, so the shape must keep those tools.
+    r = R.classify("what was the implied move for LULU earnings?")
+    assert r.shape == R.UNKNOWN and r.google_allowed() and R.T_CHAT in r.allowed_tools(), r
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

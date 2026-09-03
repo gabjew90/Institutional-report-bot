@@ -1297,3 +1297,49 @@ tool-call tuples is the specific trap.
 The gate did not help either. `scripts/ask_fixture_run.py` mirrors the
 ROUTER, not phase 2, so it reproduced the routing correctly and never
 touched the crashing line.
+
+## 2026-09-03 — Ask log review: a day with zero sourced answers, and why
+
+Owner: "review omnicalendar and ask logs, still see some without
+source". The ask log for 09-03 (23 interactions) has ZERO Sources
+footers, and the Route stamp reads `LOCAL/BANTER · ungrounded` on
+questions like "whats the probability according to kalshi or
+polymarket", "how much market cap does $1 of NVDA represent" and
+"implied move on lulu earnings". Those answers carried specific
+figures (54% hike odds, 24.22B shares, ±8.1% to ±9.6%) with no tool
+call and no search behind them.
+
+Root cause, reproduced locally: the intent classifier
+(`_classify_ask_needs_web`) sends `thinking_config=ThinkingConfig(
+thinking_budget=0)`, and `gemini-3.5-flash-lite` answers 400
+INVALID_ARGUMENT to a zero budget (256, 512, 1024, 2000 and -1 are all
+accepted, so every OTHER thinking_config in bot.py is fine). The call
+raised on every question, the except branch returned `(False, False)`
+= LOCAL/BANTER, and every question the deterministic router did not
+recognise lost Google and the FACT register. It logged at INFO, so it
+never surfaced. Fix: no thinking_config on the classifier (eight output
+tokens is the whole verdict; verified live: WEB FACT for the five
+unsourced questions, LOCAL BANTER for "you good?" and "abe is a clown
+lol"), and the failure default is now WEB/FACT at WARNING, because the
+instruction itself says "when genuinely unsure, answer WEB" and a
+classifier outage is the least sure state there is.
+
+Router shapes added from the same log so these do not depend on the
+classifier at all: sourced-figure questions (probability/odds according
+to X, shares outstanding, market cap, "why didn't you tell us there was
+a ... event today") route NEWS_EVENT with Google on; "implied move on
+X" routes to the options chain, except in the past tense ("what WAS the
+implied move"), where the chain prices the next expiry and the answer
+lives in chat or on the web. Bare "float" is a verb in this room and
+is not a gate word.
+
+Calendar: the 09-04 sheet rendered one row, KNOP ($390M) with a dash.
+Finnhub listed six micro-caps for that Friday, Yahoo answered for all
+of them and none priced a straddle, so the wholesale fallback fired on
+"0 of 1 priced" and its `is not False` test re-admitted a name that
+the floor rule excludes. The fallback now keeps a name only when chain
+presence is UNKNOWN (Yahoo down) or the name is $5B+ with a chain. A
+micro-cap day renders empty, which is the truth for an options trader.
+The test fixture now prices every name by default and has a
+`chain_unknown` switch for the Yahoo-down scenario, so the wholesale
+test states its premise instead of relying on the old conflation.

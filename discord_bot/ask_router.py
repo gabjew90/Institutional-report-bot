@@ -243,7 +243,7 @@ _PRICE_RE = re.compile(
     r"|current\s+(?:price|level|quote)|where(?:'s| is)\s+\S+\s+(?:at|trading)"
     r"|^\s*\$?\w{2,5}\s+(?:price|quote|level)\s*\??\s*$|quote\s+(?:on\s+|for\s+|me\s+)?\$?[a-z]{1,5}\b)", re.I)
 _CHAIN_RE = re.compile(
-    r"\b(?:options?\s+chain|open\s+interest|\bOI\b|put[/ -]call|implied\s+vol|\bIV\b"
+    r"\b(?:options?\s+chain|open\s+interest|\bOI\b|put[/ -]call|implied\s+(?:vol|move)|expected\s+move|\bIV\b"
     r"|straddle|strangle|max\s+pain|gamma|\d{2,5}\s?[cp]\b|(?:calls?|puts?)\s+(?:on|for)\s+\S+"
     r"|\b\d+(?:\.\d+)?\s?(?:c|p|calls?|puts?)\s+(?:exp|expir))", re.I)
 _ECON_RE = re.compile(
@@ -401,7 +401,14 @@ _STAT_RE = re.compile(
 _NEWS_RE = re.compile(
     r"\b(?:why\s+(?:is|are|did|was|were)\s+\S+\s+(?:up|down|ripping|dumping|green|red|off|tanking|mooning|falling|rising|moving)"
     r"|what\s+happened\s+(?:to|with)\b|odds\s+\S+\s+(?:beats?|misses?)|(?:beat|miss)\s+odds"
-    r"|explain\s+\S+\s+(?:death|dump|rip|crash|move|drop|pop)|what(?:'s| is)\s+(?:going\s+on|the\s+news)\s+with)\b", re.I)
+    r"|explain\s+\S+\s+(?:death|dump|rip|crash|move|drop|pop)|what(?:'s| is)\s+(?:going\s+on|the\s+news)\s+with"
+    # Figures a reader expects sourced, not recalled (2026-09-03 ask
+    # log: a Kalshi/Polymarket probability and an NVDA shares-outstanding
+    # count were answered from memory with no tool and no search after
+    # the intent classifier called them banter). Web on, FACT register.
+    r"|(?:probability|odds|chances?)\s+(?:of|that|on|according)|according\s+to\s+(?:kalshi|polymarket|the\s+\w+)"
+    r"|shares\s+outstanding|market\s+cap(?:italization)?\b|(?:shares?\s+|free\s+)float\b|float\s+(?:of|for)\s+\$?[A-Za-z]{1,5}\b"
+    r"|why\s+didn'?t\s+you\s+(?:tell|mention|flag|say)|(?:was|is)\s+there\s+(?:a|an)\s+\w+\s+(?:event|meeting|call|print)\s+today)\b", re.I)
 _SINGLE_TICKER_OPINION_RE = re.compile(r"\b(?:thoughts?\s+on|bullish|bearish|buy|sell|long|short)\b", re.I)
 
 
@@ -459,7 +466,11 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         date = "tomorrow" if re.search(r"\b(tomorrow|tmrw?)\b", ql) else ""
         r.prefetch = [(T_SLATE, {"date": date})]
         return r
-    if _CHAIN_RE.search(q) and (tickers or re.search(r"\b(spy|qqq|iwm)\b", ql)):
+    # "what WAS the implied move" is a post-print question: the chain now
+    # prices the next expiry, so the answer lives in chat or the web and
+    # the shape must keep those tools (2026-09-03 ask log, LULU).
+    _past_move = re.search(r"\b(?:was|were|had)\b.{0,30}\b(?:implied|expected)\s+move", ql)
+    if _CHAIN_RE.search(q) and not _past_move and (tickers or re.search(r"\b(spy|qqq|iwm)\b", ql)):
         r.shape, r.reason = OPTIONS_CHAIN, "options words + ticker"
         sym = tickers[0] if tickers else re.search(r"\b(spy|qqq|iwm)\b", ql).group(1).upper()
         r.prefetch = [(T_CHAIN, {"symbol": sym})]

@@ -510,12 +510,17 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
             log.warning(
                 f"calendar: 0/{len(ranked)} names priced an implied "
                 f"move — falling back to unpriced top-{TOP_N} rows")
-            # A name Yahoo positively lists no options for is still
-            # dropped here (2026-09-02, PDI). When Yahoo is DOWN the
-            # check is unknown (None) and every name keeps its dash,
-            # which is the whole point of this fallback.
+            # This branch is for Yahoo being DOWN, when chain presence
+            # is unknown (None) and every name keeps its dash. A name
+            # Yahoo positively answered for stays subject to the floor
+            # rule: $5B+ renders unpriced, below the floor it needs a
+            # priced straddle and it did not get one. 2026-09-04 was a
+            # six-name micro-cap Friday; the old `is not False` put
+            # KNOP ($390M) on the sheet alone with a dash, which is the
+            # PDI defect again on a day the honest column is empty.
             kept = [(s, None) for s in ranked[:TOP_N]
-                    if _has_options(s) is not False]
+                    if _has_options(s) is None
+                    or (_has_options(s) and _cap(s) >= MIN_CAP_ALWAYS_SHOW)]
         rows = [
             EarnRow(
                 symbol=s,

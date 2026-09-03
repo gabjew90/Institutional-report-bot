@@ -12,7 +12,7 @@ The verdict now feeds only the FACT/BANTER register and the grounding
 backstop / bare-probe gate.
 
 The classifier itself makes a live Gemini call, so here we cover:
-parsing, the fail-safe (errors default LOCAL, never raise), the router
+parsing, the fail-safe (errors default WEB/FACT, never raise), the router
 instruction's buckets, and the unified-tooling wiring.
 """
 
@@ -90,11 +90,13 @@ def test_failsafe_on_error():
     from discord_bot.bot import _classify_ask_needs_web as f
     client = _make_client(raise_exc=True)
     web, fact = asyncio.run(f(client, "m", [], "anything"))
-    assert web is False, "an API error must fail-safe to LOCAL, never raise"
-    assert fact is False, (
-        "an API error must fail-safe to non-FACT (no register gating)"
-    )
-    _ok("router: API error fail-safes to (LOCAL, non-FACT) (no raise)")
+    # 2026-09-03: the classifier failed on EVERY call for a day (a
+    # thinking_budget=0 the model rejects) and the old LOCAL/BANTER
+    # default stripped Google from every unrecognised question. An
+    # outage must fail toward the search, not away from it.
+    assert web is True, "an API error must fail-safe to WEB, never raise"
+    assert fact is True, "an API error must fail-safe to FACT (straight answer, no roast)"
+    _ok("router: API error fail-safes to (WEB, FACT) (no raise)")
 
 
 def test_failsafe_on_empty_question():

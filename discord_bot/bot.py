@@ -3282,12 +3282,17 @@ async def _classify_ask_needs_web(
                 role="user",
                 parts=[types.Part.from_text(text=tail)],
             )],
+            # No thinking_config: gemini-3.5-flash-lite answers 400
+            # INVALID_ARGUMENT to thinking_budget=0, so every classify
+            # call failed and every unrecognised question defaulted to
+            # LOCAL/BANTER, i.e. no Google and no FACT register. A full
+            # day of unsourced figures came from that one argument
+            # (2026-09-03). Eight output tokens is the whole verdict.
             config=types.GenerateContentConfig(
                 system_instruction=_ASK_ROUTER_INSTRUCTION,
                 safety_settings=safety_settings,
                 max_output_tokens=8,
                 temperature=0.0,
-                thinking_config=types.ThinkingConfig(thinking_budget=0),
             ),
         )
         # Classifier spend is ~8 output tokens — negligible, not tallied
@@ -3298,8 +3303,15 @@ async def _classify_ask_needs_web(
         is_factual = "BANTER" not in verdict
         return (needs_web, is_factual)
     except Exception as e:
-        log.info(f"/ask: intent-router classify failed (defaulting LOCAL): {e}")
-        return (False, False)
+        # WEB/FACT on failure, not LOCAL/BANTER: the instruction itself
+        # says "when genuinely unsure, answer WEB", and a classifier
+        # outage is the least sure state there is. Defaulting to banter
+        # stripped Google from every question for a day and the bot
+        # recited Kalshi odds and share counts from memory. A wasted
+        # search on a banter line costs seconds; an unsourced figure
+        # gets traded on. WARNING so an outage is visible in ops.
+        log.warning(f"/ask: intent-router classify failed (defaulting WEB/FACT): {e}")
+        return (True, True)
 
 
 # (2026-07-16: _EARNINGS_DATE_RE removed with the route unification —

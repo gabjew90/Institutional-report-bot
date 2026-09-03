@@ -86,15 +86,20 @@ def test_failure_expires_by_calendar_day_not_elapsed_hours():
 
 # ------------------------------------------------ earnings assembly
 
-def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, covered=None):
+def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, covered=None,
+                chain_unknown=False):
     """Run build_calendar_day against canned feed rows. Patches every
     network boundary and restores them, so nothing here touches
     Finnhub, ForexFactory, or Yahoo.
 
     `moves`: dict symbol -> implied move for the patched fetch. Default
-    None for every symbol, which exercises the wholesale-failure
-    fallback — all names shown, dashes — matching the sheet's old
-    behaviour, so assembly tests stay about assembly."""
+    prices EVERY symbol at 5.0 so assembly tests stay about assembly;
+    pass a dict (possibly empty) to control who prices.
+    `chain_unknown`: Yahoo is down, chain presence is None for every
+    name. This is the only state that triggers the wholesale fallback
+    (2026-09-03): a name Yahoo answered for but could not price stays
+    subject to the cap floor, so a micro-cap day renders empty rather
+    than as one dash row (KNOP, 2026-09-04)."""
     from report import calendar_data as cd
     from report import news_data as nd
 
@@ -116,11 +121,13 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, co
                 s: {"cap": 1000.0 - i, "name": f"{s} Inc"}
                 for i, s in enumerate(dict.fromkeys(syms))
             })
-        cd._implied_move_fetch = lambda s, d, session=None: (moves or {}).get(s)
+        cd._implied_move_fetch = (lambda s, d, session=None: 5.0) if moves is None else (
+            lambda s, d, session=None: moves.get(s))
         cd._MOVE_PACE_S = 0
         # every name has a chain unless a test says otherwise (2026-09-02)
         orig_has = cd._has_options
-        cd._has_options = lambda s: s not in (no_chain or set())
+        cd._has_options = (lambda s: None) if chain_unknown else (
+            lambda s: s not in (no_chain or set()))
         # desk coverage for bold rows: empty unless a test supplies it
         orig_cov = db.recently_covered_tickers
         db.recently_covered_tickers = lambda days=7: set(covered or ())
@@ -227,10 +234,25 @@ def test_wholesale_move_failure_falls_back_to_dashes():
     that is the degradation."""
     day = _build_with(
         [{"symbol": s, "hour": "amc"} for s in ("AA", "BB")],
-        moves={},
+        moves={}, chain_unknown=True,
     )
     assert [r.symbol for r in day.amc] == ["AA", "BB"]
     assert all(r.implied_move is None for r in day.amc)
+
+
+def test_micro_cap_day_that_yahoo_answered_renders_empty():
+    """2026-09-04: Finnhub listed six micro-caps, Yahoo answered for all
+    of them and none priced a straddle. That is not Yahoo down, so the
+    fallback must not put KNOP ($390M) on the sheet alone with a dash.
+    Below the floor a name needs a priced straddle; above it a name
+    with a chain renders unpriced."""
+    day = _build_with(
+        [{"symbol": s, "hour": "bmo"} for s in ("KNOP", "BIGCO")],
+        moves={},
+        caps={"KNOP": {"cap": 390.0, "name": "Knot"}, "BIGCO": {"cap": 60_000.0, "name": "Big"}},
+    )
+    assert [r.symbol for r in day.bmo] == ["BIGCO"]
+    assert day.bmo[0].implied_move is None
 
 
 def test_selection_respects_the_fetch_budget():
