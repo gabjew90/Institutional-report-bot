@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text-all/2026-09-02/15110__db-cotd-carry-on-until-5-5-or-6-4.txt",
+ "source_span": "continuation of the normalisation after the financial repression of the 2010s... I would expect our rates strategists to continue leaning towards higher yields absent a major shock, such as a recession or an AI-led equity bust",
+ "source_chain": "Global yields are rising due to structural normalization/term-premium after the 2010s repression, not yet a fiscal-panic sell-off, THEREFORE DB's own rates desk still expects yields to keep climbing from here, THEREFORE because current levels now carry much more coupon cushion than in the low-rate 2020s (10Y could reach ~5.5% in a year / ~6.4% in two before total returns turn negative), holding duration is no longer as painful as before, even as yields rise further. Invalidation: a recession or an AI-led equity bust (the only scenario where DB does not expect continued higher yields).",
+ "pulse_chain": "Warsh's Jackson Hole pivot flips the market from pricing cuts to pricing a hike, driving a global bond selloff, THEREFORE Deutsche Bank's 'bull case' says this is just normalization back toward a pre-2010 norm, not a crisis, and 10-year holders bought at the late-2023 low are still up ~16% \u2014 implying the sell-off is benign, THEREFORE an unnamed 'counter' camp (deficits/energy/AI capital) says the direction is structurally higher and wins the next few weeks because a hike is imminent. Invalidation: the September FOMC fails to deliver the priced hike, or Warsh softens his tone.",
+ "preserved": false,
+ "why": "DB's note is not a bond-bullish counterweight to the 'structurally higher' camp \u2014 it explicitly says DB's own rates strategists still expect yields to keep rising and names a recession/AI-bust as the only thing that changes that, so the pulse recasts DB's carry-cushion argument as an opposing 'bull case' and swaps in a hike-related invalidation DB never states.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

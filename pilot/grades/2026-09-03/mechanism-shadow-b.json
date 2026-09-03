@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+ "source_span": "You potentially have a supply shock hurting growth at the same time as the Fed is pushed toward tightening. Not a great backdrop for multiples.",
+ "source_chain": "Crude/gas/product prices break out on Hormuz escalation, therefore front-end yields (not just the long end/term premium) get pulled up as the market prices a real Fed response, therefore a supply shock is hurting growth at the same moment it pushes the Fed toward tightening, therefore that is a poor backdrop for equity multiples. Invalidation: if the administration gets crude/gas/product prices lower (per GS's own de-escalation-history precedent and possibly-normalizing shipping flows), yields stabilize and risk can recover, provided NFP/CPI cooperate; if energy keeps rising, the Fed gets dragged along and sustained upside gets much harder.",
+ "pulse_chain": "Brent/gas/diesel break out, therefore government bond yields hit multi-year highs across the curve including the 2-year as traders price a real chance of a September Fed hike, therefore Goldman frames this as the bad version of an energy move: a supply shock hurting growth at the same moment it pushes the Fed toward tightening, therefore that's a poor setting for equity multiples (JPM disputes the read, arguing yields reflect activity not de-anchoring inflation expectations, given soft wage growth, and expects less tightening than priced). Invalidation: Goldman's own test \u2014 if crude/gas/product prices come down, yields stabilize and risk assets recover provided Friday's payrolls and Sept 11 CPI cooperate, consistent with GS's escalation-history pattern and possibly-normalizing shipping flows; if energy keeps climbing, sustained equity upside gets much harder.",
+ "preserved": true,
+ "why": "The pulse reproduces GS's supply-shock-meets-Fed-tightening chain and its own de-escalation/payrolls-CPI invalidation with correct attribution, and layers in JPM's opposing read as a counterpoint without altering GS's argued steps or direction.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

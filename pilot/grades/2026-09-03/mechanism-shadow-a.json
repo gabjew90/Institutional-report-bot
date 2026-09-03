@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+ "source_span": "You potentially have a supply shock hurting growth at the same time as the Fed is pushed toward tightening. Not a great backdrop for multiples... side-note: Trading as if they were the same asset. if we want relief on rates we first need relief on energy.",
+ "source_chain": "Energy (crude, gas, distillates) breaking out is now pulling the front end of rates, not just the long end, because markets price a real chance the Fed responds, therefore you get a supply shock hurting growth at the same moment the Fed is pushed toward tightening, therefore that is a bad backdrop for multiples and heating oil and the 10yr are trading as one asset, so rate relief must come from energy first. Invalidation: if crude/gas/product prices fall (and NFP/CPI cooperate) yields stabilize and risk recovers; if energy keeps rising, the Fed gets dragged with it and sustained upside gets much harder.",
+ "pulse_chain": "Fuel and gas breaking to multi-year/record highs is pulling yields up across maturities, including the short end, because traders are pricing a real chance the Fed hikes in September, therefore Goldman frames this as the bad version of an energy move: a supply shock hurting growth at the same moment it pushes the Fed toward tightening, a poor setting for valuations, with heating oil and the US 10-year trading as one asset so rate relief must come from energy first (JPM dissents, attributing the yield rise to activity strength not inflation expectations, wage growth soft, expecting less tightening than priced). Invalidation: if crude/gas/product prices fall, yields stabilize and risk assets recover, provided Friday's payrolls and the September 11 CPI cooperate; if energy keeps climbing, sustained equity upside gets much harder.",
+ "preserved": true,
+ "why": "The pulse reproduces Goldman's exact supply-shock-plus-Fed-tightening mechanism, the heating-oil/10yr equivalence, the correct attribution to Goldman (with JPM's dissent correctly attributed and undistorted), and the same invalidation condition (energy falling plus data cooperating vs. energy continuing to rise), all traced to source [d2].",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

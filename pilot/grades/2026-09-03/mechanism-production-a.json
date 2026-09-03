@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-02/15163__multi-asset-strategy-daily.txt",
+ "source_span": "since Warsh's appearance in Jackson Hole, the burden of proof has shifted from \"why hike?\" to \"why not hike?\", meaning soft data now needs to stop the Fed rather than firm data needing to push it",
+ "source_chain": "Warsh's hawkish Jackson Hole remarks therefore the burden of proof flips from 'why hike' to 'why not hike' therefore only a soft-data surprise (not a firm one) can now stop a hike, with September ~70% priced and ~60bp priced through mid-2027 and the 10Y through 4.75% -- invalidation: soft prints (JOLTS/ISM this week, Friday's NFP) reversing the data run.",
+ "pulse_chain": "Warsh's Jackson Hole remarks therefore the market flips from pricing cuts to pricing a September hike as base case (60-70%, JPM 64%/Mizuho 70%, ~60-65bp through mid-2027) therefore the 10Y sits at a post-2008 high of 4.75% and the repricing is accelerating 'in real time' globally therefore short $TLT while 10Y holds above 4.75% -- invalidation: FOMC fails to deliver the hike, or Warsh softens his tone.",
+ "preserved": false,
+ "why": "Mizuho's own mechanism is that only soft data can now stop the hike, and the day-of primary sources (Deutsche Bank's Sept 3 Early Morning Reid: hike odds fell 68%->63% on a soft ADP print plus dovish Williams comments, yields pulling back off Tuesday's highs; JPM's Sept 3 update: yields down 1bp across the curve, a stabilizing 'Everything Rally') show that exact soft-data condition already firing and the repricing reversing, not accelerating 'in real time' as the pulse claims, and the pulse's invalidation clause (FOMC non-delivery or Warsh softening) substitutes a different, untriggered condition for the one the sources actually flag as live.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

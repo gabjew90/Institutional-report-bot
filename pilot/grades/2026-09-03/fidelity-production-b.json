@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15098__warsh-and-the-road-not-taken.txt",
+   "span": "Warsh left many (me included) a bit short in believing there will be a hike at the next meeting. As evidence, the market is at a 68% probability of a hike",
+   "why": "Every source for this cycle frames the debate as whether the Fed hikes in September (68-69% priced probability, Warsh's hawkish Jackson Hole tone). The sentence inverts this to a 'first cut' debate, which no source supports and which contradicts the hike-debate framing used throughout the rest of the same pulse (s5, s6)."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15120__from-conflict-to-crowding-out-global-bond-yields-soar-to-200.txt",
+   "span": "the 10-year Treasury rate hit levels last seen January last year... The yield on a Bloomberg gauge of global sovereign bonds rose... climbing to 3.72%, the highest since mid-2008",
+   "why": "The 'highest since mid-2008' framing belongs to the Bloomberg global sovereign bond gauge (3.72%), not the US 10-year, which sources put at levels last seen January 2025 / 'highest since October 2023' (15086). The sentence misattributes the pre-2008 framing to the US 10-year Treasury specifically. The 4.75% level itself and the Japan/global-yields claims are correctly sourced (15121, 15120)."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-02/15110__db-cotd-carry-on-until-5-5-or-6-4.txt",
+   "span": "my view is that the latest rise in global yields is a continuation of the normalisation after the financial repression of the 2010s... an investor who bought 10-year Treasuries at the yield peak of 4.99% in October 2023 would have earned a total return of more than 16%",
+   "why": "DB's framing (normalization after 2010s financial repression) and the >16% total-return figure since the late-2023 yield peak (bond-price low) both match exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15120__from-conflict-to-crowding-out-global-bond-yields-soar-to-200.txt",
+   "span": "a larger fiscal risk premium, or 'crowding out' by corporate issuance (Hyperscalers)... higher energy prices... the AI investment boom is both the equity bull case and the duration bear case",
+   "why": "Deficits/fiscal risk premium, energy-driven inflation, and AI capex crowding out savings are all named as drivers of higher structural yields in this and related sources (15087, 15138)."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15098__warsh-and-the-road-not-taken.txt",
+   "span": "the market is at a 68% probability of a hike, despite Warsh's hawkish tone that seemed to back him into the hiking corner",
+   "why": "A high, live-priced probability of a near-term hike (not a pause) is the dominant near-term catalyst across sources, supporting the framing that the hawkish/higher-yield camp wins in the near term."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15138__goal-global-opportunity-asset-locator-rotation-moderation.txt",
+   "span": "Fed Chairman Warsh's hawkish Jackson Hole speech suggests that a hike in September is possible in case of stronger inflation data",
+   "why": "The invalidation logic (no hike, or a softer Warsh tone, unwinds the yield move) is a reasonable synthesis of the clearly sourced link between Warsh's Jackson Hole hawkishness and the priced hike."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15214__international-market-intelligence-morning-briefing.txt",
+   "span": "Domestic AI compute demand is likely to show an ~80% CAGR... China can support 80% of its AI infra demand with local buildout",
+   "why": "JPM's ~80% CAGR figure for China AI compute demand matches exactly; Goldman's 'AI infrastructure: still the main driver of EPS growth' (15122) matches the earnings-growth-driver claim."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15153__gs-callahan-gs-us-tmt-today-mdb-dell-panw-2-sep-2026.txt",
+   "span": "notable strength in ISG margins (15.0% v. GSe 11.7%)... GIR remains BUY rated",
+   "why": "Goldman's note shows Dell ISG (server/infrastructure) margin at 15.0% and a reiterated Buy; calling it 'server margin' is a minor simplification of ISG but the figure, bank, and rating direction are correct."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15218__early-morning-reid-macro-strategy.txt",
+   "span": "BoJ's Takata had suggested there could be a bigger hike than usual, saying that a 25bp hike 'is not necessarily set in stone'... after briefly crossing the 3% threshold earlier this week for the first time since 1996",
+   "why": "Both the 3%/first-since-1996 fact and the market debating how aggressive the BOJ will actually be (Takata's bigger-than-25bp comment) are directly sourced."
+  },
+  {
+   "id": "s10",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-03/15219__db-fx-research-macro-note.txt",
+   "span": "JPY is now the biggest outlier both in Asia and across the globe. BoJ rates to 2%+ and GPIF rebalancing should do the trick",
+   "why": "Sources link BOJ hikes and a possible GPIF (pension fund) allocation shift to yen strength, but none states the general claim that higher Japanese yields reduce Japanese investors' appetite for US assets and pull cash out of US markets specifically."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15138__goal-global-opportunity-asset-locator-rotation-moderation.txt",
+   "span": "exports from the Persian Gulf are 40% above the March trough on a rise of dark crossings",
+   "why": "Transitional framing sentence; consistent with the sourced supply-data discussion that immediately follows (s12, s13)."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15138__goal-global-opportunity-asset-locator-rotation-moderation.txt",
+   "span": "actual oil exports from the Persian Gulf are 40% above the March trough on a rise of dark crossings",
+   "why": "Exact match on the 40%-above-March-low figure, correctly attributed to Goldman (GOAL report)."
+  },
+  {
+   "id": "s13",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15114__oil-is-back-to-trading-iran-strikes-but-without-the-risk-pre.txt",
+   "span": "reports suggesting anywhere from 2 million to 4 million barrels/day getting through versus the US administration's claim of 8m-10m b/d",
+   "why": "The 2-4m vs 8-10m dispute is correctly sourced (also independently confirmed at ~8mb/d in MUFG's 15170), but no source attributes a claim of single-day Hormuz flows 'far above' that range to JPMorgan; this attribution appears fabricated."
+  },
+  {
+   "id": "s14",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "n/a",
+   "span": "n/a",
+   "why": "No source document mentions $USO or $XLE, or recommends a long-oil trade tied to disruption headlines; this appears to be an invented trade idea with no desk attribution in the source set."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15120__from-conflict-to-crowding-out-global-bond-yields-soar-to-200.txt",
+   "span": "September and October have been the worst months for the global bond index over the last decade, with the gauge losing more than 1% on average in each of the two months",
+   "why": "Source states the index loses more than 1% in EACH of the two months (over 2% combined); the sentence compresses this to 'about 1% across those two months,' understating the magnitude by roughly half. The seasonal-softness attribution to Goldman and JPMorgan is separately supported (15118, 15095)."
+  }
+ ],
+ "faithful": 9,
+ "distorted": 4,
+ "unsupported": 2,
+ "faithful_rate": 0.6,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,128 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d3",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "US strikes near Hormuz (start of week) push Brent/gas up therefore inflation/rate expectations rise therefore global bond yields hit multi-year highs therefore equities fall and Fed pricing turns hawkish (reinforced by Barr), only briefly checked by softer US data, while ECB/RBNZ/RBA also lean hawkish",
+   "brief_chain": "Renewed US strikes around Hormuz lift Brent/gas therefore yields hit multi-year highs therefore equities fall therefore Fed pricing turns hawkish (Barr), briefly eased by soft US data, while ECB/RBNZ/RBA stay hawkish",
+   "distortions": [
+    {
+     "what": "Brief implies the newly reported (post-European-close) Hormuz-area strikes drove the Brent +4.60%-to-$94.65 move recorded 'at the close'; source attributes that specific close-level move to strikes 'at the start of the week' and reports the Hormuz strikes as separate, later-breaking news.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both versions describe the same oil-driven risk-off tape and same directional read; only the precise trigger-to-price-move timing is conflated."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "US escalates near Hormuz during market hours therefore crude/distillates/gas all rise therefore commodity inflation now pulls the front end too therefore a supply shock hits growth as the Fed is pushed toward tightening, pressuring multiples, with Europe most exposed and hardware (Dell/Broadcom) the offsetting bull case; resolution hinges on energy prices and NFP/CPI",
+   "brief_chain": "US strikes near Hormuz therefore crude/distillates/gas rise therefore commodity inflation pulls the front end therefore a supply shock coincides with Fed tightening pressure on multiples, Europe most exposed, hardware the offset; resolution hinges on energy and NFP/CPI",
+   "distortions": [
+    {
+     "what": "Brief drops the note's AI/Cyber Security tangent (OpenAI Astra, Chain-of-Thought monitorability trade-off) entirely.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a side discussion not tied to any trade call in the note; omitting it doesn't touch the energy-rates-equities thesis."
+    },
+    {
+     "what": "Brief's closing sentence drops 'the Fed reaction function gets dragged with it' from the 'if energy keeps rising' conclusion.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the conclusion (sustained upside becomes harder) is preserved; only the intermediate mechanism is compressed."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "ISM manufacturing misses and softens across components, though regional surveys (S&P Global PMI, GS tracker) improve; JOLTS/construction data mixed, GDP tracking unchanged; ETF short positioning near 2nd-percentile lows; equities close lower Tuesday as cyclicals lag defensives amid Iran-driven yield/oil backup, alongside the ISM miss; DELL beats and guides up, shares indicated higher",
+   "brief_chain": "ISM misses and softens across components therefore cyclicals lag defensives; regional surveys read better despite the ISM print; JOLTS/construction data given; positioning near multi-year lows; equities close lower on yields/oil from Iran; DELL beats and shares jump",
+   "distortions": [
+    {
+     "what": "Brief states the ISM miss caused cyclicals to lag defensives ('so cyclicals lagged'); source attributes that underperformance primarily to rising yields/oil following the Iran escalation, with the ISM print running 'alongside' as a secondary factor.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 cyclicals underperform defensives in both versions; only the causal weighting between Iran/oil/yields and the ISM print shifts."
+    },
+    {
+     "what": "Brief drops the 'below/in line with consensus' qualifiers on job openings and construction spending.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the raw figures and directions are unchanged; this is a dropped secondary caveat."
+    },
+    {
+     "what": "Brief omits the Semis Debates (Communacopia conference) and Robotaxi/AV Tracker sections entirely.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 neither section carries a directional call or price target."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "J.P. Morgan",
+   "source_chain": "Warsh's full-employment/inflation-too-high view makes Sep 16 live therefore CPI (Sep 11) outranks NFP therefore NFP becomes good-news-is-bad-news; combined with positioning, credit-spread, seasonality, momentum-unwind and AVGO-earnings risks, JPM holds fundamentals intact but calls for chop, therefore reduces net longs / goes dollar-neutral via a stated monetization menu",
+   "brief_chain": "Warsh's full-employment/inflation-too-high view makes Sep 16 live therefore CPI outranks NFP therefore NFP inverts into good-news-is-bad-news; four more inputs (positioning, issuance/credit spreads, seasonality, momentum) stack on; fundamentals intact but chop expected therefore reduce net longs/go dollar-neutral via the stated monetization menu",
+   "distortions": [
+    {
+     "what": "Brief frames the Tactically Cautious/Neutral stance as being adopted now (Sep 2); source states this view 'we published below in the Aug 24, 2026 Morning Briefing' \u2014 it is being reprinted/carried forward, not newly adopted.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the stance and its recommended trades are identical regardless of when it was first adopted."
+    },
+    {
+     "what": "Brief says 'four further inputs stack on,' but the source lists five additional factors (positioning, credit spreads, seasonality, momentum, and AVGO-earnings risk to AI/Memory/Semis); the AVGO-earnings caution is dropped from that count.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the Tactically Cautious/Neutral stance and monetization menu are unchanged; this is an undercount/omission of one supporting rationale, not a reversal."
+    },
+    {
+     "what": "Brief's 'monetization menu' summary omits several stated positions (SMID-cap underperform call, Large-Cap Banks/Consumer Discretionary preferences, Healthcare defensive pick, Dollar Debasement trade view).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the omitted calls aren't contradicted, just left out of the compressed summary; the calls that are stated (+NDX/-RTY, Mag7 over AI/Memory/Semis, credit/VIX hedges) are accurate."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d8",
+   "tier": "rest",
+   "bank": "TS Lombard",
+   "source_chain": "Warsh avoids blaming government for inflation therefore Fed-Treasury accord concerns stay quiet but yields stay unassuaged; market prices only 68% hike odds (vs typical ~95% two weeks out) because softening data leads inflation lower; standard Taylor Rule implies >5% funds rate but the Dallas Fed trimmed-mean variant implies no hike needed; rising yields reflect deficits/capex/normalization, not US credit stress (peer yields moved similarly, only France/Italy spreads widened); author expects Warsh to find data-based room to hold for 'another month or two' and still likes cheap portfolio insurance",
+   "brief_chain": "Warsh avoids blaming government for inflation therefore Fed-Treasury concerns stay quiet but the long end stays unmoved; 68% hike odds vs ~95% typical because of softening data; standard Taylor Rule implies >5% but the Dallas Fed trimmed-mean variant implies no hike needed; rising yields reflect deficits/capex/normalization not credit stress; author expects Warsh to hold rates through year-end and still recommends cheap portfolio insurance",
+   "distortions": [
+    {
+     "what": "Brief states the author expects Warsh to 'hold rates through year-end'; the source's explicit forecast is narrower \u2014 Warsh finds 'wiggle room to hold rates constant for another month or two' \u2014 and the source's year-end reference is actually about whether Warsh can push a hike out to the December meeting, not about holding through it.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a reader sizing/timing the note's recommended portfolio-insurance (or Fed-pricing) trade around 'no hike through year-end' would position differently than one told 'no hike for another month or two,' which leaves an October or December hike live."
+    },
+    {
+     "what": "Brief's 'left the long end of the yield curve unmoved' vs. source's 'the long end of the markets was not assuaged' \u2014 a paraphrase that reads as more literal/static than the source's framing of ongoing unease.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both convey that long-end yields stayed elevated/unresolved; no directional call changes."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 10,
+ "audited": 5,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

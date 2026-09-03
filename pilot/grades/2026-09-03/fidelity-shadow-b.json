@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15218__early-morning-reid-macro-strategy.txt",
+   "span": "settled +1.04% higher at $95.63/bbl. This morning we're -0.39% lower at $95.29/bbl.",
+   "why": "The $94.65/+4.60% figure is Tuesday's close per the 09-02 DB note (a day earlier than labeled), and the 'early this morning' +0.67% to $95.28 is actually that note's Wednesday-morning read. The genuinely current read (Thursday morning, per the 09-03 DB note) has Wednesday's close at $95.63 (+1.04%) and this morning down -0.39% to $95.29 \u2014 the opposite direction from what the sentence claims for 'this morning.'"
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15138__goal-global-opportunity-asset-locator-rotation-moderation.txt",
+   "span": "our commodities team still expects crude prices to decline below market forwards by year-end. Their baseline forecast is for Brent to fall to US$80/bbl by December",
+   "why": "No Goldman document frames this as 'the bad version of an energy move' or as growth-hit-plus-Fed-tightening. The identifiable Goldman house view (GOAL) is the opposite: oil forecast to fall to $80 by December, Fed expected to hold, cyclical backdrop called 'resilient to the energy shock.'"
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "Stay constructive into year end: earnings remain a tailwind on strong activity momentum, bond markets to be contained as inflation does not get de-anchored",
+   "why": "The bullish-on-yields view attributed to 'Morgan's global strategy team' is JPMorgan's Equity Strategy note (source field: JPMorgan), not Morgan Stanley \u2014 no Morgan Stanley document exists anywhere in the source set. 'Morgan's' misattributes the bank."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "the impact on oil might get more muted, supply is likely to be structurally higher, and if one joins selling during derisking episodes, one risks being whipsawed",
+   "why": "The conditional recovery framing matches JPM's 'buy the dip' stance; Friday payrolls and Sep 11 CPI are corroborated as the named near-term catalysts in JPM's day-2 briefings (15095/15226/15227: 'CPI on Sep 11')."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "we might see a proverbial \"escalation in order to de-escalate\", but the impact on oil might get more muted, supply is likely to be structurally higher",
+   "why": "Matches JPM's escalation-to-de-escalate framing and supply-normalizing view."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "If crude, gas and product prices come down, yields can stabilize and risk assets recover",
+   "why": "Direct logical converse of the same JPM conditional already stated in s4/s5 \u2014 if the recovery condition is prices coming down, the sentence's converse (energy keeps climbing -> upside harder) is a faithful restatement of the same source logic."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+   "span": "if Harlan is right that the F27 AI backlog exceeds $150B, there is room \u2014 eventually \u2014 for Hock to wrong-foot the bears, though it is probably too early to expect that this quarter",
+   "why": "Matches source almost verbatim, including the $120B guide consensus landing zone mentioned two paragraphs earlier in the same file."
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "",
+   "why": "No source document (including the 09-03 JPM AVGO recaps, DB Early Morning Reid, or any other file in the corpus) contains the figures $74B, $60B, $192B, $165-169B, $60.9B, $24B, or a $95B backlog. These specific post-earnings figures do not appear anywhere in the sampled source texts."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
+   "span": "Philadelphia Semiconductor Stock Exchange Index (-2.14%), followed by the Nasdaq",
+   "why": "SOX -2.14% confirmed verbatim; the DRAM fund -$0.9Bn 'first weekly outflow since launch' (JPM 15095) supports 'memory-chip funds' losing their first weekly outflow at $0.9 billion."
+  },
+  {
+   "id": "s10",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "Our pecking order into year end is Semis over hyperscalers over AI at risk plays.",
+   "why": "The ranking and the Mag7-preference-because-chips-can't-hold-a-bid content are both accurately drawn from JPMorgan sources (15089 and 15095), but attributed to 'Morgan' \u2014 misattributing JPMorgan's view to a different bank (Morgan Stanley), which is absent from the source set entirely."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15094__sell-sell-or-sell.txt",
+   "span": "around peak machine-driven buyback activity now, just as the blackout window begins to expand",
+   "why": "Matches directly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+   "span": "screens as the worst performing month for the SPX followed by Q4 being the strongest quarter of the year",
+   "why": "Verbatim match."
+  },
+  {
+   "id": "s13",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15087__international-market-intelligence-morning-briefing.txt",
+   "span": "JPM Research's aggregate measure of investor positioning in Asia has fallen from the 75th percentile in late June to the 40th today. The biggest Q2 shift in long-only positioning was a sharp cut to tech in Korea and Taiwan",
+   "why": "The percentile figures and Korea/Taiwan cut are accurate, but the source is explicitly 'JPM Research' within a JPMorgan-authored briefing \u2014 attributing this to 'its Asia team' following 'Morgan' misattributes the bank."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "Gold was everyone's favourite long in January, only to become shunned as it fell back 20-25%",
+   "why": "Direct match; the closing interpretive clause is a fair characterization of a safe-haven asset falling during an active war, consistent with the surrounding source discussion of gold's headwinds despite geopolitical risk."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15218__early-morning-reid-macro-strategy.txt",
+   "span": "(Dollar Index^ @ 99.40 // -0.30%)",
+   "why": "The 99.79/+0.44% figure is the header stat from the 09-02 DB note (a day-earlier reading, itself describing the prior day's close-to-close move). The current-day (09-03) DB note's header shows the dollar index at 99.40, down -0.30%, the opposite direction from what 'for now... up 0.44%' claims."
+  }
+ ],
+ "faithful": 8,
+ "distorted": 6,
+ "unsupported": 1,
+ "faithful_rate": 0.533,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}
