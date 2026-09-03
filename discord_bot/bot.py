@@ -4458,6 +4458,22 @@ async def _ask_01_build_prompt(
     return (_analysis_extra, _ask_meta, _ask_tool_log, _asker_protected, _prompt_extra, _route_is_factual, ask_model, contents, initial_parts, needs_web, profiles_for_prompt, separator, user_content)
 
 
+def _ask_prefetch_plan(route, executors):
+    """Split the router's prefetch list into (runnable, missing_tools).
+
+    Module-level and dependency-free so a test can run it: this logic
+    lived inline in phase 2 and used set() to find the missing tools,
+    which raises `TypeError: unhashable type: 'dict'` because a prefetch
+    entry is (tool, args) with args a dict. Every routed question — every
+    price, slate, econ and league ask — answered "Something broke on my
+    end" for a day before anyone traced it (2026-09-03). Never put
+    prefetch entries in a set or dict key.
+    """
+    plan = [(t, a) for t, a in route.prefetch if t in executors]
+    missing = [t for t, _ in route.prefetch if t not in executors]
+    return plan, missing
+
+
 async def _ask_02_call_model_with_tools(
     _ask_route,
     _ask_meta,
@@ -4639,8 +4655,8 @@ async def _ask_02_call_model_with_tools(
     # deadlines back to back; they run together now and are injected in
     # route order. A prefetch tool without an executor is a wiring bug,
     # not a silent skip (tests/test_ask_router.py pins the coverage).
-    _pf_plan = [(t, a) for t, a in _ask_route.prefetch if t in _prefetch_exec]
-    for _pf_tool, _ in set(_ask_route.prefetch) - set(_pf_plan):
+    _pf_plan, _pf_missing = _ask_prefetch_plan(_ask_route, _prefetch_exec)
+    for _pf_tool in _pf_missing:
         log.error(f"/ask: router prefetch {_pf_tool} has no executor; skipped")
     _pf_results = await asyncio.gather(*[_run_prefetch(t, a) for t, a in _pf_plan])
     for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):

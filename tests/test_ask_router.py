@@ -361,5 +361,36 @@ def test_every_manager_maps_to_a_room_name():
         assert manager_for_discord_id(aid) == room, aid
     assert manager_for_discord_id(None) == "" and manager_for_discord_id("nope") == ""
 
+
+# 2026-09-03 incident: phase 2 built its "missing executor" list with
+# set(route.prefetch), and a prefetch entry is (tool, dict), so every
+# routed question raised TypeError and answered "Something broke on my
+# end" for a day. This runs the real splitter over every shape.
+def test_prefetch_plan_never_hashes_the_args_dict():
+    from discord_bot.bot import _ask_prefetch_plan
+    execs = {R.T_SLATE: 1, R.T_EDATE: 1, R.T_PRICE: 1, R.T_CHAIN: 1,
+             R.T_ECON: 1, R.T_HISTORY: 1, R.T_FANTASY: 1}
+    questions = [
+        "who reports today", "when does NVDA report", "what's TSLA at",
+        "NVDA options chain", "when is CPI", "how has NVDA done since january",
+        "why is nvda down, odds it beats", "what does CLS do", "who won the draft",
+        "who should i start this week", "whats on my roster", "you good?",
+    ]
+    for q in questions:
+        route = R.classify(q, fantasy_enabled=True, channel_name=_FC, asker_manager="BK")
+        plan, missing = _ask_prefetch_plan(route, execs)
+        assert missing == [], (q, missing)
+        assert plan == list(route.prefetch), (q, plan)
+        for _tool, args in plan:
+            assert isinstance(args, dict), (q, args)
+
+
+def test_prefetch_plan_reports_a_tool_with_no_executor():
+    from discord_bot.bot import _ask_prefetch_plan
+    route = R.classify("what's TSLA at")
+    assert route.prefetch, "fixture needs a prefetch"
+    plan, missing = _ask_prefetch_plan(route, {})
+    assert plan == [] and missing == [R.T_PRICE], (plan, missing)
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

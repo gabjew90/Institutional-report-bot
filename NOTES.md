@@ -1256,3 +1256,44 @@ price tool. A ticker guard would fix it but would also break "compare BK
 and Declan", since BK reads as a ticker. Erring toward fantasy in the
 fantasy channel is what was asked for, and Google plus code execution
 are still available there.
+
+## 2026-09-03 — Incident: every routed /ask answered "Something broke"
+
+Owner: "the asks are breaking in the fantasy football channel". It was
+not the fantasy channel and not the routing. Commit 3f2cea1e rewrote the
+phase-2 prefetch loop to run under one `asyncio.gather`, and built the
+"tool has no executor" list as
+
+    for _pf_tool, _ in set(_ask_route.prefetch) - set(_pf_plan):
+
+A prefetch entry is `(tool, args)` and args is a dict, so `set()` raises
+`TypeError: unhashable type: 'dict'` on the FIRST entry. Every question
+the router recognised — price, slate, econ, earnings date, options,
+history, league — raised before the model was ever called and answered
+"Something broke on my end. Try again in a sec." Questions the router
+did NOT recognise had an empty prefetch list, so `set([])` succeeded and
+they worked. That is why it read as a fantasy-channel problem: the
+fantasy shape always prefetches, and the questions that still worked in
+that channel ("who are my starters") happen to be the ones with no topic
+match and therefore no prefetch.
+
+Live for ~19 hours, from the 05:15 UTC deploy to the fix. Confirmed in
+`ask_bot_answers`: the 46-char canned failure on "who should i start
+this week" at 09:24, 12:41 and 13:35 UTC, and on "what earnings do we
+have after close" at 19:42, while every no-prefetch question in the same
+window returned 300+ chars of real answer.
+
+Why nothing caught it. The router tests cover `classify()` and
+`filter_tools()`, which are pure. The loop lived inline inside
+`_ask_02_call_model_with_tools`, a function no test can call without a
+live Gemini client, so the one line between the router and the model was
+the only unexercised link in the chain. The fix extracts
+`bot._ask_prefetch_plan(route, executors)` to module level and tests it
+against a real Route for every shape, asserting the args stay dicts. The
+lesson worth keeping: an inline expression inside an untestable function
+is untested code no matter how many tests surround it, and `set()` over
+tool-call tuples is the specific trap.
+
+The gate did not help either. `scripts/ask_fixture_run.py` mirrors the
+ROUTER, not phase 2, so it reproduced the routing correctly and never
+touched the crashing line.
