@@ -4470,6 +4470,56 @@ async def _ask_01_build_prompt(
     return (_analysis_extra, _ask_meta, _ask_tool_log, _asker_protected, _prompt_extra, _route_is_factual, ask_model, contents, initial_parts, needs_web, profiles_for_prompt, separator, user_content)
 
 
+def _evidence_context(user_content) -> str:
+    """The part of the prompt that can source a figure: the chat context,
+    the bot's prior answers and the question. The WHO'S TALKING dossiers
+    that open the prompt are excluded: their message counts, scores and
+    trade receipts made a Kalshi "54%" look sourced on 2026-09-03."""
+    uc = user_content or ""
+    for marker in ("[YOUR RECENT /ASK ANSWERS", "Recent channel chat (oldest"):
+        i = uc.find(marker)
+        if i >= 0:
+            return uc[i:]
+    # No context markers: nothing but the dossier block and the question,
+    # and the question is added separately.
+    return "" if uc.startswith("WHO'S TALKING") else uc
+
+
+def _ask_evidence_text(contents, response, question, user_content) -> str:
+    """Everything the turn saw or produced with a tool, as one string,
+    for the figure-provenance check: injected blocks and function
+    responses in `contents`, code-execution output in the final
+    response, the question, and the chat context and prior answers in
+    user_content. Module-level and total so a test can run it on real
+    Part objects; a part it cannot read contributes nothing."""
+    chunks: list[str] = [question or "", _evidence_context(user_content)]
+    for c in contents or []:
+        for p in getattr(c, "parts", None) or []:
+            t = getattr(p, "text", None)
+            if t:
+                chunks.append(str(t))
+            fr = getattr(p, "function_response", None)
+            if fr is not None:
+                try:
+                    chunks.append(str(getattr(fr, "response", "") or ""))
+                except Exception:
+                    pass
+            # Sandbox output from an earlier round lives in the model
+            # turn appended to contents, not in the final response.
+            cer = getattr(p, "code_execution_result", None)
+            if cer is not None and getattr(cer, "output", None):
+                chunks.append(str(cer.output))
+    try:
+        for cand in getattr(response, "candidates", None) or []:
+            for p in getattr(getattr(cand, "content", None), "parts", None) or []:
+                cer = getattr(p, "code_execution_result", None)
+                if cer is not None and getattr(cer, "output", None):
+                    chunks.append(str(cer.output))
+    except Exception:
+        pass
+    return "\n".join(chunks)
+
+
 def _ask_prefetch_plan(route, executors):
     """Split the router's prefetch list into (runnable, missing_tools).
 
@@ -6535,6 +6585,46 @@ async def _ask_07_validation_ladder(
                     )
         except Exception as e:
             log.warning(f"/ask: grounded retry call failed: {e}")
+
+    # Figure provenance (2026-09-03): shape-blind, last in the ladder.
+    # On a FACT answer that nothing web-grounded, every number must be
+    # in what the turn saw (injected blocks, tool payloads, sandbox
+    # output, the question, chat context) or its line goes. Web-grounded
+    # answers are skipped: their sources are the footer, and the SDK's
+    # chunks carry no snippet text to check against. Total: any failure
+    # inside leaves the answer as it was.
+    try:
+        # A chart turn is exempt: figures read off the attached image
+        # have no text evidence to match (2026-09-03 sweep, the BTC
+        # chart replies).
+        _fp_images = bool(_ask_meta.get("images"))
+        if answer and _route_is_factual and not _grounding_has_sources(grounding_metadata) \
+                and not _fp_images:
+            from discord_bot import figure_provenance as _fp
+            _ev = _ask_evidence_text(contents, response, question, user_content)
+            _rep = _fp.check(answer, _ev)
+            if _rep.action == "stripped":
+                answer = _rep.answer
+                _ask_meta["guards"].append(f"figure-provenance:stripped:{len(_rep.stripped_lines)}")
+                log.warning(
+                    f"/ask: figure provenance stripped {len(_rep.stripped_lines)} line(s) "
+                    f"carrying {[f.token for f in _rep.unsourced][:6]} (q={question[:80]!r})")
+            elif _rep.action == "all-unsourced":
+                _ask_meta["guards"].append("figure-provenance:all-unsourced")
+                log.warning(
+                    f"/ask: every line carries an unsourced figure "
+                    f"{[f.token for f in _rep.unsourced][:6]}; shipping with the hedge (q={question[:80]!r})")
+                if "Couldn't verify" not in answer:
+                    answer = (answer.rstrip()
+                              + "\n\n→ ⚠️ Couldn't verify these specifics against a live "
+                                "source — treat the exact numbers as unconfirmed.")
+            elif _rep.action == "error":
+                _ask_meta["guards"].append("figure-provenance:error")
+        elif answer and _route_is_factual:
+            _ask_meta["guards"].append(
+                "figure-provenance:skipped-" + ("image" if _fp_images else "grounded"))
+    except Exception as _fpe:
+        log.warning(f"/ask: figure provenance guard failed (non-fatal): {_fpe}")
     return (answer, grounding_metadata, response)
 
 

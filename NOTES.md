@@ -1394,3 +1394,42 @@ names the stakes), not a recital of the rows.
 Cost: one Sleeper composite (~4 KB) instead of one narrow slice
 (~0.7 KB) per league question, inside the prompt budget, and each
 follow-up tool call it replaces was a full model round.
+
+## 2026-09-03 — Figure provenance: a number with no source loses its line
+
+Owner, after the LULU answers: "do it then as long as it doesn't break
+again." The grounding backstop only fires on shapes it recognises;
+this check is shape-blind. Every figure in a FACT answer must appear
+in the evidence the turn saw (injected blocks, function_response
+payloads, sandbox output, the question, chat context, prior answers)
+or the bullet or sentence carrying it is removed.
+
+`discord_bot/figure_provenance.py` is pure: no I/O, no model. It
+tolerates rounding (21.4 vs 21.36), percent forms (8.1% vs 0.081) and
+scale (2.46B vs 2460000000 vs "$2.46 billion"), and ignores weeks,
+ordinals, times, dates, years, index names and option symbols. The
+ladder calls it LAST, after the grounded retries, only on FACT answers
+with no web grounding (a grounded answer's sources are the footer and
+the SDK's chunks carry no snippet text to check against).
+
+"Doesn't break again" is built in three ways. `check()` is total and
+returns the answer untouched on any internal error, and the ladder
+call sits in its own try/except. When every line carries an unsourced
+figure the guard does not strip (that would ship nothing); it appends
+the existing unverified hedge and stamps `figure-provenance:all-
+unsourced` so QC sees it. And the tests run the real code on the real
+answers that motivated it: bulch's LULU answer keeps its three sourced
+lines and loses the invented "10.2% historical" line; SansDE's answer,
+unsourced on every line, is left whole with the hedge.
+
+`bot._ask_evidence_text` is module-level and tested on real SDK Part
+objects, the same discipline as `_ask_prefetch_plan` after the
+2026-09-03 incident: the line between the model and the reply is not
+allowed to be an inline expression no test can reach.
+
+Two exemptions from the blast-radius sweep over the day's 23 real
+answers. A turn that carried an image is skipped: figures read off an
+attached chart have no text to match. And the WHO'S TALKING dossiers
+are excluded from the evidence: their scores and message counts made a
+Kalshi "54%" look sourced. Chat context, the bot's prior answers and
+the question stay in.
