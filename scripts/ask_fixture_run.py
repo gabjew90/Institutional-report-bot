@@ -376,22 +376,22 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         thinking_config=types.ThinkingConfig(
             thinking_budget=HARNESS_THINKING_BUDGET),
     )
-    # Mirror of production's deterministic slate prefetch (bot.py phase
-    # 2, 2026-09-01): a "who reports today" question gets the slate
-    # injected BEFORE the model chooses a tool, from the fixture's stub.
+    # Mirror of production's deterministic router (bot.py phases 0-2,
+    # 2026-09-02): the same shape decides the tool list and the
+    # mandatory prefetch, with the fixture's tool_stubs standing in for
+    # the executors. A fixture without a stub for a prefetched tool gets
+    # an error payload, which is what production would inject if the
+    # feed were down.
+    from discord_bot import ask_router as _ask_router
+    _route = _ask_router.classify(fx.get("question") or "")
+    cfg.tools = _ask_router.filter_tools(_route, list(tools))
     _prefetched: list[str] = []
-    from discord_bot.bot import _is_earnings_slate_question
-    if _is_earnings_slate_question(fx.get("question") or ""):
-        _stub = (fx.get("tool_stubs") or {}).get("lookup_earnings_slate") or {
-            "status": "error", "error": "fixture has no lookup_earnings_slate stub"}
-        contents.append(types.Content(role="user", parts=[types.Part.from_text(text=(
-            "[EARNINGS SLATE " + chr(8212) + " system-fetched from the same feed as the calendar "
-            "sheet. This list is authoritative: answer from it, lead with the biggest "
-            "names, and do not substitute a search-engine list. session_confirmed=false "
-            "means the timing is not stamped yet, not that the company is absent. "
-            "status=error means the feed is down: say so.]" + chr(10)
-            + json.dumps(_stub, default=str)[:6000]))]))
-        _prefetched.append("lookup_earnings_slate")
+    for _pf_tool, _pf_args in _route.prefetch:
+        _stub = (fx.get("tool_stubs") or {}).get(_pf_tool) or {
+            "status": "error", "error": f"fixture has no {_pf_tool} stub"}
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(
+            text=_ask_router.inject_text(_pf_tool, _stub))]))
+        _prefetched.append(_pf_tool)
 
     resp = client.models.generate_content(
         model=model, contents=contents, config=cfg)

@@ -303,21 +303,22 @@ def test_prompt_google_default_rule():
     _ok("prompt: binding GOOGLE IS THE DEFAULT rule with GEO anchor")
 
 
-def test_prompt_routing_list_updated():
-    """The Type-1 routing list must route earnings dates to the new
-    tool and macro print NUMBERS to lookup_economic_calendar (the old
-    list still said macro prints → Google, contradicting §7)."""
-    from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
-    anchor = P.find("Tool routing — pick the FIRST one that applies")
-    assert anchor != -1
-    window = P[anchor:anchor + 3000]
-    assert "lookup_earnings_date" in window
-    assert "lookup_economic_calendar" in window
-    # The stale entry routed prints to Google
-    assert "data prints (CPI, NFP, retail sales, ISM, PCE), Fed " \
-        "statements" not in window
-    _ok("prompt: routing list updated (earnings date tool + macro "
-        "numbers → calendar tool)")
+# RETIRED 2026-09-02 (test_prompt_routing_list_updated): pinned the prompt's earnings-date routing bullet, which the deterministic router (discord_bot/ask_router.py) now enforces in code and the /ask policy deleted from the prompt
+# def test_prompt_routing_list_updated():
+#     """The Type-1 routing list must route earnings dates to the new
+#     tool and macro print NUMBERS to lookup_economic_calendar (the old
+#     list still said macro prints → Google, contradicting §7)."""
+#     from discord_bot.bot import _ASK_SYSTEM_INSTRUCTION as P
+#     anchor = P.find("Tool routing — pick the FIRST one that applies")
+#     assert anchor != -1
+#     window = P[anchor:anchor + 3000]
+#     assert "lookup_earnings_date" in window
+#     assert "lookup_economic_calendar" in window
+#     # The stale entry routed prints to Google
+#     assert "data prints (CPI, NFP, retail sales, ISM, PCE), Fed " \
+#         "statements" not in window
+#     _ok("prompt: routing list updated (earnings date tool + macro "
+#         "numbers → calendar tool)")
 
 
 # RETIRED 2026-09-01 (test_prompt_no_ta_rule_present): asserted literal pre-diet /ask prompt text.
@@ -426,7 +427,7 @@ if __name__ == "__main__":
     test_dispatch_map_entry_present()
     pass  # retired: test_prompt_eight_tools_and_section_8
     test_prompt_google_default_rule()
-    test_prompt_routing_list_updated()
+    pass  # retired: test_prompt_routing_list_updated
     pass  # retired: test_prompt_no_ta_rule_present
     test_prompt_corporate_event_search_and_anticonfab()
     test_prompt_ta_teaching_examples_scrubbed()

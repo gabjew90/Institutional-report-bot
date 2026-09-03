@@ -155,9 +155,9 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `inspect_db.py` | CLI for browsing DB state |
 | `main.py` | Entry point |
 
-### /ask: deterministic routing nets live in code, not the prompt
+### /ask: the deterministic router (discord_bot/ask_router.py)
 
-`_is_calendar_question` forces a grounded retry for ungrounded calendar answers. `_is_earnings_slate_question` (2026-09-01) goes further: phase 2 calls `lookup_earnings_slate` itself BEFORE the first model call and injects the result as an authoritative block, because with the tool declared the model still reached for chat search plus Google and shipped a partial list. `scripts/ask_fixture_run.py` mirrors the prefetch so fixture 49 measures the deployed behaviour. Add new nets the same way: a regex classifier with a unit test, a prefetch or forced retry in the phase, and a fixture.
+Since 2026-09-02 the question is shaped in CODE before the model sees it. `ask_router.classify()` returns a shape (earnings slate, single-ticker earnings, price, options chain, econ calendar, price history, company profile, member ledger, chat history, fantasy, historical statistic, news/why, or unknown). A recognised shape (a) restricts the declared tool list to what that shape may use (`TOOL_POLICY`, `filter_tools`; chat search is unreachable from a price question, Google from a ledger question), (b) schedules a mandatory prefetch that phase 2 executes before the first model call and injects as an authoritative block (`inject_text`), and (c) sets the WEB/LOCAL and FACT/BANTER flags without the Gemini classifier call. Unknown shapes keep the full tool list and the classifier. `scripts/ask_fixture_run.py` mirrors the router with fixture `tool_stubs`, so fixtures measure deployed routing. Add a shape by extending the regex table and `tests/test_ask_router.py` (labelled real room questions), then delete the prompt text the shape makes redundant (the policy above). The prompt's "tool-first" routing paragraphs were deleted the same day; the post-hoc grounding nets and validators stay as the backstop.
 
 ## Discord Commands
 

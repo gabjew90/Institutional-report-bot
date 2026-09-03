@@ -490,29 +490,33 @@ def upsert_market_caps(rows: list[tuple]) -> int:
 
 
 def record_calendar_posts(date_iso: str, posts: list[tuple[int, int]],
-                          lineup_hash: str) -> None:
-    """posts: [(channel_id, message_id), ...] for one sheet."""
+                          lineup_hash: str, lineup_json: str | None = None) -> None:
+    """posts: [(channel_id, message_id), ...] for one sheet. lineup_json
+    is the posted rows (symbols, sessions, moves) so a refresh can keep
+    a 3 PM price when the morning rebuild cannot price the name."""
     conn = _db.get_connection()
     conn.executemany(
         "INSERT OR REPLACE INTO calendar_posts "
-        "(date_iso, channel_id, message_id, lineup_hash) VALUES (?, ?, ?, ?)",
-        [(date_iso, int(c), int(m), lineup_hash) for c, m in posts])
+        "(date_iso, channel_id, message_id, lineup_hash, lineup_json) VALUES (?, ?, ?, ?, ?)",
+        [(date_iso, int(c), int(m), lineup_hash, lineup_json) for c, m in posts])
     conn.commit()
 
 
 def get_calendar_posts(date_iso: str) -> list[dict]:
     rows = _db.get_connection().execute(
-        "SELECT channel_id, message_id, lineup_hash, refreshed_at "
+        "SELECT channel_id, message_id, lineup_hash, refreshed_at, lineup_json "
         "FROM calendar_posts WHERE date_iso = ?", (date_iso,)).fetchall()
     return [dict(r) for r in rows]
 
 
-def mark_calendar_refreshed(date_iso: str, lineup_hash: str) -> None:
+def mark_calendar_refreshed(date_iso: str, lineup_hash: str,
+                            lineup_json: str | None = None) -> None:
     conn = _db.get_connection()
     conn.execute(
         "UPDATE calendar_posts SET lineup_hash = ?, "
+        "lineup_json = COALESCE(?, lineup_json), "
         "refreshed_at = datetime('now') WHERE date_iso = ?",
-        (lineup_hash, date_iso))
+        (lineup_hash, lineup_json, date_iso))
     conn.commit()
 
 

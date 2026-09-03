@@ -4074,7 +4074,8 @@ class _AskEarly:
 async def _ask_00_setup_tools_and_context(
     channel_id,
     profile_user_ids,
-    user_id
+    user_id,
+    question,
 ):
     """Phase 0 of /ask (split 2026-09-01; text verbatim from
     _answer_with_gemini). Parameters are the locals the original
@@ -4123,9 +4124,17 @@ async def _ask_00_setup_tools_and_context(
         )
     ]
 
-    config = types.GenerateContentConfig(
-        system_instruction=_build_runtime_system_instruction(),
-        tools=[
+    # Deterministic router (2026-09-02): shape the question in code
+    # before the model sees it. A recognised shape restricts the tool
+    # list to what that shape may use and schedules a mandatory
+    # prefetch (phase 2). Unrecognised questions keep the full list
+    # and the Gemini intent classifier (phase 1).
+    from discord_bot import ask_router as _ask_router
+    _ask_route = _ask_router.classify(
+        question, fantasy_enabled=bool((settings.sleeper_league_id or "").strip()))
+    log.info(f"/ask: route shape={_ask_route.shape} tickers={_ask_route.tickers[:4]} "
+             f"prefetch={[t for t, _ in _ask_route.prefetch]} ({_ask_route.reason})")
+    _tools_all = [
             types.Tool(google_search=types.GoogleSearch()),
             # Native code execution (2026-07-29): Google runs the
             # Python in THEIR sandbox — member-commanded code never
@@ -4152,7 +4161,10 @@ async def _ask_00_setup_tools_and_context(
             # tokens and can't be miscalled.
             *([_build_fantasy_league_tool()]
               if (settings.sleeper_league_id or "").strip() else []),
-        ],
+    ]
+    config = types.GenerateContentConfig(
+        system_instruction=_build_runtime_system_instruction(),
+        tools=_ask_router.filter_tools(_ask_route, _tools_all),
         tool_config=types.ToolConfig(
             include_server_side_tool_invocations=True,
         ),
@@ -4243,10 +4255,11 @@ async def _ask_00_setup_tools_and_context(
             log.info(
                 f"Cross-window bot-answers fetch failed (non-fatal): {e}"
             )
-    return (_prior_bot_answer_texts, config, cross_window_block, profiles_block, safety_settings, types)
+    return (_prior_bot_answer_texts, config, cross_window_block, profiles_block, safety_settings, types, _ask_route)
 
 
 async def _ask_01_build_prompt(
+    _ask_route,
     asker_display_name,
     asker_username,
     chat_context,
@@ -4349,9 +4362,15 @@ async def _ask_01_build_prompt(
     # self-data questions keep the full tool set. The post-hoc
     # grounding backstop stays only as a thin net for router
     # misclassification (it should now rarely fire).
-    needs_web, _route_is_factual = await _classify_ask_needs_web(
-        client, ask_model, safety_settings, question
-    )
+    if _ask_route.deterministic:
+        # Router decided; no classifier call (2026-09-02).
+        needs_web, _route_is_factual = _ask_route.needs_web, _ask_route.is_factual
+        log.info(f"/ask: router shape {_ask_route.shape} -> "
+                 f"{'WEB' if needs_web else 'LOCAL'}/{'FACT' if _route_is_factual else 'BANTER'}")
+    else:
+        needs_web, _route_is_factual = await _classify_ask_needs_web(
+            client, ask_model, safety_settings, question
+        )
     # Deterministic WEB override for quote/lyric completions
     # (2026-07-12): "finish the song lyrics: ..." routed LOCAL and
     # the model invented a bar ("whole team winnin'" — the real line
@@ -4447,6 +4466,7 @@ async def _ask_01_build_prompt(
 
 
 async def _ask_02_call_model_with_tools(
+    _ask_route,
     _ask_meta,
     _ask_tool_log,
     _prompt_extra,
@@ -4572,38 +4592,43 @@ async def _ask_02_call_model_with_tools(
     # final text response threw the receipt away — a correct, freshly
     # searched TSM-earnings answer stamped 'ungrounded' and shipped
     # wearing a "couldn't verify" hedge. Collect every round's chunks.
-    # Deterministic slate prefetch (2026-09-01). "Who reports today" is
-    # answered from the same feed as the calendar sheet BEFORE the model
-    # picks a tool: live, with lookup_earnings_slate declared, the model
-    # still reached for chat search plus Google and returned a partial
-    # list. Code, not prompt text (CLAUDE.md /ask policy, rule 1). The
-    # trace entry lets the grounding nets count it as a source.
-    if _is_earnings_slate_question(question):
-        import json as _json
-        _slate_date = ("tomorrow" if re.search(r"\b(tomorrow|tmrw?)\b", question or "", re.I)
-                       else "")
+    # Deterministic prefetch (2026-09-02, generalising the 2026-09-01
+    # earnings-slate prefetch). For a recognised factual shape the
+    # router's tool is called by US before the first model call and the
+    # result is injected as the authoritative block. Code, not prompt
+    # text (CLAUDE.md /ask policy, rule 1). The trace entries let the
+    # grounding nets count these as sources.
+    from discord_bot import ask_router as _ask_router
+    _prefetch_exec = {
+        _ask_router.T_SLATE: _execute_earnings_slate,
+        _ask_router.T_EDATE: _execute_earnings_date,
+        _ask_router.T_PRICE: _execute_market_price,
+        _ask_router.T_CHAIN: _execute_options_chain,
+        _ask_router.T_ECON: _execute_economic_calendar,
+        _ask_router.T_HISTORY: _execute_price_history,
+        _ask_router.T_FANTASY: _execute_fantasy_league,
+    }
+    _ask_meta["route_shape"] = _ask_route.shape
+    for _pf_tool, _pf_args in _ask_route.prefetch:
+        _pf_fn = _prefetch_exec.get(_pf_tool)
+        if _pf_fn is None:
+            continue
         try:
-            _slate = await _execute_earnings_slate({"date": _slate_date})
+            _pf_res = await _pf_fn(dict(_pf_args))
         except Exception as _e:
-            _slate = {"status": "error", "error": f"{type(_e).__name__}: {_e}"}
-        _ask_tool_log.append("lookup_earnings_slate")
+            _pf_res = {"status": "error", "error": f"{type(_e).__name__}: {_e}"}
+        if not isinstance(_pf_res, dict):
+            _pf_res = {"status": "ok", "result": _pf_res}
+        _ask_tool_log.append(_pf_tool)
         _ask_tool_trace.append({
-            "tool": "lookup_earnings_slate",
-            "args": {"date": _slate_date or "today"},
-            "status": f"prefetch:{_slate.get('status')}",
-            "result_chars": len(str(_slate)),
+            "tool": _pf_tool,
+            "args": {k: str(v)[:80] for k, v in _pf_args.items()},
+            "status": f"prefetch:{_pf_res.get('status')}",
+            "result_chars": len(str(_pf_res)),
         })
         contents.append(types.Content(
             role="user",
-            parts=[types.Part.from_text(text=(
-                "[EARNINGS SLATE — system-fetched from the same feed as "
-                "the calendar sheet. This list is authoritative: answer "
-                "from it, lead with the biggest names, and do not "
-                "substitute a search-engine list. session_confirmed=false "
-                "means the timing is not stamped yet, not that the "
-                "company is absent. status=error means the feed is down: "
-                "say so.]\n" + _json.dumps(_slate, default=str)[:6000]
-            ))],
+            parts=[types.Part.from_text(text=_ask_router.inject_text(_pf_tool, _pf_res))],
         ))
     _round_gm_chunks: list = []
     for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
@@ -7466,12 +7491,14 @@ async def _answer_with_gemini(
         )
 
     try:
-        (_prior_bot_answer_texts, config, cross_window_block, profiles_block, safety_settings, types) = await _ask_00_setup_tools_and_context(
+        (_prior_bot_answer_texts, config, cross_window_block, profiles_block, safety_settings, types, _ask_route) = await _ask_00_setup_tools_and_context(
             channel_id=channel_id,
             profile_user_ids=profile_user_ids,
             user_id=user_id,
+            question=question,
         )
         (_analysis_extra, _ask_meta, _ask_tool_log, _asker_protected, _prompt_extra, _route_is_factual, ask_model, contents, initial_parts, needs_web, profiles_for_prompt, separator, user_content) = await _ask_01_build_prompt(
+            _ask_route=_ask_route,
             asker_display_name=asker_display_name,
             asker_username=asker_username,
             chat_context=chat_context,
@@ -7488,6 +7515,7 @@ async def _answer_with_gemini(
             user_id=user_id,
         )
         _r = await _ask_02_call_model_with_tools(
+            _ask_route=_ask_route,
             _ask_meta=_ask_meta,
             _ask_tool_log=_ask_tool_log,
             _prompt_extra=_prompt_extra,

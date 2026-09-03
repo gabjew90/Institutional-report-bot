@@ -416,18 +416,23 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     # 7:30 AM ET refresh: rebuild today's sheet and, ONLY if the lineup
     # changed overnight (a session confirmed, a name added, a move now
     # priceable), edit the posted message in place. No second post.
-    scheduler.add_job(
-        _calendar_refresh_job,
-        trigger=CronTrigger(day_of_week="mon-fri", hour=7, minute=30,
-                            timezone=tz),
-        id="daily_calendar_refresh",
-        name="Daily Omnibeta calendar refresh",
-        kwargs={"bot": bot},
-        max_instances=1,
-        misfire_grace_time=1800,
-    )
+    # OFF by default since 2026-09-02 (owner: "we don't need the
+    # confirmation recheck, turn it off for now"); CALENDAR_REFRESH_ENABLED
+    # turns it back on.
+    if settings.calendar_refresh_enabled:
+        scheduler.add_job(
+            _calendar_refresh_job,
+            trigger=CronTrigger(day_of_week="mon-fri", hour=7, minute=30,
+                                timezone=tz),
+            id="daily_calendar_refresh",
+            name="Daily Omnibeta calendar refresh",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=1800,
+        )
     log.info("Daily calendar graphic active — 3:00 PM ET post for the next "
-             "session, 7:30 AM ET in-place refresh")
+             f"session; 7:30 AM ET in-place refresh "
+             f"{'ON' if settings.calendar_refresh_enabled else 'OFF'}")
 
     # Shadow-pilot workflow dispatch from the worker's clock (2026-09-02):
     # GitHub's cron dropped most pilot runs on shakedown day 1. Off until

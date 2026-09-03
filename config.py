@@ -382,6 +382,10 @@ class Settings(BaseSettings):
     # the calendar from posting anywhere. Set it to route the sheet to a
     # dedicated channel instead of the pulse channels.
     calendar_channel_ids: str = ""
+    # 7:30 AM ET in-place refresh of the posted sheet. Off by owner call
+    # 2026-09-02 ("we don't need the confirmation recheck"); the job and
+    # its tests stay so it can be turned back on with one variable.
+    calendar_refresh_enabled: bool = False
 
     # Channel reminder system — the daily 3:45 PM ET job posts due
     # calendar reminders (reminders/calendar.json) to this channel.

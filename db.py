@@ -62,6 +62,7 @@ def _ensure_schema(conn: sqlite3.Connection) -> None:
         _migrate_add_lean_prev_seen(conn)
         try:
             _migrate_pdf_query_surface(conn)
+            _migrate_calendar_posts_lineup(conn)
         except Exception as e:  # never block boot on a query-surface migration
             log.warning(f"pdf query-surface migration skipped: {e}")
         _schema_ready = True
@@ -295,6 +296,7 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             channel_id INTEGER NOT NULL,
             message_id INTEGER NOT NULL,
             lineup_hash TEXT NOT NULL,
+            lineup_json TEXT,
             posted_at TEXT NOT NULL DEFAULT (datetime('now')),
             refreshed_at TEXT,
             PRIMARY KEY (date_iso, channel_id)
@@ -970,6 +972,18 @@ def _migrate_add_extraction_source(conn: sqlite3.Connection) -> None:
 
 # --- Analyses ---
 
+
+
+def _migrate_calendar_posts_lineup(conn) -> None:
+    """calendar_posts.lineup_json (2026-09-02): the posted rows, so a
+    refresh never downgrades a priced move to a dash. Idempotent."""
+    try:
+        cols = {r[1] for r in conn.execute("PRAGMA table_info(calendar_posts)")}
+        if cols and "lineup_json" not in cols:
+            conn.execute("ALTER TABLE calendar_posts ADD COLUMN lineup_json TEXT")
+            conn.commit()
+    except Exception as e:  # never block boot
+        log.warning(f"calendar_posts.lineup_json migration skipped: {e}")
 
 
 def _migrate_pdf_query_surface(conn) -> None:

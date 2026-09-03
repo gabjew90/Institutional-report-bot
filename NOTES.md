@@ -1043,3 +1043,24 @@ that column information rather than a trade. Quotes are live at 3 PM,
 which is better for the pricer than closing quotes anyway. The 7:30 AM
 ET in-place refresh is unchanged.
 
+## 2026-09-02 — /ask structural fix 1: the deterministic router
+
+Owner asked for the long-term fix behind the recurring /ask findings.
+Every one of them was the model answering a data question from memory
+or reaching for the wrong tool, both decided before it wrote a word.
+discord_bot/ask_router.py now shapes the question in code (thirteen
+shapes, regex tables, tested against the room's own questions from the
+08-31 to 09-02 logs), restricts the declared tools per shape, prefetches
+the shape's tool before the first model call and injects the result as
+the authoritative block (the earnings-slate prefetch, generalised), and
+sets WEB/FACT without the Gemini classifier for recognised shapes.
+Unknown shapes are unchanged: full tools plus the classifier.
+
+Paying deletions under the /ask policy: the prompt's HARD ROUTING RULES
+block, the tool-priority sentence, the options-first and macro-first
+paragraphs and two "search is required" bullets, 1,989 chars; the
+prompt is 48,478 chars.
+
+Not yet done, next: structural fix 2, a general figure-provenance check
+that replaces the per-shape "unforced" validators.
+
