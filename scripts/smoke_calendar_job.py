@@ -96,19 +96,19 @@ def test_holiday_still_posts_closed_card():
 
 
 def test_cron_registered_et_post_and_refresh():
-    """2026-09-01: the sheet posts at 4:20 PM ET for the NEXT session
+    """2026-09-01: the sheet posts at 3:00 PM ET for the NEXT session
     (closing option quotes still two-sided) and a 7:30 AM ET job edits it
     in place when the lineup changed. Both in the scheduler's ET tz."""
     import inspect
     src = inspect.getsource(jobs.setup_scheduler)
     post = src.split('id="daily_calendar"')[0][-600:]
-    assert 'day_of_week="mon-fri", hour=16, minute=20' in post, "post cron"
+    assert 'day_of_week="mon-fri", hour=15, minute=0' in post, "post cron"
     assert "timezone=tz" in post, "post cron must be ET"
     assert 'id="daily_calendar_refresh"' in src, "refresh job not registered"
     refresh = src.split('id="daily_calendar_refresh"')[0][-600:]
     assert 'day_of_week="mon-fri", hour=7, minute=30' in refresh, "refresh cron"
     assert "misfire_grace_time=3600" in src.split('id="daily_calendar"')[1][:400]
-    _ok("cron: 4:20 PM ET post + 7:30 AM ET refresh, misfire grace 3600")
+    _ok("cron: 3:00 PM ET post + 7:30 AM ET refresh, misfire grace 3600")
 
 
 if __name__ == "__main__":

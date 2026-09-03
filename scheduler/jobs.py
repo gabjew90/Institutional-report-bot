@@ -395,15 +395,17 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             f"05:30 {settings.timezone}"
         )
 
-    # Daily Omnibeta calendar graphic. Posts at 4:20 PM ET Mon-Fri for
-    # the NEXT trading day (2026-09-01; was 00:00 UTC). Twenty minutes
-    # after the close the closing option quotes are still two-sided, so
-    # implied moves price; by 8 PM ET market makers have pulled bids and
-    # the pricer honestly refuses. Friday's post covers Monday; holidays
-    # roll to the next session via world_context.next_trading_day.
+    # Daily Omnibeta calendar graphic. Posts at 3:00 PM ET Mon-Fri for
+    # the NEXT trading day (owner call 2026-09-02; was 4:20 PM, before
+    # that 00:00 UTC). An hour before the close so the BEFORE OPEN
+    # column is a trade, not a fact: a name reporting before tomorrow's
+    # open is only bettable during today's session, and options do not
+    # trade after hours. Quotes are live at 3 PM, so implied moves
+    # price. Friday's post covers Monday; holidays roll to the next
+    # session via world_context.next_trading_day.
     scheduler.add_job(
         _daily_calendar_job,
-        trigger=CronTrigger(day_of_week="mon-fri", hour=16, minute=20,
+        trigger=CronTrigger(day_of_week="mon-fri", hour=15, minute=0,
                             timezone=tz),
         id="daily_calendar",
         name="Daily Omnibeta calendar graphic",
@@ -424,7 +426,7 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         max_instances=1,
         misfire_grace_time=1800,
     )
-    log.info("Daily calendar graphic active — 4:20 PM ET post for the next "
+    log.info("Daily calendar graphic active — 3:00 PM ET post for the next "
              "session, 7:30 AM ET in-place refresh")
 
     # Shadow-pilot workflow dispatch from the worker's clock (2026-09-02):

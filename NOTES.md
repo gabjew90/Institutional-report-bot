@@ -1034,3 +1034,12 @@ second prints and minor series stay regular) and the renderer draws
 those rows in semibold at full brightness, the rest regular and
 dimmed.
 
+## 2026-09-02 — Calendar posts at 3:00 PM ET
+
+Owner: post an hour before the close so people can bet on the morning
+prints. Right: a BEFORE OPEN name is only bettable during today's
+session and options do not trade after hours, so the 4:20 PM post made
+that column information rather than a trade. Quotes are live at 3 PM,
+which is better for the pricer than closing quotes anyway. The 7:30 AM
+ET in-place refresh is unchanged.
+
