@@ -1942,12 +1942,18 @@ def _build_fantasy_league_tool():
                     "'transactions' (waivers/trades/FAAB, recent) | "
                     "'draft' (all picks + rosters_by_manager; USE THIS for draft grading/review/who-drafted-best questions, NOT standings, which is all zeros pre-season) | 'trending' (adds/drops across "
                     "all of Sleeper) | 'projections' (projected PPR "
-                    "points; optional `member` for their starters).\n"
+                    "points; optional `member` for their starters AND "
+                    "bench, slot-tagged) | 'situation' (requires `member`: "
+                    "that manager's whole week in one payload: roster with "
+                    "projections and slots, this week's opponent with their "
+                    "lineup, record, standings. Start here for any "
+                    "start/sit, matchup, outlook or 'how am I doing' "
+                    "question).\n"
                     "`week`: NFL week number (defaults to the current "
                     "week).\n"
                     "`member`: a Discord username/display name or "
-                    "Sleeper name, for topic='roster' or "
-                    "'projections'."
+                    "Sleeper name, for topic='roster', 'projections' or "
+                    "'situation'."
                 ),
                 parameters=types.Schema(
                     type=types.Type.OBJECT,
@@ -1957,7 +1963,7 @@ def _build_fantasy_league_tool():
                             description=(
                                 "league | standings | matchups | roster "
                                 "| transactions | draft | trending | "
-                                "projections"
+                                "projections | situation"
                             ),
                         ),
                         "week": types.Schema(

@@ -156,6 +156,33 @@ def test_projections_degrade():
     _ok("projections: degrade + member starters AND bench with slots")
 
 
+def test_situation_is_the_whole_week():
+    """2026-09-03: one payload with roster (starters + bench, projections,
+    slots), this week's opponent with their lineup, record and standings.
+    The prefetch for any league question from a manager."""
+    proj = {"4034": {"pts_ppr": 21.4}, "6794": {"pts_ppr": 18.2}, "1111": {"pts_ppr": 9.9}}
+    mus = [{"roster_id": 1, "matchup_id": 7, "points": 0},
+           {"roster_id": 8, "matchup_id": 7, "points": 0}]
+    out = _build("situation", member="bk",
+                 fetchers={"fetch_projections": lambda s, w: proj,
+                           "fetch_matchups": lambda lid, w: mus})
+    assert out["status"] == "ok", out
+    assert out["record"] == "2-0" and out["week"] == 2, out
+    rows = [(r["player"], r["pts"], r["slot"]) for r in out["roster"]["players"]]
+    assert rows == [("Ja'Marr Chase (WR, CIN)", 21.4, "starter"),
+                    ("Bijan Robinson (RB, ATL)", 18.2, "starter"),
+                    ("id:1111", 9.9, "bench")], rows
+    assert out["roster"]["projected_total"] == 39.6, out["roster"]
+    assert out["matchup"]["manager"].startswith("Tulch"), out["matchup"]
+    assert out["matchup"]["lineup"]["projected_total"] == 0, out["matchup"]
+    assert out["standings"][0]["record"] == "2-0"
+    assert "start/sit" in out["note"]
+    # unknown member degrades honestly
+    bad = _build("situation", member="nobody")
+    assert bad["status"] == "empty" and "Managers:" in bad["note"], bad
+    _ok("situation: roster+slots, opponent lineup, record, standings in one payload")
+
+
 def test_executor_unconfigured():
     import discord_bot.bot as bot_mod
     with patch.object(bot_mod.settings, "sleeper_league_id", ""):
@@ -212,6 +239,7 @@ if __name__ == "__main__":
     test_roster_member_resolution()
     test_transactions_and_empty_note()
     test_projections_degrade()
+    test_situation_is_the_whole_week()
     test_executor_unconfigured()
     test_wiring()
     test_db_cache_roundtrip()

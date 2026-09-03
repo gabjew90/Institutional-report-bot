@@ -318,28 +318,30 @@ def test_the_six_common_league_questions():
     def route(q):
         return R.classify(q, fantasy_enabled=True, channel_name=_FC, asker_manager=bk)
 
+    # A manager gets their whole week first (roster with projections
+    # and slots, opponent's lineup, record, standings); topics the
+    # situation payload lacks ride alongside.
+    sit = (R.T_FANTASY, {"topic": "situation", "member": "BK"})
     expected = {
-        # who's gonna win the match / league
-        "who's gonna win the matchup": {"topic": "matchups"},
-        "whos gonna win the league": {"topic": "standings"},
-        # how's my matchup / outlook
-        "hows my matchup": {"topic": "matchups"},
-        "hows my outlook": {"topic": "projections", "member": "BK"},
-        # compare two teams or players
-        "compare bk and declan teams": {"topic": "projections"},
-        "is puka better than nabers": {"topic": "projections"},
-        # rank a position
-        "rank the qbs": {"topic": "projections"},
-        "rank wr this week": {"topic": "projections"},
-        # who should I drop for X
-        "who should i drop for puka": {"topic": "roster", "member": "BK"},
-        # should I pick up player X
-        "should i pick up puka": {"topic": "trending"},
+        "who's gonna win the matchup": [sit],
+        "whos gonna win the league": [sit],
+        "hows my matchup": [sit],
+        "hows my outlook": [sit],
+        "compare bk and declan teams": [sit],
+        "is puka better than nabers": [sit],
+        "rank the qbs": [sit],
+        "who should i drop for puka": [sit],
+        "should i pick up puka": [sit, (R.T_FANTASY, {"topic": "trending"})],
+        "who won the draft": [sit, (R.T_FANTASY, {"topic": "draft"})],
+        "who dropped puka": [sit, (R.T_FANTASY, {"topic": "transactions"})],
     }
-    for q, args in expected.items():
+    for q, pf in expected.items():
         r = route(q)
         assert r.shape == R.FANTASY, q
-        assert r.prefetch == [(R.T_FANTASY, args)], (q, r.prefetch)
+        assert r.prefetch == pf, (q, r.prefetch)
+    # Not a manager: the narrow topic only, as before.
+    r = R.classify("who should i start this week", fantasy_enabled=True, channel_name=_FC)
+    assert r.prefetch == [(R.T_FANTASY, {"topic": "projections"})], r.prefetch
 
 
 def test_first_person_lookups_need_a_known_manager():
@@ -348,10 +350,12 @@ def test_first_person_lookups_need_a_known_manager():
     r = R.classify("whats on my roster", fantasy_enabled=True, channel_name=_FC, asker_manager="")
     assert r.shape == R.FANTASY and r.prefetch == []
     r = R.classify("whats on my roster", fantasy_enabled=True, channel_name=_FC, asker_manager="BK")
-    assert r.prefetch == [(R.T_FANTASY, {"topic": "roster", "member": "BK"})]
-    # Someone else's roster is never aimed at the asker.
+    assert r.prefetch == [(R.T_FANTASY, {"topic": "situation", "member": "BK"})]
+    # Someone else's roster: the asker's situation is still the base
+    # payload (it carries the standings and the week); the model calls
+    # roster for the named manager itself.
     r = R.classify("whats on declans roster", fantasy_enabled=True, channel_name=_FC, asker_manager="BK")
-    assert r.prefetch == [], r.prefetch
+    assert r.prefetch == [(R.T_FANTASY, {"topic": "situation", "member": "BK"})], r.prefetch
 
 
 def test_every_manager_maps_to_a_room_name():

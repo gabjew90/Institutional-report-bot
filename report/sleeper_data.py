@@ -168,6 +168,12 @@ def fetch_players_trimmed() -> list[tuple[str, str, str, str]]:
 TOPICS = (
     "league", "standings", "matchups", "roster",
     "transactions", "draft", "trending", "projections",
+    # One manager's whole week in one payload: roster with projections
+    # and slots, this week's matchup with both sides' starters, record
+    # and the standings table. The prefetch for any league question
+    # from a manager (2026-09-03, owner: "the bot should be presented
+    # with all the relevant info from the API").
+    "situation",
 )
 
 
@@ -359,6 +365,101 @@ def build_topic_payload(
                 "Roster is empty (pre-draft). Say so; do NOT invent "
                 "players."
             )
+
+    elif topic == "situation":
+        sid = _resolve_member(member or "", users_by_id)
+        if not sid:
+            return {
+                "status": "empty",
+                "note": (
+                    f"Could not match {member!r} to a league manager. "
+                    "Say so — do NOT guess. Managers: "
+                    + ", ".join(
+                        _owner_label(s, users_by_id)
+                        for s in SLEEPER_TO_DISCORD
+                    )
+                ),
+            }
+        proj = {}
+        if season:
+            try:
+                proj = fetch_projections(season, wk) or {}
+            except Exception as e:
+                log.info(f"sleeper projections failed (non-fatal): {e}")
+
+        def _pts(pid) -> float | None:
+            p = proj.get(str(pid)) or {}
+            v = p.get("pts_ppr")
+            return round(float(v), 1) if v is not None else None
+
+        def _lineup(r: dict) -> dict:
+            starters = [p for p in (r.get("starters") or []) if p]
+            bench = [p for p in (r.get("players") or []) if p not in starters]
+            names = dict(zip([str(p) for p in starters + bench],
+                             _names(starters + bench, resolver)))
+            rows = [{"player": names[str(p)], "pts": _pts(p), "slot": "starter"}
+                    for p in starters]
+            rows += [{"player": names[str(p)], "pts": _pts(p), "slot": "bench"}
+                     for p in bench]
+            total = round(sum(x["pts"] or 0 for x in rows if x["slot"] == "starter"), 1)
+            return {"players": rows, "projected_total": total}
+
+        mine = next((x for x in rosters if str(x.get("owner_id")) == sid), None)
+        if not mine:
+            return {"status": "empty",
+                    "note": "Manager matched but holds no roster — say so."}
+        out["manager"] = _owner_label(sid, users_by_id)
+        st = mine.get("settings") or {}
+        out["record"] = (f"{st.get('wins', 0)}-{st.get('losses', 0)}"
+                         + (f"-{st['ties']}" if st.get("ties") else ""))
+        out["points_for"] = st.get("fpts", 0)
+        out["waiver_budget_used"] = st.get("waiver_budget_used", 0)
+        out["roster"] = _lineup(mine)
+
+        # This week's opponent, with their lineup, so a matchup read can
+        # be argued player by player rather than total vs total.
+        opp = None
+        try:
+            mus = fetch_matchups(league_id, wk)
+            my_m = next((m for m in mus if m.get("roster_id") == mine.get("roster_id")), None)
+            if my_m and my_m.get("matchup_id") is not None:
+                other = next((m for m in mus
+                              if m.get("matchup_id") == my_m.get("matchup_id")
+                              and m.get("roster_id") != mine.get("roster_id")), None)
+                if other:
+                    opp_roster = next((x for x in rosters
+                                       if x.get("roster_id") == other.get("roster_id")), None)
+                    opp = {
+                        "manager": _owner_label(roster_owner.get(other.get("roster_id"), ""),
+                                                users_by_id),
+                        "points_so_far": other.get("points"),
+                        "my_points_so_far": my_m.get("points"),
+                        "lineup": _lineup(opp_roster) if opp_roster else None,
+                    }
+        except Exception as e:
+            log.info(f"sleeper matchups failed (non-fatal): {e}")
+        out["matchup"] = opp or {
+            "note": f"No matchup for week {wk} — the season may not have started."}
+
+        rows = []
+        for r in rosters:
+            s2 = r.get("settings") or {}
+            rows.append({
+                "manager": _owner_label(str(r.get("owner_id")), users_by_id),
+                "record": f"{s2.get('wins', 0)}-{s2.get('losses', 0)}",
+                "points_for": s2.get("fpts", 0),
+            })
+        rows.sort(key=lambda x: (-int(x["record"].split("-")[0]),
+                                 -float(x["points_for"] or 0)))
+        out["standings"] = rows
+        out["note"] = (
+            "Everything about this manager's week. Analyse from it: "
+            "start/sit is bench vs starter at an eligible slot, the "
+            "matchup is lineup vs lineup, the standings give the stakes. "
+            "Projections missing (pts null) means the endpoint was down; "
+            "say so rather than inventing numbers. Draft, transactions "
+            "and trending are separate topics."
+        )
 
     elif topic == "transactions":
         txs = []

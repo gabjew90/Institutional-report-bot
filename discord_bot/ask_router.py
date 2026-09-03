@@ -344,7 +344,7 @@ _FANTASY_CHANNEL_RE = re.compile(r"(?:fantasy|football)", re.I)
 _FOOTBALL_RE = re.compile(
     r"\b(?:nfl|qb|rb|wr|te|dst|d/st|kicker|touchdown|tds?|snap\s+count|target\s+share"
     r"|injur(?:y|ed|ies)|questionable|doubtful|\bir\b|bye\s+week|handcuff|stream(?:er|ing)?"
-    r"|start|sit|bench|flex|lineup|points?|matchup|trade|drop|add|pick\s*up|claim"
+    r"|start|sit|bench|flex|lineup|points?|matchup|trade|drop(?:ped|s)?|add(?:ed|s)?|pick(?:ed)?\s*up|claim"
     r"|bust|boom|sleeper|breakout|my\s+team|first\s+place|last\s+place"
     r"|outlook|rank(?:ed|ings?)?|tiers?|compare|versus|\bvs\.?\b|better"
     r"|gonna\s+win|whos?\s+winning|waiver|claim|stash|grab"
@@ -377,12 +377,23 @@ def _as_fantasy(r: "Route", q: str, reason: str, *,
     cannot resolve, and prefetching injected 'could not match a manager'
     as the authoritative block."""
     topic = fantasy_topic(q, default=default_topic)
-    args: dict = {"topic": topic}
-    if topic in _MEMBER_TOPICS and asker_manager and _FIRST_PERSON_RE.search(q):
-        args["member"] = asker_manager
     r.shape, r.reason = FANTASY, f"{reason} -> topic {topic or 'none'}"
-    if topic and (topic != "roster" or "member" in args):
-        r.prefetch = [(T_FANTASY, args)]
+    prefetch: list[tuple[str, dict]] = []
+    # A manager asking anything about the league gets their whole week
+    # first (roster with projections and slots, this week's opponent,
+    # record, standings). The model analyses from that instead of
+    # guessing which slice to ask for (2026-09-03, owner). Draft,
+    # transactions, trending and league settings are not in it, so
+    # those topics still ride alongside.
+    if asker_manager:
+        prefetch.append((T_FANTASY, {"topic": "situation", "member": asker_manager}))
+        if topic in ("draft", "transactions", "trending", "league"):
+            prefetch.append((T_FANTASY, {"topic": topic}))
+    else:
+        args: dict = {"topic": topic}
+        if topic and (topic != "roster"):
+            prefetch.append((T_FANTASY, args))
+    r.prefetch = prefetch
     return r
 
 
@@ -552,9 +563,12 @@ def inject_text(tool: str, result: dict) -> str:
         T_HISTORY: "PRICE HISTORY, system-fetched. Any period return or level path comes from here.",
         T_FANTASY: (
             "LEAGUE STATE, system-fetched from Sleeper for the topic named in the payload. "
-            "Authoritative over chat and SQL for that topic. If the question needs a different "
-            "slice (draft picks, matchups, a manager's roster, waivers, projections), call "
-            "lookup_fantasy_league again with that topic rather than answering from this one. "
+            "Authoritative over chat and SQL for that topic. Answer the question that was asked "
+            "from it, with the analysis it calls for (a start/sit is a call with the swap and the "
+            "projection gap, a matchup read is lineup against lineup, an outlook names the stakes), "
+            "not a recital of the rows. If the question needs a slice this payload lacks (draft "
+            "picks, waivers, trending adds, another manager's roster), call lookup_fantasy_league "
+            "again with that topic rather than answering from this one. "
             "Pre-season standings are all zeros and are not a draft result. "
             "Google may supply player news, injuries and outlooks, never league state."),
     }.get(tool, f"{tool.upper()}, system-fetched. Authoritative.")

@@ -1362,3 +1362,35 @@ The member branch now returns starters AND bench, each row tagged
 swaps where a bench player projects higher at an eligible slot and
 says so when the lineup is already optimal. League-wide rows (no
 member) are unchanged. The sleeper smoke pins the shape.
+
+## 2026-09-03 — League questions get the whole week, then the model analyses
+
+Owner: "if I'm in the fantasy channel and ask about league related
+questions, the bot should be able to do whatever bespoke analysis ...
+and be able to determine the right data to call to form a useful
+response." The router had been guessing one narrow Sleeper topic per
+question and injecting it as authoritative; the model then had to
+notice the gap and call again, and usually did not (the ten-arrows
+answer was projections with no bench; a matchup read had no opponent
+lineup to argue against).
+
+New topic `situation` (report/sleeper_data.py): one manager's whole
+week in one payload. Roster with projections and `slot` tags (starter
+or bench), this week's opponent with their lineup and projected total,
+the manager's record and points, the standings table, and a note that
+says what analysis each part supports. Verified against the live
+league for BK: 3.8 KB, 15 roster rows, 135.1 projected vs Cemini+SV
+136.3, the same numbers the bot had quoted.
+
+Router: any fantasy-shaped question from a known manager prefetches
+`situation` for the asker first. Draft, transactions, trending and
+league settings are not in it, so those topics ride alongside when the
+question names them. A non-manager keeps the narrow-topic prefetch.
+The injected lead now says to answer the question that was asked with
+the analysis it calls for (a start/sit is a call with the swap and the
+projection gap; a matchup read is lineup against lineup; an outlook
+names the stakes), not a recital of the rows.
+
+Cost: one Sleeper composite (~4 KB) instead of one narrow slice
+(~0.7 KB) per league question, inside the prompt budget, and each
+follow-up tool call it replaces was a full model round.
