@@ -1172,3 +1172,45 @@ posters. Light posters whose whole history fit under the 1500 cap kept
 it, which is exactly the split in the data (BK: 364 fantasy messages,
 nothing in his dossier; D3clan: 41, present). Not fixed yet: the floor
 should spread across the window instead of taking the tail.
+
+## 2026-09-03 — The football channel decides the route
+
+Owner: "can't you just make it that if the asker is asking in the
+football channel, it's gonna be about the sleeper fantasy". Yes, and it
+is the stronger signal. `classify()` now takes `channel_name`
+(`_answer_with_gemini` already had it, both call sites already passed
+it, it just never reached the router).
+
+Layered so the channel is a fallback, not an override:
+
+- A question the shapes already claim keeps its shape. "whats nvda at",
+  "when is CPI", "who reports today" work the same in the football
+  channel as anywhere.
+- A question nothing claimed becomes a league question if it carries any
+  football word, using a looser list that would be reckless as a global
+  gate (start, sit, bench, points, my team, first place, record, snaps,
+  targets, injury, QB/RB/WR/TE). "hows my team looking" and "whats
+  declans record" now route.
+- Pure banter still falls through to the Gemini classifier. "you good?"
+  and "lol what" stay UNKNOWN in that channel.
+- A ledger question in the football channel is the league standing
+  unless it names trading material, so "whats declans record" is
+  standings while "abes trade log" is still the trade log.
+
+Two policy changes came with it, both required once more of the channel
+routes to FANTASY. Google is now ALLOWED on the fantasy shape: half of
+what gets asked there is player news, injuries and outlooks that the
+league tool cannot answer, and stripping the web would have made the
+channel worse, not better. League STATE still comes only from the
+injected payload, the same split PRICE uses for the number vs the why.
+And chat search joins the fantasy tool list, because the fantasy gate
+runs first and was swallowing "what did BK say about the draft".
+
+The channel fallback deliberately prefetches NOTHING when no topic word
+appears. "any injury news on CMC" has no league topic, and the old
+standings default would have labelled an irrelevant payload
+authoritative. A question that does name a topic still prefetches it.
+
+Incidental fix found while testing: `_LOWER_LEADIN_RE` required an
+apostrophe, so "whats nvda at" produced no ticker and lost the price
+route. It now accepts the bare "whats"/"hows" spelling the room types.

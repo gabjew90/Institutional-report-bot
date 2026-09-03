@@ -78,7 +78,7 @@ TOOL_POLICY: dict[str, set[str]] = {
     COMPANY_PROFILE: {T_PRICE},
     MEMBER_LEDGER: {T_TRADES, T_QUERY, T_PROFILE, T_PRICE, T_CHAT},
     CHAT_HISTORY: {T_CHAT, T_PROFILE, T_QUERY},
-    FANTASY: {T_FANTASY},
+    FANTASY: {T_FANTASY, T_CHAT},
     HISTORICAL_STAT: {T_HISTORY},
     NEWS_EVENT: {T_PRICE, T_EDATE, T_CHAIN},
     BANTER: ALL_TOOLS - {T_GOOGLE},
@@ -87,7 +87,11 @@ TOOL_POLICY: dict[str, set[str]] = {
 GOOGLE_POLICY: dict[str, bool] = {
     EARNINGS_SLATE: False, EARNINGS_DATE: True, PRICE: True, OPTIONS_CHAIN: False,
     ECON_CALENDAR: True, PRICE_HISTORY: False, COMPANY_PROFILE: True,
-    MEMBER_LEDGER: False, CHAT_HISTORY: False, FANTASY: False,
+    # Google is allowed on FANTASY: half the questions in that channel are
+    # NFL news (injuries, player outlooks) that the league tool cannot
+    # answer. League STATE still comes only from the injected payload,
+    # the same split the PRICE shape uses (2026-09-03).
+    MEMBER_LEDGER: False, CHAT_HISTORY: False, FANTASY: True,
     HISTORICAL_STAT: True, NEWS_EVENT: True, BANTER: True, UNKNOWN: True,
 }
 
@@ -188,7 +192,7 @@ def extract_tickers(text: str, *, lowercase: bool = True) -> list[str]:
 
 
 _LOWER_LEADIN_RE = re.compile(
-    r"\b(?:why\s+(?:is|are|did|was)|explain|what(?:'s| is)|how(?:'s| is)|is|odds|off|about|on|in)\s+"
+    r"\b(?:why\s+(?:is|are|did|was)|explain|what(?:'s|s| is)|how(?:'s|s| is)|is|odds|off|about|on|in)\s+"
     r"(?:the\s+)?([a-z]{2,5})\b", re.I)
 _COMMON_WORDS = {
     "the", "market", "gold", "oil", "this", "that", "it", "he", "she", "they", "we", "my",
@@ -304,13 +308,63 @@ _TOPIC_RES: list[tuple[str, "re.Pattern"]] = [
 ]
 
 
-def fantasy_topic(question: str) -> str:
-    """The Sleeper topic that answers this question. 'standings' is the
-    fallback, not the default for everything."""
+# Channel context (2026-09-03, owner: "if the asker is asking in the
+# football channel, it's gonna be about the sleeper fantasy"). Matched on
+# the name so a rename that keeps the words, or a second football
+# channel, needs no config change.
+_FANTASY_CHANNEL_RE = re.compile(r"(?:fantasy|football)", re.I)
+
+# Inside that channel the bar for "this is a league question" drops:
+# these words are too generic to gate on globally (start, bench, points,
+# my team) but in the football channel there is nothing else they can
+# mean. Only consulted when the question is otherwise UNKNOWN, so a
+# price or earnings question asked in that channel keeps its own shape.
+_FOOTBALL_RE = re.compile(
+    r"\b(?:nfl|qb|rb|wr|te|dst|d/st|kicker|touchdown|tds?|snap\s+count|target\s+share"
+    r"|injur(?:y|ed|ies)|questionable|doubtful|\bir\b|bye\s+week|handcuff|stream(?:er|ing)?"
+    r"|start|sit|bench|flex|lineup|points?|matchup|trade|drop|add|pick\s*up|claim"
+    r"|bust|boom|sleeper|breakout|my\s+team|first\s+place|last\s+place"
+    r"|who(?:'s|s| is)\s+(?:winning|losing|best|worst)|record|standings?|playoffs?"
+    r"|sunday|monday\s+night|thursday\s+night|red\s*zone|snaps?|targets?|carries)\b", re.I)
+
+# A ledger question in the football channel means the league record, not
+# the trade log, unless it names trading material.
+_TRADING_LEDGER_RE = re.compile(
+    r"\b(?:trades?|trade\s+log|book|holdings?|positions?|calls?|puts?|p&?l|pnl"
+    r"|ported|portfolio|shares?|options?|tickers?)\b", re.I)
+
+
+def in_fantasy_channel(channel_name: str | None) -> bool:
+    return bool(_FANTASY_CHANNEL_RE.search(channel_name or ""))
+
+
+def _as_fantasy(r: "Route", q: str, reason: str, *,
+                default_topic: str | None = "standings") -> "Route":
+    """Set the fantasy shape and the prefetch its topic calls for.
+
+    `default_topic=None` for the channel fallback: a question that landed
+    here only because it was asked in the football channel is a weak
+    signal, and player-news asks ("any injury news on CMC") have no
+    league topic at all. Injecting standings there would label an
+    irrelevant payload authoritative.
+
+    topic='roster' is never prefetched: it needs a manager the router
+    cannot resolve, and prefetching injected 'could not match a manager'
+    as the authoritative block."""
+    topic = fantasy_topic(q, default=default_topic)
+    r.shape, r.reason = FANTASY, f"{reason} -> topic {topic or 'none'}"
+    if topic and topic != "roster":
+        r.prefetch = [(T_FANTASY, {"topic": topic})]
+    return r
+
+
+def fantasy_topic(question: str, *, default: str | None = "standings") -> str | None:
+    """The Sleeper topic that answers this question. `default` is the
+    fallback when no topic word appears, not the answer for everything."""
     for topic, rx in _TOPIC_RES:
         if rx.search(question or ""):
             return topic
-    return "standings"
+    return default
 _STAT_RE = re.compile(
     r"\b(?:how\s+(?:has|does|did)\s+the\s+market\s+(?:do|perform|trade)|market\s+(?:performed?|history|historically)"
     r"|historically|on\s+average|average\s+(?:return|move|gain|loss)|last\s+time\s+(?:both|that|the|\S+\s+and)"
@@ -336,13 +390,15 @@ def _last_line(question: str) -> str:
     return q
 
 
-def classify(question: str, *, fantasy_enabled: bool = False) -> Route:
+def classify(question: str, *, fantasy_enabled: bool = False,
+             channel_name: str = "") -> Route:
     """Shape a question deterministically. Order matters: the more
     specific shape wins, and the ledger/chat shapes beat the data shapes
     when a member is named ("Abe's win rate on semi calls" is a ledger
     question even though it says 'calls')."""
     q = _last_line(question)
     ql = q.lower()
+    in_channel = fantasy_enabled and in_fantasy_channel(channel_name)
     tickers = extract_tickers(q)
     # Cashtag or uppercase only: a lowercase lead-in guess must not veto
     # the macro route ("when is the next fed meeting").
@@ -352,16 +408,12 @@ def classify(question: str, *, fantasy_enabled: bool = False) -> Route:
         r.shape = UNKNOWN
         return r
     if fantasy_enabled and _FANTASY_RE.search(q):
-        topic = fantasy_topic(q)
-        r.shape, r.reason = FANTASY, f"fantasy words -> topic {topic}"
-        # A roster needs a manager and the router cannot resolve one from
-        # the question. Prefetching it would inject "could not match a
-        # manager" as the authoritative block; the model calls the tool
-        # itself with the name it reads.
-        if topic != "roster":
-            r.prefetch = [(T_FANTASY, {"topic": topic})]
-        return r
+        return _as_fantasy(r, q, "fantasy words")
     if _LEDGER_RE.search(q):
+        if in_channel and not _TRADING_LEDGER_RE.search(q):
+            # "what's Declan's record" in the football channel is the
+            # league standing, not the trade log.
+            return _as_fantasy(r, q, "ledger words in the football channel")
         r.shape, r.reason = MEMBER_LEDGER, "member ledger words"
         return r
     if _CHAT_RE.search(q) and not _PUBLIC_FIGURE_RE.search(q):
@@ -413,6 +465,13 @@ def classify(question: str, *, fantasy_enabled: bool = False) -> Route:
         r.shape, r.reason = COMPANY_PROFILE, "what-does-X-do shape"
         r.prefetch = [(T_PRICE, {"symbols": [price_symbol(tickers[0])]})]
         return r
+    # Last: in the football channel a question nothing else claimed is a
+    # league question if it carries any football word. Words too generic
+    # to gate on globally (start, bench, points, my team) are safe here.
+    # Pure banter still falls through to the classifier.
+    if in_channel and _FOOTBALL_RE.search(q):
+        return _as_fantasy(r, q, "football words in the football channel",
+                           default_topic=None)
     r.shape = UNKNOWN
     return r
 
@@ -456,7 +515,8 @@ def inject_text(tool: str, result: dict) -> str:
             "Authoritative over chat and SQL for that topic. If the question needs a different "
             "slice (draft picks, matchups, a manager's roster, waivers, projections), call "
             "lookup_fantasy_league again with that topic rather than answering from this one. "
-            "Pre-season standings are all zeros and are not a draft result."),
+            "Pre-season standings are all zeros and are not a draft result. "
+            "Google may supply player news, injuries and outlooks, never league state."),
     }.get(tool, f"{tool.upper()}, system-fetched. Authoritative.")
     tail = (" status=error or empty means the source is unavailable: say so; do not fill the gap from memory."
             if status not in ("ok",) else "")

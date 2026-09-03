@@ -4054,6 +4054,7 @@ async def _ask_00_setup_tools_and_context(
     profile_user_ids,
     user_id,
     question,
+    channel_name="",
 ):
     """Phase 0 of /ask (split 2026-09-01; text verbatim from
     _answer_with_gemini). Parameters are the locals the original
@@ -4109,9 +4110,14 @@ async def _ask_00_setup_tools_and_context(
     # and the Gemini intent classifier (phase 1).
     from discord_bot import ask_router as _ask_router
     _ask_route = _ask_router.classify(
-        question, fantasy_enabled=bool((settings.sleeper_league_id or "").strip()))
+        question,
+        fantasy_enabled=bool((settings.sleeper_league_id or "").strip()),
+        # A question asked in the football channel is a league question
+        # unless a stronger shape claims it (2026-09-03, owner).
+        channel_name=channel_name or "")
     log.info(f"/ask: route shape={_ask_route.shape} tickers={_ask_route.tickers[:4]} "
-             f"prefetch={[t for t, _ in _ask_route.prefetch]} ({_ask_route.reason})")
+             f"prefetch={[t for t, _ in _ask_route.prefetch]} ({_ask_route.reason}) "
+             f"channel={channel_name or '?'}")
     _tools_all = [
             types.Tool(google_search=types.GoogleSearch()),
             # Native code execution (2026-07-29): Google runs the
@@ -7503,6 +7509,7 @@ async def _answer_with_gemini(
             profile_user_ids=profile_user_ids,
             user_id=user_id,
             question=question,
+            channel_name=channel_name,
         )
         (_analysis_extra, _ask_meta, _ask_tool_log, _asker_protected, _prompt_extra, _route_is_factual, ask_model, contents, initial_parts, needs_web, profiles_for_prompt, separator, user_content) = await _ask_01_build_prompt(
             _ask_route=_ask_route,

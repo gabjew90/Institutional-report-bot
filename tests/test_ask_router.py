@@ -258,9 +258,55 @@ def test_code_execution_survives_the_fantasy_tool_filter():
     route = R.classify("who won the draft", fantasy_enabled=True)
     kept = R.filter_tools(route, tools)
     assert any(t.code_execution for t in kept), "sandbox must stay: it is how the answer is computed"
-    assert not any(t.google_search for t in kept)
+    # Google stays for player news and injuries, which the league tool
+    # cannot answer; league STATE still comes from the injected payload.
+    assert any(t.google_search for t in kept)
     decls = {d.name for t in kept if t.function_declarations for d in t.function_declarations}
-    assert decls == {R.T_FANTASY}, decls
+    assert decls == {R.T_FANTASY, R.T_CHAT}, decls
+
+
+# 2026-09-03, owner: "if the asker is asking in the football channel,
+# it's gonna be about the sleeper fantasy".
+_FC = "🏈-fantasy-football-yapping-🏈"
+_SC = "💬-stonks-yapping-💬"
+
+
+def test_football_channel_makes_loose_questions_league_questions():
+    for q in ("hows my team looking", "whos winning this week", "whats declans record",
+              "should i bench my te", "stream a defense this week", "is bijan a good start"):
+        assert R.classify(q, fantasy_enabled=True, channel_name=_FC).shape == R.FANTASY, q
+        # Outside that channel the same words stay generic.
+        assert R.classify(q, fantasy_enabled=True, channel_name=_SC).shape != R.FANTASY, q
+    # An unambiguous phrase is a league question in any channel.
+    assert R.classify("thoughts on my flex spot", fantasy_enabled=True,
+                      channel_name=_SC).shape == R.FANTASY
+
+
+def test_football_channel_does_not_swallow_stronger_shapes_or_banter():
+    strong = {"whats nvda at": R.PRICE, "when is CPI": R.ECON_CALENDAR,
+              "who reports today": R.EARNINGS_SLATE, "abes trade log": R.MEMBER_LEDGER}
+    for q, shape in strong.items():
+        assert R.classify(q, fantasy_enabled=True, channel_name=_FC).shape == shape, q
+    for q in ("you good?", "lol what", "yo"):
+        assert R.classify(q, fantasy_enabled=True, channel_name=_FC).shape == R.UNKNOWN, q
+
+
+def test_channel_fallback_does_not_prefetch_a_guessed_topic():
+    # A player-news ask has no league topic; injecting standings would
+    # label an irrelevant payload authoritative.
+    for q in ("any injury news on cmc", "is bijan a good start", "stream a defense this week"):
+        r = R.classify(q, fantasy_enabled=True, channel_name=_FC)
+        assert r.shape == R.FANTASY and r.prefetch == [], (q, r.prefetch)
+    # One that does name a topic still prefetches it.
+    r = R.classify("whos winning this week", fantasy_enabled=True, channel_name=_FC)
+    assert r.prefetch == [(R.T_FANTASY, {"topic": "matchups"})], r.prefetch
+
+
+def test_fantasy_shape_keeps_google_and_chat_search():
+    r = R.classify("who won the draft", fantasy_enabled=True)
+    assert r.google_allowed(), "player news and injuries need the web"
+    assert R.T_CHAT in r.allowed_tools(), "'what did BK say about the draft' needs chat"
+    assert R.T_PRICE not in r.allowed_tools()
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
