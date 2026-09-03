@@ -5,39 +5,39 @@
    "id": "d3",
    "tier": "top",
    "bank": "Deutsche Bank",
-   "source_chain": "Renewed US strikes near Hormuz spike oil/gas -> higher inflation/rate expectations push global bond yields to multi-year highs -> equities fall -> Fed pricing turns more hawkish, reinforced by Barr -> softer US data (ISM, JOLTS) only briefly cools the selloff -> in-line Euro CPI/softer core doesn't stop ECB's Simkus staying hawkish -> RBNZ hike plus strong Australian GDP add to the same hawkish central-bank thread.",
-   "brief_chain": "Same chain: Iran strikes near Hormuz spike oil/gas -> yields hit multi-year highs worldwide -> equities fall -> Fed pricing turns more hawkish (Barr) -> softer US data only briefly eases the selloff -> Euro CPI flat/softer core, ECB's Simkus stays hawkish -> RBNZ hike + strong Aussie GDP add hawkish threads.",
+   "source_chain": "US strikes on Iranian targets near the Strait of Hormuz (after Iran's weekend missile attack on a US base in Jordan) and Iran's retaliation push Brent +4.60% to $94.65 and EU gas to a 3-yr high, therefore higher energy prices lift inflation/rate expectations and push global bond yields to multi-year highs, therefore equities sell off (S&P -0.71%, Stoxx -0.56%, Asia extending losses) while Fed pricing turns more hawkish (reinforced by Barr) and the ECB's Simkus stays hawkish despite in-line CPI, with RBNZ and RBA also tilting hawkish.",
+   "brief_chain": "Renewed US strikes near the Strait of Hormuz lift Brent and EU gas, therefore energy-driven inflation fears push bond yields to multi-year highs, therefore equities fall globally while Fed/ECB pricing turns more hawkish (Barr, Simkus) despite softer US data, and RBNZ/RBA also lean hawkish.",
    "distortions": [
     {
-     "what": "Brief omits that Warsh's Jackson Hole comments are cited alongside Barr's as reinforcing the hawkish Fed read.",
+     "what": "Brief frames Brent's rise as caused by the newly-reported Hormuz-area strikes; source shows the day's Brent move (+4.60% to $94.65 at the close) was already driven by 'the latest strikes at the start of the week' before the specific new US strikes near Hormuz were reported (shortly after that close).",
      "material": false,
-     "would_the_trade_change": "No - the hawkish-Fed conclusion and its cause (Barr) are both preserved; dropping a second corroborating name doesn't change the call."
+     "would_the_trade_change": "No \u2014 the risk-off, Iran-driven oil/yield thesis is identical either way; only the intra-day sequencing is compressed."
     },
     {
-     "what": "Brief drops the nuance that the UK gilt jump was partly a bank-holiday catch-up, and omits the 30yr gilt hitting a post-1998 high with Oct 28 budget context.",
+     "what": "Drops Bessent's comment that the Strait of Hormuz will be 'bypassed' in two years via land pipelines, which the source explicitly frames as a countervailing input the market ignored ('despite... Bessent... saying').",
      "material": false,
-     "would_the_trade_change": "No - supporting color, not part of the stated stance or trade logic."
+     "would_the_trade_change": "No \u2014 a dropped secondary caveat, not a driver of the day's price action or any forward call."
     }
    ],
    "material_count": 0,
    "non_material_count": 2
   },
   {
-   "id": "d2",
+   "id": "d6",
    "tier": "top",
    "bank": "Goldman Sachs",
-   "source_chain": "US strikes Iranian air defense near Hormuz while oil is already rising intraday -> Iran retaliates against military, not energy, assets -> crude/distillates/gas all break out -> commodity inflation now pulls the front end too as Fed-response odds rise, so a supply shock hits growth just as policy tightens, pressuring multiples -> Europe is most exposed (higher gas, spreading sub-NATO-threshold attacks) -> Dell/PANW hardware strength is the offsetting counterweight -> resolution hinges on energy: falling crude/gas/products lets yields stabilize and risk recover (if NFP/CPI cooperate); rising energy keeps sustained upside hard.",
-   "brief_chain": "Same chain and same resolution condition (energy falls -> stabilization; energy keeps rising -> upside much harder), with hardware named as the offset.",
+   "source_chain": "Iran strikes/response plus rising yields drive a risk-off European sales tape (S&P -71bps, oil/yields higher), therefore GS highlights a short gas-consumers/long power-price-sensitive-utilities pair on the gas spike, flags DELL's beat-and-raise (AI server demand) with a raised EPS estimate and $425 target, stays constructive on European equities on valuation/FCF yield, and upgrades Deutsche Bank to Buy on a 3-year ROTE improvement, alongside notes on BTC ETF flows and the CLARITY Act vote.",
+   "brief_chain": "Risk-off tape on Iran headlines and higher yields, therefore GS runs a gas-consumers-short/utilities-long pair, raises DELL's EPS estimate and keeps a $425 Buy target on the AI-server beat-and-raise, stays constructive on Europe, and upgrades Deutsche Bank to Buy on the ROTE story, plus BTC ETF and CLARITY Act notes.",
    "distortions": [
     {
-     "what": "Brief omits the contested '17m barrels transited Monday' claim and the reflexivity discussion (US escalating despite high prices, possible 'window until Labor Day' de-escalation).",
+     "what": "Brief says GS 'keeps Buy' on DELL; source only states the current rating and target ('BUY with $425 px target') without indicating whether this is a reiteration or a new call.",
      "material": false,
-     "would_the_trade_change": "No - the brief's own conditional (energy up vs. down) already carries the trade logic without this supporting color."
+     "would_the_trade_change": "No \u2014 the actionable call (Buy, $425) is identical regardless of whether it is a continuation or new rating."
     },
     {
-     "what": "Brief omits the OpenAI Astra / Chain-of-Thought monitorability tangent entirely.",
+     "what": "Drops the \u20ac43.75 price target attached to the Deutsche Bank Buy upgrade.",
      "material": false,
-     "would_the_trade_change": "No - unrelated side topic, not part of the rates/equities call."
+     "would_the_trade_change": "No \u2014 the upgrade call itself (Buy on ROTE improvement) is preserved; only a supporting figure is omitted."
     }
    ],
    "material_count": 0,
@@ -47,55 +47,55 @@
    "id": "d7",
    "tier": "top",
    "bank": "Goldman Sachs",
-   "source_chain": "ISM manufacturing weakens (new orders/production/employment all down) even as S&P Global's PMI revision and GS's own survey tracker show regional surveys improving; JOLTS openings rise and the jobs-workers gap ticks up to 0.3mn; construction spending falls; Q3 GDP tracking holds at +2.7%; ETF short positioning stays historically low; equities close lower Tuesday as cyclicals lag defensives amid the Iran-driven yields/oil backup (with ISM cited as an additional factor); DELL beats and raises guidance, shares indicated higher after hours.",
-   "brief_chain": "Same facts, but the brief attaches the cyclicals-lag-defensives rotation directly to the ISM print rather than to the Iran-driven yields/oil move the source names as the primary driver.",
+   "source_chain": "August ISM manufacturing misses and softens across components, while the S&P Global PMI and GS's own survey tracker paint a firmer regional picture, and JOLTS/construction data are mixed with GDP tracking unchanged, therefore Tuesday's tape sees cyclicals lag defensives amid Iran-driven higher yields/oil (with the ISM miss alongside), SPX -71bps, while DELL's beat-and-raise sends shares up after hours and GS's own ETF-short positioning stat shows unusually low shorts.",
+   "brief_chain": "ISM manufacturing misses on softer components, so cyclicals lag defensives, while PMI/GS's own tracker show regional strength despite the ISM miss; JOLTS/construction/GDP tracking are mixed but stable; equities close lower on Iran-driven yields/oil (SPX -71bps) while DELL's beat-and-raise pushes shares up after hours; ETF shorts stay near historic lows.",
    "distortions": [
     {
-     "what": "Brief's sentence structure ('...below expectations, with new orders, production and employment all lower, so cyclicals lagged defensives on the tape') implies the ISM miss caused the sector rotation, when the source's Market Update attributes it to 'rising yields/oil following the latest Iran escalation,' with ISM only mentioned 'alongside' that.",
+     "what": "Brief's sentence structure implies the ISM miss caused cyclicals to lag defensives ('...below expectations..., so cyclicals lagged defensives'); source attributes the cyclicals-vs-defensives move primarily to rising yields/oil from the Iran escalation, with the ISM print cited as running 'alongside' that, not as the driver.",
      "material": false,
-     "would_the_trade_change": "No - both underlying facts are accurately reported and neither the stance nor any trade lean/instrument changes; only the implied causal link is blurred."
+     "would_the_trade_change": "No \u2014 both the ISM miss and the cyclicals underperformance are accurately reported; only the causal ordering between two true facts is compressed, and no trade or stance turns on which one is primary."
     }
    ],
    "material_count": 0,
    "non_material_count": 1
   },
   {
-   "id": "d1",
+   "id": "d5",
    "tier": "top",
    "bank": "JPMorgan",
-   "source_chain": "Warsh's post-Jackson-Hole full-employment/inflation-too-high view makes Sep 16 live, elevating Sep 11 CPI over Friday's NFP into a good-news-is-bad-news setup -> positioning, post-Labor-Day issuance, September seasonality, and an outsized momentum drawdown (JPMPURE/JPPQMO) argue for chop rather than a dramatic pullback, while fundamentals (low recession risk, strong earnings, a max-two-hike path) stay intact -> JPM moves Tactically Cautious/Neutral, cuts net longs, goes dollar-neutral/market-neutral, expressed via +NDX/-RTY, Mag7 over AI/Memory/Semis, short credit ETFs, long VIX.",
-   "brief_chain": "Same chain and same monetization menu; picks 'dollar-neutral' as the single label for the source's 'dollar-neutral or market-neutral' pairing.",
+   "source_chain": "Falling APAC/US/EU futures on yields and oil, driven by a debated mix of geopolitics, fiscal, AI-issuance crowding-out, inflation and hawkish central-bank repricing, therefore JPM's Market Intelligence desk turns tactically cautious/neutral on global equities and takes profit on gold, but still expects an attractive Q4 given the manufacturing upturn and Asia positioning having fallen from elevated levels with resumed EM inflows, so it keeps a regional preference of long US/Asia vs Europe (with a separate tactically-bullish EU long since May now getting fresh index hedges) built around supercycle longs, plus an EM trade menu, a range-bound USD/JPY call, and a positioning wrap on HF de-grossing.",
+   "brief_chain": "Falling futures on yields/oil amid debated bond-selloff drivers, therefore the desk turns tactically cautious/neutral and takes profit on gold, but still expects an attractive Q4 on the manufacturing upturn and improving-but-still-cautious Asia positioning, keeping a long US/Asia vs Europe stance built on supercycle themes with added index hedges, alongside an EM menu, a range-bound USD/JPY call, and an HF de-grossing wrap.",
    "distortions": [
     {
-     "what": "Brief states 'dollar-neutral approach' where the source offers two options, '$-neutral or market-neutral.'",
+     "what": "Brief cites Asia positioning falling '75th percentile to the 40th' using the executive-summary figure ('today'), without flagging that the source's own detailed section states a fall to the 32nd percentile over a different stated window (mid-June to late-July) \u2014 an inconsistency inside the source itself that the brief silently resolves by picking one number.",
      "material": false,
-     "would_the_trade_change": "No - dollar-neutral is one of the two approaches the source itself names; dropping the alternative is compression, not invention."
+     "would_the_trade_change": "No \u2014 both figures support the same qualitative read (positioning down from an elevated level, room to keep buying); the specific percentile doesn't change the medium-term-long call."
     },
     {
-     "what": "Brief's 'four further inputs' correctly lists items (ii)-(v) but silently drops item (vi), the AVGO-earnings caveat, from the source's six-point list.",
+     "what": "Brief merges the relative regional call ('long US/Asia vs Europe') with the note that 'index hedges' are being added, without preserving that the source's incremental hedge ('adding cheap index hedges now') applies specifically to a separate, since-May tactical EU long turning more cautious, not to the supercycle-longs bucket (which the source says is already hedged via momentum options).",
      "material": false,
-     "would_the_trade_change": "No - AVGO earnings risk is a minor caveat on the bull case, not part of the core stance or monetization menu."
+     "would_the_trade_change": "No \u2014 the overall portfolio stance (long US/Asia relative to Europe, hedged, still long supercycle themes) is unchanged; only which specific position the newest hedge attaches to is blurred."
     }
    ],
    "material_count": 0,
    "non_material_count": 2
   },
   {
-   "id": "d8",
+   "id": "d9",
    "tier": "rest",
-   "bank": "TS Lombard",
-   "source_chain": "Warsh assigns the Fed sole responsibility for inflation and avoids blaming government, quieting Fed-Treasury-accord worries but leaving long yields unmoved and the market pricing only 68% hike odds (vs ~95% typical two weeks out) because softening leading data (ISM orders, JOLTS quits, consumer confidence) points to lower inflation -> standard Taylor Rule inputs say funds rate should be over 5%, but the Dallas Fed's 6M trimmed-mean measure says the rate is already about right -> rising 10-year yields reflect deficits/capex/post-suppression normalization, not US credit stress, since peer-country yields moved similarly while only credit-sensitive France/Italy spreads widened -> the live question is whether Warsh can find room in Aug CPI/PPI/employment data to push the FOMC to wait until December to hike; the author thinks he finds that room for 'another month or two' and still recommends cheap portfolio insurance.",
-   "brief_chain": "Same chain, but concludes the author expects Warsh to 'hold rates through year-end.'",
+   "bank": "The Market Ear",
+   "source_chain": "Systematic/CTA positioning is already high with vol-control allocations maxed at the 100th percentile, and BofA's model shows systematic strategies would sell in both down and up markets ($163bn down, $9bn even in an up market), therefore there is little incremental buying capacity left even as GS's own conditional projections corroborate a violent down-market unwind, and with McElligott calling the vol collapse 'epic' and warning of possible major losses, plus peak buybacks about to fade into the September blackout window, the flow backdrop is a headwind regardless of market direction.",
+   "brief_chain": "Systematic positioning is high and vol-control allocations are maxed out, and BofA shows large selling in a down market versus buying in an up market, therefore GS's conditional projections corroborate limited upside support and a violent downside unwind, and with vol collapse called 'epic' and possible trading losses flagged, plus buybacks fading into the blackout window, flows are becoming a headwind.",
    "distortions": [
     {
-     "what": "Brief says the author expects Warsh to 'hold rates through year-end.' The source's actual language is narrower - Warsh finds wiggle room 'to hold rates constant for another month or two' - and the surrounding paragraph frames the live question as whether he can push the FOMC to 'wait until December to hike,' meaning a December hike is the outcome the piece is actually weighing, not ruling out.",
+     "what": "Brief states BofA models '$9bn bought in an up market'; the source states BofA models systematic strategies would SELL $9bn even in an up market ('sell $163bn in a down market... and sell $9bn in an up market'). This inverts the sign of the up-market flow estimate.",
      "material": true,
-     "would_the_trade_change": "Yes - a reader positioning off 'hold through year-end' would price out all 2026 hike risk including the Dec 9 FOMC, while the source leaves a December hike as the live resolution under discussion, which changes how a rates trade into that meeting should be sized."
+     "would_the_trade_change": "Yes \u2014 the source's whole thesis is that there is 'not much incremental buying left' because systematics sell in down, flat, AND up scenarios; the brief's reversed figure implies real buying support exists in an up market, which contradicts the note's core no-buying-power warning and would change how a reader weighs upside flow support versus downside unwind risk."
     },
     {
-     "what": "Brief omits Bessent's Tuesday TV comments (Treasury purchases affect cadence not direction; price shocks aren't a first-order Fed concern).",
+     "what": "Brief softens McElligott's warning of 'major trading losses may soon surface' to 'warns of possible trading losses,' dropping both the 'major' magnitude and the near-term timing.",
      "material": false,
-     "would_the_trade_change": "No - supporting color that reinforces the same 'no urgent hike' thesis already captured."
+     "would_the_trade_change": "No \u2014 the directional warning (vol collapse raises the risk of losses) survives; only its emphasis is diluted."
     }
    ],
    "material_count": 1,

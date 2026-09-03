@@ -4,129 +4,129 @@
  "sentences": [
   {
    "id": "s1",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15218__early-morning-reid-macro-strategy.txt",
-   "span": "settled +1.04% higher at $95.63/bbl. This morning we're -0.39% lower at $95.29/bbl.",
-   "why": "The $94.65/+4.60% figure is Tuesday's close per the 09-02 DB note (a day earlier than labeled), and the 'early this morning' +0.67% to $95.28 is actually that note's Wednesday-morning read. The genuinely current read (Thursday morning, per the 09-03 DB note) has Wednesday's close at $95.63 (+1.04%) and this morning down -0.39% to $95.29 \u2014 the opposite direction from what the sentence claims for 'this morning.'"
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
+   "span": "the 10yr (+4.8bps to 4.80%) Treasury yield reached its highest level since October 2023, while 2yr (+5.8bps to 4.40%) reached its highest level since July 2024",
+   "why": "DB's Early Morning Reid note reports both figures exactly: 10yr at a post-2023 high of 4.80% and 2yr at 4.40%, highest since July 2024."
   },
   {
    "id": "s2",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15138__goal-global-opportunity-asset-locator-rotation-moderation.txt",
-   "span": "our commodities team still expects crude prices to decline below market forwards by year-end. Their baseline forecast is for Brent to fall to US$80/bbl by December",
-   "why": "No Goldman document frames this as 'the bad version of an energy move' or as growth-hit-plus-Fed-tightening. The identifiable Goldman house view (GOAL) is the opposite: oil forecast to fall to $80 by December, Fed expected to hold, cyclical backdrop called 'resilient to the energy shock.'"
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+   "span": "higher commodity inflation is now pulling the front end with it as the market prices a greater chance the Fed actually responds",
+   "why": "Author byline is 'Rich Privorotsky \u00b7 Goldman Sachs \u00b7 Equity Sales / Basics', matching the 'Goldman's equity sales desk' attribution, and the fuel-to-front-end-yields-to-priced-Fed-response mechanism is stated directly."
   },
   {
    "id": "s3",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "Stay constructive into year end: earnings remain a tailwind on strong activity momentum, bond markets to be contained as inflation does not get de-anchored",
-   "why": "The bullish-on-yields view attributed to 'Morgan's global strategy team' is JPMorgan's Equity Strategy note (source field: JPMorgan), not Morgan Stanley \u2014 no Morgan Stanley document exists anywhere in the source set. 'Morgan's' misattributes the bank."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+   "span": "side-note: Trading as if they were the same asset. if we want relief on rates we first need relief on energy.",
+   "why": "Near-verbatim match to the note's side-note under a heating-oil-vs-10yr-yield chart."
   },
   {
    "id": "s4",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "the impact on oil might get more muted, supply is likely to be structurally higher, and if one joins selling during derisking episodes, one risks being whipsawed",
-   "why": "The conditional recovery framing matches JPM's 'buy the dip' stance; Friday payrolls and Sep 11 CPI are corroborated as the named near-term catalysts in JPM's day-2 briefings (15095/15226/15227: 'CPI on Sep 11')."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+   "span": "If energy keeps rising, the Fed reaction function gets dragged with it and sustained upside becomes much harder.",
+   "why": "Direct match, same Goldman equity sales desk author as s2; 'sustained equity upside' is a fair gloss of 'sustained upside' given the surrounding risk-assets context."
   },
   {
    "id": "s5",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "we might see a proverbial \"escalation in order to de-escalate\", but the impact on oil might get more muted, supply is likely to be structurally higher",
-   "why": "Matches JPM's escalation-to-de-escalate framing and supply-normalizing view."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+   "span": "if we want relief on rates we first need relief on energy",
+   "why": "Rhetorical restatement with no distinct checkable content of its own; the stance it restates (resolution comes from an energy price move, not argument) matches this Goldman note's actual position."
   },
   {
    "id": "s6",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "If crude, gas and product prices come down, yields can stabilize and risk assets recover",
-   "why": "Direct logical converse of the same JPM conditional already stated in s4/s5 \u2014 if the recovery condition is prices coming down, the sentence's converse (energy keeps climbing -> upside harder) is a faithful restatement of the same source logic."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15105__gs-privorotsky-basics-200-eps-growth-germany-eastern-europe-.txt",
+   "span": "If the administration can get crude, gas and product prices lower, yields can stabilize and risk has a path to recover\u2026 provided NFP/CPI cooperate.",
+   "why": "Faithful paraphrase of the same conditional (NFP=payrolls, CPI=inflation); 'refined product' and 'come down' don't change the substance."
   },
   {
    "id": "s7",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
-   "span": "if Harlan is right that the F27 AI backlog exceeds $150B, there is room \u2014 eventually \u2014 for Hock to wrong-foot the bears, though it is probably too early to expect that this quarter",
-   "why": "Matches source almost verbatim, including the $120B guide consensus landing zone mentioned two paragraphs earlier in the same file."
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15227__us-market-intelligence-morning-briefing.txt",
+   "span": "NFP and CPI are the critical inputs with CPI on Sep 11 the more important of the two prints given Warsh's view that the US is at full employment ad Friday's print is unlikely to drive a material change",
+   "why": "Source is J.P. Morgan (the same artifact uses 'J.P.' for JPMorgan in s11, so bare 'Morgan' misattributes this to a different, non-existent-in-corpus bank), and JPM ranks CPI ABOVE payrolls for the Fed meeting -- the opposite of the sentence's claim that payrolls rates above CPI. No TS Lombard file in the corpus mentions payrolls as 'the deciding data point' either."
   },
   {
    "id": "s8",
-   "grade": "unsupported",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "none found",
-   "span": "",
-   "why": "No source document (including the 09-03 JPM AVGO recaps, DB Early Morning Reid, or any other file in the corpus) contains the figures $74B, $60B, $192B, $165-169B, $60.9B, $24B, or a $95B backlog. These specific post-earnings figures do not appear anywhere in the sampled source texts."
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15227__us-market-intelligence-morning-briefing.txt",
+   "span": "For SPX index options expiring on September 4, 2026, using data from August 31, show a 1.1% implied move.",
+   "why": "Exact match (J.P. Morgan Market Intelligence); the sentence is a faithful, compressed restatement."
   },
   {
    "id": "s9",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
-   "span": "Philadelphia Semiconductor Stock Exchange Index (-2.14%), followed by the Nasdaq",
-   "why": "SOX -2.14% confirmed verbatim; the DRAM fund -$0.9Bn 'first weekly outflow since launch' (JPM 15095) supports 'memory-chip funds' losing their first weekly outflow at $0.9 billion."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15117__lack-of-consistent-direction-the-complete-flows-technicals-a.txt",
+   "span": "Activity across our desk slightly moderated last week, reflecting a natural deceleration ... Looking ahead, we estimate the Q3 blackout window will begin ~9/15, when roughly ~40% of the S&P 500 is estimated to enter their quiet period",
+   "why": "Goldman's buyback desk describes volumes as moderating/decelerating (calling the corporate bid 'a cushion'), the reverse of 'near their peak,' and the blackout window is a discrete future start date (~9/15), not something currently 'expanding.'"
   },
   {
    "id": "s10",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "Our pecking order into year end is Semis over hyperscalers over AI at risk plays.",
-   "why": "The ranking and the Mag7-preference-because-chips-can't-hold-a-bid content are both accurately drawn from JPMorgan sources (15089 and 15095), but attributed to 'Morgan' \u2014 misattributing JPMorgan's view to a different bank (Morgan Stanley), which is absent from the source set entirely."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15099__gs-us-daily-download-2-sep-2026.txt",
+   "span": "After the bell, DELL shares are indicated +8.4% higher following strong EPS.",
+   "why": "Exact figure and timing match Goldman's US Daily Download note on DELL's post-earnings reaction; the sentence omits the ticker but doesn't misstate figure or direction."
   },
   {
    "id": "s11",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15094__sell-sell-or-sell.txt",
-   "span": "around peak machine-driven buyback activity now, just as the blackout window begins to expand",
-   "why": "Matches directly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+   "span": "Consensus models Revenue +33%QoQ & +85%YoY, and my buyside survey shows even higher expectations of +36% & +89%",
+   "why": "Figures match exactly (33% QoQ, 85% YoY consensus); the trailing 'while J.P.' correctly sets up JPMorgan's own higher buyside-survey figure. Sentence is truncated in the sample but what's present is accurate."
   },
   {
    "id": "s12",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
-   "span": "screens as the worst performing month for the SPX followed by Q4 being the strongest quarter of the year",
-   "why": "Verbatim match."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15103__duttenhoefers-daily-2-sep-2026.txt",
+   "span": "our GS EU Nat Gas Consumers basket is composed of European companies expected to underperform with rising natural gas prices; ticker is GSXETTFX Index and basket includes 51 stocks; on the long side, we highlight our GS EU Power Price Sensitive Utilities basket (GSXEPWPR Index, 16 stocks)",
+   "why": "Bank, stock counts (51 short / 16 long), and the higher-power-prices-benefits-utilities logic all match exactly; 'the region' = Europe per the surrounding TTF gas-price context."
   },
   {
    "id": "s13",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15087__international-market-intelligence-morning-briefing.txt",
-   "span": "JPM Research's aggregate measure of investor positioning in Asia has fallen from the 75th percentile in late June to the 40th today. The biggest Q2 shift in long-only positioning was a sharp cut to tech in Korea and Taiwan",
-   "why": "The percentile figures and Korea/Taiwan cut are accurate, but the source is explicitly 'JPM Research' within a JPMorgan-authored briefing \u2014 attributing this to 'its Asia team' following 'Morgan' misattributes the bank."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
+   "span": "the economy expanded 0.4% quarter-on-quarter in Q2, surpassing expectations of 0.3% growth. On an annual basis, GDP rose 2.1%, ahead of the consensus estimate of 1.8% ... the yield on policy-sensitive three-year government bond is currently +7.5bps to 4.79%, as investors increased bets that the RBA's tightening cycle could extend",
+   "why": "Every figure matches exactly and the RBA-hike-bets framing is accurate."
   },
   {
    "id": "s14",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "Gold was everyone's favourite long in January, only to become shunned as it fell back 20-25%",
-   "why": "Direct match; the closing interpretive clause is a fair characterization of a safe-haven asset falling during an active war, consistent with the surrounding source discussion of gold's headwinds despite geopolitical risk."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+   "span": "keep an eye on gold to see if $4,300 acts as support",
+   "why": "The $4,300 support level is real, but the source is J.P. Morgan, not 'Morgan' -- the source corpus consistently self-identifies as 'JP Morgan'/'J.P. Morgan', never bare 'Morgan', and this same artifact uses 'J.P.' for JPMorgan in s11, so unqualified 'Morgan' misattributes the call."
   },
   {
    "id": "s15",
    "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15218__early-morning-reid-macro-strategy.txt",
-   "span": "(Dollar Index^ @ 99.40 // -0.30%)",
-   "why": "The 99.79/+0.44% figure is the header stat from the 09-02 DB note (a day-earlier reading, itself describing the prior day's close-to-close move). The current-day (09-03) DB note's header shows the dollar index at 99.40, down -0.30%, the opposite direction from what 'for now... up 0.44%' claims."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
+   "span": "We continue to think this is an opportunity to add again, looking for debasement trade to resume",
+   "why": "Both halves of the described split (strategy team buy-the-dip / US desk expecting the debasement trade to struggle until the Sep 16 Fed meeting) trace to J.P. Morgan documents, but the sentence attributes them to 'Morgan' -- misattribution for the same reason as s14."
   }
  ],
- "faithful": 8,
- "distorted": 6,
- "unsupported": 1,
- "faithful_rate": 0.533,
+ "faithful": 11,
+ "distorted": 4,
+ "unsupported": 0,
+ "faithful_rate": 0.733,
  "dim": "fidelity",
  "agent": "b",
  "provenance": {

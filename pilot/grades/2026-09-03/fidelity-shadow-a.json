@@ -7,126 +7,126 @@
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
-   "span": "Brent crude (+4.60%) was up to $94.65/bbl by the close...European natural gas futures (+3.30%) hit a 3-year high of \u20ac72.22/MWh...oil prices are further +0.67% higher trading at $95.28/bbl",
-   "why": "All three figures (Brent close, overnight move, nat gas high) match exactly. 'Diesel, gasoil and heating oil broke out alongside it' is corroborated by 15105 ('distillate/gasoil/diesel...have all broken out') and 15121 ('Heating Oil, Gasoline, and Diesel all soaring')."
+   "span": "the 10yr (+4.8bps to 4.80%) Treasury yield reached its highest level since October 2023, while 2yr (+5.8bps to 4.40%) reached its highest level since July 2024",
+   "why": "Exact match on both figures and both 'highest since' anchors (Oct 2023 for the 10yr, July 2024 for the 2yr)."
   },
   {
    "id": "s2",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-02/15115__everything-changed-but-goldman-partner-says-markets-didn-t-c.txt",
    "span": "Oil remaining sticky high\u2026and in effect Iran fighting a war of inflation and rate hike pressure on the US.",
-   "why": "This is the closest Goldman Sachs material tying oil to Fed-hike pressure, but nowhere does a GS source in this set say the shock 'hurts growth' or frames it as bad for equity multiples/P-E. No GS document states this 'bad version of an energy move' framing; it is an invented analytical gloss layered onto a real but narrower GS remark."
+   "why": "Goldman Sachs partner Bobby Molavi (equity sales/trading) explicitly links persistently high oil to inflation and rate-hike pressure; the accompanying rise of the 2yr yield to a July-2024 high on the same energy shock (15086) corroborates the short-end mechanism."
   },
   {
    "id": "s3",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "we do not expect rising bond yields to present an insurmountable obstacle for stocks",
-   "why": "Content is genuinely JPMorgan's ('Stay constructive into year end'), matching the 'reads yields the other way' framing, but every JPMorgan document in this set is labeled source 'JPMorgan' \u2014 no 'Morgan Stanley' document exists anywhere in the day's sources. Calling the bank 'Morgan' is a real misattribution risk since market shorthand normally reserves 'Morgan' for Morgan Stanley (JPM is 'JPM')."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15120__from-conflict-to-crowding-out-global-bond-yields-soar-to-200.txt",
+   "span": "spot the difference between heating oil price and the 10Y Treasury yield...",
+   "why": "The source's own chart tease frames heating oil and the 10Y yield as moving in lockstep, supporting the 'trading as if the same asset' framing and the implied logic that rate relief needs fuel relief first."
   },
   {
    "id": "s4",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15226__jpm-market-intel-morning-update-september-3-2026.txt",
-   "span": "SEP 4 \u2013 NFP, Unemployment Rate and Average Hourly Earnings at 8.30am ET...CPI on Sep 11 the more important of the two prints",
-   "why": "NFP on Friday Sep 4 and CPI on Sep 11 both check out exactly. The conditional logic (soft data needed for risk assets to recover) matches the source's 'Good News is Bad News' framing, where a stronger NFP pushes yields higher."
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15255__duttenhoefers-daily-3-sep-2026.txt",
+   "span": "modestly pro-risk for 12m, with Overweight equities...sustained, healthy earnings growth should support equity outperformance versus bonds and credit over 12m",
+   "why": "This is Goldman's actual equity-sales desk note (Duttenhoefer). Its asset allocation is Overweight equities/pro-risk with earnings growth supporting outperformance \u2014 the opposite of the 'cautious...sustained equity upside gets much harder' read the sentence attributes to Goldman's sales desk."
   },
   {
    "id": "s5",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "Our Commodities team sees Gulf supply normalizing more slowly than assumed. Commercial flows are running at just 50%",
-   "why": "The 'shipping flows may already be normalizing' claim traces to GS's Privorotsky note citing a Chris Wright 17m-barrel figure explicitly flagged there as 'heavily debated.' JPMorgan's own commodities desk states the opposite \u2014 flows normalizing slower than assumed, at only 50%. The sentence asserts as likely-true a disputed, minority claim while dropping the sourced caveat."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15120__from-conflict-to-crowding-out-global-bond-yields-soar-to-200.txt",
+   "span": "spot the difference between heating oil price and the 10Y Treasury yield...",
+   "why": "Opinion-shaped sentence; the stance that price action (not narrative) is the tell mirrors this source's own chart-based argument."
   },
   {
    "id": "s6",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "Energy equities have re-priced almost entirely in lockstep with Brent, leaving virtually no valuation buffer to absorb a pullback in crude",
-   "why": "General caveat that continued energy strength threatens equity upside is a fair, broadly-supported synthesis of the risk multiple sources (JPM, GS GOAL) raise about sustained high oil."
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15218__early-morning-reid-macro-strategy.txt",
+   "span": "The turnaround from the highs in oil was sufficient for US Treasuries to finally stabilise yesterday...questions about whether tomorrow\u2019s jobs report might also come in on the softer side",
+   "why": "Matches the causal chain (oil turnaround \u2192 yields stabilize \u2192 equities recover) and the payrolls/inflation contingency (softer ADP raising doubt about Friday's NFP and a Sept hike)."
   },
   {
    "id": "s7",
    "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
-   "span": "if Harlan is right that the F27 AI backlog exceeds $150B, there is room \u2014 eventually \u2014 for Hock to wrong-foot the bears, though it is probably too early to expect that this quarter",
-   "why": "The Harlan Sur >$150B backlog clause is faithful. But 'most survey respondents expect Hock Tan to raise the FY27 AI revenue guide toward $120 billion' has no source anywhere in the document set \u2014 the actual survey text says buyside is 5% below consensus for F28 AI revenue and gives no $120B figure; Hock Tan is explicitly described as having 'kept his cards close to his chest on any raise to the guide.'"
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15226__jpm-market-intel-morning-update-september-3-2026.txt",
+   "span": "I think the print has minimal impact on the Fed decision unless you see an extreme outcome, e.g. +125k or -25k jobs",
+   "why": "The only desk note discussing Friday's payrolls and the Fed meeting (JPM's US Market Intel) says NFP has minimal impact \u2014 the opposite of 'rates above' the print's importance. No Morgan Stanley source exists in the corpus, and the only TS Lombard document present (15098, Warsh And The Road Not Taken) never mentions payrolls at all."
   },
   {
    "id": "s8",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15103__duttenhoefers-daily-2-sep-2026.txt",
-   "span": "raised outlook for $74 bn in AI server revenue in F2027 (v. $60bn prior); raised its F2027 outlook...revenue up +$25bn to $192 bn (v. $165-$169bn prior)...DELL generated $60.9bn in AI orders during the quarter (v. $24bn in F1Q27), with backlog at $95bn",
-   "why": "Every figure in this sentence \u2014 the $74B/$60B AI server revenue, $192B/$165-169B total revenue, $60.9B/$24B AI orders, and $95B backlog \u2014 belongs to DELL's F2Q27 results, not Broadcom. The sentence follows directly from s7's Broadcom/Hock Tan discussion, presenting DELL's earnings figures as if they were Broadcom's."
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15226__jpm-market-intel-morning-update-september-3-2026.txt",
+   "span": "For SPX index options expiring on September 4, 2026, using data from August 31, show a 1.1% implied move.",
+   "why": "Exact match."
   },
   {
    "id": "s9",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
-   "span": "led by the Philadelphia Semiconductor Stock Exchange Index (-2.14%)",
-   "why": "SOX decline of 2.14% leading US losses matches exactly. The DRAM-fund outflow figure ('DRAM (-$0.9Bn) posted its first weekly outflow since launch', source 15095) supports the 'memory-chip funds' first-outflow claim as a fair generalization of a DRAM-themed ETF."
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-03/15165__the-extremes-are-starting-to-bite.txt",
+   "span": "We are around peak buyback activity now, and that bid is about to fade as blackout grows throughout September.",
+   "why": "Matches 'near peak' and 'blackout window expands' framing and the demand-removal conclusion."
   },
   {
    "id": "s10",
-   "grade": "distorted",
-   "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "Our pecking order into year end is Semis over hyperscalers over AI at risk plays.",
-   "why": "The chipmakers-over-cloud-over-AI-losers ranking (JPM Equity Strategy) and the Mag7 preference 'given the inability for AI / Memory / Semis to sustain a bid' (JPM US Market Intelligence, 15095) are both accurately drawn from JPMorgan. But again labeled 'Morgan,' which risks readers attributing this split view to Morgan Stanley \u2014 a bank absent from the source set entirely."
+   "grade": "faithful",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15099__gs-us-daily-download-2-sep-2026.txt",
+   "span": "After the bell, DELL shares are indicated +8.4% higher following strong EPS.",
+   "why": "Exact figure match; flagged live_market since it is an after-hours indication, though it is directly sourced here so it is not graded unsupported."
   },
   {
    "id": "s11",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15094__sell-sell-or-sell.txt",
-   "span": "We are around peak machine-driven buyback activity now, just as the blackout window begins to expand rapidly through September.",
-   "why": "Direct match. Corroborated by 15116 and 15118, both describing the buyback bid fading as blackout/quiet periods widen through September."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+   "span": "Consensus models Revenue +33%QoQ & +85%YoY, and my buyside survey shows even higher expectations of +36% & +89%",
+   "why": "Exact match on both consensus growth figures (AVGO preview)."
   },
   {
    "id": "s12",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15226__jpm-market-intel-morning-update-september-3-2026.txt",
-   "span": "September screens as the worst performing month for the SPX followed by Q4 being the strongest quarter of the year.",
-   "why": "Near-verbatim match."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15103__duttenhoefers-daily-2-sep-2026.txt",
+   "span": "our GS EU Nat Gas Consumers basket...ticker is GSXETTFX Index and basket includes 51 stocks; on the long side, we highlight our GS EU Power Price Sensitive Utilities basket (GSXEPWPR Index, 16 stocks)",
+   "why": "Exact match on both basket sizes and the short/long pairing."
   },
   {
    "id": "s13",
-   "grade": "faithful",
+   "grade": "unsupported",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15087__international-market-intelligence-morning-briefing.txt",
-   "span": "JPM Research's aggregate measure of investor positioning in Asia has fallen from the 75th percentile in late June to the 40th today. The biggest Q2 shift in long-only positioning was a sharp cut to tech in Korea and Taiwan.",
-   "why": "Figures, percentiles, and the Korea/Taiwan tech-cut detail all match exactly; the 'cautious near term, upward path beyond' read matches the source's own 'tactically cautious...attractive Q4 setup' framing and 'upward trajectory' language."
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-02/15139__gs-early-morning-research-recap-ratings-and-target-price-cha.txt",
+   "span": "Australia: 2Q2026 GDP: Resilient",
+   "why": "Only a headline reference to a Goldman Australia GDP note exists in the corpus; no document contains the actual print, the 0.3%/1.8% expectations, or the 3-year bond yield figure of 4.79% the sentence asserts."
   },
   {
    "id": "s14",
-   "grade": "faithful",
+   "grade": "unsupported",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15089__equity-strategy-stay-constructive-into-year-end.txt",
-   "span": "Gold was everyone's favourite long in January, only to become shunned as it fell back 20-25%.",
-   "why": "Direct match on both the magnitude of the decline and the January-consensus-long framing."
+   "source_file": "",
+   "span": "",
+   "why": "No source document contains a support level flagged by any desk, and no genuine Morgan Stanley note exists anywhere in the corpus for either date \u2014 every 'Morgan Stanley' string hit is either a legal boilerplate distributor line, a bio credit, or an unrelated pharma ticker list."
   },
   {
    "id": "s15",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-02/15086__early-morning-reid-macro-strategy.txt",
-   "span": "(Dollar Index^ @ 99.79 // +0.44%)",
-   "why": "Exact figure match. The 'Fed, not the conflict' framing is a reasonable synthesis given the document's own emphasis on Fed pricing/Warsh-driven hawkish repricing as the active driver alongside the oil story."
+   "source_file": "pilot-data/pilot/source-text/2026-09-02/15095__us-market-intelligence-morning-briefing.txt",
+   "span": "Until we get through the Fed Meeting on Sep 16, the Dollar Debasement trade may struggle, so makes sense to switch cash positions into derivative positions.",
+   "why": "The directional content is real and correctly split \u2014 JPM's International Market Intelligence desk (15214: 'I would still expect the trend to resume before year-end...you can't escape debasement simply selling USD') treats the pullback as a buying opportunity while JPM's US Market Intelligence desk expects the trade to struggle until the Fed meeting \u2014 but both are J.P. Morgan, not 'Morgan' (which reads as Morgan Stanley, absent from the corpus). Same who-said-it error as s7."
   }
  ],
- "faithful": 9,
- "distorted": 6,
- "unsupported": 0,
- "faithful_rate": 0.6,
+ "faithful": 10,
+ "distorted": 3,
+ "unsupported": 2,
+ "faithful_rate": 0.667,
  "dim": "fidelity",
  "agent": "a",
  "provenance": {
