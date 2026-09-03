@@ -4109,12 +4109,21 @@ async def _ask_00_setup_tools_and_context(
     # prefetch (phase 2). Unrecognised questions keep the full list
     # and the Gemini intent classifier (phase 1).
     from discord_bot import ask_router as _ask_router
+    # "how's MY matchup" can be aimed at the asker: the league mapping
+    # knows which manager a Discord id is (2026-09-03). Empty for a
+    # non-manager, which leaves the lookup league-wide.
+    try:
+        from report.sleeper_data import manager_for_discord_id as _mgr
+        _asker_manager = _mgr(user_id)
+    except Exception:
+        _asker_manager = ""
     _ask_route = _ask_router.classify(
         question,
         fantasy_enabled=bool((settings.sleeper_league_id or "").strip()),
         # A question asked in the football channel is a league question
         # unless a stronger shape claims it (2026-09-03, owner).
-        channel_name=channel_name or "")
+        channel_name=channel_name or "",
+        asker_manager=_asker_manager)
     log.info(f"/ask: route shape={_ask_route.shape} tickers={_ask_route.tickers[:4]} "
              f"prefetch={[t for t, _ in _ask_route.prefetch]} ({_ask_route.reason}) "
              f"channel={channel_name or '?'}")

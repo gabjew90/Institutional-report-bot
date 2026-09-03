@@ -290,22 +290,44 @@ _FANTASY_RE = re.compile(
 # zeros (2026-09-03 review, same defect class as the week-slate prefetch).
 _TOPIC_RES: list[tuple[str, "re.Pattern"]] = [
     ("draft", re.compile(r"\bdraft(?!\s*kings)\b", re.I)),
+    # "should I pick him up" wants to know if he is hot, not who moved
+    # last week, so add/pickup goes to trending and the retrospective
+    # wording goes to transactions.
+    ("trending", re.compile(
+        r"\b(?:trending|most\s+added|hot\s+(?:pick|add)|everyone\s+(?:adding|dropping)"
+        r"|should\s+i\s+(?:pick\s*up|add|grab|claim|stash)|worth\s+(?:adding|picking|grabbing|a\s+claim)"
+        r"|pick\s*up\s+\w+\s*\?)\b", re.I)),
     ("transactions", re.compile(
-        r"\b(?:waivers?|faab|free\s+agent|add[/\s]drop|dropped|pick(?:ed)?\s*up|traded?\s+(?:for|away|to)"
-        r"|trade\s+(?:offer|deadline)|wire)\b", re.I)),
-    ("trending", re.compile(r"\b(?:trending|most\s+added|hot\s+pick|everyone\s+(?:adding|dropping))\b", re.I)),
+        r"\b(?:waivers?|faab|free\s+agent|add[/\s]drop|dropped|who\s+(?:picked|added|dropped)"
+        r"|pick(?:ed)?\s*up|traded?\s+(?:for|away|to)|trade\s+(?:offer|deadline)|wire)\b", re.I)),
     ("projections", re.compile(
-        r"\b(?:project(?:ed|ions?)|start\s+or\s+sit|sit\s+or\s+start|who\s+(?:should|do|would)\s+i\s+start"
+        r"\b(?:project(?:ed|ions?)|outlook|rest\s+of\s+season|\bros\b"
+        r"|start\s+or\s+sit|sit\s+or\s+start|who\s+(?:should|do|would)\s+i\s+start"
+        r"|rank(?:ed|ings?)?|tiers?|best\s+(?:qb|rb|wr|te|flex|option|play)"
+        r"|compare|versus|\bvs\.?\b|who(?:'s|s| is)\s+better|better\s+(?:start|play|option|than)"
         r"|flex\s+(?:spot|play|start)|bench|lineup)\b", re.I)),
     ("matchups", re.compile(
         r"\b(?:matchup|who\s+(?:am|is)\s+\w+\s+playing|score(?:s|board)?\s+(?:this|last)\s+week"
-        r"|winning\s+this\s+week|beat\s+\w+\s+this\s+week)\b", re.I)),
-    ("roster", re.compile(r"\b(?:roster|squad|whos?\s+on\s+\w+(?:'s)?\s+team|my\s+team)\b", re.I)),
+        r"|(?:winning|wins?)\s+(?:this|my|the)\s+(?:week|match)|gonna\s+win\s+(?:the\s+)?match"
+        r"|beat\s+\w+\s+this\s+week)\b", re.I)),
+    ("roster", re.compile(
+        r"\b(?:roster|squad|whos?\s+on\s+\w+(?:'s)?\s+team|my\s+team"
+        r"|who\s+should\s+i\s+drop|drop\s+for\b)\b", re.I)),
     ("league", re.compile(
         r"\b(?:league\s+(?:settings?|rules?|scoring|size|members)"
         r"|who(?:'s|s| is| are)\s+in\s+the\s+league)\b", re.I)),
-    ("standings", re.compile(r"\b(?:standings?|records?|first\s+place|last\s+place|who(?:'s| is)\s+(?:winning|leading|best|worst))\b", re.I)),
+    ("standings", re.compile(
+        r"\b(?:standings?|records?|first\s+place|last\s+place|best\s+team"
+        r"|who(?:'s|s| is)\s+(?:winning|leading|best|worst)"
+        r"|(?:gonna|going\s+to)\s+win\s+(?:the\s+)?(?:league|championship|it\s+all))\b", re.I)),
 ]
+
+# "my", "I", "me": the asker is asking about their own team, and the
+# pipeline knows who they are, so the roster and projection lookups can
+# be aimed at them instead of coming back "could not match a manager".
+_FIRST_PERSON_RE = re.compile(r"\b(?:my|mine|i|me|i'?m)\b", re.I)
+# Topics whose payload narrows usefully when a manager is named.
+_MEMBER_TOPICS = {"roster", "projections"}
 
 
 # Channel context (2026-09-03, owner: "if the asker is asking in the
@@ -324,6 +346,8 @@ _FOOTBALL_RE = re.compile(
     r"|injur(?:y|ed|ies)|questionable|doubtful|\bir\b|bye\s+week|handcuff|stream(?:er|ing)?"
     r"|start|sit|bench|flex|lineup|points?|matchup|trade|drop|add|pick\s*up|claim"
     r"|bust|boom|sleeper|breakout|my\s+team|first\s+place|last\s+place"
+    r"|outlook|rank(?:ed|ings?)?|tiers?|compare|versus|\bvs\.?\b|better"
+    r"|gonna\s+win|whos?\s+winning|waiver|claim|stash|grab"
     r"|who(?:'s|s| is)\s+(?:winning|losing|best|worst)|record|standings?|playoffs?"
     r"|sunday|monday\s+night|thursday\s+night|red\s*zone|snaps?|targets?|carries)\b", re.I)
 
@@ -339,7 +363,8 @@ def in_fantasy_channel(channel_name: str | None) -> bool:
 
 
 def _as_fantasy(r: "Route", q: str, reason: str, *,
-                default_topic: str | None = "standings") -> "Route":
+                default_topic: str | None = "standings",
+                asker_manager: str = "") -> "Route":
     """Set the fantasy shape and the prefetch its topic calls for.
 
     `default_topic=None` for the channel fallback: a question that landed
@@ -352,9 +377,12 @@ def _as_fantasy(r: "Route", q: str, reason: str, *,
     cannot resolve, and prefetching injected 'could not match a manager'
     as the authoritative block."""
     topic = fantasy_topic(q, default=default_topic)
+    args: dict = {"topic": topic}
+    if topic in _MEMBER_TOPICS and asker_manager and _FIRST_PERSON_RE.search(q):
+        args["member"] = asker_manager
     r.shape, r.reason = FANTASY, f"{reason} -> topic {topic or 'none'}"
-    if topic and topic != "roster":
-        r.prefetch = [(T_FANTASY, {"topic": topic})]
+    if topic and (topic != "roster" or "member" in args):
+        r.prefetch = [(T_FANTASY, args)]
     return r
 
 
@@ -391,7 +419,7 @@ def _last_line(question: str) -> str:
 
 
 def classify(question: str, *, fantasy_enabled: bool = False,
-             channel_name: str = "") -> Route:
+             channel_name: str = "", asker_manager: str = "") -> Route:
     """Shape a question deterministically. Order matters: the more
     specific shape wins, and the ledger/chat shapes beat the data shapes
     when a member is named ("Abe's win rate on semi calls" is a ledger
@@ -408,12 +436,13 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         r.shape = UNKNOWN
         return r
     if fantasy_enabled and _FANTASY_RE.search(q):
-        return _as_fantasy(r, q, "fantasy words")
+        return _as_fantasy(r, q, "fantasy words", asker_manager=asker_manager)
     if _LEDGER_RE.search(q):
         if in_channel and not _TRADING_LEDGER_RE.search(q):
             # "what's Declan's record" in the football channel is the
             # league standing, not the trade log.
-            return _as_fantasy(r, q, "ledger words in the football channel")
+            return _as_fantasy(r, q, "ledger words in the football channel",
+                               asker_manager=asker_manager)
         r.shape, r.reason = MEMBER_LEDGER, "member ledger words"
         return r
     if _CHAT_RE.search(q) and not _PUBLIC_FIGURE_RE.search(q):
@@ -471,7 +500,7 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     # Pure banter still falls through to the classifier.
     if in_channel and _FOOTBALL_RE.search(q):
         return _as_fantasy(r, q, "football words in the football channel",
-                           default_topic=None)
+                           default_topic=None, asker_manager=asker_manager)
     r.shape = UNKNOWN
     return r
 

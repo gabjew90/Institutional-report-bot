@@ -53,6 +53,22 @@ SLEEPER_TO_DISCORD: dict[str, tuple[int, str, str]] = {
 # roster — he has no Sleeper user record, so he can't appear in the map
 # above. Surfaced as a co-owner tag on that roster instead.
 CO_OWNERS: dict[str, str] = {"603677779459895296": "SV (co-owner)"}
+# Discord author_id -> the room name _resolve_member matches on. Lets
+# /ask answer "how's MY matchup" without asking who you are
+# (2026-09-03). SV is a co-owner with no Sleeper user record, so he maps
+# to the roster he shares.
+DISCORD_TO_MANAGER: dict[int, str] = {
+    **{aid: room for (aid, _u, room) in SLEEPER_TO_DISCORD.values()},
+    1095941993957437521: "Cemini",
+}
+
+
+def manager_for_discord_id(user_id) -> str:
+    """Room name for a Discord author_id, '' when they are not a manager."""
+    try:
+        return DISCORD_TO_MANAGER.get(int(user_id), "")
+    except (TypeError, ValueError):
+        return ""
 
 
 def _get(path: str):

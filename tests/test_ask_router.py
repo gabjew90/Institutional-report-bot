@@ -308,5 +308,58 @@ def test_fantasy_shape_keeps_google_and_chat_search():
     assert R.T_CHAT in r.allowed_tools(), "'what did BK say about the draft' needs chat"
     assert R.T_PRICE not in r.allowed_tools()
 
+
+# 2026-09-03, owner named the six shapes the room will actually ask.
+def test_the_six_common_league_questions():
+    from report.sleeper_data import manager_for_discord_id
+    bk = manager_for_discord_id(423994649317736448)
+    assert bk == "BK", bk
+
+    def route(q):
+        return R.classify(q, fantasy_enabled=True, channel_name=_FC, asker_manager=bk)
+
+    expected = {
+        # who's gonna win the match / league
+        "who's gonna win the matchup": {"topic": "matchups"},
+        "whos gonna win the league": {"topic": "standings"},
+        # how's my matchup / outlook
+        "hows my matchup": {"topic": "matchups"},
+        "hows my outlook": {"topic": "projections", "member": "BK"},
+        # compare two teams or players
+        "compare bk and declan teams": {"topic": "projections"},
+        "is puka better than nabers": {"topic": "projections"},
+        # rank a position
+        "rank the qbs": {"topic": "projections"},
+        "rank wr this week": {"topic": "projections"},
+        # who should I drop for X
+        "who should i drop for puka": {"topic": "roster", "member": "BK"},
+        # should I pick up player X
+        "should i pick up puka": {"topic": "trending"},
+    }
+    for q, args in expected.items():
+        r = route(q)
+        assert r.shape == R.FANTASY, q
+        assert r.prefetch == [(R.T_FANTASY, args)], (q, r.prefetch)
+
+
+def test_first_person_lookups_need_a_known_manager():
+    # A non-manager asking "my roster" gets no prefetch rather than a
+    # "could not match a manager" payload labelled authoritative.
+    r = R.classify("whats on my roster", fantasy_enabled=True, channel_name=_FC, asker_manager="")
+    assert r.shape == R.FANTASY and r.prefetch == []
+    r = R.classify("whats on my roster", fantasy_enabled=True, channel_name=_FC, asker_manager="BK")
+    assert r.prefetch == [(R.T_FANTASY, {"topic": "roster", "member": "BK"})]
+    # Someone else's roster is never aimed at the asker.
+    r = R.classify("whats on declans roster", fantasy_enabled=True, channel_name=_FC, asker_manager="BK")
+    assert r.prefetch == [], r.prefetch
+
+
+def test_every_manager_maps_to_a_room_name():
+    from report.sleeper_data import DISCORD_TO_MANAGER, SLEEPER_TO_DISCORD, manager_for_discord_id
+    assert len(DISCORD_TO_MANAGER) >= len(SLEEPER_TO_DISCORD)
+    for aid, _u, room in SLEEPER_TO_DISCORD.values():
+        assert manager_for_discord_id(aid) == room, aid
+    assert manager_for_discord_id(None) == "" and manager_for_discord_id("nope") == ""
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

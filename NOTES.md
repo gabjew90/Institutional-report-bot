@@ -1214,3 +1214,45 @@ authoritative. A question that does name a topic still prefetches it.
 Incidental fix found while testing: `_LOWER_LEADIN_RE` required an
 apostrophe, so "whats nvda at" produced no ticker and lost the price
 route. It now accepts the bare "whats"/"hows" spelling the room types.
+
+## 2026-09-03 — The six league questions the room will actually ask
+
+Owner listed them: who wins the match or the league, how's my matchup
+or outlook, compare two teams or players, rank a position, who should I
+drop for X, should I pick up X. Each now routes and prefetches the
+Sleeper topic that answers it:
+
+| ask | topic |
+|---|---|
+| who's gonna win the matchup | matchups |
+| whos gonna win the league | standings |
+| hows my matchup | matchups |
+| hows my outlook | projections + member |
+| compare bk and declan teams | projections |
+| is puka better than nabers | projections |
+| rank the qbs | projections |
+| who should i drop for puka | roster + member |
+| should i pick up puka | trending |
+
+The unlock is first-person resolution. `sleeper_data.DISCORD_TO_MANAGER`
+inverts the existing SLEEPER_TO_DISCORD map, so a question that says my
+or I is aimed at the asker's own team: "who should I drop" prefetches
+BK's roster instead of coming back "could not match a manager". SV has
+no Sleeper user record so he maps to the roster he co-owns. A
+non-manager asking "my roster" still gets NO prefetch, which is the
+right degradation. Someone else's roster is never aimed at the asker.
+
+Topic-table notes worth keeping. "should I pick him up" goes to trending
+(is he hot across Sleeper) while "who picked him up" goes to
+transactions (what moved in our league) — the two readings of the same
+words want different endpoints. And the projections topic absorbed
+compare/versus/rank/tiers/outlook/rest-of-season, because projected PPR
+is the league-side half of every one of those and Google supplies the
+rest.
+
+Accepted trade-off: in the football channel a market question with no
+strong shape ("compare NVDA and AMD") now routes fantasy and loses the
+price tool. A ticker guard would fix it but would also break "compare BK
+and Declan", since BK reads as a ticker. Erring toward fantasy in the
+fantasy channel is what was asked for, and Google plus code execution
+are still available there.
