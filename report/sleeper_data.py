@@ -458,11 +458,27 @@ def build_topic_payload(
                 ),
             }
         sid = _resolve_member(member or "", users_by_id)
+        slot_of: dict[str, str] = {}
         if sid:
             r = next(
                 (x for x in rosters if str(x.get("owner_id")) == sid), None)
-            ids = (r.get("starters") or []) if r else []
+            starters = (r.get("starters") or []) if r else []
+            # Bench too, or "who should I start" has nothing to compare
+            # and the answer is a recital of the lineup already set
+            # (2026-09-03, the screenshot with ten arrows and no words).
+            bench = [p for p in ((r.get("players") or []) if r else [])
+                     if p not in starters]
+            ids = list(starters) + bench
+            slot_of = {**{str(p): "starter" for p in starters},
+                       **{str(p): "bench" for p in bench}}
             out["manager"] = _owner_label(sid, users_by_id)
+            out["note"] = (
+                "starters are the lineup as currently set on Sleeper; "
+                "bench is everyone else on the roster. A start/sit answer "
+                "names the swaps where a bench player projects higher at "
+                "a slot he is eligible for, and says so when the lineup "
+                "is already optimal."
+            )
         else:
             ids = sorted(
                 proj, key=lambda k: (proj[k] or {}).get("pts_ppr") or 0,
@@ -471,7 +487,8 @@ def build_topic_payload(
         names = _names(ids, resolver)
         out["projected_ppr"] = [
             {"player": n,
-             "pts": round((proj.get(str(i)) or {}).get("pts_ppr") or 0, 1)}
+             "pts": round((proj.get(str(i)) or {}).get("pts_ppr") or 0, 1),
+             **({"slot": slot_of[str(i)]} if str(i) in slot_of else {})}
             for i, n in zip(ids, names)
         ]
 

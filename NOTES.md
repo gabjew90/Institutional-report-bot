@@ -1343,3 +1343,22 @@ micro-cap day renders empty, which is the truth for an options trader.
 The test fixture now prices every name by default and has a
 `chain_unknown` switch for the Yahoo-down scenario, so the wholesale
 test states its premise instead of relying on the old conflation.
+
+## 2026-09-03 — "who should I start" answered with ten arrows and no words
+
+Owner screenshot: the bot answered "who should I start this week and
+how's my matchup looking" with the ten current starters and their
+projected points, then one sentence on the matchup. No start/sit call.
+
+Not a guard stripping prose (`guards: —`, no raw-output block); the
+model wrote the list. The cause is the payload: `topic=projections`
+with a member returned ONLY `roster.starters`, so the injected
+"authoritative" block was the lineup already set on Sleeper and there
+was nothing to compare it against. The model did the only honest thing
+with that data and recited it.
+
+The member branch now returns starters AND bench, each row tagged
+`slot: starter|bench`, plus a note that a start/sit answer names the
+swaps where a bench player projects higher at an eligible slot and
+says so when the lineup is already optimal. League-wide rows (no
+member) are unchanged. The sleeper smoke pins the shape.

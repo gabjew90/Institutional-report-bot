@@ -142,7 +142,18 @@ def test_projections_degrade():
     out = _build("projections", member="bk",
                  fetchers={"fetch_projections": lambda s, w: proj})
     assert out["projected_ppr"][0]["pts"] == 21.4, out
-    _ok("projections: unofficial-endpoint degrade + member starters")
+    # 2026-09-03: a member's payload carries the BENCH too, tagged, or
+    # "who should I start" has nothing to compare and the bot recites
+    # the lineup already set (ten arrows, no words).
+    slots = [(r["player"], r.get("slot")) for r in out["projected_ppr"]]
+    assert slots == [("Ja'Marr Chase (WR, CIN)", "starter"),
+                     ("Bijan Robinson (RB, ATL)", "starter"),
+                     ("id:1111", "bench")], slots
+    assert "start/sit" in out["note"] and "bench" in out["note"], out["note"]
+    # league-wide (no member) rows carry no slot
+    out2 = _build("projections", fetchers={"fetch_projections": lambda s, w: proj})
+    assert all("slot" not in r for r in out2["projected_ppr"]), out2
+    _ok("projections: degrade + member starters AND bench with slots")
 
 
 def test_executor_unconfigured():
