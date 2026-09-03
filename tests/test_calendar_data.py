@@ -86,7 +86,7 @@ def test_failure_expires_by_calendar_day_not_elapsed_hours():
 
 # ------------------------------------------------ earnings assembly
 
-def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None):
+def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, covered=None):
     """Run build_calendar_day against canned feed rows. Patches every
     network boundary and restores them, so nothing here touches
     Finnhub, ForexFactory, or Yahoo.
@@ -121,6 +121,9 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None):
         # every name has a chain unless a test says otherwise (2026-09-02)
         orig_has = cd._has_options
         cd._has_options = lambda s: s not in (no_chain or set())
+        # desk coverage for bold rows: empty unless a test supplies it
+        orig_cov = db.recently_covered_tickers
+        db.recently_covered_tickers = lambda days=7: set(covered or ())
         return cd.build_calendar_day("2026-08-27")
     finally:
         nd.fetch_earnings_calendar_all = orig_earn
@@ -129,6 +132,7 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None):
         cd._implied_move_fetch = orig_move
         cd._MOVE_PACE_S = orig_pace
         cd._has_options = orig_has
+        db.recently_covered_tickers = orig_cov
 
 
 def test_duplicate_symbol_appears_once():
@@ -563,6 +567,52 @@ def test_build_marks_important_rows():
         {"time": "2026-08-27T14:30:00Z", "event": "Natural Gas Storage", "impact": "low"}])
     flags = {r.event: r.important for r in day.econ}
     assert flags == {"Unemployment Claims": True, "Natural Gas Storage": False}, flags
+
+
+# ------------------------------------------ bold earnings rows (2026-09-02)
+
+def test_company_importance_rules():
+    from report.calendar_data import earn_is_important as imp
+    assert imp("NVDA", 10.0, set()), "major-ticker list"
+    assert imp("AVGO", 1_728_905.0, set()), "mega-cap"
+    assert imp("MDB", 36_465.0, {"MDB"}), "a bank wrote earnings content about it this week"
+    assert not imp("TLYS", 119.0, {"MDB"}), "small, uncovered, not on the list"
+
+
+def test_build_marks_covered_and_megacap_rows_important():
+    day = _build_with([{"symbol": "AVGO", "hour": "amc"}, {"symbol": "MDB", "hour": "amc"},
+                       {"symbol": "TLYS", "hour": "amc"}],
+                      moves={"AVGO": 8.4, "MDB": 12.0, "TLYS": 30.0},
+                      caps={"AVGO": {"cap": 1_728_905.0, "name": "Broadcom"},
+                            "MDB": {"cap": 36_465.0, "name": "MongoDB"},
+                            "TLYS": {"cap": 119.0, "name": "Tillys"}},
+                      covered={"MDB"})
+    flags = {r.symbol: r.important for r in day.amc}
+    assert flags == {"AVGO": True, "MDB": True, "TLYS": False}, flags
+
+
+def test_coverage_lookup_failure_only_costs_the_bold():
+    """A failed coverage query must never cost the sheet, only the bold."""
+    from report import calendar_data as cd
+    from report import news_data as nd
+    o = (nd.fetch_earnings_calendar_all, nd.fetch_us_econ_events_for_date, cd._resolve_caps,
+         cd._implied_move_fetch, cd._MOVE_PACE_S, cd._has_options, db.recently_covered_tickers)
+
+    def boom(days=7):
+        raise RuntimeError("db down")
+    try:
+        nd.fetch_earnings_calendar_all = lambda d: [{"symbol": "OK", "hour": "amc"}]
+        nd.fetch_us_econ_events_for_date = lambda d: []
+        cd._resolve_caps = lambda syms: {"OK": {"cap": 10.0, "name": "Ok Inc"}}
+        cd._implied_move_fetch = lambda s, d, session=None: 4.0
+        cd._MOVE_PACE_S = 0
+        cd._has_options = lambda s: True
+        db.recently_covered_tickers = boom
+        day = cd.build_calendar_day("2026-08-27")
+    finally:
+        (nd.fetch_earnings_calendar_all, nd.fetch_us_econ_events_for_date, cd._resolve_caps,
+         cd._implied_move_fetch, cd._MOVE_PACE_S, cd._has_options, db.recently_covered_tickers) = o
+    assert [r.symbol for r in day.amc] == ["OK"] and day.amc[0].important is False
 
 
 def test_floor_name_with_no_options_chain_is_dropped():

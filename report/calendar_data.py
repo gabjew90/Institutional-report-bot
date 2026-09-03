@@ -87,6 +87,25 @@ class EarnRow:
     #                          2026-08-20: ~40-60% of rows are blank
     #                          even in final historical data, so the
     #                          flag is load-bearing, not cosmetic.
+    important: bool = False  # rendered bold (owner call 2026-09-02)
+
+
+# A company row is bold when it matters to this room's readers: the
+# pulse's own major-ticker list, a mega-cap, or a name a bank actually
+# wrote earnings content about in the last week (the desk coverage the
+# owner asked about on 2026-09-02: explicit previews are ~1 per day
+# across ~55 PDFs, so when one exists it should be visible).
+EARN_IMPORTANT_CAP_MUSD = 50_000  # $50B
+EARN_COVERAGE_DAYS = 7
+
+
+def earn_is_important(symbol: str, cap_musd: float, covered: set | None) -> bool:
+    sym = (symbol or "").upper()
+    if sym in news_data._MAJOR_TICKERS:
+        return True
+    if (cap_musd or 0) >= EARN_IMPORTANT_CAP_MUSD:
+        return True
+    return bool(covered) and sym in covered
 
 
 @dataclass
@@ -441,6 +460,14 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
 
     caps = _resolve_caps(bmo_syms + amc_syms)
 
+    # Names a bank wrote earnings content about recently (bold rows).
+    # Best-effort: an empty set only costs the bold, never the sheet.
+    try:
+        covered = db.recently_covered_tickers(days=EARN_COVERAGE_DAYS)
+    except Exception as e:
+        log.warning(f"calendar: coverage lookup failed ({e})")
+        covered = set()
+
     # A name earns its row by having an honestly-priceable implied move
     # (owner call 2026-08-27: the 8 dash rows on that sheet were all
     # illiquid tail names — zero-bid legs, spreads wider than the mid,
@@ -494,6 +521,8 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
                 cap_musd=float(caps.get(s, {}).get("cap") or 0),
                 session_confirmed=confirmed.get(s, False),
                 implied_move=mv,
+                important=earn_is_important(
+                    s, float(caps.get(s, {}).get("cap") or 0), covered),
             )
             for s, mv in kept
         ]

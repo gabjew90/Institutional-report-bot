@@ -1116,3 +1116,49 @@ def run_retention_purge(
         results["daily_reports_manual"] = -1
 
     return results
+
+
+def recently_covered_tickers(days: int = 7) -> set[str]:
+    """Tickers a bank wrote EARNINGS content about in the last `days`
+    (owner call 2026-09-02, for the calendar's bold rows): the latest
+    analysis per PDF whose earnings_insights is non-empty, or whose
+    title reads as a preview, contributes every ticker it names in
+    entities_mentioned. Best-effort, never raises."""
+    import json as _json
+    import re as _re
+    preview = _re.compile(r"(earnings? preview|preview|into the print|ahead of (?:earnings|results|the print)|what to expect|results? preview)", _re.I)
+    out: set[str] = set()
+    try:
+        rows = _db.get_connection().execute(
+            """SELECT a.analysis_json FROM pdf_analyses a
+               WHERE a.id IN (SELECT MAX(id) FROM pdf_analyses GROUP BY pdf_file_id)
+                 AND a.created_at >= datetime('now', ?)""",
+            (f"-{int(days)} days",)).fetchall()
+    except Exception as e:
+        log.warning(f"recently_covered_tickers query failed: {e}")
+        return out
+    for r in rows:
+        try:
+            a = _json.loads(r["analysis_json"] or "{}")
+        except Exception:
+            continue
+        insights = [str(x) for x in (a.get("earnings_insights") or []) if x]
+        title = a.get("title") or ""
+        # The ticker must be NAMED inside an earnings insight (or in a
+        # preview-shaped title), not merely mentioned somewhere in the
+        # note: a morning briefing lists forty tickers and one earnings
+        # line, and the first cut of this rule bolded 436 names.
+        hay = " ".join(insights + ([title] if preview.search(title) else [])).lower()
+        if not hay.strip():
+            continue
+        for ent in a.get("entities_mentioned") or []:
+            if not isinstance(ent, dict):
+                continue
+            t = (ent.get("ticker") or "").strip().upper().lstrip("$")
+            name = (ent.get("name") or "").strip().lower()
+            if not (1 <= len(t) <= 6) or (ent.get("asset_class") or "stock") not in ("stock", "etf", ""):
+                continue
+            if _re.search(r"(?<![a-z0-9$])\$?" + _re.escape(t.lower()) + r"(?![a-z0-9])", hay) or \
+               (len(name) >= 4 and name in hay):
+                out.add(t)
+    return out

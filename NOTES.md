@@ -1064,3 +1064,18 @@ prompt is 48,478 chars.
 Not yet done, next: structural fix 2, a general figure-provenance check
 that replaces the per-shape "unforced" validators.
 
+## 2026-09-02 — Calendar: important companies are bold too
+
+Owner asked how often the research carries in-depth earnings previews
+(measured: 26 explicit previews in 1,222 PDFs over 22 days, ~1.2 a
+day; 2 preview themes in 15 pulses) because he wants the calendar to
+bold the companies that matter. Rule: a row is bold when the name is on
+the pulse's major-ticker list, is a $50B+ cap, or was NAMED inside a
+bank's earnings insight (or preview-shaped title) in the last 7 days.
+The first cut counted any ticker mentioned anywhere in a note with an
+earnings line and bolded 436 names; requiring the ticker or company
+name inside the earnings text itself brings it to 78, and on the 9/3
+slate that is Ciena, Lululemon and Zscaler beside the mega-caps, which
+is the desk coverage the owner meant. A failed coverage query costs
+the bold, never the sheet.
+

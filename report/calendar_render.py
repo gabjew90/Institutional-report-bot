@@ -92,6 +92,7 @@ class _Fonts:
                 "evb": _font("Inter-SemiBold.ttf", 23),   # important econ rows
                 "sym": _font("JetBrainsMono-Bold.ttf", 23),
                 "nm": _font("Inter-Regular.ttf", 22),
+                "nmb": _font("Inter-SemiBold.ttf", 22),   # important earnings rows
                 "foot": _font("Inter-SemiBold.ttf", 15),
                 "closed": _font("Inter-Bold.ttf", 44),
                 "note": _font("Inter-Regular.ttf", 20),
@@ -256,13 +257,19 @@ def render_calendar_png(day: CalendarDay) -> bytes:
                        else _dim(TEXT, 0.28))
                 nm = r.name.title() if r.name.isupper() else r.name
                 _nm_x = cx + _LOGO_GUTTER + 108 * _S
+                # Important rows (major-ticker list, mega-cap, or a
+                # bank wrote earnings content about it this week) get
+                # the semibold name at full brightness; the rest stay
+                # regular and dimmed (owner call 2026-09-02).
+                _imp = getattr(r, "important", False)
+                nm_font = f["nmb"] if _imp else f["nm"]
                 d.text(
                     (_nm_x, cy + 1 * _S),
-                    _truncate(d, nm, f["nm"],
+                    _truncate(d, nm, nm_font,
                               # width left between the name's start and
                               # the right-aligned implied move
                               (cx + col_w - mv_w - 14 * _S) - _nm_x),
-                    font=f["nm"], fill=_dim(TEXT, 0.55),
+                    font=nm_font, fill=(TEXT if _imp else _dim(TEXT, 0.55)),
                 )
                 cy += 40 * _S
             # "+N more" is NOT rendered (owner call 2026-08-27). The
