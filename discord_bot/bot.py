@@ -1766,6 +1766,22 @@ def _grounding_has_sources(gm) -> bool:
     return bool(getattr(gm, "grounding_chunks", None) or [])
 
 
+def _grounding_web_source_count(gm) -> int:
+    """Chunks the reader will actually SEE in the Sources footer.
+
+    `_grounding_has_sources` counts every chunk; `_build_sources_footer`
+    renders only those carrying a `web` block. On 2026-09-04 an answer
+    stamped `ungrounded` with no footer still skipped the figure-
+    provenance check as "grounded", because a chunk existed that the
+    footer would not render. The guard must use the signal the reader
+    gets, not the one the SDK happens to populate."""
+    n = 0
+    for chunk in (getattr(gm, "grounding_chunks", None) or []):
+        if getattr(chunk, "web", None) is not None:
+            n += 1
+    return n
+
+
 def _is_ungrounded_market_fact(answer: str, grounding_metadata,
                                tool_trace: list,
                                context: str = "") -> bool:
@@ -4460,7 +4476,21 @@ async def _ask_01_build_prompt(
     _asker_protected = int(user_id) in _prot_in_scope
     if _protected_extra:
         _ask_meta["guards"].append("protected-member")
-    _prompt_extra = _fact_extra + _analysis_extra + _protected_extra
+    # The tone dial, decided in code (2026-09-04). The prompt has said
+    # since 08-20 that the dial rests at zero and only what the asker
+    # brought THIS exchange raises it; on 09-04 "Gg Abe", "Puts pls."
+    # and a straddle boast each drew a full clapback built from profile
+    # history. The rule was there and was not applied, so the LEVEL is
+    # computed here and handed over. Intensity only: this never decides
+    # whether to reply.
+    from discord_bot.tone_dial import directive as _dial_directive
+    try:
+        _dial_level, _dial_extra = _dial_directive(question)
+        _ask_meta["tone_dial"] = _dial_level
+    except Exception as _de:
+        log.warning(f"/ask: tone dial failed (non-fatal): {_de}")
+        _dial_level, _dial_extra = None, ""
+    _prompt_extra = _fact_extra + _analysis_extra + _protected_extra + _dial_extra
     if _prompt_extra:
         # The config was built before the router ran — patch the
         # directive(s) in rather than rebuilding the tools.
@@ -6598,7 +6628,7 @@ async def _ask_07_validation_ladder(
         # have no text evidence to match (2026-09-03 sweep, the BTC
         # chart replies).
         _fp_images = bool(_ask_meta.get("images"))
-        if answer and _route_is_factual and not _grounding_has_sources(grounding_metadata) \
+        if answer and _route_is_factual and not _grounding_web_source_count(grounding_metadata) \
                 and not _fp_images:
             from discord_bot import figure_provenance as _fp
             _ev = _ask_evidence_text(contents, response, question, user_content)

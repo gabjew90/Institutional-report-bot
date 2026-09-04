@@ -1572,3 +1572,46 @@ The graded output existed and was thrown away, which is why
 Every pilot workflow already does `git pull --rebase` before pushing;
 this one did not. It now rebases and retries three times, and errors
 loudly if all three fail.
+
+## 2026-09-04 — The tone dial is decided in code now
+
+Owner: "why is the bot default to lowercase and so mean?"
+
+Lowercase is deliberate and correctly scoped: ask_prompt line 225 says
+capitalization loosens IN BANTER. It read as the default because until
+09-03 21:14 UTC it WAS the default: the intent classifier failed on
+every call and fell back to LOCAL/BANTER, so sincere questions got the
+loose profane register too. Today's log is the first clean sample:
+three BANTER replies in room voice, one WEB/FACT answer properly
+capitalized with structured bullets.
+
+The meanness is a separate defect, and the rule to prevent it already
+existed. The dial section has said since 08-20 that it rests at zero,
+that only what the asker brought THIS exchange raises it, that praise
+is not provocation, that size is part of the match, and never to open
+profile material the exchange did not open. All three 09-04 replies
+broke every one of those:
+
+  "Gg Abe"                     -> a paragraph about their straddle
+  "Hey buddy straddle hit 11x" -> their MSTR and Micron history
+  "Puts pls."                  -> "peak casino brain", Palantir bags,
+                                  shoplifting plans with Kyle
+
+All three are also P&L jabs, which the owner has twice called lame and
+repetitive. A rule the model is asked to infer is not a rule, so
+`discord_bot/tone_dial.py` computes the LEVEL (0-3) from the asker's
+own words and injects it as an instruction. It reads only the asker's
+message, never the quoted alert the reply-to machinery prepends, or
+every reply-to would look like provocation. Intensity only: the
+reply-to trigger is untouched (the owner reversed a stand-down once).
+
+Tests are the real 09-04 messages: Gg Abe and Puts pls. are 0, the
+straddle boast is 1, "you are useless" is 2, "fuck you bot" is 3,
+"roast me" is 0 because invitations are handled elsewhere.
+
+Also fixed: the figure-provenance guard skipped on
+`_grounding_has_sources`, which counts every grounding chunk, while the
+Sources footer renders only chunks carrying a `web` block. Today's one
+factual answer was stamped `ungrounded` with no footer and still
+skipped as "grounded". It had no figures so nothing was lost, but the
+guard must use the signal the reader gets: `_grounding_web_source_count`.

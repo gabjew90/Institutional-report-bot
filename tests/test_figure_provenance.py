@@ -129,7 +129,10 @@ def test_ladder_runs_the_check_last_and_only_on_fact_answers():
     i = src.find("figure_provenance as _fp")
     assert i > 0, "the ladder must call figure_provenance"
     tail = src[i - 1500:i + 2500]
-    assert "_route_is_factual and not _grounding_has_sources" in tail
+    # The skip must use the count of chunks the READER sees, not every
+    # chunk the SDK populated: on 2026-09-04 an answer stamped
+    # `ungrounded` with no Sources footer still skipped as "grounded".
+    assert "_route_is_factual and not _grounding_web_source_count" in tail
     assert "return (answer, grounding_metadata, response)" in src[i:]
     assert "except Exception as _fpe" in tail, "the guard must be total"
 
@@ -157,6 +160,18 @@ def test_code_output_from_an_earlier_round_counts_as_evidence():
                               code_execution_result=NS(output="p_over_100k = 0.286"))])
     ev = _ask_evidence_text([model_turn], NS(candidates=[]), "odds over 100k", "")
     assert "0.286" in ev
+
+def test_a_chunk_the_footer_will_not_render_does_not_count_as_grounded():
+    from types import SimpleNamespace as NS
+    from discord_bot.bot import _grounding_has_sources, _grounding_web_source_count
+    webless = NS(grounding_chunks=[NS(web=None), NS(web=None)])
+    withweb = NS(grounding_chunks=[NS(web=None), NS(web=NS(uri="http://x", title="x"))])
+    # the old check says "grounded" for chunks the reader never sees
+    assert _grounding_has_sources(webless) is True
+    assert _grounding_web_source_count(webless) == 0
+    assert _grounding_web_source_count(withweb) == 1
+    assert _grounding_web_source_count(None) == 0
+    assert _grounding_web_source_count(NS(grounding_chunks=None)) == 0
 
 
 if __name__ == "__main__":
