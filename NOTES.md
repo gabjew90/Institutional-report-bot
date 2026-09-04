@@ -1645,3 +1645,45 @@ chars; the prompt is 53,296 against a 63,590 ceiling.
 Worth keeping as a pattern: the dial is a HEAT limiter and heat is not
 the same axis as warmth. Conflating them made the bot flat at level 0,
 which is the most common case by far (every plain question scores 0).
+
+## 2026-09-04 — Every Sources footer has been missing since the phase split
+
+Owner: "check the recent user asks, I didn't see a source cited in the
+answers." Correct, and it was not the classifier this time.
+
+The count of `Sources:` footers in the ask log, per day: 08-28: 7,
+08-31: 1, 09-01: 13, then 09-02: 0, 09-03: 0, 09-04: 0. The split of
+`_answer_with_gemini` into eleven phases landed on 09-01. From the next
+day, no answer carried a footer, including answers whose route stamp
+said the grounded retry had succeeded.
+
+Cause. `_ask_09_rank_and_regen_guards` did not take `grounding_metadata`
+as a parameter. It set `grounding_metadata = None` at the top, assigned
+it only inside its regeneration branches, and returned it. The caller
+unpacked that return into the real variable, so on every turn where
+phase 9 regenerated nothing, which is nearly all of them, the grounding
+that phases 7 and 8 had built was replaced with None before phase 10
+rendered the footer and stamped `grounded`. The split docstring's claim
+that None-initialised outputs "were never read on the others" was false
+for this one variable.
+
+Three visible consequences, all from this one line: no Sources footer
+on any answer for three days; `ungrounded` stamped on answers that had
+grounded (today's S&P-inclusion answers with $22.7B and the 50% float
+rule WERE grounded by Google; the reader never saw the citations); and
+my figure-provenance guard, which runs in phase 7, correctly saw the
+grounding and skipped, while phase 10 then shipped the same answer with
+no sources. That contradiction was visible in yesterday's log and I
+misread it as a chunk-shape problem in the guard's skip test.
+
+Fix: phase 9 takes `grounding_metadata` as a pass-through parameter and
+the caller passes it; the None-init is gone. Tests run the REAL phase 8
+and phase 9 with a sentinel grounding object and a client that fails
+the test if any guard calls the model on a benign answer, and assert
+the sentinel comes back. A generic test enforces the structural rule
+across all eleven phases: a phase may return grounding_metadata only if
+it received it or builds it from `response`.
+
+Yesterday's classifier repair and this fix are independent halves of
+the same symptom. The classifier decided whether Google was even
+offered; this decided whether the reader saw what Google returned.

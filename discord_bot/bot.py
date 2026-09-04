@@ -6888,6 +6888,7 @@ async def _ask_09_rank_and_regen_guards(
     contents,
     cross_window_block,
     fetched_urls,
+    grounding_metadata,
     images,
     profiles_for_prompt,
     question,
@@ -6899,10 +6900,16 @@ async def _ask_09_rank_and_regen_guards(
     """Phase 9 of /ask (split 2026-09-01; text verbatim from
     _answer_with_gemini). Parameters are the locals the original
     block read; the return tuple is the locals later blocks read.
-    None-initialised outputs are assigned only on some paths and
-    were never read on the others.
+
+    `grounding_metadata` is a pass-through: this phase returns the
+    value it was handed unless a regeneration below replaces it. The
+    split initialised it to None here and returned that on every
+    non-regenerating turn, so the caller overwrote the grounding
+    phases 7 and 8 had built. Every Sources footer vanished from
+    2026-09-02 to 09-04 (13 footers on 09-01, then 0, 0, 0), grounded
+    answers were stamped `ungrounded`, and the figure-provenance guard
+    skipped answers as grounded that the reader saw no sources for.
     """
-    grounding_metadata = None
 
     # Rank-trajectory guard — the bot only has the CURRENT rank
     # snapshot, so a "you lost/dropped/climbed a rank" claim is
@@ -7825,6 +7832,7 @@ async def _answer_with_gemini(
             contents=contents,
             cross_window_block=cross_window_block,
             fetched_urls=fetched_urls,
+            grounding_metadata=grounding_metadata,
             images=images,
             profiles_for_prompt=profiles_for_prompt,
             question=question,
