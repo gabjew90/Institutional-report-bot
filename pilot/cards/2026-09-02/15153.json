@@ -1,0 +1,483 @@
+{
+ "brief": "Peter Callahan's Goldman TMT daily. NDX futures are down 30 bps in what he calls a holding pattern, the product of offsetting forces: datapoints are very supportive, citing DELL and NVDA results, volumes are anemic at roughly 20% below the year-to-date average yesterday, the macro backdrop is complicated ahead of a live FOMC meeting this month, and risk appetite is muted. Three stocks carry the note. MDB fell 14% as investors weigh stable Atlas growth near 29% year over year against the implied second-half outlook and whether EA upside comes at Atlas's expense. GIR stays BUY on record Atlas net adds of 2,900, Voyage customers nearly doubling for a second straight quarter, and self-hosted AI demand as an incremental growth vector. MDB trades about 30% below DDOG and SNOW on forward EV/Sales, which Callahan calls arguably valid because Atlas has yet to clear 30% growth. DELL rose 8% on back-to-back EPS beats above 40%, with ISG revenue up 89% against 75% guided and ISG margin at 15.0% versus GSe 11.7%, and raised its F2027 server and storage outlooks. GIR raised DELL EPS about 38% to roughly $30.53 in FY28. PANW slipped 1% on a headline beat and raise.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Nasdaq 100 futures are down 30 basis points, which Callahan describes as a holding pattern in tech.",
+   "anchor": "NDX Futures down 30 bps as markets have been in a bit of a 'holding pattern'",
+   "topic": "tech tape backdrop",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Callahan says company datapoints are very supportive, pointing to DELL and NVDA results.",
+   "anchor": "datapoints are very supportive (think DELL or NVDA results)",
+   "topic": "tech tape backdrop",
+   "status": "released",
+   "instruments": [
+    "DELL",
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Yesterday's trading volumes were about 20% below the year-to-date average.",
+   "anchor": "volumes are anemic (yday = down ~20% vs ytd avg)",
+   "topic": "tech tape backdrop",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Callahan says risk appetite is muted and questions whether 12-month or 3-month momentum is the better read on direction.",
+   "anchor": "risk appetite is muted (is 12-mo mo' or 3-mo' the better 'tell' on direction?)",
+   "topic": "tech tape backdrop",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Callahan says the desk is firmly in rates-watch territory ahead of a live FOMC meeting this month.",
+   "anchor": "we are firmly in 'Rates watch' territory ahead of a 'live' FOMC mtg this month",
+   "topic": "FOMC rates watch",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "The top client inbound yesterday was SNPS and CDNS weakness, and Callahan found no good explanation for it.",
+   "anchor": "#1 by far: SNPS / CDNS weakness? (nope, nothing great)",
+   "topic": "client inbounds",
+   "status": "released",
+   "instruments": [
+    "SNPS",
+    "CDNS"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "AXON is down 14% over two days and drew client inbounds.",
+   "anchor": "AXON weakness (down 14% in 2-days)",
+   "topic": "client inbounds",
+   "status": "released",
+   "instruments": [
+    "AXON"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Callahan sees no driver for WIX and GDDY weakness other than possible sympathy with DUOL.",
+   "anchor": "WIX / GDDY (no, nothing other than DUOL sympathy?)",
+   "topic": "client inbounds",
+   "status": "released",
+   "instruments": [
+    "WIX",
+    "GDDY",
+    "DUOL"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Durable Goods is the scheduled US data release today.",
+   "anchor": "Events today ... Durable Goods ... Earnings tn: AI, AVGO",
+   "topic": "today event calendar",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "AI, AVGO, HPE, NTAP, NTSK and SNOW report earnings tonight.",
+   "anchor": "Earnings tn: AI, AVGO, HPE, NTAP, NTSK, SNOW",
+   "topic": "today event calendar",
+   "status": "forecast",
+   "instruments": [
+    "AI",
+    "AVGO",
+    "HPE",
+    "NTAP",
+    "SNOW"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "tonight"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "MDB is down 14% as investors weigh Atlas growth of about 29% year over year as merely stable.",
+   "anchor": "MDB -14% ... as investors contemplate just 'stable' Atlas growth (~29% y/y)",
+   "topic": "MongoDB earnings",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Investors question MDB's implied second-half outlook, asking whether it is a high-20s grower or can reach 30% plus.",
+   "anchor": "questions on implied 2H outlook (e.g. is this a high-20s grower? Is 3-handle possible?)",
+   "topic": "MongoDB earnings",
+   "status": "forecast",
+   "instruments": [
+    "MDB"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2H"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Investors debate whether MDB's EA upside is coming at the expense of Atlas growth.",
+   "anchor": "how to think about whether the EA upside is coming at the expense of Atlas or not",
+   "topic": "MongoDB earnings",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Goldman research remains BUY rated on MDB and sees self-hosted AI demand as an incremental growth vector supporting faster total revenue growth.",
+   "anchor": "Matt/GIR remains BUY rated and sees self-hosted AI demand as an incremental growth vector",
+   "topic": "MongoDB earnings",
+   "status": "target",
+   "instruments": [
+    "MDB"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "MDB posted record Atlas net adds of 2,900 in the quarter.",
+   "anchor": "GIR came away positive on record Atlas net adds (+2,900), a growing mix of AI natives",
+   "topic": "MongoDB earnings",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "MDB's Voyage customers nearly doubled for a second consecutive quarter.",
+   "anchor": "Voyage customers nearly doubling for a second consecutive quarter",
+   "topic": "MongoDB earnings",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "MDB trades at about a 30% discount to higher-growth peers DDOG and SNOW on forward EV/Sales.",
+   "anchor": "MDB trades at a ~30% discount to other higher-growth peers like DDOG or SNOW (on fwd EV/Sales)",
+   "topic": "MongoDB valuation",
+   "status": "level",
+   "instruments": [
+    "MDB",
+    "DDOG",
+    "SNOW"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Callahan argues MDB's valuation discount may be justified because Atlas growth has yet to exceed 30%, a level peers have delivered.",
+   "anchor": "Atlas) has yet to punch above the 3-handle growth level that peers have delivered",
+   "topic": "MongoDB valuation",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "DELL is up 8% after a second consecutive quarter of EPS beats above 40%.",
+   "anchor": "DELL +8% ... another outsized beat/raise print from Dell overnight (back to back >40% EPS % beats)",
+   "topic": "Dell earnings",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "The only real debate on DELL's print is whether the beat is sustainable.",
+   "anchor": "only real debate is the generic \"sustainability\" question",
+   "topic": "Dell earnings",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "DELL's ISG revenue grew 89% year over year against guidance for 75% growth.",
+   "anchor": "stronger than expected revenue in ISG (+89% y/y v. guidance for 75% growth)",
+   "topic": "Dell earnings",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "DELL's ISG margin came in at 15.0% versus Goldman's 11.7% estimate.",
+   "anchor": "notable strength in ISG margins (15.0% v. GSe 11.7%)",
+   "topic": "Dell earnings",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "DELL raised its F2027 traditional server revenue outlook to 100% plus year-over-year growth from 60% prior.",
+   "anchor": "DELL raised its traditional server (100%+ y/y growth v. 60% prior)",
+   "topic": "Dell earnings",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "DELL raised its F2027 storage revenue outlook to mid-teens percent year-over-year growth from mid-single-digit percent prior.",
+   "anchor": "storage (mid-teens % y/y growth v. MSD% prior) revenue outlook for F2027",
+   "topic": "Dell earnings",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Goldman research remains BUY rated on DELL.",
+   "anchor": "GIR remains BUY rated, raising EPS by ~38% overnight",
+   "topic": "Dell earnings",
+   "status": "target",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Goldman research raised DELL EPS estimates by about 38% overnight, following an increase of about 40% last quarter.",
+   "anchor": "raising EPS by ~38% overnight (follows last quarter, when GIR ests went up ~40%)",
+   "topic": "Dell earnings",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Goldman research now models about $30.53 of non-GAAP EPS for DELL in FY28.",
+   "anchor": "going to ~$30.53 of non-GAAP EPS in FY28",
+   "topic": "Dell earnings",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Callahan says earnings estimates are what drive DELL's stock performance.",
+   "anchor": "DELL: earnings estimates are driving stock performance",
+   "topic": "Dell earnings",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "The bull case anchor is that durable enterprise IT hardware demand is underpinned by data center modernization and growing agentic AI adoption.",
+   "anchor": "durable enterprise IT hardware demand is underpinned by data center modernization trends & growing agentic AI adoption",
+   "topic": "enterprise IT hardware demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "DELL's installed base contains 1.2 million servers that are 14G or older and due for refresh.",
+   "anchor": "1.2 mn 14G or older servers in DELL's installed base",
+   "topic": "enterprise IT hardware demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Enterprise customers are seeing net-new demand for data center infrastructure to support agentic AI and inference workloads.",
+   "anchor": "seeing net-new demand for data center infrastructure to support agentic AI/inference workloads",
+   "topic": "enterprise IT hardware demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "PANW is down 1% despite a headline beat and raise, prompting client questions about why the stock is not higher.",
+   "anchor": "PANW -1% .. headline beat/raise print driving a handful of \"why isn't Palo up more??\" inbounds",
+   "topic": "Palo Alto earnings",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - GS US TMT today (MDB, DELL, PANW) 2 Sep 2026",
+   "claim": "Callahan flags a soundbite from PANW's earnings call as a clear framing of the security plus AI bull framework.",
+   "anchor": "worth flagging as a clear framing of the Security x AI bull framework",
+   "topic": "security AI demand",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-02/15153__gs-callahan-gs-us-tmt-today-mdb-dell-panw-2-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 33,
+  "matched": 33,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
