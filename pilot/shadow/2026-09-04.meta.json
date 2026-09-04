@@ -1,0 +1,69 @@
+{
+ "unread_source_files_at_edit": 16,
+ "pack": {
+  "documents": 21,
+  "cards": 786
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 136,
+  "brief_citations": 2,
+  "distinct_cards_cited": 136,
+  "card_count": 786,
+  "quintiles": [
+   29,
+   30,
+   18,
+   33,
+   26
+  ],
+  "edge_quintile_share": 0.404,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "A JPMorgan data-center note put OpenRouter token volume up roughly 47% month over month while the dollars spent rose about 7% [c676][c504], and rental prices for H100 chips are falling [c505].",
+    "cite": "c676,c504,c505",
+    "reason": "bank named (['jpmorgan']) is not the cited card's bank"
+   },
+   {
+    "sentence": "It also argues CPI on September 11 matters more for the Fed than today's number [c735].",
+    "cite": "c735",
+    "reason": "figures not in cited card(s): ['11m']"
+   },
+   {
+    "sentence": "Traders are also watching for intervention around the thin Silver Week holidays that follow the September 18 meeting [c249].",
+    "cite": "c249",
+    "reason": "figures not in cited card(s): ['18m']"
+   },
+   {
+    "sentence": "The median buyer is now 59 years old against 31 in 1981, 95% of mortgages are fixed for 30 years, 40% of homes carry no mortgage at all, and the average owner sits on roughly $400,000 of equity [c766]",
+    "cite": "c766,c769,c768,c770",
+    "reason": "figures not in cited card(s): ['40%', '95%']"
+   },
+   {
+    "sentence": "Prices hold anyway because the buyer pool narrowed to the wealthy: 75% of households can only afford homes under $300,000 while the median sale price is $403,000 and the median monthly payment is $2,9",
+    "cite": "c775,c774,c773",
+    "reason": "figures not in cited card(s): ['75%']"
+   },
+   {
+    "sentence": "The spending that used to go into moving now goes into staying, with renovations at 25% of private construction spending [c772].",
+    "cite": "c772",
+    "reason": "figures not in cited card(s): ['25%']"
+   },
+   {
+    "sentence": "Rental property is the exception, where 56% of the largest cities show negative rent growth, multifamily delinquencies are climbing and vacancies sit above pre-pandemic levels [c576][c577][c578].",
+    "cite": "c576,c577,c578",
+    "reason": "figures not in cited card(s): ['56%']"
+   }
+  ],
+  "leans": 2,
+  "leans_block_present": true,
+  "word_count": 1922
+ }
+}
