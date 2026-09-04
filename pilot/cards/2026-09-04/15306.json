@@ -1,0 +1,359 @@
+{
+ "brief": "A media write-up of a note from Goldman Sachs One-Delta desk head Rich Privorotsky, plus one Goldman research call. Privorotsky's chain: cost per token is compressing hard, so consumption must grow extraordinarily fast just to offset it. Silicon Data's expenditure-weighted token index fell 29% in August to about $0.97 per million tokens, a record low and more than 50% off the May peak near $2.05. JPMorgan's data-center note had OpenRouter volume up roughly 47% month over month while dollar spend rose only about 7%, and H100 rental pricing is falling, so volume is not paying for the price cut. Add open-weight competition and inference shifting to cheaper local hardware, and Privorotsky says he struggles with per-token pricing as a durable end state. Unless capability jumps radically, with OpenAI's unlaunched Astra named as the possible exception, periods of compute oversupply become plausible. That meets financed capex: five rated hyperscalers projected near $737 billion of 2026 capex, about 38% of revenue, and 78 of 91 hyperscaler bonds issued in 2026 traded below issue by late August. Separately Jim Schneider reiterates Buy on Broadcom. Three counter-arguments are listed, none rescuing multiples.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Broadcom shares fell 5% on the session despite optimism around the company's outlook.",
+   "anchor": "which did nothing to help the stock, down 5%",
+   "topic": "Broadcom",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Goldman Sachs analyst Jim Schneider reiterates a Buy rating on Broadcom.",
+   "anchor": "Jim Schneider reiterates Buy on Broadcom after management",
+   "topic": "Broadcom",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Broadcom management guided AI semiconductor revenue to double to $115bn in FY27 on 10GW of datacenter deployments.",
+   "anchor": "guided AI semi revenue to double to $115bn in FY27 (10GW of datacenter deployments) and",
+   "topic": "Broadcom",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Broadcom management guided AI semiconductor revenue to double again to $230bn on 20GW of deployments, and named Anthropic as its largest FY27 customer with OpenAI and Meta material in FY28.",
+   "anchor": "double again to $230bn (20GW), naming Anthropic as its largest FY27 customer with OpenAI",
+   "topic": "Broadcom",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Privorotsky cites the Silicon Data token index down 29% in the month of August.",
+   "anchor": "Token index down -29% in month of August)",
+   "topic": "token prices",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Silicon Data's LLM Token Expenditure Index, published on Bloomberg as SDLLMTK, fell 29% in August.",
+   "anchor": "published on Bloomberg as SDLLMTK - fell 29% in August and printed about",
+   "topic": "token prices",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "The Silicon Data token index printed about $0.97 per million tokens at the end of August, a record low.",
+   "anchor": "$0.97 per million tokens at month-end. That is a record low",
+   "topic": "token prices",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "The Silicon Data token index is more than 50% below its May peak near $2.05 per million tokens.",
+   "anchor": "That is a record low, and more than 50% off the May",
+   "topic": "token prices",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "A JPMorgan data-center note put OpenRouter token volume up roughly 47% month over month in August.",
+   "anchor": "Additionally, JPMorgan\u2019s data-center note had OpenRouter token volume up roughly 47%",
+   "topic": "token demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "OpenRouter dollar spend rose only about 7% in August despite the volume increase.",
+   "anchor": "Dollar spend was still only up about 7%.",
+   "topic": "token demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Rental pricing for H100 GPUs is falling, which the document reads as inconsistent with soaring token demand.",
+   "anchor": "the green line shows rental pricing for H100s is falling",
+   "topic": "GPU rental pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Meta's Muse Spark 1.3 started rolling out on September 2 in Muse Code and the Meta Model API.",
+   "anchor": "which started rolling out September 2 in Muse Code and the Meta",
+   "topic": "frontier model competition",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Independent benchmarks place Meta's Spark 1.3 in the same neighborhood as GPT-5.6 Sol and next to Claude Opus 5 and Fable on agentic and coding work.",
+   "anchor": "Independent benches put Spark 1.3 in the same neighborhood as GPT-5.6 Sol",
+   "topic": "frontier model competition",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "OpenAI said on September 1 that Astra meets the Critical cybersecurity threshold under its Preparedness Framework, the first model placed in that bucket.",
+   "anchor": "September 1 OpenAI said Astra meets the Critical cybersecurity threshold under its",
+   "topic": "OpenAI Astra",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Privorotsky reports speculation that Astra launches imminently but no confirmed launch date.",
+   "anchor": "Lots of speculation that Astra drops imminently, though no confirmed launch date.",
+   "topic": "OpenAI Astra",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "The Goldman desk treats the Astra launch as the last near-term event that can invalidate the compute oversupply case.",
+   "anchor": "launch as the last near-term thing that can invalidate the oversupply case.",
+   "topic": "OpenAI Astra",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Privorotsky says he struggles with per-token pricing as a durable end state model, and that this matters for equities.",
+   "anchor": "I struggle with per token pricing as a durable end state model",
+   "topic": "per-token pricing model",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Privorotsky argues more demand at lower prices is not automatically bullish if pricing falls faster than consumption grows.",
+   "anchor": "More demand + lower prices is not automatically bullish if pricing falls faster than",
+   "topic": "AI de-rating",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Unless capability keeps making radical jumps, Privorotsky sees periods of compute oversupply as plausible, alongside a repricing of credit that helps explain the de-rating.",
+   "anchor": "periods of compute oversupply become plausible. Beyond the repricing of credit that helps",
+   "topic": "AI de-rating",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "The five rated hyperscalers were projected to spend on the order of $737 billion of calendar 2026 capex, about 38% of revenue.",
+   "anchor": "on the order of $737 billion in calendar 2026 capex - about 38% of revenue.",
+   "topic": "hyperscaler capex",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "calendar 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Moody's has flagged free cash flow compression at hyperscalers, a shift from asset-lite to asset-heavy balance sheets, and binding lease commitments.",
+   "anchor": "a shift from asset-lite to asset-heavy balance sheets, and lease commitments that",
+   "topic": "hyperscaler credit",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Seventy-eight of 91 hyperscaler bonds issued in 2026 were trading cheaper than at issuance by late August.",
+   "anchor": "Seventy-eight of 91 hyperscaler bonds issued in 2026 were already",
+   "topic": "hyperscaler credit",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Tokens 30% cheaper with volume up 20% means inference revenue falls, which compresses ROIC as depreciation and interest from the buildout ramp.",
+   "anchor": "Tokens 30% cheaper and volume up 20% means inference revenue falls.",
+   "topic": "inference revenue",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Stated as a counter-argument, Meta's own Spark 1.3 comparisons claim roughly 20% fewer tool calls and 25% fewer tokens versus version 1.2.",
+   "anchor": "roughly 20% fewer tool calls and 25% fewer tokens versus 1.2.",
+   "topic": "token efficiency",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "Stated as a counter-argument, HBM, power and training clusters can stay tight while merchant inference commoditizes.",
+   "anchor": "training clusters can stay tight while merchant inference commoditizes.",
+   "topic": "inference versus training",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "In August software rallied while the semiconductor complex wobbled, sketching a split between training and inference exposure.",
+   "anchor": "sketched the split: software ripped, the semiconductor complex wobbled.",
+   "topic": "inference versus training",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Token Prices Are Falling Faster Than Demand, Goldman Warns On The Broad AI De-Rating",
+   "claim": "The document's conclusion is that demand can be infinite and the stocks can still fall if that demand arrives at a price that does not service the debt issued to build the capacity.",
+   "anchor": "Demand can be infinite and the stocks can still go down",
+   "topic": "AI de-rating",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15306__token-prices-are-falling-faster-than-demand-goldman-warns-on.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 27,
+  "matched": 27,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
