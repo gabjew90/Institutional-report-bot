@@ -1,0 +1,263 @@
+{
+ "brief": "Goldman's Quinn reads Commitment of Traders data covering August 18th to 25th. Non-Dealers sold $11.2bn of S&P 500 futures, ending a two-week buying streak, with long liquidation of $5.7bn and $5.5bn of new shorts contributing equally. Hedge Funds led at $15bn sold, $9bn of it long unwinds, the third straight week hedge fund liquidation ran alongside a rise in GS's Long / Short Stagflation basket, and the rolling three-month correlation between gross long changes and that basket turned quite negative. Quinn reads these categorical shifts as potential stagflation concerns. Asset Managers sold $3bn while Other bought $3.7bn and Non-Reportable $3.1bn. Afterwards solid NVDA earnings and guidance helped the S&P endure another jump in real rates from Jackson Hole and more Middle East fighting, yet futures flows still looked negative given the drop in funding. From August 25th to September 2nd the S&P fell 0.1% while the 10-year rose 12bp, the September S&P Adjusted Interest Rate BTIC shed 17bps and the December BTIC also declined, and the stagflation basket gained 0.9%. He offers growth versus inflation worries and/or stronger-than-expected month-end rotation as possible explanations, without choosing between them.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Commitment of Traders data covering August 18th to 25th showed a resumption of Non-Dealer selling in S&P 500 futures.",
+   "anchor": "Commitment of Traders covering August 18th\u201325th exhibited a resumption of Non-Dealer selling",
+   "topic": "S&P 500 futures positioning",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "week of August 18th to 25th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Non-Dealers sold $11.2bn of S&P 500 futures in the August 18th to 25th week, ending a two-week streak of buying.",
+   "anchor": "Non-Dealers sold \u2212$11.2bn, ending a 2-week streak of buying.",
+   "topic": "S&P 500 futures positioning",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "week of August 18th to 25th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Long liquidation of $5.7bn and new shorts of $5.5bn contributed equally to the Non-Dealer selling in S&P 500 futures.",
+   "anchor": "Liquidation (\u2212$5.7bn) and new shorts (+$5.5bn) were equal contributors.",
+   "topic": "S&P 500 futures positioning",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "week of August 18th to 25th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Hedge Funds led all sellers of S&P 500 futures with $15bn sold in the August 18th to 25th week.",
+   "anchor": "Hedge Fund led all sellers with \u2212$15bn in total.",
+   "topic": "S&P 500 futures positioning",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "week of August 18th to 25th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Of the $15bn Hedge Fund selling in S&P 500 futures, $9bn was long unwinds.",
+   "anchor": "Of this, \u2212$9bn represented long unwinds, marking the 3rd",
+   "topic": "S&P 500 futures positioning",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "week of August 18th to 25th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Asset Managers sold $3bn of S&P 500 futures in the August 18th to 25th week.",
+   "anchor": "Asset Manager sold \u2212$3bn. Other and Non-Reportable bought +$3.7bn and +$3.1bn respectively.",
+   "topic": "S&P 500 futures positioning",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "week of August 18th to 25th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "The Other category bought $3.7bn of S&P 500 futures in the August 18th to 25th week.",
+   "anchor": "Asset Manager sold \u2212$3bn. Other and Non-Reportable bought +$3.7bn and +$3.1bn respectively.",
+   "topic": "S&P 500 futures positioning",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "week of August 18th to 25th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Non-Reportable accounts bought $3.1bn of S&P 500 futures in the August 18th to 25th week.",
+   "anchor": "Asset Manager sold \u2212$3bn. Other and Non-Reportable bought +$3.7bn and +$3.1bn respectively.",
+   "topic": "S&P 500 futures positioning",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "week of August 18th to 25th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Goldman reads the categorical shifts in S&P 500 futures positioning as revealing some potential stagflation concerns.",
+   "anchor": "Categorical shifts revealed some potential stagflation concerns.",
+   "topic": "stagflation basket",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "The August 18th to 25th week was the third straight week of Hedge Fund liquidation coinciding with an increase in Goldman's Long / Short Stagflation basket.",
+   "anchor": "straight week whereby Hedge Fund liquidated alongside an increase in GS\u2019s Long / Short Stagflation",
+   "topic": "stagflation basket",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "three weeks to August 25th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "The rolling three-month correlation between gross long changes in S&P 500 futures and Goldman's Long / Short Stagflation basket became quite negative.",
+   "anchor": "The rolling 3-month correlation between gross long changes and the basket became quite negative.",
+   "topic": "stagflation basket",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "rolling 3-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Goldman's Long / Short Stagflation basket gained 0.9% between August 25th and September 2nd.",
+   "anchor": "During the same window, Longs / Short Stagflation gained +0.9%.",
+   "topic": "stagflation basket",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August 25th to September 2nd"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "Solid NVDA earnings and guidance helped the S&P endure another jump in real rates driven by Jackson Hole and more warring in the Middle East.",
+   "anchor": "solid NVDA earnings / guidance helped S&P endure another jump in real rates",
+   "topic": "NVDA earnings",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "The S&P fell 0.1% between August 25th and September 2nd.",
+   "anchor": "Over August 25th\u2013September 2nd, S&P fell just \u22120.1% alongside a +12bp rise in USGGT10Y.",
+   "topic": "S&P 500 performance",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August 25th to September 2nd"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "The US 10-year Treasury yield rose 12bp between August 25th and September 2nd.",
+   "anchor": "Over August 25th\u2013September 2nd, S&P fell just \u22120.1% alongside a +12bp rise in USGGT10Y.",
+   "topic": "10-year yield",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August 25th to September 2nd"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "S&P 500 futures flows apparently remained negative given the drop in funding.",
+   "anchor": "However futures flows apparently remained negative, given the drop in funding.",
+   "topic": "S&P futures funding",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "The September S&P Adjusted Interest Rate BTIC shed 17bps between August 25th and September 2nd, indicating futures flows apparently remained negative.",
+   "anchor": "futures flows apparently remained negative: the September S&P Adjusted Interest Rate BTIC shed \u221217bps",
+   "topic": "S&P futures funding",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August 25th to September 2nd"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "S&P 500 Futures Stagflation Resurfacing",
+   "claim": "The December S&P BTIC also declined, although changes through month-end and close to expiration are somewhat distorted.",
+   "anchor": "somewhat distorted; that said, the December BTIC also declined.",
+   "topic": "S&P futures funding",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "August 25th to September 2nd"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15264__s-p-500-futures-stagflation-resurfacing.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 18,
+  "matched": 18,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
