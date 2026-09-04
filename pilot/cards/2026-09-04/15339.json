@@ -1,0 +1,370 @@
+{
+ "brief": "Goldman Sachs TMT specialist Sean Johnstone previews next week's Communacopia and Technology Conference in San Francisco, with over 260 companies and over 2,000 investors, all conference stats up on last year. Most-requested names in order: Datadog, CoreWeave, Microsoft, Shopify, Broadcom, AMD, Nvidia, Nebius, TSMC, Snowflake. The note poses three questions rather than making a house call. First, whether record spend on chips, power, data centres and networking is converting into visible software, cloud and application-layer revenue. The stated risk is that Nvidia's profits rest on investor capital flowing through model labs rather than self-sustaining customer economics further down the stack. Q2 evidence cited as constructive includes Palantir's 149% US commercial revenue growth, Snowflake's faster AI-enabled migrations, and monetisation gains at Tencent and Meta. Second, whether AI agents extend software value or pressure seat-based licensing. Third, capital discipline, where CoreWeave recontracting a 2020-vintage A100 SKU into 2029 and Google running seven-to-eight-year-old TPUs at 100% utilisation are offered as evidence older fleets retain value. Sector playbooks and the European names ASML, Adyen, SAP, Wise and Scout list debates to watch, not recommendations.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Over 260 companies will attend the Goldman Sachs Communacopia and Technology Conference in San Francisco.",
+   "anchor": "over 260 companies will be in SF",
+   "topic": "Communacopia conference",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "The most requested companies at the conference, in order, are Datadog, CoreWeave, Microsoft, Shopify, Broadcom, AMD, Nvidia and Nebius.",
+   "anchor": "Most requested in order \u2013 Datadog, CoreWeave, Microsoft, Shopify, Broadcom, AMD, Nvidia, Nebius,",
+   "topic": "Communacopia conference",
+   "status": "released",
+   "instruments": [
+    "DDOG",
+    "CRWV",
+    "MSFT",
+    "SHOP",
+    "AVGO",
+    "AMD",
+    "NVDA",
+    "NBIS"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Conference attendance is up on last year, with more companies and over 2,000 investors registered.",
+   "anchor": "more companies are coming with more investors (over 2k)",
+   "topic": "Communacopia conference",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "The European Communacopia Conference runs in London on 15-16 September 2026 with 44 corporates attending.",
+   "anchor": "European Communacopia Conference in London on 15\u201316 September, with 44 corporates",
+   "topic": "Communacopia conference",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "15-16 September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Goldman Sachs flags the risk that Nvidia's profits are supported by investor capital routed through model labs rather than self-sustaining customer economics downstream.",
+   "anchor": "risk is that Nvidia\u2019s profits are being supported by investor capital flowing through model labs rather than",
+   "topic": "AI capex to revenue",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Palantir reported 149% US commercial revenue growth in Q2 2026.",
+   "anchor": "Palantir posted 149% US commercial revenue growth",
+   "topic": "AI monetisation evidence",
+   "status": "released",
+   "instruments": [
+    "PLTR"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Snowflake pointed to faster AI-enabled customer migrations in its Q2 results.",
+   "anchor": "and Snowflake pointed to faster AI-enabled migrations",
+   "topic": "AI monetisation evidence",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Tencent and Meta both showed AI improving advertising monetisation in Q2.",
+   "anchor": "Tencent and Meta both showed AI improving monetisation",
+   "topic": "AI monetisation evidence",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "CoreWeave management said it recently signed an A100 contract, on a SKU introduced in 2020, that extends into 2029 at an attractive price.",
+   "anchor": "extends into 2029 at an attractive price. As a reminder, this SKU was introduced in 2020.",
+   "topic": "AI hardware useful life",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2029"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Google has said its seven-to-eight-year-old custom TPUs are still running at 100% utilisation.",
+   "anchor": "said that its seven-to-eight-year-old custom TPUs are still running at 100% utilisation.",
+   "topic": "AI hardware useful life",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Elon Musk suggested 6-8GW of compute capacity could be added in 2027 alone, potentially well above 10GW.",
+   "anchor": "we could see 6\u20138GW of capacity in 2027 alone, potentially well above 10GW",
+   "topic": "AI compute capacity",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Goldman Sachs Global Investment Research estimates c.9.3GW of capacity added between year-end 2025 and year-end 2028, with cumulative AI segment capex of c.$375bn over that period.",
+   "anchor": "c.9.3GW added between YE25 and YE28 and cumulative AI segment capex of c.$375bn over that period.",
+   "topic": "AI compute capacity",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "YE25 to YE28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "For ASML the key question is whether planned Low-NA EUV capacity increases are sufficient if Terafab-scale demand materialises.",
+   "anchor": "On ASML, the key question is whether planned",
+   "topic": "semicap capex",
+   "status": "level",
+   "instruments": [
+    "ASML"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Investor interest in software is strongest in data infrastructure, developer tools and security, while broader SaaS sentiment remains muted despite the recent sector bounce.",
+   "anchor": "Investor interest remains strongest in data infrastructure, developer tools and security, while broader SaaS",
+   "topic": "software valuations",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Reported private equity interest in Workday was viewed as opportunistic after the software sector's sharp de-rating, not as a broad re-rating signal.",
+   "anchor": "largely viewed as opportunistic following the sector\u2019s sharp de-rating and raised questions around",
+   "topic": "software valuations",
+   "status": "level",
+   "instruments": [
+    "WDAY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Prior trough valuation levels in software may provide support but not a re-rating trigger unless companies show revenue reacceleration.",
+   "anchor": "takeaway is that prior trough valuation levels may provide support, but not necessarily a re-rating trigger,",
+   "topic": "software valuations",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Workday at around $120, or c.3x EV/recurring subscription revenue, is the level at which private equity will at least engage.",
+   "anchor": "Workday suggests that at around $120, or c.3x",
+   "topic": "software valuations",
+   "status": "level",
+   "instruments": [
+    "WDAY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "The main US telecom debate is competition at T-Mobile, where investors are watching for any pick-up in churn after recent price rises.",
+   "anchor": "The main US debate remains competition, particularly at T-Mobile, where",
+   "topic": "US telecom competition",
+   "status": "level",
+   "instruments": [
+    "TMUS"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "OpenAI's advertising business is reportedly at a $1bn annualised revenue run-rate in under 200 days.",
+   "anchor": "OpenAI\u2019s ads business is reportedly scaling quickly, with a $1bn annualised revenue run-rate in",
+   "topic": "AI advertising",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "ASML's Q2 was one of its most constructive updates in some time, with 2026 capex guidance lifted.",
+   "anchor": "Q2 was one of the most constructive updates in some time, with 2026 capex guidance lifted",
+   "topic": "semicap capex",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "ASML's 2027 capex is still expected to rise significantly.",
+   "anchor": "and 2027 capex still expected to rise significantly.",
+   "topic": "semicap capex",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Adyen's 2Q26 results were solid, with stronger net revenue growth and revised FY26 guidance that does not require a second-half acceleration.",
+   "anchor": "2Q26 results were solid, with stronger net revenue growth and revised FY26 guidance that",
+   "topic": "Adyen results",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "SAP shares have moved more than 40% since its Q2 results, leaving the debate more balanced.",
+   "anchor": "The debate is more balanced after a better Q2 print and >40% share-price move since results.",
+   "topic": "SAP cloud backlog",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "SAP's current cloud backlog rose 26% year on year excluding currency, with organic growth of about 24.7%, de-risking second-half cloud growth.",
+   "anchor": "stronger cloud backlog, with CCB up 26% YoY ex-FX and organic CCB up c.24.7%,",
+   "topic": "SAP cloud backlog",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2H26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "For Wise shares to work, investors likely need greater clarity on Brussels and confidence Wise can reapply for a US bank charter under the Genius Act.",
+   "anchor": "for the stock to work, investors likely need greater clarity on Brussels",
+   "topic": "Wise catalysts",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC Communacopia Technology Conference preview 4 Sep 2026",
+   "claim": "Scout's ImmoScout24 Tenant Network has nearly tripled pre-market rental listings since May 2026.",
+   "anchor": "the ImmoScout24 Tenant Network has nearly tripled pre-market",
+   "topic": "Scout rental listings",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15339__gs-johnstone-tmt-spec-communacopia-technology-conference-pre.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 26,
+  "matched": 26,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
