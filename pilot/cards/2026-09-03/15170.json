@@ -1,0 +1,271 @@
+{
+ "brief": "Renewed US-Iran fighting (a second day of US strikes, Iranian retaliation against Jordan, Bahrain and Kuwait) pushed Brent to around USD 96/b and WTI to around USD 91/b, over 30% higher since the conflict began in February; crude still moves through Hormuz (about 8mb/d plus 4-5mb/d via pipelines) but well below pre-war flows. The same energy spike feeds gold's third straight decline to around USD 4,305/oz: higher oil raises inflation risk, and Fed Chair Kevin Warsh's hawkish message has markets pricing about a 70% chance of a September hike plus two more by March 2027, pushing the 30-year Treasury yield above 5.28% and reversing the decline the Treasury's bond-buyback programme had driven. Separately, the Bank of Israel cut rates 25bp to 3.25% on subdued inflation and a narrowing output gap, with one more cut possible by year-end if fiscal and election risk allow. Turkey's manufacturing PMI ticked up to 48.1 but stayed in a 29th month of contraction, reinforcing the case for further CBRT easing. The credit desk reports a UST-driven GCC bond selloff and new KSA sukuk pricing.",
+ "cards": [
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "The US conducted a second day of strikes on Iran.",
+   "anchor": "The US conducted a second day of strikes on Iran",
+   "topic": "US-Iran conflict escalation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Iran retaliated against Jordan, Bahrain and Kuwait, raising the risk of a sustained escalation.",
+   "anchor": "Iran retaliated against Jordan, Bahrain and Kuwait, raising the risk of a sustained escalation",
+   "topic": "US-Iran conflict escalation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Brent crude is trading around USD 96/b after surging 4.6% on Tuesday.",
+   "anchor": "Brent trading around USD 96/b after surging 4.6% on Tuesday",
+   "topic": "oil price",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "WTI crude is trading around USD 91/b as renewed US-Iran hostilities intensify concerns over energy flows through the Strait of Hormuz.",
+   "anchor": "and WTI near USD 91/b, as renewed US-Iran hostilities intensified concerns over energy flows",
+   "topic": "oil price",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "US officials estimate crude flows through the Strait of Hormuz averaged around 8mb/d, with another 4-5mb/d bypassing the strait through pipelines.",
+   "anchor": "US officials estimating flows averaged around 8mb/d, alongside another 4\u20135mb/d bypassing the strait through pipelines",
+   "topic": "Hormuz oil flows",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Oil prices are now more than 30% higher since the conflict began in February.",
+   "anchor": "Oil is now more than 30% higher since the conflict began in February",
+   "topic": "oil price",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "since February 2026"
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Gold has fallen for a third consecutive session, trading around USD 4,305/oz.",
+   "anchor": "Gold fell for a third consecutive session, trading around USD 4,305/oz",
+   "topic": "gold price",
+   "status": "level",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Markets are pricing an almost 70% probability of a Fed rate hike in September.",
+   "anchor": "Markets now price an almost 70% probability of a Fed rate hike in September",
+   "topic": "Fed rate hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Markets are pricing at least two additional Fed rate increases by March 2027, following Fed Chair Kevin Warsh's hawkish inflation message.",
+   "anchor": "alongside at least two increases by March 2027, following Fed Chair Kevin Warsh\u2019s hawkish inflation message",
+   "topic": "Fed rate hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by March 2027"
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "The 30-year US Treasury yield climbed above 5.28%, reversing the decline triggered by the Treasury's expanded bond-buyback programme.",
+   "anchor": "the 30-year US Treasury yield climbed above 5.28%, reversing the decline triggered by the Treasury\u2019s expanded bond-buyback programme",
+   "topic": "30-year Treasury yield",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "The Bank of Israel cut its policy rate by 25bps to 3.25%.",
+   "anchor": "The Bank of Israel (BoI) cut its policy rate by 25bps to 3.25%",
+   "topic": "Bank of Israel rate cut",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "The Bank of Israel estimates its output gap has narrowed to -0.8% from -4.6%.",
+   "anchor": "The BOI estimates the output gap has narrowed to -0.8% from -4.6%",
+   "topic": "Israel output gap",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "MUFG thinks one additional 25bp Bank of Israel rate cut is possible by year-end, taking the policy rate to 3%.",
+   "anchor": "we think one additional 25bp cut appears possible by year-end, taking the policy rate to 3%",
+   "topic": "Bank of Israel rate cut",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "by year-end 2026"
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Turkey's manufacturing PMI rose to 48.1 in August from 47.7 in July, reaching a three-month high.",
+   "anchor": "Turkey\u2019s manufacturing PMI rose to 48.1 in August from 47.7 in July, reaching a three-month high",
+   "topic": "Turkey manufacturing PMI",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Turkey's manufacturing sector extended its contraction for a 29th consecutive month despite the August PMI uptick.",
+   "anchor": "extending the sector\u2019s contraction for a 29th consecutive month",
+   "topic": "Turkey manufacturing PMI",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Turkey's Q2 GDP growth eased to 2.3% y/y, strengthening the case for further CBRT easing.",
+   "anchor": "with Q2 GDP growth easing to 2.3% y/y and strengthens the case for further monetary easing",
+   "topic": "Turkey GDP growth",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "The Central Bank of Turkey's current policy rate is 37%.",
+   "anchor": "Central Bank of Turkey (CBRT)\u2019s current 37% policy rate",
+   "topic": "CBRT policy rate",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "The credit trading desk noted the UST yield curve was much higher after the UK holiday.",
+   "anchor": "After the UK holiday we were greeted by a much higher UST yield curve",
+   "topic": "GCC credit market flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Credit trading flows were skewed to better selling, with both ETFs and real money accounts net reducing risk.",
+   "anchor": "Flows were skewed to better selling, both ETFs and RM were net reducing risk.",
+   "topic": "GCC credit market flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "MUFG",
+   "document": "Middle East Daily",
+   "claim": "Saudi Arabia set price guidance of T+70bp for the 5-year and T+80bp for the 10-year tranches of its dual-tranche sukuk pricing later that day.",
+   "anchor": "KSA set T+70bp in 5y and T+80bp in 10y for their dual tranche sukuk bonds pricing later today",
+   "topic": "KSA sukuk issuance",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15170__middle-east-daily.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 20,
+  "matched": 20,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
