@@ -1,0 +1,398 @@
+{
+ "brief": "Goldman's Eric Sheridan raised the humanoid robot forecast in an 80-page Physical AI note. The base case moves to 75,000 shipments in 2026, 890,000 units in 2030 and 6.5 million in 2035, against a prior 51,000, 256,000 and 1.4 million, a $138 billion market by 2035. Five conclusions carry the upgrade. Logistics and warehouses adopt first because eCommerce and retail already automate, so Goldman frames about 5.6% of Amazon's total cost to serve as automatable by 2030, worth roughly $72 billion of savings and a 240 basis point EBIT margin tailwind in its upside case. Autos follow, where welding is automated but final assembly and parts sorting are manual, so humanoids priced at $20,000 to $60,000 adopted at 10% to 50% rates would add 1% to 6% of gross operating margin, less if savings pass to buyers. Humanoid mobility shifts control from hardware PLCs to virtual PLCs growing 20% to 30% a year, which questions the lock-in of Siemens, Rockwell and Schneider. Each robot carries $3,000 to $6,000+ of semiconductor content. A Goldman survey found ~40% of respondents expect at least 10% of workflows automated in 3-5 years.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman analyst Eric Sheridan raised his base case for humanoid robot shipments to 75,000 units in 2026.",
+   "anchor": "his base case to 75,000 humanoid shipments in 2026, 890,000 in 2030, and 6.5 million in 2035,",
+   "topic": "humanoid shipment forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman projects the global humanoid robot market reaches approximately 890,000 units by 2030.",
+   "anchor": "reach approximately 890,000 units by 2030 and 6.5 million units by 2035",
+   "topic": "humanoid shipment forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman projects the global humanoid robot market reaches 6.5 million units by 2035.",
+   "anchor": "The global market is now projected to reach approximately 890,000 units by 2030 and 6.5 million units by 2035",
+   "topic": "humanoid shipment forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2035"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman sizes the 2035 humanoid robot market at a $138 billion opportunity.",
+   "anchor": "6.5 million units by 2035 (representing a $138 billion market opportunity),",
+   "topic": "humanoid market size",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2035"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman's previous humanoid shipment estimates were 51,000 units, 256,000 units and 1.4 million units for the same three horizons.",
+   "anchor": "versus a previous estimate of 51,000, 256,000, and 1.4 million.",
+   "topic": "humanoid shipment forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman expects humanoid robot deployment to happen first in logistics and warehouse operations.",
+   "anchor": "Sheridan pointed out that deployment of humanoid robotics will primarily be in the logistics space first.",
+   "topic": "warehouse humanoid adoption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman identifies eCommerce and retail companies including Amazon and Walmart as leading the shift to general-purpose humanoids.",
+   "anchor": "eCommerce/Retail companies (like Amazon and Walmart) are leading this transition.",
+   "topic": "warehouse humanoid adoption",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "WMT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman frames about 5.6% of Amazon's total cost to serve as addressable by automation by 2030, worth roughly $72 billion of cost savings in its upside analysis.",
+   "anchor": "We frame ~5.6% of leverage in Amazon's total cost to serve via automation by 2030, which is estimated to yield a ~$72 billion cost savings",
+   "topic": "Amazon cost savings",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman estimates wider robotics deployment gives Amazon a roughly 240 basis point EBIT margin tailwind in its upside analysis.",
+   "anchor": "a ~240 bps EBIT margin tailwind in our upside analysis from a wider deployment of robotics.",
+   "topic": "Amazon cost savings",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman states automotive body welding is already highly automated while final assembly and parts sorting remain manual.",
+   "anchor": "While automotive body welding is highly automated, final assembly and partsn sorting remain manual.",
+   "topic": "auto humanoid adoption",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman's auto scenario analysis prices humanoid robots between $20,000 and $60,000 per unit.",
+   "anchor": "scenario analysis where companies adopt humanoids (priced between $20,000 and $60,000)",
+   "topic": "auto humanoid adoption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman estimates humanoid adoption at a 10% to 50% rate could drive 1% to 6% of gross operating margin expansion for automakers.",
+   "anchor": "a 10% to 50% rate, we estimate it could drive a 1% to 6% operating margin expansion on a gross basis",
+   "topic": "auto humanoid adoption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman qualifies that the net automaker margin benefit could be smaller if some savings are passed on as lower vehicle prices.",
+   "anchor": "although the net effect could be less if some savings are passed on in the form of lower vehicle prices",
+   "topic": "auto humanoid adoption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman expects humanoids to accelerate the shift from hardware-bound programmable logic controllers to software-defined virtual PLCs.",
+   "anchor": "The mobility of humanoids is accelerating the shift from hardware-boundn Programmable Logic Controllers (PLCs) to software-defined virtual PLCs (vPLCs).",
+   "topic": "virtual PLC shift",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman projects the virtual PLC market grows 20% to 30% annually.",
+   "anchor": "The vPLC market is projected to grow 20% to 30% annually",
+   "topic": "virtual PLC shift",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "annually"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman says virtual PLC growth calls into question the hardware-software lock-in of incumbents Siemens, Rockwell Automation and Schneider Electric.",
+   "anchor": "which would call into question the legacy hardware-software lock-in of dominant incumbents like Siemens, Rockwell Automation, and Schneider Electric.",
+   "topic": "virtual PLC shift",
+   "status": "forecast",
+   "instruments": [
+    "ROK"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman estimates the semiconductor addressable market at $3,000 to $6,000 or more per humanoid robot.",
+   "anchor": "The semiconductor addressable market (SAM) is estimated at $3,000 to $6,000+ per humanoid",
+   "topic": "humanoid semiconductor content",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman puts high-performance compute modules at $1,500 to $4,000 or more of the semiconductor content per humanoid.",
+   "anchor": "per humanoid, spanning high-performance compute modules ($1,500\u2013$4,000+), analog/mixed-signal chips ($750\u2013$1,050+), and edge memory ($600\u2013$800+).",
+   "topic": "humanoid semiconductor content",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman puts analog and mixed-signal chips at $750 to $1,050 or more of the semiconductor content per humanoid.",
+   "anchor": "spanning high-performance compute modules ($1,500\u2013$4,000+), analog/mixed-signal chips ($750\u2013$1,050+), and edge memory ($600\u2013$800+).",
+   "topic": "humanoid semiconductor content",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman puts edge memory at $600 to $800 or more of the semiconductor content per humanoid.",
+   "anchor": "analog/mixed-signal chips ($750\u2013$1,050+), and edge memory ($600\u2013$800+).",
+   "topic": "humanoid semiconductor content",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "In Goldman's first Executive Perspectives survey, about 40% of respondents expect at least 10% of workflows to be automated with general purpose robotics within three to five years.",
+   "anchor": "that ~40% of respondents expect at least 10% of workflows to be automated in 3-5 years",
+   "topic": "robotics automation survey",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3-5 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Amazon already operates more than 1 million robots across more than 300 sites.",
+   "anchor": "Amazon already has more than 1 million robots across 300-plus sites.",
+   "topic": "warehouse humanoid adoption",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Walmart has automated freight into 3,100 U.S. stores.",
+   "anchor": "Walmart has automated freight into 3,100 U.S. stores",
+   "topic": "warehouse humanoid adoption",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Walmart runs over half of its e-commerce volume through automated facilities.",
+   "anchor": "runs over half of e-commerce volume through automated facilities.",
+   "topic": "warehouse humanoid adoption",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Goldman expects the auto industry to adopt humanoids widely after logistics, with manufacturers exploring them to mitigate labor challenges.",
+   "anchor": "After logistics, humanoids are expected to be widely adopted across the auto industry",
+   "topic": "auto humanoid adoption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Alongside the forecast upgrade, Sheridan published a list of companies best placed to capture the physical-AI boom.",
+   "anchor": "Sheridan put out a shopping list of the companies best placed to capture the physical-AI boom.",
+   "topic": "physical AI stock picks",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Global venture capital investment in robotics began to ramp up in late 2024.",
+   "anchor": "global venture capital investment in robotics began to ramp up in late 2024.",
+   "topic": "robotics venture funding",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "The Solactive China Humanoid Robotics Index, a 20-name basket of China-listed humanoid and parts-stack names, peaked in September 2025 and has since retraced part of its run.",
+   "anchor": "a 20-name basket of China-listed humanoid and parts-stack names, peaked in September 2025 and has since given back some of the late-summer 2024 run.",
+   "topic": "China robotics index",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "Unitree's IPO is already sputtering as investors worry about a humanoid robotics bubble.",
+   "anchor": "Beyond Unitree's blockbuster IPO, already sputtering as investors fret over a humanoid robotics bubble,",
+   "topic": "Unitree IPO",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Upgrades Humanoid Forecast By 4 Times As Warehouses Become Ground Zero For Deployments",
+   "claim": "JPMorgan analyst Rajat Gupta toured Tesla's Fremont factory and reported progress converting the discontinued Model S and Model X lines for Optimus humanoid production.",
+   "anchor": "reported to clients on the progress in converting the discontinued Model S and Model X production lines",
+   "topic": "Tesla Optimus production",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-02/15123__goldman-upgrades-humanoid-forecast-by-4-times-as-warehouses-.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
