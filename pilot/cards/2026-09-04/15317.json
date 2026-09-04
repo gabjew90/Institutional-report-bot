@@ -1,0 +1,635 @@
+{
+ "brief": "JPM US Market Intelligence morning briefing for September 4, 2026. The desk argues Waller's dovish remarks drove yesterday's bond rally and the move higher in stocks but did not change the setup, because wage inflation has not been the driver of inflation and Warsh treats the economy as at full employment. That makes the September 11 CPI more important than today's payrolls, which the desk frames as good news is bad news: a stronger print pushes yields higher and weighs on equities, while a large downside miss could reignite stagflation concerns, leaving 30k to 70k as goldilocks. Feroli forecasts 50k jobs versus the Street's 55k, prior minus 23k, unemployment 4.1% versus 4.1%, average hourly earnings +0.25% MoM. ISM services prices paid ran above 70 for the fifth time in six months, and the desk says those sub-indices lead CPI by two to three months. The desk holds a Tactically Cautious / Neutral view, first published August 24, on a live Fed meeting, unclear positioning, post-Labor Day issuance widening spreads, seasonality, a momentum unwind and AVGO earnings, arguing for reducing net longs and potentially a dollar-neutral or market-neutral approach.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "JPM economist Michael Feroli forecasts 50k nonfarm payrolls added in the August jobs report, below the Street's 55k estimate, after a prior print of -23k.",
+   "anchor": "Feroli sees 50k jobs being added, versus the Street\u2019s estimate of 55k; the prior print was -23k jobs",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September 4, 2026 release"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Feroli forecasts the U.3 unemployment rate at 4.1%, unchanged from the prior 4.1%.",
+   "anchor": "For the unemployment rate (U.3) he sees 4.1% vs. 4.1% prior",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September 4, 2026 release"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Feroli forecasts average hourly earnings of +0.25% MoM and +3.0% YoY in the August jobs report.",
+   "anchor": "For Average Hourly Earnings, he sees +0.25% MoM and +3.0% YoY",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September 4, 2026 release"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The JPM US Market Intelligence trading desk assigns 10% probability to nonfarm payrolls printing above 95k, with the SPX losing 50bp to 1.25% on that outcome.",
+   "anchor": "[10%] NFP prints above 95k. SPX loses 50bp \u2013 1.25%",
+   "topic": "NFP scenario analysis",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk assigns 25% probability to nonfarm payrolls printing between 65k and 95k, with the SPX losing 25bp to 50bp on that outcome.",
+   "anchor": "[25%] NFP prints between 65k \u2013 95k. SPX loses 25bp to 50bp",
+   "topic": "NFP scenario analysis",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk assigns 30% probability, its highest-weighted scenario, to nonfarm payrolls printing between 35k and 65k, with the SPX ranging from a 25bp loss to a 50bp gain.",
+   "anchor": "[30%] NFP prints between 35k \u2013 65k. SPX loses 25bp to gains 50bp",
+   "topic": "NFP scenario analysis",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk assigns 25% probability to nonfarm payrolls printing between 5k and 35k, with the SPX gaining 25bp to 75bp on that outcome.",
+   "anchor": "[25%] NFP prints between 5k \u2013 35k. SPX gains 25bp \u2013 75bp",
+   "topic": "NFP scenario analysis",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk assigns 10% probability to nonfarm payrolls printing below 5k, with the SPX ranging from a 25bp loss to a 50bp gain.",
+   "anchor": "[10%] NFP prints below 5k. SPX loses 25bp to gains 50bp",
+   "topic": "NFP scenario analysis",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "SPX index options expiring September 4, 2026 priced a 1.1% implied move, using August 31 data.",
+   "anchor": "using data from August 31, show a 1.1% implied move",
+   "topic": "SPX implied move",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September 4, 2026 expiry"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk says a stronger nonfarm payrolls print will likely push bond yields higher and weigh on equities, a good-news-is-bad-news setup.",
+   "anchor": "A stronger NFP print will likely push bond yields higher, weighing on Equities",
+   "topic": "NFP market reaction",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk says a large downside payrolls miss, such as another negative print, could reignite stagflation concerns, and puts the goldilocks range at 30k to 70k.",
+   "anchor": "could reignite stagflation concerns. Goldilocks is like in the 30k \u2013 70k range",
+   "topic": "NFP market reaction",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk views the September 11 CPI as more impactful than the September 4 payrolls report ahead of the September 16 Fed meeting.",
+   "anchor": "we view CPI as more impactful and that NFP is operating in a \u2018Good News is Bad News\u2019 type of environment",
+   "topic": "Fed September decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "into the Sep 16 Fed meeting"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Waller's stance is to hold rates unless next week's CPI prints hotter, in which case he would support a hike.",
+   "anchor": "His stance is to HOLD unless we see a hotter CPI print next week and then he would support a HIKE",
+   "topic": "Fed September decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "into the Sep 16 Fed meeting"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Waller flags core inflation as lower than the prints suggest and does not see energy or tariffs as meaningful forward contributors to inflation.",
+   "anchor": "He flags core inflation as being lower than prints suggest",
+   "topic": "Fed September decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Jay Barry expects the Fed to hold if core CPI MoM prints between +0.1% and +0.2%, assuming payrolls print around 50k and the unemployment rate is steady.",
+   "anchor": "if Core MoM prints in the +0.1% to +0.2% range then the FED WILL HOLD",
+   "topic": "Fed September decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "into the Sep 16 Fed meeting"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Jay Barry reads Waller's comments as more dovish than recent Fed speak, particularly Warsh's, and as the driver of the curve's bullish steepening.",
+   "anchor": "Governor Waller\u2019s comments today read more dovish than recent Fed speak, particularly Warsh\u2019s",
+   "topic": "Fed September decision",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "ISM services prices paid printed above 70 for the fifth time in the last six months, taking the 12-month average to 68.5, the highest since April 2023.",
+   "anchor": "above 70 for the 5th time in the last 6 months, taking the 12-month average to 68.5",
+   "topic": "ISM prices paid",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk says ISM manufacturing and services prices paid sub-indices tend to precede CPI by 2-3 months, and both printed hotter than expected.",
+   "anchor": "these sub-indices do tend to precede CPI by 2-3 months",
+   "topic": "ISM prices paid",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2-3 months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The JPM US Market Intelligence desk is moving to a Tactically Cautious / Neutral stance on US equities.",
+   "anchor": "We are moving to a Tactically Cautious / Neutral stance, and we update the Monetization Menu",
+   "topic": "tactical equity view",
+   "status": "target",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 2-3 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk says equity fundamentals across economics and earnings remain intact but expects the next 2-3 weeks to be choppy.",
+   "anchor": "we think market fundamentals (econ & earnings) remain intact but see the next 2-",
+   "topic": "tactical equity view",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 2-3 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk argues for reducing net-longs and potentially adopting a dollar-neutral or market-neutral approach.",
+   "anchor": "This argues for reducing net-longs and potentially adopting a $-neutral or market-neutral approach",
+   "topic": "tactical equity view",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 2-3 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk says positioning is not giving a clean read on market direction and history suggests a choppy next 3-4 weeks.",
+   "anchor": "positioning is not giving a clean read on market direction and history suggests a choppy next 3-4 weeks",
+   "topic": "positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 3-4 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The positioning team flags that a sharp rebound in the Momentum factor is unlikely given recent activity.",
+   "anchor": "a sharp rebound in Momentum factor is unlikely given recent activity",
+   "topic": "momentum unwind",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The JPMPURE Momentum index is down more than 21% from its June all-time high, outside the typical 10-15% drawdown range.",
+   "anchor": "Momentum (JPMPURE Index) is down more than 21% from its June ATH",
+   "topic": "momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The JPPQMO Classic Momentum index is down nearly 34% from its June all-time high.",
+   "anchor": "Momentum (JPPQMO Index) is down nearly 34% from its June ATH",
+   "topic": "momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk flags a historical spike in issuance in the two weeks after Labor Day that drives credit spreads wider and can pressure equities.",
+   "anchor": "there is a spike in issuance in the two weeks post-Labor Day driving spreads wider",
+   "topic": "credit spreads",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two weeks post-Labor Day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "September screens as the worst performing month for the SPX, followed by Q4 as the strongest quarter of the year.",
+   "anchor": "September screens as the worst performing month for the SPX followed by Q4 being the strongest quarter of the year",
+   "topic": "equity seasonality",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September into Q4"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Since 1990 the SPX rallied +5.4% at 3 months (78% hit rate) and +11.4% at 6 months (100% hit rate) after midterm election days.",
+   "anchor": "+5.4%, +11.4%, +12.5%, and +14.7% at 3 month (78% hit rate), 6 month (100% hit rate)",
+   "topic": "equity seasonality",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3 to 12 months post-midterms"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk flags that AVGO earnings may prove spectacular and still fail to drive meaningful stock appreciation across AI, memory and semis.",
+   "anchor": "AVGO Earnings \u2013 may prove spectacular and fail to drive meaningful stock appreciation",
+   "topic": "AVGO earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next 2-3 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The August 31 Monetization Menu starts with a long NDX versus short RTY position.",
+   "anchor": "MONETIZATION MENU (AUG 31) \u2013 We start with a +NDX vs. -RTY position",
+   "topic": "monetization menu",
+   "status": "target",
+   "instruments": [
+    "NDX",
+    "RTY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Within tech the desk favors Mag7 as the near-term play, citing the inability of AI, memory and semis to sustain a bid.",
+   "anchor": "we like Mag7 as the favored near-term play given the inability for AI / Memory / Semis to sustain a bid",
+   "topic": "monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk says software remains attractive, especially if semis continue to fall.",
+   "anchor": "Software remains attractive especially if Semis continue to fall",
+   "topic": "monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk expects SMID-caps to underperform as part of its tactical call.",
+   "anchor": "we think that SMID-caps are likely to underperform as part of this tactical call",
+   "topic": "monetization menu",
+   "status": "target",
+   "instruments": [
+    "RTY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk likes large-cap banks on the economic growth story plus loose financial conditions.",
+   "anchor": "Large-Cap Banks given the economic growth story accompanied by loose financial conditions",
+   "topic": "monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk likes consumer discretionary if energy prices move lower.",
+   "anchor": "Consumer Discretionary if energy prices move lower",
+   "topic": "monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Within defensives the desk notes healthcare tends to be the best performing sector into midterm elections.",
+   "anchor": "Within Defensives, Healthcare tends to be the best performing sector into midterms",
+   "topic": "monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into the Nov 3 midterms"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "As hedges the desk likes shorting credit ETFs and buying VIX products.",
+   "anchor": "As hedges we like shorting Credit ETFs and buying VIX products",
+   "topic": "monetization menu",
+   "status": "target",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk says the Dollar Debasement trade may struggle until the September 16 Fed meeting and prefers switching cash positions into derivative positions.",
+   "anchor": "the Dollar Debasement trade may struggle, so makes sense to switch cash positions into derivative positions",
+   "topic": "dollar debasement trade",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "until the Sep 16 Fed meeting"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The superseded August 24 Monetization Menu recommended a barbell that spreads risk from AI, memory and semis to include Mag7 and software.",
+   "anchor": "that would spreading risk from AI/Memory/Semis to include Mag7/Software",
+   "topic": "monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The August 24 menu said precious metals remain attractive on the Dollar Debasement trade, which it expected to extend near-term.",
+   "anchor": "\u2018Dollar Debasement\u2019 trade which may extend in the near-term. Regardless, Precious Metals remain attractive",
+   "topic": "dollar debasement trade",
+   "status": "target",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Pre-market on September 4, SPX futures were +0.1%, NDX +0.5% and RTY -0.0%.",
+   "anchor": "SPX +0.1%, NDX +0.5%, RTY -0.0%",
+   "topic": "market snapshot",
+   "status": "level",
+   "instruments": [
+    "SPX",
+    "NDX",
+    "RTY"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "WTI crude was -76bps at $90.61 and NatGas +51bps at $2.93 pre-market on September 4.",
+   "anchor": "WTI -76bps at $90.61, NatGas +51bps to $2.93",
+   "topic": "market snapshot",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Gold was -3bps at $4,472 and silver -21bps at $66.84 pre-market on September 4.",
+   "anchor": "Gold -3bps to $4,472, Silver -21bps to $66.84",
+   "topic": "market snapshot",
+   "status": "level",
+   "instruments": [
+    "GLD",
+    "SLV"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The 10-year Treasury yield was 4.758% and the VIX 14.20 pre-market on September 4.",
+   "anchor": "10Y @ 4.758%, and VIX @ 14.20",
+   "topic": "market snapshot",
+   "status": "level",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "Pre-market the Magnificent 7 were mixed, with NVDA +1.4% and AMZN +0.7% leading and TSLA -2.1% lagging.",
+   "anchor": "the Magnificent 7 are mixed, with NVDA (+1.4%) and AMZN (+0.7%) leading and TSLA (-2.1%) lagging",
+   "topic": "market snapshot",
+   "status": "level",
+   "instruments": [
+    "NVDA",
+    "AMZN",
+    "TSLA"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "same day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "US nonfarm payrolls, the unemployment rate and average hourly earnings are released at 8:30am ET on September 4.",
+   "anchor": "US MACRO DATA: NFP, Unemployment Rate and Average Hourly Earnings at 8.30am",
+   "topic": "US calendar",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "September 4, 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Morning Briefing",
+   "claim": "The desk lists Fed meeting dates of September 16, October 28 and December 9, with CPI on September 11 and October 14.",
+   "anchor": "NEAR TERM CATALYSTS \u2013 CPI (Sep 11, Oct 14)",
+   "topic": "US calendar",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Sep to Dec 2026"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15317__jpm-us-market-intelligence-morning-briefing.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 47,
+  "matched": 47,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
