@@ -1,0 +1,257 @@
+{
+  "pulse_date": "2026-09-04",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai compute pricing pressure",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 2,
+        "neutral": 4
+      },
+      "consensus_view": "Desks agree AI usage keeps climbing, but they split on whether the price charged per unit of that usage is falling faster than volume grows, which is what decides whether the spending boom turns into profit.",
+      "facts_agreed": [
+        {
+          "claim": "Rising AI usage is feeding real revenue for the companies selling compute and AI services.",
+          "banks_for": [
+            "TS Lombard",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Compute scarcity has been driving hyperscaler outperformance recently.",
+            "consumption of these services generates token revenue in and of itself"
+          ]
+        },
+        {
+          "claim": "Prices charged per unit of AI usage are falling, so volume growth has to be extreme to keep revenue rising.",
+          "banks_for": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "If unit prices keep collapsing, consumption has to grow extraordinarily fast just to offset it",
+            "More demand + lower prices is not automatically bullish if pricing falls faster than consumption grows."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether growing AI demand is enough to offset falling prices",
+          "banks_for": [
+            "TS Lombard",
+            "Deutsche Bank"
+          ],
+          "for_evidence": "Compute scarcity has been driving hyperscaler outperformance recently.",
+          "banks_against": [
+            "Goldman Sachs",
+            "The Market Ear"
+          ],
+          "against_evidence": "More demand + lower prices is not automatically bullish if pricing falls faster than consumption grows."
+        },
+        {
+          "claim": "whether to buy AI infrastructure exposure at current prices",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "We like buying the dip here in both hyperscalers (GSXUHYPR) and data center equipment (GSTMTDAT)",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "More demand + lower prices is not automatically bullish if pricing falls faster than consumption grows."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait shipping disruptions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 5
+      },
+      "consensus_view": "Five desks treat disrupted shipping through the Strait of Hormuz as a live supply risk running through oil, gas and fertilizer markets, but none has staked out a directional call on whether the passage stays blocked or reopens.",
+      "facts_agreed": [
+        {
+          "claim": "Five desks flag shipping through the Strait of Hormuz as a live supply risk in this window, citing tanker flows, the possibility of closure and the possibility of reopening.",
+          "banks_for": [
+            "The Market Ear",
+            "TS Lombard",
+            "Goldman Sachs",
+            "Citi",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz fertilizer supply shocks",
+            "Strait of Hormuz tanker flow disruptions",
+            "Hormuz Strait geopolitical control",
+            "Strait of Hormuz reopening",
+            "Strait of Hormuz closure"
+          ]
+        },
+        {
+          "claim": "The disruption is tracked beyond crude, covering energy flows generally and the separate threat to Red Sea shipping routes.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz energy flow disruptions",
+            "Houthi threat to Red Sea shipping"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "midterm election volatility",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 2,
+        "neutral": 3
+      },
+      "consensus_view": "Bank of America is the only voice on this theme and it argues midterm elections rarely move the whole US stock market by much, with options currently pricing a smaller day-after move than the historical average.",
+      "facts_agreed": [
+        {
+          "claim": "Midterm elections have historically produced little movement in the broad US stock market, showing up as differences between individual stocks rather than a market-wide swing.",
+          "banks_for": [
+            "Bank of America",
+            "BofA Global Research"
+          ],
+          "evidence_quotes": [
+            "midterm elections have rarely elicited large broad market moves historically.",
+            "midterm elections have rarely elicited large broad market moves historically"
+          ]
+        },
+        {
+          "claim": "Options are pricing a 0.82% S&P 500 move after the 2026 midterms, below the 1.3% average one-day move seen after past midterms.",
+          "banks_for": [
+            "Bank of America",
+            "BofA Global Research"
+          ],
+          "evidence_quotes": []
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fomc rate hike expectations",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Three desks flag the upcoming Fed meetings, and one the ECB's December decision, as live events where a rate increase is on the table, but none of them says whether a hike actually happens.",
+      "facts_agreed": [
+        {
+          "claim": "Three banks reference upcoming central bank meetings as near-term rate-decision catalysts without staking a directional view.",
+          "banks_for": [
+            "Bank of America + BofA Global Research",
+            "Goldman Sachs",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "October FOMC meeting",
+            "US FOMC live meeting",
+            "Fed rate hike expectations",
+            "ECB December rate hike expectations"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs treats the September Fed meeting as the specific decision point for the rate path.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "September FOMC meeting hike probability",
+            "Fed September rate hike path"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "treasury bond buybacks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 4
+      },
+      "consensus_view": "Four desks flag that the US Treasury is buying back more of its own bonds and is questioning how well the program works, but none of them takes a side on where it pushes prices or yields.",
+      "facts_agreed": [
+        {
+          "claim": "Four desks note that the US Treasury has scaled up its bond buyback operations, treating it as background context rather than a directional call.",
+          "banks_for": [
+            "JPMorgan",
+            "Bloomberg",
+            "Deutsche Bank",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "US Treasury expanded bond buybacks",
+            "Treasury enhanced buyback operations",
+            "US Treasury buyback operations increase",
+            "Treasury buyback program efficacy"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "el ni\u00f1o weather risks",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Three research desks mention El Ni\u00f1o weather as a live risk to food and crop markets, but none has taken a side on which way prices go.",
+      "facts_agreed": [
+        {
+          "claim": "Three desks flag El Ni\u00f1o weather conditions as an active risk factor in this window without taking a directional position.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "El Ni\u00f1o weather risks",
+            "El-Nino weather impact on agriculture",
+            "Super El Ni\u00f1o sugar market risk",
+            "El Ni\u00f1o weather pattern"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs locates the El Ni\u00f1o exposure specifically in agriculture and in the sugar market.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "El-Nino weather impact on agriculture",
+            "Super El Ni\u00f1o sugar market risk"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "US midterm elections",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'BofA'"
+    },
+    {
+      "theme": "dovish fed repricing",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'JPMorgan'"
+    }
+  ]
+}
