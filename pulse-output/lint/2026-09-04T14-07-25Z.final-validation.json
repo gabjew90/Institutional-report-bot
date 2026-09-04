@@ -1,0 +1,87 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '60%' is attached to [back, broke, carried, here, increase] but the source uses it for [accounts, adopting, base, bond, brand] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "60%",
+   "draft_subject": [
+    "back",
+    "broke",
+    "carried",
+    "here",
+    "increase",
+    "morning",
+    "read",
+    "rested"
+   ],
+   "source_subject": [
+    "accounts",
+    "adopting",
+    "base",
+    "bond",
+    "brand",
+    "cagr",
+    "chance",
+    "close"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "4.54% is stated for Payrolls but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-23.0, 4.1, 162.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "4.54",
+   "event": "PAYROLLS",
+   "matches_estimate": false,
+   "sentence": "- **August payrolls at 162,000, against a 55,000 estimate and a prior month that lost 23,000 jobs.** Unemployment held at 4.1%, exactly the estimate, and the gain came from hiring rather than from peo"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "58% is stated for Payrolls but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-23.0, 162.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "58",
+   "event": "PAYROLLS",
+   "matches_estimate": false,
+   "sentence": "The counter from JPMorgan's desk is that next Friday's CPI decides the meeting rather than today's payrolls, and that the labor detail underneath is softer than the headline, with Challenger job cut a"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "33% is stated for Payrolls but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-23.0, 162.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "33",
+   "event": "PAYROLLS",
+   "matches_estimate": false,
+   "sentence": "The counter from JPMorgan's desk is that next Friday's CPI decides the meeting rather than today's payrolls, and that the labor detail underneath is softer than the headline, with Challenger job cut a"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.1% is stated for Payrolls but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-23.0, 162.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.1",
+   "event": "PAYROLLS",
+   "matches_estimate": false,
+   "sentence": "The counter from JPMorgan's desk is that next Friday's CPI decides the meeting rather than today's payrolls, and that the labor detail underneath is softer than the headline, with Challenger job cut a"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.2% is stated for Payrolls but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-23.0, 162.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.2",
+   "event": "PAYROLLS",
+   "matches_estimate": false,
+   "sentence": "The counter from JPMorgan's desk is that next Friday's CPI decides the meeting rather than today's payrolls, and that the labor detail underneath is softer than the headline, with Challenger job cut a"
+  },
+  {
+   "kind": "released-actual-missing",
+   "severity": "hard",
+   "message": "Payrolls has already printed (ACTUAL=162%) and the pulse discusses it, but none of those values appear anywhere in the text. The 2026-08-12 CPI recap shipped three banks' forecasts and never the print. State the actual figure.",
+   "event": "PAYROLLS",
+   "actual": [
+    162.0
+   ]
+  }
+ ],
+ "hard_count": 1,
+ "soft_count": 6,
+ "exit_code": 3
+}

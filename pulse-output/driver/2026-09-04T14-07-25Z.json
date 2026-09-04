@@ -1,0 +1,118 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-09-04T14:08:15.734542Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=53; anchors 246/257 matched, 0 empty, 0 too_short (rate=0.957)",
+   "at": "2026-09-04T14:08:20.919658Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "hard residuals after 2 re-rolls -- shipping with residuals recorded (budget spent)",
+   "at": "2026-09-04T14:19:52.740703Z"
+  },
+  "lint": {
+   "decision": "SKIP_SCRUB",
+   "detail": "no lint issues \u2014 SCRUB skip (clean input)",
+   "at": "2026-09-04T14:25:49.645489Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-09-04T14:26:04.820506Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-09-04T14:26:09.422914Z"
+  },
+  "adversarial": {
+   "decision": "DISPATCH_REPAIR",
+   "detail": "4 hard finding(s), 1 soft; repair 1/2; items at adversarial_repair_items.json; after the repair agent, RE-DISPATCH the checker fresh, then run: gate adversarial --recheck",
+   "at": "2026-09-04T14:31:45.273147Z"
+  },
+  "adversarial_recheck": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-09-04T14:45:47.439656Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-09-04T14:45:48.961236Z"
+  }
+ },
+ "budgets": {
+  "draft_rerolls": 2,
+  "adversarial_repairs": 2
+ },
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-09-04T14:08:15.734542Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-09-04T14:08:20.919658Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-09-04T14:18:11.811741Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-09-04T14:19:33.707852Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-09-04T14:19:52.740703Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "SKIP_SCRUB",
+   "at": "2026-09-04T14:25:49.645489Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-09-04T14:26:04.820506Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-09-04T14:26:09.422914Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "DISPATCH_REPAIR",
+   "at": "2026-09-04T14:31:45.273147Z"
+  },
+  {
+   "gate": "adversarial_recheck",
+   "decision": "DISPATCH_REPAIR",
+   "at": "2026-09-04T14:39:26.012976Z"
+  },
+  {
+   "gate": "adversarial_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-09-04T14:45:47.439656Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-09-04T14:45:48.961236Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
