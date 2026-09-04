@@ -1,0 +1,427 @@
+{
+ "brief": "Goldman Sachs equity sales note, 4 Sep 2026. Waller corroborated Williams that the committee center has not shifted materially and remains data dependent, and signalled he might hold in September unless inflation comes in hot and that NFP matters less than CPI, so event risk migrates from payrolls to CPI. Payroll consensus is only about +55k, the hurdle is low, and the author flags downside risk on NFP alongside a seasonal tendency for weak August first prints. On AI, Astra lifted SoftBank 10-11% and Oracle 5.5% overnight. The author argues a frontier step-change forces competitors to chase and keeps the spending cycle alive, says he is not bearish AI while acknowledging hardware de-rating, and sees a constructive September AI calendar. In Japan, a strengthening yen with no obvious intervention, BOJ pricing of just over 25bps for September and near 100bps over a year, and Takaichi FY27 budget requests of Y143.1tn combine loose fiscal with tight money. Exporters should struggle, domestic banks should trade better, and the carry trade hit is slightly punitive for risk. Energy stays the biggest unresolved risk with Hormuz impaired. Lighter positioning plus the AI calendar give melt-up ingredients, with energy and CPI the spoilers.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Waller corroborated Williams and the center of the Fed committee has not shifted materially, remaining data dependent.",
+   "anchor": "and basically\ncorroborated Williams\u2026the center of the committee hasn\u2019t shifted materially",
+   "topic": "Fed policy",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Waller might hold rates in September unless inflation comes in hot.",
+   "anchor": "Waller might hold in September unless inflation comes in hot",
+   "topic": "Fed policy",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Waller made clear that nonfarm payrolls matter less than next week's CPI print.",
+   "anchor": "made pretty clear that NFP\nmatters less than CPI next week",
+   "topic": "CPI risk",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Consensus for the August payroll print is only about +55k.",
+   "anchor": "Payroll consensus is only ~+55k, so barring a genuinely huge upside",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Event risk has migrated from the payroll print to CPI.",
+   "anchor": "Event risk has effectively\nmigrated from payrolls to CPI",
+   "topic": "CPI risk",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "The author sees risk to the downside on the nonfarm payroll print.",
+   "anchor": "side-note: Risk to downside on NFP",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Nonfarm payrolls show a recurring tendency toward weak August first prints relative to the final vintage.",
+   "anchor": "Nonfarm payrolls exhibit a clear tendency toward weak August first prints",
+   "topic": "August payrolls",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "SoftBank rose 10-11% overnight on the Astra model news.",
+   "anchor": "SoftBank +10\u201311% overnight, while Oracle was +5.5%",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [
+    "SFTBY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "overnight"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Oracle rose 5.5% overnight on the Astra model news.",
+   "anchor": "while Oracle was +5.5%. The bigger point is\nthat a frontier model",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "overnight"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "A frontier model stepping away from the pack forces competitors to chase and keeps the AI spending cycle alive.",
+   "anchor": "It\nforces everyone else to chase, keeps the spending cycle alive",
+   "topic": "AI narrative",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "The author is not bearish AI but acknowledges that hardware has been de-rating.",
+   "anchor": "I\u2019m not bearish AI (but important to acknowledge hardware has been de-rating",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "The September AI calendar looks constructive, with Oracle reporting next week plus conferences offering bullish read-throughs.",
+   "anchor": "The September AI calendar also looks pretty constructive\u2026Oracle next week,\nconferences and plenty",
+   "topic": "AI narrative",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "The yen continues to strengthen with no obvious sign that intervention is driving the move.",
+   "anchor": "it continues to strengthen with no obvious sign that intervention is driving\nit",
+   "topic": "yen",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Market pricing for the Bank of Japan is just over 25bps of tightening for September.",
+   "anchor": "BOJ pricing has become aggressive: jut over 25bps for September",
+   "topic": "BOJ policy",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Market pricing for the Bank of Japan is close to 100bps of tightening over the next year.",
+   "anchor": "jut over 25bps for September and close to 100bps over the next\nyear",
+   "topic": "BOJ policy",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Japan's FY27 budget requests under Takaichi have reached Y143.1tn, back toward pandemic era scale.",
+   "anchor": "FY27 budget requests have reached\n\u00a5143.1tn, back towards pandemic era scale",
+   "topic": "Japan fiscal policy",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Japanese exporters should struggle at the margin under looser fiscal policy, tighter monetary policy and a stronger yen.",
+   "anchor": "Exporters should struggle at the margin, domestic banks should trade\nbetter",
+   "topic": "Japan equities",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Japanese domestic banks should trade better, with Topix banks at highs of the year.",
+   "anchor": "domestic banks should trade\nbetter (Topix banks highs of the year)",
+   "topic": "Japan equities",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "A stronger yen bites the carry trade, which is slightly punitive for broader risk assets.",
+   "anchor": "The stronger yen also bites the carry trade, which is slightly\npunitive for broader risk",
+   "topic": "yen",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Energy remains the biggest unresolved macro risk.",
+   "anchor": "Energy: Remains the biggest unresolved macro risk.",
+   "topic": "oil supply risk",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Iran's latest retaliation targeted US regional bases rather than energy infrastructure, which is incrementally positive.",
+   "anchor": "Iran\u2019s latest retaliation has focused on US regional\nbases rather than energy infrastructure",
+   "topic": "oil supply risk",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Shipping through the Strait of Hormuz remains heavily impaired.",
+   "anchor": "shipping through\nHormuz remains heavily impaired",
+   "topic": "oil supply risk",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Product and LNG flows remain disrupted and inventories stay under pressure despite US escorting of crude convoys.",
+   "anchor": "product and LNG flows remain disrupted and\ninventories stay under pressure",
+   "topic": "oil supply risk",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Putin said there is a chance of reaching an agreement on Russia and Ukraine.",
+   "anchor": "Putin said there is a chance of reaching an agreement",
+   "topic": "Russia Ukraine talks",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Zelensky said US negotiators are expected in both Moscow and Kyiv in the coming days.",
+   "anchor": "and Zelensky said US negotiators are expected in both Moscow and Kyiv in the coming days",
+   "topic": "Russia Ukraine talks",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "coming days"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Wheat reversed hard yesterday, which the author finds hard to square with continued attacks on Russian refining capacity.",
+   "anchor": "Wheat\nreversed hard yday. Hard to square that with continued attacks on Russian refining capacity",
+   "topic": "wheat",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Polymarket odds on a Russia-Ukraine ceasefire have not moved off the lows.",
+   "anchor": "Polymarket odds on ceasefire haven't moved off the lows",
+   "topic": "Russia Ukraine talks",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "The market is starting to price a narrow path where the Fed simply stays on hold.",
+   "anchor": "The market is starting to see a narrow path where the Fed simply stays on hold",
+   "topic": "Fed policy",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "The payroll hurdle today is low and the real requirement is that CPI does not come in hot.",
+   "anchor": "Today\u2019s payroll\nhurdle is low\u2026the real requirement is that CPI doesn\u2019t come in hot",
+   "topic": "CPI risk",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Positioning feels lighter after a difficult August in which consensus and momentum trades repeatedly struggled.",
+   "anchor": "Positioning also feels lighter after a\ndifficult August where consensus and momentum trades repeatedly struggled",
+   "topic": "positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "Lighter positioning, the Astra AI narrative and a catalyst heavy tech calendar set up ingredients for a melt-up into the weekend.",
+   "anchor": "you can see the ingredients\nfor a melt-up into the weekend",
+   "topic": "US equities",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into the weekend"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "The setup is good but energy and CPI are the obvious risks that can spoil it.",
+   "anchor": "Think set\nup is good but Energy and CPI remain the obvious things that can spoil it",
+   "topic": "US equities",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Give Disinflation a Chance. Intelligence Improvements. NFP Downside 4 Sep 2026",
+   "claim": "The author is watching the Saxony-Anhalt election in Germany over the weekend.",
+   "anchor": "Watching Saxony-Anhalt\nelection in Germany over weekend.",
+   "topic": "German election",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "over weekend"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15346__gs-privorotsky-basics-give-disinflation-a-chance-intelligenc.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 33,
+  "matched": 33,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
