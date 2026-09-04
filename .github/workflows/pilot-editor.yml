@@ -141,10 +141,18 @@ jobs:
               --prompt docs/superpowers/routines/pilot/editor.md \
               --pack /tmp/ed/pack.json --reasked || true
           fi
-          # Pass 2: record whatever remains; a failed citation is a grade input, not a blocker.
+          # Pass 2: record whatever remains; a failed citation is a grade
+          # input, not a blocker. Belt and braces on the exit code: the
+          # verifier no longer returns 1 on --final, and this must not
+          # abort the step even if a future check does, because the commit
+          # below is skipped when this step fails and the day's pulse is
+          # then written to disk and discarded (2026-09-03).
+          set +e
           python scripts/pilot_verify_citations.py "$OUTDIR/$EDIT_DATE.md" /tmp/ed/pack.json \
             --meta-out "$OUTDIR/$EDIT_DATE.meta.json" \
             --stripped-out "$OUTDIR/$EDIT_DATE.clean.md" --final
+          echo "pass 2 verifier exit: $?"
+          set -e
 
       - name: Commit shadow pulse
         if: steps.pack.outputs.cards != '0'

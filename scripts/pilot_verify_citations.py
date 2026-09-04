@@ -206,7 +206,14 @@ def main() -> int:
           f"edge-quintile share {res['edge_quintile_share']:.0%}")
     if not res["leans_block_present"]:
         print("STRUCTURAL: no ## _LEANS block (leans-block-missing)")
-        return 1
+        # Only pass 1 blocks on this. On --final the pulse is already
+        # written and the meta records the miss; returning 1 there made
+        # `bash -e` abort the step and skip the commit, so a pulse with
+        # no _LEANS block was written to disk and thrown away, against
+        # the workflow's own "a failed citation is a grade input, not a
+        # blocker" (2026-09-03 review).
+        if not a.final:
+            return 1
     if res["failures"] and a.reask_out and not a.final:
         with open(a.reask_out, "w", encoding="utf-8") as fh:
             json.dump(res["failures"], fh, indent=1)

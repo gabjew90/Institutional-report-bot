@@ -243,5 +243,52 @@ def test_render_marks_void_days_and_drops_them_from_the_verdict(tmp_path=None):
     # the clean day still counts; the void day does not
     assert "Counted days: 1 of 10" in text
 
+
+# 2026-09-03 review: an unusable grade was scored as if it were real.
+def test_an_unusable_grade_counts_as_a_missing_agent():
+    from scripts.pilot_scoreboard import usable
+    assert usable({"faithful_rate": 0.9}) is not None
+    assert usable({"failed": True, "faithful_rate": 0.0}) is None
+    assert usable(None) is None and usable("nope") is None
+    d = _grades()
+    d["grades"]["fidelity-shadow"]["a"] = {"failed": True, "faithful_rate": 0.0}
+    r = day_row("2026-09-02", d)
+    assert r["m2_shadow"]["rate"] is None and "unusable" in r["m2_shadow"]["note"]
+    assert r["m2_pass"] is False
+
+
+def test_fidelity_agreement_tolerance_is_tight():
+    # 0.90 vs 0.77 is a disagreement for the owner, not a 0.835 average.
+    d = _grades(shadow_rate=0.90, b_rate=0.77)
+    r = day_row("2026-09-02", d)
+    assert r["m2_shadow"]["rate"] is None, r["m2_shadow"]
+    assert "m2_shadow" in r["disagreements"]
+    # a real agreement still averages
+    r2 = day_row("2026-09-02", _grades(shadow_rate=0.90, b_rate=0.88))
+    assert r2["m2_shadow"]["rate"] == 0.89
+
+
+def test_an_empty_sentence_list_is_a_failed_grade_not_a_zero_rate():
+    import json as _json
+    import os
+    import subprocess
+    import sys as _sys
+    import tempfile
+    d = tempfile.mkdtemp()
+    raw = os.path.join(d, "raw.txt"); out = os.path.join(d, "g.json")
+    with open(raw, "w", encoding="utf-8") as fh:
+        _json.dump({"sentences": [], "faithful": 0, "distorted": 0,
+                    "unsupported": 0, "artifact": "shadow"}, fh)
+    r = subprocess.run(
+        [_sys.executable, "scripts/pilot_finalize_grade.py", "--raw", raw, "--out", out,
+         "--dim", "fidelity", "--agent", "a", "--model", "m",
+         "--prompt", "docs/superpowers/routines/pilot/graders/fidelity.md"],
+        capture_output=True, text=True)
+    doc = _json.load(open(out, encoding="utf-8"))
+    assert doc["failed"] is True, doc
+    assert any("empty sentence list" in p for p in doc["problems"]), doc["problems"]
+    assert "faithful_rate" not in doc, "an empty grade must not carry a 0.0 rate"
+    assert r.returncode == 1
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

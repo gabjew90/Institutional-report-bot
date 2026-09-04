@@ -121,7 +121,7 @@ jobs:
             # a 432 KB JPM strategy deck exhausted 12 turns just reading
             # itself and returned "Reached max turns" instead of JSON;
             # that alone was the day's reader failure rate.
-            BYTES=$(wc -c < "$TEXT")
+            BYTES=$(wc -c < "$TEXT" 2>/dev/null || echo 0)
             MAXT=12
             [ "$BYTES" -gt 150000 ] && MAXT=20
             [ "$BYTES" -gt 300000 ] && MAXT=30
@@ -143,9 +143,22 @@ jobs:
             # Pass 1: verify anchors, collect failures for ONE re-ask,
             # in-session per spec section 3 (a deferred re-ask is a
             # card lost for hours).
-            python scripts/pilot_verify_cards.py "$OUT" "$TEXT" \
-              --reask-out /tmp/reask.json
-            NEEDS=$(python -c "import json;print(json.load(open('$OUT'))['verify']['needs_reask'])")
+            # Every step below is per-document: a failure must cost THIS
+            # document, not the run. Before 2026-09-03 these ran unguarded
+            # under the Actions default `bash -e`, so one bad document
+            # aborted the step; because the ops record is written at the end
+            # of this same step and the commit is gated on it succeeding,
+            # the whole run's cards vanished leaving no trace.
+            if ! python scripts/pilot_verify_cards.py "$OUT" "$TEXT" \
+              --reask-out /tmp/reask.json; then
+              echo "::warning::anchor verify (pass 1) failed for $ID"
+              FAILED=$((FAILED+1)); continue
+            fi
+            NEEDS=$(python -c "import json;print(json.load(open('$OUT'))['verify']['needs_reask'])" 2>/dev/null || echo Error)
+            if [ "$NEEDS" = "Error" ]; then
+              echo "::warning::could not read the verify block for $ID"
+              FAILED=$((FAILED+1)); continue
+            fi
             if [ "$NEEDS" = "True" ]; then
               {
                 cat /tmp/reader_prompt.txt
@@ -163,7 +176,10 @@ jobs:
                 --prompt docs/superpowers/routines/pilot/reader.md || true
             fi
             # Pass 2: drop whatever still fails, and count the drops.
-            python scripts/pilot_verify_cards.py "$OUT" "$TEXT" --final
+            if ! python scripts/pilot_verify_cards.py "$OUT" "$TEXT" --final; then
+              echo "::warning::anchor verify (final) failed for $ID"
+              FAILED=$((FAILED+1)); continue
+            fi
           done < /tmp/unread.tsv
           echo "read $TOTAL document(s), $FAILED failed"
           # Metric 5 (ops): append this run to pilot/ops/<date>.json so the

@@ -29,8 +29,19 @@ PILOT_BRANCH = os.environ.get("PILOT_BRANCH", "pilot-data")
 # still needs no code edit.
 PILOT_ROOT = os.environ.get("PILOT_ROOT", "pilot")
 
-# Subdirectories, derived. Nothing else in the codebase hardcodes
-# these paths.
+# Subdirectory NAMES, and the rooted paths derived from them. A tool
+# that is handed the pilot root at runtime (pilot_list_unread) joins the
+# names; everything else uses the rooted constants. Both come from here,
+# so a relocation is still one edit — before 2026-09-03 the unread
+# scanner spelled "source-text" and "cards" itself and a rename would
+# have left it globbing the old layout, reporting zero unread forever.
+SOURCE_TEXT_SUBDIR = "source-text"
+SOURCE_TEXT_ALL_SUBDIR = "source-text-all"
+CARDS_SUBDIR = "cards"
+SHADOW_SUBDIR = "shadow"
+GRADES_SUBDIR = "grades"
+OPS_SUBDIR = "ops"
+
 SOURCE_TEXT_DIR = f"{PILOT_ROOT}/source-text"
 # MEDIUM documents, for the graders' source set only (2026-09-02); the
 # readers never read this tree.

@@ -21,7 +21,8 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
 
-from scripts.pilot_config import reader_tier  # noqa: E402
+from scripts.pilot_config import (CARDS_SUBDIR,  # noqa: E402
+                                  SOURCE_TEXT_SUBDIR, reader_tier)
 
 
 def main() -> int:
@@ -31,11 +32,11 @@ def main() -> int:
     args = ap.parse_args()
 
     out = []
-    pattern = os.path.join(args.root, "source-text", "*", "*.txt")
+    pattern = os.path.join(args.root, SOURCE_TEXT_SUBDIR, "*", "*.txt")
     for text_path in sorted(glob.glob(pattern)):
         date = os.path.basename(os.path.dirname(text_path))
         doc_id = os.path.basename(text_path).split("__")[0]
-        cards_path = os.path.join(args.root, "cards", date,
+        cards_path = os.path.join(args.root, CARDS_SUBDIR, date,
                                   f"{doc_id}.json")
         if os.path.exists(cards_path):
             continue

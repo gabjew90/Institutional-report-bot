@@ -1472,3 +1472,55 @@ Clock: still "Day 1: NOT SET, counted days 0 of 10". Two shakedown days,
 neither clean (day 1 needed the reader turn-limit and topic fixes, day 2
 was stale), so `pilot/DAY1` is NOT committed tomorrow. The next clean
 pair starts the count.
+
+## 2026-09-03 — Code review of the pilot: seven findings, all fixed
+
+A review of the whole pilot subsystem (cc5a228d~1..HEAD, 3,088 lines
+across 13 scripts and 4 workflows). Three of the seven end in the pilot
+producing nothing while looking healthy, which is what day 2 looked
+like.
+
+1. **readers: one bad document discarded the whole run.** The
+   per-document loop runs under the Actions default `bash -e` and only
+   `pilot_finalize_read.py` was guarded. `wc -c`, both verify_cards
+   calls and the `NEEDS=` read were bare, so any one failing aborted
+   the step; the ops record is written at the end of that same step and
+   the commit is gated on it succeeding, so every card already read
+   vanished with no trace. That is exactly the 09-03 signature (cards
+   absent AND ops absent). Each of those now warns, counts a failure
+   and continues to the next document.
+2. **editor: a missing `## _LEANS` block silently discarded the pulse.**
+   Pass 1 was wrapped in `set +e`; pass 2 was not, and
+   `pilot_verify_citations` returned 1 on a missing leans block
+   regardless of `--final`, aborting the step and skipping the commit.
+   The verifier now blocks only on pass 1, and pass 2 is wrapped too.
+   This contradicted the comment sitting directly above it.
+3. **graders: my own 12fd5e0a refusal blocked re-grading.** The graders
+   rebuild the pack only to resolve citations in an ALREADY written
+   pulse, so the freshness refusal protects nothing there and made
+   re-grading 09-03 impossible. They now pass `--allow-stale`.
+4. **finalize_grade: an empty sentence list scored 0% fidelity.**
+   `faithful_rate = ... if n else 0.0` with counts 0+0+0 == 0 produced
+   a real-looking zero marked `failed: False`. A grader hitting its
+   60-turn cap therefore read as the WRITER failing metric 2, whose
+   regression is a frozen KILL criterion. It is now a validation
+   problem, and the scoreboard's new `usable()` treats any
+   `failed: True` grade as a missing agent rather than scoring it.
+5. **scoreboard: the metric-2 agreement tolerance was 0.14.** Two
+   graders could differ by more than the shadow-vs-production gap being
+   measured and still be averaged into one number, so a real
+   disagreement never reached the owner tiebreak the module docstring
+   promises. Now 0.05, matching metric 1's discipline. Safe to change
+   because the clock has not started.
+6. **`verify.reasked` was always 0.** The re-ask rewrites the cards file
+   through finalize_read, which emitted a fresh document with no
+   `verify` block, so the counter reset every time. finalize_read now
+   carries it across.
+7. **pilot_list_unread hardcoded `source-text` and `cards`** while
+   pilot_config claims to be the single source of those paths. Both now
+   come from `SOURCE_TEXT_SUBDIR` / `CARDS_SUBDIR`; a relocation would
+   have left the scanner globbing the old layout and reporting zero
+   unread forever, which is a silent pilot.
+
+326 unit tests, 157 fast smokes, every workflow shell step passes
+`bash -n`. Production untouched.

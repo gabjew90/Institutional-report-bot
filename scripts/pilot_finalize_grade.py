@@ -34,7 +34,15 @@ def validate(dim: str, doc: dict) -> list[str]:
         n = len(doc["sentences"])
         if doc.get("faithful", 0) + doc.get("distorted", 0) + doc.get("unsupported", 0) != n:
             problems.append("counts do not match the sentence list")
-        doc["faithful_rate"] = round(doc.get("faithful", 0) / n, 3) if n else 0.0
+        if n == 0:
+            # An empty sentence list is a grader that produced nothing,
+            # not a pulse that scored zero. The old `else 0.0` wrote a
+            # real-looking 0% with failed=False, and metric 2 regression
+            # is a KILL criterion, so a grader timing out at its turn cap
+            # read as the shadow writer failing fidelity (2026-09-03).
+            problems.append("empty sentence list: the grader graded nothing")
+        else:
+            doc["faithful_rate"] = round(doc.get("faithful", 0) / n, 3)
     if dim == "grouping":
         share = doc.get("fragmented_mass_share")
         if isinstance(share, (int, float)):

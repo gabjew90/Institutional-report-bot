@@ -64,9 +64,21 @@ def collect(pilot_root: str) -> dict:
     return dict(days)
 
 
+def usable(doc):
+    """A grade the scoreboard may score. `failed: True` means finalize
+    could not parse it or validate flagged it (a missing key, mismatched
+    counts, an empty sentence list). Scoring it anyway turned a grader
+    outage into a metric failure attributed to the writer, so an
+    unusable grade counts as a MISSING agent instead (2026-09-03)."""
+    if not isinstance(doc, dict) or doc.get("failed"):
+        return None
+    return doc
+
+
 def agree(a, b, key, tol=0.0):
+    a, b = usable(a), usable(b)
     if a is None or b is None:
-        return None, "one agent missing"
+        return None, "one agent missing or unusable"
     va, vb = a.get(key), b.get(key)
     if isinstance(va, (int, float)) and isinstance(vb, (int, float)):
         return ((va + vb) / 2, "") if abs(va - vb) <= tol else (None, f"disagree {va} vs {vb}")
@@ -103,16 +115,21 @@ def day_row(date: str, d: dict) -> dict:
     ga, gb = g.get("grouping", {}).get("a"), g.get("grouping", {}).get("b")
     share, note = agree(ga, gb, "fragmented_mass_share", tol=0.05)
     merges = None
-    if ga and gb:
+    if usable(ga) and usable(gb):
         merges = any(m.get("would_change_theme_selection") for x in (ga, gb) for m in (x.get("mis_merges") or []))
     row["m1"] = {"share": share, "theme_changing_merge": merges, "note": note,
                  "pass": (share is not None and share <= 0.10 and merges is False)}
     # metric 2 per artifact
     for art in ("shadow", "production"):
         a_, b_ = g.get(f"fidelity-{art}", {}).get("a"), g.get(f"fidelity-{art}", {}).get("b")
-        rate, note = agree(a_, b_, "faithful_rate", tol=0.14)
+        # 0.05, matching metric 1's discipline against its 0.10
+        # threshold. At the old 0.14 two graders could differ by more
+        # than the shadow-vs-production gap being measured and still be
+        # averaged into one number, so a real disagreement never reached
+        # the owner tiebreak the header promises (2026-09-03 review).
+        rate, note = agree(a_, b_, "faithful_rate", tol=0.05)
         unsup = None
-        if a_ and b_:
+        if usable(a_) and usable(b_):
             unsup = max(a_.get("unsupported", 0) or 0, b_.get("unsupported", 0) or 0)
         row[f"m2_{art}"] = {"rate": rate, "unsupported": unsup, "note": note}
     s, p = row["m2_shadow"], row["m2_production"]
@@ -125,7 +142,7 @@ def day_row(date: str, d: dict) -> dict:
     # the stricter agent's call (review 2026-09-01: audited was doubled).
     per_brief: dict[str, dict] = {}
     for x in (a_, b_):
-        for br in (x or {}).get("briefs") or []:
+        for br in (usable(x) or {}).get("briefs") or []:
             bid = br.get("id") or f"{br.get('bank')}:{br.get('tier')}"
             cur = per_brief.setdefault(bid, {"tier": br.get("tier") or "?", "material": 0, "non_material": 0})
             cur["material"] = max(cur["material"], br.get("material_count", 0) or 0)

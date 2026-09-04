@@ -96,6 +96,19 @@ def main() -> int:
     if m:
         ver = m.group(1)
 
+    # Carry the re-ask counter across the rewrite. The re-ask path calls
+    # this script again over the same path, and a fresh document with no
+    # `verify` block reset the counter to 0, so `verify.reasked` read 0
+    # for every document whether or not it was re-asked, which is the
+    # one thing the field exists to record (2026-09-03 review).
+    prior_reasked = 0
+    try:
+        with open(args.out, encoding="utf-8") as fh:
+            prior_reasked = int(
+                (json.load(fh).get("verify") or {}).get("reasked") or 0)
+    except Exception:
+        pass
+
     out = {
         "brief": brief,
         "cards": cards,
@@ -105,6 +118,8 @@ def main() -> int:
             args.model, ver,
             open(args.prompt, encoding="utf-8").read()),
     }
+    if prior_reasked:
+        out["verify"] = {"reasked": prior_reasked}
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=1)
