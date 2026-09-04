@@ -1,0 +1,623 @@
+{
+ "brief": "Goldman Sachs equity sales daily for 3 September 2026, a multi item digest that reports most of its content and argues in three places. Snapshot: S&P +46bps at 7666 and +12% ytd on low volumes, US 10yr 4.77%, Brent $95, gold $4438, bitcoin $77.2k, Japan 30yr down 10bps to 4.06% after a smooth auction. Broadcom is the argued call: revenue $29.6bn in line and gross margin 75.0% versus consensus 74.1%, AI semi revenue +221% YoY to $16.7bn, FY4Q guidance just below the Street, stock -1% post market, but management guides AI semiconductor revenue to double to $115bn in FY27 with Anthropic the largest custom silicon customer in FY27 and OpenAI and Meta material in FY28, and the stock trades at 12X management's FY28 EPS guidance, so GS would be buyers and raises its 12 month target to $540 from $525. Allocation: tactically neutral 3m, modestly pro risk 12m, Overweight equities and Underweight credit, because earnings growth supports equities over bonds and credit while returns slow. Reported without argument: Iran struck US bases in Kuwait, EU gas above 70 euros per MWh, the CLARITY Act vote on 15 Sep, French fiscal risk with the CAC 40 not yet attractive.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "The S&P 500 rose 46 basis points to 7666 on low volumes and is up 12% year to date.",
+   "anchor": "S&P +46bps @7666 (+12% ytd) on low volumes",
+   "topic": "market levels",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "The US 10-year Treasury yield stood at 4.77%, slightly lower on the day.",
+   "anchor": "on low volumes; rates a bit lower with US 10yr at 4.77%",
+   "topic": "market levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Brent crude traded at $95.",
+   "anchor": "rates a bit lower with US 10yr at 4.77%; Brent $95,",
+   "topic": "market levels",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Gold traded at $4438.",
+   "anchor": "Gold $4438 and Bitcoin $77.2k; Japan 30yr fell 10bps to 4.06%",
+   "topic": "market levels",
+   "status": "level",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Bitcoin traded at $77.2k.",
+   "anchor": "and Bitcoin $77.2k; Japan 30yr fell 10bps to 4.06% (smooth debt auction); all eyes",
+   "topic": "market levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "The Japan 30-year government bond yield fell 10 basis points to 4.06% after a smooth debt auction.",
+   "anchor": "Japan 30yr fell 10bps to 4.06% (smooth debt auction); all eyes on AI",
+   "topic": "market levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs flags US non-farm payrolls tomorrow and its technology conference in San Francisco next week as the focus.",
+   "anchor": "semi cycle, inflation, the Fed and bond markets; focus on NFPs tmrw and our big Tech conference in",
+   "topic": "US jobs data",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Iran attacked US military bases in Kuwait despite Trump threatening further strikes.",
+   "anchor": "Iran attacked US military bases in Kuwait today despite Trump threatening further strikes",
+   "topic": "Middle East conflict",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Trump said his military was prepared to attack Iran at any time.",
+   "anchor": "Trump said his military was prepared to attack Iran \"any time we want\"",
+   "topic": "Middle East conflict",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "US bombardment of sites across Iran left at least 19 Iranians dead.",
+   "anchor": "of sites across the country left at least 19 Iranians dead.",
+   "topic": "Middle East conflict",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Broadcom reported revenue of $29.6bn, in line with consensus.",
+   "anchor": "Broadcom (-1% post market): revs $29.6bn in line with Cons",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Broadcom shares traded down 1% in the post market session.",
+   "anchor": "Broadcom (-1% post market): revs $29.6bn in line with Cons; gross margin of 75.0%",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Broadcom reported a gross margin of 75.0% versus consensus of 74.1%.",
+   "anchor": "revs $29.6bn in line with Cons; gross margin of 75.0% vs Cons 74.1%",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Broadcom AI semiconductor revenue grew 221% year over year to $16.7bn.",
+   "anchor": "Semi revs grew +221% YoY to $16.7bn; FY4Q guidance is just below the Street",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Broadcom guided FY4Q just below the Street.",
+   "anchor": "FY4Q guidance is just below the Street; we would be buyers of",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs would be buyers of Broadcom following a very strong AI revenue outlook through FY28.",
+   "anchor": "we would be buyers of the stock following a very strong AI revenue outlook through FY28",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Broadcom expects its AI semiconductor revenue to double in FY27 to $115bn.",
+   "anchor": "semiconductor revenue to double in FY27 to $115bn; mgmt provided clarity on its custom silicon",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Broadcom management expects Anthropic to be its largest custom silicon customer in FY27.",
+   "anchor": "engagements beyond Google, expecting Anthropic to be the largest customer in FY27 and OpenAI and",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Broadcom management expects OpenAI and Meta to be material custom silicon customers in FY28.",
+   "anchor": "expecting Anthropic to be the largest customer in FY27 and OpenAI and Meta to be material in FY28",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO",
+    "META"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs sees compelling value in Broadcom at current levels, with the stock trading at 12X management's FY28 EPS guidance.",
+   "anchor": "we see compelling value at current levels with the stock trading at just 12X",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs raises its 12-month Broadcom target price to $540 from $525.",
+   "anchor": "management's EPS guidance for FY28; raise our 12-month target price to $540 from $525.",
+   "topic": "Broadcom earnings",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Broadcom management said Anthropic and OpenAI will run their own data centers and offer AI as first parties, no different from a hyperscaler.",
+   "anchor": "we see these guys to be no different from a hyperscaler and will run their own data",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs remains tactically neutral across assets for 3 months and modestly pro-risk for 12 months.",
+   "anchor": "we remain tactically neutral across assets for 3m and modestly pro-risk for 12m",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3m and 12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs is Overweight equities, Neutral bonds, commodities and cash, and Underweight credit.",
+   "anchor": "Overweight equities, Neutral bonds, commodities and cash, and Underweight credit",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs expects sustained earnings growth to support equity outperformance versus bonds and credit over 12 months.",
+   "anchor": "earnings growth should support equity outperformance versus bonds and credit over 12m",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs expects returns to slow as earnings growth and revisions peak.",
+   "anchor": "are likely to slow as earnings growth and revisions peak; near-term volatility could rise amid rates",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs sees near-term volatility rising on rates volatility, seasonal weakness, US midterm elections and geopolitical risks.",
+   "anchor": "volatility, seasonal weakness, US midterm elections and broader geopolitical risks, pointing to staying",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs recommends staying invested, buying dips and mitigating risk through diversification and selective overlay hedges.",
+   "anchor": "invested, buying dips and mitigating risk through diversification and selective overlay hedges.",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs describes AI datapoints as very supportive, citing DELL and Nvidia results.",
+   "anchor": "AI datapoints are very supportive (think DELL or Nvidia results), yet volumes are",
+   "topic": "market mood",
+   "status": "released",
+   "instruments": [
+    "DELL",
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Trading volumes are anemic, running about 20% below the year to date average.",
+   "anchor": "anemic (~20% lower vs ytd avg), the macro backdrop is complicated (we are firmly in 'rates watch'",
+   "topic": "market mood",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs sees a live FOMC meeting this month and describes risk appetite as muted.",
+   "anchor": "territory ahead of a 'live' FOMC meeting this month) and risk appetite is muted",
+   "topic": "market mood",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Meta released Muse Spark 1.3, which significantly improves performance in coding and agentic tasks.",
+   "anchor": "Meta: released Muse Spark 1.3; significantly improves performance in coding and agentic tasks",
+   "topic": "Meta AI model",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "The new Meta model is accessible to developers who pay for it through its API.",
+   "anchor": "model can be accessed by developers willing to pay for it through its application programming interface.",
+   "topic": "Meta AI model",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Le Pen currently polls above 30% in France.",
+   "anchor": "France: entering a new political cycle; Le Pen currently polls >30%",
+   "topic": "France politics",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "French public debt is approaching 120% of GDP.",
+   "anchor": "public debt approaching 120%, a fiscal deficit >5% but a divided parliament",
+   "topic": "France politics",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "France runs a fiscal deficit above 5% with a divided parliament.",
+   "anchor": "public debt approaching 120%, a fiscal deficit >5% but a divided parliament; CAC 40 has been Europe's",
+   "topic": "France politics",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "The CAC 40 has been Europe's worst-performing major equity market in 2024, 2025 and 2026.",
+   "anchor": "worst-performing major equity market in 2024, 2025 and 2026; valuations are not yet attractive",
+   "topic": "France politics",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Goldman Sachs says French valuations are not yet attractive and it is too early to re-engage.",
+   "anchor": "valuations are not yet attractive; too early",
+   "topic": "France politics",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "EU gas prices are above 70 euros per MWh, higher than in 2022.",
+   "anchor": "energy costs: EU gas prices at >\u20ac70/MWh which is even higher than 2022",
+   "topic": "EU gas prices",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "The GS EU Nat Gas Consumers basket holds European companies expected to underperform as natural gas prices rise.",
+   "anchor": "Consumers basket is composed of European companies expected to underperform with rising natural gas",
+   "topic": "EU gas prices",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "The GS EU Nat Gas Consumers basket trades under ticker GSXETTFX Index and contains 51 stocks.",
+   "anchor": "prices; ticker is GSXETTFX Index and basket includes 51 stocks; on the long side",
+   "topic": "EU gas prices",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "On the long side Goldman Sachs highlights its EU Power Price Sensitive Utilities basket, GSXEPWPR Index, of 16 stocks.",
+   "anchor": "EU Power Price Sensitive Utilities basket (GSXEPWPR Index, 16 stocks).",
+   "topic": "EU gas prices",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "The CLARITY Act is scheduled for a procedural floor vote on 15 September.",
+   "anchor": "Bitcoin: CLARITY Act is scheduled for a procedural floor vote on 15 Sep",
+   "topic": "bitcoin regulation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "15 Sep"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Lawmakers are in session for only 14 days in September before adjourning again in October.",
+   "anchor": "only 14 days in Sep before adjourning again in Oct, any failure to advance the bill would likely push its",
+   "topic": "bitcoin regulation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sep to Oct"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Failure to advance the CLARITY Act would likely push it into the post-election lame-duck session before expiry on 3 January 2027.",
+   "anchor": "prospects into the post-election lame-duck session before expiry on 3 January 2027.",
+   "topic": "bitcoin regulation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "to 3 January 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Europe trades on a free cash flow yield of 5.3% versus less than 2% for the 10 largest US stocks.",
+   "anchor": "Europe has healthy cash flow and trades on a FCF yield of 5.3% vs. less than 2% for the",
+   "topic": "Europe valuations",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 3 Sep 2026",
+   "claim": "Cyclical parts of the Tech sector have been the main driver behind positive earnings revisions year to date.",
+   "anchor": "Chart of the Day: Cyclical parts of the Tech sector have been the main driver behind positive earnings",
+   "topic": "tech earnings revisions",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "ytd"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15255__duttenhoefers-daily-3-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 47,
+  "matched": 47,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
