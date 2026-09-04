@@ -85,6 +85,17 @@ def _apply_tiebreaks(grades: dict) -> dict:
     return out
 
 
+def is_void(d: dict) -> bool:
+    """A day whose editor ran with source files still unread was written
+    from an incomplete (on 2026-09-03, an entirely stale) card set. Its
+    metrics measure the staleness, not the architecture: shadow fidelity
+    read 70% that day purely because the pulse argued the previous day's
+    documents. Such a day is VOID — shown, never counted, never allowed
+    to pass or fail a metric. One rule, used by day_row and by the
+    header's day count."""
+    return bool((d.get("shadow_meta") or {}).get("unread_source_files_at_edit"))
+
+
 def day_row(date: str, d: dict) -> dict:
     g = _apply_tiebreaks(d["grades"])
     row = {"date": date}
@@ -142,6 +153,7 @@ def day_row(date: str, d: dict) -> dict:
     row["m4"] = {"edge_share": cit.get("edge_quintile_share"), "flag": cit.get("metric4_flag"),
                  "failures": len(cit.get("failures") or [])}
     row["unread_at_edit"] = (d.get("shadow_meta") or {}).get("unread_source_files_at_edit")
+    row["void"] = is_void(d)
     ops = d.get("ops") or {}
     row["m5"] = {"reader_failure_rate": ops.get("reader_failure_rate"),
                  "collided_with_pulse_window": ops.get("collided_with_pulse_window"),
@@ -166,7 +178,8 @@ def fmt(v, pct=False):
 def render(pilot_root: str) -> str:
     days = collect(pilot_root)
     d1 = day1(pilot_root)
-    counted = [d for d in sorted(days) if d1 and d >= d1]
+    counted = [d for d in sorted(days)
+               if d1 and d >= d1 and not is_void(days[d])]
     out = ["# Shadow pilot scoreboard", "",
            f"Day 1: {d1 or 'NOT SET (every day below is shakedown, uncounted)'}. "
            f"Counted days: {len(counted)} of 10.", "", SCOPE_LIMIT, "",
@@ -175,10 +188,10 @@ def render(pilot_root: str) -> str:
     rows = []
     for date in sorted(days):
         r = day_row(date, days[date])
-        r["counted"] = bool(d1) and date >= d1
+        r["counted"] = bool(d1) and date >= d1 and not r["void"]
         rows.append(r)
         out.append("| " + " | ".join([
-            date, "yes" if r["counted"] else "shakedown",
+            date, "VOID (stale cards)" if r["void"] else ("yes" if r["counted"] else "shakedown"),
             fmt(r["m1"]["share"], pct=True), fmt(r["m1"]["theme_changing_merge"]),
             fmt(r["m2_shadow"]["rate"], pct=True), fmt(r["m2_production"]["rate"], pct=True),
             fmt(r["m2_pass"]), fmt(r["m2a"]["material"]), fmt(r["m2a"]["non_material_share"], pct=True),
@@ -188,6 +201,11 @@ def render(pilot_root: str) -> str:
             ", ".join(r["disagreements"]) or "",
         ]) + " |")
     out.append("")
+    voided = [r["date"] for r in rows if r["void"]]
+    if voided:
+        out += [f"**Void days ({len(voided)}):** {', '.join(voided)} — the editor ran with "
+                "source files still unread, so the shadow pulse was written from an "
+                "incomplete card set. Shown above, excluded from every metric.", ""]
     c = [r for r in rows if r["counted"]]
     if c:
         m1 = all(r["m1"]["pass"] for r in c)

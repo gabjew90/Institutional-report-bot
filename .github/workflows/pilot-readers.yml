@@ -196,6 +196,50 @@ jobs:
             echo "::error::every reader failed this run"; exit 1
           fi
 
+      - name: Record a quiet run in ops
+        if: steps.unread.outputs.count == '0'
+        working-directory: .
+        run: |
+          # A run that found nothing still writes its ops entry. Both the
+          # cards and ops commits used to sit behind the same non-zero
+          # gate, so a day where the readers produced nothing left NO
+          # trace at all and the editor's stale-card day could not be
+          # explained the next morning (2026-09-03).
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          now = datetime.now(timezone.utc)
+          path = os.path.join("pilot-data", os.environ["PILOT_ROOT"], "ops",
+                              now.strftime("%Y-%m-%d") + ".json")
+          os.makedirs(os.path.dirname(path), exist_ok=True)
+          doc = {"runs": []}
+          if os.path.exists(path):
+              try:
+                  doc = json.load(open(path, encoding="utf-8"))
+              except Exception:
+                  doc = {"runs": []}
+          doc["runs"].append({"finished_utc": now.strftime("%H:%M"), "total": 0,
+                              "failed": 0, "in_pulse_window": False, "quiet": True})
+          t = sum(r["total"] for r in doc["runs"]); f = sum(r["failed"] for r in doc["runs"])
+          doc["reader_failure_rate"] = round(f / t, 3) if t else None
+          doc["collided_with_pulse_window"] = any(
+              r["in_pulse_window"] and r["total"] > 0 for r in doc["runs"])
+          json.dump(doc, open(path, "w", encoding="utf-8"), indent=1)
+          print("quiet run recorded:", path)
+          PY
+
+      - name: Commit ops for a quiet run
+        if: steps.unread.outputs.count == '0'
+        working-directory: pilot-data
+        run: |
+          git config user.name "pilot-reader-bot"
+          git config user.email "actions@users.noreply.github.com"
+          [ -d "$PILOT_ROOT/ops" ] && git add "$PILOT_ROOT/ops/"
+          git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
+          git commit -m "pilot: reader quiet run ($(date -u +%FT%TZ))"
+          git pull --rebase --quiet origin pilot-data || true
+          git push origin pilot-data
+
       - name: Commit cards
         if: steps.unread.outputs.count != '0'
         working-directory: pilot-data

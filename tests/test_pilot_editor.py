@@ -155,5 +155,47 @@ def test_finalize_salvages_fences_and_preamble():
     assert extract_markdown("no document here") is None
 
 
+
+# 2026-09-03: the editor wrote the day's shadow pulse from 09-02's cards
+# while 25 fresh source files sat unread, and the graders scored the
+# stale result (m2 fidelity 97% -> 70%) as if it measured the writer.
+def test_editor_refuses_to_pack_a_date_with_no_cards_of_its_own(tmpdir=None):
+    import json as _json
+    import os
+    import subprocess
+    import sys as _sys
+    import tempfile
+    from scripts.pilot_editor_pack import has_own_day_cards
+
+    root = tempfile.mkdtemp()
+    day2 = os.path.join(root, "2026-09-02")
+    os.makedirs(day2)
+    with open(os.path.join(day2, "gs.json"), "w", encoding="utf-8") as fh:
+        _json.dump({"reader_tier": "top", "cards": [CARDS[0]]}, fh)
+
+    # yesterday has cards, today has none
+    assert has_own_day_cards(root, "2026-09-02") is True
+    assert has_own_day_cards(root, "2026-09-03") is False
+    # an empty directory is not cards either
+    os.makedirs(os.path.join(root, "2026-09-04"))
+    assert has_own_day_cards(root, "2026-09-04") is False
+
+    # the CLI refuses rather than falling back through the --days window
+    out = os.path.join(root, "pack")
+    r = subprocess.run(
+        [_sys.executable, "scripts/pilot_editor_pack.py", root,
+         "--date", "2026-09-03", "--days", "1", "--out", out],
+        capture_output=True, text=True)
+    assert r.returncode == 2, r.stdout + r.stderr
+    assert "REFUSING" in r.stderr and "2026-09-03" in r.stderr
+    assert not os.path.exists(out + ".md"), "a refused run must write no pack"
+    # backfill can still opt in explicitly
+    r2 = subprocess.run(
+        [_sys.executable, "scripts/pilot_editor_pack.py", root,
+         "--date", "2026-09-03", "--days", "1", "--out", out, "--allow-stale"],
+        capture_output=True, text=True)
+    assert r2.returncode == 0, r2.stdout + r2.stderr
+    assert os.path.exists(out + ".md")
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

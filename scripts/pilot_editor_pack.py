@@ -46,6 +46,18 @@ def load_window(cards_root: str, day_iso: str, days: int) -> list[dict]:
     return cards
 
 
+def has_own_day_cards(cards_root: str, day_iso: str) -> bool:
+    """Cards exist for the edit date ITSELF, not merely somewhere in the
+    window. `--days 1` widens the window to yesterday so a late reader
+    still counts, and on 2026-09-03 that turned into the editor writing
+    the day's shadow pulse from 09-02's 9 documents while 25 fresh
+    source files sat unread. A stale pulse grades like a real one (m2
+    fidelity fell 97% -> 70% and read as a quality signal), so the
+    editor must refuse rather than fall back."""
+    d = os.path.join(cards_root, day_iso)
+    return os.path.isdir(d) and bool(load_cards(d))
+
+
 def _doc_key(c: dict) -> str:
     return c.get("_file") or f"{c.get('bank')}::{c.get('document')}"
 
@@ -218,7 +230,16 @@ def main() -> int:
     ap.add_argument("--days", type=int, default=1,
                     help="how many prior day-directories to include (default 1)")
     ap.add_argument("--out", required=True, help="path stem: writes <out>.md and <out>.json")
+    ap.add_argument("--allow-stale", action="store_true",
+                    help="pack even when the edit date has no cards of its own "
+                         "(backfill only; a scheduled run must never pass this)")
     a = ap.parse_args()
+    if not a.allow_stale and not has_own_day_cards(a.cards_root, a.date):
+        print(f"REFUSING: no reader cards for {a.date} in {a.cards_root}. "
+              f"The readers did not run or produced nothing; editing now would "
+              f"write today's pulse from an earlier day's cards (2026-09-03).",
+              file=sys.stderr)
+        return 2
     cards = load_window(a.cards_root, a.date, a.days)
     briefs = load_briefs(a.cards_root, a.date, a.days)
     md, meta = build_pack(cards, briefs)

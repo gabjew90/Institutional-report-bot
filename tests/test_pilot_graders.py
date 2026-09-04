@@ -199,5 +199,49 @@ def test_scoreboard_counts_only_days_after_day1():
     assert "Scope limit" in text
 
 
+
+# 2026-09-03: the editor packed the previous day's cards while 25 source
+# files sat unread, and the day scored 70% shadow fidelity — a number
+# that measured the staleness, not the writer. Such a day is void.
+def test_a_day_with_unread_sources_at_edit_is_void():
+    d = _grades()                       # fixture carries unread_source_files_at_edit = 2
+    assert day_row("2026-09-02", d)["void"] is True
+    d["shadow_meta"]["unread_source_files_at_edit"] = 0
+    assert day_row("2026-09-02", d)["void"] is False
+    # missing meta is not a void claim either way
+    d["shadow_meta"] = {}
+    assert day_row("2026-09-02", d)["void"] is False
+
+
+def test_render_marks_void_days_and_drops_them_from_the_verdict(tmp_path=None):
+    import json as _json
+    import os
+    import tempfile
+    root = tempfile.mkdtemp()
+
+    def _write(day, unread):
+        gd = os.path.join(root, "grades", day)
+        os.makedirs(gd, exist_ok=True)
+        g = _grades()
+        for dim, per in g["grades"].items():
+            for ag, payload in per.items():
+                with open(os.path.join(gd, f"{dim}-{ag}.json"), "w", encoding="utf-8") as fh:
+                    _json.dump(payload, fh)
+        sd = os.path.join(root, "shadow")
+        os.makedirs(sd, exist_ok=True)
+        meta = dict(g["shadow_meta"]); meta["unread_source_files_at_edit"] = unread
+        with open(os.path.join(sd, f"{day}.meta.json"), "w", encoding="utf-8") as fh:
+            _json.dump(meta, fh)
+
+    _write("2026-09-02", 0)
+    _write("2026-09-03", 25)
+    with open(os.path.join(root, "DAY1"), "w", encoding="utf-8") as fh:
+        fh.write("2026-09-02\n")
+    text = render(root)
+    assert "VOID (stale cards)" in text
+    assert "**Void days (1):** 2026-09-03" in text
+    # the clean day still counts; the void day does not
+    assert "Counted days: 1 of 10" in text
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

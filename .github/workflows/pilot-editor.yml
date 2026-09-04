@@ -60,8 +60,23 @@ jobs:
             --root "pilot-data/$PILOT_ROOT" --out /tmp/ed/unread.json
           UNREAD=$(python -c "import json;print(len(json.load(open('/tmp/ed/unread.json'))))")
           echo "UNREAD_AT_EDIT=$UNREAD" >> "$GITHUB_ENV"
+          # The packer exits 2 when the edit date has no cards of its
+          # own: the readers did not run, and editing anyway writes
+          # today's pulse from an earlier day's cards, which is exactly
+          # what happened on 2026-09-03. Fail LOUD and publish nothing.
+          set +e
           python scripts/pilot_editor_pack.py "pilot-data/$PILOT_ROOT/cards" \
             --date "$DATE" --days 1 --out /tmp/ed/pack
+          PACK_RC=$?
+          set -e
+          if [ "$PACK_RC" -eq 2 ]; then
+            echo "cards=0" >> "$GITHUB_OUTPUT"
+            echo "::error::No reader cards for $DATE: the readers did not run or produced nothing ($UNREAD unread). Refusing to edit from an earlier day's cards; no shadow pulse published."
+            exit 1
+          fi
+          if [ "$PACK_RC" -ne 0 ]; then
+            echo "::error::editor pack failed (exit $PACK_RC)"; exit "$PACK_RC"
+          fi
           N=$(python -c "import json;print(json.load(open('/tmp/ed/pack.json'))['card_count'])")
           echo "cards=$N" >> "$GITHUB_OUTPUT"
           echo "unread at edit: $UNREAD; cards in window: $N"

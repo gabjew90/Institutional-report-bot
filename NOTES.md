@@ -1433,3 +1433,42 @@ attached chart have no text to match. And the WHO'S TALKING dossiers
 are excluded from the evidence: their scores and message counts made a
 Kalshi "54%" look sourced. Chat context, the bot's prior answers and
 the question stay in.
+
+## 2026-09-03 — Shakedown day 2 ran on stale cards; three guards added
+
+Owner: "what happened to our pilot". Day 2 ran end to end and produced
+a graded, legitimate-looking result from the WRONG input.
+
+What happened. `pilot/cards/` holds exactly one directory, 2026-09-02,
+with 9 files. The readers produced nothing for 09-03 and left no ops
+record. The editor ran anyway: its window is `--date $DATE --days 1`,
+which reaches back a day so a late reader still counts, and with 09-03
+empty it packed 09-02's 9 documents and 338 cards while 25 fresh source
+files sat unread. The meta recorded that plainly
+(`unread_source_files_at_edit: 25`, against 0 on day 1) and the run
+continued. The graders then scored a pulse arguing yesterday's
+documents against today's sources, and shadow fidelity fell 97% -> 70%.
+That 70% is the staleness, not the writer.
+
+Three faults, three guards:
+
+1. The editor had no freshness check, only `cards != '0'`, which stale
+   cards satisfy. `pilot_editor_pack.has_own_day_cards()` now requires
+   cards for the edit date ITSELF; the CLI exits 2 and writes no pack,
+   and the workflow turns that exit into a red run with an error naming
+   the unread count. `--allow-stale` exists for deliberate backfill and
+   a scheduled run must never pass it.
+2. The readers' cards AND ops commits both sat behind
+   `unread.count != '0'`, so a day where they produced nothing left no
+   trace to diagnose. A quiet run now writes and commits its ops entry
+   with `quiet: true`.
+3. The scoreboard scored the stale day. `is_void()` is now one rule used
+   by both `day_row` and the header count: any day with a nonzero
+   unread-at-edit is VOID, shown in the table, excluded from the counted
+   days and from every metric, and listed under the table with the
+   reason.
+
+Clock: still "Day 1: NOT SET, counted days 0 of 10". Two shakedown days,
+neither clean (day 1 needed the reader turn-limit and topic fixes, day 2
+was stale), so `pilot/DAY1` is NOT committed tomorrow. The next clean
+pair starts the count.
