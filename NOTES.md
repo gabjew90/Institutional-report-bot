@@ -1615,3 +1615,33 @@ Sources footer renders only chunks carrying a `web` block. Today's one
 factual answer was stamped `ungrounded` with no footer and still
 skipped as "grounded". It had no figures so nothing was lost, but the
 guard must use the signal the reader gets: `_grounding_web_source_count`.
+
+## 2026-09-04 — Dry was never the design; the dial was steering into it
+
+Owner: "why dry voice? why can't it be more encouraging?"
+
+Nothing requires it. The prompt BANS it, twice. Line 225: "Not stiff,
+not dry, not above-it-all." And a whole binding section, NO DRY /
+DEADPAN / PASSIVE-AGGRESSIVE, which names sardonic detachment as "the
+bot's most common voice failure — sounding ABOVE the room" and
+prescribes DIRECT with energy in its place.
+
+Two places contradicted that, and one of them is mine from yesterday.
+
+`tone_dial.LEVELS` asked for "at most ONE dry line of seasoning" at
+level 1, and phrased level 0 as "no jab, not one seasoning clause",
+which reads as no energy rather than no heat. A directive injected into
+every single turn, steering the model straight into the register the
+prompt calls its worst failure. Level 0 now says to answer straight and
+with energy and states outright that warmth and enthusiasm are always
+on-register, because the dial limits heat aimed AT someone, never how
+pleased it can be for them. Level 1 says direct and in-register, never
+deadpan.
+
+The prompt's own survivor was line 287, praise gets "one dry line,
+done". Now "take it in one line, warm or amused, never dry". Adds 19
+chars; the prompt is 53,296 against a 63,590 ceiling.
+
+Worth keeping as a pattern: the dial is a HEAT limiter and heat is not
+the same axis as warmth. Conflating them made the bot flat at level 0,
+which is the most common case by far (every plain question scores 0).

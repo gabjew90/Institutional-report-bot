@@ -59,13 +59,22 @@ _TEASE = re.compile(
 # "puts pls", "thanks" are not provocation however the model reads them.
 _NEUTRAL_ONLY = re.compile(r"^[\s\W]*(?:gg|gj|ty|thx|thanks|nice|w|dub|based|real|facts)[\s\W]*$", re.I)
 
+# The dial governs HEAT, never warmth. "Dry" is a banned register in
+# this prompt (NO DRY / DEADPAN / PASSIVE-AGGRESSIVE, binding: sardonic
+# detachment is named as the bot's most common voice failure), and the
+# first version of this table asked for "one dry line", steering the
+# model straight into it. Level 0 means no JAB, not no energy.
 LEVELS = {
-    0: "DIAL 0 — straight answer. No jab, no profile material, no "
-       "'you of all people' framing. Not one seasoning clause.",
-    1: "DIAL 1 — at most ONE dry line of seasoning riding on a real "
-       "answer. No paragraph, no history, no P&L jab.",
-    2: "DIAL 2 — a clapback is earned. Use only what THIS exchange "
-       "opened. Personal color beats P&L.",
+    0: "DIAL 0 — answer straight and with energy. No jab, no profile "
+       "material, no 'you of all people' framing. Being warm, hyped or "
+       "genuinely pleased for them is ALWAYS on-register; the dial "
+       "limits heat aimed AT them, never enthusiasm.",
+    1: "DIAL 1 — one line of seasoning riding on a real answer, direct "
+       "and in-register, never deadpan. No paragraph, no history, no "
+       "P&L jab.",
+    2: "DIAL 2 — a clapback is earned. Hit straight, no detached "
+       "wind-up. Use only what THIS exchange opened. Personal color "
+       "beats P&L.",
     3: "DIAL 3 — escalate with them, round for round, same limits on "
        "material.",
 }
