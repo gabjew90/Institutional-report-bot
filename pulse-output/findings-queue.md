@@ -203,3 +203,107 @@ Items below are new, or cross a confirmation threshold today.
   file wasn't persisted. Low priority (one historical day, control-series
   completeness only) but worth a one-line check in whatever writes that file
   to confirm it isn't silently dropping writes on other days too.
+  **Correction (2026-09-04 QC):** the file isn't missing — it's at
+  `pulse-output/qc-inputs/2026-08-28T14-10-34Z.adversarial-verdict.json`,
+  a different directory and filename suffix than every other day's
+  `pulse-output/adversarial/$TS.json`. Not a dropped write, just an
+  inconsistent path convention on that one day. Downgrading this item's
+  urgency accordingly — still worth a one-line consistency fix, but there's
+  no data-loss risk to chase.
+
+## 2026-09-04 — headless QC on 2026-09-04T14-07-25Z
+
+Full report: `pulse-output/qc-headless/2026-09-04T14-07-25Z.md`. STEP 7's
+self-review (`qc-reviews/2026-09-04T14-07-25Z.md`) was again very thorough;
+I independently reproduced its two headline accuracy findings against
+primary sources (not just its paraphrase) and both hold up, one of them
+more severely than scored. Also found one new sourcing-boundary defect and
+escalated the standing `pulse-context/latest.json` staleness item.
+
+- **prompt-session** — fabricated CEO-succession claim in the $ADBE WATCH
+  bullet: published pulse says "The succession question is now settled,
+  with Anil Chakravarthy named Thursday to replace Shantanu Narayen."
+  Verified against the full context dump (`pulse-context/latest.json`, all
+  keys, not just `analyses_json`): zero occurrences of "Chakravarthy" or
+  "Narayen" anywhere, and the one source on this topic (Deutsche Bank's
+  Adobe F3Q preview) says the opposite — "a lack of CEO succession
+  clarity." `pulse-output/drafts/2026-09-04T14-07-25Z.md:62` (DRAFT) has
+  the correct version ("no clarity on CEO succession"); the fabrication
+  first appears in `pulse-output/agent-io/2026-09-04T14-07-25Z/
+  adversarial-prompt.txt:90`, meaning EDIT introduced it, and it is
+  byte-identical in `adversarial-prompt-2.txt:90` and
+  `adversarial-prompt-3.txt:90` — the adversarial checker had three
+  chances to catch a direct source inversion with two invented named
+  individuals and a specific day, and missed it every round. STEP 7 filed
+  this under the same heading as the numeric-provenance-checker gap
+  (`_edit_introduced_numbers` in `synthesis-routine.md:2184` is
+  numbers-only); that fix (widening the allowed-strings blob) does not
+  address this class at all, since nothing here is a number. Needs a
+  separate check: named-entity / dated-corporate-action claims introduced
+  at EDIT that don't appear in any context source should hard-fail the
+  same way an unverified number does. Scope estimate: extract
+  proper-noun-plus-date spans from EDIT's diff against DRAFT (a much
+  narrower net than full NER — corporate actions read as "named person
+  verb'd to/from role, dated"), check each against the context blob the
+  numeric checker already uses, flag misses the same way.
+- **deterministic-fixable** — RECAP-only sourcing boundary crossed into a
+  BRIEF. "Diesel hit a record price as Ukrainian strikes knocked Russian
+  refineries offline and Moscow banned exports in response" appears in
+  both the RECAP and the diesel BRIEF. The claim is genuinely grounded —
+  verbatim in `news_snapshot` (CNBC via Finnhub, 2026-09-04 08:40 EDT) —
+  so this is not a hallucination, and STEP 7's grouping of it with the
+  ADBE fabrication as "two ungrounded non-numeric assertions" overstates
+  it: it's grounded, just in the wrong section. `CLAUDE.md` states "Live
+  news... used in RECAP only" as a hard layering rule; the BRIEFS section
+  is supposed to derive from research PDFs. A deterministic check
+  (BRIEFS-section sentences shouldn't token-match `news_snapshot`-only
+  content that has no corresponding PDF source) would catch this class
+  without needing a model judgment call.
+- **deterministic-fixable, escalated** — `pulse-context/latest.json`
+  overwritten-by-later-run staleness, now confirmed for a 4th day
+  (08-31, 09-01, 09-02, 09-04; 09-03 unchecked — no `qc-headless` report
+  exists for that day, a gap in the review series worth noting on its
+  own). Today's dump: `dumped_at_utc 2026-09-04T17:43:47Z`, 23 PDFs,
+  `last-24h` window, versus the actual run's `pdf_count: 53` and
+  14:07–14:45Z window. Escalating past "RECAP prices unverifiable"
+  (2026-09-02's framing): today it also blocked verification of the
+  `discovery_audit.promoted` bank/PDF counts STEP 7's selection-review
+  section is built on — the dump I read shows only 2 promoted Phase-B
+  themes (`treasury bond buybacks` 4 banks/4 PDFs, matching STEP 7
+  exactly, and `hormuz strait disruptions` 3 banks/3 PDFs, not the 5
+  banks/7 PDFs STEP 7 cites), which is consistent with this being a
+  smaller, later, differently-windowed run rather than STEP 7 being
+  wrong — but it means a same-day-later QC pass literally cannot check
+  the coverage-audit layer against this artifact. Repeating the standing
+  recommendation with more urgency: either stop overwriting `latest.json`
+  intraday, or write a run-scoped copy (`pulse-context/$QC_PULSE_TS.json`)
+  at commit time the way every other artifact in this pipeline is already
+  timestamped.
+- **observation** — `draft_validate` shipped hard residuals for the first
+  time in the 08-27→09-04 sample (`"hard residuals after 2 re-rolls --
+  shipping with residuals recorded (budget spent)"`), and no file
+  anywhere in `pulse-output/` enumerates what those residuals were — the
+  gate trail records that they shipped, not what they are.  Separately,
+  today's `lint` gate returned `SKIP_SCRUB` (clean) for the first time in
+  the same sample, but STEP 7 already established (and I reproduced) that
+  `_check_section_lengths` never executes on this artifact's `## 2.
+  INSIGHTS & ALPHA` seam — so part of "clean" is "the check didn't run,"
+  not purely "nothing was wrong." And because SCRUB was skipped, there is
+  no `pre-scrub/` or `scrubbed/` snapshot for today; the only reason the
+  EDIT-stage `_LEANS` rewrite (`$XLE, $SHEL` → `$USO`) was verifiable at
+  all is that the adversarial gate happens to log its full prompt
+  (including the internal `_LEANS` block) to
+  `pulse-output/agent-io/$TS/adversarial-prompt.txt`. That's an
+  incidental side effect of one gate's logging, not a designed audit
+  trail — if adversarial logging ever changes, a SCRUB-skip day loses all
+  visibility into what EDIT produced. Not filing a fix, since I don't
+  know which of "persist EDIT output always" vs "persist residual notes
+  only when non-empty" is the right shape — flagging so a session with
+  routine context can pick one.
+- **observation** — three consecutive days now (09-02, 09-03, 09-04)
+  fully exhausting the adversarial repair budget (2/2), versus 0-of-2
+  spent on 08-27 and 08-28. Not enough data to call this a trend with a
+  cause, but worth tracking alongside STEP 7's per-run adversarial notes:
+  if the rate of hard findings reaching the adversarial stage keeps
+  climbing, the fix belongs upstream of adversarial (DRAFT/EDIT prompt),
+  not in adding a third repair round.

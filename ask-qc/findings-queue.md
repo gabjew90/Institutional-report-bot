@@ -116,3 +116,76 @@ no findings
   tool/grounding be forced through a grounded retry the way calendar
   questions are (`_is_calendar_question` net), i.e. a "numbers without a
   source" net in code rather than a prompt rule.
+
+## 2026-09-03
+
+- (open) 1. validator-miss (unforced BTC price, 02:49:24 UTC turn) — the
+  turn asserted spot "$77,338" with a fresh 5-year probability estimate
+  built on top of it, zero tool calls that turn, silently different from
+  the tool-grounded $77,769 the same thread had used two turns earlier.
+  `check_unforced_price` (validator class 3, live since 2026-08-26 per
+  `discord_bot/ask_prompt.py`'s docstring ledger — this checkout's git
+  history is a single-commit snapshot so a deploy-timestamp diff isn't
+  meaningful) correctly flags `$77,338` when run standalone via
+  `scripts/validate_answer.py`, and is confirmed firing live elsewhere
+  same day (12:16:18, 12:20:56 both show `guards: validate:unforced-price`).
+  So this is a genuine miss: the turn went through a separate, later
+  grounding-backstop retry (`guards: grounding:market-shape`) that
+  regenerates the answer via search grounding, and that regenerated text
+  never gets re-run through the phase-04 validate ladder. Fix is
+  architectural — re-run validation on backstop output, or fold the price
+  check into the backstop's own acceptance gate. Same shape as the open
+  TODO for a general figure-provenance check.
+- (open) 2. judgment (dropped-outlier price range, 12:16:18 UTC turn) —
+  grounded turn (`lookup_price_history` ×3, ok) answered "Nasdaq % range
+  since Aug 5" with "29,320 and 29,700" as the full band; the bot's own
+  next turn in the same thread (12:20:56, fresh grounded lookup) concedes
+  NDX "Hit 30,195 on August 17" — a print outside the range the first
+  answer claimed was the whole window, effectively a self-contradiction.
+  `scripts/validate_answer.py --tools "lookup_price_history" --grounded`
+  returns clean, as expected — the tool fired, so no unforced-claim rule
+  applies; this is a data-fidelity error inside a grounded answer
+  (dropping an outlier from a queried range), not a missing-tool-call
+  pattern, and isn't checkable from answer text alone since the log only
+  records tool payload size, not content.
+- (open) 3. regex-able (LULU implied-move self-contradiction, 20:07:16
+  UTC turn) — turn claimed "Historical 1-day realized moves average
+  ±9.4% across the prior 12 quarters," contradicting the bot's own
+  10.2%-average claim to a different asker 59 minutes earlier in the same
+  room (19:08:33), and not traceable to the only tool called
+  (`search_chat_messages`, which can't supply a multi-quarter realized-
+  move stat). Real reporting shows LULU's history is framed as trailing
+  8 quarters / median 11.9%, and 9.4% is a real number but for one past
+  quarter's *implied* move, not a 12-quarter realized-move average —
+  looks like a genuine figure lifted from one context and repurposed as
+  a different invented aggregate. `check_unforced_time_series` in
+  `scripts/ask_response_validate.py` is a near-miss: its `_TREND_CLAIM`
+  regex requires `\d+%\s+(?:over|across)\s+\d+` with only whitespace
+  between the connector and the number, so "across the prior 12 quarters"
+  (with "the prior" inserted) doesn't match.
+  Candidate fixture:
+    question: "what was the implied move for LULU earnings?"
+    bad answer: "Historical 1-day realized moves average ±9.4% across
+      the prior 12 quarters, closely tracking the options market's
+      expected range."
+    good-answer control: "Historical 1-day realized moves are
+      unavailable without a lookup_price_history call — going off the
+      priced ±8.2% move only."
+    suggested regex widening: `\s+(?:over|across)\s+\d+\b` ->
+      `\s+(?:over|across)\s+(?:the\s+)?(?:prior|last|past|trailing)?\s*\d+\b`
+- (open) 4. judgment (prose-only matchup answer, 20:50:54 UTC turn) —
+  `LOCAL/FACT` turn with 3 tool calls (`lookup_fantasy_league`, ok)
+  answering "how's my matchup looking" shipped as pure prose, zero arrow
+  bullets, for cleanly enumerable facts (opponent, two scores, two
+  players per side) — matches the rubric's format_adherence FAIL example
+  verbatim. Notably inconsistent with the identical question shape at
+  21:32:30 in the same log, which rendered as a full arrow-bulleted
+  lineup dump. `scripts/validate_answer.py` returns clean; none of the
+  twelve check functions in `scripts/ask_response_validate.py` inspect
+  output format (arrow-bullet vs. prose) at all — the whole suite is a
+  fabrication/unforced-claim detector, not a format linter. Distinguishing
+  "should have been bulleted" from "legitimately short prose" is a
+  semantic call a naive regex would false-positive on elsewhere in the
+  corpus. Queued as prompt-session material: should matchup-narrative
+  answers get an explicit prose-allowed exception, or be forced through
+  the same arrow-bullet format as roster-dump answers?
