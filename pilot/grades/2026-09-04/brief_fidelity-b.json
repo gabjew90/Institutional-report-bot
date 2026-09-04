@@ -2,70 +2,122 @@
  "metric": "2a",
  "briefs": [
   {
-   "id": "d12",
+   "id": "d23",
    "tier": "top",
    "bank": "Goldman Sachs",
-   "source_chain": "Waller disinflation comments ease rate-hike fear and pull 10yr yields down 3bp, ISM Services beats (offsetting an earlier ISM Manufacturing decline) and improves globally, Q2 productivity holds while the GDP tracker is cut 20bp, and SNOW beats while AVGO guides light -> stocks trade higher, GS stays Buy AVGO, payrolls Friday forecast 40k",
-   "brief_chain": "Waller disinflation comments ease rate-hike fear and pull 10yr yields down 3bp, ISM Services beats (offsetting an earlier ISM Manufacturing decline) and improves globally, Q2 productivity holds while the GDP tracker is cut 20bp, and SNOW beats while AVGO guides light -> stocks trade higher, GS stays Buy AVGO, payrolls Friday forecast 40k",
-   "distortions": [],
-   "material_count": 0,
-   "non_material_count": 0
-  },
-  {
-   "id": "d5",
-   "tier": "top",
-   "bank": "Goldman Sachs",
-   "source_chain": "Broadcom beats on revenue/margin with FY27/FY28 AI guidance well above the in-line Q4 print -> GS raises target to $540 from $525 and stays a buyer; separately GS allocation stays tactically neutral 3m / pro-risk 12m, Overweight equities, Underweight credit on earnings growth outpacing bonds/credit",
-   "brief_chain": "Broadcom beats on revenue/margin with FY27/FY28 AI guidance well above the in-line Q4 print -> GS raises target to $540 from $525 and stays a buyer; separately GS allocation stays tactically neutral 3m / pro-risk 12m, Overweight equities, Underweight credit on earnings growth outpacing bonds/credit",
+   "source_chain": "Momentum basket sells off >20pp, past the desk's summer-slump expectation, therefore hyperscaler and data-center-equipment valuations fall to 2yr/liberation-day lows, therefore positioning (data-center net exposure, Mag7 gross/net) is washed out to multi-year lows too, therefore given low correlation to momentum the desk buys the dip in both baskets ahead of an earnings season following MU/Samsung beats and META's cloud launch.",
+   "brief_chain": "Same chain: momentum selloff exceeds expectations, hyperscaler/data-center valuations and positioning hit multi-year lows, low correlation to momentum makes buying both cheap and diversifying, framed ahead of the same earnings-season catalysts.",
    "distortions": [
     {
-     "what": "Brief omits Meta's Muse Spark 1.3 release, the Trump $1 coin item, the podcast plug, Quote/Stat/Chart of the Day",
+     "what": "Brief drops the source's second comparison point for hyperscaler cheapness ('similar to liberation day lows as well as US-Iran war peak'), keeping only liberation-day lows.",
      "material": false,
-     "would_the_trade_change": "No \u2014 none of these carry a call or a number that bears on the Broadcom or allocation stance being briefed"
+     "would_the_trade_change": "No \u2014 the valuation-cheapness claim and the buy-the-dip call are unchanged, this is a dropped supporting comp."
+    },
+    {
+     "what": "Brief omits the Memory (GSTMTMEM) sub-basket entirely.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 Memory isn't part of the core buy call (hyperscalers + data center equipment) and carries no directional call of its own in the source."
+    },
+    {
+     "what": "Brief compresses 'pricing in further growth and potential bottlenecks' for optical networks/liquid cooling down to just 'price in further growth', dropping the bottleneck nuance.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 no trade or conviction is attached to this line in either version, it's descriptive valuation survey."
     }
    ],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 3
   },
   {
-   "id": "d9",
+   "id": "d17",
    "tier": "top",
    "bank": "Goldman Sachs",
-   "source_chain": "Soft ADP and dovish Williams keep rates/gold bid ahead of Waller and NFP; Privorotsky reads the hawkish tone as Warsh protecting credibility, not a Fed shift; token-price compression (Silicon Data index -29%) makes oversupply plausible absent an Astra-style capability jump, which with credit repricing explains the AI de-rating; Broadcom's guide is strong but the print light, Snowflake cleaner; he expects escalate-to-de-escalate on Iran, oil near the high end of range, and markets stable/higher as long as energy doesn't rise",
-   "brief_chain": "Soft ADP and dovish Williams keep rates/gold bid ahead of Waller and NFP; Privorotsky reads the hawkish tone as Warsh protecting credibility, not a Fed shift; token-price compression (Silicon Data index -29%) makes oversupply plausible absent an Astra-style capability jump, which with credit repricing explains the AI de-rating; Broadcom's guide is strong but the print light, Snowflake cleaner; he expects escalate-to-de-escalate on Iran, oil near the high end of range, and markets stable/higher as long as energy doesn't rise",
+   "source_chain": "House stays OW equities/modestly pro-risk (sustained earnings growth, elevated risk appetite needing lower rates for further upside) and recommends buying dips/hedging selectively given near-term vol risks, therefore on overnight results GS buys AVGO on its FY27/FY28 AI-revenue doubling trajectory and secured supply chain, while flagging HPE and CRDO as solid-but-likely-to-trade-lower against elevated expectations.",
+   "brief_chain": "Same allocation stance and same three overnight calls (buy AVGO on the FY27/FY28 guide and secured supply; HPE/CRDO solid quarters but expected lower against elevated expectations), plus the ETF stat of the day.",
    "distortions": [
     {
-     "what": "Brief omits the WSJ item on Trump weighing declaring the Iran war over, and the sugar/ag side-note",
+     "what": "Brief omits the 'Chart of the day' item (cyclical tech driving positive earnings revisions YTD).",
      "material": false,
-     "would_the_trade_change": "No \u2014 the energy/markets stance in the brief already carries the escalate-to-de-escalate call; the sugar note is an unrelated aside"
+     "would_the_trade_change": "No \u2014 unrelated to the AVGO/HPE/CRDO calls or the asset-allocation stance."
+    },
+    {
+     "what": "Brief drops GS's own caveat on AVGO \u2014 expected investor skepticism around Google supplier diversification and gross-margin dilution.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 GS's bottom line stays 'buy the stock' despite the caveat; omitting it doesn't change the call."
+    },
+    {
+     "what": "Brief omits the after-hours price action (AVGO choppy +2% after an initial -4% dip, SNOW +22%).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the AVGO buy call is fundamentals-based, not a reaction to the print's price action."
+    },
+    {
+     "what": "Brief drops GS's explicit 'Buy-rated on CRDO' reiteration, keeping only the near-term 'trade modestly lower' view.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both source and brief agree CRDO trades lower near-term; the underlying rating isn't invoked as a trade instruction in either."
     }
    ],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 4
   },
   {
-   "id": "d13",
+   "id": "d16",
    "tier": "top",
    "bank": "Goldman Sachs",
-   "source_chain": "Token prices (Silicon Data index) are falling faster than volume is rising (JPM: OpenRouter volume +47% m/m, spend only +7%), so cheaper tokens are not paying for the capex bet; unless Astra delivers a capability jump, compute oversupply is plausible, and credit (hyperscaler bonds trading below issue, ~$737bn 2026 capex at 38% of revenue) is already pricing that risk ahead of equities; three counterarguments exist but don't rescue multiples; separately GS's Schneider stays Buy Broadcom",
-   "brief_chain": "Token prices (Silicon Data index) are falling faster than volume is rising (JPM: OpenRouter volume +47% m/m, spend only +7%), so cheaper tokens are not paying for the capex bet; unless Astra delivers a capability jump, compute oversupply is plausible, and credit (hyperscaler bonds trading below issue, ~$737bn 2026 capex at 38% of revenue) is already pricing that risk ahead of equities; three counterarguments exist but don't rescue multiples; separately GS's Schneider stays Buy Broadcom",
-   "distortions": [],
+   "source_chain": "US equities rally on rates relief while Europe lags a third session as the energy/rates squeeze hits autos and cyclicals, therefore the cross-asset stance stays OW equities/modestly pro-risk with a French-election hedge recommended, therefore separately AIS-off tanker crossings near Oman explain a 5mb/d upward revision to Gulf oil exports, and Broadcom's in-line quarter gets a raised $540 target while Auto1/PPC/Ferrari keep their Buy calls.",
+   "brief_chain": "Same market wrap, same cross-asset stance and French hedge, same oil-tanker explanation for the export revision, same Broadcom target raise, and Buy ratings on Auto1, PPC and Ferrari described as all carrying raised targets.",
+   "distortions": [
+    {
+     "what": "Brief states Ferrari's target was 'raised', but the source shows an explicit '(from EURx)' prior value only for Auto1 and PPC \u2014 Ferrari's entry ('PT EUR407') carries no prior-value marker, so whether it was raised is not stated by the source.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the trade instruction (Buy Ferrari, PT EUR407) is identical either way; only the framing of it as newly-raised is an unsupported inference."
+    },
+    {
+     "what": "Brief omits the M&G results item entirely.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 M&G carries no trade call in the source, it's an in-line results recap."
+    },
+    {
+     "what": "Brief drops Broadcom's post-market -1% move, its 12x FY28 valuation, and the $115bn FY27 AI-semi revenue guide detail, keeping only revenue-in-line, AI-semi growth, guidance-below-Street and the raised target.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 no house call (buy/sell) is attached to Broadcom in this note in either version, it's a factual recap."
+    }
+   ],
    "material_count": 0,
-   "non_material_count": 0
+   "non_material_count": 3
   },
   {
-   "id": "d20",
+   "id": "d8",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Waller's dovish remarks (doubts a September hike, cites disinflation signs) cut hike odds to 51% from 63% and, alongside falling European gas prices, pause the global bond selloff and drive a cross-asset rally that favors equities over long-end bonds, therefore hawkish ISM services/prices-paid data partly offsets Waller without reversing the pricing move, therefore focus shifts to today's payrolls report (DB forecasts a +65k rebound) which will decide the Fed's path, while separately weak Japanese household spending sets up a BoJ meeting Bloomberg expects to be a 25bp hike.",
+   "brief_chain": "Same chain: Waller's dovish comments cut hike odds to 51% from 63%, plus falling gas prices, pause the selloff and lift equities more than long bonds (with matching bps figures), hawkish ISM data offsets Waller, focus turns to today's payrolls print (DB's +65k forecast, steady 4.1% unemployment) after July's contraction, and Japan's spending contraction precedes a BoJ meeting reported to lean toward a 25bp hike.",
+   "distortions": [
+    {
+     "what": "Brief omits secondary data points \u2014 jobless claims (206k vs 205k expected) and the July trade deficit ($88.6bn vs $90.2bn expected).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these don't feature in the note's own causal framing of the day's move, which centers on Waller and the ISM print."
+    },
+    {
+     "what": "Brief drops Waller's specific hedging language (he'd consider a hike 'if inflation comes in hot').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief's own framing ('cast doubt on a hike') already conveys uncertainty rather than a firm no-hike call, consistent with the source's overall read that Waller 'won out' but wasn't unconditionally dovish."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d29",
    "tier": "rest",
-   "bank": "The Market Ear",
-   "source_chain": "Hyperscalers (Amazon) absorb higher memory prices rather than cut orders, signaling memory suppliers retain pricing power, yet memory stocks have lagged and are consolidating; DRAM ETF squeezed between trend lines above its 21-day MA, Micron the strongest (above its 50-day MA, $1,000 close as trigger), Samsung/Hynix pinned at support -> with Korean retail speculation cooled and KOSPI vol crushed, KOSPI upside convexity is flagged as a way to play a catch-up squeeze",
-   "brief_chain": "Hyperscalers (Amazon) absorb higher memory prices rather than cut orders, signaling memory suppliers retain pricing power, yet memory stocks have lagged and are consolidating; DRAM ETF squeezed between trend lines above its 21-day MA, Micron the strongest (above its 50-day MA, $1,000 close as trigger), Samsung/Hynix pinned at support -> with Korean retail speculation cooled and KOSPI vol crushed, KOSPI upside convexity is flagged as a way to play a catch-up squeeze",
+   "bank": "Zero Hedge",
+   "source_chain": "VIX term structure steepens (front end down since the Iran war, back end elevated) as SPX strings together a rare 23-day streak without a 1% decline, aided by the Citadel/Aschenbrenner deleveraging washing out crowded momentum positioning, therefore unlike the comparable 2024 streak \u2014 which had a dovish Fed hold and falling yields as a rates tailwind \u2014 today's streak lacks that support because yields are moving the other way, therefore the persistent long-dated VIX premium means volatility is being deferred rather than eliminated, setting up an eventual reckoning.",
+   "brief_chain": "Same chain, same figures throughout (23 days, 90th percentile, -0.41 vs -0.47 correlation, ~75bp of cuts and ~40bp yield decline in the 2024 comp), same conclusion that volatility is deferred rather than eliminated.",
    "distortions": [],
    "material_count": 0,
    "non_material_count": 0
   }
  ],
  "material_total": 0,
- "non_material_total": 2,
+ "non_material_total": 12,
  "audited": 5,
  "dim": "brief_fidelity",
  "agent": "b",

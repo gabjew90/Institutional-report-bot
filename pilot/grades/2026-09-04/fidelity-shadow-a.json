@@ -6,127 +6,127 @@
    "id": "s1",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-04/15306__token-prices-are-falling-faster-than-demand-goldman-warns-on.txt",
-   "span": "Demand can be infinite and the stocks can still go down if the infinite demand arrives at a price that does not service the debt issued to build the plants.",
-   "why": "Direct paraphrase: 'infinite'\u2192'enormous', 'go down'\u2192'fall', 'debt issued to build the plants'\u2192'debt raised to build the capacity'. Meaning preserved."
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15310__yesterday-was-different-goldman-traders-warn-refined-product.txt",
+   "span": "MidEast and Russian refinery capacity damaged) for refined product... Diesel, gasoil, heating oil, European gas have all broken out.",
+   "why": "Direct match on refinery damage and the four products/gas breaking out."
   },
   {
    "id": "s2",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-04/15308__hedge-when-you-can-not-when-you-have-to-goldman-vol-traders-.txt",
-   "span": "ahead of NFP given GS is below street consensus (+40k) with street whispers for an even lower number",
-   "why": "JPM Feroli=50k, street=55k, prior=-23k (15226/15227) and DB Reid=+65k/-23k/55k (15294) are correctly sourced. But 40k is the source's label for 'street consensus', with GS's own forecast stated to be BELOW 40k (unspecified) \u2014 the sentence wrongly attributes 40k as Goldman's own house call."
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15310__yesterday-was-different-goldman-traders-warn-refined-product.txt",
+   "span": "The tape is Brent at $95... US 10-year 4.80%... if we want relief on rates we first need relief on energy.",
+   "why": "Brent $95 and 10-year 4.80% both stated, and the 'order of operations' framing is the desk's own quoted logic."
   },
   {
    "id": "s3",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-04/15317__jpm-us-market-intelligence-morning-briefing.txt",
-   "span": "we view CPI as more impactful and that NFP is operating in a 'Good News is ...' ... CPI on Sep 11 the more important of the two prints",
-   "why": "Matches directly; corroborated by 15295's 'heightened event risk into next week's CPI.'"
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15310__yesterday-was-different-goldman-traders-warn-refined-product.txt",
+   "span": "Goldman's Industrials specialist, Amanda Ross, summarized the chaos... She reiterated: The desk trade is still inverse heating oil versus the 10-year.",
+   "why": "Source frames this as 'the desk trade' that Ross reiterated/relayed as an Industrials specialist, not a position she personally runs. The sentence changes attribution from 'desk trade she restated' to 'her own position.'"
   },
   {
    "id": "s4",
-   "grade": "unsupported",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "",
-   "span": "",
-   "why": "No source document in the corpus states that a specific factor 'carried the first half' and is now gone. Nearest candidates (momentum unwind in 15317, AI trade discussion in 15313) describe August/summer dynamics, not an H1-specific claim; none use this framing."
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15218__early-morning-reid-macro-strategy.txt",
+   "span": "Germany's 10yr real yield (+1.7bps) at a post-2011 high of 0.99%, suggesting this wasn't just a story of high inflation expectations.",
+   "why": "Figure, country, and 'not just inflation expectations' framing match exactly."
   },
   {
    "id": "s5",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15262__gs-mourad-chart-of-the-day-ai-valuations-8-jul-2026.txt",
-   "span": "The selloff in momentum (GSPRHIMO) has now surpassed 20pp in the last week, exceeding our short term expectations for a summer slump in the factor.",
-   "why": "JPM half (21%/34% from June ATH) is faithfully sourced to 15317 (dated Sept 4). But the Goldman 'shed 20pp in a single week... summer slump' clause is lifted from a document timestamped Wed 8 Jul 2026 \u2014 nearly two months stale \u2014 and is presented as concurrent current-week action alongside the September JPM data, misrepresenting when it happened."
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15294__early-morning-reid-macro-strategy.txt",
+   "span": "the decline was most obvious at the front-end, which showed how it was the Fed commentary driving the moves... the rally was more marginal further out, with the 10yr yield (-1.1bps...) actually closing a touch above their levels just before Waller's comments.",
+   "why": "Source distinguishes the session's move as Fed-commentary-driven at the front end, with the long end barely moving despite the energy pullback -- supporting a pattern break not explained by energy falling."
   },
   {
    "id": "s6",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-04/15317__jpm-us-market-intelligence-morning-briefing.txt",
-   "span": "moving to a Tactically Cautious / Neutral stance... We start with a +NDX vs. -RTY position... As hedges we like shorting Credit ETFs and buying VIX products",
-   "why": "All elements (stance, net-long reduction, NDX vs RTY, short credit ETFs, long VIX) match the source exactly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15312__rate-spike-hedgers-go-bonkers-as-iran-attacks-spike-oil-stoc.txt",
+   "span": "Privo concludes by saying he would remain cautious on duration now that month-end support has passed... yields can continue higher.",
+   "why": "The bond-caution/month-end claim is directly supported, but no source states energy is 'nearer the high end of its near-term range' -- the same note instead calls Brent/WTI 'somewhat range-bound.' An unsupported claim is grafted onto a real one."
   },
   {
    "id": "s7",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15218__early-morning-reid-macro-strategy.txt",
-   "span": "chatter that intervention could occur around the thin trading conditions of the \"Silver Week\" holidays that see markets closed for three days immediately after the BoJ meeting concludes on Friday September 18th",
-   "why": "Direct match on Silver Week, intervention chatter, and the September 18 BoJ meeting."
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15310__yesterday-was-different-goldman-traders-warn-refined-product.txt",
+   "span": "George Cole's overlay... The sell-off is fundamental, not fragile. 'The tell for us is what isn't happening: rates vol hasn't broken higher.' Forecasts still have 10 year yields down 30-40bp if the driver goes away.",
+   "why": "Matches attribution, the fundamental-not-fragile framing, the vol test, and the 30-40bp forecast conditional on the energy driver reversing."
   },
   {
    "id": "s8",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text-all/2026-09-04/15302__asia-equity-strategy-spillovers-to-monitor-from-the-jpy-move.txt",
-   "span": "every 1% sudden appreciation is associated with an approximate 0.6%/0.4% decline (Figure 3) in MSCI EM/AxJ, respectively",
-   "why": "Figures and framing (general historical relationship, not a specific dated event) match exactly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15294__early-morning-reid-macro-strategy.txt",
+   "span": "the prices paid component moved up to a 4-year high of 72.6... which is notable given that this series is strongly correlated to inflation with a 3-month lag.",
+   "why": "Figure and the inflation-correlation lag claim match exactly."
   },
   {
    "id": "s9",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15262__gs-mourad-chart-of-the-day-ai-valuations-8-jul-2026.txt",
-   "span": "We are approaching earnings season that is following MU and Samsung (005930)'s historic beats",
-   "why": "Wording is lifted almost verbatim, but the source is dated 8 Jul 2026 and refers to an earnings season that had already concluded by September. Presenting it as Goldman's framing for 'this earnings season' (the upcoming Sept/AVGO cycle per 15317) misdates which earnings season the beats and the forward-looking comment belong to."
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15251__gs-us-daily-download-3-sep-2026.txt",
+   "span": "Broadcom expects its AI semiconductor revenue to double in FY27 to $115bn across 10GW of datacenter deployments, and double again to $230bn across 20 GW... expecting Anthropic to be the largest customer in FY27",
+   "why": "All figures, GW counts, and the Anthropic-largest-FY27-customer claim match."
   },
   {
    "id": "s10",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15261__gs-mihelc-consumer-morning-trading-update-us-3-sep-2026.txt",
-   "span": "VSXY \u221215%... 2Q revenues just light at $1.61B vs $1.62B consensus... Shares +57% YTD, sector-high 18x P/E.",
-   "why": "All figures match exactly (price move, revenue vs consensus, YTD return, P/E)."
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15307__mcelligott-someone-is-blowing-up-in-vol.txt",
+   "span": "the equity volatility collapse/capitulation has gone 'epic'... options market makers and dealers are choking on huge PNL losses... Spot Equities market only bleeds lower on low realized",
+   "why": "Fair paraphrase of the note's core thesis that the vol/options complex, not spot equities, is where the damage is concentrated."
   },
   {
    "id": "s11",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15261__gs-mihelc-consumer-morning-trading-update-us-3-sep-2026.txt",
-   "span": "PVH +2%. EPS $3.70 (vs $3.08 cons...)... 3Q guided $2.50\u2013$2.65 vs $2.99 cons on ~7.5% margin",
-   "why": "EPS beat figures, stock move, and Q3 guidance figures match exactly; margin-led beat characterization matches source's gross/operating margin beats."
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15307__mcelligott-someone-is-blowing-up-in-vol.txt",
+   "span": "IWM 3m ATM iVol which has collapsed to the 0.2% percentile... SPX Skew and Put Skew back to 2%ile... Dispersion profitability over the past month has cratered down to just the 5%-ile",
+   "why": "All three percentile figures match; 'trades that bet stocks move apart' is a fair plain-English gloss for dispersion trades."
   },
   {
    "id": "s12",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15261__gs-mihelc-consumer-morning-trading-update-us-3-sep-2026.txt",
-   "span": "Gross leverage rose for the first time in 3 months... Consumer Discretionary better to buy as long buys outpaced short sales... Defensives net sold a 5th straight month.",
-   "why": "Direct match on all three Prime Brokerage data points."
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15229__memory-pricing-is-surging-the-stocks-aren-t.txt",
+   "span": "Amazon explicitly attributed part of its latest capex increase to higher memory costs... memory suppliers still have serious pricing power.",
+   "why": "Direct match, including the source's own 'pricing power' framing."
   },
   {
    "id": "s13",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-03/15223__75-of-america-is-priced-out-so-why-won-t-home-prices-crash.txt",
-   "span": "The median homebuyer is now 59 years old, up from 31 in 1981... 40 percent of homes are owned free and clear and 95 percent of mortgages are fixed for 30 years. Homeowners sit on roughly $400,000 in equity",
-   "why": "All four figures (59 vs 31, 95%, 40%, $400,000) match the source exactly."
+   "span": "The median homebuyer is now 59 years old, up from 31 in 1981... 40 percent of homes are owned free and clear and 95 percent of mortgages are fixed for 30 years. Homeowners sit on roughly $400,000 in equity per home... The lock in effect is not a pause. It is a new regime.",
+   "why": "All four figures and the 'permanent break, not a pause' framing match."
   },
   {
    "id": "s14",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-03/15223__75-of-america-is-priced-out-so-why-won-t-home-prices-crash.txt",
-   "span": "Because they are staying put... renovations now account for 25 percent of private construction.",
-   "why": "25% figure matches exactly; 'spending that used to go into moving now goes into staying' is a faithful paraphrase of the source's lock-in/renovation-boom narrative and its explicit 'long the repair and remodel complex... Americans fix what they have' trade call."
+   "span": "Monthly payments hit $2,918 and the median sales price sits at $403,000... 75 percent of households can only afford homes under $300,000.",
+   "why": "All three figures match exactly."
   },
   {
    "id": "s15",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-03/15223__75-of-america-is-priced-out-so-why-won-t-home-prices-crash.txt",
-   "span": "If turnover stays frozen while remodeling spending holds up, the widening gap between homebuilders and renovation becomes the relative-value opportunity.",
-   "why": "The source's own taxonomy treats 'Homebuilders' (Blue) and 'Transactions' \u2014 brokerages/lenders/title companies (Red) \u2014 as distinct categories; the actual widening gap it calls out is between homebuilders and renovation, not between 'transaction-linked' names and renovation. The sentence substitutes the wrong counterparty."
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15293__teflon-tech-soggy-sox-dramatic-dram-and-crazy-commodities.txt",
+   "span": "BCOM has exploded higher since testing the longer-term trend line and the 200-day MA earlier this summer. The index has basically dislocated from the 200-day again.",
+   "why": "200-day/dislocation claim matches this file; the grains detail is corroborated by the companion note 15236__no-inflation-unless-you-need-to-eat.txt: 'BCOMGR (grains) has moved sharply higher over the past month.'"
   }
  ],
- "faithful": 10,
- "distorted": 4,
- "unsupported": 1,
- "faithful_rate": 0.667,
+ "faithful": 13,
+ "distorted": 2,
+ "unsupported": 0,
+ "faithful_rate": 0.867,
  "dim": "fidelity",
  "agent": "a",
  "provenance": {

@@ -1,126 +1,49 @@
 {
  "metric": 1,
- "total_cards": 942,
+ "total_cards": 989,
  "fragmentation_sets": [
   {
-   "subject": "Broadcom Q3 earnings & AI revenue outlook",
+   "subject": "Broadcom earnings print, stock reaction, and AI-revenue guidance",
    "labels": [
     "broadcom earnings",
     "broadcom",
-    "avgo earnings",
-    "broadcom ai revenue"
+    "broadcom ai revenue",
+    "avgo earnings"
    ],
-   "cards": 21
+   "cards": 22
   },
   {
-   "subject": "Oil price levels amid Iran conflict (Brent/WTI)",
+   "subject": "September Fed hike odds / what resolves the Sept 16 decision",
    "labels": [
-    "oil price",
-    "oil prices",
-    "brent crude",
-    "oil energy risk"
-   ],
-   "cards": 17
-  },
-  {
-   "subject": "Hormuz oil transit / export flow data",
-   "labels": [
-    "persian gulf oil exports",
-    "hormuz oil flows",
-    "hormuz oil transit",
-    "oil supply risk"
-   ],
-   "cards": 6
-  },
-  {
-   "subject": "US-Iran military conflict escalation",
-   "labels": [
-    "hormuz escalation",
-    "us iran tensions",
-    "us iran conflict escalation",
-    "us iran conflict",
-    "iran conflict",
-    "middle east conflict",
-    "iran troop deployments"
-   ],
-   "cards": 16
-  },
-  {
-   "subject": "September Fed hike odds & Fed speaker commentary",
-   "labels": [
-    "fed policy path",
-    "september fed hike",
     "fed rate hike odds",
     "fed rate pricing",
-    "september fed decision",
-    "fed september hike"
+    "september fed hike",
+    "fed september hike",
+    "fed september decision",
+    "september fed decision"
    ],
-   "cards": 31
+   "cards": 30
   },
   {
-   "subject": "US / global Treasury bond yields rising",
+   "subject": "JPM US/global hedge-fund positioning monitor (net leverage, tactical positioning z-score, re-gross/de-gross)",
    "labels": [
-    "10 year yield",
-    "us treasury yields",
-    "treasury yields",
-    "us 10y yield",
-    "us 30y yield",
-    "30 year treasury yield",
-    "long end treasury yields",
-    "bond yields",
-    "yields blowout"
-   ],
-   "cards": 26
-  },
-  {
-   "subject": "JGB 10-year yield crossing 3%",
-   "labels": [
-    "japan 10 year yield",
-    "jgb yields",
-    "japan 10y yield"
-   ],
-   "cards": 3
-  },
-  {
-   "subject": "European sovereign yield selloff (Bund/OAT)",
-   "labels": [
-    "european sovereign yields",
-    "european bonds"
-   ],
-   "cards": 8
-  },
-  {
-   "subject": "US labor market indicators (ADP/claims/Challenger)",
-   "labels": [
-    "us labour market",
-    "us labor market",
-    "jobless claims",
-    "us jobless claims"
-   ],
-   "cards": 10
-  },
-  {
-   "subject": "August NFP forecasts / scenarios",
-   "labels": [
-    "august payrolls",
-    "nfp scenario analysis",
-    "us jobs report",
-    "us payrolls"
+    "hedge fund positioning",
+    "us positioning",
+    "global positioning"
    ],
    "cards": 20
   },
   {
-   "subject": "Hedge fund / US positioning monitor",
+   "subject": "August momentum-factor unwind (JPMPURE/JPPQMO/GS momentum baskets down from June highs)",
    "labels": [
-    "hedge fund positioning",
-    "us positioning",
-    "hedge fund performance",
-    "global positioning"
+    "momentum factor",
+    "momentum positioning",
+    "momentum unwind"
    ],
-   "cards": 21
+   "cards": 13
   },
   {
-   "subject": "Asia regional equity flows (Japan/Korea/Taiwan/China)",
+   "subject": "August Asia regional flows (Japan bought, Korea/Taiwan sold)",
    "labels": [
     "asia positioning",
     "asia positioning flows",
@@ -129,41 +52,25 @@
    "cards": 6
   },
   {
-   "subject": "Gold price / positioning",
+   "subject": "US labor-market data (ADP, jobless claims, Challenger cuts) ahead of NFP",
    "labels": [
-    "gold",
-    "gold price"
+    "us labour market",
+    "us labor market"
    ],
-   "cards": 7
+   "cards": 8
   },
   {
-   "subject": "Momentum factor unwind / rotation",
+   "subject": "August NFP forecasts and probability-weighted market-reaction scenarios",
    "labels": [
-    "momentum factor",
-    "momentum positioning",
-    "factor rotation",
-    "asia momentum positioning"
+    "august payrolls",
+    "nfp scenario analysis",
+    "nfp market reaction",
+    "us payrolls"
    ],
-   "cards": 15
+   "cards": 27
   },
   {
-   "subject": "GS tactical asset allocation view",
-   "labels": [
-    "asset allocation",
-    "cross asset allocation"
-   ],
-   "cards": 15
-  },
-  {
-   "subject": "JPM cyclicals-with-secular-tailwind longs",
-   "labels": [
-    "cyclicals longs",
-    "cyclical longs"
-   ],
-   "cards": 4
-  },
-  {
-   "subject": "European equities: JPM bullish stance + DB index moves",
+   "subject": "JPM's tactically-bullish-EU-equities stance plus adding index hedges",
    "labels": [
     "european equities",
     "eu equities"
@@ -171,7 +78,15 @@
    "cards": 7
   },
   {
-   "subject": "JPM supercycle theme longs",
+   "subject": "JPM cyclicals-with-secular-tailwind longs (EU/Japan banks, industrials, miners)",
+   "labels": [
+    "cyclical longs",
+    "cyclicals longs"
+   ],
+   "cards": 4
+  },
+  {
+   "subject": "JPM supercycle theme longs list",
    "labels": [
     "supercycle longs",
     "supercycle theme longs"
@@ -179,7 +94,7 @@
    "cards": 2
   },
   {
-   "subject": "JPM low-vol longs (EU pharma/FTSE)",
+   "subject": "JPM low-volatility longs (EU pharma, UK FTSE 100)",
    "labels": [
     "low vol longs",
     "low volatility longs"
@@ -187,7 +102,7 @@
    "cards": 2
   },
   {
-   "subject": "JPM EM hedge via LatAm/ILF",
+   "subject": "JPM long-LatAm-via-ILF EM diversifying hedge",
    "labels": [
     "em hedges",
     "emerging markets hedges"
@@ -195,7 +110,7 @@
    "cards": 3
   },
   {
-   "subject": "JPM cautious-to-neutral global equity stance",
+   "subject": "JPM International Market Intelligence's tactically cautious/neutral global-equity stance",
    "labels": [
     "global equity stance",
     "global equities stance"
@@ -203,107 +118,20 @@
    "cards": 2
   },
   {
-   "subject": "Software vs semis rotation / relative vol",
+   "subject": "US-Iran military escalation (strikes, retaliation, off-ramp odds)",
    "labels": [
-    "software vs semis rotation",
-    "igv sox ratio",
-    "semis vs software vol",
-    "smh vs igv vol"
+    "middle east conflict",
+    "us iran tensions",
+    "iran conflict",
+    "us iran conflict escalation",
+    "hormuz escalation",
+    "us iran conflict",
+    "iran troop deployments"
    ],
-   "cards": 6
+   "cards": 16
   },
   {
-   "subject": "DRAM ETF technical setup",
-   "labels": [
-    "dram etf technicals",
-    "dram memory"
-   ],
-   "cards": 4
-  },
-  {
-   "subject": "BCOM commodity index breakout",
-   "labels": [
-    "bcom index breakout",
-    "commodities bcom breakout"
-   ],
-   "cards": 5
-  },
-  {
-   "subject": "AI token pricing / inference economics debate (Privorotsky)",
-   "labels": [
-    "ai token pricing",
-    "token prices",
-    "token demand",
-    "per token pricing model",
-    "inference revenue",
-    "ai unit economics",
-    "ai de rating",
-    "inference versus training",
-    "ai equity multiples",
-    "ai capex thesis"
-   ],
-   "cards": 25
-  },
-  {
-   "subject": "GS hyperscaler / data-center-equipment valuation & positioning trade",
-   "labels": [
-    "ai infrastructure valuations",
-    "ai infrastructure positioning"
-   ],
-   "cards": 8
-  },
-  {
-   "subject": "Wednesday Sept 2 US equity close stats",
-   "labels": [
-    "us equity market",
-    "us equity close"
-   ],
-   "cards": 6
-  },
-  {
-   "subject": "Premarket US equity futures levels",
-   "labels": [
-    "us futures",
-    "equity futures"
-   ],
-   "cards": 3
-  },
-  {
-   "subject": "Brazil equity rally into election (EWZ)",
-   "labels": [
-    "brazil equities",
-    "brazil upside",
-    "brazil election"
-   ],
-   "cards": 5
-  },
-  {
-   "subject": "JPM Monetization Menu sector/trade picks",
-   "labels": [
-    "monetization menu",
-    "sector allocation"
-   ],
-   "cards": 11
-  },
-  {
-   "subject": "Midterm election market seasonality",
-   "labels": [
-    "equity seasonality",
-    "midterm election seasonality"
-   ],
-   "cards": 3
-  },
-  {
-   "subject": "GS S&P 500 futures CoT positioning + stagflation basket read-through",
-   "labels": [
-    "s p 500 futures positioning",
-    "s p futures funding",
-    "stagflation basket"
-   ],
-   "cards": 15
-  },
-  {
-   "subject": "Market Ear US housing structural report (demographics/affordability/renovation-vs-homebuilders trade)",
+   "subject": "The Market Ear's US housing structural note (aging buyers, affordability, renovation-vs-homebuilder trade, multifamily distress)",
    "labels": [
     "homebuyer age",
     "first time buyer age",
@@ -326,108 +154,63 @@
     "multifamily distress cycle",
     "homebuilders near term",
     "renovation retailers",
-    "homebuilders vs renovation"
+    "homebuilders vs renovation",
+    "housing transaction trade"
    ],
-   "cards": 22
+   "cards": 24
   },
   {
-   "subject": "Zero Hedge Treasury-bill / \"shadow central bank\" inflation thesis",
+   "subject": "Goldman Sachs cross-asset tactical allocation stance (OW equities, NW bonds/commodities/cash, UW credit)",
    "labels": [
-    "treasury bill share",
-    "shadow central bank",
-    "inflationary liquidity",
-    "bill rehypothecation",
-    "fed rate constraint",
-    "funding market risk"
+    "asset allocation",
+    "cross asset allocation"
    ],
-   "cards": 12
+   "cards": 15
   },
   {
-   "subject": "Nomura (McElligott) cross-asset vol flows note",
+   "subject": "DRAM ETF technical setup between trend lines",
    "labels": [
-    "iwm implied vol",
-    "equity index vol",
-    "realized vol asymmetry",
-    "spx put skew",
-    "dispersion profitability",
-    "vol trading losses",
-    "tech ai vol demand",
-    "retail options activity",
-    "exotics vega supply",
-    "rates vol skew",
-    "rates dealer positioning"
+    "dram etf technicals",
+    "dram memory"
+   ],
+   "cards": 4
+  },
+  {
+   "subject": "BCOM commodity index breakout from its 200-day moving average",
+   "labels": [
+    "commodities bcom breakout",
+    "bcom index breakout"
+   ],
+   "cards": 4
+  },
+  {
+   "subject": "JPM Flows & Liquidity market-depth monitor across asset classes",
+   "labels": [
+    "market liquidity",
+    "ust market liquidity",
+    "nikkei futures liquidity",
+    "gold bitcoin liquidity",
+    "corporate bond liquidity",
+    "equity futures liquidity",
+    "oil futures liquidity"
    ],
    "cards": 11
-  },
-  {
-   "subject": "Refined product market tightness (diesel/gasoil)",
-   "labels": [
-    "diesel prices",
-    "refined product supply",
-    "refined product exports"
-   ],
-   "cards": 5
-  },
-  {
-   "subject": "European natural gas price spike (TTF)",
-   "labels": [
-    "european natural gas",
-    "eu gas prices",
-    "european gas",
-    "natural gas prices"
-   ],
-   "cards": 14
-  },
-  {
-   "subject": "JPM financial conditions / credit & money creation",
-   "labels": [
-    "financial conditions",
-    "credit creation",
-    "money supply growth"
-   ],
-   "cards": 18
   }
  ],
- "fragmented_mass_share": 0.44,
+ "fragmented_mass_share": 0.22,
  "mis_merges": [
   {
-   "label": "market levels",
+   "label": "financial conditions",
    "subjects": [
-    "US equity index close",
-    "UST 10yr yield",
-    "Brent crude level",
-    "gold level",
-    "bitcoin level",
-    "JGB 30yr yield"
+    "US/Euro-area financial-conditions tightening thesis (price- vs quantity-based framework)",
+    "JPM's separate market-liquidity monitor readings (Treasuries, Nikkei, gold, bitcoin futures depth) and investor positioning, which duplicate the standalone 'market liquidity' label"
    ],
    "would_change_theme_selection": false,
-   "why": "It is a conventional multi-asset levels snapshot feeding RECAP-style price context, not a candidate theme, so bundling instruments here does not cost the editor a distinct theme."
-  },
-  {
-   "label": "overnight market levels",
-   "subjects": [
-    "WTI/NatGas premarket levels",
-    "gold/silver premarket levels",
-    "index futures levels",
-    "sector premarket color (semis/memory/mag7/software)"
-   ],
-   "would_change_theme_selection": false,
-   "why": "Same as above: a premarket levels dump, not a thesis a reader would mistake for one story."
-  },
-  {
-   "label": "us data forecasts",
-   "subjects": [
-    "ISM services forecast",
-    "trade balance forecast",
-    "jobless claims forecast",
-    "productivity forecast"
-   ],
-   "would_change_theme_selection": false,
-   "why": "Each forecast already has its own better-labeled home elsewhere (e.g. 'ism services'), so the bundle is redundant rather than theme-costing."
+   "why": "Both threads are niche JPM cross-asset research that would surface as the same minor briefing card either way, so an editor's lead-theme picks wouldn't change, but the label improperly conflates a rates/credit thesis with an unrelated liquidity dataset."
   }
  ],
  "pass": false,
- "notes": "Fragmentation is severe and pervasive: several single-source reports (Nomura's McElligott vol note, Zero Hedge's Treasury-bill thesis, Market Ear's housing report, GS's AI-pricing debate) are each chopped into 6-22 separate labels, and many near-duplicate label pairs (oil price/oil prices, cyclicals longs/cyclical longs, us labour market/us labor market, september fed hike/fed september hike) restate identical facts. At ~44% fragmented card mass this fails by a wide margin; no mis-merge found would have changed theme selection.",
+ "notes": "Fragmentation dominates: roughly a fifth of all cards sit in labels that split one underlying subject across multiple near-duplicate labels, often distinguished only by spelling/wording (e.g. 'us labour market' vs 'us labor market', 'cyclical longs' vs 'cyclicals longs'). No mis-merge was severe enough to have changed theme selection on its own.",
  "dim": "grouping",
  "agent": "b",
  "artifact": "",
