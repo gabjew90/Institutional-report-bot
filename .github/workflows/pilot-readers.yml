@@ -93,6 +93,24 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |
           set -u
+          # Persist after EVERY document. Every readers run on 2026-09-03
+          # was killed by `timeout-minutes: 45` partway through this loop
+          # and the commit step (which ran after it) was skipped, so 20
+          # runs threw away every card they had verified and the backlog
+          # only grew. A kill now costs the document in flight, not the run.
+          git -C pilot-data config user.name  'pilot-reader-bot'
+          git -C pilot-data config user.email 'actions@users.noreply.github.com'
+          persist () {  # $1 = commit message suffix
+            git -C pilot-data add "$PILOT_ROOT/cards/" "$PILOT_ROOT/ops/" 2>/dev/null || true
+            if git -C pilot-data diff --cached --quiet; then return 0; fi
+            git -C pilot-data commit -q -m "pilot: reader cards ($1)" || return 0
+            for attempt in 1 2 3; do
+              git -C pilot-data pull --rebase --quiet origin pilot-data || true
+              if git -C pilot-data push -q origin pilot-data; then return 0; fi
+              sleep 3
+            done
+            echo "::warning::could not push after $1; the next run retries"
+          }
           # TSV, read line-by-line: a `for` over command substitution
           # word-splits, and document slugs are not guaranteed
           # space-free.
@@ -180,32 +198,16 @@ jobs:
               echo "::warning::anchor verify (final) failed for $ID"
               FAILED=$((FAILED+1)); continue
             fi
+            python scripts/pilot_ops_record.py --root "pilot-data/$PILOT_ROOT" \
+              --total "$TOTAL" --failed "$FAILED" || true
+            persist "$ID"
           done < /tmp/unread.tsv
           echo "read $TOTAL document(s), $FAILED failed"
-          # Metric 5 (ops): append this run to pilot/ops/<date>.json so the
-          # scoreboard can compute the day's reader failure rate and whether
-          # a read ran into the pulse window (13:55-14:15 UTC).
-          python - "$TOTAL" "$FAILED" <<'PY'
-          import json, os, sys
-          from datetime import datetime, timezone
-          total, failed = int(sys.argv[1]), int(sys.argv[2])
-          now = datetime.now(timezone.utc)
-          path = os.path.join("pilot-data", os.environ["PILOT_ROOT"], "ops", now.strftime("%Y-%m-%d") + ".json")
-          os.makedirs(os.path.dirname(path), exist_ok=True)
-          doc = {"runs": []}
-          if os.path.exists(path):
-              try:
-                  doc = json.load(open(path, encoding="utf-8"))
-              except Exception:
-                  doc = {"runs": []}
-          hm = now.hour * 60 + now.minute
-          doc["runs"].append({"finished_utc": now.strftime("%H:%M"), "total": total, "failed": failed,
-                              "in_pulse_window": 13 * 60 + 55 <= hm <= 14 * 60 + 15})
-          t = sum(r["total"] for r in doc["runs"]); f = sum(r["failed"] for r in doc["runs"])
-          doc["reader_failure_rate"] = round(f / t, 3) if t else None
-          doc["collided_with_pulse_window"] = any(r["in_pulse_window"] and r["total"] > 0 for r in doc["runs"])
-          json.dump(doc, open(path, "w", encoding="utf-8"), indent=1)
-          PY
+          # Metric 5 (ops): one entry per run, upserted by run id, so the
+          # per-document calls above collapse into a single record.
+          python scripts/pilot_ops_record.py --root "pilot-data/$PILOT_ROOT" \
+            --total "$TOTAL" --failed "$FAILED" || true
+          persist "final $TOTAL doc(s)"
           # One poisoned PDF must not stop the pilot's day; a total
           # wipeout should be loud.
           if [ "$TOTAL" -gt 0 ] && [ "$FAILED" -eq "$TOTAL" ]; then
@@ -214,35 +216,12 @@ jobs:
 
       - name: Record a quiet run in ops
         if: steps.unread.outputs.count == '0'
-        working-directory: .
         run: |
-          # A run that found nothing still writes its ops entry. Both the
-          # cards and ops commits used to sit behind the same non-zero
-          # gate, so a day where the readers produced nothing left NO
-          # trace at all and the editor's stale-card day could not be
-          # explained the next morning (2026-09-03).
-          python - <<'PY'
-          import json, os
-          from datetime import datetime, timezone
-          now = datetime.now(timezone.utc)
-          path = os.path.join("pilot-data", os.environ["PILOT_ROOT"], "ops",
-                              now.strftime("%Y-%m-%d") + ".json")
-          os.makedirs(os.path.dirname(path), exist_ok=True)
-          doc = {"runs": []}
-          if os.path.exists(path):
-              try:
-                  doc = json.load(open(path, encoding="utf-8"))
-              except Exception:
-                  doc = {"runs": []}
-          doc["runs"].append({"finished_utc": now.strftime("%H:%M"), "total": 0,
-                              "failed": 0, "in_pulse_window": False, "quiet": True})
-          t = sum(r["total"] for r in doc["runs"]); f = sum(r["failed"] for r in doc["runs"])
-          doc["reader_failure_rate"] = round(f / t, 3) if t else None
-          doc["collided_with_pulse_window"] = any(
-              r["in_pulse_window"] and r["total"] > 0 for r in doc["runs"])
-          json.dump(doc, open(path, "w", encoding="utf-8"), indent=1)
-          print("quiet run recorded:", path)
-          PY
+          # A run that found nothing still writes its ops entry: both
+          # commits used to sit behind the same non-zero gate, so a day
+          # the readers produced nothing left no trace to diagnose.
+          python scripts/pilot_ops_record.py --root "pilot-data/$PILOT_ROOT" \
+            --total 0 --failed 0 --quiet-run
 
       - name: Commit ops for a quiet run
         if: steps.unread.outputs.count == '0'

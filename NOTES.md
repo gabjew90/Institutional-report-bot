@@ -1524,3 +1524,51 @@ like.
 
 326 unit tests, 157 fast smokes, every workflow shell step passes
 `bash -n`. Production untouched.
+
+## 2026-09-03 — The pilot readers were dying on the job timeout, not a code path
+
+Owner pushed back that I DO have GitHub access. I do: the credential
+manager holds a token and the Actions API answers. That changed the
+diagnosis, and my morning code-review finding was wrong about the cause.
+
+What the API says. Every `pilot-readers` run on 09-03 is "cancelled",
+20 of them, zero successes. They are not cancelled by concurrency
+(`cancel-in-progress: false`). Their durations are 2715, 2716, 2717,
+2718, 2719 seconds: GitHub reports a job killed by `timeout-minutes: 45`
+as cancelled. The 01:00 run's log is unambiguous: 37 unread, nine
+documents read, 273 cards verified, zero failures, then the clock ran
+out mid-loop and the commit step was skipped. Nothing persisted, so the
+next run started again from 37 and read the same nine. A death spiral
+where every run does real work and throws all of it away.
+
+That, not the unguarded in-loop command I flagged this morning, is why
+09-03 had no cards and no ops record. The unguarded-command finding is
+still real and is still fixed, but it is not what happened: the job is
+killed from OUTSIDE the shell, so no in-loop error handling could have
+saved it. Worth remembering as a diagnosis lesson: "no artifact and no
+log entry" pointed at an in-process abort, and the run history said
+otherwise in one API call.
+
+Fix: persist after EVERY document. A `persist()` helper commits cards
+plus ops and pushes with a rebase-retry, called after each document and
+once at the end. A kill now costs the document in flight, not the run,
+and a 45-minute run retires nine documents so the next starts from 28.
+
+The ops record moved out of an inline YAML heredoc into
+`scripts/pilot_ops_record.py`, upserting ONE entry per run id so nine
+per-document calls collapse into one record. Same reason as
+`_ask_prefetch_plan` and `_ask_evidence_text`: logic no test can reach
+is logic that breaks silently. It has unit tests for the upsert, the
+pulse-window flag, and corrupt input.
+
+## 2026-09-03 — daily-qc lost a push race and discarded a full grading
+
+The GitHub daily-qc run failed today at step 12 of 12. Auth passed,
+grading passed, the pulse review passed; the bare `git push origin
+pulse-data` was rejected because the bridge had pushed while it worked.
+The graded output existed and was thrown away, which is why
+`ask-qc/2026-09-02.claude.md` never appeared. It also failed twice on
+09-01 the same way, so it is an intermittent race, not a new break.
+Every pilot workflow already does `git pull --rebase` before pushing;
+this one did not. It now rebases and retries three times, and errors
+loudly if all three fail.

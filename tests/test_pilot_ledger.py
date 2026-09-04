@@ -187,5 +187,49 @@ def test_finalize_rejects_structural_damage_but_allows_empty_cards():
         assert run('{"brief": "b", "cards": "oops"}') == 1
 
 
+
+# 2026-09-03: every readers run was killed by timeout-minutes: 45 partway
+# through the loop, so the end-of-loop ops write never ran and the commit
+# step was skipped. 20 runs, 273 verified cards in one of them, all
+# discarded. The loop now records and persists after every document, so
+# the entry must be upsertable by run id rather than appended.
+def test_ops_record_upserts_one_entry_per_run():
+    from datetime import datetime, timezone
+    from scripts.pilot_ops_record import upsert
+    now = datetime(2026, 9, 3, 1, 5, tzinfo=timezone.utc)
+    doc = {}
+    for n in (1, 2, 3):
+        doc = upsert(doc, "run-A", total=n, failed=0, now=now)
+    assert len(doc["runs"]) == 1, doc["runs"]
+    assert doc["runs"][0]["total"] == 3 and doc["runs"][0]["run_id"] == "run-A"
+    doc = upsert(doc, "run-B", total=2, failed=1, now=now)
+    assert len(doc["runs"]) == 2
+    # the day's rate spans every run
+    assert doc["reader_failure_rate"] == round(1 / 5, 3)
+
+
+def test_ops_record_flags_a_read_inside_the_pulse_window():
+    from datetime import datetime, timezone
+    from scripts.pilot_ops_record import upsert
+    inside = datetime(2026, 9, 3, 14, 0, tzinfo=timezone.utc)
+    outside = datetime(2026, 9, 3, 12, 0, tzinfo=timezone.utc)
+    d = upsert({}, "r", total=3, failed=0, now=inside)
+    assert d["runs"][0]["in_pulse_window"] and d["collided_with_pulse_window"]
+    d2 = upsert({}, "r", total=3, failed=0, now=outside)
+    assert not d2["runs"][0]["in_pulse_window"] and not d2["collided_with_pulse_window"]
+    # a QUIET run inside the window is not a collision: it read nothing
+    d3 = upsert({}, "r", total=0, failed=0, now=inside, quiet=True)
+    assert d3["runs"][0]["quiet"] is True and not d3["collided_with_pulse_window"]
+    assert d3["reader_failure_rate"] is None
+
+
+def test_ops_record_survives_a_corrupt_or_partial_file():
+    from datetime import datetime, timezone
+    from scripts.pilot_ops_record import upsert
+    now = datetime(2026, 9, 3, 1, 5, tzinfo=timezone.utc)
+    for junk in ({}, {"runs": None}, {"runs": ["not-a-dict", {"run_id": "x", "total": 1, "failed": 0}]}):
+        d = upsert(dict(junk), "run-A", total=4, failed=0, now=now)
+        assert any(r["run_id"] == "run-A" for r in d["runs"]), d
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

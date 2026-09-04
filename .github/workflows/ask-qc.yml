@@ -197,4 +197,15 @@ jobs:
           fi
           git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
           git commit -m "daily-qc: claude judge $QC_DATE (+pulse $QC_PULSE_TS)"
-          git push origin pulse-data
+          # Rebase before pushing, and retry: the bridge commits to
+          # pulse-data every ~15 minutes, so a bare push is a coin
+          # flip. On 2026-09-03 it lost, and a full grading run was
+          # computed and then discarded. Every pilot workflow already
+          # does this; this one did not.
+          for attempt in 1 2 3; do
+            git pull --rebase --quiet origin pulse-data || true
+            if git push origin pulse-data; then exit 0; fi
+            sleep 5
+          done
+          echo "::error::could not push the QC grades after 3 attempts"
+          exit 1
