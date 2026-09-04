@@ -1,0 +1,524 @@
+{
+ "brief": "Goldman US equity trading and sales daily. Stat of the day: US-listed ETFs hold $16.5 trillion and are on track for more than $2 trillion of inflows this year. Asset allocation stays tactically neutral across assets for 3m and modestly pro-risk for 12m, overweight equities, neutral bonds, commodities and cash, underweight credit. The chain: sustained earnings growth supports equities over bonds and credit on 12m, but returns slow as earnings growth and revisions peak, and because risk appetite and cyclical pricing are already elevated, further upside needs lower rates rather than stronger growth. Near-term volatility could rise on rates volatility, seasonality, US midterms and geopolitics, so the stance is stay invested, buy dips and hedge selectively. On overnight results Goldman would buy AVGO, because Broadcom guides AI semiconductor revenue to double in FY27 to $115bn across 10GW and double again to $230bn across 20 GW, names Anthropic as the largest FY27 custom silicon customer, and says component supply through FY28 is secured. HPE and CRDO both delivered solid quarters but Goldman expects both to trade modestly lower against elevated investor expectations.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "US-listed ETFs hold $16.5 trillion in total assets.",
+   "anchor": "US-listed ETFs represent $16.5 trillion in total assets",
+   "topic": "ETF flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "US-listed ETFs are on track to gather more than $2 trillion of inflows in 2026.",
+   "anchor": "on track to gather more than $2 trillion in",
+   "topic": "ETF flows",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Cyclical parts of the Tech sector have been the main driver of positive earnings revisions year to date.",
+   "anchor": "Cyclical parts of the Tech sector have been the main driver behind positive earnings revisions YTD",
+   "topic": "tech earnings revisions",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman is tactically neutral across assets on a 3-month horizon and modestly pro-risk on a 12-month horizon.",
+   "anchor": "We remain tactically neutral across assets for 3m and modestly pro-risk for 12m",
+   "topic": "asset allocation",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3m and 12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman's allocation is overweight equities, neutral bonds, commodities and cash, and underweight credit.",
+   "anchor": "OW equities, N bonds, commodities and cash, and UW credit",
+   "topic": "asset allocation",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman expects equities to outperform bonds and credit over 12 months, with returns slowing as earnings growth and revisions peak.",
+   "anchor": "support equity outperformance versus bonds and credit over 12m, although returns are likely to slow",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman sees near-term volatility rising on rates volatility, seasonal weakness, US midterm elections and geopolitical risk.",
+   "anchor": "Near-term volatility could rise amid rates volatility, seasonal",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman's response to near-term volatility risk is to stay invested, buy dips, and mitigate risk through diversification and selective overlay hedges.",
+   "anchor": "pointing to staying invested, buying dips",
+   "topic": "asset allocation",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman expects a benign macro backdrop of slowing but sturdy growth, low US recession risk, moderating inflation and limited further central bank tightening.",
+   "anchor": "remain relatively benign: slowing but sturdy growth, low US recession risk, moderating inflation and",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "With risk appetite and cyclical pricing already elevated, Goldman says further upside more likely requires lower rates than stronger growth.",
+   "anchor": "upside is more likely to require lower rates than stronger growth",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman would be buyers of Broadcom stock following its AI revenue outlook through FY28, which Goldman expects Broadcom to exceed.",
+   "anchor": "We would be buyers of the stock following Broadcom's very strong AI revenue outlook",
+   "topic": "Broadcom earnings",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Broadcom expects AI semiconductor revenue to double in FY27 to $115bn across 10GW of datacenter deployments.",
+   "anchor": "Broadcom expects its AI semiconductor revenue to double in FY27 to $115bn across 10GW",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Broadcom expects AI semiconductor revenue to double again to $230bn across 20 GW after FY27.",
+   "anchor": "deployments, and double again to $230bn across 20 GW",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Broadcom expects Anthropic to be its largest custom silicon customer in FY27, with OpenAI and Meta material in FY28, while its Google business continues to grow.",
+   "anchor": "expecting Anthropic to be the largest customer in",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27 and FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Broadcom management reiterated it has secured supplies of all key components needed to support its revenue forecast through FY28.",
+   "anchor": "management reiterated that it has secured supplies of all key components",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman expects investor skepticism around Broadcom's supplier diversification at Google and gross margin dilution, but still expects the stock to move meaningfully higher.",
+   "anchor": "we ultimately expect the company's very strong",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Broadcom shares were choppy after the bell, indicated +2% after initially falling 4%, following a 4Q revenue guide that missed estimates.",
+   "anchor": "AVGO shares have been choppy, indicated +2% higher after initially falling -4% after reporting a 4Q rev",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "after the bell 2 Sep 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "HPE F3Q26 earnings of $1.11 beat GS/FactSet consensus and guidance, driven by a Cloud & AI revenue beat and better than expected Cloud & AI EBIT margins.",
+   "anchor": "HPE F3Q26 earnings of $1.11 beat GS/FactSet consensus and guidance",
+   "topic": "HPE earnings",
+   "status": "released",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman expects HPE stock to trade modestly lower despite a solid quarter and raised FY27 revenue and EPS guidance, because investor expectations were elevated.",
+   "anchor": "modestly lower following a solid quarter and an uptick to FY27 revenue/EPS guidance, relative to",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "HPE delivered record order growth of +42% year-over-year in the quarter on broad-based demand.",
+   "anchor": "HPE delivered record order growth (+42% year-over-year)",
+   "topic": "HPE earnings",
+   "status": "released",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "HPE raised its F2027 overall revenue growth outlook to 13-17% from 8-12% prior.",
+   "anchor": "HPE raised its F2027 outlook (1) overall revenue growth of 13-17% (v. 8-12% prior)",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "HPE guided F2027 operating margins to 14-15% from 12-16% prior.",
+   "anchor": "operating margins of 14-15% (v. 12-16% prior)",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "HPE guided F2027 non-GAAP EPS growth to 16-20% from 12-16% prior.",
+   "anchor": "(3) Non-GAAP EPS to grow 16-20% (v. 12-16% prior)",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "HPE guided F2027 free cash flow to at least $5 bn, up from at least $4.5 bn prior.",
+   "anchor": "at least $5 bn in FCF (v. at least $4.5 bn prior)",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "HPE's FY27 framework includes initial contributions from the newly announced Oracle networking deployment and a recently awarded $3.5B inferencing server deal.",
+   "anchor": "contributions from the newly announced Oracle networking deployment and the recently awarded $3.5B",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "HPE's FY27 framework explicitly excludes any benefit from future AMD Helios rack-scale AI deployments.",
+   "anchor": "while explicitly excluding any benefit from future AMD Helios rack-scale AI",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman expects Credo stock to trade modestly lower after a solid quarter with raised FY27 revenue guidance, because investor expectations were elevated by hyperscaler capex commentary.",
+   "anchor": "CRDO Results - We expect the stock to trade modestly lower following a solid quarter",
+   "topic": "Credo earnings",
+   "status": "forecast",
+   "instruments": [
+    "CRDO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Some investors had expected Credo to raise its guidance for over $600mn of optical revenue in FY27, about 25% of overall revenue.",
+   "anchor": "guidance for over $600mn in optical revenue for FY27 (~25% of overall revenue)",
+   "topic": "Credo earnings",
+   "status": "forecast",
+   "instruments": [
+    "CRDO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Credo's OpEx estimates are moving higher as it pivots its investment profile to optical products to sustain revenue growth.",
+   "anchor": "OpEx estimates are moving higher as Credo pivots its investment profile to optical products",
+   "topic": "Credo earnings",
+   "status": "forecast",
+   "instruments": [
+    "CRDO"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman remains Buy-rated on CRDO and sees favorable risk/reward at current levels.",
+   "anchor": "we continue to see favorable risk/reward for the stock at current levels",
+   "topic": "Credo earnings",
+   "status": "level",
+   "instruments": [
+    "CRDO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "US equities closed higher on Wednesday with small caps outperforming as rates saw modest relief and momentum stabilized.",
+   "anchor": "US equities were higher on Wednesday with small caps outperforming as rates saw modest relief",
+   "topic": "US equity market",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2 Sep 2026 session"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "The S&P 500 closed +46bps at 7666, the Nasdaq 100 +23bps at 29,143 and the Russell 2000 +113bps at 2953.",
+   "anchor": "SPX +46bps to 7666, NDX +23bps to 29,143, RTY",
+   "topic": "US equity market",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2 Sep 2026 session"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Breadth was strong with 10 of 11 S&P sectors higher and Real Estate the only sector lower.",
+   "anchor": "Breadth was strong with 10 of 11 sectors ending in the green",
+   "topic": "US equity market",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2 Sep 2026 session"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Materials +153bps and Communication Services +116bps were the outperforming sectors.",
+   "anchor": "as Materials +153bps and Communication Services +116bps outperformed",
+   "topic": "US equity market",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2 Sep 2026 session"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Snowflake shares jumped +22% after the bell following its quarterly results.",
+   "anchor": "while SNOW shares are jumping +22% after a blowout quarter",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "after the bell 2 Sep 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Initial jobless claims for the week ended August 29 are forecast at 205k by Goldman and 205k by consensus, against 203k last.",
+   "anchor": "Initial jobless claims, week ended August 29 (GS 205k, consensus 205k, last",
+   "topic": "jobless claims",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week ended August 29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Earnings due 3 September 2026 are CIEN pre-market and ZS, IOT and GWRE post-close.",
+   "anchor": "Earnings: Pre: CIEN; Post: ZS, IOT, GWRE",
+   "topic": "earnings calendar",
+   "status": "forecast",
+   "instruments": [
+    "CIEN",
+    "ZS",
+    "IOT",
+    "GWRE"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3 Sep 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 3 Sep 2026",
+   "claim": "Goldman says the strong business cycle and valuation de-rating lower the probability of a large equity drawdown, while elevated risk appetite and late-cycle conditions limit another sharp rally.",
+   "anchor": "have lowered the probability of a large equity drawdown, but elevated risk appetite and",
+   "topic": "asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15251__gs-us-daily-download-3-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 38,
+  "matched": 38,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
