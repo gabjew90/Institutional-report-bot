@@ -41,8 +41,15 @@
    "total": 11,
    "failed": 7,
    "in_pulse_window": false
+  },
+  {
+   "run_id": "33877013142",
+   "finished_utc": "14:03",
+   "total": 9,
+   "failed": 8,
+   "in_pulse_window": true
   }
  ],
- "reader_failure_rate": 0.575,
- "collided_with_pulse_window": false
+ "reader_failure_rate": 0.607,
+ "collided_with_pulse_window": true
 }

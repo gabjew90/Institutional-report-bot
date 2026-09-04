@@ -1,0 +1,456 @@
+{
+ "brief": "Goldman's vol-trading desk (Robbie Stankard) reports clients positioning for what it expects to be an extremely busy fall. After a sharp vol reset the desk sees a bid for Tech upside across single stocks and index, and at the same time a noticeable uptick in hedging ahead of a seasonally harder period for equities and renewed geopolitical tension. The recommendation follows from both observations: pair optimistic tech views with portfolio hedges while near-term vol is at these levels. Bottom-up, implied vols have reset on improved AI sentiment and recent leverage reduction and positioning unwinds, so upside expressions and stock replacement screen favorably across TMT. NDX 'avg stock' implied vol has fallen about 20 vol points since mid-July to near YTD lows. Five trades follow: AMAT Oct 520 calls at $8.75, IGV upside used to fund SMH upside, IWM 30Sep 300 calls at $2.48 ahead of an NFP Goldman puts below the +40k street consensus, QQQ Sep 725 calls at $4.01, and VIX 21Oct26 20/30 call spreads at $1.00 as the book hedge. Dealer gamma is estimated still very long, a source of index support. Bonus trade: Brazil (EWZ) Dec26 35/38 call spread buying into elections.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman's vol-trading desk says clients started positioning for what the desk anticipates will be an extremely busy fall.",
+   "anchor": "started positioning for what we anticipate will be an extremely busy fall.",
+   "topic": "fall positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "fall"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Following the sharp vol reset, Goldman's vol desk has seen a bid for upside exposure in Tech across single stock and index space.",
+   "anchor": "Stankard says they have seen a bid for upside exposure in Tech",
+   "topic": "tech upside demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Ahead of a seasonally more challenging period for equities and renewed geopolitical tensions, Goldman's desk has seen a noticeable uptick in hedging.",
+   "anchor": "there's also been a noticeable uptick in hedging.",
+   "topic": "portfolio hedging",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman's vol desk recommends pairing optimistic tech views with portfolio hedges, given near-term vol at current levels.",
+   "anchor": "it is sensible to pair optimistic tech views with portfolio hedges here",
+   "topic": "portfolio hedging",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Catalysts remaining before Labor Day include earnings from Broadcom, Snowflake, HPE and Zscaler plus Friday's NFP release.",
+   "anchor": "A few more catalysts remain before Labor Day including earnings from AVGO, SNOW, HPE, ZS",
+   "topic": "week catalysts",
+   "status": "forecast",
+   "instruments": [
+    "AVGO",
+    "SNOW",
+    "HPE",
+    "ZS"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "before Labor Day"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "The options-implied move through the end of the week is 0.80%.",
+   "anchor": "The implied move through the end of the week is 0.80%.",
+   "topic": "week catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through the end of the week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman sees favorable entry points for upside expressions and stock replacement across TMT stocks because implied vols have meaningfully reset.",
+   "anchor": "especially across TMT stocks, given implied vols have meaningfully reset",
+   "topic": "TMT upside entries",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "The NDX average stock implied vol has fallen roughly 20 vol points since mid-July to near year-to-date lows.",
+   "anchor": "The NDX 'avg stock' implied vol has fallen ~20v since mid-July to near YTD lows.",
+   "topic": "NDX implied vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since mid-July"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "On vol and fundamentals Goldman flags Applied Materials, Microsoft, Cadence and ServiceNow as attractive upside opportunities into its Communacopia and Technology Conference.",
+   "anchor": "From both a vol and fundamental perspective, AMAT, MSFT, CDNS, and NOW stand out as",
+   "topic": "TMT upside entries",
+   "status": "target",
+   "instruments": [
+    "AMAT",
+    "MSFT",
+    "CDNS",
+    "NOW"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman remains constructive on Applied Materials on accelerating revenue growth into 2027 and margin expansion.",
+   "anchor": "We remain constructive due to accelerating revenue growth into 2027, margin expansion, and",
+   "topic": "AMAT calls",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Applied Materials shares are down 40% since June 30th, which Goldman calls an attractive valuation after the dislocation.",
+   "anchor": "attractive valuation after recent dislocation (shares down -40% since June 30th).",
+   "topic": "AMAT calls",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "since June 30th"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman's desk likes buying Applied Materials Oct 520 calls at $8.75 with the stock referenced at 438.09, capturing Communacopia and the October investor day.",
+   "anchor": "AMAT Oct 520 Calls cost $8.75 (ref 438.09) and capture Communacopia and AMAT's October",
+   "topic": "AMAT calls",
+   "status": "level",
+   "instruments": [
+    "AMAT"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "October expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Stankard likes using IGV upside to fund SMH upside.",
+   "anchor": "He also likes using IGV upside to fund SMH upside here.",
+   "topic": "SMH vs IGV vol",
+   "status": "target",
+   "instruments": [
+    "IGV",
+    "SMH"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "SMH one-month upside vol relative to IGV trades at one of the lowest levels in more than 5 years.",
+   "anchor": "SMH 1m upside vol relative to IGV trades at one of the lowest levels in 5+ years.",
+   "topic": "SMH vs IGV vol",
+   "status": "level",
+   "instruments": [
+    "SMH",
+    "IGV"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1 month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "With IWM sitting on its 100-day moving average, Goldman's desk sees owning upside as good risk-reward ahead of NFP.",
+   "anchor": "Sitting on its 100dma owning upside feels like good risk-reward here ahead of NFP given GS is",
+   "topic": "IWM calls",
+   "status": "target",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "ahead of NFP"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman is below street consensus (+40k) on payrolls, with street whispers for an even lower number that could prompt a bid to rate-sensitive parts of the market.",
+   "anchor": "below street consensus (+40k) with street whispers for an even lower number that could prompt",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman's desk quotes IWM 30Sep 300 calls at $2.48 with the ETF referenced at 293.37 and 30 days to expiry.",
+   "anchor": "IWM 30Sep 300 calls cost $2.48 (ref 293.37, 30d)",
+   "topic": "IWM calls",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "30 Sep expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Consumer stocks including Dick's, Burlington, On Holding and Tapestry have seen exceptionally powerful selloffs.",
+   "anchor": "Outside of tech, consumer stocks have seen some exceptionally powerful selloffs (DKS, BURL,",
+   "topic": "consumer stock selloff",
+   "status": "released",
+   "instruments": [
+    "DKS",
+    "BURL",
+    "ONON",
+    "TPR"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman has yet to see significant defense in consumer names on its cash desk.",
+   "anchor": "while we have yet to see significant defense on our cash desk, some",
+   "topic": "consumer stock selloff",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Some clients are using options on beaten-down consumer names to play for a bounce.",
+   "anchor": "clients are utilizing options to play for a bounce.",
+   "topic": "consumer stock selloff",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "A customer bought 8.6k Dick's Sporting Goods Sep 145 calls outright.",
+   "anchor": "Ex: DKS Sep 145 calls, cust bought 8.6k outright",
+   "topic": "consumer stock selloff",
+   "status": "released",
+   "instruments": [
+    "DKS"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Early in June the implied vol spread between NDX and SPX was blown out.",
+   "anchor": "Early in June, the implied vol spread between NDX and SPX was blown out.",
+   "topic": "NDX-SPX vol spread",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "early June"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "The NDX versus SPX implied vol spread has completely reverted over the summer and now registers beneath its 5-year average.",
+   "anchor": "now registering beneath the 5-year average (Chart).",
+   "topic": "NDX-SPX vol spread",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "over the summer"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman's desk likes buying QQQ calls for broad tech upside because vol looks cheap on a relative and absolute basis.",
+   "anchor": "For broad tech upside given vol looks cheap on a relative and absolute basis.",
+   "topic": "QQQ calls",
+   "status": "target",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman's desk quotes QQQ Sep 725 calls at $4.01 with the ETF referenced at 709.05, 27 days to expiry and a 2.8% move to breakeven.",
+   "anchor": "QQQ Sep 725 Calls cost $4.01 ref. 709.05 (27d / 2.8% move to breakeven)",
+   "topic": "QQQ calls",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "September expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman estimates dealer gamma positioning is still very long at this node and gets longer to the downside, providing index-level support.",
+   "anchor": "We estimate that dealer gamma positioning is still very long at this node and gets longer to the",
+   "topic": "dealer gamma",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Clients have taken advantage of low absolute vol levels to put on tactical portfolio hedges.",
+   "anchor": "we've seen clients take advantage of low absolute vol levels to put on tactical",
+   "topic": "portfolio hedging",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Goldman's desk favors VIX call spreads as a book hedge and says the idea has resonated across client types.",
+   "anchor": "We favor VIX as a book hedge here and have seen this idea resonate across client types.",
+   "topic": "VIX hedge",
+   "status": "target",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "The VIX 21Oct26 20/30 call spread is indicatively quoted at $1.00 for 10x leverage.",
+   "anchor": "VIX 21Oct26 20 / 30 Call Spread indicatively costs $1.00 (10x leverage)",
+   "topic": "VIX hedge",
+   "status": "level",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "21 Oct 2026 expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "Large Brazil Nov/Dec upside continues to get lifted as investors secure right tail exposure ahead of upcoming elections.",
+   "anchor": "Bonus Trade: Large Brazil Nov/Dec upside continues to get lifted as investors secure right tail",
+   "topic": "Brazil upside",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "November to December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "A customer bought 68,675 EWZ Dec26 35/38 call spreads outright.",
+   "anchor": "Ex: EWZ Dec26 35/38 call spreads, cust bought 68,675x outright",
+   "topic": "Brazil upside",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 2026 expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Hedge When You Can, Not When You Have To'; Goldman Vol Traders Lay Out 5 Trades Into 'Extremely Busy Fall'",
+   "claim": "The overall construction is to buy VIX call spreads against long IWM calls and QQQ calls, with AMAT calls and EWZ call spreads as punts.",
+   "anchor": "So buy VIX call spreads against long IWM calls, and QQQ calls; and punt on AMAT calls and",
+   "topic": "trade book construction",
+   "status": "target",
+   "instruments": [
+    "VIX",
+    "IWM",
+    "QQQ",
+    "AMAT",
+    "EWZ"
+   ],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15308__hedge-when-you-can-not-when-you-have-to-goldman-vol-traders-.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 32,
+  "matched": 32,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
