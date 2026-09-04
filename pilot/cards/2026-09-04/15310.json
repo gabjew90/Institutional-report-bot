@@ -1,0 +1,369 @@
+{
+ "brief": "Goldman one-delta desk head Rich Privorotsky argues yesterday broke the usual pattern, because the US escalated around Hormuz during the US cash session while crude was already rising, rather than overnight. Brent is at $95 and markets price a 66% chance of a September hike. The desk chain runs energy to rates: Middle East and Russian refinery capacity is damaged, diesel, gasoil, heating oil and European gas have all broken out, TTF is through 70 euros per MWh and above the 2022 print, so the US 10-year at 4.80% gets no relief until energy does. Amanda Ross reiterates the desk trade as inverse heating oil versus the 10-year and reports US strikes on about 100 targets including two Iranian tankers. George Cole's overlay is that the sell-off is fundamental rather than fragile because rates vol has not broken higher, while Goldman forecasts still carry 10-year yields 30 to 40bp lower if the driver goes away. A separate section reports Dell's AI server outlook of $74 billion for F2027 as capex inflation sitting next to diesel inflation.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Brent crude is trading at $95, a level last printed in May 2026.",
+   "anchor": "The tape is Brent at $95 - a May-2026 print",
+   "topic": "Brent crude",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Markets are pricing a 66% probability of a Federal Reserve rate hike in September.",
+   "anchor": "markets are pricing a 66% chance of a September hike",
+   "topic": "Fed September hike",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Rich Privorotsky says this escalation differed from prior ones because the US escalated during market hours with oil already rising.",
+   "anchor": "the US escalated while oil was already rising and during market hours",
+   "topic": "Hormuz escalation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Iranian air defense, radar and communications sites around Hormuz were struck during the US cash session.",
+   "anchor": "Iranian air defense, radar, comms all hit around Hormuz, all while crude was already going up",
+   "topic": "Hormuz escalation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Inverse heating oil and the US 10-year are trading as the same asset, and TTF gas is through 70 euros.",
+   "anchor": "Inverse heating oil is still the 10-year. TTF is through",
+   "topic": "10-year yield",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Goldman's desk says rates cannot rally until energy prices fall first.",
+   "anchor": "if we want relief on rates we first need relief on energy",
+   "topic": "10-year yield",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Refined product supply is constrained because Middle East and Russian refinery capacity has been damaged.",
+   "anchor": "energy complex's plumbing is clogged (MidEast and Russian refinery capacity damaged) for refined product",
+   "topic": "refined product supply",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Diesel, gasoil, heating oil and European gas have all broken out to the upside.",
+   "anchor": "Diesel, gasoil, heating oil, European gas have all broken out.",
+   "topic": "refined product supply",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Goldman's Johannes Duttenhoefer notes TTF gas climbed through 70 euros per MWh, higher than its 2022 level.",
+   "anchor": "TTF climbed through \u20ac70/MWh yesterday, \u201ceven higher than 2022.\u201d",
+   "topic": "European gas",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Russia's Novak has pushed EU gas to $74, up 25% in a month, either by choice or under Ukrainian pressure.",
+   "anchor": "Novak has squeezed (or been forced by Ukraine) to push EU gas to $74, +25% in a month",
+   "topic": "European gas",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "The US 10-year Treasury yield is at 4.80%.",
+   "anchor": "US 10-year 4.80%. Japan 10s through 3% for the first time since 1996.",
+   "topic": "10-year yield",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "The Japanese 10-year yield is through 3% for the first time since 1996.",
+   "anchor": "Japan 10s through 3% for the first time since 1996.",
+   "topic": "Japan 10-year yield",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Wright claimed 17 million barrels transited on Monday, a figure the document says is heavily debated.",
+   "anchor": "Wright claimed 17 million barrels transited Monday. Heavily debated.",
+   "topic": "Hormuz oil transit",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Goldman's Amanda Ross reports US forces struck about 100 targets Tuesday night, including two Iranian tankers.",
+   "anchor": "US forces struck about 100 targets Tuesday night, including two Iranian tankers",
+   "topic": "Hormuz escalation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Germany blamed Russia for sabotage of a Ukrainian cargo aircraft and a power plant.",
+   "anchor": "Germany blamed Russia for sabotage on a Ukrainian cargo aircraft and a power plant.",
+   "topic": "Russia sabotage",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Goldman's Amanda Ross reiterates the desk trade of inverse heating oil versus the US 10-year.",
+   "anchor": "The desk trade is still inverse heating oil versus the 10-year.",
+   "topic": "10-year yield",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Goldman's George Cole judges the bond sell-off to be fundamental rather than fragile.",
+   "anchor": "The sell-off is fundamental, not fragile.",
+   "topic": "10-year yield",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "George Cole says rates volatility has not broken higher, which is the tell that the move is fundamental.",
+   "anchor": "The tell for us is what isn't happening: rates vol hasn't broken higher.",
+   "topic": "rates volatility",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Goldman forecasts still have 10-year yields falling 30 to 40bp if the energy driver goes away.",
+   "anchor": "Forecasts still have 10 year yields down 30-40bp if the driver goes away.",
+   "topic": "10-year yield",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "The setup ahead is a live FOMC meeting against a refined product market already trading above its 2022 levels.",
+   "anchor": "The spring is a live FOMC against a product market that is already through 2022.",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Michael Dell says sustained EPS growth above 200% year over year will produce a good outcome.",
+   "anchor": "If you keep growing EPS 200%+ y/y something good will happen.",
+   "topic": "Dell AI demand",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Dell's AI server outlook is $74 billion for fiscal 2027, raised from $60 billion.",
+   "anchor": "AI server outlook $74 billion for F2027, up from $60 billion.",
+   "topic": "Dell AI demand",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Dell booked $60.9 billion of AI orders versus $24 billion previously.",
+   "anchor": "$60.9 billion of AI orders versus $24 billion. Backlog $95 billion.",
+   "topic": "Dell AI demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Dell's AI backlog stands at $95 billion.",
+   "anchor": "of AI orders versus $24 billion. Backlog $95 billion.",
+   "topic": "Dell AI demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Palo Alto Networks raised its fiscal 2030 next-generation security ARR goal to $20 billion.",
+   "anchor": "Palo Alto raised to $20 billion of FY30 NGS ARR.",
+   "topic": "Palo Alto ARR",
+   "status": "target",
+   "instruments": [
+    "PANW"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "FY30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "Nvidia can remain supply-constrained.",
+   "anchor": "of FY30 NGS ARR. Nvidia can stay supply-constrained.",
+   "topic": "Nvidia supply",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "AI capital expenditure inflation is running alongside diesel inflation.",
+   "anchor": "This is the CapEx inflation sitting next to the diesel inflation.",
+   "topic": "AI capex inflation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Yesterday Was Different: Goldman Traders Warn 'Refined Product' Is The Rates Trade",
+   "claim": "The spending economy cracked last week.",
+   "anchor": "The spending economy already cracked last week.",
+   "topic": "spending economy",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15310__yesterday-was-different-goldman-traders-warn-refined-product.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 28,
+  "matched": 28,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
