@@ -1,0 +1,416 @@
+{
+ "brief": "Trade was choppy overnight. The yen strengthened on more hawkish BOJ repricing and intervention speculation, pressuring exporters, with a modest bid elsewhere after energy and rates eased. ADP printed +38k versus +47k expected, reinforcing the cooler labor tone from JOLTS, and NFP Friday is the main event. Williams pushed back on a September hike, helping rates and gold. Waller speaks today, and softer labor data gives him room to lean dovish. Privorotsky reads the recent hawkish tone as Warsh retaining credibility rather than a committee shift. On AI he argues frontier competition, Meta's Muse Spark 1.3 and speculation on Astra, is compressing cost per token, with the Silicon Data token index down 29% in August. Consumption must then grow faster than prices fall, so absent radical capability jumps compute oversupply becomes plausible, which alongside credit repricing explains the sector de-rating. Broadcom beat in Q3, guided roughly $115bn FY27 and $230bn FY28 AI revenue, but Q4 revenue came slightly below the Street. Snowflake was cleaner. He expects escalate to de-escalate on Iran, places energy nearer the high end of its near-term range with oil above $90, and holds that markets are stable or higher as long as energy does not rise.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "ADP employment was soft at +38k versus +47k expected, reinforcing the cooler labor tone from JOLTS.",
+   "anchor": "ADP was soft at +38k versus +47k expected, reinforcing the cooler labor tone from JOLTS",
+   "topic": "US labor market",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "US non-farm payrolls on Friday is the main event of the week.",
+   "anchor": "NFP is the main event on Friday.",
+   "topic": "US labor market",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Williams was balanced and pushed back against the need for a September hike, helping rates and gold.",
+   "anchor": "Williams yesterday was balanced and pushed back against the need for a September hike, helping rates and gold",
+   "topic": "Fed policy path",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Waller's last comments were two-sided, with inflation risks still elevated but a path for inflation to roll over without another hike.",
+   "anchor": "His last comments were genuinely two-sided\u2026 inflation risks remain elevated, but he still saw a path for inflation to roll over without another hike",
+   "topic": "Fed policy path",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Softer labor data gives Waller room to lean dovish and his framing today could shift September rate pricing.",
+   "anchor": "Softer labor data since then gives him room to lean dovish but I think the way he frames the argument could shift pricing for September",
+   "topic": "Fed policy path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Privorotsky's view is that the hawkish tone was Warsh retaining credibility at Jackson Hole rather than a shift in the committee's view.",
+   "anchor": "Has the committee shifted it's view or was this just Warsh trying to retain credibility at Jackson Hole? My gut is the latter.",
+   "topic": "Fed policy path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "The yen is strengthening on more hawkish BOJ repricing and intervention speculation, pressuring Japanese exporters.",
+   "anchor": "Japan remains the standout, with the yen strengthening on more hawkish BOJ repricing and intervention speculation, pressuring exporters",
+   "topic": "yen and BOJ",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Markets hold a modest bid after the prior day's reprieve in energy and rates, though Korean memory has faded.",
+   "anchor": "Elsewhere there is still a modest bid after yesterday\u2019s reprieve in energy and rates (although Korean memory has faded)",
+   "topic": "overnight market tone",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "There is speculation that the Astra model drops imminently, with no confirmed launch date.",
+   "anchor": "Lots of speculation that Astra drops imminently, though no confirmed launch date",
+   "topic": "AI model competition",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Meta's Muse Spark 1.3 shows competition at the AI frontier is accelerating and is extremely competitive on benchmarks.",
+   "anchor": "Meta\u2019s new Muse Spark 1.3 is another reminder that competition at the frontier is accelerating (extremely competitive on benchmarks)",
+   "topic": "AI model competition",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "The Silicon Data token index was down -29% in the month of August.",
+   "anchor": "Silicon data Token index down -29% in month of August",
+   "topic": "AI token pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Privorotsky doubts per-token pricing is a durable end state model for AI.",
+   "anchor": "I struggle with per token pricing as a durable end state model",
+   "topic": "AI token pricing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "More demand at lower prices is not automatically bullish for equities if pricing falls faster than consumption grows.",
+   "anchor": "More demand + lower prices is not automatically bullish if pricing falls faster than consumption grows",
+   "topic": "AI token pricing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Unless AI capability keeps making radical jumps, periods of compute oversupply become plausible.",
+   "anchor": "Unless capability keeps making radical jumps (looking at you, Astra)\u2026 periods of compute oversupply become plausible",
+   "topic": "AI token pricing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Compression in AI economics, beyond the repricing of credit, helps explain why the AI space has been de-rating.",
+   "anchor": "Beyond the repricing of credit that helps explain why the space has been de-rating",
+   "topic": "AI equity multiples",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Broadcom beat on fiscal Q3 results.",
+   "anchor": "Broadcom Q3 beat and Hock gave a monster LT AI guide",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Broadcom's long-term AI guide is roughly $115bn in FY27 and $230bn in FY28.",
+   "anchor": "gave a monster LT AI guide\u2026 roughly $115bn in FY27 and $230bn in FY28",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27 and FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Broadcom's Q4 revenue was slightly below the Street against a high bar.",
+   "anchor": "The problem was Q4 revenue slightly below the Street against a huge bar",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Competition in custom silicon is becoming more visible.",
+   "anchor": "Competition in custom silicon is also becoming more visible",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Broadcom's print reads through strongly for AI infrastructure but less clearly for the stock.",
+   "anchor": "The read through for AI infrastructure is still strong, but less clear for the stock",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Snowflake reported accelerating product revenue and higher guidance with a strong share reaction.",
+   "anchor": "Snowflake was cleaner\u2026 accelerating product revenue, higher guidance and a strong reaction",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "The WSJ reports Trump is privately discussing with senior aides whether to declare the Iran war over.",
+   "anchor": "Trump is having discussions with senior aides about whether to declare the Iran war over, U.S. officials said",
+   "topic": "Iran conflict",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Trump said the US position is much better with almost total control of the Hormuz Strait and Iran's economy collapsing.",
+   "anchor": "I like our position now much better, with almost total control of the Hormuz Strait, and their economy totally collapsing",
+   "topic": "Iran conflict",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Oil is above $90 with tight product markets and reportedly stretched interceptor inventories.",
+   "anchor": "Oil >$90, product markets are tight, gasoline matters politically and interceptor inventories are reportedly stretched",
+   "topic": "oil and energy risk",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Privorotsky's bias is that the Iran situation is an escalate to de-escalate, with a possibly different approach after Labor Day.",
+   "anchor": "My bias remain that this is an escalate to de-escalate...that on the other side of Labor day there might be a different approach",
+   "topic": "Iran conflict",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "after Labor Day"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Privorotsky thinks energy is closer to the high end than the low end of the near term range.",
+   "anchor": "that makes me think we are closer to the high end than the low end of the near term energy range",
+   "topic": "oil and energy risk",
+   "status": "forecast",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "The thing to watch is whether AI equities can finally trade better on objectively good news.",
+   "anchor": "watch whether AI equities can finally trade better on objectively good news",
+   "topic": "AI equity multiples",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Privorotsky suspects peak multiples were set in the Q2 rally and the market now needs proof that AI spend durability can outrun compression in the economics.",
+   "anchor": "My suspicion is peak multiples were set in the Q2 rally and the market now needs proof",
+   "topic": "AI equity multiples",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Broadcom helps the AI demand case and Snowflake helps on downstream adoption, but whether that restarts the multiple cycle is open.",
+   "anchor": "Broadcom helps on demand. Snowflake helps on downstream adoption. The question is whether that is enough to restart the multiple cycle",
+   "topic": "AI equity multiples",
+   "status": "forecast",
+   "instruments": [
+    "AVGO",
+    "SNOW"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Privorotsky's core view is that markets are stable or higher as long as energy is not going up.",
+   "anchor": "Core of view, as long as energy not going up markets are stable/higher",
+   "topic": "equity market direction",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Privorotsky - Basics Model Competition. Declare Victory. Sugar High 3 Sep 2026",
+   "claim": "Agricultural commodities have rallied on weather, El Nino and global disruptions.",
+   "anchor": "Ag has had a big rally on weather/EL-Nino and global disruptions",
+   "topic": "agricultural commodities",
+   "status": "released",
+   "instruments": [
+    "DBA"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15263__gs-privorotsky-basics-model-competition-declare-victory-suga.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 31,
+  "matched": 31,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
