@@ -1,0 +1,145 @@
+{
+ "brief": "Nomura's McElligott says the equity vol collapse has gone \"epic.\" IWM 3-month ATM implied vol has fallen to the 0.2 percentile, which he reads as dealers absorbing large losses as holders of optionality and skew get bled out. He expects possible headlines on major trading losses crystalizing within days. Equity index vol (z-score) has dropped sharply over two weeks despite spot equities also falling, and August saw twice the realized vol on up days versus down days, both abnormal. He attributes the skew destruction to five simultaneous forces: exotics and structured-note flows forcing dealers long vol and skew into a low-realized, bleed-lower market. The prior buyer of Tech/AI vol has exited while Citadel unwinds its legacy options book, flipping that vol demand to supply. Post-July momentum-unwind retail options and leveraged-ETF activity is drying up, removing the negative-gamma \"accelerant\" behind past overshoots. Dispersion profitability has cratered to the 5th percentile as single-name vol collapses, forcing QIS derisking. End-users are so netted-down and de-grossed that hedge demand is low, per Goldman's Garrett, pushing SPX put skew to the 2nd percentile. A gated companion note on rates and swaption vol ties back to the \"Buyback Bluff\" and the yield blowout to multi-year highs.",
+ "cards": [
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "IWM 3-month ATM implied volatility has collapsed to the 0.2 percentile.",
+   "anchor": "the IWM 3m ATM iVol which has collapsed to the 0.2% percentile",
+   "topic": "IWM implied vol",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "Equity index volatility, measured in z-score, has moved sharply lower over the past two weeks despite spot equities also falling.",
+   "anchor": "Equities Index Vol change (measured in Z-score!!) over the past 2 weeks, sharply lower despite Spot Equities also lower",
+   "topic": "equity index vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past 2 weeks"
+  },
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "In August, realized volatility on rally days ran twice realized volatility on down days.",
+   "anchor": "twice the Realized Vol on Rallies than on down days",
+   "topic": "realized vol asymmetry",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "SPX skew and put skew have fallen back to the 2nd percentile.",
+   "anchor": "SPX Skew and Put Skew back to 2%ile",
+   "topic": "SPX put skew",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "Dispersion trade profitability over the past month has cratered to the 5th percentile.",
+   "anchor": "Dispersion profitability over the past month has cratered down to just the 5%-ile",
+   "topic": "dispersion profitability",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past month"
+  },
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "McElligott expects the possibility of headlines on major trading losses crystalizing in the next few days.",
+   "anchor": "the possibility of some meaningful headlines in the next few days of major trading losses being crystalized",
+   "topic": "vol trading losses",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next few days"
+  },
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "The prior buyer of the Tech/AI vol portfolio, Citadel, has flipped and unwound its legacy options positions, turning Tech/AI equity vol demand into supply.",
+   "anchor": "the buyer of the portfolio (Ctiadel) has then quickly flipped & unwound those legacy Options positions",
+   "topic": "Tech AI vol demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "Retail speculative activity in options and leveraged ETFs is drying up violently after the July Momentum unwind and rolling margin calls.",
+   "anchor": "Retail speculative behavior in Options and Leveraged ETFs is drying-up violently post the July \u201cMomentum\u201d unwind and rolling margin calls",
+   "topic": "retail options activity",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "Exotics and structured-notes flows are causing buyers of volatility to be overwhelmed by limitless vega supply.",
+   "anchor": "are causing buyers of Volatility to choke & die on limitless Vega supply",
+   "topic": "exotics vega supply",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nomura",
+   "document": "McElligott: Someone Is Blowing Up In Vol",
+   "claim": "Yields blew out to multi-year highs after the Buyback Bluff.",
+   "anchor": "yields promptly blew out to multi-year highs",
+   "topic": "yields blowout",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15307__mcelligott-someone-is-blowing-up-in-vol.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
