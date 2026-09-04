@@ -1,0 +1,419 @@
+{
+ "brief": "Goldman Sachs US equity sales daily note. Goldman forecasts August nonfarm payrolls at +40k against consensus of +55k, because big data indicators of job growth slowed sequentially and August initial prints have carried a consistent negative bias over the last decade, partly offset by low layoffs and scope for rebounds in leisure and hospitality and local education payrolls. It forecasts the unemployment rate unchanged at 4.1%, in line with consensus, on stabilizing continuing claims, and average hourly earnings up 0.4% month-over-month, above consensus, on calendar effects. Three single-stock updates follow. Lululemon posted a materially weaker 2Q and cut FY guidance, with China comps at -8% versus +13% in F1Q and leggings down 20% year over year, and management guides 3Q trend down again. Tyson cut FY26 EBIT guidance 11% at the midpoint on beef margin compression from cattle shortages, and Goldman came away more cautious on FY27 on chicken. Snowflake rose 21% on a 2Q beat and FY27 guidance implying growth accelerating to 36%, and Goldman maintains Buy. Thursday's tape: SPX +106bps to 7747, rates stabilizing after Waller backed a September hold, AI software outperforming AI semis after AVGO -2.7%.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "September has averaged -1.34% over the last 10 years, the worst month for stocks over that period.",
+   "anchor": "September seasonality tends to be poor (-1.34% avg performance over the last 10 years",
+   "topic": "September seasonality",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Goldman estimates August nonfarm payrolls rose 40k, below consensus of +55k.",
+   "anchor": "We estimate nonfarm payrolls rose by 40k in August, somewhat below consensus of +55k.",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Big data indicators of job growth slowed sequentially and August initial payroll prints have shown a consistent negative bias over the last decade.",
+   "anchor": "big data indicators of job growth slowed sequentially. Additionally, August payrolls",
+   "topic": "August payrolls",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Layoffs remain low and there is scope for rebounds in leisure and hospitality and local educational payrolls after large recent declines.",
+   "anchor": "layoffs remain low and there is potential scope for rebounds in employment in leisure and hospitality and local",
+   "topic": "August payrolls",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Goldman estimates the August unemployment rate was unchanged on a rounded basis at 4.1%, in line with consensus.",
+   "anchor": "unemployment rate was unchanged on a rounded basis at 4.1% (in line with consensus)",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Goldman forecasts August average hourly earnings up 0.4% month-over-month, above consensus, on positive calendar effects.",
+   "anchor": "We forecast a 0.4% month-over-month increase in average hourly earnings, above consensus, reflecting positive calendar effects.",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "August nonfarm payroll employment is due at 13:30 UKT with the prior print at -23k.",
+   "anchor": "Nonfarm payroll employment, August (GS +40k, consensus +55k, last -23k)",
+   "topic": "August payrolls",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Lululemon delivered a materially weaker 2Q result and significantly lowered full-year guidance.",
+   "anchor": "LULU delivered a materially weaker 2Q result and significantly lowered FY guidance.",
+   "topic": "Lululemon earnings",
+   "status": "released",
+   "instruments": [
+    "LULU"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Lululemon management said August started slowly, with traffic deteriorating and key initiatives delivering less benefit than planned.",
+   "anchor": "indicated August has gotten off to a slow start, with traffic deteriorating and key initiatives providing less benefit",
+   "topic": "Lululemon earnings",
+   "status": "released",
+   "instruments": [
+    "LULU"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Lululemon China 2Q comparable sales were -8% versus +13% in F1Q, slowing faster than expected.",
+   "anchor": "China trends slowed significantly faster than expected with 2Q comps reported at -8% vs. +13% in F1Q",
+   "topic": "Lululemon earnings",
+   "status": "released",
+   "instruments": [
+    "LULU"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Lululemon North America 2Q results beat modestly but the outperformance came primarily from higher markdowns.",
+   "anchor": "the outperformance was primarily due to higher markdowns",
+   "topic": "Lululemon earnings",
+   "status": "released",
+   "instruments": [
+    "LULU"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Lululemon management guides to another sequential step-down in trend in 3Q.",
+   "anchor": "management is guiding for another sequential step-down in trend in 3Q",
+   "topic": "Lululemon earnings",
+   "status": "forecast",
+   "instruments": [
+    "LULU"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Lululemon's leggings business declined 20% year over year in 2Q, more than offsetting growth in away-from-body silhouettes.",
+   "anchor": "core businesses such as leggings declined -20% Y/Y in 2Q, more than offsetting growth in away-from-body silhouettes",
+   "topic": "Lululemon earnings",
+   "status": "released",
+   "instruments": [
+    "LULU"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Tyson Foods lowered its FY26 EBIT outlook by 11% at the midpoint to $1.85-$2.05bn from $2.1-$2.3bn prior.",
+   "anchor": "lowered its FY26 EBIT outlook by -11% at the midpoint to $1.85-$2.05bn (vs $2.1-$2.3bn prior)",
+   "topic": "Tyson guidance",
+   "status": "forecast",
+   "instruments": [
+    "TSN"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Tyson's guidance cut was driven largely by beef, with margin compression from volatile cattle prices amid cattle shortages, plus softer chicken and pork.",
+   "anchor": "driven by a reduction in its beef segment with margin compression from volatile cattle prices amid cattle shortages",
+   "topic": "Tyson guidance",
+   "status": "released",
+   "instruments": [
+    "TSN"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Goldman expects Tyson restructuring and the inventory update on lower cattle prices to support sequential beef improvement next year.",
+   "anchor": "recent restructuring efforts and the update to its inventory given lower cattle prices should support a sequential improvement",
+   "topic": "Tyson guidance",
+   "status": "forecast",
+   "instruments": [
+    "TSN"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Goldman is more cautious on Tyson's FY27 outlook given incremental headwinds in chicken.",
+   "anchor": "we came away from today's update more cautious on the outlook for FY27 given incremental headwinds in chicken",
+   "topic": "Tyson guidance",
+   "status": "forecast",
+   "instruments": [
+    "TSN"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Snowflake shares are up 21% after reporting 2QFY results.",
+   "anchor": "Snowflake is up 21% after reporting 2QFY results.",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Snowflake 2Q product revenue came in 5% above the Street and EBIT margins 270bps above.",
+   "anchor": "2Q product revenue was 5% above the Street and EBIT margins 270bps above",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Snowflake's updated FY27 product revenue guidance is 4% above the Street and EBIT margins 100bps above.",
+   "anchor": "updated FY27 product revenue guidance is 4% above the Street and EBIT margins 100bps above (FactSet)",
+   "topic": "Snowflake earnings",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Snowflake guidance implies growth accelerating to 36% in FY27 from 31% previously and 29% in FY26.",
+   "anchor": "Guidance now implies growth will accelerate to 36% in FY27 (from 31% previously, and 29% in FY26)",
+   "topic": "Snowflake earnings",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Snowflake's implied 4Q exit growth rate is 35% versus the Street at 29%.",
+   "anchor": "with 4Q exit rate at 35% (vs. Street at 29%)",
+   "topic": "Snowflake earnings",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Snowflake entered the print with a high bar, up 37% post the 1Q print and 30% since 1Q, trading at 17x NTM EV/Sales.",
+   "anchor": "+37% post 1Q print and +30% since 1Q; and trading at 17x NTM EV/Sales)",
+   "topic": "Snowflake earnings",
+   "status": "level",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Goldman expects Snowflake estimates to move higher not just today but over the next 18 months.",
+   "anchor": "the stock reaction reflects the likelihood of numbers moving higher not just today, but over the next 18 months",
+   "topic": "Snowflake earnings",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Goldman maintains a Buy rating on Snowflake as a beneficiary of AI-driven cloud migration and new AI use cases.",
+   "anchor": "We maintain our Buy rating as we view Snowflake as a key beneficiary of both AI-driven cloud migration",
+   "topic": "Snowflake earnings",
+   "status": "target",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "US equities closed higher Thursday with SPX +106bps to 7747, NDX +116bps to 29,482 and RTY +51bps to 2968.",
+   "anchor": "SPX +106bps to 7747, NDX +116bps to 29,482, RTY +51bps to 2968.",
+   "topic": "US equity tape",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Thursday's equity gains were largely linked to rate stabilization after Fed Governor Waller supported a September hold if data prove benign.",
+   "anchor": "stabilization in rates following commentary from Fed Governor Waller supportive of a hold in Sept should data prove benign",
+   "topic": "Fed September decision",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "Eight of eleven S&P sectors gained Thursday, with Energy -72bps, Materials -46bps and Consumer Staples -3bps the laggards.",
+   "anchor": "8 of 11 sectors posted gains, with strength across the board, modestly offset by weakness in Energy -72bps",
+   "topic": "US equity tape",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "The Software vs Semis basket GSPUSOSE gained 257bps and the AI Software basket GSTMTAIS gained 536bps, a 2 sigma move.",
+   "anchor": "Software vs Semis (GSPUSOSE, +257bps) outperformed, with AI Software (GSTMTAIS, +536bps) posting strong gains",
+   "topic": "AI software vs semis",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 4 Sep 2026",
+   "claim": "The AI Semis basket GSCBSMHX gained only 25bps and underperformed after Broadcom fell 2.7% on earnings.",
+   "anchor": "AI Semis (GSCBSMHX, +25bps) underperformed following AVGO -2.7% earnings.",
+   "topic": "AI software vs semis",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15331__gs-us-daily-download-4-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
