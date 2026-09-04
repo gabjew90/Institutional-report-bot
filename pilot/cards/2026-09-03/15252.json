@@ -1,0 +1,827 @@
+{
+ "brief": "Goldman's TMT desk frames 3 September as an earnings day rather than a macro one. Futures are near unchanged, the only macro item is a WSJ report that the US is extending troop deployments in Iran, and WTI is up 1.5% at $92.30, so four bellwether prints set the tape and drive high dispersion. AVGO reported in line on revenue with better margins but guided FY4Q revenue below Goldman, so the stock is down 3% even though it guided AI semiconductor revenue to double in FY27 to $115bn and double again to $230bn, named Anthropic its largest FY27 customer, and said component supply is secured through FY28. Goldman stays Buy at 12x management's FY28 EPS guidance. SNOW is up roughly 25% because product revenue accelerated to 37% against a 30% guide and F3Q is guided to accelerate again, pulling MDB and DDOG higher. HPE beat and raised FY27 revenue growth to 13-17% yet fell 4%, and NTAP beat and raised FY2027 EPS to $9.73-$10.03 yet fell 8%, both against expectations the desk calls elevated, with NTAP's own guide implying second-half growth slows to high single digits.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Goldman's TMT desk says earnings are driving high dispersion across the TMT group on 3 September 2026.",
+   "anchor": "it\u2019s all about earnings today, with some big movers in\nbellwethers looking to drive high dispersion across the group",
+   "topic": "TMT earnings dispersion",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "A WSJ report says the US is extending troop deployments in Iran.",
+   "anchor": "a WSJ report that the US is\nextending troop deployments in Iran",
+   "topic": "Iran troop deployments",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom traded down 3% after its print, with a fair amount of after-hours volatility.",
+   "anchor": "AVGO is trading \u22123% (although a fair\namount of after-hours volatility)",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Semiconductors are trading flat-to-lower pre-market in sympathy with Broadcom's print.",
+   "anchor": "forecast through 2028 (semis flat-to-lower pre in sympathy) and increased color around customer",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom quarterly revenue was $29.6bn, in line with Goldman and the Street.",
+   "anchor": "Revenue $29.6bn, in line with GS and Street.",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom gross margin was 75.0%, above the 74.1% Goldman and Street estimate.",
+   "anchor": "Gross margin 75.0%\nabove GS/Street 74.1%.",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom operating margin was 67.9%, above Goldman at 67.0% and the Street at 66.9%.",
+   "anchor": "Operating margin 67.9% above GS 67.0% / Street 66.9%.",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom operating EPS was $3.32, in line with Goldman's $3.33 and above the Street's $3.24.",
+   "anchor": "Operating EPS $3.32 in\nline with GS $3.33, above Street $3.24.",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom guided FY4Q revenue to $34.8bn, below Goldman's $36.2bn and in line with the Street's $35.2bn.",
+   "anchor": "FY4Q revenue guided $34.8bn, below GS $36.2bn but in line with\nStreet $35.2bn.",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY4Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom guides AI semiconductor revenue to double in FY27 to $115bn across 10GW of datacenter deployments.",
+   "anchor": "AI semiconductor revenue to double in FY27 to $115bn across 10GW of\ndatacenter deployments",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom guides AI semiconductor revenue to double again to $230bn across 20GW after FY27.",
+   "anchor": "and double again to $230bn across 20 GW.",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Anthropic is expected to be Broadcom's largest customer in FY27.",
+   "anchor": "Anthropic expected to be the largest\ncustomer in FY27",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "OpenAI and Meta are expected to be material Broadcom customers in FY28 even as Google continues to grow.",
+   "anchor": "OpenAI and Meta material in FY28 \u2014 even as Google continues to grow.",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO",
+    "META",
+    "GOOGL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom has secured supplies of all key components through FY28.",
+   "anchor": "Supplies of\nall key components secured through FY28.",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Broadcom trades at 12x management's FY28 EPS guidance.",
+   "anchor": "Stock at 12x management\u2019s FY28 EPS guidance.",
+   "topic": "Broadcom earnings",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Goldman remains Buy-rated on Broadcom.",
+   "anchor": "Stock at 12x management\u2019s FY28 EPS guidance. Remain Buy.",
+   "topic": "Broadcom earnings",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Snowflake traded up 25% on accelerating growth and a large FY27 guidance raise.",
+   "anchor": "SNOW is trading +25% on accelerating growth and a big FY27 guidance raise",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Snowflake F2Q product revenue grew 37% year on year against guidance of 30% and 34% the prior quarter.",
+   "anchor": "F2Q product revs +37% vs guide +30% y/y (vs +34% last qtr).",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Snowflake guided F3Q product revenue growth to 37-38% year on year.",
+   "anchor": "F3Q product revs guided to\n+37\u201338% y/y.",
+   "topic": "Snowflake earnings",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Snowflake management says AI continues to compound its advantages and that the Agentic Enterprise runs on Snowflake.",
+   "anchor": "\u201cAI continues to compound our advantages\u2026 The Agentic Enterprise runs on Snowflake.\u201d",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "MongoDB and Datadog are trading higher in sympathy with Snowflake, with broader software likely dragged higher.",
+   "anchor": "(MDB / DDOG up in sympathy, with broader software likely to be dragged higher today)",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "MDB",
+    "DDOG"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE traded down 4% after its print despite a solid beat and a modest FY27 guidance uptick.",
+   "anchor": "HPE: solid beat and modest FY27 guidance uptick. Stock \u22124% post print.",
+   "topic": "HPE earnings",
+   "status": "released",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE F3Q26 EPS was $1.11, beating Goldman and FactSet.",
+   "anchor": "F3Q26 EPS $1.11 beat\nGS/FactSet. Record order growth +42% yoy.",
+   "topic": "HPE earnings",
+   "status": "released",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE order growth was a record 42% year on year.",
+   "anchor": "GS/FactSet. Record order growth +42% yoy. Server revenue +35% yoy",
+   "topic": "HPE earnings",
+   "status": "released",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE server revenue grew 35% year on year with traditional server orders up 75%.",
+   "anchor": "Server revenue +35% yoy (trad server orders +75%",
+   "topic": "HPE earnings",
+   "status": "released",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE AI systems orders were $2.4bn in the quarter.",
+   "anchor": "Server revenue +35% yoy (trad server orders +75%, AI\nsystems orders $2.4bn).",
+   "topic": "HPE earnings",
+   "status": "released",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE won a multi-billion inference server program with a hyperscaler after the third quarter closed.",
+   "anchor": "Won a multi-billion inference server program with a hyperscaler post Q3.",
+   "topic": "HPE earnings",
+   "status": "released",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE networking orders grew 36% year on year.",
+   "anchor": "Networking orders +36% yoy. Cumulative Networks for AI orders outlook $2.5\u2013$3.0bn by end F2026.",
+   "topic": "HPE earnings",
+   "status": "released",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE guides cumulative Networks for AI orders of $2.5bn to $3.0bn by the end of F2026.",
+   "anchor": "Cumulative Networks for AI orders outlook $2.5\u2013$3.0bn by end F2026.",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by end F2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE raised FY27 revenue growth guidance to 13-17% from 8-12%.",
+   "anchor": "FY27: revenue growth 13\u201317% (was 8\u201312%)",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE guides FY27 operating margins of 14-15%.",
+   "anchor": "operating margins 14\u201315%; non-GAAP EPS +16\u201320%",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE guides FY27 non-GAAP EPS growth of 16-20%.",
+   "anchor": "non-GAAP EPS +16\u201320%; at\nleast $5bn FCF",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE raised FY27 free cash flow guidance to at least $5bn from $4.5bn.",
+   "anchor": "at\nleast $5bn FCF (was $4.5bn).",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "HPE's FY27 framework includes Oracle networking and a $3.5bn inferencing-server deal and excludes AMD Helios rack-scale.",
+   "anchor": "Framework includes Oracle networking plus a $3.5bn inferencing-server\ndeal; excludes AMD Helios rack-scale.",
+   "topic": "HPE earnings",
+   "status": "forecast",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Goldman remains Buy-rated on HPE.",
+   "anchor": "excludes AMD Helios rack-scale. Remain Buy.",
+   "topic": "HPE earnings",
+   "status": "target",
+   "instruments": [
+    "HPE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp traded down 8% after a beat and modest FY27 guidance raise against elevated expectations.",
+   "anchor": "NTAP: beat and modest FY27 guidance raise relative to elevated expectations. Stock \u22128% post print.",
+   "topic": "NetApp earnings",
+   "status": "released",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp gross margins were 70.6%, at the high end of the 69.1-70.7% guidance range.",
+   "anchor": "Gross margins 70.6% at high end of 69.1\u201370.7% guide",
+   "topic": "NetApp earnings",
+   "status": "released",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp EBIT margins were 31.9%, ahead of expectations.",
+   "anchor": "69.1\u201370.7% guide; EBIT margins 31.9% ahead. Hybrid Cloud +30%",
+   "topic": "NetApp earnings",
+   "status": "released",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp Hybrid Cloud revenue grew 30% year on year.",
+   "anchor": "Hybrid Cloud +30%\nyoy; all-flash +47% yoy",
+   "topic": "NetApp earnings",
+   "status": "released",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp all-flash revenue grew 47% year on year.",
+   "anchor": "all-flash +47% yoy; Public Cloud +28% yoy.",
+   "topic": "NetApp earnings",
+   "status": "released",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp Public Cloud revenue grew 28% year on year.",
+   "anchor": "Public Cloud +28% yoy. Closed ~350 AI deals in F1Q27",
+   "topic": "NetApp earnings",
+   "status": "released",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp closed about 350 AI deals in F1Q27, down from 500 the prior quarter.",
+   "anchor": "Closed ~350 AI deals in F1Q27 (vs 500 last quarter).",
+   "topic": "NetApp earnings",
+   "status": "released",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp raised FY2027 total revenue guidance to $7,975-$8,225mn from $7,325-$7,575mn.",
+   "anchor": "FY2027: total revenue $7,975\u2013$8,225mn (was $7,325\u2013$7,575)",
+   "topic": "NetApp earnings",
+   "status": "forecast",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp guides FY2027 non-GAAP gross margin of 68.1-69.1%.",
+   "anchor": "(was $7,325\u2013$7,575); non-GAAP GM 68.1\u201369.1%; EBIT 30.3\u2013",
+   "topic": "NetApp earnings",
+   "status": "forecast",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp guides FY2027 EBIT margin of 30.3-31.3%.",
+   "anchor": "EBIT 30.3\u2013\n31.3%; diluted EPS $9.73\u2013$10.03",
+   "topic": "NetApp earnings",
+   "status": "forecast",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp raised FY2027 diluted EPS guidance to $9.73-$10.03 from $8.70-$9.00.",
+   "anchor": "31.3%; diluted EPS $9.73\u2013$10.03 (was $8.70\u2013$9.00). F2Q guide implies",
+   "topic": "NetApp earnings",
+   "status": "forecast",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "NetApp's F2Q guidance implies second-half FY27 revenue growth slows to high single digits.",
+   "anchor": "F2Q guide implies F2H27 revenue growth slows to\nHSD%.",
+   "topic": "NetApp earnings",
+   "status": "forecast",
+   "instruments": [
+    "NTAP"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "F2H27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "S&P futures were up 10bps, Nasdaq futures down 5bps and Russell futures down 10bps pre-market.",
+   "anchor": "Macro: SPX futures +10bps // NDX \u22125bps // RTY \u221210bps.",
+   "topic": "equity futures",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "WTI crude was up 1.5% at $92.30.",
+   "anchor": "WTI +1.5% @ $92.30. UST10yr \u22121bp @",
+   "topic": "oil price",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "The 10-year Treasury yield was down 1bp at 4.77%.",
+   "anchor": "UST10yr \u22121bp @\n4.77% // UST30yr \u22121bp @ 5.245%.",
+   "topic": "Treasury yields",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "The 30-year Treasury yield was down 1bp at 5.245%.",
+   "anchor": "4.77% // UST30yr \u22121bp @ 5.245%. US diesel prices approaching",
+   "topic": "Treasury yields",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "US diesel prices are approaching the all-time high set in June 2022.",
+   "anchor": "US diesel prices approaching the ATH set in June of \u201922.",
+   "topic": "oil price",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Payrolls are due tomorrow and CPI next week.",
+   "anchor": "in June of \u201922. NFP\ntomorrow, CPI next week.",
+   "topic": "US data calendar",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tomorrow and next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Goldman's most active high touch names are DELL, CORZ, GTLB, AMZN, FOXA, ROKU, PSKY and DIS.",
+   "anchor": "Most active high touch: DELL, CORZ, GTLB, AMZN, FOXA, ROKU, PSKY,\nDIS.",
+   "topic": "most active names",
+   "status": "released",
+   "instruments": [
+    "DELL",
+    "CORZ",
+    "GTLB",
+    "AMZN",
+    "FOXA",
+    "ROKU",
+    "PSKY",
+    "DIS"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Fox Advisors upgraded Dell to Outperform.",
+   "anchor": "Street: DELL upgraded Outperform (Fox Advisors)",
+   "topic": "analyst rating changes",
+   "status": "target",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Singular initiated Dell at Buy.",
+   "anchor": "DELL new Buy (Singular); RNG new\nOutperform (RBC)",
+   "topic": "analyst rating changes",
+   "status": "target",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "RBC initiated RingCentral at Outperform.",
+   "anchor": "(Singular); RNG new\nOutperform (RBC); VSH new Buy (Truist).",
+   "topic": "analyst rating changes",
+   "status": "target",
+   "instruments": [
+    "RNG"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - TMT TODAY 9.3.26",
+   "claim": "Truist initiated Vishay at Buy.",
+   "anchor": "RNG new\nOutperform (RBC); VSH new Buy (Truist).",
+   "topic": "analyst rating changes",
+   "status": "target",
+   "instruments": [
+    "VSH"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15252__gs-bartlett-tmt-today-9-3-26.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 58,
+  "matched": 58,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
