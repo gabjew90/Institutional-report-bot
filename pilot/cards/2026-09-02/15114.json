@@ -1,0 +1,141 @@
+{
+ "brief": "US forces resumed strikes in Iran after about a one-month pause and, on Friday, announced a takeover of Venezuela oil reserves. Despite this, oil options markets show no bid for upside tails: call premium is fading and low-delta puts trade higher than their levels last Thursday, before the Venezuela announcement. The 25-delta 1-month risk reversal, which measures call premium over puts of similar tenor and moneyness, sits near the bottom of its recent range, underperforming the bounce in flat price. Strait of Hormuz crossings have been contracting, with reports of 2-4 million barrels/day versus the US administration's claim of 8-10 million b/d, yet markets remain hesitant to lean either way, producing a tame reaction to the renewed strikes. The author attributes this to a \"U-turn decay dynamic\": repeated US-Iran course changes have made oil headlines generate progressively smaller market reactions over time. Markets read the strikes as posturing rather than a meaningful escalation in physical disruption risk. As oil risk shifts from cracks back to flat price and systematic upside-price levels are potentially hit, this complacency could fade quickly once the Brent futures roll window passes this week.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "The US resumed strikes in Iran after about a one-month hiatus.",
+   "anchor": "the US resumed strikes in Iran after about a one-month hiatus",
+   "topic": "Iran strikes",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "On Friday the US announced a takeover of Venezuela oil reserves.",
+   "anchor": "on Friday announced a takeover of Venezuela oil reserves",
+   "topic": "Venezuela oil reserves",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "Front-month volatility skew in oil is showing no bid for upside tails despite the renewed Iran strikes.",
+   "anchor": "Front-month volatility skew is showing no bid in upside tails for oil",
+   "topic": "oil options skew",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "Call premium on oil options is fading and low-delta puts are trading higher than their levels last Thursday, before the Venezuela deal was announced.",
+   "anchor": "call premium fade and low-delta puts trading higher than their levels on Thursday last week before the Venezuela deal was announced",
+   "topic": "oil options skew",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "Riskies are underperforming the bounce in oil's flat price.",
+   "anchor": "riskies are underperforming the bounce in flat price",
+   "topic": "oil risk reversal",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "Reports suggest 2 million to 4 million barrels per day are crossing the Strait of Hormuz, versus the US administration's claim of 8 million to 10 million barrels per day.",
+   "anchor": "anywhere from 2 million to 4 million barrels/day getting through versus the US administration\u2019s claim of 8m-10m b/d",
+   "topic": "Strait of Hormuz flows",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "Markets appear hesitant to lean decisively in either direction on the renewed Iran strikes.",
+   "anchor": "markets appear hesitant to lean earnestly one way or the other",
+   "topic": "oil market reaction",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "Oil-related headlines are generating increasingly limited market reaction over time as the US and Iran constantly shift course.",
+   "anchor": "oil-related headlines are generating increasingly limited market reaction over time as the US and Iran constantly shift course",
+   "topic": "oil headline reaction decay",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "Markets appear to view the renewed strikes as another round of posturing rather than a meaningful escalation.",
+   "anchor": "markets seem to chalk it up to what could be another round of posturing from both parties rather than a meaningful intensification",
+   "topic": "Iran strike escalation risk",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oil Is Back To Trading Iran Strikes But Without The Risk Premium",
+   "claim": "Complacency in oil markets could fade quickly once markets move past the Brent futures roll window this week.",
+   "anchor": "this complacency could fade fairly quickly as we move past the futures roll window in Brent this week",
+   "topic": "oil complacency risk",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-02/15114__oil-is-back-to-trading-iran-strikes-but-without-the-risk-pre.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
