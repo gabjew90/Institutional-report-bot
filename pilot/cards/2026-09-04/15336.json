@@ -1,0 +1,563 @@
+{
+ "brief": "Goldman Sachs equity sales note covering Wednesday's tape and five single-name updates. US equities closed higher, SPX +46bps to 7666, NDX +23bps, RTY +113bps, with small caps leading because rates gave modest relief and momentum stabilized. Europe fell for a third session and EU autos lost 2% as the energy and rates squeeze hit consumer discretionary. Cross-asset the desk stays tactically neutral for 3m and modestly pro-risk for 12m, overweight equities, neutral bonds, commodities and cash, underweight credit, because rates volatility, seasonal weakness, US midterms and geopolitics could lift near-term volatility, which argues for staying invested and hedging selectively. It recommends the French Domestic basket as an election-noise hedge given 50% domestic sales versus 15% for the CAC 40. On oil, counting tankers crossing with AIS off, Persian Gulf exports are estimated at 15-16mb/d, two thirds of pre-war levels, against 10mb/d visible. Broadcom revenue was in line, AI semi revenue grew 221% to $16.7bn, FY4Q guidance sits just below the Street, and the target rises to $540. Auto1, PPC and Ferrari price targets rise. M&G's first half was broadly in line with a c.3% operating capital generation beat.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "US equities closed higher on Wednesday with small caps outperforming as rates gave modest relief.",
+   "anchor": "US equities were higher on Wednesday with small caps outperforming as rates saw modest relief",
+   "topic": "US equity close",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "The S&P 500 rose 46bps to 7666 with 10 of 11 sectors higher, Materials +153bps and Comm Services +116bps.",
+   "anchor": "SPX +46bps to 7666 (10/11 sectors +ve, Materials +153bps, Comm Services +116bps)",
+   "topic": "US equity close",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "The Nasdaq 100 rose 23bps to 29,143 on Wednesday.",
+   "anchor": "NDX +23bps to 29,143, RTY +113bps to 2953",
+   "topic": "US equity close",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "The Russell 2000 rose 113bps to 2953 on Wednesday.",
+   "anchor": "NDX +23bps to 29,143, RTY +113bps to 2953",
+   "topic": "US equity close",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Broadcom shares traded choppily after the bell, indicated +2% after first falling -4%.",
+   "anchor": "After the bell, AVGO shares have been choppy, indicated +2% higher after initially falling -4%",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Snowflake shares jumped 22% after the bell following its quarterly report.",
+   "anchor": "while SNOW shares are jumping +22% after a blowout quarter",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "European equities closed lower for a third consecutive session, SXXP -20bps and SX5E -10bps.",
+   "anchor": "Europe closed lower for the third consecutive session (SXXP -20bps, SX5E -10bps)",
+   "topic": "European equity close",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "The Goldman EU autos basket GSXEAUTO fell 2% under the energy and rates squeeze on consumer discretionary.",
+   "anchor": "EU Autos (GSXEAUTO -2%) struggled, feeling the brunt of the energy/rates squeeze on consumer discretionary",
+   "topic": "EU autos",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "The Goldman European cyclicals basket GSXECYCL fell 40bps on Wednesday.",
+   "anchor": "with Cyclicals also dragged lower (GSXECYCL -40bps)",
+   "topic": "European equity close",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman recommends hedging a pick-up in French election headline noise with its French Domestic basket GSXEFRDO.",
+   "anchor": "We recommend hedging a pick-up in election headline noise with our French",
+   "topic": "French election hedge",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "The French Domestic basket has 50% domestic sales exposure versus 15% for the CAC 40.",
+   "anchor": "given its 50% domestic sales exposure (vs. 15% for the CAC 40)",
+   "topic": "French election hedge",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman is tactically neutral across assets on a 3-month view and modestly pro-risk on a 12-month view.",
+   "anchor": "We remain tactically neutral across assets for 3m and modestly pro-risk for 12m",
+   "topic": "cross-asset allocation",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3m and 12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman is overweight equities and neutral bonds, commodities and cash in its 12-month asset allocation.",
+   "anchor": "modestly pro-risk for 12m, with OW equities, N bonds, commodities and cash, and UW credit",
+   "topic": "cross-asset allocation",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman is underweight credit in its 12-month asset allocation.",
+   "anchor": "modestly pro-risk for 12m, with OW equities, N bonds, commodities and cash, and UW credit",
+   "topic": "cross-asset allocation",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman says near-term volatility could rise on rates volatility, seasonal weakness, US midterm elections and geopolitical risks.",
+   "anchor": "Near-term volatility could rise amid rates volatility, seasonal weakness, US midterm elections and broader geopolitical risks",
+   "topic": "near-term volatility",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman advises staying invested, buying dips and mitigating risk through diversification and selective overlay hedges.",
+   "anchor": "invested, buying dips and mitigating risk through diversification and selective overlay hedges",
+   "topic": "cross-asset allocation",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman estimates recent total Persian Gulf oil exports at roughly 15-16mb/d, about two thirds of pre-war levels, once dark crossings are counted.",
+   "anchor": "we estimate recent total Persian Gulf oil exports at roughly 15-16mb/d or 2/3 of pre-war levels",
+   "topic": "oil supply",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Recent visible Persian Gulf oil exports stand at only 10mb/d on a 7-day moving average.",
+   "anchor": "while recent visible exports stand at only 10mb/d (7DMA)",
+   "topic": "oil supply",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman attributes the 5mb/d upward revision to Gulf oil flows over the last two weeks to tankers crossing the Strait near Oman with AIS switched off.",
+   "anchor": "The 5mb/d upward revision to the Gulf flows over the last two weeks likely results from a ramp up",
+   "topic": "oil supply",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Broadcom reported revenue of $29.6bn, in line with consensus.",
+   "anchor": "revs $29.6bn in line with Cons; gross margin of 75.0% vs Cons 74.1%",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Broadcom reported gross margin of 75.0% against consensus of 74.1%.",
+   "anchor": "gross margin of 75.0% vs Cons 74.1%",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Broadcom AI semiconductor revenue grew 221% year on year to $16.7bn.",
+   "anchor": "AI Semi revs grew +221% YoY to $16.7bn",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Broadcom FY4Q guidance is just below the Street.",
+   "anchor": "FY4Q guidance is just below the Street",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY4Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Broadcom expects AI semiconductor revenue to double in FY27 to $115bn.",
+   "anchor": "Broadcom expects its AI semiconductor revenue to double in FY27 to $115bn",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Broadcom stock trades at 12 times FY28 earnings.",
+   "anchor": "stock trading at just 12X for FY28",
+   "topic": "Broadcom earnings",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman raises its 12-month price target on Broadcom to $540 from $525.",
+   "anchor": "month target price to $540 from $525.",
+   "topic": "Broadcom earnings",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman rates Auto1 Buy and raises its price target to EUR37 from EUR36.5, implying 75% upside.",
+   "anchor": "Auto1 (BUY / PT EUR37 (from EUR36.5) / 75% Upside)",
+   "topic": "Auto1 outlook",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman sees scope for Autohero unit growth to re-accelerate in 2027 from about 25% in 2H26E.",
+   "anchor": "scope for Autohero's unit growth to re-accelerate in 2027 (from ~25% in 2H26E)",
+   "topic": "Auto1 outlook",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Autohero is approaching adjusted EBITDA breakeven with a -1.5% margin in Q2, up 100bps year on year.",
+   "anchor": "Autohero is approaching adj. EBITDA breakeven (-1.5% margin in Q2, +100bps yoy)",
+   "topic": "Auto1 outlook",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Auto1's Merchant business grew volumes 17% year on year in Q2.",
+   "anchor": "Merchant continues to deliver strong volume growth (+17% y/y in Q2)",
+   "topic": "Auto1 outlook",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman rates PPC Buy and raises its price target to EUR27 from EUR26.5, implying 15% upside.",
+   "anchor": "PPC (Buy / PT EUR27 (from EUR26.5) / 15% Upside - DC opportunity)",
+   "topic": "PPC data centre upside",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "PPC's current plan assumes only the first 300 MW phase of Kozani.",
+   "anchor": "PPC's current plan assumes only the first phase of Kozani (300 MW)",
+   "topic": "PPC data centre upside",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "If PPC gradually expands Kozani to 1 GW over 2028-33, Goldman estimates about 10% EBITDA upside versus its base case from 2030 onwards.",
+   "anchor": "if PPC were to gradually expand Kozani to 1 GW over 2028-33, we estimate this could deliver c.10% EBITDA upside",
+   "topic": "PPC data centre upside",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028-33, from 2030 onwards"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Assuming an IRR over WACC of about 1.5 times, the Kozani expansion implies about EUR4 per share of incremental equity value for PPC.",
+   "anchor": "Assuming an IRR over WACC of c.1.5x, this implies c.\u20ac4/share of incremental equity value.",
+   "topic": "PPC data centre upside",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "M&G's 1H26 adjusted operating profit was broadly in line with company collected consensus, 1% above.",
+   "anchor": "1H'26 Adjusted Operating Profit is broadly in line with company collected consensus (+1%)",
+   "topic": "M&G first half results",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "M&G's Asset Management result came in 1% below and Life in line in 1H26.",
+   "anchor": "both the Asset Management (-1%) and Life (0%) results are broadly in line",
+   "topic": "M&G first half results",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "M&G's 1H26 underlying capital generation was in line, with a weaker Asset Management result offset by higher shareholder annuity and Other Life.",
+   "anchor": "1H'26 Underlying Capital Generation is also in line as a lower Asset Management result",
+   "topic": "M&G first half results",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "M&G's operating capital generation beat by about 3%, helped by management actions.",
+   "anchor": "Operating Capital Generation is a c.3% beat benefiting from management actions",
+   "topic": "M&G first half results",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "M&G's Solvency II ratio of 247% beat by about 8 percentage points on market movements and tax.",
+   "anchor": "the 247% Solvency II ratio is a c.8ppts beat on market movements / tax.",
+   "topic": "M&G first half results",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman rates Ferrari Buy with a price target of EUR407 in its Residual Tracker.",
+   "anchor": "Ferrari Residual Tracker (Buy / PT EUR407)",
+   "topic": "Ferrari residual values",
+   "status": "target",
+   "instruments": [
+    "RACE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman's Ferrari residual value index rose 13.8% year on year as of August 2026.",
+   "anchor": "Our index has increased +13.8% yoy as of August 2026",
+   "topic": "Ferrari residual values",
+   "status": "released",
+   "instruments": [
+    "RACE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "Goldman's Ferrari residual value index rose 5.8% month on month in August 2026.",
+   "anchor": "while mom saw a strong +5.8% improvement",
+   "topic": "Ferrari residual values",
+   "status": "released",
+   "instruments": [
+    "RACE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour Cross Asset Oil Auto1 PPC M&G Ferrari 3 Sep 2026",
+   "claim": "The Global luxury residual value index turned positive at +2.25% in August 2026, the first positive reading since tracking began in January 2025.",
+   "anchor": "Our August data point also marks the Global Index turning positive (+2.25%)",
+   "topic": "Ferrari residual values",
+   "status": "released",
+   "instruments": [
+    "RACE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15336__gs-blekos-marketcolour-cross-asset-oil-auto1-ppc-m-g-ferrari.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 43,
+  "matched": 43,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
