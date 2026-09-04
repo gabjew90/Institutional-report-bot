@@ -1,0 +1,485 @@
+{
+ "brief": "Goldman Sachs partner Bobby Molavi surveys the first eight months of 2026. Index returns are healthy and equities sit at the upper bounds of the top decile of returns since 1929, with heavy factor, sector and thematic rotation beneath the surface. He splits the questions into a big box (AI value creation and capex, rates and inflation, Iran/US and oil) and a little box (positioning, momentum, crowding, issuance, M&A, debasement). The chain he draws: Warsh's hawkish Jackson Hole tilt puts a September hike back on the table if August CPI and PPI print firmer, the 10 year yield is ticking higher, and gold and bitcoin ripping alongside debasement search interest points to renewed US fiscal and dollar concern. Iran/US has no offramp, so oil stays sticky high, which presses inflation and the consumer. Nvidia's $96bn quarter and 2027 guidance of +70% against sell side estimates of +40 to 45% say AI capex is not going away. Positioning is cleaner, leverage and long/short ratios have come in, August flows felt jittery and defensive rather than risk on, and midterm year August to October seasonals are poor. He leaves AI ROI, the rates path and retail's effect on price discovery unresolved.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "The S&P 500 has rallied 250% since the March 2020 COVID lows and has overcome every crisis in that span.",
+   "anchor": "we\u2019ve seen the SPX rally 250% and overcome\u2026in no particular order",
+   "topic": "equity resilience",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since March 2020"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Equities are at the upper bounds of the top decile of the distribution of returns since 1929.",
+   "anchor": "Equities at the upper bounds of the top decile in relation to distribution of returns since 1929.",
+   "topic": "equity resilience",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year to date 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "2026 equity gains have been earnings driven rather than multiple driven, with unusually positive revisions.",
+   "anchor": "Earnings driven not multiple driven... Revisions have been unusually positive...",
+   "topic": "equity resilience",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Warsh's hawkish tilt at Jackson Hole has put rate hike risk back on the table.",
+   "anchor": "Warsh hawkish tilt at Jackson hole has brought rate hike risks back to the table.",
+   "topic": "rates path",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "If August CPI and PPI come in firmer than expected, the odds of a September rate hike move higher.",
+   "anchor": "firmer than expected you have to believe odds of a Sept hike move higher.",
+   "topic": "rates path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "The 10 year Treasury yield is ticking higher.",
+   "anchor": "At the same time the 10 year yield ticking higher.",
+   "topic": "rates path",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Gold and bitcoin rallied through August and debasement rose to the top of Google search interest, putting US fiscal and dollar weakness back in focus.",
+   "anchor": "Watching Gold and Bitcoin rip through August\u2026.as well as Debasement rocketing to the top of",
+   "topic": "debasement",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Treasury intervention, first in the yen and then via its own buyback program, is a threat to bond sellers and also a sign of weakness.",
+   "anchor": "The treasury intervention (first with Yen and then with their own buyback program) a threat to",
+   "topic": "debasement",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Government debt as a percentage of GDP has risen globally, with Goldman Sachs Global Investment Research forecasts covering 2024 to 2027.",
+   "anchor": "Debt levels have risen globally: Government debt as a percentage of GDP. Dotted line: GIR",
+   "topic": "government debt",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "2024-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "The Goldman Sachs high beta momentum pair closed Friday back at year to date lows after a -15% move over the prior two weeks.",
+   "anchor": "Friday saw GS high beta momo pair close back at ytd lows and post a -15% move over the last",
+   "topic": "momentum factor",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last 2 weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Factor volatility traded at up to 9x the broader index in August, a level seen only twice before, in COVID and Q4 2020.",
+   "anchor": "trade at up to 9x the broader index in August\u2026.a stat only seen twice before\u2026.covid and Q4",
+   "topic": "momentum factor",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "The end of August brought a return of elevated volatility and weak headline momentum performance instead of the hoped for normalization.",
+   "anchor": "Instead the end of August saw a return of elevated volatility and",
+   "topic": "momentum factor",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "end of August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Oil is staying sticky high, and Iran is in effect applying inflation and rate hike pressure on the US.",
+   "anchor": "Oil remaining sticky high\u2026and in effect Iran fighting a war of inflation and rate hike pressure on",
+   "topic": "Iran oil risk",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Global oil inventories are still set to reach historic lows if the strait does not reopen soon.",
+   "anchor": "Global oil inventories still set to reach historic lows if the strait doesn\u2019t reopen soon.",
+   "topic": "Iran oil risk",
+   "status": "forecast",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Investors are running a large de-gross in France, with multiple days of selling ahead of elections.",
+   "anchor": "we are seeing a big de-gross in France with",
+   "topic": "European politics",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "into year end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "LNG flows remain constrained and European gas reserves are below where they need to be, with prices ticking higher.",
+   "anchor": "Well Iran/US conflict carries on\u2026.LNG flows remain constrained\u2026.reserves aren\u2019t where they",
+   "topic": "natural gas",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "autumn and winter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "August to October in a midterm year has an extremely bad track record for equities.",
+   "anchor": "August to October during a midterm year has an extremely bad track record.",
+   "topic": "seasonals",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August to October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Equity issuance performance has become more mixed and investor appetite marginally more selective after heavy supply.",
+   "anchor": "breaking price\u2026performance has become more mixed and appetite marginally more selective.",
+   "topic": "equity issuance",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Nvidia announced a $500bn consortium backstopping GPU residuals, cited as an example of 2026's financing feast alongside the Alphabet, Intel, Alibaba and Hynix deals and the SpaceX IPO.",
+   "anchor": "The Alphabet, Intel, Alibaba, Hynix deals\u2026the SpaceX IPO\u2026.the Nvidia announced $500bn",
+   "topic": "equity issuance",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "M&A is a global theme in 2026 with the cadence of larger deals running above trend.",
+   "anchor": "A global theme in 2026 with cadence of larger deals above trend.",
+   "topic": "M&A activity",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "US employment has held up so far and consumer spending has remained healthy.",
+   "anchor": "Thus far employment has held up and spending has remained healthy.",
+   "topic": "US consumer",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "There is a debate over a K shaped consumer, with the top end prospering on asset ownership and wage inflation while the bottom end is squeezed.",
+   "anchor": "There does seem to be a debate around a K shaped consumer where the top end are",
+   "topic": "US consumer",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "The US consumer savings rate is low relative to the last 50 years.",
+   "anchor": "US consumer savings rate: pretty low vs last 50yrs.",
+   "topic": "US consumer",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last 50 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "US sub-prime auto delinquencies continue to rise.",
+   "anchor": "Consumer warning signals: US consumer: sub-prime auto delinquencies continue to rise...",
+   "topic": "US consumer",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "August flows showed a marginal rotation into laggards and value, with Europe benefiting, a more defensive tilt and megacap preferred over higher octane AI plays.",
+   "anchor": "We saw a marginal rotation into laggards and value (Europe benefitted)\u2026we saw a more",
+   "topic": "equity flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Positioning is much cleaner, froth has been removed and leverage and long/short ratios have come in for several large pools of capital.",
+   "anchor": "So much cleaner than it was. Some of the froth has been removed. Leverage and Long/short",
+   "topic": "positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Investors are not underweight, but they are far less extended than they were in June.",
+   "anchor": "wouldn\u2019t describe people as underweight but I would say that we are now far less extended than",
+   "topic": "positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since June 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "The weight of AI-exposed equities in mutual fund portfolios continued to rise but failed to keep pace with benchmark weights.",
+   "anchor": "rise but failed to keep pace with benchmark weights.",
+   "topic": "positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Nvidia posted $96bn of revenue for the quarter, a 100% year on year beat.",
+   "anchor": "The quarter that Nvidia just had by posting $96bn for the quarter\u2026.a mere 100% yoy beat. This",
+   "topic": "Nvidia earnings",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "latest quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Nvidia guided 2027 at +70% against sell side estimates of +40 to 45%.",
+   "anchor": "backed up with a 2027 guidance that was +70% vs sell side estimates of +40 to 45%.",
+   "topic": "Nvidia earnings",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Nvidia's print produced a 9% rally and $400bn of market cap appreciation.",
+   "anchor": "resulting in a 9% rally and a mere $400bn of market cap appreciation and contribution to the US",
+   "topic": "Nvidia earnings",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Nvidia said less than 1% of its earnings come from China, with a broadening customer base and less single client risk.",
+   "anchor": "Beneath the surface they talked to less that 1% of the earnings",
+   "topic": "Nvidia earnings",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "AI capex is not going away anytime soon.",
+   "anchor": "Well\u2026 Ai capex isn\u2019t going away anytime soon.",
+   "topic": "AI capex",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Not all software companies and products can be disintermediated easily, as Salesforce earnings may indicate, though it is still too early to know where AI disruption bites hardest.",
+   "anchor": "point too\u2026not all software, companies, products can be disintermediated easily (and without a",
+   "topic": "software disruption",
+   "status": "forecast",
+   "instruments": [
+    "CRM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Salesforce decided to partner with Anthropic on Claudeforce, which risks its market position and product value while betting that value resides in its data and embedded ledger position.",
+   "anchor": "When you couple that with the interesting decision taken by Salesforce to partner with Anthropic",
+   "topic": "software disruption",
+   "status": "released",
+   "instruments": [
+    "CRM"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "High volatility and share price performance can be positively correlated, as Hynix implied vol and daily 5% plus moves in 2026 show.",
+   "anchor": "you just need to look at Hynix implied vol or daily 5% plus moves in 2026 to see high vol and",
+   "topic": "volatility signal",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "'Everything Changed' But Goldman Partner Says 'Markets Didn't Care'",
+   "claim": "Korea's new government mandated tutorial handbrake was applied after a period of 100 realized volatility in Hynix and the Kospi, raising the question of whether retail has moved from participant to price setter.",
+   "anchor": "Reading about Korea and the new govt mandated tutorial \u2018handbrake\u2019 that has been applied",
+   "topic": "retail participation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-02/15115__everything-changed-but-goldman-partner-says-markets-didn-t-c.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 37,
+  "matched": 37,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
