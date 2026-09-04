@@ -1,0 +1,117 @@
+{
+ "brief": "The VIX term structure has steepened as front-end implied volatility collapsed since the start of the Iran war while the back end stays elevated, producing what the author calls a volatility deficit implying an eventual reckoning for stocks. SPX has gone 23 consecutive trading days without a 1% decline, near the 90th percentile of a three-year lookback, aided by the Citadel/Aschenbrenner deleveraging in late July, which washed out crowded momentum positioning and stabilized gamma dynamics. The note contrasts this with the comparable prior streak (early May to mid-July 2024): that episode coincided with a dovish Fed hold, markets pricing roughly 75bp of cuts by year-end, and the 10-year yield falling about 40bp, giving equities a rates tailwind. Today's SPX/10-year correlation is similarly negative (-0.41 vs -0.47 then), but the note says yields are moving in the opposite direction now, so that rates support is absent. Longer-dated VIX still carries a premium, implying the market is deferring volatility rather than eliminating it, and the next steep selloff could be the trigger for the deferred deficit coming due.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "The S&P 500 Is Accumulating A Volatility Deficit",
+   "claim": "The VIX term structure's front end has downshifted since the start of the Iran war while the back end remains elevated, steepening the curve.",
+   "anchor": "a front end that has materially downshifted since the start of the Iran war while the back end remains elevated, steepening the curve",
+   "topic": "VIX term structure",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The S&P 500 Is Accumulating A Volatility Deficit",
+   "claim": "The S&P 500 has posted 23 consecutive trading days without a 1% decline, a streak around the 90th percentile over a three-year lookback.",
+   "anchor": "The index has now posted 23 consecutive trading days without a 1% decline, a streak sitting around the 90th percentile over a three-year lookback",
+   "topic": "SPX low-vol streak",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The S&P 500 Is Accumulating A Volatility Deficit",
+   "claim": "The Citadel/Aschenbrenner deleveraging in late July washed out crowded momentum risk, leaving positioning cleaner and gamma dynamics more stable.",
+   "anchor": "washed out a large pocket of crowded momentum risk, leaving positioning cleaner and gamma dynamics more stable",
+   "topic": "positioning deleveraging",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The S&P 500 Is Accumulating A Volatility Deficit",
+   "claim": "The comparable 2024 low-volatility streak coincided with a dovish Fed hold and markets pricing roughly 75 basis points of cuts by the end of that year.",
+   "anchor": "coincided with a Fed on a dovish hold and markets pricing roughly 75 basis points of cuts by the end of that year",
+   "topic": "2024 rate tailwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by end of 2024"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The S&P 500 Is Accumulating A Volatility Deficit",
+   "claim": "The 10-year yield fell about 40 basis points during the 2024 streak window, providing equities with a rates tailwind.",
+   "anchor": "The ten-year yield also fell about 40 basis points during that same window, providing equities with a substantial rates tailwind.",
+   "topic": "2024 rate tailwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The S&P 500 Is Accumulating A Volatility Deficit",
+   "claim": "The SPX/10-year correlation is around -0.41 today versus -0.47 during the 2024 streak.",
+   "anchor": "The SPX/10-year correlation is similarly negative -- around -0.41 today versus -0.47 during the 2024 streak",
+   "topic": "SPX/10-year correlation",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The S&P 500 Is Accumulating A Volatility Deficit",
+   "claim": "Longer-dated VIX continuing to carry a premium suggests the options market is deferring volatility down the curve rather than eliminating it.",
+   "anchor": "With longer-dated VIX continuing to carry a premium, the options market may not be entirely eliminating volatility but rather deferring it down the curve.",
+   "topic": "VIX term structure",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The S&P 500 Is Accumulating A Volatility Deficit",
+   "claim": "The next steep selloff in stocks could be the trigger for the market's accumulated volatility deficit coming due.",
+   "anchor": "The next steep selloff in stocks could be the canary in the coal mine that the market\u2019s accumulated volatility deficit might be coming due.",
+   "topic": "volatility deficit thesis",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15314__the-s-p-500-is-accumulating-a-volatility-deficit.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
