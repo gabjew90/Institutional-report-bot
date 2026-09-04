@@ -1,0 +1,165 @@
+{
+ "brief": "Treasury's preference for funding via bills over longer-term debt makes it a de facto issuer of central-bank-like money, exposing the entire state balance sheet to the overnight rate and putting Fed independence, market stability and the real returns of stocks and bonds at risk. Bills are already above the Treasury's unofficial 20% ceiling of total debt outstanding, at 22.7% (24.1% excluding Fed-held bills), and are expected to rise further as the deficit widens. Because bills carry a zero haircut, they can be rehypothecated repeatedly without loss of value, unlike bonds. A cited 2015-2021 study found the collateral multiplier for Treasuries averaged three to five times. More money-like liabilities are structurally inflationary, and rising bill shares have historically preceded structural rises in inflation, a link the piece attributes to higher asset prices, a wealth effect and a repressed cost of capital. With more public debt tied to short-term rates, raising the policy rate now triggers automatic fiscal tightening, hamstringing the Fed, while cheaper bills push money market funds out of repo, raising the risk of funding flare-ups. The piece concludes no single rate can satisfy both the Fed's inflation mandate and non-destabilizing government borrowing.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "Treasury bill issuance stood at 22.7% of total debt outstanding, or 24.1% excluding bills held by the Fed, above the Treasury's unofficial 20% ceiling.",
+   "anchor": "the Treasury\u2019s unofficial preferred ceiling of 20% of total debt outstanding, at 22.7%",
+   "topic": "Treasury bill share",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "The bill share of Treasury debt outstanding is expected to rise further as the fiscal deficit widens.",
+   "anchor": "Expect that to rise as the fiscal deficit widens.",
+   "topic": "Treasury bill share",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "The Treasury's preference for bill funding leaves the entire state balance sheet sensitive to the overnight rate.",
+   "anchor": "leaving the entire state balance sheet sensitive to the overnight rate",
+   "topic": "shadow central bank",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "The Treasury acting like a parallel central bank is likely to cause greater financial instability because it compromises the Fed's independence.",
+   "anchor": "likely to lead to greater financial instability because it compromises the Fed\u2019s independence",
+   "topic": "shadow central bank",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "More liabilities competing with central bank money is structurally inflationary because it de facto increases the supply of liquidity.",
+   "anchor": "more liabilities competing with central bank money is structurally inflationary, as it de facto increases the supply of liquidity",
+   "topic": "inflationary liquidity",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "A cited study found that from 2015 to 2021 the average Treasury collateral security was being rehypothecated three to five times.",
+   "anchor": "the average collateral security was being rehypothecated three to five times",
+   "topic": "bill rehypothecation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "The zero haircut on Treasury bills allows them to be hypothecated multiple times without loss of value, unlike bonds.",
+   "anchor": "the zero haircut on bills allows them to be hypothecated multiple times without loss of value",
+   "topic": "bill rehypothecation",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "Increases in bills relative to total debt outstanding have preceded structural rises in inflation.",
+   "anchor": "increases in bills relative to total debt outstanding preceding structural rises in inflation",
+   "topic": "inflationary liquidity",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "With more public debt linked to short-term rates, the Fed is hamstrung if it wants to raise rates because doing so creates an automatic fiscal tightening.",
+   "anchor": "the Fed is hamstrung if it wants to raise rates, as doing so creates an automatic fiscal tightening",
+   "topic": "Fed rate constraint",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "As extra bill supply cheapens bills, money market funds switch out of repo, increasing the chance of funding flare-ups.",
+   "anchor": "money market funds switch out of repo, increasing the chance of funding flare-ups",
+   "topic": "funding market risk",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "Even if the Treasury issues less longer-term debt, it might still end up paying more for it if the term premium rises sufficiently.",
+   "anchor": "it still might end up paying more for it if the term premium rises sufficiently",
+   "topic": "funding market risk",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Treasury Is Now A Shadow Federal Reserve",
+   "claim": "Finding a policy rate that satisfies the Fed's inflation and financial-stability mandates while allowing non-destabilizing, non-inflationary government borrowing will be an impossible task.",
+   "anchor": "while allowing the government to borrow at a level that is neither inflationary nor destabilizing, will be an impossible task.",
+   "topic": "Fed rate constraint",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15315__the-treasury-is-now-a-shadow-federal-reserve.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 12,
+  "matched": 12,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
