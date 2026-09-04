@@ -36,8 +36,17 @@ _INSULT_WORD = (r"(?:stupid|dumb|idiot|moron|retard\w*|trash|garbage|useless|wor
                 r"|clown|joke|pathetic|braindead|brain\s*dead|dogshit|shit|suck\w*|awful"
                 r"|terrible|lame|cringe|mid)")
 _INSULT = re.compile(
-    r"\b(?:you|u|ur|your|yours|yr)\b[^.!?]{0,40}\b" + _INSULT_WORD + r"\b"
-    r"|\b" + _INSULT_WORD + r"\b[^.!?]{0,20}\b(?:bot|ai|you)\b", re.I)
+    # The second person must GOVERN the insult, not merely appear near
+    # it: at 40 characters "you know abe is an idiot" scored 2, which
+    # aimed the clapback at someone insulting a third party. 14 keeps
+    # "ur takes are trash" (11) and drops that one (16). Errors here
+    # must fall DOWNWARD — the prompt's own rule is "unsure whether
+    # something was a jab? It wasn't."
+    r"\b(?:you|u|ur|your|yours|yr)\b[^.!?]{0,14}\b" + _INSULT_WORD + r"\b"
+    # Either order: "this bot is dogshit" put the subject FIRST and
+    # scored 0, missing a direct insult outright.
+    r"|\b" + _INSULT_WORD + r"\b[^.!?]{0,20}\b(?:bot|ai|you)\b"
+    r"|\b(?:this\s+)?(?:bot|ai)\b[^.!?]{0,20}\b" + _INSULT_WORD + r"\b", re.I)
 
 # Level 1: a tease or poke. Backhanded praise counts as a POKE, not an
 # insult: the prompt says take it, one dry line, done.

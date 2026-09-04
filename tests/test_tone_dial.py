@@ -75,6 +75,27 @@ def test_directive_is_wired_into_the_prompt_extra():
     assert "_dial_extra" in src and "_prompt_extra = _fact_extra" in src
     assert 'tone_dial"] = _dial_level' in src
 
+def test_the_insult_must_be_aimed_at_the_bot_not_a_third_party():
+    # Errors fall DOWNWARD: the prompt's rule is "unsure whether
+    # something was a jab? It wasn't." At a 40-char window
+    # "you know abe is an idiot" scored 2 and aimed a clapback at
+    # someone who was insulting a third party.
+    assert provocation_level(_q("you know abe is an idiot")) == 0
+    assert provocation_level(_q("abe is an idiot")) == 0
+    assert provocation_level(_q("his takes are trash")) == 0
+    assert provocation_level(_q("the tape is trash today")) == 0
+    assert provocation_level(_q("this shit is crazy")) == 0
+    # but a real second-person insult still lands
+    assert provocation_level(_q("you are useless")) == 2
+    assert provocation_level(_q("ur takes are trash")) == 2
+
+
+def test_an_insult_works_in_either_word_order():
+    # "this bot is dogshit" put the subject first and scored 0,
+    # missing a direct insult outright.
+    for said in ("this bot is dogshit", "the bot is useless", "bot is trash"):
+        assert provocation_level(_q(said)) == 2, said
+
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
