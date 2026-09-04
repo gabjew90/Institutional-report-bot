@@ -1,0 +1,554 @@
+{
+ "brief": "US stocks trade higher on 3 September 2026 on three inputs. Fed Governor Waller said recent data suggest signs of disinflation and that if the next two weeks confirm it he would support holding the funds rate. That eased bond investor concerns ahead of the meeting in two weeks and 10-year yields fell 3bp to 4.75%, which supports equities. Waller frames inflation as a rate of change, so although gasoline and tariffs remain well above two years ago, lapping the tariff peak and a possible month-over-month gasoline peak may mean that pressure is already dissipating. Second, ISM Services rose 1.3 points to 55.4 on strong new orders, against an ISM Manufacturing decline earlier in the week, and services sentiment improved in China, India and Brazil. Goldman reads services as more nimble than manufacturing, while noting post-pandemic sentiment has tracked activity less closely. Q2 productivity was unrevised at +1.4% annualized and +2.2% year over year, and the GDP tracker was cut 20bp to 2.5% (body says 2Q, cited title says Q3). Third, SNOW rose over 20% on revenue and margin beats while AVGO fell over 5% on fiscal 4Q guidance below the Street. Goldman stays Buy. Payrolls Friday, Goldman forecasts 40k.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "US stocks are trading higher on Thursday 3 September 2026 on Fed commentary, the ISM Services survey and AVGO and SNOW results.",
+   "anchor": "US stocks are trading higher Thursday on the back of some encouraging",
+   "topic": "US equity tape",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Fed Governor Christopher Waller said recent data suggest the US is finally seeing some signs of disinflation.",
+   "anchor": "Fed Governor Christopher Waller said that \u2018recent data suggest we are finally seeing some signs of disinflation\u2018",
+   "topic": "Fed policy path",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Waller said that if disinflation continues in the data due over the next two weeks he would be inclined to support holding the federal funds rate at its current setting.",
+   "anchor": "I would be inclined to support holding the target for the federal funds rate at its current setting",
+   "topic": "Fed policy path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next two weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Goldman Sachs judges that Waller's comments are easing some bond investor concerns about the Fed's next move at its meeting in two weeks.",
+   "anchor": "The comments appear to be easing some bond investor concerns around the next move from the Fed",
+   "topic": "Fed policy path",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "two weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The 10-year Treasury yield is down 3bp to 4.75%, still elevated but moving lower.",
+   "anchor": "Yields on 10-year Treasuries are down 3bp to 4.75%",
+   "topic": "10-year yield",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Gasoline prices and tariffs remain significantly higher in level terms than they were two years ago.",
+   "anchor": "Gasoline prices and tariffs remain significantly higher than they were 2 years ago",
+   "topic": "US inflation",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Goldman Sachs says the US is lapping the peak of tariffs and may have already seen the month-over-month peak in gasoline, so inflation pressure from both may already be dissipating.",
+   "anchor": "we are lapping the peak of tariffs already and on a month-over-month basis, we may have already seen the peak in gasoline",
+   "topic": "US inflation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The ISM Manufacturing Index declined from a month ago in the reading released earlier this week.",
+   "anchor": "the ISM Manufacturing Index declined from a month ago",
+   "topic": "ISM manufacturing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The ISM Services index improved this morning, rising 1.3 points to 55.4.",
+   "anchor": "improved, with the index rising 1.3 points to 55.4",
+   "topic": "ISM services",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The ISM Services survey showed particular strength in the forward-looking new orders component.",
+   "anchor": "showing particular strength in the forward-looking new orders component",
+   "topic": "ISM services",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Service sector business sentiment surveys improved in China, India and Brazil.",
+   "anchor": "service sector business sentiment surveys improved in China, India, and Brazil",
+   "topic": "global services PMI",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "China's unofficial services PMI increased in August.",
+   "anchor": "China: Unofficial services PMI increased in August",
+   "topic": "global services PMI",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "India's services PMI improved in August and its employment index reached a 15-month high.",
+   "anchor": "Services PMI improved in August; employment index at a 15-month high",
+   "topic": "global services PMI",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Brazil's services PMI returned to neutral with moderating input cost pressures.",
+   "anchor": "Services PMI Back to Neutral; Moderating Input Cost Pressures (Ramos)",
+   "topic": "global services PMI",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Brazil's manufacturing PMI moved deeper into contractionary territory.",
+   "anchor": "Brazil: Manufacturing PMI Deeper In Contractionary Territory",
+   "topic": "global manufacturing PMI",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Goldman Sachs says service sectors appear more nimble than manufacturing sectors, which are combating tariffs, deglobalization, supply chain problems and a protracted energy crisis.",
+   "anchor": "But service sectors appear to be more nimble in the current environment",
+   "topic": "services versus manufacturing",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Business sentiment has historically been a reliable indicator of future activity.",
+   "anchor": "business sentiment has historically been a pretty reliable indicator of future activity",
+   "topic": "business sentiment indicators",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "During the post-pandemic echo-boom, sentiment indicators have not correlated as closely with actual activity as many would like.",
+   "anchor": "sentiment indicators have not correlated as closely with actual activity as many would like",
+   "topic": "business sentiment indicators",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "AI penetration, if efficacious, should show up in improving productivity levels.",
+   "anchor": "AI penetration (if it is efficacious) should show up in improving productivity levels",
+   "topic": "US productivity",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "US nonfarm productivity growth for 2Q26 was unrevised at +1.4% quarter-over-quarter annualized.",
+   "anchor": "nonfarm productivity growth was unrevised at +1.4% (quarter-over-quarter annualized)",
+   "topic": "US productivity",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The year-over-year rate of US nonfarm productivity growth was unrevised at +2.2%.",
+   "anchor": "the year-over-year rate was unrevised at +2.2%",
+   "topic": "US productivity",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Goldman Sachs economists lowered their 2Q GDP growth tracker by 20bp to 2.5% on the back of today's data.",
+   "anchor": "our economists have lowered our 2Q GDP growth tracker by 20bp to 2.5%",
+   "topic": "US GDP tracking",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The cited Goldman Sachs economics note describes the same cut as lowering the Q3 GDP tracking estimate to +2.5%.",
+   "anchor": "Lowering Q3 GDP Tracking Estimate to +2.5%",
+   "topic": "US GDP tracking",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Wednesday's results produced a bifurcated reaction, with DELL up and MDB down.",
+   "anchor": "the bifurcated reaction to results from DELL (up) and MDB (down)",
+   "topic": "AI earnings reaction",
+   "status": "released",
+   "instruments": [
+    "DELL",
+    "MDB"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "SNOW stock is up more than 20% today.",
+   "anchor": "SNOW (stock up 20%+ today). The database software leader",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "SNOW reported revenue 5% better than expected.",
+   "anchor": "The database software leader reported revenue 5%",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "SNOW reported margins 270bp better than expected.",
+   "anchor": "better than expected and margins 270bp better as Gabriela Borges discusses in",
+   "topic": "Snowflake earnings",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Goldman Sachs views SNOW as a key beneficiary of AI-driven cloud migration and of new AI use cases enabled by Snowflake Intelligence and CoCo.",
+   "anchor": "view SNOW as a key beneficiary of both AI-driven cloud migration and new AI use cases",
+   "topic": "Snowflake earnings",
+   "status": "level",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Goldman Sachs sees upside to SNOW numbers over the next 18 months.",
+   "anchor": "Plus we see upside to numbers over the next 18 months",
+   "topic": "Snowflake earnings",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "AVGO stock is down more than 5% today.",
+   "anchor": "AVGO (stock down 5%+ today). The Tech giant reported in-line to better than",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "AVGO reported in-line to better than expected results for the July quarter.",
+   "anchor": "expected results for the July quarter but set guidance just below the Street",
+   "topic": "Broadcom earnings",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "July quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "AVGO set fiscal 4Q guidance, for the quarter ending October, just below the Street, which pressured the stock.",
+   "anchor": "set guidance just below the Street for its fiscal 4Q (ends Oct), causing some pressure on the stock",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "fiscal 4Q ending October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Goldman Sachs remains Buy-rated on AVGO.",
+   "anchor": "We remain Buy-rated on the stock, however",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Goldman Sachs thinks AVGO's AI revenue outlook through FY28 is likely to be exceeded.",
+   "anchor": "think AVGO\u2019s very strong AI revenue outlook through FY28 is likely to even be",
+   "topic": "Broadcom AI revenue",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The cited Goldman Sachs note argues AVGO's strong AI revenue forecast through 2028 plus increasing customer diversification should drive the stock higher.",
+   "anchor": "Strong AI revenue forecast through 2028 with increasing customer diversification should drive the stock higher",
+   "topic": "Broadcom AI revenue",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "Goldman Sachs economists forecast 40k net non-farm payroll additions for August.",
+   "anchor": "Our economists currently forecast 40k net Non-farm Payroll additions for August",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The August payrolls report is due Friday morning ahead of the open.",
+   "anchor": "We get the August Payrolls report Friday",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "LULU, GWRE and ZS report results after the close tonight.",
+   "anchor": "results from LULU, GWRE, and ZS after the close tonight",
+   "topic": "upcoming catalysts",
+   "status": "forecast",
+   "instruments": [
+    "LULU",
+    "GWRE",
+    "ZS"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tonight"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The S&P 500 is up 0.6% today, up 1.5% over one month, up 2.1% over three months and up 12.7% year to date.",
+   "anchor": "S&P 500 0.6 1.5 2.1 12.7",
+   "topic": "US equity tape",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The DJIA is up 0.8% today, up 0.6% over one month, up 5.6% over three months and up 11.3% year to date.",
+   "anchor": "12.7 DJIA 0.8 0.6 5.6 11.3",
+   "topic": "US equity tape",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The NASDAQ is up 0.9% today, up 2.1% over one month, down 1.5% over three months and up 13.8% year to date.",
+   "anchor": "11.3 NASDAQ 0.9 2.1 (1.5) 13.8",
+   "topic": "US equity tape",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: service economy",
+   "claim": "The Russell 2000 is up 0.2% today, down 0.7% over one month, up 2.3% over three months and up 19.3% year to date.",
+   "anchor": "Russell 2000 0.2 (0.7) 2.3 19.3",
+   "topic": "US equity tape",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "today"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15282__midday-market-intelligence-service-economy.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 42,
+  "matched": 42,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
