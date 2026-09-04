@@ -1,0 +1,655 @@
+{
+ "brief": "Goldman's consumer desk update, 3 September 2026, 7:45am ET. Futures are mixed into the holiday weekend with SPX +5bps, NDX -10bps and RTY -13bps after a green session, on little overnight news. Yields stabilized, attributed to softer ADP private payrolls and Williams comments, and the market now prices a 60% chance of a hike at the September meeting, with Waller this morning, NFP tomorrow, CPI 9/11 and BoJ 9/18 as the next catalysts. The consumer earnings moves are framed against the bar each name carried: VSXY, up 57% YTD at a sector-high 18x P/E, was expected to beat and raise, missed topline at $1.61B, and fell 15%. FIVE beat and guided 3Q well above consensus, so it rose. PVH beat on margin but reaffirmed FY and guided 3Q below consensus, so upside is not flowing through. CPB cut its dividend 35% and guided 2027 below. WOOF's profit beat plus 22% short interest drove short covering. GS Prime August: gross leverage rose for the first time in three months, Consumer Discretionary was net bought, defensives net sold a fifth straight month.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "US equity futures are mixed premarket on 3 September 2026 with SPX up 5bps, NDX down 10bps and RTY down 13bps.",
+   "anchor": "Futures mixed this AM with SPX up small (+5bps) // NDX \u221210bps // RTY \u221213bps",
+   "topic": "US futures",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "intraday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "US equities finished higher on 2 September 2026 and there was little headline news overnight going into the holiday weekend.",
+   "anchor": "green yesterday, with little headline news overnight into the holiday weekend",
+   "topic": "US futures",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "Yield stabilization is attributed to softer ADP private payrolls on 2 September 2026 and comments from Williams.",
+   "anchor": "some stabilization chalked up to softer ADP private payrolls yesterday and comments from Williams",
+   "topic": "US yields",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "The market is pricing a 60% chance of a hike at the September Fed meeting.",
+   "anchor": "Market now pricing a 60% chance of a hike at the September meeting",
+   "topic": "Fed rate pricing",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September meeting"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "The bond market is watching Waller on the morning of 3 September 2026 and non-farm payrolls the following day.",
+   "anchor": "the bond market is watching Waller this morning and NFP tomorrow",
+   "topic": "macro catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next two days"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "The next catalysts after payrolls are CPI on Friday 9/11 and the Bank of Japan on 9/18.",
+   "anchor": "Next catalysts: CPI Friday 9/11 and BoJ 9/18",
+   "topic": "macro catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next two weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "VSXY is down 15% after sales missed a high bar, with the stock a major outperformer year to date.",
+   "anchor": "Notable laggards: VSXY (\u221215%) after sales missed",
+   "topic": "VSXY earnings",
+   "status": "released",
+   "instruments": [
+    "VSXY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "intraday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "Expectations into VSXY's print were for a clear beat-and-raise and the company missed on topline.",
+   "anchor": "Expectations were for a clear beat-and-raise; they missed topline",
+   "topic": "VSXY earnings",
+   "status": "released",
+   "instruments": [
+    "VSXY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "VSXY 2Q revenues came in at $1.61B versus $1.62B consensus, up 10% year over year against low-teens expectations.",
+   "anchor": "$1.61B vs $1.62B consensus; revs +10% y/y vs low-teens expected",
+   "topic": "VSXY earnings",
+   "status": "released",
+   "instruments": [
+    "VSXY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "VSXY 2Q EPS was $0.95 versus $0.78 expected.",
+   "anchor": "revs +10% y/y vs low-teens expected. EPS $0.95 vs $0.78",
+   "topic": "VSXY earnings",
+   "status": "released",
+   "instruments": [
+    "VSXY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "VSXY 2Q operating income was $124M versus $97M expected.",
+   "anchor": "income $124M vs $97M. FY sales guide tweaked higher to $7.1\u2013$7.18B",
+   "topic": "VSXY earnings",
+   "status": "released",
+   "instruments": [
+    "VSXY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "VSXY raised its full-year sales guidance to $7.1B to $7.18B from a prior $7.03B to $7.13B.",
+   "anchor": "FY sales guide tweaked higher to $7.1\u2013$7.18B vs prior $7.03\u2013$7.13B",
+   "topic": "VSXY earnings",
+   "status": "forecast",
+   "instruments": [
+    "VSXY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "VSXY shares are up 57% year to date and trade at a sector-high 18x P/E.",
+   "anchor": "Shares\n+57% YTD, sector-high 18x P/E",
+   "topic": "VSXY earnings",
+   "status": "level",
+   "instruments": [
+    "VSXY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "FIVE is up 6% after beating a high bar, driven particularly by 3Q guidance given tougher comps ahead.",
+   "anchor": "On the positive side, FIVE (+6%) beat a high bar, particularly with 3Q guidance given tougher comps",
+   "topic": "FIVE earnings",
+   "status": "released",
+   "instruments": [
+    "FIVE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "intraday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "FIVE is up 4% on strong 3Q guidance despite tougher compares, with 2Q EPS of $1.68 versus $1.40.",
+   "anchor": "FIVE +4% on strong 3Q guidance despite tougher compares. 2Q EPS $1.68 vs $1.40",
+   "topic": "FIVE earnings",
+   "status": "released",
+   "instruments": [
+    "FIVE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "FIVE 2Q comps were +14.1% versus consensus +10.4%, in line with the elevated bar.",
+   "anchor": "consensus +10.4% (the +14% was in-line with the elevated bar)",
+   "topic": "FIVE earnings",
+   "status": "released",
+   "instruments": [
+    "FIVE"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "FIVE beat on SG&A by 100 basis points in 2Q.",
+   "anchor": "SG&A beat by 100bps. Guides 3Q EPS",
+   "topic": "FIVE earnings",
+   "status": "released",
+   "instruments": [
+    "FIVE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "FIVE guides 3Q EPS of $1.01 to $1.13 versus $0.87 consensus and comps of +8% to +10% versus +3.7% consensus.",
+   "anchor": "$1.01\u2013$1.13 vs consensus $0.87 and comps +8\u201310% vs consensus +3.7%",
+   "topic": "FIVE earnings",
+   "status": "forecast",
+   "instruments": [
+    "FIVE"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "PVH is up 2% on a margin-led beat with puts and takes.",
+   "anchor": "PVH (+2%) margin-led beat with puts",
+   "topic": "PVH earnings",
+   "status": "released",
+   "instruments": [
+    "PVH"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "intraday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "PVH EPS was $3.70 versus $3.08 consensus and $3.00 to $3.10 guidance, including a tariff refund of about $1.80 versus about $1.70 previously.",
+   "anchor": "EPS $3.70 (vs $3.08 cons and $3.00\u2013$3.10 guidance) with ~$1.80 tariff refund vs ~$1.70",
+   "topic": "PVH earnings",
+   "status": "released",
+   "instruments": [
+    "PVH"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "PVH revenue was $2.10B.",
+   "anchor": "Revenue $2.10B. Gross margin 63.0% vs 62.2% cons",
+   "topic": "PVH earnings",
+   "status": "released",
+   "instruments": [
+    "PVH"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "PVH gross margin was 63.0% versus 62.2% consensus and operating margin was 11.1% versus about 9.5% guidance.",
+   "anchor": "Gross margin 63.0% vs 62.2% cons; operating margin 11.1% vs ~9.5%",
+   "topic": "PVH earnings",
+   "status": "released",
+   "instruments": [
+    "PVH"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "PVH reaffirmed full-year EPS of $11.80 to $12.10 on roughly flat sales and about 8.8% margin, so the 2Q upside is not flowing through.",
+   "anchor": "FY EPS reaffirmed $11.80\u2013$12.10 on ~flat sales and ~8.8% margin, so 2Q upside isn\u2019t flowing",
+   "topic": "PVH earnings",
+   "status": "forecast",
+   "instruments": [
+    "PVH"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "PVH guided 3Q EPS to $2.50 to $2.65 versus $2.99 consensus on about 7.5% margin, reflecting stepped-up marketing.",
+   "anchor": "3Q guided $2.50\u2013$2.65 vs $2.99 cons on ~7.5% margin, reflecting stepped-up marketing",
+   "topic": "PVH earnings",
+   "status": "forecast",
+   "instruments": [
+    "PVH"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "COST is unchanged, a bit softer, likely on some Labor Day timing.",
+   "anchor": "COST (unch) a bit softer but likely some Labor Day timing",
+   "topic": "COST August sales",
+   "status": "released",
+   "instruments": [
+    "COST"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "intraday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "COST August same-store sales excluding gas and FX were +5.4% versus +6.1% consensus, decelerating from +6.6% in July.",
+   "anchor": "August SSS (ex-gas/FX) +5.4% vs consensus +6.1%, decelerating from +6.6% in July",
+   "topic": "COST August sales",
+   "status": "released",
+   "instruments": [
+    "COST"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "COST US comps excluding gas were +5.6% versus +6.0% consensus and +6.9% in July.",
+   "anchor": "comps (ex-gas) +5.6% vs +6.0% cons / +6.9% July",
+   "topic": "COST August sales",
+   "status": "released",
+   "instruments": [
+    "COST"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "COST cannibalization was about 50 basis points in August.",
+   "anchor": "Cannibalization ~50bps. Labor Day timing in US and",
+   "topic": "COST August sales",
+   "status": "released",
+   "instruments": [
+    "COST"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "Labor Day timing in the US and Canada cut COST total sales and comps by a little less than 75 basis points, and excluding that August would be roughly in line with July.",
+   "anchor": "Labor Day timing in US and\nCanada hit total and comps by a little less than 75bps",
+   "topic": "COST August sales",
+   "status": "released",
+   "instruments": [
+    "COST"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "The COST Canada slowdown is likely due in part to recent tariff news.",
+   "anchor": "Canada slowdown likely in part due to recent tariff news",
+   "topic": "COST August sales",
+   "status": "released",
+   "instruments": [
+    "COST"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "CPB is down 6% and reported 4Q EPS of $0.39 in line, with organic revenues -1% versus -0.6% consensus.",
+   "anchor": "CPB \u22126%. 4Q EPS $0.39 in-line; organic revs \u22121% vs \u22120.6% cons",
+   "topic": "CPB earnings",
+   "status": "released",
+   "instruments": [
+    "CPB"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "4Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "CPB guided initial 2027 EPS to $1.65 to $1.80 versus $1.83 consensus with revenues down 2% to 4% versus -1% consensus.",
+   "anchor": "Initial 2027 EPS $1.65\u2013$1.80 vs $1.83\ncons; revenues down 2\u20134% vs \u22121% cons",
+   "topic": "CPB earnings",
+   "status": "forecast",
+   "instruments": [
+    "CPB"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "CPB is cutting its dividend 35%, taking the yield to 4.2% from 6.6%.",
+   "anchor": "Cutting the dividend 35%; yield now 4.2% vs prior 6.6%",
+   "topic": "CPB earnings",
+   "status": "released",
+   "instruments": [
+    "CPB"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "WOOF is up 10% and the results were good enough to drive some short covering.",
+   "anchor": "WOOF (+10%) results good enough to drive some short covering",
+   "topic": "WOOF earnings",
+   "status": "released",
+   "instruments": [
+    "WOOF"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "intraday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "WOOF is up 10% on a strong profit beat and continued deleveraging, with short interest at 22%.",
+   "anchor": "WOOF +10% on a strong profit beat and continued deleveraging. Short interest 22%",
+   "topic": "WOOF earnings",
+   "status": "released",
+   "instruments": [
+    "WOOF"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "intraday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "WOOF adjusted EBITDA was $122.2M versus $111.1M consensus, or $115.4M excluding a $6.8M IEEPA refund.",
+   "anchor": "Adjusted EBITDA\n$122.2M vs $111.1M cons (still $115.4M ex $6.8M IEEPA refund)",
+   "topic": "WOOF earnings",
+   "status": "released",
+   "instruments": [
+    "WOOF"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "WOOF EPS was $0.13 versus $0.07 consensus and revenue was $1.49B in line with comps +0.6%.",
+   "anchor": "EPS $0.13 vs $0.07. Revenue $1.49B\nin-line; comps +0.6%",
+   "topic": "WOOF earnings",
+   "status": "released",
+   "instruments": [
+    "WOOF"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "WOOF gross margin rose 37 basis points to 39.7% and 2Q free cash flow was $129.9M.",
+   "anchor": "Gross margin +37bps to 39.7%. Q2 FCF $129.9M",
+   "topic": "WOOF earnings",
+   "status": "released",
+   "instruments": [
+    "WOOF"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "WOOF prepaid a further $75M of debt after quarter-end, $170M over nine months, working toward 2x leverage.",
+   "anchor": "Further $75M debt prepayment\npost-quarter ($170M over nine months) toward 2x leverage",
+   "topic": "WOOF earnings",
+   "status": "released",
+   "instruments": [
+    "WOOF"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "WOOF reaffirmed full-year EBITDA of $415M to $430M.",
+   "anchor": "toward 2x leverage. FY reaffirmed $415\u2013430M EBITDA",
+   "topic": "WOOF earnings",
+   "status": "forecast",
+   "instruments": [
+    "WOOF"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "LULU reports after the close on 3 September 2026.",
+   "anchor": "some short covering. Ahead: LULU reports post",
+   "topic": "LULU earnings",
+   "status": "forecast",
+   "instruments": [
+    "LULU"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "post close"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "GS Prime saw little net activity in global equities in August, with gross leverage rising for the first time in three months and net leverage relatively unchanged.",
+   "anchor": "global equities saw little net activity. Gross leverage rose for the first time in 3 months",
+   "topic": "prime brokerage positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "Consumer Discretionary was better to buy in August as long buys outpaced short sales 1.4 to 1.",
+   "anchor": "Consumer Discretionary better to buy as long buys outpaced short sales",
+   "topic": "prime brokerage positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "Broadline Retail, Specialty Retail and Distributors were the most net bought industries in August.",
+   "anchor": "Broadline Retail, Specialty Retail, and Distributors most net bought",
+   "topic": "prime brokerage positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "Hotels, Restaurants and Leisure and Textiles, Apparel and Luxury were the most net sold industries in August.",
+   "anchor": "Hotels/Restaurants/Leisure\nand Textiles/Apparel/Luxury most net sold",
+   "topic": "prime brokerage positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "US Consumer Discretionary long/short ratio is 2.26, the 65th percentile over one year and the 86th over five years.",
+   "anchor": "US Consumer Discretionary L/S 2.26 (65th 1y / 86th 5y)",
+   "topic": "prime brokerage positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Mihelc - Consumer Morning Trading Update US 3 Sep 2026",
+   "claim": "Defensives were net sold for a fifth straight month in August.",
+   "anchor": "Defensives net sold a 5th straight month",
+   "topic": "prime brokerage positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15261__gs-mihelc-consumer-morning-trading-update-us-3-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 47,
+  "matched": 47,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
