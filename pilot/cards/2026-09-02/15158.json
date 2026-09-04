@@ -1,0 +1,477 @@
+{
+ "brief": "Goldman Sachs FICC and Equities derivatives desk update, 2 September 2026. The desk reports a sharp implied vol reset, with NDX average stock implied vol down about 20 vol points since mid-July to near YTD lows, which it attributes to improved AI sentiment and recent leverage reduction and positioning unwinds. That reset has produced a bid for tech upside across single stocks and index, and at the same time a noticeable uptick in hedging ahead of a seasonally more challenging period for equities and renewed geopolitical tensions. The desk's conclusion follows from both: pair optimistic tech views with portfolio hedges while near-term vol is at these levels. Ideas listed: buy AMAT calls, buy QQQ calls, fund SMH upside by selling IGV upside, buy VIX 21Oct26 20/30 call spreads as a book hedge, buy IWM calls into Friday's NFP where GS is below street consensus, GLD/IBIT/SPX worst-of calls for the debasement theme, and cross-corridor dispersion. Dealer gamma is estimated still very long and getting longer to the downside, a source of index support. Client flow cited: DKS September calls and EWZ December call spreads.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs has seen a bid for upside exposure in Tech across both single stocks and index following the sharp vol reset.",
+   "anchor": "we have seen a bid for upside exposure in Tech across the single stock and index space",
+   "topic": "tech upside flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs has seen a noticeable uptick in hedging alongside the bid for tech upside.",
+   "anchor": "there's also been a noticeable uptick in hedging",
+   "topic": "portfolio hedging",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs frames the period ahead as seasonally more challenging for equities and marked by renewed geopolitical tensions.",
+   "anchor": "ahead of a seasonally more challenging period for equities and in the face of renewed geopolitical tensions",
+   "topic": "equity seasonality",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "fall 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs recommends pairing optimistic tech views with portfolio hedges given current near-term vol levels.",
+   "anchor": "it is sensible to pair optimistic tech views with portfolio hedges here, especially with near-term vol at these levels",
+   "topic": "portfolio hedging",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs lists AVGO, SNOW, HPE and ZS earnings plus Friday's NFP as the remaining catalysts before Labor Day.",
+   "anchor": "A few more catalysts remain before Labor Day including earnings from AVGO, SNOW, HPE, ZS as well as NFP on Friday.",
+   "topic": "September catalysts",
+   "status": "forecast",
+   "instruments": [
+    "AVGO",
+    "SNOW",
+    "HPE",
+    "ZS"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "The implied move through the end of the week is 0.80%.",
+   "anchor": "Implied move through the end of the week is 0.80%.",
+   "topic": "weekly implied move",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through end of week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs sees favorable entry points for upside expressions and stock replacement across TMT stocks because implied vols have meaningfully reset.",
+   "anchor": "there are favorable entry points for upside expressions and/or stock replacement given implied vols have meaningfully reset",
+   "topic": "TMT implied vol",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "NDX average stock implied vol has fallen roughly 20 vol points since mid-July to near year-to-date lows.",
+   "anchor": "The NDX 'avg stock' implied vol has fallen ~20v since mid-July to near YTD lows.",
+   "topic": "TMT implied vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since mid-July"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs names AMAT, MSFT, CDNS and NOW as attractive upside opportunities into its Communacopia and Technology Conference next week.",
+   "anchor": "AMAT, MSFT, CDNS, and NOW stand out as attractive upside opportunities heading into our GS Communacopia + Technology Conference",
+   "topic": "TMT upside ideas",
+   "status": "target",
+   "instruments": [
+    "AMAT",
+    "MSFT",
+    "CDNS",
+    "NOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs remains constructive on AMAT on accelerating revenue growth into 2027, margin expansion and valuation after the recent dislocation.",
+   "anchor": "we remain constructive due to accelerating revenue growth into 2027, margin expansion, and attractive valuation",
+   "topic": "AMAT calls",
+   "status": "target",
+   "instruments": [
+    "AMAT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "AMAT shares are down 40% since June 30th.",
+   "anchor": "after recent dislocation (shares down -40% since June 30th)",
+   "topic": "AMAT calls",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since June 30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "AMAT Oct 520 calls cost $8.75 with the stock referenced at 438.09 and capture Communacopia and AMAT's October investor day.",
+   "anchor": "AMAT Oct 520 Calls cost $8.75 (ref 438.09) and capture Communacopia and AMAT's October investor day.",
+   "topic": "AMAT calls",
+   "status": "level",
+   "instruments": [
+    "AMAT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs likes using IGV upside to fund SMH upside.",
+   "anchor": "We like using IGV upside to fund SMH upside here.",
+   "topic": "SMH versus IGV vol",
+   "status": "target",
+   "instruments": [
+    "SMH",
+    "IGV"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "SMH 1-month upside vol relative to IGV trades at one of the lowest levels in more than 5 years.",
+   "anchor": "SMH 1m upside vol relative to IGV trades at one of the lowest levels in 5+ years.",
+   "topic": "SMH versus IGV vol",
+   "status": "level",
+   "instruments": [
+    "SMH",
+    "IGV"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1 month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Consumer stocks including DKS, BURL, ONON and TPR have seen exceptionally powerful selloffs.",
+   "anchor": "consumer stocks have seen some exceptionally powerful selloffs (DKS, BURL, ONON, TPR etc...)",
+   "topic": "consumer stocks",
+   "status": "released",
+   "instruments": [
+    "DKS",
+    "BURL",
+    "ONON",
+    "TPR"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs has not yet seen significant defense of consumer stocks on its cash desk, while some clients are using options to play for a bounce.",
+   "anchor": "while we have yet to see significant defense on our cash desk, some clients are utilizing options to play for a bounce",
+   "topic": "consumer stocks",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "A customer bought 8,600 DKS Sep 145 calls outright.",
+   "anchor": "Ex: DKS Sep 145 calls, cust bought 8.6k outright.",
+   "topic": "consumer stocks",
+   "status": "released",
+   "instruments": [
+    "DKS"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "The implied vol spread between NDX and SPX was blown out early in June.",
+   "anchor": "Early in June, the implied vol spread between NDX and SPX was blown out.",
+   "topic": "NDX SPX vol spread",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "early June"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "The NDX versus SPX implied vol spread has fully reverted over the summer and now sits beneath its 5-year average.",
+   "anchor": "we have seen a complete reversion with current levels now registering beneath the 5-year average",
+   "topic": "NDX SPX vol spread",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs recommends buying QQQ calls for broad tech upside because vol looks cheap on both a relative and absolute basis.",
+   "anchor": "for broad tech upside given vol looks cheap on a relative and absolute basis",
+   "topic": "QQQ calls",
+   "status": "target",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "QQQ Sep 725 calls cost $4.01 with QQQ referenced at 709.05, 27 days to expiry and a 2.8% move to breakeven.",
+   "anchor": "QQQ Sep 725 Calls cost $4.01 ref. 709.05 (27d / 2.8% move to breakeven).",
+   "topic": "QQQ calls",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "27 days"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs estimates dealer gamma positioning is still very long at this node and gets longer to the downside, providing index-level support.",
+   "anchor": "We estimate that dealer gamma positioning is still very long at this node and gets longer to the downside",
+   "topic": "dealer gamma",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Clients have used low absolute vol levels to put on tactical portfolio hedges.",
+   "anchor": "we've seen clients take advantage of low absolute vol levels to put on tactical portfolio hedges",
+   "topic": "portfolio hedging",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs favors VIX call spreads as a book hedge and says the idea has resonated across client types.",
+   "anchor": "we favor VIX as a book hedge here and have seen this idea resonate across client types",
+   "topic": "VIX hedge",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "The VIX 21Oct26 20/30 call spread indicatively costs $1.00 for 10x leverage.",
+   "anchor": "VIX 21Oct26 20/30 Call Spread indicatively costs $1.00 (10x leverage).",
+   "topic": "VIX hedge",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "21 Oct 2026 expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs likes owning IWM upside into NFP with the index sitting on its 100-day moving average.",
+   "anchor": "sitting on its 100dma owning upside feels like good risk-reward here ahead of NFP",
+   "topic": "IWM calls",
+   "status": "target",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "ahead of NFP"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs is below street consensus on Friday's payrolls, with +40k cited and street whispers for an even lower number that could bid rate-sensitive pockets of the market.",
+   "anchor": "GS is below street consensus (+40k) with street whispers for an even lower number",
+   "topic": "August payrolls",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "IWM 30Sep 300 calls cost $2.48 with IWM referenced at 293.37 and 30 days to expiry.",
+   "anchor": "IWM 30Sep 300 calls cost $2.48 (ref 293.37, 30d)",
+   "topic": "IWM calls",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "30 days"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Large Brazil November and December upside continues to get lifted as investors secure right tail exposure ahead of the elections.",
+   "anchor": "Large Brazil Nov/Dec upside continues to get lifted as investors secure right tail exposures",
+   "topic": "Brazil election upside",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Nov/Dec"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "A customer bought 68,675 EWZ Dec26 35/38 call spreads outright.",
+   "anchor": "Ex: EWZ Dec26 35/38 call spreads, cust bought 68,675x outright.",
+   "topic": "Brazil election upside",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 2026 expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs proposes worst-of calls as a capital efficient way to retain exposure to the debasement theme.",
+   "anchor": "as a capital efficient way to retain exposure to the debasement theme",
+   "topic": "debasement theme",
+   "status": "target",
+   "instruments": [
+    "GLD",
+    "IBIT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "A GLD/IBIT/SPX Dec26 103% worst-of call costs 0.95% against 2.1% for the cheapest vanilla.",
+   "anchor": "GLD/IBIT/SPX dec26 103% worst of call at 0.95% (2.1% is cheapest vanilla)",
+   "topic": "debasement theme",
+   "status": "level",
+   "instruments": [
+    "GLD",
+    "IBIT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 2026 expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "A GLD/IBIT/SPX Dec26 101% worst-of call costs 1.45% against 3.1% for the cheapest vanilla.",
+   "anchor": "GLD/IBIT/SPX dec26 101% worst of call at 1.45% (3.1% is cheapest vanilla)",
+   "topic": "debasement theme",
+   "status": "level",
+   "instruments": [
+    "GLD",
+    "IBIT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 2026 expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Stankard - Vol Views 2 Sep 2026",
+   "claim": "Goldman Sachs sees a good entry point for cross-corridor dispersion, buying stock implied vol through single-stock variance swaps and selling index implied vol through an index variance swap.",
+   "anchor": "a good entry point to buy stock implied vol through the weighted sum of individual variance swaps",
+   "topic": "cross-corridor dispersion",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-02/15158__gs-stankard-vol-views-2-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 34,
+  "matched": 34,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
