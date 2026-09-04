@@ -1,0 +1,300 @@
+{
+ "brief": "August's rally continued despite low summer volume. The S&P 500 rose 2.6% and the Nasdaq 100 gained 4.2%, its best month since May, though Nvidia's earnings and the Fed's Jackson Hole symposium eroded breadth without breaking the uptrend. Software outperformed semiconductors by 10 percentage points in August. SpotGamma attributes this to capital rotating out of crowded semiconductor positions after strong earnings from Salesforce, Okta and Crowdstrike, a move it says was broad rather than isolated to a few names. JPMorgan's Andrew Tyler has shifted to \"tactically cautious, neutral,\" citing a hawkish Fed, unclear positioning, widening credit spreads and tricky seasonality. The desk favors the Magnificent Seven, software especially if semis keep falling, healthcare within defensives, large-cap banks, and long Nasdaq 100 versus Russell 2000. Fed Chair Kevin Warsh's hawkish Jackson Hole remarks pushed swaps-implied odds of a rate hike this month to 67%, up from 40% a week earlier, ahead of this week's payrolls and next week's inflation data. Positioning shows CTAs elevated and vol-control funds maxed out, an asymmetric setup if volatility rises. September is negative only 40% of the time historically, but when it is, the drop is always sharp, 2.9% to 12%.",
+ "cards": [
+  {
+   "bank": "Bloomberg",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "The S&P 500 rose 2.6% in August, more than recovering from weak performance in June and July.",
+   "anchor": "the S&P 500 thrived, rising 2.6% and more than making up for the poor performance in June and July",
+   "topic": "S&P 500 performance",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "The Nasdaq 100 rose 4.2% in August, its best month since May.",
+   "anchor": "The Nasdaq 100 even recorded its best month since May with a 4.2% surge.",
+   "topic": "Nasdaq 100 performance",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "SpotGamma",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "Software stocks outperformed semiconductor stocks by 10 percentage points in August.",
+   "anchor": "outperforming the semis by 10 percentage points in August",
+   "topic": "software vs semis rotation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "JPMorgan's Andrew Tyler says the desk is moving to a tactically cautious, neutral view.",
+   "anchor": "We are moving to a tactically cautious, neutral view",
+   "topic": "equity market stance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "JPMorgan recommends owning the Magnificent Seven, citing AI, memory, and semiconductor stocks' inability to sustain a bid.",
+   "anchor": "They recommend owning the Magnificent Seven given AI, memory and semiconductors are unable to sustain a bid",
+   "topic": "Magnificent Seven recommendation",
+   "status": "forecast",
+   "instruments": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "NVDA",
+    "META",
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "JPMorgan sees software stocks as attractive, especially if semiconductor stocks continue falling.",
+   "anchor": "seeing software as attractive, especially if semis continue to fall",
+   "topic": "software vs semis rotation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "JPMorgan favors healthcare within defensive sectors.",
+   "anchor": "They favor healthcare within defensives, large cap banks to play healthy economic growth",
+   "topic": "sector allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "JPMorgan favors large-cap bank stocks to play healthy economic growth.",
+   "anchor": "large cap banks to play healthy economic growth",
+   "topic": "sector allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "JPMorgan favors being long Nasdaq 100 versus Russell 2000.",
+   "anchor": "and long-Nasdaq 100 versus Russell 2000.",
+   "topic": "Nasdaq vs Russell pair trade",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Federal Reserve",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "Fed Chairman Kevin Warsh reiterated his commitment to taming inflation at the Jackson Hole symposium.",
+   "anchor": "Fed Chairman Kevin Warsh doubled down on his vow to tame inflation",
+   "topic": "Fed rate hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "Swaps traders assign a 67% probability to a Fed rate hike this month, up from 40% a week earlier.",
+   "anchor": "Swaps traders now see a 67% chance of a hike, compared with 40% a week ago.",
+   "topic": "Fed rate hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this month"
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "The VIX is currently around 15 and typically rises to 20 in September.",
+   "anchor": "With the VIX currently around the 15 handle, and typically rising to 20 in September",
+   "topic": "VIX seasonality",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "September has averaged a 1.2% drop for the MSCI World Index over the past 25 years.",
+   "anchor": "a 1.2% drop for the MSCI World Index on average over the past 25 years",
+   "topic": "September seasonality",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "September is negative only 40% of the time, but when it is negative, the drop is always sharp, between 2.9% and 12%.",
+   "anchor": "September is a negative month only 40% of the time, when it is, it\u2019s always a sharp drop of between 2.9% and 12%.",
+   "topic": "September seasonality",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "JPMorgan and Goldman Sachs",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "Midterm elections tend to weigh on markets into the vote and then drive strongly positive performance post-election.",
+   "anchor": "midterm elections may exacerbate moves, which tend to be negative into the vote and then strongly positive post-election",
+   "topic": "midterm election seasonality",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "around the midterm elections"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "Deutsche Bank data shows aggregate equity positioning is modestly overweight, in the 62nd percentile.",
+   "anchor": "Deutsche Bank AG data shows aggregate positioning is modestly overweight in the 62nd percentile",
+   "topic": "equity positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "Large-cap exposure is high, in the 85th percentile, but not yet considered stretched.",
+   "anchor": "while exposure to large caps is high, it\u2019s not stretched yet in the 85th percentile",
+   "topic": "equity positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "CTA exposure to stocks is elevated.",
+   "anchor": "CTAs exposure to stocks is elevated",
+   "topic": "equity positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "Vol-control funds being maxed out limits further equity buying and creates a highly asymmetric flow backdrop if volatility rises.",
+   "anchor": "vol control funds are maxed out, limiting the potential for further additions and creating a highly asymmetric flow backdrop in the event of rising volatility.",
+   "topic": "equity positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "SpotGamma",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "Oracle is in a similar options positioning setup to where ServiceNow and Microsoft were a month ago.",
+   "anchor": "Oracle Corp., for example, is in a similar positioning setup up as ServiceNow Inc. and Microsoft Corp. were a month ago.",
+   "topic": "software options positioning",
+   "status": "level",
+   "instruments": [
+    "ORCL",
+    "NOW",
+    "MSFT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "SpotGamma",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "ServiceNow and Microsoft both showed positive dealer gamma below spot and negative gamma above spot, then rallied hard post-earnings.",
+   "anchor": "Both showed positive dealer gamma positioning below spot and negative gamma above, and rallied hard post earnings.",
+   "topic": "software options positioning",
+   "status": "released",
+   "instruments": [
+    "NOW",
+    "MSFT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "SpotGamma",
+   "document": "September Is About Rates, Software, & Seasonality",
+   "claim": "Implied volatility across many software names has fallen despite the rally, with most stocks showing call skew as traders position for further gains.",
+   "anchor": "implied volatility across many software names has come down despite the rally, with most stocks showing some degree of call skew",
+   "topic": "software options positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15313__september-is-about-rates-software-seasonality.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 22,
+  "matched": 22,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
