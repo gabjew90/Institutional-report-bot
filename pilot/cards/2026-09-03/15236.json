@@ -1,0 +1,147 @@
+{
+ "brief": "BCOM has broken out from its long-term trend line and 200-day moving average, dislocating higher after testing that level over the summer. The move is driven by a convergence of supply shocks: Hormuz disruptions hitting fertiliser and feedstock flows, renewed Russia-Ukraine escalation disrupting Black Sea grain exports, and El Nino-linked weather risk tightening global grain balances. Agricultural prices are accelerating as a result, with wheat, rice and sugar all elevated. The note's core mechanism is a policy shock: when drought or supply disruption hits, exporting governments restrict shipments to protect domestic food supply, and global prices move more violently than the underlying crop loss alone would justify. Because US 10-year breakevens have historically moved in close tandem with grains (BCOMGR), continued grain strength could push the inflation narrative into rates. But positioning has turned crowded again, with managed-money net corn longs near 317k contracts after collapsing 88% in three weeks during the June washout, leaving the complex vulnerable to reversals; wheat already faded mid-week after hitting multi-year highs.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "no inflation unless you need to eat",
+   "claim": "BCOM has exploded higher after testing its longer-term trend line and 200-day moving average earlier this summer, dislocating from the 200-day again.",
+   "anchor": "BCOM has exploded higher since testing the longer-term trend line and the 200-day MA earlier this summer",
+   "topic": "BCOM index breakout",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "no inflation unless you need to eat",
+   "claim": "The Gulf accounts for roughly 43% of global urea exports and 44% of global sulphur exports.",
+   "anchor": "the Gulf accounts for roughly 43% of global urea exports and 44% of sulphur exports",
+   "topic": "Gulf fertiliser exports",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "no inflation unless you need to eat",
+   "claim": "India's sugar inventories are at 30-year lows and India has begun export restrictions.",
+   "anchor": "India's sugar inventories are at 30-year lows and export restrictions have begun",
+   "topic": "India sugar exports",
+   "status": "released",
+   "instruments": [
+    "CANE"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "no inflation unless you need to eat",
+   "claim": "Rice is trading around $500/tonne, between the 2025 trough of roughly $370-400 and the ~$670 peak reached during the 2023-24 export-ban squeeze.",
+   "anchor": "Rice around $500/tonne sits between the 2025 trough of roughly $370\u2013400 and the ~$670 peak reached during the 2023\u201324 export-ban squeeze",
+   "topic": "rice price level",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "no inflation unless you need to eat",
+   "claim": "Strong El Nino events have historically cut South African corn output by roughly 40% and Australian wheat by 22%, while leaving global grain production essentially unchanged.",
+   "anchor": "Strong events have cut South African corn output by roughly 40% and Australian wheat by 22% while leaving global production essentially unchanged",
+   "topic": "El Nino crop impact",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "no inflation unless you need to eat",
+   "claim": "US 10-year breakevens tend to move in close tandem with grains.",
+   "anchor": "US 10-year breakevens tend to move in close tandem with grains",
+   "topic": "grains-breakevens correlation",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "no inflation unless you need to eat",
+   "claim": "BCOMGR, the grains component of the Bloomberg commodity index, has moved sharply higher over the past month.",
+   "anchor": "BCOMGR (grains) has moved sharply higher over the past month",
+   "topic": "BCOM grains index",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "no inflation unless you need to eat",
+   "claim": "Managed-money net long positions in corn have jumped to 317k contracts, the largest since early May.",
+   "anchor": "Managed-money net longs in corn have jumped to 317k contracts, the largest since early May",
+   "topic": "corn positioning",
+   "status": "released",
+   "instruments": [
+    "CORN"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "no inflation unless you need to eat",
+   "claim": "BofA data showed speculative long positions in the grains complex collapsing 88% in just three weeks during the June washout.",
+   "anchor": "BofA had spec longs collapsing 88% in just three weeks during the June washout",
+   "topic": "grains positioning unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "no inflation unless you need to eat",
+   "claim": "Wheat hit fresh multi-year highs before reversing this week, with winter wheat fading again on Wednesday as traders took profits.",
+   "anchor": "wheat hit fresh multi-year highs before reversing, with winter wheat fading again on Wednesday as traders took profits",
+   "topic": "wheat price reversal",
+   "status": "released",
+   "instruments": [
+    "WEAT"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15236__no-inflation-unless-you-need-to-eat.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
