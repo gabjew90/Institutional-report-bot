@@ -1,0 +1,179 @@
+[Page 1]
+ 
+Token Prices Are Falling Faster Than Demand, 
+Goldman Warns On The Broad AI De-Rating 
+ 
+BY TYLER DURDEN 
+THURSDAY, SEP 03, 2026 - 04:30 PM 
+The AI Trade Just Ran Into Its Unit-Economics Problem 
+Amid all the optimism around Broadcom's outlook (which did nothing to help the stock, down 5% 
+today)... 
+On Goldman's research side, Jim Schneider reiterates Buy on Broadcom after management 
+guided AI semi revenue to double to $115bn in FY27 (10GW of datacenter deployments) and 
+double again to $230bn (20GW), naming Anthropic as its largest FY27 customer with OpenAI 
+and Meta "material" in FY28 — a note that pre-emptively waves away the two biggest bear 
+points (Google diversification, margin dilution). 
+But, the AI complex is still losing ground fast.  
+It is not de-rating because the models stopped working. It is de-rating because the price of the 
+work is collapsing faster than anyone sized the plants for... 
+ 
+
+
+[Page 2]
+ 
+That is the narrative from Goldman Sachs One-Delta desk-head Rich Privorotsky (full note 
+available here for pro subs), whose latest note is less a model-launch rumor and more a 
+warning about what happens when token prices, open-weight competition, local inference, and 
+a wall of financed capex show up in the same month. 
+Lots of speculation that Astra drops imminently, though no confirmed launch date. Meta’s new 
+Muse Spark 1.3 is another reminder that competition at the frontier is accelerating (extremely 
+competitive on benchmarks). The bigger point is massive compression in cost/token. If unit 
+prices keep collapsing, consumption has to grow extraordinarily fast just to offset it (Silicon data 
+Token index down -29% in month of August). Add more inference moving toward cheaper/local 
+hardware and I struggle with per token pricing as a durable end state model. That matters for 
+equities. More demand + lower prices is not automatically bullish if pricing falls faster than 
+consumption grows. Unless capability keeps making radical jumps (looking at you, Astra)… 
+periods of compute oversupply become plausible. Beyond the repricing of credit that helps 
+explain why the space has been de-rating. 
+Strip out the Astra gossip and the desk is saying one thing: the last two years of equity 
+underwriting assumed a world where more tokens meant more revenue. August printed the 
+opposite. 
+The number that actually matters 
+Silicon Data’s LLM Token Expenditure Index - the usage-weighted price the market is paying per 
+million tokens, published on Bloomberg as SDLLMTK - fell 29% in August and printed about 
+$0.97 per million tokens at month-end. That is a record low, and more than 50% off the May 
+peak near $2.05. 
+
+
+[Page 3]
+ 
+ 
+That index is not "token demand." Silicon Data itself has had to remind people it is an 
+expenditure-weighted price. A crash in the line can mean list-price cuts, a mix shift into cheap 
+open-weight models, or both. 
+It does not require that anyone stopped using AI. 
+Which is why the bull talking point - "look at the volume" - is starting to miss the trade. 
+Additionally, JPMorgan’s data-center note had OpenRouter token volume up roughly 47% 
+month-over-month in August. Dollar spend was still only up about 7%. 
+Look again at the chart above, the green line shows rental pricing for H100s is falling (not what 
+you'd expect if 'demand' for tokens is soaring). 
+And our best proxy for actual demand appears to be rolling over... 
+
+
+[Page 4]
+ 
+ 
+There is no official global token meter. The cleanest public series is OpenRouter routed volume 
+- a real API-gateway tape, but not ChatGPT/Gemini/Claude first-party apps. 
+Volume up a lot. Price down more. Spend barely holding. 
+That is the problem: Equities do not get paid in tokens, they get paid in dollars, and CapEx was 
+underwritten off the dollars. 
+Muse Spark is the present. Astra is the option. 
+As Privorotsky notes hopefully, OpenAI’s next model, Astra, is the potential narrative 
+circuit-breaker. 
+Meta’s Muse Spark 1.3, which started rolling out September 2 in Muse Code and the Meta 
+Model API, is the thing already on the tape. 
+Independent benches put Spark 1.3 in the same neighborhood as GPT-5.6 Sol and next to 
+Claude Opus 5 / Fable on agentic and coding work, with long-context retrieval that looks like a 
+different product.  
+Frontier lead measured in weeks is not a moat. It is a product cycle.  
+Every time the second-best model is close enough and cheap, enterprises route around the 
+premium tier. 
+The token index is that routing decision, aggregated. 
+Astra can still reset the mix - if it is a capability jump people will pay a multiple for. On 
+September 1 OpenAI said Astra meets the Critical cybersecurity threshold under its 
+
+
+[Page 5]
+ 
+Preparedness Framework, the first model it has put in that bucket, and that it plans to make the 
+system "available soon." The most advanced cyber tools get gated to testers and then Daybreak 
+Blue. There is still no confirmed date. 
+A radical model that is access-restricted, monitored, and friction-heavy does not automatically 
+refill the token-revenue bucket.  
+It can even reduce billed tokens if the valuable work never hits the public meter. 
+Privorotsky’s parenthetical is doing a lot of work: looking at you, Astra. The desk is treating the 
+launch as the last near-term thing that can invalidate the oversupply case. Everything else is 
+just more competition at a lower clearing price. 
+Per-token pricing is a phase, not an end state 
+This is the line in Goldman's note that the equity complex should have tattooed (hopefully) on 
+the monitor. 
+Cloud inference priced per million tokens only works while the model is too big to run locally, the 
+buyer cannot substitute to an open-weight peer, and the workload is bursty enough that owning 
+the silicon is dumb. All three are rotting at once. 
+On-device and "personal cluster" inference is no longer a hobbyist footnote.  
+RTX Spark-class laptops, DGX Spark boxes, Mac Studios running 70B-class weights, and 
+NPUs in the 40–75+ TOPS band have pushed a large class of tokens toward the cost of 
+electricity. 
+Once a shop’s monthly API bill crosses the amortization line on a five-to-fifteen-thousand-dollar 
+box, they stop being a token customer and become a hardware customer - once. That is a GPU 
+sale. It is not a 40% software annuity. 
+So the durable commercial models start to look like seats, agents, and outcomes; intelligence 
+bundled into ads, cloud, and devices; owned silicon for steady-state decode; and a thin 
+premium tier at the true frontier. 
+Per-million-token list prices racing toward a dollar, then toward dimes, are not a bug in that 
+world. They are the tell that the unit of account is wrong. 
+Privorotsky, again: "I struggle with per token pricing as a durable end state model. That matters 
+for equities." 
+More demand is not automatically bullish... And Credit Noticed 
+The sentence that should end the "insatiable demand" slide: 
+
+
+[Page 6]
+ 
+More demand + lower prices is not automatically bullish if pricing falls faster than consumption 
+grows. 
+CapEx in this cycle is not a flexible OpEx line. Hyperscaler spend has been revised into the 
+high-hundreds-of-billions to roughly a-trillion zone. Moody’s has already flagged free-cash-flow 
+compression, a shift from asset-lite to asset-heavy balance sheets, and lease commitments that 
+do not show up as tidy bonds but bind the issuers all the same. Direct debt across the tracked 
+cohort is already in the hundreds of billions. The five rated hyperscalers were projected to spend 
+on the order of $737 billion in calendar 2026 capex - about 38% of revenue. 
+As always, credit noticed first.  
+Broad investment-grade OAS can look calm while a hyperscaler-specific basket quietly gaps 
+wider than the index. Seventy-eight of 91 hyperscaler bonds issued in 2026 were already 
+trading cheaper than at issuance by late August, in one compilation of the move.  
+ 
+That is the "repricing of credit" Privorotsky is pointing at. Equity multiples were the lagging 
+indicator. 
+The arithmetic is not complicated: 
+Tokens 30% cheaper and volume up 20% means inference revenue falls. 
+Inference revenue falls while depreciation and interest from the 2025–27 buildout are still 
+ramping, and ROIC collapses. 
+ROIC collapses and the market does not need a cartoon "bubble pop," it just needs a multiple 
+that prices a utility with a lot of stranded useful life. 
+
+
+[Page 7]
+ 
+Oversupply does not require empty halls. It only requires utilization that cannot clear at the price 
+the financing assumed. Every GPU can be busy running twenty-cent tokens and the people who 
+borrowed against two-dollar tokens still have a problem. 
+But... 
+Of course it's not all doom and gloom and below we offer three counters that are often heard:  
+1.​ Agents eat the discount. A model that uses 25% fewer tokens per task and then runs ten 
+times as many tasks is still a volume machine. Meta’s own Spark 1.3 comparisons claim 
+roughly 20% fewer tool calls and 25% fewer tokens versus 1.2. Efficiency can increase 
+the set of viable jobs. The question is whether those jobs get metered and paid for, or 
+bundled into products that were already sold. 
+2.​ Training and memory are not the same trade as decode tokens. HBM, power, and 
+training clusters can stay tight while merchant inference commoditizes. August already 
+sketched the split: software ripped, the semiconductor complex wobbled. Shorting “AI” 
+as one blob is how you get the factor wrong. The weak link is inference margin and the 
+second-tier lessors, not necessarily every watt of training silicon. 
+3.​ The frontier tier can still be redefined upward. Every prior collapse in fixed-capability 
+price coexisted with a new expensive flagship. The bull case was never “tokens stay at 
+five dollars.” It was “the five-dollar tier keeps moving up the capability curve fast enough 
+that mix offsets mix-down.” That worked for three years. August is the first clean month 
+where it looks like it stopped. 
+...none of which rescue the multiples by themselves. 
+The Bottom Line 
+Demand can be infinite and the stocks can still go down if the infinite demand arrives at a price 
+that does not service the debt issued to build the plants. 
+The market is rolling from a capability bull market into a price-taker tape. The CapEx was sized 
+for the first regime. Credit has started to charge for the second. Astra is the last near-term 
+narrative that can flip the mix back up the stack. Until it does - and unless it does by enough to 
+matter after the gates and the monitors - August’s token print is the tell. 
+Simply put, more tokens and lower prices are not automatically bullish. Goldman’s desk already 
+wrote the headline. The index just printed it. 
+Professional subscribers can read Privorotsky's full note here at our new Marketdesk.ai portal 
