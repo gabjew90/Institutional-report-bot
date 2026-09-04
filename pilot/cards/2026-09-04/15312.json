@@ -1,0 +1,453 @@
+{
+ "brief": "Renewed US strikes on Iran pushed oil above $90/bbl for the first time since late July on fears of prolonged Strait of Hormuz disruption, compounding weak JOLTS, construction spending, manufacturing PMIs and Dallas Fed services data into stagflation fears. Refined-product prices (diesel, European natgas, heating oil) hit multi-year highs, which the note says should pressure headline inflation even if core impact stays uncertain, complicating a Fed considering another hike into a supply shock. Global sovereign yields reached their highest since 2008. Japan's 10Y topped 3% for the first time in 30 years. September rate-hike odds topped 70%. Nomura's McElligott warns that heavy demand for high-strike payers has left dealers short convexity, so a slow grind in yields turning into a jump could force a disorderly scramble to cover. Goldman's Privorotsky frames AI capex as both the equity bull case and the duration bear case, since AI investment and Treasury issuance compete for the same pool of savings, and he stays cautious on duration now that month-end support has passed. Stocks, gold and bitcoin all fell as the dollar strengthened.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "US oil prices topped $90 a barrel for the first time since late July on renewed American strikes on Iran.",
+   "anchor": "US oil prices topped $90 a barrel for the first time since late July",
+   "topic": "oil price",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Goldman's Privorotsky notes the US diesel crack is at a record.",
+   "anchor": "the US diesel crack at record",
+   "topic": "diesel prices",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Diesel accounts for over 40% of the $40/bbl increase in average global refined product wholesale prices since February.",
+   "anchor": "accounting for over 40% of the $40/bbl increase in average global refined product wholesale prices since February",
+   "topic": "diesel prices",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Global exports of refined products declined 6mb/d, or 25% year over year, with the Persian Gulf and Russia accounting for 75% of the decline.",
+   "anchor": "Global exports of refined products declined 6mb/d (25%) year-over-year (yoy), with the Persian Gulf and Russia accounting for 75% of the decline",
+   "topic": "refined product exports",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "The aggregate global sovereign bond yield is back at its highest since 2008.",
+   "anchor": "The aggregate global sovereign bond yield itself is back at its highest since 2008",
+   "topic": "global sovereign yields",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Japan's 10-year government bond yield topped 3.00% for the first time in 30 years.",
+   "anchor": "Japan's 10Y stole the jam from the market's donut, topping 3.00% for the first time in 30 years",
+   "topic": "Japan 10Y yield",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "The US 10-year Treasury yield has broken above 4.75%, its highest since January 2025.",
+   "anchor": "The 10yr has broken above 4.75%, its highest since January 2025",
+   "topic": "US 10Y yield",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "The US 30-year Treasury yield has stayed somewhat better contained below its recent 5.33% high.",
+   "anchor": "the 30yr has been somewhat better contained below its recent 5.33% high",
+   "topic": "US 30Y yield",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "September rate-hike odds topped 70%.",
+   "anchor": "September rate-hike odds topped 70% today",
+   "topic": "Fed rate-hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Natixis",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Natixis's John Briggs expects long-end Treasury yields to stay elevated until entitlement reform changes the deficit picture.",
+   "anchor": "until entitlement reform changes the deficit picture",
+   "topic": "long-end Treasury yields",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Natixis",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Natixis's John Briggs says Treasury buybacks are a drop in the bucket relative to long-end supply.",
+   "anchor": "Buybacks are a drop in the bucket",
+   "topic": "long-end Treasury yields",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan Asset Management",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "JPMorgan Asset Management's Priya Misra says Treasury buybacks may be dwarfed by the supply onslaught from the AI buildout.",
+   "anchor": "may well be dwarfed by the onslaught of supply from the AI buildout",
+   "topic": "long-end Treasury yields",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "AmeriVet Securities",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "AmeriVet's Gregory Faranello says the Fed needs to tighten rates to bring the long end of the yield curve down.",
+   "anchor": "If you want to get the long end down, you tighten rates.",
+   "topic": "long-end Treasury yields",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nomura",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Nomura's Charlie McElligott says massive demand for high-strike payers is keeping payer skew rich and pushing vol-of-vol to bonkers levels.",
+   "anchor": "Payer Skew stay rich and \u201cVol of Vol\u201d to bonkers levels",
+   "topic": "rates vol skew",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Nomura",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Nomura's Charlie McElligott warns dealers are short large amounts of high-strike rate options, risking a disorderly scramble if the rate move accelerates.",
+   "anchor": "Dealers are short metric tons of these High Strikes",
+   "topic": "rates dealer positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Nvidia's AI infrastructure demand remains extraordinarily robust with revenue doubling year over year.",
+   "anchor": "AI infrastructure demand remains extraordinarily robust, with revenue doubling yoy",
+   "topic": "Nvidia AI demand",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Nvidia forecasts roughly 70% revenue growth next year despite describing its outlook as supply constrained.",
+   "anchor": "the company forecasting roughly 70% growth next year despite describing the outlook as supply constrained",
+   "topic": "Nvidia AI demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Goldman's Privorotsky says AI can reaccelerate Salesforce's bookings, support margins, and create a large services opportunity around implementation and workflow redesign.",
+   "anchor": "AI can reaccelerate bookings, support margins and create a large services opportunity around implementation and workflow redesign",
+   "topic": "Salesforce AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "CRM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "July retail sales declined for the first time in nine months.",
+   "anchor": "July retail sales declined for the first time in nine months",
+   "topic": "retail sales",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Walmart delivered its slowest comparable sales growth in six years and pointed directly to higher fuel costs squeezing shoppers.",
+   "anchor": "Walmart delivered its slowest comparable sales growth in six years and pointed directly to higher fuel costs squeezing shoppers",
+   "topic": "Walmart comparable sales",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Transportation stocks were the worst performers, smashed down 2.5% to their lowest since May.",
+   "anchor": "Trannies were worst, smashed down 2.5% to its lowest since May",
+   "topic": "transportation stocks",
+   "status": "released",
+   "instruments": [
+    "IYT"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Goldman's flagship momentum basket broke below its July lows to its lowest since September 2025.",
+   "anchor": "Goldman's flagship momentum basket breaking below July lows to its lowest since Sept 2025",
+   "topic": "momentum factor",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Semiconductor stocks dropped to their lowest in a month.",
+   "anchor": "Semis dropped to their lowest in a month",
+   "topic": "semiconductor stocks",
+   "status": "released",
+   "instruments": [
+    "SMH"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Bitcoin tumbled back below $77,000 before finding some support.",
+   "anchor": "Bitcoin was also butchered, tumbling back below $77,000 before finding some support",
+   "topic": "bitcoin price",
+   "status": "released",
+   "instruments": [
+    "IBIT"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Gold extended its recent reversal, dropping back below $4400.",
+   "anchor": "Gold extended its recent reversal, dropping back below $4400",
+   "topic": "gold price",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Stock Trader's Almanac",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Stock Trader's Almanac's Jeff Hirsch says gold historically finds its footing in mid-July before a sustained period of seasonal strength through the fall.",
+   "anchor": "gold tends to find its footing in mid-July before entering a sustained period of seasonal strength that extends through much of the fall",
+   "topic": "gold seasonality",
+   "status": "forecast",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through fall into year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Goldman's Privorotsky says gold's structural bull case remains intact on persistent fiscal deficits, rising public debt, and the eventual temptation to inflate liabilities away.",
+   "anchor": "persistent fiscal deficits, rising public debt and the eventual temptation to inflate liabilities away",
+   "topic": "gold structural case",
+   "status": "forecast",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Goldman's Privorotsky doubts the Fed will deliberately recreate the 1979-1982 Volcker experience and accept a major employment shock to fight inflation.",
+   "anchor": "I still struggle to believe a dual mandated Fed will deliberately recreate the Volcker experience of 1979 to 1982 and accept a major employment shock",
+   "topic": "Fed policy path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Goldman's Privorotsky believes governments will ultimately choose inflation to resolve debt problems.",
+   "anchor": "in the end all governments will choose inflation",
+   "topic": "sovereign debt resolution",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Goldman's Privorotsky says AI earnings can eventually grow into the multiple if the current spending trajectory survives.",
+   "anchor": "estimates should continue rising and, if the current spending trajectory survives, earnings can eventually grow into the multiple",
+   "topic": "AI capex thesis",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Goldman's Privorotsky says uncertainty around the cost and availability of capital is what would force a derating of AI-linked stocks.",
+   "anchor": "What forces the derating is uncertainty around the cost and availability of capital",
+   "topic": "AI capex thesis",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Broadcom reports Wednesday after the close and will be important for both custom silicon demand and the sustainability of hyperscaler spending.",
+   "anchor": "Broadcom reports Wednesday after the close and will be important for both custom silicon demand and the sustainability of hyperscaler spending",
+   "topic": "Broadcom earnings",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Goldman's Privorotsky says he remains cautious on duration now that month-end support has passed and yields can continue higher.",
+   "anchor": "Privo concludes by saying he would remain cautious on duration now that month-end support has passed",
+   "topic": "duration positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Rate-Spike Hedgers Go \"Bonkers\" As Iran Attacks Spike Oil; Stocks, Gold, & Crypto All Tank",
+   "claim": "Zero Hedge cites weak JOLTS, weak construction spending, weaker manufacturing PMIs, and weak Dallas Fed services readings alongside soaring oil and yields as a stagflation setup.",
+   "anchor": "Weak JOLTS, very weak construction spending, weaker Manufacturing PMIs, weak Dallas Fed Services",
+   "topic": "stagflation risk",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15312__rate-spike-hedgers-go-bonkers-as-iran-attacks-spike-oil-stoc.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 34,
+  "matched": 34,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
