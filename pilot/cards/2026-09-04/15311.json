@@ -1,0 +1,141 @@
+{
+ "brief": "Cross-asset correlations are strengthening as macro catalysts accumulate: this Friday's nonfarm payrolls, Middle East flare-ups, and a global rates tantrum, arriving as the market clears second-quarter earnings and enters a thin stretch for micro catalysts. The note argues this combination leaves investors underhedged and expecting choppiness in the weeks ahead, even though hedges remain remarkably light across most major markets. As support, it notes equity volatility is only modestly cheap relative to single-stock volatility, with the VIX underperforming the VIXEQ index at a -0.5 z-score on a one-year lookback, while the MOVE index, a bond-market volatility gauge, sits at a 0.2 z-score and a seasonal low. Because oil and rates are now driving macro price action and their effects propagate across markets, the note concludes the simplest hedge is the best one. It likens current pricing to an insurance market still willing to write cheap property-and-casualty protection despite storm clouds already overhead, arguing investors do not need to identify which specific risk breaks first before buying that protection now.",
+ "cards": [
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "Investors are looking underhedged heading into a cluster of macro catalysts arriving at once.",
+   "anchor": "investors are looking underhedged heading into the fray",
+   "topic": "hedging positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "The VIX is underperforming the VIXEQ index of single-stock volatility, though only by a -0.5 z-score on a one-year lookback.",
+   "anchor": "the VIX is underperforming the VIXEQ index of volatility in individual names, albeit only at a -0.5 z-score",
+   "topic": "equity volatility",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "The MOVE index, a measure of bond-market volatility, sits at a 0.2 z-score and a seasonal low on a one-year lookback.",
+   "anchor": "the MOVE index - a measure of bond-market volatility - sits at a 0.2 z score and a seasonal low",
+   "topic": "rates volatility",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "This week's macro catalysts include Friday's nonfarm payrolls report, flare-ups in the Middle East, and a global rates tantrum.",
+   "anchor": "macro catalysts - including this Friday\u2019s nonfarm payrolls, the flare-ups in the Middle East and the global rates tantrum - pile up",
+   "topic": "macro catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this Friday"
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "Cross-asset correlations are strengthening as macro catalysts accumulate.",
+   "anchor": "Cross-asset correlations are strengthening as macro catalysts",
+   "topic": "cross-asset correlation",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "The market starts the month with a thin dose of micro catalysts, having cleared the second-quarter earnings season.",
+   "anchor": "we start the month with a thin dose of micro catalysts, having cleared the 2Q earnings season",
+   "topic": "earnings season",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "The weeks ahead are expected to bring choppiness for markets, yet investors remain remarkably light on macro hedges across most major markets.",
+   "anchor": "The weeks ahead augur choppiness for markets, yet investors remain remarkably light on macro hedges across most major markets.",
+   "topic": "hedging positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "the weeks ahead"
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "As oil and rates take the lead in driving macro price action, the cleanest available hedge is the simplest one.",
+   "anchor": "the cleanest hedge is the simplest hedge",
+   "topic": "hedge cost",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "The hedging market currently resembles an insurance market still willing to write investors a cheap property-and-casualty policy despite storm clouds already overhead.",
+   "anchor": "an insurance market that\u2019s effectively still willing to write investors a property-and-casualty policy with storm clouds already overhead",
+   "topic": "hedge cost",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "No-Micro, All-Macro Setup Has Investors Looking Underhedged",
+   "claim": "At these prices, the note argues there is no need to identify which specific risk breaks first before buying protection.",
+   "anchor": "At these prices, no need to figure out which window breaks first.",
+   "topic": "hedge cost",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-04/15311__no-micro-all-macro-setup-has-investors-looking-underhedged.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a076bc919385"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
