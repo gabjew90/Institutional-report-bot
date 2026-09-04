@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-04/15317__jpm-us-market-intelligence-morning-briefing.txt",
+ "source_span": "Jay Barry thinks if Core MoM prints in the +0.1% to +0.2% range then the FED WILL HOLD, assuming NFP prints ~50k... Goldilocks is like in the 30k \u2013 70k range.",
+ "source_chain": "Waller's dovish presser pushed Sept-hike odds down to ~51% (from 63-65%) therefore markets are pricing a hold IF the not-yet-released NFP lands in the 30k-70k 'Goldilocks' range and core CPI next week prints +0.1-0.2% MoM; therefore the desk view is that NFP itself won't decide anything ('NFP tmrw does not mean much') and next week's CPI is the real catalyst; invalidation is a CPI print outside that +0.1-0.2% band, not any specific NFP outcome.",
+ "pulse_chain": "August payrolls printed an actual 162,000 (3x consensus) therefore blew through JPMorgan's 30k-70k hold range therefore invalidated Waller's dovish, labor-cooling case therefore the market repriced hikes at the front end (2s/5s up, 30s down) this same morning, with a same-morning TLT short and an ADP-vs-Goldman data point as corroboration; invalidation is CPI on Sep 11 relative to the +0.1-0.2% MoM threshold.",
+ "preserved": false,
+ "why": "Every 2026-09-04 source note is a pre-8:30am preview forecasting the NFP release (Feroli 50k, DB 65k, consensus 55k), not a report of the print, and none contains the 162,000 figure, the post-release yield moves, the TLT trade, or the 38,000 ADP/Goldman figure the pulse states as fact, so the theme's entire triggering premise is invented rather than compressed from the source, and it inverts JPM's own stated emphasis that 'NFP tmrw does not mean much' and CPI is the actual catalyst.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

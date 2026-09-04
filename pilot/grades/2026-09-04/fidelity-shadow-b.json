@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15306__token-prices-are-falling-faster-than-demand-goldman-warns-on.txt",
+   "span": "Demand can be infinite and the stocks can still go down if the infinite demand arrives at a price that does not service the debt issued to build the plants.",
+   "why": "Direct paraphrase (enormous/infinite, fall/go down, capacity/plants) preserving the meaning exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15308__hedge-when-you-can-not-when-you-have-to-goldman-vol-traders-.txt",
+   "span": "Sitting on its 100dma owning upside feels like good risk-reward here ahead of NFP given GS is below street consensus (+40k)",
+   "why": "The source labels 40k as 'street consensus' and says GS's own forecast is below that figure. The sentence misattributes 40k as Goldman's own number. It also pairs that with a '55k consensus' pulled from a different source (JPM's Feroli note / DB's forecast table), which conflicts with this note's own 40k consensus figure \u2014 two incompatible 'consensus' numbers are stitched together as if one coherent set."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15317__jpm-us-market-intelligence-morning-briefing.txt",
+   "span": "CPI on Sep 11 the more important of the two prints given Warsh's view that the US is at full employment",
+   "why": "Matches the sentence's claim that JPM sees CPI on Sept 11 mattering more to the Fed than today's NFP print."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source states that a specific factor 'carried the first half' of the year and is now gone. JPM's note (15317) only shows momentum peaked at a 'June ATH' before its current decline, which does not establish that momentum (or any named factor) drove overall H1 market performance. This is a plausible but unsourced editorial leap."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15262__gs-mourad-chart-of-the-day-ai-valuations-8-jul-2026.txt",
+   "span": "The selloff in momentum (GSPRHIMO) has now surpassed 20pp in the last week, exceeding our short term expectations for a summer slump in the factor.",
+   "why": "The JPM figures (21%/34% from June ATH, source 15317) are faithful, but the Goldman '20 percentage points in a single week... summer slump' figure comes from a note dated 8 Jul 2026 describing that week's (July) selloff. The sentence's 'while' clause presents it as concurrent with JPM's current (Sept 4) momentum data, misrepresenting a two-month-old episode as part of the same current week's move."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15317__jpm-us-market-intelligence-morning-briefing.txt",
+   "span": "We are moving to a Tactically Cautious / Neutral stance... This argues for reducing net-longs... We start with a +NDX vs. -RTY position... As hedges we like shorting Credit ETFs and buying VIX products.",
+   "why": "All elements (cautious stance, cutting net longs, long Nasdaq 100 vs short Russell 2000, short credit ETFs, long VIX) are directly stated."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15218__early-morning-reid-macro-strategy.txt",
+   "span": "chatter that intervention could occur around the thin trading conditions of the \"Silver Week\" holidays that see markets closed for three days immediately after the BoJ meeting concludes on Friday September 18th",
+   "why": "Near-verbatim match."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-04/15302__asia-equity-strategy-spillovers-to-monitor-from-the-jpy-move.txt",
+   "span": "every 1% sudden appreciation is associated with an approximate 0.6%/0.4% decline (Figure 3) in MSCI EM/AxJ, respectively",
+   "why": "Exact figures match; sentence correctly frames it as historical ('has historically been'), matching the source's own framing."
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15262__gs-mourad-chart-of-the-day-ai-valuations-8-jul-2026.txt",
+   "span": "We are approaching earnings season that is following MU and Samsung (005930)'s historic beats, as well as META's cloud business launch announcement",
+   "why": "Source is dated 8 Jul 2026 and refers to the earnings season following MU/Samsung's then-recent beats. Presenting this in a Sept 4 pulse as Goldman's framing for 'this earnings season' (which, per same-day JPM notes, is the upcoming AVGO/semis season) misrepresents a stale, different earnings cycle as current commentary."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15261__gs-mihelc-consumer-morning-trading-update-us-3-sep-2026.txt",
+   "span": "2Q revenues just light at $1.61B vs $1.62B consensus... Shares +57% YTD, sector-high 18x P/E.",
+   "why": "All figures (15% drop, $1.61B vs $1.62B, 57% YTD, 18x P/E) match exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15261__gs-mihelc-consumer-morning-trading-update-us-3-sep-2026.txt",
+   "span": "PVH +2%. EPS $3.70 (vs $3.08 cons... margin-led beat with puts and takes... 3Q guided $2.50\u2013$2.65 vs $2.99 cons",
+   "why": "Beat figure, 2% gain, margin-led framing, and Q3 guide vs consensus all match."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15261__gs-mihelc-consumer-morning-trading-update-us-3-sep-2026.txt",
+   "span": "Gross leverage rose for the first time in 3 months... Consumer Discretionary better to buy as long buys outpaced short sales... Defensives net sold a 5th straight month.",
+   "why": "Direct match on all three data points."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15223__75-of-america-is-priced-out-so-why-won-t-home-prices-crash.txt",
+   "span": "The median homebuyer is now 59 years old, up from 31 in 1981... 40 percent of homes are owned free and clear and 95 percent of mortgages are fixed for 30 years. Homeowners sit on roughly $400,000 in equity per home.",
+   "why": "Every figure matches exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15223__75-of-america-is-priced-out-so-why-won-t-home-prices-crash.txt",
+   "span": "renovations now account for 25 percent of private construction",
+   "why": "Figure matches; 'spending that used to go into moving now goes into staying' is a fair gloss of the source's lock-in narrative."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15223__75-of-america-is-priced-out-so-why-won-t-home-prices-crash.txt",
+   "span": "If turnover stays frozen while remodeling spending holds up, the widening gap between homebuilders and renovation becomes the relative-value opportunity.",
+   "why": "The source explicitly frames the gap as Homebuilders (Blue, 'winning the short-term game') vs. Renovation (Green), and separately places brokerages/lenders/title companies in a third 'Transactions' (Red, 'already crushed') category. The sentence substitutes 'transaction-linked ones' for 'homebuilders,' conflating two categories the source keeps distinct."
+  }
+ ],
+ "faithful": 10,
+ "distorted": 4,
+ "unsupported": 1,
+ "faithful_rate": 0.667,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

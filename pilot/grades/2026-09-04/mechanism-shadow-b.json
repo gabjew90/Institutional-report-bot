@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-03/15263__gs-privorotsky-basics-model-competition-declare-victory-suga.txt",
+ "source_span": "More demand + lower prices is not automatically bullish if pricing falls faster than consumption grows. Unless capability keeps making radical jumps (looking at you, Astra)\u2026 periods of compute oversupply become plausible.",
+ "source_chain": "Frontier-model competition is compressing cost per token (Silicon Data token index -29% in August) THEREFORE consumption must grow extraordinarily fast just to offset falling unit prices, so more demand plus lower prices is not automatically bullish if price falls faster than consumption grows THEREFORE absent capability keeps making radical jumps (Astra), periods of compute oversupply become plausible, which alongside credit repricing explains why the AI/semis space has been de-rating. Invalidation: a radical Astra-scale capability jump.",
+ "pulse_chain": "Broadcom prints a strong quarter and guide (AI revenue doubling to $115bn FY27, $230bn FY28) THEREFORE the stock still falls, but the proximate Q4-guide miss against Street/GS isn't sufficient cause ('one soft quarter is not why a two-year doubling gets sold') THEREFORE the real driver is token-price compression (Silicon Data index -29% in August, record low) outrunning volume growth (JPM: token volume +47% MoM vs dollars +7%) THEREFORE absent a capability jump on Astra's scale, periods of compute oversupply become plausible, which is why heavy hyperscaler capex/bond stress matters and why Goldman and JPMorgan split on positioning. Invalidation: OpenAI's Astra clearing a capability threshold \u2014 named explicitly, with no confirmed launch date.",
+ "preserved": true,
+ "why": "The pulse reproduces Privorotsky's exact chain \u2014 price compression outrunning demand implies plausible compute oversupply absent an Astra-scale capability jump, explaining the sector de-rating \u2014 correctly attributed to Goldman with the same invalidation condition, only compressed and layered with corroborating data from other cited notes.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

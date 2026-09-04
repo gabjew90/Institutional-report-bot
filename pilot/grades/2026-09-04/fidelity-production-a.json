@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15294__early-morning-reid-macro-strategy.txt",
+   "span": "the ISM services index for August beat expectations, rising to a 6-month high of 55.4 (vs. 54.1 expected)... prices paid component moved up to a 4-year high of 72.6",
+   "why": "ISM services headline beating estimates (the 'opposite' of a cooling/dovish read) stacked with the prices-paid subindex at a four-year high, exactly as described."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15294__early-morning-reid-macro-strategy.txt",
+   "span": "led to a dovish repricing that led futures to slash the chance of a hike to 51% as of this morning, down from 63% at the close on Wednesday",
+   "why": "The 63%-to-51% hike-odds move and Waller's Thursday role are sourced, but no document shows odds reverting to 60-70% 'this morning' \u2014 the only source describing that morning explicitly puts pricing still at 51%, the opposite of 'put it back.' No source at all ties this to a TLT short call carried since August 31."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15317__jpm-us-market-intelligence-morning-briefing.txt",
+   "span": "remain of the view that next week's CPI will be a critical catalyst to watch compared to today's NFP",
+   "why": "JPMorgan explicitly frames next week's CPI as decisive over today's payrolls; the Challenger +58% m/m figure is confirmed in a companion JPMorgan document."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15295__international-market-intelligence-morning-briefing.txt",
+   "span": "The three-month average is down 33%oya, the August total was the lowest August reading since 2022",
+   "why": "Exact match to JPMorgan's own Challenger figures."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15306__token-prices-are-falling-faster-than-demand-goldman-warns-on.txt",
+   "span": "fell 29% in August and printed about $0.97 per million tokens... more than 50% off the May... JPMorgan's data-center note had OpenRouter token volume up roughly 47% month-over-month... Dollar spend was still only up about 7%",
+   "why": "All figures and the JPMorgan attribution for volume/spend match precisely."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-03/15238__strategy-chartbook-september-2026.txt",
+   "span": "Compute scarcity has been driving hyperscaler outperformance recently... the price of a token keeps falling while the number of tokens used keeps climbing",
+   "why": "TS Lombard's chartbook directly states compute scarcity drives cloud outperformance and that rising usage offsets falling token prices."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15255__duttenhoefers-daily-3-sep-2026.txt",
+   "span": "Broadcom expects its AI semiconductor revenue to double in FY27 to $115bn... raise our 12-month target price to $540 from $525",
+   "why": "Goldman's own $540 PT and $115bn FY27 guide confirmed; the same Goldman document (15306) explicitly juxtaposes this bullish AVGO call against Goldman's own desk's token-pricing/unit-economics warning."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-03/15283__oil-tracker-the-dark-transit-rises-rolling-our-diesel-hedgin.txt",
+   "span": "implying that high-frequency visible oil data likely underestimate recent inventories",
+   "why": "Matches Goldman's point that visible supply data undersells the true picture."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-03/15283__oil-tracker-the-dark-transit-rises-rolling-our-diesel-hedgin.txt",
+   "span": "a ramp up in oil tankers crossing the Strait near the coast of Oman with their AIS off... total Persian Gulf oil exports at roughly 15-16mb/d or 2/3 of pre-war levels, while recent visible exports stand at only 10mb/d",
+   "why": "Exact match on all figures, the Oman detail, and Goldman attribution."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15241__global-equity-volatility-insights-midterms-amplify-dispersio.txt",
+   "span": "options on regional banks (KRE) and small caps (RTY) appear most underpriced today relative to their 2024 election-week moves",
+   "why": "Transitional sentence consistent with BofA's stated view that the mispricing sits below the broad-index level, in small caps/regional banks."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15241__global-equity-volatility-insights-midterms-amplify-dispersio.txt",
+   "span": "post-midterm moves at the broad market level having rarely been large",
+   "why": "Direct match."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15241__global-equity-volatility-insights-midterms-amplify-dispersio.txt",
+   "span": "we like structures like IWM puts as a more targeted midterm election hedge... near-record steep tail put skew 3m and out",
+   "why": "BofA's underpricing thesis, the IWM-puts-over-index-hedge choice, and the record-steep OTM skew backdrop all confirmed."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15241__global-equity-volatility-insights-midterms-amplify-dispersio.txt",
+   "span": "Trade (IWM put): Buy IWM Nov 280 put for $6.13... Risk involves upfront premium paid",
+   "why": "Correct, source-grounded inference from the priced 0.82% move and the stated premium-loss risk of the IWM put trade."
+  },
+  {
+   "id": "s14",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15307__mcelligott-someone-is-blowing-up-in-vol.txt",
+   "span": "as Goldman's Garrett first discussed over the weekend... SPX Skew and Put Skew back to 2%ile... IWM 3m ATM iVol which has collapsed to the 0.2% percentile... Dispersion profitability over the past month has cratered down to just the 5%-ile",
+   "why": "IWM and dispersion figures are McElligott's own and match; the S&P 2nd-percentile figure is explicitly attributed in the source to Goldman's Garrett, not to Nomura's McElligott, so bundling all three under '(Nomura's McElligott)' misattributes who said it."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15307__mcelligott-someone-is-blowing-up-in-vol.txt",
+   "span": "options market makers and dealers are choking on huge PNL losses, as anybody or anything long Optionality / long Skew has been bled-out",
+   "why": "Matches the note's central claim that this is forced dealer de-risking, not calm markets."
+  }
+ ],
+ "faithful": 13,
+ "distorted": 2,
+ "unsupported": 0,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15294__early-morning-reid-macro-strategy.txt",
+   "span": "expecting nonfarm payrolls to rebound by +65k",
+   "why": "Every 2026-09-04 source is a pre-release morning note; NFP is a forecast (DB +65k, JPM Feroli 50k vs Street 55k) in every document. Nothing in the corpus is an actual print, so 'the official number says the opposite' asserts a released outcome the sources never confirm \u2014 forecast presented as a print."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15294__early-morning-reid-macro-strategy.txt",
+   "span": "slash the chance of a hike to 51% as of this morning, down from 63%",
+   "why": "The 60-70% pricing window since Aug 31 and Waller's Thursday dovish break are supported. But 'this morning put it back' implies odds rebounded upward; both DB (51% this morning) and JPM (~50% vs 65% Monday) show odds holding near 50%, not reversing back toward 60-70%."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-04/15303__us-ongoing-positive-job-news-from-claims-challenger.txt",
+   "span": "showed a 58%m/m increase in job cuts, but the longer-run trend looks good",
+   "why": "CPI-over-NFP framing and the 58% MoM figure are correctly attributed to JPMorgan. But JPM's own note explicitly says the 58% jump does NOT signal underlying weakness ('longer-run trend looks good'); using it as evidence the labor detail is 'softer than headline' inverts JPM's stated conclusion."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-04/15303__us-ongoing-positive-job-news-from-claims-challenger.txt",
+   "span": "The three-month average is down 33%oya, the August total was the lowest August reading since 2022",
+   "why": "Both figures match verbatim, correctly attributed to JPMorgan, and the conclusion (layoff data doesn't carry the dovish case) matches JPM's own framing that layoffs remain low."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15306__token-prices-are-falling-faster-than-demand-goldman-warns-on.txt",
+   "span": "Silicon Data's LLM Token Expenditure Index...fell 29% in August and printed about $0.97 per million tokens at month-end",
+   "why": "All figures are accurate but the single trailing '(JPMorgan)' attribution misattributes the whole sentence. The headline Silicon Data index figures (-29%, $0.97, ~half May peak) are Goldman's; only the OpenRouter volume/spend figures are JPMorgan's (cited secondhand inside the Goldman note)."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-03/15238__strategy-chartbook-september-2026.txt",
+   "span": "Compute scarcity has been driving hyperscaler outperformance recently.",
+   "why": "Bank attribution (TS Lombard) and the compute-scarcity-drives-outperformance claim are verbatim-matched; 'usage pays for itself' is a fair paraphrase of the falling-token-price/rising-volume mechanism the note describes."
+  },
+  {
+   "id": "s7",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15255__duttenhoefers-daily-3-sep-2026.txt",
+   "span": "Broadcom expects its AI semiconductor revenue to double in FY27 to $115bn... raise our 12-month target price to $540",
+   "why": "The $540 target, $115bn FY27 figure, and Buy rating are accurate, and they do sit in tension with a bearish pricing view from the same bank \u2014 but that bank is Goldman Sachs, not TS Lombard, which is the house s6 named as 'the other side'. 'The same house' misattributes the AVGO call."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-03/15283__oil-tracker-the-dark-transit-rises-rolling-our-diesel-hedgin.txt",
+   "span": "high-frequency visible oil data likely underestimate recent inventories",
+   "why": "Goldman's dark-tanker-crossing analysis directly supports that visible supply data understates the true picture; attribution and direction match."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-03/15283__oil-tracker-the-dark-transit-rises-rolling-our-diesel-hedgin.txt",
+   "span": "we estimate recent total Persian Gulf oil exports at roughly 15-16mb/d or 2/3 of pre-war levels, while... visible exports stand at only 10mb/d",
+   "why": "Every figure matches exactly (15-16mb/d total, 10mb/d visible, two-thirds of pre-war, Oman-area AIS-off tanker crossings), correctly attributed to Goldman."
+  },
+  {
+   "id": "s10",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "Searched all 2026-09-03 and 2026-09-04 source-text and source-text-all files for 'mispric*' and 'layer' in any relevant sense (oil, vol/positioning files including McElligott, GS vol traders, global-equity-volatility-insights); no document uses this framing. No source supports the claim."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15241__global-equity-volatility-insights-midterms-amplify-dispersio.txt",
+   "span": "midterm elections have rarely elicited large broad market moves historically",
+   "why": "Directly matches BofA's stated rationale for the muted priced move; correct attribution and direction."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15241__global-equity-volatility-insights-midterms-amplify-dispersio.txt",
+   "span": "options on regional banks (KRE) and small caps (RTY) appear most underpriced today relative to their 2024 election-week moves... we like structures like IWM puts",
+   "why": "Both the underpriced-vs-2024 claim and the near-record-steep tail skew rationale for choosing IWM puts over index protection are explicitly stated in the same BofA note, correctly attributed."
+  },
+  {
+   "id": "s13",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-03/15241__global-equity-volatility-insights-midterms-amplify-dispersio.txt",
+   "span": "S&P vol is pricing in a relatively muted 0.82% move following this year's elections",
+   "why": "0.82% is explicitly the S&P/broad-index implied move, not an IWM/small-cap figure, and the note never claims the IWM puts expire worthless if that prints \u2014 its whole thesis is that small-cap/regional-bank vol is underpriced relative to 2024, i.e. the IWM puts could still pay off even with a muted index move. The sentence misapplies a real source figure to draw an unsupported, thesis-contradicting conclusion."
+  },
+  {
+   "id": "s14",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15307__mcelligott-someone-is-blowing-up-in-vol.txt",
+   "span": "hence, SPX Skew and Put Skew back to 2%ile",
+   "why": "The 0.2 percentile (IWM) and 5th percentile (dispersion) figures are McElligott's own statements, but the middle '2nd percentile' SPX-protection figure is explicitly attributed in the source to Goldman's Brian Garrett, not McElligott. Bundling all three under a single '(Nomura's McElligott)' tag misattributes one of the three statistics."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-04/15307__mcelligott-someone-is-blowing-up-in-vol.txt",
+   "span": "options market makers and dealers are choking on huge PNL losses, as anybody or anything long Optionality / long Skew has been bled-out",
+   "why": "The 'market makers taking real losses' line is explicitly tied in the source to the IVol/skew collapse item, not to the dispersion-percentile item ('that last one' in s14's list). The dispersion bullet independently implies losses but the pairing plus the added phrase 'not a market at peace' (not in source) stretches the attribution beyond what the text supports for that specific item."
+  }
+ ],
+ "faithful": 6,
+ "distorted": 8,
+ "unsupported": 1,
+ "faithful_rate": 0.4,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

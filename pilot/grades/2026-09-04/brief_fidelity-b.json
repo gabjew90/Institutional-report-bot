@@ -1,0 +1,80 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d12",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Waller disinflation comments ease rate-hike fear and pull 10yr yields down 3bp, ISM Services beats (offsetting an earlier ISM Manufacturing decline) and improves globally, Q2 productivity holds while the GDP tracker is cut 20bp, and SNOW beats while AVGO guides light -> stocks trade higher, GS stays Buy AVGO, payrolls Friday forecast 40k",
+   "brief_chain": "Waller disinflation comments ease rate-hike fear and pull 10yr yields down 3bp, ISM Services beats (offsetting an earlier ISM Manufacturing decline) and improves globally, Q2 productivity holds while the GDP tracker is cut 20bp, and SNOW beats while AVGO guides light -> stocks trade higher, GS stays Buy AVGO, payrolls Friday forecast 40k",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d5",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Broadcom beats on revenue/margin with FY27/FY28 AI guidance well above the in-line Q4 print -> GS raises target to $540 from $525 and stays a buyer; separately GS allocation stays tactically neutral 3m / pro-risk 12m, Overweight equities, Underweight credit on earnings growth outpacing bonds/credit",
+   "brief_chain": "Broadcom beats on revenue/margin with FY27/FY28 AI guidance well above the in-line Q4 print -> GS raises target to $540 from $525 and stays a buyer; separately GS allocation stays tactically neutral 3m / pro-risk 12m, Overweight equities, Underweight credit on earnings growth outpacing bonds/credit",
+   "distortions": [
+    {
+     "what": "Brief omits Meta's Muse Spark 1.3 release, the Trump $1 coin item, the podcast plug, Quote/Stat/Chart of the Day",
+     "material": false,
+     "would_the_trade_change": "No \u2014 none of these carry a call or a number that bears on the Broadcom or allocation stance being briefed"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d9",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Soft ADP and dovish Williams keep rates/gold bid ahead of Waller and NFP; Privorotsky reads the hawkish tone as Warsh protecting credibility, not a Fed shift; token-price compression (Silicon Data index -29%) makes oversupply plausible absent an Astra-style capability jump, which with credit repricing explains the AI de-rating; Broadcom's guide is strong but the print light, Snowflake cleaner; he expects escalate-to-de-escalate on Iran, oil near the high end of range, and markets stable/higher as long as energy doesn't rise",
+   "brief_chain": "Soft ADP and dovish Williams keep rates/gold bid ahead of Waller and NFP; Privorotsky reads the hawkish tone as Warsh protecting credibility, not a Fed shift; token-price compression (Silicon Data index -29%) makes oversupply plausible absent an Astra-style capability jump, which with credit repricing explains the AI de-rating; Broadcom's guide is strong but the print light, Snowflake cleaner; he expects escalate-to-de-escalate on Iran, oil near the high end of range, and markets stable/higher as long as energy doesn't rise",
+   "distortions": [
+    {
+     "what": "Brief omits the WSJ item on Trump weighing declaring the Iran war over, and the sugar/ag side-note",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the energy/markets stance in the brief already carries the escalate-to-de-escalate call; the sugar note is an unrelated aside"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d13",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Token prices (Silicon Data index) are falling faster than volume is rising (JPM: OpenRouter volume +47% m/m, spend only +7%), so cheaper tokens are not paying for the capex bet; unless Astra delivers a capability jump, compute oversupply is plausible, and credit (hyperscaler bonds trading below issue, ~$737bn 2026 capex at 38% of revenue) is already pricing that risk ahead of equities; three counterarguments exist but don't rescue multiples; separately GS's Schneider stays Buy Broadcom",
+   "brief_chain": "Token prices (Silicon Data index) are falling faster than volume is rising (JPM: OpenRouter volume +47% m/m, spend only +7%), so cheaper tokens are not paying for the capex bet; unless Astra delivers a capability jump, compute oversupply is plausible, and credit (hyperscaler bonds trading below issue, ~$737bn 2026 capex at 38% of revenue) is already pricing that risk ahead of equities; three counterarguments exist but don't rescue multiples; separately GS's Schneider stays Buy Broadcom",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d20",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "Hyperscalers (Amazon) absorb higher memory prices rather than cut orders, signaling memory suppliers retain pricing power, yet memory stocks have lagged and are consolidating; DRAM ETF squeezed between trend lines above its 21-day MA, Micron the strongest (above its 50-day MA, $1,000 close as trigger), Samsung/Hynix pinned at support -> with Korean retail speculation cooled and KOSPI vol crushed, KOSPI upside convexity is flagged as a way to play a catch-up squeeze",
+   "brief_chain": "Hyperscalers (Amazon) absorb higher memory prices rather than cut orders, signaling memory suppliers retain pricing power, yet memory stocks have lagged and are consolidating; DRAM ETF squeezed between trend lines above its 21-day MA, Micron the strongest (above its 50-day MA, $1,000 close as trigger), Samsung/Hynix pinned at support -> with Korean retail speculation cooled and KOSPI vol crushed, KOSPI upside convexity is flagged as a way to play a catch-up squeeze",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 2,
+ "audited": 5,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}
