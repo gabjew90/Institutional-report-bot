@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: Error: Reached max turns (20)",
+ "last_reason": "reader: Error: Reached max turns (30)",
  "history": [
   {
    "at": "2026-09-05T02:48Z",
    "run_id": "33939842122",
    "reason": "reader: Error: Reached max turns (20)"
+  },
+  {
+   "at": "2026-09-05T05:07Z",
+   "run_id": "33946028744",
+   "reason": "reader: Error: Reached max turns (30)"
   }
  ]
 }
