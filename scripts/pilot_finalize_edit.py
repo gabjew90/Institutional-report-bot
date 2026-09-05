@@ -58,6 +58,8 @@ def main() -> int:
     ap.add_argument("--meta", required=True)
     ap.add_argument("--model", required=True)
     ap.add_argument("--unread", type=int, default=0)
+    ap.add_argument("--given-up", type=int, default=0,
+                    help="documents the readers gave up on (read-failures/), a coverage gap that is not 'unread'")
     ap.add_argument("--prompt", required=True)
     ap.add_argument("--pack", required=True)
     ap.add_argument("--reasked", action="store_true")
@@ -82,6 +84,7 @@ def main() -> int:
             meta = {}
     meta.update({
         "unread_source_files_at_edit": a.unread,
+        "given_up_at_edit": a.given_up,
         "pack": {"documents": pack.get("document_count"), "cards": pack.get("card_count")},
         "provenance": provenance(a.model, ver, prompt_text),
         "reasked": bool(a.reasked) or bool(meta.get("reasked")),

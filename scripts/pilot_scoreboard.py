@@ -86,14 +86,59 @@ def agree(a, b, key, tol=0.0):
 
 
 def _apply_tiebreaks(grades: dict) -> dict:
-    """An owner tiebreak (agent `tiebreak` or `owner`, see RUNBOOK) is
-    the day's call for that dimension: it replaces both agent grades so
-    the disagreement clears. Review 2026-09-01: it was recorded and
-    ignored."""
+    """A tiebreak is the day's call for that dimension: it replaces both
+    agent grades so the disagreement clears (review 2026-09-01: it was
+    recorded and ignored). Two sources, in precedence order: `owner`
+    (a hand-written grade, see RUNBOOK) beats `tiebreak` (the third
+    fresh agent the graders workflow runs on a disagreement,
+    2026-09-05). An unusable tiebreak grade is ignored."""
     out = {}
     for dim, agents in grades.items():
-        tb = agents.get("tiebreak") or agents.get("owner")
+        tb = usable(agents.get("owner")) or usable(agents.get("tiebreak"))
         out[dim] = {"a": tb, "b": tb} if tb else agents
+    return out
+
+
+# Per dimension family: the key the two agents must agree on and the
+# tolerance. Mirrors day_row so the workflow's "who needs a third
+# grader" question and the scoreboard's "who disagreed" column can
+# never drift apart.
+_AGREE_KEYS = {
+    "grouping": ("fragmented_mass_share", 0.05),
+    "fidelity": ("faithful_rate", 0.05),
+    "brief_fidelity": ("material_total", 0.0),
+    "mechanism": ("preserved", 0.0),
+}
+
+
+def tiebreak_stems(grades: dict) -> list[str]:
+    """Dimensions (file stems such as `fidelity-shadow`) whose two agents
+    disagree, or where exactly one agent's grade is usable, and no
+    tiebreak or owner grade exists yet. The graders workflow runs a
+    third fresh agent on each (2026-09-05: seven disagreements sat
+    unresolved across three shakedown days, so `m2 pass` could never
+    compute)."""
+    out = []
+    for dim, agents in sorted(grades.items()):
+        if usable(agents.get("owner")) or usable(agents.get("tiebreak")):
+            continue
+        a, b = usable(agents.get("a")), usable(agents.get("b"))
+        if a is None and b is None:
+            continue  # both graders failed: a third would not settle anything
+        if a is None or b is None:
+            out.append(dim)
+            continue
+        key, tol = _AGREE_KEYS.get(dim.split("-")[0], (None, 0.0))
+        if key is None:
+            continue
+        if agree(a, b, key, tol=tol)[0] is None:
+            out.append(dim)
+            continue
+        if dim == "grouping":
+            ma = any(m.get("would_change_theme_selection") for m in (a.get("mis_merges") or []))
+            mb = any(m.get("would_change_theme_selection") for m in (b.get("mis_merges") or []))
+            if ma != mb:
+                out.append(dim)
     return out
 
 
@@ -170,6 +215,7 @@ def day_row(date: str, d: dict) -> dict:
     row["m4"] = {"edge_share": cit.get("edge_quintile_share"), "flag": cit.get("metric4_flag"),
                  "failures": len(cit.get("failures") or [])}
     row["unread_at_edit"] = (d.get("shadow_meta") or {}).get("unread_source_files_at_edit")
+    row["given_up_at_edit"] = (d.get("shadow_meta") or {}).get("given_up_at_edit")
     row["void"] = is_void(d)
     ops = d.get("ops") or {}
     row["m5"] = {"reader_failure_rate": ops.get("reader_failure_rate"),

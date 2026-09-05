@@ -179,6 +179,38 @@ def test_owner_tiebreak_replaces_both_agents():
     assert r["disagreements"] == [] and r["m2_shadow"]["rate"] == 0.9
 
 
+def test_tiebreak_stems_name_disagreements_and_half_missing_dims():
+    """2026-09-05: seven disagreements sat unresolved over three shakedown
+    days. The graders workflow asks this for the stems that need a third
+    agent; it must use the scoreboard's own agreement rule."""
+    from scripts.pilot_scoreboard import tiebreak_stems
+    d = _grades(shadow_rate=0.9, b_rate=0.4)
+    assert tiebreak_stems(d["grades"]) == ["fidelity-shadow"]
+    # one usable grader and one failed grade: a third settles it
+    d["grades"]["mechanism-production"]["b"] = {"failed": True}
+    assert tiebreak_stems(d["grades"]) == ["fidelity-shadow", "mechanism-production"]
+    # both failed: nothing a third grader can settle
+    d["grades"]["mechanism-production"]["a"] = {"failed": True}
+    assert tiebreak_stems(d["grades"]) == ["fidelity-shadow"]
+    # a recorded tiebreak clears the stem
+    d["grades"]["fidelity-shadow"]["tiebreak"] = {"faithful_rate": 0.9, "unsupported": 0}
+    assert tiebreak_stems(d["grades"]) == []
+    # grouping: same share but only one grader sees a theme-changing merge
+    g = _grades()
+    g["grades"]["grouping"]["b"]["mis_merges"] = [{"label": "x", "would_change_theme_selection": True}]
+    assert tiebreak_stems(g["grades"]) == ["grouping"]
+
+
+def test_owner_grade_beats_the_agent_tiebreak_and_unusable_tiebreaks_are_ignored():
+    d = _grades(shadow_rate=0.9, b_rate=0.4)
+    d["grades"]["fidelity-shadow"]["tiebreak"] = {"faithful_rate": 0.4, "unsupported": 0}
+    d["grades"]["fidelity-shadow"]["owner"] = {"faithful_rate": 0.9, "unsupported": 0}
+    assert day_row("2026-09-02", d)["m2_shadow"]["rate"] == 0.9
+    d2 = _grades(shadow_rate=0.9, b_rate=0.4)
+    d2["grades"]["fidelity-shadow"]["tiebreak"] = {"failed": True}
+    assert "m2_shadow" in day_row("2026-09-02", d2)["disagreements"]
+
+
 def test_scoreboard_counts_only_days_after_day1():
     with tempfile.TemporaryDirectory() as td:
         for date, ok in (("2026-09-02", True), ("2026-09-03", True), ("2026-09-04", False)):

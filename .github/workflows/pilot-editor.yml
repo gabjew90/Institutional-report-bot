@@ -10,9 +10,12 @@
 # provenance rides in shadow/<date>.meta.json.
 name: pilot-editor
 
+# No `schedule:` block. The worker dispatches this at 13:55 UTC
+# (PILOT_DISPATCH_ENABLED). GitHub's cron fallback fired at 17:11-17:19
+# on 2026-09-03 and 2026-09-04 and overwrote the 13:55 shadow pulse with
+# one written from three more hours of cards, after production had
+# published, and the graders graded the late version (2026-09-05).
 on:
-  schedule:
-    - cron: "55 13 * * 1-5"
   workflow_dispatch:
     inputs:
       date:
@@ -57,9 +60,12 @@ jobs:
           echo "EDIT_DATE=$DATE" >> "$GITHUB_ENV"
           mkdir -p /tmp/ed
           python scripts/pilot_list_unread.py \
-            --root "pilot-data/$PILOT_ROOT" --out /tmp/ed/unread.json
+            --root "pilot-data/$PILOT_ROOT" --out /tmp/ed/unread.json \
+            --given-up-out /tmp/ed/given_up.json
           UNREAD=$(python -c "import json;print(len(json.load(open('/tmp/ed/unread.json'))))")
+          GIVEN_UP=$(python -c "import json;print(len(json.load(open('/tmp/ed/given_up.json'))))")
           echo "UNREAD_AT_EDIT=$UNREAD" >> "$GITHUB_ENV"
+          echo "GIVEN_UP_AT_EDIT=$GIVEN_UP" >> "$GITHUB_ENV"
           # The packer exits 2 when the edit date has no cards of its
           # own: the readers did not run, and editing anyway writes
           # today's pulse from an earlier day's cards, which is exactly
@@ -79,7 +85,7 @@ jobs:
           fi
           N=$(python -c "import json;print(json.load(open('/tmp/ed/pack.json'))['card_count'])")
           echo "cards=$N" >> "$GITHUB_OUTPUT"
-          echo "unread at edit: $UNREAD; cards in window: $N"
+          echo "unread at edit: $UNREAD; given up: $GIVEN_UP; cards in window: $N"
 
       - name: Install Claude Code
         if: steps.pack.outputs.cards != '0'
@@ -116,7 +122,7 @@ jobs:
             < /tmp/ed/prompt.txt > /tmp/ed/raw.md 2>/tmp/ed/err.txt || true
           python scripts/pilot_finalize_edit.py --raw /tmp/ed/raw.md \
             --out "$OUTDIR/$EDIT_DATE.md" --meta "$OUTDIR/$EDIT_DATE.meta.json" \
-            --model "$MODEL" --unread "$UNREAD_AT_EDIT" \
+            --model "$MODEL" --unread "$UNREAD_AT_EDIT" --given-up "$GIVEN_UP_AT_EDIT" \
             --prompt docs/superpowers/routines/pilot/editor.md \
             --pack /tmp/ed/pack.json
           # Pass 1: verify citations; one in-session re-ask on failures.
@@ -137,7 +143,7 @@ jobs:
               < /tmp/ed/reask_prompt.txt > /tmp/ed/raw.md 2>/dev/null || true
             python scripts/pilot_finalize_edit.py --raw /tmp/ed/raw.md \
               --out "$OUTDIR/$EDIT_DATE.md" --meta "$OUTDIR/$EDIT_DATE.meta.json" \
-              --model "$MODEL" --unread "$UNREAD_AT_EDIT" \
+              --model "$MODEL" --unread "$UNREAD_AT_EDIT" --given-up "$GIVEN_UP_AT_EDIT" \
               --prompt docs/superpowers/routines/pilot/editor.md \
               --pack /tmp/ed/pack.json --reasked || true
           fi

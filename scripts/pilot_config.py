@@ -105,3 +105,15 @@ def provenance(model_requested: str, model_version_returned: str | None,
         "model_version_returned": model_version_returned or "unreported",
         "prompt_sha": prompt_sha(prompt_text),
     }
+
+
+# Read give-up (2026-09-05). Five documents of 64-132 KB failed at the
+# reader's turn limit on every one of fourteen runs on 2026-09-04: a 65%
+# failure rate made of the same five files, ~100 wasted reader calls,
+# and an editor day voided because they never left the unread list. A
+# document that fails MAX_READ_ATTEMPTS reads is recorded under
+# read-failures/<date>/<id>.json and is no longer "unread"; the editor
+# meta records it as given_up_at_edit so the coverage gap stays visible.
+READ_FAILURES_SUBDIR = "read-failures"
+READ_FAILURES_DIR = f"{PILOT_ROOT}/read-failures"
+MAX_READ_ATTEMPTS = 3

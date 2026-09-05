@@ -11,9 +11,10 @@
 # separation gate (pilot-grader-gate.yml).
 name: pilot-graders
 
+# No `schedule:` block: the worker dispatches this at 17:00 UTC. The
+# cron fallback double-fired at 19:20-19:40 on every shakedown day and
+# re-graded (and overwrote) the day's grades (2026-09-05).
 on:
-  schedule:
-    - cron: "0 17 * * 1-5"
   workflow_dispatch:
     inputs:
       date:
@@ -132,6 +133,23 @@ jobs:
             run_one mechanism       $P/mechanism.md       /tmp/gr/in/mechanism-shadow.md    shadow      $AG
             run_one mechanism       $P/mechanism.md       /tmp/gr/in/mechanism-production.md production $AG
           done
+          # Tiebreaks: a third fresh agent on the same frozen prompt and
+          # input wherever a and b disagree (the scoreboard's own rule).
+          # The spec leaves tiebreaks to the owner, who may delegate; seven
+          # sat unresolved after three shakedown days (2026-09-05). An
+          # owner grade (<stem>-owner.json) still overrides this.
+          python scripts/pilot_tiebreaks_needed.py --grades-dir "$OUT" > /tmp/gr/tiebreaks.txt
+          while read -r STEM; do
+            [ -z "${STEM:-}" ] && continue
+            case "$STEM" in
+              brief_fidelity)   DIM=brief_fidelity; ART="" ;;
+              grouping)         DIM=grouping;       ART="" ;;
+              *-*)              DIM="${STEM%%-*}";  ART="${STEM#*-}" ;;
+              *)                DIM="$STEM";        ART="" ;;
+            esac
+            echo "tiebreak: $STEM (dim=$DIM artifact=$ART)"
+            run_one "$DIM" "$P/$DIM.md" "/tmp/gr/in/$STEM.md" "$ART" tiebreak
+          done < /tmp/gr/tiebreaks.txt
           ls "$OUT"
 
       - name: Scoreboard

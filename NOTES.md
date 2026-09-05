@@ -1758,3 +1758,65 @@ validates the entry-based redesign: SPX 5 entered / 1 exited, AVGO 4/4,
 MU 4/4, QQQ 4/4, LULU 3/1, MSTR 3/2. PLTR, which the first cut reported
 as "9 members", does not appear at all: those nine were eight closers
 and one entry.
+
+## 2026-09-05 — Pilot review against the plan; five blockers before the clock can start
+
+Owner asked for a review of the pilot traced back to the spec and plan,
+then said go. Spec steps 1-3 (driver, anchors, blocking adversarial
+gate) are built. The pilot (step 4) is built and has three shakedown
+days, none clean: 09-02 reader turn limit, 09-03 every reader killed by
+the 45-minute timeout with nothing saved (VOID), 09-04 five documents
+failing on every run and the editor running with 8 unread (VOID).
+
+Findings the scoreboard did not show:
+
+1. The same five documents (three 132 KB volatility pieces, a 75 KB
+   GOAL note, a 64 KB JPM wrap) failed at 12 turns on all fourteen
+   reader runs. That is the whole 65% failure rate, ~100 wasted reader
+   calls, and 630 runner minutes in one day (ten runs killed at 45 min)
+   against a plan estimate of 60-90 minutes per day for the pilot.
+   Fix: turn budget steps at 50/100/300 KB, and `pilot_read_failure.py`
+   records each failed attempt under `read-failures/<date>/<id>.json`;
+   after MAX_READ_ATTEMPTS (3) `pilot_list_unread` stops listing the
+   document. The editor meta records `given_up_at_edit`, so the void
+   rule counts readable-unread only and the coverage gap stays visible.
+2. GitHub's cron fallback fired the editor at 17:11-17:19 on 09-03 and
+   09-04 and overwrote the 13:55 shadow pulse with one written from a
+   different card set, after production published; the graders (also
+   double-fired) graded that version. Plan 3.5's shared information
+   window was broken on both days. The editor and graders lost their
+   `schedule:` blocks; the readers keep theirs.
+3. Seven grader disagreements pending across three days, none broken,
+   so `m2 pass` could not compute. The spec lets the owner delegate:
+   the graders workflow now runs a third fresh agent on the same frozen
+   prompt and input for every stem `pilot_tiebreaks_needed.py` prints
+   (the scoreboard's own agreement rule), saved as `<stem>-tiebreak`.
+   `<stem>-owner.json` overrides it; an unusable tiebreak is ignored.
+4. Metric 1 fails the frozen rubric on the only full-corpus day: 24-26%
+   fragmented mass against the 10% cap, and both graders found
+   theme-changing mis-merges. The graders' diagnosis is the reader
+   `topic` field: single notes chopped into 10-22 one-card labels, and
+   the same cross-bank data point relabelled per pass. The reader
+   prompt's topic rule was rewritten (subjects first, pulse-theme
+   grain, one-card labels are a warning) while it is still free to
+   edit; after DAY1 it would cost the single allowed iteration.
+5. Plan 4.3 stress datapoint, ledger half, over the merged 09-02..09-04
+   card set: 65 documents, 2,193 cards, 1,020 topic labels, 652 of them
+   holding a single card (64% of labels, 30% of card mass), 61 labels
+   with two or more banks, 17 with three or more (top: fed rate hike
+   odds 5 banks; september seasonality, long end treasury yields,
+   hedge fund positioning, gold price 4 each). Median 13 labels per
+   document, max 42, 39 of 65 documents over 10. Editor pack 486K
+   chars. The editor half of 4.3 is still to run. Subscription headroom
+   (plan section 5) cannot be read by a script; the owner records it.
+
+Early signal, uncounted: shadow fidelity 87-100% on fresh-card days
+against production 33-60%; shadow mechanism preserved every day,
+production 1 of 6 grader calls; 2a zero material distortions per grader
+b every day, one per grader a on 09-04 (tiebreak), non-material on
+80-100% of audited briefs against the 20% soft ceiling. The production
+arm is graded against the HIGH+MEDIUM source tree only, which biases
+"unsupported" against production, in the shadow's favour.
+
+Clock: DAY1 not set. Earliest clean pair is Mon 09-08 and Tue 09-09,
+DAY1 Wed 09-10, ten counted days ending around 09-23.

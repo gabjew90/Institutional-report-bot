@@ -25,14 +25,18 @@ minutes, the readers' 09-14 UTC hourly window fired once, and the
 `workflow_dispatch` for the readers, editor and graders from the
 worker's APScheduler at the declared times. It is gated on
 `PILOT_DISPATCH_ENABLED` and needs the worker's `GITHUB_TOKEN` to carry
-**Actions: read and write** (the current fine-grained PAT answers 403,
-which pages ops hourly rather than failing silently). The workflow
-`schedule:` blocks stay as a fallback; each workflow's `concurrency`
-group makes a double fire harmless.
+**Actions: read and write** (extended 2026-09-02; a 403 pages ops hourly
+rather than failing silently). Only the readers keep a `schedule:`
+fallback, where a late fire is harmless. The editor and graders have
+none: on 2026-09-03 and 09-04 GitHub's cron fired them three hours late
+and the late editor run overwrote the 13:55 shadow pulse with one
+written from a different card set, after production had published, and
+the graders graded that version. A concurrency group only protects
+against two runs at once, not against a second run hours later.
 
-Until the token is extended, run a missed step locally with the same
-scripts the workflow uses (see the 2026-09-02 NOTES entry for the exact
-commands); the artifacts are identical.
+A missed step can be run locally with the same scripts the workflow
+uses (see the 2026-09-02 NOTES entry for the exact commands); the
+artifacts are identical.
 
 ## Before day 1 (plan section 4)
 
@@ -42,7 +46,10 @@ commands); the artifacts are identical.
    (`ops/<date>.json`), zero workflow auth or commit failures, the
    editor produced `shadow/<date>.md` with a `_LEANS` block and
    citation failures near zero after its one re-ask, the scoreboard
-   renders.
+   renders. A document that fails three reads is recorded under
+   `read-failures/<date>/<id>.json` and leaves the unread list, so one
+   unreadable PDF cannot void every day; the editor meta carries it as
+   `given_up_at_edit`, a coverage gap the grades must be read against.
 3. Run `pilot-grader-gate` from the Actions tab. Every dimension must
    read `separates`. TOO WEAK means the prompt lets a distorted brief
    or a misattributed sentence through; fix the prompt, re-run.
@@ -59,10 +66,14 @@ commands); the artifacts are identical.
 ## Reading the scoreboard
 
 `pilot/scoreboard.md` on `pilot-data`. Days before DAY1 show as
-shakedown and count for nothing. A row with a `tiebreak` entry has the
-two graders disagreeing on that metric: the owner reads both grade
-files and records the call in the day's grade directory as
-`<dim>-tiebreak.json` (same shape as an agent grade, agent `owner`).
+shakedown and count for nothing. When the two graders disagree on a
+metric, the graders workflow runs a third fresh agent on the same
+frozen prompt and input and records it as `<dim>-tiebreak.json`; that
+grade replaces both and the disagreement clears (spec: the owner may
+delegate tiebreaks). A row that still lists a `tiebreak` entry means
+the third grade was itself unusable; the owner settles it by writing
+`<dim>-owner.json` in the day's grade directory (same shape as an agent
+grade, agent `owner`), which overrides everything.
 
 Decision rule after 10 counted days (frozen): expand to MEDIUM only if
 metrics 1, 2, 2a and 3 all pass; kill if 2, 2a or 3 regress; anything
@@ -83,3 +94,8 @@ decide. No third iteration.
   to `pilot-data` under `grader-gate/`.
 - Metric 5 comes from `ops/<date>.json`, written by the readers
   workflow, not from Actions run metadata.
+- Tiebreaks are delegated to a third fresh grader agent (2026-09-05);
+  the owner's `<dim>-owner.json` override remains.
+- A document the readers give up on after three attempts is a recorded
+  coverage gap (`read-failures/`, `given_up_at_edit`), not an unread
+  file; the void rule counts readable-unread only.

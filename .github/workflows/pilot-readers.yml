@@ -101,7 +101,7 @@ jobs:
           git -C pilot-data config user.name  'pilot-reader-bot'
           git -C pilot-data config user.email 'actions@users.noreply.github.com'
           persist () {  # $1 = commit message suffix
-            git -C pilot-data add "$PILOT_ROOT/cards/" "$PILOT_ROOT/ops/" 2>/dev/null || true
+            git -C pilot-data add "$PILOT_ROOT/cards/" "$PILOT_ROOT/ops/" "$PILOT_ROOT/read-failures/" 2>/dev/null || true
             if git -C pilot-data diff --cached --quiet; then return 0; fi
             git -C pilot-data commit -q -m "pilot: reader cards ($1)" || return 0
             for attempt in 1 2 3; do
@@ -110,6 +110,13 @@ jobs:
               sleep 3
             done
             echo "::warning::could not push after $1; the next run retries"
+          }
+          # Every failure path records an attempt; after MAX_READ_ATTEMPTS
+          # (pilot_config) the document leaves the unread list instead of
+          # being re-read on every run (2026-09-05).
+          note_failure () {  # id date reason
+            python scripts/pilot_read_failure.py --root "pilot-data/$PILOT_ROOT" \
+              --id "$1" --date "$2" --reason "$3" || true
           }
           # TSV, read line-by-line: a `for` over command substitution
           # word-splits, and document slugs are not guaranteed
@@ -139,10 +146,14 @@ jobs:
             # a 432 KB JPM strategy deck exhausted 12 turns just reading
             # itself and returned "Reached max turns" instead of JSON;
             # that alone was the day's reader failure rate.
+            # 2026-09-04: five documents of 64-132 KB, all under the old
+            # 150 KB step, failed at 12 turns on every one of fourteen
+            # runs. A wasted retry costs more than a generous budget.
             BYTES=$(wc -c < "$TEXT" 2>/dev/null || echo 0)
             MAXT=12
-            [ "$BYTES" -gt 150000 ] && MAXT=20
-            [ "$BYTES" -gt 300000 ] && MAXT=30
+            [ "$BYTES" -gt 50000 ] && MAXT=20
+            [ "$BYTES" -gt 100000 ] && MAXT=30
+            [ "$BYTES" -gt 300000 ] && MAXT=40
             claude -p --model "$MODEL" \
               --permission-mode bypassPermissions \
               --max-turns "$MAXT" \
@@ -157,6 +168,7 @@ jobs:
               # max-turns there, not on stderr (2026-09-04).
               echo "reader stdout head:"; head -c 300 /tmp/reader_out.txt || true; echo
               tail -3 /tmp/reader_err.txt || true
+              note_failure "$ID" "$DATE" "reader: $(head -c 120 /tmp/reader_out.txt | tr '\n' ' ')"
               FAILED=$((FAILED+1))
               continue
             fi
@@ -173,11 +185,13 @@ jobs:
             if ! python scripts/pilot_verify_cards.py "$OUT" "$TEXT" \
               --reask-out /tmp/reask.json; then
               echo "::warning::anchor verify (pass 1) failed for $ID"
+              note_failure "$ID" "$DATE" "anchor verify pass 1"
               FAILED=$((FAILED+1)); continue
             fi
             NEEDS=$(python -c "import json;print(json.load(open('$OUT'))['verify']['needs_reask'])" 2>/dev/null || echo Error)
             if [ "$NEEDS" = "Error" ]; then
               echo "::warning::could not read the verify block for $ID"
+              note_failure "$ID" "$DATE" "verify block unreadable"
               FAILED=$((FAILED+1)); continue
             fi
             if [ "$NEEDS" = "True" ]; then
@@ -199,6 +213,7 @@ jobs:
             # Pass 2: drop whatever still fails, and count the drops.
             if ! python scripts/pilot_verify_cards.py "$OUT" "$TEXT" --final; then
               echo "::warning::anchor verify (final) failed for $ID"
+              note_failure "$ID" "$DATE" "anchor verify final"
               FAILED=$((FAILED+1)); continue
             fi
             python scripts/pilot_ops_record.py --root "pilot-data/$PILOT_ROOT" \

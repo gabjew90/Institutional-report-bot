@@ -71,10 +71,19 @@ is cheaper than reconstructing.
 
 Rules:
 - `topic` is the ledger's soft grouping key and the fragmentation
-  metric is measured on it. Pick the plainest subject phrase ("AI
-  capex", "10-year yield", "Broadcom earnings", "oil supply risk")
-  and use the identical words for every card on that subject in this
-  document. Not a claim summary, not a bank name, not a ticker.
+  metric is measured on it. Before writing cards, list the document's
+  subjects: a research note argues about a handful, rarely more than
+  five, and every card takes one of those labels. A label is the
+  market subject a desk at any bank would name ("Fed September hike
+  odds", "Broadcom earnings", "US equity momentum unwind", "hedge fund
+  positioning"), at the grain of a pulse theme. Not the claim, not a
+  figure, not a bank or a ticker on its own, and not so broad that a
+  standing thesis and a same-day price recap share it ("European
+  equities" is too coarse when the note carries both; "Europe tactical
+  long" and "STOXX 600 close" are two subjects). Use the identical
+  words for every card on a subject. A label that would hold one card
+  is a warning: fold it into the nearest subject unless the claim is
+  about something else.
 - `conviction: high` ONLY when the document itself signals it
   ("high conviction", "top call", "best idea") or the whole note is a
   dedicated thesis piece. A stated view without those markers is
