@@ -79,7 +79,8 @@ own graders and must not appear in your review or your result line.
 
 ## The result line — MANDATORY, and it is the LAST thing you emit
 
-Your final message must END with this line, alone, exactly:
+Your final message must END with this line, alone, exactly, as plain
+text at column 0 (no bold, no heading marker, no code fence):
 
 `PULSE QC RESULT: <n> finding(s), gate trail <clean|anomalous>, spot-check <n>/<n> verified`
 

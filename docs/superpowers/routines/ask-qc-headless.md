@@ -111,7 +111,8 @@ Buckets:
    the queue a work session picks up — entries are removed by the
    session that ships or rejects them, never by you.
 
-End your final message with exactly one line:
+End your final message with exactly one line, plain text at column 0,
+no bold, no heading marker, no code fence (the workflow greps for it):
 `QC RESULT: <graded>/<total> graded, <clean> clean, <concern> concern, <fail> fail, <infra> infra, <ungraded> ungraded`
 
 The workflow commits your two files; you do not run git.

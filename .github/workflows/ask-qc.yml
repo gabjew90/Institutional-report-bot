@@ -27,6 +27,10 @@ on:
       date:
         description: "UTC date to grade (YYYY-MM-DD, default yesterday)"
         required: false
+      phase:
+        description: "both | ask | pulse (re-run one phase without redoing the other)"
+        required: false
+        default: "both"
 
 permissions:
   contents: write
@@ -57,7 +61,10 @@ jobs:
             QC_DATE=$(date -u -d "yesterday" +%F)
           fi
           echo "QC_DATE=$QC_DATE" >> "$GITHUB_ENV"
-          if [ ! -f "pulse-data/ask-logs/$QC_DATE.md" ]; then
+          if [ "${{ github.event.inputs.phase }}" = "pulse" ]; then
+            echo "phase=pulse — skipping the ask grade"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          elif [ ! -f "pulse-data/ask-logs/$QC_DATE.md" ]; then
             echo "no ask-log for $QC_DATE — nothing to grade"
             echo "skip=true" >> "$GITHUB_OUTPUT"
           fi
@@ -110,6 +117,10 @@ jobs:
           # about. Weekends/holidays have no pulse; skip quietly.
           TODAY=$(date -u +%F)
           DOW=$(date -u +%u)
+          if [ "${{ github.event.inputs.phase }}" = "ask" ]; then
+            echo "phase=ask — skipping the pulse grade"
+            echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           if [ "$DOW" -gt 5 ]; then
             echo "weekend — no pulse to grade"
             echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0
@@ -141,7 +152,10 @@ jobs:
             --permission-mode bypassPermissions \
             --max-turns 80 \
             2>&1 | tee qc_run.log
-          grep -q "^QC RESULT:" qc_run.log || {
+          # Tolerate markdown decoration: on 2026-09-05 the judge wrote
+          # `**QC RESULT: ...**`, a complete grading was marked failed,
+          # and the pulse phase was skipped behind it.
+          grep -qE '^[*#> ]*QC RESULT:' qc_run.log || {
             echo "::error::judge finished without the QC RESULT line — \
           treating as a failed run (an erroring gate is a failed gate)";
             exit 1; }
@@ -154,8 +168,10 @@ jobs:
           test -f "pulse-data/ask-qc/findings-queue.md" || {
             echo "::error::findings queue missing"; exit 1; }
 
+      # !cancelled(): the two phases are independent. A failed ask
+      # grade must not skip the pulse review (2026-09-05).
       - name: Grade today's pulse
-        if: steps.pulse.outputs.skip != 'true'
+        if: ${{ !cancelled() && steps.pulse.outputs.skip != 'true' }}
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |
@@ -164,7 +180,7 @@ jobs:
           # on this grep and the log carried nothing about WHY, so the
           # cause had to be inferred. An unexplained gate failure is
           # only marginally better than a silent one.
-          grep -q "^PULSE QC RESULT:" pulse_qc_run.log || {
+          grep -qE '^[*#> ]*PULSE QC RESULT:' pulse_qc_run.log || {
             echo "::error::pulse judge finished without its result line           — treating as a failed run. Its last output follows:";
             tail -25 pulse_qc_run.log;
             exit 1; }
