@@ -1729,3 +1729,32 @@ and exits in a minute. No stagger added.
 Diagnosis note for future me: a heredoc through the Bash tool turned
 five `\b` anchors into backspace bytes again. Byte-repair
 (0x08 -> 0x5C 0x62) fixed it; regexes go in through Write/Edit.
+
+## 2026-09-04 — I locked the production database with a diagnostic probe
+
+While verifying the crowding tool end to end I ran `railway ssh` probes
+that did `import db` and called the executor. A second process opening
+the live DB runs `_ensure_schema` (executescript, write lock) on its
+first connection. The first probe hung on that lock for ~30 minutes,
+and in that window the WORKER logged `database is locked` 16 times: a
+Dropbox poll failed, the synthesizer's open-reads block was skipped, the
+bridge's pulse_state snapshot failed. Ingestion resumed once the probe
+process died. Nothing was lost that a later poll does not pick up, but
+this was a self-inflicted production incident, and the tool it was
+meant to verify was never the problem.
+
+Two facts that make the in-process path safe and the probe unsafe:
+`_schema_ready` is a process-global flag set at boot, so a new thread
+inside the worker gets its connection without the schema script; a
+separate process has the flag False and runs the script every time.
+
+Rule, now in CLAUDE.md under "Accessing production state": probe
+production data read-only (`file:/data/reports.db?mode=ro`, uri=True)
+and write the query by hand. Never `import db` in a second process
+against the live volume.
+
+The read-only run gave the real 3-day crowding picture, and it
+validates the entry-based redesign: SPX 5 entered / 1 exited, AVGO 4/4,
+MU 4/4, QQQ 4/4, LULU 3/1, MSTR 3/2. PLTR, which the first cut reported
+as "9 members", does not appear at all: those nine were eight closers
+and one entry.

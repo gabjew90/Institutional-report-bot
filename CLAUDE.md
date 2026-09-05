@@ -201,6 +201,8 @@ railway ssh "python -c 'import sqlite3; ...'"                 # query prod DB di
 
 Railway CLI is authenticated via `railway login` (already cached on the user's machine). The project is already linked from this repo's directory.
 
+**Never `import db` in a second process against the live volume.** `db.get_connection()` runs `_ensure_schema` (an `executescript` of CREATE/ALTER statements) the first time a process opens the DB, which takes a write lock. Inside the worker that runs once at boot; from a `railway ssh` probe it contends with the live worker and, on 2026-09-04, a probe hung on that lock for 30 minutes while the worker logged `database is locked` 16 times, including a failed Dropbox poll. Probe production data with a read-only connection that cannot contend: `sqlite3.connect('file:/data/reports.db?mode=ro', uri=True, timeout=5)`, and write the query by hand. Importing `report.*` or `discord_bot.*` modules is fine as long as nothing in the probe touches `db.get_connection()`.
+
 **If you (Claude) don't have shell access** (mobile app, web UI, or any env without terminal):
 
 You cannot run `railway` commands yourself. Ask the user to run them locally and paste output. Structured request pattern that works well:
