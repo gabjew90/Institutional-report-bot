@@ -1,0 +1,708 @@
+{
+ "brief": "BofA's weekly volatility compendium runs three arguments plus two monitors. First, with US midterms about two months away and Kalshi showing a close Senate race, S&P options price only a 0.82% post-election move against a 1.3% average historical midterm reaction, and easing equity leverage plus low correlation point to rotation rather than an index vol shock, so BofA says avoid overpaying for index protection and prefers an SPX Dec26 95%/80% down-and-out put at 0.55%, a sold VIX Oct 16 put against a Nov 22-30 call spread, and IWM Nov 280 puts where regional banks and small caps look underpriced versus 2024 election-week moves. Second, SX7E dividend futures trade close to analyst estimates after 60% two-year gains, so remaining upside sits in SX5E dividends at Dec28 and Dec29, aided by ASML capping, and BofA rotates SX7E into SX5E divs or into European bank equities. Third, Kospi realised and implied vols have roughly halved and the Bubble Risk Indicator has fallen to 0.52 from above 0.8 at 6.2x forward earnings, so BofA moves from long gamma to a 3-month 110%/130% call spread part-funded by an 80% put. GFSI fell to -0.21, its third weekly decline in four, led by equities.",
+ "cards": [
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA expects the November 2026 US midterm elections to amplify equity dispersion more than index volatility.",
+   "anchor": "US midterms more likely to amplify dispersion than vol",
+   "topic": "US midterm election vol",
+   "status": "target",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "around two months away"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Prediction markets on Kalshi imply a high probability of a Democratic House and a close battle for Senate control at the US midterms.",
+   "anchor": "prediction markets (Kalshi) indicate a high probability for a Democratic House but a close battle for Senate control",
+   "topic": "US midterm election vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "S&P 500 options are pricing a 0.82% move following the November 2026 US midterm elections.",
+   "anchor": "S&P vol is pricing in a relatively muted 0.82% move following this year\u2019s elections",
+   "topic": "US midterm election vol",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "post-election day"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The S&P 500 has moved 1.3% on average on the day after past US midterm elections, less than typical presidential election reactions.",
+   "anchor": "Historically, the S&P\u2019s 1-day move post-midterms has been 1.3% on average",
+   "topic": "US midterm election vol",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "In only 33% of US midterms since 1975 has the S&P 500 one-day reaction exceeded the prior month's average one-day move, versus a 100% hit rate in presidential elections.",
+   "anchor": "in only 33% of midterms since 1975 has the S&P 1-day reaction been greater than the prior month\u2019s average 1-day move",
+   "topic": "US midterm election vol",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The VIX Sep/Oct/Nov futures fly sits at 1.11v, high versus recent midterm and non-election cycles but far below presidential election year event premium.",
+   "anchor": "The VIX Sep/Oct/Nov futures fly currently sits at 1.11v, which is high compared to recent midterm election and non-election cycles",
+   "topic": "US midterm election vol",
+   "status": "level",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA notes part of the Oct VIX future risk may come from the October FOMC meeting rather than the midterm elections.",
+   "anchor": "part of the Oct VIX future risk may also be coming from the key Oct FOMC meeting",
+   "topic": "US midterm election vol",
+   "status": "level",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "October"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA advises investors not to overpay for midterm election protection, especially at the index level.",
+   "anchor": "the key for investors is to avoid overpaying for election protection, especially at the index level",
+   "topic": "US midterm election vol",
+   "status": "target",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA says SPX down-and-out puts offer historically attractive entry points because tail put skew 3m and out is near record steep.",
+   "anchor": "down-and-out puts (PDOs) offer historically attractive entry points given the near-record steep tail put skew 3m and out",
+   "topic": "US midterm election vol",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3m and out"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA recommends buying an SPX Dec26 95%/80% put down-and-out with daily observation for 0.55% indicative premium.",
+   "anchor": "Buy SPX Dec26 95% / 80% put down & out (daily obs.) for 0.55% indic.",
+   "topic": "US midterm election vol",
+   "status": "target",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Dec26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The recommended SPX down-and-out put protects in 5%-20% drawdowns from current levels and costs 50% less than a vanilla put spread.",
+   "anchor": "providing protection in 5%-20% drawdowns from current levels while being 50% cheaper than vanilla put spreads",
+   "topic": "US midterm election vol",
+   "status": "target",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Dec26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA recommends selling the VIX Oct 16 put and buying the VIX Nov 22-30 call spread for $0.50 indicative.",
+   "anchor": "Sell VIX Oct 16 put, buy VIX Nov 22-30 call spread for $0.50 indic.",
+   "topic": "US midterm election vol",
+   "status": "target",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Nov26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Options on regional banks (KRE) and small caps (RTY) are the most underpriced today relative to their 2024 election-week moves.",
+   "anchor": "options on regional banks (KRE) and small caps (RTY) appear most underpriced today relative to their 2024 election-week moves",
+   "topic": "US midterm election vol",
+   "status": "level",
+   "instruments": [
+    "KRE",
+    "IWM"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA recommends buying the IWM Nov 280 put for $6.13 as a targeted midterm election hedge.",
+   "anchor": "Buy IWM Nov 280 put for $6.13 (~96%/33d strike; 20.3v; ref. 290.44)",
+   "topic": "US midterm election vol",
+   "status": "target",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Nov26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Two-year SX7E constant tenor dividends have risen 60% over the last two years.",
+   "anchor": "with 2y SX7E constant tenor dividends up 60% in the last 2 years",
+   "topic": "European dividend futures",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "last 2 years"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA views SX7E dividend futures as priced for perfection, trading close to analyst estimates with little upside and room for downside surprises.",
+   "anchor": "In our view, SX7E div futures appear priced for perfection",
+   "topic": "European dividend futures",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "SX5E dividend futures continue to trade below bottom-up estimates for the Dec28 and Dec29 tenors after index composition and ASML cap-factor adjustments.",
+   "anchor": "SX5E div futures continue to trade below estimates for Dec28 and Dec29 tenors",
+   "topic": "European dividend futures",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec28 and Dec29"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA assumes a Sep 2026 SX5E index composition change of minus WKL, minus VOW3, plus ENGI, plus NOKIA in its dividend estimates.",
+   "anchor": "(Scenario 1: -WKL, -VOW3, +ENGI, +NOKIA) and ASML's cap-factor adjustment",
+   "topic": "European dividend futures",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Sep 2026 index review"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Remaining dividend upside is limited to SX5E dividends, with the DEDZ9 contract screening relatively attractive.",
+   "anchor": "remaining upside potential is limited to SX5E divs, with DEDZ9 screening relatively attractive",
+   "topic": "European dividend futures",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec29"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Measured against recent realised volatility, SX5E dividend contracts offer more favourable risk/reward than equivalent SX7E contracts.",
+   "anchor": "SX5E dividends still offer more favourable risk/reward than the equivalent SX7E contracts, in our view",
+   "topic": "European dividend futures",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Analysts now forecast similar dividend growth for SX5E and SX7E despite stronger recent bank EPS and DPS growth and lofty payout ratio forecasts.",
+   "anchor": "analysts are now forecasting similar growth in both SX5E and SX7E divs",
+   "topic": "European dividend futures",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Eurex net Agent longs in SX7E dividend futures have built up earlier in the cycle than in previous years, compressing available upside.",
+   "anchor": "Eurex net \u2018Agent\u2019 longs in SX7E dividend futures appear to have been building up earlier than in previous cycles",
+   "topic": "European dividend futures",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Repeated ASML capping at the SX5E 10% concentration threshold gives SX5E dividend futures gearing to the global AI theme, which SX7E dividends lack.",
+   "anchor": "establishes gearing to the global AI theme for SX5E dividend futures",
+   "topic": "European dividend futures",
+   "status": "target",
+   "instruments": [
+    "ASML"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA recommends that holders of long SX7E dividend exposure rotate into SX5E dividends.",
+   "anchor": "those with long exposure to SX7E dividends may prefer to rotate into SX5E dividends",
+   "topic": "European dividend futures",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "mid-to-longer maturities, e.g. Dec29"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "As an alternative to the dividend rotation, BofA says investors may express optimism on European banks through the underlying equities, citing earnings momentum, buybacks and M&A catalysts.",
+   "anchor": "investors may express optimism on European banks through the underlying equities given strong earnings momentum, buybacks and M&A catalysts",
+   "topic": "European dividend futures",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA states the risks to the SX5E dividend trade are that SX7E divs outperform SX5E divs or that SX7E underperforms SX7E divs.",
+   "anchor": "risks are that SX7E divs outperform SX5E divs or that SX7E underperforms SX7E divs",
+   "topic": "European dividend futures",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Kospi realised and implied volatilities have roughly halved from recent peaks and option bid-offer spreads have narrowed materially.",
+   "anchor": "Realised and implied vols have roughly halved from recent peaks",
+   "topic": "Kospi upside positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "recent weeks"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA's Bubble Risk Indicator for the Kospi has fallen to 0.52 after remaining in bubble-risk territory since October 2025.",
+   "anchor": "Bubble Risk Indicator (BRI) has fallen to 0.52 after remaining in bubble-risk territory since October 2025",
+   "topic": "Kospi upside positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "With the Kospi BRI back below 0.8, BofA says it may be time to neutralise long gamma exposure and look at neutral to slightly short gamma trades.",
+   "anchor": "the recent decline suggests it may be time to neutralise long gamma exposure",
+   "topic": "Kospi upside positioning",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The KOSPI 200 trades on 6.2x forward earnings, the 1st percentile of its own 10-year history, while comparable global indices average the 68th percentile.",
+   "anchor": "The KOSPI 200 trades on just 6.2x forward earnings, placing it in the 1st percentile of its own 10-year history",
+   "topic": "Kospi upside positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA recommends buying a KOSPI2 3-month 110%/130% call spread for 3.43% and partially funding it by selling an 80% put for 1.61%.",
+   "anchor": "Buy KOSPI2 3-month 110% 130 % call spreads for 3.43% and consider partially funding it by selling an 80% put for 1.61%",
+   "topic": "Kospi upside positioning",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3 months"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The KOSPI2 call spread collar carries an indicative net premium outlay of 1.83%.",
+   "anchor": "Indicative premium: 1.83% (net premium outlay for call spread collar)",
+   "topic": "Kospi upside positioning",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3 months"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The KOSPI2 call spread collar pays out negatively if the market sells off by worse than 20%.",
+   "anchor": "negative payout for the call spread collar in case of a worse than 20% selloff",
+   "topic": "Kospi upside positioning",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "3 months"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The KOSPI2 call spread strikes approach the June peak, which sits roughly 37% above current levels, with the put strike near July's lows at 80% of spot.",
+   "anchor": "the call spread approaching the June peak, which lies roughly 37% above current levels",
+   "topic": "Kospi upside positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3 months"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Foreign investors have been persistent sellers of Korean equities since February while domestic retail investors absorbed much of the selling.",
+   "anchor": "Foreign investors have been persistent sellers of Korean equities since February, while domestic retail investors have absorbed much of the selling pressure",
+   "topic": "Kospi upside positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since February"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Foreign selling of Korean equities has begun to moderate, coinciding with an appreciation of the Korean won since early July.",
+   "anchor": "coinciding with a notable appreciation of the Korean won since early July",
+   "topic": "Kospi upside positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since early July"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The BofA GFSI fell from -0.16 on 21-Aug-26 to -0.21 on 28-Aug-26, its third weekly decline in four weeks.",
+   "anchor": "the GFSI fell from -0.16 on 21-Aug-26 to -0.21 on 28-Aug-26, marking its third weekly decline in the past four weeks",
+   "topic": "cross-asset stress GFSI",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week to 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Cross-asset stress sits in the 22nd percentile of its historical distribution since 2000.",
+   "anchor": "cross-asset stress now sits in the 22nd percentile of its historical distribution since 2000",
+   "topic": "cross-asset stress GFSI",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "as of 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Equities led last week's decrease in cross-asset stress, supplying six of the top seven stress decliners.",
+   "anchor": "The decrease in stress last week was led by equities",
+   "topic": "cross-asset stress GFSI",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week to 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Nikkei implied vol recorded the largest decline in GFSI stress, a 95th percentile drop versus its own history.",
+   "anchor": "Nikkei implied vol recorded the largest decline in stress as it experienced a 95th percentile drop compared to its own history",
+   "topic": "cross-asset stress GFSI",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week to 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Japan posted the largest regional decrease in GFSI stress but remains the most stressed region by a wide margin.",
+   "anchor": "helping Japan post the largest decrease in regional stress, though it remains the most stressed by a wide margin",
+   "topic": "cross-asset stress GFSI",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week to 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "GFSI stress declined in commodities and credit, was unchanged in FX and edged higher in rates last week.",
+   "anchor": "stress declined in commodities and credit, was unchanged in FX, and edged higher in rates",
+   "topic": "cross-asset stress GFSI",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week to 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Govt-OIS USD recorded the largest rise in GFSI stress last week while Tibor-OIS remains the most stressed subcomponent.",
+   "anchor": "Govt-OIS USD recorded the largest rise in stress last week, but Tibor-OIS remains the GFSI\u2019s most stressed subcomponent",
+   "topic": "cross-asset stress GFSI",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week to 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The GFSI Risk Allocator suggested a 14.6% overweight position as of 28-Aug-26, unchanged versus 14-Aug-26.",
+   "anchor": "The GFSI Risk Allocator (using Bull, Bear & Neutral weights of 2, 0, 1) suggested a 14.6% overweight position as of 28-Aug-26",
+   "topic": "cross-asset stress GFSI",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "as of 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "The shares of bullish, bearish and neutral GFSI components used in the Risk Allocator were 24.4%, 9.8% and 65.8% as of 28-Aug-26.",
+   "anchor": "were 24.4%, 9.8%, and 65.8%, respectively",
+   "topic": "cross-asset stress GFSI",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "as of 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "US healthcare stocks show the highest Bubble Risk Indicator level, while Nikkei and Kospi BRI levels remain subdued.",
+   "anchor": "US healthcare stocks continue to show bubble-like price action and the highest BRI level",
+   "topic": "equity bubble risk",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "as of 31-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Cybersecurity stocks show relatively high bubble-like dynamics among popular equity themes.",
+   "anchor": "Cybersecurity stocks are showing relatively high bubble-like dynamics among popular equity themes",
+   "topic": "equity bubble risk",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "as of 31-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "EM and software stocks saw the biggest one-week jump in Bubble Risk Indicator among popular equity themes.",
+   "anchor": "EM & software stocks have seen the biggest jump in their Bubble Risk Indicator over the past week",
+   "topic": "equity bubble risk",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "past week to 31-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "US cybersecurity, pharma hyperscalers, commercial biotech and Korean tourism baskets are among the global themes showing bubble-like price action.",
+   "anchor": "US Cybersecurity, Pharma Hyperscalers, Commercial Biotech & Korean Tourism are amongst the global themes showing bubble-like price action",
+   "topic": "equity bubble risk",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "as of 31-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "MRNA, MRK, ABNB, VLTO and SJM rank highest on the Bubble Risk Indicator among S&P 500 members.",
+   "anchor": "Stocks like MRNA, MRK, ABNB, VLTO and SJM rank highest in terms of their Bubble Risk Indicators amongst S&P 500 members",
+   "topic": "equity bubble risk",
+   "status": "level",
+   "instruments": [
+    "MRNA",
+    "MRK",
+    "ABNB",
+    "VLTO",
+    "SJM"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "as of 31-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "About 20 S&P 500 stocks carry a Bubble Risk Indicator above 0.8 today versus 50-100 at the frothiest points of the dotcom bubble.",
+   "anchor": "the dotcom bubble saw 50-100 S&P stocks record BRI levels > 0.8, vs ~20 today",
+   "topic": "equity bubble risk",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "as of 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "S&P 500 stocks with a Bubble Risk Indicator above 0.8 represent about 2.5% of index market cap today versus 20%-40% at dotcom bubble peaks.",
+   "anchor": "of the S&P's market cap record BRI levels > 0.8 , vs ~2.5% today",
+   "topic": "equity bubble risk",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "as of 28-Aug-26"
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "BofA treats Bubble Risk Indicator readings above 0.8, the top quintile, as the rule of thumb beyond which bubble risks are likely elevated.",
+   "anchor": "we find that BRI levels above 0.8 (i.e., top quintile) provide a useful rule of thumb",
+   "topic": "equity bubble risk",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA Securities",
+   "document": "Global Equity Volatility Insights",
+   "claim": "Seven of the eight historical asset bubbles BofA studied peaked concurrently with a Bubble Risk Indicator reading above 0.8.",
+   "anchor": "seven of the eight bubbles saw their peaks concurrent to a BRI reading above 0.8",
+   "topic": "equity bubble risk",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-03/15271__global-equity-volatility-insights.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 54,
+  "matched": 54,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
