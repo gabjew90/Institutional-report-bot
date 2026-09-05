@@ -189,3 +189,61 @@ no findings
   corpus. Queued as prompt-session material: should matchup-narrative
   answers get an explicit prose-allowed exception, or be forced through
   the same arrow-bullet format as roster-dump answers?
+
+## 2026-09-04
+
+- (open) 1. regex-able (unsourced historical-superlative claim, 16:30:21
+  UTC turn, Ry_spaceman, "how does the market close on the Friday
+  before labor day") — answer stated September "holds ... the highest
+  historical volatility of the calendar year"; web search confirms
+  September is historically the worst month for *returns* but that
+  October, not September, carries the reputation for highest
+  volatility — a real fact yoked to a wrong one in the same sentence.
+  Route was `WEB/FACT · ungrounded`, no Tools table, so ground rule 5
+  applied; verification found the contradiction.
+  `scripts/validate_answer.py` returns clean (had to `pip install -r
+  requirements.txt` first — `aiohttp`/`discord.py` were missing in this
+  environment and every check function was silently reporting
+  `detector unavailable`). The clean result is expected: none of the
+  twelve checks in `scripts/ask_response_validate.py` target this
+  shape, and `discord_bot/figure_provenance.py` — which otherwise
+  strips/hedges unsourced *numeric* figures on exactly this kind of
+  ungrounded WEB/FACT turn — is scoped to digit-bearing tokens only
+  (`_NUM_RE`); "highest historical volatility of the calendar year"
+  carries no digit, so even a correctly-firing figure-provenance guard
+  would not have caught it.
+  Candidate fixture:
+    question: "how does the market close on the Friday before labor day"
+    bad answer: "This close officially ends summer volume and rolls the
+      market straight into September, which holds the worst average
+      monthly return profile and the highest historical volatility of
+      the calendar year."
+    good-answer control: "September has a reputation as a seasonally
+      weak month for stocks, though by most measures October — not
+      September — carries the crown for volatility; take any
+      single-month seasonality claim with a grain of salt."
+    suggested new check (`check_historical_superlative_unsourced`):
+      fire when `not grounded and not tool_calls` and the answer
+      matches
+      `r"\b(?:highest|worst|best|lowest|largest|biggest)\b[^.\n]{0,40}?\b(?:of (?:the )?(?:calendar )?year|on record|in history|historical(?:ly)?)\b"`
+      with no hedge word (`roughly|by some measures|depending on|arguably|debat`)
+      within ~40 chars of the match.
+
+  Side note, not a per-turn finding but worth a maintainer look: all 5
+  `WEB/FACT`/ungrounded/no-Tools-table turns in today's log
+  (16:30:21, 18:51:36, 20:00:57, 21:01:53, 21:29:25) fall inside a
+  documented incident window in `discord_bot/bot.py` — a phase-9
+  return-value bug dropped `grounding_metadata` to `None` on every
+  `/ask` turn "from 2026-09-02 to 09-04" (bot.py:6905-6916), which both
+  vanished every Sources footer and caused the figure-provenance
+  guard's skip-check to misfire (bot.py:1771-1779, dated in-code to
+  2026-09-04). Both fixes live in this checkout's single commit,
+  timestamped 2026-09-04T20:10:17-07:00 (2026-09-05T03:10:17Z) — after
+  every turn in today's log (last turn 21:30:28 UTC, ~5h40m before the
+  fix). Net effect: the figure-provenance guard was inoperative for
+  every *numeric* figure across those 5 turns for the whole window;
+  most numbers checked out on manual verification this session, but the
+  strip/hedge process that should have applied regardless of
+  correctness didn't fire. Appears already fixed going forward per the
+  commit timestamp — worth a maintainer confirming the fix is live in
+  the next real deploy, no further action from this queue.
