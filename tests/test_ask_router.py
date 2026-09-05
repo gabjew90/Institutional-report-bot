@@ -185,7 +185,8 @@ def test_every_prefetch_tool_has_an_executor_in_phase_2():
               "why is nvda down, odds it beats"):
         used |= {t for t, _ in R.classify(q).prefetch}
     used |= {t for t, _ in R.classify("league standings", fantasy_enabled=True).prefetch}
-    assert used >= {R.T_SLATE, R.T_EDATE, R.T_PRICE, R.T_CHAIN, R.T_ECON, R.T_HISTORY, R.T_FANTASY}
+    used |= {t for t, _ in R.classify("what is the room piled into").prefetch}
+    assert used >= {R.T_SLATE, R.T_EDATE, R.T_PRICE, R.T_CHAIN, R.T_ECON, R.T_HISTORY, R.T_FANTASY, R.T_ROOM}
     for t in used:
         const = [k for k, v in vars(R).items() if k.startswith("T_") and v == t][0]
         assert f"_ask_router.{const}: _execute_" in src, t
@@ -417,6 +418,57 @@ def test_implied_move_routes_to_the_chain_unless_past_tense():
     # in chat or on the web, so the shape must keep those tools.
     r = R.classify("what was the implied move for LULU earnings?")
     assert r.shape == R.UNKNOWN and r.google_allowed() and R.T_CHAT in r.allowed_tools(), r
+
+
+# 2026-09-04, owner: "is the bot able to tell when most of the room are
+# piled into the same plays?" The ledger could; nothing pointed at it,
+# and "what's the room piled into" matched the CHAT shape's "what's the
+# room" and searched chat text for ticker mentions instead.
+def test_crowding_questions_route_to_the_room_positions_tool():
+    for q in ("what is the room piled into", "what are most people in right now",
+              "are we all in the same trade", "whats the most crowded position in the room",
+              "what is everyone holding", "whos in PLTR", "who is all in nvda"):
+        r = R.classify(q, fantasy_enabled=True)
+        assert r.shape == R.ROOM_CROWDING, (q, r.shape)
+        assert r.prefetch and r.prefetch[0][0] == R.T_ROOM, (q, r.prefetch)
+        assert not r.google_allowed(), "the room's book is not on the web"
+        assert R.T_ROOM in r.allowed_tools() and R.T_CHAT not in r.allowed_tools()
+    # "right now" narrows the window
+    assert R.classify("what are most people in right now").prefetch == [(R.T_ROOM, {"days": 3})]
+    assert R.classify("what is the room piled into").prefetch == [(R.T_ROOM, {"days": 14})]
+
+
+def test_crowding_shape_does_not_steal_neighbouring_shapes():
+    assert R.classify("whats the room saying about IBIT").shape == R.CHAT_HISTORY
+    assert R.classify("what did BK say about MU yesterday").shape == R.CHAT_HISTORY
+    assert R.classify("show all of Abe's current holdings").shape == R.MEMBER_LEDGER
+    assert R.classify("who is in the league", fantasy_enabled=True).shape == R.FANTASY
+    assert R.classify("whats nvda at").shape == R.PRICE
+    assert R.classify("are we in a recession").shape != R.ROOM_CROWDING
+
+
+def test_room_positions_lead_carries_the_entry_bias_caveat():
+    txt = R.inject_text(R.T_ROOM, {"status": "ok", "positions": [{"ticker": "PLTR", "members": 9}]})
+    assert "entry-biased" in txt and "upper bound" in txt and "PLTR" in txt
+
+
+def test_bot_reexports_every_tool_builder_and_executor():
+    """bot.py imports the tool layer by an explicit name list and then
+    CALLS those names in _tools_all and _tool_executors. A builder or
+    executor missing from the list is a NameError on the first /ask
+    after deploy, which no import-time check catches (2026-09-04: the
+    room-positions tool was declared, registered and undocumented in
+    the re-export list all at once)."""
+    import re
+    from discord_bot import ask_tools as T, bot as B
+    names = [n for n in dir(T) if re.match(r"_(build_\w+_tool|execute_\w+)$", n)]
+    assert names, "no tool-layer names found"
+    missing = [n for n in names if not hasattr(B, n)]
+    assert missing == [], f"bot.py does not re-export: {missing}"
+    src = B._ask_pipeline_source()
+    for n in names:
+        if n.startswith("_build_") and f"{n}()" in src:
+            assert hasattr(B, n), n
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

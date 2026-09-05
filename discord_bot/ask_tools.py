@@ -2317,3 +2317,63 @@ async def _execute_market_price(args: dict) -> dict:
     if truncated_to is not None:
         result["truncated_to"] = truncated_to
     return result
+
+
+def _build_room_positions_tool():
+    """FunctionDeclaration for `lookup_room_positions`: the crowding
+    view over the member trade ledger (2026-09-04). One query, the two
+    ledger traps baked in, the entry-bias caveat in the payload."""
+    from google.genai import types
+    return types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="lookup_room_positions",
+                description=_TOOL_DOCS["lookup_room_positions"] + (
+                    "\n\nResponse shape: {status, window_days, active_members, "
+                    "positions: [{ticker, members_entered, members_exited, entries, exits, "
+                    "members_entered_not_exited, share_of_active_members}], note}. "
+                    "Sorted by members_entered desc."
+                ),
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "days": types.Schema(
+                            type=types.Type.INTEGER,
+                            description="Lookback window in days (default 14, max 90). "
+                                        "Use 3 for 'right now / this week'.",
+                        ),
+                        "min_members": types.Schema(
+                            type=types.Type.INTEGER,
+                            description="Only tickers with at least this many distinct "
+                                        "members (default 2).",
+                        ),
+                    },
+                ),
+            )
+        ]
+    )
+
+
+async def _execute_room_positions(args: dict) -> dict:
+    """Run the lookup_room_positions tool call. SQLite via to_thread."""
+    try:
+        days = int(args.get("days") or 14)
+    except (TypeError, ValueError):
+        days = 14
+    try:
+        min_members = int(args.get("min_members") or 2)
+    except (TypeError, ValueError):
+        min_members = 2
+    try:
+        res = await asyncio.to_thread(db.get_room_positions, days, min_members)
+    except Exception as e:
+        log.warning(f"lookup_room_positions failed: {e}")
+        return {"status": "error",
+                "error": f"ledger query failed ({str(e)[:120]}); say the lookup failed, "
+                         "do not guess who is in what."}
+    res["status"] = "ok" if res.get("positions") else "empty"
+    if res["status"] == "empty":
+        res["note"] = (f"No ticker had {min_members}+ distinct members logging an entry in "
+                       f"the last {days} days. Say the room is not crowded into anything on "
+                       "the ledger; do NOT infer positions from chat.")
+    return res

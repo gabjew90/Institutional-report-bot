@@ -153,6 +153,9 @@ jobs:
                 --source "$TEXT" --tier "$TIER" --model "$MODEL" \
                 --prompt docs/superpowers/routines/pilot/reader.md; then
               echo "::warning::reader failed for $ID"
+              # stdout too: the CLI reports usage limits, auth and
+              # max-turns there, not on stderr (2026-09-04).
+              echo "reader stdout head:"; head -c 300 /tmp/reader_out.txt || true; echo
               tail -3 /tmp/reader_err.txt || true
               FAILED=$((FAILED+1))
               continue

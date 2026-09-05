@@ -67,6 +67,7 @@ from discord_bot.ask_tools import (  # noqa: E402,F401  re-exported: call sites,
     _build_options_chain_tool,
     _build_price_history_tool,
     _build_query_data_tool,
+    _build_room_positions_tool,
     _build_trade_log_tool,
     _build_user_profile_tool,
     _crypto_quote,
@@ -79,6 +80,7 @@ from discord_bot.ask_tools import (  # noqa: E402,F401  re-exported: call sites,
     _execute_options_chain,
     _execute_price_history,
     _execute_query_data,
+    _execute_room_positions,
     _execute_trade_log,
     _execute_user_profile,
     _json_safe,
@@ -4177,6 +4179,7 @@ async def _ask_00_setup_tools_and_context(
             _build_earnings_slate_tool(),
             _build_query_data_tool(),
             _build_price_history_tool(),
+            _build_room_positions_tool(),
             # Sleeper fantasy tool only exists when a league is
             # configured — an unregistered tool costs no schema
             # tokens and can't be miscalled.
@@ -4708,6 +4711,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_ECON: _execute_economic_calendar,
         _ask_router.T_HISTORY: _execute_price_history,
         _ask_router.T_FANTASY: _execute_fantasy_league,
+        _ask_router.T_ROOM: _execute_room_positions,
     }
     _ask_meta["route_shape"] = _ask_route.shape
 
@@ -4929,6 +4933,7 @@ async def _ask_02_call_model_with_tools(
             "query_data": _execute_query_data,
             "lookup_price_history": _execute_price_history,
             "lookup_fantasy_league": _execute_fantasy_league,
+            "lookup_room_positions": _execute_room_positions,
         }
         tool_response_parts = []
         for fc in function_calls:

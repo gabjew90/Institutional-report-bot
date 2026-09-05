@@ -1383,6 +1383,7 @@ from db_parts.analyst import (  # noqa: E402,F401
     get_latest_analyst_trade_posted_at,
     get_member_trade_events,
     get_recent_analyst_trades,
+    get_room_positions,
     insert_text_extracted_trade_if_not_dup,
     known_trade_caller_names,
     mark_expired_analyst_positions,

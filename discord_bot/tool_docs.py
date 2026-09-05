@@ -256,3 +256,21 @@ TOOL_DOCS["lookup_price_history"] = (
 ) + _NO_SELF_TA + _COMMON
 
 TOOL_DOCS["lookup_fantasy_league"] = _COMMON
+
+TOOL_DOCS["lookup_room_positions"] = (
+    "WHEN TO CALL: the asker wants to know what the ROOM is in — "
+    "'what's everyone piled into', 'most crowded position', 'are we all "
+    "in the same trade', 'who's in PLTR'. Returns per-ticker counts of "
+    "DISTINCT members who logged an entry in the window (`days`, default "
+    "14): members_entered (logged an open/add), members_exited (posted a "
+    "close), entries, exits, members_entered_not_exited.\n"
+    "Counts are by author_id, never by display name, and only "
+    "is_trade=1 rows count, so do not re-derive this with query_data.\n"
+    "BINDING caveat: the ledger is ENTRY-BIASED. Members post entries "
+    "far more than exits, so 'N members in PLTR' means N ANNOUNCED an entry; "
+    "members_entered_not_exited is an UPPER bound on who still holds it. When "
+    "members_exited is the bigger number, the story is the room getting OUT. "
+    "Say so in the answer.\n"
+    "DO NOT use for one member's own trades (lookup_trade_log) or for "
+    "a registered caller's open book (lookup_trade_log caller anchor)."
+)

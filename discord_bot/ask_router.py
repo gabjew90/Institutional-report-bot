@@ -41,6 +41,7 @@ CHAT_HISTORY = "chat_history"
 FANTASY = "fantasy"
 HISTORICAL_STAT = "historical_stat"
 NEWS_EVENT = "news_event"
+ROOM_CROWDING = "room_crowding"
 BANTER = "banter"
 UNKNOWN = "unknown"
 
@@ -49,7 +50,7 @@ UNKNOWN = "unknown"
 # (2026-09-02 review: both shapes were hard-coded BANTER).
 FACTUAL_SHAPES = {EARNINGS_SLATE, EARNINGS_DATE, PRICE, OPTIONS_CHAIN, ECON_CALENDAR,
                   PRICE_HISTORY, COMPANY_PROFILE, HISTORICAL_STAT, NEWS_EVENT, FANTASY,
-                  MEMBER_LEDGER, CHAT_HISTORY}
+                  MEMBER_LEDGER, CHAT_HISTORY, ROOM_CROWDING}
 
 # Tool names as declared in discord_bot/ask_tools.py
 T_GOOGLE = "google_search"
@@ -64,8 +65,9 @@ T_SLATE = "lookup_earnings_slate"
 T_QUERY = "query_data"
 T_HISTORY = "lookup_price_history"
 T_FANTASY = "lookup_fantasy_league"
+T_ROOM = "lookup_room_positions"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
-             T_SLATE, T_QUERY, T_HISTORY, T_FANTASY}
+             T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM}
 
 # Which function tools a shape may see. Google is a separate flag.
 TOOL_POLICY: dict[str, set[str]] = {
@@ -81,6 +83,7 @@ TOOL_POLICY: dict[str, set[str]] = {
     FANTASY: {T_FANTASY, T_CHAT},
     HISTORICAL_STAT: {T_HISTORY},
     NEWS_EVENT: {T_PRICE, T_EDATE, T_CHAIN},
+    ROOM_CROWDING: {T_ROOM, T_TRADES, T_QUERY, T_PRICE},
     BANTER: ALL_TOOLS - {T_GOOGLE},
     UNKNOWN: ALL_TOOLS - {T_GOOGLE},
 }
@@ -92,7 +95,7 @@ GOOGLE_POLICY: dict[str, bool] = {
     # answer. League STATE still comes only from the injected payload,
     # the same split the PRICE shape uses (2026-09-03).
     MEMBER_LEDGER: False, CHAT_HISTORY: False, FANTASY: True,
-    HISTORICAL_STAT: True, NEWS_EVENT: True, BANTER: True, UNKNOWN: True,
+    HISTORICAL_STAT: True, NEWS_EVENT: True, ROOM_CROWDING: False, BANTER: True, UNKNOWN: True,
 }
 
 
@@ -420,6 +423,19 @@ _NEWS_RE = re.compile(
     r"|(?:probability|odds|chances?)\s+(?:of|that|on|according)|according\s+to\s+(?:kalshi|polymarket|the\s+\w+)"
     r"|shares\s+outstanding|market\s+cap(?:italization)?\b|(?:shares?\s+|free\s+)float\b|float\s+(?:of|for)\s+\$?[A-Za-z]{1,5}\b"
     r"|why\s+didn'?t\s+you\s+(?:tell|mention|flag|say)|(?:was|is)\s+there\s+(?:a|an)\s+\w+\s+(?:event|meeting|call|print)\s+today)\b", re.I)
+# The room's own book, aggregated (2026-09-04): "what's everyone piled
+# into". Must be tested BEFORE the chat shape, whose `what's the room`
+# alternative otherwise claims it and searches chat text for ticker
+# mentions instead of counting logged positions.
+_CROWD_RE = re.compile(
+    r"\b(?:piled\s+into|crowded\s+(?:position|trade|name|into)|most\s+crowded"
+    # Subject then a position verb. Bare "we ... in" is excluded: "are we
+    # in a recession" is a macro question, not the room's book. "we all
+    # in" and "same trade/boat" still qualify.
+    r"|(?:everyone|everybody|most\s+(?:people|of\s+the\s+room|of\s+us)|the\s+(?:whole\s+)?room|we\s+all)\s+"
+    r"(?:all\s+)?(?:in|holding|long|short|positioned\s+in|piled\s+in(?:to)?|loaded\s+(?:in|up\s+on))\b"
+    r"|same\s+(?:trade|play|position|boat)|room(?:'s)?\s+(?:book|positioning|positions|exposure)"
+    r"|what(?:'s| is)\s+the\s+room\s+(?:in|holding|long|short)|who(?:'s| is|s)\s+(?:all\s+)?in\s+\$?[A-Za-z]{1,5}\b)", re.I)
 _SINGLE_TICKER_OPINION_RE = re.compile(r"\b(?:thoughts?\s+on|bullish|bearish|buy|sell|long|short)\b", re.I)
 
 
@@ -462,6 +478,11 @@ def classify(question: str, *, fantasy_enabled: bool = False,
             return _as_fantasy(r, q, "ledger words in the football channel",
                                asker_manager=asker_manager)
         r.shape, r.reason = MEMBER_LEDGER, "member ledger words"
+        return r
+    if _CROWD_RE.search(q):
+        r.shape, r.reason = ROOM_CROWDING, "room positioning words"
+        days = 3 if re.search(r"\b(?:right\s+now|today|this\s+week|currently|rn)\b", ql) else 14
+        r.prefetch = [(T_ROOM, {"days": days})]
         return r
     if _CHAT_RE.search(q) and not _PUBLIC_FIGURE_RE.search(q):
         r.shape, r.reason = CHAT_HISTORY, "room-history words"
@@ -561,6 +582,12 @@ def inject_text(tool: str, result: dict) -> str:
         T_CHAIN: "OPTIONS CHAIN, system-fetched. Every OI, volume, IV and strike figure comes from here or is not stated.",
         T_ECON: "ECONOMIC CALENDAR, system-fetched. Print dates, consensus and actuals come from here, never from memory.",
         T_HISTORY: "PRICE HISTORY, system-fetched. Any period return or level path comes from here.",
+        T_ROOM: ("ROOM POSITIONING, system-fetched from the member trade ledger. Counts are distinct "
+                 "members by author_id who LOGGED AN ENTRY (open/add); members_exited is who posted a "
+                 "close. The ledger is entry-biased (exits are posted far less often than entries): "
+                 "say 'N entered X' and give members_entered_not_exited as an upper bound, "
+                 "never as who holds it now; when exits outnumber entries the story is the room "
+                 "getting out. Do not add names from chat."),
         T_FANTASY: (
             "LEAGUE STATE, system-fetched from Sleeper for the topic named in the payload. "
             "Authoritative over chat and SQL for that topic. Answer the question that was asked "

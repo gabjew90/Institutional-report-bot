@@ -1335,3 +1335,85 @@ def mark_expired_analyst_positions() -> list[dict]:
     )
     conn.commit()
     return [dict(r) for r in targets]
+
+
+def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) -> dict:
+    """Which names the room is piled into, from the member trade ledger.
+
+    Owner asked (2026-09-04) whether the bot can tell when most of the
+    room is in the same play. The data was always here; nothing pointed
+    the bot at it, so "what's the room piled into" searched chat text for
+    ticker mentions instead of counting logged positions.
+
+    Membership is ENTRY-based: a member is "in" a ticker if they logged an
+    open or add in the window. The first cut counted any row, and PLTR
+    came back "9 members" when two had entered and eight were CLOSING;
+    that inverts the meaning of crowded. Exits are reported beside
+    entries so "everyone is getting out of X" is visible as its own fact.
+
+    The two traps the query_data docs warn about are baked in: only
+    `is_trade=1` rows count (raw rows overstate activity ~37x), and
+    members are counted by `author_id`, never by name (renames split one
+    person across several display names). The ledger is entry-biased in
+    the other direction too: people screenshot entries far more than
+    exits, so `members_entered_not_exited` is an UPPER bound on who still
+    holds it. Every answer should say so.
+    """
+    from collections import defaultdict
+    conn = _db.get_connection()
+    # None means default; 0 is a real (nonsensical) value and clamps to
+    # 1 rather than silently becoming 14 via `or`.
+    days = max(1, min(int(14 if days is None else days), 90))
+    rows = conn.execute(
+        """
+        SELECT ticker, author_id, LOWER(COALESCE(action, ''))
+        FROM analyst_trades
+        WHERE is_trade = 1
+          AND ticker IS NOT NULL AND ticker NOT IN ('', 'UNKNOWN')
+          AND author_id IS NOT NULL
+          AND posted_at >= datetime('now', ?)
+        """,
+        (f"-{days} day",),
+    ).fetchall()
+    entered: dict[str, set] = defaultdict(set)
+    exited: dict[str, set] = defaultdict(set)
+    entries: dict[str, int] = defaultdict(int)
+    exits: dict[str, int] = defaultdict(int)
+    active: set = set()
+    for ticker, author_id, action in rows:
+        active.add(author_id)
+        if action in ("open", "add"):
+            entered[ticker].add(author_id)
+            entries[ticker] += 1
+        elif action == "close":
+            exited[ticker].add(author_id)
+            exits[ticker] += 1
+        # trim: size change, neither entry nor exit; blank: unknown
+    out = []
+    for ticker in set(entered) | set(exited):
+        n_in = len(entered[ticker])
+        if n_in < int(min_members):
+            continue
+        both = len(entered[ticker] & exited[ticker])
+        out.append({
+            "ticker": ticker,
+            "members_entered": n_in,
+            "members_exited": len(exited[ticker]),
+            "entries": entries[ticker],
+            "exits": exits[ticker],
+            "members_entered_not_exited": n_in - both,
+            "share_of_active_members": round(n_in / len(active), 2) if active else None,
+        })
+    out.sort(key=lambda r: (-r["members_entered"], -r["entries"], r["ticker"]))
+    return {
+        "window_days": days,
+        "active_members": len(active),
+        "positions": out[:int(limit)],
+        "note": (
+            "members_entered = distinct people who logged an open/add in the window "
+            "(one person renaming is still one person). members_exited = distinct people "
+            "who posted a close. The ledger is ENTRY-BIASED: exits are posted far less "
+            "often than entries, so members_entered_not_exited is an UPPER bound on who "
+            "still holds it. Say that when you use these numbers."
+        ),
+    }

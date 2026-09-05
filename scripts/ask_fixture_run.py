@@ -113,7 +113,7 @@ PRODUCTION_CONFIG = {
     "include_server_side_tool_invocations": True,
     "safety_all_block_none": True,
     # how many declared function tools ride alongside google_search
-    "function_tool_count": 11,  # 11 since 2026-09-01: lookup_earnings_slate
+    "function_tool_count": 12,  # 12 since 2026-09-04: lookup_room_positions (11 on 09-01: lookup_earnings_slate)
     # production declares google_search on every turn
     "search_on_every_fixture": True,
 }

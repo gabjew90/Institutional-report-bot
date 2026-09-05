@@ -231,5 +231,30 @@ def test_ops_record_survives_a_corrupt_or_partial_file():
         d = upsert(dict(junk), "run-A", total=4, failed=0, now=now)
         assert any(r["run_id"] == "run-A" for r in d["runs"]), d
 
+
+# 2026-09-04: two reader runs failed every document with "not parseable
+# JSON" and nothing else. The CLI reports usage limits, auth and
+# max-turns on STDOUT; the workflow tailed stderr, so the cause was
+# unrecoverable. finalize_read now shows what actually came back.
+def test_finalize_read_failure_shows_the_head_of_what_the_reader_said():
+    import os
+    import subprocess
+    import sys as _sys
+    import tempfile
+    d = tempfile.mkdtemp()
+    raw = os.path.join(d, "raw.txt")
+    with open(raw, "w", encoding="utf-8") as fh:
+        fh.write("Claude usage limit reached. Your limit will reset at 7pm (UTC).\n")
+    src = os.path.join(d, "src.txt"); open(src, "w").close()
+    r = subprocess.run(
+        [_sys.executable, "scripts/pilot_finalize_read.py", "--raw", raw,
+         "--out", os.path.join(d, "cards.json"), "--source", src, "--tier", "top",
+         "--model", "m", "--prompt", "docs/superpowers/routines/pilot/reader.md"],
+        capture_output=True, text=True)
+    assert r.returncode == 1
+    assert "not parseable JSON" in r.stdout
+    assert "usage limit reached" in r.stdout, r.stdout
+    assert not os.path.exists(os.path.join(d, "cards.json"))
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

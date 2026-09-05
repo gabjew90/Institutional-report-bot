@@ -78,7 +78,13 @@ def main() -> int:
     raw = open(args.raw, encoding="utf-8", errors="replace").read()
     doc = extract_json(raw)
     if doc is None:
-        print("FAIL: reader output is not parseable JSON")
+        # Show WHAT came back. Two runs on 2026-09-04 failed every
+        # document with this line and nothing else: the workflow tailed
+        # stderr, but `claude -p` writes its own errors (usage limit,
+        # auth, max turns) to stdout, so the cause was unrecoverable.
+        head = " ".join(raw.split())[:300]
+        print(f"FAIL: reader output is not parseable JSON "
+              f"({len(raw)} chars). Head: {head!r}")
         return 1
 
     brief = (doc.get("brief") or "").strip()

@@ -1687,3 +1687,45 @@ it received it or builds it from `response`.
 Yesterday's classifier repair and this fix are independent halves of
 the same symptom. The classifier decided whether Google was even
 offered; this decided whether the reader saw what Google returned.
+
+## 2026-09-04 — The room's book: lookup_room_positions
+
+Owner: "is the bot able to tell when most of the room are piled into
+the same plays?" The ledger could answer it (1,714 real trades, 57
+members) and nothing pointed the bot at it. "what's the room piled
+into" matched the CHAT shape's "what's the room" alternative and would
+have searched chat text for ticker mentions instead of counting logged
+positions; most other phrasings fell to UNKNOWN.
+
+New tool `lookup_room_positions` (db.get_room_positions), new router
+shape ROOM_CROWDING tested before the chat shape, prefetch of 14 days
+(3 for "right now / this week"), Google off, chat search off.
+
+Two decisions worth keeping. Membership is ENTRY-based: a member is "in"
+a ticker if they logged an open or add in the window. The first cut
+counted any row, and production returned PLTR "9 members" when two had
+entered and eight were CLOSING, which inverts what crowded means. Exits
+are now a separate count so "everyone is getting out of X" is visible
+as its own fact. And the payload carries the entry-bias caveat every
+time: people screenshot entries far more than exits, so
+members_entered_not_exited is an UPPER bound on who still holds it.
+
+The two query_data traps are baked into the SQL so the model never
+re-derives this by hand: is_trade=1 only (raw rows overstate ~37x) and
+distinct author_id, never display name (renames split one person).
+
+Bare "we ... in" is deliberately not a trigger: "are we in a recession"
+is a macro question. "we all in", "everyone in", "same trade/boat",
+"piled into", "most crowded" and "who's in $X" are.
+
+Also this session: the pilot reader's failure branch now prints the head
+of the reader's STDOUT (the CLI reports usage limits, auth and max-turns
+there, not on stderr), so the next "not parseable JSON" is diagnosable.
+And the apparent run overlap was not real: the concurrency group queued
+the 17:00 run until the 16:50 run finished (job started 17:06:55), and
+with per-document persistence a queued duplicate finds nothing unread
+and exits in a minute. No stagger added.
+
+Diagnosis note for future me: a heredoc through the Bash tool turned
+five `\b` anchors into backspace bytes again. Byte-repair
+(0x08 -> 0x5C 0x62) fixed it; regexes go in through Write/Edit.
