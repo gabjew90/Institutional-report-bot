@@ -1820,3 +1820,13 @@ arm is graded against the HIGH+MEDIUM source tree only, which biases
 
 Clock: DAY1 not set. Earliest clean pair is Mon 09-08 and Tue 09-09,
 DAY1 Wed 09-10, ten counted days ending around 09-23.
+
+First run on the new readers workflow (run 33939842122, 02:42 UTC):
+the three 136 KB volatility pieces read at 30 turns, 44/42/54 cards,
+every anchor verified, all three committed. The 69 KB JPM metrics wrap
+(5,495 lines) and the 75 KB GOAL locator (2,944 lines) still failed at
+20 turns and now carry attempts=1 in read-failures/. The reader pages
+the file by lines, so the budget now keys on lines as well as bytes
+(30 turns over 50 KB or 1,500 lines, 40 over 150 KB or 3,500 lines).
+Two more failures and they leave the unread list. Backlog otherwise
+clear: 68 of 70 source documents have cards.

@@ -146,14 +146,21 @@ jobs:
             # a 432 KB JPM strategy deck exhausted 12 turns just reading
             # itself and returned "Reached max turns" instead of JSON;
             # that alone was the day's reader failure rate.
-            # 2026-09-04: five documents of 64-132 KB, all under the old
+            # 2026-09-04: five documents of 64-136 KB, all under the old
             # 150 KB step, failed at 12 turns on every one of fourteen
-            # runs. A wasted retry costs more than a generous budget.
+            # runs. On 2026-09-05 the three 136 KB pieces read at 30
+            # turns while a 69 KB table dump (5,495 lines) and a 75 KB
+            # asset locator (2,944 lines) still failed at 20: the reader
+            # pages the file by LINES, so line count sets the budget as
+            # much as bytes. A cap only bites when it is reached, so a
+            # generous one costs nothing on a normal document; a wasted
+            # retry costs a full read.
             BYTES=$(wc -c < "$TEXT" 2>/dev/null || echo 0)
+            LINES=$(wc -l < "$TEXT" 2>/dev/null || echo 0)
             MAXT=12
-            [ "$BYTES" -gt 50000 ] && MAXT=20
-            [ "$BYTES" -gt 100000 ] && MAXT=30
-            [ "$BYTES" -gt 300000 ] && MAXT=40
+            if [ "$BYTES" -gt 50000 ] || [ "$LINES" -gt 1500 ]; then MAXT=30; fi
+            if [ "$BYTES" -gt 150000 ] || [ "$LINES" -gt 3500 ]; then MAXT=40; fi
+            if [ "$BYTES" -gt 300000 ]; then MAXT=50; fi
             claude -p --model "$MODEL" \
               --permission-mode bypassPermissions \
               --max-turns "$MAXT" \
