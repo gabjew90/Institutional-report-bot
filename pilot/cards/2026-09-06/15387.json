@@ -1,0 +1,69 @@
+{
+ "brief": "Goldman Sachs' Weekend Macro Call for 5 September 2026 is a call agenda and speaker list, not an argued research note. It states the framing that markets are navigating higher yields, geopolitical uncertainty and a broadening AI investment cycle, then lists six sessions without giving the answers or the reasoning behind them. US Macro asks whether the Fed hikes in September and how high back-end yields can go. Global Rates poses the causes, consequences and path of the global duration sell-off. Commodities covers European natural gas above 70 euros into autumn and winter. Washington and Policy starts the clock on the midterms and what matters most for markets. M&A reports that activity is reaccelerating. Technology previews the next wave of AI alongside the San Francisco Communacopia and TMT conference. Speakers are named per session: Anshul Seghal, George Cole, Ben Readman, Alec Phillips, Carsten Woehrn and Eric Sheridan. Replay is on Marquee. The document states no forecasts, targets or trades, and the only figure it carries is the 70 euro gas reference.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - Weekend Macro Call Fed Pricing Bond Market Volatility European Gas Mid-Terms MA Next Wave of AI 5 Sep 2026",
+   "claim": "Goldman Sachs describes European natural gas as trading above 70 euros and frames the autumn and winter outlook around that level.",
+   "anchor": "European Natural Gas Above \u20ac70: Outlook for Autumn and Winter",
+   "topic": "European gas winter outlook",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "autumn and winter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - Weekend Macro Call Fed Pricing Bond Market Volatility European Gas Mid-Terms MA Next Wave of AI 5 Sep 2026",
+   "claim": "Goldman Sachs states that a global duration sell-off is underway and that markets are navigating higher yields.",
+   "anchor": "The Global Duration Sell-Off: Causes, Consequences & Where From Here?",
+   "topic": "global bond sell-off",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - Weekend Macro Call Fed Pricing Bond Market Volatility European Gas Mid-Terms MA Next Wave of AI 5 Sep 2026",
+   "claim": "Goldman Sachs states that global M&A activity is reaccelerating.",
+   "anchor": "M&A Activity Reaccelerates: Recent Trends and the Outlook Ahead",
+   "topic": "M&A activity",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wilson - Weekend Macro Call Fed Pricing Bond Market Volatility European Gas Mid-Terms MA Next Wave of AI 5 Sep 2026",
+   "claim": "Goldman Sachs frames a broadening AI investment cycle and a next wave of AI opportunities ahead of its San Francisco Communacopia and TMT conference.",
+   "anchor": "Markets are navigating higher yields, geopolitical uncertainty and a broadening AI",
+   "topic": "AI investment cycle",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-06/15387__gs-wilson-weekend-macro-call-fed-pricing-bond-market-volatil.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 4,
+  "matched": 4,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
