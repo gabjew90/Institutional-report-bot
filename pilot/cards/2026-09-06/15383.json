@@ -1,0 +1,189 @@
+{
+ "brief": "Goldman Sachs Prime Services data on US hedge fund positioning and flows for August 28 to September 3, as of 5 September 2026. The note reports and does not argue: each aggregate move is attributed to its components, with no forecast or recommendation. Gross leverage rose 1.5 points to 208.5%, the 27th percentile of the past year, net leverage rose 0.9 points to 48.4%, the 4th percentile, and the fundamental long/short ratio rose 0.5% to 1.605, also 4th percentile. US equities were slightly net bought at +0.2 standard deviations because long buying in single stocks outweighed short selling in single stocks and macro products. Macro products, index and ETF combined, were net sold at -0.3 standard deviations, almost entirely short sales, with US-listed ETF shorts up 1.5% on the week and down 4.4% month over month, led by credit and small cap shorting against large cap covering. Single stocks were net bought for the first time in three weeks, long buys to short sales 1.6 to 1, into info tech, communication services, financials and utilities, out of real estate, energy, industrials and staples. Real estate was net sold a fourth straight week at the fastest pace in nearly seven months.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "US long/short gross leverage rose 1.5 points to 208.5%, the 27th percentile of the past year, in Goldman Sachs Prime data.",
+   "anchor": "US L/S Gross leverage rose +1.5 pts to 208.5% (27th percentile one-year)",
+   "topic": "hedge fund leverage",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "US long/short net leverage rose 0.9 points to 48.4%, the 4th percentile of the past year, in Goldman Sachs Prime data.",
+   "anchor": "Net leverage increased +0.9 pts to 48.4% (4th percentile one-year)",
+   "topic": "hedge fund leverage",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "The US fundamental long/short ratio measured by market value rose 0.5% to 1.605, the 4th percentile of the past year.",
+   "anchor": "US Fundamental long/short ratio (MV) increased +0.5% to 1.605 (4th percentile one-year).",
+   "topic": "hedge fund leverage",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "US equities were slightly net bought by hedge funds over the week at +0.2 standard deviations against the past year, driven by long buys in single stocks.",
+   "anchor": "US equities were slightly net bought on the week (+0.2 SDs 1-year), driven by long buys in Single Stocks",
+   "topic": "US equity hedge fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "The week's long buying in single stocks was partially offset by short sales in single stocks and macro products.",
+   "anchor": "partially offset by short sales in Single Stocks and Macro Products.",
+   "topic": "US equity hedge fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "Macro products, index and ETF combined, were modestly net sold at -0.3 standard deviations against the past year, almost entirely through short sales.",
+   "anchor": "Macro Products (Index and ETF combined) were modestly net sold (-0.3 SDs 1-year), driven almost entirely by short sales.",
+   "topic": "US equity hedge fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "US-listed ETF short positions increased 1.5% on the week and were down 4.4% month over month.",
+   "anchor": "US-listed ETF shorts increased +1.5% (-4.4% month/month)",
+   "topic": "US equity hedge fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "ETF shorting was led by credit and small cap equity ETFs and was partially offset by covering in large cap equity ETFs.",
+   "anchor": "led by shorting in Credit and Small Cap Equity ETFs partially offset by covering in Large Cap Equity ETFs.",
+   "topic": "US equity hedge fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "Single stocks were net bought for the first time in three weeks, at +0.5 standard deviations against the past year.",
+   "anchor": "Single Stocks were net bought for the first time in three weeks (+0.5 SDs 1-year)",
+   "topic": "US equity hedge fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "Single stock flows were risk-on, with long buys outpacing short sales by 1.6 to 1.",
+   "anchor": "driven by risk-on flows with long buys outpacing short sales (1.6 to 1).",
+   "topic": "US equity hedge fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "Info tech, communication services, financials and utilities were the most net bought US sectors in dollar terms on the week.",
+   "anchor": "Info Tech, Comm Svcs, Financials, and Utilities were the most $ net bought US sectors",
+   "topic": "hedge fund sector rotation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "Real estate, energy, industrials and staples were the most net sold US sectors in dollar terms on the week.",
+   "anchor": "Real Estate, Energy, Industrials, and Staples were the most $ net sold.",
+   "topic": "hedge fund sector rotation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "Hedge funds net sold US real estate stocks for a fourth straight week and at the fastest pace in nearly seven months.",
+   "anchor": "net sold US Real Estate stocks for a 4th straight week and at the fastest pace in nearly 7 months",
+   "topic": "hedge fund sector rotation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "week of August 28 to September 3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Lin - US Equities Weekly Rundown Prime Data Update 5 Sep 2026",
+   "claim": "The hedge fund selling of US real estate stocks ran at -2.3 standard deviations against the past year and was driven entirely by short sales.",
+   "anchor": "(-2.3 SDs 1-year), driven entirely by short sales.",
+   "topic": "hedge fund sector rotation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "week of August 28 to September 3"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-06/15383__gs-lin-us-equities-weekly-rundown-prime-data-update-5-sep-20.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 14,
+  "matched": 14,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
