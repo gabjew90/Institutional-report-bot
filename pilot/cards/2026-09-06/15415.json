@@ -1,0 +1,177 @@
+{
+ "brief": "A Market Ear flow-forensic roundup compiling quoted positioning and flow data from GS Prime, JPM Positioning Intelligence (PI), BofA and MS QDS. GS Prime reports hedge fund gross leverage at the 49th percentile overall (Fundamental L/S gross at the 21st percentile, 1-year lookback) and net leverage lower still, at the 20th percentile overall (Fundamental L/S net at the 15th percentile). JPM's US Tactical Positioning Monitor sits at the 40th percentile. BofA flow data shows equities absorbing the smallest inflow in 9 weeks, the biggest private-client outflow since October 2025, and the biggest outflow from tech funds since June 2026. GS notes the Nasdaq-100 has been consolidating for roughly 4-5 months with its multiple contracting toward multi-year lows. JPM PI reports a turn: after a couple months of reductions, North America gross flows have swung back to additions, with both longs and shorts added, though net flows remain choppier and still neutral on a 4-week basis. MS QDS flags light put positioning, calling hedges attractive.",
+ "cards": [
+  {
+   "bank": "GS Prime",
+   "document": "Let The Re-Gross Begin",
+   "claim": "GS Prime reports overall hedge fund book gross leverage at the 49th percentile on a 1-year lookback.",
+   "anchor": "Overall book Gross leverage at 49th percentile",
+   "topic": "Hedge fund positioning levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1-year"
+  },
+  {
+   "bank": "GS Prime",
+   "document": "Let The Re-Gross Begin",
+   "claim": "GS Prime reports Fundamental L/S gross leverage at the 21st percentile on a 1-year lookback.",
+   "anchor": "Fundamental L/S Gross leverage at 21st percentile (1-year)",
+   "topic": "Hedge fund positioning levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1-year"
+  },
+  {
+   "bank": "GS Prime",
+   "document": "Let The Re-Gross Begin",
+   "claim": "GS Prime reports overall hedge fund book net leverage at the 20th percentile.",
+   "anchor": "Overall book Net leverage at 20th percentile.",
+   "topic": "Hedge fund positioning levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1-year"
+  },
+  {
+   "bank": "GS Prime",
+   "document": "Let The Re-Gross Begin",
+   "claim": "GS Prime reports Fundamental L/S net leverage at the 15th percentile on a 1-year lookback.",
+   "anchor": "Fundamental L/S Net leverage at 15th percentile (1-year)",
+   "topic": "Hedge fund positioning levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1-year"
+  },
+  {
+   "bank": "JPM",
+   "document": "Let The Re-Gross Begin",
+   "claim": "JPM's US Tactical Positioning Monitor stands at the 40th percentile.",
+   "anchor": "The level of positioning for our US TPM remains at 40th %-tile.",
+   "topic": "Hedge fund positioning levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Let The Re-Gross Begin",
+   "claim": "BofA reports the smallest inflow to global equities in the past 9 weeks.",
+   "anchor": "Smallest inflow to global equities of past 9 weeks.",
+   "topic": "Equity fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past 9 weeks"
+  },
+  {
+   "bank": "BofA",
+   "document": "Let The Re-Gross Begin",
+   "claim": "BofA reports the biggest private client outflow from equities since October 2025.",
+   "anchor": "Biggest private client outflow from equities since Oct\u201925.",
+   "topic": "Equity fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since Oct'25"
+  },
+  {
+   "bank": "BofA",
+   "document": "Let The Re-Gross Begin",
+   "claim": "BofA reports the biggest outflow from tech funds since June 2026.",
+   "anchor": "Biggest outflow from tech funda since Jun\u201926.",
+   "topic": "Equity fund flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since Jun'26"
+  },
+  {
+   "bank": "GS",
+   "document": "Let The Re-Gross Begin",
+   "claim": "GS says the Nasdaq-100 has been in a consolidation mode for roughly the last 4-5 months.",
+   "anchor": "NDX in \u2018consolidation\u2019 mode for the last ~4-5 months (top chart)",
+   "topic": "NDX valuation consolidation",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last ~4-5 months"
+  },
+  {
+   "bank": "GS",
+   "document": "Let The Re-Gross Begin",
+   "claim": "GS says the Nasdaq-100's valuation multiple is contracting toward near multi-year lows.",
+   "anchor": "the NDX\u2019s multiple contracting towards near multi-year lows (bottom chart)",
+   "topic": "NDX valuation consolidation",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM PI",
+   "document": "Let The Re-Gross Begin",
+   "claim": "JPM PI reports North America hedge fund gross flows have turned back to additions, with both longs and shorts added, after a couple of months of reductions.",
+   "anchor": "After a couple months of reductions, N. America gross flows have turned back towards gross additions with both longs and shorts added lately.",
+   "topic": "Hedge fund re-gross",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM PI",
+   "document": "Let The Re-Gross Begin",
+   "claim": "JPM PI reports net flows remain choppier and still neutral on a 4-week basis.",
+   "anchor": "Net flows have been choppier and are still neutral on a 4wk basis.",
+   "topic": "Hedge fund re-gross",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "4-week"
+  },
+  {
+   "bank": "MS QDS",
+   "document": "Let The Re-Gross Begin",
+   "claim": "MS QDS says put positioning is light, making hedges attractive.",
+   "anchor": "Light put positioning. Hedges attractive.",
+   "topic": "Put hedging cost",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-06/15415__let-the-re-gross-begin.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 13,
+  "matched": 13,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
