@@ -307,3 +307,14 @@ escalated the standing `pulse-context/latest.json` staleness item.
   if the rate of hard findings reaching the adversarial stage keeps
   climbing, the fix belongs upstream of adversarial (DRAFT/EDIT prompt),
   not in adding a third repair round.
+
+## 2026-09-07 — no findings
+
+No pulse ran today (`QC_PULSE_TS` unset, no new `archive/`, `driver/`,
+or `adversarial/` file). 2026-09-07 is Labor Day, a full NYSE closure —
+independently confirmed (`date.strftime('%A')` = Monday,
+`world_context.US_MARKET_HOLIDAYS["2026-09-07"] = "Labor Day"`, and
+Labor Day is genuinely the first Monday in September), not just taken
+on STEP 7's word. The archive has no gap: last pulse 2026-09-04
+(Friday) was already reviewed; 09-05/09-06 are the weekend. Full
+report: `pulse-output/qc-headless/2026-09-07T14-06-56Z.md`.
