@@ -36,7 +36,10 @@ def _fail(msg):
 
 
 def _ladder(src):
-    i = src.find("if safety_blocked or prompt_block:")
+    # Prefix anchor, not the whole line: the branch gained a third
+    # signal on 2026-09-07 (nothing_generated, the blocked-prompt
+    # shape) and both of these smokes silently matched nothing.
+    i = src.find("if safety_blocked or prompt_block")
     assert i != -1, "filter-block branch not found"
     j = src.find('_ask_meta["filter_retry"] = "failed"', i)
     assert j != -1, "ladder failure stamp not found"

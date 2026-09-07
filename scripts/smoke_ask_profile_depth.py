@@ -159,7 +159,10 @@ def test_ladder_rungs_only_ever_shrink():
     that rebuild the prompt must source it from profiles_for_prompt."""
     import discord_bot.bot as bot
     src = bot._ask_pipeline_source()
-    i = src.find("if safety_blocked or prompt_block:")
+    # Prefix anchor, not the whole line: the branch gained a third
+    # signal on 2026-09-07 (nothing_generated, the blocked-prompt
+    # shape) and both of these smokes silently matched nothing.
+    i = src.find("if safety_blocked or prompt_block")
     j = src.find('_ask_meta["filter_retry"] = "failed"', i)
     ladder = src[i:j]
     rebuilds = [ln for ln in ladder.splitlines()
