@@ -1,0 +1,45 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 2,
+ "pack": {
+  "documents": 22,
+  "cards": 757
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 97,
+  "brief_citations": 1,
+  "distinct_cards_cited": 96,
+  "card_count": 757,
+  "quintiles": [
+   27,
+   20,
+   21,
+   15,
+   14
+  ],
+  "edge_quintile_share": 0.423,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "The 10-year German Bund yield rose 6.1 basis points (one hundredth of a percent) last week to 3.34% and touched a post-2011 high of 3.37% [c329].",
+    "cite": "c329",
+    "reason": "figures not in cited card(s): ['6.1']"
+   },
+   {
+    "sentence": "The US 10-year rose 6.3 basis points to 4.78% [c330] after closing Tuesday at 4.80%, its highest since October 2023 [c331].",
+    "cite": "c330,c331",
+    "reason": "figures not in cited card(s): ['6.3']"
+   }
+  ],
+  "leans": 2,
+  "leans_block_present": true,
+  "word_count": 1584
+ }
+}
