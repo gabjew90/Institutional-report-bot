@@ -1932,3 +1932,58 @@ are vague or comparative ("one of the best ever", "how much of an ass
 whooping", "hardest teams"); the two that searched were precise. If the
 retry does not clear them the next step is forcing a search call on the
 WEB route rather than leaving it to the model.
+
+## 2026-09-07 (later) — The circling answers were a blocked prompt, not a spent budget
+
+Owner asked me to check the real question: why those four never
+searched. Replayed all six of the day's logged prompts verbatim against
+the live ask model (`gemini-3.5-flash-lite`) in three conditions —
+search-only/think 2000, every tool/think 2000, search-only/think 512.
+
+Result, identical in all three conditions, deterministic:
+
+```
+Q: how much of an ass whooping did Georgia give TCU
+   A search-only, think 2000: finish=None text=0 sources=0 thoughts=0 out=0
+   B every tool,   think 2000: finish=None text=0 sources=0 thoughts=0 out=0
+   C search-only, think  512: finish=None text=0 sources=0 thoughts=0 out=0
+```
+
+**Zero thinking tokens and zero output tokens.** Nothing was generated,
+so nothing ran out of room. The fix I shipped an hour earlier (cut
+thinking to 512, withdraw function tools) is condition C, and it fails
+identically. It was aimed at the wrong cause.
+
+Second probe named the real one: `prompt_feedback.block_reason =
+PROHIBITED_CONTENT` on all four. Gemini's unconfigurable filter blocked
+the PROMPT. Isolating question from context:
+
+| | full prompt | minus **Voice.** | question only | question, no system |
+|---|---|---|---|---|
+| ass whooping | BLOCKED | ok | malformed | ok |
+| best playoff game | BLOCKED | ok | ok | ok |
+| michigan next year | BLOCKED | BLOCKED | ok | ok |
+| hardest teams TCU | BLOCKED | BLOCKED | ok | ok |
+
+The question is never the problem. The profiles are: these askers'
+**Voice.** sections and chat quotes are the densest slur containers in
+the prompt, which is the exact failure the filter ladder was built for
+in June. Stripping Voice clears two, question-only clears all four.
+
+So why didn't the ladder fire? It gates on `safety_ratings[].blocked` or
+`prompt_feedback.block_reason`, and production's response carried
+neither (the replay's did). Rather than guess at the object shape, the
+gate now also fires on what is true in every observed case and cannot be
+faked by a budget failure: **the model generated zero tokens.** A block
+generates nothing; a spent budget generates plenty. `_ask_meta["empty"]`
+records which, so the ask log now says `empty: PROHIBITED_CONTENT` or
+`empty: nothing-generated` instead of nothing at all.
+
+The short-thinking retry from earlier today stays, narrowed to what it
+actually addresses: a real MAX_TOKENS with output tokens spent.
+
+Lesson worth keeping: the wrapper text ("Thought myself in circles and
+ran out of room") was itself the misdiagnosis. It asserted a cause the
+code had never checked, and both the owner's read and my first fix
+followed it. Wrapper copy that names a cause is a claim, and it needs
+the same evidence as any other claim.

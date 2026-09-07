@@ -7044,6 +7044,28 @@ async def _ask_09_rank_and_regen_guards(
             prompt_block = getattr(br, "name", None) or str(br) if br else None
         except Exception:
             pass
+        # Did the model generate ANYTHING? Replaying the four 2026-09-07
+        # failures against the live model settles what these look like:
+        # a blocked prompt returns candidates=None, no finish_reason,
+        # and usage showing ZERO thinking tokens and ZERO output tokens
+        # — nothing was produced, so nothing ran out. A genuine
+        # MAX_TOKENS shows output tokens spent. Whatever the response
+        # object's shape, "empty text and not one token generated" is a
+        # block, and the filter ladder below is the recovery for it
+        # (question-only answered 4 of 4 on replay, Voice-stripped 2 of
+        # 4). Before this it fell through to the budget wrapper, which
+        # told the asker to reword — which is why two of them recovered
+        # by rewording and two gave up.
+        nothing_generated = False
+        try:
+            _um = getattr(response, "usage_metadata", None)
+            if _um is not None:
+                nothing_generated = (
+                    ((getattr(_um, "thoughts_token_count", None) or 0)
+                     + (getattr(_um, "candidates_token_count", None) or 0)) == 0
+                )
+        except Exception:
+            nothing_generated = False
         log.warning(
             f"/ask: empty response.text "
             f"(finish_reason={finish_reason!r}, "
@@ -7055,10 +7077,11 @@ async def _ask_09_rank_and_regen_guards(
         # durable record. On 2026-09-07 four asks shipped the fallback
         # and the reason was already gone by the time anyone looked.
         _ask_meta["empty"] = (
-            "safety" if (safety_blocked or prompt_block)
-            else (finish_reason or "unknown")
+            prompt_block or ("safety" if safety_blocked else None)
+            or ("nothing-generated" if nothing_generated else None)
+            or finish_reason or "unknown"
         )
-        if safety_blocked or prompt_block:
+        if safety_blocked or prompt_block or nothing_generated:
             # With BLOCK_NONE on all configurable categories, this
             # is Gemini's unconfigurable hard filter (CSAM, severe
             # policy).
@@ -7140,7 +7163,7 @@ async def _ask_09_rank_and_regen_guards(
             # amputate context to find it; for a flickering block
             # the cheapest correct move is to send the same thing
             # again, so a transient block costs zero context.
-            if prompt_block or safety_blocked:
+            if prompt_block or safety_blocked or nothing_generated:
                 try:
                     log.warning(
                         "/ask: tier-0 retry — resending identical "

@@ -1,11 +1,19 @@
-"""An empty answer on MAX_TOKENS is recoverable, not terminal (2026-09-07).
+"""An empty answer is recoverable, not terminal (2026-09-07).
 
 Four of six asks in one afternoon shipped "Thought myself in circles and
-ran out of room". Every one was WEB/FACT and ungrounded; the two that
-reached Google Search answered fine. The branch that handles a textless
-response had a retry ladder for the safety filter and nothing at all for
-a spent budget, so a recoverable turn cost the asker their answer and
-their quota.
+ran out of room". Two separate defects sat behind that one message and
+this file pins both.
+
+1. A genuine spent budget (finish_reason MAX_TOKENS with output tokens
+   actually spent) had no retry at all, only the wrapper.
+2. Those four particular asks were not a spent budget. Replayed against
+   the live model they return candidates=None, no finish_reason, and
+   usage showing ZERO thinking and ZERO output tokens, with
+   prompt_feedback.block_reason=PROHIBITED_CONTENT. Nothing was
+   generated, so nothing ran out. The recovery for that is the filter
+   ladder that already existed, and the discriminator is the token
+   count: a block generates nothing, a spent budget generates plenty.
+   On replay, question-only recovered 4 of 4 and Voice-stripped 2 of 4.
 
 Phase 9 is run for real here; only the model client is a stub.
 """
@@ -28,13 +36,25 @@ def _cfg():
     )
 
 
-def _empty_response(reason="MAX_TOKENS"):
+def _empty_response(reason="MAX_TOKENS", thoughts=1800, out=3200):
     # reason=None is a candidate with NO finish_reason at all, which is
     # how the SDK reports it; an object whose .name is None is a
-    # different (and not real) shape.
+    # different (and not real) shape. Tokens default to a budget that
+    # really was spent — the case the short-thinking retry is for.
     fr = NS(name=reason) if reason is not None else None
     return NS(candidates=[NS(finish_reason=fr, safety_ratings=[])],
-              prompt_feedback=None)
+              prompt_feedback=None,
+              usage_metadata=NS(thoughts_token_count=thoughts,
+                                candidates_token_count=out))
+
+
+def _blocked_response():
+    """What the live model actually returns for these: no candidates, no
+    finish reason, nothing generated (verified 2026-09-07)."""
+    return NS(candidates=None,
+              prompt_feedback=NS(block_reason=NS(name="PROHIBITED_CONTENT")),
+              usage_metadata=NS(thoughts_token_count=0,
+                                candidates_token_count=0))
 
 
 class _Client:
@@ -53,7 +73,7 @@ class _Client:
         self.aio = NS(models=_Models())
 
 
-def _run(client, meta, reason="MAX_TOKENS"):
+def _run(client, meta, reason="MAX_TOKENS", response=None):
     return asyncio.run(B._ask_09_rank_and_regen_guards(
         _ask_meta=meta,
         _tally_retry_usage=lambda *_a, **_k: None,
@@ -69,7 +89,7 @@ def _run(client, meta, reason="MAX_TOKENS"):
         images=None,
         profiles_for_prompt="",
         question="was the tcu vs michigan game one of the best playoff games",
-        response=_empty_response(reason),
+        response=response if response is not None else _empty_response(reason),
         safety_settings=None,
         separator="",
         types=types,
@@ -130,6 +150,44 @@ def test_other_and_missing_finish_reasons_take_the_same_path():
         answer, _gm = _run(_Client("→ **Answered.**"), meta, reason=reason)
         assert "Answered" in answer, reason
         assert meta["empty_retry"] == "short-thinking", reason
+
+
+def test_a_blocked_prompt_takes_the_filter_ladder_not_the_budget_wrapper():
+    """The 2026-09-07 shape: nothing generated. It must reach the ladder,
+    whose first tier resends the identical prompt, and the stamp must
+    name the block rather than a budget."""
+    meta = {"guards": [], "kind": "FACT", "route": "WEB"}
+    client = _Client("→ **Georgia 65, TCU 7** in the January 2023 final.")
+    answer, _gm = _run(client, meta, response=_blocked_response())
+    assert "circles" not in answer, answer
+    assert "65, TCU 7" in answer
+    assert meta["empty"] == "PROHIBITED_CONTENT"
+    assert meta["filter_retry"] == "same-prompt", meta
+    assert meta.get("empty_retry") is None, "not a budget failure"
+
+
+def test_nothing_generated_is_a_block_even_with_no_prompt_feedback():
+    """Production's response object did not carry the block reason the
+    replay showed, so the token count is the discriminator that has to
+    stand on its own."""
+    meta = {"guards": [], "kind": "FACT", "route": "WEB"}
+    resp = NS(candidates=[NS(finish_reason=None, safety_ratings=[])],
+              prompt_feedback=None,
+              usage_metadata=NS(thoughts_token_count=0,
+                                candidates_token_count=0))
+    answer, _gm = _run(_Client("→ **An answer.**"), meta, response=resp)
+    assert "circles" not in answer, answer
+    assert meta["empty"] == "nothing-generated"
+
+
+def test_a_spent_budget_is_not_mistaken_for_a_block():
+    """The other side of the discriminator: tokens were spent, so this
+    is the budget path, not the ladder."""
+    meta = {"guards": [], "kind": "FACT", "route": "WEB"}
+    _run(_Client("→ **An answer.**"), meta)
+    assert meta["empty"] == "MAX_TOKENS"
+    assert meta["empty_retry"] == "short-thinking"
+    assert meta.get("filter_retry") is None
 
 
 def test_the_audit_stamp_carries_the_reason_and_the_retry():
