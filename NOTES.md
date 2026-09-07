@@ -1830,3 +1830,48 @@ the file by lines, so the budget now keys on lines as well as bytes
 (30 turns over 50 KB or 1,500 lines, 40 over 150 KB or 3,500 lines).
 Two more failures and they leave the unread list. Backlog otherwise
 clear: 68 of 70 source documents have cards.
+
+## 2026-09-07 — Three GitHub failures, three different causes
+
+Owner: "failed GitHub again?". Three red runs since Friday, none of
+them the same bug.
+
+1. **daily-qc, 18:55 UTC, Labor Day.** The pulse-wait step treats "a
+   weekday with no pulse artifact by 8:20 Pacific" as a page-worthy
+   incident, and knows only about weekends. Market holidays are
+   weekdays with no pulse, so it fails every Labor Day, Thanksgiving
+   and observed July 4th. It now reads `world_context.is_us_market_holiday`,
+   the same calendar the synthesis routine's own holiday gate uses, and
+   skips quietly. `smoke_market_holiday_gate` pins Labor Day for both
+   covered years.
+
+   The same run also exposed a regression from yesterday's fix. Making
+   the pulse phase independent of the ask phase with `!cancelled()` was
+   right, but its other condition was `steps.pulse.outputs.skip != 'true'`
+   — a NEGATIVE test that reads identically whether the wait step
+   skipped, succeeded, or FAILED. So with no pulse at all, the pulse
+   judge was dispatched anyway and failed a second time. The wait step
+   now emits an explicit `ready=true` only when it has the artifact in
+   hand, and the judge runs on that.
+
+2. **pilot-readers 09:00, red for working correctly.** Its single
+   unread document was the one already on its third attempt; the
+   give-up rule retired it, which is the designed outcome, and then
+   `every reader failed this run` turned the run red. Retirements are
+   now counted separately: an all-retired run warns, an all-failed run
+   still errors. A red run for correct behaviour trains the owner to
+   ignore red runs.
+
+3. **The 12-turn floor is too low for the current reader prompt.**
+   Six documents of 9-33 KB died on it over the weekend while 37, 44
+   and 45 KB documents read fine, and two of the six succeeded on a
+   later attempt — the signature of a marginal budget, not a poisoned
+   document. 12 was set against the older prompt; the topic rule added
+   2026-09-05 asks the reader to survey the document's subjects before
+   writing cards, which costs turns. Floor raised to 20. Unused turns
+   cost nothing.
+
+Two 45-minute reader timeouts (09-06 22:48, 09-07 01:00) are NOT in
+this list: both persisted every document they finished before the kill,
+which is what the per-document commit was built for. They show as
+cancelled and cost nothing.

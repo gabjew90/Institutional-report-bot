@@ -115,8 +115,13 @@ jobs:
           # (pilot_config) the document leaves the unread list instead of
           # being re-read on every run (2026-09-05).
           note_failure () {  # id date reason
-            python scripts/pilot_read_failure.py --root "pilot-data/$PILOT_ROOT" \
-              --id "$1" --date "$2" --reason "$3" || true
+            out=$(python scripts/pilot_read_failure.py --root "pilot-data/$PILOT_ROOT" \
+              --id "$1" --date "$2" --reason "$3") || true
+            echo "$out"
+            # A document that just used up its attempts is RETIRED, not
+            # evidence the reader is broken; the tally below needs the
+            # difference (2026-09-07).
+            case "$out" in *given_up=True*) GAVE_UP=$((GAVE_UP+1));; esac
           }
           # TSV, read line-by-line: a `for` over command substitution
           # word-splits, and document slugs are not guaranteed
@@ -127,7 +132,7 @@ jobs:
               print("\t".join([d["id"], d["text_path"], d["model"],
                                d["tier"], d["date"]]))
           PY
-          TOTAL=0; FAILED=0
+          TOTAL=0; FAILED=0; GAVE_UP=0
           while IFS=$'\t' read -r ID TEXT MODEL TIER DATE; do
             [ -z "${ID:-}" ] && continue
             TOTAL=$((TOTAL+1))
@@ -155,9 +160,16 @@ jobs:
             # much as bytes. A cap only bites when it is reached, so a
             # generous one costs nothing on a normal document; a wasted
             # retry costs a full read.
+            # The floor was 12 until 2026-09-07, when six documents of
+            # 9-33 KB (191-427 lines) died on it in one weekend while
+            # 37 and 45 KB documents read fine. 12 was set against the
+            # older reader prompt; the topic rule added 2026-09-05 asks
+            # the reader to survey the document's subjects before it
+            # writes cards, which costs turns on the margin. Unused
+            # turns cost nothing, a retried document costs a full read.
             BYTES=$(wc -c < "$TEXT" 2>/dev/null || echo 0)
             LINES=$(wc -l < "$TEXT" 2>/dev/null || echo 0)
-            MAXT=12
+            MAXT=20
             if [ "$BYTES" -gt 50000 ] || [ "$LINES" -gt 1500 ]; then MAXT=30; fi
             if [ "$BYTES" -gt 150000 ] || [ "$LINES" -gt 3500 ]; then MAXT=40; fi
             if [ "$BYTES" -gt 300000 ]; then MAXT=50; fi
@@ -234,9 +246,20 @@ jobs:
             --total "$TOTAL" --failed "$FAILED" || true
           persist "final $TOTAL doc(s)"
           # One poisoned PDF must not stop the pilot's day; a total
-          # wipeout should be loud.
+          # wipeout should be loud. A run whose every failure was a
+          # RETIREMENT is not a wipeout: the give-up rule did its job and
+          # the document is recorded in read-failures/. Before this the
+          # 09:00 run on 2026-09-07 went red for retiring the single
+          # known-bad document it was handed, which is the designed
+          # outcome (a red run for working correctly trains the owner to
+          # ignore red runs).
           if [ "$TOTAL" -gt 0 ] && [ "$FAILED" -eq "$TOTAL" ]; then
-            echo "::error::every reader failed this run"; exit 1
+            if [ "$GAVE_UP" -ge "$FAILED" ]; then
+              echo "::warning::every document this run was retired after \
+          exhausting its read attempts ($GAVE_UP); see read-failures/"
+            else
+              echo "::error::every reader failed this run"; exit 1
+            fi
           fi
 
       - name: Record a quiet run in ops

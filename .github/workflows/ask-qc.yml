@@ -125,12 +125,28 @@ jobs:
             echo "weekend — no pulse to grade"
             echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0
           fi
+          # Market holidays are weekdays with no pulse. The step below
+          # treats "weekday, no artifact" as a page-worthy incident, so
+          # without this it fails every Labor Day, Thanksgiving and July
+          # 4th (2026-09-07 was the first). Same calendar the synthesis
+          # routine's own holiday gate uses, so the two cannot disagree.
+          HOL=$(python -c "import world_context,sys;h=world_context.is_us_market_holiday('$TODAY');print(h if h else '')")
+          if [ -n "$HOL" ]; then
+            echo "$TODAY is $HOL — market closed, no pulse to grade"
+            echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           for i in $(seq 1 21); do
             cd pulse-data && git pull --quiet origin pulse-data && cd ..
             TS=$(ls pulse-data/pulse-output/driver/ 2>/dev/null                  | grep "^$TODAY" | sort | tail -1)
             if [ -n "$TS" ]; then
               echo "QC_PULSE_TS=${TS%.json}" >> "$GITHUB_ENV"
               echo "found pulse run ${TS%.json}"
+              # An explicit READY output, not the absence of `skip`: this
+              # step can also END IN FAILURE (no artifact at all), and a
+              # negative condition treats that identically to success.
+              # On 2026-09-07 it did, and the pulse judge was dispatched
+              # with no pulse to read.
+              echo "ready=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             echo "no pulse artifact for $TODAY yet (poll $i/21)"
@@ -168,10 +184,12 @@ jobs:
           test -f "pulse-data/ask-qc/findings-queue.md" || {
             echo "::error::findings queue missing"; exit 1; }
 
-      # !cancelled(): the two phases are independent. A failed ask
-      # grade must not skip the pulse review (2026-09-05).
+      # !cancelled(): the two phases are independent, so a failed ask
+      # grade must not skip the pulse review (2026-09-05). `ready` is
+      # what makes that safe — the pulse phase runs only when the wait
+      # step actually FOUND today's artifact.
       - name: Grade today's pulse
-        if: ${{ !cancelled() && steps.pulse.outputs.skip != 'true' }}
+        if: ${{ !cancelled() && steps.pulse.outputs.ready == 'true' }}
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |

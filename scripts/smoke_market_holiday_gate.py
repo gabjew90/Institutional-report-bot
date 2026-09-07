@@ -30,6 +30,11 @@ def test_holiday_calendar():
     assert is_us_market_holiday("2026-07-03") == "Independence Day (observed)"
     assert is_us_market_holiday("2026-11-26") == "Thanksgiving Day"
     assert is_us_market_holiday("2027-07-05") == "Independence Day (observed)"
+    # daily-qc reads this same calendar to decide whether a weekday with
+    # no pulse is an incident or a closure; it failed on 2026-09-07 for
+    # want of it (the workflow only knew about weekends).
+    assert is_us_market_holiday("2026-09-07") == "Labor Day"
+    assert is_us_market_holiday("2027-09-06") == "Labor Day"
     # observed-date convention: the Saturday/Sunday themselves are NOT
     # closures (markets already closed on weekends; cron never fires)
     assert is_us_market_holiday("2026-07-04") is False
