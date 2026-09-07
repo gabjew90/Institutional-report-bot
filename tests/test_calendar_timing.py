@@ -55,14 +55,24 @@ def test_signature_changes_when_a_move_prices_or_a_name_appears():
 
 # ------------------------------------------------------ refresh job
 
-def _run_refresh(posts, day, edits):
+def _run_refresh(posts, day, edits, holiday=False):
+    """Run the 7:30 AM refresh job against stubs.
+
+    `holiday` is a STUB, not the wall clock. The job asks
+    world_context.is_us_market_holiday about TODAY and returns early on
+    a closure, so before 2026-09-07 every refresh assertion here passed
+    only on days the market was open: the suite went red on Labor Day
+    itself, for a reason that had nothing to do with the code under
+    test. Same root class as the daily-qc failure that day (a holiday
+    is a weekday)."""
     import scheduler.jobs as J
-    from datetime import datetime
+    import world_context as wc
     from report import calendar_data as cd
     from report import calendar_render as cr
     from discord_bot import sender
     o = (db.get_calendar_posts, db.mark_calendar_refreshed, db.record_pipeline_event,
-         cd.build_calendar_day, cr.render_calendar_png, sender.edit_file_message)
+         cd.build_calendar_day, cr.render_calendar_png, sender.edit_file_message,
+         wc.is_us_market_holiday)
     marked = []
 
     async def fake_edit(bot, cid, mid, png, fn):
@@ -74,10 +84,12 @@ def _run_refresh(posts, day, edits):
         cd.build_calendar_day = lambda d: day
         cr.render_calendar_png = lambda d: b"png"
         sender.edit_file_message = fake_edit
+        wc.is_us_market_holiday = lambda d: ("Labor Day" if holiday else False)
         asyncio.run(J._calendar_refresh_job(bot=object()))
     finally:
         (db.get_calendar_posts, db.mark_calendar_refreshed, db.record_pipeline_event,
-         cd.build_calendar_day, cr.render_calendar_png, sender.edit_file_message) = o
+         cd.build_calendar_day, cr.render_calendar_png, sender.edit_file_message,
+         wc.is_us_market_holiday) = o
     return marked
 
 
@@ -87,6 +99,14 @@ def test_refresh_edits_in_place_when_lineup_changed():
     marked = _run_refresh([{"channel_id": 1, "message_id": 10, "lineup_hash": "stale"}], day, edits)
     assert edits == [(1, 10)]
     assert marked == [lineup_signature(day)]
+
+
+def test_refresh_does_nothing_on_a_market_holiday():
+    """The gate the stub above neutralizes, asserted on its own."""
+    edits = []
+    marked = _run_refresh([{"channel_id": 1, "message_id": 10, "lineup_hash": "stale"}],
+                          _day(), edits, holiday=True)
+    assert edits == [] and marked == []
 
 
 def test_refresh_is_silent_when_lineup_unchanged():

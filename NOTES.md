@@ -1875,3 +1875,12 @@ Two 45-minute reader timeouts (09-06 22:48, 09-07 01:00) are NOT in
 this list: both persisted every document they finished before the kill,
 which is what the per-document commit was built for. They show as
 cancelled and cost nothing.
+
+A fourth instance of the same root class turned up while verifying the
+fixes: `test_refresh_edits_in_place_when_lineup_changed` failed today
+and only today. `_calendar_refresh_job` asks the real calendar whether
+TODAY is a closure, so every refresh assertion in that file passed only
+on days the market was open. The holiday answer is a stub now, with a
+separate test asserting the gate itself. Three separate places assumed
+"weekday" meant "trading day"; that is the lesson worth keeping, not
+any one of the three fixes.
