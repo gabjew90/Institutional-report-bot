@@ -392,6 +392,14 @@ def append_ask_interaction(
                     bits.append(f"retry: {meta['ground_retry']}")
                 if meta.get("filter_retry"):
                     bits.append(f"filter-retry: {meta['filter_retry']}")
+                # Why .text came back empty, and whether the retry saved
+                # it. Without these an entry that shipped a fallback
+                # wrapper looked exactly like one that answered badly
+                # (2026-09-07).
+                if meta.get("empty"):
+                    bits.append(f"empty: {meta['empty']}")
+                if meta.get("empty_retry"):
+                    bits.append(f"empty-retry: {meta['empty_retry']}")
                 if meta.get("images"):
                     bits.append(f"images: {meta['images']}")
                 guards = meta.get("guards") or []

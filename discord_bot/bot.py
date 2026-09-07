@@ -7051,6 +7051,13 @@ async def _ask_09_rank_and_regen_guards(
             f"prompt_block={prompt_block!r}, "
             f"q={question[:140]!r})"
         )
+        # Railway's log tail rotates in about an hour; the ask log is the
+        # durable record. On 2026-09-07 four asks shipped the fallback
+        # and the reason was already gone by the time anyone looked.
+        _ask_meta["empty"] = (
+            "safety" if (safety_blocked or prompt_block)
+            else (finish_reason or "unknown")
+        )
         if safety_blocked or prompt_block:
             # With BLOCK_NONE on all configurable categories, this
             # is Gemini's unconfigurable hard filter (CSAM, severe
@@ -7421,10 +7428,76 @@ async def _ask_09_rank_and_regen_guards(
                     "different subject."
                 )
         elif finish_reason in ("MAX_TOKENS", "OTHER", None):
-            answer = (
-                "→ Thought myself in circles and ran out of room. "
-                "Try asking it more directly."
-            )
+            # The model spent the whole call without producing text.
+            # Two causes land here and look identical: reasoning ran the
+            # 5000-token ceiling out, or the SDK's automatic function
+            # calling looped to its 10-call limit and handed back a
+            # textless final turn. Both recover the same way — ask again
+            # with the reasoning budget cut to 512 and the FUNCTION
+            # tools withdrawn, keeping google_search, which resolves
+            # server-side and returns text rather than a function_call
+            # (the same reason the filter ladder keeps it).
+            #
+            # 2026-09-07: four of six asks in one afternoon ended here,
+            # every one of them WEB/FACT and ungrounded, while the two
+            # that reached search answered fine. Until now this branch
+            # was terminal, so a recoverable turn cost the asker their
+            # answer and their quota.
+            retry_succeeded = False
+            try:
+                _short_tools = [
+                    t for t in (config.tools or [])
+                    if getattr(t, "google_search", None) is not None
+                ] or None
+                _short_cfg = config.model_copy(update={
+                    "tools": _short_tools,
+                    "tool_config": (
+                        config.tool_config if _short_tools else None
+                    ),
+                    "thinking_config": types.ThinkingConfig(
+                        thinking_budget=512),
+                })
+                log.warning(
+                    f"/ask: empty on {finish_reason} — retrying with a "
+                    f"512-token thinking budget, search only"
+                )
+                short_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=contents,
+                    config=_short_cfg,
+                )
+                _tally_retry_usage(short_resp)
+                try:
+                    short_answer = (short_resp.text or "").strip()
+                except Exception:
+                    short_answer = ""
+                if short_answer:
+                    short_answer, _ = _clean_voice_violations(short_answer)
+                    answer = short_answer
+                    response = short_resp
+                    retry_succeeded = True
+                    _ask_meta["empty_retry"] = "short-thinking"
+                    log.info("/ask: short-thinking retry succeeded")
+                    try:
+                        grounding_metadata = (
+                            short_resp.candidates[0].grounding_metadata
+                        )
+                    except (AttributeError, IndexError, TypeError):
+                        grounding_metadata = None
+                else:
+                    log.warning(
+                        "/ask: short-thinking retry also empty"
+                    )
+            except Exception as e:
+                log.warning(
+                    f"/ask: short-thinking retry call failed: {e}"
+                )
+            if not retry_succeeded:
+                _ask_meta["empty_retry"] = "failed"
+                answer = (
+                    "→ Thought myself in circles and ran out of room. "
+                    "Try asking it more directly."
+                )
         else:
             answer = (
                 f"→ No response came back (reason: {finish_reason}). "

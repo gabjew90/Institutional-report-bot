@@ -1884,3 +1884,51 @@ on days the market was open. The holiday answer is a stub now, with a
 separate test asserting the gate itself. Three separate places assumed
 "weekday" meant "trading day"; that is the lesson worth keeping, not
 any one of the three fixes.
+
+## 2026-09-07 — "Thought myself in circles": an empty answer had no retry
+
+Owner: "check recent bot asks it's thinking itself in circles". Four of
+today's six asks shipped the fallback wrapper. The pattern in the log is
+exact:
+
+| | route | grounded | outcome |
+|---|---|---|---|
+| "how much of an ass whooping did Georgia give TCU" | WEB/FACT | no | fallback |
+| "what was the Georgia v TCU score" | WEB/FACT | yes, 3 sources | answered |
+| "was the tcu vs michigan game one of the best ever" | WEB/FACT | no | fallback |
+| "was the tcu vs michigan playoff game in 2022 one of the best" | WEB/FACT | yes, 4 sources | answered |
+| "did michigan win the natty the next year" | WEB/FACT | no | fallback |
+| "hardest teams TCU played in 2022-2023" | WEB/FACT | no | fallback |
+
+Every failure is ungrounded, every success is grounded, and the asker
+recovered twice by rewording — which is what the fallback tells them to
+do, and a bad trade for the room.
+
+Rate by day: 1/14 (09-02), 1/38 (09-03), 0/11 (09-04), 4/6 today. The
+first two were LOCAL/BANTER; the WEB/FACT cluster is new.
+
+Cause: `_ask_09` handles a textless response with a four-tier ladder for
+the safety filter and NOTHING for a spent budget — `finish_reason in
+("MAX_TOKENS", "OTHER", None)` assigned the wrapper and stopped. Two
+things land there and are indistinguishable from the outside: reasoning
+running out the 5000-token ceiling, and the SDK's automatic function
+calling looping to its 10-call limit and returning a textless final
+turn ("AFC is enabled with max remote calls: 10" is in every boot log).
+
+Fix: one retry with the thinking budget cut 2000 -> 512 and the FUNCTION
+tools withdrawn, keeping google_search (it resolves server-side and
+returns text rather than a function_call — the same reason the filter
+ladder keeps it). Both causes are addressed by exactly those two
+changes. Grounding from the retry is passed back, so a retried answer
+that searched is stamped grounded and keeps its Sources footer.
+
+Also: the audit stamp now carries `empty: <reason>` and `empty-retry:
+<result>`. The reason was already gone from Railway's hour-long tail by
+the time this was investigated, and an entry that shipped a wrapper
+looked identical to one that answered badly.
+
+Not fixed, and worth watching: WHY these four never searched. All four
+are vague or comparative ("one of the best ever", "how much of an ass
+whooping", "hardest teams"); the two that searched were precise. If the
+retry does not clear them the next step is forcing a search call on the
+WEB route rather than leaving it to the model.
