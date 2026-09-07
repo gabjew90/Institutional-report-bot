@@ -1,0 +1,105 @@
+{
+ "brief": "Frank Monkam (Bloomberg macro strategist, via Zero Hedge) argues the Treasury's Bessent put, aimed at containing rates volatility, has become an unintended tailwind for equities rather than bonds. The MOVE index jumped 10 vol points over the past week but stays orderly and near cyclical lows; bonds nonetheless trade with a bearish bias, yields pushing toward cyclical highs, because suppressed volatility has not been effective at capping yields amid a structural inflation, term premium and duration supply problem. Equities are resilient despite spiking energy and agro-commodity prices and rising rates: the SPX has gone 25 sessions without a more than 1% drawdown, a streak in the 90th percentile over a five-year lookback, aided by the low MOVE level. The 100 level on MOVE is flagged as a historical cross-asset fault line: the most severe SPX realized-vol episodes cluster above it, calmer regimes below it. The Bessent put may hold bond vol down without reversing the yield selloff, but the piece argues the real inflection could arrive 20 points higher on MOVE, where cross-asset markets could enter a vortex with few places to hide.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Is The Bessent Put Landing In The Wrong Market?",
+   "claim": "The S&P 500 has gone 25 trading sessions without a drawdown greater than 1%, a streak whose length ranks in the 90th percentile over a five-year lookback.",
+   "anchor": "a more than 1% drawdown, a resilience parameter that sits in the 90th percentile of such a",
+   "topic": "SPX drawdown streak",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Is The Bessent Put Landing In The Wrong Market?",
+   "claim": "The MOVE index has jumped 10 volatility points over the past week but remains orderly and off its recent lows.",
+   "anchor": "MOVE index is off the recent lows, having jumped 10 vol pts over the past week",
+   "topic": "MOVE index level",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Is The Bessent Put Landing In The Wrong Market?",
+   "claim": "The bond market is trading with a bearish bias, with yields pushing toward cyclical highs.",
+   "anchor": "bond market, however, has continued to trade with a bearish bias, with yields pushing toward cyclical highs",
+   "topic": "Treasury yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Is The Bessent Put Landing In The Wrong Market?",
+   "claim": "The 100 level on the MOVE index is a historical cross-asset fault line, with the most severe episodes of SPX realized volatility disproportionately clustering above it.",
+   "anchor": "the 100-level on the MOVE historically looks like an important cross-asset fault line",
+   "topic": "MOVE 100 threshold",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Is The Bessent Put Landing In The Wrong Market?",
+   "claim": "The Bessent put may keep bond volatility contained even though it has fallen short of reversing the rates selloff.",
+   "anchor": "Bessent put therefore might keep bond vol in check, despite still coming short of reversing the rates selloff",
+   "topic": "Bessent put effect",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Is The Bessent Put Landing In The Wrong Market?",
+   "claim": "The inflection point for a broader cross-asset volatility regime could come 20 points higher on the MOVE index.",
+   "anchor": "the inflection point could come 20 pts higher in the MOVE",
+   "topic": "MOVE 100 threshold",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Is The Bessent Put Landing In The Wrong Market?",
+   "claim": "At the MOVE level roughly 20 points above the 100 threshold, macro markets could enter a cross-asset volatility vortex with very few places to hide.",
+   "anchor": "macro markets could enter a cross-asset vol vortex where there would be very few places to hide",
+   "topic": "MOVE 100 threshold",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-06/15430__is-the-bessent-put-landing-in-the-wrong-market.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 7,
+  "matched": 7,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
